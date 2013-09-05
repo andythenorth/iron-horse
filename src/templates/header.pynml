@@ -1,6 +1,6 @@
 // define the newgrf
 grf {
-	grfid: "\41\4E\02\01";
+	grfid: "CA\12\1E";
 	name: string(STR_GRF_NAME);
 	desc: string(STR_GRF_DESCRIPTION);
 	version: ${repo_vars.repo_version};
