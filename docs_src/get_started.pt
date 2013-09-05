@@ -4,10 +4,10 @@
         <div class="span3">
             <ul class="nav nav-list well">
                 <li class="nav-header">Get Started</li>
-                <li><a href="#download-fish">Download Squid Ate FISH</a></li>
-                <li><a href="#setting-up">Setting up a Game with Squid Ate FISH</a></li>
+                <li><a href="#download-fish">Download Iron Horse</a></li>
+                <li><a href="#setting-up">Setting up a Game with Iron Horse</a></li>
                 <li><a href="#what-next">What Next?</a></li>
-                <li><a href="#fish-changes">Squid Ate FISH Changes</a></li>
+                <li><a href="#fish-changes">Iron Horse Changes</a></li>
             </ul>
         </div>
         <div class="span9">
@@ -25,26 +25,26 @@
                 </ul>
             </div>
             <div id="download-fish">
-                <h2>1. Download Squid Ate FISH</h2>
+                <h2>1. Download Iron Horse</h2>
                 <p class="lead">
-                    Squid Ate FISH is available from the content service in OpenTTD, as a zip for manual installation,
+                    Iron Horse is available from the content service in OpenTTD, as a zip for manual installation,
                     or as a source checkout for compiling locally (requires mercurial and various python dependencies).
                 </p>
                 <div class="row">
                     <div class="span3">
                         <h3>Download in OpenTTD</h3>
-                        <p><strong>Easiest</strong>: get Squid Ate FISH from the OpenTTD content service.</p>
+                        <p><strong>Easiest</strong>: get Iron Horse from the OpenTTD content service.</p>
                         <a class="btn btn-primary" href="http://wiki.openttd.org/Content_downloading">Instructions</a>
                     </div>
                     <div class="span3">
                         <h3>Download Zip</h3>
-                        <p>Get the latest Squid Ate FISH release for <a href="http://wiki.openttd.org/Newgrf#Manual_install">manual install</a>.</p>
-                        <a class="btn btn-info" href="http://bundles.openttdcoop.org/fish/releases/LATEST/">Download Squid Ate FISH</a>
+                        <p>Get the latest Iron Horse release for <a href="http://wiki.openttd.org/Newgrf#Manual_install">manual install</a>.</p>
+                        <a class="btn btn-info" href="http://bundles.openttdcoop.org/fish/releases/LATEST/">Download Iron Horse</a>
                     </div>
                     <div class="span3">
                         <h3>Download Source</h3>
-                        <p>Checkout source code and <a href="code_reference.html">compile your own Squid Ate FISH</a>.</p>
-                        <a class="btn" href="${metadata['repo_url']}">Squid Ate FISH Source Repo</a>
+                        <p>Checkout source code and <a href="code_reference.html">compile your own Iron Horse</a>.</p>
+                        <a class="btn" href="${metadata['repo_url']}">Iron Horse Source Repo</a>
                     </div>
                 </div>
             </div>
@@ -52,9 +52,9 @@
             <hr />
             <br />
             <div id="setting-up">
-                <h2>2. Setting Up a Game with Squid Ate FISH</h2>
+                <h2>2. Setting Up a Game with Iron Horse</h2>
                 <p class="lead">
-                    A few things to know before setting up a Squid Ate FISH game...
+                    A few things to know before setting up a Iron Horse game...
                 </p>
                 UNFINISHED - PARAMETERS ETC
             </div>
@@ -64,16 +64,16 @@
             <div id="what-next">
                 <h2>3. What Next?</h2>
 
-                <p class="lead">Find out more about Squid Ate FISH.  Or try it out in OpenTTD!</p>
+                <p class="lead">Find out more about Iron Horse.  Or try it out in OpenTTD!</p>
                 <a class="btn btn-large btn-primary" href="trains.html">List of Ships</a>
                 <a class="btn btn-large" href="code_reference.html">Code Reference</a>
             </div>
             <hr />
             <br />
             <div id="fish-changes">
-                <h2>4. Changes in Squid Ate FISH</h2>
-                <p class="lead">Squid Ate FISH is updated and improved quite often.</p>
-                <p>The <a href="changelog.html"><strong>Squid Ate FISH changelog</strong></a> keeps track of changes, including new features, bug fixes and updates to translations.</p>
+                <h2>4. Changes in Iron Horse</h2>
+                <p class="lead">Iron Horse is updated and improved quite often.</p>
+                <p>The <a href="changelog.html"><strong>Iron Horse changelog</strong></a> keeps track of changes, including new features, bug fixes and updates to translations.</p>
             </div>
             <br />
             <br />
