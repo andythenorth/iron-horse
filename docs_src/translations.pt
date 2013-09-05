@@ -1,19 +1,19 @@
 <tal:page_with_sidebar_template define="page_with_sidebar_template load: page_with_sidebar_template.pt" metal:use-macro="page_with_sidebar_template">
 <div metal:fill-slot='sidebar_nav'>
-    <li class="nav-header">Help Translate Squid Ate FISH</li>
+    <li class="nav-header">Help Translate Iron Horse</li>
     <li><a href="#status">Current Translation Status</a></li>
     <li><a href="#translating">Get Started with Translating</a></li>
 </div>
 
 <div metal:fill-slot='body'>
     <div class="page-header">
-        <h2>Help Translate Squid Ate FISH</h2>
-        <p>Squid Ate FISH has already been translated into multiple languages, and more translations are always welcome.</p>
+        <h2>Help Translate Iron Horse</h2>
+        <p>Iron Horse has already been translated into multiple languages, and more translations are always welcome.</p>
     </div>
 
     <div id="status">
         <h3>Current Translation Status</h3>
-        <p>See which languages Squid Ate FISH has been translated into, and how complete each translation is.</p>
+        <p>See which languages Iron Horse has been translated into, and how complete each translation is.</p>
         <a class="btn btn-primary btn-large" href="http://bundles.openttdcoop.org/fish/push/LATEST/translations/">Translation Status Report</a>
     </div>
     <br />

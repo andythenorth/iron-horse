@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 
 """
-  This file is part of FISH Newgrf for OpenTTD.
-  FISH is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
-  FISH is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-  See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with FISH. If not, see <http://www.gnu.org/licenses/>.
+  This file is part of Iron Horse Newgrf for OpenTTD.
+  Iron Horse is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
+  Iron Horse is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+  See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with Iron Horse. If not, see <http://www.gnu.org/licenses/>.
 """
 print "[PYTHON] render docs"
 
@@ -58,8 +58,8 @@ metadata = {}
 dates = sorted([i.intro_date for i in vehicles])
 metadata['dates'] = (dates[0], dates[-1])
 metadata['dev_thread_url'] = 'http://www.tt-forums.net/viewtopic.php?f=26&t=44613'
-metadata['repo_url'] = 'http://dev.openttdcoop.org/projects/fish/repository'
-metadata['issue_tracker'] = 'http://dev.openttdcoop.org/projects/fish/issues'
+metadata['repo_url'] = 'http://dev.openttdcoop.org/projects/iron-horse/repository'
+metadata['issue_tracker'] = 'http://dev.openttdcoop.org/projects/iron-horse/issues'
 
 class DocHelper(object):
     # dirty class to help do some doc formatting
