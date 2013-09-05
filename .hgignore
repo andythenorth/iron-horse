@@ -10,7 +10,7 @@ iron-horse*.tar
 iron-horse*.tar.zip
 
 # Ignore files and dirs generated automatically:
-fish.nml
+iron-horse.nml
 *.lng
 *.nfo
 *.cnfo
@@ -34,7 +34,7 @@ iron-horse.grf.cacheindex
 
 
 # Ignore directories from bundle creation / install:
-fish-*
+iron-horse-*
 
 #The .renum dir
 .renum

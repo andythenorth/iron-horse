@@ -21,7 +21,7 @@ repo_vars = utils.get_repo_vars(sys)
 
 ships = fish.get_ships_in_buy_menu_order()
 
-grf_nml = codecs.open(os.path.join('fish.nml'),'w','utf8')
+grf_nml = codecs.open(os.path.join('iron-horse.nml'),'w','utf8')
 header_items = ['header', 'cargo_table', 'disable_default_ships']
 for header_item in header_items:
     template = templates[header_item + '.pynml']
