@@ -1,0 +1,92 @@
+${ship.render_debug_info()}
+
+// graphics
+template spriteset_template_${ship.id}(y) {
+    //[left_x,  upper_y,    width,      height,     offset_x,      offset_y]
+    [20,        y,          28,         89,          ${ship.offsets[0][0]}, ${ship.offsets[0][1]}]
+    [60,        y,          113,        66,          ${ship.offsets[1][0]}, ${ship.offsets[1][1]}]
+    [186,       y,          138,        48,          ${ship.offsets[2][0]}, ${ship.offsets[2][1]}]
+    [328,       y,          113,        66,          ${ship.offsets[3][0]}, ${ship.offsets[3][1]}]
+    [454,       y,          28,         89,          ${ship.offsets[4][0]}, ${ship.offsets[4][1]}]
+    [494,       y,          113,        66,          ${ship.offsets[5][0]}, ${ship.offsets[5][1]}]
+    [620,       y,          138,        48,          ${ship.offsets[6][0]}, ${ship.offsets[6][1]}]
+    [762,       y,          113,        66,          ${ship.offsets[7][0]}, ${ship.offsets[7][1]}]
+}
+
+spriteset(${ship.id}_ss_loaded_0_not_moving, "src/graphics/${ship.id}_0.png") {
+  spriteset_template_${ship.id}(10)
+}
+spriteset(${ship.id}_ss_loaded_0_moving, "src/graphics/${ship.id}_0.png") {
+  spriteset_template_${ship.id}(110)
+}
+spriteset(${ship.id}_ss_loaded_1_not_moving, "src/graphics/${ship.id}_0.png") {
+  spriteset_template_${ship.id}(210)
+}
+spriteset(${ship.id}_ss_loaded_1_moving, "src/graphics/${ship.id}_0.png") {
+  spriteset_template_${ship.id}(310)
+}
+spriteset(${ship.id}_ss_loaded_2_not_moving, "src/graphics/${ship.id}_0.png") {
+  spriteset_template_${ship.id}(410)
+}
+spriteset(${ship.id}_ss_loaded_2_moving, "src/graphics/${ship.id}_0.png") {
+  spriteset_template_${ship.id}(510)
+}
+
+spritegroup ${ship.id}_sg_moving {
+    loaded:  [
+        ${ship.id}_ss_loaded_0_moving,
+        ${ship.id}_ss_loaded_1_moving,
+        ${ship.id}_ss_loaded_2_moving,
+    ];
+    loading: [ // can't be loading when moving, but we'll overlook that, it's required by nml ;)
+        ${ship.id}_ss_loaded_0_moving,
+    ];
+}
+
+spritegroup ${ship.id}_sg_not_moving {
+    loaded:  [
+        ${ship.id}_ss_loaded_0_not_moving,
+        ${ship.id}_ss_loaded_1_not_moving,
+        ${ship.id}_ss_loaded_2_not_moving,
+    ];
+    loading: [
+        ${ship.id}_ss_loaded_0_not_moving,
+        ${ship.id}_ss_loaded_1_not_moving,
+        ${ship.id}_ss_loaded_2_not_moving,
+    ];
+}
+
+switch (FEAT_SHIPS, SELF, ${ship.id}_switch_graphics, current_speed) {
+    0: return ${ship.id}_sg_not_moving;
+    return ${ship.id}_sg_moving;
+}
+
+// buy menu graphics
+
+template spriteset_template_purchase_${ship.id}() {
+    //[left_x,  upper_y,    width,      height,     offset_x,      offset_y]
+    [${ship.buy_menu_bb_xy[0]}, ${ship.buy_menu_bb_xy[1]}, ${ship.buy_menu_width}, 22, -${ship.buy_menu_width / 2}, -10]
+}
+
+spriteset(${ship.id}_ss_purchase, "src/graphics/${ship.id}_0.png") {
+  spriteset_template_purchase_${ship.id}()
+}
+
+spritegroup ${ship.id}_sg_purchase {
+    loaded:  [
+        ${ship.id}_ss_purchase,
+    ];
+    loading: [
+        ${ship.id}_ss_purchase,
+    ];
+}
+
+${ship.render_speed_switches()}
+
+${ship.render_autorefit()}
+
+${ship.render_cargo_capacity()}
+
+${ship.render_purchase_cargo_capacity()}
+
+${ship.render_properties()}

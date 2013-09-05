@@ -1,0 +1,4 @@
+// -- handle autorefitting -- //
+switch (FEAT_SHIPS, SELF, ${ship.id}_switch_refit_cost, 0) {
+    return 0 + CB_RESULT_AUTOREFIT;
+}

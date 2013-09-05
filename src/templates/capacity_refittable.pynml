@@ -1,0 +1,16 @@
+// -- ships that have subtype refits for capacity rely on the capacities_refittable prop //
+<!--! assumes exactly 3 subtype refits, which is a sane amount; convert to repeat if more are ever needed -->
+switch (FEAT_SHIPS, SELF, ${ship.id}_switch_cargo_capacity, cargo_subtype) {
+    0: return ${ship.capacities_refittable[0]};
+    1: return ${ship.capacities_refittable[1]};
+    2: return ${ship.capacities_refittable[2]};
+    return ${ship.capacities_refittable[0]};
+}
+
+// -- handle subtype strings, used to aid players understand auto-refitting -- //
+switch (FEAT_SHIPS, SELF, ${ship.id}_switch_cargo_subtype_text, cargo_subtype) {
+    0: return string(STR_GENERIC_REFIT_SUBTYPE, ${ship.capacities_refittable[0]}, ${ship.get_cargo_suffix()});
+    1: return string(STR_GENERIC_REFIT_SUBTYPE, ${ship.capacities_refittable[1]}, ${ship.get_cargo_suffix()});
+    2: return string(STR_GENERIC_REFIT_SUBTYPE, ${ship.capacities_refittable[2]}, ${ship.get_cargo_suffix()});
+    return CB_RESULT_NO_TEXT;
+}

@@ -1,0 +1,80 @@
+##grflangid 0x01
+##plural 0
+STR_GRF_NAME                                                    :FISH ${repo_vars.repo_title}
+STR_GRF_DESCRIPTION                                             :License: {SILVER}GPL v2{}{BLACK}
+
+<!--! don't translate empty string :) -->
+STR_EMPTY                                                       :
+
+<!--! parameters / action 14 stuff -->
+STR_PARAM_RESET_CONSTRUCTION_COSTS                              :Use improved construction costs for canals, aqueducts and locks
+STR_PARAM_RESET_CONSTRUCTION_COSTS_DESC                         :Reduces construction (and removal) costs for canals, aqueducts and locks.  Provides a better balance between water transport and other transport types.
+STR_PARAM_ADJUST_SHIP_SPEEDS                                    :Ship speed
+STR_PARAM_ADJUST_SHIP_SPEEDS_OPTION_0                           :Like watching paint dry
+STR_PARAM_ADJUST_SHIP_SPEEDS_OPTION_1                           :Ideal
+STR_PARAM_ADJUST_SHIP_SPEEDS_OPTION_2                           :Cheating
+
+<!--! type suffixes for ship names  -->
+STR_NAME_SUFFIX_BARGE_TUG                                       :Barge Tug
+STR_NAME_SUFFIX_CATAMARAN                                       :Catamaran
+STR_NAME_SUFFIX_CONTAINER_FEEDER                                :Container Feeder
+STR_NAME_SUFFIX_FERRY                                           :Ferry
+STR_NAME_SUFFIX_FAST_FERRY                                      :Fast Ferry
+STR_NAME_SUFFIX_FREIGHTER                                       :Freighter
+STR_NAME_SUFFIX_FREIGHT_BARGE                                   :Freight Barge
+STR_NAME_SUFFIX_HOVERCRAFT                                      :Hovercraft
+STR_NAME_SUFFIX_HYDROFOIL                                       :Hydrofoil
+STR_NAME_SUFFIX_LIVESTOCK_SHIP                                  :Livestock Ship
+STR_NAME_SUFFIX_LOG_TUG                                         :Log Tug
+STR_NAME_SUFFIX_PADDLE_STEAMER                                  :Paddle Steamer
+STR_NAME_SUFFIX_RIG_SUPPLY_FAST_CATAMARAN                       :Fast Supply Vessel
+STR_NAME_SUFFIX_STEAMER                                         :Steamer
+STR_NAME_SUFFIX_TANKER                                          :Tanker
+STR_NAME_SUFFIX_TANKER_BARGE                                    :Tanker Barge
+STR_NAME_SUFFIX_TRAWLER                                         :Trawler
+STR_NAME_SUFFIX_UTILITY_VESSEL                                  :Utility Vessel
+STR_NAME_SUFFIX_UTILITY_TUG                                     :Utility Tug
+
+<!--! extra buy menu info -->
+STR_BUY_MENU_TEXT                                               :Type: {GOLD}{STRING}{}{STRING}
+STR_BUY_MENU_REFIT_CAPACITIES_PACKET                            :{}{BLACK}Capacity when refitted: {GOLD}{COMMA} bags of mail or {COMMA}t of express freight
+STR_BUY_MENU_REFIT_CAPACITIES_TRAWLER                           :{}{BLACK}Capacity when refitted: {GOLD}{COMMA} passengers, {COMMA} bags of mail, {COMMA}t of fish in holds, or {COMMA}t of express freight as deck cargo
+
+STR_SMALL_GENERAL_PURPOSE_VESSEL                                :Small general purpose vessel
+STR_GENERAL_PURPOSE_VESSEL                                      :General purpose vessel
+STR_FAST_GENERAL_PURPOSE_VESSEL                                 :Fast general purpose vessel
+STR_GENERAL_PURPOSE_SEA_GOING_VESSEL                            :General purpose sea-going vessel
+STR_SMALL_FREIGHTER_COASTAL_INLAND                              :Small freighter for coastal and inland waterways
+STR_COASTER                                                     :Coastal freighter
+STR_LARGE_COASTER                                               :Large coastal freighter
+STR_SMALL_TANKER_COASTAL_INLAND                                 :Small tanker for coastal and inland waterways
+STR_COASTAL_TANKER                                              :Coastal tanker
+STR_LARGE_COASTAL_TANKER                                        :Large coastal tanker
+STR_CARGO_VESSEL_INLAND                                         :Freighter for inland waterways
+STR_PADDLE_STEAMER                                              :Paddle steamer
+STR_FAST_PACKET_STEAMER                                         :Fast Packet steamer
+STR_CARGO_HOVERCRAFT                                            :Freight hovercraft
+STR_HYDROFOIL_FAST_FERRY                                        :Hydrofoil fast ferry
+STR_CATAMARAN_FAST_FERRY                                        :Catamaran fast ferry
+STR_VEHICLE_FERRY                                               :Vehicle ferry
+STR_JUMBO_VEHICLE_FERRY                                         :Jumbo ship ferry
+STR_LOG_TUG                                                     :Tugboat for towing floating logs
+STR_CONTAINER_FEEDER                                            :Small container ship
+STR_LIVESTOCK_SHIP                                              :Livestock ship
+STR_TRAWLER                                                     :Trawler (dedicated hold for fish)
+STR_BARGE_TUG                                                   :Barge tug
+STR_RIG_SUPPLY_FAST_CATAMARAN                                   :Fast catamaran for supplying islands and offshore industries
+
+<!--! strings for handling refittable subtypes  -->
+STR_GENERIC_REFIT_SUBTYPE                                       : ({COMMA}{STRING})
+STR_GENERIC_REFIT_SUBTYPE_BUY_MENU_INFO                         :{}{BLACK}Refittable capacities: {GOLD}{COMMA}, {COMMA} or {COMMA}{STRING}
+STR_QUANTITY_WOOD                                               : tonnes of wood
+STR_QUANTITY_LIVESTOCK                                          : items of livestock
+STR_UNIT_TONNES                                                 : tonnes
+STR_UNIT_ITEMS                                                  : items
+
+<!--! don't include any code below here in translated lang files (these are generated code blocks) -->
+<!--! ship names -->
+<tal:build_vehicle_names repeat="ship ships">
+STR_NAME_${ship.id}                                          :${ship.get_name_substr()} {STRING}
+</tal:build_vehicle_names>

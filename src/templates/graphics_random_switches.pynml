@@ -1,0 +1,15 @@
+<tal:graphics_variation_random_switches repeat="year ship.get_reduced_set_of_variant_dates()[:-1]">
+    random_switch (FEAT_SHIPS, SELF, ${ship.id}_switch_graphics_random_${year}) {
+        <tal:random_graphics_variations repeat="variation_num ship.get_variants_available_for_specific_year(year)">
+            1: return ${ship.id}_switch_graphics_${variation_num};
+        </tal:random_graphics_variations>
+    }
+</tal:graphics_variation_random_switches>
+
+
+switch (FEAT_SHIPS, SELF, ${ship.id}_switch_graphics, build_year) {
+    <tal:choose_random_switch_by_date repeat="nml_fragment ship.get_nml_random_switch_fragments_for_model_variants()">
+        ${nml_fragment};
+    </tal:choose_random_switch_by_date>
+    return ${ship.id}_switch_graphics_random_0;
+}

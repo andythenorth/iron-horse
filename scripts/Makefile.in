@@ -1,0 +1,16 @@
+# Here also go all build targets specific to this very newgrf
+
+GENERATE_NML := fish-nml
+GENERATE_LNG := fish-nml
+GENERATE_DOC := fish-nml
+
+GENERATE=src/build_fish.py
+
+fish-nml:
+	$(_E) [GENERATE]
+	$(_V) python src/build_fish.py '${REPO_TITLE}' '${REPO_REVISION}'
+
+clean::
+	$(_V)-rm fish.nml
+	$(_V)-rm lang/*.lng
+	$(_V)-rm -r chameleon_cache

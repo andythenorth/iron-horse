@@ -1,0 +1,11 @@
+/*
+ * ********************************************
+ * Define cargo translation table and refits
+ * ********************************************
+ */
+
+cargotable {
+    <tal:build_cargo_table repeat="cargo global_constants.cargo_graphics_mappings.iterkeys()">
+    ${cargo},
+    </tal:build_cargo_table>
+}

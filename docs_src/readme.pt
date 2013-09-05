@@ -1,0 +1,173 @@
+--- THIS README NEEDS RE-WRITING :o ---
+
+<tal:build_ships_list repeat="ship ships">${ship.title} ${' ' * (28-len(ship.title))} Introduced: ${ship.intro_date}; Speed: ${ship.speed}mph</tal:build_ships_list>
+
+My Fancy NewGRF Name
+-----------------------------------
+
+Contents:
+
+1 About
+2 Usage and Parameters
+3 Building from source
+  3.1 Speed issues
+  3.2 Obtaining the source
+4 Credits
+5 License
+
+
+
+-------
+1 About
+-------
+
+This is a NewGRF
+
+Name of this Repo:  Example NewGRF project
+Repository version: {{REPO_REVISION}}
+
+
+
+----------------------
+2 Usage and Parameters
+----------------------
+
+
+
+----------------------
+3 Building from source
+----------------------
+
+Usually there's not much which needs to be changed when you obtain the
+source. Your friends will usually be
+    make
+	make install
+Both will build the grf from source, the latter will also try to copy
+the grf into your grf folder so that it is available for testing and
+use straight away.
+
+A brief overview over all Makefile targets is given here:
+
+all:
+	This is the default target, if also no parameter is given to
+	make. It will simply build the grf file, if it needs building
+
+depend:
+	Re-run the dependency check. Usually not manually needed.
+
+docs:
+	Build the documentation files
+
+bundle:
+	This target will create a directory called "<name>-nightly" and
+	copy the grf file there and the documentation files, readme.txt,
+	changelog.txt and license.txt
+
+bundle_zip
+	This will zip the bundle directory into one zip for distribution
+
+bundle_tar
+	This will tar the bundle directory into a tar archive for
+	distribution or upload to bananas
+
+bundle_src
+	Creates a source bundle
+
+install:
+	This will create a tar archive (like bundle_tar) and copy it
+	into the INSTALLDIR as specified in Makefile.local (or the
+	default dir, if that isn't defined). Don't rely on a good
+	detection of the default installation directory. It's
+	especially bound to fail on windows machines.
+
+distclean:
+	This phony target cleans everything from a source bundle which
+	wasn't shipped.
+
+clean:
+	This phony target will delete all files which this Makefile will
+	create
+
+mrproper:
+	This phony target will delete also all directories created by
+	different Makefile targets
+
+remake:
+	It's a shortcut for first cleaning the dir and then making the
+	grf anew.
+
+addcheck:
+	Check whether there are some files required but not part of the
+	repository.
+
+check:
+	Check the md5sum of the built newgrf against the supplied md5sum
+	(Intended to be used when building from tar balls)
+
+
+3.1 Speed issues
+----------------
+
+A note concerning the speed of the makefile:
+It seems that the required tools using MinGW and / or msys are thoroughly
+slow on windows. A few example run times for OpenGFX, same processor type
+(both core 2 duo, 2.26GHz for the windows machine, 2.0 GHz for the OSX
+machine). Note that the values given are the 'real' time. Even though
+this varies more and is dependent on the processor load, that's what you
+have to wait for; the 'user' times are quite low on the windows machine
+(~16s), but that by no means reflects the build time. Times are from
+OpenGFX r539 with makefile r199.
+
+DEP_CHECK_TYPE         windows               bash native
+                 native       in VM            (OSX)
+none            1m23.360s      -             0m32.781s
+mdep            1m54.484s   0m30.164s        0m33.807s
+normal          2m37.857s      -             0m36.528s
+
+
+3.2 Obtaining the source
+------------------------
+
+The source code can be obtained from the #openttdcoop DevZone at
+    http://dev.openttdcoop.org/projects/newgrf-makefile
+or via mercurial checkout
+    hg clone http://hg.openttdcoop.org/newgrf-makefile
+
+
+
+---------
+4 Credits
+---------
+
+Author: Ingo von Borstel (aka planetmaker)
+
+Special thanks to #openttdcoop and especially Ammler who provides and
+works a lot on maintaining the Development Zone where this repository is
+hosted and who also frequently gives much valuable input. Thanks also to
+Alberth, Terkhen Yexo, Rubidium and Ammler who frequently give valuable
+input in form of advice and patches to this project. Last but not least
+thanks to all the NewGRF authors whose NewGRFs can be my playground for
+this project.
+
+
+
+--------------
+5 License
+--------------
+
+My Fancy NewGRF
+Copyright (C) 2011 planetmaker and others
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along
+with this NewGRF; if not, write to the Free Software Foundation, Inc.,
+51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.

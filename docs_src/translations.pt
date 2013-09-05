@@ -1,0 +1,47 @@
+<tal:page_with_sidebar_template define="page_with_sidebar_template load: page_with_sidebar_template.pt" metal:use-macro="page_with_sidebar_template">
+<div metal:fill-slot='sidebar_nav'>
+    <li class="nav-header">Help Translate Squid Ate FISH</li>
+    <li><a href="#status">Current Translation Status</a></li>
+    <li><a href="#translating">Get Started with Translating</a></li>
+</div>
+
+<div metal:fill-slot='body'>
+    <div class="page-header">
+        <h2>Help Translate Squid Ate FISH</h2>
+        <p>Squid Ate FISH has already been translated into multiple languages, and more translations are always welcome.</p>
+    </div>
+
+    <div id="status">
+        <h3>Current Translation Status</h3>
+        <p>See which languages Squid Ate FISH has been translated into, and how complete each translation is.</p>
+        <a class="btn btn-primary btn-large" href="http://bundles.openttdcoop.org/fish/push/LATEST/translations/">Translation Status Report</a>
+    </div>
+    <br />
+    <hr />
+
+    <div id="translating">
+        <h3>Get Started with Translating</h3>
+        <h4>1. Get a Language File</h4>
+        <p>Language files can be edited in any text editor that supports unicode.</p>
+        <p>To start a new translation from scratch get the base language file, which contains strings for the English (British) language.</p>
+        <a class="btn btn-primary" href="http://dev.openttdcoop.org/projects/fish/repository/entry/lang/english.lng">Get Base Language File</a>
+        <br />
+        <br />
+        <p>To update an existing translation, <a href="http://dev.openttdcoop.org/projects/fish/repository/show/lang">get an existing language file</a>.</p>
+        <br />
+
+        <h4>2. Translate Strings</h4>
+        <p>Change or update the strings to appropriate translations for the language.</p>
+        <p><a class="btn btn-info" href="http://dev.openttdcoop.org/projects/eints/repository/entry/docs/strings.rst">Detailed Guide to Translating</a></p>
+        <br />
+        <h4>3. Post Language File for Inclusion in FISH</h4>
+        <p>Post translated files into <a href="${metadata['dev_thread_url']}">this TT-forums thread</a>, or upload to the <a href="${metadata['issue_tracker']}">FISH issue tracker</a>.</p>
+        <br />
+        <h4>4. Have Cake</h4>
+        <p>Someone on the FISH team will include your translation as soon as they have time.</p>
+        <p>Thanks :)</p>
+        <br />
+    </div>
+
+</div>
+</tal:page_with_sidebar_template>

@@ -1,0 +1,38 @@
+<tal:main_template define="main_template load: main_template.pt" metal:use-macro="main_template">
+<div metal:fill-slot='body'>
+    <div class="span12">
+        <h2>Code Reference</h2>
+        <p>${len(ships)} ships</p>
+        <hr />
+        <tal:subclasses repeat="subclass doc_helper.get_ships_by_subclass()">
+            <tal:props_for_subclass define="props_to_print doc_helper.get_props_to_print_in_code_reference(subclass)">
+                <h4>${subclass.__name__} <small>Subclass</small></h4>
+                <p>${subclass.__doc__}</p>
+                <table style="font-size:84%;" class="table table-striped table-condensed table-bordered">
+                    <thead>
+                        <tr>
+                           <tal:props repeat="prop props_to_print[subclass]">
+                                <th style="background-color:#eee; vertical-align:top">${prop}</th>
+                            </tal:props>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tal:ships repeat="ship doc_helper.get_ships_by_subclass()[subclass]">
+                            <tr>
+                                <tal:props repeat="prop_name props_to_print[subclass]">
+                                    <td>${props_to_print[ship][prop_name]}</td>
+                                </tal:props>
+                                <tal:props2 repeat="prop dir(ship)">
+                                    <!--!${prop}-->
+                                </tal:props2>
+                            </tr>
+                        </tal:ships>
+                    </tbody>
+                </table>
+                <br />
+            </tal:props_for_subclass>
+        </tal:subclasses>
+    </div>
+
+</div>
+</tal:main_template>

@@ -1,0 +1,4 @@
+<!--! this is a convenient way to expose the global constants to templates -->
+<!--! can add anything else global for the templates here, although it's not common to need to -->
+<!--! to use, define this template as a macro at the head of the template where you wish to use the globals -->
+<tal:setup_globals define="global global_constants  import: global_constants;" />

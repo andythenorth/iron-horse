@@ -1,0 +1,90 @@
+<!--! this is the default template for ships that don't supply their own template -->
+
+${ship.render_debug_info()}
+
+// graphics
+template spriteset_template_${ship.id}(y) {
+    //[left_x,  upper_y,    width,      height,     offset_x,      offset_y]
+    [20,        y,          28,         89,          ${ship.offsets[0][0]}, ${ship.offsets[0][1]}]
+    [60,        y,          113,        66,          ${ship.offsets[1][0]}, ${ship.offsets[1][1]}]
+    [186,       y,          138,        48,          ${ship.offsets[2][0]}, ${ship.offsets[2][1]}]
+    [328,       y,          113,        66,          ${ship.offsets[3][0]}, ${ship.offsets[3][1]}]
+    [454,       y,          28,         89,          ${ship.offsets[4][0]}, ${ship.offsets[4][1]}]
+    [494,       y,          113,        66,          ${ship.offsets[5][0]}, ${ship.offsets[5][1]}]
+    [620,       y,          138,        48,          ${ship.offsets[6][0]}, ${ship.offsets[6][1]}]
+    [762,       y,          113,        66,          ${ship.offsets[7][0]}, ${ship.offsets[7][1]}]
+}
+
+<tal:sprites_random_variations repeat="variation_num python:range(ship.get_num_spritesets())">
+    spriteset(${ship.id}_ss_not_loaded_not_moving_${variation_num}, "src/graphics/${ship.id}_${variation_num}.png") {
+      spriteset_template_${ship.id}(10)
+    }
+    spriteset(${ship.id}_ss_not_loaded_moving_${variation_num}, "src/graphics/${ship.id}_${variation_num}.png") {
+      spriteset_template_${ship.id}(110)
+    }
+    spriteset(${ship.id}_ss_loaded_not_moving_${variation_num}, "src/graphics/${ship.id}_${variation_num}.png") {
+      spriteset_template_${ship.id}(510)
+    }
+    spriteset(${ship.id}_ss_loaded_moving_${variation_num}, "src/graphics/${ship.id}_${variation_num}.png") {
+      spriteset_template_${ship.id}(610)
+    }
+
+    spritegroup ${ship.id}_sg_moving_${variation_num} {
+        loaded:  [
+            ${ship.id}_ss_not_loaded_moving_${variation_num},
+            ${ship.id}_ss_loaded_moving_${variation_num},
+        ];
+        loading: [ // can't be loading when moving, but we'll overlook that, it's required by nml ;)
+            ${ship.id}_ss_not_loaded_moving_${variation_num},
+            ${ship.id}_ss_loaded_moving_${variation_num},
+        ];
+    }
+
+    spritegroup ${ship.id}_sg_not_moving_${variation_num} {
+        loaded:  [
+            ${ship.id}_ss_not_loaded_not_moving_${variation_num},
+            ${ship.id}_ss_loaded_not_moving_${variation_num},
+        ];
+        loading: [
+            ${ship.id}_ss_not_loaded_not_moving_${variation_num},
+            ${ship.id}_ss_loaded_not_moving_${variation_num},
+        ];
+    }
+
+    switch (FEAT_SHIPS, SELF, ${ship.id}_switch_graphics_${variation_num}, current_speed) {
+        0: return ${ship.id}_sg_not_moving_${variation_num};
+        return ${ship.id}_sg_moving_${variation_num};
+    }
+</tal:sprites_random_variations>
+
+<tal:include define="graphics_random_switches load: graphics_random_switches.pynml" metal:use-macro="graphics_random_switches" />
+
+// buy menu graphics
+
+template spriteset_template_purchase_${ship.id}() {
+    //[left_x,  upper_y,    width,      height,     offset_x,      offset_y]
+    [${ship.buy_menu_bb_xy[0]}, ${ship.buy_menu_bb_xy[1]}, ${ship.buy_menu_width}, 22, -${ship.buy_menu_width / 2}, -10]
+}
+
+spriteset(${ship.id}_ss_purchase, "src/graphics/${ship.id}_0.png") {
+  spriteset_template_purchase_${ship.id}()
+}
+
+spritegroup ${ship.id}_sg_purchase {
+    loaded:  [
+        ${ship.id}_ss_purchase,
+    ];
+    loading: [
+        ${ship.id}_ss_purchase,
+    ];
+}
+
+${ship.render_speed_switches()}
+
+${ship.render_autorefit()}
+
+${ship.render_cargo_capacity()}
+
+${ship.render_purchase_cargo_capacity()}
+
+${ship.render_properties()}
