@@ -1,0 +1,56 @@
+# Use glob syntax:
+syntax: glob
+
+# The local makefile should be ignored:
+Makefile.local
+
+# And the description file and the grfs and tars which are generated automatically
+iron-horse*.grf
+iron-horse*.tar
+iron-horse*.tar.zip
+
+# Ignore files and dirs generated automatically:
+fish.nml
+*.lng
+*.nfo
+*.cnfo
+*.cpnfo
+*.md5
+docs/*
+iron-horse/*
+custom_tags.txt
+.version
+chameleon_cache
+
+
+# Dependency files:
+Makefile.dep
+*.dep
+*.REV
+parsetab.py
+iron-horse.grf.cache
+iron-horse.grf.cacheindex
+
+
+
+# Ignore directories from bundle creation / install:
+fish-*
+
+#The .renum dir
+.renum
+
+# Ignore frequent development left-overs like
+# editor backups, patches, rejects etc. pp
+*.orig
+*.bak
+*.log
+*.rej
+*.diff
+
+# Files created by Mac image preview and file browser:
+.DS_Store
+Thumbs.db
+
+# Don't add python .pyc and .pyo files
+*.pyc
+*.pyo
