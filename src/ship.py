@@ -16,7 +16,7 @@ from chameleon import PageTemplateLoader # chameleon used in most template cases
 # setup the places we look for templates
 templates = PageTemplateLoader(os.path.join(currentdir, 'src', 'templates'))
 
-from ships import registered_ships
+from vehicles import registered_vehicles
 
 
 class Ship(object):
@@ -54,7 +54,7 @@ class Ship(object):
         # some project management stuff
         self.graphics_status = kwargs.get('graphics_status', None)
         # register ship with this module so other modules can use it
-        registered_ships.append(self)
+        registered_vehicles.append(self)
 
     def add_model_variant(self, intro_date, end_date, spritesheet_suffix):
         self.model_variants.append(ModelVariant(intro_date, end_date, spritesheet_suffix))
@@ -106,7 +106,7 @@ class Ship(object):
     def adjusted_model_life(self):
         # handles keeping the buy menu tidy, relies on magic from Eddi
         if self.replacement_id != None and self.replacement_id != '-none' and self.replacement_id != '':
-            for i in registered_ships:
+            for i in registered_vehicles:
                 if i.id == self.replacement_id:
                     model_life = i.intro_date - self.intro_date
                     return model_life + self.vehicle_life
