@@ -74,7 +74,7 @@ STR_UNIT_TONNES                                                 : tonnes
 STR_UNIT_ITEMS                                                  : items
 
 <!--! don't include any code below here in translated lang files (these are generated code blocks) -->
-<!--! ship names -->
-<tal:build_vehicle_names repeat="ship ships">
-STR_NAME_${ship.id}                                          :${ship.get_name_substr()} {STRING}
+<!--! vehicle names -->
+<tal:build_vehicle_names repeat="vehicle vehicles">
+STR_NAME_${vehicle.id}                                          :${vehicle.get_name_substr()} {STRING}
 </tal:build_vehicle_names>
