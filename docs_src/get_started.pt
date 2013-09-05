@@ -65,7 +65,7 @@
                 <h2>3. What Next?</h2>
 
                 <p class="lead">Find out more about Squid Ate FISH.  Or try it out in OpenTTD!</p>
-                <a class="btn btn-large btn-primary" href="ships.html">List of Ships</a>
+                <a class="btn btn-large btn-primary" href="trains.html">List of Ships</a>
                 <a class="btn btn-large" href="code_reference.html">Code Reference</a>
             </div>
             <hr />

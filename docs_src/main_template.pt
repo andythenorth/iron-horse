@@ -37,8 +37,8 @@
                     <li class="${doc_helper.get_active_nav(doc_name, 'get_started')}">
                         <a href="get_started.html">Get Started</a>
                     </li>
-                    <li class="${doc_helper.get_active_nav(doc_name, 'ships')}">
-                        <a href="ships.html">Ships</a>
+                    <li class="${doc_helper.get_active_nav(doc_name, 'trains')}">
+                        <a href="trains.html">Trains</a>
                     </li>
                     <li class="${doc_helper.get_active_nav(doc_name, 'code_reference')}">
                         <a href="code_reference.html">Code Reference</a>
@@ -62,7 +62,7 @@
                                  "");
 
             var random_image=images[Math.floor(Math.random()*images.length)];
-            document.write('<a href="ships.html#' + random_image + '"><img class="pull-right" style="margin-top:-30px; margin-bottom:0;" src="static/img/industries/'+ random_image +'.png"></a>')
+            document.write('<a href="trains.html#' + random_image + '"><img class="pull-right" style="margin-top:-30px; margin-bottom:0;" src="static/img/industries/'+ random_image +'.png"></a>')
         }
         random_img()
         </script>

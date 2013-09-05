@@ -50,12 +50,12 @@ base_lang_strings = utils.parse_base_lang()
 import fish
 from ship import Ship, Trawler, MixinRefittableCapacity
 
-ships = fish.get_ships_in_buy_menu_order()
-# default sort for docs is by ship intro date
-ships = sorted(ships, key=lambda ship: ship.intro_date)
+vehicles = fish.get_ships_in_buy_menu_order()
+# default sort for docs is by vehicle intro date
+vehicles = sorted(vehicles, key=lambda vehicle: vehicle.intro_date)
 
 metadata = {}
-dates = sorted([i.intro_date for i in ships])
+dates = sorted([i.intro_date for i in vehicles])
 metadata['dates'] = (dates[0], dates[-1])
 metadata['dev_thread_url'] = 'http://www.tt-forums.net/viewtopic.php?f=26&t=44613'
 metadata['repo_url'] = 'http://dev.openttdcoop.org/projects/fish/repository'
@@ -64,50 +64,50 @@ metadata['issue_tracker'] = 'http://dev.openttdcoop.org/projects/fish/issues'
 class DocHelper(object):
     # dirty class to help do some doc formatting
 
-    def get_ships_by_subclass(self):
-        ships_by_subclass = {}
-        for ship in ships:
-            subclass = type(ship)
-            if subclass in ships_by_subclass:
-                ships_by_subclass[subclass].append(ship)
+    def get_vehicles_by_subclass(self):
+        vehicles_by_subclass = {}
+        for vehicle in vehicles:
+            subclass = type(vehicle)
+            if subclass in vehicles_by_subclass:
+                vehicles_by_subclass[subclass].append(vehicle)
             else:
-                ships_by_subclass[subclass] = [ship]
-        return ships_by_subclass
+                vehicles_by_subclass[subclass] = [vehicle]
+        return vehicles_by_subclass
 
     def fetch_prop(self, result, prop_name, value):
-        result['ship'][prop_name] = value
+        result['vehicle'][prop_name] = value
         result['subclass_props'].append(prop_name)
         return result
 
     def get_props_to_print_in_code_reference(self, subclass):
         props_to_print = {}
-        for ship in self.get_ships_by_subclass()[subclass]:
-            result = {'ship':{}, 'subclass_props': []}
+        for vehicle in self.get_vehicles_by_subclass()[subclass]:
+            result = {'vehicle':{}, 'subclass_props': []}
 
-            result = self.fetch_prop(result, 'Ship Name', ship.get_name_substr() + base_lang_strings[ship.get_str_name_suffix()])
-            result = self.fetch_prop(result, 'Extra Info', base_lang_strings[ship.get_str_type_info()])
-            result = self.fetch_prop(result, 'Speed Laden', int(ship.speed))
-            result = self.fetch_prop(result, 'Speed Unladen', int(ship.speed_unladen))
-            result = self.fetch_prop(result, 'Canal Speed Fraction', ship.canal_speed)
-            result = self.fetch_prop(result, 'Ocean Speed Fraction', ship.ocean_speed)
-            result = self.fetch_prop(result, 'Intro Date', ship.intro_date)
-            result = self.fetch_prop(result, 'Vehicle Life', ship.vehicle_life)
-            result = self.fetch_prop(result, 'Replacement ID', ship.replacement_id)
-            result = self.fetch_prop(result, 'Capacity Pax', ship.capacity_pax)
-            result = self.fetch_prop(result, 'Capacity Mail', ship.capacity_mail)
-            result = self.fetch_prop(result, 'Capacity Freight', ship.capacity_freight)
-            if isinstance(ship, Trawler):
-                result = self.fetch_prop(result, 'Capacity Fish Holds', ship.capacity_fish_holds)
-            if isinstance(ship, MixinRefittableCapacity):
-                result = self.fetch_prop(result, 'Capacities Refittable', ', '.join(str(i) for i in ship.capacities_refittable))
-            result = self.fetch_prop(result, 'Gross Tonnage', ship.gross_tonnage)
-            result = self.fetch_prop(result, 'Buy Cost', ship.buy_cost)
-            result = self.fetch_prop(result, 'Running Cost', ship.running_cost)
-            result = self.fetch_prop(result, 'Loading Speed', ship.loading_speed)
-            result = self.fetch_prop(result, 'Model Variants', len(ship.model_variants))
-            result = self.fetch_prop(result, 'Graphics Status', ship.graphics_status)
+            result = self.fetch_prop(result, 'Vehicle Name', vehicle.get_name_substr() + base_lang_strings[vehicle.get_str_name_suffix()])
+            result = self.fetch_prop(result, 'Extra Info', base_lang_strings[vehicle.get_str_type_info()])
+            result = self.fetch_prop(result, 'Speed Laden', int(vehicle.speed))
+            result = self.fetch_prop(result, 'Speed Unladen', int(vehicle.speed_unladen))
+            result = self.fetch_prop(result, 'Canal Speed Fraction', vehicle.canal_speed)
+            result = self.fetch_prop(result, 'Ocean Speed Fraction', vehicle.ocean_speed)
+            result = self.fetch_prop(result, 'Intro Date', vehicle.intro_date)
+            result = self.fetch_prop(result, 'Vehicle Life', vehicle.vehicle_life)
+            result = self.fetch_prop(result, 'Replacement ID', vehicle.replacement_id)
+            result = self.fetch_prop(result, 'Capacity Pax', vehicle.capacity_pax)
+            result = self.fetch_prop(result, 'Capacity Mail', vehicle.capacity_mail)
+            result = self.fetch_prop(result, 'Capacity Freight', vehicle.capacity_freight)
+            if isinstance(vehicle, Trawler):
+                result = self.fetch_prop(result, 'Capacity Fish Holds', vehicle.capacity_fish_holds)
+            if isinstance(vehicle, MixinRefittableCapacity):
+                result = self.fetch_prop(result, 'Capacities Refittable', ', '.join(str(i) for i in vehicle.capacities_refittable))
+            result = self.fetch_prop(result, 'Gross Tonnage', vehicle.gross_tonnage)
+            result = self.fetch_prop(result, 'Buy Cost', vehicle.buy_cost)
+            result = self.fetch_prop(result, 'Running Cost', vehicle.running_cost)
+            result = self.fetch_prop(result, 'Loading Speed', vehicle.loading_speed)
+            result = self.fetch_prop(result, 'Model Variants', len(vehicle.model_variants))
+            result = self.fetch_prop(result, 'Graphics Status', vehicle.graphics_status)
 
-            props_to_print[ship] = result['ship']
+            props_to_print[vehicle] = result['vehicle']
             props_to_print[subclass] = result['subclass_props']
 
         return props_to_print
@@ -118,7 +118,7 @@ class DocHelper(object):
 def render_docs(doc_list, file_type, use_markdown=False):
     for doc_name in doc_list:
         template = docs_templates[doc_name + '.pt'] # .pt is the conventional extension for chameleon page templates
-        doc = template(ships=ships, repo_vars=repo_vars, base_lang_strings=base_lang_strings, metadata=metadata,
+        doc = template(vehicles=vehicles, repo_vars=repo_vars, base_lang_strings=base_lang_strings, metadata=metadata,
                        utils=utils, doc_helper=DocHelper(), doc_name=doc_name)
         if use_markdown:
             # the doc might be in markdown format, if so we need to render markdown to html, and wrap the result in some boilerplate html
@@ -136,7 +136,7 @@ def render_docs(doc_list, file_type, use_markdown=False):
 
 
 # render standard docs from a list
-html_docs = ['ships', 'code_reference', 'get_started', 'translations']
+html_docs = ['trains', 'code_reference', 'get_started', 'translations']
 txt_docs = ['license', 'readme']
 markdown_docs = ['changelog']
 

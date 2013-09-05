@@ -2,9 +2,9 @@
 <div metal:fill-slot='body'>
     <div class="span12">
         <h2>Code Reference</h2>
-        <p>${len(ships)} ships</p>
+        <p>${len(vehicles)} trains</p>
         <hr />
-        <tal:subclasses repeat="subclass doc_helper.get_ships_by_subclass()">
+        <tal:subclasses repeat="subclass doc_helper.get_vehicles_by_subclass()">
             <tal:props_for_subclass define="props_to_print doc_helper.get_props_to_print_in_code_reference(subclass)">
                 <h4>${subclass.__name__} <small>Subclass</small></h4>
                 <p>${subclass.__doc__}</p>
@@ -17,16 +17,16 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tal:ships repeat="ship doc_helper.get_ships_by_subclass()[subclass]">
+                        <tal:vehicles repeat="vehicle doc_helper.get_vehicles_by_subclass()[subclass]">
                             <tr>
                                 <tal:props repeat="prop_name props_to_print[subclass]">
-                                    <td>${props_to_print[ship][prop_name]}</td>
+                                    <td>${props_to_print[vehicle][prop_name]}</td>
                                 </tal:props>
-                                <tal:props2 repeat="prop dir(ship)">
+                                <tal:props2 repeat="prop dir(vehicle)">
                                     <!--!${prop}-->
                                 </tal:props2>
                             </tr>
-                        </tal:ships>
+                        </tal:vehicles>
                     </tbody>
                 </table>
                 <br />

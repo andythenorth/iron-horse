@@ -2,26 +2,26 @@
 <div metal:fill-slot='body'>
 
     <div class="span12">
-        <h2>${len(ships)} ships for OpenTTD</h2>
+        <h2>${len(vehicles)} trains for OpenTTD</h2>
         <hr />
         <table class="table table-striped tablesorter">
             <thead>
                 <tr>
-                    <th>Ship Name</th>
+                    <th>Vehicle Name</th>
                     <th class="number">Intro Date</th>
                     <th>Extra Info</th>
                     <th>Speed</th>
                 </tr>
             </thead>
             <tbody>
-                <tal:build_ships_list repeat="ship ships">
+                <tal:build_vehicles_list repeat="vehicle vehicles">
                     <tr>
-                        <td>${ship.get_name_substr()} ${base_lang_strings[ship.get_str_name_suffix()]}</td>
-                        <td class="number">${ship.intro_date}</td>
-                        <td>${base_lang_strings[ship.get_str_type_info()]}</td>
-                        <td>${int(ship.speed)} mph</td>
+                        <td>${vehicle.get_name_substr()} ${base_lang_strings[vehicle.get_str_name_suffix()]}</td>
+                        <td class="number">${vehicle.intro_date}</td>
+                        <td>${base_lang_strings[vehicle.get_str_type_info()]}</td>
+                        <td>${int(vehicle.speed)} mph</td>
                     </tr>
-                </tal:build_ships_list>
+                </tal:build_vehicles_list>
             </tbody>
         </table>
     </div>

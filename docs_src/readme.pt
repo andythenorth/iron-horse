@@ -1,6 +1,6 @@
 --- THIS README NEEDS RE-WRITING :o ---
 
-<tal:build_ships_list repeat="ship ships">${ship.title} ${' ' * (28-len(ship.title))} Introduced: ${ship.intro_date}; Speed: ${ship.speed}mph</tal:build_ships_list>
+<tal:build_vehicles_list repeat="vehicle vehicles">${vehicle.title} ${' ' * (28-len(vehicle.title))} Introduced: ${vehicle.intro_date}; Speed: ${vehicle.speed}mph</tal:build_vehicles_list>
 
 My Fancy NewGRF Name
 -----------------------------------
