@@ -41,7 +41,7 @@ filenames = ['altamira_freighter.py',
 
 
 def move_property(filename):
-    file = open(os.path.join('src','ships',filename),'r')
+    file = open(os.path.join('src','vehicles',filename),'r')
     content = file.readlines()
 
     for line in content:
@@ -55,12 +55,12 @@ def move_property(filename):
     content.insert(insert_position+1, cut_line)
     #print ''.join(content)
 
-    file = open(os.path.join('src','ships',filename),'w')
+    file = open(os.path.join('src','vehicles',filename),'w')
     file.write(''.join(content))
     file.close
 
 def insert_property(filename):
-    file = open(os.path.join('src','ships',filename),'r')
+    file = open(os.path.join('src','vehicles',filename),'r')
     content = file.readlines()
 
     for line in content:
@@ -70,7 +70,7 @@ def insert_property(filename):
     content.insert(insert_position+1, line_to_insert)
     #print ''.join(content)
 
-    file = open(os.path.join('src','ships',filename),'w')
+    file = open(os.path.join('src','vehicles',filename),'w')
     file.write(''.join(content))
     file.close
 

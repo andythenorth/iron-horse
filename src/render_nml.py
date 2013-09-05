@@ -19,10 +19,10 @@ import global_constants
 # get args passed by makefile
 repo_vars = utils.get_repo_vars(sys)
 
-vehicles = fish.get_ships_in_buy_menu_order()
+vehicles = fish.get_vehicles_in_buy_menu_order()
 
 grf_nml = codecs.open(os.path.join('iron-horse.nml'),'w','utf8')
-header_items = ['header', 'cargo_table', 'disable_default_ships']
+header_items = ['header', 'cargo_table', 'disable_default_vehicles']
 for header_item in header_items:
     template = templates[header_item + '.pynml']
     templated_nml = utils.unescape_chameleon_output(template(vehicles=vehicles, global_constants=global_constants,

@@ -50,7 +50,7 @@ base_lang_strings = utils.parse_base_lang()
 import fish
 from ship import Ship, Trawler, MixinRefittableCapacity
 
-vehicles = fish.get_ships_in_buy_menu_order()
+vehicles = fish.get_vehicles_in_buy_menu_order()
 # default sort for docs is by vehicle intro date
 vehicles = sorted(vehicles, key=lambda vehicle: vehicle.intro_date)
 

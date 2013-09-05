@@ -60,15 +60,15 @@ from vehicles import whitgift_freight_barge
 from vehicles import yokohama_tanker
 
 
-def get_ships_in_buy_menu_order():
-    sorted_ships = []
+def get_vehicles_in_buy_menu_order():
+    sorted_vehicles = []
     for id in global_constants.buy_menu_sort_order:
         found = False
-        for ship in registered_vehicles:
-            if ship.id == id:
-                sorted_ships.append(ship)
+        for vehicle in registered_vehicles:
+            if vehicle.id == id:
+                sorted_vehicles.append(vehicle)
                 found = True
         if not found:
             utils.echo_message("Warning: vehicle " + id + " in buy_menu_sort_order, but not found in registered_vehicles")
-    return sorted_ships
+    return sorted_vehicles
 
