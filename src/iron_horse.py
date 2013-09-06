@@ -32,7 +32,6 @@ from vehicles import altamira_freighter
 from vehicles import cape_spear_trawler
 from vehicles import capo_sandalo_vehicle_ferry
 from vehicles import castle_point_steamer
-from vehicles import eddystone_tanker
 
 
 def get_vehicles_in_buy_menu_order():

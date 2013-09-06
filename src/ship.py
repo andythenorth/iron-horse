@@ -235,42 +235,6 @@ class GeneralCargoVessel(Ship):
         self.default_cargo_capacity = self.capacity_freight
 
 
-class LivestockCarrier(MixinRefittableCapacity, Ship):
-    """
-    Special type for livestock (as you might guess).
-    """
-    def __init__(self, id, **kwargs):
-        super(LivestockCarrier, self).__init__(id, **kwargs)
-        self.template = 'ship.pynml'
-        self.class_refit_groups = ['empty']
-        self.label_refits_allowed = ['LVST'] # set to livestock by default, don't need to make it refit
-        self.label_refits_disallowed = []
-        self.capacities_refittable = kwargs.get('capacities_refittable', None)
-        self.capacity_freight = self.capacities_refittable[0]
-        self.cargo_units_buy_menu = 'STR_QUANTITY_LIVESTOCK'
-        self.cargo_units_refit_menu = 'STR_UNIT_ITEMS'
-        self.default_cargo = 'LVST'
-        self.default_cargo_capacity = self.capacities_refittable[0]
-
-
-class LogTug(MixinRefittableCapacity, Ship):
-    """
-    Specialist type for hauling logs only, has some specialist refit and speed behaviours.
-    """
-    def __init__(self, id, **kwargs):
-        super(LogTug, self).__init__(id, **kwargs)
-        self.template = 'log_tug.pynml'
-        self.class_refit_groups = ['empty']
-        self.label_refits_allowed = ['WOOD']
-        self.label_refits_disallowed = []
-        self.capacities_refittable = kwargs.get('capacities_refittable', None)
-        self.capacity_freight = self.capacities_refittable[0]
-        self.cargo_units_buy_menu = 'STR_QUANTITY_WOOD'
-        self.cargo_units_refit_menu = 'STR_UNIT_TONNES'
-        self.default_cargo = 'WOOD'
-        self.default_cargo_capacity = self.capacities_refittable[0]
-
-
 class PacketBoat(Ship):
     """
     A relatively fast vessel type for passengers, mail, and express freight.
@@ -335,35 +299,3 @@ class Trawler(Ship):
         return buy_menu_template.substitute(str_type_info=self.get_str_type_info(), capacity_pax=self.capacity_pax,
                                             capacity_mail=self.capacity_mail, capacity_deck_cargo=self.capacity_deck_cargo,
                                             capacity_fish_holds=self.capacity_fish_holds)
-
-
-class Tanker(Ship):
-    """
-    Ronseal ("does what it says on the tin", for those without extensive knowledge of UK advertising).
-    """
-    def __init__(self, id, **kwargs):
-        super(Tanker, self).__init__(id, **kwargs)
-        self.template = 'tanker.pynml'
-        self.class_refit_groups = ['liquids']
-        self.label_refits_allowed = [] # no specific labels needed, tanker refits most cargos that have liquid class
-        self.label_refits_disallowed = ['MILK'] # milk isn't shipped by tanker
-        self.capacity_tanks = kwargs.get('capacity_tanks', None)
-        self.capacity_freight = self.capacity_tanks
-        self.default_cargo = 'OIL_'
-        self.default_cargo_capacity = self.capacity_freight
-
-
-class ContainerCarrier(Ship):
-    """
-    Refits to limited range of freight cargos, shows container graphics according to load state.
-    """
-    def __init__(self, id, **kwargs):
-        super(ContainerCarrier, self).__init__(id, **kwargs)
-        self.template = 'container_carrier.pynml'
-        self.class_refit_groups = ['express_freight','packaged_freight']
-        self.label_refits_allowed = ['FRUT','WATR']
-        self.label_refits_disallowed = ['FISH','LVST','OIL_','TOUR','WOOD']
-        self.capacity_freight = kwargs.get('capacity_cargo_holds', None)
-        self.default_cargo = 'GOOD'
-        self.default_cargo_capacity = self.capacity_freight
-
