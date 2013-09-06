@@ -3,7 +3,7 @@ def get_repo_vars(sys):
     if len(sys.argv) > 1:
         repo_vars = {'repo_title' : sys.argv[1], 'repo_version' : sys.argv[2]}
     else: # provide some defaults so templates don't explode when testing python script without command line args
-        repo_vars = {'repo_title' : 'FISH - compiled without makefile', 'repo_version' : 1}
+        repo_vars = {'repo_title' : 'Iron Horse - compiled without makefile', 'repo_version' : 1}
     return repo_vars
 
 def unescape_chameleon_output(escaped_nml):
@@ -15,8 +15,7 @@ def unescape_chameleon_output(escaped_nml):
     return escaped_nml
 
 def parse_base_lang():
-    print "[PARSE BASE LANG] utils.py"
-
+    # expose base lang strings to python - for reuse in docs
     import os.path
     currentdir = os.curdir
 

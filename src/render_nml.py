@@ -12,14 +12,14 @@ from chameleon import PageTemplateLoader # chameleon used in most template cases
 # setup the places we look for templates
 templates = PageTemplateLoader(os.path.join(currentdir, 'src', 'templates'))
 
-import fish
+import iron_horse
 import utils
 import global_constants
 
 # get args passed by makefile
 repo_vars = utils.get_repo_vars(sys)
 
-vehicles = fish.get_vehicles_in_buy_menu_order()
+vehicles = iron_horse.get_vehicles_in_buy_menu_order()
 
 grf_nml = codecs.open(os.path.join('iron-horse.nml'),'w','utf8')
 header_items = ['header', 'cargo_table', 'disable_default_vehicles']

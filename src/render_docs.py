@@ -6,7 +6,7 @@
   Iron Horse is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
   See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with Iron Horse. If not, see <http://www.gnu.org/licenses/>.
 """
-print "[PYTHON] render docs"
+print "[RENDER DOCS] render_docs.py"
 
 import codecs # used for writing files - more unicode friendly than standard open() module
 
@@ -47,10 +47,10 @@ repo_vars = utils.get_repo_vars(sys)
 # get the strings from base lang file so they can be used in docs
 base_lang_strings = utils.parse_base_lang()
 
-import fish
+import iron_horse
 from ship import Ship, Trawler, MixinRefittableCapacity
 
-vehicles = fish.get_vehicles_in_buy_menu_order()
+vehicles = iron_horse.get_vehicles_in_buy_menu_order()
 # default sort for docs is by vehicle intro date
 vehicles = sorted(vehicles, key=lambda vehicle: vehicle.intro_date)
 

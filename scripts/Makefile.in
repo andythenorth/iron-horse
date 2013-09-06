@@ -1,14 +1,14 @@
 # Here also go all build targets specific to this very newgrf
 
-GENERATE_NML := fish-nml
-GENERATE_LNG := fish-nml
-GENERATE_DOC := fish-nml
+GENERATE_NML := iron-horse-nml
+GENERATE_LNG := iron-horse-nml
+GENERATE_DOC := iron-horse-nml
 
-GENERATE=src/build_fish.py
+GENERATE=src/build_iron_horse.py
 
-fish-nml:
+iron-horse-nml:
 	$(_E) [GENERATE]
-	$(_V) python src/build_fish.py '${REPO_TITLE}' '${REPO_REVISION}'
+	$(_V) python src/build_iron_horse.py '${REPO_TITLE}' '${REPO_REVISION}'
 
 clean::
 	$(_V)-rm fish.nml
