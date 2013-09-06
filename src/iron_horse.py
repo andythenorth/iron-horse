@@ -29,35 +29,10 @@ from ship import Ship
 from vehicles import registered_vehicles
 
 from vehicles import altamira_freighter
-from vehicles import barletta_paddle_steamer
 from vehicles import cape_spear_trawler
 from vehicles import capo_sandalo_vehicle_ferry
 from vehicles import castle_point_steamer
 from vehicles import eddystone_tanker
-from vehicles import endeavour_utility_catamaran
-from vehicles import enoshima_catamaran_ferry
-from vehicles import fastnet_paddle_steamer
-from vehicles import feodosiya_hydrofoil
-from vehicles import fish_island_trawler
-from vehicles import frisco_bay_freighter
-from vehicles import harbour_point_utility_vessel
-from vehicles import hopetown_tanker
-from vehicles import lindau_freight_barge
-from vehicles import little_cumbrae_freighter
-from vehicles import marstein_freighter
-from vehicles import maspalomas_freighter
-from vehicles import matsushima_hydrofoil
-from vehicles import mount_blaze_catamaran_ferry
-from vehicles import nieuwpoort_container_feeder
-from vehicles import patos_island_vehicle_ferry
-from vehicles import pine_island_log_tug
-from vehicles import saint_marie_barge_tug
-from vehicles import santorini_freighter
-from vehicles import shark_island_livestock_ship
-from vehicles import sunk_rock_ferry
-from vehicles import thunder_bay_hovercraft
-from vehicles import whitgift_freight_barge
-from vehicles import yokohama_tanker
 
 
 def get_vehicles_in_buy_menu_order():
