@@ -12,6 +12,7 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
         power:                          1000;
         speed:                          ${vehicle.speed}mph;
         weight:                         100ton;
+        tractive_effort_coefficient:    1;
         cost_factor:                    ${vehicle.buy_cost};
         running_cost_factor:            ${vehicle.running_cost};
         refit_cost:                     0;
