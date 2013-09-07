@@ -227,3 +227,4 @@ class PassengerCar(Train):
         self.label_refits_disallowed = []
         self.default_cargo = 'PASS'
         self.default_cargo_capacity = self.capacity_pax
+        self.speed = 75
