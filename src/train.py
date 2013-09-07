@@ -45,7 +45,7 @@ class Train(object):
         self.capacity_freight = kwargs.get('capacity_freight', 0)
         # create a structure to hold model variants
         self.model_variants = []
-        # set defaults for props otherwise set by subclass as needed (not set by specific model)
+        # set defaults for props otherwise set by subclass as needed (not set by kwargs as specific models do not over-ride them)
         self.default_cargo = 'PASS' # over-ride in subclass as needed
         self.class_refit_groups = []
         self.label_refits_allowed = [] # no specific labels needed
