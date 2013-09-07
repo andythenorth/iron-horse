@@ -1,5 +1,5 @@
 import global_constants
-from ship import Train, GeneralCargoVessel
+from train import Train, GeneralCargoVessel
 
 vehicle = GeneralCargoVessel(id = 'altamira_freighter',
             numeric_id = 190,

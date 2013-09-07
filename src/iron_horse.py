@@ -24,8 +24,8 @@ else: # provide some defaults so templates don't explode when testing python scr
 
 print "[IMPORT VEHICLES] iron_horse.py"
 
-import ship
-from ship import Train
+import train
+from train import Train
 from vehicles import registered_vehicles
 
 from vehicles import altamira_freighter

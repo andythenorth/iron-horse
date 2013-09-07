@@ -1,5 +1,5 @@
 import global_constants
-from ship import Train, Trawler
+from train import Train, Trawler
 
 vehicle = Trawler(id = 'cape_spear_trawler',
             numeric_id = 140,
