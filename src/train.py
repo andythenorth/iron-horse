@@ -47,6 +47,8 @@ class Train(object):
         self.class_refit_groups = []
         self.label_refits_allowed = [] # no specific labels needed
         self.label_refits_disallowed = []
+        self.visual_effect = 'VISUAL_EFFECT_DIESEL' # nml constant for DIESEL
+        self.visual_effect_offset = 0
         # create a structure to hold model variants
         self.model_variants = []
         # some project management stuff
