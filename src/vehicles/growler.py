@@ -3,7 +3,7 @@ from train import Train, DieselLoco
 
 vehicle = DieselLoco(id = 'growler',
             numeric_id = 190,
-            title = 'Growler [Freighter]',
+            title = 'Growler [Diesel]',
             capacity_cargo_holds = 20,
             replacement_id = '-none',
             buy_cost = 22,

@@ -3,7 +3,7 @@ from train import Train, PassengerCar
 
 vehicle = PassengerCar(id = 'passenger_car',
             numeric_id = 10,
-            title = '[Freighter]',
+            title = 'Passenger [Car]',
             capacity_pax = 20,
             replacement_id = '-none',
             buy_cost = 22,

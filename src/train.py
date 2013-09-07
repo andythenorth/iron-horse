@@ -47,11 +47,11 @@ class Train(object):
         # create a structure to hold model variants
         self.model_variants = []
         # set defaults for props otherwise set by subclass as needed (not set by kwargs as specific models do not over-ride them)
-        self.default_cargo = 'PASS' # over-ride in subclass as needed
+        self.default_cargo = 'PASS' # over-ride in subclass as needed (PASS is sane default)
         self.class_refit_groups = []
         self.label_refits_allowed = [] # no specific labels needed
         self.label_refits_disallowed = []
-        self.engine_class = 'ENGINE_CLASS_STEAM' # nml constant
+        self.engine_class = 'ENGINE_CLASS_STEAM' # nml constant (STEAM is sane default)
         self.visual_effect = 'VISUAL_EFFECT_DISABLE' # nml constant
         self.visual_effect_offset = 0
         # some project management stuff
