@@ -38,7 +38,8 @@ class Train(object):
         self.buy_menu_width = kwargs.get('buy_menu_width', None)
         self.offsets = kwargs.get('offsets', None)
         self.power = kwargs.get('power', 0)
-        self.speed = kwargs.get('speed', None)
+        self.speed = kwargs.get('speed', 0)
+        self.weight = kwargs.get('speed', None)
         # declare capacities for pax, mail and freight, as they are needed later for nml switches
         self.capacity_pax = kwargs.get('capacity_pax', 0)
         self.capacity_mail = kwargs.get('capacity_mail', 0)
