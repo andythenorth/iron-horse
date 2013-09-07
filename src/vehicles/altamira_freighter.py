@@ -4,7 +4,7 @@ from train import Train, GeneralCargoVessel
 vehicle = GeneralCargoVessel(id = 'altamira_freighter',
             numeric_id = 190,
             title = 'Altamira [Freighter]',
-            capacity_cargo_holds = 360,
+            capacity_cargo_holds = 20,
             replacement_id = '-none',
             buy_cost = 22,
             fixed_run_cost_factor = 3.5,
