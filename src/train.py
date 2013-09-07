@@ -82,19 +82,6 @@ class Train(object):
     def get_num_spritesets(self):
         return len(set([i.spritesheet_suffix for i in self.model_variants]))
 
-    def get_speeds_adjusted_for_load_amount(self, speed_index):
-        # ships may travel faster or slower than 'speed' depending on cargo amount
-        speeds_adjusted = (
-            ((self.speed_unladen * 100 + self.speed * 0) * 32 + 9) / 1000,
-            ((self.speed_unladen * 75 + self.speed * 25) * 32 + 9) / 1000,
-            ((self.speed_unladen * 50 + self.speed * 50) * 32 + 9) / 1000,
-            ((self.speed_unladen * 25 + self.speed * 75) * 32 + 9) / 1000,
-            ((self.speed_unladen * 0 + self.speed * 100) * 32 + 9) / 1000,
-        )
-        speed_factors = [0.67, 1, 1.33] # there is a speed adjustment parameter, use that to look up a speed factor
-        speeds_adjusted_rounded = [int(math.ceil(i * speed_factors[speed_index])) for i in speeds_adjusted] # allow that integer maths is needed for newgrf cb results; rounding up for safety
-        return speeds_adjusted_rounded
-
     @property
     def adjusted_model_life(self):
         # handles keeping the buy menu tidy, relies on magic from Eddi
@@ -165,10 +152,6 @@ class Train(object):
         template = templates["train_properties.pynml"]
         return template(vehicle=self)
 
-    def render_speed_switches(self):
-        template = templates["speed_switches.pynml"]
-        return template(vehicle=self)
-
     def render_autorefit(self):
         template = templates["autorefit_any.pynml"]
         return template(vehicle=self)
@@ -213,12 +196,12 @@ class ModelVariant(object):
         self.spritesheet_suffix = spritesheet_suffix # use digits for these - to match spritesheet filenames
 
 
-class GeneralCargoVessel(Train):
+class DieselLoco(Train):
     """
-    General purpose freight vessel type. No pax or mail cargos, refits any other cargo including liquids (in barrels or containers).
+    Diesel Locomotive.
     """
     def __init__(self, id, **kwargs):
-        super(GeneralCargoVessel, self).__init__(id, **kwargs)
+        super(DieselLoco, self).__init__(id, **kwargs)
         self.template = 'train.pynml'
         self.class_refit_groups = ['all_freight']
         self.label_refits_allowed = [] # no specific labels needed, GCV refits all freight
@@ -226,69 +209,3 @@ class GeneralCargoVessel(Train):
         self.capacity_freight = kwargs.get('capacity_cargo_holds', None)
         self.default_cargo = 'COAL'
         self.default_cargo_capacity = self.capacity_freight
-
-
-class PacketBoat(Train):
-    """
-    A relatively fast vessel type for passengers, mail, and express freight.
-    """
-    def __init__(self, id, **kwargs):
-        super(PacketBoat, self).__init__(id, **kwargs)
-        self.template = 'train.pynml'
-        self.class_refit_groups = ['pax_mail','express_freight']
-        self.label_refits_allowed = ['BDMT','FRUT','LVST','VEHI','WATR']
-        self.label_refits_disallowed = ['FISH'] # don't go fishing with packet boats, use a trawler instead :P
-        self.capacity_cargo_holds = kwargs.get('capacity_cargo_holds', 0)
-        self.capacity_freight = self.capacity_cargo_holds
-        self.default_cargo = 'PASS'
-        self.default_cargo_capacity = self.capacity_pax
-
-    def get_buy_menu_string(self):
-        # set buy menu text, with various variations
-        cargo_units = None # only used when needed
-        buy_menu_template = Template(
-            "string(STR_BUY_MENU_TEXT, string(${str_type_info}), string(STR_BUY_MENU_REFIT_CAPACITIES_PACKET,${capacity_mail},${capacity_cargo_holds}))"
-        )
-        return buy_menu_template.substitute(str_type_info=self.get_str_type_info(), capacity_pax=self.capacity_pax,
-                                            capacity_mail=self.capacity_mail, capacity_cargo_holds=self.capacity_cargo_holds)
-
-
-class Hydrofoil(Train):
-    """
-    Fast vessel type for passengers and mail only, graphics vary by speed (to show hydrofoil in / out of water).
-    """
-    def __init__(self, id, **kwargs):
-        super(Hydrofoil, self).__init__(id, **kwargs)
-        self.template = 'hydrofoil.pynml'
-        self.class_refit_groups = ['pax_mail']
-        self.label_refits_allowed = []
-        self.label_refits_disallowed = []
-        self.default_cargo = 'PASS'
-        self.default_cargo_capacity = self.capacity_pax
-
-
-class Trawler(Train):
-    """
-    Similar type to a packet boat, but needs to go fishing, so has special fish holds for that.
-    """
-    def __init__(self, id, **kwargs):
-        super(Trawler, self).__init__(id, **kwargs)
-        self.template = 'train.pynml'
-        self.class_refit_groups = ['pax_mail','express_freight']
-        self.label_refits_allowed = ['BDMT','FISH', 'FRUT','LVST','VEHI','WATR']
-        self.label_refits_disallowed = []
-        self.capacity_deck_cargo = kwargs.get('capacity_deck_cargo', None)
-        self.capacity_freight = self.capacity_deck_cargo
-        self.capacity_fish_holds = kwargs.get('capacity_fish_holds', None)
-        self.default_cargo = 'FISH'
-        self.default_cargo_capacity = self.capacity_fish_holds
-
-    def get_buy_menu_string(self):
-        # set buy menu text, with various variations
-        cargo_units = None # only used when needed
-        buy_menu_template = Template(
-                "string(STR_BUY_MENU_TEXT, string(${str_type_info}), string(STR_BUY_MENU_REFIT_CAPACITIES_TRAWLER,${capacity_pax},${capacity_mail},${capacity_fish_holds},${capacity_deck_cargo}))"
-        )
-        return buy_menu_template.substitute(str_type_info=self.get_str_type_info(), capacity_pax=self.capacity_pax,
-                                            capacity_mail=self.capacity_mail, capacity_deck_cargo=self.capacity_deck_cargo,
-                                            capacity_fish_holds=self.capacity_fish_holds)

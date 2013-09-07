@@ -1,7 +1,7 @@
 import global_constants
-from train import Train, GeneralCargoVessel
+from train import Train, DieselLoco
 
-vehicle = GeneralCargoVessel(id = 'growler',
+vehicle = DieselLoco(id = 'growler',
             numeric_id = 190,
             title = 'Growler [Freighter]',
             capacity_cargo_holds = 20,
