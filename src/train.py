@@ -43,14 +43,15 @@ class Train(object):
         self.capacity_pax = kwargs.get('capacity_pax', 0)
         self.capacity_mail = kwargs.get('capacity_mail', 0)
         self.capacity_freight = kwargs.get('capacity_freight', 0)
+        # create a structure to hold model variants
+        self.model_variants = []
+        # set defaults for props otherwise set by subclass as needed (not set by specific model)
         self.default_cargo = 'PASS' # over-ride in subclass as needed
         self.class_refit_groups = []
         self.label_refits_allowed = [] # no specific labels needed
         self.label_refits_disallowed = []
-        self.visual_effect = 'VISUAL_EFFECT_DIESEL' # nml constant for DIESEL
+        self.visual_effect = 'VISUAL_EFFECT_DISABLE' # nml constant
         self.visual_effect_offset = 0
-        # create a structure to hold model variants
-        self.model_variants = []
         # some project management stuff
         self.graphics_status = kwargs.get('graphics_status', None)
         # register vehicle with this module so other modules can use it
@@ -212,6 +213,7 @@ class DieselLoco(Train):
         self.template = 'train.pynml'
         self.default_cargo_capacity = 0
         self.power = 1750
+        self.visual_effect = 'VISUAL_EFFECT_DIESEL' # nml constant
 
 class PassengerCar(Train):
     """
