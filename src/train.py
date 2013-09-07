@@ -42,6 +42,10 @@ class Train(object):
         self.capacity_pax = kwargs.get('capacity_pax', 0)
         self.capacity_mail = kwargs.get('capacity_mail', 0)
         self.capacity_freight = kwargs.get('capacity_freight', 0) # over-ride in subclass as needed
+        self.default_cargo = None
+        self.class_refit_groups = []
+        self.label_refits_allowed = [] # no specific labels needed
+        self.label_refits_disallowed = []
         # create a structure to hold model variants
         self.model_variants = []
         # some project management stuff
@@ -203,12 +207,7 @@ class DieselLoco(Train):
     def __init__(self, id, **kwargs):
         super(DieselLoco, self).__init__(id, **kwargs)
         self.template = 'train.pynml'
-        self.class_refit_groups = ['all_freight']
-        self.label_refits_allowed = [] # no specific labels needed, GCV refits all freight
-        self.label_refits_disallowed = ['TOUR']
-        self.capacity_freight = kwargs.get('capacity_cargo_holds', None)
-        self.default_cargo = 'COAL'
-        self.default_cargo_capacity = self.capacity_freight
+        self.default_cargo_capacity = 0
 
 class PassengerCar(Train):
     """
