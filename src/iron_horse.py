@@ -29,6 +29,7 @@ from train import Train
 from vehicles import registered_vehicles
 
 from vehicles import growler
+from vehicles import passenger_car
 
 def get_vehicles_in_buy_menu_order():
     sorted_vehicles = []
@@ -40,5 +41,9 @@ def get_vehicles_in_buy_menu_order():
                 found = True
         if not found:
             utils.echo_message("Warning: vehicle " + id + " in buy_menu_sort_order, but not found in registered_vehicles")
+    for vehicle in registered_vehicles:
+        id = vehicle.id
+        if id not in global_constants.buy_menu_sort_order:
+            utils.echo_message("Warning: vehicle " + id + " in registered_vehicles, but not in buy_menu_sort_order - won't show in game")
     return sorted_vehicles
 

@@ -209,3 +209,16 @@ class DieselLoco(Train):
         self.capacity_freight = kwargs.get('capacity_cargo_holds', None)
         self.default_cargo = 'COAL'
         self.default_cargo_capacity = self.capacity_freight
+
+class PassengerCar(Train):
+    """
+    Passenger Carriage.
+    """
+    def __init__(self, id, **kwargs):
+        super(PassengerCar, self).__init__(id, **kwargs)
+        self.template = 'train.pynml'
+        self.class_refit_groups = ['pax']
+        self.label_refits_allowed = [] # no specific labels needed
+        self.label_refits_disallowed = []
+        self.default_cargo = 'PASS'
+        self.default_cargo_capacity = self.capacity_pax

@@ -1,9 +1,9 @@
-buy_menu_sort_order = ['growler']
+buy_menu_sort_order = ['growler', 'passenger_car']
 
 # shared lists of allowed classes, shared across multiple ship types
 base_refits_by_class = {'empty': [],
                        'all_freight': ['CC_BULK', 'CC_PIECE_GOODS', 'CC_EXPRESS', 'CC_LIQUID', 'CC_ARMOURED', 'CC_REFRIGERATED', 'CC_COVERED', 'CC_NON_POURABLE'],
-                       'pax_mail': ['CC_PASSENGERS','CC_MAIL'],
+                       'pax': ['CC_PASSENGERS'],
                        'liquids': ['CC_LIQUID'],
                        'packaged_freight': ['CC_PIECE_GOODS', 'CC_EXPRESS', 'CC_ARMOURED', 'CC_LIQUID'],
                        'express_freight': ['CC_EXPRESS','CC_ARMOURED']}
