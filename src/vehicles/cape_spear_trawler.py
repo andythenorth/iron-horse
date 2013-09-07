@@ -1,7 +1,7 @@
 import global_constants
-from ship import Ship, Trawler
+from ship import Train, Trawler
 
-ship = Trawler(id = 'cape_spear_trawler',
+vehicle = Trawler(id = 'cape_spear_trawler',
             numeric_id = 140,
             title = 'Cape Spear [Trawler]',
             capacity_pax = 40,
@@ -26,6 +26,6 @@ ship = Trawler(id = 'cape_spear_trawler',
             gross_tonnage = 84,
             graphics_status = 'Done',)
 
-ship.add_model_variant(intro_date=0,
+vehicle.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,
                        spritesheet_suffix=0)

@@ -1,0 +1,46 @@
+// -- print some of the vehicle non-nml properties to aid debugging -- //
+// [no properties printed]
+
+item(FEAT_SHIPS, ${vehicle.id}, ${vehicle.numeric_id}) {
+    property {
+        name:                           ${vehicle.get_name()};
+        climates_available:             ALL_CLIMATES; // nml constant
+        sound_effect:                   ${('SOUND_SHIP_HORN','SOUND_FERRY_HORN')[vehicle.default_cargo=='PASS']};
+        <!--! visual_effect:                  visual_effect(VISUAL_EFFECT_DIESEL, ${vehicle.smoke_offset}); // nml constant for DIESEL-->
+        introduction_date:              date(${vehicle.intro_date},01,01); // vehicle just supplies intro year - openttd randomises intro dates a bit anyway
+        cargo_capacity:                 ${vehicle.default_cargo_capacity};
+        sprite_id:                      SPRITE_ID_NEW_SHIP; //enable new graphics - nml constant
+        speed:                          ${vehicle.speed}mph;
+        ocean_speed_fraction:           ${vehicle.ocean_speed};
+        canal_speed_fraction:           ${vehicle.canal_speed};
+        cost_factor:                    ${vehicle.buy_cost};
+        running_cost_factor:            ${vehicle.running_cost};
+        refit_cost:                     0;
+        is_refittable:                  1;
+        refittable_cargo_classes:       bitmask(${vehicle.refittable_classes});
+        non_refittable_cargo_classes:   bitmask(); // don't set non-refittable classes, increases likelihood of breaking cargo support
+        cargo_allow_refit:              [${vehicle.get_label_refits_allowed()}];
+        cargo_disallow_refit:           [${vehicle.get_label_refits_disallowed()}];
+        default_cargo_type:             ${vehicle.default_cargo};
+        loading_speed:                  ${vehicle.loading_speed};
+        misc_flags:                     bitmask(SHIP_FLAG_2CC, SHIP_FLAG_AUTOREFIT); // nml constants
+        model_life:                     ${vehicle.adjusted_model_life};
+        retire_early:                   ${vehicle.vehicle_life - 4}; // magic from Eddi
+        reliability_decay:              20; // default value
+        vehicle_life:                   ${vehicle.vehicle_life};
+    }
+    graphics {
+        speed:                          ${vehicle.id}_switch_speed_varies_with_load_amount;
+        purchase_speed:                 ${vehicle.id}_switch_purchase_speed;
+        cargo_capacity:                 ${vehicle.id}_switch_cargo_capacity;
+        purchase_cargo_capacity:        ${vehicle.id}_switch_purchase_cargo_capacity;
+        additional_text:                ${vehicle.get_buy_menu_string()};
+        cargo_subtype_text:             ${vehicle.id}_switch_cargo_subtype_text;
+        refit_cost:                     ${vehicle.id}_switch_refit_cost;
+        default:                        ${vehicle.id}_switch_graphics;
+        purchase:                       ${vehicle.id}_sg_purchase;
+    }
+}
+
+// -- end ${vehicle.title} -- <!--! another comment to aid reading the final nml  -->
+

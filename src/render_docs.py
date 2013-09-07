@@ -48,7 +48,7 @@ repo_vars = utils.get_repo_vars(sys)
 base_lang_strings = utils.parse_base_lang()
 
 import iron_horse
-from ship import Ship, Trawler, MixinRefittableCapacity
+from ship import Train, Trawler, MixinRefittableCapacity
 
 vehicles = iron_horse.get_vehicles_in_buy_menu_order()
 # default sort for docs is by vehicle intro date

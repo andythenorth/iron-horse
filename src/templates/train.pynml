@@ -1,3 +1,5 @@
+<!--! this is the default template for trains that don't supply their own template -->
+
 ${vehicle.render_debug_info()}
 
 // graphics
@@ -20,23 +22,11 @@ template spriteset_template_${vehicle.id}(y) {
     spriteset(${vehicle.id}_ss_not_loaded_moving_${variation_num}, "src/graphics/${vehicle.id}_${variation_num}.png") {
       spriteset_template_${vehicle.id}(110)
     }
-    spriteset(${vehicle.id}_ss_loading_0_${variation_num}, "src/graphics/${vehicle.id}_${variation_num}.png") {
-      spriteset_template_${vehicle.id}(210)
-    }
-    spriteset(${vehicle.id}_ss_loading_1_${variation_num}, "src/graphics/${vehicle.id}_${variation_num}.png") {
-      spriteset_template_${vehicle.id}(310)
-    }
-    spriteset(${vehicle.id}_ss_loading_2_${variation_num}, "src/graphics/${vehicle.id}_${variation_num}.png") {
-      spriteset_template_${vehicle.id}(410)
-    }
-    spriteset(${vehicle.id}_ss_loading_3_${variation_num}, "src/graphics/${vehicle.id}_${variation_num}.png") {
+    spriteset(${vehicle.id}_ss_loaded_not_moving_${variation_num}, "src/graphics/${vehicle.id}_${variation_num}.png") {
       spriteset_template_${vehicle.id}(510)
     }
-    spriteset(${vehicle.id}_ss_loaded_not_moving_${variation_num}, "src/graphics/${vehicle.id}_${variation_num}.png") {
-      spriteset_template_${vehicle.id}(610)
-    }
     spriteset(${vehicle.id}_ss_loaded_moving_${variation_num}, "src/graphics/${vehicle.id}_${variation_num}.png") {
-      spriteset_template_${vehicle.id}(710)
+      spriteset_template_${vehicle.id}(610)
     }
 
     spritegroup ${vehicle.id}_sg_moving_${variation_num} {
@@ -45,6 +35,7 @@ template spriteset_template_${vehicle.id}(y) {
             ${vehicle.id}_ss_loaded_moving_${variation_num},
         ];
         loading: [ // can't be loading when moving, but we'll overlook that, it's required by nml ;)
+            ${vehicle.id}_ss_not_loaded_moving_${variation_num},
             ${vehicle.id}_ss_loaded_moving_${variation_num},
         ];
     }
@@ -55,10 +46,8 @@ template spriteset_template_${vehicle.id}(y) {
             ${vehicle.id}_ss_loaded_not_moving_${variation_num},
         ];
         loading: [
-            ${vehicle.id}_ss_loading_0_${variation_num},
-            ${vehicle.id}_ss_loading_1_${variation_num},
-            ${vehicle.id}_ss_loading_2_${variation_num},
-            ${vehicle.id}_ss_loading_3_${variation_num},
+            ${vehicle.id}_ss_not_loaded_not_moving_${variation_num},
+            ${vehicle.id}_ss_loaded_not_moving_${variation_num},
         ];
     }
 
@@ -89,7 +78,6 @@ spritegroup ${vehicle.id}_sg_purchase {
         ${vehicle.id}_ss_purchase,
     ];
 }
-
 
 ${vehicle.render_speed_switches()}
 

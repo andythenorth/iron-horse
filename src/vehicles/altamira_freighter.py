@@ -1,7 +1,7 @@
 import global_constants
-from ship import Ship, GeneralCargoVessel
+from ship import Train, GeneralCargoVessel
 
-ship = GeneralCargoVessel(id = 'altamira_freighter',
+vehicle = GeneralCargoVessel(id = 'altamira_freighter',
             numeric_id = 190,
             title = 'Altamira [Freighter]',
             capacity_cargo_holds = 360,
@@ -23,6 +23,6 @@ ship = GeneralCargoVessel(id = 'altamira_freighter',
             gross_tonnage = 360,
             graphics_status = 'Work in Progress - Coxx',)
 
-ship.add_model_variant(intro_date=0,
+vehicle.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,
                        spritesheet_suffix=0)

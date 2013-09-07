@@ -19,12 +19,12 @@ templates = PageTemplateLoader(os.path.join(currentdir, 'src', 'templates'))
 from vehicles import registered_vehicles
 
 
-class Ship(object):
-    """Base class for all types of ships"""
+class Train(object):
+    """Base class for all types of trains"""
     def __init__(self, id, **kwargs):
         self.id = id
 
-        # setup properties for this ship
+        # setup properties for this train
         self.title = kwargs.get('title', None)
         self.numeric_id = kwargs.get('numeric_id', None)
         self.str_type_info = kwargs.get('str_type_info', None).upper()
@@ -53,7 +53,7 @@ class Ship(object):
         self.model_variants = []
         # some project management stuff
         self.graphics_status = kwargs.get('graphics_status', None)
-        # register ship with this module so other modules can use it
+        # register vehicle with this module so other modules can use it
         registered_vehicles.append(self)
 
     def add_model_variant(self, intro_date, end_date, spritesheet_suffix):
@@ -142,7 +142,7 @@ class Ship(object):
         return self.title.split('[')[0]
 
     def get_str_name_suffix(self):
-        # used in ship name string only, relies on name property value being in format "Foo [Bar]" for Name [Type Suffix]
+        # used in vehicle name string only, relies on name property value being in format "Foo [Bar]" for Name [Type Suffix]
         type_suffix = self.title.split('[')[1].split(']')[0]
         type_suffix = type_suffix.upper()
         type_suffix = '_'.join(type_suffix.split(' '))
@@ -166,34 +166,34 @@ class Ship(object):
 
     def render_debug_info(self):
         template = templates["debug_info.pynml"]
-        return template(ship=self)
+        return template(vehicle=self)
 
     def render_properties(self):
-        template = templates["ship_properties.pynml"]
-        return template(ship=self)
+        template = templates["train_properties.pynml"]
+        return template(vehicle=self)
 
     def render_speed_switches(self):
         template = templates["speed_switches.pynml"]
-        return template(ship=self)
+        return template(vehicle=self)
 
     def render_autorefit(self):
         template = templates["autorefit_any.pynml"]
-        return template(ship=self)
+        return template(vehicle=self)
 
     def render_cargo_capacity(self):
         if hasattr(self, 'capacity_is_refittable_by_cargo_subtype'):
             template = templates["capacity_refittable.pynml"]
         else:
             template = templates["capacity_not_refittable.pynml"]
-        return template(ship=self)
+        return template(vehicle=self)
 
     def render_purchase_cargo_capacity(self):
         template = templates["purchase_cargo_capacity.pynml"]
-        return template(ship=self)
+        return template(vehicle=self)
 
     def render(self):
         template = templates[self.template]
-        return template(ship=self, global_constants=global_constants)
+        return template(vehicle=self, global_constants=global_constants)
 
 
 class MixinRefittableCapacity(object):
@@ -212,7 +212,7 @@ class MixinRefittableCapacity(object):
 class ModelVariant(object):
     # simple class to hold model variants
     # variants are mostly randomised or date-sensitive graphics
-    # must be a minimum of one variant per ship
+    # must be a minimum of one variant per train
     # at least one variant must have intro date 0 (for nml switch defaults to work)
     def __init__(self, intro_date, end_date, spritesheet_suffix):
         self.intro_date = intro_date
@@ -220,7 +220,7 @@ class ModelVariant(object):
         self.spritesheet_suffix = spritesheet_suffix # use digits for these - to match spritesheet filenames
 
 
-class GeneralCargoVessel(Ship):
+class GeneralCargoVessel(Train):
     """
     General purpose freight vessel type. No pax or mail cargos, refits any other cargo including liquids (in barrels or containers).
     """
@@ -235,13 +235,13 @@ class GeneralCargoVessel(Ship):
         self.default_cargo_capacity = self.capacity_freight
 
 
-class PacketBoat(Ship):
+class PacketBoat(Train):
     """
     A relatively fast vessel type for passengers, mail, and express freight.
     """
     def __init__(self, id, **kwargs):
         super(PacketBoat, self).__init__(id, **kwargs)
-        self.template = 'ship.pynml'
+        self.template = 'train.pynml'
         self.class_refit_groups = ['pax_mail','express_freight']
         self.label_refits_allowed = ['BDMT','FRUT','LVST','VEHI','WATR']
         self.label_refits_disallowed = ['FISH'] # don't go fishing with packet boats, use a trawler instead :P
@@ -260,7 +260,7 @@ class PacketBoat(Ship):
                                             capacity_mail=self.capacity_mail, capacity_cargo_holds=self.capacity_cargo_holds)
 
 
-class Hydrofoil(Ship):
+class Hydrofoil(Train):
     """
     Fast vessel type for passengers and mail only, graphics vary by speed (to show hydrofoil in / out of water).
     """
@@ -274,13 +274,13 @@ class Hydrofoil(Ship):
         self.default_cargo_capacity = self.capacity_pax
 
 
-class Trawler(Ship):
+class Trawler(Train):
     """
     Similar type to a packet boat, but needs to go fishing, so has special fish holds for that.
     """
     def __init__(self, id, **kwargs):
         super(Trawler, self).__init__(id, **kwargs)
-        self.template = 'ship.pynml'
+        self.template = 'train.pynml'
         self.class_refit_groups = ['pax_mail','express_freight']
         self.label_refits_allowed = ['BDMT','FISH', 'FRUT','LVST','VEHI','WATR']
         self.label_refits_disallowed = []

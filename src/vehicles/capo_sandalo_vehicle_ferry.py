@@ -1,7 +1,7 @@
 import global_constants
-from ship import Ship, PacketBoat
+from ship import Train, PacketBoat
 
-ship = PacketBoat(id = 'capo_sandalo_vehicle_ferry',
+vehicle = PacketBoat(id = 'capo_sandalo_vehicle_ferry',
             numeric_id = 80,
             title = 'Capo Sandalo [Ferry]',
             capacity_pax = 1000,
@@ -25,6 +25,6 @@ ship = PacketBoat(id = 'capo_sandalo_vehicle_ferry',
             gross_tonnage = 1150,
             graphics_status = 'Done',)
 
-ship.add_model_variant(intro_date=0,
+vehicle.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,
                        spritesheet_suffix=0)
