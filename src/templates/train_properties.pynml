@@ -1,22 +1,19 @@
 // -- print some of the vehicle non-nml properties to aid debugging -- //
 // [no properties printed]
 
-item(FEAT_SHIPS, ${vehicle.id}, ${vehicle.numeric_id}) {
+item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
     property {
         name:                           ${vehicle.get_name()};
         climates_available:             ALL_CLIMATES; // nml constant
-        sound_effect:                   ${('SOUND_SHIP_HORN','SOUND_FERRY_HORN')[vehicle.default_cargo=='PASS']};
         <!--! visual_effect:                  visual_effect(VISUAL_EFFECT_DIESEL, ${vehicle.smoke_offset}); // nml constant for DIESEL-->
         introduction_date:              date(${vehicle.intro_date},01,01); // vehicle just supplies intro year - openttd randomises intro dates a bit anyway
-        cargo_capacity:                 ${vehicle.default_cargo_capacity};
+        <!--!cargo_capacity:                 ${vehicle.default_cargo_capacity};-->
         sprite_id:                      SPRITE_ID_NEW_SHIP; //enable new graphics - nml constant
+        power:                          1000;
         speed:                          ${vehicle.speed}mph;
-        ocean_speed_fraction:           ${vehicle.ocean_speed};
-        canal_speed_fraction:           ${vehicle.canal_speed};
         cost_factor:                    ${vehicle.buy_cost};
         running_cost_factor:            ${vehicle.running_cost};
         refit_cost:                     0;
-        is_refittable:                  1;
         refittable_cargo_classes:       bitmask(${vehicle.refittable_classes});
         non_refittable_cargo_classes:   bitmask(); // don't set non-refittable classes, increases likelihood of breaking cargo support
         cargo_allow_refit:              [${vehicle.get_label_refits_allowed()}];

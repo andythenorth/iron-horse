@@ -56,7 +56,7 @@ spritegroup ${ship.id}_sg_not_moving {
     ];
 }
 
-switch (FEAT_SHIPS, SELF, ${ship.id}_switch_graphics, current_speed) {
+switch (FEAT_TRAINS, SELF, ${ship.id}_switch_graphics, current_speed) {
     0: return ${ship.id}_sg_not_moving;
     return ${ship.id}_sg_moving;
 }

@@ -51,7 +51,7 @@ template spriteset_template_${vehicle.id}(y) {
         ];
     }
 
-    switch (FEAT_SHIPS, SELF, ${vehicle.id}_switch_graphics_${variation_num}, current_speed) {
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${variation_num}, current_speed) {
         0: return ${vehicle.id}_sg_not_moving_${variation_num};
         return ${vehicle.id}_sg_moving_${variation_num};
     }

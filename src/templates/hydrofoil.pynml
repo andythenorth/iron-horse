@@ -27,7 +27,7 @@ spriteset(${ship.id}_ss_speed_4, "src/graphics/${ship.id}_0.png") {
   spriteset_template_${ship.id}(310, -3)
 }
 
-switch (FEAT_SHIPS, SELF, ${ship.id}_switch_graphics, current_speed) {
+switch (FEAT_TRAINS, SELF, ${ship.id}_switch_graphics, current_speed) {
     0: return ${ship.id}_ss_speed_1;
     1..${int((0.45*ship.speed) / 3) - 1}: ${ship.id}_ss_speed_2;
     ${int((0.45*ship.speed) / 3)}..${2 * int((0.45*ship.speed) / 3) - 1}: ${ship.id}_ss_speed_3;

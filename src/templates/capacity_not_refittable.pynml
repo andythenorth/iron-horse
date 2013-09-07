@@ -1,15 +1,15 @@
 // -- capacity determined according to specific labels that might need to be handled, and otherwise cargo class -- //
-switch (FEAT_SHIPS, SELF, ${vehicle.id}_switch_cargo_capacity_classes, cargo_classes) {
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_cargo_capacity_classes, cargo_classes) {
     bitmask(CC_PASSENGERS): return ${vehicle.capacity_pax};
     bitmask(CC_MAIL): return ${vehicle.capacity_mail};
     return ${vehicle.capacity_freight};
 }
-switch (FEAT_SHIPS, SELF, ${vehicle.id}_switch_cargo_capacity, cargo_type_in_veh) {
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_cargo_capacity, cargo_type_in_veh) {
     <tal:trawlers condition="vehicle.str_type_info.lower()=='trawler'">FISH: return ${vehicle.capacity_fish_holds};</tal:trawlers>
     ${vehicle.id}_switch_cargo_capacity_classes;
 }
 
 // -- handle subtype strings, used to aid players understand auto-refitting -- //
-switch (FEAT_SHIPS, SELF, ${vehicle.id}_switch_cargo_subtype_text, cargo_subtype) {
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_cargo_subtype_text, cargo_subtype) {
     return CB_RESULT_NO_TEXT;
 }

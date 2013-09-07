@@ -1,4 +1,4 @@
 // -- handle autorefitting -- //
-switch (FEAT_SHIPS, SELF, ${vehicle.id}_switch_refit_cost, 0) {
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_refit_cost, 0) {
     return 0 + CB_RESULT_AUTOREFIT;
 }

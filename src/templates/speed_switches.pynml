@@ -1,7 +1,7 @@
 // -- set speed a little higher than rated speed when unladen -- //
 // -- also apply the param_adjust_ship_speed parameter -- //
 <tal:speed repeat="speed_factor python:range(3)">
-    switch (FEAT_SHIPS, SELF, ${vehicle.id}_switch_speed_varies_with_load_amount_${speed_factor}, cargo_count*100/cargo_capacity) {
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_speed_varies_with_load_amount_${speed_factor}, cargo_count*100/cargo_capacity) {
         0 : ${vehicle.get_speeds_adjusted_for_load_amount(speed_factor)[0]};
         1..25 : ${vehicle.get_speeds_adjusted_for_load_amount(speed_factor)[1]};
         26..50 : ${vehicle.get_speeds_adjusted_for_load_amount(speed_factor)[2]};
@@ -10,12 +10,12 @@
         return 0; // should never reach this result, make it show up as a problem
     }
 </tal:speed>
-switch (FEAT_SHIPS, SELF, ${vehicle.id}_switch_speed_varies_with_load_amount, param_adjust_ship_speed) {
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_speed_varies_with_load_amount, param_adjust_ship_speed) {
     0: ${vehicle.id}_switch_speed_varies_with_load_amount_0;
     1: ${vehicle.id}_switch_speed_varies_with_load_amount_1;
     2: ${vehicle.id}_switch_speed_varies_with_load_amount_2;
 }
-switch (FEAT_SHIPS, SELF, ${vehicle.id}_switch_purchase_speed, param_adjust_ship_speed) {
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_purchase_speed, param_adjust_ship_speed) {
     0: ${vehicle.get_speeds_adjusted_for_load_amount(0)[4]};
     1: ${vehicle.get_speeds_adjusted_for_load_amount(1)[4]};
     2: ${vehicle.get_speeds_adjusted_for_load_amount(2)[4]};

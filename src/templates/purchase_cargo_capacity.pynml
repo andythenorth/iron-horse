@@ -1,5 +1,5 @@
 // -- dibble about with purchase menu capacity to handle various cargo-specific capacity issues (cargo might be missing etc) -- //
-switch (FEAT_SHIPS, SELF, ${vehicle.id}_switch_purchase_cargo_capacity, cargo_type_in_veh) {
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_purchase_cargo_capacity, cargo_type_in_veh) {
     <!--! if FISH cargo is missing, trawlers need to still work -->
     <tal:trawlers condition="vehicle.str_type_info.lower()=='trawler'">
         FISH: return ${vehicle.capacity_fish_holds};

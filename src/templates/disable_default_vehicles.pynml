@@ -1,1 +1,1 @@
-disable_item(FEAT_SHIPS, 00, 10);
+disable_item(FEAT_TRAINS, 00, 10);
