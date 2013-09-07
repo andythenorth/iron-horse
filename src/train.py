@@ -51,6 +51,7 @@ class Train(object):
         self.class_refit_groups = []
         self.label_refits_allowed = [] # no specific labels needed
         self.label_refits_disallowed = []
+        self.engine_class = 'ENGINE_CLASS_STEAM' # nml constant
         self.visual_effect = 'VISUAL_EFFECT_DISABLE' # nml constant
         self.visual_effect_offset = 0
         # some project management stuff
@@ -213,6 +214,7 @@ class DieselLoco(Train):
         super(DieselLoco, self).__init__(id, **kwargs)
         self.template = 'train.pynml'
         self.default_cargo_capacity = 0
+        self.engine_class = 'ENGINE_CLASS_DIESEL' #nml constant
         self.visual_effect = 'VISUAL_EFFECT_DIESEL' # nml constant
 
 class PassengerCar(Train):
