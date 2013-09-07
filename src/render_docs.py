@@ -86,21 +86,15 @@ class DocHelper(object):
 
             result = self.fetch_prop(result, 'Vehicle Name', vehicle.get_name_substr() + base_lang_strings[vehicle.get_str_name_suffix()])
             result = self.fetch_prop(result, 'Extra Info', base_lang_strings[vehicle.get_str_type_info()])
-            result = self.fetch_prop(result, 'Speed Laden', int(vehicle.speed))
-            result = self.fetch_prop(result, 'Speed Unladen', int(vehicle.speed_unladen))
-            result = self.fetch_prop(result, 'Canal Speed Fraction', vehicle.canal_speed)
-            result = self.fetch_prop(result, 'Ocean Speed Fraction', vehicle.ocean_speed)
+            result = self.fetch_prop(result, 'Speed', int(vehicle.speed))
             result = self.fetch_prop(result, 'Intro Date', vehicle.intro_date)
             result = self.fetch_prop(result, 'Vehicle Life', vehicle.vehicle_life)
             result = self.fetch_prop(result, 'Replacement ID', vehicle.replacement_id)
             result = self.fetch_prop(result, 'Capacity Pax', vehicle.capacity_pax)
             result = self.fetch_prop(result, 'Capacity Mail', vehicle.capacity_mail)
             result = self.fetch_prop(result, 'Capacity Freight', vehicle.capacity_freight)
-            if isinstance(vehicle, Trawler):
-                result = self.fetch_prop(result, 'Capacity Fish Holds', vehicle.capacity_fish_holds)
             if isinstance(vehicle, MixinRefittableCapacity):
                 result = self.fetch_prop(result, 'Capacities Refittable', ', '.join(str(i) for i in vehicle.capacities_refittable))
-            result = self.fetch_prop(result, 'Gross Tonnage', vehicle.gross_tonnage)
             result = self.fetch_prop(result, 'Buy Cost', vehicle.buy_cost)
             result = self.fetch_prop(result, 'Running Cost', vehicle.running_cost)
             result = self.fetch_prop(result, 'Loading Speed', vehicle.loading_speed)

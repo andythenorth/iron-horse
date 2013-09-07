@@ -34,16 +34,10 @@ class Train(object):
         self.buy_cost = kwargs.get('buy_cost', None)
         self.fixed_run_cost_factor = kwargs.get('fixed_run_cost_factor', None)
         self.fuel_run_cost_factor = kwargs.get('fuel_run_cost_factor', None)
-        self.gross_tonnage = kwargs.get('gross_tonnage', None)
         self.loading_speed = kwargs.get('loading_speed', None)
         self.buy_menu_width = kwargs.get('buy_menu_width', None)
         self.offsets = kwargs.get('offsets', None)
-        self.inland_capable = kwargs.get('inland_capable', None)
-        self.sea_capable = kwargs.get('sea_capable', None)
         self.speed = kwargs.get('speed', None)
-        self.speed_unladen = self.speed * kwargs.get('speed_factor_unladen', None)
-        self.ocean_speed = (0.8, 1)[self.sea_capable]
-        self.canal_speed = (0.7, 1)[self.inland_capable]
         # declare capacities for pax, mail and freight, as they are needed later for nml switches
         self.capacity_pax = kwargs.get('capacity_pax', 0)
         self.capacity_mail = kwargs.get('capacity_mail', 0)
@@ -116,7 +110,7 @@ class Train(object):
     def running_cost(self):
         # calculate a running cost
         fixed_run_cost = self.fixed_run_cost_factor * global_constants.FIXED_RUN_COST
-        fuel_run_cost =  self.fuel_run_cost_factor * self.gross_tonnage * global_constants.FUEL_RUN_COST
+        fuel_run_cost =  self.fuel_run_cost_factor * global_constants.FUEL_RUN_COST
         calculated_run_cost = int((fixed_run_cost + fuel_run_cost) / 98) # divide by magic constant to get costs as factor in 0-255 range
         return min(calculated_run_cost, 255) # cost factor is a byte, can't exceed 255
 

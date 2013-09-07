@@ -29,8 +29,6 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
         vehicle_life:                   ${vehicle.vehicle_life};
     }
     graphics {
-        speed:                          ${vehicle.id}_switch_speed_varies_with_load_amount;
-        purchase_speed:                 ${vehicle.id}_switch_purchase_speed;
         cargo_capacity:                 ${vehicle.id}_switch_cargo_capacity;
         purchase_cargo_capacity:        ${vehicle.id}_switch_purchase_cargo_capacity;
         additional_text:                ${vehicle.get_buy_menu_string()};
