@@ -5,28 +5,28 @@ ${vehicle.render_debug_info()}
 // graphics
 template spriteset_template_${vehicle.id}(y) {
     //[left_x,  upper_y,    width,      height,     offset_x,      offset_y]
-    [20,        y,          28,         89,          ${vehicle.offsets[0][0]}, ${vehicle.offsets[0][1]}]
-    [60,        y,          113,        66,          ${vehicle.offsets[1][0]}, ${vehicle.offsets[1][1]}]
-    [186,       y,          138,        48,          ${vehicle.offsets[2][0]}, ${vehicle.offsets[2][1]}]
-    [328,       y,          113,        66,          ${vehicle.offsets[3][0]}, ${vehicle.offsets[3][1]}]
-    [454,       y,          28,         89,          ${vehicle.offsets[4][0]}, ${vehicle.offsets[4][1]}]
-    [494,       y,          113,        66,          ${vehicle.offsets[5][0]}, ${vehicle.offsets[5][1]}]
-    [620,       y,          138,        48,          ${vehicle.offsets[6][0]}, ${vehicle.offsets[6][1]}]
-    [762,       y,          113,        66,          ${vehicle.offsets[7][0]}, ${vehicle.offsets[7][1]}]
+    [3,        y,          8,         24,          ${vehicle.offsets[0][0]}, ${vehicle.offsets[0][1]}]
+    [19,       y,          22,        17,          ${vehicle.offsets[1][0]}, ${vehicle.offsets[1][1]}]
+    [51,       y,          32,        12,          ${vehicle.offsets[2][0]}, ${vehicle.offsets[2][1]}]
+    [99,       y,          22,        17,          ${vehicle.offsets[3][0]}, ${vehicle.offsets[3][1]}]
+    [131,      y,          8,         24,          ${vehicle.offsets[4][0]}, ${vehicle.offsets[4][1]}]
+    [147,      y,          22,        17,          ${vehicle.offsets[5][0]}, ${vehicle.offsets[5][1]}]
+    [179,       y,         32,        12,          ${vehicle.offsets[6][0]}, ${vehicle.offsets[6][1]}]
+    [227,       y,         22,        17,          ${vehicle.offsets[7][0]}, ${vehicle.offsets[7][1]}]
 }
 
 <tal:sprites_random_variations repeat="variation_num python:range(vehicle.get_num_spritesets())">
     spriteset(${vehicle.id}_ss_not_loaded_not_moving_${variation_num}, "src/graphics/${vehicle.id}_${variation_num}.png") {
-      spriteset_template_${vehicle.id}(10)
+      spriteset_template_${vehicle.id}(3)
     }
     spriteset(${vehicle.id}_ss_not_loaded_moving_${variation_num}, "src/graphics/${vehicle.id}_${variation_num}.png") {
-      spriteset_template_${vehicle.id}(110)
+      spriteset_template_${vehicle.id}(3)
     }
     spriteset(${vehicle.id}_ss_loaded_not_moving_${variation_num}, "src/graphics/${vehicle.id}_${variation_num}.png") {
-      spriteset_template_${vehicle.id}(510)
+      spriteset_template_${vehicle.id}(3)
     }
     spriteset(${vehicle.id}_ss_loaded_moving_${variation_num}, "src/graphics/${vehicle.id}_${variation_num}.png") {
-      spriteset_template_${vehicle.id}(610)
+      spriteset_template_${vehicle.id}(3)
     }
 
     spritegroup ${vehicle.id}_sg_moving_${variation_num} {
@@ -63,7 +63,7 @@ template spriteset_template_${vehicle.id}(y) {
 
 template spriteset_template_purchase_${vehicle.id}() {
     //[left_x,  upper_y,    width,      height,     offset_x,      offset_y]
-    [${vehicle.buy_menu_bb_xy[0]}, ${vehicle.buy_menu_bb_xy[1]}, ${vehicle.buy_menu_width}, 22, -${vehicle.buy_menu_width / 2}, -10]
+    [51,   3, ${vehicle.buy_menu_width}, 12, -${vehicle.buy_menu_width / 2}, -6]
 }
 
 spriteset(${vehicle.id}_ss_purchase, "src/graphics/${vehicle.id}_0.png") {

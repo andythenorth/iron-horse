@@ -36,7 +36,6 @@ class Train(object):
         self.fuel_run_cost_factor = kwargs.get('fuel_run_cost_factor', None)
         self.gross_tonnage = kwargs.get('gross_tonnage', None)
         self.loading_speed = kwargs.get('loading_speed', None)
-        self.buy_menu_bb_xy = kwargs.get('buy_menu_bb_xy', None)
         self.buy_menu_width = kwargs.get('buy_menu_width', None)
         self.offsets = kwargs.get('offsets', None)
         self.inland_capable = kwargs.get('inland_capable', None)
@@ -226,7 +225,7 @@ class GeneralCargoVessel(Train):
     """
     def __init__(self, id, **kwargs):
         super(GeneralCargoVessel, self).__init__(id, **kwargs)
-        self.template = 'general_cargo_vessel.pynml'
+        self.template = 'train.pynml'
         self.class_refit_groups = ['all_freight']
         self.label_refits_allowed = [] # no specific labels needed, GCV refits all freight
         self.label_refits_disallowed = ['TOUR']

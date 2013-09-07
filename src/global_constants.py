@@ -1,7 +1,4 @@
-buy_menu_sort_order = ['castle_point_steamer',
-                       'capo_sandalo_vehicle_ferry',
-                       'cape_spear_trawler',
-                       'altamira_freighter']
+buy_menu_sort_order = ['growler']
 
 # shared lists of allowed classes, shared across multiple ship types
 base_refits_by_class = {'empty': [],
