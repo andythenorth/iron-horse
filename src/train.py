@@ -213,7 +213,6 @@ class DieselLoco(Train):
         super(DieselLoco, self).__init__(id, **kwargs)
         self.template = 'train.pynml'
         self.default_cargo_capacity = 0
-        self.power = 1750
         self.visual_effect = 'VISUAL_EFFECT_DIESEL' # nml constant
 
 class PassengerCar(Train):
