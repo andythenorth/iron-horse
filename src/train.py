@@ -37,12 +37,13 @@ class Train(object):
         self.loading_speed = kwargs.get('loading_speed', None)
         self.buy_menu_width = kwargs.get('buy_menu_width', None)
         self.offsets = kwargs.get('offsets', None)
+        self.power = kwargs.get('power', 0)
         self.speed = kwargs.get('speed', None)
         # declare capacities for pax, mail and freight, as they are needed later for nml switches
         self.capacity_pax = kwargs.get('capacity_pax', 0)
         self.capacity_mail = kwargs.get('capacity_mail', 0)
-        self.capacity_freight = kwargs.get('capacity_freight', 0) # over-ride in subclass as needed
-        self.default_cargo = None
+        self.capacity_freight = kwargs.get('capacity_freight', 0)
+        self.default_cargo = 'PASS' # over-ride in subclass as needed
         self.class_refit_groups = []
         self.label_refits_allowed = [] # no specific labels needed
         self.label_refits_disallowed = []
@@ -208,6 +209,7 @@ class DieselLoco(Train):
         super(DieselLoco, self).__init__(id, **kwargs)
         self.template = 'train.pynml'
         self.default_cargo_capacity = 0
+        self.power = 1750
 
 class PassengerCar(Train):
     """
