@@ -230,4 +230,4 @@ class PassengerCar(Train):
         self.label_refits_disallowed = []
         self.default_cargo = 'PASS'
         self.default_cargo_capacity = self.capacity_pax
-        self.speed = global_constants.wagon_speeds['gen_1']
+        self.speed = global_constants.wagon_speeds[kwargs.get('vehicle_generation', None)]

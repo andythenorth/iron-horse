@@ -19,6 +19,7 @@ vehicle = PassengerCar(id = 'passenger_car',
             intro_date = 1900,
             str_type_info = 'COASTER',
             vehicle_life = 40,
+            vehicle_generation = 'gen_1',
             graphics_status = '',)
 
 vehicle.add_model_variant(intro_date=0,
