@@ -4,7 +4,6 @@ from train import Train, DieselLoco
 vehicle = DieselLoco(id = 'growler',
             numeric_id = 190,
             title = 'Growler [Diesel]',
-            capacity_cargo_holds = 20,
             replacement_id = '-none',
             buy_cost = 22,
             fixed_run_cost_factor = 3.5,
