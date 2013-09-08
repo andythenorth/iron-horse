@@ -21,7 +21,6 @@ vehicle = DieselLoco(id = 'growler',
             intro_date = 1900,
             str_type_info = 'COASTER',
             vehicle_life = 40,
-            gross_tonnage = 360,
             graphics_status = '',)
 
 vehicle.add_model_variant(intro_date=0,
