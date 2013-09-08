@@ -35,6 +35,7 @@ class Train(object):
         self.fixed_run_cost_factor = kwargs.get('fixed_run_cost_factor', None)
         self.fuel_run_cost_factor = kwargs.get('fuel_run_cost_factor', None)
         self.loading_speed = kwargs.get('loading_speed', None)
+        self.vehicle_length = kwargs.get('vehicle_length', None)
         self.buy_menu_width = kwargs.get('buy_menu_width', None)
         self.offsets = kwargs.get('offsets', None)
         self.power = kwargs.get('power', 0)
