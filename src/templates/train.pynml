@@ -5,14 +5,14 @@ ${vehicle.render_debug_info()}
 // graphics
 template spriteset_template_${vehicle.id}(y) {
     //[left_x,  upper_y,    width,      height,     offset_x,      offset_y]
-    [60,        y,          8,         24,          ${vehicle.offsets[0][0]}, ${vehicle.offsets[0][1]}]
-    [76,        y,          22,        17,          ${vehicle.offsets[1][0]}, ${vehicle.offsets[1][1]}]
-    [107,       y,          32,        12,          ${vehicle.offsets[2][0]}, ${vehicle.offsets[2][1]}]
-    [156,       y,          22,        17,          ${vehicle.offsets[3][0]}, ${vehicle.offsets[3][1]}]
-    [188,       y,          8,         24,          ${vehicle.offsets[4][0]}, ${vehicle.offsets[4][1]}]
-    [204,       y,          22,        17,          ${vehicle.offsets[5][0]}, ${vehicle.offsets[5][1]}]
-    [235,       y,          32,        12,          ${vehicle.offsets[6][0]}, ${vehicle.offsets[6][1]}]
-    [284,       y,          22,        17,          ${vehicle.offsets[7][0]}, ${vehicle.offsets[7][1]}]
+    [60,        y,          8,         25,          ${vehicle.offsets[0][0]}, ${vehicle.offsets[0][1]}]
+    [76,        y,          22,        22,          ${vehicle.offsets[1][0]}, ${vehicle.offsets[1][1]}]
+    [107,       y,          32,        15,          ${vehicle.offsets[2][0]}, ${vehicle.offsets[2][1]}]
+    [156,       y,          22,        22,          ${vehicle.offsets[3][0]}, ${vehicle.offsets[3][1]}]
+    [188,       y,          8,         25,          ${vehicle.offsets[4][0]}, ${vehicle.offsets[4][1]}]
+    [204,       y,          22,        22,          ${vehicle.offsets[5][0]}, ${vehicle.offsets[5][1]}]
+    [235,       y,          32,        15,          ${vehicle.offsets[6][0]}, ${vehicle.offsets[6][1]}]
+    [284,       y,          22,        22,          ${vehicle.offsets[7][0]}, ${vehicle.offsets[7][1]}]
 }
 
 <tal:sprites_random_variations repeat="variation_num python:range(vehicle.get_num_spritesets())">
@@ -63,7 +63,7 @@ template spriteset_template_${vehicle.id}(y) {
 
 template spriteset_template_purchase_${vehicle.id}() {
     //[left_x,  upper_y,    width,      height,     offset_x,      offset_y]
-    [107,   10, ${vehicle.buy_menu_width}, 12, -${vehicle.buy_menu_width / 2}, -6]
+    [107,   10, ${vehicle.buy_menu_width}, 15, -${vehicle.buy_menu_width / 2}, -6]
 }
 
 spriteset(${vehicle.id}_ss_purchase, "src/graphics/${vehicle.id}_0.png") {
