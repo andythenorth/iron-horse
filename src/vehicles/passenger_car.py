@@ -2,7 +2,7 @@ import global_constants
 from train import Train, PassengerCar
 
 vehicle = PassengerCar(id = 'passenger_car',
-            numeric_id = 10,
+            numeric_id = 10010,
             title = 'Passenger [Car]',
             capacity_pax = 20,
             replacement_id = '-none',
