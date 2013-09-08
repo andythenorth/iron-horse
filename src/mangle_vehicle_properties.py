@@ -8,36 +8,7 @@ property_to_move = 'sea_capable'
 property_to_insert_after = 'gross_tonnage'
 line_to_insert = "            graphics_status = 'Unstarted',"
 
-filenames = ['altamira_freighter.py',
-         'barletta_paddle_steamer.py',
-         'cape_spear_trawler.py',
-         'capo_sandalo_vehicle_ferry.py',
-         'castle_point_steamer.py',
-         'eddystone_tanker.py',
-         'endeavour_utility_catamaran.py',
-         'enoshima_catamaran_ferry.py',
-         'fastnet_paddle_steamer.py',
-         'feodosiya_hydrofoil.py',
-         'fish_island_trawler.py',
-         'frisco_bay_freighter.py',
-         'harbour_point_utility_vessel.py',
-         'hopetown_tanker.py',
-         'lindau_freight_barge.py',
-         'little_cumbrae_freighter.py',
-         'marstein_freighter.py',
-         'maspalomas_freighter.py',
-         'matsushima_hydrofoil.py',
-         'mount_blaze_catamaran_ferry.py',
-         'nieuwpoort_container_feeder.py',
-         'patos_island_vehicle_ferry.py',
-         'pine_island_log_tug.py',
-         'saint_marie_barge_tug.py',
-         'santorini_freighter.py',
-         'shark_island_livestock_ship.py',
-         'sunk_rock_ferry.py',
-         'thunder_bay_hovercraft.py',
-         'whitgift_freight_barge.py',
-         'yokohama_tanker.py']
+filenames = ['altamira_freighter.py',]
 
 
 def move_property(filename):
