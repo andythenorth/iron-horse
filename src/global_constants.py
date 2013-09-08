@@ -1,8 +1,11 @@
-buy_menu_sort_order = ['chopper',
+buy_menu_sort_order = [# set 1 locos
+                       'chopper',
                        'growler',
                        'zebedee',
                        'gridiron',
+                        # set 2 locos
                        'geep',
+                       # wagons
                        'passenger_car',
                        'mail_car',
                        'box_car_gen_1']
