@@ -28,6 +28,7 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
         retire_early:                   ${vehicle.vehicle_life - 4}; // magic from Eddi
         reliability_decay:              20; // default value
         vehicle_life:                   ${vehicle.vehicle_life};
+        length:                         ${vehicle.vehicle_length};
     }
     graphics {
         cargo_capacity:                 ${vehicle.id}_switch_cargo_capacity;
