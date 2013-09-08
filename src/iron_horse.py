@@ -31,6 +31,7 @@ from vehicles import registered_vehicles
 from vehicles import growler
 from vehicles import geep
 from vehicles import passenger_car
+from vehicles import mail_car
 
 def get_vehicles_in_buy_menu_order():
     sorted_vehicles = []

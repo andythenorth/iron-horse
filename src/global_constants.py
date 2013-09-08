@@ -1,11 +1,13 @@
 buy_menu_sort_order = ['growler',
                        'geep',
-                       'passenger_car']
+                       'passenger_car',
+                       'mail_car']
 
 # shared lists of allowed classes, shared across multiple ship types
 base_refits_by_class = {'empty': [],
                        'all_freight': ['CC_BULK', 'CC_PIECE_GOODS', 'CC_EXPRESS', 'CC_LIQUID', 'CC_ARMOURED', 'CC_REFRIGERATED', 'CC_COVERED', 'CC_NON_POURABLE'],
                        'pax': ['CC_PASSENGERS'],
+                       'mail': ['CC_MAIL'],
                        'liquids': ['CC_LIQUID'],
                        'packaged_freight': ['CC_PIECE_GOODS', 'CC_EXPRESS', 'CC_ARMOURED', 'CC_LIQUID'],
                        'express_freight': ['CC_EXPRESS','CC_ARMOURED']}
@@ -19,6 +21,8 @@ wagon_speeds = {'gen_1':75}
 from ordered_dict_backport import OrderedDict
 cargo_graphics_mappings = OrderedDict([('PASS', []), # pax first
                                        ('TOUR', []),
+                                       # "the mail must get through"
+                                       ('MAIL', []),
                                        # bulk-ish cargos
                                        ('COAL', []),
                                        ('IORE', []),
