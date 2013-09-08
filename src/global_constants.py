@@ -8,6 +8,9 @@ base_refits_by_class = {'empty': [],
                        'packaged_freight': ['CC_PIECE_GOODS', 'CC_EXPRESS', 'CC_ARMOURED', 'CC_LIQUID'],
                        'express_freight': ['CC_EXPRESS','CC_ARMOURED']}
 
+# speed for each generation of wagons in mph
+wagon_speeds = {'gen_1':75}
+
 # used to construct the cargo table automatically
 # stolen from BANDIT code which also offered option to specify random cargo variations - that part is not currently used in FISH
 # ! order is significant ! - openttd will cascade through default cargos in the order specified by the cargo table

@@ -217,6 +217,7 @@ class DieselLoco(Train):
         self.engine_class = 'ENGINE_CLASS_DIESEL' #nml constant
         self.visual_effect = 'VISUAL_EFFECT_DIESEL' # nml constant
 
+
 class PassengerCar(Train):
     """
     Passenger Carriage.
@@ -229,4 +230,4 @@ class PassengerCar(Train):
         self.label_refits_disallowed = []
         self.default_cargo = 'PASS'
         self.default_cargo_capacity = self.capacity_pax
-        self.speed = 75
+        self.speed = global_constants.wagon_speeds['gen_1']
