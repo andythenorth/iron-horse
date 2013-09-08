@@ -29,6 +29,7 @@ from train import Train
 from vehicles import registered_vehicles
 
 from vehicles import growler
+from vehicles import geep
 from vehicles import passenger_car
 
 def get_vehicles_in_buy_menu_order():
