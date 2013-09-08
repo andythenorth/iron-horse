@@ -1,6 +1,6 @@
 buy_menu_sort_order = [# set 1 locos
                        'chopper',
-                       'growler',
+                       'whistler',
                        'zebedee',
                        'gridiron',
                         # set 2 locos

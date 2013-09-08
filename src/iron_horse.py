@@ -31,7 +31,7 @@ from vehicles import registered_vehicles
 from vehicles import chopper
 from vehicles import geep
 from vehicles import gridiron
-from vehicles import growler
+from vehicles import whistler
 from vehicles import zebedee
 from vehicles import passenger_car
 from vehicles import mail_car
