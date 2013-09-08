@@ -206,6 +206,16 @@ class ModelVariant(object):
         self.spritesheet_suffix = spritesheet_suffix # use digits for these - to match spritesheet filenames
 
 
+class Wagon(Train):
+    """
+    Intermediate class for actual wagons (cars) to subclass from, provides some common properties
+    """
+    def __init__(self, id, **kwargs):
+        super(Wagon, self).__init__(id, **kwargs)
+        self.vehicle_generation = kwargs.get('vehicle_generation', None)
+        self.speed = global_constants.wagon_speeds[self.vehicle_generation]
+
+
 class DieselLoco(Train):
     """
     Diesel Locomotive.
@@ -218,7 +228,7 @@ class DieselLoco(Train):
         self.visual_effect = 'VISUAL_EFFECT_DIESEL' # nml constant
 
 
-class PassengerCar(Train):
+class PassengerCar(Wagon):
     """
     Passenger Carriage.
     """
@@ -230,4 +240,3 @@ class PassengerCar(Train):
         self.label_refits_disallowed = []
         self.default_cargo = 'PASS'
         self.default_cargo_capacity = self.capacity_pax
-        self.speed = global_constants.wagon_speeds[kwargs.get('vehicle_generation', None)]
