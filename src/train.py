@@ -256,3 +256,17 @@ class MailCar(Wagon):
         self.label_refits_disallowed = []
         self.default_cargo = 'MAIL'
         self.default_cargo_capacity = self.capacity_mail
+
+
+class BoxCar(Wagon):
+    """
+    Boxcar.
+    """
+    def __init__(self, id, **kwargs):
+        super(BoxCar, self).__init__(id, **kwargs)
+        self.template = 'train.pynml'
+        self.class_refit_groups = ['packaged_freight']
+        self.label_refits_allowed = [] # no specific labels needed
+        self.label_refits_disallowed = []
+        self.default_cargo = 'GOOD'
+        self.default_cargo_capacity = self.capacity_freight

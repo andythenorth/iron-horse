@@ -1,7 +1,8 @@
 buy_menu_sort_order = ['growler',
                        'geep',
                        'passenger_car',
-                       'mail_car']
+                       'mail_car',
+                       'box_car_gen_1']
 
 # shared lists of allowed classes, shared across multiple ship types
 base_refits_by_class = {'empty': [],
