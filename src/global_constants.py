@@ -1,4 +1,7 @@
-buy_menu_sort_order = ['growler',
+buy_menu_sort_order = ['chopper',
+                       'growler',
+                       'zebedee',
+                       'gridiron',
                        'geep',
                        'passenger_car',
                        'mail_car',
