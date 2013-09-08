@@ -37,7 +37,8 @@ class Train(object):
         self.loading_speed = kwargs.get('loading_speed', None)
         self.vehicle_length = kwargs.get('vehicle_length', None)
         self.buy_menu_width = kwargs.get('buy_menu_width', None)
-        self.offsets = kwargs.get('offsets', None)
+        # offsets can be over-ridden on a per-model basis, or just use the standard ones for vehicle length
+        self.offsets = kwargs.get('offsets', global_constants.default_train_offsets[str(self.vehicle_length)])
         self.power = kwargs.get('power', 0)
         self.speed = kwargs.get('speed', 0)
         self.weight = kwargs.get('weight', None)
