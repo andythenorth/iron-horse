@@ -1,9 +1,9 @@
 import global_constants
-from train import Train, DieselLoco
+from train import Train, ElectricLoco
 
-vehicle = DieselLoco(id = 'zebedee',
+vehicle = ElectricLoco(id = 'zebedee',
             numeric_id = 1130,
-            title = 'Zebedee [Diesel]',
+            title = 'Zebedee [Electric]',
             replacement_id = '-none',
             buy_cost = 22,
             fixed_run_cost_factor = 3.5,

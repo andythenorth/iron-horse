@@ -16,6 +16,7 @@ STR_PARAM_ADJUST_SHIP_SPEEDS_OPTION_2                           :Cheating
 
 <!--! type suffixes for ship names  -->
 STR_NAME_SUFFIX_DIESEL                                          :(Diesel)
+STR_NAME_SUFFIX_ELECTRIC                                        :(Electric)
 STR_NAME_SUFFIX_CAR                                             :Car
 
 <!--! extra buy menu info -->

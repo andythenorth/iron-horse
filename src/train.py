@@ -231,6 +231,18 @@ class DieselLoco(Train):
         self.visual_effect = 'VISUAL_EFFECT_DIESEL' # nml constant
 
 
+class ElectricLoco(Train):
+    """
+    Diesel Locomotive.
+    """
+    def __init__(self, id, **kwargs):
+        super(ElectricLoco, self).__init__(id, **kwargs)
+        self.template = 'train.pynml'
+        self.default_cargo_capacity = 0
+        self.engine_class = 'ENGINE_CLASS_ELECTRIC' #nml constant
+        self.visual_effect = 'VISUAL_EFFECT_ELECTRIC' # nml constant
+
+
 class PassengerCar(Wagon):
     """
     Passenger Carriage.
