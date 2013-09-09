@@ -284,3 +284,17 @@ class BoxCar(Wagon):
         self.label_refits_disallowed = []
         self.default_cargo = 'GOOD'
         self.default_cargo_capacity = self.capacity_freight
+
+
+class TankCar(Wagon):
+    """
+    Tank Car.
+    """
+    def __init__(self, id, **kwargs):
+        super(TankCar, self).__init__(id, **kwargs)
+        self.template = 'train.pynml'
+        self.class_refit_groups = ['liquids']
+        self.label_refits_allowed = [] # no specific labels needed
+        self.label_refits_disallowed = []
+        self.default_cargo = 'OIL_'
+        self.default_cargo_capacity = self.capacity_freight
