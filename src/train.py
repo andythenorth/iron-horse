@@ -286,6 +286,20 @@ class BoxCar(Wagon):
         self.default_cargo_capacity = self.capacity_freight
 
 
+class CoveredHopperCar(Wagon):
+    """
+    Covered Hopper Car.
+    """
+    def __init__(self, id, **kwargs):
+        super(CoveredHopperCar, self).__init__(id, **kwargs)
+        self.template = 'train.pynml'
+        self.class_refit_groups = ['covered_hopper_freight']
+        self.label_refits_allowed = ['GRAI'] # no specific labels needed
+        self.label_refits_disallowed = []
+        self.default_cargo = 'GRAI'
+        self.default_cargo_capacity = self.capacity_freight
+
+
 class TankCar(Wagon):
     """
     Tank Car.

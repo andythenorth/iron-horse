@@ -9,7 +9,8 @@ buy_menu_sort_order = [# set 1 locos
                        'passenger_car',
                        'mail_car',
                        'box_car_gen_1',
-                       'tank_car_gen_1']
+                       'tank_car_gen_1',
+                       'covered_hopper_car_gen_2']
 
 # shared lists of allowed classes, shared across multiple ship types
 base_refits_by_class = {'empty': [],
@@ -18,6 +19,7 @@ base_refits_by_class = {'empty': [],
                        'mail': ['CC_MAIL'],
                        'liquids': ['CC_LIQUID'],
                        'packaged_freight': ['CC_PIECE_GOODS', 'CC_EXPRESS', 'CC_ARMOURED', 'CC_LIQUID'],
+                       'covered_hopper_freight': [],
                        'express_freight': ['CC_EXPRESS','CC_ARMOURED']}
 
 # speed for each generation of wagons in mph

@@ -37,6 +37,7 @@ from vehicles import passenger_car
 from vehicles import mail_car
 from vehicles import box_car
 from vehicles import tank_car
+from vehicles import covered_hopper_car
 
 def get_vehicles_in_buy_menu_order():
     sorted_vehicles = []
