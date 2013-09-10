@@ -4,7 +4,7 @@ from train import Train, CoveredHopperCar
 vehicle = CoveredHopperCar(numeric_id = 10040,
                         title = 'Covered Hopper [Car]',
                         vehicle_set = 'nagn',
-                        vehicle_generation = 'gen_1',
+                        vehicle_generation = 'gen_2',
                         capacity_freight = 20,
                         replacement_id = '-none',
                         buy_cost = 22,
