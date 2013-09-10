@@ -294,7 +294,8 @@ class CoveredHopperCar(Wagon):
     """
     Covered Hopper Car.
     """
-    def __init__(self, id, **kwargs):
+    def __init__(self, **kwargs):
+        id = '_'.join(('covered_hopper_car', kwargs['vehicle_set'], kwargs['vehicle_generation']))
         super(CoveredHopperCar, self).__init__(id, **kwargs)
         self.template = 'train.pynml'
         self.class_refit_groups = ['covered_hopper_freight']

@@ -10,7 +10,7 @@ buy_menu_sort_order = [# set 1 locos
                        'mail_car',
                        'box_car_nagn_gen_1',
                        'tank_car_gen_1',
-                       'covered_hopper_car_gen_2']
+                       'covered_hopper_car_nagn_gen_1']
 
 # shared lists of allowed classes, shared across multiple ship types
 base_refits_by_class = {'empty': [],
