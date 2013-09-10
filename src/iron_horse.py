@@ -35,7 +35,7 @@ from vehicles import whistler
 from vehicles import zebedee
 from vehicles import passenger_car
 from vehicles import mail_car
-from vehicles import box_car
+from vehicles import box_cars
 from vehicles import tank_car
 from vehicles import covered_hopper_car
 
