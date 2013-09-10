@@ -9,7 +9,7 @@ buy_menu_sort_order = [# set 1 locos
                        'passenger_car',
                        'mail_car',
                        'box_car_nagn_gen_1',
-                       'tank_car_gen_1',
+                       'tank_car_euro_gen_1',
                        'covered_hopper_car_nagn_gen_2']
 
 # shared lists of allowed classes, shared across multiple ship types
