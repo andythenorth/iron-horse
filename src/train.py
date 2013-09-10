@@ -251,7 +251,8 @@ class PassengerCar(Wagon):
     """
     Passenger Carriage.
     """
-    def __init__(self, id, **kwargs):
+    def __init__(self, **kwargs):
+        id = '_'.join(('passenger_car', kwargs['vehicle_set'], kwargs['vehicle_generation']))
         super(PassengerCar, self).__init__(id, **kwargs)
         self.template = 'train.pynml'
         self.class_refit_groups = ['pax']

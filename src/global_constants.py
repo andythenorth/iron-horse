@@ -9,7 +9,7 @@ buy_menu_sort_order = [# brit locos
                         # euro wagons
                         'tank_car_euro_gen_1',
                         # nagn wagons
-                        'passenger_car',
+                        'passenger_car_nagn_gen_1',
                         'mail_car_nagn_gen_1',
                         'box_car_nagn_gen_1',
                         'covered_hopper_car_nagn_gen_2']
