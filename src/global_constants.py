@@ -1,16 +1,18 @@
-buy_menu_sort_order = [# set 1 locos
+buy_menu_sort_order = [# brit locos
                        'chopper',
                        'whistler',
                        'zebedee',
                        'gridiron',
-                        # set 2 locos
+                        # nagn locos
                        'geep',
-                       # wagons
-                       'passenger_car',
-                       'mail_car',
-                       'box_car_nagn_gen_1',
-                       'tank_car_euro_gen_1',
-                       'covered_hopper_car_nagn_gen_2']
+                        # brit wagons
+                        # euro wagons
+                        'tank_car_euro_gen_1',
+                        # nagn wagons
+                        'passenger_car',
+                        'mail_car_nagn_gen_1',
+                        'box_car_nagn_gen_1',
+                        'covered_hopper_car_nagn_gen_2']
 
 # shared lists of allowed classes, shared across multiple ship types
 base_refits_by_class = {'empty': [],
