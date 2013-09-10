@@ -8,7 +8,7 @@ buy_menu_sort_order = [# set 1 locos
                        # wagons
                        'passenger_car',
                        'mail_car',
-                       'box_car_gen_1',
+                       'box_car_nagn_gen_1',
                        'tank_car_gen_1',
                        'covered_hopper_car_gen_2']
 

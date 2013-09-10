@@ -279,7 +279,8 @@ class BoxCar(Wagon):
     """
     Boxcar.
     """
-    def __init__(self, id, **kwargs):
+    def __init__(self, **kwargs):
+        id = '_'.join(('box_car', kwargs['vehicle_set'], kwargs['vehicle_generation']))
         super(BoxCar, self).__init__(id, **kwargs)
         self.template = 'train.pynml'
         self.class_refit_groups = ['packaged_freight']
