@@ -84,7 +84,6 @@ class DocHelper(object):
         for vehicle in self.get_vehicles_by_subclass()[subclass]:
             result = {'vehicle':{}, 'subclass_props': []}
             result = self.fetch_prop(result, 'Vehicle Name', vehicle.get_name_substr() + base_lang_strings[vehicle.get_str_name_suffix()])
-            result = self.fetch_prop(result, 'Numeric ID', vehicle.numeric_id)
             result = self.fetch_prop(result, 'Extra Info', base_lang_strings[vehicle.get_str_type_info()])
             result = self.fetch_prop(result, 'Speed', int(vehicle.speed))
             result = self.fetch_prop(result, 'Intro Date', vehicle.intro_date)

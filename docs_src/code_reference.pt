@@ -2,7 +2,7 @@
 <div metal:fill-slot='body'>
     <div class="span12">
         <h2>Code Reference</h2>
-        <p>${len(vehicles)} trains</p>
+        <h3>${len(vehicles)} trains</h3>
         <hr />
         <tal:subclasses repeat="subclass doc_helper.get_vehicles_by_subclass()">
             <tal:props_for_subclass define="props_to_print doc_helper.get_props_to_print_in_code_reference(subclass)">
@@ -32,7 +32,26 @@
                 <br />
             </tal:props_for_subclass>
         </tal:subclasses>
+        <hr />
+        <h3>Numeric IDs</h3>
+        <table class="table table-striped table-condensed table-bordered">
+            <thead>
+                <th>Numeric ID</th>
+                <th>ID</th>
+                <th>Title</th>
+            </thead>
+            <tbody>
+                <tal:vehicles repeat="vehicle sorted(vehicles, key=lambda vehicle: vehicle.numeric_id)">
+                    <tr>
+                        <td>${vehicle.numeric_id}</td>
+                        <td>${vehicle.id}</td>
+                        <td>${vehicle.title}</td>
+                    </tr>
+                </tal:vehicles>
+            </tbody>
+        </table>
     </div>
+
 
 </div>
 </tal:main_template>
