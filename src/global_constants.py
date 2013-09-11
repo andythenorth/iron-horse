@@ -4,6 +4,7 @@ buy_menu_sort_order = [# brit locos
                        'zebedee',
                        'gridiron',
                         # nagn locos
+                        'dmc_sd40',
                        'geep',
                         # brit wagons
                         # euro wagons

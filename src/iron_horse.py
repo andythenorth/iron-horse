@@ -31,6 +31,7 @@ from vehicles import registered_vehicles
 from vehicles import box_cars
 from vehicles import chopper
 from vehicles import covered_hopper_cars
+from vehicles import dmc_sd40
 from vehicles import geep
 from vehicles import gridiron
 from vehicles import mail_cars
