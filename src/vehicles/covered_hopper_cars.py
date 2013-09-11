@@ -1,7 +1,7 @@
 import global_constants
 from train import Train, CoveredHopperCar
 
-vehicle = CoveredHopperCar(numeric_id = 10040,
+vehicle = CoveredHopperCar(numeric_id = 11010,
                         title = 'Covered Hopper [Car]',
                         vehicle_set = 'nagn',
                         vehicle_generation = 'gen_2',
