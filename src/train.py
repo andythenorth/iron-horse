@@ -301,9 +301,24 @@ class CoveredHopperCar(Wagon):
         super(CoveredHopperCar, self).__init__(id, **kwargs)
         self.template = 'train.pynml'
         self.class_refit_groups = ['covered_hopper_freight']
-        self.label_refits_allowed = ['GRAI'] # no specific labels needed
+        self.label_refits_allowed = ['GRAI']
         self.label_refits_disallowed = []
         self.default_cargo = 'GRAI'
+        self.default_cargo_capacity = self.capacity_freight
+
+
+class OpenCar(Wagon):
+    """
+    Open Car (Gondola).
+    """
+    def __init__(self, **kwargs):
+        id = '_'.join(('open_car', kwargs['vehicle_set'], kwargs['vehicle_generation']))
+        super(OpenCar, self).__init__(id, **kwargs)
+        self.template = 'train.pynml'
+        self.class_refit_groups = ['all_freight']
+        self.label_refits_allowed = [] # no specific labels needed
+        self.label_refits_disallowed = []
+        self.default_cargo = 'GOOD'
         self.default_cargo_capacity = self.capacity_freight
 
 

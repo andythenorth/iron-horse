@@ -35,6 +35,7 @@ from vehicles import dmc_sd40
 from vehicles import geep
 from vehicles import gridiron
 from vehicles import mail_cars
+from vehicles import open_cars
 from vehicles import passenger_cars
 from vehicles import tank_cars
 from vehicles import whistler
