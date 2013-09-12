@@ -68,7 +68,12 @@ class Train(object):
         self.model_variants.append(ModelVariant(intro_date, end_date, spritesheet_suffix))
 
     def get_id(self, id_base, **kwargs):
+        # auto id creator, used for wagons not locos
         return '_'.join((id_base, kwargs['vehicle_set'], 'gen', str(kwargs['vehicle_generation'])))
+
+    def get_numeric_id(self, id_base, **kwargs):
+        # auto numeric_id creator, used for wagons not locos
+        return id_base + (100 * global_constants.vehicle_set_id_mapping[kwargs['vehicle_set']]) + kwargs['vehicle_generation']
 
     def get_reduced_set_of_variant_dates(self):
         # find all the unique dates that will need a switch constructing
@@ -332,6 +337,7 @@ class TankCar(Wagon):
     def __init__(self, **kwargs):
         id = self.get_id('tank_car', **kwargs)
         super(TankCar, self).__init__(id, **kwargs)
+        self.numeric_id = self.get_numeric_id(14000, **kwargs)
         self.template = 'train.pynml'
         self.class_refit_groups = ['liquids']
         self.label_refits_allowed = [] # no specific labels needed

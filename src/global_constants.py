@@ -33,6 +33,9 @@ base_refits_by_class = {'empty': [],
 # speed for each generation of wagons in mph
 wagon_speeds = {1: 75, 2: 100}
 
+# set <-> numeric id mapping
+vehicle_set_id_mapping = {'univ': 0, 'brit':1 ,'nagn':2, 'soam': 3, 'euro': 4}
+
 # used to construct the cargo table automatically
 # stolen from BANDIT code which also offered option to specify random cargo variations - that part is not currently used in FISH
 # ! order is significant ! - openttd will cascade through default cargos in the order specified by the cargo table
