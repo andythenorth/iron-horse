@@ -3,7 +3,7 @@ from train import Train, MailCar
 
 vehicle = MailCar(title = 'Mail [Car]',
                 vehicle_set = 'nagn',
-                vehicle_generation = 1,
+                wagon_generation = 1,
                 capacity_mail = 20,
                 replacement_id = '-none',
                 buy_cost = 22,

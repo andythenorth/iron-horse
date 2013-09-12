@@ -3,7 +3,7 @@ from train import Train, BoxCar
 
 vehicle = BoxCar(title = 'Box [Car]',
                 vehicle_set = 'nagn',
-                vehicle_generation = 1,
+                wagon_generation = 1,
                 capacity_freight = 20,
                 replacement_id = '-none',
                 buy_cost = 22,

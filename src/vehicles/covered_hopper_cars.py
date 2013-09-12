@@ -3,7 +3,7 @@ from train import Train, CoveredHopperCar
 
 vehicle = CoveredHopperCar(title = 'Covered Hopper [Car]',
                         vehicle_set = 'nagn',
-                        vehicle_generation = 2,
+                        wagon_generation = 2,
                         capacity_freight = 20,
                         replacement_id = '-none',
                         buy_cost = 22,

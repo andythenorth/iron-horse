@@ -69,11 +69,11 @@ class Train(object):
 
     def get_id(self, id_base, **kwargs):
         # auto id creator, used for wagons not locos
-        return '_'.join((id_base, kwargs['vehicle_set'], 'gen', str(kwargs['vehicle_generation'])))
+        return '_'.join((id_base, kwargs['vehicle_set'], 'gen', str(kwargs['wagon_generation'])))
 
     def get_numeric_id(self, id_base, **kwargs):
         # auto numeric_id creator, used for wagons not locos
-        return id_base + (100 * global_constants.vehicle_set_id_mapping[kwargs['vehicle_set']]) + kwargs['vehicle_generation']
+        return id_base + (100 * global_constants.vehicle_set_id_mapping[kwargs['vehicle_set']]) + kwargs['wagon_generation']
 
     def get_reduced_set_of_variant_dates(self):
         # find all the unique dates that will need a switch constructing
@@ -227,8 +227,8 @@ class Wagon(Train):
     """
     def __init__(self, id, speedy=False, **kwargs):
         super(Wagon, self).__init__(id, **kwargs)
-        self.vehicle_generation = kwargs.get('vehicle_generation', None)
-        if self.vehicle_generation == 1:
+        self.wagon_generation = kwargs.get('wagon_generation', None)
+        if self.wagon_generation == 1:
             if speedy==True:
                 self.speed = global_constants.speedy_wagon_speed
             else:

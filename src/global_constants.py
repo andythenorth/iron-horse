@@ -26,12 +26,16 @@ base_refits_by_class = {'empty': [],
                        'covered_hopper_freight': [],
                        'express_freight': ['CC_EXPRESS','CC_ARMOURED']}
 
-# speed for each generation of wagons in mph
+# speed for wagons in mph (some generations may optionally have no speed set)
 standard_wagon_speed = 75
 speedy_wagon_speed = 100
 
 # set <-> numeric id mapping
 vehicle_set_id_mapping = {'univ': 0, 'brit': 1 ,'nagn': 2, 'soam': 3, 'euro': 4}
+
+# how many generations of wagons do we have?
+# if an 'early' generation gets added, make that gen 0 and updated accordingly?  Or just shift them all?
+num_wagon_generations = 2
 
 # used to construct the cargo table automatically
 # stolen from BANDIT code which also offered option to specify random cargo variations - that part is not currently used in FISH
