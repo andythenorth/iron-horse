@@ -31,8 +31,8 @@ from vehicles import registered_vehicles
 from vehicles import box_cars
 from vehicles import chopper
 from vehicles import covered_hopper_cars
-from vehicles import dmc_sd40
-from vehicles import geep
+#from vehicles import dmc_sd40
+#from vehicles import geep
 from vehicles import gridiron
 from vehicles import mail_cars
 from vehicles import open_cars
@@ -47,7 +47,7 @@ def get_vehicles_in_buy_menu_order():
     buy_menu_sort_order = list(global_constants.buy_menu_sort_order_locos) # copy the list in global_constants to avoid unwanted modifications to it
     for id_base in global_constants.buy_menu_sort_order_wagons:
         for vehicle_set in global_constants.vehicle_set_id_mapping.keys():
-            for wagon_generation in range(1, global_constants.num_wagon_generations):
+            for wagon_generation in range(1, global_constants.num_wagon_generations + 1):
                 wagon_id = '_'.join((id_base, vehicle_set, 'gen', str(wagon_generation)))
                 buy_menu_sort_order.append(wagon_id)
 
