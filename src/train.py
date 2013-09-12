@@ -284,7 +284,7 @@ class MailCar(Wagon):
         super(MailCar, self).__init__(id, **kwargs)
         self.numeric_id = self.get_numeric_id(11000, **kwargs)
         self.template = 'train.pynml'
-        self.class_refit_groups = ['mail']
+        self.class_refit_groups = ['mail', 'express_freight']
         self.label_refits_allowed = [] # no specific labels needed
         self.label_refits_disallowed = []
         self.default_cargo = 'MAIL'
