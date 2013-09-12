@@ -31,7 +31,7 @@ standard_wagon_speed = 75
 speedy_wagon_speed = 100
 
 # set <-> numeric id mapping
-vehicle_set_id_mapping = {'univ': 0, 'brit':1 ,'nagn':2, 'soam': 3, 'euro': 4}
+vehicle_set_id_mapping = {'univ': 0, 'brit': 1 ,'nagn': 2, 'soam': 3, 'euro': 4}
 
 # used to construct the cargo table automatically
 # stolen from BANDIT code which also offered option to specify random cargo variations - that part is not currently used in FISH
