@@ -31,6 +31,7 @@ base_refits_by_class = {'empty': [],
                        'express_freight': ['CC_EXPRESS','CC_ARMOURED']}
 
 # speed for each generation of wagons in mph
+speedy_wagon_speeds = {1: 100, 2: 100}
 wagon_speeds = {1: 75, 2: 100}
 
 # set <-> numeric id mapping

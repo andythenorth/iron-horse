@@ -225,10 +225,13 @@ class Wagon(Train):
     This class should be sparse - only declare the most limited set of properties common to wagons.
     Most props should be declared by Train with useful defaults, or by the subclass providing the car.
     """
-    def __init__(self, id, **kwargs):
+    def __init__(self, id, speedy=False, **kwargs):
         super(Wagon, self).__init__(id, **kwargs)
         self.vehicle_generation = kwargs.get('vehicle_generation', None)
-        self.speed = global_constants.wagon_speeds[self.vehicle_generation]
+        if speedy==True:
+            self.speed = global_constants.speedy_wagon_speeds[self.vehicle_generation]
+        else:
+            self.speed = global_constants.wagon_speeds[self.vehicle_generation]
 
 
 class DieselLoco(Train):
@@ -261,7 +264,7 @@ class PassengerCar(Wagon):
     """
     def __init__(self, **kwargs):
         id = self.get_id('passenger_car', **kwargs)
-        super(PassengerCar, self).__init__(id, **kwargs)
+        super(PassengerCar, self).__init__(id, speedy=True, **kwargs)
         self.numeric_id = self.get_numeric_id(13000, **kwargs)
         self.template = 'train.pynml'
         self.class_refit_groups = ['pax']
@@ -276,7 +279,7 @@ class MailCar(Wagon):
     Mail Carriage.
     """
     def __init__(self, **kwargs):
-        id = self.get_id('mail_car', **kwargs)
+        id = self.get_id('mail_car', speedy=True, **kwargs)
         super(MailCar, self).__init__(id, **kwargs)
         self.numeric_id = self.get_numeric_id(12000, **kwargs)
         self.template = 'train.pynml'
