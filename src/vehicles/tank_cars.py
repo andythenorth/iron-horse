@@ -1,9 +1,9 @@
 import global_constants
 from train import Train, TankCar
 
-vehicle = TankCar(vehicle_set = 'euro',
+vehicle = TankCar(title = 'Tank [Car]',
+                vehicle_set = 'euro',
                 vehicle_generation = 1,
-                title = 'Tank [Car]',
                 capacity_freight = 20,
                 replacement_id = '-none',
                 buy_cost = 22,
@@ -22,9 +22,9 @@ vehicle.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,
                        spritesheet_suffix=0)
 
-vehicle = TankCar(vehicle_set = 'univ',
+vehicle = TankCar(title = 'Tank [Car]',
+                vehicle_set = 'univ',
                 vehicle_generation = 2,
-                title = 'Tank [Car]',
                 capacity_freight = 20,
                 replacement_id = '-none',
                 buy_cost = 22,
@@ -43,9 +43,9 @@ vehicle.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,
                        spritesheet_suffix=0)
 
-vehicle = TankCar(vehicle_set = 'nagn',
+vehicle = TankCar(title = 'Tank [Car]',
+                vehicle_set = 'nagn',
                 vehicle_generation = 1,
-                title = 'Tank [Car]',
                 capacity_freight = 20,
                 replacement_id = '-none',
                 buy_cost = 22,

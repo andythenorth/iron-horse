@@ -1,9 +1,9 @@
 import global_constants
 from train import Train, BoxCar
 
-vehicle = BoxCar(vehicle_set = 'nagn',
+vehicle = BoxCar(title = 'Box [Car]',
+                vehicle_set = 'nagn',
                 vehicle_generation = 1,
-                title = 'Box [Car]',
                 capacity_freight = 20,
                 replacement_id = '-none',
                 buy_cost = 22,
