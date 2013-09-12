@@ -1,3 +1,4 @@
+# list of explicit vehicle ids for locos
 buy_menu_sort_order_locos = [# brit locos
                            'chopper',
                            'whistler',
@@ -7,19 +8,13 @@ buy_menu_sort_order_locos = [# brit locos
                            'dmc_sd40',
                            'geep']
 
-buy_menu_sort_order_wagons = [# univ wagons
-                            'open_car_univ_gen_2',
-                            'tank_car_univ_gen_2',
-                            # brit wagons
-                            # euro wagons
-                            'tank_car_euro_gen_1',
-                            # nagn wagons
-                            'passenger_car_nagn_gen_1',
-                            'mail_car_nagn_gen_1',
-                            'box_car_nagn_gen_1',
-                            'open_car_nagn_gen_1',
-                            'tank_car_nagn_gen_1',
-                            'covered_hopper_car_nagn_gen_2']
+# wagon ids are generic and are composed to specific vehicle ids elsewhere
+buy_menu_sort_order_wagons = ['passenger_car',
+                              'mail_car',
+                              'box_car',
+                              'open_car',
+                              'tank_car',
+                              'covered_hopper']
 
 # shared lists of allowed classes, shared across multiple ship types
 base_refits_by_class = {'empty': [],
