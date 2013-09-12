@@ -67,6 +67,9 @@ class Train(object):
     def add_model_variant(self, intro_date, end_date, spritesheet_suffix):
         self.model_variants.append(ModelVariant(intro_date, end_date, spritesheet_suffix))
 
+    def get_id(self, id_base, **kwargs):
+        return '_'.join((id_base, kwargs['vehicle_set'], 'gen', str(kwargs['vehicle_generation'])))
+
     def get_reduced_set_of_variant_dates(self):
         # find all the unique dates that will need a switch constructing
         years = sorted(reduce(set.union, [(variant.intro_date, variant.end_date) for variant in self.model_variants], set()))
@@ -252,7 +255,7 @@ class PassengerCar(Wagon):
     Passenger Carriage.
     """
     def __init__(self, **kwargs):
-        id = '_'.join(('passenger_car', kwargs['vehicle_set'], kwargs['vehicle_generation']))
+        id = self.get_id('passenger_car', **kwargs)
         super(PassengerCar, self).__init__(id, **kwargs)
         self.template = 'train.pynml'
         self.class_refit_groups = ['pax']
@@ -267,7 +270,7 @@ class MailCar(Wagon):
     Mail Carriage.
     """
     def __init__(self, **kwargs):
-        id = '_'.join(('mail_car', kwargs['vehicle_set'], kwargs['vehicle_generation']))
+        id = self.get_id('mail_car', **kwargs)
         super(MailCar, self).__init__(id, **kwargs)
         self.template = 'train.pynml'
         self.class_refit_groups = ['mail']
@@ -282,7 +285,7 @@ class BoxCar(Wagon):
     Boxcar.
     """
     def __init__(self, **kwargs):
-        id = '_'.join(('box_car', kwargs['vehicle_set'], kwargs['vehicle_generation']))
+        id = self.get_id('box_car', **kwargs)
         super(BoxCar, self).__init__(id, **kwargs)
         self.template = 'train.pynml'
         self.class_refit_groups = ['packaged_freight']
@@ -297,7 +300,7 @@ class CoveredHopperCar(Wagon):
     Covered Hopper Car.
     """
     def __init__(self, **kwargs):
-        id = '_'.join(('covered_hopper_car', kwargs['vehicle_set'], kwargs['vehicle_generation']))
+        id = self.get_id('covered_hopper_car', **kwargs)
         super(CoveredHopperCar, self).__init__(id, **kwargs)
         self.template = 'train.pynml'
         self.class_refit_groups = ['covered_hopper_freight']
@@ -312,7 +315,7 @@ class OpenCar(Wagon):
     Open Car (Gondola).
     """
     def __init__(self, **kwargs):
-        id = '_'.join(('open_car', kwargs['vehicle_set'], kwargs['vehicle_generation']))
+        id = self.get_id('open_car', **kwargs)
         super(OpenCar, self).__init__(id, **kwargs)
         self.template = 'train.pynml'
         self.class_refit_groups = ['all_freight']
@@ -327,7 +330,7 @@ class TankCar(Wagon):
     Tank Car.
     """
     def __init__(self, **kwargs):
-        id = '_'.join(('tank_car', kwargs['vehicle_set'], kwargs['vehicle_generation']))
+        id = self.get_id('tank_car', **kwargs)
         super(TankCar, self).__init__(id, **kwargs)
         self.template = 'train.pynml'
         self.class_refit_groups = ['liquids']

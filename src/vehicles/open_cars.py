@@ -3,7 +3,7 @@ from train import Train, OpenCar
 
 vehicle = OpenCar(numeric_id = 15010,
                 vehicle_set = 'nagn',
-                vehicle_generation = 'gen_1',
+                vehicle_generation = 1,
                 title = 'Open [Car]',
                 capacity_freight = 20,
                 replacement_id = '-none',
@@ -25,7 +25,7 @@ vehicle.add_model_variant(intro_date=0,
 
 vehicle = OpenCar(numeric_id = 15020,
                 vehicle_set = 'univ',
-                vehicle_generation = 'gen_2',
+                vehicle_generation = 2,
                 title = 'Open [Car]',
                 capacity_freight = 20,
                 replacement_id = '-none',

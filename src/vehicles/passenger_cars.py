@@ -3,7 +3,7 @@ from train import Train, PassengerCar
 
 vehicle = PassengerCar(numeric_id = 13010,
                     vehicle_set = 'nagn',
-                    vehicle_generation = 'gen_1',
+                    vehicle_generation = 1,
                     title = 'Passenger [Car]',
                     capacity_pax = 20,
                     replacement_id = '-none',

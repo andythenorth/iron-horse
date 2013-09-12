@@ -31,7 +31,7 @@ base_refits_by_class = {'empty': [],
                        'express_freight': ['CC_EXPRESS','CC_ARMOURED']}
 
 # speed for each generation of wagons in mph
-wagon_speeds = {'gen_1': 75, 'gen_2': 100}
+wagon_speeds = {1: 75, 2: 100}
 
 # used to construct the cargo table automatically
 # stolen from BANDIT code which also offered option to specify random cargo variations - that part is not currently used in FISH
