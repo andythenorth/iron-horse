@@ -15,7 +15,7 @@ buy_menu_sort_order_wagons = ['passenger_car',
                               'open_car',
                               'tank_car',
                               'livestock_car',
-                              'covered_hopper']
+                              'covered_hopper_car']
 
 # shared lists of allowed classes, shared across multiple ship types
 base_refits_by_class = {'empty': [],
