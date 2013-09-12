@@ -11,7 +11,9 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
         cargo_capacity:                 ${vehicle.default_cargo_capacity};
         sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
         power:                          ${vehicle.power}hp;
-        speed:                          ${vehicle.speed}mph;
+        <tal:speed_is_optional condition="vehicle.speed is not None">
+            speed:                          ${vehicle.speed}mph;
+        </tal:speed_is_optional>
         weight:                         ${vehicle.weight}ton;
         tractive_effort_coefficient:    0.3;
         cost_factor:                    ${vehicle.buy_cost};

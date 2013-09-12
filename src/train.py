@@ -228,10 +228,11 @@ class Wagon(Train):
     def __init__(self, id, speedy=False, **kwargs):
         super(Wagon, self).__init__(id, **kwargs)
         self.vehicle_generation = kwargs.get('vehicle_generation', None)
-        if speedy==True:
-            self.speed = global_constants.speedy_wagon_speeds[self.vehicle_generation]
-        else:
-            self.speed = global_constants.wagon_speeds[self.vehicle_generation]
+        if self.vehicle_generation == 1:
+            if speedy==True:
+                self.speed = global_constants.speedy_wagon_speed
+            else:
+                self.speed = global_constants.standard_wagon_speed
 
 
 class DieselLoco(Train):
