@@ -14,6 +14,7 @@ buy_menu_sort_order_wagons = ['passenger_car',
                               'box_car',
                               'open_car',
                               'tank_car',
+                              'hopper_car',
                               'livestock_car',
                               'covered_hopper_car']
 
