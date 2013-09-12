@@ -307,19 +307,19 @@ class BoxCar(Wagon):
         self.default_cargo_capacity = self.capacity_freight
 
 
-class CoveredHopperCar(Wagon):
+class HopperCar(Wagon):
     """
-    Covered Hopper Car.
+    Hopper Car.
     """
     def __init__(self, **kwargs):
-        id = self.get_id('covered_hopper_car', **kwargs)
-        super(CoveredHopperCar, self).__init__(id, **kwargs)
+        id = self.get_id('hopper_car', **kwargs)
+        super(HopperCar, self).__init__(id, **kwargs)
         self.numeric_id = self.get_numeric_id(13000, **kwargs)
         self.template = 'train.pynml'
-        self.class_refit_groups = ['covered_hopper_freight']
-        self.label_refits_allowed = ['GRAI']
+        self.class_refit_groups = ['hopper_freight']
+        self.label_refits_allowed = []
         self.label_refits_disallowed = []
-        self.default_cargo = 'GRAI'
+        self.default_cargo = 'COAL'
         self.default_cargo_capacity = self.capacity_freight
 
 
@@ -368,4 +368,20 @@ class LivestockCar(Wagon):
         self.label_refits_allowed = ['LVST'] # no specific labels needed
         self.label_refits_disallowed = []
         self.default_cargo = 'LVST'
+        self.default_cargo_capacity = self.capacity_freight
+
+
+class CoveredHopperCar(Wagon):
+    """
+    Covered Hopper Car.
+    """
+    def __init__(self, **kwargs):
+        id = self.get_id('covered_hopper_car', **kwargs)
+        super(CoveredHopperCar, self).__init__(id, **kwargs)
+        self.numeric_id = self.get_numeric_id(17000, **kwargs)
+        self.template = 'train.pynml'
+        self.class_refit_groups = ['covered_hopper_freight']
+        self.label_refits_allowed = ['GRAI']
+        self.label_refits_disallowed = []
+        self.default_cargo = 'GRAI'
         self.default_cargo_capacity = self.capacity_freight
