@@ -1,8 +1,7 @@
 import global_constants
 from train import Train, OpenCar
 
-vehicle = OpenCar(numeric_id = 15010,
-                vehicle_set = 'nagn',
+vehicle = OpenCar(vehicle_set = 'nagn',
                 vehicle_generation = 1,
                 title = 'Open [Car]',
                 capacity_freight = 20,
@@ -23,8 +22,7 @@ vehicle.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,
                        spritesheet_suffix=0)
 
-vehicle = OpenCar(numeric_id = 15020,
-                vehicle_set = 'univ',
+vehicle = OpenCar(vehicle_set = 'univ',
                 vehicle_generation = 2,
                 title = 'Open [Car]',
                 capacity_freight = 20,

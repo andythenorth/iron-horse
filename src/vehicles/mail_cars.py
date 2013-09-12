@@ -1,8 +1,7 @@
 import global_constants
 from train import Train, MailCar
 
-vehicle = MailCar(numeric_id = 12010,
-                vehicle_set = 'nagn',
+vehicle = MailCar(vehicle_set = 'nagn',
                 vehicle_generation = 1,
                 title = 'Mail [Car]',
                 capacity_mail = 20,
