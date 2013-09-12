@@ -1,24 +1,25 @@
-buy_menu_sort_order = [# brit locos
-                       'chopper',
-                       'whistler',
-                       'zebedee',
-                       'gridiron',
-                        # nagn locos
-                       'dmc_sd40',
-                       'geep',
-                        # univ wagons
-                        'open_car_univ_gen_2',
-                        'tank_car_univ_gen_2',
-                        # brit wagons
-                        # euro wagons
-                        'tank_car_euro_gen_1',
-                        # nagn wagons
-                        'passenger_car_nagn_gen_1',
-                        'mail_car_nagn_gen_1',
-                        'box_car_nagn_gen_1',
-                        'open_car_nagn_gen_1',
-                        'tank_car_nagn_gen_1',
-                        'covered_hopper_car_nagn_gen_2']
+buy_menu_sort_order_locos = [# brit locos
+                           'chopper',
+                           'whistler',
+                           'zebedee',
+                           'gridiron',
+                            # nagn locos
+                           'dmc_sd40',
+                           'geep']
+
+buy_menu_sort_order_wagons = [# univ wagons
+                            'open_car_univ_gen_2',
+                            'tank_car_univ_gen_2',
+                            # brit wagons
+                            # euro wagons
+                            'tank_car_euro_gen_1',
+                            # nagn wagons
+                            'passenger_car_nagn_gen_1',
+                            'mail_car_nagn_gen_1',
+                            'box_car_nagn_gen_1',
+                            'open_car_nagn_gen_1',
+                            'tank_car_nagn_gen_1',
+                            'covered_hopper_car_nagn_gen_2']
 
 # shared lists of allowed classes, shared across multiple ship types
 base_refits_by_class = {'empty': [],

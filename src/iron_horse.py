@@ -43,7 +43,11 @@ from vehicles import zebedee
 
 def get_vehicles_in_buy_menu_order():
     sorted_vehicles = []
-    for id in global_constants.buy_menu_sort_order:
+    buy_menu_sort_order = list(global_constants.buy_menu_sort_order_locos) # copy the list in global_constants to avoid unwanted modifications to it
+    for wagon in global_constants.buy_menu_sort_order_wagons:
+        buy_menu_sort_order.append(wagon)
+
+    for id in buy_menu_sort_order:
         found = False
         for vehicle in registered_vehicles:
             if vehicle.id == id:
@@ -53,7 +57,7 @@ def get_vehicles_in_buy_menu_order():
             utils.echo_message("Warning: vehicle " + id + " in buy_menu_sort_order, but not found in registered_vehicles")
     for vehicle in registered_vehicles:
         id = vehicle.id
-        if id not in global_constants.buy_menu_sort_order:
+        if id not in buy_menu_sort_order:
             utils.echo_message("Warning: vehicle " + id + " in registered_vehicles, but not in buy_menu_sort_order - won't show in game")
     return sorted_vehicles
 
