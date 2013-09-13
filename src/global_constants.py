@@ -1,5 +1,6 @@
 # list of explicit vehicle ids for locos
 buy_menu_sort_order_locos = [# brit locos
+                           'tank_brit_264',
                            'chopper',
                            'whistler',
                            'zebedee',
