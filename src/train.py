@@ -257,6 +257,7 @@ class SteamTenderLoco(Train):
         self.default_cargo_capacity = 0
         self.engine_class = 'ENGINE_CLASS_STEAM' #nml constant
         self.visual_effect = 'VISUAL_EFFECT_STEAM' # nml constant
+        self.articulated_parts = kwargs['articulated_parts'] # list of trailing part lengths
 
 
 class DieselLoco(Train):
