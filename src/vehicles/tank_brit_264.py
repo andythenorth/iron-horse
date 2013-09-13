@@ -1,7 +1,7 @@
 import global_constants
-from train import Train, SteamTenderLoco
+from train import Train, SteamTankLoco
 
-vehicle = SteamTenderLoco(id = 'tank_brit_264',
+vehicle = SteamTankLoco(id = 'tank_brit_264',
             numeric_id = 1270,
             title = '2-6-4 Tank [Steam]',
             replacement_id = '-none',

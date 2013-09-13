@@ -235,6 +235,18 @@ class Wagon(Train):
                 self.speed = global_constants.standard_wagon_speed
 
 
+class SteamTankLoco(Train):
+    """
+    Steam Tank Locomotive.
+    """
+    def __init__(self, id, **kwargs):
+        super(SteamTankLoco, self).__init__(id, **kwargs)
+        self.template = 'train.pynml'
+        self.default_cargo_capacity = 0
+        self.engine_class = 'ENGINE_CLASS_STEAM' #nml constant
+        self.visual_effect = 'VISUAL_EFFECT_STEAM' # nml constant
+
+
 class SteamTenderLoco(Train):
     """
     Steam Tender Locomotive.
