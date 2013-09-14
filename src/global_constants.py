@@ -18,6 +18,7 @@ buy_menu_sort_order_wagons = ['passenger_car',
                               'tank_car',
                               'hopper_car',
                               'livestock_car',
+                              'reefer_car',
                               'covered_hopper_car']
 
 # shared lists of allowed classes, shared across multiple ship types
@@ -29,6 +30,7 @@ base_refits_by_class = {'empty': [],
                        'packaged_freight': ['CC_PIECE_GOODS', 'CC_EXPRESS', 'CC_ARMOURED', 'CC_LIQUID'],
                        'hopper_freight': [],
                        'covered_hopper_freight': [],
+                       'refrigerated_freight': [],
                        'express_freight': ['CC_EXPRESS','CC_ARMOURED']}
 
 # speed for wagons in mph (some generations may optionally have no speed set)
