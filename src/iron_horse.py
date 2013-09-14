@@ -39,6 +39,7 @@ from vehicles import livestock_cars
 from vehicles import mail_cars
 from vehicles import open_cars
 from vehicles import passenger_cars
+from vehicles import raven
 from vehicles import suburban
 from vehicles import tank_cars
 from vehicles import whistler
