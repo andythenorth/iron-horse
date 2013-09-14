@@ -28,7 +28,6 @@ import train
 from train import Train
 from vehicles import registered_vehicles
 
-from vehicles import tank_brit_264
 from vehicles import box_cars
 from vehicles import chopper
 from vehicles import covered_hopper_cars
@@ -40,6 +39,7 @@ from vehicles import livestock_cars
 from vehicles import mail_cars
 from vehicles import open_cars
 from vehicles import passenger_cars
+from vehicles import suburban
 from vehicles import tank_cars
 from vehicles import whistler
 from vehicles import zebedee
