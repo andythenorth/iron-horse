@@ -1,0 +1,79 @@
+
+<!--! this is the default template for trains that don't supply their own template -->
+
+// graphics
+template spriteset_template_${vehicle.id}(y) {
+    //[left_x,  upper_y,    width,      height,     offset_x,      offset_y]
+    [60,        y,          8,         25,          ${vehicle.offsets[0][0]}, ${vehicle.offsets[0][1]}]
+    [76,        y,          22,        22,          ${vehicle.offsets[1][0]}, ${vehicle.offsets[1][1]}]
+    [107,       y,          32,        15,          ${vehicle.offsets[2][0]}, ${vehicle.offsets[2][1]}]
+    [156,       y,          22,        22,          ${vehicle.offsets[3][0]}, ${vehicle.offsets[3][1]}]
+    [188,       y,          8,         25,          ${vehicle.offsets[4][0]}, ${vehicle.offsets[4][1]}]
+    [204,       y,          22,        22,          ${vehicle.offsets[5][0]}, ${vehicle.offsets[5][1]}]
+    [235,       y,          32,        15,          ${vehicle.offsets[6][0]}, ${vehicle.offsets[6][1]}]
+    [284,       y,          22,        22,          ${vehicle.offsets[7][0]}, ${vehicle.offsets[7][1]}]
+}
+
+<tal:sprites_random_variations repeat="variation_num python:range(vehicle.get_num_spritesets())">
+    spriteset(${vehicle.id}_ss_not_loaded_not_moving_${variation_num}, "src/graphics/${vehicle.id}_${variation_num}.png") {
+      spriteset_template_${vehicle.id}(10)
+    }
+    spriteset(${vehicle.id}_ss_not_loaded_moving_${variation_num}, "src/graphics/${vehicle.id}_${variation_num}.png") {
+      spriteset_template_${vehicle.id}(10)
+    }
+    spriteset(${vehicle.id}_ss_loaded_not_moving_${variation_num}, "src/graphics/${vehicle.id}_${variation_num}.png") {
+      spriteset_template_${vehicle.id}(10)
+    }
+    spriteset(${vehicle.id}_ss_loaded_moving_${variation_num}, "src/graphics/${vehicle.id}_${variation_num}.png") {
+      spriteset_template_${vehicle.id}(10)
+    }
+
+    spritegroup ${vehicle.id}_sg_moving_${variation_num} {
+        loaded:  [
+            ${vehicle.id}_ss_not_loaded_moving_${variation_num},
+            ${vehicle.id}_ss_loaded_moving_${variation_num},
+        ];
+        loading: [ // can't be loading when moving, but we'll overlook that, it's required by nml ;)
+            ${vehicle.id}_ss_not_loaded_moving_${variation_num},
+            ${vehicle.id}_ss_loaded_moving_${variation_num},
+        ];
+    }
+
+    spritegroup ${vehicle.id}_sg_not_moving_${variation_num} {
+        loaded:  [
+            ${vehicle.id}_ss_not_loaded_not_moving_${variation_num},
+            ${vehicle.id}_ss_loaded_not_moving_${variation_num},
+        ];
+        loading: [
+            ${vehicle.id}_ss_not_loaded_not_moving_${variation_num},
+            ${vehicle.id}_ss_loaded_not_moving_${variation_num},
+        ];
+    }
+
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${variation_num}, current_speed) {
+        0: return ${vehicle.id}_sg_not_moving_${variation_num};
+        return ${vehicle.id}_sg_moving_${variation_num};
+    }
+</tal:sprites_random_variations>
+
+<tal:include define="graphics_random_switches load: graphics_random_switches.pynml" metal:use-macro="graphics_random_switches" />
+
+// buy menu graphics
+
+template spriteset_template_purchase_${vehicle.id}() {
+    //[left_x,  upper_y,    width,      height,     offset_x,      offset_y]
+    [235,   10, ${vehicle.buy_menu_width}, 15, -${vehicle.buy_menu_width / 2}, -6]
+}
+
+spriteset(${vehicle.id}_ss_purchase, "src/graphics/${vehicle.id}_0.png") {
+  spriteset_template_purchase_${vehicle.id}()
+}
+
+spritegroup ${vehicle.id}_sg_purchase {
+    loaded:  [
+        ${vehicle.id}_ss_purchase,
+    ];
+    loading: [
+        ${vehicle.id}_ss_purchase,
+    ];
+}

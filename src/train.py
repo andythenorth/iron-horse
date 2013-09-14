@@ -56,6 +56,7 @@ class Train(object):
         self.engine_class = 'ENGINE_CLASS_STEAM' # nml constant (STEAM is sane default)
         self.visual_effect = 'VISUAL_EFFECT_DISABLE' # nml constant
         self.visual_effect_offset = 0
+        self.articulated = False
         # some project management stuff
         self.graphics_status = kwargs.get('graphics_status', None)
         # register vehicle with this module so other modules can use it, with a non-blocking guard on duplicate IDs
@@ -90,6 +91,16 @@ class Train(object):
             if year in range(variant.intro_date, variant.end_date):
                 result.append(variant.spritesheet_suffix)
         return result # could call set() here, but I didn't bother, shouldn't be needed if model variants set up correctly
+
+    def get_trailing_parts(self, trailing_part_lengths):
+        trailing_parts = []
+        for count, length in enumerate(trailing_part_lengths):
+            result = {'length': length,
+                      'id': self.id + '_trailing_part_' + str(count + 1),
+                      'numeric_id': self.numeric_id + count + 1}
+            trailing_parts.append(result)
+        print trailing_parts
+        return trailing_parts
 
     def get_nml_random_switch_fragments_for_model_variants(self):
         # return fragments of nml for use in switches
@@ -171,9 +182,17 @@ class Train(object):
         template = templates["debug_info.pynml"]
         return template(vehicle=self)
 
+    def render_graphics(self):
+        template = templates["standard_graphics.pynml"]
+        return template(vehicle=self)
+
     def render_properties(self):
         template = templates["train_properties.pynml"]
-        return template(vehicle=self)
+        rendered_properties = template(vehicle=self)
+        if self.articulated == True:
+            template = templates["trailing_part_properties.pynml"]
+            rendered_properties = template(vehicle=self) + rendered_properties
+        return rendered_properties
 
     def render_autorefit(self):
         template = templates["autorefit_any.pynml"]
@@ -257,7 +276,8 @@ class SteamTenderLoco(Train):
         self.default_cargo_capacity = 0
         self.engine_class = 'ENGINE_CLASS_STEAM' #nml constant
         self.visual_effect = 'VISUAL_EFFECT_STEAM' # nml constant
-        self.articulated_parts = kwargs['articulated_parts'] # list of trailing part lengths
+        self.articulated = True
+        self.trailing_parts = self.get_trailing_parts(kwargs['trailing_part_lengths']) # pass list of trailing part lengths
 
 
 class DieselLoco(Train):

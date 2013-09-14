@@ -1,0 +1,45 @@
+<tal:articulated_parts repeat="trailing_part vehicle.trailing_parts">
+
+    // -- print some of the vehicle non-nml properties to aid debugging -- //
+    // [no properties printed]
+
+    item(FEAT_TRAINS, ${trailing_part['id']}, ${trailing_part['numeric_id']}) {
+        property {
+            name:                           string(STR_EMPTY);
+            climates_available:             NO_CLIMATE; // nml constant
+            visual_effect_and_powered:      visual_effect(${vehicle.visual_effect}, ${vehicle.visual_effect_offset});
+            cargo_capacity:                 ${vehicle.default_cargo_capacity};
+            sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+            power:                          0;
+            weight:                         0;
+            tractive_effort_coefficient:    0;
+            cost_factor:                    0;
+            running_cost_factor:            0;
+            refit_cost:                     0;
+            refittable_cargo_classes:       bitmask(); // don't set for trailing parts
+            non_refittable_cargo_classes:   bitmask(); // don't set for trailing parts
+            cargo_allow_refit:              []; // don't set for trailing parts
+            cargo_disallow_refit:           []; // don't set for trailing parts
+            default_cargo_type:             ${vehicle.default_cargo};
+            loading_speed:                  ${vehicle.loading_speed};
+            misc_flags:                     bitmask(); // nml constants
+            length:                         ${trailing_part['length']};
+        }
+        graphics {
+            default:                        ${vehicle.id}_switch_graphics;
+            purchase:                       ${vehicle.id}_sg_purchase;
+        }
+    }
+
+    // -- end ${vehicle.title} -- <!--! another comment to aid reading the final nml  -->
+
+</tal:articulated_parts>
+
+
+// add the trailing parts to articulated consist
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_articulated_cb_switch, extra_callback_info1) {
+    <tal:build_trailing_parts repeat="trailing_part vehicle.trailing_parts">
+    ${repeat.trailing_part.number}: return ${trailing_part['id']};
+    </tal:build_trailing_parts>
+  return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
