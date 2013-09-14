@@ -32,6 +32,7 @@ from vehicles import box_cars
 from vehicles import chopper
 from vehicles import covered_hopper_cars
 #from vehicles import dmc_sd40
+from vehicles import flat_cars
 #from vehicles import geep
 from vehicles import gridiron
 from vehicles import hopper_cars
