@@ -92,14 +92,13 @@ class Train(object):
                 result.append(variant.spritesheet_suffix)
         return result # could call set() here, but I didn't bother, shouldn't be needed if model variants set up correctly
 
-    def get_trailing_parts(self, trailing_part_lengths):
+    def get_trailing_parts(self, id, parent_vehicle, **kwargs):
         trailing_parts = []
-        for count, length in enumerate(trailing_part_lengths):
-            result = {'length': length,
-                      'id': self.id + '_trailing_part_' + str(count + 1),
-                      'numeric_id': self.numeric_id + count + 1}
-            trailing_parts.append(result)
-        print trailing_parts
+        for count, length in enumerate(kwargs['trailing_part_lengths']):
+            vehicle_kwargs = kwargs
+            trailing_part_id = self.id + '_trailing_part_' + str(count + 1)
+            vehicle_kwargs['numeric_id'] = self.numeric_id + count + 1
+            trailing_parts.append(TrailingPart(trailing_part_id, parent_vehicle, **vehicle_kwargs))
         return trailing_parts
 
     def get_nml_random_switch_fragments_for_model_variants(self):
@@ -126,6 +125,14 @@ class Train(object):
                     return model_life + self.vehicle_life
         else:
             return 'VEHICLE_NEVER_EXPIRES'
+
+    @property
+    def availability(self):
+        # which climates vehicle is available in
+        if isinstance(self, TrailingPart):
+            return "NO_CLIMATE"
+        else:
+            return "ALL_CLIMATES"
 
     @property
     def running_cost(self):
@@ -167,7 +174,10 @@ class Train(object):
         return 'STR_' + self.str_type_info
 
     def get_name(self):
-        return "string(STR_NAME_" + self.id +", string(" + self.get_str_name_suffix() + "))"
+        if isinstance(self, TrailingPart):
+            return "string(STR_EMPTY)"
+        else:
+            return "string(STR_NAME_" + self.id +", string(" + self.get_str_name_suffix() + "))"
 
     def get_buy_menu_string(self):
         buy_menu_template = Template(
@@ -182,17 +192,9 @@ class Train(object):
         template = templates["debug_info.pynml"]
         return template(vehicle=self)
 
-    def render_graphics(self):
-        template = templates["standard_graphics.pynml"]
-        return template(vehicle=self)
-
     def render_properties(self):
         template = templates["train_properties.pynml"]
-        rendered_properties = template(vehicle=self)
-        if self.articulated == True:
-            template = templates["trailing_part_properties.pynml"]
-            rendered_properties = template(vehicle=self) + rendered_properties
-        return rendered_properties
+        return template(vehicle=self)
 
     def render_autorefit(self):
         template = templates["autorefit_any.pynml"]
@@ -211,8 +213,11 @@ class Train(object):
 
     def render(self):
         template = templates[self.template]
-        return template(vehicle=self, global_constants=global_constants)
-
+        nml_result = template(vehicle=self, global_constants=global_constants)
+        if self.articulated:
+            for trailing_part in self.trailing_parts:
+                nml_result = trailing_part.render() + nml_result
+        return nml_result
 
 class MixinRefittableCapacity(object):
     def capacity_is_refittable_by_cargo_subtype(self):
@@ -236,6 +241,20 @@ class ModelVariant(object):
         self.intro_date = intro_date
         self.end_date = end_date
         self.spritesheet_suffix = spritesheet_suffix # use digits for these - to match spritesheet filenames
+
+class TrailingPart(Train):
+    """
+    Trailing part for articulated (not dual-headed) vehicles.
+    """
+    def __init__(self, id, parent_vehicle, **kwargs):
+        super(TrailingPart, self).__init__(id, **kwargs)
+        self.title = 'Trailing Part []'
+        self.template = 'trailing_part.pynml'
+        self.speed = 0
+        self.weight = 0
+        self.default_cargo_capacity = 0
+        self.parent_vehicle = parent_vehicle
+        self.model_variants = parent_vehicle.model_variants
 
 
 class Wagon(Train):
@@ -277,7 +296,7 @@ class SteamTenderLoco(Train):
         self.engine_class = 'ENGINE_CLASS_STEAM' #nml constant
         self.visual_effect = 'VISUAL_EFFECT_STEAM' # nml constant
         self.articulated = True
-        self.trailing_parts = self.get_trailing_parts(kwargs['trailing_part_lengths']) # pass list of trailing part lengths
+        self.trailing_parts = self.get_trailing_parts(id, self, **kwargs)
 
 
 class DieselLoco(Train):

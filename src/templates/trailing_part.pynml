@@ -1,3 +1,6 @@
+<tal:set_parent_vehicle define="global parent_vehicle vehicle.parent_vehicle" />
+
+${vehicle.render_debug_info()}
 
 <!--! this is the default template for trains that don't supply their own template -->
 
@@ -14,18 +17,18 @@ template spriteset_template_${vehicle.id}(y) {
     [284,       y,          22,        22,          ${vehicle.offsets[7][0]}, ${vehicle.offsets[7][1]}]
 }
 
-<tal:sprites_random_variations repeat="variation_num python:range(vehicle.get_num_spritesets())">
-    spriteset(${vehicle.id}_ss_not_loaded_not_moving_${variation_num}, "src/graphics/${vehicle.id}_${variation_num}.png") {
-      spriteset_template_${vehicle.id}(10)
+<tal:sprites_random_variations repeat="variation_num python:range(parent_vehicle.get_num_spritesets())">
+    spriteset(${vehicle.id}_ss_not_loaded_not_moving_${variation_num}, "src/graphics/${parent_vehicle.id}_${variation_num}.png") {
+      spriteset_template_${vehicle.id}(40)
     }
-    spriteset(${vehicle.id}_ss_not_loaded_moving_${variation_num}, "src/graphics/${vehicle.id}_${variation_num}.png") {
-      spriteset_template_${vehicle.id}(10)
+    spriteset(${vehicle.id}_ss_not_loaded_moving_${variation_num}, "src/graphics/${parent_vehicle.id}_${variation_num}.png") {
+      spriteset_template_${vehicle.id}(40)
     }
-    spriteset(${vehicle.id}_ss_loaded_not_moving_${variation_num}, "src/graphics/${vehicle.id}_${variation_num}.png") {
-      spriteset_template_${vehicle.id}(10)
+    spriteset(${vehicle.id}_ss_loaded_not_moving_${variation_num}, "src/graphics/${parent_vehicle.id}_${variation_num}.png") {
+      spriteset_template_${vehicle.id}(40)
     }
-    spriteset(${vehicle.id}_ss_loaded_moving_${variation_num}, "src/graphics/${vehicle.id}_${variation_num}.png") {
-      spriteset_template_${vehicle.id}(10)
+    spriteset(${vehicle.id}_ss_loaded_moving_${variation_num}, "src/graphics/${parent_vehicle.id}_${variation_num}.png") {
+      spriteset_template_${vehicle.id}(40)
     }
 
     spritegroup ${vehicle.id}_sg_moving_${variation_num} {
@@ -65,7 +68,7 @@ template spriteset_template_purchase_${vehicle.id}() {
     [235,   10, ${vehicle.buy_menu_width}, 15, -${vehicle.buy_menu_width / 2}, -6]
 }
 
-spriteset(${vehicle.id}_ss_purchase, "src/graphics/${vehicle.id}_0.png") {
+spriteset(${vehicle.id}_ss_purchase, "src/graphics/${parent_vehicle.id}_0.png") {
   spriteset_template_purchase_${vehicle.id}()
 }
 
@@ -77,3 +80,11 @@ spritegroup ${vehicle.id}_sg_purchase {
         ${vehicle.id}_ss_purchase,
     ];
 }
+
+${vehicle.render_autorefit()}
+
+${vehicle.render_cargo_capacity()}
+
+${vehicle.render_purchase_cargo_capacity()}
+
+${vehicle.render_properties()}

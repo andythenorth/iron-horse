@@ -41,7 +41,8 @@ standard_wagon_speed = 75
 speedy_wagon_speed = 100
 
 # set <-> numeric id mapping
-vehicle_set_id_mapping = {'univ': 0, 'brit': 1 ,'nagn': 2, 'soam': 3, 'euro': 4}
+#vehicle_set_id_mapping = {'univ': 0, 'brit': 1 ,'nagn': 2, 'soam': 3, 'euro': 4}
+vehicle_set_id_mapping = {'brit': 1}
 
 # how many generations of wagons do we have?
 # if an 'early' generation gets added, make that gen 0 and updated accordingly?  Or just shift them all?
