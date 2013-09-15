@@ -2,7 +2,7 @@ import global_constants
 from train import Train, SteamTankLoco
 
 vehicle = SteamTankLoco(id = 'awdry',
-            numeric_id = 1240,
+            numeric_id = 1230,
             title = 'Awdry [Steam]',
             replacement_id = '-none',
             buy_cost = 22,
