@@ -49,9 +49,12 @@ from vehicles import reefer_cars
 from vehicles import screamer
 from vehicles import slammer
 from vehicles import standard
+from vehicles import stanier
+from vehicles import streak
 from vehicles import suburban
 from vehicles import tank_cars
 from vehicles import whistler
+from vehicles import wordsell
 from vehicles import zebedee
 
 def get_vehicles_in_buy_menu_order(show_warnings=False):
