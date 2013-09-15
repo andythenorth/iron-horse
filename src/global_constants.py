@@ -2,6 +2,7 @@
 buy_menu_sort_order_locos = [# brit locos
                            'standard',
                            'raven',
+                           'goods',
                            'suburban',
                            'chopper',
                            'slammer',
