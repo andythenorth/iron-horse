@@ -242,6 +242,7 @@ class ModelVariant(object):
         self.end_date = end_date
         self.spritesheet_suffix = spritesheet_suffix # use digits for these - to match spritesheet filenames
 
+
 class TrailingPart(Train):
     """
     Trailing part for articulated (not dual-headed) vehicles.
