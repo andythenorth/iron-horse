@@ -61,10 +61,12 @@ class Train(object):
         # some project management stuff
         self.graphics_status = kwargs.get('graphics_status', None)
         # register vehicle with this module so other modules can use it, with a non-blocking guard on duplicate IDs
+        # don't register trailing parts, they are taken care of by their parent vehicle
         for vehicle in registered_vehicles:
             if vehicle.numeric_id == self.numeric_id:
                 utils.echo_message("Error: vehicle " + self.id + " shares duplicate id (" + str(self.numeric_id) + ") with vehicle " + vehicle.id)
-        registered_vehicles.append(self)
+        if not isinstance(self, TrailingPart):
+            registered_vehicles.append(self)
 
     def add_model_variant(self, intro_date, end_date, spritesheet_suffix):
         self.model_variants.append(ModelVariant(intro_date, end_date, spritesheet_suffix))
