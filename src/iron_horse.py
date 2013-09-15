@@ -31,6 +31,7 @@ from vehicles import registered_vehicles
 from vehicles import awdry
 from vehicles import box_cars
 from vehicles import chopper
+from vehicles import collier
 from vehicles import covered_hopper_cars
 #from vehicles import dmc_sd40
 from vehicles import flat_cars
