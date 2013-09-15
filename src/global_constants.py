@@ -4,6 +4,7 @@ buy_menu_sort_order_locos = [# brit locos
                            'raven',
                            'suburban',
                            'chopper',
+                           'slammer',
                            'whistler',
                            'zebedee',
                            'gridiron',

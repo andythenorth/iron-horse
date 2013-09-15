@@ -56,6 +56,7 @@ class Train(object):
         self.engine_class = 'ENGINE_CLASS_STEAM' # nml constant (STEAM is sane default)
         self.visual_effect = 'VISUAL_EFFECT_DISABLE' # nml constant
         self.visual_effect_offset = 0
+        self.dual_headed = 0
         self.articulated = False
         # some project management stuff
         self.graphics_status = kwargs.get('graphics_status', None)
@@ -310,6 +311,19 @@ class DieselLoco(Train):
         self.default_cargo_capacity = 0
         self.engine_class = 'ENGINE_CLASS_DIESEL' #nml constant
         self.visual_effect = 'VISUAL_EFFECT_DIESEL' # nml constant
+
+
+class DieselMultipleUnit(Train):
+    """
+    Diesel Multiple Unit.
+    """
+    def __init__(self, id, **kwargs):
+        super(DieselMultipleUnit, self).__init__(id, **kwargs)
+        self.template = 'train.pynml'
+        self.default_cargo_capacity = 0
+        self.engine_class = 'ENGINE_CLASS_DIESEL' #nml constant
+        self.visual_effect = 'VISUAL_EFFECT_DIESEL' # nml constant
+        self.dual_headed = 1
 
 
 class ElectricLoco(Train):
