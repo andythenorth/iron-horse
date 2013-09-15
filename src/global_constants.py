@@ -8,6 +8,7 @@ buy_menu_sort_order_locos = [# brit locos
                            'whistler',
                            'zebedee',
                            'gridiron',
+                           'screamer',
                             # nagn locos
                            'dmc_sd40',
                            'geep']
