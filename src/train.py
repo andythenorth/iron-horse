@@ -63,7 +63,7 @@ class Train(object):
         # register vehicle with this module so other modules can use it, with a non-blocking guard on duplicate IDs
         for vehicle in registered_vehicles:
             if vehicle.numeric_id == self.numeric_id:
-                utils.echo_message("Warning: vehicle " + self.id + " shares duplicate id (" + str(self.numeric_id) + ") with vehicle " + vehicle.id)
+                utils.echo_message("Error: vehicle " + self.id + " shares duplicate id (" + str(self.numeric_id) + ") with vehicle " + vehicle.id)
         registered_vehicles.append(self)
 
     def add_model_variant(self, intro_date, end_date, spritesheet_suffix):
