@@ -20,5 +20,9 @@ vehicle = DieselMultipleUnit(id = 'slammer',
             graphics_status = '',)
 
 vehicle.add_model_variant(intro_date=0,
-                       end_date=global_constants.max_game_date,
+                       end_date=1986,
                        spritesheet_suffix=0)
+
+vehicle.add_model_variant(intro_date=1985,
+                       end_date=global_constants.max_game_date,
+                       spritesheet_suffix=1)
