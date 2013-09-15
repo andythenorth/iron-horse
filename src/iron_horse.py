@@ -51,7 +51,7 @@ from vehicles import tank_cars
 from vehicles import whistler
 from vehicles import zebedee
 
-def get_vehicles_in_buy_menu_order():
+def get_vehicles_in_buy_menu_order(show_warnings=False):
     sorted_vehicles = []
     # first compose the buy menu order list
     buy_menu_sort_order = list(global_constants.buy_menu_sort_order_locos) # copy the list in global_constants to avoid unwanted modifications to it
@@ -68,13 +68,13 @@ def get_vehicles_in_buy_menu_order():
             if vehicle.id == id:
                 sorted_vehicles.append(vehicle)
                 found = True
-        if not found:
+        if show_warnings and not found:
             utils.echo_message("Warning: vehicle " + id + " in buy_menu_sort_order, but not found in registered_vehicles")
 
     # now guard against any vehicles missing from buy menu order, as that wastes time asking 'wtf?' when they don't appear in game
     for vehicle in registered_vehicles:
         id = vehicle.id
-        if id not in buy_menu_sort_order:
+        if show_warnings and id not in buy_menu_sort_order:
             utils.echo_message("Warning: vehicle " + id + " in registered_vehicles, but not in buy_menu_sort_order - won't show in game")
     return sorted_vehicles
 

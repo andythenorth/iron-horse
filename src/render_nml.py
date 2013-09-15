@@ -19,7 +19,7 @@ import global_constants
 # get args passed by makefile
 repo_vars = utils.get_repo_vars(sys)
 
-vehicles = iron_horse.get_vehicles_in_buy_menu_order()
+vehicles = iron_horse.get_vehicles_in_buy_menu_order(show_warnings=True)
 
 grf_nml = codecs.open(os.path.join('iron-horse.nml'),'w','utf8')
 header_items = ['header', 'cargo_table', 'disable_default_vehicles']
