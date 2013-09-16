@@ -50,7 +50,7 @@ from vehicles import screamer
 from vehicles import slammer
 from vehicles import standard
 from vehicles import stanier
-from vehicles import streak
+from vehicles import gresley
 from vehicles import suburban
 from vehicles import tank_cars
 from vehicles import whistler

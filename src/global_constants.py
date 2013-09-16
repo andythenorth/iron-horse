@@ -6,7 +6,7 @@ buy_menu_sort_order_locos = [# brit locos
                            'awdry',
                            'collier',
                            'wordsell',
-                           'streak',
+                           'gresley',
                            'stanier',
                            'suburban',
                            'chopper',
