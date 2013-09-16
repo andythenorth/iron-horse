@@ -42,6 +42,7 @@ class Train(object):
         self.power = kwargs.get('power', 0)
         self.speed = kwargs.get('speed', 0)
         self.weight = kwargs.get('weight', None)
+        self.tractive_effort_coefficient = kwargs.get('tractive_effort_coefficient', 0.3) # 0.3 is recommended default value
         # declare capacities for pax, mail and freight, as they are needed later for nml switches
         self.capacity_pax = kwargs.get('capacity_pax', 0)
         self.capacity_mail = kwargs.get('capacity_mail', 0)
