@@ -7,7 +7,7 @@ buy_menu_sort_order_locos = [# brit locos
                            'collier',
                            'wordsell',
                            'gresley',
-                           'stanier',
+                           'hellenic',
                            'suburban',
                            'chopper',
                            'slammer',

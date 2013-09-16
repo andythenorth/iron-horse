@@ -1,9 +1,9 @@
 import global_constants
 from train import Train, SteamTenderLoco
 
-vehicle = SteamTenderLoco(id = 'stanier',
+vehicle = SteamTenderLoco(id = 'hellenic',
             numeric_id = 1270,
-            title = 'Stanier [Steam]',
+            title = 'Hellenic [Steam]',
             replacement_id = '-none',
             buy_cost = 22,
             fixed_run_cost_factor = 3.5,

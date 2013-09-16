@@ -49,7 +49,7 @@ from vehicles import reefer_cars
 from vehicles import screamer
 from vehicles import slammer
 from vehicles import standard
-from vehicles import stanier
+from vehicles import hellenic
 from vehicles import gresley
 from vehicles import suburban
 from vehicles import tank_cars
