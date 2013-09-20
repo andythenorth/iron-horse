@@ -1,7 +1,7 @@
 import global_constants
 from train import Train, ReeferCar
 
-"""
+
 vehicle = ReeferCar(title = 'Reefer [Car]',
                 vehicle_set = 'brit',
                 wagon_generation = 1,
@@ -22,7 +22,7 @@ vehicle = ReeferCar(title = 'Reefer [Car]',
 vehicle.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,
                        spritesheet_suffix=0)
-"""
+
 vehicle = ReeferCar(title = 'Reefer [Car]',
                 vehicle_set = 'brit',
                 wagon_generation = 2,
