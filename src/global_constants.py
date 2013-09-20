@@ -17,8 +17,9 @@ buy_menu_sort_order_locos = [# brit locos
                            'screamer',
                            'pendolino',
                             # nagn locos
-                           'dmc_sd40',
-                           'geep']
+                           #'dmc_sd40',
+                           #'geep'
+                           ]
 
 # wagon ids are generic and are composed to specific vehicle ids elsewhere
 buy_menu_sort_order_wagons = ['passenger_car',
