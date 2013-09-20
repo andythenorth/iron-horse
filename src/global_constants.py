@@ -3,7 +3,7 @@ buy_menu_sort_order_locos = [# brit locos
                            'standard',
                            'raven',
                            'goods',
-                           'awdry',
+                           'metro',
                            'collier',
                            'wordsell',
                            'gresley',

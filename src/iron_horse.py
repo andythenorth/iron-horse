@@ -28,7 +28,6 @@ import train
 from train import Train
 from vehicles import registered_vehicles
 
-from vehicles import awdry
 from vehicles import box_cars
 from vehicles import chopper
 from vehicles import collier
@@ -41,6 +40,7 @@ from vehicles import gridiron
 from vehicles import hopper_cars
 from vehicles import livestock_cars
 from vehicles import mail_cars
+from vehicles import metro
 from vehicles import open_cars
 from vehicles import passenger_cars
 from vehicles import pendolino
