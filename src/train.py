@@ -98,11 +98,11 @@ class Train(object):
 
     def get_trailing_parts(self, id, parent_vehicle, **kwargs):
         trailing_parts = []
-        for count, length in enumerate(kwargs['trailing_part_lengths']):
+        for count, trailing_part_length in enumerate(kwargs['trailing_part_lengths']):
             vehicle_kwargs = kwargs
             trailing_part_id = self.id + '_trailing_part_' + str(count + 1)
             vehicle_kwargs['numeric_id'] = self.numeric_id + count + 1
-            trailing_parts.append(TrailingPart(trailing_part_id, parent_vehicle, **vehicle_kwargs))
+            trailing_parts.append(TrailingPart(trailing_part_id, parent_vehicle, trailing_part_length, **vehicle_kwargs))
         return trailing_parts
 
     def get_nml_random_switch_fragments_for_model_variants(self):
@@ -251,7 +251,8 @@ class TrailingPart(Train):
     """
     Trailing part for articulated (not dual-headed) vehicles.
     """
-    def __init__(self, id, parent_vehicle, **kwargs):
+    def __init__(self, id, parent_vehicle, trailing_part_length, **kwargs):
+        kwargs['vehicle_length'] = trailing_part_length
         super(TrailingPart, self).__init__(id, **kwargs)
         self.title = 'Trailing Part []'
         self.template = 'trailing_part.pynml'
