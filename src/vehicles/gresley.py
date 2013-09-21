@@ -18,7 +18,7 @@ vehicle = SteamTenderLoco(id = 'gresley',
             intro_date = 1860,
             str_type_info = 'COASTER',
             vehicle_life = 40,
-            trailing_part_lengths = [4],
+            trailing_part_lengths = [5],
             graphics_status = '',)
 
 vehicle.add_model_variant(intro_date=0,
