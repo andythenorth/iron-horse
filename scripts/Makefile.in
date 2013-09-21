@@ -12,5 +12,5 @@ iron-horse-nml:
 
 clean::
 	$(_V)-rm fish.nml
-	$(_V)-rm lang/*.lng
+	$(_V)-rm -r lang
 	$(_V)-rm -r chameleon_cache

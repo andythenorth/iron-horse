@@ -1,0 +1,8 @@
+STR_GRF_NAME                                                    :Iron Horse ${repo_vars.repo_title}
+<!--! empty string is not translated :) -->
+STR_EMPTY                                                       :
+
+<!--! vehicle names -->
+<tal:build_vehicle_names repeat="vehicle vehicles">
+STR_NAME_${vehicle.id}                                          :${vehicle.get_name_substr()} {STRING}
+</tal:build_vehicle_names>

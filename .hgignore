@@ -11,7 +11,6 @@ iron-horse*.tar.zip
 
 # Ignore files and dirs generated automatically:
 iron-horse.nml
-*.lng
 *.nfo
 *.cnfo
 *.cpnfo
@@ -21,6 +20,7 @@ iron-horse/*
 custom_tags.txt
 .version
 chameleon_cache
+lang
 
 
 # Dependency files:
