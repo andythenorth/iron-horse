@@ -205,10 +205,7 @@ class Train(object):
         return template(vehicle=self)
 
     def render_cargo_capacity(self):
-        if hasattr(self, 'capacity_is_refittable_by_cargo_subtype'):
-            template = templates["capacity_refittable.pynml"]
-        else:
-            template = templates["capacity_not_refittable.pynml"]
+        template = templates["capacity_not_refittable.pynml"]
         return template(vehicle=self)
 
     def render_purchase_cargo_capacity(self):
