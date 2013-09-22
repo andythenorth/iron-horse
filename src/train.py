@@ -226,10 +226,6 @@ class Train(object):
         template = templates["capacity_not_refittable.pynml"]
         return template(vehicle=self)
 
-    def render_purchase_cargo_capacity(self):
-        template = templates["purchase_cargo_capacity.pynml"]
-        return template(vehicle=self)
-
     def render(self):
         template = templates[self.template]
         nml_result = template(vehicle=self, global_constants=global_constants)

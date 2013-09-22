@@ -92,6 +92,4 @@ ${vehicle.render_autorefit()}
 
 ${vehicle.render_cargo_capacity()}
 
-${vehicle.render_purchase_cargo_capacity()}
-
 ${vehicle.render_properties()}
