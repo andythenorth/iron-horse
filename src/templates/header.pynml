@@ -6,7 +6,7 @@ grf {
 	version: ${repo_vars.repo_version};
 	min_compatible_version: 195;
 	param 0 {
-        param_adjust_ship_speed {
+        param_adjust_vehicle_capacity {
             type:    int;
             name:    string(STR_PARAM_ADJUST_VEHICLE_CAPACITY);
             min_value: 0;
