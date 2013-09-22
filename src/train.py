@@ -145,6 +145,11 @@ class Train(object):
             return "ALL_CLIMATES"
 
     @property
+    def special_flags(self):
+        special_flags = ['TRAIN_FLAG_2CC']
+        return ','.join(special_flags)
+
+    @property
     def running_cost(self):
         # calculate a running cost
         fixed_run_cost = self.fixed_run_cost_factor * global_constants.FIXED_RUN_COST
