@@ -13,14 +13,5 @@ STR_NAME_SUFFIX_ELECTRIC                                        :(Electric)
 STR_NAME_SUFFIX_CAR                                             :Car
 
 STR_BUY_MENU_TEXT                                               :Type: {GOLD}{STRING}{}{STRING}
-STR_BUY_MENU_REFIT_CAPACITIES_PACKET                            :{}{BLACK}Capacity when refitted: {GOLD}{COMMA} bags of mail or {COMMA}t of express freight
-STR_BUY_MENU_REFIT_CAPACITIES_TRAWLER                           :{}{BLACK}Capacity when refitted: {GOLD}{COMMA} passengers, {COMMA} bags of mail, {COMMA}t of fish in holds, or {COMMA}t of express freight as deck cargo
 
 STR_COASTER                                                     :The Cow Jumped Over the Moon (this is not finished reminder)
-
-STR_GENERIC_REFIT_SUBTYPE                                       : ({COMMA}{STRING})
-STR_GENERIC_REFIT_SUBTYPE_BUY_MENU_INFO                         :{}{BLACK}Refittable capacities: {GOLD}{COMMA}, {COMMA} or {COMMA}{STRING}
-STR_QUANTITY_WOOD                                               : tonnes of wood
-STR_QUANTITY_LIVESTOCK                                          : items of livestock
-STR_UNIT_TONNES                                                 : tonnes
-STR_UNIT_ITEMS                                                  : items
