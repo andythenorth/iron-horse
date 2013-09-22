@@ -25,8 +25,8 @@ buy_menu_sort_order_locos = [# brit locos
 # order is significant
 # format is base_id: num_generations
 from ordered_dict_backport import OrderedDict
-buy_menu_sort_order_wagons = OrderedDict([('passenger_car', 2),
-                                          ('mail_car', 2),
+buy_menu_sort_order_wagons = OrderedDict([('passenger_car', 3),
+                                          ('mail_car', 3),
                                           ('box_car', 2),
                                           ('open_car', 2),
                                           ('tank_car', 3),
