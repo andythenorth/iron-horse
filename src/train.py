@@ -44,9 +44,9 @@ class Train(object):
         self.weight = kwargs.get('weight', None)
         self.tractive_effort_coefficient = kwargs.get('tractive_effort_coefficient', 0.3) # 0.3 is recommended default value
         # declare capacities for pax, mail and freight, as they are needed later for nml switches
-        self.capacity_pax = kwargs.get('capacity_pax', 0)
-        self.capacity_mail = kwargs.get('capacity_mail', 0)
-        self.capacity_freight = kwargs.get('capacity_freight', 0)
+        self.capacities_pax = self.get_capacity_variations(kwargs.get('capacity_pax', 0))
+        self.capacities_mail = self.get_capacity_variations(kwargs.get('capacity_mail', 0))
+        self.capacities_freight = self.get_capacity_variations(kwargs.get('capacity_freight', 0))
         # create a structure to hold model variants
         self.model_variants = []
         # set defaults for props otherwise set by subclass as needed (not set by kwargs as specific models do not over-ride them)
@@ -80,6 +80,21 @@ class Train(object):
         # auto numeric_id creator, used for wagons not locos
         return id_base + (100 * global_constants.vehicle_set_id_mapping[kwargs['vehicle_set']]) + kwargs['wagon_generation']
 
+    def get_trailing_parts(self, id, parent_vehicle, **kwargs):
+        trailing_parts = []
+        for count, trailing_part_length in enumerate(kwargs['trailing_part_lengths']):
+            vehicle_kwargs = kwargs
+            trailing_part_id = self.id + '_trailing_part_' + str(count + 1)
+            vehicle_kwargs['numeric_id'] = self.numeric_id + count + 1
+            trailing_parts.append(TrailingPart(trailing_part_id, parent_vehicle, trailing_part_length, **vehicle_kwargs))
+        return trailing_parts
+
+    def get_capacity_variations(self, capacity):
+        # capacity is variable, controlled by a newgrf parameter 
+        # we cache the available variations on the vehicle instead of working them out every time - easier 
+        # allow that integer maths is needed for newgrf cb results; round up for safety
+        return [int(math.ceil(capacity * multiplier)) for multiplier in global_constants.capacity_multipliers]
+
     def get_reduced_set_of_variant_dates(self):
         # find all the unique dates that will need a switch constructing
         years = sorted(reduce(set.union, [(variant.intro_date, variant.end_date) for variant in self.model_variants], set()))
@@ -95,16 +110,7 @@ class Train(object):
             if year in range(variant.intro_date, variant.end_date):
                 result.append(variant.spritesheet_suffix)
         return result # could call set() here, but I didn't bother, shouldn't be needed if model variants set up correctly
-
-    def get_trailing_parts(self, id, parent_vehicle, **kwargs):
-        trailing_parts = []
-        for count, trailing_part_length in enumerate(kwargs['trailing_part_lengths']):
-            vehicle_kwargs = kwargs
-            trailing_part_id = self.id + '_trailing_part_' + str(count + 1)
-            vehicle_kwargs['numeric_id'] = self.numeric_id + count + 1
-            trailing_parts.append(TrailingPart(trailing_part_id, parent_vehicle, trailing_part_length, **vehicle_kwargs))
-        return trailing_parts
-
+        
     def get_nml_random_switch_fragments_for_model_variants(self):
         # return fragments of nml for use in switches
         result = []
@@ -145,6 +151,18 @@ class Train(object):
         fuel_run_cost =  self.fuel_run_cost_factor * global_constants.FUEL_RUN_COST
         calculated_run_cost = int((fixed_run_cost + fuel_run_cost) / 98) # divide by magic constant to get costs as factor in 0-255 range
         return min(calculated_run_cost, 255) # cost factor is a byte, can't exceed 255
+
+    @property
+    def capacity_pax(self):
+        return self.capacities_pax[0]
+    @property
+    
+    def capacity_mail(self):
+        return self.capacities_mail[0]
+    
+    @property
+    def capacity_freight(self):
+        return self.capacities_freight[0]
 
     @property
     def refittable_classes(self):

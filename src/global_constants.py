@@ -58,6 +58,9 @@ vehicle_set_id_mapping = {'brit': 1}
 # if an 'early' generation gets added, make that gen 0 and updated accordingly?  Or just shift them all?
 num_wagon_generations = 2
 
+# capacity multipliers for capacity parameter
+capacity_multipliers = [0.67, 1, 1.33]
+
 # used to construct the cargo table automatically
 # stolen from BANDIT code which also offered option to specify random cargo variations - that part is not currently used in FISH
 # ! order is significant ! - openttd will cascade through default cargos in the order specified by the cargo table
