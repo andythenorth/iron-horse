@@ -22,16 +22,19 @@ buy_menu_sort_order_locos = [# brit locos
                            ]
 
 # wagon ids are generic and are composed to specific vehicle ids elsewhere
-buy_menu_sort_order_wagons = ['passenger_car',
-                              'mail_car',
-                              'box_car',
-                              'open_car',
-                              'tank_car',
-                              'hopper_car',
-                              'flat_car',
-                              'livestock_car',
-                              'reefer_car',
-                              'covered_hopper_car']
+# order is significant
+# format is base_id: num_generations
+from ordered_dict_backport import OrderedDict
+buy_menu_sort_order_wagons = OrderedDict([('passenger_car', 2),
+                                          ('mail_car', 2),
+                                          ('box_car', 2),
+                                          ('open_car', 2),
+                                          ('tank_car', 2),
+                                          ('hopper_car', 2),
+                                          ('flat_car', 2),
+                                          ('livestock_car', 2),
+                                          ('reefer_car', 2),
+                                          ('covered_hopper_car', 2)])
 
 # shared lists of allowed classes, shared across multiple ship types
 base_refits_by_class = {'empty': [],
@@ -53,10 +56,6 @@ speedy_wagon_speed = 100
 # set <-> numeric id mapping
 #vehicle_set_id_mapping = {'univ': 0, 'brit': 1 ,'nagn': 2, 'soam': 3, 'euro': 4}
 vehicle_set_id_mapping = {'brit': 1}
-
-# how many generations of wagons do we have?
-# if an 'early' generation gets added, make that gen 0 and updated accordingly?  Or just shift them all?
-num_wagon_generations = 2
 
 # capacity multipliers for capacity parameter
 capacity_multipliers = [0.67, 1, 1.33]
