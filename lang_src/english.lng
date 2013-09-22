@@ -2,12 +2,10 @@
 ##plural 0
 STR_GRF_DESCRIPTION                                             :License: {SILVER}GPL v2{}{BLACK}
 
-STR_PARAM_RESET_CONSTRUCTION_COSTS                              :Use improved construction costs for canals, aqueducts and locks
-STR_PARAM_RESET_CONSTRUCTION_COSTS_DESC                         :Reduces construction (and removal) costs for canals, aqueducts and locks.  Provides a better balance between water transport and other transport types.
-STR_PARAM_ADJUST_SHIP_SPEEDS                                    :Ship speed
-STR_PARAM_ADJUST_SHIP_SPEEDS_OPTION_0                           :Like watching paint dry
-STR_PARAM_ADJUST_SHIP_SPEEDS_OPTION_1                           :Ideal
-STR_PARAM_ADJUST_SHIP_SPEEDS_OPTION_2                           :Cheating
+STR_PARAM_ADJUST_VEHICLE_CAPACITY                               :Train capacity
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :Puny
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Marvellous
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Excessive
 
 STR_NAME_SUFFIX_STEAM                                           :(Steam)
 STR_NAME_SUFFIX_DIESEL                                          :(Diesel)

@@ -4,45 +4,20 @@ grf {
 	name: string(STR_GRF_NAME);
 	desc: string(STR_GRF_DESCRIPTION);
 	version: ${repo_vars.repo_version};
-	min_compatible_version: 1000;
+	min_compatible_version: 195;
 	param 0 {
-        param_reset_construction_costs {
-            type:    bool;
-            name:    string(STR_PARAM_RESET_CONSTRUCTION_COSTS);
-            desc:    string(STR_PARAM_RESET_CONSTRUCTION_COSTS_DESC);
-            bit: 0;
-            def_value: 1;
-        }
-    }
-	param 1 {
         param_adjust_ship_speed {
             type:    int;
-            name:    string(STR_PARAM_ADJUST_SHIP_SPEEDS);
+            name:    string(STR_PARAM_ADJUST_VEHICLE_CAPACITY);
             min_value: 0;
             max_value: 2;
             def_value: 1;
             names: {
-                0: string(STR_PARAM_ADJUST_SHIP_SPEEDS_OPTION_0);
-                1: string(STR_PARAM_ADJUST_SHIP_SPEEDS_OPTION_1);
-                2: string(STR_PARAM_ADJUST_SHIP_SPEEDS_OPTION_2);
+                0: string(STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0);
+                1: string(STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1);
+                2: string(STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2);
             };
         }
-    }
-}
-
-basecost {
- 	PR_RUNNING_SHIP: 2;
- 	PR_BUILD_VEHICLE_SHIP: 2;
-}
-
-if (param_reset_construction_costs) {
-    basecost {
- 	    PR_BUILD_CANAL: -3;
- 	    PR_CLEAR_CANAL: -4;
-        PR_BUILD_AQUEDUCT: -2;
-        PR_CLEAR_AQUEDUCT: -4;
-        PR_BUILD_LOCK: -1;
-        PR_CLEAR_LOCK: -2;
     }
 }
 

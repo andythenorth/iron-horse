@@ -36,7 +36,7 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
         cargo_disallow_refit:           [${vehicle.get_label_refits_disallowed()}];
         default_cargo_type:             ${vehicle.default_cargo};
         loading_speed:                  ${vehicle.loading_speed};
-        misc_flags:                     bitmask(TRAIN_FLAG_2CC); // nml constants
+        misc_flags:                     bitmask(TRAIN_FLAG_2CC, TRAIN_FLAG_FLIP); // nml constants
         model_life:                     ${vehicle.adjusted_model_life};
         retire_early:                   ${vehicle.vehicle_life - 4}; // magic from Eddi
         reliability_decay:              20; // default value
