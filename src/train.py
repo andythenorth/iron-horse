@@ -223,7 +223,7 @@ class Train(object):
         return template(vehicle=self)
 
     def render_cargo_capacity(self):
-        template = templates["capacity_not_refittable.pynml"]
+        template = templates["capacity_switch.pynml"]
         return template(vehicle=self)
 
     def render(self):
