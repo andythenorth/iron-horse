@@ -54,6 +54,7 @@ class Train(object):
         self.class_refit_groups = []
         self.label_refits_allowed = [] # no specific labels needed
         self.label_refits_disallowed = []
+        self.autorefit = False
         self.engine_class = 'ENGINE_CLASS_STEAM' # nml constant (STEAM is sane default)
         self.visual_effect = 'VISUAL_EFFECT_DISABLE' # nml constant
         self.visual_effect_offset = 0
@@ -147,6 +148,8 @@ class Train(object):
     @property
     def special_flags(self):
         special_flags = ['TRAIN_FLAG_2CC']
+        if self.autorefit == True:
+            special_flags.append('TRAIN_FLAG_AUTOREFIT')
         return ','.join(special_flags)
 
     @property
@@ -221,10 +224,6 @@ class Train(object):
 
     def render_properties(self):
         template = templates["train_properties.pynml"]
-        return template(vehicle=self)
-
-    def render_autorefit(self):
-        template = templates["autorefit_any.pynml"]
         return template(vehicle=self)
 
     def render_cargo_capacity(self):
@@ -371,6 +370,7 @@ class PassengerCar(Wagon):
         self.class_refit_groups = ['pax']
         self.label_refits_allowed = [] # no specific labels needed
         self.label_refits_disallowed = []
+        self.autorefit = True
         self.default_cargo = 'PASS'
         self.default_cargo_capacities = self.capacities_pax
 
@@ -387,6 +387,7 @@ class MailCar(Wagon):
         self.class_refit_groups = ['mail', 'express_freight']
         self.label_refits_allowed = [] # no specific labels needed
         self.label_refits_disallowed = []
+        self.autorefit = True
         self.default_cargo = 'MAIL'
         self.default_cargo_capacities = self.capacities_mail
 
@@ -403,6 +404,7 @@ class BoxCar(Wagon):
         self.class_refit_groups = ['packaged_freight']
         self.label_refits_allowed = ['GRAI', 'WHEA', 'MAIZ'] # no specific labels needed
         self.label_refits_disallowed = []
+        self.autorefit = True
         self.default_cargo = 'GOOD'
         self.default_cargo_capacities = self.capacities_freight
 
@@ -419,6 +421,7 @@ class HopperCar(Wagon):
         self.class_refit_groups = ['hopper_freight']
         self.label_refits_allowed = []
         self.label_refits_disallowed = []
+        self.autorefit = True
         self.default_cargo = 'COAL'
         self.default_cargo_capacities = self.capacities_freight
 
@@ -435,6 +438,7 @@ class OpenCar(Wagon):
         self.class_refit_groups = ['all_freight']
         self.label_refits_allowed = [] # no specific labels needed
         self.label_refits_disallowed = []
+        self.autorefit = True
         self.default_cargo = 'GOOD'
         self.default_cargo_capacities = self.capacities_freight
 
@@ -499,6 +503,7 @@ class ReeferCar(Wagon):
         self.class_refit_groups = ['refrigerated_freight']
         self.label_refits_allowed = ['']
         self.label_refits_disallowed = []
+        self.autorefit = True
         self.default_cargo = 'FOOD'
         self.default_cargo_capacities = self.capacities_freight
 
@@ -515,5 +520,6 @@ class FlatCar(Wagon):
         self.class_refit_groups = ['flatcar_freight']
         self.label_refits_allowed = ['']
         self.label_refits_disallowed = []
+        self.autorefit = True
         self.default_cargo = 'GOOD'
         self.default_cargo_capacities = self.capacities_freight

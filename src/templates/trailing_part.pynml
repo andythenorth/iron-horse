@@ -81,8 +81,6 @@ spritegroup ${vehicle.id}_sg_purchase {
     ];
 }
 
-${vehicle.render_autorefit()}
-
 ${vehicle.render_cargo_capacity()}
 
 ${vehicle.render_properties()}
