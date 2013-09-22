@@ -47,7 +47,6 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
         cargo_capacity:                 ${vehicle.id}_switch_cargo_capacity;
         purchase_cargo_capacity:        ${vehicle.id}_switch_purchase_cargo_capacity;
         additional_text:                ${vehicle.get_buy_menu_string()};
-        cargo_subtype_text:             ${vehicle.id}_switch_cargo_subtype_text;
         refit_cost:                     ${vehicle.id}_switch_refit_cost;
         <tal:articulated condition="vehicle.articulated">
             articulated_part:               ${vehicle.id}_articulated_cb_switch;

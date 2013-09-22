@@ -8,8 +8,3 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_cargo_capacity, cargo_type_in_ve
     <tal:trawlers condition="vehicle.str_type_info.lower()=='trawler'">FISH: return ${vehicle.capacity_fish_holds};</tal:trawlers>
     ${vehicle.id}_switch_cargo_capacity_classes;
 }
-
-// -- handle subtype strings, used to aid players understand auto-refitting -- //
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_cargo_subtype_text, cargo_subtype) {
-    return CB_RESULT_NO_TEXT;
-}
