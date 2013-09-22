@@ -238,18 +238,6 @@ class Train(object):
                 nml_result = trailing_part.render() + nml_result
         return nml_result
 
-class MixinRefittableCapacity(object):
-    def capacity_is_refittable_by_cargo_subtype(self):
-        return True
-
-    def get_buy_menu_string(self):
-        buy_menu_template = Template(
-            "string(STR_BUY_MENU_TEXT, string(${str_type_info}), string(STR_GENERIC_REFIT_SUBTYPE_BUY_MENU_INFO,${capacity_0},${capacity_1},${capacity_2},string(${cargo_units})))"
-        )
-        return buy_menu_template.substitute(str_type_info=self.get_str_type_info(), capacity_0=self.capacities_refittable[0],
-                                        capacity_1=self.capacities_refittable[1], capacity_2=self.capacities_refittable[2],
-                                        cargo_units=self.cargo_units_buy_menu)
-
 
 class ModelVariant(object):
     # simple class to hold model variants

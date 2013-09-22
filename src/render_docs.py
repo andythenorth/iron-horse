@@ -48,7 +48,7 @@ repo_vars = utils.get_repo_vars(sys)
 base_lang_strings = utils.parse_base_lang()
 
 import iron_horse
-from train import Train, MixinRefittableCapacity
+from train import Train
 
 vehicles = iron_horse.get_vehicles_in_buy_menu_order()
 # default sort for docs is by vehicle intro date
@@ -92,8 +92,6 @@ class DocHelper(object):
             result = self.fetch_prop(result, 'Capacity Pax', vehicle.capacity_pax)
             result = self.fetch_prop(result, 'Capacity Mail', vehicle.capacity_mail)
             result = self.fetch_prop(result, 'Capacity Freight', vehicle.capacity_freight)
-            if isinstance(vehicle, MixinRefittableCapacity):
-                result = self.fetch_prop(result, 'Capacities Refittable', ', '.join(str(i) for i in vehicle.capacities_refittable))
             result = self.fetch_prop(result, 'Buy Cost', vehicle.buy_cost)
             result = self.fetch_prop(result, 'Running Cost', vehicle.running_cost)
             result = self.fetch_prop(result, 'Loading Speed', vehicle.loading_speed)
