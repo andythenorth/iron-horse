@@ -4,7 +4,7 @@ from train import Train, TankCar
 vehicle = TankCar(title = 'Tank [Car]',
                 vehicle_set = 'brit',
                 wagon_generation = 1,
-                capacity_freight = 35,
+                capacity_freight = 20,
                 replacement_id = '-none',
                 buy_cost = 22,
                 fixed_run_cost_factor = 3.5,
@@ -25,7 +25,7 @@ vehicle.add_model_variant(intro_date=0,
 vehicle = TankCar(title = 'Tank [Car]',
                 vehicle_set = 'brit',
                 wagon_generation = 2,
-                capacity_freight = 75,
+                capacity_freight = 35, 
                 replacement_id = '-none',
                 buy_cost = 22,
                 fixed_run_cost_factor = 3.5,
@@ -42,6 +42,8 @@ vehicle = TankCar(title = 'Tank [Car]',
 vehicle.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,
                        spritesheet_suffix=0)
+
+# 3rd gen bogie tank wagon = 75t
 
 """
 vehicle = TankCar(title = 'Tank [Car]',
