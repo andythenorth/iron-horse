@@ -19,7 +19,7 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
         visual_effect_and_powered:      visual_effect(${vehicle.visual_effect}, ${vehicle.visual_effect_offset});
         dual_headed:                    ${vehicle.dual_headed};
         introduction_date:              date(${vehicle.intro_date},01,01); // vehicle just supplies intro year - openttd randomises intro dates a bit anyway
-        cargo_capacity:                 ${vehicle.default_cargo_capacity};
+        cargo_capacity:                 ${vehicle.default_cargo_capacities[0]};
         sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
         power:                          ${vehicle.power}hp;
         <tal:speed_is_optional condition="vehicle.speed is not None">

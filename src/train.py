@@ -273,7 +273,7 @@ class TrailingPart(Train):
         self.template = 'trailing_part.pynml'
         self.speed = 0
         self.weight = 0
-        self.default_cargo_capacity = 0
+        self.default_cargo_capacities = [0]
         self.parent_vehicle = parent_vehicle
         self.model_variants = parent_vehicle.model_variants
 
@@ -301,7 +301,7 @@ class SteamTankLoco(Train):
     def __init__(self, id, **kwargs):
         super(SteamTankLoco, self).__init__(id, **kwargs)
         self.template = 'train.pynml'
-        self.default_cargo_capacity = 0
+        self.default_cargo_capacities = [0]
         self.engine_class = 'ENGINE_CLASS_STEAM' #nml constant
         self.visual_effect = 'VISUAL_EFFECT_STEAM' # nml constant
 
@@ -313,7 +313,7 @@ class SteamTenderLoco(Train):
     def __init__(self, id, **kwargs):
         super(SteamTenderLoco, self).__init__(id, **kwargs)
         self.template = 'train.pynml'
-        self.default_cargo_capacity = 0
+        self.default_cargo_capacities = [0]
         self.engine_class = 'ENGINE_CLASS_STEAM' #nml constant
         self.visual_effect = 'VISUAL_EFFECT_STEAM' # nml constant
         self.articulated = True
@@ -327,7 +327,7 @@ class DieselLoco(Train):
     def __init__(self, id, **kwargs):
         super(DieselLoco, self).__init__(id, **kwargs)
         self.template = 'train.pynml'
-        self.default_cargo_capacity = 0
+        self.default_cargo_capacities = [0]
         self.engine_class = 'ENGINE_CLASS_DIESEL' #nml constant
         self.visual_effect = 'VISUAL_EFFECT_DIESEL' # nml constant
 
@@ -339,7 +339,7 @@ class DieselMultipleUnit(Train):
     def __init__(self, id, **kwargs):
         super(DieselMultipleUnit, self).__init__(id, **kwargs)
         self.template = 'train.pynml'
-        self.default_cargo_capacity = 0
+        self.default_cargo_capacities = [0]
         self.engine_class = 'ENGINE_CLASS_DIESEL' #nml constant
         self.visual_effect = 'VISUAL_EFFECT_DIESEL' # nml constant
         self.dual_headed = 1
@@ -352,7 +352,7 @@ class ElectricLoco(Train):
     def __init__(self, id, **kwargs):
         super(ElectricLoco, self).__init__(id, **kwargs)
         self.template = 'train.pynml'
-        self.default_cargo_capacity = 0
+        self.default_cargo_capacities = [0]
         self.engine_class = 'ENGINE_CLASS_ELECTRIC' #nml constant
         self.visual_effect = 'VISUAL_EFFECT_ELECTRIC' # nml constant
 
@@ -364,7 +364,7 @@ class ElectricMultipleUnit(Train):
     def __init__(self, id, **kwargs):
         super(ElectricMultipleUnit, self).__init__(id, **kwargs)
         self.template = 'train.pynml'
-        self.default_cargo_capacity = 0
+        self.default_cargo_capacities = [0]
         self.engine_class = 'ENGINE_CLASS_ELECTRIC' #nml constant
         self.visual_effect = 'VISUAL_EFFECT_ELECTRIC' # nml constant
         self.dual_headed = 1
@@ -383,7 +383,7 @@ class PassengerCar(Wagon):
         self.label_refits_allowed = [] # no specific labels needed
         self.label_refits_disallowed = []
         self.default_cargo = 'PASS'
-        self.default_cargo_capacity = self.capacity_pax
+        self.default_cargo_capacities = self.capacities_pax
 
 
 class MailCar(Wagon):
@@ -399,7 +399,7 @@ class MailCar(Wagon):
         self.label_refits_allowed = [] # no specific labels needed
         self.label_refits_disallowed = []
         self.default_cargo = 'MAIL'
-        self.default_cargo_capacity = self.capacity_mail
+        self.default_cargo_capacities = self.capacities_mail
 
 
 class BoxCar(Wagon):
@@ -415,7 +415,7 @@ class BoxCar(Wagon):
         self.label_refits_allowed = ['GRAI', 'WHEA', 'MAIZ'] # no specific labels needed
         self.label_refits_disallowed = []
         self.default_cargo = 'GOOD'
-        self.default_cargo_capacity = self.capacity_freight
+        self.default_cargo_capacities = self.capacities_freight
 
 
 class HopperCar(Wagon):
@@ -431,7 +431,7 @@ class HopperCar(Wagon):
         self.label_refits_allowed = []
         self.label_refits_disallowed = []
         self.default_cargo = 'COAL'
-        self.default_cargo_capacity = self.capacity_freight
+        self.default_cargo_capacities = self.capacities_freight
 
 
 class OpenCar(Wagon):
@@ -447,7 +447,7 @@ class OpenCar(Wagon):
         self.label_refits_allowed = [] # no specific labels needed
         self.label_refits_disallowed = []
         self.default_cargo = 'GOOD'
-        self.default_cargo_capacity = self.capacity_freight
+        self.default_cargo_capacities = self.capacities_freight
 
 
 class TankCar(Wagon):
@@ -463,7 +463,7 @@ class TankCar(Wagon):
         self.label_refits_allowed = [] # no specific labels needed
         self.label_refits_disallowed = []
         self.default_cargo = 'OIL_'
-        self.default_cargo_capacity = self.capacity_freight
+        self.default_cargo_capacities = self.capacities_freight
 
 
 class LivestockCar(Wagon):
@@ -479,7 +479,7 @@ class LivestockCar(Wagon):
         self.label_refits_allowed = ['LVST'] # no specific labels needed
         self.label_refits_disallowed = []
         self.default_cargo = 'LVST'
-        self.default_cargo_capacity = self.capacity_freight
+        self.default_cargo_capacities = self.capacities_freight
 
 
 class CoveredHopperCar(Wagon):
@@ -495,7 +495,7 @@ class CoveredHopperCar(Wagon):
         self.label_refits_allowed = ['GRAI']
         self.label_refits_disallowed = []
         self.default_cargo = 'GRAI'
-        self.default_cargo_capacity = self.capacity_freight
+        self.default_cargo_capacities = self.capacities_freight
 
 
 class ReeferCar(Wagon):
@@ -511,7 +511,7 @@ class ReeferCar(Wagon):
         self.label_refits_allowed = ['']
         self.label_refits_disallowed = []
         self.default_cargo = 'FOOD'
-        self.default_cargo_capacity = self.capacity_freight
+        self.default_cargo_capacities = self.capacities_freight
 
 
 class FlatCar(Wagon):
@@ -527,4 +527,4 @@ class FlatCar(Wagon):
         self.label_refits_allowed = ['']
         self.label_refits_disallowed = []
         self.default_cargo = 'GOOD'
-        self.default_cargo_capacity = self.capacity_freight
+        self.default_cargo_capacities = self.capacities_freight
