@@ -1,0 +1,17 @@
+##grflangid 0x5a
+##plural 1
+STR_GRF_DESCRIPTION                                             :Lisensi: {SILVER}GPL v2{}{BLACK}
+
+STR_PARAM_ADJUST_VEHICLE_CAPACITY                               :Kapasitas kereta
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :Kecil
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Hebat
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Terlalu banyak
+
+STR_NAME_SUFFIX_STEAM                                           :(Uap)
+STR_NAME_SUFFIX_DIESEL                                          :(Diesel)
+STR_NAME_SUFFIX_ELECTRIC                                        :(Listrik)
+STR_NAME_SUFFIX_CAR                                             :Gerbong
+
+STR_BUY_MENU_TEXT                                               :Jenis: {GOLD}{STRING}{}{STRING}
+
+STR_COASTER                                                     :Sapi Melompati Atas Bulan (pengingat itu adalah ini belum selesai)
