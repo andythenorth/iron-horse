@@ -217,6 +217,11 @@ class Train(object):
 
     def get_cargo_suffix(self):
         return 'string(' + self.cargo_units_refit_menu + ')'
+        
+    def assert_cargo_labels(self, cargo_labels):
+        for i in cargo_labels:
+            if i not in global_constants.cargo_graphics_mappings:
+                utils.echo_message("Warning: vehicle " + self.id + " references cargo label " + i + " which is not defined in the cargo table")                
 
     def render_debug_info(self):
         template = templates["debug_info.pynml"]
@@ -231,6 +236,10 @@ class Train(object):
         return template(vehicle=self)
 
     def render(self):
+        # integrity tests
+        self.assert_cargo_labels(self.label_refits_allowed)
+        self.assert_cargo_labels(self.label_refits_disallowed)
+        # templating
         template = templates[self.template]
         nml_result = template(vehicle=self, global_constants=global_constants)
         if self.articulated:
