@@ -62,7 +62,7 @@ capacity_multipliers = [0.67, 1, 1.33]
 
 # used to construct the cargo table automatically
 # ! order is significant ! - openttd will cascade through default cargos in the order specified by the cargo table
-cargo_graphics_mappings = ['PASS', # pax first
+cargo_labels = ['PASS', # pax first
                            'TOUR',
                            # "the mail must get through"
                            'MAIL',

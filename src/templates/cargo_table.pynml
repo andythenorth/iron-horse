@@ -5,7 +5,7 @@
  */
 
 cargotable {
-    <tal:build_cargo_table repeat="cargo global_constants.cargo_graphics_mappings">
+    <tal:build_cargo_table repeat="cargo global_constants.cargo_labels">
     ${cargo},
     </tal:build_cargo_table>
 }

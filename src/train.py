@@ -220,7 +220,7 @@ class Train(object):
         
     def assert_cargo_labels(self, cargo_labels):
         for i in cargo_labels:
-            if i not in global_constants.cargo_graphics_mappings:
+            if i not in global_constants.cargo_labels:
                 utils.echo_message("Warning: vehicle " + self.id + " references cargo label " + i + " which is not defined in the cargo table")                
 
     def render_debug_info(self):
