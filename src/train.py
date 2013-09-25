@@ -462,7 +462,10 @@ class OpenCar(Wagon):
         self.num_cargo_rows = 15
         # mappings are to rows in the spritesheet, 0-based (0 is also default)
         # also get the allowed label refits from the graphics mapping - use row 0 if there's no specific graphics for the label 
-        self.cargo_graphics_mappings = {'AORE': 1, 'COAL': 2, 'RFPR': 1}
+        self.cargo_graphics_mappings = {'AORE': 1, 'COAL': 2, 'SAND': 3, 'CORE': 4, 'LIME': 5, 
+                                        'SCMT': 6, 'IORE': 7, 'GRVL': 8, 'GRAI': 10, 'WHEA': 10,
+                                        'MAIZ': 10, 'FICR': 11, 'SGCN': 11, 'OLSD': 12, 'CLAY': 13,
+                                        'FRUT': 14, 'FRVG': 14}
         self.label_refits_allowed = self.cargo_graphics_mappings.keys() 
         self.label_refits_disallowed = []
         self.autorefit = True

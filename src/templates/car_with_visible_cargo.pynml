@@ -5,17 +5,35 @@ ${vehicle.render_debug_info()}
 <tal:include define="vehicle_offsets_standard load: vehicle_offsets_standard.pynml" metal:use-macro="vehicle_offsets_standard" />
 
 <tal:sprites_random_variations repeat="variation_num python:range(vehicle.get_num_spritesets())">
+    spriteset(${vehicle.id}_ss_empty_${variation_num}, "src/graphics/${vehicle.id}_${variation_num}.png") {
+      spriteset_template_${vehicle.id}(10)
+    }
+
     <tal:cargo_variants repeat="cargo_variant_num python:range(vehicle.num_cargo_rows)">
-        spriteset(${vehicle.id}_ss_${variation_num}_${cargo_variant_num}, "src/graphics/${vehicle.id}_${variation_num}.png") {
-          spriteset_template_${vehicle.id}(10 + ${cargo_variant_num * 30})
+        spriteset(${vehicle.id}_ss_loading_1_${variation_num}_${cargo_variant_num}, "src/graphics/${vehicle.id}_${variation_num}.png") {
+          spriteset_template_${vehicle.id}(40 + ${cargo_variant_num * 90})
+        }
+        spriteset(${vehicle.id}_ss_loading_2_${variation_num}_${cargo_variant_num}, "src/graphics/${vehicle.id}_${variation_num}.png") {
+          spriteset_template_${vehicle.id}(70 + ${cargo_variant_num * 90})
+        }
+        spriteset(${vehicle.id}_ss_loaded_${variation_num}_${cargo_variant_num}, "src/graphics/${vehicle.id}_${variation_num}.png") {
+          spriteset_template_${vehicle.id}(100 + ${cargo_variant_num * 90})
         }
 
         spritegroup ${vehicle.id}_sg_${variation_num}_${cargo_variant_num} {
             loaded:  [
-                ${vehicle.id}_ss_${variation_num}_${cargo_variant_num},
+                ${vehicle.id}_ss_empty_${variation_num},
+                ${vehicle.id}_ss_loading_1_${variation_num}_${cargo_variant_num},
+                ${vehicle.id}_ss_loading_1_${variation_num}_${cargo_variant_num}, // deliberately doubled first loading stage
+                ${vehicle.id}_ss_loading_2_${variation_num}_${cargo_variant_num},
+                ${vehicle.id}_ss_loaded_${variation_num}_${cargo_variant_num},
             ];
             loading: [
-                ${vehicle.id}_ss_${variation_num}_${cargo_variant_num},
+                ${vehicle.id}_ss_empty_${variation_num},
+                ${vehicle.id}_ss_loading_1_${variation_num}_${cargo_variant_num},
+                ${vehicle.id}_ss_loading_1_${variation_num}_${cargo_variant_num}, // deliberately doubled first loading stage
+                ${vehicle.id}_ss_loading_2_${variation_num}_${cargo_variant_num},
+                ${vehicle.id}_ss_loaded_${variation_num}_${cargo_variant_num},
             ];
         }
     </tal:cargo_variants>
