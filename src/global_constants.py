@@ -61,7 +61,7 @@ vehicle_set_id_mapping = {'brit': 1}
 capacity_multipliers = [0.67, 1, 1.33]
 
 # used to construct the cargo table automatically
-# stolen from BANDIT code which also offered option to specify random cargo variations - that part is not currently used in FISH
+# stolen from BANDIT code which also offered option to specify random cargo variations - that part is not currently used in Iron Horse
 # ! order is significant ! - openttd will cascade through default cargos in the order specified by the cargo table
 from ordered_dict_backport import OrderedDict
 cargo_graphics_mappings = OrderedDict([('PASS', []), # pax first
