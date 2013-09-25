@@ -5,21 +5,16 @@ ${vehicle.render_debug_info()}
 <tal:include define="vehicle_offsets_standard load: vehicle_offsets_standard.pynml" metal:use-macro="vehicle_offsets_standard" />
 
 <tal:sprites_random_variations repeat="variation_num python:range(vehicle.get_num_spritesets())">
-    spriteset(${vehicle.id}_ss_not_loaded_${variation_num}, "src/graphics/${vehicle.id}_${variation_num}.png") {
-      spriteset_template_${vehicle.id}(10)
-    }
-    spriteset(${vehicle.id}_ss_loaded_${variation_num}, "src/graphics/${vehicle.id}_${variation_num}.png") {
+    spriteset(${vehicle.id}_ss_${variation_num}, "src/graphics/${vehicle.id}_${variation_num}.png") {
       spriteset_template_${vehicle.id}(10)
     }
 
     spritegroup ${vehicle.id}_sg_${variation_num} {
         loaded:  [
-            ${vehicle.id}_ss_not_loaded_${variation_num},
-            ${vehicle.id}_ss_loaded_${variation_num},
+            ${vehicle.id}_ss_${variation_num},
         ];
         loading: [
-            ${vehicle.id}_ss_not_loaded_${variation_num},
-            ${vehicle.id}_ss_loaded_${variation_num},
+            ${vehicle.id}_ss_${variation_num},
         ];
     }
     // always include a switch to get to spritegroups even if it does nothing - the random switches need to route to it
