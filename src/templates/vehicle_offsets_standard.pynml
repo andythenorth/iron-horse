@@ -1,4 +1,5 @@
 // graphics
+
 template spriteset_template_${vehicle.id}(y) {
     //[left_x,  upper_y,    width,      height,     offset_x,      offset_y]
     [60,        y,          8,         25,          ${vehicle.offsets[0][0]}, ${vehicle.offsets[0][1]}]

@@ -2,7 +2,7 @@
 
 ${vehicle.render_debug_info()}
 
-<tal:include define="vehicle_offsets load: vehicle_offsets.pynml" metal:use-macro="vehicle_offsets" />
+<tal:include define="vehicle_offsets_standard load: vehicle_offsets_standard.pynml" metal:use-macro="vehicle_offsets_standard" />
 
 <tal:sprites_random_variations repeat="variation_num python:range(parent_vehicle.get_num_spritesets())">
     spriteset(${vehicle.id}_ss_not_loaded_not_moving_${variation_num}, "src/graphics/${parent_vehicle.id}_${variation_num}.png") {
@@ -48,7 +48,7 @@ ${vehicle.render_debug_info()}
 
 <tal:include define="graphics_random_switches load: graphics_random_switches.pynml" metal:use-macro="graphics_random_switches" />
 
-// buy menu graphics
+// buy menu graphics - special cased for trailing parts, don't use the common template
 
 template spriteset_template_purchase_${vehicle.id}() {
     //[left_x,  upper_y,    width,      height,     offset_x,      offset_y]
