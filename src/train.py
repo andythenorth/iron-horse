@@ -460,7 +460,7 @@ class TankCar(Wagon):
         id = self.get_id('tank_car', **kwargs)
         super(TankCar, self).__init__(id, **kwargs)
         self.numeric_id = self.get_numeric_id(15000, **kwargs)
-        self.template = 'train.pynml'
+        self.template = 'tank_car.pynml'
         self.class_refit_groups = ['liquids']
         self.label_refits_allowed = [] # no specific labels needed
         self.label_refits_disallowed = []

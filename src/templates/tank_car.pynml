@@ -1,0 +1,69 @@
+${vehicle.render_debug_info()}
+
+<!--! this is the default template for trains that don't supply their own template -->
+
+<tal:include define="vehicle_offsets_standard load: vehicle_offsets_standard.pynml" metal:use-macro="vehicle_offsets_standard" />
+
+<tal:sprites_random_variations repeat="variation_num python:range(vehicle.get_num_spritesets())">
+    spriteset(${vehicle.id}_ss_not_loaded_not_moving_${variation_num}, "src/graphics/${vehicle.id}_${variation_num}.png") {
+      spriteset_template_${vehicle.id}(10)
+    }
+    spriteset(${vehicle.id}_ss_not_loaded_moving_${variation_num}, "src/graphics/${vehicle.id}_${variation_num}.png") {
+      spriteset_template_${vehicle.id}(10)
+    }
+    spriteset(${vehicle.id}_ss_loaded_not_moving_${variation_num}, "src/graphics/${vehicle.id}_${variation_num}.png") {
+      spriteset_template_${vehicle.id}(10)
+    }
+    spriteset(${vehicle.id}_ss_loaded_moving_${variation_num}, "src/graphics/${vehicle.id}_${variation_num}.png") {
+      spriteset_template_${vehicle.id}(10)
+    }
+
+    spritegroup ${vehicle.id}_sg_moving_${variation_num} {
+        loaded:  [
+            ${vehicle.id}_ss_not_loaded_moving_${variation_num},
+            ${vehicle.id}_ss_loaded_moving_${variation_num},
+        ];
+        loading: [ // can't be loading when moving, but we'll overlook that, it's required by nml ;)
+            ${vehicle.id}_ss_not_loaded_moving_${variation_num},
+            ${vehicle.id}_ss_loaded_moving_${variation_num},
+        ];
+    }
+
+    spritegroup ${vehicle.id}_sg_not_moving_${variation_num} {
+        loaded:  [
+            ${vehicle.id}_ss_not_loaded_not_moving_${variation_num},
+            ${vehicle.id}_ss_loaded_not_moving_${variation_num},
+        ];
+        loading: [
+            ${vehicle.id}_ss_not_loaded_not_moving_${variation_num},
+            ${vehicle.id}_ss_loaded_not_moving_${variation_num},
+        ];
+    }
+
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${variation_num}, current_speed) {
+        0: return ${vehicle.id}_sg_not_moving_${variation_num};
+        return ${vehicle.id}_sg_moving_${variation_num};
+    }
+</tal:sprites_random_variations>
+
+<tal:include define="graphics_random_switches load: graphics_random_switches.pynml" metal:use-macro="graphics_random_switches" />
+
+// buy menu graphics
+<tal:include define="vehicle_offsets_buy_menu load: vehicle_offsets_buy_menu.pynml" metal:use-macro="vehicle_offsets_buy_menu" />
+
+spriteset(${vehicle.id}_ss_purchase, "src/graphics/${vehicle.id}_0.png") {
+  spriteset_template_purchase_${vehicle.id}()
+}
+
+spritegroup ${vehicle.id}_sg_purchase {
+    loaded:  [
+        ${vehicle.id}_ss_purchase,
+    ];
+    loading: [
+        ${vehicle.id}_ss_purchase,
+    ];
+}
+
+${vehicle.render_cargo_capacity()}
+
+${vehicle.render_properties()}
