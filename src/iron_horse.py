@@ -29,6 +29,7 @@ from train import Train
 from vehicles import registered_vehicles
 
 from vehicles import box_cars
+from vehicles import caboose_cars
 from vehicles import chopper
 from vehicles import collier
 from vehicles import covered_hopper_cars

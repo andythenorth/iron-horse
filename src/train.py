@@ -401,6 +401,20 @@ class MailCar(Wagon):
         self.default_cargo_capacities = self.capacities_mail
 
 
+class CabooseCar(Wagon):
+    """
+    Caboose (Brake Van).
+    """
+    def __init__(self, **kwargs):
+        id = self.get_id('caboose_car', speedy=True, **kwargs)
+        super(CabooseCar, self).__init__(id, **kwargs)
+        self.numeric_id = self.get_numeric_id(20000, **kwargs)
+        self.template = 'train.pynml'
+        self.class_refit_groups = []
+        self.default_cargo_capacities = [0]
+        self.loading_speed = 0
+
+
 class BoxCar(Wagon):
     """
     Boxcar.
