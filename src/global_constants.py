@@ -61,59 +61,57 @@ vehicle_set_id_mapping = {'brit': 1}
 capacity_multipliers = [0.67, 1, 1.33]
 
 # used to construct the cargo table automatically
-# stolen from BANDIT code which also offered option to specify random cargo variations - that part is not currently used in Iron Horse
 # ! order is significant ! - openttd will cascade through default cargos in the order specified by the cargo table
-from ordered_dict_backport import OrderedDict
-cargo_graphics_mappings = OrderedDict([('PASS', []), # pax first
-                                       ('TOUR', []),
-                                       # "the mail must get through"
-                                       ('MAIL', []),
-                                       # bulk-ish cargos
-                                       ('COAL', []),
-                                       ('IORE', []),
-                                       ('GRVL', []),
-                                       ('SAND', []),
-                                       ('AORE', []),
-                                       ('CORE', []),
-                                       ('CLAY', []),
-                                       ('SCMT', []),
-                                       ('WOOD', []),
-                                       ('LIME', []),
-                                       # common express-ish / processed cargos
-                                       ('GOOD', []),
-                                       ('FOOD', []),
-                                       ('STEL', []),
-                                       ('FMSP', []),
-                                       ('ENSP', []),
-                                       ('BEER', []),
-                                       ('BDMT', []),
-                                       ('MNSP', []),
-                                       ('PAPR', []),
-                                       ('WDPR', []),
-                                       ('VEHI', []),
-                                       ('COPR', []),
-                                       ('DYES', []),
-                                       # liquid-ish cargos
-                                       ('OIL_', []),
-                                       ('RFPR', []),
-                                       ('PETR', []),
-                                       ('PLAS', []),
-                                       ('WATR', []),
-                                       # fish and farm cargos
-                                       ('FISH', []),
-                                       ('CERE', []),
-                                       ('FICR', []),
-                                       ('FRVG', []),
-                                       ('FRUT', []),
-                                       ('GRAI', []),
-                                       ('LVST', []),
-                                       ('MAIZ', []),
-                                       ('MILK', []),
-                                       ('RUBR', []),
-                                       ('SGBT', []),
-                                       ('SGCN', []),
-                                       ('WHEA', []),
-                                       ('WOOL', [])])
+cargo_graphics_mappings = ['PASS', # pax first
+                           'TOUR',
+                           # "the mail must get through"
+                           'MAIL',
+                           # bulk-ish cargos
+                           'COAL',
+                           'IORE',
+                           'GRVL',
+                           'SAND',
+                           'AORE',
+                           'CORE',
+                           'CLAY',
+                           'SCMT',
+                           'WOOD',
+                           'LIME',
+                           # common express-ish / processed cargos
+                           'GOOD',
+                           'FOOD',
+                           'STEL',
+                           'FMSP',
+                           'ENSP',
+                           'BEER',
+                           'BDMT',
+                           'MNSP',
+                           'PAPR',
+                           'WDPR',
+                           'VEHI',
+                           'COPR',
+                           'DYES',
+                           # liquid-ish cargos
+                           'OIL_',
+                           'RFPR',
+                           'PETR',
+                           'PLAS',
+                           'WATR',
+                           # fish and farm cargos
+                           'FISH',
+                           'CERE',
+                           'FICR',
+                           'FRVG',
+                           'FRUT',
+                           'GRAI',
+                           'LVST',
+                           'MAIZ',
+                           'MILK',
+                           'RUBR',
+                           'SGBT',
+                           'SGCN',
+                           'WHEA',
+                           'WOOL']
 
 # this is for nml, don't need to use python path module here
 graphics_path = 'src/graphics/'
