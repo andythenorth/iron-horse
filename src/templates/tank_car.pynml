@@ -7,7 +7,7 @@ ${vehicle.render_debug_info()}
 <tal:sprites_random_variations repeat="variation_num python:range(vehicle.get_num_spritesets())">
     <tal:cargo_variants repeat="cargo_variant_num python:range(3)">
         spriteset(${vehicle.id}_ss_${variation_num}_${cargo_variant_num}, "src/graphics/${vehicle.id}_${variation_num}.png") {
-          spriteset_template_${vehicle.id}(10)
+          spriteset_template_${vehicle.id}(10 + ${cargo_variant_num * 30})
         }
 
         spritegroup ${vehicle.id}_sg_${variation_num}_${cargo_variant_num} {
@@ -20,8 +20,8 @@ ${vehicle.render_debug_info()}
         }
     </tal:cargo_variants>
     // always include a switch to get to spritegroups even if it does nothing - the random switches need to route to it
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${variation_num}, 0) {
-        0: return ${vehicle.id}_sg_${variation_num}_0;
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${variation_num}, cargo_type_in_veh) {
+        MILK: return ${vehicle.id}_sg_${variation_num}_2;
         return ${vehicle.id}_sg_${variation_num}_0;
     }
 </tal:sprites_random_variations>
