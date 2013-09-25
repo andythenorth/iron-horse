@@ -389,8 +389,8 @@ class MailCar(Wagon):
     Mail Carriage.
     """
     def __init__(self, **kwargs):
-        id = self.get_id('mail_car', speedy=True, **kwargs)
-        super(MailCar, self).__init__(id, **kwargs)
+        id = self.get_id('mail_car', **kwargs)
+        super(MailCar, self).__init__(id, speedy=True, **kwargs)
         self.numeric_id = self.get_numeric_id(11000, **kwargs)
         self.template = 'train.pynml'
         self.class_refit_groups = ['mail', 'express_freight']
@@ -406,13 +406,13 @@ class CabooseCar(Wagon):
     Caboose (Brake Van).
     """
     def __init__(self, **kwargs):
-        id = self.get_id('caboose_car', speedy=True, **kwargs)
+        id = self.get_id('caboose_car', **kwargs)
         super(CabooseCar, self).__init__(id, **kwargs)
         self.numeric_id = self.get_numeric_id(20000, **kwargs)
         self.template = 'train.pynml'
-        self.class_refit_groups = []
         self.default_cargo_capacities = [0]
         self.loading_speed = 0
+        self.speed = 0
 
 
 class BoxCar(Wagon):
