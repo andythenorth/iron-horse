@@ -457,9 +457,13 @@ class OpenCar(Wagon):
         id = self.get_id('open_car', **kwargs)
         super(OpenCar, self).__init__(id, **kwargs)
         self.numeric_id = self.get_numeric_id(14000, **kwargs)
-        self.template = 'train.pynml'
+        self.template = 'car_with_visible_cargo.pynml'
         self.class_refit_groups = ['all_freight']
-        self.label_refits_allowed = [] # no specific labels needed
+        self.num_cargo_rows = 15
+        # mappings are to rows in the spritesheet, 0-based (0 is also default)
+        # also get the allowed label refits from the graphics mapping - use row 0 if there's no specific graphics for the label 
+        self.cargo_graphics_mappings = {'AORE': 1, 'COAL': 2, 'RFPR': 1}
+        self.label_refits_allowed = self.cargo_graphics_mappings.keys() 
         self.label_refits_disallowed = []
         self.autorefit = True
         self.default_cargo = 'GOOD'
