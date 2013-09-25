@@ -1,0 +1,17 @@
+##grflangid 0x1f
+##plural 0
+STR_GRF_DESCRIPTION                                             :Licentie: {SILVER}GPL v2{}{BLACK}
+
+STR_PARAM_ADJUST_VEHICLE_CAPACITY                               :Trein capaciteit
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :Zielig
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Geweldig
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Extravagant
+
+STR_NAME_SUFFIX_STEAM                                           :(Stoom)
+STR_NAME_SUFFIX_DIESEL                                          :(Diesel)
+STR_NAME_SUFFIX_ELECTRIC                                        :(Elektrisch)
+STR_NAME_SUFFIX_CAR                                             :Auto
+
+STR_BUY_MENU_TEXT                                               :Type: {GOLD}{STRING}{}{STRING}
+
+STR_COASTER                                                     :De koe sprong over de maan (herinnering dat dit nog niet af is)
