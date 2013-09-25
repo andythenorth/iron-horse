@@ -21,9 +21,9 @@ ${vehicle.render_debug_info()}
     </tal:cargo_variants>
     // always include a switch to get to spritegroups even if it does nothing - the random switches need to route to it
     switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${variation_num}, cargo_type_in_veh) {
-        FMSP: return ${vehicle.id}_sg_${variation_num}_1;
-        MILK: return ${vehicle.id}_sg_${variation_num}_2;
-        RFPR: return ${vehicle.id}_sg_${variation_num}_1;
+        <tal:cargos repeat="mapping vehicle.cargo_graphics_mappings.items()">
+            ${mapping[0]}: return ${vehicle.id}_sg_${variation_num}_${mapping[1]};
+        </tal:cargos>
         return ${vehicle.id}_sg_${variation_num}_0;
     }
 </tal:sprites_random_variations>

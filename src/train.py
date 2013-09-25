@@ -462,7 +462,9 @@ class TankCar(Wagon):
         self.numeric_id = self.get_numeric_id(15000, **kwargs)
         self.template = 'tank_car.pynml'
         self.class_refit_groups = ['liquids']
-        self.label_refits_allowed = ['FMSP'] # no specific labels needed
+        # mappings are to rows in the spritesheet, 0-based
+        self.cargo_graphics_mappings = {'FMSP': 1, 'MILK': 2, 'RFPR': 1}
+        self.label_refits_allowed = self.cargo_graphics_mappings.keys()
         self.label_refits_disallowed = []
         self.default_cargo = 'OIL_'
         self.default_cargo_capacities = self.capacities_freight
