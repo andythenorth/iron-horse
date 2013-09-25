@@ -510,7 +510,7 @@ class ReeferCar(Wagon):
         self.numeric_id = self.get_numeric_id(18000, **kwargs)
         self.template = 'train.pynml'
         self.class_refit_groups = ['refrigerated_freight']
-        self.label_refits_allowed = ['']
+        self.label_refits_allowed = []
         self.label_refits_disallowed = []
         self.autorefit = True
         self.default_cargo = 'FOOD'
@@ -527,7 +527,7 @@ class FlatCar(Wagon):
         self.numeric_id = self.get_numeric_id(19000, **kwargs)
         self.template = 'train.pynml'
         self.class_refit_groups = ['flatcar_freight']
-        self.label_refits_allowed = ['']
+        self.label_refits_allowed = []
         self.label_refits_disallowed = []
         self.autorefit = True
         self.default_cargo = 'GOOD'
