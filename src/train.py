@@ -397,9 +397,9 @@ class MailCar(Wagon):
         self.label_refits_allowed = [] # no specific labels needed
         self.label_refits_disallowed = []
         self.autorefit = True
-        self.default_cargo = 'MAIL'
         self.capacities_freight = [int(0.5 * capacity) for capacity in self.capacities_mail]
         self.default_cargo_capacities = self.capacities_mail
+        self.default_cargo = 'MAIL'
 
 
 class CabooseCar(Wagon):
