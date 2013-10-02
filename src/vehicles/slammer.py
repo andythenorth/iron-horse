@@ -1,7 +1,7 @@
 import global_constants
-from train import Train, DieselMultipleUnit
+from train import Train, DieselLoco
 
-vehicle = DieselMultipleUnit(id = 'slammer',
+vehicle = DieselLoco(id = 'slammer',
             numeric_id = 1360,
             title = 'Slammer [Diesel]',
             replacement_id = '-none',
