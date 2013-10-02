@@ -27,7 +27,7 @@ class Train(object):
         # setup properties for this train
         self.title = kwargs.get('title', None)
         self.numeric_id = kwargs.get('numeric_id', None)
-        self.str_type_info = kwargs.get('str_type_info', None).upper()
+        self.str_type_info = kwargs.get('str_type_info', 'COASTER')
         self.intro_date = kwargs.get('intro_date', None)
         self.replacement_id = kwargs.get('replacement_id', None)
         self.vehicle_life = kwargs.get('vehicle_life', None)
@@ -431,6 +431,7 @@ class BoxCar(Wagon):
         self.autorefit = True
         self.default_cargo = 'GOOD'
         self.default_cargo_capacities = self.capacities_freight
+        self.str_type_info = 'DOGTRACK'
 
 
 class HopperCar(Wagon):

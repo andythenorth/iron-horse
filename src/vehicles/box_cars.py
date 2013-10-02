@@ -14,7 +14,6 @@ vehicle = BoxCar(title = 'Box [Car]',
                 buy_menu_width = 32,
                 loading_speed = 20,
                 intro_date = 1860,
-                str_type_info = 'COASTER',
                 vehicle_life = 40,
                 graphics_status = '',)
 
@@ -39,7 +38,6 @@ vehicle = BoxCar(title = 'Box [Car]',
                 buy_menu_width = 32,
                 loading_speed = 20,
                 intro_date = 1930,
-                str_type_info = 'COASTER',
                 vehicle_life = 40,
                 graphics_status = '',)
 
