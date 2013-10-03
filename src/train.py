@@ -335,7 +335,7 @@ class DieselRailcar(Train):
     """
     def __init__(self, id, **kwargs):
         super(DieselRailcar, self).__init__(id, **kwargs)
-        self.template = 'train.pynml'
+        self.template = 'diesel_railcar.pynml'
         self.default_cargo_capacities = [0]
         self.class_refit_groups = ['pax', 'mail', 'express_freight']
         self.label_refits_allowed = [] # no specific labels needed
