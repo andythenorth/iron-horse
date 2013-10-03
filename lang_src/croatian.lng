@@ -1,0 +1,20 @@
+##grflangid 0x38
+##plural 6
+##gender male female middle
+##case aku dat gen ins lok nom vok
+STR_GRF_DESCRIPTION                                             :Licenca: {SILVER}GPL v2{}{BLACK}
+
+STR_PARAM_ADJUST_VEHICLE_CAPACITY                               :Kapacitet vlaka
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :Slabašan
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Divan
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Prekomjeran
+
+STR_NAME_SUFFIX_STEAM                                           :(Para)
+STR_NAME_SUFFIX_DIESEL                                          :(Dizel)
+STR_NAME_SUFFIX_ELECTRIC                                        :(Električni)
+STR_NAME_SUFFIX_CAR                                             :Vozilo
+
+STR_BUY_MENU_TEXT                                               :Tip: {GOLD}{STRING}{}{STRING}
+
+STR_COASTER                                                     :Krava je preskočila mjesec (ovo nije gotov podsjetnik)
+STR_DOGTRACK                                                    :Psi su smeđi, nekada
