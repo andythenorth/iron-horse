@@ -329,6 +329,25 @@ class DieselLoco(Train):
         self.visual_effect = 'VISUAL_EFFECT_DIESEL' # nml constant
 
 
+class DieselRailcar(Train):
+    """
+    Diesel Railcar (Single Unit).
+    """
+    def __init__(self, id, **kwargs):
+        super(DieselRailcar, self).__init__(id, **kwargs)
+        self.template = 'train.pynml'
+        self.default_cargo_capacities = [0]
+        self.class_refit_groups = ['pax', 'mail', 'express_freight']
+        self.label_refits_allowed = [] # no specific labels needed
+        self.label_refits_disallowed = []
+        self.autorefit = True
+        self.capacities_freight = [int(0.5 * capacity) for capacity in self.capacities_mail]
+        self.default_cargo_capacities = self.capacities_pax
+        self.default_cargo = 'PASS'
+        self.engine_class = 'ENGINE_CLASS_DIESEL' #nml constant
+        self.visual_effect = 'VISUAL_EFFECT_DIESEL' # nml constant
+
+
 class DieselMultipleUnit(Train):
     """
     Diesel Multiple Unit.

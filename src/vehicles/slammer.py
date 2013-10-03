@@ -1,15 +1,17 @@
 import global_constants
-from train import Train, DieselLoco
+from train import Train, DieselRailcar
 
-vehicle = DieselLoco(id = 'slammer',
+vehicle = DieselRailcar(id = 'slammer',
             numeric_id = 1360,
             title = 'Slammer [Diesel]',
             replacement_id = '-none',
             buy_cost = 22,
+            capacity_pax = 55,
+            capacity_mail = 40,
             fixed_run_cost_factor = 3.5,
             fuel_run_cost_factor = 1.0,
-            speed = 80,
-            power = 600,
+            speed = 75,
+            power = 450,
             weight = 65,
             vehicle_length = 8,
             buy_menu_width = 32,
