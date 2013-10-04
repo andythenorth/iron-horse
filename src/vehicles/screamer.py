@@ -1,20 +1,19 @@
 import global_constants
-from train import Train, DieselMultipleUnit
+from train import Train, ElectricLoco
 
-vehicle = DieselMultipleUnit(id = 'screamer',
+vehicle = ElectricLoco(id = 'screamer',
             numeric_id = 1370,
-            title = 'Screamer [Diesel]',
+            title = 'Screamer [Electric]',
             replacement_id = '-none',
             buy_cost = 22,
             fixed_run_cost_factor = 3.5,
             fuel_run_cost_factor = 1.0,
-            speed = 125,
-            power = 4500,
-            weight = 70,
+            speed = 155,
+            power = 6400,
+            weight = 80,
             vehicle_length = 8,
-            buy_menu_width = 32,
             loading_speed = 20,
-            intro_date = 1980,
+            intro_date = 1995,
             str_type_info = 'COASTER',
             vehicle_life = 40,
             graphics_status = '',)
