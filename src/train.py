@@ -87,7 +87,7 @@ class Train(object):
             vehicle_kwargs = kwargs
             trailing_part_id = self.id + '_trailing_part_' + str(count + 1)
             vehicle_kwargs['numeric_id'] = self.numeric_id + count + 1
-            trailing_parts.append(TrailingPart(trailing_part_id, parent_vehicle, trailing_part_length, **vehicle_kwargs))
+            trailing_parts.append(TrailingPart(trailing_part_id, parent_vehicle, trailing_part_length, count + 1, **vehicle_kwargs))
         return trailing_parts
 
     def get_capacity_variations(self, capacity):
@@ -263,7 +263,7 @@ class TrailingPart(Train):
     """
     Trailing part for articulated (not dual-headed) vehicles.
     """
-    def __init__(self, id, parent_vehicle, trailing_part_length, **kwargs):
+    def __init__(self, id, parent_vehicle, trailing_part_length, part_num, **kwargs):
         kwargs['vehicle_length'] = trailing_part_length
         super(TrailingPart, self).__init__(id, **kwargs)
         self.title = 'Trailing Part []'
@@ -272,7 +272,8 @@ class TrailingPart(Train):
         self.weight = 0
         self.default_cargo_capacities = [0]
         self.parent_vehicle = parent_vehicle
-        self.model_variants = parent_vehicle.model_variants
+        self.part_num = part_num
+        self.model_variants = parent_vehicle.model_variants        
 
 
 class Wagon(Train):
@@ -401,6 +402,12 @@ class PassengerCar(Wagon):
         self.autorefit = True
         self.default_cargo = 'PASS'
         self.default_cargo_capacities = self.capacities_pax
+        # special handling for vehicles longer than 8/8 - split them into 3 parts with two 1/8 hidden parts
+        if self.vehicle_length > 8:
+            self.articulated = True
+            first_part_length = self.vehicle_length - 2
+            self.vehicle_length = first_part_length # reset vehicle length
+            self.trailing_parts = self.get_trailing_parts(id, self, trailing_part_lengths = [1, 1], **kwargs)
 
 
 class MailCar(Wagon):
