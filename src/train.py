@@ -60,6 +60,12 @@ class Train(object):
         self.visual_effect_offset = 0
         self.dual_headed = 0
         self.articulated = False
+        # special handling for vehicles longer than 8/8 - split them into 3 parts with two 1/8 hidden parts
+        if self.vehicle_length > 8:
+            self.articulated = True
+            first_part_length = self.vehicle_length - 2
+            self.vehicle_length = first_part_length # reset vehicle length
+            self.trailing_parts = self.get_trailing_parts(id, self, trailing_part_lengths = [1, 1], **kwargs)
         # some project management stuff
         self.graphics_status = kwargs.get('graphics_status', None)
         # register vehicle with this module so other modules can use it, with a non-blocking guard on duplicate IDs
@@ -402,12 +408,6 @@ class PassengerCar(Wagon):
         self.autorefit = True
         self.default_cargo = 'PASS'
         self.default_cargo_capacities = self.capacities_pax
-        # special handling for vehicles longer than 8/8 - split them into 3 parts with two 1/8 hidden parts
-        if self.vehicle_length > 8:
-            self.articulated = True
-            first_part_length = self.vehicle_length - 2
-            self.vehicle_length = first_part_length # reset vehicle length
-            self.trailing_parts = self.get_trailing_parts(id, self, trailing_part_lengths = [1, 1], **kwargs)
 
 
 class MailCar(Wagon):
