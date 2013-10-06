@@ -1,0 +1,19 @@
+##grflangid 0x36
+##plural 0
+##gender n m f mp fp
+STR_GRF_DESCRIPTION                                             :Licença: {SILVER}GPL v2{}{BLACK}
+
+STR_PARAM_ADJUST_VEHICLE_CAPACITY                               :Capacidade do comboio
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :Insignificante
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Maravilhoso
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Excessivo
+
+STR_NAME_SUFFIX_STEAM                                           :(Vapor)
+STR_NAME_SUFFIX_DIESEL                                          :(Diesel)
+STR_NAME_SUFFIX_ELECTRIC                                        :(Eléctrico)
+STR_NAME_SUFFIX_CAR                                             :Carro
+
+STR_BUY_MENU_TEXT                                               :Tipo: {GOLD}{STRING}{}{STRING}
+
+STR_COASTER                                                     :A vaca saltou sobre a Lua (isto é um lembrete por não estar concluído)
+STR_DOGTRACK                                                    :OS cães são castanhos, ás vezes
