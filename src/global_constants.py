@@ -127,6 +127,10 @@ FUEL_RUN_COST = 10.0
 # OpenTTD's max date
 max_game_date = 5000001
 
+# id and numeric id for 1/8 long null trailing part used to compose vehicles to correct length
+null_trailing_part_id = 'null_trailing_part'
+null_trailing_part_numeric_id = 1
+
 # standard offsets for trains
 default_train_offsets = {'1': [[-3, -12], [-14, -14], [-16, -11], [-8, -15], [-3, -12], [-14, -14], [-16, -11], [-8, -15]], # needs fix
                          '2': [[-3, -12], [-14, -14], [-16, -11], [-8, -15], [-3, -12], [-14, -14], [-16, -11], [-8, -15]], # needs fix

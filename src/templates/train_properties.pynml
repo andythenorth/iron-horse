@@ -1,15 +1,7 @@
-<tal:trailing_parts condition="vehicle.articulated==True">
-// add the trailing parts to articulated consist
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_articulated_cb_switch, extra_callback_info1) {
-    <tal:build_trailing_parts repeat="trailing_part vehicle.trailing_parts">
-    ${repeat.trailing_part.number}: return ${trailing_part.id};
-    </tal:build_trailing_parts>
-  return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
-}
-</tal:trailing_parts>
-
 // -- print some of the vehicle non-nml properties to aid debugging -- //
 // [no properties printed]
+
+${vehicle.render_articulated_parts()}
 
 item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
     property {
@@ -47,7 +39,7 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
         cargo_capacity:                 ${vehicle.id}_switch_cargo_capacity;
         purchase_cargo_capacity:        ${vehicle.id}_switch_cargo_capacity;
         additional_text:                ${vehicle.get_buy_menu_string()};
-        <tal:articulated condition="vehicle.articulated">
+        <tal:articulated condition="vehicle.is_articulated">
             articulated_part:               ${vehicle.id}_articulated_cb_switch;
         </tal:articulated>
         default:                        ${vehicle.id}_switch_graphics;

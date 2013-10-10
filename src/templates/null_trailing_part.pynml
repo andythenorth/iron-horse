@@ -1,0 +1,38 @@
+/* Used as a 1/8 long null component for vehicles */
+
+spriteset(${global_constants.null_trailing_part_id}_ss, "src/graphics/${global_constants.null_trailing_part_id}.png") {
+    [0, 0, 1, 1, 0, 0]   
+}
+
+spritegroup ${global_constants.null_trailing_part_id}_sg {
+    loaded:  [
+        ${global_constants.null_trailing_part_id}_ss,
+    ];
+    loading: [
+        ${global_constants.null_trailing_part_id}_ss,
+    ];
+}
+
+item(FEAT_TRAINS, ${global_constants.null_trailing_part_id}, ${global_constants.null_trailing_part_numeric_id}) {
+    property {
+        climates_available:             NO_CLIMATE;
+        introduction_date:              date(01,01,01);
+        cargo_capacity:                 0;
+        sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+        power:                          0hp;
+        weight:                         0ton;
+        cost_factor:                    0;
+        running_cost_factor:            0;
+        refit_cost:                     0;
+        refittable_cargo_classes:       bitmask();
+        non_refittable_cargo_classes:   bitmask();
+        cargo_allow_refit:              [];
+        cargo_disallow_refit:           [];
+        default_cargo_type:             PASS;
+        misc_flags:                     bitmask(); // nml constants
+        length:                         1;
+    }
+    graphics {
+        default:                        ${global_constants.null_trailing_part_id}_sg;
+    }
+}

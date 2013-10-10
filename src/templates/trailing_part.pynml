@@ -1,3 +1,6 @@
+<!--! used for trailing parts that are visible 
+    - not to be confused with invisible null_trailing_part which is used to compose vehicles to required length -->
+
 <tal:set_parent_vehicle define="global parent_vehicle vehicle.parent_vehicle" />
 
 ${vehicle.render_debug_info()}

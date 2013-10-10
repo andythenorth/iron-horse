@@ -49,6 +49,13 @@ class Train(object):
         self.capacities_freight = self.get_capacity_variations(kwargs.get('capacity_freight', 0))
         # create a structure to hold model variants
         self.model_variants = []
+        # special handling for vehicles longer than 8/8 - split them into 3 parts with two 1/8 hidden parts
+        self.trailing_parts = []
+        if self.vehicle_length > 8:
+            first_part_length = self.vehicle_length - 2
+            self.vehicle_length = first_part_length # reset vehicle length
+            for part in self.get_trailing_parts(id, self, trailing_part_lengths = [1, 1], **kwargs):
+                self.trailing_parts.append(part)
         # set defaults for props otherwise set by subclass as needed (not set by kwargs as specific models do not over-ride them)
         self.default_cargo = 'PASS' # over-ride in subclass as needed (PASS is sane default)
         self.class_refit_groups = []
@@ -59,13 +66,6 @@ class Train(object):
         self.visual_effect = 'VISUAL_EFFECT_DISABLE' # nml constant
         self.visual_effect_offset = 0
         self.dual_headed = 0
-        self.articulated = False
-        # special handling for vehicles longer than 8/8 - split them into 3 parts with two 1/8 hidden parts
-        if self.vehicle_length > 8:
-            self.articulated = True
-            first_part_length = self.vehicle_length - 2
-            self.vehicle_length = first_part_length # reset vehicle length
-            self.trailing_parts = self.get_trailing_parts(id, self, trailing_part_lengths = [1, 1], **kwargs)
         # some project management stuff
         self.graphics_status = kwargs.get('graphics_status', None)
         # register vehicle with this module so other modules can use it, with a non-blocking guard on duplicate IDs
@@ -186,6 +186,20 @@ class Train(object):
             [cargo_classes.append(cargo_class) for cargo_class in global_constants.base_refits_by_class[i]]
         return ','.join(set(cargo_classes)) # use set() here to dedupe
 
+    @property
+    def is_articulated(self):
+        if len(self.trailing_parts) > 0:
+            return True
+        else:
+            return False
+    
+    @property
+    def trailing_part_ids(self):
+        result = []
+        for trailing_part in self.trailing_parts:
+            result.append(trailing_part.id)
+        return result
+
     def get_label_refits_allowed(self):
         # allowed labels, for fine-grained control in addition to classes
         return ','.join(self.label_refits_allowed)
@@ -233,9 +247,13 @@ class Train(object):
         template = templates["debug_info.pynml"]
         return template(vehicle=self)
 
+    def render_articulated_parts(self):
+        template = templates["add_articulated_parts.pynml"]
+        return template(vehicle=self, global_constants=global_constants)
+
     def render_properties(self):
         template = templates["train_properties.pynml"]
-        return template(vehicle=self)
+        return template(vehicle=self, global_constants=global_constants)
 
     def render_cargo_capacity(self):
         template = templates["capacity_switches.pynml"]
@@ -247,8 +265,9 @@ class Train(object):
         self.assert_cargo_labels(self.label_refits_disallowed)
         # templating
         template = templates[self.template]
-        nml_result = template(vehicle=self, global_constants=global_constants)
-        if self.articulated:
+        nml_result = ''
+        nml_result = nml_result + template(vehicle=self, global_constants=global_constants)
+        if self.is_articulated:
             for trailing_part in self.trailing_parts:
                 nml_result = trailing_part.render() + nml_result
         return nml_result
@@ -320,7 +339,6 @@ class SteamTenderLoco(Train):
         self.default_cargo_capacities = [0]
         self.engine_class = 'ENGINE_CLASS_STEAM' #nml constant
         self.visual_effect = 'VISUAL_EFFECT_STEAM' # nml constant
-        self.articulated = True
         self.trailing_parts = self.get_trailing_parts(id, self, **kwargs)
 
 

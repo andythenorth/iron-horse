@@ -22,7 +22,7 @@ repo_vars = utils.get_repo_vars(sys)
 vehicles = iron_horse.get_vehicles_in_buy_menu_order(show_warnings=True)
 
 grf_nml = codecs.open(os.path.join('iron-horse.nml'),'w','utf8')
-header_items = ['header', 'cargo_table', 'disable_default_vehicles']
+header_items = ['header', 'cargo_table', 'disable_default_vehicles', 'null_trailing_part']
 for header_item in header_items:
     template = templates[header_item + '.pynml']
     templated_nml = utils.unescape_chameleon_output(template(vehicles=vehicles, global_constants=global_constants,
