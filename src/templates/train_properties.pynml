@@ -1,8 +1,6 @@
 // -- print some of the vehicle non-nml properties to aid debugging -- //
 // [no properties printed]
 
-${vehicle.render_articulated_parts()}
-
 item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
     property {
         name:                           ${vehicle.get_name()};

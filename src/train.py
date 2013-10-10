@@ -265,7 +265,7 @@ class Train(object):
         self.assert_cargo_labels(self.label_refits_disallowed)
         # templating
         template = templates[self.template]
-        nml_result = ''
+        nml_result = self.render_articulated_parts()
         nml_result = nml_result + template(vehicle=self, global_constants=global_constants)
         if self.is_articulated:
             for trailing_part in self.trailing_parts:
