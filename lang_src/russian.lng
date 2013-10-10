@@ -1,0 +1,20 @@
+##grflangid 0x07
+##plural 6
+##gender m f n p
+##case abl acc dat f gen m n nom p pre
+STR_GRF_DESCRIPTION                                             :Лицензия: {SILVER}GPL v2{}{BLACK}
+
+STR_PARAM_ADJUST_VEHICLE_CAPACITY                               :Вместимость ТС
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :Низкая
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Сбалансированная
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Высокая
+
+STR_NAME_SUFFIX_STEAM                                           :(Паровоз)
+STR_NAME_SUFFIX_DIESEL                                          :(Тепловоз)
+STR_NAME_SUFFIX_ELECTRIC                                        :(Электровоз)
+STR_NAME_SUFFIX_CAR                                             :Вагон
+
+STR_BUY_MENU_TEXT                                               :Тип: {GOLD}{STRING}{}{STRING}
+
+STR_COASTER                                                     :Это напоминатель
+STR_DOGTRACK                                                    :Коричневые, Иногда
