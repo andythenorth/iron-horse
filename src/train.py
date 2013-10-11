@@ -247,9 +247,15 @@ class Train(object):
         template = templates["debug_info.pynml"]
         return template(vehicle=self)
 
-    def render_articulated_parts(self):
+    def render_articulated_switch(self):
         template = templates["add_articulated_parts.pynml"]
-        return template(vehicle=self, global_constants=global_constants)
+        nml_result = template(vehicle=self, global_constants=global_constants)
+        return nml_result
+        
+    def render_part(self):
+        template = templates[self.template]
+        nml_result = template(vehicle=self, global_constants=global_constants)
+        return nml_result
 
     def render_properties(self):
         template = templates["train_properties.pynml"]
@@ -264,12 +270,11 @@ class Train(object):
         self.assert_cargo_labels(self.label_refits_allowed)
         self.assert_cargo_labels(self.label_refits_disallowed)
         # templating
-        template = templates[self.template]
-        nml_result = self.render_articulated_parts()
-        nml_result = nml_result + template(vehicle=self, global_constants=global_constants)
-        if self.is_articulated:
-            for trailing_part in self.trailing_parts:
-                nml_result = trailing_part.render() + nml_result
+        nml_result = ''
+        nml_result = nml_result + self.render_articulated_switch()
+        for trailing_part in self.trailing_parts:
+            nml_result = nml_result + trailing_part.render_part()
+        nml_result = nml_result + self.render_part()
         return nml_result
 
 

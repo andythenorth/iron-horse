@@ -1,4 +1,3 @@
-<tal:trailing_parts condition="vehicle.is_articulated">
 // add the trailing parts to articulated consist
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_articulated_cb_switch, extra_callback_info1) {
     <tal:build_trailing_parts repeat="trailing_part_id vehicle.trailing_part_ids">
@@ -6,4 +5,9 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_articulated_cb_switch, extra_callback_i
     </tal:build_trailing_parts>
   return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
 }
-</tal:trailing_parts>
+
+item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
+    graphics {
+        articulated_part:               ${vehicle.id}_articulated_cb_switch;
+    }
+}
