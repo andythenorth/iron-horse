@@ -42,6 +42,9 @@ class Consist(object):
         # some project management stuff
         self.graphics_status = kwargs.get('graphics_status', None)
         # register consist with this module so other modules can use it, with a non-blocking guard on duplicate IDs
+        for consist in registered_consists:
+            if consist.base_numeric_id == self.base_numeric_id:
+                utils.echo_message("Error: consist " + self.id + " shares duplicate id (" + str(self.base_numeric_id) + ") with consist " + consist.id) 
         registered_consists.append(self)
 
     def add_model_variant(self, intro_date, end_date, spritesheet_suffix):
