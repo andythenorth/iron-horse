@@ -1,5 +1,3 @@
-// buy menu graphics
-
 template spriteset_template_purchase_${vehicle.id}() {
     // non-articulated vehicles use 7th sprite, dual_headed vehicles use 3rd and 7th
     // articulated vehicles require special handling
