@@ -223,11 +223,11 @@ class Train(object):
         
     @property
     def availability(self):
-        # which climates vehicle is available in
-        if isinstance(self, TrailingPart):
-            return "NO_CLIMATE"
-        else:
+        # only show vehicle in buy menu if it is first vehicle in consist  
+        if self.numeric_id == self.consist.base_numeric_id:
             return "ALL_CLIMATES"
+        else:
+            return "NO_CLIMATE"
 
     @property
     def special_flags(self):
