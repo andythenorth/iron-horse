@@ -157,14 +157,9 @@ class Consist(object):
         """
         nml_result = nml_result + self.render_articulated_switch()
         """
-        """
-        for trailing_part in self.trailing_parts:
-            nml_result = nml_result + trailing_part.render_slice()
-        """
-        #nml_result = nml_result + self.render_slice()
         print self.vehicles
         for vehicle in set(self.vehicles):
-            print vehicle.render()
+            nml_result = nml_result + vehicle.render()
         return nml_result
 
 
@@ -288,11 +283,6 @@ class Train(object):
         template = templates["debug_info_vehicle.pynml"]
         return template(vehicle=self)
 
-    def render_slice(self):
-        template = templates[self.template]
-        nml_result = template(vehicle=self, consist=self.consist, global_constants=global_constants)
-        return nml_result
-
     def render_properties(self):
         template = templates["train_properties.pynml"]
         return template(vehicle=self, consist=self.consist, global_constants=global_constants)
@@ -306,11 +296,8 @@ class Train(object):
         self.assert_cargo_labels(self.label_refits_allowed)
         self.assert_cargo_labels(self.label_refits_disallowed)
         # templating
-        nml_result = ''
-        #nml_result = nml_result + self.render_articulated_switch()
-        #for trailing_part in self.trailing_parts:
-            #nml_result = nml_result + trailing_part.render_slice()
-        nml_result = nml_result + self.render_slice()
+        template = templates[self.template]
+        nml_result = template(vehicle=self, consist=self.consist, global_constants=global_constants)
         return nml_result
 
 
