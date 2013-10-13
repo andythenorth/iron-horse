@@ -1,0 +1,34 @@
+${vehicle.render_debug_info()}
+
+/* Used as a 1/8 long null component for vehicles */
+
+spriteset(${vehicle.id}_ss, "src/graphics/null_trailing_part.png") {
+    [0, 0, 1, 1, 0, 0]   
+}
+
+spritegroup ${vehicle.id}_sg {
+    loaded:  [
+        ${vehicle.id}_ss,
+    ];
+    loading: [
+        ${vehicle.id}_ss,
+    ];
+}
+
+spritegroup ${vehicle.id}_sg_purchase {
+    loaded:  [
+        ${vehicle.id}_ss,
+    ];
+    loading: [
+        ${vehicle.id}_ss,
+    ];
+}
+
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics, 0) {
+    0: return ${vehicle.id}_sg;
+    return ${vehicle.id}_sg;
+}
+
+${vehicle.render_cargo_capacity()}
+
+${vehicle.render_properties()}

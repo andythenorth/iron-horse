@@ -55,7 +55,7 @@ class Consist(object):
     def add_vehicle(self, vehicle, repeat=1):
         # vehicle ids increment by 3 because each vehicle is composed of 2 explicit intermediate slices and one shared slice
         count = len(set(self.vehicles))
-        first_part = TrailingPart(parent_vehicle=vehicle)
+        first_part = LeadPart(parent_vehicle=vehicle)
         second_part = vehicle
         third_part = NullTrailingPart()
         if count == 0:
@@ -293,10 +293,7 @@ class Train(object):
         self.assert_cargo_labels(self.label_refits_allowed)
         self.assert_cargo_labels(self.label_refits_disallowed)
         # templating
-        if isinstance(self, TrailingPart):
-            template_name = self.parent_vehicle.template
-        else:
-            template_name = self.template
+        template_name = self.template
         template = templates[template_name]
         nml_result = template(vehicle=self, consist=self.consist, global_constants=global_constants)
         return nml_result
@@ -313,15 +310,16 @@ class ModelVariant(object):
         self.spritesheet_suffix = spritesheet_suffix # use digits for these - to match spritesheet filenames
 
 
-class TrailingPart(Train):
+class LeadPart(Train):
     """
     Trailing part for visible articulated vehicles (with props and stuff).
     """
     def __init__(self, parent_vehicle):
-        super(TrailingPart, self).__init__(vehicle_length=parent_vehicle.vehicle_length,
+        super(LeadPart, self).__init__(vehicle_length=parent_vehicle.vehicle_length,
                     consist=parent_vehicle.consist,
                     loading_speed=parent_vehicle.loading_speed)
         self.parent_vehicle = parent_vehicle
+        self.template = 'lead_part.pynml'
         self.speed = 0
         self.weight = 0
         self.default_cargo_capacities = [0]
