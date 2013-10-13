@@ -62,14 +62,23 @@ class Consist(object):
             first_part.id = self.id + '_' + str(count)        
         second_part.id = self.id + '_' + str(count + 1)
         third_part.id = self.id + '_' + str(count + 2)
-        first_part.numeric_id = self.base_numeric_id + (count)
-        second_part.numeric_id = self.base_numeric_id + (count + 1)
-        third_part.numeric_id = self.base_numeric_id + (count + 2)
+        first_part.numeric_id = self.get_and_verify_numeric_id(count)
+        second_part.numeric_id = self.get_and_verify_numeric_id(count + 1)
+        third_part.numeric_id = self.get_and_verify_numeric_id(count + 2)
 
         for repeat_num in range(repeat):
             self.vehicles.append(first_part)
             self.vehicles.append(second_part)
             self.vehicles.append(third_part)
+            
+    def get_and_verify_numeric_id(self, offset):
+        numeric_id = self.base_numeric_id + (offset)
+        print registered_consists
+        for consist in registered_consists:
+            for vehicle in consist.vehicles:
+                if numeric_id == vehicle.numeric_id:
+                    utils.echo_message("Error: numeric_id collision (" + str(numeric_id) + ") for vehicles in consist " + self.id + " and " + consist.id) 
+        return numeric_id        
 
     def get_reduced_set_of_variant_dates(self):
         # find all the unique dates that will need a switch constructing
