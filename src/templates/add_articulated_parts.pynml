@@ -8,6 +8,6 @@ switch (FEAT_TRAINS, SELF, ${consist.id}_articulated_cb_switch, extra_callback_i
 
 item(FEAT_TRAINS, ${consist.id}, ${consist.base_numeric_id}) {
     graphics {
-        articulated_part:               ${consist.id}_articulated_cb_switch;
+        articulated_part: ${consist.id}_articulated_cb_switch;
     }
 }
