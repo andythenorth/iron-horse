@@ -4,7 +4,7 @@ ${vehicle.render_debug_info()}
 
 <tal:include define="vehicle_offsets_standard load: vehicle_offsets_standard.pynml" metal:use-macro="vehicle_offsets_standard" />
 
-<tal:sprites_random_variations repeat="variation_num python:range(vehicle.get_num_spritesets())">
+<tal:sprites_random_variations repeat="variation_num python:range(consist.get_num_spritesets())">
     spriteset(${vehicle.id}_ss_${variation_num}, "src/graphics/${vehicle.id}_${variation_num}.png") {
       spriteset_template_${vehicle.id}(10)
     }

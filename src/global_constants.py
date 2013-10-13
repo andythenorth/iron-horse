@@ -1,21 +1,21 @@
 # list of explicit vehicle ids for locos
 buy_menu_sort_order_locos = [# brit locos
-                           'standard',
-                           'raven',
-                           'goods',
-                           'metro',
+                           #'standard',
+                           #'raven',
+                           #'goods',
+                           #'metro',
                            'collier',
-                           'wordsell',
-                           'gresley',
-                           'hellenic',
-                           'suburban',
-                           'chopper',
-                           'slammer',
-                           'whistler',
-                           'zebedee',
-                           'gridiron',
-                           'screamer',
-                           'pendolino',
+                           #'wordsell',
+                           #'gresley',
+                           #'hellenic',
+                           #'suburban',
+                           #'chopper',
+                           #'slammer',
+                           #'whistler',
+                           #'zebedee',
+                           #'gridiron',
+                           #'screamer',
+                           #'pendolino',
                             # nagn locos
                            #'dmc_sd40',
                            #'geep'
@@ -25,18 +25,18 @@ buy_menu_sort_order_locos = [# brit locos
 # order is significant
 # format is base_id: num_generations
 from ordered_dict_backport import OrderedDict
-buy_menu_sort_order_wagons = OrderedDict([('passenger_car', 3),
-                                          ('mail_car', 3),
-                                          ('box_car', 2),
-                                          ('open_car', 2),
-                                          ('tank_car', 3),
-                                          ('hopper_car', 2),
-                                          ('flat_car', 2),
-                                          ('livestock_car', 2),
-                                          ('reefer_car', 2),
-                                          ('covered_hopper_car', 2),
-                                          ('caboose_car', 1)])
-
+buy_menu_sort_order_wagons = OrderedDict([#('passenger_car', 3),
+                                          #('mail_car', 3),
+                                          #('box_car', 2),
+                                          #('open_car', 2),
+                                          #('tank_car', 3),
+                                          #('hopper_car', 2),
+                                          #('flat_car', 2),
+                                          #('livestock_car', 2),
+                                          #('reefer_car', 2),
+                                          #('covered_hopper_car', 2),
+                                          #('caboose_car', 1)])
+                                          ])
 # shared lists of allowed classes, shared across multiple ship types
 base_refits_by_class = {'empty': [],
                        'all_freight': ['CC_BULK', 'CC_PIECE_GOODS', 'CC_EXPRESS', 'CC_LIQUID', 'CC_ARMOURED', 'CC_REFRIGERATED', 'CC_COVERED', 'CC_NON_POURABLE'],

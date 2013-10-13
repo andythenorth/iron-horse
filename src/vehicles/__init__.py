@@ -1,1 +1,1 @@
-registered_vehicles = []
+registered_consists = []
