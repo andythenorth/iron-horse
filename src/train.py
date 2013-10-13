@@ -31,6 +31,8 @@ class Consist(object):
         self.intro_date = kwargs.get('intro_date', None)
         self.replacement_id = kwargs.get('replacement_id', None)
         self.vehicle_life = kwargs.get('vehicle_life', None)
+        self.power = kwargs.get('power', None)
+        self.speed = kwargs.get('speed', None)
         self.buy_cost = kwargs.get('buy_cost', None)
         self.fixed_run_cost_factor = kwargs.get('fixed_run_cost_factor', None)
         self.fuel_run_cost_factor = kwargs.get('fuel_run_cost_factor', None)
@@ -53,8 +55,8 @@ class Consist(object):
     def add_vehicle(self, vehicle, repeat=1):
         # vehicle ids increment by 3 because each vehicle is composed of 2 explicit intermediate slices and one shared slice
         count = len(set(self.vehicles))
-        first_part = vehicle
-        second_part = TrailingPart(parent_vehicle=vehicle)
+        first_part = TrailingPart(parent_vehicle=vehicle)
+        second_part = vehicle
         third_part = NullTrailingPart()
         if count == 0:
             first_part.id = self.id # first vehicle gets no suffix - for compatibility with buy menu list etc
@@ -65,6 +67,7 @@ class Consist(object):
         first_part.numeric_id = self.get_and_verify_numeric_id(count)
         second_part.numeric_id = self.get_and_verify_numeric_id(count + 1)
         third_part.numeric_id = self.get_and_verify_numeric_id(count + 2)
+        print first_part.is_lead_part_of_consist
 
         for repeat_num in range(repeat):
             self.vehicles.append(first_part)

@@ -6,6 +6,8 @@ consist = Consist(id = 'collier',
               title = 'Collier [Steam]',
               str_type_info = 'COASTER',
               replacement_id = '-none',
+              power = 1300,
+              speed = 45,
               buy_cost = 22,
               fixed_run_cost_factor = 3.5,
               fuel_run_cost_factor = 1.0,
@@ -14,22 +16,16 @@ consist = Consist(id = 'collier',
               graphics_status = '')
               
 consist.add_vehicle(SteamLoco(consist = consist,
-                        speed = 45,
-                        power = 1300,
                         weight = 95,
                         vehicle_length = 7,
                         loading_speed = 20))              
 
 consist.add_vehicle(SteamLoco(consist = consist,
-                        speed = 45,
-                        power = 1300,
                         weight = 95,
                         vehicle_length = 7,
                         loading_speed = 20))              
 
 consist.add_vehicle(vehicle = SteamLoco(consist = consist,
-                        speed = 45,
-                        power = 1300,
                         weight = 95,
                         vehicle_length = 7,
                         loading_speed = 20),
