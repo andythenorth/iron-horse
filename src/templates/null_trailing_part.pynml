@@ -1,19 +1,19 @@
 /* Used as a 1/8 long null component for vehicles */
 
-spriteset(${global_constants.null_trailing_part_id}_ss, "src/graphics/${global_constants.null_trailing_part_id}.png") {
+spriteset(${vehicle.id}_ss, "src/graphics/null_trailing_part.png") {
     [0, 0, 1, 1, 0, 0]   
 }
 
-spritegroup ${global_constants.null_trailing_part_id}_sg {
+spritegroup ${vehicle.id}_sg {
     loaded:  [
-        ${global_constants.null_trailing_part_id}_ss,
+        ${vehicle.id}_ss,
     ];
     loading: [
-        ${global_constants.null_trailing_part_id}_ss,
+        ${vehicle.id}_ss,
     ];
 }
 
-item(FEAT_TRAINS, ${global_constants.null_trailing_part_id}, ${global_constants.null_trailing_part_numeric_id}) {
+item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
     property {
         climates_available:             NO_CLIMATE;
         introduction_date:              date(01,01,01);
@@ -33,6 +33,6 @@ item(FEAT_TRAINS, ${global_constants.null_trailing_part_id}, ${global_constants.
         length:                         1;
     }
     graphics {
-        default:                        ${global_constants.null_trailing_part_id}_sg;
+        default:                        ${vehicle.id}_sg;
     }
 }

@@ -38,6 +38,7 @@ class Consist(object):
         self.model_variants = []
         # create structures to hold the consist vehicles and slices (from which vehicles are composed)
         self.vehicles = []        
+        self.slices = []        
         # some project management stuff
         self.graphics_status = kwargs.get('graphics_status', None)
         # register consist with this module so other modules can use it, with a non-blocking guard on duplicate IDs
@@ -48,25 +49,24 @@ class Consist(object):
 
     def add_vehicle(self, vehicle, repeat=1):
         # vehicle ids increment by 3 because each vehicle is composed of 2 explicit intermediate slices and one shared slice
-        count = len(self.vehicles)
+        count = len(set(self.vehicles))
         first_part = vehicle
         second_part = TrailingPart(parent_vehicle=vehicle)
-
+        third_part = NullTrailingPart()
         if count == 0:
-            first_part.id = self.id # first vehicle gets no suffix
-            second_part.id = self.id + '_1'
+            first_part.id = self.id # first vehicle gets no suffix - for compatibility with buy menu list etc
         else:
-            first_part.id = self.id + '_' + str(3 * count)        
-            second_part.id = self.id + '_' + str((3 * count) + 1)
-        print first_part.id
-        print second_part.id
-        first_part.numeric_id = self.base_numeric_id + (3 * count)
-        second_part.numeric_id = self.base_numeric_id + ((3 * count) + 1)
+            first_part.id = self.id + '_' + str(count)        
+        second_part.id = self.id + '_' + str(count + 1)
+        third_part.id = self.id + '_' + str(count + 2)
+        first_part.numeric_id = self.base_numeric_id + (count)
+        second_part.numeric_id = self.base_numeric_id + (count + 1)
+        third_part.numeric_id = self.base_numeric_id + (count + 2)
 
         for repeat_num in range(repeat):
             self.vehicles.append(first_part)
             self.vehicles.append(second_part)
-        print self.vehicles
+            self.vehicles.append(third_part)
 
     def get_reduced_set_of_variant_dates(self):
         # find all the unique dates that will need a switch constructing
@@ -300,7 +300,7 @@ class ModelVariant(object):
 
 class TrailingPart(Train):
     """
-    Trailing part for articulated (not dual-headed) vehicles.
+    Trailing part for visible articulated vehicles (with props and stuff).
     """
     def __init__(self, parent_vehicle):
         super(TrailingPart, self).__init__(vehicle_length=parent_vehicle.vehicle_length,
@@ -310,6 +310,19 @@ class TrailingPart(Train):
         self.speed = 0
         self.weight = 0
         self.default_cargo_capacities = [0]
+
+
+class NullTrailingPart(object):
+    """
+    Trailing part for invisible articulated vehicles.
+    """
+    def __init__(self):
+        self.id = global_constants.null_trailing_part_id
+        self.numeric_id = global_constants.null_trailing_part_numeric_id
+        
+    def render(self):
+        template = templates['null_trailing_part.pynml']
+        return template(vehicle=self)
 
 
 class Wagon(Train):
