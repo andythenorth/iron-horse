@@ -256,13 +256,6 @@ class Train(object):
             [cargo_classes.append(cargo_class) for cargo_class in global_constants.base_refits_by_class[i]]
         return ','.join(set(cargo_classes)) # use set() here to dedupe
 
-    @property
-    def trailing_part_ids(self):
-        result = []
-        for trailing_part in self.trailing_parts:
-            result.append(trailing_part.id)
-        return result
-
     def get_label_refits_allowed(self):
         # allowed labels, for fine-grained control in addition to classes
         return ','.join(self.label_refits_allowed)
