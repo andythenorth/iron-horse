@@ -50,12 +50,12 @@ base_lang_strings = utils.parse_base_lang()
 import iron_horse
 from train import Train
 
-vehicles = iron_horse.get_vehicles_in_buy_menu_order()
-# default sort for docs is by vehicle intro date
-vehicles = sorted(vehicles, key=lambda vehicle: vehicle.intro_date)
+consists = iron_horse.get_consists_in_buy_menu_order()
+# default sort for docs is by intro date
+consists = sorted(consists, key=lambda consist: consist.intro_date)
 
 metadata = {}
-dates = sorted([i.intro_date for i in vehicles])
+dates = sorted([i.intro_date for i in consists])
 metadata['dates'] = (dates[0], dates[-1])
 metadata['dev_thread_url'] = 'http://www.tt-forums.net/viewtopic.php?f=26&t=44613'
 metadata['repo_url'] = 'http://dev.openttdcoop.org/projects/iron-horse/repository'
@@ -109,7 +109,7 @@ class DocHelper(object):
 def render_docs(doc_list, file_type, use_markdown=False):
     for doc_name in doc_list:
         template = docs_templates[doc_name + '.pt'] # .pt is the conventional extension for chameleon page templates
-        doc = template(vehicles=vehicles, repo_vars=repo_vars, base_lang_strings=base_lang_strings, metadata=metadata,
+        doc = template(consists=consists, repo_vars=repo_vars, base_lang_strings=base_lang_strings, metadata=metadata,
                        utils=utils, doc_helper=DocHelper(), doc_name=doc_name)
         if use_markdown:
             # the doc might be in markdown format, if so we need to render markdown to html, and wrap the result in some boilerplate html

@@ -2,7 +2,7 @@
 <div metal:fill-slot='body'>
 
     <div class="span12">
-        <h2>${len(vehicles)} trains for OpenTTD</h2>
+        <h2>${len(consists)} trains for OpenTTD</h2>
         <hr />
         <table class="table table-striped tablesorter">
             <thead>
@@ -14,14 +14,14 @@
                 </tr>
             </thead>
             <tbody>
-                <tal:build_vehicles_list repeat="vehicle vehicles">
+                <tal:consists_list repeat="consist consists">
                     <tr>
-                        <td>${vehicle.get_name_substr()} ${base_lang_strings[vehicle.get_str_name_suffix()]}</td>
-                        <td class="number">${vehicle.intro_date}</td>
-                        <td>${base_lang_strings[vehicle.get_str_type_info()]}</td>
-                        <td>${int(vehicle.speed)} mph</td>
+                        <td>${consist.get_name_substr()} ${base_lang_strings[consist.get_str_name_suffix()]}</td>
+                        <td class="number">${consist.intro_date}</td>
+                        <td>${base_lang_strings[consist.get_str_type_info()]}</td>
+                        <!--!<td>${int(consist.speed)} mph</td>-->
                     </tr>
-                </tal:build_vehicles_list>
+                </tal:consists_list>
             </tbody>
         </table>
     </div>
