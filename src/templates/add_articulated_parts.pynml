@@ -1,12 +1,12 @@
 // add the trailing parts to articulated consist
 switch (FEAT_TRAINS, SELF, ${consist.id}_articulated_cb_switch, extra_callback_info1) {
-    <tal:build_trailing_parts repeat="trailing_part_id consist.trailing_part_ids">
-        ${repeat.trailing_part_id.number}: return ${trailing_part_id};
-    </tal:build_trailing_parts>
+    <tal:trailing_parts repeat="trailing_part consist.vehicles">
+        ${repeat.trailing_part.index}: return ${trailing_part.id};
+    </tal:trailing_parts>
   return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
 }
 
-item(FEAT_TRAINS, ${consist.id}, ${consist.numeric_id}) {
+item(FEAT_TRAINS, ${consist.id}, ${consist.base_numeric_id}) {
     graphics {
         articulated_part:               ${consist.id}_articulated_cb_switch;
     }

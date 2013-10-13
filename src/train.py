@@ -38,33 +38,35 @@ class Consist(object):
         self.model_variants = []
         # create structures to hold the consist vehicles and slices (from which vehicles are composed)
         self.vehicles = []        
-        self.slices = []
-        """
-        self.visible_trailing_parts = self.get_visible_trailing_parts(id, self, **kwargs)
-        """
         # some project management stuff
         self.graphics_status = kwargs.get('graphics_status', None)
         # register consist with this module so other modules can use it, with a non-blocking guard on duplicate IDs
-        # don't register trailing parts, they are taken care of by their parent vehicle
-        """for consist in registered_consists:
-            if consist.numeric_id == self.numeric_id:
-                utils.echo_message("Error: consist " + self.id + " shares duplicate id (" + str(self.numeric_id) + ") with consist " + consist.id)
-        """
         registered_consists.append(self)
 
     def add_model_variant(self, intro_date, end_date, spritesheet_suffix):
         self.model_variants.append(ModelVariant(intro_date, end_date, spritesheet_suffix))
 
     def add_vehicle(self, vehicle, repeat=1):
-        # vehicle ids increment by 2 because each vehicle is composed of 2 explicit intermediate slices and one shared slice
+        # vehicle ids increment by 3 because each vehicle is composed of 2 explicit intermediate slices and one shared slice
         count = len(self.vehicles)
+        first_part = vehicle
+        second_part = TrailingPart(parent_vehicle=vehicle)
+
         if count == 0:
-           vehicle.id = self.id # first vehicle gets no suffix
+            first_part.id = self.id # first vehicle gets no suffix
+            second_part.id = self.id + '_1'
         else:
-           vehicle.id = self.id + '_' + str(2 * count)        
-        vehicle.numeric_id = self.base_numeric_id + (2 * count)
+            first_part.id = self.id + '_' + str(3 * count)        
+            second_part.id = self.id + '_' + str((3 * count) + 1)
+        print first_part.id
+        print second_part.id
+        first_part.numeric_id = self.base_numeric_id + (3 * count)
+        second_part.numeric_id = self.base_numeric_id + ((3 * count) + 1)
+
         for repeat_num in range(repeat):
-            self.vehicles.append(vehicle)
+            self.vehicles.append(first_part)
+            self.vehicles.append(second_part)
+        print self.vehicles
 
     def get_reduced_set_of_variant_dates(self):
         # find all the unique dates that will need a switch constructing
@@ -85,7 +87,7 @@ class Consist(object):
                 result.append(variant.spritesheet_suffix)
         return result # could call set() here, but I didn't bother, shouldn't be needed if model variants set up correctly
         
-    def get_nml_random_switch_fragments_for_model_variants(self):
+    def get_nml_random_switch_fragments_for_model_variants(self, vehicle):
         # return fragments of nml for use in switches
         result = []
         years = self.get_reduced_set_of_variant_dates()
@@ -93,7 +95,7 @@ class Consist(object):
             if index < len(years) - 1:
                 from_date = year
                 until_date = years[index + 1] - 1
-                result.append(str(from_date) + '..' + str(until_date) + ':' + self.id + '_switch_graphics_random_' + str(from_date))
+                result.append(str(from_date) + '..' + str(until_date) + ':' + vehicle.id + '_switch_graphics_random_' + str(from_date))
         return result
 
     def get_name_substr(self):
@@ -112,10 +114,7 @@ class Consist(object):
         return 'STR_' + self.str_type_info
 
     def get_name(self):
-        if isinstance(self, TrailingPart):
-            return "string(STR_EMPTY)"
-        else:
-            return "string(STR_NAME_" + self.id +", string(" + self.get_str_name_suffix() + "))"
+        return "string(STR_NAME_" + self.id +", string(" + self.get_str_name_suffix() + "))"
 
     def get_buy_menu_string(self):
         buy_menu_template = Template(
@@ -154,20 +153,16 @@ class Consist(object):
     def render(self):
         # templating
         nml_result = ''
-        """
-        nml_result = nml_result + self.render_articulated_switch()
-        """
-        print self.vehicles
         for vehicle in set(self.vehicles):
             nml_result = nml_result + vehicle.render()
+        nml_result = nml_result + self.render_articulated_switch()        
         return nml_result
 
 
 class Train(object):
     """Base class for all types of trains"""
     def __init__(self, **kwargs):
-        self.consist = kwargs.get('consist', None)
-        #self.id = id
+        self.consist = kwargs.get('consist')
 
         # setup properties for this train
         self.numeric_id = kwargs.get('numeric_id', None)
@@ -201,19 +196,6 @@ class Train(object):
     def get_numeric_id(self, id_base, **kwargs):
         # auto numeric_id creator, used for wagons not locos
         return id_base + (100 * global_constants.vehicle_set_id_mapping[kwargs['vehicle_set']]) + kwargs['wagon_generation']
-
-    def get_visible_trailing_parts(self, id, parent_vehicle, **kwargs):
-        return []
-        """
-        trailing_parts = []        
-        for count, trailing_part_length in enumerate(kwargs['visible_part_lengths']):
-            vehicle_kwargs = kwargs
-            trailing_part_id = self.id + '_trailing_part_' + str(count + 1)
-            print trailing_part_id
-            vehicle_kwargs['numeric_id'] = self.numeric_id + count + 1
-            #trailing_parts.append(TrailingPart(trailing_part_id, parent_vehicle, trailing_part_length, count + 1, **vehicle_kwargs))
-        return trailing_parts
-        """
         
     def get_capacity_variations(self, capacity):
         # capacity is variable, controlled by a newgrf parameter 
@@ -289,7 +271,11 @@ class Train(object):
         self.assert_cargo_labels(self.label_refits_allowed)
         self.assert_cargo_labels(self.label_refits_disallowed)
         # templating
-        template = templates[self.template]
+        if isinstance(self, TrailingPart):
+            template_name = self.parent_vehicle.template
+        else:
+            template_name = self.template
+        template = templates[template_name]
         nml_result = template(vehicle=self, consist=self.consist, global_constants=global_constants)
         return nml_result
 
@@ -309,17 +295,14 @@ class TrailingPart(Train):
     """
     Trailing part for articulated (not dual-headed) vehicles.
     """
-    def __init__(self, id, parent_vehicle, trailing_part_length, part_num, **kwargs):
-        kwargs['vehicle_length'] = trailing_part_length
-        super(TrailingPart, self).__init__(id, **kwargs)
-        self.title = 'Trailing Part []'
-        self.template = 'trailing_part.pynml'
+    def __init__(self, parent_vehicle):
+        super(TrailingPart, self).__init__(vehicle_length=parent_vehicle.vehicle_length,
+                    consist=parent_vehicle.consist,
+                    loading_speed=parent_vehicle.loading_speed)
+        self.parent_vehicle = parent_vehicle
         self.speed = 0
         self.weight = 0
         self.default_cargo_capacities = [0]
-        self.parent_vehicle = parent_vehicle
-        self.part_num = part_num
-        self.model_variants = parent_vehicle.model_variants        
 
 
 class Wagon(Train):
