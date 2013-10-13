@@ -153,9 +153,9 @@ class Consist(object):
     def render(self):
         # templating
         nml_result = ''
+        nml_result = nml_result + self.render_articulated_switch()        
         for vehicle in set(self.vehicles):
             nml_result = nml_result + vehicle.render()
-        nml_result = nml_result + self.render_articulated_switch()        
         return nml_result
 
 
@@ -206,11 +206,18 @@ class Train(object):
     @property
     def availability(self):
         # only show vehicle in buy menu if it is first vehicle in consist  
-        if self.numeric_id == self.consist.base_numeric_id:
+        if self.is_lead_part_of_consist:
             return "ALL_CLIMATES"
         else:
             return "NO_CLIMATE"
 
+    @property
+    def is_lead_part_of_consist(self):
+        if self.numeric_id == self.consist.base_numeric_id:
+            return True
+        else:
+            return False
+            
     @property
     def special_flags(self):
         special_flags = ['TRAIN_FLAG_2CC']
