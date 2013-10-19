@@ -38,9 +38,8 @@ class Consist(object):
         self.fuel_run_cost_factor = kwargs.get('fuel_run_cost_factor', None)
         # create a structure to hold model variants
         self.model_variants = []
-        # create structures to hold the consist vehicles and slices (from which vehicles are composed)
+        # create structures to hold the consist parts (from which vehicles are composed)
         self.vehicles = []        
-        self.slices = []        
         # some project management stuff
         self.graphics_status = kwargs.get('graphics_status', None)
         # register consist with this module so other modules can use it, with a non-blocking guard on duplicate IDs
@@ -53,7 +52,7 @@ class Consist(object):
         self.model_variants.append(ModelVariant(intro_date, end_date, spritesheet_suffix))
 
     def add_vehicle(self, vehicle, repeat=1):
-        # vehicle ids increment by 3 because each vehicle is composed of 2 explicit intermediate slices and one shared slice
+        # vehicle ids increment by 3 because each vehicle is composed of 3 intermediate parts
         count = len(set(self.vehicles))
         first_part = LeadPart(parent_vehicle=vehicle)
         second_part = vehicle
