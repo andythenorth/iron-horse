@@ -188,7 +188,6 @@ class Train(object):
         self.numeric_id = kwargs.get('numeric_id', None)
         self.loading_speed = kwargs.get('loading_speed', None)
         self.vehicle_length = kwargs.get('vehicle_length', None)
-        self.power = kwargs.get('power', 0)
         self.speed = kwargs.get('speed', 0)
         self.weight = kwargs.get('weight', None)
         self.tractive_effort_coefficient = kwargs.get('tractive_effort_coefficient', 0.3) # 0.3 is recommended default value
@@ -234,7 +233,7 @@ class Train(object):
             return True
         else:
             return False
-            
+
     @property
     def special_flags(self):
         special_flags = ['TRAIN_FLAG_2CC']
