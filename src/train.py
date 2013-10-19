@@ -146,6 +146,11 @@ class Consist(object):
         return min(calculated_run_cost, 255) # cost factor is a byte, can't exceed 255
 
     @property
+    def weight(self):
+        print 'weight not fully implemented, returning 1000'
+        return 1000;
+    
+    @property
     def adjusted_model_life(self):
         # handles keeping the buy menu tidy, relies on magic from Eddi
         if self.replacement_id != None and self.replacement_id != '-none' and self.replacement_id != '':
