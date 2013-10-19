@@ -180,6 +180,7 @@ class Train(object):
         self.numeric_id = kwargs.get('numeric_id', None)
         self.loading_speed = kwargs.get('loading_speed', None)
         self.vehicle_length = kwargs.get('vehicle_length', None)
+        self.part_length = global_constants.part_lengths[self.vehicle_length][1]
         self.buy_menu_width = self.vehicle_length
         # offsets can be over-ridden on a per-model basis, or just use the standard ones for vehicle length
         self.offsets = kwargs.get('offsets', global_constants.default_train_offsets[str(self.vehicle_length)])
@@ -320,6 +321,7 @@ class LeadPart(Train):
         self.speed = 0
         self.weight = 0
         self.default_cargo_capacities = [0]
+        self.part_length = global_constants.part_lengths[parent_vehicle.vehicle_length][0]
 
 
 class NullTrailingPart(object):
@@ -329,6 +331,7 @@ class NullTrailingPart(object):
     def __init__(self, parent_vehicle):
         self.id = global_constants.null_trailing_part_id
         self.numeric_id = global_constants.null_trailing_part_numeric_id
+        self.part_length = global_constants.part_lengths[parent_vehicle.vehicle_length][2]
         
     def render(self):
         template = templates['null_trailing_part.pynml']

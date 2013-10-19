@@ -30,7 +30,7 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
         cargo_disallow_refit:           [];
         default_cargo_type:             PASS;
         misc_flags:                     bitmask(); // nml constants
-        length:                         1;
+        length:                         ${vehicle.part_length};
     }
     graphics {
         default:                        ${vehicle.id}_sg;
