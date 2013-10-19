@@ -20,7 +20,7 @@ from vehicles import registered_consists
 
 
 class Consist(object):
-    """Class for consists which compose one or more vehicles from sub-parts"""
+    """Class for consists which compose one or more slices, each slice comprising 3 slices"""
     def __init__(self, id, **kwargs):
         self.id = id
 
@@ -39,8 +39,8 @@ class Consist(object):
         self.fuel_run_cost_factor = kwargs.get('fuel_run_cost_factor', None)
         # create a structure to hold model variants
         self.model_variants = []
-        # create structure to hold the consist parts (from which vehicles are composed)
-        self.parts = []        
+        # create structure to hold the slices 
+        self.slices = []        
         # some project management stuff
         self.graphics_status = kwargs.get('graphics_status', None)
         # register consist with this module so other modules can use it, with a non-blocking guard on duplicate IDs
@@ -53,35 +53,35 @@ class Consist(object):
         self.model_variants.append(ModelVariant(intro_date, end_date, spritesheet_suffix))
 
     def add_vehicle(self, vehicle, repeat=1):
-        # vehicle ids increment by 3 because each vehicle is composed of 3 intermediate parts
-        count = len(set(self.parts))
-        first_part = LeadPart(parent_vehicle=vehicle)
-        second_part = vehicle
-        third_part = NullTrailingPart(parent_vehicle=vehicle)
+        # vehicle ids increment by 3 because each vehicle is composed of 3 intermediate slices
+        count = len(set(self.slices))
+        first_slice = LeadSlice(parent_vehicle=vehicle)
+        second_slice = vehicle
+        third_slice = NullTrailingSlice(parent_vehicle=vehicle)
         if count == 0:
-            first_part.id = self.id # first vehicle gets no suffix - for compatibility with buy menu list etc
+            first_slice.id = self.id # first vehicle gets no suffix - for compatibility with buy menu list etc
         else:
-            first_part.id = self.id + '_' + str(count)        
-        second_part.id = self.id + '_' + str(count + 1)
-        third_part.id = self.id + '_' + str(count + 2)
-        first_part.numeric_id = self.get_and_verify_numeric_id(count)
-        second_part.numeric_id = self.get_and_verify_numeric_id(count + 1)
-        third_part.numeric_id = self.get_and_verify_numeric_id(count + 2)
-        first_part.part_length = global_constants.part_lengths[vehicle.vehicle_length][0]
-        second_part.part_length = global_constants.part_lengths[vehicle.vehicle_length][1]
-        third_part.part_length = global_constants.part_lengths[vehicle.vehicle_length][2]
+            first_slice.id = self.id + '_' + str(count)        
+        second_slice.id = self.id + '_' + str(count + 1)
+        third_slice.id = self.id + '_' + str(count + 2)
+        first_slice.numeric_id = self.get_and_verify_numeric_id(count)
+        second_slice.numeric_id = self.get_and_verify_numeric_id(count + 1)
+        third_slice.numeric_id = self.get_and_verify_numeric_id(count + 2)
+        first_slice.slice_length = global_constants.slice_lengths[vehicle.vehicle_length][0]
+        second_slice.slice_length = global_constants.slice_lengths[vehicle.vehicle_length][1]
+        third_slice.slice_length = global_constants.slice_lengths[vehicle.vehicle_length][2]
 
         for repeat_num in range(repeat):
-            self.parts.append(first_part)
-            self.parts.append(second_part)
-            self.parts.append(third_part)
+            self.slices.append(first_slice)
+            self.slices.append(second_slice)
+            self.slices.append(third_slice)
             
     def get_and_verify_numeric_id(self, offset):
         numeric_id = self.base_numeric_id + (offset)
         for consist in registered_consists:
-            for part in consist.parts:
-                if numeric_id == part.numeric_id:
-                    utils.echo_message("Error: numeric_id collision (" + str(numeric_id) + ") for parts in consist " + self.id + " and " + consist.id) 
+            for slice in consist.slices:
+                if numeric_id == slice.numeric_id:
+                    utils.echo_message("Error: numeric_id collision (" + str(numeric_id) + ") for slices in consist " + self.id + " and " + consist.id) 
         return numeric_id        
 
     def get_reduced_set_of_variant_dates(self):
@@ -148,7 +148,7 @@ class Consist(object):
 
     @property
     def weight(self):
-        return sum([getattr(part, 'weight', 0) for part in self.parts])
+        return sum([getattr(slice, 'weight', 0) for slice in self.slices])
     
     @property
     def adjusted_model_life(self):
@@ -179,8 +179,8 @@ class Consist(object):
         # templating
         nml_result = ''
         nml_result = nml_result + self.render_articulated_switch()        
-        for part in set(self.parts):
-            nml_result = nml_result + part.render()
+        for slice in set(self.slices):
+            nml_result = nml_result + slice.render()
         return nml_result
 
 
@@ -226,13 +226,13 @@ class Train(object):
     @property
     def availability(self):
         # only show vehicle in buy menu if it is first vehicle in consist  
-        if self.is_lead_part_of_consist:
+        if self.is_lead_slice_of_consist:
             return "ALL_CLIMATES"
         else:
             return "NO_CLIMATE"
 
     @property
-    def is_lead_part_of_consist(self):
+    def is_lead_slice_of_consist(self):
         if self.numeric_id == self.consist.base_numeric_id:
             return True
         else:
@@ -320,12 +320,12 @@ class ModelVariant(object):
         self.spritesheet_suffix = spritesheet_suffix # use digits for these - to match spritesheet filenames
 
 
-class LeadPart(Train):
+class LeadSlice(Train):
     """
-    Trailing part for visible articulated vehicles (with props and stuff).
+    Lead slice for visible articulated vehicles (with props and stuff).
     """
     def __init__(self, parent_vehicle):
-        super(LeadPart, self).__init__(consist=parent_vehicle.consist,
+        super(LeadSlice, self).__init__(consist=parent_vehicle.consist,
                                        loading_speed=parent_vehicle.loading_speed)
         self.parent_vehicle = parent_vehicle
         self.template = 'lead_part.pynml'
@@ -334,13 +334,13 @@ class LeadPart(Train):
         self.default_cargo_capacities = [0]
         self.vehicle_length = parent_vehicle.vehicle_length
 
-class NullTrailingPart(object):
+class NullTrailingSlice(object):
     """
-    Trailing part for invisible articulated vehicles.
+    Trailing slice for invisible articulated vehicles.
     """
     def __init__(self, parent_vehicle):
-        self.id = global_constants.null_trailing_part_id
-        self.numeric_id = global_constants.null_trailing_part_numeric_id
+        self.id = global_constants.null_trailing_slice_id
+        self.numeric_id = global_constants.null_trailing_slice_numeric_id
         
     def render(self):
         template = templates['null_trailing_part.pynml']

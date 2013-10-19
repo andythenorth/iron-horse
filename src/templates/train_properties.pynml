@@ -30,7 +30,7 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
         retire_early:                   ${consist.vehicle_life - 4}; // magic from Eddi
         reliability_decay:              20; // default value
         vehicle_life:                   ${consist.vehicle_life};
-        length:                         ${vehicle.part_length};
+        length:                         ${vehicle.slice_length};
     }
     graphics {
         cargo_capacity:                 ${vehicle.id}_switch_cargo_capacity;
@@ -38,7 +38,7 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
         additional_text:                ${consist.get_buy_menu_string()};
         default:                        ${vehicle.id}_switch_graphics;
         purchase:                       ${vehicle.id}_sg_purchase;
-        <tal:add_articulated_parts condition="vehicle.is_lead_part_of_consist">
+        <tal:add_articulated_parts condition="vehicle.is_lead_slice_of_consist">
             articulated_part: ${consist.id}_articulated_cb_switch;
         </tal:add_articulated_parts>
     }

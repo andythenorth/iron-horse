@@ -1,7 +1,7 @@
-// add the trailing parts to articulated consist
+// add the trailing slices to articulated consist
 switch (FEAT_TRAINS, SELF, ${consist.id}_articulated_cb_switch, extra_callback_info1) {
-    <tal:trailing_parts repeat="trailing_part consist.parts">
-        ${repeat.trailing_part.index}: return ${trailing_part.id};
-    </tal:trailing_parts>
+    <tal:trailing_slices repeat="trailing_slice consist.slices">
+        ${repeat.trailing_slice.index}: return ${trailing_slice.id};
+    </tal:trailing_slices>
   return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
 }
