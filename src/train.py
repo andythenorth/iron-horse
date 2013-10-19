@@ -67,7 +67,6 @@ class Consist(object):
         first_part.numeric_id = self.get_and_verify_numeric_id(count)
         second_part.numeric_id = self.get_and_verify_numeric_id(count + 1)
         third_part.numeric_id = self.get_and_verify_numeric_id(count + 2)
-        print first_part.is_lead_part_of_consist
 
         for repeat_num in range(repeat):
             self.vehicles.append(first_part)
@@ -76,7 +75,6 @@ class Consist(object):
             
     def get_and_verify_numeric_id(self, offset):
         numeric_id = self.base_numeric_id + (offset)
-        print registered_consists
         for consist in registered_consists:
             for vehicle in consist.vehicles:
                 if numeric_id == vehicle.numeric_id:
@@ -332,7 +330,6 @@ class NullTrailingPart(object):
     def __init__(self, parent_vehicle):
         self.id = global_constants.null_trailing_part_id
         self.numeric_id = global_constants.null_trailing_part_numeric_id
-        print parent_vehicle
         
     def render(self):
         template = templates['null_trailing_part.pynml']
