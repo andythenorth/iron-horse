@@ -20,7 +20,11 @@ from vehicles import registered_consists
 
 
 class Consist(object):
-    """Class for consists which compose one or more slices, each slice comprising 3 slices"""
+    """
+       'Vehicles' (appearing in buy menu) are composed as articulated consists.
+       Each consist comprises one or more 'units' (visible).
+       Each unit assembled from 3 'slices' (invisible-visible-invisible), which are newgrf vehicles with uids.
+   """
     def __init__(self, id, **kwargs):
         self.id = id
 
