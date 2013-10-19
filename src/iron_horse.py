@@ -28,8 +28,9 @@ import train
 from train import Train
 from vehicles import registered_consists
 
-"""
+
 from vehicles import box_cars
+"""
 from vehicles import caboose_cars
 from vehicles import chopper
 """

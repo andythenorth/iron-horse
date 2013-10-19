@@ -35,7 +35,7 @@ class Consist(object):
         self.intro_date = kwargs.get('intro_date', None)
         self.replacement_id = kwargs.get('replacement_id', None)
         self.vehicle_life = kwargs.get('vehicle_life', None)
-        self.power = kwargs.get('power', None)
+        self.power = kwargs.get('power', 0)
         self.tractive_effort_coefficient = kwargs.get('tractive_effort_coefficient', 0.3) # 0.3 is recommended default value
         self.speed = kwargs.get('speed', None)
         self.buy_cost = kwargs.get('buy_cost', None)
@@ -88,6 +88,15 @@ class Consist(object):
                     utils.echo_message("Error: numeric_id collision (" + str(numeric_id) + ") for slices in consist " + self.id + " and " + consist.id) 
         return numeric_id        
 
+
+    def get_wagon_id(self, id_base, **kwargs):
+        # auto id creator, used for wagons not locos
+        return '_'.join((id_base, kwargs['vehicle_set'], 'gen', str(kwargs['wagon_generation'])))
+
+    def get_wagon_numeric_id(self, id_base, **kwargs):
+        # auto numeric_id creator, used for wagons not locos
+        return id_base + (100 * global_constants.vehicle_set_id_mapping[kwargs['vehicle_set']]) + kwargs['wagon_generation']
+
     def get_reduced_set_of_variant_dates(self):
         # find all the unique dates that will need a switch constructing
         years = sorted(reduce(set.union, [(variant.intro_date, variant.end_date) for variant in self.model_variants], set()))
@@ -132,7 +141,7 @@ class Consist(object):
     def get_str_type_info(self):
         # makes a string id for nml
         return 'STR_' + self.str_type_info
-
+        
     def get_name(self):
         return "string(STR_NAME_" + self.id +", string(" + self.get_str_name_suffix() + "))"
 
@@ -212,14 +221,6 @@ class Train(object):
         self.engine_class = 'ENGINE_CLASS_STEAM' # nml constant (STEAM is sane default)
         self.visual_effect = 'VISUAL_EFFECT_DISABLE' # nml constant
         self.visual_effect_offset = 0
-
-    def get_id(self, id_base, **kwargs):
-        # auto id creator, used for wagons not locos
-        return '_'.join((id_base, kwargs['vehicle_set'], 'gen', str(kwargs['wagon_generation'])))
-
-    def get_numeric_id(self, id_base, **kwargs):
-        # auto numeric_id creator, used for wagons not locos
-        return id_base + (100 * global_constants.vehicle_set_id_mapping[kwargs['vehicle_set']]) + kwargs['wagon_generation']
         
     def get_capacity_variations(self, capacity):
         # capacity is variable, controlled by a newgrf parameter 
@@ -351,20 +352,50 @@ class NullTrailingSlice(object):
         return template(vehicle=self)
 
 
-class Wagon(Train):
+class WagonConsist(Consist):
     """
-    Intermediate class for actual cars (wagons) to subclass from, provides some common properties.
-    This class should be sparse - only declare the most limited set of properties common to wagons.
-    Most props should be declared by Train with useful defaults, or by the subclass providing the car.
+    Intermediate class for wagon consists to subclass from, provides some common properties.
+    This class should be sparse - only declare the most limited set of properties common to wagon consists.
     """
     def __init__(self, id, speedy=False, **kwargs):
-        super(Wagon, self).__init__(id, **kwargs)
+        print kwargs
         self.wagon_generation = kwargs.get('wagon_generation', None)
         if self.wagon_generation == 1:
             if speedy==True:
                 self.speed = global_constants.speedy_wagon_speed
             else:
                 self.speed = global_constants.standard_wagon_speed
+        super(WagonConsist, self).__init__(id, **kwargs)
+
+
+class BoxCarConsist(WagonConsist):
+    """
+    Boxcar.
+    """
+    def __init__(self, **kwargs):
+        id = self.get_wagon_id('box_car', **kwargs)
+        kwargs['base_numeric_id'] = self.get_wagon_numeric_id(12000, **kwargs)
+        super(BoxCarConsist, self).__init__(id, **kwargs)
+        self.template = 'train.pynml'
+        self.class_refit_groups = ['packaged_freight']
+        self.label_refits_allowed = ['GRAI', 'WHEA', 'MAIZ'] # no specific labels needed
+        self.label_refits_disallowed = []
+        self.autorefit = True
+        self.default_cargo = 'GOOD'
+        #self.default_cargo_capacities = self.capacities_freight
+        self.str_type_info = 'DOGTRACK'
+
+
+class Wagon(Train):
+    """
+    Intermediate class for actual cars (wagons) to subclass from, provides some common properties.
+    This class should be sparse - only declare the most limited set of properties common to wagons.
+    Most props should be declared by Train with useful defaults, or by the subclass providing the car.
+    """
+    def __init__(self, **kwargs):
+        super(Wagon, self).__init__(**kwargs)
+        self.template = 'train.pynml'
+        self.default_cargo_capacities = [100] #self.capacities_freight
 
 
 class SteamLoco(Train):
@@ -469,24 +500,6 @@ class CabooseCar(Wagon):
         self.default_cargo_capacities = [0]
         self.loading_speed = 0
         self.speed = 0
-
-
-class BoxCar(Wagon):
-    """
-    Boxcar.
-    """
-    def __init__(self, **kwargs):
-        id = self.get_id('box_car', **kwargs)
-        kwargs['numeric_id'] = self.get_numeric_id(12000, **kwargs)
-        super(BoxCar, self).__init__(id, **kwargs)
-        self.template = 'train.pynml'
-        self.class_refit_groups = ['packaged_freight']
-        self.label_refits_allowed = ['GRAI', 'WHEA', 'MAIZ'] # no specific labels needed
-        self.label_refits_disallowed = []
-        self.autorefit = True
-        self.default_cargo = 'GOOD'
-        self.default_cargo_capacities = self.capacities_freight
-        self.str_type_info = 'DOGTRACK'
 
 
 class HopperCar(Wagon):

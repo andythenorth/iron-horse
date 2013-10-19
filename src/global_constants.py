@@ -27,7 +27,7 @@ buy_menu_sort_order_locos = [# brit locos
 from ordered_dict_backport import OrderedDict
 buy_menu_sort_order_wagons = OrderedDict([#('passenger_car', 3),
                                           #('mail_car', 3),
-                                          #('box_car', 2),
+                                          ('box_car', 2),
                                           #('open_car', 2),
                                           #('tank_car', 3),
                                           #('hopper_car', 2),
