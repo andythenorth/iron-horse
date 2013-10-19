@@ -66,6 +66,9 @@ class Consist(object):
         first_part.numeric_id = self.get_and_verify_numeric_id(count)
         second_part.numeric_id = self.get_and_verify_numeric_id(count + 1)
         third_part.numeric_id = self.get_and_verify_numeric_id(count + 2)
+        first_part.part_length = global_constants.part_lengths[vehicle.vehicle_length][0]
+        second_part.part_length = global_constants.part_lengths[vehicle.vehicle_length][1]
+        third_part.part_length = global_constants.part_lengths[vehicle.vehicle_length][2]
 
         for repeat_num in range(repeat):
             self.vehicles.append(first_part)
@@ -185,7 +188,6 @@ class Train(object):
         self.numeric_id = kwargs.get('numeric_id', None)
         self.loading_speed = kwargs.get('loading_speed', None)
         self.vehicle_length = kwargs.get('vehicle_length', None)
-        self.part_length = global_constants.part_lengths[self.vehicle_length][1]
         self.power = kwargs.get('power', 0)
         self.speed = kwargs.get('speed', 0)
         self.weight = kwargs.get('weight', None)
@@ -320,16 +322,14 @@ class LeadPart(Train):
     Trailing part for visible articulated vehicles (with props and stuff).
     """
     def __init__(self, parent_vehicle):
-        super(LeadPart, self).__init__(vehicle_length=parent_vehicle.vehicle_length,
-                    consist=parent_vehicle.consist,
-                    loading_speed=parent_vehicle.loading_speed)
+        super(LeadPart, self).__init__(consist=parent_vehicle.consist,
+                                       loading_speed=parent_vehicle.loading_speed)
         self.parent_vehicle = parent_vehicle
         self.template = 'lead_part.pynml'
         self.speed = 0
         self.weight = 0
         self.default_cargo_capacities = [0]
-        self.part_length = global_constants.part_lengths[parent_vehicle.vehicle_length][0]
-
+        self.vehicle_length = parent_vehicle.vehicle_length
 
 class NullTrailingPart(object):
     """
@@ -338,7 +338,6 @@ class NullTrailingPart(object):
     def __init__(self, parent_vehicle):
         self.id = global_constants.null_trailing_part_id
         self.numeric_id = global_constants.null_trailing_part_numeric_id
-        self.part_length = global_constants.part_lengths[parent_vehicle.vehicle_length][2]
         
     def render(self):
         template = templates['null_trailing_part.pynml']
