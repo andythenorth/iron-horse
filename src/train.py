@@ -56,7 +56,7 @@ class Consist(object):
     def add_model_variant(self, intro_date, end_date, spritesheet_suffix):
         self.model_variants.append(ModelVariant(intro_date, end_date, spritesheet_suffix))
 
-    def add_vehicle(self, vehicle, repeat=1):
+    def add_unit(self, vehicle, repeat=1):
         # vehicle ids increment by 3 because each vehicle is composed of 3 intermediate slices
         count = len(set(self.slices))
         first_slice = LeadSlice(parent_vehicle=vehicle)

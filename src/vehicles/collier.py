@@ -16,7 +16,7 @@ consist = Consist(id = 'collier',
               intro_date = 1900,
               graphics_status = '')
               
-consist.add_vehicle(SteamLoco(consist = consist,
+consist.add_unit(SteamLoco(consist = consist,
                         weight = 95,
                         vehicle_length = 7,
                         loading_speed = 20))              
