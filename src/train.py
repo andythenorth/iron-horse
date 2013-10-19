@@ -186,8 +186,6 @@ class Train(object):
         self.loading_speed = kwargs.get('loading_speed', None)
         self.vehicle_length = kwargs.get('vehicle_length', None)
         self.part_length = global_constants.part_lengths[self.vehicle_length][1]
-        # offsets can be over-ridden on a per-model basis, or just use the standard ones for vehicle length
-        self.offsets = kwargs.get('offsets', global_constants.default_train_offsets[str(self.vehicle_length)])
         self.power = kwargs.get('power', 0)
         self.speed = kwargs.get('speed', 0)
         self.weight = kwargs.get('weight', None)
@@ -261,6 +259,11 @@ class Train(object):
         for i in self.class_refit_groups:
             [cargo_classes.append(cargo_class) for cargo_class in global_constants.base_refits_by_class[i]]
         return ','.join(set(cargo_classes)) # use set() here to dedupe
+
+    @property
+    def offsets(self):
+        # offsets can also be over-ridden on a per-model basis by providing this property in the model class
+        return global_constants.default_train_offsets[str(self.vehicle_length)]
 
     def get_label_refits_allowed(self):
         # allowed labels, for fine-grained control in addition to classes
