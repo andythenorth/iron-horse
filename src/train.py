@@ -153,6 +153,11 @@ class Consist(object):
         else:
             return 'VEHICLE_NEVER_EXPIRES'
 
+    @property
+    def buy_menu_width (self):
+        print 'buy menu width not implemented fully, returning 8'
+        return 8 
+    
     def render_debug_info(self):
         template = templates["debug_info_consist.pynml"]
         return template(consist=self)
@@ -181,7 +186,6 @@ class Train(object):
         self.loading_speed = kwargs.get('loading_speed', None)
         self.vehicle_length = kwargs.get('vehicle_length', None)
         self.part_length = global_constants.part_lengths[self.vehicle_length][1]
-        self.buy_menu_width = self.vehicle_length
         # offsets can be over-ridden on a per-model basis, or just use the standard ones for vehicle length
         self.offsets = kwargs.get('offsets', global_constants.default_train_offsets[str(self.vehicle_length)])
         self.power = kwargs.get('power', 0)
