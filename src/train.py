@@ -332,7 +332,7 @@ class LeadSlice(Train):
         super(LeadSlice, self).__init__(consist=parent_vehicle.consist,
                                        loading_speed=parent_vehicle.loading_speed)
         self.parent_vehicle = parent_vehicle
-        self.template = 'lead_part.pynml'
+        self.template = 'lead_slice.pynml'
         self.speed = 0
         self.weight = 0
         self.default_cargo_capacities = [0]
@@ -347,7 +347,7 @@ class NullTrailingSlice(object):
         self.numeric_id = global_constants.null_trailing_slice_numeric_id
         
     def render(self):
-        template = templates['null_trailing_part.pynml']
+        template = templates['null_trailing_slice.pynml']
         return template(vehicle=self)
 
 
