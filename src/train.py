@@ -57,7 +57,7 @@ class Consist(object):
         count = len(set(self.vehicles))
         first_part = LeadPart(parent_vehicle=vehicle)
         second_part = vehicle
-        third_part = NullTrailingPart()
+        third_part = NullTrailingPart(parent_vehicle=vehicle)
         if count == 0:
             first_part.id = self.id # first vehicle gets no suffix - for compatibility with buy menu list etc
         else:
@@ -329,9 +329,10 @@ class NullTrailingPart(object):
     """
     Trailing part for invisible articulated vehicles.
     """
-    def __init__(self):
+    def __init__(self, parent_vehicle):
         self.id = global_constants.null_trailing_part_id
         self.numeric_id = global_constants.null_trailing_part_numeric_id
+        print parent_vehicle
         
     def render(self):
         template = templates['null_trailing_part.pynml']
