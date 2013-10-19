@@ -93,8 +93,9 @@ class Consist(object):
         # auto id creator, used for wagons not locos
         return '_'.join((id_base, kwargs['vehicle_set'], 'gen', str(kwargs['wagon_generation'])))
 
-    def get_wagon_numeric_id(self, id_base, **kwargs):
+    def get_wagon_numeric_id(self, id, **kwargs):
         # auto numeric_id creator, used for wagons not locos
+        id_base = global_constants.wagon_type_numeric_ids[id]
         return id_base + (100 * global_constants.vehicle_set_id_mapping[kwargs['vehicle_set']]) + kwargs['wagon_generation']
 
     def get_reduced_set_of_variant_dates(self):
@@ -374,7 +375,7 @@ class BoxCarConsist(WagonConsist):
     """
     def __init__(self, **kwargs):
         id = self.get_wagon_id('box_car', **kwargs)
-        kwargs['base_numeric_id'] = self.get_wagon_numeric_id(12000, **kwargs)
+        kwargs['base_numeric_id'] = self.get_wagon_numeric_id('box_car', **kwargs)
         super(BoxCarConsist, self).__init__(id, **kwargs)
         self.template = 'train.pynml'
         self.class_refit_groups = ['packaged_freight']
@@ -384,7 +385,7 @@ class BoxCarConsist(WagonConsist):
         self.default_cargo = 'GOOD'
         #self.default_cargo_capacities = self.capacities_freight
         self.str_type_info = 'DOGTRACK'
-
+        print "BoxCars are pretty unfinished, not sure what needs to be on consist, and what on vehicle class"
 
 class Wagon(Train):
     """

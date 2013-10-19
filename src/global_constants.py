@@ -37,6 +37,9 @@ buy_menu_sort_order_wagons = OrderedDict([#('passenger_car', 3),
                                           #('covered_hopper_car', 2),
                                           #('caboose_car', 1)])
                                           ])
+                                          
+wagon_type_numeric_ids = {'box_car': 12000}                                          
+                                          
 # shared lists of allowed classes, shared across multiple ship types
 base_refits_by_class = {'empty': [],
                        'all_freight': ['CC_BULK', 'CC_PIECE_GOODS', 'CC_EXPRESS', 'CC_LIQUID', 'CC_ARMOURED', 'CC_REFRIGERATED', 'CC_COVERED', 'CC_NON_POURABLE'],
