@@ -38,8 +38,8 @@ class Consist(object):
         self.fuel_run_cost_factor = kwargs.get('fuel_run_cost_factor', None)
         # create a structure to hold model variants
         self.model_variants = []
-        # create structures to hold the consist parts (from which vehicles are composed)
-        self.vehicles = []        
+        # create structure to hold the consist parts (from which vehicles are composed)
+        self.parts = []        
         # some project management stuff
         self.graphics_status = kwargs.get('graphics_status', None)
         # register consist with this module so other modules can use it, with a non-blocking guard on duplicate IDs
@@ -53,7 +53,7 @@ class Consist(object):
 
     def add_vehicle(self, vehicle, repeat=1):
         # vehicle ids increment by 3 because each vehicle is composed of 3 intermediate parts
-        count = len(set(self.vehicles))
+        count = len(set(self.parts))
         first_part = LeadPart(parent_vehicle=vehicle)
         second_part = vehicle
         third_part = NullTrailingPart(parent_vehicle=vehicle)
@@ -71,16 +71,16 @@ class Consist(object):
         third_part.part_length = global_constants.part_lengths[vehicle.vehicle_length][2]
 
         for repeat_num in range(repeat):
-            self.vehicles.append(first_part)
-            self.vehicles.append(second_part)
-            self.vehicles.append(third_part)
+            self.parts.append(first_part)
+            self.parts.append(second_part)
+            self.parts.append(third_part)
             
     def get_and_verify_numeric_id(self, offset):
         numeric_id = self.base_numeric_id + (offset)
         for consist in registered_consists:
-            for vehicle in consist.vehicles:
-                if numeric_id == vehicle.numeric_id:
-                    utils.echo_message("Error: numeric_id collision (" + str(numeric_id) + ") for vehicles in consist " + self.id + " and " + consist.id) 
+            for part in consist.parts:
+                if numeric_id == part.numeric_id:
+                    utils.echo_message("Error: numeric_id collision (" + str(numeric_id) + ") for parts in consist " + self.id + " and " + consist.id) 
         return numeric_id        
 
     def get_reduced_set_of_variant_dates(self):
@@ -147,8 +147,7 @@ class Consist(object):
 
     @property
     def weight(self):
-        print 'weight not fully implemented, returning 1000'
-        return 1000;
+        return sum([getattr(part, 'weight', 0) for part in self.parts])
     
     @property
     def adjusted_model_life(self):
@@ -179,8 +178,8 @@ class Consist(object):
         # templating
         nml_result = ''
         nml_result = nml_result + self.render_articulated_switch()        
-        for vehicle in set(self.vehicles):
-            nml_result = nml_result + vehicle.render()
+        for part in set(self.parts):
+            nml_result = nml_result + part.render()
         return nml_result
 
 
