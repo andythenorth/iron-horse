@@ -20,7 +20,7 @@ from vehicles import registered_consists
 
 
 class Consist(object):
-    """Base class for all types of trains"""
+    """Class for consists which compose one or more vehicles from sub-parts"""
     def __init__(self, id, **kwargs):
         self.id = id
 
@@ -32,6 +32,7 @@ class Consist(object):
         self.replacement_id = kwargs.get('replacement_id', None)
         self.vehicle_life = kwargs.get('vehicle_life', None)
         self.power = kwargs.get('power', None)
+        self.tractive_effort_coefficient = kwargs.get('tractive_effort_coefficient', 0.3) # 0.3 is recommended default value
         self.speed = kwargs.get('speed', None)
         self.buy_cost = kwargs.get('buy_cost', None)
         self.fixed_run_cost_factor = kwargs.get('fixed_run_cost_factor', None)
@@ -194,7 +195,6 @@ class Train(object):
         self.vehicle_length = kwargs.get('vehicle_length', None)
         self.speed = kwargs.get('speed', 0)
         self.weight = kwargs.get('weight', None)
-        self.tractive_effort_coefficient = kwargs.get('tractive_effort_coefficient', 0.3) # 0.3 is recommended default value
         # declare capacities for pax, mail and freight, as they are needed later for nml switches
         self.capacities_pax = self.get_capacity_variations(kwargs.get('capacity_pax', 0))
         self.capacities_mail = self.get_capacity_variations(kwargs.get('capacity_mail', 0))
