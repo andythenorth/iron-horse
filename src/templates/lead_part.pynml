@@ -1,6 +1,6 @@
 ${vehicle.render_debug_info()}
 
-/* Used as a 1/8 long null component for vehicles */
+/* Null leading slice for units */
 
 spriteset(${vehicle.id}_ss, "src/graphics/null_trailing_part.png") {
     [0, 0, 1, 1, 0, 0]   

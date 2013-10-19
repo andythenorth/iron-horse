@@ -1,4 +1,4 @@
-/* Used as a 1/8 long null component for vehicles */
+/*Null trailing slice for units */
 
 spriteset(${vehicle.id}_ss, "src/graphics/null_trailing_part.png") {
     [0, 0, 1, 1, 0, 0]   

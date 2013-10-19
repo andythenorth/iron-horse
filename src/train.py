@@ -326,7 +326,7 @@ class ModelVariant(object):
 
 class LeadSlice(Train):
     """
-    Lead slice for visible articulated vehicles (with props and stuff).
+    Lead slice for a unit (invisible, minimal props).
     """
     def __init__(self, parent_vehicle):
         super(LeadSlice, self).__init__(consist=parent_vehicle.consist,
@@ -340,7 +340,7 @@ class LeadSlice(Train):
 
 class NullTrailingSlice(object):
     """
-    Trailing slice for invisible articulated vehicles.
+    Trailing slice for a unit (invisible, minimal props).
     """
     def __init__(self, parent_vehicle):
         self.id = global_constants.null_trailing_slice_id

@@ -127,7 +127,7 @@ FUEL_RUN_COST = 10.0
 # OpenTTD's max date
 max_game_date = 5000001
 
-# id and numeric id for 1/8 long null trailing slice used to compose vehicles to correct length
+# id and numeric id for 1/8 long null trailing slice used to compose units to correct length
 null_trailing_slice_id = 'null_trailing_slice'
 null_trailing_slice_numeric_id = 1
 
