@@ -357,6 +357,7 @@ class LeadSlice(Train):
         self.default_cargo_capacities = [0]
         self.vehicle_length = parent_vehicle.vehicle_length
 
+
 class NullTrailingSlice(object):
     """
     Trailing slice for a unit (invisible, minimal props).
@@ -386,6 +387,7 @@ class WagonConsist(Consist):
             else:
                 self.speed = global_constants.standard_wagon_speed
         super(WagonConsist, self).__init__(id, **kwargs)
+
 
 class Wagon(Train):
     """
