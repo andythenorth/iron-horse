@@ -8,7 +8,7 @@ type_config = TypeConfig(base_id = 'box_car',
                 label_refits_disallowed = [],
                 autorefit = True,
                 default_cargo = 'GOOD',
-                default_cargo_capacities = 'capacities_freight',
+                default_capacity_type = 'capacity_freight',
                 str_type_info = 'DOGTRACK')
 
 print "BoxCars are pretty unfinished, not sure what needs to be on consist, and what on vehicle class"

@@ -328,7 +328,7 @@ class TypeConfig(object):
         self.label_refits_disallowed = kwargs.get('label_refits_disallowed', None)
         self.autorefit = kwargs.get('autorefit', None)
         self.default_cargo = kwargs.get('default_cargo', None)
-        self.default_cargo_capacities = kwargs.get('default_cargo_capacities', None)
+        self.default_capacity_type = kwargs.get('default_capacity_type', None)
         self.str_type_info = kwargs.get('str_type_info', None)
     
 
@@ -403,9 +403,9 @@ class Wagon(Train):
         self.label_refits_allowed = type_config.label_refits_allowed
         self.label_refits_disallowed = type_config.label_refits_disallowed
         self.autorefit = type_config.autorefit
-        self.default_cargo = type_config.default_cargo
-        self.default_cargo_capacities = self.capacities_freight #self.capacities_freight
-
+        self.default_cargo = type_config.default_cargo        
+        self.default_cargo_capacities = self.get_capacity_variations(kwargs.get(type_config.default_capacity_type, 0)) 
+        print self.default_cargo_capacities
 
 class SteamLoco(Train):
     """
