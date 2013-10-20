@@ -1,7 +1,20 @@
 import global_constants
-from train import BoxCarConsist, Wagon
+from train import TypeConfig, WagonConsist, Wagon
 
-consist = BoxCarConsist(title = 'Box [Car]',
+type_config = TypeConfig(base_id = 'box_car',
+                template = 'train.pynml',
+                class_refit_groups = ['packaged_freight'],
+                label_refits_allowed = ['GRAI', 'WHEA', 'MAIZ'],
+                label_refits_disallowed = [],
+                autorefit = True,
+                default_cargo = 'GOOD',
+                default_cargo_capacities = 'capacities_freight',
+                str_type_info = 'DOGTRACK')
+
+print "BoxCars are pretty unfinished, not sure what needs to be on consist, and what on vehicle class"
+
+consist = WagonConsist(type_config = type_config,
+                    title = 'Box [Car]',
                     vehicle_set = 'brit',
                     wagon_generation = 1,
                     replacement_id = '-none',
@@ -12,7 +25,8 @@ consist = BoxCarConsist(title = 'Box [Car]',
                     vehicle_life = 40,
                     graphics_status = '')
 
-consist.add_unit(Wagon(consist = consist,
+consist.add_unit(Wagon(type_config = type_config,
+                        consist = consist,
                         capacity_freight = 20,
                         weight = 100,
                         vehicle_length = 7,

@@ -315,6 +315,23 @@ class Train(object):
         return nml_result
 
 
+class TypeConfig(object):
+    # simple class to hold properties common to all instances of a type of vehicle 
+    # examples of types: Box Car, Steam Engine, Passenger Car etc.
+    # declared once per type
+    # passed to the type's consists and units 
+    def __init__(self, base_id, template, **kwargs):
+        self.base_id = base_id
+        self.template = template
+        self.class_refit_groups = kwargs.get('class_refit_groups', None)
+        self.label_refits_allowed = kwargs.get('label_refits_allowed', None)
+        self.label_refits_disallowed = kwargs.get('label_refits_disallowed', None)
+        self.autorefit = kwargs.get('autorefit', None)
+        self.default_cargo = kwargs.get('default_cargo', None)
+        self.default_cargo_capacities = kwargs.get('default_cargo_capacities', None)
+        self.str_type_info = kwargs.get('str_type_info', None)
+    
+
 class ModelVariant(object):
     # simple class to hold model variants
     # variants are mostly randomised or date-sensitive graphics
@@ -358,8 +375,10 @@ class WagonConsist(Consist):
     Intermediate class for wagon consists to subclass from, provides some common properties.
     This class should be sparse - only declare the most limited set of properties common to wagon consists.
     """
-    def __init__(self, id, speedy=False, **kwargs):
+    def __init__(self, type_config, speedy=False, **kwargs):
         print kwargs
+        id = self.get_wagon_id(type_config.base_id, **kwargs)
+        kwargs['base_numeric_id'] = self.get_wagon_numeric_id(type_config.base_id, **kwargs)
         self.wagon_generation = kwargs.get('wagon_generation', None)
         if self.wagon_generation == 1:
             if speedy==True:
@@ -368,35 +387,22 @@ class WagonConsist(Consist):
                 self.speed = global_constants.standard_wagon_speed
         super(WagonConsist, self).__init__(id, **kwargs)
 
-
-class BoxCarConsist(WagonConsist):
-    """
-    Boxcar.
-    """
-    def __init__(self, **kwargs):
-        id = self.get_wagon_id('box_car', **kwargs)
-        kwargs['base_numeric_id'] = self.get_wagon_numeric_id('box_car', **kwargs)
-        super(BoxCarConsist, self).__init__(id, **kwargs)
-        self.template = 'train.pynml'
-        self.class_refit_groups = ['packaged_freight']
-        self.label_refits_allowed = ['GRAI', 'WHEA', 'MAIZ'] # no specific labels needed
-        self.label_refits_disallowed = []
-        self.autorefit = True
-        self.default_cargo = 'GOOD'
-        #self.default_cargo_capacities = self.capacities_freight
-        self.str_type_info = 'DOGTRACK'
-        print "BoxCars are pretty unfinished, not sure what needs to be on consist, and what on vehicle class"
-
 class Wagon(Train):
     """
     Intermediate class for actual cars (wagons) to subclass from, provides some common properties.
     This class should be sparse - only declare the most limited set of properties common to wagons.
     Most props should be declared by Train with useful defaults, or by the subclass providing the car.
     """
-    def __init__(self, **kwargs):
+    def __init__(self, type_config, **kwargs):
         super(Wagon, self).__init__(**kwargs)
-        self.template = 'train.pynml'
-        self.default_cargo_capacities = [100] #self.capacities_freight
+        self.type_config = type_config
+        self.template = type_config.template
+        self.class_refit_groups = type_config.class_refit_groups
+        self.label_refits_allowed = type_config.label_refits_allowed
+        self.label_refits_disallowed = type_config.label_refits_disallowed
+        self.autorefit = type_config.autorefit
+        self.default_cargo = type_config.default_cargo
+        self.default_cargo_capacities = self.capacities_freight #self.capacities_freight
 
 
 class SteamLoco(Train):
