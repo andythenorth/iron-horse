@@ -1,5 +1,5 @@
 import global_constants
-from train import Consist, SteamLoco
+from train import Consist, SteamLoco, SteamLocoTender
 
 consist = Consist(id = 'collier',
               base_numeric_id = 1240,
@@ -19,7 +19,12 @@ consist = Consist(id = 'collier',
 consist.add_unit(SteamLoco(consist = consist,
                         weight = 95,
                         vehicle_length = 7,
-                        loading_speed = 20))              
+                        spriterow_num = 0))              
+
+consist.add_unit(SteamLocoTender(consist = consist,
+                        weight = 35,
+                        vehicle_length = 4,
+                        spriterow_num = 1))              
 
 consist.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,

@@ -205,7 +205,7 @@ class Train(object):
 
         # setup properties for this train
         self.numeric_id = kwargs.get('numeric_id', None)
-        self.loading_speed = kwargs.get('loading_speed', None)
+        self.loading_speed = kwargs.get('loading_speed', 5) # 5 is default train loading speed
         self.vehicle_length = kwargs.get('vehicle_length', None)
         self.speed = kwargs.get('speed', 0)
         self.weight = kwargs.get('weight', None)
@@ -213,6 +213,8 @@ class Train(object):
         self.capacities_pax = self.get_capacity_variations(kwargs.get('capacity_pax', 0))
         self.capacities_mail = self.get_capacity_variations(kwargs.get('capacity_mail', 0))
         self.capacities_freight = self.get_capacity_variations(kwargs.get('capacity_freight', 0))
+        # spriterow_num, first row = 0
+        self.spriterow_num = kwargs.get('spriterow_num', 0)
         # set defaults for props otherwise set by subclass as needed (not set by kwargs as specific models do not over-ride them)
         self.default_cargo = 'PASS' # over-ride in subclass as needed (PASS is sane default)
         self.class_refit_groups = []
@@ -417,6 +419,16 @@ class SteamLoco(Train):
         self.default_cargo_capacities = [0]
         self.engine_class = 'ENGINE_CLASS_STEAM' #nml constant
         self.visual_effect = 'VISUAL_EFFECT_STEAM' # nml constant
+
+
+class SteamLocoTender(Train):
+    """
+    Steam Locomotive Tender.
+    """
+    def __init__(self, **kwargs):
+        super(SteamLocoTender, self).__init__(**kwargs)
+        self.template = 'train.pynml'
+        self.default_cargo_capacities = [0]
 
 
 class DieselLoco(Train):
