@@ -295,6 +295,14 @@ class Train(object):
             suffix = "_switch_graphics_by_year"
         return self.id + suffix
 
+    @property
+    def offset_to_cargo_carrying_slice(self):
+        # cargo capacity is on the second slice of each 3-slice unit
+        if isinstance(self, LeadSlice):
+            return 1
+        else:
+            return 0
+
     def get_label_refits_allowed(self):
         # allowed labels, for fine-grained control in addition to classes
         return ','.join(self.label_refits_allowed)
@@ -370,7 +378,7 @@ class LeadSlice(Train):
         super(LeadSlice, self).__init__(consist=parent_vehicle.consist,
                                        loading_speed=parent_vehicle.loading_speed)
         self.parent_vehicle = parent_vehicle
-        self.template = 'train.pynml'
+        self.template = parent_vehicle.template
         self.speed = 0
         self.weight = 0
         self.default_cargo_capacities = [0]

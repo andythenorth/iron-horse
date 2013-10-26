@@ -4,20 +4,27 @@ ${vehicle.render_debug_info()}
 
 <tal:sprites_random_variations repeat="variation_num python:range(consist.get_num_spritesets())">
     <tal:cargo_variants repeat="cargo_variant_num python:range(2)">
-        spriteset(${vehicle.id}_ss_${variation_num}_${cargo_variant_num}, "src/graphics/${consist.id}_${variation_num}.png") {
-          spriteset_template_${vehicle.id}(10 + ${cargo_variant_num * 30})
+        spriteset(${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_0, "src/graphics/${consist.id}_${variation_num}.png") {
+            spriteset_template_${vehicle.id}(10 + ${cargo_variant_num * 90})
+        }
+        spriteset(${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_1, "src/graphics/${consist.id}_${variation_num}.png") {
+            spriteset_template_${vehicle.id}(40 + ${cargo_variant_num * 90})
+        }
+        spriteset(${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_2, "src/graphics/${consist.id}_${variation_num}.png") {
+            spriteset_template_${vehicle.id}(70 + ${cargo_variant_num * 90})
         }
 
         spritegroup ${vehicle.id}_sg_${variation_num}_${cargo_variant_num} {
             loaded:  [
-                ${vehicle.id}_ss_${variation_num}_${cargo_variant_num},
+                ${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_0,
             ];
             loading: [
-                ${vehicle.id}_ss_${variation_num}_${cargo_variant_num},
+                ${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_1,
+                ${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_2,
             ];
         }
     </tal:cargo_variants>
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${variation_num}, cargo_type_in_veh) {
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${variation_num}, [STORE_TEMP(${vehicle.offset_to_cargo_carrying_slice}, 0x10F), var[0x61, 0, 0x000000FF, 0x47]]) {
         PASS: return ${vehicle.id}_sg_${variation_num}_0;
         return ${vehicle.id}_sg_${variation_num}_1;
     }
