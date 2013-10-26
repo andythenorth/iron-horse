@@ -295,13 +295,13 @@ class Train(object):
             suffix = "_switch_graphics_by_year"
         return self.id + suffix
 
-    @property
-    def offset_to_cargo_carrying_slice(self):
+    def get_nml_expression_for_cargo_type_unit_refitted_to(self):
+        expression_template = Template("[STORE_TEMP(${offset}, 0x10F), var[0x61, 0, 0x000000FF, 0x47]]")
         # cargo capacity is on the second slice of each 3-slice unit
         if isinstance(self, LeadSlice):
-            return 1
+            return expression_template.substitute(offset=1)
         else:
-            return 0
+            return expression_template.substitute(offset=0)
 
     def get_label_refits_allowed(self):
         # allowed labels, for fine-grained control in addition to classes

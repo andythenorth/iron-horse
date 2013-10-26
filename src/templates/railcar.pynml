@@ -24,7 +24,7 @@ ${vehicle.render_debug_info()}
             ];
         }
     </tal:cargo_variants>
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${variation_num}, [STORE_TEMP(${vehicle.offset_to_cargo_carrying_slice}, 0x10F), var[0x61, 0, 0x000000FF, 0x47]]) {
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${variation_num}, ${vehicle.get_nml_expression_for_cargo_type_unit_refitted_to()}) {
         PASS: return ${vehicle.id}_sg_${variation_num}_0;
         return ${vehicle.id}_sg_${variation_num}_1;
     }
