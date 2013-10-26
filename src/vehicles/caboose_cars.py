@@ -1,20 +1,33 @@
 import global_constants
-from train import Train, CabooseCar
+from train import TypeConfig, WagonConsist, Wagon
 
-vehicle = CabooseCar(title = 'Caboose [Car]',
-                vehicle_set = 'brit',
-                wagon_generation = 1,
-                replacement_id = '-none',
-                buy_cost = 22,
-                fixed_run_cost_factor = 3.5,
-                fuel_run_cost_factor = 1.0,
-                weight = 25,
-                vehicle_length = 5,
-                intro_date = 1860,
-                str_type_info = 'COASTER',
-                vehicle_life = 40,
-                graphics_status = '',)
+type_config = TypeConfig(base_id = 'caboose_car',
+                template = 'train.pynml',
+                class_refit_groups = [],
+                label_refits_allowed = [],
+                label_refits_disallowed = [],
+                default_capacity_type = 'capacity_freight',
+                str_type_info = 'DOGTRACK')
 
-vehicle.add_model_variant(intro_date=0,
+consist = WagonConsist(type_config = type_config,
+                    title = 'Caboose [Car]',
+                    vehicle_set = 'brit',
+                    wagon_generation = 1,
+                    replacement_id = '-none',
+                    intro_date = 1860,
+                    buy_cost = 22,
+                    fixed_run_cost_factor = 3.5,
+                    fuel_run_cost_factor = 1.0,
+                    vehicle_life = 40,
+                    graphics_status = '')
+
+consist.add_unit(Wagon(type_config = type_config,
+                        consist = consist,
+                        capacity_freight = 0,
+                        weight = 25,
+                        vehicle_length = 5,
+                        loading_speed = 0))              
+
+consist.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,
                        spritesheet_suffix=0)

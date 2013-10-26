@@ -30,8 +30,8 @@ from vehicles import registered_consists
 
 
 from vehicles import box_cars
-"""
 from vehicles import caboose_cars
+"""
 from vehicles import chopper
 """
 from vehicles import collier
