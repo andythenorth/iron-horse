@@ -15,12 +15,19 @@ spritegroup ${vehicle.id}_sg {
     ];
 }
 
+// buy menu graphics
+<tal:include define="vehicle_offsets_buy_menu load: vehicle_offsets_buy_menu.pynml" metal:use-macro="vehicle_offsets_buy_menu" />
+
+spriteset(${vehicle.id}_ss_purchase, "src/graphics/${consist.id}_0.png") {
+  spriteset_template_purchase_${vehicle.id}()
+}
+
 spritegroup ${vehicle.id}_sg_purchase {
     loaded:  [
-        ${vehicle.id}_ss,
+        ${vehicle.id}_ss_purchase,
     ];
     loading: [
-        ${vehicle.id}_ss,
+        ${vehicle.id}_ss_purchase,
     ];
 }
 

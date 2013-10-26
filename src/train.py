@@ -178,7 +178,7 @@ class Consist(object):
     @property
     def buy_menu_width (self):
         print 'buy menu width not implemented fully, returning 8'
-        return 8 
+        return 32 
     
     def render_debug_info(self):
         template = templates["debug_info_consist.pynml"]
