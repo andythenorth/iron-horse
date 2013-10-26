@@ -63,7 +63,7 @@ class Consist(object):
         second_slice = vehicle
         third_slice = NullTrailingSlice(parent_vehicle=vehicle)
         if count == 0:
-            first_slice.id = self.id # first vehicle gets no suffix - for compatibility with buy menu list etc
+            first_slice.id = self.id # first vehicle gets no numeric id suffix - for compatibility with buy menu list ids etc
         else:
             first_slice.id = self.id + '_' + str(count)        
         second_slice.id = self.id + '_' + str(count + 1)
@@ -74,7 +74,8 @@ class Consist(object):
         first_slice.slice_length = global_constants.slice_lengths[vehicle.vehicle_length][0]
         second_slice.slice_length = global_constants.slice_lengths[vehicle.vehicle_length][1]
         third_slice.slice_length = global_constants.slice_lengths[vehicle.vehicle_length][2]
-
+        first_slice.spriterow_num = vehicle.spriterow_num
+        
         for repeat_num in range(repeat):
             self.slices.append(first_slice)
             self.slices.append(second_slice)
@@ -254,14 +255,6 @@ class Train(object):
         return ','.join(special_flags)
 
     @property
-    def sg_depot(self):
-        if self.is_lead_slice_of_consist:
-            suffix = "_sg_purchase"
-        else:
-            suffix = "_sg"
-        return self.id + suffix
-
-    @property
     def capacity_pax(self):
         return self.capacities_pax[0]
     @property
@@ -285,6 +278,22 @@ class Train(object):
     def offsets(self):
         # offsets can also be over-ridden on a per-model basis by providing this property in the model class
         return global_constants.default_train_offsets[str(self.vehicle_length)]
+
+    @property
+    def sg_depot(self):
+        if isinstance(self, LeadSlice):
+            suffix = "_switch_graphics_by_year"
+        else:
+            suffix = "_sg_hidden"
+        return self.id + suffix
+
+    @property
+    def sg_default(self):
+        if isinstance(self, LeadSlice):
+            suffix = "_sg_hidden"
+        else:
+            suffix = "_switch_graphics_by_year"
+        return self.id + suffix
 
     def get_label_refits_allowed(self):
         # allowed labels, for fine-grained control in addition to classes
@@ -361,7 +370,7 @@ class LeadSlice(Train):
         super(LeadSlice, self).__init__(consist=parent_vehicle.consist,
                                        loading_speed=parent_vehicle.loading_speed)
         self.parent_vehicle = parent_vehicle
-        self.template = 'lead_slice.pynml'
+        self.template = 'train.pynml'
         self.speed = 0
         self.weight = 0
         self.default_cargo_capacities = [0]

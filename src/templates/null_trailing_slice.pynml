@@ -1,7 +1,7 @@
 /*Null trailing slice for units */
 
 spriteset(${vehicle.id}_ss, "src/graphics/null_trailing_part.png") {
-    [0, 0, 1, 1, 0, 0]   
+    [0, 0, 10, 10, 0, 0]   
 }
 
 spritegroup ${vehicle.id}_sg {
