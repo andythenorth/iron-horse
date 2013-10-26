@@ -31,8 +31,23 @@ spritegroup ${vehicle.id}_sg_purchase {
     ];
 }
 
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics, 0) {
-    0: return ${vehicle.id}_sg;
+// depot graphics
+spriteset(${vehicle.id}_ss_depot, "src/graphics/${consist.id}_0.png") {
+  spriteset_template_purchase_${vehicle.id}()
+}
+
+spritegroup ${vehicle.id}_sg_depot {
+    loaded:  [
+        ${vehicle.id}_ss_depot,
+    ];
+    loading: [
+        ${vehicle.id}_ss_depot,
+    ];
+}
+
+// are showing default graphics, or special cases like depot? (purchase is handled separately using purchase cb)
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics, extra_callback_info1) {
+    0x10: return ${vehicle.id}_sg_depot;
     return ${vehicle.id}_sg;
 }
 

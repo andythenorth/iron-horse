@@ -254,6 +254,14 @@ class Train(object):
         return ','.join(special_flags)
 
     @property
+    def sg_depot(self):
+        if self.is_lead_slice_of_consist:
+            suffix = "_sg_purchase"
+        else:
+            suffix = "_sg"
+        return self.id + suffix
+
+    @property
     def capacity_pax(self):
         return self.capacities_pax[0]
     @property
