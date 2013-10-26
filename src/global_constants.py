@@ -10,7 +10,7 @@ buy_menu_sort_order_locos = [# brit locos
                            #'hellenic',
                            #'suburban',
                            #'chopper',
-                           #'slammer',
+                           'slammer',
                            #'whistler',
                            #'zebedee',
                            #'gridiron',
