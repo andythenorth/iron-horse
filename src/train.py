@@ -97,7 +97,9 @@ class Consist(object):
     def get_wagon_numeric_id(self, id, **kwargs):
         # auto numeric_id creator, used for wagons not locos
         id_base = global_constants.wagon_type_numeric_ids[id]
-        return id_base + (100 * global_constants.vehicle_set_id_mapping[kwargs['vehicle_set']]) + kwargs['wagon_generation']
+        result = id_base + (100 * global_constants.vehicle_set_id_mapping[kwargs['vehicle_set']]) + (10 * (kwargs['wagon_generation'] - 1))
+        print result
+        return result
 
     def get_reduced_set_of_variant_dates(self):
         # find all the unique dates that will need a switch constructing
