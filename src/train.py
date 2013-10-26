@@ -82,7 +82,11 @@ class Consist(object):
             self.slices.append(third_slice)
             
     def get_and_verify_numeric_id(self, offset):
-        numeric_id = self.base_numeric_id + (offset)
+        numeric_id = self.base_numeric_id + offset
+        # guard against the ID being too large to build in an articulated consist
+        if numeric_id > 16383:
+            utils.echo_message("Error: numeric_id " + str(numeric_id) + " for " + self.id + " can't be used (16383 is max ID for articulated vehicles)")             
+        # guard against ID collisions with other vehicles
         for consist in registered_consists:
             for slice in consist.slices:
                 if numeric_id == slice.numeric_id:
