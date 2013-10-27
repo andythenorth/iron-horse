@@ -1,8 +1,7 @@
 import global_constants
-from train import Consist, DieselRailcar
+from train import EngineConsist, DieselRailcar
 
-consist = Consist(id = 'slammer',
-            base_numeric_id = 1360,
+consist = EngineConsist(id = 'slammer',
             title = 'Slammer [Diesel]',
             str_type_info = 'COASTER',
             replacement_id = '-none',

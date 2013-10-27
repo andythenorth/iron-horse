@@ -1,16 +1,20 @@
+ # OrderedDict available natively in python >= 2.7, but we want support for python 2.6
+from ordered_dict_backport import OrderedDict
+
 # list of explicit vehicle ids for locos
-buy_menu_sort_order_locos = [# brit locos
+# format is base_id: base_numeric_id
+buy_menu_sort_order_locos = OrderedDict([# brit locos
                            #'standard',
                            #'raven',
                            #'goods',
                            #'metro',
-                           'collier',
+                           ('collier', 1240),
                            #'wordsell',
                            #'gresley',
                            #'hellenic',
                            #'suburban',
                            #'chopper',
-                           'slammer',
+                           ('slammer', 1360),
                            #'whistler',
                            #'zebedee',
                            #'gridiron',
@@ -19,12 +23,11 @@ buy_menu_sort_order_locos = [# brit locos
                             # nagn locos
                            #'dmc_sd40',
                            #'geep'
-                           ]
+                           ])
 
 # wagon ids are generic and are composed to specific vehicle ids elsewhere
 # order is significant
 # format is base_id: num_generations
-from ordered_dict_backport import OrderedDict
 buy_menu_sort_order_wagons = OrderedDict([#('passenger_car', 3),
                                           #('mail_car', 3),
                                           ('box_car', 2),

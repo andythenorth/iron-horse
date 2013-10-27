@@ -1,8 +1,7 @@
 import global_constants
-from train import Consist, SteamLoco, SteamLocoTender
+from train import EngineConsist, SteamLoco, SteamLocoTender
 
-consist = Consist(id = 'collier',
-              base_numeric_id = 1240,
+consist = EngineConsist(id = 'collier',
               title = 'Collier [Steam]',
               str_type_info = 'COASTER',
               replacement_id = '-none',

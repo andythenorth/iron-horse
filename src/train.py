@@ -25,8 +25,8 @@ class Consist(object):
        Each consist comprises one or more 'units' (visible).
        Each unit assembled from 3 'slices' (invisible-visible-invisible), which are newgrf vehicles with uids.
    """
-    def __init__(self, id, **kwargs):
-        self.id = id
+    def __init__(self, **kwargs):
+        self.id = kwargs.get('id', None)
 
         # setup properties for this consist (props either shared for all vehicles, or placed on lead vehicle of consist)  
         self.title = kwargs.get('title', None)
@@ -98,10 +98,10 @@ class Consist(object):
         # auto id creator, used for wagons not locos
         return '_'.join((id_base, kwargs['vehicle_set'], 'gen', str(kwargs['wagon_generation'])))
 
-    def get_wagon_numeric_id(self, id, **kwargs):
+    def get_wagon_numeric_id(self, base_id, **kwargs):
         # auto numeric_id creator, used for wagons not locos
-        id_base = global_constants.wagon_type_numeric_ids[id]
-        result = id_base + (100 * global_constants.vehicle_set_id_mapping[kwargs['vehicle_set']]) + (10 * (kwargs['wagon_generation'] - 1))
+        id_base_number = global_constants.wagon_type_numeric_ids[base_id]
+        result = id_base_number + (100 * global_constants.vehicle_set_id_mapping[kwargs['vehicle_set']]) + (10 * (kwargs['wagon_generation'] - 1))
         print result
         return result
 
@@ -404,6 +404,17 @@ class NullTrailingSlice(object):
         return template(vehicle=self)
 
 
+class EngineConsist(Consist):
+    """
+    Intermediate class for engine consists to subclass from, provides some common properties.
+    This class should be sparse - only declare the most limited set of properties common to engine consists.
+    """
+    def __init__(self, **kwargs):
+        id = kwargs.get('id', None)
+        kwargs['base_numeric_id'] = global_constants.buy_menu_sort_order_locos[id]
+        super(EngineConsist, self).__init__(**kwargs)
+
+
 class WagonConsist(Consist):
     """
     Intermediate class for wagon consists to subclass from, provides some common properties.
@@ -412,6 +423,7 @@ class WagonConsist(Consist):
     def __init__(self, type_config, speedy=False, **kwargs):
         print kwargs
         id = self.get_wagon_id(type_config.base_id, **kwargs)
+        kwargs['id'] = id
         kwargs['base_numeric_id'] = self.get_wagon_numeric_id(type_config.base_id, **kwargs)
         self.wagon_generation = kwargs.get('wagon_generation', None)
         if self.wagon_generation == 1:
@@ -419,7 +431,7 @@ class WagonConsist(Consist):
                 self.speed = global_constants.speedy_wagon_speed
             else:
                 self.speed = global_constants.standard_wagon_speed
-        super(WagonConsist, self).__init__(id, **kwargs)
+        super(WagonConsist, self).__init__(**kwargs)
 
 
 class Wagon(Train):
