@@ -1,0 +1,18 @@
+##grflangid 0x35
+##plural 0
+STR_GRF_DESCRIPTION                                             :Lisenssi: {SILVER}GPL v2{}{BLACK}
+
+STR_PARAM_ADJUST_VEHICLE_CAPACITY                               :Junien kapasiteetti
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :Mitätön
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Loistava
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Kohtuuton
+
+STR_NAME_SUFFIX_STEAM                                           :(Höyry)
+STR_NAME_SUFFIX_DIESEL                                          :(Diesel)
+STR_NAME_SUFFIX_ELECTRIC                                        :(Sähkö)
+STR_NAME_SUFFIX_CAR                                             :Auto
+
+STR_BUY_MENU_TEXT                                               :Tyyppi: {GOLD}{STRING}{}{STRING}
+
+STR_COASTER                                                     :Körö körö kirkkoon (tämä muistutus ei ole valmis)
+STR_DOGTRACK                                                    :Koirat ovat ruskeita, toisinaan
