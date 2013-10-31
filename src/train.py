@@ -184,8 +184,12 @@ class Consist(object):
 
     @property
     def buy_menu_width (self):
-        print 'buy menu width not implemented fully, returning 8'
-        return 32 
+        # max sensible width in buy menu is 64px
+        consist_length = 4 * sum([slice.slice_length for slice in self.slices]) 
+        if consist_length < 64:
+            return consist_length
+        else:
+            return 64
     
     def render_debug_info(self):
         template = templates["debug_info_consist.pynml"]
