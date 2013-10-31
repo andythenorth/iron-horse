@@ -421,7 +421,6 @@ class WagonConsist(Consist):
     This class should be sparse - only declare the most limited set of properties common to wagon consists.
     """
     def __init__(self, type_config, speedy=False, **kwargs):
-        print kwargs
         id = self.get_wagon_id(type_config.base_id, **kwargs)
         kwargs['id'] = id
         kwargs['base_numeric_id'] = self.get_wagon_numeric_id(type_config.base_id, **kwargs)
@@ -450,7 +449,6 @@ class Wagon(Train):
         self.autorefit = type_config.autorefit
         self.default_cargo = type_config.default_cargo        
         self.default_cargo_capacities = self.get_capacity_variations(kwargs.get(type_config.default_capacity_type, 0)) 
-        print self.vehicle_length
 
 class SteamLoco(Train):
     """
