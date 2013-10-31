@@ -102,7 +102,7 @@ class Consist(object):
         # auto numeric_id creator, used for wagons not locos
         vehicle_set_base_number = global_constants.vehicle_set_id_mapping[kwargs['vehicle_set']]
         type_base_number = global_constants.wagon_type_numeric_ids[base_id]
-        result = (1000 * vehicle_set_base_number) + type_base_number + (10 * (kwargs['wagon_generation'] - 1))
+        result = (1000 * vehicle_set_base_number) + type_base_number + (3 * (kwargs['wagon_generation'] - 1))
         return result
 
     def get_reduced_set_of_variant_dates(self):
