@@ -37,7 +37,7 @@ buy_menu_sort_order_wagons = OrderedDict([#('passenger_car', 3),
                                           #('flat_car', 2),
                                           #('livestock_car', 2),
                                           #('reefer_car', 2),
-                                          #('covered_hopper_car', 2),
+                                          ('covered_hopper_car', 2),
                                           ('caboose_car', 1)])
 
 # set <-> numeric id mapping
