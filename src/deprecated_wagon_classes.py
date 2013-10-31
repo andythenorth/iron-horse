@@ -126,22 +126,6 @@ class LivestockCar(Wagon):
         self.default_cargo_capacities = self.capacities_freight
 
 
-class CoveredHopperCar(Wagon):
-    """
-    Covered Hopper Car.
-    """
-    def __init__(self, **kwargs):
-        id = self.get_id('covered_hopper_car', **kwargs)
-        kwargs['numeric_id'] = self.get_numeric_id(17000, **kwargs)
-        super(CoveredHopperCar, self).__init__(id, **kwargs)
-        self.template = 'train.pynml'
-        self.class_refit_groups = ['covered_hopper_freight']
-        self.label_refits_allowed = ['GRAI']
-        self.label_refits_disallowed = []
-        self.default_cargo = 'GRAI'
-        self.default_cargo_capacities = self.capacities_freight
-
-
 class ReeferCar(Wagon):
     """
     Reefer (Refrigerated) Car.

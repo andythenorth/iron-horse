@@ -8,13 +8,13 @@ buy_menu_sort_order_locos = OrderedDict([# brit locos
                            #'raven',
                            #'goods',
                            #'metro',
-                           ('collier', 1240),
+                           ('collier', 1040),
                            #'wordsell',
                            #'gresley',
                            #'hellenic',
                            #'suburban',
                            #'chopper',
-                           ('slammer', 1360),
+                           ('slammer', 1160),
                            #'whistler',
                            #'zebedee',
                            #'gridiron',
@@ -39,8 +39,14 @@ buy_menu_sort_order_wagons = OrderedDict([#('passenger_car', 3),
                                           #('reefer_car', 2),
                                           #('covered_hopper_car', 2),
                                           ('caboose_car', 1)])
+
+# set <-> numeric id mapping
+# vehicle_set_id_mapping = {'univ': 0, 'brit': 1 ,'nagn': 2, 'soam': 3, 'euro': 4}
+# max is around 15, 
+vehicle_set_id_mapping = {'brit': 1}
                                           
-wagon_type_numeric_ids = {'box_car': 12000, 'caboose_car': 16000}                                          
+# wagon IDs start at 350, the first 350 IDs in a vehicle set are reserved for engines                                          
+wagon_type_numeric_ids = {'caboose_car': 350, 'box_car': 400, 'covered_hopper_car': 450}                                          
                                           
 # shared lists of allowed classes, shared across multiple ship types
 base_refits_by_class = {'empty': [],
@@ -58,10 +64,6 @@ base_refits_by_class = {'empty': [],
 # speed for wagons in mph (some generations may optionally have no speed set)
 standard_wagon_speed = 75
 speedy_wagon_speed = 100
-
-# set <-> numeric id mapping
-#vehicle_set_id_mapping = {'univ': 0, 'brit': 1 ,'nagn': 2, 'soam': 3, 'euro': 4}
-vehicle_set_id_mapping = {'brit': 1}
 
 # capacity multipliers for capacity parameter
 capacity_multipliers = [0.67, 1, 1.33]
