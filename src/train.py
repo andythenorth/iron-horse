@@ -444,7 +444,7 @@ class Wagon(Train):
     """
     Intermediate class for actual cars (wagons) to subclass from, provides some common properties.
     This class should be sparse - only declare the most limited set of properties common to wagons.
-    Most props should be declared by Train with useful defaults, or by the subclass providing the car.
+    Most props should be declared by Train with useful defaults.
     """
     def __init__(self, type_config, **kwargs):
         super(Wagon, self).__init__(**kwargs)
