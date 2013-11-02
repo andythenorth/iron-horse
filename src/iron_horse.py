@@ -61,9 +61,13 @@ from vehicles import standard
 from vehicles import suburban
 """
 from vehicles import hellenic
-from vehicles import gresley
+"""
+from vehicles import northcock
+"""
 from vehicles import tank_cars
-from vehicles import whistler
+"""
+from vehicles import vulcan
+"""
 from vehicles import wordsell
 from vehicles import zebedee
 """
