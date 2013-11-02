@@ -2,7 +2,7 @@ import global_constants
 from train import EngineConsist, SteamLoco, SteamLocoTender
 
 consist = EngineConsist(id = 'northcock',
-              base_numeric_id = 1080,
+              base_numeric_id = 1070,
               title = 'Northcock [Steam]',
               str_type_info = 'COASTER',
               replacement_id = '-none',
@@ -13,7 +13,7 @@ consist = EngineConsist(id = 'northcock',
               fixed_run_cost_factor = 3.5,
               fuel_run_cost_factor = 1.0,
               vehicle_life = 40,
-              intro_date = 1933,
+              intro_date = 1935,
               graphics_status = '')
               
 consist.add_unit(SteamLoco(consist = consist,

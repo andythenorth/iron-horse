@@ -2,7 +2,7 @@ import global_constants
 from train import EngineConsist, SteamLoco
 
 consist = EngineConsist(id = 'suburban',
-              base_numeric_id = 1240,
+              base_numeric_id = 1060,
               title = 'Suburban [Steam]',
               str_type_info = 'COASTER',
               replacement_id = '-none',

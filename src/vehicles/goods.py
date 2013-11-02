@@ -13,7 +13,7 @@ consist = EngineConsist(id = 'goods',
               fixed_run_cost_factor = 3.5,
               fuel_run_cost_factor = 1.0,
               vehicle_life = 40,
-              intro_date = 1865,
+              intro_date = 1860,
               graphics_status = '')
               
 consist.add_unit(SteamLoco(consist = consist,
