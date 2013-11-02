@@ -45,9 +45,7 @@ from vehicles import gridiron
 from vehicles import high_flyer
 from vehicles import hopper_cars
 from vehicles import livestock_cars
-"""
 from vehicles import mail_cars
-"""
 from vehicles import metro
 """
 from vehicles import open_cars

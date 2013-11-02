@@ -457,6 +457,7 @@ class Wagon(Train):
         self.default_cargo = type_config.default_cargo        
         self.default_cargo_capacities = self.get_capacity_variations(kwargs.get(type_config.default_capacity_type, 0)) 
 
+
 class SteamLoco(Train):
     """
     Steam Locomotive.
