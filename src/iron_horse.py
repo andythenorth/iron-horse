@@ -39,6 +39,7 @@ from vehicles import flat_cars
 #from vehicles import geep
 from vehicles import goods
 from vehicles import gridiron
+from vehicles import high_flyer
 """
 from vehicles import hopper_cars
 from vehicles import livestock_cars
@@ -63,7 +64,6 @@ from vehicles import tank_cars
 """
 from vehicles import vulcan
 """
-from vehicles import wordsell
 from vehicles import zebedee
 """
 def get_consists_in_buy_menu_order(show_warnings=False):

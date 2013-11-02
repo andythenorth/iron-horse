@@ -8,7 +8,7 @@ buy_menu_sort_order_locos = [# brit locos
                            'metro',
                            'goods',
                            'collier',
-                           #'wordsell',
+                           'high_flyer',
                            'raven',
                            'suburban',
                            'northcock',
