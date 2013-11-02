@@ -7,7 +7,7 @@ buy_menu_sort_order_locos = OrderedDict([# brit locos
                            #'standard',
                            #'raven',
                            ('goods', 1220),
-                           #'metro',
+                           ('metro', 1230),
                            ('collier', 1040),
                            #'wordsell',
                            #'gresley',
@@ -19,7 +19,6 @@ buy_menu_sort_order_locos = OrderedDict([# brit locos
                            #'zebedee',
                            ('gridiron', 1350),
                            #'screamer',
-                           #'pendolino',
                             # nagn locos
                            #'dmc_sd40',
                            #'geep'
