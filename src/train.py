@@ -516,3 +516,15 @@ class ElectricLoco(Train):
         self.default_cargo_capacities = [0]
         self.engine_class = 'ENGINE_CLASS_ELECTRIC' #nml constant
         self.visual_effect = 'VISUAL_EFFECT_ELECTRIC' # nml constant
+
+
+class ElectroDieselLoco(Train):
+    """
+    Bi-mode Locomotive - operates on electrical power or diesel.
+    """
+    def __init__(self, **kwargs):
+        super(ElectroDieselLoco, self).__init__(**kwargs)
+        self.template = 'train.pynml'
+        self.default_cargo_capacities = [0]
+        self.engine_class = 'ENGINE_CLASS_DIESEL' #nml constant
+        self.visual_effect = 'VISUAL_EFFECT_DIESEL' # nml constant

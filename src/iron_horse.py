@@ -35,6 +35,7 @@ from vehicles import chopper
 from vehicles import collier
 from vehicles import covered_hopper_cars
 from vehicles import cyclops
+from vehicles import double_juice
 #from vehicles import dmc_sd40
 from vehicles import electra
 from vehicles import flat_cars
