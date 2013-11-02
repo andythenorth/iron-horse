@@ -73,21 +73,6 @@ class OpenCar(Wagon):
         self.default_cargo_capacities = self.capacities_freight
 
 
-class LivestockCar(Wagon):
-    """
-    Livestock Car (Gondola).
-    """
-    def __init__(self, **kwargs):
-        id = self.get_id('livestock_car', **kwargs)
-        kwargs['numeric_id'] = self.get_numeric_id(16000, **kwargs)
-        super(LivestockCar, self).__init__(id, **kwargs)
-        self.template = 'train.pynml'
-        self.class_refit_groups = []
-        self.label_refits_allowed = ['LVST'] # no specific labels needed
-        self.label_refits_disallowed = []
-        self.default_cargo = 'LVST'
-        self.default_cargo_capacities = self.capacities_freight
-
 
 class ReeferCar(Wagon):
     """
