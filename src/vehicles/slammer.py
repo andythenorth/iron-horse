@@ -2,17 +2,18 @@ import global_constants
 from train import EngineConsist, DieselRailcar
 
 consist = EngineConsist(id = 'slammer',
-            title = 'Slammer [Diesel]',
-            str_type_info = 'COASTER',
-            replacement_id = '-none',
-            power = 450,
-            speed = 75,
-            buy_cost = 22,
-            fixed_run_cost_factor = 3.5,
-            fuel_run_cost_factor = 1.0,
-            intro_date = 1960,
-            vehicle_life = 40,
-            graphics_status = '')
+              base_numeric_id = 1100,
+              title = 'Slammer [Diesel]',
+              str_type_info = 'COASTER',
+              replacement_id = '-none',
+              power = 450,
+              speed = 75,
+              buy_cost = 22,
+              fixed_run_cost_factor = 3.5,
+              fuel_run_cost_factor = 1.0,
+              intro_date = 1960,
+              vehicle_life = 40,
+              graphics_status = '')
 
 consist.add_unit(DieselRailcar(consist = consist,
                         weight = 65,

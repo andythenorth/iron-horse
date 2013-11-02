@@ -415,7 +415,6 @@ class EngineConsist(Consist):
     """
     def __init__(self, **kwargs):
         id = kwargs.get('id', None)
-        kwargs['base_numeric_id'] = global_constants.buy_menu_sort_order_locos[id]
         super(EngineConsist, self).__init__(**kwargs)
 
 
