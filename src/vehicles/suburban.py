@@ -1,24 +1,25 @@
 import global_constants
-from train import Train, SteamTankLoco
+from train import EngineConsist, SteamLoco
 
-vehicle = SteamTankLoco(id = 'suburban',
-            numeric_id = 1280,
-            title = 'Suburban [Steam]',
-            replacement_id = '-none',
-            buy_cost = 22,
-            fixed_run_cost_factor = 3.5,
-            fuel_run_cost_factor = 1.0,
-            speed = 70,
-            power = 650,
-            weight = 57,
-            tractive_effort_coefficient = 0.2,
-            vehicle_length = 7,
-            loading_speed = 20,
-            intro_date = 1930,
-            str_type_info = 'COASTER',
-            vehicle_life = 40,
-            graphics_status = '',)
+consist = EngineConsist(id = 'suburban',
+              title = 'Suburban [Steam]',
+              str_type_info = 'COASTER',
+              replacement_id = '-none',
+              power = 650,
+              tractive_effort_coefficient = 0.2,
+              speed = 70,
+              buy_cost = 22,
+              fixed_run_cost_factor = 3.5,
+              fuel_run_cost_factor = 1.0,
+              vehicle_life = 40,
+              intro_date = 1930,
+              graphics_status = '')
+              
+consist.add_unit(SteamLoco(consist = consist,
+                        weight = 57,
+                        vehicle_length = 7,
+                        spriterow_num = 0))              
 
-vehicle.add_model_variant(intro_date=0,
+consist.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,
                        spritesheet_suffix=0)

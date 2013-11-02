@@ -57,9 +57,11 @@ from vehicles import screamer
 from vehicles import slammer
 """
 from vehicles import standard
+"""
+from vehicles import suburban
+"""
 from vehicles import hellenic
 from vehicles import gresley
-from vehicles import suburban
 from vehicles import tank_cars
 from vehicles import whistler
 from vehicles import wordsell

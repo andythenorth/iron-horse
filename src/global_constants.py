@@ -12,7 +12,7 @@ buy_menu_sort_order_locos = OrderedDict([# brit locos
                            #'wordsell',
                            #'gresley',
                            #'hellenic',
-                           #'suburban',
+                           ('suburban', 1240),
                            #'chopper',
                            ('slammer', 1160),
                            #'whistler',
