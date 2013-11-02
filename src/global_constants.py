@@ -17,7 +17,7 @@ buy_menu_sort_order_locos = OrderedDict([# brit locos
                            ('slammer', 1160),
                            #'whistler',
                            #'zebedee',
-                           #'gridiron',
+                           ('gridiron', 1350),
                            #'screamer',
                            #'pendolino',
                             # nagn locos

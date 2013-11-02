@@ -480,8 +480,8 @@ class DieselLoco(Train):
     """
     Diesel Locomotive.
     """
-    def __init__(self, id, **kwargs):
-        super(DieselLoco, self).__init__(id, **kwargs)
+    def __init__(self, **kwargs):
+        super(DieselLoco, self).__init__(**kwargs)
         self.template = 'train.pynml'
         self.default_cargo_capacities = [0]
         self.engine_class = 'ENGINE_CLASS_DIESEL' #nml constant
