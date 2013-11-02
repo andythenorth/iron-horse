@@ -360,6 +360,8 @@ class TypeConfig(object):
     def __init__(self, base_id, template, **kwargs):
         self.base_id = base_id
         self.template = template
+        self.num_cargo_rows = kwargs.get('num_cargo_rows', None)
+        self.cargo_graphics_mappings = kwargs.get('cargo_graphics_mappings', None)        
         self.class_refit_groups = kwargs.get('class_refit_groups', None)
         self.label_refits_allowed = kwargs.get('label_refits_allowed', None)
         self.label_refits_disallowed = kwargs.get('label_refits_disallowed', None)
@@ -434,6 +436,8 @@ class WagonConsist(Consist):
             else:
                 self.speed = global_constants.standard_wagon_speed
         super(WagonConsist, self).__init__(**kwargs)
+        self.num_cargo_rows = type_config.num_cargo_rows
+        self.cargo_graphics_mappings = type_config.cargo_graphics_mappings
 
 
 class Wagon(Train):

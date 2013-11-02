@@ -1,24 +1,22 @@
 import global_constants
 from train import TypeConfig, WagonConsist, Wagon
 
+cargo_graphics_mappings = {'FMSP': 1, 'MILK': 2, 'RFPR': 1}
+
 type_config = TypeConfig(base_id = 'tank_car',
-                template = 'train.pynml',
+                template = 'tank_car.pynml',
+                num_cargo_rows = 3,
                 class_refit_groups = ['liquids'],
-                label_refits_allowed = [],
+                cargo_graphics_mappings = cargo_graphics_mappings,
+                label_refits_allowed = cargo_graphics_mappings.keys() ,
                 label_refits_disallowed = [],
                 autorefit = True,
                 default_cargo = 'OIL_',
                 default_capacity_type = 'capacity_freight',
                 str_type_info = 'DOGTRACK')
                 
-"""                
-        self.class_refit_groups = ['liquids']
-        self.num_cargo_rows = 3
         # mappings are to rows in the spritesheet, 0-based (0 is also default)
         # also get the allowed label refits from the graphics mapping - use row 0 if there's no specific graphics for the label 
-        self.cargo_graphics_mappings = {'FMSP': 1, 'MILK': 2, 'RFPR': 1}
-        self.label_refits_allowed = self.cargo_graphics_mappings.keys() 
-"""                
 
 consist = WagonConsist(type_config = type_config,
                     title = 'Tank [Car]',
