@@ -48,9 +48,7 @@ from vehicles import livestock_cars
 from vehicles import mail_cars
 from vehicles import metro
 from vehicles import open_cars
-"""
 from vehicles import passenger_cars
-"""
 from vehicles import raven
 from vehicles import reefer_cars
 from vehicles import screamer
