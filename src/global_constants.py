@@ -12,7 +12,7 @@ buy_menu_sort_order_locos = [# brit locos
                            'raven',
                            'suburban',
                            'northcock',
-                           #'chopper',
+                           'chopper',
                            'slammer',
                            'vulcan',
                            #'zebedee',
