@@ -6,8 +6,8 @@ consist = EngineConsist(id = 'high_flyer',
               title = 'High Flyer [Steam]',
               str_type_info = 'COASTER',
               replacement_id = '-none',
-              power = 1550,
-              tractive_effort_coefficient = 0.18,
+              power = 1300,
+              tractive_effort_coefficient = 0.10,
               speed = 80,
               buy_cost = 22,
               fixed_run_cost_factor = 3.5,
@@ -17,7 +17,7 @@ consist = EngineConsist(id = 'high_flyer',
               graphics_status = '')
               
 consist.add_unit(SteamLoco(consist = consist,
-                        weight = 96,
+                        weight = 90,
                         vehicle_length = 7,
                         spriterow_num = 0))              
 
