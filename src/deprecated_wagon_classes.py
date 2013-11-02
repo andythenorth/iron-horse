@@ -40,20 +40,3 @@ class OpenCar(Wagon):
         self.default_cargo = 'GOOD'
         self.default_cargo_capacities = self.capacities_freight
 
-
-
-class ReeferCar(Wagon):
-    """
-    Reefer (Refrigerated) Car.
-    """
-    def __init__(self, **kwargs):
-        id = self.get_id('reefer_car', **kwargs)
-        kwargs['numeric_id'] = self.get_numeric_id(18000, **kwargs)
-        super(ReeferCar, self).__init__(id, **kwargs)
-        self.template = 'train.pynml'
-        self.class_refit_groups = ['refrigerated_freight']
-        self.label_refits_allowed = []
-        self.label_refits_disallowed = []
-        self.autorefit = True
-        self.default_cargo = 'FOOD'
-        self.default_cargo_capacities = self.capacities_freight

@@ -1,43 +1,59 @@
 import global_constants
-from train import Train, ReeferCar
+from train import TypeConfig, WagonConsist, Wagon
 
+type_config = TypeConfig(base_id = 'reefer_car',
+                template = 'train.pynml',
+                class_refit_groups = ['refrigerated_freight'],
+                label_refits_allowed = [],
+                label_refits_disallowed = [],
+                autorefit = True,
+                default_cargo = 'FOOD',
+                default_capacity_type = 'capacity_freight',
+                str_type_info = 'DOGTRACK')
 
-vehicle = ReeferCar(title = 'Reefer [Car]',
-                vehicle_set = 'brit',
-                wagon_generation = 1,
-                capacity_freight = 25,
-                replacement_id = '-none',
-                buy_cost = 22,
-                fixed_run_cost_factor = 3.5,
-                fuel_run_cost_factor = 1.0,
-                weight = 100,
-                vehicle_length = 5,
-                loading_speed = 20,
-                intro_date = 1890,
-                str_type_info = 'COASTER',
-                vehicle_life = 40,
-                graphics_status = '',)
+consist = WagonConsist(type_config = type_config,
+                    title = 'Reefer [Car]',
+                    vehicle_set = 'brit',
+                    wagon_generation = 1,
+                    replacement_id = '-none',
+                    intro_date = 1890,
+                    buy_cost = 22,
+                    fixed_run_cost_factor = 3.5,
+                    fuel_run_cost_factor = 1.0,
+                    vehicle_life = 40,
+                    graphics_status = '')
 
-vehicle.add_model_variant(intro_date=0,
+consist.add_unit(Wagon(type_config = type_config,
+                        consist = consist,
+                        capacity_freight = 25,
+                        weight = 100,
+                        vehicle_length = 5,
+                        loading_speed = 20))              
+
+consist.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,
                        spritesheet_suffix=0)
 
-vehicle = ReeferCar(title = 'Reefer [Car]',
-                vehicle_set = 'brit',
-                wagon_generation = 2,
-                capacity_freight = 40,
-                replacement_id = '-none',
-                buy_cost = 22,
-                fixed_run_cost_factor = 3.5,
-                fuel_run_cost_factor = 1.0,
-                weight = 100,
-                vehicle_length = 8,
-                loading_speed = 20,
-                intro_date = 1935,
-                str_type_info = 'COASTER',
-                vehicle_life = 40,
-                graphics_status = '',)
 
-vehicle.add_model_variant(intro_date=0,
+consist = WagonConsist(type_config = type_config,
+                    title = 'Reefer [Car]',
+                    vehicle_set = 'brit',
+                    wagon_generation = 2,
+                    replacement_id = '-none',
+                    intro_date = 1935,
+                    buy_cost = 22,
+                    fixed_run_cost_factor = 3.5,
+                    fuel_run_cost_factor = 1.0,
+                    vehicle_life = 40,
+                    graphics_status = '')
+
+consist.add_unit(Wagon(type_config = type_config,
+                        consist = consist,
+                        capacity_freight = 40,
+                        weight = 100,
+                        vehicle_length = 8,
+                        loading_speed = 20))              
+
+consist.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,
                        spritesheet_suffix=0)
