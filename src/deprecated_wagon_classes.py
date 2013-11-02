@@ -73,26 +73,6 @@ class OpenCar(Wagon):
         self.default_cargo_capacities = self.capacities_freight
 
 
-class TankCar(Wagon):
-    """
-    Tank Car.
-    """
-    def __init__(self, **kwargs):
-        id = self.get_id('tank_car', **kwargs)
-        kwargs['numeric_id'] = self.get_numeric_id(15000, **kwargs)
-        super(TankCar, self).__init__(id, **kwargs)
-        self.template = 'tank_car.pynml'
-        self.class_refit_groups = ['liquids']
-        self.num_cargo_rows = 3
-        # mappings are to rows in the spritesheet, 0-based (0 is also default)
-        # also get the allowed label refits from the graphics mapping - use row 0 if there's no specific graphics for the label 
-        self.cargo_graphics_mappings = {'FMSP': 1, 'MILK': 2, 'RFPR': 1}
-        self.label_refits_allowed = self.cargo_graphics_mappings.keys() 
-        self.label_refits_disallowed = []
-        self.default_cargo = 'OIL_'
-        self.default_cargo_capacities = self.capacities_freight
-
-
 class LivestockCar(Wagon):
     """
     Livestock Car (Gondola).

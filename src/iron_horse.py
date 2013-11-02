@@ -62,9 +62,7 @@ from vehicles import slammer
 from vehicles import standard
 from vehicles import suburban
 from vehicles import northcock
-"""
 from vehicles import tank_cars
-"""
 from vehicles import vulcan
 
 def get_consists_in_buy_menu_order(show_warnings=False):
