@@ -16,7 +16,6 @@ buy_menu_sort_order_locos = [# brit locos
                            'chopper',
                            'slammer',
                            'vulcan',
-                           #'zebedee',
                            'gridiron',
                            'screamer',
                             # nagn locos

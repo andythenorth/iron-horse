@@ -64,9 +64,7 @@ from vehicles import northcock
 from vehicles import tank_cars
 """
 from vehicles import vulcan
-"""
-from vehicles import zebedee
-"""
+
 def get_consists_in_buy_menu_order(show_warnings=False):
     sorted_consists = []
     # first compose the buy menu order list
