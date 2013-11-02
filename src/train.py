@@ -533,3 +533,12 @@ class ElectroDieselLoco(Train):
         self.default_cargo_capacities = [0]
         self.engine_class = 'ENGINE_CLASS_DIESEL' #nml constant
         self.visual_effect = 'VISUAL_EFFECT_DIESEL' # nml constant
+
+
+class MailCar(Wagon):
+    """
+    Mail Carriage.
+    """
+    def __init__(self, **kwargs):
+        super(MailCar, self).__init__(**kwargs)
+        self.capacities_freight = [int(0.5 * capacity) for capacity in self.capacities_mail]

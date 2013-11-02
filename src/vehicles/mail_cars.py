@@ -1,5 +1,5 @@
 import global_constants
-from train import TypeConfig, WagonConsist, Wagon
+from train import TypeConfig, WagonConsist, MailCar
 
 #self.capacities_freight = [int(0.5 * capacity) for capacity in self.capacities_mail]
 
@@ -25,7 +25,7 @@ consist = WagonConsist(type_config = type_config,
                     vehicle_life = 40,
                     graphics_status = '')
 
-consist.add_unit(Wagon(type_config = type_config,
+consist.add_unit(MailCar(type_config = type_config,
                         consist = consist,
                         capacity_mail = 30,
                         weight = 100,
@@ -49,7 +49,7 @@ consist = WagonConsist(type_config = type_config,
                     vehicle_life = 40,
                     graphics_status = '')
 
-consist.add_unit(Wagon(type_config = type_config,
+consist.add_unit(MailCar(type_config = type_config,
                         consist = consist,
                         capacity_mail = 45,
                         weight = 100,
@@ -73,7 +73,7 @@ consist = WagonConsist(type_config = type_config,
                     vehicle_life = 40,
                     graphics_status = '')
 
-consist.add_unit(Wagon(type_config = type_config,
+consist.add_unit(MailCar(type_config = type_config,
                         consist = consist,
                         capacity_mail = 60,
                         weight = 100,
