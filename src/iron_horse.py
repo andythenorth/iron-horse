@@ -55,9 +55,7 @@ from vehicles import reefer_cars
 from vehicles import screamer
 """
 from vehicles import slammer
-"""
 from vehicles import standard
-"""
 from vehicles import suburban
 """
 from vehicles import hellenic

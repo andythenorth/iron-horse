@@ -4,7 +4,7 @@ from ordered_dict_backport import OrderedDict
 # list of explicit vehicle ids for locos
 # format is base_id: base_numeric_id
 buy_menu_sort_order_locos = [# brit locos
-                           #'standard',
+                           'standard',
                            'metro',
                            'goods',
                            'raven',
