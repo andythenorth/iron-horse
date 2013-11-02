@@ -6,7 +6,7 @@ from ordered_dict_backport import OrderedDict
 buy_menu_sort_order_locos = OrderedDict([# brit locos
                            #'standard',
                            #'raven',
-                           #'goods',
+                           ('goods', 1220),
                            #'metro',
                            ('collier', 1040),
                            #'wordsell',
