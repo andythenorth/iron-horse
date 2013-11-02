@@ -3,26 +3,26 @@ from ordered_dict_backport import OrderedDict
 
 # list of explicit vehicle ids for locos
 # format is base_id: base_numeric_id
-buy_menu_sort_order_locos = OrderedDict([# brit locos
+buy_menu_sort_order_locos = [# brit locos
                            #'standard',
-                           ('metro', 1030),
-                           ('goods', 1020),
-                           ('raven', 1010),
-                           ('collier', 1040),
+                           'metro',
+                           'goods',
+                           'raven',
+                           'collier',
                            #'wordsell',
                            #'gresley',
                            #'hellenic',
-                           ('suburban', 1240),
+                           'suburban',
                            #'chopper',
-                           ('slammer', 1160),
+                           'slammer',
                            #'whistler',
                            #'zebedee',
-                           ('gridiron', 1350),
+                           'gridiron',
                            #'screamer',
                             # nagn locos
                            #'dmc_sd40',
                            #'geep'
-                           ])
+                           ]
 
 # wagon ids are generic and are composed to specific vehicle ids elsewhere
 # order is significant
