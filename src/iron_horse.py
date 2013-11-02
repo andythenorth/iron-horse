@@ -43,8 +43,8 @@ from vehicles import flat_cars
 from vehicles import goods
 from vehicles import gridiron
 from vehicles import high_flyer
-"""
 from vehicles import hopper_cars
+"""
 from vehicles import livestock_cars
 from vehicles import mail_cars
 """

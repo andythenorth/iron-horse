@@ -33,7 +33,7 @@ buy_menu_sort_order_wagons = OrderedDict([#('passenger_car', 3),
                                           ('box_car', 2),
                                           #('open_car', 2),
                                           #('tank_car', 3),
-                                          #('hopper_car', 2),
+                                          ('hopper_car', 2),
                                           ('flat_car', 2),
                                           #('livestock_car', 2),
                                           #('reefer_car', 2),
@@ -46,20 +46,21 @@ buy_menu_sort_order_wagons = OrderedDict([#('passenger_car', 3),
 vehicle_set_id_mapping = {'brit': 1}
                                           
 # wagon IDs start at 350, the first 350 IDs in a vehicle set are reserved for engines                                          
-wagon_type_numeric_ids = {'caboose_car': 250, 'box_car': 260, 'covered_hopper_car': 270, 'flat_car': 280}                                          
+wagon_type_numeric_ids = {'caboose_car': 250, 'box_car': 260, 'covered_hopper_car': 270, 'flat_car': 280,
+                          'hopper_car': 290}                                          
                                           
 # shared lists of allowed classes, shared across multiple ship types
 base_refits_by_class = {'empty': [],
-                       'all_freight': ['CC_BULK', 'CC_PIECE_GOODS', 'CC_EXPRESS', 'CC_LIQUID', 'CC_ARMOURED', 'CC_REFRIGERATED', 'CC_COVERED', 'CC_NON_POURABLE'],
-                       'pax': ['CC_PASSENGERS'],
-                       'mail': ['CC_MAIL'],
-                       'liquids': ['CC_LIQUID'],
-                       'packaged_freight': ['CC_PIECE_GOODS', 'CC_EXPRESS', 'CC_ARMOURED', 'CC_LIQUID'],
-                       'flatcar_freight': ['CC_PIECE_GOODS', 'CC_EXPRESS', 'CC_ARMOURED', 'CC_LIQUID'],
-                       'hopper_freight': [],
-                       'covered_hopper_freight': [],
-                       'refrigerated_freight': [],
-                       'express_freight': ['CC_EXPRESS','CC_ARMOURED']}
+                        'all_freight': ['CC_BULK', 'CC_PIECE_GOODS', 'CC_EXPRESS', 'CC_LIQUID', 'CC_ARMOURED', 'CC_REFRIGERATED', 'CC_COVERED', 'CC_NON_POURABLE'],
+                        'pax': ['CC_PASSENGERS'],
+                        'mail': ['CC_MAIL'],
+                        'liquids': ['CC_LIQUID'],
+                        'packaged_freight': ['CC_PIECE_GOODS', 'CC_EXPRESS', 'CC_ARMOURED', 'CC_LIQUID'],
+                        'flatcar_freight': ['CC_PIECE_GOODS', 'CC_EXPRESS', 'CC_ARMOURED', 'CC_LIQUID'],
+                        'hopper_freight': [],
+                        'covered_hopper_freight': [],
+                        'refrigerated_freight': [],
+                        'express_freight': ['CC_EXPRESS','CC_ARMOURED']}
 
 # speed for wagons in mph (some generations may optionally have no speed set)
 standard_wagon_speed = 75

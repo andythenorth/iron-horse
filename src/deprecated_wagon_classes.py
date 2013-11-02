@@ -49,23 +49,6 @@ class CabooseCar(Wagon):
         self.speed = 0
 
 
-class HopperCar(Wagon):
-    """
-    Hopper Car.
-    """
-    def __init__(self, **kwargs):
-        id = self.get_id('hopper_car', **kwargs)
-        kwargs['numeric_id'] = self.get_numeric_id(13000, **kwargs)
-        super(HopperCar, self).__init__(id, **kwargs)
-        self.template = 'train.pynml'
-        self.class_refit_groups = ['hopper_freight']
-        self.label_refits_allowed = []
-        self.label_refits_disallowed = []
-        self.autorefit = True
-        self.default_cargo = 'COAL'
-        self.default_cargo_capacities = self.capacities_freight
-
-
 class OpenCar(Wagon):
     """
     Open Car (Gondola).
