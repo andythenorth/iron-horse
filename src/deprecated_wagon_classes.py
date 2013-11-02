@@ -17,38 +17,6 @@ class PassengerCar(Wagon):
         self.default_cargo_capacities = self.capacities_pax
 
 
-class MailCar(Wagon):
-    """
-    Mail Carriage.
-    """
-    def __init__(self, **kwargs):
-        id = self.get_id('mail_car', **kwargs)
-        kwargs['numeric_id'] = self.get_numeric_id(11000, **kwargs)
-        super(MailCar, self).__init__(id, speedy=True, **kwargs)
-        self.template = 'train.pynml'
-        self.class_refit_groups = ['mail', 'express_freight']
-        self.label_refits_allowed = [] # no specific labels needed
-        self.label_refits_disallowed = []
-        self.autorefit = True
-        self.capacities_freight = [int(0.5 * capacity) for capacity in self.capacities_mail]
-        self.default_cargo_capacities = self.capacities_mail
-        self.default_cargo = 'MAIL'
-
-
-class CabooseCar(Wagon):
-    """
-    Caboose (Brake Van).
-    """
-    def __init__(self, **kwargs):
-        id = self.get_id('caboose_car', **kwargs)
-        kwargs['numeric_id'] = self.get_numeric_id(20000, **kwargs)
-        super(CabooseCar, self).__init__(id, **kwargs)
-        self.template = 'train.pynml'
-        self.default_cargo_capacities = [0]
-        self.loading_speed = 0
-        self.speed = 0
-
-
 class OpenCar(Wagon):
     """
     Open Car (Gondola).
@@ -88,21 +56,4 @@ class ReeferCar(Wagon):
         self.label_refits_disallowed = []
         self.autorefit = True
         self.default_cargo = 'FOOD'
-        self.default_cargo_capacities = self.capacities_freight
-
-
-class FlatCar(Wagon):
-    """
-    Flat Car.
-    """
-    def __init__(self, **kwargs):
-        id = self.get_id('flat_car', **kwargs)
-        kwargs['numeric_id'] = self.get_numeric_id(19000, **kwargs)
-        super(FlatCar, self).__init__(id, **kwargs)
-        self.template = 'train.pynml'
-        self.class_refit_groups = ['flatcar_freight']
-        self.label_refits_allowed = []
-        self.label_refits_disallowed = []
-        self.autorefit = True
-        self.default_cargo = 'GOOD'
         self.default_cargo_capacities = self.capacities_freight
