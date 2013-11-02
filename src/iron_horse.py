@@ -57,9 +57,6 @@ from vehicles import screamer
 from vehicles import slammer
 from vehicles import standard
 from vehicles import suburban
-"""
-from vehicles import hellenic
-"""
 from vehicles import northcock
 """
 from vehicles import tank_cars

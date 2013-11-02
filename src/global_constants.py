@@ -11,7 +11,6 @@ buy_menu_sort_order_locos = [# brit locos
                            'collier',
                            #'wordsell',
                            'northcock',
-                           #'hellenic',
                            'suburban',
                            #'chopper',
                            'slammer',
