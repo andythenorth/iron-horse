@@ -14,7 +14,8 @@ consist = EngineConsist(id = 'metro',
               fuel_run_cost_factor = 1.0,
               vehicle_life = 40,
               intro_date = 1860,
-              graphics_status = '')
+              graphics_status = '',
+              use_legacy_spritesheet = True)
               
 consist.add_unit(SteamLoco(consist = consist,
                         weight = 35,

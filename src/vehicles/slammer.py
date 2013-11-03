@@ -13,7 +13,8 @@ consist = EngineConsist(id = 'slammer',
               fuel_run_cost_factor = 1.0,
               intro_date = 1960,
               vehicle_life = 40,
-              graphics_status = '')
+              graphics_status = '',
+              use_legacy_spritesheet = True)
 
 consist.add_unit(DieselRailcar(consist = consist,
                         weight = 65,

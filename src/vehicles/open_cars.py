@@ -28,7 +28,8 @@ consist = WagonConsist(type_config = type_config,
                     fixed_run_cost_factor = 3.5,
                     fuel_run_cost_factor = 1.0,
                     vehicle_life = 40,
-                    graphics_status = '')
+                    graphics_status = '',
+                    use_legacy_spritesheet = True)
 
 consist.add_unit(Wagon(type_config = type_config,
                         consist = consist,
@@ -52,7 +53,8 @@ consist = WagonConsist(type_config = type_config,
                     fixed_run_cost_factor = 3.5,
                     fuel_run_cost_factor = 1.0,
                     vehicle_life = 40,
-                    graphics_status = '')
+                    graphics_status = '',
+                    use_legacy_spritesheet = True)
 
 consist.add_unit(Wagon(type_config = type_config,
                         consist = consist,
