@@ -39,13 +39,12 @@ buy_menu_sort_order_wagons = OrderedDict([('passenger_car', 3),
                                           ('caboose_car', 1)])
 
 # set (roster) <-> numeric id mapping
-# vehicle_set_id_mapping = {'univ': 0, 'brit': 1 ,'nagn': 2, 'soam': 3, 'euro': 4}
 # vehicle IDs are in format nxxx where n is set numeric id 
-# IDs must be < 16383, with 500 IDs allocated per set, so max 30 sets 
+# first 1k IDs reserved, IDs must be < 16383, with 500 IDs allocated per set, so max 30 sets 
 vehicle_set_id_mapping = {'brit': 1}
                                           
 # wagon IDs start at 250, the first 250 IDs in a vehicle set are reserved for engines
-# max wagon type ID is 390 - set have up to 500 IDs, zero-based, with 100 left spare for special stuff  
+# max wagon type ID is 390 - set have up to 500 IDs, zero-based, with 100 reserved for special stuff  
 wagon_type_numeric_ids = {'caboose_car': 250, 'box_car': 260, 'covered_hopper_car': 270, 'flat_car': 280,
                           'hopper_car': 290, 'tank_car': 300, 'livestock_car': 310, 'mail_car': 320,
                           'reefer_car': 330, 'open_car': 340, 'passenger_car': 350}                                          
