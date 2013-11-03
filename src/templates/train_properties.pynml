@@ -31,6 +31,7 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
         reliability_decay:              20; // default value
         vehicle_life:                   ${consist.vehicle_life};
         length:                         ${vehicle.slice_length};
+        track_type:                     RAIL;
     }
     graphics {
         cargo_capacity:                 ${vehicle.id}_switch_cargo_capacity;

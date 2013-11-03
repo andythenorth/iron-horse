@@ -396,6 +396,7 @@ class LeadSlice(Train):
         self.weight = 0
         self.default_cargo_capacities = [0]
         self.vehicle_length = parent_vehicle.vehicle_length
+        self.engine_class = parent_vehicle.engine_class
 
 
 class NullTrailingSlice(object):
