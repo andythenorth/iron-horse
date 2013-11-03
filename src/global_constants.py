@@ -1,21 +1,23 @@
-# list of explicit vehicle ids for locos
+ # OrderedDict available natively in python >= 2.7, but we want support for python 2.6
+from ordered_dict_backport import OrderedDict
+
 buy_menu_sort_order_locos = [# brit locos
                            'standard',
-                           'raven',
-                           'goods',
                            'metro',
+                           'goods',
                            'collier',
-                           'wordsell',
-                           'gresley',
-                           'hellenic',
+                           'high_flyer',
+                           'raven',
                            'suburban',
+                           'northcock',
+                           'electra',
                            'chopper',
                            'slammer',
-                           'whistler',
-                           'zebedee',
+                           'vulcan',
                            'gridiron',
                            'screamer',
-                           'pendolino',
+                           'double_juice',
+                           'cyclops',
                             # nagn locos
                            #'dmc_sd40',
                            #'geep'
@@ -24,7 +26,6 @@ buy_menu_sort_order_locos = [# brit locos
 # wagon ids are generic and are composed to specific vehicle ids elsewhere
 # order is significant
 # format is base_id: num_generations
-from ordered_dict_backport import OrderedDict
 buy_menu_sort_order_wagons = OrderedDict([('passenger_car', 3),
                                           ('mail_car', 3),
                                           ('box_car', 2),
@@ -37,26 +38,33 @@ buy_menu_sort_order_wagons = OrderedDict([('passenger_car', 3),
                                           ('covered_hopper_car', 2),
                                           ('caboose_car', 1)])
 
+# set (roster) <-> numeric id mapping
+# vehicle IDs are in format nxxx where n is set numeric id 
+# first 1k IDs reserved, IDs must be < 16383, with 500 IDs allocated per set, so max 30 sets 
+vehicle_set_id_mapping = {'brit': 1}
+                                          
+# wagon IDs start at 250, the first 250 IDs in a vehicle set are reserved for engines
+# max wagon type ID is 390 - set have up to 500 IDs, zero-based, with 100 reserved for special stuff  
+wagon_type_numeric_ids = {'caboose_car': 250, 'box_car': 260, 'covered_hopper_car': 270, 'flat_car': 280,
+                          'hopper_car': 290, 'tank_car': 300, 'livestock_car': 310, 'mail_car': 320,
+                          'reefer_car': 330, 'open_car': 340, 'passenger_car': 350}                                          
+                                          
 # shared lists of allowed classes, shared across multiple ship types
 base_refits_by_class = {'empty': [],
-                       'all_freight': ['CC_BULK', 'CC_PIECE_GOODS', 'CC_EXPRESS', 'CC_LIQUID', 'CC_ARMOURED', 'CC_REFRIGERATED', 'CC_COVERED', 'CC_NON_POURABLE'],
-                       'pax': ['CC_PASSENGERS'],
-                       'mail': ['CC_MAIL'],
-                       'liquids': ['CC_LIQUID'],
-                       'packaged_freight': ['CC_PIECE_GOODS', 'CC_EXPRESS', 'CC_ARMOURED', 'CC_LIQUID'],
-                       'flatcar_freight': ['CC_PIECE_GOODS', 'CC_EXPRESS', 'CC_ARMOURED', 'CC_LIQUID'],
-                       'hopper_freight': [],
-                       'covered_hopper_freight': [],
-                       'refrigerated_freight': [],
-                       'express_freight': ['CC_EXPRESS','CC_ARMOURED']}
+                        'all_freight': ['CC_BULK', 'CC_PIECE_GOODS', 'CC_EXPRESS', 'CC_LIQUID', 'CC_ARMOURED', 'CC_REFRIGERATED', 'CC_COVERED', 'CC_NON_POURABLE'],
+                        'pax': ['CC_PASSENGERS'],
+                        'mail': ['CC_MAIL'],
+                        'liquids': ['CC_LIQUID'],
+                        'packaged_freight': ['CC_PIECE_GOODS', 'CC_EXPRESS', 'CC_ARMOURED', 'CC_LIQUID'],
+                        'flatcar_freight': ['CC_PIECE_GOODS', 'CC_EXPRESS', 'CC_ARMOURED', 'CC_LIQUID'],
+                        'hopper_freight': [],
+                        'covered_hopper_freight': [],
+                        'refrigerated_freight': [],
+                        'express_freight': ['CC_EXPRESS','CC_ARMOURED']}
 
 # speed for wagons in mph (some generations may optionally have no speed set)
 standard_wagon_speed = 75
 speedy_wagon_speed = 100
-
-# set <-> numeric id mapping
-#vehicle_set_id_mapping = {'univ': 0, 'brit': 1 ,'nagn': 2, 'soam': 3, 'euro': 4}
-vehicle_set_id_mapping = {'brit': 1}
 
 # capacity multipliers for capacity parameter
 capacity_multipliers = [0.67, 1, 1.33]
@@ -127,9 +135,9 @@ FUEL_RUN_COST = 10.0
 # OpenTTD's max date
 max_game_date = 5000001
 
-# id and numeric id for 1/8 long null trailing part used to compose vehicles to correct length
-null_trailing_part_id = 'null_trailing_part'
-null_trailing_part_numeric_id = 1
+# id and numeric id for 1/8 long null trailing slice used to compose units to correct length
+null_trailing_slice_id = 'null_trailing_slice'
+null_trailing_slice_numeric_id = 1
 
 # standard offsets for trains
 default_train_offsets = {'1': [[-3, -12], [-14, -14], [-16, -11], [-8, -15], [-3, -12], [-14, -14], [-16, -11], [-8, -15]], # needs fix
@@ -142,3 +150,19 @@ default_train_offsets = {'1': [[-3, -12], [-14, -14], [-16, -11], [-8, -15], [-3
                          '8': [[-3, -12], [-14, -14], [-16, -11], [-8, -15], [-3, -12], [-14, -14], [-16, -11], [-8, -15]],
                          '9': [[-3, -12], [-14, -14], [-16, -11], [-8, -15], [-3, -12], [-14, -14], [-16, -11], [-8, -15]], # needs fix
                          '10': [[-3, -12], [-14, -14], [-16, -11], [-8, -15], [-3, -12], [-14, -14], [-16, -11], [-8, -15]]} # needs fix
+
+# mapping from length of visible 'part' to internal slice lengths
+slice_lengths = {3: (1,1,1),
+                 4: (1,2,1),
+                 5: (1,3,1),
+                 6: (1,4,1),
+                 7: (2,3,2),
+                 8: (2,4,2),
+                 9: (3,3,3),
+                10: (3,4,3),
+                11: (3,5,3),
+                12: (4,4,4),
+                13: (4,5,4),
+                14: (4,6,4),
+                15: (4,7,4),
+                16: (4,8,4)}

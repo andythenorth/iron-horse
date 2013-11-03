@@ -2,7 +2,7 @@ STR_GRF_NAME                                                    :Iron Horse ${re
 <!--! empty string is not translated :) -->
 STR_EMPTY                                                       :
 
-<!--! vehicle names -->
-<tal:build_vehicle_names repeat="vehicle vehicles">
-STR_NAME_${vehicle.id}                                          :${vehicle.get_name_substr()} {STRING}
-</tal:build_vehicle_names>
+<!--! consist names -->
+<tal:build_consist_names repeat="consist consists">
+STR_NAME_${consist.id}                                          :${consist.get_name_substr()} {STRING}
+</tal:build_consist_names>

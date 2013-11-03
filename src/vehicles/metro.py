@@ -1,24 +1,32 @@
 import global_constants
-from train import Train, SteamTankLoco
+from train import EngineConsist, SteamLoco, SteamLocoTender
 
-vehicle = SteamTankLoco(id = 'metro',
-            numeric_id = 1230,
-            title = 'Metro [Steam]',
-            replacement_id = '-none',
-            buy_cost = 22,
-            fixed_run_cost_factor = 3.5,
-            fuel_run_cost_factor = 1.0,
-            speed = 60,
-            power = 450,
-            weight = 35,
-            tractive_effort_coefficient = 0.2,
-            vehicle_length = 6,
-            loading_speed = 20,
-            intro_date = 1860,
-            str_type_info = 'COASTER',
-            vehicle_life = 40,
-            graphics_status = '',)
+consist = EngineConsist(id = 'metro',
+              base_numeric_id = 1010,
+              title = 'Metro [Steam]',
+              str_type_info = 'COASTER',
+              replacement_id = '-none',
+              power = 450,
+              tractive_effort_coefficient = 0.2,
+              speed = 60,
+              buy_cost = 22,
+              fixed_run_cost_factor = 3.5,
+              fuel_run_cost_factor = 1.0,
+              vehicle_life = 40,
+              intro_date = 1860,
+              graphics_status = '',
+              use_legacy_spritesheet = True)
+              
+consist.add_unit(SteamLoco(consist = consist,
+                        weight = 35,
+                        vehicle_length = 6,
+                        spriterow_num = 0))              
 
-vehicle.add_model_variant(intro_date=0,
+consist.add_unit(SteamLocoTender(consist = consist,
+                        weight = 30,
+                        vehicle_length = 4,
+                        spriterow_num = 1))              
+
+consist.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,
                        spritesheet_suffix=0)

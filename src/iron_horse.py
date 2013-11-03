@@ -26,40 +26,41 @@ print "[IMPORT VEHICLES] iron_horse.py"
 
 import train
 from train import Train
-from vehicles import registered_vehicles
+from vehicles import registered_consists
+
 
 from vehicles import box_cars
 from vehicles import caboose_cars
 from vehicles import chopper
 from vehicles import collier
 from vehicles import covered_hopper_cars
+from vehicles import cyclops
+from vehicles import double_juice
 #from vehicles import dmc_sd40
+from vehicles import electra
 from vehicles import flat_cars
 #from vehicles import geep
 from vehicles import goods
 from vehicles import gridiron
+from vehicles import high_flyer
 from vehicles import hopper_cars
 from vehicles import livestock_cars
 from vehicles import mail_cars
 from vehicles import metro
 from vehicles import open_cars
 from vehicles import passenger_cars
-from vehicles import pendolino
 from vehicles import raven
 from vehicles import reefer_cars
 from vehicles import screamer
 from vehicles import slammer
 from vehicles import standard
-from vehicles import hellenic
-from vehicles import gresley
 from vehicles import suburban
+from vehicles import northcock
 from vehicles import tank_cars
-from vehicles import whistler
-from vehicles import wordsell
-from vehicles import zebedee
+from vehicles import vulcan
 
-def get_vehicles_in_buy_menu_order(show_warnings=False):
-    sorted_vehicles = []
+def get_consists_in_buy_menu_order(show_warnings=False):
+    sorted_consists = []
     # first compose the buy menu order list
     buy_menu_sort_order = list(global_constants.buy_menu_sort_order_locos) # copy the list in global_constants to avoid unwanted modifications to it
     for id_base in global_constants.buy_menu_sort_order_wagons:
@@ -71,17 +72,17 @@ def get_vehicles_in_buy_menu_order(show_warnings=False):
     # now check registered vehicles against the buy menu order, and add them to the sorted list
     for id in buy_menu_sort_order:
         found = False
-        for vehicle in registered_vehicles:
-            if vehicle.id == id:
-                sorted_vehicles.append(vehicle)
+        for consist in registered_consists:
+            if consist.id == id:
+                sorted_consists.append(consist)
                 found = True
         if show_warnings and not found:
-            utils.echo_message("Warning: vehicle " + id + " in buy_menu_sort_order, but not found in registered_vehicles")
+            utils.echo_message("Warning: consist " + id + " in buy_menu_sort_order, but not found in registered_consists")
 
-    # now guard against any vehicles missing from buy menu order, as that wastes time asking 'wtf?' when they don't appear in game
-    for vehicle in registered_vehicles:
-        id = vehicle.id
+    # now guard against any consists missing from buy menu order, as that wastes time asking 'wtf?' when they don't appear in game
+    for consist in registered_consists:
+        id = consist.id
         if show_warnings and id not in buy_menu_sort_order:
-            utils.echo_message("Warning: vehicle " + id + " in registered_vehicles, but not in buy_menu_sort_order - won't show in game")
-    return sorted_vehicles
+            utils.echo_message("Warning: consist " + id + " in registered_consists, but not in buy_menu_sort_order - won't show in game")
+    return sorted_consists
 

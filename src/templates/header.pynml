@@ -22,4 +22,4 @@ grf {
 }
 
 // sort order
-sort(FEAT_TRAINS, ${[vehicle.numeric_id for vehicle in vehicles]});
+sort(FEAT_TRAINS, ${[consist.base_numeric_id for consist in consists]});
