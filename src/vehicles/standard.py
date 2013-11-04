@@ -7,7 +7,7 @@ consist = EngineConsist(id = 'standard',
               str_type_info = 'COASTER',
               replacement_id = '-none',
               power = 1000,
-              tractive_effort_coefficient = 0.1,
+              tractive_effort_coefficient = 0.07,
               speed = 75,
               buy_cost = 22,
               fixed_run_cost_factor = 3.5,
@@ -18,7 +18,7 @@ consist = EngineConsist(id = 'standard',
               use_legacy_spritesheet = True)
               
 consist.add_unit(SteamLoco(consist = consist,
-                        weight = 72,
+                        weight = 62,
                         vehicle_length = 6,
                         spriterow_num = 0))              
 
