@@ -12,6 +12,7 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Prekomjeran
 STR_NAME_SUFFIX_STEAM                                           :(Para)
 STR_NAME_SUFFIX_DIESEL                                          :(Dizel)
 STR_NAME_SUFFIX_ELECTRIC                                        :(Električni)
+STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Elektro-dizel)
 STR_NAME_SUFFIX_CAR                                             :Vozilo
 
 STR_BUY_MENU_TEXT                                               :Tip: {GOLD}{STRING}{}{STRING}
