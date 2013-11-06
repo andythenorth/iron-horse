@@ -12,6 +12,7 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Высокая
 STR_NAME_SUFFIX_STEAM                                           :(Паровоз)
 STR_NAME_SUFFIX_DIESEL                                          :(Тепловоз)
 STR_NAME_SUFFIX_ELECTRIC                                        :(Электровоз)
+STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Электротепловоз)
 STR_NAME_SUFFIX_CAR                                             :Вагон
 
 STR_BUY_MENU_TEXT                                               :Тип: {GOLD}{STRING}{}{STRING}
