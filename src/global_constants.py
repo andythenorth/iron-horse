@@ -28,6 +28,7 @@ buy_menu_sort_order_locos = [# brit locos
 # format is base_id: num_generations
 buy_menu_sort_order_wagons = OrderedDict([('passenger_car', 3),
                                           ('mail_car', 3),
+                                          ('combine_car', 1),
                                           ('box_car', 2),
                                           ('open_car', 2),
                                           ('tank_car', 3),
@@ -47,7 +48,7 @@ vehicle_set_id_mapping = {'brit': 1}
 # max wagon type ID is 390 - set have up to 500 IDs, zero-based, with 100 reserved for special stuff  
 wagon_type_numeric_ids = {'caboose_car': 250, 'box_car': 260, 'covered_hopper_car': 270, 'flat_car': 280,
                           'hopper_car': 290, 'tank_car': 300, 'livestock_car': 310, 'mail_car': 320,
-                          'reefer_car': 330, 'open_car': 340, 'passenger_car': 350}                                          
+                          'reefer_car': 330, 'open_car': 340, 'passenger_car': 350, 'combine_car': 360}                                          
                                           
 # shared lists of allowed classes, shared across multiple ship types
 base_refits_by_class = {'empty': [],

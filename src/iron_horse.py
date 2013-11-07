@@ -33,6 +33,7 @@ from vehicles import box_cars
 from vehicles import caboose_cars
 from vehicles import chopper
 from vehicles import collier
+from vehicles import combine_cars
 from vehicles import covered_hopper_cars
 from vehicles import cyclops
 from vehicles import double_juice
