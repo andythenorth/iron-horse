@@ -394,9 +394,13 @@ class LeadSlice(Train):
         self.template = parent_vehicle.template
         self.speed = 0
         self.weight = 0
-        self.default_cargo_capacities = [0]
         self.vehicle_length = parent_vehicle.vehicle_length
         self.engine_class = parent_vehicle.engine_class
+        self.default_cargo_capacities = [0] 
+        if isinstance(parent_vehicle, CombineCar):
+            self.capacities_pax = parent_vehicle.capacities_pax
+            self.default_cargo_capacities = self.capacities_pax 
+            self.default_cargo = 'PASS'
 
 
 class NullTrailingSlice(object):
@@ -544,3 +548,15 @@ class MailCar(Wagon):
     def __init__(self, **kwargs):
         super(MailCar, self).__init__(**kwargs)
         self.capacities_freight = [int(0.5 * capacity) for capacity in self.capacities_mail]
+
+
+class CombineCar(Wagon):
+    """
+    Carriage that offers capacity for both passengers (fixed) and mail / express cargo (refittable)
+    """
+    # this class is sparse - it exists to make special case handling easy by checking class type
+    # combine car needs to set capacity_mail, capacity_freight, and capacity_pax
+    # pax capacity is non-refittable and applied to lead slice of the unit
+    def __init__(self, **kwargs):
+        super(CombineCar, self).__init__(**kwargs)
+        
