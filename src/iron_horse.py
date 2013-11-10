@@ -31,6 +31,7 @@ from vehicles import registered_consists
 
 from vehicles import box_cars
 from vehicles import caboose_cars
+from vehicles import cargo_sprinter
 from vehicles import chopper
 from vehicles import collier
 from vehicles import combine_cars
@@ -53,7 +54,7 @@ from vehicles import passenger_cars
 from vehicles import raven
 from vehicles import reefer_cars
 from vehicles import screamer
-from vehicles import slammer
+#from vehicles import slammer
 from vehicles import standard
 from vehicles import suburban
 from vehicles import northcock

@@ -541,6 +541,25 @@ class ElectroDieselLoco(Train):
         self.visual_effect = 'VISUAL_EFFECT_DIESEL' # nml constant
 
 
+class CargoSprinter(Train):
+    """
+    Freight Multiple Unit.
+    """
+    def __init__(self, **kwargs):
+        super(CargoSprinter, self).__init__(**kwargs)
+        self.template = 'railcar.pynml'
+        self.default_cargo_capacities = [0]
+        self.class_refit_groups = ['pax', 'mail', 'express_freight']
+        self.label_refits_allowed = [] # no specific labels needed
+        self.label_refits_disallowed = []
+        self.autorefit = True
+        self.capacities_freight = [int(0.5 * capacity) for capacity in self.capacities_mail]
+        self.default_cargo_capacities = self.capacities_pax
+        self.default_cargo = 'PASS'
+        self.engine_class = 'ENGINE_CLASS_DIESEL' #nml constant
+        self.visual_effect = 'VISUAL_EFFECT_DIESEL' # nml constant
+
+
 class MailCar(Wagon):
     """
     Mail Carriage.
