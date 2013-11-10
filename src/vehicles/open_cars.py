@@ -2,13 +2,13 @@ import global_constants
 from train import TypeConfig, WagonConsist, Wagon
 
 cargo_graphics_mappings = {'AORE': 1, 'COAL': 2, 'SAND': 3, 'CORE': 4, 'LIME': 5, 
-                           'SCMT': 6, 'IORE': 7, 'GRVL': 8, 'GRAI': 10, 'WHEA': 10,
-                           'MAIZ': 10, 'FICR': 11, 'SGCN': 11, 'OLSD': 12, 'CLAY': 13,
-                           'FRUT': 14, 'FRVG': 14}
+                           'SCMT': 6, 'IORE': 7, 'GRVL': 8, 'FRUT': 9, 'FRVG': 9, 
+                           'GRAI': 10, 'WHEA': 10, 'MAIZ': 10, 'FICR': 11, 
+                           'SGCN': 11, 'OLSD': 12, 'CLAY': 13}
 
 type_config = TypeConfig(base_id = 'open_car',
                 template = 'car_with_visible_cargo.pynml',
-                num_cargo_rows = 15,
+                num_cargo_rows = 14,
                 class_refit_groups = ['all_freight'],
                 cargo_graphics_mappings = cargo_graphics_mappings,
                 label_refits_allowed = cargo_graphics_mappings.keys() ,
