@@ -19,9 +19,9 @@ consist = EngineConsist(id = 'cargo_sprinter',
 consist.add_unit(CargoSprinter(consist = consist,
                         weight = 65,
                         vehicle_length = 8,
-                        capacity_pax = 55,
-                        capacity_mail = 40,
-                        spriterow_num = 0))              
+                        capacity_freight = 30,
+                        spriterow_num = 0),
+                        repeat=2)              
 
 consist.add_model_variant(intro_date=0,
                        end_date=1986,

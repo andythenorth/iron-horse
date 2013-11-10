@@ -1,0 +1,59 @@
+${vehicle.render_debug_info()}
+
+<tal:include define="vehicle_offsets_standard load: vehicle_offsets_standard.pynml" metal:use-macro="vehicle_offsets_standard" />
+
+<tal:sprites_random_variations repeat="variation_num python:range(consist.get_num_spritesets())">
+    <tal:cargo_variants repeat="cargo_variant_num python:range(2)">
+        spriteset(${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_0, "src/graphics/${consist.id}_${variation_num}.png") {
+            spriteset_template_${vehicle.id}(10 + ${cargo_variant_num * 90})
+        }
+        spriteset(${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_1, "src/graphics/${consist.id}_${variation_num}.png") {
+            spriteset_template_${vehicle.id}(40 + ${cargo_variant_num * 90})
+        }
+        spriteset(${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_2, "src/graphics/${consist.id}_${variation_num}.png") {
+            spriteset_template_${vehicle.id}(70 + ${cargo_variant_num * 90})
+        }
+
+        spritegroup ${vehicle.id}_sg_${variation_num}_${cargo_variant_num} {
+            loaded:  [
+                ${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_0,
+            ];
+            loading: [
+                ${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_1,
+                ${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_2,
+            ];
+        }
+    </tal:cargo_variants>
+    
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${variation_num}, ${vehicle.get_nml_expression_for_id_of_neighbouring_unit(unit_offset=1)}) {
+        ${vehicle.id}: return ${vehicle.id}_sg_${variation_num}_0;
+        return ${vehicle.id}_sg_${variation_num}_1;
+    }
+    
+    <!--!switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${variation_num}, ${vehicle.get_nml_expression_for_cargo_type_unit_refitted_to()}) {
+        PASS: return ${vehicle.id}_sg_${variation_num}_0;
+        return ${vehicle.id}_sg_${variation_num}_1;
+    }-->
+</tal:sprites_random_variations>
+
+<tal:include define="graphics_switches load: graphics_switches.pynml" metal:use-macro="graphics_switches" />
+
+// buy menu graphics
+<tal:include define="vehicle_offsets_buy_menu load: vehicle_offsets_buy_menu.pynml" metal:use-macro="vehicle_offsets_buy_menu" />
+
+spriteset(${vehicle.id}_ss_purchase, "src/graphics/${consist.id}_0.png") {
+  spriteset_template_purchase_${vehicle.id}()
+}
+
+spritegroup ${vehicle.id}_sg_purchase {
+    loaded:  [
+        ${vehicle.id}_ss_purchase,
+    ];
+    loading: [
+        ${vehicle.id}_ss_purchase,
+    ];
+}
+
+${vehicle.render_cargo_capacity()}
+
+${vehicle.render_properties()}

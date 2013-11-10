@@ -314,6 +314,11 @@ class Train(object):
         else:
             return expression_template.substitute(offset=0)
 
+    def get_nml_expression_for_id_of_neighbouring_unit(self, unit_offset):
+        # offset is number of units, not number of slices
+        expression_template = Template("[STORE_TEMP(${offset}, 0x10F), var[0x61, 0, 0x0000FFFF, 0xC6]]")
+        return expression_template.substitute(offset=(3 * unit_offset))
+
     def get_label_refits_allowed(self):
         # allowed labels, for fine-grained control in addition to classes
         return ','.join(self.label_refits_allowed)
@@ -547,14 +552,13 @@ class CargoSprinter(Train):
     """
     def __init__(self, **kwargs):
         super(CargoSprinter, self).__init__(**kwargs)
-        self.template = 'railcar.pynml'
+        self.template = 'cargo_sprinter.pynml'
         self.default_cargo_capacities = [0]
-        self.class_refit_groups = ['pax', 'mail', 'express_freight']
+        self.class_refit_groups = ['express_freight']
         self.label_refits_allowed = [] # no specific labels needed
         self.label_refits_disallowed = []
         self.autorefit = True
-        self.capacities_freight = [int(0.5 * capacity) for capacity in self.capacities_mail]
-        self.default_cargo_capacities = self.capacities_pax
+        self.default_cargo_capacities = self.capacities_freight
         self.default_cargo = 'PASS'
         self.engine_class = 'ENGINE_CLASS_DIESEL' #nml constant
         self.visual_effect = 'VISUAL_EFFECT_DIESEL' # nml constant
