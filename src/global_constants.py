@@ -123,6 +123,9 @@ cargo_labels = ['PASS', # pax first
                 'WHEA',
                 'WOOL',
                 'OLSD']
+
+# meaning of grfid should be obvious :)                
+grfid = r"CA\12\1E"                
                 
 # this is for nml, don't need to use python path module here
 graphics_path = 'src/graphics/'
