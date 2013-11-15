@@ -59,7 +59,7 @@ base_refits_by_class = {'empty': [],
                         'liquids': ['CC_LIQUID'],
                         'packaged_freight': ['CC_PIECE_GOODS', 'CC_EXPRESS', 'CC_ARMOURED', 'CC_LIQUID'],
                         'flatcar_freight': ['CC_PIECE_GOODS', 'CC_EXPRESS', 'CC_ARMOURED', 'CC_LIQUID'],
-                        'hopper_freight': [],
+                        'hopper_freight': ['CC_BULK'],
                         'covered_hopper_freight': [],
                         'refrigerated_freight': [],
                         'express_freight': ['CC_EXPRESS','CC_ARMOURED']}
