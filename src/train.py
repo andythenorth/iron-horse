@@ -566,7 +566,7 @@ class CargoSprinter(Train):
         self.default_cargo_capacities = self.capacities_freight
         self.default_cargo = 'PASS'
         self.engine_class = 'ENGINE_CLASS_DIESEL' #nml constant
-        self.visual_effect = 'VISUAL_EFFECT_DIESEL' # nml constant
+        self.visual_effect = 'VISUAL_EFFECT_DISABLE' # nml constant
 
 
 class MailCar(Wagon):
