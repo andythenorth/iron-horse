@@ -45,7 +45,8 @@ ${vehicle.render_debug_info()}
         return ${vehicle.id}_sg_${variation_num}_2; // different IH vehicle, show rear cab
     }
 
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${variation_num}, ${vehicle.get_nml_expression_for_grfid_of_neighbouring_unit(unit_offset=1)}) {
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${variation_num}, 
+                                ${vehicle.get_nml_expression_for_grfid_of_neighbouring_unit(unit_offset=1)}) {
         str2number("${global_constants.grfid}"): ${vehicle.id}_switch_graphics_${variation_num}_check_following_vehicle_same_id;
         return ${vehicle.id}_sg_${variation_num}_2; // different grf, show rear cab
     }
@@ -76,5 +77,5 @@ spritegroup ${vehicle.id}_sg_purchase {
 }
 
 ${vehicle.render_cargo_capacity()}
-
+    
 ${vehicle.render_properties()}
