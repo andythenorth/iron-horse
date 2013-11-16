@@ -52,16 +52,17 @@ from vehicles import metro
 from vehicles import metro_cars
 from vehicles import metro_locos
 from vehicles import metro_multiple_units
+from vehicles import northcock
 from vehicles import open_cars
 from vehicles import passenger_cars
 from vehicles import raven
 from vehicles import reefer_cars
 from vehicles import screamer
-#from vehicles import slammer
+from vehicles import slammer
 from vehicles import standard
 from vehicles import suburban
-from vehicles import northcock
 from vehicles import tank_cars
+from vehicles import tin_rocket
 from vehicles import vulcan
 
 def get_consists_in_buy_menu_order(show_warnings=False):
