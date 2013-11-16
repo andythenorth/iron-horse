@@ -588,3 +588,28 @@ class CombineCar(Wagon):
     def __init__(self, **kwargs):
         super(CombineCar, self).__init__(**kwargs)
         
+
+class MetroMultipleUnit(Train):
+    """
+    Metro Unit
+    """
+    def __init__(self, **kwargs):
+        super(MetroMultipleUnit, self).__init__(**kwargs)
+        self.template = 'train.pynml'
+        self.default_cargo_capacities = [0]
+        self.engine_class = 'ENGINE_CLASS_ELECTRIC' #nml constant
+        self.visual_effect = 'VISUAL_EFFECT_ELECTRIC' # nml constant
+
+
+class MetroLoco(Train):
+    """
+    Metro Unit
+    """
+    def __init__(self, **kwargs):
+        super(MetroLoco, self).__init__(**kwargs)
+        self.template = 'train.pynml'
+        self.default_cargo_capacities = [0]
+        self.engine_class = 'ENGINE_CLASS_ELECTRIC' #nml constant
+        self.visual_effect = 'VISUAL_EFFECT_ELECTRIC' # nml constant
+
+
