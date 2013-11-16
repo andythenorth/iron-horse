@@ -596,7 +596,8 @@ class MetroMultipleUnit(Train):
     def __init__(self, **kwargs):
         super(MetroMultipleUnit, self).__init__(**kwargs)
         self.template = 'train.pynml'
-        self.default_cargo_capacities = [0]
+        self.default_cargo_capacities = self.capacities_pax
+        self.default_cargo = "PASS"
         self.engine_class = 'ENGINE_CLASS_ELECTRIC' #nml constant
         self.visual_effect = 'VISUAL_EFFECT_ELECTRIC' # nml constant
 

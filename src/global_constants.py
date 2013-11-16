@@ -24,6 +24,7 @@ buy_menu_sort_order_locos = [# brit locos
                            'metro_mu_brit_gen_2',
                            'metro_mu_brit_gen_3',
                            'metro_loco_brit_gen_1',
+                           'metro_car_brit_gen_1', # special case, this is explicitly placed after metro locos, unlike most cars which are automatically placed in buy menu 
                             # nagn locos
                            #'dmc_sd40',
                            #'geep'
@@ -43,8 +44,7 @@ buy_menu_sort_order_wagons = OrderedDict([('passenger_car', 3),
                                           ('livestock_car', 2),
                                           ('reefer_car', 2),
                                           ('covered_hopper_car', 2),
-                                          ('caboose_car', 1),
-                                          ('metro_car', 1)])
+                                          ('caboose_car', 1)])
 
 # set (roster) <-> numeric id mapping
 # vehicle IDs are in format nxxx where n is set numeric id 
