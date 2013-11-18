@@ -11,7 +11,7 @@ buy_menu_sort_order_locos = [# brit locos
                            'suburban',
                            'northcock',
                            'electra',
-                           'chopper',
+                           'chinook',
                            'vulcan',
                            'gridiron',
                            'screamer',

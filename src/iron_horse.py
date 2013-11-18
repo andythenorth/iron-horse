@@ -32,7 +32,7 @@ from vehicles import registered_consists
 from vehicles import box_cars
 from vehicles import caboose_cars
 from vehicles import cargo_sprinter
-from vehicles import chopper
+from vehicles import chinook
 from vehicles import collier
 from vehicles import combine_cars
 from vehicles import covered_hopper_cars
