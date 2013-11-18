@@ -13,6 +13,7 @@ buy_menu_sort_order_locos = [# brit locos
                            'electra',
                            'chinook',
                            'vulcan',
+                           'little_bear',
                            'gridiron',
                            'screamer',
                            'cargo_sprinter',
@@ -20,10 +21,10 @@ buy_menu_sort_order_locos = [# brit locos
                            'cyclops',
                            'slammer',
                            'tin_rocket',
-                           # brit metro
-                           'metro_mu_brit_gen_1',
-                           'metro_mu_brit_gen_2',
-                           'metro_mu_brit_gen_3',
+                           # brit extras
+                           'metro_mu_brit_extras_gen_1',
+                           'metro_mu_brit_extras_gen_2',
+                           'metro_mu_brit_extras_gen_3',
                            'metro_loco_brit_gen_1',
                            'metro_car_brit_gen_1', # special case, this is explicitly placed after metro locos, unlike most cars which are automatically placed in buy menu 
                             # nagn locos

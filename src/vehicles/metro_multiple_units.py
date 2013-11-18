@@ -1,8 +1,8 @@
 import global_constants
 from train import EngineConsist, MetroMultipleUnit
 
-consist = EngineConsist(id = 'metro_mu_brit_gen_1',
-              base_numeric_id = 1160,
+consist = EngineConsist(id = 'metro_mu_brit_extras_gen_1',
+              base_numeric_id = 1500,
               title = '1900 Metro Train [Electric]',
               str_type_info = 'COASTER',
               replacement_id = '-none',
@@ -28,8 +28,8 @@ consist.add_model_variant(intro_date=0,
                        spritesheet_suffix=0)
 
 
-consist = EngineConsist(id = 'metro_mu_brit_gen_2',
-              base_numeric_id = 1170,
+consist = EngineConsist(id = 'metro_mu_brit_extras_gen_2',
+              base_numeric_id = 1510,
               title = '1950 Metro Train [Electric]',
               str_type_info = 'COASTER',
               replacement_id = '-none',
@@ -55,8 +55,8 @@ consist.add_model_variant(intro_date=0,
                        spritesheet_suffix=0)
 
 
-consist = EngineConsist(id = 'metro_mu_brit_gen_3',
-              base_numeric_id = 1180,
+consist = EngineConsist(id = 'metro_mu_brit_extras_gen_3',
+              base_numeric_id = 1520,
               title = '2000 Metro Train [Electric]',
               str_type_info = 'COASTER',
               replacement_id = '-none',
