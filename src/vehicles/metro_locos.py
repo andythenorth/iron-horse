@@ -1,8 +1,8 @@
 import global_constants
 from train import EngineConsist, MetroLoco
 
-consist = EngineConsist(id = 'metro_loco_brit_gen_1',
-              base_numeric_id = 1190,
+consist = EngineConsist(id = 'metro_loco_brit_extras_gen_1',
+              base_numeric_id = 1530,
               title = 'Metro Loco [Battery]',
               str_type_info = 'COASTER',
               replacement_id = '-none',

@@ -26,8 +26,8 @@ buy_menu_sort_order_locos = [# brit locos
                            'metro_mu_brit_extras_gen_1',
                            'metro_mu_brit_extras_gen_2',
                            'metro_mu_brit_extras_gen_3',
-                           'metro_loco_brit_gen_1',
-                           'metro_car_brit_gen_1', # special case, this is explicitly placed after metro locos, unlike most cars which are automatically placed in buy menu 
+                           'metro_loco_brit_extras_gen_1',
+                           'metro_car_brit_gen_1', # special case, non-standard naming, and this is explicitly placed after metro locos, unlike most cars which are automatically placed in buy menu 
                             # nagn locos
                            #'dmc_sd40',
                            #'geep'
@@ -51,7 +51,7 @@ buy_menu_sort_order_wagons = OrderedDict([('passenger_car', 3),
 
 # set (roster) <-> numeric id mapping
 # vehicle IDs are in format nxxx where n is set numeric id 
-# first 1k IDs reserved, IDs must be < 16383, with 500 IDs allocated per set, so max 30 sets 
+# first 1k IDs reserved, IDs must be < 16383, with 500 IDs allocated per set, and 500 for extras, so max 15 sets 
 vehicle_set_id_mapping = {'brit': 1}
                                           
 # wagon IDs start at 250, the first 250 IDs in a vehicle set are reserved for engines
@@ -59,7 +59,7 @@ vehicle_set_id_mapping = {'brit': 1}
 wagon_type_numeric_ids = {'caboose_car': 250, 'box_car': 260, 'covered_hopper_car': 270, 'flat_car': 280,
                           'hopper_car': 290, 'tank_car': 300, 'livestock_car': 310, 'mail_car': 320,
                           'reefer_car': 330, 'open_car': 340, 'passenger_car': 350, 'combine_car': 360, 
-                          'metro_car': 370}                                          
+                          'metro_car': 370}
                                           
 # shared lists of allowed classes, shared across multiple ship types
 base_refits_by_class = {'empty': [],
