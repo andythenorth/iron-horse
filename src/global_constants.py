@@ -3,7 +3,7 @@ from ordered_dict_backport import OrderedDict
 
 buy_menu_sort_order_locos = [# brit locos
                            'standard',
-                           'metro',
+                           'chaplin',
                            'goods',
                            'collier',
                            'high_flyer',
@@ -59,7 +59,7 @@ vehicle_set_id_mapping = {'brit': 1}
 wagon_type_numeric_ids = {'caboose_car': 250, 'box_car': 260, 'covered_hopper_car': 270, 'flat_car': 280,
                           'hopper_car': 290, 'tank_car': 300, 'livestock_car': 310, 'mail_car': 320,
                           'reefer_car': 330, 'open_car': 340, 'passenger_car': 350, 'combine_car': 360, 
-                          'metro_car': 370}
+                          'metro_car': 400}
                                           
 # shared lists of allowed classes, shared across multiple ship types
 base_refits_by_class = {'empty': [],
