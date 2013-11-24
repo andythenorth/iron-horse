@@ -173,6 +173,11 @@ class Consist(object):
         return sum([getattr(slice, 'weight', 0) for slice in self.slices])
     
     @property
+    def track_type(self):
+        # get the track_type off the second slice of the consist
+        return self.slices[1].track_type
+        
+    @property
     def adjusted_model_life(self):
         # handles keeping the buy menu tidy, relies on magic from Eddi
         if self.replacement_id != None and self.replacement_id != '-none' and self.replacement_id != '':
@@ -233,6 +238,7 @@ class Train(object):
         self.label_refits_allowed = [] # no specific labels needed
         self.label_refits_disallowed = []
         self.autorefit = False
+        self.track_type = "RAIL"
         self.engine_class = 'ENGINE_CLASS_STEAM' # nml constant (STEAM is sane default)
         self.visual_effect = 'VISUAL_EFFECT_DISABLE' # nml constant
         self.visual_effect_offset = 0
@@ -535,6 +541,7 @@ class ElectricLoco(Train):
         super(ElectricLoco, self).__init__(**kwargs)
         self.template = 'train.pynml'
         self.default_cargo_capacities = [0]
+        self.track_type = "ELRL"
         self.engine_class = 'ENGINE_CLASS_ELECTRIC' #nml constant
         self.visual_effect = 'VISUAL_EFFECT_ELECTRIC' # nml constant
 
@@ -598,6 +605,7 @@ class MetroMultipleUnit(Train):
         self.template = 'train.pynml'
         self.default_cargo_capacities = self.capacities_pax
         self.default_cargo = "PASS"
+        self.track_type = "METRO"
         self.engine_class = 'ENGINE_CLASS_ELECTRIC' #nml constant
         self.visual_effect = 'VISUAL_EFFECT_ELECTRIC' # nml constant
 
@@ -610,7 +618,14 @@ class MetroLoco(Train):
         super(MetroLoco, self).__init__(**kwargs)
         self.template = 'train.pynml'
         self.default_cargo_capacities = [0]
+        self.track_type = "METRO"
         self.engine_class = 'ENGINE_CLASS_ELECTRIC' #nml constant
         self.visual_effect = 'VISUAL_EFFECT_ELECTRIC' # nml constant
 
-
+class MetroCar(Wagon):
+    """
+    Metro Wagon.
+    """
+    def __init__(self, **kwargs):
+        super(MetroCar, self).__init__(**kwargs)
+        self.track_type = "METRO"

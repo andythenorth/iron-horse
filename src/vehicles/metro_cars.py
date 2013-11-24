@@ -1,5 +1,5 @@
 import global_constants
-from train import TypeConfig, WagonConsist, Wagon
+from train import TypeConfig, WagonConsist, MetroCar
 
 #self.capacities_freight = [int(0.5 * capacity) for capacity in self.capacities_mail]
 
@@ -26,7 +26,7 @@ consist = WagonConsist(type_config = type_config,
                     graphics_status = '',
                     use_legacy_spritesheet = True)
 
-consist.add_unit(Wagon(type_config = type_config,
+consist.add_unit(MetroCar(type_config = type_config,
                         consist = consist,
                         capacity_mail = 40,
                         capacity_freight = 15,

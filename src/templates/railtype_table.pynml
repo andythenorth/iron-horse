@@ -1,0 +1,12 @@
+/*
+ * *********************
+ * Define railtype table
+ * *********************
+ */
+
+ railtypetable {
+ 	RAIL,
+ 	ELRL,
+ 	MGLV,
+ 	METRO: [MTRO, "3RDR", ELRL]
+ }
