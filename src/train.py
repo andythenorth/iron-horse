@@ -156,6 +156,7 @@ class Consist(object):
         return "string(STR_NAME_" + self.id +", string(" + self.get_str_name_suffix() + "))"
 
     def get_buy_menu_string(self):
+        # will need to handle bi-mode locos here, have a look at consist.slice_requires_variable_power(vehicle)
         buy_menu_template = Template(
             "string(STR_BUY_MENU_TEXT, string(${str_type_info}), string(STR_EMPTY))"
         )
