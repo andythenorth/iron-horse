@@ -15,6 +15,7 @@ consist = EngineConsist(id = 'double_juice',
               fuel_run_cost_factor = 1.0,
               vehicle_life = 40,
               intro_date = 2000,
+              power_by_tracktype = {'RAIL': 1250, 'ELRL': 5000},
               graphics_status = '',
               use_legacy_spritesheet = True)
               
