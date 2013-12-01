@@ -1,10 +1,14 @@
 import global_constants
 from train import TypeConfig, WagonConsist, Wagon
 
+cargo_graphics_mappings = {'STEL': 1, 'WDPR': 2, 'WOOD': 3}
+
 type_config = TypeConfig(base_id = 'flat_car',
-                template = 'train.pynml',
+                template = 'car_with_visible_cargo.pynml',
+                num_cargo_rows = 4,
                 class_refit_groups = ['flatcar_freight'],
-                label_refits_allowed = [],
+                cargo_graphics_mappings = cargo_graphics_mappings,
+                label_refits_allowed = cargo_graphics_mappings.keys(),
                 label_refits_disallowed = [],
                 autorefit = True,
                 default_cargo = 'GOOD',
