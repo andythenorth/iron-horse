@@ -29,7 +29,7 @@ consist = WagonConsist(type_config = type_config,
 consist.add_unit(MailCar(type_config = type_config,
                         consist = consist,
                         capacity_mail = 30,
-                        weight = 100,
+                        weight = 29,
                         vehicle_length = 7,
                         loading_speed = 20))              
 
@@ -54,7 +54,7 @@ consist = WagonConsist(type_config = type_config,
 consist.add_unit(MailCar(type_config = type_config,
                         consist = consist,
                         capacity_mail = 45,
-                        weight = 100,
+                        weight = 30,
                         vehicle_length = 7,
                         loading_speed = 20))              
 
@@ -79,7 +79,7 @@ consist = WagonConsist(type_config = type_config,
 consist.add_unit(MailCar(type_config = type_config,
                         consist = consist,
                         capacity_mail = 60,
-                        weight = 100,
+                        weight = 31,
                         vehicle_length = 7,
                         loading_speed = 20))              
 

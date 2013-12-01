@@ -31,7 +31,7 @@ consist.add_unit(CombineCar(type_config = type_config,
                         capacity_mail = 20,
                         capacity_freight = 12,
                         capacity_pax = 30,
-                        weight = 100,
+                        weight = 34,
                         vehicle_length = 9,
                         loading_speed = 20))              
 
