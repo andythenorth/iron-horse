@@ -10,6 +10,8 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Kohtuuton
 STR_NAME_SUFFIX_STEAM                                           :(Höyry)
 STR_NAME_SUFFIX_DIESEL                                          :(Diesel)
 STR_NAME_SUFFIX_ELECTRIC                                        :(Sähkö)
+STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Sähkö-Diesel)
+STR_NAME_SUFFIX_BATTERY                                         :(Paristo)
 STR_NAME_SUFFIX_CAR                                             :Auto
 
 STR_BUY_MENU_TEXT                                               :Tyyppi: {GOLD}{STRING}{}{STRING}
