@@ -42,7 +42,6 @@ from vehicles import double_juice
 from vehicles import electra
 from vehicles import flat_cars
 #from vehicles import geep
-from vehicles import goods
 from vehicles import gridiron
 from vehicles import high_flyer
 from vehicles import hopper_cars
@@ -57,6 +56,7 @@ from vehicles import metro_multiple_units
 from vehicles import northcock
 from vehicles import open_cars
 from vehicles import passenger_cars
+from vehicles import ramsbottom
 from vehicles import raven
 from vehicles import reefer_cars
 from vehicles import screamer

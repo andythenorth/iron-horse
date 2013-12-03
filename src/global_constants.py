@@ -4,7 +4,7 @@ from ordered_dict_backport import OrderedDict
 buy_menu_sort_order_locos = [# brit locos
                            'standard',
                            'chaplin',
-                           'goods',
+                           'ramsbottom',
                            'collier',
                            'high_flyer',
                            'raven',
