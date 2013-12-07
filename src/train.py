@@ -610,7 +610,7 @@ class MetroMultipleUnit(Train):
     """
     def __init__(self, **kwargs):
         super(MetroMultipleUnit, self).__init__(**kwargs)
-        self.template = 'train.pynml'
+        self.template = 'metro_mu.pynml'
         self.default_cargo_capacities = self.capacities_pax
         self.default_cargo = "PASS"
         self.track_type = "METRO"
