@@ -616,6 +616,7 @@ class MetroMultipleUnit(Train):
         self.track_type = "METRO"
         self.engine_class = 'ENGINE_CLASS_ELECTRIC' #nml constant
         self.visual_effect = 'VISUAL_EFFECT_ELECTRIC' # nml constant
+        print 
 
 
 class MetroLoco(Train):
