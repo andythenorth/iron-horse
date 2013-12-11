@@ -4,9 +4,9 @@ from train import TypeConfig, WagonConsist, Wagon
 type_config = TypeConfig(base_id = 'covered_hopper_car',
                 template = 'train.pynml',
                 class_refit_groups = ['covered_hopper_freight'],
-                label_refits_allowed = ['GRAI', 'WHEA', 'MAIZ'],
+                label_refits_allowed = ['GRAI', 'WHEA', 'MAIZ', 'FOOD', 'SUGR', 'FMSP', 'RFPR'],
                 label_refits_disallowed = [],
-                autorefit = True,
+                autorefit = False,
                 default_cargo = 'GRAI',
                 default_capacity_type = 'capacity_freight',
                 str_type_info = 'DOGTRACK')

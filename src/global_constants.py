@@ -111,13 +111,11 @@ cargo_labels = ['PASS', # pax first
                 'VEHI',
                 'COPR',
                 'DYES',
-                # liquid-ish cargos
                 'OIL_',
                 'RFPR',
                 'PETR',
                 'PLAS',
                 'WATR',
-                # fish and farm cargos
                 'FISH',
                 'CERE',
                 'FICR',
@@ -132,7 +130,8 @@ cargo_labels = ['PASS', # pax first
                 'SGCN',
                 'WHEA',
                 'WOOL',
-                'OLSD']
+                'OLSD',
+                'SUGR']
 
 # meaning of grfid should be obvious :)                
 grfid = r"CA\12\1E"                
