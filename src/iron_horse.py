@@ -50,6 +50,7 @@ from vehicles import little_bear
 from vehicles import livestock_cars
 from vehicles import mail_cars
 from vehicles import chaplin
+from vehicles import stewart
 from vehicles import metro_cars
 from vehicles import metro_locos
 from vehicles import metro_multiple_units
