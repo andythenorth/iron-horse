@@ -49,7 +49,8 @@ buy_menu_sort_order_wagons = OrderedDict([('passenger_car', 3),
                                           ('livestock_car', 2),
                                           ('reefer_car', 2),
                                           ('covered_hopper_car', 2),
-                                          ('caboose_car', 1)])
+                                          ('caboose_car', 1),
+                                          ('open_car_ng', 1)])
 
 # set (roster) <-> numeric id mapping
 # vehicle IDs are in format nxxx where n is set numeric id 
@@ -61,9 +62,8 @@ vehicle_set_id_mapping = {'brit': 1}
 wagon_type_numeric_ids = {'caboose_car': 250, 'box_car': 260, 'covered_hopper_car': 270, 'flat_car': 280,
                           'hopper_car': 290, 'tank_car': 300, 'livestock_car': 310, 'mail_car': 320,
                           'reefer_car': 330, 'open_car': 340, 'passenger_car': 350, 'combine_car': 360, 
-                          'metro_car': 400}
-# extra (NG, metro, maglev) wagon IDs start at 750, max extra wagon type ID is 890
-extra_wagon_type_numeric_ids = {}
+                        # extra (NG, metro, maglev) wagon IDs start at 750, max extra wagon type ID is 890
+                          'metro_car': 400, 'open_car_ng': 840}
                                           
 # shared lists of allowed classes, shared across multiple ship types
 base_refits_by_class = {'empty': [],

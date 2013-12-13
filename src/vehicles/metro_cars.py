@@ -8,10 +8,10 @@ type_config = TypeConfig(base_id = 'metro_car',
                 class_refit_groups = ['pax', 'express_freight'],
                 label_refits_allowed = [],
                 label_refits_disallowed = [],
-                track_type = 'METRO',
                 autorefit = True,
                 default_cargo = 'MAIL',
                 default_capacity_type = 'capacity_mail',
+                track_type = 'METRO',
                 str_type_info = 'DOGTRACK')
 
 consist = WagonConsist(type_config = type_config,
