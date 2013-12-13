@@ -230,7 +230,6 @@ class Train(object):
         self.vehicle_length = kwargs.get('vehicle_length', None)
         self.speed = kwargs.get('speed', 0)
         self.weight = kwargs.get('weight', None)
-        self.track_type = kwargs.get('track_type', "RAIL")
         # declare capacities for pax, mail and freight, as they are needed later for nml switches
         self.capacities_pax = self.get_capacity_variations(kwargs.get('capacity_pax', 0))
         self.capacities_mail = self.get_capacity_variations(kwargs.get('capacity_mail', 0))
@@ -547,7 +546,7 @@ class ElectricLoco(Train):
         super(ElectricLoco, self).__init__(**kwargs)
         self.template = 'train.pynml'
         self.default_cargo_capacities = [0]
-        self.track_type = "ELRL"
+        kwargs['consist'].track_type = "ELRL"
         self.engine_class = 'ENGINE_CLASS_ELECTRIC' #nml constant
         self.visual_effect = 'VISUAL_EFFECT_ELECTRIC' # nml constant
 
@@ -625,3 +624,4 @@ class MetroLoco(Train):
         self.default_cargo_capacities = [0]
         self.engine_class = 'ENGINE_CLASS_ELECTRIC' #nml constant
         self.visual_effect = 'VISUAL_EFFECT_ELECTRIC' # nml constant
+    
