@@ -36,6 +36,7 @@ class Consist(object):
         self.replacement_id = kwargs.get('replacement_id', None)
         self.vehicle_life = kwargs.get('vehicle_life', None)
         self.power = kwargs.get('power', 0)
+        self.track_type = kwargs.get('track_type', 'RAIL')
         self.power_by_tracktype = kwargs.get('power_by_tracktype', None) # used by multi-mode engines such as electro-diesel, otherwise ignored
         self.tractive_effort_coefficient = kwargs.get('tractive_effort_coefficient', 0.3) # 0.3 is recommended default value
         self.speed = kwargs.get('speed', None)
@@ -174,11 +175,6 @@ class Consist(object):
     def weight(self):
         return sum([getattr(slice, 'weight', 0) for slice in self.slices])
     
-    @property
-    def track_type(self):
-        # get the track_type off the second slice of the consist
-        return self.slices[1].track_type
-
     def slice_requires_variable_power(self, vehicle):
         if self.power_by_tracktype is not None and vehicle.is_lead_slice_of_consist:
             return True
@@ -234,6 +230,7 @@ class Train(object):
         self.vehicle_length = kwargs.get('vehicle_length', None)
         self.speed = kwargs.get('speed', 0)
         self.weight = kwargs.get('weight', None)
+        self.track_type = kwargs.get('track_type', "RAIL")
         # declare capacities for pax, mail and freight, as they are needed later for nml switches
         self.capacities_pax = self.get_capacity_variations(kwargs.get('capacity_pax', 0))
         self.capacities_mail = self.get_capacity_variations(kwargs.get('capacity_mail', 0))
@@ -246,7 +243,6 @@ class Train(object):
         self.label_refits_allowed = [] # no specific labels needed
         self.label_refits_disallowed = []
         self.autorefit = False
-        self.track_type = "RAIL"
         self.engine_class = 'ENGINE_CLASS_STEAM' # nml constant (STEAM is sane default)
         self.visual_effect = 'VISUAL_EFFECT_DISABLE' # nml constant
         self.visual_effect_offset = 0
@@ -385,6 +381,7 @@ class TypeConfig(object):
     def __init__(self, base_id, template, **kwargs):
         self.base_id = base_id
         self.template = template
+        self.track_type = kwargs.get('track_type', 'RAIL')
         self.num_cargo_rows = kwargs.get('num_cargo_rows', None)
         self.cargo_graphics_mappings = kwargs.get('cargo_graphics_mappings', None)        
         self.class_refit_groups = kwargs.get('class_refit_groups', None)
@@ -459,6 +456,7 @@ class WagonConsist(Consist):
         id = self.get_wagon_id(type_config.base_id, **kwargs)
         kwargs['id'] = id
         kwargs['base_numeric_id'] = self.get_wagon_numeric_id(type_config.base_id, **kwargs)
+        kwargs['track_type'] = type_config.track_type
         self.wagon_generation = kwargs.get('wagon_generation', None)
         if self.wagon_generation == 1:
             if speedy==True:
@@ -613,7 +611,6 @@ class MetroMultipleUnit(Train):
         self.template = 'metro_mu.pynml'
         self.default_cargo_capacities = self.capacities_pax
         self.default_cargo = "PASS"
-        self.track_type = "METRO"
         self.engine_class = 'ENGINE_CLASS_ELECTRIC' #nml constant
         self.visual_effect = 'VISUAL_EFFECT_ELECTRIC' # nml constant 
 
@@ -626,7 +623,6 @@ class MetroLoco(Train):
         super(MetroLoco, self).__init__(**kwargs)
         self.template = 'train.pynml'
         self.default_cargo_capacities = [0]
-        self.track_type = "METRO"
         self.engine_class = 'ENGINE_CLASS_ELECTRIC' #nml constant
         self.visual_effect = 'VISUAL_EFFECT_ELECTRIC' # nml constant
 
@@ -636,4 +632,3 @@ class MetroCar(Wagon):
     """
     def __init__(self, **kwargs):
         super(MetroCar, self).__init__(**kwargs)
-        self.track_type = "METRO"
