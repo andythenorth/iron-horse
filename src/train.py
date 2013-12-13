@@ -625,10 +625,3 @@ class MetroLoco(Train):
         self.default_cargo_capacities = [0]
         self.engine_class = 'ENGINE_CLASS_ELECTRIC' #nml constant
         self.visual_effect = 'VISUAL_EFFECT_ELECTRIC' # nml constant
-
-class MetroCar(Wagon):
-    """
-    Metro Wagon.
-    """
-    def __init__(self, **kwargs):
-        super(MetroCar, self).__init__(**kwargs)
