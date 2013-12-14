@@ -58,6 +58,7 @@ from vehicles import metro_multiple_units
 from vehicles import northcock
 from vehicles import open_cars
 from vehicles import passenger_cars
+from vehicles import planet
 from vehicles import ramsbottom
 from vehicles import raven
 from vehicles import reefer_cars
@@ -69,6 +70,7 @@ from vehicles import suburban
 from vehicles import tank_cars
 from vehicles import tin_rocket
 from vehicles import vulcan
+from vehicles import walker
 
 def get_consists_in_buy_menu_order(show_warnings=False):
     sorted_consists = []

@@ -32,6 +32,8 @@ buy_menu_sort_order_locos = [# brit locos
                            'stewart',
                            'hudswell',
                            'donegal',
+                           'planet',
+                           'walker',
                             # nagn locos
                            #'dmc_sd40',
                            #'geep'
