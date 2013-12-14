@@ -46,6 +46,7 @@ from vehicles import flat_cars
 from vehicles import gridiron
 from vehicles import high_flyer
 from vehicles import hopper_cars
+from vehicles import hudswell
 from vehicles import lemon
 from vehicles import little_bear
 from vehicles import livestock_cars
