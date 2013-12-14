@@ -3,7 +3,10 @@
 ##gender m f
 STR_GRF_DESCRIPTION                                             :Licencia: {SILVER}GPL v2{}{BLACK}
 
-STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Excesivo
+STR_PARAM_ADJUST_VEHICLE_CAPACITY                               :Capacidad del tren
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :Insignificante
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Maravillosa
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Excesiva
 
 STR_NAME_SUFFIX_DIESEL                                          :(Diesel)
 
