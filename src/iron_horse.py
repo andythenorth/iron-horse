@@ -37,6 +37,7 @@ from vehicles import collier
 from vehicles import combine_cars
 from vehicles import covered_hopper_cars
 from vehicles import cyclops
+from vehicles import donegal
 from vehicles import double_juice
 #from vehicles import dmc_sd40
 from vehicles import electra
@@ -50,7 +51,6 @@ from vehicles import little_bear
 from vehicles import livestock_cars
 from vehicles import mail_cars
 from vehicles import chaplin
-from vehicles import stewart
 from vehicles import metro_cars
 from vehicles import metro_locos
 from vehicles import metro_multiple_units
@@ -63,6 +63,7 @@ from vehicles import reefer_cars
 from vehicles import screamer
 from vehicles import slammer
 from vehicles import standard
+from vehicles import stewart
 from vehicles import suburban
 from vehicles import tank_cars
 from vehicles import tin_rocket

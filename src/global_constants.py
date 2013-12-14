@@ -29,7 +29,8 @@ buy_menu_sort_order_locos = [# brit locos
                            'metro_loco_brit_extras_gen_1',
                            'metro_car_brit_gen_1', # special case, non-standard naming, and this is explicitly placed after metro locos, unlike most cars which are automatically placed in buy menu 
                            # brit ng
-                           'stewart'
+                           'stewart',
+                           'donegal',
                             # nagn locos
                            #'dmc_sd40',
                            #'geep'
