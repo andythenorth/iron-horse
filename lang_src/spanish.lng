@@ -9,6 +9,9 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Maravillosa
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Excesiva
 
 STR_NAME_SUFFIX_DIESEL                                          :(Diesel)
+STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Electro-Diesel)
+STR_NAME_SUFFIX_BATTERY                                         :(Batería)
 
+STR_BUY_MENU_TEXT                                               :Tipo: {GOLD}{STRING}{}{STRING}{STRING}
 
 STR_DOGTRACK                                                    :Los perros son marrones, alguna vez
