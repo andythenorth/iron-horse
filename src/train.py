@@ -418,7 +418,11 @@ class LeadSlice(Train):
         self.engine_class = parent_vehicle.engine_class
         self.default_cargo_capacities = [0] 
         if isinstance(parent_vehicle, CombineCar):
+<<<<<<< local
+            self.capacities_pax = self.get_capacity_variations(40)
+=======
             self.capacities_pax = parent_vehicle.capacities_pax
+>>>>>>> other
             self.default_cargo_capacities = self.capacities_pax 
             self.default_cargo = 'PASS'
 
@@ -594,11 +598,17 @@ class CombineCar(Wagon):
     """
     Carriage that offers capacity for both passengers (fixed) and mail / express cargo (refittable)
     """
+<<<<<<< local
+=======
     # this class is sparse - it exists to make special case handling easy by checking class type
     # combine car needs to set capacity_mail, capacity_freight, and capacity_pax
     # pax capacity is non-refittable and applied to lead slice of the unit
+>>>>>>> other
     def __init__(self, **kwargs):
         super(CombineCar, self).__init__(**kwargs)
+<<<<<<< local
+        self.capacities_freight = [int(0.5 * capacity) for capacity in self.capacities_mail]
+=======
         
 
 class MetroMultipleUnit(Train):
@@ -625,3 +635,4 @@ class MetroLoco(Train):
         self.engine_class = 'ENGINE_CLASS_ELECTRIC' #nml constant
         self.visual_effect = 'VISUAL_EFFECT_ELECTRIC' # nml constant
     
+>>>>>>> other

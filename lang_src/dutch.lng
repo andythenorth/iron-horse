@@ -14,6 +14,6 @@ STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Elektrisch-Die
 STR_NAME_SUFFIX_BATTERY                                         :(Batterij)
 STR_NAME_SUFFIX_CAR                                             :Auto
 
-STR_BUY_MENU_TEXT                                               :Type: {GOLD}{STRING}{}{STRING}
+STR_BUY_MENU_TEXT                                               :Type: {GOLD}{STRING}{}{STRING}{STRING}
 
 STR_COASTER                                                     :De koe sprong over de maan (herinnering dat dit nog niet af is)

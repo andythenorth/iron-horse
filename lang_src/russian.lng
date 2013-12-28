@@ -16,7 +16,7 @@ STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Электро
 STR_NAME_SUFFIX_BATTERY                                         :(Энергоблок)
 STR_NAME_SUFFIX_CAR                                             :Вагон
 
-STR_BUY_MENU_TEXT                                               :Тип: {GOLD}{STRING}{}{STRING}
+STR_BUY_MENU_TEXT                                               :Тип: {GOLD}{STRING}{}{STRING}{STRING}
 
 STR_COASTER                                                     :Это напоминатель
 STR_DOGTRACK                                                    :Коричневые, Иногда

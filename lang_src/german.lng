@@ -13,7 +13,7 @@ STR_NAME_SUFFIX_DIESEL                                          :(Diesel)
 STR_NAME_SUFFIX_ELECTRIC                                        :(Elektrisch)
 STR_NAME_SUFFIX_CAR                                             :Waggon
 
-STR_BUY_MENU_TEXT                                               :Typ: {GOLD}{STRING}{}{STRING}
+STR_BUY_MENU_TEXT                                               :Typ: {GOLD}{STRING}{}{STRING}{STRING}
 
 STR_COASTER                                                     :
 STR_DOGTRACK                                                    :

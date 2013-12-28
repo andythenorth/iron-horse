@@ -12,7 +12,7 @@ STR_NAME_SUFFIX_DIESEL                                          :(Diesel)
 STR_NAME_SUFFIX_ELECTRIC                                        :(Listrik)
 STR_NAME_SUFFIX_CAR                                             :Gerbong
 
-STR_BUY_MENU_TEXT                                               :Jenis: {GOLD}{STRING}{}{STRING}
+STR_BUY_MENU_TEXT                                               :Jenis: {GOLD}{STRING}{}{STRING}{STRING}
 
 STR_COASTER                                                     :Sapi Melompati Atas Bulan (pengingat itu adalah ini belum selesai)
 STR_DOGTRACK                                                    :Anjing berwarna coklat, kapan-kapan
