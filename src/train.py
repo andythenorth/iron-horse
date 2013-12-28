@@ -153,16 +153,35 @@ class Consist(object):
         # makes a string id for nml
         return 'STR_' + self.str_type_info
         
+    def get_str_autorefit(self):
+        if self.any_slice_offers_autorefit():
+            return 'STR_BUY_MENU_OFFERS_AUTOREFIT'        
+        else:
+            return 'STR_EMPTY'
+        
     def get_name(self):
         return "string(STR_NAME_" + self.id +", string(" + self.get_str_name_suffix() + "))"
 
     def get_buy_menu_string(self):
         # will need to handle bi-mode locos here, have a look at consist.slice_requires_variable_power(vehicle)
         buy_menu_template = Template(
-            "string(STR_BUY_MENU_TEXT, string(${str_type_info}), string(STR_EMPTY))"
+            "string(STR_BUY_MENU_TEXT, string(${str_type_info}), string(${str_autorefit}), string(STR_EMPTY))"
         )
-        return buy_menu_template.substitute(str_type_info=self.get_str_type_info())
+        return buy_menu_template.substitute(str_type_info=self.get_str_type_info(), str_autorefit=self.get_str_autorefit())
 
+    def any_slice_offers_autorefit(self):
+        offers_autorefit = False
+        for slice in self.slices:
+            if getattr(slice, 'autorefit', False):
+                offers_autorefit = True
+        return offers_autorefit
+
+    def slice_requires_variable_power(self, vehicle):
+        if self.power_by_tracktype is not None and vehicle.is_lead_slice_of_consist:
+            return True
+        else:
+            return False
+        
     @property
     def running_cost(self):
         # calculate a running cost
@@ -175,12 +194,6 @@ class Consist(object):
     def weight(self):
         return sum([getattr(slice, 'weight', 0) for slice in self.slices])
     
-    def slice_requires_variable_power(self, vehicle):
-        if self.power_by_tracktype is not None and vehicle.is_lead_slice_of_consist:
-            return True
-        else:
-            return False
-        
     @property
     def adjusted_model_life(self):
         # handles keeping the buy menu tidy, relies on magic from Eddi
@@ -418,11 +431,7 @@ class LeadSlice(Train):
         self.engine_class = parent_vehicle.engine_class
         self.default_cargo_capacities = [0] 
         if isinstance(parent_vehicle, CombineCar):
-<<<<<<< local
-            self.capacities_pax = self.get_capacity_variations(40)
-=======
             self.capacities_pax = parent_vehicle.capacities_pax
->>>>>>> other
             self.default_cargo_capacities = self.capacities_pax 
             self.default_cargo = 'PASS'
 
@@ -598,17 +607,11 @@ class CombineCar(Wagon):
     """
     Carriage that offers capacity for both passengers (fixed) and mail / express cargo (refittable)
     """
-<<<<<<< local
-=======
     # this class is sparse - it exists to make special case handling easy by checking class type
     # combine car needs to set capacity_mail, capacity_freight, and capacity_pax
     # pax capacity is non-refittable and applied to lead slice of the unit
->>>>>>> other
     def __init__(self, **kwargs):
         super(CombineCar, self).__init__(**kwargs)
-<<<<<<< local
-        self.capacities_freight = [int(0.5 * capacity) for capacity in self.capacities_mail]
-=======
         
 
 class MetroMultipleUnit(Train):
@@ -635,4 +638,3 @@ class MetroLoco(Train):
         self.engine_class = 'ENGINE_CLASS_ELECTRIC' #nml constant
         self.visual_effect = 'VISUAL_EFFECT_ELECTRIC' # nml constant
     
->>>>>>> other
