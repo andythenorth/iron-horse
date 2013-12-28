@@ -3,10 +3,14 @@ from train import TypeConfig, WagonConsist, MailCar
 
 #self.capacities_freight = [int(0.5 * capacity) for capacity in self.capacities_mail]
 
+cargo_graphics_mappings = {} # template needs this, but mail car has zero cargo-specific graphics, all generic
+
 type_config = TypeConfig(base_id = 'mail_car',
-                template = 'train.pynml',
+                template = 'car_with_visible_cargo.pynml',
+                num_cargo_rows = 1, # template needs this, but mail car has zero cargo-specific graphics, all generic
                 class_refit_groups = ['mail', 'express_freight'],
-                label_refits_allowed = [],
+                cargo_graphics_mappings = cargo_graphics_mappings,
+                label_refits_allowed = cargo_graphics_mappings.keys() ,
                 label_refits_disallowed = [],
                 autorefit = True,
                 default_cargo = 'MAIL',
