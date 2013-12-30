@@ -17,6 +17,7 @@ STR_NAME_SUFFIX_BATTERY                                         :(Энергоб
 STR_NAME_SUFFIX_CAR                                             :Вагон
 
 STR_BUY_MENU_TEXT                                               :Тип: {GOLD}{STRING}{}{STRING}{STRING}
+STR_BUY_MENU_OFFERS_AUTOREFIT                                   :{BLACK}Переоборудование
 
 STR_COASTER                                                     :Это напоминатель
 STR_DOGTRACK                                                    :Коричневые, Иногда
