@@ -1,11 +1,11 @@
 import global_constants
 from train import TypeConfig, WagonConsist, Wagon
 
-cargo_graphics_mappings = {'STEL': 1, 'WDPR': 2, 'WOOD': 3}
+cargo_graphics_mappings = {'STEL': 1, 'WOOD': 4, 'WDPR': 5, 'ENSP': 6, 'FMSP': 6, 'MNSP': 6}
 
 type_config = TypeConfig(base_id = 'flat_car',
                 template = 'car_with_visible_cargo.pynml',
-                num_cargo_rows = 4,
+                num_cargo_rows = 7,
                 class_refit_groups = ['flatcar_freight'],
                 cargo_graphics_mappings = cargo_graphics_mappings,
                 label_refits_allowed = cargo_graphics_mappings.keys(),
@@ -64,6 +64,8 @@ consist.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,
                        spritesheet_suffix=0)
 
+
+cargo_graphics_mappings = {'STEL': 1, 'WDPR': 2, 'WOOD': 3}
 
 type_config = TypeConfig(base_id = 'flat_car_ng',
                 template = 'car_with_visible_cargo.pynml',
