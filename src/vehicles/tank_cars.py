@@ -102,6 +102,7 @@ type_config = TypeConfig(base_id = 'tank_car_ng',
                 autorefit = True,
                 default_cargo = 'OIL_',
                 default_capacity_type = 'capacity_freight',
+                track_type = 'NG',
                 str_type_info = 'DOGTRACK')
 
 
