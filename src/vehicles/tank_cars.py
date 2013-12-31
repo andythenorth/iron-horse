@@ -1,7 +1,7 @@
 import global_constants
 from train import TypeConfig, WagonConsist, Wagon
 
-cargo_graphics_mappings = {'FMSP': 1, 'MILK': 2, 'RFPR': 1}
+cargo_graphics_mappings = {'FMSP': [1], 'MILK': [2], 'RFPR': [1]}
 
 type_config = TypeConfig(base_id = 'tank_car',
                 template = 'tank_car.pynml',

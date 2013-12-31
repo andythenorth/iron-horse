@@ -20,7 +20,7 @@ ${vehicle.render_debug_info()}
 
     switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${variation_num}, ${vehicle.get_nml_expression_for_cargo_type_unit_refitted_to()}) {
         <tal:cargos repeat="mapping consist.cargo_graphics_mappings.items()">
-            ${mapping[0]}: return ${vehicle.id}_sg_${variation_num}_${mapping[1]};
+            ${mapping[0]}: return ${vehicle.id}_sg_${variation_num}_${mapping[1][0]};
         </tal:cargos>
         return ${vehicle.id}_sg_${variation_num}_0;
     }
