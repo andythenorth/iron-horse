@@ -1,7 +1,7 @@
 import global_constants
 from train import TypeConfig, WagonConsist, Wagon
 
-cargo_graphics_mappings = {'STEL': [1], 'WOOD': [4], 'WDPR': [5], 'ENSP': [6], 'FMSP': [6], 'MNSP': [6]}
+cargo_graphics_mappings = {'STEL': [1, 2, 3], 'WOOD': [4], 'WDPR': [5], 'ENSP': [6], 'FMSP': [6], 'MNSP': [6]}
 
 type_config = TypeConfig(base_id = 'flat_car',
                 template = 'car_with_visible_cargo.pynml',
