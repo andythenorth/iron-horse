@@ -15,5 +15,7 @@ STR_NAME_SUFFIX_BATTERY                                         :(Batterij)
 STR_NAME_SUFFIX_CAR                                             :Auto
 
 STR_BUY_MENU_TEXT                                               :Type: {GOLD}{STRING}{}{STRING}{STRING}
+STR_BUY_MENU_OFFERS_AUTOREFIT                                   :{BLACK}Heeft auto-ombouw
 
 STR_COASTER                                                     :De koe sprong over de maan (herinnering dat dit nog niet af is)
+STR_DOGTRACK                                                    :Soms zijn honden bruin
