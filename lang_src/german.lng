@@ -11,9 +11,12 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :übermäßig
 STR_NAME_SUFFIX_STEAM                                           :(Dampf)
 STR_NAME_SUFFIX_DIESEL                                          :(Diesel)
 STR_NAME_SUFFIX_ELECTRIC                                        :(Elektrisch)
+STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Elektro-Diesel)
+STR_NAME_SUFFIX_BATTERY                                         :(Batterie)
 STR_NAME_SUFFIX_CAR                                             :Waggon
 
 STR_BUY_MENU_TEXT                                               :Typ: {GOLD}{STRING}{}{STRING}{STRING}
+STR_BUY_MENU_OFFERS_AUTOREFIT                                   :{BLACK}Automatische Umrüstung
 
 STR_COASTER                                                     :
 STR_DOGTRACK                                                    :

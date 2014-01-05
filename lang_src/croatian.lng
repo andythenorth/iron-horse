@@ -17,6 +17,7 @@ STR_NAME_SUFFIX_BATTERY                                         :(Baterije)
 STR_NAME_SUFFIX_CAR                                             :Vozilo
 
 STR_BUY_MENU_TEXT                                               :Tip: {GOLD}{STRING}{}{STRING}{STRING}
+STR_BUY_MENU_OFFERS_AUTOREFIT                                   :{BLACK}Moguć automatski remont
 
 STR_COASTER                                                     :Krava je preskočila mjesec (ovo nije gotov podsjetnik)
 STR_DOGTRACK                                                    :Psi su smeđi, nekada
