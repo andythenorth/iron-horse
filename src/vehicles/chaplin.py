@@ -3,7 +3,7 @@ from train import EngineConsist, SteamLoco, SteamLocoTender
 
 consist = EngineConsist(id = 'chaplin',
               base_numeric_id = 1010,
-              title = 'Chaplin [Steam]',
+              title = '2-4-0 Chaplin [Steam]',
               str_type_info = 'COASTER',
               replacement_id = '-none',
               power = 450,

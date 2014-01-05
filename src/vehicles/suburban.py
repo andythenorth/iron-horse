@@ -3,7 +3,7 @@ from train import EngineConsist, SteamLoco
 
 consist = EngineConsist(id = 'suburban',
               base_numeric_id = 1060,
-              title = 'Suburban [Steam]',
+              title = '2-6-2 Suburban [Steam]',
               str_type_info = 'COASTER',
               replacement_id = '-none',
               power = 650,
