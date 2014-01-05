@@ -18,7 +18,7 @@ consist = EngineConsist(id = 'cyclops',
               
 consist.add_unit(DieselLoco(consist = consist,
                         weight = 95,
-                        vehicle_length = 7,
+                        vehicle_length = 8,
                         spriterow_num = 0))              
 
 consist.add_model_variant(intro_date=0,
