@@ -19,12 +19,12 @@ consist = EngineConsist(id = 'northcock',
               
 consist.add_unit(SteamLoco(consist = consist,
                         weight = 120,
-                        vehicle_length = 7,
+                        vehicle_length = 8,
                         spriterow_num = 0))              
 
 consist.add_unit(SteamLocoTender(consist = consist,
                         weight = 50,
-                        vehicle_length = 4,
+                        vehicle_length = 5,
                         spriterow_num = 1))              
 
 consist.add_model_variant(intro_date=0,
