@@ -84,7 +84,7 @@ consist.add_unit(MailCar(type_config = type_config,
                         consist = consist,
                         capacity_mail = 60,
                         weight = 31,
-                        vehicle_length = 7,
+                        vehicle_length = 8,
                         loading_speed = 20))              
 
 consist.add_model_variant(intro_date=0,
