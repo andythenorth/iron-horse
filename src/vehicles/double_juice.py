@@ -21,7 +21,7 @@ consist = EngineConsist(id = 'double_juice',
               
 consist.add_unit(ElectroDieselLoco(consist = consist,
                         weight = 90,
-                        vehicle_length = 7,
+                        vehicle_length = 8,
                         spriterow_num = 0))              
 
 consist.add_model_variant(intro_date=0,
