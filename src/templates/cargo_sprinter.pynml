@@ -4,13 +4,13 @@ ${vehicle.render_debug_info()}
 
 <tal:sprites_random_variations repeat="variation_num python:range(consist.get_num_spritesets())">
     <tal:cargo_variants repeat="cargo_variant_num python:range(3)">
-        spriteset(${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_0, "src/graphics/${consist.id}_${variation_num}.png") {
+        spriteset(${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_0, "graphics/${consist.id}_${variation_num}.png") {
             spriteset_template_${vehicle.id}(10 + ${cargo_variant_num * 90})
         }
-        spriteset(${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_1, "src/graphics/${consist.id}_${variation_num}.png") {
+        spriteset(${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_1, "graphics/${consist.id}_${variation_num}.png") {
             spriteset_template_${vehicle.id}(40 + ${cargo_variant_num * 90})
         }
-        spriteset(${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_2, "src/graphics/${consist.id}_${variation_num}.png") {
+        spriteset(${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_2, "graphics/${consist.id}_${variation_num}.png") {
             spriteset_template_${vehicle.id}(70 + ${cargo_variant_num * 90})
         }
 
@@ -63,7 +63,7 @@ ${vehicle.render_debug_info()}
 // buy menu graphics
 <tal:include define="vehicle_offsets_buy_menu load: vehicle_offsets_buy_menu.pynml" metal:use-macro="vehicle_offsets_buy_menu" />
 
-spriteset(${vehicle.id}_ss_purchase, "src/graphics/${consist.id}_0.png") {
+spriteset(${vehicle.id}_ss_purchase, "graphics/${consist.id}_0.png") {
   spriteset_template_purchase_${vehicle.id}()
 }
 

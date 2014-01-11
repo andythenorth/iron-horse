@@ -152,7 +152,7 @@ cargo_labels = ['PASS', # pax first
 grfid = r"CA\12\1E"                
                 
 # this is for nml, don't need to use python path module here
-graphics_path = 'src/graphics/'
+graphics_path = 'graphics/'
 
 # chameleon templating goes faster if a cache dir is used; this specifies which dir is cache dir
 chameleon_cache_dir = 'chameleon_cache'
