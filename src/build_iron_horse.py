@@ -19,9 +19,11 @@ import codecs # used for writing files - more unicode friendly than standard ope
 # render the nml file
 import render_nml
 
+# render the graphics
+import render_graphics
+
 # render the lang files
 import render_lang
-
 
 # render the docs
 import render_docs
