@@ -43,7 +43,7 @@ def run_pipeline(variant, consist):
 
 # wrapped in a main() function so this can be called explicitly, because unexpected multiprocessing fork bombs are bad     
 def main():
-    consists = iron_horse.get_consists_in_buy_menu_order(show_warnings=True)
+    consists = iron_horse.get_consists_in_buy_menu_order()
     variants = {}
     for consist in consists:
         spritesheet_suffixes_seen = []
