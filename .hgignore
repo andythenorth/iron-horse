@@ -21,6 +21,7 @@ iron-horse/*
 custom_tags.txt
 .version
 chameleon_cache
+generated/*
 lang
 
 

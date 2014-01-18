@@ -157,6 +157,9 @@ graphics_path = 'graphics/'
 # chameleon templating goes faster if a cache dir is used; this specifies which dir is cache dir
 chameleon_cache_dir = 'chameleon_cache'
 
+# specify location for intermediate files generated during build (nml, graphics, lang etc) 
+generated_files_dir = 'generated'
+
 # cost constants
 FIXED_RUN_COST = 500.0
 FUEL_RUN_COST = 10.0

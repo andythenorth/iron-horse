@@ -16,6 +16,9 @@ if not os.path.exists(chameleon_cache_path):
     os.mkdir(chameleon_cache_path)
 os.environ['CHAMELEON_CACHE'] = chameleon_cache_path
 
+generated_files_path = os.path.join(currentdir, global_constants.generated_files_dir)
+if not os.path.exists(generated_files_path):
+    os.mkdir(generated_files_path)
 
 # get args passed by makefile
 if len(sys.argv) > 1:

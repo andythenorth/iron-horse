@@ -18,10 +18,10 @@ import codecs # used for writing files - more unicode friendly than standard ope
 
 # render the nml file
 import render_nml
+render_nml.main()
 
 # render the graphics
 import render_graphics
- # graphics rendering wrapped in a main() function as protection against fork bombs
 render_graphics.main()
 
 # render the lang files
