@@ -8,9 +8,7 @@ import shutil
 import sys
 import os
 currentdir = os.curdir
-
-import time
-from multiprocessing import Pool, Process, active_children
+from multiprocessing import Pool
 
 import iron_horse
 import utils
@@ -46,17 +44,8 @@ def main():
     pool = Pool(processes=16)    
     for consist in consists:
         pool.apply_async(render_consist_nml, args=( consist, ))
-        #Process(target=render_consist_nml, args=(consist, )).start()
     pool.close()
     pool.join()
-    """
-    # dirty way to wait until all processes are complete before moving on
-    while True:
-        time.sleep(0.027) # 0.027 because it's a reference to TTD ticks :P (blame Rubidium)
-        if len(active_children()) == 0:
-            print "done"
-            break
-    """
 
     for consist in consists:
         consist_nml = codecs.open(os.path.join('generated', 'nml', consist.id + '.nml'),'r','utf8').read()
