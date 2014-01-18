@@ -18,6 +18,7 @@ currentdir = os.curdir
 import iron_horse
 import utils
 import global_constants
+import graphics_processor, graphics_processor.pipelines
 
 graphics_intermediates = os.path.join(currentdir, 'graphics_intermediates')
 graphics_output_path = os.path.join(currentdir, 'graphics')
@@ -32,8 +33,15 @@ hint_file.close()
 # special case
 shutil.copy(os.path.join(graphics_intermediates, 'null_trailing_part.png'), graphics_output_path)
 
+"""
 consists = iron_horse.get_consists_in_buy_menu_order(show_warnings=True)
 for consist in consists:
+    # !! this is a bit unclean, be better to just pull it straight off the model variants so we get the actual spritesheet suffixes in use
+    # would need to call set on the spritesheet suffixes, or potentially allow duplication
     for variant_num in range(consist.get_num_spritesets()):
         src_spritesheet = consist.id + '_' + str(variant_num) + '.png'
         shutil.copy(os.path.join(graphics_intermediates, src_spritesheet), graphics_output_path)
+    for variant in consist.model_variants:
+        if variant.graphics_processor is not None: 
+            variant.graphics_processor.render(consist)
+"""     

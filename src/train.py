@@ -56,8 +56,8 @@ class Consist(object):
                 utils.echo_message("Error: consist " + self.id + " shares duplicate id (" + str(self.base_numeric_id) + ") with consist " + consist.id) 
         registered_consists.append(self)
 
-    def add_model_variant(self, intro_date, end_date, spritesheet_suffix):
-        self.model_variants.append(ModelVariant(intro_date, end_date, spritesheet_suffix))
+    def add_model_variant(self, intro_date, end_date, spritesheet_suffix, graphics_processor=None):
+        self.model_variants.append(ModelVariant(intro_date, end_date, spritesheet_suffix, graphics_processor))
 
     def add_unit(self, vehicle, repeat=1):
         # vehicle ids increment by 3 because each vehicle is composed of 3 intermediate slices
@@ -95,7 +95,6 @@ class Consist(object):
                 if numeric_id == slice.numeric_id:
                     utils.echo_message("Error: numeric_id collision (" + str(numeric_id) + ") for slices in consist " + self.id + " and " + consist.id) 
         return numeric_id        
-
 
     def get_wagon_id(self, id_base, **kwargs):
         # auto id creator, used for wagons not locos
@@ -410,10 +409,25 @@ class ModelVariant(object):
     # variants are mostly randomised or date-sensitive graphics
     # must be a minimum of one variant per train
     # at least one variant must have intro date 0 (for nml switch defaults to work)
-    def __init__(self, intro_date, end_date, spritesheet_suffix):
+    def __init__(self, intro_date, end_date, spritesheet_suffix, graphics_processor):
         self.intro_date = intro_date
         self.end_date = end_date
         self.spritesheet_suffix = spritesheet_suffix # use digits for these - to match spritesheet filenames
+        self.graphics_processor = graphics_processor
+
+
+class GraphicsProcessor(object):    
+    # simple class which handles graphics processing via pixa module
+    # pipeline_name refers to a pipeline class which defines how the processing is done
+    # may be reused across consists, so don't store consist info etc in here, pass it at render time
+    def __init__(self, pipeline_name, options):
+        self.pipeline_name = pipeline_name
+        self.options = options
+
+    def render(self, consist):
+        print self.pipeline_name
+        print self.options
+        print consist
 
 
 class LeadSlice(Train):
