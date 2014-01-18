@@ -459,7 +459,7 @@ class NullTrailingSlice(object):
         
     def render(self):
         template = templates['null_trailing_slice.pynml']
-        return template(vehicle=self)
+        return template(vehicle=self, global_constants=global_constants)
 
 
 class EngineConsist(Consist):

@@ -1,6 +1,6 @@
 /*Null trailing slice for units */
 
-spriteset(${vehicle.id}_ss, "graphics/null_trailing_part.png") {
+spriteset(${vehicle.id}_ss, "${global_constants.graphics_path}null_trailing_part.png") {
     [0, 0, 10, 10, 0, 0]   
 }
 

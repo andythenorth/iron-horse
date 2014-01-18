@@ -151,14 +151,14 @@ cargo_labels = ['PASS', # pax first
 # meaning of grfid should be obvious :)                
 grfid = r"CA\12\1E"                
                 
-# this is for nml, don't need to use python path module here
-graphics_path = 'graphics/'
-
 # chameleon templating goes faster if a cache dir is used; this specifies which dir is cache dir
 chameleon_cache_dir = 'chameleon_cache'
 
 # specify location for intermediate files generated during build (nml, graphics, lang etc) 
 generated_files_dir = 'generated'
+
+# this is for nml, don't need to use python path module here
+graphics_path = generated_files_dir + '/graphics/'
 
 # cost constants
 FIXED_RUN_COST = 500.0

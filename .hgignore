@@ -16,7 +16,6 @@ iron-horse.nml
 *.cpnfo
 *.md5
 docs/*
-graphics/*
 iron-horse/*
 custom_tags.txt
 .version

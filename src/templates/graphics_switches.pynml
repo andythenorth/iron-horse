@@ -1,6 +1,6 @@
 /*Empty sprites for slices that are invisible - same for all vehicles */
 
-spriteset(${vehicle.id}_ss_hidden, "graphics/null_trailing_part.png") {
+spriteset(${vehicle.id}_ss_hidden, "${global_constants.graphics_path}null_trailing_part.png") {
     [0, 0, 10, 10, 0, 0]   
 }
 
