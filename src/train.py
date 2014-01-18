@@ -421,7 +421,7 @@ class ModelVariant(object):
 class GraphicsProcessorFactory(object):    
     # simple class which wraps graphics_processor, which uses pixa library
     # pipeline_name refers to a pipeline class which defines how the processing is done
-    # may be reused across consists, so don't store consist info etc in here, pass it at render time
+    # may be reused across consists, so don't store consist info in the pipeline, pass it to pipeline at render time
     # this is kind of factory-pattern-ish, but don't make too much of that, it's not important
     def __init__(self, pipeline_name, options):
         self.pipeline_name = pipeline_name

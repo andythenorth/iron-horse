@@ -1,5 +1,5 @@
 import global_constants
-from train import EngineConsist, SteamLoco, SteamLocoTender, GraphicsProcessorFactory
+from train import EngineConsist, SteamLoco, SteamLocoTender
 
 consist = EngineConsist(id = 'standard',
               base_numeric_id = 1000,
@@ -29,5 +29,4 @@ consist.add_unit(SteamLocoTender(consist = consist,
 
 consist.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,
-                       spritesheet_suffix=0,
-                       graphics_processor=GraphicsProcessorFactory('test_pipeline', {'foo': 'bar', 'ham': 'eggs'}))
+                       spritesheet_suffix=0)

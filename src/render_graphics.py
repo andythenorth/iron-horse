@@ -15,6 +15,9 @@ import sys
 import os
 currentdir = os.curdir
 from multiprocessing import Pool
+import multiprocessing, logging
+logger = multiprocessing.log_to_stderr()
+logger.setLevel(25)
 
 import iron_horse
 import utils
@@ -32,11 +35,11 @@ hint_file.close()
 
 def run_pipeline(variant, consist):
     src_spritesheet = consist.id + '_' + str(variant.spritesheet_suffix) + '.png'
-    if variant.graphics_processor is not None:
-        variant.graphics_processor.pipeline.render(variant, consist)
+    if variant.graphics_processor is None:
         shutil.copy(os.path.join(graphics_input, src_spritesheet), graphics_output_path)
     else:
         shutil.copy(os.path.join(graphics_input, src_spritesheet), graphics_output_path)
+        return variant.graphics_processor.pipeline.render(variant, consist, src_spritesheet)
 
 # wrapped in a main() function so this can be called explicitly, because unexpected multiprocessing fork bombs are bad     
 def main():
@@ -54,7 +57,9 @@ def main():
         
     pool = Pool(processes=16)    
     for variant, consist in variants.iteritems():
-        pool.apply_async(run_pipeline, args=(variant, consist, ))
+        result = pool.apply_async(run_pipeline, args=(variant, consist, )).get(timeout=1)
+        if result is not None:
+            print result
     pool.close()
     pool.join()
             
