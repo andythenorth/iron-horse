@@ -2,28 +2,28 @@
 
 print "[RENDER NML] render_nml.py"
 
-import os.path
-currentdir = os.curdir
+import codecs # used for writing files - more unicode friendly than standard open() module
+
+import shutil
 import sys
-sys.path.append(os.path.join('src')) # add to the module search path
+import os
+currentdir = os.curdir
 
 import time
 from multiprocessing import Process, active_children
-
-import codecs # used for writing files - more unicode friendly than standard open() module
 
 import iron_horse
 import utils
 import global_constants
 
-import chameleon
 from chameleon import PageTemplateLoader # chameleon used in most template cases
 # setup the places we look for templates
 templates = PageTemplateLoader(os.path.join(currentdir, 'src', 'templates'))
 
 generated_nml_path = os.path.join(iron_horse.generated_files_path, 'nml')
-if not os.path.exists(generated_nml_path):
-    os.mkdir(generated_nml_path)
+if os.path.exists(generated_nml_path):
+    shutil.rmtree(generated_nml_path)
+os.mkdir(generated_nml_path)
 
 # get args passed by makefile
 repo_vars = utils.get_repo_vars(sys)
