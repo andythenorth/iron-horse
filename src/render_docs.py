@@ -12,9 +12,15 @@ import codecs # used for writing files - more unicode friendly than standard ope
 
 import shutil
 import sys
-import global_constants
 import os
 currentdir = os.curdir
+
+import time
+from multiprocessing import Process, active_children
+
+import iron_horse
+import utils
+import global_constants
 
 # setting up a cache for compiled chameleon templates can significantly speed up template rendering
 chameleon_cache_path = os.path.join(currentdir, global_constants.chameleon_cache_dir)
@@ -34,32 +40,28 @@ static_dir_src = os.path.join(currentdir, 'docs_src', 'html', 'static')
 static_dir_dst = os.path.join(docs_output_path, 'html', 'static')
 shutil.copytree(static_dir_src, static_dir_dst)
 
+import markdown
 from chameleon import PageTemplateLoader # chameleon used in most template cases
 # setup the places we look for templates
 docs_templates = PageTemplateLoader(os.path.join(currentdir, 'docs_src'), format='text')
 
-import utils as utils
-import markdown
+from train import Train
 
 # get args passed by makefile
 repo_vars = utils.get_repo_vars(sys)
 
 # get the strings from base lang file so they can be used in docs
 base_lang_strings = utils.parse_base_lang()
-
-import iron_horse
-from train import Train
+metadata = {}
+metadata['dev_thread_url'] = 'http://www.tt-forums.net/viewtopic.php?f=26&t=44613'
+metadata['repo_url'] = 'http://dev.openttdcoop.org/projects/iron-horse/repository'
+metadata['issue_tracker'] = 'http://dev.openttdcoop.org/projects/iron-horse/issues'
 
 consists = iron_horse.get_consists_in_buy_menu_order()
 # default sort for docs is by intro date
 consists = sorted(consists, key=lambda consist: consist.intro_date)
-
-metadata = {}
 dates = sorted([i.intro_date for i in consists])
 metadata['dates'] = (dates[0], dates[-1])
-metadata['dev_thread_url'] = 'http://www.tt-forums.net/viewtopic.php?f=26&t=44613'
-metadata['repo_url'] = 'http://dev.openttdcoop.org/projects/iron-horse/repository'
-metadata['issue_tracker'] = 'http://dev.openttdcoop.org/projects/iron-horse/issues'
 
 class DocHelper(object):
     # dirty class to help do some doc formatting
@@ -125,7 +127,7 @@ def render_docs(doc_list, file_type, use_markdown=False):
         doc_file.write(doc)
         doc_file.close()
 
-def main():
+def main():    
     # render standard docs from a list
     html_docs = ['trains', 'code_reference', 'get_started', 'translations']
     txt_docs = ['license', 'readme']
