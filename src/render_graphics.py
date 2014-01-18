@@ -15,6 +15,9 @@ import sys
 import os
 currentdir = os.curdir
 
+import time
+from multiprocessing import Process, active_children
+
 import iron_horse
 import utils
 import global_constants
@@ -33,8 +36,14 @@ hint_file.close()
 # special case
 shutil.copy(os.path.join(graphics_intermediates, 'null_trailing_part.png'), graphics_output_path)
 
-"""
+def foo(args):    
+    print args
+    n = 0
+    while n < 9999999:
+        n = n + 1
+
 consists = iron_horse.get_consists_in_buy_menu_order(show_warnings=True)
+variants = {}
 for consist in consists:
     # !! this is a bit unclean, be better to just pull it straight off the model variants so we get the actual spritesheet suffixes in use
     # would need to call set on the spritesheet suffixes, or potentially allow duplication
@@ -42,6 +51,21 @@ for consist in consists:
         src_spritesheet = consist.id + '_' + str(variant_num) + '.png'
         shutil.copy(os.path.join(graphics_intermediates, src_spritesheet), graphics_output_path)
     for variant in consist.model_variants:
+        variants[consist] = variant
+        
+# check for __main__ because fork bombs are bad
+if __name__ == '__main__':
+    for variant in variants:
+        Process(target=foo, args=(consist,)).start()
+        
+            # dirty way to wait until all processes are complete before moving on
+while True:
+    time.sleep(0.027) # 0.027 because it's a reference to TTD ticks :P (blame Rubidium)
+    if len(active_children()) == 0:
+        print "done"
+        break
+
+"""
         if variant.graphics_processor is not None: 
             variant.graphics_processor.render(consist)
-"""     
+"""  
