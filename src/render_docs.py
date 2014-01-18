@@ -125,14 +125,17 @@ def render_docs(doc_list, file_type, use_markdown=False):
         doc_file.write(doc)
         doc_file.close()
 
+def main():
+    # render standard docs from a list
+    html_docs = ['trains', 'code_reference', 'get_started', 'translations']
+    txt_docs = ['license', 'readme']
+    markdown_docs = ['changelog']
 
-# render standard docs from a list
-html_docs = ['trains', 'code_reference', 'get_started', 'translations']
-txt_docs = ['license', 'readme']
-markdown_docs = ['changelog']
+    render_docs(html_docs, 'html')
+    render_docs(txt_docs, 'txt')
+    # just render the markdown docs twice to get txt and html versions, simples no?
+    render_docs(markdown_docs, 'txt')
+    render_docs(markdown_docs, 'html', use_markdown=True)
 
-render_docs(html_docs, 'html')
-render_docs(txt_docs, 'txt')
-# just render the markdown docs twice to get txt and html versions, simples no?
-render_docs(markdown_docs, 'txt')
-render_docs(markdown_docs, 'html', use_markdown=True)
+if __name__ == '__main__': 
+    main()
