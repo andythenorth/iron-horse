@@ -14,9 +14,7 @@ import shutil
 import sys
 import os
 currentdir = os.curdir
-
-import time
-from multiprocessing import Process, active_children
+from multiprocessing import Pool
 
 import iron_horse
 import utils
@@ -54,21 +52,14 @@ def main():
                 spritesheet_suffixes_seen.append(variant.spritesheet_suffix)
             variants[variant] = consist
         
+    pool = Pool(processes=16)    
     for variant, consist in variants.iteritems():
-        Process(target=run_pipeline, args=(variant, consist,)).start()
-        
-    # dirty way to wait until all processes are complete before moving on
-    while True:
-        time.sleep(0.027) # 0.027 because it's a reference to TTD ticks :P (blame Rubidium)
-        if len(active_children()) == 0:
-            print "done"
-            break
+        pool.apply_async(run_pipeline, args=(variant, consist, ))
+    pool.close()
+    pool.join()
             
     # handle special case spritesheets
     shutil.copy(os.path.join(graphics_input, 'null_trailing_part.png'), graphics_output_path)
-
-    """
-    """     
 
 if __name__ == '__main__': 
     main()
