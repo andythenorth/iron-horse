@@ -18,7 +18,6 @@ currentdir = os.curdir
 import time
 from multiprocessing import Process, active_children
 
-import graphics_processor, graphics_processor.pipelines
 import iron_horse
 import utils
 import global_constants
