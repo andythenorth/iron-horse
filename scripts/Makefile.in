@@ -12,7 +12,6 @@ iron-horse-nml:
 
 clean::
 	$(_V)-rm iron-horse.nml
-	$(_V)-rm -r lang
 	$(_V)-rm -r docs
 	$(_V)-rm -r chameleon_cache
 	$(_V)-rm -r generated
