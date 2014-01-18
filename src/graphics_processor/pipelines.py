@@ -5,7 +5,11 @@ def register_pipeline(pipeline):
     registered_pipelines[pipeline.name] = pipeline
     print registered_pipelines
 
-class TestPipeline(object):
+class Pipeline(object):
+    def render(self, variant, consist):
+        print "blah"
+
+class TestPipeline(Pipeline):
     def __init__(self):
         self.name = "test_pipeline"
         print "I am a pipeline"

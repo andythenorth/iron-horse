@@ -18,10 +18,10 @@ currentdir = os.curdir
 import time
 from multiprocessing import Process, active_children
 
+import graphics_processor, graphics_processor.pipelines
 import iron_horse
 import utils
 import global_constants
-import graphics_processor, graphics_processor.pipelines
 
 graphics_intermediates = os.path.join(currentdir, 'graphics_intermediates')
 graphics_output_path = os.path.join(currentdir, 'graphics')
@@ -35,8 +35,10 @@ hint_file.close()
 
 def run_pipeline(variant, consist):
     src_spritesheet = consist.id + '_' + str(variant.spritesheet_suffix) + '.png'
-    print src_spritesheet
-    shutil.copy(os.path.join(graphics_intermediates, src_spritesheet), graphics_output_path)    
+    if variant.graphics_processor is not None:
+        variant.graphics_processor.pipeline.render(variant, consist)
+    else:
+        shutil.copy(os.path.join(graphics_intermediates, src_spritesheet), graphics_output_path)
 
 # wrapped in a main() function so this can be called explicitly, because unexpected multiprocessing fork bombs are bad     
 def main():
@@ -66,8 +68,6 @@ def main():
     shutil.copy(os.path.join(graphics_intermediates, 'null_trailing_part.png'), graphics_output_path)
 
     """
-            if variant.graphics_processor is not None: 
-                variant.graphics_processor.render(consist)
     """     
 
 if __name__ == '__main__': 

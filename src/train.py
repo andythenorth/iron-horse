@@ -418,7 +418,7 @@ class ModelVariant(object):
         self.graphics_processor = graphics_processor
 
 
-class GraphicsProcessor(object):    
+class GraphicsProcessorFactory(object):    
     # simple class which wraps graphics_processor, which uses pixa library
     # pipeline_name refers to a pipeline class which defines how the processing is done
     # may be reused across consists, so don't store consist info etc in here, pass it at render time
@@ -426,12 +426,7 @@ class GraphicsProcessor(object):
     def __init__(self, pipeline_name, options):
         self.pipeline_name = pipeline_name
         self.options = options
-
-    def render(self, consist):
-        print self.pipeline_name
-        print graphics_processor.registered_pipelines[self.pipeline_name]
-        print self.options
-        print consist
+        self.pipeline = graphics_processor.registered_pipelines[pipeline_name]
 
 
 class LeadSlice(Train):
