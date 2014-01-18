@@ -26,6 +26,7 @@ render_graphics.main()
 
 # render the lang files
 import render_lang
+render_lang.main()
 
 # render the docs
 import render_docs
