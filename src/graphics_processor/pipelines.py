@@ -6,8 +6,8 @@ def register_pipeline(pipeline):
     print registered_pipelines
 
 class Pipeline(object):
-    def render_common(self, variant, consist, src_spritesheet):
-        result = src_spritesheet 
+    def render_common(self, variant, consist):
+        result = variant.get_spritesheet_name(consist) 
         result = result + str(variant.spritesheet_suffix)
         return result
 
@@ -17,9 +17,9 @@ class TestPipeline(Pipeline):
         print "I am a pipeline"
         register_pipeline(self)
         
-    def render(self, variant, consist, src_spritesheet):
+    def render(self, variant, consist):
         print 'render'
-        result = self.render_common(variant, consist, src_spritesheet)
+        result = self.render_common(variant, consist)
         return 25
         
 TestPipeline()

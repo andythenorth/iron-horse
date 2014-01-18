@@ -416,8 +416,11 @@ class ModelVariant(object):
         self.end_date = end_date
         self.spritesheet_suffix = spritesheet_suffix # use digits for these - to match spritesheet filenames
         self.graphics_processor = graphics_processor
+        
+    def get_spritesheet_name(self, consist):
+        return consist.id + '_' + str(self.spritesheet_suffix) + '.png'
 
-
+         
 class GraphicsProcessorFactory(object):    
     # simple class which wraps graphics_processor, which uses pixa library
     # pipeline_name refers to a pipeline class which defines how the processing is done
