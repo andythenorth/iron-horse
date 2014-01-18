@@ -22,7 +22,7 @@ import iron_horse
 import utils
 import global_constants
 
-graphics_input = os.path.join(currentdir, 'graphics')
+graphics_input = os.path.join(currentdir, 'src', 'graphics')
 graphics_output_path = os.path.join(iron_horse.generated_files_path, 'graphics')
 if os.path.exists(graphics_output_path):
     shutil.rmtree(graphics_output_path)
