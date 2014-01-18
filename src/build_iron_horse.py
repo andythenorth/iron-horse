@@ -21,6 +21,8 @@ import render_nml
 
 # render the graphics
 import render_graphics
+ # graphics rendering wrapped in a main() function as protection against fork bombs
+render_graphics.main()
 
 # render the lang files
 import render_lang

@@ -16,6 +16,8 @@ from chameleon import PageTemplateLoader # chameleon used in most template cases
 # setup the places we look for templates
 templates = PageTemplateLoader(os.path.join(currentdir, 'src', 'templates'))
 
+import graphics_processor
+
 from vehicles import registered_consists
 
 
@@ -417,15 +419,17 @@ class ModelVariant(object):
 
 
 class GraphicsProcessor(object):    
-    # simple class which handles graphics processing via pixa module
+    # simple class which wraps graphics_processor, which uses pixa library
     # pipeline_name refers to a pipeline class which defines how the processing is done
     # may be reused across consists, so don't store consist info etc in here, pass it at render time
+    # this is kind of factory-pattern-ish, but don't make too much of that, it's not important
     def __init__(self, pipeline_name, options):
         self.pipeline_name = pipeline_name
         self.options = options
 
     def render(self, consist):
         print self.pipeline_name
+        print graphics_processor.registered_pipelines[self.pipeline_name]
         print self.options
         print consist
 

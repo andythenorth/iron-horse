@@ -30,4 +30,4 @@ consist.add_unit(SteamLocoTender(consist = consist,
 consist.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,
                        spritesheet_suffix=0,
-                       graphics_processor=GraphicsProcessor('graphics_pipeline_1', {'foo': 'bar', 'ham': 'eggs'}))
+                       graphics_processor=GraphicsProcessor('test_pipeline', {'foo': 'bar', 'ham': 'eggs'}))
