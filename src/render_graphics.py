@@ -36,6 +36,7 @@ def run_pipeline(variant, consist):
     src_spritesheet = consist.id + '_' + str(variant.spritesheet_suffix) + '.png'
     if variant.graphics_processor is not None:
         variant.graphics_processor.pipeline.render(variant, consist)
+        shutil.copy(os.path.join(graphics_intermediates, src_spritesheet), graphics_output_path)
     else:
         shutil.copy(os.path.join(graphics_intermediates, src_spritesheet), graphics_output_path)
 
