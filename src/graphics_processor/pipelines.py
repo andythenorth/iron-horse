@@ -42,7 +42,7 @@ class TestPipeline(Pipeline):
         super(TestPipeline, self).__init__()
                 
     def render(self, variant, consist):
-        print 'render'
+        print 'Rendering ' + variant.get_spritesheet_name(consist)  
         options = variant.graphics_processor.options
         input_path = os.path.join(currentdir, 'src', 'graphics', options['template'])
         input_image = Image.open(input_path)
