@@ -6,8 +6,9 @@ from pixa import PixaColour, PixaSequence, PixaSequenceCollection, PixaShiftColo
 from pixa import make_cheatsheet as make_cheatsheet
 from PIL import Image
 
+import graphics_processor
 from graphics_processor import registered_pipelines
-from graphics_processor.units import PassThrough, SimpleRecolour
+from graphics_processor.units import PassThrough, SimpleRecolour, SwapCompanyColours
 
 DOS_PALETTE = Image.open('palette_key.png').palette
 
@@ -26,6 +27,7 @@ class Pipeline(object):
         # units is a list of objects, with their config data already baked in (don't have to anything to units except the spritesheet)
         # each unit is then called in order, passing in and returning a pixa SpriteSheet
         # finally the spritesheet is saved
+        print 'Rendering ' + variant.get_spritesheet_name(consist)  
         output_path = os.path.join(currentdir, 'generated', 'graphics', variant.get_spritesheet_name(consist))
         spritesheet = Spritesheet(width=input_image.size[0], height=input_image.size[1] , palette=DOS_PALETTE)
         spritesheet.sprites.paste(input_image)
@@ -35,6 +37,23 @@ class Pipeline(object):
         spritesheet.save(output_path)
 
 
+class PassThroughPipeline(Pipeline):
+    def __init__(self):
+        # this should be sparse, don't store any consist or variant info in Pipelines, pass them at render time
+        self.name = "pass_through_pipeline"
+        super(PassThroughPipeline, self).__init__()
+                
+    def render(self, variant, consist):
+        options = variant.graphics_processor.options
+        input_path = os.path.join(currentdir, 'src', 'graphics', options['template'])
+        input_image = Image.open(input_path)
+        units = []
+        result = self.render_common(variant, consist, input_image, units, options)
+        return result
+        
+PassThroughPipeline()
+
+
 class TestPipeline(Pipeline):
     def __init__(self):
         # this should be sparse, don't store any consist or variant info in Pipelines, pass them at render time
@@ -42,13 +61,28 @@ class TestPipeline(Pipeline):
         super(TestPipeline, self).__init__()
                 
     def render(self, variant, consist):
-        print 'Rendering ' + variant.get_spritesheet_name(consist)  
         options = variant.graphics_processor.options
         input_path = os.path.join(currentdir, 'src', 'graphics', options['template'])
         input_image = Image.open(input_path)
         units = [SimpleRecolour(options['recolour_map'])]
         result = self.render_common(variant, consist, input_image, units, options)
-        #make_cheatsheet(input_image, os.path.join(currentdir, 'foo.png'))
         return result
         
 TestPipeline()
+
+
+class SwapCompanyColoursPipeline(Pipeline):
+    def __init__(self):
+        # this should be sparse, don't store any consist or variant info in Pipelines, pass them at render time
+        self.name = "swap_company_colours_pipeline"
+        super(SwapCompanyColoursPipeline, self).__init__()
+                
+    def render(self, variant, consist):
+        options = variant.graphics_processor.options
+        input_path = os.path.join(currentdir, 'src', 'graphics', options['template'])
+        input_image = Image.open(input_path)
+        units = [SwapCompanyColours()]
+        result = self.render_common(variant, consist, input_image, units, options)
+        return result
+        
+SwapCompanyColoursPipeline()

@@ -1,3 +1,5 @@
+import graphics_processor
+
 class ProcessingUnit(object):
     def __init__(self):
         pass
@@ -19,6 +21,7 @@ class ProcessingUnit(object):
 
 
 class PassThrough(ProcessingUnit):
+    """ PassThrough """
     # just an example unit that does nothing
     def __init__(self):
         super(PassThrough, self).__init__()
@@ -28,6 +31,7 @@ class PassThrough(ProcessingUnit):
 
 
 class SimpleRecolour(ProcessingUnit):
+    """ SimpleRecolour """
     def __init__(self, recolour_map):
         self.recolour_map = recolour_map
         super(SimpleRecolour, self).__init__()
@@ -37,10 +41,11 @@ class SimpleRecolour(ProcessingUnit):
         return spritesheet
 
 
-class InvertCompanyColours(ProcessingUnit):
-    def __init__(self, recolour_map):
-        self.recolour_map = recolour_map
-        super(InvertCompanyColours, self).__init__()
+class SwapCompanyColours(ProcessingUnit):
+    """ SwapCompanyColours """
+    def __init__(self):
+        self.recolour_map = graphics_processor.CC1_CC2_SWAP_MAP
+        super(SwapCompanyColours, self).__init__()
         
     def render(self, spritesheet):
         self.selective_recolour(spritesheet, self.recolour_map)
