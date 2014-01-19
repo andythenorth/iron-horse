@@ -8,11 +8,11 @@ cargo_graphics_mappings = {'AORE': [1], 'COAL': [2], 'SAND': [3], 'CORE': [4], '
 
 options = {'template': 'open_car_brit_gen_1_template.png', 
            'recolour_map': {170: 186, 171: 187, 172: 188, 173: 189}}
-graphics_processor_1 = GraphicsProcessorFactory('test_pipeline', options)
+graphics_processor_1 = GraphicsProcessorFactory('simple_recolour_pipeline', options)
                                                
 options = {'template': 'open_car_brit_gen_1_template.png', 
            'recolour_map': {170: 206, 171: 207, 172: 208, 173: 209}}
-graphics_processor_2 = GraphicsProcessorFactory('test_pipeline', options)
+graphics_processor_2 = GraphicsProcessorFactory('simple_recolour_pipeline', options)
 
 type_config = TypeConfig(base_id = 'open_car',
                 template = 'car_with_visible_cargo.pynml',

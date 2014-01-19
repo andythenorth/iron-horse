@@ -1,4 +1,4 @@
-import graphics_processor
+import graphics_constants
 
 class ProcessingUnit(object):
     def __init__(self):
@@ -44,7 +44,7 @@ class SimpleRecolour(ProcessingUnit):
 class SwapCompanyColours(ProcessingUnit):
     """ SwapCompanyColours """
     def __init__(self):
-        self.recolour_map = graphics_processor.CC1_CC2_SWAP_MAP
+        self.recolour_map = graphics_constants.CC1_CC2_SWAP_MAP
         super(SwapCompanyColours, self).__init__()
         
     def render(self, spritesheet):

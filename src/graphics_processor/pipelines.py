@@ -6,11 +6,15 @@ from pixa import PixaColour, PixaSequence, PixaSequenceCollection, PixaShiftColo
 from pixa import make_cheatsheet as make_cheatsheet
 from PIL import Image
 
-import graphics_processor
-from graphics_processor import registered_pipelines
+from graphics_processor import registered_pipelines, graphics_constants
 from graphics_processor.units import PassThrough, SimpleRecolour, SwapCompanyColours
 
 DOS_PALETTE = Image.open('palette_key.png').palette
+
+"""
+Pipelines can be dedicated to a single task such as SimpleRecolourPipeline
+Or they can compose units for more complicated tasks, such as colouring and loading a specific vehicle type  
+"""
 
 
 class Pipeline(object):
@@ -54,11 +58,11 @@ class PassThroughPipeline(Pipeline):
 PassThroughPipeline()
 
 
-class TestPipeline(Pipeline):
+class SimpleRecolourPipeline(Pipeline):
     def __init__(self):
         # this should be sparse, don't store any consist or variant info in Pipelines, pass them at render time
-        self.name = "test_pipeline"
-        super(TestPipeline, self).__init__()
+        self.name = "simple_recolour_pipeline"
+        super(SimpleRecolourPipeline, self).__init__()
                 
     def render(self, variant, consist):
         options = variant.graphics_processor.options
@@ -68,7 +72,7 @@ class TestPipeline(Pipeline):
         result = self.render_common(variant, consist, input_image, units, options)
         return result
         
-TestPipeline()
+SimpleRecolourPipeline()
 
 
 class SwapCompanyColoursPipeline(Pipeline):
