@@ -1,5 +1,13 @@
 import global_constants
-from train import TypeConfig, WagonConsist, Wagon
+from train import TypeConfig, WagonConsist, Wagon, GraphicsProcessorFactory
+
+options = {'template': 'box_car_brit_gen_1_template.png', 
+           'recolour_map': {198: 40, 199: 41, 200: 42, 201: 43, 202: 44, 203: 45, 204: 46, 205: 47}}
+graphics_processor_1 = GraphicsProcessorFactory('test_pipeline', options)
+                                               
+options = {'template': 'box_car_brit_gen_1_template.png', 
+           'recolour_map': {198: 88, 199: 89, 200: 90, 201: 91, 202: 92, 203: 93, 204: 94, 205: 96}}
+graphics_processor_2 = GraphicsProcessorFactory('test_pipeline', options)
 
 type_config = TypeConfig(base_id = 'box_car',
                 template = 'train.pynml',
@@ -33,7 +41,13 @@ consist.add_unit(Wagon(type_config = type_config,
 
 consist.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,
-                       spritesheet_suffix=0)
+                       spritesheet_suffix=0,
+                       graphics_processor=graphics_processor_1)
+
+consist.add_model_variant(intro_date=0,
+                       end_date=global_constants.max_game_date,
+                       spritesheet_suffix=1,
+                       graphics_processor=graphics_processor_2)
 
 
 consist = WagonConsist(type_config = type_config,

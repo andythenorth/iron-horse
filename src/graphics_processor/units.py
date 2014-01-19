@@ -24,7 +24,6 @@ class PassThrough(ProcessingUnit):
         super(PassThrough, self).__init__()
 
     def render(self, spritesheet):
-        print 'PassThrough'
         return spritesheet
 
 
@@ -34,6 +33,15 @@ class SimpleRecolour(ProcessingUnit):
         super(SimpleRecolour, self).__init__()
         
     def render(self, spritesheet):
-        print 'SimpleRecolour'
+        self.selective_recolour(spritesheet, self.recolour_map)
+        return spritesheet
+
+
+class InvertCompanyColours(ProcessingUnit):
+    def __init__(self, recolour_map):
+        self.recolour_map = recolour_map
+        super(InvertCompanyColours, self).__init__()
+        
+    def render(self, spritesheet):
         self.selective_recolour(spritesheet, self.recolour_map)
         return spritesheet
