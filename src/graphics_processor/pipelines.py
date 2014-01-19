@@ -24,7 +24,7 @@ class Pipeline(object):
     def render_common(self, variant, consist, input_image, units, options):
         # expects to be passed a PIL Image object
         # options is a dict and can be used abitrarily to pass options wherever needed in the pipeline
-        # units is a list of objects, usually with their config data already baked in (don't usually need to go looking in options)
+        # units is a list of objects, with their config data already baked in (don't have to anything to units except the spritesheet)
         # each unit is then called in order, passing in and returning a pixa SpriteSheet
         # finally the spritesheet is saved
         output_path = os.path.join(currentdir, 'generated', 'graphics', variant.get_spritesheet_name(consist))
