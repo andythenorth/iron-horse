@@ -7,19 +7,18 @@ from pixa import make_cheatsheet as make_cheatsheet
 from PIL import Image
 
 from graphics_processor import registered_pipelines
-from graphics_processor.units import PassThrough
+from graphics_processor.units import PassThrough, SimpleRecolour
 
 DOS_PALETTE = Image.open('palette_key.png').palette
 
-def register_pipeline(pipeline):
-    print "Registering pipeline ", pipeline.name 
-    registered_pipelines[pipeline.name] = pipeline
-    print registered_pipelines
 
 class Pipeline(object):
     def __init__(self):
+        # this should be sparse, don't store any consist or variant info in Pipelines, pass them at render time
         print "I am a pipeline"
-        register_pipeline(self)
+        print "Registering pipeline ", self.name 
+        registered_pipelines[self.name] = self
+        print registered_pipelines
 
     def render_common(self, variant, consist, input_image, units, options):
         # expects to be passed a PIL Image object
@@ -32,12 +31,13 @@ class Pipeline(object):
         spritesheet.sprites.paste(input_image)
         
         for unit in units:
-            spritesheet = unit.render(spritesheet)
-        
+            spritesheet = unit.render(spritesheet)        
         spritesheet.save(output_path)
+
 
 class TestPipeline(Pipeline):
     def __init__(self):
+        # this should be sparse, don't store any consist or variant info in Pipelines, pass them at render time
         self.name = "test_pipeline"
         super(TestPipeline, self).__init__()
                 
@@ -46,8 +46,9 @@ class TestPipeline(Pipeline):
         options = variant.graphics_processor.options
         input_path = os.path.join(currentdir, 'src', 'graphics', options['template'])
         input_image = Image.open(input_path)
-        units = [PassThrough()]
+        units = [SimpleRecolour(options['recolour_map'])]
         result = self.render_common(variant, consist, input_image, units, options)
+        #make_cheatsheet(input_image, os.path.join(currentdir, 'foo.png'))
         return result
         
 TestPipeline()

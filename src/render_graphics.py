@@ -56,7 +56,7 @@ def main():
         
     pool = Pool(processes=16)    
     for variant, consist in variants.iteritems():
-        result = pool.apply_async(run_pipeline, args=(variant, consist, )).get(timeout=1)
+        result = pool.apply_async(run_pipeline, args=(variant, consist, )).get(timeout=255)
         if result is not None:
             print result
     pool.close()
