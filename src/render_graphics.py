@@ -38,7 +38,8 @@ def run_pipeline(variant, consist):
         shutil.copy(os.path.join(graphics_input, variant.get_spritesheet_name(consist)), graphics_output_path)
     else:
         shutil.copy(os.path.join(graphics_input, variant.get_spritesheet_name(consist)), graphics_output_path)
-        return variant.graphics_processor.pipeline.render(variant, consist)
+        result = variant.graphics_processor.pipeline.render(variant, consist)
+        return result
 
 # wrapped in a main() function so this can be called explicitly, because unexpected multiprocessing fork bombs are bad     
 def main():
