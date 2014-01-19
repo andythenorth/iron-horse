@@ -1,10 +1,13 @@
 import global_constants
-from train import TypeConfig, WagonConsist, Wagon
+from train import TypeConfig, WagonConsist, Wagon, GraphicsProcessorFactory
 
 cargo_graphics_mappings = {'AORE': [1], 'COAL': [2], 'SAND': [3], 'CORE': [4], 'LIME': [5], 
                            'SCMT': [6], 'IORE': [7], 'GRVL': [8], 'FRUT': [9], 'FRVG': [9], 
                            'GRAI': [10], 'WHEA': [10], 'MAIZ': [10], 'FICR': [11], 
                            'SGCN': [11], 'OLSD': [12], 'CLAY': [13]}
+
+graphics_processor_1 = GraphicsProcessorFactory('test_pipeline', {'template': 'open_car_brit_gen_1_0.png'})  
+graphics_processor_2 = GraphicsProcessorFactory('test_pipeline', {'template': 'open_car_brit_gen_1_0.png'})  
 
 type_config = TypeConfig(base_id = 'open_car',
                 template = 'car_with_visible_cargo.pynml',
@@ -40,8 +43,14 @@ consist.add_unit(Wagon(type_config = type_config,
 
 consist.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,
-                       spritesheet_suffix=0)
+                       spritesheet_suffix=0,
+                       graphics_processor=graphics_processor_1)
 
+consist.add_model_variant(intro_date=0,
+                       end_date=global_constants.max_game_date,
+                       spritesheet_suffix=1,
+                       graphics_processor=graphics_processor_2)
+                       
 
 consist = WagonConsist(type_config = type_config,
                     title = 'Open [Car]',

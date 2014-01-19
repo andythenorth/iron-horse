@@ -16,35 +16,28 @@ def register_pipeline(pipeline):
     print registered_pipelines
 
 class Pipeline(object):
-    """
-    def make_spritesheet(floorplan, row_count):
-        return Spritesheet(width=floorplan.size[0], height=SPRITEROW_HEIGHT * row_count, palette=DOS_PALETTE)
-        floorplan = Image.open(os.path.join(currentdir, 'input', floorplan_filename))
-        # slice out the floorplan needed for this gestalt
-        return floorplan.crop((0, gv.floorplan_start_y, floorplan.size[0], gv.floorplan_start_y + SPRITEROW_HEIGHT))
-    """
-        
-    def render_common(self, variant, consist):
-        #result = variant.get_spritesheet_name(consist) 
-        #result = result + str(variant.spritesheet_suffix)
-        loader = PixaImageLoader(mask=(0,255))
-        image_path = os.path.join(currentdir, 'src', 'graphics', variant.get_spritesheet_name(consist))
-        #points = loader.make_points(image_path, origin=(0,0))
+    def __init__(self):
+        print "I am a pipeline"
+        register_pipeline(self)
+
+    def render_common(self, variant, consist, options):
+        input_path = os.path.join(currentdir, 'src', 'graphics', options['template'])
         output_path = os.path.join(currentdir, 'generated', 'graphics', variant.get_spritesheet_name(consist))
-        spritesheet = Spritesheet(width=400, height=440 , palette=DOS_PALETTE)
-        spritesheet.sprites.paste(Image.open(output_path))
-        spritesheet.save(output_path)        
-        #return points
+        input_image = Image.open(input_path)
+        spritesheet = Spritesheet(width=input_image.size[0], height=input_image.size[1] , palette=DOS_PALETTE)
+        spritesheet.sprites.paste(input_image)
+        spritesheet.save(output_path)
 
 class TestPipeline(Pipeline):
     def __init__(self):
         self.name = "test_pipeline"
-        print "I am a pipeline"
-        register_pipeline(self)
-        
+        super(TestPipeline, self).__init__()
+                
     def render(self, variant, consist):
         print 'render'
-        result = self.render_common(variant, consist)
+        options = variant.graphics_processor.options
+        print options
+        result = self.render_common(variant, consist, options)
         return result
         
 TestPipeline()
