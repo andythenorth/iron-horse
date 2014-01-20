@@ -7,7 +7,7 @@ from pixa import make_cheatsheet as make_cheatsheet
 from PIL import Image
 
 from graphics_processor import registered_pipelines, graphics_constants
-from graphics_processor.units import PassThrough, SimpleRecolour, SwapCompanyColours
+from graphics_processor.units import PassThrough, SimpleRecolour, SwapCompanyColours, AppendToSpritesheet
 
 DOS_PALETTE = Image.open('palette_key.png').palette
 
@@ -59,6 +59,7 @@ PassThroughPipeline()
 
 
 class SimpleRecolourPipeline(Pipeline):
+    """ Swaps colours using the recolour map (dict {colour index: replacement colour}) """
     def __init__(self):
         # this should be sparse, don't store any consist or variant info in Pipelines, pass them at render time
         self.name = "simple_recolour_pipeline"
@@ -76,6 +77,7 @@ SimpleRecolourPipeline()
 
 
 class SwapCompanyColoursPipeline(Pipeline):
+    """ Swaps 1CC and 2CC colours """
     def __init__(self):
         # this should be sparse, don't store any consist or variant info in Pipelines, pass them at render time
         self.name = "swap_company_colours_pipeline"
@@ -90,3 +92,21 @@ class SwapCompanyColoursPipeline(Pipeline):
         return result
         
 SwapCompanyColoursPipeline()
+
+
+class ContainerCarrierPipeline(Pipeline):
+    """" Extends a container carrier spritesheet with variations on container colours """
+    def __init__(self):
+        # this should be sparse, don't store any consist or variant info in Pipelines, pass them at render time
+        self.name = "container_carrier_pipeline"
+        super(ContainerCarrierPipeline, self).__init__()
+
+    def render(self, variant, consist):
+        options = variant.graphics_processor.options
+        input_path = os.path.join(currentdir, 'src', 'graphics', options['template'])
+        input_image = Image.open(input_path)
+        units = [AppendToSpritesheet(input_image)]
+        result = self.render_common(variant, consist, input_image, units, options)
+        return result
+
+ContainerCarrierPipeline()

@@ -50,3 +50,16 @@ class SwapCompanyColours(ProcessingUnit):
     def render(self, spritesheet):
         self.selective_recolour(spritesheet, self.recolour_map)
         return spritesheet
+
+
+class AppendToSpritesheet(ProcessingUnit):
+    """ AppendToSpritesheet """
+    def __init__(self, image_to_paste):
+        self.image_to_paste = image_to_paste.copy() # avoid unwanted lazy copies which cause sadness
+        super(AppendToSpritesheet, self).__init__()
+        
+    def render(self, spritesheet):
+        image_to_paste = self.image_to_paste.crop((0, 0, 100, 100))
+        spritesheet.sprites.paste(image_to_paste, (0, 0, 100, 100))
+        return spritesheet
+
