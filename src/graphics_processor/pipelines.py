@@ -25,6 +25,11 @@ class Pipeline(object):
         registered_pipelines[self.name] = self
         print registered_pipelines
 
+    def make_spritesheet_from_image(self, input_image):
+        spritesheet = Spritesheet(width=input_image.size[0], height=input_image.size[1] , palette=DOS_PALETTE)
+        spritesheet.sprites.paste(input_image)
+        return spritesheet
+
     def render_common(self, variant, consist, input_image, units, options):
         # expects to be passed a PIL Image object
         # options is a dict and can be used abitrarily to pass options wherever needed in the pipeline
@@ -33,8 +38,7 @@ class Pipeline(object):
         # finally the spritesheet is saved
         print 'Rendering ' + variant.get_spritesheet_name(consist)  
         output_path = os.path.join(currentdir, 'generated', 'graphics', variant.get_spritesheet_name(consist))
-        spritesheet = Spritesheet(width=input_image.size[0], height=input_image.size[1] , palette=DOS_PALETTE)
-        spritesheet.sprites.paste(input_image)
+        spritesheet = self.make_spritesheet_from_image(input_image)
         
         for unit in units:
             spritesheet = unit.render(spritesheet)        
