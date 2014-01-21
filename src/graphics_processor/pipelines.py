@@ -109,7 +109,8 @@ class ContainerCarrierPipeline(Pipeline):
         options = variant.graphics_processor.options
         input_path = os.path.join(currentdir, 'src', 'graphics', options['template'])
         input_image = Image.open(input_path)
-        units = [AppendToSpritesheet(input_image)]
+        source_spritesheet = self.make_spritesheet_from_image(input_image)
+        units = [AppendToSpritesheet(source_spritesheet)]
         result = self.render_common(variant, consist, input_image, units, options)
         return result
 

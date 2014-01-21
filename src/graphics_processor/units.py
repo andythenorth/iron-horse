@@ -1,4 +1,7 @@
 import graphics_constants
+from PIL import Image
+
+DOS_PALETTE = Image.open('palette_key.png').palette
 
 class ProcessingUnit(object):
     def __init__(self):
@@ -54,12 +57,26 @@ class SwapCompanyColours(ProcessingUnit):
 
 class AppendToSpritesheet(ProcessingUnit):
     """ AppendToSpritesheet """
-    def __init__(self, image_to_paste):
-        self.image_to_paste = image_to_paste.copy() # avoid unwanted lazy copies which cause sadness
+    def __init__(self, source_spritesheet, crop_box=None, insertion_point=(0, 0)):
+        self.source_spritesheet = source_spritesheet
+        # 4 tuple for box size (left, upper, right, lower)
+        self.crop_box = crop_box
+        if self.crop_box is None:
+            self.crop_box = (0, 0, source_spritesheet.sprites.size[0], source_spritesheet.sprites.size[1])
+        # 2 tuple for insertion_point into target image (x, y) from top left
+        self.insertion_point = insertion_point
         super(AppendToSpritesheet, self).__init__()
         
     def render(self, spritesheet):
-        image_to_paste = self.image_to_paste.crop((0, 0, 100, 100))
-        spritesheet.sprites.paste(image_to_paste, (0, 0, 100, 100))
+        image_to_paste = self.source_spritesheet.sprites.copy().crop((0, 0, self.crop_box[0], self.crop_box[1]))
+        width = 400
+        height = 1200
+        temp = Image.new('P', (width, height), 255)
+        temp.putpalette(DOS_PALETTE)
+        previous = spritesheet.sprites
+        temp.paste(previous, (0, 0, previous.size[0], previous.size[1]))
+        spritesheet.sprites = temp
+        box = (self.insertion_point[0], self.insertion_point[1], self.insertion_point[0] + self.crop_box[0], self.insertion_point[1] + self.crop_box[1])
+        spritesheet.sprites.paste(image_to_paste, box)
         return spritesheet
 
