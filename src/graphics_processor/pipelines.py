@@ -20,10 +20,7 @@ Or they can compose units for more complicated tasks, such as colouring and load
 class Pipeline(object):
     def __init__(self):
         # this should be sparse, don't store any consist or variant info in Pipelines, pass them at render time
-        print "I am a pipeline"
-        print "Registering pipeline ", self.name 
         registered_pipelines[self.name] = self
-        print registered_pipelines
 
     def make_spritesheet_from_image(self, input_image):
         spritesheet = Spritesheet(width=input_image.size[0], height=input_image.size[1] , palette=DOS_PALETTE)
@@ -109,13 +106,16 @@ class ContainerCarrierPipeline(Pipeline):
         options = variant.graphics_processor.options
         unit_row_cluster_height = options['num_rows_per_unit'] * graphics_constants.spriterow_height * options['num_unit_types']
         input_path = os.path.join(currentdir, 'src', 'graphics', options['template'])
-        input_image = Image.open(input_path).crop((0, 0, graphics_constants.spritesheet_width, 280))
+        crop_box = (0, 0, graphics_constants.spritesheet_width, graphics_constants.spritesheet_top_margin + unit_row_cluster_height)
+        input_image = Image.open(input_path).crop(crop_box)
         source_spritesheet = self.make_spritesheet_from_image(input_image)
         crop_box = (0, 
                     graphics_constants.spritesheet_top_margin, 
                     graphics_constants.spritesheet_width,  
                     graphics_constants.spritesheet_top_margin + unit_row_cluster_height)
-        units = [AppendToSpritesheet(source_spritesheet, crop_box)]
+        units = []
+        for cargo_variant in range(options['num_cargo_variants']-1):
+            units.append(AppendToSpritesheet(source_spritesheet, crop_box))
         result = self.render_common(variant, consist, input_image, units, options)
         return result
 
