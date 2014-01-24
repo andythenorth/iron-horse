@@ -113,9 +113,10 @@ class ContainerCarrierPipeline(Pipeline):
                     graphics_constants.spritesheet_top_margin, 
                     graphics_constants.spritesheet_width,  
                     graphics_constants.spritesheet_top_margin + unit_row_cluster_height)
-        units = []
-        for cargo_variant in range(options['num_cargo_variants']-1):
+        units = [SimpleRecolour(options['recolour_maps'][0])]
+        for recolour_map_index in range(len(options['recolour_maps'])-1):
             units.append(AppendToSpritesheet(source_spritesheet, crop_box))
+            units.append(SimpleRecolour(options['recolour_maps'][recolour_map_index+1]))
         result = self.render_common(variant, consist, input_image, units, options)
         return result
 

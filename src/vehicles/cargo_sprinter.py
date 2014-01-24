@@ -2,7 +2,9 @@ import global_constants
 from train import EngineConsist, CargoSprinter, GraphicsProcessorFactory
 
 options = {'template': 'cargo_sprinter_template.png',
-           'num_cargo_variants': 3,
+           'recolour_maps': ({170: 186, 171: 187, 172: 188, 173: 189},
+                             {170: 220, 171: 221, 172: 222, 173: 223},
+                             {170: 110, 171: 111, 172: 112, 173: 113}),                             
            'num_rows_per_unit': 3,
            'num_unit_types': 3}
 graphics_processor_1 = GraphicsProcessorFactory('container_carrier_pipeline', options)
