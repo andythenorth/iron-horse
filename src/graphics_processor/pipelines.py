@@ -107,10 +107,15 @@ class ContainerCarrierPipeline(Pipeline):
 
     def render(self, variant, consist):
         options = variant.graphics_processor.options
+        unit_row_cluster_height = options['num_rows_per_unit'] * graphics_constants.spriterow_height * options['num_unit_types']
         input_path = os.path.join(currentdir, 'src', 'graphics', options['template'])
-        input_image = Image.open(input_path)
+        input_image = Image.open(input_path).crop((0, 0, graphics_constants.spritesheet_width, 280))
         source_spritesheet = self.make_spritesheet_from_image(input_image)
-        units = [AppendToSpritesheet(source_spritesheet)]
+        crop_box = (0, 
+                    graphics_constants.spritesheet_top_margin, 
+                    graphics_constants.spritesheet_width,  
+                    graphics_constants.spritesheet_top_margin + unit_row_cluster_height)
+        units = [AppendToSpritesheet(source_spritesheet, crop_box)]
         result = self.render_common(variant, consist, input_image, units, options)
         return result
 

@@ -57,26 +57,26 @@ class SwapCompanyColours(ProcessingUnit):
 
 class AppendToSpritesheet(ProcessingUnit):
     """ AppendToSpritesheet """
-    def __init__(self, source_spritesheet, crop_box=None, insertion_point=(0, 0)):
+    """ Always appends at the end vertically.  Insertions and horizontal appending are not supported. """
+    def __init__(self, source_spritesheet, crop_box=None):
         self.source_spritesheet = source_spritesheet
         # 4 tuple for box size (left, upper, right, lower)
         self.crop_box = crop_box
         if self.crop_box is None:
             self.crop_box = (0, 0, source_spritesheet.sprites.size[0], source_spritesheet.sprites.size[1])
-        # 2 tuple for insertion_point into target image (x, y) from top left
-        self.insertion_point = insertion_point
         super(AppendToSpritesheet, self).__init__()
         
     def render(self, spritesheet):
-        image_to_paste = self.source_spritesheet.sprites.copy().crop((0, 0, self.crop_box[0], self.crop_box[1]))
-        width = 400
-        height = 1200
+        image_to_paste = self.source_spritesheet.sprites.copy()
+        image_to_paste = image_to_paste.crop((self.crop_box[0], self.crop_box[1], self.crop_box[2], self.crop_box[3]))
+        previous = spritesheet.sprites
+        width = previous.size[0]
+        height = previous.size[1] + image_to_paste.size[1]
         temp = Image.new('P', (width, height), 255)
         temp.putpalette(DOS_PALETTE)
-        previous = spritesheet.sprites
         temp.paste(previous, (0, 0, previous.size[0], previous.size[1]))
         spritesheet.sprites = temp
-        box = (self.insertion_point[0], self.insertion_point[1], self.insertion_point[0] + self.crop_box[0], self.insertion_point[1] + self.crop_box[1])
+        box = (0, previous.size[1], image_to_paste.size[0], previous.size[1] + image_to_paste.size[1])
         spritesheet.sprites.paste(image_to_paste, box)
         return spritesheet
 

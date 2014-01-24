@@ -1,9 +1,12 @@
 import global_constants
 from train import EngineConsist, CargoSprinter, GraphicsProcessorFactory
 
-options = {'template': 'cargo_sprinter_template.png'}
+options = {'template': 'cargo_sprinter_template.png',
+           'num_variants': 1,
+           'num_rows_per_unit': 3,
+           'num_unit_types': 3}
 graphics_processor_1 = GraphicsProcessorFactory('container_carrier_pipeline', options)
-                                               
+                
 consist = EngineConsist(id = 'cargo_sprinter',
               base_numeric_id = 1100,
               title = 'Cargo Sprinter [Diesel]',
