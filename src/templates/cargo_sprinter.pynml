@@ -6,54 +6,66 @@ ${vehicle.render_debug_info()}
     <tal:cargo_colour_variant repeat="cargo_variant_num python:range(3)">
         <!--! Cabs: A = front, B = middle (no cab), C = rear -->
         <tal:cab_variants repeat="cab_variant python:range(3)">
-            spriteset(${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_${cab_variant}_0, "${global_constants.graphics_path}${consist.id}_${variation_num}.png") {
+            spriteset(${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_${cab_variant}_empty, "${global_constants.graphics_path}${consist.id}_${variation_num}.png") {
                 spriteset_template_${vehicle.id}(10 + ${cargo_variant_num * 270} + ${cab_variant * 90})
             }
-            spriteset(${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_${cab_variant}_1, "${global_constants.graphics_path}${consist.id}_${variation_num}.png") {
+            spriteset(${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_${cab_variant}_box, "${global_constants.graphics_path}${consist.id}_${variation_num}.png") {
                 spriteset_template_${vehicle.id}(40 + ${cargo_variant_num * 270} + ${cab_variant * 90})
             }
-            spriteset(${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_${cab_variant}_2, "${global_constants.graphics_path}${consist.id}_${variation_num}.png") {
+            spriteset(${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_${cab_variant}_liquids, "${global_constants.graphics_path}${consist.id}_${variation_num}.png") {
                 spriteset_template_${vehicle.id}(70 + ${cargo_variant_num * 270} + ${cab_variant * 90})
             }
 
-            spritegroup ${vehicle.id}_sg_${variation_num}_${cargo_variant_num}_${cab_variant} {
+            spritegroup ${vehicle.id}_sg_${variation_num}_${cargo_variant_num}_${cab_variant}_box {
                 loaded:  [
-                    ${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_${cab_variant}_0,
-                    ${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_${cab_variant}_1,
+                    ${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_${cab_variant}_empty,
+                    ${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_${cab_variant}_box,
                 ];
                 loading: [
-                    ${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_${cab_variant}_0,
-                    ${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_${cab_variant}_1,
+                    ${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_${cab_variant}_empty,
+                    ${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_${cab_variant}_box,
                 ];
             }
-            <!--!switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${variation_num}_0_${cab_variant}, ${vehicle.get_nml_expression_for_cargo_type_unit_refitted_to()}) {
-                PASS: return ${vehicle.id}_switch_graphics_${variation_num}_liquids;
-                return ${vehicle.id}_sg_${variation_num}_${cargo_variant_num}_default_1;
-            }-->
+            spritegroup ${vehicle.id}_sg_${variation_num}_${cargo_variant_num}_${cab_variant}_liquids {
+                loaded:  [
+                    ${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_${cab_variant}_empty,
+                    ${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_${cab_variant}_liquids,
+                ];
+                loading: [
+                    ${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_${cab_variant}_empty,
+                    ${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_${cab_variant}_liquids,
+                ];
+            }
+            switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${variation_num}_${cargo_variant_num}_${cab_variant}, ${vehicle.get_nml_expression_for_cargo_type_unit_refitted_to()}) {
+                BEER: return ${vehicle.id}_sg_${variation_num}_${cargo_variant_num}_${cab_variant}_liquids;
+                MILK: return ${vehicle.id}_sg_${variation_num}_${cargo_variant_num}_${cab_variant}_liquids;
+                WATR: return ${vehicle.id}_sg_${variation_num}_${cargo_variant_num}_${cab_variant}_liquids;
+                return ${vehicle.id}_sg_${variation_num}_${cargo_variant_num}_${cab_variant}_box;
+            }
         </tal:cab_variants>
 
         switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${variation_num}_${cargo_variant_num}_check_preceding_vehicle_same_id, 
                                     ${vehicle.get_nml_expression_for_id_of_neighbouring_unit(unit_offset=-1)}) {
-            ${vehicle.id}: return ${vehicle.id}_sg_${variation_num}_${cargo_variant_num}_1; // same vehicle, show no cab
-            return ${vehicle.id}_sg_${variation_num}_${cargo_variant_num}_0; // different IH vehicle, show front cab
+            ${vehicle.id}: return ${vehicle.id}_switch_graphics_${variation_num}_${cargo_variant_num}_1; // same vehicle, show no cab
+            return ${vehicle.id}_switch_graphics_${variation_num}_${cargo_variant_num}_0; // different IH vehicle, show front cab
         }
 
         switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${variation_num}_${cargo_variant_num}_check_preceding_vehicle_same_grf, 
                                     ${vehicle.get_nml_expression_for_grfid_of_neighbouring_unit(unit_offset=-1)}) {
             str2number("${global_constants.grfid}"): ${vehicle.id}_switch_graphics_${variation_num}_${cargo_variant_num}_check_preceding_vehicle_same_id;
-            return ${vehicle.id}_sg_${variation_num}_${cargo_variant_num}_0; // different grf, show front cab
+            return ${vehicle.id}_switch_graphics_${variation_num}_${cargo_variant_num}_0; // different grf, show front cab
         }
 
         switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${variation_num}_${cargo_variant_num}_check_following_vehicle_same_id, 
                                     ${vehicle.get_nml_expression_for_id_of_neighbouring_unit(unit_offset=1)}) {
             ${vehicle.id}: ${vehicle.id}_switch_graphics_${variation_num}_${cargo_variant_num}_check_preceding_vehicle_same_grf;
-            return ${vehicle.id}_sg_${variation_num}_${cargo_variant_num}_2; // different IH vehicle, show rear cab
+            return ${vehicle.id}_switch_graphics_${variation_num}_${cargo_variant_num}_2; // different IH vehicle, show rear cab
         }
 
         switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${variation_num}_${cargo_variant_num}, 
                                     ${vehicle.get_nml_expression_for_grfid_of_neighbouring_unit(unit_offset=1)}) {
             str2number("${global_constants.grfid}"): ${vehicle.id}_switch_graphics_${variation_num}_${cargo_variant_num}_check_following_vehicle_same_id;
-            return ${vehicle.id}_sg_${variation_num}_${cargo_variant_num}_2; // different grf, show rear cab
+            return ${vehicle.id}_switch_graphics_${variation_num}_${cargo_variant_num}_2; // different grf, show rear cab
         }
 
     </tal:cargo_colour_variant>
