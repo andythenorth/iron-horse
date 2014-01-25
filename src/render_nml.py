@@ -43,7 +43,9 @@ def main():
  
     pool = Pool(processes=16)    
     for consist in consists:
-        pool.apply_async(render_consist_nml, args=( consist, ))
+        result = pool.apply_async(render_consist_nml, args=(consist,)).get(timeout=16)
+        if result is not None:
+            print result
     pool.close()
     pool.join()
 

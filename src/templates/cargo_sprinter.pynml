@@ -3,59 +3,67 @@ ${vehicle.render_debug_info()}
 <tal:include define="vehicle_offsets_standard load: vehicle_offsets_standard.pynml" metal:use-macro="vehicle_offsets_standard" />
 
 <tal:sprites_random_variations repeat="variation_num python:range(consist.get_num_spritesets())">
-    <tal:cargo_variants repeat="cargo_variant_num python:range(3)">
-        spriteset(${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_0, "${global_constants.graphics_path}${consist.id}_${variation_num}.png") {
-            spriteset_template_${vehicle.id}(10 + ${cargo_variant_num * 90})
-        }
-        spriteset(${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_1, "${global_constants.graphics_path}${consist.id}_${variation_num}.png") {
-            spriteset_template_${vehicle.id}(40 + ${cargo_variant_num * 90})
-        }
-        spriteset(${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_2, "${global_constants.graphics_path}${consist.id}_${variation_num}.png") {
-            spriteset_template_${vehicle.id}(70 + ${cargo_variant_num * 90})
+    <tal:cargo_colour_variant repeat="cargo_variant_num python:range(2)">
+        <!--! Cabs: A = front, B = middle (no cab), C = rear -->
+        <tal:cab_variants repeat="cab_variant python:range(3)">
+            spriteset(${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_${cab_variant}_0, "${global_constants.graphics_path}${consist.id}_${variation_num}.png") {
+                spriteset_template_${vehicle.id}(10 + ${cargo_variant_num * 270} + ${cab_variant * 90})
+            }
+            spriteset(${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_${cab_variant}_1, "${global_constants.graphics_path}${consist.id}_${variation_num}.png") {
+                spriteset_template_${vehicle.id}(40 + ${cargo_variant_num * 270} + ${cab_variant * 90})
+            }
+            spriteset(${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_${cab_variant}_2, "${global_constants.graphics_path}${consist.id}_${variation_num}.png") {
+                spriteset_template_${vehicle.id}(70 + ${cargo_variant_num * 270} + ${cab_variant * 90})
+            }
+
+            spritegroup ${vehicle.id}_sg_${variation_num}_${cargo_variant_num}_${cab_variant} {
+                loaded:  [
+                    ${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_${cab_variant}_0,
+                    ${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_${cab_variant}_1,
+                ];
+                loading: [
+                    ${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_${cab_variant}_0,
+                    ${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_${cab_variant}_1,
+                ];
+            }
+            <!--!switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${variation_num}_0_${cab_variant}, ${vehicle.get_nml_expression_for_cargo_type_unit_refitted_to()}) {
+                PASS: return ${vehicle.id}_switch_graphics_${variation_num}_liquids;
+                return ${vehicle.id}_sg_${variation_num}_${cargo_variant_num}_default_1;
+            }-->
+        </tal:cab_variants>
+
+        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${variation_num}_${cargo_variant_num}_check_preceding_vehicle_same_id, 
+                                    ${vehicle.get_nml_expression_for_id_of_neighbouring_unit(unit_offset=-1)}) {
+            ${vehicle.id}: return ${vehicle.id}_sg_${variation_num}_${cargo_variant_num}_1; // same vehicle, show no cab
+            return ${vehicle.id}_sg_${variation_num}_${cargo_variant_num}_0; // different IH vehicle, show front cab
         }
 
-        spritegroup ${vehicle.id}_sg_${variation_num}_${cargo_variant_num} {
-            loaded:  [
-                ${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_0,
-            ];
-            loading: [
-                ${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_1,
-                ${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_2,
-            ];
+        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${variation_num}_${cargo_variant_num}_check_preceding_vehicle_same_grf, 
+                                    ${vehicle.get_nml_expression_for_grfid_of_neighbouring_unit(unit_offset=-1)}) {
+            str2number("${global_constants.grfid}"): ${vehicle.id}_switch_graphics_${variation_num}_${cargo_variant_num}_check_preceding_vehicle_same_id;
+            return ${vehicle.id}_sg_${variation_num}_${cargo_variant_num}_0; // different grf, show front cab
         }
-    </tal:cargo_variants>
 
-    <!--! this is a hack on cargo graphics support from railcar.pynml, and needs refactored -->
+        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${variation_num}_${cargo_variant_num}_check_following_vehicle_same_id, 
+                                    ${vehicle.get_nml_expression_for_id_of_neighbouring_unit(unit_offset=1)}) {
+            ${vehicle.id}: ${vehicle.id}_switch_graphics_${variation_num}_${cargo_variant_num}_check_preceding_vehicle_same_grf;
+            return ${vehicle.id}_sg_${variation_num}_${cargo_variant_num}_2; // different IH vehicle, show rear cab
+        }
 
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${variation_num}_check_preceding_vehicle_same_id, 
-                                ${vehicle.get_nml_expression_for_id_of_neighbouring_unit(unit_offset=-1)}) {
-        ${vehicle.id}: return ${vehicle.id}_sg_${variation_num}_1; // same vehicle, show no cab
-        return ${vehicle.id}_sg_${variation_num}_0; // different IH vehicle, show front cab
+        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${variation_num}_${cargo_variant_num}, 
+                                    ${vehicle.get_nml_expression_for_grfid_of_neighbouring_unit(unit_offset=1)}) {
+            str2number("${global_constants.grfid}"): ${vehicle.id}_switch_graphics_${variation_num}_${cargo_variant_num}_check_following_vehicle_same_id;
+            return ${vehicle.id}_sg_${variation_num}_${cargo_variant_num}_2; // different grf, show rear cab
+        }
+
+    </tal:cargo_colour_variant>
+
+    random_switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${variation_num}, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+        <tal:random_graphics_variations repeat="cargo_variant_num range(2)">
+            1: return ${vehicle.id}_switch_graphics_${variation_num}_${cargo_variant_num};
+        </tal:random_graphics_variations>
     }
 
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${variation_num}_check_preceding_vehicle_same_grf, 
-                                ${vehicle.get_nml_expression_for_grfid_of_neighbouring_unit(unit_offset=-1)}) {
-        str2number("${global_constants.grfid}"): ${vehicle.id}_switch_graphics_${variation_num}_check_preceding_vehicle_same_id;
-        return ${vehicle.id}_sg_${variation_num}_0; // different grf, show front cab
-    }
-
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${variation_num}_check_following_vehicle_same_id, 
-                                ${vehicle.get_nml_expression_for_id_of_neighbouring_unit(unit_offset=1)}) {
-        ${vehicle.id}: ${vehicle.id}_switch_graphics_${variation_num}_check_preceding_vehicle_same_grf;
-        return ${vehicle.id}_sg_${variation_num}_2; // different IH vehicle, show rear cab
-    }
-
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${variation_num}, 
-                                ${vehicle.get_nml_expression_for_grfid_of_neighbouring_unit(unit_offset=1)}) {
-        str2number("${global_constants.grfid}"): ${vehicle.id}_switch_graphics_${variation_num}_check_following_vehicle_same_id;
-        return ${vehicle.id}_sg_${variation_num}_2; // different grf, show rear cab
-    }
-
-    
-    <!--!switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${variation_num}, ${vehicle.get_nml_expression_for_cargo_type_unit_refitted_to()}) {
-        PASS: return ${vehicle.id}_sg_${variation_num}_0;
-        return ${vehicle.id}_sg_${variation_num}_1;
-    }-->
 </tal:sprites_random_variations>
 
 <tal:include define="graphics_switches load: graphics_switches.pynml" metal:use-macro="graphics_switches" />
