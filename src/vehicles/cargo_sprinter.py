@@ -1,10 +1,14 @@
 import global_constants
+import graphics_processor.utils as graphics_utils
+from graphics_processor import graphics_constants
 from train import EngineConsist, CargoSprinter, GraphicsProcessorFactory
 
+CC1 = graphics_constants.CC1
+CC2 = graphics_constants.CC2
 graphics_options = {'template': 'cargo_sprinter_template.png',
-           'recolour_maps': ({170: 186, 171: 187, 172: 188, 173: 189},
-                             {170: 220, 171: 221, 172: 222, 173: 223},
-                             {170: 110, 171: 111, 172: 112, 173: 113}),                             
+           'recolour_maps': (graphics_utils.make_colour_map(170, CC1, 8),
+                             graphics_utils.make_colour_map(170, CC2, 8),
+                             graphics_utils.make_colour_map(170, 8, 8)),                             
            'num_rows_per_unit': 3,
            'num_unit_types': 3}
 graphics_processor_1 = GraphicsProcessorFactory('container_carrier_pipeline', graphics_options)
