@@ -18,7 +18,7 @@ templates = PageTemplateLoader(os.path.join(currentdir, 'src', 'templates'))
 
 import graphics_processor
 
-from vehicles import registered_consists
+from vehicles import registered_consists, registered_wagon_generations
 
 
 class Consist(object):
@@ -486,14 +486,21 @@ class WagonConsist(Consist):
         kwargs['base_numeric_id'] = self.get_wagon_numeric_id(type_config.base_id, **kwargs)
         kwargs['track_type'] = type_config.track_type
         self.wagon_generation = kwargs.get('wagon_generation', None)
+        super(WagonConsist, self).__init__(**kwargs)
         if self.wagon_generation == 1:
             if speedy==True:
                 self.speed = global_constants.speedy_wagon_speed
             else:
                 self.speed = global_constants.standard_wagon_speed
-        super(WagonConsist, self).__init__(**kwargs)
         self.num_cargo_rows = type_config.num_cargo_rows
         self.cargo_graphics_mappings = type_config.cargo_graphics_mappings
+        # register the consist so that buy menu order can later be built programatically
+        vehicle_set = kwargs.get('vehicle_set')
+        base_type = type_config.base_id
+        vehicle_set_dict = registered_wagon_generations.setdefault(vehicle_set, {})
+        base_type_list = vehicle_set_dict.setdefault(base_type, [])
+        base_type_list.append(self.wagon_generation)
+        base_type_list.sort()
 
 
 class Wagon(Train):

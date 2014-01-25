@@ -30,7 +30,7 @@ print "[IMPORT VEHICLES] iron_horse.py"
 
 import train
 from train import Train
-from vehicles import registered_consists
+from vehicles import registered_consists, registered_wagon_generations
 
 
 from vehicles import box_cars
@@ -102,4 +102,6 @@ def get_consists_in_buy_menu_order(show_warnings=False):
         if show_warnings and id not in buy_menu_sort_order:
             utils.echo_message("Warning: consist " + id + " in registered_consists, but not in buy_menu_sort_order - won't show in game")
     return sorted_consists
+
+print registered_wagon_generations
 

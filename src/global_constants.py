@@ -90,7 +90,7 @@ base_refits_by_class = {'empty': [],
                         'express_freight': ['CC_EXPRESS','CC_ARMOURED']}
 
 # speed for wagons in mph (some generations may optionally have no speed set)
-standard_wagon_speed = 75
+standard_wagon_speed = 65
 speedy_wagon_speed = 100
 
 # capacity multipliers for capacity parameter
