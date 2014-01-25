@@ -3,7 +3,7 @@ ${vehicle.render_debug_info()}
 <tal:include define="vehicle_offsets_standard load: vehicle_offsets_standard.pynml" metal:use-macro="vehicle_offsets_standard" />
 
 <tal:sprites_random_variations repeat="variation_num python:range(consist.get_num_spritesets())">
-    <tal:cargo_colour_variant repeat="cargo_variant_num python:range(2)">
+    <tal:cargo_colour_variant repeat="cargo_variant_num python:range(3)">
         <!--! Cabs: A = front, B = middle (no cab), C = rear -->
         <tal:cab_variants repeat="cab_variant python:range(3)">
             spriteset(${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_${cab_variant}_0, "${global_constants.graphics_path}${consist.id}_${variation_num}.png") {
@@ -59,7 +59,7 @@ ${vehicle.render_debug_info()}
     </tal:cargo_colour_variant>
 
     random_switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${variation_num}, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
-        <tal:random_graphics_variations repeat="cargo_variant_num range(2)">
+        <tal:random_graphics_variations repeat="cargo_variant_num range(3)">
             1: return ${vehicle.id}_switch_graphics_${variation_num}_${cargo_variant_num};
         </tal:random_graphics_variations>
     }
