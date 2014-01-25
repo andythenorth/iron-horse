@@ -1,5 +1,3 @@
- # OrderedDict available natively in python >= 2.7, but we want support for python 2.6
-from ordered_dict_backport import OrderedDict
 
 buy_menu_sort_order_locos = [# brit locos
                            'standard',
@@ -41,25 +39,24 @@ buy_menu_sort_order_locos = [# brit locos
 
 # wagon ids are generic and are composed to specific vehicle ids elsewhere
 # order is significant
-# format is base_id: num_generations
-buy_menu_sort_order_wagons = OrderedDict([('passenger_car', 3),
-                                          ('mail_car', 3),
-                                          ('combine_car', 1),
-                                          ('box_car', 2),
-                                          ('open_car', 2),
-                                          ('tank_car', 3),
-                                          ('hopper_car', 2),
-                                          ('flat_car', 2),
-                                          ('livestock_car', 2),
-                                          ('reefer_car', 2),
-                                          ('covered_hopper_car', 2),
-                                          ('caboose_car', 1),
-                                          ('passenger_car_ng', 1),
-                                          ('box_car_ng', 1),
-                                          ('open_car_ng', 1),
-                                          ('tank_car_ng', 1),
-                                          ('flat_car_ng', 1),
-                                          ('livestock_car_ng', 1)])
+buy_menu_sort_order_wagons = ['passenger_car',
+                              'mail_car',
+                              'combine_car',
+                              'box_car',
+                              'open_car',
+                              'tank_car',
+                              'hopper_car',
+                              'flat_car',
+                              'livestock_car',
+                              'reefer_car',
+                              'covered_hopper_car',
+                              'caboose_car',
+                              'passenger_car_ng',
+                              'box_car_ng',
+                              'open_car_ng',
+                              'tank_car_ng',
+                              'flat_car_ng',
+                              'livestock_car_ng']
 
 # set (roster) <-> numeric id mapping
 # vehicle IDs are in format nxxx where n is set numeric id 
