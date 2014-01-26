@@ -487,12 +487,13 @@ class WagonConsist(Consist):
         kwargs['track_type'] = type_config.track_type
         self.wagon_generation = kwargs.get('wagon_generation', None)
         super(WagonConsist, self).__init__(**kwargs)
+
         if self.wagon_generation == 1:
-            if speedy==True:
-                self.speed = global_constants.speedy_wagon_speed
-            else:
-                self.speed = global_constants.standard_wagon_speed
+            self.speed = global_constants.gen_1_wagon_speeds[speedy]
+        if self.wagon_generation == 2:
+            self.speed = global_constants.gen_2_wagon_speeds[speedy]
         self.num_cargo_rows = type_config.num_cargo_rows
+
         self.cargo_graphics_mappings = type_config.cargo_graphics_mappings
         # register the consist so that buy menu order can later be built programatically
         vehicle_set = kwargs.get('vehicle_set')

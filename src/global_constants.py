@@ -86,9 +86,10 @@ base_refits_by_class = {'empty': [],
                         'refrigerated_freight': [],
                         'express_freight': ['CC_EXPRESS','CC_ARMOURED']}
 
-# speed for wagons in mph (some generations may optionally have no speed set)
-standard_wagon_speed = 65
-speedy_wagon_speed = 100
+# speed for wagons in mph (some generations may optionally have no speed set) 
+# format is [standard, speedy]
+gen_1_wagon_speeds = [65, 100]
+gen_2_wagon_speeds = [100, None]
 
 # capacity multipliers for capacity parameter
 capacity_multipliers = [0.67, 1, 1.33]
