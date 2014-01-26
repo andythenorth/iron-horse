@@ -94,12 +94,12 @@ class SwapCompanyColoursPipeline(Pipeline):
 SwapCompanyColoursPipeline()
 
 
-class ContainerCarrierPipeline(Pipeline):
-    """" Extends a container carrier spritesheet with variations on container colours """
+class ExtendSpriterowsForRecolouredCargosPipeline(Pipeline):
+    """" Extends a cargo carrier spritesheet with variations on cargo colours """
     def __init__(self):
         # this should be sparse, don't store any consist or variant info in Pipelines, pass them at render time
-        self.name = "container_carrier_pipeline"
-        super(ContainerCarrierPipeline, self).__init__()
+        self.name = "extend_spriterows_for_recoloured_cargos_pipeline"
+        super(ExtendSpriterowsForRecolouredCargosPipeline, self).__init__()
 
     def render(self, variant, consist):
         # there are various options for controlling the crop box, I haven't documented them - read example uses to figure them out
@@ -120,4 +120,4 @@ class ContainerCarrierPipeline(Pipeline):
         result = self.render_common(variant, consist, input_image, units, options)
         return result
 
-ContainerCarrierPipeline()
+ExtendSpriterowsForRecolouredCargosPipeline()

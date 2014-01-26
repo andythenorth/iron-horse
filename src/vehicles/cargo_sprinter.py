@@ -8,7 +8,7 @@ graphics_options = {'template': 'cargo_sprinter_template.png',
            'copy_block_top_offset': 0,
            'num_rows_per_unit': 3,
            'num_unit_types': 3}
-graphics_processor_1 = GraphicsProcessorFactory('container_carrier_pipeline', graphics_options)
+graphics_processor_1 = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options)
                 
 consist = EngineConsist(id = 'cargo_sprinter',
               base_numeric_id = 1100,

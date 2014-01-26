@@ -10,7 +10,7 @@ graphics_options = {'template': 'intermodal_flat_car_brit_gen_3_template.png',
            'copy_block_top_offset': 30, 
            'num_rows_per_unit': 3,
            'num_unit_types': 1}
-graphics_processor_1 = GraphicsProcessorFactory('container_carrier_pipeline', graphics_options)
+graphics_processor_1 = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options)
 
 type_config = TypeConfig(base_id = 'intermodal_flat_car',
                 template = 'car_with_visible_cargo.pynml',
