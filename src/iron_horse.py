@@ -85,7 +85,6 @@ def get_consists_in_buy_menu_order(show_warnings=False):
             for wagon_generation in registered_wagon_generations[vehicle_set][id_base]:
                 wagon_id = '_'.join((id_base, vehicle_set, 'gen', str(wagon_generation)))
                 buy_menu_sort_order.append(wagon_id)
-                print wagon_id
 
     # now check registered vehicles against the buy menu order, and add them to the sorted list
     for id in buy_menu_sort_order:
