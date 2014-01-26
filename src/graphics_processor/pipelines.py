@@ -109,6 +109,8 @@ class ExtendSpriterowsForRecolouredCargosPipeline(Pipeline):
         input_path = os.path.join(currentdir, 'src', 'graphics', options['template'])
         crop_box = (0, 0, graphics_constants.spritesheet_width, graphics_constants.spritesheet_top_margin + unit_row_cluster_height + options['copy_block_top_offset'])
         input_image = Image.open(input_path).crop(crop_box)
+        if options['template'] == 'hopper_car_brit_gen_1_template.png': 
+            make_cheatsheet(Image.open(os.path.join(currentdir,'src','graphics','hopper_car_brit_gen_1_template.png')), os.path.join(currentdir,'foo.png'))
         source_spritesheet = self.make_spritesheet_from_image(input_image)
         crop_box = (0, 
                     graphics_constants.spritesheet_top_margin + options['copy_block_top_offset'], 
