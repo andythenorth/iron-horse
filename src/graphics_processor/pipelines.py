@@ -11,6 +11,9 @@ from graphics_processor.units import PassThrough, SimpleRecolour, SwapCompanyCol
 
 DOS_PALETTE = Image.open('palette_key.png').palette
 
+def register(pipeline):
+    registered_pipelines[pipeline.name] = pipeline
+
 """
 Pipelines can be dedicated to a single task such as SimpleRecolourPipeline
 Or they can compose units for more complicated tasks, such as colouring and loading a specific vehicle type  
@@ -18,9 +21,9 @@ Or they can compose units for more complicated tasks, such as colouring and load
 
 
 class Pipeline(object):
-    def __init__(self):
+    def __init__(self, name):
         # this should be sparse, don't store any consist or variant info in Pipelines, pass them at render time
-        registered_pipelines[self.name] = self
+        self.name = name
 
     def make_spritesheet_from_image(self, input_image):
         spritesheet = Spritesheet(width=input_image.size[0], height=input_image.size[1] , palette=DOS_PALETTE)
@@ -44,8 +47,7 @@ class Pipeline(object):
 class PassThroughPipeline(Pipeline):
     def __init__(self):
         # this should be sparse, don't store any consist or variant info in Pipelines, pass them at render time
-        self.name = "pass_through_pipeline"
-        super(PassThroughPipeline, self).__init__()
+        super(PassThroughPipeline, self).__init__("pass_through_pipeline")
                 
     def render(self, variant, consist):
         options = variant.graphics_processor.options
@@ -55,15 +57,14 @@ class PassThroughPipeline(Pipeline):
         result = self.render_common(variant, consist, input_image, units, options)
         return result
         
-PassThroughPipeline()
+register(PassThroughPipeline())
 
 
 class SimpleRecolourPipeline(Pipeline):
     """ Swaps colours using the recolour map (dict {colour index: replacement colour}) """
     def __init__(self):
         # this should be sparse, don't store any consist or variant info in Pipelines, pass them at render time
-        self.name = "simple_recolour_pipeline"
-        super(SimpleRecolourPipeline, self).__init__()
+        super(SimpleRecolourPipeline, self).__init__("simple_recolour_pipeline")
                 
     def render(self, variant, consist):
         options = variant.graphics_processor.options
@@ -73,15 +74,14 @@ class SimpleRecolourPipeline(Pipeline):
         result = self.render_common(variant, consist, input_image, units, options)
         return result
         
-SimpleRecolourPipeline()
+register(SimpleRecolourPipeline())
 
 
 class SwapCompanyColoursPipeline(Pipeline):
     """ Swaps 1CC and 2CC colours """
     def __init__(self):
         # this should be sparse, don't store any consist or variant info in Pipelines, pass them at render time
-        self.name = "swap_company_colours_pipeline"
-        super(SwapCompanyColoursPipeline, self).__init__()
+        super(SwapCompanyColoursPipeline, self).__init__("swap_company_colours_pipeline")
                 
     def render(self, variant, consist):
         options = variant.graphics_processor.options
@@ -91,15 +91,14 @@ class SwapCompanyColoursPipeline(Pipeline):
         result = self.render_common(variant, consist, input_image, units, options)
         return result
         
-SwapCompanyColoursPipeline()
+register(SwapCompanyColoursPipeline())
 
 
 class ExtendSpriterowsForRecolouredCargosPipeline(Pipeline):
     """" Extends a cargo carrier spritesheet with variations on cargo colours """
     def __init__(self):
         # this should be sparse, don't store any consist or variant info in Pipelines, pass them at render time
-        self.name = "extend_spriterows_for_recoloured_cargos_pipeline"
-        super(ExtendSpriterowsForRecolouredCargosPipeline, self).__init__()
+        super(ExtendSpriterowsForRecolouredCargosPipeline, self).__init__("extend_spriterows_for_recoloured_cargos_pipeline")
 
     def render(self, variant, consist):
         # there are various options for controlling the crop box, I haven't documented them - read example uses to figure them out
@@ -120,4 +119,4 @@ class ExtendSpriterowsForRecolouredCargosPipeline(Pipeline):
         result = self.render_common(variant, consist, input_image, units, options)
         return result
 
-ExtendSpriterowsForRecolouredCargosPipeline()
+register(ExtendSpriterowsForRecolouredCargosPipeline())
