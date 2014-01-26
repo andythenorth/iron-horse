@@ -105,13 +105,13 @@ class ContainerCarrierPipeline(Pipeline):
         options = variant.graphics_processor.options
         unit_row_cluster_height = options['num_rows_per_unit'] * graphics_constants.spriterow_height * options['num_unit_types']
         input_path = os.path.join(currentdir, 'src', 'graphics', options['template'])
-        crop_box = (0, 0, graphics_constants.spritesheet_width, graphics_constants.spritesheet_top_margin + unit_row_cluster_height)
+        crop_box = (0, 0, graphics_constants.spritesheet_width, graphics_constants.spritesheet_top_margin + unit_row_cluster_height + options['copy_block_top_offset'])
         input_image = Image.open(input_path).crop(crop_box)
         source_spritesheet = self.make_spritesheet_from_image(input_image)
         crop_box = (0, 
-                    graphics_constants.spritesheet_top_margin, 
+                    graphics_constants.spritesheet_top_margin + options['copy_block_top_offset'], 
                     graphics_constants.spritesheet_width,  
-                    graphics_constants.spritesheet_top_margin + unit_row_cluster_height)
+                    graphics_constants.spritesheet_top_margin + options['copy_block_top_offset'] + unit_row_cluster_height)
         units = [SimpleRecolour(options['recolour_maps'][0])]
         for recolour_map_index in range(len(options['recolour_maps'])-1):
             units.append(AppendToSpritesheet(source_spritesheet, crop_box))

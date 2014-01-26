@@ -4,7 +4,8 @@ from train import EngineConsist, CargoSprinter, GraphicsProcessorFactory
 
 recolour_maps = graphics_utils.get_container_recolour_maps() 
 graphics_options = {'template': 'cargo_sprinter_template.png',
-           'recolour_maps': (recolour_maps),                             
+           'recolour_maps': (recolour_maps),
+           'copy_block_top_offset': 0,
            'num_rows_per_unit': 3,
            'num_unit_types': 3}
 graphics_processor_1 = GraphicsProcessorFactory('container_carrier_pipeline', graphics_options)
