@@ -43,6 +43,8 @@ class Pipeline(object):
             spritesheet = unit.render(spritesheet)        
         spritesheet.save(output_path)
 
+    def render(self, variant, consist):
+        raise NotImplementedError("Implement me in %s" % repr(self))
 
 class PassThroughPipeline(Pipeline):
     def __init__(self):
