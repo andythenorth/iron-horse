@@ -1,10 +1,15 @@
 import global_constants
 from train import TypeConfig, WagonConsist, Wagon
 
+cargo_graphics_mappings = {'AORE': [0], 'IORE': [1], 'CORE': [2], 'GRVL': [3],
+                           'SAND': [4], 'COAL': [5]}
+
 type_config = TypeConfig(base_id = 'hopper_car',
-                template = 'train.pynml',
+                template = 'car_with_visible_cargo.pynml',
+                num_cargo_rows = 6,
                 class_refit_groups = ['hopper_freight'],
-                label_refits_allowed = [],
+                cargo_graphics_mappings = cargo_graphics_mappings,
+                label_refits_allowed = cargo_graphics_mappings.keys(),
                 label_refits_disallowed = [],
                 autorefit = True,
                 default_cargo = 'COAL',
