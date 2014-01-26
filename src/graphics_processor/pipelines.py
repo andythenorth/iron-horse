@@ -33,7 +33,6 @@ class Pipeline(object):
         # units is a list of objects, with their config data already baked in (don't have to anything to units except the spritesheet)
         # each unit is then called in order, passing in and returning a pixa SpriteSheet
         # finally the spritesheet is saved
-        print 'Rendering ' + variant.get_spritesheet_name(consist)  
         output_path = os.path.join(currentdir, 'generated', 'graphics', variant.get_spritesheet_name(consist))
         spritesheet = self.make_spritesheet_from_image(input_image)
         
