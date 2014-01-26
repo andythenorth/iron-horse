@@ -15,6 +15,7 @@ graphics_processor_1 = GraphicsProcessorFactory('container_carrier_pipeline', gr
 type_config = TypeConfig(base_id = 'intermodal_flat_car',
                 template = 'car_with_visible_cargo.pynml',
                 num_cargo_rows = 3,
+                generic_cargo_rows = [0, 1, 2],
                 class_refit_groups = ['express_freight'],
                 cargo_graphics_mappings = cargo_graphics_mappings,
                 label_refits_allowed = cargo_graphics_mappings.keys(),

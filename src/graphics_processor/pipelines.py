@@ -102,6 +102,7 @@ class ContainerCarrierPipeline(Pipeline):
         super(ContainerCarrierPipeline, self).__init__()
 
     def render(self, variant, consist):
+        # there are various options for controlling the crop box, I haven't documented them - read example uses to figure them out
         options = variant.graphics_processor.options
         unit_row_cluster_height = options['num_rows_per_unit'] * graphics_constants.spriterow_height * options['num_unit_types']
         input_path = os.path.join(currentdir, 'src', 'graphics', options['template'])
