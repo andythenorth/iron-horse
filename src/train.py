@@ -395,6 +395,7 @@ class TypeConfig(object):
         self.base_id = base_id
         self.template = template
         self.track_type = kwargs.get('track_type', 'RAIL')
+        self.fixed_run_cost_factor = kwargs.get('fixed_run_cost_factor', None)
         self.num_cargo_rows = kwargs.get('num_cargo_rows', None)
         self.generic_cargo_rows = kwargs.get('generic_cargo_rows', [0]) # optional, the rows to use if no cargo label is matched
         self.cargo_graphics_mappings = kwargs.get('cargo_graphics_mappings', None)        
@@ -493,8 +494,10 @@ class WagonConsist(Consist):
             self.speed = global_constants.gen_1_wagon_speeds[speedy]
         if self.wagon_generation == 2:
             self.speed = global_constants.gen_2_wagon_speeds[speedy]
-        self.num_cargo_rows = type_config.num_cargo_rows
+        self.fuel_run_cost_factor = 1.0
+        self.fixed_run_cost_factor = type_config.fixed_run_cost_factor
 
+        self.num_cargo_rows = type_config.num_cargo_rows
         self.cargo_graphics_mappings = type_config.cargo_graphics_mappings
         self.generic_cargo_rows = type_config.generic_cargo_rows
         # register the consist so that buy menu order can later be built programatically

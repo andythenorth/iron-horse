@@ -16,6 +16,7 @@ graphics_options['template'] = 'hopper_car_brit_gen_2_template.png'
 
 type_config = TypeConfig(base_id = 'hopper_car',
                 template = 'car_with_visible_cargo.pynml',
+                fixed_run_cost_factor = 3.5,
                 num_cargo_rows = 6,
                 class_refit_groups = ['hopper_freight'],
                 cargo_graphics_mappings = cargo_graphics_mappings,
@@ -34,7 +35,6 @@ consist = WagonConsist(type_config = type_config,
                     intro_date = 1915,
                     buy_cost = 22,
                     fixed_run_cost_factor = 3.5,
-                    fuel_run_cost_factor = 1.0,
                     vehicle_life = 40,
                     graphics_status = '',
                     use_legacy_spritesheet = True)
@@ -63,7 +63,6 @@ consist = WagonConsist(type_config = type_config,
                     intro_date = 1965,
                     buy_cost = 22,
                     fixed_run_cost_factor = 3.5,
-                    fuel_run_cost_factor = 1.0,
                     vehicle_life = 40,
                     graphics_status = '',
                     use_legacy_spritesheet = True)

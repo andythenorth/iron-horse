@@ -14,6 +14,7 @@ graphics_processor_1 = GraphicsProcessorFactory('extend_spriterows_for_recoloure
 
 type_config = TypeConfig(base_id = 'intermodal_flat_car',
                 template = 'car_with_visible_cargo.pynml',
+                fixed_run_cost_factor = 3.5,
                 num_cargo_rows = 3,
                 generic_cargo_rows = [0, 1, 2],
                 class_refit_groups = ['express_freight'],
@@ -32,8 +33,6 @@ consist = WagonConsist(type_config = type_config,
                     replacement_id = '-none',
                     intro_date = 1960,
                     buy_cost = 22,
-                    fixed_run_cost_factor = 3.5,
-                    fuel_run_cost_factor = 1.0,
                     vehicle_life = 40,
                     graphics_status = '',
                     use_legacy_spritesheet = True)
