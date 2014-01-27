@@ -12,6 +12,7 @@ graphics_options = {'template': 'hopper_car_brit_gen_1_template.png',
            'num_rows_per_unit': 3,
            'num_unit_types': 1}
 graphics_processor_1 = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options)
+graphics_options['template'] = 'hopper_car_brit_gen_2_template.png'
 
 type_config = TypeConfig(base_id = 'hopper_car',
                 template = 'car_with_visible_cargo.pynml',
@@ -51,6 +52,9 @@ consist.add_model_variant(intro_date=0,
                        graphics_processor=graphics_processor_1)
 
 
+graphics_options['template'] = 'hopper_car_brit_gen_2_template.png'
+graphics_processor_2 = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options)
+
 consist = WagonConsist(type_config = type_config,
                     title = 'Hopper [Car]',
                     vehicle_set = 'brit',
@@ -73,4 +77,5 @@ consist.add_unit(Wagon(type_config = type_config,
 
 consist.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,
-                       spritesheet_suffix=0)
+                       spritesheet_suffix=0,
+                       graphics_processor=graphics_processor_2)
