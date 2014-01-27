@@ -41,11 +41,8 @@ def main():
         grf_nml.write(utils.unescape_chameleon_output(template(consists=consists, global_constants=global_constants,
                                                         utils=utils, sys=sys, repo_vars=repo_vars)))
  
-    pool = Pool(processes=16)    
-    for consist in consists:
-        result = pool.apply_async(render_consist_nml, args=(consist,)).get(timeout=16)
-        if result is not None:
-            print result
+    pool = Pool(processes=16) # 16 is an arbitrary amount that appears to be fast without blocking the system  
+    pool.map(render_consist_nml, consists)
     pool.close()
     pool.join()
 
