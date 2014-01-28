@@ -8,7 +8,7 @@
             <tal:props_for_subclass define="props_to_print doc_helper.get_props_to_print_in_code_reference(subclass)">
                 <h4>${subclass.__name__} <small>Subclass</small></h4>
                 <p>${subclass.__doc__}</p>
-                <table style="font-size:84%;" class="table table-striped table-condensed table-bordered">
+                <table style="font-size:84%;" class="table table-striped table-condensed table-bordered tablesorter">
                     <thead>
                         <tr>
                            <tal:props repeat="prop props_to_print[subclass]">
@@ -32,7 +32,7 @@
         <hr />
         <h3>Numeric IDs</h3>
         <p class="muted">Trailing parts of articulated vehicles are not listed here.</p>
-        <table class="table table-striped table-condensed table-bordered">
+        <table class="table table-striped table-condensed table-bordered tablesorter">
             <thead>
                 <th>Numeric ID</th>
                 <th>ID</th>
