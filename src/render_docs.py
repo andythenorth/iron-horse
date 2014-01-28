@@ -68,12 +68,12 @@ class DocHelper(object):
 
     def get_vehicles_by_subclass(self):
         vehicles_by_subclass = {}
-        for vehicle in vehicles:
-            subclass = type(vehicle)
+        for consist in consists:
+            subclass = type(consist)
             if subclass in vehicles_by_subclass:
-                vehicles_by_subclass[subclass].append(vehicle)
+                vehicles_by_subclass[subclass].append(consist)
             else:
-                vehicles_by_subclass[subclass] = [vehicle]
+                vehicles_by_subclass[subclass] = [consist]
         return vehicles_by_subclass
 
     def fetch_prop(self, result, prop_name, value):
@@ -86,19 +86,22 @@ class DocHelper(object):
         for vehicle in self.get_vehicles_by_subclass()[subclass]:
             result = {'vehicle':{}, 'subclass_props': []}
             result = self.fetch_prop(result, 'Vehicle Name', vehicle.get_name_substr() + base_lang_strings[vehicle.get_str_name_suffix()])
-            result = self.fetch_prop(result, 'Extra Info', base_lang_strings[vehicle.get_str_type_info()])
-            result = self.fetch_prop(result, 'Speed', int(vehicle.speed))
+            #result = self.fetch_prop(result, 'Extra Info', base_lang_strings[vehicle.get_str_type_info()])
+            result = self.fetch_prop(result, 'HP', int(vehicle.power))
+            result = self.fetch_prop(result, 'Speed (mph)', vehicle.speed)
+            result = self.fetch_prop(result, 'Weight (t)', vehicle.weight)
+            result = self.fetch_prop(result, 'TE coefficient', vehicle.tractive_effort_coefficient)
             result = self.fetch_prop(result, 'Intro Date', vehicle.intro_date)
             result = self.fetch_prop(result, 'Vehicle Life', vehicle.vehicle_life)
             result = self.fetch_prop(result, 'Replacement ID', vehicle.replacement_id)
-            result = self.fetch_prop(result, 'Capacity Pax', vehicle.capacity_pax)
-            result = self.fetch_prop(result, 'Capacity Mail', vehicle.capacity_mail)
-            result = self.fetch_prop(result, 'Capacity Freight', vehicle.capacity_freight)
+            #result = self.fetch_prop(result, 'Capacity Pax', vehicle.capacity_pax)
+            #result = self.fetch_prop(result, 'Capacity Mail', vehicle.capacity_mail)
+            #result = self.fetch_prop(result, 'Capacity Freight', vehicle.capacity_freight)
             result = self.fetch_prop(result, 'Buy Cost', vehicle.buy_cost)
             result = self.fetch_prop(result, 'Running Cost', vehicle.running_cost)
-            result = self.fetch_prop(result, 'Loading Speed', vehicle.loading_speed)
-            result = self.fetch_prop(result, 'Model Variants', len(vehicle.model_variants))
-            result = self.fetch_prop(result, 'Graphics Status', vehicle.graphics_status)
+            #result = self.fetch_prop(result, 'Loading Speed', vehicle.loading_speed)
+            #result = self.fetch_prop(result, 'Model Variants', len(vehicle.model_variants))
+            #result = self.fetch_prop(result, 'Graphics Status', vehicle.graphics_status)
 
             props_to_print[vehicle] = result['vehicle']
             props_to_print[subclass] = result['subclass_props']
