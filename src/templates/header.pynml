@@ -21,5 +21,10 @@ grf {
     }
 }
 
+basecost {
+ 	PR_BUILD_VEHICLE_TRAIN: -1;
+}
+
 // sort order
 sort(FEAT_TRAINS, ${[consist.base_numeric_id for consist in consists]});
+
