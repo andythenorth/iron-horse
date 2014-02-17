@@ -4,15 +4,14 @@ from train import TypeConfig, WagonConsist, Wagon, GraphicsProcessorFactory
 
 cargo_graphics_mappings = {'AORE': [0], 'IORE': [1], 'CORE': [2], 'GRVL': [3],
                            'SAND': [4], 'COAL': [5]}
-                           
+
 recolour_maps = graphics_utils.get_bulk_cargo_recolour_maps()
-graphics_options = {'template': 'hopper_car_brit_gen_1_template.png',
-           'recolour_maps': (recolour_maps),
-           'copy_block_top_offset': 30, 
-           'num_rows_per_unit': 3,
-           'num_unit_types': 1}
-graphics_processor_1 = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options)
-graphics_options['template'] = 'hopper_car_brit_gen_2_template.png'
+graphics_options_1 = {'template': 'hopper_car_brit_gen_1_template.png',
+                    'recolour_maps': (recolour_maps),
+                    'copy_block_top_offset': 30,
+                    'num_rows_per_unit': 3,
+                    'num_unit_types': 1}
+graphics_processor_1 = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_1)
 
 type_config = TypeConfig(base_id = 'hopper_car',
                 template = 'car_with_visible_cargo.pynml',
@@ -44,7 +43,7 @@ consist.add_unit(Wagon(type_config = type_config,
                         capacity_freight = 30,
                         weight = 10,
                         vehicle_length = 5,
-                        loading_speed = 20))              
+                        loading_speed = 20))
 
 consist.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,
@@ -52,8 +51,9 @@ consist.add_model_variant(intro_date=0,
                        graphics_processor=graphics_processor_1)
 
 
-graphics_options['template'] = 'hopper_car_brit_gen_2_template.png'
-graphics_processor_2 = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options)
+graphics_options_2 = dict((k, v) for (k, v) in graphics_options_1.iteritems())
+graphics_options_2['template'] = 'hopper_car_brit_gen_2_template.png'
+graphics_processor_2 = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_2)
 
 consist = WagonConsist(type_config = type_config,
                     title = 'Hopper [Car]',
@@ -72,7 +72,7 @@ consist.add_unit(Wagon(type_config = type_config,
                         capacity_freight = 55,
                         weight = 20,
                         vehicle_length = 8,
-                        loading_speed = 20))              
+                        loading_speed = 20))
 
 consist.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,

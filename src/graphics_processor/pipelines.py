@@ -16,7 +16,7 @@ def register(pipeline):
 
 """
 Pipelines can be dedicated to a single task such as SimpleRecolourPipeline
-Or they can compose units for more complicated tasks, such as colouring and loading a specific vehicle type  
+Or they can compose units for more complicated tasks, such as colouring and loading a specific vehicle type
 """
 
 
@@ -38,9 +38,9 @@ class Pipeline(object):
         # finally the spritesheet is saved
         output_path = os.path.join(currentdir, 'generated', 'graphics', variant.get_spritesheet_name(consist))
         spritesheet = self.make_spritesheet_from_image(input_image)
-        
+
         for unit in units:
-            spritesheet = unit.render(spritesheet)        
+            spritesheet = unit.render(spritesheet)
         spritesheet.save(output_path)
 
     def render(self, variant, consist):
@@ -50,7 +50,7 @@ class PassThroughPipeline(Pipeline):
     def __init__(self):
         # this should be sparse, don't store any consist or variant info in Pipelines, pass them at render time
         super(PassThroughPipeline, self).__init__("pass_through_pipeline")
-                
+
     def render(self, variant, consist):
         options = variant.graphics_processor.options
         input_path = os.path.join(currentdir, 'src', 'graphics', options['template'])
@@ -58,7 +58,7 @@ class PassThroughPipeline(Pipeline):
         units = []
         result = self.render_common(variant, consist, input_image, units, options)
         return result
-        
+
 register(PassThroughPipeline())
 
 
@@ -67,7 +67,7 @@ class SimpleRecolourPipeline(Pipeline):
     def __init__(self):
         # this should be sparse, don't store any consist or variant info in Pipelines, pass them at render time
         super(SimpleRecolourPipeline, self).__init__("simple_recolour_pipeline")
-                
+
     def render(self, variant, consist):
         options = variant.graphics_processor.options
         input_path = os.path.join(currentdir, 'src', 'graphics', options['template'])
@@ -75,7 +75,7 @@ class SimpleRecolourPipeline(Pipeline):
         units = [SimpleRecolour(options['recolour_map'])]
         result = self.render_common(variant, consist, input_image, units, options)
         return result
-        
+
 register(SimpleRecolourPipeline())
 
 
@@ -84,7 +84,7 @@ class SwapCompanyColoursPipeline(Pipeline):
     def __init__(self):
         # this should be sparse, don't store any consist or variant info in Pipelines, pass them at render time
         super(SwapCompanyColoursPipeline, self).__init__("swap_company_colours_pipeline")
-                
+
     def render(self, variant, consist):
         options = variant.graphics_processor.options
         input_path = os.path.join(currentdir, 'src', 'graphics', options['template'])
@@ -93,7 +93,7 @@ class SwapCompanyColoursPipeline(Pipeline):
         units = [SwapCompanyColours()]
         result = self.render_common(variant, consist, input_image, units, options)
         return result
-        
+
 register(SwapCompanyColoursPipeline())
 
 
@@ -110,14 +110,15 @@ class ExtendSpriterowsForRecolouredCargosPipeline(Pipeline):
         input_path = os.path.join(currentdir, 'src', 'graphics', options['template'])
         crop_box = (0, 0, graphics_constants.spritesheet_width, graphics_constants.spritesheet_top_margin + unit_row_cluster_height + options['copy_block_top_offset'])
         input_image = Image.open(input_path).crop(crop_box)
-        if options['template'] == 'hopper_car_brit_gen_1_template.png': 
-            make_cheatsheet(Image.open(os.path.join(currentdir,'src','graphics','hopper_car_brit_gen_1_template.png')), os.path.join(currentdir,'foo.png'))
+        #if options['template'] == 'hopper_car_brit_gen_1_template.png':
+            #make_cheatsheet(Image.open(os.path.join(currentdir,'src','graphics','hopper_car_brit_gen_1_template.png')), os.path.join(currentdir,'foo.png'))
         source_spritesheet = self.make_spritesheet_from_image(input_image)
-        crop_box = (0, 
-                    graphics_constants.spritesheet_top_margin + options['copy_block_top_offset'], 
-                    graphics_constants.spritesheet_width,  
+        crop_box = (0,
+                    graphics_constants.spritesheet_top_margin + options['copy_block_top_offset'],
+                    graphics_constants.spritesheet_width,
                     graphics_constants.spritesheet_top_margin + options['copy_block_top_offset'] + unit_row_cluster_height)
         units = [SimpleRecolour(options['recolour_maps'][0])]
+        print options
         for recolour_map_index in range(len(options['recolour_maps'])-1):
             units.append(AppendToSpritesheet(source_spritesheet, crop_box))
             units.append(SimpleRecolour(options['recolour_maps'][recolour_map_index+1]))
