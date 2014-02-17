@@ -30,7 +30,7 @@ class Consist(object):
     def __init__(self, **kwargs):
         self.id = kwargs.get('id', None)
 
-        # setup properties for this consist (props either shared for all vehicles, or placed on lead vehicle of consist)  
+        # setup properties for this consist (props either shared for all vehicles, or placed on lead vehicle of consist)
         self.title = kwargs.get('title', None)
         self.base_numeric_id = kwargs.get('base_numeric_id', None)
         self.str_type_info = kwargs.get('str_type_info', 'COASTER')
@@ -48,14 +48,14 @@ class Consist(object):
         self.use_legacy_spritesheet = kwargs.get('use_legacy_spritesheet', False) # hangover from switching to 10/8 spritesheet and not wanting to fix existing spritesheets
         # create a structure to hold model variants
         self.model_variants = []
-        # create structure to hold the slices 
-        self.slices = []        
+        # create structure to hold the slices
+        self.slices = []
         # some project management stuff
         self.graphics_status = kwargs.get('graphics_status', None)
         # register consist with this module so other modules can use it, with a non-blocking guard on duplicate IDs
         for consist in registered_consists:
             if consist.base_numeric_id == self.base_numeric_id:
-                utils.echo_message("Error: consist " + self.id + " shares duplicate id (" + str(self.base_numeric_id) + ") with consist " + consist.id) 
+                utils.echo_message("Error: consist " + self.id + " shares duplicate id (" + str(self.base_numeric_id) + ") with consist " + consist.id)
         registered_consists.append(self)
 
     def add_model_variant(self, intro_date, end_date, spritesheet_suffix, graphics_processor=None):
@@ -70,7 +70,7 @@ class Consist(object):
         if count == 0:
             first_slice.id = self.id # first vehicle gets no numeric id suffix - for compatibility with buy menu list ids etc
         else:
-            first_slice.id = self.id + '_' + str(count)        
+            first_slice.id = self.id + '_' + str(count)
         second_slice.id = self.id + '_' + str(count + 1)
         third_slice.id = self.id + '_' + str(count + 2)
         first_slice.numeric_id = self.get_and_verify_numeric_id(count)
@@ -80,23 +80,23 @@ class Consist(object):
         second_slice.slice_length = global_constants.slice_lengths[vehicle.vehicle_length][1]
         third_slice.slice_length = global_constants.slice_lengths[vehicle.vehicle_length][2]
         first_slice.spriterow_num = vehicle.spriterow_num
-        
+
         for repeat_num in range(repeat):
             self.slices.append(first_slice)
             self.slices.append(second_slice)
             self.slices.append(third_slice)
-            
+
     def get_and_verify_numeric_id(self, offset):
         numeric_id = self.base_numeric_id + offset
         # guard against the ID being too large to build in an articulated consist
         if numeric_id > 16383:
-            utils.echo_message("Error: numeric_id " + str(numeric_id) + " for " + self.id + " can't be used (16383 is max ID for articulated vehicles)")             
+            utils.echo_message("Error: numeric_id " + str(numeric_id) + " for " + self.id + " can't be used (16383 is max ID for articulated vehicles)")
         # guard against ID collisions with other vehicles
         for consist in registered_consists:
             for slice in consist.slices:
                 if numeric_id == slice.numeric_id:
-                    utils.echo_message("Error: numeric_id collision (" + str(numeric_id) + ") for slices in consist " + self.id + " and " + consist.id) 
-        return numeric_id        
+                    utils.echo_message("Error: numeric_id collision (" + str(numeric_id) + ") for slices in consist " + self.id + " and " + consist.id)
+        return numeric_id
 
     def get_wagon_id(self, id_base, **kwargs):
         # auto id creator, used for wagons not locos
@@ -119,7 +119,7 @@ class Consist(object):
 
     def get_num_spritesets(self):
         return len(set([i.spritesheet_suffix for i in self.model_variants]))
-        
+
     def get_variants_available_for_specific_year(self, year):
         # put the data in a format that's easy to render as switches
         result = []
@@ -127,7 +127,7 @@ class Consist(object):
             if year in range(variant.intro_date, variant.end_date):
                 result.append(variant.spritesheet_suffix)
         return result # could call set() here, but I didn't bother, shouldn't be needed if model variants set up correctly
-        
+
     def get_nml_random_switch_fragments_for_model_variants(self, vehicle):
         # return fragments of nml for use in switches
         result = []
@@ -153,13 +153,13 @@ class Consist(object):
     def get_str_type_info(self):
         # makes a string id for nml
         return 'STR_' + self.str_type_info
-        
+
     def get_str_autorefit(self):
         if self.any_slice_offers_autorefit():
-            return 'STR_BUY_MENU_OFFERS_AUTOREFIT'        
+            return 'STR_BUY_MENU_OFFERS_AUTOREFIT'
         else:
             return 'STR_EMPTY'
-        
+
     def get_name(self):
         return "string(STR_NAME_" + self.id +", string(" + self.get_str_name_suffix() + "))"
 
@@ -182,7 +182,7 @@ class Consist(object):
             return True
         else:
             return False
-        
+
     @property
     def running_cost(self):
         # calculate a running cost
@@ -194,7 +194,7 @@ class Consist(object):
     @property
     def weight(self):
         return sum([getattr(slice, 'weight', 0) for slice in self.slices])
-    
+
     @property
     def adjusted_model_life(self):
         # handles keeping the buy menu tidy, relies on magic from Eddi
@@ -209,25 +209,25 @@ class Consist(object):
     @property
     def buy_menu_width (self):
         # max sensible width in buy menu is 64px
-        consist_length = 4 * sum([slice.slice_length for slice in self.slices]) 
+        consist_length = 4 * sum([slice.slice_length for slice in self.slices])
         if consist_length < 64:
             return consist_length
         else:
             return 64
-    
+
     def render_debug_info(self):
         template = templates["debug_info_consist.pynml"]
         return template(consist=self)
-        
+
     def render_articulated_switch(self):
         template = templates["add_articulated_parts.pynml"]
         nml_result = template(consist=self, global_constants=global_constants)
         return nml_result
-        
+
     def render(self):
         # templating
         nml_result = ''
-        nml_result = nml_result + self.render_articulated_switch()        
+        nml_result = nml_result + self.render_articulated_switch()
         for slice in set(self.slices):
             nml_result = nml_result + slice.render()
         return nml_result
@@ -259,16 +259,16 @@ class Train(object):
         self.engine_class = 'ENGINE_CLASS_STEAM' # nml constant (STEAM is sane default)
         self.visual_effect = 'VISUAL_EFFECT_DISABLE' # nml constant
         self.visual_effect_offset = 0
-        
+
     def get_capacity_variations(self, capacity):
-        # capacity is variable, controlled by a newgrf parameter 
-        # we cache the available variations on the vehicle instead of working them out every time - easier 
+        # capacity is variable, controlled by a newgrf parameter
+        # we cache the available variations on the vehicle instead of working them out every time - easier
         # allow that integer maths is needed for newgrf cb results; round up for safety
         return [int(math.ceil(capacity * multiplier)) for multiplier in global_constants.capacity_multipliers]
-        
+
     @property
     def availability(self):
-        # only show vehicle in buy menu if it is first vehicle in consist  
+        # only show vehicle in buy menu if it is first vehicle in consist
         if self.is_lead_slice_of_consist:
             return "ALL_CLIMATES"
         else:
@@ -292,10 +292,10 @@ class Train(object):
     def capacity_pax(self):
         return self.capacities_pax[0]
     @property
-    
+
     def capacity_mail(self):
         return self.capacities_mail[0]
-    
+
     @property
     def capacity_freight(self):
         return self.capacities_freight[0]
@@ -357,11 +357,11 @@ class Train(object):
 
     def get_cargo_suffix(self):
         return 'string(' + self.cargo_units_refit_menu + ')'
-        
+
     def assert_cargo_labels(self, cargo_labels):
         for i in cargo_labels:
             if i not in global_constants.cargo_labels:
-                utils.echo_message("Warning: vehicle " + self.id + " references cargo label " + i + " which is not defined in the cargo table")                
+                utils.echo_message("Warning: vehicle " + self.id + " references cargo label " + i + " which is not defined in the cargo table")
 
     def render_debug_info(self):
         template = templates["debug_info_vehicle.pynml"]
@@ -387,10 +387,10 @@ class Train(object):
 
 
 class TypeConfig(object):
-    # simple class to hold properties common to all instances of a type of vehicle 
+    # simple class to hold properties common to all instances of a type of vehicle
     # examples of types: Box Car, Steam Engine, Passenger Car etc.
     # declared once per type
-    # passed to the type's consists and units 
+    # passed to the type's consists and units
     def __init__(self, base_id, template, **kwargs):
         self.base_id = base_id
         self.template = template
@@ -398,7 +398,7 @@ class TypeConfig(object):
         self.fixed_run_cost_factor = kwargs.get('fixed_run_cost_factor', None)
         self.num_cargo_rows = kwargs.get('num_cargo_rows', None)
         self.generic_cargo_rows = kwargs.get('generic_cargo_rows', [0]) # optional, the rows to use if no cargo label is matched
-        self.cargo_graphics_mappings = kwargs.get('cargo_graphics_mappings', None)        
+        self.cargo_graphics_mappings = kwargs.get('cargo_graphics_mappings', None)
         self.class_refit_groups = kwargs.get('class_refit_groups', None)
         self.label_refits_allowed = kwargs.get('label_refits_allowed', None)
         self.label_refits_disallowed = kwargs.get('label_refits_disallowed', None)
@@ -406,7 +406,7 @@ class TypeConfig(object):
         self.default_cargo = kwargs.get('default_cargo', 'PASS')
         self.default_capacity_type = kwargs.get('default_capacity_type', None)
         self.str_type_info = kwargs.get('str_type_info', None)
-    
+
 
 class ModelVariant(object):
     # simple class to hold model variants
@@ -418,12 +418,12 @@ class ModelVariant(object):
         self.end_date = end_date
         self.spritesheet_suffix = spritesheet_suffix # use digits for these - to match spritesheet filenames
         self.graphics_processor = graphics_processor
-        
+
     def get_spritesheet_name(self, consist):
         return consist.id + '_' + str(self.spritesheet_suffix) + '.png'
 
-         
-class GraphicsProcessorFactory(object):    
+
+class GraphicsProcessorFactory(object):
     # simple class which wraps graphics_processor, which uses pixa library
     # pipeline_name refers to a pipeline class which defines how the processing is done
     # may be reused across consists, so don't store consist info in the pipeline, pass it to pipeline at render time
@@ -447,10 +447,10 @@ class LeadSlice(Train):
         self.weight = 0
         self.vehicle_length = parent_vehicle.vehicle_length
         self.engine_class = parent_vehicle.engine_class
-        self.default_cargo_capacities = [0] 
+        self.default_cargo_capacities = [0]
         if isinstance(parent_vehicle, CombineCar):
             self.capacities_pax = parent_vehicle.capacities_pax
-            self.default_cargo_capacities = self.capacities_pax 
+            self.default_cargo_capacities = self.capacities_pax
             self.default_cargo = 'PASS'
 
 
@@ -461,7 +461,7 @@ class NullTrailingSlice(object):
     def __init__(self, parent_vehicle):
         self.id = global_constants.null_trailing_slice_id
         self.numeric_id = global_constants.null_trailing_slice_numeric_id
-        
+
     def render(self):
         template = templates['null_trailing_slice.pynml']
         return template(vehicle=self, global_constants=global_constants)
@@ -523,8 +523,8 @@ class Wagon(Train):
         self.label_refits_allowed = type_config.label_refits_allowed
         self.label_refits_disallowed = type_config.label_refits_disallowed
         self.autorefit = type_config.autorefit
-        self.default_cargo = type_config.default_cargo        
-        self.default_cargo_capacities = self.get_capacity_variations(kwargs.get(type_config.default_capacity_type, 0)) 
+        self.default_cargo = type_config.default_cargo
+        self.default_cargo_capacities = self.get_capacity_variations(kwargs.get(type_config.default_capacity_type, 0))
 
 
 class SteamLoco(Train):
@@ -642,7 +642,7 @@ class CombineCar(Wagon):
     # pax capacity is non-refittable and applied to lead slice of the unit
     def __init__(self, **kwargs):
         super(CombineCar, self).__init__(**kwargs)
-        
+
 
 class MetroMultipleUnit(Train):
     """
@@ -654,7 +654,8 @@ class MetroMultipleUnit(Train):
         self.default_cargo_capacities = self.capacities_pax
         self.default_cargo = "PASS"
         self.engine_class = 'ENGINE_CLASS_ELECTRIC' #nml constant
-        self.visual_effect = 'VISUAL_EFFECT_ELECTRIC' # nml constant 
+        self.visual_effect = 'VISUAL_EFFECT_ELECTRIC' # nml constant
+        self.loading_speed = 20
 
 
 class MetroLoco(Train):
@@ -667,4 +668,4 @@ class MetroLoco(Train):
         self.default_cargo_capacities = [0]
         self.engine_class = 'ENGINE_CLASS_ELECTRIC' #nml constant
         self.visual_effect = 'VISUAL_EFFECT_ELECTRIC' # nml constant
-    
+
