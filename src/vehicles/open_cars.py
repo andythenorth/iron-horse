@@ -1,16 +1,16 @@
 import global_constants
 from train import TypeConfig, WagonConsist, Wagon, GraphicsProcessorFactory
 
-cargo_graphics_mappings = {'AORE': [1], 'COAL': [2], 'SAND': [3], 'CORE': [4], 'LIME': [5], 
-                           'SCMT': [6], 'IORE': [7], 'GRVL': [8], 'FRUT': [9], 'FRVG': [9], 
-                           'GRAI': [10], 'WHEA': [10], 'MAIZ': [10], 'FICR': [11], 
+cargo_graphics_mappings = {'AORE': [1], 'COAL': [2], 'SAND': [3], 'CORE': [4], 'LIME': [5],
+                           'SCMT': [6], 'IORE': [7], 'GRVL': [8], 'FRUT': [9], 'FRVG': [9],
+                           'GRAI': [10], 'WHEA': [10], 'MAIZ': [10], 'FICR': [11],
                            'SGCN': [11], 'OLSD': [12], 'CLAY': [13]}
 
-options = {'template': 'open_car_brit_gen_1_template.png', 
+options = {'template': 'open_car_brit_gen_1_template.png',
            'recolour_map': {170: 186, 171: 187, 172: 188, 173: 189}}
 graphics_processor_1 = GraphicsProcessorFactory('simple_recolour_pipeline', options)
-                                               
-options = {'template': 'open_car_brit_gen_1_template.png', 
+
+options = {'template': 'open_car_brit_gen_1_template.png',
            'recolour_map': {170: 206, 171: 207, 172: 208, 173: 209}}
 graphics_processor_2 = GraphicsProcessorFactory('simple_recolour_pipeline', options)
 
@@ -43,7 +43,7 @@ consist.add_unit(Wagon(type_config = type_config,
                         capacity_freight = 20,
                         weight = 7,
                         vehicle_length = 5,
-                        loading_speed = 20))              
+                        loading_speed = 20))
 
 consist.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,
@@ -54,7 +54,7 @@ consist.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,
                        spritesheet_suffix=1,
                        graphics_processor=graphics_processor_2)
-                       
+
 
 consist = WagonConsist(type_config = type_config,
                     title = 'Open [Car]',
@@ -72,7 +72,7 @@ consist.add_unit(Wagon(type_config = type_config,
                         capacity_freight = 40,
                         weight = 15,
                         vehicle_length = 8,
-                        loading_speed = 20))              
+                        loading_speed = 20))
 
 consist.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,
@@ -108,8 +108,8 @@ consist.add_unit(Wagon(type_config = type_config,
                         consist = consist,
                         capacity_freight = 12,
                         weight = 3,
-                        vehicle_length = 7,
-                        loading_speed = 20))              
+                        vehicle_length = 3,
+                        loading_speed = 20))
 
 consist.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,
