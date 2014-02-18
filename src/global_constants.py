@@ -25,7 +25,7 @@ buy_menu_sort_order_locos = [# brit locos
                            'metro_mu_brit_extras_gen_2',
                            'metro_mu_brit_extras_gen_3',
                            'metro_loco_brit_extras_gen_1',
-                           'metro_car_brit_gen_1', # special case, non-standard naming, and this is explicitly placed after metro locos, unlike most cars which are automatically placed in buy menu 
+                           'metro_car_brit_gen_1', # special case, non-standard naming, and this is explicitly placed after metro locos, unlike most cars which are automatically placed in buy menu
                            # brit ng
                            'stewart',
                            'hudswell',
@@ -60,21 +60,21 @@ buy_menu_sort_order_wagons = ['passenger_car',
                               'livestock_car_ng']
 
 # set (roster) <-> numeric id mapping
-# vehicle IDs are in format nxxx where n is set numeric id 
-# first 1k IDs reserved, IDs must be < 16383, with 500 IDs allocated per set for main roster, and 500 per set for extras, so max 15 sets 
+# vehicle IDs are in format nxxx where n is set numeric id
+# first 1k IDs reserved, IDs must be < 16383, with 500 IDs allocated per set for main roster, and 500 per set for extras, so max 15 sets
 vehicle_set_id_mapping = {'brit': 1}
-                                          
+
 # wagon IDs start at 250, the first 250 IDs in a vehicle set are reserved for engines
 # max wagon type ID is 390 - set have up to 500 IDs, zero-based, with 100 reserved (for whatever doesn't fit elsewhere)
 wagon_type_numeric_ids = {'caboose_car': 250, 'box_car': 260, 'covered_hopper_car': 270, 'flat_car': 280,
                           'hopper_car': 290, 'tank_car': 300, 'livestock_car': 310, 'mail_car': 320,
-                          'reefer_car': 330, 'open_car': 340, 'passenger_car': 350, 'combine_car': 360, 
+                          'reefer_car': 330, 'open_car': 340, 'passenger_car': 350, 'combine_car': 360,
                           'intermodal_flat_car': 370,
                         # extra (NG, metro, maglev) wagon IDs start at 750, max extra wagon type ID is 890
                           'metro_car': 400, 'box_car_ng': 760,  'flat_car_ng': 780,
                           'tank_car_ng' : 800, 'livestock_car_ng': 810,
                           'passenger_car_ng': 850, 'open_car_ng': 840}
-                                          
+
 # shared lists of allowed classes, shared across multiple ship types
 base_refits_by_class = {'empty': [],
                         'all_freight': ['CC_BULK', 'CC_PIECE_GOODS', 'CC_EXPRESS', 'CC_LIQUID', 'CC_ARMOURED', 'CC_REFRIGERATED', 'CC_COVERED', 'CC_NON_POURABLE'],
@@ -82,13 +82,13 @@ base_refits_by_class = {'empty': [],
                         'mail': ['CC_MAIL'],
                         'liquids': ['CC_LIQUID'],
                         'packaged_freight': ['CC_PIECE_GOODS', 'CC_EXPRESS', 'CC_ARMOURED', 'CC_LIQUID'],
-                        'flatcar_freight': ['CC_PIECE_GOODS', 'CC_EXPRESS', 'CC_ARMOURED', 'CC_LIQUID'],
+                        'flatcar_freight': ['CC_PIECE_GOODS', 'CC_EXPRESS'],
                         'hopper_freight': ['CC_BULK'],
                         'covered_hopper_freight': [],
                         'refrigerated_freight': [],
                         'express_freight': ['CC_EXPRESS','CC_ARMOURED']}
 
-# speed for wagons in mph (some generations may optionally have no speed set) 
+# speed for wagons in mph (some generations may optionally have no speed set)
 # format is [standard, speedy]
 gen_1_wagon_speeds = [65, 100]
 gen_2_wagon_speeds = [100, None]
@@ -148,13 +148,13 @@ cargo_labels = ['PASS', # pax first
                 'OLSD',
                 'SUGR']
 
-# meaning of grfid should be obvious :)                
-grfid = r"CA\12\1E"                
-                
+# meaning of grfid should be obvious :)
+grfid = r"CA\12\1E"
+
 # chameleon templating goes faster if a cache dir is used; this specifies which dir is cache dir
 chameleon_cache_dir = 'chameleon_cache'
 
-# specify location for intermediate files generated during build (nml, graphics, lang etc) 
+# specify location for intermediate files generated during build (nml, graphics, lang etc)
 generated_files_dir = 'generated'
 
 # this is for nml, don't need to use python path module here
