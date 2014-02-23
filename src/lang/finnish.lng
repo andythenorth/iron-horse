@@ -15,6 +15,7 @@ STR_NAME_SUFFIX_BATTERY                                         :(Paristo)
 STR_NAME_SUFFIX_CAR                                             :Auto
 
 STR_BUY_MENU_TEXT                                               :Tyyppi: {GOLD}{STRING}{}{STRING}{STRING}
+STR_BUY_MENU_OFFERS_AUTOREFIT                                   :{BLACK}Tarjoaa automaattisen sovituksen
 
 STR_COASTER                                                     :Körö körö kirkkoon (tämä muistutus ei ole valmis)
 STR_DOGTRACK                                                    :Koirat ovat ruskeita, toisinaan
