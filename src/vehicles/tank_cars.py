@@ -15,9 +15,9 @@ type_config = TypeConfig(base_id = 'tank_car',
                 default_cargo = 'OIL_',
                 default_capacity_type = 'capacity_freight',
                 str_type_info = 'DOGTRACK')
-                
+
         # mappings are to rows in the spritesheet, 0-based (0 is also default)
-        # also get the allowed label refits from the graphics mapping - use row 0 if there's no specific graphics for the label 
+        # also get the allowed label refits from the graphics mapping - use row 0 if there's no specific graphics for the label
 
 consist = WagonConsist(type_config = type_config,
                     title = 'Tank [Car]',
@@ -35,7 +35,7 @@ consist.add_unit(Wagon(type_config = type_config,
                         capacity_freight = 20,
                         weight = 12,
                         vehicle_length = 5,
-                        loading_speed = 20))              
+                        loading_speed = 20))
 
 consist.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,
@@ -58,7 +58,7 @@ consist.add_unit(Wagon(type_config = type_config,
                         capacity_freight = 35,
                         weight = 24,
                         vehicle_length = 5,
-                        loading_speed = 20))              
+                        loading_speed = 20))
 
 consist.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,
@@ -81,7 +81,7 @@ consist.add_unit(Wagon(type_config = type_config,
                         capacity_freight = 75,
                         weight = 40,
                         vehicle_length = 8,
-                        loading_speed = 20))              
+                        loading_speed = 20))
 
 consist.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,
@@ -117,8 +117,8 @@ consist.add_unit(Wagon(type_config = type_config,
                         consist = consist,
                         capacity_freight = 12,
                         weight = 5,
-                        vehicle_length = 7,
-                        loading_speed = 20))              
+                        vehicle_length = 4,
+                        loading_speed = 20))
 
 consist.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,
