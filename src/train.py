@@ -655,7 +655,7 @@ class MetroMultipleUnit(Train):
         self.default_cargo = "PASS"
         self.engine_class = 'ENGINE_CLASS_ELECTRIC' #nml constant
         self.visual_effect = 'VISUAL_EFFECT_ELECTRIC' # nml constant
-        self.loading_speed = 20
+        self.loading_speed = 40
 
 
 class MetroLoco(Train):
