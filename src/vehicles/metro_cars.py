@@ -6,7 +6,7 @@ from train import TypeConfig, WagonConsist, Wagon
 type_config = TypeConfig(base_id = 'metro_car',
                 template = 'train.pynml',
                 fixed_run_cost_factor = 3.5,
-                class_refit_groups = ['pax', 'express_freight'],
+                class_refit_groups = ['mail', 'express_freight'],
                 label_refits_allowed = [],
                 label_refits_disallowed = [],
                 autorefit = True,
@@ -32,7 +32,7 @@ consist.add_unit(Wagon(type_config = type_config,
                         capacity_freight = 15,
                         weight = 20,
                         vehicle_length = 8,
-                        loading_speed = 10))              
+                        loading_speed = 10))
 
 consist.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,
