@@ -3,6 +3,9 @@ from train import TypeConfig, WagonConsist, Wagon
 
 cargo_graphics_mappings = {'FMSP': [1], 'MILK': [2], 'RFPR': [1]}
 
+# tank cars are unrealistically autorefittable, and at no cost
+# Pikka: if people complain that it's unrealistic, tell them "don't do it then"
+
 type_config = TypeConfig(base_id = 'tank_car',
                 template = 'tank_car.pynml',
                 fixed_run_cost_factor = 3.5,
