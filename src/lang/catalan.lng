@@ -1,0 +1,22 @@
+##grflangid 0x22
+##plural 0
+##gender Masculin Femenin
+STR_GRF_DESCRIPTION                                             :Llicència: {SILVER}GPL v2{}{BLACK}
+
+STR_PARAM_ADJUST_VEHICLE_CAPACITY                               :Capacitat del tren
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :Diminuta
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Fantàstica
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Excessiva
+
+STR_NAME_SUFFIX_STEAM                                           :(Vapor)
+STR_NAME_SUFFIX_DIESEL                                          :(Dièsel)
+STR_NAME_SUFFIX_ELECTRIC                                        :(Elèctric)
+STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Electro-Dièsel)
+STR_NAME_SUFFIX_BATTERY                                         :(Bateria)
+STR_NAME_SUFFIX_CAR                                             :Vagó
+
+STR_BUY_MENU_TEXT                                               :Tipus: {GOLD}{STRING}{}{STRING}{STRING}
+STR_BUY_MENU_OFFERS_AUTOREFIT                                   :{BLACK}Ofereix auto-remodelar
+
+STR_COASTER                                                     :La vaca va saltar per damunt de la Lluna (recordatori d'inacabat)
+STR_DOGTRACK                                                    :Els gossos són marrons, alguns cops
