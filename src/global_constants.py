@@ -89,6 +89,8 @@ base_refits_by_class = {'empty': [],
                         'refrigerated_freight': [],
                         'express_freight': ['CC_EXPRESS','CC_ARMOURED']}
 
+# rather than using disallowed classes (can cause breakage), specific labels are disallowed
+# this is done per vehicle type, or added to global_constants for ease of reuse and updating
 disallowed_refits_by_label = {'non_hopper_freight': ['WOOD', 'SGCN', 'FICR', 'BDMT', 'WDPR', 'GRAI', 'WHEA', 'MAIZ'],}
 
 # speed for wagons in mph (some generations may optionally have no speed set)
