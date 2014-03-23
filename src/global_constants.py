@@ -89,6 +89,8 @@ base_refits_by_class = {'empty': [],
                         'refrigerated_freight': [],
                         'express_freight': ['CC_EXPRESS','CC_ARMOURED']}
 
+disallowed_refits_by_label = {'non_hopper_freight': ['WOOD', 'SGCN', 'FICR', 'BDMT', 'WDPR', 'GRAI', 'WHEA', 'MAIZ'],}
+
 # speed for wagons in mph (some generations may optionally have no speed set)
 # format is [standard, speedy]
 gen_1_wagon_speeds = [65, 100]
