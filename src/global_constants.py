@@ -75,7 +75,8 @@ wagon_type_numeric_ids = {'caboose_car': 250, 'box_car': 260, 'covered_hopper_ca
                           'tank_car_ng' : 800, 'livestock_car_ng': 810,
                           'passenger_car_ng': 850, 'open_car_ng': 840}
 
-# shared lists of allowed classes, shared across multiple ship types
+# shared lists of allowed classes, shared across multiple vehicle types
+# these lists are similar but not identical across Iron Horse, Squid, Road Hog etc
 base_refits_by_class = {'empty': [],
                         'all_freight': ['CC_BULK', 'CC_PIECE_GOODS', 'CC_EXPRESS', 'CC_LIQUID', 'CC_ARMOURED', 'CC_REFRIGERATED', 'CC_COVERED', 'CC_NON_POURABLE'],
                         'pax': ['CC_PASSENGERS'],
