@@ -28,7 +28,7 @@ consist = EngineConsist(id = 'cargo_sprinter',
 consist.add_unit(CargoSprinter(consist = consist,
                         weight = 82,
                         vehicle_length = 8,
-                        capacity_freight = 30,
+                        capacity_freight = 37,
                         num_random_cargo_variants = len(graphics_options['recolour_maps'])),
                         repeat=2)
 
