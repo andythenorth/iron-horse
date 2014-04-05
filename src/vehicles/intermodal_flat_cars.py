@@ -36,6 +36,7 @@ consist = WagonConsist(type_config = type_config,
                     intro_date = 1960,
                     buy_cost = 22,
                     vehicle_life = 40,
+                    speedy = True,
                     graphics_status = '',
                     use_legacy_spritesheet = True)
 

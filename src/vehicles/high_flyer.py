@@ -16,16 +16,16 @@ consist = EngineConsist(id = 'high_flyer',
               intro_date = 1905,
               graphics_status = '',
               use_legacy_spritesheet = True)
-              
+
 consist.add_unit(SteamLoco(consist = consist,
                         weight = 90,
                         vehicle_length = 7,
-                        spriterow_num = 0))              
+                        spriterow_num = 0))
 
 consist.add_unit(SteamLocoTender(consist = consist,
                         weight = 30,
                         vehicle_length = 4,
-                        spriterow_num = 1))              
+                        spriterow_num = 1))
 
 consist.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,

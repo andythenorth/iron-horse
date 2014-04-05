@@ -494,6 +494,8 @@ class WagonConsist(Consist):
             self.speed = global_constants.gen_1_wagon_speeds[speedy]
         if self.wagon_generation == 2:
             self.speed = global_constants.gen_2_wagon_speeds[speedy]
+        if self.wagon_generation == 3:
+            self.speed = global_constants.gen_3_wagon_speeds[speedy]
         self.fuel_run_cost_factor = 1.0
         self.fixed_run_cost_factor = type_config.fixed_run_cost_factor
 

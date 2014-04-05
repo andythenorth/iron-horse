@@ -96,8 +96,9 @@ disallowed_refits_by_label = {'non_hopper_freight': ['WOOD', 'SGCN', 'FICR', 'BD
 
 # speed for wagons in mph (some generations may optionally have no speed set)
 # format is [standard, speedy]
-gen_1_wagon_speeds = [65, 100]
+gen_1_wagon_speeds = [65, 80]
 gen_2_wagon_speeds = [85, 100]
+gen_3_wagon_speeds = [100, None]
 
 # capacity multipliers for capacity parameter
 capacity_multipliers = [0.67, 1, 1.33]
