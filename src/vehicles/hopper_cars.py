@@ -78,3 +78,31 @@ consist.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,
                        spritesheet_suffix=0,
                        graphics_processor=graphics_processor_2)
+
+graphics_options_3 = dict((k, v) for (k, v) in graphics_options_1.iteritems())
+graphics_options_3['template'] = 'hopper_car_brit_gen_3_template.png'
+graphics_processor_3 = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_3)
+
+consist = WagonConsist(type_config = type_config,
+                    title = 'Hopper [Car]',
+                    vehicle_set = 'brit',
+                    wagon_generation = 3,
+                    replacement_id = '-none',
+                    intro_date = 2010,
+                    buy_cost = 22,
+                    fixed_run_cost_factor = 3.5,
+                    vehicle_life = 40,
+                    graphics_status = '',
+                    use_legacy_spritesheet = True)
+
+consist.add_unit(Wagon(type_config = type_config,
+                        consist = consist,
+                        capacity_freight = 75,
+                        weight = 20,
+                        vehicle_length = 9,
+                        loading_speed = 20))
+
+consist.add_model_variant(intro_date=0,
+                       end_date=global_constants.max_game_date,
+                       spritesheet_suffix=0,
+                       graphics_processor=graphics_processor_2)
