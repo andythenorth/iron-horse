@@ -87,7 +87,7 @@ consist.add_unit(Wagon(type_config = type_config,
                         consist = consist,
                         capacity_freight = 55,
                         weight = 25,
-                        vehicle_length = 9,
+                        vehicle_length = 8,
                         loading_speed = 20))
 
 consist.add_model_variant(intro_date=0,
