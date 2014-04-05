@@ -34,7 +34,7 @@ consist.add_unit(MailCar(type_config = type_config,
                         capacity_mail = 30,
                         weight = 29,
                         vehicle_length = 7,
-                        loading_speed = 20))              
+                        loading_speed = 20))
 
 consist.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,
@@ -50,6 +50,7 @@ consist = WagonConsist(type_config = type_config,
                     buy_cost = 22,
                     vehicle_life = 40,
                     graphics_status = '',
+                    speedy = True,
                     use_legacy_spritesheet = True)
 
 consist.add_unit(MailCar(type_config = type_config,
@@ -57,7 +58,7 @@ consist.add_unit(MailCar(type_config = type_config,
                         capacity_mail = 45,
                         weight = 30,
                         vehicle_length = 7,
-                        loading_speed = 20))              
+                        loading_speed = 20))
 
 consist.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,
@@ -80,7 +81,7 @@ consist.add_unit(MailCar(type_config = type_config,
                         capacity_mail = 60,
                         weight = 31,
                         vehicle_length = 8,
-                        loading_speed = 20))              
+                        loading_speed = 20))
 
 consist.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,

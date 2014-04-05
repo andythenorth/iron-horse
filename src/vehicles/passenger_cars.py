@@ -46,6 +46,7 @@ consist = WagonConsist(type_config = type_config,
                     buy_cost = 22,
                     vehicle_life = 40,
                     graphics_status = '',
+                    speedy = True,
                     use_legacy_spritesheet = True)
 
 consist.add_unit(Wagon(type_config = type_config,
