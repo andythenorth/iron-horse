@@ -41,16 +41,16 @@ consist.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,
                        spritesheet_suffix=0)
 
+# no gen 2 reefer - straight to gen 3
 
 consist = WagonConsist(type_config = type_config,
                     title = 'Reefer [Car]',
                     vehicle_set = 'brit',
-                    wagon_generation = 2,
+                    wagon_generation = 3,
                     replacement_id = '-none',
-                    intro_date = 1955,
+                    intro_date = 1964,
                     buy_cost = 22,
                     vehicle_life = 40,
-                    speedy = True,
                     graphics_status = '',
                     use_legacy_spritesheet = True)
 
