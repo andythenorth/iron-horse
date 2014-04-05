@@ -32,50 +32,24 @@ import train
 from train import Train
 from vehicles import registered_consists, registered_wagon_generations
 
-
 from vehicles import box_cars
 from vehicles import caboose_cars
-from vehicles import cargo_sprinter
-from vehicles import chinook
-from vehicles import collier
 from vehicles import combine_cars
 from vehicles import covered_hopper_cars
-from vehicles import cyclops
-from vehicles import donegal
-from vehicles import double_juice
-#from vehicles import dmc_sd40
-from vehicles import electra
 from vehicles import flat_cars
-#from vehicles import geep
-from vehicles import gridiron
-from vehicles import high_flyer
 from vehicles import hopper_cars
-from vehicles import hudswell
 from vehicles import intermodal_flat_cars
-from vehicles import lemon
-from vehicles import little_bear
 from vehicles import livestock_cars
 from vehicles import mail_cars
-from vehicles import chaplin
 from vehicles import metro_cars
 from vehicles import metro_locos
 from vehicles import metro_multiple_units
-from vehicles import northcock
 from vehicles import open_cars
 from vehicles import passenger_cars
-from vehicles import planet
-from vehicles import ramsbottom
-from vehicles import raven
 from vehicles import reefer_cars
-from vehicles import screamer
-from vehicles import slammer
-from vehicles import standard
-from vehicles import stewart
-from vehicles import suburban
 from vehicles import tank_cars
-from vehicles import tin_rocket
-from vehicles import vulcan
-from vehicles import walker
+
+from rosters import brit
 
 def get_consists_in_buy_menu_order(show_warnings=False):
     sorted_consists = []
