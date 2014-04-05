@@ -6,8 +6,8 @@ consist = EngineConsist(id = 'gridiron',
               title = 'Gridiron [Diesel]',
               str_type_info = 'COASTER',
               replacement_id = '-none',
-              power = 3300,
-              speed = 80,
+              power = 3700,
+              speed = 85,
               buy_cost = 186,
               fixed_run_cost_factor = 3.5,
               fuel_run_cost_factor = 1.0,
@@ -15,11 +15,11 @@ consist = EngineConsist(id = 'gridiron',
               intro_date = 1980,
               graphics_status = '',
               use_legacy_spritesheet = True)
-              
+
 consist.add_unit(DieselLoco(consist = consist,
                         weight = 125,
                         vehicle_length = 8,
-                        spriterow_num = 0))              
+                        spriterow_num = 0))
 
 consist.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,
