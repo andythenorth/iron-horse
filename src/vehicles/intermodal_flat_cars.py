@@ -42,7 +42,7 @@ consist = WagonConsist(type_config = type_config,
 
 consist.add_unit(Wagon(type_config = type_config,
                         consist = consist,
-                        capacity_freight = 60,
+                        capacity_freight = 45,
                         weight = 20,
                         vehicle_length = 8,
                         loading_speed = 20))
