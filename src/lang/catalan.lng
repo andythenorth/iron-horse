@@ -11,12 +11,13 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Excessiva
 STR_NAME_SUFFIX_STEAM                                           :(Vapor)
 STR_NAME_SUFFIX_DIESEL                                          :(Dièsel)
 STR_NAME_SUFFIX_ELECTRIC                                        :(Elèctrica)
+STR_NAME_SUFFIX_METRO_TRAIN                                     :(Metro)
 STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Electro-Dièsel)
 STR_NAME_SUFFIX_BATTERY                                         :(Bateria)
 STR_NAME_SUFFIX_CAR                                             :Vagó
 
 STR_BUY_MENU_TEXT                                               :Tipus: {GOLD}{STRING}{}{STRING}{STRING}
-STR_BUY_MENU_OFFERS_AUTOREFIT                                   :{BLACK}Ofereix auto-remodelar
+STR_BUY_MENU_OFFERS_AUTOREFIT                                   :{BLACK}Ofereix autoremodelar
 
 STR_COASTER                                                     :La vaca va saltar per damunt de la Lluna (recordatori d'inacabat)
 STR_DOGTRACK                                                    :Els gossos són marrons, alguns cops
