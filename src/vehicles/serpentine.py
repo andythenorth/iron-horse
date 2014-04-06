@@ -17,16 +17,17 @@ consist = EngineConsist(id = 'serpentine',
               graphics_status = '',
               use_legacy_spritesheet = True)
 
+# should be 4 units not 2
 consist.add_unit(MetroMultipleUnit(consist = consist,
                         weight = 40,
                         vehicle_length = 8,
-                        capacity_pax = 100,
+                        capacity_pax = 120,
                         spriterow_num = 0))
 
 consist.add_unit(MetroMultipleUnit(consist = consist,
                         weight = 40,
                         vehicle_length = 8,
-                        capacity_pax = 100,
+                        capacity_pax = 120,
                         spriterow_num = 1))
 
 consist.add_model_variant(intro_date=0,
