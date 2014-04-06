@@ -49,12 +49,15 @@ from vehicles import passenger_cars
 from vehicles import reefer_cars
 from vehicles import tank_cars
 
+from rosters import registered_rosters
+
 from rosters import brit
 
 def get_consists_in_buy_menu_order(show_warnings=False):
     sorted_consists = []
     # first compose the buy menu order list
-    buy_menu_sort_order = list(global_constants.buy_menu_sort_order_locos) # copy the list in global_constants to avoid unwanted modifications to it
+    buy_menu_sort_order = list(registered_rosters['brit'].buy_menu_sort_order) # copy the list to avoid unwanted modifications to it
+
     for id_base in global_constants.buy_menu_sort_order_wagons:
         for vehicle_set in global_constants.vehicle_set_id_mapping.keys():
             for wagon_generation in registered_wagon_generations[vehicle_set][id_base]:
