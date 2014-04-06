@@ -7,7 +7,7 @@ type_config = TypeConfig(base_id = 'covered_hopper_car',
                 class_refit_groups = ['covered_hopper_freight'],
                 label_refits_allowed = ['GRAI', 'WHEA', 'MAIZ', 'FOOD', 'SUGR', 'FMSP', 'RFPR', 'CLAY'],
                 label_refits_disallowed = [],
-                autorefit = False,
+                autorefit = True,
                 default_cargo = 'GRAI',
                 default_capacity_type = 'capacity_freight',
                 str_type_info = 'DOGTRACK')
