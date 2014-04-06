@@ -1,9 +1,9 @@
 import global_constants
 from train import EngineConsist, MetroLoco
 
-consist = EngineConsist(id = 'metro_loco_brit_extras_gen_1',
+consist = EngineConsist(id = 'mole',
               base_numeric_id = 1530,
-              title = 'Metro Loco [Battery]',
+              title = 'Mole [Metro Train]',
               str_type_info = 'COASTER',
               replacement_id = '-none',
               track_type = 'METRO',
@@ -20,7 +20,7 @@ consist = EngineConsist(id = 'metro_loco_brit_extras_gen_1',
 consist.add_unit(MetroLoco(consist = consist,
                         weight = 65,
                         vehicle_length = 8,
-                        spriterow_num = 0))              
+                        spriterow_num = 0))
 
 consist.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,
