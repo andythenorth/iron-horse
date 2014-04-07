@@ -11,6 +11,7 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Excesiva
 STR_NAME_SUFFIX_STEAM                                           :(Vapor)
 STR_NAME_SUFFIX_DIESEL                                          :(Diesel)
 STR_NAME_SUFFIX_ELECTRIC                                        :(Eléctrico)
+STR_NAME_SUFFIX_METRO_TRAIN                                     :(Metro)
 STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Electro-Diesel)
 STR_NAME_SUFFIX_BATTERY                                         :(Batería)
 STR_NAME_SUFFIX_CAR                                             :Vagón
