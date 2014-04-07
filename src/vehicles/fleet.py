@@ -4,7 +4,6 @@ from train import EngineConsist, MetroMultipleUnit
 consist = EngineConsist(id = 'fleet',
               base_numeric_id = 1520,
               title = 'Fleet [Metro Train]',
-              str_type_info = 'COASTER',
               replacement_id = '-none',
               track_type = 'METRO',
               power = 1100,

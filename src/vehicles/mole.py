@@ -4,7 +4,6 @@ from train import EngineConsist, MetroLoco
 consist = EngineConsist(id = 'mole',
               base_numeric_id = 1530,
               title = 'Mole [Metro Train]',
-              str_type_info = 'COASTER',
               replacement_id = '-none',
               track_type = 'METRO',
               power = 800,

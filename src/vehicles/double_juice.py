@@ -6,7 +6,6 @@ from train import EngineConsist, ElectroDieselLoco
 consist = EngineConsist(id = 'double_juice',
               base_numeric_id = 1150,
               title = 'Double Juice [ElectroDiesel]',
-              str_type_info = 'COASTER',
               replacement_id = '-none',
               power = 5000,
               speed = 100,

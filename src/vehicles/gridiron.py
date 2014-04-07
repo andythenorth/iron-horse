@@ -4,7 +4,6 @@ from train import EngineConsist, DieselLoco
 consist = EngineConsist(id = 'gridiron',
               base_numeric_id = 1120,
               title = 'Gridiron [Diesel]',
-              str_type_info = 'COASTER',
               replacement_id = '-none',
               power = 3700,
               speed = 85,

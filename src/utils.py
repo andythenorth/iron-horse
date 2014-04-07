@@ -25,6 +25,7 @@ def parse_base_lang():
     text = base_lang_file.readlines()
     # this is fragile, playing one line python is silly :)
     strings = dict((line.split(':',1)[0].strip(), line.split(':',1)[1].strip()) for line in text if ':' in line)
+    strings['STR_EMPTY'] = '' # really nasty hack to handle a string that is templated in
     return strings
 
 def echo_message(message):

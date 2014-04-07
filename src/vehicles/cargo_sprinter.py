@@ -13,7 +13,6 @@ graphics_processor_1 = GraphicsProcessorFactory('extend_spriterows_for_recoloure
 consist = EngineConsist(id = 'cargo_sprinter',
               base_numeric_id = 1100,
               title = 'Cargo Sprinter [Diesel]',
-              str_type_info = 'COASTER',
               replacement_id = '-none',
               power = 1520,
               speed = 100,

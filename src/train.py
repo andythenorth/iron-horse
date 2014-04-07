@@ -33,7 +33,7 @@ class Consist(object):
         # setup properties for this consist (props either shared for all vehicles, or placed on lead vehicle of consist)
         self.title = kwargs.get('title', None)
         self.base_numeric_id = kwargs.get('base_numeric_id', None)
-        self.str_type_info = kwargs.get('str_type_info', 'COASTER')
+        self.str_type_info = kwargs.get('str_type_info', None)
         self.intro_date = kwargs.get('intro_date', None)
         self.replacement_id = kwargs.get('replacement_id', None)
         self.vehicle_life = kwargs.get('vehicle_life', None)
@@ -152,7 +152,10 @@ class Consist(object):
 
     def get_str_type_info(self):
         # makes a string id for nml
-        return 'STR_' + self.str_type_info
+        if self.str_type_info is not None:
+            return 'STR_' + self.str_type_info
+        else:
+            return 'STR_EMPTY'
 
     def get_str_autorefit(self):
         if self.any_slice_offers_autorefit():
@@ -165,9 +168,15 @@ class Consist(object):
 
     def get_buy_menu_string(self):
         # will need to handle bi-mode locos here, have a look at consist.slice_requires_variable_power(vehicle)
-        buy_menu_template = Template(
-            "string(STR_BUY_MENU_TEXT, string(${str_type_info}), string(${str_autorefit}), string(STR_EMPTY))"
-        )
+        # buy menu handling could be refactored - construct by appending each item as needed (provide 'type:' string as a substr)
+        if self.str_type_info is not None:
+            buy_menu_template = Template(
+                "string(STR_BUY_MENU_TEXT, string(${str_type_info}), string(${str_autorefit}), string(STR_EMPTY))"
+            )
+        else:
+            buy_menu_template = Template(
+                "string(${str_autorefit})"
+            )
         return buy_menu_template.substitute(str_type_info=self.get_str_type_info(), str_autorefit=self.get_str_autorefit())
 
     def any_slice_offers_autorefit(self):

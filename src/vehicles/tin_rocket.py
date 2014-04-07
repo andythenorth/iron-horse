@@ -4,7 +4,6 @@ from train import EngineConsist, DieselRailcar
 consist = EngineConsist(id = 'tin_rocket',
               base_numeric_id = 1190,
               title = 'Tin Rocket [Diesel]',
-              str_type_info = 'COASTER',
               replacement_id = '-none',
               power = 560,
               speed = 100,

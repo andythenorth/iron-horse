@@ -4,7 +4,6 @@ from train import EngineConsist, SteamLoco, SteamLocoTender
 consist = EngineConsist(id = 'northcock',
               base_numeric_id = 1070,
               title = '4-8-2 Northcock [Steam]',
-              str_type_info = 'COASTER',
               replacement_id = '-none',
               power = 1750,
               tractive_effort_coefficient = 0.2,

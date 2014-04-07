@@ -4,7 +4,6 @@ from train import EngineConsist, SteamLoco, SteamLocoTender
 consist = EngineConsist(id = 'hudswell',
               base_numeric_id = 1550,
               title = 'Hudswell [Steam]',
-              str_type_info = 'COASTER',
               replacement_id = '-none',
               track_type = 'NG',
               power = 800,
