@@ -15,7 +15,7 @@ STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Electro-Diesel
 STR_NAME_SUFFIX_BATTERY                                         :(Battery)
 STR_NAME_SUFFIX_CAR                                             :Car
 
-STR_BUY_MENU_TEXT                                               :Type: {GOLD}{STRING}{}{STRING}{STRING}
+STR_BUY_MENU_TEXT                                               :{STRING}{STRING}
 STR_BUY_MENU_OFFERS_AUTOREFIT                                   :{BLACK}Offers auto-refit
 
 STR_COASTER                                                     :The Cow Jumped Over the Moon (this is not finished reminder)

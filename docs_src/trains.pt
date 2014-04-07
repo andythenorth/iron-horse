@@ -18,7 +18,7 @@
                     <tr>
                         <td>${consist.get_name_substr()} ${base_lang_strings[consist.get_str_name_suffix()]}</td>
                         <td class="number">${consist.intro_date}</td>
-                        <td>${base_lang_strings[consist.get_str_type_info()]}</td>
+                        <td>${base_lang_strings.get(consist.get_str_type_info(), None)}</td>
                         <!--!<td>${int(consist.speed)} mph</td>-->
                     </tr>
                 </tal:consists_list>
