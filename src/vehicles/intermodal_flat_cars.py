@@ -14,8 +14,7 @@ graphics_processor_1 = GraphicsProcessorFactory('extend_spriterows_for_recoloure
 
 type_config = TypeConfig(base_id = 'intermodal_flat_car',
                 template = 'car_with_visible_cargo.pynml',
-                fixed_run_cost_factor = 3.5,
-                num_cargo_rows = 3,
+                  num_cargo_rows = 3,
                 generic_cargo_rows = [0, 1, 2],
                 class_refit_groups = ['express_freight', 'packaged_freight'],
                 cargo_graphics_mappings = cargo_graphics_mappings,

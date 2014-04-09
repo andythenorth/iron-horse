@@ -3,8 +3,7 @@ from train import TypeConfig, WagonConsist, Wagon
 
 type_config = TypeConfig(base_id = 'covered_hopper_car',
                 template = 'train.pynml',
-                fixed_run_cost_factor = 3.5,
-                class_refit_groups = ['covered_hopper_freight'],
+                  class_refit_groups = ['covered_hopper_freight'],
                 label_refits_allowed = ['GRAI', 'WHEA', 'MAIZ', 'FOOD', 'SUGR', 'FMSP', 'RFPR', 'CLAY'],
                 label_refits_disallowed = [],
                 autorefit = True,

@@ -43,8 +43,6 @@ class Consist(object):
         self.power_by_tracktype = kwargs.get('power_by_tracktype', None) # used by multi-mode engines such as electro-diesel, otherwise ignored
         self.tractive_effort_coefficient = kwargs.get('tractive_effort_coefficient', 0.3) # 0.3 is recommended default value
         self.speed = kwargs.get('speed', None)
-        self.fixed_run_cost_factor = kwargs.get('fixed_run_cost_factor', None)
-        self.fuel_run_cost_factor = kwargs.get('fuel_run_cost_factor', None)
         # an arbitrary adjustment of 0-30 points that can be applied to adjust buy cost, over-ride in consist as needed
         # in practice I often use values < 0 or > 30, to dibble specific vehicles (total points cannot exceed 255)
         self.type_base_buy_cost_points = kwargs.get('type_base_buy_cost_points', 15)
@@ -407,7 +405,6 @@ class TypeConfig(object):
         self.base_id = base_id
         self.template = template
         self.track_type = kwargs.get('track_type', 'RAIL')
-        self.fixed_run_cost_factor = kwargs.get('fixed_run_cost_factor', None)
         self.num_cargo_rows = kwargs.get('num_cargo_rows', None)
         self.generic_cargo_rows = kwargs.get('generic_cargo_rows', [0]) # optional, the rows to use if no cargo label is matched
         self.cargo_graphics_mappings = kwargs.get('cargo_graphics_mappings', None)
@@ -519,11 +516,7 @@ class EngineConsist(Consist):
         print self.power
         print self.speed
 
-        # calculate a running cost
-        fixed_run_cost = self.fixed_run_cost_factor * global_constants.FIXED_RUN_COST
-        fuel_run_cost =  self.fuel_run_cost_factor * global_constants.FUEL_RUN_COST
-        calculated_run_cost = int((fixed_run_cost + fuel_run_cost) / 98) # divide by magic constant to get costs as factor in 0-255 range
-        return min(calculated_run_cost, 255) # cost factor is a byte, can't exceed 255
+        return min(0, 255) # cost factor is a byte, can't exceed 255
 
 
 class WagonConsist(Consist):
@@ -545,8 +538,6 @@ class WagonConsist(Consist):
             self.speed = global_constants.gen_2_wagon_speeds[speedy]
         if self.wagon_generation == 3:
             self.speed = global_constants.gen_3_wagon_speeds[speedy]
-        self.fuel_run_cost_factor = 1.0
-        self.fixed_run_cost_factor = type_config.fixed_run_cost_factor
 
         self.num_cargo_rows = type_config.num_cargo_rows
         self.cargo_graphics_mappings = type_config.cargo_graphics_mappings

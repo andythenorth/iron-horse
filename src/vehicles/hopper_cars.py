@@ -15,8 +15,7 @@ graphics_processor_1 = GraphicsProcessorFactory('extend_spriterows_for_recoloure
 
 type_config = TypeConfig(base_id = 'hopper_car',
                 template = 'car_with_visible_cargo.pynml',
-                fixed_run_cost_factor = 3.5,
-                num_cargo_rows = 6,
+                  num_cargo_rows = 6,
                 class_refit_groups = ['hopper_freight'],
                 cargo_graphics_mappings = cargo_graphics_mappings,
                 label_refits_allowed = cargo_graphics_mappings.keys(),
@@ -32,8 +31,7 @@ consist = WagonConsist(type_config = type_config,
                     wagon_generation = 1,
                     replacement_id = '-none',
                     intro_date = 1915,
-                          fixed_run_cost_factor = 3.5,
-                    vehicle_life = 40,
+                                vehicle_life = 40,
                     graphics_status = '',
                     use_legacy_spritesheet = True)
 
@@ -60,8 +58,7 @@ consist = WagonConsist(type_config = type_config,
                     wagon_generation = 2,
                     replacement_id = '-none',
                     intro_date = 1965,
-                          fixed_run_cost_factor = 3.5,
-                    vehicle_life = 40,
+                                vehicle_life = 40,
                     graphics_status = '',
                     use_legacy_spritesheet = True)
 
@@ -87,8 +84,7 @@ consist = WagonConsist(type_config = type_config,
                     wagon_generation = 3,
                     replacement_id = '-none',
                     intro_date = 2010,
-                          fixed_run_cost_factor = 3.5,
-                    vehicle_life = 40,
+                                vehicle_life = 40,
                     graphics_status = '',
                     use_legacy_spritesheet = True)
 

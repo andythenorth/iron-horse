@@ -7,8 +7,7 @@ cargo_graphics_mappings = {} # template needs this, but mail car has zero cargo-
 
 type_config = TypeConfig(base_id = 'mail_car',
                 template = 'car_with_open_doors_during_loading.pynml',
-                fixed_run_cost_factor = 3.5,
-                num_cargo_rows = 1, # template needs this, but mail car has zero cargo-specific graphics, all generic
+                  num_cargo_rows = 1, # template needs this, but mail car has zero cargo-specific graphics, all generic
                 class_refit_groups = ['mail', 'express_freight'],
                 cargo_graphics_mappings = cargo_graphics_mappings,
                 label_refits_allowed = cargo_graphics_mappings.keys() ,

@@ -10,8 +10,6 @@ consist = EngineConsist(id = 'double_juice',
               power = 5000,
               speed = 100,
               type_base_buy_cost_points = 60, # dibble buy cost for game balance
-              fixed_run_cost_factor = 3.5,
-              fuel_run_cost_factor = 1.0,
               vehicle_life = 40,
               intro_date = 2000,
               power_by_tracktype = {'RAIL': 1250, 'ELRL': 5000},

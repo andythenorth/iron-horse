@@ -9,8 +9,6 @@ consist = EngineConsist(id = 'fleet',
               power = 1100,
               speed = 65,
               type_base_buy_cost_points = 80, # dibble buy cost for game balance
-              fixed_run_cost_factor = 3.5,
-              fuel_run_cost_factor = 1.0,
               intro_date = 2000,
               vehicle_life = 40,
               graphics_status = '',

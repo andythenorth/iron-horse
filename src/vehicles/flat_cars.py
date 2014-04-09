@@ -5,8 +5,7 @@ cargo_graphics_mappings = {'STEL': [1, 2, 3], 'WOOD': [4], 'WDPR': [5], 'ENSP': 
 
 type_config = TypeConfig(base_id = 'flat_car',
                 template = 'car_with_visible_cargo.pynml',
-                fixed_run_cost_factor = 3.5,
-                num_cargo_rows = 7,
+                  num_cargo_rows = 7,
                 class_refit_groups = ['flatcar_freight'],
                 cargo_graphics_mappings = cargo_graphics_mappings,
                 label_refits_allowed = cargo_graphics_mappings.keys(),
@@ -64,8 +63,7 @@ cargo_graphics_mappings = {'STEL': [1], 'WDPR': [2], 'WOOD': [3]}
 
 type_config = TypeConfig(base_id = 'flat_car_ng',
                 template = 'car_with_visible_cargo.pynml',
-                fixed_run_cost_factor = 3.5,
-                num_cargo_rows = 4,
+                  num_cargo_rows = 4,
                 class_refit_groups = ['flatcar_freight'],
                 cargo_graphics_mappings = cargo_graphics_mappings,
                 label_refits_allowed = cargo_graphics_mappings.keys(),

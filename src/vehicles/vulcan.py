@@ -8,8 +8,6 @@ consist = EngineConsist(id = 'vulcan',
               power = 2700,
               speed = 100,
               type_base_buy_cost_points = 25, # dibble buy cost for game balance
-              fixed_run_cost_factor = 3.5,
-              fuel_run_cost_factor = 1.0,
               vehicle_life = 40,
               intro_date = 1963,
               graphics_status = '',

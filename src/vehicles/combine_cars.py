@@ -5,8 +5,7 @@ from train import TypeConfig, WagonConsist, CombineCar
 
 type_config = TypeConfig(base_id = 'combine_car',
                 template = 'train.pynml',
-                fixed_run_cost_factor = 3.5,
-                class_refit_groups = ['mail', 'express_freight'],
+                  class_refit_groups = ['mail', 'express_freight'],
                 label_refits_allowed = [],
                 label_refits_disallowed = [],
                 autorefit = True,
