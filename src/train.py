@@ -513,10 +513,7 @@ class EngineConsist(Consist):
 
     @property
     def running_cost(self):
-        print self.power
-        print self.speed
-
-        return min(0, 255) # cost factor is a byte, can't exceed 255
+        return max(0, 255) # cost factor is a byte, can't exceed 255
 
 
 class WagonConsist(Consist):
