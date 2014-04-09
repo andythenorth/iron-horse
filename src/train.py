@@ -504,9 +504,15 @@ class EngineConsist(Consist):
 
         # Up to 40 points for intro date after 1870. 1 point per 4 years.
         # Intro dates capped at 2030, this isn't a hard limit, but raise a warning
+        # There is some odd hackery here, but serendipitously it gave pleasing numbers, embrace accidental wins
         if self.intro_date > 2030:
             utils.echo_message("Consist " + self.id + " has intro_date > 2030, which is too much")
-        date_buy_cost_points = (self.intro_date - 1870) / 4
+        # dibble pre-1900 Century engines to make them cheaper, otherwise 19th Century game is boring
+        if self.intro_date < 1900:
+            date_buy_cost_points = (self.intro_date - 1900) / 3.5
+            print date_buy_cost_points
+        else:
+            date_buy_cost_points = max((self.intro_date - 1870), 0) / 4
 
         # Up to 30 type_base_buy_cost_points, default is 15
         # type_base_buy_cost_points is an arbitrary adjustment that can be applied on a class-by-class basis,
