@@ -9,7 +9,7 @@ consist = EngineConsist(id = 'double_juice',
               replacement_id = '-none',
               power = 5000,
               speed = 100,
-              buy_cost = 217,
+              type_base_buy_cost_points = 50, # dibble buy cost for game balance
               fixed_run_cost_factor = 3.5,
               fuel_run_cost_factor = 1.0,
               vehicle_life = 40,
@@ -17,11 +17,11 @@ consist = EngineConsist(id = 'double_juice',
               power_by_tracktype = {'RAIL': 1250, 'ELRL': 5000},
               graphics_status = '',
               use_legacy_spritesheet = True)
-              
+
 consist.add_unit(ElectroDieselLoco(consist = consist,
                         weight = 90,
                         vehicle_length = 8,
-                        spriterow_num = 0))              
+                        spriterow_num = 0))
 
 consist.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,

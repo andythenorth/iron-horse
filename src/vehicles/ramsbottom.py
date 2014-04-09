@@ -8,23 +8,23 @@ consist = EngineConsist(id = 'ramsbottom',
               power = 800,
               tractive_effort_coefficient = 0.22,
               speed = 55,
-              buy_cost = 14,
+              type_base_buy_cost_points = -1, # dibble buy cost for game balance
               fixed_run_cost_factor = 3.5,
               fuel_run_cost_factor = 1.0,
               vehicle_life = 40,
               intro_date = 1860,
               graphics_status = '',
               use_legacy_spritesheet = True)
-              
+
 consist.add_unit(SteamLoco(consist = consist,
                         weight = 59,
                         vehicle_length = 6,
-                        spriterow_num = 0))              
+                        spriterow_num = 0))
 
 consist.add_unit(SteamLocoTender(consist = consist,
                         weight = 30,
                         vehicle_length = 4,
-                        spriterow_num = 1))              
+                        spriterow_num = 1))
 
 consist.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,
