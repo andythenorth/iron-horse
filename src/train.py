@@ -45,13 +45,15 @@ class Consist(object):
         self.speed = kwargs.get('speed', None)
         self.fixed_run_cost_factor = kwargs.get('fixed_run_cost_factor', None)
         self.fuel_run_cost_factor = kwargs.get('fuel_run_cost_factor', None)
-        self.use_legacy_spritesheet = kwargs.get('use_legacy_spritesheet', False) # hangover from switching to 10/8 spritesheet and not wanting to fix existing spritesheets
+        # an arbitrary adjustment of 0-30 points that can be applied to adjust buy cost, over-ride in consist as needed
+        # in practice I sometimes use values < 0 or > 30, to dibble specific vehicles (total points cannot exceed 255)
+        self.type_base_buy_cost_points = kwargs.get('type_base_buy_cost_points', 15)
+        # hangover from switching to 10/8 spritesheet and not wanting to fix existing spritesheets
+        self.use_legacy_spritesheet = kwargs.get('use_legacy_spritesheet', False)
         # create a structure to hold model variants
         self.model_variants = []
         # create structure to hold the slices
         self.slices = []
-        # an arbitrary adjustment of 0-30 points that can be applied to adjust buy cost, over-ride in consist as needed
-        self.type_base_buy_cost_points = kwargs.get('type_base_buy_cost_points', 15)
         # some project management stuff
         self.graphics_status = kwargs.get('graphics_status', None)
         # register consist with this module so other modules can use it, with a non-blocking guard on duplicate IDs
@@ -197,11 +199,9 @@ class Consist(object):
 
     @property
     def running_cost(self):
-        # calculate a running cost
-        fixed_run_cost = self.fixed_run_cost_factor * global_constants.FIXED_RUN_COST
-        fuel_run_cost =  self.fuel_run_cost_factor * global_constants.FUEL_RUN_COST
-        calculated_run_cost = int((fixed_run_cost + fuel_run_cost) / 98) # divide by magic constant to get costs as factor in 0-255 range
-        return min(calculated_run_cost, 255) # cost factor is a byte, can't exceed 255
+        # stub only
+        # vehicle classes should over-ride this to provide class-appropriate running cost calculation
+        return 0
 
     @property
     def weight(self):
@@ -497,9 +497,11 @@ class EngineConsist(Consist):
         power_buy_cost_points = self.power / 100
 
         # Up to 20 points for speed up to 80mph. 1 point per 2mph
-        speed_buy_cost_points = max(self.speed, 80) / 2
+        speed_buy_cost_points = min(self.speed, 80) / 2
 
         # Up to 80 points for speed above 80mph up to 200mph. 1 point per 1.5mph
+        if self.speed > 200:
+            utils.echo_message("Consist " + self.id + " has speed > 200, which is too much")
         high_speed_buy_cost_points = max((self.speed - 80), 0) / 1.5
 
         # Up to 40 points for intro date after 1870. 1 point per 4 years.
@@ -511,6 +513,17 @@ class EngineConsist(Consist):
         # Up to 30 type_base_buy_cost_points, default is 15
         # type_base_buy_cost_points is an arbitrary adjustment that can be applied on a class-by-class basis,
         return power_buy_cost_points + speed_buy_cost_points + high_speed_buy_cost_points + date_buy_cost_points + self.type_base_buy_cost_points
+
+    @property
+    def running_cost(self):
+        print self.power
+        print self.speed
+
+        # calculate a running cost
+        fixed_run_cost = self.fixed_run_cost_factor * global_constants.FIXED_RUN_COST
+        fuel_run_cost =  self.fuel_run_cost_factor * global_constants.FUEL_RUN_COST
+        calculated_run_cost = int((fixed_run_cost + fuel_run_cost) / 98) # divide by magic constant to get costs as factor in 0-255 range
+        return min(calculated_run_cost, 255) # cost factor is a byte, can't exceed 255
 
 
 class WagonConsist(Consist):

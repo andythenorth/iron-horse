@@ -8,7 +8,7 @@ consist = EngineConsist(id = 'westbourne',
               track_type = 'METRO',
               power = 900,
               speed = 55,
-              buy_cost = 67,
+              type_base_buy_cost_points = 60, # dibble buy cost for game balance
               fixed_run_cost_factor = 3.5,
               fuel_run_cost_factor = 1.0,
               intro_date = 1950,

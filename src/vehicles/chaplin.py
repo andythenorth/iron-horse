@@ -8,7 +8,7 @@ consist = EngineConsist(id = 'chaplin',
               power = 450,
               tractive_effort_coefficient = 0.2,
               speed = 60,
-              type_base_buy_cost_points = -11, # dibble buy cost for game balance
+              type_base_buy_cost_points = -3, # dibble buy cost for game balance
               fixed_run_cost_factor = 3.5,
               fuel_run_cost_factor = 1.0,
               vehicle_life = 40,
