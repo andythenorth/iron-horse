@@ -16,7 +16,7 @@ STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Electro-Diesel
 STR_NAME_SUFFIX_BATTERY                                         :(Batería)
 STR_NAME_SUFFIX_CAR                                             :Vagón
 
-STR_BUY_MENU_TEXT                                               :Tipo: {GOLD}{STRING}{}{STRING}{STRING}
+STR_BUY_MENU_TEXT                                               :{STRING}{STRING}
 STR_BUY_MENU_OFFERS_AUTOREFIT                                   :{BLACK}Ofrece auto-reforma
 
 STR_COASTER                                                     :La vaca saltó sobre la luna (esto es un recordatorio de que el set no está acabado)
