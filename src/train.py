@@ -18,6 +18,7 @@ templates = PageTemplateLoader(os.path.join(currentdir, 'src', 'templates'))
 
 import graphics_processor
 
+from rosters import registered_rosters
 from vehicles import registered_consists, registered_wagon_generations
 
 
@@ -42,7 +43,6 @@ class Consist(object):
         self.power_by_tracktype = kwargs.get('power_by_tracktype', None) # used by multi-mode engines such as electro-diesel, otherwise ignored
         self.tractive_effort_coefficient = kwargs.get('tractive_effort_coefficient', 0.3) # 0.3 is recommended default value
         self.speed = kwargs.get('speed', None)
-        self.buy_cost = kwargs.get('buy_cost', None)
         self.fixed_run_cost_factor = kwargs.get('fixed_run_cost_factor', None)
         self.fuel_run_cost_factor = kwargs.get('fuel_run_cost_factor', None)
         self.use_legacy_spritesheet = kwargs.get('use_legacy_spritesheet', False) # hangover from switching to 10/8 spritesheet and not wanting to fix existing spritesheets
@@ -50,6 +50,8 @@ class Consist(object):
         self.model_variants = []
         # create structure to hold the slices
         self.slices = []
+        # an arbitrary adjustment of 0-30 points that can be applied to adjust buy cost, over-ride in class as needed
+        self.type_base_buy_cost_points = 15
         # some project management stuff
         self.graphics_status = kwargs.get('graphics_status', None)
         # register consist with this module so other modules can use it, with a non-blocking guard on duplicate IDs
@@ -186,6 +188,12 @@ class Consist(object):
             return True
         else:
             return False
+
+    @property
+    def buy_cost(self):
+        # stub only
+        # vehicle classes should over-ride this to provide class-appropriate cost calculation
+        return 0
 
     @property
     def running_cost(self):
@@ -480,6 +488,30 @@ class EngineConsist(Consist):
         id = kwargs.get('id', None)
         super(EngineConsist, self).__init__(**kwargs)
 
+    @property
+    def buy_cost(self):
+        # Up to 80 points for power. 1 point per 100hp
+        # Power is therefore capped at 8000hp by design, this isn't a hard limit, but raise a warning
+        if self.power > 8000:
+            utils.echo_message("Consist " + self.id + " has power > 8000hp, which is too much")
+        power_buy_cost_points = self.power / 100
+
+        # Up to 20 points for speed up to 80mph. 1 point per 2mph
+        speed_buy_cost_points = max(self.speed, 80) / 2
+
+        # Up to 80 points for speed above 80mph up to 200mph. 1 point per 1.5mph
+        high_speed_buy_cost_points = max((self.speed - 80), 0) / 1.5
+
+        # Up to 40 points for intro date after 1870. 1 point per 4 years.
+        # Intro dates capped at 2030, this isn't a hard limit, but raise a warning
+        if self.intro_date > 2030:
+            utils.echo_message("Consist " + self.id + " has intro_date > 2030, which is too much")
+        date_buy_cost_points = (self.intro_date - 1870) / 4
+
+        # Up to 30 type_base_buy_cost_points, default is 15
+        # type_base_buy_cost_points is an arbitrary adjustment that can be applied on a class-by-class basis,
+        return power_buy_cost_points + speed_buy_cost_points + high_speed_buy_cost_points + date_buy_cost_points + self.type_base_buy_cost_points
+
 
 class WagonConsist(Consist):
     """
@@ -513,6 +545,10 @@ class WagonConsist(Consist):
         base_type_list = vehicle_set_dict.setdefault(base_type, [])
         base_type_list.append(self.wagon_generation)
         base_type_list.sort()
+
+    @property
+    def buy_cost(self):
+        return 100
 
 
 class Wagon(Train):
@@ -584,6 +620,7 @@ class DieselRailcar(Train):
         self.default_cargo = 'PASS'
         self.engine_class = 'ENGINE_CLASS_DIESEL' #nml constant
         self.visual_effect = 'VISUAL_EFFECT_DIESEL' # nml constant
+        self.type_base_buy_cost_points = 22 # increase buy cost because engine has pax / cargo capability
 
 
 class ElectricLoco(Train):
