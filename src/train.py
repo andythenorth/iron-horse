@@ -44,9 +44,10 @@ class Consist(object):
         self.power_by_tracktype = kwargs.get('power_by_tracktype', None) # used by multi-mode engines such as electro-diesel, otherwise ignored
         self.tractive_effort_coefficient = kwargs.get('tractive_effort_coefficient', 0.3) # 0.3 is recommended default value
         self.speed = kwargs.get('speed', None)
-        # an arbitrary adjustment of 0-30 points that can be applied to adjust buy cost, over-ride in consist as needed
-        # in practice I often use values < 0 or > 30, to dibble specific vehicles (total points cannot exceed 255)
+        # arbitrary adjustments of 0-30 points that can be applied to adjust buy cost and running cost, over-ride in consist as needed
+        # in practice I often use values < 0 or > 30, to dibble specific vehicles (but total points cannot exceed 255)
         self.type_base_buy_cost_points = kwargs.get('type_base_buy_cost_points', 15)
+        self.type_base_running_cost_points = kwargs.get('type_base_running_cost_points', 15)
         # hangover from switching to 10/8 spritesheet and not wanting to fix existing spritesheets
         self.use_legacy_spritesheet = kwargs.get('use_legacy_spritesheet', False)
         # create a structure to hold model variants
@@ -486,35 +487,38 @@ class EngineConsist(Consist):
         id = kwargs.get('id', None)
         super(EngineConsist, self).__init__(**kwargs)
 
-    @property
-    def buy_cost(self):
+    def get_engine_cost_points(self):
         # Up to 80 points for power. 1 point per 100hp
         # Power is therefore capped at 8000hp by design, this isn't a hard limit, but raise a warning
         if self.power > 8000:
             utils.echo_message("Consist " + self.id + " has power > 8000hp, which is too much")
-        power_buy_cost_points = self.power / 100
+        power_cost_points = self.power / 100
 
         # Up to 20 points for speed up to 80mph. 1 point per 2mph
-        speed_buy_cost_points = min(self.speed, 80) / 2
+        speed_cost_points = min(self.speed, 80) / 2
 
         # Up to 80 points for speed above 80mph up to 200mph. 1 point per 1.5mph
         if self.speed > 200:
             utils.echo_message("Consist " + self.id + " has speed > 200, which is too much")
-        high_speed_buy_cost_points = max((self.speed - 80), 0) / 1.5
+        high_speed_cost_points = max((self.speed - 80), 0) / 1.5
 
         # Up to 40 points for intro date after 1870. 1 point per 4 years.
         # Intro dates capped at 2030, this isn't a hard limit, but raise a warning
         if self.intro_date > 2030:
             utils.echo_message("Consist " + self.id + " has intro_date > 2030, which is too much")
-        date_buy_cost_points = max((self.intro_date - 1870), 0) / 4
+        date_cost_points = max((self.intro_date - 1870), 0) / 4
 
         # Up to 30 type_base_buy_cost_points, default is 15
         # type_base_buy_cost_points is an arbitrary adjustment that can be applied on a class-by-class basis,
-        return power_buy_cost_points + speed_buy_cost_points + high_speed_buy_cost_points + date_buy_cost_points + self.type_base_buy_cost_points
+        return power_cost_points + speed_cost_points + high_speed_cost_points + date_cost_points
+
+    @property
+    def buy_cost(self):
+        return self.get_engine_cost_points() + self.type_base_buy_cost_points
 
     @property
     def running_cost(self):
-        return max(0, 255) # cost factor is a byte, can't exceed 255
+        return self.get_engine_cost_points() + self.type_base_running_cost_points
 
 
 class WagonConsist(Consist):

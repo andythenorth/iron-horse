@@ -17,6 +17,7 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
         weight:                         ${consist.weight}ton;
         tractive_effort_coefficient:    ${consist.tractive_effort_coefficient};
         cost_factor:                    ${consist.buy_cost};
+        running_cost_base:              RUNNING_COST_ELECTRIC;
         running_cost_factor:            ${consist.running_cost};
         refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
         refittable_cargo_classes:       bitmask(${vehicle.refittable_classes});
