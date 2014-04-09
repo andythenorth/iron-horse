@@ -321,6 +321,12 @@ class Train(object):
         return ','.join(set(cargo_classes)) # use set() here to dedupe
 
     @property
+    def running_cost_base(self):
+        return {'ENGINE_CLASS_STEAM': 'RUNNING_COST_STEAM',
+                           'ENGINE_CLASS_DIESEL': 'RUNNING_COST_DIESEL',
+                           'ENGINE_CLASS_ELECTRIC': 'RUNNING_COST_ELECTRIC'}[self.engine_class]
+
+    @property
     def offsets(self):
         # offsets can also be over-ridden on a per-model basis by providing this property in the model class
         return global_constants.default_train_offsets[str(self.vehicle_length)]
