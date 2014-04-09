@@ -118,7 +118,7 @@ class ExtendSpriterowsForRecolouredCargosPipeline(Pipeline):
                     graphics_constants.spritesheet_width,
                     graphics_constants.spritesheet_top_margin + options['copy_block_top_offset'] + unit_row_cluster_height)
         units = [SimpleRecolour(options['recolour_maps'][0])]
-        print options
+        #print options
         for recolour_map_index in range(len(options['recolour_maps'])-1):
             units.append(AppendToSpritesheet(source_spritesheet, crop_box))
             units.append(SimpleRecolour(options['recolour_maps'][recolour_map_index+1]))
