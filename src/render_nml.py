@@ -27,8 +27,10 @@ os.mkdir(generated_nml_path)
 repo_vars = utils.get_repo_vars(sys)
 
 def render_consist_nml(consist):
+    #print os.stat(consist.vehicle_module_path).st_mtime
     consist_nml = codecs.open(os.path.join('generated', 'nml', consist.id + '.nml'),'w','utf8')
     consist_nml.write(utils.unescape_chameleon_output(consist.render()))
+    #print os.stat(vehicle_module_path).st_mtime
     consist_nml.close()
 
 def main():
@@ -40,8 +42,8 @@ def main():
         template = templates[header_item + '.pynml']
         grf_nml.write(utils.unescape_chameleon_output(template(consists=consists, global_constants=global_constants,
                                                         utils=utils, sys=sys, repo_vars=repo_vars)))
- 
-    pool = Pool(processes=16) # 16 is an arbitrary amount that appears to be fast without blocking the system  
+
+    pool = Pool(processes=16) # 16 is an arbitrary amount that appears to be fast without blocking the system
     pool.map(render_consist_nml, consists)
     pool.close()
     pool.join()
@@ -52,5 +54,5 @@ def main():
 
     grf_nml.close()
 
-if __name__ == '__main__': 
+if __name__ == '__main__':
     main()
