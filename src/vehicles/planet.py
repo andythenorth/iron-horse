@@ -8,7 +8,7 @@ consist = EngineConsist(id = 'planet',
               track_type = 'NG',
               power = 500,
               speed = 55,
-              buy_cost = 29,
+              type_base_buy_cost_points = -20, # dibble buy cost for game balance
               fixed_run_cost_factor = 3.5,
               fuel_run_cost_factor = 1.0,
               vehicle_life = 40,

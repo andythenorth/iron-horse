@@ -8,7 +8,7 @@ consist = EngineConsist(id = 'donegal',
               track_type = 'NG',
               power = 250,
               speed = 50,
-              buy_cost = 19,
+              type_base_buy_cost_points = -5, # dibble buy cost for game balance
               fixed_run_cost_factor = 3.5,
               fuel_run_cost_factor = 1.0,
               intro_date = 1954,
@@ -21,7 +21,7 @@ consist.add_unit(DieselRailcar(consist = consist,
                         vehicle_length = 8,
                         capacity_pax = 25,
                         capacity_mail = 12,
-                        spriterow_num = 0))              
+                        spriterow_num = 0))
 
 consist.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,
