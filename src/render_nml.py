@@ -19,19 +19,26 @@ from chameleon import PageTemplateLoader # chameleon used in most template cases
 templates = PageTemplateLoader(os.path.join(currentdir, 'src', 'templates'))
 
 generated_nml_path = os.path.join(iron_horse.generated_files_path, 'nml')
-if os.path.exists(generated_nml_path):
-    shutil.rmtree(generated_nml_path)
-os.mkdir(generated_nml_path)
+if not os.path.exists(generated_nml_path):
+    os.mkdir(generated_nml_path)
 
 # get args passed by makefile
 repo_vars = utils.get_repo_vars(sys)
 
+# we cache some nml metadata to see if we can render templated vehicles faster
+nml_metadata_cache_path = os.path.join('generated', 'nml_metadata.cache')
+if not os.path.exists(nml_metadata_cache_path):
+    codecs.open(nml_metadata_cache_path,'w','utf8').close()
+# this is fragile, playing one line python is silly :)
+module_timestamps = dict((line.split('||',1)[0].strip(), line.split('||',1)[1].strip()) for line in codecs.open(nml_metadata_cache_path,'r','utf8').readlines())
+
+
 def render_consist_nml(consist):
-    #print os.stat(consist.vehicle_module_path).st_mtime
-    consist_nml = codecs.open(os.path.join('generated', 'nml', consist.id + '.nml'),'w','utf8')
-    consist_nml.write(utils.unescape_chameleon_output(consist.render()))
-    #print os.stat(vehicle_module_path).st_mtime
-    consist_nml.close()
+    # dangerous optimisation here
+    if float(module_timestamps.get(consist.vehicle_module_path, 0)) != os.stat(consist.vehicle_module_path).st_mtime:
+        consist_nml = codecs.open(os.path.join('generated', 'nml', consist.id + '.nml'),'w','utf8')
+        consist_nml.write(utils.unescape_chameleon_output(consist.render()))
+        consist_nml.close()
 
 def main():
     consists = iron_horse.get_consists_in_buy_menu_order(show_warnings=True)
@@ -48,11 +55,17 @@ def main():
     pool.close()
     pool.join()
 
+    nml_cache = codecs.open(nml_metadata_cache_path, 'w', 'utf8')
+
     for consist in consists:
+        metadata = consist.vehicle_module_path + '||' + str(os.stat(consist.vehicle_module_path).st_mtime) + '\n'
+        nml_cache.write(metadata)
         consist_nml = codecs.open(os.path.join('generated', 'nml', consist.id + '.nml'),'r','utf8').read()
         grf_nml.write(consist_nml)
 
     grf_nml.close()
+    nml_cache.close()
+
 
 if __name__ == '__main__':
     main()
