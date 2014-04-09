@@ -18,8 +18,7 @@ consist = WagonConsist(type_config = type_config,
                     wagon_generation = 1,
                     replacement_id = '-none',
                     intro_date = 1922,
-                    buy_cost = 22,
-                    vehicle_life = 40,
+                          vehicle_life = 40,
                     graphics_status = '',
                     use_legacy_spritesheet = True)
 
@@ -42,8 +41,7 @@ consist = WagonConsist(type_config = type_config,
                     wagon_generation = 3,
                     replacement_id = '-none',
                     intro_date = 1960,
-                    buy_cost = 22,
-                    vehicle_life = 40,
+                          vehicle_life = 40,
                     graphics_status = '',
                     use_legacy_spritesheet = True)
 

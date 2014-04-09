@@ -16,7 +16,6 @@ consist = WagonConsist(type_config = type_config,
                     wagon_generation = 1,
                     replacement_id = '-none',
                     intro_date = 1860,
-                    buy_cost = 22,
                     vehicle_life = 40,
                     graphics_status = '',
                     use_legacy_spritesheet = True)
@@ -26,7 +25,7 @@ consist.add_unit(Wagon(type_config = type_config,
                         capacity_freight = 0,
                         weight = 20,
                         vehicle_length = 5,
-                        loading_speed = 0))              
+                        loading_speed = 0))
 
 consist.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,
