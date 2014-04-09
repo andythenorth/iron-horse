@@ -508,16 +508,16 @@ class EngineConsist(Consist):
             utils.echo_message("Consist " + self.id + " has intro_date > 2030, which is too much")
         date_cost_points = max((self.intro_date - 1870), 0) / 4
 
-        # Up to 30 type_base_buy_cost_points, default is 15
-        # type_base_buy_cost_points is an arbitrary adjustment that can be applied on a class-by-class basis,
         return power_cost_points + speed_cost_points + high_speed_cost_points + date_cost_points
 
     @property
     def buy_cost(self):
+        # type_base_buy_cost_points is an arbitrary adjustment that can be applied on a class-by-class basis,
         return self.get_engine_cost_points() + self.type_base_buy_cost_points
 
     @property
     def running_cost(self):
+        # type_base_running_cost_points is an arbitrary adjustment that can be applied on a class-by-class basis,
         return self.get_engine_cost_points() + self.type_base_running_cost_points
 
 

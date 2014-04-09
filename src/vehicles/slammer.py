@@ -7,7 +7,7 @@ consist = EngineConsist(id = 'slammer',
               replacement_id = '-none',
               power = 300,
               speed = 75,
-              buy_cost = 48,
+              type_base_running_cost_points = 0, # dibble running costs for game balance
               intro_date = 1960,
               vehicle_life = 40,
               graphics_status = '',
@@ -18,7 +18,7 @@ consist.add_unit(DieselRailcar(consist = consist,
                         vehicle_length = 8,
                         capacity_pax = 55,
                         capacity_mail = 40,
-                        spriterow_num = 0))              
+                        spriterow_num = 0))
 
 consist.add_model_variant(intro_date=0,
                        end_date=1986,
