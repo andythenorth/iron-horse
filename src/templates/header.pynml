@@ -23,6 +23,7 @@ grf {
 
 basecost {
  	PR_BUILD_VEHICLE_TRAIN: -1;
+ 	PR_BUILD_VEHICLE_WAGON: 1;
  	PR_RUNNING: 1;
 }
 

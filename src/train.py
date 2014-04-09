@@ -562,6 +562,10 @@ class WagonConsist(Consist):
     def buy_cost(self):
         return 100
 
+    @property
+    def running_cost(self):
+        return 10
+
 
 class Wagon(Train):
     """
