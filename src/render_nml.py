@@ -31,11 +31,11 @@ if not os.path.exists(nml_metadata_cache_path):
     codecs.open(nml_metadata_cache_path,'w','utf8').close()
 # this is fragile, playing one line python is silly :)
 module_timestamps = dict((line.split('||',1)[0].strip(), line.split('||',1)[1].strip()) for line in codecs.open(nml_metadata_cache_path,'r','utf8').readlines())
-
+nml_cache_dirty = True # !! turn off optimisation for now, needs to check for changed .py and templates files
 
 def render_consist_nml(consist):
     # dangerous optimisation here
-    if float(module_timestamps.get(consist.vehicle_module_path, 0)) != os.stat(consist.vehicle_module_path).st_mtime:
+    if (float(module_timestamps.get(consist.vehicle_module_path, 0)) != os.stat(consist.vehicle_module_path).st_mtime) or nml_cache_dirty == True:
         consist_nml = codecs.open(os.path.join('generated', 'nml', consist.id + '.nml'),'w','utf8')
         consist_nml.write(utils.unescape_chameleon_output(consist.render()))
         consist_nml.close()
