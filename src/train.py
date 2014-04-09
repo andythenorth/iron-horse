@@ -46,7 +46,7 @@ class Consist(object):
         self.fixed_run_cost_factor = kwargs.get('fixed_run_cost_factor', None)
         self.fuel_run_cost_factor = kwargs.get('fuel_run_cost_factor', None)
         # an arbitrary adjustment of 0-30 points that can be applied to adjust buy cost, over-ride in consist as needed
-        # in practice I sometimes use values < 0 or > 30, to dibble specific vehicles (total points cannot exceed 255)
+        # in practice I often use values < 0 or > 30, to dibble specific vehicles (total points cannot exceed 255)
         self.type_base_buy_cost_points = kwargs.get('type_base_buy_cost_points', 15)
         # hangover from switching to 10/8 spritesheet and not wanting to fix existing spritesheets
         self.use_legacy_spritesheet = kwargs.get('use_legacy_spritesheet', False)
