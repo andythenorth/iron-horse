@@ -89,7 +89,7 @@ class SwapCompanyColoursPipeline(Pipeline):
         options = variant.graphics_processor.options
         input_path = os.path.join(currentdir, 'src', 'graphics', options['template'])
         input_image = Image.open(input_path)
-        input_image.show()
+        #input_image.show()
         units = [SwapCompanyColours()]
         result = self.render_common(variant, consist, input_image, units, options)
         return result
