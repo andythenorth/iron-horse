@@ -8,7 +8,7 @@ GENERATE=src/build_iron_horse.py
 
 iron-horse-nml:
 	$(_E) [GENERATE]
-	$(_V) python src/build_iron_horse.py '${REPO_TITLE}' '${REPO_REVISION}'
+	$(_V) python src/build_iron_horse.py '${REPO_TITLE}' '${REPO_REVISION}' '${COMPILE_FASTER}'
 
 clean::
 	$(_V)-rm iron-horse.nml
