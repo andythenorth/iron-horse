@@ -10,14 +10,14 @@ options = {'template': 'box_car_brit_gen_1_template.png',
 graphics_processor_2 = GraphicsProcessorFactory('simple_recolour_pipeline', options)
 
 type_config = TypeConfig(base_id = 'box_car',
-                template = 'train.pynml',
-                class_refit_groups = ['packaged_freight'],
-                label_refits_allowed = ['GRAI', 'WHEA', 'MAIZ'],
-                label_refits_disallowed = [],
-                autorefit = True,
-                default_cargo = 'GOOD',
-                default_capacity_type = 'capacity_freight',
-                  str_type_info = 'DOGTRACK')
+                    template = 'train.pynml',
+                    class_refit_groups = ['packaged_freight'],
+                    label_refits_allowed = ['GRAI', 'WHEA', 'MAIZ'],
+                    label_refits_disallowed = [],
+                    autorefit = True,
+                    default_cargo = 'GOOD',
+                    default_capacity_type = 'capacity_freight',
+                    str_type_info = 'DOGTRACK')
 
 consist = WagonConsist(type_config = type_config,
                     title = 'Box [Car]',

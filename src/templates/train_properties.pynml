@@ -26,6 +26,7 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
         cargo_disallow_refit:           [${vehicle.get_label_refits_disallowed()}];
         default_cargo_type:             ${vehicle.default_cargo};
         loading_speed:                  ${vehicle.loading_speed};
+        cargo_age_period:               ${vehicle.cargo_age_period};
         misc_flags:                     bitmask(${vehicle.special_flags}); // nml constants
         model_life:                     ${consist.adjusted_model_life};
         retire_early:                   ${consist.vehicle_life - 4}; // magic from Eddi

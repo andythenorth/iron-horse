@@ -9,14 +9,15 @@ graphics_processor_2 = GraphicsProcessorFactory('swap_company_colours_pipeline',
 
 
 type_config = TypeConfig(base_id = 'reefer_car',
-                template = 'train.pynml',
-                  class_refit_groups = ['refrigerated_freight'],
-                label_refits_allowed = [],
-                label_refits_disallowed = [],
-                autorefit = True,
-                default_cargo = 'FOOD',
-                default_capacity_type = 'capacity_freight',
-                str_type_info = 'DOGTRACK')
+                    template = 'train.pynml',
+                    class_refit_groups = ['refrigerated_freight'],
+                    label_refits_allowed = [],
+                    label_refits_disallowed = [],
+                    autorefit = True,
+                    default_cargo = 'FOOD',
+                    default_capacity_type = 'capacity_freight',
+                    cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD,
+                    str_type_info = 'DOGTRACK')
 
 consist = WagonConsist(type_config = type_config,
                     title = 'Reefer [Car]',

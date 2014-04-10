@@ -154,12 +154,11 @@ class Consist(object):
         type_suffix = '_'.join(type_suffix.split(' '))
         return 'STR_NAME_SUFFIX_' + type_suffix
 
-    def get_str_type_info(self):
-        # makes a string id for nml
-        if self.str_type_info is not None:
-            return 'STR_' + self.str_type_info
-        else:
-            return 'STR_EMPTY'
+    def get_str_cargo_age_period(self):
+        for slice in self.slices:
+            if getattr(slice, 'cargo_age_period', global_constants.CARGO_AGE_PERIOD) > global_constants.CARGO_AGE_PERIOD:
+                return 'STR_BUY_MENU_IMPROVED_CARGO_AGE_PERIOD'
+        return 'STR_EMPTY'
 
     def get_str_autorefit(self):
         if self.any_slice_offers_autorefit():
@@ -174,9 +173,10 @@ class Consist(object):
         # will need to handle bi-mode locos here, have a look at consist.slice_requires_variable_power(vehicle)
         # buy menu handling could be refactored - construct by appending each item as needed (provide 'type:' string as a substr)
         buy_menu_template = Template(
-            "string(${str_autorefit})"
+            "string(STR_BUY_MENU_TEXT, string(${str_autorefit}), string(${str_cargo_age_period}))"
         )
-        return buy_menu_template.substitute(str_type_info=self.get_str_type_info(), str_autorefit=self.get_str_autorefit())
+        return buy_menu_template.substitute(str_autorefit=self.get_str_autorefit(),
+                                            str_cargo_age_period=self.get_str_cargo_age_period())
 
     def any_slice_offers_autorefit(self):
         offers_autorefit = False
@@ -253,6 +253,7 @@ class Train(object):
         # setup properties for this train
         self.numeric_id = kwargs.get('numeric_id', None)
         self.loading_speed = kwargs.get('loading_speed', 5) # 5 is default train loading speed
+        self.cargo_age_period = kwargs.get('cargo_age_period', global_constants.CARGO_AGE_PERIOD)
         self.vehicle_length = kwargs.get('vehicle_length', None)
         self.speed = kwargs.get('speed', 0)
         self.weight = kwargs.get('weight', None)
@@ -422,6 +423,7 @@ class TypeConfig(object):
         self.autorefit = kwargs.get('autorefit', None)
         self.default_cargo = kwargs.get('default_cargo', 'PASS')
         self.default_capacity_type = kwargs.get('default_capacity_type', None)
+        self.cargo_age_period = kwargs.get('cargo_age_period', global_constants.CARGO_AGE_PERIOD)
         self.str_type_info = kwargs.get('str_type_info', None)
 
 
@@ -465,6 +467,7 @@ class LeadSlice(Train):
         self.vehicle_length = parent_vehicle.vehicle_length
         self.engine_class = parent_vehicle.engine_class
         self.default_cargo_capacities = [0]
+        self.cargo_age_period = parent_vehicle.cargo_age_period
         if isinstance(parent_vehicle, CombineCar):
             self.capacities_pax = parent_vehicle.capacities_pax
             self.default_cargo_capacities = self.capacities_pax
@@ -583,6 +586,7 @@ class Wagon(Train):
         self.autorefit = type_config.autorefit
         self.default_cargo = type_config.default_cargo
         self.default_cargo_capacities = self.get_capacity_variations(kwargs.get(type_config.default_capacity_type, 0))
+        self.cargo_age_period = type_config.cargo_age_period
 
 
 class SteamLoco(Train):

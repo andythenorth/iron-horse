@@ -86,7 +86,6 @@ class DocHelper(object):
         for vehicle in self.get_vehicles_by_subclass()[subclass]:
             result = {'vehicle':{}, 'subclass_props': []}
             result = self.fetch_prop(result, 'Vehicle Name', vehicle.get_name_substr() + base_lang_strings[vehicle.get_str_name_suffix()])
-            #result = self.fetch_prop(result, 'Extra Info', base_lang_strings[vehicle.get_str_type_info()])
             result = self.fetch_prop(result, 'HP', int(vehicle.power))
             result = self.fetch_prop(result, 'Speed (mph)', vehicle.speed)
             result = self.fetch_prop(result, 'Weight (t)', vehicle.weight)
@@ -130,7 +129,7 @@ def render_docs(doc_list, file_type, use_markdown=False):
         doc_file.write(doc)
         doc_file.close()
 
-def main():    
+def main():
     # render standard docs from a list
     html_docs = ['trains', 'code_reference', 'get_started', 'translations']
     txt_docs = ['license', 'readme']
@@ -142,5 +141,5 @@ def main():
     render_docs(markdown_docs, 'txt')
     render_docs(markdown_docs, 'html', use_markdown=True)
 
-if __name__ == '__main__': 
+if __name__ == '__main__':
     main()

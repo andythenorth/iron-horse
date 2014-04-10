@@ -128,6 +128,9 @@ generated_files_dir = 'generated'
 # this is for nml, don't need to use python path module here
 graphics_path = generated_files_dir + '/graphics/'
 
+# cargo aging constant - OTTD default is 185
+CARGO_AGE_PERIOD = 185
+
 # OpenTTD's max date
 max_game_date = 5000001
 
