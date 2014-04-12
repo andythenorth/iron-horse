@@ -44,8 +44,8 @@ class Consist(object):
         self.power_by_tracktype = kwargs.get('power_by_tracktype', None) # used by multi-mode engines such as electro-diesel, otherwise ignored
         self.tractive_effort_coefficient = kwargs.get('tractive_effort_coefficient', 0.3) # 0.3 is recommended default value
         self.speed = kwargs.get('speed', None)
-        # arbitrary adjustments of 0-30 points that can be applied to adjust buy cost and running cost, over-ride in consist as needed
-        # in practice I often use values < 0 or > 30, to dibble specific vehicles (but total points cannot exceed 255)
+        # arbitrary adjustments of points that can be applied to adjust buy cost and running cost, over-ride in consist as needed
+        # values can be -ve or +ve to dibble specific vehicles (but total calculated points cannot exceed 255)
         self.type_base_buy_cost_points = kwargs.get('type_base_buy_cost_points', 15)
         self.type_base_running_cost_points = kwargs.get('type_base_running_cost_points', 15)
         # hangover from switching to 10/8 spritesheet and not wanting to fix existing spritesheets
