@@ -521,12 +521,12 @@ class EngineConsist(Consist):
 
     @property
     def buy_cost(self):
-        # type_base_buy_cost_points is an arbitrary adjustment that can be applied on a class-by-class basis,
+        # type_base_buy_cost_points is an arbitrary adjustment that can be applied on a type-by-type basis,
         return self.get_engine_cost_points() + self.type_base_buy_cost_points
 
     @property
     def running_cost(self):
-        # type_base_running_cost_points is an arbitrary adjustment that can be applied on a class-by-class basis,
+        # type_base_running_cost_points is an arbitrary adjustment that can be applied on a type-by-type basis,
         return self.get_engine_cost_points() + self.type_base_running_cost_points
 
 
