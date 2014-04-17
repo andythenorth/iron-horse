@@ -1,0 +1,24 @@
+##grflangid 0x03
+##plural 2
+##gender m m2 f
+STR_GRF_DESCRIPTION                                             :Licence: {SILVER}GPL v2{}{BLACK}
+
+STR_PARAM_ADJUST_VEHICLE_CAPACITY                               :Capacité des trains
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :Piètre
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Merveilleuse
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Excessive
+
+STR_NAME_SUFFIX_STEAM                                           :(Vapeur)
+STR_NAME_SUFFIX_DIESEL                                          :(Diesel)
+STR_NAME_SUFFIX_ELECTRIC                                        :(Électrique)
+STR_NAME_SUFFIX_METRO_TRAIN                                     :(Métro)
+STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Électro-Diesel)
+STR_NAME_SUFFIX_BATTERY                                         :(Batterie)
+STR_NAME_SUFFIX_CAR                                             :Voiture
+
+STR_BUY_MENU_TEXT                                               :{STRING}{}{STRING}
+STR_BUY_MENU_OFFERS_AUTOREFIT                                   :{BLACK}Réaménagement automatique possible
+STR_BUY_MENU_IMPROVED_CARGO_AGE_PERIOD                          :{BLACK}Valeur des marchandises : {GOLD}Améliorée
+
+STR_COASTER                                                     :Un petit cochon pendu au plafond (pas encore fini)
+STR_DOGTRACK                                                    :C'était vraiment très intéressant.
