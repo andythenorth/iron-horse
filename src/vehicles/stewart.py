@@ -18,7 +18,7 @@ consist = EngineConsist(id = 'stewart',
 
 consist.add_unit(SteamLoco(consist = consist,
                         weight = 35,
-                        vehicle_length = 6,
+                        vehicle_length = 5,
                         spriterow_num = 0))
 
 consist.add_model_variant(intro_date=0,
