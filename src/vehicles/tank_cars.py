@@ -8,7 +8,7 @@ cargo_graphics_mappings = {'FMSP': [1], 'MILK': [2], 'RFPR': [1]}
 
 type_config = TypeConfig(base_id = 'tank_car',
                 template = 'tank_car.pynml',
-                  num_cargo_rows = 3,
+                num_cargo_rows = 3,
                 class_refit_groups = ['liquids'],
                 cargo_graphics_mappings = cargo_graphics_mappings,
                 label_refits_allowed = cargo_graphics_mappings.keys() ,
@@ -27,7 +27,7 @@ consist = WagonConsist(type_config = type_config,
                     wagon_generation = 1,
                     replacement_id = '-none',
                     intro_date = 1860,
-                          vehicle_life = 40,
+                    vehicle_life = 40,
                     graphics_status = '',
                     use_legacy_spritesheet = True)
 
@@ -49,7 +49,7 @@ consist = WagonConsist(type_config = type_config,
                     wagon_generation = 2,
                     replacement_id = '-none',
                     intro_date = 1925,
-                          vehicle_life = 40,
+                    vehicle_life = 40,
                     graphics_status = '',
                     use_legacy_spritesheet = True)
 
@@ -71,7 +71,7 @@ consist = WagonConsist(type_config = type_config,
                     wagon_generation = 3,
                     replacement_id = '-none',
                     intro_date = 1964,
-                          vehicle_life = 40,
+                    vehicle_life = 40,
                     graphics_status = '',
                     use_legacy_spritesheet = True)
 
@@ -88,7 +88,7 @@ consist.add_model_variant(intro_date=0,
 
 type_config = TypeConfig(base_id = 'tank_car_ng',
                 template = 'tank_car.pynml',
-                  num_cargo_rows = 3,
+                num_cargo_rows = 3,
                 class_refit_groups = ['liquids'],
                 cargo_graphics_mappings = cargo_graphics_mappings,
                 label_refits_allowed = cargo_graphics_mappings.keys() ,
@@ -106,7 +106,7 @@ consist = WagonConsist(type_config = type_config,
                     wagon_generation = 1,
                     replacement_id = '-none',
                     intro_date = 1870,
-                          vehicle_life = 40,
+                    vehicle_life = 40,
                     graphics_status = '',
                     use_legacy_spritesheet = True)
 
