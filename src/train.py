@@ -466,8 +466,18 @@ class LeadSlice(Train):
         self.weight = 0
         self.vehicle_length = parent_vehicle.vehicle_length
         self.engine_class = parent_vehicle.engine_class
-        self.default_cargo_capacities = [0]
+        # provide default capacity (set as property) so leads vehicle has same refittability as trailing slices, this prevents an issue with auto-refit
+        self.default_cargo_capacities = [1]
+        # actual capacity determined by cb checking cargo type, set all of these to 0
+        self.capacities_pax = [0, 0, 0]
+        self.capacities_freight = [0, 0, 0]
+        self.capacities_mail = [0, 0, 0]
+        # copy the refittability info from parent
+        self.class_refit_groups = parent_vehicle.class_refit_groups
+        self.label_refits_allowed = parent_vehicle.label_refits_allowed
+        self.label_refits_disallowed = parent_vehicle.label_refits_disallowed
         self.cargo_age_period = parent_vehicle.cargo_age_period
+        self.autorefit = parent_vehicle.autorefit
         if isinstance(parent_vehicle, CombineCar):
             self.capacities_pax = parent_vehicle.capacities_pax
             self.default_cargo_capacities = self.capacities_pax
@@ -481,6 +491,18 @@ class NullTrailingSlice(object):
     def __init__(self, parent_vehicle):
         self.id = global_constants.null_trailing_slice_id
         self.numeric_id = global_constants.null_trailing_slice_numeric_id
+        # provide default capacity (set as property) so leads vehicle has same refittability as trailing slices, this prevents an issue with auto-refit
+        self.default_cargo_capacities = [1]
+        # actual capacity determined by cb checking cargo type, set all of these to 0
+        self.capacities_pax = [0, 0, 0]
+        self.capacities_freight = [0, 0, 0]
+        self.capacities_mail = [0, 0, 0]
+        # copy the refittability info from parent
+        self.class_refit_groups = parent_vehicle.class_refit_groups
+        self.label_refits_allowed = parent_vehicle.label_refits_allowed
+        self.label_refits_disallowed = parent_vehicle.label_refits_disallowed
+        self.cargo_age_period = parent_vehicle.cargo_age_period
+        self.autorefit = parent_vehicle.autorefit
 
     def render(self):
         template = templates['null_trailing_slice.pynml']
