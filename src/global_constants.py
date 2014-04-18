@@ -114,7 +114,9 @@ cargo_labels = ['PASS', # pax first
                 'WHEA',
                 'WOOL',
                 'OLSD',
-                'SUGR']
+                'SUGR',
+                #
+                'NULL']
 
 # meaning of grfid should be obvious :)
 grfid = r"CA\12\1E"
