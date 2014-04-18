@@ -4,10 +4,10 @@
         <div class="span3">
             <ul class="nav nav-list well">
                 <li class="nav-header">Get Started</li>
-                <li><a href="#download-fish">Download Iron Horse</a></li>
+                <li><a href="#download-iron-horse">Download Iron Horse</a></li>
                 <li><a href="#setting-up">Setting up a Game with Iron Horse</a></li>
                 <li><a href="#what-next">What Next?</a></li>
-                <li><a href="#fish-changes">Iron Horse Changes</a></li>
+                <li><a href="#iron-horse-changes">Iron Horse Changes</a></li>
             </ul>
         </div>
         <div class="span9">
@@ -24,7 +24,7 @@
                     <li><i class="icon-ok-circle"></i> GPL v2 license</li>
                 </ul>
             </div>
-            <div id="download-fish">
+            <div id="download-iron-horse">
                 <h2>1. Download Iron Horse</h2>
                 <p class="lead">
                     Iron Horse is available from the content service in OpenTTD, as a zip for manual installation,
@@ -39,7 +39,7 @@
                     <div class="span3">
                         <h3>Download Zip</h3>
                         <p>Get the latest Iron Horse release for <a href="http://wiki.openttd.org/Newgrf#Manual_install">manual install</a>.</p>
-                        <a class="btn btn-info" href="http://bundles.openttdcoop.org/fish/releases/LATEST/">Download Iron Horse</a>
+                        <a class="btn btn-info" href="http://bundles.openttdcoop.org/iron-horse/releases/LATEST/">Download Iron Horse</a>
                     </div>
                     <div class="span3">
                         <h3>Download Source</h3>
@@ -70,7 +70,7 @@
             </div>
             <hr />
             <br />
-            <div id="fish-changes">
+            <div id="iron-horse-changes">
                 <h2>4. Changes in Iron Horse</h2>
                 <p class="lead">Iron Horse is updated and improved quite often.</p>
                 <p>The <a href="changelog.html"><strong>Iron Horse changelog</strong></a> keeps track of changes, including new features, bug fixes and updates to translations.</p>
