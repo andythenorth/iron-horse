@@ -32,3 +32,4 @@ basecost {
 // sort order
 sort(FEAT_TRAINS, ${[consist.base_numeric_id for consist in consists]});
 
+traininfo_y_offset = 2;
