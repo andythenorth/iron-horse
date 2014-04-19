@@ -76,14 +76,13 @@ consist = WagonConsist(type_config = type_config,
                     replacement_id = '-none',
                     intro_date = 1995,
                     vehicle_life = 40,
-                    graphics_status = '',
-                    use_legacy_spritesheet = True)
+                    graphics_status = '')
 
 consist.add_unit(Wagon(type_config = type_config,
                         consist = consist,
                         capacity_freight = 55,
                         weight = 25,
-                        vehicle_length = 8,
+                        vehicle_length = 10,
                         loading_speed = 20))
 
 consist.add_model_variant(intro_date=0,
