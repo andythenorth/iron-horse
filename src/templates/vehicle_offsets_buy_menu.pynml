@@ -6,6 +6,6 @@ template spriteset_template_purchase_${vehicle.id}() {
     [60,    10, 1, 1, 0, 0]
     [60,    10, 1, 1, 0, 0]
     [60,    10, 1, 1, 0, 0]
-    [316,   10, ${consist.buy_menu_width}, 15, -${consist.buy_menu_width / 2}, -6]
+    [316,   10, ${consist.buy_menu_width}, 15, -${consist.buy_menu_width / 2}, -10]
     [60,    10, 1, 1, 0, 0]
 }

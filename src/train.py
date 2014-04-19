@@ -341,6 +341,14 @@ class Train(object):
         return self.id + suffix
 
     @property
+    def adjust_xoffs(self):
+        # used to correct depot view x offset
+        if isinstance(self, LeadSlice):
+            return global_constants.xoffs_adjusts[str(self.vehicle_length)]
+        else:
+            return 0
+
+    @property
     def sg_default(self):
         if isinstance(self, LeadSlice):
             suffix = "_sg_hidden"

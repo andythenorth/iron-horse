@@ -2,7 +2,7 @@
 
 <tal:offsets switch="consist.use_legacy_spritesheet">
     <tal:standard case="False">
-        template spriteset_template_${vehicle.id}(y) {
+        template spriteset_template_${vehicle.id}(y, adjust_xoffs) {
             //[left_x,  upper_y,    width,      height,     offset_x,      offset_y]
             [60,        y,          8,         27,          ${vehicle.offsets[0][0]}, ${vehicle.offsets[0][1]}]
             [76,        y,          26,        24,          ${vehicle.offsets[1][0]}, ${vehicle.offsets[1][1]}]
@@ -10,13 +10,13 @@
             [156,       y,          26,        24,          ${vehicle.offsets[3][0]}, ${vehicle.offsets[3][1]}]
             [188,       y,          8,         27,          ${vehicle.offsets[4][0]}, ${vehicle.offsets[4][1]}]
             [200 ,       y,         26,        24,          ${vehicle.offsets[5][0]}, ${vehicle.offsets[5][1]}]
-            [235,       y,          40,        16,          ${vehicle.offsets[6][0]}, ${vehicle.offsets[6][1]}]
+            [235,       y,          40,        16,          ${vehicle.offsets[6][0]} + adjust_xoffs, ${vehicle.offsets[6][1]}]
             [284,       y,          26,        24,          ${vehicle.offsets[7][0]}, ${vehicle.offsets[7][1]}]
         }
     </tal:standard>
 
     <tal:legacy case="True">
-        template spriteset_template_${vehicle.id}(y) {
+        template spriteset_template_${vehicle.id}(y, adjust_xoffs) {
             //[left_x,  upper_y,    width,      height,     offset_x,      offset_y]
             [60,        y,          8,         25,          ${vehicle.offsets[0][0]}, ${vehicle.offsets[0][1]}]
             [76,        y,          22,        22,          ${vehicle.offsets[1][0]}, ${vehicle.offsets[1][1]}]
@@ -24,7 +24,7 @@
             [156,       y,          22,        22,          ${vehicle.offsets[3][0]}, ${vehicle.offsets[3][1]}]
             [188,       y,          8,         25,          ${vehicle.offsets[4][0]}, ${vehicle.offsets[4][1]}]
             [204,       y,          22,        22,          ${vehicle.offsets[5][0]}, ${vehicle.offsets[5][1]}]
-            [235,       y,          32,        15,          ${vehicle.offsets[6][0]}, ${vehicle.offsets[6][1]}]
+            [235,       y,          32,        15,          ${vehicle.offsets[6][0]} + adjust_xoffs, ${vehicle.offsets[6][1]}]
             [284,       y,          22,        22,          ${vehicle.offsets[7][0]}, ${vehicle.offsets[7][1]}]
         }
     </tal:legacy>
