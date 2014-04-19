@@ -3,7 +3,7 @@ from train import TypeConfig, WagonConsist, Wagon
 
 type_config = TypeConfig(base_id = 'covered_hopper_car',
                 template = 'train.pynml',
-                  class_refit_groups = ['covered_hopper_freight'],
+                class_refit_groups = ['covered_hopper_freight'],
                 label_refits_allowed = ['GRAI', 'WHEA', 'MAIZ', 'FOOD', 'SUGR', 'FMSP', 'RFPR', 'CLAY'],
                 label_refits_disallowed = [],
                 autorefit = True,
@@ -17,7 +17,7 @@ consist = WagonConsist(type_config = type_config,
                     wagon_generation = 1,
                     replacement_id = '-none',
                     intro_date = 1922,
-                          vehicle_life = 40,
+                    vehicle_life = 40,
                     graphics_status = '',
                     use_legacy_spritesheet = True)
 
@@ -40,7 +40,7 @@ consist = WagonConsist(type_config = type_config,
                     wagon_generation = 3,
                     replacement_id = '-none',
                     intro_date = 1960,
-                          vehicle_life = 40,
+                    vehicle_life = 40,
                     graphics_status = '',
                     use_legacy_spritesheet = True)
 
