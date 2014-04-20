@@ -15,6 +15,7 @@ STR_NAME_SUFFIX_METRO_TRAIN                                     :(Metro)
 STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Electro-Dièsel)
 STR_NAME_SUFFIX_BATTERY                                         :(Bateria)
 STR_NAME_SUFFIX_CAR                                             :Vagó
+STR_NAME_SUFFIX_METRO_CAR                                       :Vagó (Metro)
 
 STR_BUY_MENU_TEXT                                               :{STRING}{}{STRING}
 STR_BUY_MENU_OFFERS_AUTOREFIT                                   :{BLACK}Ofereix autoremodelar
