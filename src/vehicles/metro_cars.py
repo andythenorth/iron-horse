@@ -15,7 +15,7 @@ type_config = TypeConfig(base_id = 'metro_car',
                 str_type_info = 'DOGTRACK')
 
 consist = WagonConsist(type_config = type_config,
-                    title = 'Metro [Car]',
+                    title = 'Mail [Metro Car]',
                     vehicle_set = 'brit',
                     wagon_generation = 1,
                     replacement_id = '-none',
