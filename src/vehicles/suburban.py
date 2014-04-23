@@ -8,16 +8,16 @@ consist = EngineConsist(id = 'suburban',
               power = 650,
               tractive_effort_coefficient = 0.2,
               speed = 70,
-              buy_cost = 42,
+              type_base_running_cost_points = -6, # dibble running costs for game balance
               vehicle_life = 40,
               intro_date = 1930,
               graphics_status = '',
               use_legacy_spritesheet = True)
-              
+
 consist.add_unit(SteamLoco(consist = consist,
                         weight = 57,
                         vehicle_length = 7,
-                        spriterow_num = 0))              
+                        spriterow_num = 0))
 
 consist.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,
