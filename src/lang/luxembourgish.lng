@@ -1,0 +1,24 @@
+##grflangid 0x23
+##plural 0
+STR_GRF_DESCRIPTION                                             :Lizens: {SILVER}GPL v2{}{BLACK}
+
+STR_PARAM_ADJUST_VEHICLE_CAPACITY                               :Zuchkapazitéit
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :Mickreg
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Herrlech
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Exzessiv
+
+STR_NAME_SUFFIX_STEAM                                           :(Damp)
+STR_NAME_SUFFIX_DIESEL                                          :(Diesel)
+STR_NAME_SUFFIX_ELECTRIC                                        :(Elektresch)
+STR_NAME_SUFFIX_METRO_TRAIN                                     :(Metro)
+STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Elektro-Diesel)
+STR_NAME_SUFFIX_BATTERY                                         :(Batterie)
+STR_NAME_SUFFIX_CAR                                             :Won
+STR_NAME_SUFFIX_METRO_CAR                                       :Won (Metro)
+
+STR_BUY_MENU_TEXT                                               :{STRING}{}{STRING}
+STR_BUY_MENU_OFFERS_AUTOREFIT                                   :{BLACK}Kann auto-ersat ginn
+STR_BUY_MENU_IMPROVED_CARGO_AGE_PERIOD                          :{BLACK}Wuerenbezuelraten: {GOLD}Verbessert
+
+STR_COASTER                                                     :D'Kou ass iwwert den Mound gesprong (temp-erennerung...)
+STR_DOGTRACK                                                    :Hënn sinn brong, heiansdo
