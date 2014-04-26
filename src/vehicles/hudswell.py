@@ -18,7 +18,7 @@ consist = EngineConsist(id = 'hudswell',
 
 consist.add_unit(SteamLoco(consist = consist,
                         weight = 50,
-                        vehicle_length = 8,
+                        vehicle_length = 7,
                         spriterow_num = 0))
 
 consist.add_model_variant(intro_date=0,
