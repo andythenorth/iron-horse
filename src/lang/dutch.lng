@@ -10,12 +10,15 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Extravagant
 STR_NAME_SUFFIX_STEAM                                           :(Stoom)
 STR_NAME_SUFFIX_DIESEL                                          :(Diesel)
 STR_NAME_SUFFIX_ELECTRIC                                        :(Elektrisch)
+STR_NAME_SUFFIX_METRO_TRAIN                                     :(Metro)
 STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Elektrisch-Diesel)
 STR_NAME_SUFFIX_BATTERY                                         :(Batterij)
-STR_NAME_SUFFIX_CAR                                             :Auto
+STR_NAME_SUFFIX_CAR                                             :Wagen
+STR_NAME_SUFFIX_METRO_CAR                                       :Wagen (Metro)
 
-STR_BUY_MENU_TEXT                                               :Type: {GOLD}{STRING}{}{STRING}{STRING}
+STR_BUY_MENU_TEXT                                               :{STRING}{}{STRING}
 STR_BUY_MENU_OFFERS_AUTOREFIT                                   :{BLACK}Heeft auto-ombouw
+STR_BUY_MENU_IMPROVED_CARGO_AGE_PERIOD                          :{BLACK}Vrachtprijs: {GOLD}Verbeterd
 
 STR_COASTER                                                     :De koe sprong over de maan (herinnering dat dit nog niet af is)
 STR_DOGTRACK                                                    :Soms zijn honden bruin
