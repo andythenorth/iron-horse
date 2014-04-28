@@ -8,6 +8,7 @@ consist = EngineConsist(id = 'little_bear',
               power = 750,
               speed = 85,
               type_base_buy_cost_points = 5, # dibble buy cost for game balance
+              type_base_running_cost_points = -8, # dibble run cost for game balance
               vehicle_life = 40,
               intro_date = 1964,
               graphics_status = '',
