@@ -14,12 +14,12 @@ consist = EngineConsist(id = 'chinook',
               use_legacy_spritesheet = True)
 
 consist.add_unit(DieselLoco(consist = consist,
-                        weight = 73,
+                        weight = 80,
                         vehicle_length = 7,
                         spriterow_num = 0))
 
 consist.add_unit(DieselLoco(consist = consist,
-                        weight = 73,
+                        weight = 80,
                         vehicle_length = 7,
                         spriterow_num = 1))
 

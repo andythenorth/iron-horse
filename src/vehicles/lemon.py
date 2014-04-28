@@ -7,6 +7,7 @@ consist = EngineConsist(id = 'lemon',
               replacement_id = '-none',
               power = 2100,
               tractive_effort_coefficient = 0.29,
+              type_base_running_cost_points = 30, # dibble running costs for game balance
               speed = 65,
               buy_cost = 114,
               vehicle_life = 40,
