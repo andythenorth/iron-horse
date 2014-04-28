@@ -7,7 +7,7 @@ consist = EngineConsist(id = 'slammer',
               replacement_id = '-none',
               power = 300,
               speed = 75,
-              type_base_running_cost_points = 0, # dibble running costs for game balance
+              type_base_running_cost_points = -32, # dibble running costs for game balance
               intro_date = 1960,
               vehicle_life = 40,
               graphics_status = '',
