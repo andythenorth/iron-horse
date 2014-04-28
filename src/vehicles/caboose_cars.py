@@ -3,7 +3,7 @@ from train import TypeConfig, WagonConsist, Wagon
 
 type_config = TypeConfig(base_id = 'caboose_car',
                 template = 'train.pynml',
-                  class_refit_groups = [],
+                class_refit_groups = ['all_freight'],
                 label_refits_allowed = [],
                 label_refits_disallowed = [],
                 default_capacity_type = 'capacity_freight',
