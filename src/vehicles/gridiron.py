@@ -6,8 +6,9 @@ consist = EngineConsist(id = 'gridiron',
               title = 'Gridiron [Diesel]',
               replacement_id = '-none',
               power = 3700,
+              tractive_effort_coefficient = 0.4, #dibble for game balance, assume super-slip control
               speed = 85,
-              buy_cost = 186,
+              type_base_buy_cost_points = 30, # dibble buy cost for game balance
               vehicle_life = 40,
               intro_date = 1980,
               graphics_status = '',
