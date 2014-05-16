@@ -35,7 +35,7 @@ module_timestamps = dict((line.split('||',1)[0].strip(), line.split('||',1)[1].s
 def render_consist_nml(consist):
     # some slightly dodgy optimisation here
     vehicle_dirty = True
-    if repo_vars['compile_faster'] == 'True':
+    if repo_vars.get('compile_faster', None) == 'True':
         if (float(module_timestamps.get(consist.vehicle_module_path, 0)) == os.stat(consist.vehicle_module_path).st_mtime):
             vehicle_dirty = False
 
@@ -54,10 +54,10 @@ def main():
         grf_nml.write(utils.unescape_chameleon_output(template(consists=consists, global_constants=global_constants,
                                                         utils=utils, sys=sys, repo_vars=repo_vars)))
 
-    if repo_vars['compile_faster'] == 'True':
+    if repo_vars.get('compile_faster', None) == 'True':
         utils.echo_message('Only rendering changed nml files: (COMPILE_FASTER=True)')
 
-    if repo_vars['no_mp'] == 'True':
+    if repo_vars.get('no_mp', None) == 'True':
         utils.echo_message('Multiprocessing disabled: (NO_MP=True)')
         for consist in consists:
             render_consist_nml(consist)
