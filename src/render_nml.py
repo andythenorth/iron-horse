@@ -54,10 +54,18 @@ def main():
         grf_nml.write(utils.unescape_chameleon_output(template(consists=consists, global_constants=global_constants,
                                                         utils=utils, sys=sys, repo_vars=repo_vars)))
 
-    pool = Pool(processes=16) # 16 is an arbitrary amount that appears to be fast without blocking the system
-    pool.map(render_consist_nml, consists)
-    pool.close()
-    pool.join()
+    if repo_vars['compile_faster'] == 'True':
+        utils.echo_message('Only rendering changed nml files: (COMPILE_FASTER=True)')
+
+    if repo_vars['no_mp'] == 'True':
+        utils.echo_message('Multiprocessing disabled: (NO_MP=True)')
+        for consist in consists:
+            render_consist_nml(consist)
+    else:
+        pool = Pool(processes=16) # 16 is an arbitrary amount that appears to be fast without blocking the system
+        pool.map(render_consist_nml, consists)
+        pool.close()
+        pool.join()
 
     nml_cache = codecs.open(nml_metadata_cache_path, 'w', 'utf8')
 
@@ -68,8 +76,6 @@ def main():
         grf_nml.write(consist_nml)
 
     grf_nml.close()
-    nml_cache.close()
-
 
 if __name__ == '__main__':
     main()
