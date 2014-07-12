@@ -64,6 +64,8 @@ gen_3_wagon_speeds = [100, None]
 # capacity multipliers for capacity parameter
 capacity_multipliers = [0.67, 1, 1.33]
 
+param_adjust_vehicle_capacity = 1
+
 # used to construct the cargo table automatically
 # ! order is significant ! - openttd will cascade through default cargos in the order specified by the cargo table
 cargo_labels = ['PASS', # pax first

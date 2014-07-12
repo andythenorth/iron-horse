@@ -35,7 +35,9 @@ module_timestamps = dict((line.split('||',1)[0].strip(), line.split('||',1)[1].s
 
 def render_nfo(filename):
     nmlc_call_args = ['nmlc',
-                      '--extra-constants=extra_constants.json',
+                      #'--extra-constants=extra_constants.json',
+                      '--lang-dir=generated/lang',
+                      '--quiet',
                       '--nfo',
                       'generated/nfo/' + filename + '.nfo',
                       'generated/nml/' + filename + '.nml']

@@ -7,7 +7,7 @@
     }
 </tal:capacity>
 
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_cargo_capacity, param_adjust_vehicle_capacity) {
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_cargo_capacity, param[0]) {
     0: ${vehicle.id}_switch_cargo_capacity_by_cargo_0;
     1: ${vehicle.id}_switch_cargo_capacity_by_cargo_1;
     2: ${vehicle.id}_switch_cargo_capacity_by_cargo_2;
