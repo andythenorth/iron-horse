@@ -26,6 +26,8 @@ if not os.path.exists(generated_nml_path):
 # get args passed by makefile
 repo_vars = utils.get_repo_vars(sys)
 
+consists = iron_horse.get_consists_in_buy_menu_order(show_warnings=True)
+
 # we cache some nml metadata to see if we can render templated vehicles faster
 nml_metadata_cache_path = os.path.join('generated', 'nml_metadata.cache')
 if not os.path.exists(nml_metadata_cache_path):
@@ -44,6 +46,15 @@ def render_nfo(filename):
     subprocess.call(nmlc_call_args)
 
 
+def render_header_item_nml(header_item):
+    template = templates[header_item + '.pynml']
+    header_item_nml = codecs.open(os.path.join('generated', 'nml', header_item + '.nml'),'w','utf8')
+    header_item_nml.write(utils.unescape_chameleon_output(template(consists=consists, global_constants=global_constants,
+                                                    utils=utils, sys=sys, repo_vars=repo_vars)))
+    header_item_nml.close()
+    render_nfo(header_item)
+
+
 def render_consist_nml(consist):
     # some slightly dodgy optimisation here
     vehicle_dirty = True
@@ -59,25 +70,27 @@ def render_consist_nml(consist):
 
 
 def main():
-    consists = iron_horse.get_consists_in_buy_menu_order(show_warnings=True)
-
     grf_nfo = codecs.open(os.path.join('generated', 'sprites', 'iron-horse.nfo'),'w','utf8')
     header_items = ['header', 'cargo_table', 'railtype_table', 'disable_default_vehicles']
-    for header_item in header_items:
-        template = templates[header_item + '.pynml']
-        header_item_nml = codecs.open(os.path.join('generated', 'nml', header_item + '.nml'),'w','utf8')
-        header_item_nml.write(utils.unescape_chameleon_output(template(consists=consists, global_constants=global_constants,
-                                                        utils=utils, sys=sys, repo_vars=repo_vars)))
-        header_item_nml.close()
-        render_nfo(header_item)
-        header_nfo = codecs.open(os.path.join('generated', 'nfo', header_item + '.nfo'),'r','utf8').read()
-        grf_nfo.write(header_nfo)
 
     if repo_vars.get('compile_faster', None) == 'True':
         utils.echo_message('Only rendering changed nml files: (COMPILE_FASTER=True)')
 
     if repo_vars.get('no_mp', None) == 'True':
         utils.echo_message('Multiprocessing disabled: (NO_MP=True)')
+
+    print "Rendering header items"
+    if repo_vars.get('no_mp', None) == 'True':
+        for header_item in header_items:
+            render_header_item_nml(header_item)
+    else:
+        pool = Pool(processes=16) # 16 is an arbitrary amount that appears to be fast without blocking the system
+        pool.map(render_header_item_nml, header_items)
+        pool.close()
+        pool.join()
+
+    print "Rendering consists"
+    if repo_vars.get('no_mp', None) == 'True':
         for consist in consists:
             render_consist_nml(consist)
     else:
@@ -87,6 +100,10 @@ def main():
         pool.join()
 
     nml_cache = codecs.open(nml_metadata_cache_path, 'w', 'utf8')
+
+    for header_item in header_items:
+        header_nfo = codecs.open(os.path.join('generated', 'nfo', header_item + '.nfo'),'r','utf8').read()
+        grf_nfo.write(header_nfo)
 
     for consist in consists:
         metadata = consist.vehicle_module_path + '||' + str(os.stat(consist.vehicle_module_path).st_mtime) + '\n'
