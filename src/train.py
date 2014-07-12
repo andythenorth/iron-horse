@@ -245,8 +245,8 @@ class Consist(object):
         # templating
         print('Rendering ' + self.id)
         nml_result = ''
+        nml_result = nml_result + self.render_dummy() # do this first so we can split it off cleanly
         nml_result = nml_result + self.render_articulated_switch()
-        nml_result = nml_result + self.render_dummy()
         for slice in set(self.slices):
             nml_result = nml_result + slice.render()
         return nml_result
