@@ -64,6 +64,8 @@ gen_3_wagon_speeds = [100, None]
 # capacity multipliers for capacity parameter
 capacity_multipliers = [0.67, 1, 1.33]
 
+param_adjust_vehicle_capacity = 1
+
 # used to construct the cargo table automatically
 # ! order is significant ! - openttd will cascade through default cargos in the order specified by the cargo table
 cargo_labels = ['PASS', # pax first
@@ -119,6 +121,7 @@ cargo_labels = ['PASS', # pax first
                 'NULL']
 
 # meaning of grfid should be obvious :)
+# (DanMacK is from canada, and IH starts in 1830)
 grfid = r"CA\12\1E"
 
 # chameleon templating goes faster if a cache dir is used; this specifies which dir is cache dir
@@ -127,8 +130,8 @@ chameleon_cache_dir = 'chameleon_cache'
 # specify location for intermediate files generated during build (nml, graphics, lang etc)
 generated_files_dir = 'generated'
 
-# this is for nml, don't need to use python path module here
-graphics_path = generated_files_dir + '/graphics/'
+# this is for nml or grfcodec, don't need to use python path module here
+graphics_path = 'generated/graphics/'
 
 # cargo aging constant - OTTD default is 185
 CARGO_AGE_PERIOD = 185

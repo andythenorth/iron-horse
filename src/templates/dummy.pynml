@@ -1,0 +1,19 @@
+<!--! This is purely to support partial compiling - gets some essential data into the compile -->
+
+// CTT
+<tal:include define="cargo_table load: cargo_table.pynml" metal:use-macro="cargo_table" />
+
+// RTT
+<tal:include define="railtype_table load: railtype_table.pynml" metal:use-macro="railtype_table" />
+
+switch(FEAT_TRAINS, SELF, DUMMY_CALLBACK, 0xFFFFFFFF) {
+    <tal:strings repeat="string utils.parse_base_lang()">
+    ${repeat.string.index}: string(${string});
+    </tal:strings>
+}
+
+<!--! changing this may break a fragile split in render_nml.py -->
+item(FEAT_TRAINS, dummy_vehicle, 0xFFFF) {
+    graphics { default: DUMMY_CALLBACK; }
+}
+

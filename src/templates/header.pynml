@@ -35,3 +35,6 @@ sort(FEAT_TRAINS, ${[consist.base_numeric_id for consist in consists]});
 // fix depot view for trains
 traininfo_y_offset = 2;
 train_width_32_px = 1;
+
+// dummy
+<tal:include define="dummy load: dummy.pynml" metal:use-macro="dummy" />
