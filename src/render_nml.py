@@ -113,6 +113,7 @@ def main():
         metadata = consist.vehicle_module_path + '||' + str(os.stat(consist.vehicle_module_path).st_mtime) + '\n'
         nml_cache.write(metadata)
         consist_nfo = codecs.open(os.path.join('generated', 'nfo', consist.id + '.nfo'),'r','utf8').read()
+        # fragile split on some specific nfo, may break
         if '\wx00FE 	// DUMMY_CALLBACK;' in consist_nfo:
             consist_nfo = consist_nfo.split('\wx00FE 	// DUMMY_CALLBACK;')[1]
         grf_nfo.write(consist_nfo)
