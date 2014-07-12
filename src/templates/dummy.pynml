@@ -1,4 +1,4 @@
-<!-- This is purely to support partial compiling - gets some essential data into the compile -->
+<!--! This is purely to support partial compiling - gets some essential data into the compile -->
 
 // CTT
 <tal:include define="cargo_table load: cargo_table.pynml" metal:use-macro="cargo_table" />
