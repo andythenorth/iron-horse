@@ -12,7 +12,6 @@ switch(FEAT_TRAINS, SELF, DUMMY_CALLBACK, 0xFFFFFFFF) {
     </tal:strings>
 }
 
-<!--! changing this will break a string split in render_nml.py -->
 item(FEAT_TRAINS, dummy_vehicle, 0xFFFF) {
     graphics { default: DUMMY_CALLBACK; }
 }
