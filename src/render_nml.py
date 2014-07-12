@@ -22,9 +22,9 @@ templates = PageTemplateLoader(os.path.join(currentdir, 'src', 'templates'))
 generated_nml_path = os.path.join(iron_horse.generated_files_path, 'nml')
 if not os.path.exists(generated_nml_path):
     os.mkdir(generated_nml_path)
-sprites_dir_path = os.path.join(iron_horse.generated_files_path, 'sprites')
-if not os.path.exists(sprites_dir_path):
-    os.mkdir(sprites_dir_path)
+generated_nfo_path = os.path.join(iron_horse.generated_files_path, 'nfo')
+if not os.path.exists(generated_nfo_path):
+    os.mkdir(generated_nfo_path)
 
 
 # get args passed by makefile
@@ -74,7 +74,7 @@ def render_consist_nml(consist):
 
 
 def main():
-    grf_nfo = codecs.open(os.path.join('generated', 'sprites', 'iron-horse.nfo'),'w','utf8')
+    grf_nfo = codecs.open(os.path.join(iron_horse.generated_files_path, 'iron-horse.nfo'),'w','utf8')
     header_items = ['header', 'cargo_table', 'railtype_table', 'disable_default_vehicles']
 
     if repo_vars.get('compile_faster', None) == 'True':

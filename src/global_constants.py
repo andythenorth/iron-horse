@@ -131,7 +131,7 @@ chameleon_cache_dir = 'chameleon_cache'
 generated_files_dir = 'generated'
 
 # this is for nml or grfcodec, don't need to use python path module here
-graphics_path = 'graphics/'
+graphics_path = 'generated/graphics/'
 
 # cargo aging constant - OTTD default is 185
 CARGO_AGE_PERIOD = 185
