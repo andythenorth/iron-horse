@@ -119,6 +119,7 @@ cargo_labels = ['PASS', # pax first
                 'NULL']
 
 # meaning of grfid should be obvious :)
+# (DanMacK is from canada, and IH starts in 1830)
 grfid = r"CA\12\1E"
 
 # chameleon templating goes faster if a cache dir is used; this specifies which dir is cache dir
