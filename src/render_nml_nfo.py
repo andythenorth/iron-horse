@@ -3,6 +3,7 @@
 print "[RENDER NML & NFO] render_nml_nfo.py"
 
 import codecs # used for writing files - more unicode friendly than standard open() module
+import json
 
 import shutil
 import sys
@@ -32,18 +33,12 @@ if not os.path.exists(generated_nfo_path):
 consists = iron_horse.get_consists_in_buy_menu_order(show_warnings=True)
 
 # we cache file timestamps to see if we can render faster
-dep_timestamps_path = os.path.join('generated', 'dep_timestamps.txt')
+dep_timestamps_path = os.path.join('generated', 'dep_timestamps.json')
 if not os.path.exists(dep_timestamps_path):
     codecs.open(dep_timestamps_path,'w','utf8').close()
-# this is fragile, playing one line python is silly :)
-module_timestamps = dict((line.split('||',1)[0].strip(), line.split('||',1)[1].strip()) for line in codecs.open(dep_timestamps_path,'r','utf8').readlines())
-
-
-def update_dep_timestamps(dep_timestamps, dep_path):
-    print dep_path
-    metadata = dep_path + '||' + str(os.stat(dep_path).st_mtime) + '\n'
-    dep_timestamps.write(metadata)
-
+    module_timestamps = {}
+else:
+    module_timestamps = json.loads(codecs.open(dep_timestamps_path,'r','utf8').read())
 
 def render_nfo(filename):
     nmlc_call_args = ['nmlc',
@@ -109,20 +104,23 @@ def main():
         pool.close()
         pool.join()
 
-    dep_timestamps = codecs.open(dep_timestamps_path, 'w', 'utf8')
+    dep_timestamps = {}
 
     for header_item in header_items:
         header_nfo = codecs.open(os.path.join('generated', 'nfo', header_item + '.nfo'),'r','utf8').read()
         grf_nfo.write(header_nfo)
 
     for consist in consists:
-        update_dep_timestamps(dep_timestamps, consist.vehicle_module_path)
+        dep_timestamps[consist.vehicle_module_path] = os.stat(consist.vehicle_module_path).st_mtime
         consist_nfo = codecs.open(os.path.join('generated', 'nfo', consist.id + '.nfo'),'r','utf8').read()
         # fragile split on some specific nfo, may break
         if '\wx00FE 	// DUMMY_CALLBACK;' in consist_nfo:
             consist_nfo = consist_nfo.split('\wx00FE 	// DUMMY_CALLBACK;')[1]
         grf_nfo.write(consist_nfo)
     grf_nfo.close()
+    dep_timestamps_file = codecs.open(dep_timestamps_path, 'w', 'utf8')
+    dep_timestamps_file.write(json.dumps(dep_timestamps))
+    dep_timestamps_file.close()
 
     # some warnings suppressed when we call nforenum; assume nmlc has done the right thing and nforenum is wrong
     nforenum_call_args = ['nforenum',
