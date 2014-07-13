@@ -33,7 +33,7 @@ if not os.path.exists(generated_nfo_path):
 
 consists = iron_horse.get_consists_in_buy_menu_order(show_warnings=True)
 
-# we cache file timestamps to see if we can render faster
+# we track file timestamps to see if we can render faster by only rendering when source file is changed
 dep_timestamps_path = os.path.join('generated', 'dep_timestamps.json')
 if not os.path.exists(dep_timestamps_path):
     codecs.open(dep_timestamps_path,'w','utf8').close()
