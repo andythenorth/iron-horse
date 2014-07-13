@@ -119,6 +119,7 @@ def main():
         grf_nfo.write(consist_nfo)
 
     grf_nfo.close()
+    # some warnings suppressed when we call nforenum; assume nmlc has done the right thing and nforenum is wrong
     nforenum_call_args = ['nforenum',
                       '--silent',
                       '--warning-disable=100,109,111,147,170',
