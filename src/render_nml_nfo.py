@@ -39,6 +39,12 @@ if not os.path.exists(dep_timestamps_path):
 module_timestamps = dict((line.split('||',1)[0].strip(), line.split('||',1)[1].strip()) for line in codecs.open(dep_timestamps_path,'r','utf8').readlines())
 
 
+def update_dep_timestamps(dep_timestamps, dep_path):
+    print dep_path
+    metadata = dep_path + '||' + str(os.stat(dep_path).st_mtime) + '\n'
+    dep_timestamps.write(metadata)
+
+
 def render_nfo(filename):
     nmlc_call_args = ['nmlc',
                       #'--extra-constants=extra_constants.json',
@@ -110,9 +116,7 @@ def main():
         grf_nfo.write(header_nfo)
 
     for consist in consists:
-        print consist.vehicle_module_path
-        metadata = consist.vehicle_module_path + '||' + str(os.stat(consist.vehicle_module_path).st_mtime) + '\n'
-        dep_timestamps.write(metadata)
+        update_dep_timestamps(dep_timestamps, consist.vehicle_module_path)
         consist_nfo = codecs.open(os.path.join('generated', 'nfo', consist.id + '.nfo'),'r','utf8').read()
         # fragile split on some specific nfo, may break
         if '\wx00FE 	// DUMMY_CALLBACK;' in consist_nfo:
