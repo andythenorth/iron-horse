@@ -102,6 +102,7 @@ def link_nfo(item, dep_path, split=None):
             item_nfo = item_nfo.split(split)[1]
     grf_nfo.write(item_nfo)
 
+
 def main():
     header_items = ['header', 'cargo_table', 'railtype_table', 'disable_default_vehicles']
 
