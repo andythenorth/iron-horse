@@ -15,6 +15,9 @@ import iron_horse
 import utils
 import global_constants
 
+# get args passed by makefile
+repo_vars = utils.get_repo_vars(sys)
+
 from chameleon import PageTemplateLoader # chameleon used in most template cases
 # setup the places we look for templates
 templates = PageTemplateLoader(os.path.join(currentdir, 'src', 'templates'))
@@ -26,10 +29,6 @@ generated_nfo_path = os.path.join(iron_horse.generated_files_path, 'nfo')
 if not os.path.exists(generated_nfo_path):
     os.mkdir(generated_nfo_path)
 
-
-# get args passed by makefile
-repo_vars = utils.get_repo_vars(sys)
-
 consists = iron_horse.get_consists_in_buy_menu_order(show_warnings=True)
 
 # we cache file timestamps to see if we can render faster
@@ -38,6 +37,7 @@ if not os.path.exists(dep_cache_path):
     codecs.open(dep_cache_path,'w','utf8').close()
 # this is fragile, playing one line python is silly :)
 module_timestamps = dict((line.split('||',1)[0].strip(), line.split('||',1)[1].strip()) for line in codecs.open(dep_cache_path,'r','utf8').readlines())
+
 
 def render_nfo(filename):
     nmlc_call_args = ['nmlc',
