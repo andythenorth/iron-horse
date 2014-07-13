@@ -110,6 +110,7 @@ def main():
         grf_nfo.write(header_nfo)
 
     for consist in consists:
+        print consist.vehicle_module_path
         metadata = consist.vehicle_module_path + '||' + str(os.stat(consist.vehicle_module_path).st_mtime) + '\n'
         dep_cache.write(metadata)
         consist_nfo = codecs.open(os.path.join('generated', 'nfo', consist.id + '.nfo'),'r','utf8').read()
@@ -122,7 +123,7 @@ def main():
     # some warnings suppressed when we call nforenum; assume nmlc has done the right thing and nforenum is wrong
     nforenum_call_args = ['nforenum',
                       '--silent',
-                      '--warning-disable=100,109,111,147,170',
+                      '--warning-disable=100,109,111,147,170,204',
                       'generated/iron-horse.nfo']
     subprocess.call(nforenum_call_args)
 
