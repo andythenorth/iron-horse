@@ -30,21 +30,23 @@ if not os.path.exists(generated_nml_path):
 generated_nfo_path = os.path.join(iron_horse.generated_files_path, 'nfo')
 if not os.path.exists(generated_nfo_path):
     os.mkdir(generated_nfo_path)
-
-consists = iron_horse.get_consists_in_buy_menu_order(show_warnings=True)
+grf_nfo = codecs.open(os.path.join(iron_horse.generated_files_path, 'iron-horse.nfo'),'w','utf8')
 
 # we track file timestamps to see if we can render faster by only rendering when source file is changed
 dep_timestamps_path = os.path.join('generated', 'dep_timestamps.json')
 if not os.path.exists(dep_timestamps_path):
     codecs.open(dep_timestamps_path,'w','utf8').close()
-    module_timestamps = {}
+    dep_timestamps = {}
 else:
-    module_timestamps = json.loads(codecs.open(dep_timestamps_path,'r','utf8').read())
+    dep_timestamps = json.loads(codecs.open(dep_timestamps_path,'r','utf8').read())
+dep_timestamps_new = {}
+
+consists = iron_horse.get_consists_in_buy_menu_order(show_warnings=True)
 
 
 def check_item_dirty(path):
     if repo_vars.get('compile_faster', None) == 'True':
-        if (float(module_timestamps.get(path, 0)) == os.stat(path).st_mtime):
+        if (float(dep_timestamps.get(path, 0)) == os.stat(path).st_mtime):
             return False
     else:
         return True
@@ -91,8 +93,16 @@ def render_dispatcher(items, renderer):
         pool.join()
 
 
+def link_nfo(item, dep_path, split=None):
+    dep_timestamps_new[dep_path] = os.stat(dep_path).st_mtime
+    item_nfo = codecs.open(os.path.join('generated', 'nfo', item + '.nfo'),'r','utf8').read()
+    if split is not None:
+        # fragile split on some specific nfo, may break; assumes a right-split only
+        if split in item_nfo:
+            item_nfo = item_nfo.split(split)[1]
+    grf_nfo.write(item_nfo)
+
 def main():
-    grf_nfo = codecs.open(os.path.join(iron_horse.generated_files_path, 'iron-horse.nfo'),'w','utf8')
     header_items = ['header', 'cargo_table', 'railtype_table', 'disable_default_vehicles']
 
     if repo_vars.get('compile_faster', None) == 'True':
@@ -107,24 +117,15 @@ def main():
     print "Rendering consists"
     render_dispatcher(consists, renderer=render_consist_nml_nfo)
 
-    dep_timestamps = {}
-
     for header_item in header_items:
-        template_path = templates[header_item+".pynml"].filename
-        dep_timestamps[template_path] = os.stat(template_path).st_mtime
-        header_nfo = codecs.open(os.path.join('generated', 'nfo', header_item + '.nfo'),'r','utf8').read()
-        grf_nfo.write(header_nfo)
+        link_nfo(header_item, templates[header_item+".pynml"].filename, split=None)
 
     for consist in consists:
-        dep_timestamps[consist.vehicle_module_path] = os.stat(consist.vehicle_module_path).st_mtime
-        consist_nfo = codecs.open(os.path.join('generated', 'nfo', consist.id + '.nfo'),'r','utf8').read()
-        # fragile split on some specific nfo, may break
-        if '\wx00FE 	// DUMMY_CALLBACK;' in consist_nfo:
-            consist_nfo = consist_nfo.split('\wx00FE 	// DUMMY_CALLBACK;')[1]
-        grf_nfo.write(consist_nfo)
+        link_nfo(header_item, consist.vehicle_module_path, split='\wx00FE 	// DUMMY_CALLBACK;')
+
     grf_nfo.close()
     dep_timestamps_file = codecs.open(dep_timestamps_path, 'w', 'utf8')
-    dep_timestamps_file.write(json.dumps(dep_timestamps))
+    dep_timestamps_file.write(json.dumps(dep_timestamps_new))
     dep_timestamps_file.close()
 
     # some warnings suppressed when we call nforenum; assume nmlc has done the right thing and nforenum is wrong
