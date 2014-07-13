@@ -117,8 +117,8 @@ def main():
         if '\wx00FE 	// DUMMY_CALLBACK;' in consist_nfo:
             consist_nfo = consist_nfo.split('\wx00FE 	// DUMMY_CALLBACK;')[1]
         grf_nfo.write(consist_nfo)
-
     grf_nfo.close()
+
     # some warnings suppressed when we call nforenum; assume nmlc has done the right thing and nforenum is wrong
     nforenum_call_args = ['nforenum',
                       '--silent',
