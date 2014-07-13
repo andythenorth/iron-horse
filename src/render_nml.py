@@ -32,12 +32,12 @@ repo_vars = utils.get_repo_vars(sys)
 
 consists = iron_horse.get_consists_in_buy_menu_order(show_warnings=True)
 
-# we cache some nml metadata to see if we can render templated vehicles faster
-nml_metadata_cache_path = os.path.join('generated', 'nml_metadata.cache')
-if not os.path.exists(nml_metadata_cache_path):
-    codecs.open(nml_metadata_cache_path,'w','utf8').close()
+# we cache file timestamps to see if we can render faster
+dep_cache_path = os.path.join('generated', 'dep_cache')
+if not os.path.exists(dep_cache_path):
+    codecs.open(dep_cache_path,'w','utf8').close()
 # this is fragile, playing one line python is silly :)
-module_timestamps = dict((line.split('||',1)[0].strip(), line.split('||',1)[1].strip()) for line in codecs.open(nml_metadata_cache_path,'r','utf8').readlines())
+module_timestamps = dict((line.split('||',1)[0].strip(), line.split('||',1)[1].strip()) for line in codecs.open(dep_cache_path,'r','utf8').readlines())
 
 def render_nfo(filename):
     nmlc_call_args = ['nmlc',
@@ -103,7 +103,7 @@ def main():
         pool.close()
         pool.join()
 
-    nml_cache = codecs.open(nml_metadata_cache_path, 'w', 'utf8')
+    dep_cache = codecs.open(dep_cache_path, 'w', 'utf8')
 
     for header_item in header_items:
         header_nfo = codecs.open(os.path.join('generated', 'nfo', header_item + '.nfo'),'r','utf8').read()
@@ -111,7 +111,7 @@ def main():
 
     for consist in consists:
         metadata = consist.vehicle_module_path + '||' + str(os.stat(consist.vehicle_module_path).st_mtime) + '\n'
-        nml_cache.write(metadata)
+        dep_cache.write(metadata)
         consist_nfo = codecs.open(os.path.join('generated', 'nfo', consist.id + '.nfo'),'r','utf8').read()
         # fragile split on some specific nfo, may break
         if '\wx00FE 	// DUMMY_CALLBACK;' in consist_nfo:
