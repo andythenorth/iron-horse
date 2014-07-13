@@ -83,6 +83,17 @@ def render_consist_nml(consist):
         render_nfo(consist.id)
 
 
+def render_dispatcher(items, renderer):
+    if repo_vars.get('no_mp', None) == 'True':
+        for item in items:
+            renderer(item)
+    else:
+        pool = Pool(processes=16) # 16 is an arbitrary amount that appears to be fast without blocking the system
+        pool.map(renderer, items)
+        pool.close()
+        pool.join()
+
+
 def main():
     grf_nfo = codecs.open(os.path.join(iron_horse.generated_files_path, 'iron-horse.nfo'),'w','utf8')
     header_items = ['header', 'cargo_table', 'railtype_table', 'disable_default_vehicles']
@@ -94,24 +105,10 @@ def main():
         utils.echo_message('Multiprocessing disabled: (NO_MP=True)')
 
     print "Rendering header items"
-    if repo_vars.get('no_mp', None) == 'True':
-        for header_item in header_items:
-            render_header_item_nml(header_item)
-    else:
-        pool = Pool(processes=16) # 16 is an arbitrary amount that appears to be fast without blocking the system
-        pool.map(render_header_item_nml, header_items)
-        pool.close()
-        pool.join()
+    render_dispatcher(header_items, renderer=render_header_item_nml)
 
     print "Rendering consists"
-    if repo_vars.get('no_mp', None) == 'True':
-        for consist in consists:
-            render_consist_nml(consist)
-    else:
-        pool = Pool(processes=16) # 16 is an arbitrary amount that appears to be fast without blocking the system
-        pool.map(render_consist_nml, consists)
-        pool.close()
-        pool.join()
+    render_dispatcher(consists, renderer=render_consist_nml)
 
     dep_timestamps = {}
 
