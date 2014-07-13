@@ -121,6 +121,7 @@ def main():
     grf_nfo.close()
     nforenum_call_args = ['nforenum',
                       '--silent',
+                      '--warning-disable=100,109,111,147,170',
                       'generated/iron-horse.nfo']
     subprocess.call(nforenum_call_args)
 
