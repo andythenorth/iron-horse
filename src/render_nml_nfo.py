@@ -42,6 +42,13 @@ else:
     module_timestamps = json.loads(codecs.open(dep_timestamps_path,'r','utf8').read())
 
 
+def check_item_dirty(path):
+    if repo_vars.get('compile_faster', None) == 'True':
+        if (float(module_timestamps.get(path, 0)) == os.stat(path).st_mtime):
+            return False
+    else:
+        return True
+
 
 def render_nfo(filename):
     nmlc_call_args = ['nmlc',
@@ -54,14 +61,10 @@ def render_nfo(filename):
     subprocess.call(nmlc_call_args)
 
 
-def render_header_item_nml(header_item):
+def render_header_item_nml_nfo(header_item):
     template = templates[header_item + '.pynml']
-    item_dirty = True
-    if repo_vars.get('compile_faster', None) == 'True':
-        if (float(module_timestamps.get(template.filename, 0)) == os.stat(template.filename).st_mtime):
-            item_dirty = False
 
-    if item_dirty == True:
+    if check_item_dirty(template.filename) == True:
         header_item_nml = codecs.open(os.path.join('generated', 'nml', header_item + '.nml'),'w','utf8')
         header_item_nml.write(utils.unescape_chameleon_output(template(consists=consists, global_constants=global_constants,
                                                         utils=utils, sys=sys, repo_vars=repo_vars)))
@@ -69,14 +72,8 @@ def render_header_item_nml(header_item):
         render_nfo(header_item)
 
 
-def render_consist_nml(consist):
-    # some slightly dodgy optimisation here
-    vehicle_dirty = True
-    if repo_vars.get('compile_faster', None) == 'True':
-        if (float(module_timestamps.get(consist.vehicle_module_path, 0)) == os.stat(consist.vehicle_module_path).st_mtime):
-            vehicle_dirty = False
-
-    if vehicle_dirty == True:
+def render_consist_nml_nfo(consist):
+    if check_item_dirty(consist.vehicle_module_path) == True:
         consist_nml = codecs.open(os.path.join('generated', 'nml', consist.id + '.nml'),'w','utf8')
         consist_nml.write(utils.unescape_chameleon_output(consist.render()))
         consist_nml.close()
@@ -105,10 +102,10 @@ def main():
         utils.echo_message('Multiprocessing disabled: (NO_MP=True)')
 
     print "Rendering header items"
-    render_dispatcher(header_items, renderer=render_header_item_nml)
+    render_dispatcher(header_items, renderer=render_header_item_nml_nfo)
 
     print "Rendering consists"
-    render_dispatcher(consists, renderer=render_consist_nml)
+    render_dispatcher(consists, renderer=render_consist_nml_nfo)
 
     dep_timestamps = {}
 
