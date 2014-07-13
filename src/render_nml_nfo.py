@@ -118,13 +118,13 @@ def main():
     print "Rendering consists"
     render_dispatcher(consists, renderer=render_consist_nml_nfo)
 
+    print "Linking nfo"
     for header_item in header_items:
         link_nfo(header_item, templates[header_item+".pynml"].filename, split=None)
-
     for consist in consists:
         link_nfo(header_item, consist.vehicle_module_path, split='\wx00FE 	// DUMMY_CALLBACK;')
-
     grf_nfo.close()
+
     dep_timestamps_file = codecs.open(dep_timestamps_path, 'w', 'utf8')
     dep_timestamps_file.write(json.dumps(dep_timestamps_new))
     dep_timestamps_file.close()
