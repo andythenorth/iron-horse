@@ -21,7 +21,8 @@ repo_vars = utils.get_repo_vars(sys)
 
 from chameleon import PageTemplateLoader # chameleon used in most template cases
 # setup the places we look for templates
-templates = PageTemplateLoader(os.path.join(currentdir, 'src', 'templates'))
+templates_path = os.path.join(currentdir, 'src', 'templates')
+templates = PageTemplateLoader(templates_path)
 
 generated_nml_path = os.path.join(iron_horse.generated_files_path, 'nml')
 if not os.path.exists(generated_nml_path):
@@ -40,6 +41,8 @@ if not os.path.exists(dep_timestamps_path):
 else:
     module_timestamps = json.loads(codecs.open(dep_timestamps_path,'r','utf8').read())
 
+
+
 def render_nfo(filename):
     nmlc_call_args = ['nmlc',
                       #'--extra-constants=extra_constants.json',
@@ -53,11 +56,17 @@ def render_nfo(filename):
 
 def render_header_item_nml(header_item):
     template = templates[header_item + '.pynml']
-    header_item_nml = codecs.open(os.path.join('generated', 'nml', header_item + '.nml'),'w','utf8')
-    header_item_nml.write(utils.unescape_chameleon_output(template(consists=consists, global_constants=global_constants,
-                                                    utils=utils, sys=sys, repo_vars=repo_vars)))
-    header_item_nml.close()
-    render_nfo(header_item)
+    item_dirty = True
+    if repo_vars.get('compile_faster', None) == 'True':
+        if (float(module_timestamps.get(template.filename, 0)) == os.stat(template.filename).st_mtime):
+            item_dirty = False
+
+    if item_dirty == True:
+        header_item_nml = codecs.open(os.path.join('generated', 'nml', header_item + '.nml'),'w','utf8')
+        header_item_nml.write(utils.unescape_chameleon_output(template(consists=consists, global_constants=global_constants,
+                                                        utils=utils, sys=sys, repo_vars=repo_vars)))
+        header_item_nml.close()
+        render_nfo(header_item)
 
 
 def render_consist_nml(consist):
@@ -107,6 +116,8 @@ def main():
     dep_timestamps = {}
 
     for header_item in header_items:
+        template_path = templates[header_item+".pynml"].filename
+        dep_timestamps[template_path] = os.stat(template_path).st_mtime
         header_nfo = codecs.open(os.path.join('generated', 'nfo', header_item + '.nfo'),'r','utf8').read()
         grf_nfo.write(header_nfo)
 
