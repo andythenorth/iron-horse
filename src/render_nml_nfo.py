@@ -119,6 +119,11 @@ def main():
         grf_nfo.write(consist_nfo)
 
     grf_nfo.close()
+    nforenum_call_args = ['nforenum',
+                      '--silent',
+                      'generated/iron-horse.nfo']
+    subprocess.call(nforenum_call_args)
+
 
 if __name__ == '__main__':
     main()
