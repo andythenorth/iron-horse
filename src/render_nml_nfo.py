@@ -122,7 +122,7 @@ def main():
     for header_item in header_items:
         link_nfo(header_item, templates[header_item+".pynml"].filename, split=None)
     for consist in consists:
-        link_nfo(header_item, consist.vehicle_module_path, split='\wx00FE 	// DUMMY_CALLBACK;')
+        link_nfo(consist.id, consist.vehicle_module_path, split='\wx00FE 	// DUMMY_CALLBACK;')
     grf_nfo.close()
 
     dep_timestamps_file = codecs.open(dep_timestamps_path, 'w', 'utf8')
