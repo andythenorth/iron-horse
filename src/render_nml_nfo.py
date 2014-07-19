@@ -143,7 +143,9 @@ def main():
         utils.echo_message('Generated files missing: re-rendering all nml and nfo')
 
     # check global deps - warning only, don't stop the compile, assume author knows what they're doing (risky)
-    dirty_deps = check_deps_dirty(['lang', 'lang_templates', 'templates', 'rosters'])
+    # list might not be complete
+    dirty_deps = check_deps_dirty(['lang', 'lang_templates', 'templates', 'rosters',
+                                   'global_constants.py', 'train.py', 'utils.py', 'roster.py', 'iron_horse.py'])
     if dirty_deps != []:
         utils.echo_message('Warning: unless you know otherwise, faster compile may be invalid due to changed files: ' + ', '.join(dirty_deps))
 
