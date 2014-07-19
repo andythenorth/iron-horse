@@ -19,6 +19,3 @@ STR_NAME_SUFFIX_METRO_CAR                                       :Car (Metro)
 STR_BUY_MENU_TEXT                                               :{STRING}{}{STRING}
 STR_BUY_MENU_OFFERS_AUTOREFIT                                   :{BLACK}Offers auto-refit
 STR_BUY_MENU_IMPROVED_CARGO_AGE_PERIOD                          :{BLACK}Cargo payment rate: {GOLD}Improved
-
-STR_COASTER                                                     :
-STR_DOGTRACK                                                    :

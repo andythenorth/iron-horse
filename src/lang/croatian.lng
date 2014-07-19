@@ -21,6 +21,3 @@ STR_NAME_SUFFIX_METRO_CAR                                       :Vagon (Metro)
 STR_BUY_MENU_TEXT                                               :{STRING}{}{STRING}
 STR_BUY_MENU_OFFERS_AUTOREFIT                                   :{BLACK}Moguć automatski remont
 STR_BUY_MENU_IMPROVED_CARGO_AGE_PERIOD                          :{BLACK}Tarifa plaćanja tereta: {GOLD}Napredna
-
-STR_COASTER                                                     :Krava je preskočila mjesec (ovo nije gotov podsjetnik)
-STR_DOGTRACK                                                    :Psi su smeđi, nekada

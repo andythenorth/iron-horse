@@ -17,6 +17,3 @@ STR_NAME_SUFFIX_CAR                                             :Waggon
 
 STR_BUY_MENU_TEXT                                               :Typ: {GOLD}{STRING}{}{STRING}{STRING}
 STR_BUY_MENU_OFFERS_AUTOREFIT                                   :{BLACK}Automatische Umrüstung
-
-STR_COASTER                                                     :
-STR_DOGTRACK                                                    :

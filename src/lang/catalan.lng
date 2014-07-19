@@ -20,6 +20,3 @@ STR_NAME_SUFFIX_METRO_CAR                                       :Vagó (Metro)
 STR_BUY_MENU_TEXT                                               :{STRING}{}{STRING}
 STR_BUY_MENU_OFFERS_AUTOREFIT                                   :{BLACK}Ofereix autoremodelar
 STR_BUY_MENU_IMPROVED_CARGO_AGE_PERIOD                          :{BLACK}Tarifes de pagament per càrrega: {GOLD}Millorada
-
-STR_COASTER                                                     :La vaca va saltar per damunt de la Lluna (recordatori d'inacabat)
-STR_DOGTRACK                                                    :Els gossos són marrons, alguns cops

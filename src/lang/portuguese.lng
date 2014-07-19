@@ -14,6 +14,3 @@ STR_NAME_SUFFIX_ELECTRIC                                        :(Eléctrico)
 STR_NAME_SUFFIX_CAR                                             :Carro
 
 STR_BUY_MENU_TEXT                                               :Tipo: {GOLD}{STRING}{}{STRING}{STRING}
-
-STR_COASTER                                                     :A vaca saltou sobre a Lua (isto é um lembrete por não estar concluído)
-STR_DOGTRACK                                                    :OS cães são castanhos, ás vezes

@@ -21,6 +21,3 @@ STR_NAME_SUFFIX_METRO_CAR                                       :Вагон (М�
 STR_BUY_MENU_TEXT                                               :{STRING}{}{STRING}
 STR_BUY_MENU_OFFERS_AUTOREFIT                                   :{BLACK}Переоборудование
 STR_BUY_MENU_IMPROVED_CARGO_AGE_PERIOD                          :{BLACK}Оплата перевозок: {GOLD}Улучшенная
-
-STR_COASTER                                                     :Это напоминатель
-STR_DOGTRACK                                                    :Коричневые, Иногда

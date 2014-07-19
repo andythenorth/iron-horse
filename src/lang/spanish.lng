@@ -20,6 +20,3 @@ STR_NAME_SUFFIX_METRO_CAR                                       :Vagón (Metro)
 STR_BUY_MENU_TEXT                                               :{STRING}{}{STRING}
 STR_BUY_MENU_OFFERS_AUTOREFIT                                   :{BLACK}Ofrece auto-reforma
 STR_BUY_MENU_IMPROVED_CARGO_AGE_PERIOD                          :{BLACK}Ratio de pagos por carga: {GOLD}Mejorado
-
-STR_COASTER                                                     :La vaca saltó sobre la luna (esto es un recordatorio de que el set no está acabado)
-STR_DOGTRACK                                                    :Los perros son marrones, alguna vez

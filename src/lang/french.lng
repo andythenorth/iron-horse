@@ -19,6 +19,3 @@ STR_NAME_SUFFIX_CAR                                             :Voiture
 STR_BUY_MENU_TEXT                                               :{STRING}{}{STRING}
 STR_BUY_MENU_OFFERS_AUTOREFIT                                   :{BLACK}Réaménagement automatique possible
 STR_BUY_MENU_IMPROVED_CARGO_AGE_PERIOD                          :{BLACK}Valeur des marchandises : {GOLD}Améliorée
-
-STR_COASTER                                                     :Un petit cochon pendu au plafond (pas encore fini)
-STR_DOGTRACK                                                    :C'était vraiment très intéressant.

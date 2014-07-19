@@ -20,6 +20,3 @@ STR_NAME_SUFFIX_METRO_CAR                                       :차량(지하�
 STR_BUY_MENU_TEXT                                               :{STRING}{}{STRING}
 STR_BUY_MENU_OFFERS_AUTOREFIT                                   :{BLACK}자동차 수리 제공
 STR_BUY_MENU_IMPROVED_CARGO_AGE_PERIOD                          :{BLACK}화물 운송비용 지급율: {GOLD}개선됨
-
-STR_COASTER                                                     :소가 달을 뛰어넘었습니다. (이것은 아직 끝난 상기문이 아닙니다. )
-STR_DOGTRACK                                                    :어떤 때는, 개들은 갈색입니다.

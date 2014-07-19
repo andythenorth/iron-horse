@@ -19,6 +19,3 @@ STR_NAME_SUFFIX_METRO_CAR                                       :Vaunu (Metro)
 STR_BUY_MENU_TEXT                                               :{STRING}{}{STRING}
 STR_BUY_MENU_OFFERS_AUTOREFIT                                   :{BLACK}Tarjoaa automaattisen sovituksen
 STR_BUY_MENU_IMPROVED_CARGO_AGE_PERIOD                          :{BLACK}Rahdin maksuhinta: {GOLD}Parantunut
-
-STR_COASTER                                                     :Körö körö kirkkoon (tämä muistutus ei ole valmis)
-STR_DOGTRACK                                                    :Koirat ovat ruskeita, toisinaan
