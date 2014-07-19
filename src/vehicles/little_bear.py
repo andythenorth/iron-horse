@@ -5,10 +5,10 @@ consist = EngineConsist(id = 'little_bear',
               base_numeric_id = 1160,
               title = 'Little Bear [Diesel]',
               replacement_id = '-none',
-              power = 750,
+              power = 850,
               speed = 85,
-              type_base_buy_cost_points = 5, # dibble buy cost for game balance
-              type_base_running_cost_points = -14, # dibble run cost for game balance
+              type_base_buy_cost_points = 0, # dibble buy cost for game balance
+              type_base_running_cost_points = -28, # dibble run cost for game balance
               vehicle_life = 40,
               intro_date = 1964,
               graphics_status = '',
