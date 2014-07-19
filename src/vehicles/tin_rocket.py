@@ -11,7 +11,7 @@ consist = EngineConsist(id = 'tin_rocket',
               intro_date = 1998,
               vehicle_life = 40,
               graphics_status = '',
-              use_legacy_spritesheet = True)
+              use_legacy_spritesheet = False)
 
 consist.add_unit(DieselRailcar(consist = consist,
                         weight = 65,
