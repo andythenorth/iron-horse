@@ -31,7 +31,7 @@ import render_nml_nfo
 render_nml_nfo.main()
 elapsed_time = (time() - start)
 print format(elapsed_time, '.2f')+'s'
-if elapsed_time > 2:
+if elapsed_time > 2 and render_nml_nfo.everything_dirty == False:
     utils.echo_message("Slow nml rendering?  Try the COMPILE_FASTER=True make flag if you're only changing vehicle properties")
 
 # render the docs

@@ -24,12 +24,15 @@ from chameleon import PageTemplateLoader # chameleon used in most template cases
 templates_path = os.path.join(currentdir, 'src', 'templates')
 templates = PageTemplateLoader(templates_path)
 
+everything_dirty = False
 generated_nml_path = os.path.join(iron_horse.generated_files_path, 'nml')
 if not os.path.exists(generated_nml_path):
     os.mkdir(generated_nml_path)
+    everything_dirty = True # no nml, everything must be dirty
 generated_nfo_path = os.path.join(iron_horse.generated_files_path, 'nfo')
 if not os.path.exists(generated_nfo_path):
     os.mkdir(generated_nfo_path)
+    everything_dirty = True # no nfo, everything must be dirty
 grf_nfo = codecs.open(os.path.join(iron_horse.generated_files_path, 'iron-horse.nfo'),'w','utf8')
 
 # we track file timestamps to see if we can render faster by only rendering when source file is changed
@@ -57,11 +60,16 @@ def check_deps_dirty(deps):
     dirty_files = []
     for dep in deps:
         dep_path = os.path.join(currentdir, 'src', dep)
-        files = [os.path.join(dep_path, file) for file in os.listdir(dep_path)]
+        if os.path.isdir(dep_path):
+            # is it a dir?
+            files = [os.path.join(dep_path, file) for file in os.listdir(dep_path)]
+        else:
+            # assume it's a file if not a dir (could go wrong?)
+            files = [dep_path]
         for file in files:
             timestamp_when_last_compiled = float(dep_timestamps.get(file, 0))
             timestamp_on_filesystem = os.stat(file).st_mtime
-            if repo_vars.get('compile_faster', None) == 'True':
+            if repo_vars.get('compile_faster', None) == 'True' and everything_dirty == False:
                 # it's a partial compile
                 if timestamp_when_last_compiled != timestamp_on_filesystem:
                     dirty_files.append(file)
@@ -129,12 +137,15 @@ def main():
     if repo_vars.get('no_mp', None) == 'True':
         utils.echo_message('Multiprocessing disabled: (NO_MP=True)')
 
-    if repo_vars.get('compile_faster', None) == 'True':
+    if repo_vars.get('compile_faster', None) == 'True' and everything_dirty == False:
         utils.echo_message('Only rendering changed nml files: (COMPILE_FASTER=True)')
+    if everything_dirty == True:
+        utils.echo_message('Generated files missing: re-rendering all nml and nfo')
 
     # check global deps - warning only, don't stop the compile, assume author knows what they're doing (risky)
     dirty_deps = check_deps_dirty(['lang', 'lang_templates', 'templates', 'rosters'])
-    utils.echo_message('Warning: unless you know otherwise, faster compile may be invalid due to dirty files: ' + ', '.join(dirty_deps))
+    if dirty_deps != []:
+        utils.echo_message('Warning: unless you know otherwise, faster compile may be invalid due to changed files: ' + ', '.join(dirty_deps))
 
     print "Rendering header items"
     render_dispatcher(header_items, renderer=render_header_item_nml_nfo)
