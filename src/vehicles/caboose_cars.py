@@ -6,7 +6,7 @@ type_config = TypeConfig(base_id = 'caboose_car',
                 class_refit_groups = [], # refit nothing, don't mess with this, it breaks auto-replace
                 label_refits_allowed = [],
                 label_refits_disallowed = [],
-                default_cargo = 'GOOD',
+                default_cargo = 'GOOD', # unwanted side-effect of this is that caboose replaceable by anything refitting goods
                 default_capacity_type = 'capacity_freight',
                 str_type_info = 'DOGTRACK')
 
