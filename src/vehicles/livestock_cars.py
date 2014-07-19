@@ -9,8 +9,7 @@ type_config = TypeConfig(base_id = 'livestock_car',
                     autorefit = True,
                     default_cargo = 'LVST',
                     default_capacity_type = 'capacity_freight',
-                    cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD,
-                    str_type_info = 'DOGTRACK')
+                    cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD)
 
 consist = WagonConsist(type_config = type_config,
                     title = 'Livestock [Car]',
@@ -64,8 +63,7 @@ type_config = TypeConfig(base_id = 'livestock_car_ng',
                 autorefit = True,
                 default_cargo = 'LVST',
                 default_capacity_type = 'capacity_freight',
-                track_type = 'NG',
-                str_type_info = 'DOGTRACK')
+                track_type = 'NG')
 
 consist = WagonConsist(type_config = type_config,
                     title = 'Narrow Gauge Livestock [Car]',

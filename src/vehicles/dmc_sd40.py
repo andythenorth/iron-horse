@@ -14,7 +14,6 @@ vehicle = DieselLoco(id = 'dmc_sd40',
             vehicle_length = 8,
             loading_speed = 20,
             intro_date = 1975,
-            str_type_info = 'COASTER',
             vehicle_life = 30,
             graphics_status = '')
 

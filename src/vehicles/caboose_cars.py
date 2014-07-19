@@ -7,8 +7,7 @@ type_config = TypeConfig(base_id = 'caboose_car',
                 label_refits_allowed = [],
                 label_refits_disallowed = [],
                 default_cargo = 'GOOD', # unwanted side-effect of this is that caboose replaceable by anything refitting goods
-                default_capacity_type = 'capacity_freight',
-                str_type_info = 'DOGTRACK')
+                default_capacity_type = 'capacity_freight')
 
 consist = WagonConsist(type_config = type_config,
                     title = 'Caboose [Car]',

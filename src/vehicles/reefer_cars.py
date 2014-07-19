@@ -16,8 +16,7 @@ type_config = TypeConfig(base_id = 'reefer_car',
                     autorefit = True,
                     default_cargo = 'FOOD',
                     default_capacity_type = 'capacity_freight',
-                    cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD,
-                    str_type_info = 'DOGTRACK')
+                    cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD)
 
 consist = WagonConsist(type_config = type_config,
                     title = 'Reefer [Car]',

@@ -10,8 +10,7 @@ type_config = TypeConfig(base_id = 'combine_car',
                 label_refits_disallowed = [],
                 autorefit = True,
                 default_cargo = 'MAIL',
-                default_capacity_type = 'capacity_mail',
-                str_type_info = 'DOGTRACK')
+                default_capacity_type = 'capacity_mail')
 
 consist = WagonConsist(type_config = type_config,
                     title = 'Combine [Car]',

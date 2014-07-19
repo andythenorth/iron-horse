@@ -8,8 +8,7 @@ type_config = TypeConfig(base_id = 'covered_hopper_car',
                 label_refits_disallowed = [],
                 autorefit = True,
                 default_cargo = 'GRAI',
-                default_capacity_type = 'capacity_freight',
-                str_type_info = 'DOGTRACK')
+                default_capacity_type = 'capacity_freight')
 
 consist = WagonConsist(type_config = type_config,
                     title = 'Covered Hopper [Car]',

@@ -16,8 +16,7 @@ type_config = TypeConfig(base_id = 'box_car',
                     label_refits_disallowed = [],
                     autorefit = True,
                     default_cargo = 'GOOD',
-                    default_capacity_type = 'capacity_freight',
-                    str_type_info = 'DOGTRACK')
+                    default_capacity_type = 'capacity_freight')
 
 consist = WagonConsist(type_config = type_config,
                     title = 'Box [Car]',
@@ -98,8 +97,7 @@ type_config = TypeConfig(base_id = 'box_car_ng',
                 autorefit = True,
                 default_cargo = 'GOOD',
                 default_capacity_type = 'capacity_freight',
-                track_type = 'NG',
-                  str_type_info = 'DOGTRACK')
+                track_type = 'NG')
 
 consist = WagonConsist(type_config = type_config,
                     title = 'Narrow Gauge Box [Car]',

@@ -11,8 +11,7 @@ type_config = TypeConfig(base_id = 'metro_car',
                 autorefit = True,
                 default_cargo = 'MAIL',
                 default_capacity_type = 'capacity_mail',
-                track_type = 'METRO',
-                str_type_info = 'DOGTRACK')
+                track_type = 'METRO')
 
 consist = WagonConsist(type_config = type_config,
                     title = 'Mail [Metro Car]',
