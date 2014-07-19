@@ -3,7 +3,7 @@ from train import TypeConfig, WagonConsist, Wagon
 
 type_config = TypeConfig(base_id = 'caboose_car',
                 template = 'train.pynml',
-                class_refit_groups = [], # refit nothing, n.b. caboose can't support auto-replace, I tried, it doesn't work well
+                class_refit_groups = [], # refit nothing, don't mess with this, it breaks auto-replace
                 label_refits_allowed = [],
                 label_refits_disallowed = [],
                 default_cargo = 'GOOD',
