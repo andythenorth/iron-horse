@@ -497,6 +497,7 @@ class LeadSlice(Train):
             self.capacities_pax = parent_vehicle.capacities_pax
             self.default_cargo_capacities = self.capacities_pax
             self.default_cargo = 'PASS'
+            self.class_refit_groups = ['pax']
 
 
 class NullTrailingSlice(object):
