@@ -45,10 +45,31 @@ consists = iron_horse.get_consists_in_buy_menu_order(show_warnings=True)
 
 
 def check_item_dirty(path):
+    # is a specific item we want to compile dirty?
     if repo_vars.get('compile_faster', None) == 'True':
         if (float(dep_timestamps.get(path, 0)) == os.stat(path).st_mtime):
             return False
     return True
+
+
+def check_deps_dirty(deps):
+    # check a list of deps, warn if dirty
+    dirty_files = []
+    for dep in deps:
+        dep_path = os.path.join(currentdir, 'src', dep)
+        files = [os.path.join(dep_path, file) for file in os.listdir(dep_path)]
+        for file in files:
+            timestamp_when_last_compiled = float(dep_timestamps.get(file, 0))
+            timestamp_on_filesystem = os.stat(file).st_mtime
+            if repo_vars.get('compile_faster', None) == 'True':
+                # it's a partial compile
+                if timestamp_when_last_compiled != timestamp_on_filesystem:
+                    dirty_files.append(file)
+                dep_timestamps_new[file] = timestamp_when_last_compiled
+            else:
+                # it's a full compile so write the file timestamp
+                dep_timestamps_new[file] = timestamp_on_filesystem
+    return dirty_files
 
 
 def render_nfo(filename):
@@ -105,11 +126,15 @@ def link_nfo(item, dep_path, split=None):
 def main():
     header_items = ['header', 'cargo_table', 'railtype_table', 'disable_default_vehicles']
 
+    if repo_vars.get('no_mp', None) == 'True':
+        utils.echo_message('Multiprocessing disabled: (NO_MP=True)')
+
     if repo_vars.get('compile_faster', None) == 'True':
         utils.echo_message('Only rendering changed nml files: (COMPILE_FASTER=True)')
 
-    if repo_vars.get('no_mp', None) == 'True':
-        utils.echo_message('Multiprocessing disabled: (NO_MP=True)')
+    # check global deps - warning only, don't stop the compile, assume author knows what they're doing (risky)
+    dirty_deps = check_deps_dirty(['lang', 'lang_templates', 'templates', 'rosters'])
+    utils.echo_message('Warning: unless you know otherwise, faster compile may be invalid due to dirty files: ' + ', '.join(dirty_deps))
 
     print "Rendering header items"
     render_dispatcher(header_items, renderer=render_header_item_nml_nfo)
