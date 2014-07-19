@@ -11,7 +11,6 @@ iron-horse-nml:
 	$(_V) python src/build_iron_horse.py '${REPO_TITLE}' '${REPO_REVISION}' '${COMPILE_FASTER}' '${NO_MP}'
 
 clean::
-	$(_V)-rm iron-horse.nml
 	$(_V)-rm -r docs
 	$(_V)-rm -r chameleon_cache
 	$(_V)-rm -r generated
