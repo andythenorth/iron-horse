@@ -48,10 +48,7 @@ def check_item_dirty(path):
     if repo_vars.get('compile_faster', None) == 'True':
         if (float(dep_timestamps.get(path, 0)) == os.stat(path).st_mtime):
             return False
-        else:
-            return True
-    else:
-        return True
+    return True
 
 
 def render_nfo(filename):
