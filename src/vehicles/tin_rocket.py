@@ -5,9 +5,9 @@ consist = EngineConsist(id = 'tin_rocket',
               base_numeric_id = 1190,
               title = 'Tin Rocket [Diesel]',
               replacement_id = '-none',
-              power = 560,
+              power = 750,
               speed = 100,
-              type_base_running_cost_points = 0, # dibble running costs for game balance
+              type_base_running_cost_points = -15, # dibble running costs for game balance
               intro_date = 1998,
               vehicle_life = 40,
               graphics_status = '',
