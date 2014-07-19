@@ -271,7 +271,7 @@ class Train(object):
         # spriterow_num, first row = 0
         self.spriterow_num = kwargs.get('spriterow_num', 0)
         # set defaults for props otherwise set by subclass as needed (not set by kwargs as specific models do not over-ride them)
-        self.default_cargo = 'PASS' # over-ride in subclass as needed (PASS is sane default)
+        self.default_cargo = 'PASS' # over-ride in subclass as needed
         self.class_refit_groups = []
         self.label_refits_allowed = [] # no specific labels needed
         self.label_refits_disallowed = []
@@ -436,7 +436,7 @@ class TypeConfig(object):
         self.label_refits_allowed = kwargs.get('label_refits_allowed', None)
         self.label_refits_disallowed = kwargs.get('label_refits_disallowed', None)
         self.autorefit = kwargs.get('autorefit', None)
-        self.default_cargo = kwargs.get('default_cargo', 'PASS')
+        self.default_cargo = kwargs['default_cargo'] # don't use 'get()' - needs to be defined to avoid unwanted refit issues
         self.default_capacity_type = kwargs.get('default_capacity_type', None)
         self.cargo_age_period = kwargs.get('cargo_age_period', global_constants.CARGO_AGE_PERIOD)
         self.str_type_info = kwargs.get('str_type_info', None)
@@ -481,6 +481,7 @@ class LeadSlice(Train):
         self.weight = 0
         self.vehicle_length = parent_vehicle.vehicle_length
         self.engine_class = parent_vehicle.engine_class
+        self.default_cargo = parent_vehicle.default_cargo # breaks auto-replace if omitted
         # provide default capacity (set as property) so leads vehicle has same refittability as trailing slices, this prevents an issue with auto-refit
         self.default_cargo_capacities = [1]
         # actual capacity determined by cb checking cargo type, set all of these to 0

@@ -6,6 +6,7 @@ type_config = TypeConfig(base_id = 'caboose_car',
                 class_refit_groups = ['all_freight'], # refit anything to allow auto-replace
                 label_refits_allowed = [],
                 label_refits_disallowed = [],
+                default_cargo = 'DEFAULT_CARGO_FIRST_REFITTABLE',
                 default_capacity_type = 'capacity_freight',
                 str_type_info = 'DOGTRACK')
 
