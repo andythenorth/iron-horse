@@ -1,2 +1,46 @@
 Changelog
 =========
+
+-------
+Alpha 6
+-------
+
+*New Features / Changes*
+
+- Chaplin tank randomised reversed sprites
+- adjust vehicle name to Mail Car (Metro)
+- multiple tweaks to vehicle stats for game balance (too many to list)
+
+*Fixes*
+
+- some pax coaches using wrong sprite template
+- Hudswell length should be 7/8
+- Donegal should be 7/8 long
+- Walker has 6/8 length
+- bad spritesheet for some views of Little Bear
+- Lemon tender wrong position in \ view
+- set refittable pax on Combine cars (closes #6931)
+- Cyclops sprites out of place (closes #6893)
+- set default cargo correctly on lead slice of articulated consist (closes #6894)
+- apparent fix for (limited) auto-replace of caboose
+- spritesheet issues resolved for Tin Rocket
+- sprites borked for gen 2 hopper car
+- NG livestock is 4/8 long
+
+
+*Language Updates*
+
+- ca_ES: 1 change by juanjo
+- lb_LU: 18 changes by Phreeze
+- hr_HR: 1 change by Voyager1
+- es_ES: 1 change by SilverSurferZzZ
+- ru_RU: 1 change by George
+- nl_NL: 5 changes by foobar
+- ko_KR: 18 changes by kevin
+- fi_FI: 4 changes by Arexander
+
+*Code Changes*
+
+- partial compiles, very much faster for isolated changes
+- removed some dead strings
+- provide NO_MP make flag for use during debugging
