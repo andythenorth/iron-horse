@@ -251,7 +251,7 @@ ifeq ($(shell [ "$(NML_REVISION)" -lt "$(MIN_NML_REVISION)" ] && echo "true" || 
 	$(_V) false
 endif
 endif
-	$(_V) grfcodec -e iron-horse generated
+	$(_V) grfcodec -e -s iron-horse generated
 
 grf: $(GRF_FILE)
 
