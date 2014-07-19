@@ -44,3 +44,10 @@ Alpha 6
 - partial compiles, very much faster for isolated changes
 - removed some dead strings
 - provide NO_MP make flag for use during debugging
+
+
+---------
+Alpha 1-5
+---------
+
+Yair, stuff.  Nothing to see here.
