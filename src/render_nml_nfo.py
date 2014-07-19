@@ -49,7 +49,7 @@ consists = iron_horse.get_consists_in_buy_menu_order(show_warnings=True)
 
 def check_item_dirty(path):
     # is a specific item we want to compile dirty?
-    if repo_vars.get('compile_faster', None) == 'True':
+    if repo_vars.get('compile_faster', None) == 'True' and everything_dirty == False:
         if (float(dep_timestamps.get(path, 0)) == os.stat(path).st_mtime):
             return False
     return True
@@ -95,6 +95,7 @@ def render_header_item_nml_nfo(header_item):
     template = templates[header_item + '.pynml']
 
     if check_item_dirty(template.filename) == True:
+        print "Rendering " + header_item
         header_item_nml = codecs.open(os.path.join('generated', 'nml', header_item + '.nml'),'w','utf8')
         header_item_nml.write(utils.unescape_chameleon_output(template(consists=consists, global_constants=global_constants,
                                                         utils=utils, sys=sys, repo_vars=repo_vars)))
@@ -149,10 +150,8 @@ def main():
     if dirty_deps != []:
         utils.echo_message('Warning: unless you know otherwise, faster compile may be invalid due to changed files: ' + ', '.join(dirty_deps))
 
-    print "Rendering header items"
     render_dispatcher(header_items, renderer=render_header_item_nml_nfo)
 
-    print "Rendering consists"
     render_dispatcher(consists, renderer=render_consist_nml_nfo)
 
     print "Linking nfo"
