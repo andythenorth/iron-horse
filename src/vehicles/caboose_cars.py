@@ -3,10 +3,10 @@ from train import TypeConfig, WagonConsist, Wagon
 
 type_config = TypeConfig(base_id = 'caboose_car',
                 template = 'train.pynml',
-                class_refit_groups = ['all_freight'], # refit anything to allow auto-replace
+                class_refit_groups = [], # refit nothing, n.b. caboose can't support auto-replace, I tried, it doesn't work well
                 label_refits_allowed = [],
                 label_refits_disallowed = [],
-                default_cargo = 'DEFAULT_CARGO_FIRST_REFITTABLE',
+                default_cargo = 'GOOD',
                 default_capacity_type = 'capacity_freight',
                 str_type_info = 'DOGTRACK')
 
