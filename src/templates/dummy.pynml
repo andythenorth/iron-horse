@@ -1,10 +1,10 @@
 <!--! This is purely to support partial compiling - gets some essential data into the compile -->
 
 // CTT
-<tal:include define="cargo_table load: cargo_table.pynml" metal:use-macro="cargo_table" />
+<tal:include metal:use-macro="load: cargo_table.pynml" />
 
 // RTT
-<tal:include define="railtype_table load: railtype_table.pynml" metal:use-macro="railtype_table" />
+<tal:include metal:use-macro="load: railtype_table.pynml" />
 
 switch(FEAT_TRAINS, SELF, DUMMY_CALLBACK, 0xFFFFFFFF) {
     <tal:strings repeat="string utils.parse_base_lang()">

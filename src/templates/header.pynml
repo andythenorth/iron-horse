@@ -37,4 +37,4 @@ traininfo_y_offset = 2;
 train_width_32_px = 1;
 
 // dummy
-<tal:include define="dummy load: dummy.pynml" metal:use-macro="dummy" />
+<tal:include metal:use-macro="load: dummy.pynml" />

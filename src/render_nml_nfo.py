@@ -82,7 +82,6 @@ def check_deps_dirty(deps):
 
 def render_nfo(filename):
     nmlc_call_args = ['nmlc',
-                      #'--extra-constants=extra_constants.json',
                       '--lang-dir=generated/lang',
                       '--quiet',
                       '--nfo',
