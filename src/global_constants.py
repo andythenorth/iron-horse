@@ -60,6 +60,7 @@ disallowed_refits_by_label = {'non_hopper_freight': ['WOOD', 'SGCN', 'FICR', 'BD
 gen_1_wagon_speeds = [65, 85]
 gen_2_wagon_speeds = [85, 100]
 gen_3_wagon_speeds = [100, None]
+ng_wagon_speeds = [55, 55]
 
 # capacity multipliers for capacity parameter
 capacity_multipliers = [0.67, 1, 1.33]
