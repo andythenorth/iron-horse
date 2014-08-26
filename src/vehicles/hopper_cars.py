@@ -7,15 +7,15 @@ cargo_graphics_mappings = {'AORE': [0], 'IORE': [1], 'CORE': [2], 'GRVL': [3],
 
 recolour_maps = graphics_utils.get_bulk_cargo_recolour_maps()
 graphics_options_1 = {'template': 'hopper_car_brit_gen_1_template.png',
-                    'recolour_maps': (recolour_maps),
-                    'copy_block_top_offset': 30,
-                    'num_rows_per_unit': 3,
-                    'num_unit_types': 1}
+                      'recolour_maps': (recolour_maps),
+                      'copy_block_top_offset': 30,
+                      'num_rows_per_unit': 3,
+                      'num_unit_types': 1}
 graphics_processor_1 = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_1)
 
 type_config = TypeConfig(base_id = 'hopper_car',
                 template = 'car_with_visible_cargo.pynml',
-                  num_cargo_rows = 6,
+                num_cargo_rows = 6,
                 class_refit_groups = ['hopper_freight'],
                 cargo_graphics_mappings = cargo_graphics_mappings,
                 label_refits_allowed = cargo_graphics_mappings.keys(),
@@ -30,7 +30,7 @@ consist = WagonConsist(type_config = type_config,
                     wagon_generation = 1,
                     replacement_id = '-none',
                     intro_date = 1915,
-                                vehicle_life = 40,
+                    vehicle_life = 40,
                     graphics_status = '',
                     use_legacy_spritesheet = True)
 
@@ -57,7 +57,7 @@ consist = WagonConsist(type_config = type_config,
                     wagon_generation = 2,
                     replacement_id = '-none',
                     intro_date = 1965,
-                                vehicle_life = 40,
+                    vehicle_life = 40,
                     graphics_status = '',
                     use_legacy_spritesheet = True)
 
@@ -83,7 +83,7 @@ consist = WagonConsist(type_config = type_config,
                     wagon_generation = 3,
                     replacement_id = '-none',
                     intro_date = 2010,
-                                vehicle_life = 40,
+                    vehicle_life = 40,
                     graphics_status = '',
                     use_legacy_spritesheet = True)
 
