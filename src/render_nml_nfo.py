@@ -167,7 +167,7 @@ def main():
     # some warnings suppressed when we call nforenum; assume nmlc has done the right thing and nforenum is wrong
     nforenum_call_args = ['nforenum',
                       '--silent',
-                      '--warning-disable=100,109,111,147,170,204',
+                      '--warning-disable=100,109,111,147,170,172,204',
                       'generated/iron-horse.nfo']
     subprocess.call(nforenum_call_args)
 
