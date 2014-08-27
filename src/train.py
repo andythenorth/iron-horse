@@ -309,18 +309,6 @@ class Train(object):
         return ','.join(special_flags)
 
     @property
-    def capacity_pax(self):
-        return self.capacities_pax[0]
-    @property
-
-    def capacity_mail(self):
-        return self.capacities_mail[0]
-
-    @property
-    def capacity_freight(self):
-        return self.capacities_freight[0]
-
-    @property
     def refittable_classes(self):
         cargo_classes = []
         # maps lists of allowed classes.  No equivalent for disallowed classes, that's overly restrictive and damages the viability of class-based refitting
@@ -510,10 +498,11 @@ class NullTrailingSlice(object):
         self.numeric_id = global_constants.null_trailing_slice_numeric_id
         # provide default capacity (set as property) so leads vehicle has same refittability as trailing slices, this prevents an issue with auto-refit
         self.default_cargo_capacities = [1]
-        # actual capacity determined by cb checking cargo type, set all of these to 0
+        # set a bunch of props to default / zero values
         self.capacities_pax = [0, 0, 0]
         self.capacities_freight = [0, 0, 0]
         self.capacities_mail = [0, 0, 0]
+        self.default_cargo = parent_vehicle.default_cargo
         # copy the refittability info from parent
         self.class_refit_groups = parent_vehicle.class_refit_groups
         self.label_refits_allowed = parent_vehicle.label_refits_allowed
@@ -605,12 +594,35 @@ class WagonConsist(Consist):
 
     @property
     def buy_cost(self):
-        return 100
+        if self.speed is not None:
+            cost = self.speed
+        else:
+            cost = 125
+        capacity_factors = []
+        for slice in self.slices:
+            if slice.default_cargo == 'PASS':
+                # pax coaches have seats and stuff, are expensive to build
+                capacity_factors.append(3 * getattr(slice, 'capacities_pax', 0)[1])
+            elif slice.default_cargo == 'MAIL':
+                # mail cars have pax-grade eqpt, but no seats etc, so moderately expensive
+                capacity_factors.append(2 * getattr(slice, 'capacities_mail', 0)[1])
+            else:
+                capacity_factors.append(getattr(slice, 'capacities_freight', 0)[1])
+        cost = cost + sum(capacity_factors)
+        return 0.5 * cost # dibble all the things
 
     @property
     def running_cost(self):
-        return 10
-
+        if self.speed is not None:
+            cost = self.speed
+        else:
+            cost = 125
+        if self.slices[0].default_cargo == 'PASS':
+            return cost / 4
+        elif self.slices[0].default_cargo == 'MAIL':
+            return cost / 7
+        else:
+            return cost / 8
 
 class Wagon(Train):
     """
