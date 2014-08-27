@@ -28,7 +28,7 @@ consist.add_unit(CombineCar(type_config = type_config,
                         capacity_pax = 30,
                         weight = 34,
                         vehicle_length = 9,
-                        loading_speed = 20))
+                        loading_speed = 5))
 
 consist.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,

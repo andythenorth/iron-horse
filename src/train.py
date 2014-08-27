@@ -738,6 +738,7 @@ class CargoSprinter(Train):
         self.engine_class = 'ENGINE_CLASS_DIESEL' #nml constant
         self.num_random_cargo_variants = kwargs.get('num_random_cargo_variants')
         self.visual_effect = 'VISUAL_EFFECT_DISABLE' # nml constant
+        self.loading_speed = 25
 
 
 class MailCar(Wagon):

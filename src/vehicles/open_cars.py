@@ -16,7 +16,7 @@ graphics_processor_2 = GraphicsProcessorFactory('simple_recolour_pipeline', opti
 
 type_config = TypeConfig(base_id = 'open_car',
                 template = 'car_with_visible_cargo.pynml',
-                  num_cargo_rows = 14,
+                num_cargo_rows = 14,
                 class_refit_groups = ['all_freight'],
                 cargo_graphics_mappings = cargo_graphics_mappings,
                 label_refits_allowed = cargo_graphics_mappings.keys() ,
@@ -31,7 +31,7 @@ consist = WagonConsist(type_config = type_config,
                     wagon_generation = 1,
                     replacement_id = '-none',
                     intro_date = 1860,
-                          vehicle_life = 40,
+                    vehicle_life = 40,
                     graphics_status = '',
                     use_legacy_spritesheet = True)
 
@@ -40,7 +40,7 @@ consist.add_unit(Wagon(type_config = type_config,
                         capacity_freight = 20,
                         weight = 7,
                         vehicle_length = 5,
-                        loading_speed = 20))
+                        loading_speed = 5))
 
 consist.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,
@@ -59,7 +59,7 @@ consist = WagonConsist(type_config = type_config,
                     wagon_generation = 2,
                     replacement_id = '-none',
                     intro_date = 1925,
-                          vehicle_life = 40,
+                    vehicle_life = 40,
                     graphics_status = '',
                     use_legacy_spritesheet = True)
 
@@ -68,7 +68,7 @@ consist.add_unit(Wagon(type_config = type_config,
                         capacity_freight = 35,
                         weight = 15,
                         vehicle_length = 6,
-                        loading_speed = 20))
+                        loading_speed = 5))
 
 consist.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,
@@ -77,7 +77,7 @@ consist.add_model_variant(intro_date=0,
 
 type_config = TypeConfig(base_id = 'open_car_ng',
                 template = 'car_with_visible_cargo.pynml',
-                  num_cargo_rows = 14,
+                num_cargo_rows = 14,
                 class_refit_groups = ['all_freight'],
                 cargo_graphics_mappings = cargo_graphics_mappings,
                 label_refits_allowed = cargo_graphics_mappings.keys() ,
@@ -93,7 +93,7 @@ consist = WagonConsist(type_config = type_config,
                     wagon_generation = 1,
                     replacement_id = '-none',
                     intro_date = 1870,
-                          vehicle_life = 40,
+                    vehicle_life = 40,
                     graphics_status = '',
                     use_legacy_spritesheet = True)
 
@@ -102,7 +102,7 @@ consist.add_unit(Wagon(type_config = type_config,
                         capacity_freight = 12,
                         weight = 3,
                         vehicle_length = 3,
-                        loading_speed = 20))
+                        loading_speed = 5))
 
 consist.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,

@@ -27,7 +27,7 @@ consist.add_unit(Wagon(type_config = type_config,
                         capacity_pax = 40,
                         weight = 30,
                         vehicle_length = 9,
-                        loading_speed = 20))
+                        loading_speed = 5))
 
 consist.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,
@@ -49,7 +49,7 @@ consist.add_unit(Wagon(type_config = type_config,
                         capacity_pax = 55,
                         weight = 33,
                         vehicle_length = 9,
-                        loading_speed = 20))
+                        loading_speed = 5))
 
 consist.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,
@@ -71,7 +71,7 @@ consist.add_unit(Wagon(type_config = type_config,
                         capacity_pax = 75,
                         weight = 36,
                         vehicle_length = 10,
-                        loading_speed = 20))
+                        loading_speed = 5))
 
 consist.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,
@@ -103,7 +103,7 @@ consist.add_unit(Wagon(type_config = type_config,
                         capacity_pax = 25,
                         weight = 12,
                         vehicle_length = 6,
-                        loading_speed = 20))
+                        loading_speed = 5))
 
 consist.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,

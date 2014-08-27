@@ -42,7 +42,7 @@ consist.add_unit(Wagon(type_config = type_config,
                         capacity_freight = 48, # matched to RH and Squid containers
                         weight = 20,
                         vehicle_length = 8,
-                        loading_speed = 20))
+                        loading_speed = 25))
 
 consist.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,

@@ -24,7 +24,7 @@ consist = WagonConsist(type_config = type_config,
                     wagon_generation = 1,
                     replacement_id = '-none',
                     intro_date = 1895,
-                          vehicle_life = 40,
+                    vehicle_life = 40,
                     graphics_status = '',
                     use_legacy_spritesheet = True)
 
@@ -33,7 +33,7 @@ consist.add_unit(Wagon(type_config = type_config,
                         capacity_freight = 25,
                         weight = 14,
                         vehicle_length = 6,
-                        loading_speed = 20))
+                        loading_speed = 5))
 
 consist.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,
@@ -47,7 +47,7 @@ consist = WagonConsist(type_config = type_config,
                     wagon_generation = 3,
                     replacement_id = '-none',
                     intro_date = 1964,
-                          vehicle_life = 40,
+                    vehicle_life = 40,
                     speedy = True,
                     graphics_status = '',
                     use_legacy_spritesheet = True)
@@ -57,7 +57,7 @@ consist.add_unit(Wagon(type_config = type_config,
                         capacity_freight = 40,
                         weight = 30,
                         vehicle_length = 8,
-                        loading_speed = 20))
+                        loading_speed = 5))
 
 consist.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,
