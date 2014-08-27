@@ -1,6 +1,21 @@
 Changelog
 =========
 
+-------------------
+Release Candidate 1
+-------------------
+
+*New Features / Changes*
+
+- set buy and run costs for all wagons
+- sprites for generation 3 hopper car
+- use company colours on generation 3 box car
+- separate speed limit for narrow gauge wagons
+
+*Language Updates*
+
+- Afrikaans (Telanus)
+
 -------
 Alpha 6
 -------
