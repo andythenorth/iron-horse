@@ -28,7 +28,7 @@ if not os.path.exists(chameleon_cache_path):
     os.mkdir(chameleon_cache_path)
 os.environ['CHAMELEON_CACHE'] = chameleon_cache_path
 
-docs_src = os.path.join(currentdir, 'docs_src')
+docs_src = os.path.join(currentdir, 'src', 'docs_templates')
 docs_output_path = os.path.join(currentdir, 'docs')
 if os.path.exists(docs_output_path):
     shutil.rmtree(docs_output_path)
@@ -36,14 +36,14 @@ os.mkdir(docs_output_path)
 
 shutil.copy(os.path.join(docs_src,'index.html'), docs_output_path)
 
-static_dir_src = os.path.join(currentdir, 'docs_src', 'html', 'static')
+static_dir_src = os.path.join(docs_src, 'html', 'static')
 static_dir_dst = os.path.join(docs_output_path, 'html', 'static')
 shutil.copytree(static_dir_src, static_dir_dst)
 
 import markdown
 from chameleon import PageTemplateLoader # chameleon used in most template cases
 # setup the places we look for templates
-docs_templates = PageTemplateLoader(os.path.join(currentdir, 'docs_src'), format='text')
+docs_templates = PageTemplateLoader(docs_src, format='text')
 
 from train import Train
 
