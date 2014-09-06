@@ -50,6 +50,12 @@ spritegroup ${vehicle.id}_sg_purchase {
             return ${consist.power_by_tracktype['RAIL']};
     }
     <!--! end variable power -->
+    <!--! variable visual effect - this is horribly hard-coded right now, it can be fixed when it needs to be fixed -->
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_visual_effect_and_powered, current_railtype) {
+            ELRL: return visual_effect_and_powered(VISUAL_EFFECT_ELECTRIC, 0, DISABLE_WAGON_POWER);
+            return visual_effect_and_powered(VISUAL_EFFECT_DIESEL, 0, DISABLE_WAGON_POWER);
+    }
+    <!--! end variable visual effect -->
 </tal:variable_power>
 
 

@@ -296,10 +296,16 @@ class Train(object):
 
     @property
     def is_lead_slice_of_consist(self):
+        # first slice in the complete multi-unit consist
         if self.numeric_id == self.consist.base_numeric_id:
             return True
         else:
             return False
+
+    @property
+    def is_lead_slice_of_unit(self):
+        # first slice in a unit
+        return isinstance(self, LeadSlice)
 
     @property
     def special_flags(self):
@@ -469,6 +475,8 @@ class LeadSlice(Train):
         self.weight = 0
         self.vehicle_length = parent_vehicle.vehicle_length
         self.engine_class = parent_vehicle.engine_class
+        self.visual_effect = parent_vehicle.visual_effect
+        self.visual_effect_offset = parent_vehicle.visual_effect_offset
         self.default_cargo = parent_vehicle.default_cargo # breaks auto-replace if omitted
         # provide default capacity (set as property) so leads vehicle has same refittability as trailing slices, this prevents an issue with auto-refit
         self.default_cargo_capacities = [1]
@@ -651,8 +659,10 @@ class SteamLoco(Train):
         super(SteamLoco, self).__init__(**kwargs)
         self.template = 'train.pynml'
         self.default_cargo_capacities = [0]
-        self.engine_class = 'ENGINE_CLASS_STEAM' #nml constant
-        self.visual_effect = 'VISUAL_EFFECT_STEAM' # nml constant
+        self.engine_class = 'ENGINE_CLASS_STEAM'
+        self.visual_effect = 'VISUAL_EFFECT_STEAM'
+        # provide smoke near the front of a steam loco by default, can be over-ridden per vehicle
+        self.visual_effect_offset = kwargs.get('visual_effect_offset', int(math.floor(-0.5 * self.vehicle_length)))
 
 
 class SteamLocoTender(Train):
@@ -673,8 +683,8 @@ class DieselLoco(Train):
         super(DieselLoco, self).__init__(**kwargs)
         self.template = 'train.pynml'
         self.default_cargo_capacities = [0]
-        self.engine_class = 'ENGINE_CLASS_DIESEL' #nml constant
-        self.visual_effect = 'VISUAL_EFFECT_DIESEL' # nml constant
+        self.engine_class = 'ENGINE_CLASS_DIESEL'
+        self.visual_effect = 'VISUAL_EFFECT_DIESEL'
 
 
 class DieselRailcar(Train):
@@ -692,8 +702,8 @@ class DieselRailcar(Train):
         self.capacities_freight = [int(0.5 * capacity) for capacity in self.capacities_mail]
         self.default_cargo_capacities = self.capacities_pax
         self.default_cargo = 'PASS'
-        self.engine_class = 'ENGINE_CLASS_DIESEL' #nml constant
-        self.visual_effect = 'VISUAL_EFFECT_DIESEL' # nml constant
+        self.engine_class = 'ENGINE_CLASS_DIESEL'
+        self.visual_effect = 'VISUAL_EFFECT_DIESEL'
 
 
 class ElectricLoco(Train):
@@ -705,8 +715,8 @@ class ElectricLoco(Train):
         self.template = 'train.pynml'
         self.default_cargo_capacities = [0]
         kwargs['consist'].track_type = "ELRL"
-        self.engine_class = 'ENGINE_CLASS_ELECTRIC' #nml constant
-        self.visual_effect = 'VISUAL_EFFECT_ELECTRIC' # nml constant
+        self.engine_class = 'ENGINE_CLASS_ELECTRIC'
+        self.visual_effect = 'VISUAL_EFFECT_ELECTRIC'
 
 
 class ElectroDieselLoco(Train):
@@ -717,9 +727,8 @@ class ElectroDieselLoco(Train):
         super(ElectroDieselLoco, self).__init__(**kwargs)
         self.template = 'train.pynml'
         self.default_cargo_capacities = [0]
-        self.engine_class = 'ENGINE_CLASS_DIESEL' #nml constant
-        self.visual_effect = 'VISUAL_EFFECT_DIESEL' # nml constant
-
+        self.engine_class = 'ENGINE_CLASS_DIESEL'
+        # visual effect handled in cb for this loco
 
 class CargoSprinter(Train):
     """
@@ -735,9 +744,9 @@ class CargoSprinter(Train):
         self.autorefit = True
         self.default_cargo_capacities = self.capacities_freight
         self.default_cargo = 'GOOD'
-        self.engine_class = 'ENGINE_CLASS_DIESEL' #nml constant
+        self.engine_class = 'ENGINE_CLASS_DIESEL'
+        self.visual_effect = 'VISUAL_EFFECT_DISABLE' # intended - positioning smoke correctly for this vehicle is too fiddly
         self.num_random_cargo_variants = kwargs.get('num_random_cargo_variants')
-        self.visual_effect = 'VISUAL_EFFECT_DISABLE' # nml constant
         self.loading_speed = 25
 
 
@@ -770,8 +779,8 @@ class MetroMultipleUnit(Train):
         self.template = 'metro_mu.pynml'
         self.default_cargo_capacities = self.capacities_pax
         self.default_cargo = "PASS"
-        self.engine_class = 'ENGINE_CLASS_ELECTRIC' #nml constant
-        self.visual_effect = 'VISUAL_EFFECT_ELECTRIC' # nml constant
+        self.engine_class = 'ENGINE_CLASS_ELECTRIC'
+        self.visual_effect = 'VISUAL_EFFECT_ELECTRIC'
         self.loading_speed = 40
 
 
@@ -783,6 +792,6 @@ class MetroLoco(Train):
         super(MetroLoco, self).__init__(**kwargs)
         self.template = 'train.pynml'
         self.default_cargo_capacities = [0]
-        self.engine_class = 'ENGINE_CLASS_ELECTRIC' #nml constant
-        self.visual_effect = 'VISUAL_EFFECT_ELECTRIC' # nml constant
+        self.engine_class = 'ENGINE_CLASS_ELECTRIC'
+        self.visual_effect = 'VISUAL_EFFECT_ELECTRIC'
 
