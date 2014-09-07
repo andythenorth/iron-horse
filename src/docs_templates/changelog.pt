@@ -2,6 +2,20 @@ Changelog
 =========
 
 -------------------
+Release Candidate 4
+-------------------
+
+*New Features / Changes*
+
+- new sprites for third generation hopper car
+- randomly chosen 1st or 2nd company colour for
+    - box cars
+    - open cars
+    - reefer cars
+- covered hopper cars can now refit to Building Materials cargo
+
+
+-------------------
 Release Candidate 3
 -------------------
 
