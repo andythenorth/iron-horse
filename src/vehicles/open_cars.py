@@ -6,13 +6,9 @@ cargo_graphics_mappings = {'AORE': [1], 'COAL': [2], 'SAND': [3], 'CORE': [4], '
                            'GRAI': [10], 'WHEA': [10], 'MAIZ': [10], 'FICR': [11],
                            'SGCN': [11], 'OLSD': [12], 'CLAY': [13]}
 
-options = {'template': 'open_car_brit_gen_1_template.png',
-           'recolour_map': {170: 186, 171: 187, 172: 188, 173: 189}}
-graphics_processor_1 = GraphicsProcessorFactory('simple_recolour_pipeline', options)
-
-options = {'template': 'open_car_brit_gen_1_template.png',
-           'recolour_map': {170: 206, 171: 207, 172: 208, 173: 209}}
-graphics_processor_2 = GraphicsProcessorFactory('simple_recolour_pipeline', options)
+options = {'template': 'open_car_brit_gen_1_template.png'}
+graphics_processor_1 = GraphicsProcessorFactory('pass_through_pipeline', options)
+graphics_processor_2 = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
 
 type_config = TypeConfig(base_id = 'open_car',
                 template = 'car_with_visible_cargo.pynml',
@@ -53,6 +49,10 @@ consist.add_model_variant(intro_date=0,
                        graphics_processor=graphics_processor_2)
 
 
+options = {'template': 'open_car_brit_gen_2_template.png'}
+graphics_processor_1 = GraphicsProcessorFactory('pass_through_pipeline', options)
+graphics_processor_2 = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
+
 consist = WagonConsist(type_config = type_config,
                     title = 'Open [Car]',
                     vehicle_set = 'brit',
@@ -72,8 +72,18 @@ consist.add_unit(Wagon(type_config = type_config,
 
 consist.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,
-                       spritesheet_suffix=0)
+                       spritesheet_suffix=0,
+                       graphics_processor=graphics_processor_1)
 
+consist.add_model_variant(intro_date=0,
+                       end_date=global_constants.max_game_date,
+                       spritesheet_suffix=1,
+                       graphics_processor=graphics_processor_2)
+
+
+options = {'template': 'open_car_ng_brit_gen_1_template.png'}
+graphics_processor_1 = GraphicsProcessorFactory('pass_through_pipeline', options)
+graphics_processor_2 = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
 
 type_config = TypeConfig(base_id = 'open_car_ng',
                 template = 'car_with_visible_cargo.pynml',
@@ -106,4 +116,10 @@ consist.add_unit(Wagon(type_config = type_config,
 
 consist.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,
-                       spritesheet_suffix=0)
+                       spritesheet_suffix=0,
+                       graphics_processor=graphics_processor_1)
+
+consist.add_model_variant(intro_date=0,
+                       end_date=global_constants.max_game_date,
+                       spritesheet_suffix=1,
+                       graphics_processor=graphics_processor_2)
