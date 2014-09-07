@@ -9,7 +9,7 @@ buy_menu_sort_order_wagons = ['passenger_car',
                               'tank_car',
                               'flat_car',
                               'livestock_car',
-                             # 'edibles_tank_car',
+                              'edibles_tank_car',
                               'reefer_car',
                               'covered_hopper_car',
                               'intermodal_flat_car',
@@ -58,7 +58,9 @@ base_refits_by_class = {'empty': [],
 # rather than using disallowed classes (can cause breakage), specific labels are disallowed
 # this is done per vehicle type, or added to global_constants for ease of reuse and updating
 # these lists are similar but not identical across Iron Horse, Squid, Road Hog etc
-disallowed_refits_by_label = {'non_hopper_freight': ['WOOD', 'SGCN', 'FICR', 'BDMT', 'WDPR', 'GRAI', 'WHEA', 'MAIZ', 'FRUT'],}
+disallowed_refits_by_label = {'non_hopper_freight': ['WOOD', 'SGCN', 'FICR', 'BDMT', 'WDPR', 'GRAI', 'WHEA', 'MAIZ', 'FRUT'],
+                              'edible_liquids': ['MILK', 'WATR', 'BEER', 'FOOD'],
+                              'non_edible_liquids': ['RFPR', 'OIL_', 'FMSP', 'PETR']}
 
 # speed for wagons in mph (some generations may optionally have no speed set)
 # format is [standard, speedy]

@@ -36,6 +36,7 @@ from vehicles import box_cars
 from vehicles import caboose_cars
 from vehicles import combine_cars
 from vehicles import covered_hopper_cars
+from vehicles import edibles_tank_cars
 from vehicles import flat_cars
 from vehicles import hopper_cars
 from vehicles import intermodal_flat_cars
