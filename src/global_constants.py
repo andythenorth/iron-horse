@@ -53,7 +53,7 @@ base_refits_by_class = {'empty': [],
 # rather than using disallowed classes (can cause breakage), specific labels are disallowed
 # this is done per vehicle type, or added to global_constants for ease of reuse and updating
 # these lists are similar but not identical across Iron Horse, Squid, Road Hog etc
-disallowed_refits_by_label = {'non_hopper_freight': ['WOOD', 'SGCN', 'FICR', 'BDMT', 'WDPR', 'GRAI', 'WHEA', 'MAIZ'],}
+disallowed_refits_by_label = {'non_hopper_freight': ['WOOD', 'SGCN', 'FICR', 'BDMT', 'WDPR', 'GRAI', 'WHEA', 'MAIZ', 'FRUT'],}
 
 # speed for wagons in mph (some generations may optionally have no speed set)
 # format is [standard, speedy]
