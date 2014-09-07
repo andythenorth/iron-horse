@@ -17,9 +17,6 @@ type_config = TypeConfig(base_id = 'tank_car',
                 default_cargo = 'OIL_',
                 default_capacity_type = 'capacity_freight')
 
-        # mappings are to rows in the spritesheet, 0-based (0 is also default)
-        # also get the allowed label refits from the graphics mapping - use row 0 if there's no specific graphics for the label
-
 consist = WagonConsist(type_config = type_config,
                     title = 'Tank [Car]',
                     vehicle_set = 'brit',
