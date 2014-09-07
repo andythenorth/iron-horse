@@ -80,6 +80,10 @@ consist.add_model_variant(intro_date=0,
                        graphics_processor=graphics_processor_2)
 
 
+options = {'template': 'tank_car_ng_brit_gen_1_template.png'}
+graphics_processor_1 = GraphicsProcessorFactory('pass_through_pipeline', options)
+graphics_processor_2 = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
+
 type_config = TypeConfig(base_id = 'tank_car_ng',
                 template = 'train.pynml',
                 class_refit_groups = ['liquids'],
@@ -109,4 +113,10 @@ consist.add_unit(Wagon(type_config = type_config,
 
 consist.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,
-                       spritesheet_suffix=0)
+                       spritesheet_suffix=0,
+                       graphics_processor=graphics_processor_1)
+
+consist.add_model_variant(intro_date=0,
+                       end_date=global_constants.max_game_date,
+                       spritesheet_suffix=1,
+                       graphics_processor=graphics_processor_2)
