@@ -1,5 +1,9 @@
 import global_constants
-from train import TypeConfig, WagonConsist, Wagon
+from train import TypeConfig, WagonConsist, Wagon, GraphicsProcessorFactory
+
+options = {'template': 'tank_car_brit_gen_1_template.png'}
+graphics_processor_1 = GraphicsProcessorFactory('pass_through_pipeline', options)
+graphics_processor_2 = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
 
 # tank cars are unrealistically autorefittable, and at no cost
 # Pikka: if people complain that it's unrealistic, tell them "don't do it then"
@@ -35,8 +39,18 @@ consist.add_unit(Wagon(type_config = type_config,
 
 consist.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,
-                       spritesheet_suffix=0)
+                       spritesheet_suffix=0,
+                       graphics_processor=graphics_processor_1)
 
+consist.add_model_variant(intro_date=0,
+                       end_date=global_constants.max_game_date,
+                       spritesheet_suffix=1,
+                       graphics_processor=graphics_processor_2)
+
+
+options = {'template': 'tank_car_brit_gen_2_template.png'}
+graphics_processor_1 = GraphicsProcessorFactory('pass_through_pipeline', options)
+graphics_processor_2 = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
 
 consist = WagonConsist(type_config = type_config,
                     title = 'Tank [Car]',
@@ -57,7 +71,13 @@ consist.add_unit(Wagon(type_config = type_config,
 
 consist.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,
-                       spritesheet_suffix=0)
+                       spritesheet_suffix=0,
+                       graphics_processor=graphics_processor_1)
+
+consist.add_model_variant(intro_date=0,
+                       end_date=global_constants.max_game_date,
+                       spritesheet_suffix=1,
+                       graphics_processor=graphics_processor_2)
 
 
 type_config = TypeConfig(base_id = 'tank_car_ng',
