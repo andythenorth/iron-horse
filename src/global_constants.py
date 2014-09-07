@@ -9,6 +9,7 @@ buy_menu_sort_order_wagons = ['passenger_car',
                               'tank_car',
                               'flat_car',
                               'livestock_car',
+                             # 'edibles_tank_car',
                               'reefer_car',
                               'covered_hopper_car',
                               'intermodal_flat_car',
@@ -22,17 +23,21 @@ buy_menu_sort_order_wagons = ['passenger_car',
 
 # set (roster) <-> numeric id mapping
 # vehicle IDs are in format nxxx where n is set numeric id
-# first 1k IDs reserved, IDs must be < 16383, with 500 IDs allocated per set for main roster, and 500 per set for extras, so max 15 sets
+# first 1k IDs reserved, IDs must be < 16383, with 1000 IDs allocated per set
 vehicle_set_id_mapping = {'brit': 1}
 
-# wagon IDs start at 250, the first 250 IDs in a vehicle set are reserved for engines
-# max wagon type ID is 390 - set have up to 500 IDs, zero-based, with 100 reserved (for whatever doesn't fit elsewhere)
+# sets have up to 500 IDs for main set, zero-based, and 400 IDs for 'extras' (metro, narrow gauge etc)
+# 900-990 IDs are reserved in case we run into any 'wtf' stuff that needs a gap
+# wagon IDs run 250-490 and 750-890, the 0-240 and 500-740 IDs in a vehicle set are reserved for engines
 wagon_type_numeric_ids = {'caboose_car': 250, 'box_car': 260, 'covered_hopper_car': 270, 'flat_car': 280,
                           'hopper_car': 290, 'tank_car': 300, 'livestock_car': 310, 'mail_car': 320,
                           'reefer_car': 330, 'open_car': 340, 'passenger_car': 350, 'combine_car': 360,
-                          'intermodal_flat_car': 370,
-                        # extra (NG, metro, maglev) wagon IDs start at 750, max extra wagon type ID is 890
-                          'metro_car': 400, 'box_car_ng': 760,  'flat_car_ng': 780,
+                          'intermodal_flat_car': 370, 'edibles_tank_car': 380,
+                          # 390 is empty
+                          'metro_car': 400, # metro car should be in #760+ range, but isn't; no need to break savegames by moving it
+                          # extra (NG, maglev) wagon IDs start at 750, max extra wagon type ID is 890
+                          # 750 is empty
+                          'box_car_ng': 760,  'flat_car_ng': 780,
                           'tank_car_ng' : 800, 'livestock_car_ng': 810,
                           'passenger_car_ng': 850, 'open_car_ng': 840}
 
