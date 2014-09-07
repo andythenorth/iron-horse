@@ -3,8 +3,6 @@ from train import TypeConfig, WagonConsist, Wagon, GraphicsProcessorFactory
 
 options = {'template': 'reefer_car_brit_gen_2_template.png'}
 graphics_processor_1 = GraphicsProcessorFactory('pass_through_pipeline', options)
-
-options = {'template': 'reefer_car_brit_gen_2_template.png'}
 graphics_processor_2 = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
 
 
