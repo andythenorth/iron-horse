@@ -2,6 +2,17 @@ Changelog
 =========
 
 -------------------
+Release Candidate 3
+-------------------
+
+*Fixes*
+
+- Ramsbottom tender misaligned in \ view
+- smoke correctly positioned for most vehicles
+- Double Juice shows electric sparks or diesel smoke, depending on power type
+
+
+-------------------
 Release Candidate 2
 -------------------
 
