@@ -1,6 +1,8 @@
 import global_constants
 from train import TypeConfig, WagonConsist, Wagon
 
+# don't random colour cabeese, I tried it, looks daft
+
 type_config = TypeConfig(base_id = 'caboose_car',
                 template = 'train.pynml',
                 class_refit_groups = [], # refit nothing, don't mess with this, it breaks auto-replace
