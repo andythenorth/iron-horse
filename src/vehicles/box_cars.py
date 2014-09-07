@@ -1,13 +1,11 @@
 import global_constants
 from train import TypeConfig, WagonConsist, Wagon, GraphicsProcessorFactory
 
-options = {'template': 'box_car_brit_gen_1_template.png',
-           'recolour_map': {198: 40, 199: 41, 200: 42, 201: 43, 202: 44, 203: 45, 204: 46, 205: 47}}
-graphics_processor_1 = GraphicsProcessorFactory('simple_recolour_pipeline', options)
+options = {'template': 'box_car_brit_gen_1_template.png'}
+graphics_processor_1 = GraphicsProcessorFactory('pass_through_pipeline', options)
 
-options = {'template': 'box_car_brit_gen_1_template.png',
-           'recolour_map': {198: 88, 199: 89, 200: 90, 201: 91, 202: 92, 203: 93, 204: 94, 205: 96}}
-graphics_processor_2 = GraphicsProcessorFactory('simple_recolour_pipeline', options)
+options = {'template': 'box_car_brit_gen_1_template.png'}
+graphics_processor_2 = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
 
 type_config = TypeConfig(base_id = 'box_car',
                     template = 'train.pynml',
