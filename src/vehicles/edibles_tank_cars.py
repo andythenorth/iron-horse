@@ -15,10 +15,8 @@ type_config = TypeConfig(base_id = 'edibles_tank_car',
                 label_refits_disallowed = global_constants.disallowed_refits_by_label['non_edible_liquids'],
                 autorefit = True,
                 default_cargo = 'WATR',
-                default_capacity_type = 'capacity_freight')
-
-        # mappings are to rows in the spritesheet, 0-based (0 is also default)
-        # also get the allowed label refits from the graphics mapping - use row 0 if there's no specific graphics for the label
+                default_capacity_type = 'capacity_freight',
+                cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD)
 
 consist = WagonConsist(type_config = type_config,
                     title = 'Edibles Tank [Car]',
