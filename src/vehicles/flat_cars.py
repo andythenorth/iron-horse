@@ -9,7 +9,7 @@ type_config = TypeConfig(base_id = 'flat_car',
                 class_refit_groups = ['flatcar_freight'],
                 cargo_graphics_mappings = cargo_graphics_mappings,
                 label_refits_allowed = cargo_graphics_mappings.keys(),
-                label_refits_disallowed = [],
+                label_refits_disallowed = ['FOOD'],
                 autorefit = True,
                 default_cargo = 'GOOD',
                 default_capacity_type = 'capacity_freight')
