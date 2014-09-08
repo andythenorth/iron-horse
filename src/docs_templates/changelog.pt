@@ -2,6 +2,34 @@ Changelog
 =========
 
 -------------------
+Release Candidate 5
+-------------------
+
+*New Features / Changes*
+
+- rejig tank cars
+    - add two edibles tank cars, for food-type cargos (water, milk, alcohol etc)
+    - edibles tank cars have high speed limits, and cargo-aging bonus
+    - remove one standard tank car
+    - adjust speeds and intro dates for tank cars
+    - tank cars no longer refit to food-type cargos, use edibles tank car instead
+- introduce first-generation reefer car later, and make it faster (game balance)
+- change order of wagons in buy menu (puts the most widely-refittable wagons first)
+- randomly chosen 1st or 2nd company colour for:
+    - edibles tank cars
+    - tank cars
+    - flat cars
+    - covered hopper cars
+- narrow gauge tank car is now black not company colour
+
+*Fixes*
+
+- avoid refitting hoppers to fruit (fruit cargo often has bulk class for historical reasons)
+- allow refitting box cars to refit fruit (same issue with bulk class on fruit)
+- don't refit flat wagons to food, the birds will eat it
+
+
+-------------------
 Release Candidate 4
 -------------------
 
