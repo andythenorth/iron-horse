@@ -334,6 +334,13 @@ class Train(object):
         return global_constants.default_train_offsets[str(self.vehicle_length)]
 
     @property
+    def location_of_random_bits(self):
+        if isinstance(self, LeadSlice):
+            return 'SELF'
+        else:
+            return 'FORWARD_SELF(1)'
+
+    @property
     def sg_depot(self):
         if isinstance(self, LeadSlice):
             suffix = "_switch_graphics_by_year"
