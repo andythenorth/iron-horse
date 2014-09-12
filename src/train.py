@@ -129,7 +129,7 @@ class Consist(object):
         result = []
         for variant in self.model_variants:
             if year in range(variant.intro_date, variant.end_date):
-                result.append(variant.spritesheet_suffix)
+                result.append(variant)
         return result # could call set() here, but I didn't bother, shouldn't be needed if model variants set up correctly
 
     def get_nml_random_switch_fragments_for_model_variants(self, vehicle):

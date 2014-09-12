@@ -1,5 +1,9 @@
-// -- print some of the vehicle non-nml properties to aid debugging -- //
-// [no properties printed]
+// -- some switches are common to all vehicles so included with properties -- //
+
+// -- smoke -- //
+<!--! switch (FEAT_TRAINS, SELF, ${vehicle.id}_visual_effect_and_powered, ${vehicle.get_expression_for_effects()}) {
+    return ${len(vehicle.effects)};
+} -->
 
 item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
     property {
