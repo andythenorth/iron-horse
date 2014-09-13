@@ -132,7 +132,7 @@ class Consist(object):
                 result.append(variant)
         return result # could call set() here, but I didn't bother, shouldn't be needed if model variants set up correctly
 
-    def get_nml_random_switch_fragments_for_model_variants(self, vehicle):
+    def get_nml_random_switch_fragments_for_model_variants(self, vehicle, switch_name_substr):
         # return fragments of nml for use in switches
         result = []
         years = self.get_reduced_set_of_variant_dates()
@@ -140,7 +140,7 @@ class Consist(object):
             if index < len(years) - 1:
                 from_date = year
                 until_date = years[index + 1] - 1
-                result.append(str(from_date) + '..' + str(until_date) + ':' + vehicle.id + '_switch_graphics_random_' + str(from_date))
+                result.append(str(from_date) + '..' + str(until_date) + ':' + vehicle.id + switch_name_substr + str(from_date))
         return result
 
     def get_name_substr(self):
