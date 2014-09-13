@@ -380,7 +380,6 @@ class Train(object):
             else:
                 return variant.visual_effect_offset
 
-
     def get_nml_expression_for_cargo_type_unit_refitted_to(self):
         expression_template = Template("[STORE_TEMP(${offset}, 0x10F), var[0x61, 0, 0x000000FF, 0x47]]")
         # cargo capacity is on the second slice of each 3-slice unit
