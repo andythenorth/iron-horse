@@ -2,10 +2,10 @@
     switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_visual_effect_and_powered_by_variant_${variant.variant_num}, current_railtype) {
         <tal:only_if_overrides_exist condition="consist.visual_effect_override_by_railtype is not None">
             <tal:railtype_specific_effects repeat="railtype consist.visual_effect_override_by_railtype.keys()">
-                ${railtype}: return visual_effect_and_powered(${consist.visual_effect_override_by_railtype[railtype]}, ${vehicle.visual_effect_offset}, DISABLE_WAGON_POWER);
+                ${railtype}: return visual_effect_and_powered(${consist.visual_effect_override_by_railtype[railtype]}, ${vehicle.get_visual_effect_offset(variant)}, DISABLE_WAGON_POWER);
             </tal:railtype_specific_effects>
         </tal:only_if_overrides_exist>
-        return visual_effect_and_powered(${vehicle.visual_effect}, ${vehicle.visual_effect_offset}, DISABLE_WAGON_POWER);
+        return visual_effect_and_powered(${vehicle.visual_effect}, ${vehicle.get_visual_effect_offset(variant)}, DISABLE_WAGON_POWER);
     }
 </tal:model_variants>
 

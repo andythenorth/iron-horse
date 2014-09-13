@@ -64,9 +64,9 @@ class Consist(object):
                 utils.echo_message("Error: consist " + self.id + " shares duplicate id (" + str(self.base_numeric_id) + ") with consist " + consist.id)
         registered_consists.append(self)
 
-    def add_model_variant(self, intro_date, end_date, spritesheet_suffix, graphics_processor=None):
+    def add_model_variant(self, intro_date, end_date, spritesheet_suffix, graphics_processor=None, visual_effect_offset=None):
         variant_num = len(self.model_variants) # this will never ever ever be flakey and unreliable, right?
-        self.model_variants.append(ModelVariant(intro_date, end_date, spritesheet_suffix, graphics_processor, variant_num))
+        self.model_variants.append(ModelVariant(intro_date, end_date, spritesheet_suffix, graphics_processor, variant_num, visual_effect_offset))
 
     def add_unit(self, vehicle, repeat=1):
         # vehicle ids increment by 3 because each vehicle is composed of 3 intermediate slices
@@ -281,7 +281,7 @@ class Train(object):
         self.autorefit = False
         self.engine_class = 'ENGINE_CLASS_STEAM' # nml constant (STEAM is sane default)
         self.visual_effect = 'VISUAL_EFFECT_DISABLE' # nml constant
-        self.visual_effect_offset = 0
+        self.default_visual_effect_offset = 0 # visual effect handling is fiddly, check ModelVariant also
 
     def get_capacity_variations(self, capacity):
         # capacity is variable, controlled by a newgrf parameter
@@ -367,6 +367,20 @@ class Train(object):
             suffix = "_switch_graphics_by_year"
         return self.id + suffix
 
+    def get_visual_effect_offset(self, variant):
+        # no sign here of bonkers complexity just to flip smoke on flipped engines
+        if variant.visual_effect_offset is None:
+            if self.default_visual_effect_offset == 'FRONT':
+                return int(math.floor(-0.5 * self.vehicle_length))
+            else:
+                return self.default_visual_effect_offset
+        else:
+            if variant.visual_effect_offset == 'AUTOFLIP':
+                return int(math.floor(0.5 * (self.vehicle_length - self.slice_length)))
+            else:
+                return variant.visual_effect_offset
+
+
     def get_nml_expression_for_cargo_type_unit_refitted_to(self):
         expression_template = Template("[STORE_TEMP(${offset}, 0x10F), var[0x61, 0, 0x000000FF, 0x47]]")
         # cargo capacity is on the second slice of each 3-slice unit
@@ -451,12 +465,13 @@ class ModelVariant(object):
     # variants are mostly randomised or date-sensitive graphics
     # must be a minimum of one variant per train
     # at least one variant must have intro date 0 (for nml switch defaults to work)
-    def __init__(self, intro_date, end_date, spritesheet_suffix, graphics_processor, variant_num):
+    def __init__(self, intro_date, end_date, spritesheet_suffix, graphics_processor, variant_num, visual_effect_offset):
         self.variant_num = variant_num
         self.intro_date = intro_date
         self.end_date = end_date
         self.spritesheet_suffix = spritesheet_suffix # use digits for these - to match spritesheet filenames
         self.graphics_processor = graphics_processor
+        self.visual_effect_offset = visual_effect_offset # use digits or magic keywords, or omit
 
     def get_spritesheet_name(self, consist):
         return consist.id + '_' + str(self.spritesheet_suffix) + '.png'
@@ -487,7 +502,7 @@ class LeadSlice(Train):
         self.vehicle_length = parent_vehicle.vehicle_length
         self.engine_class = parent_vehicle.engine_class
         self.visual_effect = parent_vehicle.visual_effect
-        self.visual_effect_offset = parent_vehicle.visual_effect_offset
+        self.default_visual_effect_offset = parent_vehicle.default_visual_effect_offset
         self.default_cargo = parent_vehicle.default_cargo # breaks auto-replace if omitted
         # provide default capacity (set as property) so leads vehicle has same refittability as trailing slices, this prevents an issue with auto-refit
         self.default_cargo_capacities = [1]
@@ -672,8 +687,7 @@ class SteamLoco(Train):
         self.default_cargo_capacities = [0]
         self.engine_class = 'ENGINE_CLASS_STEAM'
         self.visual_effect = 'VISUAL_EFFECT_STEAM'
-        # provide smoke near the front of a steam loco by default, can be over-ridden per vehicle
-        self.visual_effect_offset = kwargs.get('visual_effect_offset', int(math.floor(-0.5 * self.vehicle_length)))
+        self.default_visual_effect_offset = 'FRONT'
 
 
 class SteamLocoTender(Train):
