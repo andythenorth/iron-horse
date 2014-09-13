@@ -41,9 +41,11 @@ class Consist(object):
         self.vehicle_life = kwargs.get('vehicle_life', None)
         self.power = kwargs.get('power', 0)
         self.track_type = kwargs.get('track_type', 'RAIL')
-        self.power_by_tracktype = kwargs.get('power_by_tracktype', None) # used by multi-mode engines such as electro-diesel, otherwise ignored
         self.tractive_effort_coefficient = kwargs.get('tractive_effort_coefficient', 0.3) # 0.3 is recommended default value
         self.speed = kwargs.get('speed', None)
+        # used by multi-mode engines such as electro-diesel, otherwise ignored
+        self.power_by_railtype = kwargs.get('power_by_railtype', None)
+        self.visual_effect_override_by_railtype = kwargs.get('visual_effect_override_by_railtype', None)
         # arbitrary adjustments of points that can be applied to adjust buy cost and running cost, over-ride in consist as needed
         # values can be -ve or +ve to dibble specific vehicles (but total calculated points cannot exceed 255)
         self.type_base_buy_cost_points = kwargs.get('type_base_buy_cost_points', 15)
@@ -63,7 +65,8 @@ class Consist(object):
         registered_consists.append(self)
 
     def add_model_variant(self, intro_date, end_date, spritesheet_suffix, graphics_processor=None):
-        self.model_variants.append(ModelVariant(intro_date, end_date, spritesheet_suffix, graphics_processor))
+        variant_num = len(self.model_variants) # this will never ever ever be flakey and unreliable, right?
+        self.model_variants.append(ModelVariant(intro_date, end_date, spritesheet_suffix, graphics_processor, variant_num))
 
     def add_unit(self, vehicle, repeat=1):
         # vehicle ids increment by 3 because each vehicle is composed of 3 intermediate slices
@@ -186,7 +189,7 @@ class Consist(object):
         return offers_autorefit
 
     def slice_requires_variable_power(self, vehicle):
-        if self.power_by_tracktype is not None and vehicle.is_lead_slice_of_consist:
+        if self.power_by_railtype is not None and vehicle.is_lead_slice_of_consist:
             return True
         else:
             return False
@@ -448,7 +451,8 @@ class ModelVariant(object):
     # variants are mostly randomised or date-sensitive graphics
     # must be a minimum of one variant per train
     # at least one variant must have intro date 0 (for nml switch defaults to work)
-    def __init__(self, intro_date, end_date, spritesheet_suffix, graphics_processor):
+    def __init__(self, intro_date, end_date, spritesheet_suffix, graphics_processor, variant_num):
+        self.variant_num = variant_num
         self.intro_date = intro_date
         self.end_date = end_date
         self.spritesheet_suffix = spritesheet_suffix # use digits for these - to match spritesheet filenames
@@ -715,7 +719,7 @@ class DieselRailcar(Train):
 
 class ElectricLoco(Train):
     """
-    Diesel Locomotive.
+    Electric Locomotive.
     """
     def __init__(self, **kwargs):
         super(ElectricLoco, self).__init__(**kwargs)
@@ -735,7 +739,9 @@ class ElectroDieselLoco(Train):
         self.template = 'train.pynml'
         self.default_cargo_capacities = [0]
         self.engine_class = 'ENGINE_CLASS_DIESEL'
-        # visual effect handled in cb for this loco
+        self.visual_effect = 'VISUAL_EFFECT_DIESEL'
+        self.consist.visual_effect_override_by_railtype = {'ELRL': 'VISUAL_EFFECT_ELECTRIC'}
+
 
 class CargoSprinter(Train):
     """

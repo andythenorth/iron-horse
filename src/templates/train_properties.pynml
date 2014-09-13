@@ -1,21 +1,15 @@
 // -- some switches are common to all vehicles so included with properties -- //
 
-// -- smoke -- //
-<!--! switch (FEAT_TRAINS, SELF, ${vehicle.id}_visual_effect_and_powered, ${vehicle.get_expression_for_effects()}) {
-    return ${len(vehicle.effects)};
-} -->
+// -- smoke etc -- //
+<tal:include metal:use-macro="load: visual_effect_and_powered.pynml" />
+
 
 item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
     property {
         name:                           ${consist.get_name()};
         climates_available:             ${vehicle.availability};
         engine_class:                   ${vehicle.engine_class};
-        <tal:visual_effect condition="vehicle.is_lead_slice_of_unit">
-            visual_effect_and_powered:      visual_effect_and_powered(${vehicle.visual_effect}, ${vehicle.visual_effect_offset}, DISABLE_WAGON_POWER);
-        </tal:visual_effect>
-        <tal:visual_effect condition="not:vehicle.is_lead_slice_of_unit">
-            visual_effect_and_powered:      visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
-        </tal:visual_effect>
+        visual_effect_and_powered:      visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
         introduction_date:              date(${consist.intro_date},01,01); // consist just supplies intro year - openttd randomises intro dates a bit anyway
         cargo_capacity:                 ${vehicle.default_cargo_capacities[0]};
         sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
@@ -52,8 +46,10 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
         purchase:                       ${vehicle.id}_sg_purchase;
         <tal:variable_power condition="consist.slice_requires_variable_power(vehicle)">
             power:                          ${vehicle.id}_switch_power;
-            visual_effect_and_powered:      ${vehicle.id}_switch_visual_effect_and_powered;
         </tal:variable_power>
+        <tal:visual_effect condition="vehicle.is_lead_slice_of_unit">
+            visual_effect_and_powered:      ${vehicle.id}_switch_visual_effect_and_powered;
+        </tal:visual_effect>
         <tal:add_articulated_parts condition="vehicle.is_lead_slice_of_consist">
             articulated_part: ${consist.id}_articulated_cb_switch;
         </tal:add_articulated_parts>

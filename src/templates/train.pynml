@@ -46,16 +46,10 @@ spritegroup ${vehicle.id}_sg_purchase {
 <tal:variable_power condition="consist.slice_requires_variable_power(vehicle)">
     <!--! variable power - this is horribly hard-coded right now, it can be fixed when it needs to be fixed -->
     switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_power, current_railtype) {
-            ELRL: return ${consist.power_by_tracktype['ELRL']};
-            return ${consist.power_by_tracktype['RAIL']};
+            ELRL: return ${consist.power_by_railtype['ELRL']};
+            return ${consist.power_by_railtype['RAIL']};
     }
     <!--! end variable power -->
-    <!--! variable visual effect - this is horribly hard-coded right now, it can be fixed when it needs to be fixed -->
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_visual_effect_and_powered, current_railtype) {
-            ELRL: return visual_effect_and_powered(VISUAL_EFFECT_ELECTRIC, 0, DISABLE_WAGON_POWER);
-            return visual_effect_and_powered(VISUAL_EFFECT_DIESEL, 0, DISABLE_WAGON_POWER);
-    }
-    <!--! end variable visual effect -->
 </tal:variable_power>
 
 

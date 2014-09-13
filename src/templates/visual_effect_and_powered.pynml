@@ -1,0 +1,27 @@
+<tal:model_variants repeat="variant consist.model_variants">
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_visual_effect_and_powered_by_variant_${variant.variant_num}, current_railtype) {
+        <tal:only_if_overrides_exist condition="consist.visual_effect_override_by_railtype is not None">
+            <tal:railtype_specific_effects repeat="railtype consist.visual_effect_override_by_railtype.keys()">
+                ${railtype}: return visual_effect_and_powered(${consist.visual_effect_override_by_railtype[railtype]}, ${vehicle.visual_effect_offset}, DISABLE_WAGON_POWER);
+            </tal:railtype_specific_effects>
+        </tal:only_if_overrides_exist>
+        return visual_effect_and_powered(${vehicle.visual_effect}, ${vehicle.visual_effect_offset}, DISABLE_WAGON_POWER);
+    }
+</tal:model_variants>
+
+<tal:model_variant_random_switches repeat="year consist.get_reduced_set_of_variant_dates()[:-1]">
+    random_switch (FEAT_TRAINS, ${vehicle.location_of_random_bits}, ${vehicle.id}_switch_visual_effect_and_powered_random_${year}) {
+        dependent: ${vehicle.id}_switch_graphics_random_${year};
+        <tal:random_graphics_variations repeat="variant consist.get_variants_available_for_specific_year(year)">
+            1: ${vehicle.id}_switch_visual_effect_and_powered_by_variant_${variant.variant_num};
+        </tal:random_graphics_variations>
+    }
+</tal:model_variant_random_switches>
+
+
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_visual_effect_and_powered, build_year) {
+    <tal:choose_random_switch_by_date repeat="nml_fragment consist.get_nml_random_switch_fragments_for_model_variants(vehicle, '_switch_visual_effect_and_powered_random_')">
+        ${nml_fragment};
+    </tal:choose_random_switch_by_date>
+    return ${vehicle.id}_switch_visual_effect_and_powered_random_0;
+}
