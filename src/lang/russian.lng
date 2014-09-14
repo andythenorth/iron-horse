@@ -17,7 +17,3 @@ STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Электро
 STR_NAME_SUFFIX_BATTERY                                         :(Энергоблок)
 STR_NAME_SUFFIX_CAR                                             :Вагон
 STR_NAME_SUFFIX_METRO_CAR                                       :Вагон (Метро)
-
-STR_BUY_MENU_TEXT                                               :{STRING}{}{STRING}
-STR_BUY_MENU_OFFERS_AUTOREFIT                                   :{BLACK}Переоборудование
-STR_BUY_MENU_IMPROVED_CARGO_AGE_PERIOD                          :{BLACK}Оплата перевозок: {GOLD}Улучшенная

@@ -15,7 +15,3 @@ STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Elektrisch-Die
 STR_NAME_SUFFIX_BATTERY                                         :(Batterij)
 STR_NAME_SUFFIX_CAR                                             :Wagen
 STR_NAME_SUFFIX_METRO_CAR                                       :Wagen (Metro)
-
-STR_BUY_MENU_TEXT                                               :{STRING}{}{STRING}
-STR_BUY_MENU_OFFERS_AUTOREFIT                                   :{BLACK}Heeft auto-ombouw
-STR_BUY_MENU_IMPROVED_CARGO_AGE_PERIOD                          :{BLACK}Vrachtprijs: {GOLD}Verbeterd

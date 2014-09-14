@@ -15,7 +15,3 @@ STR_NAME_SUFFIX_METRO_TRAIN                                     :(Métro)
 STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Électro-Diesel)
 STR_NAME_SUFFIX_BATTERY                                         :(Batterie)
 STR_NAME_SUFFIX_CAR                                             :Voiture
-
-STR_BUY_MENU_TEXT                                               :{STRING}{}{STRING}
-STR_BUY_MENU_OFFERS_AUTOREFIT                                   :{BLACK}Réaménagement automatique possible
-STR_BUY_MENU_IMPROVED_CARGO_AGE_PERIOD                          :{BLACK}Valeur des marchandises : {GOLD}Améliorée

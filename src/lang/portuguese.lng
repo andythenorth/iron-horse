@@ -12,5 +12,3 @@ STR_NAME_SUFFIX_STEAM                                           :(Vapor)
 STR_NAME_SUFFIX_DIESEL                                          :(Diesel)
 STR_NAME_SUFFIX_ELECTRIC                                        :(Eléctrico)
 STR_NAME_SUFFIX_CAR                                             :Carro
-
-STR_BUY_MENU_TEXT                                               :Tipo: {GOLD}{STRING}{}{STRING}{STRING}

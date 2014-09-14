@@ -14,6 +14,3 @@ STR_NAME_SUFFIX_ELECTRIC                                        :(Elektrisch)
 STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Elektro-Diesel)
 STR_NAME_SUFFIX_BATTERY                                         :(Batterie)
 STR_NAME_SUFFIX_CAR                                             :Waggon
-
-STR_BUY_MENU_TEXT                                               :Typ: {GOLD}{STRING}{}{STRING}{STRING}
-STR_BUY_MENU_OFFERS_AUTOREFIT                                   :{BLACK}Automatische Umrüstung
