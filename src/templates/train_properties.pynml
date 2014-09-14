@@ -5,11 +5,13 @@
 
 // -- power -- //
 <tal:variable_power condition="consist.slice_requires_variable_power(vehicle)">
-    <!--! variable power - this is horribly hard-coded right now, it can be fixed when it needs to be fixed -->
-    <!--! should just repeat over the power_by_railtype dict, and set default to the power prop on the vehicle -->
     switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_power, current_railtype) {
-            ELRL: return ${consist.power_by_railtype['ELRL']};
-            return ${consist.power_by_railtype['RAIL']};
+        <tal:only_if_overrides_exist condition="consist.power_by_railtype is not None">
+            <tal:railtype_specific_effects repeat="railtype consist.power_by_railtype.keys()">
+                ${railtype}: return ${consist.power_by_railtype[railtype]};
+            </tal:railtype_specific_effects>
+        </tal:only_if_overrides_exist>
+        return ${consist.power};
     }
     <!--! end variable power -->
 </tal:variable_power>
@@ -57,6 +59,7 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
         purchase:                       ${vehicle.id}_sg_purchase;
         <tal:variable_power condition="consist.slice_requires_variable_power(vehicle)">
             power:                          ${vehicle.id}_switch_power;
+            purchase_power:                 ${vehicle.id}_switch_power;
         </tal:variable_power>
         <tal:visual_effect condition="vehicle.is_lead_slice_of_unit">
             visual_effect_and_powered:      ${vehicle.id}_switch_visual_effect_and_powered;
