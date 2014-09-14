@@ -42,17 +42,6 @@ spritegroup ${vehicle.id}_sg_purchase {
     ];
 }
 
-<!--! this should be in its own template for reusability, but meh, I didn't get to that -->
-<tal:variable_power condition="consist.slice_requires_variable_power(vehicle)">
-    <!--! variable power - this is horribly hard-coded right now, it can be fixed when it needs to be fixed -->
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_power, current_railtype) {
-            ELRL: return ${consist.power_by_railtype['ELRL']};
-            return ${consist.power_by_railtype['RAIL']};
-    }
-    <!--! end variable power -->
-</tal:variable_power>
-
-
 ${vehicle.render_cargo_capacity()}
 
 ${vehicle.render_properties()}

@@ -3,6 +3,17 @@
 // -- smoke etc -- //
 <tal:include metal:use-macro="load: visual_effect_and_powered.pynml" />
 
+// -- power -- //
+<tal:variable_power condition="consist.slice_requires_variable_power(vehicle)">
+    <!--! variable power - this is horribly hard-coded right now, it can be fixed when it needs to be fixed -->
+    <!--! should just repeat over the power_by_railtype dict, and set default to the power prop on the vehicle -->
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_power, current_railtype) {
+            ELRL: return ${consist.power_by_railtype['ELRL']};
+            return ${consist.power_by_railtype['RAIL']};
+    }
+    <!--! end variable power -->
+</tal:variable_power>
+
 
 item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
     property {
