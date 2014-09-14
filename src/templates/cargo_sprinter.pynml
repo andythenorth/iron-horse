@@ -1,4 +1,5 @@
-${vehicle.render_debug_info()}
+<!--! cargo_sprinter is full of special cases, lots of yak-shaving to get it done
+  specifically here it has magic for showing or hiding cabs depending on consist -->
 
 <tal:include metal:use-macro="load: vehicle_offsets_standard.pynml" />
 
