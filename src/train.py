@@ -374,11 +374,13 @@ class Train(object):
         else:
             return expression_template.substitute(offset=0)
 
-    def get_nml_expression_for_cargo_variant_random_switch(self, variation_num):
+    def get_nml_expression_for_cargo_variant_random_switch(self, variation_num, cargo_id=None):
+        switch_id = self.id + "_switch_graphics_" + str(variation_num) + ('_' + str(cargo_id) if cargo_id is not None else '')
+        # get the right unit, only run triggers on the vehicle carrying cargo
         if isinstance(self, LeadSlice):
-            return "BACKWARD_SELF(1)," + self.id + "_switch_graphics_" + str(variation_num)
+            return "BACKWARD_SELF(1)," + switch_id
         else:
-            return "SELF," + self.id + "_switch_graphics_" + str(variation_num) + ", bitmask(TRIGGER_VEHICLE_NEW_LOAD)"
+            return "SELF," + switch_id + ", bitmask(TRIGGER_VEHICLE_NEW_LOAD)"
 
     def get_nml_expression_for_grfid_of_neighbouring_unit(self, unit_offset):
         # offset is number of units, not number of slices
@@ -762,8 +764,9 @@ class CargoSprinter(Train):
         self.default_cargo_capacities = self.capacities_freight
         self.default_cargo = 'GOOD'
         self.engine_class = 'ENGINE_CLASS_DIESEL'
-        self.visual_effect = 'VISUAL_EFFECT_DISABLE' # intended - positioning smoke correctly for this vehicle is too fiddly
-        self.num_random_cargo_variants = kwargs.get('num_random_cargo_variants')
+        self.visual_effect = 'VISUAL_EFFECT_DISABLE' # intended - positioning smoke correctly for this vehicle type is too fiddly
+        self.consist.num_random_cargo_variants = kwargs.get('num_random_cargo_variants')
+        self.consist.cargos_with_tanktainer_graphics = kwargs.get('cargos_with_tanktainer_graphics')
         self.loading_speed = 25
 
 

@@ -42,9 +42,9 @@ ${vehicle.render_debug_info()}
             }
 
             switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_loaded_graphics_${variation_num}_${cargo_variant_num}_${cab_variant}, ${vehicle.get_nml_expression_for_cargo_type_unit_refitted_to()}) {
-                BEER: return ${vehicle.id}_sg_loaded_liquids_${variation_num}_${cargo_variant_num}_${cab_variant};
-                MILK: return ${vehicle.id}_sg_loaded_liquids_${variation_num}_${cargo_variant_num}_${cab_variant};
-                WATR: return ${vehicle.id}_sg_loaded_liquids_${variation_num}_${cargo_variant_num}_${cab_variant};
+                <tal:tanktainers repeat="tanktainer_cargo consist.cargos_with_tanktainer_graphics">
+                    ${tanktainer_cargo}: return ${vehicle.id}_sg_loaded_liquids_${variation_num}_${cargo_variant_num}_${cab_variant};
+                </tal:tanktainers>
                 return ${vehicle.id}_sg_loaded_box_${variation_num}_${cargo_variant_num}_${cab_variant};
             }
 
@@ -83,7 +83,7 @@ ${vehicle.render_debug_info()}
     </tal:cargo_colour_variant>
 
     random_switch (FEAT_TRAINS, ${vehicle.get_nml_expression_for_cargo_variant_random_switch(variation_num)}) {
-        <tal:random_graphics_variations repeat="cargo_variant_num range(3)">
+        <tal:random_graphics_variations repeat="cargo_variant_num range(consist.num_random_cargo_variants)">
             1: return ${vehicle.id}_switch_graphics_${variation_num}_${cargo_variant_num};
         </tal:random_graphics_variations>
     }

@@ -22,10 +22,11 @@ consist = EngineConsist(id = 'cargo_sprinter',
                   use_legacy_spritesheet = True)
 
 consist.add_unit(CargoSprinter(consist = consist,
-                        weight = 82,
-                        vehicle_length = 8,
-                        capacity_freight = 36, # matched to 1.5x standard Road Hog and Squid containers
-                        num_random_cargo_variants = len(graphics_options['recolour_maps'])),
+                               weight = 82,
+                               vehicle_length = 8,
+                               capacity_freight = 36, # matched to 1.5x standard Road Hog and Squid containers
+                               num_random_cargo_variants = len(graphics_options['recolour_maps']),
+                               cargos_with_tanktainer_graphics = ['BEER', 'MILK', 'WATR']),
                         repeat=2)
 
 consist.add_model_variant(intro_date=0,
