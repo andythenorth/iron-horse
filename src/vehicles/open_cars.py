@@ -1,18 +1,36 @@
 import global_constants
+import graphics_processor.utils as graphics_utils
 from train import TypeConfig, WagonConsist, Wagon, GraphicsProcessorFactory
 
+"""
 cargo_graphics_mappings = {'AORE': [1], 'COAL': [2], 'SAND': [3], 'CORE': [4], 'LIME': [5],
                            'SCMT': [6], 'IORE': [7], 'GRVL': [8], 'FRUT': [9], 'FRVG': [9],
                            'GRAI': [10], 'WHEA': [10], 'MAIZ': [10], 'FICR': [11],
                            'SGCN': [11], 'OLSD': [12], 'CLAY': [13]}
+"""
 
-options = {'template': 'open_car_brit_gen_1_template.png'}
-graphics_processor_1 = GraphicsProcessorFactory('pass_through_pipeline', options)
-graphics_processor_2 = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
+b = 1 # bulk cargo start row
+# cargo rows 0 indexed - 0 = first set of loaded sprites
+cargo_graphics_mappings = {'AORE': [b], 'IORE': [b + 1], 'CORE': [b + 2], 'GRVL': [b + 3],
+                           'SAND': [b + 4], 'COAL': [b + 5]}
+
+recolour_maps = graphics_utils.get_bulk_cargo_recolour_maps()
+graphics_options_master = {'template': 'open_car_brit_gen_1_template.png',
+                           'recolour_maps': (recolour_maps),
+                           'copy_block_top_offset': 120,
+                           'num_rows_per_unit': 3,
+                           'num_unit_types': 1}
+
+graphics_options_1 = dict((k, v) for (k, v) in graphics_options_master.iteritems())
+graphics_options_1['template'] = 'open_car_brit_gen_1_template.png'
+graphics_options_2 = dict((k, v) for (k, v) in graphics_options_1.iteritems())
+graphics_options_2['swap_company_colours'] = True
+graphics_processor_1 = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_1)
+graphics_processor_2 = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_2)
 
 type_config = TypeConfig(base_id = 'open_car',
                 template = 'car_with_visible_cargo.pynml',
-                num_cargo_rows = 14,
+                num_cargo_rows = 7,
                 class_refit_groups = ['all_freight'],
                 cargo_graphics_mappings = cargo_graphics_mappings,
                 label_refits_allowed = cargo_graphics_mappings.keys() ,
@@ -49,9 +67,12 @@ consist.add_model_variant(intro_date=0,
                        graphics_processor=graphics_processor_2)
 
 
-options = {'template': 'open_car_brit_gen_2_template.png'}
-graphics_processor_1 = GraphicsProcessorFactory('pass_through_pipeline', options)
-graphics_processor_2 = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
+graphics_options_1 = dict((k, v) for (k, v) in graphics_options_master.iteritems())
+graphics_options_1['template'] = 'open_car_brit_gen_2_template.png'
+graphics_options_2 = dict((k, v) for (k, v) in graphics_options_1.iteritems())
+graphics_options_2['swap_company_colours'] = True
+graphics_processor_1 = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_1)
+graphics_processor_2 = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_2)
 
 consist = WagonConsist(type_config = type_config,
                     title = 'Open [Car]',
@@ -87,7 +108,7 @@ graphics_processor_2 = GraphicsProcessorFactory('swap_company_colours_pipeline',
 
 type_config = TypeConfig(base_id = 'open_car_ng',
                 template = 'car_with_visible_cargo.pynml',
-                num_cargo_rows = 14,
+                num_cargo_rows = 7,
                 class_refit_groups = ['all_freight'],
                 cargo_graphics_mappings = cargo_graphics_mappings,
                 label_refits_allowed = cargo_graphics_mappings.keys() ,
