@@ -366,6 +366,14 @@ class Train(object):
         else:
             return expression_template.substitute(offset=0)
 
+    def get_nml_expression_for_unit_cargo_loaded_percent(self):
+        expression_template = Template("[STORE_TEMP(${offset}, 0x10F), var[0x61, 0, 0x0000FFFF, 0xBC]*100/var[0x61, 0, 0x0000FFFF, 0xBA]]")
+        # cargo capacity is on the second slice of each 3-slice unit
+        if isinstance(self, LeadSlice):
+            return expression_template.substitute(offset=1)
+        else:
+            return expression_template.substitute(offset=0)
+
     def get_nml_expression_for_grfid_of_neighbouring_unit(self, unit_offset):
         # offset is number of units, not number of slices
         expression_template = Template("[STORE_TEMP(${offset}, 0x10F), var[0x61, 0, 0xFFFFFFFF, 0x25]]")

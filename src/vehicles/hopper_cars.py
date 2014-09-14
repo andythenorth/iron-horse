@@ -9,7 +9,7 @@ recolour_maps = graphics_utils.get_bulk_cargo_recolour_maps()
 graphics_options_master = {'template': 'hopper_car_brit_gen_1_template.png',
                            'recolour_maps': (recolour_maps),
                            'copy_block_top_offset': 30,
-                           'num_rows_per_unit': 3,
+                           'num_rows_per_unit': 2,
                            'num_unit_types': 1}
 
 graphics_options_1 = dict((k, v) for (k, v) in graphics_options_master.iteritems())

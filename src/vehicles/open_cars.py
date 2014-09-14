@@ -17,8 +17,8 @@ cargo_graphics_mappings = {'AORE': [b], 'IORE': [b + 1], 'CORE': [b + 2], 'GRVL'
 recolour_maps = graphics_utils.get_bulk_cargo_recolour_maps()
 graphics_options_master = {'template': 'open_car_brit_gen_1_template.png',
                            'recolour_maps': (recolour_maps),
-                           'copy_block_top_offset': 120,
-                           'num_rows_per_unit': 3,
+                           'copy_block_top_offset': 90,
+                           'num_rows_per_unit': 2,
                            'num_unit_types': 1}
 
 graphics_options_1 = dict((k, v) for (k, v) in graphics_options_master.iteritems())
