@@ -78,11 +78,11 @@ consist.add_model_variant(intro_date=0,
                        graphics_processor=graphics_processor_2)
 
 
-cargo_graphics_mappings = {'STEL': [1], 'WDPR': [2], 'WOOD': [3]}
+cargo_graphics_mappings = {}
 
 type_config = TypeConfig(base_id = 'flat_car_ng',
                 template = 'car_with_visible_cargo.pynml',
-                num_cargo_rows = 4,
+                num_cargo_rows = 1,
                 class_refit_groups = ['flatcar_freight'],
                 cargo_graphics_mappings = cargo_graphics_mappings,
                 label_refits_allowed = cargo_graphics_mappings.keys(),
