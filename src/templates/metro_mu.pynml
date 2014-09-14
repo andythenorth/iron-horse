@@ -1,7 +1,5 @@
 ${vehicle.render_debug_info()}
 
-<!--! this is the default template for trains that don't supply their own template -->
-
 <tal:include metal:use-macro="load: vehicle_offsets_standard.pynml" />
 
 <tal:sprites_random_variations repeat="variation_num python:range(consist.get_num_spritesets())">
