@@ -1,12 +1,16 @@
 import global_constants
 from train import TypeConfig, WagonConsist, Wagon, GraphicsProcessorFactory
 
+cargo_graphics_mappings = {} # template needs this, but reefer car has zero cargo-specific graphics, all generic
+
 options = {'template': 'reefer_car_brit_gen_1_template.png'}
 graphics_processor_1 = GraphicsProcessorFactory('pass_through_pipeline', options)
 graphics_processor_2 = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
 
 type_config = TypeConfig(base_id = 'reefer_car',
-                    template = 'train.pynml',
+                    template = 'car_with_open_doors_during_loading.pynml',
+                    num_cargo_rows = 1, # template needs this, but box car has zero cargo-specific graphics, all generic
+                    cargo_graphics_mappings = cargo_graphics_mappings,
                     class_refit_groups = ['refrigerated_freight'],
                     label_refits_allowed = [],
                     label_refits_disallowed = [],
