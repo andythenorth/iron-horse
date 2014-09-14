@@ -54,9 +54,9 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
     graphics {
         cargo_capacity:                 ${vehicle.id}_switch_cargo_capacity;
         purchase_cargo_capacity:        ${vehicle.id}_switch_cargo_capacity;
-        additional_text:                string(STR_BUY_MENU_TEXT); <!--!${consist.get_buy_menu_string()};-->
         default:                        ${vehicle.id}_switch_graphics;
         purchase:                       ${vehicle.id}_sg_purchase;
+        <!--! no buy menu extra text in this grf by design; extra text is associated with BAD FEATURES -->
         <tal:variable_power condition="consist.slice_requires_variable_power(vehicle)">
             power:                          ${vehicle.id}_switch_power;
             purchase_power:                 ${vehicle.id}_switch_power;

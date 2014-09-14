@@ -35,7 +35,6 @@ class Consist(object):
         # setup properties for this consist (props either shared for all vehicles, or placed on lead vehicle of consist)
         self.title = kwargs.get('title', None)
         self.base_numeric_id = kwargs.get('base_numeric_id', None)
-        self.str_type_info = kwargs.get('str_type_info', None)
         self.intro_date = kwargs.get('intro_date', None)
         self.replacement_id = kwargs.get('replacement_id', None)
         self.vehicle_life = kwargs.get('vehicle_life', None)
@@ -157,29 +156,8 @@ class Consist(object):
         type_suffix = '_'.join(type_suffix.split(' '))
         return 'STR_NAME_SUFFIX_' + type_suffix
 
-    def get_str_cargo_age_period(self):
-        for slice in self.slices:
-            if getattr(slice, 'cargo_age_period', global_constants.CARGO_AGE_PERIOD) > global_constants.CARGO_AGE_PERIOD:
-                return 'STR_BUY_MENU_IMPROVED_CARGO_AGE_PERIOD'
-        return 'STR_EMPTY'
-
-    def get_str_autorefit(self):
-        if self.any_slice_offers_autorefit():
-            return 'STR_BUY_MENU_OFFERS_AUTOREFIT'
-        else:
-            return 'STR_EMPTY'
-
     def get_name(self):
         return "string(STR_NAME_" + self.id +", string(" + self.get_str_name_suffix() + "))"
-
-    def get_buy_menu_string(self):
-        # will need to handle bi-mode locos here, have a look at consist.slice_requires_variable_power(vehicle)
-        # buy menu handling could be refactored - construct by appending each item as needed (provide 'type:' string as a substr)
-        buy_menu_template = Template(
-            "string(STR_BUY_MENU_TEXT, string(${str_autorefit}), string(${str_cargo_age_period}))"
-        )
-        return buy_menu_template.substitute(str_autorefit=self.get_str_autorefit(),
-                                            str_cargo_age_period=self.get_str_cargo_age_period())
 
     def any_slice_offers_autorefit(self):
         offers_autorefit = False
@@ -456,7 +434,6 @@ class TypeConfig(object):
         self.default_cargo = kwargs['default_cargo'] # don't use 'get()' - needs to be defined to avoid unwanted refit issues
         self.default_capacity_type = kwargs.get('default_capacity_type', None)
         self.cargo_age_period = kwargs.get('cargo_age_period', global_constants.CARGO_AGE_PERIOD)
-        self.str_type_info = kwargs.get('str_type_info', None)
 
 
 class ModelVariant(object):
