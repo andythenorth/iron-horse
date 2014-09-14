@@ -16,7 +16,3 @@ STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Elektro-Diesel
 STR_NAME_SUFFIX_BATTERY                                         :(Battery)
 STR_NAME_SUFFIX_CAR                                             :Motor
 STR_NAME_SUFFIX_METRO_CAR                                       :Motor (Metro)
-
-STR_BUY_MENU_TEXT                                               :{STRING}{}{STRING}
-STR_BUY_MENU_OFFERS_AUTOREFIT                                   :{BLACK}Verskaf auto-herbou
-STR_BUY_MENU_IMPROVED_CARGO_AGE_PERIOD                          :{BLACK}Vrag betalings koers: {GOLD}Verbeterde

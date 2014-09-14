@@ -15,7 +15,3 @@ STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Elektro-Diesel
 STR_NAME_SUFFIX_BATTERY                                         :(Batterie)
 STR_NAME_SUFFIX_CAR                                             :Won
 STR_NAME_SUFFIX_METRO_CAR                                       :Won (Metro)
-
-STR_BUY_MENU_TEXT                                               :{STRING}{}{STRING}
-STR_BUY_MENU_OFFERS_AUTOREFIT                                   :{BLACK}Kann auto-ersat ginn
-STR_BUY_MENU_IMPROVED_CARGO_AGE_PERIOD                          :{BLACK}Wuerenbezuelraten: {GOLD}Verbessert

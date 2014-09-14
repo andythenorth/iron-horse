@@ -17,7 +17,3 @@ STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Elektro-dizel)
 STR_NAME_SUFFIX_BATTERY                                         :(Baterije)
 STR_NAME_SUFFIX_CAR                                             :Vozilo
 STR_NAME_SUFFIX_METRO_CAR                                       :Vagon (Metro)
-
-STR_BUY_MENU_TEXT                                               :{STRING}{}{STRING}
-STR_BUY_MENU_OFFERS_AUTOREFIT                                   :{BLACK}Moguć automatski remont
-STR_BUY_MENU_IMPROVED_CARGO_AGE_PERIOD                          :{BLACK}Tarifa plaćanja tereta: {GOLD}Napredna
