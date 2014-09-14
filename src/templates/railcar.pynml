@@ -21,6 +21,8 @@ ${vehicle.render_debug_info()}
             loading: [
                 ${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_1,
                 ${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_2,
+                ${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_2,
+                ${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_0,
             ];
         }
     </tal:cargo_variants>
