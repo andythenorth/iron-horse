@@ -2,6 +2,33 @@ Changelog
 =========
 
 -------------------
+Release Candidate 6
+-------------------
+
+*New Features / Changes*
+
+- randomly chosen 1st or 2nd company colour for hopper cars
+- open wagons load state graphics for default and bulk cargos
+- close mail car doors when 100% loaded
+- increase Double Juice diesel power (a lot) and electric power (a bit) for game balance
+- introduce Gridiron 5 years earlier for game balance
+
+*Fixes*
+
+- Northock 2-8-2 not 4-8-2
+- correct smoke position for engines with random graphics variations (reversed tank engines)
+- wagons and cargo sprinters now use loaded graphics in depot if they are loaded
+
+*Code Changes
+
+- removed a bunch of strings relating to buy menu extra text
+- decided we'll never show buy menu extra text, sign of BAD FEATURES; read the docs instead
+- made it easier to support tanktainer on cargo sprinter, and opening doors on box and reefer cars
+- cleaned up some other nonsense around visual effects and power
+- extended the Pixa pipeline for cargo recolouring to also handle 1cc/2cc swap
+
+
+-------------------
 Release Candidate 5
 -------------------
 
