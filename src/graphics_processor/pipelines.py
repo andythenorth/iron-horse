@@ -89,7 +89,6 @@ class SwapCompanyColoursPipeline(Pipeline):
         options = variant.graphics_processor.options
         input_path = os.path.join(currentdir, 'src', 'graphics', options['template'])
         input_image = Image.open(input_path)
-        #input_image.show()
         units = [SwapCompanyColours()]
         result = self.render_common(variant, consist, input_image, units, options)
         return result
@@ -110,18 +109,17 @@ class ExtendSpriterowsForRecolouredCargosPipeline(Pipeline):
         input_path = os.path.join(currentdir, 'src', 'graphics', options['template'])
         crop_box = (0, 0, graphics_constants.spritesheet_width, graphics_constants.spritesheet_top_margin + unit_row_cluster_height + options['copy_block_top_offset'])
         input_image = Image.open(input_path).crop(crop_box)
-        #if options['template'] == 'hopper_car_brit_gen_1_template.png':
-            #make_cheatsheet(Image.open(os.path.join(currentdir,'src','graphics','hopper_car_brit_gen_1_template.png')), os.path.join(currentdir,'foo.png'))
         source_spritesheet = self.make_spritesheet_from_image(input_image)
         crop_box = (0,
                     graphics_constants.spritesheet_top_margin + options['copy_block_top_offset'],
                     graphics_constants.spritesheet_width,
                     graphics_constants.spritesheet_top_margin + options['copy_block_top_offset'] + unit_row_cluster_height)
         units = [SimpleRecolour(options['recolour_maps'][0])]
-        #print options
         for recolour_map_index in range(len(options['recolour_maps'])-1):
             units.append(AppendToSpritesheet(source_spritesheet, crop_box))
             units.append(SimpleRecolour(options['recolour_maps'][recolour_map_index+1]))
+        if options.get('swap_company_colours', False):
+            units.append(SwapCompanyColours())
         result = self.render_common(variant, consist, input_image, units, options)
         return result
 
