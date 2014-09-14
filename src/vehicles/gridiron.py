@@ -10,7 +10,7 @@ consist = EngineConsist(id = 'gridiron',
               speed = 85,
               type_base_buy_cost_points = 30, # dibble buy cost for game balance
               vehicle_life = 40,
-              intro_date = 1980,
+              intro_date = 1975,
               graphics_status = '',
               use_legacy_spritesheet = True)
 
