@@ -10,7 +10,7 @@
 </tal:model_variants>
 
 <tal:model_variant_random_switches repeat="year consist.get_reduced_set_of_variant_dates()[:-1]">
-    random_switch (FEAT_TRAINS, ${vehicle.location_of_random_bits}, ${vehicle.id}_switch_visual_effect_and_powered_random_${year}) {
+    random_switch (FEAT_TRAINS, ${vehicle.location_of_random_bits_for_model_variant}, ${vehicle.id}_switch_visual_effect_and_powered_random_${year}) {
         dependent: ${vehicle.id}_switch_graphics_random_${year};
         <tal:random_graphics_variations repeat="variant consist.get_variants_available_for_specific_year(year)">
             1: ${vehicle.id}_switch_visual_effect_and_powered_by_variant_${variant.variant_num};

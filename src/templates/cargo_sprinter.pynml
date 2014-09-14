@@ -6,42 +6,54 @@ ${vehicle.render_debug_info()}
     <tal:cargo_colour_variant repeat="cargo_variant_num python:range(3)">
         <!--! Cabs: A = front, B = middle (no cab), C = rear -->
         <tal:cab_variants repeat="cab_variant python:range(3)">
-            spriteset(${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_${cab_variant}_empty, "${global_constants.graphics_path}${consist.id}_${variation_num}.png") {
+            spriteset(${vehicle.id}_ss_empty_${variation_num}_${cargo_variant_num}_${cab_variant}, "${global_constants.graphics_path}${consist.id}_${variation_num}.png") {
                 spriteset_template_${vehicle.id}(10 + ${cargo_variant_num * 270} + ${cab_variant * 90}, ${vehicle.adjust_xoffs})
             }
-            spriteset(${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_${cab_variant}_box, "${global_constants.graphics_path}${consist.id}_${variation_num}.png") {
+            spriteset(${vehicle.id}_ss_loaded_box_${variation_num}_${cargo_variant_num}_${cab_variant}, "${global_constants.graphics_path}${consist.id}_${variation_num}.png") {
                 spriteset_template_${vehicle.id}(40 + ${cargo_variant_num * 270} + ${cab_variant * 90}, ${vehicle.adjust_xoffs})
             }
-            spriteset(${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_${cab_variant}_liquids, "${global_constants.graphics_path}${consist.id}_${variation_num}.png") {
+            spriteset(${vehicle.id}_ss_loaded_liquids_${variation_num}_${cargo_variant_num}_${cab_variant}, "${global_constants.graphics_path}${consist.id}_${variation_num}.png") {
                 spriteset_template_${vehicle.id}(70 + ${cargo_variant_num * 270} + ${cab_variant * 90}, ${vehicle.adjust_xoffs})
             }
 
-            spritegroup ${vehicle.id}_sg_${variation_num}_${cargo_variant_num}_${cab_variant}_box {
+            spritegroup ${vehicle.id}_sg_empty_${variation_num}_${cargo_variant_num}_${cab_variant} {
                 loaded:  [
-                    ${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_${cab_variant}_empty,
-                    ${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_${cab_variant}_box,
+                    ${vehicle.id}_ss_empty_${variation_num}_${cargo_variant_num}_${cab_variant},
                 ];
                 loading: [
-                    ${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_${cab_variant}_empty,
-                    ${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_${cab_variant}_box,
+                    ${vehicle.id}_ss_empty_${variation_num}_${cargo_variant_num}_${cab_variant},
                 ];
             }
-            spritegroup ${vehicle.id}_sg_${variation_num}_${cargo_variant_num}_${cab_variant}_liquids {
+            spritegroup ${vehicle.id}_sg_loaded_box_${variation_num}_${cargo_variant_num}_${cab_variant} {
                 loaded:  [
-                    ${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_${cab_variant}_empty,
-                    ${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_${cab_variant}_liquids,
+                    ${vehicle.id}_ss_loaded_box_${variation_num}_${cargo_variant_num}_${cab_variant},
                 ];
                 loading: [
-                    ${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_${cab_variant}_empty,
-                    ${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_${cab_variant}_liquids,
+                    ${vehicle.id}_ss_loaded_box_${variation_num}_${cargo_variant_num}_${cab_variant},
                 ];
             }
-            switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${variation_num}_${cargo_variant_num}_${cab_variant}, ${vehicle.get_nml_expression_for_cargo_type_unit_refitted_to()}) {
-                BEER: return ${vehicle.id}_sg_${variation_num}_${cargo_variant_num}_${cab_variant}_liquids;
-                MILK: return ${vehicle.id}_sg_${variation_num}_${cargo_variant_num}_${cab_variant}_liquids;
-                WATR: return ${vehicle.id}_sg_${variation_num}_${cargo_variant_num}_${cab_variant}_liquids;
-                return ${vehicle.id}_sg_${variation_num}_${cargo_variant_num}_${cab_variant}_box;
+            spritegroup ${vehicle.id}_sg_loaded_liquids_${variation_num}_${cargo_variant_num}_${cab_variant} {
+                loaded:  [
+                    ${vehicle.id}_ss_loaded_liquids_${variation_num}_${cargo_variant_num}_${cab_variant},
+                ];
+                loading: [
+                    ${vehicle.id}_ss_loaded_liquids_${variation_num}_${cargo_variant_num}_${cab_variant},
+                ];
             }
+
+            switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_loaded_graphics_${variation_num}_${cargo_variant_num}_${cab_variant}, ${vehicle.get_nml_expression_for_cargo_type_unit_refitted_to()}) {
+                BEER: return ${vehicle.id}_sg_loaded_liquids_${variation_num}_${cargo_variant_num}_${cab_variant};
+                MILK: return ${vehicle.id}_sg_loaded_liquids_${variation_num}_${cargo_variant_num}_${cab_variant};
+                WATR: return ${vehicle.id}_sg_loaded_liquids_${variation_num}_${cargo_variant_num}_${cab_variant};
+                return ${vehicle.id}_sg_loaded_box_${variation_num}_${cargo_variant_num}_${cab_variant};
+            }
+
+            switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${variation_num}_${cargo_variant_num}_${cab_variant},
+                ${vehicle.get_nml_expression_for_unit_cargo_loaded_percent()}) {
+                    0: return ${vehicle.id}_sg_empty_${variation_num}_${cargo_variant_num}_${cab_variant};
+                return ${vehicle.id}_switch_loaded_graphics_${variation_num}_${cargo_variant_num}_${cab_variant};
+            }
+
         </tal:cab_variants>
 
         switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${variation_num}_${cargo_variant_num}_check_preceding_vehicle_same_id,
@@ -70,7 +82,7 @@ ${vehicle.render_debug_info()}
 
     </tal:cargo_colour_variant>
 
-    random_switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${variation_num}, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+    random_switch (FEAT_TRAINS, ${vehicle.get_nml_expression_for_cargo_variant_random_switch(variation_num)}) {
         <tal:random_graphics_variations repeat="cargo_variant_num range(3)">
             1: return ${vehicle.id}_switch_graphics_${variation_num}_${cargo_variant_num};
         </tal:random_graphics_variations>

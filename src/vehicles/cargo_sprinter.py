@@ -11,20 +11,20 @@ graphics_options = {'template': 'cargo_sprinter_template.png',
 graphics_processor_1 = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options)
 
 consist = EngineConsist(id = 'cargo_sprinter',
-              base_numeric_id = 1100,
-              title = 'Cargo Sprinter [Diesel]',
-              replacement_id = '-none',
-              power = 1520,
-              speed = 100,
-              intro_date = 1999,
-              vehicle_life = 40,
-              graphics_status = '',
-              use_legacy_spritesheet = True)
+                  base_numeric_id = 1100,
+                  title = 'Cargo Sprinter [Diesel]',
+                  replacement_id = '-none',
+                  power = 1520,
+                  speed = 100,
+                  intro_date = 1999,
+                  vehicle_life = 40,
+                  graphics_status = '',
+                  use_legacy_spritesheet = True)
 
 consist.add_unit(CargoSprinter(consist = consist,
                         weight = 82,
                         vehicle_length = 8,
-                        capacity_freight = 36, # matched to 1.5x standard RH and Squid containers
+                        capacity_freight = 36, # matched to 1.5x standard Road Hog and Squid containers
                         num_random_cargo_variants = len(graphics_options['recolour_maps'])),
                         repeat=2)
 

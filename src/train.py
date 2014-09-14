@@ -315,19 +315,11 @@ class Train(object):
         return global_constants.default_train_offsets[str(self.vehicle_length)]
 
     @property
-    def location_of_random_bits(self):
+    def location_of_random_bits_for_model_variant(self):
         if isinstance(self, LeadSlice):
             return 'SELF'
         else:
             return 'FORWARD_SELF(1)'
-
-    @property
-    def sg_depot(self):
-        if isinstance(self, LeadSlice):
-            suffix = "_switch_graphics_by_year"
-        else:
-            suffix = "_sg_hidden"
-        return self.id + suffix
 
     @property
     def adjust_xoffs(self):
@@ -336,6 +328,14 @@ class Train(object):
             return global_constants.xoffs_adjusts[str(self.vehicle_length)]
         else:
             return 0
+
+    @property
+    def sg_depot(self):
+        if isinstance(self, LeadSlice):
+            suffix = "_switch_graphics_by_year"
+        else:
+            suffix = "_sg_hidden"
+        return self.id + suffix
 
     @property
     def sg_default(self):
@@ -373,6 +373,12 @@ class Train(object):
             return expression_template.substitute(offset=1)
         else:
             return expression_template.substitute(offset=0)
+
+    def get_nml_expression_for_cargo_variant_random_switch(self, variation_num):
+        if isinstance(self, LeadSlice):
+            return "BACKWARD_SELF(1)," + self.id + "_switch_graphics_" + str(variation_num)
+        else:
+            return "SELF," + self.id + "_switch_graphics_" + str(variation_num) + ", bitmask(TRIGGER_VEHICLE_NEW_LOAD)"
 
     def get_nml_expression_for_grfid_of_neighbouring_unit(self, unit_offset):
         # offset is number of units, not number of slices
