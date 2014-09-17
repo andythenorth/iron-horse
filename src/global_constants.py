@@ -49,7 +49,7 @@ base_refits_by_class = {'empty': [],
                         'mail': ['CC_MAIL'],
                         'liquids': ['CC_LIQUID'],
                         'packaged_freight': ['CC_PIECE_GOODS', 'CC_EXPRESS', 'CC_ARMOURED', 'CC_LIQUID'],
-                        'flatcar_freight': ['CC_PIECE_GOODS', 'CC_EXPRESS'],
+                        'flatcar_freight': ['CC_PIECE_GOODS'],
                         'hopper_freight': ['CC_BULK'],
                         'covered_hopper_freight': [],
                         'refrigerated_freight': [],
@@ -60,7 +60,8 @@ base_refits_by_class = {'empty': [],
 # these lists are similar but not identical across Iron Horse, Squid, Road Hog etc
 disallowed_refits_by_label = {'non_hopper_freight': ['WOOD', 'SGCN', 'FICR', 'BDMT', 'WDPR', 'GRAI', 'WHEA', 'MAIZ', 'FRUT'],
                               'edible_liquids': ['MILK', 'WATR', 'BEER', 'FOOD'],
-                              'non_edible_liquids': ['RFPR', 'OIL_', 'FMSP', 'PETR']}
+                              'non_edible_liquids': ['RFPR', 'OIL_', 'FMSP', 'PETR', 'RUBR'],
+                              'non_flatcar_freight': ['FOOD', 'FISH', 'LVST', 'FRUT', 'BEER', 'MILK', 'JAVA', 'SUGR']}
 
 # speed for wagons in mph (some generations may optionally have no speed set)
 # format is [standard, speedy]
@@ -125,6 +126,7 @@ cargo_labels = ['PASS', # pax first
                 'WOOL',
                 'OLSD',
                 'SUGR',
+                'JAVA',
                 #
                 'NULL']
 
