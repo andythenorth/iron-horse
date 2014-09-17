@@ -2,6 +2,19 @@ Changelog
 =========
 
 -------------
+1.1.0 Release
+-------------
+
+*New Features / Changes*
+
+- new sprites for Walker narrow gauge diesel
+- removed Planet narrow gauge diesel
+- adjusted narrow gauge vehicle stats for game balance
+- flat cars no longer refit to express cargos, use open, box or mail cars instead
+- edibles tank cars no longer refit rubber (yum yum chewy rubber)
+- bumped minimum compatible version to avoid breaking savegames
+
+-------------
 1.0.0 Release
 -------------
 
