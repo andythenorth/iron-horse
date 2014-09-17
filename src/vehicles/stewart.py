@@ -17,7 +17,7 @@ consist = EngineConsist(id = 'stewart',
               use_legacy_spritesheet = True)
 
 consist.add_unit(SteamLoco(consist = consist,
-                        weight = 35,
+                        weight = 30,
                         vehicle_length = 5,
                         spriterow_num = 0))
 

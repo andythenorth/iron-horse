@@ -16,7 +16,7 @@ consist = EngineConsist(id = 'donegal',
               use_legacy_spritesheet = True)
 
 consist.add_unit(DieselRailcar(consist = consist,
-                        weight = 30,
+                        weight = 20,
                         vehicle_length = 7,
                         capacity_pax = 35,
                         capacity_mail = 12,

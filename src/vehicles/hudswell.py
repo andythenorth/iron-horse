@@ -6,7 +6,7 @@ consist = EngineConsist(id = 'hudswell',
               title = 'Hudswell [Steam]',
               replacement_id = '-none',
               track_type = 'NG',
-              power = 800,
+              power = 650,
               tractive_effort_coefficient = 0.2,
               speed = 50,
               type_base_buy_cost_points = -11, # dibble buy cost for game balance
@@ -17,7 +17,7 @@ consist = EngineConsist(id = 'hudswell',
               use_legacy_spritesheet = True)
 
 consist.add_unit(SteamLoco(consist = consist,
-                        weight = 50,
+                        weight = 45,
                         vehicle_length = 7,
                         spriterow_num = 0))
 

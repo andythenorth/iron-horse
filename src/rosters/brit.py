@@ -16,7 +16,6 @@ from vehicles import lemon
 from vehicles import little_bear
 from vehicles import mole
 from vehicles import northcock
-from vehicles import planet
 from vehicles import ramsbottom
 from vehicles import raven
 from vehicles import screamer
@@ -61,5 +60,4 @@ roster = Roster(id = 'brit',
                                        'stewart',
                                        'hudswell',
                                        'donegal',
-                                       'planet',
                                        'walker'])
