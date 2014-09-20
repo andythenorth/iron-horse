@@ -66,15 +66,22 @@ metadata['dates'] = (dates[0], dates[-1])
 class DocHelper(object):
     # dirty class to help do some doc formatting
 
-    def get_vehicles_by_subclass(self):
+    def get_vehicles_by_subclass(self, filter_subclasses_by_name=None):
         vehicles_by_subclass = {}
         for consist in consists:
             subclass = type(consist)
-            if subclass in vehicles_by_subclass:
-                vehicles_by_subclass[subclass].append(consist)
-            else:
-                vehicles_by_subclass[subclass] = [consist]
+            if filter_subclasses_by_name == None or subclass.__name__ in filter_subclasses_by_name:
+                if subclass in vehicles_by_subclass:
+                    vehicles_by_subclass[subclass].append(consist)
+                else:
+                    vehicles_by_subclass[subclass] = [consist]
         return vehicles_by_subclass
+
+    def get_engine_consists(self):
+        result = []
+        for i in self.get_vehicles_by_subclass(filter_subclasses_by_name='EngineConsist').values():
+            result.extend(i)
+        return result
 
     def fetch_prop(self, result, prop_name, value):
         result['vehicle'][prop_name] = value
