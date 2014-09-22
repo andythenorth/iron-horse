@@ -496,8 +496,12 @@ class LeadSlice(Train):
         self.visual_effect = parent_vehicle.visual_effect
         self.default_visual_effect_offset = parent_vehicle.default_visual_effect_offset
         self.default_cargo = parent_vehicle.default_cargo # breaks auto-replace if omitted
-        # provide default capacity (set as property) so leads vehicle has same refittability as trailing slices, this prevents an issue with auto-refit
-        self.default_cargo_capacities = [1]
+        # if needed, provide default capacity (set as property) so lead vehicle has same refittability as trailing slices
+        # this prevents an issue with auto-refit
+        if self.parent_vehicle.default_cargo_capacities[0] != 0:
+            self.default_cargo_capacities = [1]
+        else:
+            self.default_cargo_capacities = [0]
         # actual capacity determined by cb checking cargo type, set all of these to 0
         self.capacities_pax = [0, 0, 0]
         self.capacities_freight = [0, 0, 0]
