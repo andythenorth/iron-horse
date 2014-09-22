@@ -131,7 +131,7 @@ consist = WagonConsist(type_config = type_config,
                     vehicle_set = 'brit',
                     wagon_generation = 1,
                     replacement_id = '-none',
-                    intro_date = 1870,
+                    intro_date = 1860,
                     vehicle_life = 40,
                     graphics_status = '',
                     use_legacy_spritesheet = True)
