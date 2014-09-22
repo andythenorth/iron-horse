@@ -2,6 +2,22 @@ Changelog
 =========
 
 -------------
+1.1.1 Release
+-------------
+
+*New Features / Changes*
+
+- shuffled order of some wagons in buy menu
+- box cars and reefer cars show progress while loading (open doors empty, open doors with crates loaded)
+- improved online docs http://bundles.openttdcoop.org/iron-horse/releases/LATEST/docs/
+
+*Fixes*
+
+- engines no longer show as having passenger capacity (when filtering by cargo in buy menu)
+- narrow gauge wagons now available in 1860, same as first narrow gauge engine
+
+
+-------------
 1.1.0 Release
 -------------
 
@@ -13,6 +29,7 @@ Changelog
 - flat cars no longer refit to express cargos, use open, box or mail cars instead
 - edibles tank cars no longer refit rubber (yum yum chewy rubber)
 - bumped minimum compatible version to avoid breaking savegames
+
 
 -------------
 1.0.0 Release
