@@ -18,6 +18,10 @@ import global_constants
 
 # get args passed by makefile
 repo_vars = utils.get_repo_vars(sys)
+if repo_vars.get('no_mp', 'True') == 'True':
+    use_multiprocessing = False
+else:
+    use_multiprocessing = True
 
 from chameleon import PageTemplateLoader # chameleon used in most template cases
 # setup the places we look for templates
@@ -111,7 +115,7 @@ def render_consist_nml_nfo(consist):
 
 
 def render_dispatcher(items, renderer):
-    if repo_vars.get('no_mp', None) == 'True':
+    if use_multiprocessing == True:
         for item in items:
             renderer(item)
     else:
@@ -134,7 +138,7 @@ def link_nfo(item, dep_path, split=None):
 def main():
     header_items = ['header', 'cargo_table', 'railtype_table', 'disable_default_vehicles']
 
-    if repo_vars.get('no_mp', None) == 'True':
+    if use_multiprocessing == True:
         utils.echo_message('Multiprocessing disabled: (NO_MP=True)')
 
     if repo_vars.get('compile_faster', None) == 'True' and everything_dirty == False:
