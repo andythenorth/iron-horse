@@ -2,6 +2,26 @@ Changelog
 =========
 
 -------------
+1.2.0 Release
+-------------
+
+*New Features / Changes*
+
+- generation 3 flat car
+- introduce generation 1 edibles tanker earlier
+- loading sprites for Tin Rocket when refitted to freight cargos
+
+*Fixes*
+
+- url to tt-forums thread was wrong in docs
+- bad spritesheet for gen 2 flat car
+- partial load state added for supply cargos for gen 2 brit flat car
+
+*Codechanges*
+
+- compiler defaults to multiprocessing *off* instead of *on*, to avoid DoS-ing people's systems
+
+-------------
 1.1.1 Release
 -------------
 
