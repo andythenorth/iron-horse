@@ -208,10 +208,6 @@ class Consist(object):
         else:
             return 64
 
-    def render_debug_info(self):
-        template = templates["debug_info_consist.pynml"]
-        return template(consist=self)
-
     def render_articulated_switch(self):
         template = templates["add_articulated_parts.pynml"]
         nml_result = template(consist=self, global_constants=global_constants)
@@ -407,10 +403,6 @@ class Train(object):
         for i in cargo_labels:
             if i not in global_constants.cargo_labels:
                 utils.echo_message("Warning: vehicle " + self.id + " references cargo label " + i + " which is not defined in the cargo table")
-
-    def render_debug_info(self):
-        template = templates["debug_info_vehicle.pynml"]
-        return template(vehicle=self)
 
     def render_properties(self):
         template = templates["train_properties.pynml"]
