@@ -122,7 +122,6 @@ def render_dispatcher(items, renderer):
         pool = Pool(processes=16) # 16 is an arbitrary amount that appears to be fast without blocking the system
         pool.map(renderer, items)
         pool.close()
-        pool.join()
 
 
 def link_nfo(item, dep_path, split=None):

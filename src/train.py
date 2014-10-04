@@ -130,7 +130,7 @@ class Consist(object):
         # put the data in a format that's easy to render as switches
         result = []
         for variant in self.model_variants:
-            if year in range(variant.intro_date, variant.end_date):
+            if year >= variant.intro_date and year < variant.end_date:
                 result.append(variant)
         return result # could call set() here, but I didn't bother, shouldn't be needed if model variants set up correctly
 
