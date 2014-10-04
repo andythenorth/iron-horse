@@ -404,10 +404,6 @@ class Train(object):
             if i not in global_constants.cargo_labels:
                 utils.echo_message("Warning: vehicle " + self.id + " references cargo label " + i + " which is not defined in the cargo table")
 
-    def render_properties(self):
-        template = templates["train_properties.pynml"]
-        return template(vehicle=self, consist=self.consist, global_constants=global_constants)
-
     def render_cargo_capacity(self):
         template = templates["capacity_switches.pynml"]
         return template(vehicle=self)

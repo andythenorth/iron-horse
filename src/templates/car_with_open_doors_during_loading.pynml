@@ -67,4 +67,4 @@ spritegroup ${vehicle.id}_sg_purchase {
 
 ${vehicle.render_cargo_capacity()}
 
-${vehicle.render_properties()}
+<tal:include metal:use-macro="load: train_properties.pynml" />
