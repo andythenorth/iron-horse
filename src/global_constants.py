@@ -52,7 +52,7 @@ base_refits_by_class = {'empty': [],
                         'flatcar_freight': ['CC_PIECE_GOODS'],
                         'hopper_freight': ['CC_BULK'],
                         'covered_hopper_freight': [],
-                        'refrigerated_freight': [],
+                        'refrigerated_freight': ['CC_REFRIGERATED'],
                         'express_freight': ['CC_EXPRESS','CC_ARMOURED']}
 
 # rather than using disallowed classes (can cause breakage), specific labels are disallowed

@@ -16,3 +16,4 @@ clean::
 	$(_V)-rm -r generated
 	$(_V)-rm src/*.pyc
 	$(_V)-rm src/*/*.pyc
+
