@@ -1,0 +1,19 @@
+##grflangid 0x66
+##plural 0
+##gender m f n mp fp np
+##case abl acc dat gen
+STR_GRF_DESCRIPTION                                             :Licentia: {SILVER}GPL v2{}{BLACK}
+
+STR_PARAM_ADJUST_VEHICLE_CAPACITY                               :Capacitas traminis
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :Exigua
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Optima
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Nimia
+
+STR_NAME_SUFFIX_STEAM                                           :(Vaporaria)
+STR_NAME_SUFFIX_DIESEL                                          :(Diseliana)
+STR_NAME_SUFFIX_ELECTRIC                                        :(Electrica)
+STR_NAME_SUFFIX_METRO_TRAIN                                     :(Metropolitana)
+STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Electrica Diselianaque)
+STR_NAME_SUFFIX_BATTERY                                         :(Pilae Electricae)
+STR_NAME_SUFFIX_CAR                                             :Currus
+STR_NAME_SUFFIX_METRO_CAR                                       :Currus (Metropolitanus)
