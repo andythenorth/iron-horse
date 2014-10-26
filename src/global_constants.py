@@ -15,6 +15,7 @@ buy_menu_sort_order_wagons = ['passenger_car',
                               'intermodal_flat_car',
                               'caboose_car',
                               'passenger_car_ng',
+                              'mail_car_ng',
                               'open_car_ng',
                               'box_car_ng',
                               'tank_car_ng',
@@ -37,9 +38,9 @@ wagon_type_numeric_ids = {'caboose_car': 250, 'box_car': 260, 'covered_hopper_ca
                           'metro_car': 400, # metro car should be in #760+ range, but isn't; no need to break savegames by moving it
                           # extra (NG, maglev) wagon IDs start at 750, max extra wagon type ID is 890
                           # 750 is empty
-                          'box_car_ng': 760,  'flat_car_ng': 780,
+                          'mail_car_ng': 750, 'box_car_ng': 760,  'flat_car_ng': 780,
                           'tank_car_ng' : 800, 'livestock_car_ng': 810,
-                          'passenger_car_ng': 850, 'open_car_ng': 840}
+                          'open_car_ng': 840, 'passenger_car_ng': 850}
 
 # shared lists of allowed classes, shared across multiple vehicle types
 # these lists are similar but not identical across Iron Horse, Squid, Road Hog etc
