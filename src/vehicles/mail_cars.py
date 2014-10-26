@@ -108,9 +108,9 @@ consist = WagonConsist(type_config = type_config,
 consist.add_unit(MailCar(type_config = type_config,
                         consist = consist,
                         capacity_freight = 12,
-                        capacity_mail = 20,
+                        capacity_mail = 24,
                         weight = 5,
-                        vehicle_length = 4,
+                        vehicle_length = 5,
                         loading_speed = 5))
 
 consist.add_model_variant(intro_date=0,
