@@ -62,7 +62,8 @@ base_refits_by_class = {'empty': [],
 disallowed_refits_by_label = {'non_hopper_freight': ['WOOD', 'SGCN', 'FICR', 'BDMT', 'WDPR', 'GRAI', 'WHEA', 'MAIZ', 'FRUT'],
                               'edible_liquids': ['MILK', 'WATR', 'BEER', 'FOOD'],
                               'non_edible_liquids': ['RFPR', 'OIL_', 'FMSP', 'PETR', 'RUBR'],
-                              'non_flatcar_freight': ['FOOD', 'FISH', 'LVST', 'FRUT', 'BEER', 'MILK', 'JAVA', 'SUGR']}
+                              'non_flatcar_freight': ['FOOD', 'FISH', 'LVST', 'FRUT', 'BEER', 'MILK', 'JAVA', 'SUGR'],
+                              'non_freight_special_cases': ['TOUR']}
 
 # speed for wagons in mph (some generations may optionally have no speed set)
 # format is [standard, speedy]
