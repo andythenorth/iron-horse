@@ -116,8 +116,7 @@ consist = WagonConsist(type_config = type_config,
                     replacement_id = '-none',
                     intro_date = 1997,
                     vehicle_life = 40,
-                    graphics_status = '',
-                    use_legacy_spritesheet = True)
+                    graphics_status = '')
 
 consist.add_unit(Wagon(type_config = type_config,
                         consist = consist,
