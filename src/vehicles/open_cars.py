@@ -103,7 +103,7 @@ consist.add_model_variant(intro_date=0,
 
 
 graphics_options_1 = dict((k, v) for (k, v) in graphics_options_master.iteritems())
-graphics_options_1['template'] = 'open_car_brit_gen_2_template.png'
+graphics_options_1['template'] = 'open_car_brit_gen_3_template.png'
 graphics_options_2 = dict((k, v) for (k, v) in graphics_options_1.iteritems())
 graphics_options_2['swap_company_colours'] = True
 graphics_processor_1 = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_1)
