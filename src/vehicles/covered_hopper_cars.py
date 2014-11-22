@@ -26,8 +26,8 @@ consist = WagonConsist(type_config = type_config,
 
 consist.add_unit(Wagon(type_config = type_config,
                         consist = consist,
-                        capacity_freight = 30,
-                        weight = 14,
+                        capacity_freight = 25,
+                        weight = 12,
                         vehicle_length = 5,
                         loading_speed = 20))
 
@@ -42,7 +42,37 @@ consist.add_model_variant(intro_date=0,
                        graphics_processor=graphics_processor_2)
 
 
-# no gen 2 for covered hopper - straight to gen 3
+options = {'template': 'covered_hopper_car_brit_gen_2_template.png'}
+graphics_processor_1 = GraphicsProcessorFactory('pass_through_pipeline', options)
+graphics_processor_2 = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
+
+consist = WagonConsist(type_config = type_config,
+                    title = 'Covered Hopper [Car]',
+                    vehicle_set = 'brit',
+                    wagon_generation = 2,
+                    replacement_id = '-none',
+                    intro_date = 1955,
+                    vehicle_life = 40,
+                    graphics_status = '',
+                    use_legacy_spritesheet = True)
+
+consist.add_unit(Wagon(type_config = type_config,
+                        consist = consist,
+                        capacity_freight = 40,
+                        weight = 18,
+                        vehicle_length = 6,
+                        loading_speed = 20))
+
+consist.add_model_variant(intro_date=0,
+                       end_date=global_constants.max_game_date,
+                       spritesheet_suffix=0,
+                       graphics_processor=graphics_processor_1)
+
+consist.add_model_variant(intro_date=0,
+                       end_date=global_constants.max_game_date,
+                       spritesheet_suffix=1,
+                       graphics_processor=graphics_processor_2)
+
 
 options = {'template': 'covered_hopper_car_brit_gen_3_template.png'}
 graphics_processor_1 = GraphicsProcessorFactory('pass_through_pipeline', options)
@@ -53,15 +83,15 @@ consist = WagonConsist(type_config = type_config,
                     vehicle_set = 'brit',
                     wagon_generation = 3,
                     replacement_id = '-none',
-                    intro_date = 1960,
+                    intro_date = 1985,
                     vehicle_life = 40,
                     graphics_status = '',
                     use_legacy_spritesheet = True)
 
 consist.add_unit(Wagon(type_config = type_config,
                         consist = consist,
-                        capacity_freight = 55,
-                        weight = 30,
+                        capacity_freight = 60,
+                        weight = 27,
                         vehicle_length = 8,
                         loading_speed = 20))
 
