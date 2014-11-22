@@ -54,7 +54,7 @@ consist.add_unit(Wagon(type_config = type_config,
                         capacity_freight = 20,
                         weight = 7,
                         vehicle_length = 5,
-                        loading_speed = 5))
+                        loading_speed = 10))
 
 consist.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,
@@ -89,7 +89,42 @@ consist.add_unit(Wagon(type_config = type_config,
                         capacity_freight = 35,
                         weight = 15,
                         vehicle_length = 6,
-                        loading_speed = 5))
+                        loading_speed = 10))
+
+consist.add_model_variant(intro_date=0,
+                       end_date=global_constants.max_game_date,
+                       spritesheet_suffix=0,
+                       graphics_processor=graphics_processor_1)
+
+consist.add_model_variant(intro_date=0,
+                       end_date=global_constants.max_game_date,
+                       spritesheet_suffix=1,
+                       graphics_processor=graphics_processor_2)
+
+
+graphics_options_1 = dict((k, v) for (k, v) in graphics_options_master.iteritems())
+graphics_options_1['template'] = 'open_car_brit_gen_2_template.png'
+graphics_options_2 = dict((k, v) for (k, v) in graphics_options_1.iteritems())
+graphics_options_2['swap_company_colours'] = True
+graphics_processor_1 = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_1)
+graphics_processor_2 = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_2)
+
+consist = WagonConsist(type_config = type_config,
+                    title = 'Open [Car]',
+                    vehicle_set = 'brit',
+                    wagon_generation = 3,
+                    replacement_id = '-none',
+                    intro_date = 1997,
+                    vehicle_life = 40,
+                    graphics_status = '',
+                    use_legacy_spritesheet = True)
+
+consist.add_unit(Wagon(type_config = type_config,
+                        consist = consist,
+                        capacity_freight = 55,
+                        weight = 15,
+                        vehicle_length = 10,
+                        loading_speed = 10))
 
 consist.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,
