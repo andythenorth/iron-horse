@@ -46,6 +46,7 @@ from vehicles import metro_cars
 from vehicles import open_cars
 from vehicles import passenger_cars
 from vehicles import reefer_cars
+from vehicles import supplies_cars
 from vehicles import tank_cars
 
 from rosters import registered_rosters

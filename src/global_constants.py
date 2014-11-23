@@ -12,6 +12,7 @@ buy_menu_sort_order_wagons = ['passenger_car',
                               'covered_hopper_car',
                               'edibles_tank_car',
                               'reefer_car',
+                              'supplies_car',
                               'intermodal_flat_car',
                               'caboose_car',
                               'passenger_car_ng',
@@ -33,8 +34,7 @@ vehicle_set_id_mapping = {'brit': 1}
 wagon_type_numeric_ids = {'caboose_car': 250, 'box_car': 260, 'covered_hopper_car': 270, 'flat_car': 280,
                           'hopper_car': 290, 'tank_car': 300, 'livestock_car': 310, 'mail_car': 320,
                           'reefer_car': 330, 'open_car': 340, 'passenger_car': 350, 'combine_car': 360,
-                          'intermodal_flat_car': 370, 'edibles_tank_car': 380,
-                          # 390 is empty
+                          'intermodal_flat_car': 370, 'edibles_tank_car': 380, 'supplies_car': 390,
                           'metro_car': 400, # metro car should be in #760+ range, but isn't; no need to break savegames by moving it
                           # extra (NG, maglev) wagon IDs start at 750, max extra wagon type ID is 890
                           # 750 is empty
