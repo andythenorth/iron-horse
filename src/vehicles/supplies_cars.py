@@ -1,7 +1,7 @@
 import global_constants
 from train import TypeConfig, WagonConsist, Wagon, GraphicsProcessorFactory
 
-cargo_graphics_mappings = {'ENSP': [1], 'FMSP': [1]}
+cargo_graphics_mappings = {'ENSP': [1], 'FMSP': [1], 'BDMT': [1]}
 
 options = {'template': 'supplies_car_brit_gen_1_template.png'}
 graphics_processor_1 = GraphicsProcessorFactory('pass_through_pipeline', options)
@@ -10,12 +10,12 @@ graphics_processor_2 = GraphicsProcessorFactory('swap_company_colours_pipeline',
 type_config = TypeConfig(base_id = 'supplies_car',
                 template = 'car_with_visible_cargo.pynml',
                 num_cargo_rows = 2,
-                class_refit_groups = ['flatcar_freight'],
+                class_refit_groups = [],
                 cargo_graphics_mappings = cargo_graphics_mappings,
                 label_refits_allowed = cargo_graphics_mappings.keys(),
-                label_refits_disallowed = global_constants.disallowed_refits_by_label['non_flatcar_freight'],
+                label_refits_disallowed = [],
                 autorefit = True,
-                default_cargo = 'GOOD',
+                default_cargo = 'ENSP',
                 default_capacity_type = 'capacity_freight')
 
 consist = WagonConsist(type_config = type_config,
@@ -29,7 +29,7 @@ consist = WagonConsist(type_config = type_config,
 
 consist.add_unit(Wagon(type_config = type_config,
                         consist = consist,
-                        capacity_freight = 20,
+                        capacity_freight = 30,
                         weight = 6,
                         vehicle_length = 7,
                         loading_speed = 10))
@@ -59,7 +59,7 @@ consist = WagonConsist(type_config = type_config,
 
 consist.add_unit(Wagon(type_config = type_config,
                         consist = consist,
-                        capacity_freight = 35,
+                        capacity_freight = 45,
                         weight = 12,
                         vehicle_length = 10,
                         loading_speed = 10))
