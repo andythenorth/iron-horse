@@ -1,7 +1,7 @@
 import global_constants
 from train import TypeConfig, WagonConsist, Wagon, GraphicsProcessorFactory
 
-cargo_graphics_mappings = {'STEL': [1, 2, 3], 'WOOD': [4], 'WDPR': [5], 'ENSP': [6], 'FMSP': [6], 'MNSP': [6]}
+cargo_graphics_mappings = {'STEL': [1, 2, 3], 'WOOD': [4], 'WDPR': [5], 'ENSP': [6], 'FMSP': [6], 'MNSP': [6], 'GOOD': [6]}
 
 options = {'template': 'flat_car_brit_gen_1_template.png'}
 graphics_processor_1 = GraphicsProcessorFactory('pass_through_pipeline', options)
@@ -15,7 +15,7 @@ type_config = TypeConfig(base_id = 'flat_car',
                 label_refits_allowed = cargo_graphics_mappings.keys(),
                 label_refits_disallowed = global_constants.disallowed_refits_by_label['non_flatcar_freight'],
                 autorefit = True,
-                default_cargo = 'GOOD',
+                default_cargo = 'STEL',
                 default_capacity_type = 'capacity_freight')
 
 consist = WagonConsist(type_config = type_config,
@@ -118,7 +118,7 @@ type_config = TypeConfig(base_id = 'flat_car_ng',
                 label_refits_allowed = cargo_graphics_mappings.keys(),
                 label_refits_disallowed = global_constants.disallowed_refits_by_label['non_flatcar_freight'],
                 autorefit = True,
-                default_cargo = 'GOOD',
+                default_cargo = 'STEL',
                 default_capacity_type = 'capacity_freight',
                 track_type = 'NG')
 
