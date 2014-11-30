@@ -1,7 +1,8 @@
 import global_constants
 from train import TypeConfig, WagonConsist, Wagon, GraphicsProcessorFactory
 
-cargo_graphics_mappings = {'ENSP': [1, 2], 'FMSP': [1, 2], 'BDMT': [1, 2]}
+# cargo rows 0 indexed - 0 = first set of loaded sprites
+cargo_graphics_mappings = {'ENSP': [0, 1], 'FMSP': [0, 1], 'BDMT': [0, 1]}
 
 options = {'template': 'supplies_car_brit_gen_1_template.png'}
 graphics_processor_1 = GraphicsProcessorFactory('pass_through_pipeline', options)
