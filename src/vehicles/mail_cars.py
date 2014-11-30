@@ -9,7 +9,7 @@ type_config = TypeConfig(base_id = 'mail_car',
                 class_refit_groups = ['mail', 'express_freight'],
                 cargo_graphics_mappings = cargo_graphics_mappings,
                 label_refits_allowed = cargo_graphics_mappings.keys() ,
-                label_refits_disallowed = [],
+                label_refits_disallowed = global_constants.disallowed_refits_by_label['non_freight_special_cases'],
                 autorefit = True,
                 default_cargo = 'MAIL',
                 default_capacity_type = 'capacity_mail')
