@@ -505,6 +505,10 @@ class LeadSlice(Train):
             self.default_cargo_capacities = self.capacities_pax
             self.default_cargo = 'PASS'
             self.class_refit_groups = ['pax']
+            # Jank for ECS tourists, parent vehicle disallows TOUR (to prevent tourists in mail compartment).
+            # Then TOUR is re-allowed here, also necesary to clear the disallowed labels property.
+            self.label_refits_allowed = ['TOUR']
+            self.label_refits_disallowed = []
 
 
 class NullTrailingSlice(object):

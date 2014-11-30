@@ -1,13 +1,11 @@
 import global_constants
 from train import TypeConfig, WagonConsist, CombineCar
 
-#self.capacities_freight = [int(0.5 * capacity) for capacity in self.capacities_mail]
-
 type_config = TypeConfig(base_id = 'combine_car',
                 template = 'train.pynml',
                 class_refit_groups = ['mail', 'express_freight'],
                 label_refits_allowed = [],
-                label_refits_disallowed = [],
+                label_refits_disallowed = global_constants.disallowed_refits_by_label['non_freight_special_cases'],
                 autorefit = True,
                 default_cargo = 'MAIL',
                 default_capacity_type = 'capacity_mail')
