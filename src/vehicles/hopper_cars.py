@@ -2,6 +2,7 @@ import global_constants
 import graphics_processor.utils as graphics_utils
 from train import TypeConfig, WagonConsist, Wagon, GraphicsProcessorFactory
 
+# cargo rows 0 indexed - 0 = first set of loaded sprites
 cargo_graphics_mappings = {'AORE': [0], 'IORE': [1], 'CORE': [2], 'GRVL': [3],
                            'SAND': [4], 'COAL': [5]}
 
