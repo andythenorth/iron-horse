@@ -2,6 +2,29 @@ Changelog
 =========
 
 -------------
+1.4.0 Release
+-------------
+
+*New Features / Changes*
+
+- added supplies cars (two generations); refit engineering supplies, farm supplies, building materials
+- added a 3rd generation open car (large and fast, available late 1990s)
+- added a 2nd generation covered hopper car (1950s)
+- introduce 2nd generation tank wagon earlier for game balance
+- introduce 1st & 2nd generation hoppers earlier for game balance
+- flat wagons use metal as default cargo
+- more pleasing buy menu order for wagons
+- improve appearance of Cargo Sprinter when loaded
+
+*Fixes*
+
+- a few wagons had excessive weights
+- 2nd generation open car missing cargo sprite for | direction
+- passenger car capacity was 0 when refitted to tourists cargo
+- stop mail cars refitting to tourists cargo
+
+
+-------------
 1.3.1 Release
 -------------
 
