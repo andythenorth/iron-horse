@@ -15,3 +15,5 @@ STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Electro-Diesel
 STR_NAME_SUFFIX_BATTERY                                         :(Battery)
 STR_NAME_SUFFIX_CAR                                             :Car
 STR_NAME_SUFFIX_METRO_CAR                                       :Car (Metro)
+
+STR_NAME_SUFFIX_CABOOSE_CAR                                     :Caboose Car

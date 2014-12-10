@@ -12,7 +12,7 @@ type_config = TypeConfig(base_id = 'caboose_car',
                 default_capacity_type = 'capacity_freight')
 
 consist = WagonConsist(type_config = type_config,
-                    title = 'Caboose [Car]',
+                    title = '[Caboose Car]',
                     vehicle_set = 'brit',
                     wagon_generation = 1,
                     replacement_id = '-none',
