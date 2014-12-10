@@ -40,7 +40,7 @@ type_config = TypeConfig(base_id = 'open_car',
                 default_capacity_type = 'capacity_freight')
 
 consist = WagonConsist(type_config = type_config,
-                    title = 'Open [Car]',
+                    title = '[Open Car]',
                     vehicle_set = 'brit',
                     wagon_generation = 1,
                     replacement_id = '-none',
@@ -75,7 +75,7 @@ graphics_processor_1 = GraphicsProcessorFactory('extend_spriterows_for_recoloure
 graphics_processor_2 = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_2)
 
 consist = WagonConsist(type_config = type_config,
-                    title = 'Open [Car]',
+                    title = '[Open Car]',
                     vehicle_set = 'brit',
                     wagon_generation = 2,
                     replacement_id = '-none',
@@ -110,7 +110,7 @@ graphics_processor_1 = GraphicsProcessorFactory('extend_spriterows_for_recoloure
 graphics_processor_2 = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_2)
 
 consist = WagonConsist(type_config = type_config,
-                    title = 'Open [Car]',
+                    title = '[Open Car]',
                     vehicle_set = 'brit',
                     wagon_generation = 3,
                     replacement_id = '-none',
@@ -156,7 +156,7 @@ type_config = TypeConfig(base_id = 'open_car_ng',
                 track_type = 'NG')
 
 consist = WagonConsist(type_config = type_config,
-                    title = 'Narrow Gauge Open [Car]',
+                    title = 'Narrow Gauge [Open Car]',
                     vehicle_set = 'brit',
                     wagon_generation = 1,
                     replacement_id = '-none',

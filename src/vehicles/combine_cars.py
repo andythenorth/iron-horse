@@ -11,7 +11,7 @@ type_config = TypeConfig(base_id = 'combine_car',
                 default_capacity_type = 'capacity_mail')
 
 consist = WagonConsist(type_config = type_config,
-                    title = 'Combine [Car]',
+                    title = '[Combine Car]',
                     vehicle_set = 'brit',
                     wagon_generation = 1,
                     replacement_id = '-none',

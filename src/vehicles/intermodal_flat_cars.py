@@ -27,7 +27,7 @@ type_config = TypeConfig(base_id = 'intermodal_flat_car',
                 default_capacity_type = 'capacity_freight')
 
 consist = WagonConsist(type_config = type_config,
-                    title = 'Intermodal Flat [Car]',
+                    title = '[Intermodal Flat Car]',
                     vehicle_set = 'brit',
                     wagon_generation = 3,
                     replacement_id = '-none',

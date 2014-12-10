@@ -20,7 +20,7 @@ type_config = TypeConfig(base_id = 'box_car',
                     default_capacity_type = 'capacity_freight')
 
 consist = WagonConsist(type_config = type_config,
-                    title = 'Box [Car]',
+                    title = '[Box Car]',
                     vehicle_set = 'brit',
                     wagon_generation = 1,
                     replacement_id = '-none',
@@ -52,7 +52,7 @@ graphics_processor_1 = GraphicsProcessorFactory('pass_through_pipeline', options
 graphics_processor_2 = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
 
 consist = WagonConsist(type_config = type_config,
-                    title = 'Box [Car]',
+                    title = '[Box Car]',
                     vehicle_set = 'brit',
                     wagon_generation = 2,
                     replacement_id = '-none',
@@ -84,7 +84,7 @@ graphics_processor_1 = GraphicsProcessorFactory('pass_through_pipeline', options
 graphics_processor_2 = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
 
 consist = WagonConsist(type_config = type_config,
-                    title = 'Box [Car]',
+                    title = '[Box Car]',
                     vehicle_set = 'brit',
                     wagon_generation = 3,
                     replacement_id = '-none',
@@ -127,7 +127,7 @@ type_config = TypeConfig(base_id = 'box_car_ng',
                 track_type = 'NG')
 
 consist = WagonConsist(type_config = type_config,
-                    title = 'Narrow Gauge Box [Car]',
+                    title = 'Narrow Gauge [Box Car]',
                     vehicle_set = 'brit',
                     wagon_generation = 1,
                     replacement_id = '-none',

@@ -12,7 +12,7 @@ type_config = TypeConfig(base_id = 'livestock_car',
                     cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD)
 
 consist = WagonConsist(type_config = type_config,
-                    title = 'Livestock [Car]',
+                    title = '[Livestock Car]',
                     vehicle_set = 'brit',
                     wagon_generation = 1,
                     replacement_id = '-none',
@@ -34,7 +34,7 @@ consist.add_model_variant(intro_date=0,
 
 
 consist = WagonConsist(type_config = type_config,
-                    title = 'Livestock [Car]',
+                    title = '[Livestock Car]',
                     vehicle_set = 'brit',
                     wagon_generation = 2,
                     replacement_id = '-none',
@@ -66,7 +66,7 @@ type_config = TypeConfig(base_id = 'livestock_car_ng',
                 track_type = 'NG')
 
 consist = WagonConsist(type_config = type_config,
-                    title = 'Narrow Gauge Livestock [Car]',
+                    title = 'Narrow Gauge [Livestock Car]',
                     vehicle_set = 'brit',
                     wagon_generation = 1,
                     replacement_id = '-none',

@@ -4,5 +4,5 @@ STR_EMPTY                                                       :
 
 <!--! consist names -->
 <tal:build_consist_names repeat="consist consists">
-STR_NAME_${consist.id}                                          :${consist.get_name_substr()} {STRING}
+STR_NAME_${consist.id}                                          :${consist.get_name_substr()}{STRING}
 </tal:build_consist_names>

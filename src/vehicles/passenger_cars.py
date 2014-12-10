@@ -13,7 +13,7 @@ type_config = TypeConfig(base_id = 'passenger_car',
                 default_capacity_type = 'capacity_pax')
 
 consist = WagonConsist(type_config = type_config,
-                    title = 'Passenger [Car]',
+                    title = '[Passenger Car]',
                     vehicle_set = 'brit',
                     wagon_generation = 1,
                     replacement_id = '-none',
@@ -35,7 +35,7 @@ consist.add_model_variant(intro_date=0,
 
 
 consist = WagonConsist(type_config = type_config,
-                    title = 'Passenger [Car]',
+                    title = '[Passenger Car]',
                     vehicle_set = 'brit',
                     wagon_generation = 2,
                     replacement_id = '-none',
@@ -57,7 +57,7 @@ consist.add_model_variant(intro_date=0,
 
 
 consist = WagonConsist(type_config = type_config,
-                    title = 'Passenger [Car]',
+                    title = '[Passenger Car]',
                     vehicle_set = 'brit',
                     wagon_generation = 3,
                     replacement_id = '-none',
@@ -89,7 +89,7 @@ type_config = TypeConfig(base_id = 'passenger_car_ng',
                 track_type = 'NG')
 
 consist = WagonConsist(type_config = type_config,
-                    title = 'Narrow Gauge Passenger [Car]',
+                    title = 'Narrow Gauge [Passenger Car]',
                     vehicle_set = 'brit',
                     wagon_generation = 1,
                     replacement_id = '-none',

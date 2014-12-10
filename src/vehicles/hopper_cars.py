@@ -31,7 +31,7 @@ type_config = TypeConfig(base_id = 'hopper_car',
                 default_capacity_type = 'capacity_freight')
 
 consist = WagonConsist(type_config = type_config,
-                    title = 'Hopper [Car]',
+                    title = '[Hopper Car]',
                     vehicle_set = 'brit',
                     wagon_generation = 1,
                     replacement_id = '-none',
@@ -66,7 +66,7 @@ graphics_processor_1 = GraphicsProcessorFactory('extend_spriterows_for_recoloure
 graphics_processor_2 = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_2)
 
 consist = WagonConsist(type_config = type_config,
-                    title = 'Hopper [Car]',
+                    title = '[Hopper Car]',
                     vehicle_set = 'brit',
                     wagon_generation = 2,
                     replacement_id = '-none',
@@ -101,7 +101,7 @@ graphics_processor_1 = GraphicsProcessorFactory('extend_spriterows_for_recoloure
 graphics_processor_2 = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_2)
 
 consist = WagonConsist(type_config = type_config,
-                    title = 'Hopper [Car]',
+                    title = '[Hopper Car]',
                     vehicle_set = 'brit',
                     wagon_generation = 3,
                     replacement_id = '-none',

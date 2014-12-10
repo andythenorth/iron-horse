@@ -15,7 +15,7 @@ type_config = TypeConfig(base_id = 'mail_car',
                 default_capacity_type = 'capacity_mail')
 
 consist = WagonConsist(type_config = type_config,
-                    title = 'Mail [Car]',
+                    title = '[Mail Car]',
                     vehicle_set = 'brit',
                     wagon_generation = 1,
                     replacement_id = '-none',
@@ -38,7 +38,7 @@ consist.add_model_variant(intro_date=0,
 
 
 consist = WagonConsist(type_config = type_config,
-                    title = 'Mail [Car]',
+                    title = '[Mail Car]',
                     vehicle_set = 'brit',
                     wagon_generation = 2,
                     replacement_id = '-none',
@@ -61,7 +61,7 @@ consist.add_model_variant(intro_date=0,
 
 
 consist = WagonConsist(type_config = type_config,
-                    title = 'Mail [Car]',
+                    title = '[Mail Car]',
                     vehicle_set = 'brit',
                     wagon_generation = 3,
                     replacement_id = '-none',
@@ -96,7 +96,7 @@ type_config = TypeConfig(base_id = 'mail_car_ng',
                 track_type = 'NG')
 
 consist = WagonConsist(type_config = type_config,
-                    title = 'Narrow Gauge Mail [Car]',
+                    title = 'Narrow Gauge [Mail Car]',
                     vehicle_set = 'brit',
                     wagon_generation = 1,
                     replacement_id = '-none',

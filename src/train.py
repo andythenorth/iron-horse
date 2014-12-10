@@ -147,7 +147,11 @@ class Consist(object):
 
     def get_name_substr(self):
         # relies on name being in format "Foo [Bar]" for Name [Type Suffix]
-        return self.title.split('[')[0]
+        name = self.title.split('[')[0]
+        # enforce a space if name is not empty
+        if len(name) is not 0:
+            name = name + ' '
+        return name
 
     def get_str_name_suffix(self):
         # used in vehicle name string only, relies on name property value being in format "Foo [Bar]" for Name [Type Suffix]
