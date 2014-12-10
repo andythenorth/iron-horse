@@ -8,11 +8,13 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :매우 작은
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :놀라운
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :과대한
 
-STR_NAME_SUFFIX_STEAM                                           :(증기)
-STR_NAME_SUFFIX_DIESEL                                          :(디젤)
-STR_NAME_SUFFIX_ELECTRIC                                        :(전기)
-STR_NAME_SUFFIX_METRO_TRAIN                                     :(지하철)
-STR_NAME_SUFFIX_ELECTRODIESEL                                   :(전기-디젤)
+# keep these alphabetised, easier
 STR_NAME_SUFFIX_BATTERY                                         :(배터리)
 STR_NAME_SUFFIX_CAR                                             :자동차
+STR_NAME_SUFFIX_DIESEL                                          :(디젤)
+STR_NAME_SUFFIX_ELECTRIC                                        :(전기)
+STR_NAME_SUFFIX_ELECTRODIESEL                                   :(전기-디젤)
 STR_NAME_SUFFIX_METRO_CAR                                       :차량(지하철)
+STR_NAME_SUFFIX_METRO_TRAIN                                     :(지하철)
+STR_NAME_SUFFIX_STEAM                                           :(증기)
+

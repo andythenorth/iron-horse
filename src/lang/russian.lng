@@ -9,11 +9,13 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :Низкая
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Сбалансированная
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Высокая
 
-STR_NAME_SUFFIX_STEAM                                           :(Паровоз)
-STR_NAME_SUFFIX_DIESEL                                          :(Тепловоз)
-STR_NAME_SUFFIX_ELECTRIC                                        :(Электровоз)
-STR_NAME_SUFFIX_METRO_TRAIN                                     :(Метро)
-STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Электротепловоз)
+# keep these alphabetised, easier
 STR_NAME_SUFFIX_BATTERY                                         :(Энергоблок)
 STR_NAME_SUFFIX_CAR                                             :Вагон
+STR_NAME_SUFFIX_DIESEL                                          :(Тепловоз)
+STR_NAME_SUFFIX_ELECTRIC                                        :(Электровоз)
+STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Электротепловоз)
 STR_NAME_SUFFIX_METRO_CAR                                       :Вагон (Метро)
+STR_NAME_SUFFIX_METRO_TRAIN                                     :(Метро)
+STR_NAME_SUFFIX_STEAM                                           :(Паровоз)
+

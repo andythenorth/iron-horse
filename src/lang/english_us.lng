@@ -1,0 +1,20 @@
+##grflangid 0x00
+##plural 0
+STR_GRF_DESCRIPTION                                             :License: {SILVER}GPL v2{}{BLACK}
+
+STR_PARAM_ADJUST_VEHICLE_CAPACITY                               :Train capacity
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :Puny
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Marvelous
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Excessive
+
+# keep these alphabetised, easier
+STR_NAME_SUFFIX_BATTERY                                         :(Battery)
+STR_NAME_SUFFIX_CAR                                             :Car
+STR_NAME_SUFFIX_DIESEL                                          :(Diesel)
+STR_NAME_SUFFIX_ELECTRIC                                        :(Electric)
+STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Electro-Diesel)
+STR_NAME_SUFFIX_METRO_CAR                                       :Car (Subway)
+STR_NAME_SUFFIX_METRO_TRAIN                                     :(Subway)
+STR_NAME_SUFFIX_STEAM                                           :(Steam)
+
+STR_NAME_SUFFIX_CABOOSE_CAR                                     :Caboose Car

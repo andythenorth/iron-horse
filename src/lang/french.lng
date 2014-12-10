@@ -8,11 +8,13 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :Piètre
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Merveilleuse
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Excessive
 
-STR_NAME_SUFFIX_STEAM                                           :(Vapeur)
-STR_NAME_SUFFIX_DIESEL                                          :(Diesel)
-STR_NAME_SUFFIX_ELECTRIC                                        :(Électrique)
-STR_NAME_SUFFIX_METRO_TRAIN                                     :(Métro)
-STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Électro-Diesel)
+# keep these alphabetised, easier
 STR_NAME_SUFFIX_BATTERY                                         :(Batterie)
 STR_NAME_SUFFIX_CAR                                             :Voiture
+STR_NAME_SUFFIX_DIESEL                                          :(Diesel)
+STR_NAME_SUFFIX_ELECTRIC                                        :(Électrique)
+STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Électro-Diesel)
 STR_NAME_SUFFIX_METRO_CAR                                       :Voiture (Métro)
+STR_NAME_SUFFIX_METRO_TRAIN                                     :(Métro)
+STR_NAME_SUFFIX_STEAM                                           :(Vapeur)
+

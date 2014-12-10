@@ -8,7 +8,9 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :Insignificante
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Maravilhoso
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Excessivo
 
-STR_NAME_SUFFIX_STEAM                                           :(Vapor)
+# keep these alphabetised, easier
+STR_NAME_SUFFIX_CAR                                             :Carro
 STR_NAME_SUFFIX_DIESEL                                          :(Diesel)
 STR_NAME_SUFFIX_ELECTRIC                                        :(Eléctrico)
-STR_NAME_SUFFIX_CAR                                             :Carro
+STR_NAME_SUFFIX_STEAM                                           :(Vapor)
+
