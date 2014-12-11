@@ -2,14 +2,14 @@
 ##plural 0
 STR_GRF_DESCRIPTION                                             :Licentie: {SILVER}GPL v2{}{BLACK}
 
-STR_PARAM_ADJUST_VEHICLE_CAPACITY                               :Trein capaciteit
+STR_PARAM_ADJUST_VEHICLE_CAPACITY                               :Treincapaciteit
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :Zielig
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Geweldig
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Extravagant
 
 # keep these alphabetised, easier
 STR_NAME_SUFFIX_BATTERY                                         :(Batterij)
-STR_NAME_SUFFIX_CAR                                             :Wagen
+STR_NAME_SUFFIX_CAR                                             :Wagon
 STR_NAME_SUFFIX_DIESEL                                          :(Diesel)
 STR_NAME_SUFFIX_ELECTRIC                                        :(Elektrisch)
 STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Elektrisch-Diesel)
@@ -17,3 +17,18 @@ STR_NAME_SUFFIX_METRO_CAR                                       :Wagen (Metro)
 STR_NAME_SUFFIX_METRO_TRAIN                                     :(Metro)
 STR_NAME_SUFFIX_STEAM                                           :(Stoom)
 
+STR_NAME_SUFFIX_BOX_CAR                                         :Dichte vrachtwagon
+STR_NAME_SUFFIX_CABOOSE_CAR                                     :Personeelswagon
+STR_NAME_SUFFIX_COMBINE_CAR                                     :Gecombineerde wagon
+STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Overdekte stortgoedwagon
+STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Voedseltankwagon
+STR_NAME_SUFFIX_FLAT_CAR                                        :Platte wagon
+STR_NAME_SUFFIX_HOPPER_CAR                                      :Stortgoedwagon
+STR_NAME_SUFFIX_INTERMODAL_FLAT_CAR                             :Platte containerwagon
+STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Veewagon
+STR_NAME_SUFFIX_MAIL_CAR                                        :Postwagon
+STR_NAME_SUFFIX_OPEN_CAR                                        :Open wagon
+STR_NAME_SUFFIX_PASSENGER_CAR                                   :Passagierswagon
+STR_NAME_SUFFIX_REEFER_CAR                                      :Koelwagon
+STR_NAME_SUFFIX_SUPPLIES_CAR                                    :Materieelwagon
+STR_NAME_SUFFIX_TANK_CAR                                        :Tankwagon

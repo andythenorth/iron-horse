@@ -19,3 +19,18 @@ STR_NAME_SUFFIX_METRO_CAR                                       :Vagon (Metro)
 STR_NAME_SUFFIX_METRO_TRAIN                                     :(Metro)
 STR_NAME_SUFFIX_STEAM                                           :(Para)
 
+STR_NAME_SUFFIX_BOX_CAR                                         :Zatvoreni vagon
+STR_NAME_SUFFIX_CABOOSE_CAR                                     :Vagon za kočničara
+STR_NAME_SUFFIX_COMBINE_CAR                                     :Kombinirani vagon
+STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Pokriveni vagon za rasuti teret
+STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Vagon cisterna za prehrambene proizvode
+STR_NAME_SUFFIX_FLAT_CAR                                        :Plato-vagon
+STR_NAME_SUFFIX_HOPPER_CAR                                      :Vagon za rasuti teret
+STR_NAME_SUFFIX_INTERMODAL_FLAT_CAR                             :Intermodalni plato-vagon
+STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Vagon za stoku
+STR_NAME_SUFFIX_MAIL_CAR                                        :Poštanski vagon
+STR_NAME_SUFFIX_OPEN_CAR                                        :Otvoreni vagon
+STR_NAME_SUFFIX_PASSENGER_CAR                                   :Putnički vagon
+STR_NAME_SUFFIX_REEFER_CAR                                      :Vagon hladnjača
+STR_NAME_SUFFIX_SUPPLIES_CAR                                    :Vagon za opskrbu
+STR_NAME_SUFFIX_TANK_CAR                                        :Vagon cisterna
