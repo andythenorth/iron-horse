@@ -9,11 +9,28 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :Slabašan
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Divan
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Prekomjeran
 
-STR_NAME_SUFFIX_STEAM                                           :(Para)
-STR_NAME_SUFFIX_DIESEL                                          :(Dizel)
-STR_NAME_SUFFIX_ELECTRIC                                        :(Električni)
-STR_NAME_SUFFIX_METRO_TRAIN                                     :(Metro)
-STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Elektro-dizel)
+# keep these alphabetised, easier
 STR_NAME_SUFFIX_BATTERY                                         :(Baterije)
 STR_NAME_SUFFIX_CAR                                             :Vozilo
+STR_NAME_SUFFIX_DIESEL                                          :(Dizel)
+STR_NAME_SUFFIX_ELECTRIC                                        :(Električni)
+STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Elektro-dizel)
 STR_NAME_SUFFIX_METRO_CAR                                       :Vagon (Metro)
+STR_NAME_SUFFIX_METRO_TRAIN                                     :(Metro)
+STR_NAME_SUFFIX_STEAM                                           :(Para)
+
+STR_NAME_SUFFIX_BOX_CAR                                         :Zatvoreni vagon
+STR_NAME_SUFFIX_CABOOSE_CAR                                     :Vagon za kočničara
+STR_NAME_SUFFIX_COMBINE_CAR                                     :Kombinirani vagon
+STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Pokriveni vagon za rasuti teret
+STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Vagon cisterna za prehrambene proizvode
+STR_NAME_SUFFIX_FLAT_CAR                                        :Plato-vagon
+STR_NAME_SUFFIX_HOPPER_CAR                                      :Vagon za rasuti teret
+STR_NAME_SUFFIX_INTERMODAL_FLAT_CAR                             :Intermodalni plato-vagon
+STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Vagon za stoku
+STR_NAME_SUFFIX_MAIL_CAR                                        :Poštanski vagon
+STR_NAME_SUFFIX_OPEN_CAR                                        :Otvoreni vagon
+STR_NAME_SUFFIX_PASSENGER_CAR                                   :Putnički vagon
+STR_NAME_SUFFIX_REEFER_CAR                                      :Vagon hladnjača
+STR_NAME_SUFFIX_SUPPLIES_CAR                                    :Vagon za opskrbu
+STR_NAME_SUFFIX_TANK_CAR                                        :Vagon cisterna

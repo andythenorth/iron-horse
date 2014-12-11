@@ -8,11 +8,13 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :Klein
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Wonderlik
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Uitbundig
 
-STR_NAME_SUFFIX_STEAM                                           :(Stoom)
-STR_NAME_SUFFIX_DIESEL                                          :(Diesel)
-STR_NAME_SUFFIX_ELECTRIC                                        :(Elektries)
-STR_NAME_SUFFIX_METRO_TRAIN                                     :(Metro)
-STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Elektro-Diesel)
+# keep these alphabetised, easier
 STR_NAME_SUFFIX_BATTERY                                         :(Battery)
 STR_NAME_SUFFIX_CAR                                             :Motor
+STR_NAME_SUFFIX_DIESEL                                          :(Diesel)
+STR_NAME_SUFFIX_ELECTRIC                                        :(Elektries)
+STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Elektro-Diesel)
 STR_NAME_SUFFIX_METRO_CAR                                       :Motor (Metro)
+STR_NAME_SUFFIX_METRO_TRAIN                                     :(Metro)
+STR_NAME_SUFFIX_STEAM                                           :(Stoom)
+

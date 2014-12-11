@@ -7,11 +7,13 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :Mitätön
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Loistava
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Kohtuuton
 
-STR_NAME_SUFFIX_STEAM                                           :(Höyry)
-STR_NAME_SUFFIX_DIESEL                                          :(Diesel)
-STR_NAME_SUFFIX_ELECTRIC                                        :(Sähkö)
-STR_NAME_SUFFIX_METRO_TRAIN                                     :(Metro)
-STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Sähkö-Diesel)
+# keep these alphabetised, easier
 STR_NAME_SUFFIX_BATTERY                                         :(Paristo)
 STR_NAME_SUFFIX_CAR                                             :Auto
+STR_NAME_SUFFIX_DIESEL                                          :(Diesel)
+STR_NAME_SUFFIX_ELECTRIC                                        :(Sähkö)
+STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Sähkö-Diesel)
 STR_NAME_SUFFIX_METRO_CAR                                       :Vaunu (Metro)
+STR_NAME_SUFFIX_METRO_TRAIN                                     :(Metro)
+STR_NAME_SUFFIX_STEAM                                           :(Höyry)
+

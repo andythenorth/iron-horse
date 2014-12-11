@@ -8,11 +8,13 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :kümmerlich
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :phänomenal
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :übermäßig
 
-STR_NAME_SUFFIX_STEAM                                           :(Dampf)
-STR_NAME_SUFFIX_DIESEL                                          :(Diesel)
-STR_NAME_SUFFIX_ELECTRIC                                        :(Elektrisch)
-STR_NAME_SUFFIX_METRO_TRAIN                                     :(S-Bahn)
-STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Elektro-Diesel)
+# keep these alphabetised, easier
 STR_NAME_SUFFIX_BATTERY                                         :(Batterie)
 STR_NAME_SUFFIX_CAR                                             :Waggon
+STR_NAME_SUFFIX_DIESEL                                          :(Diesel)
+STR_NAME_SUFFIX_ELECTRIC                                        :(Elektrisch)
+STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Elektro-Diesel)
 STR_NAME_SUFFIX_METRO_CAR                                       :Wagen (S-Bahn)
+STR_NAME_SUFFIX_METRO_TRAIN                                     :(S-Bahn)
+STR_NAME_SUFFIX_STEAM                                           :(Dampf)
+

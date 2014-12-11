@@ -8,11 +8,15 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :Insignificante
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Maravillosa
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Excesiva
 
-STR_NAME_SUFFIX_STEAM                                           :(Vapor)
-STR_NAME_SUFFIX_DIESEL                                          :(Diesel)
-STR_NAME_SUFFIX_ELECTRIC                                        :(Eléctrico)
-STR_NAME_SUFFIX_METRO_TRAIN                                     :(Metro)
-STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Electro-Diesel)
+# keep these alphabetised, easier
 STR_NAME_SUFFIX_BATTERY                                         :(Batería)
 STR_NAME_SUFFIX_CAR                                             :Vagón
+STR_NAME_SUFFIX_DIESEL                                          :(Diesel)
+STR_NAME_SUFFIX_ELECTRIC                                        :(Eléctrico)
+STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Electro-Diesel)
 STR_NAME_SUFFIX_METRO_CAR                                       :Vagón (Metro)
+STR_NAME_SUFFIX_METRO_TRAIN                                     :(Metro)
+STR_NAME_SUFFIX_STEAM                                           :(Vapor)
+
+STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Vagón cisterna de alimentos
+STR_NAME_SUFFIX_TANK_CAR                                        :Vagón cisterna
