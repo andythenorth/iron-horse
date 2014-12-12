@@ -4,7 +4,7 @@ from train import TypeConfig, WagonConsist, Wagon, GraphicsProcessorFactory
 
 # cargo rows 0 indexed - 0 = first set of loaded sprites
 cargo_graphics_mappings = {'AORE': [0], 'IORE': [1], 'CORE': [2], 'GRVL': [3],
-                           'SAND': [4], 'COAL': [5]}
+                           'SAND': [4], 'COAL': [5], 'CLAY': [6]}
 
 recolour_maps = graphics_utils.get_bulk_cargo_recolour_maps()
 graphics_options_master = {'template': 'hopper_car_brit_gen_1_template.png',
@@ -21,7 +21,7 @@ graphics_processor_2 = GraphicsProcessorFactory('extend_spriterows_for_recoloure
 
 type_config = TypeConfig(base_id = 'hopper_car',
                 template = 'car_with_visible_cargo.pynml',
-                num_cargo_rows = 6,
+                num_cargo_rows = 7,
                 class_refit_groups = ['hopper_freight'],
                 cargo_graphics_mappings = cargo_graphics_mappings,
                 label_refits_allowed = cargo_graphics_mappings.keys(),

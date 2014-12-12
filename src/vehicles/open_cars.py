@@ -12,7 +12,7 @@ cargo_graphics_mappings = {'AORE': [1], 'COAL': [2], 'SAND': [3], 'CORE': [4], '
 b = 1 # bulk cargo start row
 # cargo rows 0 indexed - 0 = first set of loaded sprites
 cargo_graphics_mappings = {'AORE': [b], 'IORE': [b + 1], 'CORE': [b + 2], 'GRVL': [b + 3],
-                           'SAND': [b + 4], 'COAL': [b + 5]}
+                           'SAND': [b + 4], 'COAL': [b + 5], 'CLAY': [b + 6]}
 
 recolour_maps = graphics_utils.get_bulk_cargo_recolour_maps()
 graphics_options_master = {'template': 'open_car_brit_gen_1_template.png',
@@ -30,7 +30,7 @@ graphics_processor_2 = GraphicsProcessorFactory('extend_spriterows_for_recoloure
 
 type_config = TypeConfig(base_id = 'open_car',
                 template = 'car_with_visible_cargo.pynml',
-                num_cargo_rows = 7,
+                num_cargo_rows = 8,
                 class_refit_groups = ['all_freight'],
                 cargo_graphics_mappings = cargo_graphics_mappings,
                 label_refits_allowed = cargo_graphics_mappings.keys(),
@@ -145,7 +145,7 @@ graphics_processor_2 = GraphicsProcessorFactory('extend_spriterows_for_recoloure
 
 type_config = TypeConfig(base_id = 'open_car_ng',
                 template = 'car_with_visible_cargo.pynml',
-                num_cargo_rows = 7,
+                num_cargo_rows = 8,
                 class_refit_groups = ['all_freight'],
                 cargo_graphics_mappings = cargo_graphics_mappings,
                 label_refits_allowed = cargo_graphics_mappings.keys(),

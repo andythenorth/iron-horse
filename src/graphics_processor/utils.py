@@ -28,7 +28,8 @@ def get_bulk_cargo_recolour_maps():
     GRVL = {170: 6, 171: 4, 172: 7, 173: 8, 174: 21, 175: 11, 176: 12}
     SAND = {170: 108, 171: 64, 172: 65, 173: 197, 174: 36, 175: 196, 176: 197}
     COAL = {170: 1, 171: 2, 172: 3, 173: 4, 174: 5, 175: 5, 176: 6}
+    CLAY = {170: 57, 171: 57, 172: 57, 173: 77, 174: 78, 175: 78, 176: 79}
 
     # we just return a fixed-order tuple here, don't worry about the labels...
     # ...we have to manually specify the spriterow<->cargo label mapping in the wagon definition anyway
-    return (AORE, IORE, CORE, GRVL, SAND, COAL)
+    return (AORE, IORE, CORE, GRVL, SAND, COAL, CLAY)
