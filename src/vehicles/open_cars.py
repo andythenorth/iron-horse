@@ -156,7 +156,7 @@ type_config = TypeConfig(base_id = 'open_car_ng',
                 track_type = 'NG')
 
 consist = WagonConsist(type_config = type_config,
-                    title = 'Narrow Gauge [Open Car]',
+                    title = '[Open Car]',
                     vehicle_set = 'brit',
                     wagon_generation = 1,
                     replacement_id = '-none',

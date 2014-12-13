@@ -66,7 +66,7 @@ type_config = TypeConfig(base_id = 'livestock_car_ng',
                 track_type = 'NG')
 
 consist = WagonConsist(type_config = type_config,
-                    title = 'Narrow Gauge [Livestock Car]',
+                    title = '[Livestock Car]',
                     vehicle_set = 'brit',
                     wagon_generation = 1,
                     replacement_id = '-none',

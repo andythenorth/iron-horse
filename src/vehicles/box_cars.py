@@ -127,7 +127,7 @@ type_config = TypeConfig(base_id = 'box_car_ng',
                 track_type = 'NG')
 
 consist = WagonConsist(type_config = type_config,
-                    title = 'Narrow Gauge [Box Car]',
+                    title = '[Box Car]',
                     vehicle_set = 'brit',
                     wagon_generation = 1,
                     replacement_id = '-none',
