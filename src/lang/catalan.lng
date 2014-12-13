@@ -18,3 +18,15 @@ STR_NAME_SUFFIX_METRO_CAR                                       :Vagó (Metro)
 STR_NAME_SUFFIX_METRO_TRAIN                                     :(Metro)
 STR_NAME_SUFFIX_STEAM                                           :(Vapor)
 
+STR_NAME_SUFFIX_BOX_CAR                                         :Furgó
+STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Cotxe cobert amb tremuja
+STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Cotxe cisterna per a comestibles
+STR_NAME_SUFFIX_FLAT_CAR                                        :Cotxe plataforma
+STR_NAME_SUFFIX_HOPPER_CAR                                      :Cotxe tremuja
+STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Cotxe per a bestiar
+STR_NAME_SUFFIX_MAIL_CAR                                        :Cotxe de correu
+STR_NAME_SUFFIX_OPEN_CAR                                        :Cotxe obert
+STR_NAME_SUFFIX_PASSENGER_CAR                                   :Cotxe de passatgers
+STR_NAME_SUFFIX_REEFER_CAR                                      :Cotxe refrigerat
+STR_NAME_SUFFIX_SUPPLIES_CAR                                    :Cotxe de subministraments
+STR_NAME_SUFFIX_TANK_CAR                                        :Cotxe cisterna
