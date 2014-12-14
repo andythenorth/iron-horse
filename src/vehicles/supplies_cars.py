@@ -22,7 +22,8 @@ type_config = TypeConfig(base_id = 'supplies_car',
                 label_refits_disallowed = [],
                 autorefit = True,
                 default_cargo = 'ENSP',
-                default_capacity_type = 'capacity_freight')
+                default_capacity_type = 'capacity_freight',
+                date_variant_var = 'current_year')
 
 consist = WagonConsist(type_config = type_config,
                     title = '[Supplies Car]',

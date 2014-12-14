@@ -53,6 +53,8 @@ class Consist(object):
         self.use_legacy_spritesheet = kwargs.get('use_legacy_spritesheet', False)
         # create a structure to hold model variants
         self.model_variants = []
+        # mostly vehicles vary graphics by build year, but for date-sensitive cargo, we want to vary by current year
+        self.date_variant_var = kwargs.get('date_variant_var', 'build_year')
         # create structure to hold the slices
         self.slices = []
         # some project management stuff
@@ -442,7 +444,7 @@ class TypeConfig(object):
         self.default_cargo = kwargs['default_cargo'] # don't use 'get()' - needs to be defined to avoid unwanted refit issues
         self.default_capacity_type = kwargs.get('default_capacity_type', None)
         self.cargo_age_period = kwargs.get('cargo_age_period', global_constants.CARGO_AGE_PERIOD)
-
+        self.date_variant_var = kwargs.get('date_variant_var', None)
 
 class ModelVariant(object):
     # simple class to hold model variants
@@ -610,6 +612,10 @@ class WagonConsist(Consist):
         self.num_cargo_rows = type_config.num_cargo_rows
         self.cargo_graphics_mappings = type_config.cargo_graphics_mappings
         self.generic_cargo_rows = type_config.generic_cargo_rows
+        # handle optional over-ride of which date var to use for switching variants
+        if type_config.date_variant_var != None:
+            self.date_variant_var = type_config.date_variant_var
+
         # register the consist so that buy menu order can later be built programatically
         vehicle_set = kwargs.get('vehicle_set')
         base_type = type_config.base_id

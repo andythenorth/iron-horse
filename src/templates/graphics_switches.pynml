@@ -22,7 +22,7 @@ spritegroup ${vehicle.id}_sg_hidden {
 </tal:graphics_variation_random_switches>
 
 
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_by_year, build_year) {
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_by_year, ${consist.date_variant_var}) {
     <tal:choose_random_switch_by_date repeat="nml_fragment consist.get_nml_random_switch_fragments_for_model_variants(vehicle, '_switch_graphics_random_')">
         ${nml_fragment};
     </tal:choose_random_switch_by_date>
