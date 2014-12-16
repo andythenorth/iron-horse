@@ -18,3 +18,11 @@ STR_NAME_SUFFIX_METRO_CAR                                       :Motor (Metro)
 STR_NAME_SUFFIX_METRO_TRAIN                                     :(Metro)
 STR_NAME_SUFFIX_STEAM                                           :(Stoom)
 
+STR_NAME_SUFFIX_CABOOSE_CAR                                     :Kondukteurswa Kar
+STR_NAME_SUFFIX_FLAT_CAR                                        :Plat kar
+STR_NAME_SUFFIX_INTERMODAL_FLAT_CAR                             :Intermodale Plat Kar
+STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Lewendehawe Kar
+STR_NAME_SUFFIX_PASSENGER_CAR                                   :Passasiersmotor
+STR_NAME_SUFFIX_REEFER_CAR                                      :Verkoelde kar
+STR_NAME_SUFFIX_SUPPLIES_CAR                                    :Voorraad Kar
+STR_NAME_SUFFIX_TANK_CAR                                        :Tenk Kar

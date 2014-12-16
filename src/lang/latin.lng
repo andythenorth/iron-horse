@@ -19,11 +19,15 @@ STR_NAME_SUFFIX_METRO_CAR                                       :Currus (Metropo
 STR_NAME_SUFFIX_METRO_TRAIN                                     :(Metropolitana)
 STR_NAME_SUFFIX_STEAM                                           :(Vaporaria)
 
+STR_NAME_SUFFIX_BOX_CAR                                         :Currus Clausus
+STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Currus Infundibularis Tectus
 STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Currus Cisterninus Edulium
 STR_NAME_SUFFIX_FLAT_CAR                                        :Currus Planus
+STR_NAME_SUFFIX_HOPPER_CAR                                      :Currus Infundibularis
 STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Currus Pecuarius
 STR_NAME_SUFFIX_MAIL_CAR                                        :Currus Cursualis
 STR_NAME_SUFFIX_OPEN_CAR                                        :Currus Apertus
 STR_NAME_SUFFIX_PASSENGER_CAR                                   :Currus Vectorius
 STR_NAME_SUFFIX_REEFER_CAR                                      :Currus Frigidarius
+STR_NAME_SUFFIX_SUPPLIES_CAR                                    :Currus Apparatuum
 STR_NAME_SUFFIX_TANK_CAR                                        :Currus Cisterninus
