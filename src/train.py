@@ -242,7 +242,6 @@ class Train(object):
 
         # setup properties for this train
         self.numeric_id = kwargs.get('numeric_id', None)
-        self.loading_speed = kwargs.get('loading_speed', 5) # 5 is default train loading speed
         self.cargo_age_period = kwargs.get('cargo_age_period', global_constants.CARGO_AGE_PERIOD)
         self.vehicle_length = kwargs.get('vehicle_length', None)
         self.speed = kwargs.get('speed', 0)
@@ -304,6 +303,12 @@ class Train(object):
         for i in self.class_refit_groups:
             [cargo_classes.append(cargo_class) for cargo_class in global_constants.base_refits_by_class[i]]
         return ','.join(set(cargo_classes)) # use set() here to dedupe
+
+    def get_loading_speed(self, cargo_type, capacity_param):
+        # ottd vehicles load at different rates depending on type,
+        # normalise default loading time for this set to 240 ticks, regardless of capacity
+        capacities = getattr(self, 'capacities_' + cargo_type)
+        return int(math.ceil(capacities[capacity_param] / 6))
 
     @property
     def running_cost_base(self):
@@ -479,8 +484,7 @@ class LeadSlice(Train):
     Lead slice for a unit (invisible, minimal props).
     """
     def __init__(self, parent_vehicle):
-        super(LeadSlice, self).__init__(consist=parent_vehicle.consist,
-                                       loading_speed=parent_vehicle.loading_speed)
+        super(LeadSlice, self).__init__(consist=parent_vehicle.consist)
         self.parent_vehicle = parent_vehicle
         self.template = parent_vehicle.template
         self.speed = 0
@@ -773,7 +777,6 @@ class CargoSprinter(Train):
         self.visual_effect = 'VISUAL_EFFECT_DISABLE' # intended - positioning smoke correctly for this vehicle type is too fiddly
         self.consist.num_random_cargo_variants = kwargs.get('num_random_cargo_variants')
         self.consist.cargos_with_tanktainer_graphics = kwargs.get('cargos_with_tanktainer_graphics')
-        self.loading_speed = 25
 
 
 class MailCar(Wagon):
@@ -807,7 +810,6 @@ class MetroMultipleUnit(Train):
         self.default_cargo = "PASS"
         self.engine_class = 'ENGINE_CLASS_ELECTRIC'
         self.visual_effect = 'VISUAL_EFFECT_ELECTRIC'
-        self.loading_speed = 40
 
 
 class MetroLoco(Train):
