@@ -28,7 +28,8 @@ type_config = TypeConfig(base_id = 'hopper_car',
                 label_refits_disallowed = global_constants.disallowed_refits_by_label['non_hopper_freight'],
                 autorefit = True,
                 default_cargo = 'COAL',
-                default_capacity_type = 'capacity_freight')
+                default_capacity_type = 'capacity_freight',
+                loading_speed_multiplier = 2)
 
 consist = WagonConsist(type_config = type_config,
                     title = '[Hopper Car]',

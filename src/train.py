@@ -308,8 +308,9 @@ class Train(object):
     def get_loading_speed(self, cargo_type, capacity_param):
         # ottd vehicles load at different rates depending on type,
         # normalise default loading time for this set to 240 ticks, regardless of capacity
+        transport_type_rate = 6 # openttd loading rates vary by transport type, look them up in wiki to find value to use here to normalise loading time to 240 ticks
         capacities = getattr(self, 'capacities_' + cargo_type)
-        return int(self.loading_speed_multiplier * math.ceil(capacities[capacity_param] / 6))
+        return int(self.loading_speed_multiplier * math.ceil(capacities[capacity_param] / transport_type_rate))
 
     @property
     def running_cost_base(self):
@@ -662,6 +663,7 @@ class WagonConsist(Consist):
         else:
             return cost / 8
 
+
 class Wagon(Train):
     """
     Intermediate class for actual cars (wagons) to subclass from, provides some common properties.
@@ -776,6 +778,7 @@ class CargoSprinter(Train):
         self.label_refits_disallowed = []
         self.autorefit = True
         self.default_cargo_capacities = self.capacities_freight
+        self.loading_speed_multiplier = 2
         self.default_cargo = 'GOOD'
         self.engine_class = 'ENGINE_CLASS_DIESEL'
         self.visual_effect = 'VISUAL_EFFECT_DISABLE' # intended - positioning smoke correctly for this vehicle type is too fiddly
@@ -812,6 +815,7 @@ class MetroMultipleUnit(Train):
         self.template = 'metro_mu.pynml'
         self.default_cargo_capacities = self.capacities_pax
         self.default_cargo = "PASS"
+        self.loading_speed_multiplier = 2
         self.engine_class = 'ENGINE_CLASS_ELECTRIC'
         self.visual_effect = 'VISUAL_EFFECT_ELECTRIC'
 

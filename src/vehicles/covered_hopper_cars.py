@@ -12,7 +12,8 @@ type_config = TypeConfig(base_id = 'covered_hopper_car',
                 label_refits_disallowed = [],
                 autorefit = True,
                 default_cargo = 'GRAI',
-                default_capacity_type = 'capacity_freight')
+                default_capacity_type = 'capacity_freight',
+                loading_speed_multiplier = 2)
 
 consist = WagonConsist(type_config = type_config,
                     title = '[Covered Hopper Car]',

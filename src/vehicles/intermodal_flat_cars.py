@@ -24,7 +24,8 @@ type_config = TypeConfig(base_id = 'intermodal_flat_car',
                 label_refits_disallowed = ['FISH','LVST','OIL_','TOUR','WOOD'],
                 autorefit = True,
                 default_cargo = 'GOOD',
-                default_capacity_type = 'capacity_freight')
+                default_capacity_type = 'capacity_freight',
+                loading_speed_multiplier = 2)
 
 consist = WagonConsist(type_config = type_config,
                     title = '[Intermodal Flat Car]',

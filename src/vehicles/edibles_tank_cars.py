@@ -16,7 +16,8 @@ type_config = TypeConfig(base_id = 'edibles_tank_car',
                 autorefit = True,
                 default_cargo = 'WATR',
                 default_capacity_type = 'capacity_freight',
-                cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD)
+                cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD,
+                loading_speed_multiplier = 2)
 
 consist = WagonConsist(type_config = type_config,
                     title = '[Edibles Tank Car]',
