@@ -250,6 +250,7 @@ class Train(object):
         self.capacities_pax = self.get_capacity_variations(kwargs.get('capacity_pax', 0))
         self.capacities_mail = self.get_capacity_variations(kwargs.get('capacity_mail', 0))
         self.capacities_freight = self.get_capacity_variations(kwargs.get('capacity_freight', 0))
+        self.loading_speed_multiplier = kwargs.get('loading_speed_multiplier', 1)
         # spriterow_num, first row = 0
         self.spriterow_num = kwargs.get('spriterow_num', 0)
         # set defaults for props otherwise set by subclass as needed (not set by kwargs as specific models do not over-ride them)
@@ -308,7 +309,7 @@ class Train(object):
         # ottd vehicles load at different rates depending on type,
         # normalise default loading time for this set to 240 ticks, regardless of capacity
         capacities = getattr(self, 'capacities_' + cargo_type)
-        return int(math.ceil(capacities[capacity_param] / 6))
+        return int(self.loading_speed_multiplier * math.ceil(capacities[capacity_param] / 6))
 
     @property
     def running_cost_base(self):
