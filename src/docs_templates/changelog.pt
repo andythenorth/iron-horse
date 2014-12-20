@@ -2,6 +2,33 @@ Changelog
 =========
 
 -------------
+1.5.0 Release
+-------------
+
+*New Features / Changes*
+
+- balanced loading speeds for all vehicles
+- tank, hopper, covered hopper and intermodal cars load twice as fast as other types
+- metro trains load twice as fast as other passenger trains
+- clay cargo sprites for open and hopper cars
+- more cargo sprites for supplies cars
+- more cargo sprites for narrow gauge flat cars (timber, lumber, metal, tarpaulins)
+- most text now translatable
+
+*Language Updates*
+
+- af_ZA (telanus)
+- ca_ES (juanjo)
+- de_DE (planetmaker)
+- en_US (Supercheese)
+- es_ES (SilverSurferZzZ)
+- fr_FR (arikover)
+- hr_HR (Voyager1)
+- la_VA (Supercheese)
+- nl_NL (Alberth)
+
+
+-------------
 1.4.0 Release
 -------------
 
