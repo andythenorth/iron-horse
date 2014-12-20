@@ -2,7 +2,7 @@ import global_constants
 from train import TypeConfig, WagonConsist, Wagon, GraphicsProcessorFactory
 
 # cargo rows 0 indexed - 0 = first set of loaded sprites
-cargo_graphics_mappings = {'STEL': [1, 2, 3], 'WOOD': [4], 'WDPR': [5], 'ENSP': [6], 'FMSP': [6], 'MNSP': [6], 'GOOD': [6]}
+cargo_graphics_mappings = {'STEL': [1, 2, 3], 'WOOD': [4], 'WDPR': [5], 'ENSP': [6], 'FMSP': [6], 'MNSP': [6], 'GOOD': [0, 6]}
 
 options = {'template': 'flat_car_brit_gen_1_template.png'}
 graphics_processor_1 = GraphicsProcessorFactory('pass_through_pipeline', options)
@@ -109,11 +109,12 @@ consist.add_model_variant(intro_date=0,
                        graphics_processor=graphics_processor_2)
 
 
-cargo_graphics_mappings = {}
+# cargo rows 0 indexed - 0 = first set of loaded sprites
+cargo_graphics_mappings = {'STEL': [1], 'WOOD': [2], 'WDPR': [3], 'ENSP': [4], 'FMSP': [4], 'MNSP': [4], 'GOOD': [0, 4]}
 
 type_config = TypeConfig(base_id = 'flat_car_ng',
                 template = 'car_with_visible_cargo.pynml',
-                num_cargo_rows = 1,
+                num_cargo_rows = 5,
                 class_refit_groups = ['flatcar_freight'],
                 cargo_graphics_mappings = cargo_graphics_mappings,
                 label_refits_allowed = cargo_graphics_mappings.keys(),
