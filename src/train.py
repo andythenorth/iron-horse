@@ -449,6 +449,7 @@ class TypeConfig(object):
         self.autorefit = kwargs.get('autorefit', None)
         self.default_cargo = kwargs['default_cargo'] # don't use 'get()' - needs to be defined to avoid unwanted refit issues
         self.default_capacity_type = kwargs.get('default_capacity_type', None)
+        self.loading_speed_multiplier = kwargs.get('loading_speed_multiplier', None)
         self.cargo_age_period = kwargs.get('cargo_age_period', global_constants.CARGO_AGE_PERIOD)
         self.date_variant_var = kwargs.get('date_variant_var', None)
 
@@ -677,6 +678,8 @@ class Wagon(Train):
         self.autorefit = type_config.autorefit
         self.default_cargo = type_config.default_cargo
         self.default_cargo_capacities = self.get_capacity_variations(kwargs.get(type_config.default_capacity_type, 0))
+        if type_config.loading_speed_multiplier != None:
+            self.loading_speed_multiplier = type_config.loading_speed_multiplier
         self.cargo_age_period = type_config.cargo_age_period
 
 
