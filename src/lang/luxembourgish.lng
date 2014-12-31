@@ -9,11 +9,26 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Exzessiv
 
 # keep these alphabetised, easier
 STR_NAME_SUFFIX_BATTERY                                         :(Batterie)
-STR_NAME_SUFFIX_CAR                                             :Won
+STR_NAME_SUFFIX_CAR                                             :Waggon
 STR_NAME_SUFFIX_DIESEL                                          :(Diesel)
 STR_NAME_SUFFIX_ELECTRIC                                        :(Elektresch)
 STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Elektro-Diesel)
-STR_NAME_SUFFIX_METRO_CAR                                       :Won (Metro)
+STR_NAME_SUFFIX_METRO_CAR                                       :Waggon (Metro)
 STR_NAME_SUFFIX_METRO_TRAIN                                     :(Metro)
 STR_NAME_SUFFIX_STEAM                                           :(Damp)
 
+STR_NAME_SUFFIX_BOX_CAR                                         :Këschtewaggon
+STR_NAME_SUFFIX_CABOOSE_CAR                                     :Begleedwaggon
+STR_NAME_SUFFIX_COMBINE_CAR                                     :Kombiwaggon
+STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Zouenen Kippwaggon
+STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Liewensmëtteltankwaggon
+STR_NAME_SUFFIX_FLAT_CAR                                        :Flaachbettwaggon
+STR_NAME_SUFFIX_HOPPER_CAR                                      :Kippwaggon
+STR_NAME_SUFFIX_INTERMODAL_FLAT_CAR                             :Intermodal Flaachbettwaggon
+STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Véiwaggon
+STR_NAME_SUFFIX_MAIL_CAR                                        :Postwaggon
+STR_NAME_SUFFIX_OPEN_CAR                                        :Openen Waggon
+STR_NAME_SUFFIX_PASSENGER_CAR                                   :Passagéierwaggon
+STR_NAME_SUFFIX_REEFER_CAR                                      :Killwaggon
+STR_NAME_SUFFIX_SUPPLIES_CAR                                    :Gidderwaggon
+STR_NAME_SUFFIX_TANK_CAR                                        :Tankwaggon
