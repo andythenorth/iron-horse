@@ -18,6 +18,9 @@ STR_NAME_SUFFIX_METRO_CAR                                       :Vagón (Metro)
 STR_NAME_SUFFIX_METRO_TRAIN                                     :(Metro)
 STR_NAME_SUFFIX_STEAM                                           :(Vapor)
 
+STR_NAME_SUFFIX_BOX_CAR                                         :Vagón cerrado
+STR_NAME_SUFFIX_CABOOSE_CAR                                     :Vagón de cola
+STR_NAME_SUFFIX_COMBINE_CAR                                     :Vagón combinado
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Vagón tolva cubierto
 STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Vagón cisterna de alimentos
 STR_NAME_SUFFIX_FLAT_CAR                                        :Vagón plano
