@@ -20,10 +20,13 @@ STR_NAME_SUFFIX_METRO_TRAIN                                     :(Metropolitana)
 STR_NAME_SUFFIX_STEAM                                           :(Vaporaria)
 
 STR_NAME_SUFFIX_BOX_CAR                                         :Currus Clausus
+STR_NAME_SUFFIX_CABOOSE_CAR                                     :Currus Postremus
+STR_NAME_SUFFIX_COMBINE_CAR                                     :Currus Mixtus
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Currus Infundibularis Tectus
 STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Currus Cisterninus Edulium
 STR_NAME_SUFFIX_FLAT_CAR                                        :Currus Planus
 STR_NAME_SUFFIX_HOPPER_CAR                                      :Currus Infundibularis
+STR_NAME_SUFFIX_INTERMODAL_FLAT_CAR                             :Currus Intermodalis Planus
 STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Currus Pecuarius
 STR_NAME_SUFFIX_MAIL_CAR                                        :Currus Cursualis
 STR_NAME_SUFFIX_OPEN_CAR                                        :Currus Apertus
