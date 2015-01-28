@@ -18,3 +18,16 @@ STR_NAME_SUFFIX_METRO_CAR                                       :차량(지하�
 STR_NAME_SUFFIX_METRO_TRAIN                                     :(지하철)
 STR_NAME_SUFFIX_STEAM                                           :(증기)
 
+STR_NAME_SUFFIX_BOX_CAR                                         :유개차
+STR_NAME_SUFFIX_CABOOSE_CAR                                     :차장차
+STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :유개호퍼차
+STR_NAME_SUFFIX_FLAT_CAR                                        :평판차
+STR_NAME_SUFFIX_HOPPER_CAR                                      :호퍼차
+STR_NAME_SUFFIX_INTERMODAL_FLAT_CAR                             :복합평판차
+STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :가축차
+STR_NAME_SUFFIX_MAIL_CAR                                        :우편차
+STR_NAME_SUFFIX_OPEN_CAR                                        :무개차
+STR_NAME_SUFFIX_PASSENGER_CAR                                   :객차
+STR_NAME_SUFFIX_REEFER_CAR                                      :냉동차
+STR_NAME_SUFFIX_SUPPLIES_CAR                                    :재료 수송 차
+STR_NAME_SUFFIX_TANK_CAR                                        :탱크차
