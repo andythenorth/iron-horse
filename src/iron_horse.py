@@ -52,11 +52,15 @@ from vehicles import tank_cars
 from rosters import registered_rosters
 
 from rosters import brit
+from rosters import soam
 
 def get_consists_in_buy_menu_order(show_warnings=False):
     sorted_consists = []
     # first compose the buy menu order list
-    buy_menu_sort_order = list(registered_rosters['brit'].buy_menu_sort_order) # copy the list to avoid unwanted modifications to it
+    buy_menu_sort_order = []
+    # first compose the buy menu order list
+    for roster in registered_rosters:
+        buy_menu_sort_order.extend(roster.buy_menu_sort_order)
 
     for id_base in global_constants.buy_menu_sort_order_wagons:
         for vehicle_set in global_constants.vehicle_set_id_mapping.keys():

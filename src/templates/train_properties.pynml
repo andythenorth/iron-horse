@@ -20,7 +20,7 @@
 item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
     property {
         name:                           ${consist.get_name()};
-        climates_available:             ${vehicle.availability};
+        climates_available:             NO_CLIMATE; // nml constant
         engine_class:                   ${vehicle.engine_class};
         visual_effect_and_powered:      visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
         introduction_date:              date(${consist.intro_date},01,01); // consist just supplies intro year - openttd randomises intro dates a bit anyway
@@ -67,6 +67,14 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
         <tal:add_articulated_parts condition="vehicle.is_lead_slice_of_consist">
             articulated_part: ${consist.id}_articulated_cb_switch;
         </tal:add_articulated_parts>
+    }
+}
+
+if (${consist.get_expression_for_rosters()}) {
+    item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
+        property {
+            climates_available:             ALL_CLIMATES;
+        }
     }
 }
 

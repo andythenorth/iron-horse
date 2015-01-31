@@ -6,6 +6,10 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY                               :Train capacity
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :Puny
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Marvellous
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Excessive
+STR_PARAM_ROSTER                                                :Roster
+STR_PARAM_ROSTER_DESC                                           :Choose which set of trains to use.
+STR_PARAM_ROSTER_OPTION_0                                       :A horse! A horse! My kingdom for a horse!
+STR_PARAM_ROSTER_OPTION_1                                       :Caballada
 
 # keep these alphabetised, easier
 STR_NAME_SUFFIX_BATTERY                                         :(Battery)

@@ -19,6 +19,19 @@ grf {
             };
         }
     }
+	param 1 {
+		param_roster {
+			name: string(STR_PARAM_ROSTER);
+			desc: string(STR_PARAM_ROSTER_DESC);
+			min_value: 0;
+			max_value: ${len(registered_rosters)-1};
+			names: {
+			    <tal:rosters repeat="roster registered_rosters">
+                    ${repeat.roster.index}: string(STR_PARAM_ROSTER_OPTION_${repeat.roster.index});
+			    </tal:rosters>
+			};
+		}
+	}
 }
 
 basecost {

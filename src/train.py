@@ -205,6 +205,20 @@ class Consist(object):
         else:
             return 'VEHICLE_NEVER_EXPIRES'
 
+    def get_rosters(self):
+        # this is for engine consists, wagons over-ride this method in their subclass
+        result = []
+        for roster in registered_rosters:
+            if self.id in roster.buy_menu_sort_order:
+                result.append(roster)
+        return result
+
+    def get_expression_for_rosters(self):
+        result = []
+        for roster in self.get_rosters():
+            result.append('param[1]=='+str(registered_rosters.index(roster)))
+        return ' || '.join(result)
+
     @property
     def buy_menu_width (self):
         # max sensible width in buy menu is 64px
@@ -624,9 +638,9 @@ class WagonConsist(Consist):
             self.date_variant_var = type_config.date_variant_var
 
         # register the consist so that buy menu order can later be built programatically
-        vehicle_set = kwargs.get('vehicle_set')
+        self.vehicle_set = kwargs.get('vehicle_set')
         base_type = type_config.base_id
-        vehicle_set_dict = registered_wagon_generations.setdefault(vehicle_set, {})
+        vehicle_set_dict = registered_wagon_generations.setdefault(self.vehicle_set, {})
         base_type_list = vehicle_set_dict.setdefault(base_type, [])
         base_type_list.append(self.wagon_generation)
         base_type_list.sort()
@@ -662,6 +676,13 @@ class WagonConsist(Consist):
             return cost / 7
         else:
             return cost / 8
+
+    def get_rosters(self):
+        result = []
+        for roster in registered_rosters:
+            if self.vehicle_set == roster.id:
+                result.append(roster)
+        return result
 
 
 class Wagon(Train):

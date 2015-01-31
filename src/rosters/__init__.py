@@ -1,1 +1,1 @@
-registered_rosters = {}
+registered_rosters = []

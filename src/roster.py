@@ -1,7 +1,7 @@
 from rosters import registered_rosters
 
 def register(roster):
-    registered_rosters[roster.id] = roster
+    registered_rosters.append(roster)
 
 
 class Roster(object):

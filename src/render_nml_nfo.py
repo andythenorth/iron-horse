@@ -15,6 +15,7 @@ import subprocess
 import iron_horse
 import utils
 import global_constants
+from rosters import registered_rosters
 
 # get args passed by makefile
 repo_vars = utils.get_repo_vars(sys)
@@ -100,8 +101,12 @@ def render_header_item_nml_nfo(header_item):
     if check_item_dirty(template.filename) == True:
         print "Rendering " + header_item
         header_item_nml = codecs.open(os.path.join('generated', 'nml', header_item + '.nml'),'w','utf8')
-        header_item_nml.write(utils.unescape_chameleon_output(template(consists=consists, global_constants=global_constants,
-                                                        utils=utils, sys=sys, repo_vars=repo_vars)))
+        header_item_nml.write(utils.unescape_chameleon_output(template(consists=consists,
+                                                                       global_constants=global_constants,
+                                                                       utils=utils,
+                                                                       sys=sys,
+                                                                       registered_rosters=registered_rosters,
+                                                                       repo_vars=repo_vars)))
         header_item_nml.close()
         render_nfo(header_item)
 
