@@ -7,6 +7,10 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY                               :Capacidad del t
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :Insignificante
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Maravillosa
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Excesiva
+STR_PARAM_ROSTER                                                :Lista a usar
+STR_PARAM_ROSTER_DESC                                           :Elige el set de trenes que usará el juego.
+STR_PARAM_ROSTER_OPTION_0                                       :¡Un caballo! ¡Un caballo! ¡Mi reino por un caballo!
+STR_PARAM_ROSTER_OPTION_1                                       :Manada de caballos
 
 # keep these alphabetised, easier
 STR_NAME_SUFFIX_BATTERY                                         :(Batería)

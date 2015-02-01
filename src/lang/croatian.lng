@@ -8,6 +8,10 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY                               :Kapacitet vlaka
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :Slabašan
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Divan
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Prekomjeran
+STR_PARAM_ROSTER                                                :Raspored
+STR_PARAM_ROSTER_DESC                                           :Odaberite koji set vlakova želite koristiti.
+STR_PARAM_ROSTER_OPTION_0                                       :Konj! Konj! Kraljevstvo za konja!
+STR_PARAM_ROSTER_OPTION_1                                       :Caballada
 
 # keep these alphabetised, easier
 STR_NAME_SUFFIX_BATTERY                                         :(Baterije)
