@@ -70,13 +70,15 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
     }
 }
 
-if (${consist.get_expression_for_rosters()}) {
-    item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
-        property {
-            climates_available:             ALL_CLIMATES;
+<tal:rosters condition="vehicle.is_lead_slice_of_consist">
+    if (${consist.get_expression_for_rosters()}) {
+        item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
         }
     }
-}
+</tal:rosters>
 
 // -- end ${vehicle.numeric_id} -- <!--! another comment to aid reading the final nml  -->
 
