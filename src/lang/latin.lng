@@ -8,6 +8,8 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY                               :Capacitates tra
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :Exiguae
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Optimae
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Nimiae
+STR_PARAM_ROSTER                                                :Vehicula Adhibenda
+STR_PARAM_ROSTER_DESC                                           :Eligere hamaxostichos adhibendos.
 
 # keep these alphabetised, easier
 STR_NAME_SUFFIX_BATTERY                                         :(Pilae Electricae)
