@@ -1,12 +1,11 @@
 import global_constants
-from train import EngineConsist, DieselLoco
+from train import EngineConsist, SteamLoco, SteamLocoTender
 
 consist = EngineConsist(id = 'thing_2',
               base_numeric_id = 2020,
               title = '2-6-0 Thing 2 [Steam]',
               replacement_id = '-none',
               power = 900,
-              track_type = 'NG',
               speed = 55,
               type_base_buy_cost_points = -10, # dibble buy cost for game balance
               type_base_running_cost_points = -15, # dibble running costs for game balance
@@ -15,7 +14,7 @@ consist = EngineConsist(id = 'thing_2',
               graphics_status = '',
               use_legacy_spritesheet = True)
 
-consist.add_unit(DieselLoco(consist = consist,
+consist.add_unit(SteamLoco(consist = consist,
                         weight = 40,
                         vehicle_length = 6,
                         spriterow_num = 0))
