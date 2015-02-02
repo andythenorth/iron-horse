@@ -3,7 +3,7 @@ from train import EngineConsist, DieselLoco
 
 consist = EngineConsist(id = 'thing_6',
               base_numeric_id = 2060,
-              title = 'Thing 6 [Steam]',
+              title = '4-8-4 Thing 6 [Steam]',
               replacement_id = '-none',
               power = 900,
               track_type = 'NG',
