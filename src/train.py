@@ -620,15 +620,18 @@ class WagonConsist(Consist):
         self.wagon_generation = kwargs.get('wagon_generation', None)
         super(WagonConsist, self).__init__(**kwargs)
 
-        if self.track_type == 'NG':
-            self.speed = global_constants.ng_wagon_speeds[speedy]
+        if kwargs.get('speed', None):
+            self.speed = kwargs['speed']
         else:
-            if self.wagon_generation == 1:
-                self.speed = global_constants.gen_1_wagon_speeds[speedy]
-            elif self.wagon_generation == 2:
-                self.speed = global_constants.gen_2_wagon_speeds[speedy]
-            elif self.wagon_generation == 3:
-                self.speed = global_constants.gen_3_wagon_speeds[speedy]
+            if self.track_type == 'NG':
+                self.speed = global_constants.ng_wagon_speeds[speedy]
+            else:
+                if self.wagon_generation == 1:
+                    self.speed = global_constants.gen_1_wagon_speeds[speedy]
+                elif self.wagon_generation == 2:
+                    self.speed = global_constants.gen_2_wagon_speeds[speedy]
+                elif self.wagon_generation == 3:
+                    self.speed = global_constants.gen_3_wagon_speeds[speedy]
 
         self.num_cargo_rows = type_config.num_cargo_rows
         self.cargo_graphics_mappings = type_config.cargo_graphics_mappings

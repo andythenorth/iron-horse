@@ -42,6 +42,7 @@ from vehicles import hopper_cars
 from vehicles import intermodal_flat_cars
 from vehicles import livestock_cars
 from vehicles import mail_cars
+from vehicles import metal_cars
 from vehicles import metro_cars
 from vehicles import open_cars
 from vehicles import passenger_cars
