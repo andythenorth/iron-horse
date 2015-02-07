@@ -3,7 +3,7 @@ from train import EngineConsist, SteamLoco, SteamLocoTender
 
 consist = EngineConsist(id = 'thing_6',
               base_numeric_id = 2060,
-              title = '4-8-4 Thing 6 [Steam]',
+              title = '4-8-4 Super Mountain [Steam]',
               replacement_id = '-none',
               power = 900,
               speed = 55,
@@ -16,8 +16,13 @@ consist = EngineConsist(id = 'thing_6',
 
 consist.add_unit(SteamLoco(consist = consist,
                         weight = 40,
-                        vehicle_length = 6,
+                        vehicle_length = 8,
                         spriterow_num = 0))
+
+consist.add_unit(SteamLoco(consist = consist,
+                        weight = 40,
+                        vehicle_length = 6,
+                        spriterow_num = 1))
 
 consist.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,
