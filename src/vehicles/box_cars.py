@@ -1,7 +1,7 @@
 import global_constants
 from train import TypeConfig, WagonConsist, Wagon, GraphicsProcessorFactory
 
-box_car_label_refits_allowed = ['MAIL', 'GRAI', 'WHEA', 'MAIZ', 'FRUT', 'BEAN']
+box_car_label_refits_allowed = ['MAIL', 'GRAI', 'WHEA', 'MAIZ', 'FRUT', 'BEAN', 'NITR']
 cargo_graphics_mappings = {} # template needs this, but box car has zero cargo-specific graphics, all generic
 
 options = {'template': 'box_car_brit_gen_1_template.png'}
