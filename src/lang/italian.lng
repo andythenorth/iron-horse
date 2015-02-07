@@ -33,6 +33,7 @@ STR_NAME_SUFFIX_HOPPER_CAR                                      :Carro portarinf
 STR_NAME_SUFFIX_INTERMODAL_FLAT_CAR                             :Carro pianale intermodale
 STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Carro per bestiame
 STR_NAME_SUFFIX_MAIL_CAR                                        :Carro postale
+STR_NAME_SUFFIX_METAL_CAR                                       :Carro per metalli
 STR_NAME_SUFFIX_OPEN_CAR                                        :Carro aperto
 STR_NAME_SUFFIX_PASSENGER_CAR                                   :Carrozza passeggeri
 STR_NAME_SUFFIX_REEFER_CAR                                      :Carro frigo

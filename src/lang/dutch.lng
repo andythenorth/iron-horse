@@ -6,6 +6,10 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY                               :Treincapaciteit
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :Zielig
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Geweldig
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Extravagant
+STR_PARAM_ROSTER                                                :Rooster
+STR_PARAM_ROSTER_DESC                                           :Kies welke verzameling treinen gebruikt wordt.
+STR_PARAM_ROSTER_OPTION_0                                       :Een paard! Een paard! Mijn koninkrijk voor een paard!
+STR_PARAM_ROSTER_OPTION_1                                       :Caballada
 
 # keep these alphabetised, easier
 STR_NAME_SUFFIX_BATTERY                                         :(Batterij)
