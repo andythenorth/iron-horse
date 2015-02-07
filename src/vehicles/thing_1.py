@@ -3,16 +3,14 @@ from train import EngineConsist, SteamLoco
 
 consist = EngineConsist(id = 'thing_1',
               base_numeric_id = 2010,
-              title = '0-6-0 Thing 1 [Steam]',
+              title = '0-4-2 Burro [Steam]',
               replacement_id = '-none',
               power = 900,
               speed = 55,
               type_base_buy_cost_points = -10, # dibble buy cost for game balance
               type_base_running_cost_points = -15, # dibble running costs for game balance
               vehicle_life = 40,
-              intro_date = 1955,
-              graphics_status = '',
-              use_legacy_spritesheet = True)
+              intro_date = 1955)
 
 consist.add_unit(SteamLoco(consist = consist,
                         weight = 40,
