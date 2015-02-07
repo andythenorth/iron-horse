@@ -7,6 +7,10 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY                               :Trein dravermo√
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :Klein
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Wonderlik
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Uitbundig
+STR_PARAM_ROSTER                                                :Rooster
+STR_PARAM_ROSTER_DESC                                           :Kies wat se trein stel om te gebruik
+STR_PARAM_ROSTER_OPTION_0                                       :'n Perd! 'n Perd! My ryk vir 'n perd!
+STR_PARAM_ROSTER_OPTION_1                                       :Caballada
 
 # keep these alphabetised, easier
 STR_NAME_SUFFIX_BATTERY                                         :(Battery)
