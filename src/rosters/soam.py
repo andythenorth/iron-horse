@@ -1,6 +1,6 @@
 from roster import Roster
 
-from vehicles import burro
+from vehicles import thing_ng
 from vehicles import electrico
 from vehicles import thing_1
 from vehicles import thing_2
@@ -12,7 +12,7 @@ from vehicles import estados
 from vehicles import justicialista
 
 roster = Roster(id = 'soam',
-                buy_menu_sort_order = ['burro',
+                buy_menu_sort_order = ['thing_ng',
                                        'electrico',
                                        'thing_1',
                                        'thing_2',
