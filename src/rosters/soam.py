@@ -8,8 +8,8 @@ from vehicles import thing_3
 from vehicles import thing_4
 from vehicles import thing_5
 from vehicles import thing_6
-from vehicles import thing_7
-from vehicles import thing_8
+from vehicles import estados
+from vehicles import justicialista
 
 roster = Roster(id = 'soam',
                 buy_menu_sort_order = ['burro',
@@ -20,5 +20,5 @@ roster = Roster(id = 'soam',
                                        'thing_4',
                                        'thing_5',
                                        'thing_6',
-                                       'thing_7',
-                                       'thing_8'])
+                                       'estados',
+                                       'justicialista'])
