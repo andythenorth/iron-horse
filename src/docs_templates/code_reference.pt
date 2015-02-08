@@ -43,7 +43,7 @@
                     <tr>
                         <td>${consist.base_numeric_id}</td>
                         <td>${consist.id}</td>
-                        <td>${consist.title}</td>
+                        <td>${consist.title.decode('utf-8')}</td>
                     </tr>
                 </tal:consists>
             </tbody>

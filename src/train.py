@@ -149,7 +149,7 @@ class Consist(object):
 
     def get_name_substr(self):
         # relies on name being in format "Foo [Bar]" for Name [Type Suffix]
-        name = self.title.split('[')[0]
+        name = self.title.decode('utf-8').split('[')[0]
         # enforce a space if name is not empty
         if len(name) is not 0:
             name = name + ' '
