@@ -1,6 +1,7 @@
 from roster import Roster
 
 from vehicles import burro
+from vehicles import electrico
 from vehicles import thing_1
 from vehicles import thing_2
 from vehicles import thing_3
@@ -12,6 +13,7 @@ from vehicles import thing_8
 
 roster = Roster(id = 'soam',
                 buy_menu_sort_order = ['burro',
+                                       'electrico',
                                        'thing_1',
                                        'thing_2',
                                        'thing_3',
