@@ -1,6 +1,6 @@
 import global_constants
 from train import EngineConsist, DieselLoco
-# for rest of stats, look up GE Export models U5B-U8B
+# for rest of stats, look up Chinese CKD8G
 consist = EngineConsist(id = 'roca',
               base_numeric_id = 2180,
               title = 'Roca [Diesel]',
