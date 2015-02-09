@@ -7,6 +7,10 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY                               :열차 정원
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :매우 작은
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :놀라운
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :과대한
+STR_PARAM_ROSTER                                                :목록
+STR_PARAM_ROSTER_DESC                                           :어떤 열차 세트를 사용할 지 선택하세요.
+STR_PARAM_ROSTER_OPTION_0                                       :말! 말! 나의 말 나라!
+STR_PARAM_ROSTER_OPTION_1                                       :Caballada
 
 # keep these alphabetised, easier
 STR_NAME_SUFFIX_BATTERY                                         :(배터리)
@@ -20,12 +24,15 @@ STR_NAME_SUFFIX_STEAM                                           :(증기)
 
 STR_NAME_SUFFIX_BOX_CAR                                         :유개차
 STR_NAME_SUFFIX_CABOOSE_CAR                                     :차장차
+STR_NAME_SUFFIX_COMBINE_CAR                                     :결합차
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :유개호퍼차
+STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :식품 탱크 차
 STR_NAME_SUFFIX_FLAT_CAR                                        :평판차
 STR_NAME_SUFFIX_HOPPER_CAR                                      :호퍼차
 STR_NAME_SUFFIX_INTERMODAL_FLAT_CAR                             :복합평판차
 STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :가축차
 STR_NAME_SUFFIX_MAIL_CAR                                        :우편차
+STR_NAME_SUFFIX_METAL_CAR                                       :철제 차
 STR_NAME_SUFFIX_OPEN_CAR                                        :무개차
 STR_NAME_SUFFIX_PASSENGER_CAR                                   :객차
 STR_NAME_SUFFIX_REEFER_CAR                                      :냉동차
