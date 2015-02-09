@@ -13,6 +13,7 @@ from vehicles import justicialista
 from vehicles import pacifico
 from vehicles import pala
 from vehicles import peacock
+from vehicles import roca
 from vehicles import super_mountain
 from vehicles import thing_ng
 from vehicles import universal
@@ -37,4 +38,5 @@ roster = Roster(id = 'soam',
                                        'pala',
                                        'astarsa',
                                        'universal',
-                                       'evolucao'])
+                                       'evolucao',
+                                       'roca'])
