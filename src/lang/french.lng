@@ -7,6 +7,10 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY                               :Capacité des t
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :Piètre
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Merveilleuse
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Excessive
+STR_PARAM_ROSTER                                                :Assortiment
+STR_PARAM_ROSTER_DESC                                           :Choisir la thématique des trains utilisés.
+STR_PARAM_ROSTER_OPTION_0                                       :A horse! A horse! My kingdom for a horse!
+STR_PARAM_ROSTER_OPTION_1                                       :Caballada
 
 # keep these alphabetised, easier
 STR_NAME_SUFFIX_BATTERY                                         :(Batterie)
@@ -28,6 +32,7 @@ STR_NAME_SUFFIX_HOPPER_CAR                                      :Wagon trémie
 STR_NAME_SUFFIX_INTERMODAL_FLAT_CAR                             :Wagon plat intermodal
 STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Fourgon à bétail
 STR_NAME_SUFFIX_MAIL_CAR                                        :Fourgon postal
+STR_NAME_SUFFIX_METAL_CAR                                       :Voiture métallique
 STR_NAME_SUFFIX_OPEN_CAR                                        :Wagon tombereau
 STR_NAME_SUFFIX_PASSENGER_CAR                                   :Wagon passagers
 STR_NAME_SUFFIX_REEFER_CAR                                      :Wagon frigorifique

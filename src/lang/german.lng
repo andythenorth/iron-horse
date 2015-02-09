@@ -7,6 +7,7 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY                               :Zugkapazität
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :kümmerlich
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :phänomenal
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :übermäßig
+STR_PARAM_ROSTER_OPTION_0                                       :Ein Pferd! Ein Pferd! Mein Königreich für ein Pferd!
 
 # keep these alphabetised, easier
 STR_NAME_SUFFIX_BATTERY                                         :(Batterie)
@@ -18,3 +19,18 @@ STR_NAME_SUFFIX_METRO_CAR                                       :Wagen (S-Bahn)
 STR_NAME_SUFFIX_METRO_TRAIN                                     :(S-Bahn)
 STR_NAME_SUFFIX_STEAM                                           :(Dampf)
 
+STR_NAME_SUFFIX_BOX_CAR                                         :geschlossener Wagen
+STR_NAME_SUFFIX_CABOOSE_CAR                                     :Bremserwagen
+STR_NAME_SUFFIX_COMBINE_CAR                                     :kombinierter Wagen
+STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :gedeckter Schüttgutwagen
+STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Lebensmittel-Kesselwagen
+STR_NAME_SUFFIX_FLAT_CAR                                        :Flachwagen
+STR_NAME_SUFFIX_HOPPER_CAR                                      :Schüttgutwagen
+STR_NAME_SUFFIX_INTERMODAL_FLAT_CAR                             :kombinierter Flachwagen
+STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Viehwagen
+STR_NAME_SUFFIX_MAIL_CAR                                        :Postwagen
+STR_NAME_SUFFIX_METAL_CAR                                       :Metallwagen
+STR_NAME_SUFFIX_OPEN_CAR                                        :offener Wagen
+STR_NAME_SUFFIX_PASSENGER_CAR                                   :Personenwagen
+STR_NAME_SUFFIX_REEFER_CAR                                      :Kühlwagen
+STR_NAME_SUFFIX_TANK_CAR                                        :Kesselwagen
