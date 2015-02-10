@@ -65,7 +65,7 @@ def get_consists_in_buy_menu_order(show_warnings=False):
 
     for id_base in global_constants.buy_menu_sort_order_wagons:
         for vehicle_set in global_constants.vehicle_set_id_mapping.keys():
-            for wagon_generation in registered_wagon_generations[vehicle_set][id_base]:
+            for wagon_generation in registered_wagon_generations[vehicle_set].get(id_base, []):
                 wagon_id = '_'.join((id_base, vehicle_set, 'gen', str(wagon_generation)))
                 buy_menu_sort_order.append(wagon_id)
 
