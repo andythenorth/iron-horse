@@ -92,7 +92,7 @@ consist.add_unit(MailCar(type_config = type_config,
                         consist = consist,
                         capacity_mail = 30,
                         weight = 29,
-                        vehicle_length = 8))
+                        vehicle_length = 7))
 
 consist.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,
