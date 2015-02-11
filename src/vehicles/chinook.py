@@ -10,7 +10,6 @@ consist = EngineConsist(id = 'chinook',
               type_base_buy_cost_points = 16, # dibble buy cost for game balance
               vehicle_life = 40,
               intro_date = 1955,
-              graphics_status = '',
               use_legacy_spritesheet = True)
 
 consist.add_unit(DieselLoco(consist = consist,

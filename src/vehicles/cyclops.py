@@ -10,7 +10,6 @@ consist = EngineConsist(id = 'cyclops',
               buy_cost = 135,
               vehicle_life = 40,
               intro_date = 1999,
-              graphics_status = '',
               use_legacy_spritesheet = True)
               
 consist.add_unit(DieselLoco(consist = consist,

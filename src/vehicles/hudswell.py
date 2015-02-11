@@ -13,7 +13,6 @@ consist = EngineConsist(id = 'hudswell',
               type_base_running_cost_points = 0, # dibble running costs for game balance
               vehicle_life = 40,
               intro_date = 1910,
-              graphics_status = '',
               use_legacy_spritesheet = True)
 
 consist.add_unit(SteamLoco(consist = consist,

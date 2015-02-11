@@ -14,8 +14,7 @@ vehicle = DieselLoco(id = 'geep',
             vehicle_length = 8,
             loading_speed = 20,
             intro_date = 1900,
-            vehicle_life = 40,
-            graphics_status = '',)
+            vehicle_life = 40)
 
 vehicle.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,

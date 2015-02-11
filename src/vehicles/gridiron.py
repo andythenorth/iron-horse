@@ -11,7 +11,6 @@ consist = EngineConsist(id = 'gridiron',
               type_base_buy_cost_points = 30, # dibble buy cost for game balance
               vehicle_life = 40,
               intro_date = 1975,
-              graphics_status = '',
               use_legacy_spritesheet = True)
 
 consist.add_unit(DieselLoco(consist = consist,

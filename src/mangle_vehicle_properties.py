@@ -7,7 +7,7 @@ sys.path.append(os.path.join('src')) # add to the module search path
 property_to_delete = 'buy_menu_width'
 property_to_move = 'sea_capable'
 property_to_insert_after = 'gross_tonnage'
-line_to_insert = "            graphics_status = 'Unstarted',"
+line_to_insert = "            property_name = 'example',"
 
 filenames = ['screamer.py','pendolino.py','slammer.py','box_cars.py','open_cars.py','caboose_cars.py','raven.py','covered_hopper_cars.py','metro.py','gresley.py','hellenic.py','wordsell.py','goods.py','tank_cars.py','reefer_cars.py','livestock_cars.py','hopper_cars.py','flat_cars.py','passenger_cars.py','mail_cars.py','standard.py','suburban.py','collier.py','whistler.py','zebedee.py','chinook.py','gridiron.py','geep.py','dmc_sd40.py','growler.py']
 

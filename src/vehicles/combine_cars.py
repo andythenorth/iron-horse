@@ -16,8 +16,7 @@ consist = WagonConsist(type_config = type_config,
                     wagon_generation = 1,
                     replacement_id = '-none',
                     intro_date = 1860,
-                    vehicle_life = 40,
-                    graphics_status = '')
+                    vehicle_life = 40)
 
 consist.add_unit(CombineCar(type_config = type_config,
                         consist = consist,

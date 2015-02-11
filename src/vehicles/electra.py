@@ -11,7 +11,6 @@ consist = EngineConsist(id = 'electra',
               type_base_buy_cost_points = 10, # dibble buy cost for game balance
               vehicle_life = 40,
               intro_date = 1953,
-              graphics_status = '',
               use_legacy_spritesheet = True)
 
 consist.add_unit(ElectricLoco(consist = consist,

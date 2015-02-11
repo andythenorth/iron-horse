@@ -12,7 +12,6 @@ consist = EngineConsist(id = 'walker',
               type_base_running_cost_points = -15, # dibble running costs for game balance
               vehicle_life = 40,
               intro_date = 1955,
-              graphics_status = '',
               use_legacy_spritesheet = True)
 
 consist.add_unit(DieselLoco(consist = consist,

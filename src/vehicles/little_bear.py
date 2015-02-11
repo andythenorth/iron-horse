@@ -11,7 +11,6 @@ consist = EngineConsist(id = 'little_bear',
               type_base_running_cost_points = -28, # dibble run cost for game balance
               vehicle_life = 40,
               intro_date = 1964,
-              graphics_status = '',
               use_legacy_spritesheet = True)
 
 consist.add_unit(DieselLoco(consist = consist,

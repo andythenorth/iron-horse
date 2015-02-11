@@ -11,7 +11,6 @@ consist = EngineConsist(id = 'fleet',
               type_base_buy_cost_points = 80, # dibble buy cost for game balance
               intro_date = 2000,
               vehicle_life = 40,
-              graphics_status = '',
               use_legacy_spritesheet = True)
 
 # should be 4 units, not 2

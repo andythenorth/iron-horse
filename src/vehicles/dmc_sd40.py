@@ -14,8 +14,7 @@ vehicle = DieselLoco(id = 'dmc_sd40',
             vehicle_length = 8,
             loading_speed = 20,
             intro_date = 1975,
-            vehicle_life = 30,
-            graphics_status = '')
+            vehicle_life = 30)
 
 vehicle.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,

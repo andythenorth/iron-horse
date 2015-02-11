@@ -11,7 +11,6 @@ consist = EngineConsist(id = 'raven',
               buy_cost = 77,
               vehicle_life = 40,
               intro_date = 1919,
-              graphics_status = '',
               use_legacy_spritesheet = True)
               
 consist.add_unit(ElectricLoco(consist = consist,

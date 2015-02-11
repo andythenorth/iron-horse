@@ -21,8 +21,7 @@ consist = EngineConsist(id = 'cargo_sprinter',
                   speed = 100,
                   intro_date = 1999,
                   vehicle_life = 40,
-                  graphics_status = '',
-                  use_legacy_spritesheet = True)
+                      use_legacy_spritesheet = True)
 
 consist.add_unit(CargoSprinter(consist = consist,
                                weight = 82,

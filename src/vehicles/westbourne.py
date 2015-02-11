@@ -11,7 +11,6 @@ consist = EngineConsist(id = 'westbourne',
               type_base_buy_cost_points = 60, # dibble buy cost for game balance
               intro_date = 1950,
               vehicle_life = 40,
-              graphics_status = '',
               use_legacy_spritesheet = True)
 
 # should be 4 units not 2

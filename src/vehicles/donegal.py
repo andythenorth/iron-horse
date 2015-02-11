@@ -12,7 +12,6 @@ consist = EngineConsist(id = 'donegal',
               type_base_running_cost_points = -30, # dibble running costs for game balance
               intro_date = 1954,
               vehicle_life = 40,
-              graphics_status = '',
               use_legacy_spritesheet = True)
 
 consist.add_unit(DieselRailcar(consist = consist,

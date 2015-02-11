@@ -25,8 +25,7 @@ consist = WagonConsist(type_config = type_config,
                     replacement_id = '-none',
                     intro_date = 1860,
                     vehicle_life = 40,
-                    graphics_status = '',
-                    use_legacy_spritesheet = True)
+                          use_legacy_spritesheet = True)
 
 consist.add_unit(Wagon(type_config = type_config,
                         consist = consist,
@@ -57,8 +56,7 @@ consist = WagonConsist(type_config = type_config,
                     replacement_id = '-none',
                     intro_date = 1960,
                     vehicle_life = 40,
-                    graphics_status = '',
-                    use_legacy_spritesheet = True)
+                          use_legacy_spritesheet = True)
 
 consist.add_unit(Wagon(type_config = type_config,
                         consist = consist,
@@ -100,8 +98,7 @@ consist = WagonConsist(type_config = type_config,
                     replacement_id = '-none',
                     intro_date = 1860,
                     vehicle_life = 40,
-                    graphics_status = '',
-                    use_legacy_spritesheet = True)
+                          use_legacy_spritesheet = True)
 
 consist.add_unit(Wagon(type_config = type_config,
                         consist = consist,

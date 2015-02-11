@@ -10,7 +10,6 @@ consist = EngineConsist(id = 'screamer',
               type_base_buy_cost_points = 71, # dibble buy cost for game balance
               vehicle_life = 40,
               intro_date = 1990,
-              graphics_status = '',
               use_legacy_spritesheet = True)
 
 consist.add_unit(ElectricLoco(consist = consist,

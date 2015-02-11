@@ -11,7 +11,6 @@ consist = EngineConsist(id = 'collier',
               type_base_buy_cost_points = 6, # dibble buy cost for game balance
               vehicle_life = 40,
               intro_date = 1900,
-              graphics_status = '',
               use_legacy_spritesheet = True)
 
 consist.add_unit(SteamLoco(consist = consist,

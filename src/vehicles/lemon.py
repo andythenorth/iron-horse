@@ -12,7 +12,6 @@ consist = EngineConsist(id = 'lemon',
               buy_cost = 114,
               vehicle_life = 40,
               intro_date = 1935,
-              graphics_status = '',
               use_legacy_spritesheet = True)
 
 consist.add_unit(SteamLoco(consist = consist,

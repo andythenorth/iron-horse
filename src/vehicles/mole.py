@@ -11,7 +11,6 @@ consist = EngineConsist(id = 'mole',
               type_base_buy_cost_points = 10, # dibble buy cost for game balance
               intro_date = 1900,
               vehicle_life = 40,
-              graphics_status = '',
               use_legacy_spritesheet = True)
 
 consist.add_unit(MetroLoco(consist = consist,
