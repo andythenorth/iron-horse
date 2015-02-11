@@ -1,4 +1,4 @@
-import graphics_constants
+from graphics_processor import graphics_constants
 from PIL import Image
 
 DOS_PALETTE = Image.open('palette_key.png').palette
@@ -6,7 +6,7 @@ DOS_PALETTE = Image.open('palette_key.png').palette
 class ProcessingUnit(object):
     def __init__(self):
         pass
-        
+
     def make_recolour_table(self, recolour_map):
         table = []
         for i in range(256):
@@ -15,7 +15,7 @@ class ProcessingUnit(object):
             else:
                 table.append(i)
         return table
-        
+
     def selective_recolour(self, spritesheet, recolour_map):
         table = self.make_recolour_table(recolour_map)
         result = spritesheet.sprites.point(table)
@@ -38,7 +38,7 @@ class SimpleRecolour(ProcessingUnit):
     def __init__(self, recolour_map):
         self.recolour_map = recolour_map
         super(SimpleRecolour, self).__init__()
-        
+
     def render(self, spritesheet):
         self.selective_recolour(spritesheet, self.recolour_map)
         return spritesheet
@@ -49,7 +49,7 @@ class SwapCompanyColours(ProcessingUnit):
     def __init__(self):
         self.recolour_map = graphics_constants.CC1_CC2_SWAP_MAP
         super(SwapCompanyColours, self).__init__()
-        
+
     def render(self, spritesheet):
         self.selective_recolour(spritesheet, self.recolour_map)
         return spritesheet
@@ -65,7 +65,7 @@ class AppendToSpritesheet(ProcessingUnit):
         if self.crop_box is None:
             self.crop_box = (0, 0, source_spritesheet.sprites.size[0], source_spritesheet.sprites.size[1])
         super(AppendToSpritesheet, self).__init__()
-        
+
     def render(self, spritesheet):
         image_to_paste = self.source_spritesheet.sprites.copy()
         image_to_paste = image_to_paste.crop((self.crop_box[0], self.crop_box[1], self.crop_box[2], self.crop_box[3]))

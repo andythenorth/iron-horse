@@ -6,7 +6,8 @@ from pixa import PixaColour, PixaSequence, PixaSequenceCollection, PixaShiftColo
 from pixa import make_cheatsheet as make_cheatsheet
 from PIL import Image
 
-from graphics_processor import registered_pipelines, graphics_constants
+from graphics_processor import registered_pipelines
+from graphics_processor import graphics_constants
 from graphics_processor.units import PassThrough, SimpleRecolour, SwapCompanyColours, AppendToSpritesheet
 
 DOS_PALETTE = Image.open('palette_key.png').palette

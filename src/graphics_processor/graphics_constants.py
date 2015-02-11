@@ -11,4 +11,4 @@ for i in range(8):
 # facts about 'standard' spritesheets, spritesheets varying from this will be painful
 spriterow_height = 30
 spritesheet_top_margin = 10
-spritesheet_width = 400 
+spritesheet_width = 400

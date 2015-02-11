@@ -13,8 +13,8 @@ graphics_options_master = {'template': 'hopper_car_brit_gen_1_template.png',
                            'num_rows_per_unit': 2,
                            'num_unit_types': 1}
 
-graphics_options_1 = dict((k, v) for (k, v) in graphics_options_master.iteritems())
-graphics_options_2 = dict((k, v) for (k, v) in graphics_options_1.iteritems())
+graphics_options_1 = dict((k, v) for (k, v) in graphics_options_master.items())
+graphics_options_2 = dict((k, v) for (k, v) in graphics_options_1.items())
 graphics_options_2['swap_company_colours'] = True
 graphics_processor_1 = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_1)
 graphics_processor_2 = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_2)
@@ -58,9 +58,9 @@ consist.add_model_variant(intro_date=0,
                        graphics_processor=graphics_processor_2)
 
 
-graphics_options_1 = dict((k, v) for (k, v) in graphics_options_master.iteritems())
+graphics_options_1 = dict((k, v) for (k, v) in graphics_options_master.items())
 graphics_options_1['template'] = 'hopper_car_brit_gen_2_template.png'
-graphics_options_2 = dict((k, v) for (k, v) in graphics_options_1.iteritems())
+graphics_options_2 = dict((k, v) for (k, v) in graphics_options_1.items())
 graphics_options_2['swap_company_colours'] = True
 graphics_processor_1 = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_1)
 graphics_processor_2 = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_2)
@@ -92,9 +92,9 @@ consist.add_model_variant(intro_date=0,
                        graphics_processor=graphics_processor_2)
 
 
-graphics_options_1 = dict((k, v) for (k, v) in graphics_options_master.iteritems())
+graphics_options_1 = dict((k, v) for (k, v) in graphics_options_master.items())
 graphics_options_1['template'] = 'hopper_car_brit_gen_3_template.png'
-graphics_options_2 = dict((k, v) for (k, v) in graphics_options_1.iteritems())
+graphics_options_2 = dict((k, v) for (k, v) in graphics_options_1.items())
 graphics_options_2['swap_company_colours'] = True
 graphics_processor_1 = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_1)
 graphics_processor_2 = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_2)

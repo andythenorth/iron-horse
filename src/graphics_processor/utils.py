@@ -1,4 +1,4 @@
-import graphics_constants
+from graphics_processor import graphics_constants
 
 def make_colour_map(input, output, map_size):
     result = {}
