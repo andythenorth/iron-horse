@@ -10,6 +10,7 @@ from vehicles import electrico
 from vehicles import estados
 from vehicles import evolucao
 from vehicles import justicialista
+from vehicles import krauss
 from vehicles import pacifico
 from vehicles import pala
 from vehicles import peacock
@@ -35,6 +36,7 @@ roster = Roster(id = 'soam',
                                        'v8',
                                        'ut440',
                                        'justicialista',
+                                       'krauss',
                                        'pala',
                                        'astarsa',
                                        'universal',
