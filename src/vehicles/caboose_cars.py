@@ -31,3 +31,24 @@ consist.add_unit(Wagon(type_config = type_config,
 consist.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,
                        spritesheet_suffix=0)
+
+
+consist = WagonConsist(type_config = type_config,
+                    title = '[Caboose Car]',
+                    vehicle_set = 'soam',
+                    wagon_generation = 1,
+                    replacement_id = '-none',
+                    intro_date = 1860,
+                    vehicle_life = 40,
+                    speedy = True)
+
+consist.add_unit(Wagon(type_config = type_config,
+                        consist = consist,
+                        capacity_freight = 0,
+                        weight = 20,
+                        vehicle_length = 5,
+                        loading_speed = 0))
+
+consist.add_model_variant(intro_date=0,
+                       end_date=global_constants.max_game_date,
+                       spritesheet_suffix=0)
