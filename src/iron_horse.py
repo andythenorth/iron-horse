@@ -8,7 +8,7 @@ sys.path.append(os.path.join('src')) # add to the module search path
 
 import global_constants
 import utils
-import graphics_processor, graphics_processor.pipelines
+import graphics_processor.pipelines
 
 # setting up a cache for compiled chameleon templates can significantly speed up template rendering
 chameleon_cache_path = os.path.join(currentdir, global_constants.chameleon_cache_dir)

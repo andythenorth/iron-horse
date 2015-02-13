@@ -5,7 +5,6 @@ print "[RENDER NML & NFO] render_nml_nfo.py"
 import codecs # used for writing files - more unicode friendly than standard open() module
 import json
 
-import shutil
 import sys
 import os
 currentdir = os.curdir

@@ -18,7 +18,6 @@ def unescape_chameleon_output(escaped_nml):
 def parse_base_lang():
     # expose base lang strings to python - for reuse in docs
     import os.path
-    currentdir = os.curdir
 
     import codecs # used for writing files - more unicode friendly than standard open() module
 
