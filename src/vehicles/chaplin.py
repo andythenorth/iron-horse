@@ -1,5 +1,5 @@
 import global_constants
-from train import EngineConsist, SteamLoco, SteamLocoTender
+from train import EngineConsist, SteamLoco
 
 consist = EngineConsist(id = 'chaplin',
               base_numeric_id = 1010,

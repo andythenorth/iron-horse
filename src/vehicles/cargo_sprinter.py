@@ -1,4 +1,3 @@
-import global_constants
 import graphics_processor.utils as graphics_utils
 from train import EngineConsist, CargoSprinter, GraphicsProcessorFactory
 

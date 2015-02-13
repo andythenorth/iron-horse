@@ -1,5 +1,5 @@
 import global_constants
-from train import TypeConfig, WagonConsist, Wagon, GraphicsProcessorFactory
+from train import TypeConfig, WagonConsist, Wagon
 
 type_config = TypeConfig(base_id = 'metal_car',
                 template = 'train.pynml',

@@ -17,7 +17,7 @@ consist.add_unit(SteamLoco(consist = consist,
                         vehicle_length = 8,
                         spriterow_num = 0))
 
-consist.add_unit(SteamLoco(consist = consist,
+consist.add_unit(SteamLocoTender(consist = consist,
                         weight = 40,
                         vehicle_length = 5,
                         spriterow_num = 1))
