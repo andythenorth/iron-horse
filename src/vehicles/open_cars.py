@@ -15,18 +15,13 @@ cargo_graphics_mappings = {'AORE': [b], 'IORE': [b + 1], 'CORE': [b + 2], 'GRVL'
                            'SAND': [b + 4], 'COAL': [b + 5], 'CLAY': [b + 6]}
 
 recolour_maps = graphics_utils.get_bulk_cargo_recolour_maps()
-graphics_options_master = {'template': 'open_car_brit_gen_1_template.png',
+graphics_options_master = {'template': 'filename.png',
                            'recolour_maps': (recolour_maps),
                            'copy_block_top_offset': 90,
                            'num_rows_per_unit': 2,
                            'num_unit_types': 1}
 
-graphics_options_1 = dict((k, v) for (k, v) in graphics_options_master.items())
-graphics_options_1['template'] = 'open_car_brit_gen_1_template.png'
-graphics_options_2 = dict((k, v) for (k, v) in graphics_options_1.items())
-graphics_options_2['swap_company_colours'] = True
-graphics_processor_1 = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_1)
-graphics_processor_2 = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_2)
+# Normal Railtype
 
 type_config = TypeConfig(base_id = 'open_car',
                 template = 'car_with_visible_cargo.pynml',
@@ -38,6 +33,14 @@ type_config = TypeConfig(base_id = 'open_car',
                 autorefit = True,
                 default_cargo = 'GOOD',
                 default_capacity_type = 'capacity_freight')
+
+
+graphics_options_1 = dict((k, v) for (k, v) in graphics_options_master.items())
+graphics_options_1['template'] = 'open_car_brit_gen_1_template.png'
+graphics_options_2 = dict((k, v) for (k, v) in graphics_options_1.items())
+graphics_options_2['swap_company_colours'] = True
+graphics_processor_1 = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_1)
+graphics_processor_2 = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_2)
 
 consist = WagonConsist(type_config = type_config,
                     title = '[Open Car]',
@@ -132,6 +135,41 @@ consist.add_model_variant(intro_date=0,
                        spritesheet_suffix=1,
                        graphics_processor=graphics_processor_2)
 
+
+graphics_options_1 = dict((k, v) for (k, v) in graphics_options_master.items())
+graphics_options_1['template'] = 'open_car_soam_gen_1_template.png'
+graphics_options_2 = dict((k, v) for (k, v) in graphics_options_1.items())
+graphics_options_2['swap_company_colours'] = True
+graphics_processor_1 = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_1)
+graphics_processor_2 = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_2)
+
+consist = WagonConsist(type_config = type_config,
+                    title = '[Open Car]',
+                    vehicle_set = 'soam',
+                    wagon_generation = 1,
+                    replacement_id = '-none',
+                    intro_date = 1860,
+                    vehicle_life = 40)
+
+consist.add_unit(Wagon(type_config = type_config,
+                        consist = consist,
+                        capacity_freight = 30,
+                        weight = 7,
+                        vehicle_length = 5,
+                        loading_speed = 10))
+
+consist.add_model_variant(intro_date=0,
+                       end_date=global_constants.max_game_date,
+                       spritesheet_suffix=0,
+                       graphics_processor=graphics_processor_1)
+
+consist.add_model_variant(intro_date=0,
+                       end_date=global_constants.max_game_date,
+                       spritesheet_suffix=1,
+                       graphics_processor=graphics_processor_2)
+
+
+# Narrow Gauge Railtype
 
 graphics_options_1 = dict((k, v) for (k, v) in graphics_options_master.items())
 graphics_options_1['template'] = 'open_car_ng_brit_gen_1_template.png'
