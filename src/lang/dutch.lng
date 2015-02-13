@@ -31,6 +31,7 @@ STR_NAME_SUFFIX_HOPPER_CAR                                      :Stortgoedwagon
 STR_NAME_SUFFIX_INTERMODAL_FLAT_CAR                             :Platte containerwagon
 STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Veewagon
 STR_NAME_SUFFIX_MAIL_CAR                                        :Postwagon
+STR_NAME_SUFFIX_METAL_CAR                                       :Metalen auto
 STR_NAME_SUFFIX_OPEN_CAR                                        :Open wagon
 STR_NAME_SUFFIX_PASSENGER_CAR                                   :Passagierswagon
 STR_NAME_SUFFIX_REEFER_CAR                                      :Koelwagon
