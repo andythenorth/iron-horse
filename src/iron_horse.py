@@ -53,7 +53,10 @@ from vehicles import tank_cars
 from rosters import registered_rosters
 
 from rosters import brit
+brit.roster.register()
+
 from rosters import soam
+soam.roster.register()
 
 def get_consists_in_buy_menu_order(show_warnings=False):
     sorted_consists = []

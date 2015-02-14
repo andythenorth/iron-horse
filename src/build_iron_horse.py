@@ -4,7 +4,6 @@ from time import time
 
 print "[BUILD] build_iron_horse.py"
 
-import iron_horse
 import utils
 
 import os.path
