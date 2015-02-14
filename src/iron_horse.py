@@ -28,8 +28,6 @@ else: # provide some defaults so templates don't explode when testing python scr
 
 print("[IMPORT VEHICLES] iron_horse.py")
 
-import train
-from train import Train
 from vehicles import registered_consists, registered_wagon_generations
 
 from vehicles import box_cars
