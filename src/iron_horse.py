@@ -31,22 +31,55 @@ print("[IMPORT VEHICLES] iron_horse.py")
 from vehicles import registered_consists, registered_wagon_generations
 
 from vehicles import box_cars
+box_cars.main()
+
 from vehicles import caboose_cars
+caboose_cars.main()
+
 from vehicles import combine_cars
+combine_cars.main()
+
 from vehicles import covered_hopper_cars
+covered_hopper_cars.main()
+
 from vehicles import edibles_tank_cars
+edibles_tank_cars.main()
+
 from vehicles import flat_cars
+flat_cars.main()
+
 from vehicles import hopper_cars
+hopper_cars.main()
+
 from vehicles import intermodal_flat_cars
+intermodal_flat_cars.main()
+
 from vehicles import livestock_cars
+livestock_cars.main()
+
 from vehicles import mail_cars
+mail_cars.main()
+
 from vehicles import metal_cars
+metal_cars.main()
+
 from vehicles import metro_cars
+metro_cars.main()
+
 from vehicles import open_cars
+open_cars.main()
+
 from vehicles import passenger_cars
+passenger_cars.main()
+
 from vehicles import reefer_cars
+reefer_cars.main()
+
 from vehicles import supplies_cars
+supplies_cars.main()
+
 from vehicles import tank_cars
+tank_cars.main()
 
 from rosters import registered_rosters
 
