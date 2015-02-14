@@ -1,14 +1,12 @@
 import os.path
 currentdir = os.curdir
-import codecs
 
-from pixa import PixaColour, PixaSequence, PixaSequenceCollection, PixaShiftColour, PixaShiftDY, PixaMaskColour, Spritesheet, PixaImageLoader
-from pixa import make_cheatsheet as make_cheatsheet
+from pixa import Spritesheet
 from PIL import Image
 
 from graphics_processor import registered_pipelines
 from graphics_processor import graphics_constants
-from graphics_processor.units import PassThrough, SimpleRecolour, SwapCompanyColours, AppendToSpritesheet
+from graphics_processor.units import SimpleRecolour, SwapCompanyColours, AppendToSpritesheet
 
 DOS_PALETTE = Image.open('palette_key.png').palette
 
