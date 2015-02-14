@@ -11,17 +11,14 @@ print "[RENDER GRAPHICS] render_graphics.py"
 import codecs # used for writing files - more unicode friendly than standard open() module
 
 import shutil
-import sys
 import os
 currentdir = os.curdir
 from multiprocessing import Pool
-import multiprocessing, logging
+import multiprocessing
 logger = multiprocessing.log_to_stderr()
 logger.setLevel(25)
 
 import iron_horse
-import utils
-import global_constants
 
 graphics_input = os.path.join(currentdir, 'src', 'graphics')
 graphics_output_path = os.path.join(iron_horse.generated_files_path, 'graphics')
@@ -42,7 +39,7 @@ def run_pipeline(items):
         result = variant.graphics_processor.pipeline.render(variant, consist)
         return result
 
-# wrapped in a main() function so this can be called explicitly, because unexpected multiprocessing fork bombs are bad     
+# wrapped in a main() function so this can be called explicitly, because unexpected multiprocessing fork bombs are bad
 def main():
     consists = iron_horse.get_consists_in_buy_menu_order()
     variants = []
@@ -55,14 +52,14 @@ def main():
             else:
                 spritesheet_suffixes_seen.append(variant.spritesheet_suffix)
             variants.append((variant, consist))
-        
+
     pool = Pool(processes=16)
     pool.map(run_pipeline, variants)
     pool.close()
     pool.join()
-            
+
     # handle special case spritesheets
     shutil.copy(os.path.join(graphics_input, 'null_trailing_part.png'), graphics_output_path)
 
-if __name__ == '__main__': 
+if __name__ == '__main__':
     main()
