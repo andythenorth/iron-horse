@@ -690,9 +690,9 @@ class Wagon(Train):
     This class should be sparse - only declare the most limited set of properties common to wagons.
     Most props should be declared by Train with useful defaults.
     """
-    def __init__(self, consist, **kwargs):
+    def __init__(self, **kwargs):
         super(Wagon, self).__init__(**kwargs)
-        self.type_config = consist.type_config
+        self.type_config = kwargs['consist'].type_config
         self.template = self.type_config.template
         self.class_refit_groups = self.type_config.class_refit_groups
         self.label_refits_allowed = self.type_config.label_refits_allowed
