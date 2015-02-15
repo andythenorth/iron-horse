@@ -19,7 +19,7 @@ from rosters import registered_rosters
 # get args passed by makefile
 repo_vars = utils.get_repo_vars(sys)
 num_pool_workers = repo_vars.get('num_pool_workers', 1)
-if num_pool_workers == 1:
+if num_pool_workers == 0:
     use_multiprocessing = False
 else:
     use_multiprocessing = True
