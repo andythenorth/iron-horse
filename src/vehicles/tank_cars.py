@@ -2,13 +2,8 @@ import global_constants
 from train import TypeConfig, WagonConsist, Wagon, GraphicsProcessorFactory
 
 def main():
-    options = {'template': 'tank_car_brit_gen_1_template.png'}
-    graphics_processor_1 = GraphicsProcessorFactory('pass_through_pipeline', options)
-    graphics_processor_2 = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
-
     # tank cars are unrealistically autorefittable, and at no cost
     # Pikka: if people complain that it's unrealistic, tell them "don't do it then"
-
     type_config = TypeConfig(base_id = 'tank_car',
                     template = 'train.pynml',
                     class_refit_groups = ['liquids'],
@@ -35,20 +30,18 @@ def main():
                             vehicle_length = 5,
                             loading_speed = 10))
 
+    options = {'template': 'tank_car_brit_gen_1_template.png'}
+
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=0,
-                           graphics_processor=graphics_processor_1)
+                           graphics_processor=GraphicsProcessorFactory('pass_through_pipeline', options))
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=1,
-                           graphics_processor=graphics_processor_2)
+                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
-
-    options = {'template': 'tank_car_brit_gen_2_template.png'}
-    graphics_processor_1 = GraphicsProcessorFactory('pass_through_pipeline', options)
-    graphics_processor_2 = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
 
     consist = WagonConsist(type_config = type_config,
                         title = '[Tank Car]',
@@ -66,20 +59,18 @@ def main():
                             vehicle_length = 8,
                             loading_speed = 20))
 
+    options = {'template': 'tank_car_brit_gen_2_template.png'}
+
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=0,
-                           graphics_processor=graphics_processor_1)
+                           graphics_processor=GraphicsProcessorFactory('pass_through_pipeline', options))
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=1,
-                           graphics_processor=graphics_processor_2)
+                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
-
-    options = {'template': 'tank_car_ng_brit_gen_1_template.png'}
-    graphics_processor_1 = GraphicsProcessorFactory('pass_through_pipeline', options)
-    graphics_processor_2 = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
 
     type_config = TypeConfig(base_id = 'tank_car_ng',
                     template = 'train.pynml',
@@ -101,6 +92,9 @@ def main():
                         vehicle_life = 40,
                               use_legacy_spritesheet = True)
 
+
+    options = {'template': 'tank_car_ng_brit_gen_1_template.png'}
+
     consist.add_unit(Wagon(type_config = type_config,
                             consist = consist,
                             capacity_freight = 12,
@@ -111,9 +105,9 @@ def main():
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=0,
-                           graphics_processor=graphics_processor_1)
+                           graphics_processor=GraphicsProcessorFactory('pass_through_pipeline', options))
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=1,
-                           graphics_processor=graphics_processor_2)
+                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))

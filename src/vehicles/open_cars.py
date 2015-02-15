@@ -2,19 +2,14 @@ import global_constants
 import graphics_processor.utils as graphics_utils
 from train import TypeConfig, WagonConsist, Wagon, GraphicsProcessorFactory
 
-def main():
-    """
-    cargo_graphics_mappings = {'AORE': [1], 'COAL': [2], 'SAND': [3], 'CORE': [4], 'LIME': [5],
-                               'SCMT': [6], 'IORE': [7], 'GRVL': [8], 'FRUT': [9], 'FRVG': [9],
-                               'GRAI': [10], 'WHEA': [10], 'MAIZ': [10], 'FICR': [11],
-                               'SGCN': [11], 'OLSD': [12], 'CLAY': [13]}
-    """
 
-    b = 1 # bulk cargo start row
-    # cargo rows 0 indexed - 0 = first set of loaded sprites
-    cargo_graphics_mappings = {'AORE': [b], 'IORE': [b + 1], 'CORE': [b + 2], 'GRVL': [b + 3],
-                               'SAND': [b + 4], 'COAL': [b + 5], 'CLAY': [b + 6]}
+b = 1 # bulk cargo start row
+# cargo rows 0 indexed - 0 = first set of loaded sprites
+cargo_graphics_mappings = {'AORE': [b], 'IORE': [b + 1], 'CORE': [b + 2], 'GRVL': [b + 3],
+                           'SAND': [b + 4], 'COAL': [b + 5], 'CLAY': [b + 6]}
 
+
+def get_graphics_processors(template):
     recolour_maps = graphics_utils.get_bulk_cargo_recolour_maps()
     graphics_options_master = {'template': 'filename.png',
                                'recolour_maps': (recolour_maps),
@@ -22,8 +17,16 @@ def main():
                                'num_rows_per_unit': 2,
                                'num_unit_types': 1}
 
-    # Normal Railtype
+    graphics_options_1 = dict((k, v) for (k, v) in graphics_options_master.items())
+    graphics_options_1['template'] = template
+    graphics_options_2 = dict((k, v) for (k, v) in graphics_options_1.items())
+    graphics_options_2['swap_company_colours'] = True
+    graphics_processor_1 = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_1)
+    graphics_processor_2 = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_2)
+    return (graphics_processor_1, graphics_processor_2)
 
+def main():
+    # Normal Railtype
     type_config = TypeConfig(base_id = 'open_car',
                     template = 'car_with_visible_cargo.pynml',
                     num_cargo_rows = 8,
@@ -35,13 +38,6 @@ def main():
                     default_cargo = 'GOOD',
                     default_capacity_type = 'capacity_freight')
 
-
-    graphics_options_1 = dict((k, v) for (k, v) in graphics_options_master.items())
-    graphics_options_1['template'] = 'open_car_brit_gen_1_template.png'
-    graphics_options_2 = dict((k, v) for (k, v) in graphics_options_1.items())
-    graphics_options_2['swap_company_colours'] = True
-    graphics_processor_1 = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_1)
-    graphics_processor_2 = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_2)
 
     consist = WagonConsist(type_config = type_config,
                         title = '[Open Car]',
@@ -59,23 +55,18 @@ def main():
                             vehicle_length = 5,
                             loading_speed = 10))
 
+    graphics_processors = get_graphics_processors('open_car_brit_gen_1_template.png')
+
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=0,
-                           graphics_processor=graphics_processor_1)
+                           graphics_processor=graphics_processors[0])
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=1,
-                           graphics_processor=graphics_processor_2)
+                           graphics_processor=graphics_processors[1])
 
-
-    graphics_options_1 = dict((k, v) for (k, v) in graphics_options_master.items())
-    graphics_options_1['template'] = 'open_car_brit_gen_2_template.png'
-    graphics_options_2 = dict((k, v) for (k, v) in graphics_options_1.items())
-    graphics_options_2['swap_company_colours'] = True
-    graphics_processor_1 = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_1)
-    graphics_processor_2 = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_2)
 
     consist = WagonConsist(type_config = type_config,
                         title = '[Open Car]',
@@ -84,7 +75,7 @@ def main():
                         replacement_id = '-none',
                         intro_date = 1950,
                         vehicle_life = 40,
-                              use_legacy_spritesheet = True)
+                        use_legacy_spritesheet = True)
 
     consist.add_unit(Wagon(type_config = type_config,
                             consist = consist,
@@ -93,23 +84,19 @@ def main():
                             vehicle_length = 6,
                             loading_speed = 10))
 
+    graphics_processors = get_graphics_processors('open_car_brit_gen_2_template.png')
+
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=0,
-                           graphics_processor=graphics_processor_1)
+                           graphics_processor=graphics_processors[0])
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=1,
-                           graphics_processor=graphics_processor_2)
+                           graphics_processor=graphics_processors[1])
 
 
-    graphics_options_1 = dict((k, v) for (k, v) in graphics_options_master.items())
-    graphics_options_1['template'] = 'open_car_brit_gen_3_template.png'
-    graphics_options_2 = dict((k, v) for (k, v) in graphics_options_1.items())
-    graphics_options_2['swap_company_colours'] = True
-    graphics_processor_1 = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_1)
-    graphics_processor_2 = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_2)
 
     consist = WagonConsist(type_config = type_config,
                         title = '[Open Car]',
@@ -126,23 +113,18 @@ def main():
                             vehicle_length = 10,
                             loading_speed = 10))
 
+    graphics_processors = get_graphics_processors('open_car_brit_gen_3_template.png')
+
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=0,
-                           graphics_processor=graphics_processor_1)
+                           graphics_processor=graphics_processors[0])
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=1,
-                           graphics_processor=graphics_processor_2)
+                           graphics_processor=graphics_processors[1])
 
-
-    graphics_options_1 = dict((k, v) for (k, v) in graphics_options_master.items())
-    graphics_options_1['template'] = 'open_car_soam_gen_1_template.png'
-    graphics_options_2 = dict((k, v) for (k, v) in graphics_options_1.items())
-    graphics_options_2['swap_company_colours'] = True
-    graphics_processor_1 = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_1)
-    graphics_processor_2 = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_2)
 
     consist = WagonConsist(type_config = type_config,
                         title = '[Open Car]',
@@ -159,26 +141,20 @@ def main():
                             vehicle_length = 5,
                             loading_speed = 10))
 
+    graphics_processors = get_graphics_processors('open_car_soam_gen_1_template.png')
+
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=0,
-                           graphics_processor=graphics_processor_1)
+                           graphics_processor=graphics_processors[0])
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=1,
-                           graphics_processor=graphics_processor_2)
+                           graphics_processor=graphics_processors[1])
 
 
     # Narrow Gauge Railtype
-
-    graphics_options_1 = dict((k, v) for (k, v) in graphics_options_master.items())
-    graphics_options_1['template'] = 'open_car_ng_brit_gen_1_template.png'
-    graphics_options_2 = dict((k, v) for (k, v) in graphics_options_1.items())
-    graphics_options_2['swap_company_colours'] = True
-    graphics_processor_1 = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_1)
-    graphics_processor_2 = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_2)
-
     type_config = TypeConfig(base_id = 'open_car_ng',
                     template = 'car_with_visible_cargo.pynml',
                     num_cargo_rows = 8,
@@ -207,12 +183,15 @@ def main():
                             vehicle_length = 3,
                             loading_speed = 5))
 
+    graphics_processors = get_graphics_processors('open_car_ng_brit_gen_1_template.png')
+
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=0,
-                           graphics_processor=graphics_processor_1)
+                           graphics_processor=graphics_processors[0])
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=1,
-                           graphics_processor=graphics_processor_2)
+                           graphics_processor=graphics_processors[1])
+
