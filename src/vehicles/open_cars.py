@@ -104,7 +104,6 @@ def main():
                            graphics_processor=graphics_processors[1])
 
 
-
     consist = WagonConsist(type_config = type_config_normal,
                         title = '[Open Car]',
                         vehicle_set = 'brit',
