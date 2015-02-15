@@ -15,6 +15,7 @@ from chameleon import PageTemplateLoader # chameleon used in most template cases
 templates = PageTemplateLoader(os.path.join(currentdir, 'src', 'templates'))
 
 import graphics_processor
+import graphics_processor.pipelines
 
 from rosters import registered_rosters
 from vehicles import registered_consists, registered_wagon_generations
