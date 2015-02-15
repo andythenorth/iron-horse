@@ -54,7 +54,7 @@ consists = iron_horse.get_consists_in_buy_menu_order(show_warnings=True)
 
 def check_item_dirty(path):
     # is a specific item we want to compile dirty?
-    if repo_vars.get('incremental', None) == 'True' and everything_dirty == False:
+    if repo_vars.get('incremental_compile', None) == 'True' and everything_dirty == False:
         if (float(dep_timestamps.get(path, 0)) == os.stat(path).st_mtime):
             return False
     return True
@@ -74,7 +74,7 @@ def check_deps_dirty(deps):
         for file in files:
             timestamp_when_last_compiled = float(dep_timestamps.get(file, 0))
             timestamp_on_filesystem = os.stat(file).st_mtime
-            if repo_vars.get('incremental', None) == 'True' and everything_dirty == False:
+            if repo_vars.get('incremental_compile', None) == 'True' and everything_dirty == False:
                 # it's a partial compile
                 if timestamp_when_last_compiled != timestamp_on_filesystem:
                     dirty_files.append(file)
@@ -145,8 +145,8 @@ def main():
     if use_multiprocessing == False:
         utils.echo_message('Multiprocessing disabled: (for faster compiles set pw=[number of pool workers] - 16 is a sane default)')
 
-    if repo_vars.get('incremental', None) == 'True' and everything_dirty == False:
-        utils.echo_message('Only rendering changed nml files: (incremental=True)')
+    if repo_vars.get('incremental_compile', None) == 'True' and everything_dirty == False:
+        utils.echo_message('Only rendering changed nml files: (ic=True)')
     if everything_dirty == True:
         utils.echo_message('Generated files missing: re-rendering all nml and nfo')
 

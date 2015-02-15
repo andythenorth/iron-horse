@@ -8,11 +8,11 @@ GENERATE=src/build_iron_horse.py
 
  # default num. pool workers for python compile, default is 1 to avoid accidental DoS of people's system
 pw = 1
-incremental = False
+ic = False
 
 iron-horse-nml:
 	$(_E) [GENERATE]
-	$(_V) python src/build_iron_horse.py '${REPO_TITLE}' '${REPO_REVISION}' '${incremental}' '${pw}'
+	$(_V) python src/build_iron_horse.py '${REPO_TITLE}' '${REPO_REVISION}' '${ic}' '${pw}'
 
 clean::
 	$(_V)-rm -r docs
