@@ -40,7 +40,7 @@ if not os.path.exists(generated_nfo_path):
     everything_dirty = True # no nfo, everything must be dirty
 grf_nfo = codecs.open(os.path.join(iron_horse.generated_files_path, 'iron-horse.nfo'),'w','utf8')
 
-# we track file timestamps to see if we can render faster by only rendering when source file is changed
+# we track file timestamps to see if we compile incrementally (where source file is changed), for faster compile times
 dep_timestamps_path = os.path.join('generated', 'dep_timestamps.json')
 if not os.path.exists(dep_timestamps_path):
     codecs.open(dep_timestamps_path,'w','utf8').close()
@@ -54,7 +54,7 @@ consists = iron_horse.get_consists_in_buy_menu_order(show_warnings=True)
 
 def check_item_dirty(path):
     # is a specific item we want to compile dirty?
-    if repo_vars.get('compile_faster', None) == 'True' and everything_dirty == False:
+    if repo_vars.get('incremental', None) == 'True' and everything_dirty == False:
         if (float(dep_timestamps.get(path, 0)) == os.stat(path).st_mtime):
             return False
     return True
@@ -74,7 +74,7 @@ def check_deps_dirty(deps):
         for file in files:
             timestamp_when_last_compiled = float(dep_timestamps.get(file, 0))
             timestamp_on_filesystem = os.stat(file).st_mtime
-            if repo_vars.get('compile_faster', None) == 'True' and everything_dirty == False:
+            if repo_vars.get('incremental', None) == 'True' and everything_dirty == False:
                 # it's a partial compile
                 if timestamp_when_last_compiled != timestamp_on_filesystem:
                     dirty_files.append(file)
@@ -145,8 +145,8 @@ def main():
     if use_multiprocessing == False:
         utils.echo_message('Multiprocessing disabled: (for faster compiles set pw=[number of pool workers] - 16 is a sane default)')
 
-    if repo_vars.get('compile_faster', None) == 'True' and everything_dirty == False:
-        utils.echo_message('Only rendering changed nml files: (COMPILE_FASTER=True)')
+    if repo_vars.get('incremental', None) == 'True' and everything_dirty == False:
+        utils.echo_message('Only rendering changed nml files: (incremental=True)')
     if everything_dirty == True:
         utils.echo_message('Generated files missing: re-rendering all nml and nfo')
 
@@ -155,7 +155,7 @@ def main():
     dirty_deps = check_deps_dirty(['lang', 'lang_templates', 'templates', 'rosters',
                                    'global_constants.py', 'train.py', 'utils.py', 'roster.py', 'iron_horse.py'])
     if dirty_deps != []:
-        utils.echo_message('Warning: unless you know otherwise, faster compile may be invalid due to changed files: ' + ', '.join(dirty_deps))
+        utils.echo_message('Warning: unless you know otherwise, incremental compile may be invalid due to changed files: ' + ', '.join(dirty_deps))
 
     render_dispatcher(header_items, renderer=render_header_item_nml_nfo)
 
