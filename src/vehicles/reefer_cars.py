@@ -24,7 +24,7 @@ def main():
                         intro_date = 1915,
                         vehicle_life = 40,
                         speedy = True,
-                              use_legacy_spritesheet = True)
+                        use_legacy_spritesheet = True)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 25,
@@ -54,7 +54,7 @@ def main():
                         intro_date = 1964,
                         vehicle_life = 40,
                         speedy = True,
-                              use_legacy_spritesheet = True)
+                        use_legacy_spritesheet = True)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 40,

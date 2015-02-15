@@ -24,7 +24,7 @@ def main():
                         replacement_id = '-none',
                         intro_date = 1860,
                         vehicle_life = 40,
-                              use_legacy_spritesheet = True)
+                        use_legacy_spritesheet = True)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 20,
@@ -52,7 +52,7 @@ def main():
                         replacement_id = '-none',
                         intro_date = 1950,
                         vehicle_life = 40,
-                              use_legacy_spritesheet = True)
+                        use_legacy_spritesheet = True)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 35,
@@ -119,7 +119,7 @@ def main():
                         replacement_id = '-none',
                         intro_date = 1860,
                         vehicle_life = 40,
-                              use_legacy_spritesheet = True)
+                        use_legacy_spritesheet = True)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 12,
