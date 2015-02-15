@@ -55,7 +55,6 @@ roster = Roster(id = 'brit',
                                        westbourne.consist.id,
                                        fleet.consist.id,
                                        mole.consist.id,
-                                       'metro_car_brit_gen_1', # special case, non-standard naming, and this is explicitly placed after metro locos, unlike most cars which are automatically placed in buy menu
                                        # brit ng
                                        stewart.consist.id,
                                        hudswell.consist.id,

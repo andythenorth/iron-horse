@@ -29,6 +29,14 @@ print("[IMPORT VEHICLES] iron_horse.py")
 
 from vehicles import registered_consists, registered_wagon_generations
 
+from rosters import registered_rosters
+
+from rosters import brit
+brit.roster.register()
+
+from rosters import soam
+soam.roster.register()
+
 from vehicles import box_cars
 box_cars.main()
 
@@ -79,14 +87,6 @@ supplies_cars.main()
 
 from vehicles import tank_cars
 tank_cars.main()
-
-from rosters import registered_rosters
-
-from rosters import brit
-brit.roster.register()
-
-from rosters import soam
-soam.roster.register()
 
 def get_consists_in_buy_menu_order(show_warnings=False):
     sorted_consists = []
