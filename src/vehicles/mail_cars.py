@@ -37,8 +37,7 @@ def main():
                         speedy = True,
                         use_legacy_spritesheet = True)
 
-    consist.add_unit(MailCar(type_config = type_config_normal,
-                            consist = consist,
+    consist.add_unit(MailCar(consist = consist,
                             capacity_mail = 30,
                             weight = 29,
                             vehicle_length = 7))
@@ -58,8 +57,7 @@ def main():
                         speedy = True,
                         use_legacy_spritesheet = True)
 
-    consist.add_unit(MailCar(type_config = type_config_normal,
-                            consist = consist,
+    consist.add_unit(MailCar(consist = consist,
                             capacity_mail = 45,
                             weight = 30,
                             vehicle_length = 7))
@@ -79,8 +77,7 @@ def main():
                         speedy = True,
                         use_legacy_spritesheet = True)
 
-    consist.add_unit(MailCar(type_config = type_config_normal,
-                            consist = consist,
+    consist.add_unit(MailCar(consist = consist,
                             capacity_mail = 60,
                             weight = 31,
                             vehicle_length = 8))
@@ -99,8 +96,7 @@ def main():
                         vehicle_life = 40,
                         use_legacy_spritesheet = True)
 
-    consist.add_unit(MailCar(type_config = type_config_narrow_gauge,
-                            consist = consist,
+    consist.add_unit(MailCar(consist = consist,
                             capacity_freight = 12,
                             capacity_mail = 24,
                             weight = 5,
@@ -120,8 +116,7 @@ def main():
                         vehicle_life = 40,
                         speedy = True)
 
-    consist.add_unit(MailCar(type_config = type_config_normal,
-                            consist = consist,
+    consist.add_unit(MailCar(consist = consist,
                             capacity_mail = 30,
                             weight = 29,
                             vehicle_length = 7))
@@ -140,8 +135,7 @@ def main():
                         vehicle_life = 40,
                         speedy = True)
 
-    consist.add_unit(MailCar(type_config = type_config_normal,
-                            consist = consist,
+    consist.add_unit(MailCar(consist = consist,
                             capacity_mail = 45,
                             weight = 30,
                             vehicle_length = 8))
@@ -160,8 +154,7 @@ def main():
                         vehicle_life = 40,
                         speedy = True)
 
-    consist.add_unit(MailCar(type_config = type_config_normal,
-                            consist = consist,
+    consist.add_unit(MailCar(consist = consist,
                             capacity_mail = 60,
                             weight = 31,
                             vehicle_length = 8))

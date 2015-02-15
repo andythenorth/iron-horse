@@ -19,8 +19,7 @@ def main():
                         intro_date = 1860,
                         vehicle_life = 40)
 
-    consist.add_unit(CombineCar(type_config = type_config,
-                            consist = consist,
+    consist.add_unit(CombineCar(consist = consist,
                             capacity_mail = 20,
                             capacity_freight = 12,
                             capacity_pax = 30,
