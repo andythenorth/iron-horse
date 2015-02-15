@@ -3,19 +3,18 @@ from train import TypeConfig, WagonConsist, Wagon, GraphicsProcessorFactory
 
 # tank cars are unrealistically autorefittable, and at no cost
 # Pikka: if people complain that it's unrealistic, tell them "don't do it then"
+type_config = TypeConfig(base_id = 'edibles_tank_car',
+                template = 'train.pynml',
+                class_refit_groups = ['liquids'],
+                label_refits_allowed = [],
+                label_refits_disallowed = global_constants.disallowed_refits_by_label['non_edible_liquids'],
+                autorefit = True,
+                default_cargo = 'WATR',
+                default_capacity_type = 'capacity_freight',
+                cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD,
+                loading_speed_multiplier = 2)
 
 def main():
-    type_config = TypeConfig(base_id = 'edibles_tank_car',
-                    template = 'train.pynml',
-                    class_refit_groups = ['liquids'],
-                    label_refits_allowed = [],
-                    label_refits_disallowed = global_constants.disallowed_refits_by_label['non_edible_liquids'],
-                    autorefit = True,
-                    default_cargo = 'WATR',
-                    default_capacity_type = 'capacity_freight',
-                    cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD,
-                    loading_speed_multiplier = 2)
-
     consist = WagonConsist(type_config = type_config,
                         title = '[Edibles Tank Car]',
                         vehicle_set = 'brit',

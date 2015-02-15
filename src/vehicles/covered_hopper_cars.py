@@ -1,17 +1,17 @@
 import global_constants
 from train import TypeConfig, WagonConsist, Wagon, GraphicsProcessorFactory
 
-def main():
-    type_config = TypeConfig(base_id = 'covered_hopper_car',
-                    template = 'train.pynml',
-                    class_refit_groups = ['covered_hopper_freight'],
-                    label_refits_allowed = ['GRAI', 'WHEA', 'MAIZ', 'FOOD', 'SUGR', 'FMSP', 'RFPR', 'CLAY', 'BDMT', 'BEAN', 'NITR'],
-                    label_refits_disallowed = [],
-                    autorefit = True,
-                    default_cargo = 'GRAI',
-                    default_capacity_type = 'capacity_freight',
-                    loading_speed_multiplier = 2)
+type_config = TypeConfig(base_id = 'covered_hopper_car',
+                template = 'train.pynml',
+                class_refit_groups = ['covered_hopper_freight'],
+                label_refits_allowed = ['GRAI', 'WHEA', 'MAIZ', 'FOOD', 'SUGR', 'FMSP', 'RFPR', 'CLAY', 'BDMT', 'BEAN', 'NITR'],
+                label_refits_disallowed = [],
+                autorefit = True,
+                default_cargo = 'GRAI',
+                default_capacity_type = 'capacity_freight',
+                loading_speed_multiplier = 2)
 
+def main():
     consist = WagonConsist(type_config = type_config,
                         title = '[Covered Hopper Car]',
                         vehicle_set = 'brit',

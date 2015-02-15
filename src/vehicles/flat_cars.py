@@ -1,29 +1,45 @@
 import global_constants
 from train import TypeConfig, WagonConsist, Wagon, GraphicsProcessorFactory
 
-def main():
-    # cargo rows 0 indexed - 0 = first set of loaded sprites
-    cargo_graphics_mappings = {'STEL': [1, 2, 3], 'WOOD': [4], 'WDPR': [5], 'ENSP': [6], 'FMSP': [6], 'MNSP': [6], 'GOOD': [0, 6]}
+# cargo rows 0 indexed - 0 = first set of loaded sprites
+cargo_graphics_mappings_normal = {'STEL': [1, 2, 3], 'WOOD': [4], 'WDPR': [5], 'ENSP': [6], 'FMSP': [6], 'MNSP': [6], 'GOOD': [0, 6]}
 
-    type_config = TypeConfig(base_id = 'flat_car',
+type_config_normal = TypeConfig(base_id = 'flat_car',
                     template = 'car_with_visible_cargo.pynml',
                     num_cargo_rows = 7,
                     class_refit_groups = ['flatcar_freight'],
-                    cargo_graphics_mappings = cargo_graphics_mappings,
-                    label_refits_allowed = cargo_graphics_mappings.keys(),
+                    cargo_graphics_mappings = cargo_graphics_mappings_normal,
+                    label_refits_allowed = cargo_graphics_mappings_normal.keys(),
                     label_refits_disallowed = global_constants.disallowed_refits_by_label['non_flatcar_freight'],
                     autorefit = True,
                     default_cargo = 'STEL',
                     default_capacity_type = 'capacity_freight')
 
-    consist = WagonConsist(type_config = type_config,
+# narrow gauge only different due to lack of diligence and suitable application to drawing sprites :P
+# cargo rows 0 indexed - 0 = first set of loaded sprites
+cargo_graphics_mappings_narrow_gauge = {'STEL': [1], 'WOOD': [2], 'WDPR': [3], 'ENSP': [4], 'FMSP': [4], 'MNSP': [4], 'GOOD': [0, 4]}
+
+type_config_narrow_gauge = TypeConfig(base_id = 'flat_car_ng',
+                    template = 'car_with_visible_cargo.pynml',
+                    num_cargo_rows = 5,
+                    class_refit_groups = ['flatcar_freight'],
+                    cargo_graphics_mappings = cargo_graphics_mappings_narrow_gauge,
+                    label_refits_allowed = cargo_graphics_mappings_narrow_gauge.keys(),
+                    label_refits_disallowed = global_constants.disallowed_refits_by_label['non_flatcar_freight'],
+                    autorefit = True,
+                    default_cargo = 'STEL',
+                    default_capacity_type = 'capacity_freight',
+                    track_type = 'NG')
+
+def main():
+    consist = WagonConsist(type_config = type_config_normal,
                         title = '[Flat Car]',
                         vehicle_set = 'brit',
                         wagon_generation = 1,
                         replacement_id = '-none',
                         intro_date = 1860,
                         vehicle_life = 40,
-                              use_legacy_spritesheet = True)
+                        use_legacy_spritesheet = True)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 20,
@@ -44,7 +60,7 @@ def main():
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
 
-    consist = WagonConsist(type_config = type_config,
+    consist = WagonConsist(type_config = type_config_normal,
                         title = '[Flat Car]',
                         vehicle_set = 'brit',
                         wagon_generation = 2,
@@ -72,7 +88,7 @@ def main():
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
 
-    consist = WagonConsist(type_config = type_config,
+    consist = WagonConsist(type_config = type_config_normal,
                         title = '[Flat Car]',
                         vehicle_set = 'brit',
                         wagon_generation = 3,
@@ -99,29 +115,14 @@ def main():
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
 
-    # cargo rows 0 indexed - 0 = first set of loaded sprites
-    cargo_graphics_mappings = {'STEL': [1], 'WOOD': [2], 'WDPR': [3], 'ENSP': [4], 'FMSP': [4], 'MNSP': [4], 'GOOD': [0, 4]}
-
-    type_config = TypeConfig(base_id = 'flat_car_ng',
-                    template = 'car_with_visible_cargo.pynml',
-                    num_cargo_rows = 5,
-                    class_refit_groups = ['flatcar_freight'],
-                    cargo_graphics_mappings = cargo_graphics_mappings,
-                    label_refits_allowed = cargo_graphics_mappings.keys(),
-                    label_refits_disallowed = global_constants.disallowed_refits_by_label['non_flatcar_freight'],
-                    autorefit = True,
-                    default_cargo = 'STEL',
-                    default_capacity_type = 'capacity_freight',
-                    track_type = 'NG')
-
-    consist = WagonConsist(type_config = type_config,
+    consist = WagonConsist(type_config = type_config_narrow_gauge,
                         title = '[Flat Car]',
                         vehicle_set = 'brit',
                         wagon_generation = 1,
                         replacement_id = '-none',
                         intro_date = 1860,
                         vehicle_life = 40,
-                              use_legacy_spritesheet = True)
+                        use_legacy_spritesheet = True)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 12,
