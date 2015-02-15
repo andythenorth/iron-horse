@@ -115,7 +115,10 @@ class Consist(object):
 
     def get_reduced_set_of_variant_dates(self):
         # find all the unique dates that will need a switch constructing
-        years = sorted(reduce(set.union, [(variant.intro_date, variant.end_date) for variant in self.model_variants], set()))
+        years = set()
+        for variant in self.model_variants:
+            years.update((variant.intro_date, variant.end_date))
+        years = sorted(years)
         # quick integrity check
         if years[0] != 0:
             utils.echo_message(self.id + " doesn't have at least one model variant with intro date 0 (required for nml switches to work)")
