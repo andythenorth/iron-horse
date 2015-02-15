@@ -5,10 +5,6 @@ def main():
     # cargo rows 0 indexed - 0 = first set of loaded sprites
     cargo_graphics_mappings = {'STEL': [1, 2, 3], 'WOOD': [4], 'WDPR': [5], 'ENSP': [6], 'FMSP': [6], 'MNSP': [6], 'GOOD': [0, 6]}
 
-    options = {'template': 'flat_car_brit_gen_1_template.png'}
-    graphics_processor_1 = GraphicsProcessorFactory('pass_through_pipeline', options)
-    graphics_processor_2 = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
-
     type_config = TypeConfig(base_id = 'flat_car',
                     template = 'car_with_visible_cargo.pynml',
                     num_cargo_rows = 7,
@@ -36,20 +32,18 @@ def main():
                             vehicle_length = 5,
                             loading_speed = 10))
 
+    options = {'template': 'flat_car_brit_gen_1_template.png'}
+
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=0,
-                           graphics_processor=graphics_processor_1)
+                           graphics_processor=GraphicsProcessorFactory('pass_through_pipeline', options))
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=1,
-                           graphics_processor=graphics_processor_2)
+                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
-
-    options = {'template': 'flat_car_brit_gen_2_template.png'}
-    graphics_processor_1 = GraphicsProcessorFactory('pass_through_pipeline', options)
-    graphics_processor_2 = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
 
     consist = WagonConsist(type_config = type_config,
                         title = '[Flat Car]',
@@ -67,20 +61,18 @@ def main():
                             vehicle_length = 8,
                             loading_speed = 10))
 
+    options = {'template': 'flat_car_brit_gen_2_template.png'}
+
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=0,
-                           graphics_processor=graphics_processor_1)
+                           graphics_processor=GraphicsProcessorFactory('pass_through_pipeline', options))
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=1,
-                           graphics_processor=graphics_processor_2)
+                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
-
-    options = {'template': 'flat_car_brit_gen_3_template.png'}
-    graphics_processor_1 = GraphicsProcessorFactory('pass_through_pipeline', options)
-    graphics_processor_2 = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
 
     consist = WagonConsist(type_config = type_config,
                         title = '[Flat Car]',
@@ -97,15 +89,17 @@ def main():
                             vehicle_length = 10,
                             loading_speed = 5))
 
+    options = {'template': 'flat_car_brit_gen_3_template.png'}
+
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=0,
-                           graphics_processor=graphics_processor_1)
+                           graphics_processor=GraphicsProcessorFactory('pass_through_pipeline', options))
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=1,
-                           graphics_processor=graphics_processor_2)
+                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
 
     # cargo rows 0 indexed - 0 = first set of loaded sprites

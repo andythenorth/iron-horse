@@ -2,24 +2,27 @@ import global_constants
 import graphics_processor.utils as graphics_utils
 from train import TypeConfig, WagonConsist, Wagon, GraphicsProcessorFactory
 
-def main():
-    # cargo rows 0 indexed - 0 = first set of loaded sprites
-    cargo_graphics_mappings = {'AORE': [0], 'IORE': [1], 'CORE': [2], 'GRVL': [3],
-                               'SAND': [4], 'COAL': [5], 'CLAY': [6]}
+# cargo rows 0 indexed - 0 = first set of loaded sprites
+cargo_graphics_mappings = {'AORE': [0], 'IORE': [1], 'CORE': [2], 'GRVL': [3],
+                           'SAND': [4], 'COAL': [5], 'CLAY': [6]}
 
+def get_graphics_processors(template):
     recolour_maps = graphics_utils.get_bulk_cargo_recolour_maps()
-    graphics_options_master = {'template': 'hopper_car_brit_gen_1_template.png',
+    graphics_options_master = {'template': '',
                                'recolour_maps': (recolour_maps),
                                'copy_block_top_offset': 30,
                                'num_rows_per_unit': 2,
                                'num_unit_types': 1}
 
     graphics_options_1 = dict((k, v) for (k, v) in graphics_options_master.items())
+    graphics_options_1['template'] = template
     graphics_options_2 = dict((k, v) for (k, v) in graphics_options_1.items())
     graphics_options_2['swap_company_colours'] = True
     graphics_processor_1 = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_1)
     graphics_processor_2 = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_2)
+    return (graphics_processor_1, graphics_processor_2)
 
+def main():
     type_config = TypeConfig(base_id = 'hopper_car',
                     template = 'car_with_visible_cargo.pynml',
                     num_cargo_rows = 7,
@@ -39,7 +42,7 @@ def main():
                         replacement_id = '-none',
                         intro_date = 1910,
                         vehicle_life = 40,
-                              use_legacy_spritesheet = True)
+                        use_legacy_spritesheet = True)
 
     consist.add_unit(Wagon(type_config = type_config,
                             consist = consist,
@@ -48,23 +51,18 @@ def main():
                             vehicle_length = 5,
                             loading_speed = 20))
 
+    graphics_processors = get_graphics_processors('hopper_car_brit_gen_1_template.png')
+
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=0,
-                           graphics_processor=graphics_processor_1)
+                           graphics_processor=graphics_processors[0])
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=1,
-                           graphics_processor=graphics_processor_2)
+                           graphics_processor=graphics_processors[1])
 
-
-    graphics_options_1 = dict((k, v) for (k, v) in graphics_options_master.items())
-    graphics_options_1['template'] = 'hopper_car_brit_gen_2_template.png'
-    graphics_options_2 = dict((k, v) for (k, v) in graphics_options_1.items())
-    graphics_options_2['swap_company_colours'] = True
-    graphics_processor_1 = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_1)
-    graphics_processor_2 = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_2)
 
     consist = WagonConsist(type_config = type_config,
                         title = '[Hopper Car]',
@@ -73,7 +71,7 @@ def main():
                         replacement_id = '-none',
                         intro_date = 1955,
                         vehicle_life = 40,
-                              use_legacy_spritesheet = True)
+                        use_legacy_spritesheet = True)
 
     consist.add_unit(Wagon(type_config = type_config,
                             consist = consist,
@@ -82,23 +80,18 @@ def main():
                             vehicle_length = 8,
                             loading_speed = 20))
 
+    graphics_processors = get_graphics_processors('hopper_car_brit_gen_2_template.png')
+
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=0,
-                           graphics_processor=graphics_processor_1)
+                           graphics_processor=graphics_processors[0])
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=1,
-                           graphics_processor=graphics_processor_2)
+                           graphics_processor=graphics_processors[1])
 
-
-    graphics_options_1 = dict((k, v) for (k, v) in graphics_options_master.items())
-    graphics_options_1['template'] = 'hopper_car_brit_gen_3_template.png'
-    graphics_options_2 = dict((k, v) for (k, v) in graphics_options_1.items())
-    graphics_options_2['swap_company_colours'] = True
-    graphics_processor_1 = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_1)
-    graphics_processor_2 = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_2)
 
     consist = WagonConsist(type_config = type_config,
                         title = '[Hopper Car]',
@@ -115,12 +108,14 @@ def main():
                             vehicle_length = 10,
                             loading_speed = 20))
 
+    graphics_processors = get_graphics_processors('hopper_car_brit_gen_3_template.png')
+
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=0,
-                           graphics_processor=graphics_processor_1)
+                           graphics_processor=graphics_processors[0])
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=1,
-                           graphics_processor=graphics_processor_2)
+                           graphics_processor=graphics_processors[1])

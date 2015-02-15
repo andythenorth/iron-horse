@@ -1,17 +1,17 @@
 import global_constants
 from train import TypeConfig, WagonConsist, Wagon
 
-def main():
-    type_config = TypeConfig(base_id = 'metal_car',
-                    template = 'train.pynml',
-                    class_refit_groups = [],
-                    label_refits_allowed = ['STEL'],
-                    label_refits_disallowed = [],
-                    autorefit = True,
-                    default_cargo = 'STEL',
-                    default_capacity_type = 'capacity_freight',
-                    loading_speed_multiplier = 2)
+type_config = TypeConfig(base_id = 'metal_car',
+                template = 'train.pynml',
+                class_refit_groups = [],
+                label_refits_allowed = ['STEL'],
+                label_refits_disallowed = [],
+                autorefit = True,
+                default_cargo = 'STEL',
+                default_capacity_type = 'capacity_freight',
+                loading_speed_multiplier = 2)
 
+def main():
     consist = WagonConsist(type_config = type_config,
                         title = '[Metal Car]',
                         vehicle_set = 'brit',

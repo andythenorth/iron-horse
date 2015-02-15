@@ -5,9 +5,6 @@ def main():
     box_car_label_refits_allowed = ['MAIL', 'GRAI', 'WHEA', 'MAIZ', 'FRUT', 'BEAN', 'NITR']
     cargo_graphics_mappings = {} # template needs this, but box car has zero cargo-specific graphics, all generic
 
-    options = {'template': 'box_car_brit_gen_1_template.png'}
-    graphics_processor_1 = GraphicsProcessorFactory('pass_through_pipeline', options)
-    graphics_processor_2 = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
 
     type_config = TypeConfig(base_id = 'box_car',
                         template = 'car_with_open_doors_during_loading.pynml',
@@ -36,20 +33,18 @@ def main():
                             vehicle_length = 5,
                             loading_speed = 5))
 
+    options = {'template': 'box_car_brit_gen_1_template.png'}
+
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=0,
-                           graphics_processor=graphics_processor_1)
+                           graphics_processor=GraphicsProcessorFactory('pass_through_pipeline', options))
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=1,
-                           graphics_processor=graphics_processor_2)
+                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
-
-    options = {'template': 'box_car_brit_gen_2_template.png'}
-    graphics_processor_1 = GraphicsProcessorFactory('pass_through_pipeline', options)
-    graphics_processor_2 = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
 
     consist = WagonConsist(type_config = type_config,
                         title = '[Box Car]',
@@ -67,20 +62,18 @@ def main():
                             vehicle_length = 6,
                             loading_speed = 5))
 
+    options = {'template': 'box_car_brit_gen_2_template.png'}
+
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=0,
-                           graphics_processor=graphics_processor_1)
+                           graphics_processor=GraphicsProcessorFactory('pass_through_pipeline', options))
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=1,
-                           graphics_processor=graphics_processor_2)
+                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
-
-    options = {'template': 'box_car_brit_gen_3_template.png'}
-    graphics_processor_1 = GraphicsProcessorFactory('pass_through_pipeline', options)
-    graphics_processor_2 = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
 
     consist = WagonConsist(type_config = type_config,
                         title = '[Box Car]',
@@ -97,20 +90,18 @@ def main():
                             vehicle_length = 10,
                             loading_speed = 5))
 
+    options = {'template': 'box_car_brit_gen_3_template.png'}
+
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=0,
-                           graphics_processor=graphics_processor_1)
+                           graphics_processor=GraphicsProcessorFactory('pass_through_pipeline', options))
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=1,
-                           graphics_processor=graphics_processor_2)
+                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
-
-    options = {'template': 'box_car_ng_brit_gen_1_template.png'}
-    graphics_processor_1 = GraphicsProcessorFactory('pass_through_pipeline', options)
-    graphics_processor_2 = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
 
     type_config = TypeConfig(base_id = 'box_car_ng',
                     template = 'car_with_open_doors_during_loading.pynml',
@@ -141,12 +132,15 @@ def main():
                             vehicle_length = 4,
                             loading_speed = 5))
 
+    options = {'template': 'box_car_ng_brit_gen_1_template.png'}
+
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=0,
-                           graphics_processor=graphics_processor_1)
+                           graphics_processor=GraphicsProcessorFactory('pass_through_pipeline', options))
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=1,
-                           graphics_processor=graphics_processor_2)
+                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options)
+)

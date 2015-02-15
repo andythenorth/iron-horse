@@ -1,14 +1,10 @@
 import global_constants
 from train import TypeConfig, WagonConsist, Wagon, GraphicsProcessorFactory
 
+# tank cars are unrealistically autorefittable, and at no cost
+# Pikka: if people complain that it's unrealistic, tell them "don't do it then"
+
 def main():
-    options = {'template': 'edibles_tank_car_brit_gen_1_template.png'}
-    graphics_processor_1 = GraphicsProcessorFactory('pass_through_pipeline', options)
-    graphics_processor_2 = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
-
-    # tank cars are unrealistically autorefittable, and at no cost
-    # Pikka: if people complain that it's unrealistic, tell them "don't do it then"
-
     type_config = TypeConfig(base_id = 'edibles_tank_car',
                     template = 'train.pynml',
                     class_refit_groups = ['liquids'],
@@ -37,21 +33,19 @@ def main():
                             vehicle_length = 5,
                             loading_speed = 20))
 
+    options = {'template': 'edibles_tank_car_brit_gen_1_template.png'}
+
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=0,
-                           graphics_processor=graphics_processor_1)
+                           graphics_processor=GraphicsProcessorFactory('pass_through_pipeline', options))
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=1,
-                           graphics_processor=graphics_processor_2)
+                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
     # no gen 2 for edibles tank cars - straight to gen 3
-
-    options = {'template': 'edibles_tank_car_brit_gen_3_template.png'}
-    graphics_processor_1 = GraphicsProcessorFactory('pass_through_pipeline', options)
-    graphics_processor_2 = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
 
     consist = WagonConsist(type_config = type_config,
                         title = '[Edibles Tank Car]',
@@ -70,12 +64,14 @@ def main():
                             vehicle_length = 8,
                             loading_speed = 20))
 
+    options = {'template': 'edibles_tank_car_brit_gen_3_template.png'}
+
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=0,
-                           graphics_processor=graphics_processor_1)
+                           graphics_processor=GraphicsProcessorFactory('pass_through_pipeline', options))
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=1,
-                           graphics_processor=graphics_processor_2)
+                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))

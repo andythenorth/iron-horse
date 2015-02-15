@@ -19,7 +19,7 @@ def main():
                         replacement_id = '-none',
                         intro_date = 1860,
                         vehicle_life = 40,
-                              use_legacy_spritesheet = True)
+                        use_legacy_spritesheet = True)
 
     consist.add_unit(Wagon(type_config = type_config,
                             consist = consist,
@@ -40,7 +40,7 @@ def main():
                         replacement_id = '-none',
                         intro_date = 1950,
                         vehicle_life = 40,
-                              use_legacy_spritesheet = True)
+                        use_legacy_spritesheet = True)
 
     consist.add_unit(Wagon(type_config = type_config,
                             consist = consist,
@@ -71,7 +71,7 @@ def main():
                         replacement_id = '-none',
                         intro_date = 1860,
                         vehicle_life = 40,
-                              use_legacy_spritesheet = True)
+                        use_legacy_spritesheet = True)
 
     consist.add_unit(Wagon(type_config = type_config,
                             consist = consist,
