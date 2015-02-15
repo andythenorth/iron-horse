@@ -1,10 +1,9 @@
 import global_constants
 from train import TypeConfig, WagonConsist, Wagon, GraphicsProcessorFactory
 
-def main():
-    cargo_graphics_mappings = {} # template needs this, but reefer car has zero cargo-specific graphics, all generic
+cargo_graphics_mappings = {} # template needs this, but reefer car has zero cargo-specific graphics, all generic
 
-    type_config = TypeConfig(base_id = 'reefer_car',
+type_config = TypeConfig(base_id = 'reefer_car',
                         template = 'car_with_open_doors_during_loading.pynml',
                         num_cargo_rows = 1, # template needs this, but box car has zero cargo-specific graphics, all generic
                         cargo_graphics_mappings = cargo_graphics_mappings,
@@ -16,6 +15,7 @@ def main():
                         default_capacity_type = 'capacity_freight',
                         cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD)
 
+def main():
     consist = WagonConsist(type_config = type_config,
                         title = '[Reefer Car]',
                         vehicle_set = 'brit',

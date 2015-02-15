@@ -1,20 +1,31 @@
 import global_constants
 from train import TypeConfig, WagonConsist, Wagon, GraphicsProcessorFactory
 
-def main():
-    # tank cars are unrealistically autorefittable, and at no cost
-    # Pikka: if people complain that it's unrealistic, tell them "don't do it then"
-    type_config = TypeConfig(base_id = 'tank_car',
-                    template = 'train.pynml',
-                    class_refit_groups = ['liquids'],
-                    label_refits_allowed = [],
-                    label_refits_disallowed = global_constants.disallowed_refits_by_label['edible_liquids'],
-                    autorefit = True,
-                    default_cargo = 'OIL_',
-                    default_capacity_type = 'capacity_freight',
-                    loading_speed_multiplier = 2)
+# tank cars are unrealistically autorefittable, and at no cost
+# Pikka: if people complain that it's unrealistic, tell them "don't do it then"
+type_config_normal = TypeConfig(base_id = 'tank_car',
+                                template = 'train.pynml',
+                                class_refit_groups = ['liquids'],
+                                label_refits_allowed = [],
+                                label_refits_disallowed = global_constants.disallowed_refits_by_label['edible_liquids'],
+                                autorefit = True,
+                                default_cargo = 'OIL_',
+                                default_capacity_type = 'capacity_freight',
+                                loading_speed_multiplier = 2)
 
-    consist = WagonConsist(type_config = type_config,
+type_config_narrow = TypeConfig(base_id = 'tank_car_ng',
+                                template = 'train.pynml',
+                                class_refit_groups = ['liquids'],
+                                label_refits_allowed = [],
+                                label_refits_disallowed = global_constants.disallowed_refits_by_label['edible_liquids'],
+                                autorefit = True,
+                                default_cargo = 'OIL_',
+                                default_capacity_type = 'capacity_freight',
+                                loading_speed_multiplier = 2,
+                                track_type = 'NG')
+
+def main():
+    consist = WagonConsist(type_config = type_config_normal,
                         title = '[Tank Car]',
                         vehicle_set = 'brit',
                         wagon_generation = 1,
@@ -42,7 +53,7 @@ def main():
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
 
-    consist = WagonConsist(type_config = type_config,
+    consist = WagonConsist(type_config = type_config_normal,
                         title = '[Tank Car]',
                         vehicle_set = 'brit',
                         wagon_generation = 2,
@@ -70,18 +81,7 @@ def main():
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
 
-    type_config = TypeConfig(base_id = 'tank_car_ng',
-                    template = 'train.pynml',
-                    class_refit_groups = ['liquids'],
-                    label_refits_allowed = [],
-                    label_refits_disallowed = global_constants.disallowed_refits_by_label['edible_liquids'],
-                    autorefit = True,
-                    default_cargo = 'OIL_',
-                    default_capacity_type = 'capacity_freight',
-                    loading_speed_multiplier = 2,
-                    track_type = 'NG')
-
-    consist = WagonConsist(type_config = type_config,
+    consist = WagonConsist(type_config = type_config_narrow,
                         title = '[Tank Car]',
                         vehicle_set = 'brit',
                         wagon_generation = 1,
@@ -89,7 +89,6 @@ def main():
                         intro_date = 1860,
                         vehicle_life = 40,
                         use_legacy_spritesheet = True)
-
 
     options = {'template': 'tank_car_ng_brit_gen_1_template.png'}
 

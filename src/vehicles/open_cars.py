@@ -8,6 +8,28 @@ b = 1 # bulk cargo start row
 cargo_graphics_mappings = {'AORE': [b], 'IORE': [b + 1], 'CORE': [b + 2], 'GRVL': [b + 3],
                            'SAND': [b + 4], 'COAL': [b + 5], 'CLAY': [b + 6]}
 
+type_config_normal = TypeConfig(base_id = 'open_car',
+                        template = 'car_with_visible_cargo.pynml',
+                        num_cargo_rows = 8,
+                        class_refit_groups = ['all_freight'],
+                        cargo_graphics_mappings = cargo_graphics_mappings,
+                        label_refits_allowed = cargo_graphics_mappings.keys(),
+                        label_refits_disallowed = global_constants.disallowed_refits_by_label['non_freight_special_cases'],
+                        autorefit = True,
+                        default_cargo = 'GOOD',
+                        default_capacity_type = 'capacity_freight')
+
+type_config_narrow_gauge = TypeConfig(base_id = 'open_car_ng',
+                        template = 'car_with_visible_cargo.pynml',
+                        num_cargo_rows = 8,
+                        class_refit_groups = ['all_freight'],
+                        cargo_graphics_mappings = cargo_graphics_mappings,
+                        label_refits_allowed = cargo_graphics_mappings.keys(),
+                        label_refits_disallowed = global_constants.disallowed_refits_by_label['non_freight_special_cases'],
+                        autorefit = True,
+                        default_cargo = 'GOOD',
+                        default_capacity_type = 'capacity_freight',
+                        track_type = 'NG')
 
 def get_graphics_processors(template):
     recolour_maps = graphics_utils.get_bulk_cargo_recolour_maps()
@@ -26,20 +48,7 @@ def get_graphics_processors(template):
     return (graphics_processor_1, graphics_processor_2)
 
 def main():
-    # Normal Railtype
-    type_config = TypeConfig(base_id = 'open_car',
-                    template = 'car_with_visible_cargo.pynml',
-                    num_cargo_rows = 8,
-                    class_refit_groups = ['all_freight'],
-                    cargo_graphics_mappings = cargo_graphics_mappings,
-                    label_refits_allowed = cargo_graphics_mappings.keys(),
-                    label_refits_disallowed = global_constants.disallowed_refits_by_label['non_freight_special_cases'],
-                    autorefit = True,
-                    default_cargo = 'GOOD',
-                    default_capacity_type = 'capacity_freight')
-
-
-    consist = WagonConsist(type_config = type_config,
+    consist = WagonConsist(type_config = type_config_normal,
                         title = '[Open Car]',
                         vehicle_set = 'brit',
                         wagon_generation = 1,
@@ -67,7 +76,7 @@ def main():
                            graphics_processor=graphics_processors[1])
 
 
-    consist = WagonConsist(type_config = type_config,
+    consist = WagonConsist(type_config = type_config_normal,
                         title = '[Open Car]',
                         vehicle_set = 'brit',
                         wagon_generation = 2,
@@ -96,7 +105,7 @@ def main():
 
 
 
-    consist = WagonConsist(type_config = type_config,
+    consist = WagonConsist(type_config = type_config_normal,
                         title = '[Open Car]',
                         vehicle_set = 'brit',
                         wagon_generation = 3,
@@ -123,7 +132,7 @@ def main():
                            graphics_processor=graphics_processors[1])
 
 
-    consist = WagonConsist(type_config = type_config,
+    consist = WagonConsist(type_config = type_config_normal,
                         title = '[Open Car]',
                         vehicle_set = 'soam',
                         wagon_generation = 1,
@@ -150,20 +159,7 @@ def main():
                            graphics_processor=graphics_processors[1])
 
 
-    # Narrow Gauge Railtype
-    type_config = TypeConfig(base_id = 'open_car_ng',
-                    template = 'car_with_visible_cargo.pynml',
-                    num_cargo_rows = 8,
-                    class_refit_groups = ['all_freight'],
-                    cargo_graphics_mappings = cargo_graphics_mappings,
-                    label_refits_allowed = cargo_graphics_mappings.keys(),
-                    label_refits_disallowed = global_constants.disallowed_refits_by_label['non_freight_special_cases'],
-                    autorefit = True,
-                    default_cargo = 'GOOD',
-                    default_capacity_type = 'capacity_freight',
-                    track_type = 'NG')
-
-    consist = WagonConsist(type_config = type_config,
+    consist = WagonConsist(type_config = type_config_narrow_gauge,
                         title = '[Open Car]',
                         vehicle_set = 'brit',
                         wagon_generation = 1,

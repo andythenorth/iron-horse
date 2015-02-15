@@ -1,19 +1,27 @@
 import global_constants
 from train import TypeConfig, WagonConsist, Wagon
 
+type_config_normal = TypeConfig(base_id = 'passenger_car',
+                                template = 'train.pynml',
+                                class_refit_groups = ['pax'],
+                                label_refits_allowed = [],
+                                label_refits_disallowed = [],
+                                autorefit = True,
+                                default_cargo = 'PASS',
+                                default_capacity_type = 'capacity_pax')
+
+type_config_narrow_gauge = TypeConfig(base_id = 'passenger_car_ng',
+                                template = 'train.pynml',
+                                class_refit_groups = ['pax'],
+                                label_refits_allowed = [],
+                                label_refits_disallowed = [],
+                                autorefit = True,
+                                default_cargo = 'PASS',
+                                default_capacity_type = 'capacity_pax',
+                                track_type = 'NG')
+
 def main():
-    # Normal railtypes
-
-    type_config = TypeConfig(base_id = 'passenger_car',
-                    template = 'train.pynml',
-                    class_refit_groups = ['pax'],
-                    label_refits_allowed = [],
-                    label_refits_disallowed = [],
-                    autorefit = True,
-                    default_cargo = 'PASS',
-                    default_capacity_type = 'capacity_pax')
-
-    consist = WagonConsist(type_config = type_config,
+    consist = WagonConsist(type_config = type_config_normal,
                         title = '[Passenger Car]',
                         vehicle_set = 'brit',
                         wagon_generation = 1,
@@ -32,7 +40,7 @@ def main():
                            spritesheet_suffix=0)
 
 
-    consist = WagonConsist(type_config = type_config,
+    consist = WagonConsist(type_config = type_config_normal,
                         title = '[Passenger Car]',
                         vehicle_set = 'brit',
                         wagon_generation = 2,
@@ -51,7 +59,7 @@ def main():
                            spritesheet_suffix=0)
 
 
-    consist = WagonConsist(type_config = type_config,
+    consist = WagonConsist(type_config = type_config_normal,
                         title = '[Passenger Car]',
                         vehicle_set = 'brit',
                         wagon_generation = 3,
@@ -70,7 +78,7 @@ def main():
                            spritesheet_suffix=0)
 
 
-    consist = WagonConsist(type_config = type_config,
+    consist = WagonConsist(type_config = type_config_normal,
                         title = '[Passenger Car]',
                         vehicle_set = 'soam',
                         wagon_generation = 1,
@@ -89,7 +97,7 @@ def main():
                            spritesheet_suffix=0)
 
 
-    consist = WagonConsist(type_config = type_config,
+    consist = WagonConsist(type_config = type_config_normal,
                         title = '[Passenger Car]',
                         vehicle_set = 'soam',
                         wagon_generation = 2,
@@ -108,7 +116,7 @@ def main():
                            spritesheet_suffix=0)
 
 
-    consist = WagonConsist(type_config = type_config,
+    consist = WagonConsist(type_config = type_config_normal,
                         title = '[Passenger Car]',
                         vehicle_set = 'soam',
                         wagon_generation = 3,
@@ -127,19 +135,7 @@ def main():
                            spritesheet_suffix=0)
 
 
-    # Narrow Gauge railtypes
-
-    type_config = TypeConfig(base_id = 'passenger_car_ng',
-                    template = 'train.pynml',
-                      class_refit_groups = ['pax'],
-                    label_refits_allowed = [],
-                    label_refits_disallowed = [],
-                    autorefit = True,
-                    default_cargo = 'PASS',
-                    default_capacity_type = 'capacity_pax',
-                    track_type = 'NG')
-
-    consist = WagonConsist(type_config = type_config,
+    consist = WagonConsist(type_config = type_config_narrow_gauge,
                         title = '[Passenger Car]',
                         vehicle_set = 'brit',
                         wagon_generation = 1,
