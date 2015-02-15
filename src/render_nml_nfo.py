@@ -146,7 +146,7 @@ def main():
         utils.echo_message('Multiprocessing disabled: (for faster compiles set pw=[number of pool workers] - 16 is a sane default)')
 
     if repo_vars.get('incremental_compile', None) == 'True' and everything_dirty == False:
-        utils.echo_message('Only rendering changed nml files: (ic=True)')
+        utils.echo_message('Using incremental compile - only building changed files: (ic=True)')
     if everything_dirty == True:
         utils.echo_message('Generated files missing: re-rendering all nml and nfo')
 
