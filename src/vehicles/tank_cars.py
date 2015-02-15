@@ -23,8 +23,7 @@ def main():
                         vehicle_life = 40,
                               use_legacy_spritesheet = True)
 
-    consist.add_unit(Wagon(type_config = type_config,
-                            consist = consist,
+    consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 20,
                             weight = 12,
                             vehicle_length = 5,
@@ -52,8 +51,7 @@ def main():
                         vehicle_life = 40,
                               use_legacy_spritesheet = True)
 
-    consist.add_unit(Wagon(type_config = type_config,
-                            consist = consist,
+    consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 55,
                             weight = 27,
                             vehicle_length = 8,
@@ -95,8 +93,7 @@ def main():
 
     options = {'template': 'tank_car_ng_brit_gen_1_template.png'}
 
-    consist.add_unit(Wagon(type_config = type_config,
-                            consist = consist,
+    consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 12,
                             weight = 4,
                             vehicle_length = 4,

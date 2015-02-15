@@ -38,8 +38,7 @@ def main():
                         speedy = True,
                         use_legacy_spritesheet = True)
 
-    consist.add_unit(Wagon(type_config = type_config,
-                            consist = consist,
+    consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 48, # matched to RH and Squid containers
                             weight = 20,
                             vehicle_length = 8,

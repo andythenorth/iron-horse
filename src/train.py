@@ -628,6 +628,7 @@ class WagonConsist(Consist):
                 elif self.wagon_generation == 3:
                     self.speed = global_constants.gen_3_wagon_speeds[speedy]
 
+        self.type_config = type_config
         self.num_cargo_rows = type_config.num_cargo_rows
         self.cargo_graphics_mappings = type_config.cargo_graphics_mappings
         self.generic_cargo_rows = type_config.generic_cargo_rows
@@ -689,19 +690,19 @@ class Wagon(Train):
     This class should be sparse - only declare the most limited set of properties common to wagons.
     Most props should be declared by Train with useful defaults.
     """
-    def __init__(self, type_config, **kwargs):
+    def __init__(self, consist, **kwargs):
         super(Wagon, self).__init__(**kwargs)
-        self.type_config = type_config
-        self.template = type_config.template
-        self.class_refit_groups = type_config.class_refit_groups
-        self.label_refits_allowed = type_config.label_refits_allowed
-        self.label_refits_disallowed = type_config.label_refits_disallowed
-        self.autorefit = type_config.autorefit
-        self.default_cargo = type_config.default_cargo
-        self.default_cargo_capacities = self.get_capacity_variations(kwargs.get(type_config.default_capacity_type, 0))
-        if type_config.loading_speed_multiplier != None:
-            self.loading_speed_multiplier = type_config.loading_speed_multiplier
-        self.cargo_age_period = type_config.cargo_age_period
+        self.type_config = consist.type_config
+        self.template = self.type_config.template
+        self.class_refit_groups = self.type_config.class_refit_groups
+        self.label_refits_allowed = self.type_config.label_refits_allowed
+        self.label_refits_disallowed = self.type_config.label_refits_disallowed
+        self.autorefit = self.type_config.autorefit
+        self.default_cargo = self.type_config.default_cargo
+        self.default_cargo_capacities = self.get_capacity_variations(kwargs.get(self.type_config.default_capacity_type, 0))
+        if self.type_config.loading_speed_multiplier != None:
+            self.loading_speed_multiplier = self.type_config.loading_speed_multiplier
+        self.cargo_age_period = self.type_config.cargo_age_period
 
 
 class SteamLoco(Train):

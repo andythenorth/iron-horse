@@ -22,22 +22,19 @@ def main():
                         speed = 45,
                               use_legacy_spritesheet = True)
 
-    consist.add_unit(Wagon(type_config = type_config,
-                            consist = consist,
+    consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 0,
                             weight = 10,
                             vehicle_length = 3,
                             spriterow_num = 0))
 
-    consist.add_unit(Wagon(type_config = type_config,
-                            consist = consist,
+    consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 60,
                             weight = 30,
                             vehicle_length = 5,
                             spriterow_num = 1))
 
-    consist.add_unit(Wagon(type_config = type_config,
-                            consist = consist,
+    consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 0,
                             weight = 10,
                             vehicle_length = 3,

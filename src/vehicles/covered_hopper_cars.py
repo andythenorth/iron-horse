@@ -21,8 +21,7 @@ def main():
                         vehicle_life = 40,
                               use_legacy_spritesheet = True)
 
-    consist.add_unit(Wagon(type_config = type_config,
-                            consist = consist,
+    consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 25,
                             weight = 12,
                             vehicle_length = 5,
@@ -50,8 +49,7 @@ def main():
                         vehicle_life = 40,
                               use_legacy_spritesheet = True)
 
-    consist.add_unit(Wagon(type_config = type_config,
-                            consist = consist,
+    consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 40,
                             weight = 18,
                             vehicle_length = 6,
@@ -79,8 +77,7 @@ def main():
                         vehicle_life = 40,
                               use_legacy_spritesheet = True)
 
-    consist.add_unit(Wagon(type_config = type_config,
-                            consist = consist,
+    consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 60,
                             weight = 27,
                             vehicle_length = 8,

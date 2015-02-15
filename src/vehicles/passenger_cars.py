@@ -22,8 +22,7 @@ def main():
                         vehicle_life = 40,
                         speedy = True)
 
-    consist.add_unit(Wagon(type_config = type_config,
-                            consist = consist,
+    consist.add_unit(Wagon(consist = consist,
                             capacity_pax = 40,
                             weight = 30,
                             vehicle_length = 9))
@@ -42,8 +41,7 @@ def main():
                         vehicle_life = 40,
                         speedy = True)
 
-    consist.add_unit(Wagon(type_config = type_config,
-                            consist = consist,
+    consist.add_unit(Wagon(consist = consist,
                             capacity_pax = 55,
                             weight = 33,
                             vehicle_length = 9))
@@ -62,8 +60,7 @@ def main():
                         speedy = True,
                         vehicle_life = 40)
 
-    consist.add_unit(Wagon(type_config = type_config,
-                            consist = consist,
+    consist.add_unit(Wagon(consist = consist,
                             capacity_pax = 75,
                             weight = 36,
                             vehicle_length = 10))
@@ -82,8 +79,7 @@ def main():
                         speedy = True,
                         vehicle_life = 40)
 
-    consist.add_unit(Wagon(type_config = type_config,
-                            consist = consist,
+    consist.add_unit(Wagon(consist = consist,
                             capacity_pax = 40,
                             weight = 30,
                             vehicle_length = 8))
@@ -102,8 +98,7 @@ def main():
                         speedy = True,
                         vehicle_life = 40)
 
-    consist.add_unit(Wagon(type_config = type_config,
-                            consist = consist,
+    consist.add_unit(Wagon(consist = consist,
                             capacity_pax = 50,
                             weight = 30,
                             vehicle_length = 8))
@@ -122,8 +117,7 @@ def main():
                         speedy = True,
                         vehicle_life = 40)
 
-    consist.add_unit(Wagon(type_config = type_config,
-                            consist = consist,
+    consist.add_unit(Wagon(consist = consist,
                             capacity_pax = 60,
                             weight = 30,
                             vehicle_length = 8))
@@ -154,8 +148,7 @@ def main():
                         vehicle_life = 40,
                         use_legacy_spritesheet = True)
 
-    consist.add_unit(Wagon(type_config = type_config,
-                            consist = consist,
+    consist.add_unit(Wagon(consist = consist,
                             capacity_pax = 25,
                             weight = 12,
                             vehicle_length = 6))

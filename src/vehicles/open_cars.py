@@ -48,8 +48,7 @@ def main():
                         vehicle_life = 40,
                               use_legacy_spritesheet = True)
 
-    consist.add_unit(Wagon(type_config = type_config,
-                            consist = consist,
+    consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 20,
                             weight = 7,
                             vehicle_length = 5,
@@ -77,8 +76,7 @@ def main():
                         vehicle_life = 40,
                         use_legacy_spritesheet = True)
 
-    consist.add_unit(Wagon(type_config = type_config,
-                            consist = consist,
+    consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 35,
                             weight = 15,
                             vehicle_length = 6,
@@ -106,8 +104,7 @@ def main():
                         intro_date = 1997,
                         vehicle_life = 40)
 
-    consist.add_unit(Wagon(type_config = type_config,
-                            consist = consist,
+    consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 55,
                             weight = 25,
                             vehicle_length = 10,
@@ -134,8 +131,7 @@ def main():
                         intro_date = 1860,
                         vehicle_life = 40)
 
-    consist.add_unit(Wagon(type_config = type_config,
-                            consist = consist,
+    consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 30,
                             weight = 7,
                             vehicle_length = 5,
@@ -176,8 +172,7 @@ def main():
                         vehicle_life = 40,
                               use_legacy_spritesheet = True)
 
-    consist.add_unit(Wagon(type_config = type_config,
-                            consist = consist,
+    consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 12,
                             weight = 3,
                             vehicle_length = 3,
