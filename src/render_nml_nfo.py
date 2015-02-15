@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-print "[RENDER NML & NFO] render_nml_nfo.py"
+print("[RENDER NML & NFO] render_nml_nfo.py")
 
 import codecs # used for writing files - more unicode friendly than standard open() module
 import json
@@ -98,7 +98,7 @@ def render_header_item_nml_nfo(header_item):
     template = templates[header_item + '.pynml']
 
     if check_item_dirty(template.filename) == True:
-        print "Rendering " + header_item
+        print("Rendering " + header_item)
         header_item_nml = codecs.open(os.path.join('generated', 'nml', header_item + '.nml'),'w','utf8')
         header_item_nml.write(utils.unescape_chameleon_output(template(consists=consists,
                                                                        global_constants=global_constants,
@@ -160,7 +160,7 @@ def main():
 
     render_dispatcher(consists, renderer=render_consist_nml_nfo)
 
-    print "Linking nfo"
+    print("Linking nfo")
     for header_item in header_items:
         link_nfo(header_item, templates[header_item+".pynml"].filename, split=None)
     for consist in consists:
