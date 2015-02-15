@@ -37,8 +37,7 @@ def main():
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 20,
                             weight = 12,
-                            vehicle_length = 5,
-                            loading_speed = 10))
+                            vehicle_length = 5))
 
     options = {'template': 'tank_car_brit_gen_1_template.png'}
 
@@ -65,8 +64,7 @@ def main():
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 55,
                             weight = 27,
-                            vehicle_length = 8,
-                            loading_speed = 20))
+                            vehicle_length = 8))
 
     options = {'template': 'tank_car_brit_gen_2_template.png'}
 
@@ -95,8 +93,7 @@ def main():
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 12,
                             weight = 4,
-                            vehicle_length = 4,
-                            loading_speed = 20))
+                            vehicle_length = 4))
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,

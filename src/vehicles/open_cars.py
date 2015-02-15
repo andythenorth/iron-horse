@@ -60,8 +60,7 @@ def main():
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 20,
                             weight = 7,
-                            vehicle_length = 5,
-                            loading_speed = 10))
+                            vehicle_length = 5))
 
     graphics_processors = get_graphics_processors('open_car_brit_gen_1_template.png')
 
@@ -88,8 +87,7 @@ def main():
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 35,
                             weight = 15,
-                            vehicle_length = 6,
-                            loading_speed = 10))
+                            vehicle_length = 6))
 
     graphics_processors = get_graphics_processors('open_car_brit_gen_2_template.png')
 
@@ -115,8 +113,7 @@ def main():
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 55,
                             weight = 25,
-                            vehicle_length = 10,
-                            loading_speed = 10))
+                            vehicle_length = 10))
 
     graphics_processors = get_graphics_processors('open_car_brit_gen_3_template.png')
 
@@ -142,8 +139,7 @@ def main():
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 30,
                             weight = 7,
-                            vehicle_length = 5,
-                            loading_speed = 10))
+                            vehicle_length = 5))
 
     graphics_processors = get_graphics_processors('open_car_soam_gen_1_template.png')
 
@@ -170,8 +166,7 @@ def main():
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 12,
                             weight = 3,
-                            vehicle_length = 3,
-                            loading_speed = 5))
+                            vehicle_length = 3))
 
     graphics_processors = get_graphics_processors('open_car_ng_brit_gen_1_template.png')
 

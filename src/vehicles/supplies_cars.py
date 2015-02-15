@@ -29,8 +29,7 @@ def main():
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 30,
                             weight = 6,
-                            vehicle_length = 7,
-                            loading_speed = 10))
+                            vehicle_length = 7))
 
     # Ho Ho, supplies cars will vary load graphics according to *build date of wagon*
     # not strictly right, but eh, means it got done :)
@@ -71,8 +70,7 @@ def main():
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 45,
                             weight = 12,
-                            vehicle_length = 10,
-                            loading_speed = 20))
+                            vehicle_length = 10))
 
     options = {'template': 'supplies_car_brit_gen_2_template_0.png'}
 

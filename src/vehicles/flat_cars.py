@@ -44,8 +44,7 @@ def main():
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 20,
                             weight = 6,
-                            vehicle_length = 5,
-                            loading_speed = 10))
+                            vehicle_length = 5))
 
     options = {'template': 'flat_car_brit_gen_1_template.png'}
 
@@ -72,8 +71,7 @@ def main():
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 35,
                             weight = 12,
-                            vehicle_length = 8,
-                            loading_speed = 10))
+                            vehicle_length = 8))
 
     options = {'template': 'flat_car_brit_gen_2_template.png'}
 
@@ -99,8 +97,7 @@ def main():
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 55,
                             weight = 25,
-                            vehicle_length = 10,
-                            loading_speed = 5))
+                            vehicle_length = 10))
 
     options = {'template': 'flat_car_brit_gen_3_template.png'}
 
@@ -127,8 +124,7 @@ def main():
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 12,
                             weight = 3,
-                            vehicle_length = 3,
-                            loading_speed = 10))
+                            vehicle_length = 3))
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,

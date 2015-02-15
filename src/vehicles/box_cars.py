@@ -40,8 +40,7 @@ def main():
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 20,
                             weight = 12,
-                            vehicle_length = 5,
-                            loading_speed = 5))
+                            vehicle_length = 5))
 
     options = {'template': 'box_car_brit_gen_1_template.png'}
 
@@ -68,8 +67,7 @@ def main():
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 35,
                             weight = 18,
-                            vehicle_length = 6,
-                            loading_speed = 5))
+                            vehicle_length = 6))
 
     options = {'template': 'box_car_brit_gen_2_template.png'}
 
@@ -95,8 +93,7 @@ def main():
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 55,
                             weight = 25,
-                            vehicle_length = 10,
-                            loading_speed = 5))
+                            vehicle_length = 10))
 
     options = {'template': 'box_car_brit_gen_3_template.png'}
 
@@ -124,8 +121,7 @@ def main():
                             capacity_freight = 12,
                             capacity_mail = 20,
                             weight = 5,
-                            vehicle_length = 4,
-                            loading_speed = 5))
+                            vehicle_length = 4))
 
     options = {'template': 'box_car_ng_brit_gen_1_template.png'}
 

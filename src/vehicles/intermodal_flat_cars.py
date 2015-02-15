@@ -41,8 +41,7 @@ def main():
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 48, # matched to RH and Squid containers
                             weight = 20,
-                            vehicle_length = 8,
-                            loading_speed = 25))
+                            vehicle_length = 8))
 
     graphics_options['template'] = 'intermodal_flat_car_brit_gen_3_template.png'
 

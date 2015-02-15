@@ -25,8 +25,7 @@ def main():
                             capacity_mail = 40,
                             capacity_freight = 15,
                             weight = 20,
-                            vehicle_length = 8,
-                            loading_speed = 40))
+                            vehicle_length = 8))
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,

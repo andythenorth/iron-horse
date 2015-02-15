@@ -47,8 +47,7 @@ def main():
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 30,
                             weight = 10,
-                            vehicle_length = 5,
-                            loading_speed = 20))
+                            vehicle_length = 5))
 
     graphics_processors = get_graphics_processors('hopper_car_brit_gen_1_template.png')
 
@@ -75,8 +74,7 @@ def main():
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 55,
                             weight = 20,
-                            vehicle_length = 8,
-                            loading_speed = 20))
+                            vehicle_length = 8))
 
     graphics_processors = get_graphics_processors('hopper_car_brit_gen_2_template.png')
 
@@ -102,8 +100,7 @@ def main():
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 75,
                             weight = 27,
-                            vehicle_length = 10,
-                            loading_speed = 20))
+                            vehicle_length = 10))
 
     graphics_processors = get_graphics_processors('hopper_car_brit_gen_3_template.png')
 
