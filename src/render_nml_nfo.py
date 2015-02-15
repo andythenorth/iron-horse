@@ -18,10 +18,11 @@ from rosters import registered_rosters
 
 # get args passed by makefile
 repo_vars = utils.get_repo_vars(sys)
-if repo_vars.get('no_mp', None) == 'False':
-    use_multiprocessing = True
-else:
+num_pool_workers = repo_vars.get('num_pool_workers', 1)
+if num_pool_workers == 1:
     use_multiprocessing = False
+else:
+    use_multiprocessing = True
 
 from chameleon import PageTemplateLoader # chameleon used in most template cases
 # setup the places we look for templates
@@ -123,7 +124,7 @@ def render_dispatcher(items, renderer):
         for item in items:
             renderer(item)
     else:
-        pool = Pool(processes=16) # 16 is an arbitrary amount that appears to be fast without blocking the system
+        pool = Pool(processes=num_pool_workers)
         pool.map(renderer, items)
         pool.close()
 
@@ -142,7 +143,7 @@ def main():
     header_items = ['header', 'cargo_table', 'railtype_table', 'disable_default_vehicles']
 
     if use_multiprocessing == False:
-        utils.echo_message('Multiprocessing disabled: (NO_MP=True)')
+        utils.echo_message('Multiprocessing disabled: (for faster compiles set pw=[number of pool workers] - 16 is a sane default)')
 
     if repo_vars.get('compile_faster', None) == 'True' and everything_dirty == False:
         utils.echo_message('Only rendering changed nml files: (COMPILE_FASTER=True)')

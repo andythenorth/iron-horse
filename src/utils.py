@@ -2,7 +2,7 @@ def get_repo_vars(sys):
     # get args passed by makefile
     if len(sys.argv) > 1:
         repo_vars = {'repo_title': sys.argv[1], 'repo_version': sys.argv[2],
-                     'compile_faster': sys.argv[3], 'no_mp': sys.argv[4]}
+                     'compile_faster': sys.argv[3], 'num_pool_workers': int(sys.argv[4])}
     else: # provide some defaults so templates don't explode when testing python script without command line args
         repo_vars = {'repo_title': 'Iron Horse - compiled without makefile', 'repo_version': 1}
     return repo_vars
