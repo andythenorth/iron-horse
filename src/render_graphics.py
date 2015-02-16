@@ -53,6 +53,8 @@ def main():
                 spritesheet_suffixes_seen.append(variant.spritesheet_suffix)
             variants.append((variant, consist))
 
+    # I disabled multiprocessing as a temporary measure when moving to python 3
+    # it can be restored if needed, it should be modified to pick up num pool workers from sysargs
     use_multiprocessing = False
     if use_multiprocessing == False:
         for variant in variants:
