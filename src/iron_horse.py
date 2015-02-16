@@ -94,20 +94,13 @@ def get_consists_in_buy_menu_order(show_warnings=False):
             buy_menu_sort_order.extend(roster.buy_menu_sort_order)
             consists.extend(roster.consists_in_buy_menu_order)
 
-    # now check registered vehicles against the buy menu order, and add them to the sorted list
-    for id in buy_menu_sort_order:
-        found = False
-        for consist in consists:
-            if consist.id == id:
-                found = True
-        if show_warnings and not found:
-            utils.echo_message("Warning: consist " + id + " in buy_menu_sort_order, but not found in registered_consists")
-
-    # now guard against any consists missing from buy menu order, as that wastes time asking 'wtf?' when they don't appear in game
-    for consist in consists:
-        id = consist.id
-        if show_warnings and id not in buy_menu_sort_order:
-            utils.echo_message("Warning: consist " + id + " in registered_consists, but not in buy_menu_sort_order - won't show in game")
+    # now guard against any consists missing from buy menu order or vice versa, as that wastes time asking 'wtf?' when they don't appear in game
+    consist_id_defender = set([consist.id for consist in consists])
+    buy_menu_defender = set(buy_menu_sort_order)
+    for id in buy_menu_defender.difference(consist_id_defender):
+        utils.echo_message("Warning: consist " + id + " in buy_menu_sort_order, but not found in registered_consists")
+    for id in consist_id_defender.difference(buy_menu_defender):
+        utils.echo_message("Warning: consist " + id + " in consists, but not in buy_menu_sort_order - won't show in game")
     return consists
 
 
