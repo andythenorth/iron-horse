@@ -35,6 +35,7 @@ def get_graphics_processors(template):
     return (graphics_processor_1, graphics_processor_2)
 
 def main():
+    #--------------- brit ----------------------------------------------------------------------
     consist = WagonConsist(type_config = type_config_normal,
                         title = '[Hopper Car]',
                         roster = 'brit',
@@ -113,3 +114,32 @@ def main():
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=1,
                            graphics_processor=graphics_processors[1])
+
+
+    #--------------- soam ----------------------------------------------------------------------
+    consist = WagonConsist(type_config = type_config_normal,
+                        title = '[Rotary Gondola Car]',
+                        roster = 'soam',
+                        wagon_generation = 2,
+                        replacement_id = '-none',
+                        intro_date = 1945,
+                        vehicle_life = 40)
+
+    consist.add_unit(Wagon(consist = consist,
+                            capacity_freight = 55,
+                            weight = 20,
+                            vehicle_length = 6))
+
+    graphics_processors = get_graphics_processors('hopper_car_soam_gen_2_template.png')
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=0,
+                           graphics_processor=graphics_processors[0])
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=1,
+                           graphics_processor=graphics_processors[1])
+
+
