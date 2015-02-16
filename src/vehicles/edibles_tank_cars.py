@@ -6,7 +6,7 @@ from train import TypeConfig, WagonConsist, Wagon, GraphicsProcessorFactory
 type_config = TypeConfig(base_id = 'edibles_tank_car',
                 template = 'train.pynml',
                 class_refit_groups = ['liquids'],
-                label_refits_allowed = [],
+                label_refits_allowed = ['FOOD'],
                 label_refits_disallowed = global_constants.disallowed_refits_by_label['non_edible_liquids'],
                 autorefit = True,
                 default_cargo = 'WATR',
@@ -74,3 +74,27 @@ def main():
 
 
     #--------------- soam ----------------------------------------------------------------------
+    consist = WagonConsist(type_config = type_config,
+                        title = '[Edibles Tank Car]',
+                        roster = 'soam',
+                        wagon_generation = 1,
+                        replacement_id = '-none',
+                        intro_date = 1905,
+                        vehicle_life = 40)
+
+    consist.add_unit(Wagon(consist = consist,
+                            capacity_freight = 25,
+                            weight = 12,
+                            vehicle_length = 6))
+
+    options = {'template': 'edibles_tank_car_soam_gen_1_template.png'}
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=0,
+                           graphics_processor=GraphicsProcessorFactory('pass_through_pipeline', options))
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=1,
+                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
