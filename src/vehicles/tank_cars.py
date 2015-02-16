@@ -25,6 +25,7 @@ type_config_narrow = TypeConfig(base_id = 'tank_car_ng',
                                 track_type = 'NG')
 
 def main():
+    #--------------- brit ----------------------------------------------------------------------
     consist = WagonConsist(type_config = type_config_normal,
                         title = '[Tank Car]',
                         roster = 'brit',
@@ -104,3 +105,6 @@ def main():
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=1,
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
+
+
+    #--------------- soam ----------------------------------------------------------------------

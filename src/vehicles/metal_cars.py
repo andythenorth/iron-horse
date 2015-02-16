@@ -12,6 +12,7 @@ type_config = TypeConfig(base_id = 'metal_car',
                 loading_speed_multiplier = 2)
 
 def main():
+    #--------------- brit ----------------------------------------------------------------------
     consist = WagonConsist(type_config = type_config,
                         title = '[Metal Car]',
                         roster = 'brit',

@@ -27,6 +27,7 @@ type_config_narrow_gauge = TypeConfig(base_id = 'mail_car_ng',
                 track_type = 'NG')
 
 def main():
+    #--------------- brit ----------------------------------------------------------------------
     consist = WagonConsist(type_config = type_config_normal,
                         title = '[Mail Car]',
                         roster = 'brit',
@@ -107,6 +108,7 @@ def main():
                            spritesheet_suffix=0)
 
 
+    #--------------- soam ----------------------------------------------------------------------
     consist = WagonConsist(type_config = type_config_normal,
                         title = '[Mail Car]',
                         roster = 'soam',
@@ -162,3 +164,4 @@ def main():
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=0)
+

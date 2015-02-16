@@ -32,6 +32,7 @@ type_config_narrow_gauge = TypeConfig(base_id = 'flat_car_ng',
                     track_type = 'NG')
 
 def main():
+    #--------------- brit ----------------------------------------------------------------------
     consist = WagonConsist(type_config = type_config_normal,
                         title = '[Flat Car]',
                         roster = 'brit',
@@ -130,3 +131,4 @@ def main():
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=0)
 
+    #--------------- soam ----------------------------------------------------------------------

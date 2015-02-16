@@ -12,6 +12,7 @@ type_config = TypeConfig(base_id = 'metro_car',
                 track_type = 'METRO')
 
 def main():
+    #--------------- brit ----------------------------------------------------------------------
     consist = WagonConsist(type_config = type_config,
                         title = 'Mail [Metro Car]',
                         roster = 'brit',
@@ -30,3 +31,6 @@ def main():
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=0)
+
+
+    #--------------- soam ----------------------------------------------------------------------
