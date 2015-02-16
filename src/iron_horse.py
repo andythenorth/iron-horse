@@ -22,8 +22,6 @@ if not os.path.exists(generated_files_path):
 
 print("[IMPORT VEHICLES] iron_horse.py")
 
-from vehicles import registered_wagon_generations
-
 from rosters import registered_rosters
 
 from rosters import brit
@@ -94,14 +92,7 @@ def get_consists_in_buy_menu_order(show_warnings=False):
     for roster in registered_rosters:
         if roster.id in active_rosters:
             buy_menu_sort_order.extend(roster.buy_menu_sort_order)
-            consists.extend(roster.engine_consists)
-            consists.extend(roster.wagon_consists)
-
-    for id_base in global_constants.buy_menu_sort_order_wagons:
-        for vehicle_set in global_constants.vehicle_set_id_mapping.keys():
-            for wagon_generation in registered_wagon_generations[vehicle_set].get(id_base, []):
-                wagon_id = '_'.join((id_base, vehicle_set, 'gen', str(wagon_generation)))
-                buy_menu_sort_order.append(wagon_id)
+            consists.extend(roster.consists_in_buy_menu_order)
 
     # now check registered vehicles against the buy menu order, and add them to the sorted list
     for id in buy_menu_sort_order:

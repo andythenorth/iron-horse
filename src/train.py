@@ -18,7 +18,7 @@ import graphics_processor
 import graphics_processor.pipelines
 
 from rosters import registered_rosters
-from vehicles import numeric_id_defender, registered_wagon_generations
+from vehicles import numeric_id_defender
 
 import inspect
 
@@ -56,6 +56,8 @@ class Consist(object):
         self.date_variant_var = kwargs.get('date_variant_var', 'build_year')
         # create structure to hold the slices
         self.slices = []
+        # roster is set when the vehicle is registered to a roster, only one roster per vehicle
+        self.roster = None
 
     def add_model_variant(self, intro_date, end_date, spritesheet_suffix, graphics_processor=None, visual_effect_offset=None):
         variant_num = len(self.model_variants) # this will never ever ever be flakey and unreliable, right?
@@ -190,13 +192,12 @@ class Consist(object):
         return sum([getattr(slice, 'weight', 0) for slice in self.slices])
 
     def get_rosters(self):
-        # this is for engine consists, wagons over-ride this method in their subclass
-        # essential to check the vehicle id, the object reference (hash) isn't reliable in a multiprocessing pool
+         # although the working definition is one and only one roster per vehicle...
+        # ...this code is extensible, for hysterical reasons (should probably refactor it)
         result = []
         for roster in registered_rosters:
-            for consist in roster.engine_consists:
-                if self.id == consist.id:
-                    result.append(roster)
+            if self.roster == roster.id:
+                result.append(roster)
         return result
 
     def get_expression_for_rosters(self):
@@ -619,6 +620,7 @@ class WagonConsist(Consist):
                     self.speed = global_constants.gen_3_wagon_speeds[speedy]
 
         self.type_config = type_config
+        self.vehicle_set = kwargs.get('vehicle_set')
         self.num_cargo_rows = type_config.num_cargo_rows
         self.cargo_graphics_mappings = type_config.cargo_graphics_mappings
         self.generic_cargo_rows = type_config.generic_cargo_rows
@@ -626,17 +628,9 @@ class WagonConsist(Consist):
         if type_config.date_variant_var != None:
             self.date_variant_var = type_config.date_variant_var
 
-        # register the consist so that buy menu order can later be built programatically
-        self.vehicle_set = kwargs.get('vehicle_set')
-        base_type = type_config.base_id
-        vehicle_set_dict = registered_wagon_generations.setdefault(self.vehicle_set, {})
-        base_type_list = vehicle_set_dict.setdefault(base_type, [])
-        base_type_list.append(self.wagon_generation)
-        base_type_list.sort()
-
         for roster in registered_rosters:
             if self.vehicle_set == roster.id:
-                roster.wagon_consists.append(self)
+                roster.register_wagon_consist(self)
 
     @property
     def buy_cost(self):
@@ -669,14 +663,6 @@ class WagonConsist(Consist):
             return cost / 7
         else:
             return cost / 8
-
-    def get_rosters(self):
-        result = []
-        for roster in registered_rosters:
-            for consist in roster.wagon_consists:
-                if self.id == consist.id:
-                    result.append(roster)
-        return result
 
 
 class Wagon(Train):
