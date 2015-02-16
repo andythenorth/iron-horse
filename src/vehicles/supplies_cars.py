@@ -19,7 +19,7 @@ type_config = TypeConfig(base_id = 'supplies_car',
 def main():
     consist = WagonConsist(type_config = type_config,
                         title = '[Supplies Car]',
-                        vehicle_set = 'brit',
+                        roster = 'brit',
                         wagon_generation = 1,
                         replacement_id = '-none',
                         intro_date = 1860,
@@ -61,7 +61,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config,
                         title = '[Supplies Car]',
-                        vehicle_set = 'brit',
+                        roster = 'brit',
                         wagon_generation = 2,
                         replacement_id = '-none',
                         intro_date = 1960,

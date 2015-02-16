@@ -30,7 +30,7 @@ type_config = TypeConfig(base_id = 'intermodal_flat_car',
 def main():
     consist = WagonConsist(type_config = type_config,
                         title = '[Intermodal Flat Car]',
-                        vehicle_set = 'brit',
+                        roster = 'brit',
                         wagon_generation = 3,
                         replacement_id = '-none',
                         intro_date = 1960,

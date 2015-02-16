@@ -13,7 +13,7 @@ def main():
     # no graphics processing - don't random colour cabeese, I tried it, looks daft
     consist = WagonConsist(type_config = type_config,
                         title = '[Caboose Car]',
-                        vehicle_set = 'brit',
+                        roster = 'brit',
                         wagon_generation = 1,
                         replacement_id = '-none',
                         intro_date = 1860,
@@ -33,7 +33,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config,
                         title = '[Caboose Car]',
-                        vehicle_set = 'soam',
+                        roster = 'soam',
                         wagon_generation = 1,
                         replacement_id = '-none',
                         intro_date = 1860,

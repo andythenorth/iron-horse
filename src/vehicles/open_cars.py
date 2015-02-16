@@ -50,7 +50,7 @@ def get_graphics_processors(template):
 def main():
     consist = WagonConsist(type_config = type_config_normal,
                         title = '[Open Car]',
-                        vehicle_set = 'brit',
+                        roster = 'brit',
                         wagon_generation = 1,
                         replacement_id = '-none',
                         intro_date = 1860,
@@ -77,7 +77,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config_normal,
                         title = '[Open Car]',
-                        vehicle_set = 'brit',
+                        roster = 'brit',
                         wagon_generation = 2,
                         replacement_id = '-none',
                         intro_date = 1950,
@@ -104,7 +104,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config_normal,
                         title = '[Open Car]',
-                        vehicle_set = 'brit',
+                        roster = 'brit',
                         wagon_generation = 3,
                         replacement_id = '-none',
                         intro_date = 1997,
@@ -130,7 +130,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config_normal,
                         title = '[Open Car]',
-                        vehicle_set = 'soam',
+                        roster = 'soam',
                         wagon_generation = 1,
                         replacement_id = '-none',
                         intro_date = 1860,
@@ -156,7 +156,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config_narrow_gauge,
                         title = '[Open Car]',
-                        vehicle_set = 'brit',
+                        roster = 'brit',
                         wagon_generation = 1,
                         replacement_id = '-none',
                         intro_date = 1860,

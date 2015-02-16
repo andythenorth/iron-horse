@@ -23,7 +23,7 @@ type_config_narrow_gauge = TypeConfig(base_id = 'passenger_car_ng',
 def main():
     consist = WagonConsist(type_config = type_config_normal,
                         title = '[Passenger Car]',
-                        vehicle_set = 'brit',
+                        roster = 'brit',
                         wagon_generation = 1,
                         replacement_id = '-none',
                         intro_date = 1860,
@@ -42,7 +42,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config_normal,
                         title = '[Passenger Car]',
-                        vehicle_set = 'brit',
+                        roster = 'brit',
                         wagon_generation = 2,
                         replacement_id = '-none',
                         intro_date = 1925,
@@ -61,7 +61,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config_normal,
                         title = '[Passenger Car]',
-                        vehicle_set = 'brit',
+                        roster = 'brit',
                         wagon_generation = 3,
                         replacement_id = '-none',
                         intro_date = 1985,
@@ -80,7 +80,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config_normal,
                         title = '[Passenger Car]',
-                        vehicle_set = 'soam',
+                        roster = 'soam',
                         wagon_generation = 1,
                         replacement_id = '-none',
                         intro_date = 1860,
@@ -99,7 +99,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config_normal,
                         title = '[Passenger Car]',
-                        vehicle_set = 'soam',
+                        roster = 'soam',
                         wagon_generation = 2,
                         replacement_id = '-none',
                         intro_date = 1920,
@@ -118,7 +118,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config_normal,
                         title = '[Passenger Car]',
-                        vehicle_set = 'soam',
+                        roster = 'soam',
                         wagon_generation = 3,
                         replacement_id = '-none',
                         intro_date = 1980,
@@ -137,7 +137,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config_narrow_gauge,
                         title = '[Passenger Car]',
-                        vehicle_set = 'brit',
+                        roster = 'brit',
                         wagon_generation = 1,
                         replacement_id = '-none',
                         intro_date = 1860,

@@ -34,7 +34,7 @@ type_config_narrow_gauge = TypeConfig(base_id = 'flat_car_ng',
 def main():
     consist = WagonConsist(type_config = type_config_normal,
                         title = '[Flat Car]',
-                        vehicle_set = 'brit',
+                        roster = 'brit',
                         wagon_generation = 1,
                         replacement_id = '-none',
                         intro_date = 1860,
@@ -61,7 +61,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config_normal,
                         title = '[Flat Car]',
-                        vehicle_set = 'brit',
+                        roster = 'brit',
                         wagon_generation = 2,
                         replacement_id = '-none',
                         intro_date = 1950,
@@ -88,7 +88,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config_normal,
                         title = '[Flat Car]',
-                        vehicle_set = 'brit',
+                        roster = 'brit',
                         wagon_generation = 3,
                         replacement_id = '-none',
                         intro_date = 1990,
@@ -114,7 +114,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config_narrow_gauge,
                         title = '[Flat Car]',
-                        vehicle_set = 'brit',
+                        roster = 'brit',
                         wagon_generation = 1,
                         replacement_id = '-none',
                         intro_date = 1860,

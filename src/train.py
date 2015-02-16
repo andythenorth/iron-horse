@@ -102,13 +102,13 @@ class Consist(object):
 
     def get_wagon_id(self, id_base, **kwargs):
         # auto id creator, used for wagons not locos
-        return '_'.join((id_base, kwargs['vehicle_set'], 'gen', str(kwargs['wagon_generation'])))
+        return '_'.join((id_base, kwargs['roster'], 'gen', str(kwargs['wagon_generation'])))
 
     def get_wagon_numeric_id(self, base_id, **kwargs):
         # auto numeric_id creator, used for wagons not locos
-        vehicle_set_base_number = global_constants.vehicle_set_id_mapping[kwargs['vehicle_set']]
+        roster_base_number = global_constants.roster_id_mapping[kwargs['roster']]
         type_base_number = global_constants.wagon_type_numeric_ids[base_id]
-        result = (1000 * vehicle_set_base_number) + type_base_number + (3 * (kwargs['wagon_generation'] - 1))
+        result = (1000 * roster_base_number) + type_base_number + (3 * (kwargs['wagon_generation'] - 1))
         return result
 
     def get_reduced_set_of_variant_dates(self):
@@ -620,7 +620,7 @@ class WagonConsist(Consist):
                     self.speed = global_constants.gen_3_wagon_speeds[speedy]
 
         self.type_config = type_config
-        self.vehicle_set = kwargs.get('vehicle_set')
+        self.roster = kwargs.get('roster')
         self.num_cargo_rows = type_config.num_cargo_rows
         self.cargo_graphics_mappings = type_config.cargo_graphics_mappings
         self.generic_cargo_rows = type_config.generic_cargo_rows
@@ -629,7 +629,7 @@ class WagonConsist(Consist):
             self.date_variant_var = type_config.date_variant_var
 
         for roster in registered_rosters:
-            if self.vehicle_set == roster.id:
+            if self.roster == roster.id:
                 roster.register_wagon_consist(self)
 
     @property

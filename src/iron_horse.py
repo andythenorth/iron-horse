@@ -86,7 +86,7 @@ def get_consists_in_buy_menu_order(show_warnings=False):
     # first compose the buy menu order list
     buy_menu_sort_order = []
     if repo_vars.get('roster', '*') is '*':
-        active_rosters = global_constants.vehicle_set_id_mapping.keys()
+        active_rosters = global_constants.roster_id_mapping.keys()
     else:
         active_rosters = [repo_vars['roster']] # make sure it's iterable
     for roster in registered_rosters:

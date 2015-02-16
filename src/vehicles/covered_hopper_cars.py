@@ -14,7 +14,7 @@ type_config = TypeConfig(base_id = 'covered_hopper_car',
 def main():
     consist = WagonConsist(type_config = type_config,
                         title = '[Covered Hopper Car]',
-                        vehicle_set = 'brit',
+                        roster = 'brit',
                         wagon_generation = 1,
                         replacement_id = '-none',
                         intro_date = 1922,
@@ -41,7 +41,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config,
                         title = '[Covered Hopper Car]',
-                        vehicle_set = 'brit',
+                        roster = 'brit',
                         wagon_generation = 2,
                         replacement_id = '-none',
                         intro_date = 1955,
@@ -68,7 +68,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config,
                         title = '[Covered Hopper Car]',
-                        vehicle_set = 'brit',
+                        roster = 'brit',
                         wagon_generation = 3,
                         replacement_id = '-none',
                         intro_date = 1985,

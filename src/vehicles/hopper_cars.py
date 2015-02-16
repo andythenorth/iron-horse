@@ -37,7 +37,7 @@ def get_graphics_processors(template):
 def main():
     consist = WagonConsist(type_config = type_config_normal,
                         title = '[Hopper Car]',
-                        vehicle_set = 'brit',
+                        roster = 'brit',
                         wagon_generation = 1,
                         replacement_id = '-none',
                         intro_date = 1910,
@@ -64,7 +64,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config_normal,
                         title = '[Hopper Car]',
-                        vehicle_set = 'brit',
+                        roster = 'brit',
                         wagon_generation = 2,
                         replacement_id = '-none',
                         intro_date = 1955,
@@ -91,7 +91,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config_normal,
                         title = '[Hopper Car]',
-                        vehicle_set = 'brit',
+                        roster = 'brit',
                         wagon_generation = 3,
                         replacement_id = '-none',
                         intro_date = 1995,

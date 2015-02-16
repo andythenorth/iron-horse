@@ -18,7 +18,7 @@ type_config = TypeConfig(base_id = 'reefer_car',
 def main():
     consist = WagonConsist(type_config = type_config,
                         title = '[Reefer Car]',
-                        vehicle_set = 'brit',
+                        roster = 'brit',
                         wagon_generation = 1,
                         replacement_id = '-none',
                         intro_date = 1915,
@@ -47,7 +47,7 @@ def main():
     # no gen 2 reefer - straight to gen 3
     consist = WagonConsist(type_config = type_config,
                         title = '[Reefer Car]',
-                        vehicle_set = 'brit',
+                        roster = 'brit',
                         wagon_generation = 3,
                         replacement_id = '-none',
                         intro_date = 1964,
