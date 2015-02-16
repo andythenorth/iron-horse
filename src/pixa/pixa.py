@@ -1,13 +1,10 @@
-from PIL import Image
-from PIL import ImageDraw
-from PIL import ImagePalette
-import codecs #used for writing files - more unicode friendly than standard open() module
+from PIL import Image, ImageDraw
 from copy import deepcopy
 import os.path
 currentdir = os.curdir
 
 
-class _Point(object):
+class _Point:
     """ simple class to hold the definition of a pixel that should be drawn """
     def __init__(self, dx, dy, colour):
         self.dx = dx
@@ -27,7 +24,7 @@ class _Point(object):
             return self._colour
 
 
-class _PixaSpotColour(object):
+class _PixaSpotColour:
     def __init__(self, shift, parent):
         self.shift = shift
         self.parent = parent
@@ -37,7 +34,7 @@ class _PixaSpotColour(object):
         return result + self.shift
 
 
-class PixaColour(object):
+class PixaColour:
     """
     small factory-like class
     holds a variable for a colour index, for use in sequences
@@ -51,7 +48,7 @@ class PixaColour(object):
         return _PixaSpotColour(shift, self)
 
 
-class PixaSequence(object):
+class PixaSequence:
     def __init__(self, points = None, transforms = None):
         """
         pass an optional sequence, in format [(dx, dy, colour)...]
@@ -109,7 +106,7 @@ class PixaSequence(object):
             yield (x + p.dx, y + p.dy, p.colour())
 
 
-class PixaSequenceCollection(object):
+class PixaSequenceCollection:
     def __init__(self, sequences):
         self.sequences = sequences
 
@@ -117,7 +114,7 @@ class PixaSequenceCollection(object):
         return self.sequences.get(colour)
 
 
-class PixaMixer(object):
+class PixaMixer:
     """
     Empty base class for modifying a sequence.
     """
@@ -187,7 +184,7 @@ def PixaShiftDY(dy):
     """
     return PixaShiftXY(0, dy)
 
-class Spritesheet(object):
+class Spritesheet:
     """
     Class holding the sprite sheet.
 
@@ -224,7 +221,7 @@ class Spritesheet(object):
         self.sprites.save(output_path, optimize=True)
 
 
-class PixaImageLoader(object):
+class PixaImageLoader:
     """
     Loads images from disk and does various useful things with them.
     An instance of this class can store defaults for crops, masks, etcetera, useful for working with imported sprite sheets.

@@ -1,1 +1,1 @@
-from pixa import *
+from .pixa import *

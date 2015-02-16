@@ -39,11 +39,11 @@
                 <th>Title</th>
             </thead>
             <tbody>
-                <tal:consists repeat="consist sorted(consists, key=lambda consist: consist.base_numeric_id)">
+                <tal:consists repeat="consist sorted(consists, key=doc_helper.get_base_numeric_id)">
                     <tr>
                         <td>${consist.base_numeric_id}</td>
                         <td>${consist.id}</td>
-                        <td>${consist.title.decode('utf-8')}</td>
+                        <td>${consist.title}</td>
                     </tr>
                 </tal:consists>
             </tbody>

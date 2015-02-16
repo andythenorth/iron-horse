@@ -53,10 +53,14 @@ def main():
                 spritesheet_suffixes_seen.append(variant.spritesheet_suffix)
             variants.append((variant, consist))
 
-    pool = Pool(processes=16)
-    pool.map(run_pipeline, variants)
-    pool.close()
-    pool.join()
+    use_multiprocessing = False
+    if use_multiprocessing == False:
+        for variant in variants:
+            run_pipeline(variant)
+    else:
+        pool = Pool(processes=16)
+        pool.map(run_pipeline, variants)
+        pool.close()
 
     # handle special case spritesheets
     shutil.copy(os.path.join(graphics_input, 'null_trailing_part.png'), graphics_output_path)

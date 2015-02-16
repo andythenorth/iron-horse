@@ -108,6 +108,9 @@ class DocHelper(object):
 
         return props_to_print
 
+    def get_base_numeric_id(self, consist):
+        return consist.base_numeric_id
+
     def get_active_nav(self, doc_name, nav_link):
         return ('','active')[doc_name == nav_link]
 
