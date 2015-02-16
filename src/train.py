@@ -18,7 +18,7 @@ import graphics_processor
 import graphics_processor.pipelines
 
 from rosters import registered_rosters
-from vehicles import registered_consists, registered_wagon_generations
+from vehicles import numeric_id_defender, registered_wagon_generations
 
 import inspect
 
@@ -56,11 +56,6 @@ class Consist(object):
         self.date_variant_var = kwargs.get('date_variant_var', 'build_year')
         # create structure to hold the slices
         self.slices = []
-        # register consist with this module so other modules can use it, with a non-blocking guard on duplicate IDs
-        for consist in registered_consists:
-            if consist.base_numeric_id == self.base_numeric_id:
-                utils.echo_message("Error: consist " + self.id + " shares duplicate id (" + str(self.base_numeric_id) + ") with consist " + consist.id)
-        registered_consists.append(self)
 
     def add_model_variant(self, intro_date, end_date, spritesheet_suffix, graphics_processor=None, visual_effect_offset=None):
         variant_num = len(self.model_variants) # this will never ever ever be flakey and unreliable, right?
@@ -96,11 +91,11 @@ class Consist(object):
         # guard against the ID being too large to build in an articulated consist
         if numeric_id > 16383:
             utils.echo_message("Error: numeric_id " + str(numeric_id) + " for " + self.id + " can't be used (16383 is max ID for articulated vehicles)")
-        # guard against ID collisions with other vehicles
-        for consist in registered_consists:
-            for slice in consist.slices:
-                if numeric_id == slice.numeric_id:
-                    utils.echo_message("Error: numeric_id collision (" + str(numeric_id) + ") for slices in consist " + self.id + " and " + consist.id)
+        # register consist with this module so other modules can use it, with a non-blocking guard on duplicate IDs
+        for id in numeric_id_defender:
+            if id == numeric_id:
+                utils.echo_message("Error: consist " + self.id + " slice id collides (" + str(numeric_id) + ") with slices in another consist")
+        numeric_id_defender.append(numeric_id)
         return numeric_id
 
     def get_wagon_id(self, id_base, **kwargs):
@@ -194,23 +189,14 @@ class Consist(object):
     def weight(self):
         return sum([getattr(slice, 'weight', 0) for slice in self.slices])
 
-    @property
-    def adjusted_model_life(self):
-        # handles keeping the buy menu tidy, relies on magic from Eddi
-        if self.replacement_id != None and self.replacement_id != '-none' and self.replacement_id != '':
-            for i in registered_consists:
-                if i.id == self.replacement_id:
-                    model_life = i.intro_date - self.intro_date
-                    return model_life + self.vehicle_life
-        else:
-            return 'VEHICLE_NEVER_EXPIRES'
-
     def get_rosters(self):
         # this is for engine consists, wagons over-ride this method in their subclass
+        # essential to check the vehicle id, the object reference (hash) isn't reliable in a multiprocessing pool
         result = []
         for roster in registered_rosters:
-            if self.id in roster.buy_menu_sort_order:
-                result.append(roster)
+            for consist in roster.engine_consists:
+                if self.id == consist.id:
+                    result.append(roster)
         return result
 
     def get_expression_for_rosters(self):
@@ -648,6 +634,10 @@ class WagonConsist(Consist):
         base_type_list.append(self.wagon_generation)
         base_type_list.sort()
 
+        for roster in registered_rosters:
+            if self.vehicle_set == roster.id:
+                roster.wagon_consists.append(self)
+
     @property
     def buy_cost(self):
         if self.speed is not None:
@@ -683,8 +673,9 @@ class WagonConsist(Consist):
     def get_rosters(self):
         result = []
         for roster in registered_rosters:
-            if self.vehicle_set == roster.id:
-                result.append(roster)
+            for consist in roster.wagon_consists:
+                if self.id == consist.id:
+                    result.append(roster)
         return result
 
 

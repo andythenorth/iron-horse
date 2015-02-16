@@ -43,7 +43,7 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
         default_cargo_type:             ${vehicle.default_cargo};
         cargo_age_period:               ${vehicle.cargo_age_period};
         misc_flags:                     bitmask(${vehicle.special_flags}); // nml constants
-        model_life:                     ${consist.adjusted_model_life};
+        model_life:                     VEHICLE_NEVER_EXPIRES;
         retire_early:                   ${consist.vehicle_life - 4}; // magic from Eddi
         reliability_decay:              20; // default value
         vehicle_life:                   ${consist.vehicle_life};

@@ -6,11 +6,12 @@ class Roster(object):
     """
     def __init__(self, **kwargs):
         self.id = kwargs.get('id')
-        self.engines = kwargs.get('engines')
+        self.engine_consists = [engine.consist for engine in kwargs.get('engines')]
+        self.wagon_consists = []
 
     @property
     def buy_menu_sort_order(self):
-        return [engine.consist.id for engine in self.engines]
+        return [consist.id for consist in self.engine_consists]
 
     def register(self):
         registered_rosters.append(self)
