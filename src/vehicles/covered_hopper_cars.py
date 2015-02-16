@@ -95,3 +95,28 @@ def main():
 
 
     #--------------- soam ----------------------------------------------------------------------
+    consist = WagonConsist(type_config = type_config,
+                        title = '[Covered Hopper Car]',
+                        roster = 'soam',
+                        wagon_generation = 2,
+                        replacement_id = '-none',
+                        intro_date = 1955,
+                        vehicle_life = 40)
+
+    consist.add_unit(Wagon(consist = consist,
+                            capacity_freight = 40,
+                            weight = 18,
+                            vehicle_length = 7))
+
+    options = {'template': 'covered_hopper_car_soam_gen_2_template.png'}
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=0,
+                           graphics_processor=GraphicsProcessorFactory('pass_through_pipeline', options))
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=1,
+                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
+
