@@ -1,5 +1,6 @@
 from rosters import registered_rosters
 import global_constants
+import pickle
 
 class Roster(object):
     """
@@ -27,6 +28,13 @@ class Roster(object):
         result.extend(self.engine_consists)
         for base_id in global_constants.buy_menu_sort_order_wagons:
             result.extend(sorted(self.wagon_consists[base_id], key=lambda wagon_consist: wagon_consist.wagon_generation))
+        for consist in result:
+            # if consist won't pickle, then multiprocessing blows up, catching it here is faster and easier
+            try:
+                pickle.dumps(consist)
+            except:
+                print("Pickling failed for consist:", consist.id)
+                raise
         return result
 
     def register_wagon_consist(self, wagon_consist):

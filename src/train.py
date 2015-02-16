@@ -59,6 +59,7 @@ class Consist(object):
         # roster is set when the vehicle is registered to a roster, only one roster per vehicle
         self.roster = None
 
+
     def add_model_variant(self, intro_date, end_date, spritesheet_suffix, graphics_processor=None, visual_effect_offset=None):
         variant_num = len(self.model_variants) # this will never ever ever be flakey and unreliable, right?
         self.model_variants.append(ModelVariant(intro_date, end_date, spritesheet_suffix, graphics_processor, variant_num, visual_effect_offset))
@@ -620,7 +621,7 @@ class WagonConsist(Consist):
                     self.speed = global_constants.gen_3_wagon_speeds[speedy]
 
         self.type_config = type_config
-        self.roster = kwargs.get('roster')
+        self.roster = kwargs.get('roster', None)
         self.num_cargo_rows = type_config.num_cargo_rows
         self.cargo_graphics_mappings = type_config.cargo_graphics_mappings
         self.generic_cargo_rows = type_config.generic_cargo_rows

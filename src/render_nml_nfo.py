@@ -124,9 +124,8 @@ def render_dispatcher(items, renderer):
         for item in items:
             renderer(item)
     else:
-        pool = Pool(processes=num_pool_workers)
-        pool.map(renderer, items)
-        pool.close()
+        with Pool(processes=num_pool_workers) as pool:
+            pool.map(renderer, items)
 
 
 def link_nfo(item, dep_path, split=None):

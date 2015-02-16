@@ -9,7 +9,7 @@ type_config_normal = TypeConfig(base_id = 'flat_car',
                     num_cargo_rows = 7,
                     class_refit_groups = ['flatcar_freight'],
                     cargo_graphics_mappings = cargo_graphics_mappings_normal,
-                    label_refits_allowed = cargo_graphics_mappings_normal.keys(),
+                    label_refits_allowed = list(cargo_graphics_mappings_normal.keys()),
                     label_refits_disallowed = global_constants.disallowed_refits_by_label['non_flatcar_freight'],
                     autorefit = True,
                     default_cargo = 'STEL',
@@ -24,7 +24,7 @@ type_config_narrow_gauge = TypeConfig(base_id = 'flat_car_ng',
                     num_cargo_rows = 5,
                     class_refit_groups = ['flatcar_freight'],
                     cargo_graphics_mappings = cargo_graphics_mappings_narrow_gauge,
-                    label_refits_allowed = cargo_graphics_mappings_narrow_gauge.keys(),
+                    label_refits_allowed = list(cargo_graphics_mappings_narrow_gauge.keys()),
                     label_refits_disallowed = global_constants.disallowed_refits_by_label['non_flatcar_freight'],
                     autorefit = True,
                     default_cargo = 'STEL',
@@ -66,7 +66,7 @@ def main():
                         replacement_id = '-none',
                         intro_date = 1950,
                         vehicle_life = 40,
-                              use_legacy_spritesheet = True)
+                        use_legacy_spritesheet = True)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 35,
@@ -129,3 +129,4 @@ def main():
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=0)
+

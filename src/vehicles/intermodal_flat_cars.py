@@ -17,7 +17,7 @@ type_config = TypeConfig(base_id = 'intermodal_flat_car',
                 generic_cargo_rows = [0, 1, 2],
                 class_refit_groups = ['express_freight', 'packaged_freight'],
                 cargo_graphics_mappings = cargo_graphics_mappings,
-                #label_refits_allowed = cargo_graphics_mappings.keys(),
+                #label_refits_allowed = list(cargo_graphics_mappings.keys()),
                 # maintain other sets (e.g. Squid etc) when changing container refits
                 label_refits_allowed = ['FRUT','WATR'],
                 label_refits_disallowed = ['FISH','LVST','OIL_','TOUR','WOOD'],
