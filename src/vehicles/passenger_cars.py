@@ -21,6 +21,7 @@ type_config_narrow_gauge = TypeConfig(base_id = 'passenger_car_ng',
                                 track_type = 'NG')
 
 def main():
+    #--------------- brit ----------------------------------------------------------------------
     consist = WagonConsist(type_config = type_config_normal,
                         title = '[Passenger Car]',
                         roster = 'brit',
@@ -78,6 +79,26 @@ def main():
                            spritesheet_suffix=0)
 
 
+    consist = WagonConsist(type_config = type_config_narrow_gauge,
+                        title = '[Passenger Car]',
+                        roster = 'brit',
+                        wagon_generation = 1,
+                        replacement_id = '-none',
+                        intro_date = 1860,
+                        vehicle_life = 40,
+                        use_legacy_spritesheet = True)
+
+    consist.add_unit(Wagon(consist = consist,
+                            capacity_pax = 25,
+                            weight = 12,
+                            vehicle_length = 6))
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=0)
+
+
+    #--------------- soam ----------------------------------------------------------------------
     consist = WagonConsist(type_config = type_config_normal,
                         title = '[Passenger Car]',
                         roster = 'soam',
@@ -128,26 +149,7 @@ def main():
     consist.add_unit(Wagon(consist = consist,
                             capacity_pax = 60,
                             weight = 30,
-                            vehicle_length = 8))
-
-    consist.add_model_variant(intro_date=0,
-                           end_date=global_constants.max_game_date,
-                           spritesheet_suffix=0)
-
-
-    consist = WagonConsist(type_config = type_config_narrow_gauge,
-                        title = '[Passenger Car]',
-                        roster = 'brit',
-                        wagon_generation = 1,
-                        replacement_id = '-none',
-                        intro_date = 1860,
-                        vehicle_life = 40,
-                        use_legacy_spritesheet = True)
-
-    consist.add_unit(Wagon(consist = consist,
-                            capacity_pax = 25,
-                            weight = 12,
-                            vehicle_length = 6))
+                            vehicle_length = 10))
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
