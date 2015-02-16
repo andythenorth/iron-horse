@@ -28,6 +28,7 @@ type_config_narrow_gauge = TypeConfig(base_id = 'box_car_ng',
                     track_type = 'NG')
 
 def main():
+    #--------------- brit ----------------------------------------------------------------------
     consist = WagonConsist(type_config = type_config_normal,
                         title = '[Box Car]',
                         roster = 'brit',
@@ -133,5 +134,83 @@ def main():
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=1,
-                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options)
-)
+                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
+
+
+    #--------------- soam ----------------------------------------------------------------------
+    consist = WagonConsist(type_config = type_config_normal,
+                        title = '[Box Car]',
+                        roster = 'soam',
+                        wagon_generation = 1,
+                        replacement_id = '-none',
+                        intro_date = 1860,
+                        vehicle_life = 40)
+
+    consist.add_unit(Wagon(consist = consist,
+                            capacity_freight = 25,
+                            weight = 12,
+                            vehicle_length = 7))
+
+    options = {'template': 'box_car_soam_gen_1_template.png'}
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=0,
+                           graphics_processor=GraphicsProcessorFactory('pass_through_pipeline', options))
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=1,
+                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
+
+
+    consist = WagonConsist(type_config = type_config_normal,
+                        title = '[Box Car]',
+                        roster = 'soam',
+                        wagon_generation = 2,
+                        replacement_id = '-none',
+                        intro_date = 1950,
+                        vehicle_life = 40)
+
+    consist.add_unit(Wagon(consist = consist,
+                            capacity_freight = 35,
+                            weight = 18,
+                            vehicle_length = 6))
+
+    options = {'template': 'box_car_soam_gen_2_template.png'}
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=0,
+                           graphics_processor=GraphicsProcessorFactory('pass_through_pipeline', options))
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=1,
+                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
+
+
+    consist = WagonConsist(type_config = type_config_normal,
+                        title = '[Box Car]',
+                        roster = 'soam',
+                        wagon_generation = 3,
+                        replacement_id = '-none',
+                        intro_date = 1995,
+                        vehicle_life = 40)
+
+    consist.add_unit(Wagon(consist = consist,
+                            capacity_freight = 55,
+                            weight = 25,
+                            vehicle_length = 7))
+
+    options = {'template': 'box_car_soam_gen_3_template.png'}
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=0,
+                           graphics_processor=GraphicsProcessorFactory('pass_through_pipeline', options))
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=1,
+                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
