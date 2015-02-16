@@ -12,6 +12,7 @@ type_config = TypeConfig(base_id = 'covered_hopper_car',
                 loading_speed_multiplier = 2)
 
 def main():
+    #--------------- brit ----------------------------------------------------------------------
     consist = WagonConsist(type_config = type_config,
                         title = '[Covered Hopper Car]',
                         roster = 'brit',
@@ -92,3 +93,5 @@ def main():
                            spritesheet_suffix=1,
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
+
+    #--------------- soam ----------------------------------------------------------------------

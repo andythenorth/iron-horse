@@ -15,6 +15,7 @@ type_config = TypeConfig(base_id = 'edibles_tank_car',
                 loading_speed_multiplier = 2)
 
 def main():
+    #--------------- brit ----------------------------------------------------------------------
     consist = WagonConsist(type_config = type_config,
                         title = '[Edibles Tank Car]',
                         roster = 'brit',
@@ -70,3 +71,6 @@ def main():
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=1,
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
+
+
+    #--------------- soam ----------------------------------------------------------------------

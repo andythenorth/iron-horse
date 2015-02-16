@@ -1,6 +1,8 @@
 import global_constants
 from train import TypeConfig, WagonConsist, Wagon
 
+# no graphics processing - don't random colour cabeese, I tried it, looks daft
+
 type_config = TypeConfig(base_id = 'caboose_car',
                 template = 'train.pynml',
                 class_refit_groups = [], # refit nothing, don't mess with this, it breaks auto-replace
@@ -10,7 +12,7 @@ type_config = TypeConfig(base_id = 'caboose_car',
                 default_capacity_type = 'capacity_freight')
 
 def main():
-    # no graphics processing - don't random colour cabeese, I tried it, looks daft
+    #--------------- brit ----------------------------------------------------------------------
     consist = WagonConsist(type_config = type_config,
                         title = '[Caboose Car]',
                         roster = 'brit',
@@ -31,6 +33,7 @@ def main():
                            spritesheet_suffix=0)
 
 
+    #--------------- soam ----------------------------------------------------------------------
     consist = WagonConsist(type_config = type_config,
                         title = '[Caboose Car]',
                         roster = 'soam',
@@ -48,3 +51,5 @@ def main():
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=0)
+
+

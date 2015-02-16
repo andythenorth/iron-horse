@@ -28,6 +28,7 @@ type_config = TypeConfig(base_id = 'intermodal_flat_car',
 
 
 def main():
+    #--------------- brit ----------------------------------------------------------------------
     consist = WagonConsist(type_config = type_config,
                         title = '[Intermodal Flat Car]',
                         roster = 'brit',
@@ -49,3 +50,6 @@ def main():
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=0,
                            graphics_processor = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options))
+
+
+    #--------------- soam ----------------------------------------------------------------------
