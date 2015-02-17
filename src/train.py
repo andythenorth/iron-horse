@@ -195,7 +195,10 @@ class Consist(object):
     def get_rosters(self):
          # although the working definition is one and only one roster per vehicle...
         # ...this code is extensible, for hysterical reasons (should probably refactor it)
-        result = [self.roster]
+        result = []
+        for roster in registered_rosters:
+            if self.roster == roster.id:
+                result.append(roster)
         return result
 
     def get_expression_for_rosters(self):
@@ -604,12 +607,6 @@ class WagonConsist(Consist):
         self.wagon_generation = kwargs.get('wagon_generation', None)
         super(WagonConsist, self).__init__(**kwargs)
 
-        self.type_config = type_config
-        for roster in registered_rosters:
-            if kwargs.get('roster', None) == roster.id:
-                self.roster = roster
-                roster.register_wagon_consist(self)
-
         if kwargs.get('speed', None):
             self.speed = kwargs['speed']
         else:
@@ -623,6 +620,8 @@ class WagonConsist(Consist):
                 elif self.wagon_generation == 3:
                     self.speed = global_constants.gen_3_wagon_speeds[speedy]
 
+        self.type_config = type_config
+        self.roster = kwargs.get('roster', None)
         self.num_cargo_rows = type_config.num_cargo_rows
         self.cargo_graphics_mappings = type_config.cargo_graphics_mappings
         self.generic_cargo_rows = type_config.generic_cargo_rows
@@ -630,6 +629,9 @@ class WagonConsist(Consist):
         if type_config.date_variant_var != None:
             self.date_variant_var = type_config.date_variant_var
 
+        for roster in registered_rosters:
+            if self.roster == roster.id:
+                roster.register_wagon_consist(self)
 
     @property
     def buy_cost(self):
