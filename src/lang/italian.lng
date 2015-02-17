@@ -37,5 +37,6 @@ STR_NAME_SUFFIX_METAL_CAR                                       :Carro per metal
 STR_NAME_SUFFIX_OPEN_CAR                                        :Carro aperto
 STR_NAME_SUFFIX_PASSENGER_CAR                                   :Carrozza passeggeri
 STR_NAME_SUFFIX_REEFER_CAR                                      :Carro frigo
+STR_NAME_SUFFIX_ROTARY_GONDOLA_CAR                              :Carro gondola a rotazione
 STR_NAME_SUFFIX_SUPPLIES_CAR                                    :Carro per fornitura
 STR_NAME_SUFFIX_TANK_CAR                                        :Carro cisterna
