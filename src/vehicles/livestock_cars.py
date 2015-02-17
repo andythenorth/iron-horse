@@ -81,3 +81,37 @@ def main():
 
 
     #--------------- soam ----------------------------------------------------------------------
+    consist = WagonConsist(type_config = type_config_normal,
+                        title = '[Livestock Car]',
+                        roster = 'soam',
+                        wagon_generation = 1,
+                        replacement_id = '-none',
+                        intro_date = 1860,
+                        vehicle_life = 40)
+
+    consist.add_unit(Wagon(consist = consist,
+                            capacity_freight = 25,
+                            weight = 12,
+                            vehicle_length = 6))
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=0)
+
+
+    consist = WagonConsist(type_config = type_config_narrow_gauge,
+                        title = '[Livestock Car]',
+                        roster = 'soam',
+                        wagon_generation = 1,
+                        replacement_id = '-none',
+                        intro_date = 1860,
+                        vehicle_life = 40)
+
+    consist.add_unit(Wagon(consist = consist,
+                            capacity_freight = 20,
+                            weight = 5,
+                            vehicle_length = 6))
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=0)
