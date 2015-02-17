@@ -607,21 +607,27 @@ class WagonConsist(Consist):
         self.wagon_generation = kwargs.get('wagon_generation', None)
         super(WagonConsist, self).__init__(**kwargs)
 
+        self.type_config = type_config
+        # use roster id, not roster obj directly, because of multiprocessing problems with object references
+        self.roster = kwargs.get('roster', None)
+        for roster in registered_rosters:
+            if self.roster == roster.id:
+                roster.register_wagon_consist(self)
+                roster_obj = roster # roster_obj for local reference only, don't persist this
+
         if kwargs.get('speed', None):
             self.speed = kwargs['speed']
         else:
             if self.track_type == 'NG':
-                self.speed = global_constants.ng_wagon_speeds[speedy]
+                self.speed = roster_obj.speeds['ng_wagon_speeds'][speedy]
             else:
                 if self.wagon_generation == 1:
-                    self.speed = global_constants.gen_1_wagon_speeds[speedy]
+                    self.speed = roster_obj.speeds['gen_1_wagon_speeds'][speedy]
                 elif self.wagon_generation == 2:
-                    self.speed = global_constants.gen_2_wagon_speeds[speedy]
+                    self.speed = roster_obj.speeds['gen_2_wagon_speeds'][speedy]
                 elif self.wagon_generation == 3:
-                    self.speed = global_constants.gen_3_wagon_speeds[speedy]
+                    self.speed = roster_obj.speeds['gen_3_wagon_speeds'][speedy]
 
-        self.type_config = type_config
-        self.roster = kwargs.get('roster', None)
         self.num_cargo_rows = type_config.num_cargo_rows
         self.cargo_graphics_mappings = type_config.cargo_graphics_mappings
         self.generic_cargo_rows = type_config.generic_cargo_rows
@@ -629,9 +635,6 @@ class WagonConsist(Consist):
         if type_config.date_variant_var != None:
             self.date_variant_var = type_config.date_variant_var
 
-        for roster in registered_rosters:
-            if self.roster == roster.id:
-                roster.register_wagon_consist(self)
 
     @property
     def buy_cost(self):

@@ -21,7 +21,15 @@ from vehicles import universal
 from vehicles import ut440
 from vehicles import v8
 
+# speed for wagons in mph (some generations may optionally have no speed set)
+# format is [standard, speedy]
+speeds = dict(gen_1_wagon_speeds = [50, 65],
+              gen_2_wagon_speeds = [65, 85],
+              gen_3_wagon_speeds = [85, None],
+              ng_wagon_speeds = [40, 70])
+
 roster = Roster(id = 'soam',
+                speeds = speeds,
                 engines = [thing_ng,
                            burro,
                            americano,

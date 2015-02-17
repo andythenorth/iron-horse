@@ -13,6 +13,7 @@ class Roster(object):
             self.engine_consists.append(engine.consist)
             engine.consist.roster = self.id
         self.wagon_consists = dict([(base_id, []) for base_id in global_constants.buy_menu_sort_order_wagons])
+        self.speeds = kwargs.get('speeds')
 
     @property
     def buy_menu_sort_order(self):
