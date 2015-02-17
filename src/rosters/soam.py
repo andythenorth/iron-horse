@@ -14,6 +14,7 @@ from vehicles import krauss
 from vehicles import pacifico
 from vehicles import pala
 from vehicles import peacock
+from vehicles import potosi
 from vehicles import roca
 from vehicles import super_mountain
 from vehicles import thing_ng
@@ -37,6 +38,7 @@ roster = Roster(id = 'soam',
                            cooke,
                            pacifico,
                            argentina,
+                           potosi,
                            super_mountain,
                            electrico,
                            estados,
