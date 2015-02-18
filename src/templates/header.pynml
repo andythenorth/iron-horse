@@ -27,7 +27,7 @@ grf {
 			max_value: ${len(registered_rosters)-1};
 			names: {
 			    <tal:rosters repeat="roster registered_rosters">
-                    ${repeat.roster.index}: string(STR_PARAM_ROSTER_OPTION_${repeat.roster.index});
+                    ${roster.numeric_id - 1}: string(STR_PARAM_ROSTER_OPTION_${roster.numeric_id - 1});
 			    </tal:rosters>
 			};
 		}
