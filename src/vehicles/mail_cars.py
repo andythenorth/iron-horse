@@ -98,7 +98,6 @@ def main():
                         use_legacy_spritesheet = True)
 
     consist.add_unit(MailCar(consist = consist,
-                            capacity_freight = 12,
                             capacity_mail = 24,
                             weight = 5,
                             vehicle_length = 5))
@@ -165,3 +164,20 @@ def main():
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=0)
 
+
+    consist = WagonConsist(type_config = type_config_narrow_gauge,
+                        title = '[Mail Car]',
+                        roster = 'soam',
+                        wagon_generation = 1,
+                        replacement_id = '-none',
+                        intro_date = 1860,
+                        vehicle_life = 40)
+
+    consist.add_unit(MailCar(consist = consist,
+                            capacity_mail = 30,
+                            weight = 5,
+                            vehicle_length = 6))
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=0)
