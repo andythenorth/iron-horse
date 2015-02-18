@@ -1,6 +1,7 @@
 from roster import Roster
 
 from vehicles import americano
+from vehicles import anaconda
 from vehicles import argentina
 from vehicles import astarsa
 from vehicles import breda
@@ -51,4 +52,5 @@ roster = Roster(id = 'soam',
                            astarsa,
                            universal,
                            evolucao,
-                           roca])
+                           roca,
+                           anaconda])
