@@ -13,7 +13,7 @@ roster = *
 
 iron-horse-nml:
 	$(_E) [GENERATE]
-	$(_V) python src/build_iron_horse.py '${REPO_TITLE}' '${REPO_REVISION}' '${ic}' '${pw}' '${roster}'
+	$(_V) python3 src/build_iron_horse.py '${REPO_TITLE}' '${REPO_REVISION}' '${ic}' '${pw}' '${roster}'
 
 clean::
 	$(_V)-rm -r docs
