@@ -57,7 +57,7 @@ class Consist(object):
         # create structure to hold the slices
         self.slices = []
         # roster is set when the vehicle is registered to a roster, only one roster per vehicle
-        self.roster = None
+        self.roster_id = None
 
 
     def add_model_variant(self, intro_date, end_date, spritesheet_suffix, graphics_processor=None, visual_effect_offset=None):
@@ -197,7 +197,7 @@ class Consist(object):
         # ...this code is extensible, for hysterical reasons (should probably refactor it)
         result = []
         for roster in registered_rosters:
-            if self.roster == roster.id:
+            if self.roster_id == roster.id:
                 result.append(roster)
         return result
 
@@ -609,9 +609,9 @@ class WagonConsist(Consist):
 
         self.type_config = type_config
         # use roster id, not roster obj directly, because of multiprocessing problems with object references
-        self.roster = kwargs.get('roster', None)
+        self.roster_id = kwargs.get('roster', None)
         for roster in registered_rosters:
-            if self.roster == roster.id:
+            if self.roster_id == roster.id:
                 roster.register_wagon_consist(self)
                 roster_obj = roster # roster_obj for local reference only, don't persist this
 

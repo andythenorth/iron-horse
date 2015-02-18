@@ -11,7 +11,7 @@ class Roster(object):
         self.engine_consists = []
         for engine in kwargs.get('engines'):
             self.engine_consists.append(engine.consist)
-            engine.consist.roster = self.id
+            engine.consist.roster_id = self.id
         self.wagon_consists = dict([(base_id, []) for base_id in global_constants.buy_menu_sort_order_wagons])
         self.speeds = kwargs.get('speeds')
 
@@ -40,7 +40,7 @@ class Roster(object):
 
     def register_wagon_consist(self, wagon_consist):
         self.wagon_consists[wagon_consist.type_config.base_id].append(wagon_consist)
-        wagon_consist.roster = self.id
+        wagon_consist.roster_id = self.id
 
     def register(self):
         registered_rosters.append(self)
