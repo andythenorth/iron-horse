@@ -811,6 +811,16 @@ class CombineCar(Wagon):
         super(CombineCar, self).__init__(**kwargs)
 
 
+class BoxCar(Wagon):
+    """
+    Box Car.
+    """
+    # this sub-class only exists to handle the mail capacity, otherwise it's a standard wagon
+    def __init__(self, **kwargs):
+        super(BoxCar, self).__init__(**kwargs)
+        self.capacities_mail = [int(2.0 * capacity) for capacity in self.capacities_freight]
+
+
 class MetroMultipleUnit(Train):
     """
     Metro Unit

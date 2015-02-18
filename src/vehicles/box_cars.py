@@ -1,5 +1,5 @@
 import global_constants
-from train import TypeConfig, WagonConsist, Wagon, GraphicsProcessorFactory
+from train import TypeConfig, WagonConsist, BoxCar, GraphicsProcessorFactory
 
 box_car_label_refits_allowed = ['MAIL', 'GRAI', 'WHEA', 'MAIZ', 'FRUT', 'BEAN', 'NITR']
 cargo_graphics_mappings = {} # template needs this, but box car has zero cargo-specific graphics, all generic
@@ -38,7 +38,7 @@ def main():
                         vehicle_life = 40,
                         use_legacy_spritesheet = True)
 
-    consist.add_unit(Wagon(consist = consist,
+    consist.add_unit(BoxCar(consist = consist,
                             capacity_freight = 20,
                             weight = 12,
                             vehicle_length = 5))
@@ -65,7 +65,7 @@ def main():
                         vehicle_life = 40,
                         use_legacy_spritesheet = True)
 
-    consist.add_unit(Wagon(consist = consist,
+    consist.add_unit(BoxCar(consist = consist,
                             capacity_freight = 35,
                             weight = 18,
                             vehicle_length = 6))
@@ -91,7 +91,7 @@ def main():
                         intro_date = 1995,
                         vehicle_life = 40)
 
-    consist.add_unit(Wagon(consist = consist,
+    consist.add_unit(BoxCar(consist = consist,
                             capacity_freight = 55,
                             weight = 25,
                             vehicle_length = 10))
@@ -118,7 +118,7 @@ def main():
                         vehicle_life = 40,
                         use_legacy_spritesheet = True)
 
-    consist.add_unit(Wagon(consist = consist,
+    consist.add_unit(BoxCar(consist = consist,
                             capacity_freight = 12,
                             capacity_mail = 20,
                             weight = 5,
@@ -146,7 +146,7 @@ def main():
                         intro_date = 1860,
                         vehicle_life = 40)
 
-    consist.add_unit(Wagon(consist = consist,
+    consist.add_unit(BoxCar(consist = consist,
                             capacity_freight = 25,
                             weight = 12,
                             vehicle_length = 7))
@@ -172,7 +172,7 @@ def main():
                         intro_date = 1950,
                         vehicle_life = 40)
 
-    consist.add_unit(Wagon(consist = consist,
+    consist.add_unit(BoxCar(consist = consist,
                             capacity_freight = 35,
                             weight = 18,
                             vehicle_length = 6))
@@ -198,7 +198,7 @@ def main():
                         intro_date = 1995,
                         vehicle_life = 40)
 
-    consist.add_unit(Wagon(consist = consist,
+    consist.add_unit(BoxCar(consist = consist,
                             capacity_freight = 55,
                             weight = 25,
                             vehicle_length = 7))
@@ -224,7 +224,7 @@ def main():
                         intro_date = 1860,
                         vehicle_life = 40)
 
-    consist.add_unit(Wagon(consist = consist,
+    consist.add_unit(BoxCar(consist = consist,
                             capacity_freight = 20,
                             capacity_mail = 20,
                             weight = 5,
