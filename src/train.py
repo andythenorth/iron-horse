@@ -94,7 +94,7 @@ class Consist(object):
         # guard against the ID being too large to build in an articulated consist
         if numeric_id > 16383:
             utils.echo_message("Error: numeric_id " + str(numeric_id) + " for " + self.id + " can't be used (16383 is max ID for articulated vehicles)")
-        # register consist with this module so other modules can use it, with a non-blocking guard on duplicate IDs
+        # non-blocking guard on duplicate IDs
         for id in numeric_id_defender:
             if id == numeric_id:
                 utils.echo_message("Error: consist " + self.id + " slice id collides (" + str(numeric_id) + ") with slices in another consist")
