@@ -105,9 +105,8 @@ class Consist(object):
         # auto id creator, used for wagons not locos
         return '_'.join((id_base, kwargs['roster'], 'gen', str(kwargs['wagon_generation'])))
 
-    def get_wagon_numeric_id(self, base_id, **kwargs):
+    def get_wagon_numeric_id(self, roster_base_number, base_id, **kwargs):
         # auto numeric_id creator, used for wagons not locos
-        roster_base_number = global_constants.roster_id_mapping[kwargs['roster']]
         type_base_number = global_constants.wagon_type_numeric_ids[base_id]
         result = (1000 * roster_base_number) + type_base_number + (3 * (kwargs['wagon_generation'] - 1))
         return result
@@ -192,20 +191,15 @@ class Consist(object):
     def weight(self):
         return sum([getattr(slice, 'weight', 0) for slice in self.slices])
 
-    def get_rosters(self):
-         # although the working definition is one and only one roster per vehicle...
-        # ...this code is extensible, for hysterical reasons (should probably refactor it)
-        result = []
+    def get_roster(self, roster_id):
         for roster in registered_rosters:
-            if self.roster_id == roster.id:
-                result.append(roster)
-        return result
+            if roster_id == roster.id:
+                return roster
 
     def get_expression_for_rosters(self):
-        result = []
-        for roster in self.get_rosters():
-            result.append('param[1]=='+str(registered_rosters.index(roster)))
-        return ' || '.join(result)
+        # the working definition is one and only one roster per vehicle
+        roster = self.get_roster(self.roster_id)
+        return 'param[1]==' + str(roster.numeric_id - 1)
 
     @property
     def buy_menu_width (self):
@@ -600,20 +594,19 @@ class WagonConsist(Consist):
     This class should be sparse - only declare the most limited set of properties common to wagon consists.
     """
     def __init__(self, type_config, speedy=False, **kwargs):
+        # persist roster id for lookups, not roster obj directly, because of multiprocessing problems with object references
+        self.roster_id = kwargs.get('roster', None)
+        roster_obj = self.get_roster(self.roster_id)  # roster_obj for local reference only, don't persist this
+
         id = self.get_wagon_id(type_config.base_id, **kwargs)
         kwargs['id'] = id
-        kwargs['base_numeric_id'] = self.get_wagon_numeric_id(type_config.base_id, **kwargs)
+        kwargs['base_numeric_id'] = self.get_wagon_numeric_id(roster_obj.numeric_id, type_config.base_id, **kwargs)
         kwargs['track_type'] = type_config.track_type
         self.wagon_generation = kwargs.get('wagon_generation', None)
         super(WagonConsist, self).__init__(**kwargs)
 
         self.type_config = type_config
-        # use roster id, not roster obj directly, because of multiprocessing problems with object references
-        self.roster_id = kwargs.get('roster', None)
-        for roster in registered_rosters:
-            if self.roster_id == roster.id:
-                roster.register_wagon_consist(self)
-                roster_obj = roster # roster_obj for local reference only, don't persist this
+        roster_obj.register_wagon_consist(self)
 
         if kwargs.get('speed', None):
             self.speed = kwargs['speed']

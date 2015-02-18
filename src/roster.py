@@ -8,6 +8,7 @@ class Roster(object):
     """
     def __init__(self, **kwargs):
         self.id = kwargs.get('id')
+        self.numeric_id = kwargs.get('numeric_id')
         self.engine_consists = []
         for engine in kwargs.get('engines'):
             self.engine_consists.append(engine.consist)

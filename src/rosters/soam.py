@@ -31,6 +31,7 @@ speeds = dict(gen_1_wagon_speeds = [50, 65],
               ng_wagon_speeds = [40, 70])
 
 roster = Roster(id = 'soam',
+                numeric_id = 2,
                 speeds = speeds,
                 engines = [thing_ng,
                            burro,

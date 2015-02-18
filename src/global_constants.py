@@ -25,11 +25,6 @@ buy_menu_sort_order_wagons = ['metro_car',
                               'flat_car_ng',
                               'livestock_car_ng']
 
-# set (roster) <-> numeric id mapping
-# vehicle IDs are in format nxxx where n is set numeric id
-# first 1k IDs reserved, IDs must be < 16383, with 1000 IDs allocated per set
-roster_id_mapping = {'brit': 1, 'soam': 2}
-
 # sets have up to 500 IDs for main set, zero-based, and 400 IDs for 'extras' (metro, narrow gauge etc)
 # 900-990 IDs are reserved in case we run into any 'wtf' stuff that needs a gap
 # wagon IDs run 250-490 and 750-890, the 0-240 and 500-740 IDs in a vehicle set are reserved for engines
