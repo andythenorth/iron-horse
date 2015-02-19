@@ -51,7 +51,6 @@ dep_timestamps_new = {}
 
 consists = iron_horse.get_consists_in_buy_menu_order(show_warnings=True)
 
-
 def check_item_dirty(path):
     # is a specific item we want to compile dirty?
     if repo_vars.get('incremental_compile', None) == 'True' and everything_dirty == False:
@@ -124,8 +123,8 @@ def render_dispatcher(items, renderer):
         for item in items:
             renderer(item)
     else:
-        with Pool(processes=num_pool_workers) as pool:
-            pool.map(renderer, items)
+        pool = Pool(processes=num_pool_workers)
+        pool.map(renderer, items)
 
 
 def link_nfo(item, dep_path, split=None):
