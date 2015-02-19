@@ -5,6 +5,7 @@ from vehicles import americano
 from vehicles import anaconda
 from vehicles import argentina
 from vehicles import astarsa
+from vehicles import baldwin
 from vehicles import breda
 from vehicles import burro
 from vehicles import cooke
@@ -49,6 +50,7 @@ roster = Roster(id = 'soam',
                            v8,
                            ut440,
                            justicialista,
+                           baldwin,
                            krauss,
                            pala,
                            astarsa,
