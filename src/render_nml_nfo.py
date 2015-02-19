@@ -49,7 +49,7 @@ else:
     dep_timestamps = json.loads(codecs.open(dep_timestamps_path,'r','utf8').read())
 dep_timestamps_new = {}
 
-consists = iron_horse.get_consists_in_buy_menu_order(show_warnings=True)
+consists = iron_horse.get_consists_in_buy_menu_order()
 
 def check_item_dirty(path):
     # is a specific item we want to compile dirty?

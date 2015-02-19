@@ -81,7 +81,7 @@ supplies_cars.main()
 from vehicles import tank_cars
 tank_cars.main()
 
-def get_consists_in_buy_menu_order(show_warnings=False):
+def get_consists_in_buy_menu_order():
     consists = []
     # first compose the buy menu order list
     buy_menu_sort_order = []
@@ -89,7 +89,6 @@ def get_consists_in_buy_menu_order(show_warnings=False):
         active_rosters = [roster.id for roster in registered_rosters]
     else:
         active_rosters = [repo_vars['roster']] # make sure it's iterable
-    utils.echo_message(str(active_rosters))
     for roster in registered_rosters:
         if roster.id in active_rosters:
             buy_menu_sort_order.extend(roster.buy_menu_sort_order)
