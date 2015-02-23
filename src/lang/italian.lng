@@ -4,39 +4,39 @@
 ##case fp fs mp ms
 STR_GRF_DESCRIPTION                                             :Licenza: {SILVER}GPL v2{}{BLACK}
 
-STR_PARAM_ADJUST_VEHICLE_CAPACITY                               :Capacitá del treno
-STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :Scarsa
+STR_PARAM_ADJUST_VEHICLE_CAPACITY                               :Capacità del treno
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :Squallida
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Meravigliosa
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Eccessiva
 STR_PARAM_ROSTER                                                :Lista
-STR_PARAM_ROSTER_DESC                                           :Selezionate quale pachetto di treni volete usare.
+STR_PARAM_ROSTER_DESC                                           :Selezionate quale set di treni volete usare.
 STR_PARAM_ROSTER_OPTION_0                                       :Un cavallo! Un cavallo! Il mio regno per un cavallo!
 STR_PARAM_ROSTER_OPTION_1                                       :Caballada
 
 # keep these alphabetised, easier
 STR_NAME_SUFFIX_BATTERY                                         :(Batteria)
-STR_NAME_SUFFIX_CAR                                             :Carro
+STR_NAME_SUFFIX_CAR                                             :Vagone
 STR_NAME_SUFFIX_DIESEL                                          :(Diesel)
 STR_NAME_SUFFIX_ELECTRIC                                        :(Elettrica)
-STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Elettro-Diesel)
-STR_NAME_SUFFIX_METRO_CAR                                       :Carro (Metro)
-STR_NAME_SUFFIX_METRO_TRAIN                                     :(Metro)
-STR_NAME_SUFFIX_STEAM                                           :(Vapore)
+STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Diesel-Elettrica)
+STR_NAME_SUFFIX_METRO_CAR                                       :Carro (Ferrovia suburbana)
+STR_NAME_SUFFIX_METRO_TRAIN                                     :(Ferrovia suburbana)
+STR_NAME_SUFFIX_STEAM                                           :(A vapore)
 
-STR_NAME_SUFFIX_BOX_CAR                                         :Carro coperto
-STR_NAME_SUFFIX_CABOOSE_CAR                                     :Carro cambusa
+STR_NAME_SUFFIX_BOX_CAR                                         :Carro chiuso
+STR_NAME_SUFFIX_CABOOSE_CAR                                     :Carro di fine convoglio
 STR_NAME_SUFFIX_COMBINE_CAR                                     :Carro combinato
-STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Carro portarinfuse coperto
+STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Carro a tramoggia coperto
 STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Carro cisterna per alimentari
-STR_NAME_SUFFIX_FLAT_CAR                                        :Carro pianale
-STR_NAME_SUFFIX_HOPPER_CAR                                      :Carro portarinfuse
-STR_NAME_SUFFIX_INTERMODAL_FLAT_CAR                             :Carro pianale intermodale
-STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Carro per bestiame
+STR_NAME_SUFFIX_FLAT_CAR                                        :Carro piatto
+STR_NAME_SUFFIX_HOPPER_CAR                                      :Carro a tramoggia
+STR_NAME_SUFFIX_INTERMODAL_FLAT_CAR                             :Carro piatto intermodale
+STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Carro bestiame
 STR_NAME_SUFFIX_MAIL_CAR                                        :Carro postale
 STR_NAME_SUFFIX_METAL_CAR                                       :Carro per metalli
 STR_NAME_SUFFIX_OPEN_CAR                                        :Carro aperto
 STR_NAME_SUFFIX_PASSENGER_CAR                                   :Carrozza passeggeri
-STR_NAME_SUFFIX_REEFER_CAR                                      :Carro frigo
-STR_NAME_SUFFIX_ROTARY_GONDOLA_CAR                              :Carro gondola a rotazione
-STR_NAME_SUFFIX_SUPPLIES_CAR                                    :Carro per fornitura
+STR_NAME_SUFFIX_REEFER_CAR                                      :Carro frigorifero
+STR_NAME_SUFFIX_ROTARY_GONDOLA_CAR                              :Carro aperto a sponde alte
+STR_NAME_SUFFIX_SUPPLIES_CAR                                    :Carro per forniture
 STR_NAME_SUFFIX_TANK_CAR                                        :Carro cisterna
