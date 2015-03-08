@@ -20,7 +20,25 @@ type_config = TypeConfig(base_id = 'metal_car',
 def main():
     #--------------- brit ----------------------------------------------------------------------
 
-    # no gen 1 yet
+    consist = WagonConsist(type_config = type_config,
+                        title = '[Metal Car]',
+                        roster = 'brit',
+                        wagon_generation = 1,
+                        replacement_id = '-none',
+                        intro_date = 1860,
+                        vehicle_life = 50,
+                        speed = 45)
+
+    consist.add_unit(Wagon(consist = consist,
+                            capacity_freight = 30,
+                            weight = 30,
+                            vehicle_length = 5,
+                            spriterow_num = 0))
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=0)
+
 
     consist = WagonConsist(type_config = type_config,
                         title = '[Metal Car]',
@@ -28,7 +46,7 @@ def main():
                         wagon_generation = 2,
                         replacement_id = '-none',
                         intro_date = 1910,
-                        vehicle_life = 40,
+                        vehicle_life = 50,
                         speed = 45)
 
     consist.add_unit(Wagon(consist = consist,
