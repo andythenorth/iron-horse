@@ -27,7 +27,7 @@ def main():
                         replacement_id = '-none',
                         intro_date = 1860,
                         vehicle_life = 50,
-                        speed = 45)
+                        speed = 35)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 30,
