@@ -18,6 +18,19 @@ type_config_normal = TypeConfig(base_id = 'hopper_car',
                     default_capacity_type = 'capacity_freight',
                     loading_speed_multiplier = 2)
 
+type_config_narrow_gauge = TypeConfig(base_id = 'hopper_car_ng',
+                    template = 'car_with_visible_cargo.pynml',
+                    num_cargo_rows = 7,
+                    class_refit_groups = ['hopper_freight'],
+                    cargo_graphics_mappings = cargo_graphics_mappings,
+                    label_refits_allowed = list(cargo_graphics_mappings.keys()),
+                    label_refits_disallowed = global_constants.disallowed_refits_by_label['non_hopper_freight'],
+                    autorefit = True,
+                    default_cargo = 'COAL',
+                    default_capacity_type = 'capacity_freight',
+                    track_type = 'NG',
+                    loading_speed_multiplier = 2)
+
 def get_graphics_processors(template):
     recolour_maps = graphics_utils.get_bulk_cargo_recolour_maps()
     graphics_options_master = {'template': '',
@@ -131,6 +144,85 @@ def main():
                             vehicle_length = 6))
 
     graphics_processors = get_graphics_processors('hopper_car_soam_gen_2_template.png')
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=0,
+                           graphics_processor=graphics_processors[0])
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=1,
+                           graphics_processor=graphics_processors[1])
+
+
+    consist = WagonConsist(type_config = type_config_normal,
+                        title = '[Hopper Car]',
+                        roster = 'soam',
+                        wagon_generation = 3,
+                        replacement_id = '-none',
+                        intro_date = 1985,
+                        vehicle_life = 40)
+
+    consist.add_unit(Wagon(consist = consist,
+                            capacity_freight = 75,
+                            weight = 25,
+                            vehicle_length = 6))
+
+    graphics_processors = get_graphics_processors('hopper_car_soam_gen_3_template.png')
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=0,
+                           graphics_processor=graphics_processors[0])
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=1,
+                           graphics_processor=graphics_processors[1])
+
+
+
+    consist = WagonConsist(type_config = type_config_narrow_gauge,
+                        title = '[Rotary Gondola Car]',
+                        roster = 'soam',
+                        wagon_generation = 2,
+                        replacement_id = '-none',
+                        intro_date = 1945,
+                        vehicle_life = 40)
+
+    consist.add_unit(Wagon(consist = consist,
+                            capacity_freight = 55,
+                            weight = 20,
+                            vehicle_length = 6))
+
+    graphics_processors = get_graphics_processors('hopper_car_ng_soam_gen_2_template.png')
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=0,
+                           graphics_processor=graphics_processors[0])
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=1,
+                           graphics_processor=graphics_processors[1])
+
+
+    consist = WagonConsist(type_config = type_config_narrow_gauge,
+                        title = '[Hopper Car]',
+                        roster = 'soam',
+                        wagon_generation = 3,
+                        replacement_id = '-none',
+                        intro_date = 1985,
+                        vehicle_life = 40)
+
+    consist.add_unit(Wagon(consist = consist,
+                            capacity_freight = 75,
+                            weight = 25,
+                            vehicle_length = 6))
+
+    graphics_processors = get_graphics_processors('hopper_car_ng_soam_gen_3_template.png')
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,

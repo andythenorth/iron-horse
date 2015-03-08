@@ -21,6 +21,7 @@ buy_menu_sort_order_wagons = ['metro_car',
                               'mail_car_ng',
                               'open_car_ng',
                               'box_car_ng',
+                              'hopper_car_ng',
                               'tank_car_ng',
                               'flat_car_ng',
                               'livestock_car_ng']
@@ -36,7 +37,7 @@ wagon_type_numeric_ids = {'caboose_car': 250, 'box_car': 260, 'covered_hopper_ca
                           'metal_car': 410,
                           # extra (NG, maglev) wagon IDs start at 750, max extra wagon type ID is 890
                           # 750 is empty
-                          'mail_car_ng': 750, 'box_car_ng': 760,  'flat_car_ng': 780,
+                          'mail_car_ng': 750, 'box_car_ng': 760, 'hopper_car_ng': 760, 'flat_car_ng': 780,
                           'tank_car_ng' : 800, 'livestock_car_ng': 810,
                           'open_car_ng': 840, 'passenger_car_ng': 850}
 
