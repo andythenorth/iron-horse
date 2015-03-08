@@ -3,13 +3,13 @@
 <tal:sprites_random_variations repeat="variation_num python:range(consist.get_num_spritesets())">
     <tal:cargo_variants repeat="cargo_variant_num python:range(2)">
         spriteset(${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_0, "${global_constants.graphics_path}${consist.id}_${variation_num}.png") {
-            spriteset_template_${vehicle.id}(10 + ${cargo_variant_num * 90}, ${vehicle.adjust_xoffs})
+            spriteset_template_${vehicle.id}(${vehicle.spriterow_num * 180} + 10 + ${cargo_variant_num * 90}, ${vehicle.adjust_xoffs})
         }
         spriteset(${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_1, "${global_constants.graphics_path}${consist.id}_${variation_num}.png") {
-            spriteset_template_${vehicle.id}(40 + ${cargo_variant_num * 90}, ${vehicle.adjust_xoffs})
+            spriteset_template_${vehicle.id}(${vehicle.spriterow_num * 180} + 40 + ${cargo_variant_num * 90}, ${vehicle.adjust_xoffs})
         }
         spriteset(${vehicle.id}_ss_${variation_num}_${cargo_variant_num}_2, "${global_constants.graphics_path}${consist.id}_${variation_num}.png") {
-            spriteset_template_${vehicle.id}(70 + ${cargo_variant_num * 90}, ${vehicle.adjust_xoffs})
+            spriteset_template_${vehicle.id}(${vehicle.spriterow_num * 180} + 70 + ${cargo_variant_num * 90}, ${vehicle.adjust_xoffs})
         }
 
         spritegroup ${vehicle.id}_sg_${variation_num}_${cargo_variant_num} {

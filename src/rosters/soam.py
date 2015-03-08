@@ -16,6 +16,7 @@ from vehicles import justicialista
 from vehicles import krauss
 from vehicles import pacifico
 from vehicles import pala
+from vehicles import patagonia
 from vehicles import peacock
 from vehicles import potosi
 from vehicles import roca
@@ -58,4 +59,5 @@ roster = Roster(id = 'soam',
                            evolucao,
                            roca,
                            amazon,
-                           anaconda])
+                           anaconda,
+                           patagonia])
