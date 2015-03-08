@@ -119,3 +119,29 @@ def main():
                            spritesheet_suffix=1,
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
+
+    consist = WagonConsist(type_config = type_config,
+                        title = '[Covered Hopper Car]',
+                        roster = 'soam',
+                        wagon_generation = 3,
+                        replacement_id = '-none',
+                        intro_date = 1985,
+                        vehicle_life = 40)
+
+    consist.add_unit(Wagon(consist = consist,
+                            capacity_freight = 65,
+                            weight = 27,
+                            vehicle_length = 8))
+
+    options = {'template': 'covered_hopper_car_soam_gen_3_template.png'}
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=0,
+                           graphics_processor=GraphicsProcessorFactory('pass_through_pipeline', options))
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=1,
+                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
+
