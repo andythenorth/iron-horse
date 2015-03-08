@@ -18,6 +18,7 @@ from vehicles import pacifico
 from vehicles import pala
 from vehicles import patagonia
 from vehicles import peacock
+from vehicles import pequeno
 from vehicles import potosi
 from vehicles import roca
 from vehicles import super_mountain
@@ -59,6 +60,7 @@ roster = Roster(id = 'soam',
                            astarsa,
                            universal,
                            evolucao,
+                           pequeno,
                            roca,
                            amazon,
                            anaconda,
