@@ -611,8 +611,14 @@ class WagonConsist(Consist):
         if kwargs.get('speed', None):
             self.speed = kwargs['speed']
         else:
+            # eh this is ugly, but it works
             if self.track_type == 'NG':
-                self.speed = roster_obj.speeds['ng_wagon_speeds'][speedy]
+                if self.wagon_generation == 1:
+                    self.speed = roster_obj.speeds['ng_gen_1_wagon_speeds'][speedy]
+                elif self.wagon_generation == 2:
+                    self.speed = roster_obj.speeds['ng_gen_2_wagon_speeds'][speedy]
+                elif self.wagon_generation == 3:
+                    self.speed = roster_obj.speeds['ng_gen_3_wagon_speeds'][speedy]
             else:
                 if self.wagon_generation == 1:
                     self.speed = roster_obj.speeds['gen_1_wagon_speeds'][speedy]
