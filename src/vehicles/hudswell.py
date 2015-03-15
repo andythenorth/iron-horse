@@ -3,7 +3,7 @@ from train import EngineConsist, SteamLoco
 
 consist = EngineConsist(id = 'hudswell',
               base_numeric_id = 1550,
-              title = 'Hudswell [Steam]',
+              title = '2-6-4 Hudswell [Steam]',
               replacement_id = '-none',
               track_type = 'NG',
               power = 650,
