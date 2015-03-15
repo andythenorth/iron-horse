@@ -58,3 +58,23 @@ def main():
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=0)
+
+
+    consist = WagonConsist(type_config = type_config,
+                        title = '[Metal Car]',
+                        roster = 'brit',
+                        wagon_generation = 3,
+                        replacement_id = '-none',
+                        intro_date = 1960,
+                        vehicle_life = 50,
+                        speed = 65)
+
+    consist.add_unit(Wagon(consist = consist,
+                            capacity_freight = 90,
+                            weight = 90,
+                            vehicle_length = 10,
+                            spriterow_num = 0))
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=0)
