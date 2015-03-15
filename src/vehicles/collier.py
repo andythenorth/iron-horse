@@ -3,10 +3,10 @@ from train import EngineConsist, SteamLoco, SteamLocoTender
 
 consist = EngineConsist(id = 'collier',
               base_numeric_id = 1030,
-              title = '0-8-0 Collier [Steam]',
+              title = '0-10-0 Collier [Steam]',
               replacement_id = '-none',
               power = 1300,
-              tractive_effort_coefficient = 0.29,
+              tractive_effort_coefficient = 0.3,
               speed = 45,
               type_base_buy_cost_points = 6, # dibble buy cost for game balance
               vehicle_life = 40,
