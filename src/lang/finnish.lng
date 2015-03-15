@@ -6,6 +6,10 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY                               :Junien kapasite
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :Mitätön
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Loistava
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Kohtuuton
+STR_PARAM_ROSTER                                                :Valikoima
+STR_PARAM_ROSTER_DESC                                           :Valitse käytettävä junavalikoima.
+STR_PARAM_ROSTER_OPTION_0                                       :Ihahaa! Ihahaa! Hepo hirnahtaa!
+STR_PARAM_ROSTER_OPTION_1                                       :Caballada
 
 # keep these alphabetised, easier
 STR_NAME_SUFFIX_BATTERY                                         :(Paristo)
@@ -17,3 +21,20 @@ STR_NAME_SUFFIX_METRO_CAR                                       :Vaunu (Metro)
 STR_NAME_SUFFIX_METRO_TRAIN                                     :(Metro)
 STR_NAME_SUFFIX_STEAM                                           :(Höyry)
 
+STR_NAME_SUFFIX_BOX_CAR                                         :Yleisvaunu
+STR_NAME_SUFFIX_CABOOSE_CAR                                     :Konduktöörivaunu
+STR_NAME_SUFFIX_COMBINE_CAR                                     :Yhdistetty vaunu
+STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Katettu malmivaunu
+STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Elintarvikesäiliövaunu
+STR_NAME_SUFFIX_FLAT_CAR                                        :Avovaunu
+STR_NAME_SUFFIX_HOPPER_CAR                                      :Malmivaunu
+STR_NAME_SUFFIX_INTERMODAL_FLAT_CAR                             :Intermodaalinen avovaunu
+STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Karjavaunu
+STR_NAME_SUFFIX_MAIL_CAR                                        :Postivaunu
+STR_NAME_SUFFIX_METAL_CAR                                       :Metallivaunu
+STR_NAME_SUFFIX_OPEN_CAR                                        :Avovaunu
+STR_NAME_SUFFIX_PASSENGER_CAR                                   :Matkustajavaunu
+STR_NAME_SUFFIX_REEFER_CAR                                      :Jäähdytysvaunu
+STR_NAME_SUFFIX_ROTARY_GONDOLA_CAR                              :Käännettävä avovaunu
+STR_NAME_SUFFIX_SUPPLIES_CAR                                    :Tarvikevaunu
+STR_NAME_SUFFIX_TANK_CAR                                        :Säiliövaunu

@@ -36,5 +36,6 @@ STR_NAME_SUFFIX_METAL_CAR                                       :Voiture métall
 STR_NAME_SUFFIX_OPEN_CAR                                        :Wagon tombereau
 STR_NAME_SUFFIX_PASSENGER_CAR                                   :Wagon passagers
 STR_NAME_SUFFIX_REEFER_CAR                                      :Wagon frigorifique
+STR_NAME_SUFFIX_ROTARY_GONDOLA_CAR                              :Wagon-tombereau rotatif
 STR_NAME_SUFFIX_SUPPLIES_CAR                                    :Wagon de provisions
 STR_NAME_SUFFIX_TANK_CAR                                        :Wagon citerne
