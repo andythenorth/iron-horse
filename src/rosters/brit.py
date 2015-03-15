@@ -1,9 +1,9 @@
 from roster import Roster
 
+from vehicles import bertha
 from vehicles import cargo_sprinter
 from vehicles import chaplin
 from vehicles import chinook
-from vehicles import collier
 from vehicles import cyclops
 from vehicles import donegal
 from vehicles import double_juice
@@ -42,7 +42,7 @@ roster = Roster(id = 'brit',
                 engines = [chaplin,
                            standard,
                            ramsbottom,
-                           collier,
+                           bertha,
                            high_flyer,
                            raven,
                            suburban,
