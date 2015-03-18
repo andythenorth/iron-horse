@@ -104,7 +104,7 @@ def render_header_item_nml_nfo(header_item):
                                                                        global_constants=global_constants,
                                                                        utils=utils,
                                                                        sys=sys,
-                                                                       registered_rosters=registered_rosters,
+                                                                       active_rosters=iron_horse.get_active_rosters(),
                                                                        repo_vars=repo_vars)))
         header_item_nml.close()
         render_nfo(header_item)

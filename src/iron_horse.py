@@ -25,10 +25,10 @@ print("[IMPORT VEHICLES] iron_horse.py")
 from rosters import registered_rosters
 
 from rosters import brit
-brit.roster.register()
+brit.roster.register(disabled=False)
 
 from rosters import soam
-soam.roster.register()
+soam.roster.register(disabled=False)
 
 from vehicles import box_cars
 box_cars.main()
@@ -81,18 +81,22 @@ supplies_cars.main()
 from vehicles import tank_cars
 tank_cars.main()
 
+def get_active_rosters():
+    if repo_vars.get('roster', '*') == '*':
+        active_rosters = [roster for roster in registered_rosters if not roster.disabled]
+    else:
+        # this appears to not work as of March 2015
+        active_rosters = [roster for roster in registered_rosters if roster.id == repo_vars['roster']] # make sure it's iterable
+    return active_rosters
+
 def get_consists_in_buy_menu_order():
     consists = []
     # first compose the buy menu order list
     buy_menu_sort_order = []
-    if repo_vars.get('roster', '*') == '*':
-        active_rosters = [roster.id for roster in registered_rosters]
-    else:
-        active_rosters = [repo_vars['roster']] # make sure it's iterable
-    for roster in registered_rosters:
-        if roster.id in active_rosters:
-            buy_menu_sort_order.extend(roster.buy_menu_sort_order)
-            consists.extend(roster.consists_in_buy_menu_order)
+    active_rosters = get_active_rosters()
+    for roster in active_rosters:
+        buy_menu_sort_order.extend(roster.buy_menu_sort_order)
+        consists.extend(roster.consists_in_buy_menu_order)
 
     # now guard against any consists missing from buy menu order or vice versa, as that wastes time asking 'wtf?' when they don't appear in game
     consist_id_defender = set([consist.id for consist in consists])

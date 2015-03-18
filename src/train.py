@@ -222,7 +222,6 @@ class Consist(object):
 
     def render(self):
         # templating
-        print('Rendering ' + self.id)
         nml_result = ''
         nml_result = nml_result + self.render_dummy() # do this first so we can split it off cleanly
         nml_result = nml_result + self.render_articulated_switch()
