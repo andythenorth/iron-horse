@@ -2,6 +2,36 @@ Changelog
 =========
 
 -------------
+1.6.0 Release
+-------------
+
+*New Features / Changes*
+
+- metal cars (3 generations)
+- caboose car for narrow gauge
+- '0-8-0 Collier' is now '0-10-0 Big Bertha' with even more TE (it was already high, now it's insanely high)
+- refit support for FIRS Beans and Nitrates cargos
+- all tank engines now have randomised forward/reversed sprites (random when built in depot)
+- improved sprite shading for some box cars and flat cars
+- improved sprites for some metro trains / wagons
+
+*Fixes*
+
+- box cars now have capacity > 0 when refitted to mail
+
+*Language Updates*
+
+- multiple languages
+- translator credits http://bundles.openttdcoop.org/iron-horse/push/LATEST/credits.txt
+
+*Codechanges*
+
+- compile now uses python 3 not python 2
+- compile now requires nml 0.4.0 or newer
+- refactored compile scripts, keeping pyflakes happy, and not relying on weird magic related to python imports
+
+
+-------------
 1.5.0 Release
 -------------
 
