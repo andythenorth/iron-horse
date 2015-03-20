@@ -6,7 +6,7 @@ consist = EngineConsist(id = 'bertha',
               title = '0-10-0 Big Bertha [Steam]',
               replacement_id = '-none',
               power = 1300,
-              tractive_effort_coefficient = 0.3,
+              tractive_effort_coefficient = 0.33,
               speed = 45,
               type_base_buy_cost_points = 6, # dibble buy cost for game balance
               vehicle_life = 40,
@@ -19,7 +19,7 @@ consist.add_unit(SteamLoco(consist = consist,
                         spriterow_num = 0))
 
 consist.add_unit(SteamLocoTender(consist = consist,
-                        weight = 35,
+                        weight = 40,
                         vehicle_length = 4,
                         spriterow_num = 1))
 
