@@ -35,5 +35,6 @@ STR_NAME_SUFFIX_METAL_CAR                                       :Metalen auto
 STR_NAME_SUFFIX_OPEN_CAR                                        :Open wagon
 STR_NAME_SUFFIX_PASSENGER_CAR                                   :Passagierswagon
 STR_NAME_SUFFIX_REEFER_CAR                                      :Koelwagon
+STR_NAME_SUFFIX_ROTARY_GONDOLA_CAR                              :Roterende dump wagon
 STR_NAME_SUFFIX_SUPPLIES_CAR                                    :Materieelwagon
 STR_NAME_SUFFIX_TANK_CAR                                        :Tankwagon
