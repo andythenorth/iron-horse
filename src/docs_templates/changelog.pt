@@ -2,6 +2,21 @@ Changelog
 =========
 
 -------------
+1.6.1 Release
+-------------
+
+*Fixes*
+
+- Big Bertha tractive effort was a little too low
+- 2nd generation reefer car sprites were out of position
+
+*Language Updates*
+
+- dutch
+- translator credits http://bundles.openttdcoop.org/iron-horse/push/LATEST/credits.txt
+
+
+-------------
 1.6.0 Release
 -------------
 
