@@ -5,7 +5,7 @@ from train import TypeConfig, WagonConsist, Wagon, GraphicsProcessorFactory
 
 b = 1 # bulk cargo start row
 # cargo rows 0 indexed - 0 = first set of loaded sprites
-cargo_graphics_mappings = {'AORE': [b], 'IORE': [b + 1], 'CORE': [b + 2], 'GRVL': [b + 3],
+cargo_graphics_mappings = {'GRVL': [b], 'IORE': [b + 1], 'CORE': [b + 2], 'AORE': [b + 3],
                            'SAND': [b + 4], 'COAL': [b + 5], 'CLAY': [b + 6]}
 
 type_config_normal = TypeConfig(base_id = 'open_car',
