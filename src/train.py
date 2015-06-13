@@ -316,7 +316,10 @@ class Train(object):
     @property
     def offsets(self):
         # offsets can also be over-ridden on a per-model basis by providing this property in the model class
-        return global_constants.default_train_offsets[str(self.vehicle_length)]
+        if self.consist.use_legacy_spritesheet:
+            return global_constants.legacy_spritesheet_offsets[str(self.vehicle_length)]
+        else:
+            return global_constants.default_spritesheet_offsets[str(self.vehicle_length)]
 
     @property
     def location_of_random_bits_for_model_variant(self):
