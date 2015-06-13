@@ -6,11 +6,11 @@ from train import TypeConfig, WagonConsist, Wagon, GraphicsProcessorFactory
 b = 1 # bulk cargo start row
 # cargo rows 0 indexed - 0 = first set of loaded sprites
 cargo_graphics_mappings = {'GRVL': [b], 'IORE': [b + 1], 'CORE': [b + 2], 'AORE': [b + 3],
-                           'SAND': [b + 4], 'COAL': [b + 5], 'CLAY': [b + 6]}
+                           'SAND': [b + 4], 'COAL': [b + 5], 'CLAY': [b + 6], 'SCMT': [b + 7]}
 
 type_config_normal = TypeConfig(base_id = 'open_car',
                         template = 'car_with_visible_cargo.pynml',
-                        num_cargo_rows = 8,
+                        num_cargo_rows = 9,
                         class_refit_groups = ['all_freight'],
                         cargo_graphics_mappings = cargo_graphics_mappings,
                         label_refits_allowed = list(cargo_graphics_mappings.keys()),
@@ -21,7 +21,7 @@ type_config_normal = TypeConfig(base_id = 'open_car',
 
 type_config_narrow_gauge = TypeConfig(base_id = 'open_car_ng',
                         template = 'car_with_visible_cargo.pynml',
-                        num_cargo_rows = 8,
+                        num_cargo_rows = 9,
                         class_refit_groups = ['all_freight'],
                         cargo_graphics_mappings = cargo_graphics_mappings,
                         label_refits_allowed = list(cargo_graphics_mappings.keys()),
