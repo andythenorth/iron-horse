@@ -3,12 +3,14 @@ import graphics_processor.utils as graphics_utils
 from train import TypeConfig, WagonConsist, Wagon, GraphicsProcessorFactory
 
 # cargo rows 0 indexed - 0 = first set of loaded sprites
-cargo_graphics_mappings = {'AORE': [0], 'IORE': [1], 'CORE': [2], 'GRVL': [3],
-                           'SAND': [4], 'COAL': [5], 'CLAY': [6]}
+# GRVL is in first position as it is re-used for generic unknown cargos
+# hoppers *do* transport SCMT in this set, realism is not relevant here, went back and forth on this a few times :P
+cargo_graphics_mappings = {'GRVL': [0], 'IORE': [1], 'CORE': [2], 'AORE': [3],
+                           'SAND': [4], 'COAL': [5], 'CLAY': [6], 'SCMT': [7]}
 
 type_config_normal = TypeConfig(base_id = 'hopper_car',
                     template = 'car_with_visible_cargo.pynml',
-                    num_cargo_rows = 7,
+                    num_cargo_rows = 8, # update if more cargo graphic variations are added
                     class_refit_groups = ['hopper_freight'],
                     cargo_graphics_mappings = cargo_graphics_mappings,
                     label_refits_allowed = list(cargo_graphics_mappings.keys()),
@@ -20,7 +22,7 @@ type_config_normal = TypeConfig(base_id = 'hopper_car',
 
 type_config_narrow_gauge = TypeConfig(base_id = 'hopper_car_ng',
                     template = 'car_with_visible_cargo.pynml',
-                    num_cargo_rows = 7,
+                    num_cargo_rows = 8, # update if more cargo graphic variations are added
                     class_refit_groups = ['hopper_freight'],
                     cargo_graphics_mappings = cargo_graphics_mappings,
                     label_refits_allowed = list(cargo_graphics_mappings.keys()),

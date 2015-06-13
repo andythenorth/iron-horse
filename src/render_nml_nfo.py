@@ -157,6 +157,7 @@ def main():
 
     render_dispatcher(header_items, renderer=render_header_item_nml_nfo)
 
+    print("Rendering consists")
     render_dispatcher(consists, renderer=render_consist_nml_nfo)
 
     print("Linking nfo")

@@ -22,14 +22,17 @@ def get_container_recolour_maps():
 
 
 def get_bulk_cargo_recolour_maps():
-    AORE = {170: 42, 171: 123, 172: 74, 173: 125, 174: 162, 175: 126, 176: 78}
+    GRVL = {170: 6, 171: 4, 172: 7, 173: 8, 174: 21, 175: 11, 176: 12}
     IORE = {170: 75, 171: 76, 172: 123, 173: 122, 174: 124, 175: 74, 176: 104}
     CORE = {170: 1, 171: 32, 172: 25, 173: 27, 174: 34, 175: 56, 176: 59}
-    GRVL = {170: 6, 171: 4, 172: 7, 173: 8, 174: 21, 175: 11, 176: 12}
+    AORE = {170: 42, 171: 123, 172: 74, 173: 125, 174: 162, 175: 126, 176: 78}
     SAND = {170: 108, 171: 64, 172: 65, 173: 197, 174: 36, 175: 196, 176: 197}
-    COAL = {170: 1, 171: 2, 172: 3, 173: 4, 174: 5, 175: 5, 176: 6}
+    COAL = {170: 1, 171: 1, 172: 2, 173: 2, 174: 3, 175: 4, 176: 5}
     CLAY = {170: 57, 171: 57, 172: 57, 173: 77, 174: 78, 175: 78, 176: 79}
+    SCMT = {170: 104, 171: 3, 172: 2, 173: 70, 174: 71, 175: 72, 176: 3}
 
     # we just return a fixed-order tuple here, don't worry about the labels...
     # ...we have to manually specify the spriterow<->cargo label mapping in the wagon definition anyway
-    return (AORE, IORE, CORE, GRVL, SAND, COAL, CLAY)
+    # GRVl is also reused for generic unknown cargos, and is in position 0 for this reason
+    # (there is no mapping for unknown cargos, just uses first spriteset)
+    return (GRVL, IORE, CORE, AORE, SAND, COAL, CLAY, SCMT)
