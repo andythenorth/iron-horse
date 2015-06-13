@@ -3,18 +3,25 @@ from train import TypeConfig, WagonConsist, Wagon, GraphicsProcessorFactory
 
 # tank cars are unrealistically autorefittable, and at no cost
 # Pikka: if people complain that it's unrealistic, tell them "don't do it then"
+# they also change livery at stations if refitted between certain cargo types <shrug>
+cargo_graphics_mappings = {'OIL_': [0], 'PETR': [1], 'RFPR': [2]}
+
 type_config_normal = TypeConfig(base_id = 'tank_car',
-                                template = 'train.pynml',
+                                template = 'car_with_cargo_specific_liveries.pynml',
+                                num_cargo_rows = 3, # update if more cargo graphic variations are added
+                                cargo_graphics_mappings = cargo_graphics_mappings,
                                 class_refit_groups = ['liquids'],
-                                label_refits_allowed = [],
+                                label_refits_allowed = list(cargo_graphics_mappings.keys()),
                                 label_refits_disallowed = global_constants.disallowed_refits_by_label['edible_liquids'],
                                 autorefit = True,
                                 default_cargo = 'OIL_',
                                 default_capacity_type = 'capacity_freight',
-                                loading_speed_multiplier = 2)
+                                loading_speed_multiplier = 3)
 
 type_config_narrow = TypeConfig(base_id = 'tank_car_ng',
-                                template = 'train.pynml',
+                                template = 'car_with_cargo_specific_liveries.pynml',
+                                num_cargo_rows = 3, # update if more cargo graphic variations are added
+                                cargo_graphics_mappings = cargo_graphics_mappings,
                                 class_refit_groups = ['liquids'],
                                 label_refits_allowed = [],
                                 label_refits_disallowed = global_constants.disallowed_refits_by_label['edible_liquids'],
