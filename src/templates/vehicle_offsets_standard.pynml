@@ -9,7 +9,7 @@
             [107,       y,          40,        16,          ${vehicle.offsets[2][0]}, ${vehicle.offsets[2][1]}]
             [156,       y,          26,        24,          ${vehicle.offsets[3][0]}, ${vehicle.offsets[3][1]}]
             [188,       y,          8,         27,          ${vehicle.offsets[4][0]}, ${vehicle.offsets[4][1]}]
-            [200 ,       y,         26,        24,          ${vehicle.offsets[5][0]}, ${vehicle.offsets[5][1]}]
+            [200 ,      y,          26,        24,          ${vehicle.offsets[5][0]}, ${vehicle.offsets[5][1]}]
             [235,       y,          40,        16,          ${vehicle.offsets[6][0]} + adjust_xoffs, ${vehicle.offsets[6][1]}]
             [284,       y,          26,        24,          ${vehicle.offsets[7][0]}, ${vehicle.offsets[7][1]}]
         }
