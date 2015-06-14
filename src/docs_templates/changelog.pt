@@ -2,6 +2,26 @@ Changelog
 =========
 
 -------------
+1.7.0 Release
+-------------
+
+*Features*
+
+- scrap metal cargo graphics for hopper and open cars
+- tank cars show different livery depending on cargo refit
+
+*Fixes*
+
+- all vehicles were 1px out of position for North-facing \ and / views
+- Cargo Sprinter sprites were broken in multiple ways
+- Cargo Sprinter weight and vehicle length were wrong
+- Little Bear, some sprites were 1px out of position
+- narrow gauge mail car, some sprites were out of position and/or too high
+- bad purple pixels in Tin Rocket and narrow gauge open car
+- tweaks to Slammer \ and / views
+- covered hopper car was out of position
+
+-------------
 1.6.1 Release
 -------------
 
