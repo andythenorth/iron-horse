@@ -7,7 +7,9 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY                               :Zugkapazität
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :kümmerlich
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :phänomenal
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :übermäßig
+STR_PARAM_ROSTER_DESC                                           :Wähle ein Zug-Set aus
 STR_PARAM_ROSTER_OPTION_0                                       :Ein Pferd! Ein Pferd! Mein Königreich für ein Pferd!
+STR_PARAM_ROSTER_OPTION_1                                       :Caballada
 
 # keep these alphabetised, easier
 STR_NAME_SUFFIX_BATTERY                                         :(Batterie)
