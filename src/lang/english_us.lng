@@ -6,6 +6,10 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY                               :Train capacity
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :Puny
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Marvelous
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Excessive
+STR_PARAM_ROSTER                                                :Roster
+STR_PARAM_ROSTER_DESC                                           :Choose which set of trains to use.
+STR_PARAM_ROSTER_OPTION_0                                       :A horse! A horse! My kingdom for a horse!
+STR_PARAM_ROSTER_OPTION_1                                       :Caballada
 
 # keep these alphabetised, easier
 STR_NAME_SUFFIX_BATTERY                                         :(Battery)
@@ -27,8 +31,10 @@ STR_NAME_SUFFIX_HOPPER_CAR                                      :Hopper Car
 STR_NAME_SUFFIX_INTERMODAL_FLAT_CAR                             :Intermodal Flatcar
 STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Livestock Car
 STR_NAME_SUFFIX_MAIL_CAR                                        :Mail Car
+STR_NAME_SUFFIX_METAL_CAR                                       :Metal Car
 STR_NAME_SUFFIX_OPEN_CAR                                        :Gondola
 STR_NAME_SUFFIX_PASSENGER_CAR                                   :Passenger Car
 STR_NAME_SUFFIX_REEFER_CAR                                      :Refrigerator Car
+STR_NAME_SUFFIX_ROTARY_GONDOLA_CAR                              :Rotary Gondola Car
 STR_NAME_SUFFIX_SUPPLIES_CAR                                    :Supplies Car
 STR_NAME_SUFFIX_TANK_CAR                                        :Tank Car
