@@ -16,7 +16,7 @@ consist = EngineConsist(id = 'cargo_sprinter',
                   base_numeric_id = 1100,
                   title = 'Cargo Sprinter [Diesel]',
                   replacement_id = '-none',
-                  power = 1100,
+                  power = 1000,
                   speed = 100,
                   # cargo sprinter is hard to balance stats for, it needs to be fast, cheap, powerful
                   # after experiments, it's now balanced suited to express intermodal, reaching top speed quickly,
@@ -25,7 +25,7 @@ consist = EngineConsist(id = 'cargo_sprinter',
                   # rather than adding more than 2 unpowered trailing wagons
                   # it doesn't make a good loco for unpowered consists, although one or two should be ok
                   type_base_buy_cost_points = -2, # dibble buy cost for game balance
-                  type_base_running_cost_points = -22, # dibble running costs for game balance
+                  type_base_running_cost_points = -30, # dibble running costs for game balance
                   intro_date = 1999,
                   vehicle_life = 40,
                   use_legacy_spritesheet = True)
