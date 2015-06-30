@@ -779,9 +779,10 @@ class CargoSprinter(Train):
         super(CargoSprinter, self).__init__(**kwargs)
         self.template = 'cargo_sprinter.pynml'
         self.default_cargo_capacities = [0]
-        self.class_refit_groups = ['express_freight']
-        self.label_refits_allowed = [] # no specific labels needed
-        self.label_refits_disallowed = []
+        # refits should match those of the intermodal cars
+        self.class_refit_groups = ['express_freight', 'packaged_freight']
+        self.label_refits_allowed = ['FRUT','WATR']
+        self.label_refits_disallowed = ['FISH','LVST','OIL_','TOUR','WOOD']
         self.autorefit = True
         self.default_cargo_capacities = self.capacities_freight
         self.loading_speed_multiplier = 2
