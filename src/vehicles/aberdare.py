@@ -1,25 +1,25 @@
 import global_constants
 from train import EngineConsist, SteamLoco, SteamLocoTender
 
-consist = EngineConsist(id = 'charlie',
-              base_numeric_id = 1210,
-              title = '0-6-0 Charlie [Steam]',
+consist = EngineConsist(id = 'aberdare',
+              base_numeric_id = 1200,
+              title = '2-6-0 Aberdare [Steam]',
               replacement_id = '-none',
-              power = 1200,
-              tractive_effort_coefficient = 0.31,
-              speed = 70,
-              type_base_buy_cost_points = 6, # dibble buy cost for game balance
+              power = 1000,
+              tractive_effort_coefficient = 0.22,
+              speed = 65,
+              type_base_buy_cost_points = 12, # dibble buy cost for game balance
               vehicle_life = 40,
-              intro_date = 1935,
+              intro_date = 1905,
               use_legacy_spritesheet = True)
 
 consist.add_unit(SteamLoco(consist = consist,
-                        weight = 60,
+                        weight = 67,
                         vehicle_length = 6,
                         spriterow_num = 0))
 
 consist.add_unit(SteamLocoTender(consist = consist,
-                        weight = 30,
+                        weight = 40,
                         vehicle_length = 4,
                         spriterow_num = 1))
 

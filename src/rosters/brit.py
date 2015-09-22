@@ -1,9 +1,9 @@
 from roster import Roster
 
+from vehicles import aberdare
 from vehicles import bertha
 from vehicles import cargo_sprinter
 from vehicles import chaplin
-from vehicles import charlie
 from vehicles import chinook
 from vehicles import cyclops
 from vehicles import donegal
@@ -26,7 +26,6 @@ from vehicles import standard
 from vehicles import stewart
 from vehicles import suburban
 from vehicles import tin_rocket
-from vehicles import tiny
 from vehicles import vulcan
 from vehicles import walker
 from vehicles import westbourne
@@ -46,10 +45,9 @@ roster = Roster(id = 'brit',
                            ramsbottom,
                            bertha,
                            high_flyer,
-                           tiny,
+                           aberdare,
                            raven,
                            suburban,
-                           charlie,
                            northcock,
                            lemon,
                            electra,

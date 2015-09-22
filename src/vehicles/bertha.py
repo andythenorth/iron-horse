@@ -5,7 +5,7 @@ consist = EngineConsist(id = 'bertha',
               base_numeric_id = 1030,
               title = '0-10-0 Big Bertha [Steam]',
               replacement_id = '-none',
-              power = 1300,
+              power = 1500,
               tractive_effort_coefficient = 0.33,
               speed = 45,
               type_base_buy_cost_points = 10, # dibble buy cost for game balance
