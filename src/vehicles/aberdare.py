@@ -5,7 +5,7 @@ consist = EngineConsist(id = 'aberdare',
               base_numeric_id = 1200,
               title = '2-6-0 Aberdare [Steam]',
               replacement_id = '-none',
-              power = 1300,
+              power = 1100,
               tractive_effort_coefficient = 0.22,
               speed = 65,
               type_base_buy_cost_points = 12, # dibble buy cost for game balance
