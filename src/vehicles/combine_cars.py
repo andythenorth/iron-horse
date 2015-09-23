@@ -15,6 +15,7 @@ def main():
     consist = WagonConsist(type_config = type_config,
                         title = '[Combine Car]',
                         roster = 'brit',
+                        base_numeric_id = 1000,
                         wagon_generation = 1,
                         replacement_id = '-none',
                         intro_date = 1860,

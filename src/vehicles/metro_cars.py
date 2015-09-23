@@ -16,6 +16,7 @@ def main():
     consist = WagonConsist(type_config = type_config,
                         title = 'Mail [Metro Car]',
                         roster = 'brit',
+                        base_numeric_id = 880,
                         wagon_generation = 1,
                         replacement_id = '-none',
                         intro_date = 1900,

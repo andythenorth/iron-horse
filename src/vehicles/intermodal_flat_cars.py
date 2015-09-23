@@ -32,6 +32,7 @@ def main():
     consist = WagonConsist(type_config = type_config,
                         title = '[Intermodal Flat Car]',
                         roster = 'brit',
+                        base_numeric_id = 1060,
                         wagon_generation = 3,
                         replacement_id = '-none',
                         intro_date = 1960,

@@ -105,12 +105,6 @@ class Consist(object):
         # auto id creator, used for wagons not locos
         return '_'.join((id_base, kwargs['roster'], 'gen', str(kwargs['wagon_generation'])))
 
-    def get_wagon_numeric_id(self, roster_base_number, base_id, **kwargs):
-        # auto numeric_id creator, used for wagons not locos
-        type_base_number = global_constants.wagon_type_numeric_ids[base_id]
-        result = (1000 * roster_base_number) + type_base_number + (3 * (kwargs['wagon_generation'] - 1))
-        return result
-
     def get_reduced_set_of_variant_dates(self):
         # find all the unique dates that will need a switch constructing
         years = set()
@@ -602,7 +596,6 @@ class WagonConsist(Consist):
 
         id = self.get_wagon_id(type_config.base_id, **kwargs)
         kwargs['id'] = id
-        kwargs['base_numeric_id'] = self.get_wagon_numeric_id(roster_obj.numeric_id, type_config.base_id, **kwargs)
         kwargs['track_type'] = type_config.track_type
         self.wagon_generation = kwargs.get('wagon_generation', None)
         super(WagonConsist, self).__init__(**kwargs)
