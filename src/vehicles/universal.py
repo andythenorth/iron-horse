@@ -2,7 +2,7 @@ import global_constants
 from train import EngineConsist, DieselLoco
 # for rest of stats, look up GE Export models U5B-U8B
 consist = EngineConsist(id = 'universal',
-              base_numeric_id = 2140,
+              base_numeric_id = 540,
               title = 'Universal [Diesel]',
               replacement_id = '-none',
               power = 800,

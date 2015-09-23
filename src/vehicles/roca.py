@@ -2,7 +2,7 @@ import global_constants
 from train import EngineConsist, DieselLoco
 # for rest of stats, look up Chinese CKD8G
 consist = EngineConsist(id = 'roca',
-              base_numeric_id = 2180,
+              base_numeric_id = 400,
               title = 'Roca [Diesel]',
               replacement_id = '-none',
               power = 3000,

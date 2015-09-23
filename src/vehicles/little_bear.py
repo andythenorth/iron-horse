@@ -2,7 +2,7 @@ import global_constants
 from train import EngineConsist, DieselLoco
 
 consist = EngineConsist(id = 'little_bear',
-              base_numeric_id = 1160,
+              base_numeric_id = 280,
               title = 'Little Bear [Diesel]',
               replacement_id = '-none',
               power = 850,

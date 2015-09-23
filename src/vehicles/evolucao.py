@@ -3,7 +3,7 @@ import global_constants
 from train import EngineConsist, DieselLoco
 # for rest of stats, look up GE Evolution
 consist = EngineConsist(id = 'evolucao',
-              base_numeric_id = 2110,
+              base_numeric_id = 200,
               title = 'Evolução [Diesel]',
               replacement_id = '-none',
               power = 4400,

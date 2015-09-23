@@ -2,7 +2,7 @@ import global_constants
 from train import EngineConsist, DieselLoco
 # for rest of stats, look up Krauss Maffei Brazil
 consist = EngineConsist(id = 'krauss',
-              base_numeric_id = 2500,
+              base_numeric_id = 260,
               title = 'Krauss [Diesel]',
               replacement_id = '-none',
               track_type = 'NG',

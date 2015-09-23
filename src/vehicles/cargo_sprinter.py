@@ -13,7 +13,7 @@ graphics_options = {'template': 'cargo_sprinter_template.png',
 graphics_processor_1 = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options)
 
 consist = EngineConsist(id = 'cargo_sprinter',
-                  base_numeric_id = 1100,
+                  base_numeric_id = 100,
                   title = 'Cargo Sprinter [Diesel]',
                   replacement_id = '-none',
                   power = 1000,

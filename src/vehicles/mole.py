@@ -2,7 +2,7 @@ import global_constants
 from train import EngineConsist, MetroLoco
 
 consist = EngineConsist(id = 'mole',
-              base_numeric_id = 1530,
+              base_numeric_id = 290,
               title = 'Mole [Metro Train]',
               replacement_id = '-none',
               track_type = 'METRO',

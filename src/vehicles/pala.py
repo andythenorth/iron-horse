@@ -2,7 +2,7 @@ import global_constants
 from train import EngineConsist, DieselLoco
 # for rest of stats, look up GE Shovelnose
 consist = EngineConsist(id = 'pala',
-              base_numeric_id = 2150,
+              base_numeric_id = 320,
               title = 'Pala [Diesel]',
               replacement_id = '-none',
               power = 1000,

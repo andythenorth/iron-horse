@@ -2,7 +2,7 @@ import global_constants
 from train import EngineConsist, DieselRailcar
 
 consist = EngineConsist(id = 'amazon',
-              base_numeric_id = 2210,
+              base_numeric_id = 10,
               title = 'Amazon [Diesel]',
               replacement_id = '-none',
               power = 300,

@@ -2,7 +2,7 @@ import global_constants
 from train import EngineConsist, DieselLoco
 # for rest of stats, look up EMD G22CW
 consist = EngineConsist(id = 'astarsa',
-              base_numeric_id = 2100,
+              base_numeric_id = 50,
               title = 'Astarsa [Diesel]',
               replacement_id = '-none',
               power = 1600,

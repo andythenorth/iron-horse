@@ -2,7 +2,7 @@ import global_constants
 from train import EngineConsist, MetroMultipleUnit
 
 consist = EngineConsist(id = 'fleet',
-              base_numeric_id = 1520,
+              base_numeric_id = 210,
               title = 'Fleet [Metro Train]',
               replacement_id = '-none',
               track_type = 'METRO',

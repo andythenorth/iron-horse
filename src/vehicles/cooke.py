@@ -2,7 +2,7 @@ import global_constants
 from train import EngineConsist, SteamLoco, SteamLocoTender
 
 consist = EngineConsist(id = 'cooke',
-              base_numeric_id = 2050,
+              base_numeric_id = 150,
               title = '4-6-0 Cooke [Steam]',
               replacement_id = '-none',
               power = 900,
