@@ -5,8 +5,8 @@ consist = EngineConsist(id = 'americano',
               base_numeric_id = 20,
               title = '4-4-0 Americano [Steam]',
               replacement_id = '-none',
-              power = 900,
-              speed = 55,
+              power = 1000,
+              speed = 65,
               type_base_buy_cost_points = -10, # dibble buy cost for game balance
               type_base_running_cost_points = -15, # dibble running costs for game balance
               vehicle_life = 40,
