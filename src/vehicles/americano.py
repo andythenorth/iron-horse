@@ -2,7 +2,7 @@ import global_constants
 from train import EngineConsist, SteamLoco, SteamLocoTender
 
 consist = EngineConsist(id = 'americano',
-              base_numeric_id = 20,
+              base_numeric_id = 1310,
               title = '4-4-0 Americano [Steam]',
               replacement_id = '-none',
               power = 1000,
@@ -14,12 +14,12 @@ consist = EngineConsist(id = 'americano',
 
 consist.add_unit(SteamLoco(consist = consist,
                         weight = 40,
-                        vehicle_length = 7,
+                        vehicle_length = 5,
                         spriterow_num = 0))
 
 consist.add_unit(SteamLocoTender(consist = consist,
                         weight = 40,
-                        vehicle_length = 5,
+                        vehicle_length = 4,
                         spriterow_num = 1))
 
 consist.add_model_variant(intro_date=0,
