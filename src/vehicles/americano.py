@@ -13,12 +13,12 @@ consist = EngineConsist(id = 'americano',
               intro_date = 1860)
 
 consist.add_unit(SteamLoco(consist = consist,
-                        weight = 40,
+                        weight = 52,
                         vehicle_length = 5,
                         spriterow_num = 0))
 
 consist.add_unit(SteamLocoTender(consist = consist,
-                        weight = 40,
+                        weight = 30,
                         vehicle_length = 4,
                         spriterow_num = 1))
 

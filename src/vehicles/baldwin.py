@@ -5,21 +5,19 @@ consist = EngineConsist(id = 'baldwin',
               base_numeric_id = 60,
               title = '2-8-2 Baldwin [Steam]',
               replacement_id = '-none',
-              power = 900,
+              power = 1600,
               track_type = 'NG',
-              speed = 55,
-              type_base_buy_cost_points = -10, # dibble buy cost for game balance
-              type_base_running_cost_points = -15, # dibble running costs for game balance
+              speed = 40,
               vehicle_life = 40,
-              intro_date = 1955)
+              intro_date = 1915)
 
 consist.add_unit(SteamLoco(consist = consist,
-                        weight = 40,
+                        weight = 70,
                         vehicle_length = 7,
                         spriterow_num = 0))
 
 consist.add_unit(SteamLocoTender(consist = consist,
-                        weight = 40,
+                        weight = 35,
                         vehicle_length = 4,
                         spriterow_num = 1))
 
