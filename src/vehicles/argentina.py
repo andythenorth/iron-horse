@@ -5,15 +5,15 @@ consist = EngineConsist(id = 'argentina',
               base_numeric_id = 40,
               title = '4-8-0 Argentina [Steam]',
               replacement_id = '-none',
-              power = 900,
-              speed = 55,
+              power = 1800,
+              speed = 65,
               type_base_buy_cost_points = -10, # dibble buy cost for game balance
               type_base_running_cost_points = -15, # dibble running costs for game balance
               vehicle_life = 40,
               intro_date = 1920)
 
 consist.add_unit(SteamLoco(consist = consist,
-                        weight = 40,
+                        weight = 120,
                         vehicle_length = 8,
                         spriterow_num = 0))
 
