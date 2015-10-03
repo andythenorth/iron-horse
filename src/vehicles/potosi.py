@@ -5,12 +5,12 @@ consist = EngineConsist(id = 'potosi',
               base_numeric_id = 370,
               title = '4-8-2+2-8-4 Potosi [Steam]',
               replacement_id = '-none',
-              power = 1800,
+              power = 2500,
               speed = 55,
               type_base_buy_cost_points = -10, # dibble buy cost for game balance
               type_base_running_cost_points = -15, # dibble running costs for game balance
               vehicle_life = 40,
-              intro_date = 1900)
+              intro_date = 1927)
 
 consist.add_unit(SteamLocoTender(consist = consist,
                         weight = 40,
