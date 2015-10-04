@@ -154,7 +154,7 @@ def main():
     consist.add_unit(BoxCar(consist = consist,
                             capacity_freight = 25,
                             weight = 12,
-                            vehicle_length = 7))
+                            vehicle_length = 5))
 
     options = {'template': 'box_car_soam_gen_1_template.png'}
 
