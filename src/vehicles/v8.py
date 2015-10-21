@@ -5,8 +5,8 @@ consist = EngineConsist(id = 'v8',
               base_numeric_id = 410,
               title = 'V8 2-C+C-2 [Electric]',
               replacement_id = '-none',
-              power = 900,
-              speed = 55,
+              power = 4400,
+              speed = 85,
               type_base_buy_cost_points = -10, # dibble buy cost for game balance
               type_base_running_cost_points = -15, # dibble running costs for game balance
               vehicle_life = 40,
