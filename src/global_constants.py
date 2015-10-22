@@ -23,6 +23,7 @@ buy_menu_sort_order_wagons = ['metro_car',
                               'box_car_ng',
                               'hopper_car_ng',
                               'tank_car_ng',
+                              'reefer_car_ng',
                               'flat_car_ng',
                               'livestock_car_ng',
                               'caboose_car_ng']

@@ -15,6 +15,19 @@ type_config = TypeConfig(base_id = 'reefer_car',
                         default_capacity_type = 'capacity_freight',
                         cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD)
 
+type_config_narrow_gauge = TypeConfig(base_id = 'reefer_car_ng',
+                        template = 'car_with_open_doors_during_loading.pynml',
+                        num_cargo_rows = 1, # template needs this, but box car has zero cargo-specific graphics, all generic
+                        cargo_graphics_mappings = cargo_graphics_mappings,
+                        class_refit_groups = ['refrigerated_freight'],
+                        label_refits_allowed = [],
+                        label_refits_disallowed = [],
+                        autorefit = True,
+                        default_cargo = 'FOOD',
+                        default_capacity_type = 'capacity_freight',
+                        cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD,
+                        track_type = 'NG')
+
 def main():
     #--------------- brit ----------------------------------------------------------------------
     consist = WagonConsist(type_config = type_config,
@@ -77,3 +90,115 @@ def main():
 
 
     #--------------- soam ----------------------------------------------------------------------
+    consist = WagonConsist(type_config = type_config,
+                        title = '[Reefer Car]',
+                        roster = 'soam',
+                        base_numeric_id = 1390,
+                        wagon_generation = 1,
+                        replacement_id = '-none',
+                        intro_date = 1905,
+                        vehicle_life = 40,
+                        speedy = True)
+
+    consist.add_unit(Wagon(consist = consist,
+                            capacity_freight = 30,
+                            weight = 14,
+                            vehicle_length = 6))
+
+    options = {'template': 'reefer_car_soam_gen_1_template.png'}
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=0,
+                           graphics_processor=GraphicsProcessorFactory('pass_through_pipeline', options))
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=1,
+                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
+
+
+    # no gen 2 reefers - straight to gen 3
+    consist = WagonConsist(type_config = type_config,
+                        title = '[Reefer Car]',
+                        roster = 'soam',
+                        base_numeric_id = 1400,
+                        wagon_generation = 3,
+                        replacement_id = '-none',
+                        intro_date = 1980,
+                        vehicle_life = 40,
+                        speedy = True)
+
+    consist.add_unit(Wagon(consist = consist,
+                            capacity_freight = 50,
+                            weight = 25,
+                            vehicle_length = 6))
+
+    options = {'template': 'reefer_car_soam_gen_3_template.png'}
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=0,
+                           graphics_processor=GraphicsProcessorFactory('pass_through_pipeline', options))
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=1,
+                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
+
+
+    consist = WagonConsist(type_config = type_config_narrow_gauge,
+                        title = '[Reefer Car]',
+                        roster = 'soam',
+                        base_numeric_id = 1410,
+                        wagon_generation = 1,
+                        replacement_id = '-none',
+                        intro_date = 1905,
+                        vehicle_life = 40,
+                        speedy = True)
+
+    consist.add_unit(Wagon(consist = consist,
+                            capacity_freight = 25,
+                            weight = 14,
+                            vehicle_length = 6))
+
+    options = {'template': 'reefer_car_ng_soam_gen_1_template.png'}
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=0,
+                           graphics_processor=GraphicsProcessorFactory('pass_through_pipeline', options))
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=1,
+                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
+
+
+    # no gen 2 reefers - straight to gen 3
+    consist = WagonConsist(type_config = type_config_narrow_gauge,
+                        title = '[Reefer Car]',
+                        roster = 'soam',
+                        base_numeric_id = 1420,
+                        wagon_generation = 3,
+                        replacement_id = '-none',
+                        intro_date = 1980,
+                        vehicle_life = 40,
+                        speedy = True)
+
+    consist.add_unit(Wagon(consist = consist,
+                            capacity_freight = 40,
+                            weight = 20,
+                            vehicle_length = 6))
+
+    options = {'template': 'reefer_car_ng_soam_gen_3_template.png'}
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=0,
+                           graphics_processor=GraphicsProcessorFactory('pass_through_pipeline', options))
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=1,
+                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
