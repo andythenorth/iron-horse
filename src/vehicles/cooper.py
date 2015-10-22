@@ -1,17 +1,18 @@
 import global_constants
 from train import EngineConsist, DieselLoco
-# standard gauge GE Shovelnose
-consist = EngineConsist(id = 'pala',
-              base_numeric_id = 320,
-              title = 'Pala [Diesel]',
+# GE Shovelnose - meter gauge ish
+consist = EngineConsist(id = 'cooper',
+              base_numeric_id = 1440,
+              title = 'Cooper [Diesel]',
               replacement_id = '-none',
-              power = 1200,
-              speed = 75,
+              power = 1000,
+              track_type = 'NG',
+              speed = 55,
               vehicle_life = 30,
-              intro_date = 1955)
+              intro_date = 1949)
 
 consist.add_unit(DieselLoco(consist = consist,
-                        weight = 105,
+                        weight = 75,
                         vehicle_length = 7,
                         spriterow_num = 0))
 

@@ -179,6 +179,7 @@ def main():
                         wagon_generation = 1,
                         replacement_id = '-none',
                         intro_date = 1860,
+                        speedy = True,
                         vehicle_life = 40)
 
     consist.add_unit(MailCar(consist = consist,
@@ -195,13 +196,34 @@ def main():
                         title = '[Mail Car]',
                         roster = 'soam',
                         base_numeric_id = 1380,
-                        wagon_generation = 3,
+                        wagon_generation = 2,
                         replacement_id = '-none',
-                        intro_date = 1980,
+                        intro_date = 1920,
+                        speedy = True,
                         vehicle_life = 40)
 
     consist.add_unit(MailCar(consist = consist,
-                            capacity_mail = 45,
+                            capacity_mail = 40,
+                            weight = 20,
+                            vehicle_length = 6))
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=0)
+
+
+    consist = WagonConsist(type_config = type_config_narrow_gauge,
+                        title = '[Mail Car]',
+                        roster = 'soam',
+                        base_numeric_id = 1450,
+                        wagon_generation = 3,
+                        replacement_id = '-none',
+                        intro_date = 1980,
+                        speedy = True,
+                        vehicle_life = 40)
+
+    consist.add_unit(MailCar(consist = consist,
+                            capacity_mail = 50,
                             weight = 20,
                             vehicle_length = 6))
 

@@ -9,6 +9,7 @@ from vehicles import baldwin
 from vehicles import breda
 from vehicles import burro
 from vehicles import cooke
+from vehicles import cooper
 from vehicles import electrico
 from vehicles import estados
 from vehicles import evolucao
@@ -55,6 +56,7 @@ roster = Roster(id = 'soam',
                            justicialista,
                            pequeno,
                            baldwin,
+                           cooper,
                            krauss,
                            pala,
                            thing_ng,
