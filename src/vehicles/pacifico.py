@@ -5,15 +5,13 @@ consist = EngineConsist(id = 'pacifico',
               base_numeric_id = 310,
               title = '4-6-2 Pacifico [Steam]',
               replacement_id = '-none',
-              power = 900,
-              speed = 55,
-              type_base_buy_cost_points = -10, # dibble buy cost for game balance
-              type_base_running_cost_points = -15, # dibble running costs for game balance
+              power = 1800,
+              speed = 65,
               vehicle_life = 40,
-              intro_date = 1925)
+              intro_date = 1910)
 
 consist.add_unit(SteamLoco(consist = consist,
-                        weight = 40,
+                        weight = 90,
                         vehicle_length = 7,
                         spriterow_num = 0))
 

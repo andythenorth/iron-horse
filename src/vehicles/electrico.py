@@ -6,9 +6,9 @@ consist = EngineConsist(id = 'electrico',
               title = 'Electrico 2-B+B-2 [Electric]',
               replacement_id = '-none',
               power = 2400,
-              speed = 70,
-              type_base_buy_cost_points = -10, # dibble buy cost for game balance
-              type_base_running_cost_points = -15, # dibble running costs for game balance
+              speed = 75,
+              type_base_buy_cost_points = 35, # dibble buy cost for game balance
+              type_base_running_cost_points = -10, # dibble running costs for game balance
               vehicle_life = 60,
               intro_date = 1920)
 

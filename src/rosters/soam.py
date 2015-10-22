@@ -30,8 +30,8 @@ from vehicles import v8
 # speed for wagons in mph (some generations may optionally have no speed set)
 # format is [standard, speedy]
 speeds = dict(gen_1_wagon_speeds = [50, 65],
-              gen_2_wagon_speeds = [65, 85],
-              gen_3_wagon_speeds = [85, None],
+              gen_2_wagon_speeds = [60, 85],
+              gen_3_wagon_speeds = [70, 100],
               ng_gen_1_wagon_speeds = [35, 45],
               ng_gen_2_wagon_speeds = [45, 55],
               ng_gen_3_wagon_speeds = [55, 65])

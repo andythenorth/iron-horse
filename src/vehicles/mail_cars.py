@@ -194,15 +194,15 @@ def main():
     consist = WagonConsist(type_config = type_config_narrow_gauge,
                         title = '[Mail Car]',
                         roster = 'soam',
-                        base_numeric_id = 1340,
-                        wagon_generation = 2,
+                        base_numeric_id = 1380,
+                        wagon_generation = 3,
                         replacement_id = '-none',
-                        intro_date = 1920,
+                        intro_date = 1980,
                         vehicle_life = 40)
 
     consist.add_unit(MailCar(consist = consist,
-                            capacity_mail = 35,
-                            weight = 16,
+                            capacity_mail = 45,
+                            weight = 20,
                             vehicle_length = 6))
 
     consist.add_model_variant(intro_date=0,

@@ -5,20 +5,18 @@ consist = EngineConsist(id = 'super_mountain',
               base_numeric_id = 510,
               title = '4-8-4 Super Mountain [Steam]',
               replacement_id = '-none',
-              power = 900,
-              speed = 55,
-              type_base_buy_cost_points = -10, # dibble buy cost for game balance
-              type_base_running_cost_points = -15, # dibble running costs for game balance
+              power = 2100,
+              speed = 75,
               vehicle_life = 40,
               intro_date = 1935)
 
 consist.add_unit(SteamLoco(consist = consist,
-                        weight = 40,
+                        weight = 110,
                         vehicle_length = 8,
                         spriterow_num = 0))
 
 consist.add_unit(SteamLocoTender(consist = consist,
-                        weight = 40,
+                        weight = 60,
                         vehicle_length = 6,
                         spriterow_num = 1))
 
