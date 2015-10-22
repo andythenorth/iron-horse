@@ -103,6 +103,25 @@ def main():
                            spritesheet_suffix=0)
 
 
+    consist = WagonConsist(type_config = type_config_normal,
+                        title = '[Livestock Car]',
+                        roster = 'soam',
+                        base_numeric_id = 1430,
+                        wagon_generation = 2,
+                        replacement_id = '-none',
+                        intro_date = 1925,
+                        vehicle_life = 40)
+
+    consist.add_unit(Wagon(consist = consist,
+                            capacity_freight = 45,
+                            weight = 20,
+                            vehicle_length = 6))
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=0)
+
+
     consist = WagonConsist(type_config = type_config_narrow_gauge,
                         title = '[Livestock Car]',
                         roster = 'soam',
