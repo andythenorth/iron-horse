@@ -175,12 +175,12 @@ def main():
                         base_numeric_id = 600,
                         wagon_generation = 2,
                         replacement_id = '-none',
-                        intro_date = 1950,
+                        intro_date = 1920,
                         vehicle_life = 40)
 
     consist.add_unit(BoxCar(consist = consist,
-                            capacity_freight = 35,
-                            weight = 18,
+                            capacity_freight = 45,
+                            weight = 20,
                             vehicle_length = 6))
 
     options = {'template': 'box_car_soam_gen_2_template.png'}
@@ -202,12 +202,12 @@ def main():
                         base_numeric_id = 610,
                         wagon_generation = 3,
                         replacement_id = '-none',
-                        intro_date = 1995,
+                        intro_date = 1980,
                         vehicle_life = 40)
 
     consist.add_unit(BoxCar(consist = consist,
-                            capacity_freight = 55,
-                            weight = 25,
+                            capacity_freight = 65,
+                            weight = 30,
                             vehicle_length = 7))
 
     options = {'template': 'box_car_soam_gen_3_template.png'}
@@ -235,10 +235,37 @@ def main():
     consist.add_unit(BoxCar(consist = consist,
                             capacity_freight = 20,
                             capacity_mail = 20,
-                            weight = 5,
+                            weight = 10,
                             vehicle_length = 6))
 
     options = {'template': 'box_car_ng_soam_gen_1_template.png'}
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=0,
+                           graphics_processor=GraphicsProcessorFactory('pass_through_pipeline', options))
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=1,
+                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
+
+    consist = WagonConsist(type_config = type_config_narrow_gauge,
+                        title = '[Box Car]',
+                        roster = 'soam',
+                        base_numeric_id = 1310,
+                        wagon_generation = 2,
+                        replacement_id = '-none',
+                        intro_date = 1920,
+                        vehicle_life = 40)
+
+    consist.add_unit(BoxCar(consist = consist,
+                            capacity_freight = 35,
+                            capacity_mail = 35,
+                            weight = 15,
+                            vehicle_length = 6))
+
+    options = {'template': 'box_car_ng_soam_gen_2_template.png'}
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,

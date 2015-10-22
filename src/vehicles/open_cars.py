@@ -171,11 +171,38 @@ def main():
                         vehicle_life = 40)
 
     consist.add_unit(Wagon(consist = consist,
-                            capacity_freight = 30,
+                            capacity_freight = 25,
                             weight = 7,
                             vehicle_length = 5))
 
     graphics_processors = get_graphics_processors('open_car_soam_gen_1_template.png')
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=0,
+                           graphics_processor=graphics_processors[0])
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=1,
+                           graphics_processor=graphics_processors[1])
+
+
+    consist = WagonConsist(type_config = type_config_normal,
+                        title = '[Open Car]',
+                        roster = 'soam',
+                        base_numeric_id = 1330,
+                        wagon_generation = 2,
+                        replacement_id = '-none',
+                        intro_date = 1920,
+                        vehicle_life = 40)
+
+    consist.add_unit(Wagon(consist = consist,
+                            capacity_freight = 45,
+                            weight = 15,
+                            vehicle_length = 5))
+
+    graphics_processors = get_graphics_processors('open_car_soam_gen_2_template.png')
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
@@ -203,6 +230,33 @@ def main():
                             vehicle_length = 5))
 
     graphics_processors = get_graphics_processors('open_car_ng_soam_gen_1_template.png')
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=0,
+                           graphics_processor=graphics_processors[0])
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=1,
+                           graphics_processor=graphics_processors[1])
+
+
+    consist = WagonConsist(type_config = type_config_narrow_gauge,
+                        title = '[Open Car]',
+                        roster = 'soam',
+                        base_numeric_id = 1320,
+                        wagon_generation = 2,
+                        replacement_id = '-none',
+                        intro_date = 1920,
+                        vehicle_life = 40)
+
+    consist.add_unit(Wagon(consist = consist,
+                            capacity_freight = 35,
+                            weight = 3,
+                            vehicle_length = 5))
+
+    graphics_processors = get_graphics_processors('open_car_ng_soam_gen_2_template.png')
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,

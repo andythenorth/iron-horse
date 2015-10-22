@@ -7,7 +7,7 @@ consist = EngineConsist(id = 'baldwin',
               replacement_id = '-none',
               power = 1600,
               track_type = 'NG',
-              speed = 40,
+              speed = 45,
               vehicle_life = 40,
               intro_date = 1920)
 

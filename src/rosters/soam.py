@@ -32,9 +32,9 @@ from vehicles import v8
 speeds = dict(gen_1_wagon_speeds = [50, 65],
               gen_2_wagon_speeds = [65, 85],
               gen_3_wagon_speeds = [85, None],
-              ng_gen_1_wagon_speeds = [40, 55],
-              ng_gen_2_wagon_speeds = [55, 70],
-              ng_gen_3_wagon_speeds = [70, 85])
+              ng_gen_1_wagon_speeds = [35, 45],
+              ng_gen_2_wagon_speeds = [45, 55],
+              ng_gen_3_wagon_speeds = [55, 65])
 
 roster = Roster(id = 'soam',
                 numeric_id = 2,

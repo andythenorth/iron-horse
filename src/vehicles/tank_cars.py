@@ -128,7 +128,7 @@ def main():
                         vehicle_life = 40)
 
     consist.add_unit(Wagon(consist = consist,
-                            capacity_freight = 20,
+                            capacity_freight = 25,
                             weight = 12,
                             vehicle_length = 5))
 
@@ -151,12 +151,12 @@ def main():
                         base_numeric_id = 670,
                         wagon_generation = 2,
                         replacement_id = '-none',
-                        intro_date = 1910,
+                        intro_date = 1920,
                         vehicle_life = 40)
 
     consist.add_unit(Wagon(consist = consist,
-                            capacity_freight = 40,
-                            weight = 12,
+                            capacity_freight = 50,
+                            weight = 18,
                             vehicle_length = 5))
 
     options = {'template': 'tank_car_soam_gen_2_template.png'}
@@ -178,11 +178,11 @@ def main():
                         base_numeric_id = 680,
                         wagon_generation = 3,
                         replacement_id = '-none',
-                        intro_date = 1960,
+                        intro_date = 1980,
                         vehicle_life = 40)
 
     consist.add_unit(Wagon(consist = consist,
-                            capacity_freight = 65,
+                            capacity_freight = 75,
                             weight = 12,
                             vehicle_length = 8))
 
@@ -212,7 +212,34 @@ def main():
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 20,
-                            weight = 4,
+                            weight = 8,
+                            vehicle_length = 4))
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=0,
+                           graphics_processor=GraphicsProcessorFactory('pass_through_pipeline', options))
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=1,
+                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
+
+
+    consist = WagonConsist(type_config = type_config_narrow,
+                        title = '[Tank Car]',
+                        roster = 'soam',
+                        base_numeric_id = 1360,
+                        wagon_generation = 2,
+                        replacement_id = '-none',
+                        intro_date = 1920,
+                        vehicle_life = 40)
+
+    options = {'template': 'tank_car_ng_soam_gen_1_template.png'}
+
+    consist.add_unit(Wagon(consist = consist,
+                            capacity_freight = 40,
+                            weight = 12,
                             vehicle_length = 4))
 
     consist.add_model_variant(intro_date=0,
