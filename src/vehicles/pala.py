@@ -6,14 +6,12 @@ consist = EngineConsist(id = 'pala',
               title = 'Pala [Diesel]',
               replacement_id = '-none',
               power = 1000,
-              speed = 65,
-              type_base_buy_cost_points = -10, # dibble buy cost for game balance
-              type_base_running_cost_points = -15, # dibble running costs for game balance
+              speed = 75,
               vehicle_life = 30,
               intro_date = 1953)
 
 consist.add_unit(DieselLoco(consist = consist,
-                        weight = 30,
+                        weight = 75,
                         vehicle_length = 7,
                         spriterow_num = 0))
 
