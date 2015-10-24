@@ -5,15 +5,15 @@ consist = EngineConsist(id = 'estados',
               base_numeric_id = 190,
               title = 'Estados Boxcab [Electric]',
               replacement_id = '-none',
-              power = 1300,
+              power = 1450,
               speed = 75,
               type_base_buy_cost_points = 35, # dibble buy cost for game balance
               type_base_running_cost_points = -10, # dibble running costs for game balance
-              vehicle_life = 40,
+              vehicle_life = 80,
               intro_date = 1925)
 
 consist.add_unit(ElectricLoco(consist = consist,
-                        weight = 80,
+                        weight = 90,
                         vehicle_length = 6,
                         spriterow_num = 0))
 

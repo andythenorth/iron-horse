@@ -8,7 +8,7 @@ consist = EngineConsist(id = 'baldwin',
               power = 1600,
               track_type = 'NG',
               speed = 45,
-              vehicle_life = 40,
+              vehicle_life = 60,
               intro_date = 1920)
 
 consist.add_unit(SteamLoco(consist = consist,
@@ -17,7 +17,7 @@ consist.add_unit(SteamLoco(consist = consist,
                         spriterow_num = 0))
 
 consist.add_unit(SteamLocoTender(consist = consist,
-                        weight = 35,
+                        weight = 25,
                         vehicle_length = 4,
                         spriterow_num = 1))
 

@@ -1,5 +1,6 @@
 from roster import Roster
 
+from vehicles import ge289a
 from vehicles import amazon
 from vehicles import americano
 from vehicles import anaconda
@@ -56,6 +57,7 @@ roster = Roster(id = 'soam',
                            justicialista,
                            pequeno,
                            baldwin,
+                           ge289a,
                            cooper,
                            krauss,
                            pala,

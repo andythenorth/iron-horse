@@ -12,7 +12,7 @@ consist = EngineConsist(id = 'cooper',
               intro_date = 1949)
 
 consist.add_unit(DieselLoco(consist = consist,
-                        weight = 75,
+                        weight = 85,
                         vehicle_length = 7,
                         spriterow_num = 0))
 
