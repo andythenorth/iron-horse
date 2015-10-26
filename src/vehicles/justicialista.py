@@ -5,18 +5,18 @@ consist = EngineConsist(id = 'justicialista',
               base_numeric_id = 250,
               title = 'Justicialista [Diesel]',
               replacement_id = '-none',
-              power = 2700,
+              power = 5880, # yes, really, it's high powered
               speed = 85,
-              vehicle_life = 40,
-              intro_date = 1950)
+              vehicle_life = 20, # but short lived eh?
+              intro_date = 1955)
 
 consist.add_unit(DieselLoco(consist = consist,
-                        weight = 40,
+                        weight = 114,
                         vehicle_length = 8,
                         spriterow_num = 0))
 
 consist.add_unit(DieselLoco(consist = consist,
-                        weight = 40,
+                        weight = 114,
                         vehicle_length = 8,
                         spriterow_num = 1))
 
