@@ -27,7 +27,6 @@ from vehicles import potosi
 from vehicles import riachuelo
 from vehicles import roca
 from vehicles import super_mountain
-from vehicles import thing_ng
 from vehicles import universal
 from vehicles import ut440
 from vehicles import v8
@@ -64,7 +63,6 @@ roster = Roster(id = 'soam',
                            cooper,
                            krauss,
                            pala,
-                           thing_ng,
                            astarsa,
                            universal,
                            evolucao,
