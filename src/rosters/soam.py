@@ -16,12 +16,15 @@ from vehicles import estados
 from vehicles import evolucao
 from vehicles import justicialista
 from vehicles import krauss
+from vehicles import manzana
+from vehicles import medrano
 from vehicles import pacifico
 from vehicles import pala
 from vehicles import patagonia
 from vehicles import peacock
 from vehicles import pequeno
 from vehicles import potosi
+from vehicles import riachuelo
 from vehicles import roca
 from vehicles import super_mountain
 from vehicles import thing_ng
@@ -68,4 +71,7 @@ roster = Roster(id = 'soam',
                            roca,
                            amazon,
                            anaconda,
-                           patagonia])
+                           patagonia,
+                           riachuelo,
+                           manzana,
+                           medrano])
