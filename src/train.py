@@ -746,7 +746,15 @@ class ElectricLoco(Train):
         super(ElectricLoco, self).__init__(**kwargs)
         self.template = 'train.pynml'
         self.default_cargo_capacities = [0]
-        kwargs['consist'].track_type = "ELRL"
+        if hasattr(kwargs['consist'], 'track_type'):
+            # all NG vehicles should set 'NG' only, this class then over-rides that to electrified NG as needed
+            # why? this might be daft?
+            if kwargs['consist'].track_type == "NG":
+                kwargs['consist'].track_type = "ELNG"
+            else:
+                kwargs['consist'].track_type = "ELRL"
+        else:
+            kwargs['consist'].track_type = "ELRL"
         self.engine_class = 'ENGINE_CLASS_ELECTRIC'
         self.visual_effect = 'VISUAL_EFFECT_ELECTRIC'
 
