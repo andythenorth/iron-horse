@@ -139,3 +139,22 @@ def main():
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=0)
+
+
+    consist = WagonConsist(type_config = type_config_narrow_gauge,
+                        title = '[Livestock Car]',
+                        roster = 'soam',
+                        base_numeric_id = 1520,
+                        wagon_generation = 2,
+                        replacement_id = '-none',
+                        intro_date = 1920,
+                        vehicle_life = 40)
+
+    consist.add_unit(Wagon(consist = consist,
+                            capacity_freight = 35,
+                            weight = 5,
+                            vehicle_length = 6))
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=0)
