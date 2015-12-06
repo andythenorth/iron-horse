@@ -135,6 +135,7 @@ cargo_labels = ['PASS', # pax first
                 'JAVA',
                 'BEAN',
                 'NITR',
+                'VEHI',
                 #
                 'NULL']
 

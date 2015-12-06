@@ -2,7 +2,7 @@ import global_constants
 from train import TypeConfig, WagonConsist, Wagon, GraphicsProcessorFactory
 
 # cargo rows 0 indexed - 0 = first set of loaded sprites
-cargo_graphics_mappings = {'ENSP': [0, 1, 2, 3, 4], 'FMSP': [0, 1, 2, 3, 4], 'BDMT': [0, 1]}
+cargo_graphics_mappings = {'ENSP': [0, 1, 2, 3, 4], 'FMSP': [0, 1, 2, 3, 4], 'VEHI': [0, 1, 2, 3, 4], 'BDMT': [0, 1]}
 
 type_config = TypeConfig(base_id = 'supplies_car',
                         template = 'car_with_visible_cargo.pynml',
