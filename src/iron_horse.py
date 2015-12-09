@@ -81,6 +81,10 @@ supplies_cars.main()
 from vehicles import tank_cars
 tank_cars.main()
 
+from vehicles import vehicle_transporter_cars
+vehicle_transporter_cars.main()
+
+
 def get_active_rosters():
     if repo_vars.get('roster', '*') == '*':
         active_rosters = [roster for roster in registered_rosters if not roster.disabled]

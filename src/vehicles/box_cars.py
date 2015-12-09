@@ -41,6 +41,7 @@ def main():
 
     consist.add_unit(BoxCar(consist = consist,
                             capacity_freight = 20,
+                            capacity_mail = 30,
                             weight = 12,
                             vehicle_length = 5))
 
@@ -69,6 +70,7 @@ def main():
 
     consist.add_unit(BoxCar(consist = consist,
                             capacity_freight = 35,
+                            capacity_mail = 45,
                             weight = 18,
                             vehicle_length = 6))
 
@@ -96,6 +98,7 @@ def main():
 
     consist.add_unit(BoxCar(consist = consist,
                             capacity_freight = 55,
+                            capacity_mail = 65,
                             weight = 25,
                             vehicle_length = 10))
 
@@ -153,6 +156,7 @@ def main():
 
     consist.add_unit(BoxCar(consist = consist,
                             capacity_freight = 25,
+                            capacity_mail = 35,
                             weight = 12,
                             vehicle_length = 5))
 
@@ -180,6 +184,7 @@ def main():
 
     consist.add_unit(BoxCar(consist = consist,
                             capacity_freight = 45,
+                            capacity_mail = 55,
                             weight = 20,
                             vehicle_length = 6))
 
@@ -207,6 +212,7 @@ def main():
 
     consist.add_unit(BoxCar(consist = consist,
                             capacity_freight = 65,
+                            capacity_mail = 75,
                             weight = 30,
                             vehicle_length = 7))
 
