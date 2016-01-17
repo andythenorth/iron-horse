@@ -72,7 +72,7 @@ base_refits_by_class = {'empty': [],
 # this is done per vehicle type, or added to global_constants for ease of reuse and updating
 # these lists are similar but not identical across Iron Horse, Squid, Road Hog etc
 disallowed_refits_by_label = {'non_hopper_freight': ['WOOD', 'SGCN', 'FICR', 'BDMT', 'WDPR', 'GRAI', 'WHEA', 'MAIZ', 'FRUT', 'BEAN'],
-                              'edible_liquids': ['MILK', 'WATR', 'BEER', 'FOOD'],
+                              'edible_liquids': ['MILK', 'WATR', 'BEER', 'FOOD', 'EOIL'],
                               'non_edible_liquids': ['RFPR', 'OIL_', 'FMSP', 'PETR', 'RUBR'],
                               'non_flatcar_freight': ['FOOD', 'FISH', 'LVST', 'FRUT', 'BEER', 'MILK', 'JAVA', 'SUGR'],
                               'non_freight_special_cases': ['TOUR']}
@@ -137,6 +137,7 @@ cargo_labels = ['PASS', # pax first
                 'BEAN',
                 'NITR',
                 'VEHI',
+                'EOIL',
                 #
                 'NULL']
 
