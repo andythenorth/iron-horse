@@ -8,6 +8,10 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY                               :Вместим�
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :Низкая
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Сбалансированная
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Высокая
+STR_PARAM_ROSTER                                                :Расписание
+STR_PARAM_ROSTER_DESC                                           :Выберите набор поездов для использования.
+STR_PARAM_ROSTER_OPTION_0                                       :Пол царства за коня!
+STR_PARAM_ROSTER_OPTION_1                                       :Табун
 
 # keep these alphabetised, easier
 STR_NAME_SUFFIX_BATTERY                                         :(Энергоблок)
@@ -19,3 +23,21 @@ STR_NAME_SUFFIX_METRO_CAR                                       :Вагон (М�
 STR_NAME_SUFFIX_METRO_TRAIN                                     :(Метро)
 STR_NAME_SUFFIX_STEAM                                           :(Паровоз)
 
+STR_NAME_SUFFIX_BOX_CAR                                         :Крытый вагон
+STR_NAME_SUFFIX_CABOOSE_CAR                                     :Тормозной вагон
+STR_NAME_SUFFIX_COMBINE_CAR                                     :Грузопассажирский вагон
+STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Закрытый хоппер
+STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Цистерна для продуктов
+STR_NAME_SUFFIX_FLAT_CAR                                        :Платформа
+STR_NAME_SUFFIX_HOPPER_CAR                                      :Хоппер
+STR_NAME_SUFFIX_INTERMODAL_FLAT_CAR                             :Контейнерная платформа
+STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Скотовоз
+STR_NAME_SUFFIX_MAIL_CAR                                        :Почтовый вагон
+STR_NAME_SUFFIX_METAL_CAR                                       :Стальной вагон
+STR_NAME_SUFFIX_OPEN_CAR                                        :Открытый вагон
+STR_NAME_SUFFIX_PASSENGER_CAR                                   :Пассажирский вагон
+STR_NAME_SUFFIX_REEFER_CAR                                      :Холодильник
+STR_NAME_SUFFIX_ROTARY_GONDOLA_CAR                              :полувагон-самосвал
+STR_NAME_SUFFIX_SUPPLIES_CAR                                    :Спецвагон
+STR_NAME_SUFFIX_TANK_CAR                                        :Цистерна
+STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Автовоз
