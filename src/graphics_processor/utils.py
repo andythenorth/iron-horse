@@ -30,9 +30,10 @@ def get_bulk_cargo_recolour_maps():
     COAL = {170: 1, 171: 1, 172: 2, 173: 2, 174: 3, 175: 4, 176: 5}
     CLAY = {170: 57, 171: 57, 172: 57, 173: 77, 174: 78, 175: 78, 176: 79}
     SCMT = {170: 104, 171: 3, 172: 2, 173: 70, 174: 71, 175: 72, 176: 3}
+    PHOS = {170: 63, 171: 64, 172: 192, 173: 65, 174: 193, 175: 64, 176: 194}
 
     # we just return a fixed-order tuple here, don't worry about the labels...
     # ...we have to manually specify the spriterow<->cargo label mapping in the wagon definition anyway
     # GRVl is also reused for generic unknown cargos, and is in position 0 for this reason
     # (there is no mapping for unknown cargos, just uses first spriteset)
-    return (GRVL, IORE, CORE, AORE, SAND, COAL, CLAY, SCMT)
+    return (GRVL, IORE, CORE, AORE, SAND, COAL, CLAY, SCMT, PHOS)
