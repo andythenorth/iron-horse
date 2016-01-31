@@ -5,7 +5,7 @@ consist = EngineConsist(id = 'standard',
               base_numeric_id = 480,
               title = '4-4-0 Standard [Steam]',
               replacement_id = '-none',
-              power = 1000,
+              power = 950,
               tractive_effort_coefficient = 0.07,
               speed = 70,
               type_base_buy_cost_points = 18, # dibble buy cost for game balance

@@ -5,7 +5,7 @@ consist = EngineConsist(id = 'ramsbottom',
               base_numeric_id = 380,
               title = '0-6-0 Ramsbottom [Steam]',
               replacement_id = '-none',
-              power = 800,
+              power = 1100,
               tractive_effort_coefficient = 0.22,
               speed = 55,
               type_base_buy_cost_points = 12, # dibble buy cost for game balance
