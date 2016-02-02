@@ -2,6 +2,36 @@ Changelog
 =========
 
 -------------
+1.8.0 Release
+-------------
+
+Not savegame compatible with previous versions of Iron Horse.
+
+*Features*
+
+- add Aberdare 2-6-0 freight engine
+- rebalanced power of early freight engines (previously for many routes it made more sense to use the equivalent express engine, as it had more power)
+- re-balanced Cargo Sprinter for express freight
+    - lower power, but with very low costs
+    - with no wagons attached, Cargo Sprinter will reach top speed quickly
+    - 1 or 2 wagons can be hauled per Cargo Sprinter, but acceleration will be slower
+    - add as many Cargo Sprinters to the consist as you need, they're affordable
+- add vehicle transporter car (no cargo graphics yet)
+- covered hoppers now refit to rubber cargo
+- refit support for FIRS Cassava, Edible Oil, Nuts and Vehicles cargos
+- refit and cargo graphics for FIRS Phosphate
+
+*Fixes*
+
+- improved offsets for vehicles longer than 8/8
+- Cargo Sprinter refits didn't match intermodal cars
+
+*Language Updates*
+
+- many languages
+- translator credits http://bundles.openttdcoop.org/iron-horse/push/LATEST/credits.txt
+
+-------------
 1.7.0 Release
 -------------
 
