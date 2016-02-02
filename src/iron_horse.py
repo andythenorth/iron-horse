@@ -28,7 +28,7 @@ from rosters import brit
 brit.roster.register(disabled=False)
 
 from rosters import soam
-soam.roster.register(disabled=False)
+soam.roster.register(disabled=True)
 
 from vehicles import box_cars
 box_cars.main()
