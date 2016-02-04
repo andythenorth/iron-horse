@@ -4,7 +4,7 @@ from train import TypeConfig, WagonConsist, Wagon, GraphicsProcessorFactory
 type_config = TypeConfig(base_id = 'covered_hopper_car',
                 template = 'train.pynml',
                 class_refit_groups = ['covered_hopper_freight'],
-                label_refits_allowed = ['GRAI', 'WHEA', 'MAIZ', 'FOOD', 'SUGR', 'FMSP', 'RFPR', 'CLAY', 'BDMT', 'BEAN', 'NITR', 'RUBR'],
+                label_refits_allowed = ['GRAI', 'WHEA', 'MAIZ', 'FOOD', 'SUGR', 'FMSP', 'RFPR', 'CLAY', 'BDMT', 'BEAN', 'NITR', 'RUBR', 'SAND'],
                 label_refits_disallowed = [],
                 autorefit = True,
                 default_cargo = 'GRAI',
