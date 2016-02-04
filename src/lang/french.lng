@@ -9,7 +9,7 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Merveilleuse
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Excessive
 STR_PARAM_ROSTER                                                :Assortiment
 STR_PARAM_ROSTER_DESC                                           :Choisir la thématique des trains utilisés.
-STR_PARAM_ROSTER_OPTION_0                                       :A horse! A horse! My kingdom for a horse!
+STR_PARAM_ROSTER_OPTION_0                                       :Un cheval{NBSP}! Un cheval{NBSP}! Mon royaume pour un cheval{NBSP}!
 STR_PARAM_ROSTER_OPTION_1                                       :Caballada
 
 # keep these alphabetised, easier
