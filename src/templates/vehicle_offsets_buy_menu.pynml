@@ -8,7 +8,7 @@
             [60,    10, 1, 1, 0, 0]
             [60,    10, 1, 1, 0, 0]
             [60,    10, 1, 1, 0, 0]
-            [316,   10, ${consist.buy_menu_width}, 16, -${int(consist.buy_menu_width / 2)}, -11]
+            [316,   10, ${consist.buy_menu_width}, 16, -${int(consist.buy_menu_width / 2)}, -11 ${', ANIM' if consist.suppress_animated_pixel_warnings else ''}]
             [60,    10, 1, 1, 0, 0]
         }
     </tal:standard>
@@ -22,7 +22,7 @@
             [60,    10, 1, 1, 0, 0]
             [60,    10, 1, 1, 0, 0]
             [60,    10, 1, 1, 0, 0]
-            [316,   10, ${consist.buy_menu_width}, 15, -${int(consist.buy_menu_width / 2)}, -10]
+            [316,   10, ${consist.buy_menu_width}, 15, -${int(consist.buy_menu_width / 2)}, -10 ${', ANIM' if consist.suppress_animated_pixel_warnings else ''}]
             [60,    10, 1, 1, 0, 0]
         }
     </tal:legacy>

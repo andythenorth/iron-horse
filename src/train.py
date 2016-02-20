@@ -58,6 +58,8 @@ class Consist(object):
         self.slices = []
         # roster is set when the vehicle is registered to a roster, only one roster per vehicle
         self.roster_id = None
+         # optionally suppress nmlc warnings about animated pixels for consists where they're intentional
+        self.suppress_animated_pixel_warnings = kwargs.get('suppress_animated_pixel_warnings', False)
 
 
     def add_model_variant(self, intro_date, end_date, spritesheet_suffix, graphics_processor=None, visual_effect_offset=None):

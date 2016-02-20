@@ -28,7 +28,8 @@ def main():
                         replacement_id = '-none',
                         intro_date = 1860,
                         vehicle_life = 50,
-                        speed = 35)
+                        speed = 35,
+                        suppress_animated_pixel_warnings = True)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 30,
@@ -49,7 +50,8 @@ def main():
                         replacement_id = '-none',
                         intro_date = 1910,
                         vehicle_life = 50,
-                        speed = 45)
+                        speed = 45,
+                        suppress_animated_pixel_warnings = True)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 60,
@@ -70,7 +72,8 @@ def main():
                         replacement_id = '-none',
                         intro_date = 1960,
                         vehicle_life = 50,
-                        speed = 65)
+                        speed = 65,
+                        suppress_animated_pixel_warnings = True)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 90,
