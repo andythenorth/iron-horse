@@ -209,15 +209,9 @@ class Consist(object):
         nml_result = template(consist=self, global_constants=global_constants)
         return nml_result
 
-    def render_dummy(self):
-        template = templates["dummy.pynml"]
-        nml_result = template(consist=self, global_constants=global_constants, utils=utils)
-        return nml_result
-
     def render(self):
         # templating
         nml_result = ''
-        nml_result = nml_result + self.render_dummy() # do this first so we can split it off cleanly
         nml_result = nml_result + self.render_articulated_switch()
         for slice in set(self.slices):
             nml_result = nml_result + slice.render()

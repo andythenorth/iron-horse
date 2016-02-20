@@ -4,8 +4,6 @@ from time import time
 
 print("[BUILD] build_iron_horse.py")
 
-import utils
-
 import os.path
 currentdir = os.curdir
 
@@ -26,12 +24,10 @@ print(format((time() - start), '.2f')+'s')
 
 # render the nml file
 start = time()
-import render_nml_nfo
-render_nml_nfo.main()
+import render_nml
+render_nml.main()
 elapsed_time = (time() - start)
 print(format((time() - start), '.2f')+'s')
-if elapsed_time > 2 and render_nml_nfo.everything_dirty == False:
-    utils.echo_message("Slow nml rendering?  Try the ic=True make flag if you're only changing vehicle properties")
 
 # render the docs
 start = time()

@@ -1,7 +1,9 @@
 // -- some switches are common to all vehicles so included with properties -- //
 
 // -- smoke etc -- //
-<tal:include metal:use-macro="load: visual_effect_and_powered.pynml" />
+<tal:visual_effect condition="vehicle.is_lead_slice_of_unit">
+    <tal:include metal:use-macro="load: visual_effect_and_powered.pynml" />
+</tal:visual_effect>
 
 // -- power -- //
 <tal:variable_power condition="consist.slice_requires_variable_power(vehicle)">
