@@ -1,12 +1,13 @@
-// -- some switches are common to all vehicles so included with properties -- //
+<!--! some switches are common to all vehicles so included with properties -->
 
-// -- smoke etc -- //
 <tal:visual_effect condition="vehicle.is_lead_slice_of_unit">
+    // -- smoke etc -- //
     <tal:include metal:use-macro="load: visual_effect_and_powered.pynml" />
 </tal:visual_effect>
 
-// -- power -- //
+
 <tal:variable_power condition="consist.slice_requires_variable_power(vehicle)">
+    // -- power -- //
     switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_power, current_railtype) {
         <tal:only_if_overrides_exist condition="consist.power_by_railtype is not None">
             <tal:railtype_specific_effects repeat="railtype consist.power_by_railtype.keys()">
