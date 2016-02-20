@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-print("[RENDER NML ONLY] render_unified_nml.py")
+print("[RENDER NML ONLY] render_nml.py")
 
 import codecs # used for writing files - more unicode friendly than standard open() module
 

@@ -13,10 +13,20 @@ import codecs # used for writing files - more unicode friendly than standard ope
 import shutil
 import os
 currentdir = os.curdir
+import sys
 from multiprocessing import Pool
 import multiprocessing
 logger = multiprocessing.log_to_stderr()
 logger.setLevel(25)
+
+import utils
+# get args passed by makefile
+repo_vars = utils.get_repo_vars(sys)
+num_pool_workers = repo_vars.get('num_pool_workers', 1)
+if num_pool_workers == 0:
+    use_multiprocessing = False
+else:
+    use_multiprocessing = True
 
 import iron_horse
 
@@ -53,14 +63,12 @@ def main():
                 spritesheet_suffixes_seen.append(variant.spritesheet_suffix)
             variants.append((variant, consist))
 
-    # I disabled multiprocessing as a temporary measure when moving to python 3
-    # it can be restored if needed, it should be modified to pick up num pool workers from sysargs
-    use_multiprocessing = False
+    # in local tests, using more workers (up to 16) results in faster graphics rendering for me
     if use_multiprocessing == False:
         for variant in variants:
             run_pipeline(variant)
     else:
-        pool = Pool(processes=16)
+        pool = Pool(processes=num_pool_workers)
         pool.map(run_pipeline, variants)
         pool.close()
 
