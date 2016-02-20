@@ -54,14 +54,14 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
         track_type:                     ${consist.track_type};
     }
     graphics {
+        default:                        ${vehicle.id}_switch_graphics;
+        purchase:                       ${vehicle.id}_sg_purchase;
         <!--! only use the capacity switches if vehicle carries cargo, makes faster compile (saved about 20% of time) -->
         <tal:optional_capacity_switches condition="vehicle.default_cargo_capacities[0] != 0">
             cargo_capacity:                 ${vehicle.id + '_switch_cargo_capacity'};
             purchase_cargo_capacity:        ${vehicle.id + '_switch_cargo_capacity'};
             loading_speed:                  ${vehicle.id + '_switch_loading_speed'};
         </tal:optional_capacity_switches>
-        default:                        ${vehicle.id}_switch_graphics;
-        purchase:                       ${vehicle.id}_sg_purchase;
         <!--! no buy menu extra text in this grf by design; extra text is associated with BAD FEATURES -->
         <tal:variable_power condition="consist.slice_requires_variable_power(vehicle)">
             power:                          ${vehicle.id}_switch_power;
