@@ -20,8 +20,6 @@ generated_files_path = os.path.join(currentdir, global_constants.generated_files
 if not os.path.exists(generated_files_path):
     os.mkdir(generated_files_path)
 
-print("[IMPORT VEHICLES] iron_horse.py")
-
 from rosters import registered_rosters
 
 from rosters import brit
@@ -86,10 +84,10 @@ vehicle_transporter_cars.main()
 
 
 def get_active_rosters():
+    #  for a faster single-roster compiles when testing, optionally pass a roster id (lower case) as a makefile arg
     if repo_vars.get('roster', '*') == '*':
         active_rosters = [roster for roster in registered_rosters if not roster.disabled]
     else:
-        # this appears to not work as of March 2015
         active_rosters = [roster for roster in registered_rosters if roster.id == repo_vars['roster']] # make sure it's iterable
     return active_rosters
 

@@ -23,8 +23,9 @@ grf {
 		param_roster {
 			name: string(STR_PARAM_ROSTER);
 			desc: string(STR_PARAM_ROSTER_DESC);
-			min_value: 0;
-			max_value: ${len(active_rosters)-1};
+			<!--! special handling here to allow compiling rosters selectively (faster when testing) -->
+			min_value: ${min([roster.numeric_id - 1 for roster in active_rosters])};
+			max_value: ${max([roster.numeric_id - 1 for roster in active_rosters])};
 			names: {
 			    <tal:rosters repeat="roster active_rosters">
                     ${roster.numeric_id - 1}: string(STR_PARAM_ROSTER_OPTION_${roster.numeric_id - 1});

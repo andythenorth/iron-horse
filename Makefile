@@ -26,7 +26,7 @@ BASE_FILENAME       ?= mynewgrf
 DOC_FILES ?= docs/readme.txt docs/license.txt docs/changelog.txt
 
 # Directory structure
-SCRIPT_DIR          ?= build-common
+SCRIPT_DIR          := build-common
 
 # Uncomment in order to make use of gimp scripting. See the file
 # for a description of the format
@@ -48,19 +48,19 @@ NML_FILE            := $(BASE_FILENAME).nml
 # uncomment MAIN_SRC_FILE if you do not want any preprocessing to happen to your source file
 MAIN_SRC_FILE       := $(BASE_FILENAME).pnml
 
-GENERATE_NML        ?= nml
-GENERATE_LNG        ?= lng
-GENERATE_PNML       ?= pnml
-GENERATE_DOC        ?= doc
-GENERATE_GRF        ?= grf
-GENERATE_GFX        ?= gfx
+GENERATE_NML        := nml
+GENERATE_LNG        := lng
+GENERATE_PNML       := pnml
+GENERATE_DOC        := doc
+GENERATE_GRF        := grf
+GENERATE_GFX        := gfx
 
 # List of all files which will get shipped
 # documentation files: readme, changelog and license, usually $(DOC_FILES)
 # grf file: the above defined grf file, usualls $(GRF_FILE)
 # Add any additional, not usual files here, too, including
 # their relative path to the root of the repository
-BUNDLE_FILES           ?= $(GRF_FILE) $(DOC_FILES)
+BUNDLE_FILES           := $(GRF_FILE) $(DOC_FILES)
 
 # Replacement strings in the source and in the documentation
 # You may only change the values, not add new definitions
@@ -87,10 +87,10 @@ all: $(GENERATE_GRF) $(GENERATE_DOC) bundle_tar
 ################################################################
 # Programme definitions / search paths
 ################################################################
-MAKE           ?= make
-MAKE_FLAGS     ?= -r
+MAKE           := make
+MAKE_FLAGS     := -r
 
-NML            ?= $(shell which nmlc 2>/dev/null)
+NML            := $(shell which nmlc 2>/dev/null)
 NML_FLAGS      ?= -c
 ifdef REQUIRED_NML_BRANCH
 	NML_BRANCH = $(shell nmlc --version | head -n1 | cut -d. -f1-2)
@@ -100,18 +100,18 @@ ifdef MIN_NML_REVISION
 endif
 
 ifdef MAIN_SRC_FILE
-	CC             ?= $(shell which gcc 2>/dev/null)
-	CC_FLAGS       ?= -C -E -nostdinc -x c-header
+	CC             := $(shell which gcc 2>/dev/null)
+	CC_FLAGS       := -C -E -nostdinc -x c-header
 endif
 
-AWK            ?= awk
+AWK            := awk
 
-GREP           ?= grep
+GREP           := grep
 
-HG             ?= $(shell hg st >/dev/null 2>/dev/null && which hg 2>/dev/null)
+HG             := $(shell hg st >/dev/null 2>/dev/null && which hg 2>/dev/null)
 
-UNIX2DOS       ?= $(shell which unix2dos 2>/dev/null)
-UNIX2DOS_FLAGS ?= $(shell [ -n $(UNIX2DOS) ] && $(UNIX2DOS) -q --version 2>/dev/null && echo "-q" || echo "")
+UNIX2DOS       := $(shell which unix2dos 2>/dev/null)
+UNIX2DOS_FLAGS := $(shell [ -n $(UNIX2DOS) ] && $(UNIX2DOS) -q --version 2>/dev/null && echo "-q" || echo "")
 
 ################################################################
 # Get the Repository revision, tags and the modified status
@@ -124,25 +124,25 @@ UNIX2DOS_FLAGS ?= $(shell [ -n $(UNIX2DOS) ] && $(UNIX2DOS) -q --version 2>/dev/
 DEFAULT_BRANCH_NAME ?=
 
 # HG revision
-REPO_REVISION  ?= $(shell $(HG) id -n | cut -d+ -f1)
+REPO_REVISION  := $(shell $(HG) id -n | cut -d+ -f1)
 
 # Whether there are local changes
-REPO_MODIFIED  ?= $(shell [ "`$(HG) id | cut -c13`" = "+" ] && echo "M" || echo "")
+REPO_MODIFIED  := $(shell [ "`$(HG) id | cut -c13`" = "+" ] && echo "M" || echo "")
 
 # Branch name
-REPO_BRANCH    ?= $(shell $(HG) id -b | sed "s/default/$(DEFAULT_BRANCH_NAME)/")
+REPO_BRANCH    := $(shell $(HG) id -b | sed "s/default/$(DEFAULT_BRANCH_NAME)/")
 
 # Any tag which is not 'tip'
-REPO_TAGS      ?= $(shell $(HG) id -t | grep -v "tip")
+REPO_TAGS      := $(shell $(HG) id -t | grep -v "tip")
 
 # Filename addition, if we're not building the default branch
-REPO_BRANCH_STRING ?= $(shell if [ "$(REPO_BRANCH)" = "$(DEFAULT_BRANCH_NAME)" ]; then echo ""; else echo "$(REPO_BRANCH)-"; fi)
+REPO_BRANCH_STRING := $(shell if [ "$(REPO_BRANCH)" = "$(DEFAULT_BRANCH_NAME)" ]; then echo ""; else echo "$(REPO_BRANCH)-"; fi)
 
 # The shown version is either a tag, or in the absence of a tag the revision.
-REPO_VERSION_STRING ?= $(shell [ -n "$(REPO_TAGS)" ] && echo $(REPO_TAGS)$(REPO_MODIFIED) || echo $(REPO_BRANCH_STRING)r$(REPO_REVISION)$(REPO_MODIFIED))
+REPO_VERSION_STRING := $(shell [ -n "$(REPO_TAGS)" ] && echo $(REPO_TAGS)$(REPO_MODIFIED) || echo $(REPO_BRANCH_STRING)r$(REPO_REVISION)$(REPO_MODIFIED))
 
 # The title consists of name and version
-REPO_TITLE     ?= $(REPO_NAME) $(REPO_VERSION_STRING)
+REPO_TITLE     := $(REPO_NAME) $(REPO_VERSION_STRING)
 
 # Remove the @ when you want a more verbose output.
 _V ?= @
