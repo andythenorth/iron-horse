@@ -9,15 +9,16 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Maravillosa
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Excesiva
 STR_PARAM_ROSTER                                                :Lista a usar
 STR_PARAM_ROSTER_DESC                                           :Elige el set de trenes que usará el juego.
-STR_PARAM_ROSTER_OPTION_0                                       :¡Un caballo! ¡Un caballo! ¡Mi reino por un caballo!
-STR_PARAM_ROSTER_OPTION_1                                       :Manada de caballos
+STR_PARAM_ROSTER_OPTION_0                                       :Poni de Hierro
+STR_PARAM_ROSTER_OPTION_1                                       :LLama de Hierro
+STR_PARAM_ROSTER_OPTION_2                                       :Antílope de Hierro
 
 # keep these alphabetised, easier
 STR_NAME_SUFFIX_BATTERY                                         :(Batería)
 STR_NAME_SUFFIX_CAR                                             :Vagón
-STR_NAME_SUFFIX_DIESEL                                          :(Diesel)
+STR_NAME_SUFFIX_DIESEL                                          :(Diésel)
 STR_NAME_SUFFIX_ELECTRIC                                        :(Eléctrico)
-STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Electro-Diesel)
+STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Electro-Diésel)
 STR_NAME_SUFFIX_METRO_CAR                                       :Vagón (Metro)
 STR_NAME_SUFFIX_METRO_TRAIN                                     :(Metro)
 STR_NAME_SUFFIX_STEAM                                           :(Vapor)
