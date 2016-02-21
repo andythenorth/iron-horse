@@ -22,11 +22,14 @@ if not os.path.exists(generated_files_path):
 
 from rosters import registered_rosters
 
-from rosters import pony
-pony.roster.register(disabled=False)
+from rosters import antelope
+antelope.roster.register(disabled=False)
 
 from rosters import llama
 llama.roster.register(disabled=False)
+
+from rosters import pony
+pony.roster.register(disabled=False)
 
 from vehicles import box_cars
 box_cars.main()
