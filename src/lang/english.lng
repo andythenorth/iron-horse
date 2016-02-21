@@ -8,9 +8,9 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Marvellous
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Excessive
 STR_PARAM_ROSTER                                                :Roster
 STR_PARAM_ROSTER_DESC                                           :Choose which set of trains to use.
-STR_PARAM_ROSTER_OPTION_0                                       :Iron Horse (Inspired by UK and Ireland)
-STR_PARAM_ROSTER_OPTION_1                                       :Iron Llama (Inspired by Argentina, Peru and Chile)
-STR_PARAM_ROSTER_OPTION_2                                       :Iron Antelope (Inspired by central-western Africa)
+STR_PARAM_ROSTER_OPTION_0                                       :Iron Horse
+STR_PARAM_ROSTER_OPTION_1                                       :Iron Llama
+STR_PARAM_ROSTER_OPTION_2                                       :Iron Antelope
 
 # keep these alphabetised, easier
 STR_NAME_SUFFIX_BATTERY                                         :(Battery)
