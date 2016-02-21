@@ -213,6 +213,7 @@ def main():
                         replacement_id = '-none',
                         intro_date = 1950,
                         vehicle_life = 40,
+                        speedy = True,
                         use_legacy_spritesheet = True)
 
     consist.add_unit(Wagon(consist = consist,
