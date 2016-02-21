@@ -50,10 +50,10 @@ def get_graphics_processors(template):
     return (graphics_processor_1, graphics_processor_2)
 
 def main():
-    #--------------- brit ----------------------------------------------------------------------
+    #--------------- pony ----------------------------------------------------------------------
     consist = WagonConsist(type_config = type_config_normal,
                         title = '[Hopper Car]',
-                        roster = 'brit',
+                        roster = 'pony',
                         base_numeric_id = 1070,
                         wagon_generation = 1,
                         replacement_id = '-none',
@@ -66,7 +66,7 @@ def main():
                             weight = 10,
                             vehicle_length = 5))
 
-    graphics_processors = get_graphics_processors('hopper_car_brit_gen_1_template.png')
+    graphics_processors = get_graphics_processors('hopper_car_pony_gen_1_template.png')
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
@@ -81,7 +81,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config_normal,
                         title = '[Hopper Car]',
-                        roster = 'brit',
+                        roster = 'pony',
                         base_numeric_id = 1080,
                         wagon_generation = 2,
                         replacement_id = '-none',
@@ -94,7 +94,7 @@ def main():
                             weight = 20,
                             vehicle_length = 8))
 
-    graphics_processors = get_graphics_processors('hopper_car_brit_gen_2_template.png')
+    graphics_processors = get_graphics_processors('hopper_car_pony_gen_2_template.png')
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
@@ -109,7 +109,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config_normal,
                         title = '[Hopper Car]',
-                        roster = 'brit',
+                        roster = 'pony',
                         base_numeric_id = 1090,
                         wagon_generation = 3,
                         replacement_id = '-none',
@@ -121,7 +121,7 @@ def main():
                             weight = 27,
                             vehicle_length = 10))
 
-    graphics_processors = get_graphics_processors('hopper_car_brit_gen_3_template.png')
+    graphics_processors = get_graphics_processors('hopper_car_pony_gen_3_template.png')
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
@@ -134,10 +134,10 @@ def main():
                            graphics_processor=graphics_processors[1])
 
 
-    #--------------- soam ----------------------------------------------------------------------
+    #--------------- llama ----------------------------------------------------------------------
     consist = WagonConsist(type_config = type_config_normal,
                         title = '[Rotary Gondola Car]',
-                        roster = 'soam',
+                        roster = 'llama',
                         base_numeric_id = 1100,
                         wagon_generation = 2,
                         replacement_id = '-none',
@@ -149,7 +149,7 @@ def main():
                             weight = 20,
                             vehicle_length = 6))
 
-    graphics_processors = get_graphics_processors('hopper_car_soam_gen_2_template.png')
+    graphics_processors = get_graphics_processors('hopper_car_llama_gen_2_template.png')
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
@@ -164,7 +164,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config_normal,
                         title = '[Hopper Car]',
-                        roster = 'soam',
+                        roster = 'llama',
                         base_numeric_id = 1110,
                         wagon_generation = 3,
                         replacement_id = '-none',
@@ -176,7 +176,7 @@ def main():
                             weight = 25,
                             vehicle_length = 6))
 
-    graphics_processors = get_graphics_processors('hopper_car_soam_gen_3_template.png')
+    graphics_processors = get_graphics_processors('hopper_car_llama_gen_3_template.png')
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
@@ -192,7 +192,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config_narrow_gauge,
                         title = '[Rotary Gondola Car]',
-                        roster = 'soam',
+                        roster = 'llama',
                         base_numeric_id = 1120,
                         wagon_generation = 2,
                         replacement_id = '-none',
@@ -204,7 +204,7 @@ def main():
                             weight = 20,
                             vehicle_length = 6))
 
-    graphics_processors = get_graphics_processors('hopper_car_ng_soam_gen_2_template.png')
+    graphics_processors = get_graphics_processors('hopper_car_ng_llama_gen_2_template.png')
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
@@ -219,7 +219,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config_narrow_gauge,
                         title = '[Hopper Car]',
-                        roster = 'soam',
+                        roster = 'llama',
                         base_numeric_id = 1130,
                         wagon_generation = 3,
                         replacement_id = '-none',
@@ -231,7 +231,7 @@ def main():
                             weight = 25,
                             vehicle_length = 6))
 
-    graphics_processors = get_graphics_processors('hopper_car_ng_soam_gen_3_template.png')
+    graphics_processors = get_graphics_processors('hopper_car_ng_llama_gen_3_template.png')
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,

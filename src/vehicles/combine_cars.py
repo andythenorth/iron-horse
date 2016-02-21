@@ -11,10 +11,10 @@ type_config = TypeConfig(base_id = 'combine_car',
                 default_capacity_type = 'capacity_mail')
 
 def main():
-    #--------------- brit ----------------------------------------------------------------------
+    #--------------- pony ----------------------------------------------------------------------
     consist = WagonConsist(type_config = type_config,
                         title = '[Combine Car]',
-                        roster = 'brit',
+                        roster = 'pony',
                         base_numeric_id = 1000,
                         wagon_generation = 1,
                         replacement_id = '-none',
@@ -33,4 +33,4 @@ def main():
                            spritesheet_suffix=0)
 
 
-    #--------------- soam ----------------------------------------------------------------------
+    #--------------- llama ----------------------------------------------------------------------

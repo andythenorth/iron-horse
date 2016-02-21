@@ -18,11 +18,11 @@ type_config = TypeConfig(base_id = 'metal_car',
 
 
 def main():
-    #--------------- brit ----------------------------------------------------------------------
+    #--------------- pony ----------------------------------------------------------------------
 
     consist = WagonConsist(type_config = type_config,
                         title = '[Metal Car]',
-                        roster = 'brit',
+                        roster = 'pony',
                         base_numeric_id = 890,
                         wagon_generation = 1,
                         replacement_id = '-none',
@@ -44,7 +44,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config,
                         title = '[Metal Car]',
-                        roster = 'brit',
+                        roster = 'pony',
                         base_numeric_id = 900,
                         wagon_generation = 2,
                         replacement_id = '-none',
@@ -66,7 +66,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config,
                         title = '[Metal Car]',
-                        roster = 'brit',
+                        roster = 'pony',
                         base_numeric_id = 910,
                         wagon_generation = 3,
                         replacement_id = '-none',

@@ -12,10 +12,10 @@ type_config = TypeConfig(base_id = 'metro_car',
                 track_type = 'METRO')
 
 def main():
-    #--------------- brit ----------------------------------------------------------------------
+    #--------------- pony ----------------------------------------------------------------------
     consist = WagonConsist(type_config = type_config,
                         title = 'Mail [Metro Car]',
-                        roster = 'brit',
+                        roster = 'pony',
                         base_numeric_id = 880,
                         wagon_generation = 1,
                         replacement_id = '-none',
@@ -34,4 +34,4 @@ def main():
                            spritesheet_suffix=0)
 
 
-    #--------------- soam ----------------------------------------------------------------------
+    #--------------- llama ----------------------------------------------------------------------

@@ -21,10 +21,10 @@ type_config_ng = TypeConfig(base_id = 'caboose_car_ng',
                 track_type = 'NG')
 
 def main():
-    #--------------- brit ----------------------------------------------------------------------
+    #--------------- pony ----------------------------------------------------------------------
     consist = WagonConsist(type_config = type_config,
                         title = '[Caboose Car]',
-                        roster = 'brit',
+                        roster = 'pony',
                         base_numeric_id = 1280,
                         wagon_generation = 1,
                         replacement_id = '-none',
@@ -45,7 +45,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config_ng,
                         title = '[Caboose Car]',
-                        roster = 'brit',
+                        roster = 'pony',
                         base_numeric_id = 1290,
                         wagon_generation = 1,
                         replacement_id = '-none',
@@ -62,10 +62,10 @@ def main():
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=0)
 
-    #--------------- soam ----------------------------------------------------------------------
+    #--------------- llama ----------------------------------------------------------------------
     consist = WagonConsist(type_config = type_config,
                         title = '[Caboose Car]',
-                        roster = 'soam',
+                        roster = 'llama',
                         base_numeric_id = 1300,
                         wagon_generation = 1,
                         replacement_id = '-none',

@@ -32,10 +32,10 @@ type_config_narrow = TypeConfig(base_id = 'tank_car_ng',
                                 track_type = 'NG')
 
 def main():
-    #--------------- brit ----------------------------------------------------------------------
+    #--------------- pony ----------------------------------------------------------------------
     consist = WagonConsist(type_config = type_config_normal,
                         title = '[Tank Car]',
-                        roster = 'brit',
+                        roster = 'pony',
                         base_numeric_id = 630,
                         wagon_generation = 1,
                         replacement_id = '-none',
@@ -48,7 +48,7 @@ def main():
                             weight = 12,
                             vehicle_length = 5))
 
-    options = {'template': 'tank_car_brit_gen_1_template.png'}
+    options = {'template': 'tank_car_pony_gen_1_template.png'}
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
@@ -63,7 +63,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config_normal,
                         title = '[Tank Car]',
-                        roster = 'brit',
+                        roster = 'pony',
                         base_numeric_id = 640,
                         wagon_generation = 2,
                         replacement_id = '-none',
@@ -76,7 +76,7 @@ def main():
                             weight = 27,
                             vehicle_length = 8))
 
-    options = {'template': 'tank_car_brit_gen_2_template.png'}
+    options = {'template': 'tank_car_pony_gen_2_template.png'}
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
@@ -91,7 +91,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config_narrow,
                         title = '[Tank Car]',
-                        roster = 'brit',
+                        roster = 'pony',
                         base_numeric_id = 650,
                         wagon_generation = 1,
                         replacement_id = '-none',
@@ -99,7 +99,7 @@ def main():
                         vehicle_life = 40,
                         use_legacy_spritesheet = True)
 
-    options = {'template': 'tank_car_ng_brit_gen_1_template.png'}
+    options = {'template': 'tank_car_ng_pony_gen_1_template.png'}
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 12,
@@ -117,10 +117,10 @@ def main():
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
 
-    #--------------- soam ----------------------------------------------------------------------
+    #--------------- llama ----------------------------------------------------------------------
     consist = WagonConsist(type_config = type_config_normal,
                         title = '[Tank Car]',
-                        roster = 'soam',
+                        roster = 'llama',
                         base_numeric_id = 660,
                         wagon_generation = 1,
                         replacement_id = '-none',
@@ -132,7 +132,7 @@ def main():
                             weight = 12,
                             vehicle_length = 5))
 
-    options = {'template': 'tank_car_soam_gen_1_template.png'}
+    options = {'template': 'tank_car_llama_gen_1_template.png'}
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
@@ -147,7 +147,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config_normal,
                         title = '[Tank Car]',
-                        roster = 'soam',
+                        roster = 'llama',
                         base_numeric_id = 670,
                         wagon_generation = 2,
                         replacement_id = '-none',
@@ -159,7 +159,7 @@ def main():
                             weight = 18,
                             vehicle_length = 5))
 
-    options = {'template': 'tank_car_soam_gen_2_template.png'}
+    options = {'template': 'tank_car_llama_gen_2_template.png'}
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
@@ -174,7 +174,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config_normal,
                         title = '[Tank Car]',
-                        roster = 'soam',
+                        roster = 'llama',
                         base_numeric_id = 680,
                         wagon_generation = 3,
                         replacement_id = '-none',
@@ -186,7 +186,7 @@ def main():
                             weight = 12,
                             vehicle_length = 8))
 
-    options = {'template': 'tank_car_soam_gen_3_template.png'}
+    options = {'template': 'tank_car_llama_gen_3_template.png'}
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
@@ -201,14 +201,14 @@ def main():
 
     consist = WagonConsist(type_config = type_config_narrow,
                         title = '[Tank Car]',
-                        roster = 'soam',
+                        roster = 'llama',
                         base_numeric_id = 690,
                         wagon_generation = 1,
                         replacement_id = '-none',
                         intro_date = 1860,
                         vehicle_life = 40)
 
-    options = {'template': 'tank_car_ng_soam_gen_1_template.png'}
+    options = {'template': 'tank_car_ng_llama_gen_1_template.png'}
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 20,
@@ -228,14 +228,14 @@ def main():
 
     consist = WagonConsist(type_config = type_config_narrow,
                         title = '[Tank Car]',
-                        roster = 'soam',
+                        roster = 'llama',
                         base_numeric_id = 1360,
                         wagon_generation = 2,
                         replacement_id = '-none',
                         intro_date = 1920,
                         vehicle_life = 40)
 
-    options = {'template': 'tank_car_ng_soam_gen_1_template.png'}
+    options = {'template': 'tank_car_ng_llama_gen_1_template.png'}
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 40,

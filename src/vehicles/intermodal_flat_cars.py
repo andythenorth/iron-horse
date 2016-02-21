@@ -28,10 +28,10 @@ type_config = TypeConfig(base_id = 'intermodal_flat_car',
 
 
 def main():
-    #--------------- brit ----------------------------------------------------------------------
+    #--------------- pony ----------------------------------------------------------------------
     consist = WagonConsist(type_config = type_config,
                         title = '[Intermodal Flat Car]',
-                        roster = 'brit',
+                        roster = 'pony',
                         base_numeric_id = 1060,
                         wagon_generation = 3,
                         replacement_id = '-none',
@@ -45,7 +45,7 @@ def main():
                             weight = 20,
                             vehicle_length = 8))
 
-    graphics_options['template'] = 'intermodal_flat_car_brit_gen_3_template.png'
+    graphics_options['template'] = 'intermodal_flat_car_pony_gen_3_template.png'
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
@@ -53,4 +53,4 @@ def main():
                            graphics_processor = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options))
 
 
-    #--------------- soam ----------------------------------------------------------------------
+    #--------------- llama ----------------------------------------------------------------------

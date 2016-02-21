@@ -29,10 +29,10 @@ type_config_narrow_gauge = TypeConfig(base_id = 'reefer_car_ng',
                         track_type = 'NG')
 
 def main():
-    #--------------- brit ----------------------------------------------------------------------
+    #--------------- pony ----------------------------------------------------------------------
     consist = WagonConsist(type_config = type_config,
                         title = '[Reefer Car]',
-                        roster = 'brit',
+                        roster = 'pony',
                         base_numeric_id = 730,
                         wagon_generation = 1,
                         replacement_id = '-none',
@@ -46,7 +46,7 @@ def main():
                             weight = 14,
                             vehicle_length = 6))
 
-    options = {'template': 'reefer_car_brit_gen_1_template.png'}
+    options = {'template': 'reefer_car_pony_gen_1_template.png'}
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
@@ -62,7 +62,7 @@ def main():
     # no gen 2 reefer - straight to gen 3
     consist = WagonConsist(type_config = type_config,
                         title = '[Reefer Car]',
-                        roster = 'brit',
+                        roster = 'pony',
                         base_numeric_id = 720,
                         wagon_generation = 3,
                         replacement_id = '-none',
@@ -76,7 +76,7 @@ def main():
                             weight = 30,
                             vehicle_length = 8))
 
-    options = {'template': 'reefer_car_brit_gen_3_template.png'}
+    options = {'template': 'reefer_car_pony_gen_3_template.png'}
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
@@ -89,10 +89,10 @@ def main():
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
 
-    #--------------- soam ----------------------------------------------------------------------
+    #--------------- llama ----------------------------------------------------------------------
     consist = WagonConsist(type_config = type_config,
                         title = '[Reefer Car]',
-                        roster = 'soam',
+                        roster = 'llama',
                         base_numeric_id = 1390,
                         wagon_generation = 1,
                         replacement_id = '-none',
@@ -105,7 +105,7 @@ def main():
                             weight = 14,
                             vehicle_length = 6))
 
-    options = {'template': 'reefer_car_soam_gen_1_template.png'}
+    options = {'template': 'reefer_car_llama_gen_1_template.png'}
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
@@ -121,7 +121,7 @@ def main():
     # no gen 2 reefers - straight to gen 3
     consist = WagonConsist(type_config = type_config,
                         title = '[Reefer Car]',
-                        roster = 'soam',
+                        roster = 'llama',
                         base_numeric_id = 1400,
                         wagon_generation = 3,
                         replacement_id = '-none',
@@ -134,7 +134,7 @@ def main():
                             weight = 25,
                             vehicle_length = 6))
 
-    options = {'template': 'reefer_car_soam_gen_3_template.png'}
+    options = {'template': 'reefer_car_llama_gen_3_template.png'}
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
@@ -149,7 +149,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config_narrow_gauge,
                         title = '[Reefer Car]',
-                        roster = 'soam',
+                        roster = 'llama',
                         base_numeric_id = 1410,
                         wagon_generation = 1,
                         replacement_id = '-none',
@@ -162,7 +162,7 @@ def main():
                             weight = 14,
                             vehicle_length = 6))
 
-    options = {'template': 'reefer_car_ng_soam_gen_1_template.png'}
+    options = {'template': 'reefer_car_ng_llama_gen_1_template.png'}
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
@@ -178,7 +178,7 @@ def main():
     # no gen 2 reefers - straight to gen 3
     consist = WagonConsist(type_config = type_config_narrow_gauge,
                         title = '[Reefer Car]',
-                        roster = 'soam',
+                        roster = 'llama',
                         base_numeric_id = 1420,
                         wagon_generation = 3,
                         replacement_id = '-none',
@@ -191,7 +191,7 @@ def main():
                             weight = 20,
                             vehicle_length = 6))
 
-    options = {'template': 'reefer_car_ng_soam_gen_3_template.png'}
+    options = {'template': 'reefer_car_ng_llama_gen_3_template.png'}
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,

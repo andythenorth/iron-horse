@@ -32,10 +32,10 @@ type_config_narrow_gauge = TypeConfig(base_id = 'flat_car_ng',
                     track_type = 'NG')
 
 def main():
-    #--------------- brit ----------------------------------------------------------------------
+    #--------------- pony ----------------------------------------------------------------------
     consist = WagonConsist(type_config = type_config_normal,
                         title = '[Flat Car]',
-                        roster = 'brit',
+                        roster = 'pony',
                         base_numeric_id = 1140,
                         wagon_generation = 1,
                         replacement_id = '-none',
@@ -48,7 +48,7 @@ def main():
                             weight = 6,
                             vehicle_length = 5))
 
-    options = {'template': 'flat_car_brit_gen_1_template.png'}
+    options = {'template': 'flat_car_pony_gen_1_template.png'}
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
@@ -63,7 +63,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config_normal,
                         title = '[Flat Car]',
-                        roster = 'brit',
+                        roster = 'pony',
                         base_numeric_id = 1150,
                         wagon_generation = 2,
                         replacement_id = '-none',
@@ -76,7 +76,7 @@ def main():
                             weight = 12,
                             vehicle_length = 8))
 
-    options = {'template': 'flat_car_brit_gen_2_template.png'}
+    options = {'template': 'flat_car_pony_gen_2_template.png'}
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
@@ -91,7 +91,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config_normal,
                         title = '[Flat Car]',
-                        roster = 'brit',
+                        roster = 'pony',
                         base_numeric_id = 1160,
                         wagon_generation = 3,
                         replacement_id = '-none',
@@ -103,7 +103,7 @@ def main():
                             weight = 25,
                             vehicle_length = 10))
 
-    options = {'template': 'flat_car_brit_gen_3_template.png'}
+    options = {'template': 'flat_car_pony_gen_3_template.png'}
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
@@ -118,7 +118,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config_narrow_gauge,
                         title = '[Flat Car]',
-                        roster = 'brit',
+                        roster = 'pony',
                         base_numeric_id = 1170,
                         wagon_generation = 1,
                         replacement_id = '-none',
@@ -135,10 +135,10 @@ def main():
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=0)
 
-    #--------------- soam ----------------------------------------------------------------------
+    #--------------- llama ----------------------------------------------------------------------
     consist = WagonConsist(type_config = type_config_normal,
                         title = '[Flat Car]',
-                        roster = 'soam',
+                        roster = 'llama',
                         base_numeric_id = 1180,
                         wagon_generation = 1,
                         replacement_id = '-none',
@@ -150,7 +150,7 @@ def main():
                             weight = 6,
                             vehicle_length = 5))
 
-    options = {'template': 'flat_car_soam_gen_1_template.png'}
+    options = {'template': 'flat_car_llama_gen_1_template.png'}
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
@@ -165,7 +165,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config_normal,
                         title = '[Flat Car]',
-                        roster = 'soam',
+                        roster = 'llama',
                         base_numeric_id = 1510,
                         wagon_generation = 2,
                         replacement_id = '-none',
@@ -177,7 +177,7 @@ def main():
                             weight = 6,
                             vehicle_length = 5))
 
-    options = {'template': 'flat_car_soam_gen_1_template.png'}
+    options = {'template': 'flat_car_llama_gen_1_template.png'}
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
@@ -192,7 +192,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config_narrow_gauge,
                         title = '[Flat Car]',
-                        roster = 'soam',
+                        roster = 'llama',
                         base_numeric_id = 520,
                         wagon_generation = 1,
                         replacement_id = '-none',
@@ -204,7 +204,7 @@ def main():
                             weight = 6,
                             vehicle_length = 5))
 
-    options = {'template': 'flat_car_ng_soam_gen_1_template.png'}
+    options = {'template': 'flat_car_ng_llama_gen_1_template.png'}
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
@@ -219,7 +219,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config_narrow_gauge,
                         title = '[Flat Car]',
-                        roster = 'soam',
+                        roster = 'llama',
                         base_numeric_id = 1500,
                         wagon_generation = 2,
                         replacement_id = '-none',
@@ -231,7 +231,7 @@ def main():
                             weight = 6,
                             vehicle_length = 5))
 
-    options = {'template': 'flat_car_ng_soam_gen_2_template.png'}
+    options = {'template': 'flat_car_ng_llama_gen_2_template.png'}
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,

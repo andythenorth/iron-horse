@@ -48,10 +48,10 @@ def get_graphics_processors(template):
     return (graphics_processor_1, graphics_processor_2)
 
 def main():
-    #--------------- brit ----------------------------------------------------------------------
+    #--------------- pony ----------------------------------------------------------------------
     consist = WagonConsist(type_config = type_config_normal,
                         title = '[Open Car]',
-                        roster = 'brit',
+                        roster = 'pony',
                         base_numeric_id = 820,
                         wagon_generation = 1,
                         replacement_id = '-none',
@@ -64,7 +64,7 @@ def main():
                             weight = 7,
                             vehicle_length = 5))
 
-    graphics_processors = get_graphics_processors('open_car_brit_gen_1_template.png')
+    graphics_processors = get_graphics_processors('open_car_pony_gen_1_template.png')
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
@@ -79,7 +79,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config_normal,
                         title = '[Open Car]',
-                        roster = 'brit',
+                        roster = 'pony',
                         base_numeric_id = 830,
                         wagon_generation = 2,
                         replacement_id = '-none',
@@ -92,7 +92,7 @@ def main():
                             weight = 15,
                             vehicle_length = 6))
 
-    graphics_processors = get_graphics_processors('open_car_brit_gen_2_template.png')
+    graphics_processors = get_graphics_processors('open_car_pony_gen_2_template.png')
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
@@ -107,7 +107,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config_normal,
                         title = '[Open Car]',
-                        roster = 'brit',
+                        roster = 'pony',
                         base_numeric_id = 840,
                         wagon_generation = 3,
                         replacement_id = '-none',
@@ -119,7 +119,7 @@ def main():
                             weight = 25,
                             vehicle_length = 10))
 
-    graphics_processors = get_graphics_processors('open_car_brit_gen_3_template.png')
+    graphics_processors = get_graphics_processors('open_car_pony_gen_3_template.png')
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
@@ -134,7 +134,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config_narrow_gauge,
                         title = '[Open Car]',
-                        roster = 'brit',
+                        roster = 'pony',
                         base_numeric_id = 850,
                         wagon_generation = 1,
                         replacement_id = '-none',
@@ -147,7 +147,7 @@ def main():
                             weight = 3,
                             vehicle_length = 3))
 
-    graphics_processors = get_graphics_processors('open_car_ng_brit_gen_1_template.png')
+    graphics_processors = get_graphics_processors('open_car_ng_pony_gen_1_template.png')
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
@@ -160,10 +160,10 @@ def main():
                            graphics_processor=graphics_processors[1])
 
 
-    #--------------- soam ----------------------------------------------------------------------
+    #--------------- llama ----------------------------------------------------------------------
     consist = WagonConsist(type_config = type_config_normal,
                         title = '[Open Car]',
-                        roster = 'soam',
+                        roster = 'llama',
                         base_numeric_id = 860,
                         wagon_generation = 1,
                         replacement_id = '-none',
@@ -175,7 +175,7 @@ def main():
                             weight = 7,
                             vehicle_length = 5))
 
-    graphics_processors = get_graphics_processors('open_car_soam_gen_1_template.png')
+    graphics_processors = get_graphics_processors('open_car_llama_gen_1_template.png')
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
@@ -190,7 +190,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config_normal,
                         title = '[Open Car]',
-                        roster = 'soam',
+                        roster = 'llama',
                         base_numeric_id = 1330,
                         wagon_generation = 2,
                         replacement_id = '-none',
@@ -202,7 +202,7 @@ def main():
                             weight = 15,
                             vehicle_length = 5))
 
-    graphics_processors = get_graphics_processors('open_car_soam_gen_2_template.png')
+    graphics_processors = get_graphics_processors('open_car_llama_gen_2_template.png')
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
@@ -217,7 +217,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config_narrow_gauge,
                         title = '[Open Car]',
-                        roster = 'soam',
+                        roster = 'llama',
                         base_numeric_id = 870,
                         wagon_generation = 1,
                         replacement_id = '-none',
@@ -229,7 +229,7 @@ def main():
                             weight = 3,
                             vehicle_length = 5))
 
-    graphics_processors = get_graphics_processors('open_car_ng_soam_gen_1_template.png')
+    graphics_processors = get_graphics_processors('open_car_ng_llama_gen_1_template.png')
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
@@ -244,7 +244,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config_narrow_gauge,
                         title = '[Open Car]',
-                        roster = 'soam',
+                        roster = 'llama',
                         base_numeric_id = 1320,
                         wagon_generation = 2,
                         replacement_id = '-none',
@@ -256,7 +256,7 @@ def main():
                             weight = 3,
                             vehicle_length = 5))
 
-    graphics_processors = get_graphics_processors('open_car_ng_soam_gen_2_template.png')
+    graphics_processors = get_graphics_processors('open_car_ng_llama_gen_2_template.png')
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,

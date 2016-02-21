@@ -12,10 +12,10 @@ type_config = TypeConfig(base_id = 'covered_hopper_car',
                 loading_speed_multiplier = 2)
 
 def main():
-    #--------------- brit ----------------------------------------------------------------------
+    #--------------- pony ----------------------------------------------------------------------
     consist = WagonConsist(type_config = type_config,
                         title = '[Covered Hopper Car]',
-                        roster = 'brit',
+                        roster = 'pony',
                         base_numeric_id = 1270,
                         wagon_generation = 1,
                         replacement_id = '-none',
@@ -28,7 +28,7 @@ def main():
                             weight = 12,
                             vehicle_length = 5))
 
-    options = {'template': 'covered_hopper_car_brit_gen_1_template.png'}
+    options = {'template': 'covered_hopper_car_pony_gen_1_template.png'}
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
@@ -43,7 +43,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config,
                         title = '[Covered Hopper Car]',
-                        roster = 'brit',
+                        roster = 'pony',
                         base_numeric_id = 1230,
                         wagon_generation = 2,
                         replacement_id = '-none',
@@ -56,7 +56,7 @@ def main():
                             weight = 18,
                             vehicle_length = 6))
 
-    options = {'template': 'covered_hopper_car_brit_gen_2_template.png'}
+    options = {'template': 'covered_hopper_car_pony_gen_2_template.png'}
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
@@ -71,7 +71,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config,
                         title = '[Covered Hopper Car]',
-                        roster = 'brit',
+                        roster = 'pony',
                         base_numeric_id = 1240,
                         wagon_generation = 3,
                         replacement_id = '-none',
@@ -83,7 +83,7 @@ def main():
                             weight = 27,
                             vehicle_length = 8))
 
-    options = {'template': 'covered_hopper_car_brit_gen_3_template.png'}
+    options = {'template': 'covered_hopper_car_pony_gen_3_template.png'}
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
@@ -96,10 +96,10 @@ def main():
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
 
-    #--------------- soam ----------------------------------------------------------------------
+    #--------------- llama ----------------------------------------------------------------------
     consist = WagonConsist(type_config = type_config,
                         title = '[Covered Hopper Car]',
-                        roster = 'soam',
+                        roster = 'llama',
                         base_numeric_id = 1250,
                         wagon_generation = 2,
                         replacement_id = '-none',
@@ -111,7 +111,7 @@ def main():
                             weight = 18,
                             vehicle_length = 7))
 
-    options = {'template': 'covered_hopper_car_soam_gen_2_template.png'}
+    options = {'template': 'covered_hopper_car_llama_gen_2_template.png'}
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
@@ -126,7 +126,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config,
                         title = '[Covered Hopper Car]',
-                        roster = 'soam',
+                        roster = 'llama',
                         base_numeric_id = 1260,
                         wagon_generation = 3,
                         replacement_id = '-none',
@@ -138,7 +138,7 @@ def main():
                             weight = 27,
                             vehicle_length = 8))
 
-    options = {'template': 'covered_hopper_car_soam_gen_3_template.png'}
+    options = {'template': 'covered_hopper_car_llama_gen_3_template.png'}
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,

@@ -15,10 +15,10 @@ type_config = TypeConfig(base_id = 'edibles_tank_car',
                 loading_speed_multiplier = 2)
 
 def main():
-    #--------------- brit ----------------------------------------------------------------------
+    #--------------- pony ----------------------------------------------------------------------
     consist = WagonConsist(type_config = type_config,
                         title = '[Edibles Tank Car]',
-                        roster = 'brit',
+                        roster = 'pony',
                         base_numeric_id = 1190,
                         wagon_generation = 1,
                         replacement_id = '-none',
@@ -32,7 +32,7 @@ def main():
                             weight = 12,
                             vehicle_length = 5))
 
-    options = {'template': 'edibles_tank_car_brit_gen_1_template.png'}
+    options = {'template': 'edibles_tank_car_pony_gen_1_template.png'}
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
@@ -48,7 +48,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config,
                         title = '[Edibles Tank Car]',
-                        roster = 'brit',
+                        roster = 'pony',
                         base_numeric_id = 1200,
                         wagon_generation = 3,
                         replacement_id = '-none',
@@ -62,7 +62,7 @@ def main():
                             weight = 30,
                             vehicle_length = 8))
 
-    options = {'template': 'edibles_tank_car_brit_gen_3_template.png'}
+    options = {'template': 'edibles_tank_car_pony_gen_3_template.png'}
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
@@ -75,10 +75,10 @@ def main():
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
 
-    #--------------- soam ----------------------------------------------------------------------
+    #--------------- llama ----------------------------------------------------------------------
     consist = WagonConsist(type_config = type_config,
                         title = '[Edibles Tank Car]',
-                        roster = 'soam',
+                        roster = 'llama',
                         base_numeric_id = 1210,
                         wagon_generation = 1,
                         replacement_id = '-none',
@@ -90,7 +90,7 @@ def main():
                             weight = 12,
                             vehicle_length = 6))
 
-    options = {'template': 'edibles_tank_car_soam_gen_1_template.png'}
+    options = {'template': 'edibles_tank_car_llama_gen_1_template.png'}
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
@@ -107,7 +107,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config,
                         title = '[Edibles Tank Car]',
-                        roster = 'soam',
+                        roster = 'llama',
                         base_numeric_id = 1220,
                         wagon_generation = 3,
                         replacement_id = '-none',
@@ -120,7 +120,7 @@ def main():
                             weight = 30,
                             vehicle_length = 8))
 
-    options = {'template': 'edibles_tank_car_soam_gen_3_template.png'}
+    options = {'template': 'edibles_tank_car_llama_gen_3_template.png'}
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,

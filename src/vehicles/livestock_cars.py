@@ -22,10 +22,10 @@ type_config_narrow_gauge = TypeConfig(base_id = 'livestock_car_ng',
                             track_type = 'NG')
 
 def main():
-    #--------------- brit ----------------------------------------------------------------------
+    #--------------- pony ----------------------------------------------------------------------
     consist = WagonConsist(type_config = type_config_normal,
                         title = '[Livestock Car]',
-                        roster = 'brit',
+                        roster = 'pony',
                         base_numeric_id = 1010,
                         wagon_generation = 1,
                         replacement_id = '-none',
@@ -45,7 +45,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config_normal,
                         title = '[Livestock Car]',
-                        roster = 'brit',
+                        roster = 'pony',
                         base_numeric_id = 1020,
                         wagon_generation = 2,
                         replacement_id = '-none',
@@ -65,7 +65,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config_narrow_gauge,
                         title = '[Livestock Car]',
-                        roster = 'brit',
+                        roster = 'pony',
                         base_numeric_id = 1030,
                         wagon_generation = 1,
                         replacement_id = '-none',
@@ -83,10 +83,10 @@ def main():
                            spritesheet_suffix=0)
 
 
-    #--------------- soam ----------------------------------------------------------------------
+    #--------------- llama ----------------------------------------------------------------------
     consist = WagonConsist(type_config = type_config_normal,
                         title = '[Livestock Car]',
-                        roster = 'soam',
+                        roster = 'llama',
                         base_numeric_id = 1040,
                         wagon_generation = 1,
                         replacement_id = '-none',
@@ -105,7 +105,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config_normal,
                         title = '[Livestock Car]',
-                        roster = 'soam',
+                        roster = 'llama',
                         base_numeric_id = 1430,
                         wagon_generation = 2,
                         replacement_id = '-none',
@@ -124,7 +124,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config_narrow_gauge,
                         title = '[Livestock Car]',
-                        roster = 'soam',
+                        roster = 'llama',
                         base_numeric_id = 1050,
                         wagon_generation = 1,
                         replacement_id = '-none',
@@ -143,7 +143,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config_narrow_gauge,
                         title = '[Livestock Car]',
-                        roster = 'soam',
+                        roster = 'llama',
                         base_numeric_id = 1520,
                         wagon_generation = 2,
                         replacement_id = '-none',

@@ -21,10 +21,10 @@ type_config_narrow_gauge = TypeConfig(base_id = 'passenger_car_ng',
                                 track_type = 'NG')
 
 def main():
-    #--------------- brit ----------------------------------------------------------------------
+    #--------------- pony ----------------------------------------------------------------------
     consist = WagonConsist(type_config = type_config_normal,
                         title = '[Passenger Car]',
-                        roster = 'brit',
+                        roster = 'pony',
                         base_numeric_id = 740,
                         wagon_generation = 1,
                         replacement_id = '-none',
@@ -44,7 +44,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config_normal,
                         title = '[Passenger Car]',
-                        roster = 'brit',
+                        roster = 'pony',
                         base_numeric_id = 750,
                         wagon_generation = 2,
                         replacement_id = '-none',
@@ -64,7 +64,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config_normal,
                         title = '[Passenger Car]',
-                        roster = 'brit',
+                        roster = 'pony',
                         base_numeric_id = 760,
                         wagon_generation = 3,
                         replacement_id = '-none',
@@ -84,7 +84,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config_narrow_gauge,
                         title = '[Passenger Car]',
-                        roster = 'brit',
+                        roster = 'pony',
                         base_numeric_id = 770,
                         wagon_generation = 1,
                         replacement_id = '-none',
@@ -102,10 +102,10 @@ def main():
                            spritesheet_suffix=0)
 
 
-    #--------------- soam ----------------------------------------------------------------------
+    #--------------- llama ----------------------------------------------------------------------
     consist = WagonConsist(type_config = type_config_normal,
                         title = '[Passenger Car]',
-                        roster = 'soam',
+                        roster = 'llama',
                         base_numeric_id = 780,
                         wagon_generation = 1,
                         replacement_id = '-none',
@@ -125,7 +125,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config_normal,
                         title = '[Passenger Car]',
-                        roster = 'soam',
+                        roster = 'llama',
                         base_numeric_id = 790,
                         wagon_generation = 2,
                         replacement_id = '-none',
@@ -145,7 +145,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config_normal,
                         title = '[Passenger Car]',
-                        roster = 'soam',
+                        roster = 'llama',
                         base_numeric_id = 800,
                         wagon_generation = 3,
                         replacement_id = '-none',
@@ -165,7 +165,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config_narrow_gauge,
                         title = '[Passenger Car]',
-                        roster = 'soam',
+                        roster = 'llama',
                         base_numeric_id = 810,
                         wagon_generation = 1,
                         replacement_id = '-none',
@@ -185,7 +185,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config_narrow_gauge,
                         title = '[Passenger Car]',
-                        roster = 'soam',
+                        roster = 'llama',
                         base_numeric_id = 1350,
                         wagon_generation = 2,
                         replacement_id = '-none',
@@ -206,7 +206,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config_narrow_gauge,
                         title = '[Passenger Car]',
-                        roster = 'soam',
+                        roster = 'llama',
                         base_numeric_id = 1370,
                         wagon_generation = 3,
                         replacement_id = '-none',

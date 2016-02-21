@@ -17,10 +17,10 @@ type_config = TypeConfig(base_id = 'supplies_car',
                         date_variant_var = 'current_year')
 
 def main():
-    #--------------- brit ----------------------------------------------------------------------
+    #--------------- pony ----------------------------------------------------------------------
     consist = WagonConsist(type_config = type_config,
                         title = '[Supplies Car]',
-                        roster = 'brit',
+                        roster = 'pony',
                         base_numeric_id = 710,
                         wagon_generation = 1,
                         replacement_id = '-none',
@@ -36,7 +36,7 @@ def main():
     # Ho Ho, supplies cars will vary load graphics according to *build date of wagon*
     # not strictly right, but eh, means it got done :)
 
-    options = {'template': 'supplies_car_brit_gen_1_template_0.png'}
+    options = {'template': 'supplies_car_pony_gen_1_template_0.png'}
 
     consist.add_model_variant(intro_date=0,
                            end_date=1910,
@@ -48,7 +48,7 @@ def main():
                            spritesheet_suffix=1,
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
-    options = {'template': 'supplies_car_brit_gen_1_template_1.png'}
+    options = {'template': 'supplies_car_pony_gen_1_template_1.png'}
 
     consist.add_model_variant(intro_date=1910,
                            end_date=global_constants.max_game_date,
@@ -63,7 +63,7 @@ def main():
 
     consist = WagonConsist(type_config = type_config,
                         title = '[Supplies Car]',
-                        roster = 'brit',
+                        roster = 'pony',
                         base_numeric_id = 700,
                         wagon_generation = 2,
                         replacement_id = '-none',
@@ -75,7 +75,7 @@ def main():
                             weight = 12,
                             vehicle_length = 10))
 
-    options = {'template': 'supplies_car_brit_gen_2_template_0.png'}
+    options = {'template': 'supplies_car_pony_gen_2_template_0.png'}
 
     consist.add_model_variant(intro_date=0,
                            end_date=2010,
@@ -87,7 +87,7 @@ def main():
                            spritesheet_suffix=1,
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
-    options = {'template': 'supplies_car_brit_gen_2_template_1.png'}
+    options = {'template': 'supplies_car_pony_gen_2_template_1.png'}
 
     consist.add_model_variant(intro_date=2010,
                            end_date=global_constants.max_game_date,
@@ -100,4 +100,4 @@ def main():
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
 
-    #--------------- soam ----------------------------------------------------------------------
+    #--------------- llama ----------------------------------------------------------------------
