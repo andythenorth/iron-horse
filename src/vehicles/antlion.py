@@ -5,7 +5,7 @@ consist = EngineConsist(id = 'antlion',
               base_numeric_id = 1550,
               title = 'Antlion [Diesel]',
               replacement_id = '-none',
-              power = 450,
+              power = 350,
               speed = 55,
               type_base_running_cost_points = -32, # dibble running costs for game balance
               intro_date = 1950,
