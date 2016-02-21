@@ -223,18 +223,19 @@ def main():
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=0)
 
+
     #--------------- antelope ----------------------------------------------------------------------
     consist = WagonConsist(type_config = type_config_normal,
                         title = '[Passenger Car]',
                         roster = 'antelope',
                         base_numeric_id = 1560,
-                        wagon_generation = 1,
+                        wagon_generation = 2,
                         replacement_id = '-none',
                         intro_date = 1950,
                         vehicle_life = 40)
 
     consist.add_unit(Wagon(consist = consist,
-                            capacity_pax = 60,
+                            capacity_pax = 80,
                             weight = 40,
                             vehicle_length = 10))
 
