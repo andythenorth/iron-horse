@@ -10,8 +10,9 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Сбаланс�
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Высокая
 STR_PARAM_ROSTER                                                :Расписание
 STR_PARAM_ROSTER_DESC                                           :Выберите набор поездов для использования.
-STR_PARAM_ROSTER_OPTION_0                                       :Пол царства за коня!
-STR_PARAM_ROSTER_OPTION_1                                       :Табун
+STR_PARAM_ROSTER_OPTION_0                                       :Железный Пони
+STR_PARAM_ROSTER_OPTION_1                                       :Железная Лама
+STR_PARAM_ROSTER_OPTION_2                                       :Железная Антилопа
 
 # keep these alphabetised, easier
 STR_NAME_SUFFIX_BATTERY                                         :(Энергоблок)
