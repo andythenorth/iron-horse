@@ -3,6 +3,7 @@ from roster import Roster
 from vehicles import antlion
 from vehicles import baby_boat
 from vehicles import big_boat
+from vehicles import bigfoot
 from vehicles import savannah_slammer
 from vehicles import smokey_mountain
 
@@ -15,7 +16,8 @@ speeds = dict(gen_1_wagon_speeds = [55, 75],
 roster = Roster(id = 'antelope',
                 numeric_id = 3,
                 speeds = speeds,
-                engines = [smokey_mountain,
+                engines = [bigfoot,
+                           smokey_mountain,
                            baby_boat,
                            big_boat,
                            antlion,
