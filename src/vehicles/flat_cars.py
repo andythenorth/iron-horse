@@ -135,6 +135,7 @@ def main():
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=0)
 
+
     #--------------- llama ----------------------------------------------------------------------
     consist = WagonConsist(type_config = type_config_normal,
                         title = '[Flat Car]',
@@ -232,6 +233,62 @@ def main():
                             vehicle_length = 5))
 
     options = {'template': 'flat_car_ng_llama_gen_2_template.png'}
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=0,
+                           graphics_processor=GraphicsProcessorFactory('pass_through_pipeline', options))
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=1,
+                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
+
+
+    #--------------- antelope ----------------------------------------------------------------------
+    consist = WagonConsist(type_config = type_config_normal,
+                        title = '[Flat Car]',
+                        roster = 'antelope',
+                        base_numeric_id = 1640,
+                        wagon_generation = 1,
+                        replacement_id = '-none',
+                        intro_date = 1950,
+                        vehicle_life = 40,
+                        use_legacy_spritesheet = True)
+
+    consist.add_unit(Wagon(consist = consist,
+                            capacity_freight = 55,
+                            weight = 15,
+                            vehicle_length = 8))
+
+    options = {'template': 'flat_car_antelope_gen_1_template.png'}
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=0,
+                           graphics_processor=GraphicsProcessorFactory('pass_through_pipeline', options))
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=1,
+                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
+
+
+    consist = WagonConsist(type_config = type_config_normal,
+                        title = '[Flat Car]',
+                        roster = 'antelope',
+                        base_numeric_id = 1650,
+                        wagon_generation = 2,
+                        replacement_id = '-none',
+                        intro_date = 1978,
+                        vehicle_life = 40)
+
+    consist.add_unit(Wagon(consist = consist,
+                            capacity_freight = 70,
+                            weight = 25,
+                            vehicle_length = 10))
+
+    options = {'template': 'flat_car_antelope_gen_2_template.png'}
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
