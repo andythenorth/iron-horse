@@ -298,3 +298,31 @@ def main():
                            graphics_processor=graphics_processors[1])
 
 
+    consist = WagonConsist(type_config = type_config_normal,
+                        title = '[Open Car]',
+                        roster = 'antelope',
+                        base_numeric_id = 1770,
+                        wagon_generation = 2,
+                        replacement_id = '-none',
+                        intro_date = 1980,
+                        vehicle_life = 40,
+                        use_legacy_spritesheet = True)
+
+    consist.add_unit(Wagon(consist = consist,
+                            capacity_freight = 70,
+                            weight = 22,
+                            vehicle_length = 8))
+
+    graphics_processors = get_graphics_processors('open_car_antelope_gen_2_template.png')
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=0,
+                           graphics_processor=graphics_processors[0])
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=1,
+                           graphics_processor=graphics_processors[1])
+
+
