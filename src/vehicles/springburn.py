@@ -1,9 +1,9 @@
 import global_constants
-from train import EngineConsist, SteamLoco
+from train import EngineConsist, DieselLoco
 
 consist = EngineConsist(id = 'springburn',
               base_numeric_id = 1790,
-              title = '2-8-2 Springburn [Steam]',
+              title = 'Springburn [Diesel]',
               replacement_id = '-none',
               power = 900,
               speed = 55,
@@ -11,9 +11,9 @@ consist = EngineConsist(id = 'springburn',
               intro_date = 1950,
               use_legacy_spritesheet = True)
 
-consist.add_unit(SteamLoco(consist = consist,
-                        weight = 95,
-                        vehicle_length = 8,
+consist.add_unit(DieselLoco(consist = consist,
+                        weight = 85,
+                        vehicle_length = 6,
                         spriterow_num = 0))
 
 consist.add_model_variant(intro_date=0,
