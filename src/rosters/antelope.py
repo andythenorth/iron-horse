@@ -6,6 +6,7 @@ from vehicles import big_boat
 from vehicles import bigfoot
 from vehicles import savannah_slammer
 from vehicles import smokey_mountain
+from vehicles import springburn
 
 # speed for wagons in mph (some generations may optionally have no speed set)
 # format is [standard, speedy]
@@ -17,6 +18,7 @@ roster = Roster(id = 'antelope',
                 numeric_id = 3,
                 speeds = speeds,
                 engines = [bigfoot,
+                           springburn,
                            smokey_mountain,
                            baby_boat,
                            big_boat,
