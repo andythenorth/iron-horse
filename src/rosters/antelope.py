@@ -9,7 +9,7 @@ from vehicles import smokey_mountain
 
 # speed for wagons in mph (some generations may optionally have no speed set)
 # format is [standard, speedy]
-speeds = dict(gen_1_wagon_speeds = [55, 75],
+speeds = dict(gen_1_wagon_speeds = [55, None], # no point setting an upper speed in this roster, max engine is always 75mph
               gen_2_wagon_speeds = [75, None],
               ng_gen_1_wagon_speeds = [55, 55])
 
