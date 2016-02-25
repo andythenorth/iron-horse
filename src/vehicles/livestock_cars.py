@@ -158,3 +158,25 @@ def main():
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=0)
+
+
+    #--------------- antelope ----------------------------------------------------------------------
+    consist = WagonConsist(type_config = type_config_normal,
+                        title = '[Livestock Car]',
+                        roster = 'antelope',
+                        base_numeric_id = 1720,
+                        wagon_generation = 1,
+                        replacement_id = '-none',
+                        intro_date = 1950,
+                        vehicle_life = 40,
+                        use_legacy_spritesheet = True)
+
+    consist.add_unit(Wagon(consist = consist,
+                            capacity_freight = 45,
+                            weight = 30,
+                            vehicle_length = 8))
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=0)
+
