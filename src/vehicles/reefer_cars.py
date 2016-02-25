@@ -217,7 +217,7 @@ def main():
                         use_legacy_spritesheet = True)
 
     consist.add_unit(Wagon(consist = consist,
-                            capacity_freight = 40,
+                            capacity_freight = 45,
                             weight = 30,
                             vehicle_length = 8))
 
