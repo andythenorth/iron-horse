@@ -266,7 +266,7 @@ def main():
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 55,
-                            weight = 15,
+                            weight = 18,
                             vehicle_length = 6))
 
     options = {'template': 'tank_car_antelope_gen_1_template.png'}
