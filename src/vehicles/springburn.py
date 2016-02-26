@@ -12,7 +12,7 @@ consist = EngineConsist(id = 'springburn',
               use_legacy_spritesheet = True)
 
 consist.add_unit(DieselLoco(consist = consist,
-                        weight = 100,
+                        weight = 80,
                         vehicle_length = 6,
                         spriterow_num = 0))
 
