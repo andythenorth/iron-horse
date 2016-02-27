@@ -2,6 +2,7 @@ import global_constants
 from train import EngineConsist, SteamLoco, SteamLocoTender
 
 consist = EngineConsist(id = 'drakensberg',
+              # !! This vehicle needs more than one id range due to length
               base_numeric_id = 1800,
               title = '4-8-2+2-8-4 Drakensberg [Steam]',
               replacement_id = '-none',
