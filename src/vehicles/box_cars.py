@@ -341,3 +341,59 @@ def main():
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
 
+    consist = WagonConsist(type_config = type_config_narrow_gauge,
+                        title = '[Box Car]',
+                        roster = 'antelope',
+                        base_numeric_id = 1850,
+                        wagon_generation = 2,
+                        replacement_id = '-none',
+                        intro_date = 1915,
+                        vehicle_life = 40)
+
+    consist.add_unit(BoxCar(consist = consist,
+                            capacity_freight = 30,
+                            capacity_mail = 40,
+                            weight = 12,
+                            vehicle_length = 6))
+
+    options = {'template': 'box_car_ng_antelope_gen_2_template.png'}
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=0,
+                           graphics_processor=GraphicsProcessorFactory('pass_through_pipeline', options))
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=1,
+                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
+
+
+    consist = WagonConsist(type_config = type_config_narrow_gauge,
+                        title = '[Box Car]',
+                        roster = 'antelope',
+                        base_numeric_id = 1860,
+                        wagon_generation = 3,
+                        replacement_id = '-none',
+                        intro_date = 1970,
+                        vehicle_life = 40)
+
+    consist.add_unit(BoxCar(consist = consist,
+                            capacity_freight = 45,
+                            capacity_mail = 60,
+                            weight = 18,
+                            vehicle_length = 8))
+
+    options = {'template': 'box_car_ng_antelope_gen_3_template.png'}
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=0,
+                           graphics_processor=GraphicsProcessorFactory('pass_through_pipeline', options))
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=1,
+                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
+
+

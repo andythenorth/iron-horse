@@ -7,7 +7,7 @@ consist = EngineConsist(id = 'bigfoot',
               replacement_id = '-none',
               power = 750,
               track_type = 'NG',
-              speed = 65,
+              speed = 70,
               vehicle_life = 40,
               intro_date = 1970)
 
