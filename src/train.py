@@ -313,10 +313,7 @@ class Train(object):
 
     @property
     def location_of_random_bits_for_model_variant(self):
-        if isinstance(self, LeadSlice):
-            return 'SELF'
-        else:
-            return 'FORWARD_SELF(1)'
+        return 'FORWARD_SELF(' + str(self.numeric_id - self.consist.base_numeric_id) + ')'
 
     @property
     def adjust_xoffs(self):
