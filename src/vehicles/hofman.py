@@ -5,11 +5,11 @@ consist = EngineConsist(id = 'hofman',
               base_numeric_id = 1840,
               title = '2-6-2+2-6-2 Hofman [Steam]',
               replacement_id = '-none',
-              power = 1800,
+              tractive_effort_coefficient = 0.25,
+              power = 650,
               track_type = 'NG',
               speed = 60,
-              type_base_buy_cost_points = 5, # dibble buy cost for game balance
-              type_base_running_cost_points = -5, # dibble running costs for game balance
+              type_base_running_cost_points = -10, # dibble running costs for game balance
               vehicle_life = 40,
               intro_date = 1940)
 
