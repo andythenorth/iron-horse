@@ -232,3 +232,33 @@ def main():
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=1,
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
+
+
+    consist = WagonConsist(type_config = type_config_narrow_gauge,
+                        title = '[Reefer Car]',
+                        roster = 'antelope',
+                        base_numeric_id = 1900,
+                        wagon_generation = 1,
+                        replacement_id = '-none',
+                        intro_date = 1905,
+                        vehicle_life = 40,
+                        speedy = True,
+                        use_legacy_spritesheet = True)
+
+    consist.add_unit(Wagon(consist = consist,
+                            capacity_freight = 25,
+                            weight = 22,
+                            vehicle_length = 6))
+
+    options = {'template': 'reefer_car_ng_antelope_gen_1_template.png'}
+
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=0,
+                           graphics_processor=GraphicsProcessorFactory('pass_through_pipeline', options))
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=1,
+                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))

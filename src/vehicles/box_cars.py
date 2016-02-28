@@ -379,8 +379,8 @@ def main():
                         vehicle_life = 40)
 
     consist.add_unit(BoxCar(consist = consist,
-                            capacity_freight = 45,
-                            capacity_mail = 60,
+                            capacity_freight = 40,
+                            capacity_mail = 55,
                             weight = 18,
                             vehicle_length = 8))
 
