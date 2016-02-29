@@ -299,6 +299,7 @@ def main():
                            graphics_processor=graphics_processors[1])
 
 
+    # no gen 1 NG hopper in Antelope, straight to gen 2
     consist = WagonConsist(type_config = type_config_narrow_gauge,
                         title = '[Hopper Car]',
                         roster = 'antelope',
