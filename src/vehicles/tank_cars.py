@@ -18,7 +18,7 @@ type_config_normal = TypeConfig(base_id = 'tank_car',
                                 default_capacity_type = 'capacity_freight',
                                 loading_speed_multiplier = 3)
 
-type_config_narrow = TypeConfig(base_id = 'tank_car_ng',
+type_config_narrow_gauge = TypeConfig(base_id = 'tank_car_ng',
                                 template = 'car_with_cargo_specific_liveries.pynml',
                                 num_cargo_rows = 3, # update if more cargo graphic variations are added
                                 cargo_graphics_mappings = cargo_graphics_mappings,
@@ -89,7 +89,7 @@ def main():
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
 
-    consist = WagonConsist(type_config = type_config_narrow,
+    consist = WagonConsist(type_config = type_config_narrow_gauge,
                         title = '[Tank Car]',
                         roster = 'pony',
                         base_numeric_id = 650,
@@ -199,7 +199,7 @@ def main():
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
 
-    consist = WagonConsist(type_config = type_config_narrow,
+    consist = WagonConsist(type_config = type_config_narrow_gauge,
                         title = '[Tank Car]',
                         roster = 'llama',
                         base_numeric_id = 690,
@@ -226,7 +226,7 @@ def main():
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
 
-    consist = WagonConsist(type_config = type_config_narrow,
+    consist = WagonConsist(type_config = type_config_narrow_gauge,
                         title = '[Tank Car]',
                         roster = 'llama',
                         base_numeric_id = 1360,
@@ -310,3 +310,60 @@ def main():
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
 
+    consist = WagonConsist(type_config = type_config_narrow_gauge,
+                        title = '[Tank Car]',
+                        roster = 'antelope',
+                        base_numeric_id = 1910,
+                        wagon_generation = 1,
+                        replacement_id = '-none',
+                        intro_date = 1880,
+                        vehicle_life = 40,
+                        use_legacy_spritesheet = True)
+
+    consist.add_unit(Wagon(consist = consist,
+                            capacity_freight = 25,
+                            weight = 16,
+                            vehicle_length = 6))
+
+    options = {'template': 'tank_car_ng_antelope_gen_1_template.png'}
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=0,
+                           graphics_processor=GraphicsProcessorFactory('pass_through_pipeline', options))
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=1,
+                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
+
+
+    consist = WagonConsist(type_config = type_config_narrow_gauge,
+                        title = '[Tank Car]',
+                        roster = 'antelope',
+                        base_numeric_id = 1920,
+                        wagon_generation = 2,
+                        replacement_id = '-none',
+                        intro_date = 1930,
+                        vehicle_life = 40,
+                        use_legacy_spritesheet = True)
+
+    consist.add_unit(Wagon(consist = consist,
+                            capacity_freight = 35,
+                            weight = 20,
+                            vehicle_length = 6))
+
+    options = {'template': 'tank_car_ng_antelope_gen_2_template.png'}
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=0,
+                           graphics_processor=GraphicsProcessorFactory('pass_through_pipeline', options))
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=1,
+                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
+
+
+# gen 3 at 1980 or so
