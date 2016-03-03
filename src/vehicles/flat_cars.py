@@ -2,29 +2,25 @@ import global_constants
 from train import TypeConfig, WagonConsist, Wagon, GraphicsProcessorFactory
 
 # cargo rows 0 indexed - 0 = first set of loaded sprites
-cargo_graphics_mappings_normal = {'STEL': [1, 2, 3], 'WOOD': [4], 'WDPR': [5], 'ENSP': [6], 'FMSP': [6], 'MNSP': [6], 'GOOD': [0, 6]}
+cargo_graphics_mappings = {'STEL': [1, 2, 3], 'WOOD': [4], 'WDPR': [5], 'ENSP': [6], 'FMSP': [6], 'MNSP': [6], 'GOOD': [0, 6]}
 
 type_config_normal = TypeConfig(base_id = 'flat_car',
                     template = 'car_with_visible_cargo.pynml',
                     num_cargo_rows = 7,
                     class_refit_groups = ['flatcar_freight'],
-                    cargo_graphics_mappings = cargo_graphics_mappings_normal,
-                    label_refits_allowed = list(cargo_graphics_mappings_normal.keys()),
+                    cargo_graphics_mappings = cargo_graphics_mappings,
+                    label_refits_allowed = list(cargo_graphics_mappings.keys()),
                     label_refits_disallowed = global_constants.disallowed_refits_by_label['non_flatcar_freight'],
                     autorefit = True,
                     default_cargo = 'STEL',
                     default_capacity_type = 'capacity_freight')
 
-# narrow gauge only different due to lack of diligence and suitable application to drawing sprites :P
-# cargo rows 0 indexed - 0 = first set of loaded sprites
-cargo_graphics_mappings_narrow_gauge = {'STEL': [1], 'WOOD': [2], 'WDPR': [3], 'ENSP': [4], 'FMSP': [4], 'MNSP': [4], 'GOOD': [0, 4]}
-
 type_config_narrow_gauge = TypeConfig(base_id = 'flat_car_ng',
                     template = 'car_with_visible_cargo.pynml',
-                    num_cargo_rows = 5,
+                    num_cargo_rows = 7,
                     class_refit_groups = ['flatcar_freight'],
-                    cargo_graphics_mappings = cargo_graphics_mappings_narrow_gauge,
-                    label_refits_allowed = list(cargo_graphics_mappings_narrow_gauge.keys()),
+                    cargo_graphics_mappings = cargo_graphics_mappings,
+                    label_refits_allowed = list(cargo_graphics_mappings.keys()),
                     label_refits_disallowed = global_constants.disallowed_refits_by_label['non_flatcar_freight'],
                     autorefit = True,
                     default_cargo = 'STEL',
