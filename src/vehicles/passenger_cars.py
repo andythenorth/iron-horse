@@ -263,3 +263,23 @@ def main():
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=0)
+
+
+    consist = WagonConsist(type_config = type_config_narrow_gauge,
+                        title = '[Passenger Car]',
+                        roster = 'antelope',
+                        base_numeric_id = 1940,
+                        wagon_generation = 1,
+                        replacement_id = '-none',
+                        intro_date = 1910,
+                        speedy = True,
+                        vehicle_life = 40)
+
+    consist.add_unit(Wagon(consist = consist,
+                            capacity_pax = 30,
+                            weight = 24,
+                            vehicle_length = 8))
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=0)
