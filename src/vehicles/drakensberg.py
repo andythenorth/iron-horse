@@ -17,17 +17,17 @@ consist = EngineConsist(id = 'drakensberg',
 
 consist.add_unit(SteamLocoTender(consist = consist,
                         weight = 65,
-                        vehicle_length = 5,
+                        vehicle_length = 4,
                         spriterow_num = 0))
 
 consist.add_unit(SteamLoco(consist = consist,
                         weight = 80,
-                        vehicle_length = 8,
+                        vehicle_length = 6,
                         spriterow_num = 1))
 
 consist.add_unit(SteamLocoTender(consist = consist,
                         weight = 65,
-                        vehicle_length = 5,
+                        vehicle_length = 4,
                         spriterow_num = 2))
 
 consist.add_unit(SteamLocoTender(consist = consist,
