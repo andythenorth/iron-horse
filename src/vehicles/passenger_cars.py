@@ -269,7 +269,7 @@ def main():
                         title = '[Passenger Car]',
                         roster = 'antelope',
                         base_numeric_id = 1940,
-                        wagon_generation = 1,
+                        wagon_generation = 2,
                         replacement_id = '-none',
                         intro_date = 1910,
                         speedy = True,
