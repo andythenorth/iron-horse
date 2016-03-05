@@ -9,6 +9,7 @@ from vehicles import drakensberg
 from vehicles import hofman
 from vehicles import kwa_falls
 from vehicles import okapi
+from vehicles import oribi
 from vehicles import savannah_slammer
 from vehicles import smokey_mountain
 from vehicles import springburn
@@ -30,6 +31,7 @@ roster = Roster(id = 'antelope',
                            okapi,
                            bergwind,
                            bigfoot,
+                           oribi,
                            springburn,
                            smokey_mountain,
                            baby_boat,
