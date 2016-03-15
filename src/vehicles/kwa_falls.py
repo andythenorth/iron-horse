@@ -10,12 +10,11 @@ consist = EngineConsist(id = 'kwa_falls',
               track_type = 'NG',
               speed = 75,
               vehicle_life = 40,
-              intro_date = 1945,
-              use_legacy_spritesheet = True)
+              intro_date = 1945)
 
 consist.add_unit(SteamLoco(consist = consist,
                         weight = 100,
-                        vehicle_length = 8,
+                        vehicle_length = 7,
                         spriterow_num = 0))
 
 consist.add_unit(SteamLocoTender(consist = consist,

@@ -7,6 +7,7 @@ from vehicles import big_boat
 from vehicles import bigfoot
 from vehicles import drakensberg
 from vehicles import hofman
+from vehicles import kessler
 from vehicles import kwa_falls
 from vehicles import okapi
 from vehicles import oribi
@@ -25,7 +26,8 @@ speeds = dict(gen_1_wagon_speeds = [55, None], # no point setting an upper speed
 roster = Roster(id = 'antelope',
                 numeric_id = 3,
                 speeds = speeds,
-                engines = [kwa_falls,
+                engines = [kessler,
+                           kwa_falls,
                            hofman,
                            drakensberg,
                            okapi,
