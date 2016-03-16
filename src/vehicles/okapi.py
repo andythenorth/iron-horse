@@ -10,12 +10,11 @@ consist = EngineConsist(id = 'okapi',
               speed = 65,
               type_base_running_cost_points = -2, # dibble running costs for game balance
               vehicle_life = 40,
-              intro_date = 1958,
-              use_legacy_spritesheet = True)
+              intro_date = 1958)
 
 consist.add_unit(DieselLoco(consist = consist,
                         weight = 100,
-                        vehicle_length = 8,
+                        vehicle_length = 7,
                         spriterow_num = 0))
 
 consist.add_model_variant(intro_date=0,
