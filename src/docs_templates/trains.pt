@@ -3,10 +3,17 @@
 
     <div class="row">
         <div class="span12">
-            <h2>${len(doc_helper.get_engine_consists())} trains for OpenTTD</h2>
+            <h2>${len(registered_rosters)} rosters of trains for OpenTTD</h2>
+            <p>Only one roster is active in any game.  Choose the one you want with the parameter option (newgrf settings) :)</p>
             <hr />
             <tal:roster repeat="roster registered_rosters">
                 <h3>${base_lang_strings['STR_PARAM_ROSTER_OPTION_' + str(roster.numeric_id - 1)]}</h3>
+                <p>
+                    ${len(roster.engine_consists)} engines inspired by
+                    <span tal:condition="roster.id == 'antelope'">Central and Western Africa</span>
+                    <span tal:condition="roster.id == 'llama'">Argentina, Chile and Peru</span>
+                    <span tal:condition="roster.id == 'pony'">Britain and Ireland</span>
+                </p>
                 <table class="table table-striped tablesorter">
                     <thead>
                         <tr>
