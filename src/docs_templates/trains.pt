@@ -20,6 +20,7 @@
                             <th>Vehicle Name</th>
                             <th>Intro Date</th>
                             <th>Power (hp)</th>
+                            <th>Speed (mph)</th>
                             <th>Track type</th>
                         </tr>
                     </thead>
@@ -29,6 +30,7 @@
                                 <td>${consist.get_name_substr()} ${base_lang_strings[consist.get_str_name_suffix()]}</td>
                                 <td>${consist.intro_date}</td>
                                 <td>${consist.power}</td>
+                                <td>${consist.speed}</td>
                                 <td>${consist.track_type}</td>
                             </tr>
                         </tal:engines>
