@@ -58,6 +58,8 @@ consists = sorted(consists, key=lambda consist: consist.intro_date)
 dates = sorted([i.intro_date for i in consists])
 metadata['dates'] = (dates[0], dates[-1])
 
+registered_rosters = iron_horse.registered_rosters
+
 class DocHelper(object):
     # dirty class to help do some doc formatting
 
@@ -117,8 +119,8 @@ class DocHelper(object):
 def render_docs(doc_list, file_type, use_markdown=False):
     for doc_name in doc_list:
         template = docs_templates[doc_name + '.pt'] # .pt is the conventional extension for chameleon page templates
-        doc = template(consists=consists, repo_vars=repo_vars, base_lang_strings=base_lang_strings, metadata=metadata,
-                       utils=utils, doc_helper=DocHelper(), doc_name=doc_name)
+        doc = template(consists=consists, registered_rosters=registered_rosters, repo_vars=repo_vars, base_lang_strings=base_lang_strings,
+                       metadata=metadata, utils=utils, doc_helper=DocHelper(), doc_name=doc_name)
         if use_markdown:
             # the doc might be in markdown format, if so we need to render markdown to html, and wrap the result in some boilerplate html
             markdown_wrapper = docs_templates['markdown_wrapper.pt']
