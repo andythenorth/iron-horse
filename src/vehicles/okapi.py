@@ -5,7 +5,7 @@ consist = EngineConsist(id = 'okapi',
               base_numeric_id = 1960,
               title = 'Okapi [Diesel]',
               replacement_id = '-none',
-              power = 2000,
+              power = 1850,
               track_type = 'NG',
               speed = 65,
               type_base_running_cost_points = -2, # dibble running costs for game balance
