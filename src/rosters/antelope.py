@@ -10,6 +10,7 @@ from vehicles import drakensberg
 from vehicles import hofman
 from vehicles import kessler
 from vehicles import kwa_falls
+from vehicles import metropole
 from vehicles import okapi
 from vehicles import oribi
 from vehicles import oubangui
@@ -38,6 +39,7 @@ roster = Roster(id = 'antelope',
                            okapi,
                            bergwind,
                            bigfoot,
+                           metropole,
                            warthog,
                            oribi,
                            springburn,
