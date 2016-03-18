@@ -12,6 +12,7 @@ from vehicles import kessler
 from vehicles import kwa_falls
 from vehicles import okapi
 from vehicles import oribi
+from vehicles import oubangui
 from vehicles import savannah_slammer
 from vehicles import smokey_mountain
 from vehicles import springburn
@@ -29,6 +30,7 @@ roster = Roster(id = 'antelope',
                 speeds = speeds,
                 engines = [kessler,
                            bush_elephant,
+                           oubangui,
                            kwa_falls,
                            hofman,
                            drakensberg,
