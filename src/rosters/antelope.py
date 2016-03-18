@@ -5,6 +5,7 @@ from vehicles import baby_boat
 from vehicles import bergwind
 from vehicles import big_boat
 from vehicles import bigfoot
+from vehicles import bush_elephant
 from vehicles import drakensberg
 from vehicles import hofman
 from vehicles import kessler
@@ -27,6 +28,7 @@ roster = Roster(id = 'antelope',
                 numeric_id = 3,
                 speeds = speeds,
                 engines = [kessler,
+                           bush_elephant,
                            kwa_falls,
                            hofman,
                            drakensberg,
