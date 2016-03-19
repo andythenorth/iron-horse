@@ -6,11 +6,11 @@ from vehicles import big_boat
 from vehicles import bigfoot
 from vehicles import bush_elephant
 from vehicles import drakensberg
+from vehicles import gazelle
 from vehicles import hippo
 from vehicles import hofman
 from vehicles import kessler
 from vehicles import kwa_falls
-from vehicles import metropole
 from vehicles import okapi
 from vehicles import oribi
 from vehicles import oubangui
@@ -38,7 +38,7 @@ roster = Roster(id = 'antelope',
                            drakensberg,
                            okapi,
                            bigfoot,
-                           metropole,
+                           gazelle,
                            hippo,
                            waterbuck,
                            oribi,
