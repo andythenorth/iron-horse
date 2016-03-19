@@ -1,23 +1,24 @@
 import global_constants
 from train import EngineConsist, SteamLoco, SteamLocoTender
 
-consist = EngineConsist(id = 'bush_elephant',
-              base_numeric_id = 2000,
-              title = '2-6-6-2 Bush Elephant [Steam]',
+consist = EngineConsist(id = 'ndemi',
+              base_numeric_id = 2070,
+              title = '4-8-0 Ndemi [Steam]',
               replacement_id = '-none',
-              power = 2200,
+              power = 1700,
               track_type = 'NG',
-              speed = 45,
+              speed = 35,
               vehicle_life = 40,
-              intro_date = 1915)
+              intro_date = 1887,
+              use_legacy_spritesheet = True)
 
 consist.add_unit(SteamLoco(consist = consist,
-                        weight = 128,
+                        weight = 75,
                         vehicle_length = 8,
                         spriterow_num = 0))
 
 consist.add_unit(SteamLocoTender(consist = consist,
-                        weight = 52,
+                        weight = 35,
                         vehicle_length = 4,
                         spriterow_num = 1))
 

@@ -13,9 +13,11 @@ from vehicles import hofman
 from vehicles import kessler
 from vehicles import kwa_falls
 from vehicles import milne
+from vehicles import ndemi
 from vehicles import okapi
 from vehicles import oribi
 from vehicles import oubangui
+from vehicles import pangolin
 from vehicles import savannah_slammer
 from vehicles import smokey_mountain
 from vehicles import springburn
@@ -33,7 +35,9 @@ roster = Roster(id = 'antelope',
                 numeric_id = 3,
                 speeds = speeds,
                 engines = [kessler,
+                           pangolin,
                            albertine,
+                           ndemi,
                            milne,
                            bush_elephant,
                            oubangui,
