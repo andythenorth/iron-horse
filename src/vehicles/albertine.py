@@ -8,7 +8,7 @@ consist = EngineConsist(id = 'albertine',
               power = 1200,
               tractive_effort_coefficient = 0.19,
               track_type = 'NG',
-              speed = 65,
+              speed = 55,
               vehicle_life = 40,
               intro_date = 1885,
               use_legacy_spritesheet = True)

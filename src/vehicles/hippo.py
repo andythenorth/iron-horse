@@ -7,7 +7,7 @@ consist = EngineConsist(id = 'hippo',
               replacement_id = '-none',
               power = 3600,
               track_type = 'NG',
-              speed = 65,
+              speed = 55,
               vehicle_life = 40,
               intro_date = 1975,
               use_legacy_spritesheet = True)

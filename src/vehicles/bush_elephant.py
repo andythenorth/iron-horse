@@ -7,7 +7,7 @@ consist = EngineConsist(id = 'bush_elephant',
               replacement_id = '-none',
               power = 2400,
               track_type = 'NG',
-              speed = 50,
+              speed = 45,
               vehicle_life = 40,
               intro_date = 1915)
 
