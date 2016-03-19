@@ -1,5 +1,6 @@
 from roster import Roster
 
+from vehicles import albertine
 from vehicles import antlion
 from vehicles import baby_boat
 from vehicles import big_boat
@@ -11,6 +12,7 @@ from vehicles import hippo
 from vehicles import hofman
 from vehicles import kessler
 from vehicles import kwa_falls
+from vehicles import milne
 from vehicles import okapi
 from vehicles import oribi
 from vehicles import oubangui
@@ -31,6 +33,8 @@ roster = Roster(id = 'antelope',
                 numeric_id = 3,
                 speeds = speeds,
                 engines = [kessler,
+                           albertine,
+                           milne,
                            bush_elephant,
                            oubangui,
                            hofman,
