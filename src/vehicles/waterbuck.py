@@ -1,9 +1,9 @@
 import global_constants
 from train import EngineConsist, DieselLoco
 
-consist = EngineConsist(id = 'warthog',
+consist = EngineConsist(id = 'waterbuck',
               base_numeric_id = 2020,
-              title = 'Warthog [Diesel]',
+              title = 'Waterbuck [Diesel]',
               replacement_id = '-none',
               power = 2200,
               track_type = 'NG',

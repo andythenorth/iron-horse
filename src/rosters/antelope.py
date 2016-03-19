@@ -17,7 +17,7 @@ from vehicles import oubangui
 from vehicles import savannah_slammer
 from vehicles import smokey_mountain
 from vehicles import springburn
-from vehicles import warthog
+from vehicles import waterbuck
 
 # speed for wagons in mph (some generations may optionally have no speed set)
 # format is [standard, speedy]
@@ -40,7 +40,7 @@ roster = Roster(id = 'antelope',
                            bigfoot,
                            metropole,
                            hippo,
-                           warthog,
+                           waterbuck,
                            oribi,
                            springburn,
                            smokey_mountain,
