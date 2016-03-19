@@ -2,11 +2,11 @@ from roster import Roster
 
 from vehicles import antlion
 from vehicles import baby_boat
-from vehicles import bergwind
 from vehicles import big_boat
 from vehicles import bigfoot
 from vehicles import bush_elephant
 from vehicles import drakensberg
+from vehicles import hippo
 from vehicles import hofman
 from vehicles import kessler
 from vehicles import kwa_falls
@@ -33,13 +33,13 @@ roster = Roster(id = 'antelope',
                 engines = [kessler,
                            bush_elephant,
                            oubangui,
-                           kwa_falls,
                            hofman,
+                           kwa_falls,
                            drakensberg,
                            okapi,
-                           bergwind,
                            bigfoot,
                            metropole,
+                           hippo,
                            warthog,
                            oribi,
                            springburn,
