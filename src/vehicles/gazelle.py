@@ -14,7 +14,7 @@ consist = EngineConsist(id = 'gazelle',
 
 consist.add_unit(DieselLoco(consist = consist,
                         weight = 90,
-                        vehicle_length = 6,
+                        vehicle_length = 7,
                         spriterow_num = 0))
 
 consist.add_model_variant(intro_date=0,
