@@ -10,6 +10,7 @@ from vehicles import drakensberg
 from vehicles import gazelle
 from vehicles import hippo
 from vehicles import hofman
+from vehicles import hyena
 from vehicles import kessler
 from vehicles import kwa_falls
 from vehicles import milne
@@ -39,6 +40,7 @@ roster = Roster(id = 'antelope',
                            albertine,
                            ndemi,
                            milne,
+                           hyena,
                            bush_elephant,
                            oubangui,
                            hofman,
