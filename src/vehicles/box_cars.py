@@ -344,6 +344,34 @@ def main():
     consist = WagonConsist(type_config = type_config_narrow_gauge,
                         title = '[Box Car]',
                         roster = 'antelope',
+                        base_numeric_id = 2100,
+                        wagon_generation = 1,
+                        replacement_id = '-none',
+                        intro_date = 1860,
+                        vehicle_life = 40)
+
+    consist.add_unit(BoxCar(consist = consist,
+                            capacity_freight = 20,
+                            capacity_mail = 27,
+                            weight = 15,
+                            vehicle_length = 6))
+
+    options = {'template': 'box_car_ng_antelope_gen_1_template.png'}
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=0,
+                           graphics_processor=GraphicsProcessorFactory('pass_through_pipeline', options))
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=1,
+                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
+
+
+    consist = WagonConsist(type_config = type_config_narrow_gauge,
+                        title = '[Box Car]',
+                        roster = 'antelope',
                         base_numeric_id = 1850,
                         wagon_generation = 2,
                         replacement_id = '-none',
@@ -353,7 +381,7 @@ def main():
     consist.add_unit(BoxCar(consist = consist,
                             capacity_freight = 30,
                             capacity_mail = 40,
-                            weight = 12,
+                            weight = 19,
                             vehicle_length = 6))
 
     options = {'template': 'box_car_ng_antelope_gen_2_template.png'}
@@ -381,7 +409,7 @@ def main():
     consist.add_unit(BoxCar(consist = consist,
                             capacity_freight = 40,
                             capacity_mail = 55,
-                            weight = 18,
+                            weight = 22,
                             vehicle_length = 8))
 
     options = {'template': 'box_car_ng_antelope_gen_3_template.png'}

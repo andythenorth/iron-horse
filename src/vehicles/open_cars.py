@@ -329,6 +329,34 @@ def main():
     consist = WagonConsist(type_config = type_config_narrow_gauge,
                         title = '[Open Car]',
                         roster = 'antelope',
+                        base_numeric_id = 2090,
+                        wagon_generation = 1,
+                        replacement_id = '-none',
+                        intro_date = 1860,
+                        vehicle_life = 40,
+                        use_legacy_spritesheet = True)
+
+    consist.add_unit(Wagon(consist = consist,
+                            capacity_freight = 20,
+                            weight = 10,
+                            vehicle_length = 6))
+
+    graphics_processors = get_graphics_processors('open_car_ng_antelope_gen_1_template.png')
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=0,
+                           graphics_processor=graphics_processors[0])
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=1,
+                           graphics_processor=graphics_processors[1])
+
+
+    consist = WagonConsist(type_config = type_config_narrow_gauge,
+                        title = '[Open Car]',
+                        roster = 'antelope',
                         base_numeric_id = 1830,
                         wagon_generation = 2,
                         replacement_id = '-none',
@@ -338,7 +366,7 @@ def main():
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 30,
-                            weight = 15,
+                            weight = 12,
                             vehicle_length = 6))
 
     graphics_processors = get_graphics_processors('open_car_ng_antelope_gen_2_template.png')
@@ -366,7 +394,7 @@ def main():
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 40,
-                            weight = 22,
+                            weight = 18,
                             vehicle_length = 6))
 
     graphics_processors = get_graphics_processors('open_car_ng_antelope_gen_3_template.png')
