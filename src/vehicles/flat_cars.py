@@ -300,7 +300,7 @@ def main():
     consist = WagonConsist(type_config = type_config_narrow_gauge,
                         title = '[Flat Car]',
                         roster = 'antelope',
-                        base_numeric_id = 2020,
+                        base_numeric_id = 2110,
                         wagon_generation = 1,
                         replacement_id = '-none',
                         intro_date = 1860,
