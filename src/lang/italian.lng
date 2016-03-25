@@ -10,8 +10,9 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Meravigliosa
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Eccessiva
 STR_PARAM_ROSTER                                                :Lista
 STR_PARAM_ROSTER_DESC                                           :Selezionate quale set di treni volete usare.
-STR_PARAM_ROSTER_OPTION_0                                       :Un cavallo! Un cavallo! Il mio regno per un cavallo!
-STR_PARAM_ROSTER_OPTION_1                                       :Caballada
+STR_PARAM_ROSTER_OPTION_0                                       :Cavallino di Ferro
+STR_PARAM_ROSTER_OPTION_1                                       :Llama di Ferro
+STR_PARAM_ROSTER_OPTION_2                                       :Antilope di Ferro
 
 # keep these alphabetised, easier
 STR_NAME_SUFFIX_BATTERY                                         :(Batteria)
@@ -29,6 +30,7 @@ STR_NAME_SUFFIX_COMBINE_CAR                                     :Carro combinato
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Carro a tramoggia coperto
 STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Carro cisterna per alimentari
 STR_NAME_SUFFIX_FLAT_CAR                                        :Carro piatto
+STR_NAME_SUFFIX_FRUIT_CAR                                       :Carro per frutta
 STR_NAME_SUFFIX_HOPPER_CAR                                      :Carro a tramoggia
 STR_NAME_SUFFIX_INTERMODAL_FLAT_CAR                             :Carro piatto intermodale
 STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Carro bestiame
@@ -40,3 +42,4 @@ STR_NAME_SUFFIX_REEFER_CAR                                      :Carro frigorife
 STR_NAME_SUFFIX_ROTARY_GONDOLA_CAR                              :Carro aperto a sponde alte
 STR_NAME_SUFFIX_SUPPLIES_CAR                                    :Carro per forniture
 STR_NAME_SUFFIX_TANK_CAR                                        :Carro cisterna
+STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Carro per trasporto veicoli
