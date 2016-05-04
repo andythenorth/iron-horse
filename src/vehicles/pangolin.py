@@ -5,11 +5,11 @@ consist = EngineConsist(id = 'pangolin',
               base_numeric_id = 2060,
               title = '2-6-0 Pangolin [Steam]',
               replacement_id = '-none',
-              power = 1800,
+              power = 1200,
               track_type = 'NG',
-              speed = 50,
+              speed = 45,
               vehicle_life = 40,
-              intro_date = 1915)
+              intro_date = 1860)
 
 consist.add_unit(SteamLoco(consist = consist,
                         weight = 40,
