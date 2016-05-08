@@ -233,7 +233,7 @@ class Train(object):
         self.weight = kwargs.get('weight', None)
         # declare capacities for pax, mail and freight, as they are needed later for nml switches
         self.capacities_pax = self.get_capacity_variations(kwargs.get('capacity_pax', 0))
-        self.capacities_mail = self.get_capacity_variations(kwargs.get('capacity_mail', 0))
+        self.capacities_mail = self.get_capacity_variations(kwargs.get('capacity_mail', 0)) # also used for cargos with armoured class
         self.capacities_freight = self.get_capacity_variations(kwargs.get('capacity_freight', 0))
         self.loading_speed_multiplier = kwargs.get('loading_speed_multiplier', 1)
         # spriterow_num, first row = 0
