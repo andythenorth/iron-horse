@@ -9,8 +9,9 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :놀라운
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :과대한
 STR_PARAM_ROSTER                                                :목록
 STR_PARAM_ROSTER_DESC                                           :어떤 열차 세트를 사용할 지 선택하세요.
-STR_PARAM_ROSTER_OPTION_0                                       :말! 말! 나의 말 나라!
-STR_PARAM_ROSTER_OPTION_1                                       :Caballada
+STR_PARAM_ROSTER_OPTION_0                                       :철제 조랑말
+STR_PARAM_ROSTER_OPTION_1                                       :철제 라마
+STR_PARAM_ROSTER_OPTION_2                                       :철제 영양
 
 # keep these alphabetised, easier
 STR_NAME_SUFFIX_BATTERY                                         :(배터리)
@@ -28,6 +29,7 @@ STR_NAME_SUFFIX_COMBINE_CAR                                     :결합차
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :유개호퍼차
 STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :식품 탱크 차
 STR_NAME_SUFFIX_FLAT_CAR                                        :평판차
+STR_NAME_SUFFIX_FRUIT_CAR                                       :과일 수송 차량
 STR_NAME_SUFFIX_HOPPER_CAR                                      :호퍼차
 STR_NAME_SUFFIX_INTERMODAL_FLAT_CAR                             :복합평판차
 STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :가축차
@@ -39,3 +41,4 @@ STR_NAME_SUFFIX_REEFER_CAR                                      :냉동차
 STR_NAME_SUFFIX_ROTARY_GONDOLA_CAR                              :로터리 곤돌라 차량
 STR_NAME_SUFFIX_SUPPLIES_CAR                                    :재료 수송 차
 STR_NAME_SUFFIX_TANK_CAR                                        :탱크차
+STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :자동차 수송 차량
