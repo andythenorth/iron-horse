@@ -16,6 +16,20 @@ type_config = TypeConfig(base_id = 'supplies_car',
                         default_capacity_type = 'capacity_freight',
                         date_variant_var = 'current_year')
 
+type_config_narrow_gauge = TypeConfig(base_id = 'supplies_car_ng',
+                        template = 'car_with_visible_cargo.pynml',
+                        num_cargo_rows = 5,
+                        class_refit_groups = [],
+                        cargo_graphics_mappings = cargo_graphics_mappings,
+                        label_refits_allowed = list(cargo_graphics_mappings.keys()),
+                        label_refits_disallowed = [],
+                        autorefit = True,
+                        default_cargo = 'ENSP',
+                        default_capacity_type = 'capacity_freight',
+                        track_type = 'NG',
+                        date_variant_var = 'current_year')
+
+
 def main():
     #--------------- pony ----------------------------------------------------------------------
     consist = WagonConsist(type_config = type_config,
@@ -99,5 +113,51 @@ def main():
                            spritesheet_suffix=3,
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
+    #--------------- antelope ----------------------------------------------------------------------
+
+    consist = WagonConsist(type_config = type_config_narrow_gauge,
+                        title = '[Supplies Car]',
+                        roster = 'antelope',
+                        base_numeric_id = 2160,
+                        wagon_generation = 1,
+                        replacement_id = '-none',
+                        intro_date = 1860,
+                        vehicle_life = 40,
+                        use_legacy_spritesheet = True)
+
+    consist.add_unit(Wagon(consist = consist,
+                            capacity_freight = 20,
+                            weight = 6,
+                            vehicle_length = 7))
+
+    # Ho Ho, supplies cars will vary load graphics according to *build date of wagon*
+    # not strictly right, but eh, means it got done :)
+
+    options = {'template': 'supplies_car_ng_antelope_gen_1_template_0.png'}
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=1910,
+                           spritesheet_suffix=0,
+                           graphics_processor=GraphicsProcessorFactory('pass_through_pipeline', options))
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=1910,
+                           spritesheet_suffix=1,
+                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
+
+    options = {'template': 'supplies_car_ng_antelope_gen_1_template_1.png'}
+
+    consist.add_model_variant(intro_date=1910,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=2,
+                           graphics_processor=GraphicsProcessorFactory('pass_through_pipeline', options))
+
+    consist.add_model_variant(intro_date=1910,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=3,
+                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
+
 
     #--------------- llama ----------------------------------------------------------------------
+
+
