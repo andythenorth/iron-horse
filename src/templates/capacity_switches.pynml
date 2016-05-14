@@ -16,9 +16,10 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_cargo_capacity, param[0]) {
 
 // -- loading speed also determined by capacity, which varies by cargo -- //
 <tal:capacity repeat="param_value python:range(3)">
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_loading_speed_by_cargo_${param_value}, cargo_classes & bitmask(CC_PASSENGERS, CC_MAIL)) {
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_loading_speed_by_cargo_${param_value}, cargo_classes & bitmask(CC_PASSENGERS, CC_MAIL, CC_ARMOURED)) {
         bitmask(CC_PASSENGERS): return ${vehicle.get_loading_speed('pax', param_value)};
         bitmask(CC_MAIL): return ${vehicle.get_loading_speed('mail', param_value)};
+        bitmask(CC_ARMOURED): return ${vehicle.get_loading_speed('mail', param_value)};
         return ${vehicle.get_loading_speed('freight', param_value)};
     }
 </tal:capacity>
