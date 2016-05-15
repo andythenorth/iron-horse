@@ -13,7 +13,8 @@ type_config_normal = TypeConfig(base_id = 'fruit_car',
                     label_refits_disallowed = [],
                     autorefit = True,
                     default_cargo = 'FRUT',
-                    default_capacity_type = 'capacity_freight')
+                    default_capacity_type = 'capacity_freight',
+                    cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD)
 
 type_config_narrow_gauge = TypeConfig(base_id = 'fruit_car_ng',
                     template = 'car_with_open_doors_during_loading.pynml',
@@ -25,6 +26,7 @@ type_config_narrow_gauge = TypeConfig(base_id = 'fruit_car_ng',
                     autorefit = True,
                     default_cargo = 'FRUT',
                     default_capacity_type = 'capacity_freight',
+                    cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD,
                     track_type = 'NG')
 
 def main():
