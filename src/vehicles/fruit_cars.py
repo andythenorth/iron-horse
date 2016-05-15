@@ -40,7 +40,7 @@ def main():
 
     consist.add_unit(BoxCar(consist = consist,
                             capacity_freight = 20,
-                            weight = 15,
+                            weight = 14,
                             vehicle_length = 6))
 
     options = {'template': 'fruit_car_ng_antelope_gen_1_template.png'}
