@@ -37,7 +37,7 @@ def main():
                         base_numeric_id = 2140,
                         wagon_generation = 1,
                         replacement_id = '-none',
-                        intro_date = 1890,
+                        intro_date = 1860,
                         vehicle_life = 40)
 
     consist.add_unit(BoxCar(consist = consist,
@@ -56,3 +56,31 @@ def main():
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=1,
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
+
+
+    consist = WagonConsist(type_config = type_config_narrow_gauge,
+                        title = '[Fruit Car]',
+                        roster = 'antelope',
+                        base_numeric_id = 2170,
+                        wagon_generation = 2,
+                        replacement_id = '-none',
+                        intro_date = 1915,
+                        vehicle_life = 40)
+
+    consist.add_unit(BoxCar(consist = consist,
+                            capacity_freight = 30,
+                            weight = 14,
+                            vehicle_length = 6))
+
+    options = {'template': 'fruit_car_ng_antelope_gen_2_template.png'}
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=0,
+                           graphics_processor=GraphicsProcessorFactory('pass_through_pipeline', options))
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=1,
+                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
+
