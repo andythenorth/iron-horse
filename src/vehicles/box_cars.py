@@ -36,8 +36,7 @@ def main():
                         wagon_generation = 1,
                         replacement_id = '-none',
                         intro_date = 1860,
-                        vehicle_life = 40,
-                        use_legacy_spritesheet = True)
+                        vehicle_life = 40)
 
     consist.add_unit(BoxCar(consist = consist,
                             capacity_freight = 20,
@@ -354,7 +353,7 @@ def main():
                             capacity_freight = 20,
                             capacity_mail = 27,
                             weight = 15,
-                            vehicle_length = 6))
+                            vehicle_length = 5))
 
     options = {'template': 'box_car_ng_antelope_gen_1_template.png'}
 
