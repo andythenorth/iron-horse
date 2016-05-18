@@ -42,8 +42,8 @@ def main():
 
     consist.add_unit(BoxCar(consist = consist,
                             capacity_freight = 20,
-                            weight = 14,
-                            vehicle_length = 6))
+                            weight = 10,
+                            vehicle_length = 5))
 
     options = {'template': 'fruit_car_ng_antelope_gen_1_template.png'}
 
@@ -69,10 +69,37 @@ def main():
 
     consist.add_unit(BoxCar(consist = consist,
                             capacity_freight = 30,
+                            weight = 14,
+                            vehicle_length = 6))
+
+    options = {'template': 'fruit_car_ng_antelope_gen_2_template.png'}
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=0,
+                           graphics_processor=GraphicsProcessorFactory('pass_through_pipeline', options))
+
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=1,
+                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
+
+
+    consist = WagonConsist(type_config = type_config_narrow_gauge,
+                        title = '[Fruit Car]',
+                        roster = 'antelope',
+                        base_numeric_id = 2180,
+                        wagon_generation = 3,
+                        replacement_id = '-none',
+                        intro_date = 1970,
+                        vehicle_life = 40)
+
+    consist.add_unit(BoxCar(consist = consist,
+                            capacity_freight = 40,
                             weight = 18,
                             vehicle_length = 8))
 
-    options = {'template': 'fruit_car_ng_antelope_gen_2_template.png'}
+    options = {'template': 'fruit_car_ng_antelope_gen_3_template.png'}
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
