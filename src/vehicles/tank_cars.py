@@ -317,13 +317,12 @@ def main():
                         wagon_generation = 1,
                         replacement_id = '-none',
                         intro_date = 1880,
-                        vehicle_life = 40,
-                        use_legacy_spritesheet = True)
+                        vehicle_life = 40)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 25,
                             weight = 16,
-                            vehicle_length = 6))
+                            vehicle_length = 5))
 
     options = {'template': 'tank_car_ng_antelope_gen_1_template.png'}
 
