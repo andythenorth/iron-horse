@@ -28,6 +28,7 @@ STR_NAME_SUFFIX_COMBINE_CAR                                     :Gecombineerde w
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Overdekte stortgoedwagon
 STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Voedseltankwagon
 STR_NAME_SUFFIX_FLAT_CAR                                        :Platte wagon
+STR_NAME_SUFFIX_FRUIT_CAR                                       :Fruitwagon
 STR_NAME_SUFFIX_HOPPER_CAR                                      :Stortgoedwagon
 STR_NAME_SUFFIX_INTERMODAL_FLAT_CAR                             :Platte containerwagon
 STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Veewagon
