@@ -265,8 +265,8 @@ def main():
 
     consist.add_unit(MailCar(consist = consist,
                             capacity_mail = 20,
-                            weight = 18,
-                            vehicle_length = 8))
+                            weight = 14,
+                            vehicle_length = 5))
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
