@@ -1,0 +1,44 @@
+##grflangid 0x55
+##plural 0
+##gender m f
+STR_GRF_DESCRIPTION                                             :Licencia: {SILVER}GPL v2{}{BLACK}
+
+STR_PARAM_ADJUST_VEHICLE_CAPACITY                               :Capacidad del tren
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :Mínima
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Maravillosa
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Excesiva
+STR_PARAM_ROSTER                                                :Lista de vehículos
+STR_PARAM_ROSTER_DESC                                           :Elegir los trenes a utilizar.
+STR_PARAM_ROSTER_OPTION_0                                       :Pony de hierro
+STR_PARAM_ROSTER_OPTION_1                                       :Llama de hierro
+STR_PARAM_ROSTER_OPTION_2                                       :Antílope de hierro
+
+# keep these alphabetised, easier
+STR_NAME_SUFFIX_BATTERY                                         :(batería)
+STR_NAME_SUFFIX_CAR                                             :Vagón
+STR_NAME_SUFFIX_DIESEL                                          :(diésel)
+STR_NAME_SUFFIX_ELECTRIC                                        :(eléctrica)
+STR_NAME_SUFFIX_ELECTRODIESEL                                   :(diésel eléctrica)
+STR_NAME_SUFFIX_METRO_CAR                                       :Coche (metro)
+STR_NAME_SUFFIX_METRO_TRAIN                                     :(metro)
+STR_NAME_SUFFIX_STEAM                                           :(vapor)
+
+STR_NAME_SUFFIX_BOX_CAR                                         :Furgón
+STR_NAME_SUFFIX_CABOOSE_CAR                                     :Cabús
+STR_NAME_SUFFIX_COMBINE_CAR                                     :Vagón combinado
+STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Tolva cubierta
+STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Cisterna de alimentos
+STR_NAME_SUFFIX_FLAT_CAR                                        :Plataforma
+STR_NAME_SUFFIX_FRUIT_CAR                                       :Vagón frutero
+STR_NAME_SUFFIX_HOPPER_CAR                                      :Tolva
+STR_NAME_SUFFIX_INTERMODAL_FLAT_CAR                             :Plataforma intermodal
+STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Vagón de ganado
+STR_NAME_SUFFIX_MAIL_CAR                                        :Vagón postal
+STR_NAME_SUFFIX_METAL_CAR                                       :Vagón de metal
+STR_NAME_SUFFIX_OPEN_CAR                                        :Vagón abierto
+STR_NAME_SUFFIX_PASSENGER_CAR                                   :Coche de pasajeros
+STR_NAME_SUFFIX_REEFER_CAR                                      :Vagón refrigerado
+STR_NAME_SUFFIX_ROTARY_GONDOLA_CAR                              :Góndola volquete
+STR_NAME_SUFFIX_SUPPLIES_CAR                                    :Vagón de suministros
+STR_NAME_SUFFIX_TANK_CAR                                        :Carro tanque
+STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Madrina transportadora
