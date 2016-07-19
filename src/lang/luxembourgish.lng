@@ -8,8 +8,9 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Herrlech
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Exzessiv
 STR_PARAM_ROSTER                                                :Dëngschtplang
 STR_PARAM_ROSTER_DESC                                           :Wiel wellech Zichsets benotzt ginn.
-STR_PARAM_ROSTER_OPTION_0                                       :A horse! A horse! My kingdom for a horse!
-STR_PARAM_ROSTER_OPTION_1                                       :Caballada
+STR_PARAM_ROSTER_OPTION_0                                       :Eisernt Pony
+STR_PARAM_ROSTER_OPTION_1                                       :Eiserne Lama
+STR_PARAM_ROSTER_OPTION_2                                       :Eisern Antilop
 
 # keep these alphabetised, easier
 STR_NAME_SUFFIX_BATTERY                                         :(Batterie)
@@ -27,6 +28,7 @@ STR_NAME_SUFFIX_COMBINE_CAR                                     :Kombiwaggon
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Zouenen Kippwaggon
 STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Liewensmëtteltankwaggon
 STR_NAME_SUFFIX_FLAT_CAR                                        :Flaachbettwaggon
+STR_NAME_SUFFIX_FRUIT_CAR                                       :Friischtewon
 STR_NAME_SUFFIX_HOPPER_CAR                                      :Kippwaggon
 STR_NAME_SUFFIX_INTERMODAL_FLAT_CAR                             :Intermodal Flaachbettwaggon
 STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Véiwaggon
@@ -38,3 +40,4 @@ STR_NAME_SUFFIX_REEFER_CAR                                      :Killwaggon
 STR_NAME_SUFFIX_ROTARY_GONDOLA_CAR                              :Kippwaggon
 STR_NAME_SUFFIX_SUPPLIES_CAR                                    :Gidderwaggon
 STR_NAME_SUFFIX_TANK_CAR                                        :Tankwaggon
+STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Autotransportwagon
