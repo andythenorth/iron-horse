@@ -8,11 +8,14 @@ Changelog
 *Features*
 
 - rename the 'Brit' roster to 'Iron Pony'
+- added 'Longwater', 'Tyburn' and 'Tidewater' metro freight units
+- removed 'Mole' metro locomotive and metro freight car
 - covered hoppers now refit to sand cargo
 
 *Fixes*
 
 - correct offsets for some vehicles at 4/8 and 6/8 lengths
+- some sprites out of place for passenger metros
 
 *Codechanges*
 
