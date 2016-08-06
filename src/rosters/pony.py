@@ -15,7 +15,7 @@ from vehicles import high_flyer
 from vehicles import hudswell
 from vehicles import lemon
 from vehicles import little_bear
-from vehicles import mole
+from vehicles import longwater
 from vehicles import northcock
 from vehicles import ramsbottom
 from vehicles import raven
@@ -25,7 +25,9 @@ from vehicles import slammer
 from vehicles import standard
 from vehicles import stewart
 from vehicles import suburban
+from vehicles import tideway
 from vehicles import tin_rocket
+from vehicles import tyburn
 from vehicles import vulcan
 from vehicles import walker
 from vehicles import westbourne
@@ -65,7 +67,9 @@ roster = Roster(id = 'pony',
                            serpentine,
                            westbourne,
                            fleet,
-                           mole,
+                           longwater,
+                           tyburn,
+                           tideway,
                            # brit ng
                            stewart,
                            hudswell,

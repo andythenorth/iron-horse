@@ -1,9 +1,9 @@
 import global_constants
 from train import EngineConsist, MetroCargoUnit
 
-consist = EngineConsist(id = 'mole',
+consist = EngineConsist(id = 'longwater',
               base_numeric_id = 290,
-              title = 'Mole [Metro Train]',
+              title = 'Longwater [Metro Train]',
               replacement_id = '-none',
               track_type = 'METRO',
               power = 600,
