@@ -2,6 +2,24 @@ Changelog
 =========
 
 -------------
+1.9.0 Release
+-------------
+
+*Features*
+
+- rename the 'Brit' roster to 'Iron Pony'
+- covered hoppers now refit to sand cargo
+
+*Fixes*
+
+- correct offsets for some vehicles at 4/8 and 6/8 lengths
+
+*Language Updates*
+
+- translator credits http://bundles.openttdcoop.org/iron-horse/push/LATEST/credits.txt
+
+
+-------------
 1.8.0 Release
 -------------
 
