@@ -14,6 +14,13 @@ Changelog
 
 - correct offsets for some vehicles at 4/8 and 6/8 lengths
 
+*Codechanges*
+
+- removed incremental compile support
+- sped up the compile in a few places
+- support for compiling a single roster using a compile-time parameter
+- random sprites now use random bits from lead unit of articulated-consist, not per-unit, allowing the whole vehicle to use the same randomly chosen set of sprites
+
 *Language Updates*
 
 - translator credits http://bundles.openttdcoop.org/iron-horse/push/LATEST/credits.txt
