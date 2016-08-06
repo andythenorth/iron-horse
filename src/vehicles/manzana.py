@@ -1,5 +1,5 @@
 import global_constants
-from train import EngineConsist, MetroMultipleUnit
+from train import EngineConsist, MetroPaxUnit
 
 consist = EngineConsist(id = 'manzana',
               base_numeric_id = 1480,
@@ -14,13 +14,13 @@ consist = EngineConsist(id = 'manzana',
               use_legacy_spritesheet = True)
 
 # should be 4 units not 2
-consist.add_unit(MetroMultipleUnit(consist = consist,
+consist.add_unit(MetroPaxUnit(consist = consist,
                         weight = 40,
                         vehicle_length = 8,
                         capacity_pax = 160,
                         spriterow_num = 0))
 
-consist.add_unit(MetroMultipleUnit(consist = consist,
+consist.add_unit(MetroPaxUnit(consist = consist,
                         weight = 40,
                         vehicle_length = 8,
                         capacity_pax = 160,

@@ -817,12 +817,12 @@ class BoxCar(Wagon):
         self.capacities_mail = [int(2.0 * capacity) for capacity in self.capacities_freight]
 
 
-class MetroMultipleUnit(Train):
+class MetroPaxUnit(Train):
     """
     Metro Unit
     """
     def __init__(self, **kwargs):
-        super(MetroMultipleUnit, self).__init__(**kwargs)
+        super(MetroPaxUnit, self).__init__(**kwargs)
         self.template = 'metro_mu.pynml'
         self.default_cargo_capacities = self.capacities_pax
         self.default_cargo = "PASS"
@@ -831,12 +831,12 @@ class MetroMultipleUnit(Train):
         self.visual_effect = 'VISUAL_EFFECT_ELECTRIC'
 
 
-class MetroLoco(Train):
+class MetroCargoUnit(Train):
     """
     Metro Unit
     """
     def __init__(self, **kwargs):
-        super(MetroLoco, self).__init__(**kwargs)
+        super(MetroCargoUnit, self).__init__(**kwargs)
         self.template = 'train.pynml'
         self.default_cargo_capacities = [0]
         self.engine_class = 'ENGINE_CLASS_ELECTRIC'

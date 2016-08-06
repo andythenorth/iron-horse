@@ -1,5 +1,5 @@
 import global_constants
-from train import EngineConsist, MetroLoco
+from train import EngineConsist, MetroCargoUnit
 
 consist = EngineConsist(id = 'mole',
               base_numeric_id = 290,
@@ -13,7 +13,7 @@ consist = EngineConsist(id = 'mole',
               vehicle_life = 40,
               use_legacy_spritesheet = True)
 
-consist.add_unit(MetroLoco(consist = consist,
+consist.add_unit(MetroCargoUnit(consist = consist,
                         weight = 65,
                         vehicle_length = 8,
                         spriterow_num = 0))
