@@ -837,8 +837,16 @@ class MetroCargoUnit(Train):
     """
     def __init__(self, **kwargs):
         super(MetroCargoUnit, self).__init__(**kwargs)
-        self.template = 'train.pynml'
+        self.template = 'metro_mu.pynml'
         self.default_cargo_capacities = [0]
+        self.class_refit_groups = ['mail', 'express_freight']
+        self.label_refits_allowed = [] # no specific labels needed
+        self.label_refits_disallowed = []
+        self.autorefit = True
+        self.capacities_freight = [int(0.5 * capacity) for capacity in self.capacities_mail]
+        self.default_cargo_capacities = self.capacities_mail
+        self.default_cargo = "MAIL"
+        self.loading_speed_multiplier = 2
         self.engine_class = 'ENGINE_CLASS_ELECTRIC'
         self.visual_effect = 'VISUAL_EFFECT_ELECTRIC'
 

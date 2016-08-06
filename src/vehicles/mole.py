@@ -6,16 +6,23 @@ consist = EngineConsist(id = 'mole',
               title = 'Mole [Metro Train]',
               replacement_id = '-none',
               track_type = 'METRO',
-              power = 800,
-              speed = 45,
-              type_base_buy_cost_points = 10, # dibble buy cost for game balance
+              power = 600,
+              speed = 40,
+              type_base_buy_cost_points = 36, # dibble buy cost for game balance
               intro_date = 1900,
               vehicle_life = 40,
               use_legacy_spritesheet = True)
 
 consist.add_unit(MetroCargoUnit(consist = consist,
-                        weight = 65,
+                        weight = 35,
                         vehicle_length = 8,
+                        capacity_mail = 60,
+                        spriterow_num = 0))
+
+consist.add_unit(MetroCargoUnit(consist = consist,
+                        weight = 35,
+                        vehicle_length = 8,
+                        capacity_mail = 60,
                         spriterow_num = 0))
 
 consist.add_model_variant(intro_date=0,

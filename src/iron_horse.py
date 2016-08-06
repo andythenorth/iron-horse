@@ -67,8 +67,11 @@ mail_cars.main()
 from vehicles import metal_cars
 metal_cars.main()
 
+"""
+# possibly deprecated - removed from Iron Pony August 2016
 from vehicles import metro_cars
 metro_cars.main()
+"""
 
 from vehicles import open_cars
 open_cars.main()

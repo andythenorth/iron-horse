@@ -1,3 +1,5 @@
+# possibly deprecated - removed from Iron Pony roster August 2016
+
 import global_constants
 from train import TypeConfig, WagonConsist, Wagon
 
