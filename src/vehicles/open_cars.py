@@ -277,13 +277,12 @@ def main():
                         wagon_generation = 1,
                         replacement_id = '-none',
                         intro_date = 1950,
-                        vehicle_life = 40,
-                        use_legacy_spritesheet = True)
+                        vehicle_life = 40)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 55,
                             weight = 17,
-                            vehicle_length = 6))
+                            vehicle_length = 5))
 
     graphics_processors = get_graphics_processors('open_car_antelope_gen_1_template.png')
 
