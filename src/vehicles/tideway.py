@@ -23,7 +23,7 @@ consist.add_unit(MetroCargoUnit(consist = consist,
                         weight = 30,
                         vehicle_length = 8,
                         capacity_mail = 60,
-                        spriterow_num = 0))
+                        spriterow_num = 1))
 
 consist.add_model_variant(intro_date=0,
                        end_date=global_constants.max_game_date,
