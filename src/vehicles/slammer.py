@@ -13,7 +13,7 @@ consist = EngineConsist(id = 'slammer',
               use_legacy_spritesheet = True)
 
 consist.add_unit(DieselRailcar(consist = consist,
-                        weight = 65,
+                        weight = 37,
                         vehicle_length = 8,
                         capacity_pax = 55,
                         capacity_mail = 40,
