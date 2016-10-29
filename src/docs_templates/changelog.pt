@@ -2,6 +2,15 @@ Changelog
 =========
 
 -------------
+1.9.1 Release
+-------------
+
+*Fixes*
+
+- weight was too high for Slammer and Tin Rocket, now reduced
+- Tin Rocket HP reduced in line with reduced weight
+
+-------------
 1.9.0 Release
 -------------
 
