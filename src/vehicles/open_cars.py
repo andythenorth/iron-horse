@@ -338,7 +338,7 @@ def main():
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 20,
                             weight = 10,
-                            vehicle_length = 6))
+                            vehicle_length = 5))
 
     graphics_processors = get_graphics_processors('open_car_ng_antelope_gen_1_template.png')
 
