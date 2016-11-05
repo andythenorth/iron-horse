@@ -9,6 +9,8 @@ consist = EngineConsist(id = 'albertine',
               tractive_effort_coefficient = 0.19,
               track_type = 'NG',
               speed = 55,
+              type_base_buy_cost_points = 25, # dibble buy cost for game balance
+              type_base_running_cost_points = 35, # dibble running costs for game balance
               vehicle_life = 40,
               intro_date = 1885,
               use_legacy_spritesheet = True)

@@ -8,6 +8,8 @@ consist = EngineConsist(id = 'ndemi',
               power = 1700,
               track_type = 'NG',
               speed = 35,
+              type_base_buy_cost_points = 35, # dibble buy cost for game balance
+              type_base_running_cost_points = 35, # dibble running costs for game balance
               vehicle_life = 40,
               intro_date = 1887,
               use_legacy_spritesheet = True)
