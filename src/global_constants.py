@@ -152,6 +152,8 @@ cargo_labels = ['PASS', # pax first
                 'CASS',
                 'MNO2',
                 'PHOS',
+                'POTA',
+                'PORE',
                 #
                 'NULL']
 

@@ -6,11 +6,13 @@ from train import TypeConfig, WagonConsist, Wagon, GraphicsProcessorFactory
 b = 1 # bulk cargo start row
 # cargo rows 0 indexed - 0 = first set of loaded sprites
 cargo_graphics_mappings = {'GRVL': [b], 'IORE': [b + 1], 'CORE': [b + 2], 'AORE': [b + 3],
-                           'SAND': [b + 4], 'COAL': [b + 5], 'CLAY': [b + 6], 'SCMT': [b + 7], 'PHOS': [b + 8]}
+                           'SAND': [b + 4], 'COAL': [b + 5], 'CLAY': [b + 6], 'SCMT': [b + 7], 'PHOS': [b + 8],
+                           'CASS': [b + 9], 'LIME': [b + 10], 'MNO2': [b + 11], 'NITR': [b + 12],
+                           'PORE': [b + 13], 'POTA': [b + 14], 'SGBT': [b + 15]}
 
 type_config_normal = TypeConfig(base_id = 'open_car',
                         template = 'car_with_visible_cargo.pynml',
-                        num_cargo_rows = 10, # update this when adding cargo graphics
+                        num_cargo_rows = 17, # update this when adding cargo graphics
                         class_refit_groups = ['all_freight'],
                         cargo_graphics_mappings = cargo_graphics_mappings,
                         label_refits_allowed = list(cargo_graphics_mappings.keys()),
@@ -21,7 +23,7 @@ type_config_normal = TypeConfig(base_id = 'open_car',
 
 type_config_narrow_gauge = TypeConfig(base_id = 'open_car_ng',
                         template = 'car_with_visible_cargo.pynml',
-                        num_cargo_rows = 10, # update this when adding cargo graphics
+                        num_cargo_rows = 17, # update this when adding cargo graphics
                         class_refit_groups = ['all_freight'],
                         cargo_graphics_mappings = cargo_graphics_mappings,
                         label_refits_allowed = list(cargo_graphics_mappings.keys()),
