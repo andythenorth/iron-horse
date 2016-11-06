@@ -343,7 +343,7 @@ def main():
                         base_numeric_id = 1920,
                         wagon_generation = 2,
                         replacement_id = '-none',
-                        intro_date = 1930,
+                        intro_date = 1925,
                         vehicle_life = 40,
                         use_legacy_spritesheet = True)
 
