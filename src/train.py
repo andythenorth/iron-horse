@@ -661,6 +661,22 @@ class WagonConsist(Consist):
             return cost / 8
 
 
+class PassengerConsist(WagonConsist):
+    # Class properties, no particular reason, no harm either
+
+    type_config = TypeConfig(base_id = 'passenger_car',
+                                    template = 'train.pynml',
+                                    class_refit_groups = ['pax'],
+                                    label_refits_allowed = [],
+                                    label_refits_disallowed = [],
+                                    autorefit = True,
+                                    default_cargo = 'PASS',
+                                    default_capacity_type = 'capacity_pax')
+
+    def __init__(self, **kwargs):
+        super(PassengerConsist, self).__init__(self.type_config, **kwargs)
+
+
 class SuppliesConsist(WagonConsist):
     # Class properties, no particular reason, no harm either
 
