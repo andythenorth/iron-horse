@@ -761,6 +761,27 @@ class PassengerConsist(WagonConsist):
         super(PassengerConsist, self).__init__(self.type_config, **kwargs)
 
 
+class ReeferConsist(WagonConsist):
+    # Class properties, no particular reason, no harm either
+
+    cargo_graphics_mappings = {} # template needs this, but reefer car has zero cargo-specific graphics, all generic
+
+    type_config = TypeConfig(base_id = 'reefer_car',
+                            template = 'car_with_open_doors_during_loading.pynml',
+                            num_cargo_rows = 1, # template needs this, but box car has zero cargo-specific graphics, all generic
+                            cargo_graphics_mappings = cargo_graphics_mappings,
+                            class_refit_groups = ['refrigerated_freight'],
+                            label_refits_allowed = [],
+                            label_refits_disallowed = [],
+                            autorefit = True,
+                            default_cargo = 'FOOD',
+                            default_capacity_type = 'capacity_freight',
+                            cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD)
+
+    def __init__(self, **kwargs):
+        super(ReeferConsist, self).__init__(self.type_config, **kwargs)
+
+
 class SuppliesConsist(WagonConsist):
     # Class properties, no particular reason, no harm either
 
