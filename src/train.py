@@ -105,7 +105,13 @@ class Consist(object):
 
     def get_wagon_id(self, id_base, **kwargs):
         # auto id creator, used for wagons not locos
-        return '_'.join((id_base, kwargs['roster'], 'gen', str(kwargs['wagon_generation'])))
+
+        # special case NG - extend this for other track_types as needed
+        # 'narmal' rail and 'elrail' doesn't require an id modifier
+        if kwargs.get('track_type', None) == 'NG':
+            id_base = id_base + '_ng'
+        result = '_'.join((id_base, kwargs['roster'], 'gen', str(kwargs['wagon_generation'])))
+        return result
 
     def get_reduced_set_of_variant_dates(self):
         # find all the unique dates that will need a switch constructing

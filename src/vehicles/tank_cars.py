@@ -18,18 +18,6 @@ type_config_normal = TypeConfig(base_id = 'tank_car',
                                 default_capacity_type = 'capacity_freight',
                                 loading_speed_multiplier = 3)
 
-type_config_narrow_gauge = TypeConfig(base_id = 'tank_car_ng',
-                                template = 'car_with_cargo_specific_liveries.pynml',
-                                num_cargo_rows = 3, # update if more cargo graphic variations are added
-                                cargo_graphics_mappings = cargo_graphics_mappings,
-                                class_refit_groups = ['liquids'],
-                                label_refits_allowed = [],
-                                label_refits_disallowed = global_constants.disallowed_refits_by_label['edible_liquids'],
-                                autorefit = True,
-                                default_cargo = 'OIL_',
-                                default_capacity_type = 'capacity_freight',
-                                loading_speed_multiplier = 2)
-
 def main():
     #--------------- pony ----------------------------------------------------------------------
     consist = WagonConsist(type_config = type_config_normal,
@@ -88,7 +76,7 @@ def main():
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
 
-    consist = WagonConsist(type_config = type_config_narrow_gauge,
+    consist = WagonConsist(type_config = type_config_normal,
                         title = '[Tank Car]',
                         roster = 'pony',
                         base_numeric_id = 650,
@@ -199,7 +187,7 @@ def main():
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
 
-    consist = WagonConsist(type_config = type_config_narrow_gauge,
+    consist = WagonConsist(type_config = type_config_normal,
                         title = '[Tank Car]',
                         roster = 'llama',
                         base_numeric_id = 690,
@@ -227,7 +215,7 @@ def main():
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
 
-    consist = WagonConsist(type_config = type_config_narrow_gauge,
+    consist = WagonConsist(type_config = type_config_normal,
                         title = '[Tank Car]',
                         roster = 'llama',
                         base_numeric_id = 1360,
@@ -312,7 +300,7 @@ def main():
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
 
-    consist = WagonConsist(type_config = type_config_narrow_gauge,
+    consist = WagonConsist(type_config = type_config_normal,
                         title = '[Tank Car]',
                         roster = 'antelope',
                         base_numeric_id = 1910,
@@ -340,7 +328,7 @@ def main():
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
 
-    consist = WagonConsist(type_config = type_config_narrow_gauge,
+    consist = WagonConsist(type_config = type_config_normal,
                         title = '[Tank Car]',
                         roster = 'antelope',
                         base_numeric_id = 1920,

@@ -23,18 +23,6 @@ type_config_normal = TypeConfig(base_id = 'hopper_car',
                     default_capacity_type = 'capacity_freight',
                     loading_speed_multiplier = 2)
 
-type_config_narrow_gauge = TypeConfig(base_id = 'hopper_car_ng',
-                    template = 'car_with_visible_cargo.pynml',
-                    num_cargo_rows = 16, # update if more cargo graphic variations are added
-                    class_refit_groups = ['hopper_freight'],
-                    cargo_graphics_mappings = cargo_graphics_mappings,
-                    label_refits_allowed = list(cargo_graphics_mappings.keys()),
-                    label_refits_disallowed = global_constants.disallowed_refits_by_label['non_hopper_freight'],
-                    autorefit = True,
-                    default_cargo = 'COAL',
-                    default_capacity_type = 'capacity_freight',
-                    loading_speed_multiplier = 2)
-
 def get_graphics_processors(template):
     recolour_maps = graphics_utils.get_bulk_cargo_recolour_maps()
     graphics_options_master = {'template': '',
@@ -192,7 +180,7 @@ def main():
 
 
 
-    consist = WagonConsist(type_config = type_config_narrow_gauge,
+    consist = WagonConsist(type_config = type_config_normal,
                         title = '[Rotary Gondola Car]',
                         roster = 'llama',
                         base_numeric_id = 1120,
@@ -220,7 +208,7 @@ def main():
                            graphics_processor=graphics_processors[1])
 
 
-    consist = WagonConsist(type_config = type_config_narrow_gauge,
+    consist = WagonConsist(type_config = type_config_normal,
                         title = '[Hopper Car]',
                         roster = 'llama',
                         base_numeric_id = 1130,
@@ -304,7 +292,7 @@ def main():
 
 
     # no gen 1 NG hopper in Antelope, straight to gen 2
-    consist = WagonConsist(type_config = type_config_narrow_gauge,
+    consist = WagonConsist(type_config = type_config_normal,
                         title = '[Hopper Car]',
                         roster = 'antelope',
                         base_numeric_id = 1890,

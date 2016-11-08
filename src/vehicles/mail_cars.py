@@ -14,17 +14,6 @@ type_config_normal = TypeConfig(base_id = 'mail_car',
                 default_cargo = 'MAIL',
                 default_capacity_type = 'capacity_mail')
 
-type_config_narrow_gauge = TypeConfig(base_id = 'mail_car_ng',
-                template = 'car_with_open_doors_during_loading.pynml',
-                num_cargo_rows = 1, # template needs this, but mail car has zero cargo-specific graphics, all generic
-                class_refit_groups = ['mail', 'express_freight'],
-                cargo_graphics_mappings = cargo_graphics_mappings,
-                label_refits_allowed = list(cargo_graphics_mappings.keys()) ,
-                label_refits_disallowed = [],
-                autorefit = True,
-                default_cargo = 'MAIL',
-                default_capacity_type = 'capacity_mail')
-
 def main():
     #--------------- pony ----------------------------------------------------------------------
     consist = WagonConsist(type_config = type_config_normal,
@@ -90,7 +79,7 @@ def main():
                            spritesheet_suffix=0)
 
 
-    consist = WagonConsist(type_config = type_config_narrow_gauge,
+    consist = WagonConsist(type_config = type_config_normal,
                         title = '[Mail Car]',
                         roster = 'pony',
                         base_numeric_id = 950,
@@ -172,7 +161,7 @@ def main():
                            spritesheet_suffix=0)
 
 
-    consist = WagonConsist(type_config = type_config_narrow_gauge,
+    consist = WagonConsist(type_config = type_config_normal,
                         title = '[Mail Car]',
                         roster = 'llama',
                         base_numeric_id = 990,
@@ -193,7 +182,7 @@ def main():
                            spritesheet_suffix=0)
 
 
-    consist = WagonConsist(type_config = type_config_narrow_gauge,
+    consist = WagonConsist(type_config = type_config_normal,
                         title = '[Mail Car]',
                         roster = 'llama',
                         base_numeric_id = 1380,
@@ -214,7 +203,7 @@ def main():
                            spritesheet_suffix=0)
 
 
-    consist = WagonConsist(type_config = type_config_narrow_gauge,
+    consist = WagonConsist(type_config = type_config_normal,
                         title = '[Mail Car]',
                         roster = 'llama',
                         base_numeric_id = 1450,
@@ -256,7 +245,7 @@ def main():
                            spritesheet_suffix=0)
 
 
-    consist = WagonConsist(type_config = type_config_narrow_gauge,
+    consist = WagonConsist(type_config = type_config_normal,
                         title = '[Mail Car]',
                         roster = 'antelope',
                         base_numeric_id = 2120,
@@ -277,7 +266,7 @@ def main():
                            spritesheet_suffix=0)
 
 
-    consist = WagonConsist(type_config = type_config_narrow_gauge,
+    consist = WagonConsist(type_config = type_config_normal,
                         title = '[Mail Car]',
                         roster = 'antelope',
                         base_numeric_id = 1950,

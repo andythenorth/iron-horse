@@ -21,17 +21,6 @@ type_config_normal = TypeConfig(base_id = 'open_car',
                         default_cargo = 'GOOD',
                         default_capacity_type = 'capacity_freight')
 
-type_config_narrow_gauge = TypeConfig(base_id = 'open_car_ng',
-                        template = 'car_with_visible_cargo.pynml',
-                        num_cargo_rows = 17, # update this when adding cargo graphics
-                        class_refit_groups = ['all_freight'],
-                        cargo_graphics_mappings = cargo_graphics_mappings,
-                        label_refits_allowed = list(cargo_graphics_mappings.keys()),
-                        label_refits_disallowed = global_constants.disallowed_refits_by_label['non_freight_special_cases'],
-                        autorefit = True,
-                        default_cargo = 'GOOD',
-                        default_capacity_type = 'capacity_freight')
-
 def get_graphics_processors(template):
     recolour_maps = graphics_utils.get_bulk_cargo_recolour_maps()
     graphics_options_master = {'template': 'filename.png',
@@ -133,7 +122,7 @@ def main():
                            graphics_processor=graphics_processors[1])
 
 
-    consist = WagonConsist(type_config = type_config_narrow_gauge,
+    consist = WagonConsist(type_config = type_config_normal,
                         title = '[Open Car]',
                         roster = 'pony',
                         base_numeric_id = 850,
@@ -217,7 +206,7 @@ def main():
                            graphics_processor=graphics_processors[1])
 
 
-    consist = WagonConsist(type_config = type_config_narrow_gauge,
+    consist = WagonConsist(type_config = type_config_normal,
                         title = '[Open Car]',
                         roster = 'llama',
                         base_numeric_id = 870,
@@ -245,7 +234,7 @@ def main():
                            graphics_processor=graphics_processors[1])
 
 
-    consist = WagonConsist(type_config = type_config_narrow_gauge,
+    consist = WagonConsist(type_config = type_config_normal,
                         title = '[Open Car]',
                         roster = 'llama',
                         base_numeric_id = 1320,
@@ -330,7 +319,7 @@ def main():
                            graphics_processor=graphics_processors[1])
 
 
-    consist = WagonConsist(type_config = type_config_narrow_gauge,
+    consist = WagonConsist(type_config = type_config_normal,
                         title = '[Open Car]',
                         roster = 'antelope',
                         base_numeric_id = 2090,
@@ -358,7 +347,7 @@ def main():
                            graphics_processor=graphics_processors[1])
 
 
-    consist = WagonConsist(type_config = type_config_narrow_gauge,
+    consist = WagonConsist(type_config = type_config_normal,
                         title = '[Open Car]',
                         roster = 'antelope',
                         base_numeric_id = 1830,
@@ -387,7 +376,7 @@ def main():
                            graphics_processor=graphics_processors[1])
 
 
-    consist = WagonConsist(type_config = type_config_narrow_gauge,
+    consist = WagonConsist(type_config = type_config_normal,
                         title = '[Open Car]',
                         roster = 'antelope',
                         base_numeric_id = 1820,

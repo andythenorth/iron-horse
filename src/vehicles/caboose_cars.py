@@ -11,14 +11,6 @@ type_config = TypeConfig(base_id = 'caboose_car',
                 default_cargo = 'GOOD', # unwanted side-effect of this is that caboose replaceable by anything refitting goods
                 default_capacity_type = 'capacity_freight')
 
-type_config_ng = TypeConfig(base_id = 'caboose_car_ng',
-                template = 'train.pynml',
-                class_refit_groups = [], # refit nothing, don't mess with this, it breaks auto-replace
-                label_refits_allowed = [],
-                label_refits_disallowed = [],
-                default_cargo = 'GOOD', # unwanted side-effect of this is that caboose replaceable by anything refitting goods
-                default_capacity_type = 'capacity_freight')
-
 def main():
     #--------------- pony ----------------------------------------------------------------------
     consist = WagonConsist(type_config = type_config,
@@ -42,7 +34,7 @@ def main():
                            spritesheet_suffix=0)
 
 
-    consist = WagonConsist(type_config = type_config_ng,
+    consist = WagonConsist(type_config = type_config,
                         title = '[Caboose Car]',
                         roster = 'pony',
                         base_numeric_id = 1290,
@@ -105,7 +97,7 @@ def main():
                            spritesheet_suffix=0)
 
 
-    consist = WagonConsist(type_config = type_config_ng,
+    consist = WagonConsist(type_config = type_config,
                         title = '[Caboose Car]',
                         roster = 'antelope',
                         base_numeric_id = 1880,

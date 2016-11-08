@@ -16,21 +16,9 @@ type_config_normal = TypeConfig(base_id = 'fruit_car',
                     default_capacity_type = 'capacity_freight',
                     cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD)
 
-type_config_narrow_gauge = TypeConfig(base_id = 'fruit_car_ng',
-                    template = 'car_with_open_doors_during_loading.pynml',
-                    num_cargo_rows = 1, # template needs this, but box car has zero cargo-specific graphics, all generic
-                    class_refit_groups = [],
-                    cargo_graphics_mappings = cargo_graphics_mappings,
-                    label_refits_allowed = fruit_car_label_refits_allowed,
-                    label_refits_disallowed = [],
-                    autorefit = True,
-                    default_cargo = 'FRUT',
-                    default_capacity_type = 'capacity_freight',
-                    cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD)
-
 def main():
     #--------------- antelope ----------------------------------------------------------------------
-    consist = WagonConsist(type_config = type_config_narrow_gauge,
+    consist = WagonConsist(type_config = type_config_normal,
                         title = '[Fruit Car]',
                         roster = 'antelope',
                         base_numeric_id = 2140,
@@ -58,7 +46,7 @@ def main():
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
 
-    consist = WagonConsist(type_config = type_config_narrow_gauge,
+    consist = WagonConsist(type_config = type_config_normal,
                         title = '[Fruit Car]',
                         roster = 'antelope',
                         base_numeric_id = 2170,
@@ -86,7 +74,7 @@ def main():
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
 
-    consist = WagonConsist(type_config = type_config_narrow_gauge,
+    consist = WagonConsist(type_config = type_config_normal,
                         title = '[Fruit Car]',
                         roster = 'antelope',
                         base_numeric_id = 2180,

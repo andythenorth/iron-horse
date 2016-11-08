@@ -16,20 +16,6 @@ type_config = TypeConfig(base_id = 'supplies_car',
                         default_capacity_type = 'capacity_freight',
                         date_variant_var = 'current_year')
 
-type_config_narrow_gauge = TypeConfig(base_id = 'supplies_car_ng',
-                        template = 'car_with_visible_cargo.pynml',
-                        num_cargo_rows = 5,
-                        class_refit_groups = [],
-                        cargo_graphics_mappings = cargo_graphics_mappings,
-                        label_refits_allowed = list(cargo_graphics_mappings.keys()),
-                        label_refits_disallowed = [],
-                        autorefit = True,
-                        default_cargo = 'ENSP',
-                        default_capacity_type = 'capacity_freight',
-                        track_type = 'NG',
-                        date_variant_var = 'current_year')
-
-
 def main():
     #--------------- pony ----------------------------------------------------------------------
     consist = WagonConsist(type_config = type_config,
@@ -115,7 +101,7 @@ def main():
 
     #--------------- antelope ----------------------------------------------------------------------
 
-    consist = WagonConsist(type_config = type_config_narrow_gauge,
+    consist = WagonConsist(type_config = type_config,
                         title = '[Supplies Car]',
                         roster = 'antelope',
                         base_numeric_id = 2160,

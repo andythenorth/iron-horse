@@ -10,15 +10,6 @@ type_config_normal = TypeConfig(base_id = 'passenger_car',
                                 default_cargo = 'PASS',
                                 default_capacity_type = 'capacity_pax')
 
-type_config_narrow_gauge = TypeConfig(base_id = 'passenger_car_ng',
-                                template = 'train.pynml',
-                                class_refit_groups = ['pax'],
-                                label_refits_allowed = [],
-                                label_refits_disallowed = [],
-                                autorefit = True,
-                                default_cargo = 'PASS',
-                                default_capacity_type = 'capacity_pax')
-
 def main():
     #--------------- pony ----------------------------------------------------------------------
     consist = WagonConsist(type_config = type_config_normal,
@@ -81,7 +72,7 @@ def main():
                            spritesheet_suffix=0)
 
 
-    consist = WagonConsist(type_config = type_config_narrow_gauge,
+    consist = WagonConsist(type_config = type_config_normal,
                         title = '[Passenger Car]',
                         roster = 'pony',
                         base_numeric_id = 770,
@@ -163,7 +154,7 @@ def main():
                            spritesheet_suffix=0)
 
 
-    consist = WagonConsist(type_config = type_config_narrow_gauge,
+    consist = WagonConsist(type_config = type_config_normal,
                         title = '[Passenger Car]',
                         roster = 'llama',
                         base_numeric_id = 810,
@@ -184,7 +175,7 @@ def main():
                            spritesheet_suffix=0)
 
 
-    consist = WagonConsist(type_config = type_config_narrow_gauge,
+    consist = WagonConsist(type_config = type_config_normal,
                         title = '[Passenger Car]',
                         roster = 'llama',
                         base_numeric_id = 1350,
@@ -206,7 +197,7 @@ def main():
 
 
 
-    consist = WagonConsist(type_config = type_config_narrow_gauge,
+    consist = WagonConsist(type_config = type_config_normal,
                         title = '[Passenger Car]',
                         roster = 'llama',
                         base_numeric_id = 1370,
@@ -268,7 +259,7 @@ def main():
                            spritesheet_suffix=0)
 
 
-    consist = WagonConsist(type_config = type_config_narrow_gauge,
+    consist = WagonConsist(type_config = type_config_normal,
                         title = '[Passenger Car]',
                         roster = 'antelope',
                         base_numeric_id = 2130,
@@ -289,7 +280,7 @@ def main():
                            spritesheet_suffix=0)
 
 
-    consist = WagonConsist(type_config = type_config_narrow_gauge,
+    consist = WagonConsist(type_config = type_config_normal,
                         title = '[Passenger Car]',
                         roster = 'antelope',
                         base_numeric_id = 1940,

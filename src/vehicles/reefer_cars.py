@@ -3,19 +3,7 @@ from train import TypeConfig, WagonConsist, Wagon, GraphicsProcessorFactory
 
 cargo_graphics_mappings = {} # template needs this, but reefer car has zero cargo-specific graphics, all generic
 
-type_config = TypeConfig(base_id = 'reefer_car',
-                        template = 'car_with_open_doors_during_loading.pynml',
-                        num_cargo_rows = 1, # template needs this, but box car has zero cargo-specific graphics, all generic
-                        cargo_graphics_mappings = cargo_graphics_mappings,
-                        class_refit_groups = ['refrigerated_freight'],
-                        label_refits_allowed = [],
-                        label_refits_disallowed = [],
-                        autorefit = True,
-                        default_cargo = 'FOOD',
-                        default_capacity_type = 'capacity_freight',
-                        cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD)
-
-type_config_narrow_gauge = TypeConfig(base_id = 'reefer_car_ng',
+type_config_normal = TypeConfig(base_id = 'reefer_car',
                         template = 'car_with_open_doors_during_loading.pynml',
                         num_cargo_rows = 1, # template needs this, but box car has zero cargo-specific graphics, all generic
                         cargo_graphics_mappings = cargo_graphics_mappings,
@@ -29,7 +17,7 @@ type_config_narrow_gauge = TypeConfig(base_id = 'reefer_car_ng',
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
-    consist = WagonConsist(type_config = type_config,
+    consist = WagonConsist(type_config = type_config_normal,
                         title = '[Reefer Car]',
                         roster = 'pony',
                         base_numeric_id = 730,
@@ -59,7 +47,7 @@ def main():
 
 
     # no gen 2 reefer - straight to gen 3
-    consist = WagonConsist(type_config = type_config,
+    consist = WagonConsist(type_config = type_config_normal,
                         title = '[Reefer Car]',
                         roster = 'pony',
                         base_numeric_id = 720,
@@ -89,7 +77,7 @@ def main():
 
 
     #--------------- llama ----------------------------------------------------------------------
-    consist = WagonConsist(type_config = type_config,
+    consist = WagonConsist(type_config = type_config_normal,
                         title = '[Reefer Car]',
                         roster = 'llama',
                         base_numeric_id = 1390,
@@ -118,7 +106,7 @@ def main():
 
 
     # no gen 2 reefers - straight to gen 3
-    consist = WagonConsist(type_config = type_config,
+    consist = WagonConsist(type_config = type_config_normal,
                         title = '[Reefer Car]',
                         roster = 'llama',
                         base_numeric_id = 1400,
@@ -146,7 +134,7 @@ def main():
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
 
-    consist = WagonConsist(type_config = type_config_narrow_gauge,
+    consist = WagonConsist(type_config = type_config_normal,
                         title = '[Reefer Car]',
                         roster = 'llama',
                         base_numeric_id = 1410,
@@ -176,7 +164,7 @@ def main():
 
 
     # no gen 2 reefers - straight to gen 3
-    consist = WagonConsist(type_config = type_config_narrow_gauge,
+    consist = WagonConsist(type_config = type_config_normal,
                         title = '[Reefer Car]',
                         roster = 'llama',
                         base_numeric_id = 1420,
@@ -206,7 +194,7 @@ def main():
 
 
     #--------------- antelope ----------------------------------------------------------------------
-    consist = WagonConsist(type_config = type_config,
+    consist = WagonConsist(type_config = type_config_normal,
                         title = '[Reefer Car]',
                         roster = 'antelope',
                         base_numeric_id = 1570,
@@ -235,7 +223,7 @@ def main():
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
 
-    consist = WagonConsist(type_config = type_config_narrow_gauge,
+    consist = WagonConsist(type_config = type_config_normal,
                         title = '[Reefer Car]',
                         roster = 'antelope',
                         base_numeric_id = 1900,

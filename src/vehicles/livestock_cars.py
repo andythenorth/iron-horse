@@ -11,15 +11,6 @@ type_config_normal = TypeConfig(base_id = 'livestock_car',
                             default_capacity_type = 'capacity_freight',
                             cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD)
 
-type_config_narrow_gauge = TypeConfig(base_id = 'livestock_car_ng',
-                            template = 'train.pynml',
-                            class_refit_groups = [],
-                            label_refits_allowed = ['LVST'],
-                            label_refits_disallowed = [],
-                            autorefit = True,
-                            default_cargo = 'LVST',
-                            default_capacity_type = 'capacity_freight')
-
 def main():
     #--------------- pony ----------------------------------------------------------------------
     consist = WagonConsist(type_config = type_config_normal,
@@ -62,7 +53,7 @@ def main():
                            spritesheet_suffix=0)
 
 
-    consist = WagonConsist(type_config = type_config_narrow_gauge,
+    consist = WagonConsist(type_config = type_config_normal,
                         title = '[Livestock Car]',
                         roster = 'pony',
                         base_numeric_id = 1030,
@@ -122,7 +113,7 @@ def main():
                            spritesheet_suffix=0)
 
 
-    consist = WagonConsist(type_config = type_config_narrow_gauge,
+    consist = WagonConsist(type_config = type_config_normal,
                         title = '[Livestock Car]',
                         roster = 'llama',
                         base_numeric_id = 1050,
@@ -142,7 +133,7 @@ def main():
                            spritesheet_suffix=0)
 
 
-    consist = WagonConsist(type_config = type_config_narrow_gauge,
+    consist = WagonConsist(type_config = type_config_normal,
                         title = '[Livestock Car]',
                         roster = 'llama',
                         base_numeric_id = 1520,
@@ -183,7 +174,7 @@ def main():
                            spritesheet_suffix=0)
 
 
-    consist = WagonConsist(type_config = type_config_narrow_gauge,
+    consist = WagonConsist(type_config = type_config_normal,
                         title = '[Livestock Car]',
                         roster = 'antelope',
                         base_numeric_id = 2150,

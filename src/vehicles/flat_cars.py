@@ -15,17 +15,6 @@ type_config_normal = TypeConfig(base_id = 'flat_car',
                     default_cargo = 'STEL',
                     default_capacity_type = 'capacity_freight')
 
-type_config_narrow_gauge = TypeConfig(base_id = 'flat_car_ng',
-                    template = 'car_with_visible_cargo.pynml',
-                    num_cargo_rows = 7,
-                    class_refit_groups = ['flatcar_freight'],
-                    cargo_graphics_mappings = cargo_graphics_mappings,
-                    label_refits_allowed = list(cargo_graphics_mappings.keys()),
-                    label_refits_disallowed = global_constants.disallowed_refits_by_label['non_flatcar_freight'],
-                    autorefit = True,
-                    default_cargo = 'STEL',
-                    default_capacity_type = 'capacity_freight')
-
 def main():
     #--------------- pony ----------------------------------------------------------------------
     consist = WagonConsist(type_config = type_config_normal,
@@ -111,7 +100,7 @@ def main():
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
 
-    consist = WagonConsist(type_config = type_config_narrow_gauge,
+    consist = WagonConsist(type_config = type_config_normal,
                         title = '[Flat Car]',
                         roster = 'pony',
                         base_numeric_id = 1170,
@@ -187,7 +176,7 @@ def main():
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
 
-    consist = WagonConsist(type_config = type_config_narrow_gauge,
+    consist = WagonConsist(type_config = type_config_normal,
                         title = '[Flat Car]',
                         roster = 'llama',
                         base_numeric_id = 520,
@@ -215,7 +204,7 @@ def main():
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
 
-    consist = WagonConsist(type_config = type_config_narrow_gauge,
+    consist = WagonConsist(type_config = type_config_normal,
                         title = '[Flat Car]',
                         roster = 'llama',
                         base_numeric_id = 1500,
@@ -299,7 +288,7 @@ def main():
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
 
-    consist = WagonConsist(type_config = type_config_narrow_gauge,
+    consist = WagonConsist(type_config = type_config_normal,
                         title = '[Flat Car]',
                         roster = 'antelope',
                         base_numeric_id = 2110,
@@ -328,7 +317,7 @@ def main():
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
 
-    consist = WagonConsist(type_config = type_config_narrow_gauge,
+    consist = WagonConsist(type_config = type_config_normal,
                         title = '[Flat Car]',
                         roster = 'antelope',
                         base_numeric_id = 1930,
