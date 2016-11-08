@@ -661,6 +661,48 @@ class WagonConsist(Consist):
             return cost / 8
 
 
+class MailConsist(WagonConsist):
+    # Class properties, no particular reason, no harm either
+
+    cargo_graphics_mappings = {} # template needs this, but mail car has zero cargo-specific graphics, all generic
+
+    type_config = TypeConfig(base_id = 'mail_car',
+                    template = 'car_with_open_doors_during_loading.pynml',
+                    num_cargo_rows = 1, # template needs this, but mail car has zero cargo-specific graphics, all generic
+                    class_refit_groups = ['mail', 'express_freight'],
+                    cargo_graphics_mappings = cargo_graphics_mappings,
+                    label_refits_allowed = list(cargo_graphics_mappings.keys()) ,
+                    label_refits_disallowed = global_constants.disallowed_refits_by_label['non_freight_special_cases'],
+                    autorefit = True,
+                    default_cargo = 'MAIL',
+                    default_capacity_type = 'capacity_mail')
+
+    def __init__(self, **kwargs):
+        super(MailConsist, self).__init__(self.type_config, **kwargs)
+
+
+class MetalConsist(WagonConsist):
+    # Class properties, no particular reason, no harm either
+
+    cargo_graphics_mappings = {}
+
+    type_config = TypeConfig(base_id = 'metal_car',
+                    template = 'car_with_visible_cargo.pynml',
+                    num_cargo_rows = 1,
+                    generic_cargo_rows = [0],
+                    cargo_graphics_mappings = cargo_graphics_mappings,
+                    class_refit_groups = [],
+                    label_refits_allowed = ['STEL', 'COPR'],
+                    label_refits_disallowed = [],
+                    autorefit = True,
+                    default_cargo = 'STEL',
+                    default_capacity_type = 'capacity_freight',
+                    loading_speed_multiplier = 2)
+
+    def __init__(self, **kwargs):
+        super(MetalConsist, self).__init__(self.type_config, **kwargs)
+
+
 class OpenConsist(WagonConsist):
     # Class properties, no particular reason, no harm either
 
