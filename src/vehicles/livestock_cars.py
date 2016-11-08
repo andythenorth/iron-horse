@@ -1,27 +1,16 @@
 import global_constants
-from train import TypeConfig, WagonConsist, Wagon
-
-type_config_normal = TypeConfig(base_id = 'livestock_car',
-                            template = 'train.pynml',
-                            class_refit_groups = [],
-                            label_refits_allowed = ['LVST'],
-                            label_refits_disallowed = [],
-                            autorefit = True,
-                            default_cargo = 'LVST',
-                            default_capacity_type = 'capacity_freight',
-                            cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD)
+from train import LivestockConsist, Wagon
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
-    consist = WagonConsist(type_config = type_config_normal,
-                        title = '[Livestock Car]',
-                        roster = 'pony',
-                        base_numeric_id = 1010,
-                        wagon_generation = 1,
-                        replacement_id = '-none',
-                        intro_date = 1860,
-                        vehicle_life = 40,
-                        use_legacy_spritesheet = True)
+    consist = LivestockConsist(title = '[Livestock Car]',
+                               roster = 'pony',
+                               base_numeric_id = 1010,
+                               wagon_generation = 1,
+                               replacement_id = '-none',
+                               intro_date = 1860,
+                               vehicle_life = 40,
+                               use_legacy_spritesheet = True)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 20,
@@ -33,15 +22,14 @@ def main():
                            spritesheet_suffix=0)
 
 
-    consist = WagonConsist(type_config = type_config_normal,
-                        title = '[Livestock Car]',
-                        roster = 'pony',
-                        base_numeric_id = 1020,
-                        wagon_generation = 2,
-                        replacement_id = '-none',
-                        intro_date = 1950,
-                        vehicle_life = 40,
-                        use_legacy_spritesheet = True)
+    consist = LivestockConsist(title = '[Livestock Car]',
+                               roster = 'pony',
+                               base_numeric_id = 1020,
+                               wagon_generation = 2,
+                               replacement_id = '-none',
+                               intro_date = 1950,
+                               vehicle_life = 40,
+                               use_legacy_spritesheet = True)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 35,
@@ -53,16 +41,15 @@ def main():
                            spritesheet_suffix=0)
 
 
-    consist = WagonConsist(type_config = type_config_normal,
-                        title = '[Livestock Car]',
-                        roster = 'pony',
-                        base_numeric_id = 1030,
-                        wagon_generation = 1,
-                        replacement_id = '-none',
-                        intro_date = 1860,
-                        vehicle_life = 40,
-                        track_type = 'NG',
-                        use_legacy_spritesheet = True)
+    consist = LivestockConsist(title = '[Livestock Car]',
+                               roster = 'pony',
+                               base_numeric_id = 1030,
+                               wagon_generation = 1,
+                               replacement_id = '-none',
+                               intro_date = 1860,
+                               vehicle_life = 40,
+                               track_type = 'NG',
+                               use_legacy_spritesheet = True)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 12,
@@ -75,14 +62,13 @@ def main():
 
 
     #--------------- llama ----------------------------------------------------------------------
-    consist = WagonConsist(type_config = type_config_normal,
-                        title = '[Livestock Car]',
-                        roster = 'llama',
-                        base_numeric_id = 1040,
-                        wagon_generation = 1,
-                        replacement_id = '-none',
-                        intro_date = 1860,
-                        vehicle_life = 40)
+    consist = LivestockConsist(title = '[Livestock Car]',
+                               roster = 'llama',
+                               base_numeric_id = 1040,
+                               wagon_generation = 1,
+                               replacement_id = '-none',
+                               intro_date = 1860,
+                               vehicle_life = 40)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 25,
@@ -94,14 +80,13 @@ def main():
                            spritesheet_suffix=0)
 
 
-    consist = WagonConsist(type_config = type_config_normal,
-                        title = '[Livestock Car]',
-                        roster = 'llama',
-                        base_numeric_id = 1430,
-                        wagon_generation = 2,
-                        replacement_id = '-none',
-                        intro_date = 1925,
-                        vehicle_life = 40)
+    consist = LivestockConsist(title = '[Livestock Car]',
+                               roster = 'llama',
+                               base_numeric_id = 1430,
+                               wagon_generation = 2,
+                               replacement_id = '-none',
+                               intro_date = 1925,
+                               vehicle_life = 40)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 45,
@@ -113,15 +98,14 @@ def main():
                            spritesheet_suffix=0)
 
 
-    consist = WagonConsist(type_config = type_config_normal,
-                        title = '[Livestock Car]',
-                        roster = 'llama',
-                        base_numeric_id = 1050,
-                        wagon_generation = 1,
-                        replacement_id = '-none',
-                        intro_date = 1860,
-                        vehicle_life = 40,
-                        track_type = 'NG')
+    consist = LivestockConsist(title = '[Livestock Car]',
+                               roster = 'llama',
+                               base_numeric_id = 1050,
+                               wagon_generation = 1,
+                               replacement_id = '-none',
+                               intro_date = 1860,
+                               vehicle_life = 40,
+                               track_type = 'NG')
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 20,
@@ -133,15 +117,14 @@ def main():
                            spritesheet_suffix=0)
 
 
-    consist = WagonConsist(type_config = type_config_normal,
-                        title = '[Livestock Car]',
-                        roster = 'llama',
-                        base_numeric_id = 1520,
-                        wagon_generation = 2,
-                        replacement_id = '-none',
-                        intro_date = 1920,
-                        vehicle_life = 40,
-                        track_type = 'NG')
+    consist = LivestockConsist(title = '[Livestock Car]',
+                               roster = 'llama',
+                               base_numeric_id = 1520,
+                               wagon_generation = 2,
+                               replacement_id = '-none',
+                               intro_date = 1920,
+                               vehicle_life = 40,
+                               track_type = 'NG')
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 35,
@@ -154,15 +137,14 @@ def main():
 
 
     #--------------- antelope ----------------------------------------------------------------------
-    consist = WagonConsist(type_config = type_config_normal,
-                        title = '[Livestock Car]',
-                        roster = 'antelope',
-                        base_numeric_id = 1720,
-                        wagon_generation = 1,
-                        replacement_id = '-none',
-                        intro_date = 1950,
-                        vehicle_life = 40,
-                        use_legacy_spritesheet = True)
+    consist = LivestockConsist(title = '[Livestock Car]',
+                               roster = 'antelope',
+                               base_numeric_id = 1720,
+                               wagon_generation = 1,
+                               replacement_id = '-none',
+                               intro_date = 1950,
+                               vehicle_life = 40,
+                               use_legacy_spritesheet = True)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 45,
@@ -174,16 +156,15 @@ def main():
                            spritesheet_suffix=0)
 
 
-    consist = WagonConsist(type_config = type_config_normal,
-                        title = '[Livestock Car]',
-                        roster = 'antelope',
-                        base_numeric_id = 2150,
-                        wagon_generation = 1,
-                        replacement_id = '-none',
-                        intro_date = 1860,
-                        vehicle_life = 40,
-                        track_type = 'NG',
-                        use_legacy_spritesheet = True)
+    consist = LivestockConsist(title = '[Livestock Car]',
+                               roster = 'antelope',
+                               base_numeric_id = 2150,
+                               wagon_generation = 1,
+                               replacement_id = '-none',
+                               intro_date = 1860,
+                               vehicle_life = 40,
+                               track_type = 'NG',
+                               use_legacy_spritesheet = True)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 20,

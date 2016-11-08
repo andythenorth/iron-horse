@@ -661,6 +661,23 @@ class WagonConsist(Consist):
             return cost / 8
 
 
+class LivestockConsist(WagonConsist):
+    # Class properties, no particular reason, no harm either
+
+    type_config = TypeConfig(base_id = 'livestock_car',
+                                    template = 'train.pynml',
+                                    class_refit_groups = [],
+                                    label_refits_allowed = ['LVST'],
+                                    label_refits_disallowed = [],
+                                    autorefit = True,
+                                    default_cargo = 'LVST',
+                                    default_capacity_type = 'capacity_freight',
+                                    cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD)
+
+    def __init__(self, **kwargs):
+        super(LivestockConsist, self).__init__(self.type_config, **kwargs)
+
+
 class MailConsist(WagonConsist):
     # Class properties, no particular reason, no harm either
 
