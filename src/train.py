@@ -661,6 +661,28 @@ class WagonConsist(Consist):
             return cost / 8
 
 
+class SuppliesCar(WagonConsist):
+    # Class properties, no particular reason, no harm either
+
+    # cargo rows 0 indexed - 0 = first set of loaded sprites
+    cargo_graphics_mappings = {'ENSP': [0, 1, 2, 3, 4], 'FMSP': [0, 1, 2, 3, 4], 'VEHI': [0, 1, 2, 3, 4], 'BDMT': [0, 1]}
+
+    type_config = TypeConfig(base_id = 'supplies_car',
+                            template = 'car_with_visible_cargo.pynml',
+                            num_cargo_rows = 5,
+                            class_refit_groups = [],
+                            cargo_graphics_mappings = cargo_graphics_mappings,
+                            label_refits_allowed = list(cargo_graphics_mappings.keys()),
+                            label_refits_disallowed = [],
+                            autorefit = True,
+                            default_cargo = 'ENSP',
+                            default_capacity_type = 'capacity_freight',
+                            date_variant_var = 'current_year')
+
+    def __init__(self, **kwargs):
+        super(SuppliesCar, self).__init__(self.type_config, **kwargs)
+
+
 class TankCar(WagonConsist):
     # Class properties, no particular reason, no harm either
     # tank cars are unrealistically autorefittable, and at no cost

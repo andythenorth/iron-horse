@@ -1,37 +1,21 @@
 import global_constants
-from train import TypeConfig, WagonConsist, Wagon, GraphicsProcessorFactory
-
-# cargo rows 0 indexed - 0 = first set of loaded sprites
-cargo_graphics_mappings = {'ENSP': [0, 1, 2, 3, 4], 'FMSP': [0, 1, 2, 3, 4], 'VEHI': [0, 1, 2, 3, 4], 'BDMT': [0, 1]}
-
-type_config = TypeConfig(base_id = 'supplies_car',
-                        template = 'car_with_visible_cargo.pynml',
-                        num_cargo_rows = 5,
-                        class_refit_groups = [],
-                        cargo_graphics_mappings = cargo_graphics_mappings,
-                        label_refits_allowed = list(cargo_graphics_mappings.keys()),
-                        label_refits_disallowed = [],
-                        autorefit = True,
-                        default_cargo = 'ENSP',
-                        default_capacity_type = 'capacity_freight',
-                        date_variant_var = 'current_year')
+from train import SuppliesCar, Wagon, GraphicsProcessorFactory
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
-    consist = WagonConsist(type_config = type_config,
-                        title = '[Supplies Car]',
-                        roster = 'pony',
-                        base_numeric_id = 710,
-                        wagon_generation = 1,
-                        replacement_id = '-none',
-                        intro_date = 1860,
-                        vehicle_life = 40,
-                        use_legacy_spritesheet = True)
+    consist = SuppliesCar(title = '[Supplies Car]',
+                          roster = 'pony',
+                          base_numeric_id = 710,
+                          wagon_generation = 1,
+                          replacement_id = '-none',
+                          intro_date = 1860,
+                          vehicle_life = 40,
+                          use_legacy_spritesheet = True)
 
     consist.add_unit(Wagon(consist = consist,
-                            capacity_freight = 30,
-                            weight = 6,
-                            vehicle_length = 7))
+                           capacity_freight = 30,
+                           weight = 6,
+                           vehicle_length = 7))
 
     # Ho Ho, supplies cars will vary load graphics according to *build date of wagon*
     # not strictly right, but eh, means it got done :)
@@ -61,19 +45,18 @@ def main():
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
 
-    consist = WagonConsist(type_config = type_config,
-                        title = '[Supplies Car]',
-                        roster = 'pony',
-                        base_numeric_id = 700,
-                        wagon_generation = 2,
-                        replacement_id = '-none',
-                        intro_date = 1960,
-                        vehicle_life = 40,)
+    consist = SuppliesCar(title = '[Supplies Car]',
+                          roster = 'pony',
+                          base_numeric_id = 700,
+                          wagon_generation = 2,
+                          replacement_id = '-none',
+                          intro_date = 1960,
+                          vehicle_life = 40,)
 
     consist.add_unit(Wagon(consist = consist,
-                            capacity_freight = 45,
-                            weight = 12,
-                            vehicle_length = 10))
+                           capacity_freight = 45,
+                           weight = 12,
+                           vehicle_length = 10))
 
     options = {'template': 'supplies_car_pony_gen_2_template_0.png'}
 
@@ -101,15 +84,14 @@ def main():
 
     #--------------- antelope ----------------------------------------------------------------------
 
-    consist = WagonConsist(type_config = type_config,
-                        title = '[Supplies Car]',
-                        roster = 'antelope',
-                        base_numeric_id = 2160,
-                        wagon_generation = 1,
-                        replacement_id = '-none',
-                        intro_date = 1860,
-                        vehicle_life = 40,
-                        use_legacy_spritesheet = True)
+    consist = SuppliesCar(title = '[Supplies Car]',
+                          roster = 'antelope',
+                          base_numeric_id = 2160,
+                          wagon_generation = 1,
+                          replacement_id = '-none',
+                          intro_date = 1860,
+                          vehicle_life = 40,
+                          use_legacy_spritesheet = True)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 20,
