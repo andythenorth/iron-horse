@@ -28,8 +28,7 @@ type_config_narrow_gauge = TypeConfig(base_id = 'tank_car_ng',
                                 autorefit = True,
                                 default_cargo = 'OIL_',
                                 default_capacity_type = 'capacity_freight',
-                                loading_speed_multiplier = 2,
-                                track_type = 'NG')
+                                loading_speed_multiplier = 2)
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
@@ -97,6 +96,7 @@ def main():
                         replacement_id = '-none',
                         intro_date = 1860,
                         vehicle_life = 40,
+                        track_type = 'NG',
                         use_legacy_spritesheet = True)
 
     options = {'template': 'tank_car_ng_pony_gen_1_template.png'}
@@ -206,7 +206,8 @@ def main():
                         wagon_generation = 1,
                         replacement_id = '-none',
                         intro_date = 1860,
-                        vehicle_life = 40)
+                        vehicle_life = 40,
+                        track_type = 'NG')
 
     options = {'template': 'tank_car_ng_llama_gen_1_template.png'}
 
@@ -233,7 +234,8 @@ def main():
                         wagon_generation = 2,
                         replacement_id = '-none',
                         intro_date = 1920,
-                        vehicle_life = 40)
+                        vehicle_life = 40,
+                        track_type = 'NG')
 
     options = {'template': 'tank_car_ng_llama_gen_1_template.png'}
 
@@ -317,7 +319,8 @@ def main():
                         wagon_generation = 1,
                         replacement_id = '-none',
                         intro_date = 1880,
-                        vehicle_life = 40)
+                        vehicle_life = 40,
+                        track_type = 'NG')
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 25,
@@ -345,6 +348,7 @@ def main():
                         replacement_id = '-none',
                         intro_date = 1925,
                         vehicle_life = 40,
+                        track_type = 'NG',
                         use_legacy_spritesheet = True)
 
     consist.add_unit(Wagon(consist = consist,

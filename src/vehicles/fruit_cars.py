@@ -26,8 +26,7 @@ type_config_narrow_gauge = TypeConfig(base_id = 'fruit_car_ng',
                     autorefit = True,
                     default_cargo = 'FRUT',
                     default_capacity_type = 'capacity_freight',
-                    cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD,
-                    track_type = 'NG')
+                    cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD)
 
 def main():
     #--------------- antelope ----------------------------------------------------------------------
@@ -38,7 +37,8 @@ def main():
                         wagon_generation = 1,
                         replacement_id = '-none',
                         intro_date = 1860,
-                        vehicle_life = 40)
+                        vehicle_life = 40,
+                        track_type = 'NG')
 
     consist.add_unit(BoxCar(consist = consist,
                             capacity_freight = 20,
@@ -65,7 +65,8 @@ def main():
                         wagon_generation = 2,
                         replacement_id = '-none',
                         intro_date = 1915,
-                        vehicle_life = 40)
+                        vehicle_life = 40,
+                        track_type = 'NG')
 
     consist.add_unit(BoxCar(consist = consist,
                             capacity_freight = 30,
@@ -92,7 +93,8 @@ def main():
                         wagon_generation = 3,
                         replacement_id = '-none',
                         intro_date = 1970,
-                        vehicle_life = 40)
+                        vehicle_life = 40,
+                        track_type = 'NG')
 
     consist.add_unit(BoxCar(consist = consist,
                             capacity_freight = 40,

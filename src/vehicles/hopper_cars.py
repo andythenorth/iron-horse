@@ -33,7 +33,6 @@ type_config_narrow_gauge = TypeConfig(base_id = 'hopper_car_ng',
                     autorefit = True,
                     default_cargo = 'COAL',
                     default_capacity_type = 'capacity_freight',
-                    track_type = 'NG',
                     loading_speed_multiplier = 2)
 
 def get_graphics_processors(template):
@@ -200,7 +199,8 @@ def main():
                         wagon_generation = 2,
                         replacement_id = '-none',
                         intro_date = 1925,
-                        vehicle_life = 40)
+                        vehicle_life = 40,
+                        track_type = 'NG')
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 45,
@@ -227,7 +227,8 @@ def main():
                         wagon_generation = 3,
                         replacement_id = '-none',
                         intro_date = 1985,
-                        vehicle_life = 40)
+                        vehicle_life = 40,
+                        track_type = 'NG')
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 65,
@@ -311,6 +312,7 @@ def main():
                         replacement_id = '-none',
                         intro_date = 1920,
                         vehicle_life = 40,
+                        track_type = 'NG',
                         use_legacy_spritesheet = True)
 
     consist.add_unit(Wagon(consist = consist,

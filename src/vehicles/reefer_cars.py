@@ -25,8 +25,7 @@ type_config_narrow_gauge = TypeConfig(base_id = 'reefer_car_ng',
                         autorefit = True,
                         default_cargo = 'FOOD',
                         default_capacity_type = 'capacity_freight',
-                        cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD,
-                        track_type = 'NG')
+                        cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD)
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
@@ -155,7 +154,8 @@ def main():
                         replacement_id = '-none',
                         intro_date = 1905,
                         vehicle_life = 40,
-                        speedy = True)
+                        speedy = True,
+                        track_type = 'NG')
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 25,
@@ -184,7 +184,8 @@ def main():
                         replacement_id = '-none',
                         intro_date = 1980,
                         vehicle_life = 40,
-                        speedy = True)
+                        speedy = True,
+                        track_type = 'NG')
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 40,
@@ -243,6 +244,7 @@ def main():
                         intro_date = 1905,
                         vehicle_life = 40,
                         speedy = True,
+                        track_type = 'NG',
                         use_legacy_spritesheet = True)
 
     consist.add_unit(Wagon(consist = consist,

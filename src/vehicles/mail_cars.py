@@ -23,8 +23,7 @@ type_config_narrow_gauge = TypeConfig(base_id = 'mail_car_ng',
                 label_refits_disallowed = [],
                 autorefit = True,
                 default_cargo = 'MAIL',
-                default_capacity_type = 'capacity_mail',
-                track_type = 'NG')
+                default_capacity_type = 'capacity_mail')
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
@@ -99,6 +98,7 @@ def main():
                         replacement_id = '-none',
                         intro_date = 1860,
                         vehicle_life = 40,
+                        track_type = 'NG',
                         use_legacy_spritesheet = True)
 
     consist.add_unit(MailCar(consist = consist,
@@ -180,6 +180,7 @@ def main():
                         replacement_id = '-none',
                         intro_date = 1860,
                         speedy = True,
+                        track_type = 'NG',
                         vehicle_life = 40)
 
     consist.add_unit(MailCar(consist = consist,
@@ -200,6 +201,7 @@ def main():
                         replacement_id = '-none',
                         intro_date = 1920,
                         speedy = True,
+                        track_type = 'NG',
                         vehicle_life = 40)
 
     consist.add_unit(MailCar(consist = consist,
@@ -220,6 +222,7 @@ def main():
                         replacement_id = '-none',
                         intro_date = 1980,
                         speedy = True,
+                        track_type = 'NG',
                         vehicle_life = 40)
 
     consist.add_unit(MailCar(consist = consist,
@@ -261,6 +264,7 @@ def main():
                         replacement_id = '-none',
                         intro_date = 1860,
                         vehicle_life = 40,
+                        track_type = 'NG',
                         speedy = True)
 
     consist.add_unit(MailCar(consist = consist,
@@ -281,6 +285,7 @@ def main():
                         replacement_id = '-none',
                         intro_date = 1915,
                         vehicle_life = 40,
+                        track_type = 'NG',
                         speedy = True)
 
     consist.add_unit(MailCar(consist = consist,

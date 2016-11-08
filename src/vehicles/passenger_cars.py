@@ -17,8 +17,7 @@ type_config_narrow_gauge = TypeConfig(base_id = 'passenger_car_ng',
                                 label_refits_disallowed = [],
                                 autorefit = True,
                                 default_cargo = 'PASS',
-                                default_capacity_type = 'capacity_pax',
-                                track_type = 'NG')
+                                default_capacity_type = 'capacity_pax')
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
@@ -90,6 +89,7 @@ def main():
                         replacement_id = '-none',
                         intro_date = 1860,
                         vehicle_life = 40,
+                        track_type = 'NG',
                         use_legacy_spritesheet = True)
 
     consist.add_unit(Wagon(consist = consist,
@@ -171,7 +171,8 @@ def main():
                         replacement_id = '-none',
                         intro_date = 1860,
                         speedy = True,
-                        vehicle_life = 40)
+                        vehicle_life = 40,
+                        track_type = 'NG')
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_pax = 30,
@@ -191,7 +192,8 @@ def main():
                         replacement_id = '-none',
                         intro_date = 1920,
                         speedy = True,
-                        vehicle_life = 40)
+                        vehicle_life = 40,
+                        track_type = 'NG')
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_pax = 40,
@@ -212,7 +214,8 @@ def main():
                         replacement_id = '-none',
                         intro_date = 1980,
                         speedy = True,
-                        vehicle_life = 40)
+                        vehicle_life = 40,
+                        track_type = 'NG')
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_pax = 50,
@@ -273,7 +276,8 @@ def main():
                         replacement_id = '-none',
                         intro_date = 1860,
                         speedy = True,
-                        vehicle_life = 40)
+                        vehicle_life = 40,
+                        track_type = 'NG')
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_pax = 20,
@@ -293,7 +297,8 @@ def main():
                         replacement_id = '-none',
                         intro_date = 1910,
                         speedy = True,
-                        vehicle_life = 40)
+                        vehicle_life = 40,
+                        track_type = 'NG')
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_pax = 30,

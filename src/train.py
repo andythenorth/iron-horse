@@ -589,7 +589,6 @@ class WagonConsist(Consist):
 
         id = self.get_wagon_id(type_config.base_id, **kwargs)
         kwargs['id'] = id
-        kwargs['track_type'] = type_config.track_type
         self.wagon_generation = kwargs.get('wagon_generation', None)
         super(WagonConsist, self).__init__(**kwargs)
 

@@ -24,8 +24,7 @@ type_config_narrow_gauge = TypeConfig(base_id = 'flat_car_ng',
                     label_refits_disallowed = global_constants.disallowed_refits_by_label['non_flatcar_freight'],
                     autorefit = True,
                     default_cargo = 'STEL',
-                    default_capacity_type = 'capacity_freight',
-                    track_type = 'NG')
+                    default_capacity_type = 'capacity_freight')
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
@@ -120,6 +119,7 @@ def main():
                         replacement_id = '-none',
                         intro_date = 1860,
                         vehicle_life = 40,
+                        track_type = 'NG',
                         use_legacy_spritesheet = True)
 
     consist.add_unit(Wagon(consist = consist,
@@ -194,7 +194,8 @@ def main():
                         wagon_generation = 1,
                         replacement_id = '-none',
                         intro_date = 1860,
-                        vehicle_life = 40)
+                        vehicle_life = 40,
+                        track_type = 'NG')
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 20,
@@ -221,7 +222,8 @@ def main():
                         wagon_generation = 2,
                         replacement_id = '-none',
                         intro_date = 1920,
-                        vehicle_life = 40)
+                        vehicle_life = 40,
+                        track_type = 'NG')
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 35,
@@ -305,6 +307,7 @@ def main():
                         replacement_id = '-none',
                         intro_date = 1860,
                         vehicle_life = 40,
+                        track_type = 'NG',
                         use_legacy_spritesheet = True)
 
     consist.add_unit(Wagon(consist = consist,
@@ -333,6 +336,7 @@ def main():
                         replacement_id = '-none',
                         intro_date = 1915,
                         vehicle_life = 40,
+                        track_type = 'NG',
                         use_legacy_spritesheet = True)
 
     consist.add_unit(Wagon(consist = consist,
