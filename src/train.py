@@ -661,6 +661,31 @@ class WagonConsist(Consist):
             return cost / 8
 
 
+class OpenConsist(WagonConsist):
+    # Class properties, no particular reason, no harm either
+
+    b = 1 # bulk cargo start row
+    # cargo rows 0 indexed - 0 = first set of loaded sprites
+    cargo_graphics_mappings = {'GRVL': [b], 'IORE': [b + 1], 'CORE': [b + 2], 'AORE': [b + 3],
+                               'SAND': [b + 4], 'COAL': [b + 5], 'CLAY': [b + 6], 'SCMT': [b + 7], 'PHOS': [b + 8],
+                               'CASS': [b + 9], 'LIME': [b + 10], 'MNO2': [b + 11], 'NITR': [b + 12],
+                               'PORE': [b + 13], 'POTA': [b + 14], 'SGBT': [b + 15]}
+
+    type_config = TypeConfig(base_id = 'open_car',
+                             template = 'car_with_visible_cargo.pynml',
+                             num_cargo_rows = 17, # update this when adding cargo graphics
+                             class_refit_groups = ['all_freight'],
+                             cargo_graphics_mappings = cargo_graphics_mappings,
+                             label_refits_allowed = list(cargo_graphics_mappings.keys()),
+                             label_refits_disallowed = global_constants.disallowed_refits_by_label['non_freight_special_cases'],
+                             autorefit = True,
+                             default_cargo = 'GOOD',
+                             default_capacity_type = 'capacity_freight')
+
+    def __init__(self, **kwargs):
+        super(OpenConsist, self).__init__(self.type_config, **kwargs)
+
+
 class PassengerConsist(WagonConsist):
     # Class properties, no particular reason, no harm either
 
