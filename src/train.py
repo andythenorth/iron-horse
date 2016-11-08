@@ -661,6 +661,30 @@ class WagonConsist(Consist):
             return cost / 8
 
 
+class IntermodalConsist(WagonConsist):
+    # Class properties, no particular reason, no harm either
+
+    cargo_graphics_mappings = {}
+
+    type_config = TypeConfig(base_id = 'intermodal_flat_car',
+                    template = 'car_with_visible_cargo.pynml',
+                    num_cargo_rows = 3,
+                    generic_cargo_rows = [0, 1, 2],
+                    class_refit_groups = ['express_freight', 'packaged_freight'],
+                    cargo_graphics_mappings = cargo_graphics_mappings,
+                    #label_refits_allowed = list(cargo_graphics_mappings.keys()),
+                    # maintain other sets (e.g. Squid etc) when changing container refits
+                    label_refits_allowed = ['FRUT','WATR'],
+                    label_refits_disallowed = ['FISH','LVST','OIL_','TOUR','WOOD'],
+                    autorefit = True,
+                    default_cargo = 'GOOD',
+                    default_capacity_type = 'capacity_freight',
+                    loading_speed_multiplier = 2)
+
+    def __init__(self, **kwargs):
+        super(IntermodalConsist, self).__init__(self.type_config, **kwargs)
+
+
 class LivestockConsist(WagonConsist):
     # Class properties, no particular reason, no harm either
 

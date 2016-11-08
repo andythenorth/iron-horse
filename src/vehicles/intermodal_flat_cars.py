@@ -1,8 +1,6 @@
 import global_constants
 import graphics_processor.utils as graphics_utils
-from train import TypeConfig, WagonConsist, Wagon, GraphicsProcessorFactory
-
-cargo_graphics_mappings = {}
+from train import IntermodalConsist, Wagon, GraphicsProcessorFactory
 
 recolour_maps = graphics_utils.get_container_recolour_maps()
 graphics_options = {'template': '',
@@ -11,34 +9,17 @@ graphics_options = {'template': '',
                     'num_rows_per_unit': 2,
                     'num_unit_types': 1}
 
-type_config = TypeConfig(base_id = 'intermodal_flat_car',
-                template = 'car_with_visible_cargo.pynml',
-                num_cargo_rows = 3,
-                generic_cargo_rows = [0, 1, 2],
-                class_refit_groups = ['express_freight', 'packaged_freight'],
-                cargo_graphics_mappings = cargo_graphics_mappings,
-                #label_refits_allowed = list(cargo_graphics_mappings.keys()),
-                # maintain other sets (e.g. Squid etc) when changing container refits
-                label_refits_allowed = ['FRUT','WATR'],
-                label_refits_disallowed = ['FISH','LVST','OIL_','TOUR','WOOD'],
-                autorefit = True,
-                default_cargo = 'GOOD',
-                default_capacity_type = 'capacity_freight',
-                loading_speed_multiplier = 2)
-
-
 def main():
     #--------------- pony ----------------------------------------------------------------------
-    consist = WagonConsist(type_config = type_config,
-                        title = '[Intermodal Flat Car]',
-                        roster = 'pony',
-                        base_numeric_id = 1060,
-                        wagon_generation = 3,
-                        replacement_id = '-none',
-                        intro_date = 1960,
-                        vehicle_life = 40,
-                        speedy = True,
-                        use_legacy_spritesheet = True)
+    consist = IntermodalConsist(title = '[Intermodal Flat Car]',
+                           roster = 'pony',
+                           base_numeric_id = 1060,
+                           wagon_generation = 3,
+                           replacement_id = '-none',
+                           intro_date = 1960,
+                           vehicle_life = 40,
+                           speedy = True,
+                           use_legacy_spritesheet = True)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 48, # matched to RH and Squid containers
