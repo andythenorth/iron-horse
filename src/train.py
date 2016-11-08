@@ -661,7 +661,7 @@ class WagonConsist(Consist):
             return cost / 8
 
 
-class SuppliesCar(WagonConsist):
+class SuppliesConsist(WagonConsist):
     # Class properties, no particular reason, no harm either
 
     # cargo rows 0 indexed - 0 = first set of loaded sprites
@@ -680,10 +680,10 @@ class SuppliesCar(WagonConsist):
                             date_variant_var = 'current_year')
 
     def __init__(self, **kwargs):
-        super(SuppliesCar, self).__init__(self.type_config, **kwargs)
+        super(SuppliesConsist, self).__init__(self.type_config, **kwargs)
 
 
-class TankCar(WagonConsist):
+class TankConsist(WagonConsist):
     # Class properties, no particular reason, no harm either
     # tank cars are unrealistically autorefittable, and at no cost
     # Pikka: if people complain that it's unrealistic, tell them "don't do it then"
@@ -703,10 +703,10 @@ class TankCar(WagonConsist):
                              loading_speed_multiplier = 3)
 
     def __init__(self, **kwargs):
-        super(TankCar, self).__init__(self.type_config, **kwargs)
+        super(TankConsist, self).__init__(self.type_config, **kwargs)
 
 
-class VehicleTransporterCar(WagonConsist):
+class VehicleTransporterConsist(WagonConsist):
     # Class properties, no particular reason, no harm either
     # cargo rows 0 indexed - 0 = first set of loaded sprites
     cargo_graphics_mappings = {'VEHI': [0, 1]}
@@ -724,7 +724,7 @@ class VehicleTransporterCar(WagonConsist):
                             date_variant_var = 'current_year')
 
     def __init__(self, **kwargs):
-        super(VehicleTransporterCar, self).__init__(self.type_config, **kwargs)
+        super(VehicleTransporterConsist, self).__init__(self.type_config, **kwargs)
 
 
 class Wagon(Train):

@@ -1,9 +1,9 @@
 import global_constants
-from train import SuppliesCar, Wagon, GraphicsProcessorFactory
+from train import SuppliesConsist, Wagon, GraphicsProcessorFactory
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
-    consist = SuppliesCar(title = '[Supplies Car]',
+    consist = SuppliesConsist(title = '[Supplies Car]',
                           roster = 'pony',
                           base_numeric_id = 710,
                           wagon_generation = 1,
@@ -45,7 +45,7 @@ def main():
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
 
-    consist = SuppliesCar(title = '[Supplies Car]',
+    consist = SuppliesConsist(title = '[Supplies Car]',
                           roster = 'pony',
                           base_numeric_id = 700,
                           wagon_generation = 2,
@@ -84,7 +84,7 @@ def main():
 
     #--------------- antelope ----------------------------------------------------------------------
 
-    consist = SuppliesCar(title = '[Supplies Car]',
+    consist = SuppliesConsist(title = '[Supplies Car]',
                           roster = 'antelope',
                           base_numeric_id = 2160,
                           wagon_generation = 1,

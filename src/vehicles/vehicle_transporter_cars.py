@@ -1,11 +1,11 @@
 import global_constants
-from train import VehicleTransporterCar, Wagon, GraphicsProcessorFactory
+from train import VehicleTransporterConsist, Wagon, GraphicsProcessorFactory
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
     # no gen 1 or 2, straight to gen 3
 
-    consist = VehicleTransporterCar(title = '[Vehicle Transporter Car]',
+    consist = VehicleTransporterConsist(title = '[Vehicle Transporter Car]',
                                     roster = 'pony',
                                     base_numeric_id = 1530,
                                     wagon_generation = 3,

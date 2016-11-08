@@ -1,9 +1,9 @@
 import global_constants
-from train import TankCar, Wagon, GraphicsProcessorFactory
+from train import TankConsist, Wagon, GraphicsProcessorFactory
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
-    consist = TankCar(title = '[Tank Car]',
+    consist = TankConsist(title = '[Tank Car]',
                       roster = 'pony',
                       base_numeric_id = 630,
                       wagon_generation = 1,
@@ -30,7 +30,7 @@ def main():
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
 
-    consist = TankCar(title = '[Tank Car]',
+    consist = TankConsist(title = '[Tank Car]',
                       roster = 'pony',
                       base_numeric_id = 640,
                       wagon_generation = 2,
@@ -57,7 +57,7 @@ def main():
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
 
-    consist = TankCar(title = '[Tank Car]',
+    consist = TankConsist(title = '[Tank Car]',
                       roster = 'pony',
                       base_numeric_id = 650,
                       wagon_generation = 1,
@@ -86,7 +86,7 @@ def main():
 
 
     #--------------- llama ----------------------------------------------------------------------
-    consist = TankCar(title = '[Tank Car]',
+    consist = TankConsist(title = '[Tank Car]',
                       roster = 'llama',
                       base_numeric_id = 660,
                       wagon_generation = 1,
@@ -112,7 +112,7 @@ def main():
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
 
-    consist = TankCar(title = '[Tank Car]',
+    consist = TankConsist(title = '[Tank Car]',
                       roster = 'llama',
                       base_numeric_id = 670,
                       wagon_generation = 2,
@@ -138,7 +138,7 @@ def main():
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
 
-    consist = TankCar(title = '[Tank Car]',
+    consist = TankConsist(title = '[Tank Car]',
                       roster = 'llama',
                       base_numeric_id = 680,
                       wagon_generation = 3,
@@ -164,7 +164,7 @@ def main():
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
 
-    consist = TankCar(title = '[Tank Car]',
+    consist = TankConsist(title = '[Tank Car]',
                       roster = 'llama',
                       base_numeric_id = 690,
                       wagon_generation = 1,
@@ -191,7 +191,7 @@ def main():
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
 
-    consist = TankCar(title = '[Tank Car]',
+    consist = TankConsist(title = '[Tank Car]',
                       roster = 'llama',
                       base_numeric_id = 1360,
                       wagon_generation = 2,
@@ -219,7 +219,7 @@ def main():
 
 
     #--------------- antelope ----------------------------------------------------------------------
-    consist = TankCar(title = '[Tank Car]',
+    consist = TankConsist(title = '[Tank Car]',
                       roster = 'antelope',
                       base_numeric_id = 1670,
                       wagon_generation = 1,
@@ -246,7 +246,7 @@ def main():
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
 
-    consist = TankCar(title = '[Tank Car]',
+    consist = TankConsist(title = '[Tank Car]',
                       roster = 'antelope',
                       base_numeric_id = 1680,
                       wagon_generation = 2,
@@ -273,7 +273,7 @@ def main():
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
 
-    consist = TankCar(title = '[Tank Car]',
+    consist = TankConsist(title = '[Tank Car]',
                       roster = 'antelope',
                       base_numeric_id = 1910,
                       wagon_generation = 1,
@@ -300,7 +300,7 @@ def main():
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
 
-    consist = TankCar(title = '[Tank Car]',
+    consist = TankConsist(title = '[Tank Car]',
                       roster = 'antelope',
                       base_numeric_id = 1920,
                       wagon_generation = 2,
