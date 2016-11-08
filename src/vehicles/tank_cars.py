@@ -1,34 +1,16 @@
 import global_constants
-from train import TypeConfig, WagonConsist, Wagon, GraphicsProcessorFactory
-
-# tank cars are unrealistically autorefittable, and at no cost
-# Pikka: if people complain that it's unrealistic, tell them "don't do it then"
-# they also change livery at stations if refitted between certain cargo types <shrug>
-cargo_graphics_mappings = {'OIL_': [0], 'PETR': [1], 'RFPR': [2]}
-
-type_config_normal = TypeConfig(base_id = 'tank_car',
-                                template = 'car_with_cargo_specific_liveries.pynml',
-                                num_cargo_rows = 3, # update if more cargo graphic variations are added
-                                cargo_graphics_mappings = cargo_graphics_mappings,
-                                class_refit_groups = ['liquids'],
-                                label_refits_allowed = list(cargo_graphics_mappings.keys()),
-                                label_refits_disallowed = global_constants.disallowed_refits_by_label['edible_liquids'],
-                                autorefit = True,
-                                default_cargo = 'OIL_',
-                                default_capacity_type = 'capacity_freight',
-                                loading_speed_multiplier = 3)
+from train import TankCar, Wagon, GraphicsProcessorFactory
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
-    consist = WagonConsist(type_config = type_config_normal,
-                        title = '[Tank Car]',
-                        roster = 'pony',
-                        base_numeric_id = 630,
-                        wagon_generation = 1,
-                        replacement_id = '-none',
-                        intro_date = 1860,
-                        vehicle_life = 40,
-                        use_legacy_spritesheet = True)
+    consist = TankCar(title = '[Tank Car]',
+                      roster = 'pony',
+                      base_numeric_id = 630,
+                      wagon_generation = 1,
+                      replacement_id = '-none',
+                      intro_date = 1860,
+                      vehicle_life = 40,
+                      use_legacy_spritesheet = True)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 20,
@@ -48,15 +30,14 @@ def main():
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
 
-    consist = WagonConsist(type_config = type_config_normal,
-                        title = '[Tank Car]',
-                        roster = 'pony',
-                        base_numeric_id = 640,
-                        wagon_generation = 2,
-                        replacement_id = '-none',
-                        intro_date = 1960,
-                        vehicle_life = 40,
-                        use_legacy_spritesheet = True)
+    consist = TankCar(title = '[Tank Car]',
+                      roster = 'pony',
+                      base_numeric_id = 640,
+                      wagon_generation = 2,
+                      replacement_id = '-none',
+                      intro_date = 1960,
+                      vehicle_life = 40,
+                      use_legacy_spritesheet = True)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 55,
@@ -76,16 +57,15 @@ def main():
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
 
-    consist = WagonConsist(type_config = type_config_normal,
-                        title = '[Tank Car]',
-                        roster = 'pony',
-                        base_numeric_id = 650,
-                        wagon_generation = 1,
-                        replacement_id = '-none',
-                        intro_date = 1860,
-                        vehicle_life = 40,
-                        track_type = 'NG',
-                        use_legacy_spritesheet = True)
+    consist = TankCar(title = '[Tank Car]',
+                      roster = 'pony',
+                      base_numeric_id = 650,
+                      wagon_generation = 1,
+                      replacement_id = '-none',
+                      intro_date = 1860,
+                      vehicle_life = 40,
+                      track_type = 'NG',
+                      use_legacy_spritesheet = True)
 
     options = {'template': 'tank_car_ng_pony_gen_1_template.png'}
 
@@ -106,14 +86,13 @@ def main():
 
 
     #--------------- llama ----------------------------------------------------------------------
-    consist = WagonConsist(type_config = type_config_normal,
-                        title = '[Tank Car]',
-                        roster = 'llama',
-                        base_numeric_id = 660,
-                        wagon_generation = 1,
-                        replacement_id = '-none',
-                        intro_date = 1860,
-                        vehicle_life = 40)
+    consist = TankCar(title = '[Tank Car]',
+                      roster = 'llama',
+                      base_numeric_id = 660,
+                      wagon_generation = 1,
+                      replacement_id = '-none',
+                      intro_date = 1860,
+                      vehicle_life = 40)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 25,
@@ -133,14 +112,13 @@ def main():
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
 
-    consist = WagonConsist(type_config = type_config_normal,
-                        title = '[Tank Car]',
-                        roster = 'llama',
-                        base_numeric_id = 670,
-                        wagon_generation = 2,
-                        replacement_id = '-none',
-                        intro_date = 1920,
-                        vehicle_life = 40)
+    consist = TankCar(title = '[Tank Car]',
+                      roster = 'llama',
+                      base_numeric_id = 670,
+                      wagon_generation = 2,
+                      replacement_id = '-none',
+                      intro_date = 1920,
+                      vehicle_life = 40)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 50,
@@ -160,14 +138,13 @@ def main():
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
 
-    consist = WagonConsist(type_config = type_config_normal,
-                        title = '[Tank Car]',
-                        roster = 'llama',
-                        base_numeric_id = 680,
-                        wagon_generation = 3,
-                        replacement_id = '-none',
-                        intro_date = 1980,
-                        vehicle_life = 40)
+    consist = TankCar(title = '[Tank Car]',
+                      roster = 'llama',
+                      base_numeric_id = 680,
+                      wagon_generation = 3,
+                      replacement_id = '-none',
+                      intro_date = 1980,
+                      vehicle_life = 40)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 75,
@@ -187,15 +164,14 @@ def main():
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
 
-    consist = WagonConsist(type_config = type_config_normal,
-                        title = '[Tank Car]',
-                        roster = 'llama',
-                        base_numeric_id = 690,
-                        wagon_generation = 1,
-                        replacement_id = '-none',
-                        intro_date = 1860,
-                        vehicle_life = 40,
-                        track_type = 'NG')
+    consist = TankCar(title = '[Tank Car]',
+                      roster = 'llama',
+                      base_numeric_id = 690,
+                      wagon_generation = 1,
+                      replacement_id = '-none',
+                      intro_date = 1860,
+                      vehicle_life = 40,
+                      track_type = 'NG')
 
     options = {'template': 'tank_car_ng_llama_gen_1_template.png'}
 
@@ -215,15 +191,14 @@ def main():
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
 
-    consist = WagonConsist(type_config = type_config_normal,
-                        title = '[Tank Car]',
-                        roster = 'llama',
-                        base_numeric_id = 1360,
-                        wagon_generation = 2,
-                        replacement_id = '-none',
-                        intro_date = 1920,
-                        vehicle_life = 40,
-                        track_type = 'NG')
+    consist = TankCar(title = '[Tank Car]',
+                      roster = 'llama',
+                      base_numeric_id = 1360,
+                      wagon_generation = 2,
+                      replacement_id = '-none',
+                      intro_date = 1920,
+                      vehicle_life = 40,
+                      track_type = 'NG')
 
     options = {'template': 'tank_car_ng_llama_gen_1_template.png'}
 
@@ -244,15 +219,14 @@ def main():
 
 
     #--------------- antelope ----------------------------------------------------------------------
-    consist = WagonConsist(type_config = type_config_normal,
-                        title = '[Tank Car]',
-                        roster = 'antelope',
-                        base_numeric_id = 1670,
-                        wagon_generation = 1,
-                        replacement_id = '-none',
-                        intro_date = 1950,
-                        vehicle_life = 40,
-                        use_legacy_spritesheet = True)
+    consist = TankCar(title = '[Tank Car]',
+                      roster = 'antelope',
+                      base_numeric_id = 1670,
+                      wagon_generation = 1,
+                      replacement_id = '-none',
+                      intro_date = 1950,
+                      vehicle_life = 40,
+                      use_legacy_spritesheet = True)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 55,
@@ -272,15 +246,14 @@ def main():
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
 
-    consist = WagonConsist(type_config = type_config_normal,
-                        title = '[Tank Car]',
-                        roster = 'antelope',
-                        base_numeric_id = 1680,
-                        wagon_generation = 2,
-                        replacement_id = '-none',
-                        intro_date = 1980,
-                        vehicle_life = 40,
-                        use_legacy_spritesheet = True)
+    consist = TankCar(title = '[Tank Car]',
+                      roster = 'antelope',
+                      base_numeric_id = 1680,
+                      wagon_generation = 2,
+                      replacement_id = '-none',
+                      intro_date = 1980,
+                      vehicle_life = 40,
+                      use_legacy_spritesheet = True)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 70,
@@ -300,15 +273,14 @@ def main():
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
 
-    consist = WagonConsist(type_config = type_config_normal,
-                        title = '[Tank Car]',
-                        roster = 'antelope',
-                        base_numeric_id = 1910,
-                        wagon_generation = 1,
-                        replacement_id = '-none',
-                        intro_date = 1880,
-                        vehicle_life = 40,
-                        track_type = 'NG')
+    consist = TankCar(title = '[Tank Car]',
+                      roster = 'antelope',
+                      base_numeric_id = 1910,
+                      wagon_generation = 1,
+                      replacement_id = '-none',
+                      intro_date = 1880,
+                      vehicle_life = 40,
+                      track_type = 'NG')
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 25,
@@ -328,16 +300,15 @@ def main():
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
 
-    consist = WagonConsist(type_config = type_config_normal,
-                        title = '[Tank Car]',
-                        roster = 'antelope',
-                        base_numeric_id = 1920,
-                        wagon_generation = 2,
-                        replacement_id = '-none',
-                        intro_date = 1925,
-                        vehicle_life = 40,
-                        track_type = 'NG',
-                        use_legacy_spritesheet = True)
+    consist = TankCar(title = '[Tank Car]',
+                      roster = 'antelope',
+                      base_numeric_id = 1920,
+                      wagon_generation = 2,
+                      replacement_id = '-none',
+                      intro_date = 1925,
+                      vehicle_life = 40,
+                      track_type = 'NG',
+                      use_legacy_spritesheet = True)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 35,

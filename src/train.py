@@ -661,6 +661,50 @@ class WagonConsist(Consist):
             return cost / 8
 
 
+class TankCar(WagonConsist):
+    # Class properties, no particular reason, no harm either
+    # tank cars are unrealistically autorefittable, and at no cost
+    # Pikka: if people complain that it's unrealistic, tell them "don't do it then"
+    # they also change livery at stations if refitted between certain cargo types <shrug>
+    cargo_graphics_mappings = {'OIL_': [0], 'PETR': [1], 'RFPR': [2]}
+
+    type_config = TypeConfig(base_id = 'tank_car',
+                             template = 'car_with_cargo_specific_liveries.pynml',
+                             num_cargo_rows = 3, # update if more cargo graphic variations are added
+                             cargo_graphics_mappings = cargo_graphics_mappings,
+                             class_refit_groups = ['liquids'],
+                             label_refits_allowed = list(cargo_graphics_mappings.keys()),
+                             label_refits_disallowed = global_constants.disallowed_refits_by_label['edible_liquids'],
+                             autorefit = True,
+                             default_cargo = 'OIL_',
+                             default_capacity_type = 'capacity_freight',
+                             loading_speed_multiplier = 3)
+
+    def __init__(self, **kwargs):
+        super(TankCar, self).__init__(self.type_config, **kwargs)
+
+
+class VehicleTransporterCar(WagonConsist):
+    # Class properties, no particular reason, no harm either
+    # cargo rows 0 indexed - 0 = first set of loaded sprites
+    cargo_graphics_mappings = {'VEHI': [0, 1]}
+
+    type_config = TypeConfig(base_id = 'vehicle_transporter_car',
+                            template = 'car_with_visible_cargo.pynml',
+                            num_cargo_rows = 2,
+                            class_refit_groups = [],
+                            cargo_graphics_mappings = cargo_graphics_mappings,
+                            label_refits_allowed = list(cargo_graphics_mappings.keys()),
+                            label_refits_disallowed = [],
+                            autorefit = True,
+                            default_cargo = 'VEHI',
+                            default_capacity_type = 'capacity_freight',
+                            date_variant_var = 'current_year')
+
+    def __init__(self, **kwargs):
+        super(VehicleTransporterCar, self).__init__(self.type_config, **kwargs)
+
+
 class Wagon(Train):
     """
     Intermediate class for actual cars (wagons) to subclass from, provides some common properties.
