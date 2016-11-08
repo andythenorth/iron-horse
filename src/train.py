@@ -661,6 +661,28 @@ class WagonConsist(Consist):
             return cost / 8
 
 
+class FruitConsist(WagonConsist):
+    # Class properties, no particular reason, no harm either
+
+    fruit_car_label_refits_allowed = ['FRUT', 'BEAN', 'CASS', 'JAVA', 'NUTS']
+    cargo_graphics_mappings = {} # template needs this, but box car has zero cargo-specific graphics, all generic
+
+    type_config = TypeConfig(base_id = 'fruit_car',
+                             template = 'car_with_open_doors_during_loading.pynml',
+                             num_cargo_rows = 1, # template needs this, but box car has zero cargo-specific graphics, all generic
+                             cargo_graphics_mappings = cargo_graphics_mappings,
+                             class_refit_groups = [],
+                             label_refits_allowed = fruit_car_label_refits_allowed,
+                             label_refits_disallowed = [],
+                             autorefit = True,
+                             default_cargo = 'FRUT',
+                             default_capacity_type = 'capacity_freight',
+                             cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD)
+
+    def __init__(self, **kwargs):
+        super(FruitConsist, self).__init__(self.type_config, **kwargs)
+
+
 class IntermodalConsist(WagonConsist):
     # Class properties, no particular reason, no harm either
 
