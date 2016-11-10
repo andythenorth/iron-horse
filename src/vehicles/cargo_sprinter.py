@@ -14,8 +14,7 @@ graphics_processor_1 = GraphicsProcessorFactory('extend_spriterows_for_recoloure
 consist = EngineConsist(id = 'cargo_sprinter',
                   base_numeric_id = 100,
                   title = 'Cargo Sprinter [Diesel]',
-                  replacement_id = '-none',
-                  power = 1000,
+                      power = 1000,
                   speed = 100,
                   # cargo sprinter is hard to balance stats for, it needs to be fast, cheap, powerful
                   # after experiments, it's now balanced suited to express intermodal, reaching top speed quickly

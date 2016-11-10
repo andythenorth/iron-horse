@@ -4,7 +4,6 @@ from train import EngineConsist, DieselRailcar
 consist = EngineConsist(id = 'tin_rocket',
               base_numeric_id = 530,
               title = 'Tin Rocket [Diesel]',
-              replacement_id = '-none',
               power = 700,
               speed = 100,
               type_base_running_cost_points = -36, # dibble running costs for game balance

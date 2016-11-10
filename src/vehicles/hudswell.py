@@ -4,7 +4,6 @@ from train import EngineConsist, SteamLoco
 consist = EngineConsist(id = 'hudswell',
               base_numeric_id = 240,
               title = '2-6-4 Hudswell [Steam]',
-              replacement_id = '-none',
               track_type = 'NG',
               power = 650,
               tractive_effort_coefficient = 0.2,

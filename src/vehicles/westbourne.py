@@ -4,7 +4,6 @@ from train import EngineConsist, MetroPaxUnit
 consist = EngineConsist(id = 'westbourne',
               base_numeric_id = 360,
               title = 'Westbourne [Metro Train]',
-              replacement_id = '-none',
               track_type = 'METRO',
               power = 900,
               speed = 55,

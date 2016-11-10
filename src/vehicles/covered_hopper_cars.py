@@ -7,7 +7,6 @@ def main():
                                    roster = 'pony',
                                    base_numeric_id = 1270,
                                    wagon_generation = 1,
-                                   replacement_id = '-none',
                                    intro_date = 1922,
                                    vehicle_life = 40,
                                    use_legacy_spritesheet = True)
@@ -32,7 +31,6 @@ def main():
                                    roster = 'pony',
                                    base_numeric_id = 1230,
                                    wagon_generation = 2,
-                                   replacement_id = '-none',
                                    intro_date = 1955,
                                    vehicle_life = 40,
                                    use_legacy_spritesheet = True)
@@ -57,7 +55,6 @@ def main():
                                    roster = 'pony',
                                    base_numeric_id = 1240,
                                    wagon_generation = 3,
-                                   replacement_id = '-none',
                                    intro_date = 1985,
                                    vehicle_life = 40)
 
@@ -82,7 +79,6 @@ def main():
                                    roster = 'llama',
                                    base_numeric_id = 1250,
                                    wagon_generation = 2,
-                                   replacement_id = '-none',
                                    intro_date = 1955,
                                    vehicle_life = 40)
 
@@ -106,7 +102,6 @@ def main():
                                    roster = 'llama',
                                    base_numeric_id = 1260,
                                    wagon_generation = 3,
-                                   replacement_id = '-none',
                                    intro_date = 1985,
                                    vehicle_life = 40)
 

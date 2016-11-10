@@ -7,8 +7,7 @@ def main():
                              roster = 'pony',
                              base_numeric_id = 1280,
                              wagon_generation = 1,
-                             replacement_id = '-none',
-                             intro_date = 1860,
+                                            intro_date = 1860,
                              vehicle_life = 40,
                              speedy = True,
                              use_legacy_spritesheet = True)
@@ -27,8 +26,7 @@ def main():
                              roster = 'pony',
                              base_numeric_id = 1290,
                              wagon_generation = 1,
-                             replacement_id = '-none',
-                             intro_date = 1860,
+                                            intro_date = 1860,
                              vehicle_life = 40,
                              track_type = 'NG',
                              use_legacy_spritesheet = True)
@@ -47,8 +45,7 @@ def main():
                              roster = 'llama',
                              base_numeric_id = 1300,
                              wagon_generation = 1,
-                             replacement_id = '-none',
-                             intro_date = 1860,
+                                            intro_date = 1860,
                              vehicle_life = 40,
                              speedy = True)
 
@@ -67,8 +64,7 @@ def main():
                              roster = 'antelope',
                              base_numeric_id = 1780,
                              wagon_generation = 1,
-                             replacement_id = '-none',
-                             intro_date = 1950,
+                                            intro_date = 1950,
                              vehicle_life = 50,
                              speedy = True,
                              use_legacy_spritesheet = True)
@@ -87,8 +83,7 @@ def main():
                              roster = 'antelope',
                              base_numeric_id = 1880,
                              wagon_generation = 1,
-                             replacement_id = '-none',
-                             intro_date = 1860,
+                                            intro_date = 1860,
                              vehicle_life = 50,
                              speedy = True,
                              track_type = 'NG',

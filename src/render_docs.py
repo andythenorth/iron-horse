@@ -96,7 +96,6 @@ class DocHelper(object):
             result = self.fetch_prop(result, 'TE coefficient', vehicle.tractive_effort_coefficient)
             result = self.fetch_prop(result, 'Intro Date', vehicle.intro_date)
             result = self.fetch_prop(result, 'Vehicle Life', vehicle.vehicle_life)
-            result = self.fetch_prop(result, 'Replacement ID', vehicle.replacement_id)
             #result = self.fetch_prop(result, 'Capacity Pax', vehicle.capacity_pax)
             #result = self.fetch_prop(result, 'Capacity Mail', vehicle.capacity_mail)
             #result = self.fetch_prop(result, 'Capacity Freight', vehicle.capacity_freight)

@@ -7,8 +7,7 @@ def main():
                            roster = 'pony',
                            base_numeric_id = 1000,
                            wagon_generation = 1,
-                           replacement_id = '-none',
-                           intro_date = 1860,
+                                        intro_date = 1860,
                            vehicle_life = 40)
 
     consist.add_unit(CombineCar(consist = consist,

@@ -4,7 +4,6 @@ from train import EngineConsist, DieselLoco
 consist = EngineConsist(id = 'big_boat',
               base_numeric_id = 1600,
               title = 'Big Boat [Diesel]',
-              replacement_id = '-none',
               power = 4500,
               tractive_effort_coefficient = 0.35, # dibble up TE, modern diesels can cheat adhesion using wheel slip
               speed = 75,

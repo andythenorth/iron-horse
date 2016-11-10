@@ -4,7 +4,6 @@ from train import EngineConsist, ElectricLoco
 consist = EngineConsist(id = 'screamer',
               base_numeric_id = 450,
               title = 'Screamer [Electric]',
-              replacement_id = '-none',
               power = 6400,
               speed = 155,
               type_base_buy_cost_points = 71, # dibble buy cost for game balance

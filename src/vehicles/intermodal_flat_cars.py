@@ -15,8 +15,7 @@ def main():
                            roster = 'pony',
                            base_numeric_id = 1060,
                            wagon_generation = 3,
-                           replacement_id = '-none',
-                           intro_date = 1960,
+                                        intro_date = 1960,
                            vehicle_life = 40,
                            speedy = True,
                            use_legacy_spritesheet = True)

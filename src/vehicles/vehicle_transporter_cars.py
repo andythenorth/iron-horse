@@ -9,8 +9,7 @@ def main():
                                     roster = 'pony',
                                     base_numeric_id = 1530,
                                     wagon_generation = 3,
-                                    replacement_id = '-none',
-                                    intro_date = 1960,
+                                     intro_date = 1960,
                                     vehicle_life = 40,
                                     use_legacy_spritesheet = True)
 

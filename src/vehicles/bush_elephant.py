@@ -4,7 +4,6 @@ from train import EngineConsist, SteamLoco, SteamLocoTender
 consist = EngineConsist(id = 'bush_elephant',
               base_numeric_id = 2000,
               title = '2-6-6-2 Bush Elephant [Steam]',
-              replacement_id = '-none',
               power = 2200,
               track_type = 'NG',
               speed = 45,

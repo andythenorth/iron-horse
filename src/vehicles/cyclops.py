@@ -4,7 +4,6 @@ from train import EngineConsist, DieselLoco
 consist = EngineConsist(id = 'cyclops',
               base_numeric_id = 130,
               title = 'Cyclops [Diesel]',
-              replacement_id = '-none',
               power = 3200,
               speed = 125,
               buy_cost = 135,

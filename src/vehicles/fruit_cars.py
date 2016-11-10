@@ -7,8 +7,7 @@ def main():
                            roster = 'antelope',
                            base_numeric_id = 2140,
                            wagon_generation = 1,
-                           replacement_id = '-none',
-                           intro_date = 1860,
+                                        intro_date = 1860,
                            vehicle_life = 40,
                            track_type = 'NG')
 
@@ -34,8 +33,7 @@ def main():
                            roster = 'antelope',
                            base_numeric_id = 2170,
                            wagon_generation = 2,
-                           replacement_id = '-none',
-                           intro_date = 1915,
+                                        intro_date = 1915,
                            vehicle_life = 40,
                            track_type = 'NG')
 
@@ -61,8 +59,7 @@ def main():
                            roster = 'antelope',
                            base_numeric_id = 2180,
                            wagon_generation = 3,
-                           replacement_id = '-none',
-                           intro_date = 1970,
+                                        intro_date = 1970,
                            vehicle_life = 40,
                            track_type = 'NG')
 

@@ -4,7 +4,6 @@ from train import EngineConsist, ElectricLoco
 consist = EngineConsist(id = 'estados',
               base_numeric_id = 190,
               title = 'Estados Boxcab [Electric]',
-              replacement_id = '-none',
               power = 1450,
               speed = 75,
               type_base_buy_cost_points = 35, # dibble buy cost for game balance

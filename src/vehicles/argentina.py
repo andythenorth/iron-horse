@@ -4,7 +4,6 @@ from train import EngineConsist, SteamLoco, SteamLocoTender
 consist = EngineConsist(id = 'argentina',
               base_numeric_id = 40,
               title = '4-8-0 Argentina [Steam]',
-              replacement_id = '-none',
               power = 1800,
               speed = 50,
               vehicle_life = 40,

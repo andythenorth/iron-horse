@@ -4,7 +4,6 @@ from train import EngineConsist, DieselLoco
 consist = EngineConsist(id = 'vulcan',
               base_numeric_id = 420,
               title = 'Vulcan [Diesel]',
-              replacement_id = '-none',
               power = 2700,
               speed = 100,
               type_base_buy_cost_points = 25, # dibble buy cost for game balance

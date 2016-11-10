@@ -4,7 +4,6 @@ from train import EngineConsist, DieselLoco
 consist = EngineConsist(id = 'justicialista',
               base_numeric_id = 250,
               title = 'Justicialista [Diesel]',
-              replacement_id = '-none',
               power = 5880, # yes, really, it's high powered
               speed = 85,
               vehicle_life = 20, # but short lived eh?

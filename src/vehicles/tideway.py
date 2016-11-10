@@ -4,7 +4,6 @@ from train import EngineConsist, MetroCargoUnit
 consist = EngineConsist(id = 'tideway',
               base_numeric_id = 2200,
               title = 'Tideway [Metro Train]',
-              replacement_id = '-none',
               track_type = 'METRO',
               power = 1100,
               speed = 65,

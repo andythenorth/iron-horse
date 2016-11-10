@@ -4,7 +4,6 @@ from train import EngineConsist, DieselLoco
 consist = EngineConsist(id = 'little_bear',
               base_numeric_id = 280,
               title = 'Little Bear [Diesel]',
-              replacement_id = '-none',
               power = 850,
               speed = 85,
               type_base_buy_cost_points = 0, # dibble buy cost for game balance

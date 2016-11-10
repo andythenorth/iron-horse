@@ -4,7 +4,6 @@ from train import EngineConsist, ElectroDieselLoco
 consist = EngineConsist(id = 'double_juice',
               base_numeric_id = 160,
               title = 'Double Juice [ElectroDiesel]',
-              replacement_id = '-none',
               power = 6750,
               tractive_effort_coefficient = 0.4, #dibble for game balance, assume super-slip control
               speed = 100,

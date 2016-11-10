@@ -4,7 +4,6 @@ from train import EngineConsist, MetroCargoUnit
 consist = EngineConsist(id = 'longwater',
               base_numeric_id = 290,
               title = 'Longwater [Metro Train]',
-              replacement_id = '-none',
               track_type = 'METRO',
               power = 600,
               speed = 40,

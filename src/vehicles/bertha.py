@@ -4,7 +4,6 @@ from train import EngineConsist, SteamLoco, SteamLocoTender
 consist = EngineConsist(id = 'bertha',
               base_numeric_id = 70,
               title = '0-10-0 Big Bertha [Steam]',
-              replacement_id = '-none',
               power = 1650,
               tractive_effort_coefficient = 0.33,
               speed = 45,

@@ -4,7 +4,6 @@ from train import EngineConsist, SteamLoco, SteamLocoTender
 consist = EngineConsist(id = 'hofman',
               base_numeric_id = 1840,
               title = '2-6-2+2-6-2 Hofman [Steam]',
-              replacement_id = '-none',
               tractive_effort_coefficient = 0.27, # dibble for game balance
               power = 750,
               track_type = 'NG',

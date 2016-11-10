@@ -4,7 +4,6 @@ from train import EngineConsist, ElectricLoco
 consist = EngineConsist(id = 'electra',
               base_numeric_id = 170,
               title = 'Electra [Electric]',
-              replacement_id = '-none',
               power = 2400,
               tractive_effort_coefficient = 0.32,
               speed = 90,

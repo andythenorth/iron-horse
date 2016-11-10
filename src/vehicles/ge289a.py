@@ -4,7 +4,6 @@ from train import EngineConsist, ElectricLoco
 consist = EngineConsist(id = 'ge289a',
               base_numeric_id = 1460,
               title = 'GE 289a Boxcab [Electric]',
-              replacement_id = '-none',
               power = 1200,
               track_type = 'NG',
               speed = 45,

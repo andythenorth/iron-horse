@@ -35,7 +35,6 @@ class Consist(object):
         self.title = kwargs.get('title', None)
         self.base_numeric_id = kwargs.get('base_numeric_id', None)
         self.intro_date = kwargs.get('intro_date', None)
-        self.replacement_id = kwargs.get('replacement_id', None)
         self.vehicle_life = kwargs.get('vehicle_life', None)
         self.power = kwargs.get('power', 0)
         self.track_type = kwargs.get('track_type', 'RAIL')

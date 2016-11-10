@@ -4,7 +4,6 @@ from train import EngineConsist, DieselRailcar
 consist = EngineConsist(id = 'savannah_slammer',
               base_numeric_id = 1540,
               title = 'Savannah Slammer [Diesel]',
-              replacement_id = '-none',
               power = 500,
               speed = 75,
               type_base_running_cost_points = -32, # dibble running costs for game balance

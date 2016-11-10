@@ -24,8 +24,7 @@ def main():
                           roster = 'pony',
                           base_numeric_id = 820,
                           wagon_generation = 1,
-                          replacement_id = '-none',
-                          intro_date = 1860,
+                                      intro_date = 1860,
                           vehicle_life = 40,
                           use_legacy_spritesheet = True)
 
@@ -51,8 +50,7 @@ def main():
                           roster = 'pony',
                           base_numeric_id = 830,
                           wagon_generation = 2,
-                          replacement_id = '-none',
-                          intro_date = 1950,
+                                      intro_date = 1950,
                           vehicle_life = 40,
                           use_legacy_spritesheet = True)
 
@@ -78,8 +76,7 @@ def main():
                           roster = 'pony',
                           base_numeric_id = 840,
                           wagon_generation = 3,
-                          replacement_id = '-none',
-                          intro_date = 1997,
+                                      intro_date = 1997,
                           vehicle_life = 40)
 
     consist.add_unit(Wagon(consist = consist,
@@ -104,8 +101,7 @@ def main():
                           roster = 'pony',
                           base_numeric_id = 850,
                           wagon_generation = 1,
-                          replacement_id = '-none',
-                          intro_date = 1860,
+                                      intro_date = 1860,
                           vehicle_life = 40,
                           track_type = 'NG',
                           use_legacy_spritesheet = True)
@@ -133,8 +129,7 @@ def main():
                           roster = 'llama',
                           base_numeric_id = 860,
                           wagon_generation = 1,
-                          replacement_id = '-none',
-                          intro_date = 1860,
+                                      intro_date = 1860,
                           vehicle_life = 40)
 
     consist.add_unit(Wagon(consist = consist,
@@ -159,8 +154,7 @@ def main():
                           roster = 'llama',
                           base_numeric_id = 1330,
                           wagon_generation = 2,
-                          replacement_id = '-none',
-                          intro_date = 1920,
+                                      intro_date = 1920,
                           vehicle_life = 40)
 
     consist.add_unit(Wagon(consist = consist,
@@ -185,8 +179,7 @@ def main():
                           roster = 'llama',
                           base_numeric_id = 870,
                           wagon_generation = 1,
-                          replacement_id = '-none',
-                          intro_date = 1860,
+                                      intro_date = 1860,
                           vehicle_life = 40,
                           track_type = 'NG')
 
@@ -212,8 +205,7 @@ def main():
                           roster = 'llama',
                           base_numeric_id = 1320,
                           wagon_generation = 2,
-                          replacement_id = '-none',
-                          intro_date = 1920,
+                                      intro_date = 1920,
                           vehicle_life = 40,
                           track_type = 'NG')
 
@@ -240,8 +232,7 @@ def main():
                           roster = 'antelope',
                           base_numeric_id = 1760,
                           wagon_generation = 1,
-                          replacement_id = '-none',
-                          intro_date = 1950,
+                                      intro_date = 1950,
                           vehicle_life = 40,
                           use_legacy_spritesheet = True)
 
@@ -267,8 +258,7 @@ def main():
                           roster = 'antelope',
                           base_numeric_id = 1770,
                           wagon_generation = 2,
-                          replacement_id = '-none',
-                          intro_date = 1980,
+                                      intro_date = 1980,
                           vehicle_life = 40,
                           use_legacy_spritesheet = True)
 
@@ -294,8 +284,7 @@ def main():
                           roster = 'antelope',
                           base_numeric_id = 2090,
                           wagon_generation = 1,
-                          replacement_id = '-none',
-                          intro_date = 1860,
+                                      intro_date = 1860,
                           vehicle_life = 40,
                           track_type = 'NG')
 
@@ -321,8 +310,7 @@ def main():
                           roster = 'antelope',
                           base_numeric_id = 1830,
                           wagon_generation = 2,
-                          replacement_id = '-none',
-                          intro_date = 1915,
+                                      intro_date = 1915,
                           vehicle_life = 40,
                           track_type = 'NG',
                           use_legacy_spritesheet = True)
@@ -349,8 +337,7 @@ def main():
                           roster = 'antelope',
                           base_numeric_id = 1820,
                           wagon_generation = 3,
-                          replacement_id = '-none',
-                          intro_date = 1970,
+                                      intro_date = 1970,
                           vehicle_life = 40,
                           track_type = 'NG',
                           use_legacy_spritesheet = True)

@@ -4,7 +4,6 @@ from train import EngineConsist, DieselLoco
 consist = EngineConsist(id = 'astarsa',
               base_numeric_id = 50,
               title = 'Astarsa [Diesel]',
-              replacement_id = '-none',
               power = 1600,
               speed = 65,
               type_base_buy_cost_points = -10, # dibble buy cost for game balance

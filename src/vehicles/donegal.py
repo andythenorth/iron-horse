@@ -4,7 +4,6 @@ from train import EngineConsist, DieselRailcar
 consist = EngineConsist(id = 'donegal',
               base_numeric_id = 140,
               title = 'Donnegal [Diesel]',
-              replacement_id = '-none',
               track_type = 'NG',
               power = 250,
               speed = 55,

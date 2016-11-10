@@ -4,7 +4,6 @@ from train import EngineConsist, DieselLoco
 consist = EngineConsist(id = 'gridiron',
               base_numeric_id = 220,
               title = 'Gridiron [Diesel]',
-              replacement_id = '-none',
               power = 3700,
               tractive_effort_coefficient = 0.4, #dibble for game balance, assume super-slip control
               speed = 85,

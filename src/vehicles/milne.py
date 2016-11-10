@@ -4,7 +4,6 @@ from train import EngineConsist, SteamLoco
 consist = EngineConsist(id = 'milne',
               base_numeric_id = 2050,
               title = '4-8-2 Milne [Steam]',
-              replacement_id = '-none',
               power = 600,
               track_type = 'NG',
               speed = 55,

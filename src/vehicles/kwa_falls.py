@@ -4,7 +4,6 @@ from train import EngineConsist, SteamLoco, SteamLocoTender
 consist = EngineConsist(id = 'kwa_falls',
               base_numeric_id = 1970,
               title = '2-8-2 Kwa Falls [Steam]',
-              replacement_id = '-none',
               power = 1800,
               tractive_effort_coefficient = 0.19,
               track_type = 'NG',

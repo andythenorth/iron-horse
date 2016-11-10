@@ -4,7 +4,6 @@ from train import EngineConsist, SteamLoco
 consist = EngineConsist(id = 'chaplin',
               base_numeric_id = 110,
               title = '2-4-0 Chaplin [Steam]',
-              replacement_id = '-none',
               power = 450,
               tractive_effort_coefficient = 0.2,
               speed = 60,

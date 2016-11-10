@@ -4,7 +4,6 @@ from train import EngineConsist, DieselLoco
 consist = EngineConsist(id = 'smokey_mountain',
               base_numeric_id = 1610,
               title = 'Smokey Mountain [Diesel]',
-              replacement_id = '-none',
               power = 3200,
               type_base_buy_cost_points = 24, # dibble buy cost for game balance
               type_base_running_cost_points = 20, # dibble run cost for game balance

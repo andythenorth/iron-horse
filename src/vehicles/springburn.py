@@ -4,7 +4,6 @@ from train import EngineConsist, DieselLoco
 consist = EngineConsist(id = 'springburn',
               base_numeric_id = 1790,
               title = 'Springburn [Diesel]',
-              replacement_id = '-none',
               power = 1200,
               type_base_running_cost_points = -20, # dibble run cost for game balance
               speed = 55,

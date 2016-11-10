@@ -4,7 +4,6 @@ from train import EngineConsist, SteamLoco
 consist = EngineConsist(id = 'suburban',
               base_numeric_id = 500,
               title = '2-6-2 Suburban [Steam]',
-              replacement_id = '-none',
               power = 650,
               tractive_effort_coefficient = 0.2,
               speed = 70,

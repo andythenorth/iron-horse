@@ -4,7 +4,6 @@ from train import EngineConsist, DieselLoco
 consist = EngineConsist(id = 'walker',
               base_numeric_id = 430,
               title = 'Walker [Diesel]',
-              replacement_id = '-none',
               power = 900,
               track_type = 'NG',
               speed = 55,
