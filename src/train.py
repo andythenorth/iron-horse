@@ -429,7 +429,6 @@ class TypeConfig(object):
     # declared once per type
     # passed to the type's consists and units
     def __init__(self, base_id, template, **kwargs):
-        print(base_id)
         self.base_id = base_id
         self.template = template
         self.track_type = kwargs.get('track_type', 'RAIL')
@@ -716,6 +715,23 @@ class CombineConsist(WagonConsist):
         super(CombineConsist, self).__init__(self.type_config, **kwargs)
 
 
+class CoveredHopperConsist(WagonConsist):
+    # Class properties, no particular reason, no harm either
+
+    type_config = TypeConfig(base_id = 'covered_hopper_car',
+                             template = 'train.pynml',
+                             class_refit_groups = ['covered_hopper_freight'],
+                             label_refits_allowed = ['GRAI', 'WHEA', 'MAIZ', 'FOOD', 'SUGR', 'FMSP', 'RFPR', 'CLAY', 'BDMT', 'BEAN', 'NITR', 'RUBR', 'SAND'],
+                             label_refits_disallowed = [],
+                             autorefit = True,
+                             default_cargo = 'GRAI',
+                             default_capacity_type = 'capacity_freight',
+                             loading_speed_multiplier = 2)
+
+    def __init__(self, **kwargs):
+        super(CoveredHopperConsist, self).__init__(self.type_config, **kwargs)
+
+
 class EdiblesTankConsist(WagonConsist):
     # Class properties, no particular reason, no harm either
 
@@ -734,6 +750,27 @@ class EdiblesTankConsist(WagonConsist):
 
     def __init__(self, **kwargs):
         super(EdiblesTankConsist, self).__init__(self.type_config, **kwargs)
+
+
+class FlatConsist(WagonConsist):
+    # Class properties, no particular reason, no harm either
+
+    # cargo rows 0 indexed - 0 = first set of loaded sprites
+    cargo_graphics_mappings = {'STEL': [1, 2, 3], 'WOOD': [4], 'WDPR': [5], 'ENSP': [6], 'FMSP': [6], 'MNSP': [6], 'GOOD': [0, 6]}
+
+    type_config = TypeConfig(base_id = 'flat_car',
+                                    template = 'car_with_visible_cargo.pynml',
+                                    num_cargo_rows = 7,
+                                    class_refit_groups = ['flatcar_freight'],
+                                    cargo_graphics_mappings = cargo_graphics_mappings,
+                                    label_refits_allowed = list(cargo_graphics_mappings.keys()),
+                                    label_refits_disallowed = global_constants.disallowed_refits_by_label['non_flatcar_freight'],
+                                    autorefit = True,
+                                    default_cargo = 'STEL',
+                                    default_capacity_type = 'capacity_freight')
+
+    def __init__(self, **kwargs):
+        super(FlatConsist, self).__init__(self.type_config, **kwargs)
 
 
 class FruitConsist(WagonConsist):
@@ -756,6 +793,34 @@ class FruitConsist(WagonConsist):
 
     def __init__(self, **kwargs):
         super(FruitConsist, self).__init__(self.type_config, **kwargs)
+
+
+class HopperConsist(WagonConsist):
+    # Class properties, no particular reason, no harm either
+
+    # cargo rows 0 indexed - 0 = first set of loaded sprites
+    # GRVL is in first position as it is re-used for generic unknown cargos
+    # hoppers *do* transport SCMT in this set, realism is not relevant here, went back and forth on this a few times :P
+    cargo_graphics_mappings = {'GRVL': [0], 'IORE': [1], 'CORE': [2], 'AORE': [3],
+                               'SAND': [4], 'COAL': [5], 'CLAY': [6], 'SCMT': [7], 'PHOS': [8],
+                               'CASS': [9], 'LIME': [10], 'MNO2': [11], 'NITR': [12],
+                               'PORE': [13], 'POTA': [14], 'SGBT': [15]}
+
+
+    type_config = TypeConfig(base_id = 'hopper_car',
+                        template = 'car_with_visible_cargo.pynml',
+                        num_cargo_rows = 16, # update if more cargo graphic variations are added
+                        class_refit_groups = ['hopper_freight'],
+                        cargo_graphics_mappings = cargo_graphics_mappings,
+                        label_refits_allowed = list(cargo_graphics_mappings.keys()),
+                        label_refits_disallowed = global_constants.disallowed_refits_by_label['non_hopper_freight'],
+                        autorefit = True,
+                        default_cargo = 'COAL',
+                        default_capacity_type = 'capacity_freight',
+                        loading_speed_multiplier = 2)
+
+    def __init__(self, **kwargs):
+        super(HopperConsist, self).__init__(self.type_config, **kwargs)
 
 
 class IntermodalConsist(WagonConsist):
