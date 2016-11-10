@@ -1,5 +1,5 @@
 import global_constants
-from train import VehicleTransporterConsist, Wagon, GraphicsProcessorFactory
+from train import VehicleTransporterConsist, Wagon
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
@@ -18,14 +18,12 @@ def main():
                             weight = 12,
                             vehicle_length = 7))
 
-    options = {'template': 'vehicle_transporter_car_pony_gen_3_template.png'}
-
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=0,
-                           graphics_processor=GraphicsProcessorFactory('pass_through_pipeline', options))
+                           graphics_processor=consist.graphics_processors['pass_through'])
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=1,
-                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
+                           graphics_processor=consist.graphics_processors['swap_company_colours'])
