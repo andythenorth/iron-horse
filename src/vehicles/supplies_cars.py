@@ -7,7 +7,7 @@ def main():
                           roster = 'pony',
                           base_numeric_id = 710,
                           wagon_generation = 1,
-                                      intro_date = 1860,
+                          intro_date = 1860,
                           vehicle_life = 40,
                           use_legacy_spritesheet = True)
 
@@ -48,7 +48,7 @@ def main():
                           roster = 'pony',
                           base_numeric_id = 700,
                           wagon_generation = 2,
-                                      intro_date = 1960,
+                          intro_date = 1960,
                           vehicle_life = 40,)
 
     consist.add_unit(Wagon(consist = consist,
@@ -86,7 +86,7 @@ def main():
                           roster = 'antelope',
                           base_numeric_id = 2160,
                           wagon_generation = 1,
-                                      intro_date = 1860,
+                          intro_date = 1860,
                           vehicle_life = 40,
                           use_legacy_spritesheet = True)
 
