@@ -1073,7 +1073,7 @@ class TankConsist(WagonConsist):
         self.default_capacity_type = 'capacity_freight'
         self.loading_speed_multiplier = 3
 
-    # !! tank cars need a different graphics processor, dedicated to recolouring livery per supported cargo
+    # !! tank cars will need a different graphics processor, dedicated to recolouring livery per supported cargo
     @property
     def graphics_processors(self):
         options = {'template': self.id + '_template_0.png'}
