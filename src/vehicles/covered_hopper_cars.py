@@ -1,5 +1,5 @@
 import global_constants
-from train import CoveredHopperConsist, Wagon, GraphicsProcessorFactory
+from train import CoveredHopperConsist, Wagon
 
 def main():
     #--------------- pony ----------------------------------------------------------------------

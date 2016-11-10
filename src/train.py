@@ -746,6 +746,13 @@ class EdiblesTankConsist(WagonConsist):
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
         self.loading_speed_multiplier = 2
 
+    @property
+    def graphics_processors(self):
+        options = {'template': self.id + '_template.png'}
+        pass_through = GraphicsProcessorFactory('pass_through_pipeline', options)
+        swap_company_colours = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
+        return {'pass_through': pass_through, 'swap_company_colours': swap_company_colours}
+
 
 class FlatConsist(WagonConsist):
     """
@@ -765,6 +772,13 @@ class FlatConsist(WagonConsist):
         self.default_cargo = 'STEL'
         self.default_capacity_type = 'capacity_freight'
 
+    @property
+    def graphics_processors(self):
+        options = {'template': self.id + '_template.png'}
+        pass_through = GraphicsProcessorFactory('pass_through_pipeline', options)
+        swap_company_colours = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
+        return {'pass_through': pass_through, 'swap_company_colours': swap_company_colours}
+
 
 class FruitConsist(WagonConsist):
     """
@@ -783,6 +797,13 @@ class FruitConsist(WagonConsist):
         self.default_cargo = 'FRUT'
         self.default_capacity_type = 'capacity_freight'
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
+
+    @property
+    def graphics_processors(self):
+        options = {'template': self.id + '_template.png'}
+        pass_through = GraphicsProcessorFactory('pass_through_pipeline', options)
+        swap_company_colours = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
+        return {'pass_through': pass_through, 'swap_company_colours': swap_company_colours}
 
 
 class HopperConsist(WagonConsist):
@@ -945,6 +966,13 @@ class ReeferConsist(WagonConsist):
         self.default_cargo = 'FOOD'
         self.default_capacity_type = 'capacity_freight'
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
+
+    @property
+    def graphics_processors(self):
+        options = {'template': self.id + '_template.png'}
+        pass_through = GraphicsProcessorFactory('pass_through_pipeline', options)
+        swap_company_colours = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
+        return {'pass_through': pass_through, 'swap_company_colours': swap_company_colours}
 
 
 class SuppliesConsist(WagonConsist):

@@ -1,5 +1,5 @@
 import global_constants
-from train import BoxConsist, BoxCar, GraphicsProcessorFactory
+from train import BoxConsist, BoxCar
 
 def main():
     #--------------- pony ----------------------------------------------------------------------

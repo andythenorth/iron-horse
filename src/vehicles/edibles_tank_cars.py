@@ -1,5 +1,5 @@
 import global_constants
-from train import EdiblesTankConsist, Wagon, GraphicsProcessorFactory
+from train import EdiblesTankConsist, Wagon
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
@@ -17,17 +17,16 @@ def main():
                             weight = 12,
                             vehicle_length = 5))
 
-    options = {'template': 'edibles_tank_car_pony_gen_1_template.png'}
-
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=0,
-                           graphics_processor=GraphicsProcessorFactory('pass_through_pipeline', options))
+                           graphics_processor=consist.graphics_processors['pass_through'])
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=1,
-                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
+                           graphics_processor=consist.graphics_processors['swap_company_colours'])
+
 
     # no gen 2 for edibles tank cars - straight to gen 3
 
@@ -45,17 +44,15 @@ def main():
                             weight = 30,
                             vehicle_length = 8))
 
-    options = {'template': 'edibles_tank_car_pony_gen_3_template.png'}
-
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=0,
-                           graphics_processor=GraphicsProcessorFactory('pass_through_pipeline', options))
+                           graphics_processor=consist.graphics_processors['pass_through'])
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=1,
-                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
+                           graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
     #--------------- llama ----------------------------------------------------------------------
@@ -71,17 +68,15 @@ def main():
                             weight = 12,
                             vehicle_length = 6))
 
-    options = {'template': 'edibles_tank_car_llama_gen_1_template.png'}
-
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=0,
-                           graphics_processor=GraphicsProcessorFactory('pass_through_pipeline', options))
+                           graphics_processor=consist.graphics_processors['pass_through'])
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=1,
-                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
+                           graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
     # no gen 2 for edibles tank cars - straight to gen 3
@@ -99,17 +94,15 @@ def main():
                             weight = 30,
                             vehicle_length = 8))
 
-    options = {'template': 'edibles_tank_car_llama_gen_3_template.png'}
-
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=0,
-                           graphics_processor=GraphicsProcessorFactory('pass_through_pipeline', options))
+                           graphics_processor=consist.graphics_processors['pass_through'])
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=1,
-                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
+                           graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
     #--------------- antelope ----------------------------------------------------------------------
@@ -125,17 +118,15 @@ def main():
                             weight = 15,
                             vehicle_length = 6))
 
-    options = {'template': 'edibles_tank_car_antelope_gen_1_template.png'}
-
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=0,
-                           graphics_processor=GraphicsProcessorFactory('pass_through_pipeline', options))
+                           graphics_processor=consist.graphics_processors['pass_through'])
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=1,
-                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
+                           graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
     consist = EdiblesTankConsist(title = '[Edibles Tank Car]',
@@ -152,16 +143,13 @@ def main():
                             weight = 30,
                             vehicle_length = 8))
 
-    options = {'template': 'edibles_tank_car_antelope_gen_2_template.png'}
-
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=0,
-                           graphics_processor=GraphicsProcessorFactory('pass_through_pipeline', options))
+                           graphics_processor=consist.graphics_processors['pass_through'])
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=1,
-                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
-
+                           graphics_processor=consist.graphics_processors['swap_company_colours'])
 
