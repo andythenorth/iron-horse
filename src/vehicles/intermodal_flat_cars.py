@@ -1,13 +1,5 @@
 import global_constants
-import graphics_processor.utils as graphics_utils
-from train import IntermodalConsist, Wagon, GraphicsProcessorFactory
-
-recolour_maps = graphics_utils.get_container_recolour_maps()
-graphics_options = {'template': '',
-                    'recolour_maps': (recolour_maps),
-                    'copy_block_top_offset': 30,
-                    'num_rows_per_unit': 2,
-                    'num_unit_types': 1}
+from train import IntermodalConsist, Wagon
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
@@ -25,12 +17,10 @@ def main():
                             weight = 20,
                             vehicle_length = 8))
 
-    graphics_options['template'] = 'intermodal_flat_car_pony_gen_3_template_0.png'
-
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=0,
-                           graphics_processor = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options))
+                           graphics_processor = consist.graphics_processors[0])
 
 
     #--------------- llama ----------------------------------------------------------------------

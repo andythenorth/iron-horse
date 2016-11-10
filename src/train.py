@@ -870,6 +870,16 @@ class IntermodalConsist(WagonConsist):
         self.default_capacity_type = 'capacity_freight'
         self.loading_speed_multiplier = 2
 
+    @property
+    def graphics_processors(self):
+        recolour_maps = graphics_utils.get_container_recolour_maps()
+        graphics_options = {'template': self.id + '_template_0.png',
+                            'recolour_maps': (recolour_maps),
+                            'copy_block_top_offset': 30,
+                            'num_rows_per_unit': 2,
+                            'num_unit_types': 1}
+        return [GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options)]
+
 
 class LivestockConsist(WagonConsist):
     """
