@@ -563,13 +563,13 @@ class EngineConsist(Consist):
 
 class WagonConsist(Consist):
     """
-    Intermediate class for wagon consists to subclass from, provides properties commonly used in subclasses.
+    Intermediate class for wagon consists to subclass from, provides sparse properties, most are declared in subclasses.
     """
     def __init__(self, speedy=False, **kwargs):
         # self.base_id = '' # provide in subclass
         # self.template = '' # provide in subclass
         # self.default_cargo = '' # provide in subclass
-
+        # some of these are probably redundant, as they need to be handled in the subclass
         self.track_type = kwargs.get('track_type', 'RAIL') # !! might be redundant? needs cleaning up ??
         self.num_cargo_rows = kwargs.get('num_cargo_rows', None)
         self.generic_cargo_rows = kwargs.get('generic_cargo_rows', [0]) # optional, the rows to use if no cargo label is matched
