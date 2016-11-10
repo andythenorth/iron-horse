@@ -1039,12 +1039,17 @@ class SuppliesConsist(WagonConsist):
         self.default_capacity_type = 'capacity_freight'
         self.date_variant_var = 'current_year'
 
+    # this one is non-standard, because supplies cars have date-sensitive sprites in multiple spritesheet templates
     @property
     def graphics_processors(self):
-        options = {'template': self.id + '_template_0.png'}
-        pass_through = GraphicsProcessorFactory('pass_through_pipeline', options)
-        swap_company_colours = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
-        return {'pass_through': pass_through, 'swap_company_colours': swap_company_colours}
+        options_0 = {'template': self.id + '_template_0.png'}
+        options_1 = {'template': self.id + '_template_1.png'}
+        pass_through_0 = GraphicsProcessorFactory('pass_through_pipeline', options_0)
+        swap_company_colours_0 = GraphicsProcessorFactory('swap_company_colours_pipeline', options_0)
+        pass_through_1 = GraphicsProcessorFactory('pass_through_pipeline', options_1)
+        swap_company_colours_1 = GraphicsProcessorFactory('swap_company_colours_pipeline', options_1)
+        return {'pass_through_0': pass_through_0, 'swap_company_colours_0': swap_company_colours_0,
+                'pass_through_1': pass_through_1, 'swap_company_colours_1': swap_company_colours_1}
 
 
 class TankConsist(WagonConsist):

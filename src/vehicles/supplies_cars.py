@@ -1,5 +1,5 @@
 import global_constants
-from train import SuppliesConsist, Wagon, GraphicsProcessorFactory
+from train import SuppliesConsist, Wagon
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
@@ -19,29 +19,25 @@ def main():
     # Ho Ho, supplies cars will vary load graphics according to *build date of wagon*
     # not strictly right, but eh, means it got done :)
 
-    options = {'template': 'supplies_car_pony_gen_1_template_0.png'}
-
     consist.add_model_variant(intro_date=0,
                            end_date=1910,
                            spritesheet_suffix=0,
-                           graphics_processor=GraphicsProcessorFactory('pass_through_pipeline', options))
+                           graphics_processor=consist.graphics_processors['pass_through_0'])
 
     consist.add_model_variant(intro_date=0,
                            end_date=1910,
                            spritesheet_suffix=1,
-                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
-
-    options = {'template': 'supplies_car_pony_gen_1_template_1.png'}
+                           graphics_processor=consist.graphics_processors['swap_company_colours_0'])
 
     consist.add_model_variant(intro_date=1910,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=2,
-                           graphics_processor=GraphicsProcessorFactory('pass_through_pipeline', options))
+                           graphics_processor=consist.graphics_processors['pass_through_1'])
 
     consist.add_model_variant(intro_date=1910,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=3,
-                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
+                           graphics_processor=consist.graphics_processors['swap_company_colours_1'])
 
 
     consist = SuppliesConsist(title = '[Supplies Car]',
@@ -56,29 +52,25 @@ def main():
                            weight = 12,
                            vehicle_length = 10))
 
-    options = {'template': 'supplies_car_pony_gen_2_template_0.png'}
-
     consist.add_model_variant(intro_date=0,
                            end_date=2010,
                            spritesheet_suffix=0,
-                           graphics_processor=GraphicsProcessorFactory('pass_through_pipeline', options))
+                           graphics_processor=consist.graphics_processors['pass_through_0'])
 
     consist.add_model_variant(intro_date=0,
                            end_date=2010,
                            spritesheet_suffix=1,
-                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
-
-    options = {'template': 'supplies_car_pony_gen_2_template_1.png'}
+                           graphics_processor=consist.graphics_processors['swap_company_colours_0'])
 
     consist.add_model_variant(intro_date=2010,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=2,
-                           graphics_processor=GraphicsProcessorFactory('pass_through_pipeline', options))
+                           graphics_processor=consist.graphics_processors['pass_through_1'])
 
     consist.add_model_variant(intro_date=2010,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=3,
-                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
+                           graphics_processor=consist.graphics_processors['swap_company_colours_1'])
 
     #--------------- antelope ----------------------------------------------------------------------
 
@@ -98,29 +90,25 @@ def main():
     # Ho Ho, supplies cars will vary load graphics according to *build date of wagon*
     # not strictly right, but eh, means it got done :)
 
-    options = {'template': 'supplies_car_ng_antelope_gen_1_template_0.png'}
-
     consist.add_model_variant(intro_date=0,
                            end_date=1910,
                            spritesheet_suffix=0,
-                           graphics_processor=GraphicsProcessorFactory('pass_through_pipeline', options))
+                           graphics_processor=consist.graphics_processors['pass_through_0'])
 
     consist.add_model_variant(intro_date=0,
                            end_date=1910,
                            spritesheet_suffix=1,
-                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
-
-    options = {'template': 'supplies_car_ng_antelope_gen_1_template_1.png'}
+                           graphics_processor=consist.graphics_processors['swap_company_colours_0'])
 
     consist.add_model_variant(intro_date=1910,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=2,
-                           graphics_processor=GraphicsProcessorFactory('pass_through_pipeline', options))
+                           graphics_processor=consist.graphics_processors['pass_through_1'])
 
     consist.add_model_variant(intro_date=1910,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=3,
-                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
+                           graphics_processor=consist.graphics_processors['swap_company_colours_1'])
 
 
     #--------------- llama ----------------------------------------------------------------------
