@@ -664,6 +664,13 @@ class BoxConsist(WagonConsist):
         self.default_cargo = 'GOOD'
         self.default_capacity_type = 'capacity_freight'
 
+    @property
+    def graphics_processors(self):
+        options = {'template': self.id + '_template.png'}
+        pass_through = GraphicsProcessorFactory('pass_through_pipeline', options)
+        swap_company_colours = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
+        return {'pass_through': pass_through, 'swap_company_colours': swap_company_colours}
+
 
 class CabooseConsist(WagonConsist):
     """
