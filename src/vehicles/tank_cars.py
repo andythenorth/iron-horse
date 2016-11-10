@@ -1,5 +1,5 @@
 import global_constants
-from train import TankConsist, Wagon, GraphicsProcessorFactory
+from train import TankConsist, Wagon
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
@@ -7,7 +7,7 @@ def main():
                       roster = 'pony',
                       base_numeric_id = 630,
                       wagon_generation = 1,
-                              intro_date = 1860,
+                      intro_date = 1860,
                       vehicle_life = 40,
                       use_legacy_spritesheet = True)
 
@@ -16,24 +16,22 @@ def main():
                             weight = 12,
                             vehicle_length = 5))
 
-    options = {'template': 'tank_car_pony_gen_1_template_0.png'}
-
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=0,
-                           graphics_processor=GraphicsProcessorFactory('pass_through_pipeline', options))
+                           graphics_processor=consist.graphics_processors['pass_through'])
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=1,
-                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
+                           graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
     consist = TankConsist(title = '[Tank Car]',
                       roster = 'pony',
                       base_numeric_id = 640,
                       wagon_generation = 2,
-                              intro_date = 1960,
+                      intro_date = 1960,
                       vehicle_life = 40,
                       use_legacy_spritesheet = True)
 
@@ -42,29 +40,25 @@ def main():
                             weight = 27,
                             vehicle_length = 8))
 
-    options = {'template': 'tank_car_pony_gen_2_template_0.png'}
-
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=0,
-                           graphics_processor=GraphicsProcessorFactory('pass_through_pipeline', options))
+                           graphics_processor=consist.graphics_processors['pass_through'])
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=1,
-                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
+                           graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
     consist = TankConsist(title = '[Tank Car]',
                       roster = 'pony',
                       base_numeric_id = 650,
                       wagon_generation = 1,
-                              intro_date = 1860,
+                      intro_date = 1860,
                       vehicle_life = 40,
                       track_type = 'NG',
                       use_legacy_spritesheet = True)
-
-    options = {'template': 'tank_car_ng_pony_gen_1_template_0.png'}
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 12,
@@ -74,12 +68,12 @@ def main():
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=0,
-                           graphics_processor=GraphicsProcessorFactory('pass_through_pipeline', options))
+                           graphics_processor=consist.graphics_processors['pass_through'])
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=1,
-                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
+                           graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
     #--------------- llama ----------------------------------------------------------------------
@@ -87,7 +81,7 @@ def main():
                       roster = 'llama',
                       base_numeric_id = 660,
                       wagon_generation = 1,
-                              intro_date = 1860,
+                      intro_date = 1860,
                       vehicle_life = 40)
 
     consist.add_unit(Wagon(consist = consist,
@@ -95,24 +89,22 @@ def main():
                             weight = 12,
                             vehicle_length = 5))
 
-    options = {'template': 'tank_car_llama_gen_1_template_0.png'}
-
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=0,
-                           graphics_processor=GraphicsProcessorFactory('pass_through_pipeline', options))
+                           graphics_processor=consist.graphics_processors['pass_through'])
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=1,
-                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
+                           graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
     consist = TankConsist(title = '[Tank Car]',
                       roster = 'llama',
                       base_numeric_id = 670,
                       wagon_generation = 2,
-                              intro_date = 1920,
+                      intro_date = 1920,
                       vehicle_life = 40)
 
     consist.add_unit(Wagon(consist = consist,
@@ -120,24 +112,22 @@ def main():
                             weight = 18,
                             vehicle_length = 5))
 
-    options = {'template': 'tank_car_llama_gen_2_template_0.png'}
-
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=0,
-                           graphics_processor=GraphicsProcessorFactory('pass_through_pipeline', options))
+                           graphics_processor=consist.graphics_processors['pass_through'])
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=1,
-                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
+                           graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
     consist = TankConsist(title = '[Tank Car]',
                       roster = 'llama',
                       base_numeric_id = 680,
                       wagon_generation = 3,
-                              intro_date = 1980,
+                      intro_date = 1980,
                       vehicle_life = 40)
 
     consist.add_unit(Wagon(consist = consist,
@@ -145,28 +135,24 @@ def main():
                             weight = 12,
                             vehicle_length = 8))
 
-    options = {'template': 'tank_car_llama_gen_3_template_0.png'}
-
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=0,
-                           graphics_processor=GraphicsProcessorFactory('pass_through_pipeline', options))
+                           graphics_processor=consist.graphics_processors['pass_through'])
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=1,
-                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
+                           graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
     consist = TankConsist(title = '[Tank Car]',
                       roster = 'llama',
                       base_numeric_id = 690,
                       wagon_generation = 1,
-                              intro_date = 1860,
+                       intro_date = 1860,
                       vehicle_life = 40,
                       track_type = 'NG')
-
-    options = {'template': 'tank_car_ng_llama_gen_1_template_0.png'}
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 20,
@@ -176,23 +162,21 @@ def main():
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=0,
-                           graphics_processor=GraphicsProcessorFactory('pass_through_pipeline', options))
+                           graphics_processor=consist.graphics_processors['pass_through'])
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=1,
-                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
+                           graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
     consist = TankConsist(title = '[Tank Car]',
                       roster = 'llama',
                       base_numeric_id = 1360,
                       wagon_generation = 2,
-                              intro_date = 1920,
+                      intro_date = 1920,
                       vehicle_life = 40,
                       track_type = 'NG')
-
-    options = {'template': 'tank_car_ng_llama_gen_1_template_0.png'}
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 40,
@@ -202,12 +186,12 @@ def main():
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=0,
-                           graphics_processor=GraphicsProcessorFactory('pass_through_pipeline', options))
+                           graphics_processor=consist.graphics_processors['pass_through'])
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=1,
-                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
+                           graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
     #--------------- antelope ----------------------------------------------------------------------
@@ -215,7 +199,7 @@ def main():
                       roster = 'antelope',
                       base_numeric_id = 1670,
                       wagon_generation = 1,
-                              intro_date = 1950,
+                      intro_date = 1950,
                       vehicle_life = 40,
                       use_legacy_spritesheet = True)
 
@@ -224,24 +208,22 @@ def main():
                             weight = 18,
                             vehicle_length = 6))
 
-    options = {'template': 'tank_car_antelope_gen_1_template_0.png'}
-
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=0,
-                           graphics_processor=GraphicsProcessorFactory('pass_through_pipeline', options))
+                           graphics_processor=consist.graphics_processors['pass_through'])
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=1,
-                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
+                           graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
     consist = TankConsist(title = '[Tank Car]',
                       roster = 'antelope',
                       base_numeric_id = 1680,
                       wagon_generation = 2,
-                              intro_date = 1980,
+                      intro_date = 1980,
                       vehicle_life = 40,
                       use_legacy_spritesheet = True)
 
@@ -250,24 +232,22 @@ def main():
                             weight = 35,
                             vehicle_length = 8))
 
-    options = {'template': 'tank_car_antelope_gen_2_template_0.png'}
-
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=0,
-                           graphics_processor=GraphicsProcessorFactory('pass_through_pipeline', options))
+                           graphics_processor=consist.graphics_processors['pass_through'])
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=1,
-                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
+                           graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
     consist = TankConsist(title = '[Tank Car]',
                       roster = 'antelope',
                       base_numeric_id = 1910,
                       wagon_generation = 1,
-                              intro_date = 1880,
+                      intro_date = 1880,
                       vehicle_life = 40,
                       track_type = 'NG')
 
@@ -276,24 +256,22 @@ def main():
                             weight = 16,
                             vehicle_length = 5))
 
-    options = {'template': 'tank_car_ng_antelope_gen_1_template_0.png'}
-
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=0,
-                           graphics_processor=GraphicsProcessorFactory('pass_through_pipeline', options))
+                           graphics_processor=consist.graphics_processors['pass_through'])
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=1,
-                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
+                           graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
     consist = TankConsist(title = '[Tank Car]',
                       roster = 'antelope',
                       base_numeric_id = 1920,
                       wagon_generation = 2,
-                              intro_date = 1925,
+                      intro_date = 1925,
                       vehicle_life = 40,
                       track_type = 'NG',
                       use_legacy_spritesheet = True)
@@ -303,17 +281,15 @@ def main():
                             weight = 20,
                             vehicle_length = 6))
 
-    options = {'template': 'tank_car_ng_antelope_gen_2_template_0.png'}
-
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=0,
-                           graphics_processor=GraphicsProcessorFactory('pass_through_pipeline', options))
+                           graphics_processor=consist.graphics_processors['pass_through'])
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
                            spritesheet_suffix=1,
-                           graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
+                           graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
 # gen 3 at 1980 or so
