@@ -445,6 +445,7 @@ class TypeConfig(object):
         self.cargo_age_period = kwargs.get('cargo_age_period', global_constants.CARGO_AGE_PERIOD)
         self.date_variant_var = kwargs.get('date_variant_var', None)
 
+
 class ModelVariant(object):
     # simple class to hold model variants
     # variants are mostly randomised or date-sensitive graphics
