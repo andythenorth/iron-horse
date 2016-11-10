@@ -41,7 +41,7 @@ class Roster(object):
         return result
 
     def register_wagon_consist(self, wagon_consist):
-        self.wagon_consists[wagon_consist.type_config.base_id].append(wagon_consist)
+        self.wagon_consists[wagon_consist.base_id].append(wagon_consist)
         wagon_consist.roster_id = self.id
 
     def register(self, disabled=False):

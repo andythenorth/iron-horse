@@ -2,7 +2,6 @@ import graphics_processor.utils as graphics_utils
 from train import EngineConsist, CargoSprinter, GraphicsProcessorFactory
 
 # cargo_sprinter is full of special cases, lots of yak-shaving to get it done
-# specifically here it doesn't use type_config because engines don't, but it behaves like a wagon for cargos
 
 recolour_maps = graphics_utils.get_container_recolour_maps()
 graphics_options = {'template': 'cargo_sprinter_template.png',

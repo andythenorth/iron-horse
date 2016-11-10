@@ -423,29 +423,6 @@ class Train(object):
         return nml_result
 
 
-class TypeConfig(object):
-    # simple class to hold properties common to all instances of a type of vehicle
-    # examples of types: Box Car, Steam Engine, Passenger Car etc.
-    # declared once per type
-    # passed to the type's consists and units
-    def __init__(self, base_id, template, **kwargs):
-        self.base_id = base_id
-        self.template = template
-        self.track_type = kwargs.get('track_type', 'RAIL')
-        self.num_cargo_rows = kwargs.get('num_cargo_rows', None)
-        self.generic_cargo_rows = kwargs.get('generic_cargo_rows', [0]) # optional, the rows to use if no cargo label is matched
-        self.cargo_graphics_mappings = kwargs.get('cargo_graphics_mappings', None)
-        self.class_refit_groups = kwargs.get('class_refit_groups', None)
-        self.label_refits_allowed = kwargs.get('label_refits_allowed', None) # use None here as default, forces explicit declaration in TypeConfig instance (compile fails if not declared)
-        self.label_refits_disallowed = kwargs.get('label_refits_disallowed', None)
-        self.autorefit = kwargs.get('autorefit', None)
-        self.default_cargo = kwargs['default_cargo'] # don't use 'get()' - needs to be defined to avoid unwanted refit issues
-        self.default_capacity_type = kwargs.get('default_capacity_type', None)
-        self.loading_speed_multiplier = kwargs.get('loading_speed_multiplier', None)
-        self.cargo_age_period = kwargs.get('cargo_age_period', global_constants.CARGO_AGE_PERIOD)
-        self.date_variant_var = kwargs.get('date_variant_var', None)
-
-
 class ModelVariant(object):
     # simple class to hold model variants
     # variants are mostly randomised or date-sensitive graphics
@@ -586,20 +563,35 @@ class EngineConsist(Consist):
 
 class WagonConsist(Consist):
     """
-    Intermediate class for wagon consists to subclass from, provides some common properties.
-    This class should be sparse - only declare the most limited set of properties common to wagon consists.
+    Intermediate class for wagon consists to subclass from, provides properties commonly used in subclasses.
     """
-    def __init__(self, type_config, speedy=False, **kwargs):
+    def __init__(self, speedy=False, **kwargs):
+        # self.base_id = '' # provide in subclass
+        # self.template = '' # provide in subclass
+        # self.default_cargo = '' # provide in subclass
+        self.track_type = kwargs.get('track_type', 'RAIL') # !! might be redundant? needs cleaning up ??
+        self.num_cargo_rows = kwargs.get('num_cargo_rows', None)
+        self.generic_cargo_rows = kwargs.get('generic_cargo_rows', [0]) # optional, the rows to use if no cargo label is matched
+        self.cargo_graphics_mappings = kwargs.get('cargo_graphics_mappings', None)
+        self.class_refit_groups = kwargs.get('class_refit_groups', None)
+        self.label_refits_allowed = kwargs.get('label_refits_allowed', None) # use None here as default, forces explicit declaration in TypeConfig instance (compile fails if not declared)
+        self.label_refits_disallowed = kwargs.get('label_refits_disallowed', None)
+        self.autorefit = kwargs.get('autorefit', None)
+        self.default_capacity_type = kwargs.get('default_capacity_type', None)
+        self.loading_speed_multiplier = kwargs.get('loading_speed_multiplier', 1)
+        self.cargo_age_period = kwargs.get('cargo_age_period', global_constants.CARGO_AGE_PERIOD)
+        self.date_variant_var = kwargs.get('date_variant_var', None)
+
+
         # persist roster id for lookups, not roster obj directly, because of multiprocessing problems with object references
         self.roster_id = kwargs.get('roster', None)
         roster_obj = self.get_roster(self.roster_id)  # roster_obj for local reference only, don't persist this
 
-        id = self.get_wagon_id(type_config.base_id, **kwargs)
+        id = self.get_wagon_id(self.base_id, **kwargs)
         kwargs['id'] = id
         self.wagon_generation = kwargs.get('wagon_generation', None)
         super(WagonConsist, self).__init__(**kwargs)
 
-        self.type_config = type_config
         roster_obj.register_wagon_consist(self)
 
         if kwargs.get('speed', None):
@@ -620,14 +612,6 @@ class WagonConsist(Consist):
                     self.speed = roster_obj.speeds['gen_2_wagon_speeds'][speedy]
                 elif self.wagon_generation == 3:
                     self.speed = roster_obj.speeds['gen_3_wagon_speeds'][speedy]
-
-        self.num_cargo_rows = type_config.num_cargo_rows
-        self.cargo_graphics_mappings = type_config.cargo_graphics_mappings
-        self.generic_cargo_rows = type_config.generic_cargo_rows
-        # handle optional over-ride of which date var to use for switching variants
-        if type_config.date_variant_var != None:
-            self.date_variant_var = type_config.date_variant_var
-
 
     @property
     def buy_cost(self):
@@ -663,376 +647,353 @@ class WagonConsist(Consist):
 
 
 class BoxConsist(WagonConsist):
-    # Class properties, no particular reason, no harm either
-
-    box_car_label_refits_allowed = ['MAIL', 'GRAI', 'WHEA', 'MAIZ', 'FRUT', 'BEAN', 'NITR']
-    cargo_graphics_mappings = {} # template needs this, but box car has zero cargo-specific graphics, all generic
-
-    type_config = TypeConfig(base_id = 'box_car',
-                                    template = 'car_with_open_doors_during_loading.pynml',
-                                    num_cargo_rows = 1, # template needs this, but box car has zero cargo-specific graphics, all generic
-                                    cargo_graphics_mappings = cargo_graphics_mappings,
-                                    class_refit_groups = ['packaged_freight'],
-                                    label_refits_allowed = box_car_label_refits_allowed,
-                                    label_refits_disallowed = global_constants.disallowed_refits_by_label['non_freight_special_cases'],
-                                    autorefit = True,
-                                    default_cargo = 'GOOD',
-                                    default_capacity_type = 'capacity_freight')
-
+    """
+    Van - express, piece goods cargos, other selected cargos.
+    """
     def __init__(self, **kwargs):
-        super(BoxConsist, self).__init__(self.type_config, **kwargs)
+        self.base_id = 'box_car'
+        super(BoxConsist, self).__init__(**kwargs)
+        self.template = 'car_with_open_doors_during_loading.pynml'
+        self.cargo_graphics_mappings = {} # template needs this, but box car has zero cargo-specific graphics, all generic
+        self.num_cargo_rows = 1 # template needs this, but box car has zero cargo-specific graphics, all generic
+        self.class_refit_groups = ['packaged_freight']
+        self.label_refits_allowed = ['MAIL', 'GRAI', 'WHEA', 'MAIZ', 'FRUT', 'BEAN', 'NITR']
+        self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_freight_special_cases']
+        self.autorefit = True
+        self.default_cargo = 'GOOD'
+        self.default_capacity_type = 'capacity_freight'
 
 
 class CabooseConsist(WagonConsist):
-    # Class properties, no particular reason, no harm either
-
-    # no graphics processing - don't random colour cabeese, I tried it, looks daft
-
-    type_config = TypeConfig(base_id = 'caboose_car',
-                    template = 'train.pynml',
-                    class_refit_groups = [], # refit nothing, don't mess with this, it breaks auto-replace
-                    label_refits_allowed = [],
-                    label_refits_disallowed = [],
-                    default_cargo = 'GOOD', # unwanted side-effect of this is that caboose replaceable by anything refitting goods
-                    default_capacity_type = 'capacity_freight')
-
+    """
+    Caboose, brake van etc - no gameplay purpose, just eye candy.
+    """
     def __init__(self, **kwargs):
-        super(CabooseConsist, self).__init__(self.type_config, **kwargs)
+        self.base_id = 'caboose_car'
+        super(CabooseConsist, self).__init__(**kwargs)
+        self.template = 'train.pynml'
+        # no graphics processing - don't random colour cabeese, I tried it, looks daft
+        self.class_refit_groups = [] # refit nothing, don't mess with this, it breaks auto-replace
+        self.label_refits_allowed = []
+        self.label_refits_disallowed = []
+        self.default_cargo = 'GOOD' # unwanted side-effect of this is that caboose replaceable by anything refitting goods
+        self.default_capacity_type = 'capacity_freight'
 
 
 class CombineConsist(WagonConsist):
-    # Class properties, no particular reason, no harm either
-
-    type_config = TypeConfig(base_id = 'combine_car',
-                             template = 'train.pynml',
-                             class_refit_groups = ['mail', 'express_freight'],
-                             label_refits_allowed = [],
-                             label_refits_disallowed = global_constants.disallowed_refits_by_label['non_freight_special_cases'],
-                             autorefit = True,
-                             default_cargo = 'MAIL',
-                             default_capacity_type = 'capacity_mail')
-
+    """
+    Novelty single-coach with both pax and mail, for use on very small trains, bit of a hack.
+    """
     def __init__(self, **kwargs):
-        super(CombineConsist, self).__init__(self.type_config, **kwargs)
+        self.base_id = 'combine_car'
+        super(CombineConsist, self).__init__(**kwargs)
+        self.template = 'train.pynml'
+        self.class_refit_groups = ['mail', 'express_freight']
+        self.label_refits_allowed = []
+        self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_freight_special_cases']
+        self.autorefit = True
+        self.default_cargo = 'MAIL'
+        self.default_capacity_type = 'capacity_mail'
 
 
 class CoveredHopperConsist(WagonConsist):
-    # Class properties, no particular reason, no harm either
-
-    type_config = TypeConfig(base_id = 'covered_hopper_car',
-                             template = 'train.pynml',
-                             class_refit_groups = ['covered_hopper_freight'],
-                             label_refits_allowed = ['GRAI', 'WHEA', 'MAIZ', 'FOOD', 'SUGR', 'FMSP', 'RFPR', 'CLAY', 'BDMT', 'BEAN', 'NITR', 'RUBR', 'SAND'],
-                             label_refits_disallowed = [],
-                             autorefit = True,
-                             default_cargo = 'GRAI',
-                             default_capacity_type = 'capacity_freight',
-                             loading_speed_multiplier = 2)
-
+    """
+    Bulk powder / pellet cargos.
+    """
     def __init__(self, **kwargs):
-        super(CoveredHopperConsist, self).__init__(self.type_config, **kwargs)
+        self.base_id = 'covered_hopper_car'
+        super(CoveredHopperConsist, self).__init__(**kwargs)
+        self.template = 'train.pynml'
+        self.class_refit_groups = ['covered_hopper_freight']
+        self.label_refits_allowed = ['GRAI', 'WHEA', 'MAIZ', 'FOOD', 'SUGR', 'FMSP', 'RFPR', 'CLAY', 'BDMT', 'BEAN', 'NITR', 'RUBR', 'SAND']
+        self.label_refits_disallowed = []
+        self.autorefit = True
+        self.default_cargo = 'GRAI'
+        self.default_capacity_type = 'capacity_freight'
+        self.loading_speed_multiplier = 2
 
 
 class EdiblesTankConsist(WagonConsist):
-    # Class properties, no particular reason, no harm either
-
-    # tank cars are unrealistically autorefittable, and at no cost
-    # Pikka: if people complain that it's unrealistic, tell them "don't do it then"
-    type_config = TypeConfig(base_id = 'edibles_tank_car',
-                             template = 'train.pynml',
-                             class_refit_groups = ['liquids'],
-                             label_refits_allowed = ['FOOD'],
-                             label_refits_disallowed = global_constants.disallowed_refits_by_label['non_edible_liquids'],
-                             autorefit = True,
-                             default_cargo = 'WATR',
-                             default_capacity_type = 'capacity_freight',
-                             cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD,
-                             loading_speed_multiplier = 2)
-
+    """
+    Wine, milk, water etc.
+    """
     def __init__(self, **kwargs):
-        super(EdiblesTankConsist, self).__init__(self.type_config, **kwargs)
+        self.base_id = 'edibles_tank_car'
+        super(EdiblesTankConsist, self).__init__(**kwargs)
+        # tank cars are unrealistically autorefittable, and at no cost
+        # Pikka: if people complain that it's unrealistic, tell them "don't do it then"
+        self.template = 'train.pynml'
+        self.class_refit_groups = ['liquids']
+        self.label_refits_allowed = ['FOOD']
+        self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_edible_liquids']
+        self.autorefit = True
+        self.default_cargo = 'WATR'
+        self.default_capacity_type = 'capacity_freight'
+        self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
+        self.loading_speed_multiplier = 2
 
 
 class FlatConsist(WagonConsist):
-    # Class properties, no particular reason, no harm either
-
-    # cargo rows 0 indexed - 0 = first set of loaded sprites
-    cargo_graphics_mappings = {'STEL': [1, 2, 3], 'WOOD': [4], 'WDPR': [5], 'ENSP': [6], 'FMSP': [6], 'MNSP': [6], 'GOOD': [0, 6]}
-
-    type_config = TypeConfig(base_id = 'flat_car',
-                                    template = 'car_with_visible_cargo.pynml',
-                                    num_cargo_rows = 7,
-                                    class_refit_groups = ['flatcar_freight'],
-                                    cargo_graphics_mappings = cargo_graphics_mappings,
-                                    label_refits_allowed = list(cargo_graphics_mappings.keys()),
-                                    label_refits_disallowed = global_constants.disallowed_refits_by_label['non_flatcar_freight'],
-                                    autorefit = True,
-                                    default_cargo = 'STEL',
-                                    default_capacity_type = 'capacity_freight')
-
+    """
+    Flatbed - refits wide range of cargos, but not bulk.
+    """
     def __init__(self, **kwargs):
-        super(FlatConsist, self).__init__(self.type_config, **kwargs)
+        self.base_id = 'flat_car'
+        super(FlatConsist, self).__init__(**kwargs)
+        self.template = 'car_with_visible_cargo.pynml'
+        # cargo rows 0 indexed - 0 = first set of loaded sprites
+        self.cargo_graphics_mappings = {'STEL': [1, 2, 3], 'WOOD': [4], 'WDPR': [5], 'ENSP': [6], 'FMSP': [6], 'MNSP': [6], 'GOOD': [0, 6]}
+        self.num_cargo_rows = 7
+        self.class_refit_groups = ['flatcar_freight']
+        self.label_refits_allowed = list(self.cargo_graphics_mappings.keys())
+        self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_flatcar_freight']
+        self.autorefit = True
+        self.default_cargo = 'STEL'
+        self.default_capacity_type = 'capacity_freight'
 
 
 class FruitConsist(WagonConsist):
-    # Class properties, no particular reason, no harm either
-
-    fruit_car_label_refits_allowed = ['FRUT', 'BEAN', 'CASS', 'JAVA', 'NUTS']
-    cargo_graphics_mappings = {} # template needs this, but box car has zero cargo-specific graphics, all generic
-
-    type_config = TypeConfig(base_id = 'fruit_car',
-                             template = 'car_with_open_doors_during_loading.pynml',
-                             num_cargo_rows = 1, # template needs this, but box car has zero cargo-specific graphics, all generic
-                             cargo_graphics_mappings = cargo_graphics_mappings,
-                             class_refit_groups = [],
-                             label_refits_allowed = fruit_car_label_refits_allowed,
-                             label_refits_disallowed = [],
-                             autorefit = True,
-                             default_cargo = 'FRUT',
-                             default_capacity_type = 'capacity_freight',
-                             cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD)
-
+    """
+    Fruit cargo, with improved decay rate
+    """
     def __init__(self, **kwargs):
-        super(FruitConsist, self).__init__(self.type_config, **kwargs)
+        self.base_id = 'fruit_car'
+        super(FruitConsist, self).__init__(**kwargs)
+        self.template = 'car_with_open_doors_during_loading.pynml'
+        self.cargo_graphics_mappings = {} # template needs this, but box car has zero cargo-specific graphics, all generic
+        self.num_cargo_rows = 1 # template needs this, but box car has zero cargo-specific graphics, all generic
+        self.class_refit_groups = []
+        self.label_refits_allowed = ['FRUT', 'BEAN', 'CASS', 'JAVA', 'NUTS']
+        self.label_refits_disallowed = []
+        self.autorefit = True
+        self.default_cargo = 'FRUT'
+        self.default_capacity_type = 'capacity_freight'
+        self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
 
 
 class HopperConsist(WagonConsist):
-    # Class properties, no particular reason, no harm either
-
-    # cargo rows 0 indexed - 0 = first set of loaded sprites
-    # GRVL is in first position as it is re-used for generic unknown cargos
-    # hoppers *do* transport SCMT in this set, realism is not relevant here, went back and forth on this a few times :P
-    cargo_graphics_mappings = {'GRVL': [0], 'IORE': [1], 'CORE': [2], 'AORE': [3],
-                               'SAND': [4], 'COAL': [5], 'CLAY': [6], 'SCMT': [7], 'PHOS': [8],
-                               'CASS': [9], 'LIME': [10], 'MNO2': [11], 'NITR': [12],
-                               'PORE': [13], 'POTA': [14], 'SGBT': [15]}
-
-
-    type_config = TypeConfig(base_id = 'hopper_car',
-                        template = 'car_with_visible_cargo.pynml',
-                        num_cargo_rows = 16, # update if more cargo graphic variations are added
-                        class_refit_groups = ['hopper_freight'],
-                        cargo_graphics_mappings = cargo_graphics_mappings,
-                        label_refits_allowed = list(cargo_graphics_mappings.keys()),
-                        label_refits_disallowed = global_constants.disallowed_refits_by_label['non_hopper_freight'],
-                        autorefit = True,
-                        default_cargo = 'COAL',
-                        default_capacity_type = 'capacity_freight',
-                        loading_speed_multiplier = 2)
-
+    """
+    Limited set of bulk (mineral) cargos.
+    """
     def __init__(self, **kwargs):
-        super(HopperConsist, self).__init__(self.type_config, **kwargs)
+        self.base_id = 'hopper_car'
+        super(HopperConsist, self).__init__(**kwargs)
+        self.template = 'car_with_visible_cargo.pynml'
+        # cargo rows 0 indexed - 0 = first set of loaded sprites
+        # GRVL is in first position as it is re-used for generic unknown cargos
+        # hoppers *do* transport SCMT in this set, realism is not relevant here, went back and forth on this a few times :P
+        self.cargo_graphics_mappings = {'GRVL': [0], 'IORE': [1], 'CORE': [2], 'AORE': [3],
+                                   'SAND': [4], 'COAL': [5], 'CLAY': [6], 'SCMT': [7], 'PHOS': [8],
+                                   'CASS': [9], 'LIME': [10], 'MNO2': [11], 'NITR': [12],
+                                   'PORE': [13], 'POTA': [14], 'SGBT': [15]}
+        self.num_cargo_rows = 16 # update if more cargo graphic variations are added
+        self.class_refit_groups = ['hopper_freight']
+        self.label_refits_allowed = list(self.cargo_graphics_mappings.keys())
+        self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_hopper_freight']
+        self.autorefit = True
+        self.default_cargo = 'COAL'
+        self.default_capacity_type = 'capacity_freight'
+        self.loading_speed_multiplier = 2
 
 
 class IntermodalConsist(WagonConsist):
-    # Class properties, no particular reason, no harm either
-
-    cargo_graphics_mappings = {}
-
-    type_config = TypeConfig(base_id = 'intermodal_flat_car',
-                    template = 'car_with_visible_cargo.pynml',
-                    num_cargo_rows = 3,
-                    generic_cargo_rows = [0, 1, 2],
-                    class_refit_groups = ['express_freight', 'packaged_freight'],
-                    cargo_graphics_mappings = cargo_graphics_mappings,
-                    #label_refits_allowed = list(cargo_graphics_mappings.keys()),
-                    # maintain other sets (e.g. Squid etc) when changing container refits
-                    label_refits_allowed = ['FRUT','WATR'],
-                    label_refits_disallowed = ['FISH','LVST','OIL_','TOUR','WOOD'],
-                    autorefit = True,
-                    default_cargo = 'GOOD',
-                    default_capacity_type = 'capacity_freight',
-                    loading_speed_multiplier = 2)
-
+    """
+    Specialist intermodal (containers), limited range of cargos.
+    """
     def __init__(self, **kwargs):
-        super(IntermodalConsist, self).__init__(self.type_config, **kwargs)
+        self.base_id = 'intermodal_flat_car'
+        super(IntermodalConsist, self).__init__(**kwargs)
+        self.template = 'car_with_visible_cargo.pynml'
+        self.cargo_graphics_mappings = {}
+        self.num_cargo_rows = 3
+        self.generic_cargo_rows = [0, 1, 2]
+        self.class_refit_groups = ['express_freight', 'packaged_freight']
+        #label_refits_allowed = list(cargo_graphics_mappings.keys())
+        # maintain other sets (e.g. Squid etc) when changing container refits
+        self.label_refits_allowed = ['FRUT','WATR']
+        self.label_refits_disallowed = ['FISH','LVST','OIL_','TOUR','WOOD']
+        self.autorefit = True
+        self.default_cargo = 'GOOD'
+        self.default_capacity_type = 'capacity_freight'
+        self.loading_speed_multiplier = 2
 
 
 class LivestockConsist(WagonConsist):
-    # Class properties, no particular reason, no harm either
-
-    type_config = TypeConfig(base_id = 'livestock_car',
-                                    template = 'train.pynml',
-                                    class_refit_groups = [],
-                                    label_refits_allowed = ['LVST'],
-                                    label_refits_disallowed = [],
-                                    autorefit = True,
-                                    default_cargo = 'LVST',
-                                    default_capacity_type = 'capacity_freight',
-                                    cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD)
-
+    """
+    Livestock, with improved decay rate
+    """
     def __init__(self, **kwargs):
-        super(LivestockConsist, self).__init__(self.type_config, **kwargs)
+        self.base_id = 'livestock_car'
+        super(LivestockConsist, self).__init__(**kwargs)
+        self.template = 'train.pynml'
+        self.class_refit_groups = []
+        self.label_refits_allowed = ['LVST']
+        self.label_refits_disallowed = []
+        self.autorefit = True
+        self.default_cargo = 'LVST'
+        self.default_capacity_type = 'capacity_freight'
+        self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
 
 
 class MailConsist(WagonConsist):
-    # Class properties, no particular reason, no harm either
-
-    cargo_graphics_mappings = {} # template needs this, but mail car has zero cargo-specific graphics, all generic
-
-    type_config = TypeConfig(base_id = 'mail_car',
-                    template = 'car_with_open_doors_during_loading.pynml',
-                    num_cargo_rows = 1, # template needs this, but mail car has zero cargo-specific graphics, all generic
-                    class_refit_groups = ['mail', 'express_freight'],
-                    cargo_graphics_mappings = cargo_graphics_mappings,
-                    label_refits_allowed = list(cargo_graphics_mappings.keys()) ,
-                    label_refits_disallowed = global_constants.disallowed_refits_by_label['non_freight_special_cases'],
-                    autorefit = True,
-                    default_cargo = 'MAIL',
-                    default_capacity_type = 'capacity_mail')
-
+    """
+    Express freight - mail, valuables etc.
+    """
     def __init__(self, **kwargs):
-        super(MailConsist, self).__init__(self.type_config, **kwargs)
+        self.base_id = 'mail_car'
+        super(MailConsist, self).__init__(**kwargs)
+        self.template = 'car_with_open_doors_during_loading.pynml'
+        self.cargo_graphics_mappings = {} # template needs this, but mail car has zero cargo-specific graphics, all generic
+        self.num_cargo_rows = 1 # template needs this, but mail car has zero cargo-specific graphics, all generic
+        self.class_refit_groups = ['mail', 'express_freight']
+        self.label_refits_allowed = list(self.cargo_graphics_mappings.keys())
+        self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_freight_special_cases']
+        self.autorefit = True
+        self.default_cargo = 'MAIL'
+        self.default_capacity_type = 'capacity_mail'
 
 
 class MetalConsist(WagonConsist):
-    # Class properties, no particular reason, no harm either
-
-    cargo_graphics_mappings = {}
-
-    type_config = TypeConfig(base_id = 'metal_car',
-                    template = 'car_with_visible_cargo.pynml',
-                    num_cargo_rows = 1,
-                    generic_cargo_rows = [0],
-                    cargo_graphics_mappings = cargo_graphics_mappings,
-                    class_refit_groups = [],
-                    label_refits_allowed = ['STEL', 'COPR'],
-                    label_refits_disallowed = [],
-                    autorefit = True,
-                    default_cargo = 'STEL',
-                    default_capacity_type = 'capacity_freight',
-                    loading_speed_multiplier = 2)
-
+    """
+    Specialist heavy haul metal transport e.g. torpedo car, ladle, etc
+    High capacity, not very fast, refits to small subset of finished metal cargos.
+    """
     def __init__(self, **kwargs):
-        super(MetalConsist, self).__init__(self.type_config, **kwargs)
+        self.base_id = 'metal_car'
+        super(MetalConsist, self).__init__(**kwargs)
+        self.template = 'car_with_visible_cargo.pynml'
+        self.cargo_graphics_mappings = {}
+        self.num_cargo_rows = 1
+        self.generic_cargo_rows = [0]
+        self.class_refit_groups = []
+        self.label_refits_allowed = ['STEL', 'COPR']
+        self.label_refits_disallowed = []
+        self.autorefit = True
+        self.default_cargo = 'STEL'
+        self.default_capacity_type = 'capacity_freight'
+        self.loading_speed_multiplier = 2
 
 
 class OpenConsist(WagonConsist):
-    # Class properties, no particular reason, no harm either
-
-    b = 1 # bulk cargo start row
-    # cargo rows 0 indexed - 0 = first set of loaded sprites
-    cargo_graphics_mappings = {'GRVL': [b], 'IORE': [b + 1], 'CORE': [b + 2], 'AORE': [b + 3],
-                               'SAND': [b + 4], 'COAL': [b + 5], 'CLAY': [b + 6], 'SCMT': [b + 7], 'PHOS': [b + 8],
-                               'CASS': [b + 9], 'LIME': [b + 10], 'MNO2': [b + 11], 'NITR': [b + 12],
-                               'PORE': [b + 13], 'POTA': [b + 14], 'SGBT': [b + 15]}
-
-    type_config = TypeConfig(base_id = 'open_car',
-                             template = 'car_with_visible_cargo.pynml',
-                             num_cargo_rows = 17, # update this when adding cargo graphics
-                             class_refit_groups = ['all_freight'],
-                             cargo_graphics_mappings = cargo_graphics_mappings,
-                             label_refits_allowed = list(cargo_graphics_mappings.keys()),
-                             label_refits_disallowed = global_constants.disallowed_refits_by_label['non_freight_special_cases'],
-                             autorefit = True,
-                             default_cargo = 'GOOD',
-                             default_capacity_type = 'capacity_freight')
-
+    """
+    General cargo - refits everything except mail, pax.
+    """
     def __init__(self, **kwargs):
-        super(OpenConsist, self).__init__(self.type_config, **kwargs)
+        self.base_id = 'open_car'
+        super(OpenConsist, self).__init__(**kwargs)
+        self.template = 'car_with_visible_cargo.pynml'
+        b = 1 # bulk cargo start row
+        # cargo rows 0 indexed - 0 = first set of loaded sprites
+        self.cargo_graphics_mappings = {'GRVL': [b], 'IORE': [b + 1], 'CORE': [b + 2], 'AORE': [b + 3],
+                                   'SAND': [b + 4], 'COAL': [b + 5], 'CLAY': [b + 6], 'SCMT': [b + 7], 'PHOS': [b + 8],
+                                   'CASS': [b + 9], 'LIME': [b + 10], 'MNO2': [b + 11], 'NITR': [b + 12],
+                                   'PORE': [b + 13], 'POTA': [b + 14], 'SGBT': [b + 15]}
+        self.num_cargo_rows = 17 # update this when adding cargo graphics
+        self.class_refit_groups = ['all_freight']
+        self.label_refits_allowed = list(self.cargo_graphics_mappings.keys())
+        self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_freight_special_cases']
+        self.autorefit = True
+        self.default_cargo = 'GOOD'
+        self.default_capacity_type = 'capacity_freight'
 
 
 class PassengerConsist(WagonConsist):
-    # Class properties, no particular reason, no harm either
-
-    type_config = TypeConfig(base_id = 'passenger_car',
-                                    template = 'train.pynml',
-                                    class_refit_groups = ['pax'],
-                                    label_refits_allowed = [],
-                                    label_refits_disallowed = [],
-                                    autorefit = True,
-                                    default_cargo = 'PASS',
-                                    default_capacity_type = 'capacity_pax')
-
+    """
+    Passenger coach or wagon
+    """
     def __init__(self, **kwargs):
-        super(PassengerConsist, self).__init__(self.type_config, **kwargs)
+        self.base_id = 'passenger_car'
+        super(PassengerConsist, self).__init__(**kwargs)
+        self.template = 'train.pynml'
+        self.cargo_graphics_mappings = {} # template needs this, but reefer car has zero cargo-specific graphics, all generic
+        self.class_refit_groups = ['pax']
+        self.label_refits_allowed = []
+        self.label_refits_disallowed = []
+        self.autorefit = True
+        self.default_cargo = 'PASS'
+        self.default_capacity_type = 'capacity_pax'
 
 
 class ReeferConsist(WagonConsist):
-    # Class properties, no particular reason, no harm either
-
-    cargo_graphics_mappings = {} # template needs this, but reefer car has zero cargo-specific graphics, all generic
-
-    type_config = TypeConfig(base_id = 'reefer_car',
-                            template = 'car_with_open_doors_during_loading.pynml',
-                            num_cargo_rows = 1, # template needs this, but box car has zero cargo-specific graphics, all generic
-                            cargo_graphics_mappings = cargo_graphics_mappings,
-                            class_refit_groups = ['refrigerated_freight'],
-                            label_refits_allowed = [],
-                            label_refits_disallowed = [],
-                            autorefit = True,
-                            default_cargo = 'FOOD',
-                            default_capacity_type = 'capacity_freight',
-                            cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD)
-
+    """
+    Refrigerated cargos, with improved decay rate
+    """
     def __init__(self, **kwargs):
-        super(ReeferConsist, self).__init__(self.type_config, **kwargs)
+        self.base_id = 'reefer_car'
+        super(ReeferConsist, self).__init__(**kwargs)
+        self.template = 'car_with_open_doors_during_loading.pynml'
+        self.cargo_graphics_mappings = {} # template needs this, but reefer car has zero cargo-specific graphics, all generic
+        self.num_cargo_rows = 1 # template needs this, but box car has zero cargo-specific graphics, all generic
+        self.class_refit_groups = ['refrigerated_freight']
+        self.label_refits_allowed = []
+        self.label_refits_disallowed = []
+        self.autorefit = True
+        self.default_cargo = 'FOOD'
+        self.default_capacity_type = 'capacity_freight'
+        self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
 
 
 class SuppliesConsist(WagonConsist):
-    # Class properties, no particular reason, no harm either
-
-    # cargo rows 0 indexed - 0 = first set of loaded sprites
-    cargo_graphics_mappings = {'ENSP': [0, 1, 2, 3, 4], 'FMSP': [0, 1, 2, 3, 4], 'VEHI': [0, 1, 2, 3, 4], 'BDMT': [0, 1]}
-
-    type_config = TypeConfig(base_id = 'supplies_car',
-                            template = 'car_with_visible_cargo.pynml',
-                            num_cargo_rows = 5,
-                            class_refit_groups = [],
-                            cargo_graphics_mappings = cargo_graphics_mappings,
-                            label_refits_allowed = list(cargo_graphics_mappings.keys()),
-                            label_refits_disallowed = [],
-                            autorefit = True,
-                            default_cargo = 'ENSP',
-                            default_capacity_type = 'capacity_freight',
-                            date_variant_var = 'current_year')
-
+    """
+    Specialist vehicle for supplies and building materials
+    """
     def __init__(self, **kwargs):
-        super(SuppliesConsist, self).__init__(self.type_config, **kwargs)
+        self.base_id = 'supplies_car'
+        super(SuppliesConsist, self).__init__(**kwargs)
+        self.template = 'car_with_visible_cargo.pynml'
+        # cargo rows 0 indexed - 0 = first set of loaded sprites
+        self.cargo_graphics_mappings = {'ENSP': [0, 1, 2, 3, 4], 'FMSP': [0, 1, 2, 3, 4], 'VEHI': [0, 1, 2, 3, 4], 'BDMT': [0, 1]}
+        self.num_cargo_rows = 5
+        self.class_refit_groups = []
+        self.label_refits_allowed = list(self.cargo_graphics_mappings.keys())
+        self.label_refits_disallowed = []
+        self.autorefit = True
+        self.default_cargo = 'ENSP'
+        self.default_capacity_type = 'capacity_freight'
+        self.date_variant_var = 'current_year'
 
 
 class TankConsist(WagonConsist):
-    # Class properties, no particular reason, no harm either
-    # tank cars are unrealistically autorefittable, and at no cost
-    # Pikka: if people complain that it's unrealistic, tell them "don't do it then"
-    # they also change livery at stations if refitted between certain cargo types <shrug>
-    cargo_graphics_mappings = {'OIL_': [0], 'PETR': [1], 'RFPR': [2]}
-
-    type_config = TypeConfig(base_id = 'tank_car',
-                             template = 'car_with_cargo_specific_liveries.pynml',
-                             num_cargo_rows = 3, # update if more cargo graphic variations are added
-                             cargo_graphics_mappings = cargo_graphics_mappings,
-                             class_refit_groups = ['liquids'],
-                             label_refits_allowed = list(cargo_graphics_mappings.keys()),
-                             label_refits_disallowed = global_constants.disallowed_refits_by_label['edible_liquids'],
-                             autorefit = True,
-                             default_cargo = 'OIL_',
-                             default_capacity_type = 'capacity_freight',
-                             loading_speed_multiplier = 3)
-
+    """
+    All non-edible liquid cargos
+    """
     def __init__(self, **kwargs):
-        super(TankConsist, self).__init__(self.type_config, **kwargs)
+        self.base_id = 'tank_car'
+        super(TankConsist, self).__init__(**kwargs)
+        self.template = 'car_with_cargo_specific_liveries.pynml'
+        # tank cars are unrealistically autorefittable, and at no cost
+        # Pikka: if people complain that it's unrealistic, tell them "don't do it then"
+        # they also change livery at stations if refitted between certain cargo types <shrug>
+        self.cargo_graphics_mappings = {'OIL_': [0], 'PETR': [1], 'RFPR': [2]}
+        self.num_cargo_rows = 3 # update if more cargo graphic variations are added
+        self.class_refit_groups = ['liquids']
+        self.label_refits_allowed = list(self.cargo_graphics_mappings.keys())
+        self.label_refits_disallowed = global_constants.disallowed_refits_by_label['edible_liquids']
+        self.autorefit = True
+        self.default_cargo = 'OIL_'
+        self.default_capacity_type = 'capacity_freight'
+        self.loading_speed_multiplier = 3
 
 
 class VehicleTransporterConsist(WagonConsist):
-    # Class properties, no particular reason, no harm either
-    # cargo rows 0 indexed - 0 = first set of loaded sprites
-    cargo_graphics_mappings = {'VEHI': [0, 1]}
-
-    type_config = TypeConfig(base_id = 'vehicle_transporter_car',
-                            template = 'car_with_visible_cargo.pynml',
-                            num_cargo_rows = 2,
-                            class_refit_groups = [],
-                            cargo_graphics_mappings = cargo_graphics_mappings,
-                            label_refits_allowed = list(cargo_graphics_mappings.keys()),
-                            label_refits_disallowed = [],
-                            autorefit = True,
-                            default_cargo = 'VEHI',
-                            default_capacity_type = 'capacity_freight',
-                            date_variant_var = 'current_year')
-
+    """
+    Transports vehicles cargo
+    """
     def __init__(self, **kwargs):
-        super(VehicleTransporterConsist, self).__init__(self.type_config, **kwargs)
+        self.base_id = 'vehicle_transporter_car'
+        super(VehicleTransporterConsist, self).__init__(**kwargs)
+        self.template = 'car_with_visible_cargo.pynml'
+        # cargo rows 0 indexed - 0 = first set of loaded sprites
+        self.cargo_graphics_mappings = {'VEHI': [0, 1]}
+        self.num_cargo_rows = 2
+        self.class_refit_groups = []
+        self.label_refits_allowed = list(self.cargo_graphics_mappings.keys())
+        self.label_refits_disallowed = []
+        self.autorefit = True
+        self.default_cargo = 'VEHI'
+        self.default_capacity_type = 'capacity_freight'
+        self.date_variant_var = 'current_year'
+
 
 
 class Wagon(Train):
@@ -1043,17 +1004,19 @@ class Wagon(Train):
     """
     def __init__(self, **kwargs):
         super(Wagon, self).__init__(**kwargs)
-        self.type_config = kwargs['consist'].type_config
-        self.template = self.type_config.template
-        self.class_refit_groups = self.type_config.class_refit_groups
-        self.label_refits_allowed = self.type_config.label_refits_allowed
-        self.label_refits_disallowed = self.type_config.label_refits_disallowed
-        self.autorefit = self.type_config.autorefit
-        self.default_cargo = self.type_config.default_cargo
-        self.default_cargo_capacities = self.get_capacity_variations(kwargs.get(self.type_config.default_capacity_type, 0))
-        if self.type_config.loading_speed_multiplier != None:
-            self.loading_speed_multiplier = self.type_config.loading_speed_multiplier
-        self.cargo_age_period = self.type_config.cargo_age_period
+        self.consist = kwargs['consist']
+        self.template = self.consist.template
+        self.class_refit_groups = self.consist.class_refit_groups
+        self.label_refits_allowed = self.consist.label_refits_allowed
+        self.label_refits_disallowed = self.consist.label_refits_disallowed
+        if hasattr(self.consist, 'autorefit'):
+            self.autorefit = self.consist.autorefit
+        self.default_cargo = self.consist.default_cargo
+        self.default_cargo_capacities = self.get_capacity_variations(kwargs.get(self.consist.default_capacity_type, 0))
+        if hasattr(self.consist, 'loading_speed_multiplier'):
+            self.loading_speed_multiplier = self.consist.loading_speed_multiplier
+        if hasattr(self.consist, 'cargo_age_period'):
+            self.cargo_age_period = self.consist.cargo_age_period
 
 
 class SteamLoco(Train):
