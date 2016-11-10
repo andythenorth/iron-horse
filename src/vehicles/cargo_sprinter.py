@@ -1,16 +1,6 @@
-import graphics_processor.utils as graphics_utils
-from train import EngineConsist, CargoSprinter, GraphicsProcessorFactory
+from train import EngineConsist, CargoSprinter
 
 # cargo_sprinter is full of special cases, lots of yak-shaving to get it done
-
-recolour_maps = graphics_utils.get_container_recolour_maps()
-graphics_options = {'template': 'cargo_sprinter_template_0.png',
-           'recolour_maps': (recolour_maps),
-           'copy_block_top_offset': 0,
-           'num_rows_per_unit': 3,
-           'num_unit_types': 3}
-graphics_processor_1 = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options)
-
 consist = EngineConsist(id = 'cargo_sprinter',
                         base_numeric_id = 100,
                         title = 'Cargo Sprinter [Diesel]',
@@ -32,12 +22,10 @@ consist = EngineConsist(id = 'cargo_sprinter',
 consist.add_unit(CargoSprinter(consist = consist,
                                weight = 46,
                                vehicle_length = 7,
-                               capacity_freight = 36, # matched to 1.5x standard Road Hog and Squid containers
-                               num_random_cargo_variants = len(graphics_options['recolour_maps']),
-                               cargos_with_tanktainer_graphics = ['BEER', 'MILK', 'WATR']),
+                               capacity_freight = 36), # matched to 1.5x standard Road Hog and Squid containers
                                repeat=2)
 
 consist.add_model_variant(intro_date=0,
                           end_date=1986,
                           spritesheet_suffix=0,
-                          graphics_processor = graphics_processor_1)
+                          graphics_processor = consist.graphics_processors)

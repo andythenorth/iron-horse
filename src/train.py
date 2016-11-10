@@ -16,6 +16,7 @@ templates = PageTemplateLoader(os.path.join(currentdir, 'src', 'templates'))
 
 import graphics_processor
 import graphics_processor.pipelines
+import graphics_processor.utils as graphics_utils
 
 from rosters import registered_rosters
 from vehicles import numeric_id_defender
@@ -933,7 +934,7 @@ class OpenConsist(WagonConsist):
 
     @property
     def graphics_processors(self):
-        recolour_maps = graphics_processor.utils.get_bulk_cargo_recolour_maps()
+        recolour_maps = graphics_utils.get_bulk_cargo_recolour_maps()
         graphics_options_master = {'template': 'filename.png',
                                    'recolour_maps': (recolour_maps),
                                    'copy_block_top_offset': 90,
@@ -1205,8 +1206,22 @@ class CargoSprinter(Train):
         self.default_cargo = 'GOOD'
         self.engine_class = 'ENGINE_CLASS_DIESEL'
         self.visual_effect = 'VISUAL_EFFECT_DISABLE' # intended - positioning smoke correctly for this vehicle type is too fiddly
-        self.consist.num_random_cargo_variants = kwargs.get('num_random_cargo_variants')
-        self.consist.cargos_with_tanktainer_graphics = kwargs.get('cargos_with_tanktainer_graphics')
+        # graphics processor stuff also used at __init__ time
+        self.consist.recolour_maps = graphics_utils.get_container_recolour_maps()
+        self.consist.num_random_cargo_variants = len(self.consist.recolour_maps)
+        self.consist.cargos_with_tanktainer_graphics = ['BEER', 'MILK', 'WATR'] # !! unfinished currently??
+         # ugh, the graphics consists are applied to the consist in all other cases,
+         # but CargoSprinter doesn't have a dedicated consist subclass, so processors are on the unit, with this nasty passthrough
+        self.consist.graphics_processors = self.graphics_processors
+
+    @property
+    def graphics_processors(self):
+        graphics_options = {'template': 'cargo_sprinter_template_0.png',
+                           'recolour_maps': self.consist.recolour_maps,
+                           'copy_block_top_offset': 0,
+                           'num_rows_per_unit': 3,
+                           'num_unit_types': 3}
+        return GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options)
 
 
 class MailCar(Wagon):
