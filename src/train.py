@@ -831,6 +831,23 @@ class HopperConsist(WagonConsist):
         self.default_capacity_type = 'capacity_freight'
         self.loading_speed_multiplier = 2
 
+    @property
+    def graphics_processors(self):
+        recolour_maps = graphics_utils.get_bulk_cargo_recolour_maps()
+        graphics_options_master = {'template': '',
+                                   'recolour_maps': (recolour_maps),
+                                   'copy_block_top_offset': 30,
+                                   'num_rows_per_unit': 2,
+                                   'num_unit_types': 1}
+
+        graphics_options_1 = dict((k, v) for (k, v) in graphics_options_master.items())
+        graphics_options_1['template'] = self.id + '_template_0.png'
+        graphics_options_2 = dict((k, v) for (k, v) in graphics_options_1.items())
+        graphics_options_2['swap_company_colours'] = True
+        pass_through = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_1)
+        swap_company_colours = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_2)
+        return {'pass_through': pass_through, 'swap_company_colours': swap_company_colours}
+
 
 class IntermodalConsist(WagonConsist):
     """

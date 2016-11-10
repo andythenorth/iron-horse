@@ -1,22 +1,5 @@
 import global_constants
-import graphics_processor.utils as graphics_utils
-from train import HopperConsist, Wagon, GraphicsProcessorFactory
-
-def get_graphics_processors(template):
-    recolour_maps = graphics_utils.get_bulk_cargo_recolour_maps()
-    graphics_options_master = {'template': '',
-                               'recolour_maps': (recolour_maps),
-                               'copy_block_top_offset': 30,
-                               'num_rows_per_unit': 2,
-                               'num_unit_types': 1}
-
-    graphics_options_1 = dict((k, v) for (k, v) in graphics_options_master.items())
-    graphics_options_1['template'] = template
-    graphics_options_2 = dict((k, v) for (k, v) in graphics_options_1.items())
-    graphics_options_2['swap_company_colours'] = True
-    graphics_processor_1 = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_1)
-    graphics_processor_2 = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_2)
-    return (graphics_processor_1, graphics_processor_2)
+from train import HopperConsist, Wagon
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
@@ -33,17 +16,15 @@ def main():
                            weight = 10,
                            vehicle_length = 5))
 
-    graphics_processors = get_graphics_processors('hopper_car_pony_gen_1_template_0.png')
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=0,
+                           graphics_processor=consist.graphics_processors['pass_through'])
 
     consist.add_model_variant(intro_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=0,
-                              graphics_processor=graphics_processors[0])
-
-    consist.add_model_variant(intro_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=1,
-                              graphics_processor=graphics_processors[1])
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=1,
+                           graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
     consist = HopperConsist(title = '[Hopper Car]',
@@ -59,17 +40,15 @@ def main():
                            weight = 20,
                            vehicle_length = 8))
 
-    graphics_processors = get_graphics_processors('hopper_car_pony_gen_2_template_0.png')
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=0,
+                           graphics_processor=consist.graphics_processors['pass_through'])
 
     consist.add_model_variant(intro_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=0,
-                              graphics_processor=graphics_processors[0])
-
-    consist.add_model_variant(intro_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=1,
-                              graphics_processor=graphics_processors[1])
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=1,
+                           graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
     consist = HopperConsist(title = '[Hopper Car]',
@@ -84,17 +63,15 @@ def main():
                            weight = 27,
                            vehicle_length = 10))
 
-    graphics_processors = get_graphics_processors('hopper_car_pony_gen_3_template_0.png')
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=0,
+                           graphics_processor=consist.graphics_processors['pass_through'])
 
     consist.add_model_variant(intro_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=0,
-                              graphics_processor=graphics_processors[0])
-
-    consist.add_model_variant(intro_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=1,
-                              graphics_processor=graphics_processors[1])
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=1,
+                           graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
     #--------------- llama ----------------------------------------------------------------------
@@ -110,17 +87,15 @@ def main():
                            weight = 20,
                            vehicle_length = 6))
 
-    graphics_processors = get_graphics_processors('hopper_car_llama_gen_2_template_0.png')
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=0,
+                           graphics_processor=consist.graphics_processors['pass_through'])
 
     consist.add_model_variant(intro_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=0,
-                              graphics_processor=graphics_processors[0])
-
-    consist.add_model_variant(intro_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=1,
-                              graphics_processor=graphics_processors[1])
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=1,
+                           graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
     consist = HopperConsist(title = '[Hopper Car]',
@@ -135,18 +110,15 @@ def main():
                            weight = 25,
                            vehicle_length = 6))
 
-    graphics_processors = get_graphics_processors('hopper_car_llama_gen_3_template_0.png')
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=0,
+                           graphics_processor=consist.graphics_processors['pass_through'])
 
     consist.add_model_variant(intro_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=0,
-                              graphics_processor=graphics_processors[0])
-
-    consist.add_model_variant(intro_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=1,
-                              graphics_processor=graphics_processors[1])
-
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=1,
+                           graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
     consist = HopperConsist(title = '[Rotary Gondola Car]',
@@ -162,17 +134,15 @@ def main():
                            weight = 20,
                            vehicle_length = 6))
 
-    graphics_processors = get_graphics_processors('hopper_car_ng_llama_gen_2_template_0.png')
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=0,
+                           graphics_processor=consist.graphics_processors['pass_through'])
 
     consist.add_model_variant(intro_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=0,
-                              graphics_processor=graphics_processors[0])
-
-    consist.add_model_variant(intro_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=1,
-                              graphics_processor=graphics_processors[1])
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=1,
+                           graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
     consist = HopperConsist(title = '[Hopper Car]',
@@ -188,17 +158,15 @@ def main():
                            weight = 25,
                            vehicle_length = 6))
 
-    graphics_processors = get_graphics_processors('hopper_car_ng_llama_gen_3_template_0.png')
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=0,
+                           graphics_processor=consist.graphics_processors['pass_through'])
 
     consist.add_model_variant(intro_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=0,
-                              graphics_processor=graphics_processors[0])
-
-    consist.add_model_variant(intro_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=1,
-                              graphics_processor=graphics_processors[1])
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=1,
+                           graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
     #--------------- antelope ----------------------------------------------------------------------
@@ -214,17 +182,15 @@ def main():
                            weight = 20,
                            vehicle_length = 6))
 
-    graphics_processors = get_graphics_processors('hopper_car_antelope_gen_1_template_0.png')
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=0,
+                           graphics_processor=consist.graphics_processors['pass_through'])
 
     consist.add_model_variant(intro_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=0,
-                              graphics_processor=graphics_processors[0])
-
-    consist.add_model_variant(intro_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=1,
-                              graphics_processor=graphics_processors[1])
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=1,
+                           graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
     consist = HopperConsist(title = '[Rotary Gondola Car]',
@@ -239,17 +205,15 @@ def main():
                            weight = 25,
                            vehicle_length = 6))
 
-    graphics_processors = get_graphics_processors('hopper_car_antelope_gen_2_template_0.png')
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=0,
+                           graphics_processor=consist.graphics_processors['pass_through'])
 
     consist.add_model_variant(intro_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=0,
-                              graphics_processor=graphics_processors[0])
-
-    consist.add_model_variant(intro_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=1,
-                              graphics_processor=graphics_processors[1])
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=1,
+                           graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
     # no gen 1 NG hopper in Antelope, straight to gen 2
@@ -267,16 +231,14 @@ def main():
                            weight = 20,
                            vehicle_length = 6))
 
-    graphics_processors = get_graphics_processors('hopper_car_ng_antelope_gen_2_template_0.png')
+    consist.add_model_variant(intro_date=0,
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=0,
+                           graphics_processor=consist.graphics_processors['pass_through'])
 
     consist.add_model_variant(intro_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=0,
-                              graphics_processor=graphics_processors[0])
-
-    consist.add_model_variant(intro_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=1,
-                              graphics_processor=graphics_processors[1])
+                           end_date=global_constants.max_game_date,
+                           spritesheet_suffix=1,
+                           graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
