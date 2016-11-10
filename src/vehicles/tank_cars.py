@@ -16,7 +16,7 @@ def main():
                             weight = 12,
                             vehicle_length = 5))
 
-    options = {'template': 'tank_car_pony_gen_1_template.png'}
+    options = {'template': 'tank_car_pony_gen_1_template_0.png'}
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
@@ -42,7 +42,7 @@ def main():
                             weight = 27,
                             vehicle_length = 8))
 
-    options = {'template': 'tank_car_pony_gen_2_template.png'}
+    options = {'template': 'tank_car_pony_gen_2_template_0.png'}
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
@@ -64,7 +64,7 @@ def main():
                       track_type = 'NG',
                       use_legacy_spritesheet = True)
 
-    options = {'template': 'tank_car_ng_pony_gen_1_template.png'}
+    options = {'template': 'tank_car_ng_pony_gen_1_template_0.png'}
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 12,
@@ -95,7 +95,7 @@ def main():
                             weight = 12,
                             vehicle_length = 5))
 
-    options = {'template': 'tank_car_llama_gen_1_template.png'}
+    options = {'template': 'tank_car_llama_gen_1_template_0.png'}
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
@@ -120,7 +120,7 @@ def main():
                             weight = 18,
                             vehicle_length = 5))
 
-    options = {'template': 'tank_car_llama_gen_2_template.png'}
+    options = {'template': 'tank_car_llama_gen_2_template_0.png'}
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
@@ -145,7 +145,7 @@ def main():
                             weight = 12,
                             vehicle_length = 8))
 
-    options = {'template': 'tank_car_llama_gen_3_template.png'}
+    options = {'template': 'tank_car_llama_gen_3_template_0.png'}
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
@@ -166,7 +166,7 @@ def main():
                       vehicle_life = 40,
                       track_type = 'NG')
 
-    options = {'template': 'tank_car_ng_llama_gen_1_template.png'}
+    options = {'template': 'tank_car_ng_llama_gen_1_template_0.png'}
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 20,
@@ -192,7 +192,7 @@ def main():
                       vehicle_life = 40,
                       track_type = 'NG')
 
-    options = {'template': 'tank_car_ng_llama_gen_1_template.png'}
+    options = {'template': 'tank_car_ng_llama_gen_1_template_0.png'}
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 40,
@@ -224,7 +224,7 @@ def main():
                             weight = 18,
                             vehicle_length = 6))
 
-    options = {'template': 'tank_car_antelope_gen_1_template.png'}
+    options = {'template': 'tank_car_antelope_gen_1_template_0.png'}
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
@@ -250,7 +250,7 @@ def main():
                             weight = 35,
                             vehicle_length = 8))
 
-    options = {'template': 'tank_car_antelope_gen_2_template.png'}
+    options = {'template': 'tank_car_antelope_gen_2_template_0.png'}
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
@@ -276,7 +276,7 @@ def main():
                             weight = 16,
                             vehicle_length = 5))
 
-    options = {'template': 'tank_car_ng_antelope_gen_1_template.png'}
+    options = {'template': 'tank_car_ng_antelope_gen_1_template_0.png'}
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
@@ -303,7 +303,7 @@ def main():
                             weight = 20,
                             vehicle_length = 6))
 
-    options = {'template': 'tank_car_ng_antelope_gen_2_template.png'}
+    options = {'template': 'tank_car_ng_antelope_gen_2_template_0.png'}
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,

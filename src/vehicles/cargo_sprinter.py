@@ -4,7 +4,7 @@ from train import EngineConsist, CargoSprinter, GraphicsProcessorFactory
 # cargo_sprinter is full of special cases, lots of yak-shaving to get it done
 
 recolour_maps = graphics_utils.get_container_recolour_maps()
-graphics_options = {'template': 'cargo_sprinter_template.png',
+graphics_options = {'template': 'cargo_sprinter_template_0.png',
            'recolour_maps': (recolour_maps),
            'copy_block_top_offset': 0,
            'num_rows_per_unit': 3,

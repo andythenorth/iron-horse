@@ -665,7 +665,7 @@ class BoxConsist(WagonConsist):
 
     @property
     def graphics_processors(self):
-        options = {'template': self.id + '_template.png'}
+        options = {'template': self.id + '_template_0.png'}
         pass_through = GraphicsProcessorFactory('pass_through_pipeline', options)
         swap_company_colours = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
         return {'pass_through': pass_through, 'swap_company_colours': swap_company_colours}
@@ -721,7 +721,7 @@ class CoveredHopperConsist(WagonConsist):
 
     @property
     def graphics_processors(self):
-        options = {'template': self.id + '_template.png'}
+        options = {'template': self.id + '_template_0.png'}
         pass_through = GraphicsProcessorFactory('pass_through_pipeline', options)
         swap_company_colours = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
         return {'pass_through': pass_through, 'swap_company_colours': swap_company_colours}
@@ -748,7 +748,7 @@ class EdiblesTankConsist(WagonConsist):
 
     @property
     def graphics_processors(self):
-        options = {'template': self.id + '_template.png'}
+        options = {'template': self.id + '_template_0.png'}
         pass_through = GraphicsProcessorFactory('pass_through_pipeline', options)
         swap_company_colours = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
         return {'pass_through': pass_through, 'swap_company_colours': swap_company_colours}
@@ -774,7 +774,7 @@ class FlatConsist(WagonConsist):
 
     @property
     def graphics_processors(self):
-        options = {'template': self.id + '_template.png'}
+        options = {'template': self.id + '_template_0.png'}
         pass_through = GraphicsProcessorFactory('pass_through_pipeline', options)
         swap_company_colours = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
         return {'pass_through': pass_through, 'swap_company_colours': swap_company_colours}
@@ -800,7 +800,7 @@ class FruitConsist(WagonConsist):
 
     @property
     def graphics_processors(self):
-        options = {'template': self.id + '_template.png'}
+        options = {'template': self.id + '_template_0.png'}
         pass_through = GraphicsProcessorFactory('pass_through_pipeline', options)
         swap_company_colours = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
         return {'pass_through': pass_through, 'swap_company_colours': swap_company_colours}
@@ -969,7 +969,7 @@ class ReeferConsist(WagonConsist):
 
     @property
     def graphics_processors(self):
-        options = {'template': self.id + '_template.png'}
+        options = {'template': self.id + '_template_0.png'}
         pass_through = GraphicsProcessorFactory('pass_through_pipeline', options)
         swap_company_colours = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
         return {'pass_through': pass_through, 'swap_company_colours': swap_company_colours}
@@ -993,6 +993,13 @@ class SuppliesConsist(WagonConsist):
         self.default_cargo = 'ENSP'
         self.default_capacity_type = 'capacity_freight'
         self.date_variant_var = 'current_year'
+
+    @property
+    def graphics_processors(self):
+        options = {'template': self.id + '_template_0.png'}
+        pass_through = GraphicsProcessorFactory('pass_through_pipeline', options)
+        swap_company_colours = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
+        return {'pass_through': pass_through, 'swap_company_colours': swap_company_colours}
 
 
 class TankConsist(WagonConsist):
@@ -1038,7 +1045,7 @@ class VehicleTransporterConsist(WagonConsist):
 
     @property
     def graphics_processors(self):
-        options = {'template': self.id + '_template.png'}
+        options = {'template': self.id + '_template_0.png'}
         pass_through = GraphicsProcessorFactory('pass_through_pipeline', options)
         swap_company_colours = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
         return {'pass_through': pass_through, 'swap_company_colours': swap_company_colours}

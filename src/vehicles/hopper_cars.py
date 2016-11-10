@@ -33,7 +33,7 @@ def main():
                            weight = 10,
                            vehicle_length = 5))
 
-    graphics_processors = get_graphics_processors('hopper_car_pony_gen_1_template.png')
+    graphics_processors = get_graphics_processors('hopper_car_pony_gen_1_template_0.png')
 
     consist.add_model_variant(intro_date=0,
                               end_date=global_constants.max_game_date,
@@ -59,7 +59,7 @@ def main():
                            weight = 20,
                            vehicle_length = 8))
 
-    graphics_processors = get_graphics_processors('hopper_car_pony_gen_2_template.png')
+    graphics_processors = get_graphics_processors('hopper_car_pony_gen_2_template_0.png')
 
     consist.add_model_variant(intro_date=0,
                               end_date=global_constants.max_game_date,
@@ -84,7 +84,7 @@ def main():
                            weight = 27,
                            vehicle_length = 10))
 
-    graphics_processors = get_graphics_processors('hopper_car_pony_gen_3_template.png')
+    graphics_processors = get_graphics_processors('hopper_car_pony_gen_3_template_0.png')
 
     consist.add_model_variant(intro_date=0,
                               end_date=global_constants.max_game_date,
@@ -110,7 +110,7 @@ def main():
                            weight = 20,
                            vehicle_length = 6))
 
-    graphics_processors = get_graphics_processors('hopper_car_llama_gen_2_template.png')
+    graphics_processors = get_graphics_processors('hopper_car_llama_gen_2_template_0.png')
 
     consist.add_model_variant(intro_date=0,
                               end_date=global_constants.max_game_date,
@@ -135,7 +135,7 @@ def main():
                            weight = 25,
                            vehicle_length = 6))
 
-    graphics_processors = get_graphics_processors('hopper_car_llama_gen_3_template.png')
+    graphics_processors = get_graphics_processors('hopper_car_llama_gen_3_template_0.png')
 
     consist.add_model_variant(intro_date=0,
                               end_date=global_constants.max_game_date,
@@ -162,7 +162,7 @@ def main():
                            weight = 20,
                            vehicle_length = 6))
 
-    graphics_processors = get_graphics_processors('hopper_car_ng_llama_gen_2_template.png')
+    graphics_processors = get_graphics_processors('hopper_car_ng_llama_gen_2_template_0.png')
 
     consist.add_model_variant(intro_date=0,
                               end_date=global_constants.max_game_date,
@@ -188,7 +188,7 @@ def main():
                            weight = 25,
                            vehicle_length = 6))
 
-    graphics_processors = get_graphics_processors('hopper_car_ng_llama_gen_3_template.png')
+    graphics_processors = get_graphics_processors('hopper_car_ng_llama_gen_3_template_0.png')
 
     consist.add_model_variant(intro_date=0,
                               end_date=global_constants.max_game_date,
@@ -214,7 +214,7 @@ def main():
                            weight = 20,
                            vehicle_length = 6))
 
-    graphics_processors = get_graphics_processors('hopper_car_antelope_gen_1_template.png')
+    graphics_processors = get_graphics_processors('hopper_car_antelope_gen_1_template_0.png')
 
     consist.add_model_variant(intro_date=0,
                               end_date=global_constants.max_game_date,
@@ -239,7 +239,7 @@ def main():
                            weight = 25,
                            vehicle_length = 6))
 
-    graphics_processors = get_graphics_processors('hopper_car_antelope_gen_2_template.png')
+    graphics_processors = get_graphics_processors('hopper_car_antelope_gen_2_template_0.png')
 
     consist.add_model_variant(intro_date=0,
                               end_date=global_constants.max_game_date,
@@ -267,7 +267,7 @@ def main():
                            weight = 20,
                            vehicle_length = 6))
 
-    graphics_processors = get_graphics_processors('hopper_car_ng_antelope_gen_2_template.png')
+    graphics_processors = get_graphics_processors('hopper_car_ng_antelope_gen_2_template_0.png')
 
     consist.add_model_variant(intro_date=0,
                               end_date=global_constants.max_game_date,

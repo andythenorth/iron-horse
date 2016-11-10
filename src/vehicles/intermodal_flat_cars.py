@@ -25,7 +25,7 @@ def main():
                             weight = 20,
                             vehicle_length = 8))
 
-    graphics_options['template'] = 'intermodal_flat_car_pony_gen_3_template.png'
+    graphics_options['template'] = 'intermodal_flat_car_pony_gen_3_template_0.png'
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
