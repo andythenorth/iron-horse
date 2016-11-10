@@ -1,31 +1,15 @@
 import global_constants
-from train import TypeConfig, WagonConsist, BoxCar, GraphicsProcessorFactory
-
-box_car_label_refits_allowed = ['MAIL', 'GRAI', 'WHEA', 'MAIZ', 'FRUT', 'BEAN', 'NITR']
-cargo_graphics_mappings = {} # template needs this, but box car has zero cargo-specific graphics, all generic
-
-type_config_normal = TypeConfig(base_id = 'box_car',
-                    template = 'car_with_open_doors_during_loading.pynml',
-                    num_cargo_rows = 1, # template needs this, but box car has zero cargo-specific graphics, all generic
-                    cargo_graphics_mappings = cargo_graphics_mappings,
-                    class_refit_groups = ['packaged_freight'],
-                    label_refits_allowed = box_car_label_refits_allowed,
-                    label_refits_disallowed = global_constants.disallowed_refits_by_label['non_freight_special_cases'],
-                    autorefit = True,
-                    default_cargo = 'GOOD',
-                    default_capacity_type = 'capacity_freight')
-
+from train import BoxConsist, BoxCar, GraphicsProcessorFactory
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
-    consist = WagonConsist(type_config = type_config_normal,
-                        title = '[Box Car]',
-                        roster = 'pony',
-                        base_numeric_id = 550,
-                        wagon_generation = 1,
-                        replacement_id = '-none',
-                        intro_date = 1860,
-                        vehicle_life = 40)
+    consist = BoxConsist(title = '[Box Car]',
+                         roster = 'pony',
+                         base_numeric_id = 550,
+                         wagon_generation = 1,
+                         replacement_id = '-none',
+                         intro_date = 1860,
+                         vehicle_life = 40)
 
     consist.add_unit(BoxCar(consist = consist,
                             capacity_freight = 20,
@@ -46,15 +30,14 @@ def main():
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
 
-    consist = WagonConsist(type_config = type_config_normal,
-                        title = '[Box Car]',
-                        roster = 'pony',
-                        base_numeric_id = 560,
-                        wagon_generation = 2,
-                        replacement_id = '-none',
-                        intro_date = 1950,
-                        vehicle_life = 40,
-                        use_legacy_spritesheet = True)
+    consist = BoxConsist(title = '[Box Car]',
+                         roster = 'pony',
+                         base_numeric_id = 560,
+                         wagon_generation = 2,
+                         replacement_id = '-none',
+                         intro_date = 1950,
+                         vehicle_life = 40,
+                         use_legacy_spritesheet = True)
 
     consist.add_unit(BoxCar(consist = consist,
                             capacity_freight = 35,
@@ -75,14 +58,13 @@ def main():
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
 
-    consist = WagonConsist(type_config = type_config_normal,
-                        title = '[Box Car]',
-                        roster = 'pony',
-                        base_numeric_id = 570,
-                        wagon_generation = 3,
-                        replacement_id = '-none',
-                        intro_date = 1995,
-                        vehicle_life = 40)
+    consist = BoxConsist(title = '[Box Car]',
+                         roster = 'pony',
+                         base_numeric_id = 570,
+                         wagon_generation = 3,
+                         replacement_id = '-none',
+                         intro_date = 1995,
+                         vehicle_life = 40)
 
     consist.add_unit(BoxCar(consist = consist,
                             capacity_freight = 55,
@@ -103,16 +85,15 @@ def main():
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
 
-    consist = WagonConsist(type_config = type_config_normal,
-                        title = '[Box Car]',
-                        roster = 'pony',
-                        base_numeric_id = 580,
-                        wagon_generation = 1,
-                        replacement_id = '-none',
-                        intro_date = 1860,
-                        vehicle_life = 40,
-                        track_type = 'NG',
-                        use_legacy_spritesheet = True)
+    consist = BoxConsist(title = '[Box Car]',
+                         roster = 'pony',
+                         base_numeric_id = 580,
+                         wagon_generation = 1,
+                         replacement_id = '-none',
+                         intro_date = 1860,
+                         vehicle_life = 40,
+                         track_type = 'NG',
+                         use_legacy_spritesheet = True)
 
     consist.add_unit(BoxCar(consist = consist,
                             capacity_freight = 12,
@@ -134,8 +115,7 @@ def main():
 
 
     #--------------- llama ----------------------------------------------------------------------
-    consist = WagonConsist(type_config = type_config_normal,
-                        title = '[Box Car]',
+    consist = BoxConsist(title = '[Box Car]',
                         roster = 'llama',
                         base_numeric_id = 590,
                         wagon_generation = 1,
@@ -162,14 +142,13 @@ def main():
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
 
-    consist = WagonConsist(type_config = type_config_normal,
-                        title = '[Box Car]',
-                        roster = 'llama',
-                        base_numeric_id = 600,
-                        wagon_generation = 2,
-                        replacement_id = '-none',
-                        intro_date = 1920,
-                        vehicle_life = 40)
+    consist = BoxConsist(title = '[Box Car]',
+                         roster = 'llama',
+                         base_numeric_id = 600,
+                         wagon_generation = 2,
+                         replacement_id = '-none',
+                         intro_date = 1920,
+                         vehicle_life = 40)
 
     consist.add_unit(BoxCar(consist = consist,
                             capacity_freight = 45,
@@ -190,14 +169,13 @@ def main():
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
 
-    consist = WagonConsist(type_config = type_config_normal,
-                        title = '[Box Car]',
-                        roster = 'llama',
-                        base_numeric_id = 610,
-                        wagon_generation = 3,
-                        replacement_id = '-none',
-                        intro_date = 1980,
-                        vehicle_life = 40)
+    consist = BoxConsist(title = '[Box Car]',
+                         roster = 'llama',
+                         base_numeric_id = 610,
+                         wagon_generation = 3,
+                         replacement_id = '-none',
+                         intro_date = 1980,
+                         vehicle_life = 40)
 
     consist.add_unit(BoxCar(consist = consist,
                             capacity_freight = 65,
@@ -218,8 +196,7 @@ def main():
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
 
-    consist = WagonConsist(type_config = type_config_normal,
-                        title = '[Box Car]',
+    consist = BoxConsist(title = '[Box Car]',
                         roster = 'llama',
                         base_numeric_id = 620,
                         wagon_generation = 1,
@@ -246,15 +223,14 @@ def main():
                            spritesheet_suffix=1,
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
-    consist = WagonConsist(type_config = type_config_normal,
-                        title = '[Box Car]',
-                        roster = 'llama',
-                        base_numeric_id = 1310,
-                        wagon_generation = 2,
-                        replacement_id = '-none',
-                        intro_date = 1920,
-                        vehicle_life = 40,
-                        track_type = 'NG')
+    consist = BoxConsist(title = '[Box Car]',
+                         roster = 'llama',
+                         base_numeric_id = 1310,
+                         wagon_generation = 2,
+                         replacement_id = '-none',
+                         intro_date = 1920,
+                         vehicle_life = 40,
+                         track_type = 'NG')
 
     consist.add_unit(BoxCar(consist = consist,
                             capacity_freight = 35,
@@ -276,14 +252,13 @@ def main():
 
 
     #--------------- antelope ----------------------------------------------------------------------
-    consist = WagonConsist(type_config = type_config_normal,
-                        title = '[Box Car]',
-                        roster = 'antelope',
-                        base_numeric_id = 1750,
-                        wagon_generation = 1,
-                        replacement_id = '-none',
-                        intro_date = 1950,
-                        vehicle_life = 40)
+    consist = BoxConsist(title = '[Box Car]',
+                         roster = 'antelope',
+                         base_numeric_id = 1750,
+                         wagon_generation = 1,
+                         replacement_id = '-none',
+                         intro_date = 1950,
+                         vehicle_life = 40)
 
     consist.add_unit(BoxCar(consist = consist,
                             capacity_freight = 55,
@@ -304,14 +279,13 @@ def main():
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
 
-    consist = WagonConsist(type_config = type_config_normal,
-                        title = '[Box Car]',
-                        roster = 'antelope',
-                        base_numeric_id = 1740,
-                        wagon_generation = 2,
-                        replacement_id = '-none',
-                        intro_date = 1981,
-                        vehicle_life = 40)
+    consist = BoxConsist(title = '[Box Car]',
+                         roster = 'antelope',
+                         base_numeric_id = 1740,
+                         wagon_generation = 2,
+                         replacement_id = '-none',
+                         intro_date = 1981,
+                         vehicle_life = 40)
 
     consist.add_unit(BoxCar(consist = consist,
                             capacity_freight = 70,
@@ -332,15 +306,14 @@ def main():
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
 
-    consist = WagonConsist(type_config = type_config_normal,
-                        title = '[Box Car]',
-                        roster = 'antelope',
-                        base_numeric_id = 2100,
-                        wagon_generation = 1,
-                        replacement_id = '-none',
-                        intro_date = 1860,
-                        vehicle_life = 40,
-                        track_type = 'NG')
+    consist = BoxConsist(title = '[Box Car]',
+                         roster = 'antelope',
+                         base_numeric_id = 2100,
+                         wagon_generation = 1,
+                         replacement_id = '-none',
+                         intro_date = 1860,
+                         vehicle_life = 40,
+                         track_type = 'NG')
 
     consist.add_unit(BoxCar(consist = consist,
                             capacity_freight = 20,
@@ -361,15 +334,14 @@ def main():
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
 
-    consist = WagonConsist(type_config = type_config_normal,
-                        title = '[Box Car]',
-                        roster = 'antelope',
-                        base_numeric_id = 1850,
-                        wagon_generation = 2,
-                        replacement_id = '-none',
-                        intro_date = 1915,
-                        vehicle_life = 40,
-                        track_type = 'NG')
+    consist = BoxConsist(title = '[Box Car]',
+                         roster = 'antelope',
+                         base_numeric_id = 1850,
+                         wagon_generation = 2,
+                         replacement_id = '-none',
+                         intro_date = 1915,
+                         vehicle_life = 40,
+                         track_type = 'NG')
 
     consist.add_unit(BoxCar(consist = consist,
                             capacity_freight = 30,
@@ -390,15 +362,14 @@ def main():
                            graphics_processor=GraphicsProcessorFactory('swap_company_colours_pipeline', options))
 
 
-    consist = WagonConsist(type_config = type_config_normal,
-                        title = '[Box Car]',
-                        roster = 'antelope',
-                        base_numeric_id = 1860,
-                        wagon_generation = 3,
-                        replacement_id = '-none',
-                        intro_date = 1970,
-                        vehicle_life = 40,
-                        track_type = 'NG')
+    consist = BoxConsist(title = '[Box Car]',
+                         roster = 'antelope',
+                         base_numeric_id = 1860,
+                         wagon_generation = 3,
+                         replacement_id = '-none',
+                         intro_date = 1970,
+                         vehicle_life = 40,
+                         track_type = 'NG')
 
     consist.add_unit(BoxCar(consist = consist,
                             capacity_freight = 40,

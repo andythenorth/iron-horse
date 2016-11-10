@@ -429,6 +429,7 @@ class TypeConfig(object):
     # declared once per type
     # passed to the type's consists and units
     def __init__(self, base_id, template, **kwargs):
+        print(base_id)
         self.base_id = base_id
         self.template = template
         self.track_type = kwargs.get('track_type', 'RAIL')
@@ -659,6 +660,80 @@ class WagonConsist(Consist):
             return cost / 7
         else:
             return cost / 8
+
+
+class BoxConsist(WagonConsist):
+    # Class properties, no particular reason, no harm either
+
+    box_car_label_refits_allowed = ['MAIL', 'GRAI', 'WHEA', 'MAIZ', 'FRUT', 'BEAN', 'NITR']
+    cargo_graphics_mappings = {} # template needs this, but box car has zero cargo-specific graphics, all generic
+
+    type_config = TypeConfig(base_id = 'box_car',
+                                    template = 'car_with_open_doors_during_loading.pynml',
+                                    num_cargo_rows = 1, # template needs this, but box car has zero cargo-specific graphics, all generic
+                                    cargo_graphics_mappings = cargo_graphics_mappings,
+                                    class_refit_groups = ['packaged_freight'],
+                                    label_refits_allowed = box_car_label_refits_allowed,
+                                    label_refits_disallowed = global_constants.disallowed_refits_by_label['non_freight_special_cases'],
+                                    autorefit = True,
+                                    default_cargo = 'GOOD',
+                                    default_capacity_type = 'capacity_freight')
+
+    def __init__(self, **kwargs):
+        super(BoxConsist, self).__init__(self.type_config, **kwargs)
+
+
+class CabooseConsist(WagonConsist):
+    # Class properties, no particular reason, no harm either
+
+    # no graphics processing - don't random colour cabeese, I tried it, looks daft
+
+    type_config = TypeConfig(base_id = 'caboose_car',
+                    template = 'train.pynml',
+                    class_refit_groups = [], # refit nothing, don't mess with this, it breaks auto-replace
+                    label_refits_allowed = [],
+                    label_refits_disallowed = [],
+                    default_cargo = 'GOOD', # unwanted side-effect of this is that caboose replaceable by anything refitting goods
+                    default_capacity_type = 'capacity_freight')
+
+    def __init__(self, **kwargs):
+        super(CabooseConsist, self).__init__(self.type_config, **kwargs)
+
+
+class CombineConsist(WagonConsist):
+    # Class properties, no particular reason, no harm either
+
+    type_config = TypeConfig(base_id = 'combine_car',
+                             template = 'train.pynml',
+                             class_refit_groups = ['mail', 'express_freight'],
+                             label_refits_allowed = [],
+                             label_refits_disallowed = global_constants.disallowed_refits_by_label['non_freight_special_cases'],
+                             autorefit = True,
+                             default_cargo = 'MAIL',
+                             default_capacity_type = 'capacity_mail')
+
+    def __init__(self, **kwargs):
+        super(CombineConsist, self).__init__(self.type_config, **kwargs)
+
+
+class EdiblesTankConsist(WagonConsist):
+    # Class properties, no particular reason, no harm either
+
+    # tank cars are unrealistically autorefittable, and at no cost
+    # Pikka: if people complain that it's unrealistic, tell them "don't do it then"
+    type_config = TypeConfig(base_id = 'edibles_tank_car',
+                             template = 'train.pynml',
+                             class_refit_groups = ['liquids'],
+                             label_refits_allowed = ['FOOD'],
+                             label_refits_disallowed = global_constants.disallowed_refits_by_label['non_edible_liquids'],
+                             autorefit = True,
+                             default_cargo = 'WATR',
+                             default_capacity_type = 'capacity_freight',
+                             cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD,
+                             loading_speed_multiplier = 2)
+
+    def __init__(self, **kwargs):
+        super(EdiblesTankConsist, self).__init__(self.type_config, **kwargs)
 
 
 class FruitConsist(WagonConsist):
