@@ -27,5 +27,4 @@ consist.add_unit(CargoSprinter(consist = consist,
 
 consist.add_model_variant(intro_date=0,
                           end_date=1986,
-                          spritesheet_suffix=0,
                           graphics_processor = consist.graphics_processors)

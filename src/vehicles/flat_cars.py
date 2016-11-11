@@ -18,12 +18,10 @@ def main():
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
-                           spritesheet_suffix=0,
                            graphics_processor=consist.graphics_processors['pass_through'])
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
-                           spritesheet_suffix=1,
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
@@ -42,12 +40,10 @@ def main():
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
-                           spritesheet_suffix=0,
                            graphics_processor=consist.graphics_processors['pass_through'])
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
-                           spritesheet_suffix=1,
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
@@ -65,12 +61,10 @@ def main():
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
-                           spritesheet_suffix=0,
                            graphics_processor=consist.graphics_processors['pass_through'])
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
-                           spritesheet_suffix=1,
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
@@ -89,8 +83,7 @@ def main():
                            vehicle_length = 3))
 
     consist.add_model_variant(intro_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=0)
+                              end_date=global_constants.max_game_date)
 
 
     #--------------- llama ----------------------------------------------------------------------
@@ -108,12 +101,10 @@ def main():
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
-                           spritesheet_suffix=0,
                            graphics_processor=consist.graphics_processors['pass_through'])
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
-                           spritesheet_suffix=1,
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
@@ -131,12 +122,10 @@ def main():
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
-                           spritesheet_suffix=0,
                            graphics_processor=consist.graphics_processors['pass_through'])
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
-                           spritesheet_suffix=1,
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
@@ -155,12 +144,10 @@ def main():
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
-                           spritesheet_suffix=0,
                            graphics_processor=consist.graphics_processors['pass_through'])
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
-                           spritesheet_suffix=1,
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
@@ -179,12 +166,10 @@ def main():
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
-                           spritesheet_suffix=0,
                            graphics_processor=consist.graphics_processors['pass_through'])
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
-                           spritesheet_suffix=1,
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
@@ -204,12 +189,10 @@ def main():
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
-                           spritesheet_suffix=0,
                            graphics_processor=consist.graphics_processors['pass_through'])
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
-                           spritesheet_suffix=1,
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
@@ -227,12 +210,10 @@ def main():
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
-                           spritesheet_suffix=0,
                            graphics_processor=consist.graphics_processors['pass_through'])
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
-                           spritesheet_suffix=1,
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
@@ -252,12 +233,10 @@ def main():
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
-                           spritesheet_suffix=0,
                            graphics_processor=consist.graphics_processors['pass_through'])
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
-                           spritesheet_suffix=1,
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
@@ -277,10 +256,8 @@ def main():
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
-                           spritesheet_suffix=0,
                            graphics_processor=consist.graphics_processors['pass_through'])
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
-                           spritesheet_suffix=1,
                            graphics_processor=consist.graphics_processors['swap_company_colours'])

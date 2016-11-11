@@ -62,7 +62,7 @@ class Consist(object):
         self.suppress_animated_pixel_warnings = kwargs.get('suppress_animated_pixel_warnings', False)
 
 
-    def add_model_variant(self, intro_date, end_date, spritesheet_suffix, graphics_processor=None, visual_effect_offset=None):
+    def add_model_variant(self, intro_date, end_date, graphics_processor=None, visual_effect_offset=None):
         variant_num = len(self.model_variants) # this will never ever ever be flakey and unreliable, right?
         self.model_variants.append(ModelVariant(intro_date, end_date, graphics_processor, variant_num, visual_effect_offset))
 

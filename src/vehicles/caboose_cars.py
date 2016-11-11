@@ -18,8 +18,7 @@ def main():
                             vehicle_length = 5))
 
     consist.add_model_variant(intro_date=0,
-                           end_date=global_constants.max_game_date,
-                           spritesheet_suffix=0)
+                           end_date=global_constants.max_game_date)
 
 
     consist = CabooseConsist(title = '[Caboose Car]',
@@ -37,8 +36,7 @@ def main():
                             vehicle_length = 4))
 
     consist.add_model_variant(intro_date=0,
-                           end_date=global_constants.max_game_date,
-                           spritesheet_suffix=0)
+                           end_date=global_constants.max_game_date)
 
     #--------------- llama ----------------------------------------------------------------------
     consist = CabooseConsist(title = '[Caboose Car]',
@@ -55,8 +53,7 @@ def main():
                             vehicle_length = 5))
 
     consist.add_model_variant(intro_date=0,
-                           end_date=global_constants.max_game_date,
-                           spritesheet_suffix=0)
+                           end_date=global_constants.max_game_date)
 
 
     #--------------- antelope ----------------------------------------------------------------------
@@ -75,8 +72,7 @@ def main():
                             vehicle_length = 6))
 
     consist.add_model_variant(intro_date=0,
-                           end_date=global_constants.max_game_date,
-                           spritesheet_suffix=0)
+                           end_date=global_constants.max_game_date)
 
 
     consist = CabooseConsist(title = '[Caboose Car]',
@@ -95,7 +91,6 @@ def main():
                             vehicle_length = 6))
 
     consist.add_model_variant(intro_date=0,
-                           end_date=global_constants.max_game_date,
-                           spritesheet_suffix=0)
+                           end_date=global_constants.max_game_date)
 
 
