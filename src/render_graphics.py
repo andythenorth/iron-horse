@@ -54,13 +54,7 @@ def main():
     consists = iron_horse.get_consists_in_buy_menu_order()
     variants = []
     for consist in consists:
-        spritesheet_suffixes_seen = []
         for variant in consist.model_variants:
-            # raise if spritesheet_suffix number is a duplicate
-            if variant.spritesheet_suffix in spritesheet_suffixes_seen:
-                raise AssertionError("Duplicate spritesheet suffix in consist " + consist.id + ": " + str(variant.spritesheet_suffix))
-            else:
-                spritesheet_suffixes_seen.append(variant.spritesheet_suffix)
             variants.append((variant, consist))
 
     # in local tests, using more workers (up to 16) results in faster graphics rendering for me

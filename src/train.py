@@ -64,7 +64,7 @@ class Consist(object):
 
     def add_model_variant(self, intro_date, end_date, spritesheet_suffix, graphics_processor=None, visual_effect_offset=None):
         variant_num = len(self.model_variants) # this will never ever ever be flakey and unreliable, right?
-        self.model_variants.append(ModelVariant(intro_date, end_date, spritesheet_suffix, graphics_processor, variant_num, visual_effect_offset))
+        self.model_variants.append(ModelVariant(intro_date, end_date, graphics_processor, variant_num, visual_effect_offset))
 
     def add_unit(self, vehicle, repeat=1):
         # vehicle ids increment by 3 because each vehicle is composed of 3 intermediate slices
@@ -125,7 +125,8 @@ class Consist(object):
         return years
 
     def get_num_spritesets(self):
-        return len(set([i.spritesheet_suffix for i in self.model_variants]))
+        #!! this should be deprecated, by design, number of model_variants is now equal to num_sprites
+        return len(set([i.variant_num for i in self.model_variants]))
 
     def get_variants_available_for_specific_year(self, year):
         # put the data in a format that's easy to render as switches
@@ -428,16 +429,15 @@ class ModelVariant(object):
     # variants are mostly randomised or date-sensitive graphics
     # must be a minimum of one variant per train
     # at least one variant must have intro date 0 (for nml switch defaults to work)
-    def __init__(self, intro_date, end_date, spritesheet_suffix, graphics_processor, variant_num, visual_effect_offset):
+    def __init__(self, intro_date, end_date, graphics_processor, variant_num, visual_effect_offset):
         self.variant_num = variant_num
         self.intro_date = intro_date
         self.end_date = end_date
-        self.spritesheet_suffix = spritesheet_suffix # use digits for these - to match spritesheet filenames
         self.graphics_processor = graphics_processor
         self.visual_effect_offset = visual_effect_offset # use digits or magic keywords, or omit
 
     def get_spritesheet_name(self, consist):
-        return consist.id + '_' + str(self.spritesheet_suffix) + '.png'
+        return consist.id + '_' + str(self.variant_num) + '.png'
 
 
 class GraphicsProcessorFactory(object):
