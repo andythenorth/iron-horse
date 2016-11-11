@@ -50,3 +50,10 @@ bulk_cargo_recolour_maps = (("AORE", {170: 42, 171: 123, 172: 74, 173: 125, 174:
                             ("SAND", {170: 108, 171: 64, 172: 65, 173: 197, 174: 36, 175: 196, 176: 197}),
                             ("SCMT", {170: 104, 171: 3, 172: 2, 173: 70, 174: 71, 175: 72, 176: 3}),
                             ("SGBT", {170: 60, 171: 53, 172: 54, 173: 55, 174: 56, 175: 57, 176: 58}))
+
+
+# Containers
+# !! simple recolouring, not cargo specific.  May need work ??  Could be cargo-specific??
+container_recolour_maps = ({170 + i: CC1 + i for i in range(8)},
+                           {170 + i: CC2 + i for i in range(8)},
+                           {170 + i: 8 + i for i in range(8)})

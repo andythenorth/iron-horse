@@ -1,17 +1,5 @@
 from graphics_processor import graphics_constants
 
-def make_colour_map(input, output, map_size):
-    result = {}
-    for i in range(map_size):
-        result[input + i] = output + i
-    return result
-
-def get_container_recolour_maps():
-    map_1 = make_colour_map(170, graphics_constants.CC1, 8)
-    map_2 = make_colour_map(170, graphics_constants.CC2, 8)
-    map_3 = make_colour_map(170, 8, 8)
-    return (map_1, map_2, map_3)
-
 def get_bulk_cargo_recolour_maps():
     # this is interim glue to the old methods whilst porting the Road Hog graphics processor to Iron Horse
     # ...we have to manually specify the spriterow<->cargo label mapping in the wagon definition anyway

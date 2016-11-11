@@ -16,6 +16,7 @@ templates = PageTemplateLoader(os.path.join(currentdir, 'src', 'templates'))
 
 import graphics_processor
 import graphics_processor.pipelines
+import graphics_processor.graphics_constants as graphics_constants
 import graphics_processor.utils as graphics_utils
 
 from rosters import registered_rosters
@@ -872,9 +873,9 @@ class IntermodalConsist(WagonConsist):
 
     @property
     def graphics_processors(self):
-        recolour_maps = graphics_utils.get_container_recolour_maps()
+        recolour_maps = graphics_constants.container_recolour_maps
         graphics_options = {'template': self.id + '_template_0.png',
-                            'recolour_maps': (recolour_maps),
+                            'recolour_maps': recolour_maps,
                             'copy_block_top_offset': 30,
                             'num_rows_per_unit': 2,
                             'num_unit_types': 1}
@@ -1239,7 +1240,7 @@ class CargoSprinter(Train):
         self.engine_class = 'ENGINE_CLASS_DIESEL'
         self.visual_effect = 'VISUAL_EFFECT_DISABLE' # intended - positioning smoke correctly for this vehicle type is too fiddly
         # graphics processor stuff also used at __init__ time
-        self.consist.recolour_maps = graphics_utils.get_container_recolour_maps()
+        self.consist.recolour_maps = graphics_constants.container_recolour_maps
         self.consist.num_random_cargo_variants = len(self.consist.recolour_maps)
         self.consist.cargos_with_tanktainer_graphics = ['BEER', 'MILK', 'WATR'] # !! unfinished currently??
          # ugh, the graphics consists are applied to the consist in all other cases,
