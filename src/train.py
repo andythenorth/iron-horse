@@ -125,8 +125,8 @@ class Consist(object):
         return years
 
     def get_num_spritesets(self):
-        #!! this should be deprecated, by design, number of model_variants is now equal to num_sprites
-        return len(set([i.variant_num for i in self.model_variants]))
+        # historical reasons, this used to be more complex, and is now very simple; possibly now an abstraction too far?
+        return len(self.model_variants)
 
     def get_variants_available_for_specific_year(self, year):
         # put the data in a format that's easy to render as switches
