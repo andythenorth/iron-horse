@@ -15,13 +15,20 @@ spriterow_height = 30
 
 def get_legacy_bounding_boxes(y=0):
     return ([60,  y, 8, 27], [76,  y, 26, 24], [107, y, 40, 16], [156, y, 26, 24],
-            [188, y, 8, 27], [200, y, 26, 24], [235, y, 40, 16], [284, y, 26, 24])
+            [188, y, 8, 27], [200, y, 26, 24], [235, y, 40, 16], [284, y, 26, 24],
+            [316, y, 64, 16])
+
+def slice_out_legacy_sprites(spriterow):
+    for vertexes in get_legacy_bounding_boxes():
+        crop_box = (vertexes[0], vertexes[1], vertexes[0] + vertexes[2], vertexes[1] + vertexes[3])
+        sprite = spriterow.crop(crop_box)
+        sprite.show()
 
 def detect_spriterows_with_content(file_path):
     legacy_spritesheet = Image.open(file_path)
     base_y = 10
     rows_with_valid_content = []
-    while base_y < legacy_spritesheet.size[1]:
+    while base_y + spriterow_height < legacy_spritesheet.size[1]:
         crop_box = (0,
                     base_y,
                     legacy_spritesheet.size[0],
@@ -36,7 +43,8 @@ def detect_spriterows_with_content(file_path):
                 print(file_path, "contains some orphaned / leftover / junk pixels")
             else:
                 rows_with_valid_content.append(test_row)
-    print(file_path, rows_with_valid_content)
+    for spriterow in rows_with_valid_content:
+        slice_out_legacy_sprites(spriterow)
 
 
 legacy_file_paths = []
@@ -55,7 +63,7 @@ for consist in consists:
 legacy_file_paths.sort()
 
 #for path in legacy_file_paths:
-#detect_spriterows_with_content(legacy_file_paths[0])
-detect_spriterows_with_content('src/graphics/cargo_sprinter_template_0.png')
+detect_spriterows_with_content(legacy_file_paths[0])
+#detect_spriterows_with_content('src/graphics/cargo_sprinter_template_0.png')
 
 print('Count', len(legacy_file_paths))
