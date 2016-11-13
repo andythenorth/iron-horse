@@ -3,6 +3,7 @@ currentdir = os.curdir
 
 import sys
 sys.path.append(os.path.join('src')) # add to the module search path
+import shutil
 
 import iron_horse
 import global_constants
@@ -15,37 +16,43 @@ base_template_spritesheet = Image.open(os.path.join('graphics_sources','base_10_
 spriterow_height = 30
 DOS_PALETTE = Image.open('palette_key.png').palette
 
+col_insertion_points = ([60,  4], [76,  2], [107, 1], [156, 2],
+                        [188, 4], [200, 2], [235, 1], [284, 2],
+                        [316, 1])
+
 def get_legacy_bounding_boxes(y=0):
     return [[60,  y, 8, 25], [76,  y, 22, 22], [107, y, 32, 15], [156, y, 22, 22],
             [188, y, 8, 25], [204, y, 22, 22], [235, y, 32, 15], [284, y, 22, 22],
             [316, y, 64, 15]]
 
-def recomp_legacy_spriterows(count, spriterow, migrated_spritesheet):
+def recomp_legacy_spriterows(row_count, spriterow, migrated_spritesheet):
     migrated_spriterow = base_template_spritesheet.crop((0, 10, 400, 40))
     # we only want the first row to show blue bounding box for buy menu, so draw white rectangle over it for other rows
-    if count > 0:
+    if row_count > 0:
         replace_buy_menu_bb = ImageDraw.Draw(migrated_spriterow)
         replace_buy_menu_bb.rectangle([316, 0, 380, 40], 255)
-    for vertexes in get_legacy_bounding_boxes():
+    for col_count, vertexes in enumerate(get_legacy_bounding_boxes()):
         crop_box = (vertexes[0], vertexes[1], vertexes[0] + vertexes[2], vertexes[1] + vertexes[3])
         sprite = spriterow.crop(crop_box)
+        #sprite.show()
         # don't paste if the sprite only contains blue or white
         only_blue_and_white = True
         for colour in list(sprite.getdata()):
             if colour > 0 and colour < 255:
                 only_blue_and_white = False
         if not only_blue_and_white:
-            migrated_spriterow.paste(sprite, (vertexes[0], vertexes[1]))
-    insert_loc = (0, 10 + count * spriterow_height)
-    migrated_spritesheet.paste(migrated_spriterow, insert_loc)
+            col_insert_loc = col_insertion_points[col_count]
+            migrated_spriterow.paste(sprite, (col_insert_loc[0], col_insert_loc[1]))
+    row_insert_loc = (0, 10 + row_count * spriterow_height)
+    migrated_spritesheet.paste(migrated_spriterow, row_insert_loc)
     return migrated_spritesheet
 
 def migrate_spritesheet(rows_with_valid_content):
     new_height = 10 + spriterow_height * len(rows_with_valid_content)
     migrated_spritesheet = Image.new("P", (400, new_height), 255)
     migrated_spritesheet.putpalette(DOS_PALETTE)
-    for count, spriterow in enumerate(rows_with_valid_content):
-        migrated_spritesheet = recomp_legacy_spriterows(count, spriterow, migrated_spritesheet)
+    for row_count, spriterow in enumerate(rows_with_valid_content):
+        migrated_spritesheet = recomp_legacy_spriterows(row_count, spriterow, migrated_spritesheet)
     return migrated_spritesheet
 
 def detect_spriterows_with_content(filename):
@@ -94,14 +101,14 @@ def main():
                     legacy_filenames.append(filename)
     legacy_filenames.sort()
 
-    #legacy_filenames = ['cargo_sprinter_template_0.png'] # for testing a single vehicle when debugging
+    legacy_filenames = ['cargo_sprinter_template_0.png'] # for testing a single vehicle when debugging
     for filename in legacy_filenames:
         output_path = os.path.join(output_graphics_dir, filename)
         rows_with_valid_content = detect_spriterows_with_content(filename)
         migrated_spritesheet = migrate_spritesheet(rows_with_valid_content)
         migrated_spritesheet.save(output_path)
 
-    print('Count', len(legacy_filenames))
+    print('Migrated spritesheets count:', len(legacy_filenames))
 
 if __name__ == '__main__':
     main()
