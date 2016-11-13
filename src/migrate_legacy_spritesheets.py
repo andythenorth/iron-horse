@@ -10,6 +10,7 @@ from PIL import Image, ImageDraw
 
 consists = iron_horse.get_consists_in_buy_menu_order()
 input_graphics_dir = os.path.join('src', 'graphics')
+output_graphics_dir = os.path.join('src', 'graphics_migrated')
 base_template_spritesheet = Image.open(os.path.join('src','base_10_8_spritesheet.png'))
 spriterow_height = 30
 DOS_PALETTE = Image.open('palette_key.png').palette
@@ -74,6 +75,10 @@ def detect_spriterows_with_content(filename):
     return rows_with_valid_content
 
 def main():
+    if os.path.exists(output_graphics_dir):
+        shutil.rmtree(output_graphics_dir)
+    os.mkdir(output_graphics_dir)
+
     legacy_filenames = []
     for consist in consists:
         if consist.use_legacy_spritesheet:
@@ -91,7 +96,7 @@ def main():
 
     #legacy_filenames = ['cargo_sprinter_template_0.png']
     for filename in legacy_filenames:
-        output_path = os.path.join(currentdir, 'src', 'graphics_migrated', filename)
+        output_path = os.path.join(output_graphics_dir, filename)
         rows_with_valid_content = detect_spriterows_with_content(filename)
         migrated_spritesheet = migrate_spritesheet(rows_with_valid_content)
         migrated_spritesheet.save(output_path)
