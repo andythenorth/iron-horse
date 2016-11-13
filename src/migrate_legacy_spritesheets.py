@@ -15,16 +15,22 @@ spriterow_height = 30
 DOS_PALETTE = Image.open('palette_key.png').palette
 
 def get_legacy_bounding_boxes(y=0):
-    return ([60,  y, 8, 27], [76,  y, 26, 24], [107, y, 40, 16], [156, y, 26, 24],
-            [188, y, 8, 27], [200, y, 26, 24], [235, y, 40, 16], [284, y, 26, 24],
-            [316, y, 64, 16])
+    return [[60,  y, 8, 25], [76,  y, 22, 22], [107, y, 32, 15], [156, y, 22, 22],
+            [188, y, 8, 25], [204, y, 22, 22], [235, y, 32, 15], [284, y, 22, 22],
+            [316, y, 64, 16]] # hax: height of buy menu box is deliberately 16 to wipe out the blue box in the template when not needed - fragile but practical
 
 def recomp_legacy_spriterows(count, spriterow, migrated_spritesheet):
     migrated_spriterow = base_template_spritesheet.crop((0, 10, 400, 40))
     for vertexes in get_legacy_bounding_boxes():
         crop_box = (vertexes[0], vertexes[1], vertexes[0] + vertexes[2], vertexes[1] + vertexes[3])
         sprite = spriterow.crop(crop_box)
-        migrated_spriterow.paste(sprite, (vertexes[0], vertexes[1]))
+        # don't paste if the sprite only contains blue or white
+        only_blue_and_white = True
+        for colour in list(sprite.getdata()):
+            if colour > 0 and colour < 255:
+                only_blue_and_white = False
+        if not only_blue_and_white:
+            migrated_spriterow.paste(sprite, (vertexes[0], vertexes[1]))
     insert_loc = (0, 10 + count * spriterow_height)
     migrated_spritesheet.paste(migrated_spriterow, insert_loc)
     return migrated_spritesheet
@@ -35,7 +41,6 @@ def migrate_spritesheet(rows_with_valid_content):
     migrated_spritesheet.putpalette(DOS_PALETTE)
     for count, spriterow in enumerate(rows_with_valid_content):
         migrated_spritesheet = recomp_legacy_spriterows(count, spriterow, migrated_spritesheet)
-    #migrated_spritesheet.show()
     return migrated_spritesheet
 
 def detect_spriterows_with_content(filename):
@@ -52,7 +57,7 @@ def detect_spriterows_with_content(filename):
         if min(list(test_row.getdata())) < 255:
             # row contains some colours other than white, now check if it contains any blue, or if it's just leftover parts from drawing
             if min(list(test_row.getdata())) > 0:
-                # this is just leftover parts, so show this image so it can be cleaned up manually
+                # there is no blue, this is just leftover parts, so show this image so it can be cleaned up manually
                 test_row.show()
                 print(filename, "contains some orphaned / leftover / junk pixels")
             else:
@@ -75,6 +80,7 @@ def main():
                     legacy_filenames.append(filename)
     legacy_filenames.sort()
 
+    #legacy_filenames = ['cargo_sprinter_template_0.png']
     for filename in legacy_filenames:
         output_path = os.path.join(currentdir, 'src', 'graphics_migrated', filename)
         rows_with_valid_content = detect_spriterows_with_content(filename)
