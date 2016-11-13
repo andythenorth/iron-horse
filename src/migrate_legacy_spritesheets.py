@@ -6,7 +6,7 @@ sys.path.append(os.path.join('src')) # add to the module search path
 
 import iron_horse
 import global_constants
-from PIL import Image
+from PIL import Image, ImageDraw
 
 consists = iron_horse.get_consists_in_buy_menu_order()
 input_graphics_dir = os.path.join('src', 'graphics')
@@ -17,10 +17,14 @@ DOS_PALETTE = Image.open('palette_key.png').palette
 def get_legacy_bounding_boxes(y=0):
     return [[60,  y, 8, 25], [76,  y, 22, 22], [107, y, 32, 15], [156, y, 22, 22],
             [188, y, 8, 25], [204, y, 22, 22], [235, y, 32, 15], [284, y, 22, 22],
-            [316, y, 64, 16]] # hax: height of buy menu box is deliberately 16 to wipe out the blue box in the template when not needed - fragile but practical
+            [316, y, 64, 15]]
 
 def recomp_legacy_spriterows(count, spriterow, migrated_spritesheet):
     migrated_spriterow = base_template_spritesheet.crop((0, 10, 400, 40))
+    # we only want the first row to show blue bounding box for buy menu, so draw white rectangle over it for other rows
+    if count > 0:
+        replace_buy_menu_bb = ImageDraw.Draw(migrated_spriterow)
+        replace_buy_menu_bb.rectangle([316, 0, 380, 40], 255)
     for vertexes in get_legacy_bounding_boxes():
         crop_box = (vertexes[0], vertexes[1], vertexes[0] + vertexes[2], vertexes[1] + vertexes[3])
         sprite = spriterow.crop(crop_box)
@@ -54,8 +58,13 @@ def detect_spriterows_with_content(filename):
                     base_y + spriterow_height)
         test_row = legacy_spritesheet.crop(crop_box)
         base_y += spriterow_height
-        if min(list(test_row.getdata())) < 255:
-            # row contains some colours other than white, now check if it contains any blue, or if it's just leftover parts from drawing
+
+        only_blue_and_white = True
+        for colour in list(test_row.getdata()):
+            if colour > 0 and colour < 255:
+                only_blue_and_white = False
+        if not only_blue_and_white:
+            # row contains _some_ colours other than white and blue, now check if it contains any blue, or if it's just leftover parts from drawing
             if min(list(test_row.getdata())) > 0:
                 # there is no blue, this is just leftover parts, so show this image so it can be cleaned up manually
                 test_row.show()
