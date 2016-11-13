@@ -11,7 +11,7 @@ from PIL import Image, ImageDraw
 consists = iron_horse.get_consists_in_buy_menu_order()
 input_graphics_dir = os.path.join('src', 'graphics')
 output_graphics_dir = os.path.join('src', 'graphics_migrated')
-base_template_spritesheet = Image.open(os.path.join('src','base_10_8_spritesheet.png'))
+base_template_spritesheet = Image.open(os.path.join('graphics_sources','base_10_8_spritesheet.png'))
 spriterow_height = 30
 DOS_PALETTE = Image.open('palette_key.png').palette
 
