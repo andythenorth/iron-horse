@@ -49,8 +49,6 @@ class Consist(object):
         # values can be -ve or +ve to dibble specific vehicles (but total calculated points cannot exceed 255)
         self.type_base_buy_cost_points = kwargs.get('type_base_buy_cost_points', 15)
         self.type_base_running_cost_points = kwargs.get('type_base_running_cost_points', 15)
-        # hangover from switching to 10/8 spritesheet and not wanting to fix existing spritesheets
-        self.use_legacy_spritesheet = kwargs.get('use_legacy_spritesheet', False)
         # create a structure to hold model variants
         self.model_variants = []
         # mostly vehicles vary graphics by build year, but for date-sensitive cargo, we want to vary by current year
@@ -314,10 +312,7 @@ class Train(object):
     @property
     def offsets(self):
         # offsets can also be over-ridden on a per-model basis by providing this property in the model class
-        if self.consist.use_legacy_spritesheet:
-            return global_constants.legacy_spritesheet_offsets[str(self.vehicle_length)]
-        else:
-            return global_constants.default_spritesheet_offsets[str(self.vehicle_length)]
+        return global_constants.default_spritesheet_offsets[str(self.vehicle_length)]
 
     @property
     def location_of_random_bits_for_model_variant(self):
