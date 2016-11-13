@@ -60,8 +60,7 @@ def main():
                                wagon_generation = 1,
                                                 intro_date = 1860,
                                vehicle_life = 40,
-                               track_type = 'NG',
-                               use_legacy_spritesheet = True)
+                               track_type = 'NG')
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_pax = 25,

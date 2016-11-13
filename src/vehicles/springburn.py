@@ -8,8 +8,7 @@ consist = EngineConsist(id = 'springburn',
               type_base_running_cost_points = -20, # dibble run cost for game balance
               speed = 55,
               vehicle_life = 40,
-              intro_date = 1950,
-              use_legacy_spritesheet = True)
+              intro_date = 1950)
 
 consist.add_unit(DieselLoco(consist = consist,
                         weight = 80,

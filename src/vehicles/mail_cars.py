@@ -9,8 +9,7 @@ def main():
                           wagon_generation = 1,
                                       intro_date = 1860,
                           vehicle_life = 40,
-                          speedy = True,
-                          use_legacy_spritesheet = True)
+                          speedy = True)
 
     consist.add_unit(MailCar(consist = consist,
                             capacity_mail = 30,
@@ -27,8 +26,7 @@ def main():
                           wagon_generation = 2,
                                       intro_date = 1925,
                           vehicle_life = 40,
-                          speedy = True,
-                          use_legacy_spritesheet = True)
+                          speedy = True)
 
     consist.add_unit(MailCar(consist = consist,
                             capacity_mail = 45,
@@ -45,8 +43,7 @@ def main():
                           wagon_generation = 3,
                                       intro_date = 1985,
                           vehicle_life = 40,
-                          speedy = True,
-                          use_legacy_spritesheet = True)
+                          speedy = True)
 
     consist.add_unit(MailCar(consist = consist,
                             capacity_mail = 60,
@@ -63,8 +60,7 @@ def main():
                           wagon_generation = 1,
                                       intro_date = 1860,
                           vehicle_life = 40,
-                          track_type = 'NG',
-                          use_legacy_spritesheet = True)
+                          track_type = 'NG')
 
     consist.add_unit(MailCar(consist = consist,
                             capacity_mail = 24,

@@ -9,8 +9,7 @@ def main():
                              wagon_generation = 1,
                                             intro_date = 1860,
                              vehicle_life = 40,
-                             speedy = True,
-                             use_legacy_spritesheet = True)
+                             speedy = True)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 0,
@@ -27,8 +26,7 @@ def main():
                              wagon_generation = 1,
                                             intro_date = 1860,
                              vehicle_life = 40,
-                             track_type = 'NG',
-                             use_legacy_spritesheet = True)
+                             track_type = 'NG')
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 0,
@@ -63,8 +61,7 @@ def main():
                              wagon_generation = 1,
                                             intro_date = 1950,
                              vehicle_life = 50,
-                             speedy = True,
-                             use_legacy_spritesheet = True)
+                             speedy = True)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 0,
@@ -82,8 +79,7 @@ def main():
                                             intro_date = 1860,
                              vehicle_life = 50,
                              speedy = True,
-                             track_type = 'NG',
-                             use_legacy_spritesheet = True)
+                             track_type = 'NG')
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 0,

@@ -16,8 +16,7 @@ consist = EngineConsist(id = 'cargo_sprinter',
                         type_base_buy_cost_points = -2, # dibble buy cost for game balance
                         type_base_running_cost_points = -35, # dibble running costs for game balance
                         intro_date = 1999,
-                        vehicle_life = 40,
-                        use_legacy_spritesheet = True)
+                        vehicle_life = 40)
 
 consist.add_unit(CargoSprinter(consist = consist,
                                weight = 46,

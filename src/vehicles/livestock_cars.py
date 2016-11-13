@@ -8,8 +8,7 @@ def main():
                                base_numeric_id = 1010,
                                wagon_generation = 1,
                                                 intro_date = 1860,
-                               vehicle_life = 40,
-                               use_legacy_spritesheet = True)
+                               vehicle_life = 40)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 20,
@@ -25,8 +24,7 @@ def main():
                                base_numeric_id = 1020,
                                wagon_generation = 2,
                                                 intro_date = 1950,
-                               vehicle_life = 40,
-                               use_legacy_spritesheet = True)
+                               vehicle_life = 40)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 35,
@@ -43,8 +41,7 @@ def main():
                                wagon_generation = 1,
                                                 intro_date = 1860,
                                vehicle_life = 40,
-                               track_type = 'NG',
-                               use_legacy_spritesheet = True)
+                               track_type = 'NG')
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 12,
@@ -128,8 +125,7 @@ def main():
                                base_numeric_id = 1720,
                                wagon_generation = 1,
                                                 intro_date = 1950,
-                               vehicle_life = 40,
-                               use_legacy_spritesheet = True)
+                               vehicle_life = 40)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 45,
@@ -146,8 +142,7 @@ def main():
                                wagon_generation = 1,
                                                 intro_date = 1860,
                                vehicle_life = 40,
-                               track_type = 'NG',
-                               use_legacy_spritesheet = True)
+                               track_type = 'NG')
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 20,

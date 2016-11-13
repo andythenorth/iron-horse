@@ -8,8 +8,7 @@ consist = EngineConsist(id = 'tin_rocket',
               speed = 100,
               type_base_running_cost_points = -36, # dibble running costs for game balance
               intro_date = 1998,
-              vehicle_life = 40,
-              use_legacy_spritesheet = True)
+              vehicle_life = 40)
 
 consist.add_unit(DieselRailcar(consist = consist,
                         weight = 40,

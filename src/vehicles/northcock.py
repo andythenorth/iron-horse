@@ -9,8 +9,7 @@ consist = EngineConsist(id = 'northcock',
               speed = 100,
               buy_cost = 81,
               vehicle_life = 40,
-              intro_date = 1935,
-              use_legacy_spritesheet = True)
+              intro_date = 1935)
 
 consist.add_unit(SteamLoco(consist = consist,
                         weight = 120,

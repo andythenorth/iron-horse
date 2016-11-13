@@ -8,8 +8,7 @@ consist = EngineConsist(id = 'gazelle',
               track_type = 'NG',
               speed = 85,
               vehicle_life = 40,
-              intro_date = 1975,
-              use_legacy_spritesheet = True)
+              intro_date = 1975)
 
 consist.add_unit(DieselLoco(consist = consist,
                         weight = 90,

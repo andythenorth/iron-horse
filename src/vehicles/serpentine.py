@@ -9,8 +9,7 @@ consist = EngineConsist(id = 'serpentine',
               speed = 40,
               type_base_buy_cost_points = 40, # dibble buy cost for game balance
               intro_date = 1900,
-              vehicle_life = 40,
-              use_legacy_spritesheet = True)
+              vehicle_life = 40)
 
 # should be 4 units not 2
 consist.add_unit(MetroPaxUnit(consist = consist,

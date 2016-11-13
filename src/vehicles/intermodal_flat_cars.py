@@ -9,8 +9,7 @@ def main():
                            wagon_generation = 3,
                                         intro_date = 1960,
                            vehicle_life = 40,
-                           speedy = True,
-                           use_legacy_spritesheet = True)
+                           speedy = True)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 48, # matched to RH and Squid containers

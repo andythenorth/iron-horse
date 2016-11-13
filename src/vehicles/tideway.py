@@ -9,8 +9,7 @@ consist = EngineConsist(id = 'tideway',
               speed = 65,
               type_base_buy_cost_points = 36, # dibble buy cost for game balance
               intro_date = 2000,
-              vehicle_life = 40,
-              use_legacy_spritesheet = True)
+              vehicle_life = 40)
 
 consist.add_unit(MetroCargoUnit(consist = consist,
                         weight = 30,

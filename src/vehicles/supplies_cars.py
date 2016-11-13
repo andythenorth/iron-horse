@@ -8,8 +8,7 @@ def main():
                           base_numeric_id = 710,
                           wagon_generation = 1,
                           intro_date = 1860,
-                          vehicle_life = 40,
-                          use_legacy_spritesheet = True)
+                          vehicle_life = 40)
 
     consist.add_unit(Wagon(consist = consist,
                            capacity_freight = 30,
@@ -71,8 +70,7 @@ def main():
                           base_numeric_id = 2160,
                           wagon_generation = 1,
                           intro_date = 1860,
-                          vehicle_life = 40,
-                          use_legacy_spritesheet = True)
+                          vehicle_life = 40)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 20,
