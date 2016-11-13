@@ -101,7 +101,7 @@ def main():
                     legacy_filenames.append(filename)
     legacy_filenames.sort()
 
-    legacy_filenames = ['cargo_sprinter_template_0.png'] # for testing a single vehicle when debugging
+    #legacy_filenames = ['cargo_sprinter_template_0.png'] # for testing a single vehicle when debugging
     for filename in legacy_filenames:
         output_path = os.path.join(output_graphics_dir, filename)
         rows_with_valid_content = detect_spriterows_with_content(filename)
