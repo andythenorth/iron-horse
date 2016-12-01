@@ -154,6 +154,11 @@ cargo_labels = ['PASS', # pax first
                 'PHOS',
                 'POTA',
                 'PORE',
+                'IRON',
+                'NICK',
+                'SLAG',
+                'QLME',
+                'BOOM',
                 #
                 'NULL']
 

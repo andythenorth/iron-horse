@@ -915,7 +915,7 @@ class MailConsist(WagonConsist):
 class MetalConsist(WagonConsist):
     """
     Specialist heavy haul metal transport e.g. torpedo car, ladle, etc
-    High capacity, not very fast, refits to small subset of finished metal cargos.
+    High capacity, not very fast, refits to small subset of finished metal cargos (and slag, which bends the rules a bit).
     """
     def __init__(self, **kwargs):
         self.base_id = 'metal_car'
@@ -925,7 +925,7 @@ class MetalConsist(WagonConsist):
         self.num_cargo_rows = 1
         self.generic_cargo_rows = [0]
         self.class_refit_groups = []
-        self.label_refits_allowed = ['STEL', 'COPR']
+        self.label_refits_allowed = ['STEL', 'COPR', 'IRON', 'SLAG']
         self.label_refits_disallowed = []
         self.autorefit = True
         self.default_cargo = 'STEL'
