@@ -709,7 +709,7 @@ class CoveredHopperConsist(WagonConsist):
         super(CoveredHopperConsist, self).__init__(**kwargs)
         self.template = 'train.pynml'
         self.class_refit_groups = ['covered_hopper_freight']
-        self.label_refits_allowed = ['GRAI', 'WHEA', 'MAIZ', 'FOOD', 'SUGR', 'FMSP', 'RFPR', 'CLAY', 'BDMT', 'BEAN', 'NITR', 'RUBR', 'SAND']
+        self.label_refits_allowed = ['GRAI', 'WHEA', 'MAIZ', 'FOOD', 'SUGR', 'FMSP', 'RFPR', 'CLAY', 'BDMT', 'BEAN', 'NITR', 'RUBR', 'SAND', 'POTA', 'QLME']
         self.label_refits_disallowed = []
         self.autorefit = True
         self.default_cargo = 'GRAI'
