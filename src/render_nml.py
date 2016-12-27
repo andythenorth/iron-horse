@@ -27,11 +27,11 @@ def render_header_item_nml(header_item):
 
     print("Rendering " + header_item)
     return utils.unescape_chameleon_output(template(consists=consists,
-                                                                   global_constants=global_constants,
-                                                                   utils=utils,
-                                                                   sys=sys,
-                                                                   active_rosters=iron_horse.get_active_rosters(),
-                                                                   repo_vars=repo_vars))
+                                                    global_constants=global_constants,
+                                                    utils=utils,
+                                                    sys=sys,
+                                                    active_rosters=iron_horse.get_active_rosters(),
+                                                    repo_vars=repo_vars))
 
 def render_consist_nml(consist):
     return utils.unescape_chameleon_output(consist.render())
