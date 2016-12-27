@@ -17,42 +17,44 @@ repo_vars = utils.get_repo_vars(sys)
 
 from chameleon import PageTemplateLoader # chameleon used in most template cases
 # setup the places we look for templates
-templates_path = os.path.join(currentdir, 'src', 'templates')
-templates = PageTemplateLoader(templates_path)
+templates = PageTemplateLoader(os.path.join(currentdir, 'src', 'templates'))
 
-consists = iron_horse.get_consists_in_buy_menu_order()
+generated_files_path = iron_horse.generated_files_path
 
-def render_header_item_nml(header_item):
+def render_header_item_nml(header_item, consists):
     template = templates[header_item + '.pynml']
-
-    print("Rendering " + header_item)
     return utils.unescape_chameleon_output(template(consists=consists,
                                                     global_constants=global_constants,
                                                     utils=utils,
-                                                    sys=sys,
                                                     active_rosters=iron_horse.get_active_rosters(),
                                                     repo_vars=repo_vars))
 
 def render_consist_nml(consist):
-    return utils.unescape_chameleon_output(consist.render())
-
-def render_dispatcher(items, renderer):
-    result = ''
-    for item in items:
-        result += renderer(item)
+    result = utils.unescape_chameleon_output(consist.render())
+    # write the nml per vehicle to disk, it aids debugging
+    consist_nml = codecs.open(os.path.join(generated_files_path, 'nml', consist.id + '.nml'),'w','utf8')
+    consist_nml.write(result)
+    consist_nml.close()
+    # also return the nml directly for writing to the concatenated nml, don't faff around opening the generated nml files from disk
     return result
 
 def main():
-    rendered_nml = codecs.open(os.path.join(iron_horse.generated_files_path, 'iron-horse.nml'),'w','utf8')
+    generated_nml_path = os.path.join(generated_files_path, 'nml')
+    if not os.path.exists(generated_nml_path):
+        os.mkdir(generated_nml_path) # reminder to self: inside main() to avoid modifying filesystem simply by importing module
+    grf_nml = codecs.open(os.path.join(generated_files_path, 'iron-horse.nml'),'w','utf8')
 
-    print("Rendering header items")
+    consists = iron_horse.get_consists_in_buy_menu_order()
+
     header_items = ['header', 'cargo_table', 'railtype_table', 'disable_default_vehicles']
-    rendered_nml.write(render_dispatcher(header_items, renderer=render_header_item_nml))
+    for header_item in header_items:
+        grf_nml.write(render_header_item_nml(header_item, consists))
 
-    print("Rendering consists")
-    rendered_nml.write(render_dispatcher(consists, renderer=render_consist_nml))
+    # multiprocessing was tried here and removed as it was empirically slower in testing (due to overhead of starting extra pythons probably)
+    for consist in consists:
+        grf_nml.write(render_consist_nml(consist))
 
-    rendered_nml.close()
+    grf_nml.close()
 
 if __name__ == '__main__':
     main()
