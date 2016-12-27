@@ -299,7 +299,8 @@ class Train(object):
     def get_loading_speed(self, cargo_type, capacity_param):
         # ottd vehicles load at different rates depending on type,
         # normalise default loading time for this set to 240 ticks, regardless of capacity
-        transport_type_rate = 6 # openttd loading rates vary by transport type, look them up in wiki to find value to use here to normalise loading time to 240 ticks
+        # openttd loading rates vary by transport type, look them up in wiki to find value to use here to normalise loading time to 240 ticks
+        transport_type_rate = 6 # this is (240 / loading frequency in ticks for transport type) from wiki
         capacities = getattr(self, 'capacities_' + cargo_type)
         return int(self.loading_speed_multiplier * math.ceil(capacities[capacity_param] / transport_type_rate))
 
