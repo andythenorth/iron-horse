@@ -8,8 +8,9 @@ GENERATE_DOC := iron-horse-nml
 
 GENERATE=src/build_iron_horse.py
 
- # default num. pool workers for python compile, default is 1 to avoid accidental DoS of people's system
-pw = 1
+ # default num. pool workers for python compile,
+ # default is 0 to disable multiprocessing (also avoids multiprocessing pickle failures masking genuine python errors)
+pw = 0
 roster = *
 
 iron-horse-nml:
