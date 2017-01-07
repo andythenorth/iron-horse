@@ -207,16 +207,6 @@ class Spritesheet:
         self.sprites = Image.new('P', (width, height), 255)
         self.sprites.putpalette(palette)
 
-    def render(self, spriterows):
-        for i, spriterow in enumerate(spriterows):
-            result = spriterow['floorplan'].copy() # need to copy the floorplan image to draw into (to avoid modifying the original image object)
-            significant_pixels = pixascan(result)
-            for render_pass in spriterow['render_passes']:
-                result = pixarender(result, significant_pixels, render_pass['seq'], render_pass['colourset'])
-            crop_start_y = i * spriterow['height']
-            crop_end_y = crop_start_y + spriterow['height']
-            self.sprites.paste(result, (0, crop_start_y, result.size[0], crop_end_y))
-
     def save(self, output_path):
         self.sprites.save(output_path, optimize=True)
 
@@ -330,23 +320,3 @@ def pixascan(image):
         if colour not in (0, 255): # don't store white, blue; assumes DOS palette
           significant_pixels.append((x, y, colour))
     return significant_pixels
-
-
-def pixarender(image, significant_pixels, sequence_collection, colourset = None):
-    """
-    Draw pixels into an image from sequences.
-    Expects a pre-assembled list of (x, y, colour) points to start drawing sequences at.
-    """
-    imagepx = image.load()
-    for x, y, colour in significant_pixels:
-        sequence = sequence_collection.get_sequence_by_colour_index(colour)
-        if sequence is not None:
-            for sx, sy, scol in sequence.get_recolouring(x, y, colourset):
-                imagepx[sx, sy] = scol
-    return image
-
-
-def generate(input_image_path, key_colour_mapping, output_image_path):
-    spritesheet = Image.open(input_image_path)
-    spritesheet = render(spritesheet, key_colour_mapping)
-    spritesheet.save(output_image_path, optimize=1)

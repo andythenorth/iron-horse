@@ -1,10 +1,10 @@
 import os.path
 currentdir = os.curdir
 
-from pixa import Spritesheet
 from PIL import Image
 
 from graphics_processor import registered_pipelines
+from graphics_processor.pixa import Spritesheet, pixascan
 from graphics_processor import graphics_constants
 from graphics_processor.units import SimpleRecolour, SwapCompanyColours, AppendToSpritesheet
 
