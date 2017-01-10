@@ -453,7 +453,7 @@ class LeadSlice(Train):
     Lead slice for a unit (invisible, minimal props).
     """
     def __init__(self, parent_vehicle):
-        super(LeadSlice, self).__init__(consist=parent_vehicle.consist)
+        super().__init__(consist=parent_vehicle.consist)
         self.parent_vehicle = parent_vehicle
         self.template = parent_vehicle.template
         self.speed = 0
@@ -522,7 +522,7 @@ class EngineConsist(Consist):
     This class should be sparse - only declare the most limited set of properties common to engine consists.
     """
     def __init__(self, **kwargs):
-        super(EngineConsist, self).__init__(**kwargs)
+        super().__init__(**kwargs)
 
     def get_engine_cost_points(self):
         # Up to 80 points for power. 1 point per 100hp
@@ -588,7 +588,7 @@ class WagonConsist(Consist):
         id = self.get_wagon_id(self.base_id, **kwargs)
         kwargs['id'] = id
         self.wagon_generation = kwargs.get('wagon_generation', None)
-        super(WagonConsist, self).__init__(**kwargs)
+        super().__init__(**kwargs)
 
         roster_obj.register_wagon_consist(self)
 
@@ -650,7 +650,7 @@ class BoxConsist(WagonConsist):
     """
     def __init__(self, **kwargs):
         self.base_id = 'box_car'
-        super(BoxConsist, self).__init__(**kwargs)
+        super().__init__(**kwargs)
         self.template = 'car_with_open_doors_during_loading.pynml'
         self.cargo_graphics_mappings = {} # template needs this, but box car has zero cargo-specific graphics, all generic
         self.num_cargo_rows = 1 # template needs this, but box car has zero cargo-specific graphics, all generic
@@ -675,7 +675,7 @@ class CabooseConsist(WagonConsist):
     """
     def __init__(self, **kwargs):
         self.base_id = 'caboose_car'
-        super(CabooseConsist, self).__init__(**kwargs)
+        super().__init__(**kwargs)
         self.template = 'train.pynml'
         # no graphics processing - don't random colour cabeese, I tried it, looks daft
         self.class_refit_groups = [] # refit nothing, don't mess with this, it breaks auto-replace
@@ -691,7 +691,7 @@ class CombineConsist(WagonConsist):
     """
     def __init__(self, **kwargs):
         self.base_id = 'combine_car'
-        super(CombineConsist, self).__init__(**kwargs)
+        super().__init__(**kwargs)
         self.template = 'train.pynml'
         self.class_refit_groups = ['mail', 'express_freight']
         self.label_refits_allowed = []
@@ -707,7 +707,7 @@ class CoveredHopperConsist(WagonConsist):
     """
     def __init__(self, **kwargs):
         self.base_id = 'covered_hopper_car'
-        super(CoveredHopperConsist, self).__init__(**kwargs)
+        super().__init__(**kwargs)
         self.template = 'train.pynml'
         self.class_refit_groups = ['covered_hopper_freight']
         self.label_refits_allowed = ['GRAI', 'WHEA', 'MAIZ', 'FOOD', 'SUGR', 'FMSP', 'RFPR', 'CLAY', 'BDMT', 'BEAN', 'NITR', 'RUBR', 'SAND', 'POTA', 'QLME']
@@ -731,7 +731,7 @@ class EdiblesTankConsist(WagonConsist):
     """
     def __init__(self, **kwargs):
         self.base_id = 'edibles_tank_car'
-        super(EdiblesTankConsist, self).__init__(**kwargs)
+        super().__init__(**kwargs)
         # tank cars are unrealistically autorefittable, and at no cost
         # Pikka: if people complain that it's unrealistic, tell them "don't do it then"
         self.template = 'train.pynml'
@@ -758,7 +758,7 @@ class FlatConsist(WagonConsist):
     """
     def __init__(self, **kwargs):
         self.base_id = 'flat_car'
-        super(FlatConsist, self).__init__(**kwargs)
+        super().__init__(**kwargs)
         self.template = 'car_with_visible_cargo.pynml'
         # cargo rows 0 indexed - 0 = first set of loaded sprites
         self.cargo_graphics_mappings = {'STEL': [1, 2, 3], 'WOOD': [4], 'WDPR': [5], 'ENSP': [6], 'FMSP': [6], 'MNSP': [6], 'GOOD': [0, 6]}
@@ -784,7 +784,7 @@ class FruitConsist(WagonConsist):
     """
     def __init__(self, **kwargs):
         self.base_id = 'fruit_car'
-        super(FruitConsist, self).__init__(**kwargs)
+        super().__init__(**kwargs)
         self.template = 'car_with_open_doors_during_loading.pynml'
         self.cargo_graphics_mappings = {} # template needs this, but box car has zero cargo-specific graphics, all generic
         self.num_cargo_rows = 1 # template needs this, but box car has zero cargo-specific graphics, all generic
@@ -810,7 +810,7 @@ class HopperConsist(WagonConsist):
     """
     def __init__(self, **kwargs):
         self.base_id = 'hopper_car'
-        super(HopperConsist, self).__init__(**kwargs)
+        super().__init__(**kwargs)
         self.template = 'car_with_visible_cargo.pynml'
         # cargo rows 0 indexed - 0 = first set of loaded sprites
         # GRVL is in first position as it is re-used for generic unknown cargos
@@ -852,7 +852,7 @@ class IntermodalConsist(WagonConsist):
     """
     def __init__(self, **kwargs):
         self.base_id = 'intermodal_flat_car'
-        super(IntermodalConsist, self).__init__(**kwargs)
+        super().__init__(**kwargs)
         self.template = 'car_with_visible_cargo.pynml'
         self.cargo_graphics_mappings = {}
         self.num_cargo_rows = 3
@@ -884,7 +884,7 @@ class LivestockConsist(WagonConsist):
     """
     def __init__(self, **kwargs):
         self.base_id = 'livestock_car'
-        super(LivestockConsist, self).__init__(**kwargs)
+        super().__init__(**kwargs)
         self.template = 'train.pynml'
         self.class_refit_groups = []
         self.label_refits_allowed = ['LVST']
@@ -901,7 +901,7 @@ class MailConsist(WagonConsist):
     """
     def __init__(self, **kwargs):
         self.base_id = 'mail_car'
-        super(MailConsist, self).__init__(**kwargs)
+        super().__init__(**kwargs)
         self.template = 'car_with_open_doors_during_loading.pynml'
         self.cargo_graphics_mappings = {} # template needs this, but mail car has zero cargo-specific graphics, all generic
         self.num_cargo_rows = 1 # template needs this, but mail car has zero cargo-specific graphics, all generic
@@ -920,7 +920,7 @@ class MetalConsist(WagonConsist):
     """
     def __init__(self, **kwargs):
         self.base_id = 'metal_car'
-        super(MetalConsist, self).__init__(**kwargs)
+        super().__init__(**kwargs)
         self.template = 'car_with_visible_cargo.pynml'
         self.cargo_graphics_mappings = {}
         self.num_cargo_rows = 1
@@ -940,7 +940,7 @@ class OpenConsist(WagonConsist):
     """
     def __init__(self, **kwargs):
         self.base_id = 'open_car'
-        super(OpenConsist, self).__init__(**kwargs)
+        super().__init__(**kwargs)
         self.template = 'car_with_visible_cargo.pynml'
         b = 1 # bulk cargo start row
         # cargo rows 0 indexed - 0 = first set of loaded sprites
@@ -980,7 +980,7 @@ class PassengerConsist(WagonConsist):
     """
     def __init__(self, **kwargs):
         self.base_id = 'passenger_car'
-        super(PassengerConsist, self).__init__(**kwargs)
+        super().__init__(**kwargs)
         self.template = 'train.pynml'
         self.cargo_graphics_mappings = {} # template needs this, but reefer car has zero cargo-specific graphics, all generic
         self.class_refit_groups = ['pax']
@@ -997,7 +997,7 @@ class ReeferConsist(WagonConsist):
     """
     def __init__(self, **kwargs):
         self.base_id = 'reefer_car'
-        super(ReeferConsist, self).__init__(**kwargs)
+        super().__init__(**kwargs)
         self.template = 'car_with_open_doors_during_loading.pynml'
         self.cargo_graphics_mappings = {} # template needs this, but reefer car has zero cargo-specific graphics, all generic
         self.num_cargo_rows = 1 # template needs this, but box car has zero cargo-specific graphics, all generic
@@ -1023,7 +1023,7 @@ class SuppliesConsist(WagonConsist):
     """
     def __init__(self, **kwargs):
         self.base_id = 'supplies_car'
-        super(SuppliesConsist, self).__init__(**kwargs)
+        super().__init__(**kwargs)
         self.template = 'car_with_visible_cargo.pynml'
         # cargo rows 0 indexed - 0 = first set of loaded sprites
         self.cargo_graphics_mappings = {'ENSP': [0, 1, 2, 3, 4], 'FMSP': [0, 1, 2, 3, 4], 'VEHI': [0, 1, 2, 3, 4], 'BDMT': [0, 1]}
@@ -1055,7 +1055,7 @@ class TankConsist(WagonConsist):
     """
     def __init__(self, **kwargs):
         self.base_id = 'tank_car'
-        super(TankConsist, self).__init__(**kwargs)
+        super().__init__(**kwargs)
         self.template = 'car_with_cargo_specific_liveries.pynml'
         # tank cars are unrealistically autorefittable, and at no cost
         # Pikka: if people complain that it's unrealistic, tell them "don't do it then"
@@ -1085,7 +1085,7 @@ class VehicleTransporterConsist(WagonConsist):
     """
     def __init__(self, **kwargs):
         self.base_id = 'vehicle_transporter_car'
-        super(VehicleTransporterConsist, self).__init__(**kwargs)
+        super().__init__(**kwargs)
         self.template = 'car_with_visible_cargo.pynml'
         # cargo rows 0 indexed - 0 = first set of loaded sprites
         self.cargo_graphics_mappings = {'VEHI': [0, 1]}
@@ -1113,7 +1113,7 @@ class Wagon(Train):
     Most props should be declared by Train with useful defaults.
     """
     def __init__(self, **kwargs):
-        super(Wagon, self).__init__(**kwargs)
+        super().__init__(**kwargs)
         self.consist = kwargs['consist']
         self.template = self.consist.template
         self.class_refit_groups = self.consist.class_refit_groups
@@ -1134,7 +1134,7 @@ class SteamLoco(Train):
     Steam Locomotive.
     """
     def __init__(self, **kwargs):
-        super(SteamLoco, self).__init__(**kwargs)
+        super().__init__(**kwargs)
         self.template = 'train.pynml'
         self.default_cargo_capacities = [0]
         self.engine_class = 'ENGINE_CLASS_STEAM'
@@ -1147,7 +1147,7 @@ class SteamLocoTender(Train):
     Steam Locomotive Tender.
     """
     def __init__(self, **kwargs):
-        super(SteamLocoTender, self).__init__(**kwargs)
+        super().__init__(**kwargs)
         self.template = 'train.pynml'
         self.default_cargo_capacities = [0]
 
@@ -1157,7 +1157,7 @@ class DieselLoco(Train):
     Diesel Locomotive.
     """
     def __init__(self, **kwargs):
-        super(DieselLoco, self).__init__(**kwargs)
+        super().__init__(**kwargs)
         self.template = 'train.pynml'
         self.default_cargo_capacities = [0]
         self.engine_class = 'ENGINE_CLASS_DIESEL'
@@ -1169,7 +1169,7 @@ class DieselRailcar(Train):
     Diesel Railcar (Single Unit).
     """
     def __init__(self, **kwargs):
-        super(DieselRailcar, self).__init__(**kwargs)
+        super().__init__(**kwargs)
         self.template = 'railcar.pynml'
         self.default_cargo_capacities = [0]
         self.class_refit_groups = ['pax', 'mail', 'express_freight']
@@ -1188,7 +1188,7 @@ class ElectricLoco(Train):
     Electric Locomotive.
     """
     def __init__(self, **kwargs):
-        super(ElectricLoco, self).__init__(**kwargs)
+        super().__init__(**kwargs)
         self.template = 'train.pynml'
         self.default_cargo_capacities = [0]
         if hasattr(kwargs['consist'], 'track_type'):
@@ -1209,7 +1209,7 @@ class ElectroDieselLoco(Train):
     Bi-mode Locomotive - operates on electrical power or diesel.
     """
     def __init__(self, **kwargs):
-        super(ElectroDieselLoco, self).__init__(**kwargs)
+        super().__init__(**kwargs)
         self.template = 'train.pynml'
         self.default_cargo_capacities = [0]
         self.engine_class = 'ENGINE_CLASS_DIESEL'
@@ -1222,7 +1222,7 @@ class CargoSprinter(Train):
     Freight Multiple Unit.
     """
     def __init__(self, **kwargs):
-        super(CargoSprinter, self).__init__(**kwargs)
+        super().__init__(**kwargs)
         self.template = 'cargo_sprinter.pynml'
         self.default_cargo_capacities = [0]
         # refits should match those of the intermodal cars
@@ -1258,7 +1258,7 @@ class MailCar(Wagon):
     Mail Carriage.
     """
     def __init__(self, **kwargs):
-        super(MailCar, self).__init__(**kwargs)
+        super().__init__(**kwargs)
         self.capacities_freight = [int(0.5 * capacity) for capacity in self.capacities_mail]
 
 
@@ -1270,7 +1270,7 @@ class CombineCar(Wagon):
     # combine car needs to set capacity_mail, capacity_freight, and capacity_pax
     # pax capacity is non-refittable and applied to lead slice of the unit
     def __init__(self, **kwargs):
-        super(CombineCar, self).__init__(**kwargs)
+        super().__init__(**kwargs)
 
 
 class BoxCar(Wagon):
@@ -1279,7 +1279,7 @@ class BoxCar(Wagon):
     """
     # this sub-class only exists to handle the mail capacity, otherwise it's a standard wagon
     def __init__(self, **kwargs):
-        super(BoxCar, self).__init__(**kwargs)
+        super().__init__(**kwargs)
         self.capacities_mail = [int(2.0 * capacity) for capacity in self.capacities_freight]
 
 
@@ -1288,7 +1288,7 @@ class MetroPaxUnit(Train):
     Metro Unit
     """
     def __init__(self, **kwargs):
-        super(MetroPaxUnit, self).__init__(**kwargs)
+        super().__init__(**kwargs)
         self.template = 'metro_mu.pynml'
         self.default_cargo_capacities = self.capacities_pax
         self.default_cargo = "PASS"
@@ -1302,7 +1302,7 @@ class MetroCargoUnit(Train):
     Metro Unit
     """
     def __init__(self, **kwargs):
-        super(MetroCargoUnit, self).__init__(**kwargs)
+        super().__init__(**kwargs)
         self.template = 'metro_mu.pynml'
         self.default_cargo_capacities = [0]
         self.class_refit_groups = ['mail', 'express_freight']
