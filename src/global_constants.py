@@ -83,7 +83,7 @@ base_refits_by_class = {'empty': [],
 # notably, Sugar Beet and Cassava are farm cargos allowed to travel by hopper, most farm cargos cannot
 disallowed_refits_by_label = {'non_hopper_freight': ['WOOD', 'SGCN', 'FICR', 'BDMT', 'WDPR', 'GRAI', 'WHEA', 'MAIZ', 'FRUT', 'BEAN'],
                               'edible_liquids': ['MILK', 'WATR', 'BEER', 'FOOD', 'EOIL'],
-                              'non_edible_liquids': ['RFPR', 'OIL_', 'FMSP', 'PETR', 'RUBR'],
+                              'non_edible_liquids': ['RFPR', 'OIL_', 'FMSP', 'PETR', 'RUBR', 'SULP'],
                               'non_flatcar_freight': ['FOOD', 'FISH', 'LVST', 'FRUT', 'BEER', 'MILK', 'JAVA', 'SUGR', 'NUTS', 'EOIL'],
                               'non_freight_special_cases': ['TOUR']}
 
@@ -160,6 +160,7 @@ cargo_labels = ['PASS', # pax first
                 'QLME',
                 'BOOM',
                 'METL',
+                'SULP',
                 #
                 'NULL']
 
