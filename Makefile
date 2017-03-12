@@ -46,7 +46,7 @@ SOURCE_NAME = $(PROJECT_VERSIONED_NAME)-source
 BUNDLE_DIR = bundle_dir
 
 # Build rules
-.PHONY: default nml grf tar bundle_tar bundle_zip bundle_src
+.PHONY: default nml grf tar bundle_tar bundle_zip bundle_src clean
 default: grf
 bundle_tar: tar
 bundle_zip: $(ZIP_FILE)
@@ -85,3 +85,10 @@ bundle_src: $(MD5_FILE)
 	$(SED) -i -e 's/^EXPORTED = no/EXPORTED = yes/' $(BUNDLE_DIR)/src/Makefile
 	$(MK_ARCHIVE) --tar --output=$(SOURCE_NAME).tar --base=$(SOURCE_NAME) \
 		`$(FIND_FILES) $(BUNDLE_DIR)/src` $(MD5_FILE)
+
+clean:
+	for f in $(NML_FILE) $(GRF_FILE) $(TAR_FILE) $(ZIP_FILE) $(MD5_FILE) $(BUNDLE_DIR) $(SOURCE_NAME).tar;\
+	do if test -e $$f;\
+	   then rm -r $$f;\
+	   fi;\
+	done
