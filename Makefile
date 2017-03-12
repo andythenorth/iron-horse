@@ -25,8 +25,10 @@ REPO_VERSION = $(word 2,$(REPO_INFO))
 REPO_TITLE = "$(PROJECT_NAME) $(REPO_VERSION)"
 PROJECT_VERSIONED_NAME = "$(PROJECT_NAME)-$(REPO_VERSION)"
 
-
-default: $(GRF_FILE)
+.PHONY: default nml grf tar
+default: grf
+nml: $(NML_FILE)
+grf: $(GRF_FILE)
 tar: $(TAR_FILE)
 
  # default num. pool workers for python compile,

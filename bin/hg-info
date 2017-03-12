@@ -58,8 +58,13 @@ def exe_cmd(cmd, env=None):
     else:
         new_env = None
 
-    output = subprocess.run(cmd, env=new_env, check=True, stdout=subprocess.PIPE,
-                            universal_newlines=True).stdout
+    if sys.version_info.minor < 5:
+        # Pre 3.5 has no subprocess.run
+        output = subprocess.check_output(cmd, env=new_env, universal_newlines=True)
+    else:
+        output = subprocess.run(cmd, env=new_env, check=True, stdout=subprocess.PIPE,
+                                universal_newlines=True).stdout
+
     lines = output.splitlines()
     return lines
 
