@@ -59,7 +59,7 @@ def check_uniq_filenames(input_files, flatten):
     file_set = set()
     for path in input_files:
         if not os.path.isfile(path):
-            if not os.path.exist(path):
+            if not os.path.exists(path):
                 return "File '{}' not found".format(path)
             return "Path '{}' is not a file".format(path)
 
