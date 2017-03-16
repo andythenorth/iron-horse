@@ -48,7 +48,7 @@ BUNDLE_DIR = bundle_dir
 
 # Build rules
 .PHONY: default nml grf tar bundle_tar bundle_zip bundle_src clean
-default: grf
+default: docs grf
 bundle_tar: tar
 bundle_zip: $(ZIP_FILE)
 nml: $(NML_FILE)
@@ -65,6 +65,9 @@ graphics:
 
 lang:
 	$(PYTHON3) src/render_lang.py $(ARGS)
+
+docs:
+	$(PYTHON3) src/render_docs.py $(ARGS)
 
 $(NML_FILE): $(SOURCES)
 	$(PYTHON3) src/render_nml.py '$(REPO_TITLE)' '$(REPO_REVISION)' '$(PW)' '$(ROSTER)'

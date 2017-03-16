@@ -1,12 +1,6 @@
 #!/usr/bin/env python
 
-"""
-  This file is part of Iron Horse Newgrf for OpenTTD.
-  Iron Horse is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
-  Iron Horse is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-  See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with Iron Horse. If not, see <http://www.gnu.org/licenses/>.
-"""
-print("[RENDER DOCS] render_docs.py")
+from time import time
 
 import codecs # used for writing files - more unicode friendly than standard open() module
 
@@ -135,6 +129,9 @@ def render_docs(doc_list, file_type, use_markdown=False):
         doc_file.close()
 
 def main():
+    start = time()
+
+    print("[RENDER DOCS] render_docs.py")
     # render standard docs from a list
     html_docs = ['trains', 'code_reference', 'get_started', 'translations']
     txt_docs = ['license', 'readme']
@@ -145,6 +142,8 @@ def main():
     # just render the markdown docs twice to get txt and html versions, simples no?
     render_docs(markdown_docs, 'txt')
     render_docs(markdown_docs, 'html', use_markdown=True)
+
+    print(format((time() - start), '.2f')+'s')
 
 if __name__ == '__main__':
     main()
