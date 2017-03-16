@@ -34,6 +34,7 @@ endif
 
 REPO_TITLE = "$(PROJECT_NAME) $(REPO_VERSION)"
 PROJECT_VERSIONED_NAME = $(PROJECT_NAME)-$(REPO_VERSION)
+ARGS = '$(REPO_TITLE)' '$(REPO_REVISION)' '$(PW)' '$(ROSTER)'
 
 GRF_FILE = $(PROJECT_NAME).grf
 TAR_FILE = $(PROJECT_NAME).tar
@@ -59,10 +60,16 @@ tar: $(TAR_FILE)
 PW = 0
 ROSTER = *
 
-$(NML_FILE): $(SOURCES)
-	$(PYTHON3) src/build_iron_horse.py '$(REPO_TITLE)' '$(REPO_REVISION)' '$(PW)' '$(ROSTER)'
+graphics:
+	$(PYTHON3) src/render_graphics.py $(ARGS)
 
-$(GRF_FILE): $(NML_FILE)
+lang:
+	$(PYTHON3) src/render_lang.py $(ARGS)
+
+$(NML_FILE): $(SOURCES)
+	$(PYTHON3) src/render_nml.py '$(REPO_TITLE)' '$(REPO_REVISION)' '$(PW)' '$(ROSTER)'
+
+$(GRF_FILE): graphics lang $(NML_FILE)
 	$(NMLC) $(NML_FLAGS) --grf=$(GRF_FILE) $(NML_FILE)
 
 $(TAR_FILE): $(GRF_FILE) $(DOC_FILES)

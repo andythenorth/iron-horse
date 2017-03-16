@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-print("[RENDER NML] render_nml.py")
+from time import time
 
 import codecs # used for writing files - more unicode friendly than standard open() module
 
@@ -39,6 +39,9 @@ def render_consist_nml(consist):
     return result
 
 def main():
+    start = time()
+    print("[RENDER NML] render_nml.py")
+
     generated_nml_path = os.path.join(generated_files_path, 'nml')
     if not os.path.exists(generated_nml_path):
         os.mkdir(generated_nml_path) # reminder to self: inside main() to avoid modifying filesystem simply by importing module
@@ -55,6 +58,8 @@ def main():
         grf_nml.write(render_consist_nml(consist))
 
     grf_nml.close()
+
+    print(format((time() - start), '.2f')+'s')
 
 if __name__ == '__main__':
     main()

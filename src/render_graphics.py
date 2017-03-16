@@ -1,12 +1,6 @@
 #!/usr/bin/env python
 
-"""
-  This file is part of Iron Horse Newgrf for OpenTTD.
-  Iron Horse is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 2.
-  Iron Horse is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
-  See the GNU General Public License for more details. You should have received a copy of the GNU General Public License along with Iron Horse. If not, see <http://www.gnu.org/licenses/>.
-"""
-print("[RENDER GRAPHICS] render_graphics.py")
+from time import time
 
 import codecs # used for writing files - more unicode friendly than standard open() module
 
@@ -51,6 +45,9 @@ def run_pipeline(items):
 
 # wrapped in a main() function so this can be called explicitly, because unexpected multiprocessing fork bombs are bad
 def main():
+    start = time()
+    print("[RENDER GRAPHICS] render_graphics.py")
+
     consists = iron_horse.get_consists_in_buy_menu_order()
     variants = []
     for consist in consists:
@@ -68,6 +65,8 @@ def main():
 
     # handle special case spritesheets
     shutil.copy(os.path.join(graphics_input, 'null_trailing_part.png'), graphics_output_path)
+
+    print(format((time() - start), '.2f')+'s')
 
 if __name__ == '__main__':
     main()
