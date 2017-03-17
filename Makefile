@@ -104,7 +104,7 @@ bundle_src: $(MD5_FILE)
 		`$(FIND_FILES) $(BUNDLE_DIR)/src` $(MD5_FILE)
 
 clean:
-	for f in docs generated $(GRF_FILE) $(TAR_FILE) $(ZIP_FILE) $(MD5_FILE) $(BUNDLE_DIR) $(SOURCE_NAME).tar;\
+	for f in .chameleon_cache .nmlcache src/__pycache__ src/*/__pycache__ docs generated $(GRF_FILE) $(TAR_FILE) $(ZIP_FILE) $(MD5_FILE) $(BUNDLE_DIR) $(SOURCE_NAME).tar;\
 	do if test -e $$f;\
 	   then rm -r $$f;\
 	   fi;\
