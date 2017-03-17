@@ -17,8 +17,10 @@ MK_ARCHIVE = bin/mk-archive
 PROJECT_NAME = iron-horse
 SOURCES=$(shell $(FIND_FILES) --ext=.py src)
 
+GRAPHICS = generated/graphics
+LANG = generated/lang
 NML_FILE = generated/iron-horse.nml
-NML_FLAGS =-c -l generated/lang
+NML_FLAGS =-c -l $(LANG)
 
 EXPORTED = no
 ifeq ($(strip $(EXPORTED)),no)
@@ -42,37 +44,39 @@ ZIP_FILE = $(PROJECT_NAME).zip
 MD5_FILE = $(PROJECT_NAME).check.md5
 
 DOC_FILES = docs/license.txt docs/changelog.txt
+HTML_DOCS = docs
 
 SOURCE_NAME = $(PROJECT_VERSIONED_NAME)-source
 BUNDLE_DIR = bundle_dir
 
 # Build rules
 .PHONY: default nml grf tar bundle_tar bundle_zip bundle_src clean
-default: docs grf
+default: html_docs grf
 bundle_tar: tar
 bundle_zip: $(ZIP_FILE)
 nml: $(NML_FILE)
 grf: $(GRF_FILE)
 tar: $(TAR_FILE)
+html_docs: $(HTML_DOCS)
 
  # default num. pool workers for python compile,
  # default is 0 to disable multiprocessing (also avoids multiprocessing pickle failures masking genuine python errors)
 PW = 0
 ROSTER = *
 
-graphics:
+$(GRAPHICS):
 	$(PYTHON3) src/render_graphics.py $(ARGS)
 
-lang:
+$(LANG):
 	$(PYTHON3) src/render_lang.py $(ARGS)
 
-docs:
+$(HTML_DOCS):
 	$(PYTHON3) src/render_docs.py $(ARGS)
 
 $(NML_FILE): $(SOURCES)
 	$(PYTHON3) src/render_nml.py '$(REPO_TITLE)' '$(REPO_REVISION)' '$(PW)' '$(ROSTER)'
 
-$(GRF_FILE): graphics lang $(NML_FILE)
+$(GRF_FILE): generated/graphics generated/lang $(NML_FILE)
 	$(NMLC) $(NML_FLAGS) --grf=$(GRF_FILE) $(NML_FILE)
 
 $(TAR_FILE): $(GRF_FILE) $(DOC_FILES)
