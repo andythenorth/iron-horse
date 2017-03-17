@@ -64,6 +64,7 @@ html_docs: $(HTML_DOCS)
 PW = 0
 ROSTER = *
 
+# determining deps reliably for graphics generation is hard, as graphics processor depends on many things so always rebuild all
 $(GRAPHICS):
 	$(PYTHON3) src/render_graphics.py $(ARGS)
 
@@ -76,7 +77,7 @@ $(HTML_DOCS):
 $(NML_FILE): $(SOURCES)
 	$(PYTHON3) src/render_nml.py '$(REPO_TITLE)' '$(REPO_REVISION)' '$(PW)' '$(ROSTER)'
 
-$(GRF_FILE): generated/graphics generated/lang $(NML_FILE)
+$(GRF_FILE): $(GRAPHICS) $(LANG) $(NML_FILE)
 	$(NMLC) $(NML_FLAGS) --grf=$(GRF_FILE) $(NML_FILE)
 
 $(TAR_FILE): $(GRF_FILE) $(DOC_FILES)
