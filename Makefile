@@ -17,10 +17,10 @@ MK_ARCHIVE = bin/mk-archive
 PROJECT_NAME = iron-horse
 SOURCES=$(shell $(FIND_FILES) --ext=.py src)
 
-GRAPHICS = generated/graphics
-LANG = generated/lang
+GRAPHICS_DIR = generated/graphics
+LANG_DIR = generated/lang
 NML_FILE = generated/iron-horse.nml
-NML_FLAGS =-c -l $(LANG)
+NML_FLAGS =-c -l $(LANG_DIR)
 
 EXPORTED = no
 ifeq ($(strip $(EXPORTED)),no)
@@ -50,10 +50,12 @@ SOURCE_NAME = $(PROJECT_VERSIONED_NAME)-source
 BUNDLE_DIR = bundle_dir
 
 # Build rules
-.PHONY: default nml grf tar bundle_tar bundle_zip bundle_src clean
+.PHONY: default graphics lang nml grf tar bundle_tar bundle_zip bundle_src clean
 default: html_docs grf
 bundle_tar: tar
 bundle_zip: $(ZIP_FILE)
+graphics: $(GRAPHICS_DIR)
+lang: $(LANG_DIR)
 nml: $(NML_FILE)
 grf: $(GRF_FILE)
 tar: $(TAR_FILE)
@@ -65,10 +67,10 @@ PW = 0
 ROSTER = *
 
 # determining deps reliably for graphics generation is hard, as graphics processor depends on many things so always rebuild all
-$(GRAPHICS):
+$(GRAPHICS_DIR):
 	$(PYTHON3) src/render_graphics.py $(ARGS)
 
-$(LANG):
+$(LANG_DIR):
 	$(PYTHON3) src/render_lang.py $(ARGS)
 
 $(HTML_DOCS):
@@ -77,7 +79,7 @@ $(HTML_DOCS):
 $(NML_FILE): $(SOURCES)
 	$(PYTHON3) src/render_nml.py '$(REPO_TITLE)' '$(REPO_REVISION)' '$(PW)' '$(ROSTER)'
 
-$(GRF_FILE): $(GRAPHICS) $(LANG) $(NML_FILE)
+$(GRF_FILE): $(GRAPHICS_DIR) $(LANG_DIR) $(NML_FILE)
 	$(NMLC) $(NML_FLAGS) --grf=$(GRF_FILE) $(NML_FILE)
 
 $(TAR_FILE): $(GRF_FILE) $(DOC_FILES)
@@ -102,7 +104,7 @@ bundle_src: $(MD5_FILE)
 		`$(FIND_FILES) $(BUNDLE_DIR)/src` $(MD5_FILE)
 
 clean:
-	for f in $(NML_FILE) $(GRF_FILE) $(TAR_FILE) $(ZIP_FILE) $(MD5_FILE) $(BUNDLE_DIR) $(SOURCE_NAME).tar;\
+	for f in docs generated $(GRF_FILE) $(TAR_FILE) $(ZIP_FILE) $(MD5_FILE) $(BUNDLE_DIR) $(SOURCE_NAME).tar;\
 	do if test -e $$f;\
 	   then rm -r $$f;\
 	   fi;\
