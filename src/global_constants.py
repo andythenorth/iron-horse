@@ -162,6 +162,7 @@ cargo_labels = ['PASS', # pax first
                 'METL',
                 'SULP',
                 'SASH',
+                'CMNT',
                 #
                 'NULL']
 
