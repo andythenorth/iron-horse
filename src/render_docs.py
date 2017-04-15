@@ -37,7 +37,7 @@ from chameleon import PageTemplateLoader # chameleon used in most template cases
 docs_templates = PageTemplateLoader(docs_src, format='text')
 
 # get args passed by makefile
-repo_vars = utils.get_repo_vars(sys)
+makefile_args = utils.get_makefile_args(sys)
 
 # get the strings from base lang file so they can be used in docs
 base_lang_strings = utils.parse_base_lang()
@@ -112,12 +112,12 @@ class DocHelper(object):
 def render_docs(doc_list, file_type, use_markdown=False):
     for doc_name in doc_list:
         template = docs_templates[doc_name + '.pt'] # .pt is the conventional extension for chameleon page templates
-        doc = template(consists=consists, registered_rosters=registered_rosters, repo_vars=repo_vars, base_lang_strings=base_lang_strings,
+        doc = template(consists=consists, registered_rosters=registered_rosters, makefile_args=makefile_args, base_lang_strings=base_lang_strings,
                        metadata=metadata, utils=utils, doc_helper=DocHelper(), doc_name=doc_name)
         if use_markdown:
             # the doc might be in markdown format, if so we need to render markdown to html, and wrap the result in some boilerplate html
             markdown_wrapper = docs_templates['markdown_wrapper.pt']
-            doc = markdown_wrapper(content=markdown.markdown(doc), global_constants=global_constants, repo_vars=repo_vars,
+            doc = markdown_wrapper(content=markdown.markdown(doc), global_constants=global_constants, makefile_args=makefile_args,
                               metadata=metadata, utils=utils, doc_helper=DocHelper(), doc_name=doc_name)
         if file_type == 'html':
             subdir = 'html'

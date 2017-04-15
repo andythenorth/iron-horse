@@ -1,11 +1,12 @@
-def get_repo_vars(sys):
+def get_makefile_args(sys):
     # get args passed by makefile
     if len(sys.argv) > 1:
-        repo_vars = {'repo_title': sys.argv[1], 'repo_version': sys.argv[2],
+        makefile_args = {'repo_revision': sys.argv[1], 'repo_version': sys.argv[2],
                     'num_pool_workers': int(sys.argv[3]), 'roster': sys.argv[4]}
     else: # provide some defaults so templates don't explode when testing python script without command line args
-        repo_vars = {'repo_title': 'Iron Horse - compiled without makefile', 'repo_version': 1}
-    return repo_vars
+        makefile_args = {'repo_revision': 0, 'repo_version': 0}
+    print(makefile_args)
+    return makefile_args
 
 def unescape_chameleon_output(escaped_nml):
     # chameleon html-escapes some characters; that's sane and secure for chameleon's intended web use, but not wanted for nml

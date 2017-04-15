@@ -3,7 +3,7 @@ grf {
 	grfid: "${global_constants.grfid}";
 	name: string(STR_GRF_NAME);
 	desc: string(STR_GRF_DESCRIPTION);
-	version: ${repo_vars.repo_version};
+	version: ${makefile_args.repo_revision};
 	min_compatible_version: 1449;
 	param 0 {
         param_adjust_vehicle_capacity {

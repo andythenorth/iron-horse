@@ -8,7 +8,7 @@ sys.path.append(os.path.join('src')) # add to the module search path
 
 import global_constants
 import utils
-repo_vars = utils.get_repo_vars(sys)
+makefile_args = utils.get_makefile_args(sys)
 
 # setting up a cache for compiled chameleon templates can significantly speed up template rendering
 chameleon_cache_path = os.path.join(currentdir, global_constants.chameleon_cache_dir)
@@ -94,10 +94,10 @@ vehicle_transporter_cars.main()
 
 def get_active_rosters():
     #  for a faster single-roster compiles when testing, optionally pass a roster id (lower case) as a makefile arg
-    if repo_vars.get('roster', '*') == '*':
+    if makefile_args.get('roster', '*') == '*':
         active_rosters = [roster for roster in registered_rosters if not roster.disabled]
     else:
-        active_rosters = [roster for roster in registered_rosters if roster.id == repo_vars['roster']] # make sure it's iterable
+        active_rosters = [roster for roster in registered_rosters if roster.id == makefile_args['roster']] # make sure it's iterable
     return active_rosters
 
 def get_consists_in_buy_menu_order():

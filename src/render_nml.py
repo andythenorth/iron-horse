@@ -13,7 +13,7 @@ import utils
 import global_constants
 
 # get args passed by makefile
-repo_vars = utils.get_repo_vars(sys)
+makefile_args = utils.get_makefile_args(sys)
 
 from chameleon import PageTemplateLoader # chameleon used in most template cases
 # setup the places we look for templates
@@ -27,7 +27,7 @@ def render_header_item_nml(header_item, consists):
                                                     global_constants=global_constants,
                                                     utils=utils,
                                                     active_rosters=iron_horse.get_active_rosters(),
-                                                    repo_vars=repo_vars))
+                                                    makefile_args=makefile_args))
 
 def render_consist_nml(consist):
     result = utils.unescape_chameleon_output(consist.render())

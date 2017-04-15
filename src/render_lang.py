@@ -17,7 +17,7 @@ from chameleon import PageTemplateLoader # chameleon used in most template cases
 lang_templates = PageTemplateLoader(os.path.join(currentdir, 'src', 'lang_templates'))
 
 # get args passed by makefile
-repo_vars = utils.get_repo_vars(sys)
+makefile_args = utils.get_makefile_args(sys)
 
 lang_src = os.path.join(currentdir, 'src', 'lang')
 lang_dst = os.path.join(iron_horse.generated_files_path, 'lang')
@@ -42,7 +42,7 @@ def main():
         src_file = codecs.open(os.path.join(lang_src, i + '.lng'), 'r','utf8')
         dst_file = codecs.open(os.path.join(lang_dst, i + '.lng'), 'w','utf8')
         lang_content = src_file.read()
-        lang_content = lang_content + lang_template(consists=consists, repo_vars=repo_vars)
+        lang_content = lang_content + lang_template(consists=consists, makefile_args=makefile_args)
         dst_file.write(lang_content)
         dst_file.close()
 
