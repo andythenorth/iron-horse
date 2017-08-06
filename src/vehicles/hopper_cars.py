@@ -7,13 +7,13 @@ def main():
                             roster = 'pony',
                             base_numeric_id = 1070,
                             wagon_generation = 1,
-                                          intro_date = 1910,
+                            intro_date = 1910,
                             vehicle_life = 40)
 
     consist.add_unit(Wagon(consist = consist,
                            capacity_freight = 30,
                            weight = 10,
-                           vehicle_length = 5))
+                           vehicle_length = 4))
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,
@@ -28,7 +28,7 @@ def main():
                             roster = 'pony',
                             base_numeric_id = 1080,
                             wagon_generation = 2,
-                                          intro_date = 1955,
+                            intro_date = 1955,
                             vehicle_life = 40)
 
     consist.add_unit(Wagon(consist = consist,
@@ -49,13 +49,13 @@ def main():
                             roster = 'pony',
                             base_numeric_id = 1090,
                             wagon_generation = 3,
-                                          intro_date = 1995,
+                            intro_date = 1995,
                             vehicle_life = 40)
 
     consist.add_unit(Wagon(consist = consist,
                            capacity_freight = 75,
                            weight = 27,
-                           vehicle_length = 10))
+                           vehicle_length = 8))
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,

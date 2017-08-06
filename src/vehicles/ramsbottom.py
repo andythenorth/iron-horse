@@ -13,12 +13,12 @@ consist = EngineConsist(id = 'ramsbottom',
 
 consist.add_unit(SteamLoco(consist = consist,
                         weight = 59,
-                        vehicle_length = 6,
+                        vehicle_length = 5,
                         spriterow_num = 0))
 
 consist.add_unit(SteamLocoTender(consist = consist,
                         weight = 30,
-                        vehicle_length = 4,
+                        vehicle_length = 3,
                         spriterow_num = 1))
 
 consist.add_model_variant(intro_date=0,

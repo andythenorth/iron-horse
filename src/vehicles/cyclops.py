@@ -4,11 +4,11 @@ from train import EngineConsist, DieselLoco
 consist = EngineConsist(id = 'cyclops',
               base_numeric_id = 130,
               title = 'Cyclops [Diesel]',
-              power = 3200,
+              power = 3000,
               speed = 125,
               buy_cost = 135,
               vehicle_life = 40,
-              intro_date = 1999)
+              intro_date = 1990)
 
 consist.add_unit(DieselLoco(consist = consist,
                         weight = 95,

@@ -4,7 +4,7 @@ from train import EngineConsist, SteamLoco, SteamLocoTender
 consist = EngineConsist(id = 'lemon',
               base_numeric_id = 270,
               title = '4-8-0 Lemon [Steam]',
-              power = 2100,
+              power = 2400,
               tractive_effort_coefficient = 0.29,
               type_base_running_cost_points = 30, # dibble running costs for game balance
               speed = 65,
