@@ -15,7 +15,7 @@ MK_ARCHIVE = bin/mk-archive
 
 # Project details
 PROJECT_NAME = iron-horse
-SOURCES=$(shell $(FIND_FILES) --ext=.py src)
+SOURCES=$(shell $(FIND_FILES) --ext=.py --ext=.pynml --ext=.pt --ext=.png --ext=.lng src)
 
 GRAPHICS_DIR = generated/graphics
 LANG_DIR = generated/lang
