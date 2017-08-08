@@ -14,7 +14,7 @@ def main():
     consist.add_unit(MailCar(consist = consist,
                             capacity_mail = 30,
                             weight = 29,
-                            vehicle_length = 7))
+                            vehicle_length = 8))
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date)
@@ -31,7 +31,7 @@ def main():
     consist.add_unit(MailCar(consist = consist,
                             capacity_mail = 45,
                             weight = 30,
-                            vehicle_length = 7))
+                            vehicle_length = 8))
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date)

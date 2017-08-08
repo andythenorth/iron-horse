@@ -13,12 +13,12 @@ consist = EngineConsist(id = 'high_flyer',
 
 consist.add_unit(SteamLoco(consist = consist,
                         weight = 90,
-                        vehicle_length = 8,
+                        vehicle_length = 7,
                         spriterow_num = 0))
 
 consist.add_unit(SteamLocoTender(consist = consist,
                         weight = 30,
-                        vehicle_length = 4,
+                        vehicle_length = 3,
                         spriterow_num = 1))
 
 consist.add_model_variant(intro_date=0,

@@ -13,7 +13,7 @@ consist = EngineConsist(id = 'little_bear',
 
 consist.add_unit(DieselLoco(consist = consist,
                         weight = 54,
-                        vehicle_length = 7,
+                        vehicle_length = 6,
                         spriterow_num = 0))
 
 consist.add_model_variant(intro_date=0,

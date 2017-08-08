@@ -674,7 +674,6 @@ class CabooseConsist(WagonConsist):
     Caboose, brake van etc - no gameplay purpose, just eye candy.
     """
     def __init__(self, **kwargs):
-        self.base_id = 'caboose_car'
         super().__init__(**kwargs)
         self.template = 'train.pynml'
         # no graphics processing - don't random colour cabeese, I tried it, looks daft
@@ -683,6 +682,24 @@ class CabooseConsist(WagonConsist):
         self.label_refits_disallowed = []
         self.default_cargo = 'GOOD' # unwanted side-effect of this is that caboose replaceable by anything refitting goods
         self.default_capacity_type = 'capacity_freight'
+
+
+class CabooseConsistShort(CabooseConsist):
+    """
+    Dubious use of extra subclassing to make two lengths of caboose in same generation
+    """
+    def __init__(self, **kwargs):
+        self.base_id = 'caboose_car_short'
+        super().__init__(**kwargs)
+
+
+class CabooseConsistLong(CabooseConsist):
+    """
+    Dubious use of extra subclassing to make two lengths of caboose in same generation
+    """
+    def __init__(self, **kwargs):
+        self.base_id = 'caboose_car_long'
+        super().__init__(**kwargs)
 
 
 class CombineConsist(WagonConsist):
