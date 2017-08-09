@@ -31,7 +31,7 @@ def main():
     consist.add_unit(Wagon(consist = consist,
                             capacity_pax = 55,
                             weight = 33,
-                            vehicle_length = 9))
+                            vehicle_length = 8))
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date)
@@ -48,7 +48,7 @@ def main():
     consist.add_unit(Wagon(consist = consist,
                             capacity_pax = 75,
                             weight = 36,
-                            vehicle_length = 10))
+                            vehicle_length = 8))
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date)

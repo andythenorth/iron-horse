@@ -917,7 +917,6 @@ class MailConsist(WagonConsist):
     Express freight - mail, valuables etc.
     """
     def __init__(self, **kwargs):
-        self.base_id = 'mail_car'
         super().__init__(**kwargs)
         self.template = 'car_with_open_doors_during_loading.pynml'
         self.cargo_graphics_mappings = {} # template needs this, but mail car has zero cargo-specific graphics, all generic
@@ -928,6 +927,24 @@ class MailConsist(WagonConsist):
         self.autorefit = True
         self.default_cargo = 'MAIL'
         self.default_capacity_type = 'capacity_mail'
+
+
+class MailConsistShort(MailConsist):
+    """
+    Dubious use of extra subclassing to make two lengths of caboose in same generation
+    """
+    def __init__(self, **kwargs):
+        self.base_id = 'mail_car_short'
+        super().__init__(**kwargs)
+
+
+class MailConsistLong(MailConsist):
+    """
+    Dubious use of extra subclassing to make two lengths of caboose in same generation
+    """
+    def __init__(self, **kwargs):
+        self.base_id = 'mail_car_long'
+        super().__init__(**kwargs)
 
 
 class MetalConsist(WagonConsist):
