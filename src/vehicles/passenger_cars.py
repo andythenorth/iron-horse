@@ -183,7 +183,7 @@ def main():
                                roster = 'antelope',
                                base_numeric_id = 1580,
                                wagon_generation = 1,
-                                                intro_date = 1950,
+                               intro_date = 1950,
                                speedy = True,
                                vehicle_life = 40)
 
@@ -200,14 +200,14 @@ def main():
                                roster = 'antelope',
                                base_numeric_id = 1560,
                                wagon_generation = 2,
-                                                intro_date = 1985,
+                               intro_date = 1985,
                                speedy = True,
                                vehicle_life = 40)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_pax = 80,
                             weight = 40,
-                            vehicle_length = 10))
+                            vehicle_length = 8))
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date)
@@ -217,7 +217,7 @@ def main():
                                roster = 'antelope',
                                base_numeric_id = 2130,
                                wagon_generation = 1,
-                                                intro_date = 1860,
+                               intro_date = 1860,
                                speedy = True,
                                vehicle_life = 40,
                                track_type = 'NG')
@@ -235,7 +235,7 @@ def main():
                                roster = 'antelope',
                                base_numeric_id = 1940,
                                wagon_generation = 2,
-                                                intro_date = 1910,
+                               intro_date = 1910,
                                speedy = True,
                                vehicle_life = 40,
                                track_type = 'NG')

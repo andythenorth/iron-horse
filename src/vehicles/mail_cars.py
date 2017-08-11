@@ -87,7 +87,7 @@ def main():
     consist.add_model_variant(intro_date=0,
                               end_date=global_constants.max_game_date)
 
-"""
+    """
     #--------------- llama ----------------------------------------------------------------------
     consist = MailConsistLong(title = '[Mail Car] Long',
                           roster = 'llama',
@@ -193,7 +193,7 @@ def main():
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date)
 
-
+    """
     #--------------- antelope ----------------------------------------------------------------------
     consist = MailConsistLong(title = '[Mail Car] Long',
                           roster = 'antelope',
@@ -246,6 +246,3 @@ def main():
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date)
-
-
-"""
