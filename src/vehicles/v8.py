@@ -13,7 +13,7 @@ consist = EngineConsist(id = 'v8',
 
 consist.add_unit(ElectricLoco(consist = consist,
                         weight = 160,
-                        vehicle_length = 10,
+                        vehicle_length = 8,
                         spriterow_num = 0))
 
 consist.add_model_variant(intro_date=0,

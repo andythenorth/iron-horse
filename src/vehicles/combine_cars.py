@@ -15,7 +15,7 @@ def main():
                             capacity_freight = 12,
                             capacity_pax = 30,
                             weight = 34,
-                            vehicle_length = 9))
+                            vehicle_length = 8))
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date)

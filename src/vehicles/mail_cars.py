@@ -5,7 +5,7 @@ def main():
     #--------------- pony ----------------------------------------------------------------------
     consist = MailConsistShort(title = '[Mail Car] Short',
                                roster = 'pony',
-                               base_numeric_id = 2020,
+                               base_numeric_id = 2220,
                                wagon_generation = 1,
                                intro_date = 1860,
                                vehicle_life = 40,

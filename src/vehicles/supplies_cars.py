@@ -45,7 +45,7 @@ def main():
     consist.add_unit(Wagon(consist = consist,
                            capacity_freight = 45,
                            weight = 12,
-                           vehicle_length = 10))
+                           vehicle_length = 8))
 
     consist.add_model_variant(intro_date=0,
                            end_date=2010,

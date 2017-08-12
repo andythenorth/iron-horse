@@ -185,10 +185,6 @@ CARGO_AGE_PERIOD = 185
 # OpenTTD's max date
 max_game_date = 5000001
 
-# id and numeric id for 1/8 long null trailing slice used to compose units to correct length
-null_trailing_slice_id = 'null_trailing_slice'
-null_trailing_slice_numeric_id = 1
-
 # standard offsets for trains on 10/8 spritesheet (n.b. length < 3 isn't possible with 3-part articulated vehicles)
 default_spritesheet_offsets = {'3': [[-3, -25], [-3, -21], [6, -12], [5, -17], [-3, -14], [-14, -17], [-20, -12], [-8, -23]],
                                '4': [[-3, -23], [-4, -20], [3, -12], [3, -17], [-3, -14], [-14, -17], [-20, -12], [-8, -22]],
@@ -201,19 +197,3 @@ default_spritesheet_offsets = {'3': [[-3, -25], [-3, -21], [6, -12], [5, -17], [
 
 # fix for depot view when sprites are on leadslice
 xoffs_adjusts = {'3': 4, '4': 4, '5': 4, '6': 4, '7': 8, '8': 8, '9': 12, '10': 12}
-
-# mapping from length of visible 'part' to internal slice lengths
-slice_lengths = {3: (1,1,1),
-                 4: (1,2,1),
-                 5: (1,3,1),
-                 6: (1,4,1),
-                 7: (2,3,2),
-                 8: (2,4,2),
-                 9: (3,3,3),
-                10: (3,4,3),
-                11: (3,5,3),
-                12: (4,4,4),
-                13: (4,5,4),
-                14: (4,6,4),
-                15: (4,7,4),
-                16: (4,8,4)}

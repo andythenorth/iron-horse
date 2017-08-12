@@ -7,6 +7,7 @@ template spriteset_template_purchase_${vehicle.id}() {
     [60,    10, 1, 1, 0, 0]
     [60,    10, 1, 1, 0, 0]
     [60,    10, 1, 1, 0, 0]
-    [316,   10, ${consist.buy_menu_width}, 16, -${int(consist.buy_menu_width / 2)}, -11 ${', ANIM' if consist.suppress_animated_pixel_warnings else ''}]
+    // allow for buffers/couplings being 1px additional to the unit (they overlap in consists, but show in buy menu)
+    [316,   10, ${consist.buy_menu_width + 1}, 16, -${int(consist.buy_menu_width / 2)}, -11 ${', ANIM' if consist.suppress_animated_pixel_warnings else ''}]
     [60,    10, 1, 1, 0, 0]
 }

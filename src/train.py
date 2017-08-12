@@ -66,29 +66,16 @@ class Consist(object):
         self.model_variants.append(ModelVariant(intro_date, end_date, graphics_processor, variant_num, visual_effect_offset))
 
     def add_unit(self, vehicle, repeat=1):
-        # vehicle ids increment by 3 because each vehicle is composed of 3 intermediate slices
         count = len(set(self.slices))
-        first_slice = LeadSlice(parent_vehicle=vehicle)
-        second_slice = vehicle
-        third_slice = NullTrailingSlice(parent_vehicle=vehicle)
+        first_slice = vehicle
         if count == 0:
             first_slice.id = self.id # first vehicle gets no numeric id suffix - for compatibility with buy menu list ids etc
         else:
             first_slice.id = self.id + '_' + str(count)
-        second_slice.id = self.id + '_' + str(count + 1)
-        third_slice.id = self.id + '_' + str(count + 2)
         first_slice.numeric_id = self.get_and_verify_numeric_id(count)
-        second_slice.numeric_id = self.get_and_verify_numeric_id(count + 1)
-        third_slice.numeric_id = self.get_and_verify_numeric_id(count + 2)
-        first_slice.slice_length = global_constants.slice_lengths[vehicle.vehicle_length][0]
-        second_slice.slice_length = global_constants.slice_lengths[vehicle.vehicle_length][1]
-        third_slice.slice_length = global_constants.slice_lengths[vehicle.vehicle_length][2]
+        first_slice.slice_length = vehicle.vehicle_length
         first_slice.spriterow_num = vehicle.spriterow_num
-
-        for repeat_num in range(repeat):
-            self.slices.append(first_slice)
-            self.slices.append(second_slice)
-            self.slices.append(third_slice)
+        self.slices.append(first_slice)
 
     def get_and_verify_numeric_id(self, offset):
         numeric_id = self.base_numeric_id + offset
@@ -279,7 +266,8 @@ class Train(object):
     @property
     def is_lead_slice_of_unit(self):
         # first slice in a unit
-        return isinstance(self, LeadSlice)
+        print("deprecated call to is_lead_slice_of_unit()")
+        return True
 
     @property
     def special_flags(self):
@@ -322,26 +310,38 @@ class Train(object):
     @property
     def adjust_xoffs(self):
         # used to correct depot view x offset
+        print("deprecated call to adjust_xoffs()")
+        """
         if isinstance(self, LeadSlice):
             return global_constants.xoffs_adjusts[str(self.vehicle_length)]
         else:
             return 0
+        """
+        return 0
 
     @property
     def sg_depot(self):
+        print("deprecated call to sg_depot()")
+        return self.id + '_switch_graphics_by_year'
+        """
         if isinstance(self, LeadSlice):
             suffix = "_switch_graphics_by_year"
         else:
             suffix = "_sg_hidden"
         return self.id + suffix
+        """
 
     @property
     def sg_default(self):
+        print("deprecated call to sg_depot()")
+        return self.id + '_switch_graphics_by_year'
+        """
         if isinstance(self, LeadSlice):
             suffix = "_sg_hidden"
         else:
             suffix = "_switch_graphics_by_year"
         return self.id + suffix
+        """
 
     def get_visual_effect_offset(self, variant):
         # no sign here of bonkers complexity just to flip smoke on flipped engines
@@ -357,28 +357,40 @@ class Train(object):
                 return variant.visual_effect_offset
 
     def get_nml_expression_for_cargo_type_unit_refitted_to(self):
+        print("deprecated call to get_nml_expression_for_cargo_type_unit_refitted_to()")
         expression_template = Template("[STORE_TEMP(${offset}, 0x10F), var[0x61, 0, 0x000000FF, 0x47]]")
+        return expression_template.substitute(offset=0)
+        """
         # cargo capacity is on the second slice of each 3-slice unit
         if isinstance(self, LeadSlice):
             return expression_template.substitute(offset=1)
         else:
             return expression_template.substitute(offset=0)
+        """
 
     def get_nml_expression_for_unit_cargo_loaded_percent(self):
+        print("deprecated call to get_nml_expression_for_unit_cargo_loaded_percent()")
         expression_template = Template("[STORE_TEMP(${offset}, 0x10F), var[0x61, 0, 0x0000FFFF, 0xBC]*100/var[0x61, 0, 0x0000FFFF, 0xBA]]")
+        return expression_template.substitute(offset=0)
+        """
         # cargo capacity is on the second slice of each 3-slice unit
         if isinstance(self, LeadSlice):
             return expression_template.substitute(offset=1)
         else:
             return expression_template.substitute(offset=0)
+        """
 
     def get_nml_expression_for_cargo_variant_random_switch(self, variation_num, cargo_id=None):
+        print("deprecated call to get_nml_expression_for_cargo_variant_random_switch()")
         switch_id = self.id + "_switch_graphics_" + str(variation_num) + ('_' + str(cargo_id) if cargo_id is not None else '')
+        return "SELF," + switch_id + ", bitmask(TRIGGER_VEHICLE_NEW_LOAD)"
+        """
         # get the right unit, only run triggers on the vehicle carrying cargo
         if isinstance(self, LeadSlice):
             return "BACKWARD_SELF(1)," + switch_id
         else:
             return "SELF," + switch_id + ", bitmask(TRIGGER_VEHICLE_NEW_LOAD)"
+        """
 
     def get_nml_expression_for_grfid_of_neighbouring_unit(self, unit_offset):
         # offset is number of units, not number of slices
@@ -446,74 +458,6 @@ class GraphicsProcessorFactory(object):
         self.pipeline_name = pipeline_name
         self.options = options
         self.pipeline = graphics_processor.registered_pipelines[pipeline_name]
-
-
-class LeadSlice(Train):
-    """
-    Lead slice for a unit (invisible, minimal props).
-    """
-    def __init__(self, parent_vehicle):
-        super().__init__(consist=parent_vehicle.consist)
-        self.parent_vehicle = parent_vehicle
-        self.template = parent_vehicle.template
-        self.speed = 0
-        self.weight = 0
-        self.vehicle_length = parent_vehicle.vehicle_length
-        self.engine_class = parent_vehicle.engine_class
-        self.visual_effect = parent_vehicle.visual_effect
-        self.default_visual_effect_offset = parent_vehicle.default_visual_effect_offset
-        self.default_cargo = parent_vehicle.default_cargo # breaks auto-replace if omitted
-        # if needed, provide default capacity (set as property) so lead vehicle has same refittability as trailing slices
-        # this prevents an issue with auto-refit
-        if self.parent_vehicle.default_cargo_capacities[0] != 0:
-            self.default_cargo_capacities = [1]
-        else:
-            self.default_cargo_capacities = [0]
-        # actual capacity determined by cb checking cargo type, set all of these to 0
-        self.capacities_pax = [0, 0, 0]
-        self.capacities_freight = [0, 0, 0]
-        self.capacities_mail = [0, 0, 0]
-        # copy the refittability info from parent
-        self.class_refit_groups = parent_vehicle.class_refit_groups
-        self.label_refits_allowed = parent_vehicle.label_refits_allowed
-        self.label_refits_disallowed = parent_vehicle.label_refits_disallowed
-        self.cargo_age_period = parent_vehicle.cargo_age_period
-        self.autorefit = parent_vehicle.autorefit
-        if isinstance(parent_vehicle, CombineCar):
-            self.capacities_pax = parent_vehicle.capacities_pax
-            self.default_cargo_capacities = self.capacities_pax
-            self.default_cargo = 'PASS'
-            self.class_refit_groups = ['pax']
-            # Jank for ECS tourists, parent vehicle disallows TOUR (to prevent tourists in mail compartment).
-            # Then TOUR is re-allowed here, also necesary to clear the disallowed labels property.
-            self.label_refits_allowed = ['TOUR']
-            self.label_refits_disallowed = []
-
-
-class NullTrailingSlice(object):
-    """
-    Trailing slice for a unit (invisible, minimal props).
-    """
-    def __init__(self, parent_vehicle):
-        self.id = global_constants.null_trailing_slice_id
-        self.numeric_id = global_constants.null_trailing_slice_numeric_id
-        # provide default capacity (set as property) so leads vehicle has same refittability as trailing slices, this prevents an issue with auto-refit
-        self.default_cargo_capacities = [1]
-        # set a bunch of props to default / zero values
-        self.capacities_pax = [0, 0, 0]
-        self.capacities_freight = [0, 0, 0]
-        self.capacities_mail = [0, 0, 0]
-        self.default_cargo = parent_vehicle.default_cargo
-        # copy the refittability info from parent
-        self.class_refit_groups = parent_vehicle.class_refit_groups
-        self.label_refits_allowed = parent_vehicle.label_refits_allowed
-        self.label_refits_disallowed = parent_vehicle.label_refits_disallowed
-        self.cargo_age_period = parent_vehicle.cargo_age_period
-        self.autorefit = parent_vehicle.autorefit
-
-    def render(self):
-        template = templates['null_trailing_slice.pynml']
-        return template(vehicle=self, global_constants=global_constants)
 
 
 class EngineConsist(Consist):
