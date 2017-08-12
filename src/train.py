@@ -52,8 +52,8 @@ class Consist(object):
         self.model_variants = []
         # mostly vehicles vary graphics by build year, but for date-sensitive cargo, we want to vary by current year
         self.date_variant_var = kwargs.get('date_variant_var', 'build_year')
-        # create structure to hold the slices
-        self.slices = []
+        # create structure to hold the units
+        self.units = []
         # roster is set when the vehicle is registered to a roster, only one roster per vehicle
         self.roster_id = None
          # optionally suppress nmlc warnings about animated pixels for consists where they're intentional
@@ -65,16 +65,15 @@ class Consist(object):
         self.model_variants.append(ModelVariant(intro_date, end_date, graphics_processor, variant_num, visual_effect_offset))
 
     def add_unit(self, vehicle, repeat=1):
-        count = len(set(self.slices))
-        first_slice = vehicle
+        count = len(set(self.units))
         if count == 0:
-            first_slice.id = self.id # first vehicle gets no numeric id suffix - for compatibility with buy menu list ids etc
+            vehicle.id = self.id # first vehicle gets no numeric id suffix - for compatibility with buy menu list ids etc
         else:
-            first_slice.id = self.id + '_' + str(count)
-        first_slice.numeric_id = self.get_and_verify_numeric_id(count)
-        first_slice.slice_length = vehicle.vehicle_length
-        first_slice.spriterow_num = vehicle.spriterow_num
-        self.slices.append(first_slice)
+            vehicle.id = self.id + '_' + str(count)
+        vehicle.numeric_id = self.get_and_verify_numeric_id(count)
+        print("assigning vehicle.unit_length to vehicle.vehicle_length is redundant; deprecate")
+        vehicle.unit_length = vehicle.vehicle_length
+        self.units.append(vehicle)
 
     def get_and_verify_numeric_id(self, offset):
         numeric_id = self.base_numeric_id + offset
@@ -84,7 +83,7 @@ class Consist(object):
         # non-blocking guard on duplicate IDs
         for id in numeric_id_defender:
             if id == numeric_id:
-                utils.echo_message("Error: consist " + self.id + " slice id collides (" + str(numeric_id) + ") with slices in another consist")
+                utils.echo_message("Error: consist " + self.id + " slice id collides (" + str(numeric_id) + ") with units in another consist")
         numeric_id_defender.append(numeric_id)
         return numeric_id
 
@@ -152,7 +151,7 @@ class Consist(object):
 
     def any_slice_offers_autorefit(self):
         offers_autorefit = False
-        for slice in self.slices:
+        for slice in self.units:
             if getattr(slice, 'autorefit', False):
                 offers_autorefit = True
         return offers_autorefit
@@ -177,7 +176,7 @@ class Consist(object):
 
     @property
     def weight(self):
-        return sum([getattr(slice, 'weight', 0) for slice in self.slices])
+        return sum([getattr(slice, 'weight', 0) for slice in self.units])
 
     def get_roster(self, roster_id):
         for roster in registered_rosters:
@@ -192,7 +191,7 @@ class Consist(object):
     @property
     def buy_menu_width (self):
         # max sensible width in buy menu is 64px
-        consist_length = 4 * sum([slice.slice_length for slice in self.slices])
+        consist_length = 4 * sum([slice.unit_length for slice in self.units])
         if consist_length < 64:
             return consist_length
         else:
@@ -207,7 +206,7 @@ class Consist(object):
         # templating
         nml_result = ''
         nml_result = nml_result + self.render_articulated_switch()
-        for slice in set(self.slices):
+        for slice in set(self.units):
             nml_result = nml_result + slice.render()
         return nml_result
 
@@ -351,7 +350,7 @@ class Train(object):
                 return self.default_visual_effect_offset
         else:
             if variant.visual_effect_offset == 'AUTOFLIP':
-                return int(math.floor(0.5 * (self.vehicle_length - self.slice_length)))
+                return int(math.floor(0.5 * (self.vehicle_length - self.unit_length)))
             else:
                 return variant.visual_effect_offset
 
@@ -392,12 +391,12 @@ class Train(object):
         """
 
     def get_nml_expression_for_grfid_of_neighbouring_unit(self, unit_offset):
-        # offset is number of units, not number of slices
+        # offset is number of units
         expression_template = Template("[STORE_TEMP(${offset}, 0x10F), var[0x61, 0, 0xFFFFFFFF, 0x25]]")
         return expression_template.substitute(offset=(3 * unit_offset))
 
     def get_nml_expression_for_id_of_neighbouring_unit(self, unit_offset):
-        # offset is number of units, not number of slices
+        # offset is number of units
         expression_template = Template("[STORE_TEMP(${offset}, 0x10F), var[0x61, 0, 0x0000FFFF, 0xC6]]")
         return expression_template.substitute(offset=(3 * unit_offset))
 
@@ -561,7 +560,7 @@ class WagonConsist(Consist):
         else:
             cost = 125
         capacity_factors = []
-        for slice in self.slices:
+        for slice in self.units:
             if slice.default_cargo == 'PASS':
                 # pax coaches have seats and stuff, are expensive to build
                 capacity_factors.append(3 * getattr(slice, 'capacities_pax', 0)[1])
@@ -579,9 +578,9 @@ class WagonConsist(Consist):
             cost = self.speed
         else:
             cost = 125
-        if self.slices[0].default_cargo == 'PASS':
+        if self.units[0].default_cargo == 'PASS':
             return cost / 4
-        elif self.slices[0].default_cargo == 'MAIL':
+        elif self.units[0].default_cargo == 'MAIL':
             return cost / 7
         else:
             return cost / 8

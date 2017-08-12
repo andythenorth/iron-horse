@@ -196,4 +196,5 @@ default_spritesheet_offsets = {'3': [[-3, -25], [-3, -21], [6, -12], [5, -17], [
                                '10': [[-3, -19], [-12, -16], [-12, -12], [-6, -14], [-3, -12], [-19, -13], [-28, -12], [-12, -17]]}
 
 # fix for depot view when sprites are on leadslice
+print("deprecated declaration of xoffs_adjusts in global_constants")
 xoffs_adjusts = {'3': 4, '4': 4, '5': 4, '6': 4, '7': 8, '8': 8, '9': 12, '10': 12}
