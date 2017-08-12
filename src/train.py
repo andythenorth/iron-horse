@@ -83,7 +83,7 @@ class Consist(object):
         # non-blocking guard on duplicate IDs
         for id in numeric_id_defender:
             if id == numeric_id:
-                utils.echo_message("Error: consist " + self.id + " slice id collides (" + str(numeric_id) + ") with units in another consist")
+                utils.echo_message("Error: consist " + self.id + " unit id collides (" + str(numeric_id) + ") with units in another consist")
         numeric_id_defender.append(numeric_id)
         return numeric_id
 
@@ -150,13 +150,15 @@ class Consist(object):
         return "string(STR_NAME_" + self.id +", string(" + self.get_str_name_suffix() + "))"
 
     def any_slice_offers_autorefit(self):
+        print("any_slice_offers_autorefit() should be adjusted to units not slices")
         offers_autorefit = False
-        for slice in self.units:
-            if getattr(slice, 'autorefit', False):
+        for unit in self.units:
+            if getattr(unit, 'autorefit', False):
                 offers_autorefit = True
         return offers_autorefit
 
     def slice_requires_variable_power(self, vehicle):
+        print("slice_requires_variable_power() should be adjusted to units not slices")
         if self.power_by_railtype is not None and vehicle.is_lead_slice_of_consist:
             return True
         else:
@@ -176,7 +178,7 @@ class Consist(object):
 
     @property
     def weight(self):
-        return sum([getattr(slice, 'weight', 0) for slice in self.units])
+        return sum([getattr(unit, 'weight', 0) for unit in self.units])
 
     def get_roster(self, roster_id):
         for roster in registered_rosters:
@@ -191,7 +193,7 @@ class Consist(object):
     @property
     def buy_menu_width (self):
         # max sensible width in buy menu is 64px
-        consist_length = 4 * sum([slice.unit_length for slice in self.units])
+        consist_length = 4 * sum([unit.unit_length for unit in self.units])
         if consist_length < 64:
             return consist_length
         else:
@@ -206,8 +208,8 @@ class Consist(object):
         # templating
         nml_result = ''
         nml_result = nml_result + self.render_articulated_switch()
-        for slice in set(self.units):
-            nml_result = nml_result + slice.render()
+        for unit in set(self.units):
+            nml_result = nml_result + unit.render()
         return nml_result
 
 
@@ -560,15 +562,15 @@ class WagonConsist(Consist):
         else:
             cost = 125
         capacity_factors = []
-        for slice in self.units:
-            if slice.default_cargo == 'PASS':
+        for unit in self.units:
+            if unit.default_cargo == 'PASS':
                 # pax coaches have seats and stuff, are expensive to build
-                capacity_factors.append(3 * getattr(slice, 'capacities_pax', 0)[1])
-            elif slice.default_cargo == 'MAIL':
+                capacity_factors.append(3 * getattr(unit, 'capacities_pax', 0)[1])
+            elif unit.default_cargo == 'MAIL':
                 # mail cars have pax-grade eqpt, but no seats etc, so moderately expensive
-                capacity_factors.append(2 * getattr(slice, 'capacities_mail', 0)[1])
+                capacity_factors.append(2 * getattr(unit, 'capacities_mail', 0)[1])
             else:
-                capacity_factors.append(getattr(slice, 'capacities_freight', 0)[1])
+                capacity_factors.append(getattr(unit, 'capacities_freight', 0)[1])
         cost = cost + sum(capacity_factors)
         return 0.5 * cost # dibble all the things
 
@@ -1246,6 +1248,7 @@ class CombineCar(Wagon):
     # combine car needs to set capacity_mail, capacity_freight, and capacity_pax
     # pax capacity is non-refittable and applied to lead slice of the unit
     def __init__(self, **kwargs):
+        print("CombineCar depends on slices and should be deprecated")
         super().__init__(**kwargs)
 
 
