@@ -63,9 +63,6 @@ def main():
         pool.map(run_pipeline, variants)
         pool.close()
 
-    # handle special case spritesheets
-    shutil.copy(os.path.join(graphics_input, 'null_trailing_part.png'), graphics_output_path)
-
     print(format((time() - start), '.2f')+'s')
 
 if __name__ == '__main__':

@@ -28,7 +28,6 @@ class Consist(object):
     """
        'Vehicles' (appearing in buy menu) are composed as articulated consists.
        Each consist comprises one or more 'units' (visible).
-       Each unit assembled from 3 'slices' (invisible-visible-invisible), which are newgrf vehicles with uids.
    """
     def __init__(self, **kwargs):
         self.id = kwargs.get('id', None)
