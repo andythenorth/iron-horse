@@ -66,7 +66,7 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
             purchase_power:                 ${vehicle.id}_switch_power;
         </tal:variable_power>
         visual_effect_and_powered:      ${vehicle.id}_switch_visual_effect_and_powered;
-        <tal:add_articulated_parts condition="vehicle.is_lead_unit_of_consist">
+        <tal:add_articulated_parts condition="vehicle.is_lead_unit_of_consist and len(consist.units) > 1">
             articulated_part: ${consist.id}_articulated_cb_switch;
         </tal:add_articulated_parts>
     }
