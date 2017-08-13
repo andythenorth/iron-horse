@@ -7,15 +7,9 @@
 </tal:graphics_variation_random_switches>
 
 
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_by_year, ${consist.date_variant_var}) {
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics, ${consist.date_variant_var}) {
     <tal:choose_random_switch_by_date repeat="nml_fragment consist.get_nml_random_switch_fragments_for_model_variants(vehicle, '_switch_graphics_random_')">
         ${nml_fragment};
     </tal:choose_random_switch_by_date>
     return ${vehicle.id}_switch_graphics_random_0;
-}
-
-// show default graphics, or special cases like depot? (purchase is handled separately using purchase cb)
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics, extra_callback_info1) {
-    0x10: return ${vehicle.sg_depot};
-    return ${vehicle.sg_default};
 }

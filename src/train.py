@@ -291,30 +291,6 @@ class Train(object):
     def location_of_random_bits_for_model_variant(self):
         return 'FORWARD_SELF(' + str(self.numeric_id - self.consist.base_numeric_id) + ')'
 
-    @property
-    def sg_depot(self):
-        print("deprecated call to sg_depot()")
-        return self.id + '_switch_graphics_by_year'
-        """
-        if isinstance(self, LeadSlice):
-            suffix = "_switch_graphics_by_year"
-        else:
-            suffix = "_sg_hidden"
-        return self.id + suffix
-        """
-
-    @property
-    def sg_default(self):
-        print("deprecated call to sg_depot()")
-        return self.id + '_switch_graphics_by_year'
-        """
-        if isinstance(self, LeadSlice):
-            suffix = "_sg_hidden"
-        else:
-            suffix = "_switch_graphics_by_year"
-        return self.id + suffix
-        """
-
     def get_visual_effect_offset(self, variant):
         # no sign here of bonkers complexity just to flip smoke on flipped engines
         if variant.visual_effect_offset is None:
