@@ -71,8 +71,7 @@ class Consist(object):
         else:
             vehicle.id = self.id + '_' + str(count)
         vehicle.numeric_id = self.get_and_verify_numeric_id(count)
-        print("assigning vehicle.unit_length to vehicle.vehicle_length is redundant; deprecate")
-        vehicle.unit_length = vehicle.vehicle_length
+        vehicle.vehicle_length
         self.units.append(vehicle)
 
     def get_and_verify_numeric_id(self, offset):
@@ -149,17 +148,8 @@ class Consist(object):
     def get_name(self):
         return "string(STR_NAME_" + self.id +", string(" + self.get_str_name_suffix() + "))"
 
-    def any_slice_offers_autorefit(self):
-        print("any_slice_offers_autorefit() should be adjusted to units not slices")
-        offers_autorefit = False
-        for unit in self.units:
-            if getattr(unit, 'autorefit', False):
-                offers_autorefit = True
-        return offers_autorefit
-
-    def slice_requires_variable_power(self, vehicle):
-        print("slice_requires_variable_power() should be adjusted to units not slices")
-        if self.power_by_railtype is not None and vehicle.is_lead_slice_of_consist:
+    def unit_requires_variable_power(self, vehicle):
+        if self.power_by_railtype is not None and vehicle.is_lead_unit_of_consist:
             return True
         else:
             return False
@@ -193,7 +183,7 @@ class Consist(object):
     @property
     def buy_menu_width (self):
         # max sensible width in buy menu is 64px
-        consist_length = 4 * sum([unit.unit_length for unit in self.units])
+        consist_length = 4 * sum([unit.vehicle_length for unit in self.units])
         if consist_length < 64:
             return consist_length
         else:
@@ -250,28 +240,22 @@ class Train(object):
     @property
     def availability(self):
         # only show vehicle in buy menu if it is first vehicle in consist
-        if self.is_lead_slice_of_consist:
+        if self.is_lead_unit_of_consist:
             return "ALL_CLIMATES"
         else:
             return "NO_CLIMATE"
 
     @property
-    def is_lead_slice_of_consist(self):
-        # first slice in the complete multi-unit consist
+    def is_lead_unit_of_consist(self):
+        # first unit in the complete multi-unit consist
         if self.numeric_id == self.consist.base_numeric_id:
             return True
         else:
             return False
 
     @property
-    def is_lead_slice_of_unit(self):
-        # first slice in a unit
-        print("deprecated call to is_lead_slice_of_unit()")
-        return True
-
-    @property
     def special_flags(self):
-        special_flags = ['TRAIN_FLAG_2CC']
+        special_flags = ['TRAIN_FLAG_2CC', 'TRAIN_FLAG_FLIP']
         if self.autorefit == True:
             special_flags.append('TRAIN_FLAG_AUTOREFIT')
         return ','.join(special_flags)
@@ -308,18 +292,6 @@ class Train(object):
         return 'FORWARD_SELF(' + str(self.numeric_id - self.consist.base_numeric_id) + ')'
 
     @property
-    def adjust_xoffs(self):
-        # used to correct depot view x offset
-        print("deprecated call to adjust_xoffs()")
-        """
-        if isinstance(self, LeadSlice):
-            return global_constants.xoffs_adjusts[str(self.vehicle_length)]
-        else:
-            return 0
-        """
-        return 0
-
-    @property
     def sg_depot(self):
         print("deprecated call to sg_depot()")
         return self.id + '_switch_graphics_by_year'
@@ -352,7 +324,8 @@ class Train(object):
                 return self.default_visual_effect_offset
         else:
             if variant.visual_effect_offset == 'AUTOFLIP':
-                return int(math.floor(0.5 * (self.vehicle_length - self.unit_length)))
+                print("get_visual_effect_offset() 'AUTOFLIP' detection is silly, and needs refactored")
+                return int(math.floor(0.5 * (self.vehicle_length - self.vehicle_length))) # !! this is legacy and will now result in 0 always
             else:
                 return variant.visual_effect_offset
 

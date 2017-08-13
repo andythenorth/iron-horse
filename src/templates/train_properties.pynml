@@ -1,12 +1,9 @@
 <!--! some switches are common to all vehicles so included with properties -->
 
-<tal:visual_effect condition="vehicle.is_lead_slice_of_unit">
-    // -- smoke etc -- //
-    <tal:include metal:use-macro="load: visual_effect_and_powered.pynml" />
-</tal:visual_effect>
+<tal:include metal:use-macro="load: visual_effect_and_powered.pynml" />
 
 
-<tal:variable_power condition="consist.slice_requires_variable_power(vehicle)">
+<tal:variable_power condition="consist.unit_requires_variable_power(vehicle)">
     // -- power -- //
     switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_power, current_railtype) {
         <tal:only_if_overrides_exist condition="consist.power_by_railtype is not None">
@@ -51,7 +48,7 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
         retire_early:                   ${consist.vehicle_life - 4}; // magic from Eddi
         reliability_decay:              20; // default value
         vehicle_life:                   ${consist.vehicle_life};
-        length:                         ${vehicle.unit_length};
+        length:                         ${vehicle.vehicle_length};
         track_type:                     ${consist.track_type};
     }
     graphics {
@@ -64,20 +61,18 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
             loading_speed:                  ${vehicle.id + '_switch_loading_speed'};
         </tal:optional_capacity_switches>
         <!--! no buy menu extra text in this grf by design; extra text is associated with BAD FEATURES -->
-        <tal:variable_power condition="consist.slice_requires_variable_power(vehicle)">
+        <tal:variable_power condition="consist.unit_requires_variable_power(vehicle)">
             power:                          ${vehicle.id}_switch_power;
             purchase_power:                 ${vehicle.id}_switch_power;
         </tal:variable_power>
-        <tal:visual_effect condition="vehicle.is_lead_slice_of_unit">
-            visual_effect_and_powered:      ${vehicle.id}_switch_visual_effect_and_powered;
-        </tal:visual_effect>
-        <tal:add_articulated_parts condition="vehicle.is_lead_slice_of_consist">
+        visual_effect_and_powered:      ${vehicle.id}_switch_visual_effect_and_powered;
+        <tal:add_articulated_parts condition="vehicle.is_lead_unit_of_consist">
             articulated_part: ${consist.id}_articulated_cb_switch;
         </tal:add_articulated_parts>
     }
 }
 
-<tal:rosters condition="vehicle.is_lead_slice_of_consist">
+<tal:rosters condition="vehicle.is_lead_unit_of_consist">
     if (${consist.get_expression_for_rosters()}) {
         item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
             property {

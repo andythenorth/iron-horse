@@ -2,15 +2,15 @@
 
 <tal:sprites_random_variations repeat="variation_num python:range(consist.get_num_spritesets())">
     spriteset(${vehicle.id}_ss_doors_closed_${variation_num}, "${global_constants.graphics_path}${consist.id}_${variation_num}.png") {
-      spriteset_template_${vehicle.id}(10, ${vehicle.adjust_xoffs})
+      spriteset_template_${vehicle.id}(10)
     }
 
     <tal:cargo_variants repeat="cargo_variant_num python:range(consist.num_cargo_rows)">
         spriteset(${vehicle.id}_ss_doors_open_${variation_num}_${cargo_variant_num}, "${global_constants.graphics_path}${consist.id}_${variation_num}.png") {
-          spriteset_template_${vehicle.id}(40 + ${cargo_variant_num * 90}, ${vehicle.adjust_xoffs})
+          spriteset_template_${vehicle.id}(40 + ${cargo_variant_num * 90})
         }
         spriteset(${vehicle.id}_ss_part_loaded_${variation_num}_${cargo_variant_num}, "${global_constants.graphics_path}${consist.id}_${variation_num}.png") {
-          spriteset_template_${vehicle.id}(70 + ${cargo_variant_num * 90}, ${vehicle.adjust_xoffs})
+          spriteset_template_${vehicle.id}(70 + ${cargo_variant_num * 90})
         }
 
         spritegroup ${vehicle.id}_sg_${variation_num}_${cargo_variant_num} {

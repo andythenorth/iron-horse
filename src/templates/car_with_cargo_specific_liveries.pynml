@@ -8,7 +8,7 @@
 <tal:sprites_random_variations repeat="variation_num python:range(consist.get_num_spritesets())">
     <tal:cargo_variants repeat="cargo_variant_num python:range(consist.num_cargo_rows)">
         spriteset(${vehicle.id}_ss_${variation_num}_${cargo_variant_num}, "${global_constants.graphics_path}${consist.id}_${variation_num}.png") {
-          spriteset_template_${vehicle.id}(10 + ${cargo_variant_num * 30}, ${vehicle.adjust_xoffs})
+          spriteset_template_${vehicle.id}(10 + ${cargo_variant_num * 30})
         }
 
         spritegroup ${vehicle.id}_sg_${variation_num}_${cargo_variant_num} {

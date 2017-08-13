@@ -1,3 +1,4 @@
+// -- smoke etc -- //
 <tal:model_variants repeat="variant consist.model_variants">
     switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_visual_effect_and_powered_by_variant_${variant.variant_num}, current_railtype) {
         <tal:only_if_overrides_exist condition="consist.visual_effect_override_by_railtype is not None">
