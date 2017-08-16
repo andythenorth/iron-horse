@@ -1,0 +1,45 @@
+##grflangid 0x15
+##plural 10
+##gender fp map f mnp m n np
+##case acc nom loc big voc ins dat small gen
+STR_GRF_DESCRIPTION                                             :Licence: {SILVER}GPL v2{}{BLACK}
+
+STR_PARAM_ADJUST_VEHICLE_CAPACITY                               :Kapacita vlaku
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :Maličká
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Obrovská
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Nadměrný
+STR_PARAM_ROSTER                                                :Seznam
+STR_PARAM_ROSTER_DESC                                           :Vyber použitý set vlaků.
+STR_PARAM_ROSTER_OPTION_0                                       :Železný poník
+STR_PARAM_ROSTER_OPTION_1                                       :Železná lama
+STR_PARAM_ROSTER_OPTION_2                                       :Železná antilopa
+
+# keep these alphabetised, easier
+STR_NAME_SUFFIX_BATTERY                                         :(Bateriový)
+STR_NAME_SUFFIX_CAR                                             :Vůz
+STR_NAME_SUFFIX_DIESEL                                          :(Dieselový)
+STR_NAME_SUFFIX_ELECTRIC                                        :(Elektrický)
+STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Diesel-Elektrický)
+STR_NAME_SUFFIX_METRO_CAR                                       :Vůz (Metro)
+STR_NAME_SUFFIX_METRO_TRAIN                                     :(Metro)
+STR_NAME_SUFFIX_STEAM                                           :(Parní)
+
+STR_NAME_SUFFIX_BOX_CAR                                         :Uzavřený vůz
+STR_NAME_SUFFIX_CABOOSE_CAR                                     :Služební vůz
+STR_NAME_SUFFIX_COMBINE_CAR                                     :Smíšený vůz
+STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Krytý násypný vůz
+STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Vůz na potraviny
+STR_NAME_SUFFIX_FLAT_CAR                                        :Plochý vůz
+STR_NAME_SUFFIX_FRUIT_CAR                                       :Vůz na ovoce
+STR_NAME_SUFFIX_HOPPER_CAR                                      :Násypný vůz
+STR_NAME_SUFFIX_INTERMODAL_FLAT_CAR                             :Kontejnerový vůz
+STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Vůz na dobytek
+STR_NAME_SUFFIX_MAIL_CAR                                        :Vůz na poštu
+STR_NAME_SUFFIX_METAL_CAR                                       :Kovový vůz
+STR_NAME_SUFFIX_OPEN_CAR                                        :Otevřený vůz
+STR_NAME_SUFFIX_PASSENGER_CAR                                   :Vůz pro cestující
+STR_NAME_SUFFIX_REEFER_CAR                                      :Chlazený vůz
+STR_NAME_SUFFIX_ROTARY_GONDOLA_CAR                              :Otočný gondolový vůz
+STR_NAME_SUFFIX_SUPPLIES_CAR                                    :Vůz na zásoby
+STR_NAME_SUFFIX_TANK_CAR                                        :Cisternový vůz
+STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Vůz pro přepravu vozidel
