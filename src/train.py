@@ -473,7 +473,6 @@ class WagonConsist(Consist):
         self.cargo_age_period = kwargs.get('cargo_age_period', global_constants.CARGO_AGE_PERIOD)
         self.date_variant_var = kwargs.get('date_variant_var', None)
 
-
         # persist roster id for lookups, not roster obj directly, because of multiprocessing problems with object references
         self.roster_id = kwargs.get('roster', None)
         roster_obj = self.get_roster(self.roster_id)  # roster_obj for local reference only, don't persist this

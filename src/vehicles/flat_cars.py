@@ -28,11 +28,11 @@ def main():
                            roster = 'pony',
                            base_numeric_id = 1150,
                            wagon_generation = 2,
-                           intro_date = 1950,
+                           intro_date = 1960,
                            vehicle_life = 40)
 
     consist.add_unit(Wagon(consist = consist,
-                           capacity_freight = 35,
+                           capacity_freight = 40,
                            weight = 12,
                            vehicle_length = 8))
 
@@ -53,7 +53,7 @@ def main():
                            vehicle_life = 40)
 
     consist.add_unit(Wagon(consist = consist,
-                           capacity_freight = 55,
+                           capacity_freight = 50,
                            weight = 25,
                            vehicle_length = 8))
 

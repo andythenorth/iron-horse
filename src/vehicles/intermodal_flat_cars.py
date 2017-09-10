@@ -12,7 +12,7 @@ def main():
                            speedy = True)
 
     consist.add_unit(Wagon(consist = consist,
-                            capacity_freight = 48, # matched to RH and Squid containers
+                            capacity_freight = 40, # was matched for some time to RH and Squid containers, but blah
                             weight = 20,
                             vehicle_length = 8))
 

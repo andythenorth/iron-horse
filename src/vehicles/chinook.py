@@ -6,7 +6,7 @@ consist = EngineConsist(id = 'chinook',
               title = 'Chinook [Diesel]',
               power = 3000,
               speed = 85,
-              type_base_buy_cost_points = 16, # dibble buy cost for game balance
+              type_base_buy_cost_points = 20, # dibble buy cost for game balance
               vehicle_life = 40,
               intro_date = 1960)
 

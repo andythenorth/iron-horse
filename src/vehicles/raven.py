@@ -9,7 +9,7 @@ consist = EngineConsist(id = 'raven',
               speed = 80,
               buy_cost = 77,
               vehicle_life = 40,
-              intro_date = 1919)
+              intro_date = 1905)
 
 consist.add_unit(ElectricLoco(consist = consist,
                         weight = 120,

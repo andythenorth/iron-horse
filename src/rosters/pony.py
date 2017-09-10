@@ -19,8 +19,10 @@ from vehicles import longwater
 from vehicles import northcock
 from vehicles import ramsbottom
 from vehicles import raven
+from vehicles import roarer
 from vehicles import screamer
 from vehicles import serpentine
+from vehicles import shredder
 from vehicles import slammer
 from vehicles import standard
 from vehicles import stewart
@@ -44,19 +46,21 @@ roster = Roster(id = 'pony',
                 numeric_id = 1,
                 speeds = speeds,
                 engines = [chaplin,
-                           standard,
                            ramsbottom,
                            bertha,
-                           high_flyer,
-                           aberdare,
-                           raven,
+                           standard,
                            suburban,
-                           northcock,
+                           aberdare,
+                           high_flyer,
+                           raven,
                            lemon,
+                           northcock,
                            electra,
+                           little_bear,
+                           shredder,
                            chinook,
                            vulcan,
-                           little_bear,
+                           roarer,
                            gridiron,
                            screamer,
                            cargo_sprinter,
