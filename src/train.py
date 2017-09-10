@@ -597,13 +597,14 @@ class CabooseConsistLong(CabooseConsist):
 
 class CombineConsist(WagonConsist):
     """
-    Novelty single-coach with both pax and mail, for use on very small trains, bit of a hack.
+    Novelty articulated coach with both pax and mail, for use on very small trains, bit of a hack.
+    COMBINE CARS CAN’T BE UPGRADED BY AUTO_REPLACE -  FS issue https://bugs.openttd.org/task/6207
     """
     def __init__(self, **kwargs):
         self.base_id = 'combine_car'
         super().__init__(**kwargs)
         self.template = 'train.pynml'
-        self.class_refit_groups = ['mail', 'express_freight']
+        self.class_refit_groups = ['mail', 'express_freight', 'pax']
         self.label_refits_allowed = []
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_freight_special_cases']
         self.autorefit = True
@@ -1187,18 +1188,6 @@ class MailCar(Wagon):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.capacities_freight = [int(0.5 * capacity) for capacity in self.capacities_mail]
-
-
-class CombineCar(Wagon):
-    """
-    Carriage that offers capacity for both passengers (fixed) and mail / express cargo (refittable)
-    """
-    # this class is sparse - it exists to make special case handling easy by checking class type
-    # combine car needs to set capacity_mail, capacity_freight, and capacity_pax
-    # pax capacity is non-refittable and applied to lead slice of the unit
-    def __init__(self, **kwargs):
-        print("CombineCar depends on slices and should be deprecated")
-        super().__init__(**kwargs)
 
 
 class BoxCar(Wagon):
