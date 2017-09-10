@@ -9,7 +9,7 @@ consist = EngineConsist(id = 'double_juice',
               speed = 100,
               type_base_buy_cost_points = 60, # dibble buy cost for game balance
               vehicle_life = 40,
-              intro_date = 2000,
+              intro_date = 2015, # it's modern-ish eh, don't introduce too early, keeps IH Pony roster alive past 1990
               power_by_railtype = {'RAIL': 3750, 'ELRL': 6750})
 
 consist.add_unit(ElectroDieselLoco(consist = consist,
