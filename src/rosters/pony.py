@@ -30,9 +30,9 @@ from vehicles import suburban
 from vehicles import tideway
 from vehicles import tin_rocket
 from vehicles import tyburn
-from vehicles import vulcan
 from vehicles import walker
 from vehicles import westbourne
+from vehicles import wizzo
 
 # speed for wagons in mph (some generations may optionally have no speed set)
 # format is [standard, speedy]
@@ -59,7 +59,7 @@ roster = Roster(id = 'pony',
                            little_bear,
                            shredder,
                            chinook,
-                           vulcan,
+                           wizzo,
                            roarer,
                            gridiron,
                            screamer,
