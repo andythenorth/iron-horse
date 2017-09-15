@@ -37,9 +37,6 @@ box_cars.main()
 from vehicles import caboose_cars
 caboose_cars.main()
 
-from vehicles import combine_cars
-combine_cars.main()
-
 from vehicles import covered_hopper_cars
 covered_hopper_cars.main()
 
