@@ -885,12 +885,12 @@ class OpenConsist(WagonConsist):
         return {'pass_through': pass_through, 'swap_company_colours': swap_company_colours}
 
 
-class PassengerConsist(WagonConsist):
+class PassengerConsistBase(WagonConsist):
     """
-    Passenger coach or wagon
+    Common base class for passenger cars.
     """
     def __init__(self, **kwargs):
-        self.base_id = 'passenger_car'
+        # don't set base_id here, let subclasses do it
         super().__init__(**kwargs)
         self.template = 'train.pynml'
         self.cargo_graphics_mappings = {} # template needs this, but reefer car has zero cargo-specific graphics, all generic
@@ -900,6 +900,25 @@ class PassengerConsist(WagonConsist):
         self.autorefit = True
         self.default_cargo = 'PASS'
         self.default_capacity_type = 'capacity_pax'
+
+
+class PassengerConsist(PassengerConsistBase):
+    """
+    Standard pax car.
+    """
+    def __init__(self, **kwargs):
+        self.base_id = 'passenger_car'
+        super().__init__(**kwargs)
+
+
+class SpecialPassengerConsist(PassengerConsistBase):
+    """
+    Improved decay rate and lower capacity per unit length compared to standard pax car.
+    Possibly random sprites for restaurant car, observation car etc.
+    """
+    def __init__(self, **kwargs):
+        self.base_id = 'special_passenger_car'
+        super().__init__(**kwargs)
 
 
 class ReeferConsist(WagonConsist):

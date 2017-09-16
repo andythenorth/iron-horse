@@ -64,12 +64,6 @@ mail_cars.main()
 from vehicles import metal_cars
 metal_cars.main()
 
-"""
-# possibly deprecated - removed from Iron Pony August 2016
-from vehicles import metro_cars
-metro_cars.main()
-"""
-
 from vehicles import open_cars
 open_cars.main()
 
@@ -78,6 +72,9 @@ passenger_cars.main()
 
 from vehicles import reefer_cars
 reefer_cars.main()
+
+from vehicles import special_passenger_cars
+special_passenger_cars.main()
 
 from vehicles import supplies_cars
 supplies_cars.main()
@@ -113,6 +110,7 @@ def get_consists_in_buy_menu_order():
         utils.echo_message("Warning: consist " + id + " in buy_menu_sort_order, but not found in registered_consists")
     for id in consist_id_defender.difference(buy_menu_defender):
         utils.echo_message("Warning: consist " + id + " in consists, but not in buy_menu_sort_order - won't show in game")
+    print("Current highest numeric ID: ", max([consist.base_numeric_id for consist in consists]))
     return consists
 
 

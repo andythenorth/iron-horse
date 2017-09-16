@@ -2,6 +2,7 @@
 # order is significant
 buy_menu_sort_order_wagons = ['metro_car',
                               'passenger_car',
+                              'special_passenger_car',
                               'mail_car',
                               'open_car',
                               'box_car',
