@@ -52,7 +52,7 @@ class PassThroughPipeline(Pipeline):
 
     def render(self, variant, consist):
         options = variant.graphics_processor.options
-        input_path = os.path.join(currentdir, 'src', 'graphics', options['template'])
+        input_path = os.path.join(currentdir, 'src', 'graphics', consist.roster_id, options['template'])
         input_image = Image.open(input_path)
         units = []
         result = self.render_common(variant, consist, input_image, units, options)
@@ -69,7 +69,7 @@ class SimpleRecolourPipeline(Pipeline):
 
     def render(self, variant, consist):
         options = variant.graphics_processor.options
-        input_path = os.path.join(currentdir, 'src', 'graphics', options['template'])
+        input_path = os.path.join(currentdir, 'src', 'graphics', consist.roster_id, options['template'])
         input_image = Image.open(input_path)
         units = [SimpleRecolour(options['recolour_map'])]
         result = self.render_common(variant, consist, input_image, units, options)
@@ -86,7 +86,7 @@ class SwapCompanyColoursPipeline(Pipeline):
 
     def render(self, variant, consist):
         options = variant.graphics_processor.options
-        input_path = os.path.join(currentdir, 'src', 'graphics', options['template'])
+        input_path = os.path.join(currentdir, 'src', 'graphics', consist.roster_id, options['template'])
         input_image = Image.open(input_path)
         units = [SwapCompanyColours()]
         result = self.render_common(variant, consist, input_image, units, options)
@@ -105,7 +105,7 @@ class ExtendSpriterowsForRecolouredCargosPipeline(Pipeline):
         # there are various options for controlling the crop box, I haven't documented them - read example uses to figure them out
         options = variant.graphics_processor.options
         unit_row_cluster_height = options['num_rows_per_unit'] * graphics_constants.spriterow_height * options['num_unit_types']
-        input_path = os.path.join(currentdir, 'src', 'graphics', options['template'])
+        input_path = os.path.join(currentdir, 'src', 'graphics', consist.roster_id, options['template'])
         crop_box = (0, 0, graphics_constants.spritesheet_width, graphics_constants.spritesheet_top_margin + unit_row_cluster_height + options['copy_block_top_offset'])
         input_image = Image.open(input_path).crop(crop_box)
         source_spritesheet = self.make_spritesheet_from_image(input_image)

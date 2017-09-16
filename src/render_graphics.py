@@ -38,7 +38,7 @@ def run_pipeline(items):
     variant = items[0]
     consist = items[1]
     if variant.graphics_processor is None:
-        shutil.copy(os.path.join(graphics_input, variant.get_spritesheet_name(consist)), graphics_output_path)
+        shutil.copy(os.path.join(graphics_input, consist.roster_id, variant.get_spritesheet_name(consist)), graphics_output_path)
     else:
         result = variant.graphics_processor.pipeline.render(variant, consist)
         return result
