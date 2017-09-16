@@ -6,7 +6,7 @@ consist = EngineConsist(id = 'standard',
               title = '4-2-2 Standard [Steam]',
               power = 950,
               tractive_effort_coefficient = 0.07,
-              speed = 70,
+              speed = 60,
               type_base_buy_cost_points = 18, # dibble buy cost for game balance
               vehicle_life = 40,
               intro_date = 1860)

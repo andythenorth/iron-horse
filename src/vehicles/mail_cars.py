@@ -23,32 +23,15 @@ def main():
     consist = MailConsistLong(title = '[Mail Car] Long',
                               roster = 'pony',
                               base_numeric_id = 920,
-                              wagon_generation = 1,
-                              intro_date = 1860,
-                              vehicle_life = 40,
-                              speedy = True)
-
-    consist.add_unit(MailCar(consist = consist,
-                             capacity_mail = 30,
-                             weight = 29,
-                             vehicle_length = 8))
-
-    consist.add_model_variant(intro_date=0,
-                              end_date=global_constants.max_game_date)
-
-
-    consist = MailConsistLong(title = '[Mail Car] Long',
-                              roster = 'pony',
-                              base_numeric_id = 930,
                               wagon_generation = 2,
-                              intro_date = 1925,
+                              intro_date = 1900,
                               vehicle_life = 40,
                               speedy = True)
 
     consist.add_unit(MailCar(consist = consist,
-                             capacity_mail = 45,
-                             weight = 30,
-                             vehicle_length = 8))
+                             capacity_mail = 25,
+                             weight = 29,
+                             vehicle_length = 6))
 
     consist.add_model_variant(intro_date=0,
                               end_date=global_constants.max_game_date)
@@ -58,12 +41,12 @@ def main():
                               roster = 'pony',
                               base_numeric_id = 940,
                               wagon_generation = 3,
-                              intro_date = 1985,
+                              intro_date = 1960,
                               vehicle_life = 40,
                               speedy = True)
 
     consist.add_unit(MailCar(consist = consist,
-                             capacity_mail = 60,
+                             capacity_mail = 40,
                              weight = 31,
                              vehicle_length = 8))
 

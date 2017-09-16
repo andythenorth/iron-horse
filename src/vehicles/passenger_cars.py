@@ -7,24 +7,24 @@ def main():
                                roster = 'pony',
                                base_numeric_id = 740,
                                wagon_generation = 1,
-                                                intro_date = 1860,
+                               intro_date = 1860,
                                vehicle_life = 40,
                                speedy = True)
 
     consist.add_unit(Wagon(consist = consist,
-                            capacity_pax = 40,
-                            weight = 30,
-                            vehicle_length = 8))
+                           capacity_pax = 25,
+                           weight = 30,
+                           vehicle_length = 6))
 
     consist.add_model_variant(intro_date=0,
-                           end_date=global_constants.max_game_date)
+                              end_date=global_constants.max_game_date)
 
 
     consist = PassengerConsist(title = '[Passenger Car]',
                                roster = 'pony',
                                base_numeric_id = 750,
                                wagon_generation = 2,
-                                                intro_date = 1925,
+                               intro_date = 1900,
                                vehicle_life = 40,
                                speedy = True)
 
@@ -34,41 +34,41 @@ def main():
                             vehicle_length = 8))
 
     consist.add_model_variant(intro_date=0,
-                           end_date=global_constants.max_game_date)
+                              end_date=global_constants.max_game_date)
 
 
     consist = PassengerConsist(title = '[Passenger Car]',
                                roster = 'pony',
                                base_numeric_id = 760,
                                wagon_generation = 3,
-                                                intro_date = 1985,
+                               intro_date = 1960,
                                speedy = True,
                                vehicle_life = 40)
 
     consist.add_unit(Wagon(consist = consist,
-                            capacity_pax = 75,
-                            weight = 36,
-                            vehicle_length = 8))
+                           capacity_pax = 75,
+                           weight = 36,
+                           vehicle_length = 8))
 
     consist.add_model_variant(intro_date=0,
-                           end_date=global_constants.max_game_date)
+                              end_date=global_constants.max_game_date)
 
 
     consist = PassengerConsist(title = '[Passenger Car]',
                                roster = 'pony',
                                base_numeric_id = 770,
                                wagon_generation = 1,
-                                                intro_date = 1860,
+                               intro_date = 1860,
                                vehicle_life = 40,
                                track_type = 'NG')
 
     consist.add_unit(Wagon(consist = consist,
-                            capacity_pax = 25,
-                            weight = 12,
-                            vehicle_length = 6))
+                           capacity_pax = 25,
+                           weight = 12,
+                           vehicle_length = 6))
 
     consist.add_model_variant(intro_date=0,
-                           end_date=global_constants.max_game_date)
+                              end_date=global_constants.max_game_date)
 
 
     #--------------- llama ----------------------------------------------------------------------
@@ -76,7 +76,7 @@ def main():
                                roster = 'llama',
                                base_numeric_id = 780,
                                wagon_generation = 1,
-                                                intro_date = 1860,
+                               intro_date = 1860,
                                speedy = True,
                                vehicle_life = 40)
 
@@ -93,7 +93,7 @@ def main():
                                roster = 'llama',
                                base_numeric_id = 790,
                                wagon_generation = 2,
-                                                intro_date = 1920,
+                               intro_date = 1920,
                                speedy = True,
                                vehicle_life = 40)
 
@@ -110,7 +110,7 @@ def main():
                                roster = 'llama',
                                base_numeric_id = 800,
                                wagon_generation = 3,
-                                                intro_date = 1980,
+                               intro_date = 1980,
                                speedy = True,
                                vehicle_life = 40)
 
@@ -145,7 +145,7 @@ def main():
                                roster = 'llama',
                                base_numeric_id = 1350,
                                wagon_generation = 2,
-                                                intro_date = 1920,
+                               intro_date = 1920,
                                speedy = True,
                                vehicle_life = 40,
                                track_type = 'NG')
@@ -164,7 +164,7 @@ def main():
                                roster = 'llama',
                                base_numeric_id = 1370,
                                wagon_generation = 3,
-                                                intro_date = 1980,
+                               intro_date = 1980,
                                speedy = True,
                                vehicle_life = 40,
                                track_type = 'NG')

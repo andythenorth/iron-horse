@@ -6,7 +6,7 @@ consist = EngineConsist(id = 'northcock',
               title = '2-8-2 Northcock [Steam]',
               power = 1750,
               tractive_effort_coefficient = 0.2,
-              speed = 100,
+              speed = 90,
               buy_cost = 81,
               vehicle_life = 40,
               intro_date = 1935)

@@ -6,7 +6,7 @@ consist = EngineConsist(id = 'raven',
               title = 'Raven [Electric]',
               power = 1800,
               tractive_effort_coefficient = 0.32,
-              speed = 80,
+              speed = 75,
               buy_cost = 77,
               vehicle_life = 40,
               intro_date = 1905)

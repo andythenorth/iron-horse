@@ -6,7 +6,7 @@ consist = EngineConsist(id = 'suburban',
               title = '2-6-2 Suburban [Steam]',
               power = 650,
               tractive_effort_coefficient = 0.2,
-              speed = 70,
+              speed = 75,
               type_base_buy_cost_points = -2, # dibble buy cost for game balance
               type_base_running_cost_points = -6, # dibble running costs for game balance
               vehicle_life = 40,
