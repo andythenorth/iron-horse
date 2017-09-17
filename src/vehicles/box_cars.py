@@ -36,7 +36,7 @@ def main():
                             capacity_freight = 35,
                             capacity_mail = 45,
                             weight = 18,
-                            vehicle_length = 4))
+                            vehicle_length = 6)) # !! gen 2 should be 4/8, this is hax whilst testing lengths
 
     consist.add_model_variant(intro_date=0,
                            end_date=global_constants.max_game_date,

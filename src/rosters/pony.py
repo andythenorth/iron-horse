@@ -11,6 +11,7 @@ from vehicles import double_juice
 from vehicles import electra
 from vehicles import fleet
 from vehicles import gridiron
+from vehicles import growler
 from vehicles import high_flyer
 from vehicles import hudswell
 from vehicles import lemon
@@ -22,7 +23,6 @@ from vehicles import raven
 from vehicles import roarer
 from vehicles import screamer
 from vehicles import serpentine
-from vehicles import shredder
 from vehicles import slammer
 from vehicles import standard
 from vehicles import stewart
@@ -57,7 +57,7 @@ roster = Roster(id = 'pony',
                            northcock,
                            electra,
                            little_bear,
-                           shredder,
+                           growler,
                            chinook,
                            wizzo,
                            roarer,

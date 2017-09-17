@@ -1,9 +1,9 @@
 import global_constants
 from train import EngineConsist, DieselLoco
 
-consist = EngineConsist(id = 'shredder',
+consist = EngineConsist(id = 'growler',
               base_numeric_id = 2240,
-              title = 'Shredder [Diesel]',
+              title = 'Growler [Diesel]',
               power = 1550,
               speed = 85,
               vehicle_life = 40,
