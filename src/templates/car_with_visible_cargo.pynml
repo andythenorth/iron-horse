@@ -38,8 +38,7 @@
             ];
         }
 
-        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_percent_loaded_${variation_num}_${cargo_variant_num},
-            ${vehicle.get_nml_expression_for_unit_cargo_loaded_percent()}) {
+        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_percent_loaded_${variation_num}_${cargo_variant_num}, cargo_count*100/cargo_capacity) {
                 0: return ${vehicle.id}_sg_empty_${variation_num}_${cargo_variant_num};
                 1..99: return ${vehicle.id}_sg_loading_${variation_num}_${cargo_variant_num};
             return ${vehicle.id}_sg_loaded_${variation_num}_${cargo_variant_num};

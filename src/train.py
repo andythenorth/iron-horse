@@ -318,18 +318,6 @@ class Train(object):
             return expression_template.substitute(offset=0)
         """
 
-    def get_nml_expression_for_unit_cargo_loaded_percent(self):
-        print("deprecated call to get_nml_expression_for_unit_cargo_loaded_percent()")
-        expression_template = Template("[STORE_TEMP(${offset}, 0x10F), var[0x61, 0, 0x0000FFFF, 0xBC]*100/var[0x61, 0, 0x0000FFFF, 0xBA]]")
-        return expression_template.substitute(offset=0)
-        """
-        # cargo capacity is on the second slice of each 3-slice unit
-        if isinstance(self, LeadSlice):
-            return expression_template.substitute(offset=1)
-        else:
-            return expression_template.substitute(offset=0)
-        """
-
     def get_nml_expression_for_cargo_variant_random_switch(self, variation_num, cargo_id=None):
         print("deprecated call to get_nml_expression_for_cargo_variant_random_switch()")
         switch_id = self.id + "_switch_graphics_" + str(variation_num) + ('_' + str(cargo_id) if cargo_id is not None else '')
