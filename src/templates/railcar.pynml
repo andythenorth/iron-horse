@@ -24,7 +24,7 @@
             ];
         }
     </tal:cargo_variants>
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${variation_num}, ${vehicle.get_nml_expression_for_cargo_type_unit_refitted_to()}) {
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${variation_num}, cargo_type_in_veh) {
         PASS: return ${vehicle.id}_sg_${variation_num}_0;
         return ${vehicle.id}_sg_${variation_num}_1;
     }

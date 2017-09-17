@@ -306,18 +306,6 @@ class Train(object):
             else:
                 return variant.visual_effect_offset
 
-    def get_nml_expression_for_cargo_type_unit_refitted_to(self):
-        print("deprecated call to get_nml_expression_for_cargo_type_unit_refitted_to()")
-        expression_template = Template("[STORE_TEMP(${offset}, 0x10F), var[0x61, 0, 0x000000FF, 0x47]]")
-        return expression_template.substitute(offset=0)
-        """
-        # cargo capacity is on the second slice of each 3-slice unit
-        if isinstance(self, LeadSlice):
-            return expression_template.substitute(offset=1)
-        else:
-            return expression_template.substitute(offset=0)
-        """
-
     def get_nml_expression_for_cargo_variant_random_switch(self, variation_num, cargo_id=None):
         # having a method to calculate the nml for this is overkill
         # legacy of multi-part vehicles, where the trigger needed to be run on an adjacent vehicle

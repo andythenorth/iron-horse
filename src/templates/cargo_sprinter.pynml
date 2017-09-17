@@ -42,7 +42,7 @@
                 ];
             }
 
-            switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_loaded_graphics_${variation_num}_${cargo_variant_num}_${cab_variant}, ${vehicle.get_nml_expression_for_cargo_type_unit_refitted_to()}) {
+            switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_loaded_graphics_${variation_num}_${cargo_variant_num}_${cab_variant}, cargo_type_in_veh) {
                 <tal:tanktainers repeat="tanktainer_cargo consist.cargos_with_tanktainer_graphics">
                     ${tanktainer_cargo}: return ${vehicle.id}_sg_loaded_liquids_${variation_num}_${cargo_variant_num}_${cab_variant};
                 </tal:tanktainers>
