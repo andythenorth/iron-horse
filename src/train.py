@@ -806,12 +806,13 @@ class LivestockConsist(WagonConsist):
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
 
 
-class MailConsist(WagonConsist):
+class MailConsistBase(WagonConsist):
     """
-    Express freight - mail, valuables etc.
+    Common base class for mail cars.
+    Mail cars also handle express freight, valuables.
     """
     def __init__(self, **kwargs):
-        self.base_id = 'mail_car'
+        # don't set base_id here, set in subclasses
         super().__init__(**kwargs)
         self.template = 'car_with_open_doors_during_loading.pynml'
         self.cargo_graphics_mappings = {} # template needs this, but mail car has zero cargo-specific graphics, all generic
@@ -822,6 +823,26 @@ class MailConsist(WagonConsist):
         self.autorefit = True
         self.default_cargo = 'MAIL'
         self.default_capacity_type = 'capacity_mail'
+
+
+class MailConsist(MailConsistBase):
+    """
+    Standard mail car.
+    Visually similar to pax car of same generation, has large doors, and some windows.
+    """
+    def __init__(self, **kwargs):
+        self.base_id = 'mail_car'
+        super().__init__(**kwargs)
+
+
+class MailBoxConsist(MailConsistBase):
+    """
+    Mail Box Car.
+    Looks more utilitarian and secure than a mail car, no windows.
+    """
+    def __init__(self, **kwargs):
+        self.base_id = 'mail_box_car'
+        super().__init__(**kwargs)
 
 
 class MetalConsist(WagonConsist):

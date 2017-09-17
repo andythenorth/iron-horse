@@ -58,6 +58,9 @@ intermodal_flat_cars.main()
 from vehicles import livestock_cars
 livestock_cars.main()
 
+from vehicles import mail_box_cars
+mail_box_cars.main()
+
 from vehicles import mail_cars
 mail_cars.main()
 

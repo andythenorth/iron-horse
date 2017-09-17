@@ -32,13 +32,14 @@ STR_NAME_SUFFIX_FRUIT_CAR                                       :Fruit Car
 STR_NAME_SUFFIX_HOPPER_CAR                                      :Hopper Car
 STR_NAME_SUFFIX_INTERMODAL_FLAT_CAR                             :Intermodal Flat Car
 STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Livestock Car
+STR_NAME_SUFFIX_MAIL_BOX_CAR                                    :Mail Box Car
 STR_NAME_SUFFIX_MAIL_CAR                                        :Mail Car
 STR_NAME_SUFFIX_METAL_CAR                                       :Metal Car
 STR_NAME_SUFFIX_OPEN_CAR                                        :Open Car
 STR_NAME_SUFFIX_PASSENGER_CAR                                   :Passenger Car
 STR_NAME_SUFFIX_REEFER_CAR                                      :Reefer Car
 STR_NAME_SUFFIX_ROTARY_GONDOLA_CAR                              :Rotary Gondola Car
-STR_NAME_SUFFIX_SPECIAL_PASSENGER_CAR                           :Special Passenger Car
+STR_NAME_SUFFIX_SPECIAL_PASSENGER_CAR                           :Luxury Passenger Car
 STR_NAME_SUFFIX_SUPPLIES_CAR                                    :Supplies Car
 STR_NAME_SUFFIX_TANK_CAR                                        :Tank Car
 STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Vehicle Transporter Car
