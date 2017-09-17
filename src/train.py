@@ -319,16 +319,11 @@ class Train(object):
         """
 
     def get_nml_expression_for_cargo_variant_random_switch(self, variation_num, cargo_id=None):
-        print("deprecated call to get_nml_expression_for_cargo_variant_random_switch()")
+        # having a method to calculate the nml for this is overkill
+        # legacy of multi-part vehicles, where the trigger needed to be run on an adjacent vehicle
+        # this could be unpicked and moved directly into the templates
         switch_id = self.id + "_switch_graphics_" + str(variation_num) + ('_' + str(cargo_id) if cargo_id is not None else '')
         return "SELF," + switch_id + ", bitmask(TRIGGER_VEHICLE_NEW_LOAD)"
-        """
-        # get the right unit, only run triggers on the vehicle carrying cargo
-        if isinstance(self, LeadSlice):
-            return "BACKWARD_SELF(1)," + switch_id
-        else:
-            return "SELF," + switch_id + ", bitmask(TRIGGER_VEHICLE_NEW_LOAD)"
-        """
 
     def get_nml_expression_for_grfid_of_neighbouring_unit(self, unit_offset):
         # offset is number of units
