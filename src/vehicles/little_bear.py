@@ -5,7 +5,7 @@ consist = EngineConsist(id = 'little_bear',
               base_numeric_id = 280,
               title = 'Little Bear [Diesel]',
               power = 900,
-              speed = 85,
+              speed = 85, # faster than wagons of that generation, allows mixed traffic / speedy freight
               type_base_buy_cost_points = 0, # dibble buy cost for game balance
               type_base_running_cost_points = -28, # dibble run cost for game balance
               vehicle_life = 40,

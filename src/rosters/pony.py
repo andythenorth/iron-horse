@@ -37,9 +37,10 @@ from vehicles import wizzo
 # speed for wagons in mph (some generations may optionally have no speed set)
 # format is [standard, speedy]
 # speeds are roughly matched to RH trucks of same era + 5mph or so
-speeds = dict(gen_1_wagon_speeds = [45, 90],
+speeds = dict(gen_1_wagon_speeds = [45, 75],
               gen_2_wagon_speeds = [60, 90],
               gen_3_wagon_speeds = [75, None],
+              gen_4_wagon_speeds = [85, None],
               ng_gen_1_wagon_speeds = [55, 55])
 
 roster = Roster(id = 'pony',
@@ -47,10 +48,10 @@ roster = Roster(id = 'pony',
                 speeds = speeds,
                 engines = [chaplin,
                            ramsbottom,
-                           bertha,
                            standard,
                            suburban,
                            aberdare,
+                           bertha,
                            high_flyer,
                            raven,
                            lemon,
