@@ -115,9 +115,9 @@ def get_consists_in_buy_menu_order():
         utils.echo_message("Warning: consist " + id + " in consists, but not in buy_menu_sort_order - won't show in game")
     # when adding vehicles it's useful to know what the next free numeric ID is
     numeric_ids = sorted([consist.base_numeric_id for consist in consists])
-    print("Current highest numeric ID: ", max(numeric_ids)) # print eh?  Don't bother converting to echo_message, print is fine here
     # tidy-mind problem, but do we have any vacant numeric ID slots in the currently used range?
-    print("Vacant numeric ID slots:", [i for i in numeric_ids if not (i - 10) in numeric_ids and i is not 0])
+    # 'print' eh? - but it's fine echo_message isn't intended for this kind of info, don't bother changing
+    print("Vacant numeric ID slots:", ', '.join([str(i) for i in numeric_ids if not (i - 10) in numeric_ids and i is not 0]), "anything >", max(numeric_ids))
 
     return consists
 
