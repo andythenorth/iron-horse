@@ -31,6 +31,8 @@ llama.roster.register(disabled=True)
 from rosters import pony
 pony.roster.register(disabled=False)
 
+from vehicles import numeric_id_defender
+
 from vehicles import box_cars
 box_cars.main()
 
@@ -114,10 +116,9 @@ def get_consists_in_buy_menu_order():
     for id in consist_id_defender.difference(buy_menu_defender):
         utils.echo_message("Warning: consist " + id + " in consists, but not in buy_menu_sort_order - won't show in game")
     # when adding vehicles it's useful to know what the next free numeric ID is
-    numeric_ids = sorted([consist.base_numeric_id for consist in consists])
     # tidy-mind problem, but do we have any vacant numeric ID slots in the currently used range?
     # 'print' eh? - but it's fine echo_message isn't intended for this kind of info, don't bother changing
-    print("Vacant numeric ID slots:", ', '.join([str(i - 10) for i in numeric_ids if not (i - 10) in numeric_ids and i is not 0]), "anything >", max(numeric_ids))
+    print("Vacant numeric ID slots:", ', '.join([str(i - 10) for i in numeric_id_defender if not (i - 10) in numeric_id_defender and i is not 0 and i%10 is 0]), "anything >", max(numeric_id_defender))
 
     return consists
 
