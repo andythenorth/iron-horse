@@ -467,6 +467,8 @@ class WagonConsist(Consist):
                     self.speed = roster_obj.speeds['ng_gen_2_wagon_speeds'][speedy]
                 elif self.wagon_generation == 3:
                     self.speed = roster_obj.speeds['ng_gen_3_wagon_speeds'][speedy]
+                elif self.wagon_generation == 4:
+                    self.speed = roster_obj.speeds['ng_gen_4_wagon_speeds'][speedy]
             else:
                 if self.wagon_generation == 1:
                     self.speed = roster_obj.speeds['gen_1_wagon_speeds'][speedy]
@@ -474,6 +476,8 @@ class WagonConsist(Consist):
                     self.speed = roster_obj.speeds['gen_2_wagon_speeds'][speedy]
                 elif self.wagon_generation == 3:
                     self.speed = roster_obj.speeds['gen_3_wagon_speeds'][speedy]
+                elif self.wagon_generation == 4:
+                    self.speed = roster_obj.speeds['gen_4_wagon_speeds'][speedy]
 
     @property
     def buy_cost(self):
