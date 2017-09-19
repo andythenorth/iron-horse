@@ -5,7 +5,7 @@ consist = EngineConsist(id = 'shoebox',
               base_numeric_id = 280,
               title = 'Shoebox [ElectroDiesel]',
               power = 900,
-              speed = 100,
+              speed = 110,
               type_base_buy_cost_points = 0, # dibble buy cost for game balance
               type_base_running_cost_points = -28, # dibble run cost for game balance
               vehicle_life = 40,

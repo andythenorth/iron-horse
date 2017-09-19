@@ -5,7 +5,7 @@ consist = EngineConsist(id = 'wizzo',
               base_numeric_id = 420,
               title = 'Wizzo [Diesel]',
               power = 2200,
-              speed = 100,
+              speed = 110,
               type_base_buy_cost_points = 30, # dibble buy cost for game balance
               type_base_running_cost_points = 30, # dibble running costs for game balance
               vehicle_life = 40,

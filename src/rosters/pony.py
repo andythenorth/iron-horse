@@ -40,7 +40,7 @@ from vehicles import wizzo
 # speeds are roughly matched to RH trucks of same era + 5mph or so (back and forth on this many times eh?)
 speeds = dict(gen_1_wagon_speeds = [45, 75],
               gen_2_wagon_speeds = [60, 90],
-              gen_3_wagon_speeds = [75, None],
+              gen_3_wagon_speeds = [75, 110],
               gen_4_wagon_speeds = [90, None],
               ng_gen_1_wagon_speeds = [55, 55])
 
