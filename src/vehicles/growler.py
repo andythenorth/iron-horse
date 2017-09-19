@@ -5,7 +5,7 @@ consist = EngineConsist(id = 'growler',
               base_numeric_id = 2240,
               title = 'Growler [Diesel]',
               power = 1550,
-              speed = 85, # faster than wagons of that generation, allows mixed traffic / speedy freight
+              speed = 75,
               vehicle_life = 40,
               intro_date = 1960)
 
