@@ -10,6 +10,7 @@ from vehicles import cyclops
 from vehicles import donegal
 from vehicles import double_juice
 from vehicles import electra
+from vehicles import express_tank
 from vehicles import fleet
 from vehicles import growler
 from vehicles import high_flyer
@@ -55,6 +56,7 @@ roster = Roster(id = 'pony',
                            bertha,
                            high_flyer,
                            raven,
+                           express_tank,
                            collett,
                            lemon,
                            northcock,
