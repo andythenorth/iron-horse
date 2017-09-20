@@ -10,7 +10,7 @@ consist = EngineConsist(id = 'shoebox',
               type_base_running_cost_points = -28, # dibble run cost for game balance
               vehicle_life = 40,
               intro_date = 1960,
-              power_by_railtype = {'RAIL': 900, 'ELRL': 1800})
+              power_by_railtype = {'RAIL': 950, 'ELRL': 1800})
 
 consist.add_unit(ElectroDieselLoco(consist = consist,
                                 weight = 65,
