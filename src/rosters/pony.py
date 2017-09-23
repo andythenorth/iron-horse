@@ -1,14 +1,13 @@
 from roster import Roster
 
 from vehicles import aberdare
+from vehicles import badger
 from vehicles import bertha
 from vehicles import cargo_sprinter
 from vehicles import chaplin
 from vehicles import chinook
 from vehicles import collett
-from vehicles import cyclops
 from vehicles import donegal
-from vehicles import double_juice
 from vehicles import electra
 from vehicles import express_tank
 from vehicles import fleet
@@ -25,6 +24,7 @@ from vehicles import screamer
 from vehicles import serpentine
 from vehicles import shoebox
 from vehicles import slammer
+from vehicles import sparkycat
 from vehicles import standard
 from vehicles import stewart
 from vehicles import suburban
@@ -39,8 +39,8 @@ from vehicles import wizzo
 # speed for wagons in mph (some generations may optionally have no speed set)
 # format is [standard, speedy]
 # speeds are roughly matched to RH trucks of same era + 5mph or so (back and forth on this many times eh?)
-speeds = dict(gen_1_wagon_speeds = [45, 75],
-              gen_2_wagon_speeds = [60, 90],
+speeds = dict(gen_1_wagon_speeds = [45, 80],
+              gen_2_wagon_speeds = [60, 95],
               gen_3_wagon_speeds = [75, 110],
               gen_4_wagon_speeds = [90, None],
               ng_gen_1_wagon_speeds = [55, 55])
@@ -66,10 +66,10 @@ roster = Roster(id = 'pony',
                            chinook,
                            wizzo,
                            roarer,
-                           double_juice,
+                           sparkycat,
                            tug,
-                           cyclops,
                            screamer,
+                           badger,
                            slammer,
                            tin_rocket,
                            cargo_sprinter,

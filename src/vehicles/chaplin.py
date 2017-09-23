@@ -6,7 +6,7 @@ consist = EngineConsist(id = 'chaplin',
               title = '2-4-0 Chaplin [Steam]',
               power = 450,
               tractive_effort_coefficient = 0.2,
-              speed = 60,
+              speed = 65,
               type_base_buy_cost_points = -3, # dibble buy cost for game balance
               vehicle_life = 40,
               intro_date = 1860)

@@ -6,7 +6,7 @@ consist = EngineConsist(id = 'express_tank',
               title = '2-6-2 Express Tank [Steam]',
               power = 800,
               tractive_effort_coefficient = 0.2,
-              speed = 90,
+              speed = 95,
               type_base_buy_cost_points = -2, # dibble buy cost for game balance
               type_base_running_cost_points = -6, # dibble running costs for game balance
               vehicle_life = 40,

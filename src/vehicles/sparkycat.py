@@ -1,15 +1,15 @@
 import global_constants
 from train import EngineConsist, ElectroDieselLoco
 
-consist = EngineConsist(id = 'double_juice',
+consist = EngineConsist(id = 'sparkycat',
               base_numeric_id = 160,
-              title = 'Double Juice [ElectroDiesel]',
+              title = 'SparkyCat [ElectroDiesel]',
               power = 1700,
               speed = 90,
               type_base_buy_cost_points = 60, # dibble buy cost for game balance
               vehicle_life = 40,
               intro_date = 1990,
-              power_by_railtype = {'RAIL': 1700, 'ELRL': 3400})
+              power_by_railtype = {'RAIL': 1800, 'ELRL': 3600})
 
 consist.add_unit(ElectroDieselLoco(consist = consist,
                         weight = 120,

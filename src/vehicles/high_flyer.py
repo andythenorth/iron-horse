@@ -6,7 +6,7 @@ consist = EngineConsist(id = 'high_flyer',
               title = '4-4-2 High Flyer [Steam]',
               power = 1300,
               tractive_effort_coefficient = 0.10,
-              speed = 75,
+              speed = 80,
               buy_cost = 47,
               vehicle_life = 40,
               intro_date = 1905)
