@@ -1,18 +1,16 @@
 import global_constants
 from train import EngineConsist, DieselLoco
 
-consist = EngineConsist(id = 'tug',
-              base_numeric_id = 220,
-              title = 'Tug [Diesel]',
-              power = 3600,
-              tractive_effort_coefficient = 0.4, #dibble for game balance, assume super-slip control
+consist = EngineConsist(id = 'growler_2',
+              base_numeric_id = 1000,
+              title = 'Go Growler [Diesel]',
+              power = 1700,
               speed = 90,
-              type_base_buy_cost_points = 30, # dibble buy cost for game balance
               vehicle_life = 40,
               intro_date = 1990)
 
 consist.add_unit(DieselLoco(consist = consist,
-                        weight = 125,
+                        weight = 110,
                         vehicle_length = 8,
                         spriterow_num = 0))
 

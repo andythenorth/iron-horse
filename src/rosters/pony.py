@@ -12,6 +12,7 @@ from vehicles import electra
 from vehicles import express_tank
 from vehicles import fleet
 from vehicles import growler
+from vehicles import growler_2
 from vehicles import high_flyer
 from vehicles import hudswell
 from vehicles import lemon
@@ -66,10 +67,11 @@ roster = Roster(id = 'pony',
                            chinook,
                            wizzo,
                            roarer,
-                           sparkycat,
+                           growler_2,
                            tug,
                            screamer,
                            badger,
+                           sparkycat,
                            slammer,
                            tin_rocket,
                            cargo_sprinter,
