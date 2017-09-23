@@ -29,6 +29,8 @@ STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Covered Hopper 
 STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Edibles Tank Car
 STR_NAME_SUFFIX_FLAT_CAR                                        :Flat Car
 STR_NAME_SUFFIX_FRUIT_CAR                                       :Fruit Car
+STR_NAME_SUFFIX_HIGH_SPEED_MAIL_CAR                             :High Speed Mail Car
+STR_NAME_SUFFIX_HIGH_SPEED_PASSENGER_CAR                        :High Speed Passenger Car
 STR_NAME_SUFFIX_HOPPER_CAR                                      :Hopper Car
 STR_NAME_SUFFIX_INTERMODAL_FLAT_CAR                             :Intermodal Flat Car
 STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Livestock Car

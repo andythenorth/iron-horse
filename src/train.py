@@ -821,6 +821,15 @@ class MailBoxConsist(MailConsistBase):
         super().__init__(**kwargs)
 
 
+class HighSpeedMailConsist(MailConsistBase):
+    """
+    No speed limit
+    """
+    def __init__(self, **kwargs):
+        self.base_id = 'high_speed_mail_car'
+        super().__init__(**kwargs)
+
+
 class MetalConsist(WagonConsist):
     """
     Specialist heavy haul metal transport e.g. torpedo car, ladle, etc
@@ -915,6 +924,15 @@ class SpecialPassengerConsist(PassengerConsistBase):
     """
     def __init__(self, **kwargs):
         self.base_id = 'special_passenger_car'
+        super().__init__(**kwargs)
+
+
+class HighSpeedPassengerConsist(PassengerConsistBase):
+    """
+    No speed limit.
+    """
+    def __init__(self, **kwargs):
+        self.base_id = 'high_speed_passenger_car'
         super().__init__(**kwargs)
 
 

@@ -45,7 +45,7 @@ from vehicles import wizzo
 speeds = dict(gen_1_wagon_speeds = [45, 80],
               gen_2_wagon_speeds = [60, 95],
               gen_3_wagon_speeds = [75, 110],
-              gen_4_wagon_speeds = [90, None],
+              gen_4_wagon_speeds = [90, 110],
               ng_gen_1_wagon_speeds = [55, 55])
 
 roster = Roster(id = 'pony',
