@@ -63,7 +63,7 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
         <!--! no buy menu extra text in this grf by design; extra text is associated with BAD FEATURES -->
         <tal:variable_power condition="consist.unit_requires_variable_power(vehicle)">
             power:                          ${vehicle.id}_switch_power;
-            purchase_power:                 ${vehicle.id}_switch_power;
+            purchase_power:                 ${consist.power};
         </tal:variable_power>
         visual_effect_and_powered:      ${vehicle.id}_switch_visual_effect_and_powered;
         <tal:add_articulated_parts condition="vehicle.is_lead_unit_of_consist and len(consist.units) > 1">
