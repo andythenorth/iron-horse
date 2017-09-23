@@ -10,7 +10,7 @@ consist = EngineConsist(id = 'lemon',
               speed = 60,
               buy_cost = 114,
               vehicle_life = 40,
-              intro_date = 1935)
+              intro_date = 1930)
 
 consist.add_unit(SteamLoco(consist = consist,
                         weight = 97,

@@ -5,7 +5,7 @@ consist = EngineConsist(id = 'sparkycat',
               base_numeric_id = 160,
               title = 'SparkyCat [ElectroDiesel]',
               power = 1700,
-              speed = 90,
+              speed = 110,
               type_base_buy_cost_points = 60, # dibble buy cost for game balance
               vehicle_life = 40,
               intro_date = 2020,

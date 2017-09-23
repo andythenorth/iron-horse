@@ -4,10 +4,10 @@ from train import EngineConsist, DieselRailcar
 consist = EngineConsist(id = 'tin_rocket',
               base_numeric_id = 530,
               title = 'Tin Rocket [Diesel]',
-              power = 700,
-              speed = 100,
+              power = 600,
+              speed = 90,
               type_base_running_cost_points = -36, # dibble running costs for game balance
-              intro_date = 1998,
+              intro_date = 1985,
               vehicle_life = 40)
 
 consist.add_unit(DieselRailcar(consist = consist,

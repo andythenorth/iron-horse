@@ -12,7 +12,6 @@ from vehicles import electra
 from vehicles import express_tank
 from vehicles import fleet
 from vehicles import growler
-from vehicles import growler_2
 from vehicles import high_flyer
 from vehicles import hudswell
 from vehicles import lemon
@@ -25,12 +24,15 @@ from vehicles import screamer
 from vehicles import serpentine
 from vehicles import shoebox
 from vehicles import slammer
+from vehicles import slug
 from vehicles import sparkycat
 from vehicles import standard
 from vehicles import stewart
 from vehicles import suburban
+from vehicles import super_shoebox
 from vehicles import tideway
 from vehicles import tin_rocket
+from vehicles import toaster
 from vehicles import tug
 from vehicles import tyburn
 from vehicles import walker
@@ -67,11 +69,13 @@ roster = Roster(id = 'pony',
                            chinook,
                            wizzo,
                            roarer,
-                           growler_2,
+                           slug,
                            tug,
                            screamer,
                            badger,
+                           super_shoebox,
                            sparkycat,
+                           toaster,
                            slammer,
                            tin_rocket,
                            cargo_sprinter,

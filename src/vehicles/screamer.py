@@ -4,11 +4,11 @@ from train import EngineConsist, DieselLoco
 consist = EngineConsist(id = 'screamer',
               base_numeric_id = 130,
               title = 'Screamer [Diesel]',
-              power = 3000,
+              power = 4500,
               speed = 125,
               buy_cost = 135,
               vehicle_life = 40,
-              intro_date = 1990,
+              intro_date = 1985,
               dual_headed = True)
 
 consist.add_unit(DieselLoco(consist = consist,
