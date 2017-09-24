@@ -31,6 +31,8 @@ STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Pokriveni vagon
 STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Vagon cisterna za prehrambene proizvode
 STR_NAME_SUFFIX_FLAT_CAR                                        :Plato-vagon
 STR_NAME_SUFFIX_FRUIT_CAR                                       :Vagon za voće
+STR_NAME_SUFFIX_HIGH_SPEED_MAIL_CAR                             :Ekspresni poštanski vagon
+STR_NAME_SUFFIX_HIGH_SPEED_PASSENGER_CAR                        :Ekspresni putnički vagon
 STR_NAME_SUFFIX_HOPPER_CAR                                      :Vagon za rasuti teret
 STR_NAME_SUFFIX_INTERMODAL_FLAT_CAR                             :Intermodalni plato-vagon
 STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Vagon za stoku
