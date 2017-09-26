@@ -830,6 +830,33 @@ class HighSpeedMailConsist(MailConsistBase):
         super().__init__(**kwargs)
 
 
+class LogConsist(WagonConsist):
+    """
+    Specialist log (wood) transporter
+    """
+    def __init__(self, **kwargs):
+        self.base_id = 'log_car'
+        super().__init__(**kwargs)
+        self.template = 'car_with_visible_cargo.pynml'
+        self.cargo_graphics_mappings = {}
+        self.num_cargo_rows = 1
+        self.generic_cargo_rows = [0]
+        self.class_refit_groups = []
+        self.label_refits_allowed = ['WOOD']
+        self.label_refits_disallowed = []
+        self.autorefit = True
+        self.default_cargo = 'WOOD'
+        self.default_capacity_type = 'capacity_freight'
+        self.loading_speed_multiplier = 2
+
+    @property
+    def graphics_processors(self):
+        options = {'template': self.id + '_template_0.png'}
+        pass_through = GraphicsProcessorFactory('pass_through_pipeline', options)
+        swap_company_colours = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
+        return {'pass_through': pass_through, 'swap_company_colours': swap_company_colours}
+
+
 class MetalConsist(WagonConsist):
     """
     Specialist heavy haul metal transport e.g. torpedo car, ladle, etc
