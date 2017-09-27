@@ -23,7 +23,6 @@ STR_NAME_SUFFIX_STEAM                                           :(Steam)
 
 STR_NAME_SUFFIX_BOX_CAR                                         :Boxcar
 STR_NAME_SUFFIX_CABOOSE_CAR                                     :Caboose
-STR_NAME_SUFFIX_COMBINE_CAR                                     :Combine Car
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Covered Hopper Car
 STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Edibles Tank Car
 STR_NAME_SUFFIX_FLAT_CAR                                        :Flatcar

@@ -24,7 +24,6 @@ STR_NAME_SUFFIX_STEAM                                           :(Stoom)
 
 STR_NAME_SUFFIX_BOX_CAR                                         :Dichte vrachtwagon
 STR_NAME_SUFFIX_CABOOSE_CAR                                     :Personeelswagon
-STR_NAME_SUFFIX_COMBINE_CAR                                     :Gecombineerde wagon
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Overdekte stortgoedwagon
 STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Voedseltankwagon
 STR_NAME_SUFFIX_FLAT_CAR                                        :Platte wagon

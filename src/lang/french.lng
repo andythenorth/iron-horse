@@ -25,7 +25,6 @@ STR_NAME_SUFFIX_STEAM                                           :(Vapeur)
 
 STR_NAME_SUFFIX_BOX_CAR                                         :Fourgon
 STR_NAME_SUFFIX_CABOOSE_CAR                                     :Fourgon de queue
-STR_NAME_SUFFIX_COMBINE_CAR                                     :Wagon mixte
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Wagon trémie couvert
 STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Wagon citerne alimentaire
 STR_NAME_SUFFIX_FLAT_CAR                                        :Wagon plat

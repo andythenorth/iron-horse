@@ -23,7 +23,6 @@ STR_NAME_SUFFIX_STEAM                                           :(Höyry)
 
 STR_NAME_SUFFIX_BOX_CAR                                         :Yleisvaunu
 STR_NAME_SUFFIX_CABOOSE_CAR                                     :Konduktöörivaunu
-STR_NAME_SUFFIX_COMBINE_CAR                                     :Yhdistetty vaunu
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Katettu malmivaunu
 STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Elintarvikesäiliövaunu
 STR_NAME_SUFFIX_FLAT_CAR                                        :Avovaunu

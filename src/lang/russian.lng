@@ -26,7 +26,6 @@ STR_NAME_SUFFIX_STEAM                                           :(Паровоз
 
 STR_NAME_SUFFIX_BOX_CAR                                         :Крытый вагон
 STR_NAME_SUFFIX_CABOOSE_CAR                                     :Тормозной вагон
-STR_NAME_SUFFIX_COMBINE_CAR                                     :Грузопассажирский вагон
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Закрытый хоппер
 STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Цистерна для продуктов
 STR_NAME_SUFFIX_FLAT_CAR                                        :Платформа

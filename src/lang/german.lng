@@ -23,7 +23,6 @@ STR_NAME_SUFFIX_STEAM                                           :(Dampf)
 
 STR_NAME_SUFFIX_BOX_CAR                                         :geschlossener Wagen
 STR_NAME_SUFFIX_CABOOSE_CAR                                     :Bremserwagen
-STR_NAME_SUFFIX_COMBINE_CAR                                     :kombinierter Wagen
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :gedeckter Schüttgutwagen
 STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Lebensmittel-Kesselwagen
 STR_NAME_SUFFIX_FLAT_CAR                                        :Flachwagen

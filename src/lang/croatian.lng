@@ -26,7 +26,6 @@ STR_NAME_SUFFIX_STEAM                                           :(Para)
 
 STR_NAME_SUFFIX_BOX_CAR                                         :Zatvoreni vagon
 STR_NAME_SUFFIX_CABOOSE_CAR                                     :Vagon za kočničara
-STR_NAME_SUFFIX_COMBINE_CAR                                     :Kombinirani vagon
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Pokriveni vagon za rasuti teret
 STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Vagon cisterna za prehrambene proizvode
 STR_NAME_SUFFIX_FLAT_CAR                                        :Plato-vagon

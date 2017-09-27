@@ -23,7 +23,6 @@ STR_NAME_SUFFIX_STEAM                                           :(Vaporaria)
 
 STR_NAME_SUFFIX_BOX_CAR                                         :Currus Clausus
 STR_NAME_SUFFIX_CABOOSE_CAR                                     :Currus Postremus
-STR_NAME_SUFFIX_COMBINE_CAR                                     :Currus Mixtus
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Currus Infundibularis Tectus
 STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Currus Cisterninus Edulium
 STR_NAME_SUFFIX_FLAT_CAR                                        :Currus Planus
