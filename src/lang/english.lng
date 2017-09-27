@@ -24,7 +24,7 @@ STR_NAME_SUFFIX_STEAM                                           :(Steam)
 
 STR_NAME_SUFFIX_BOX_CAR                                         :Box Car
 STR_NAME_SUFFIX_CABOOSE_CAR                                     :Caboose Car
-STR_NAME_SUFFIX_COMBINE_CAR                                     :Combine Car
+STR_NAME_SUFFIX_COAL_CAR                                        :Coal Car
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Covered Hopper Car
 STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Edibles Tank Car
 STR_NAME_SUFFIX_FLAT_CAR                                        :Flat Car
@@ -42,7 +42,7 @@ STR_NAME_SUFFIX_OPEN_CAR                                        :Open Car
 STR_NAME_SUFFIX_PASSENGER_CAR                                   :Passenger Car
 STR_NAME_SUFFIX_REEFER_CAR                                      :Reefer Car
 STR_NAME_SUFFIX_ROTARY_GONDOLA_CAR                              :Rotary Gondola Car
-STR_NAME_SUFFIX_SPECIAL_PASSENGER_CAR                           :Luxury Passenger Car
+STR_NAME_SUFFIX_LUXURY_PASSENGER_CAR                            :Luxury Passenger Car
 STR_NAME_SUFFIX_SUPPLIES_CAR                                    :Supplies Car
 STR_NAME_SUFFIX_TANK_CAR                                        :Tank Car
 STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Vehicle Transporter Car

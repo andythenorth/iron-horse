@@ -538,7 +538,7 @@ class BoxConsist(WagonConsist):
         return {'pass_through': pass_through, 'swap_company_colours': swap_company_colours}
 
 
-class CabooseConsist(WagonConsist):
+class CabooseConsistBase(WagonConsist):
     """
     Caboose, brake van etc - no gameplay purpose, just eye candy.
     """
@@ -553,39 +553,49 @@ class CabooseConsist(WagonConsist):
         self.default_capacity_type = 'capacity_freight'
 
 
-class CabooseConsistShort(CabooseConsist):
+class CabooseConsistShort(CabooseConsistBase):
     """
-    Dubious use of extra subclassing to make two lengths of caboose in same generation
+    Short caboose.
     """
     def __init__(self, **kwargs):
         self.base_id = 'caboose_car_short'
         super().__init__(**kwargs)
 
 
-class CabooseConsistLong(CabooseConsist):
+class CabooseConsistLong(CabooseConsistBase):
     """
-    Dubious use of extra subclassing to make two lengths of caboose in same generation
+    Long caboose.
     """
     def __init__(self, **kwargs):
         self.base_id = 'caboose_car_long'
         super().__init__(**kwargs)
 
 
-class CombineConsist(WagonConsist):
+class CoalConsist(WagonConsist):
     """
-    Novelty articulated coach with both pax and mail, for use on very small trains, bit of a hack.
-    COMBINE CARS CAN’T BE UPGRADED BY AUTO_REPLACE -  FS issue https://bugs.openttd.org/task/6207
+    Specialist coal (and coke) transporter
     """
     def __init__(self, **kwargs):
-        self.base_id = 'combine_car'
+        self.base_id = 'coal_car'
         super().__init__(**kwargs)
-        self.template = 'train.pynml'
-        self.class_refit_groups = ['mail', 'express_freight', 'pax']
-        self.label_refits_allowed = []
-        self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_freight_special_cases']
+        self.template = 'car_with_visible_cargo.pynml'
+        self.cargo_graphics_mappings = {}
+        self.num_cargo_rows = 1
+        self.generic_cargo_rows = [0]
+        self.class_refit_groups = []
+        self.label_refits_allowed = ['COAL', 'COKE']
+        self.label_refits_disallowed = []
         self.autorefit = True
-        self.default_cargo = 'MAIL'
-        self.default_capacity_type = 'capacity_mail'
+        self.default_cargo = 'WOOD'
+        self.default_capacity_type = 'capacity_freight'
+        self.loading_speed_multiplier = 2
+
+    @property
+    def graphics_processors(self):
+        options = {'template': self.id + '_template_0.png'}
+        pass_through = GraphicsProcessorFactory('pass_through_pipeline', options)
+        swap_company_colours = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
+        return {'pass_through': pass_through, 'swap_company_colours': swap_company_colours}
 
 
 class CoveredHopperConsist(WagonConsist):
@@ -782,6 +792,33 @@ class LivestockConsist(WagonConsist):
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
 
 
+class LogConsist(WagonConsist):
+    """
+    Specialist log (wood) transporter
+    """
+    def __init__(self, **kwargs):
+        self.base_id = 'log_car'
+        super().__init__(**kwargs)
+        self.template = 'car_with_visible_cargo.pynml'
+        self.cargo_graphics_mappings = {}
+        self.num_cargo_rows = 1
+        self.generic_cargo_rows = [0]
+        self.class_refit_groups = []
+        self.label_refits_allowed = ['WOOD']
+        self.label_refits_disallowed = []
+        self.autorefit = True
+        self.default_cargo = 'WOOD'
+        self.default_capacity_type = 'capacity_freight'
+        self.loading_speed_multiplier = 2
+
+    @property
+    def graphics_processors(self):
+        options = {'template': self.id + '_template_0.png'}
+        pass_through = GraphicsProcessorFactory('pass_through_pipeline', options)
+        swap_company_colours = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
+        return {'pass_through': pass_through, 'swap_company_colours': swap_company_colours}
+
+
 class MailConsistBase(WagonConsist):
     """
     Common base class for mail cars.
@@ -828,33 +865,6 @@ class HighSpeedMailConsist(MailConsistBase):
     def __init__(self, **kwargs):
         self.base_id = 'high_speed_mail_car'
         super().__init__(**kwargs)
-
-
-class LogConsist(WagonConsist):
-    """
-    Specialist log (wood) transporter
-    """
-    def __init__(self, **kwargs):
-        self.base_id = 'log_car'
-        super().__init__(**kwargs)
-        self.template = 'car_with_visible_cargo.pynml'
-        self.cargo_graphics_mappings = {}
-        self.num_cargo_rows = 1
-        self.generic_cargo_rows = [0]
-        self.class_refit_groups = []
-        self.label_refits_allowed = ['WOOD']
-        self.label_refits_disallowed = []
-        self.autorefit = True
-        self.default_cargo = 'WOOD'
-        self.default_capacity_type = 'capacity_freight'
-        self.loading_speed_multiplier = 2
-
-    @property
-    def graphics_processors(self):
-        options = {'template': self.id + '_template_0.png'}
-        pass_through = GraphicsProcessorFactory('pass_through_pipeline', options)
-        swap_company_colours = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
-        return {'pass_through': pass_through, 'swap_company_colours': swap_company_colours}
 
 
 class MetalConsist(WagonConsist):
@@ -944,13 +954,13 @@ class PassengerConsist(PassengerConsistBase):
         super().__init__(**kwargs)
 
 
-class SpecialPassengerConsist(PassengerConsistBase):
+class PassengerLuxuryConsist(PassengerConsistBase):
     """
     Improved decay rate and lower capacity per unit length compared to standard pax car.
     Possibly random sprites for restaurant car, observation car etc.
     """
     def __init__(self, **kwargs):
-        self.base_id = 'special_passenger_car'
+        self.base_id = 'luxury_passenger_car'
         super().__init__(**kwargs)
 
 
@@ -986,6 +996,48 @@ class ReeferConsist(WagonConsist):
         options = {'template': self.id + '_template_0.png'}
         pass_through = GraphicsProcessorFactory('pass_through_pipeline', options)
         swap_company_colours = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
+        return {'pass_through': pass_through, 'swap_company_colours': swap_company_colours}
+
+
+class RotaryGondolaConsist(WagonConsist):
+    """
+    Limited set of bulk (mineral) cargos, same set as hopper cars.
+    """
+    def __init__(self, **kwargs):
+        self.base_id = 'rotary_gondola_car'
+        super().__init__(**kwargs)
+        self.template = 'car_with_visible_cargo.pynml'
+        # cargo rows 0 indexed - 0 = first set of loaded sprites
+        # GRVL is in first position as it is re-used for generic unknown cargos
+        # hoppers *do* transport SCMT in this set, realism is not relevant here, went back and forth on this a few times :P
+        self.cargo_graphics_mappings = {'GRVL': [0], 'IORE': [1], 'CORE': [2], 'AORE': [3],
+                                   'SAND': [4], 'COAL': [5], 'CLAY': [6], 'SCMT': [7], 'PHOS': [8],
+                                   'CASS': [9], 'LIME': [10], 'MNO2': [11], 'NITR': [12],
+                                   'PORE': [13], 'POTA': [14], 'SGBT': [15]}
+        self.num_cargo_rows = 16 # update if more cargo graphic variations are added
+        self.class_refit_groups = ['hopper_freight']
+        self.label_refits_allowed = list(self.cargo_graphics_mappings.keys())
+        self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_hopper_freight']
+        self.autorefit = True
+        self.default_cargo = 'COAL'
+        self.default_capacity_type = 'capacity_freight'
+        self.loading_speed_multiplier = 2
+
+    @property
+    def graphics_processors(self):
+        recolour_maps = graphics_utils.get_bulk_cargo_recolour_maps()
+        graphics_options_master = {'template': '',
+                                   'recolour_maps': (recolour_maps),
+                                   'copy_block_top_offset': 30,
+                                   'num_rows_per_unit': 2,
+                                   'num_unit_types': 1}
+
+        graphics_options_1 = dict((k, v) for (k, v) in graphics_options_master.items())
+        graphics_options_1['template'] = self.id + '_template_0.png'
+        graphics_options_2 = dict((k, v) for (k, v) in graphics_options_1.items())
+        graphics_options_2['swap_company_colours'] = True
+        pass_through = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_1)
+        swap_company_colours = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_2)
         return {'pass_through': pass_through, 'swap_company_colours': swap_company_colours}
 
 

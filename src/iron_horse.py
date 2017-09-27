@@ -42,6 +42,9 @@ caboose_cars.main()
 from vehicles import covered_hopper_cars
 covered_hopper_cars.main()
 
+from vehicles import coal_cars
+coal_cars.main()
+
 from vehicles import edibles_tank_cars
 edibles_tank_cars.main()
 
@@ -66,6 +69,9 @@ livestock_cars.main()
 from vehicles import log_cars
 log_cars.main()
 
+from vehicles import luxury_passenger_cars
+luxury_passenger_cars.main()
+
 from vehicles import mail_box_cars
 mail_box_cars.main()
 
@@ -84,8 +90,8 @@ passenger_cars.main()
 from vehicles import reefer_cars
 reefer_cars.main()
 
-from vehicles import special_passenger_cars
-special_passenger_cars.main()
+from vehicles import rotary_gondola_cars
+rotary_gondola_cars.main()
 
 from vehicles import supplies_cars
 supplies_cars.main()

@@ -1,9 +1,9 @@
 import global_constants
-from train import SpecialPassengerConsist, Wagon
+from train import PassengerLuxuryConsist, Wagon
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
-    consist = SpecialPassengerConsist(title = '[Special Passenger Car]',
+    consist = PassengerLuxuryConsist(title = '[Luxury Passenger Car]',
                                roster = 'pony',
                                base_numeric_id = 2250,
                                wagon_generation = 1,
@@ -20,7 +20,7 @@ def main():
                               end_date=global_constants.max_game_date)
 
 
-    consist = SpecialPassengerConsist(title = '[Special Passenger Car]',
+    consist = PassengerLuxuryConsist(title = '[Luxury Passenger Car]',
                                roster = 'pony',
                                base_numeric_id = 2260,
                                wagon_generation = 2,
@@ -37,7 +37,7 @@ def main():
                               end_date=global_constants.max_game_date)
 
 
-    consist = SpecialPassengerConsist(title = '[Special Passenger Car]',
+    consist = PassengerLuxuryConsist(title = '[Luxury Passenger Car]',
                                roster = 'pony',
                                base_numeric_id = 2270,
                                wagon_generation = 3,
