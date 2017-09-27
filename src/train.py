@@ -858,9 +858,9 @@ class MailBoxConsist(MailConsistBase):
         super().__init__(**kwargs)
 
 
-class HighSpeedMailConsist(MailConsistBase):
+class MailHighSpeedConsist(MailConsistBase):
     """
-    No speed limit
+    No speed limit (possibly more limited set of cargos? - undecided).
     """
     def __init__(self, **kwargs):
         self.base_id = 'high_speed_mail_car'

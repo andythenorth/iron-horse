@@ -1,5 +1,5 @@
 import global_constants
-from train import HighSpeedMailConsist, HighSpeedPassengerConsist, Wagon
+from train import MailHighSpeedConsist, HighSpeedPassengerConsist, Wagon
 
 # for consistency, should be split to high_speed_mail_cars and high_speed_passenger_cars eh?
 
@@ -21,7 +21,7 @@ def main():
                               end_date=global_constants.max_game_date)
 
 
-    consist = HighSpeedMailConsist(title = '[High Speed Mail Car]',
+    consist = MailHighSpeedConsist(title = '[High Speed Mail Car]',
                                roster = 'pony',
                                base_numeric_id = 970,
                                wagon_generation = 5,
