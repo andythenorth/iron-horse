@@ -513,12 +513,11 @@ class WagonConsist(Consist):
             return cost / 8
 
 
-class BoxConsist(WagonConsist):
+class BoxConsistBase(WagonConsist):
     """
     Van - express, piece goods cargos, other selected cargos.
     """
     def __init__(self, **kwargs):
-        self.base_id = 'box_car'
         super().__init__(**kwargs)
         self.template = 'car_with_open_doors_during_loading.pynml'
         self.cargo_graphics_mappings = {} # template needs this, but box car has zero cargo-specific graphics, all generic
@@ -536,6 +535,24 @@ class BoxConsist(WagonConsist):
         pass_through = GraphicsProcessorFactory('pass_through_pipeline', options)
         swap_company_colours = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
         return {'pass_through': pass_through, 'swap_company_colours': swap_company_colours}
+
+
+class BoxConsistShort(BoxConsistBase):
+    """
+    Short box car.
+    """
+    def __init__(self, **kwargs):
+        self.base_id = 'box_car_short'
+        super().__init__(**kwargs)
+
+
+class BoxConsistLong(BoxConsistBase):
+    """
+    Long box car.
+    """
+    def __init__(self, **kwargs):
+        self.base_id = 'box_car_long'
+        super().__init__(**kwargs)
 
 
 class CabooseConsistBase(WagonConsist):
@@ -701,12 +718,11 @@ class FruitConsist(WagonConsist):
         return {'pass_through': pass_through, 'swap_company_colours': swap_company_colours}
 
 
-class HopperConsist(WagonConsist):
+class HopperConsistBase(WagonConsist):
     """
     Limited set of bulk (mineral) cargos.
     """
     def __init__(self, **kwargs):
-        self.base_id = 'hopper_car'
         super().__init__(**kwargs)
         self.template = 'car_with_visible_cargo.pynml'
         # cargo rows 0 indexed - 0 = first set of loaded sprites
@@ -741,6 +757,24 @@ class HopperConsist(WagonConsist):
         pass_through = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_1)
         swap_company_colours = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_2)
         return {'pass_through': pass_through, 'swap_company_colours': swap_company_colours}
+
+
+class HopperConsistShort(HopperConsistBase):
+    """
+    Short hopper car.
+    """
+    def __init__(self, **kwargs):
+        self.base_id = 'hopper_car_short'
+        super().__init__(**kwargs)
+
+
+class HopperConsistLong(HopperConsistBase):
+    """
+    Long hopper car.
+    """
+    def __init__(self, **kwargs):
+        self.base_id = 'hopper_car_long'
+        super().__init__(**kwargs)
 
 
 class IntermodalConsist(WagonConsist):

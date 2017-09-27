@@ -32,7 +32,7 @@ def main():
                       vehicle_life = 40)
 
     consist.add_unit(Wagon(consist = consist,
-                            capacity_freight = 40,
+                            capacity_freight = 30,
                             weight = 27,
                             vehicle_length = 6))
 
