@@ -24,6 +24,7 @@ from vehicles import smokey_mountain
 from vehicles import springburn
 from vehicles import waterbuck
 
+# !! needs refactored to match Pony
 # speed for wagons in mph (some generations may optionally have no speed set)
 # format is [standard, speedy]
 speeds = dict(gen_1_wagon_speeds = [55, None], # no point setting an upper speed for SG in this roster, max engine is always 75mph

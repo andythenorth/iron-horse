@@ -31,6 +31,7 @@ from vehicles import universal
 from vehicles import ut440
 from vehicles import v8
 
+# !! needs refactored to match Pony
 # speed for wagons in mph (some generations may optionally have no speed set)
 # format is [standard, speedy]
 speeds = dict(gen_1_wagon_speeds = [50, 65],
