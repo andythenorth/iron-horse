@@ -1,5 +1,5 @@
 import global_constants
-from train import DumpConsist, Wagon
+from train import DumpConsist, FreightCar
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
@@ -7,8 +7,8 @@ def main():
                             base_numeric_id = 1340,
                             vehicle_generation = 3)
 
-    consist.add_unit(Wagon(consist = consist,
-                           capacity_freight = 20,
+    consist.add_unit(FreightCar(consist = consist,
+                           capacity = 20,
                            vehicle_length = 4))
 
     consist.add_model_variant(start_date=0,
@@ -24,8 +24,8 @@ def main():
                             base_numeric_id = 1810,
                             vehicle_generation = 4)
 
-    consist.add_unit(Wagon(consist = consist,
-                           capacity_freight = 40,
+    consist.add_unit(FreightCar(consist = consist,
+                           capacity = 40,
                            vehicle_length = 6))
 
     consist.add_model_variant(start_date=0,

@@ -1,5 +1,5 @@
 import global_constants
-from train import HopperConsistShort, HopperConsistLong, Wagon
+from train import HopperConsistShort, HopperConsistLong, FreightCar
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
@@ -7,8 +7,8 @@ def main():
                                  base_numeric_id = 1070,
                                  vehicle_generation = 3)
 
-    consist.add_unit(Wagon(consist = consist,
-                           capacity_freight = 20,
+    consist.add_unit(FreightCar(consist = consist,
+                           capacity = 20,
                            vehicle_length = 4))
 
     consist.add_model_variant(start_date=0,
@@ -24,8 +24,8 @@ def main():
                                  base_numeric_id = 2330,
                                  vehicle_generation = 3)
 
-    consist.add_unit(Wagon(consist = consist,
-                           capacity_freight = 30,
+    consist.add_unit(FreightCar(consist = consist,
+                           capacity = 30,
                            vehicle_length = 6))
 
     consist.add_model_variant(start_date=0,
@@ -41,8 +41,8 @@ def main():
                             base_numeric_id = 1080,
                             vehicle_generation = 4)
 
-    consist.add_unit(Wagon(consist = consist,
-                           capacity_freight = 30,
+    consist.add_unit(FreightCar(consist = consist,
+                           capacity = 30,
                            vehicle_length = 6))
 
     consist.add_model_variant(start_date=0,
@@ -58,8 +58,8 @@ def main():
                             base_numeric_id = 1090,
                             vehicle_generation = 4)
 
-    consist.add_unit(Wagon(consist = consist,
-                           capacity_freight = 40,
+    consist.add_unit(FreightCar(consist = consist,
+                           capacity = 40,
                            vehicle_length = 8))
 
     consist.add_model_variant(start_date=0,
@@ -76,8 +76,8 @@ def main():
                             base_numeric_id = 1100,
                             vehicle_generation = 2)
 
-    consist.add_unit(Wagon(consist = consist,
-                           capacity_freight = 55,
+    consist.add_unit(FreightCar(consist = consist,
+                           capacity = 55,
                            vehicle_length = 6))
 
     consist.add_model_variant(start_date=0,
@@ -93,8 +93,8 @@ def main():
                             base_numeric_id = 1110,
                             vehicle_generation = 3)
 
-    consist.add_unit(Wagon(consist = consist,
-                           capacity_freight = 75,
+    consist.add_unit(FreightCar(consist = consist,
+                           capacity = 75,
                            vehicle_length = 6))
 
     consist.add_model_variant(start_date=0,
@@ -111,8 +111,8 @@ def main():
                             vehicle_generation = 2,
                             track_type = 'NG')
 
-    consist.add_unit(Wagon(consist = consist,
-                           capacity_freight = 45,
+    consist.add_unit(FreightCar(consist = consist,
+                           capacity = 45,
                            vehicle_length = 6))
 
     consist.add_model_variant(start_date=0,
@@ -129,8 +129,8 @@ def main():
                             vehicle_generation = 3,
                             track_type = 'NG')
 
-    consist.add_unit(Wagon(consist = consist,
-                           capacity_freight = 65,
+    consist.add_unit(FreightCar(consist = consist,
+                           capacity = 65,
                            vehicle_length = 6))
 
     consist.add_model_variant(start_date=0,
@@ -147,8 +147,8 @@ def main():
                             base_numeric_id = 1630,
                             vehicle_generation = 1)
 
-    consist.add_unit(Wagon(consist = consist,
-                           capacity_freight = 60,
+    consist.add_unit(FreightCar(consist = consist,
+                           capacity = 60,
                            vehicle_length = 6))
 
     consist.add_model_variant(start_date=0,
@@ -164,8 +164,8 @@ def main():
                             base_numeric_id = 1660,
                             vehicle_generation = 2)
 
-    consist.add_unit(Wagon(consist = consist,
-                           capacity_freight = 75,
+    consist.add_unit(FreightCar(consist = consist,
+                           capacity = 75,
                            vehicle_length = 6))
 
     consist.add_model_variant(start_date=0,
@@ -183,8 +183,8 @@ def main():
                             vehicle_generation = 2,
                             track_type = 'NG')
 
-    consist.add_unit(Wagon(consist = consist,
-                           capacity_freight = 35,
+    consist.add_unit(FreightCar(consist = consist,
+                           capacity = 35,
                            vehicle_length = 6))
 
     consist.add_model_variant(start_date=0,

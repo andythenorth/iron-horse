@@ -8,7 +8,7 @@ def main():
                          vehicle_generation = 1)
 
     consist.add_unit(BoxCar(consist = consist,
-                            capacity_freight = 20,
+                            capacity = 20,
                             vehicle_length = 4))
 
     consist.add_model_variant(start_date=0,
@@ -25,7 +25,7 @@ def main():
                               vehicle_generation = 2)
 
     consist.add_unit(BoxCar(consist = consist,
-                            capacity_freight = 20,
+                            capacity = 20,
                             vehicle_length = 4))
 
     consist.add_model_variant(start_date=0,
@@ -42,7 +42,7 @@ def main():
                               vehicle_generation = 3)
 
     consist.add_unit(BoxCar(consist = consist,
-                            capacity_freight = 35,
+                            capacity = 35,
                             vehicle_length = 4))
 
     consist.add_model_variant(start_date=0,
@@ -59,7 +59,7 @@ def main():
                              vehicle_generation = 3)
 
     consist.add_unit(BoxCar(consist = consist,
-                            capacity_freight = 55,
+                            capacity = 55,
                             vehicle_length = 8))
 
     consist.add_model_variant(start_date=0,
@@ -76,7 +76,7 @@ def main():
                              vehicle_generation = 4)
 
     consist.add_unit(BoxCar(consist = consist,
-                                capacity_freight = 55,
+                                capacity = 55,
                             vehicle_length = 8))
 
     consist.add_model_variant(start_date=0,
@@ -94,7 +94,7 @@ def main():
                          track_type = 'NG')
 
     consist.add_unit(BoxCar(consist = consist,
-                            capacity_freight = 12,
+                            capacity = 12,
                             vehicle_length = 4))
 
     consist.add_model_variant(start_date=0,
@@ -112,7 +112,7 @@ def main():
                         vehicle_generation = 1)
 
     consist.add_unit(BoxCar(consist = consist,
-                            capacity_freight = 25,
+                            capacity = 25,
                             vehicle_length = 5))
 
     consist.add_model_variant(start_date=0,
@@ -129,7 +129,7 @@ def main():
                          vehicle_generation = 2)
 
     consist.add_unit(BoxCar(consist = consist,
-                            capacity_freight = 45,
+                            capacity = 45,
                             vehicle_length = 6))
 
     consist.add_model_variant(start_date=0,
@@ -146,7 +146,7 @@ def main():
                          vehicle_generation = 3)
 
     consist.add_unit(BoxCar(consist = consist,
-                            capacity_freight = 65,
+                            capacity = 65,
                             vehicle_length = 7))
 
     consist.add_model_variant(start_date=0,
@@ -164,7 +164,7 @@ def main():
                                   track_type = 'NG')
 
     consist.add_unit(BoxCar(consist = consist,
-                            capacity_freight = 20,
+                            capacity = 20,
                             vehicle_length = 6))
 
     consist.add_model_variant(start_date=0,
@@ -182,7 +182,7 @@ def main():
                          track_type = 'NG')
 
     consist.add_unit(BoxCar(consist = consist,
-                            capacity_freight = 35,
+                            capacity = 35,
                             vehicle_length = 6))
 
     consist.add_model_variant(start_date=0,
@@ -200,7 +200,7 @@ def main():
                          vehicle_generation = 1)
 
     consist.add_unit(BoxCar(consist = consist,
-                            capacity_freight = 55,
+                            capacity = 55,
                             vehicle_length = 6))
 
     consist.add_model_variant(start_date=0,
@@ -217,7 +217,7 @@ def main():
                          vehicle_generation = 2)
 
     consist.add_unit(BoxCar(consist = consist,
-                            capacity_freight = 70,
+                            capacity = 70,
                             vehicle_length = 8))
 
     consist.add_model_variant(start_date=0,
@@ -235,7 +235,7 @@ def main():
                          track_type = 'NG')
 
     consist.add_unit(BoxCar(consist = consist,
-                            capacity_freight = 20,
+                            capacity = 20,
                             vehicle_length = 5))
 
     consist.add_model_variant(start_date=0,
@@ -253,7 +253,7 @@ def main():
                          track_type = 'NG')
 
     consist.add_unit(BoxCar(consist = consist,
-                            capacity_freight = 30,
+                            capacity = 30,
                             vehicle_length = 6))
 
     consist.add_model_variant(start_date=0,
@@ -271,7 +271,7 @@ def main():
                          track_type = 'NG')
 
     consist.add_unit(BoxCar(consist = consist,
-                            capacity_freight = 40,
+                            capacity = 40,
                             vehicle_length = 8))
 
     consist.add_model_variant(start_date=0,

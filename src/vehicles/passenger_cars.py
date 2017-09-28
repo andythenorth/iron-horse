@@ -1,5 +1,5 @@
 import global_constants
-from train import PassengerConsist, Wagon
+from train import PassengerConsist, PassengerCar
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
@@ -8,8 +8,8 @@ def main():
                                vehicle_generation = 1,
                                speedy = True)
 
-    consist.add_unit(Wagon(consist = consist,
-                           capacity_pax = 25,
+    consist.add_unit(PassengerCar(consist = consist,
+                           capacity = 25,
                            vehicle_length = 6))
 
     consist.add_model_variant(start_date=0,
@@ -21,8 +21,8 @@ def main():
                                vehicle_generation = 2,
                                speedy = True)
 
-    consist.add_unit(Wagon(consist = consist,
-                            capacity_pax = 55,
+    consist.add_unit(PassengerCar(consist = consist,
+                            capacity = 55,
                             vehicle_length = 6))
 
     consist.add_model_variant(start_date=0,
@@ -34,8 +34,8 @@ def main():
                                vehicle_generation = 3,
                                speedy = True)
 
-    consist.add_unit(Wagon(consist = consist,
-                           capacity_pax = 75,
+    consist.add_unit(PassengerCar(consist = consist,
+                           capacity = 75,
                            vehicle_length = 6))
 
     consist.add_model_variant(start_date=0,
@@ -47,8 +47,8 @@ def main():
                                vehicle_generation = 1,
                                track_type = 'NG')
 
-    consist.add_unit(Wagon(consist = consist,
-                           capacity_pax = 25,
+    consist.add_unit(PassengerCar(consist = consist,
+                           capacity = 25,
                            vehicle_length = 6))
 
     consist.add_model_variant(start_date=0,
@@ -61,8 +61,8 @@ def main():
                                vehicle_generation = 1,
                                speedy = True)
 
-    consist.add_unit(Wagon(consist = consist,
-                            capacity_pax = 40,
+    consist.add_unit(PassengerCar(consist = consist,
+                            capacity = 40,
                             vehicle_length = 8))
 
     consist.add_model_variant(start_date=0,
@@ -74,8 +74,8 @@ def main():
                                vehicle_generation = 2,
                                speedy = True)
 
-    consist.add_unit(Wagon(consist = consist,
-                            capacity_pax = 50,
+    consist.add_unit(PassengerCar(consist = consist,
+                            capacity = 50,
                             vehicle_length = 8))
 
     consist.add_model_variant(start_date=0,
@@ -87,8 +87,8 @@ def main():
                                vehicle_generation = 3,
                                speedy = True)
 
-    consist.add_unit(Wagon(consist = consist,
-                            capacity_pax = 60,
+    consist.add_unit(PassengerCar(consist = consist,
+                            capacity = 60,
                             vehicle_length = 8))
 
     consist.add_model_variant(start_date=0,
@@ -101,8 +101,8 @@ def main():
                                speedy = True,
                                track_type = 'NG')
 
-    consist.add_unit(Wagon(consist = consist,
-                            capacity_pax = 30,
+    consist.add_unit(PassengerCar(consist = consist,
+                            capacity = 30,
                             vehicle_length = 6))
 
     consist.add_model_variant(start_date=0,
@@ -115,8 +115,8 @@ def main():
                                speedy = True,
                                track_type = 'NG')
 
-    consist.add_unit(Wagon(consist = consist,
-                            capacity_pax = 40,
+    consist.add_unit(PassengerCar(consist = consist,
+                            capacity = 40,
                             vehicle_length = 6))
 
     consist.add_model_variant(start_date=0,
@@ -130,8 +130,8 @@ def main():
                                speedy = True,
                                track_type = 'NG')
 
-    consist.add_unit(Wagon(consist = consist,
-                            capacity_pax = 50,
+    consist.add_unit(PassengerCar(consist = consist,
+                            capacity = 50,
                             vehicle_length = 6))
 
     consist.add_model_variant(start_date=0,
@@ -144,8 +144,8 @@ def main():
                                vehicle_generation = 1,
                                speedy = True)
 
-    consist.add_unit(Wagon(consist = consist,
-                            capacity_pax = 55,
+    consist.add_unit(PassengerCar(consist = consist,
+                            capacity = 55,
                             vehicle_length = 8))
 
     consist.add_model_variant(start_date=0,
@@ -157,8 +157,8 @@ def main():
                                vehicle_generation = 2,
                                speedy = True)
 
-    consist.add_unit(Wagon(consist = consist,
-                            capacity_pax = 80,
+    consist.add_unit(PassengerCar(consist = consist,
+                            capacity = 80,
                             vehicle_length = 8))
 
     consist.add_model_variant(start_date=0,
@@ -171,8 +171,8 @@ def main():
                                speedy = True,
                                track_type = 'NG')
 
-    consist.add_unit(Wagon(consist = consist,
-                            capacity_pax = 20,
+    consist.add_unit(PassengerCar(consist = consist,
+                            capacity = 20,
                             vehicle_length = 5))
 
     consist.add_model_variant(start_date=0,
@@ -185,8 +185,8 @@ def main():
                                speedy = True,
                                track_type = 'NG')
 
-    consist.add_unit(Wagon(consist = consist,
-                            capacity_pax = 30,
+    consist.add_unit(PassengerCar(consist = consist,
+                            capacity = 30,
                             vehicle_length = 8))
 
     consist.add_model_variant(start_date=0,

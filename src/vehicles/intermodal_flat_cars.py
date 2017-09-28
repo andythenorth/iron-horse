@@ -1,5 +1,5 @@
 import global_constants
-from train import IntermodalConsist, Wagon
+from train import IntermodalConsist, FreightCar
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
@@ -8,8 +8,8 @@ def main():
                            vehicle_generation = 3,
                                         speedy = True)
 
-    consist.add_unit(Wagon(consist = consist,
-                            capacity_freight = 40, # was matched for some time to RH and Squid containers, but blah
+    consist.add_unit(FreightCar(consist = consist,
+                            capacity = 40, # was matched for some time to RH and Squid containers, but blah
                             vehicle_length = 8))
 
     consist.add_model_variant(start_date=0,

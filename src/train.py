@@ -1306,6 +1306,16 @@ class CargoSprinter(Train):
         return GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options)
 
 
+class PassengerCar(Wagon):
+    """
+    Passenger Carriage.
+    """
+    def __init__(self, **kwargs):
+        kwargs['capacity_pax'] = kwargs.get('capacity', None)
+        super().__init__(**kwargs)
+        self.capacities_freight = [int(0.5 * capacity) for capacity in self.capacities_mail]
+
+
 class MailCar(Wagon):
     """
     Mail Carriage.
@@ -1316,7 +1326,16 @@ class MailCar(Wagon):
         self.capacities_freight = [int(0.5 * capacity) for capacity in self.capacities_mail]
 
 
-class BoxCar(Wagon):
+class FreightCar(Wagon):
+    """
+    Freight wagon.
+    """
+    def __init__(self, **kwargs):
+        kwargs['capacity_freight'] = kwargs.get('capacity', None)
+        super().__init__(**kwargs)
+
+
+class BoxCar(FreightCar):
     """
     Box Car.
     """
@@ -1324,6 +1343,7 @@ class BoxCar(Wagon):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.capacities_mail = [int(2.0 * capacity) for capacity in self.capacities_freight]
+
 
 
 class MetroPaxUnit(Train):

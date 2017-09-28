@@ -1,5 +1,5 @@
 import global_constants
-from train import PassengerLuxuryConsist, Wagon
+from train import PassengerLuxuryConsist, PassengerCar
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
@@ -9,8 +9,8 @@ def main():
                                intro_date = 1860,
                                speedy = True)
 
-    consist.add_unit(Wagon(consist = consist,
-                           capacity_pax = 25,
+    consist.add_unit(PassengerCar(consist = consist,
+                           capacity = 25,
                            weight = 30,
                            vehicle_length = 8))
 
@@ -24,8 +24,8 @@ def main():
                                intro_date = 1900,
                                speedy = True)
 
-    consist.add_unit(Wagon(consist = consist,
-                            capacity_pax = 55,
+    consist.add_unit(PassengerCar(consist = consist,
+                            capacity = 55,
                             weight = 33,
                             vehicle_length = 8))
 
@@ -39,8 +39,8 @@ def main():
                                intro_date = 1960,
                                speedy = True)
 
-    consist.add_unit(Wagon(consist = consist,
-                           capacity_pax = 75,
+    consist.add_unit(PassengerCar(consist = consist,
+                           capacity = 75,
                            weight = 36,
                            vehicle_length = 8))
 

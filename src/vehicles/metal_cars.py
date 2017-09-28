@@ -1,5 +1,5 @@
 import global_constants
-from train import MetalConsist, Wagon
+from train import MetalConsist, FreightCar
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
@@ -9,8 +9,8 @@ def main():
                            vehicle_generation = 1,
                                         suppress_animated_pixel_warnings = True)
 
-    consist.add_unit(Wagon(consist = consist,
-                            capacity_freight = 30,
+    consist.add_unit(FreightCar(consist = consist,
+                            capacity = 30,
                             vehicle_length = 5,
                             spriterow_num = 0))
 
@@ -23,8 +23,8 @@ def main():
                            vehicle_generation = 2,
                                         suppress_animated_pixel_warnings = True)
 
-    consist.add_unit(Wagon(consist = consist,
-                            capacity_freight = 60,
+    consist.add_unit(FreightCar(consist = consist,
+                            capacity = 60,
                             vehicle_length = 8,
                             spriterow_num = 0))
 
@@ -37,8 +37,8 @@ def main():
                            vehicle_generation = 3,
                                         suppress_animated_pixel_warnings = True)
 
-    consist.add_unit(Wagon(consist = consist,
-                            capacity_freight = 90,
+    consist.add_unit(FreightCar(consist = consist,
+                            capacity = 90,
                             vehicle_length = 8,
                             spriterow_num = 0))
 

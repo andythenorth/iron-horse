@@ -20,7 +20,7 @@ consist = EngineConsist(id = 'cargo_sprinter',
 consist.add_unit(CargoSprinter(consist = consist,
                                weight = 46,
                                vehicle_length = 7,
-                               capacity_freight = 36), # matched to 1.5x standard Road Hog and Squid containers
+                               capacity = 36), # matched to 1.5x standard Road Hog and Squid containers
                                repeat=2)
 
 consist.add_model_variant(start_date=0,

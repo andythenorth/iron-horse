@@ -1,5 +1,5 @@
 import global_constants
-from train import LivestockConsist, Wagon
+from train import LivestockConsist, FreightCar
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
@@ -7,8 +7,8 @@ def main():
                                base_numeric_id = 1010,
                                vehicle_generation = 1)
 
-    consist.add_unit(Wagon(consist = consist,
-                            capacity_freight = 20,
+    consist.add_unit(FreightCar(consist = consist,
+                            capacity = 20,
                             vehicle_length = 5))
 
     consist.add_model_variant(start_date=0,
@@ -19,8 +19,8 @@ def main():
                                base_numeric_id = 1020,
                                vehicle_generation = 2)
 
-    consist.add_unit(Wagon(consist = consist,
-                            capacity_freight = 35,
+    consist.add_unit(FreightCar(consist = consist,
+                            capacity = 35,
                             vehicle_length = 8))
 
     consist.add_model_variant(start_date=0,
@@ -32,8 +32,8 @@ def main():
                                vehicle_generation = 1,
                                track_type = 'NG')
 
-    consist.add_unit(Wagon(consist = consist,
-                            capacity_freight = 12,
+    consist.add_unit(FreightCar(consist = consist,
+                            capacity = 12,
                             vehicle_length = 4))
 
     consist.add_model_variant(start_date=0,
@@ -45,8 +45,8 @@ def main():
                                base_numeric_id = 1040,
                                vehicle_generation = 1)
 
-    consist.add_unit(Wagon(consist = consist,
-                            capacity_freight = 25,
+    consist.add_unit(FreightCar(consist = consist,
+                            capacity = 25,
                             vehicle_length = 6))
 
     consist.add_model_variant(start_date=0,
@@ -57,8 +57,8 @@ def main():
                                base_numeric_id = 1430,
                                vehicle_generation = 2)
 
-    consist.add_unit(Wagon(consist = consist,
-                            capacity_freight = 45,
+    consist.add_unit(FreightCar(consist = consist,
+                            capacity = 45,
                             vehicle_length = 6))
 
     consist.add_model_variant(start_date=0,
@@ -70,8 +70,8 @@ def main():
                                vehicle_generation = 1,
                                track_type = 'NG')
 
-    consist.add_unit(Wagon(consist = consist,
-                            capacity_freight = 20,
+    consist.add_unit(FreightCar(consist = consist,
+                            capacity = 20,
                             vehicle_length = 6))
 
     consist.add_model_variant(start_date=0,
@@ -83,8 +83,8 @@ def main():
                                vehicle_generation = 2,
                                track_type = 'NG')
 
-    consist.add_unit(Wagon(consist = consist,
-                            capacity_freight = 35,
+    consist.add_unit(FreightCar(consist = consist,
+                            capacity = 35,
                             vehicle_length = 6))
 
     consist.add_model_variant(start_date=0,
@@ -96,8 +96,8 @@ def main():
                                base_numeric_id = 1720,
                                vehicle_generation = 1)
 
-    consist.add_unit(Wagon(consist = consist,
-                            capacity_freight = 45,
+    consist.add_unit(FreightCar(consist = consist,
+                            capacity = 45,
                             vehicle_length = 8))
 
     consist.add_model_variant(start_date=0,
@@ -109,8 +109,8 @@ def main():
                                vehicle_generation = 1,
                                track_type = 'NG')
 
-    consist.add_unit(Wagon(consist = consist,
-                            capacity_freight = 20,
+    consist.add_unit(FreightCar(consist = consist,
+                            capacity = 20,
                             vehicle_length = 5))
 
     consist.add_model_variant(start_date=0,
