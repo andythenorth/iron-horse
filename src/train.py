@@ -706,11 +706,12 @@ class FruitConsist(WagonConsist):
         return {'pass_through': pass_through, 'swap_company_colours': swap_company_colours}
 
 
-class HopperConsistBase(WagonConsist):
+class HopperConsist(WagonConsist):
     """
     Limited set of bulk (mineral) cargos.
     """
     def __init__(self, **kwargs):
+        self.base_id = 'hopper_car'
         super().__init__(**kwargs)
         self.title = '[Hopper Car]'
         self.template = 'car_with_visible_cargo.pynml'
@@ -746,24 +747,6 @@ class HopperConsistBase(WagonConsist):
         pass_through = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_1)
         swap_company_colours = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_2)
         return {'pass_through': pass_through, 'swap_company_colours': swap_company_colours}
-
-
-class HopperConsistShort(HopperConsistBase):
-    """
-    Short hopper car.
-    """
-    def __init__(self, **kwargs):
-        self.base_id = 'hopper_car_short'
-        super().__init__(**kwargs)
-
-
-class HopperConsistLong(HopperConsistBase):
-    """
-    Long hopper car.
-    """
-    def __init__(self, **kwargs):
-        self.base_id = 'hopper_car_long'
-        super().__init__(**kwargs)
 
 
 class IntermodalConsist(WagonConsist):

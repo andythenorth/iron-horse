@@ -1,10 +1,10 @@
 import global_constants
-from train import HopperConsistShort, HopperConsistLong, FreightCar
+from train import HopperConsist, FreightCar
 
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
-    consist = HopperConsistShort(roster='pony',
+    consist = HopperConsist(roster='pony',
                                  base_numeric_id=1070,
                                  gen=3,
                                  subtype='A')
@@ -21,7 +21,7 @@ def main():
                               end_date=global_constants.max_game_date,
                               graphics_processor=consist.graphics_processors['swap_company_colours'])
 
-    consist = HopperConsistLong(roster='pony',
+    consist = HopperConsist(roster='pony',
                                 base_numeric_id=2330,
                                 gen=3,
                                 subtype='B')
@@ -38,7 +38,7 @@ def main():
                               end_date=global_constants.max_game_date,
                               graphics_processor=consist.graphics_processors['swap_company_colours'])
 
-    consist = HopperConsistShort(roster='pony',
+    consist = HopperConsist(roster='pony',
                                  base_numeric_id=1080,
                                  gen=4,
                                  subtype='A')
@@ -55,7 +55,7 @@ def main():
                               end_date=global_constants.max_game_date,
                               graphics_processor=consist.graphics_processors['swap_company_colours'])
 
-    consist = HopperConsistLong(roster='pony',
+    consist = HopperConsist(roster='pony',
                                 base_numeric_id=1090,
                                 gen=4,
                                 subtype='B')
@@ -73,7 +73,7 @@ def main():
                               graphics_processor=consist.graphics_processors['swap_company_colours'])
 
     #--------------- llama ----------------------------------------------------------------------
-    consist = HopperConsistShort(roster='llama',
+    consist = HopperConsist(roster='llama',
                                  base_numeric_id=1100,
                                  gen=2,
                                  subtype='A')
@@ -90,7 +90,7 @@ def main():
                               end_date=global_constants.max_game_date,
                               graphics_processor=consist.graphics_processors['swap_company_colours'])
 
-    consist = HopperConsistShort(roster='llama',
+    consist = HopperConsist(roster='llama',
                                  base_numeric_id=1110,
                                  gen=3,
                                  subtype='A')
@@ -107,7 +107,7 @@ def main():
                               end_date=global_constants.max_game_date,
                               graphics_processor=consist.graphics_processors['swap_company_colours'])
 
-    consist = HopperConsistShort(roster='llama',
+    consist = HopperConsist(roster='llama',
                                  base_numeric_id=1120,
                                  gen=2,
                                  subtype='A',
@@ -125,7 +125,7 @@ def main():
                               end_date=global_constants.max_game_date,
                               graphics_processor=consist.graphics_processors['swap_company_colours'])
 
-    consist = HopperConsistShort(roster='llama',
+    consist = HopperConsist(roster='llama',
                                  base_numeric_id=1130,
                                  gen=3,
                                  subtype='A',
@@ -144,7 +144,7 @@ def main():
                               graphics_processor=consist.graphics_processors['swap_company_colours'])
 
     #--------------- antelope ----------------------------------------------------------------------
-    consist = HopperConsistShort(roster='antelope',
+    consist = HopperConsist(roster='antelope',
                                  base_numeric_id=1630,
                                  gen=1,
                                  subtype='A')
@@ -161,7 +161,7 @@ def main():
                               end_date=global_constants.max_game_date,
                               graphics_processor=consist.graphics_processors['swap_company_colours'])
 
-    consist = HopperConsistShort(roster='antelope',
+    consist = HopperConsist(roster='antelope',
                                  base_numeric_id=1660,
                                  gen=2,
                                  subtype='A')
@@ -179,7 +179,7 @@ def main():
                               graphics_processor=consist.graphics_processors['swap_company_colours'])
 
     # no gen 1 NG hopper in Antelope, straight to gen 2
-    consist = HopperConsistShort(roster='antelope',
+    consist = HopperConsist(roster='antelope',
                                  base_numeric_id=1890,
                                  gen=2,
                                  subtype='A',
