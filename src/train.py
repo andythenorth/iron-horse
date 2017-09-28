@@ -464,7 +464,11 @@ class WagonConsist(Consist):
 
     @property
     def intro_date(self):
-        return 1860
+        if self._intro_date:
+            return self._intro_date
+        else:
+            roster_obj = self.get_roster(self.roster_id)
+            return roster_obj.intro_dates[self.wagon_generation - 1]
 
     @property
     def speed(self):

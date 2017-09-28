@@ -14,6 +14,7 @@ class Roster(object):
             self.engine_consists.append(engine.consist)
             engine.consist.roster_id = self.id
         self.wagon_consists = dict([(base_id, []) for base_id in global_constants.buy_menu_sort_order_wagons])
+        self.intro_dates = kwargs.get('intro_dates')
         self.speeds = kwargs.get('speeds')
         self.disabled = False
 
