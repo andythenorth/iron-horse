@@ -35,7 +35,7 @@ class Consist(object):
         # setup properties for this consist (props either shared for all vehicles, or placed on lead vehicle of consist)
         self.title = kwargs.get('title', None)
         self.base_numeric_id = kwargs.get('base_numeric_id', None)
-        self.intro_date = kwargs.get('intro_date', None)
+        self._intro_date = kwargs.get('intro_date', None) # private var as wagons have their own method for automated intro dates
         self.vehicle_life = kwargs.get('vehicle_life', None)
         self.power = kwargs.get('power', 0)
         self.track_type = kwargs.get('track_type', 'RAIL')
@@ -166,6 +166,11 @@ class Consist(object):
         # stub only
         # vehicle classes should over-ride this to provide class-appropriate running cost calculation
         return 0
+
+    @property
+    def intro_date(self):
+        # stub to private var - wagons subclasses provide their own method to calculate intro_date
+        return self._intro_date
 
     @property
     def speed(self):
@@ -449,8 +454,6 @@ class WagonConsist(Consist):
 
         roster_obj.register_wagon_consist(self)
 
-        self.intro_date = 1860
-        self._speed = kwargs.get('speed', None) # speed is calculated automatically for wagns, but pass kwarg to over-ride that
         self.speedy = speedy # should be hard-coded in subclass
         self.default_capacity_type = kwargs.get('default_capacity_type', None)
         # some of these are probably redundant, as they need to be handled in the subclass
@@ -458,6 +461,10 @@ class WagonConsist(Consist):
         self.autorefit = kwargs.get('autorefit', None)
         self.loading_speed_multiplier = kwargs.get('loading_speed_multiplier', 1)
         self.cargo_age_period = kwargs.get('cargo_age_period', global_constants.CARGO_AGE_PERIOD)
+
+    @property
+    def intro_date(self):
+        return 1860
 
     @property
     def speed(self):
