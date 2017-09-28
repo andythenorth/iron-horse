@@ -184,18 +184,11 @@ class Consist(object):
         if self._speed:
             return self._speed
         else:
+            # !! eh this relies currently on railtypes being 'RAIL' or 'NG'
+            # it only works because electric engines currently have their speed set explicitly :P
+            # could be fixed by checking a list of railtypes
             roster_obj = self.get_roster(self.roster_id)
-            # eh this is ugly, but it works
-            if self.track_type == 'NG':
-                if self.speedy:
-                    return roster_obj.speeds['express_ng'][self.gen - 1]
-                else:
-                    return roster_obj.speeds['freight_ng'][self.gen - 1]
-            else:
-                if self.speedy:
-                    return roster_obj.speeds['express'][self.gen - 1]
-                else:
-                    return roster_obj.speeds['freight'][self.gen - 1]
+            return roster_obj.speeds[self.track_type][self.speed_class][self.gen - 1]
 
     @property
     def weight(self):
@@ -473,7 +466,7 @@ class WagonConsist(Consist):
 
         roster_obj.register_wagon_consist(self)
 
-        self.speedy = speedy # should be hard-coded in subclass
+        self.speed_class = 'freight' # over-ride this for, e.g. 'express' consists
         self.default_capacity_type = kwargs.get('default_capacity_type', None)
         # some of these are probably redundant, as they need to be handled in the subclass
         self.generic_cargo_rows = kwargs.get('generic_cargo_rows', [0]) # optional, the rows to use if no cargo label is matched
@@ -547,6 +540,7 @@ class CabooseConsist(WagonConsist):
     def __init__(self, **kwargs):
         self.base_id = 'caboose_car'
         super().__init__(**kwargs)
+        self.speed_class = 'express'
         self.template = 'train.pynml'
         # no graphics processing - don't random colour cabeese, I tried it, looks daft
         self.class_refit_groups = [] # refit nothing, don't mess with this, it breaks auto-replace
@@ -634,6 +628,7 @@ class EdiblesTankConsist(WagonConsist):
         # tank cars are unrealistically autorefittable, and at no cost
         # Pikka: if people complain that it's unrealistic, tell them "don't do it then"
         self.title = '[Edibles Tank Car]'
+        self.speed_class = 'express'
         self.template = 'train.pynml'
         self.class_refit_groups = ['liquids']
         self.label_refits_allowed = ['FOOD']
@@ -757,6 +752,7 @@ class IntermodalConsist(WagonConsist):
         self.base_id = 'intermodal_flat_car'
         super().__init__(**kwargs)
         self.title = '[Intermodal Flat Car]'
+        self.speed_class = 'express'
         self.template = 'car_with_visible_cargo.pynml'
         self.cargo_graphics_mappings = {}
         self.num_cargo_rows = 3
@@ -836,6 +832,7 @@ class MailConsistBase(WagonConsist):
     def __init__(self, **kwargs):
         # don't set base_id here, set in subclasses
         super().__init__(**kwargs)
+        self.speed_class = 'express'
         self.template = 'car_with_open_doors_during_loading.pynml'
         self.cargo_graphics_mappings = {} # template needs this, but mail car has zero cargo-specific graphics, all generic
         self.num_cargo_rows = 1 # template needs this, but mail car has zero cargo-specific graphics, all generic
@@ -938,6 +935,7 @@ class PassengerConsistBase(WagonConsist):
         # don't set base_id here, let subclasses do it
         super().__init__(**kwargs)
         self.title = '[Passenger Car]'
+        self.speed_class = 'express'
         self.template = 'train.pynml'
         self.cargo_graphics_mappings = {} # template needs this, but this car has zero cargo-specific graphics, all generic
         self.class_refit_groups = ['pax']
@@ -985,6 +983,7 @@ class ReeferConsist(WagonConsist):
         self.base_id = 'reefer_car'
         super().__init__(**kwargs)
         self.title = '[Reefer Car]'
+        self.speed_class = 'express'
         self.template = 'car_with_open_doors_during_loading.pynml'
         self.cargo_graphics_mappings = {} # template needs this, but reefer car has zero cargo-specific graphics, all generic
         self.num_cargo_rows = 1 # template needs this, but box car has zero cargo-specific graphics, all generic
