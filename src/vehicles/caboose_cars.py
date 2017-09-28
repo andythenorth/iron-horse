@@ -1,48 +1,48 @@
 import global_constants
 from train import CabooseConsistShort, CabooseConsistLong, FreightCar
 
+
 def main():
     #--------------- pony ----------------------------------------------------------------------
-    consist = CabooseConsistShort(title = '[Caboose Car] Short',
-                             roster = 'pony',
-                             base_numeric_id = 1280,
-                             vehicle_generation = 1,
-                                            speedy = True)
+    consist = CabooseConsistShort(title='[Caboose Car] Short',
+                                  roster='pony',
+                                  base_numeric_id=1280,
+                                  vehicle_generation=1,
+                                  speedy=True)
 
-    consist.add_unit(type = FreightCar,
-                            capacity = 0,
-                            vehicle_length = 4)
+    consist.add_unit(type=FreightCar,
+                     capacity=0,
+                     vehicle_length=4)
 
-    consist.add_model_variant(start_date = 0,
-                              end_date = global_constants.max_game_date)
+    consist.add_model_variant(start_date=0,
+                              end_date=global_constants.max_game_date)
 
+    consist = CabooseConsistLong(title='[Caboose Car] Long',
+                                 roster='pony',
+                                 base_numeric_id=2210,
+                                 vehicle_generation=1,
+                                 speedy=True)
 
-    consist = CabooseConsistLong(title = '[Caboose Car] Long',
-                             roster = 'pony',
-                             base_numeric_id = 2210,
-                             vehicle_generation = 1,
-                                            speedy = True)
+    consist.add_unit(type=FreightCar,
+                     capacity=0,
+                     vehicle_length=6)
 
-    consist.add_unit(type = FreightCar,
-                            capacity = 0,
-                            vehicle_length = 6)
+    consist.add_model_variant(start_date=0,
+                              end_date=global_constants.max_game_date)
 
-    consist.add_model_variant(start_date = 0,
-                              end_date = global_constants.max_game_date)
+    consist = CabooseConsistShort(title='[Caboose Car]',
+                                  roster='pony',
+                                  base_numeric_id=1290,
+                                  vehicle_generation=1,
+                                  track_type='NG')
 
+    consist.add_unit(type=FreightCar,
+                     capacity=0,
+                     vehicle_length=4)
 
-    consist = CabooseConsistShort(title = '[Caboose Car]',
-                             roster = 'pony',
-                             base_numeric_id = 1290,
-                             vehicle_generation = 1,
-                                            track_type = 'NG')
+    consist.add_model_variant(start_date=0,
+                              end_date=global_constants.max_game_date)
 
-    consist.add_unit(type = FreightCar,
-                           capacity = 0,
-                           vehicle_length = 4)
-
-    consist.add_model_variant(start_date = 0,
-                              end_date = global_constants.max_game_date)
 
 """
     #--------------- llama ----------------------------------------------------------------------
