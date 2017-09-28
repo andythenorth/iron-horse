@@ -1345,6 +1345,7 @@ class MetroCargoUnit(Train):
     Metro Unit
     """
     def __init__(self, **kwargs):
+        kwargs['capacity_mail'] = kwargs.get('capacity', None)
         super().__init__(**kwargs)
         self.template = 'metro_mu.pynml'
         self.default_cargo_capacities = [0]

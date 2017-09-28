@@ -13,13 +13,13 @@ consist = EngineConsist(id = 'longwater',
 consist.add_unit(MetroCargoUnit(consist = consist,
                         weight = 35,
                         vehicle_length = 8,
-                        capacity_mail = 60,
+                        capacity = 60,
                         spriterow_num = 0))
 
 consist.add_unit(MetroCargoUnit(consist = consist,
                         weight = 35,
                         vehicle_length = 8,
-                        capacity_mail = 60,
+                        capacity = 60,
                         spriterow_num = 1))
 
 consist.add_model_variant(start_date=0,
