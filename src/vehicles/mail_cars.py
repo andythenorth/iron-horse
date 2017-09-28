@@ -77,6 +77,18 @@ def main():
                               end_date=global_constants.max_game_date)
 
     consist = MailConsist(roster='pony',
+                          base_numeric_id=970,
+                          gen=6,
+                          subtype='A')
+
+    consist.add_unit(type=MailCar,
+                     capacity=55,
+                     vehicle_length=8)
+
+    consist.add_model_variant(start_date=0,
+                              end_date=global_constants.max_game_date)
+
+    consist = MailConsist(roster='pony',
                           base_numeric_id=950,
                           gen=1,
                           subtype='A',

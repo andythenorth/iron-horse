@@ -51,9 +51,6 @@ flat_cars.main()
 from vehicles import fruit_cars
 fruit_cars.main()
 
-from vehicles import high_speed_cars
-high_speed_cars.main()
-
 from vehicles import hopper_cars
 hopper_cars.main()
 

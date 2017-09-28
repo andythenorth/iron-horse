@@ -824,14 +824,15 @@ class LogConsist(WagonConsist):
         return {'pass_through': pass_through, 'swap_company_colours': swap_company_colours}
 
 
-class MailConsistBase(WagonConsist):
+class MailConsist(WagonConsist):
     """
     Common base class for mail cars.
     Mail cars also handle express freight, valuables.
     """
     def __init__(self, **kwargs):
-        # don't set base_id here, set in subclasses
+        self.base_id = 'mail_car'
         super().__init__(**kwargs)
+        self.title = '[Mail Car]'
         self.speed_class = 'express'
         self.template = 'car_with_open_doors_during_loading.pynml'
         self.cargo_graphics_mappings = {} # template needs this, but mail car has zero cargo-specific graphics, all generic
@@ -842,26 +843,6 @@ class MailConsistBase(WagonConsist):
         self.autorefit = True
         self.default_cargo = 'MAIL'
         self.default_capacity_type = 'capacity_mail'
-
-
-class MailConsist(MailConsistBase):
-    """
-    Standard mail car.
-    Visually similar to pax car of same generation, has large doors, and some windows.
-    """
-    def __init__(self, **kwargs):
-        self.base_id = 'mail_car'
-        super().__init__(**kwargs)
-        self.title = '[Mail Car]'
-
-
-class MailHighSpeedConsist(MailConsistBase):
-    """
-    No speed limit (possibly more limited set of cargos? - undecided).
-    """
-    def __init__(self, **kwargs):
-        self.base_id = 'high_speed_mail_car'
-        super().__init__(**kwargs)
 
 
 class MetalConsist(WagonConsist):
@@ -934,7 +915,6 @@ class PassengerConsistBase(WagonConsist):
     def __init__(self, **kwargs):
         # don't set base_id here, let subclasses do it
         super().__init__(**kwargs)
-        self.title = '[Passenger Car]'
         self.speed_class = 'express'
         self.template = 'train.pynml'
         self.cargo_graphics_mappings = {} # template needs this, but this car has zero cargo-specific graphics, all generic
@@ -953,6 +933,7 @@ class PassengerConsist(PassengerConsistBase):
     def __init__(self, **kwargs):
         self.base_id = 'passenger_car'
         super().__init__(**kwargs)
+        self.title = '[Passenger Car]'
 
 
 class PassengerLuxuryConsist(PassengerConsistBase):
@@ -964,15 +945,7 @@ class PassengerLuxuryConsist(PassengerConsistBase):
         self.base_id = 'luxury_passenger_car'
         super().__init__(**kwargs)
         self.title = '[Luxury Passenger Car]'
-
-
-class HighSpeedPassengerConsist(PassengerConsistBase):
-    """
-    No speed limit.
-    """
-    def __init__(self, **kwargs):
-        self.base_id = 'high_speed_passenger_car'
-        super().__init__(**kwargs)
+        self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
 
 
 class ReeferConsist(WagonConsist):
