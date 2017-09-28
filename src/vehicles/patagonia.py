@@ -15,14 +15,12 @@ consist.add_unit(DieselRailcar(consist = consist,
                         weight = 20,
                         vehicle_length = 7,
                         capacity_pax = 35,
-                        capacity_mail = 12,
                         spriterow_num = 0))
 
 consist.add_unit(DieselRailcar(consist = consist,
                         weight = 20,
                         vehicle_length = 7,
                         capacity_pax = 35,
-                        capacity_mail = 12,
                         spriterow_num = 1))
 
 consist.add_model_variant(start_date=0,

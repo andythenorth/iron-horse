@@ -1311,6 +1311,7 @@ class MailCar(Wagon):
     Mail Carriage.
     """
     def __init__(self, **kwargs):
+        kwargs['capacity_mail'] = kwargs.get('capacity', None)
         super().__init__(**kwargs)
         self.capacities_freight = [int(0.5 * capacity) for capacity in self.capacities_mail]
 

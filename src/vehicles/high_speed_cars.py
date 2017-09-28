@@ -6,9 +6,9 @@ from train import MailHighSpeedConsist, HighSpeedPassengerConsist, Wagon
 def main():
     #--------------- pony ----------------------------------------------------------------------
     consist = HighSpeedPassengerConsist(title = '[High Speed Passenger Car]',
-                               roster = 'pony',
-                               base_numeric_id = 980,
-                               vehicle_generation = 5)
+                                        roster = 'pony',
+                                        base_numeric_id = 980,
+                                        vehicle_generation = 5)
 
     consist.add_unit(Wagon(consist = consist,
                            capacity_pax = 25,
@@ -19,13 +19,13 @@ def main():
 
 
     consist = MailHighSpeedConsist(title = '[High Speed Mail Car]',
-                               roster = 'pony',
-                               base_numeric_id = 970,
-                               vehicle_generation = 5)
+                                   roster = 'pony',
+                                   base_numeric_id = 970,
+                                   vehicle_generation = 5)
 
     consist.add_unit(Wagon(consist = consist,
-                            capacity_mail = 55,
-                            vehicle_length = 8))
+                           capacity = 55,
+                           vehicle_length = 8))
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date)
