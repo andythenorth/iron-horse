@@ -42,6 +42,9 @@ caboose_cars.main()
 from vehicles import covered_hopper_cars
 covered_hopper_cars.main()
 
+from vehicles import dump_cars
+dump_cars.main()
+
 from vehicles import edibles_tank_cars
 edibles_tank_cars.main()
 
@@ -80,9 +83,6 @@ passenger_cars.main()
 
 from vehicles import reefer_cars
 reefer_cars.main()
-
-from vehicles import rotary_gondola_cars
-rotary_gondola_cars.main()
 
 from vehicles import supplies_cars
 supplies_cars.main()
