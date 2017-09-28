@@ -519,6 +519,7 @@ class BoxConsistBase(WagonConsist):
     """
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self.title = '[Box Car]'
         self.template = 'car_with_open_doors_during_loading.pynml'
         self.cargo_graphics_mappings = {} # template needs this, but box car has zero cargo-specific graphics, all generic
         self.num_cargo_rows = 1 # template needs this, but box car has zero cargo-specific graphics, all generic
@@ -595,6 +596,7 @@ class CoveredHopperConsist(WagonConsist):
     def __init__(self, **kwargs):
         self.base_id = 'covered_hopper_car'
         super().__init__(**kwargs)
+        self.title = '[Covered Hopper Car]'
         self.template = 'train.pynml'
         self.class_refit_groups = ['covered_hopper_freight']
         self.label_refits_allowed = ['GRAI', 'WHEA', 'MAIZ', 'FOOD', 'SUGR', 'FMSP', 'RFPR', 'CLAY', 'BDMT', 'BEAN', 'NITR', 'RUBR', 'SAND', 'POTA', 'QLME', 'SASH', 'CMNT']
@@ -619,6 +621,7 @@ class DumpConsist(WagonConsist):
     def __init__(self, **kwargs):
         self.base_id = 'dump_car'
         super().__init__(**kwargs)
+        self.title = '[Dump Car]'
         self.template = 'car_with_visible_cargo.pynml'
         # cargo rows 0 indexed - 0 = first set of loaded sprites
         # GRVL is in first position as it is re-used for generic unknown cargos
@@ -663,6 +666,7 @@ class EdiblesTankConsist(WagonConsist):
         super().__init__(**kwargs)
         # tank cars are unrealistically autorefittable, and at no cost
         # Pikka: if people complain that it's unrealistic, tell them "don't do it then"
+        self.title = '[Edibles Tank Car]'
         self.template = 'train.pynml'
         self.class_refit_groups = ['liquids']
         self.label_refits_allowed = ['FOOD']
@@ -688,6 +692,7 @@ class FlatConsist(WagonConsist):
     def __init__(self, **kwargs):
         self.base_id = 'flat_car'
         super().__init__(**kwargs)
+        self.title = '[Flat Car]'
         self.template = 'car_with_visible_cargo.pynml'
         # cargo rows 0 indexed - 0 = first set of loaded sprites
         self.cargo_graphics_mappings = {'STEL': [1, 2, 3], 'WOOD': [4], 'WDPR': [5], 'ENSP': [6], 'FMSP': [6], 'MNSP': [6], 'GOOD': [0, 6]}
@@ -714,6 +719,7 @@ class FruitConsist(WagonConsist):
     def __init__(self, **kwargs):
         self.base_id = 'fruit_car'
         super().__init__(**kwargs)
+        self.title = '[Fruit Car]'
         self.template = 'car_with_open_doors_during_loading.pynml'
         self.cargo_graphics_mappings = {} # template needs this, but box car has zero cargo-specific graphics, all generic
         self.num_cargo_rows = 1 # template needs this, but box car has zero cargo-specific graphics, all generic
@@ -739,6 +745,7 @@ class HopperConsistBase(WagonConsist):
     """
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self.title = '[Hopper Car]'
         self.template = 'car_with_visible_cargo.pynml'
         # cargo rows 0 indexed - 0 = first set of loaded sprites
         # GRVL is in first position as it is re-used for generic unknown cargos
@@ -799,6 +806,7 @@ class IntermodalConsist(WagonConsist):
     def __init__(self, **kwargs):
         self.base_id = 'intermodal_flat_car'
         super().__init__(**kwargs)
+        self.title = '[Intermodal Flat Car]'
         self.template = 'car_with_visible_cargo.pynml'
         self.cargo_graphics_mappings = {}
         self.num_cargo_rows = 3
@@ -831,6 +839,7 @@ class LivestockConsist(WagonConsist):
     def __init__(self, **kwargs):
         self.base_id = 'livestock_car'
         super().__init__(**kwargs)
+        self.title = '[Livestock Car]'
         self.template = 'train.pynml'
         self.class_refit_groups = []
         self.label_refits_allowed = ['LVST']
@@ -848,6 +857,7 @@ class LogConsist(WagonConsist):
     def __init__(self, **kwargs):
         self.base_id = 'log_car'
         super().__init__(**kwargs)
+        self.title = '[Log Car]'
         self.template = 'car_with_visible_cargo.pynml'
         self.cargo_graphics_mappings = {}
         self.num_cargo_rows = 1
@@ -895,6 +905,7 @@ class MailConsist(MailConsistBase):
     def __init__(self, **kwargs):
         self.base_id = 'mail_car'
         super().__init__(**kwargs)
+        self.title = '[Mail Car]'
 
 
 class MailBoxConsist(MailConsistBase):
@@ -905,6 +916,7 @@ class MailBoxConsist(MailConsistBase):
     def __init__(self, **kwargs):
         self.base_id = 'mail_box_car'
         super().__init__(**kwargs)
+        self.title = '[Mail Box Car]'
 
 
 class MailHighSpeedConsist(MailConsistBase):
@@ -924,6 +936,7 @@ class MetalConsist(WagonConsist):
     def __init__(self, **kwargs):
         self.base_id = 'metal_car'
         super().__init__(**kwargs)
+        self.title = '[Metal Car]'
         self.template = 'car_with_visible_cargo.pynml'
         self.cargo_graphics_mappings = {}
         self.num_cargo_rows = 1
@@ -944,6 +957,7 @@ class OpenConsist(WagonConsist):
     def __init__(self, **kwargs):
         self.base_id = 'open_car'
         super().__init__(**kwargs)
+        self.title = '[Open Car]'
         self.template = 'car_with_visible_cargo.pynml'
         b = 1 # bulk cargo start row
         # cargo rows 0 indexed - 0 = first set of loaded sprites
@@ -984,8 +998,9 @@ class PassengerConsistBase(WagonConsist):
     def __init__(self, **kwargs):
         # don't set base_id here, let subclasses do it
         super().__init__(**kwargs)
+        self.title = '[Passenger Car]'
         self.template = 'train.pynml'
-        self.cargo_graphics_mappings = {} # template needs this, but reefer car has zero cargo-specific graphics, all generic
+        self.cargo_graphics_mappings = {} # template needs this, but this car has zero cargo-specific graphics, all generic
         self.class_refit_groups = ['pax']
         self.label_refits_allowed = []
         self.label_refits_disallowed = []
@@ -1011,6 +1026,7 @@ class PassengerLuxuryConsist(PassengerConsistBase):
     def __init__(self, **kwargs):
         self.base_id = 'luxury_passenger_car'
         super().__init__(**kwargs)
+        self.title = '[Luxury Passenger Car]'
 
 
 class HighSpeedPassengerConsist(PassengerConsistBase):
@@ -1029,6 +1045,7 @@ class ReeferConsist(WagonConsist):
     def __init__(self, **kwargs):
         self.base_id = 'reefer_car'
         super().__init__(**kwargs)
+        self.title = '[Reefer Car]'
         self.template = 'car_with_open_doors_during_loading.pynml'
         self.cargo_graphics_mappings = {} # template needs this, but reefer car has zero cargo-specific graphics, all generic
         self.num_cargo_rows = 1 # template needs this, but box car has zero cargo-specific graphics, all generic
@@ -1055,6 +1072,7 @@ class SuppliesConsist(WagonConsist):
     def __init__(self, **kwargs):
         self.base_id = 'supplies_car'
         super().__init__(**kwargs)
+        self.title = '[Supplies Car]'
         self.template = 'car_with_visible_cargo.pynml'
         # cargo rows 0 indexed - 0 = first set of loaded sprites
         self.cargo_graphics_mappings = {'ENSP': [0, 1, 2, 3, 4], 'FMSP': [0, 1, 2, 3, 4], 'VEHI': [0, 1, 2, 3, 4], 'BDMT': [0, 1]}
@@ -1087,6 +1105,7 @@ class TankConsist(WagonConsist):
     def __init__(self, **kwargs):
         self.base_id = 'tank_car'
         super().__init__(**kwargs)
+        self.title = '[Tank Car]'
         self.template = 'car_with_cargo_specific_liveries.pynml'
         # tank cars are unrealistically autorefittable, and at no cost
         # Pikka: if people complain that it's unrealistic, tell them "don't do it then"
@@ -1117,6 +1136,7 @@ class VehicleTransporterConsist(WagonConsist):
     def __init__(self, **kwargs):
         self.base_id = 'vehicle_transporter_car'
         super().__init__(**kwargs)
+        self.title = '[Vehicle Transporter Car]'
         self.template = 'car_with_visible_cargo.pynml'
         # cargo rows 0 indexed - 0 = first set of loaded sprites
         self.cargo_graphics_mappings = {'VEHI': [0, 1]}

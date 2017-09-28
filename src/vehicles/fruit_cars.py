@@ -3,8 +3,7 @@ from train import FruitConsist, Wagon
 
 def main():
     #--------------- antelope ----------------------------------------------------------------------
-    consist = FruitConsist(title = '[Fruit Car]',
-                           roster = 'antelope',
+    consist = FruitConsist(roster = 'antelope',
                            base_numeric_id = 2140,
                            vehicle_generation = 1,
                                         track_type = 'NG')
@@ -22,8 +21,7 @@ def main():
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
-    consist = FruitConsist(title = '[Fruit Car]',
-                           roster = 'antelope',
+    consist = FruitConsist(roster = 'antelope',
                            base_numeric_id = 2170,
                            vehicle_generation = 2,
                                         track_type = 'NG')
@@ -41,8 +39,7 @@ def main():
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
-    consist = FruitConsist(title = '[Fruit Car]',
-                           roster = 'antelope',
+    consist = FruitConsist(roster = 'antelope',
                            base_numeric_id = 2180,
                            vehicle_generation = 3,
                                         track_type = 'NG')

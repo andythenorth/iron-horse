@@ -3,8 +3,7 @@ from train import FlatConsist, Wagon
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
-    consist = FlatConsist(title = '[Flat Car]',
-                           roster = 'pony',
+    consist = FlatConsist(roster = 'pony',
                            base_numeric_id = 1140,
                            vehicle_generation = 1)
 
@@ -21,8 +20,7 @@ def main():
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
-    consist = FlatConsist(title = '[Flat Car]',
-                           roster = 'pony',
+    consist = FlatConsist(roster = 'pony',
                            base_numeric_id = 1150,
                            vehicle_generation = 2)
 
@@ -39,8 +37,7 @@ def main():
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
-    consist = FlatConsist(title = '[Flat Car]',
-                           roster = 'pony',
+    consist = FlatConsist(roster = 'pony',
                            base_numeric_id = 1160,
                            vehicle_generation = 3)
 
@@ -57,8 +54,7 @@ def main():
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
-    consist = FlatConsist(title = '[Flat Car]',
-                           roster = 'pony',
+    consist = FlatConsist(roster = 'pony',
                            base_numeric_id = 1170,
                            vehicle_generation = 1,
                                         track_type = 'NG')
@@ -72,8 +68,7 @@ def main():
 
 
     #--------------- llama ----------------------------------------------------------------------
-    consist = FlatConsist(title = '[Flat Car]',
-                           roster = 'llama',
+    consist = FlatConsist(roster = 'llama',
                            base_numeric_id = 1180,
                            vehicle_generation = 1)
 
@@ -90,8 +85,7 @@ def main():
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
-    consist = FlatConsist(title = '[Flat Car]',
-                           roster = 'llama',
+    consist = FlatConsist(roster = 'llama',
                            base_numeric_id = 1510,
                            vehicle_generation = 2)
 
@@ -108,8 +102,7 @@ def main():
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
-    consist = FlatConsist(title = '[Flat Car]',
-                           roster = 'llama',
+    consist = FlatConsist(roster = 'llama',
                            base_numeric_id = 520,
                            vehicle_generation = 1,
                                         track_type = 'NG')
@@ -127,8 +120,7 @@ def main():
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
-    consist = FlatConsist(title = '[Flat Car]',
-                           roster = 'llama',
+    consist = FlatConsist(roster = 'llama',
                            base_numeric_id = 1500,
                            vehicle_generation = 2,
                                         track_type = 'NG')
@@ -147,8 +139,7 @@ def main():
 
 
     #--------------- antelope ----------------------------------------------------------------------
-    consist = FlatConsist(title = '[Flat Car]',
-                           roster = 'antelope',
+    consist = FlatConsist(roster = 'antelope',
                            base_numeric_id = 1640,
                            vehicle_generation = 1)
 
@@ -165,8 +156,7 @@ def main():
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
-    consist = FlatConsist(title = '[Flat Car]',
-                           roster = 'antelope',
+    consist = FlatConsist(roster = 'antelope',
                            base_numeric_id = 1650,
                            vehicle_generation = 2)
 
@@ -183,8 +173,7 @@ def main():
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
-    consist = FlatConsist(title = '[Flat Car]',
-                           roster = 'antelope',
+    consist = FlatConsist(roster = 'antelope',
                            base_numeric_id = 2110,
                            vehicle_generation = 1,
                                         track_type = 'NG')
@@ -202,8 +191,7 @@ def main():
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
-    consist = FlatConsist(title = '[Flat Car]',
-                           roster = 'antelope',
+    consist = FlatConsist(roster = 'antelope',
                            base_numeric_id = 1930,
                            vehicle_generation = 2,
                                         track_type = 'NG')

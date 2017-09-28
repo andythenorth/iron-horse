@@ -3,8 +3,7 @@ from train import MailBoxConsist, MailCar
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
-    consist = MailBoxConsist(title = '[Mail Box Car]',
-                               roster = 'pony',
+    consist = MailBoxConsist(roster = 'pony',
                                base_numeric_id = 2280,
                                vehicle_generation = 1,
                                speedy = True)

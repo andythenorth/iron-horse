@@ -3,8 +3,7 @@ from train import IntermodalConsist, Wagon
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
-    consist = IntermodalConsist(title = '[Intermodal Flat Car]',
-                           roster = 'pony',
+    consist = IntermodalConsist(roster = 'pony',
                            base_numeric_id = 1060,
                            vehicle_generation = 3,
                                         speedy = True)

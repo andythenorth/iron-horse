@@ -3,8 +3,7 @@ from train import LivestockConsist, Wagon
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
-    consist = LivestockConsist(title = '[Livestock Car]',
-                               roster = 'pony',
+    consist = LivestockConsist(roster = 'pony',
                                base_numeric_id = 1010,
                                vehicle_generation = 1)
 
@@ -16,8 +15,7 @@ def main():
                            end_date=global_constants.max_game_date)
 
 
-    consist = LivestockConsist(title = '[Livestock Car]',
-                               roster = 'pony',
+    consist = LivestockConsist(roster = 'pony',
                                base_numeric_id = 1020,
                                vehicle_generation = 2)
 
@@ -29,8 +27,7 @@ def main():
                            end_date=global_constants.max_game_date)
 
 
-    consist = LivestockConsist(title = '[Livestock Car]',
-                               roster = 'pony',
+    consist = LivestockConsist(roster = 'pony',
                                base_numeric_id = 1030,
                                vehicle_generation = 1,
                                track_type = 'NG')
@@ -44,8 +41,7 @@ def main():
 
 
     #--------------- llama ----------------------------------------------------------------------
-    consist = LivestockConsist(title = '[Livestock Car]',
-                               roster = 'llama',
+    consist = LivestockConsist(roster = 'llama',
                                base_numeric_id = 1040,
                                vehicle_generation = 1)
 
@@ -57,8 +53,7 @@ def main():
                            end_date=global_constants.max_game_date)
 
 
-    consist = LivestockConsist(title = '[Livestock Car]',
-                               roster = 'llama',
+    consist = LivestockConsist(roster = 'llama',
                                base_numeric_id = 1430,
                                vehicle_generation = 2)
 
@@ -70,8 +65,7 @@ def main():
                            end_date=global_constants.max_game_date)
 
 
-    consist = LivestockConsist(title = '[Livestock Car]',
-                               roster = 'llama',
+    consist = LivestockConsist(roster = 'llama',
                                base_numeric_id = 1050,
                                vehicle_generation = 1,
                                track_type = 'NG')
@@ -84,8 +78,7 @@ def main():
                            end_date=global_constants.max_game_date)
 
 
-    consist = LivestockConsist(title = '[Livestock Car]',
-                               roster = 'llama',
+    consist = LivestockConsist(roster = 'llama',
                                base_numeric_id = 1520,
                                vehicle_generation = 2,
                                track_type = 'NG')
@@ -99,8 +92,7 @@ def main():
 
 
     #--------------- antelope ----------------------------------------------------------------------
-    consist = LivestockConsist(title = '[Livestock Car]',
-                               roster = 'antelope',
+    consist = LivestockConsist(roster = 'antelope',
                                base_numeric_id = 1720,
                                vehicle_generation = 1)
 
@@ -112,8 +104,7 @@ def main():
                            end_date=global_constants.max_game_date)
 
 
-    consist = LivestockConsist(title = '[Livestock Car]',
-                               roster = 'antelope',
+    consist = LivestockConsist(roster = 'antelope',
                                base_numeric_id = 2150,
                                vehicle_generation = 1,
                                track_type = 'NG')

@@ -3,8 +3,7 @@ from train import PassengerLuxuryConsist, Wagon
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
-    consist = PassengerLuxuryConsist(title = '[Luxury Passenger Car]',
-                               roster = 'pony',
+    consist = PassengerLuxuryConsist(roster = 'pony',
                                base_numeric_id = 2250,
                                vehicle_generation = 1,
                                intro_date = 1860,
@@ -19,8 +18,7 @@ def main():
                               end_date=global_constants.max_game_date)
 
 
-    consist = PassengerLuxuryConsist(title = '[Luxury Passenger Car]',
-                               roster = 'pony',
+    consist = PassengerLuxuryConsist(roster = 'pony',
                                base_numeric_id = 2260,
                                vehicle_generation = 2,
                                intro_date = 1900,
@@ -35,8 +33,7 @@ def main():
                               end_date=global_constants.max_game_date)
 
 
-    consist = PassengerLuxuryConsist(title = '[Luxury Passenger Car]',
-                               roster = 'pony',
+    consist = PassengerLuxuryConsist(roster = 'pony',
                                base_numeric_id = 2270,
                                vehicle_generation = 3,
                                intro_date = 1960,

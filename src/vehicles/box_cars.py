@@ -3,8 +3,7 @@ from train import BoxConsistShort, BoxConsistLong, BoxCar
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
-    consist = BoxConsistShort(title = '[Box Car]',
-                         roster = 'pony',
+    consist = BoxConsistShort(roster = 'pony',
                          base_numeric_id = 1780,
                          vehicle_generation = 1)
 
@@ -21,8 +20,7 @@ def main():
                               graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
-    consist = BoxConsistShort(title = '[Box Car]',
-                              roster = 'pony',
+    consist = BoxConsistShort(roster = 'pony',
                               base_numeric_id = 550,
                               vehicle_generation = 2)
 
@@ -39,8 +37,7 @@ def main():
                               graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
-    consist = BoxConsistShort(title = '[Box Car]',
-                              roster = 'pony',
+    consist = BoxConsistShort(roster = 'pony',
                               base_numeric_id = 560,
                               vehicle_generation = 3)
 
@@ -57,8 +54,7 @@ def main():
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
-    consist = BoxConsistLong(title = '[Box Car]',
-                             roster = 'pony',
+    consist = BoxConsistLong(    roster = 'pony',
                              base_numeric_id = 2340,
                              vehicle_generation = 3)
 
@@ -75,8 +71,7 @@ def main():
                               graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
-    consist = BoxConsistShort(title = '[Box Car]',
-                             roster = 'pony',
+    consist = BoxConsistShort(roster = 'pony',
                              base_numeric_id = 570,
                              vehicle_generation = 4)
 
@@ -93,8 +88,7 @@ def main():
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
-    consist = BoxConsistShort(title = '[Box Car]',
-                         roster = 'pony',
+    consist = BoxConsistShort(roster = 'pony',
                          base_numeric_id = 580,
                          vehicle_generation = 1,
                          track_type = 'NG')
@@ -113,8 +107,7 @@ def main():
 
 
     #--------------- llama ----------------------------------------------------------------------
-    consist = BoxConsistShort(title = '[Box Car]',
-                        roster = 'llama',
+    consist = BoxConsistShort(roster = 'llama',
                         base_numeric_id = 590,
                         vehicle_generation = 1)
 
@@ -131,8 +124,7 @@ def main():
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
-    consist = BoxConsistShort(title = '[Box Car]',
-                         roster = 'llama',
+    consist = BoxConsistShort(roster = 'llama',
                          base_numeric_id = 600,
                          vehicle_generation = 2)
 
@@ -149,8 +141,7 @@ def main():
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
-    consist = BoxConsistShort(title = '[Box Car]',
-                         roster = 'llama',
+    consist = BoxConsistShort(roster = 'llama',
                          base_numeric_id = 610,
                          vehicle_generation = 3)
 
@@ -167,8 +158,7 @@ def main():
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
-    consist = BoxConsistShort(title = '[Box Car]',
-                        roster = 'llama',
+    consist = BoxConsistShort(roster = 'llama',
                         base_numeric_id = 620,
                         vehicle_generation = 1,
                                   track_type = 'NG')
@@ -186,8 +176,7 @@ def main():
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
-    consist = BoxConsistShort(title = '[Box Car]',
-                         roster = 'llama',
+    consist = BoxConsistShort(roster = 'llama',
                          base_numeric_id = 1310,
                          vehicle_generation = 2,
                          track_type = 'NG')
@@ -206,8 +195,7 @@ def main():
 
 
     #--------------- antelope ----------------------------------------------------------------------
-    consist = BoxConsistShort(title = '[Box Car]',
-                         roster = 'antelope',
+    consist = BoxConsistShort(roster = 'antelope',
                          base_numeric_id = 1750,
                          vehicle_generation = 1)
 
@@ -224,8 +212,7 @@ def main():
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
-    consist = BoxConsistShort(title = '[Box Car]',
-                         roster = 'antelope',
+    consist = BoxConsistShort(roster = 'antelope',
                          base_numeric_id = 1740,
                          vehicle_generation = 2)
 
@@ -242,8 +229,7 @@ def main():
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
-    consist = BoxConsistShort(title = '[Box Car]',
-                         roster = 'antelope',
+    consist = BoxConsistShort(roster = 'antelope',
                          base_numeric_id = 2100,
                          vehicle_generation = 1,
                          track_type = 'NG')
@@ -261,8 +247,7 @@ def main():
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
-    consist = BoxConsistShort(title = '[Box Car]',
-                         roster = 'antelope',
+    consist = BoxConsistShort(roster = 'antelope',
                          base_numeric_id = 1850,
                          vehicle_generation = 2,
                          track_type = 'NG')
@@ -280,8 +265,7 @@ def main():
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
-    consist = BoxConsistShort(title = '[Box Car]',
-                         roster = 'antelope',
+    consist = BoxConsistShort(roster = 'antelope',
                          base_numeric_id = 1860,
                          vehicle_generation = 3,
                          track_type = 'NG')

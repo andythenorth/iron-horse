@@ -3,8 +3,7 @@ from train import LogConsist, Wagon
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
-    consist = LogConsist(title = '[Log Car]',
-                          roster = 'pony',
+    consist = LogConsist(roster = 'pony',
                           base_numeric_id = 1710,
                           vehicle_generation = 4)
 
@@ -21,8 +20,7 @@ def main():
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
-    consist = LogConsist(title = '[Log Car]',
-                          roster = 'pony',
+    consist = LogConsist(roster = 'pony',
                           base_numeric_id = 930,
                           vehicle_generation = 5)
 

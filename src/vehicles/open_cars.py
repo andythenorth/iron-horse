@@ -3,8 +3,7 @@ from train import OpenConsist, Wagon
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
-    consist = OpenConsist(title = '[Open Car]',
-                          roster = 'pony',
+    consist = OpenConsist(roster = 'pony',
                           base_numeric_id = 820,
                           vehicle_generation = 1)
 
@@ -21,8 +20,7 @@ def main():
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
-    consist = OpenConsist(title = '[Open Car]',
-                          roster = 'pony',
+    consist = OpenConsist(roster = 'pony',
                           base_numeric_id = 830,
                           vehicle_generation = 2)
 
@@ -39,8 +37,7 @@ def main():
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
-    consist = OpenConsist(title = '[Open Car]',
-                          roster = 'pony',
+    consist = OpenConsist(roster = 'pony',
                           base_numeric_id = 840,
                           vehicle_generation = 3)
 
@@ -57,8 +54,7 @@ def main():
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
-    consist = OpenConsist(title = '[Open Car]',
-                          roster = 'pony',
+    consist = OpenConsist(roster = 'pony',
                           base_numeric_id = 1450,
                           vehicle_generation = 4)
 
@@ -75,8 +71,7 @@ def main():
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
-    consist = OpenConsist(title = '[Open Car]',
-                          roster = 'pony',
+    consist = OpenConsist(roster = 'pony',
                           base_numeric_id = 850,
                           vehicle_generation = 1,
                           track_type = 'NG')
@@ -95,8 +90,7 @@ def main():
 
 
     #--------------- llama ----------------------------------------------------------------------
-    consist = OpenConsist(title = '[Open Car]',
-                          roster = 'llama',
+    consist = OpenConsist(roster = 'llama',
                           base_numeric_id = 860,
                           vehicle_generation = 1)
 
@@ -113,8 +107,7 @@ def main():
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
-    consist = OpenConsist(title = '[Open Car]',
-                          roster = 'llama',
+    consist = OpenConsist(roster = 'llama',
                           base_numeric_id = 1330,
                           vehicle_generation = 2)
 
@@ -131,8 +124,7 @@ def main():
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
-    consist = OpenConsist(title = '[Open Car]',
-                          roster = 'llama',
+    consist = OpenConsist(roster = 'llama',
                           base_numeric_id = 870,
                           vehicle_generation = 1,
                           track_type = 'NG')
@@ -150,8 +142,7 @@ def main():
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
-    consist = OpenConsist(title = '[Open Car]',
-                          roster = 'llama',
+    consist = OpenConsist(roster = 'llama',
                           base_numeric_id = 1320,
                           vehicle_generation = 2,
                           track_type = 'NG')
@@ -170,8 +161,7 @@ def main():
 
 
     #--------------- antelope ----------------------------------------------------------------------
-    consist = OpenConsist(title = '[Open Car]',
-                          roster = 'antelope',
+    consist = OpenConsist(roster = 'antelope',
                           base_numeric_id = 1760,
                           vehicle_generation = 1)
 
@@ -188,8 +178,7 @@ def main():
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
-    consist = OpenConsist(title = '[Open Car]',
-                          roster = 'antelope',
+    consist = OpenConsist(roster = 'antelope',
                           base_numeric_id = 1770,
                           vehicle_generation = 2)
 
@@ -206,8 +195,7 @@ def main():
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
-    consist = OpenConsist(title = '[Open Car]',
-                          roster = 'antelope',
+    consist = OpenConsist(roster = 'antelope',
                           base_numeric_id = 2090,
                           vehicle_generation = 1,
                           track_type = 'NG')
@@ -225,8 +213,7 @@ def main():
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
-    consist = OpenConsist(title = '[Open Car]',
-                          roster = 'antelope',
+    consist = OpenConsist(roster = 'antelope',
                           base_numeric_id = 1830,
                           vehicle_generation = 2,
                           track_type = 'NG')
@@ -244,8 +231,7 @@ def main():
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
-    consist = OpenConsist(title = '[Open Car]',
-                          roster = 'antelope',
+    consist = OpenConsist(roster = 'antelope',
                           base_numeric_id = 1820,
                           vehicle_generation = 3,
                           track_type = 'NG')

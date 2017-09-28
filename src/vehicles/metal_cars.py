@@ -4,8 +4,7 @@ from train import MetalConsist, Wagon
 def main():
     #--------------- pony ----------------------------------------------------------------------
 
-    consist = MetalConsist(title = '[Metal Car]',
-                           roster = 'pony',
+    consist = MetalConsist(roster = 'pony',
                            base_numeric_id = 890,
                            vehicle_generation = 1,
                                         suppress_animated_pixel_warnings = True)
@@ -19,8 +18,7 @@ def main():
                            end_date=global_constants.max_game_date)
 
 
-    consist = MetalConsist(title = '[Metal Car]',
-                           roster = 'pony',
+    consist = MetalConsist(roster = 'pony',
                            base_numeric_id = 900,
                            vehicle_generation = 2,
                                         suppress_animated_pixel_warnings = True)
@@ -34,8 +32,7 @@ def main():
                            end_date=global_constants.max_game_date)
 
 
-    consist = MetalConsist(title = '[Metal Car]',
-                           roster = 'pony',
+    consist = MetalConsist(roster = 'pony',
                            base_numeric_id = 910,
                            vehicle_generation = 3,
                                         suppress_animated_pixel_warnings = True)

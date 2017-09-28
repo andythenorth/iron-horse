@@ -3,8 +3,7 @@ from train import CoveredHopperConsist, Wagon
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
-    consist = CoveredHopperConsist(title = '[Covered Hopper Car]',
-                                   roster = 'pony',
+    consist = CoveredHopperConsist(roster = 'pony',
                                    base_numeric_id = 1270,
                                    vehicle_generation = 1)
 
@@ -21,8 +20,7 @@ def main():
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
-    consist = CoveredHopperConsist(title = '[Covered Hopper Car]',
-                                   roster = 'pony',
+    consist = CoveredHopperConsist(roster = 'pony',
                                    base_numeric_id = 1230,
                                    vehicle_generation = 2)
 
@@ -39,8 +37,7 @@ def main():
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
-    consist = CoveredHopperConsist(title = '[Covered Hopper Car]',
-                                   roster = 'pony',
+    consist = CoveredHopperConsist(roster = 'pony',
                                    base_numeric_id = 1240,
                                    vehicle_generation = 3)
 
@@ -58,8 +55,7 @@ def main():
 
 
     #--------------- llama ----------------------------------------------------------------------
-    consist = CoveredHopperConsist(title = '[Covered Hopper Car]',
-                                   roster = 'llama',
+    consist = CoveredHopperConsist(roster = 'llama',
                                    base_numeric_id = 1250,
                                    vehicle_generation = 2)
 
@@ -76,8 +72,7 @@ def main():
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
-    consist = CoveredHopperConsist(title = '[Covered Hopper Car]',
-                                   roster = 'llama',
+    consist = CoveredHopperConsist(roster = 'llama',
                                    base_numeric_id = 1260,
                                    vehicle_generation = 3)
 

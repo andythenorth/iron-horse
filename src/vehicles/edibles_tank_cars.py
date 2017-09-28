@@ -3,8 +3,7 @@ from train import EdiblesTankConsist, Wagon
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
-    consist = EdiblesTankConsist(title = '[Edibles Tank Car]',
-                                 roster = 'pony',
+    consist = EdiblesTankConsist(roster = 'pony',
                                  base_numeric_id = 1190,
                                  vehicle_generation = 1,
                                                     speedy = True)
@@ -24,8 +23,7 @@ def main():
 
     # no gen 2 for edibles tank cars - straight to gen 3
 
-    consist = EdiblesTankConsist(title = '[Edibles Tank Car]',
-                                 roster = 'pony',
+    consist = EdiblesTankConsist(roster = 'pony',
                                  base_numeric_id = 1200,
                                  vehicle_generation = 3,
                                                     speedy = True)
@@ -44,8 +42,7 @@ def main():
 
 
     #--------------- llama ----------------------------------------------------------------------
-    consist = EdiblesTankConsist(title = '[Edibles Tank Car]',
-                                 roster = 'llama',
+    consist = EdiblesTankConsist(roster = 'llama',
                                  base_numeric_id = 1210,
                                  vehicle_generation = 1)
 
@@ -64,8 +61,7 @@ def main():
 
     # no gen 2 for edibles tank cars - straight to gen 3
 
-    consist = EdiblesTankConsist(title = '[Edibles Tank Car]',
-                                 roster = 'llama',
+    consist = EdiblesTankConsist(roster = 'llama',
                                  base_numeric_id = 1220,
                                  vehicle_generation = 3,
                                                     speedy = True)
@@ -84,8 +80,7 @@ def main():
 
 
     #--------------- antelope ----------------------------------------------------------------------
-    consist = EdiblesTankConsist(title = '[Edibles Tank Car]',
-                        roster = 'antelope',
+    consist = EdiblesTankConsist(roster = 'antelope',
                         base_numeric_id = 1690,
                         vehicle_generation = 1)
 
@@ -102,8 +97,7 @@ def main():
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
-    consist = EdiblesTankConsist(title = '[Edibles Tank Car]',
-                                 roster = 'antelope',
+    consist = EdiblesTankConsist(roster = 'antelope',
                                  base_numeric_id = 1700,
                                  vehicle_generation = 2,
                                                     speedy = True)

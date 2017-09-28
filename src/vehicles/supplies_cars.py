@@ -3,8 +3,7 @@ from train import SuppliesConsist, Wagon
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
-    consist = SuppliesConsist(title = '[Supplies Car]',
-                          roster = 'pony',
+    consist = SuppliesConsist(roster = 'pony',
                           base_numeric_id = 710,
                           vehicle_generation = 1)
 
@@ -32,8 +31,7 @@ def main():
                            graphics_processor=consist.graphics_processors['swap_company_colours_1'])
 
 
-    consist = SuppliesConsist(title = '[Supplies Car]',
-                          roster = 'pony',
+    consist = SuppliesConsist(roster = 'pony',
                           base_numeric_id = 700,
                           vehicle_generation = 2,)
 
@@ -59,8 +57,7 @@ def main():
 
     #--------------- antelope ----------------------------------------------------------------------
 
-    consist = SuppliesConsist(title = '[Supplies Car]',
-                          roster = 'antelope',
+    consist = SuppliesConsist(roster = 'antelope',
                           base_numeric_id = 2160,
                           vehicle_generation = 1)
 

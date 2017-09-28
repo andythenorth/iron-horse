@@ -3,8 +3,7 @@ from train import HopperConsistShort, HopperConsistLong, Wagon
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
-    consist = HopperConsistShort(title = '[Hopper Car]',
-                                 roster = 'pony',
+    consist = HopperConsistShort(roster = 'pony',
                                  base_numeric_id = 1070,
                                  vehicle_generation = 3)
 
@@ -21,8 +20,7 @@ def main():
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
-    consist = HopperConsistLong(title = '[Hopper Car]',
-                                 roster = 'pony',
+    consist = HopperConsistLong(roster = 'pony',
                                  base_numeric_id = 2330,
                                  vehicle_generation = 3)
 
@@ -39,8 +37,7 @@ def main():
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
-    consist = HopperConsistShort(title = '[Hopper Car]',
-                            roster = 'pony',
+    consist = HopperConsistShort(roster = 'pony',
                             base_numeric_id = 1080,
                             vehicle_generation = 4)
 
@@ -57,8 +54,7 @@ def main():
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
-    consist = HopperConsistLong(title = '[Hopper Car]',
-                            roster = 'pony',
+    consist = HopperConsistLong(roster = 'pony',
                             base_numeric_id = 1090,
                             vehicle_generation = 4)
 
@@ -76,8 +72,7 @@ def main():
 
 
     #--------------- llama ----------------------------------------------------------------------
-    consist = HopperConsistShort(title = '[Rotary Gondola Car]',
-                            roster = 'llama',
+    consist = HopperConsistShort(roster = 'llama',
                             base_numeric_id = 1100,
                             vehicle_generation = 2)
 
@@ -94,8 +89,7 @@ def main():
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
-    consist = HopperConsistShort(title = '[Hopper Car]',
-                            roster = 'llama',
+    consist = HopperConsistShort(roster = 'llama',
                             base_numeric_id = 1110,
                             vehicle_generation = 3)
 
@@ -112,8 +106,7 @@ def main():
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
-    consist = HopperConsistShort(title = '[Rotary Gondola Car]',
-                            roster = 'llama',
+    consist = HopperConsistShort(roster = 'llama',
                             base_numeric_id = 1120,
                             vehicle_generation = 2,
                             track_type = 'NG')
@@ -131,8 +124,7 @@ def main():
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
-    consist = HopperConsistShort(title = '[Hopper Car]',
-                            roster = 'llama',
+    consist = HopperConsistShort(roster = 'llama',
                             base_numeric_id = 1130,
                             vehicle_generation = 3,
                             track_type = 'NG')
@@ -151,8 +143,7 @@ def main():
 
 
     #--------------- antelope ----------------------------------------------------------------------
-    consist = HopperConsistShort(title = '[Rotary Gondola Car]',
-                            roster = 'antelope',
+    consist = HopperConsistShort(roster = 'antelope',
                             base_numeric_id = 1630,
                             vehicle_generation = 1)
 
@@ -169,8 +160,7 @@ def main():
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
-    consist = HopperConsistShort(title = '[Rotary Gondola Car]',
-                            roster = 'antelope',
+    consist = HopperConsistShort(roster = 'antelope',
                             base_numeric_id = 1660,
                             vehicle_generation = 2)
 
@@ -188,8 +178,7 @@ def main():
 
 
     # no gen 1 NG hopper in Antelope, straight to gen 2
-    consist = HopperConsistShort(title = '[Hopper Car]',
-                            roster = 'antelope',
+    consist = HopperConsistShort(roster = 'antelope',
                             base_numeric_id = 1890,
                             vehicle_generation = 2,
                             track_type = 'NG')
