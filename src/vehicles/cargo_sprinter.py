@@ -24,6 +24,6 @@ consist.add_unit(CargoSprinter(consist = consist,
                                capacity_freight = 36), # matched to 1.5x standard Road Hog and Squid containers
                                repeat=2)
 
-consist.add_model_variant(intro_date=0,
+consist.add_model_variant(start_date=0,
                           end_date=1986,
                           graphics_processor = consist.graphics_processors)

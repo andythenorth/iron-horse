@@ -16,19 +16,19 @@ def main():
     # Ho Ho, supplies cars will vary load graphics according to *build date of wagon*
     # not strictly right, but eh, means it got done :)
 
-    consist.add_model_variant(intro_date=0,
+    consist.add_model_variant(start_date=0,
                            end_date=1910,
                            graphics_processor=consist.graphics_processors['pass_through_0'])
 
-    consist.add_model_variant(intro_date=0,
+    consist.add_model_variant(start_date=0,
                            end_date=1910,
                            graphics_processor=consist.graphics_processors['swap_company_colours_0'])
 
-    consist.add_model_variant(intro_date=1910,
+    consist.add_model_variant(start_date=1910,
                            end_date=global_constants.max_game_date,
                            graphics_processor=consist.graphics_processors['pass_through_1'])
 
-    consist.add_model_variant(intro_date=1910,
+    consist.add_model_variant(start_date=1910,
                            end_date=global_constants.max_game_date,
                            graphics_processor=consist.graphics_processors['swap_company_colours_1'])
 
@@ -43,19 +43,19 @@ def main():
                            capacity_freight = 45,
                            vehicle_length = 8))
 
-    consist.add_model_variant(intro_date=0,
+    consist.add_model_variant(start_date=0,
                            end_date=2010,
                            graphics_processor=consist.graphics_processors['pass_through_0'])
 
-    consist.add_model_variant(intro_date=0,
+    consist.add_model_variant(start_date=0,
                            end_date=2010,
                            graphics_processor=consist.graphics_processors['swap_company_colours_0'])
 
-    consist.add_model_variant(intro_date=2010,
+    consist.add_model_variant(start_date=2010,
                            end_date=global_constants.max_game_date,
                            graphics_processor=consist.graphics_processors['pass_through_1'])
 
-    consist.add_model_variant(intro_date=2010,
+    consist.add_model_variant(start_date=2010,
                            end_date=global_constants.max_game_date,
                            graphics_processor=consist.graphics_processors['swap_company_colours_1'])
 
@@ -74,19 +74,19 @@ def main():
     # Ho Ho, supplies cars will vary load graphics according to *build date of wagon*
     # not strictly right, but eh, means it got done :)
 
-    consist.add_model_variant(intro_date=0,
+    consist.add_model_variant(start_date=0,
                            end_date=1910,
                            graphics_processor=consist.graphics_processors['pass_through_0'])
 
-    consist.add_model_variant(intro_date=0,
+    consist.add_model_variant(start_date=0,
                            end_date=1910,
                            graphics_processor=consist.graphics_processors['swap_company_colours_0'])
 
-    consist.add_model_variant(intro_date=1910,
+    consist.add_model_variant(start_date=1910,
                            end_date=global_constants.max_game_date,
                            graphics_processor=consist.graphics_processors['pass_through_1'])
 
-    consist.add_model_variant(intro_date=1910,
+    consist.add_model_variant(start_date=1910,
                            end_date=global_constants.max_game_date,
                            graphics_processor=consist.graphics_processors['swap_company_colours_1'])
 

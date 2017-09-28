@@ -13,7 +13,7 @@ def main():
                             capacity_freight = 20,
                             vehicle_length = 5))
 
-    consist.add_model_variant(intro_date=0,
+    consist.add_model_variant(start_date=0,
                            end_date=global_constants.max_game_date)
 
 
@@ -27,7 +27,7 @@ def main():
                             capacity_freight = 35,
                             vehicle_length = 8))
 
-    consist.add_model_variant(intro_date=0,
+    consist.add_model_variant(start_date=0,
                            end_date=global_constants.max_game_date)
 
 
@@ -42,7 +42,7 @@ def main():
                             capacity_freight = 12,
                             vehicle_length = 4))
 
-    consist.add_model_variant(intro_date=0,
+    consist.add_model_variant(start_date=0,
                            end_date=global_constants.max_game_date)
 
 
@@ -57,7 +57,7 @@ def main():
                             capacity_freight = 25,
                             vehicle_length = 6))
 
-    consist.add_model_variant(intro_date=0,
+    consist.add_model_variant(start_date=0,
                            end_date=global_constants.max_game_date)
 
 
@@ -71,7 +71,7 @@ def main():
                             capacity_freight = 45,
                             vehicle_length = 6))
 
-    consist.add_model_variant(intro_date=0,
+    consist.add_model_variant(start_date=0,
                            end_date=global_constants.max_game_date)
 
 
@@ -86,7 +86,7 @@ def main():
                             capacity_freight = 20,
                             vehicle_length = 6))
 
-    consist.add_model_variant(intro_date=0,
+    consist.add_model_variant(start_date=0,
                            end_date=global_constants.max_game_date)
 
 
@@ -101,7 +101,7 @@ def main():
                             capacity_freight = 35,
                             vehicle_length = 6))
 
-    consist.add_model_variant(intro_date=0,
+    consist.add_model_variant(start_date=0,
                            end_date=global_constants.max_game_date)
 
 
@@ -116,7 +116,7 @@ def main():
                             capacity_freight = 45,
                             vehicle_length = 8))
 
-    consist.add_model_variant(intro_date=0,
+    consist.add_model_variant(start_date=0,
                            end_date=global_constants.max_game_date)
 
 
@@ -131,6 +131,6 @@ def main():
                             capacity_freight = 20,
                             vehicle_length = 5))
 
-    consist.add_model_variant(intro_date=0,
+    consist.add_model_variant(start_date=0,
                            end_date=global_constants.max_game_date)
 

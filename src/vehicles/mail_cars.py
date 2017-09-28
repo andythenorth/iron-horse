@@ -14,7 +14,7 @@ def main():
                              capacity_mail = 15,
                              vehicle_length = 6))
 
-    consist.add_model_variant(intro_date = 0,
+    consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date)
 
 
@@ -29,7 +29,7 @@ def main():
                              capacity_mail = 25,
                              vehicle_length = 6))
 
-    consist.add_model_variant(intro_date=0,
+    consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date)
 
 
@@ -44,7 +44,7 @@ def main():
                              capacity_mail = 40,
                              vehicle_length = 8))
 
-    consist.add_model_variant(intro_date=0,
+    consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date)
 
 
@@ -59,7 +59,7 @@ def main():
                              capacity_mail = 24,
                              vehicle_length = 5))
 
-    consist.add_model_variant(intro_date=0,
+    consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date)
 
     """
@@ -75,7 +75,7 @@ def main():
                             capacity_mail = 30,
                             vehicle_length = 7))
 
-    consist.add_model_variant(intro_date=0,
+    consist.add_model_variant(start_date=0,
                            end_date=global_constants.max_game_date)
 
 
@@ -90,7 +90,7 @@ def main():
                             capacity_mail = 45,
                             vehicle_length = 7))
 
-    consist.add_model_variant(intro_date=0,
+    consist.add_model_variant(start_date=0,
                            end_date=global_constants.max_game_date)
 
 
@@ -105,7 +105,7 @@ def main():
                             capacity_mail = 60,
                             vehicle_length = 8))
 
-    consist.add_model_variant(intro_date=0,
+    consist.add_model_variant(start_date=0,
                            end_date=global_constants.max_game_date)
 
 
@@ -121,7 +121,7 @@ def main():
                             capacity_mail = 30,
                             vehicle_length = 6))
 
-    consist.add_model_variant(intro_date=0,
+    consist.add_model_variant(start_date=0,
                            end_date=global_constants.max_game_date)
 
 
@@ -137,7 +137,7 @@ def main():
                             capacity_mail = 40,
                             vehicle_length = 6))
 
-    consist.add_model_variant(intro_date=0,
+    consist.add_model_variant(start_date=0,
                            end_date=global_constants.max_game_date)
 
 
@@ -153,7 +153,7 @@ def main():
                             capacity_mail = 50,
                             vehicle_length = 6))
 
-    consist.add_model_variant(intro_date=0,
+    consist.add_model_variant(start_date=0,
                            end_date=global_constants.max_game_date)
 
     """
@@ -169,7 +169,7 @@ def main():
                             capacity_mail = 40,
                             vehicle_length = 8))
 
-    consist.add_model_variant(intro_date=0,
+    consist.add_model_variant(start_date=0,
                            end_date=global_constants.max_game_date)
 
 
@@ -185,7 +185,7 @@ def main():
                             capacity_mail = 20,
                             vehicle_length = 5))
 
-    consist.add_model_variant(intro_date=0,
+    consist.add_model_variant(start_date=0,
                            end_date=global_constants.max_game_date)
 
 
@@ -201,5 +201,5 @@ def main():
                             capacity_mail = 30,
                             vehicle_length = 8))
 
-    consist.add_model_variant(intro_date=0,
+    consist.add_model_variant(start_date=0,
                            end_date=global_constants.max_game_date)

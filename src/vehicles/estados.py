@@ -16,5 +16,5 @@ consist.add_unit(ElectricLoco(consist = consist,
                         vehicle_length = 6,
                         spriterow_num = 0))
 
-consist.add_model_variant(intro_date=0,
+consist.add_model_variant(start_date=0,
                        end_date=global_constants.max_game_date)

@@ -61,9 +61,9 @@ class Consist(object):
         self.suppress_animated_pixel_warnings = kwargs.get('suppress_animated_pixel_warnings', False)
 
 
-    def add_model_variant(self, intro_date, end_date, graphics_processor=None, visual_effect_offset=None):
+    def add_model_variant(self, start_date, end_date, graphics_processor=None, visual_effect_offset=None):
         variant_num = len(self.model_variants) # this will never ever ever be flakey and unreliable, right?
-        self.model_variants.append(ModelVariant(intro_date, end_date, graphics_processor, variant_num, visual_effect_offset))
+        self.model_variants.append(ModelVariant(start_date, end_date, graphics_processor, variant_num, visual_effect_offset))
 
     def add_unit(self, vehicle, repeat=1):
         count = len(set(self.units))
@@ -101,7 +101,7 @@ class Consist(object):
         # find all the unique dates that will need a switch constructing
         years = set()
         for variant in self.model_variants:
-            years.update((variant.intro_date, variant.end_date))
+            years.update((variant.start_date, variant.end_date))
         years = sorted(years)
         # quick integrity check
         if years[0] != 0:
@@ -116,7 +116,7 @@ class Consist(object):
         # put the data in a format that's easy to render as switches
         result = []
         for variant in self.model_variants:
-            if variant.intro_date <= year < variant.end_date:
+            if variant.start_date <= year < variant.end_date:
                 result.append(variant)
         return result # could call set() here, but I didn't bother, shouldn't be needed if model variants set up correctly
 
@@ -370,9 +370,9 @@ class ModelVariant(object):
     # variants are mostly randomised or date-sensitive graphics
     # must be a minimum of one variant per train
     # at least one variant must have intro date 0 (for nml switch defaults to work)
-    def __init__(self, intro_date, end_date, graphics_processor, variant_num, visual_effect_offset):
+    def __init__(self, start_date, end_date, graphics_processor, variant_num, visual_effect_offset):
         self.variant_num = variant_num
-        self.intro_date = intro_date
+        self.start_date = start_date
         self.end_date = end_date
         self.graphics_processor = graphics_processor
         self.visual_effect_offset = visual_effect_offset # use digits or magic keywords, or omit

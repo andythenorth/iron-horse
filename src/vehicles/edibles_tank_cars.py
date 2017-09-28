@@ -14,11 +14,11 @@ def main():
                            capacity_freight = 25,
                            vehicle_length = 4))
 
-    consist.add_model_variant(intro_date=0,
+    consist.add_model_variant(start_date=0,
                            end_date=global_constants.max_game_date,
                            graphics_processor=consist.graphics_processors['pass_through'])
 
-    consist.add_model_variant(intro_date=0,
+    consist.add_model_variant(start_date=0,
                            end_date=global_constants.max_game_date,
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
@@ -36,11 +36,11 @@ def main():
                            capacity_freight = 40,
                            vehicle_length = 8))
 
-    consist.add_model_variant(intro_date=0,
+    consist.add_model_variant(start_date=0,
                            end_date=global_constants.max_game_date,
                            graphics_processor=consist.graphics_processors['pass_through'])
 
-    consist.add_model_variant(intro_date=0,
+    consist.add_model_variant(start_date=0,
                            end_date=global_constants.max_game_date,
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
@@ -56,11 +56,11 @@ def main():
                             capacity_freight = 25,
                             vehicle_length = 6))
 
-    consist.add_model_variant(intro_date=0,
+    consist.add_model_variant(start_date=0,
                            end_date=global_constants.max_game_date,
                            graphics_processor=consist.graphics_processors['pass_through'])
 
-    consist.add_model_variant(intro_date=0,
+    consist.add_model_variant(start_date=0,
                            end_date=global_constants.max_game_date,
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
@@ -78,11 +78,11 @@ def main():
                             capacity_freight = 55,
                             vehicle_length = 8))
 
-    consist.add_model_variant(intro_date=0,
+    consist.add_model_variant(start_date=0,
                            end_date=global_constants.max_game_date,
                            graphics_processor=consist.graphics_processors['pass_through'])
 
-    consist.add_model_variant(intro_date=0,
+    consist.add_model_variant(start_date=0,
                            end_date=global_constants.max_game_date,
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
@@ -98,11 +98,11 @@ def main():
                             capacity_freight = 45,
                             vehicle_length = 6))
 
-    consist.add_model_variant(intro_date=0,
+    consist.add_model_variant(start_date=0,
                            end_date=global_constants.max_game_date,
                            graphics_processor=consist.graphics_processors['pass_through'])
 
-    consist.add_model_variant(intro_date=0,
+    consist.add_model_variant(start_date=0,
                            end_date=global_constants.max_game_date,
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
@@ -118,11 +118,11 @@ def main():
                             capacity_freight = 60,
                             vehicle_length = 8))
 
-    consist.add_model_variant(intro_date=0,
+    consist.add_model_variant(start_date=0,
                            end_date=global_constants.max_game_date,
                            graphics_processor=consist.graphics_processors['pass_through'])
 
-    consist.add_model_variant(intro_date=0,
+    consist.add_model_variant(start_date=0,
                            end_date=global_constants.max_game_date,
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 

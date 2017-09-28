@@ -14,7 +14,7 @@ def main():
                            capacity_pax = 25,
                            vehicle_length = 6))
 
-    consist.add_model_variant(intro_date=0,
+    consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date)
 
 
@@ -29,7 +29,7 @@ def main():
                             capacity_pax = 55,
                             vehicle_length = 6))
 
-    consist.add_model_variant(intro_date=0,
+    consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date)
 
 
@@ -44,7 +44,7 @@ def main():
                            capacity_pax = 75,
                            vehicle_length = 6))
 
-    consist.add_model_variant(intro_date=0,
+    consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date)
 
 
@@ -59,7 +59,7 @@ def main():
                            capacity_pax = 25,
                            vehicle_length = 6))
 
-    consist.add_model_variant(intro_date=0,
+    consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date)
 
 
@@ -75,7 +75,7 @@ def main():
                             capacity_pax = 40,
                             vehicle_length = 8))
 
-    consist.add_model_variant(intro_date=0,
+    consist.add_model_variant(start_date=0,
                            end_date=global_constants.max_game_date)
 
 
@@ -90,7 +90,7 @@ def main():
                             capacity_pax = 50,
                             vehicle_length = 8))
 
-    consist.add_model_variant(intro_date=0,
+    consist.add_model_variant(start_date=0,
                            end_date=global_constants.max_game_date)
 
 
@@ -105,7 +105,7 @@ def main():
                             capacity_pax = 60,
                             vehicle_length = 8))
 
-    consist.add_model_variant(intro_date=0,
+    consist.add_model_variant(start_date=0,
                            end_date=global_constants.max_game_date)
 
 
@@ -121,7 +121,7 @@ def main():
                             capacity_pax = 30,
                             vehicle_length = 6))
 
-    consist.add_model_variant(intro_date=0,
+    consist.add_model_variant(start_date=0,
                            end_date=global_constants.max_game_date)
 
 
@@ -137,7 +137,7 @@ def main():
                             capacity_pax = 40,
                             vehicle_length = 6))
 
-    consist.add_model_variant(intro_date=0,
+    consist.add_model_variant(start_date=0,
                            end_date=global_constants.max_game_date)
 
 
@@ -154,7 +154,7 @@ def main():
                             capacity_pax = 50,
                             vehicle_length = 6))
 
-    consist.add_model_variant(intro_date=0,
+    consist.add_model_variant(start_date=0,
                            end_date=global_constants.max_game_date)
 
 
@@ -170,7 +170,7 @@ def main():
                             capacity_pax = 55,
                             vehicle_length = 8))
 
-    consist.add_model_variant(intro_date=0,
+    consist.add_model_variant(start_date=0,
                            end_date=global_constants.max_game_date)
 
 
@@ -185,7 +185,7 @@ def main():
                             capacity_pax = 80,
                             vehicle_length = 8))
 
-    consist.add_model_variant(intro_date=0,
+    consist.add_model_variant(start_date=0,
                            end_date=global_constants.max_game_date)
 
 
@@ -201,7 +201,7 @@ def main():
                             capacity_pax = 20,
                             vehicle_length = 5))
 
-    consist.add_model_variant(intro_date=0,
+    consist.add_model_variant(start_date=0,
                            end_date=global_constants.max_game_date)
 
 
@@ -217,5 +217,5 @@ def main():
                             capacity_pax = 30,
                             vehicle_length = 8))
 
-    consist.add_model_variant(intro_date=0,
+    consist.add_model_variant(start_date=0,
                            end_date=global_constants.max_game_date)

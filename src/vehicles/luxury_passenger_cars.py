@@ -16,7 +16,7 @@ def main():
                            weight = 30,
                            vehicle_length = 8))
 
-    consist.add_model_variant(intro_date=0,
+    consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date)
 
 
@@ -33,7 +33,7 @@ def main():
                             weight = 33,
                             vehicle_length = 8))
 
-    consist.add_model_variant(intro_date=0,
+    consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date)
 
 
@@ -50,7 +50,7 @@ def main():
                            weight = 36,
                            vehicle_length = 8))
 
-    consist.add_model_variant(intro_date=0,
+    consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date)
 
 
