@@ -13,7 +13,6 @@ def main():
 
     consist.add_unit(MailCar(consist = consist,
                              capacity_mail = 15,
-                             weight = 15,
                              vehicle_length = 6))
 
     consist.add_model_variant(intro_date = 0,
@@ -30,7 +29,6 @@ def main():
 
     consist.add_unit(MailCar(consist = consist,
                              capacity_mail = 25,
-                             weight = 29,
                              vehicle_length = 6))
 
     consist.add_model_variant(intro_date=0,
@@ -47,7 +45,6 @@ def main():
 
     consist.add_unit(MailCar(consist = consist,
                              capacity_mail = 40,
-                             weight = 31,
                              vehicle_length = 8))
 
     consist.add_model_variant(intro_date=0,
@@ -64,7 +61,6 @@ def main():
 
     consist.add_unit(MailCar(consist = consist,
                              capacity_mail = 24,
-                             weight = 5,
                              vehicle_length = 5))
 
     consist.add_model_variant(intro_date=0,
@@ -82,7 +78,6 @@ def main():
 
     consist.add_unit(MailCar(consist = consist,
                             capacity_mail = 30,
-                            weight = 29,
                             vehicle_length = 7))
 
     consist.add_model_variant(intro_date=0,
@@ -99,7 +94,6 @@ def main():
 
     consist.add_unit(MailCar(consist = consist,
                             capacity_mail = 45,
-                            weight = 30,
                             vehicle_length = 7))
 
     consist.add_model_variant(intro_date=0,
@@ -116,7 +110,6 @@ def main():
 
     consist.add_unit(MailCar(consist = consist,
                             capacity_mail = 60,
-                            weight = 31,
                             vehicle_length = 8))
 
     consist.add_model_variant(intro_date=0,
@@ -134,7 +127,6 @@ def main():
 
     consist.add_unit(MailCar(consist = consist,
                             capacity_mail = 30,
-                            weight = 12,
                             vehicle_length = 6))
 
     consist.add_model_variant(intro_date=0,
@@ -152,7 +144,6 @@ def main():
 
     consist.add_unit(MailCar(consist = consist,
                             capacity_mail = 40,
-                            weight = 20,
                             vehicle_length = 6))
 
     consist.add_model_variant(intro_date=0,
@@ -170,7 +161,6 @@ def main():
 
     consist.add_unit(MailCar(consist = consist,
                             capacity_mail = 50,
-                            weight = 20,
                             vehicle_length = 6))
 
     consist.add_model_variant(intro_date=0,
@@ -188,7 +178,6 @@ def main():
 
     consist.add_unit(MailCar(consist = consist,
                             capacity_mail = 40,
-                            weight = 32,
                             vehicle_length = 8))
 
     consist.add_model_variant(intro_date=0,
@@ -206,7 +195,6 @@ def main():
 
     consist.add_unit(MailCar(consist = consist,
                             capacity_mail = 20,
-                            weight = 14,
                             vehicle_length = 5))
 
     consist.add_model_variant(intro_date=0,
@@ -224,7 +212,6 @@ def main():
 
     consist.add_unit(MailCar(consist = consist,
                             capacity_mail = 30,
-                            weight = 22,
                             vehicle_length = 8))
 
     consist.add_model_variant(intro_date=0,

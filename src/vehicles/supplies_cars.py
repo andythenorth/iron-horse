@@ -12,7 +12,6 @@ def main():
 
     consist.add_unit(Wagon(consist = consist,
                            capacity_freight = 30,
-                           weight = 6,
                            vehicle_length = 7))
 
     # Ho Ho, supplies cars will vary load graphics according to *build date of wagon*
@@ -44,7 +43,6 @@ def main():
 
     consist.add_unit(Wagon(consist = consist,
                            capacity_freight = 45,
-                           weight = 12,
                            vehicle_length = 8))
 
     consist.add_model_variant(intro_date=0,
@@ -74,7 +72,6 @@ def main():
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 20,
-                            weight = 6,
                             vehicle_length = 7))
 
     # Ho Ho, supplies cars will vary load graphics according to *build date of wagon*

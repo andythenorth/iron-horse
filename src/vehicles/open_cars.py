@@ -12,7 +12,6 @@ def main():
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 20,
-                            weight = 7,
                             vehicle_length = 4))
 
     consist.add_model_variant(intro_date=0,
@@ -33,7 +32,6 @@ def main():
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 35,
-                            weight = 15,
                             vehicle_length = 4))
 
     consist.add_model_variant(intro_date=0,
@@ -54,7 +52,6 @@ def main():
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 55,
-                            weight = 25,
                             vehicle_length = 6))
 
     consist.add_model_variant(intro_date=0,
@@ -75,7 +72,6 @@ def main():
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 55,
-                            weight = 25,
                             vehicle_length = 8))
 
     consist.add_model_variant(intro_date=0,
@@ -97,7 +93,6 @@ def main():
 
     consist.add_unit(Wagon(consist = consist,
                            capacity_freight = 12,
-                           weight = 4,
                            vehicle_length = 3))
 
     consist.add_model_variant(intro_date=0,
@@ -119,7 +114,6 @@ def main():
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 25,
-                            weight = 7,
                             vehicle_length = 5))
 
     consist.add_model_variant(intro_date=0,
@@ -140,7 +134,6 @@ def main():
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 45,
-                            weight = 15,
                             vehicle_length = 5))
 
     consist.add_model_variant(intro_date=0,
@@ -162,7 +155,6 @@ def main():
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 20,
-                            weight = 3,
                             vehicle_length = 5))
 
     consist.add_model_variant(intro_date=0,
@@ -184,7 +176,6 @@ def main():
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 35,
-                            weight = 3,
                             vehicle_length = 5))
 
     consist.add_model_variant(intro_date=0,
@@ -206,7 +197,6 @@ def main():
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 55,
-                            weight = 17,
                             vehicle_length = 5))
 
     consist.add_model_variant(intro_date=0,
@@ -227,7 +217,6 @@ def main():
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 70,
-                            weight = 22,
                             vehicle_length = 8))
 
     consist.add_model_variant(intro_date=0,
@@ -249,7 +238,6 @@ def main():
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 20,
-                            weight = 10,
                             vehicle_length = 5))
 
     consist.add_model_variant(intro_date=0,
@@ -271,7 +259,6 @@ def main():
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 30,
-                            weight = 12,
                             vehicle_length = 6))
 
     consist.add_model_variant(intro_date=0,
@@ -293,7 +280,6 @@ def main():
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 40,
-                            weight = 18,
                             vehicle_length = 6))
 
     consist.add_model_variant(intro_date=0,

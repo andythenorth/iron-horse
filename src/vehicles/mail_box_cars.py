@@ -13,7 +13,6 @@ def main():
 
     consist.add_unit(MailCar(consist = consist,
                              capacity_mail = 15,
-                             weight = 15,
                              vehicle_length = 4))
 
     consist.add_model_variant(intro_date = 0,
@@ -30,7 +29,6 @@ def main():
 
     consist.add_unit(MailCar(consist = consist,
                              capacity_mail = 25,
-                             weight = 29,
                              vehicle_length = 4))
 
     consist.add_model_variant(intro_date=0,
@@ -47,7 +45,6 @@ def main():
 
     consist.add_unit(MailCar(consist = consist,
                              capacity_mail = 40,
-                             weight = 31,
                              vehicle_length = 6))
 
     consist.add_model_variant(intro_date=0,

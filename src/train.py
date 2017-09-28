@@ -1181,6 +1181,7 @@ class Wagon(Train):
             self.autorefit = self.consist.autorefit
         self.default_cargo = self.consist.default_cargo
         self.default_cargo_capacities = self.get_capacity_variations(kwargs.get(self.consist.default_capacity_type, 0))
+        self.weight = 40
         if hasattr(self.consist, 'loading_speed_multiplier'):
             self.loading_speed_multiplier = self.consist.loading_speed_multiplier
         if hasattr(self.consist, 'cargo_age_period'):
