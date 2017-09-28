@@ -7,7 +7,6 @@ def main():
                             roster = 'pony',
                             base_numeric_id = 730,
                             wagon_generation = 1,
-                                          intro_date = 1915,
                             vehicle_life = 40,
                             speedy = True)
 
@@ -29,7 +28,6 @@ def main():
                             roster = 'pony',
                             base_numeric_id = 720,
                             wagon_generation = 3,
-                                          intro_date = 1964,
                             vehicle_life = 40,
                             speedy = True)
 
@@ -51,7 +49,6 @@ def main():
                             roster = 'llama',
                             base_numeric_id = 1390,
                             wagon_generation = 1,
-                                          intro_date = 1905,
                             vehicle_life = 40,
                             speedy = True)
 
@@ -73,7 +70,6 @@ def main():
                             roster = 'llama',
                             base_numeric_id = 1400,
                             wagon_generation = 3,
-                                          intro_date = 1980,
                             vehicle_life = 40,
                             speedy = True)
 
@@ -94,7 +90,6 @@ def main():
                             roster = 'llama',
                             base_numeric_id = 1410,
                             wagon_generation = 1,
-                                          intro_date = 1905,
                             vehicle_life = 40,
                             speedy = True,
                             track_type = 'NG')
@@ -117,7 +112,6 @@ def main():
                             roster = 'llama',
                             base_numeric_id = 1420,
                             wagon_generation = 3,
-                                          intro_date = 1980,
                             vehicle_life = 40,
                             speedy = True,
                             track_type = 'NG')
@@ -140,7 +134,6 @@ def main():
                             roster = 'antelope',
                             base_numeric_id = 1570,
                             wagon_generation = 1,
-                                          intro_date = 1950,
                             vehicle_life = 40,
                             speedy = True)
 
@@ -161,7 +154,6 @@ def main():
                             roster = 'antelope',
                             base_numeric_id = 1900,
                             wagon_generation = 1,
-                                          intro_date = 1905,
                             vehicle_life = 40,
                             speedy = True,
                             track_type = 'NG')

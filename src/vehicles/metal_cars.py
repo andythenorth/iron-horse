@@ -8,7 +8,6 @@ def main():
                            roster = 'pony',
                            base_numeric_id = 890,
                            wagon_generation = 1,
-                           intro_date = 1860,
                            vehicle_life = 50,
                            suppress_animated_pixel_warnings = True)
 
@@ -25,7 +24,6 @@ def main():
                            roster = 'pony',
                            base_numeric_id = 900,
                            wagon_generation = 2,
-                           intro_date = 1910,
                            vehicle_life = 50,
                            suppress_animated_pixel_warnings = True)
 
@@ -42,7 +40,6 @@ def main():
                            roster = 'pony',
                            base_numeric_id = 910,
                            wagon_generation = 3,
-                           intro_date = 1960,
                            vehicle_life = 50,
                            suppress_animated_pixel_warnings = True)
 

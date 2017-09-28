@@ -7,7 +7,6 @@ def main():
                                roster = 'pony',
                                base_numeric_id = 2220,
                                wagon_generation = 1,
-                               intro_date = 1860,
                                vehicle_life = 40,
                                speedy = True)
 
@@ -23,7 +22,6 @@ def main():
                               roster = 'pony',
                               base_numeric_id = 920,
                               wagon_generation = 2,
-                              intro_date = 1900,
                               vehicle_life = 40,
                               speedy = True)
 
@@ -39,7 +37,6 @@ def main():
                               roster = 'pony',
                               base_numeric_id = 940,
                               wagon_generation = 3,
-                              intro_date = 1960,
                               vehicle_life = 40,
                               speedy = True)
 
@@ -55,7 +52,6 @@ def main():
                               roster = 'pony',
                               base_numeric_id = 950,
                               wagon_generation = 1,
-                              intro_date = 1860,
                               vehicle_life = 40,
                               track_type = 'NG')
 
@@ -72,7 +68,6 @@ def main():
                           roster = 'llama',
                           base_numeric_id = 960,
                           wagon_generation = 1,
-                          intro_date = 1860,
                           vehicle_life = 40,
                           speedy = True)
 
@@ -88,7 +83,6 @@ def main():
                           roster = 'llama',
                           base_numeric_id = 970,
                           wagon_generation = 2,
-                          intro_date = 1920,
                           vehicle_life = 40,
                           speedy = True)
 
@@ -104,7 +98,6 @@ def main():
                           roster = 'llama',
                           base_numeric_id = 980,
                           wagon_generation = 3,
-                          intro_date = 1980,
                           vehicle_life = 40,
                           speedy = True)
 
@@ -120,7 +113,6 @@ def main():
                           roster = 'llama',
                           base_numeric_id = 990,
                           wagon_generation = 1,
-                          intro_date = 1860,
                           speedy = True,
                           track_type = 'NG',
                           vehicle_life = 40)
@@ -137,7 +129,6 @@ def main():
                           roster = 'llama',
                           base_numeric_id = 1380,
                           wagon_generation = 2,
-                          intro_date = 1920,
                           speedy = True,
                           track_type = 'NG',
                           vehicle_life = 40)
@@ -154,7 +145,6 @@ def main():
                           roster = 'llama',
                           base_numeric_id = 1450,
                           wagon_generation = 3,
-                          intro_date = 1980,
                           speedy = True,
                           track_type = 'NG',
                           vehicle_life = 40)
@@ -172,7 +162,6 @@ def main():
                           roster = 'antelope',
                           base_numeric_id = 1730,
                           wagon_generation = 1,
-                          intro_date = 1950,
                           vehicle_life = 40,
                           speedy = True)
 
@@ -188,7 +177,6 @@ def main():
                           roster = 'antelope',
                           base_numeric_id = 2120,
                           wagon_generation = 1,
-                          intro_date = 1860,
                           vehicle_life = 40,
                           track_type = 'NG',
                           speedy = True)
@@ -205,7 +193,6 @@ def main():
                           roster = 'antelope',
                           base_numeric_id = 1950,
                           wagon_generation = 2,
-                          intro_date = 1915,
                           vehicle_life = 40,
                           track_type = 'NG',
                           speedy = True)

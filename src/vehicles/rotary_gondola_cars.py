@@ -7,7 +7,6 @@ def main():
                             roster = 'pony',
                             base_numeric_id = 1340,
                             wagon_generation = 3,
-                            intro_date = 1960,
                             vehicle_life = 40)
 
     consist.add_unit(Wagon(consist = consist,
@@ -27,7 +26,6 @@ def main():
                             roster = 'pony',
                             base_numeric_id = 1810,
                             wagon_generation = 4,
-                            intro_date = 1990,
                             vehicle_life = 40)
 
     consist.add_unit(Wagon(consist = consist,

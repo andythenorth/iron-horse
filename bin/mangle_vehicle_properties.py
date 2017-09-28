@@ -4,7 +4,7 @@ currentdir = os.curdir
 import sys
 sys.path.append(os.path.join('src')) # add to the module search path
 
-property_to_delete = 'weight'
+property_to_delete = 'intro_date'
 property_to_move = 'sea_capable'
 property_to_insert_after = 'gross_tonnage'
 line_to_insert = "            property_name = 'example',"

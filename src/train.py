@@ -455,6 +455,8 @@ class WagonConsist(Consist):
         self.wagon_generation = kwargs.get('wagon_generation', None)
         super().__init__(**kwargs)
 
+        self.intro_date = 1860
+
         roster_obj.register_wagon_consist(self)
 
         if kwargs.get('speed', None):

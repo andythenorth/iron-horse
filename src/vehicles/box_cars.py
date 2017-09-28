@@ -7,7 +7,6 @@ def main():
                          roster = 'pony',
                          base_numeric_id = 1780,
                          wagon_generation = 1,
-                         intro_date = 1860,
                          vehicle_life = 40)
 
     consist.add_unit(BoxCar(consist = consist,
@@ -28,7 +27,6 @@ def main():
                          roster = 'pony',
                          base_numeric_id = 550,
                          wagon_generation = 2,
-                         intro_date = 1930,
                          vehicle_life = 40)
 
     consist.add_unit(BoxCar(consist = consist,
@@ -49,7 +47,6 @@ def main():
                          roster = 'pony',
                          base_numeric_id = 560,
                          wagon_generation = 3,
-                         intro_date = 1960,
                          vehicle_life = 40)
 
     consist.add_unit(BoxCar(consist = consist,
@@ -70,7 +67,6 @@ def main():
                          roster = 'pony',
                          base_numeric_id = 2340,
                          wagon_generation = 3,
-                         intro_date = 1960,
                          vehicle_life = 40)
 
     consist.add_unit(BoxCar(consist = consist,
@@ -91,7 +87,6 @@ def main():
                          roster = 'pony',
                          base_numeric_id = 570,
                          wagon_generation = 4,
-                         intro_date = 1990,
                          vehicle_life = 40)
 
     consist.add_unit(BoxCar(consist = consist,
@@ -112,7 +107,6 @@ def main():
                          roster = 'pony',
                          base_numeric_id = 580,
                          wagon_generation = 1,
-                                    intro_date = 1860,
                          vehicle_life = 40,
                          track_type = 'NG')
 
@@ -135,7 +129,6 @@ def main():
                         roster = 'llama',
                         base_numeric_id = 590,
                         wagon_generation = 1,
-                                  intro_date = 1860,
                         vehicle_life = 40)
 
     consist.add_unit(BoxCar(consist = consist,
@@ -156,7 +149,6 @@ def main():
                          roster = 'llama',
                          base_numeric_id = 600,
                          wagon_generation = 2,
-                                    intro_date = 1920,
                          vehicle_life = 40)
 
     consist.add_unit(BoxCar(consist = consist,
@@ -177,7 +169,6 @@ def main():
                          roster = 'llama',
                          base_numeric_id = 610,
                          wagon_generation = 3,
-                                    intro_date = 1980,
                          vehicle_life = 40)
 
     consist.add_unit(BoxCar(consist = consist,
@@ -198,7 +189,6 @@ def main():
                         roster = 'llama',
                         base_numeric_id = 620,
                         wagon_generation = 1,
-                                  intro_date = 1860,
                         vehicle_life = 40,
                         track_type = 'NG')
 
@@ -220,7 +210,6 @@ def main():
                          roster = 'llama',
                          base_numeric_id = 1310,
                          wagon_generation = 2,
-                                    intro_date = 1920,
                          vehicle_life = 40,
                          track_type = 'NG')
 
@@ -243,7 +232,6 @@ def main():
                          roster = 'antelope',
                          base_numeric_id = 1750,
                          wagon_generation = 1,
-                                    intro_date = 1950,
                          vehicle_life = 40)
 
     consist.add_unit(BoxCar(consist = consist,
@@ -264,7 +252,6 @@ def main():
                          roster = 'antelope',
                          base_numeric_id = 1740,
                          wagon_generation = 2,
-                                    intro_date = 1981,
                          vehicle_life = 40)
 
     consist.add_unit(BoxCar(consist = consist,
@@ -285,7 +272,6 @@ def main():
                          roster = 'antelope',
                          base_numeric_id = 2100,
                          wagon_generation = 1,
-                                    intro_date = 1860,
                          vehicle_life = 40,
                          track_type = 'NG')
 
@@ -307,7 +293,6 @@ def main():
                          roster = 'antelope',
                          base_numeric_id = 1850,
                          wagon_generation = 2,
-                                    intro_date = 1915,
                          vehicle_life = 40,
                          track_type = 'NG')
 
@@ -329,7 +314,6 @@ def main():
                          roster = 'antelope',
                          base_numeric_id = 1860,
                          wagon_generation = 3,
-                                    intro_date = 1970,
                          vehicle_life = 40,
                          track_type = 'NG')
 

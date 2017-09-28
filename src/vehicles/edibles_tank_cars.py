@@ -7,7 +7,6 @@ def main():
                                  roster = 'pony',
                                  base_numeric_id = 1190,
                                  wagon_generation = 1,
-                                 intro_date = 1905,
                                  vehicle_life = 40,
                                  speedy = True)
 
@@ -30,7 +29,6 @@ def main():
                                  roster = 'pony',
                                  base_numeric_id = 1200,
                                  wagon_generation = 3,
-                                 intro_date = 1988,
                                  vehicle_life = 40,
                                  speedy = True)
 
@@ -52,7 +50,6 @@ def main():
                                  roster = 'llama',
                                  base_numeric_id = 1210,
                                  wagon_generation = 1,
-                                                    intro_date = 1905,
                                  vehicle_life = 40)
 
     consist.add_unit(Wagon(consist = consist,
@@ -74,7 +71,6 @@ def main():
                                  roster = 'llama',
                                  base_numeric_id = 1220,
                                  wagon_generation = 3,
-                                                    intro_date = 1988,
                                  vehicle_life = 40,
                                  speedy = True)
 
@@ -96,7 +92,6 @@ def main():
                         roster = 'antelope',
                         base_numeric_id = 1690,
                         wagon_generation = 1,
-                                  intro_date = 1950,
                         vehicle_life = 40)
 
     consist.add_unit(Wagon(consist = consist,
@@ -116,7 +111,6 @@ def main():
                                  roster = 'antelope',
                                  base_numeric_id = 1700,
                                  wagon_generation = 2,
-                                                    intro_date = 1981,
                                  vehicle_life = 40,
                                  speedy = True)
 

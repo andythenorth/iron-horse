@@ -7,7 +7,6 @@ def main():
                            roster = 'pony',
                            base_numeric_id = 1060,
                            wagon_generation = 3,
-                                        intro_date = 1960,
                            vehicle_life = 40,
                            speedy = True)
 
