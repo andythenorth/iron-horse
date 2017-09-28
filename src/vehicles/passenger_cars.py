@@ -8,12 +8,12 @@ def main():
                                vehicle_generation = 1,
                                speedy = True)
 
-    consist.add_unit(PassengerCar(consist = consist,
+    consist.add_unit(type = PassengerCar,
                            capacity = 25,
-                           vehicle_length = 6))
+                           vehicle_length = 6)
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date)
+    consist.add_model_variant(start_date = 0,
+                              end_date = global_constants.max_game_date)
 
 
     consist = PassengerConsist(roster = 'pony',
@@ -21,12 +21,12 @@ def main():
                                vehicle_generation = 2,
                                speedy = True)
 
-    consist.add_unit(PassengerCar(consist = consist,
+    consist.add_unit(type = PassengerCar,
                             capacity = 55,
-                            vehicle_length = 6))
+                            vehicle_length = 6)
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date)
+    consist.add_model_variant(start_date = 0,
+                              end_date = global_constants.max_game_date)
 
 
     consist = PassengerConsist(roster = 'pony',
@@ -34,12 +34,12 @@ def main():
                                vehicle_generation = 3,
                                speedy = True)
 
-    consist.add_unit(PassengerCar(consist = consist,
+    consist.add_unit(type = PassengerCar,
                            capacity = 75,
-                           vehicle_length = 6))
+                           vehicle_length = 6)
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date)
+    consist.add_model_variant(start_date = 0,
+                              end_date = global_constants.max_game_date)
 
 
     consist = PassengerConsist(roster = 'pony',
@@ -47,12 +47,12 @@ def main():
                                vehicle_generation = 1,
                                track_type = 'NG')
 
-    consist.add_unit(PassengerCar(consist = consist,
+    consist.add_unit(type = PassengerCar,
                            capacity = 25,
-                           vehicle_length = 6))
+                           vehicle_length = 6)
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date)
+    consist.add_model_variant(start_date = 0,
+                              end_date = global_constants.max_game_date)
 
 
     #--------------- llama ----------------------------------------------------------------------
@@ -61,12 +61,12 @@ def main():
                                vehicle_generation = 1,
                                speedy = True)
 
-    consist.add_unit(PassengerCar(consist = consist,
+    consist.add_unit(type = PassengerCar,
                             capacity = 40,
-                            vehicle_length = 8))
+                            vehicle_length = 8)
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date)
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date)
 
 
     consist = PassengerConsist(roster = 'llama',
@@ -74,12 +74,12 @@ def main():
                                vehicle_generation = 2,
                                speedy = True)
 
-    consist.add_unit(PassengerCar(consist = consist,
+    consist.add_unit(type = PassengerCar,
                             capacity = 50,
-                            vehicle_length = 8))
+                            vehicle_length = 8)
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date)
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date)
 
 
     consist = PassengerConsist(roster = 'llama',
@@ -87,12 +87,12 @@ def main():
                                vehicle_generation = 3,
                                speedy = True)
 
-    consist.add_unit(PassengerCar(consist = consist,
+    consist.add_unit(type = PassengerCar,
                             capacity = 60,
-                            vehicle_length = 8))
+                            vehicle_length = 8)
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date)
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date)
 
 
     consist = PassengerConsist(roster = 'llama',
@@ -101,12 +101,12 @@ def main():
                                speedy = True,
                                track_type = 'NG')
 
-    consist.add_unit(PassengerCar(consist = consist,
+    consist.add_unit(type = PassengerCar,
                             capacity = 30,
-                            vehicle_length = 6))
+                            vehicle_length = 6)
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date)
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date)
 
 
     consist = PassengerConsist(roster = 'llama',
@@ -115,12 +115,12 @@ def main():
                                speedy = True,
                                track_type = 'NG')
 
-    consist.add_unit(PassengerCar(consist = consist,
+    consist.add_unit(type = PassengerCar,
                             capacity = 40,
-                            vehicle_length = 6))
+                            vehicle_length = 6)
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date)
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date)
 
 
 
@@ -130,12 +130,12 @@ def main():
                                speedy = True,
                                track_type = 'NG')
 
-    consist.add_unit(PassengerCar(consist = consist,
+    consist.add_unit(type = PassengerCar,
                             capacity = 50,
-                            vehicle_length = 6))
+                            vehicle_length = 6)
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date)
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date)
 
 
     #--------------- antelope ----------------------------------------------------------------------
@@ -144,12 +144,12 @@ def main():
                                vehicle_generation = 1,
                                speedy = True)
 
-    consist.add_unit(PassengerCar(consist = consist,
+    consist.add_unit(type = PassengerCar,
                             capacity = 55,
-                            vehicle_length = 8))
+                            vehicle_length = 8)
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date)
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date)
 
 
     consist = PassengerConsist(roster = 'antelope',
@@ -157,12 +157,12 @@ def main():
                                vehicle_generation = 2,
                                speedy = True)
 
-    consist.add_unit(PassengerCar(consist = consist,
+    consist.add_unit(type = PassengerCar,
                             capacity = 80,
-                            vehicle_length = 8))
+                            vehicle_length = 8)
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date)
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date)
 
 
     consist = PassengerConsist(roster = 'antelope',
@@ -171,12 +171,12 @@ def main():
                                speedy = True,
                                track_type = 'NG')
 
-    consist.add_unit(PassengerCar(consist = consist,
+    consist.add_unit(type = PassengerCar,
                             capacity = 20,
-                            vehicle_length = 5))
+                            vehicle_length = 5)
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date)
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date)
 
 
     consist = PassengerConsist(roster = 'antelope',
@@ -185,9 +185,9 @@ def main():
                                speedy = True,
                                track_type = 'NG')
 
-    consist.add_unit(PassengerCar(consist = consist,
+    consist.add_unit(type = PassengerCar,
                             capacity = 30,
-                            vehicle_length = 8))
+                            vehicle_length = 8)
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date)
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date)

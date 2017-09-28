@@ -9,10 +9,10 @@ consist = EngineConsist(id = 'gazelle',
               speed = 85,
               intro_date = 1975)
 
-consist.add_unit(DieselLoco(consist = consist,
+consist.add_unit(type = DieselLoco,
                         weight = 90,
                         vehicle_length = 7,
-                        spriterow_num = 0))
+                        spriterow_num = 0)
 
-consist.add_model_variant(start_date=0,
-                       end_date=global_constants.max_game_date)
+consist.add_model_variant(start_date = 0,
+                       end_date = global_constants.max_game_date)

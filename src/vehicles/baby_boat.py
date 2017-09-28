@@ -8,13 +8,13 @@ consist = EngineConsist(id = 'baby_boat',
               speed = 75,
               intro_date = 1978)
 
-consist.add_unit(DieselLoco(consist = consist,
+consist.add_unit(type = DieselLoco,
                         weight = 120,
                         vehicle_length = 8,
-                        spriterow_num = 0))
+                        spriterow_num = 0)
 
-consist.add_model_variant(start_date=0,
-                       end_date=global_constants.max_game_date)
+consist.add_model_variant(start_date = 0,
+                       end_date = global_constants.max_game_date)
 
-consist.add_model_variant(start_date=0,
-                       end_date=global_constants.max_game_date)
+consist.add_model_variant(start_date = 0,
+                       end_date = global_constants.max_game_date)

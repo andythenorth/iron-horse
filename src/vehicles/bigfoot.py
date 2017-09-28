@@ -11,13 +11,13 @@ consist = EngineConsist(id = 'bigfoot',
               type_base_running_cost_points = -10, # dibble running costs for game balance
               intro_date = 1970)
 
-consist.add_unit(DieselLoco(consist = consist,
+consist.add_unit(type = DieselLoco,
                         weight = 50,
                         vehicle_length = 5,
-                        spriterow_num = 0))
+                        spriterow_num = 0)
 
-consist.add_model_variant(start_date=0,
-                       end_date=global_constants.max_game_date)
+consist.add_model_variant(start_date = 0,
+                       end_date = global_constants.max_game_date)
 
-consist.add_model_variant(start_date=0,
-                       end_date=global_constants.max_game_date)
+consist.add_model_variant(start_date = 0,
+                       end_date = global_constants.max_game_date)

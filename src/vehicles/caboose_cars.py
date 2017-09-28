@@ -9,12 +9,12 @@ def main():
                              vehicle_generation = 1,
                                             speedy = True)
 
-    consist.add_unit(FreightCar(consist = consist,
+    consist.add_unit(type = FreightCar,
                             capacity = 0,
-                            vehicle_length = 4))
+                            vehicle_length = 4)
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date)
+    consist.add_model_variant(start_date = 0,
+                              end_date = global_constants.max_game_date)
 
 
     consist = CabooseConsistLong(title = '[Caboose Car] Long',
@@ -23,12 +23,12 @@ def main():
                              vehicle_generation = 1,
                                             speedy = True)
 
-    consist.add_unit(FreightCar(consist = consist,
+    consist.add_unit(type = FreightCar,
                             capacity = 0,
-                            vehicle_length = 6))
+                            vehicle_length = 6)
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date)
+    consist.add_model_variant(start_date = 0,
+                              end_date = global_constants.max_game_date)
 
 
     consist = CabooseConsistShort(title = '[Caboose Car]',
@@ -37,12 +37,12 @@ def main():
                              vehicle_generation = 1,
                                             track_type = 'NG')
 
-    consist.add_unit(FreightCar(consist = consist,
+    consist.add_unit(type = FreightCar,
                            capacity = 0,
-                           vehicle_length = 4))
+                           vehicle_length = 4)
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date)
+    consist.add_model_variant(start_date = 0,
+                              end_date = global_constants.max_game_date)
 
 """
     #--------------- llama ----------------------------------------------------------------------
@@ -52,12 +52,12 @@ def main():
                              vehicle_generation = 1,
                                             speedy = True)
 
-    consist.add_unit(FreightCar(consist = consist,
+    consist.add_unit(type = FreightCar,
                             capacity = 0,
-                            vehicle_length = 5))
+                            vehicle_length = 5)
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date)
+    consist.add_model_variant(start_date = 0,
+                              end_date = global_constants.max_game_date)
 
 
     #--------------- antelope ----------------------------------------------------------------------
@@ -67,12 +67,12 @@ def main():
                              vehicle_generation = 1,
                                             speedy = True)
 
-    consist.add_unit(FreightCar(consist = consist,
+    consist.add_unit(type = FreightCar,
                            capacity = 0,
-                           vehicle_length = 6))
+                           vehicle_length = 6)
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date)
+    consist.add_model_variant(start_date = 0,
+                              end_date = global_constants.max_game_date)
 
 
     consist = CabooseConsist(title = '[Caboose Car]',
@@ -82,12 +82,12 @@ def main():
                                             speedy = True,
                              track_type = 'NG')
 
-    consist.add_unit(FreightCar(consist = consist,
+    consist.add_unit(type = FreightCar,
                            capacity = 0,
-                           vehicle_length = 6))
+                           vehicle_length = 6)
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date)
+    consist.add_model_variant(start_date = 0,
+                              end_date = global_constants.max_game_date)
 
 
 """

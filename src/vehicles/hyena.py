@@ -12,15 +12,15 @@ consist = EngineConsist(id = 'hyena',
               type_base_running_cost_points = 35, # dibble running costs for game balance
               intro_date = 1915)
 
-consist.add_unit(SteamLoco(consist = consist,
+consist.add_unit(type = SteamLoco,
                         weight = 68,
                         vehicle_length = 7,
-                        spriterow_num = 0))
+                        spriterow_num = 0)
 
-consist.add_unit(SteamLocoTender(consist = consist,
+consist.add_unit(type = SteamLocoTender,
                         weight = 37,
                         vehicle_length = 5,
-                        spriterow_num = 1))
+                        spriterow_num = 1)
 
-consist.add_model_variant(start_date=0,
-                       end_date=global_constants.max_game_date)
+consist.add_model_variant(start_date = 0,
+                       end_date = global_constants.max_game_date)

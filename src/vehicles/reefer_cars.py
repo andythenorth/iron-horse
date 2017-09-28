@@ -8,16 +8,16 @@ def main():
                             vehicle_generation = 1,
                             speedy = True)
 
-    consist.add_unit(FreightCar(consist = consist,
+    consist.add_unit(type = FreightCar,
                             capacity = 25,
-                            vehicle_length = 6))
+                            vehicle_length = 6)
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date,
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date,
                            graphics_processor=consist.graphics_processors['pass_through'])
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date,
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date,
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
@@ -27,16 +27,16 @@ def main():
                             vehicle_generation = 3,
                             speedy = True)
 
-    consist.add_unit(FreightCar(consist = consist,
+    consist.add_unit(type = FreightCar,
                             capacity = 40,
-                            vehicle_length = 8))
+                            vehicle_length = 8)
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date,
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date,
                            graphics_processor=consist.graphics_processors['pass_through'])
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date,
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date,
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
@@ -46,16 +46,16 @@ def main():
                             vehicle_generation = 1,
                             speedy = True)
 
-    consist.add_unit(FreightCar(consist = consist,
+    consist.add_unit(type = FreightCar,
                             capacity = 30,
-                            vehicle_length = 6))
+                            vehicle_length = 6)
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date,
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date,
                            graphics_processor=consist.graphics_processors['pass_through'])
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date,
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date,
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
@@ -65,16 +65,16 @@ def main():
                             vehicle_generation = 3,
                             speedy = True)
 
-    consist.add_unit(FreightCar(consist = consist,
+    consist.add_unit(type = FreightCar,
                             capacity = 50,
-                            vehicle_length = 6))
+                            vehicle_length = 6)
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date,
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date,
                            graphics_processor=consist.graphics_processors['pass_through'])
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date,
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date,
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
@@ -84,16 +84,16 @@ def main():
                             speedy = True,
                             track_type = 'NG')
 
-    consist.add_unit(FreightCar(consist = consist,
+    consist.add_unit(type = FreightCar,
                             capacity = 25,
-                            vehicle_length = 6))
+                            vehicle_length = 6)
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date,
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date,
                            graphics_processor=consist.graphics_processors['pass_through'])
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date,
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date,
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
@@ -104,16 +104,16 @@ def main():
                             speedy = True,
                             track_type = 'NG')
 
-    consist.add_unit(FreightCar(consist = consist,
+    consist.add_unit(type = FreightCar,
                             capacity = 40,
-                            vehicle_length = 6))
+                            vehicle_length = 6)
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date,
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date,
                            graphics_processor=consist.graphics_processors['pass_through'])
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date,
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date,
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
@@ -123,16 +123,16 @@ def main():
                             vehicle_generation = 1,
                             speedy = True)
 
-    consist.add_unit(FreightCar(consist = consist,
+    consist.add_unit(type = FreightCar,
                             capacity = 45,
-                            vehicle_length = 8))
+                            vehicle_length = 8)
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date,
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date,
                            graphics_processor=consist.graphics_processors['pass_through'])
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date,
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date,
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
@@ -142,14 +142,14 @@ def main():
                             speedy = True,
                             track_type = 'NG')
 
-    consist.add_unit(FreightCar(consist = consist,
+    consist.add_unit(type = FreightCar,
                             capacity = 25,
-                            vehicle_length = 6))
+                            vehicle_length = 6)
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date,
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date,
                            graphics_processor=consist.graphics_processors['pass_through'])
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date,
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date,
                            graphics_processor=consist.graphics_processors['swap_company_colours'])

@@ -12,21 +12,21 @@ consist = EngineConsist(id = 'hofman',
               type_base_running_cost_points = -10, # dibble running costs for game balance
               intro_date = 1940)
 
-consist.add_unit(SteamLocoTender(consist = consist,
+consist.add_unit(type = SteamLocoTender,
                         weight = 15,
                         vehicle_length = 3,
-                        spriterow_num = 0))
+                        spriterow_num = 0)
 
-consist.add_unit(SteamLoco(consist = consist,
+consist.add_unit(type = SteamLoco,
                         weight = 30,
                         vehicle_length = 4,
-                        spriterow_num = 1))
+                        spriterow_num = 1)
 
-consist.add_unit(SteamLocoTender(consist = consist,
+consist.add_unit(type = SteamLocoTender,
                         weight = 15,
                         vehicle_length = 3,
-                        spriterow_num = 2))
+                        spriterow_num = 2)
 
-consist.add_model_variant(start_date=0,
-                       end_date=global_constants.max_game_date,
+consist.add_model_variant(start_date = 0,
+                       end_date = global_constants.max_game_date,
                        visual_effect_offset = -3)

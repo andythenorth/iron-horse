@@ -10,10 +10,10 @@ consist = EngineConsist(id = 'sparkycat',
               vehicle_generation = 6,
               power_by_railtype = {'RAIL': 1850, 'ELRL': 3700})
 
-consist.add_unit(ElectroDieselLoco(consist = consist,
-                        weight = 120,
-                        vehicle_length = 8,
-                        spriterow_num = 0))
+consist.add_unit(type = ElectroDieselLoco,
+                 weight = 120,
+                 vehicle_length = 8,
+                 spriterow_num = 0)
 
-consist.add_model_variant(start_date=0,
-                       end_date=global_constants.max_game_date)
+consist.add_model_variant(start_date = 0,
+                          end_date = global_constants.max_game_date)

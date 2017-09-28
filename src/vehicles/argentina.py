@@ -8,15 +8,15 @@ consist = EngineConsist(id = 'argentina',
               speed = 50,
               intro_date = 1910)
 
-consist.add_unit(SteamLoco(consist = consist,
+consist.add_unit(type = SteamLoco,
                         weight = 100,
                         vehicle_length = 8,
-                        spriterow_num = 0))
+                        spriterow_num = 0)
 
-consist.add_unit(SteamLocoTender(consist = consist,
+consist.add_unit(type = SteamLocoTender,
                         weight = 40,
                         vehicle_length = 5,
-                        spriterow_num = 1))
+                        spriterow_num = 1)
 
-consist.add_model_variant(start_date=0,
-                       end_date=global_constants.max_game_date)
+consist.add_model_variant(start_date = 0,
+                       end_date = global_constants.max_game_date)

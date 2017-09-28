@@ -10,17 +10,17 @@ consist = EngineConsist(id = 'tyburn',
               type_base_buy_cost_points = 56, # dibble buy cost for game balance
               intro_date = 1950)
 
-consist.add_unit(MetroCargoUnit(consist = consist,
-                        weight = 35,
-                        vehicle_length = 8,
-                        capacity = 60,
-                        spriterow_num = 0))
+consist.add_unit(type = MetroCargoUnit,
+                 weight = 35,
+                 vehicle_length = 8,
+                 capacity = 60,
+                 spriterow_num = 0)
 
-consist.add_unit(MetroCargoUnit(consist = consist,
-                        weight = 35,
-                        vehicle_length = 8,
-                        capacity = 60,
-                        spriterow_num = 1))
+consist.add_unit(type = MetroCargoUnit,
+                 weight = 35,
+                 vehicle_length = 8,
+                 capacity = 60,
+                 spriterow_num = 1)
 
-consist.add_model_variant(start_date=0,
-                       end_date=global_constants.max_game_date)
+consist.add_model_variant(start_date = 0,
+                          end_date = global_constants.max_game_date)

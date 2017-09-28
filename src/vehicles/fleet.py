@@ -11,17 +11,17 @@ consist = EngineConsist(id = 'fleet',
               intro_date = 2000)
 
 # should be 4 units, not 2
-consist.add_unit(MetroPaxUnit(consist = consist,
-                        weight = 30,
-                        vehicle_length = 8,
-                        capacity_pax = 200,
-                        spriterow_num = 0))
+consist.add_unit(type = MetroPaxUnit,
+                 weight = 30,
+                 vehicle_length = 8,
+                 capacity_pax = 200,
+                 spriterow_num = 0)
 
-consist.add_unit(MetroPaxUnit(consist = consist,
-                        weight = 30,
-                        vehicle_length = 8,
-                        capacity_pax = 200,
-                        spriterow_num = 1))
+consist.add_unit(type = MetroPaxUnit,
+                 weight = 30,
+                 vehicle_length = 8,
+                 capacity_pax = 200,
+                 spriterow_num = 1)
 
-consist.add_model_variant(start_date=0,
-                       end_date=global_constants.max_game_date)
+consist.add_model_variant(start_date = 0,
+                          end_date = global_constants.max_game_date)

@@ -9,13 +9,13 @@ def main():
                            vehicle_generation = 1,
                                         suppress_animated_pixel_warnings = True)
 
-    consist.add_unit(FreightCar(consist = consist,
+    consist.add_unit(type = FreightCar,
                             capacity = 30,
                             vehicle_length = 5,
-                            spriterow_num = 0))
+                            spriterow_num = 0)
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date)
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date)
 
 
     consist = MetalConsist(roster = 'pony',
@@ -23,13 +23,13 @@ def main():
                            vehicle_generation = 2,
                                         suppress_animated_pixel_warnings = True)
 
-    consist.add_unit(FreightCar(consist = consist,
+    consist.add_unit(type = FreightCar,
                             capacity = 60,
                             vehicle_length = 8,
-                            spriterow_num = 0))
+                            spriterow_num = 0)
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date)
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date)
 
 
     consist = MetalConsist(roster = 'pony',
@@ -37,10 +37,10 @@ def main():
                            vehicle_generation = 3,
                                         suppress_animated_pixel_warnings = True)
 
-    consist.add_unit(FreightCar(consist = consist,
+    consist.add_unit(type = FreightCar,
                             capacity = 90,
                             vehicle_length = 8,
-                            spriterow_num = 0))
+                            spriterow_num = 0)
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date)
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date)

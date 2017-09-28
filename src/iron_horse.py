@@ -99,7 +99,6 @@ tank_cars.main()
 from vehicles import vehicle_transporter_cars
 vehicle_transporter_cars.main()
 
-
 def get_active_rosters():
     #  for a faster single-roster compiles when testing, optionally pass a roster id (lower case) as a makefile arg
     if makefile_args.get('roster', '*') == '*':

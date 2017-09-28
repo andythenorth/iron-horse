@@ -9,12 +9,12 @@ consist = EngineConsist(id = 'big_boat',
               speed = 75,
               intro_date = 1985)
 
-consist.add_unit(DieselLoco(consist = consist,
+consist.add_unit(type = DieselLoco,
                         weight = 190,
                         vehicle_length = 8,
-                        spriterow_num = 0))
+                        spriterow_num = 0)
 
-consist.add_model_variant(start_date=0,
-                       end_date=global_constants.max_game_date)
+consist.add_model_variant(start_date = 0,
+                       end_date = global_constants.max_game_date)
 
 # I tried the Big Boat with a long-hood forward random variant, but it looked bad, removed it.

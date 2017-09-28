@@ -10,10 +10,10 @@ consist = EngineConsist(id = 'wizzo',
               type_base_running_cost_points = 30, # dibble running costs for game balance
               vehicle_generation = 4)
 
-consist.add_unit(DieselLoco(consist = consist,
-                        weight = 80,
-                        vehicle_length = 8,
-                        spriterow_num = 0))
+consist.add_unit(type = DieselLoco,
+                 weight = 80,
+                 vehicle_length = 8,
+                 spriterow_num = 0)
 
-consist.add_model_variant(start_date=0,
-                       end_date=global_constants.max_game_date)
+consist.add_model_variant(start_date = 0,
+                          end_date = global_constants.max_game_date)

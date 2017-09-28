@@ -11,15 +11,15 @@ consist = EngineConsist(id = 'lemon',
               buy_cost = 114,
               vehicle_generation = 3)
 
-consist.add_unit(SteamLoco(consist = consist,
-                        weight = 97,
-                        vehicle_length = 8,
-                        spriterow_num = 0))
+consist.add_unit(type = SteamLoco,
+                 weight = 97,
+                 vehicle_length = 8,
+                 spriterow_num = 0)
 
-consist.add_unit(SteamLocoTender(consist = consist,
-                        weight = 52,
-                        vehicle_length = 4,
-                        spriterow_num = 1))
+consist.add_unit(type = SteamLocoTender,
+                 weight = 52,
+                 vehicle_length = 4,
+                 spriterow_num = 1)
 
-consist.add_model_variant(start_date=0,
-                       end_date=global_constants.max_game_date)
+consist.add_model_variant(start_date = 0,
+                          end_date = global_constants.max_game_date)

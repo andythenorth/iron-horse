@@ -11,17 +11,17 @@ consist = EngineConsist(id = 'manzana',
               intro_date = 1950)
 
 # should be 4 units not 2
-consist.add_unit(MetroPaxUnit(consist = consist,
+consist.add_unit(type = MetroPaxUnit,
                         weight = 40,
                         vehicle_length = 8,
                         capacity_pax = 160,
-                        spriterow_num = 0))
+                        spriterow_num = 0)
 
-consist.add_unit(MetroPaxUnit(consist = consist,
+consist.add_unit(type = MetroPaxUnit,
                         weight = 40,
                         vehicle_length = 8,
                         capacity_pax = 160,
-                        spriterow_num = 1))
+                        spriterow_num = 1)
 
-consist.add_model_variant(start_date=0,
-                       end_date=global_constants.max_game_date)
+consist.add_model_variant(start_date = 0,
+                       end_date = global_constants.max_game_date)

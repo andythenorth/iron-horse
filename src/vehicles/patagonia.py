@@ -11,17 +11,17 @@ consist = EngineConsist(id = 'patagonia',
               type_base_running_cost_points = -30, # dibble running costs for game balance
               intro_date = 1960)
 
-consist.add_unit(DieselRailcar(consist = consist,
+consist.add_unit(type = DieselRailcar,
                         weight = 20,
                         vehicle_length = 7,
                         capacity_pax = 35,
-                        spriterow_num = 0))
+                        spriterow_num = 0)
 
-consist.add_unit(DieselRailcar(consist = consist,
+consist.add_unit(type = DieselRailcar,
                         weight = 20,
                         vehicle_length = 7,
                         capacity_pax = 35,
-                        spriterow_num = 1))
+                        spriterow_num = 1)
 
-consist.add_model_variant(start_date=0,
-                       end_date=global_constants.max_game_date)
+consist.add_model_variant(start_date = 0,
+                       end_date = global_constants.max_game_date)

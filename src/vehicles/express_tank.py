@@ -11,15 +11,15 @@ consist = EngineConsist(id = 'express_tank',
               type_base_running_cost_points = -6, # dibble running costs for game balance
               vehicle_generation = 3)
 
-consist.add_unit(SteamLoco(consist = consist,
-                        weight = 57,
-                        vehicle_length = 6,
-                        spriterow_num = 0))
+consist.add_unit(type = SteamLoco,
+                 weight = 57,
+                 vehicle_length = 6,
+                 spriterow_num = 0)
 
-consist.add_model_variant(start_date=0,
-                       end_date=global_constants.max_game_date)
+consist.add_model_variant(start_date = 0,
+                          end_date = global_constants.max_game_date)
 
-consist.add_model_variant(start_date=0,
-                       end_date=global_constants.max_game_date,
-                       visual_effect_offset='AUTOFLIP')
+consist.add_model_variant(start_date = 0,
+                          end_date = global_constants.max_game_date,
+                          visual_effect_offset='AUTOFLIP')
 

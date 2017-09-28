@@ -17,12 +17,12 @@ consist = EngineConsist(id = 'cargo_sprinter',
                         type_base_running_cost_points = -35, # dibble running costs for game balance
                         intro_date = 1999) # explicit intro date by design
 
-consist.add_unit(CargoSprinter(consist = consist,
-                               weight = 46,
-                               vehicle_length = 7,
-                               capacity = 36), # matched to 1.5x standard Road Hog and Squid containers
-                               repeat=2)
+consist.add_unit(type = CargoSprinter,
+                 weight = 46,
+                 vehicle_length = 7,
+                 capacity = 36, # matched to 1.5x standard Road Hog and Squid containers
+                 repeat = 2)
 
-consist.add_model_variant(start_date=0,
-                          end_date=1986,
+consist.add_model_variant(start_date = 0,
+                          end_date = 1986,
                           graphics_processor = consist.graphics_processors)

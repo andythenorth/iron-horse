@@ -10,11 +10,11 @@ consist = EngineConsist(id = 'oribi',
               type_base_running_cost_points = -28, # dibble running costs for game balance
               intro_date = 1960)
 
-consist.add_unit(DieselRailcar(consist = consist,
+consist.add_unit(type = DieselRailcar,
                         weight = 65,
                         vehicle_length = 8,
                         capacity_pax = 30,
-                        spriterow_num = 0))
+                        spriterow_num = 0)
 
-consist.add_model_variant(start_date=0,
-                       end_date=global_constants.max_game_date)
+consist.add_model_variant(start_date = 0,
+                       end_date = global_constants.max_game_date)

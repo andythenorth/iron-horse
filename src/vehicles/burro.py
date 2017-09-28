@@ -10,10 +10,10 @@ consist = EngineConsist(id = 'burro',
               type_base_running_cost_points = -15, # dibble running costs for game balance
               intro_date = 1850)
 
-consist.add_unit(SteamLoco(consist = consist,
+consist.add_unit(type = SteamLoco,
                         weight = 40,
                         vehicle_length = 6,
-                        spriterow_num = 0))
+                        spriterow_num = 0)
 
-consist.add_model_variant(start_date=0,
-                       end_date=global_constants.max_game_date)
+consist.add_model_variant(start_date = 0,
+                       end_date = global_constants.max_game_date)

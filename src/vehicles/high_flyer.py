@@ -10,15 +10,15 @@ consist = EngineConsist(id = 'high_flyer',
               buy_cost = 47,
               vehicle_generation = 2)
 
-consist.add_unit(SteamLoco(consist = consist,
-                        weight = 90,
-                        vehicle_length = 7,
-                        spriterow_num = 0))
+consist.add_unit(type = SteamLoco,
+                 weight = 90,
+                 vehicle_length = 7,
+                 spriterow_num = 0)
 
-consist.add_unit(SteamLocoTender(consist = consist,
-                        weight = 30,
-                        vehicle_length = 3,
-                        spriterow_num = 1))
+consist.add_unit(type = SteamLocoTender,
+                 weight = 30,
+                 vehicle_length = 3,
+                 spriterow_num = 1)
 
-consist.add_model_variant(start_date=0,
-                       end_date=global_constants.max_game_date)
+consist.add_model_variant(start_date = 0,
+                       end_date = global_constants.max_game_date)

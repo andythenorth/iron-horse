@@ -12,13 +12,13 @@ consist = EngineConsist(id = 'hudswell',
               type_base_running_cost_points = 0, # dibble running costs for game balance
               intro_date = 1910)
 
-consist.add_unit(SteamLoco(consist = consist,
-                        weight = 45,
-                        vehicle_length = 7,
-                        spriterow_num = 0))
+consist.add_unit(type = SteamLoco,
+                 weight = 45,
+                 vehicle_length = 7,
+                 spriterow_num = 0)
 
-consist.add_model_variant(start_date=0,
-                       end_date=global_constants.max_game_date)
+consist.add_model_variant(start_date = 0,
+                          end_date = global_constants.max_game_date)
 
-consist.add_model_variant(start_date=0,
-                       end_date=global_constants.max_game_date)
+consist.add_model_variant(start_date = 0,
+                          end_date = global_constants.max_game_date)

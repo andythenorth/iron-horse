@@ -4,19 +4,19 @@ from train import BoxConsistShort, BoxConsistLong, BoxCar
 def main():
     #--------------- pony ----------------------------------------------------------------------
     consist = BoxConsistShort(roster = 'pony',
-                         base_numeric_id = 1780,
-                         vehicle_generation = 1)
+                              base_numeric_id = 1780,
+                              vehicle_generation = 1)
 
-    consist.add_unit(BoxCar(consist = consist,
-                            capacity = 20,
-                            vehicle_length = 4))
+    consist.add_unit(type = BoxCar,
+                     capacity = 20,
+                     vehicle_length = 4)
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date,
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date,
                            graphics_processor=consist.graphics_processors['pass_through'])
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
+    consist.add_model_variant(start_date = 0,
+                              end_date = global_constants.max_game_date,
                               graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
@@ -24,16 +24,16 @@ def main():
                               base_numeric_id = 550,
                               vehicle_generation = 2)
 
-    consist.add_unit(BoxCar(consist = consist,
+    consist.add_unit(type = BoxCar,
                             capacity = 20,
-                            vehicle_length = 4))
+                            vehicle_length = 4)
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
+    consist.add_model_variant(start_date = 0,
+                              end_date = global_constants.max_game_date,
                               graphics_processor=consist.graphics_processors['pass_through'])
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
+    consist.add_model_variant(start_date = 0,
+                              end_date = global_constants.max_game_date,
                               graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
@@ -41,16 +41,16 @@ def main():
                               base_numeric_id = 560,
                               vehicle_generation = 3)
 
-    consist.add_unit(BoxCar(consist = consist,
+    consist.add_unit(type = BoxCar,
                             capacity = 35,
-                            vehicle_length = 4))
+                            vehicle_length = 4)
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date,
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date,
                            graphics_processor=consist.graphics_processors['pass_through'])
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date,
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date,
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
@@ -58,16 +58,16 @@ def main():
                              base_numeric_id = 2340,
                              vehicle_generation = 3)
 
-    consist.add_unit(BoxCar(consist = consist,
+    consist.add_unit(type = BoxCar,
                             capacity = 55,
-                            vehicle_length = 8))
+                            vehicle_length = 8)
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
+    consist.add_model_variant(start_date = 0,
+                              end_date = global_constants.max_game_date,
                               graphics_processor=consist.graphics_processors['pass_through'])
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
+    consist.add_model_variant(start_date = 0,
+                              end_date = global_constants.max_game_date,
                               graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
@@ -75,16 +75,16 @@ def main():
                              base_numeric_id = 570,
                              vehicle_generation = 4)
 
-    consist.add_unit(BoxCar(consist = consist,
+    consist.add_unit(type = BoxCar,
                                 capacity = 55,
-                            vehicle_length = 8))
+                            vehicle_length = 8)
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date,
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date,
                            graphics_processor=consist.graphics_processors['pass_through'])
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date,
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date,
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
@@ -93,16 +93,16 @@ def main():
                          vehicle_generation = 1,
                          track_type = 'NG')
 
-    consist.add_unit(BoxCar(consist = consist,
+    consist.add_unit(type = BoxCar,
                             capacity = 12,
-                            vehicle_length = 4))
+                            vehicle_length = 4)
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date,
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date,
                            graphics_processor=consist.graphics_processors['pass_through'])
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date,
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date,
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
@@ -111,16 +111,16 @@ def main():
                         base_numeric_id = 590,
                         vehicle_generation = 1)
 
-    consist.add_unit(BoxCar(consist = consist,
+    consist.add_unit(type = BoxCar,
                             capacity = 25,
-                            vehicle_length = 5))
+                            vehicle_length = 5)
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date,
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date,
                            graphics_processor=consist.graphics_processors['pass_through'])
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date,
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date,
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
@@ -128,16 +128,16 @@ def main():
                          base_numeric_id = 600,
                          vehicle_generation = 2)
 
-    consist.add_unit(BoxCar(consist = consist,
+    consist.add_unit(type = BoxCar,
                             capacity = 45,
-                            vehicle_length = 6))
+                            vehicle_length = 6)
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date,
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date,
                            graphics_processor=consist.graphics_processors['pass_through'])
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date,
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date,
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
@@ -145,16 +145,16 @@ def main():
                          base_numeric_id = 610,
                          vehicle_generation = 3)
 
-    consist.add_unit(BoxCar(consist = consist,
+    consist.add_unit(type = BoxCar,
                             capacity = 65,
-                            vehicle_length = 7))
+                            vehicle_length = 7)
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date,
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date,
                            graphics_processor=consist.graphics_processors['pass_through'])
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date,
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date,
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
@@ -163,16 +163,16 @@ def main():
                         vehicle_generation = 1,
                                   track_type = 'NG')
 
-    consist.add_unit(BoxCar(consist = consist,
+    consist.add_unit(type = BoxCar,
                             capacity = 20,
-                            vehicle_length = 6))
+                            vehicle_length = 6)
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date,
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date,
                            graphics_processor=consist.graphics_processors['pass_through'])
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date,
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date,
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
@@ -181,16 +181,16 @@ def main():
                          vehicle_generation = 2,
                          track_type = 'NG')
 
-    consist.add_unit(BoxCar(consist = consist,
+    consist.add_unit(type = BoxCar,
                             capacity = 35,
-                            vehicle_length = 6))
+                            vehicle_length = 6)
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date,
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date,
                            graphics_processor=consist.graphics_processors['pass_through'])
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date,
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date,
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
@@ -199,16 +199,16 @@ def main():
                          base_numeric_id = 1750,
                          vehicle_generation = 1)
 
-    consist.add_unit(BoxCar(consist = consist,
+    consist.add_unit(type = BoxCar,
                             capacity = 55,
-                            vehicle_length = 6))
+                            vehicle_length = 6)
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date,
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date,
                            graphics_processor=consist.graphics_processors['pass_through'])
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date,
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date,
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
@@ -216,16 +216,16 @@ def main():
                          base_numeric_id = 1740,
                          vehicle_generation = 2)
 
-    consist.add_unit(BoxCar(consist = consist,
+    consist.add_unit(type = BoxCar,
                             capacity = 70,
-                            vehicle_length = 8))
+                            vehicle_length = 8)
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date,
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date,
                            graphics_processor=consist.graphics_processors['pass_through'])
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date,
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date,
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
@@ -234,16 +234,16 @@ def main():
                          vehicle_generation = 1,
                          track_type = 'NG')
 
-    consist.add_unit(BoxCar(consist = consist,
+    consist.add_unit(type = BoxCar,
                             capacity = 20,
-                            vehicle_length = 5))
+                            vehicle_length = 5)
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date,
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date,
                            graphics_processor=consist.graphics_processors['pass_through'])
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date,
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date,
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
@@ -252,16 +252,16 @@ def main():
                          vehicle_generation = 2,
                          track_type = 'NG')
 
-    consist.add_unit(BoxCar(consist = consist,
+    consist.add_unit(type = BoxCar,
                             capacity = 30,
-                            vehicle_length = 6))
+                            vehicle_length = 6)
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date,
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date,
                            graphics_processor=consist.graphics_processors['pass_through'])
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date,
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date,
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
@@ -270,16 +270,16 @@ def main():
                          vehicle_generation = 3,
                          track_type = 'NG')
 
-    consist.add_unit(BoxCar(consist = consist,
+    consist.add_unit(type = BoxCar,
                             capacity = 40,
-                            vehicle_length = 8))
+                            vehicle_length = 8)
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date,
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date,
                            graphics_processor=consist.graphics_processors['pass_through'])
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date,
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date,
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 

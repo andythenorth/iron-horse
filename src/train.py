@@ -66,7 +66,8 @@ class Consist(object):
         variant_num = len(self.model_variants) # this will never ever ever be flakey and unreliable, right?
         self.model_variants.append(ModelVariant(start_date, end_date, graphics_processor, variant_num, visual_effect_offset))
 
-    def add_unit(self, vehicle, repeat=1):
+    def add_unit(self, type, repeat=1, **kwargs):
+        vehicle = type(consist=self, **kwargs)
         count = len(set(self.units))
         if count == 0:
             vehicle.id = self.id # first vehicle gets no numeric id suffix - for compatibility with buy menu list ids etc

@@ -8,12 +8,12 @@ def main():
                                vehicle_generation = 1,
                                speedy = True)
 
-    consist.add_unit(MailCar(consist = consist,
+    consist.add_unit(type = MailCar,
                              capacity = 15,
-                             vehicle_length = 6))
+                             vehicle_length = 6)
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date)
+    consist.add_model_variant(start_date = 0,
+                              end_date = global_constants.max_game_date)
 
 
     consist = MailConsist(roster = 'pony',
@@ -21,12 +21,12 @@ def main():
                               vehicle_generation = 2,
                                               speedy = True)
 
-    consist.add_unit(MailCar(consist = consist,
+    consist.add_unit(type = MailCar,
                              capacity = 25,
-                             vehicle_length = 6))
+                             vehicle_length = 6)
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date)
+    consist.add_model_variant(start_date = 0,
+                              end_date = global_constants.max_game_date)
 
 
     consist = MailConsist(roster = 'pony',
@@ -34,12 +34,12 @@ def main():
                               vehicle_generation = 3,
                                               speedy = True)
 
-    consist.add_unit(MailCar(consist = consist,
+    consist.add_unit(type = MailCar,
                              capacity = 40,
-                             vehicle_length = 8))
+                             vehicle_length = 8)
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date)
+    consist.add_model_variant(start_date = 0,
+                              end_date = global_constants.max_game_date)
 
 
     consist = MailConsist(roster = 'pony',
@@ -47,12 +47,12 @@ def main():
                               vehicle_generation = 1,
                                               track_type = 'NG')
 
-    consist.add_unit(MailCar(consist = consist,
+    consist.add_unit(type = MailCar,
                              capacity = 24,
-                             vehicle_length = 5))
+                             vehicle_length = 5)
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date)
+    consist.add_model_variant(start_date = 0,
+                              end_date = global_constants.max_game_date)
 
     """
     #--------------- llama ----------------------------------------------------------------------
@@ -61,12 +61,12 @@ def main():
                           vehicle_generation = 1,
                           speedy = True)
 
-    consist.add_unit(MailCar(consist = consist,
+    consist.add_unit(type = MailCar,
                             capacity = 30,
-                            vehicle_length = 7))
+                            vehicle_length = 7)
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date)
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date)
 
 
     consist = MailConsist(roster = 'llama',
@@ -74,12 +74,12 @@ def main():
                           vehicle_generation = 2,
                           speedy = True)
 
-    consist.add_unit(MailCar(consist = consist,
+    consist.add_unit(type = MailCar,
                             capacity = 45,
-                            vehicle_length = 7))
+                            vehicle_length = 7)
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date)
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date)
 
 
     consist = MailConsist(roster = 'llama',
@@ -87,12 +87,12 @@ def main():
                           vehicle_generation = 3,
                           speedy = True)
 
-    consist.add_unit(MailCar(consist = consist,
+    consist.add_unit(type = MailCar,
                             capacity = 60,
-                            vehicle_length = 8))
+                            vehicle_length = 8)
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date)
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date)
 
 
     consist = MailConsist(roster = 'llama',
@@ -101,12 +101,12 @@ def main():
                           speedy = True,
                           track_type = 'NG')
 
-    consist.add_unit(MailCar(consist = consist,
+    consist.add_unit(type = MailCar,
                             capacity = 30,
-                            vehicle_length = 6))
+                            vehicle_length = 6)
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date)
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date)
 
 
     consist = MailConsist(roster = 'llama',
@@ -115,12 +115,12 @@ def main():
                           speedy = True,
                           track_type = 'NG')
 
-    consist.add_unit(MailCar(consist = consist,
+    consist.add_unit(type = MailCar,
                             capacity = 40,
-                            vehicle_length = 6))
+                            vehicle_length = 6)
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date)
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date)
 
 
     consist = MailConsist(roster = 'llama',
@@ -129,12 +129,12 @@ def main():
                           speedy = True,
                           track_type = 'NG')
 
-    consist.add_unit(MailCar(consist = consist,
+    consist.add_unit(type = MailCar,
                             capacity = 50,
-                            vehicle_length = 6))
+                            vehicle_length = 6)
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date)
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date)
 
     """
     #--------------- antelope ----------------------------------------------------------------------
@@ -143,12 +143,12 @@ def main():
                           vehicle_generation = 1,
                           speedy = True)
 
-    consist.add_unit(MailCar(consist = consist,
+    consist.add_unit(type = MailCar,
                             capacity = 40,
-                            vehicle_length = 8))
+                            vehicle_length = 8)
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date)
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date)
 
 
     consist = MailConsist(roster = 'antelope',
@@ -157,12 +157,12 @@ def main():
                           track_type = 'NG',
                           speedy = True)
 
-    consist.add_unit(MailCar(consist = consist,
+    consist.add_unit(type = MailCar,
                             capacity = 20,
-                            vehicle_length = 5))
+                            vehicle_length = 5)
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date)
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date)
 
 
     consist = MailConsist(roster = 'antelope',
@@ -171,9 +171,9 @@ def main():
                           track_type = 'NG',
                           speedy = True)
 
-    consist.add_unit(MailCar(consist = consist,
+    consist.add_unit(type = MailCar,
                             capacity = 30,
-                            vehicle_length = 8))
+                            vehicle_length = 8)
 
-    consist.add_model_variant(start_date=0,
-                           end_date=global_constants.max_game_date)
+    consist.add_model_variant(start_date = 0,
+                           end_date = global_constants.max_game_date)
