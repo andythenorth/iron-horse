@@ -588,33 +588,6 @@ class CabooseConsistLong(CabooseConsistBase):
         super().__init__(**kwargs)
 
 
-class CoalConsist(WagonConsist):
-    """
-    Specialist coal (and coke) transporter
-    """
-    def __init__(self, **kwargs):
-        self.base_id = 'coal_car'
-        super().__init__(**kwargs)
-        self.template = 'car_with_visible_cargo.pynml'
-        self.cargo_graphics_mappings = {}
-        self.num_cargo_rows = 1
-        self.generic_cargo_rows = [0]
-        self.class_refit_groups = []
-        self.label_refits_allowed = ['COAL', 'COKE']
-        self.label_refits_disallowed = []
-        self.autorefit = True
-        self.default_cargo = 'WOOD'
-        self.default_capacity_type = 'capacity_freight'
-        self.loading_speed_multiplier = 2
-
-    @property
-    def graphics_processors(self):
-        options = {'template': self.id + '_template_0.png'}
-        pass_through = GraphicsProcessorFactory('pass_through_pipeline', options)
-        swap_company_colours = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
-        return {'pass_through': pass_through, 'swap_company_colours': swap_company_colours}
-
-
 class CoveredHopperConsist(WagonConsist):
     """
     Bulk powder / pellet cargos.
