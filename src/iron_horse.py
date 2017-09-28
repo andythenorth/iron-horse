@@ -69,9 +69,6 @@ log_cars.main()
 from vehicles import luxury_passenger_cars
 luxury_passenger_cars.main()
 
-from vehicles import mail_box_cars
-mail_box_cars.main()
-
 from vehicles import mail_cars
 mail_cars.main()
 

@@ -5,9 +5,9 @@ from train import HopperConsist, FreightCar
 def main():
     #--------------- pony ----------------------------------------------------------------------
     consist = HopperConsist(roster='pony',
-                                 base_numeric_id=1070,
-                                 gen=3,
-                                 subtype='A')
+                            base_numeric_id=1070,
+                            gen=3,
+                            subtype='A')
 
     consist.add_unit(type=FreightCar,
                      capacity=20,
@@ -22,9 +22,9 @@ def main():
                               graphics_processor=consist.graphics_processors['swap_company_colours'])
 
     consist = HopperConsist(roster='pony',
-                                base_numeric_id=2330,
-                                gen=3,
-                                subtype='B')
+                            base_numeric_id=2330,
+                            gen=3,
+                            subtype='B')
 
     consist.add_unit(type=FreightCar,
                      capacity=30,
@@ -39,9 +39,9 @@ def main():
                               graphics_processor=consist.graphics_processors['swap_company_colours'])
 
     consist = HopperConsist(roster='pony',
-                                 base_numeric_id=1080,
-                                 gen=4,
-                                 subtype='A')
+                            base_numeric_id=1080,
+                            gen=4,
+                            subtype='A')
 
     consist.add_unit(type=FreightCar,
                      capacity=30,
@@ -56,9 +56,9 @@ def main():
                               graphics_processor=consist.graphics_processors['swap_company_colours'])
 
     consist = HopperConsist(roster='pony',
-                                base_numeric_id=1090,
-                                gen=4,
-                                subtype='B')
+                            base_numeric_id=1090,
+                            gen=4,
+                            subtype='B')
 
     consist.add_unit(type=FreightCar,
                      capacity=40,
@@ -74,9 +74,9 @@ def main():
 
     #--------------- llama ----------------------------------------------------------------------
     consist = HopperConsist(roster='llama',
-                                 base_numeric_id=1100,
-                                 gen=2,
-                                 subtype='A')
+                            base_numeric_id=1100,
+                            gen=2,
+                            subtype='A')
 
     consist.add_unit(type=FreightCar,
                      capacity=55,
@@ -91,9 +91,9 @@ def main():
                               graphics_processor=consist.graphics_processors['swap_company_colours'])
 
     consist = HopperConsist(roster='llama',
-                                 base_numeric_id=1110,
-                                 gen=3,
-                                 subtype='A')
+                            base_numeric_id=1110,
+                            gen=3,
+                            subtype='A')
 
     consist.add_unit(type=FreightCar,
                      capacity=75,
@@ -108,10 +108,10 @@ def main():
                               graphics_processor=consist.graphics_processors['swap_company_colours'])
 
     consist = HopperConsist(roster='llama',
-                                 base_numeric_id=1120,
-                                 gen=2,
-                                 subtype='A',
-                                 track_type='NG')
+                            base_numeric_id=1120,
+                            gen=2,
+                            subtype='A',
+                            track_type='NG')
 
     consist.add_unit(type=FreightCar,
                      capacity=45,
@@ -126,10 +126,10 @@ def main():
                               graphics_processor=consist.graphics_processors['swap_company_colours'])
 
     consist = HopperConsist(roster='llama',
-                                 base_numeric_id=1130,
-                                 gen=3,
-                                 subtype='A',
-                                 track_type='NG')
+                            base_numeric_id=1130,
+                            gen=3,
+                            subtype='A',
+                            track_type='NG')
 
     consist.add_unit(type=FreightCar,
                      capacity=65,
@@ -145,9 +145,9 @@ def main():
 
     #--------------- antelope ----------------------------------------------------------------------
     consist = HopperConsist(roster='antelope',
-                                 base_numeric_id=1630,
-                                 gen=1,
-                                 subtype='A')
+                            base_numeric_id=1630,
+                            gen=1,
+                            subtype='A')
 
     consist.add_unit(type=FreightCar,
                      capacity=60,
@@ -162,9 +162,9 @@ def main():
                               graphics_processor=consist.graphics_processors['swap_company_colours'])
 
     consist = HopperConsist(roster='antelope',
-                                 base_numeric_id=1660,
-                                 gen=2,
-                                 subtype='A')
+                            base_numeric_id=1660,
+                            gen=2,
+                            subtype='A')
 
     consist.add_unit(type=FreightCar,
                      capacity=75,
@@ -180,10 +180,10 @@ def main():
 
     # no gen 1 NG hopper in Antelope, straight to gen 2
     consist = HopperConsist(roster='antelope',
-                                 base_numeric_id=1890,
-                                 gen=2,
-                                 subtype='A',
-                                 track_type='NG')
+                            base_numeric_id=1890,
+                            gen=2,
+                            subtype='A',
+                            track_type='NG')
 
     consist.add_unit(type=FreightCar,
                      capacity=35,

@@ -858,17 +858,6 @@ class MailConsist(MailConsistBase):
         self.title = '[Mail Car]'
 
 
-class MailBoxConsist(MailConsistBase):
-    """
-    Mail Box Car.
-    Looks more utilitarian and secure than a mail car, no windows.
-    """
-    def __init__(self, **kwargs):
-        self.base_id = 'mail_box_car'
-        super().__init__(**kwargs)
-        self.title = '[Mail Box Car]'
-
-
 class MailHighSpeedConsist(MailConsistBase):
     """
     No speed limit (possibly more limited set of cargos? - undecided).
