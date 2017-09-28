@@ -9,7 +9,7 @@ consist = EngineConsist(id = 'standard',
               speed = 65,
               type_base_buy_cost_points = 18, # dibble buy cost for game balance
               vehicle_life = 40,
-              intro_date = 1860)
+              vehicle_generation = 1)
 
 consist.add_unit(SteamLoco(consist = consist,
                         weight = 62,

@@ -9,7 +9,7 @@ consist = EngineConsist(id = 'super_shoebox',
               type_base_buy_cost_points = 0, # dibble buy cost for game balance
               type_base_running_cost_points = -28, # dibble run cost for game balance
               vehicle_life = 40,
-              intro_date = 2020,
+              vehicle_generation = 6,
               power_by_railtype = {'RAIL': 1250, 'ELRL': 2500})
 
 consist.add_unit(ElectroDieselLoco(consist = consist,

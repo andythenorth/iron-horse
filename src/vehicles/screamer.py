@@ -8,7 +8,7 @@ consist = EngineConsist(id = 'screamer',
               speed = 125,
               buy_cost = 135,
               vehicle_life = 40,
-              intro_date = 1985,
+              intro_date = 1985, # explicit intro date by design
               dual_headed = True)
 
 consist.add_unit(DieselLoco(consist = consist,

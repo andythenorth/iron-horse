@@ -41,6 +41,7 @@ class Consist(object):
         self.track_type = kwargs.get('track_type', 'RAIL')
         self.tractive_effort_coefficient = kwargs.get('tractive_effort_coefficient', 0.3) # 0.3 is recommended default value
         self._speed = kwargs.get('speed', None) # private var, can be used to over-rides default (per generation, per class) speed
+        self.vehicle_generation = kwargs.get('vehicle_generation', None) # optional
         # used by multi-mode engines such as electro-diesel, otherwise ignored
         self.power_by_railtype = kwargs.get('power_by_railtype', None)
         self.visual_effect_override_by_railtype = kwargs.get('visual_effect_override_by_railtype', None)
@@ -467,7 +468,6 @@ class WagonConsist(Consist):
 
         id = self.get_wagon_id(self.base_id, **kwargs)
         kwargs['id'] = id
-        self.vehicle_generation = kwargs.get('vehicle_generation', None)
         super().__init__(**kwargs)
 
         roster_obj.register_wagon_consist(self)

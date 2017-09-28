@@ -9,7 +9,7 @@ consist = EngineConsist(id = 'wizzo',
               type_base_buy_cost_points = 30, # dibble buy cost for game balance
               type_base_running_cost_points = 30, # dibble running costs for game balance
               vehicle_life = 40,
-              intro_date = 1960)
+              vehicle_generation = 4)
 
 consist.add_unit(DieselLoco(consist = consist,
                         weight = 80,

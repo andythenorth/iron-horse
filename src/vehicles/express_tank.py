@@ -10,7 +10,7 @@ consist = EngineConsist(id = 'express_tank',
               type_base_buy_cost_points = -2, # dibble buy cost for game balance
               type_base_running_cost_points = -6, # dibble running costs for game balance
               vehicle_life = 40,
-              intro_date = 1900)
+              vehicle_generation = 3)
 
 consist.add_unit(SteamLoco(consist = consist,
                         weight = 57,
