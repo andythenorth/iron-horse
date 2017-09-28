@@ -7,8 +7,7 @@ def main():
     consist = PassengerConsist(roster='pony',
                                base_numeric_id=740,
                                gen=1,
-                               subtype='A',
-                               speedy=True)
+                               subtype='A')
 
     consist.add_unit(type=PassengerCar,
                      capacity=25,
@@ -20,8 +19,7 @@ def main():
     consist = PassengerConsist(roster='pony',
                                base_numeric_id=750,
                                gen=2,
-                               subtype='A',
-                               speedy=True)
+                               subtype='A')
 
     consist.add_unit(type=PassengerCar,
                      capacity=55,
@@ -33,8 +31,7 @@ def main():
     consist = PassengerConsist(roster='pony',
                                base_numeric_id=760,
                                gen=3,
-                               subtype='A',
-                               speedy=True)
+                               subtype='A')
 
     consist.add_unit(type=PassengerCar,
                      capacity=75,
@@ -60,8 +57,7 @@ def main():
     consist = PassengerConsist(roster='llama',
                                base_numeric_id=780,
                                gen=1,
-                               subtype='A',
-                               speedy=True)
+                               subtype='A')
 
     consist.add_unit(type=PassengerCar,
                      capacity=40,
@@ -73,8 +69,7 @@ def main():
     consist = PassengerConsist(roster='llama',
                                base_numeric_id=790,
                                gen=2,
-                               subtype='A',
-                               speedy=True)
+                               subtype='A')
 
     consist.add_unit(type=PassengerCar,
                      capacity=50,
@@ -86,8 +81,7 @@ def main():
     consist = PassengerConsist(roster='llama',
                                base_numeric_id=800,
                                gen=3,
-                               subtype='A',
-                               speedy=True)
+                               subtype='A')
 
     consist.add_unit(type=PassengerCar,
                      capacity=60,
@@ -100,7 +94,6 @@ def main():
                                base_numeric_id=810,
                                gen=1,
                                subtype='A',
-                               speedy=True,
                                track_type='NG')
 
     consist.add_unit(type=PassengerCar,
@@ -114,7 +107,6 @@ def main():
                                base_numeric_id=1350,
                                gen=2,
                                subtype='A',
-                               speedy=True,
                                track_type='NG')
 
     consist.add_unit(type=PassengerCar,
@@ -128,7 +120,6 @@ def main():
                                base_numeric_id=1370,
                                gen=3,
                                subtype='A',
-                               speedy=True,
                                track_type='NG')
 
     consist.add_unit(type=PassengerCar,
@@ -142,8 +133,7 @@ def main():
     consist = PassengerConsist(roster='antelope',
                                base_numeric_id=1580,
                                gen=1,
-                               subtype='A',
-                               speedy=True)
+                               subtype='A')
 
     consist.add_unit(type=PassengerCar,
                      capacity=55,
@@ -155,8 +145,7 @@ def main():
     consist = PassengerConsist(roster='antelope',
                                base_numeric_id=1560,
                                gen=2,
-                               subtype='A',
-                               speedy=True)
+                               subtype='A')
 
     consist.add_unit(type=PassengerCar,
                      capacity=80,
@@ -169,7 +158,6 @@ def main():
                                base_numeric_id=2130,
                                gen=1,
                                subtype='A',
-                               speedy=True,
                                track_type='NG')
 
     consist.add_unit(type=PassengerCar,
@@ -183,7 +171,6 @@ def main():
                                base_numeric_id=1940,
                                gen=2,
                                subtype='A',
-                               speedy=True,
                                track_type='NG')
 
     consist.add_unit(type=PassengerCar,

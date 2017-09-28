@@ -7,8 +7,7 @@ def main():
     consist = EdiblesTankConsist(roster='pony',
                                  base_numeric_id=1190,
                                  gen=1,
-                                 subtype='A',
-                                 speedy=True)
+                                 subtype='A')
 
     consist.add_unit(type=FreightCar,
                      capacity=25,
@@ -27,8 +26,7 @@ def main():
     consist = EdiblesTankConsist(roster='pony',
                                  base_numeric_id=1200,
                                  gen=3,
-                                 subtype='A',
-                                 speedy=True)
+                                 subtype='A')
 
     consist.add_unit(type=FreightCar,
                      capacity=40,
@@ -65,8 +63,7 @@ def main():
     consist = EdiblesTankConsist(roster='llama',
                                  base_numeric_id=1220,
                                  gen=3,
-                                 subtype='A',
-                                 speedy=True)
+                                 subtype='A')
 
     consist.add_unit(type=FreightCar,
                      capacity=55,
@@ -101,8 +98,7 @@ def main():
     consist = EdiblesTankConsist(roster='antelope',
                                  base_numeric_id=1700,
                                  gen=2,
-                                 subtype='A',
-                                 speedy=True)
+                                 subtype='A')
 
     consist.add_unit(type=FreightCar,
                      capacity=60,

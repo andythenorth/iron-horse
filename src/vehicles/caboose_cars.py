@@ -8,8 +8,7 @@ def main():
                              roster='pony',
                              base_numeric_id=1280,
                              gen=1,
-                             subtype='A',
-                             speedy=True)
+                             subtype='A')
 
     consist.add_unit(type=FreightCar,
                      capacity=0,
@@ -22,8 +21,7 @@ def main():
                              roster='pony',
                              base_numeric_id=2210,
                              gen=1,
-                             subtype='B',
-                             speedy=True)
+                             subtype='B')
 
     consist.add_unit(type=FreightCar,
                      capacity=0,
@@ -52,8 +50,7 @@ def main():
     consist = CabooseConsist(title = '[Caboose Car]',
                              roster = 'llama',
                              base_numeric_id = 1300,
-                             gen = 1,
-                                            speedy = True)
+                             gen = 1)
 
     consist.add_unit(type = FreightCar,
                             capacity = 0,
@@ -67,8 +64,7 @@ def main():
     consist = CabooseConsist(title = '[Caboose Car]',
                              roster = 'antelope',
                              base_numeric_id = 1780,
-                             gen = 1,
-                                            speedy = True)
+                             gen = 1)
 
     consist.add_unit(type = FreightCar,
                            capacity = 0,
@@ -82,7 +78,6 @@ def main():
                              roster = 'antelope',
                              base_numeric_id = 1880,
                              gen = 1,
-                                            speedy = True,
                              track_type = 'NG')
 
     consist.add_unit(type = FreightCar,

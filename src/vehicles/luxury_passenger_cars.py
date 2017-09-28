@@ -8,8 +8,7 @@ def main():
                                      base_numeric_id=2250,
                                      gen=1,
                                      subtype='A',
-                                     intro_date=1860,
-                                     speedy=True)
+                                     intro_date=1860)
 
     consist.add_unit(type=PassengerCar,
                      capacity=25,
@@ -23,8 +22,7 @@ def main():
                                      base_numeric_id=2260,
                                      gen=2,
                                      subtype='A',
-                                     intro_date=1900,
-                                     speedy=True)
+                                     intro_date=1900)
 
     consist.add_unit(type=PassengerCar,
                      capacity=55,
@@ -38,8 +36,7 @@ def main():
                                      base_numeric_id=2270,
                                      gen=3,
                                      subtype='A',
-                                     intro_date=1960,
-                                     speedy=True)
+                                     intro_date=1960)
 
     consist.add_unit(type=PassengerCar,
                      capacity=75,

@@ -7,8 +7,7 @@ def main():
     consist = IntermodalConsist(roster='pony',
                                 base_numeric_id=1060,
                                 gen=3,
-                                subtype='A',
-                                speedy=True)
+                                subtype='A')
 
     consist.add_unit(type=FreightCar,
                      capacity=40,  # was matched for some time to RH and Squid containers, but blah
