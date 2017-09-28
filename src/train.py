@@ -478,23 +478,15 @@ class WagonConsist(Consist):
             roster_obj = self.get_roster(self.roster_id)
             # eh this is ugly, but it works
             if self.track_type == 'NG':
-                if self.wagon_generation == 1:
-                    return roster_obj.speeds['ng_gen_1_wagon_speeds'][self.speedy]
-                elif self.wagon_generation == 2:
-                    return roster_obj.speeds['ng_gen_2_wagon_speeds'][self.speedy]
-                elif self.wagon_generation == 3:
-                    return roster_obj.speeds['ng_gen_3_wagon_speeds'][self.speedy]
-                elif self.wagon_generation == 4:
-                    return roster_obj.speeds['ng_gen_4_wagon_speeds'][self.speedy]
+                if self.speedy:
+                    return roster_obj.speeds['express_ng'][self.wagon_generation - 1]
+                else:
+                    return roster_obj.speeds['freight_ng'][self.wagon_generation - 1]
             else:
-                if self.wagon_generation == 1:
-                    return roster_obj.speeds['gen_1_wagon_speeds'][self.speedy]
-                elif self.wagon_generation == 2:
-                    return roster_obj.speeds['gen_2_wagon_speeds'][self.speedy]
-                elif self.wagon_generation == 3:
-                    return roster_obj.speeds['gen_3_wagon_speeds'][self.speedy]
-                elif self.wagon_generation == 4:
-                    return roster_obj.speeds['gen_4_wagon_speeds'][self.speedy]
+                if self.speedy:
+                    return roster_obj.speeds['express'][self.wagon_generation - 1]
+                else:
+                    return roster_obj.speeds['freight'][self.wagon_generation - 1]
 
     @property
     def buy_cost(self):
