@@ -433,7 +433,6 @@ class WagonConsist(Consist):
         # self.template = '' # provide in subclass
         # self.default_cargo = '' # provide in subclass
         # some of these are probably redundant, as they need to be handled in the subclass
-        self.track_type = kwargs.get('track_type', 'RAIL') # !! might be redundant? needs cleaning up ??
         self.num_cargo_rows = kwargs.get('num_cargo_rows', None)
         self.generic_cargo_rows = kwargs.get('generic_cargo_rows', [0]) # optional, the rows to use if no cargo label is matched
         self.cargo_graphics_mappings = kwargs.get('cargo_graphics_mappings', None)
