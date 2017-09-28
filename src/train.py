@@ -639,6 +639,48 @@ class CoveredHopperConsist(WagonConsist):
         return {'pass_through': pass_through, 'swap_company_colours': swap_company_colours}
 
 
+class DumpConsist(WagonConsist):
+    """
+    Limited set of bulk (mineral) cargos, same set as hopper cars.
+    """
+    def __init__(self, **kwargs):
+        self.base_id = 'dump_car'
+        super().__init__(**kwargs)
+        self.template = 'car_with_visible_cargo.pynml'
+        # cargo rows 0 indexed - 0 = first set of loaded sprites
+        # GRVL is in first position as it is re-used for generic unknown cargos
+        # hoppers *do* transport SCMT in this set, realism is not relevant here, went back and forth on this a few times :P
+        self.cargo_graphics_mappings = {'GRVL': [0], 'IORE': [1], 'CORE': [2], 'AORE': [3],
+                                   'SAND': [4], 'COAL': [5], 'CLAY': [6], 'SCMT': [7], 'PHOS': [8],
+                                   'CASS': [9], 'LIME': [10], 'MNO2': [11], 'NITR': [12],
+                                   'PORE': [13], 'POTA': [14], 'SGBT': [15]}
+        self.num_cargo_rows = 16 # update if more cargo graphic variations are added
+        self.class_refit_groups = ['hopper_freight']
+        self.label_refits_allowed = list(self.cargo_graphics_mappings.keys())
+        self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_hopper_freight']
+        self.autorefit = True
+        self.default_cargo = 'COAL'
+        self.default_capacity_type = 'capacity_freight'
+        self.loading_speed_multiplier = 2
+
+    @property
+    def graphics_processors(self):
+        recolour_maps = graphics_utils.get_bulk_cargo_recolour_maps()
+        graphics_options_master = {'template': '',
+                                   'recolour_maps': (recolour_maps),
+                                   'copy_block_top_offset': 30,
+                                   'num_rows_per_unit': 2,
+                                   'num_unit_types': 1}
+
+        graphics_options_1 = dict((k, v) for (k, v) in graphics_options_master.items())
+        graphics_options_1['template'] = self.id + '_template_0.png'
+        graphics_options_2 = dict((k, v) for (k, v) in graphics_options_1.items())
+        graphics_options_2['swap_company_colours'] = True
+        pass_through = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_1)
+        swap_company_colours = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_2)
+        return {'pass_through': pass_through, 'swap_company_colours': swap_company_colours}
+
+
 class EdiblesTankConsist(WagonConsist):
     """
     Wine, milk, water etc.
@@ -1030,48 +1072,6 @@ class ReeferConsist(WagonConsist):
         options = {'template': self.id + '_template_0.png'}
         pass_through = GraphicsProcessorFactory('pass_through_pipeline', options)
         swap_company_colours = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
-        return {'pass_through': pass_through, 'swap_company_colours': swap_company_colours}
-
-
-class RotaryGondolaConsist(WagonConsist):
-    """
-    Limited set of bulk (mineral) cargos, same set as hopper cars.
-    """
-    def __init__(self, **kwargs):
-        self.base_id = 'rotary_gondola_car'
-        super().__init__(**kwargs)
-        self.template = 'car_with_visible_cargo.pynml'
-        # cargo rows 0 indexed - 0 = first set of loaded sprites
-        # GRVL is in first position as it is re-used for generic unknown cargos
-        # hoppers *do* transport SCMT in this set, realism is not relevant here, went back and forth on this a few times :P
-        self.cargo_graphics_mappings = {'GRVL': [0], 'IORE': [1], 'CORE': [2], 'AORE': [3],
-                                   'SAND': [4], 'COAL': [5], 'CLAY': [6], 'SCMT': [7], 'PHOS': [8],
-                                   'CASS': [9], 'LIME': [10], 'MNO2': [11], 'NITR': [12],
-                                   'PORE': [13], 'POTA': [14], 'SGBT': [15]}
-        self.num_cargo_rows = 16 # update if more cargo graphic variations are added
-        self.class_refit_groups = ['hopper_freight']
-        self.label_refits_allowed = list(self.cargo_graphics_mappings.keys())
-        self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_hopper_freight']
-        self.autorefit = True
-        self.default_cargo = 'COAL'
-        self.default_capacity_type = 'capacity_freight'
-        self.loading_speed_multiplier = 2
-
-    @property
-    def graphics_processors(self):
-        recolour_maps = graphics_utils.get_bulk_cargo_recolour_maps()
-        graphics_options_master = {'template': '',
-                                   'recolour_maps': (recolour_maps),
-                                   'copy_block_top_offset': 30,
-                                   'num_rows_per_unit': 2,
-                                   'num_unit_types': 1}
-
-        graphics_options_1 = dict((k, v) for (k, v) in graphics_options_master.items())
-        graphics_options_1['template'] = self.id + '_template_0.png'
-        graphics_options_2 = dict((k, v) for (k, v) in graphics_options_1.items())
-        graphics_options_2['swap_company_colours'] = True
-        pass_through = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_1)
-        swap_company_colours = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_2)
         return {'pass_through': pass_through, 'swap_company_colours': swap_company_colours}
 
 

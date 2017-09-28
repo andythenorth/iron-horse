@@ -34,6 +34,5 @@ STR_NAME_SUFFIX_METAL_CAR                                       :Metallivaunu
 STR_NAME_SUFFIX_OPEN_CAR                                        :Avovaunu
 STR_NAME_SUFFIX_PASSENGER_CAR                                   :Matkustajavaunu
 STR_NAME_SUFFIX_REEFER_CAR                                      :Jäähdytysvaunu
-STR_NAME_SUFFIX_ROTARY_GONDOLA_CAR                              :Käännettävä avovaunu
 STR_NAME_SUFFIX_SUPPLIES_CAR                                    :Tarvikevaunu
 STR_NAME_SUFFIX_TANK_CAR                                        :Säiliövaunu

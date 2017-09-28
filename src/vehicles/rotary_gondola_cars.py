@@ -1,9 +1,9 @@
 import global_constants
-from train import RotaryGondolaConsist, Wagon
+from train import DumpConsist, Wagon
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
-    consist = RotaryGondolaConsist(title = '[Rotary Gondola Car]',
+    consist = DumpConsist(title = '[Dump Car]',
                             roster = 'pony',
                             base_numeric_id = 1340,
                             wagon_generation = 3,
@@ -24,7 +24,7 @@ def main():
                            graphics_processor=consist.graphics_processors['swap_company_colours'])
 
 
-    consist = RotaryGondolaConsist(title = '[Rotary Gondola Car]',
+    consist = DumpConsist(title = '[Dump Car]',
                             roster = 'pony',
                             base_numeric_id = 1810,
                             wagon_generation = 4,
