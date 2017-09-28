@@ -432,17 +432,6 @@ class WagonConsist(Consist):
         # self.base_id = '' # provide in subclass
         # self.template = '' # provide in subclass
         # self.default_cargo = '' # provide in subclass
-        # some of these are probably redundant, as they need to be handled in the subclass
-        self.num_cargo_rows = kwargs.get('num_cargo_rows', None)
-        self.generic_cargo_rows = kwargs.get('generic_cargo_rows', [0]) # optional, the rows to use if no cargo label is matched
-        self.cargo_graphics_mappings = kwargs.get('cargo_graphics_mappings', None)
-        self.class_refit_groups = kwargs.get('class_refit_groups', None)
-        self.label_refits_allowed = kwargs.get('label_refits_allowed', None) # use None here as default, forces explicit declaration in subclass
-        self.label_refits_disallowed = kwargs.get('label_refits_disallowed', None)
-        self.autorefit = kwargs.get('autorefit', None)
-        self.default_capacity_type = kwargs.get('default_capacity_type', None)
-        self.loading_speed_multiplier = kwargs.get('loading_speed_multiplier', 1)
-        self.cargo_age_period = kwargs.get('cargo_age_period', global_constants.CARGO_AGE_PERIOD)
         self.date_variant_var = kwargs.get('date_variant_var', None)
 
         # persist roster id for lookups, not roster obj directly, because of multiprocessing problems with object references
@@ -454,9 +443,20 @@ class WagonConsist(Consist):
         self.wagon_generation = kwargs.get('wagon_generation', None)
         super().__init__(**kwargs)
 
-        self.intro_date = 1860
-
         roster_obj.register_wagon_consist(self)
+
+        self.intro_date = 1860
+        self.default_capacity_type = kwargs.get('default_capacity_type', None)
+        # some of these are probably redundant, as they need to be handled in the subclass
+        self.num_cargo_rows = kwargs.get('num_cargo_rows', None)
+        self.generic_cargo_rows = kwargs.get('generic_cargo_rows', [0]) # optional, the rows to use if no cargo label is matched
+        self.cargo_graphics_mappings = kwargs.get('cargo_graphics_mappings', None)
+        self.class_refit_groups = kwargs.get('class_refit_groups', None)
+        self.label_refits_allowed = kwargs.get('label_refits_allowed', None) # use None here as default, forces explicit declaration in subclass
+        self.label_refits_disallowed = kwargs.get('label_refits_disallowed', None)
+        self.autorefit = kwargs.get('autorefit', None)
+        self.loading_speed_multiplier = kwargs.get('loading_speed_multiplier', 1)
+        self.cargo_age_period = kwargs.get('cargo_age_period', global_constants.CARGO_AGE_PERIOD)
 
         if kwargs.get('speed', None):
             self.speed = kwargs['speed']
