@@ -8,7 +8,8 @@ def main():
 
     consist = VehicleTransporterConsist(roster='pony',
                                         base_numeric_id=1530,
-                                        vehicle_generation=3)
+                                        gen=3,
+                                        subtype='A')
 
     consist.add_unit(type=FreightCar,
                      capacity=30,

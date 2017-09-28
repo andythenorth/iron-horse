@@ -6,7 +6,8 @@ def main():
     #--------------- pony ----------------------------------------------------------------------
     consist = OpenConsist(roster='pony',
                           base_numeric_id=820,
-                          vehicle_generation=1)
+                          gen=1,
+                          subtype='A')
 
     consist.add_unit(type=FreightCar,
                      capacity=20,
@@ -22,7 +23,8 @@ def main():
 
     consist = OpenConsist(roster='pony',
                           base_numeric_id=830,
-                          vehicle_generation=2)
+                          gen=2,
+                          subtype='A')
 
     consist.add_unit(type=FreightCar,
                      capacity=35,
@@ -38,7 +40,8 @@ def main():
 
     consist = OpenConsist(roster='pony',
                           base_numeric_id=840,
-                          vehicle_generation=3)
+                          gen=3,
+                          subtype='A')
 
     consist.add_unit(type=FreightCar,
                      capacity=55,
@@ -54,7 +57,8 @@ def main():
 
     consist = OpenConsist(roster='pony',
                           base_numeric_id=1450,
-                          vehicle_generation=4)
+                          gen=4,
+                          subtype='A')
 
     consist.add_unit(type=FreightCar,
                      capacity=55,
@@ -70,7 +74,8 @@ def main():
 
     consist = OpenConsist(roster='pony',
                           base_numeric_id=850,
-                          vehicle_generation=1,
+                          gen=1,
+                          subtype='A',
                           track_type='NG')
 
     consist.add_unit(type=FreightCar,
@@ -88,7 +93,8 @@ def main():
     #--------------- llama ----------------------------------------------------------------------
     consist = OpenConsist(roster='llama',
                           base_numeric_id=860,
-                          vehicle_generation=1)
+                          gen=1,
+                          subtype='A')
 
     consist.add_unit(type=FreightCar,
                      capacity=25,
@@ -104,7 +110,8 @@ def main():
 
     consist = OpenConsist(roster='llama',
                           base_numeric_id=1330,
-                          vehicle_generation=2)
+                          gen=2,
+                          subtype='A')
 
     consist.add_unit(type=FreightCar,
                      capacity=45,
@@ -120,7 +127,8 @@ def main():
 
     consist = OpenConsist(roster='llama',
                           base_numeric_id=870,
-                          vehicle_generation=1,
+                          gen=1,
+                          subtype='A',
                           track_type='NG')
 
     consist.add_unit(type=FreightCar,
@@ -137,7 +145,8 @@ def main():
 
     consist = OpenConsist(roster='llama',
                           base_numeric_id=1320,
-                          vehicle_generation=2,
+                          gen=2,
+                          subtype='A',
                           track_type='NG')
 
     consist.add_unit(type=FreightCar,
@@ -155,7 +164,8 @@ def main():
     #--------------- antelope ----------------------------------------------------------------------
     consist = OpenConsist(roster='antelope',
                           base_numeric_id=1760,
-                          vehicle_generation=1)
+                          gen=1,
+                          subtype='A')
 
     consist.add_unit(type=FreightCar,
                      capacity=55,
@@ -171,7 +181,8 @@ def main():
 
     consist = OpenConsist(roster='antelope',
                           base_numeric_id=1770,
-                          vehicle_generation=2)
+                          gen=2,
+                          subtype='A')
 
     consist.add_unit(type=FreightCar,
                      capacity=70,
@@ -187,7 +198,8 @@ def main():
 
     consist = OpenConsist(roster='antelope',
                           base_numeric_id=2090,
-                          vehicle_generation=1,
+                          gen=1,
+                          subtype='A',
                           track_type='NG')
 
     consist.add_unit(type=FreightCar,
@@ -204,7 +216,8 @@ def main():
 
     consist = OpenConsist(roster='antelope',
                           base_numeric_id=1830,
-                          vehicle_generation=2,
+                          gen=2,
+                          subtype='A',
                           track_type='NG')
 
     consist.add_unit(type=FreightCar,
@@ -221,7 +234,8 @@ def main():
 
     consist = OpenConsist(roster='antelope',
                           base_numeric_id=1820,
-                          vehicle_generation=3,
+                          gen=3,
+                          subtype='A',
                           track_type='NG')
 
     consist.add_unit(type=FreightCar,

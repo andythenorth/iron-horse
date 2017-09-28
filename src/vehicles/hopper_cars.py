@@ -6,7 +6,8 @@ def main():
     #--------------- pony ----------------------------------------------------------------------
     consist = HopperConsistShort(roster='pony',
                                  base_numeric_id=1070,
-                                 vehicle_generation=3)
+                                 gen=3,
+                                 subtype='A')
 
     consist.add_unit(type=FreightCar,
                      capacity=20,
@@ -22,7 +23,8 @@ def main():
 
     consist = HopperConsistLong(roster='pony',
                                 base_numeric_id=2330,
-                                vehicle_generation=3)
+                                gen=3,
+                                subtype='B')
 
     consist.add_unit(type=FreightCar,
                      capacity=30,
@@ -38,7 +40,8 @@ def main():
 
     consist = HopperConsistShort(roster='pony',
                                  base_numeric_id=1080,
-                                 vehicle_generation=4)
+                                 gen=4,
+                                 subtype='A')
 
     consist.add_unit(type=FreightCar,
                      capacity=30,
@@ -54,7 +57,8 @@ def main():
 
     consist = HopperConsistLong(roster='pony',
                                 base_numeric_id=1090,
-                                vehicle_generation=4)
+                                gen=4,
+                                subtype='B')
 
     consist.add_unit(type=FreightCar,
                      capacity=40,
@@ -71,7 +75,8 @@ def main():
     #--------------- llama ----------------------------------------------------------------------
     consist = HopperConsistShort(roster='llama',
                                  base_numeric_id=1100,
-                                 vehicle_generation=2)
+                                 gen=2,
+                                 subtype='A')
 
     consist.add_unit(type=FreightCar,
                      capacity=55,
@@ -87,7 +92,8 @@ def main():
 
     consist = HopperConsistShort(roster='llama',
                                  base_numeric_id=1110,
-                                 vehicle_generation=3)
+                                 gen=3,
+                                 subtype='A')
 
     consist.add_unit(type=FreightCar,
                      capacity=75,
@@ -103,7 +109,8 @@ def main():
 
     consist = HopperConsistShort(roster='llama',
                                  base_numeric_id=1120,
-                                 vehicle_generation=2,
+                                 gen=2,
+                                 subtype='A',
                                  track_type='NG')
 
     consist.add_unit(type=FreightCar,
@@ -120,7 +127,8 @@ def main():
 
     consist = HopperConsistShort(roster='llama',
                                  base_numeric_id=1130,
-                                 vehicle_generation=3,
+                                 gen=3,
+                                 subtype='A',
                                  track_type='NG')
 
     consist.add_unit(type=FreightCar,
@@ -138,7 +146,8 @@ def main():
     #--------------- antelope ----------------------------------------------------------------------
     consist = HopperConsistShort(roster='antelope',
                                  base_numeric_id=1630,
-                                 vehicle_generation=1)
+                                 gen=1,
+                                 subtype='A')
 
     consist.add_unit(type=FreightCar,
                      capacity=60,
@@ -154,7 +163,8 @@ def main():
 
     consist = HopperConsistShort(roster='antelope',
                                  base_numeric_id=1660,
-                                 vehicle_generation=2)
+                                 gen=2,
+                                 subtype='A')
 
     consist.add_unit(type=FreightCar,
                      capacity=75,
@@ -171,7 +181,8 @@ def main():
     # no gen 1 NG hopper in Antelope, straight to gen 2
     consist = HopperConsistShort(roster='antelope',
                                  base_numeric_id=1890,
-                                 vehicle_generation=2,
+                                 gen=2,
+                                 subtype='A',
                                  track_type='NG')
 
     consist.add_unit(type=FreightCar,

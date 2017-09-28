@@ -7,7 +7,7 @@ consist = EngineConsist(id='badger',
                         power=6400,
                         speed=125,
                         type_base_buy_cost_points=71,  # dibble buy cost for game balance
-                        vehicle_generation=5)
+                        gen=5)
 
 consist.add_unit(type=ElectricLoco,
                  weight=105,

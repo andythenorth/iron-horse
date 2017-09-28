@@ -1,12 +1,13 @@
 import global_constants
-from train import BoxConsistShort, BoxConsistLong, BoxCar
+from train import BoxConsist, BoxCar
 
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
-    consist = BoxConsistShort(roster='pony',
-                              base_numeric_id=1780,
-                              vehicle_generation=1)
+    consist = BoxConsist(roster='pony',
+                         base_numeric_id=1780,
+                         gen=1,
+                         subtype='A')
 
     consist.add_unit(type=BoxCar,
                      capacity=20,
@@ -20,9 +21,10 @@ def main():
                               end_date=global_constants.max_game_date,
                               graphics_processor=consist.graphics_processors['swap_company_colours'])
 
-    consist = BoxConsistShort(roster='pony',
-                              base_numeric_id=550,
-                              vehicle_generation=2)
+    consist = BoxConsist(roster='pony',
+                         base_numeric_id=550,
+                         gen=2,
+                         subtype='A')
 
     consist.add_unit(type=BoxCar,
                      capacity=20,
@@ -36,9 +38,10 @@ def main():
                               end_date=global_constants.max_game_date,
                               graphics_processor=consist.graphics_processors['swap_company_colours'])
 
-    consist = BoxConsistShort(roster='pony',
-                              base_numeric_id=560,
-                              vehicle_generation=3)
+    consist = BoxConsist(roster='pony',
+                         base_numeric_id=560,
+                         gen=3,
+                         subtype='A')
 
     consist.add_unit(type=BoxCar,
                      capacity=35,
@@ -52,9 +55,10 @@ def main():
                               end_date=global_constants.max_game_date,
                               graphics_processor=consist.graphics_processors['swap_company_colours'])
 
-    consist = BoxConsistLong(roster='pony',
-                             base_numeric_id=2340,
-                             vehicle_generation=3)
+    consist = BoxConsist(roster='pony',
+                         base_numeric_id=2340,
+                         gen=3,
+                         subtype='B')
 
     consist.add_unit(type=BoxCar,
                      capacity=55,
@@ -68,9 +72,10 @@ def main():
                               end_date=global_constants.max_game_date,
                               graphics_processor=consist.graphics_processors['swap_company_colours'])
 
-    consist = BoxConsistShort(roster='pony',
-                              base_numeric_id=570,
-                              vehicle_generation=4)
+    consist = BoxConsist(roster='pony',
+                         base_numeric_id=570,
+                         gen=4,
+                         subtype='A')
 
     consist.add_unit(type=BoxCar,
                      capacity=55,
@@ -84,10 +89,11 @@ def main():
                               end_date=global_constants.max_game_date,
                               graphics_processor=consist.graphics_processors['swap_company_colours'])
 
-    consist = BoxConsistShort(roster='pony',
-                              base_numeric_id=580,
-                              vehicle_generation=1,
-                              track_type='NG')
+    consist = BoxConsist(roster='pony',
+                         base_numeric_id=580,
+                         gen=1,
+                         subtype='A',
+                         track_type='NG')
 
     consist.add_unit(type=BoxCar,
                      capacity=12,
@@ -102,9 +108,10 @@ def main():
                               graphics_processor=consist.graphics_processors['swap_company_colours'])
 
     #--------------- llama ----------------------------------------------------------------------
-    consist = BoxConsistShort(roster='llama',
-                              base_numeric_id=590,
-                              vehicle_generation=1)
+    consist = BoxConsist(roster='llama',
+                         base_numeric_id=590,
+                         gen=1,
+                         subtype='A')
 
     consist.add_unit(type=BoxCar,
                      capacity=25,
@@ -118,9 +125,10 @@ def main():
                               end_date=global_constants.max_game_date,
                               graphics_processor=consist.graphics_processors['swap_company_colours'])
 
-    consist = BoxConsistShort(roster='llama',
-                              base_numeric_id=600,
-                              vehicle_generation=2)
+    consist = BoxConsist(roster='llama',
+                         base_numeric_id=600,
+                         gen=2,
+                         subtype='A')
 
     consist.add_unit(type=BoxCar,
                      capacity=45,
@@ -134,9 +142,10 @@ def main():
                               end_date=global_constants.max_game_date,
                               graphics_processor=consist.graphics_processors['swap_company_colours'])
 
-    consist = BoxConsistShort(roster='llama',
-                              base_numeric_id=610,
-                              vehicle_generation=3)
+    consist = BoxConsist(roster='llama',
+                         base_numeric_id=610,
+                         gen=3,
+                         subtype='A')
 
     consist.add_unit(type=BoxCar,
                      capacity=65,
@@ -150,10 +159,11 @@ def main():
                               end_date=global_constants.max_game_date,
                               graphics_processor=consist.graphics_processors['swap_company_colours'])
 
-    consist = BoxConsistShort(roster='llama',
-                              base_numeric_id=620,
-                              vehicle_generation=1,
-                              track_type='NG')
+    consist = BoxConsist(roster='llama',
+                         base_numeric_id=620,
+                         gen=1,
+                         subtype='A',
+                         track_type='NG')
 
     consist.add_unit(type=BoxCar,
                      capacity=20,
@@ -167,10 +177,11 @@ def main():
                               end_date=global_constants.max_game_date,
                               graphics_processor=consist.graphics_processors['swap_company_colours'])
 
-    consist = BoxConsistShort(roster='llama',
-                              base_numeric_id=1310,
-                              vehicle_generation=2,
-                              track_type='NG')
+    consist = BoxConsist(roster='llama',
+                         base_numeric_id=1310,
+                         gen=2,
+                         subtype='A',
+                         track_type='NG')
 
     consist.add_unit(type=BoxCar,
                      capacity=35,
@@ -185,9 +196,10 @@ def main():
                               graphics_processor=consist.graphics_processors['swap_company_colours'])
 
     #--------------- antelope ----------------------------------------------------------------------
-    consist = BoxConsistShort(roster='antelope',
-                              base_numeric_id=1750,
-                              vehicle_generation=1)
+    consist = BoxConsist(roster='antelope',
+                         base_numeric_id=1750,
+                         gen=1,
+                         subtype='A')
 
     consist.add_unit(type=BoxCar,
                      capacity=55,
@@ -201,9 +213,10 @@ def main():
                               end_date=global_constants.max_game_date,
                               graphics_processor=consist.graphics_processors['swap_company_colours'])
 
-    consist = BoxConsistShort(roster='antelope',
-                              base_numeric_id=1740,
-                              vehicle_generation=2)
+    consist = BoxConsist(roster='antelope',
+                         base_numeric_id=1740,
+                         gen=2,
+                         subtype='A')
 
     consist.add_unit(type=BoxCar,
                      capacity=70,
@@ -217,10 +230,11 @@ def main():
                               end_date=global_constants.max_game_date,
                               graphics_processor=consist.graphics_processors['swap_company_colours'])
 
-    consist = BoxConsistShort(roster='antelope',
-                              base_numeric_id=2100,
-                              vehicle_generation=1,
-                              track_type='NG')
+    consist = BoxConsist(roster='antelope',
+                         base_numeric_id=2100,
+                         gen=1,
+                         subtype='A',
+                         track_type='NG')
 
     consist.add_unit(type=BoxCar,
                      capacity=20,
@@ -234,10 +248,11 @@ def main():
                               end_date=global_constants.max_game_date,
                               graphics_processor=consist.graphics_processors['swap_company_colours'])
 
-    consist = BoxConsistShort(roster='antelope',
-                              base_numeric_id=1850,
-                              vehicle_generation=2,
-                              track_type='NG')
+    consist = BoxConsist(roster='antelope',
+                         base_numeric_id=1850,
+                         gen=2,
+                         subtype='A',
+                         track_type='NG')
 
     consist.add_unit(type=BoxCar,
                      capacity=30,
@@ -251,10 +266,11 @@ def main():
                               end_date=global_constants.max_game_date,
                               graphics_processor=consist.graphics_processors['swap_company_colours'])
 
-    consist = BoxConsistShort(roster='antelope',
-                              base_numeric_id=1860,
-                              vehicle_generation=3,
-                              track_type='NG')
+    consist = BoxConsist(roster='antelope',
+                         base_numeric_id=1860,
+                         gen=3,
+                         subtype='A',
+                         track_type='NG')
 
     consist.add_unit(type=BoxCar,
                      capacity=40,

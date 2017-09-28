@@ -7,7 +7,7 @@ consist = EngineConsist(id='sparkycat',
                         power=1700,
                         speed=110,
                         type_base_buy_cost_points=60,  # dibble buy cost for game balance
-                        vehicle_generation=6,
+                        gen=6,
                         power_by_railtype={'RAIL': 1850, 'ELRL': 3700})
 
 consist.add_unit(type=ElectroDieselLoco,

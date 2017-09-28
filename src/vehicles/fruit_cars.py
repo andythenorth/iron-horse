@@ -6,7 +6,8 @@ def main():
     #--------------- antelope ----------------------------------------------------------------------
     consist = FruitConsist(roster='antelope',
                            base_numeric_id=2140,
-                           vehicle_generation=1,
+                           gen=1,
+                           subtype='A',
                            track_type='NG')
 
     consist.add_unit(type=FreightCar,
@@ -23,7 +24,8 @@ def main():
 
     consist = FruitConsist(roster='antelope',
                            base_numeric_id=2170,
-                           vehicle_generation=2,
+                           gen=2,
+                           subtype='A',
                            track_type='NG')
 
     consist.add_unit(type=FreightCar,
@@ -40,7 +42,8 @@ def main():
 
     consist = FruitConsist(roster='antelope',
                            base_numeric_id=2180,
-                           vehicle_generation=3,
+                           gen=3,
+                           subtype='A',
                            track_type='NG')
 
     consist.add_unit(type=FreightCar,

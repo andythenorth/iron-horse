@@ -6,7 +6,8 @@ def main():
     #--------------- pony ----------------------------------------------------------------------
     consist = FlatConsist(roster='pony',
                           base_numeric_id=1140,
-                          vehicle_generation=1)
+                          gen=1,
+                          subtype='A')
 
     consist.add_unit(type=FreightCar,
                      capacity=20,
@@ -22,7 +23,8 @@ def main():
 
     consist = FlatConsist(roster='pony',
                           base_numeric_id=1150,
-                          vehicle_generation=2)
+                          gen=2,
+                          subtype='A')
 
     consist.add_unit(type=FreightCar,
                      capacity=40,
@@ -38,7 +40,8 @@ def main():
 
     consist = FlatConsist(roster='pony',
                           base_numeric_id=1160,
-                          vehicle_generation=3)
+                          gen=3,
+                          subtype='A')
 
     consist.add_unit(type=FreightCar,
                      capacity=50,
@@ -54,7 +57,8 @@ def main():
 
     consist = FlatConsist(roster='pony',
                           base_numeric_id=1170,
-                          vehicle_generation=1,
+                          gen=1,
+                          subtype='A',
                           track_type='NG')
 
     consist.add_unit(type=FreightCar,
@@ -67,7 +71,8 @@ def main():
     #--------------- llama ----------------------------------------------------------------------
     consist = FlatConsist(roster='llama',
                           base_numeric_id=1180,
-                          vehicle_generation=1)
+                          gen=1,
+                          subtype='A')
 
     consist.add_unit(type=FreightCar,
                      capacity=25,
@@ -83,7 +88,8 @@ def main():
 
     consist = FlatConsist(roster='llama',
                           base_numeric_id=1510,
-                          vehicle_generation=2)
+                          gen=2,
+                          subtype='A')
 
     consist.add_unit(type=FreightCar,
                      capacity=45,
@@ -99,7 +105,8 @@ def main():
 
     consist = FlatConsist(roster='llama',
                           base_numeric_id=520,
-                          vehicle_generation=1,
+                          gen=1,
+                          subtype='A',
                           track_type='NG')
 
     consist.add_unit(type=FreightCar,
@@ -116,7 +123,8 @@ def main():
 
     consist = FlatConsist(roster='llama',
                           base_numeric_id=1500,
-                          vehicle_generation=2,
+                          gen=2,
+                          subtype='A',
                           track_type='NG')
 
     consist.add_unit(type=FreightCar,
@@ -134,7 +142,8 @@ def main():
     #--------------- antelope ----------------------------------------------------------------------
     consist = FlatConsist(roster='antelope',
                           base_numeric_id=1640,
-                          vehicle_generation=1)
+                          gen=1,
+                          subtype='A')
 
     consist.add_unit(type=FreightCar,
                      capacity=55,
@@ -150,7 +159,8 @@ def main():
 
     consist = FlatConsist(roster='antelope',
                           base_numeric_id=1650,
-                          vehicle_generation=2)
+                          gen=2,
+                          subtype='A')
 
     consist.add_unit(type=FreightCar,
                      capacity=70,
@@ -166,7 +176,8 @@ def main():
 
     consist = FlatConsist(roster='antelope',
                           base_numeric_id=2110,
-                          vehicle_generation=1,
+                          gen=1,
+                          subtype='A',
                           track_type='NG')
 
     consist.add_unit(type=FreightCar,
@@ -183,7 +194,8 @@ def main():
 
     consist = FlatConsist(roster='antelope',
                           base_numeric_id=1930,
-                          vehicle_generation=2,
+                          gen=2,
+                          subtype='A',
                           track_type='NG')
 
     consist.add_unit(type=FreightCar,

@@ -6,7 +6,8 @@ def main():
     #--------------- pony ----------------------------------------------------------------------
     consist = IntermodalConsist(roster='pony',
                                 base_numeric_id=1060,
-                                vehicle_generation=3,
+                                gen=3,
+                                subtype='A',
                                 speedy=True)
 
     consist.add_unit(type=FreightCar,

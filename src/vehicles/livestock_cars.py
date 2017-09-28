@@ -6,7 +6,8 @@ def main():
     #--------------- pony ----------------------------------------------------------------------
     consist = LivestockConsist(roster='pony',
                                base_numeric_id=1010,
-                               vehicle_generation=1)
+                               gen=1,
+                               subtype='A')
 
     consist.add_unit(type=FreightCar,
                      capacity=20,
@@ -17,7 +18,8 @@ def main():
 
     consist = LivestockConsist(roster='pony',
                                base_numeric_id=1020,
-                               vehicle_generation=2)
+                               gen=2,
+                               subtype='A')
 
     consist.add_unit(type=FreightCar,
                      capacity=35,
@@ -28,7 +30,8 @@ def main():
 
     consist = LivestockConsist(roster='pony',
                                base_numeric_id=1030,
-                               vehicle_generation=1,
+                               gen=1,
+                               subtype='A',
                                track_type='NG')
 
     consist.add_unit(type=FreightCar,
@@ -41,7 +44,8 @@ def main():
     #--------------- llama ----------------------------------------------------------------------
     consist = LivestockConsist(roster='llama',
                                base_numeric_id=1040,
-                               vehicle_generation=1)
+                               gen=1,
+                               subtype='A')
 
     consist.add_unit(type=FreightCar,
                      capacity=25,
@@ -52,7 +56,8 @@ def main():
 
     consist = LivestockConsist(roster='llama',
                                base_numeric_id=1430,
-                               vehicle_generation=2)
+                               gen=2,
+                               subtype='A')
 
     consist.add_unit(type=FreightCar,
                      capacity=45,
@@ -63,7 +68,8 @@ def main():
 
     consist = LivestockConsist(roster='llama',
                                base_numeric_id=1050,
-                               vehicle_generation=1,
+                               gen=1,
+                               subtype='A',
                                track_type='NG')
 
     consist.add_unit(type=FreightCar,
@@ -75,7 +81,8 @@ def main():
 
     consist = LivestockConsist(roster='llama',
                                base_numeric_id=1520,
-                               vehicle_generation=2,
+                               gen=2,
+                               subtype='A',
                                track_type='NG')
 
     consist.add_unit(type=FreightCar,
@@ -88,7 +95,8 @@ def main():
     #--------------- antelope ----------------------------------------------------------------------
     consist = LivestockConsist(roster='antelope',
                                base_numeric_id=1720,
-                               vehicle_generation=1)
+                               gen=1,
+                               subtype='A')
 
     consist.add_unit(type=FreightCar,
                      capacity=45,
@@ -99,7 +107,8 @@ def main():
 
     consist = LivestockConsist(roster='antelope',
                                base_numeric_id=2150,
-                               vehicle_generation=1,
+                               gen=1,
+                               subtype='A',
                                track_type='NG')
 
     consist.add_unit(type=FreightCar,

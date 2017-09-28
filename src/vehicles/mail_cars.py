@@ -6,7 +6,8 @@ def main():
     #--------------- pony ----------------------------------------------------------------------
     consist = MailConsist(roster='pony',
                           base_numeric_id=2220,
-                          vehicle_generation=1,
+                          gen=1,
+                          subtype='A',
                           speedy=True)
 
     consist.add_unit(type=MailCar,
@@ -18,7 +19,8 @@ def main():
 
     consist = MailConsist(roster='pony',
                           base_numeric_id=920,
-                          vehicle_generation=2,
+                          gen=2,
+                          subtype='A',
                           speedy=True)
 
     consist.add_unit(type=MailCar,
@@ -30,7 +32,8 @@ def main():
 
     consist = MailConsist(roster='pony',
                           base_numeric_id=940,
-                          vehicle_generation=3,
+                          gen=3,
+                          subtype='A',
                           speedy=True)
 
     consist.add_unit(type=MailCar,
@@ -42,7 +45,8 @@ def main():
 
     consist = MailConsist(roster='pony',
                           base_numeric_id=950,
-                          vehicle_generation=1,
+                          gen=1,
+                          subtype='A',
                           track_type='NG')
 
     consist.add_unit(type=MailCar,
@@ -56,7 +60,8 @@ def main():
     #--------------- llama ----------------------------------------------------------------------
     consist = MailConsist(roster = 'llama',
                           base_numeric_id = 960,
-                          vehicle_generation = 1,
+                          gen = 1,
+                                    subtype='A',
                           speedy = True)
 
     consist.add_unit(type = MailCar,
@@ -69,7 +74,8 @@ def main():
 
     consist = MailConsist(roster = 'llama',
                           base_numeric_id = 970,
-                          vehicle_generation = 2,
+                          gen = 2,
+                                    subtype='A',
                           speedy = True)
 
     consist.add_unit(type = MailCar,
@@ -82,7 +88,8 @@ def main():
 
     consist = MailConsist(roster = 'llama',
                           base_numeric_id = 980,
-                          vehicle_generation = 3,
+                          gen = 3,
+                                    subtype='A',
                           speedy = True)
 
     consist.add_unit(type = MailCar,
@@ -95,7 +102,8 @@ def main():
 
     consist = MailConsist(roster = 'llama',
                           base_numeric_id = 990,
-                          vehicle_generation = 1,
+                          gen = 1,
+                                    subtype='A',
                           speedy = True,
                           track_type = 'NG')
 
@@ -109,7 +117,8 @@ def main():
 
     consist = MailConsist(roster = 'llama',
                           base_numeric_id = 1380,
-                          vehicle_generation = 2,
+                          gen = 2,
+                                    subtype='A',
                           speedy = True,
                           track_type = 'NG')
 
@@ -123,7 +132,8 @@ def main():
 
     consist = MailConsist(roster = 'llama',
                           base_numeric_id = 1450,
-                          vehicle_generation = 3,
+                          gen = 3,
+                                    subtype='A',
                           speedy = True,
                           track_type = 'NG')
 
@@ -138,7 +148,8 @@ def main():
     #--------------- antelope ----------------------------------------------------------------------
     consist = MailConsist(roster='antelope',
                           base_numeric_id=1730,
-                          vehicle_generation=1,
+                          gen=1,
+                          subtype='A',
                           speedy=True)
 
     consist.add_unit(type=MailCar,
@@ -150,7 +161,8 @@ def main():
 
     consist = MailConsist(roster='antelope',
                           base_numeric_id=2120,
-                          vehicle_generation=1,
+                          gen=1,
+                          subtype='A',
                           track_type='NG',
                           speedy=True)
 
@@ -163,7 +175,8 @@ def main():
 
     consist = MailConsist(roster='antelope',
                           base_numeric_id=1950,
-                          vehicle_generation=2,
+                          gen=2,
+                          subtype='A',
                           track_type='NG',
                           speedy=True)
 

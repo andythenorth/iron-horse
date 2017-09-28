@@ -9,7 +9,7 @@ consist = EngineConsist(id='tug',
                         tractive_effort_coefficient=0.4,
                         speed=90,
                         type_base_buy_cost_points=30,  # dibble buy cost for game balance
-                        vehicle_generation=5)
+                        gen=5)
 
 consist.add_unit(type=DieselLoco,
                  weight=125,

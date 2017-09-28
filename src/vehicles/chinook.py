@@ -7,7 +7,7 @@ consist = EngineConsist(id='chinook',
                         power=3000,
                         speed=75,
                         type_base_buy_cost_points=30,  # dibble buy cost for game balance
-                        vehicle_generation=4)
+                        gen=4)
 
 consist.add_unit(type=DieselLoco,
                  weight=80,

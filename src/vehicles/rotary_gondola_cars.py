@@ -6,7 +6,8 @@ def main():
     #--------------- pony ----------------------------------------------------------------------
     consist = DumpConsist(roster='pony',
                           base_numeric_id=1340,
-                          vehicle_generation=3)
+                          gen=3,
+                          subtype='A')
 
     consist.add_unit(type=FreightCar,
                      capacity=20,
@@ -22,7 +23,8 @@ def main():
 
     consist = DumpConsist(roster='pony',
                           base_numeric_id=1810,
-                          vehicle_generation=4)
+                          gen=4,
+                          subtype='A')
 
     consist.add_unit(type=FreightCar,
                      capacity=40,

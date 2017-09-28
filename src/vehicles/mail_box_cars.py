@@ -6,7 +6,8 @@ def main():
     #--------------- pony ----------------------------------------------------------------------
     consist = MailBoxConsist(roster='pony',
                              base_numeric_id=2280,
-                             vehicle_generation=1,
+                             gen=1,
+                             subtype='A',
                              speedy=True)
 
     consist.add_unit(type=MailCar,
@@ -19,7 +20,8 @@ def main():
     consist = MailBoxConsist(title='[Mail Box Car]',
                              roster='pony',
                              base_numeric_id=2290,
-                             vehicle_generation=2,
+                             gen=2,
+                             subtype='A',
                              speedy=True)
 
     consist.add_unit(type=MailCar,
@@ -32,7 +34,8 @@ def main():
     consist = MailBoxConsist(title='[Mail Box Car]',
                              roster='pony',
                              base_numeric_id=2300,
-                             vehicle_generation=3,
+                             gen=3,
+                             subtype='A',
                              speedy=True)
 
     consist.add_unit(type=MailCar,

@@ -7,7 +7,8 @@ def main():
 
     consist = MetalConsist(roster='pony',
                            base_numeric_id=890,
-                           vehicle_generation=1,
+                           gen=1,
+                           subtype='A',
                            suppress_animated_pixel_warnings=True)
 
     consist.add_unit(type=FreightCar,
@@ -20,7 +21,8 @@ def main():
 
     consist = MetalConsist(roster='pony',
                            base_numeric_id=900,
-                           vehicle_generation=2,
+                           gen=2,
+                           subtype='A',
                            suppress_animated_pixel_warnings=True)
 
     consist.add_unit(type=FreightCar,
@@ -33,7 +35,8 @@ def main():
 
     consist = MetalConsist(roster='pony',
                            base_numeric_id=910,
-                           vehicle_generation=3,
+                           gen=3,
+                           subtype='A',
                            suppress_animated_pixel_warnings=True)
 
     consist.add_unit(type=FreightCar,

@@ -6,7 +6,8 @@ def main():
     #--------------- pony ----------------------------------------------------------------------
     consist = ReeferConsist(roster='pony',
                             base_numeric_id=730,
-                            vehicle_generation=1,
+                            gen=1,
+                            subtype='A',
                             speedy=True)
 
     consist.add_unit(type=FreightCar,
@@ -24,7 +25,8 @@ def main():
     # no gen 2 reefer - straight to gen 3
     consist = ReeferConsist(roster='pony',
                             base_numeric_id=720,
-                            vehicle_generation=3,
+                            gen=3,
+                            subtype='A',
                             speedy=True)
 
     consist.add_unit(type=FreightCar,
@@ -42,7 +44,8 @@ def main():
     #--------------- llama ----------------------------------------------------------------------
     consist = ReeferConsist(roster='llama',
                             base_numeric_id=1390,
-                            vehicle_generation=1,
+                            gen=1,
+                            subtype='A',
                             speedy=True)
 
     consist.add_unit(type=FreightCar,
@@ -60,7 +63,8 @@ def main():
     # no gen 2 reefers - straight to gen 3
     consist = ReeferConsist(roster='llama',
                             base_numeric_id=1400,
-                            vehicle_generation=3,
+                            gen=3,
+                            subtype='A',
                             speedy=True)
 
     consist.add_unit(type=FreightCar,
@@ -77,7 +81,8 @@ def main():
 
     consist = ReeferConsist(roster='llama',
                             base_numeric_id=1410,
-                            vehicle_generation=1,
+                            gen=1,
+                            subtype='A',
                             speedy=True,
                             track_type='NG')
 
@@ -96,7 +101,8 @@ def main():
     # no gen 2 reefers - straight to gen 3
     consist = ReeferConsist(roster='llama',
                             base_numeric_id=1420,
-                            vehicle_generation=3,
+                            gen=3,
+                            subtype='A',
                             speedy=True,
                             track_type='NG')
 
@@ -115,7 +121,8 @@ def main():
     #--------------- antelope ----------------------------------------------------------------------
     consist = ReeferConsist(roster='antelope',
                             base_numeric_id=1570,
-                            vehicle_generation=1,
+                            gen=1,
+                            subtype='A',
                             speedy=True)
 
     consist.add_unit(type=FreightCar,
@@ -132,7 +139,8 @@ def main():
 
     consist = ReeferConsist(roster='antelope',
                             base_numeric_id=1900,
-                            vehicle_generation=1,
+                            gen=1,
+                            subtype='A',
                             speedy=True,
                             track_type='NG')
 

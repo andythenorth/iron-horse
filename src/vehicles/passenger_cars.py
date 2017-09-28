@@ -6,7 +6,8 @@ def main():
     #--------------- pony ----------------------------------------------------------------------
     consist = PassengerConsist(roster='pony',
                                base_numeric_id=740,
-                               vehicle_generation=1,
+                               gen=1,
+                               subtype='A',
                                speedy=True)
 
     consist.add_unit(type=PassengerCar,
@@ -18,7 +19,8 @@ def main():
 
     consist = PassengerConsist(roster='pony',
                                base_numeric_id=750,
-                               vehicle_generation=2,
+                               gen=2,
+                               subtype='A',
                                speedy=True)
 
     consist.add_unit(type=PassengerCar,
@@ -30,7 +32,8 @@ def main():
 
     consist = PassengerConsist(roster='pony',
                                base_numeric_id=760,
-                               vehicle_generation=3,
+                               gen=3,
+                               subtype='A',
                                speedy=True)
 
     consist.add_unit(type=PassengerCar,
@@ -42,7 +45,8 @@ def main():
 
     consist = PassengerConsist(roster='pony',
                                base_numeric_id=770,
-                               vehicle_generation=1,
+                               gen=1,
+                               subtype='A',
                                track_type='NG')
 
     consist.add_unit(type=PassengerCar,
@@ -55,7 +59,8 @@ def main():
     #--------------- llama ----------------------------------------------------------------------
     consist = PassengerConsist(roster='llama',
                                base_numeric_id=780,
-                               vehicle_generation=1,
+                               gen=1,
+                               subtype='A',
                                speedy=True)
 
     consist.add_unit(type=PassengerCar,
@@ -67,7 +72,8 @@ def main():
 
     consist = PassengerConsist(roster='llama',
                                base_numeric_id=790,
-                               vehicle_generation=2,
+                               gen=2,
+                               subtype='A',
                                speedy=True)
 
     consist.add_unit(type=PassengerCar,
@@ -79,7 +85,8 @@ def main():
 
     consist = PassengerConsist(roster='llama',
                                base_numeric_id=800,
-                               vehicle_generation=3,
+                               gen=3,
+                               subtype='A',
                                speedy=True)
 
     consist.add_unit(type=PassengerCar,
@@ -91,7 +98,8 @@ def main():
 
     consist = PassengerConsist(roster='llama',
                                base_numeric_id=810,
-                               vehicle_generation=1,
+                               gen=1,
+                               subtype='A',
                                speedy=True,
                                track_type='NG')
 
@@ -104,7 +112,8 @@ def main():
 
     consist = PassengerConsist(roster='llama',
                                base_numeric_id=1350,
-                               vehicle_generation=2,
+                               gen=2,
+                               subtype='A',
                                speedy=True,
                                track_type='NG')
 
@@ -117,7 +126,8 @@ def main():
 
     consist = PassengerConsist(roster='llama',
                                base_numeric_id=1370,
-                               vehicle_generation=3,
+                               gen=3,
+                               subtype='A',
                                speedy=True,
                                track_type='NG')
 
@@ -131,7 +141,8 @@ def main():
     #--------------- antelope ----------------------------------------------------------------------
     consist = PassengerConsist(roster='antelope',
                                base_numeric_id=1580,
-                               vehicle_generation=1,
+                               gen=1,
+                               subtype='A',
                                speedy=True)
 
     consist.add_unit(type=PassengerCar,
@@ -143,7 +154,8 @@ def main():
 
     consist = PassengerConsist(roster='antelope',
                                base_numeric_id=1560,
-                               vehicle_generation=2,
+                               gen=2,
+                               subtype='A',
                                speedy=True)
 
     consist.add_unit(type=PassengerCar,
@@ -155,7 +167,8 @@ def main():
 
     consist = PassengerConsist(roster='antelope',
                                base_numeric_id=2130,
-                               vehicle_generation=1,
+                               gen=1,
+                               subtype='A',
                                speedy=True,
                                track_type='NG')
 
@@ -168,7 +181,8 @@ def main():
 
     consist = PassengerConsist(roster='antelope',
                                base_numeric_id=1940,
-                               vehicle_generation=2,
+                               gen=2,
+                               subtype='A',
                                speedy=True,
                                track_type='NG')
 

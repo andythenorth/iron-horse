@@ -9,7 +9,7 @@ consist = EngineConsist(id='lemon',
                         type_base_running_cost_points=30,  # dibble running costs for game balance
                         speed=60,
                         buy_cost=114,
-                        vehicle_generation=3)
+                        gen=3)
 
 consist.add_unit(type=SteamLoco,
                  weight=97,

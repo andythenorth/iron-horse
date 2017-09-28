@@ -6,7 +6,8 @@ def main():
     #--------------- pony ----------------------------------------------------------------------
     consist = SuppliesConsist(roster='pony',
                               base_numeric_id=710,
-                              vehicle_generation=1)
+                              gen=1,
+                              subtype='A')
 
     consist.add_unit(type=FreightCar,
                      capacity=30,
@@ -33,7 +34,8 @@ def main():
 
     consist = SuppliesConsist(roster='pony',
                               base_numeric_id=700,
-                              vehicle_generation=2,)
+                              gen=2,
+                              subtype='A')
 
     consist.add_unit(type=FreightCar,
                      capacity=45,
@@ -59,7 +61,8 @@ def main():
 
     consist = SuppliesConsist(roster='antelope',
                               base_numeric_id=2160,
-                              vehicle_generation=1)
+                              gen=1,
+                              subtype='A')
 
     consist.add_unit(type=FreightCar,
                      capacity=20,

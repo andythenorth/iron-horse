@@ -8,7 +8,7 @@ consist = EngineConsist(id='northcock',
                         tractive_effort_coefficient=0.2,
                         speed=95,
                         buy_cost=81,
-                        vehicle_generation=3)
+                        gen=3)
 
 consist.add_unit(type=SteamLoco,
                  weight=120,

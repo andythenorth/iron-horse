@@ -41,7 +41,7 @@ class Consist(object):
         self.track_type = kwargs.get('track_type', 'RAIL')
         self.tractive_effort_coefficient = kwargs.get('tractive_effort_coefficient', 0.3) # 0.3 is recommended default value
         self._speed = kwargs.get('speed', None) # private var, can be used to over-rides default (per generation, per class) speed
-        self.vehicle_generation = kwargs.get('vehicle_generation', None) # optional
+        self.gen = kwargs.get('gen', None) # optional
         # used by multi-mode engines such as electro-diesel, otherwise ignored
         self.power_by_railtype = kwargs.get('power_by_railtype', None)
         self.visual_effect_override_by_railtype = kwargs.get('visual_effect_override_by_railtype', None)
@@ -96,7 +96,7 @@ class Consist(object):
         # 'narmal' rail and 'elrail' doesn't require an id modifier
         if kwargs.get('track_type', None) == 'NG':
             id_base = id_base + '_ng'
-        result = '_'.join((id_base, kwargs['roster'], 'gen', str(kwargs['vehicle_generation'])))
+        result = '_'.join((id_base, kwargs['roster'], 'gen', str(kwargs['gen']) + str(kwargs['subtype'])))
         return result
 
     def get_reduced_set_of_variant_dates(self):
@@ -176,7 +176,7 @@ class Consist(object):
             return self._intro_date
         else:
             roster_obj = self.get_roster(self.roster_id)
-            return roster_obj.intro_dates[self.vehicle_generation - 1]
+            return roster_obj.intro_dates[self.gen - 1]
 
     @property
     def speed(self):
@@ -188,14 +188,14 @@ class Consist(object):
             # eh this is ugly, but it works
             if self.track_type == 'NG':
                 if self.speedy:
-                    return roster_obj.speeds['express_ng'][self.vehicle_generation - 1]
+                    return roster_obj.speeds['express_ng'][self.gen - 1]
                 else:
-                    return roster_obj.speeds['freight_ng'][self.vehicle_generation - 1]
+                    return roster_obj.speeds['freight_ng'][self.gen - 1]
             else:
                 if self.speedy:
-                    return roster_obj.speeds['express'][self.vehicle_generation - 1]
+                    return roster_obj.speeds['express'][self.gen - 1]
                 else:
-                    return roster_obj.speeds['freight'][self.vehicle_generation - 1]
+                    return roster_obj.speeds['freight'][self.gen - 1]
 
     @property
     def weight(self):
@@ -514,11 +514,12 @@ class WagonConsist(Consist):
             return cost / 8
 
 
-class BoxConsistBase(WagonConsist):
+class BoxConsist(WagonConsist):
     """
-    Van - express, piece goods cargos, other selected cargos.
+    Box car, van - express, piece goods cargos, other selected cargos.
     """
     def __init__(self, **kwargs):
+        self.base_id = 'box_car'
         super().__init__(**kwargs)
         self.title = '[Box Car]'
         self.template = 'car_with_open_doors_during_loading.pynml'
@@ -539,29 +540,12 @@ class BoxConsistBase(WagonConsist):
         return {'pass_through': pass_through, 'swap_company_colours': swap_company_colours}
 
 
-class BoxConsistShort(BoxConsistBase):
-    """
-    Short box car.
-    """
-    def __init__(self, **kwargs):
-        self.base_id = 'box_car_short'
-        super().__init__(**kwargs)
-
-
-class BoxConsistLong(BoxConsistBase):
-    """
-    Long box car.
-    """
-    def __init__(self, **kwargs):
-        self.base_id = 'box_car_long'
-        super().__init__(**kwargs)
-
-
-class CabooseConsistBase(WagonConsist):
+class CabooseConsist(WagonConsist):
     """
     Caboose, brake van etc - no gameplay purpose, just eye candy.
     """
     def __init__(self, **kwargs):
+        self.base_id = 'caboose_car'
         super().__init__(**kwargs)
         self.template = 'train.pynml'
         # no graphics processing - don't random colour cabeese, I tried it, looks daft
@@ -570,24 +554,6 @@ class CabooseConsistBase(WagonConsist):
         self.label_refits_disallowed = []
         self.default_cargo = 'GOOD' # unwanted side-effect of this is that caboose replaceable by anything refitting goods
         self.default_capacity_type = 'capacity_freight'
-
-
-class CabooseConsistShort(CabooseConsistBase):
-    """
-    Short caboose.
-    """
-    def __init__(self, **kwargs):
-        self.base_id = 'caboose_car_short'
-        super().__init__(**kwargs)
-
-
-class CabooseConsistLong(CabooseConsistBase):
-    """
-    Long caboose.
-    """
-    def __init__(self, **kwargs):
-        self.base_id = 'caboose_car_long'
-        super().__init__(**kwargs)
 
 
 class CoveredHopperConsist(WagonConsist):

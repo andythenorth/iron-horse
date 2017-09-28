@@ -1,14 +1,15 @@
 import global_constants
-from train import CabooseConsistShort, CabooseConsistLong, FreightCar
+from train import CabooseConsist, FreightCar
 
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
-    consist = CabooseConsistShort(title='[Caboose Car] Short',
-                                  roster='pony',
-                                  base_numeric_id=1280,
-                                  vehicle_generation=1,
-                                  speedy=True)
+    consist = CabooseConsist(title='[Caboose Car] Short',
+                             roster='pony',
+                             base_numeric_id=1280,
+                             gen=1,
+                             subtype='A',
+                             speedy=True)
 
     consist.add_unit(type=FreightCar,
                      capacity=0,
@@ -17,11 +18,12 @@ def main():
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date)
 
-    consist = CabooseConsistLong(title='[Caboose Car] Long',
-                                 roster='pony',
-                                 base_numeric_id=2210,
-                                 vehicle_generation=1,
-                                 speedy=True)
+    consist = CabooseConsist(title='[Caboose Car] Long',
+                             roster='pony',
+                             base_numeric_id=2210,
+                             gen=1,
+                             subtype='B',
+                             speedy=True)
 
     consist.add_unit(type=FreightCar,
                      capacity=0,
@@ -30,11 +32,12 @@ def main():
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date)
 
-    consist = CabooseConsistShort(title='[Caboose Car]',
-                                  roster='pony',
-                                  base_numeric_id=1290,
-                                  vehicle_generation=1,
-                                  track_type='NG')
+    consist = CabooseConsist(title='[Caboose Car]',
+                             roster='pony',
+                             base_numeric_id=1290,
+                             gen=1,
+                             subtype='A',
+                             track_type='NG')
 
     consist.add_unit(type=FreightCar,
                      capacity=0,
@@ -49,7 +52,7 @@ def main():
     consist = CabooseConsist(title = '[Caboose Car]',
                              roster = 'llama',
                              base_numeric_id = 1300,
-                             vehicle_generation = 1,
+                             gen = 1,
                                             speedy = True)
 
     consist.add_unit(type = FreightCar,
@@ -64,7 +67,7 @@ def main():
     consist = CabooseConsist(title = '[Caboose Car]',
                              roster = 'antelope',
                              base_numeric_id = 1780,
-                             vehicle_generation = 1,
+                             gen = 1,
                                             speedy = True)
 
     consist.add_unit(type = FreightCar,
@@ -78,7 +81,7 @@ def main():
     consist = CabooseConsist(title = '[Caboose Car]',
                              roster = 'antelope',
                              base_numeric_id = 1880,
-                             vehicle_generation = 1,
+                             gen = 1,
                                             speedy = True,
                              track_type = 'NG')
 

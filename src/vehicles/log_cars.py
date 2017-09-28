@@ -6,7 +6,8 @@ def main():
     #--------------- pony ----------------------------------------------------------------------
     consist = LogConsist(roster='pony',
                          base_numeric_id=1710,
-                         vehicle_generation=4)
+                         gen=4,
+                         subtype='A')
 
     consist.add_unit(type=FreightCar,
                      capacity=30,
@@ -22,7 +23,8 @@ def main():
 
     consist = LogConsist(roster='pony',
                          base_numeric_id=930,
-                         vehicle_generation=5)
+                         gen=5,
+                         subtype='A')
 
     consist.add_unit(type=FreightCar,
                      capacity=30,
