@@ -42,9 +42,6 @@ caboose_cars.main()
 from vehicles import covered_hopper_cars
 covered_hopper_cars.main()
 
-from vehicles import coal_cars
-coal_cars.main()
-
 from vehicles import edibles_tank_cars
 edibles_tank_cars.main()
 
