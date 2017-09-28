@@ -1228,7 +1228,8 @@ class DieselRailcar(Train):
         self.label_refits_allowed = [] # no specific labels needed
         self.label_refits_disallowed = []
         self.autorefit = True
-        self.capacities_freight = [int(0.5 * capacity) for capacity in self.capacities_mail]
+        self.capacities_mail = [int(0.75 * capacity) for capacity in self.capacities_pax]
+        self.capacities_freight = [int(0.5 * capacity) for capacity in self.capacities_pax]
         self.default_cargo_capacities = self.capacities_pax
         self.default_cargo = 'PASS'
         self.engine_class = 'ENGINE_CLASS_DIESEL'
