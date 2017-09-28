@@ -6,8 +6,7 @@ def main():
     consist = DumpConsist(title = '[Dump Car]',
                             roster = 'pony',
                             base_numeric_id = 1340,
-                            vehicle_generation = 3,
-                            vehicle_life = 40)
+                            vehicle_generation = 3)
 
     consist.add_unit(Wagon(consist = consist,
                            capacity_freight = 20,
@@ -25,8 +24,7 @@ def main():
     consist = DumpConsist(title = '[Dump Car]',
                             roster = 'pony',
                             base_numeric_id = 1810,
-                            vehicle_generation = 4,
-                            vehicle_life = 40)
+                            vehicle_generation = 4)
 
     consist.add_unit(Wagon(consist = consist,
                            capacity_freight = 40,

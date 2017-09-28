@@ -6,8 +6,7 @@ def main():
     consist = LogConsist(title = '[Log Car]',
                           roster = 'pony',
                           base_numeric_id = 1710,
-                          vehicle_generation = 4,
-                          vehicle_life = 40)
+                          vehicle_generation = 4)
 
     consist.add_unit(Wagon(consist = consist,
                            capacity_freight = 30,
@@ -25,8 +24,7 @@ def main():
     consist = LogConsist(title = '[Log Car]',
                           roster = 'pony',
                           base_numeric_id = 930,
-                          vehicle_generation = 5,
-                          vehicle_life = 40)
+                          vehicle_generation = 5)
 
     consist.add_unit(Wagon(consist = consist,
                            capacity_freight = 30,

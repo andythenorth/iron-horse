@@ -8,8 +8,7 @@ def main():
     consist = HighSpeedPassengerConsist(title = '[High Speed Passenger Car]',
                                roster = 'pony',
                                base_numeric_id = 980,
-                               vehicle_generation = 5,
-                               vehicle_life = 40)
+                               vehicle_generation = 5)
 
     consist.add_unit(Wagon(consist = consist,
                            capacity_pax = 25,
@@ -22,8 +21,7 @@ def main():
     consist = MailHighSpeedConsist(title = '[High Speed Mail Car]',
                                roster = 'pony',
                                base_numeric_id = 970,
-                               vehicle_generation = 5,
-                               vehicle_life = 40)
+                               vehicle_generation = 5)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_mail = 55,

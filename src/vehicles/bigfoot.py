@@ -9,7 +9,6 @@ consist = EngineConsist(id = 'bigfoot',
               speed = 70,
               type_base_buy_cost_points = -5, # dibble buy cost for game balance
               type_base_running_cost_points = -10, # dibble running costs for game balance
-              vehicle_life = 40,
               intro_date = 1970)
 
 consist.add_unit(DieselLoco(consist = consist,

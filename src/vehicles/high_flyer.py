@@ -8,7 +8,6 @@ consist = EngineConsist(id = 'high_flyer',
               tractive_effort_coefficient = 0.10,
               speed = 80,
               buy_cost = 47,
-              vehicle_life = 40,
               vehicle_generation = 2)
 
 consist.add_unit(SteamLoco(consist = consist,

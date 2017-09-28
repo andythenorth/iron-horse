@@ -7,8 +7,7 @@ def main():
                            roster = 'pony',
                            base_numeric_id = 1060,
                            vehicle_generation = 3,
-                           vehicle_life = 40,
-                           speedy = True)
+                                        speedy = True)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 40, # was matched for some time to RH and Squid containers, but blah

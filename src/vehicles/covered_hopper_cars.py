@@ -6,8 +6,7 @@ def main():
     consist = CoveredHopperConsist(title = '[Covered Hopper Car]',
                                    roster = 'pony',
                                    base_numeric_id = 1270,
-                                   vehicle_generation = 1,
-                                   vehicle_life = 40)
+                                   vehicle_generation = 1)
 
     consist.add_unit(Wagon(consist = consist,
                            capacity_freight = 25,
@@ -25,8 +24,7 @@ def main():
     consist = CoveredHopperConsist(title = '[Covered Hopper Car]',
                                    roster = 'pony',
                                    base_numeric_id = 1230,
-                                   vehicle_generation = 2,
-                                   vehicle_life = 40)
+                                   vehicle_generation = 2)
 
     consist.add_unit(Wagon(consist = consist,
                            capacity_freight = 40,
@@ -44,8 +42,7 @@ def main():
     consist = CoveredHopperConsist(title = '[Covered Hopper Car]',
                                    roster = 'pony',
                                    base_numeric_id = 1240,
-                                   vehicle_generation = 3,
-                                   vehicle_life = 40)
+                                   vehicle_generation = 3)
 
     consist.add_unit(Wagon(consist = consist,
                            capacity_freight = 60,
@@ -64,8 +61,7 @@ def main():
     consist = CoveredHopperConsist(title = '[Covered Hopper Car]',
                                    roster = 'llama',
                                    base_numeric_id = 1250,
-                                   vehicle_generation = 2,
-                                   vehicle_life = 40)
+                                   vehicle_generation = 2)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 40,
@@ -83,8 +79,7 @@ def main():
     consist = CoveredHopperConsist(title = '[Covered Hopper Car]',
                                    roster = 'llama',
                                    base_numeric_id = 1260,
-                                   vehicle_generation = 3,
-                                   vehicle_life = 40)
+                                   vehicle_generation = 3)
 
     consist.add_unit(Wagon(consist = consist,
                            capacity_freight = 65,

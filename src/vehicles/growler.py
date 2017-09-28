@@ -6,7 +6,6 @@ consist = EngineConsist(id = 'growler',
               title = 'Growler [Diesel]',
               power = 1550,
               speed = 75,
-              vehicle_life = 40,
               vehicle_generation = 4)
 
 consist.add_unit(DieselLoco(consist = consist,

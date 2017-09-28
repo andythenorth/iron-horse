@@ -7,7 +7,6 @@ consist = EngineConsist(id = 'cooper',
               power = 1000,
               track_type = 'NG',
               speed = 55,
-              vehicle_life = 30,
               intro_date = 1949)
 
 consist.add_unit(DieselLoco(consist = consist,

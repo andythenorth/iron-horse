@@ -6,7 +6,6 @@ consist = EngineConsist(id = 'slug',
               title = 'Slug [Diesel]',
               power = 1700,
               speed = 90,
-              vehicle_life = 40,
               vehicle_generation = 5)
 
 consist.add_unit(DieselLoco(consist = consist,

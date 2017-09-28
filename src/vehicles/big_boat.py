@@ -7,7 +7,6 @@ consist = EngineConsist(id = 'big_boat',
               power = 4500,
               tractive_effort_coefficient = 0.35, # dibble up TE, modern diesels can cheat adhesion using wheel slip
               speed = 75,
-              vehicle_life = 40,
               intro_date = 1985)
 
 consist.add_unit(DieselLoco(consist = consist,

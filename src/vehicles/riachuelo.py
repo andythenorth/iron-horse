@@ -8,8 +8,7 @@ consist = EngineConsist(id = 'riachuelo',
               power = 600,
               speed = 40,
               type_base_buy_cost_points = 40, # dibble buy cost for game balance
-              intro_date = 1900,
-              vehicle_life = 40)
+              intro_date = 1900)
 
 # should be 4 units not 2
 consist.add_unit(MetroPaxUnit(consist = consist,

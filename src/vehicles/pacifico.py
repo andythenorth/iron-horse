@@ -6,7 +6,6 @@ consist = EngineConsist(id = 'pacifico',
               title = '4-6-2 Pacifico [Steam]',
               power = 1800,
               speed = 65,
-              vehicle_life = 40,
               intro_date = 1910)
 
 consist.add_unit(SteamLoco(consist = consist,

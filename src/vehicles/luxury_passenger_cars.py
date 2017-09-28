@@ -8,7 +8,6 @@ def main():
                                base_numeric_id = 2250,
                                vehicle_generation = 1,
                                intro_date = 1860,
-                               vehicle_life = 40,
                                speedy = True)
 
     consist.add_unit(Wagon(consist = consist,
@@ -25,7 +24,6 @@ def main():
                                base_numeric_id = 2260,
                                vehicle_generation = 2,
                                intro_date = 1900,
-                               vehicle_life = 40,
                                speedy = True)
 
     consist.add_unit(Wagon(consist = consist,
@@ -42,8 +40,7 @@ def main():
                                base_numeric_id = 2270,
                                vehicle_generation = 3,
                                intro_date = 1960,
-                               speedy = True,
-                               vehicle_life = 40)
+                               speedy = True)
 
     consist.add_unit(Wagon(consist = consist,
                            capacity_pax = 75,

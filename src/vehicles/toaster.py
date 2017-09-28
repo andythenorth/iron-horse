@@ -8,7 +8,6 @@ consist = EngineConsist(id = 'toaster',
               tractive_effort_coefficient = 0.4, #dibble for game balance, assume super-slip control
               speed = 110,
               type_base_buy_cost_points = 30, # dibble buy cost for game balance
-              vehicle_life = 40,
               vehicle_generation = 6)
 
 consist.add_unit(DieselLoco(consist = consist,

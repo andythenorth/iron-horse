@@ -6,8 +6,7 @@ def main():
     consist = LivestockConsist(title = '[Livestock Car]',
                                roster = 'pony',
                                base_numeric_id = 1010,
-                               vehicle_generation = 1,
-                               vehicle_life = 40)
+                               vehicle_generation = 1)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 20,
@@ -20,8 +19,7 @@ def main():
     consist = LivestockConsist(title = '[Livestock Car]',
                                roster = 'pony',
                                base_numeric_id = 1020,
-                               vehicle_generation = 2,
-                               vehicle_life = 40)
+                               vehicle_generation = 2)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 35,
@@ -35,7 +33,6 @@ def main():
                                roster = 'pony',
                                base_numeric_id = 1030,
                                vehicle_generation = 1,
-                               vehicle_life = 40,
                                track_type = 'NG')
 
     consist.add_unit(Wagon(consist = consist,
@@ -50,8 +47,7 @@ def main():
     consist = LivestockConsist(title = '[Livestock Car]',
                                roster = 'llama',
                                base_numeric_id = 1040,
-                               vehicle_generation = 1,
-                               vehicle_life = 40)
+                               vehicle_generation = 1)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 25,
@@ -64,8 +60,7 @@ def main():
     consist = LivestockConsist(title = '[Livestock Car]',
                                roster = 'llama',
                                base_numeric_id = 1430,
-                               vehicle_generation = 2,
-                               vehicle_life = 40)
+                               vehicle_generation = 2)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 45,
@@ -79,7 +74,6 @@ def main():
                                roster = 'llama',
                                base_numeric_id = 1050,
                                vehicle_generation = 1,
-                               vehicle_life = 40,
                                track_type = 'NG')
 
     consist.add_unit(Wagon(consist = consist,
@@ -94,7 +88,6 @@ def main():
                                roster = 'llama',
                                base_numeric_id = 1520,
                                vehicle_generation = 2,
-                               vehicle_life = 40,
                                track_type = 'NG')
 
     consist.add_unit(Wagon(consist = consist,
@@ -109,8 +102,7 @@ def main():
     consist = LivestockConsist(title = '[Livestock Car]',
                                roster = 'antelope',
                                base_numeric_id = 1720,
-                               vehicle_generation = 1,
-                               vehicle_life = 40)
+                               vehicle_generation = 1)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 45,
@@ -124,7 +116,6 @@ def main():
                                roster = 'antelope',
                                base_numeric_id = 2150,
                                vehicle_generation = 1,
-                               vehicle_life = 40,
                                track_type = 'NG')
 
     consist.add_unit(Wagon(consist = consist,

@@ -7,7 +7,6 @@ consist = EngineConsist(id = 'baldwin',
               power = 1600,
               track_type = 'NG',
               speed = 45,
-              vehicle_life = 60,
               intro_date = 1920)
 
 consist.add_unit(SteamLoco(consist = consist,

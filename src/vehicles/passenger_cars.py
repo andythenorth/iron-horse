@@ -7,7 +7,6 @@ def main():
                                roster = 'pony',
                                base_numeric_id = 740,
                                vehicle_generation = 1,
-                               vehicle_life = 40,
                                speedy = True)
 
     consist.add_unit(Wagon(consist = consist,
@@ -22,7 +21,6 @@ def main():
                                roster = 'pony',
                                base_numeric_id = 750,
                                vehicle_generation = 2,
-                               vehicle_life = 40,
                                speedy = True)
 
     consist.add_unit(Wagon(consist = consist,
@@ -37,8 +35,7 @@ def main():
                                roster = 'pony',
                                base_numeric_id = 760,
                                vehicle_generation = 3,
-                               speedy = True,
-                               vehicle_life = 40)
+                               speedy = True)
 
     consist.add_unit(Wagon(consist = consist,
                            capacity_pax = 75,
@@ -52,7 +49,6 @@ def main():
                                roster = 'pony',
                                base_numeric_id = 770,
                                vehicle_generation = 1,
-                               vehicle_life = 40,
                                track_type = 'NG')
 
     consist.add_unit(Wagon(consist = consist,
@@ -68,8 +64,7 @@ def main():
                                roster = 'llama',
                                base_numeric_id = 780,
                                vehicle_generation = 1,
-                               speedy = True,
-                               vehicle_life = 40)
+                               speedy = True)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_pax = 40,
@@ -83,8 +78,7 @@ def main():
                                roster = 'llama',
                                base_numeric_id = 790,
                                vehicle_generation = 2,
-                               speedy = True,
-                               vehicle_life = 40)
+                               speedy = True)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_pax = 50,
@@ -98,8 +92,7 @@ def main():
                                roster = 'llama',
                                base_numeric_id = 800,
                                vehicle_generation = 3,
-                               speedy = True,
-                               vehicle_life = 40)
+                               speedy = True)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_pax = 60,
@@ -114,7 +107,6 @@ def main():
                                base_numeric_id = 810,
                                vehicle_generation = 1,
                                speedy = True,
-                               vehicle_life = 40,
                                track_type = 'NG')
 
     consist.add_unit(Wagon(consist = consist,
@@ -130,7 +122,6 @@ def main():
                                base_numeric_id = 1350,
                                vehicle_generation = 2,
                                speedy = True,
-                               vehicle_life = 40,
                                track_type = 'NG')
 
     consist.add_unit(Wagon(consist = consist,
@@ -147,7 +138,6 @@ def main():
                                base_numeric_id = 1370,
                                vehicle_generation = 3,
                                speedy = True,
-                               vehicle_life = 40,
                                track_type = 'NG')
 
     consist.add_unit(Wagon(consist = consist,
@@ -163,8 +153,7 @@ def main():
                                roster = 'antelope',
                                base_numeric_id = 1580,
                                vehicle_generation = 1,
-                               speedy = True,
-                               vehicle_life = 40)
+                               speedy = True)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_pax = 55,
@@ -178,8 +167,7 @@ def main():
                                roster = 'antelope',
                                base_numeric_id = 1560,
                                vehicle_generation = 2,
-                               speedy = True,
-                               vehicle_life = 40)
+                               speedy = True)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_pax = 80,
@@ -194,7 +182,6 @@ def main():
                                base_numeric_id = 2130,
                                vehicle_generation = 1,
                                speedy = True,
-                               vehicle_life = 40,
                                track_type = 'NG')
 
     consist.add_unit(Wagon(consist = consist,
@@ -210,7 +197,6 @@ def main():
                                base_numeric_id = 1940,
                                vehicle_generation = 2,
                                speedy = True,
-                               vehicle_life = 40,
                                track_type = 'NG')
 
     consist.add_unit(Wagon(consist = consist,

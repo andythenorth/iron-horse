@@ -7,7 +7,6 @@ consist = EngineConsist(id = 'peacock',
               power = 1200,
               tractive_effort_coefficient = 0.32,
               speed = 50,
-              vehicle_life = 40,
               intro_date = 1885)
 
 consist.add_unit(SteamLoco(consist = consist,

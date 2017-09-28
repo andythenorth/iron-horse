@@ -8,8 +8,7 @@ def main():
                            roster = 'pony',
                            base_numeric_id = 890,
                            vehicle_generation = 1,
-                           vehicle_life = 50,
-                           suppress_animated_pixel_warnings = True)
+                                        suppress_animated_pixel_warnings = True)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 30,
@@ -24,8 +23,7 @@ def main():
                            roster = 'pony',
                            base_numeric_id = 900,
                            vehicle_generation = 2,
-                           vehicle_life = 50,
-                           suppress_animated_pixel_warnings = True)
+                                        suppress_animated_pixel_warnings = True)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 60,
@@ -40,8 +38,7 @@ def main():
                            roster = 'pony',
                            base_numeric_id = 910,
                            vehicle_generation = 3,
-                           vehicle_life = 50,
-                           suppress_animated_pixel_warnings = True)
+                                        suppress_animated_pixel_warnings = True)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 90,

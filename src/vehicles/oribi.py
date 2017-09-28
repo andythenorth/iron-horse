@@ -8,8 +8,7 @@ consist = EngineConsist(id = 'oribi',
               track_type = 'NG',
               speed = 65,
               type_base_running_cost_points = -28, # dibble running costs for game balance
-              intro_date = 1960,
-              vehicle_life = 40)
+              intro_date = 1960)
 
 consist.add_unit(DieselRailcar(consist = consist,
                         weight = 65,

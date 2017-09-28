@@ -8,7 +8,6 @@ consist = EngineConsist(id = 'raven',
               tractive_effort_coefficient = 0.32,
               speed = 75,
               buy_cost = 77,
-              vehicle_life = 40,
               intro_date = 1905) # explicit intro date by design
 
 consist.add_unit(ElectricLoco(consist = consist,

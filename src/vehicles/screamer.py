@@ -7,7 +7,6 @@ consist = EngineConsist(id = 'screamer',
               power = 4500,
               speed = 125,
               buy_cost = 135,
-              vehicle_life = 40,
               intro_date = 1985, # explicit intro date by design
               dual_headed = True)
 

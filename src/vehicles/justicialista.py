@@ -6,7 +6,6 @@ consist = EngineConsist(id = 'justicialista',
               title = 'Justicialista [Diesel]',
               power = 5880, # yes, really, it's high powered
               speed = 85,
-              vehicle_life = 20, # but short lived eh?
               intro_date = 1955)
 
 consist.add_unit(DieselLoco(consist = consist,

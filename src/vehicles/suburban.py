@@ -9,7 +9,6 @@ consist = EngineConsist(id = 'suburban',
               speed = 80,
               type_base_buy_cost_points = -2, # dibble buy cost for game balance
               type_base_running_cost_points = -6, # dibble running costs for game balance
-              vehicle_life = 40,
               vehicle_generation = 2)
 
 consist.add_unit(SteamLoco(consist = consist,

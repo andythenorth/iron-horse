@@ -8,7 +8,6 @@ consist = EngineConsist(id = 'roarer',
               tractive_effort_coefficient = 0.32,
               speed = 110,
               type_base_buy_cost_points = 30, # dibble buy cost for game balance
-              vehicle_life = 40,
               vehicle_generation = 4)
 
 consist.add_unit(ElectricLoco(consist = consist,

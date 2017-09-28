@@ -8,7 +8,6 @@ consist = EngineConsist(id = 'chaplin',
               tractive_effort_coefficient = 0.2,
               speed = 65,
               type_base_buy_cost_points = -3, # dibble buy cost for game balance
-              vehicle_life = 40,
               vehicle_generation = 1)
 
 consist.add_unit(SteamLoco(consist = consist,

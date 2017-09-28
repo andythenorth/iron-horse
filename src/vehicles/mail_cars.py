@@ -7,7 +7,6 @@ def main():
                                roster = 'pony',
                                base_numeric_id = 2220,
                                vehicle_generation = 1,
-                               vehicle_life = 40,
                                speedy = True)
 
     consist.add_unit(MailCar(consist = consist,
@@ -22,8 +21,7 @@ def main():
                               roster = 'pony',
                               base_numeric_id = 920,
                               vehicle_generation = 2,
-                              vehicle_life = 40,
-                              speedy = True)
+                                              speedy = True)
 
     consist.add_unit(MailCar(consist = consist,
                              capacity_mail = 25,
@@ -37,8 +35,7 @@ def main():
                               roster = 'pony',
                               base_numeric_id = 940,
                               vehicle_generation = 3,
-                              vehicle_life = 40,
-                              speedy = True)
+                                              speedy = True)
 
     consist.add_unit(MailCar(consist = consist,
                              capacity_mail = 40,
@@ -52,8 +49,7 @@ def main():
                               roster = 'pony',
                               base_numeric_id = 950,
                               vehicle_generation = 1,
-                              vehicle_life = 40,
-                              track_type = 'NG')
+                                              track_type = 'NG')
 
     consist.add_unit(MailCar(consist = consist,
                              capacity_mail = 24,
@@ -68,7 +64,6 @@ def main():
                           roster = 'llama',
                           base_numeric_id = 960,
                           vehicle_generation = 1,
-                          vehicle_life = 40,
                           speedy = True)
 
     consist.add_unit(MailCar(consist = consist,
@@ -83,7 +78,6 @@ def main():
                           roster = 'llama',
                           base_numeric_id = 970,
                           vehicle_generation = 2,
-                          vehicle_life = 40,
                           speedy = True)
 
     consist.add_unit(MailCar(consist = consist,
@@ -98,7 +92,6 @@ def main():
                           roster = 'llama',
                           base_numeric_id = 980,
                           vehicle_generation = 3,
-                          vehicle_life = 40,
                           speedy = True)
 
     consist.add_unit(MailCar(consist = consist,
@@ -114,8 +107,7 @@ def main():
                           base_numeric_id = 990,
                           vehicle_generation = 1,
                           speedy = True,
-                          track_type = 'NG',
-                          vehicle_life = 40)
+                          track_type = 'NG')
 
     consist.add_unit(MailCar(consist = consist,
                             capacity_mail = 30,
@@ -130,8 +122,7 @@ def main():
                           base_numeric_id = 1380,
                           vehicle_generation = 2,
                           speedy = True,
-                          track_type = 'NG',
-                          vehicle_life = 40)
+                          track_type = 'NG')
 
     consist.add_unit(MailCar(consist = consist,
                             capacity_mail = 40,
@@ -146,8 +137,7 @@ def main():
                           base_numeric_id = 1450,
                           vehicle_generation = 3,
                           speedy = True,
-                          track_type = 'NG',
-                          vehicle_life = 40)
+                          track_type = 'NG')
 
     consist.add_unit(MailCar(consist = consist,
                             capacity_mail = 50,
@@ -162,7 +152,6 @@ def main():
                           roster = 'antelope',
                           base_numeric_id = 1730,
                           vehicle_generation = 1,
-                          vehicle_life = 40,
                           speedy = True)
 
     consist.add_unit(MailCar(consist = consist,
@@ -177,7 +166,6 @@ def main():
                           roster = 'antelope',
                           base_numeric_id = 2120,
                           vehicle_generation = 1,
-                          vehicle_life = 40,
                           track_type = 'NG',
                           speedy = True)
 
@@ -193,7 +181,6 @@ def main():
                           roster = 'antelope',
                           base_numeric_id = 1950,
                           vehicle_generation = 2,
-                          vehicle_life = 40,
                           track_type = 'NG',
                           speedy = True)
 

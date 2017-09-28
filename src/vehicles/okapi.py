@@ -8,7 +8,6 @@ consist = EngineConsist(id = 'okapi',
               track_type = 'NG',
               speed = 65,
               type_base_running_cost_points = -2, # dibble running costs for game balance
-              vehicle_life = 40,
               intro_date = 1958)
 
 consist.add_unit(DieselLoco(consist = consist,

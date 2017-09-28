@@ -7,8 +7,7 @@ def main():
                            roster = 'antelope',
                            base_numeric_id = 2140,
                            vehicle_generation = 1,
-                           vehicle_life = 40,
-                           track_type = 'NG')
+                                        track_type = 'NG')
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 20,
@@ -27,8 +26,7 @@ def main():
                            roster = 'antelope',
                            base_numeric_id = 2170,
                            vehicle_generation = 2,
-                           vehicle_life = 40,
-                           track_type = 'NG')
+                                        track_type = 'NG')
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 30,
@@ -47,8 +45,7 @@ def main():
                            roster = 'antelope',
                            base_numeric_id = 2180,
                            vehicle_generation = 3,
-                           vehicle_life = 40,
-                           track_type = 'NG')
+                                        track_type = 'NG')
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 40,

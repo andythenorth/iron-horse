@@ -8,7 +8,6 @@ consist = EngineConsist(id = 'aberdare',
               tractive_effort_coefficient = 0.22,
               speed = 45,
               type_base_buy_cost_points = 12, # dibble buy cost for game balance
-              vehicle_life = 40,
               vehicle_generation = 2)
 
 consist.add_unit(SteamLoco(consist = consist,

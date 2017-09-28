@@ -7,8 +7,7 @@ consist = EngineConsist(id = 'antlion',
               power = 350,
               speed = 55,
               type_base_running_cost_points = -32, # dibble running costs for game balance
-              intro_date = 1950,
-              vehicle_life = 40)
+              intro_date = 1950)
 
 consist.add_unit(DieselRailcar(consist = consist,
                         weight = 75,

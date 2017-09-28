@@ -8,8 +8,7 @@ consist = EngineConsist(id = 'tyburn',
               power = 900,
               speed = 55,
               type_base_buy_cost_points = 56, # dibble buy cost for game balance
-              intro_date = 1950,
-              vehicle_life = 40)
+              intro_date = 1950)
 
 consist.add_unit(MetroCargoUnit(consist = consist,
                         weight = 35,

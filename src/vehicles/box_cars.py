@@ -6,8 +6,7 @@ def main():
     consist = BoxConsistShort(title = '[Box Car]',
                          roster = 'pony',
                          base_numeric_id = 1780,
-                         vehicle_generation = 1,
-                         vehicle_life = 40)
+                         vehicle_generation = 1)
 
     consist.add_unit(BoxCar(consist = consist,
                             capacity_freight = 20,
@@ -26,8 +25,7 @@ def main():
     consist = BoxConsistShort(title = '[Box Car]',
                          roster = 'pony',
                          base_numeric_id = 550,
-                         vehicle_generation = 2,
-                         vehicle_life = 40)
+                         vehicle_generation = 2)
 
     consist.add_unit(BoxCar(consist = consist,
                             capacity_freight = 20,
@@ -46,8 +44,7 @@ def main():
     consist = BoxConsistShort(title = '[Box Car]',
                          roster = 'pony',
                          base_numeric_id = 560,
-                         vehicle_generation = 3,
-                         vehicle_life = 40)
+                         vehicle_generation = 3)
 
     consist.add_unit(BoxCar(consist = consist,
                             capacity_freight = 35,
@@ -66,8 +63,7 @@ def main():
     consist = BoxConsistLong(title = '[Box Car]',
                          roster = 'pony',
                          base_numeric_id = 2340,
-                         vehicle_generation = 3,
-                         vehicle_life = 40)
+                         vehicle_generation = 3)
 
     consist.add_unit(BoxCar(consist = consist,
                             capacity_freight = 55,
@@ -86,8 +82,7 @@ def main():
     consist = BoxConsistShort(title = '[Box Car]',
                          roster = 'pony',
                          base_numeric_id = 570,
-                         vehicle_generation = 4,
-                         vehicle_life = 40)
+                         vehicle_generation = 4)
 
     consist.add_unit(BoxCar(consist = consist,
                             capacity_freight = 55,
@@ -107,7 +102,6 @@ def main():
                          roster = 'pony',
                          base_numeric_id = 580,
                          vehicle_generation = 1,
-                         vehicle_life = 40,
                          track_type = 'NG')
 
     consist.add_unit(BoxCar(consist = consist,
@@ -128,8 +122,7 @@ def main():
     consist = BoxConsistShort(title = '[Box Car]',
                         roster = 'llama',
                         base_numeric_id = 590,
-                        vehicle_generation = 1,
-                        vehicle_life = 40)
+                        vehicle_generation = 1)
 
     consist.add_unit(BoxCar(consist = consist,
                             capacity_freight = 25,
@@ -148,8 +141,7 @@ def main():
     consist = BoxConsistShort(title = '[Box Car]',
                          roster = 'llama',
                          base_numeric_id = 600,
-                         vehicle_generation = 2,
-                         vehicle_life = 40)
+                         vehicle_generation = 2)
 
     consist.add_unit(BoxCar(consist = consist,
                             capacity_freight = 45,
@@ -168,8 +160,7 @@ def main():
     consist = BoxConsistShort(title = '[Box Car]',
                          roster = 'llama',
                          base_numeric_id = 610,
-                         vehicle_generation = 3,
-                         vehicle_life = 40)
+                         vehicle_generation = 3)
 
     consist.add_unit(BoxCar(consist = consist,
                             capacity_freight = 65,
@@ -189,8 +180,7 @@ def main():
                         roster = 'llama',
                         base_numeric_id = 620,
                         vehicle_generation = 1,
-                        vehicle_life = 40,
-                        track_type = 'NG')
+                                  track_type = 'NG')
 
     consist.add_unit(BoxCar(consist = consist,
                             capacity_freight = 20,
@@ -210,7 +200,6 @@ def main():
                          roster = 'llama',
                          base_numeric_id = 1310,
                          vehicle_generation = 2,
-                         vehicle_life = 40,
                          track_type = 'NG')
 
     consist.add_unit(BoxCar(consist = consist,
@@ -231,8 +220,7 @@ def main():
     consist = BoxConsistShort(title = '[Box Car]',
                          roster = 'antelope',
                          base_numeric_id = 1750,
-                         vehicle_generation = 1,
-                         vehicle_life = 40)
+                         vehicle_generation = 1)
 
     consist.add_unit(BoxCar(consist = consist,
                             capacity_freight = 55,
@@ -251,8 +239,7 @@ def main():
     consist = BoxConsistShort(title = '[Box Car]',
                          roster = 'antelope',
                          base_numeric_id = 1740,
-                         vehicle_generation = 2,
-                         vehicle_life = 40)
+                         vehicle_generation = 2)
 
     consist.add_unit(BoxCar(consist = consist,
                             capacity_freight = 70,
@@ -272,7 +259,6 @@ def main():
                          roster = 'antelope',
                          base_numeric_id = 2100,
                          vehicle_generation = 1,
-                         vehicle_life = 40,
                          track_type = 'NG')
 
     consist.add_unit(BoxCar(consist = consist,
@@ -293,7 +279,6 @@ def main():
                          roster = 'antelope',
                          base_numeric_id = 1850,
                          vehicle_generation = 2,
-                         vehicle_life = 40,
                          track_type = 'NG')
 
     consist.add_unit(BoxCar(consist = consist,
@@ -314,7 +299,6 @@ def main():
                          roster = 'antelope',
                          base_numeric_id = 1860,
                          vehicle_generation = 3,
-                         vehicle_life = 40,
                          track_type = 'NG')
 
     consist.add_unit(BoxCar(consist = consist,

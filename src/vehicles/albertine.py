@@ -10,7 +10,6 @@ consist = EngineConsist(id = 'albertine',
               speed = 55,
               type_base_buy_cost_points = 25, # dibble buy cost for game balance
               type_base_running_cost_points = 35, # dibble running costs for game balance
-              vehicle_life = 40,
               intro_date = 1885)
 
 consist.add_unit(SteamLoco(consist = consist,

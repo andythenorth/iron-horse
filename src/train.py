@@ -36,7 +36,7 @@ class Consist(object):
         self.title = kwargs.get('title', None)
         self.base_numeric_id = kwargs.get('base_numeric_id', None)
         self._intro_date = kwargs.get('intro_date', None) # private var as wagons have their own method for automated intro dates
-        self.vehicle_life = kwargs.get('vehicle_life', None)
+        self.vehicle_life = kwargs.get('vehicle_life', 40)
         self.power = kwargs.get('power', 0)
         self.track_type = kwargs.get('track_type', 'RAIL')
         self.tractive_effort_coefficient = kwargs.get('tractive_effort_coefficient', 0.3) # 0.3 is recommended default value

@@ -6,8 +6,7 @@ def main():
     consist = OpenConsist(title = '[Open Car]',
                           roster = 'pony',
                           base_numeric_id = 820,
-                          vehicle_generation = 1,
-                          vehicle_life = 40)
+                          vehicle_generation = 1)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 20,
@@ -25,8 +24,7 @@ def main():
     consist = OpenConsist(title = '[Open Car]',
                           roster = 'pony',
                           base_numeric_id = 830,
-                          vehicle_generation = 2,
-                          vehicle_life = 40)
+                          vehicle_generation = 2)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 35,
@@ -44,8 +42,7 @@ def main():
     consist = OpenConsist(title = '[Open Car]',
                           roster = 'pony',
                           base_numeric_id = 840,
-                          vehicle_generation = 3,
-                          vehicle_life = 40)
+                          vehicle_generation = 3)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 55,
@@ -63,8 +60,7 @@ def main():
     consist = OpenConsist(title = '[Open Car]',
                           roster = 'pony',
                           base_numeric_id = 1450,
-                          vehicle_generation = 4,
-                          vehicle_life = 40)
+                          vehicle_generation = 4)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 55,
@@ -83,7 +79,6 @@ def main():
                           roster = 'pony',
                           base_numeric_id = 850,
                           vehicle_generation = 1,
-                          vehicle_life = 40,
                           track_type = 'NG')
 
     consist.add_unit(Wagon(consist = consist,
@@ -103,8 +98,7 @@ def main():
     consist = OpenConsist(title = '[Open Car]',
                           roster = 'llama',
                           base_numeric_id = 860,
-                          vehicle_generation = 1,
-                          vehicle_life = 40)
+                          vehicle_generation = 1)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 25,
@@ -122,8 +116,7 @@ def main():
     consist = OpenConsist(title = '[Open Car]',
                           roster = 'llama',
                           base_numeric_id = 1330,
-                          vehicle_generation = 2,
-                          vehicle_life = 40)
+                          vehicle_generation = 2)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 45,
@@ -142,7 +135,6 @@ def main():
                           roster = 'llama',
                           base_numeric_id = 870,
                           vehicle_generation = 1,
-                          vehicle_life = 40,
                           track_type = 'NG')
 
     consist.add_unit(Wagon(consist = consist,
@@ -162,7 +154,6 @@ def main():
                           roster = 'llama',
                           base_numeric_id = 1320,
                           vehicle_generation = 2,
-                          vehicle_life = 40,
                           track_type = 'NG')
 
     consist.add_unit(Wagon(consist = consist,
@@ -182,8 +173,7 @@ def main():
     consist = OpenConsist(title = '[Open Car]',
                           roster = 'antelope',
                           base_numeric_id = 1760,
-                          vehicle_generation = 1,
-                          vehicle_life = 40)
+                          vehicle_generation = 1)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 55,
@@ -201,8 +191,7 @@ def main():
     consist = OpenConsist(title = '[Open Car]',
                           roster = 'antelope',
                           base_numeric_id = 1770,
-                          vehicle_generation = 2,
-                          vehicle_life = 40)
+                          vehicle_generation = 2)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 70,
@@ -221,7 +210,6 @@ def main():
                           roster = 'antelope',
                           base_numeric_id = 2090,
                           vehicle_generation = 1,
-                          vehicle_life = 40,
                           track_type = 'NG')
 
     consist.add_unit(Wagon(consist = consist,
@@ -241,7 +229,6 @@ def main():
                           roster = 'antelope',
                           base_numeric_id = 1830,
                           vehicle_generation = 2,
-                          vehicle_life = 40,
                           track_type = 'NG')
 
     consist.add_unit(Wagon(consist = consist,
@@ -261,7 +248,6 @@ def main():
                           roster = 'antelope',
                           base_numeric_id = 1820,
                           vehicle_generation = 3,
-                          vehicle_life = 40,
                           track_type = 'NG')
 
     consist.add_unit(Wagon(consist = consist,

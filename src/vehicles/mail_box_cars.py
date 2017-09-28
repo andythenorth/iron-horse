@@ -7,7 +7,6 @@ def main():
                                roster = 'pony',
                                base_numeric_id = 2280,
                                vehicle_generation = 1,
-                               vehicle_life = 40,
                                speedy = True)
 
     consist.add_unit(MailCar(consist = consist,
@@ -22,8 +21,7 @@ def main():
                               roster = 'pony',
                               base_numeric_id = 2290,
                               vehicle_generation = 2,
-                              vehicle_life = 40,
-                              speedy = True)
+                                              speedy = True)
 
     consist.add_unit(MailCar(consist = consist,
                              capacity_mail = 25,
@@ -37,8 +35,7 @@ def main():
                               roster = 'pony',
                               base_numeric_id = 2300,
                               vehicle_generation = 3,
-                              vehicle_life = 40,
-                              speedy = True)
+                                              speedy = True)
 
     consist.add_unit(MailCar(consist = consist,
                              capacity_mail = 40,

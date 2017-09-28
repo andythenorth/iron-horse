@@ -6,8 +6,7 @@ def main():
     consist = HopperConsistShort(title = '[Hopper Car]',
                                  roster = 'pony',
                                  base_numeric_id = 1070,
-                                 vehicle_generation = 3,
-                                 vehicle_life = 40)
+                                 vehicle_generation = 3)
 
     consist.add_unit(Wagon(consist = consist,
                            capacity_freight = 20,
@@ -25,8 +24,7 @@ def main():
     consist = HopperConsistLong(title = '[Hopper Car]',
                                  roster = 'pony',
                                  base_numeric_id = 2330,
-                                 vehicle_generation = 3,
-                                 vehicle_life = 40)
+                                 vehicle_generation = 3)
 
     consist.add_unit(Wagon(consist = consist,
                            capacity_freight = 30,
@@ -44,8 +42,7 @@ def main():
     consist = HopperConsistShort(title = '[Hopper Car]',
                             roster = 'pony',
                             base_numeric_id = 1080,
-                            vehicle_generation = 4,
-                            vehicle_life = 40)
+                            vehicle_generation = 4)
 
     consist.add_unit(Wagon(consist = consist,
                            capacity_freight = 30,
@@ -63,8 +60,7 @@ def main():
     consist = HopperConsistLong(title = '[Hopper Car]',
                             roster = 'pony',
                             base_numeric_id = 1090,
-                            vehicle_generation = 4,
-                            vehicle_life = 40)
+                            vehicle_generation = 4)
 
     consist.add_unit(Wagon(consist = consist,
                            capacity_freight = 40,
@@ -83,8 +79,7 @@ def main():
     consist = HopperConsistShort(title = '[Rotary Gondola Car]',
                             roster = 'llama',
                             base_numeric_id = 1100,
-                            vehicle_generation = 2,
-                            vehicle_life = 40)
+                            vehicle_generation = 2)
 
     consist.add_unit(Wagon(consist = consist,
                            capacity_freight = 55,
@@ -102,8 +97,7 @@ def main():
     consist = HopperConsistShort(title = '[Hopper Car]',
                             roster = 'llama',
                             base_numeric_id = 1110,
-                            vehicle_generation = 3,
-                            vehicle_life = 40)
+                            vehicle_generation = 3)
 
     consist.add_unit(Wagon(consist = consist,
                            capacity_freight = 75,
@@ -122,7 +116,6 @@ def main():
                             roster = 'llama',
                             base_numeric_id = 1120,
                             vehicle_generation = 2,
-                            vehicle_life = 40,
                             track_type = 'NG')
 
     consist.add_unit(Wagon(consist = consist,
@@ -142,7 +135,6 @@ def main():
                             roster = 'llama',
                             base_numeric_id = 1130,
                             vehicle_generation = 3,
-                            vehicle_life = 40,
                             track_type = 'NG')
 
     consist.add_unit(Wagon(consist = consist,
@@ -162,8 +154,7 @@ def main():
     consist = HopperConsistShort(title = '[Rotary Gondola Car]',
                             roster = 'antelope',
                             base_numeric_id = 1630,
-                            vehicle_generation = 1,
-                            vehicle_life = 40)
+                            vehicle_generation = 1)
 
     consist.add_unit(Wagon(consist = consist,
                            capacity_freight = 60,
@@ -181,8 +172,7 @@ def main():
     consist = HopperConsistShort(title = '[Rotary Gondola Car]',
                             roster = 'antelope',
                             base_numeric_id = 1660,
-                            vehicle_generation = 2,
-                            vehicle_life = 40)
+                            vehicle_generation = 2)
 
     consist.add_unit(Wagon(consist = consist,
                            capacity_freight = 75,
@@ -202,7 +192,6 @@ def main():
                             roster = 'antelope',
                             base_numeric_id = 1890,
                             vehicle_generation = 2,
-                            vehicle_life = 40,
                             track_type = 'NG')
 
     consist.add_unit(Wagon(consist = consist,

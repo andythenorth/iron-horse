@@ -7,7 +7,6 @@ consist = EngineConsist(id = 'gazelle',
               power = 1800,
               track_type = 'NG',
               speed = 85,
-              vehicle_life = 40,
               intro_date = 1975)
 
 consist.add_unit(DieselLoco(consist = consist,

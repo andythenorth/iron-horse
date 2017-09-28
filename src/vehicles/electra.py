@@ -8,7 +8,6 @@ consist = EngineConsist(id = 'electra',
               tractive_effort_coefficient = 0.32,
               speed = 90,
               type_base_buy_cost_points = 10, # dibble buy cost for game balance
-              vehicle_life = 40,
               intro_date = 1935) # explicit intro date by design
 
 consist.add_unit(ElectricLoco(consist = consist,

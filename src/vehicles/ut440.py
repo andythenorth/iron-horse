@@ -8,7 +8,6 @@ consist = EngineConsist(id = 'ut440',
               speed = 55,
               type_base_buy_cost_points = -10, # dibble buy cost for game balance
               type_base_running_cost_points = -15, # dibble running costs for game balance
-              vehicle_life = 40,
               intro_date = 2011)
 
 consist.add_unit(ElectricLoco(consist = consist,

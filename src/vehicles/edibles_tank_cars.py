@@ -7,8 +7,7 @@ def main():
                                  roster = 'pony',
                                  base_numeric_id = 1190,
                                  vehicle_generation = 1,
-                                 vehicle_life = 40,
-                                 speedy = True)
+                                                    speedy = True)
 
     consist.add_unit(Wagon(consist = consist,
                            capacity_freight = 25,
@@ -29,8 +28,7 @@ def main():
                                  roster = 'pony',
                                  base_numeric_id = 1200,
                                  vehicle_generation = 3,
-                                 vehicle_life = 40,
-                                 speedy = True)
+                                                    speedy = True)
 
     consist.add_unit(Wagon(consist = consist,
                            capacity_freight = 40,
@@ -49,8 +47,7 @@ def main():
     consist = EdiblesTankConsist(title = '[Edibles Tank Car]',
                                  roster = 'llama',
                                  base_numeric_id = 1210,
-                                 vehicle_generation = 1,
-                                 vehicle_life = 40)
+                                 vehicle_generation = 1)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 25,
@@ -71,8 +68,7 @@ def main():
                                  roster = 'llama',
                                  base_numeric_id = 1220,
                                  vehicle_generation = 3,
-                                 vehicle_life = 40,
-                                 speedy = True)
+                                                    speedy = True)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 55,
@@ -91,8 +87,7 @@ def main():
     consist = EdiblesTankConsist(title = '[Edibles Tank Car]',
                         roster = 'antelope',
                         base_numeric_id = 1690,
-                        vehicle_generation = 1,
-                        vehicle_life = 40)
+                        vehicle_generation = 1)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 45,
@@ -111,8 +106,7 @@ def main():
                                  roster = 'antelope',
                                  base_numeric_id = 1700,
                                  vehicle_generation = 2,
-                                 vehicle_life = 40,
-                                 speedy = True)
+                                                    speedy = True)
 
     consist.add_unit(Wagon(consist = consist,
                             capacity_freight = 60,
