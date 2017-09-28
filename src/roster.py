@@ -31,7 +31,7 @@ class Roster(object):
         result = []
         result.extend(self.engine_consists)
         for base_id in global_constants.buy_menu_sort_order_wagons:
-            result.extend(sorted(self.wagon_consists[base_id], key=lambda wagon_consist: wagon_consist.wagon_generation))
+            result.extend(sorted(self.wagon_consists[base_id], key=lambda wagon_consist: wagon_consist.vehicle_generation))
         for consist in result:
             # if consist won't pickle, then multiprocessing blows up, catching it here is faster and easier
             try:

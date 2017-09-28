@@ -6,7 +6,7 @@ def main():
     consist = CoveredHopperConsist(title = '[Covered Hopper Car]',
                                    roster = 'pony',
                                    base_numeric_id = 1270,
-                                   wagon_generation = 1,
+                                   vehicle_generation = 1,
                                    vehicle_life = 40)
 
     consist.add_unit(Wagon(consist = consist,
@@ -25,7 +25,7 @@ def main():
     consist = CoveredHopperConsist(title = '[Covered Hopper Car]',
                                    roster = 'pony',
                                    base_numeric_id = 1230,
-                                   wagon_generation = 2,
+                                   vehicle_generation = 2,
                                    vehicle_life = 40)
 
     consist.add_unit(Wagon(consist = consist,
@@ -44,7 +44,7 @@ def main():
     consist = CoveredHopperConsist(title = '[Covered Hopper Car]',
                                    roster = 'pony',
                                    base_numeric_id = 1240,
-                                   wagon_generation = 3,
+                                   vehicle_generation = 3,
                                    vehicle_life = 40)
 
     consist.add_unit(Wagon(consist = consist,
@@ -64,7 +64,7 @@ def main():
     consist = CoveredHopperConsist(title = '[Covered Hopper Car]',
                                    roster = 'llama',
                                    base_numeric_id = 1250,
-                                   wagon_generation = 2,
+                                   vehicle_generation = 2,
                                    vehicle_life = 40)
 
     consist.add_unit(Wagon(consist = consist,
@@ -83,7 +83,7 @@ def main():
     consist = CoveredHopperConsist(title = '[Covered Hopper Car]',
                                    roster = 'llama',
                                    base_numeric_id = 1260,
-                                   wagon_generation = 3,
+                                   vehicle_generation = 3,
                                    vehicle_life = 40)
 
     consist.add_unit(Wagon(consist = consist,

@@ -6,7 +6,7 @@ def main():
     consist = MailBoxConsist(title = '[Mail Box Car]',
                                roster = 'pony',
                                base_numeric_id = 2280,
-                               wagon_generation = 1,
+                               vehicle_generation = 1,
                                vehicle_life = 40,
                                speedy = True)
 
@@ -21,7 +21,7 @@ def main():
     consist = MailBoxConsist(title = '[Mail Box Car]',
                               roster = 'pony',
                               base_numeric_id = 2290,
-                              wagon_generation = 2,
+                              vehicle_generation = 2,
                               vehicle_life = 40,
                               speedy = True)
 
@@ -36,7 +36,7 @@ def main():
     consist = MailBoxConsist(title = '[Mail Box Car]',
                               roster = 'pony',
                               base_numeric_id = 2300,
-                              wagon_generation = 3,
+                              vehicle_generation = 3,
                               vehicle_life = 40,
                               speedy = True)
 

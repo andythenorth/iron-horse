@@ -6,7 +6,7 @@ def main():
     consist = ReeferConsist(title = '[Reefer Car]',
                             roster = 'pony',
                             base_numeric_id = 730,
-                            wagon_generation = 1,
+                            vehicle_generation = 1,
                             vehicle_life = 40,
                             speedy = True)
 
@@ -27,7 +27,7 @@ def main():
     consist = ReeferConsist(title = '[Reefer Car]',
                             roster = 'pony',
                             base_numeric_id = 720,
-                            wagon_generation = 3,
+                            vehicle_generation = 3,
                             vehicle_life = 40,
                             speedy = True)
 
@@ -48,7 +48,7 @@ def main():
     consist = ReeferConsist(title = '[Reefer Car]',
                             roster = 'llama',
                             base_numeric_id = 1390,
-                            wagon_generation = 1,
+                            vehicle_generation = 1,
                             vehicle_life = 40,
                             speedy = True)
 
@@ -69,7 +69,7 @@ def main():
     consist = ReeferConsist(title = '[Reefer Car]',
                             roster = 'llama',
                             base_numeric_id = 1400,
-                            wagon_generation = 3,
+                            vehicle_generation = 3,
                             vehicle_life = 40,
                             speedy = True)
 
@@ -89,7 +89,7 @@ def main():
     consist = ReeferConsist(title = '[Reefer Car]',
                             roster = 'llama',
                             base_numeric_id = 1410,
-                            wagon_generation = 1,
+                            vehicle_generation = 1,
                             vehicle_life = 40,
                             speedy = True,
                             track_type = 'NG')
@@ -111,7 +111,7 @@ def main():
     consist = ReeferConsist(title = '[Reefer Car]',
                             roster = 'llama',
                             base_numeric_id = 1420,
-                            wagon_generation = 3,
+                            vehicle_generation = 3,
                             vehicle_life = 40,
                             speedy = True,
                             track_type = 'NG')
@@ -133,7 +133,7 @@ def main():
     consist = ReeferConsist(title = '[Reefer Car]',
                             roster = 'antelope',
                             base_numeric_id = 1570,
-                            wagon_generation = 1,
+                            vehicle_generation = 1,
                             vehicle_life = 40,
                             speedy = True)
 
@@ -153,7 +153,7 @@ def main():
     consist = ReeferConsist(title = '[Reefer Car]',
                             roster = 'antelope',
                             base_numeric_id = 1900,
-                            wagon_generation = 1,
+                            vehicle_generation = 1,
                             vehicle_life = 40,
                             speedy = True,
                             track_type = 'NG')

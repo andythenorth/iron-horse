@@ -8,7 +8,7 @@ def main():
     consist = VehicleTransporterConsist(title = '[Vehicle Transporter Car]',
                                     roster = 'pony',
                                     base_numeric_id = 1530,
-                                    wagon_generation = 3,
+                                    vehicle_generation = 3,
                                     vehicle_life = 40)
 
     consist.add_unit(Wagon(consist = consist,

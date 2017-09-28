@@ -6,7 +6,7 @@ def main():
     consist = CabooseConsistShort(title = '[Caboose Car] Short',
                              roster = 'pony',
                              base_numeric_id = 1280,
-                             wagon_generation = 1,
+                             vehicle_generation = 1,
                              vehicle_life = 40,
                              speedy = True)
 
@@ -21,7 +21,7 @@ def main():
     consist = CabooseConsistLong(title = '[Caboose Car] Long',
                              roster = 'pony',
                              base_numeric_id = 2210,
-                             wagon_generation = 1,
+                             vehicle_generation = 1,
                              vehicle_life = 40,
                              speedy = True)
 
@@ -36,7 +36,7 @@ def main():
     consist = CabooseConsistShort(title = '[Caboose Car]',
                              roster = 'pony',
                              base_numeric_id = 1290,
-                             wagon_generation = 1,
+                             vehicle_generation = 1,
                              vehicle_life = 40,
                              track_type = 'NG')
 
@@ -52,7 +52,7 @@ def main():
     consist = CabooseConsist(title = '[Caboose Car]',
                              roster = 'llama',
                              base_numeric_id = 1300,
-                             wagon_generation = 1,
+                             vehicle_generation = 1,
                              vehicle_life = 40,
                              speedy = True)
 
@@ -68,7 +68,7 @@ def main():
     consist = CabooseConsist(title = '[Caboose Car]',
                              roster = 'antelope',
                              base_numeric_id = 1780,
-                             wagon_generation = 1,
+                             vehicle_generation = 1,
                              vehicle_life = 50,
                              speedy = True)
 
@@ -83,7 +83,7 @@ def main():
     consist = CabooseConsist(title = '[Caboose Car]',
                              roster = 'antelope',
                              base_numeric_id = 1880,
-                             wagon_generation = 1,
+                             vehicle_generation = 1,
                              vehicle_life = 50,
                              speedy = True,
                              track_type = 'NG')

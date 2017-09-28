@@ -6,7 +6,7 @@ def main():
     consist = PassengerConsist(title = '[Passenger Car]',
                                roster = 'pony',
                                base_numeric_id = 740,
-                               wagon_generation = 1,
+                               vehicle_generation = 1,
                                vehicle_life = 40,
                                speedy = True)
 
@@ -21,7 +21,7 @@ def main():
     consist = PassengerConsist(title = '[Passenger Car]',
                                roster = 'pony',
                                base_numeric_id = 750,
-                               wagon_generation = 2,
+                               vehicle_generation = 2,
                                vehicle_life = 40,
                                speedy = True)
 
@@ -36,7 +36,7 @@ def main():
     consist = PassengerConsist(title = '[Passenger Car]',
                                roster = 'pony',
                                base_numeric_id = 760,
-                               wagon_generation = 3,
+                               vehicle_generation = 3,
                                speedy = True,
                                vehicle_life = 40)
 
@@ -51,7 +51,7 @@ def main():
     consist = PassengerConsist(title = '[Passenger Car]',
                                roster = 'pony',
                                base_numeric_id = 770,
-                               wagon_generation = 1,
+                               vehicle_generation = 1,
                                vehicle_life = 40,
                                track_type = 'NG')
 
@@ -67,7 +67,7 @@ def main():
     consist = PassengerConsist(title = '[Passenger Car]',
                                roster = 'llama',
                                base_numeric_id = 780,
-                               wagon_generation = 1,
+                               vehicle_generation = 1,
                                speedy = True,
                                vehicle_life = 40)
 
@@ -82,7 +82,7 @@ def main():
     consist = PassengerConsist(title = '[Passenger Car]',
                                roster = 'llama',
                                base_numeric_id = 790,
-                               wagon_generation = 2,
+                               vehicle_generation = 2,
                                speedy = True,
                                vehicle_life = 40)
 
@@ -97,7 +97,7 @@ def main():
     consist = PassengerConsist(title = '[Passenger Car]',
                                roster = 'llama',
                                base_numeric_id = 800,
-                               wagon_generation = 3,
+                               vehicle_generation = 3,
                                speedy = True,
                                vehicle_life = 40)
 
@@ -112,7 +112,7 @@ def main():
     consist = PassengerConsist(title = '[Passenger Car]',
                                roster = 'llama',
                                base_numeric_id = 810,
-                               wagon_generation = 1,
+                               vehicle_generation = 1,
                                speedy = True,
                                vehicle_life = 40,
                                track_type = 'NG')
@@ -128,7 +128,7 @@ def main():
     consist = PassengerConsist(title = '[Passenger Car]',
                                roster = 'llama',
                                base_numeric_id = 1350,
-                               wagon_generation = 2,
+                               vehicle_generation = 2,
                                speedy = True,
                                vehicle_life = 40,
                                track_type = 'NG')
@@ -145,7 +145,7 @@ def main():
     consist = PassengerConsist(title = '[Passenger Car]',
                                roster = 'llama',
                                base_numeric_id = 1370,
-                               wagon_generation = 3,
+                               vehicle_generation = 3,
                                speedy = True,
                                vehicle_life = 40,
                                track_type = 'NG')
@@ -162,7 +162,7 @@ def main():
     consist = PassengerConsist(title = '[Passenger Car]',
                                roster = 'antelope',
                                base_numeric_id = 1580,
-                               wagon_generation = 1,
+                               vehicle_generation = 1,
                                speedy = True,
                                vehicle_life = 40)
 
@@ -177,7 +177,7 @@ def main():
     consist = PassengerConsist(title = '[Passenger Car]',
                                roster = 'antelope',
                                base_numeric_id = 1560,
-                               wagon_generation = 2,
+                               vehicle_generation = 2,
                                speedy = True,
                                vehicle_life = 40)
 
@@ -192,7 +192,7 @@ def main():
     consist = PassengerConsist(title = '[Passenger Car]',
                                roster = 'antelope',
                                base_numeric_id = 2130,
-                               wagon_generation = 1,
+                               vehicle_generation = 1,
                                speedy = True,
                                vehicle_life = 40,
                                track_type = 'NG')
@@ -208,7 +208,7 @@ def main():
     consist = PassengerConsist(title = '[Passenger Car]',
                                roster = 'antelope',
                                base_numeric_id = 1940,
-                               wagon_generation = 2,
+                               vehicle_generation = 2,
                                speedy = True,
                                vehicle_life = 40,
                                track_type = 'NG')

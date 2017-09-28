@@ -6,7 +6,7 @@ def main():
     consist = PassengerLuxuryConsist(title = '[Luxury Passenger Car]',
                                roster = 'pony',
                                base_numeric_id = 2250,
-                               wagon_generation = 1,
+                               vehicle_generation = 1,
                                intro_date = 1860,
                                vehicle_life = 40,
                                speedy = True)
@@ -23,7 +23,7 @@ def main():
     consist = PassengerLuxuryConsist(title = '[Luxury Passenger Car]',
                                roster = 'pony',
                                base_numeric_id = 2260,
-                               wagon_generation = 2,
+                               vehicle_generation = 2,
                                intro_date = 1900,
                                vehicle_life = 40,
                                speedy = True)
@@ -40,7 +40,7 @@ def main():
     consist = PassengerLuxuryConsist(title = '[Luxury Passenger Car]',
                                roster = 'pony',
                                base_numeric_id = 2270,
-                               wagon_generation = 3,
+                               vehicle_generation = 3,
                                intro_date = 1960,
                                speedy = True,
                                vehicle_life = 40)

@@ -6,7 +6,7 @@ def main():
     consist = FruitConsist(title = '[Fruit Car]',
                            roster = 'antelope',
                            base_numeric_id = 2140,
-                           wagon_generation = 1,
+                           vehicle_generation = 1,
                            vehicle_life = 40,
                            track_type = 'NG')
 
@@ -26,7 +26,7 @@ def main():
     consist = FruitConsist(title = '[Fruit Car]',
                            roster = 'antelope',
                            base_numeric_id = 2170,
-                           wagon_generation = 2,
+                           vehicle_generation = 2,
                            vehicle_life = 40,
                            track_type = 'NG')
 
@@ -46,7 +46,7 @@ def main():
     consist = FruitConsist(title = '[Fruit Car]',
                            roster = 'antelope',
                            base_numeric_id = 2180,
-                           wagon_generation = 3,
+                           vehicle_generation = 3,
                            vehicle_life = 40,
                            track_type = 'NG')
 

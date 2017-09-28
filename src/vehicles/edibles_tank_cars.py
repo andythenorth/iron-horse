@@ -6,7 +6,7 @@ def main():
     consist = EdiblesTankConsist(title = '[Edibles Tank Car]',
                                  roster = 'pony',
                                  base_numeric_id = 1190,
-                                 wagon_generation = 1,
+                                 vehicle_generation = 1,
                                  vehicle_life = 40,
                                  speedy = True)
 
@@ -28,7 +28,7 @@ def main():
     consist = EdiblesTankConsist(title = '[Edibles Tank Car]',
                                  roster = 'pony',
                                  base_numeric_id = 1200,
-                                 wagon_generation = 3,
+                                 vehicle_generation = 3,
                                  vehicle_life = 40,
                                  speedy = True)
 
@@ -49,7 +49,7 @@ def main():
     consist = EdiblesTankConsist(title = '[Edibles Tank Car]',
                                  roster = 'llama',
                                  base_numeric_id = 1210,
-                                 wagon_generation = 1,
+                                 vehicle_generation = 1,
                                  vehicle_life = 40)
 
     consist.add_unit(Wagon(consist = consist,
@@ -70,7 +70,7 @@ def main():
     consist = EdiblesTankConsist(title = '[Edibles Tank Car]',
                                  roster = 'llama',
                                  base_numeric_id = 1220,
-                                 wagon_generation = 3,
+                                 vehicle_generation = 3,
                                  vehicle_life = 40,
                                  speedy = True)
 
@@ -91,7 +91,7 @@ def main():
     consist = EdiblesTankConsist(title = '[Edibles Tank Car]',
                         roster = 'antelope',
                         base_numeric_id = 1690,
-                        wagon_generation = 1,
+                        vehicle_generation = 1,
                         vehicle_life = 40)
 
     consist.add_unit(Wagon(consist = consist,
@@ -110,7 +110,7 @@ def main():
     consist = EdiblesTankConsist(title = '[Edibles Tank Car]',
                                  roster = 'antelope',
                                  base_numeric_id = 1700,
-                                 wagon_generation = 2,
+                                 vehicle_generation = 2,
                                  vehicle_life = 40,
                                  speedy = True)
 

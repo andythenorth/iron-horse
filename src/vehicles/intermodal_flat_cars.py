@@ -6,7 +6,7 @@ def main():
     consist = IntermodalConsist(title = '[Intermodal Flat Car]',
                            roster = 'pony',
                            base_numeric_id = 1060,
-                           wagon_generation = 3,
+                           vehicle_generation = 3,
                            vehicle_life = 40,
                            speedy = True)
 

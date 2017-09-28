@@ -6,7 +6,7 @@ def main():
     consist = OpenConsist(title = '[Open Car]',
                           roster = 'pony',
                           base_numeric_id = 820,
-                          wagon_generation = 1,
+                          vehicle_generation = 1,
                           vehicle_life = 40)
 
     consist.add_unit(Wagon(consist = consist,
@@ -25,7 +25,7 @@ def main():
     consist = OpenConsist(title = '[Open Car]',
                           roster = 'pony',
                           base_numeric_id = 830,
-                          wagon_generation = 2,
+                          vehicle_generation = 2,
                           vehicle_life = 40)
 
     consist.add_unit(Wagon(consist = consist,
@@ -44,7 +44,7 @@ def main():
     consist = OpenConsist(title = '[Open Car]',
                           roster = 'pony',
                           base_numeric_id = 840,
-                          wagon_generation = 3,
+                          vehicle_generation = 3,
                           vehicle_life = 40)
 
     consist.add_unit(Wagon(consist = consist,
@@ -63,7 +63,7 @@ def main():
     consist = OpenConsist(title = '[Open Car]',
                           roster = 'pony',
                           base_numeric_id = 1450,
-                          wagon_generation = 4,
+                          vehicle_generation = 4,
                           vehicle_life = 40)
 
     consist.add_unit(Wagon(consist = consist,
@@ -82,7 +82,7 @@ def main():
     consist = OpenConsist(title = '[Open Car]',
                           roster = 'pony',
                           base_numeric_id = 850,
-                          wagon_generation = 1,
+                          vehicle_generation = 1,
                           vehicle_life = 40,
                           track_type = 'NG')
 
@@ -103,7 +103,7 @@ def main():
     consist = OpenConsist(title = '[Open Car]',
                           roster = 'llama',
                           base_numeric_id = 860,
-                          wagon_generation = 1,
+                          vehicle_generation = 1,
                           vehicle_life = 40)
 
     consist.add_unit(Wagon(consist = consist,
@@ -122,7 +122,7 @@ def main():
     consist = OpenConsist(title = '[Open Car]',
                           roster = 'llama',
                           base_numeric_id = 1330,
-                          wagon_generation = 2,
+                          vehicle_generation = 2,
                           vehicle_life = 40)
 
     consist.add_unit(Wagon(consist = consist,
@@ -141,7 +141,7 @@ def main():
     consist = OpenConsist(title = '[Open Car]',
                           roster = 'llama',
                           base_numeric_id = 870,
-                          wagon_generation = 1,
+                          vehicle_generation = 1,
                           vehicle_life = 40,
                           track_type = 'NG')
 
@@ -161,7 +161,7 @@ def main():
     consist = OpenConsist(title = '[Open Car]',
                           roster = 'llama',
                           base_numeric_id = 1320,
-                          wagon_generation = 2,
+                          vehicle_generation = 2,
                           vehicle_life = 40,
                           track_type = 'NG')
 
@@ -182,7 +182,7 @@ def main():
     consist = OpenConsist(title = '[Open Car]',
                           roster = 'antelope',
                           base_numeric_id = 1760,
-                          wagon_generation = 1,
+                          vehicle_generation = 1,
                           vehicle_life = 40)
 
     consist.add_unit(Wagon(consist = consist,
@@ -201,7 +201,7 @@ def main():
     consist = OpenConsist(title = '[Open Car]',
                           roster = 'antelope',
                           base_numeric_id = 1770,
-                          wagon_generation = 2,
+                          vehicle_generation = 2,
                           vehicle_life = 40)
 
     consist.add_unit(Wagon(consist = consist,
@@ -220,7 +220,7 @@ def main():
     consist = OpenConsist(title = '[Open Car]',
                           roster = 'antelope',
                           base_numeric_id = 2090,
-                          wagon_generation = 1,
+                          vehicle_generation = 1,
                           vehicle_life = 40,
                           track_type = 'NG')
 
@@ -240,7 +240,7 @@ def main():
     consist = OpenConsist(title = '[Open Car]',
                           roster = 'antelope',
                           base_numeric_id = 1830,
-                          wagon_generation = 2,
+                          vehicle_generation = 2,
                           vehicle_life = 40,
                           track_type = 'NG')
 
@@ -260,7 +260,7 @@ def main():
     consist = OpenConsist(title = '[Open Car]',
                           roster = 'antelope',
                           base_numeric_id = 1820,
-                          wagon_generation = 3,
+                          vehicle_generation = 3,
                           vehicle_life = 40,
                           track_type = 'NG')
 

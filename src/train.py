@@ -94,7 +94,7 @@ class Consist(object):
         # 'narmal' rail and 'elrail' doesn't require an id modifier
         if kwargs.get('track_type', None) == 'NG':
             id_base = id_base + '_ng'
-        result = '_'.join((id_base, kwargs['roster'], 'gen', str(kwargs['wagon_generation'])))
+        result = '_'.join((id_base, kwargs['roster'], 'gen', str(kwargs['vehicle_generation'])))
         return result
 
     def get_reduced_set_of_variant_dates(self):
@@ -449,7 +449,7 @@ class WagonConsist(Consist):
 
         id = self.get_wagon_id(self.base_id, **kwargs)
         kwargs['id'] = id
-        self.wagon_generation = kwargs.get('wagon_generation', None)
+        self.vehicle_generation = kwargs.get('vehicle_generation', None)
         super().__init__(**kwargs)
 
         roster_obj.register_wagon_consist(self)
@@ -468,7 +468,7 @@ class WagonConsist(Consist):
             return self._intro_date
         else:
             roster_obj = self.get_roster(self.roster_id)
-            return roster_obj.intro_dates[self.wagon_generation - 1]
+            return roster_obj.intro_dates[self.vehicle_generation - 1]
 
     @property
     def speed(self):
@@ -479,14 +479,14 @@ class WagonConsist(Consist):
             # eh this is ugly, but it works
             if self.track_type == 'NG':
                 if self.speedy:
-                    return roster_obj.speeds['express_ng'][self.wagon_generation - 1]
+                    return roster_obj.speeds['express_ng'][self.vehicle_generation - 1]
                 else:
-                    return roster_obj.speeds['freight_ng'][self.wagon_generation - 1]
+                    return roster_obj.speeds['freight_ng'][self.vehicle_generation - 1]
             else:
                 if self.speedy:
-                    return roster_obj.speeds['express'][self.wagon_generation - 1]
+                    return roster_obj.speeds['express'][self.vehicle_generation - 1]
                 else:
-                    return roster_obj.speeds['freight'][self.wagon_generation - 1]
+                    return roster_obj.speeds['freight'][self.vehicle_generation - 1]
 
     @property
     def buy_cost(self):

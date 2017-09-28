@@ -6,7 +6,7 @@ def main():
     consist = BoxConsistShort(title = '[Box Car]',
                          roster = 'pony',
                          base_numeric_id = 1780,
-                         wagon_generation = 1,
+                         vehicle_generation = 1,
                          vehicle_life = 40)
 
     consist.add_unit(BoxCar(consist = consist,
@@ -26,7 +26,7 @@ def main():
     consist = BoxConsistShort(title = '[Box Car]',
                          roster = 'pony',
                          base_numeric_id = 550,
-                         wagon_generation = 2,
+                         vehicle_generation = 2,
                          vehicle_life = 40)
 
     consist.add_unit(BoxCar(consist = consist,
@@ -46,7 +46,7 @@ def main():
     consist = BoxConsistShort(title = '[Box Car]',
                          roster = 'pony',
                          base_numeric_id = 560,
-                         wagon_generation = 3,
+                         vehicle_generation = 3,
                          vehicle_life = 40)
 
     consist.add_unit(BoxCar(consist = consist,
@@ -66,7 +66,7 @@ def main():
     consist = BoxConsistLong(title = '[Box Car]',
                          roster = 'pony',
                          base_numeric_id = 2340,
-                         wagon_generation = 3,
+                         vehicle_generation = 3,
                          vehicle_life = 40)
 
     consist.add_unit(BoxCar(consist = consist,
@@ -86,7 +86,7 @@ def main():
     consist = BoxConsistShort(title = '[Box Car]',
                          roster = 'pony',
                          base_numeric_id = 570,
-                         wagon_generation = 4,
+                         vehicle_generation = 4,
                          vehicle_life = 40)
 
     consist.add_unit(BoxCar(consist = consist,
@@ -106,7 +106,7 @@ def main():
     consist = BoxConsistShort(title = '[Box Car]',
                          roster = 'pony',
                          base_numeric_id = 580,
-                         wagon_generation = 1,
+                         vehicle_generation = 1,
                          vehicle_life = 40,
                          track_type = 'NG')
 
@@ -128,7 +128,7 @@ def main():
     consist = BoxConsistShort(title = '[Box Car]',
                         roster = 'llama',
                         base_numeric_id = 590,
-                        wagon_generation = 1,
+                        vehicle_generation = 1,
                         vehicle_life = 40)
 
     consist.add_unit(BoxCar(consist = consist,
@@ -148,7 +148,7 @@ def main():
     consist = BoxConsistShort(title = '[Box Car]',
                          roster = 'llama',
                          base_numeric_id = 600,
-                         wagon_generation = 2,
+                         vehicle_generation = 2,
                          vehicle_life = 40)
 
     consist.add_unit(BoxCar(consist = consist,
@@ -168,7 +168,7 @@ def main():
     consist = BoxConsistShort(title = '[Box Car]',
                          roster = 'llama',
                          base_numeric_id = 610,
-                         wagon_generation = 3,
+                         vehicle_generation = 3,
                          vehicle_life = 40)
 
     consist.add_unit(BoxCar(consist = consist,
@@ -188,7 +188,7 @@ def main():
     consist = BoxConsistShort(title = '[Box Car]',
                         roster = 'llama',
                         base_numeric_id = 620,
-                        wagon_generation = 1,
+                        vehicle_generation = 1,
                         vehicle_life = 40,
                         track_type = 'NG')
 
@@ -209,7 +209,7 @@ def main():
     consist = BoxConsistShort(title = '[Box Car]',
                          roster = 'llama',
                          base_numeric_id = 1310,
-                         wagon_generation = 2,
+                         vehicle_generation = 2,
                          vehicle_life = 40,
                          track_type = 'NG')
 
@@ -231,7 +231,7 @@ def main():
     consist = BoxConsistShort(title = '[Box Car]',
                          roster = 'antelope',
                          base_numeric_id = 1750,
-                         wagon_generation = 1,
+                         vehicle_generation = 1,
                          vehicle_life = 40)
 
     consist.add_unit(BoxCar(consist = consist,
@@ -251,7 +251,7 @@ def main():
     consist = BoxConsistShort(title = '[Box Car]',
                          roster = 'antelope',
                          base_numeric_id = 1740,
-                         wagon_generation = 2,
+                         vehicle_generation = 2,
                          vehicle_life = 40)
 
     consist.add_unit(BoxCar(consist = consist,
@@ -271,7 +271,7 @@ def main():
     consist = BoxConsistShort(title = '[Box Car]',
                          roster = 'antelope',
                          base_numeric_id = 2100,
-                         wagon_generation = 1,
+                         vehicle_generation = 1,
                          vehicle_life = 40,
                          track_type = 'NG')
 
@@ -292,7 +292,7 @@ def main():
     consist = BoxConsistShort(title = '[Box Car]',
                          roster = 'antelope',
                          base_numeric_id = 1850,
-                         wagon_generation = 2,
+                         vehicle_generation = 2,
                          vehicle_life = 40,
                          track_type = 'NG')
 
@@ -313,7 +313,7 @@ def main():
     consist = BoxConsistShort(title = '[Box Car]',
                          roster = 'antelope',
                          base_numeric_id = 1860,
-                         wagon_generation = 3,
+                         vehicle_generation = 3,
                          vehicle_life = 40,
                          track_type = 'NG')
 

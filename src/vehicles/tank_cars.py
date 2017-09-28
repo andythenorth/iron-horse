@@ -6,7 +6,7 @@ def main():
     consist = TankConsist(title = '[Tank Car]',
                       roster = 'pony',
                       base_numeric_id = 630,
-                      wagon_generation = 1,
+                      vehicle_generation = 1,
                       vehicle_life = 40)
 
     consist.add_unit(Wagon(consist = consist,
@@ -25,7 +25,7 @@ def main():
     consist = TankConsist(title = '[Tank Car]',
                       roster = 'pony',
                       base_numeric_id = 640,
-                      wagon_generation = 3,
+                      vehicle_generation = 3,
                       vehicle_life = 40)
 
     consist.add_unit(Wagon(consist = consist,
@@ -44,7 +44,7 @@ def main():
     consist = TankConsist(title = '[Tank Car]',
                       roster = 'pony',
                       base_numeric_id = 960,
-                      wagon_generation = 4,
+                      vehicle_generation = 4,
                       vehicle_life = 40)
 
     consist.add_unit(Wagon(consist = consist,
@@ -63,7 +63,7 @@ def main():
     consist = TankConsist(title = '[Tank Car]',
                       roster = 'pony',
                       base_numeric_id = 650,
-                      wagon_generation = 1,
+                      vehicle_generation = 1,
                       vehicle_life = 40,
                       track_type = 'NG')
 
@@ -84,7 +84,7 @@ def main():
     consist = TankConsist(title = '[Tank Car]',
                       roster = 'llama',
                       base_numeric_id = 660,
-                      wagon_generation = 1,
+                      vehicle_generation = 1,
                       vehicle_life = 40)
 
     consist.add_unit(Wagon(consist = consist,
@@ -103,7 +103,7 @@ def main():
     consist = TankConsist(title = '[Tank Car]',
                       roster = 'llama',
                       base_numeric_id = 670,
-                      wagon_generation = 2,
+                      vehicle_generation = 2,
                       vehicle_life = 40)
 
     consist.add_unit(Wagon(consist = consist,
@@ -122,7 +122,7 @@ def main():
     consist = TankConsist(title = '[Tank Car]',
                       roster = 'llama',
                       base_numeric_id = 680,
-                      wagon_generation = 3,
+                      vehicle_generation = 3,
                       vehicle_life = 40)
 
     consist.add_unit(Wagon(consist = consist,
@@ -141,7 +141,7 @@ def main():
     consist = TankConsist(title = '[Tank Car]',
                       roster = 'llama',
                       base_numeric_id = 690,
-                      wagon_generation = 1,
+                      vehicle_generation = 1,
                       vehicle_life = 40,
                       track_type = 'NG')
 
@@ -161,7 +161,7 @@ def main():
     consist = TankConsist(title = '[Tank Car]',
                       roster = 'llama',
                       base_numeric_id = 1360,
-                      wagon_generation = 2,
+                      vehicle_generation = 2,
                       vehicle_life = 40,
                       track_type = 'NG')
 
@@ -182,7 +182,7 @@ def main():
     consist = TankConsist(title = '[Tank Car]',
                       roster = 'antelope',
                       base_numeric_id = 1670,
-                      wagon_generation = 1,
+                      vehicle_generation = 1,
                       vehicle_life = 40)
 
     consist.add_unit(Wagon(consist = consist,
@@ -201,7 +201,7 @@ def main():
     consist = TankConsist(title = '[Tank Car]',
                       roster = 'antelope',
                       base_numeric_id = 1680,
-                      wagon_generation = 2,
+                      vehicle_generation = 2,
                       vehicle_life = 40)
 
     consist.add_unit(Wagon(consist = consist,
@@ -220,7 +220,7 @@ def main():
     consist = TankConsist(title = '[Tank Car]',
                       roster = 'antelope',
                       base_numeric_id = 1910,
-                      wagon_generation = 1,
+                      vehicle_generation = 1,
                       vehicle_life = 40,
                       track_type = 'NG')
 
@@ -240,7 +240,7 @@ def main():
     consist = TankConsist(title = '[Tank Car]',
                       roster = 'antelope',
                       base_numeric_id = 1920,
-                      wagon_generation = 2,
+                      vehicle_generation = 2,
                       vehicle_life = 40,
                       track_type = 'NG')
 

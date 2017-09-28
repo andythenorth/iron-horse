@@ -6,7 +6,7 @@ def main():
     consist = SuppliesConsist(title = '[Supplies Car]',
                           roster = 'pony',
                           base_numeric_id = 710,
-                          wagon_generation = 1,
+                          vehicle_generation = 1,
                           vehicle_life = 40)
 
     consist.add_unit(Wagon(consist = consist,
@@ -36,7 +36,7 @@ def main():
     consist = SuppliesConsist(title = '[Supplies Car]',
                           roster = 'pony',
                           base_numeric_id = 700,
-                          wagon_generation = 2,
+                          vehicle_generation = 2,
                           vehicle_life = 40,)
 
     consist.add_unit(Wagon(consist = consist,
@@ -64,7 +64,7 @@ def main():
     consist = SuppliesConsist(title = '[Supplies Car]',
                           roster = 'antelope',
                           base_numeric_id = 2160,
-                          wagon_generation = 1,
+                          vehicle_generation = 1,
                           vehicle_life = 40)
 
     consist.add_unit(Wagon(consist = consist,

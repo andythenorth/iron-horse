@@ -6,7 +6,7 @@ def main():
     consist = MailConsist(title = '[Mail Car]',
                                roster = 'pony',
                                base_numeric_id = 2220,
-                               wagon_generation = 1,
+                               vehicle_generation = 1,
                                vehicle_life = 40,
                                speedy = True)
 
@@ -21,7 +21,7 @@ def main():
     consist = MailConsist(title = '[Mail Car]',
                               roster = 'pony',
                               base_numeric_id = 920,
-                              wagon_generation = 2,
+                              vehicle_generation = 2,
                               vehicle_life = 40,
                               speedy = True)
 
@@ -36,7 +36,7 @@ def main():
     consist = MailConsist(title = '[Mail Car]',
                               roster = 'pony',
                               base_numeric_id = 940,
-                              wagon_generation = 3,
+                              vehicle_generation = 3,
                               vehicle_life = 40,
                               speedy = True)
 
@@ -51,7 +51,7 @@ def main():
     consist = MailConsist(title = '[Mail Car]',
                               roster = 'pony',
                               base_numeric_id = 950,
-                              wagon_generation = 1,
+                              vehicle_generation = 1,
                               vehicle_life = 40,
                               track_type = 'NG')
 
@@ -67,7 +67,7 @@ def main():
     consist = MailConsist(title = '[Mail Car]',
                           roster = 'llama',
                           base_numeric_id = 960,
-                          wagon_generation = 1,
+                          vehicle_generation = 1,
                           vehicle_life = 40,
                           speedy = True)
 
@@ -82,7 +82,7 @@ def main():
     consist = MailConsist(title = '[Mail Car]',
                           roster = 'llama',
                           base_numeric_id = 970,
-                          wagon_generation = 2,
+                          vehicle_generation = 2,
                           vehicle_life = 40,
                           speedy = True)
 
@@ -97,7 +97,7 @@ def main():
     consist = MailConsist(title = '[Mail Car]',
                           roster = 'llama',
                           base_numeric_id = 980,
-                          wagon_generation = 3,
+                          vehicle_generation = 3,
                           vehicle_life = 40,
                           speedy = True)
 
@@ -112,7 +112,7 @@ def main():
     consist = MailConsist(title = '[Mail Car]',
                           roster = 'llama',
                           base_numeric_id = 990,
-                          wagon_generation = 1,
+                          vehicle_generation = 1,
                           speedy = True,
                           track_type = 'NG',
                           vehicle_life = 40)
@@ -128,7 +128,7 @@ def main():
     consist = MailConsist(title = '[Mail Car]',
                           roster = 'llama',
                           base_numeric_id = 1380,
-                          wagon_generation = 2,
+                          vehicle_generation = 2,
                           speedy = True,
                           track_type = 'NG',
                           vehicle_life = 40)
@@ -144,7 +144,7 @@ def main():
     consist = MailConsist(title = '[Mail Car]',
                           roster = 'llama',
                           base_numeric_id = 1450,
-                          wagon_generation = 3,
+                          vehicle_generation = 3,
                           speedy = True,
                           track_type = 'NG',
                           vehicle_life = 40)
@@ -161,7 +161,7 @@ def main():
     consist = MailConsist(title = '[Mail Car]',
                           roster = 'antelope',
                           base_numeric_id = 1730,
-                          wagon_generation = 1,
+                          vehicle_generation = 1,
                           vehicle_life = 40,
                           speedy = True)
 
@@ -176,7 +176,7 @@ def main():
     consist = MailConsist(title = '[Mail Car]',
                           roster = 'antelope',
                           base_numeric_id = 2120,
-                          wagon_generation = 1,
+                          vehicle_generation = 1,
                           vehicle_life = 40,
                           track_type = 'NG',
                           speedy = True)
@@ -192,7 +192,7 @@ def main():
     consist = MailConsist(title = '[Mail Car]',
                           roster = 'antelope',
                           base_numeric_id = 1950,
-                          wagon_generation = 2,
+                          vehicle_generation = 2,
                           vehicle_life = 40,
                           track_type = 'NG',
                           speedy = True)
