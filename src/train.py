@@ -436,7 +436,6 @@ class WagonConsist(Consist):
     def __init__(self, speedy=False, **kwargs):
         # self.base_id = '' # provide in subclass
         # self.template = '' # provide in subclass
-        # self.default_cargo = '' # provide in subclass
         self.date_variant_var = kwargs.get('date_variant_var', None)
 
         # persist roster id for lookups, not roster obj directly, because of multiprocessing problems with object references
@@ -455,7 +454,6 @@ class WagonConsist(Consist):
         self.speedy = speedy # should be hard-coded in subclass
         self.default_capacity_type = kwargs.get('default_capacity_type', None)
         # some of these are probably redundant, as they need to be handled in the subclass
-        self.num_cargo_rows = kwargs.get('num_cargo_rows', None)
         self.generic_cargo_rows = kwargs.get('generic_cargo_rows', [0]) # optional, the rows to use if no cargo label is matched
         self.cargo_graphics_mappings = kwargs.get('cargo_graphics_mappings', None)
         self.class_refit_groups = kwargs.get('class_refit_groups', None)
