@@ -40,7 +40,7 @@ class Consist(object):
         self.power = kwargs.get('power', 0)
         self.track_type = kwargs.get('track_type', 'RAIL')
         self.tractive_effort_coefficient = kwargs.get('tractive_effort_coefficient', 0.3) # 0.3 is recommended default value
-        self.speed = kwargs.get('speed', None)
+        self._speed = kwargs.get('speed', None) # private var as wagons have their own method for calculating speed
         # used by multi-mode engines such as electro-diesel, otherwise ignored
         self.power_by_railtype = kwargs.get('power_by_railtype', None)
         self.visual_effect_override_by_railtype = kwargs.get('visual_effect_override_by_railtype', None)
@@ -166,6 +166,11 @@ class Consist(object):
         # stub only
         # vehicle classes should over-ride this to provide class-appropriate running cost calculation
         return 0
+
+    @property
+    def speed(self):
+        # stub to private var - wagons subclasses provide their own method to calculate speed
+        return self._speed
 
     @property
     def weight(self):
@@ -446,6 +451,8 @@ class WagonConsist(Consist):
         roster_obj.register_wagon_consist(self)
 
         self.intro_date = 1860
+        self._speed = kwargs.get('speed', None) # speed is calculated automatically for wagns, but pass kwarg to over-ride that
+        self.speedy = speedy # should be hard-coded in subclass
         self.default_capacity_type = kwargs.get('default_capacity_type', None)
         # some of these are probably redundant, as they need to be handled in the subclass
         self.num_cargo_rows = kwargs.get('num_cargo_rows', None)
@@ -458,28 +465,31 @@ class WagonConsist(Consist):
         self.loading_speed_multiplier = kwargs.get('loading_speed_multiplier', 1)
         self.cargo_age_period = kwargs.get('cargo_age_period', global_constants.CARGO_AGE_PERIOD)
 
-        if kwargs.get('speed', None):
-            self.speed = kwargs['speed']
+    @property
+    def speed(self):
+        if self._speed:
+            return self._speed
         else:
+            roster_obj = self.get_roster(self.roster_id)
             # eh this is ugly, but it works
             if self.track_type == 'NG':
                 if self.wagon_generation == 1:
-                    self.speed = roster_obj.speeds['ng_gen_1_wagon_speeds'][speedy]
+                    return roster_obj.speeds['ng_gen_1_wagon_speeds'][self.speedy]
                 elif self.wagon_generation == 2:
-                    self.speed = roster_obj.speeds['ng_gen_2_wagon_speeds'][speedy]
+                    return roster_obj.speeds['ng_gen_2_wagon_speeds'][self.speedy]
                 elif self.wagon_generation == 3:
-                    self.speed = roster_obj.speeds['ng_gen_3_wagon_speeds'][speedy]
+                    return roster_obj.speeds['ng_gen_3_wagon_speeds'][self.speedy]
                 elif self.wagon_generation == 4:
-                    self.speed = roster_obj.speeds['ng_gen_4_wagon_speeds'][speedy]
+                    return roster_obj.speeds['ng_gen_4_wagon_speeds'][self.speedy]
             else:
                 if self.wagon_generation == 1:
-                    self.speed = roster_obj.speeds['gen_1_wagon_speeds'][speedy]
+                    return roster_obj.speeds['gen_1_wagon_speeds'][self.speedy]
                 elif self.wagon_generation == 2:
-                    self.speed = roster_obj.speeds['gen_2_wagon_speeds'][speedy]
+                    return roster_obj.speeds['gen_2_wagon_speeds'][self.speedy]
                 elif self.wagon_generation == 3:
-                    self.speed = roster_obj.speeds['gen_3_wagon_speeds'][speedy]
+                    return roster_obj.speeds['gen_3_wagon_speeds'][self.speedy]
                 elif self.wagon_generation == 4:
-                    self.speed = roster_obj.speeds['gen_4_wagon_speeds'][speedy]
+                    return roster_obj.speeds['gen_4_wagon_speeds'][self.speedy]
 
     @property
     def buy_cost(self):
