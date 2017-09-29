@@ -33,8 +33,9 @@ class VisibleCargo(object):
         # provide the number of output rows per cargo group, total row count for the group is calculated later as needed
         # uses a list of 2-tuples, not a dict as order must be preserved
         result = []
-        # assume an empty state spriterow - there was an optional bool flag for this per consist but it was unused so I removed it
-        result.append(('empty', 1))
+        # hax to get body colour working - force an empty spriterow only if there's no cargo
+        if not self.bulk and not self.piece:
+            result.append(('empty', 1))
         if self.bulk:
             result.append(('bulk_cargo', 2 * len(graphics_constants.bulk_cargo_recolour_maps)))
         if self.piece:

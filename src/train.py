@@ -644,7 +644,7 @@ class FlatConsist(WagonConsist):
         self.default_cargo = 'STEL'
         self.default_capacity_type = 'capacity_freight'
         # Cargo graphics
-        self.visible_cargo.piece = True
+        #self.visible_cargo.piece = True
 
 
 class FruitConsist(WagonConsist):
@@ -674,7 +674,7 @@ class HopperConsist(WagonConsist):
         self.class_refit_groups = ['hopper_freight']
         self.label_refits_allowed = [] # none needed
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_hopper_freight']
-        self.default_cargo = 'COAL'
+        self.default_cargo = 'CLAY'
         self.default_capacity_type = 'capacity_freight'
         self.loading_speed_multiplier = 2
         # Cargo graphics
@@ -785,7 +785,7 @@ class OpenConsist(WagonConsist):
         self.default_capacity_type = 'capacity_freight'
         # Cargo Graphics
         self.visible_cargo.bulk = True
-        self.visible_cargo.piece = True
+        #self.visible_cargo.piece = True
 
 
 class PassengerConsistBase(WagonConsist):

@@ -12,6 +12,7 @@ def main():
 
     consist.add_unit(type=FreightCar,
                      capacity=0,
+                     weight=20,
                      vehicle_length=4)
 
     consist.add_model_variant(start_date=0,
@@ -26,6 +27,7 @@ def main():
 
     consist.add_unit(type=FreightCar,
                      capacity=0,
+                     weight=30,
                      vehicle_length=6)
 
     consist.add_model_variant(start_date=0,
@@ -41,6 +43,7 @@ def main():
 
     consist.add_unit(type=FreightCar,
                      capacity=0,
+                     weight=12,
                      vehicle_length=4)
 
     consist.add_model_variant(start_date=0,
