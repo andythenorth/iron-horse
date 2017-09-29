@@ -554,23 +554,13 @@ class BoxConsist(WagonConsist):
         self.base_id = 'box_car'
         super().__init__(**kwargs)
         self.title = '[Box Car]'
-        self.template = 'car_with_open_doors_during_loading.pynml'
-        self.cargo_graphics_mappings = {} # template needs this, but box car has zero cargo-specific graphics, all generic
-        self.num_cargo_rows = 1 # template needs this, but box car has zero cargo-specific graphics, all generic
         self.class_refit_groups = ['packaged_freight']
         self.label_refits_allowed = ['MAIL', 'GRAI', 'WHEA', 'MAIZ', 'FRUT', 'BEAN', 'NITR']
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_freight_special_cases']
         self.autorefit = True
         self.default_cargo = 'GOOD'
         self.default_capacity_type = 'capacity_freight'
-    """
-    @property
-    def graphics_processors(self):
-        options = {'template': self.id + '_template_0.png'}
-        pass_through = GraphicsProcessorFactory('pass_through_pipeline', options)
-        swap_company_colours = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
-        return {'pass_through': pass_through, 'swap_company_colours': swap_company_colours}
-    """
+
 
 class CabooseConsist(WagonConsist):
     """
@@ -1058,14 +1048,11 @@ class TankConsist(WagonConsist):
         self.base_id = 'tank_car'
         super().__init__(**kwargs)
         self.title = '[Tank Car]'
-        self.template = 'car_with_cargo_specific_liveries.pynml'
         # tank cars are unrealistically autorefittable, and at no cost
         # Pikka: if people complain that it's unrealistic, tell them "don't do it then"
         # they also change livery at stations if refitted between certain cargo types <shrug>
-        self.cargo_graphics_mappings = {'OIL_': [0], 'PETR': [1], 'RFPR': [2]}
-        self.num_cargo_rows = 3 # update if more cargo graphic variations are added
         self.class_refit_groups = ['liquids']
-        self.label_refits_allowed = list(self.cargo_graphics_mappings.keys())
+        self.label_refits_allowed = []
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['edible_liquids']
         self.autorefit = True
         self.default_cargo = 'OIL_'
@@ -1112,7 +1099,6 @@ class Wagon(Train):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.consist = kwargs['consist']
-        self.template = self.consist.template
         self.class_refit_groups = self.consist.class_refit_groups
         self.label_refits_allowed = self.consist.label_refits_allowed
         self.label_refits_disallowed = self.consist.label_refits_disallowed
