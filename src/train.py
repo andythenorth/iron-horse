@@ -507,8 +507,6 @@ class WagonConsist(Consist):
         self.speed_class = 'freight' # over-ride this for, e.g. 'express' consists
         self.default_capacity_type = kwargs.get('default_capacity_type', None)
         self.weight_factor = 0.5 # over-ride in sub-class as needed
-        # some of these are probably redundant, as they need to be handled in the subclass
-        self.generic_cargo_rows = kwargs.get('generic_cargo_rows', [0]) # optional, the rows to use if no cargo label is matched
         self.autorefit = kwargs.get('autorefit', None)
         self.loading_speed_multiplier = kwargs.get('loading_speed_multiplier', 1)
         self.cargo_age_period = kwargs.get('cargo_age_period', global_constants.CARGO_AGE_PERIOD)
