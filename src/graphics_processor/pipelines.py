@@ -135,12 +135,11 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
             self.units.append(SimpleRecolour(recolour_map))
 
     def add_bulk_cargo_spriterows(self):
-        cargo_group_row_height = 3 * graphics_constants.spriterow_height
-        # this was using self.base_offset instead of 10, but I hacked it out when making bulk body re-colour, might have unexpected results
+        cargo_group_row_height = 2 * graphics_constants.spriterow_height
         crop_box_source = (0,
-                           10,
+                           self.base_offset,
                            graphics_constants.spritesheet_width,
-                           10 + cargo_group_row_height)
+                           self.base_offset + cargo_group_row_height)
         vehicle_bulk_cargo_input_image = Image.open(self.input_path).crop(crop_box_source)
         #vehicle_bulk_cargo_input_image.show() # comment in to see the image when debugging
         vehicle_bulk_cargo_input_as_spritesheet = self.make_spritesheet_from_image(vehicle_bulk_cargo_input_image)
@@ -280,7 +279,7 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
                      # specific to tankers, see notes in method about container support in future
                     self.add_livery_only_spriterows(graphics_constants.tanker_livery_recolour_maps)
                 elif spriterow_type == 'bulk_cargo':
-                    input_spriterow_count = 3
+                    input_spriterow_count = 2
                     self.add_bulk_cargo_spriterows()
                 elif spriterow_type == 'piece_cargo':
                     input_spriterow_count = 2
