@@ -4,6 +4,14 @@
     spriteset(${vehicle.id}_ss_empty_${variation_num}, "${global_constants.graphics_path}${consist.id}_${variation_num}.png") {
       spriteset_template_${vehicle.id}(${vehicle.spriterow_num * 30} + 10)
     }
+    spritegroup ${vehicle.id}_sg_empty_${variation_num} {
+        loaded:  [
+            ${vehicle.id}_ss_empty_${variation_num},
+        ];
+        loading: [
+            ${vehicle.id}_ss_empty_${variation_num},
+        ];
+    }
 
     <tal:cargo_variants repeat="cargo_variant_num python:range(consist.visible_cargo.num_cargo_sprite_variants)">
         spriteset(${vehicle.id}_ss_loading_${variation_num}_${cargo_variant_num}, "${global_constants.graphics_path}${consist.id}_${variation_num}.png") {
@@ -13,14 +21,6 @@
           spriteset_template_${vehicle.id}(${vehicle.spriterow_num * 30} + ${cargo_variant_num * 60} + 70)
         }
 
-        spritegroup ${vehicle.id}_sg_empty_${variation_num}_${cargo_variant_num} {
-            loaded:  [
-                ${vehicle.id}_ss_empty_${variation_num},
-            ];
-            loading: [
-                ${vehicle.id}_ss_empty_${variation_num},
-            ];
-        }
         spritegroup ${vehicle.id}_sg_loading_${variation_num}_${cargo_variant_num} {
             loaded:  [
                 ${vehicle.id}_ss_loading_${variation_num}_${cargo_variant_num},
@@ -39,7 +39,7 @@
         }
 
         switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_percent_loaded_${variation_num}_${cargo_variant_num}, cargo_count*100/cargo_capacity) {
-                0: return ${vehicle.id}_sg_empty_${variation_num}_${cargo_variant_num};
+                0: return ${vehicle.id}_sg_empty_${variation_num};
                 1..99: return ${vehicle.id}_sg_loading_${variation_num}_${cargo_variant_num};
             return ${vehicle.id}_sg_loaded_${variation_num}_${cargo_variant_num};
         }
