@@ -1,24 +1,24 @@
 <tal:include metal:use-macro="load: vehicle_offsets_standard.pynml" />
 
 <tal:sprites_random_variations repeat="variation_num python:range(consist.get_num_spritesets())">
+    spriteset(${vehicle.id}_ss_empty_${variation_num}, "${global_constants.graphics_path}${consist.id}_${variation_num}.png") {
+      spriteset_template_${vehicle.id}(${vehicle.spriterow_num * 30} + 10)
+    }
 
     <tal:cargo_variants repeat="cargo_variant_num python:range(consist.visible_cargo.num_cargo_sprite_variants)">
-        spriteset(${vehicle.id}_ss_empty_${variation_num}_${cargo_variant_num}, "${global_constants.graphics_path}${consist.id}_${variation_num}.png") {
-          spriteset_template_${vehicle.id}(${vehicle.spriterow_num * 30} + ${cargo_variant_num * 90} + 10)
-        }
         spriteset(${vehicle.id}_ss_loading_${variation_num}_${cargo_variant_num}, "${global_constants.graphics_path}${consist.id}_${variation_num}.png") {
-          spriteset_template_${vehicle.id}(${vehicle.spriterow_num * 30} + ${cargo_variant_num * 90} + 40)
+          spriteset_template_${vehicle.id}(${vehicle.spriterow_num * 30} + ${cargo_variant_num * 60} + 40)
         }
         spriteset(${vehicle.id}_ss_loaded_${variation_num}_${cargo_variant_num}, "${global_constants.graphics_path}${consist.id}_${variation_num}.png") {
-          spriteset_template_${vehicle.id}(${vehicle.spriterow_num * 30} + ${cargo_variant_num * 90} + 70)
+          spriteset_template_${vehicle.id}(${vehicle.spriterow_num * 30} + ${cargo_variant_num * 60} + 70)
         }
 
         spritegroup ${vehicle.id}_sg_empty_${variation_num}_${cargo_variant_num} {
             loaded:  [
-                ${vehicle.id}_ss_empty_${variation_num}_${cargo_variant_num},
+                ${vehicle.id}_ss_empty_${variation_num},
             ];
             loading: [
-                ${vehicle.id}_ss_empty_${variation_num}_${cargo_variant_num},
+                ${vehicle.id}_ss_empty_${variation_num},
             ];
         }
         spritegroup ${vehicle.id}_sg_loading_${variation_num}_${cargo_variant_num} {
