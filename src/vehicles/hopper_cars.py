@@ -4,6 +4,29 @@ from train import HopperConsist, FreightCar
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
+
+    # no gen 1 hoppers in Pony eh
+    # also just type A for gen 1
+
+    consist = HopperConsist(roster='pony',
+                            base_numeric_id=2310,
+                            gen=2,
+                            subtype='A')
+
+    consist.add_unit(type=FreightCar,
+                     capacity=15,
+                     vehicle_length=4)
+
+    consist.add_model_variant(start_date=0,
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0,
+                              graphics_processor=consist.graphics_processors[0])
+
+    consist.add_model_variant(start_date=0,
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=1,
+                              graphics_processor=consist.graphics_processors[1])
+
     consist = HopperConsist(roster='pony',
                             base_numeric_id=1070,
                             gen=3,
