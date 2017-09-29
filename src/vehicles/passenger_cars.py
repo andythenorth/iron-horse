@@ -43,7 +43,6 @@ def main():
                               end_date=global_constants.max_game_date,
                               spritesheet_suffix=0)
 
-
     consist = PassengerConsist(roster='pony',
                                base_numeric_id=980,
                                gen=6,

@@ -19,8 +19,7 @@ def main():
     # with a generation every 30 years, supplies cars can have cargo per generation, no need for date variants
     consist.add_model_variant(start_date=0,
                               end_date=1910,
-                              spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+                              spritesheet_suffix=0)
     """
     consist.add_model_variant(start_date=0,
                               end_date=1910,
@@ -48,8 +47,7 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=2010,
-                              spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+                              spritesheet_suffix=0)
     """
     consist.add_model_variant(start_date=0,
                               end_date=2010,
@@ -82,8 +80,7 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=1910,
-                              spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+                              spritesheet_suffix=0)
     """
     consist.add_model_variant(start_date=0,
                               end_date=1910,

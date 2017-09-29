@@ -278,7 +278,7 @@ class Train(object):
         self.class_refit_groups = []
         self.label_refits_allowed = [] # no specific labels needed
         self.label_refits_disallowed = []
-        self.autorefit = False
+        self.autorefit = True
         self.engine_class = 'ENGINE_CLASS_STEAM' # nml constant (STEAM is sane default)
         self.visual_effect = 'VISUAL_EFFECT_DISABLE' # nml constant
         self.default_visual_effect_offset = 0 # visual effect handling is fiddly, check ModelVariant also
@@ -492,7 +492,6 @@ class WagonConsist(Consist):
     """
     def __init__(self, speedy=False, **kwargs):
         # self.base_id = '' # provide in subclass
-        # self.template = '' # provide in subclass
         self.date_variant_var = kwargs.get('date_variant_var', None)
 
         # persist roster id for lookups, not roster obj directly, because of multiprocessing problems with object references
@@ -557,7 +556,6 @@ class BoxConsist(WagonConsist):
         self.class_refit_groups = ['packaged_freight']
         self.label_refits_allowed = ['MAIL', 'GRAI', 'WHEA', 'MAIZ', 'FRUT', 'BEAN', 'NITR']
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_freight_special_cases']
-        self.autorefit = True
         self.default_cargo = 'GOOD'
         self.default_capacity_type = 'capacity_freight'
 
@@ -570,10 +568,9 @@ class CabooseConsist(WagonConsist):
         self.base_id = 'caboose_car'
         super().__init__(**kwargs)
         self.speed_class = 'express'
-        self.template = 'train.pynml'
         # no graphics processing - don't random colour cabeese, I tried it, looks daft
         self.class_refit_groups = [] # refit nothing, don't mess with this, it breaks auto-replace
-        self.label_refits_allowed = []
+        self.label_refits_allowed = [] # no specific labels needed
         self.label_refits_disallowed = []
         self.default_cargo = 'GOOD' # unwanted side-effect of this is that caboose replaceable by anything refitting goods
         self.default_capacity_type = 'capacity_freight'
@@ -587,22 +584,13 @@ class CoveredHopperConsist(WagonConsist):
         self.base_id = 'covered_hopper_car'
         super().__init__(**kwargs)
         self.title = '[Covered Hopper Car]'
-        self.template = 'train.pynml'
         self.class_refit_groups = ['covered_hopper_freight']
         self.label_refits_allowed = ['GRAI', 'WHEA', 'MAIZ', 'FOOD', 'SUGR', 'FMSP', 'RFPR', 'CLAY', 'BDMT', 'BEAN', 'NITR', 'RUBR', 'SAND', 'POTA', 'QLME', 'SASH', 'CMNT']
         self.label_refits_disallowed = []
-        self.autorefit = True
         self.default_cargo = 'GRAI'
         self.default_capacity_type = 'capacity_freight'
         self.loading_speed_multiplier = 2
-    """
-    @property
-    def graphics_processors(self):
-        options = {'template': self.id + '_template_0.png'}
-        pass_through = GraphicsProcessorFactory('pass_through_pipeline', options)
-        swap_company_colours = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
-        return {'pass_through': pass_through, 'swap_company_colours': swap_company_colours}
-    """
+
 
 class DumpConsist(WagonConsist):
     """
@@ -612,41 +600,15 @@ class DumpConsist(WagonConsist):
         self.base_id = 'dump_car'
         super().__init__(**kwargs)
         self.title = '[Dump Car]'
-        self.template = 'car_with_visible_cargo.pynml'
-        # cargo rows 0 indexed - 0 = first set of loaded sprites
-        # GRVL is in first position as it is re-used for generic unknown cargos
-        # hoppers *do* transport SCMT in this set, realism is not relevant here, went back and forth on this a few times :P
-        self.cargo_graphics_mappings = {'GRVL': [0], 'IORE': [1], 'CORE': [2], 'AORE': [3],
-                                   'SAND': [4], 'COAL': [5], 'CLAY': [6], 'SCMT': [7], 'PHOS': [8],
-                                   'CASS': [9], 'LIME': [10], 'MNO2': [11], 'NITR': [12],
-                                   'PORE': [13], 'POTA': [14], 'SGBT': [15]}
-        self.num_cargo_rows = 16 # update if more cargo graphic variations are added
         self.class_refit_groups = ['hopper_freight']
-        self.label_refits_allowed = list(self.cargo_graphics_mappings.keys())
+        self.label_refits_allowed = [] # no specific labels needed
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_hopper_freight']
-        self.autorefit = True
         self.default_cargo = 'COAL'
         self.default_capacity_type = 'capacity_freight'
         self.loading_speed_multiplier = 2
+        # Cargo Graphics
+        self.visible_cargo.bulk = True
 
-    """
-    @property
-    def graphics_processors(self):
-        recolour_maps = graphics_utils.get_bulk_cargo_recolour_maps()
-        graphics_options_master = {'template': '',
-                                   'recolour_maps': (recolour_maps),
-                                   'copy_block_top_offset': 30,
-                                   'num_rows_per_unit': 2,
-                                   'num_unit_types': 1}
-
-        graphics_options_1 = dict((k, v) for (k, v) in graphics_options_master.items())
-        graphics_options_1['template'] = self.id + '_template_0.png'
-        graphics_options_2 = dict((k, v) for (k, v) in graphics_options_1.items())
-        graphics_options_2['swap_company_colours'] = True
-        pass_through = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_1)
-        swap_company_colours = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_2)
-        return {'pass_through': pass_through, 'swap_company_colours': swap_company_colours}
-    """
 
 class EdiblesTankConsist(WagonConsist):
     """
@@ -659,23 +621,14 @@ class EdiblesTankConsist(WagonConsist):
         # Pikka: if people complain that it's unrealistic, tell them "don't do it then"
         self.title = '[Edibles Tank Car]'
         self.speed_class = 'express'
-        self.template = 'train.pynml'
         self.class_refit_groups = ['liquids']
         self.label_refits_allowed = ['FOOD']
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_edible_liquids']
-        self.autorefit = True
         self.default_cargo = 'WATR'
         self.default_capacity_type = 'capacity_freight'
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
         self.loading_speed_multiplier = 2
-    """
-    @property
-    def graphics_processors(self):
-        options = {'template': self.id + '_template_0.png'}
-        pass_through = GraphicsProcessorFactory('pass_through_pipeline', options)
-        swap_company_colours = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
-        return {'pass_through': pass_through, 'swap_company_colours': swap_company_colours}
-    """
+
 
 class FlatConsist(WagonConsist):
     """
@@ -685,24 +638,14 @@ class FlatConsist(WagonConsist):
         self.base_id = 'flat_car'
         super().__init__(**kwargs)
         self.title = '[Flat Car]'
-        self.template = 'car_with_visible_cargo.pynml'
-        # cargo rows 0 indexed - 0 = first set of loaded sprites
-        self.cargo_graphics_mappings = {'STEL': [1, 2, 3], 'WOOD': [4], 'WDPR': [5], 'ENSP': [6], 'FMSP': [6], 'MNSP': [6], 'GOOD': [0, 6]}
-        self.num_cargo_rows = 7
         self.class_refit_groups = ['flatcar_freight']
-        self.label_refits_allowed = list(self.cargo_graphics_mappings.keys())
+        self.label_refits_allowed = ['GOOD']
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_flatcar_freight']
-        self.autorefit = True
         self.default_cargo = 'STEL'
         self.default_capacity_type = 'capacity_freight'
-    """
-    @property
-    def graphics_processors(self):
-        options = {'template': self.id + '_template_0.png'}
-        pass_through = GraphicsProcessorFactory('pass_through_pipeline', options)
-        swap_company_colours = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
-        return {'pass_through': pass_through, 'swap_company_colours': swap_company_colours}
-    """
+        # Cargo graphics
+        self.visible_cargo.piece = True
+
 
 class FruitConsist(WagonConsist):
     """
@@ -712,24 +655,13 @@ class FruitConsist(WagonConsist):
         self.base_id = 'fruit_car'
         super().__init__(**kwargs)
         self.title = '[Fruit Car]'
-        self.template = 'car_with_open_doors_during_loading.pynml'
-        self.cargo_graphics_mappings = {} # template needs this, but box car has zero cargo-specific graphics, all generic
-        self.num_cargo_rows = 1 # template needs this, but box car has zero cargo-specific graphics, all generic
         self.class_refit_groups = []
         self.label_refits_allowed = ['FRUT', 'BEAN', 'CASS', 'JAVA', 'NUTS']
         self.label_refits_disallowed = []
-        self.autorefit = True
         self.default_cargo = 'FRUT'
         self.default_capacity_type = 'capacity_freight'
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
-    """
-    @property
-    def graphics_processors(self):
-        options = {'template': self.id + '_template_0.png'}
-        pass_through = GraphicsProcessorFactory('pass_through_pipeline', options)
-        swap_company_colours = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
-        return {'pass_through': pass_through, 'swap_company_colours': swap_company_colours}
-    """
+
 
 class HopperConsist(WagonConsist):
     """
@@ -739,40 +671,15 @@ class HopperConsist(WagonConsist):
         self.base_id = 'hopper_car'
         super().__init__(**kwargs)
         self.title = '[Hopper Car]'
-        self.template = 'car_with_visible_cargo.pynml'
-        # cargo rows 0 indexed - 0 = first set of loaded sprites
-        # GRVL is in first position as it is re-used for generic unknown cargos
-        # hoppers *do* transport SCMT in this set, realism is not relevant here, went back and forth on this a few times :P
-        self.cargo_graphics_mappings = {'GRVL': [0], 'IORE': [1], 'CORE': [2], 'AORE': [3],
-                                   'SAND': [4], 'COAL': [5], 'CLAY': [6], 'SCMT': [7], 'PHOS': [8],
-                                   'CASS': [9], 'LIME': [10], 'MNO2': [11], 'NITR': [12],
-                                   'PORE': [13], 'POTA': [14], 'SGBT': [15]}
-        self.num_cargo_rows = 16 # update if more cargo graphic variations are added
         self.class_refit_groups = ['hopper_freight']
-        self.label_refits_allowed = list(self.cargo_graphics_mappings.keys())
+        self.label_refits_allowed = [] # none needed
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_hopper_freight']
-        self.autorefit = True
         self.default_cargo = 'COAL'
         self.default_capacity_type = 'capacity_freight'
         self.loading_speed_multiplier = 2
-    """
-    @property
-    def graphics_processors(self):
-        recolour_maps = graphics_utils.get_bulk_cargo_recolour_maps()
-        graphics_options_master = {'template': '',
-                                   'recolour_maps': (recolour_maps),
-                                   'copy_block_top_offset': 30,
-                                   'num_rows_per_unit': 2,
-                                   'num_unit_types': 1}
+        # Cargo graphics
+        self.visible_cargo.bulk = True
 
-        graphics_options_1 = dict((k, v) for (k, v) in graphics_options_master.items())
-        graphics_options_1['template'] = self.id + '_template_0.png'
-        graphics_options_2 = dict((k, v) for (k, v) in graphics_options_1.items())
-        graphics_options_2['swap_company_colours'] = True
-        pass_through = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_1)
-        swap_company_colours = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_2)
-        return {'pass_through': pass_through, 'swap_company_colours': swap_company_colours}
-    """
 
 class IntermodalConsist(WagonConsist):
     """
@@ -783,31 +690,15 @@ class IntermodalConsist(WagonConsist):
         super().__init__(**kwargs)
         self.title = '[Intermodal Flat Car]'
         self.speed_class = 'express'
-        self.template = 'car_with_visible_cargo.pynml'
-        self.cargo_graphics_mappings = {}
-        self.num_cargo_rows = 3
-        self.generic_cargo_rows = [0, 1, 2]
         self.class_refit_groups = ['express_freight', 'packaged_freight']
         #label_refits_allowed = list(cargo_graphics_mappings.keys())
         # maintain other sets (e.g. Squid etc) when changing container refits
         self.label_refits_allowed = ['FRUT','WATR']
         self.label_refits_disallowed = ['FISH','LVST','OIL_','TOUR','WOOD']
-        self.autorefit = True
         self.default_cargo = 'GOOD'
         self.default_capacity_type = 'capacity_freight'
         self.loading_speed_multiplier = 2
 
-    """
-    @property
-    def graphics_processors(self):
-        recolour_maps = graphics_constants.container_recolour_maps
-        graphics_options = {'template': self.id + '_template_0.png',
-                            'recolour_maps': recolour_maps,
-                            'copy_block_top_offset': 30,
-                            'num_rows_per_unit': 2,
-                            'num_unit_types': 1}
-        return [GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options)]
-    """
 
 class LivestockConsist(WagonConsist):
     """
@@ -817,11 +708,9 @@ class LivestockConsist(WagonConsist):
         self.base_id = 'livestock_car'
         super().__init__(**kwargs)
         self.title = '[Livestock Car]'
-        self.template = 'train.pynml'
         self.class_refit_groups = []
         self.label_refits_allowed = ['LVST']
         self.label_refits_disallowed = []
-        self.autorefit = True
         self.default_cargo = 'LVST'
         self.default_capacity_type = 'capacity_freight'
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
@@ -835,25 +724,17 @@ class LogConsist(WagonConsist):
         self.base_id = 'log_car'
         super().__init__(**kwargs)
         self.title = '[Log Car]'
-        self.template = 'car_with_visible_cargo.pynml'
-        self.cargo_graphics_mappings = {}
-        self.num_cargo_rows = 1
-        self.generic_cargo_rows = [0]
         self.class_refit_groups = []
         self.label_refits_allowed = ['WOOD']
         self.label_refits_disallowed = []
-        self.autorefit = True
         self.default_cargo = 'WOOD'
         self.default_capacity_type = 'capacity_freight'
         self.loading_speed_multiplier = 2
-    """
-    @property
-    def graphics_processors(self):
-        options = {'template': self.id + '_template_0.png'}
-        pass_through = GraphicsProcessorFactory('pass_through_pipeline', options)
-        swap_company_colours = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
-        return {'pass_through': pass_through, 'swap_company_colours': swap_company_colours}
-    """
+        # Cargo graphics
+        self.visible_cargo = VisibleCargoCustom({'WOOD': [0]},
+                                                'vehicle_with_visible_cargo.pynml',
+                                                generic_rows = [0])
+
 
 class MailConsist(WagonConsist):
     """
@@ -865,13 +746,9 @@ class MailConsist(WagonConsist):
         super().__init__(**kwargs)
         self.title = '[Mail Car]'
         self.speed_class = 'express'
-        self.template = 'car_with_open_doors_during_loading.pynml'
-        self.cargo_graphics_mappings = {} # template needs this, but mail car has zero cargo-specific graphics, all generic
-        self.num_cargo_rows = 1 # template needs this, but mail car has zero cargo-specific graphics, all generic
         self.class_refit_groups = ['mail', 'express_freight']
-        self.label_refits_allowed = list(self.cargo_graphics_mappings.keys())
+        self.label_refits_allowed = [] # no specific labels needed
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_freight_special_cases']
-        self.autorefit = True
         self.default_cargo = 'MAIL'
         self.default_capacity_type = 'capacity_mail'
 
@@ -885,14 +762,9 @@ class MetalConsist(WagonConsist):
         self.base_id = 'metal_car'
         super().__init__(**kwargs)
         self.title = '[Metal Car]'
-        self.template = 'car_with_visible_cargo.pynml'
-        self.cargo_graphics_mappings = {}
-        self.num_cargo_rows = 1
-        self.generic_cargo_rows = [0]
         self.class_refit_groups = []
         self.label_refits_allowed = ['STEL', 'COPR', 'IRON', 'SLAG', 'METL']
         self.label_refits_disallowed = []
-        self.autorefit = True
         self.default_cargo = 'STEL'
         self.default_capacity_type = 'capacity_freight'
         self.loading_speed_multiplier = 2
@@ -906,38 +778,15 @@ class OpenConsist(WagonConsist):
         self.base_id = 'open_car'
         super().__init__(**kwargs)
         self.title = '[Open Car]'
-        self.template = 'car_with_visible_cargo.pynml'
-        b = 1 # bulk cargo start row
-        # cargo rows 0 indexed - 0 = first set of loaded sprites
-        self.cargo_graphics_mappings = {'GRVL': [b], 'IORE': [b + 1], 'CORE': [b + 2], 'AORE': [b + 3],
-                                   'SAND': [b + 4], 'COAL': [b + 5], 'CLAY': [b + 6], 'SCMT': [b + 7], 'PHOS': [b + 8],
-                                   'CASS': [b + 9], 'LIME': [b + 10], 'MNO2': [b + 11], 'NITR': [b + 12],
-                                   'PORE': [b + 13], 'POTA': [b + 14], 'SGBT': [b + 15]}
-        self.num_cargo_rows = 17 # update this when adding cargo graphics
         self.class_refit_groups = ['all_freight']
-        self.label_refits_allowed = list(self.cargo_graphics_mappings.keys())
+        self.label_refits_allowed = [] # no specific labels needed
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_freight_special_cases']
-        self.autorefit = True
         self.default_cargo = 'GOOD'
         self.default_capacity_type = 'capacity_freight'
-    """
-    @property
-    def graphics_processors(self):
-        recolour_maps = graphics_utils.get_bulk_cargo_recolour_maps()
-        graphics_options_master = {'template': 'filename.png',
-                                   'recolour_maps': (recolour_maps),
-                                   'copy_block_top_offset': 90,
-                                   'num_rows_per_unit': 2,
-                                   'num_unit_types': 1}
+        # Cargo Graphics
+        self.visible_cargo.bulk = True
+        self.visible_cargo.piece = True
 
-        graphics_options_1 = dict((k, v) for (k, v) in graphics_options_master.items())
-        graphics_options_1['template'] = self.id + '_template_0.png'
-        graphics_options_2 = dict((k, v) for (k, v) in graphics_options_1.items())
-        graphics_options_2['swap_company_colours'] = True
-        pass_through = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_1)
-        swap_company_colours = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_2)
-        return {'pass_through': pass_through, 'swap_company_colours': swap_company_colours}
-    """
 
 class PassengerConsistBase(WagonConsist):
     """
@@ -947,12 +796,9 @@ class PassengerConsistBase(WagonConsist):
         # don't set base_id here, let subclasses do it
         super().__init__(**kwargs)
         self.speed_class = 'express'
-        self.template = 'train.pynml'
-        self.cargo_graphics_mappings = {} # template needs this, but this car has zero cargo-specific graphics, all generic
         self.class_refit_groups = ['pax']
         self.label_refits_allowed = []
         self.label_refits_disallowed = []
-        self.autorefit = True
         self.default_cargo = 'PASS'
         self.default_capacity_type = 'capacity_pax'
 
@@ -988,24 +834,13 @@ class ReeferConsist(WagonConsist):
         super().__init__(**kwargs)
         self.title = '[Reefer Car]'
         self.speed_class = 'express'
-        self.template = 'car_with_open_doors_during_loading.pynml'
-        self.cargo_graphics_mappings = {} # template needs this, but reefer car has zero cargo-specific graphics, all generic
-        self.num_cargo_rows = 1 # template needs this, but box car has zero cargo-specific graphics, all generic
         self.class_refit_groups = ['refrigerated_freight']
-        self.label_refits_allowed = []
+        self.label_refits_allowed = [] # no specific labels needed
         self.label_refits_disallowed = []
-        self.autorefit = True
         self.default_cargo = 'FOOD'
         self.default_capacity_type = 'capacity_freight'
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
-    """
-    @property
-    def graphics_processors(self):
-        options = {'template': self.id + '_template_0.png'}
-        pass_through = GraphicsProcessorFactory('pass_through_pipeline', options)
-        swap_company_colours = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
-        return {'pass_through': pass_through, 'swap_company_colours': swap_company_colours}
-    """
+
 
 class SuppliesConsist(WagonConsist):
     """
@@ -1015,30 +850,17 @@ class SuppliesConsist(WagonConsist):
         self.base_id = 'supplies_car'
         super().__init__(**kwargs)
         self.title = '[Supplies Car]'
-        self.template = 'car_with_visible_cargo.pynml'
-        # cargo rows 0 indexed - 0 = first set of loaded sprites
-        self.cargo_graphics_mappings = {'ENSP': [0, 1, 2, 3, 4], 'FMSP': [0, 1, 2, 3, 4], 'VEHI': [0, 1, 2, 3, 4], 'BDMT': [0, 1]}
-        self.num_cargo_rows = 5
         self.class_refit_groups = []
-        self.label_refits_allowed = list(self.cargo_graphics_mappings.keys())
+        self.label_refits_allowed = ['ENSP', 'FMSP', 'VEHI', 'BDMT']
         self.label_refits_disallowed = []
-        self.autorefit = True
         self.default_cargo = 'ENSP'
         self.default_capacity_type = 'capacity_freight'
         self.date_variant_var = 'current_year'
-    """
-    # this one is non-standard, because supplies cars have date-sensitive sprites in multiple spritesheet templates
-    @property
-    def graphics_processors(self):
-        options_0 = {'template': self.id + '_template_0.png'}
-        options_1 = {'template': self.id + '_template_1.png'}
-        pass_through_0 = GraphicsProcessorFactory('pass_through_pipeline', options_0)
-        swap_company_colours_0 = GraphicsProcessorFactory('swap_company_colours_pipeline', options_0)
-        pass_through_1 = GraphicsProcessorFactory('pass_through_pipeline', options_1)
-        swap_company_colours_1 = GraphicsProcessorFactory('swap_company_colours_pipeline', options_1)
-        return {'pass_through_0': pass_through_0, 'swap_company_colours_0': swap_company_colours_0,
-                'pass_through_1': pass_through_1, 'swap_company_colours_1': swap_company_colours_1}
-    """
+        # Cargo graphics
+        self.visible_cargo = VisibleCargoCustom({'ENSP': [0], 'FMSP': [0], 'VEHI': [0], 'BDMT': [0]},
+                                                'vehicle_with_visible_cargo.pynml',
+                                                generic_rows = [0])
+
 
 class TankConsist(WagonConsist):
     """
@@ -1054,7 +876,6 @@ class TankConsist(WagonConsist):
         self.class_refit_groups = ['liquids']
         self.label_refits_allowed = []
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['edible_liquids']
-        self.autorefit = True
         self.default_cargo = 'OIL_'
         self.default_capacity_type = 'capacity_freight'
         self.loading_speed_multiplier = 3
@@ -1070,25 +891,13 @@ class VehicleTransporterConsist(WagonConsist):
         self.base_id = 'vehicle_transporter_car'
         super().__init__(**kwargs)
         self.title = '[Vehicle Transporter Car]'
-        self.template = 'car_with_visible_cargo.pynml'
-        # cargo rows 0 indexed - 0 = first set of loaded sprites
-        self.cargo_graphics_mappings = {'VEHI': [0, 1]}
-        self.num_cargo_rows = 2
         self.class_refit_groups = []
-        self.label_refits_allowed = list(self.cargo_graphics_mappings.keys())
+        self.label_refits_allowed = ['VEHI']
         self.label_refits_disallowed = []
-        self.autorefit = True
         self.default_cargo = 'VEHI'
         self.default_capacity_type = 'capacity_freight'
         self.date_variant_var = 'current_year'
-    """
-    @property
-    def graphics_processors(self):
-        options = {'template': self.id + '_template_0.png'}
-        pass_through = GraphicsProcessorFactory('pass_through_pipeline', options)
-        swap_company_colours = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
-        return {'pass_through': pass_through, 'swap_company_colours': swap_company_colours}
-    """
+
 
 class Wagon(Train):
     """
@@ -1119,7 +928,6 @@ class SteamLoco(Train):
     """
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.template = 'train.pynml'
         self.default_cargo_capacities = [0]
         self.engine_class = 'ENGINE_CLASS_STEAM'
         self.visual_effect = 'VISUAL_EFFECT_STEAM'
@@ -1132,7 +940,6 @@ class SteamLocoTender(Train):
     """
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.template = 'train.pynml'
         self.default_cargo_capacities = [0]
 
 
@@ -1142,7 +949,6 @@ class DieselLoco(Train):
     """
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.template = 'train.pynml'
         self.default_cargo_capacities = [0]
         self.engine_class = 'ENGINE_CLASS_DIESEL'
         self.visual_effect = 'VISUAL_EFFECT_DIESEL'
@@ -1154,12 +960,10 @@ class DieselRailcar(Train):
     """
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.template = 'railcar.pynml'
         self.default_cargo_capacities = [0]
         self.class_refit_groups = ['pax', 'mail', 'express_freight']
         self.label_refits_allowed = [] # no specific labels needed
         self.label_refits_disallowed = []
-        self.autorefit = True
         self.capacities_mail = [int(0.75 * capacity) for capacity in self.capacities_pax]
         self.capacities_freight = [int(0.5 * capacity) for capacity in self.capacities_pax]
         self.default_cargo_capacities = self.capacities_pax
@@ -1174,7 +978,6 @@ class ElectricLoco(Train):
     """
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.template = 'train.pynml'
         self.default_cargo_capacities = [0]
         if hasattr(kwargs['consist'], 'track_type'):
             # all NG vehicles should set 'NG' only, this class then over-rides that to electrified NG as needed
@@ -1195,7 +998,6 @@ class ElectroDieselLoco(Train):
     """
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.template = 'train.pynml'
         self.default_cargo_capacities = [0]
         self.engine_class = 'ENGINE_CLASS_DIESEL'
         self.visual_effect = 'VISUAL_EFFECT_DIESEL'
@@ -1208,13 +1010,11 @@ class CargoSprinter(Train):
     """
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.template = 'cargo_sprinter.pynml'
         self.default_cargo_capacities = [0]
         # refits should match those of the intermodal cars
         self.class_refit_groups = ['express_freight', 'packaged_freight']
         self.label_refits_allowed = ['FRUT','WATR']
         self.label_refits_disallowed = ['FISH','LVST','OIL_','TOUR','WOOD']
-        self.autorefit = True
         self.default_cargo_capacities = self.capacities_freight
         self.loading_speed_multiplier = 2
         self.default_cargo = 'GOOD'
@@ -1284,7 +1084,6 @@ class MetroPaxUnit(Train):
     """
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.template = 'metro_mu.pynml'
         self.default_cargo_capacities = self.capacities_pax
         self.default_cargo = "PASS"
         self.loading_speed_multiplier = 2
@@ -1299,12 +1098,10 @@ class MetroCargoUnit(Train):
     def __init__(self, **kwargs):
         kwargs['capacity_mail'] = kwargs.get('capacity', None)
         super().__init__(**kwargs)
-        self.template = 'metro_mu.pynml'
         self.default_cargo_capacities = [0]
         self.class_refit_groups = ['mail', 'express_freight']
         self.label_refits_allowed = [] # no specific labels needed
         self.label_refits_disallowed = []
-        self.autorefit = True
         self.capacities_freight = [int(0.5 * capacity) for capacity in self.capacities_mail]
         self.default_cargo_capacities = self.capacities_mail
         self.default_cargo = "MAIL"
