@@ -44,7 +44,7 @@ def main():
 
     consist = HopperConsist(roster='pony',
                             base_numeric_id=1080,
-                            gen=4,
+                            gen=5,
                             subtype='A')
 
     consist.add_unit(type=FreightCar,
@@ -63,7 +63,7 @@ def main():
 
     consist = HopperConsist(roster='pony',
                             base_numeric_id=1090,
-                            gen=4,
+                            gen=5,
                             subtype='B')
 
     consist.add_unit(type=FreightCar,
