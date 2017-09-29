@@ -12,7 +12,6 @@ def main():
 
     consist.add_unit(type=PassengerCar,
                      capacity=25,
-                     weight=30,
                      vehicle_length=8)
 
     consist.add_model_variant(start_date=0,
@@ -27,7 +26,6 @@ def main():
 
     consist.add_unit(type=PassengerCar,
                      capacity=55,
-                     weight=33,
                      vehicle_length=8)
 
     consist.add_model_variant(start_date=0,
@@ -42,7 +40,6 @@ def main():
 
     consist.add_unit(type=PassengerCar,
                      capacity=75,
-                     weight=36,
                      vehicle_length=8)
 
     consist.add_model_variant(start_date=0,
