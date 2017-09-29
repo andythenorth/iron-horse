@@ -13,18 +13,21 @@ spriterow_height = 30
 spritesheet_top_margin = 10
 spritesheet_width = 455
 
+vehicles_input_dir = 'vehicles'
+
 # --- Cargo Maps ---- #
 # label order matters, so tuples are used not dicts
 # could probably have used orderedict or named tuple, but...blah
 
 # Livery Only
-# keep cargos in alphabetical order for ease of reading
-# DFLT label is a hack to provide specific livery for unknown cargos and should not be added to cargo translation table
+# broadly, keep cargos in alphabetical order for ease of reading
 # OIL_ is in first position as the buy menu sprites should be the Oil sprites, and this is the easiest way to do it
 # in principle that's wrong, because in a map without oil, the buy menu won't match the sprites of the vehicle when built
 # try it and see what happens eh?
+# DFLT label is a hack to provide specific livery for unknown cargos and should not be added to cargo translation table
 tanker_livery_recolour_maps = (("OIL_", {136: 1, 137: 2, 138: 3, 139: 4, 140: 5, 141: 6, 142: 7, 143: 8}), # see note on oil above
                                ("DFLT", {136: 80, 137: 81, 138: 82, 139: 83, 140: 84, 141: 85, 142: 86, 143: 87}), # see note on DFLT above
+                               ("SULP", {136: 62, 137: 63, 138: 64, 139: 65, 140: 66, 141: 67, 142: 68, 143: 69}),
                                ("RFPR", {136: 198, 137: 199, 138: 200, 139: 201, 140: 202, 141: 203, 142: 204, 143: 205}),
                                ("RUBR", {136: 40, 137: 41, 138: 42, 139: 43, 140: 44, 141: 45, 142: 46, 143: 47}),
                                ("PETR", {136: 16, 137: 17, 138: 18, 139: 19, 140: 20, 141: 21, 142: 22, 143: 23}))

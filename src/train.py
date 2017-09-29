@@ -355,6 +355,14 @@ class Train(object):
         return global_constants.default_spritesheet_offsets[str(self.vehicle_length)]
 
     @property
+    def vehicle_nml_template(self):
+        if not self.always_use_same_spriterow:
+            if self.consist.visible_cargo.nml_template:
+                return self.consist.visible_cargo.nml_template
+        # default case
+        return 'vehicle_default.pynml'
+
+    @property
     def location_of_random_bits_for_model_variant(self):
         return 'FORWARD_SELF(' + str(self.numeric_id - self.consist.base_numeric_id) + ')'
 
@@ -414,7 +422,7 @@ class Train(object):
         self.assert_cargo_labels(self.label_refits_allowed)
         self.assert_cargo_labels(self.label_refits_disallowed)
         # templating
-        template_name = self.template
+        template_name = self.vehicle_nml_template
         template = templates[template_name]
         nml_result = template(vehicle=self, consist=self.consist, global_constants=global_constants)
         return nml_result
@@ -1065,15 +1073,7 @@ class TankConsist(WagonConsist):
         self.loading_speed_multiplier = 3
         self.visible_cargo = VisibleCargoLiveryOnly()
         self.visible_cargo.tanker = True
-    """
-    # !! tank cars will need a different graphics processor, dedicated to recolouring livery per supported cargo
-    @property
-    def graphics_processors(self):
-        options = {'template': self.id + '_template_0.png'}
-        pass_through = GraphicsProcessorFactory('pass_through_pipeline', options)
-        swap_company_colours = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
-        return {'pass_through': pass_through, 'swap_company_colours': swap_company_colours}
-    """
+
 
 class VehicleTransporterConsist(WagonConsist):
     """
