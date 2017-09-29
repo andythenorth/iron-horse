@@ -35,7 +35,7 @@ from vehicles import numeric_id_defender
 
 from vehicles import box_cars
 box_cars.main()
-"""
+
 from vehicles import caboose_cars
 caboose_cars.main()
 
@@ -50,7 +50,7 @@ edibles_tank_cars.main()
 
 from vehicles import flat_cars
 flat_cars.main()
-
+"""
 from vehicles import fruit_cars
 fruit_cars.main()
 

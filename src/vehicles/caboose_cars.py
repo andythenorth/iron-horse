@@ -15,7 +15,8 @@ def main():
                      vehicle_length=4)
 
     consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date)
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0)
 
     consist = CabooseConsist(title='[Caboose Car] Long',
                              roster='pony',
@@ -28,7 +29,8 @@ def main():
                      vehicle_length=6)
 
     consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date)
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0)
 
     consist = CabooseConsist(title='[Caboose Car]',
                              roster='pony',
@@ -42,7 +44,8 @@ def main():
                      vehicle_length=4)
 
     consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date)
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0)
 
 
 """
