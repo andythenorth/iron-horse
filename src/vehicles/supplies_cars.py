@@ -18,19 +18,19 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=1910,
-                              graphics_processor=consist.graphics_processors['pass_through_0'])
+                              graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=1910,
-                              graphics_processor=consist.graphics_processors['swap_company_colours_0'])
+                              graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=1910,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['pass_through_1'])
+                              graphics_processor=consist.graphics_processors[1])
 
     consist.add_model_variant(start_date=1910,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['swap_company_colours_1'])
+                              graphics_processor=consist.graphics_processors[1])
 
     consist = SuppliesConsist(roster='pony',
                               base_numeric_id=700,
@@ -43,19 +43,19 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=2010,
-                              graphics_processor=consist.graphics_processors['pass_through_0'])
+                              graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=2010,
-                              graphics_processor=consist.graphics_processors['swap_company_colours_0'])
+                              graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=2010,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['pass_through_1'])
+                              graphics_processor=consist.graphics_processors[1])
 
     consist.add_model_variant(start_date=2010,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['swap_company_colours_1'])
+                              graphics_processor=consist.graphics_processors[1])
 
     #--------------- antelope ----------------------------------------------------------------------
 
@@ -73,18 +73,18 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=1910,
-                              graphics_processor=consist.graphics_processors['pass_through_0'])
+                              graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=1910,
-                              graphics_processor=consist.graphics_processors['swap_company_colours_0'])
+                              graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=1910,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['pass_through_1'])
+                              graphics_processor=consist.graphics_processors[1])
 
     consist.add_model_variant(start_date=1910,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['swap_company_colours_1'])
+                              graphics_processor=consist.graphics_processors[1])
 
     #--------------- llama ----------------------------------------------------------------------

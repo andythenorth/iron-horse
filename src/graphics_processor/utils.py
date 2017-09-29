@@ -1,14 +1,22 @@
 from graphics_processor import graphics_constants
+from graphics_processor import pipelines
 
-def get_bulk_cargo_recolour_maps():
-    # this is interim glue to the old methods whilst porting the Road Hog graphics processor to Iron Horse
-    # ...we have to manually specify the spriterow<->cargo label mapping in the wagon definition anyway
-    # GRVl is also reused for generic unknown cargos, and is in position 0 for this reason
-    # (there is no mapping for unknown cargos, just uses first spriteset)
-    # ^^ all of that will be unnecessary when Road Hog processor is ported; this can then be deleted
-    result = []
-    for label in ['GRVL', 'IORE', 'CORE', 'AORE', 'SAND', 'COAL', 'CLAY', 'SCMT', 'PHOS', 'CASS', 'LIME', 'MNO2', 'NITR', 'PORE', 'POTA', 'SGBT']:
-        for map in graphics_constants.bulk_cargo_recolour_maps:
-            if map[0] == label:
-                result.append(map[1])
-    return result
+
+class GraphicsProcessor(object):
+    # simple class which wraps a graphics processing pipeline along with some options
+    # pipeline objects may get reused across consists,
+    # so we don't store consist info in the pipeline, it's passed to pipeline.render() method when needed
+    def __init__(self, pipeline_name, options):
+        self.pipeline_name = pipeline_name
+        self.options = options
+        self.pipeline = pipelines.get_pipeline(pipeline_name)
+
+
+def get_composited_cargo_processors(template):
+    # returns two cargo-compositing graphics processors, one of which flips company colours
+    # also provides optional 2CC recolor
+    graphics_options_1 = {'template': template, 'swap_company_colours': False}
+    graphics_options_2 = {'template': template, 'swap_company_colours': True}
+    graphics_processor_1 = GraphicsProcessor('extend_spriterows_for_composited_cargos_pipeline', graphics_options_1)
+    graphics_processor_2 = GraphicsProcessor('extend_spriterows_for_composited_cargos_pipeline', graphics_options_2)
+    return (graphics_processor_1, graphics_processor_2)

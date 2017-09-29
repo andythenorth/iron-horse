@@ -15,11 +15,13 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['pass_through'])
+                              spritesheet_suffix=0,
+                              graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['swap_company_colours'])
+                              spritesheet_suffix=1,
+                              graphics_processor=consist.graphics_processors[1])
 
     consist = TankConsist(roster='pony',
                           base_numeric_id=640,
@@ -32,11 +34,13 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['pass_through'])
+                              spritesheet_suffix=0,
+                              graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['swap_company_colours'])
+                              spritesheet_suffix=1,
+                              graphics_processor=consist.graphics_processors[1])
 
     consist = TankConsist(roster='pony',
                           base_numeric_id=960,
@@ -49,11 +53,13 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['pass_through'])
+                              spritesheet_suffix=0,
+                              graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['swap_company_colours'])
+                              spritesheet_suffix=1,
+                              graphics_processor=consist.graphics_processors[1])
 
     consist = TankConsist(roster='pony',
                           base_numeric_id=650,
@@ -67,11 +73,13 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['pass_through'])
+                              spritesheet_suffix=0,
+                              graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['swap_company_colours'])
+                              spritesheet_suffix=1,
+                              graphics_processor=consist.graphics_processors[1])
 
     #--------------- llama ----------------------------------------------------------------------
     consist = TankConsist(roster='llama',
@@ -85,11 +93,13 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['pass_through'])
+                              spritesheet_suffix=0,
+                              graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['swap_company_colours'])
+                              spritesheet_suffix=1,
+                              graphics_processor=consist.graphics_processors[1])
 
     consist = TankConsist(roster='llama',
                           base_numeric_id=670,
@@ -102,11 +112,13 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['pass_through'])
+                              spritesheet_suffix=0,
+                              graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['swap_company_colours'])
+                              spritesheet_suffix=1,
+                              graphics_processor=consist.graphics_processors[1])
 
     consist = TankConsist(roster='llama',
                           base_numeric_id=680,
@@ -119,11 +131,13 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['pass_through'])
+                              spritesheet_suffix=0,
+                              graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['swap_company_colours'])
+                              spritesheet_suffix=1,
+                              graphics_processor=consist.graphics_processors[1])
 
     consist = TankConsist(roster='llama',
                           base_numeric_id=690,
@@ -137,11 +151,13 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['pass_through'])
+                              spritesheet_suffix=0,
+                              graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['swap_company_colours'])
+                              spritesheet_suffix=1,
+                              graphics_processor=consist.graphics_processors[1])
 
     consist = TankConsist(roster='llama',
                           base_numeric_id=1360,
@@ -155,11 +171,13 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['pass_through'])
+                              spritesheet_suffix=0,
+                              graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['swap_company_colours'])
+                              spritesheet_suffix=1,
+                              graphics_processor=consist.graphics_processors[1])
 
     #--------------- antelope ----------------------------------------------------------------------
     consist = TankConsist(roster='antelope',
@@ -173,11 +191,13 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['pass_through'])
+                              spritesheet_suffix=0,
+                              graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['swap_company_colours'])
+                              spritesheet_suffix=1,
+                              graphics_processor=consist.graphics_processors[1])
 
     consist = TankConsist(roster='antelope',
                           base_numeric_id=1680,
@@ -190,11 +210,13 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['pass_through'])
+                              spritesheet_suffix=0,
+                              graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['swap_company_colours'])
+                              spritesheet_suffix=1,
+                              graphics_processor=consist.graphics_processors[1])
 
     consist = TankConsist(roster='antelope',
                           base_numeric_id=1910,
@@ -208,11 +230,13 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['pass_through'])
+                              spritesheet_suffix=0,
+                              graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['swap_company_colours'])
+                              spritesheet_suffix=1,
+                              graphics_processor=consist.graphics_processors[1])
 
     consist = TankConsist(roster='antelope',
                           base_numeric_id=1920,
@@ -226,11 +250,13 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['pass_through'])
+                              spritesheet_suffix=0,
+                              graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['swap_company_colours'])
+                              spritesheet_suffix=1,
+                              graphics_processor=consist.graphics_processors[1])
 
 
 # gen 3 at 1980 or so

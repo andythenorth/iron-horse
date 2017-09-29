@@ -16,11 +16,11 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['pass_through'])
+                              graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['swap_company_colours'])
+                              graphics_processor=consist.graphics_processors[1])
 
     # no gen 2 reefer - straight to gen 3
     consist = ReeferConsist(roster='pony',
@@ -35,11 +35,11 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['pass_through'])
+                              graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['swap_company_colours'])
+                              graphics_processor=consist.graphics_processors[1])
 
     #--------------- llama ----------------------------------------------------------------------
     consist = ReeferConsist(roster='llama',
@@ -54,11 +54,11 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['pass_through'])
+                              graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['swap_company_colours'])
+                              graphics_processor=consist.graphics_processors[1])
 
     # no gen 2 reefers - straight to gen 3
     consist = ReeferConsist(roster='llama',
@@ -73,11 +73,11 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['pass_through'])
+                              graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['swap_company_colours'])
+                              graphics_processor=consist.graphics_processors[1])
 
     consist = ReeferConsist(roster='llama',
                             base_numeric_id=1410,
@@ -92,11 +92,11 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['pass_through'])
+                              graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['swap_company_colours'])
+                              graphics_processor=consist.graphics_processors[1])
 
     # no gen 2 reefers - straight to gen 3
     consist = ReeferConsist(roster='llama',
@@ -112,11 +112,11 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['pass_through'])
+                              graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['swap_company_colours'])
+                              graphics_processor=consist.graphics_processors[1])
 
     #--------------- antelope ----------------------------------------------------------------------
     consist = ReeferConsist(roster='antelope',
@@ -131,11 +131,11 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['pass_through'])
+                              graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['swap_company_colours'])
+                              graphics_processor=consist.graphics_processors[1])
 
     consist = ReeferConsist(roster='antelope',
                             base_numeric_id=1900,
@@ -150,8 +150,8 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['pass_through'])
+                              graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['swap_company_colours'])
+                              graphics_processor=consist.graphics_processors[1])

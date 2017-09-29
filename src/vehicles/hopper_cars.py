@@ -15,11 +15,11 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['pass_through'])
+                              graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['swap_company_colours'])
+                              graphics_processor=consist.graphics_processors[1])
 
     consist = HopperConsist(roster='pony',
                             base_numeric_id=2330,
@@ -32,11 +32,11 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['pass_through'])
+                              graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['swap_company_colours'])
+                              graphics_processor=consist.graphics_processors[1])
 
     consist = HopperConsist(roster='pony',
                             base_numeric_id=1080,
@@ -49,11 +49,11 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['pass_through'])
+                              graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['swap_company_colours'])
+                              graphics_processor=consist.graphics_processors[1])
 
     consist = HopperConsist(roster='pony',
                             base_numeric_id=1090,
@@ -66,11 +66,11 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['pass_through'])
+                              graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['swap_company_colours'])
+                              graphics_processor=consist.graphics_processors[1])
 
     #--------------- llama ----------------------------------------------------------------------
     consist = HopperConsist(roster='llama',
@@ -84,11 +84,11 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['pass_through'])
+                              graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['swap_company_colours'])
+                              graphics_processor=consist.graphics_processors[1])
 
     consist = HopperConsist(roster='llama',
                             base_numeric_id=1110,
@@ -101,11 +101,11 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['pass_through'])
+                              graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['swap_company_colours'])
+                              graphics_processor=consist.graphics_processors[1])
 
     consist = HopperConsist(roster='llama',
                             base_numeric_id=1120,
@@ -119,11 +119,11 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['pass_through'])
+                              graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['swap_company_colours'])
+                              graphics_processor=consist.graphics_processors[1])
 
     consist = HopperConsist(roster='llama',
                             base_numeric_id=1130,
@@ -137,11 +137,11 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['pass_through'])
+                              graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['swap_company_colours'])
+                              graphics_processor=consist.graphics_processors[1])
 
     #--------------- antelope ----------------------------------------------------------------------
     consist = HopperConsist(roster='antelope',
@@ -155,11 +155,11 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['pass_through'])
+                              graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['swap_company_colours'])
+                              graphics_processor=consist.graphics_processors[1])
 
     consist = HopperConsist(roster='antelope',
                             base_numeric_id=1660,
@@ -172,11 +172,11 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['pass_through'])
+                              graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['swap_company_colours'])
+                              graphics_processor=consist.graphics_processors[1])
 
     # no gen 1 NG hopper in Antelope, straight to gen 2
     consist = HopperConsist(roster='antelope',
@@ -191,8 +191,8 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['pass_through'])
+                              graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['swap_company_colours'])
+                              graphics_processor=consist.graphics_processors[1])

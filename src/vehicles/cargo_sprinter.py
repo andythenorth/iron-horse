@@ -25,4 +25,5 @@ consist.add_unit(type=CargoSprinter,
 
 consist.add_model_variant(start_date=0,
                           end_date=1986,
-                          graphics_processor=consist.graphics_processors)
+                          graphics_processor=consist.graphics_processors,
+                          spritesheet_suffix=0)

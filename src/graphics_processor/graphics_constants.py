@@ -11,7 +11,7 @@ for i in range(8):
 # facts about 'standard' spritesheets, spritesheets varying from this will be painful
 spriterow_height = 30
 spritesheet_top_margin = 10
-spritesheet_width = 400
+spritesheet_width = 455
 
 # --- Cargo Maps ---- #
 # label order matters, so tuples are used not dicts
@@ -30,6 +30,12 @@ tanker_livery_recolour_maps = (("OIL_", {136: 1, 137: 2, 138: 3, 139: 4, 140: 5,
                                ("PETR", {136: 16, 137: 17, 138: 18, 139: 19, 140: 20, 141: 21, 142: 22, 143: 23}))
                             #DYES
                             #PLAS
+
+# Containers
+# !! simple recolouring, not cargo specific.  May need work ??  Could be cargo-specific??
+container_recolour_maps = ({170 + i: CC1 + i for i in range(8)},
+                           {170 + i: CC2 + i for i in range(8)},
+                           {170 + i: 8 + i for i in range(8)})
 
 # Bulk
 # keep cargos in alphabetical order for ease of reading
@@ -51,9 +57,24 @@ bulk_cargo_recolour_maps = (("AORE", {170: 42, 171: 123, 172: 74, 173: 125, 174:
                             ("SCMT", {170: 104, 171: 3, 172: 2, 173: 70, 174: 71, 175: 72, 176: 3}),
                             ("SGBT", {170: 60, 171: 53, 172: 54, 173: 55, 174: 56, 175: 57, 176: 58}))
 
+# Piece
+# 2-tuples, containing 2 lists (['LBL1', 'LBL2'], ['filename_1', 'filename_2'])
+# this groups labels and sprites, but there's no obvious problem with that right now
+# if a label can't share a group of sprites, it can repeat some filenames, that's just inefficient, but works
+# DFLT label is a hack to support cargos with no specific sprites (including unknown cargos), and should not be added to cargo translation table
+piece_cargo_maps = ((['DFLT'], ['tarps_2cc_1']), # see note on DFLT above
+                    (['BEER', 'DYES', 'EOIL', 'MILK', 'OIL_', 'PETR', 'RFPR', 'WATR'], ['barrels_silver']),
+                    (['BDMT',], ['tarps_red_1']),
+                    (['COPR'], ['copper_coils']),
+                    (['ENSP',], ['tarps_gold_1']),
+                    (['FMSP'], ['tarps_blue_1']),
+                    (['FRUT'], ['fruit']),
+                    (['JAVA'], ['coffee']),
+                    (['GOOD'], ['crates_1']),
+                    (['NUTS'], ['nuts']),
+                    (['PAPR'], ['paper_coils']),
+                    (['STEL'], ['steel_coils']),
+                    (['WDPR'], ['lumber_planks']),
+                    (['WOOD'], ['logs']))
 
-# Containers
-# !! simple recolouring, not cargo specific.  May need work ??  Could be cargo-specific??
-container_recolour_maps = ({170 + i: CC1 + i for i in range(8)},
-                           {170 + i: CC2 + i for i in range(8)},
-                           {170 + i: 8 + i for i in range(8)})
+# --- End Cargo Maps --- #

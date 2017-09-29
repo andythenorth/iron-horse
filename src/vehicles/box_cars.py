@@ -15,11 +15,13 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['pass_through'])
+                              spritesheet_suffix=0,
+                              graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['swap_company_colours'])
+                              spritesheet_suffix=1,
+                              graphics_processor=consist.graphics_processors[1])
 
     consist = BoxConsist(roster='pony',
                          base_numeric_id=550,
@@ -32,11 +34,13 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['pass_through'])
+                              spritesheet_suffix=0,
+                              graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['swap_company_colours'])
+                              spritesheet_suffix=1,
+                              graphics_processor=consist.graphics_processors[1])
 
     consist = BoxConsist(roster='pony',
                          base_numeric_id=560,
@@ -49,11 +53,13 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['pass_through'])
+                              spritesheet_suffix=0,
+                              graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['swap_company_colours'])
+                              spritesheet_suffix=1,
+                              graphics_processor=consist.graphics_processors[1])
 
     consist = BoxConsist(roster='pony',
                          base_numeric_id=2340,
@@ -66,11 +72,13 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['pass_through'])
+                              spritesheet_suffix=0,
+                              graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['swap_company_colours'])
+                              spritesheet_suffix=1,
+                              graphics_processor=consist.graphics_processors[1])
 
     consist = BoxConsist(roster='pony',
                          base_numeric_id=570,
@@ -83,11 +91,13 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['pass_through'])
+                              spritesheet_suffix=0,
+                              graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['swap_company_colours'])
+                              spritesheet_suffix=1,
+                              graphics_processor=consist.graphics_processors[1])
 
     consist = BoxConsist(roster='pony',
                          base_numeric_id=580,
@@ -101,11 +111,13 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['pass_through'])
+                              spritesheet_suffix=0,
+                              graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['swap_company_colours'])
+                              spritesheet_suffix=1,
+                              graphics_processor=consist.graphics_processors[1])
 
     #--------------- llama ----------------------------------------------------------------------
     consist = BoxConsist(roster='llama',
@@ -119,11 +131,13 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['pass_through'])
+                              spritesheet_suffix=0,
+                              graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['swap_company_colours'])
+                              spritesheet_suffix=1,
+                              graphics_processor=consist.graphics_processors[1])
 
     consist = BoxConsist(roster='llama',
                          base_numeric_id=600,
@@ -136,11 +150,13 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['pass_through'])
+                              spritesheet_suffix=0,
+                              graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['swap_company_colours'])
+                              spritesheet_suffix=1,
+                              graphics_processor=consist.graphics_processors[1])
 
     consist = BoxConsist(roster='llama',
                          base_numeric_id=610,
@@ -153,11 +169,13 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['pass_through'])
+                              spritesheet_suffix=0,
+                              graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['swap_company_colours'])
+                              spritesheet_suffix=1,
+                              graphics_processor=consist.graphics_processors[1])
 
     consist = BoxConsist(roster='llama',
                          base_numeric_id=620,
@@ -171,11 +189,13 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['pass_through'])
+                              spritesheet_suffix=0,
+                              graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['swap_company_colours'])
+                              spritesheet_suffix=1,
+                              graphics_processor=consist.graphics_processors[1])
 
     consist = BoxConsist(roster='llama',
                          base_numeric_id=1310,
@@ -189,11 +209,13 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['pass_through'])
+                              spritesheet_suffix=0,
+                              graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['swap_company_colours'])
+                              spritesheet_suffix=1,
+                              graphics_processor=consist.graphics_processors[1])
 
     #--------------- antelope ----------------------------------------------------------------------
     consist = BoxConsist(roster='antelope',
@@ -207,11 +229,13 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['pass_through'])
+                              spritesheet_suffix=0,
+                              graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['swap_company_colours'])
+                              spritesheet_suffix=1,
+                              graphics_processor=consist.graphics_processors[1])
 
     consist = BoxConsist(roster='antelope',
                          base_numeric_id=1740,
@@ -224,11 +248,13 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['pass_through'])
+                              spritesheet_suffix=0,
+                              graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['swap_company_colours'])
+                              spritesheet_suffix=1,
+                              graphics_processor=consist.graphics_processors[1])
 
     consist = BoxConsist(roster='antelope',
                          base_numeric_id=2100,
@@ -242,11 +268,13 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['pass_through'])
+                              spritesheet_suffix=0,
+                              graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['swap_company_colours'])
+                              spritesheet_suffix=1,
+                              graphics_processor=consist.graphics_processors[1])
 
     consist = BoxConsist(roster='antelope',
                          base_numeric_id=1850,
@@ -260,11 +288,13 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['pass_through'])
+                              spritesheet_suffix=0,
+                              graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['swap_company_colours'])
+                              spritesheet_suffix=1,
+                              graphics_processor=consist.graphics_processors[1])
 
     consist = BoxConsist(roster='antelope',
                          base_numeric_id=1860,
@@ -278,8 +308,10 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['pass_through'])
+                              spritesheet_suffix=0,
+                              graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['swap_company_colours'])
+                              spritesheet_suffix=1,
+                              graphics_processor=consist.graphics_processors[1])

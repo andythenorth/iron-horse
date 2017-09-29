@@ -15,11 +15,11 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['pass_through'])
+                              graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['swap_company_colours'])
+                              graphics_processor=consist.graphics_processors[1])
 
     consist = DumpConsist(roster='pony',
                           base_numeric_id=1810,
@@ -32,11 +32,11 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['pass_through'])
+                              graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              graphics_processor=consist.graphics_processors['swap_company_colours'])
+                              graphics_processor=consist.graphics_processors[1])
 
     #--------------- llama ----------------------------------------------------------------------
 

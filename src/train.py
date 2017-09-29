@@ -15,9 +15,7 @@ templates = PageTemplateLoader(os.path.join(currentdir, 'src', 'templates'))
 import global_constants # expose all constants for easy passing to templates
 import utils
 
-import graphics_processor
-import graphics_processor.pipelines
-import graphics_processor.graphics_constants as graphics_constants
+from graphics_processor.visible_cargo import VisibleCargo, VisibleCargoCustom, VisibleCargoLiveryOnly
 import graphics_processor.utils as graphics_utils
 
 from rosters import registered_rosters
@@ -55,19 +53,19 @@ class Consist(object):
         self.date_variant_var = kwargs.get('date_variant_var', 'build_year')
         # create structure to hold the units
         self.units = []
+        # cargo /livery graphics options
+        self.visible_cargo = VisibleCargo()
         # roster is set when the vehicle is registered to a roster, only one roster per vehicle
         self.roster_id = None
          # optionally suppress nmlc warnings about animated pixels for consists where they're intentional
         self.suppress_animated_pixel_warnings = kwargs.get('suppress_animated_pixel_warnings', False)
 
-
-    def add_model_variant(self, start_date, end_date, graphics_processor=None, visual_effect_offset=None):
-        variant_num = len(self.model_variants) # this will never ever ever be flakey and unreliable, right?
-        self.model_variants.append(ModelVariant(start_date, end_date, graphics_processor, variant_num, visual_effect_offset))
+    def add_model_variant(self, start_date, end_date, spritesheet_suffix, graphics_processor=None, visual_effect_offset=None):
+        self.model_variants.append(ModelVariant(start_date, end_date, spritesheet_suffix, graphics_processor, visual_effect_offset))
 
     def add_unit(self, type, repeat=1, **kwargs):
         vehicle = type(consist=self, **kwargs)
-        count = len(set(self.units))
+        count = len(self.unique_units)
         if count == 0:
             vehicle.id = self.id # first vehicle gets no numeric id suffix - for compatibility with buy menu list ids etc
         else:
@@ -75,6 +73,16 @@ class Consist(object):
         vehicle.numeric_id = self.get_and_verify_numeric_id(count)
         vehicle.vehicle_length
         self.units.append(vehicle)
+
+    @property
+    def unique_units(self):
+        # units may be repeated in the consist, sometimes we need an ordered list of unique units
+        # set() doesn't preserve list order, which matters, so do it the hard way
+        unique_units = []
+        for unit in self.units:
+            if unit not in unique_units:
+                unique_units.append(unit)
+        return unique_units
 
     def get_and_verify_numeric_id(self, offset):
         numeric_id = self.base_numeric_id + offset
@@ -156,6 +164,26 @@ class Consist(object):
         else:
             return False
 
+    def get_spriterows_for_consist_or_subpart(self, units):
+        # pass either list of all units in consist, or a slice of the consist starting from front (arbitrary slices not useful)
+        # spriterow count is number of output sprite rows from graphics processor, to be used by nml sprite templating
+        result = []
+        for unit in units:
+            unit_rows = []
+            if unit.always_use_same_spriterow:
+                unit_rows.append(('always_use_same_spriterow', 1))
+            else:
+                # assumes visible_cargo is used to handle any other rows, no other cases at time of writing, could be changed eh?
+                unit_rows.extend(self.visible_cargo.get_output_row_counts_by_type())
+            result.append(unit_rows)
+        return result
+
+    @property
+    def graphics_processors(self):
+        # wrapper to get the graphics processors
+        template = self.id + '_template.png'
+        return graphics_utils.get_composited_cargo_processors(template = template)
+
     @property
     def buy_cost(self):
         # stub only
@@ -222,7 +250,7 @@ class Consist(object):
         nml_result = ''
         if len(self.units) > 1:
             nml_result = nml_result + self.render_articulated_switch()
-        for unit in set(self.units):
+        for unit in self.unique_units:
             nml_result = nml_result + unit.render()
         return nml_result
 
@@ -254,6 +282,21 @@ class Train(object):
         self.engine_class = 'ENGINE_CLASS_STEAM' # nml constant (STEAM is sane default)
         self.visual_effect = 'VISUAL_EFFECT_DISABLE' # nml constant
         self.default_visual_effect_offset = 0 # visual effect handling is fiddly, check ModelVariant also
+        # optional - some consists have sequences like A1-B-A2, where A1 and A2 look the same but have different IDs for implementation reasons
+        # avoid duplicating sprites on the spritesheet by forcing A2 to use A1's spriterow_num, fiddly eh?
+        # ugly, but eh.  Zero-indexed, based on position in units[]
+        # watch out for repeated vehicles in the consist when calculating the value for this)
+        # !! I don't really like this solution, might be better to have the graphics processor duplicate this?, with a simple map of [source:duplicate_to]
+        self.unit_num_providing_spriterow_num = kwargs.get('unit_num_providing_spriterow_num', None)
+        # optional - force always using same spriterow
+        # for cases where the template handles cargo, but some units in the consist might not show cargo, e.g. tractor units etc
+        # can also be used to suppress compile failures during testing when spritesheet is unfinished (missing rows etc)
+        self.always_use_same_spriterow = kwargs.get('always_use_same_spriterow', False)
+        # only set if the graphics processor requires it to generate cargo sprites
+        # defines the size of cargo sprite to use
+        # if the vehicle cargo area is not an OTTD unit length, use the next size up and the masking will sort it out
+        # some longer vehicles may place multiple shorter cargo sprites, e.g. 7/8 vehicle, 2 * 4/8 cargo sprites (with some overlapping)
+        self.cargo_length = kwargs.get('cargo_length', None)
 
     def get_capacity_variations(self, capacity):
         # capacity is variable, controlled by a newgrf parameter
@@ -382,26 +425,15 @@ class ModelVariant(object):
     # variants are mostly randomised or date-sensitive graphics
     # must be a minimum of one variant per train
     # at least one variant must have intro date 0 (for nml switch defaults to work)
-    def __init__(self, start_date, end_date, graphics_processor, variant_num, visual_effect_offset):
-        self.variant_num = variant_num
+    def __init__(self, start_date, end_date, spritesheet_suffix, graphics_processor, visual_effect_offset):
         self.start_date = start_date
         self.end_date = end_date
+        self.spritesheet_suffix = spritesheet_suffix # use digits for these - to match spritesheet filenames
         self.graphics_processor = graphics_processor
-        self.visual_effect_offset = visual_effect_offset # use digits or magic keywords, or omit
+        self.visual_effect_offset = visual_effect_offset # used to move effects around when flipping vehicle - might be a better way?
 
     def get_spritesheet_name(self, consist):
-        return consist.id + '_' + str(self.variant_num) + '.png'
-
-
-class GraphicsProcessorFactory(object):
-    # simple class which wraps graphics_processor, which uses pixa library
-    # pipeline_name refers to a pipeline class which defines how the processing is done
-    # may be reused across consists, so don't store consist info in the pipeline, pass it to pipeline at render time
-    # this is kind of factory-pattern-ish, but don't make too much of that, it's not important
-    def __init__(self, pipeline_name, options):
-        self.pipeline_name = pipeline_name
-        self.options = options
-        self.pipeline = graphics_processor.registered_pipelines[pipeline_name]
+        return consist.id + '_' + str(self.spritesheet_suffix) + '.png'
 
 
 class EngineConsist(Consist):
@@ -523,14 +555,14 @@ class BoxConsist(WagonConsist):
         self.autorefit = True
         self.default_cargo = 'GOOD'
         self.default_capacity_type = 'capacity_freight'
-
+    """
     @property
     def graphics_processors(self):
         options = {'template': self.id + '_template_0.png'}
         pass_through = GraphicsProcessorFactory('pass_through_pipeline', options)
         swap_company_colours = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
         return {'pass_through': pass_through, 'swap_company_colours': swap_company_colours}
-
+    """
 
 class CabooseConsist(WagonConsist):
     """
@@ -565,14 +597,14 @@ class CoveredHopperConsist(WagonConsist):
         self.default_cargo = 'GRAI'
         self.default_capacity_type = 'capacity_freight'
         self.loading_speed_multiplier = 2
-
+    """
     @property
     def graphics_processors(self):
         options = {'template': self.id + '_template_0.png'}
         pass_through = GraphicsProcessorFactory('pass_through_pipeline', options)
         swap_company_colours = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
         return {'pass_through': pass_through, 'swap_company_colours': swap_company_colours}
-
+    """
 
 class DumpConsist(WagonConsist):
     """
@@ -599,6 +631,7 @@ class DumpConsist(WagonConsist):
         self.default_capacity_type = 'capacity_freight'
         self.loading_speed_multiplier = 2
 
+    """
     @property
     def graphics_processors(self):
         recolour_maps = graphics_utils.get_bulk_cargo_recolour_maps()
@@ -615,7 +648,7 @@ class DumpConsist(WagonConsist):
         pass_through = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_1)
         swap_company_colours = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_2)
         return {'pass_through': pass_through, 'swap_company_colours': swap_company_colours}
-
+    """
 
 class EdiblesTankConsist(WagonConsist):
     """
@@ -637,14 +670,14 @@ class EdiblesTankConsist(WagonConsist):
         self.default_capacity_type = 'capacity_freight'
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
         self.loading_speed_multiplier = 2
-
+    """
     @property
     def graphics_processors(self):
         options = {'template': self.id + '_template_0.png'}
         pass_through = GraphicsProcessorFactory('pass_through_pipeline', options)
         swap_company_colours = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
         return {'pass_through': pass_through, 'swap_company_colours': swap_company_colours}
-
+    """
 
 class FlatConsist(WagonConsist):
     """
@@ -664,14 +697,14 @@ class FlatConsist(WagonConsist):
         self.autorefit = True
         self.default_cargo = 'STEL'
         self.default_capacity_type = 'capacity_freight'
-
+    """
     @property
     def graphics_processors(self):
         options = {'template': self.id + '_template_0.png'}
         pass_through = GraphicsProcessorFactory('pass_through_pipeline', options)
         swap_company_colours = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
         return {'pass_through': pass_through, 'swap_company_colours': swap_company_colours}
-
+    """
 
 class FruitConsist(WagonConsist):
     """
@@ -691,14 +724,14 @@ class FruitConsist(WagonConsist):
         self.default_cargo = 'FRUT'
         self.default_capacity_type = 'capacity_freight'
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
-
+    """
     @property
     def graphics_processors(self):
         options = {'template': self.id + '_template_0.png'}
         pass_through = GraphicsProcessorFactory('pass_through_pipeline', options)
         swap_company_colours = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
         return {'pass_through': pass_through, 'swap_company_colours': swap_company_colours}
-
+    """
 
 class HopperConsist(WagonConsist):
     """
@@ -724,7 +757,7 @@ class HopperConsist(WagonConsist):
         self.default_cargo = 'COAL'
         self.default_capacity_type = 'capacity_freight'
         self.loading_speed_multiplier = 2
-
+    """
     @property
     def graphics_processors(self):
         recolour_maps = graphics_utils.get_bulk_cargo_recolour_maps()
@@ -741,7 +774,7 @@ class HopperConsist(WagonConsist):
         pass_through = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_1)
         swap_company_colours = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_2)
         return {'pass_through': pass_through, 'swap_company_colours': swap_company_colours}
-
+    """
 
 class IntermodalConsist(WagonConsist):
     """
@@ -766,6 +799,7 @@ class IntermodalConsist(WagonConsist):
         self.default_capacity_type = 'capacity_freight'
         self.loading_speed_multiplier = 2
 
+    """
     @property
     def graphics_processors(self):
         recolour_maps = graphics_constants.container_recolour_maps
@@ -775,7 +809,7 @@ class IntermodalConsist(WagonConsist):
                             'num_rows_per_unit': 2,
                             'num_unit_types': 1}
         return [GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options)]
-
+    """
 
 class LivestockConsist(WagonConsist):
     """
@@ -814,14 +848,14 @@ class LogConsist(WagonConsist):
         self.default_cargo = 'WOOD'
         self.default_capacity_type = 'capacity_freight'
         self.loading_speed_multiplier = 2
-
+    """
     @property
     def graphics_processors(self):
         options = {'template': self.id + '_template_0.png'}
         pass_through = GraphicsProcessorFactory('pass_through_pipeline', options)
         swap_company_colours = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
         return {'pass_through': pass_through, 'swap_company_colours': swap_company_colours}
-
+    """
 
 class MailConsist(WagonConsist):
     """
@@ -888,7 +922,7 @@ class OpenConsist(WagonConsist):
         self.autorefit = True
         self.default_cargo = 'GOOD'
         self.default_capacity_type = 'capacity_freight'
-
+    """
     @property
     def graphics_processors(self):
         recolour_maps = graphics_utils.get_bulk_cargo_recolour_maps()
@@ -905,7 +939,7 @@ class OpenConsist(WagonConsist):
         pass_through = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_1)
         swap_company_colours = GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options_2)
         return {'pass_through': pass_through, 'swap_company_colours': swap_company_colours}
-
+    """
 
 class PassengerConsistBase(WagonConsist):
     """
@@ -966,14 +1000,14 @@ class ReeferConsist(WagonConsist):
         self.default_cargo = 'FOOD'
         self.default_capacity_type = 'capacity_freight'
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
-
+    """
     @property
     def graphics_processors(self):
         options = {'template': self.id + '_template_0.png'}
         pass_through = GraphicsProcessorFactory('pass_through_pipeline', options)
         swap_company_colours = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
         return {'pass_through': pass_through, 'swap_company_colours': swap_company_colours}
-
+    """
 
 class SuppliesConsist(WagonConsist):
     """
@@ -994,7 +1028,7 @@ class SuppliesConsist(WagonConsist):
         self.default_cargo = 'ENSP'
         self.default_capacity_type = 'capacity_freight'
         self.date_variant_var = 'current_year'
-
+    """
     # this one is non-standard, because supplies cars have date-sensitive sprites in multiple spritesheet templates
     @property
     def graphics_processors(self):
@@ -1006,7 +1040,7 @@ class SuppliesConsist(WagonConsist):
         swap_company_colours_1 = GraphicsProcessorFactory('swap_company_colours_pipeline', options_1)
         return {'pass_through_0': pass_through_0, 'swap_company_colours_0': swap_company_colours_0,
                 'pass_through_1': pass_through_1, 'swap_company_colours_1': swap_company_colours_1}
-
+    """
 
 class TankConsist(WagonConsist):
     """
@@ -1029,7 +1063,9 @@ class TankConsist(WagonConsist):
         self.default_cargo = 'OIL_'
         self.default_capacity_type = 'capacity_freight'
         self.loading_speed_multiplier = 3
-
+        self.visible_cargo = VisibleCargoLiveryOnly()
+        self.visible_cargo.tanker = True
+    """
     # !! tank cars will need a different graphics processor, dedicated to recolouring livery per supported cargo
     @property
     def graphics_processors(self):
@@ -1037,7 +1073,7 @@ class TankConsist(WagonConsist):
         pass_through = GraphicsProcessorFactory('pass_through_pipeline', options)
         swap_company_colours = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
         return {'pass_through': pass_through, 'swap_company_colours': swap_company_colours}
-
+    """
 
 class VehicleTransporterConsist(WagonConsist):
     """
@@ -1058,14 +1094,14 @@ class VehicleTransporterConsist(WagonConsist):
         self.default_cargo = 'VEHI'
         self.default_capacity_type = 'capacity_freight'
         self.date_variant_var = 'current_year'
-
+    """
     @property
     def graphics_processors(self):
         options = {'template': self.id + '_template_0.png'}
         pass_through = GraphicsProcessorFactory('pass_through_pipeline', options)
         swap_company_colours = GraphicsProcessorFactory('swap_company_colours_pipeline', options)
         return {'pass_through': pass_through, 'swap_company_colours': swap_company_colours}
-
+    """
 
 class Wagon(Train):
     """
@@ -1198,6 +1234,7 @@ class CargoSprinter(Train):
         self.default_cargo = 'GOOD'
         self.engine_class = 'ENGINE_CLASS_DIESEL'
         self.visual_effect = 'VISUAL_EFFECT_DISABLE' # intended - positioning smoke correctly for this vehicle type is too fiddly
+        """
         # graphics processor stuff also used at __init__ time
         self.consist.recolour_maps = graphics_constants.container_recolour_maps
         self.consist.num_random_cargo_variants = len(self.consist.recolour_maps)
@@ -1214,7 +1251,7 @@ class CargoSprinter(Train):
                            'num_rows_per_unit': 3,
                            'num_unit_types': 3}
         return GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options)
-
+    """
 
 class PassengerCar(Wagon):
     """
@@ -1253,7 +1290,6 @@ class BoxCar(FreightCar):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.capacities_mail = [int(2.0 * capacity) for capacity in self.capacities_freight]
-
 
 
 class MetroPaxUnit(Train):

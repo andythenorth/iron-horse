@@ -3,7 +3,7 @@ from roster import Roster
 from vehicles import aberdare
 from vehicles import badger
 from vehicles import bertha
-from vehicles import cargo_sprinter
+#from vehicles import cargo_sprinter
 from vehicles import chaplin
 from vehicles import chinook
 from vehicles import collett
@@ -76,7 +76,7 @@ roster = Roster(id = 'pony',
                            toaster,
                            slammer,
                            tin_rocket,
-                           cargo_sprinter,
+                           #cargo_sprinter,
                            # brit extras
                            serpentine,
                            westbourne,

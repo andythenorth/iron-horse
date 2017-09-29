@@ -29,4 +29,5 @@ consist.add_unit(type=SteamLocoTender,
 
 consist.add_model_variant(start_date=0,
                           end_date=global_constants.max_game_date,
-                          visual_effect_offset=-3)
+                          visual_effect_offset=-3,
+                          spritesheet_suffix=0)

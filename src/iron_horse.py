@@ -35,7 +35,7 @@ from vehicles import numeric_id_defender
 
 from vehicles import box_cars
 box_cars.main()
-
+"""
 from vehicles import caboose_cars
 caboose_cars.main()
 
@@ -86,13 +86,13 @@ reefer_cars.main()
 
 from vehicles import supplies_cars
 supplies_cars.main()
-
+"""
 from vehicles import tank_cars
 tank_cars.main()
-
+"""
 from vehicles import vehicle_transporter_cars
 vehicle_transporter_cars.main()
-
+"""
 def get_active_rosters():
     #  for a faster single-roster compiles when testing, optionally pass a roster id (lower case) as a makefile arg
     if makefile_args.get('roster', '*') == '*':

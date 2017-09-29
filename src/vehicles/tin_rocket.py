@@ -16,4 +16,5 @@ consist.add_unit(type=DieselRailcar,
                  spriterow_num=0)
 
 consist.add_model_variant(start_date=0,
-                          end_date=global_constants.max_game_date)
+                          end_date=global_constants.max_game_date,
+                          spritesheet_suffix=0)

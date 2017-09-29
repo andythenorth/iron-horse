@@ -1,6 +1,6 @@
 // -- smoke etc -- //
 <tal:model_variants repeat="variant consist.model_variants">
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_visual_effect_and_powered_by_variant_${variant.variant_num}, current_railtype) {
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_visual_effect_and_powered_by_variant_${variant.spritesheet_suffix}, current_railtype) {
         <tal:only_if_overrides_exist condition="consist.visual_effect_override_by_railtype is not None">
             <tal:railtype_specific_effects repeat="railtype consist.visual_effect_override_by_railtype.keys()">
                 ${railtype}: return visual_effect_and_powered(${consist.visual_effect_override_by_railtype[railtype]}, ${vehicle.get_visual_effect_offset(variant)}, DISABLE_WAGON_POWER);
@@ -14,7 +14,7 @@
     random_switch (FEAT_TRAINS, ${vehicle.location_of_random_bits_for_model_variant}, ${vehicle.id}_switch_visual_effect_and_powered_random_${year}) {
         dependent: ${vehicle.id}_switch_graphics_random_${year};
         <tal:random_graphics_variations repeat="variant consist.get_variants_available_for_specific_year(year)">
-            1: ${vehicle.id}_switch_visual_effect_and_powered_by_variant_${variant.variant_num};
+            1: ${vehicle.id}_switch_visual_effect_and_powered_by_variant_${variant.spritesheet_suffix};
         </tal:random_graphics_variations>
     }
 </tal:model_variant_random_switches>

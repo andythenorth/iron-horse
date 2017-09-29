@@ -58,16 +58,16 @@ class SwapCompanyColours(ProcessingUnit):
 class AppendToSpritesheet(ProcessingUnit):
     """ AppendToSpritesheet """
     """ Always appends at the end vertically.  Insertions and horizontal appending are not supported. """
-    def __init__(self, source_spritesheet, crop_box=None):
-        self.source_spritesheet = source_spritesheet
+    def __init__(self, spritesheet_to_paste, crop_box=None):
+        self.spritesheet_to_paste = spritesheet_to_paste
         # 4 tuple for box size (left, upper, right, lower)
         self.crop_box = crop_box
         if self.crop_box is None:
-            self.crop_box = (0, 0, source_spritesheet.sprites.size[0], source_spritesheet.sprites.size[1])
+            self.crop_box = (0, 0, spritesheet_to_paste.sprites.size[0], spritesheet_to_paste.sprites.size[1])
         super(AppendToSpritesheet, self).__init__()
 
     def render(self, spritesheet):
-        image_to_paste = self.source_spritesheet.sprites.copy()
+        image_to_paste = self.spritesheet_to_paste.sprites.copy()
         image_to_paste = image_to_paste.crop((self.crop_box[0], self.crop_box[1], self.crop_box[2], self.crop_box[3]))
         previous = spritesheet.sprites
         width = previous.size[0]
