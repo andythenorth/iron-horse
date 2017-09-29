@@ -506,11 +506,13 @@ class WagonConsist(Consist):
 
         self.speed_class = 'freight' # over-ride this for, e.g. 'express' consists
         self.default_capacity_type = kwargs.get('default_capacity_type', None)
+        self.weight_factor = 0.5 # over-ride in sub-class as needed
         # some of these are probably redundant, as they need to be handled in the subclass
         self.generic_cargo_rows = kwargs.get('generic_cargo_rows', [0]) # optional, the rows to use if no cargo label is matched
         self.autorefit = kwargs.get('autorefit', None)
         self.loading_speed_multiplier = kwargs.get('loading_speed_multiplier', 1)
         self.cargo_age_period = kwargs.get('cargo_age_period', global_constants.CARGO_AGE_PERIOD)
+
 
     @property
     def buy_cost(self):
@@ -919,8 +921,8 @@ class Wagon(Train):
             self.loading_speed_multiplier = self.consist.loading_speed_multiplier
         if hasattr(self.consist, 'cargo_age_period'):
             self.cargo_age_period = self.consist.cargo_age_period
-        # set weight with kwarg, or just automate it
-        self.weight = kwargs.get('weight', 0.5 * self.default_cargo_capacities[1])
+        # set weight based on capacity  * a multiplier from consist (default 0.5 or so)
+        self.weight = self.consist.weight_factor * self.default_cargo_capacities[1]
 
 
 class SteamLoco(Train):
@@ -1071,12 +1073,20 @@ class FreightCar(Wagon):
 
 class BoxCar(FreightCar):
     """
-    Box Car.
+    Box Car. This sub-class only exists to handle the mail capacity, in other respects it's just a standard wagon.
     """
-    # this sub-class only exists to handle the mail capacity, otherwise it's a standard wagon
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.capacities_mail = [int(2.0 * capacity) for capacity in self.capacities_freight]
+
+
+class CabooseCar(FreightCar):
+    """
+    Caboose Car. This sub-class only exists to set weight in absence of cargo capacity, in other respects it's just a standard wagon.
+    """
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.weight = 5 * self.vehicle_length
 
 
 class MetroPaxUnit(Train):

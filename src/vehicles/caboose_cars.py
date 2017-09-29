@@ -1,5 +1,5 @@
 import global_constants
-from train import CabooseConsist, FreightCar
+from train import CabooseConsist, CabooseCar
 
 
 def main():
@@ -10,9 +10,8 @@ def main():
                              gen=1,
                              subtype='A')
 
-    consist.add_unit(type=FreightCar,
+    consist.add_unit(type=CabooseCar,
                      capacity=0,
-                     weight=20,
                      vehicle_length=4)
 
     consist.add_model_variant(start_date=0,
@@ -25,9 +24,8 @@ def main():
                              gen=1,
                              subtype='B')
 
-    consist.add_unit(type=FreightCar,
+    consist.add_unit(type=CabooseCar,
                      capacity=0,
-                     weight=30,
                      vehicle_length=6)
 
     consist.add_model_variant(start_date=0,
@@ -41,9 +39,8 @@ def main():
                              subtype='A',
                              track_type='NG')
 
-    consist.add_unit(type=FreightCar,
+    consist.add_unit(type=CabooseCar,
                      capacity=0,
-                     weight=12,
                      vehicle_length=4)
 
     consist.add_model_variant(start_date=0,
@@ -58,7 +55,7 @@ def main():
                              base_numeric_id = 1300,
                              gen = 1)
 
-    consist.add_unit(type = FreightCar,
+    consist.add_unit(type = CabooseCar,
                             capacity = 0,
                             vehicle_length = 5)
 
@@ -72,7 +69,7 @@ def main():
                              base_numeric_id = 1780,
                              gen = 1)
 
-    consist.add_unit(type = FreightCar,
+    consist.add_unit(type = CabooseCar,
                            capacity = 0,
                            vehicle_length = 6)
 
@@ -86,7 +83,7 @@ def main():
                              gen = 1,
                              track_type = 'NG')
 
-    consist.add_unit(type = FreightCar,
+    consist.add_unit(type = CabooseCar,
                            capacity = 0,
                            vehicle_length = 6)
 
