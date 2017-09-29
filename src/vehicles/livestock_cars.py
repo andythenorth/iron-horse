@@ -14,7 +14,8 @@ def main():
                      vehicle_length=5)
 
     consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date)
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0)
 
     consist = LivestockConsist(roster='pony',
                                base_numeric_id=1020,
@@ -26,7 +27,8 @@ def main():
                      vehicle_length=8)
 
     consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date)
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0)
 
     consist = LivestockConsist(roster='pony',
                                base_numeric_id=1030,
@@ -39,7 +41,8 @@ def main():
                      vehicle_length=4)
 
     consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date)
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0)
 
     #--------------- llama ----------------------------------------------------------------------
     consist = LivestockConsist(roster='llama',
@@ -52,7 +55,8 @@ def main():
                      vehicle_length=6)
 
     consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date)
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0)
 
     consist = LivestockConsist(roster='llama',
                                base_numeric_id=1430,
@@ -64,7 +68,8 @@ def main():
                      vehicle_length=6)
 
     consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date)
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0)
 
     consist = LivestockConsist(roster='llama',
                                base_numeric_id=1050,
@@ -77,7 +82,8 @@ def main():
                      vehicle_length=6)
 
     consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date)
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0)
 
     consist = LivestockConsist(roster='llama',
                                base_numeric_id=1520,
@@ -90,7 +96,8 @@ def main():
                      vehicle_length=6)
 
     consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date)
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0)
 
     #--------------- antelope ----------------------------------------------------------------------
     consist = LivestockConsist(roster='antelope',
@@ -103,7 +110,8 @@ def main():
                      vehicle_length=8)
 
     consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date)
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0)
 
     consist = LivestockConsist(roster='antelope',
                                base_numeric_id=2150,
@@ -116,4 +124,5 @@ def main():
                      vehicle_length=5)
 
     consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date)
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0)

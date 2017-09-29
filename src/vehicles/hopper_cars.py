@@ -15,10 +15,12 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
+                              spritesheet_suffix=1,
                               graphics_processor=consist.graphics_processors[1])
 
     consist = HopperConsist(roster='pony',
@@ -32,10 +34,12 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
+                              spritesheet_suffix=1,
                               graphics_processor=consist.graphics_processors[1])
 
     consist = HopperConsist(roster='pony',
@@ -49,10 +53,12 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
+                              spritesheet_suffix=1,
                               graphics_processor=consist.graphics_processors[1])
 
     consist = HopperConsist(roster='pony',
@@ -66,10 +72,12 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
+                              spritesheet_suffix=1,
                               graphics_processor=consist.graphics_processors[1])
 
     #--------------- llama ----------------------------------------------------------------------
@@ -84,10 +92,12 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
+                              spritesheet_suffix=1,
                               graphics_processor=consist.graphics_processors[1])
 
     consist = HopperConsist(roster='llama',
@@ -101,10 +111,12 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
+                              spritesheet_suffix=1,
                               graphics_processor=consist.graphics_processors[1])
 
     consist = HopperConsist(roster='llama',
@@ -119,10 +131,12 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
+                              spritesheet_suffix=1,
                               graphics_processor=consist.graphics_processors[1])
 
     consist = HopperConsist(roster='llama',
@@ -137,10 +151,12 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
+                              spritesheet_suffix=1,
                               graphics_processor=consist.graphics_processors[1])
 
     #--------------- antelope ----------------------------------------------------------------------
@@ -155,10 +171,12 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
+                              spritesheet_suffix=1,
                               graphics_processor=consist.graphics_processors[1])
 
     consist = HopperConsist(roster='antelope',
@@ -172,10 +190,12 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
+                              spritesheet_suffix=1,
                               graphics_processor=consist.graphics_processors[1])
 
     # no gen 1 NG hopper in Antelope, straight to gen 2
@@ -191,8 +211,10 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
+                              spritesheet_suffix=1,
                               graphics_processor=consist.graphics_processors[0])
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
+                              spritesheet_suffix=1,
                               graphics_processor=consist.graphics_processors[1])

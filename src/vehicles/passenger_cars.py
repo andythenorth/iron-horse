@@ -14,7 +14,8 @@ def main():
                      vehicle_length=6)
 
     consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date)
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0)
 
     consist = PassengerConsist(roster='pony',
                                base_numeric_id=750,
@@ -26,7 +27,8 @@ def main():
                      vehicle_length=6)
 
     consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date)
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0)
 
     consist = PassengerConsist(roster='pony',
                                base_numeric_id=760,
@@ -38,7 +40,8 @@ def main():
                      vehicle_length=6)
 
     consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date)
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0)
 
 
     consist = PassengerConsist(roster='pony',
@@ -51,7 +54,8 @@ def main():
                      vehicle_length=8)
 
     consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date)
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0)
 
     consist = PassengerConsist(roster='pony',
                                base_numeric_id=770,
@@ -64,7 +68,8 @@ def main():
                      vehicle_length=6)
 
     consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date)
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0)
 
     #--------------- llama ----------------------------------------------------------------------
     consist = PassengerConsist(roster='llama',
@@ -77,7 +82,8 @@ def main():
                      vehicle_length=8)
 
     consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date)
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0)
 
     consist = PassengerConsist(roster='llama',
                                base_numeric_id=790,
@@ -89,7 +95,8 @@ def main():
                      vehicle_length=8)
 
     consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date)
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0)
 
     consist = PassengerConsist(roster='llama',
                                base_numeric_id=800,
@@ -101,7 +108,8 @@ def main():
                      vehicle_length=8)
 
     consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date)
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0)
 
     consist = PassengerConsist(roster='llama',
                                base_numeric_id=810,
@@ -114,7 +122,8 @@ def main():
                      vehicle_length=6)
 
     consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date)
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0)
 
     consist = PassengerConsist(roster='llama',
                                base_numeric_id=1350,
@@ -127,7 +136,8 @@ def main():
                      vehicle_length=6)
 
     consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date)
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0)
 
     consist = PassengerConsist(roster='llama',
                                base_numeric_id=1370,
@@ -140,7 +150,8 @@ def main():
                      vehicle_length=6)
 
     consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date)
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0)
 
     #--------------- antelope ----------------------------------------------------------------------
     consist = PassengerConsist(roster='antelope',
@@ -153,7 +164,8 @@ def main():
                      vehicle_length=8)
 
     consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date)
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0)
 
     consist = PassengerConsist(roster='antelope',
                                base_numeric_id=1560,
@@ -165,7 +177,8 @@ def main():
                      vehicle_length=8)
 
     consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date)
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0)
 
     consist = PassengerConsist(roster='antelope',
                                base_numeric_id=2130,
@@ -178,7 +191,8 @@ def main():
                      vehicle_length=5)
 
     consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date)
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0)
 
     consist = PassengerConsist(roster='antelope',
                                base_numeric_id=1940,
@@ -191,4 +205,5 @@ def main():
                      vehicle_length=8)
 
     consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date)
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0)

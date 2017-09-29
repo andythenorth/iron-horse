@@ -14,7 +14,8 @@ def main():
                      vehicle_length=4)
 
     consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date)
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0)
 
     consist = MailConsist(roster='pony',
                           base_numeric_id=2220,
@@ -26,7 +27,8 @@ def main():
                      vehicle_length=6)
 
     consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date)
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0)
 
     consist = MailConsist(roster='pony',
                           base_numeric_id=2290,
@@ -38,7 +40,8 @@ def main():
                      vehicle_length=4)
 
     consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date)
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0)
 
     consist = MailConsist(roster='pony',
                           base_numeric_id=920,
@@ -50,7 +53,8 @@ def main():
                      vehicle_length=6)
 
     consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date)
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0)
 
     consist = MailConsist(roster='pony',
                           base_numeric_id=2300,
@@ -62,7 +66,8 @@ def main():
                      vehicle_length=6)
 
     consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date)
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0)
 
     consist = MailConsist(roster='pony',
                           base_numeric_id=940,
@@ -74,7 +79,8 @@ def main():
                      vehicle_length=8)
 
     consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date)
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0)
 
     consist = MailConsist(roster='pony',
                           base_numeric_id=970,
@@ -86,7 +92,8 @@ def main():
                      vehicle_length=8)
 
     consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date)
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0)
 
     consist = MailConsist(roster='pony',
                           base_numeric_id=950,
@@ -99,7 +106,8 @@ def main():
                      vehicle_length=5)
 
     consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date)
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0)
 
     """
     #--------------- llama ----------------------------------------------------------------------
@@ -195,7 +203,8 @@ def main():
                      vehicle_length=8)
 
     consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date)
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0)
 
     consist = MailConsist(roster='antelope',
                           base_numeric_id=2120,
@@ -208,7 +217,8 @@ def main():
                      vehicle_length=5)
 
     consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date)
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0)
 
     consist = MailConsist(roster='antelope',
                           base_numeric_id=1950,
@@ -221,4 +231,5 @@ def main():
                      vehicle_length=8)
 
     consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date)
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0)

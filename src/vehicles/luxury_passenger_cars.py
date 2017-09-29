@@ -16,7 +16,8 @@ def main():
                      vehicle_length=8)
 
     consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date)
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0)
 
     consist = PassengerLuxuryConsist(roster='pony',
                                      base_numeric_id=2260,
@@ -30,7 +31,8 @@ def main():
                      vehicle_length=8)
 
     consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date)
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0)
 
     consist = PassengerLuxuryConsist(roster='pony',
                                      base_numeric_id=2270,
@@ -44,7 +46,8 @@ def main():
                      vehicle_length=8)
 
     consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date)
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0)
 
     #--------------- llama ----------------------------------------------------------------------
 
