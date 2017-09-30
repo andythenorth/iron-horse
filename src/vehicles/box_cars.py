@@ -4,6 +4,9 @@ from train import BoxConsist, BoxCar
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
+
+    # only type A for gen 1
+
     consist = BoxConsist(roster='pony',
                          base_numeric_id=1780,
                          gen=1,
@@ -23,14 +26,16 @@ def main():
                               spritesheet_suffix=1,
                               graphics_processor=consist.graphics_processors[1])
 
+    # no new type A for gen 2, gen 1 type A continues
+
     consist = BoxConsist(roster='pony',
                          base_numeric_id=550,
                          gen=2,
-                         subtype='A')
+                         subtype='B')
 
     consist.add_unit(type=BoxCar,
                      capacity=20,
-                     vehicle_length=4)
+                     vehicle_length=6)
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
@@ -68,7 +73,7 @@ def main():
 
     consist.add_unit(type=BoxCar,
                      capacity=55,
-                     vehicle_length=8)
+                     vehicle_length=6)
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
@@ -84,6 +89,63 @@ def main():
                          base_numeric_id=570,
                          gen=4,
                          subtype='A')
+
+    consist.add_unit(type=BoxCar,
+                     capacity=55,
+                     vehicle_length=4)
+
+    consist.add_model_variant(start_date=0,
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0,
+                              graphics_processor=consist.graphics_processors[0])
+
+    consist.add_model_variant(start_date=0,
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=1,
+                              graphics_processor=consist.graphics_processors[1])
+
+    consist = BoxConsist(roster='pony',
+                         base_numeric_id=2500,
+                         gen=4,
+                         subtype='B')
+
+    consist.add_unit(type=BoxCar,
+                     capacity=55,
+                     vehicle_length=6)
+
+    consist.add_model_variant(start_date=0,
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0,
+                              graphics_processor=consist.graphics_processors[0])
+
+    consist.add_model_variant(start_date=0,
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=1,
+                              graphics_processor=consist.graphics_processors[1])
+
+    consist = BoxConsist(roster='pony',
+                         base_numeric_id=2480,
+                         gen=5,
+                         subtype='A')
+
+    consist.add_unit(type=BoxCar,
+                     capacity=55,
+                     vehicle_length=6)
+
+    consist.add_model_variant(start_date=0,
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0,
+                              graphics_processor=consist.graphics_processors[0])
+
+    consist.add_model_variant(start_date=0,
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=1,
+                              graphics_processor=consist.graphics_processors[1])
+
+    consist = BoxConsist(roster='pony',
+                         base_numeric_id=2490,
+                         gen=5,
+                         subtype='B')
 
     consist.add_unit(type=BoxCar,
                      capacity=55,

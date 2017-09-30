@@ -4,6 +4,9 @@ from train import OpenConsist, FreightCar
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
+
+    # only type A for gen 1
+
     consist = OpenConsist(roster='pony',
                           base_numeric_id=820,
                           gen=1,
@@ -24,7 +27,7 @@ def main():
                               spritesheet_suffix=1,
                               graphics_processor=consist.graphics_processors[1])
 
-    # no type A for gen 2, gen 1 continues
+    # no new type A for gen 2, gen 1 type A continues
 
     consist = OpenConsist(roster='pony',
                           base_numeric_id=830,
