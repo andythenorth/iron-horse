@@ -206,6 +206,12 @@ class Consist(object):
             return roster_obj.intro_dates[self.gen - 1]
 
     @property
+    def model_life(self):
+        # hard-coded for now, based on 30 year generations
+        # !! needs to be over-rideable for engines that span generations
+        return 40
+
+    @property
     def speed(self):
         # automatic speed, but can over-ride by passing in kwargs for consist
         if self._speed:
@@ -505,6 +511,7 @@ class WagonConsist(Consist):
         roster_obj.register_wagon_consist(self)
 
         self.speed_class = 'freight' # over-ride this for, e.g. 'express' consists
+        self.subtype = kwargs['subtype']
         self.default_capacity_type = kwargs.get('default_capacity_type', None)
         self.weight_factor = 0.5 # over-ride in sub-class as needed
         self.loading_speed_multiplier = kwargs.get('loading_speed_multiplier', 1)
@@ -543,6 +550,18 @@ class WagonConsist(Consist):
         else:
             return cost / 8
 
+    @property
+    def model_life(self):
+        # automatically span wagon model life across gap to next generation
+        roster_obj = self.get_roster(self.roster_id)
+        roster_gens_for_class = sorted(set([wagon.gen for wagon in roster_obj.wagon_consists[self.base_id] if wagon.subtype == self.subtype]))
+        this_index = roster_gens_for_class.index(self.gen)
+        if this_index == len(roster_gens_for_class) - 1:
+            return 'VEHICLE_NEVER_EXPIRES'
+        else:
+            next_gen = roster_gens_for_class[roster_gens_for_class.index(self.gen) + 1]
+            gen_span = next_gen - self.gen
+            return 10 + (30 * gen_span)
 
 class BoxConsist(WagonConsist):
     """
