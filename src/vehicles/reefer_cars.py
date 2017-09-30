@@ -4,11 +4,69 @@ from train import ReeferConsist, FreightCar
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
+    # no gen 1 reefer - straight to gen 2
+
     consist = ReeferConsist(roster='pony',
                             base_numeric_id=730,
-                            gen=1,
-                            subtype='A',
-                            speedy=True)
+                            gen=2,
+                            subtype='A')
+
+    consist.add_unit(type=FreightCar,
+                     capacity=25,
+                     vehicle_length=4)
+
+    consist.add_model_variant(start_date=0,
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0,
+                              graphics_processor=consist.graphics_processors[0])
+
+    consist.add_model_variant(start_date=0,
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=1,
+                              graphics_processor=consist.graphics_processors[1])
+
+    consist = ReeferConsist(roster='pony',
+                            base_numeric_id=720,
+                            gen=3,
+                            subtype='A')
+
+    consist.add_unit(type=FreightCar,
+                     capacity=40,
+                     vehicle_length=4)
+
+    consist.add_model_variant(start_date=0,
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0,
+                              graphics_processor=consist.graphics_processors[0])
+
+    consist.add_model_variant(start_date=0,
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=1,
+                              graphics_processor=consist.graphics_processors[1])
+
+    consist = ReeferConsist(roster='pony',
+                            base_numeric_id=2560,
+                            gen=4,
+                            subtype='A')
+
+    consist.add_unit(type=FreightCar,
+                     capacity=25,
+                     vehicle_length=4)
+
+    consist.add_model_variant(start_date=0,
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0,
+                              graphics_processor=consist.graphics_processors[0])
+
+    consist.add_model_variant(start_date=0,
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=1,
+                              graphics_processor=consist.graphics_processors[1])
+
+    consist = ReeferConsist(roster='pony',
+                            base_numeric_id=2590,
+                            gen=4,
+                            subtype='B')
 
     consist.add_unit(type=FreightCar,
                      capacity=25,
@@ -24,15 +82,32 @@ def main():
                               spritesheet_suffix=1,
                               graphics_processor=consist.graphics_processors[1])
 
-    # no gen 2 reefer - straight to gen 3
     consist = ReeferConsist(roster='pony',
-                            base_numeric_id=720,
-                            gen=3,
-                            subtype='A',
-                            speedy=True)
+                            base_numeric_id=2570,
+                            gen=5,
+                            subtype='A')
 
     consist.add_unit(type=FreightCar,
-                     capacity=40,
+                     capacity=25,
+                     vehicle_length=6)
+
+    consist.add_model_variant(start_date=0,
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0,
+                              graphics_processor=consist.graphics_processors[0])
+
+    consist.add_model_variant(start_date=0,
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=1,
+                              graphics_processor=consist.graphics_processors[1])
+
+    consist = ReeferConsist(roster='pony',
+                            base_numeric_id=2580,
+                            gen=5,
+                            subtype='B')
+
+    consist.add_unit(type=FreightCar,
+                     capacity=25,
                      vehicle_length=8)
 
     consist.add_model_variant(start_date=0,
@@ -44,6 +119,7 @@ def main():
                               end_date=global_constants.max_game_date,
                               spritesheet_suffix=1,
                               graphics_processor=consist.graphics_processors[1])
+
 
     #--------------- llama ----------------------------------------------------------------------
     consist = ReeferConsist(roster='llama',

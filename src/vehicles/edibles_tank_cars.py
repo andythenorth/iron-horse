@@ -4,9 +4,12 @@ from train import EdiblesTankConsist, FreightCar
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
+
+    # no gen 1 or 2 for edibles tank cars - straight to gen 3
+
     consist = EdiblesTankConsist(roster='pony',
                                  base_numeric_id=1190,
-                                 gen=1,
+                                 gen=3,
                                  subtype='A')
 
     consist.add_unit(type=FreightCar,
@@ -23,11 +26,9 @@ def main():
                               spritesheet_suffix=1,
                               graphics_processor=consist.graphics_processors[1])
 
-    # no gen 2 for edibles tank cars - straight to gen 3
-
     consist = EdiblesTankConsist(roster='pony',
                                  base_numeric_id=1200,
-                                 gen=3,
+                                 gen=5,
                                  subtype='A')
 
     consist.add_unit(type=FreightCar,
