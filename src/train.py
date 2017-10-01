@@ -665,9 +665,9 @@ class FlatConsist(WagonConsist):
         self.visible_cargo.piece = True
 
 
-class FruitConsist(WagonConsist):
+class FruitVegConsist(WagonConsist):
     """
-    Fruit cargo, with improved decay rate
+    Fruit and vegetables, with improved decay rate
     """
     def __init__(self, **kwargs):
         self.base_id = 'fruit_car'

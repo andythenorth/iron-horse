@@ -1,10 +1,10 @@
 import global_constants
-from train import FruitConsist, FreightCar
+from train import FruitVegConsist, FreightCar
 
 
 def main():
     #--------------- antelope ----------------------------------------------------------------------
-    consist = FruitConsist(roster='antelope',
+    consist = FruitVegConsist(roster='antelope',
                            base_numeric_id=2140,
                            gen=1,
                            subtype='A',
@@ -24,7 +24,7 @@ def main():
                               spritesheet_suffix=1,
                               graphics_processor=consist.graphics_processors[1])
 
-    consist = FruitConsist(roster='antelope',
+    consist = FruitVegConsist(roster='antelope',
                            base_numeric_id=2170,
                            gen=2,
                            subtype='A',
@@ -44,7 +44,7 @@ def main():
                               spritesheet_suffix=1,
                               graphics_processor=consist.graphics_processors[1])
 
-    consist = FruitConsist(roster='antelope',
+    consist = FruitVegConsist(roster='antelope',
                            base_numeric_id=2180,
                            gen=3,
                            subtype='A',
