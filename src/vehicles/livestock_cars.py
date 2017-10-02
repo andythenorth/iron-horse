@@ -23,28 +23,7 @@ def main():
                               spritesheet_suffix=1,
                               graphics_processor=consist.graphics_processors[1])
 
-
-
-    consist = LivestockConsist(roster='pony',
-                               base_numeric_id=2670,
-                               gen=2,
-                               subtype='A')
-
-    consist.add_unit(type=FreightCar,
-                     capacity=20,
-                     vehicle_length=4)
-
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
-
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=1,
-                              graphics_processor=consist.graphics_processors[1])
-
-
+    # no gen 2 needed
 
     consist = LivestockConsist(roster='pony',
                                base_numeric_id=2680,
@@ -65,6 +44,24 @@ def main():
                               spritesheet_suffix=1,
                               graphics_processor=consist.graphics_processors[1])
 
+    consist = LivestockConsist(roster='pony',
+                               base_numeric_id=2690,
+                               gen=3,
+                               subtype='B')
+
+    consist.add_unit(type=FreightCar,
+                     capacity=20,
+                     vehicle_length=6)
+
+    consist.add_model_variant(start_date=0,
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0,
+                              graphics_processor=consist.graphics_processors[0])
+
+    consist.add_model_variant(start_date=0,
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=1,
+                              graphics_processor=consist.graphics_processors[1])
 
 
     consist = LivestockConsist(roster='pony',
@@ -75,6 +72,65 @@ def main():
     consist.add_unit(type=FreightCar,
                      capacity=20,
                      vehicle_length=4)
+
+    consist.add_model_variant(start_date=0,
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0,
+                              graphics_processor=consist.graphics_processors[0])
+
+    consist.add_model_variant(start_date=0,
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=1,
+                              graphics_processor=consist.graphics_processors[1])
+
+
+    consist = LivestockConsist(roster='pony',
+                               base_numeric_id=2700,
+                               gen=4,
+                               subtype='B')
+
+    consist.add_unit(type=FreightCar,
+                     capacity=20,
+                     vehicle_length=6)
+
+    consist.add_model_variant(start_date=0,
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0,
+                              graphics_processor=consist.graphics_processors[0])
+
+    consist.add_model_variant(start_date=0,
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=1,
+                              graphics_processor=consist.graphics_processors[1])
+
+    consist = LivestockConsist(roster='pony',
+                               base_numeric_id=2720,
+                               gen=5,
+                               subtype='A')
+
+    consist.add_unit(type=FreightCar,
+                     capacity=20,
+                     vehicle_length=6)
+
+    consist.add_model_variant(start_date=0,
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0,
+                              graphics_processor=consist.graphics_processors[0])
+
+    consist.add_model_variant(start_date=0,
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=1,
+                              graphics_processor=consist.graphics_processors[1])
+
+
+    consist = LivestockConsist(roster='pony',
+                               base_numeric_id=2710,
+                               gen=5,
+                               subtype='B')
+
+    consist.add_unit(type=FreightCar,
+                     capacity=20,
+                     vehicle_length=8)
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
