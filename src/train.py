@@ -670,7 +670,7 @@ class FruitVegConsist(WagonConsist):
     Fruit and vegetables, with improved decay rate
     """
     def __init__(self, **kwargs):
-        self.base_id = 'fruit_car'
+        self.base_id = 'fruit_veg_car'
         super().__init__(**kwargs)
         self.title = '[Fruit Car]'
         self.class_refit_groups = []

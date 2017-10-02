@@ -11,24 +11,82 @@ def main():
 
     consist.add_unit(type=FreightCar,
                      capacity=20,
-                     vehicle_length=5)
+                     vehicle_length=4)
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              spritesheet_suffix=0)
+                              spritesheet_suffix=0,
+                              graphics_processor=consist.graphics_processors[0])
+
+    consist.add_model_variant(start_date=0,
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=1,
+                              graphics_processor=consist.graphics_processors[1])
+
+
 
     consist = LivestockConsist(roster='pony',
-                               base_numeric_id=1020,
+                               base_numeric_id=2670,
                                gen=2,
                                subtype='A')
 
     consist.add_unit(type=FreightCar,
-                     capacity=35,
-                     vehicle_length=8)
+                     capacity=20,
+                     vehicle_length=4)
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              spritesheet_suffix=0)
+                              spritesheet_suffix=0,
+                              graphics_processor=consist.graphics_processors[0])
+
+    consist.add_model_variant(start_date=0,
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=1,
+                              graphics_processor=consist.graphics_processors[1])
+
+
+
+    consist = LivestockConsist(roster='pony',
+                               base_numeric_id=2680,
+                               gen=3,
+                               subtype='A')
+
+    consist.add_unit(type=FreightCar,
+                     capacity=20,
+                     vehicle_length=4)
+
+    consist.add_model_variant(start_date=0,
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0,
+                              graphics_processor=consist.graphics_processors[0])
+
+    consist.add_model_variant(start_date=0,
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=1,
+                              graphics_processor=consist.graphics_processors[1])
+
+
+
+    consist = LivestockConsist(roster='pony',
+                               base_numeric_id=1020,
+                               gen=4,
+                               subtype='A')
+
+    consist.add_unit(type=FreightCar,
+                     capacity=20,
+                     vehicle_length=4)
+
+    consist.add_model_variant(start_date=0,
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0,
+                              graphics_processor=consist.graphics_processors[0])
+
+    consist.add_model_variant(start_date=0,
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=1,
+                              graphics_processor=consist.graphics_processors[1])
+
+
 
     consist = LivestockConsist(roster='pony',
                                base_numeric_id=1030,
@@ -42,9 +100,16 @@ def main():
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
-                              spritesheet_suffix=0)
+                              spritesheet_suffix=0,
+                              graphics_processor=consist.graphics_processors[0])
+
+    consist.add_model_variant(start_date=0,
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=1,
+                              graphics_processor=consist.graphics_processors[1])
 
     #--------------- llama ----------------------------------------------------------------------
+
     consist = LivestockConsist(roster='llama',
                                base_numeric_id=1040,
                                gen=1,
