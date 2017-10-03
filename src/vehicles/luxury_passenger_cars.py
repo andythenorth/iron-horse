@@ -25,7 +25,7 @@ def main():
                                      intro_date=1900)
 
     consist.add_unit(type=PassengerCar,
-                     capacity=55,
+                     capacity=40,
                      vehicle_length=8)
 
     consist.add_model_variant(start_date=0,
@@ -36,10 +36,10 @@ def main():
                                      base_numeric_id=2270,
                                      gen=3,
                                      subtype='A',
-                                     intro_date=1960)
+                                     intro_date=1930)
 
     consist.add_unit(type=PassengerCar,
-                     capacity=75,
+                     capacity=40,
                      vehicle_length=8)
 
     consist.add_model_variant(start_date=0,

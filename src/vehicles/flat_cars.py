@@ -70,7 +70,7 @@ def main():
                           subtype='B')
 
     consist.add_unit(type=FreightCar,
-                     capacity=50,
+                     capacity=40,
                      cargo_length=3,
                      vehicle_length=8)
 
