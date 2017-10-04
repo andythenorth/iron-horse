@@ -734,17 +734,17 @@ class LivestockConsist(WagonConsist):
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
 
 
-class LogConsist(WagonConsist):
+class StakeConsist(WagonConsist):
     """
     Specialist log (wood) transporter
     """
     def __init__(self, **kwargs):
-        self.base_id = 'log_car'
+        self.base_id = 'stake_car'
         super().__init__(**kwargs)
-        self.title = '[Log Car]'
-        self.class_refit_groups = []
-        self.label_refits_allowed = ['WOOD']
-        self.label_refits_disallowed = []
+        self.title = '[Stake Car]'
+        self.class_refit_groups = ['flatcar_freight']
+        self.label_refits_allowed = ['GOOD']
+        self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_flatcar_freight']
         self.default_cargo = 'WOOD'
         self.default_capacity_type = 'capacity_freight'
         self.loading_speed_multiplier = 2

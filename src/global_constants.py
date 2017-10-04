@@ -16,7 +16,7 @@ buy_menu_sort_order_wagons = ['metro_car',
                               'reefer_car',
                               'fruit_veg_car',
                               'intermodal_flat_car',
-                              'log_car',
+                              'stake_car',
                               'metal_car',
                               'supplies_car',
                               'vehicle_transporter_car',
@@ -61,7 +61,7 @@ base_refits_by_class = {'empty': [],
 disallowed_refits_by_label = {'non_hopper_freight': ['WOOD', 'SGCN', 'FICR', 'BDMT', 'WDPR', 'GRAI', 'WHEA', 'MAIZ', 'FRUT', 'BEAN'],
                               'edible_liquids': ['MILK', 'WATR', 'BEER', 'FOOD', 'EOIL'],
                               'non_edible_liquids': ['RFPR', 'OIL_', 'FMSP', 'PETR', 'RUBR', 'SULP'],
-                              'non_flatcar_freight': ['FOOD', 'FISH', 'LVST', 'FRUT', 'BEER', 'MILK', 'JAVA', 'SUGR', 'NUTS', 'EOIL', 'BOOM'],
+                              'non_flatcar_freight': ['FOOD', 'FISH', 'LVST', 'FRUT', 'BEER', 'MILK', 'JAVA', 'SUGR', 'NUTS', 'EOIL', 'BOOM', 'FERT'],
                               'non_freight_special_cases': ['TOUR']}
 
 # capacity multipliers for capacity parameter

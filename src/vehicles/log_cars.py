@@ -1,10 +1,10 @@
 import global_constants
-from train import LogConsist, FreightCar
+from train import StakeConsist, FreightCar
 
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
-    consist = LogConsist(roster='pony',
+    consist = StakeConsist(roster='pony',
                          base_numeric_id=2730,
                          gen=3,
                          subtype='A')
@@ -17,7 +17,7 @@ def main():
                               end_date=global_constants.max_game_date,
                               spritesheet_suffix=0)
 
-    consist = LogConsist(roster='pony',
+    consist = StakeConsist(roster='pony',
                          base_numeric_id=1710,
                          gen=4,
                          subtype='A')
@@ -30,7 +30,7 @@ def main():
                               end_date=global_constants.max_game_date,
                               spritesheet_suffix=0)
 
-    consist = LogConsist(roster='pony',
+    consist = StakeConsist(roster='pony',
                          base_numeric_id=930,
                          gen=5,
                          subtype='A')
