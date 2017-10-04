@@ -10,7 +10,7 @@ def main():
                                    subtype='A')
 
     consist.add_unit(type=FreightCar,
-                     capacity=25,
+                     capacity=20,
                      vehicle_length=5)
 
     consist.add_model_variant(start_date=0,
@@ -25,11 +25,11 @@ def main():
 
     consist = CoveredHopperConsist(roster='pony',
                                    base_numeric_id=1230,
-                                   gen=2,
+                                   gen=4,
                                    subtype='A')
 
     consist.add_unit(type=FreightCar,
-                     capacity=40,
+                     capacity=30,
                      vehicle_length=6)
 
     consist.add_model_variant(start_date=0,
@@ -44,11 +44,11 @@ def main():
 
     consist = CoveredHopperConsist(roster='pony',
                                    base_numeric_id=1240,
-                                   gen=3,
+                                   gen=5,
                                    subtype='A')
 
     consist.add_unit(type=FreightCar,
-                     capacity=60,
+                     capacity=40,
                      vehicle_length=8)
 
     consist.add_model_variant(start_date=0,

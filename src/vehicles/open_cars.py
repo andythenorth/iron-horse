@@ -13,7 +13,7 @@ def main():
                           subtype='A')
 
     consist.add_unit(type=FreightCar,
-                     capacity=20,
+                     capacity=15,
                      cargo_length=3,
                      vehicle_length=4)
 
@@ -35,7 +35,7 @@ def main():
                           subtype='B')
 
     consist.add_unit(type=FreightCar,
-                     capacity=35,
+                     capacity=30,
                      cargo_length=3,
                      vehicle_length=6)
 
@@ -55,7 +55,7 @@ def main():
                           subtype='A')
 
     consist.add_unit(type=FreightCar,
-                     capacity=55,
+                     capacity=20,
                      cargo_length=3,
                      vehicle_length=4)
 
@@ -75,7 +75,7 @@ def main():
                           subtype='B')
 
     consist.add_unit(type=FreightCar,
-                     capacity=55,
+                     capacity=30,
                      cargo_length=3,
                      vehicle_length=6)
 
@@ -95,7 +95,7 @@ def main():
                           subtype='A')
 
     consist.add_unit(type=FreightCar,
-                     capacity=55,
+                     capacity=20,
                      cargo_length=3,
                      vehicle_length=4)
 
@@ -115,7 +115,7 @@ def main():
                           subtype='B')
 
     consist.add_unit(type=FreightCar,
-                     capacity=55,
+                     capacity=30,
                      cargo_length=3,
                      vehicle_length=6)
 
@@ -135,7 +135,7 @@ def main():
                           subtype='A')
 
     consist.add_unit(type=FreightCar,
-                     capacity=55,
+                     capacity=30,
                      cargo_length=3,
                      vehicle_length=6)
 
@@ -155,7 +155,7 @@ def main():
                           subtype='B')
 
     consist.add_unit(type=FreightCar,
-                     capacity=55,
+                     capacity=40,
                      cargo_length=3,
                      vehicle_length=8)
 
