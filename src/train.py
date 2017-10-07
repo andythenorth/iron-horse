@@ -732,7 +732,6 @@ class IntermodalConsist(WagonConsist):
         self.base_id = 'intermodal_car'
         super().__init__(**kwargs)
         self.title = '[Intermodal Car]'
-        self.speed_class = 'express'
         self.class_refit_groups = ['express_freight', 'packaged_freight']
         self.label_refits_allowed = ['FRUT','WATR']
         self.label_refits_disallowed = ['FISH','LVST','OIL_','TOUR','WOOD']
