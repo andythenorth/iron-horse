@@ -36,6 +36,9 @@ speeds = dict(gen_1_wagon_speeds = [55, None], # no point setting an upper speed
 roster = Roster(id = 'antelope',
                 numeric_id = 3,
                 speeds = speeds,
+                # capacity factor per generation, will be multiplied by vehicle length
+                freight_car_capacity_per_unit_length =  {'RAIL': [5, 5, 5, 5, 5, 5],
+                                                         'NG': [3, 3, 3, 3, 3, 3]},
                 engines = [kessler,
                            pangolin,
                            albertine,

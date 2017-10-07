@@ -1083,6 +1083,8 @@ class FreightCar(Wagon):
     def __init__(self, **kwargs):
         kwargs['capacity_freight'] = kwargs['vehicle_length'] * 5
         super().__init__(**kwargs)
+        roster_obj = self.consist.get_roster(self.consist.roster_id)
+        print(self.consist.id, roster_obj.freight_car_capacity_per_unit_length)
         if kwargs.get('capacity', None) is not None:
              print(self.consist.id, kwargs.get('capacity', None))
 
