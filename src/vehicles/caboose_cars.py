@@ -11,7 +11,6 @@ def main():
                              subtype='A')
 
     consist.add_unit(type=CabooseCar,
-                     capacity=0,
                      vehicle_length=4)
 
     consist.add_model_variant(start_date=0,
@@ -25,7 +24,6 @@ def main():
                              subtype='B')
 
     consist.add_unit(type=CabooseCar,
-                     capacity=0,
                      vehicle_length=6)
 
     consist.add_model_variant(start_date=0,
@@ -40,7 +38,6 @@ def main():
                              track_type='NG')
 
     consist.add_unit(type=CabooseCar,
-                     capacity=0,
                      vehicle_length=4)
 
     consist.add_model_variant(start_date=0,
@@ -56,7 +53,6 @@ def main():
                              gen = 1)
 
     consist.add_unit(type = CabooseCar,
-                            capacity = 0,
                             vehicle_length = 5)
 
     consist.add_model_variant(start_date = 0,
@@ -70,7 +66,6 @@ def main():
                              gen = 1)
 
     consist.add_unit(type = CabooseCar,
-                           capacity = 0,
                            vehicle_length = 6)
 
     consist.add_model_variant(start_date = 0,
@@ -84,7 +79,6 @@ def main():
                              track_type = 'NG')
 
     consist.add_unit(type = CabooseCar,
-                           capacity = 0,
                            vehicle_length = 6)
 
     consist.add_model_variant(start_date = 0,

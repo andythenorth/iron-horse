@@ -12,7 +12,6 @@ def main():
                             subtype='A')
 
     consist.add_unit(type=FreightCar,
-                     capacity=25,
                      vehicle_length=4)
 
     consist.add_model_variant(start_date=0,
@@ -31,7 +30,6 @@ def main():
                             subtype='A')
 
     consist.add_unit(type=FreightCar,
-                     capacity=40,
                      vehicle_length=4)
 
     consist.add_model_variant(start_date=0,
@@ -50,7 +48,6 @@ def main():
                             subtype='A')
 
     consist.add_unit(type=FreightCar,
-                     capacity=25,
                      vehicle_length=4)
 
     consist.add_model_variant(start_date=0,
@@ -69,7 +66,6 @@ def main():
                             subtype='B')
 
     consist.add_unit(type=FreightCar,
-                     capacity=25,
                      vehicle_length=6)
 
     consist.add_model_variant(start_date=0,
@@ -88,7 +84,6 @@ def main():
                             subtype='A')
 
     consist.add_unit(type=FreightCar,
-                     capacity=25,
                      vehicle_length=6)
 
     consist.add_model_variant(start_date=0,
@@ -107,7 +102,6 @@ def main():
                             subtype='B')
 
     consist.add_unit(type=FreightCar,
-                     capacity=25,
                      vehicle_length=8)
 
     consist.add_model_variant(start_date=0,
@@ -128,7 +122,6 @@ def main():
                             speedy=True)
 
     consist.add_unit(type=FreightCar,
-                     capacity=30,
                      vehicle_length=6)
 
     consist.add_model_variant(start_date=0,
@@ -149,7 +142,6 @@ def main():
                             speedy=True)
 
     consist.add_unit(type=FreightCar,
-                     capacity=50,
                      vehicle_length=6)
 
     consist.add_model_variant(start_date=0,
@@ -170,7 +162,6 @@ def main():
                             track_type='NG')
 
     consist.add_unit(type=FreightCar,
-                     capacity=25,
                      vehicle_length=6)
 
     consist.add_model_variant(start_date=0,
@@ -192,7 +183,6 @@ def main():
                             track_type='NG')
 
     consist.add_unit(type=FreightCar,
-                     capacity=40,
                      vehicle_length=6)
 
     consist.add_model_variant(start_date=0,
@@ -213,7 +203,6 @@ def main():
                             speedy=True)
 
     consist.add_unit(type=FreightCar,
-                     capacity=45,
                      vehicle_length=8)
 
     consist.add_model_variant(start_date=0,
@@ -234,7 +223,6 @@ def main():
                             track_type='NG')
 
     consist.add_unit(type=FreightCar,
-                     capacity=25,
                      vehicle_length=6)
 
     consist.add_model_variant(start_date=0,

@@ -621,7 +621,7 @@ class DumpConsist(WagonConsist):
         self.class_refit_groups = ['hopper_freight']
         self.label_refits_allowed = [] # no specific labels needed
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_hopper_freight']
-        self.default_cargo = 'COAL'
+        self.default_cargo = 'IORE'
         self.default_capacity_type = 'capacity_freight'
         self.loading_speed_multiplier = 2
         # Cargo Graphics
@@ -1081,8 +1081,10 @@ class FreightCar(Wagon):
     Freight wagon.
     """
     def __init__(self, **kwargs):
-        kwargs['capacity_freight'] = kwargs.get('capacity', None)
+        kwargs['capacity_freight'] = kwargs['vehicle_length'] * 5
         super().__init__(**kwargs)
+        if kwargs.get('capacity', None) is not None:
+             print(self.consist.id, kwargs.get('capacity', None))
 
 
 class BoxCar(FreightCar):

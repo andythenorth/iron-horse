@@ -10,7 +10,6 @@ def main():
                          subtype='A')
 
     consist.add_unit(type=FreightCar,
-                     capacity=30,
                      vehicle_length=6)
 
     consist.add_model_variant(start_date=0,
@@ -23,7 +22,6 @@ def main():
                          subtype='A')
 
     consist.add_unit(type=FreightCar,
-                     capacity=30,
                      vehicle_length=6)
 
     consist.add_model_variant(start_date=0,
@@ -36,7 +34,6 @@ def main():
                          subtype='A')
 
     consist.add_unit(type=FreightCar,
-                     capacity=30,
                      vehicle_length=8)
 
     consist.add_model_variant(start_date=0,
