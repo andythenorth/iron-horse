@@ -734,8 +734,6 @@ class IntermodalConsist(WagonConsist):
         self.title = '[Intermodal Car]'
         self.speed_class = 'express'
         self.class_refit_groups = ['express_freight', 'packaged_freight']
-        #label_refits_allowed = list(cargo_graphics_mappings.keys())
-        # maintain other sets (e.g. Squid etc) when changing container refits
         self.label_refits_allowed = ['FRUT','WATR']
         self.label_refits_disallowed = ['FISH','LVST','OIL_','TOUR','WOOD']
         self.default_cargo = 'GOOD'
@@ -889,7 +887,6 @@ class SuppliesConsist(WagonConsist):
         self.label_refits_allowed = ['ENSP', 'FMSP', 'VEHI', 'BDMT']
         self.label_refits_disallowed = []
         self.default_cargo = 'ENSP'
-        self.date_variant_var = 'current_year'
         # Cargo graphics
         self.visible_cargo = VisibleCargoCustom({'ENSP': [0], 'FMSP': [0], 'VEHI': [0], 'BDMT': [0]},
                                                 'vehicle_with_visible_cargo.pynml',
