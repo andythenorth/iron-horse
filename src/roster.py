@@ -31,8 +31,10 @@ class Roster(object):
     def consists_in_buy_menu_order(self):
         result = []
         result.extend(self.engine_consists)
-        for base_id in global_constants.buy_menu_sort_order_wagons:
-            result.extend(sorted(self.wagon_consists[base_id], key=lambda wagon_consist: wagon_consist.gen))
+        for track_type in ['RAIL', 'NG']:
+            for base_id in global_constants.buy_menu_sort_order_wagons:
+                wagon_consists = [wagon_consist for wagon_consist in self.wagon_consists[base_id] if wagon_consist.track_type == track_type]
+                result.extend(sorted(wagon_consists, key=lambda wagon_consist: wagon_consist.gen))
         for consist in result:
             # if consist won't pickle, then multiprocessing blows up, catching it here is faster and easier
             try:

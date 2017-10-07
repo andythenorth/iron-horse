@@ -20,24 +20,7 @@ buy_menu_sort_order_wagons = ['metro_car',
                               'metal_car',
                               'supplies_car',
                               'vehicle_transporter_car',
-                              'caboose_car',
-                              'passenger_car_ng',
-                              'mail_car_ng',
-                              'open_car_ng',
-                              'box_car_ng',
-                              'flat_car_ng',
-                              'hopper_car_ng',
-                              'tank_car_ng',
-                              'covered_hopper_car_ng',
-                              'livestock_car_ng',
-                              'edibles_tank_car_ng',
-                              'reefer_car_ng',
-                              'fruit_car_ng',
-                              'intermodal_car_ng',
-                              'metal_car_ng',
-                              'supplies_car_ng',
-                              'vehicle_transporter_car_ng',
-                              'caboose_car_ng']
+                              'caboose_car']
 
 
 # shared lists of allowed classes, shared across multiple vehicle types
