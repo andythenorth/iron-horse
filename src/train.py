@@ -596,6 +596,7 @@ class WagonConsist(Consist):
             gen_span = next_gen - self.gen
             return 10 + (30 * gen_span)
 
+
 class BoxConsist(WagonConsist):
     """
     Box car, van - express, piece goods cargos, other selected cargos.
@@ -605,7 +606,7 @@ class BoxConsist(WagonConsist):
         super().__init__(**kwargs)
         self.title = '[Box Car]'
         self.class_refit_groups = ['packaged_freight']
-        self.label_refits_allowed = ['MAIL', 'GRAI', 'WHEA', 'MAIZ', 'FRUT', 'BEAN', 'NITR']
+        self.label_refits_allowed = global_constants.allowed_refits_by_label['box_freight']
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_freight_special_cases']
         self.default_cargo = 'GOOD'
 
@@ -726,15 +727,15 @@ class HopperConsist(WagonConsist):
 
 class IntermodalConsist(WagonConsist):
     """
-    Specialist intermodal (containers), limited range of cargos.
+    Specialist intermodal (containers), limited range of cargos. Match cargos to BoxConsist
     """
     def __init__(self, **kwargs):
         self.base_id = 'intermodal_car'
         super().__init__(**kwargs)
         self.title = '[Intermodal Car]'
         self.class_refit_groups = ['express_freight', 'packaged_freight']
-        self.label_refits_allowed = ['FRUT','WATR']
-        self.label_refits_disallowed = ['FISH','LVST','OIL_','TOUR','WOOD']
+        self.label_refits_allowed = global_constants.allowed_refits_by_label['box_freight']
+        self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_freight_special_cases']
         self.default_cargo = 'GOOD'
         self.loading_speed_multiplier = 2
 

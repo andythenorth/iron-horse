@@ -47,6 +47,9 @@ disallowed_refits_by_label = {'non_hopper_freight': ['WOOD', 'SGCN', 'FICR', 'BD
                               'non_flatcar_freight': ['FOOD', 'FISH', 'LVST', 'FRUT', 'BEER', 'MILK', 'JAVA', 'SUGR', 'NUTS', 'EOIL', 'BOOM', 'FERT'],
                               'non_freight_special_cases': ['TOUR']}
 
+# occasionally label refits need to be shared across vehicle classes
+allowed_refits_by_label = {'box_freight': ['MAIL', 'GRAI', 'WHEA', 'MAIZ', 'FRUT', 'BEAN', 'NITR']}
+
 # capacity multipliers for capacity parameter
 capacity_multipliers = [0.67, 1, 1.33]
 
