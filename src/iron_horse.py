@@ -63,9 +63,6 @@ intermodal_flat_cars.main()
 from vehicles import livestock_cars
 livestock_cars.main()
 
-from vehicles import log_cars
-log_cars.main()
-
 from vehicles import luxury_passenger_cars
 luxury_passenger_cars.main()
 
@@ -83,6 +80,9 @@ passenger_cars.main()
 
 from vehicles import reefer_cars
 reefer_cars.main()
+
+from vehicles import stake_cars
+stake_cars.main()
 
 from vehicles import supplies_cars
 supplies_cars.main()
