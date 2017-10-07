@@ -704,9 +704,9 @@ class IntermodalConsist(WagonConsist):
     Specialist intermodal (containers), limited range of cargos.
     """
     def __init__(self, **kwargs):
-        self.base_id = 'intermodal_flat_car'
+        self.base_id = 'intermodal_car'
         super().__init__(**kwargs)
-        self.title = '[Intermodal Flat Car]'
+        self.title = '[Intermodal Car]'
         self.speed_class = 'express'
         self.class_refit_groups = ['express_freight', 'packaged_freight']
         #label_refits_allowed = list(cargo_graphics_mappings.keys())

@@ -57,8 +57,8 @@ fruit_veg_cars.main()
 from vehicles import hopper_cars
 hopper_cars.main()
 
-from vehicles import intermodal_flat_cars
-intermodal_flat_cars.main()
+from vehicles import intermodal_cars
+intermodal_cars.main()
 
 from vehicles import livestock_cars
 livestock_cars.main()
