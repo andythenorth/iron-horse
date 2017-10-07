@@ -24,7 +24,7 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
         engine_class:                   ${vehicle.engine_class};
         visual_effect_and_powered:      visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
         introduction_date:              date(${consist.intro_date},01,01); // consist just supplies intro year - openttd randomises intro dates a bit anyway
-        cargo_capacity:                 ${vehicle.default_cargo_capacities[0]};
+        cargo_capacity:                 ${vehicle.default_cargo_capacity};
         sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
         power:                          ${consist.power}hp;
         <tal:speed_is_optional condition="consist.speed is not None">
@@ -55,7 +55,7 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
         default:                        ${vehicle.id}_switch_graphics;
         purchase:                       ${vehicle.id}_sg_purchase;
         <!--! only use the capacity switches if vehicle carries cargo, makes faster compile (saved about 20% of time) -->
-        <tal:optional_capacity_switches condition="vehicle.default_cargo_capacities[0] != 0">
+        <tal:optional_capacity_switches condition="vehicle.has_cargo_capacity">
             cargo_capacity:                 ${vehicle.id + '_switch_cargo_capacity'};
             purchase_cargo_capacity:        ${vehicle.id + '_switch_cargo_capacity'};
             loading_speed:                  ${vehicle.id + '_switch_loading_speed'};

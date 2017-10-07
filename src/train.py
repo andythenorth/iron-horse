@@ -271,7 +271,7 @@ class Train(object):
         self.cargo_age_period = kwargs.get('cargo_age_period', global_constants.CARGO_AGE_PERIOD)
         self.vehicle_length = kwargs.get('vehicle_length', None)
         self.speed = kwargs.get('speed', 0)
-        self.weight = kwargs.get('weight', None)
+        self._weight = kwargs.get('weight', None)
         self._capacity_pax = kwargs.get('capacity_pax', 0)
         self._capacity_mail = kwargs.get('capacity_mail', 0)
         self._capacity_freight = kwargs.get('capacity_freight', 0)
@@ -319,6 +319,30 @@ class Train(object):
     @property
     def capacities_freight(self):
         return self.get_capacity_variations(self._capacity_freight)
+
+    @property
+    def has_cargo_capacity(self):
+        if self._capacity_pax is not 0 or self._capacity_mail is not 0 or self._capacity_freight is not 0:
+            return True
+        else:
+            return False
+
+    @property
+    def weight(self):
+        # weight can be set explicitly or by methods on subclasses
+        return self._weight
+
+    @property
+    def default_cargo_capacity(self):
+        if self.has_cargo_capacity:
+            if self.default_cargo == 'PASS':
+                return self.capacities_pax[1]
+            elif self.default_cargo == 'MAIL':
+                return self.capacities_mail[1]
+            else:
+                return self.capacities_freight[1]
+        else:
+            return 0
 
     @property
     def availability(self):
@@ -522,7 +546,6 @@ class WagonConsist(Consist):
 
         self.speed_class = 'freight' # over-ride this for, e.g. 'express' consists
         self.subtype = kwargs['subtype']
-        self.default_capacity_type = kwargs.get('default_capacity_type', None)
         self.weight_factor = 0.5 # over-ride in sub-class as needed
         self.loading_speed_multiplier = kwargs.get('loading_speed_multiplier', 1)
         self.cargo_age_period = kwargs.get('cargo_age_period', global_constants.CARGO_AGE_PERIOD)
@@ -538,12 +561,12 @@ class WagonConsist(Consist):
         for unit in self.units:
             if unit.default_cargo == 'PASS':
                 # pax coaches have seats and stuff, are expensive to build
-                capacity_factors.append(3 * getattr(unit, 'capacities_pax', 0)[1])
+                capacity_factors.append(3 * unit.default_cargo_capacity)
             elif unit.default_cargo == 'MAIL':
                 # mail cars have pax-grade eqpt, but no seats etc, so moderately expensive
-                capacity_factors.append(2 * getattr(unit, 'capacities_mail', 0)[1])
+                capacity_factors.append(2 * unit.default_cargo_capacity)
             else:
-                capacity_factors.append(getattr(unit, 'capacities_freight', 0)[1])
+                capacity_factors.append(unit.default_cargo_capacity)
         cost = cost + sum(capacity_factors)
         return 0.5 * cost # dibble all the things
 
@@ -585,7 +608,6 @@ class BoxConsist(WagonConsist):
         self.label_refits_allowed = ['MAIL', 'GRAI', 'WHEA', 'MAIZ', 'FRUT', 'BEAN', 'NITR']
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_freight_special_cases']
         self.default_cargo = 'GOOD'
-        self.default_capacity_type = 'capacity_freight'
 
 
 class CabooseConsist(WagonConsist):
@@ -601,7 +623,6 @@ class CabooseConsist(WagonConsist):
         self.label_refits_allowed = [] # no specific labels needed
         self.label_refits_disallowed = []
         self.default_cargo = 'GOOD' # unwanted side-effect of this is that caboose replaceable by anything refitting goods
-        self.default_capacity_type = 'capacity_freight'
 
 
 class CoveredHopperConsist(WagonConsist):
@@ -616,7 +637,6 @@ class CoveredHopperConsist(WagonConsist):
         self.label_refits_allowed = ['GRAI', 'WHEA', 'MAIZ', 'FOOD', 'SUGR', 'FMSP', 'RFPR', 'CLAY', 'BDMT', 'BEAN', 'NITR', 'RUBR', 'SAND', 'POTA', 'QLME', 'SASH', 'CMNT', 'KAOL', 'FERT']
         self.label_refits_disallowed = []
         self.default_cargo = 'GRAI'
-        self.default_capacity_type = 'capacity_freight'
         self.loading_speed_multiplier = 2
 
 
@@ -632,7 +652,6 @@ class DumpConsist(WagonConsist):
         self.label_refits_allowed = [] # no specific labels needed
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_hopper_freight']
         self.default_cargo = 'IORE'
-        self.default_capacity_type = 'capacity_freight'
         self.loading_speed_multiplier = 2
         # Cargo Graphics
         self.visible_cargo.bulk = True
@@ -653,7 +672,6 @@ class EdiblesTankConsist(WagonConsist):
         self.label_refits_allowed = ['FOOD']
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_edible_liquids']
         self.default_cargo = 'WATR'
-        self.default_capacity_type = 'capacity_freight'
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
         self.loading_speed_multiplier = 2
 
@@ -670,7 +688,6 @@ class FlatConsist(WagonConsist):
         self.label_refits_allowed = ['GOOD']
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_flatcar_freight']
         self.default_cargo = 'STEL'
-        self.default_capacity_type = 'capacity_freight'
         # Cargo graphics
         self.visible_cargo.piece = True
 
@@ -687,7 +704,6 @@ class FruitVegConsist(WagonConsist):
         self.label_refits_allowed = ['FRUT', 'BEAN', 'CASS', 'JAVA', 'NUTS']
         self.label_refits_disallowed = []
         self.default_cargo = 'FRUT'
-        self.default_capacity_type = 'capacity_freight'
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
 
 
@@ -703,7 +719,6 @@ class HopperConsist(WagonConsist):
         self.label_refits_allowed = [] # none needed
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_hopper_freight']
         self.default_cargo = 'COAL'
-        self.default_capacity_type = 'capacity_freight'
         self.loading_speed_multiplier = 2
         # Cargo graphics
         self.visible_cargo.bulk = True
@@ -724,7 +739,6 @@ class IntermodalConsist(WagonConsist):
         self.label_refits_allowed = ['FRUT','WATR']
         self.label_refits_disallowed = ['FISH','LVST','OIL_','TOUR','WOOD']
         self.default_cargo = 'GOOD'
-        self.default_capacity_type = 'capacity_freight'
         self.loading_speed_multiplier = 2
 
 
@@ -740,7 +754,6 @@ class LivestockConsist(WagonConsist):
         self.label_refits_allowed = ['LVST']
         self.label_refits_disallowed = []
         self.default_cargo = 'LVST'
-        self.default_capacity_type = 'capacity_freight'
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
 
 
@@ -756,7 +769,6 @@ class StakeConsist(WagonConsist):
         self.label_refits_allowed = ['GOOD']
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_flatcar_freight']
         self.default_cargo = 'WOOD'
-        self.default_capacity_type = 'capacity_freight'
         self.loading_speed_multiplier = 2
         # Cargo graphics
         self.visible_cargo = VisibleCargoCustom({'WOOD': [0]},
@@ -778,7 +790,6 @@ class MailConsist(WagonConsist):
         self.label_refits_allowed = [] # no specific labels needed
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_freight_special_cases']
         self.default_cargo = 'MAIL'
-        self.default_capacity_type = 'capacity_mail'
 
 
 class MetalConsist(WagonConsist):
@@ -794,7 +805,6 @@ class MetalConsist(WagonConsist):
         self.label_refits_allowed = ['STEL', 'COPR', 'IRON', 'SLAG', 'METL']
         self.label_refits_disallowed = []
         self.default_cargo = 'STEL'
-        self.default_capacity_type = 'capacity_freight'
         self.loading_speed_multiplier = 2
 
 
@@ -810,7 +820,6 @@ class OpenConsist(WagonConsist):
         self.label_refits_allowed = [] # no specific labels needed
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_freight_special_cases']
         self.default_cargo = 'GOOD'
-        self.default_capacity_type = 'capacity_freight'
         # Cargo Graphics
         self.visible_cargo.bulk = True
         self.visible_cargo.piece = True
@@ -828,7 +837,6 @@ class PassengerConsistBase(WagonConsist):
         self.label_refits_allowed = []
         self.label_refits_disallowed = []
         self.default_cargo = 'PASS'
-        self.default_capacity_type = 'capacity_pax'
 
 
 class PassengerConsist(PassengerConsistBase):
@@ -866,7 +874,6 @@ class ReeferConsist(WagonConsist):
         self.label_refits_allowed = [] # no specific labels needed
         self.label_refits_disallowed = []
         self.default_cargo = 'FOOD'
-        self.default_capacity_type = 'capacity_freight'
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
 
 
@@ -882,7 +889,6 @@ class SuppliesConsist(WagonConsist):
         self.label_refits_allowed = ['ENSP', 'FMSP', 'VEHI', 'BDMT']
         self.label_refits_disallowed = []
         self.default_cargo = 'ENSP'
-        self.default_capacity_type = 'capacity_freight'
         self.date_variant_var = 'current_year'
         # Cargo graphics
         self.visible_cargo = VisibleCargoCustom({'ENSP': [0], 'FMSP': [0], 'VEHI': [0], 'BDMT': [0]},
@@ -905,7 +911,6 @@ class TankConsist(WagonConsist):
         self.label_refits_allowed = []
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['edible_liquids']
         self.default_cargo = 'OIL_'
-        self.default_capacity_type = 'capacity_freight'
         self.loading_speed_multiplier = 3
         self.visible_cargo = VisibleCargoLiveryOnly()
         self.visible_cargo.tanker = True
@@ -923,7 +928,6 @@ class VehicleTransporterConsist(WagonConsist):
         self.label_refits_allowed = ['VEHI']
         self.label_refits_disallowed = []
         self.default_cargo = 'VEHI'
-        self.default_capacity_type = 'capacity_freight'
         self.date_variant_var = 'current_year'
 
 
@@ -940,13 +944,15 @@ class Wagon(Train):
         self.label_refits_allowed = self.consist.label_refits_allowed
         self.label_refits_disallowed = self.consist.label_refits_disallowed
         self.default_cargo = self.consist.default_cargo
-        self.default_cargo_capacities = self.get_capacity_variations(kwargs.get(self.consist.default_capacity_type, 0))
         if hasattr(self.consist, 'loading_speed_multiplier'):
             self.loading_speed_multiplier = self.consist.loading_speed_multiplier
         if hasattr(self.consist, 'cargo_age_period'):
             self.cargo_age_period = self.consist.cargo_age_period
+
+    @property
+    def weight(self):
         # set weight based on capacity  * a multiplier from consist (default 0.5 or so)
-        self.weight = self.consist.weight_factor * self.default_cargo_capacities[1]
+         return self.consist.weight_factor * self.default_cargo_capacity
 
 
 class SteamLoco(Train):
@@ -955,7 +961,6 @@ class SteamLoco(Train):
     """
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.default_cargo_capacities = [0]
         self.engine_class = 'ENGINE_CLASS_STEAM'
         self.visual_effect = 'VISUAL_EFFECT_STEAM'
         self.default_visual_effect_offset = 'FRONT'
@@ -967,7 +972,6 @@ class SteamLocoTender(Train):
     """
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.default_cargo_capacities = [0]
 
 
 class DieselLoco(Train):
@@ -976,7 +980,6 @@ class DieselLoco(Train):
     """
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.default_cargo_capacities = [0]
         self.engine_class = 'ENGINE_CLASS_DIESEL'
         self.visual_effect = 'VISUAL_EFFECT_DIESEL'
 
@@ -987,13 +990,11 @@ class DieselRailcar(Train):
     """
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.default_cargo_capacities = [0]
         self.class_refit_groups = ['pax', 'mail', 'express_freight']
         self.label_refits_allowed = [] # no specific labels needed
         self.label_refits_disallowed = []
         self._capacity_mail = int(0.75 * self._capacity_pax)
         self._capacity_freight = int(0.75 * self._capacity_pax)
-        self.default_cargo_capacities = self.capacities_pax
         self.default_cargo = 'PASS'
         self.engine_class = 'ENGINE_CLASS_DIESEL'
         self.visual_effect = 'VISUAL_EFFECT_DIESEL'
@@ -1005,7 +1006,6 @@ class ElectricLoco(Train):
     """
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.default_cargo_capacities = [0]
         if hasattr(kwargs['consist'], 'track_type'):
             # all NG vehicles should set 'NG' only, this class then over-rides that to electrified NG as needed
             # why? this might be daft?
@@ -1025,7 +1025,6 @@ class ElectroDieselLoco(Train):
     """
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.default_cargo_capacities = [0]
         self.engine_class = 'ENGINE_CLASS_DIESEL'
         self.visual_effect = 'VISUAL_EFFECT_DIESEL'
         self.consist.visual_effect_override_by_railtype = {'ELRL': 'VISUAL_EFFECT_ELECTRIC'}
@@ -1037,12 +1036,10 @@ class CargoSprinter(Train):
     """
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.default_cargo_capacities = [0]
         # refits should match those of the intermodal cars
         self.class_refit_groups = ['express_freight', 'packaged_freight']
         self.label_refits_allowed = ['FRUT','WATR']
         self.label_refits_disallowed = ['FISH','LVST','OIL_','TOUR','WOOD']
-        self.default_cargo_capacities = self.capacities_freight
         self.loading_speed_multiplier = 2
         self.default_cargo = 'GOOD'
         self.engine_class = 'ENGINE_CLASS_DIESEL'
@@ -1071,8 +1068,8 @@ class PassengerCar(Wagon):
     Passenger Carriage.
     """
     def __init__(self, **kwargs):
-        kwargs['capacity_pax'] = kwargs.get('capacity', None)
         super().__init__(**kwargs)
+        self._capacity_pax = kwargs.get('capacity', None)
 
 
 class MailCar(Wagon):
@@ -1080,8 +1077,8 @@ class MailCar(Wagon):
     Mail Carriage.
     """
     def __init__(self, **kwargs):
-        kwargs['capacity_mail'] = kwargs.get('capacity', None)
         super().__init__(**kwargs)
+        self._capacity_mail = kwargs.get('capacity', None)
         self._capacity_freight = int(0.5 * self._capacity_mail)
 
 
@@ -1090,12 +1087,11 @@ class FreightCar(Wagon):
     Freight wagon.
     """
     def __init__(self, **kwargs):
-        kwargs['capacity_freight'] = kwargs['vehicle_length'] * 5
         super().__init__(**kwargs)
-        roster_obj = self.consist.get_roster(self.consist.roster_id)
-        print(self.consist.id, roster_obj.freight_car_capacity_per_unit_length)
         if kwargs.get('capacity', None) is not None:
              print(self.consist.id, kwargs.get('capacity', None))
+        roster_obj = self.consist.get_roster(self.consist.roster_id)
+        self._capacity_freight = kwargs['vehicle_length'] * roster_obj.freight_car_capacity_per_unit_length[self.consist.track_type][self.consist.gen - 1]
 
 
 class BoxCar(FreightCar):
@@ -1113,7 +1109,11 @@ class CabooseCar(FreightCar):
     """
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.weight = 5 * self.vehicle_length
+
+    @property
+    def weight(self):
+        # special handling of weight
+        return 5 * self.vehicle_length
 
 
 class MetroPaxUnit(Train):
@@ -1122,7 +1122,6 @@ class MetroPaxUnit(Train):
     """
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.default_cargo_capacities = self.capacities_pax
         self.default_cargo = "PASS"
         self.loading_speed_multiplier = 2
         self.engine_class = 'ENGINE_CLASS_ELECTRIC'
@@ -1134,14 +1133,12 @@ class MetroCargoUnit(Train):
     Metro Unit
     """
     def __init__(self, **kwargs):
-        kwargs['capacity_mail'] = kwargs.get('capacity', None)
         super().__init__(**kwargs)
-        self.default_cargo_capacities = [0]
         self.class_refit_groups = ['mail', 'express_freight']
         self.label_refits_allowed = [] # no specific labels needed
         self.label_refits_disallowed = []
+        self._capacity_mail = kwargs.get('capacity', None)
         self._capacity_freight = int(0.5 * self._capacity_mail)
-        self.default_cargo_capacities = self.capacities_mail
         self.default_cargo = "MAIL"
         self.loading_speed_multiplier = 2
         self.engine_class = 'ENGINE_CLASS_ELECTRIC'

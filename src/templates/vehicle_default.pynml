@@ -40,7 +40,7 @@ spritegroup ${vehicle.id}_sg_purchase {
     ];
 }
 
-<tal:optional_capacity_switches condition="vehicle.default_cargo_capacities[0] != 0">
+<tal:optional_capacity_switches condition="vehicle.has_cargo_capacity">
     <tal:include metal:use-macro="load: capacity_switches.pynml" />
 </tal:optional_capacity_switches>
 
