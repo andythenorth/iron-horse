@@ -15,7 +15,6 @@ MK_ARCHIVE = bin/mk-archive
 
 # Project details
 PROJECT_NAME = iron-horse
-SOURCES=$(shell $(FIND_FILES) --ext=.py --ext=.pynml --ext=.pt --ext=.png --ext=.lng src)
 
 GRAPHICS_DIR = generated/graphics
 LANG_DIR = generated/lang
@@ -65,17 +64,16 @@ html_docs: $(HTML_DOCS)
 PW = 0
 ROSTER = *
 
-# determining deps reliably for graphics generation is hard, as graphics processor depends on many things so always rebuild all
-$(GRAPHICS_DIR):
+$(GRAPHICS_DIR): $(shell $(FIND_FILES) --ext=.py --ext=.png src)
 	$(PYTHON3) src/render_graphics.py $(ARGS)
 
-$(LANG_DIR):
+$(LANG_DIR): $(shell $(FIND_FILES) --ext=.py --ext=.pynml --ext=.lng src)
 	$(PYTHON3) src/render_lang.py $(ARGS)
 
-$(HTML_DOCS):
+$(HTML_DOCS): $(shell $(FIND_FILES) --ext=.py --ext=.pynml --ext=.pt --ext=.lng src)
 	$(PYTHON3) src/render_docs.py $(ARGS)
 
-$(NML_FILE): $(SOURCES)
+$(NML_FILE): $(shell $(FIND_FILES) --ext=.py --ext=.pynml src)
 	$(PYTHON3) src/render_nml.py $(ARGS)
 
 $(GRF_FILE): $(GRAPHICS_DIR) $(LANG_DIR) $(NML_FILE) $(HTML_DOCS)
