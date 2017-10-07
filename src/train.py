@@ -272,10 +272,9 @@ class Train(object):
         self.vehicle_length = kwargs.get('vehicle_length', None)
         self.speed = kwargs.get('speed', 0)
         self.weight = kwargs.get('weight', None)
-        # declare capacities for pax, mail and freight, as they are needed later for nml switches
-        self.capacities_pax = self.get_capacity_variations(kwargs.get('capacity_pax', 0))
-        self.capacities_mail = self.get_capacity_variations(kwargs.get('capacity_mail', 0)) # also used for cargos with armoured class
-        self.capacities_freight = self.get_capacity_variations(kwargs.get('capacity_freight', 0))
+        self._capacity_pax = kwargs.get('capacity_pax', 0)
+        self._capacity_mail = kwargs.get('capacity_mail', 0)
+        self._capacity_freight = kwargs.get('capacity_freight', 0)
         self.loading_speed_multiplier = kwargs.get('loading_speed_multiplier', 1)
         # spriterow_num, first row = 0
         self.spriterow_num = kwargs.get('spriterow_num', 0)
@@ -306,9 +305,20 @@ class Train(object):
 
     def get_capacity_variations(self, capacity):
         # capacity is variable, controlled by a newgrf parameter
-        # we cache the available variations on the vehicle instead of working them out every time - easier
         # allow that integer maths is needed for newgrf cb results; round up for safety
         return [int(math.ceil(capacity * multiplier)) for multiplier in global_constants.capacity_multipliers]
+
+    @property
+    def capacities_pax(self):
+        return self.get_capacity_variations(self._capacity_pax)
+
+    @property
+    def capacities_mail(self):
+        return self.get_capacity_variations(self._capacity_mail)
+
+    @property
+    def capacities_freight(self):
+        return self.get_capacity_variations(self._capacity_freight)
 
     @property
     def availability(self):
@@ -981,8 +991,8 @@ class DieselRailcar(Train):
         self.class_refit_groups = ['pax', 'mail', 'express_freight']
         self.label_refits_allowed = [] # no specific labels needed
         self.label_refits_disallowed = []
-        self.capacities_mail = [int(0.75 * capacity) for capacity in self.capacities_pax]
-        self.capacities_freight = [int(0.5 * capacity) for capacity in self.capacities_pax]
+        self._capacity_mail = int(0.75 * self._capacity_pax)
+        self._capacity_freight = int(0.75 * self._capacity_pax)
         self.default_cargo_capacities = self.capacities_pax
         self.default_cargo = 'PASS'
         self.engine_class = 'ENGINE_CLASS_DIESEL'
@@ -1063,7 +1073,6 @@ class PassengerCar(Wagon):
     def __init__(self, **kwargs):
         kwargs['capacity_pax'] = kwargs.get('capacity', None)
         super().__init__(**kwargs)
-        self.capacities_freight = [int(0.5 * capacity) for capacity in self.capacities_mail]
 
 
 class MailCar(Wagon):
@@ -1073,7 +1082,7 @@ class MailCar(Wagon):
     def __init__(self, **kwargs):
         kwargs['capacity_mail'] = kwargs.get('capacity', None)
         super().__init__(**kwargs)
-        self.capacities_freight = [int(0.5 * capacity) for capacity in self.capacities_mail]
+        self._capacity_freight = int(0.5 * self._capacity_mail)
 
 
 class FreightCar(Wagon):
@@ -1095,7 +1104,7 @@ class BoxCar(FreightCar):
     """
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.capacities_mail = [int(2.0 * capacity) for capacity in self.capacities_freight]
+        self._capacity_mail = int(2.0 * self._capacity_freight)
 
 
 class CabooseCar(FreightCar):
@@ -1131,7 +1140,7 @@ class MetroCargoUnit(Train):
         self.class_refit_groups = ['mail', 'express_freight']
         self.label_refits_allowed = [] # no specific labels needed
         self.label_refits_disallowed = []
-        self.capacities_freight = [int(0.5 * capacity) for capacity in self.capacities_mail]
+        self._capacity_freight = int(0.5 * self._capacity_mail)
         self.default_cargo_capacities = self.capacities_mail
         self.default_cargo = "MAIL"
         self.loading_speed_multiplier = 2
