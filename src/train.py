@@ -884,13 +884,9 @@ class SuppliesConsist(WagonConsist):
         super().__init__(**kwargs)
         self.title = '[Supplies Car]'
         self.class_refit_groups = []
-        self.label_refits_allowed = ['ENSP', 'FMSP', 'VEHI', 'BDMT']
+        self.label_refits_allowed = ['ENSP', 'FMSP', 'VEHI']
         self.label_refits_disallowed = []
         self.default_cargo = 'ENSP'
-        # Cargo graphics
-        self.visible_cargo = VisibleCargoCustom({'ENSP': [0], 'FMSP': [0], 'VEHI': [0], 'BDMT': [0]},
-                                                'vehicle_with_visible_cargo.pynml',
-                                                generic_rows = [0])
 
 
 class TankConsist(WagonConsist):
