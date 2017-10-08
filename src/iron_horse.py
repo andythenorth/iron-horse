@@ -84,6 +84,9 @@ reefer_cars.main()
 from vehicles import stake_cars
 stake_cars.main()
 
+from vehicles import silo_cars
+silo_cars.main()
+
 from vehicles import supplies_cars
 supplies_cars.main()
 

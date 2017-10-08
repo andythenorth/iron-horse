@@ -628,13 +628,13 @@ class CabooseConsist(WagonConsist):
 
 class CoveredHopperConsist(WagonConsist):
     """
-    Bulk powder / pellet cargos.
+    Bulk cargos needing covered protection.
     """
     def __init__(self, **kwargs):
         self.base_id = 'covered_hopper_car'
         super().__init__(**kwargs)
         self.title = '[Covered Hopper Car]'
-        self.class_refit_groups = ['covered_hopper_freight']
+        self.class_refit_groups = [] # no classes, use explicit labels
         self.label_refits_allowed = ['GRAI', 'WHEA', 'MAIZ', 'FOOD', 'SUGR', 'FMSP', 'RFPR', 'CLAY', 'BDMT', 'BEAN', 'NITR', 'RUBR', 'SAND', 'POTA', 'QLME', 'SASH', 'CMNT', 'KAOL', 'FERT']
         self.label_refits_disallowed = []
         self.default_cargo = 'GRAI'
@@ -753,6 +753,21 @@ class LivestockConsist(WagonConsist):
         self.label_refits_disallowed = []
         self.default_cargo = 'LVST'
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
+
+
+class SiloConsist(WagonConsist):
+    """
+    Powder bulk cargos needing protection and special equipment for unloading.
+    """
+    def __init__(self, **kwargs):
+        self.base_id = 'silo_car'
+        super().__init__(**kwargs)
+        self.title = '[Silo Car]'
+        self.class_refit_groups = [] # no classes, use explicit labels
+        self.label_refits_allowed = ['FOOD', 'SUGR', 'FMSP', 'RFPR', 'BDMT', 'RUBR', 'QLME', 'SASH', 'CMNT']
+        self.label_refits_disallowed = []
+        self.default_cargo = 'GRAI'
+        self.loading_speed_multiplier = 2
 
 
 class StakeConsist(WagonConsist):
