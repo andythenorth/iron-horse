@@ -42,8 +42,73 @@ def main():
                            suppress_animated_pixel_warnings=True)
 
     consist.add_unit(type=FreightCar,
-                     capacity=90,
-                     vehicle_length=8,
+                     capacity=45,
+                     vehicle_length=6,
+                     spriterow_num=0)
+
+    consist.add_unit(type=FreightCar,
+                     capacity=45,
+                     vehicle_length=6,
+                     spriterow_num=0)
+
+    consist.add_model_variant(start_date=0,
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0)
+
+    consist = MetalConsist(roster='pony',
+                           base_numeric_id=2670,
+                           gen=4,
+                           subtype='A',
+                           suppress_animated_pixel_warnings=True)
+
+    consist.add_unit(type=FreightCar,
+                     capacity=45,
+                     vehicle_length=6,
+                     spriterow_num=0)
+
+    consist.add_unit(type=FreightCar,
+                     capacity=45,
+                     vehicle_length=6,
+                     spriterow_num=0)
+
+    consist.add_model_variant(start_date=0,
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0)
+
+    consist = MetalConsist(roster='pony',
+                           base_numeric_id=2160,
+                           gen=5,
+                           subtype='A',
+                           suppress_animated_pixel_warnings=True)
+
+    consist.add_unit(type=FreightCar,
+                     capacity=45,
+                     vehicle_length=6,
+                     spriterow_num=0)
+
+    consist.add_unit(type=FreightCar,
+                     capacity=45,
+                     vehicle_length=6,
+                     spriterow_num=0)
+
+    consist.add_model_variant(start_date=0,
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0)
+
+    consist = MetalConsist(roster='pony',
+                           base_numeric_id=2900,
+                           gen=6,
+                           subtype='A',
+                           suppress_animated_pixel_warnings=True)
+
+    consist.add_unit(type=FreightCar,
+                     capacity=45,
+                     vehicle_length=6,
+                     spriterow_num=0)
+
+    consist.add_unit(type=FreightCar,
+                     capacity=45,
+                     vehicle_length=6,
                      spriterow_num=0)
 
     consist.add_model_variant(start_date=0,
