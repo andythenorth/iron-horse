@@ -17,9 +17,9 @@ buy_menu_sort_order_wagons = ['metro_car',
                               'fruit_veg_car',
                               'intermodal_car',
                               'stake_car',
-                              'metal_car',
                               'supplies_car',
                               'vehicle_transporter_car',
+                              'metal_car',
                               'caboose_car']
 
 
