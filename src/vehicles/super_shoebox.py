@@ -4,7 +4,7 @@ from train import EngineConsist, ElectroDieselLoco
 consist = EngineConsist(id='super_shoebox',
                         base_numeric_id=880,
                         title='Super Shoebox [ElectroDiesel]',
-                        power=1250,
+                        power=1150,
                         speed=110,
                         type_base_buy_cost_points=0,  # dibble buy cost for game balance
                         type_base_running_cost_points=-28,  # dibble run cost for game balance
