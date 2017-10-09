@@ -26,16 +26,24 @@ STR_NAME_SUFFIX_STEAM                                           :(증기)
 STR_NAME_SUFFIX_BOX_CAR                                         :유개차
 STR_NAME_SUFFIX_CABOOSE_CAR                                     :차장차
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :유개호퍼차
+STR_NAME_SUFFIX_DUMP_CAR                                        :덤프 차량
 STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :식품 탱크 차
 STR_NAME_SUFFIX_FLAT_CAR                                        :평판차
-STR_NAME_SUFFIX_FRUIT_CAR                                       :과일 수송 차량
+STR_NAME_SUFFIX_FRUIT_CAR                                       :과일 & 채소 수송 차량
+STR_NAME_SUFFIX_HIGH_SPEED_MAIL_CAR                             :고속 우편 수송 차량
+STR_NAME_SUFFIX_HIGH_SPEED_PASSENGER_CAR                        :고속 승객 수송 차량
 STR_NAME_SUFFIX_HOPPER_CAR                                      :호퍼차
+STR_NAME_SUFFIX_INTERMODAL_CAR                                  :복합 차량
 STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :가축차
-STR_NAME_SUFFIX_MAIL_CAR                                        :우편차
+STR_NAME_SUFFIX_LUXURY_PASSENGER_CAR                            :호화 승객 수송 차량
+STR_NAME_SUFFIX_MAIL_BOX_CAR                                    :우편 수송 차량
+STR_NAME_SUFFIX_MAIL_CAR                                        :우편 수송 차량
 STR_NAME_SUFFIX_METAL_CAR                                       :철제 차
 STR_NAME_SUFFIX_OPEN_CAR                                        :무개차
-STR_NAME_SUFFIX_PASSENGER_CAR                                   :객차
+STR_NAME_SUFFIX_PASSENGER_CAR                                   :승객 수송 차량
 STR_NAME_SUFFIX_REEFER_CAR                                      :냉동차
+STR_NAME_SUFFIX_SILO_CAR                                        :사일로 차량
+STR_NAME_SUFFIX_STAKE_CAR                                       :평판차
 STR_NAME_SUFFIX_SUPPLIES_CAR                                    :재료 수송 차
 STR_NAME_SUFFIX_TANK_CAR                                        :탱크차
 STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :자동차 수송 차량
