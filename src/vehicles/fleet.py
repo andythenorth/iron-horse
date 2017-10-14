@@ -10,7 +10,7 @@ consist = EngineConsist(id='fleet',
                         type_base_buy_cost_points=80,  # dibble buy cost for game balance
                         intro_date=2000)
 
-# should be 4 units, not 2
+# should be 4 short units, not 2 long but eh
 consist.add_unit(type=MetroPaxUnit,
                  weight=30,
                  vehicle_length=8,
