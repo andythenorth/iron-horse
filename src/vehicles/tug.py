@@ -7,7 +7,7 @@ consist = EngineConsist(id='tug',
                         power=3600,
                         # dibble for game balance, assume super-slip control
                         tractive_effort_coefficient=0.4,
-                        speed=90,
+                        speed=85,
                         type_base_buy_cost_points=30,  # dibble buy cost for game balance
                         gen=5)
 

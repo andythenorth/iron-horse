@@ -5,7 +5,7 @@ consist = EngineConsist(id='slug',
                         base_numeric_id=1000,
                         title='Slug [Diesel]',
                         power=1700,
-                        speed=90,
+                        speed=85,
                         gen=5)
 
 consist.add_unit(type=DieselLoco,

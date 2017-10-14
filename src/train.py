@@ -544,7 +544,7 @@ class WagonConsist(Consist):
 
         roster_obj.register_wagon_consist(self)
 
-        self.speed_class = 'freight' # over-ride this for, e.g. 'express' consists
+        self.speed_class = 'freight' # over-ride this for, e.g. fast_freight consists
         self.subtype = kwargs['subtype']
         self.weight_factor = 0.5 # over-ride in sub-class as needed
         self.loading_speed_multiplier = kwargs.get('loading_speed_multiplier', 1)
@@ -618,7 +618,7 @@ class CabooseConsist(WagonConsist):
     def __init__(self, **kwargs):
         self.base_id = 'caboose_car'
         super().__init__(**kwargs)
-        self.speed_class = 'express'
+        self.speed_class = 'fast_freight'
         # no graphics processing - don't random colour cabeese, I tried it, looks daft
         self.class_refit_groups = [] # refit nothing, don't mess with this, it breaks auto-replace
         self.label_refits_allowed = [] # no specific labels needed
@@ -668,7 +668,7 @@ class EdiblesTankConsist(WagonConsist):
         # tank cars are unrealistically autorefittable, and at no cost
         # Pikka: if people complain that it's unrealistic, tell them "don't do it then"
         self.title = '[Edibles Tank Car]'
-        self.speed_class = 'express'
+        self.speed_class = 'fast_freight'
         self.class_refit_groups = ['liquids']
         self.label_refits_allowed = ['FOOD']
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_edible_liquids']
@@ -800,7 +800,7 @@ class MailConsist(WagonConsist):
         self.base_id = 'mail_car'
         super().__init__(**kwargs)
         self.title = '[Mail Car]'
-        self.speed_class = 'express'
+        self.speed_class = 'pax_mail'
         self.class_refit_groups = ['mail', 'express_freight']
         self.label_refits_allowed = [] # no specific labels needed
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_freight_special_cases']
@@ -847,7 +847,7 @@ class PassengerConsistBase(WagonConsist):
     def __init__(self, **kwargs):
         # don't set base_id here, let subclasses do it
         super().__init__(**kwargs)
-        self.speed_class = 'express'
+        self.speed_class = 'pax_mail'
         self.class_refit_groups = ['pax']
         self.label_refits_allowed = []
         self.label_refits_disallowed = []
@@ -884,7 +884,7 @@ class ReeferConsist(WagonConsist):
         self.base_id = 'reefer_car'
         super().__init__(**kwargs)
         self.title = '[Reefer Car]'
-        self.speed_class = 'express'
+        self.speed_class = 'fast_freight'
         self.class_refit_groups = ['refrigerated_freight']
         self.label_refits_allowed = [] # no specific labels needed
         self.label_refits_disallowed = []

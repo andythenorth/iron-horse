@@ -7,7 +7,7 @@ consist = EngineConsist(id='toaster',
                         power=4200,
                         # dibble for game balance, assume super-slip control
                         tractive_effort_coefficient=0.4,
-                        speed=110,
+                        speed=90,
                         type_base_buy_cost_points=30,  # dibble buy cost for game balance
                         gen=6)
 
