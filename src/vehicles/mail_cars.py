@@ -109,6 +109,8 @@ def main():
                               end_date=global_constants.max_game_date,
                               spritesheet_suffix=0)
 
+    # no gen 6 for brit roster, max speed reached for engines
+
     """
     #--------------- llama ----------------------------------------------------------------------
     consist = MailConsist(roster = 'llama',
