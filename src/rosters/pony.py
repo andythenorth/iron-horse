@@ -21,7 +21,6 @@ from vehicles import ramsbottom
 from vehicles import raven
 from vehicles import roarer
 from vehicles import scooby
-from vehicles import screamer
 from vehicles import serpentine
 from vehicles import shoebox
 from vehicles import slammer
@@ -81,7 +80,6 @@ roster = Roster(id = 'pony',
                            super_shoebox,
                            sparkycat,
                            toaster,
-                           screamer,
                            slammer,
                            tin_rocket,
                            scooby,
