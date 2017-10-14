@@ -4,7 +4,7 @@ from train import EngineConsist, SteamLoco
 consist = EngineConsist(id='chaplin',
                         base_numeric_id=110,
                         title='2-4-0 Chaplin [Steam]',
-                        power=450,
+                        power=500,
                         tractive_effort_coefficient=0.2,
                         speed=65,
                         type_base_buy_cost_points=-3,  # dibble buy cost for game balance
