@@ -84,7 +84,7 @@ def main():
 
     consist = MailConsist(roster='pony',
                           base_numeric_id=970,
-                          gen=6,
+                          gen=5,
                           subtype='A')
 
     consist.add_unit(type=MailCar,
