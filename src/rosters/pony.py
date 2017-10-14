@@ -37,6 +37,7 @@ from vehicles import toaster
 from vehicles import tug
 from vehicles import turtle
 from vehicles import tyburn
+from vehicles import velaro_thing
 from vehicles import walker
 from vehicles import westbourne
 from vehicles import wizzo
@@ -86,6 +87,7 @@ roster = Roster(id = 'pony',
                            tin_rocket,
                            scooby,
                            plastic_postbox,
+                           velaro_thing,
                            # brit extras
                            serpentine,
                            westbourne,

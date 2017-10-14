@@ -1023,6 +1023,29 @@ class DieselRailcarPassenger(Train):
         self.visual_effect = 'VISUAL_EFFECT_DIESEL'
 
 
+class ElectricPaxUnit(Train):
+    """
+    High-speed, high-power pax electric unit, intended to be 2-car, with template magic for cabs etc
+    """
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.class_refit_groups = ['pax']
+        self.label_refits_allowed = [] # no specific labels needed
+        self.label_refits_disallowed = []
+        self.default_cargo = 'PASS'
+        if hasattr(kwargs['consist'], 'track_type'):
+            # all NG vehicles should set 'NG' only, this class then over-rides that to electrified NG as needed
+            # why? this might be daft?
+            if kwargs['consist'].track_type == "NG":
+                kwargs['consist'].track_type = "ELNG"
+            else:
+                kwargs['consist'].track_type = "ELRL"
+        else:
+            kwargs['consist'].track_type = "ELRL"
+        self.engine_class = 'ENGINE_CLASS_ELECTRIC'
+        self.visual_effect = 'VISUAL_EFFECT_ELECTRIC'
+
+
 class ElectricLoco(Train):
     """
     Electric Locomotive.
