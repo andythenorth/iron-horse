@@ -3,7 +3,6 @@ from roster import Roster
 from vehicles import aberdare
 from vehicles import badger
 from vehicles import bertha
-#from vehicles import cargo_sprinter
 from vehicles import chaplin
 from vehicles import chinook
 from vehicles import collett
@@ -17,9 +16,11 @@ from vehicles import hudswell
 from vehicles import lemon
 from vehicles import longwater
 from vehicles import northcock
+from vehicles import plastic_postbox
 from vehicles import ramsbottom
 from vehicles import raven
 from vehicles import roarer
+from vehicles import scooby
 from vehicles import screamer
 from vehicles import serpentine
 from vehicles import shoebox
@@ -30,6 +31,7 @@ from vehicles import standard
 from vehicles import stewart
 from vehicles import suburban
 from vehicles import super_shoebox
+from vehicles import thunderbird
 from vehicles import tideway
 from vehicles import tin_rocket
 from vehicles import toaster
@@ -45,7 +47,7 @@ roster = Roster(id = 'pony',
                 intro_dates = [1860, 1900, 1930, 1960, 1990, 2020],
                 # default speeds per generation, can be over-ridden if needed by setting speed kw arg on consist
                 # speeds are roughly matched to RH trucks of same era + 5mph or so (back and forth on this many times eh?)
-                speeds = {'RAIL': {'freight': [45, 45, 60, 75, 85, 90],
+                speeds = {'RAIL': {'freight': [45, 45, 60, 75, 90, 100],
                                    'fast_freight': [65, 80, 95, 110, 110, 110],
                                    'pax_mail': [65, 80, 95, 110, 125, 140]},
                           'NG': {'freight': [75, 110],
@@ -74,14 +76,16 @@ roster = Roster(id = 'pony',
                            roarer,
                            slug,
                            tug,
-                           screamer,
+                           thunderbird,
                            badger,
                            super_shoebox,
                            sparkycat,
                            toaster,
+                           screamer,
                            slammer,
                            tin_rocket,
-                           #cargo_sprinter,
+                           scooby,
+                           plastic_postbox,
                            # brit extras
                            serpentine,
                            westbourne,

@@ -1,5 +1,5 @@
 import global_constants
-from train import EngineConsist, DieselRailcar
+from train import EngineConsist, DieselRailcarPassenger
 
 consist = EngineConsist(id='anaconda',
                         base_numeric_id=30,
@@ -9,7 +9,7 @@ consist = EngineConsist(id='anaconda',
                         type_base_running_cost_points=-32,  # dibble running costs for game balance
                         intro_date=1980)
 
-consist.add_unit(type=DieselRailcar,
+consist.add_unit(type=DieselRailcarPassenger,
                  weight=65,
                  vehicle_length=8,
                  capacity_pax=55,

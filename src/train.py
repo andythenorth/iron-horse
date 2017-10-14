@@ -793,8 +793,7 @@ class StakeConsist(WagonConsist):
 
 class MailConsist(WagonConsist):
     """
-    Common base class for mail cars.
-    Mail cars also handle express freight, valuables.
+    Mail cars - also handle express freight, valuables.
     """
     def __init__(self, **kwargs):
         self.base_id = 'mail_car'
@@ -994,17 +993,31 @@ class DieselLoco(Train):
         self.visual_effect = 'VISUAL_EFFECT_DIESEL'
 
 
-class DieselRailcar(Train):
+class DieselRailcarMail(Train):
     """
-    Diesel Railcar (Single Unit).
+    Diesel Railcar (Single Unit) - mail & express freight.
     """
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.class_refit_groups = ['pax', 'mail', 'express_freight']
+        self.class_refit_groups = ['mail', 'express_freight']
         self.label_refits_allowed = [] # no specific labels needed
-        self.label_refits_disallowed = []
+        self.label_refits_disallowed = ['TOUR']
         self._capacity_mail = int(0.75 * self._capacity_pax)
         self._capacity_freight = int(0.75 * self._capacity_pax)
+        self.default_cargo = 'MAIL'
+        self.engine_class = 'ENGINE_CLASS_DIESEL'
+        self.visual_effect = 'VISUAL_EFFECT_DIESEL'
+
+
+class DieselRailcarPassenger(Train):
+    """
+    Diesel Railcar (Single Unit) - passengers.
+    """
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.class_refit_groups = ['pax']
+        self.label_refits_allowed = [] # no specific labels needed
+        self.label_refits_disallowed = []
         self.default_cargo = 'PASS'
         self.engine_class = 'ENGINE_CLASS_DIESEL'
         self.visual_effect = 'VISUAL_EFFECT_DIESEL'
