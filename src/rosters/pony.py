@@ -35,6 +35,7 @@ from vehicles import tideway
 from vehicles import tin_rocket
 from vehicles import toaster
 from vehicles import tug
+from vehicles import turtle
 from vehicles import tyburn
 from vehicles import walker
 from vehicles import westbourne
@@ -80,6 +81,7 @@ roster = Roster(id = 'pony',
                            super_shoebox,
                            sparkycat,
                            toaster,
+                           turtle,
                            slammer,
                            tin_rocket,
                            scooby,

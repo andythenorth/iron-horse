@@ -69,18 +69,7 @@ def main():
                               end_date=global_constants.max_game_date,
                               spritesheet_suffix=0)
 
-    consist = PassengerLuxuryConsist(roster='pony',
-                                     base_numeric_id=3140,
-                                     gen=6,
-                                     subtype='A')
-
-    consist.add_unit(type=PassengerCar,
-                     capacity=40,
-                     vehicle_length=8)
-
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=0)
+    # no gen 6 for brit roster, max speed reached for engines
 
     #--------------- llama ----------------------------------------------------------------------
 
