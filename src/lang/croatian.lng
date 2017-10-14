@@ -34,6 +34,7 @@ STR_NAME_SUFFIX_FRUIT_CAR                                       :Vagon za voće 
 STR_NAME_SUFFIX_HIGH_SPEED_MAIL_CAR                             :Ekspresni poštanski vagon
 STR_NAME_SUFFIX_HIGH_SPEED_PASSENGER_CAR                        :Ekspresni putnički vagon
 STR_NAME_SUFFIX_HOPPER_CAR                                      :Vagon za rasuti teret
+STR_NAME_SUFFIX_INTERMODAL_CAR                                  :Intermodalni vagon
 STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Vagon za stoku
 STR_NAME_SUFFIX_LUXURY_PASSENGER_CAR                            :Luksuzni putnički vagon
 STR_NAME_SUFFIX_MAIL_BOX_CAR                                    :Poštanski zatvoreni vagon
@@ -42,6 +43,7 @@ STR_NAME_SUFFIX_METAL_CAR                                       :Vagon za metal
 STR_NAME_SUFFIX_OPEN_CAR                                        :Otvoreni vagon
 STR_NAME_SUFFIX_PASSENGER_CAR                                   :Putnički vagon
 STR_NAME_SUFFIX_REEFER_CAR                                      :Vagon hladnjača
+STR_NAME_SUFFIX_SILO_CAR                                        :Vagon-silos
 STR_NAME_SUFFIX_STAKE_CAR                                       :Plato-vagon sa stupcima
 STR_NAME_SUFFIX_SUPPLIES_CAR                                    :Vagon za opskrbu
 STR_NAME_SUFFIX_TANK_CAR                                        :Vagon cisterna
