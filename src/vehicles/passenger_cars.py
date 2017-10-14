@@ -3,7 +3,22 @@ from train import PassengerConsist, PassengerCar
 
 
 def main():
+    #--------------- pony NG----------------------------------------------------------------------
+    consist = PassengerConsist(roster='pony',
+                               base_numeric_id=770,
+                               gen=1,
+                               subtype='A',
+                               track_type='NG')
+
+    consist.add_unit(type=PassengerCar,
+                     capacity=25,
+                     vehicle_length=6)
+
+    consist.add_model_variant(start_date=0,
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0)
     #--------------- pony ----------------------------------------------------------------------
+
     consist = PassengerConsist(roster='pony',
                                base_numeric_id=740,
                                gen=1,
@@ -44,8 +59,8 @@ def main():
                               spritesheet_suffix=0)
 
     consist = PassengerConsist(roster='pony',
-                               base_numeric_id=980,
-                               gen=6,
+                               base_numeric_id=3110,
+                               gen=4,
                                subtype='A')
 
     consist.add_unit(type=PassengerCar,
@@ -57,14 +72,26 @@ def main():
                               spritesheet_suffix=0)
 
     consist = PassengerConsist(roster='pony',
-                               base_numeric_id=770,
-                               gen=1,
-                               subtype='A',
-                               track_type='NG')
+                               base_numeric_id=3100,
+                               gen=5,
+                               subtype='A')
 
     consist.add_unit(type=PassengerCar,
-                     capacity=25,
-                     vehicle_length=6)
+                     capacity=50,
+                     vehicle_length=8)
+
+    consist.add_model_variant(start_date=0,
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0)
+
+    consist = PassengerConsist(roster='pony',
+                               base_numeric_id=980,
+                               gen=6,
+                               subtype='A')
+
+    consist.add_unit(type=PassengerCar,
+                     capacity=50,
+                     vehicle_length=8)
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
