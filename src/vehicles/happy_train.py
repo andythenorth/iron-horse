@@ -5,7 +5,7 @@ consist = EngineConsist(id='happy_train',
                         base_numeric_id=100,
                         title='Happy Train [Diesel]',
                         power=750,
-                        speed=100, # matched to freight speeds
+                        speed=100,  # matched to freight speeds
                         type_base_running_cost_points=-36,  # dibble running costs for game balance
                         intro_date=2015)  # explicit intro date by design
 

@@ -3,6 +3,25 @@ from train import TankConsist, FreightCar
 
 
 def main():
+    #--------------- pony NG ----------------------------------------------------------------------
+    consist = TankConsist(roster='pony',
+                          base_numeric_id=650,
+                          gen=1,
+                          subtype='A',
+                          track_type='NG')
+
+    consist.add_unit(type=FreightCar,
+                     vehicle_length=4)
+
+    consist.add_model_variant(start_date=0,
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0,
+                              graphics_processor=consist.graphics_processors[0])
+
+    consist.add_model_variant(start_date=0,
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=1,
+                              graphics_processor=consist.graphics_processors[1])
     #--------------- pony ----------------------------------------------------------------------
     consist = TankConsist(roster='pony',
                           base_numeric_id=630,
@@ -113,13 +132,30 @@ def main():
                               graphics_processor=consist.graphics_processors[1])
 
     consist = TankConsist(roster='pony',
-                          base_numeric_id=650,
-                          gen=1,
-                          subtype='A',
-                          track_type='NG')
+                          base_numeric_id=3180,
+                          gen=6,
+                          subtype='A')
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=4)
+                     vehicle_length=6)
+
+    consist.add_model_variant(start_date=0,
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0,
+                              graphics_processor=consist.graphics_processors[0])
+
+    consist.add_model_variant(start_date=0,
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=1,
+                              graphics_processor=consist.graphics_processors[1])
+
+    consist = TankConsist(roster='pony',
+                          base_numeric_id=3190,
+                          gen=6,
+                          subtype='B')
+
+    consist.add_unit(type=FreightCar,
+                     vehicle_length=8)
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,

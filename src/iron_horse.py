@@ -123,7 +123,8 @@ def get_consists_in_buy_menu_order():
     # when adding vehicles it's useful to know what the next free numeric ID is
     # tidy-mind problem, but do we have any vacant numeric ID slots in the currently used range?
     # 'print' eh? - but it's fine echo_message isn't intended for this kind of info, don't bother changing
-    print("Vacant numeric ID slots:", ', '.join([str(i - 10) for i in numeric_id_defender if not (i - 10) in numeric_id_defender and i is not 0 and i%10 is 0]), "and from", max(numeric_id_defender) + 10, "onwards")
+    id_gaps = [str(i - 10) for i in numeric_id_defender if not (i - 10) in numeric_id_defender and i is not 0 and i%10 is 0]
+    print("Vacant numeric ID slots:", ', '.join(id_gaps) + " and from" if len(id_gaps) > 0 else '', max(numeric_id_defender) + 10, "onwards")
 
     return consists
 

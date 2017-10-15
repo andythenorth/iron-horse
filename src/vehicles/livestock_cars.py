@@ -60,7 +60,6 @@ def main():
                               spritesheet_suffix=1,
                               graphics_processor=consist.graphics_processors[1])
 
-
     consist = LivestockConsist(roster='pony',
                                base_numeric_id=1020,
                                gen=4,
@@ -78,7 +77,6 @@ def main():
                               end_date=global_constants.max_game_date,
                               spritesheet_suffix=1,
                               graphics_processor=consist.graphics_processors[1])
-
 
     consist = LivestockConsist(roster='pony',
                                base_numeric_id=2700,
@@ -116,7 +114,6 @@ def main():
                               spritesheet_suffix=1,
                               graphics_processor=consist.graphics_processors[1])
 
-
     consist = LivestockConsist(roster='pony',
                                base_numeric_id=2710,
                                gen=5,
@@ -134,8 +131,6 @@ def main():
                               end_date=global_constants.max_game_date,
                               spritesheet_suffix=1,
                               graphics_processor=consist.graphics_processors[1])
-
-
 
     consist = LivestockConsist(roster='pony',
                                base_numeric_id=1030,
