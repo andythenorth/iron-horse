@@ -216,12 +216,16 @@ class Consist(object):
         # automatic speed, but can over-ride by passing in kwargs for consist
         if self._speed:
             return self._speed
-        else:
+        elif self.speed_class:
+            # speed by class, if speed_class is not None
             # !! eh this relies currently on railtypes being 'RAIL' or 'NG'
             # it only works because electric engines currently have their speed set explicitly :P
             # could be fixed by checking a list of railtypes
             roster_obj = self.get_roster(self.roster_id)
             return roster_obj.speeds[self.track_type][self.speed_class][self.gen - 1]
+        else:
+            # assume no speed limit
+            return None
 
     @property
     def weight(self):
@@ -270,7 +274,6 @@ class Train(object):
         self.numeric_id = kwargs.get('numeric_id', None)
         self.cargo_age_period = kwargs.get('cargo_age_period', global_constants.CARGO_AGE_PERIOD)
         self.vehicle_length = kwargs.get('vehicle_length', None)
-        self.speed = kwargs.get('speed', 0)
         self._weight = kwargs.get('weight', None)
         self._capacity_pax = kwargs.get('capacity_pax', 0)
         self._capacity_mail = kwargs.get('capacity_mail', 0)
@@ -618,7 +621,7 @@ class CabooseConsist(WagonConsist):
     def __init__(self, **kwargs):
         self.base_id = 'caboose_car'
         super().__init__(**kwargs)
-        self.speed_class = 'fast_freight'
+        self.speed_class = None # no speed limit
         # no graphics processing - don't random colour cabeese, I tried it, looks daft
         self.class_refit_groups = [] # refit nothing, don't mess with this, it breaks auto-replace
         self.label_refits_allowed = [] # no specific labels needed
@@ -1002,8 +1005,8 @@ class DieselRailcarMail(Train):
         self.class_refit_groups = ['mail', 'express_freight']
         self.label_refits_allowed = [] # no specific labels needed
         self.label_refits_disallowed = ['TOUR']
-        self._capacity_mail = int(0.75 * self._capacity_pax)
-        self._capacity_freight = int(0.75 * self._capacity_pax)
+        self._capacity_mail = kwargs.get('capacity', None)
+        self._capacity_freight = int(0.5 * self._capacity_mail)
         self.default_cargo = 'MAIL'
         self.engine_class = 'ENGINE_CLASS_DIESEL'
         self.visual_effect = 'VISUAL_EFFECT_DIESEL'
@@ -1018,6 +1021,7 @@ class DieselRailcarPassenger(Train):
         self.class_refit_groups = ['pax']
         self.label_refits_allowed = [] # no specific labels needed
         self.label_refits_disallowed = []
+        self._capacity_pax = kwargs.get('capacity', None)
         self.default_cargo = 'PASS'
         self.engine_class = 'ENGINE_CLASS_DIESEL'
         self.visual_effect = 'VISUAL_EFFECT_DIESEL'
@@ -1155,6 +1159,7 @@ class CabooseCar(FreightCar):
     """
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self._capacity_freight = 0
 
     @property
     def weight(self):

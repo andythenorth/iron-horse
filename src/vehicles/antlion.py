@@ -12,7 +12,7 @@ consist = EngineConsist(id='antlion',
 consist.add_unit(type=DieselRailcarPassenger,
                  weight=75,
                  vehicle_length=8,
-                 capacity_pax=45,
+                 capacity=45,
                  spriterow_num=0)
 
 consist.add_model_variant(start_date=0,

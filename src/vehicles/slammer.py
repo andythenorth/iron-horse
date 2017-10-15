@@ -12,7 +12,7 @@ consist = EngineConsist(id='slammer',
 consist.add_unit(type=DieselRailcarPassenger,
                  weight=37,
                  vehicle_length=8,
-                 capacity_pax=55,
+                 capacity=40,
                  spriterow_num=0)
 
 consist.add_model_variant(start_date=0,

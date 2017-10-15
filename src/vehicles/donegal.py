@@ -14,7 +14,7 @@ consist = EngineConsist(id='donegal',
 consist.add_unit(type=DieselRailcarPassenger,
                  weight=20,
                  vehicle_length=7,
-                 capacity_pax=35,
+                 capacity=35,
                  spriterow_num=0)
 
 consist.add_model_variant(start_date=0,

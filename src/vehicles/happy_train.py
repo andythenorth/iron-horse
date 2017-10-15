@@ -12,7 +12,7 @@ consist = EngineConsist(id='happy_train',
 consist.add_unit(type=DieselRailcarPassenger,
                  weight=40,
                  vehicle_length=8,
-                 capacity_pax=75,
+                 capacity=75,
                  spriterow_num=0)
 
 consist.add_model_variant(start_date=0,
