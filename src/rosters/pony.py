@@ -1,6 +1,7 @@
 from roster import Roster
 
 from vehicles import aberdare
+from vehicles import apt_thing
 from vehicles import badger
 from vehicles import bertha
 from vehicles import chaplin
@@ -16,6 +17,7 @@ from vehicles import hudswell
 from vehicles import lemon
 from vehicles import longwater
 from vehicles import northcock
+from vehicles import pendolino_thing
 from vehicles import plastic_postbox
 from vehicles import ramsbottom
 from vehicles import raven
@@ -87,6 +89,8 @@ roster = Roster(id = 'pony',
                            tin_rocket,
                            scooby,
                            plastic_postbox,
+                           apt_thing,
+                           pendolino_thing,
                            velaro_thing,
                            # brit extras
                            serpentine,
