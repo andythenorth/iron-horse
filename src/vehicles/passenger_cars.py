@@ -65,7 +65,7 @@ def main():
 
     consist.add_unit(type=PassengerCar,
                      capacity=50,
-                     vehicle_length=8)
+                     vehicle_length=6)
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
@@ -78,7 +78,7 @@ def main():
 
     consist.add_unit(type=PassengerCar,
                      capacity=50,
-                     vehicle_length=8)
+                     vehicle_length=6)
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,

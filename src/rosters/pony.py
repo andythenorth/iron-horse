@@ -1,6 +1,7 @@
 from roster import Roster
 
 from vehicles import aberdare
+from vehicles import am9_thing
 from vehicles import apt_thing
 from vehicles import badger
 from vehicles import bertha
@@ -89,6 +90,7 @@ roster = Roster(id = 'pony',
                            tin_rocket,
                            scooby,
                            plastic_postbox,
+                           am9_thing,
                            apt_thing,
                            pendolino_thing,
                            velaro_thing,
