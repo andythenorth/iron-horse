@@ -12,7 +12,7 @@ consist = EngineConsist(id='scooby',
 consist.add_unit(type=DieselRailcarMail,
                  weight=37,
                  vehicle_length=8,
-                 capacity_pax=55,
+                 capacity=40,
                  spriterow_num=3)
 
 consist.add_model_variant(start_date=0,

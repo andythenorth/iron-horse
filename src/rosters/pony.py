@@ -13,10 +13,12 @@ from vehicles import electra
 from vehicles import express_tank
 from vehicles import fleet
 from vehicles import growler
+from vehicles import happy_train
 from vehicles import high_flyer
 from vehicles import hudswell
 from vehicles import lemon
 from vehicles import longwater
+from vehicles import mail_rail
 from vehicles import northcock
 from vehicles import pendolino_thing
 from vehicles import plastic_postbox
@@ -88,8 +90,10 @@ roster = Roster(id = 'pony',
                            turtle,
                            slammer,
                            tin_rocket,
+                           happy_train,
                            scooby,
                            plastic_postbox,
+                           mail_rail,
                            am9_thing,
                            apt_thing,
                            pendolino_thing,
