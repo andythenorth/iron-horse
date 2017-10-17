@@ -5,7 +5,7 @@ consist = EngineConsist(id='mail_rail',
                         base_numeric_id=3000,
                         title='Mail Rail [Diesel]',
                         power=870,
-                        speed=100,  # matched to freight speeds
+                        speed=110,  # matched to fast (in this gen) freight speeds
                         type_base_running_cost_points=-32,  # dibble running costs for game balance
                         intro_date=2015)  # explicit intro date by design
 
