@@ -130,46 +130,6 @@ def main():
                               spritesheet_suffix=1,
                               graphics_processor=consist.graphics_processors[1])
 
-    consist = FruitVegConsist(roster='pony',
-                              base_numeric_id=3230,
-                              gen=6,
-                              subtype='A')
-
-    consist.add_unit(type=FreightCar,
-                     vehicle_length=6)
-
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
-
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=1,
-                              graphics_processor=consist.graphics_processors[1])
-
-    consist = FruitVegConsist(roster='pony',
-                              base_numeric_id=3240,
-                              gen=6,
-                              subtype='B')
-
-    consist.add_unit(type=FreightCar,
-                     vehicle_length=5)
-    # spriterow support borked for this wagon - not sure why
-
-    consist.add_unit(type=FreightCar,
-                     vehicle_length=5)
-    # spriterow support borked for this wagon - not sure why
-
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
-
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=1,
-                              graphics_processor=consist.graphics_processors[1])
     #--------------- antelope ----------------------------------------------------------------------
     consist = FruitVegConsist(roster='antelope',
                               base_numeric_id=2140,
