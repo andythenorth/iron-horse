@@ -130,6 +130,8 @@ def main():
                               spritesheet_suffix=1,
                               graphics_processor=consist.graphics_processors[1])
 
+    # no gen 6 fruit & veg cars, cap to gen 5 in Pony
+
     #--------------- antelope ----------------------------------------------------------------------
     consist = FruitVegConsist(roster='antelope',
                               base_numeric_id=2140,

@@ -112,4 +112,6 @@ def main():
                               spritesheet_suffix=1,
                               graphics_processor=consist.graphics_processors[1])
 
+    # no gen 6 covered hopper cars, cap to gen 5 in Pony
+
     #--------------- llama ----------------------------------------------------------------------

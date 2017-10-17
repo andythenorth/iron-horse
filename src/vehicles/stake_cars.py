@@ -88,6 +88,8 @@ def main():
                               end_date=global_constants.max_game_date,
                               spritesheet_suffix=0)
 
+    # no gen 6 stake cars, cap to gen 5 in Pony
+
     # --------------- antelope ----------------------------------------------------------------------
 
     #--------------- llama ----------------------------------------------------------------------

@@ -134,6 +134,8 @@ def main():
                               spritesheet_suffix=1,
                               graphics_processor=consist.graphics_processors[1])
 
+    # no gen 6 hopper cars, cap to gen 5 in Pony
+
     #--------------- llama ----------------------------------------------------------------------
     consist = HopperConsist(roster='llama',
                             base_numeric_id=1100,

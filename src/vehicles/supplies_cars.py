@@ -95,6 +95,8 @@ def main():
                               spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
+    # no gen 6 supplies cars, cap to gen 5 in Pony
+
     #--------------- antelope ----------------------------------------------------------------------
 
     #--------------- llama ----------------------------------------------------------------------
