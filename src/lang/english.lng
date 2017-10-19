@@ -22,27 +22,58 @@ STR_NAME_SUFFIX_METRO_CAR                                       :Car (Metro)
 STR_NAME_SUFFIX_METRO_TRAIN                                     :(Metro)
 STR_NAME_SUFFIX_STEAM                                           :(Steam)
 
-STR_NAME_SUFFIX_BOX_CAR                                         :Box Car
+STR_NAME_SUFFIX_BOX_CAR_SMALL                                   :Small Box Car
+STR_NAME_SUFFIX_BOX_CAR_MEDIUM                                  :Medium Box Car
+STR_NAME_SUFFIX_BOX_CAR_LARGE                                   :Large Box Car
 STR_NAME_SUFFIX_CABOOSE_CAR                                     :Caboose Car
-STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Covered Hopper Car
-STR_NAME_SUFFIX_DUMP_CAR                                        :Dump Car
+STR_NAME_SUFFIX_COVERED_HOPPER_CAR_SMALL                        :Small Covered Hopper Car
+STR_NAME_SUFFIX_COVERED_HOPPER_CAR_MEDIUM                       :Medium Covered Hopper Car
+STR_NAME_SUFFIX_COVERED_HOPPER_CAR_LARGE                        :Large Covered Hopper Car
+STR_NAME_SUFFIX_DUMP_CAR_SMALL                                  :Small Dump Car
+STR_NAME_SUFFIX_DUMP_CAR_MEDIUM                                 :Medium Dump Car
+STR_NAME_SUFFIX_DUMP_CAR_LARGE                                  :Large Dump Car
 STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Edibles Tank Car
-STR_NAME_SUFFIX_FLAT_CAR                                        :Flat Car
-STR_NAME_SUFFIX_FRUIT_CAR                                       :Fruit & Vegetables Car
+STR_NAME_SUFFIX_FLAT_CAR_SMALL                                  :Small Flat Car
+STR_NAME_SUFFIX_FLAT_CAR_MEDIUM                                 :Medium Flat Car
+STR_NAME_SUFFIX_FLAT_CAR_LARGE                                  :Large Flat Car
+STR_NAME_SUFFIX_FRUIT_CAR_SMALL                                 :Small Fruit & Vegetables Car
+STR_NAME_SUFFIX_FRUIT_CAR_MEDIUM                                :Medium Fruit & Vegetables Car
+STR_NAME_SUFFIX_FRUIT_CAR_LARGE                                 :Large Fruit & Vegetables Car
 STR_NAME_SUFFIX_HIGH_SPEED_MAIL_CAR                             :High Speed Mail Car
 STR_NAME_SUFFIX_HIGH_SPEED_PASSENGER_CAR                        :High Speed Passenger Car
-STR_NAME_SUFFIX_HOPPER_CAR                                      :Hopper Car
-STR_NAME_SUFFIX_INTERMODAL_CAR                                  :Intermodal Car
-STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Livestock Car
+STR_NAME_SUFFIX_HOPPER_CAR_SMALL                                :Small Hopper Car
+STR_NAME_SUFFIX_HOPPER_CAR_MEDIUM                               :Medium Hopper Car
+STR_NAME_SUFFIX_HOPPER_CAR_LARGE                                :Large Hopper Car
+STR_NAME_SUFFIX_INTERMODAL_CAR_SMALL                            :Small Intermodal Car
+STR_NAME_SUFFIX_INTERMODAL_CAR_MEDIUM                           :Medium Intermodal Car
+STR_NAME_SUFFIX_INTERMODAL_CAR_LARGE                            :Large Intermodal Car
+STR_NAME_SUFFIX_LIVESTOCK_CAR_SMALL                             :Small Livestock Car
+STR_NAME_SUFFIX_LIVESTOCK_CAR_MEDIUM                            :Medium Livestock Car
+STR_NAME_SUFFIX_LIVESTOCK_CAR_LARGE                             :Large Livestock Car
 STR_NAME_SUFFIX_LUXURY_PASSENGER_CAR                            :Luxury Passenger Car
-STR_NAME_SUFFIX_MAIL_BOX_CAR                                    :Mail Box Car
-STR_NAME_SUFFIX_MAIL_CAR                                        :Mail Car
-STR_NAME_SUFFIX_METAL_CAR                                       :Metal Car
-STR_NAME_SUFFIX_OPEN_CAR                                        :Open Car
+STR_NAME_SUFFIX_MAIL_CAR_SMALL                                  :Small Mail Car
+STR_NAME_SUFFIX_MAIL_CAR_MEDIUM                                 :Medium Mail Car
+STR_NAME_SUFFIX_MAIL_CAR_LARGE                                  :Large Mail Car
+STR_NAME_SUFFIX_METAL_CAR_SMALL                                 :Small Metal Car
+STR_NAME_SUFFIX_METAL_CAR_MEDIUM                                :Medium Metal Car
+STR_NAME_SUFFIX_METAL_CAR_LARGE                                 :Large Metal Car
+STR_NAME_SUFFIX_OPEN_CAR_SMALL                                  :Small Open Car
+STR_NAME_SUFFIX_OPEN_CAR_MEDIUM                                 :Medium Open Car
+STR_NAME_SUFFIX_OPEN_CAR_LARGE                                  :Large Open Car
 STR_NAME_SUFFIX_PASSENGER_CAR                                   :Passenger Car
-STR_NAME_SUFFIX_REEFER_CAR                                      :Refrigerated Car
-STR_NAME_SUFFIX_SILO_CAR                                        :Silo Car
-STR_NAME_SUFFIX_STAKE_CAR                                       :Stake Car
-STR_NAME_SUFFIX_SUPPLIES_CAR                                    :Supplies Car
-STR_NAME_SUFFIX_TANK_CAR                                        :Tank Car
+STR_NAME_SUFFIX_REEFER_CAR_SMALL                                :Small Refrigerated Car
+STR_NAME_SUFFIX_REEFER_CAR_MEDIUM                               :Medium Refrigerated Car
+STR_NAME_SUFFIX_REEFER_CAR_LARGE                                :Large Refrigerated Car
+STR_NAME_SUFFIX_SILO_CAR_SMALL                                  :Silo Car
+STR_NAME_SUFFIX_SILO_CAR_MEDIUM                                 :Medium Silo Car
+STR_NAME_SUFFIX_SILO_CAR_LARGE                                  :Large Silo Car
+STR_NAME_SUFFIX_STAKE_CAR_SMALL                                 :Small Stake Car
+STR_NAME_SUFFIX_STAKE_CAR_MEDIUM                                :Medium Stake Car
+STR_NAME_SUFFIX_STAKE_CAR_LARGE                                 :Large Stake Car
+STR_NAME_SUFFIX_SUPPLIES_CAR_SMALL                              :Small Supplies Car
+STR_NAME_SUFFIX_SUPPLIES_CAR_MEDIUM                             :Medium Supplies Car
+STR_NAME_SUFFIX_SUPPLIES_CAR_LARGE                              :Large Supplies Car
+STR_NAME_SUFFIX_TANK_CAR_SMALL                                  :Small Tank Car
+STR_NAME_SUFFIX_TANK_CAR_MEDIUM                                 :Medium Tank Car
+STR_NAME_SUFFIX_TANK_CAR_LARGE                                  :Large Tank Car
 STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Vehicle Transporter Car

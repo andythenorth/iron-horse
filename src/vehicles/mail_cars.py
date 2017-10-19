@@ -74,7 +74,7 @@ def main():
     consist = MailConsist(roster='pony',
                           base_numeric_id=2300,
                           gen=3,
-                          subtype='A')
+                          subtype='B')
 
     consist.add_unit(type=MailCar,
                      capacity=40,
@@ -87,7 +87,7 @@ def main():
     consist = MailConsist(roster='pony',
                           base_numeric_id=940,
                           gen=3,
-                          subtype='B')
+                          subtype='C')
 
     consist.add_unit(type=MailCar,
                      capacity=40,
@@ -100,7 +100,7 @@ def main():
     consist = MailConsist(roster='pony',
                           base_numeric_id=3160,
                           gen=4,
-                          subtype='A')
+                          subtype='B')
 
     consist.add_unit(type=MailCar,
                      capacity=55,
@@ -113,7 +113,7 @@ def main():
     consist = MailConsist(roster='pony',
                           base_numeric_id=3170,
                           gen=4,
-                          subtype='B')
+                          subtype='C')
 
     consist.add_unit(type=MailCar,
                      capacity=55,
@@ -126,7 +126,7 @@ def main():
     consist = MailConsist(roster='pony',
                           base_numeric_id=970,
                           gen=5,
-                          subtype='A')
+                          subtype='B')
 
     consist.add_unit(type=MailCar,
                      capacity=55,
@@ -139,7 +139,7 @@ def main():
     consist = MailConsist(roster='pony',
                           base_numeric_id=3140,
                           gen=5,
-                          subtype='B')
+                          subtype='C')
 
     consist.add_unit(type=MailCar,
                      capacity=55,

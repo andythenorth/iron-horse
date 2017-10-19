@@ -134,7 +134,41 @@ def main():
                               spritesheet_suffix=1,
                               graphics_processor=consist.graphics_processors[1])
 
-    # no gen 6 hopper cars, cap to gen 5 in Pony
+    consist = HopperConsist(roster='pony',
+                            base_numeric_id=3010,
+                            gen=6,
+                            subtype='B')
+
+    consist.add_unit(type=FreightCar,
+                     vehicle_length=6)
+
+    consist.add_model_variant(start_date=0,
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0,
+                              graphics_processor=consist.graphics_processors[0])
+
+    consist.add_model_variant(start_date=0,
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=1,
+                              graphics_processor=consist.graphics_processors[1])
+
+    consist = HopperConsist(roster='pony',
+                            base_numeric_id=3020,
+                            gen=6,
+                            subtype='C')
+
+    consist.add_unit(type=FreightCar,
+                     vehicle_length=8)
+
+    consist.add_model_variant(start_date=0,
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0,
+                              graphics_processor=consist.graphics_processors[0])
+
+    consist.add_model_variant(start_date=0,
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=1,
+                              graphics_processor=consist.graphics_processors[1])
 
     #--------------- llama ----------------------------------------------------------------------
     consist = HopperConsist(roster='llama',
