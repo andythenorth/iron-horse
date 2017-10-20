@@ -97,7 +97,7 @@ def main():
     consist = FruitVegConsist(roster='pony',
                               base_numeric_id=2650,
                               gen=5,
-                              subtype='A')
+                              subtype='B')
 
     consist.add_unit(type=FreightCar,
                      vehicle_length=6)
@@ -115,7 +115,7 @@ def main():
     consist = FruitVegConsist(roster='pony',
                               base_numeric_id=2660,
                               gen=5,
-                              subtype='B')
+                              subtype='C')
 
     consist.add_unit(type=FreightCar,
                      vehicle_length=8)
