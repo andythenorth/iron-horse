@@ -41,6 +41,9 @@ STR_NAME_SUFFIX_DUMP_CAR_SMALL                                  :Small Dump Car
 STR_NAME_SUFFIX_DUMP_CAR_MEDIUM                                 :Medium Dump Car
 STR_NAME_SUFFIX_DUMP_CAR_LARGE                                  :Large Dump Car
 STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Edibles Tank Car
+STR_NAME_SUFFIX_EDIBLES_TANK_CAR_SMALL                          :Small Edibles Tank Car
+STR_NAME_SUFFIX_EDIBLES_TANK_CAR_MEDIUM                         :Medium Edibles Tank Car
+STR_NAME_SUFFIX_EDIBLES_TANK_CAR_LARGE                          :Large Edibles Tank Car
 STR_NAME_SUFFIX_FLAT_CAR                                        :Flat Car
 STR_NAME_SUFFIX_FLAT_CAR_SMALL                                  :Small Flat Car
 STR_NAME_SUFFIX_FLAT_CAR_MEDIUM                                 :Medium Flat Car
@@ -98,3 +101,6 @@ STR_NAME_SUFFIX_TANK_CAR_SMALL                                  :Small Tank Car
 STR_NAME_SUFFIX_TANK_CAR_MEDIUM                                 :Medium Tank Car
 STR_NAME_SUFFIX_TANK_CAR_LARGE                                  :Large Tank Car
 STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Vehicle Transporter Car
+STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR_SMALL                   :Small Vehicle Transporter Car
+STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR_MEDIUM                  :Medium Vehicle Transporter Car
+STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR_LARGE                   :Large Vehicle Transporter Car
