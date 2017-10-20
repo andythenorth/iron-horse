@@ -3,6 +3,27 @@ from train import FlatConsist, FreightCar
 
 
 def main():
+    #--------------- pony NG ----------------------------------------------------------------------
+    consist = FlatConsist(roster='pony',
+                          base_numeric_id=1170,
+                          gen=1,
+                          subtype='A',
+                          track_type='NG')
+
+    consist.add_unit(type=FreightCar,
+                     cargo_length=3,
+                     vehicle_length=3)
+
+    consist.add_model_variant(start_date=0,
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0,
+                              graphics_processor=consist.graphics_processors[0])
+
+    consist.add_model_variant(start_date=0,
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=1,
+                              graphics_processor=consist.graphics_processors[1])
+
     #--------------- pony ----------------------------------------------------------------------
     consist = FlatConsist(roster='pony',
                           base_numeric_id=1140,
@@ -45,7 +66,7 @@ def main():
     consist = FlatConsist(roster='pony',
                           base_numeric_id=1160,
                           gen=3,
-                          subtype='A')
+                          subtype='B')
 
     consist.add_unit(type=FreightCar,
                      cargo_length=3,
@@ -64,7 +85,7 @@ def main():
     consist = FlatConsist(roster='pony',
                           base_numeric_id=2550,
                           gen=3,
-                          subtype='B')
+                          subtype='C')
 
     consist.add_unit(type=FreightCar,
                      cargo_length=3,
@@ -83,7 +104,7 @@ def main():
     consist = FlatConsist(roster='pony',
                           base_numeric_id=2540,
                           gen=4,
-                          subtype='A')
+                          subtype='B')
 
     consist.add_unit(type=FreightCar,
                      cargo_length=3,
@@ -102,7 +123,7 @@ def main():
     consist = FlatConsist(roster='pony',
                           base_numeric_id=2530,
                           gen=4,
-                          subtype='B')
+                          subtype='C')
 
     consist.add_unit(type=FreightCar,
                      cargo_length=3,
@@ -121,7 +142,7 @@ def main():
     consist = FlatConsist(roster='pony',
                           base_numeric_id=2520,
                           gen=5,
-                          subtype='A')
+                          subtype='B')
 
     consist.add_unit(type=FreightCar,
                      cargo_length=3,
@@ -140,31 +161,11 @@ def main():
     consist = FlatConsist(roster='pony',
                           base_numeric_id=2510,
                           gen=5,
-                          subtype='B')
+                          subtype='C')
 
     consist.add_unit(type=FreightCar,
                      cargo_length=3,
                      vehicle_length=8)
-
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
-
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=1,
-                              graphics_processor=consist.graphics_processors[1])
-
-    consist = FlatConsist(roster='pony',
-                          base_numeric_id=1170,
-                          gen=1,
-                          subtype='A',
-                          track_type='NG')
-
-    consist.add_unit(type=FreightCar,
-                     cargo_length=3,
-                     vehicle_length=3)
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
