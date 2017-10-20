@@ -23,6 +23,8 @@ STR_NAME_SUFFIX_METRO_CAR                                       :차량(지하�
 STR_NAME_SUFFIX_METRO_TRAIN                                     :(지하철)
 STR_NAME_SUFFIX_STEAM                                           :(증기)
 
+# the 'small x car' etc isn't wise to split to substrings, the size modifier might vary in context per language
+# so just write out 3 full strings for each car type
 STR_NAME_SUFFIX_BOX_CAR                                         :유개차
 STR_NAME_SUFFIX_CABOOSE_CAR                                     :차장차
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :유개호퍼차

@@ -24,6 +24,8 @@ STR_NAME_SUFFIX_METRO_CAR                                       :Carro (Ferrovia
 STR_NAME_SUFFIX_METRO_TRAIN                                     :(Ferrovia suburbana)
 STR_NAME_SUFFIX_STEAM                                           :(A vapore)
 
+# the 'small x car' etc isn't wise to split to substrings, the size modifier might vary in context per language
+# so just write out 3 full strings for each car type
 STR_NAME_SUFFIX_BOX_CAR                                         :Carro chiuso
 STR_NAME_SUFFIX_CABOOSE_CAR                                     :Carro di fine convoglio
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Carro a tramoggia coperto

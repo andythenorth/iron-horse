@@ -23,6 +23,8 @@ STR_NAME_SUFFIX_METRO_CAR                                       :Voiture (Métro
 STR_NAME_SUFFIX_METRO_TRAIN                                     :(Métro)
 STR_NAME_SUFFIX_STEAM                                           :(Vapeur)
 
+# the 'small x car' etc isn't wise to split to substrings, the size modifier might vary in context per language
+# so just write out 3 full strings for each car type
 STR_NAME_SUFFIX_BOX_CAR                                         :Fourgon
 STR_NAME_SUFFIX_CABOOSE_CAR                                     :Fourgon de queue
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Wagon trémie couvert
