@@ -3,9 +3,22 @@ from train import CabooseConsist, CabooseCar
 
 
 def main():
+    #--------------- pony NG ----------------------------------------------------------------------
+    consist = CabooseConsist(roster='pony',
+                             base_numeric_id=1290,
+                             gen=1,
+                             subtype='A',
+                             track_type='NG')
+
+    consist.add_unit(type=CabooseCar,
+                     vehicle_length=4)
+
+    consist.add_model_variant(start_date=0,
+                              end_date=global_constants.max_game_date,
+                              spritesheet_suffix=0)
+
     #--------------- pony ----------------------------------------------------------------------
-    consist = CabooseConsist(title='[Caboose Car] Short',
-                             roster='pony',
+    consist = CabooseConsist(roster='pony',
                              base_numeric_id=1280,
                              gen=1,
                              subtype='A')
@@ -17,28 +30,13 @@ def main():
                               end_date=global_constants.max_game_date,
                               spritesheet_suffix=0)
 
-    consist = CabooseConsist(title='[Caboose Car] Long',
-                             roster='pony',
+    consist = CabooseConsist(roster='pony',
                              base_numeric_id=2210,
                              gen=1,
                              subtype='B')
 
     consist.add_unit(type=CabooseCar,
                      vehicle_length=6)
-
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=0)
-
-    consist = CabooseConsist(title='[Caboose Car]',
-                             roster='pony',
-                             base_numeric_id=1290,
-                             gen=1,
-                             subtype='A',
-                             track_type='NG')
-
-    consist.add_unit(type=CabooseCar,
-                     vehicle_length=4)
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,

@@ -626,6 +626,12 @@ class CabooseConsist(WagonConsist):
     def __init__(self, **kwargs):
         self.base_id = 'caboose_car'
         super().__init__(**kwargs)
+        if self.subtype == "C":
+            self.title = '[Caboose Car Large]'
+        elif self.subtype == "B":
+            self.title = '[Caboose Car Medium]'
+        else:
+            self.title = '[Caboose Car Small]'
         self.speed_class = None # no speed limit
         # no graphics processing - don't random colour cabeese, I tried it, looks daft
         self.class_refit_groups = [] # refit nothing, don't mess with this, it breaks auto-replace
