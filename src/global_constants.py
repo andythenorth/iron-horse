@@ -149,10 +149,16 @@ CARGO_AGE_PERIOD = 185
 # OpenTTD's max date
 max_game_date = 5000001
 
-# standard offsets for trains on 10/8 spritesheet (n.b. length < 3 isn't possible with 3-part articulated vehicles)
+# standard offsets for trains
 default_spritesheet_offsets = {'3': [[-3, -25], [-3, -21], [-16, -12], [5, -17], [-3, -14], [-14, -17], [-16, -12], [-8, -23]],
                                '4': [[-3, -23], [-4, -20], [-16, -12], [3, -17], [-3, -14], [-14, -17], [-16, -12], [-8, -22]],
                                '5': [[-3, -22], [-6, -19], [-16, -12], [1, -16], [-3, -14], [-16, -16], [-16, -12], [-8, -21]],
                                '6': [[-3, -22], [-8, -18], [-16, -12], [-1, -15], [-3, -14], [-16, -15], [-16, -12], [-8, -19]],
                                '7': [[-3, -20], [-8, -18], [-16, -12], [-1, -15], [-3, -14], [-17, -15], [-16, -12], [-10, -19]],
                                '8': [[-3, -20], [-10, -17], [-16, -12], [-4, -15], [-3, -13], [-17, -14], [-16, -12], [-10, -18]]}
+
+# spritesheet bounding boxes, each defined by a 3 tuple (left x, width, height);
+# upper y is determined by spritesheet row position, so isn't defined as a constant
+spritesheet_bounding_boxes = ((60, 8, 29), (76, 26, 24), (107, 40, 16), (156, 26, 24),
+                              (188, 8, 29), (200, 26, 24), (235, 40, 16), (284, 26, 24))
+
