@@ -27,25 +27,82 @@ STR_NAME_SUFFIX_STEAM                                           :(Para)
 # the 'small x car' etc isn't wise to split to substrings, the size modifier might vary in context per language
 # so just write out 3 full strings for each car type
 STR_NAME_SUFFIX_BOX_CAR                                         :Zatvoreni vagon
+STR_NAME_SUFFIX_BOX_CAR_SMALL                                   :Mali zatvoreni vagon
+STR_NAME_SUFFIX_BOX_CAR_MEDIUM                                  :Srednji zatvoreni vagon
+STR_NAME_SUFFIX_BOX_CAR_LARGE                                   :Veliki zatvoreni vagon
 STR_NAME_SUFFIX_CABOOSE_CAR                                     :Vagon za kočničara
+STR_NAME_SUFFIX_CABOOSE_CAR_SMALL                               :Mali vagon za skretničara
+STR_NAME_SUFFIX_CABOOSE_CAR_MEDIUM                              :Srednji vagon za skretničara
+STR_NAME_SUFFIX_CABOOSE_CAR_LARGE                               :Veliki vagon za skretničara
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Pokriveni vagon za rasuti teret
+STR_NAME_SUFFIX_COVERED_HOPPER_CAR_SMALL                        :Mali pokriveni vagon za rasuti teret
+STR_NAME_SUFFIX_COVERED_HOPPER_CAR_MEDIUM                       :Srednji pokriveni vagon za rasuti teret
+STR_NAME_SUFFIX_COVERED_HOPPER_CAR_LARGE                        :Veliki pokriveni vagon za rasuti teret
 STR_NAME_SUFFIX_DUMP_CAR                                        :Kiper
+STR_NAME_SUFFIX_DUMP_CAR_SMALL                                  :Mali vagon-kiper
+STR_NAME_SUFFIX_DUMP_CAR_MEDIUM                                 :Srednji vagon-kiper
+STR_NAME_SUFFIX_DUMP_CAR_LARGE                                  :Veliki vagon-kiper
 STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Vagon cisterna za prehrambene proizvode
+STR_NAME_SUFFIX_EDIBLES_TANK_CAR_SMALL                          :Mali vagon cisterna za prehrambene proizvode
+STR_NAME_SUFFIX_EDIBLES_TANK_CAR_MEDIUM                         :Srednji vagon cisterna za prehrambene proizvode
+STR_NAME_SUFFIX_EDIBLES_TANK_CAR_LARGE                          :Veliki vagon cisterna za prehrambene proizvode
 STR_NAME_SUFFIX_FLAT_CAR                                        :Plato-vagon
+STR_NAME_SUFFIX_FLAT_CAR_SMALL                                  :Mali plato-vagon
+STR_NAME_SUFFIX_FLAT_CAR_MEDIUM                                 :Srednji plato-vagon
+STR_NAME_SUFFIX_FLAT_CAR_LARGE                                  :Veliki plato-vagon
 STR_NAME_SUFFIX_FRUIT_CAR                                       :Vagon za voće i povrće
+STR_NAME_SUFFIX_FRUIT_CAR_SMALL                                 :Mali vagon za voće i povrće
+STR_NAME_SUFFIX_FRUIT_CAR_MEDIUM                                :Srednji vagon za voće i povrće
+STR_NAME_SUFFIX_FRUIT_CAR_LARGE                                 :Veliki vagon za voće i povrće
 STR_NAME_SUFFIX_HIGH_SPEED_MAIL_CAR                             :Ekspresni poštanski vagon
 STR_NAME_SUFFIX_HIGH_SPEED_PASSENGER_CAR                        :Ekspresni putnički vagon
 STR_NAME_SUFFIX_HOPPER_CAR                                      :Vagon za rasuti teret
+STR_NAME_SUFFIX_HOPPER_CAR_SMALL                                :Mali vagon za rasute terete
+STR_NAME_SUFFIX_HOPPER_CAR_MEDIUM                               :Srednji vagon za rasuti teret
+STR_NAME_SUFFIX_HOPPER_CAR_LARGE                                :Veliki vagon za rasuti teret
 STR_NAME_SUFFIX_INTERMODAL_CAR                                  :Intermodalni vagon
+STR_NAME_SUFFIX_INTERMODAL_CAR_SMALL                            :Mali intermodalni vagon
+STR_NAME_SUFFIX_INTERMODAL_CAR_MEDIUM                           :Srednji intermodalni vagon
+STR_NAME_SUFFIX_INTERMODAL_CAR_LARGE                            :Veliki intermodalni vagon
 STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Vagon za stoku
+STR_NAME_SUFFIX_LIVESTOCK_CAR_SMALL                             :Mali vagon za stoku
+STR_NAME_SUFFIX_LIVESTOCK_CAR_MEDIUM                            :Srednji vagon za stoku
+STR_NAME_SUFFIX_LIVESTOCK_CAR_LARGE                             :Veliki vagon za stoku
 STR_NAME_SUFFIX_LUXURY_PASSENGER_CAR                            :Luksuzni putnički vagon
 STR_NAME_SUFFIX_MAIL_CAR                                        :Poštanski vagon
+STR_NAME_SUFFIX_MAIL_CAR_SMALL                                  :Mali poštanski vagon
+STR_NAME_SUFFIX_MAIL_CAR_MEDIUM                                 :Srednji poštanski vagon
+STR_NAME_SUFFIX_MAIL_CAR_LARGE                                  :Veliki poštanski vagon
 STR_NAME_SUFFIX_METAL_CAR                                       :Vagon za metal
+STR_NAME_SUFFIX_METAL_CAR_SMALL                                 :Mali metalni vagon
+STR_NAME_SUFFIX_METAL_CAR_MEDIUM                                :Srednji metalni vagon
+STR_NAME_SUFFIX_METAL_CAR_LARGE                                 :Veliki metalni vagon
 STR_NAME_SUFFIX_OPEN_CAR                                        :Otvoreni vagon
+STR_NAME_SUFFIX_OPEN_CAR_SMALL                                  :Mali otvoreni vagon
+STR_NAME_SUFFIX_OPEN_CAR_MEDIUM                                 :Srednji otvoreni vagon
+STR_NAME_SUFFIX_OPEN_CAR_LARGE                                  :Veliki otvoreni vagon
 STR_NAME_SUFFIX_PASSENGER_CAR                                   :Putnički vagon
 STR_NAME_SUFFIX_REEFER_CAR                                      :Vagon hladnjača
+STR_NAME_SUFFIX_REEFER_CAR_SMALL                                :Mali vagon hladnjača
+STR_NAME_SUFFIX_REEFER_CAR_MEDIUM                               :Srednji vagon-hladnjača
+STR_NAME_SUFFIX_REEFER_CAR_LARGE                                :Veliki vagon hladnjača
 STR_NAME_SUFFIX_SILO_CAR                                        :Vagon-silos
+STR_NAME_SUFFIX_SILO_CAR_SMALL                                  :Mali vagon-silos
+STR_NAME_SUFFIX_SILO_CAR_MEDIUM                                 :Srednji vagon-silos
+STR_NAME_SUFFIX_SILO_CAR_LARGE                                  :Veliki vagon-silos
 STR_NAME_SUFFIX_STAKE_CAR                                       :Plato-vagon sa stupcima
+STR_NAME_SUFFIX_STAKE_CAR_SMALL                                 :Mali plato-vagon sa stupcima
+STR_NAME_SUFFIX_STAKE_CAR_MEDIUM                                :Srednji plato-vagon sa stupcima
+STR_NAME_SUFFIX_STAKE_CAR_LARGE                                 :Veliki plato-vagon sa stupcima
 STR_NAME_SUFFIX_SUPPLIES_CAR                                    :Vagon za opskrbu
+STR_NAME_SUFFIX_SUPPLIES_CAR_SMALL                              :Mali dostavni vagon
+STR_NAME_SUFFIX_SUPPLIES_CAR_MEDIUM                             :Srednji dostavni vagon
+STR_NAME_SUFFIX_SUPPLIES_CAR_LARGE                              :Veliki dostavni vagon
 STR_NAME_SUFFIX_TANK_CAR                                        :Vagon cisterna
-STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Kamion za prijevoz vozila
+STR_NAME_SUFFIX_TANK_CAR_SMALL                                  :Mali vagon cisterna
+STR_NAME_SUFFIX_TANK_CAR_MEDIUM                                 :Srednji vagon cisterna
+STR_NAME_SUFFIX_TANK_CAR_LARGE                                  :Veliki vagon cisterna
+STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Vagon za prijevoz vozila
+STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR_SMALL                   :Mali vagon za prijevoz vozila
+STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR_MEDIUM                  :Srednji vagon za prijevoz vozila
+STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR_LARGE                   :Veliki vagon za prijevoz vozila
