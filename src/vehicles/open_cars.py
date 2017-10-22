@@ -34,9 +34,6 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist.add_model_variant(spritesheet_suffix=1,
-                              graphics_processor=consist.graphics_processors[1])
-
     # no new type A for gen 2, gen 1 type A continues
 
     consist = OpenConsist(roster='pony',
@@ -51,9 +48,6 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist.add_model_variant(spritesheet_suffix=1,
-                              graphics_processor=consist.graphics_processors[1])
-
     consist = OpenConsist(roster='pony',
                           base_numeric_id=840,
                           gen=3,
@@ -65,9 +59,6 @@ def main():
 
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
-
-    consist.add_model_variant(spritesheet_suffix=1,
-                              graphics_processor=consist.graphics_processors[1])
 
     consist = OpenConsist(roster='pony',
                           base_numeric_id=2440,
@@ -81,9 +72,6 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist.add_model_variant(spritesheet_suffix=1,
-                              graphics_processor=consist.graphics_processors[1])
-
     consist = OpenConsist(roster='pony',
                           base_numeric_id=1450,
                           gen=4,
@@ -95,9 +83,6 @@ def main():
 
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
-
-    consist.add_model_variant(spritesheet_suffix=1,
-                              graphics_processor=consist.graphics_processors[1])
 
     consist = OpenConsist(roster='pony',
                           base_numeric_id=2450,
@@ -111,9 +96,6 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist.add_model_variant(spritesheet_suffix=1,
-                              graphics_processor=consist.graphics_processors[1])
-
     consist = OpenConsist(roster='pony',
                           base_numeric_id=2460,
                           gen=5,
@@ -126,9 +108,6 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist.add_model_variant(spritesheet_suffix=1,
-                              graphics_processor=consist.graphics_processors[1])
-
     consist = OpenConsist(roster='pony',
                           base_numeric_id=2470,
                           gen=5,
@@ -140,9 +119,6 @@ def main():
 
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
-
-    consist.add_model_variant(spritesheet_suffix=1,
-                              graphics_processor=consist.graphics_processors[1])
 
     # no gen 6 open cars, cap to gen 5 in Pony
 
@@ -159,9 +135,6 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist.add_model_variant(spritesheet_suffix=1,
-                              graphics_processor=consist.graphics_processors[1])
-
     consist = OpenConsist(roster='llama',
                           base_numeric_id=1330,
                           gen=2,
@@ -173,9 +146,6 @@ def main():
 
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
-
-    consist.add_model_variant(spritesheet_suffix=1,
-                              graphics_processor=consist.graphics_processors[1])
 
     consist = OpenConsist(roster='llama',
                           base_numeric_id=870,
@@ -190,9 +160,6 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist.add_model_variant(spritesheet_suffix=1,
-                              graphics_processor=consist.graphics_processors[1])
-
     consist = OpenConsist(roster='llama',
                           base_numeric_id=1320,
                           gen=2,
@@ -205,9 +172,6 @@ def main():
 
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
-
-    consist.add_model_variant(spritesheet_suffix=1,
-                              graphics_processor=consist.graphics_processors[1])
 
     #--------------- antelope ----------------------------------------------------------------------
     consist = OpenConsist(roster='antelope',
@@ -222,9 +186,6 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist.add_model_variant(spritesheet_suffix=1,
-                              graphics_processor=consist.graphics_processors[1])
-
     consist = OpenConsist(roster='antelope',
                           base_numeric_id=1770,
                           gen=2,
@@ -236,9 +197,6 @@ def main():
 
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
-
-    consist.add_model_variant(spritesheet_suffix=1,
-                              graphics_processor=consist.graphics_processors[1])
 
     consist = OpenConsist(roster='antelope',
                           base_numeric_id=2090,
@@ -253,9 +211,6 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist.add_model_variant(spritesheet_suffix=1,
-                              graphics_processor=consist.graphics_processors[1])
-
     consist = OpenConsist(roster='antelope',
                           base_numeric_id=1830,
                           gen=2,
@@ -268,9 +223,6 @@ def main():
 
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
-
-    consist.add_model_variant(spritesheet_suffix=1,
-                              graphics_processor=consist.graphics_processors[1])
 
     consist = OpenConsist(roster='antelope',
                           base_numeric_id=1820,

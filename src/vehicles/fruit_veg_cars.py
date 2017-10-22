@@ -14,9 +14,6 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist.add_model_variant(spritesheet_suffix=1,
-                              graphics_processor=consist.graphics_processors[1])
-
     consist = FruitVegConsist(roster='pony',
                               base_numeric_id=2630,
                               gen=3,
@@ -27,9 +24,6 @@ def main():
 
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
-
-    consist.add_model_variant(spritesheet_suffix=1,
-                              graphics_processor=consist.graphics_processors[1])
 
     consist = FruitVegConsist(roster='pony',
                               base_numeric_id=2620,
@@ -42,9 +36,6 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist.add_model_variant(spritesheet_suffix=1,
-                              graphics_processor=consist.graphics_processors[1])
-
     consist = FruitVegConsist(roster='pony',
                               base_numeric_id=2600,
                               gen=4,
@@ -55,9 +46,6 @@ def main():
 
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
-
-    consist.add_model_variant(spritesheet_suffix=1,
-                              graphics_processor=consist.graphics_processors[1])
 
     consist = FruitVegConsist(roster='pony',
                               base_numeric_id=2610,
@@ -70,9 +58,6 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist.add_model_variant(spritesheet_suffix=1,
-                              graphics_processor=consist.graphics_processors[1])
-
     consist = FruitVegConsist(roster='pony',
                               base_numeric_id=2650,
                               gen=5,
@@ -84,9 +69,6 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist.add_model_variant(spritesheet_suffix=1,
-                              graphics_processor=consist.graphics_processors[1])
-
     consist = FruitVegConsist(roster='pony',
                               base_numeric_id=2660,
                               gen=5,
@@ -97,9 +79,6 @@ def main():
 
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
-
-    consist.add_model_variant(spritesheet_suffix=1,
-                              graphics_processor=consist.graphics_processors[1])
 
     # no gen 6 fruit & veg cars, cap to gen 5 in Pony
 
@@ -116,9 +95,6 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist.add_model_variant(spritesheet_suffix=1,
-                              graphics_processor=consist.graphics_processors[1])
-
     consist = FruitVegConsist(roster='antelope',
                               base_numeric_id=2170,
                               gen=2,
@@ -130,9 +106,6 @@ def main():
 
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
-
-    consist.add_model_variant(spritesheet_suffix=1,
-                              graphics_processor=consist.graphics_processors[1])
 
     consist = FruitVegConsist(roster='antelope',
                               base_numeric_id=2180,

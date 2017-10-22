@@ -14,9 +14,6 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist.add_model_variant(spritesheet_suffix=1,
-                              graphics_processor=consist.graphics_processors[1])
-
     consist = SiloConsist(roster='pony',
                           base_numeric_id=2980,
                           gen=5,
@@ -27,9 +24,6 @@ def main():
 
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
-
-    consist.add_model_variant(spritesheet_suffix=1,
-                              graphics_processor=consist.graphics_processors[1])
 
     consist = SiloConsist(roster='pony',
                           base_numeric_id=2960,

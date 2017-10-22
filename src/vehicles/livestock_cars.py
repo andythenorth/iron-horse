@@ -15,9 +15,6 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist.add_model_variant(spritesheet_suffix=1,
-                              graphics_processor=consist.graphics_processors[1])
-
     #--------------- pony ----------------------------------------------------------------------
     consist = LivestockConsist(roster='pony',
                                base_numeric_id=1010,
@@ -29,9 +26,6 @@ def main():
 
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
-
-    consist.add_model_variant(spritesheet_suffix=1,
-                              graphics_processor=consist.graphics_processors[1])
 
     # no gen 2 needed
 
@@ -46,9 +40,6 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist.add_model_variant(spritesheet_suffix=1,
-                              graphics_processor=consist.graphics_processors[1])
-
     consist = LivestockConsist(roster='pony',
                                base_numeric_id=1020,
                                gen=4,
@@ -59,9 +50,6 @@ def main():
 
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
-
-    consist.add_model_variant(spritesheet_suffix=1,
-                              graphics_processor=consist.graphics_processors[1])
 
     consist = LivestockConsist(roster='pony',
                                base_numeric_id=2720,
@@ -74,9 +62,6 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist.add_model_variant(spritesheet_suffix=1,
-                              graphics_processor=consist.graphics_processors[1])
-
     consist = LivestockConsist(roster='pony',
                                base_numeric_id=2710,
                                gen=6,
@@ -87,9 +72,6 @@ def main():
 
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
-
-    consist.add_model_variant(spritesheet_suffix=1,
-                              graphics_processor=consist.graphics_processors[1])
 
     #--------------- llama ----------------------------------------------------------------------
 

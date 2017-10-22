@@ -16,9 +16,6 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist.add_model_variant(spritesheet_suffix=1,
-                              graphics_processor=consist.graphics_processors[1])
-
     #--------------- pony ----------------------------------------------------------------------
     consist = FlatConsist(roster='pony',
                           base_numeric_id=1140,
@@ -32,9 +29,6 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist.add_model_variant(spritesheet_suffix=1,
-                              graphics_processor=consist.graphics_processors[1])
-
     consist = FlatConsist(roster='pony',
                           base_numeric_id=1150,
                           gen=2,
@@ -46,9 +40,6 @@ def main():
 
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
-
-    consist.add_model_variant(spritesheet_suffix=1,
-                              graphics_processor=consist.graphics_processors[1])
 
     consist = FlatConsist(roster='pony',
                           base_numeric_id=1160,
@@ -62,9 +53,6 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist.add_model_variant(spritesheet_suffix=1,
-                              graphics_processor=consist.graphics_processors[1])
-
     consist = FlatConsist(roster='pony',
                           base_numeric_id=2550,
                           gen=3,
@@ -76,9 +64,6 @@ def main():
 
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
-
-    consist.add_model_variant(spritesheet_suffix=1,
-                              graphics_processor=consist.graphics_processors[1])
 
     consist = FlatConsist(roster='pony',
                           base_numeric_id=2540,
@@ -92,9 +77,6 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist.add_model_variant(spritesheet_suffix=1,
-                              graphics_processor=consist.graphics_processors[1])
-
     consist = FlatConsist(roster='pony',
                           base_numeric_id=2530,
                           gen=4,
@@ -106,9 +88,6 @@ def main():
 
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
-
-    consist.add_model_variant(spritesheet_suffix=1,
-                              graphics_processor=consist.graphics_processors[1])
 
     consist = FlatConsist(roster='pony',
                           base_numeric_id=2520,
@@ -122,9 +101,6 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist.add_model_variant(spritesheet_suffix=1,
-                              graphics_processor=consist.graphics_processors[1])
-
     consist = FlatConsist(roster='pony',
                           base_numeric_id=2510,
                           gen=5,
@@ -136,9 +112,6 @@ def main():
 
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
-
-    consist.add_model_variant(spritesheet_suffix=1,
-                              graphics_processor=consist.graphics_processors[1])
 
     # no gen 6 flat cars, cap to gen 5 in Pony
 
@@ -155,9 +128,6 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist.add_model_variant(spritesheet_suffix=1,
-                              graphics_processor=consist.graphics_processors[1])
-
     consist = FlatConsist(roster='llama',
                           base_numeric_id=1510,
                           gen=2,
@@ -169,9 +139,6 @@ def main():
 
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
-
-    consist.add_model_variant(spritesheet_suffix=1,
-                              graphics_processor=consist.graphics_processors[1])
 
     consist = FlatConsist(roster='llama',
                           base_numeric_id=520,
@@ -186,9 +153,6 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist.add_model_variant(spritesheet_suffix=1,
-                              graphics_processor=consist.graphics_processors[1])
-
     consist = FlatConsist(roster='llama',
                           base_numeric_id=1500,
                           gen=2,
@@ -201,9 +165,6 @@ def main():
 
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
-
-    consist.add_model_variant(spritesheet_suffix=1,
-                              graphics_processor=consist.graphics_processors[1])
 
     #--------------- antelope ----------------------------------------------------------------------
     consist = FlatConsist(roster='antelope',
@@ -218,9 +179,6 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist.add_model_variant(spritesheet_suffix=1,
-                              graphics_processor=consist.graphics_processors[1])
-
     consist = FlatConsist(roster='antelope',
                           base_numeric_id=1650,
                           gen=2,
@@ -232,9 +190,6 @@ def main():
 
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
-
-    consist.add_model_variant(spritesheet_suffix=1,
-                              graphics_processor=consist.graphics_processors[1])
 
     consist = FlatConsist(roster='antelope',
                           base_numeric_id=2110,
@@ -248,9 +203,6 @@ def main():
 
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
-
-    consist.add_model_variant(spritesheet_suffix=1,
-                              graphics_processor=consist.graphics_processors[1])
 
     consist = FlatConsist(roster='antelope',
                           base_numeric_id=1930,
