@@ -64,8 +64,7 @@ class Consist(object):
         self.suppress_animated_pixel_warnings = kwargs.get('suppress_animated_pixel_warnings', False)
 
     def add_model_variant(self, spritesheet_suffix, graphics_processor=None, visual_effect_offset=None):
-        if spritesheet_suffix == 0:
-            self.model_variants.append(ModelVariant(spritesheet_suffix, graphics_processor, visual_effect_offset))
+        self.model_variants.append(ModelVariant(spritesheet_suffix, graphics_processor, visual_effect_offset))
 
     def add_unit(self, type, repeat=1, **kwargs):
         vehicle = type(consist=self, **kwargs)
