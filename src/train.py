@@ -792,8 +792,8 @@ class StakeConsist(WagonConsist):
         self.base_id = 'stake_car'
         super().__init__(**kwargs)
         self.title = self.get_wagon_title('Stake Car')
-        self.class_refit_groups = ['flatcar_freight']
-        self.label_refits_allowed = ['GOOD']
+        self.class_refit_groups = []
+        self.label_refits_allowed = ['WOOD', 'WDPR', 'PIPE']
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_flatcar_freight']
         self.default_cargo = 'WOOD'
         self.loading_speed_multiplier = 2
