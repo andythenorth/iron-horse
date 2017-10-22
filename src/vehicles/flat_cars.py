@@ -126,7 +126,7 @@ def main():
                           subtype='C')
 
     consist.add_unit(type=FreightCar,
-                     cargo_length=3,
+                     cargo_length=4,
                      vehicle_length=8)
 
     consist.add_model_variant(start_date=0,
@@ -164,7 +164,7 @@ def main():
                           subtype='C')
 
     consist.add_unit(type=FreightCar,
-                     cargo_length=3,
+                     cargo_length=4,
                      vehicle_length=8)
 
     consist.add_model_variant(start_date=0,
