@@ -1,6 +1,4 @@
-#!/usr/bin/env python
-
-print("[RENDER GRAPHICS] render_graphics.py")
+from time import time
 
 import codecs # used for writing files - more unicode friendly than standard open() module
 
