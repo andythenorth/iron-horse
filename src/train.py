@@ -620,12 +620,12 @@ class CabooseConsist(WagonConsist):
         super().__init__(**kwargs)
         self.title = self.get_wagon_title('Caboose Car')
         self.speed_class = None # no speed limit
-        # no graphics processing - don't random colour cabeese, I tried it, looks daft
         self.class_refit_groups = [] # refit nothing, don't mess with this, it breaks auto-replace
         self.label_refits_allowed = [] # no specific labels needed
         self.label_refits_disallowed = []
         self.default_cargo = 'GOOD' # unwanted side-effect of this is that caboose replaceable by anything refitting goods
-
+        # no graphics processing - don't random colour cabeese, I tried it, looks daft
+        self.random_company_colour_swap = False
 
 class CoveredHopperConsist(WagonConsist):
     """
@@ -805,6 +805,7 @@ class MailConsist(WagonConsist):
         self.label_refits_allowed = [] # no specific labels needed
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_freight_special_cases']
         self.default_cargo = 'MAIL'
+        self.random_company_colour_swap = False
 
 
 class MetalConsist(WagonConsist):
@@ -852,6 +853,7 @@ class PassengerConsistBase(WagonConsist):
         self.label_refits_allowed = []
         self.label_refits_disallowed = []
         self.default_cargo = 'PASS'
+        self.random_company_colour_swap = False
 
 
 class PassengerConsist(PassengerConsistBase):
