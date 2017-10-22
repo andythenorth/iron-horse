@@ -62,8 +62,8 @@ class Consist(object):
          # optionally suppress nmlc warnings about animated pixels for consists where they're intentional
         self.suppress_animated_pixel_warnings = kwargs.get('suppress_animated_pixel_warnings', False)
 
-    def add_model_variant(self, start_date, end_date, spritesheet_suffix, graphics_processor=None, visual_effect_offset=None):
-        self.model_variants.append(ModelVariant(start_date, end_date, spritesheet_suffix, graphics_processor, visual_effect_offset))
+    def add_model_variant(self, spritesheet_suffix, graphics_processor=None, visual_effect_offset=None):
+        self.model_variants.append(ModelVariant(spritesheet_suffix, graphics_processor, visual_effect_offset))
 
     def add_unit(self, type, repeat=1, **kwargs):
         vehicle = type(consist=self, **kwargs)
@@ -98,39 +98,9 @@ class Consist(object):
         numeric_id_defender.append(numeric_id)
         return numeric_id
 
-    def get_reduced_set_of_variant_dates(self):
-        # find all the unique dates that will need a switch constructing
-        years = set()
-        for variant in self.model_variants:
-            years.update((variant.start_date, variant.end_date))
-        years = sorted(years)
-        # quick integrity check
-        if years[0] != 0:
-            utils.echo_message(self.id + " doesn't have at least one model variant with intro date 0 (required for nml switches to work)")
-        return years
-
     def get_num_spritesets(self):
         # historical reasons, this used to be more complex, and is now very simple; possibly now an abstraction too far?
         return len(self.model_variants)
-
-    def get_variants_available_for_specific_year(self, year):
-        # put the data in a format that's easy to render as switches
-        result = []
-        for variant in self.model_variants:
-            if variant.start_date <= year < variant.end_date:
-                result.append(variant)
-        return result # could call set() here, but I didn't bother, shouldn't be needed if model variants set up correctly
-
-    def get_nml_random_switch_fragments_for_model_variants(self, vehicle, switch_name_substr):
-        # return fragments of nml for use in switches
-        result = []
-        years = self.get_reduced_set_of_variant_dates()
-        for index, year in enumerate(years):
-            if index < len(years) - 1:
-                from_date = year
-                until_date = years[index + 1] - 1
-                result.append(str(from_date) + '..' + str(until_date) + ':' + vehicle.id + switch_name_substr + str(from_date))
-        return result
 
     def get_name_substr(self):
         # relies on name being in format "Foo [Bar]" for Name [Type Suffix]
@@ -482,13 +452,9 @@ class Train(object):
 
 
 class ModelVariant(object):
-    # simple class to hold model variants
-    # variants are mostly randomised or date-sensitive graphics
+    # simple class to hold model variants (randomised graphics)
     # must be a minimum of one variant per train
-    # at least one variant must have intro date 0 (for nml switch defaults to work)
-    def __init__(self, start_date, end_date, spritesheet_suffix, graphics_processor, visual_effect_offset):
-        self.start_date = start_date
-        self.end_date = end_date
+    def __init__(self, spritesheet_suffix, graphics_processor, visual_effect_offset):
         self.spritesheet_suffix = spritesheet_suffix # use digits for these - to match spritesheet filenames
         self.graphics_processor = graphics_processor
         self.visual_effect_offset = visual_effect_offset # used to move effects around when flipping vehicle - might be a better way?

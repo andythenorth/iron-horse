@@ -23,7 +23,5 @@ consist.add_unit(type=CargoSprinter,
                  capacity=36,  # matched to 1.5x standard Road Hog and Squid containers
                  repeat=2)
 
-consist.add_model_variant(start_date=0,
-                          end_date=1986,
-                          graphics_processor=consist.graphics_processors,
+consist.add_model_variant(graphics_processor=consist.graphics_processors,
                           spritesheet_suffix=0)

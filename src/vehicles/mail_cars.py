@@ -1,4 +1,3 @@
-import global_constants
 from train import MailConsist, MailCar
 
 
@@ -15,9 +14,7 @@ def main():
                      vehicle_length=5)
 
     #--------------- pony ----------------------------------------------------------------------
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=0)
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = MailConsist(roster='pony',
                           base_numeric_id=2280,
@@ -28,9 +25,7 @@ def main():
                      capacity=15,
                      vehicle_length=4)
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=0)
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = MailConsist(roster='pony',
                           base_numeric_id=2220,
@@ -41,9 +36,7 @@ def main():
                      capacity=15,
                      vehicle_length=6)
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=0)
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = MailConsist(roster='pony',
                           base_numeric_id=2290,
@@ -54,9 +47,7 @@ def main():
                      capacity=25,
                      vehicle_length=4)
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=0)
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = MailConsist(roster='pony',
                           base_numeric_id=920,
@@ -67,9 +58,7 @@ def main():
                      capacity=25,
                      vehicle_length=6)
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=0)
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = MailConsist(roster='pony',
                           base_numeric_id=2300,
@@ -80,9 +69,7 @@ def main():
                      capacity=40,
                      vehicle_length=6)
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=0)
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = MailConsist(roster='pony',
                           base_numeric_id=940,
@@ -93,9 +80,7 @@ def main():
                      capacity=40,
                      vehicle_length=8)
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=0)
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = MailConsist(roster='pony',
                           base_numeric_id=3160,
@@ -106,9 +91,7 @@ def main():
                      capacity=55,
                      vehicle_length=6)
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=0)
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = MailConsist(roster='pony',
                           base_numeric_id=3170,
@@ -119,9 +102,7 @@ def main():
                      capacity=55,
                      vehicle_length=8)
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=0)
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = MailConsist(roster='pony',
                           base_numeric_id=970,
@@ -132,9 +113,7 @@ def main():
                      capacity=55,
                      vehicle_length=6)
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=0)
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = MailConsist(roster='pony',
                           base_numeric_id=3140,
@@ -145,9 +124,7 @@ def main():
                      capacity=55,
                      vehicle_length=8)
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=0)
+    consist.add_model_variant(spritesheet_suffix=0)
 
     # no gen 6 for brit roster, max speed reached for engines
 
@@ -162,8 +139,7 @@ def main():
                             capacity = 30,
                             vehicle_length = 7)
 
-    consist.add_model_variant(start_date = 0,
-                           end_date = global_constants.max_game_date)
+    consist.add_model_variant()
 
 
     consist = MailConsist(roster = 'llama',
@@ -175,8 +151,7 @@ def main():
                             capacity = 45,
                             vehicle_length = 7)
 
-    consist.add_model_variant(start_date = 0,
-                           end_date = global_constants.max_game_date)
+    consist.add_model_variant()
 
 
     consist = MailConsist(roster = 'llama',
@@ -188,8 +163,7 @@ def main():
                             capacity = 60,
                             vehicle_length = 8)
 
-    consist.add_model_variant(start_date = 0,
-                           end_date = global_constants.max_game_date)
+    consist.add_model_variant()
 
 
     consist = MailConsist(roster = 'llama',
@@ -202,8 +176,7 @@ def main():
                             capacity = 30,
                             vehicle_length = 6)
 
-    consist.add_model_variant(start_date = 0,
-                           end_date = global_constants.max_game_date)
+    consist.add_model_variant()
 
 
     consist = MailConsist(roster = 'llama',
@@ -216,8 +189,7 @@ def main():
                             capacity = 40,
                             vehicle_length = 6)
 
-    consist.add_model_variant(start_date = 0,
-                           end_date = global_constants.max_game_date)
+    consist.add_model_variant()
 
 
     consist = MailConsist(roster = 'llama',
@@ -230,8 +202,7 @@ def main():
                             capacity = 50,
                             vehicle_length = 6)
 
-    consist.add_model_variant(start_date = 0,
-                           end_date = global_constants.max_game_date)
+    consist.add_model_variant()
 
     """
     #--------------- antelope ----------------------------------------------------------------------
@@ -244,9 +215,7 @@ def main():
                      capacity=40,
                      vehicle_length=8)
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=0)
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = MailConsist(roster='antelope',
                           base_numeric_id=2120,
@@ -258,9 +227,7 @@ def main():
                      capacity=20,
                      vehicle_length=5)
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=0)
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = MailConsist(roster='antelope',
                           base_numeric_id=1950,
@@ -272,6 +239,4 @@ def main():
                      capacity=30,
                      vehicle_length=8)
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=0)
+    consist.add_model_variant(spritesheet_suffix=0)

@@ -1,4 +1,3 @@
-import global_constants
 from train import StakeConsist, FreightCar
 
 
@@ -12,9 +11,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=4)
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=0)
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = StakeConsist(roster='pony',
                            base_numeric_id=2730,
@@ -24,9 +21,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=4)
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=0)
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = StakeConsist(roster='pony',
                            base_numeric_id=2750,
@@ -36,9 +31,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=6)
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=0)
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = StakeConsist(roster='pony',
                            base_numeric_id=1710,
@@ -48,9 +41,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=4)
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=0)
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = StakeConsist(roster='pony',
                            base_numeric_id=2760,
@@ -60,9 +51,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=6)
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=0)
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = StakeConsist(roster='pony',
                            base_numeric_id=930,
@@ -72,9 +61,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=4)
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=0)
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = StakeConsist(roster='pony',
                            base_numeric_id=2770,
@@ -84,9 +71,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=6)
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=0)
+    consist.add_model_variant(spritesheet_suffix=0)
 
     # no gen 6 stake cars, cap to gen 5 in Pony
 

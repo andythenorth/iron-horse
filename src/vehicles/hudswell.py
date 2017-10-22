@@ -1,4 +1,3 @@
-import global_constants
 from train import EngineConsist, SteamLoco
 
 consist = EngineConsist(id='hudswell',
@@ -17,10 +16,6 @@ consist.add_unit(type=SteamLoco,
                  vehicle_length=7,
                  spriterow_num=0)
 
-consist.add_model_variant(start_date=0,
-                          end_date=global_constants.max_game_date,
-                          spritesheet_suffix=0)
+consist.add_model_variant(spritesheet_suffix=0)
 
-consist.add_model_variant(start_date=0,
-                          end_date=global_constants.max_game_date,
-                          spritesheet_suffix=1)
+consist.add_model_variant(spritesheet_suffix=1)

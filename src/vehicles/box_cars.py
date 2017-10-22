@@ -1,4 +1,3 @@
-import global_constants
 from train import BoxConsist, BoxCar
 
 
@@ -13,14 +12,10 @@ def main():
     consist.add_unit(type=BoxCar,
                      vehicle_length=4)
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=0,
+    consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=1,
+    consist.add_model_variant(spritesheet_suffix=1,
                               graphics_processor=consist.graphics_processors[1])
     #--------------- pony ----------------------------------------------------------------------
 
@@ -34,14 +29,10 @@ def main():
     consist.add_unit(type=BoxCar,
                      vehicle_length=4)
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=0,
+    consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=1,
+    consist.add_model_variant(spritesheet_suffix=1,
                               graphics_processor=consist.graphics_processors[1])
 
     # no new type A for gen 2, gen 1 type A continues
@@ -54,14 +45,10 @@ def main():
     consist.add_unit(type=BoxCar,
                      vehicle_length=6)
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=0,
+    consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=1,
+    consist.add_model_variant(spritesheet_suffix=1,
                               graphics_processor=consist.graphics_processors[1])
 
     consist = BoxConsist(roster='pony',
@@ -72,14 +59,10 @@ def main():
     consist.add_unit(type=BoxCar,
                      vehicle_length=4)
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=0,
+    consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=1,
+    consist.add_model_variant(spritesheet_suffix=1,
                               graphics_processor=consist.graphics_processors[1])
 
     consist = BoxConsist(roster='pony',
@@ -90,14 +73,10 @@ def main():
     consist.add_unit(type=BoxCar,
                      vehicle_length=6)
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=0,
+    consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=1,
+    consist.add_model_variant(spritesheet_suffix=1,
                               graphics_processor=consist.graphics_processors[1])
 
     consist = BoxConsist(roster='pony',
@@ -108,14 +87,10 @@ def main():
     consist.add_unit(type=BoxCar,
                      vehicle_length=4)
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=0,
+    consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=1,
+    consist.add_model_variant(spritesheet_suffix=1,
                               graphics_processor=consist.graphics_processors[1])
 
     consist = BoxConsist(roster='pony',
@@ -126,14 +101,10 @@ def main():
     consist.add_unit(type=BoxCar,
                      vehicle_length=6)
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=0,
+    consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=1,
+    consist.add_model_variant(spritesheet_suffix=1,
                               graphics_processor=consist.graphics_processors[1])
 
     consist = BoxConsist(roster='pony',
@@ -144,14 +115,10 @@ def main():
     consist.add_unit(type=BoxCar,
                      vehicle_length=6)
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=0,
+    consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=1,
+    consist.add_model_variant(spritesheet_suffix=1,
                               graphics_processor=consist.graphics_processors[1])
 
     consist = BoxConsist(roster='pony',
@@ -162,14 +129,10 @@ def main():
     consist.add_unit(type=BoxCar,
                      vehicle_length=8)
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=0,
+    consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=1,
+    consist.add_model_variant(spritesheet_suffix=1,
                               graphics_processor=consist.graphics_processors[1])
 
     # no gen 6 box cars, cap to gen 5 in Pony
@@ -183,14 +146,10 @@ def main():
     consist.add_unit(type=BoxCar,
                      vehicle_length=5)
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=0,
+    consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=1,
+    consist.add_model_variant(spritesheet_suffix=1,
                               graphics_processor=consist.graphics_processors[1])
 
     consist = BoxConsist(roster='llama',
@@ -201,14 +160,10 @@ def main():
     consist.add_unit(type=BoxCar,
                      vehicle_length=6)
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=0,
+    consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=1,
+    consist.add_model_variant(spritesheet_suffix=1,
                               graphics_processor=consist.graphics_processors[1])
 
     consist = BoxConsist(roster='llama',
@@ -219,14 +174,10 @@ def main():
     consist.add_unit(type=BoxCar,
                      vehicle_length=7)
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=0,
+    consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=1,
+    consist.add_model_variant(spritesheet_suffix=1,
                               graphics_processor=consist.graphics_processors[1])
 
     consist = BoxConsist(roster='llama',
@@ -238,14 +189,10 @@ def main():
     consist.add_unit(type=BoxCar,
                      vehicle_length=6)
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=0,
+    consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=1,
+    consist.add_model_variant(spritesheet_suffix=1,
                               graphics_processor=consist.graphics_processors[1])
 
     consist = BoxConsist(roster='llama',
@@ -257,14 +204,10 @@ def main():
     consist.add_unit(type=BoxCar,
                      vehicle_length=6)
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=0,
+    consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=1,
+    consist.add_model_variant(spritesheet_suffix=1,
                               graphics_processor=consist.graphics_processors[1])
 
     #--------------- antelope ----------------------------------------------------------------------
@@ -276,14 +219,10 @@ def main():
     consist.add_unit(type=BoxCar,
                      vehicle_length=6)
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=0,
+    consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=1,
+    consist.add_model_variant(spritesheet_suffix=1,
                               graphics_processor=consist.graphics_processors[1])
 
     consist = BoxConsist(roster='antelope',
@@ -294,14 +233,10 @@ def main():
     consist.add_unit(type=BoxCar,
                      vehicle_length=8)
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=0,
+    consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=1,
+    consist.add_model_variant(spritesheet_suffix=1,
                               graphics_processor=consist.graphics_processors[1])
 
     consist = BoxConsist(roster='antelope',
@@ -313,14 +248,10 @@ def main():
     consist.add_unit(type=BoxCar,
                      vehicle_length=5)
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=0,
+    consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=1,
+    consist.add_model_variant(spritesheet_suffix=1,
                               graphics_processor=consist.graphics_processors[1])
 
     consist = BoxConsist(roster='antelope',
@@ -332,14 +263,10 @@ def main():
     consist.add_unit(type=BoxCar,
                      vehicle_length=6)
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=0,
+    consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=1,
+    consist.add_model_variant(spritesheet_suffix=1,
                               graphics_processor=consist.graphics_processors[1])
 
     consist = BoxConsist(roster='antelope',
@@ -351,12 +278,8 @@ def main():
     consist.add_unit(type=BoxCar,
                      vehicle_length=8)
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=0,
+    consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist.add_model_variant(start_date=0,
-                              end_date=global_constants.max_game_date,
-                              spritesheet_suffix=1,
+    consist.add_model_variant(spritesheet_suffix=1,
                               graphics_processor=consist.graphics_processors[1])
