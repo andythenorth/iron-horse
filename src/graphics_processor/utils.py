@@ -13,6 +13,8 @@ class GraphicsProcessor(object):
 
 
 def get_composited_cargo_processors(template):
+    # !! as of October 2017, this is legacy, as company colour swap is done in-game with recolour sprites
+    # !! this is a candidate for removal / refactoring
     # returns two cargo-compositing graphics processors, one of which flips company colours
     # also provides optional 2CC recolor
     graphics_options_1 = {'template': template, 'swap_company_colours': False}
