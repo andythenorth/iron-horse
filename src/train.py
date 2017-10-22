@@ -53,6 +53,8 @@ class Consist(object):
         self.date_variant_var = kwargs.get('date_variant_var', 'build_year')
         # create structure to hold the units
         self.units = []
+        # automatic buy menu sprite from – sprite, or explicit buy menu sprite?
+        self.auto_buy_menu_sprite = kwargs.get('auto_buy_menu_sprite', False)
         # cargo /livery graphics options
         self.visible_cargo = VisibleCargo()
         # roster is set when the vehicle is registered to a roster, only one roster per vehicle
@@ -230,6 +232,13 @@ class Consist(object):
         # the working definition is one and only one roster per vehicle
         roster = self.get_roster(self.roster_id)
         return 'param[1]==' + str(roster.numeric_id - 1)
+
+    @property
+    def buy_menu_x_loc(self):
+        if self.auto_buy_menu_sprite:
+            return global_constants.spritesheet_bounding_boxes[6][0]
+        else:
+            return 316 # hard-coded default case
 
     @property
     def buy_menu_width (self):
@@ -542,6 +551,7 @@ class WagonConsist(Consist):
         self.weight_factor = 0.5 # over-ride in sub-class as needed
         self.loading_speed_multiplier = kwargs.get('loading_speed_multiplier', 1)
         self.cargo_age_period = kwargs.get('cargo_age_period', global_constants.CARGO_AGE_PERIOD)
+        self.auto_buy_menu_sprite = True # assume all wagons are auto-buy menu; this might fail for articulated wagons (none at time of writing)
 
 
     @property
