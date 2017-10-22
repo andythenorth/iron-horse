@@ -130,8 +130,8 @@ def render_docs(doc_list, file_type, use_markdown=False):
 
 def main():
     start = time()
-
     print("[RENDER DOCS] render_docs.py")
+
     # render standard docs from a list
     html_docs = ['trains', 'code_reference', 'get_started', 'translations']
     txt_docs = ['license', 'readme']

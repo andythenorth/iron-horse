@@ -1,3 +1,5 @@
+from time import time
+
 """
 #!/usr/bin/env python
 
@@ -118,7 +120,10 @@ def run_pipeline(items):
 
 # wrapped in a main() function so this can be called explicitly, because unexpected multiprocessing fork bombs are bad
 def main():
+    start = time()
+    print("[RENDER GRAPHICS] render_graphics.py")
     consists = iron_horse.get_consists_in_buy_menu_order()
+
     variants = []
     for consist in consists:
         spritesheet_suffixes_seen = []
@@ -138,6 +143,8 @@ def main():
         pool = Pool(processes=num_pool_workers)
         pool.map(run_pipeline, variants)
         pool.close()
+
+    print(format((time() - start), '.2f')+'s')
 
 if __name__ == '__main__':
     main()
