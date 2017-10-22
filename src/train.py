@@ -408,6 +408,13 @@ class Train(object):
         else:
             return self.id + "_switch_visual_effect_and_powered_by_variant_" + str(self.consist.model_variants[0].spritesheet_suffix)
 
+    def get_nml_for_graphics_switch(self):
+        # ridiculous compile micro-optimisation, some random switches will be dropped if only 1 model variant
+        if len(self.consist.model_variants) > 1:
+            return self.id + "_switch_graphics"
+        else:
+            return self.id + "_switch_graphics_" + str(self.consist.model_variants[0].spritesheet_suffix)
+
     def get_nml_expression_for_cargo_variant_random_switch(self, variation_num, cargo_id=None):
         # having a method to calculate the nml for this is overkill
         # legacy of multi-part vehicles, where the trigger needed to be run on an adjacent vehicle
