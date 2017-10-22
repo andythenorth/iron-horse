@@ -1,1 +1,0 @@
-registered_pipelines = {}
