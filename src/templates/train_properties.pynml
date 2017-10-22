@@ -1,7 +1,8 @@
 <!--! some switches are common to all vehicles so included with properties -->
 
-<tal:include metal:use-macro="load: visual_effect_and_powered.pynml" />
-
+<tal:visual_effect condition="vehicle.unit_requires_visual_effect">
+    <tal:include metal:use-macro="load: visual_effect_and_powered.pynml" />
+</tal:visual_effect>
 
 <tal:variable_power condition="consist.unit_requires_variable_power(vehicle)">
     // -- power -- //
@@ -66,7 +67,9 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
             <!--! railtype is not available in purchase menu, so just use the static property (usually set to the lowest power to avoid disappointment after building) -->
             purchase_power:                 ${consist.power};
         </tal:variable_power>
-        visual_effect_and_powered:      ${vehicle.id}_switch_visual_effect_and_powered;
+        <tal:visual_effect condition="vehicle.unit_requires_visual_effect">
+            visual_effect_and_powered:      ${vehicle.id}_switch_visual_effect_and_powered;
+        </tal:visual_effect>
         <tal:add_articulated_parts condition="vehicle.is_lead_unit_of_consist and len(consist.units) > 1">
             articulated_part: ${consist.id}_articulated_cb_switch;
         </tal:add_articulated_parts>

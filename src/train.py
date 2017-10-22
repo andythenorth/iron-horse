@@ -388,8 +388,8 @@ class Train(object):
     @property
     def running_cost_base(self):
         return {'ENGINE_CLASS_STEAM': 'RUNNING_COST_STEAM',
-                           'ENGINE_CLASS_DIESEL': 'RUNNING_COST_DIESEL',
-                           'ENGINE_CLASS_ELECTRIC': 'RUNNING_COST_ELECTRIC'}[self.engine_class]
+                'ENGINE_CLASS_DIESEL': 'RUNNING_COST_DIESEL',
+                'ENGINE_CLASS_ELECTRIC': 'RUNNING_COST_ELECTRIC'}[self.engine_class]
 
     @property
     def offsets(self):
@@ -407,6 +407,13 @@ class Train(object):
     @property
     def location_of_random_bits_for_model_variant(self):
         return 'FORWARD_SELF(' + str(self.numeric_id - self.consist.base_numeric_id) + ')'
+
+    @property
+    def unit_requires_visual_effect(self):
+        if self.visual_effect is not 'VISUAL_EFFECT_DISABLE':
+            return True
+        else:
+            return False
 
     def get_visual_effect_offset(self, variant):
         # no sign here of bonkers complexity just to flip smoke on flipped engines
