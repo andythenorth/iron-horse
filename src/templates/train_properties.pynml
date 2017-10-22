@@ -55,6 +55,9 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
     graphics {
         default:                        ${vehicle.id}_switch_graphics;
         purchase:                       ${vehicle.id}_sg_purchase;
+        <tal:random_company_colour_swap condition="consist.random_company_colour_swap">
+            colour_mapping:                 return base_sprite_2cc + 16 * company_colour1 + company_colour2;
+        </tal:random_company_colour_swap>
         <!--! only use the capacity switches if vehicle carries cargo, makes faster compile (saved about 20% of time) -->
         <tal:optional_capacity_switches condition="vehicle.has_cargo_capacity">
             cargo_capacity:                 ${vehicle.id + '_switch_cargo_capacity'};

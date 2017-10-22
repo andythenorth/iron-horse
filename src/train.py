@@ -57,13 +57,15 @@ class Consist(object):
         self.auto_buy_menu_sprite = kwargs.get('auto_buy_menu_sprite', False)
         # cargo /livery graphics options
         self.visible_cargo = VisibleCargo()
+        self.random_company_colour_swap = False # over-ride in subclasses as needed
         # roster is set when the vehicle is registered to a roster, only one roster per vehicle
         self.roster_id = None
          # optionally suppress nmlc warnings about animated pixels for consists where they're intentional
         self.suppress_animated_pixel_warnings = kwargs.get('suppress_animated_pixel_warnings', False)
 
     def add_model_variant(self, spritesheet_suffix, graphics_processor=None, visual_effect_offset=None):
-        self.model_variants.append(ModelVariant(spritesheet_suffix, graphics_processor, visual_effect_offset))
+        if spritesheet_suffix == 0:
+            self.model_variants.append(ModelVariant(spritesheet_suffix, graphics_processor, visual_effect_offset))
 
     def add_unit(self, type, repeat=1, **kwargs):
         vehicle = type(consist=self, **kwargs)
@@ -529,7 +531,7 @@ class WagonConsist(Consist):
         self.loading_speed_multiplier = kwargs.get('loading_speed_multiplier', 1)
         self.cargo_age_period = kwargs.get('cargo_age_period', global_constants.CARGO_AGE_PERIOD)
         self.auto_buy_menu_sprite = True # assume all wagons are auto-buy menu; this might fail for articulated wagons (none at time of writing)
-
+        self.random_company_colour_swap = True # assume all wagons randomly swap CC, revert to False in wagon subclasses as needed
 
     @property
     def buy_cost(self):
