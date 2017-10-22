@@ -828,6 +828,7 @@ class MetalConsist(WagonConsist):
         self.label_refits_disallowed = []
         self.default_cargo = 'STEL'
         self.loading_speed_multiplier = 2
+        self.auto_buy_menu_sprite = False # !! this is hax to suppress white warnings, buy menu handling needs figuring out for these wagons
 
 
 class OpenConsist(WagonConsist):
