@@ -10,19 +10,22 @@
     }
 </tal:model_variants>
 
-<tal:model_variant_random_switches repeat="year consist.get_reduced_set_of_variant_dates()[:-1]">
-    random_switch (FEAT_TRAINS, ${vehicle.location_of_random_bits_for_model_variant}, ${vehicle.id}_switch_visual_effect_and_powered_random_${year}) {
-        dependent: ${vehicle.id}_switch_graphics_random_${year};
-        <tal:random_graphics_variations repeat="variant consist.get_variants_available_for_specific_year(year)">
-            1: ${vehicle.id}_switch_visual_effect_and_powered_by_variant_${variant.spritesheet_suffix};
-        </tal:random_graphics_variations>
+<!--! ridiculous compile micro-optimisation - only render these switches if needed -->
+<tal:random_variants condition="len(consist.model_variants) > 1">
+    <tal:model_variant_random_switches repeat="year consist.get_reduced_set_of_variant_dates()[:-1]">
+        random_switch (FEAT_TRAINS, ${vehicle.location_of_random_bits_for_model_variant}, ${vehicle.id}_switch_visual_effect_and_powered_random_${year}) {
+            dependent: ${vehicle.id}_switch_graphics_random_${year};
+            <tal:random_graphics_variations repeat="variant consist.get_variants_available_for_specific_year(year)">
+                1: ${vehicle.id}_switch_visual_effect_and_powered_by_variant_${variant.spritesheet_suffix};
+            </tal:random_graphics_variations>
+        }
+    </tal:model_variant_random_switches>
+
+
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_visual_effect_and_powered, build_year) {
+        <tal:choose_random_switch_by_date repeat="nml_fragment consist.get_nml_random_switch_fragments_for_model_variants(vehicle, '_switch_visual_effect_and_powered_random_')">
+            ${nml_fragment};
+        </tal:choose_random_switch_by_date>
+        return ${vehicle.id}_switch_visual_effect_and_powered_random_0;
     }
-</tal:model_variant_random_switches>
-
-
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_visual_effect_and_powered, build_year) {
-    <tal:choose_random_switch_by_date repeat="nml_fragment consist.get_nml_random_switch_fragments_for_model_variants(vehicle, '_switch_visual_effect_and_powered_random_')">
-        ${nml_fragment};
-    </tal:choose_random_switch_by_date>
-    return ${vehicle.id}_switch_visual_effect_and_powered_random_0;
-}
+</tal:random_variants>

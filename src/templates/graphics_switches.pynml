@@ -1,15 +1,24 @@
-<tal:graphics_variation_random_switches repeat="year consist.get_reduced_set_of_variant_dates()[:-1]">
-    random_switch (FEAT_TRAINS, ${vehicle.location_of_random_bits_for_model_variant}, ${vehicle.id}_switch_graphics_random_${year}) {
-        <tal:random_graphics_variations repeat="variant consist.get_variants_available_for_specific_year(year)">
-            1: return ${vehicle.id}_switch_graphics_${variant.spritesheet_suffix};
-        </tal:random_graphics_variations>
+<!--! ridiculous compile micro-optimisation - only render these switches if needed -->
+<tal:random_variants condition="len(consist.model_variants) > 1">
+    <tal:graphics_variation_random_switches repeat="year consist.get_reduced_set_of_variant_dates()[:-1]">
+        random_switch (FEAT_TRAINS, ${vehicle.location_of_random_bits_for_model_variant}, ${vehicle.id}_switch_graphics_random_${year}) {
+            <tal:random_graphics_variations repeat="variant consist.get_variants_available_for_specific_year(year)">
+                1: return ${vehicle.id}_switch_graphics_${variant.spritesheet_suffix};
+            </tal:random_graphics_variations>
+        }
+    </tal:graphics_variation_random_switches>
+
+
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics, ${consist.date_variant_var}) {
+        <tal:choose_random_switch_by_date repeat="nml_fragment consist.get_nml_random_switch_fragments_for_model_variants(vehicle, '_switch_graphics_random_')">
+            ${nml_fragment};
+        </tal:choose_random_switch_by_date>
+        return ${vehicle.id}_switch_graphics_random_0;
     }
-</tal:graphics_variation_random_switches>
-
-
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics, ${consist.date_variant_var}) {
-    <tal:choose_random_switch_by_date repeat="nml_fragment consist.get_nml_random_switch_fragments_for_model_variants(vehicle, '_switch_graphics_random_')">
-        ${nml_fragment};
-    </tal:choose_random_switch_by_date>
-    return ${vehicle.id}_switch_graphics_random_0;
-}
+</tal:random_variants>
+<!--! this switch could be dropped if needed - see vehicle.get_nml_for_visual_effect_and_powered_cb() for example -->
+<tal:no_random_variants condition="len(consist.model_variants) == 1">
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics, 1) {
+        return ${vehicle.id}_switch_graphics_${consist.model_variants[0].spritesheet_suffix};
+    }
+</tal:no_random_variants>

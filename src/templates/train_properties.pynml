@@ -69,7 +69,7 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
         </tal:variable_power>
         <!--! only use the visual effect switches if needed, saves a couple of seconds on compile -->
         <tal:visual_effect condition="vehicle.unit_requires_visual_effect">
-            visual_effect_and_powered:      ${vehicle.id}_switch_visual_effect_and_powered;
+            visual_effect_and_powered:      ${vehicle.get_nml_for_visual_effect_and_powered_cb()};
         </tal:visual_effect>
         <tal:add_articulated_parts condition="vehicle.is_lead_unit_of_consist and len(consist.units) > 1">
             articulated_part: ${consist.id}_articulated_cb_switch;
