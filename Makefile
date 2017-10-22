@@ -59,22 +59,24 @@ grf: $(GRF_FILE)
 tar: $(TAR_FILE)
 html_docs: $(HTML_DOCS)
 
- # default num. pool workers for python compile,
- # default is 0 to disable multiprocessing (also avoids multiprocessing pickle failures masking genuine python errors)
+# default num. pool workers for python compile,
+# default is 0 to disable multiprocessing (also avoids multiprocessing pickle failures masking genuine python errors)
 PW = 0
 ROSTER = *
+# remove the @ for more verbose output (@ suppresses command output)
+_V ?= @
 
 $(GRAPHICS_DIR): $(shell $(FIND_FILES) --ext=.py --ext=.png src)
-	$(PYTHON3) src/render_graphics.py $(ARGS)
+	$(_V) $(PYTHON3) src/render_graphics.py $(ARGS)
 
 $(LANG_DIR): $(shell $(FIND_FILES) --ext=.py --ext=.pynml --ext=.lng src)
-	$(PYTHON3) src/render_lang.py $(ARGS)
+	$(_V) $(PYTHON3) src/render_lang.py $(ARGS)
 
 $(HTML_DOCS): $(shell $(FIND_FILES) --ext=.py --ext=.pynml --ext=.pt --ext=.lng src)
-	$(PYTHON3) src/render_docs.py $(ARGS)
+	$(_V) $(PYTHON3) src/render_docs.py $(ARGS)
 
 $(NML_FILE): $(shell $(FIND_FILES) --ext=.py --ext=.pynml src)
-	$(PYTHON3) src/render_nml.py $(ARGS)
+	$(_V) $(PYTHON3) src/render_nml.py $(ARGS)
 
 $(GRF_FILE): $(GRAPHICS_DIR) $(LANG_DIR) $(NML_FILE) $(HTML_DOCS)
 	$(NMLC) $(NML_FLAGS) --grf=$(GRF_FILE) $(NML_FILE)
@@ -105,9 +107,11 @@ install: $(GRF_FILE)
 	cp $(GRF_FILE) ~/Documents/OpenTTD/newgrf/
 
 clean:
-	for f in .chameleon_cache .nmlcache src/__pycache__ src/*/__pycache__ docs generated \
+	$(_V) echo "[CLEANING]"
+	$(_V) for f in .chameleon_cache .nmlcache src/__pycache__ src/*/__pycache__ docs generated \
 	$(GRF_FILE) $(TAR_FILE) $(ZIP_FILE) $(MD5_FILE) $(BUNDLE_DIR) $(SOURCE_NAME).tar;\
 	do if test -e $$f;\
 	   then rm -r $$f;\
 	   fi;\
 	done
+	$(_V) echo "[DONE]"
