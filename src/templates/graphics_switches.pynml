@@ -1,14 +1,5 @@
-<!--! ridiculous compile micro-optimisation - only render these switches if needed -->
-<tal:random_variants condition="len(consist.model_variants) > 1">
-    random_switch (FEAT_TRAINS, ${vehicle.location_of_random_bits_for_model_variant}, ${vehicle.id}_switch_graphics) {
-        <tal:random_graphics_variations repeat="variant consist.model_variants">
-            1: return ${vehicle.id}_switch_graphics_${variant.spritesheet_suffix};
-        </tal:random_graphics_variations>
-    }
-</tal:random_variants>
-<!--! this switch could be dropped if needed - see vehicle.get_nml_for_visual_effect_and_powered_cb() for example -->
-<tal:no_random_variants condition="len(consist.model_variants) == 1">
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics, 1) {
-        return ${vehicle.id}_switch_graphics_${consist.model_variants[0].spritesheet_suffix};
-    }
-</tal:no_random_variants>
+random_switch (FEAT_TRAINS, ${vehicle.location_of_random_bits_for_model_variant}, ${vehicle.id}_switch_graphics) {
+    <tal:random_graphics_variations repeat="variant consist.model_variants">
+        1: return ${vehicle.id}_switch_graphics_${variant.spritesheet_suffix};
+    </tal:random_graphics_variations>
+}
