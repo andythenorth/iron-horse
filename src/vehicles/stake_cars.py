@@ -70,7 +70,7 @@ def main():
                            subtype='A')
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=6)
+                     vehicle_length=4)
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
@@ -82,7 +82,7 @@ def main():
                            subtype='B')
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=8)
+                     vehicle_length=6)
 
     consist.add_model_variant(start_date=0,
                               end_date=global_constants.max_game_date,
