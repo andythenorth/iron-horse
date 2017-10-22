@@ -410,6 +410,7 @@ class Train(object):
 
     @property
     def unit_requires_visual_effect(self):
+        # tiny compile optimisation
         if self.visual_effect is not 'VISUAL_EFFECT_DISABLE':
             return True
         else:

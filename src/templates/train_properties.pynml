@@ -67,6 +67,7 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
             <!--! railtype is not available in purchase menu, so just use the static property (usually set to the lowest power to avoid disappointment after building) -->
             purchase_power:                 ${consist.power};
         </tal:variable_power>
+        <!--! only use the visual effect switches if needed, saves a couple of seconds on compile -->
         <tal:visual_effect condition="vehicle.unit_requires_visual_effect">
             visual_effect_and_powered:      ${vehicle.id}_switch_visual_effect_and_powered;
         </tal:visual_effect>
