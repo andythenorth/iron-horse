@@ -10,7 +10,7 @@
     }
 </tal:model_variants>
 
-<!--! ridiculous compile micro-optimisation - only render these switches if needed -->
+<!--! ridiculous compile micro-optimisation - only render this switch if needed -->
 <tal:random_variants condition="len(consist.model_variants) > 1">
     random_switch (FEAT_TRAINS, ${vehicle.location_of_random_bits_for_model_variant}, ${vehicle.id}_switch_visual_effect_and_powered) {
         dependent: ${vehicle.id}_switch_graphics;
