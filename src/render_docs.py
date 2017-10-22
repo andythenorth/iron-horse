@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 from time import time
 
 import codecs # used for writing files - more unicode friendly than standard open() module
