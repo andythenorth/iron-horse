@@ -58,7 +58,9 @@ class VisibleCargo(object):
         # intended get only cargo lists actually wanted for the vehicle, not all vehicles need all piece cargos
         # ¿ possibly this should be made generic, and 'piece', 'bulk' etc should be passed as an arg?
         # !! for now just pass through from graphics_constants
-        return graphics_constants.piece_cargo_maps
+        result = []
+        result.extend(graphics_constants.piece_cargo_maps)
+        return result
 
     @property
     def cargo_row_map(self):
