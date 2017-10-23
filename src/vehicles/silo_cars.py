@@ -17,7 +17,7 @@ def main():
     consist = SiloConsist(roster='pony',
                           base_numeric_id=2980,
                           gen=5,
-                          subtype='A')
+                          subtype='B')
 
     consist.add_unit(type=FreightCar,
                      vehicle_length=6)
@@ -28,7 +28,7 @@ def main():
     consist = SiloConsist(roster='pony',
                           base_numeric_id=2960,
                           gen=5,
-                          subtype='B')
+                          subtype='C')
 
     consist.add_unit(type=FreightCar,
                      vehicle_length=8)
