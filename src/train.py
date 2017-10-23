@@ -846,6 +846,7 @@ class OpenConsist(WagonConsist):
         # Cargo Graphics
         self.visible_cargo.bulk = True
         self.visible_cargo.piece = True
+        self.visible_cargo.pseudo_bulk = True # hax for 'bulk' cargos that are better drawn as piece
 
 
 class PassengerConsistBase(WagonConsist):

@@ -7,6 +7,7 @@ class VisibleCargo(object):
     def __init__(self):
         self.bulk = False
         self.piece = False
+        self.pseudo_bulk = False # !! hax currently, set True for some bulk (fruit etc) better implemented as piece; will only work if self.piece is also True
 
     @property
     def generic_rows(self):
@@ -60,6 +61,9 @@ class VisibleCargo(object):
         # !! for now just pass through from graphics_constants
         result = []
         result.extend(graphics_constants.piece_cargo_maps)
+        # hax with pseudo_bulk eh
+        if self.pseudo_bulk:
+            result.extend(graphics_constants.pseudo_bulk_cargo_maps)
         return result
 
     @property
