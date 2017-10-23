@@ -99,6 +99,8 @@ piece_cargo_maps = ((['DFLT'], ['tarps_2cc_1']),  # see note on DFLT above
                     (['WDPR'], ['lumber_planks']),
                     (['WOOD'], ['logs']))
 # some 'bulk' cargos are better implemented as piece, as the bulk recolouring method isn't appropriate
+# !! it's likely that separate maps for supplies are also needed (supplies cars don't need all piece cargos), also logs/pipes?
+# !! rename as piece_open, piece_stakes, piece_supplies, piece_flat?  Or piece_rolls, piece_flows, piece_bulky, piece_simple?
 pseudo_bulk_cargo_maps = ((['FRUT'], ['fruit']),
                           (['JAVA'], ['coffee']),
                           (['NUTS'], ['nuts']))
