@@ -38,7 +38,7 @@ class VisibleCargo(object):
         if self.bulk:
             result.append(('bulk_cargo', 2 * len(graphics_constants.bulk_cargo_recolour_maps)))
         if self.piece:
-            result.append(('piece_cargo', 2 * sum([len(cargo_map[1]) for cargo_map in graphics_constants.piece_cargo_maps])))
+            result.append(('piece_cargo', 2 * sum([len(cargo_map[1]) for cargo_map in self.piece_cargo_maps])))
         return result
 
     def get_output_row_counts_by_type(self):
@@ -69,7 +69,7 @@ class VisibleCargo(object):
                 result[cargo_map[0]] = [counter] # list because multiple spriterows can map to a cargo label
                 counter += 1
         if self.piece:
-            for cargo_labels, cargo_filenames in graphics_constants.piece_cargo_maps:
+            for cargo_labels, cargo_filenames in self.piece_cargo_maps:
                 num_variants = len(cargo_filenames)
                 spriterow_nums = [counter + i for i in range(num_variants)]
                 for cargo_label in cargo_labels:
