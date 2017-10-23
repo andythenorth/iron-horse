@@ -54,6 +54,13 @@ class VisibleCargo(object):
         return sum([len(i) for i in unique_row_nums])
 
     @property
+    def piece_cargo_maps(self):
+        # intended get only cargo lists actually wanted for the vehicle, not all vehicles need all piece cargos
+        # ¿ possibly this should be made generic, and 'piece', 'bulk' etc should be passed as an arg?
+        # !! for now just pass through from graphics_constants
+        return graphics_constants.piece_cargo_maps
+
+    @property
     def cargo_row_map(self):
         result = {}
         counter = 0
