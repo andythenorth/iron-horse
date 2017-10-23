@@ -99,7 +99,7 @@ def main():
     consist = OpenConsist(roster='pony',
                           base_numeric_id=2460,
                           gen=5,
-                          subtype='A')
+                          subtype='B')
 
     consist.add_unit(type=FreightCar,
                      cargo_length=3,
@@ -111,7 +111,7 @@ def main():
     consist = OpenConsist(roster='pony',
                           base_numeric_id=2470,
                           gen=5,
-                          subtype='B')
+                          subtype='C')
 
     consist.add_unit(type=FreightCar,
                      cargo_length=3,
