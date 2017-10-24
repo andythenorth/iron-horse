@@ -131,7 +131,7 @@ class VisibleCargoCustom(VisibleCargo):
 
     @property
     def generic_rows(self):
-        # generic rows is normally automated, but for custom, get it from a manully specified property
+        # generic rows is normally automated, but for custom, get it from a manually specified property
         return self._generic_rows
 
     @property
