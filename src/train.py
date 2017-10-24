@@ -697,7 +697,7 @@ class FlatConsist(WagonConsist):
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_flatcar_freight']
         self.default_cargo = 'STEL'
         # Cargo graphics
-        self.visible_cargo.piece = True
+        self.visible_cargo.piece_groups = ['base']
 
 
 class FruitVegConsist(WagonConsist):
@@ -845,8 +845,7 @@ class OpenConsist(WagonConsist):
         self.default_cargo = 'GOOD'
         # Cargo Graphics
         self.visible_cargo.bulk = True
-        self.visible_cargo.piece = True
-        self.visible_cargo.pseudo_bulk = True # hax for 'bulk' cargos that are better drawn as piece
+        self.visible_cargo.piece_groups = ['base', 'pseudo_bulk']
 
 
 class PassengerConsistBase(WagonConsist):

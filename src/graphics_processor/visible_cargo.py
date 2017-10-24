@@ -6,8 +6,15 @@ class VisibleCargo(object):
     # base class assumes *only* pixa-generated cargos are used; subclass for all other cases
     def __init__(self):
         self.bulk = False
-        self.piece = False
-        self.pseudo_bulk = False # !! hax currently, set True for some bulk (fruit etc) better implemented as piece; will only work if self.piece is also True
+        self.piece_groups = []
+
+    @property
+    def piece(self):
+        # convenience method to detect if piece is required
+        if len(self.piece_groups) > 0:
+            return True
+        else:
+            return False
 
     @property
     def generic_rows(self):
@@ -56,13 +63,12 @@ class VisibleCargo(object):
 
     @property
     def piece_cargo_maps(self):
-        # intended get only cargo lists actually wanted for the vehicle, not all vehicles need all piece cargos
-        # ¿ possibly this should be made generic, and 'piece', 'bulk' etc should be passed as an arg?
-        # !! for now just pass through from graphics_constants
+        # intended to get only cargo lists actually wanted for the vehicle, not all vehicles need all piece cargos
+        # all vehicles setting piece will get the base set (this might want changed for supplies, intermodal, which use piece, but custom?)
         result = []
-        result.extend(graphics_constants.piece_cargo_maps)
-        # hax with pseudo_bulk eh
-        if self.pseudo_bulk:
+        if 'base' in self.piece_groups:
+            result.extend(graphics_constants.piece_cargo_maps)
+        if 'pseudo_bulk' in self.piece_groups:
             result.extend(graphics_constants.pseudo_bulk_cargo_maps)
         return result
 
