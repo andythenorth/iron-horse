@@ -72,7 +72,7 @@ $(GRAPHICS_DIR): $(shell $(FIND_FILES) --ext=.py --ext=.png src)
 $(LANG_DIR): $(shell $(FIND_FILES) --ext=.py --ext=.pynml --ext=.lng src)
 	$(_V) $(PYTHON3) src/render_lang.py $(ARGS)
 
-$(HTML_DOCS): $(shell $(FIND_FILES) --ext=.py --ext=.pynml --ext=.pt --ext=.lng src)
+$(HTML_DOCS): $(GRAPHICS_DIR) $(shell $(FIND_FILES) --ext=.py --ext=.pynml --ext=.pt --ext=.lng src)
 	$(_V) $(PYTHON3) src/render_docs.py $(ARGS)
 
 $(NML_FILE): $(shell $(FIND_FILES) --ext=.py --ext=.pynml src)
