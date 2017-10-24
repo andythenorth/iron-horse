@@ -3,7 +3,7 @@
 
     <div class="row">
         <div class="span12">
-            <h2>${len(registered_rosters)} rosters of trains for OpenTTD</h2>
+            <h2>${len([roster for roster in registered_rosters if not roster.disabled])} rosters of trains for OpenTTD</h2>
             <p>Only one roster is active in any game.  Choose the one you want with the parameter option (newgrf settings) :)</p>
             <hr />
             <tal:roster repeat="roster registered_rosters">
@@ -43,6 +43,7 @@
                             </tal:engine_consists>
                         </tbody>
                     </table>
+                    ${sum([len(roster.wagon_consists[wagon_class]) for wagon_class in roster.wagon_consists])} wagons
                     <table class="table table-striped tablesorter">
                         <thead>
                             <tr>
