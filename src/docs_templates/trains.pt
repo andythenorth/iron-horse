@@ -7,7 +7,7 @@
             <p>Only one roster is active in any game.  Choose the one you want with the parameter option (newgrf settings) :)</p>
             <hr />
             <tal:roster repeat="roster registered_rosters">
-                <h3>${base_lang_strings['STR_PARAM_ROSTER_OPTION_' + str(roster.numeric_id - 1)]}</h3>
+                <h3 id="${roster.id}">${base_lang_strings['STR_PARAM_ROSTER_OPTION_' + str(roster.numeric_id - 1)]}</h3>
                 <p>
                     ${len(roster.engine_consists)} engines inspired by
                     <span tal:condition="roster.id == 'antelope'">Central and Western Africa</span>
@@ -17,6 +17,7 @@
                 <table class="table table-striped tablesorter">
                     <thead>
                         <tr>
+                            <td><!--! empty cell --></td>
                             <th>Vehicle Name</th>
                             <th>Intro Date</th>
                             <th>Power (hp)</th>
@@ -27,6 +28,11 @@
                     <tbody>
                         <tal:engines repeat="consist roster.engine_consists">
                             <tr>
+                                <td style="vertical-align:middle;">
+                                    <img src="static/img/${consist.id}.png"
+                                         width="${2 * global_constants.buy_menu_sprite_width}"
+                                         height="${2 * global_constants.buy_menu_sprite_height}" />
+                                </td>
                                 <td>${consist.get_name_substr()} ${base_lang_strings[consist.get_str_name_suffix()]}</td>
                                 <td>${consist.intro_date}</td>
                                 <td>${consist.power}</td>

@@ -163,3 +163,5 @@ default_spritesheet_offsets = {'3': [[-3, -25], [-3, -21], [-16, -12], [5, -17],
 spritesheet_bounding_boxes = ((60, 8, 29), (76, 26, 24), (107, 40, 16), (156, 26, 24),
                               (188, 8, 29), (200, 26, 24), (235, 40, 16), (284, 26, 24))
 
+buy_menu_sprite_width = 36 # 36 is correct, but some spritesheets might have wrong widths due to copy-pasteo etc
+buy_menu_sprite_height = 16
