@@ -257,6 +257,7 @@ class Train(object):
         self.label_refits_allowed = [] # no specific labels needed
         self.label_refits_disallowed = []
         self.autorefit = True
+        self.tilt_bonus = False # over-ride in subclass as needed
         self.engine_class = 'ENGINE_CLASS_STEAM' # nml constant (STEAM is sane default)
         self.visual_effect = 'VISUAL_EFFECT_DISABLE' # nml constant
         self.default_visual_effect_offset = 0 # visual effect handling is fiddly, check ModelVariant also
@@ -336,8 +337,10 @@ class Train(object):
     @property
     def special_flags(self):
         special_flags = ['TRAIN_FLAG_2CC', 'TRAIN_FLAG_FLIP']
-        if self.autorefit == True:
+        if self.autorefit:
             special_flags.append('TRAIN_FLAG_AUTOREFIT')
+        if self.tilt_bonus:
+            special_flags.append('TRAIN_FLAG_TILT')
         return ','.join(special_flags)
 
     @property
@@ -1055,6 +1058,7 @@ class ElectricPaxUnit(Train):
             kwargs['consist'].track_type = "ELRL"
         self.engine_class = 'ENGINE_CLASS_ELECTRIC'
         self.visual_effect = 'VISUAL_EFFECT_ELECTRIC'
+        self.tilt_bonus = True
 
 
 class ElectricLoco(Train):
