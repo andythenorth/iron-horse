@@ -4,7 +4,6 @@ consist = EngineConsist(id='roarer',
                         base_numeric_id=2230,
                         title='Roarer [Electric]',
                         power=3200,
-                        tractive_effort_coefficient=0.32,
                         speed=110,
                         type_base_buy_cost_points=30,  # dibble buy cost for game balance
                         gen=4)

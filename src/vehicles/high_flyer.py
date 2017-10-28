@@ -4,13 +4,13 @@ consist = EngineConsist(id='high_flyer',
                         base_numeric_id=230,
                         title='4-4-2 High Flyer [Steam]',
                         power=1300,
-                        tractive_effort_coefficient=0.10,
+                        tractive_effort_coefficient=0.25,
                         speed=80,
                         buy_cost=47,
                         gen=2)
 
 consist.add_unit(type=SteamLoco,
-                 weight=90,
+                 weight=80,
                  vehicle_length=7,
                  spriterow_num=0)
 

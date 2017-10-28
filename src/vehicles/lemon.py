@@ -11,12 +11,12 @@ consist = EngineConsist(id='lemon',
                         gen=3)
 
 consist.add_unit(type=SteamLoco,
-                 weight=97,
+                 weight=115,
                  vehicle_length=8,
                  spriterow_num=0)
 
 consist.add_unit(type=SteamLocoTender,
-                 weight=52,
+                 weight=50,
                  vehicle_length=4,
                  spriterow_num=1)
 
