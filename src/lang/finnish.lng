@@ -8,12 +8,13 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Loistava
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Kohtuuton
 STR_PARAM_ROSTER                                                :Valikoima
 STR_PARAM_ROSTER_DESC                                           :Valitse käytettävä junavalikoima.
-STR_PARAM_ROSTER_OPTION_0                                       :Ihahaa! Ihahaa! Hepo hirnahtaa!
-STR_PARAM_ROSTER_OPTION_1                                       :Caballada
+STR_PARAM_ROSTER_OPTION_0                                       :Rautaponi
+STR_PARAM_ROSTER_OPTION_1                                       :Rautalaama
+STR_PARAM_ROSTER_OPTION_2                                       :Rauta-antilooppi
 
 # keep these alphabetised, easier
 STR_NAME_SUFFIX_BATTERY                                         :(Paristo)
-STR_NAME_SUFFIX_CAR                                             :Auto
+STR_NAME_SUFFIX_CAR                                             :Vaunu
 STR_NAME_SUFFIX_DIESEL                                          :(Diesel)
 STR_NAME_SUFFIX_ELECTRIC                                        :(Sähkö)
 STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Sähkö-Diesel)
@@ -24,16 +25,82 @@ STR_NAME_SUFFIX_STEAM                                           :(Höyry)
 # the 'small x car' etc isn't wise to split to substrings, the size modifier might vary in context per language
 # so just write out 3 full strings for each car type
 STR_NAME_SUFFIX_BOX_CAR                                         :Yleisvaunu
+STR_NAME_SUFFIX_BOX_CAR_SMALL                                   :Kevyt yleisvaunu
+STR_NAME_SUFFIX_BOX_CAR_MEDIUM                                  :Keskiraskas yleisvaunu
+STR_NAME_SUFFIX_BOX_CAR_LARGE                                   :Raskas yleisvaunu
 STR_NAME_SUFFIX_CABOOSE_CAR                                     :Konduktöörivaunu
-STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Katettu malmivaunu
+STR_NAME_SUFFIX_CABOOSE_CAR_SMALL                               :Kevyt konduktöörivaunu
+STR_NAME_SUFFIX_CABOOSE_CAR_MEDIUM                              :Keskiraskas konduktöörivaunu
+STR_NAME_SUFFIX_CABOOSE_CAR_LARGE                               :Raskas konduktöörivaunu
+STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Irtotavaravaunu
+STR_NAME_SUFFIX_COVERED_HOPPER_CAR_SMALL                        :Kevyt irtotavaravaunu
+STR_NAME_SUFFIX_COVERED_HOPPER_CAR_MEDIUM                       :Keskiraskas irtotavaravaunu
+STR_NAME_SUFFIX_COVERED_HOPPER_CAR_LARGE                        :Raskas irtotavaravaunu
+STR_NAME_SUFFIX_DUMP_CAR                                        :Kippivaunu
+STR_NAME_SUFFIX_DUMP_CAR_SMALL                                  :Kevyt kippivaunu
+STR_NAME_SUFFIX_DUMP_CAR_MEDIUM                                 :Keskiraskas kippivaunu
+STR_NAME_SUFFIX_DUMP_CAR_LARGE                                  :Raskas kippivaunu
 STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Elintarvikesäiliövaunu
+STR_NAME_SUFFIX_EDIBLES_TANK_CAR_SMALL                          :Kevyt elintarvikesäiliövaunu
+STR_NAME_SUFFIX_EDIBLES_TANK_CAR_MEDIUM                         :Keskiraskas elintarvikesäiliövaunu
+STR_NAME_SUFFIX_EDIBLES_TANK_CAR_LARGE                          :Raskas elintarvikesäiliövaunu
 STR_NAME_SUFFIX_FLAT_CAR                                        :Avovaunu
-STR_NAME_SUFFIX_HOPPER_CAR                                      :Malmivaunu
+STR_NAME_SUFFIX_FLAT_CAR_SMALL                                  :Kevyt avovaunu
+STR_NAME_SUFFIX_FLAT_CAR_MEDIUM                                 :Keskiraskas avovaunu
+STR_NAME_SUFFIX_FLAT_CAR_LARGE                                  :Raskas avovaunu
+STR_NAME_SUFFIX_FRUIT_CAR                                       :Hedelmä- ja vihannesvaunu
+STR_NAME_SUFFIX_FRUIT_CAR_SMALL                                 :Kevyt hedelmä- ja vihannesvaunu
+STR_NAME_SUFFIX_FRUIT_CAR_MEDIUM                                :Keskiraskas hedelmä- ja vihannesvaunu
+STR_NAME_SUFFIX_FRUIT_CAR_LARGE                                 :Raskas hedelmä- ja vihannesvaunu
+STR_NAME_SUFFIX_HIGH_SPEED_MAIL_CAR                             :Pikajunapostivaunu
+STR_NAME_SUFFIX_HIGH_SPEED_PASSENGER_CAR                        :Pikajunavaunu
+STR_NAME_SUFFIX_HOPPER_CAR                                      :Rikastevaunu
+STR_NAME_SUFFIX_HOPPER_CAR_SMALL                                :Kevyt rikastevaunu
+STR_NAME_SUFFIX_HOPPER_CAR_MEDIUM                               :Keskiraskas rikastevaunu
+STR_NAME_SUFFIX_HOPPER_CAR_LARGE                                :Raskas rikastevaunu
+STR_NAME_SUFFIX_INTERMODAL_CAR                                  :Yhdistettyjen kuljetusten vaunu
+STR_NAME_SUFFIX_INTERMODAL_CAR_SMALL                            :Kevyt yhdistettyjen kuljetusten vaunu
+STR_NAME_SUFFIX_INTERMODAL_CAR_MEDIUM                           :Keskiraskas yhdistettyjen kuljetusten vaunu
+STR_NAME_SUFFIX_INTERMODAL_CAR_LARGE                            :Raskas yhdistettyjen kuljetusten vaunu
 STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Karjavaunu
+STR_NAME_SUFFIX_LIVESTOCK_CAR_SMALL                             :Kevyt karjavaunu
+STR_NAME_SUFFIX_LIVESTOCK_CAR_MEDIUM                            :Keskiraskas karjavaunu
+STR_NAME_SUFFIX_LIVESTOCK_CAR_LARGE                             :Raskas karjavaunu
+STR_NAME_SUFFIX_LUXURY_PASSENGER_CAR                            :Luksusmatkustajavaunu
 STR_NAME_SUFFIX_MAIL_CAR                                        :Postivaunu
+STR_NAME_SUFFIX_MAIL_CAR_SMALL                                  :Kevyt postivaunu
+STR_NAME_SUFFIX_MAIL_CAR_MEDIUM                                 :Keskiraskas postivaunu
+STR_NAME_SUFFIX_MAIL_CAR_LARGE                                  :Raskas postivaunu
 STR_NAME_SUFFIX_METAL_CAR                                       :Metallivaunu
+STR_NAME_SUFFIX_METAL_CAR_SMALL                                 :Kevyt metallivaunu
+STR_NAME_SUFFIX_METAL_CAR_MEDIUM                                :Keskiraskas metallivaunu
+STR_NAME_SUFFIX_METAL_CAR_LARGE                                 :Raskas metallivaunu
 STR_NAME_SUFFIX_OPEN_CAR                                        :Avovaunu
+STR_NAME_SUFFIX_OPEN_CAR_SMALL                                  :Kevyt laidallinen avovaunu
+STR_NAME_SUFFIX_OPEN_CAR_MEDIUM                                 :Keskiraskas laidallinen avovaunu
+STR_NAME_SUFFIX_OPEN_CAR_LARGE                                  :Raskas laidallinen avovaunu
 STR_NAME_SUFFIX_PASSENGER_CAR                                   :Matkustajavaunu
 STR_NAME_SUFFIX_REEFER_CAR                                      :Jäähdytysvaunu
+STR_NAME_SUFFIX_REEFER_CAR_SMALL                                :Kevyt jäähdytysvaunu
+STR_NAME_SUFFIX_REEFER_CAR_MEDIUM                               :Keskiraskas jäähdytysvaunu
+STR_NAME_SUFFIX_REEFER_CAR_LARGE                                :Raskas jäähdytysvaunu
+STR_NAME_SUFFIX_SILO_CAR                                        :Jauhevaunu
+STR_NAME_SUFFIX_SILO_CAR_SMALL                                  :Kevyt jauhevaunu
+STR_NAME_SUFFIX_SILO_CAR_MEDIUM                                 :Keskiraskas jauhevaunu
+STR_NAME_SUFFIX_SILO_CAR_LARGE                                  :Raskas jauhevaunu
+STR_NAME_SUFFIX_STAKE_CAR                                       :Yleisavovaunu
+STR_NAME_SUFFIX_STAKE_CAR_SMALL                                 :Kevyt yleisavovaunu
+STR_NAME_SUFFIX_STAKE_CAR_MEDIUM                                :Keskiraskas yleisavovaunu
+STR_NAME_SUFFIX_STAKE_CAR_LARGE                                 :Raskas yleisavovaunu
 STR_NAME_SUFFIX_SUPPLIES_CAR                                    :Tarvikevaunu
+STR_NAME_SUFFIX_SUPPLIES_CAR_SMALL                              :Kevyt tarvikevaunu
+STR_NAME_SUFFIX_SUPPLIES_CAR_MEDIUM                             :Keskiraskas tarvikevaunu
+STR_NAME_SUFFIX_SUPPLIES_CAR_LARGE                              :Raskas tarvikevaunu
 STR_NAME_SUFFIX_TANK_CAR                                        :Säiliövaunu
+STR_NAME_SUFFIX_TANK_CAR_SMALL                                  :Pieni säiliövaunu
+STR_NAME_SUFFIX_TANK_CAR_MEDIUM                                 :Keskiraskas säiliövaunu
+STR_NAME_SUFFIX_TANK_CAR_LARGE                                  :Raskas säiliövaunu
+STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Ajoneuvonkuljetusvaunu
+STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR_SMALL                   :Kevyt ajoneuvonkuljetusvaunu
+STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR_MEDIUM                  :Keskiraskas ajoneuvonkuljetusvaunu
+STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR_LARGE                   :Raskas ajoneuvonkuljetusvaunu
