@@ -75,7 +75,7 @@ STR_NAME_SUFFIX_METAL_CAR                                       :Metallivaunu
 STR_NAME_SUFFIX_METAL_CAR_SMALL                                 :Kevyt metallivaunu
 STR_NAME_SUFFIX_METAL_CAR_MEDIUM                                :Keskiraskas metallivaunu
 STR_NAME_SUFFIX_METAL_CAR_LARGE                                 :Raskas metallivaunu
-STR_NAME_SUFFIX_OPEN_CAR                                        :Avovaunu
+STR_NAME_SUFFIX_OPEN_CAR                                        :Laidallinen avovaunu
 STR_NAME_SUFFIX_OPEN_CAR_SMALL                                  :Kevyt laidallinen avovaunu
 STR_NAME_SUFFIX_OPEN_CAR_MEDIUM                                 :Keskiraskas laidallinen avovaunu
 STR_NAME_SUFFIX_OPEN_CAR_LARGE                                  :Raskas laidallinen avovaunu
