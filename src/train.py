@@ -55,6 +55,8 @@ class Consist(object):
         self.units = []
         # automatic buy menu sprite from – sprite, or explicit buy menu sprite?
         self.auto_buy_menu_sprite = kwargs.get('auto_buy_menu_sprite', False)
+        # one default cargo for the whole consist, no mixed cargo shenanigans, it fails with auto-replace
+        self.default_cargo = None
         # cargo /livery graphics options
         self.visible_cargo = VisibleCargo()
         self.random_company_colour_swap = False # over-ride in subclasses as needed
@@ -227,6 +229,7 @@ class Consist(object):
 
     def render(self):
         # templating
+        print(self.id, self.default_cargo)
         nml_result = ''
         if len(self.units) > 1:
             nml_result = nml_result + self.render_articulated_switch()
@@ -252,7 +255,6 @@ class Train(object):
         # spriterow_num, first row = 0
         self.spriterow_num = kwargs.get('spriterow_num', 0)
         # set defaults for props otherwise set by subclass as needed (not set by kwargs as specific models do not over-ride them)
-        self.default_cargo = 'PASS' # over-ride in subclass as needed
         self.class_refit_groups = []
         self.label_refits_allowed = [] # no specific labels needed
         self.label_refits_disallowed = []
@@ -309,9 +311,9 @@ class Train(object):
     @property
     def default_cargo_capacity(self):
         if self.has_cargo_capacity:
-            if self.default_cargo == 'PASS':
+            if self.consist.default_cargo == 'PASS':
                 return self.capacities_pax[1]
-            elif self.default_cargo == 'MAIL':
+            elif self.consist.default_cargo == 'MAIL':
                 return self.capacities_mail[1]
             else:
                 return self.capacities_freight[1]
@@ -550,10 +552,10 @@ class WagonConsist(Consist):
             cost = 125
         capacity_factors = []
         for unit in self.units:
-            if unit.default_cargo == 'PASS':
+            if self.default_cargo == 'PASS':
                 # pax coaches have seats and stuff, are expensive to build
                 capacity_factors.append(3 * unit.default_cargo_capacity)
-            elif unit.default_cargo == 'MAIL':
+            elif self.default_cargo == 'MAIL':
                 # mail cars have pax-grade eqpt, but no seats etc, so moderately expensive
                 capacity_factors.append(2 * unit.default_cargo_capacity)
             else:
@@ -567,9 +569,9 @@ class WagonConsist(Consist):
             cost = self.speed
         else:
             cost = 125
-        if self.units[0].default_cargo == 'PASS':
+        if self.default_cargo == 'PASS':
             return cost / 4
-        elif self.units[0].default_cargo == 'MAIL':
+        elif self.default_cargo == 'MAIL':
             return cost / 7
         else:
             return cost / 8
@@ -632,7 +634,7 @@ class CabooseConsist(WagonConsist):
         self.class_refit_groups = [] # refit nothing, don't mess with this, it breaks auto-replace
         self.label_refits_allowed = [] # no specific labels needed
         self.label_refits_disallowed = []
-        self.default_cargo = 'GOOD' # unwanted side-effect of this is that caboose replaceable by anything refitting goods
+        self.default_cargo = None
         # no graphics processing - don't random colour cabeese, I tried it, looks daft
         self.random_company_colour_swap = False
 
@@ -965,7 +967,6 @@ class Wagon(Train):
         self.class_refit_groups = self.consist.class_refit_groups
         self.label_refits_allowed = self.consist.label_refits_allowed
         self.label_refits_disallowed = self.consist.label_refits_disallowed
-        self.default_cargo = self.consist.default_cargo
         if hasattr(self.consist, 'loading_speed_multiplier'):
             self.loading_speed_multiplier = self.consist.loading_speed_multiplier
         if hasattr(self.consist, 'cargo_age_period'):
