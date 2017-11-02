@@ -130,6 +130,8 @@ cargo_labels = ['PASS', # pax first
                 'KAOL',
                 'FERT',
                 'PIPE',
+                'SALT',
+                'CBLK',
                 #
                 'NULL']
 

@@ -647,7 +647,7 @@ class CoveredHopperConsist(WagonConsist):
         super().__init__(**kwargs)
         self.title = self.get_wagon_title('Covered Hopper Car')
         self.class_refit_groups = [] # no classes, use explicit labels
-        self.label_refits_allowed = ['GRAI', 'WHEA', 'MAIZ', 'SUGR', 'FMSP', 'RFPR', 'CLAY', 'BDMT', 'BEAN', 'NITR', 'RUBR', 'SAND', 'POTA', 'QLME', 'SASH', 'CMNT', 'KAOL', 'FERT']
+        self.label_refits_allowed = ['GRAI', 'WHEA', 'MAIZ', 'SUGR', 'FMSP', 'RFPR', 'CLAY', 'BDMT', 'BEAN', 'NITR', 'RUBR', 'SAND', 'POTA', 'QLME', 'SASH', 'CMNT', 'KAOL', 'FERT', 'SALT', 'CBLK']
         self.label_refits_disallowed = []
         self.default_cargo = 'GRAI'
         self.loading_speed_multiplier = 2
