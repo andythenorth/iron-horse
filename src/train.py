@@ -229,7 +229,6 @@ class Consist(object):
 
     def render(self):
         # templating
-        print(self.id, self.default_cargo)
         nml_result = ''
         if len(self.units) > 1:
             nml_result = nml_result + self.render_articulated_switch()
