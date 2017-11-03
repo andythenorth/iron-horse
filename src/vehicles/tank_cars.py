@@ -19,6 +19,28 @@ def main():
                               graphics_processor=consist.graphics_processors[1])
     #--------------- pony ----------------------------------------------------------------------
     consist = TankConsist(roster='pony',
+                          base_numeric_id=1200,
+                          gen=2,
+                          subtype='A')
+
+    consist.add_unit(type=FreightCar,
+                     vehicle_length=4)
+
+    consist.add_model_variant(spritesheet_suffix=0,
+                              graphics_processor=consist.graphics_processors[0])
+
+    consist = TankConsist(roster='pony',
+                          base_numeric_id=3180,
+                          gen=2,
+                          subtype='B')
+
+    consist.add_unit(type=FreightCar,
+                     vehicle_length=6)
+
+    consist.add_model_variant(spritesheet_suffix=0,
+                              graphics_processor=consist.graphics_processors[0])
+
+    consist = TankConsist(roster='pony',
                           base_numeric_id=630,
                           gen=3,
                           subtype='A')
