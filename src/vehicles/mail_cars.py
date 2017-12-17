@@ -10,7 +10,7 @@ def main():
                           track_type='NG')
 
     consist.add_unit(type=Wagon,
-                     capacity=24,
+                     capacity=12,
                      vehicle_length=5)
 
     #--------------- pony ----------------------------------------------------------------------
@@ -22,7 +22,7 @@ def main():
                           subtype='A')
 
     consist.add_unit(type=Wagon,
-                     capacity=15,
+                     capacity=10,
                      vehicle_length=4)
 
     consist.add_model_variant(spritesheet_suffix=0)
@@ -33,7 +33,7 @@ def main():
                           subtype='B')
 
     consist.add_unit(type=Wagon,
-                     capacity=15,
+                     capacity=12,
                      vehicle_length=6)
 
     consist.add_model_variant(spritesheet_suffix=0)
@@ -44,7 +44,7 @@ def main():
                           subtype='A')
 
     consist.add_unit(type=Wagon,
-                     capacity=25,
+                     capacity=10,
                      vehicle_length=4)
 
     consist.add_model_variant(spritesheet_suffix=0)
@@ -55,7 +55,7 @@ def main():
                           subtype='B')
 
     consist.add_unit(type=Wagon,
-                     capacity=25,
+                     capacity=12,
                      vehicle_length=6)
 
     consist.add_model_variant(spritesheet_suffix=0)
@@ -66,7 +66,7 @@ def main():
                           subtype='B')
 
     consist.add_unit(type=Wagon,
-                     capacity=40,
+                     capacity=12,
                      vehicle_length=6)
 
     consist.add_model_variant(spritesheet_suffix=0)
@@ -77,7 +77,7 @@ def main():
                           subtype='C')
 
     consist.add_unit(type=Wagon,
-                     capacity=40,
+                     capacity=15,
                      vehicle_length=8)
 
     consist.add_model_variant(spritesheet_suffix=0)
@@ -88,7 +88,7 @@ def main():
                           subtype='B')
 
     consist.add_unit(type=Wagon,
-                     capacity=55,
+                     capacity=12,
                      vehicle_length=6)
 
     consist.add_model_variant(spritesheet_suffix=0)
@@ -99,7 +99,7 @@ def main():
                           subtype='C')
 
     consist.add_unit(type=Wagon,
-                     capacity=55,
+                     capacity=15,
                      vehicle_length=8)
 
     consist.add_model_variant(spritesheet_suffix=0)
@@ -110,7 +110,7 @@ def main():
                           subtype='B')
 
     consist.add_unit(type=Wagon,
-                     capacity=55,
+                     capacity=12,
                      vehicle_length=6)
 
     consist.add_model_variant(spritesheet_suffix=0)
@@ -121,7 +121,7 @@ def main():
                           subtype='C')
 
     consist.add_unit(type=Wagon,
-                     capacity=55,
+                     capacity=15,
                      vehicle_length=8)
 
     consist.add_model_variant(spritesheet_suffix=0)
@@ -212,7 +212,7 @@ def main():
                           subtype='A')
 
     consist.add_unit(type=Wagon,
-                     capacity=40,
+                     capacity=10,
                      vehicle_length=8)
 
     consist.add_model_variant(spritesheet_suffix=0)
