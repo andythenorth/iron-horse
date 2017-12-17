@@ -1,4 +1,4 @@
-from train import EngineConsist, ElectroDieselLoco
+from train import EngineConsist, ElectroDieselEngineUnit
 
 consist = EngineConsist(id='shoebox',
                         base_numeric_id=280,
@@ -10,7 +10,7 @@ consist = EngineConsist(id='shoebox',
                         gen=4,
                         power_by_railtype={'RAIL': 950, 'ELRL': 1800})
 
-consist.add_unit(type=ElectroDieselLoco,
+consist.add_unit(type=ElectroDieselEngineUnit,
                  weight=65,
                  vehicle_length=6,
                  spriterow_num=0)

@@ -1,4 +1,4 @@
-from train import EngineConsist, DieselLoco
+from train import EngineConsist, DieselEngineUnit
 
 consist = EngineConsist(id='gazelle',
                         base_numeric_id=2030,
@@ -8,7 +8,7 @@ consist = EngineConsist(id='gazelle',
                         speed=85,
                         intro_date=1975)
 
-consist.add_unit(type=DieselLoco,
+consist.add_unit(type=DieselEngineUnit,
                  weight=90,
                  vehicle_length=7,
                  spriterow_num=0)

@@ -1,4 +1,4 @@
-from train import EngineConsist, DieselLoco
+from train import EngineConsist, DieselEngineUnit
 # for rest of stats, look up EMD G22CW
 consist = EngineConsist(id='astarsa',
                         base_numeric_id=50,
@@ -9,7 +9,7 @@ consist = EngineConsist(id='astarsa',
                         type_base_running_cost_points=-15,  # dibble running costs for game balance
                         intro_date=1969)
 
-consist.add_unit(type=DieselLoco,
+consist.add_unit(type=DieselEngineUnit,
                  weight=40,
                  vehicle_length=8,
                  spriterow_num=0)

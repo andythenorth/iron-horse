@@ -1,4 +1,4 @@
-from train import EngineConsist, DieselLoco
+from train import EngineConsist, DieselEngineUnit
 # for rest of stats, look up Chinese CKD8G
 consist = EngineConsist(id='roca',
                         base_numeric_id=400,
@@ -9,7 +9,7 @@ consist = EngineConsist(id='roca',
                         type_base_running_cost_points=-15,  # dibble running costs for game balance
                         intro_date=1990)
 
-consist.add_unit(type=DieselLoco,
+consist.add_unit(type=DieselEngineUnit,
                  weight=30,
                  vehicle_length=8,
                  spriterow_num=0)

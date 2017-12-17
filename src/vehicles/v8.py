@@ -1,4 +1,4 @@
-from train import EngineConsist, ElectricLoco
+from train import EngineConsist, ElectricEngineUnit
 
 consist = EngineConsist(id='v8',
                         base_numeric_id=410,
@@ -9,7 +9,7 @@ consist = EngineConsist(id='v8',
                         type_base_running_cost_points=-10,  # dibble running costs for game balance
                         intro_date=1949)
 
-consist.add_unit(type=ElectricLoco,
+consist.add_unit(type=ElectricEngineUnit,
                  weight=160,
                  vehicle_length=8,
                  spriterow_num=0)

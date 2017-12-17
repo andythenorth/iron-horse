@@ -1,4 +1,4 @@
-from train import EngineConsist, DieselLoco
+from train import EngineConsist, DieselEngineUnit
 # for rest of stats, look up Krauss Maffei Brazil
 consist = EngineConsist(id='krauss',
                         base_numeric_id=260,
@@ -10,7 +10,7 @@ consist = EngineConsist(id='krauss',
                         type_base_running_cost_points=-15,  # dibble running costs for game balance
                         intro_date=1963)
 
-consist.add_unit(type=DieselLoco,
+consist.add_unit(type=DieselEngineUnit,
                  weight=150,
                  vehicle_length=8,
                  spriterow_num=0)

@@ -1,4 +1,4 @@
-from train import EngineConsist, SteamLoco, SteamLocoTender
+from train import EngineConsist, SteamEngineUnit, SteamEngineTenderUnit
 
 consist = EngineConsist(id='cooke',
                         base_numeric_id=150,
@@ -7,12 +7,12 @@ consist = EngineConsist(id='cooke',
                         speed=65,
                         intro_date=1885)
 
-consist.add_unit(type=SteamLoco,
+consist.add_unit(type=SteamEngineUnit,
                  weight=75,
                  vehicle_length=6,
                  spriterow_num=0)
 
-consist.add_unit(type=SteamLocoTender,
+consist.add_unit(type=SteamEngineTenderUnit,
                  weight=40,
                  vehicle_length=5,
                  spriterow_num=1)

@@ -1,4 +1,4 @@
-from train import EngineConsist, SteamLoco
+from train import EngineConsist, SteamEngineUnit
 
 consist = EngineConsist(id='suburban',
                         base_numeric_id=500,
@@ -10,7 +10,7 @@ consist = EngineConsist(id='suburban',
                         type_base_running_cost_points=-6,  # dibble running costs for game balance
                         gen=2)
 
-consist.add_unit(type=SteamLoco,
+consist.add_unit(type=SteamEngineUnit,
                  weight=57,
                  vehicle_length=6,
                  spriterow_num=0)

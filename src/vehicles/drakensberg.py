@@ -1,4 +1,4 @@
-from train import EngineConsist, SteamLoco, SteamLocoTender
+from train import EngineConsist, SteamEngineUnit, SteamEngineTenderUnit
 
 consist = EngineConsist(id='drakensberg',
                         # !! This vehicle needs more than one id range due to length
@@ -12,22 +12,22 @@ consist = EngineConsist(id='drakensberg',
                         type_base_running_cost_points=12,  # dibble running costs for game balance
                         intro_date=1945)
 
-consist.add_unit(type=SteamLocoTender,
+consist.add_unit(type=SteamEngineTenderUnit,
                  weight=65,
                  vehicle_length=4,
                  spriterow_num=0)
 
-consist.add_unit(type=SteamLoco,
+consist.add_unit(type=SteamEngineUnit,
                  weight=80,
                  vehicle_length=6,
                  spriterow_num=1)
 
-consist.add_unit(type=SteamLocoTender,
+consist.add_unit(type=SteamEngineTenderUnit,
                  weight=65,
                  vehicle_length=4,
                  spriterow_num=2)
 
-consist.add_unit(type=SteamLocoTender,
+consist.add_unit(type=SteamEngineTenderUnit,
                  weight=45,
                  vehicle_length=6,
                  spriterow_num=3)

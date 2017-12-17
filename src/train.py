@@ -251,225 +251,6 @@ class Consist(object):
         return nml_result
 
 
-class Train(object):
-    """Base class for all types of trains"""
-    def __init__(self, **kwargs):
-        self.consist = kwargs.get('consist')
-
-        # setup properties for this train
-        self.numeric_id = kwargs.get('numeric_id', None)
-        self.cargo_age_period = kwargs.get('cargo_age_period', global_constants.CARGO_AGE_PERIOD)
-        self.vehicle_length = kwargs.get('vehicle_length', None)
-        self._weight = kwargs.get('weight', None)
-        self.capacity = kwargs.get('capacity', 0)
-        self.loading_speed_multiplier = kwargs.get('loading_speed_multiplier', 1)
-        # spriterow_num, first row = 0
-        self.spriterow_num = kwargs.get('spriterow_num', 0)
-        # set defaults for props otherwise set by subclass as needed (not set by kwargs as specific models do not over-ride them)
-        self.class_refit_groups = []
-        self.label_refits_allowed = [] # no specific labels needed
-        self.label_refits_disallowed = []
-        self.autorefit = True
-        self.tilt_bonus = False # over-ride in subclass as needed
-        self.engine_class = 'ENGINE_CLASS_STEAM' # nml constant (STEAM is sane default)
-        self.visual_effect = 'VISUAL_EFFECT_DISABLE' # nml constant
-        self.default_visual_effect_offset = 0 # visual effect handling is fiddly, check ModelVariant also
-        # optional - some consists have sequences like A1-B-A2, where A1 and A2 look the same but have different IDs for implementation reasons
-        # avoid duplicating sprites on the spritesheet by forcing A2 to use A1's spriterow_num, fiddly eh?
-        # ugly, but eh.  Zero-indexed, based on position in units[]
-        # watch out for repeated vehicles in the consist when calculating the value for this)
-        # !! I don't really like this solution, might be better to have the graphics processor duplicate this?, with a simple map of [source:duplicate_to]
-        self.unit_num_providing_spriterow_num = kwargs.get('unit_num_providing_spriterow_num', None)
-        # optional - force always using same spriterow
-        # for cases where the template handles cargo, but some units in the consist might not show cargo, e.g. tractor units etc
-        # can also be used to suppress compile failures during testing when spritesheet is unfinished (missing rows etc)
-        self.always_use_same_spriterow = kwargs.get('always_use_same_spriterow', False)
-        # only set if the graphics processor requires it to generate cargo sprites
-        # defines the size of cargo sprite to use
-        # if the vehicle cargo area is not an OTTD unit length, use the next size up and the masking will sort it out
-        # some longer vehicles may place multiple shorter cargo sprites, e.g. 7/8 vehicle, 2 * 4/8 cargo sprites (with some overlapping)
-        self.cargo_length = kwargs.get('cargo_length', None)
-
-    def get_capacity_variations(self, capacity):
-        # capacity is variable, controlled by a newgrf parameter
-        # allow that integer maths is needed for newgrf cb results; round up for safety
-        return [int(math.ceil(capacity * multiplier)) for multiplier in global_constants.capacity_multipliers]
-
-    @property
-    def capacities(self):
-        return self.get_capacity_variations(self.capacity)
-
-    @property
-    def default_cargo_capacity(self):
-        return self.capacities[1]
-
-    @property
-    def has_cargo_capacity(self):
-        if self.default_cargo_capacity is not 0:
-            return True
-        else:
-            return False
-
-    @property
-    def weight(self):
-        # weight can be set explicitly or by methods on subclasses
-        return self._weight
-
-    @property
-    def availability(self):
-        # only show vehicle in buy menu if it is first vehicle in consist
-        if self.is_lead_unit_of_consist:
-            return "ALL_CLIMATES"
-        else:
-            return "NO_CLIMATE"
-
-    @property
-    def is_lead_unit_of_consist(self):
-        # first unit in the complete multi-unit consist
-        if self.numeric_id == self.consist.base_numeric_id:
-            return True
-        else:
-            return False
-
-    @property
-    def special_flags(self):
-        special_flags = ['TRAIN_FLAG_2CC', 'TRAIN_FLAG_FLIP']
-        if self.autorefit:
-            special_flags.append('TRAIN_FLAG_AUTOREFIT')
-        if self.tilt_bonus:
-            special_flags.append('TRAIN_FLAG_TILT')
-        return ','.join(special_flags)
-
-    @property
-    def refittable_classes(self):
-        cargo_classes = []
-        # maps lists of allowed classes.  No equivalent for disallowed classes, that's overly restrictive and damages the viability of class-based refitting
-        for i in self.class_refit_groups:
-            [cargo_classes.append(cargo_class) for cargo_class in global_constants.base_refits_by_class[i]]
-        return ','.join(set(cargo_classes)) # use set() here to dedupe
-
-    def get_loading_speed(self, cargo_type, capacity_param):
-        # ottd vehicles load at different rates depending on type,
-        # normalise default loading time for this set to 240 ticks, regardless of capacity
-        # openttd loading rates vary by transport type, look them up in wiki to find value to use here to normalise loading time to 240 ticks
-        transport_type_rate = 6 # this is (240 / loading frequency in ticks for transport type) from wiki
-        return int(self.loading_speed_multiplier * math.ceil(self.capacities[capacity_param] / transport_type_rate))
-
-    @property
-    def running_cost_base(self):
-        return {'ENGINE_CLASS_STEAM': 'RUNNING_COST_STEAM',
-                'ENGINE_CLASS_DIESEL': 'RUNNING_COST_DIESEL',
-                'ENGINE_CLASS_ELECTRIC': 'RUNNING_COST_ELECTRIC'}[self.engine_class]
-
-    @property
-    def offsets(self):
-        # offsets can also be over-ridden on a per-model basis by providing this property in the model class
-        return global_constants.default_spritesheet_offsets[str(self.vehicle_length)]
-
-    @property
-    def vehicle_nml_template(self):
-        if not self.always_use_same_spriterow:
-            if self.consist.visible_cargo.nml_template:
-                return self.consist.visible_cargo.nml_template
-        # default case
-        return 'vehicle_default.pynml'
-
-    @property
-    def location_of_random_bits_for_model_variant(self):
-        return 'FORWARD_SELF(' + str(self.numeric_id - self.consist.base_numeric_id) + ')'
-
-    @property
-    def unit_requires_visual_effect(self):
-        # tiny compile optimisation
-        if self.visual_effect is not 'VISUAL_EFFECT_DISABLE':
-            return True
-        else:
-            return False
-
-    def get_visual_effect_offset(self, variant):
-        # no sign here of bonkers complexity just to flip smoke on flipped engines
-        if variant.visual_effect_offset is None:
-            if self.default_visual_effect_offset == 'FRONT':
-                return int(math.floor(-0.5 * self.vehicle_length))
-            else:
-                return self.default_visual_effect_offset
-        else:
-            if variant.visual_effect_offset == 'AUTOFLIP':
-                print("get_visual_effect_offset() 'AUTOFLIP' detection is silly, and needs refactored")
-                return int(math.floor(0.5 * (self.vehicle_length - self.vehicle_length))) # !! this is legacy and will now result in 0 always
-            else:
-                return variant.visual_effect_offset
-
-    def get_nml_for_visual_effect_and_powered_cb(self):
-        # ridiculous compile micro-optimisation, some random switches will be dropped if only 1 model variant
-        if len(self.consist.model_variants) > 1:
-            return self.id + "_switch_visual_effect_and_powered"
-        else:
-            return self.id + "_switch_visual_effect_and_powered_by_variant_" + str(self.consist.model_variants[0].spritesheet_suffix)
-
-    def get_nml_for_graphics_switch(self):
-        # ridiculous compile micro-optimisation, some random switches will be dropped if only 1 model variant
-        if len(self.consist.model_variants) > 1:
-            return self.id + "_switch_graphics"
-        else:
-            return self.id + "_switch_graphics_" + str(self.consist.model_variants[0].spritesheet_suffix)
-
-    def get_nml_expression_for_cargo_variant_random_switch(self, variation_num, cargo_id=None):
-        # having a method to calculate the nml for this is overkill
-        # legacy of multi-part vehicles, where the trigger needed to be run on an adjacent vehicle
-        # this could be unpicked and moved directly into the templates
-        switch_id = self.id + "_switch_graphics_" + str(variation_num) + ('_' + str(cargo_id) if cargo_id is not None else '')
-        return "SELF," + switch_id + ", bitmask(TRIGGER_VEHICLE_NEW_LOAD)"
-
-    def get_nml_expression_for_grfid_of_neighbouring_unit(self, unit_offset):
-        # offset is number of units
-        expression_template = Template("[STORE_TEMP(${offset}, 0x10F), var[0x61, 0, 0xFFFFFFFF, 0x25]]")
-        return expression_template.substitute(offset=(3 * unit_offset))
-
-    def get_nml_expression_for_id_of_neighbouring_unit(self, unit_offset):
-        # offset is number of units
-        expression_template = Template("[STORE_TEMP(${offset}, 0x10F), var[0x61, 0, 0x0000FFFF, 0xC6]]")
-        return expression_template.substitute(offset=(3 * unit_offset))
-
-    def get_label_refits_allowed(self):
-        # allowed labels, for fine-grained control in addition to classes
-        return ','.join(self.label_refits_allowed)
-
-    def get_label_refits_disallowed(self):
-        # disallowed labels, for fine-grained control, knocking out cargos that are allowed by classes, but don't fit for gameplay reasons
-        return ','.join(self.label_refits_disallowed)
-
-    def get_cargo_suffix(self):
-        return 'string(' + self.cargo_units_refit_menu + ')'
-
-    def assert_cargo_labels(self, cargo_labels):
-        for i in cargo_labels:
-            if i not in global_constants.cargo_labels:
-                utils.echo_message("Warning: vehicle " + self.id + " references cargo label " + i + " which is not defined in the cargo table")
-
-    def render(self):
-        # integrity tests
-        self.assert_cargo_labels(self.label_refits_allowed)
-        self.assert_cargo_labels(self.label_refits_disallowed)
-        # templating
-        template_name = self.vehicle_nml_template
-        template = templates[template_name]
-        nml_result = template(vehicle=self, consist=self.consist, global_constants=global_constants)
-        return nml_result
-
-
-class ModelVariant(object):
-    # simple class to hold model variants (randomised graphics)
-    # must be a minimum of one variant per train
-    def __init__(self, spritesheet_suffix, graphics_processor, visual_effect_offset):
-        self.spritesheet_suffix = spritesheet_suffix # use digits for these - to match spritesheet filenames
-        self.graphics_processor = graphics_processor
-        self.visual_effect_offset = visual_effect_offset # used to move effects around when flipping vehicle - might be a better way?
-
-    def get_spritesheet_name(self, consist):
-        return consist.id + '_' + str(self.spritesheet_suffix) + '.png'
-
-
 class EngineConsist(Consist):
     """
     Intermediate class for engine consists to subclass from, provides some common properties.
@@ -661,6 +442,7 @@ class CabooseCarConsist(CarConsist):
         self.label_refits_disallowed = []
         # no graphics processing - don't random colour cabeese, I tried it, looks daft
         self.random_company_colour_swap = False
+
 
 class CoveredHopperCarConsist(CarConsist):
     """
@@ -979,7 +761,226 @@ class VehicleTransporterCarConsist(CarConsist):
         self.date_variant_var = 'current_year'
 
 
-class Wagon(Train):
+class ModelVariant(object):
+    # simple class to hold model variants (randomised graphics)
+    # must be a minimum of one variant per train
+    def __init__(self, spritesheet_suffix, graphics_processor, visual_effect_offset):
+        self.spritesheet_suffix = spritesheet_suffix # use digits for these - to match spritesheet filenames
+        self.graphics_processor = graphics_processor
+        self.visual_effect_offset = visual_effect_offset # used to move effects around when flipping vehicle - might be a better way?
+
+    def get_spritesheet_name(self, consist):
+        return consist.id + '_' + str(self.spritesheet_suffix) + '.png'
+
+
+class Train(object):
+    """Base class for all types of trains"""
+    def __init__(self, **kwargs):
+        self.consist = kwargs.get('consist')
+
+        # setup properties for this train
+        self.numeric_id = kwargs.get('numeric_id', None)
+        self.cargo_age_period = kwargs.get('cargo_age_period', global_constants.CARGO_AGE_PERIOD)
+        self.vehicle_length = kwargs.get('vehicle_length', None)
+        self._weight = kwargs.get('weight', None)
+        self.capacity = kwargs.get('capacity', 0)
+        self.loading_speed_multiplier = kwargs.get('loading_speed_multiplier', 1)
+        # spriterow_num, first row = 0
+        self.spriterow_num = kwargs.get('spriterow_num', 0)
+        # set defaults for props otherwise set by subclass as needed (not set by kwargs as specific models do not over-ride them)
+        self.class_refit_groups = []
+        self.label_refits_allowed = [] # no specific labels needed
+        self.label_refits_disallowed = []
+        self.autorefit = True
+        self.tilt_bonus = False # over-ride in subclass as needed
+        self.engine_class = 'ENGINE_CLASS_STEAM' # nml constant (STEAM is sane default)
+        self.visual_effect = 'VISUAL_EFFECT_DISABLE' # nml constant
+        self.default_visual_effect_offset = 0 # visual effect handling is fiddly, check ModelVariant also
+        # optional - some consists have sequences like A1-B-A2, where A1 and A2 look the same but have different IDs for implementation reasons
+        # avoid duplicating sprites on the spritesheet by forcing A2 to use A1's spriterow_num, fiddly eh?
+        # ugly, but eh.  Zero-indexed, based on position in units[]
+        # watch out for repeated vehicles in the consist when calculating the value for this)
+        # !! I don't really like this solution, might be better to have the graphics processor duplicate this?, with a simple map of [source:duplicate_to]
+        self.unit_num_providing_spriterow_num = kwargs.get('unit_num_providing_spriterow_num', None)
+        # optional - force always using same spriterow
+        # for cases where the template handles cargo, but some units in the consist might not show cargo, e.g. tractor units etc
+        # can also be used to suppress compile failures during testing when spritesheet is unfinished (missing rows etc)
+        self.always_use_same_spriterow = kwargs.get('always_use_same_spriterow', False)
+        # only set if the graphics processor requires it to generate cargo sprites
+        # defines the size of cargo sprite to use
+        # if the vehicle cargo area is not an OTTD unit length, use the next size up and the masking will sort it out
+        # some longer vehicles may place multiple shorter cargo sprites, e.g. 7/8 vehicle, 2 * 4/8 cargo sprites (with some overlapping)
+        self.cargo_length = kwargs.get('cargo_length', None)
+
+    def get_capacity_variations(self, capacity):
+        # capacity is variable, controlled by a newgrf parameter
+        # allow that integer maths is needed for newgrf cb results; round up for safety
+        return [int(math.ceil(capacity * multiplier)) for multiplier in global_constants.capacity_multipliers]
+
+    @property
+    def capacities(self):
+        return self.get_capacity_variations(self.capacity)
+
+    @property
+    def default_cargo_capacity(self):
+        return self.capacities[1]
+
+    @property
+    def has_cargo_capacity(self):
+        if self.default_cargo_capacity is not 0:
+            return True
+        else:
+            return False
+
+    @property
+    def weight(self):
+        # weight can be set explicitly or by methods on subclasses
+        return self._weight
+
+    @property
+    def availability(self):
+        # only show vehicle in buy menu if it is first vehicle in consist
+        if self.is_lead_unit_of_consist:
+            return "ALL_CLIMATES"
+        else:
+            return "NO_CLIMATE"
+
+    @property
+    def is_lead_unit_of_consist(self):
+        # first unit in the complete multi-unit consist
+        if self.numeric_id == self.consist.base_numeric_id:
+            return True
+        else:
+            return False
+
+    @property
+    def special_flags(self):
+        special_flags = ['TRAIN_FLAG_2CC', 'TRAIN_FLAG_FLIP']
+        if self.autorefit:
+            special_flags.append('TRAIN_FLAG_AUTOREFIT')
+        if self.tilt_bonus:
+            special_flags.append('TRAIN_FLAG_TILT')
+        return ','.join(special_flags)
+
+    @property
+    def refittable_classes(self):
+        cargo_classes = []
+        # maps lists of allowed classes.  No equivalent for disallowed classes, that's overly restrictive and damages the viability of class-based refitting
+        for i in self.class_refit_groups:
+            [cargo_classes.append(cargo_class) for cargo_class in global_constants.base_refits_by_class[i]]
+        return ','.join(set(cargo_classes)) # use set() here to dedupe
+
+    def get_loading_speed(self, cargo_type, capacity_param):
+        # ottd vehicles load at different rates depending on type,
+        # normalise default loading time for this set to 240 ticks, regardless of capacity
+        # openttd loading rates vary by transport type, look them up in wiki to find value to use here to normalise loading time to 240 ticks
+        transport_type_rate = 6 # this is (240 / loading frequency in ticks for transport type) from wiki
+        return int(self.loading_speed_multiplier * math.ceil(self.capacities[capacity_param] / transport_type_rate))
+
+    @property
+    def running_cost_base(self):
+        return {'ENGINE_CLASS_STEAM': 'RUNNING_COST_STEAM',
+                'ENGINE_CLASS_DIESEL': 'RUNNING_COST_DIESEL',
+                'ENGINE_CLASS_ELECTRIC': 'RUNNING_COST_ELECTRIC'}[self.engine_class]
+
+    @property
+    def offsets(self):
+        # offsets can also be over-ridden on a per-model basis by providing this property in the model class
+        return global_constants.default_spritesheet_offsets[str(self.vehicle_length)]
+
+    @property
+    def vehicle_nml_template(self):
+        if not self.always_use_same_spriterow:
+            if self.consist.visible_cargo.nml_template:
+                return self.consist.visible_cargo.nml_template
+        # default case
+        return 'vehicle_default.pynml'
+
+    @property
+    def location_of_random_bits_for_model_variant(self):
+        return 'FORWARD_SELF(' + str(self.numeric_id - self.consist.base_numeric_id) + ')'
+
+    @property
+    def unit_requires_visual_effect(self):
+        # tiny compile optimisation
+        if self.visual_effect is not 'VISUAL_EFFECT_DISABLE':
+            return True
+        else:
+            return False
+
+    def get_visual_effect_offset(self, variant):
+        # no sign here of bonkers complexity just to flip smoke on flipped engines
+        if variant.visual_effect_offset is None:
+            if self.default_visual_effect_offset == 'FRONT':
+                return int(math.floor(-0.5 * self.vehicle_length))
+            else:
+                return self.default_visual_effect_offset
+        else:
+            if variant.visual_effect_offset == 'AUTOFLIP':
+                print("get_visual_effect_offset() 'AUTOFLIP' detection is silly, and needs refactored")
+                return int(math.floor(0.5 * (self.vehicle_length - self.vehicle_length))) # !! this is legacy and will now result in 0 always
+            else:
+                return variant.visual_effect_offset
+
+    def get_nml_for_visual_effect_and_powered_cb(self):
+        # ridiculous compile micro-optimisation, some random switches will be dropped if only 1 model variant
+        if len(self.consist.model_variants) > 1:
+            return self.id + "_switch_visual_effect_and_powered"
+        else:
+            return self.id + "_switch_visual_effect_and_powered_by_variant_" + str(self.consist.model_variants[0].spritesheet_suffix)
+
+    def get_nml_for_graphics_switch(self):
+        # ridiculous compile micro-optimisation, some random switches will be dropped if only 1 model variant
+        if len(self.consist.model_variants) > 1:
+            return self.id + "_switch_graphics"
+        else:
+            return self.id + "_switch_graphics_" + str(self.consist.model_variants[0].spritesheet_suffix)
+
+    def get_nml_expression_for_cargo_variant_random_switch(self, variation_num, cargo_id=None):
+        # having a method to calculate the nml for this is overkill
+        # legacy of multi-part vehicles, where the trigger needed to be run on an adjacent vehicle
+        # this could be unpicked and moved directly into the templates
+        switch_id = self.id + "_switch_graphics_" + str(variation_num) + ('_' + str(cargo_id) if cargo_id is not None else '')
+        return "SELF," + switch_id + ", bitmask(TRIGGER_VEHICLE_NEW_LOAD)"
+
+    def get_nml_expression_for_grfid_of_neighbouring_unit(self, unit_offset):
+        # offset is number of units
+        expression_template = Template("[STORE_TEMP(${offset}, 0x10F), var[0x61, 0, 0xFFFFFFFF, 0x25]]")
+        return expression_template.substitute(offset=(3 * unit_offset))
+
+    def get_nml_expression_for_id_of_neighbouring_unit(self, unit_offset):
+        # offset is number of units
+        expression_template = Template("[STORE_TEMP(${offset}, 0x10F), var[0x61, 0, 0x0000FFFF, 0xC6]]")
+        return expression_template.substitute(offset=(3 * unit_offset))
+
+    def get_label_refits_allowed(self):
+        # allowed labels, for fine-grained control in addition to classes
+        return ','.join(self.label_refits_allowed)
+
+    def get_label_refits_disallowed(self):
+        # disallowed labels, for fine-grained control, knocking out cargos that are allowed by classes, but don't fit for gameplay reasons
+        return ','.join(self.label_refits_disallowed)
+
+    def get_cargo_suffix(self):
+        return 'string(' + self.cargo_units_refit_menu + ')'
+
+    def assert_cargo_labels(self, cargo_labels):
+        for i in cargo_labels:
+            if i not in global_constants.cargo_labels:
+                utils.echo_message("Warning: vehicle " + self.id + " references cargo label " + i + " which is not defined in the cargo table")
+
+    def render(self):
+        # integrity tests
+        self.assert_cargo_labels(self.label_refits_allowed)
+        self.assert_cargo_labels(self.label_refits_disallowed)
+        # templating
+        template_name = self.vehicle_nml_template
+        template = templates[template_name]
+        nml_result = template(vehicle=self, consist=self.consist, global_constants=global_constants)
+        return nml_result
+
+
+class TrainCar(Train):
     """
     Intermediate class for actual cars (wagons) to subclass from, provides some common properties.
     This class should be sparse - only declare the most limited set of properties common to wagons.
@@ -1002,9 +1003,9 @@ class Wagon(Train):
          return self.consist.weight_factor * self.default_cargo_capacity
 
 
-class SteamLoco(Train):
+class SteamEngineUnit(Train):
     """
-    Steam Locomotive.
+    Unit for a steam engine, with smoke
     """
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -1013,17 +1014,18 @@ class SteamLoco(Train):
         self.default_visual_effect_offset = 'FRONT'
 
 
-class SteamLocoTender(Train):
+class SteamEngineTenderUnit(Train):
     """
-    Steam Locomotive Tender.
+    Unit for a steam engine tender.
+    Arguably this class is pointless, as it is just passthrough.
     """
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
 
-class DieselLoco(Train):
+class DieselEngineUnit(Train):
     """
-    Diesel Locomotive.
+    Unit for a diesel engine.
     """
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -1033,7 +1035,7 @@ class DieselLoco(Train):
 
 class ElectricPaxUnit(Train):
     """
-    High-speed, high-power pax electric unit, intended to be 2-car, with template magic for cabs etc
+    Unit for a high-speed, high-power pax electric train, intended to be 2-car, with template magic for cabs etc
     """
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -1051,9 +1053,9 @@ class ElectricPaxUnit(Train):
         self.tilt_bonus = True
 
 
-class ElectricLoco(Train):
+class ElectricEngineUnit(Train):
     """
-    Electric Locomotive.
+    Unit for an electric engine.
     """
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -1070,9 +1072,9 @@ class ElectricLoco(Train):
         self.visual_effect = 'VISUAL_EFFECT_ELECTRIC'
 
 
-class ElectroDieselLoco(Train):
+class ElectroDieselEngineUnit(Train):
     """
-    Bi-mode Locomotive - operates on electrical power or diesel.
+    Unit for a bi-mode Locomotive - operates on electrical power or diesel.
     """
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -1083,7 +1085,7 @@ class ElectroDieselLoco(Train):
 
 class CargoSprinter(Train):
     """
-    Freight Multiple Unit.
+    Unit for a diesel-powered dedicated freight train.
     """
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -1115,7 +1117,7 @@ class CargoSprinter(Train):
     """
 
 
-class FreightCar(Wagon):
+class FreightCar(TrainCar):
     """
     Freight wagon.
     """
@@ -1128,7 +1130,7 @@ class FreightCar(Wagon):
         self.capacity = kwargs['vehicle_length'] * roster_obj.freight_car_capacity_per_unit_length[self.consist.track_type][self.consist.gen - 1]
 
 
-class CabooseCar(Wagon):
+class CabooseCar(TrainCar):
     """
     Caboose Car. This sub-class only exists to set weight in absence of cargo capacity, in other respects it's just a standard wagon.
     """

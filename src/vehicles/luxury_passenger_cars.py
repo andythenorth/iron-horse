@@ -1,4 +1,4 @@
-from train import PassengerLuxuryCarConsist, Wagon
+from train import PassengerLuxuryCarConsist, TrainCar
 
 
 def main():
@@ -8,7 +8,7 @@ def main():
                                      gen=1,
                                      subtype='A')
 
-    consist.add_unit(type=Wagon,
+    consist.add_unit(type=TrainCar,
                      capacity=25,
                      vehicle_length=8)
 
@@ -19,7 +19,7 @@ def main():
                                      gen=2,
                                      subtype='A')
 
-    consist.add_unit(type=Wagon,
+    consist.add_unit(type=TrainCar,
                      capacity=40,
                      vehicle_length=8)
 
@@ -30,7 +30,7 @@ def main():
                                      gen=3,
                                      subtype='A')
 
-    consist.add_unit(type=Wagon,
+    consist.add_unit(type=TrainCar,
                      capacity=40,
                      vehicle_length=8)
 
@@ -41,7 +41,7 @@ def main():
                                      gen=4,
                                      subtype='A')
 
-    consist.add_unit(type=Wagon,
+    consist.add_unit(type=TrainCar,
                      capacity=40,
                      vehicle_length=8)
 
@@ -52,7 +52,7 @@ def main():
                                      gen=5,
                                      subtype='A')
 
-    consist.add_unit(type=Wagon,
+    consist.add_unit(type=TrainCar,
                      capacity=40,
                      vehicle_length=8)
 

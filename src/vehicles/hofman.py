@@ -1,4 +1,4 @@
-from train import EngineConsist, SteamLoco, SteamLocoTender
+from train import EngineConsist, SteamEngineUnit, SteamEngineTenderUnit
 
 consist = EngineConsist(id='hofman',
                         base_numeric_id=1840,
@@ -11,17 +11,17 @@ consist = EngineConsist(id='hofman',
                         type_base_running_cost_points=-10,  # dibble running costs for game balance
                         intro_date=1940)
 
-consist.add_unit(type=SteamLocoTender,
+consist.add_unit(type=SteamEngineTenderUnit,
                  weight=15,
                  vehicle_length=3,
                  spriterow_num=0)
 
-consist.add_unit(type=SteamLoco,
+consist.add_unit(type=SteamEngineUnit,
                  weight=30,
                  vehicle_length=4,
                  spriterow_num=1)
 
-consist.add_unit(type=SteamLocoTender,
+consist.add_unit(type=SteamEngineTenderUnit,
                  weight=15,
                  vehicle_length=3,
                  spriterow_num=2)

@@ -1,4 +1,4 @@
-from train import EngineConsist, DieselLoco
+from train import EngineConsist, DieselEngineUnit
 
 consist = EngineConsist(id='thunderbird',
                         base_numeric_id=3090,
@@ -9,7 +9,7 @@ consist = EngineConsist(id='thunderbird',
                         type_base_running_cost_points=30,  # dibble running costs for game balance
                         gen=5)
 
-consist.add_unit(type=DieselLoco,
+consist.add_unit(type=DieselEngineUnit,
                  weight=90,
                  vehicle_length=8,
                  spriterow_num=0)
