@@ -1,6 +1,6 @@
-from train import MailCargoEngineConsist, DieselEngineUnit
+from train import MailEngineConsist, DieselEngineUnit
 
-consist = MailCargoEngineConsist(id='plastic_postbox',
+consist = MailEngineConsist(id='plastic_postbox',
                                  base_numeric_id=3080,
                                  title='Plastic Postbox [Diesel]',
                                  power=720,

@@ -1,6 +1,6 @@
-from train import MailCargoEngineConsist, MetroUnit
+from train import MailEngineConsist, MetroUnit
 
-consist = MailCargoEngineConsist(id='longwater',
+consist = MailEngineConsist(id='longwater',
                                  base_numeric_id=290,
                                  title='Longwater [Metro Train]',
                                  track_type='METRO',

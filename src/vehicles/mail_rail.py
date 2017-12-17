@@ -1,6 +1,6 @@
-from train import MailCargoEngineConsist, DieselEngineUnit
+from train import MailEngineConsist, DieselEngineUnit
 
-consist = MailCargoEngineConsist(id='mail_rail',
+consist = MailEngineConsist(id='mail_rail',
                                  base_numeric_id=3000,
                                  title='Mail Rail [Diesel]',
                                  power=870,

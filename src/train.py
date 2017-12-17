@@ -295,7 +295,7 @@ class EngineConsist(Consist):
 
 class PassengerEngineConsist(EngineConsist):
     """
-    Engines / multiple units that have passenger capacity
+    Consist of engines / units that has passenger capacity
     """
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -305,9 +305,9 @@ class PassengerEngineConsist(EngineConsist):
         self.default_cargos = ['PASS']
 
 
-class MailCargoEngineConsist(EngineConsist):
+class MailEngineConsist(EngineConsist):
     """
-    Engines / multiple units that have mail/cargo capacity
+    Consist of engines / units that has mail (and express freight) capacity
     """
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
