@@ -536,9 +536,9 @@ class MailCargoEngineConsist(Consist):
         self.default_cargos = ['MAIL']
 
 
-class WagonConsist(Consist):
+class CarConsist(Consist):
     """
-    Intermediate class for wagon consists to subclass from, provides sparse properties, most are declared in subclasses.
+    Intermediate class for car (wagon) consists to subclass from, provides sparse properties, most are declared in subclasses.
     """
     def __init__(self, speedy=False, **kwargs):
         # self.base_id = '' # provide in subclass
@@ -633,7 +633,7 @@ class WagonConsist(Consist):
             return '['+ class_title + ' Small]'
 
 
-class BoxCarConsist(WagonConsist):
+class BoxCarConsist(CarConsist):
     """
     Box car, van - express, piece goods cargos, other selected cargos.
     """
@@ -647,7 +647,7 @@ class BoxCarConsist(WagonConsist):
         self.default_cargos = ['GOOD', 'VPTS', 'FOOD']
 
 
-class CabooseCarConsist(WagonConsist):
+class CabooseCarConsist(CarConsist):
     """
     Caboose, brake van etc - no gameplay purpose, just eye candy.
     """
@@ -662,7 +662,7 @@ class CabooseCarConsist(WagonConsist):
         # no graphics processing - don't random colour cabeese, I tried it, looks daft
         self.random_company_colour_swap = False
 
-class CoveredHopperCarConsist(WagonConsist):
+class CoveredHopperCarConsist(CarConsist):
     """
     Bulk cargos needing covered protection.
     """
@@ -677,7 +677,7 @@ class CoveredHopperCarConsist(WagonConsist):
         self.loading_speed_multiplier = 2
 
 
-class DumpCarConsist(WagonConsist):
+class DumpCarConsist(CarConsist):
     """
     Limited set of bulk (mineral) cargos, same set as hopper cars.
     """
@@ -694,7 +694,7 @@ class DumpCarConsist(WagonConsist):
         self.visible_cargo.bulk = True
 
 
-class EdiblesTankCarConsist(WagonConsist):
+class EdiblesTankCarConsist(CarConsist):
     """
     Wine, milk, water etc.
     """
@@ -713,7 +713,7 @@ class EdiblesTankCarConsist(WagonConsist):
         self.loading_speed_multiplier = 2
 
 
-class FlatCarConsist(WagonConsist):
+class FlatCarConsist(CarConsist):
     """
     Flatbed - refits wide range of cargos, but not bulk.
     """
@@ -729,7 +729,7 @@ class FlatCarConsist(WagonConsist):
         self.visible_cargo.piece_groups = ['base']
 
 
-class FruitVegCarConsist(WagonConsist):
+class FruitVegCarConsist(CarConsist):
     """
     Fruit and vegetables, with improved decay rate
     """
@@ -744,7 +744,7 @@ class FruitVegCarConsist(WagonConsist):
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
 
 
-class HopperCarConsist(WagonConsist):
+class HopperCarConsist(CarConsist):
     """
     Limited set of bulk (mineral) cargos.
     """
@@ -761,7 +761,7 @@ class HopperCarConsist(WagonConsist):
         self.visible_cargo.bulk = True
 
 
-class IntermodalCarConsist(WagonConsist):
+class IntermodalCarConsist(CarConsist):
     """
     Specialist intermodal (containers), limited range of cargos. Match cargos to BoxCarConsist
     """
@@ -776,7 +776,7 @@ class IntermodalCarConsist(WagonConsist):
         self.loading_speed_multiplier = 2
 
 
-class LivestockCarConsist(WagonConsist):
+class LivestockCarConsist(CarConsist):
     """
     Livestock, with improved decay rate
     """
@@ -791,7 +791,7 @@ class LivestockCarConsist(WagonConsist):
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
 
 
-class SiloCarConsist(WagonConsist):
+class SiloCarConsist(CarConsist):
     """
     Powder bulk cargos needing protection and special equipment for unloading.
     """
@@ -808,7 +808,7 @@ class SiloCarConsist(WagonConsist):
         self.visible_cargo.tanker = True
 
 
-class StakeCarConsist(WagonConsist):
+class StakeCarConsist(CarConsist):
     """
     Specialist transporter for logs, pipes and similar
     """
@@ -827,7 +827,7 @@ class StakeCarConsist(WagonConsist):
                                                 generic_rows = [0])
 
 
-class MailCarConsist(WagonConsist):
+class MailCarConsist(CarConsist):
     """
     Mail cars - also handle express freight, valuables.
     """
@@ -843,7 +843,7 @@ class MailCarConsist(WagonConsist):
         self.random_company_colour_swap = False
 
 
-class MetalCarConsist(WagonConsist):
+class MetalCarConsist(CarConsist):
     """
     Specialist heavy haul metal transport e.g. torpedo car, ladle, etc
     High capacity, not very fast, refits to small subset of finished metal cargos (and slag, which bends the rules a bit).
@@ -860,7 +860,7 @@ class MetalCarConsist(WagonConsist):
         self.auto_buy_menu_sprite = False # !! this is hax to suppress white warnings, buy menu handling needs figuring out for these wagons
 
 
-class OpenCarConsist(WagonConsist):
+class OpenCarConsist(CarConsist):
     """
     General cargo - refits everything except mail, pax.
     """
@@ -877,7 +877,7 @@ class OpenCarConsist(WagonConsist):
         self.visible_cargo.piece_groups = ['base', 'pseudo_bulk']
 
 
-class PassengerCarConsistBase(WagonConsist):
+class PassengerCarConsistBase(CarConsist):
     """
     Common base class for passenger cars.
     """
@@ -914,7 +914,7 @@ class PassengerLuxuryCarConsist(PassengerCarConsistBase):
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
 
 
-class ReeferCarConsist(WagonConsist):
+class ReeferCarConsist(CarConsist):
     """
     Refrigerated cargos, with improved decay rate
     """
@@ -930,7 +930,7 @@ class ReeferCarConsist(WagonConsist):
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
 
 
-class SuppliesCarConsist(WagonConsist):
+class SuppliesCarConsist(CarConsist):
     """
     Specialist vehicle for supplies and building materials
     """
@@ -944,7 +944,7 @@ class SuppliesCarConsist(WagonConsist):
         self.default_cargos = ['ENSP']
 
 
-class TankCarConsist(WagonConsist):
+class TankCarConsist(CarConsist):
     """
     All non-edible liquid cargos
     """
@@ -964,7 +964,7 @@ class TankCarConsist(WagonConsist):
         self.visible_cargo.tanker = True
 
 
-class VehicleTransporterCarConsist(WagonConsist):
+class VehicleTransporterCarConsist(CarConsist):
     """
     Transports vehicles cargo
     """
