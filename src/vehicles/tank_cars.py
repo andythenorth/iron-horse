@@ -1,9 +1,9 @@
-from train import TankConsist, FreightCar
+from train import TankCarConsist, FreightCar
 
 
 def main():
     #--------------- pony NG ----------------------------------------------------------------------
-    consist = TankConsist(roster='pony',
+    consist = TankCarConsist(roster='pony',
                           base_numeric_id=650,
                           gen=1,
                           subtype='A',
@@ -18,7 +18,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=1,
                               graphics_processor=consist.graphics_processors[1])
     #--------------- pony ----------------------------------------------------------------------
-    consist = TankConsist(roster='pony',
+    consist = TankCarConsist(roster='pony',
                           base_numeric_id=1200,
                           gen=2,
                           subtype='A')
@@ -29,7 +29,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = TankConsist(roster='pony',
+    consist = TankCarConsist(roster='pony',
                           base_numeric_id=3180,
                           gen=2,
                           subtype='B')
@@ -40,7 +40,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = TankConsist(roster='pony',
+    consist = TankCarConsist(roster='pony',
                           base_numeric_id=630,
                           gen=3,
                           subtype='A')
@@ -51,7 +51,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = TankConsist(roster='pony',
+    consist = TankCarConsist(roster='pony',
                           base_numeric_id=2430,
                           gen=3,
                           subtype='B')
@@ -62,7 +62,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = TankConsist(roster='pony',
+    consist = TankCarConsist(roster='pony',
                           base_numeric_id=2900,
                           gen=3,
                           subtype='C')
@@ -73,7 +73,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = TankConsist(roster='pony',
+    consist = TankCarConsist(roster='pony',
                           base_numeric_id=640,
                           gen=4,
                           subtype='A')
@@ -84,7 +84,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = TankConsist(roster='pony',
+    consist = TankCarConsist(roster='pony',
                           base_numeric_id=960,
                           gen=4,
                           subtype='B')
@@ -95,7 +95,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = TankConsist(roster='pony',
+    consist = TankCarConsist(roster='pony',
                           base_numeric_id=1250,
                           gen=4,
                           subtype='C')
@@ -106,7 +106,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = TankConsist(roster='pony',
+    consist = TankCarConsist(roster='pony',
                           base_numeric_id=2410,
                           gen=5,
                           subtype='A')
@@ -117,7 +117,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = TankConsist(roster='pony',
+    consist = TankCarConsist(roster='pony',
                           base_numeric_id=2420,
                           gen=5,
                           subtype='B')
@@ -128,7 +128,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = TankConsist(roster='pony',
+    consist = TankCarConsist(roster='pony',
                           base_numeric_id=2930,
                           gen=5,
                           subtype='C')
@@ -139,7 +139,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = TankConsist(roster='pony',
+    consist = TankCarConsist(roster='pony',
                           base_numeric_id=2920,
                           gen=6,
                           subtype='A')
@@ -150,7 +150,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = TankConsist(roster='pony',
+    consist = TankCarConsist(roster='pony',
                           base_numeric_id=2970,
                           gen=6,
                           subtype='B')
@@ -161,7 +161,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = TankConsist(roster='pony',
+    consist = TankCarConsist(roster='pony',
                           base_numeric_id=2790,
                           gen=6,
                           subtype='C')
@@ -173,7 +173,7 @@ def main():
                               graphics_processor=consist.graphics_processors[0])
 
     #--------------- llama ----------------------------------------------------------------------
-    consist = TankConsist(roster='llama',
+    consist = TankCarConsist(roster='llama',
                           base_numeric_id=660,
                           gen=1,
                           subtype='A')
@@ -184,7 +184,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = TankConsist(roster='llama',
+    consist = TankCarConsist(roster='llama',
                           base_numeric_id=670,
                           gen=2,
                           subtype='A')
@@ -195,7 +195,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = TankConsist(roster='llama',
+    consist = TankCarConsist(roster='llama',
                           base_numeric_id=680,
                           gen=3,
                           subtype='A')
@@ -206,7 +206,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = TankConsist(roster='llama',
+    consist = TankCarConsist(roster='llama',
                           base_numeric_id=690,
                           gen=1,
                           subtype='A',
@@ -218,7 +218,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = TankConsist(roster='llama',
+    consist = TankCarConsist(roster='llama',
                           base_numeric_id=1360,
                           gen=2,
                           subtype='A',
@@ -231,7 +231,7 @@ def main():
                               graphics_processor=consist.graphics_processors[0])
 
     #--------------- antelope ----------------------------------------------------------------------
-    consist = TankConsist(roster='antelope',
+    consist = TankCarConsist(roster='antelope',
                           base_numeric_id=1670,
                           gen=1,
                           subtype='A')
@@ -242,7 +242,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = TankConsist(roster='antelope',
+    consist = TankCarConsist(roster='antelope',
                           base_numeric_id=1680,
                           gen=2,
                           subtype='A')
@@ -253,7 +253,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = TankConsist(roster='antelope',
+    consist = TankCarConsist(roster='antelope',
                           base_numeric_id=1910,
                           gen=1,
                           subtype='A',
@@ -265,7 +265,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = TankConsist(roster='antelope',
+    consist = TankCarConsist(roster='antelope',
                           base_numeric_id=1920,
                           gen=2,
                           subtype='A',

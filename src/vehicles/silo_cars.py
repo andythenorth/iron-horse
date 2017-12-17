@@ -1,9 +1,9 @@
-from train import SiloConsist, FreightCar
+from train import SiloCarConsist, FreightCar
 
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
-    consist = SiloConsist(roster='pony',
+    consist = SiloCarConsist(roster='pony',
                           base_numeric_id=2950,
                           gen=4,
                           subtype='A')
@@ -14,7 +14,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = SiloConsist(roster='pony',
+    consist = SiloCarConsist(roster='pony',
                           base_numeric_id=2980,
                           gen=5,
                           subtype='B')
@@ -25,7 +25,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = SiloConsist(roster='pony',
+    consist = SiloCarConsist(roster='pony',
                           base_numeric_id=2960,
                           gen=5,
                           subtype='C')

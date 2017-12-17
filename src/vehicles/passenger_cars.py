@@ -1,9 +1,9 @@
-from train import PassengerConsist, Wagon
+from train import PassengerCarConsist, Wagon
 
 
 def main():
     #--------------- pony NG----------------------------------------------------------------------
-    consist = PassengerConsist(roster='pony',
+    consist = PassengerCarConsist(roster='pony',
                                base_numeric_id=770,
                                gen=1,
                                subtype='A',
@@ -16,7 +16,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0)
     #--------------- pony ----------------------------------------------------------------------
 
-    consist = PassengerConsist(roster='pony',
+    consist = PassengerCarConsist(roster='pony',
                                base_numeric_id=740,
                                gen=1,
                                subtype='A')
@@ -27,7 +27,7 @@ def main():
 
     consist.add_model_variant(spritesheet_suffix=0)
 
-    consist = PassengerConsist(roster='pony',
+    consist = PassengerCarConsist(roster='pony',
                                base_numeric_id=750,
                                gen=2,
                                subtype='A')
@@ -38,7 +38,7 @@ def main():
 
     consist.add_model_variant(spritesheet_suffix=0)
 
-    consist = PassengerConsist(roster='pony',
+    consist = PassengerCarConsist(roster='pony',
                                base_numeric_id=760,
                                gen=3,
                                subtype='A')
@@ -49,7 +49,7 @@ def main():
 
     consist.add_model_variant(spritesheet_suffix=0)
 
-    consist = PassengerConsist(roster='pony',
+    consist = PassengerCarConsist(roster='pony',
                                base_numeric_id=3110,
                                gen=4,
                                subtype='A')
@@ -60,7 +60,7 @@ def main():
 
     consist.add_model_variant(spritesheet_suffix=0)
 
-    consist = PassengerConsist(roster='pony',
+    consist = PassengerCarConsist(roster='pony',
                                base_numeric_id=3100,
                                gen=5,
                                subtype='A')
@@ -73,7 +73,7 @@ def main():
     # no gen 6 for brit roster, max speed reached for engines
 
     #--------------- llama ----------------------------------------------------------------------
-    consist = PassengerConsist(roster='llama',
+    consist = PassengerCarConsist(roster='llama',
                                base_numeric_id=780,
                                gen=1,
                                subtype='A')
@@ -84,7 +84,7 @@ def main():
 
     consist.add_model_variant(spritesheet_suffix=0)
 
-    consist = PassengerConsist(roster='llama',
+    consist = PassengerCarConsist(roster='llama',
                                base_numeric_id=790,
                                gen=2,
                                subtype='A')
@@ -95,7 +95,7 @@ def main():
 
     consist.add_model_variant(spritesheet_suffix=0)
 
-    consist = PassengerConsist(roster='llama',
+    consist = PassengerCarConsist(roster='llama',
                                base_numeric_id=800,
                                gen=3,
                                subtype='A')
@@ -106,7 +106,7 @@ def main():
 
     consist.add_model_variant(spritesheet_suffix=0)
 
-    consist = PassengerConsist(roster='llama',
+    consist = PassengerCarConsist(roster='llama',
                                base_numeric_id=810,
                                gen=1,
                                subtype='A',
@@ -118,7 +118,7 @@ def main():
 
     consist.add_model_variant(spritesheet_suffix=0)
 
-    consist = PassengerConsist(roster='llama',
+    consist = PassengerCarConsist(roster='llama',
                                base_numeric_id=1350,
                                gen=2,
                                subtype='A',
@@ -130,7 +130,7 @@ def main():
 
     consist.add_model_variant(spritesheet_suffix=0)
 
-    consist = PassengerConsist(roster='llama',
+    consist = PassengerCarConsist(roster='llama',
                                base_numeric_id=1370,
                                gen=3,
                                subtype='A',
@@ -143,7 +143,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0)
 
     #--------------- antelope ----------------------------------------------------------------------
-    consist = PassengerConsist(roster='antelope',
+    consist = PassengerCarConsist(roster='antelope',
                                base_numeric_id=1580,
                                gen=1,
                                subtype='A')
@@ -154,7 +154,7 @@ def main():
 
     consist.add_model_variant(spritesheet_suffix=0)
 
-    consist = PassengerConsist(roster='antelope',
+    consist = PassengerCarConsist(roster='antelope',
                                base_numeric_id=1560,
                                gen=2,
                                subtype='A')
@@ -165,7 +165,7 @@ def main():
 
     consist.add_model_variant(spritesheet_suffix=0)
 
-    consist = PassengerConsist(roster='antelope',
+    consist = PassengerCarConsist(roster='antelope',
                                base_numeric_id=2130,
                                gen=1,
                                subtype='A',
@@ -177,7 +177,7 @@ def main():
 
     consist.add_model_variant(spritesheet_suffix=0)
 
-    consist = PassengerConsist(roster='antelope',
+    consist = PassengerCarConsist(roster='antelope',
                                base_numeric_id=1940,
                                gen=2,
                                subtype='A',

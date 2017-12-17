@@ -1,9 +1,9 @@
-from train import StakeConsist, FreightCar
+from train import StakeCarConsist, FreightCar
 
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
-    consist = StakeConsist(roster='pony',
+    consist = StakeCarConsist(roster='pony',
                            base_numeric_id=2740,
                            gen=2,
                            subtype='A')
@@ -13,7 +13,7 @@ def main():
 
     consist.add_model_variant(spritesheet_suffix=0)
 
-    consist = StakeConsist(roster='pony',
+    consist = StakeCarConsist(roster='pony',
                            base_numeric_id=2730,
                            gen=3,
                            subtype='A')
@@ -23,7 +23,7 @@ def main():
 
     consist.add_model_variant(spritesheet_suffix=0)
 
-    consist = StakeConsist(roster='pony',
+    consist = StakeCarConsist(roster='pony',
                            base_numeric_id=2750,
                            gen=3,
                            subtype='B')
@@ -33,7 +33,7 @@ def main():
 
     consist.add_model_variant(spritesheet_suffix=0)
 
-    consist = StakeConsist(roster='pony',
+    consist = StakeCarConsist(roster='pony',
                            base_numeric_id=1710,
                            gen=4,
                            subtype='A')
@@ -43,7 +43,7 @@ def main():
 
     consist.add_model_variant(spritesheet_suffix=0)
 
-    consist = StakeConsist(roster='pony',
+    consist = StakeCarConsist(roster='pony',
                            base_numeric_id=2760,
                            gen=4,
                            subtype='B')
@@ -53,7 +53,7 @@ def main():
 
     consist.add_model_variant(spritesheet_suffix=0)
 
-    consist = StakeConsist(roster='pony',
+    consist = StakeCarConsist(roster='pony',
                            base_numeric_id=930,
                            gen=5,
                            subtype='A')
@@ -63,7 +63,7 @@ def main():
 
     consist.add_model_variant(spritesheet_suffix=0)
 
-    consist = StakeConsist(roster='pony',
+    consist = StakeCarConsist(roster='pony',
                            base_numeric_id=2770,
                            gen=5,
                            subtype='B')

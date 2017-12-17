@@ -1,9 +1,9 @@
-from train import LivestockConsist, FreightCar
+from train import LivestockCarConsist, FreightCar
 
 
 def main():
     #--------------- pony NG ----------------------------------------------------------------------
-    consist = LivestockConsist(roster='pony',
+    consist = LivestockCarConsist(roster='pony',
                                base_numeric_id=1030,
                                gen=1,
                                subtype='A',
@@ -16,7 +16,7 @@ def main():
                               graphics_processor=consist.graphics_processors[0])
 
     #--------------- pony ----------------------------------------------------------------------
-    consist = LivestockConsist(roster='pony',
+    consist = LivestockCarConsist(roster='pony',
                                base_numeric_id=1010,
                                gen=1,
                                subtype='A')
@@ -29,7 +29,7 @@ def main():
 
     # no gen 2 needed
 
-    consist = LivestockConsist(roster='pony',
+    consist = LivestockCarConsist(roster='pony',
                                base_numeric_id=2680,
                                gen=3,
                                subtype='A')
@@ -40,7 +40,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = LivestockConsist(roster='pony',
+    consist = LivestockCarConsist(roster='pony',
                                base_numeric_id=1020,
                                gen=4,
                                subtype='A')
@@ -51,7 +51,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = LivestockConsist(roster='pony',
+    consist = LivestockCarConsist(roster='pony',
                                base_numeric_id=2720,
                                gen=5,
                                subtype='C')
@@ -62,7 +62,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = LivestockConsist(roster='pony',
+    consist = LivestockCarConsist(roster='pony',
                                base_numeric_id=2710,
                                gen=6,
                                subtype='C')
@@ -75,7 +75,7 @@ def main():
 
     #--------------- llama ----------------------------------------------------------------------
 
-    consist = LivestockConsist(roster='llama',
+    consist = LivestockCarConsist(roster='llama',
                                base_numeric_id=1040,
                                gen=1,
                                subtype='A')
@@ -85,7 +85,7 @@ def main():
 
     consist.add_model_variant(spritesheet_suffix=0)
 
-    consist = LivestockConsist(roster='llama',
+    consist = LivestockCarConsist(roster='llama',
                                base_numeric_id=1430,
                                gen=2,
                                subtype='A')
@@ -95,7 +95,7 @@ def main():
 
     consist.add_model_variant(spritesheet_suffix=0)
 
-    consist = LivestockConsist(roster='llama',
+    consist = LivestockCarConsist(roster='llama',
                                base_numeric_id=1050,
                                gen=1,
                                subtype='A',
@@ -106,7 +106,7 @@ def main():
 
     consist.add_model_variant(spritesheet_suffix=0)
 
-    consist = LivestockConsist(roster='llama',
+    consist = LivestockCarConsist(roster='llama',
                                base_numeric_id=1520,
                                gen=2,
                                subtype='A',
@@ -118,7 +118,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0)
 
     #--------------- antelope ----------------------------------------------------------------------
-    consist = LivestockConsist(roster='antelope',
+    consist = LivestockCarConsist(roster='antelope',
                                base_numeric_id=1720,
                                gen=1,
                                subtype='A')
@@ -128,7 +128,7 @@ def main():
 
     consist.add_model_variant(spritesheet_suffix=0)
 
-    consist = LivestockConsist(roster='antelope',
+    consist = LivestockCarConsist(roster='antelope',
                                base_numeric_id=2150,
                                gen=1,
                                subtype='A',

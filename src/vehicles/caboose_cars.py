@@ -1,9 +1,9 @@
-from train import CabooseConsist, CabooseCar
+from train import CabooseCarConsist, CabooseCar
 
 
 def main():
     #--------------- pony NG ----------------------------------------------------------------------
-    consist = CabooseConsist(roster='pony',
+    consist = CabooseCarConsist(roster='pony',
                              base_numeric_id=1290,
                              gen=1,
                              subtype='A',
@@ -15,7 +15,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0)
 
     #--------------- pony ----------------------------------------------------------------------
-    consist = CabooseConsist(roster='pony',
+    consist = CabooseCarConsist(roster='pony',
                              base_numeric_id=1280,
                              gen=1,
                              subtype='A')
@@ -25,7 +25,7 @@ def main():
 
     consist.add_model_variant(spritesheet_suffix=0)
 
-    consist = CabooseConsist(roster='pony',
+    consist = CabooseCarConsist(roster='pony',
                              base_numeric_id=2210,
                              gen=1,
                              subtype='B')
@@ -38,7 +38,7 @@ def main():
 
 """
     #--------------- llama ----------------------------------------------------------------------
-    consist = CabooseConsist(title = '[Caboose Car]',
+    consist = CabooseCarConsist(title = '[Caboose Car]',
                              roster = 'llama',
                              base_numeric_id = 1300,
                              gen = 1)
@@ -50,7 +50,7 @@ def main():
 
 
     #--------------- antelope ----------------------------------------------------------------------
-    consist = CabooseConsist(title = '[Caboose Car]',
+    consist = CabooseCarConsist(title = '[Caboose Car]',
                              roster = 'antelope',
                              base_numeric_id = 1780,
                              gen = 1)
@@ -61,7 +61,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0)
 
 
-    consist = CabooseConsist(title = '[Caboose Car]',
+    consist = CabooseCarConsist(title = '[Caboose Car]',
                              roster = 'antelope',
                              base_numeric_id = 1880,
                              gen = 1,

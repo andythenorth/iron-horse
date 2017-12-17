@@ -1,9 +1,9 @@
-from train import MailConsist, Wagon
+from train import MailCarConsist, Wagon
 
 
 def main():
     #--------------- pony NG ----------------------------------------------------------------------
-    consist = MailConsist(roster='pony',
+    consist = MailCarConsist(roster='pony',
                           base_numeric_id=950,
                           gen=1,
                           subtype='A',
@@ -16,7 +16,7 @@ def main():
     #--------------- pony ----------------------------------------------------------------------
     consist.add_model_variant(spritesheet_suffix=0)
 
-    consist = MailConsist(roster='pony',
+    consist = MailCarConsist(roster='pony',
                           base_numeric_id=2280,
                           gen=1,
                           subtype='A')
@@ -27,7 +27,7 @@ def main():
 
     consist.add_model_variant(spritesheet_suffix=0)
 
-    consist = MailConsist(roster='pony',
+    consist = MailCarConsist(roster='pony',
                           base_numeric_id=2220,
                           gen=1,
                           subtype='B')
@@ -38,7 +38,7 @@ def main():
 
     consist.add_model_variant(spritesheet_suffix=0)
 
-    consist = MailConsist(roster='pony',
+    consist = MailCarConsist(roster='pony',
                           base_numeric_id=2290,
                           gen=2,
                           subtype='A')
@@ -49,7 +49,7 @@ def main():
 
     consist.add_model_variant(spritesheet_suffix=0)
 
-    consist = MailConsist(roster='pony',
+    consist = MailCarConsist(roster='pony',
                           base_numeric_id=920,
                           gen=2,
                           subtype='B')
@@ -60,7 +60,7 @@ def main():
 
     consist.add_model_variant(spritesheet_suffix=0)
 
-    consist = MailConsist(roster='pony',
+    consist = MailCarConsist(roster='pony',
                           base_numeric_id=2300,
                           gen=3,
                           subtype='B')
@@ -71,7 +71,7 @@ def main():
 
     consist.add_model_variant(spritesheet_suffix=0)
 
-    consist = MailConsist(roster='pony',
+    consist = MailCarConsist(roster='pony',
                           base_numeric_id=940,
                           gen=3,
                           subtype='C')
@@ -82,7 +82,7 @@ def main():
 
     consist.add_model_variant(spritesheet_suffix=0)
 
-    consist = MailConsist(roster='pony',
+    consist = MailCarConsist(roster='pony',
                           base_numeric_id=3160,
                           gen=4,
                           subtype='B')
@@ -93,7 +93,7 @@ def main():
 
     consist.add_model_variant(spritesheet_suffix=0)
 
-    consist = MailConsist(roster='pony',
+    consist = MailCarConsist(roster='pony',
                           base_numeric_id=3170,
                           gen=4,
                           subtype='C')
@@ -104,7 +104,7 @@ def main():
 
     consist.add_model_variant(spritesheet_suffix=0)
 
-    consist = MailConsist(roster='pony',
+    consist = MailCarConsist(roster='pony',
                           base_numeric_id=970,
                           gen=5,
                           subtype='B')
@@ -115,7 +115,7 @@ def main():
 
     consist.add_model_variant(spritesheet_suffix=0)
 
-    consist = MailConsist(roster='pony',
+    consist = MailCarConsist(roster='pony',
                           base_numeric_id=3140,
                           gen=5,
                           subtype='C')
@@ -130,7 +130,7 @@ def main():
 
     """
     #--------------- llama ----------------------------------------------------------------------
-    consist = MailConsist(roster = 'llama',
+    consist = MailCarConsist(roster = 'llama',
                           base_numeric_id = 960,
                           gen = 1,
                                     subtype='A')
@@ -142,7 +142,7 @@ def main():
     consist.add_model_variant()
 
 
-    consist = MailConsist(roster = 'llama',
+    consist = MailCarConsist(roster = 'llama',
                           base_numeric_id = 970,
                           gen = 2,
                                     subtype='A')
@@ -154,7 +154,7 @@ def main():
     consist.add_model_variant()
 
 
-    consist = MailConsist(roster = 'llama',
+    consist = MailCarConsist(roster = 'llama',
                           base_numeric_id = 980,
                           gen = 3,
                                     subtype='A')
@@ -166,7 +166,7 @@ def main():
     consist.add_model_variant()
 
 
-    consist = MailConsist(roster = 'llama',
+    consist = MailCarConsist(roster = 'llama',
                           base_numeric_id = 990,
                           gen = 1,
                                     subtype='A',
@@ -179,7 +179,7 @@ def main():
     consist.add_model_variant()
 
 
-    consist = MailConsist(roster = 'llama',
+    consist = MailCarConsist(roster = 'llama',
                           base_numeric_id = 1380,
                           gen = 2,
                                     subtype='A',
@@ -192,7 +192,7 @@ def main():
     consist.add_model_variant()
 
 
-    consist = MailConsist(roster = 'llama',
+    consist = MailCarConsist(roster = 'llama',
                           base_numeric_id = 1450,
                           gen = 3,
                                     subtype='A',
@@ -206,7 +206,7 @@ def main():
 
     """
     #--------------- antelope ----------------------------------------------------------------------
-    consist = MailConsist(roster='antelope',
+    consist = MailCarConsist(roster='antelope',
                           base_numeric_id=1730,
                           gen=1,
                           subtype='A')
@@ -217,7 +217,7 @@ def main():
 
     consist.add_model_variant(spritesheet_suffix=0)
 
-    consist = MailConsist(roster='antelope',
+    consist = MailCarConsist(roster='antelope',
                           base_numeric_id=2120,
                           gen=1,
                           subtype='A',
@@ -229,7 +229,7 @@ def main():
 
     consist.add_model_variant(spritesheet_suffix=0)
 
-    consist = MailConsist(roster='antelope',
+    consist = MailCarConsist(roster='antelope',
                           base_numeric_id=1950,
                           gen=2,
                           subtype='A',

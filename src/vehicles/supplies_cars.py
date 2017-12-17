@@ -1,9 +1,9 @@
-from train import SuppliesConsist, FreightCar
+from train import SuppliesCarConsist, FreightCar
 
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
-    consist = SuppliesConsist(roster='pony',
+    consist = SuppliesCarConsist(roster='pony',
                               base_numeric_id=710,
                               gen=2,
                               subtype='A')
@@ -14,7 +14,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = SuppliesConsist(roster='pony',
+    consist = SuppliesCarConsist(roster='pony',
                               base_numeric_id=700,
                               gen=3,
                               subtype='A')
@@ -25,7 +25,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = SuppliesConsist(roster='pony',
+    consist = SuppliesCarConsist(roster='pony',
                               base_numeric_id=2850,
                               gen=3,
                               subtype='B')
@@ -36,7 +36,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = SuppliesConsist(roster='pony',
+    consist = SuppliesCarConsist(roster='pony',
                               base_numeric_id=2860,
                               gen=4,
                               subtype='B')
@@ -47,7 +47,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = SuppliesConsist(roster='pony',
+    consist = SuppliesCarConsist(roster='pony',
                               base_numeric_id=2870,
                               gen=4,
                               subtype='C')
@@ -58,7 +58,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = SuppliesConsist(roster='pony',
+    consist = SuppliesCarConsist(roster='pony',
                               base_numeric_id=2880,
                               gen=5,
                               subtype='A')
@@ -69,7 +69,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = SuppliesConsist(roster='pony',
+    consist = SuppliesCarConsist(roster='pony',
                               base_numeric_id=2890,
                               gen=5,
                               subtype='B')
@@ -80,7 +80,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = SuppliesConsist(roster='pony',
+    consist = SuppliesCarConsist(roster='pony',
                               base_numeric_id=2690,
                               gen=5,
                               subtype='C')

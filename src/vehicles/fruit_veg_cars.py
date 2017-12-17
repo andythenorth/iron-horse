@@ -1,9 +1,9 @@
-from train import FruitVegConsist, FreightCar
+from train import FruitVegCarConsist, FreightCar
 
 
 def main():
     #--------------- pony --------------------------------------------------------------------------
-    consist = FruitVegConsist(roster='pony',
+    consist = FruitVegCarConsist(roster='pony',
                               base_numeric_id=2640,
                               gen=2,
                               subtype='A')
@@ -14,7 +14,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = FruitVegConsist(roster='pony',
+    consist = FruitVegCarConsist(roster='pony',
                               base_numeric_id=2630,
                               gen=3,
                               subtype='A')
@@ -25,7 +25,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = FruitVegConsist(roster='pony',
+    consist = FruitVegCarConsist(roster='pony',
                               base_numeric_id=2620,
                               gen=3,
                               subtype='B')
@@ -36,7 +36,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = FruitVegConsist(roster='pony',
+    consist = FruitVegCarConsist(roster='pony',
                               base_numeric_id=2600,
                               gen=4,
                               subtype='A')
@@ -47,7 +47,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = FruitVegConsist(roster='pony',
+    consist = FruitVegCarConsist(roster='pony',
                               base_numeric_id=2610,
                               gen=4,
                               subtype='B')
@@ -58,7 +58,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = FruitVegConsist(roster='pony',
+    consist = FruitVegCarConsist(roster='pony',
                               base_numeric_id=2650,
                               gen=5,
                               subtype='B')
@@ -69,7 +69,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = FruitVegConsist(roster='pony',
+    consist = FruitVegCarConsist(roster='pony',
                               base_numeric_id=2660,
                               gen=5,
                               subtype='C')
@@ -83,7 +83,7 @@ def main():
     # no gen 6 fruit & veg cars, cap to gen 5 in Pony
 
     #--------------- antelope ----------------------------------------------------------------------
-    consist = FruitVegConsist(roster='antelope',
+    consist = FruitVegCarConsist(roster='antelope',
                               base_numeric_id=2140,
                               gen=1,
                               subtype='A',
@@ -95,7 +95,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = FruitVegConsist(roster='antelope',
+    consist = FruitVegCarConsist(roster='antelope',
                               base_numeric_id=2170,
                               gen=2,
                               subtype='A',
@@ -107,7 +107,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = FruitVegConsist(roster='antelope',
+    consist = FruitVegCarConsist(roster='antelope',
                               base_numeric_id=2180,
                               gen=3,
                               subtype='A',

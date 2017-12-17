@@ -633,7 +633,7 @@ class WagonConsist(Consist):
             return '['+ class_title + ' Small]'
 
 
-class BoxConsist(WagonConsist):
+class BoxCarConsist(WagonConsist):
     """
     Box car, van - express, piece goods cargos, other selected cargos.
     """
@@ -647,7 +647,7 @@ class BoxConsist(WagonConsist):
         self.default_cargos = ['GOOD', 'VPTS', 'FOOD']
 
 
-class CabooseConsist(WagonConsist):
+class CabooseCarConsist(WagonConsist):
     """
     Caboose, brake van etc - no gameplay purpose, just eye candy.
     """
@@ -662,7 +662,7 @@ class CabooseConsist(WagonConsist):
         # no graphics processing - don't random colour cabeese, I tried it, looks daft
         self.random_company_colour_swap = False
 
-class CoveredHopperConsist(WagonConsist):
+class CoveredHopperCarConsist(WagonConsist):
     """
     Bulk cargos needing covered protection.
     """
@@ -677,7 +677,7 @@ class CoveredHopperConsist(WagonConsist):
         self.loading_speed_multiplier = 2
 
 
-class DumpConsist(WagonConsist):
+class DumpCarConsist(WagonConsist):
     """
     Limited set of bulk (mineral) cargos, same set as hopper cars.
     """
@@ -694,7 +694,7 @@ class DumpConsist(WagonConsist):
         self.visible_cargo.bulk = True
 
 
-class EdiblesTankConsist(WagonConsist):
+class EdiblesTankCarConsist(WagonConsist):
     """
     Wine, milk, water etc.
     """
@@ -713,7 +713,7 @@ class EdiblesTankConsist(WagonConsist):
         self.loading_speed_multiplier = 2
 
 
-class FlatConsist(WagonConsist):
+class FlatCarConsist(WagonConsist):
     """
     Flatbed - refits wide range of cargos, but not bulk.
     """
@@ -729,7 +729,7 @@ class FlatConsist(WagonConsist):
         self.visible_cargo.piece_groups = ['base']
 
 
-class FruitVegConsist(WagonConsist):
+class FruitVegCarConsist(WagonConsist):
     """
     Fruit and vegetables, with improved decay rate
     """
@@ -744,7 +744,7 @@ class FruitVegConsist(WagonConsist):
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
 
 
-class HopperConsist(WagonConsist):
+class HopperCarConsist(WagonConsist):
     """
     Limited set of bulk (mineral) cargos.
     """
@@ -761,9 +761,9 @@ class HopperConsist(WagonConsist):
         self.visible_cargo.bulk = True
 
 
-class IntermodalConsist(WagonConsist):
+class IntermodalCarConsist(WagonConsist):
     """
-    Specialist intermodal (containers), limited range of cargos. Match cargos to BoxConsist
+    Specialist intermodal (containers), limited range of cargos. Match cargos to BoxCarConsist
     """
     def __init__(self, **kwargs):
         self.base_id = 'intermodal_car'
@@ -776,7 +776,7 @@ class IntermodalConsist(WagonConsist):
         self.loading_speed_multiplier = 2
 
 
-class LivestockConsist(WagonConsist):
+class LivestockCarConsist(WagonConsist):
     """
     Livestock, with improved decay rate
     """
@@ -791,7 +791,7 @@ class LivestockConsist(WagonConsist):
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
 
 
-class SiloConsist(WagonConsist):
+class SiloCarConsist(WagonConsist):
     """
     Powder bulk cargos needing protection and special equipment for unloading.
     """
@@ -808,7 +808,7 @@ class SiloConsist(WagonConsist):
         self.visible_cargo.tanker = True
 
 
-class StakeConsist(WagonConsist):
+class StakeCarConsist(WagonConsist):
     """
     Specialist transporter for logs, pipes and similar
     """
@@ -827,7 +827,7 @@ class StakeConsist(WagonConsist):
                                                 generic_rows = [0])
 
 
-class MailConsist(WagonConsist):
+class MailCarConsist(WagonConsist):
     """
     Mail cars - also handle express freight, valuables.
     """
@@ -843,7 +843,7 @@ class MailConsist(WagonConsist):
         self.random_company_colour_swap = False
 
 
-class MetalConsist(WagonConsist):
+class MetalCarConsist(WagonConsist):
     """
     Specialist heavy haul metal transport e.g. torpedo car, ladle, etc
     High capacity, not very fast, refits to small subset of finished metal cargos (and slag, which bends the rules a bit).
@@ -860,7 +860,7 @@ class MetalConsist(WagonConsist):
         self.auto_buy_menu_sprite = False # !! this is hax to suppress white warnings, buy menu handling needs figuring out for these wagons
 
 
-class OpenConsist(WagonConsist):
+class OpenCarConsist(WagonConsist):
     """
     General cargo - refits everything except mail, pax.
     """
@@ -877,7 +877,7 @@ class OpenConsist(WagonConsist):
         self.visible_cargo.piece_groups = ['base', 'pseudo_bulk']
 
 
-class PassengerConsistBase(WagonConsist):
+class PassengerCarConsistBase(WagonConsist):
     """
     Common base class for passenger cars.
     """
@@ -892,7 +892,7 @@ class PassengerConsistBase(WagonConsist):
         self.random_company_colour_swap = False
 
 
-class PassengerConsist(PassengerConsistBase):
+class PassengerCarConsist(PassengerCarConsistBase):
     """
     Standard pax car.
     """
@@ -902,7 +902,7 @@ class PassengerConsist(PassengerConsistBase):
         self.title = '[Passenger Car]'
 
 
-class PassengerLuxuryConsist(PassengerConsistBase):
+class PassengerLuxuryCarConsist(PassengerCarConsistBase):
     """
     Improved decay rate and lower capacity per unit length compared to standard pax car.
     Possibly random sprites for restaurant car, observation car etc.
@@ -914,7 +914,7 @@ class PassengerLuxuryConsist(PassengerConsistBase):
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
 
 
-class ReeferConsist(WagonConsist):
+class ReeferCarConsist(WagonConsist):
     """
     Refrigerated cargos, with improved decay rate
     """
@@ -930,7 +930,7 @@ class ReeferConsist(WagonConsist):
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
 
 
-class SuppliesConsist(WagonConsist):
+class SuppliesCarConsist(WagonConsist):
     """
     Specialist vehicle for supplies and building materials
     """
@@ -944,7 +944,7 @@ class SuppliesConsist(WagonConsist):
         self.default_cargos = ['ENSP']
 
 
-class TankConsist(WagonConsist):
+class TankCarConsist(WagonConsist):
     """
     All non-edible liquid cargos
     """
@@ -964,7 +964,7 @@ class TankConsist(WagonConsist):
         self.visible_cargo.tanker = True
 
 
-class VehicleTransporterConsist(WagonConsist):
+class VehicleTransporterCarConsist(WagonConsist):
     """
     Transports vehicles cargo
     """

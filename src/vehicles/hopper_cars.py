@@ -1,4 +1,4 @@
-from train import HopperConsist, FreightCar
+from train import HopperCarConsist, FreightCar
 
 
 def main():
@@ -7,7 +7,7 @@ def main():
     # no gen 1 hoppers in Pony eh
     # also just type A for gen 1
 
-    consist = HopperConsist(roster='pony',
+    consist = HopperCarConsist(roster='pony',
                             base_numeric_id=2310,
                             gen=2,
                             subtype='A')
@@ -18,7 +18,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = HopperConsist(roster='pony',
+    consist = HopperCarConsist(roster='pony',
                             base_numeric_id=1070,
                             gen=3,
                             subtype='A')
@@ -29,7 +29,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = HopperConsist(roster='pony',
+    consist = HopperCarConsist(roster='pony',
                             base_numeric_id=2330,
                             gen=3,
                             subtype='B')
@@ -40,7 +40,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = HopperConsist(roster='pony',
+    consist = HopperCarConsist(roster='pony',
                             base_numeric_id=2320,
                             gen=4,
                             subtype='A')
@@ -51,7 +51,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = HopperConsist(roster='pony',
+    consist = HopperCarConsist(roster='pony',
                             base_numeric_id=1380,
                             gen=4,
                             subtype='B')
@@ -62,7 +62,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = HopperConsist(roster='pony',
+    consist = HopperCarConsist(roster='pony',
                             base_numeric_id=1080,
                             gen=5,
                             subtype='A')
@@ -73,7 +73,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = HopperConsist(roster='pony',
+    consist = HopperCarConsist(roster='pony',
                             base_numeric_id=1090,
                             gen=5,
                             subtype='B')
@@ -84,7 +84,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = HopperConsist(roster='pony',
+    consist = HopperCarConsist(roster='pony',
                             base_numeric_id=2780,
                             gen=5,
                             subtype='C')
@@ -95,7 +95,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = HopperConsist(roster='pony',
+    consist = HopperCarConsist(roster='pony',
                             base_numeric_id=3010,
                             gen=6,
                             subtype='B')
@@ -106,7 +106,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = HopperConsist(roster='pony',
+    consist = HopperCarConsist(roster='pony',
                             base_numeric_id=3020,
                             gen=6,
                             subtype='C')
@@ -118,7 +118,7 @@ def main():
                               graphics_processor=consist.graphics_processors[0])
 
     #--------------- llama ----------------------------------------------------------------------
-    consist = HopperConsist(roster='llama',
+    consist = HopperCarConsist(roster='llama',
                             base_numeric_id=1100,
                             gen=2,
                             subtype='A')
@@ -129,7 +129,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = HopperConsist(roster='llama',
+    consist = HopperCarConsist(roster='llama',
                             base_numeric_id=1110,
                             gen=3,
                             subtype='A')
@@ -140,7 +140,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = HopperConsist(roster='llama',
+    consist = HopperCarConsist(roster='llama',
                             base_numeric_id=1120,
                             gen=2,
                             subtype='A',
@@ -152,7 +152,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = HopperConsist(roster='llama',
+    consist = HopperCarConsist(roster='llama',
                             base_numeric_id=1130,
                             gen=3,
                             subtype='A',
@@ -165,7 +165,7 @@ def main():
                               graphics_processor=consist.graphics_processors[0])
 
     #--------------- antelope ----------------------------------------------------------------------
-    consist = HopperConsist(roster='antelope',
+    consist = HopperCarConsist(roster='antelope',
                             base_numeric_id=1630,
                             gen=1,
                             subtype='A')
@@ -176,7 +176,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = HopperConsist(roster='antelope',
+    consist = HopperCarConsist(roster='antelope',
                             base_numeric_id=1660,
                             gen=2,
                             subtype='A')
@@ -188,7 +188,7 @@ def main():
                               graphics_processor=consist.graphics_processors[0])
 
     # no gen 1 NG hopper in Antelope, straight to gen 2
-    consist = HopperConsist(roster='antelope',
+    consist = HopperCarConsist(roster='antelope',
                             base_numeric_id=1890,
                             gen=2,
                             subtype='A',

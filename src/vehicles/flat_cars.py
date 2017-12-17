@@ -1,9 +1,9 @@
-from train import FlatConsist, FreightCar
+from train import FlatCarConsist, FreightCar
 
 
 def main():
     #--------------- pony NG ----------------------------------------------------------------------
-    consist = FlatConsist(roster='pony',
+    consist = FlatCarConsist(roster='pony',
                           base_numeric_id=1170,
                           gen=1,
                           subtype='A',
@@ -17,7 +17,7 @@ def main():
                               graphics_processor=consist.graphics_processors[0])
 
     #--------------- pony ----------------------------------------------------------------------
-    consist = FlatConsist(roster='pony',
+    consist = FlatCarConsist(roster='pony',
                           base_numeric_id=1140,
                           gen=1,
                           subtype='A')
@@ -29,7 +29,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = FlatConsist(roster='pony',
+    consist = FlatCarConsist(roster='pony',
                           base_numeric_id=1150,
                           gen=2,
                           subtype='B')
@@ -41,7 +41,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = FlatConsist(roster='pony',
+    consist = FlatCarConsist(roster='pony',
                           base_numeric_id=1160,
                           gen=3,
                           subtype='B')
@@ -53,7 +53,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = FlatConsist(roster='pony',
+    consist = FlatCarConsist(roster='pony',
                           base_numeric_id=2550,
                           gen=3,
                           subtype='C')
@@ -65,7 +65,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = FlatConsist(roster='pony',
+    consist = FlatCarConsist(roster='pony',
                           base_numeric_id=2540,
                           gen=4,
                           subtype='B')
@@ -77,7 +77,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = FlatConsist(roster='pony',
+    consist = FlatCarConsist(roster='pony',
                           base_numeric_id=2530,
                           gen=4,
                           subtype='C')
@@ -89,7 +89,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = FlatConsist(roster='pony',
+    consist = FlatCarConsist(roster='pony',
                           base_numeric_id=2520,
                           gen=5,
                           subtype='B')
@@ -101,7 +101,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = FlatConsist(roster='pony',
+    consist = FlatCarConsist(roster='pony',
                           base_numeric_id=2510,
                           gen=5,
                           subtype='C')
@@ -116,7 +116,7 @@ def main():
     # no gen 6 flat cars, cap to gen 5 in Pony
 
     #--------------- llama ----------------------------------------------------------------------
-    consist = FlatConsist(roster='llama',
+    consist = FlatCarConsist(roster='llama',
                           base_numeric_id=1180,
                           gen=1,
                           subtype='A')
@@ -128,7 +128,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = FlatConsist(roster='llama',
+    consist = FlatCarConsist(roster='llama',
                           base_numeric_id=1510,
                           gen=2,
                           subtype='A')
@@ -140,7 +140,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = FlatConsist(roster='llama',
+    consist = FlatCarConsist(roster='llama',
                           base_numeric_id=520,
                           gen=1,
                           subtype='A',
@@ -153,7 +153,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = FlatConsist(roster='llama',
+    consist = FlatCarConsist(roster='llama',
                           base_numeric_id=1500,
                           gen=2,
                           subtype='A',
@@ -167,7 +167,7 @@ def main():
                               graphics_processor=consist.graphics_processors[0])
 
     #--------------- antelope ----------------------------------------------------------------------
-    consist = FlatConsist(roster='antelope',
+    consist = FlatCarConsist(roster='antelope',
                           base_numeric_id=1640,
                           gen=1,
                           subtype='A')
@@ -179,7 +179,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = FlatConsist(roster='antelope',
+    consist = FlatCarConsist(roster='antelope',
                           base_numeric_id=1650,
                           gen=2,
                           subtype='A')
@@ -191,7 +191,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = FlatConsist(roster='antelope',
+    consist = FlatCarConsist(roster='antelope',
                           base_numeric_id=2110,
                           gen=1,
                           subtype='A',
@@ -204,7 +204,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = FlatConsist(roster='antelope',
+    consist = FlatCarConsist(roster='antelope',
                           base_numeric_id=1930,
                           gen=2,
                           subtype='A',

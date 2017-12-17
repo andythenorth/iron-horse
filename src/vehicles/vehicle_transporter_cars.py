@@ -1,11 +1,11 @@
-from train import VehicleTransporterConsist, FreightCar
+from train import VehicleTransporterCarConsist, FreightCar
 
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
     # no gen 1 or 2, straight to gen 3
 
-    consist = VehicleTransporterConsist(roster='pony',
+    consist = VehicleTransporterCarConsist(roster='pony',
                                         base_numeric_id=1530,
                                         gen=3,
                                         subtype='A')

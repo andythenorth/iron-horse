@@ -1,9 +1,9 @@
-from train import IntermodalConsist, FreightCar
+from train import IntermodalCarConsist, FreightCar
 
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
-    consist = IntermodalConsist(roster='pony',
+    consist = IntermodalCarConsist(roster='pony',
                                 base_numeric_id=1060,
                                 gen=4,
                                 subtype='A')
@@ -14,7 +14,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = IntermodalConsist(roster='pony',
+    consist = IntermodalCarConsist(roster='pony',
                                 base_numeric_id=2800,
                                 gen=4,
                                 subtype='B')
@@ -25,7 +25,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = IntermodalConsist(roster='pony',
+    consist = IntermodalCarConsist(roster='pony',
                                 base_numeric_id=2810,
                                 gen=5,
                                 subtype='A')
@@ -36,7 +36,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = IntermodalConsist(roster='pony',
+    consist = IntermodalCarConsist(roster='pony',
                                 base_numeric_id=2820,
                                 gen=5,
                                 subtype='B')
@@ -47,7 +47,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = IntermodalConsist(roster='pony',
+    consist = IntermodalCarConsist(roster='pony',
                                 base_numeric_id=2830,
                                 gen=6,
                                 subtype='A')
@@ -58,7 +58,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = IntermodalConsist(roster='pony',
+    consist = IntermodalCarConsist(roster='pony',
                                 base_numeric_id=2840,
                                 gen=6,
                                 subtype='B')

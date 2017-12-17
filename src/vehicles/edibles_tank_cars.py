@@ -1,4 +1,4 @@
-from train import EdiblesTankConsist, FreightCar
+from train import EdiblesTankCarConsist, FreightCar
 
 
 def main():
@@ -6,7 +6,7 @@ def main():
 
     # no gen 1 or 2 for edibles tank cars - straight to gen 3
 
-    consist = EdiblesTankConsist(roster='pony',
+    consist = EdiblesTankCarConsist(roster='pony',
                                  base_numeric_id=3030,
                                  gen=2,
                                  subtype='A')
@@ -17,7 +17,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = EdiblesTankConsist(roster='pony',
+    consist = EdiblesTankCarConsist(roster='pony',
                                  base_numeric_id=1190,
                                  gen=3,
                                  subtype='A')
@@ -28,7 +28,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = EdiblesTankConsist(roster='pony',
+    consist = EdiblesTankCarConsist(roster='pony',
                                  base_numeric_id=2990,
                                  gen=4,
                                  subtype='A')
@@ -39,7 +39,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = EdiblesTankConsist(roster='pony',
+    consist = EdiblesTankCarConsist(roster='pony',
                                  base_numeric_id=3050,
                                  gen=5,
                                  subtype='C')
@@ -53,7 +53,7 @@ def main():
     # no need for gen 6, would be same speed + capacity as gen 5
 
     #--------------- llama ----------------------------------------------------------------------
-    consist = EdiblesTankConsist(roster='llama',
+    consist = EdiblesTankCarConsist(roster='llama',
                                  base_numeric_id=1210,
                                  gen=1,
                                  subtype='A')
@@ -66,7 +66,7 @@ def main():
 
     # no gen 2 for edibles tank cars - straight to gen 3
 
-    consist = EdiblesTankConsist(roster='llama',
+    consist = EdiblesTankCarConsist(roster='llama',
                                  base_numeric_id=1220,
                                  gen=3,
                                  subtype='A')
@@ -78,7 +78,7 @@ def main():
                               graphics_processor=consist.graphics_processors[0])
 
     #--------------- antelope ----------------------------------------------------------------------
-    consist = EdiblesTankConsist(roster='antelope',
+    consist = EdiblesTankCarConsist(roster='antelope',
                                  base_numeric_id=1690,
                                  gen=1,
                                  subtype='A')
@@ -89,7 +89,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = EdiblesTankConsist(roster='antelope',
+    consist = EdiblesTankCarConsist(roster='antelope',
                                  base_numeric_id=1700,
                                  gen=2,
                                  subtype='A')

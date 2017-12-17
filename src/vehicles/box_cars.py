@@ -1,9 +1,9 @@
-from train import BoxConsist, FreightCar
+from train import BoxCarConsist, FreightCar
 
 
 def main():
     #--------------- pony NG ----------------------------------------------------------------------
-    consist = BoxConsist(roster='pony',
+    consist = BoxCarConsist(roster='pony',
                          base_numeric_id=580,
                          gen=1,
                          subtype='A',
@@ -21,7 +21,7 @@ def main():
 
     # only type A for gen 1
 
-    consist = BoxConsist(roster='pony',
+    consist = BoxCarConsist(roster='pony',
                          base_numeric_id=1780,
                          gen=1,
                          subtype='A')
@@ -34,7 +34,7 @@ def main():
 
     # no new type A for gen 2, gen 1 type A continues
 
-    consist = BoxConsist(roster='pony',
+    consist = BoxCarConsist(roster='pony',
                          base_numeric_id=550,
                          gen=2,
                          subtype='B')
@@ -45,7 +45,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = BoxConsist(roster='pony',
+    consist = BoxCarConsist(roster='pony',
                          base_numeric_id=560,
                          gen=3,
                          subtype='A')
@@ -56,7 +56,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = BoxConsist(roster='pony',
+    consist = BoxCarConsist(roster='pony',
                          base_numeric_id=2340,
                          gen=3,
                          subtype='B')
@@ -67,7 +67,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = BoxConsist(roster='pony',
+    consist = BoxCarConsist(roster='pony',
                          base_numeric_id=570,
                          gen=4,
                          subtype='A')
@@ -78,7 +78,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = BoxConsist(roster='pony',
+    consist = BoxCarConsist(roster='pony',
                          base_numeric_id=2500,
                          gen=4,
                          subtype='B')
@@ -89,7 +89,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = BoxConsist(roster='pony',
+    consist = BoxCarConsist(roster='pony',
                          base_numeric_id=2480,
                          gen=5,
                          subtype='B')
@@ -100,7 +100,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = BoxConsist(roster='pony',
+    consist = BoxCarConsist(roster='pony',
                          base_numeric_id=2490,
                          gen=5,
                          subtype='C')
@@ -114,7 +114,7 @@ def main():
     # no gen 6 box cars, cap to gen 5 in Pony
 
     #--------------- llama ----------------------------------------------------------------------
-    consist = BoxConsist(roster='llama',
+    consist = BoxCarConsist(roster='llama',
                          base_numeric_id=590,
                          gen=1,
                          subtype='A')
@@ -125,7 +125,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = BoxConsist(roster='llama',
+    consist = BoxCarConsist(roster='llama',
                          base_numeric_id=600,
                          gen=2,
                          subtype='A')
@@ -136,7 +136,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = BoxConsist(roster='llama',
+    consist = BoxCarConsist(roster='llama',
                          base_numeric_id=610,
                          gen=3,
                          subtype='A')
@@ -147,7 +147,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = BoxConsist(roster='llama',
+    consist = BoxCarConsist(roster='llama',
                          base_numeric_id=620,
                          gen=1,
                          subtype='A',
@@ -159,7 +159,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = BoxConsist(roster='llama',
+    consist = BoxCarConsist(roster='llama',
                          base_numeric_id=1310,
                          gen=2,
                          subtype='A',
@@ -172,7 +172,7 @@ def main():
                               graphics_processor=consist.graphics_processors[0])
 
     #--------------- antelope ----------------------------------------------------------------------
-    consist = BoxConsist(roster='antelope',
+    consist = BoxCarConsist(roster='antelope',
                          base_numeric_id=1750,
                          gen=1,
                          subtype='A')
@@ -183,7 +183,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = BoxConsist(roster='antelope',
+    consist = BoxCarConsist(roster='antelope',
                          base_numeric_id=1740,
                          gen=2,
                          subtype='A')
@@ -194,7 +194,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = BoxConsist(roster='antelope',
+    consist = BoxCarConsist(roster='antelope',
                          base_numeric_id=2100,
                          gen=1,
                          subtype='A',
@@ -206,7 +206,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = BoxConsist(roster='antelope',
+    consist = BoxCarConsist(roster='antelope',
                          base_numeric_id=1850,
                          gen=2,
                          subtype='A',
@@ -218,7 +218,7 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0,
                               graphics_processor=consist.graphics_processors[0])
 
-    consist = BoxConsist(roster='antelope',
+    consist = BoxCarConsist(roster='antelope',
                          base_numeric_id=1860,
                          gen=3,
                          subtype='A',
