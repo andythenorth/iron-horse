@@ -293,7 +293,7 @@ class EngineConsist(Consist):
         return self.get_engine_cost_points() + self.type_base_running_cost_points
 
 
-class PassengerEngineConsist(Consist):
+class PassengerEngineConsist(EngineConsist):
     """
     Engines / multiple units that have passenger capacity
     """
@@ -305,7 +305,7 @@ class PassengerEngineConsist(Consist):
         self.default_cargos = ['PASS']
 
 
-class MailCargoEngineConsist(Consist):
+class MailCargoEngineConsist(EngineConsist):
     """
     Engines / multiple units that have mail/cargo capacity
     """
@@ -980,29 +980,6 @@ class Train(object):
         return nml_result
 
 
-class TrainCar(Train):
-    """
-    Intermediate class for actual cars (wagons) to subclass from, provides some common properties.
-    This class should be sparse - only declare the most limited set of properties common to wagons.
-    Most props should be declared by Train with useful defaults.
-    """
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.consist = kwargs['consist']
-        self.class_refit_groups = self.consist.class_refit_groups
-        self.label_refits_allowed = self.consist.label_refits_allowed
-        self.label_refits_disallowed = self.consist.label_refits_disallowed
-        if hasattr(self.consist, 'loading_speed_multiplier'):
-            self.loading_speed_multiplier = self.consist.loading_speed_multiplier
-        if hasattr(self.consist, 'cargo_age_period'):
-            self.cargo_age_period = self.consist.cargo_age_period
-
-    @property
-    def weight(self):
-        # set weight based on capacity  * a multiplier from consist (default 0.5 or so)
-         return self.consist.weight_factor * self.default_cargo_capacity
-
-
 class SteamEngineUnit(Train):
     """
     Unit for a steam engine, with smoke
@@ -1033,26 +1010,6 @@ class DieselEngineUnit(Train):
         self.visual_effect = 'VISUAL_EFFECT_DIESEL'
 
 
-class ElectricPaxUnit(Train):
-    """
-    Unit for a high-speed, high-power pax electric train, intended to be 2-car, with template magic for cabs etc
-    """
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        if hasattr(kwargs['consist'], 'track_type'):
-            # all NG vehicles should set 'NG' only, this class then over-rides that to electrified NG as needed
-            # why? this might be daft?
-            if kwargs['consist'].track_type == "NG":
-                kwargs['consist'].track_type = "ELNG"
-            else:
-                kwargs['consist'].track_type = "ELRL"
-        else:
-            kwargs['consist'].track_type = "ELRL"
-        self.engine_class = 'ENGINE_CLASS_ELECTRIC'
-        self.visual_effect = 'VISUAL_EFFECT_ELECTRIC'
-        self.tilt_bonus = True
-
-
 class ElectricEngineUnit(Train):
     """
     Unit for an electric engine.
@@ -1081,6 +1038,37 @@ class ElectroDieselEngineUnit(Train):
         self.engine_class = 'ENGINE_CLASS_DIESEL'
         self.visual_effect = 'VISUAL_EFFECT_DIESEL'
         self.consist.visual_effect_override_by_railtype = {'ELRL': 'VISUAL_EFFECT_ELECTRIC'}
+
+
+class ElectricPaxUnit(Train):
+    """
+    Unit for a high-speed, high-power pax electric train, intended to be 2-car, with template magic for cabs etc
+    """
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        if hasattr(kwargs['consist'], 'track_type'):
+            # all NG vehicles should set 'NG' only, this class then over-rides that to electrified NG as needed
+            # why? this might be daft?
+            if kwargs['consist'].track_type == "NG":
+                kwargs['consist'].track_type = "ELNG"
+            else:
+                kwargs['consist'].track_type = "ELRL"
+        else:
+            kwargs['consist'].track_type = "ELRL"
+        self.engine_class = 'ENGINE_CLASS_ELECTRIC'
+        self.visual_effect = 'VISUAL_EFFECT_ELECTRIC'
+        self.tilt_bonus = True
+
+
+class MetroUnit(Train):
+    """
+    Unit for an electric metro train, with high loading speed.
+    """
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.loading_speed_multiplier = 2
+        self.engine_class = 'ENGINE_CLASS_ELECTRIC'
+        self.visual_effect = 'VISUAL_EFFECT_ELECTRIC'
 
 
 class CargoSprinter(Train):
@@ -1117,6 +1105,29 @@ class CargoSprinter(Train):
     """
 
 
+class TrainCar(Train):
+    """
+    Intermediate class for actual cars (wagons) to subclass from, provides some common properties.
+    This class should be sparse - only declare the most limited set of properties common to wagons.
+    Most props should be declared by Train with useful defaults.
+    """
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.consist = kwargs['consist']
+        self.class_refit_groups = self.consist.class_refit_groups
+        self.label_refits_allowed = self.consist.label_refits_allowed
+        self.label_refits_disallowed = self.consist.label_refits_disallowed
+        if hasattr(self.consist, 'loading_speed_multiplier'):
+            self.loading_speed_multiplier = self.consist.loading_speed_multiplier
+        if hasattr(self.consist, 'cargo_age_period'):
+            self.cargo_age_period = self.consist.cargo_age_period
+
+    @property
+    def weight(self):
+        # set weight based on capacity  * a multiplier from consist (default 0.5 or so)
+         return self.consist.weight_factor * self.default_cargo_capacity
+
+
 class FreightCar(TrainCar):
     """
     Freight wagon.
@@ -1141,14 +1152,3 @@ class CabooseCar(TrainCar):
     def weight(self):
         # special handling of weight
         return 5 * self.vehicle_length
-
-
-class MetroUnit(Train):
-    """
-    Metro Unit
-    """
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.loading_speed_multiplier = 2
-        self.engine_class = 'ENGINE_CLASS_ELECTRIC'
-        self.visual_effect = 'VISUAL_EFFECT_ELECTRIC'
