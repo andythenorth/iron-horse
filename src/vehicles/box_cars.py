@@ -1,4 +1,4 @@
-from train import BoxConsist, BoxCar
+from train import BoxConsist, FreightCar
 
 
 def main():
@@ -9,7 +9,7 @@ def main():
                          subtype='A',
                          track_type='NG')
 
-    consist.add_unit(type=BoxCar,
+    consist.add_unit(type=FreightCar,
                      vehicle_length=4)
 
     consist.add_model_variant(spritesheet_suffix=0,
@@ -26,7 +26,7 @@ def main():
                          gen=1,
                          subtype='A')
 
-    consist.add_unit(type=BoxCar,
+    consist.add_unit(type=FreightCar,
                      vehicle_length=4)
 
     consist.add_model_variant(spritesheet_suffix=0,
@@ -39,7 +39,7 @@ def main():
                          gen=2,
                          subtype='B')
 
-    consist.add_unit(type=BoxCar,
+    consist.add_unit(type=FreightCar,
                      vehicle_length=6)
 
     consist.add_model_variant(spritesheet_suffix=0,
@@ -50,7 +50,7 @@ def main():
                          gen=3,
                          subtype='A')
 
-    consist.add_unit(type=BoxCar,
+    consist.add_unit(type=FreightCar,
                      vehicle_length=4)
 
     consist.add_model_variant(spritesheet_suffix=0,
@@ -61,7 +61,7 @@ def main():
                          gen=3,
                          subtype='B')
 
-    consist.add_unit(type=BoxCar,
+    consist.add_unit(type=FreightCar,
                      vehicle_length=6)
 
     consist.add_model_variant(spritesheet_suffix=0,
@@ -72,7 +72,7 @@ def main():
                          gen=4,
                          subtype='A')
 
-    consist.add_unit(type=BoxCar,
+    consist.add_unit(type=FreightCar,
                      vehicle_length=4)
 
     consist.add_model_variant(spritesheet_suffix=0,
@@ -83,7 +83,7 @@ def main():
                          gen=4,
                          subtype='B')
 
-    consist.add_unit(type=BoxCar,
+    consist.add_unit(type=FreightCar,
                      vehicle_length=6)
 
     consist.add_model_variant(spritesheet_suffix=0,
@@ -94,7 +94,7 @@ def main():
                          gen=5,
                          subtype='B')
 
-    consist.add_unit(type=BoxCar,
+    consist.add_unit(type=FreightCar,
                      vehicle_length=6)
 
     consist.add_model_variant(spritesheet_suffix=0,
@@ -105,7 +105,7 @@ def main():
                          gen=5,
                          subtype='C')
 
-    consist.add_unit(type=BoxCar,
+    consist.add_unit(type=FreightCar,
                      vehicle_length=8)
 
     consist.add_model_variant(spritesheet_suffix=0,
@@ -119,7 +119,7 @@ def main():
                          gen=1,
                          subtype='A')
 
-    consist.add_unit(type=BoxCar,
+    consist.add_unit(type=FreightCar,
                      vehicle_length=5)
 
     consist.add_model_variant(spritesheet_suffix=0,
@@ -130,7 +130,7 @@ def main():
                          gen=2,
                          subtype='A')
 
-    consist.add_unit(type=BoxCar,
+    consist.add_unit(type=FreightCar,
                      vehicle_length=6)
 
     consist.add_model_variant(spritesheet_suffix=0,
@@ -141,7 +141,7 @@ def main():
                          gen=3,
                          subtype='A')
 
-    consist.add_unit(type=BoxCar,
+    consist.add_unit(type=FreightCar,
                      vehicle_length=7)
 
     consist.add_model_variant(spritesheet_suffix=0,
@@ -153,7 +153,7 @@ def main():
                          subtype='A',
                          track_type='NG')
 
-    consist.add_unit(type=BoxCar,
+    consist.add_unit(type=FreightCar,
                      vehicle_length=6)
 
     consist.add_model_variant(spritesheet_suffix=0,
@@ -165,7 +165,7 @@ def main():
                          subtype='A',
                          track_type='NG')
 
-    consist.add_unit(type=BoxCar,
+    consist.add_unit(type=FreightCar,
                      vehicle_length=6)
 
     consist.add_model_variant(spritesheet_suffix=0,
@@ -177,7 +177,7 @@ def main():
                          gen=1,
                          subtype='A')
 
-    consist.add_unit(type=BoxCar,
+    consist.add_unit(type=FreightCar,
                      vehicle_length=6)
 
     consist.add_model_variant(spritesheet_suffix=0,
@@ -188,7 +188,7 @@ def main():
                          gen=2,
                          subtype='A')
 
-    consist.add_unit(type=BoxCar,
+    consist.add_unit(type=FreightCar,
                      vehicle_length=8)
 
     consist.add_model_variant(spritesheet_suffix=0,
@@ -200,7 +200,7 @@ def main():
                          subtype='A',
                          track_type='NG')
 
-    consist.add_unit(type=BoxCar,
+    consist.add_unit(type=FreightCar,
                      vehicle_length=5)
 
     consist.add_model_variant(spritesheet_suffix=0,
@@ -212,7 +212,7 @@ def main():
                          subtype='A',
                          track_type='NG')
 
-    consist.add_unit(type=BoxCar,
+    consist.add_unit(type=FreightCar,
                      vehicle_length=6)
 
     consist.add_model_variant(spritesheet_suffix=0,
@@ -224,7 +224,7 @@ def main():
                          subtype='A',
                          track_type='NG')
 
-    consist.add_unit(type=BoxCar,
+    consist.add_unit(type=FreightCar,
                      vehicle_length=8)
 
     consist.add_model_variant(spritesheet_suffix=0,

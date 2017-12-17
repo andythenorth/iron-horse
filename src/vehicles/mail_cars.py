@@ -1,4 +1,4 @@
-from train import MailConsist, MailCar
+from train import MailConsist, Wagon
 
 
 def main():
@@ -9,7 +9,7 @@ def main():
                           subtype='A',
                           track_type='NG')
 
-    consist.add_unit(type=MailCar,
+    consist.add_unit(type=Wagon,
                      capacity=24,
                      vehicle_length=5)
 
@@ -21,7 +21,7 @@ def main():
                           gen=1,
                           subtype='A')
 
-    consist.add_unit(type=MailCar,
+    consist.add_unit(type=Wagon,
                      capacity=15,
                      vehicle_length=4)
 
@@ -32,7 +32,7 @@ def main():
                           gen=1,
                           subtype='B')
 
-    consist.add_unit(type=MailCar,
+    consist.add_unit(type=Wagon,
                      capacity=15,
                      vehicle_length=6)
 
@@ -43,7 +43,7 @@ def main():
                           gen=2,
                           subtype='A')
 
-    consist.add_unit(type=MailCar,
+    consist.add_unit(type=Wagon,
                      capacity=25,
                      vehicle_length=4)
 
@@ -54,7 +54,7 @@ def main():
                           gen=2,
                           subtype='B')
 
-    consist.add_unit(type=MailCar,
+    consist.add_unit(type=Wagon,
                      capacity=25,
                      vehicle_length=6)
 
@@ -65,7 +65,7 @@ def main():
                           gen=3,
                           subtype='B')
 
-    consist.add_unit(type=MailCar,
+    consist.add_unit(type=Wagon,
                      capacity=40,
                      vehicle_length=6)
 
@@ -76,7 +76,7 @@ def main():
                           gen=3,
                           subtype='C')
 
-    consist.add_unit(type=MailCar,
+    consist.add_unit(type=Wagon,
                      capacity=40,
                      vehicle_length=8)
 
@@ -87,7 +87,7 @@ def main():
                           gen=4,
                           subtype='B')
 
-    consist.add_unit(type=MailCar,
+    consist.add_unit(type=Wagon,
                      capacity=55,
                      vehicle_length=6)
 
@@ -98,7 +98,7 @@ def main():
                           gen=4,
                           subtype='C')
 
-    consist.add_unit(type=MailCar,
+    consist.add_unit(type=Wagon,
                      capacity=55,
                      vehicle_length=8)
 
@@ -109,7 +109,7 @@ def main():
                           gen=5,
                           subtype='B')
 
-    consist.add_unit(type=MailCar,
+    consist.add_unit(type=Wagon,
                      capacity=55,
                      vehicle_length=6)
 
@@ -120,7 +120,7 @@ def main():
                           gen=5,
                           subtype='C')
 
-    consist.add_unit(type=MailCar,
+    consist.add_unit(type=Wagon,
                      capacity=55,
                      vehicle_length=8)
 
@@ -135,7 +135,7 @@ def main():
                           gen = 1,
                                     subtype='A')
 
-    consist.add_unit(type = MailCar,
+    consist.add_unit(type = Wagon,
                             capacity = 30,
                             vehicle_length = 7)
 
@@ -147,7 +147,7 @@ def main():
                           gen = 2,
                                     subtype='A')
 
-    consist.add_unit(type = MailCar,
+    consist.add_unit(type = Wagon,
                             capacity = 45,
                             vehicle_length = 7)
 
@@ -159,7 +159,7 @@ def main():
                           gen = 3,
                                     subtype='A')
 
-    consist.add_unit(type = MailCar,
+    consist.add_unit(type = Wagon,
                             capacity = 60,
                             vehicle_length = 8)
 
@@ -172,7 +172,7 @@ def main():
                                     subtype='A',
                           track_type = 'NG')
 
-    consist.add_unit(type = MailCar,
+    consist.add_unit(type = Wagon,
                             capacity = 30,
                             vehicle_length = 6)
 
@@ -185,7 +185,7 @@ def main():
                                     subtype='A',
                           track_type = 'NG')
 
-    consist.add_unit(type = MailCar,
+    consist.add_unit(type = Wagon,
                             capacity = 40,
                             vehicle_length = 6)
 
@@ -198,7 +198,7 @@ def main():
                                     subtype='A',
                                                               track_type = 'NG')
 
-    consist.add_unit(type = MailCar,
+    consist.add_unit(type = Wagon,
                             capacity = 50,
                             vehicle_length = 6)
 
@@ -211,7 +211,7 @@ def main():
                           gen=1,
                           subtype='A')
 
-    consist.add_unit(type=MailCar,
+    consist.add_unit(type=Wagon,
                      capacity=40,
                      vehicle_length=8)
 
@@ -223,7 +223,7 @@ def main():
                           subtype='A',
                           track_type='NG')
 
-    consist.add_unit(type=MailCar,
+    consist.add_unit(type=Wagon,
                      capacity=20,
                      vehicle_length=5)
 
@@ -235,7 +235,7 @@ def main():
                           subtype='A',
                           track_type='NG')
 
-    consist.add_unit(type=MailCar,
+    consist.add_unit(type=Wagon,
                      capacity=30,
                      vehicle_length=8)
 

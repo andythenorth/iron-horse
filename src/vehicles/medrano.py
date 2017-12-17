@@ -1,25 +1,25 @@
-from train import EngineConsist, MetroPaxUnit
+from train import PassengerEngineConsist, MetroUnit
 
-consist = EngineConsist(id='medrano',
-                        base_numeric_id=1490,
-                        title='Medrano [Metro Train]',
-                        track_type='METRO',
-                        power=1100,
-                        speed=65,
-                        type_base_buy_cost_points=80,  # dibble buy cost for game balance
-                        intro_date=2000)
+consist = PassengerEngineConsist(id='medrano',
+                                 base_numeric_id=1490,
+                                 title='Medrano [Metro Train]',
+                                 track_type='METRO',
+                                 power=1100,
+                                 speed=65,
+                                 type_base_buy_cost_points=80,  # dibble buy cost for game balance
+                                 intro_date=2000)
 
 # should be 4 units, not 2
-consist.add_unit(type=MetroPaxUnit,
+consist.add_unit(type=MetroUnit,
                  weight=30,
                  vehicle_length=8,
-                 capacity_pax=200,
+                 capacity=200,
                  spriterow_num=0)
 
-consist.add_unit(type=MetroPaxUnit,
+consist.add_unit(type=MetroUnit,
                  weight=30,
                  vehicle_length=8,
-                 capacity_pax=200,
+                 capacity=200,
                  spriterow_num=1)
 
 consist.add_model_variant(spritesheet_suffix=0)

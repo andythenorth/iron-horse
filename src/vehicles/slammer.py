@@ -1,14 +1,14 @@
-from train import EngineConsist, DieselRailcarPassenger
+from train import PassengerEngineConsist, DieselLoco
 
-consist = EngineConsist(id='slammer',
-                        base_numeric_id=470,
-                        title='Slammer [Diesel]',
-                        power=300,
-                        speed=75,
-                        type_base_running_cost_points=-32,  # dibble running costs for game balance
-                        intro_date=1955)  # explicit intro date by design
+consist = PassengerEngineConsist(id='slammer',
+                                 base_numeric_id=470,
+                                 title='Slammer [Diesel]',
+                                 power=300,
+                                 speed=75,
+                                 type_base_running_cost_points=-32,  # dibble running costs for game balance
+                                 intro_date=1955)  # explicit intro date by design
 
-consist.add_unit(type=DieselRailcarPassenger,
+consist.add_unit(type=DieselLoco,
                  weight=37,
                  vehicle_length=8,
                  capacity=40,

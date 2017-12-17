@@ -247,9 +247,7 @@ class Train(object):
         self.cargo_age_period = kwargs.get('cargo_age_period', global_constants.CARGO_AGE_PERIOD)
         self.vehicle_length = kwargs.get('vehicle_length', None)
         self._weight = kwargs.get('weight', None)
-        self._capacity_pax = kwargs.get('capacity_pax', 0)
-        self._capacity_mail = kwargs.get('capacity_mail', 0)
-        self._capacity_freight = kwargs.get('capacity_freight', 0)
+        self.capacity = kwargs.get('capacity', 0)
         self.loading_speed_multiplier = kwargs.get('loading_speed_multiplier', 1)
         # spriterow_num, first row = 0
         self.spriterow_num = kwargs.get('spriterow_num', 0)
@@ -284,20 +282,16 @@ class Train(object):
         return [int(math.ceil(capacity * multiplier)) for multiplier in global_constants.capacity_multipliers]
 
     @property
-    def capacities_pax(self):
-        return self.get_capacity_variations(self._capacity_pax)
+    def capacities(self):
+        return self.get_capacity_variations(self.capacity)
 
     @property
-    def capacities_mail(self):
-        return self.get_capacity_variations(self._capacity_mail)
-
-    @property
-    def capacities_freight(self):
-        return self.get_capacity_variations(self._capacity_freight)
+    def default_cargo_capacity(self):
+        return self.capacities[1]
 
     @property
     def has_cargo_capacity(self):
-        if self._capacity_pax is not 0 or self._capacity_mail is not 0 or self._capacity_freight is not 0:
+        if self.default_cargo_capacity is not 0:
             return True
         else:
             return False
@@ -306,18 +300,6 @@ class Train(object):
     def weight(self):
         # weight can be set explicitly or by methods on subclasses
         return self._weight
-
-    @property
-    def default_cargo_capacity(self):
-        if self.has_cargo_capacity:
-            if self.consist.default_cargo == 'PASS':
-                return self.capacities_pax[1]
-            elif self.consist.default_cargo == 'MAIL':
-                return self.capacities_mail[1]
-            else:
-                return self.capacities_freight[1]
-        else:
-            return 0
 
     @property
     def availability(self):
@@ -357,8 +339,7 @@ class Train(object):
         # normalise default loading time for this set to 240 ticks, regardless of capacity
         # openttd loading rates vary by transport type, look them up in wiki to find value to use here to normalise loading time to 240 ticks
         transport_type_rate = 6 # this is (240 / loading frequency in ticks for transport type) from wiki
-        capacities = getattr(self, 'capacities_' + cargo_type)
-        return int(self.loading_speed_multiplier * math.ceil(capacities[capacity_param] / transport_type_rate))
+        return int(self.loading_speed_multiplier * math.ceil(self.capacities[capacity_param] / transport_type_rate))
 
     @property
     def running_cost_base(self):
@@ -515,6 +496,30 @@ class EngineConsist(Consist):
     def running_cost(self):
         # type_base_running_cost_points is an arbitrary adjustment that can be applied on a type-by-type basis,
         return self.get_engine_cost_points() + self.type_base_running_cost_points
+
+
+class PassengerEngineConsist(Consist):
+    """
+    Engines / multiple units that have passenger capacity
+    """
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.class_refit_groups = ['pax']
+        self.label_refits_allowed = []
+        self.label_refits_disallowed = []
+        self.default_cargo = 'PASS'
+
+
+class MailCargoEngineConsist(Consist):
+    """
+    Engines / multiple units that have mail/cargo capacity
+    """
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.class_refit_groups = ['mail', 'express_freight']
+        self.label_refits_allowed = [] # no specific labels needed
+        self.label_refits_disallowed = ['TOUR']
+        self.default_cargo = 'MAIL'
 
 
 class WagonConsist(Consist):
@@ -1006,47 +1011,12 @@ class DieselLoco(Train):
         self.visual_effect = 'VISUAL_EFFECT_DIESEL'
 
 
-class DieselRailcarMail(Train):
-    """
-    Diesel Railcar (Single Unit) - mail & express freight.
-    """
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.class_refit_groups = ['mail', 'express_freight']
-        self.label_refits_allowed = [] # no specific labels needed
-        self.label_refits_disallowed = ['TOUR']
-        self._capacity_mail = kwargs.get('capacity', None)
-        self._capacity_freight = int(0.5 * self._capacity_mail)
-        self.default_cargo = 'MAIL'
-        self.engine_class = 'ENGINE_CLASS_DIESEL'
-        self.visual_effect = 'VISUAL_EFFECT_DIESEL'
-
-
-class DieselRailcarPassenger(Train):
-    """
-    Diesel Railcar (Single Unit) - passengers.
-    """
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.class_refit_groups = ['pax']
-        self.label_refits_allowed = [] # no specific labels needed
-        self.label_refits_disallowed = []
-        self._capacity_pax = kwargs.get('capacity', None)
-        self.default_cargo = 'PASS'
-        self.engine_class = 'ENGINE_CLASS_DIESEL'
-        self.visual_effect = 'VISUAL_EFFECT_DIESEL'
-
-
 class ElectricPaxUnit(Train):
     """
     High-speed, high-power pax electric unit, intended to be 2-car, with template magic for cabs etc
     """
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.class_refit_groups = ['pax']
-        self.label_refits_allowed = [] # no specific labels needed
-        self.label_refits_disallowed = []
-        self.default_cargo = 'PASS'
         if hasattr(kwargs['consist'], 'track_type'):
             # all NG vehicles should set 'NG' only, this class then over-rides that to electrified NG as needed
             # why? this might be daft?
@@ -1124,24 +1094,6 @@ class CargoSprinter(Train):
         return GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options)
     """
 
-class PassengerCar(Wagon):
-    """
-    Passenger Carriage.
-    """
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self._capacity_pax = kwargs.get('capacity', None)
-
-
-class MailCar(Wagon):
-    """
-    Mail Carriage.
-    """
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self._capacity_mail = kwargs.get('capacity', None)
-        self._capacity_freight = int(0.5 * self._capacity_mail)
-
 
 class FreightCar(Wagon):
     """
@@ -1152,16 +1104,8 @@ class FreightCar(Wagon):
         if kwargs.get('capacity', None) is not None:
              print(self.consist.id, kwargs.get('capacity', None))
         roster_obj = self.consist.get_roster(self.consist.roster_id)
-        self._capacity_freight = kwargs['vehicle_length'] * roster_obj.freight_car_capacity_per_unit_length[self.consist.track_type][self.consist.gen - 1]
-
-
-class BoxCar(FreightCar):
-    """
-    Box Car. This sub-class only exists to handle the mail capacity, in other respects it's just a standard wagon.
-    """
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self._capacity_mail = int(2.0 * self._capacity_freight)
+        # magic to set freight car capacity subject to length
+        self.capacity = kwargs['vehicle_length'] * roster_obj.freight_car_capacity_per_unit_length[self.consist.track_type][self.consist.gen - 1]
 
 
 class CabooseCar(FreightCar):
@@ -1170,7 +1114,6 @@ class CabooseCar(FreightCar):
     """
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self._capacity_freight = 0
 
     @property
     def weight(self):
@@ -1178,31 +1121,12 @@ class CabooseCar(FreightCar):
         return 5 * self.vehicle_length
 
 
-class MetroPaxUnit(Train):
+class MetroUnit(Train):
     """
     Metro Unit
     """
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.default_cargo = "PASS"
         self.loading_speed_multiplier = 2
         self.engine_class = 'ENGINE_CLASS_ELECTRIC'
         self.visual_effect = 'VISUAL_EFFECT_ELECTRIC'
-
-
-class MetroCargoUnit(Train):
-    """
-    Metro Unit
-    """
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.class_refit_groups = ['mail', 'express_freight']
-        self.label_refits_allowed = [] # no specific labels needed
-        self.label_refits_disallowed = []
-        self._capacity_mail = kwargs.get('capacity', None)
-        self._capacity_freight = int(0.5 * self._capacity_mail)
-        self.default_cargo = "MAIL"
-        self.loading_speed_multiplier = 2
-        self.engine_class = 'ENGINE_CLASS_ELECTRIC'
-        self.visual_effect = 'VISUAL_EFFECT_ELECTRIC'
-

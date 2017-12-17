@@ -1,14 +1,15 @@
-from train import EngineConsist, DieselRailcarPassenger
+from train import PassengerEngineConsist, DieselLoco
 
-consist = EngineConsist(id='happy_train',
-                        base_numeric_id=100,
-                        title='Happy Train [Diesel]',
-                        power=750,
-                        speed=110,  # matched to fast (in this gen) freight speeds
-                        type_base_running_cost_points=-36,  # dibble running costs for game balance
-                        intro_date=2015)  # explicit intro date by design
+consist = PassengerEngineConsist(id='happy_train',
+                                 base_numeric_id=100,
+                                 title='Happy Train [Diesel]',
+                                 power=750,
+                                 # matched to fast (in this gen) freight speeds
+                                 speed=110,
+                                 type_base_running_cost_points=-36,  # dibble running costs for game balance
+                                 intro_date=2015)  # explicit intro date by design
 
-consist.add_unit(type=DieselRailcarPassenger,
+consist.add_unit(type=DieselLoco,
                  weight=40,
                  vehicle_length=8,
                  capacity=75,

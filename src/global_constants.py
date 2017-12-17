@@ -50,10 +50,12 @@ disallowed_refits_by_label = {'non_hopper_freight': ['WOOD', 'SGCN', 'FICR', 'BD
 # occasionally label refits need to be shared across vehicle classes
 allowed_refits_by_label = {'box_freight': ['MAIL', 'GRAI', 'WHEA', 'MAIZ', 'FRUT', 'BEAN', 'NITR']}
 
-# capacity multipliers for capacity parameter
+# capacity multipliers for user-configurable capacity parameter
 capacity_multipliers = [0.67, 1, 1.33]
-
+# identifier for user-configurable capacity parameter
 param_adjust_vehicle_capacity = 1
+# mailbags are < 1t, multiply capacity appropriately
+mail_multiplier = 2
 
 # used to construct the cargo table automatically
 # ! order is significant ! - openttd will cascade through default cargos in the order specified by the cargo table
@@ -132,6 +134,7 @@ cargo_labels = ['PASS', # pax first
                 'PIPE',
                 'SALT',
                 'CBLK',
+                'CHLO',
                 #
                 'NULL']
 
