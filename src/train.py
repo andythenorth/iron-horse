@@ -342,7 +342,8 @@ class CarConsist(Consist):
         self.cargo_age_period = kwargs.get('cargo_age_period', global_constants.CARGO_AGE_PERIOD)
         self.auto_buy_menu_sprite = True # assume all wagons are auto-buy menu; this might fail for articulated wagons (none at time of writing)
         self.random_company_colour_swap = True # assume all wagons randomly swap CC, revert to False in wagon subclasses as needed
-        self.capacity_cost_factor = 1 # adjust this in subclasses to modify buy cost for more complex cars
+        self.capacity_cost_factor = 1 # default value, adjust this in subclasses to modify buy cost for more complex cars
+        self.run_cost_divisor = 8 # default value, adjust this in subclasses to modify run cost for more complex cars
 
     @property
     def buy_cost(self):
@@ -362,16 +363,7 @@ class CarConsist(Consist):
             cost = self.speed
         else:
             cost = 125
-        print("run_cost depending on old default_cargo implementation, disabling for now")
-        return cost / 8 # temp whilst refactoring old default_cargo
-        """
-        if self.default_cargos[0] == 'PASS':
-            return cost / 4
-        elif self.default_cargos[0] == 'MAIL':
-            return cost / 7
-        else:
-            return cost / 8
-        """
+        return cost / self.run_cost_divisor
 
     @property
     def model_life(self):
@@ -566,6 +558,7 @@ class LivestockCarConsist(CarConsist):
         self.default_cargos = ['LVST']
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
         self.capacity_cost_factor = 1.5
+        self.run_cost_divisor = 7
 
 
 class SiloCarConsist(CarConsist):
@@ -620,6 +613,7 @@ class MailCarConsist(CarConsist):
         self.default_cargos = ['MAIL']
         self.random_company_colour_swap = False
         self.capacity_cost_factor = 1.5
+        self.run_cost_divisor = 7
 
 
 class MetalCarConsist(CarConsist):
@@ -638,6 +632,7 @@ class MetalCarConsist(CarConsist):
         self.loading_speed_multiplier = 2
         self.auto_buy_menu_sprite = False # !! this is hax to suppress white warnings, buy menu handling needs figuring out for these wagons
         self.capacity_cost_factor = 1.5
+        self.run_cost_divisor = 7
 
 
 class OpenCarConsist(CarConsist):
@@ -681,6 +676,7 @@ class PassengerCarConsist(PassengerCarConsistBase):
         super().__init__(**kwargs)
         self.title = '[Passenger Car]'
         self.capacity_cost_factor = 2
+        self.run_cost_divisor = 5
 
 
 class PassengerLuxuryCarConsist(PassengerCarConsistBase):
@@ -694,6 +690,7 @@ class PassengerLuxuryCarConsist(PassengerCarConsistBase):
         self.title = '[Luxury Passenger Car]'
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
         self.capacity_cost_factor = 3
+        self.run_cost_divisor = 3
 
 
 class ReeferCarConsist(CarConsist):
@@ -711,6 +708,7 @@ class ReeferCarConsist(CarConsist):
         self.default_cargo = 'FOOD'
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
         self.capacity_cost_factor = 1.5
+        self.run_cost_divisor = 6
 
 
 class SuppliesCarConsist(CarConsist):
