@@ -57,6 +57,7 @@ class Consist(object):
         self.auto_buy_menu_sprite = kwargs.get('auto_buy_menu_sprite', False)
         # one default cargo for the whole consist, no mixed cargo shenanigans, it fails with auto-replace
         self.default_cargo = None
+        self.default_cargos = []
         # cargo /livery graphics options
         self.visible_cargo = VisibleCargo()
         self.random_company_colour_swap = False # over-ride in subclasses as needed
@@ -205,6 +206,19 @@ class Consist(object):
         # the working definition is one and only one roster per vehicle
         roster = self.get_roster(self.roster_id)
         return 'param[1]==' + str(roster.numeric_id - 1)
+
+    def get_nml_expression_for_default_cargos(self):
+        # sometimes first default cargo is not available, so we use a list
+        # this avoids unwanted cases like box cars defaulting to mail when goods cargo not available
+        # if there is only one default cargo, the list just has one entry, that's no problem
+        if len(self.default_cargos) == 1:
+            return self.default_cargos[0]
+        else:
+            # build stacked ternary operators for cargos
+            result = self.default_cargos[-1]
+            for cargo in reversed(self.default_cargos[0:-1]):
+                result = 'cargotype_available("' + cargo + '")?' + cargo + ':' + result
+            return result
 
     @property
     def buy_menu_x_loc(self):
@@ -507,7 +521,7 @@ class PassengerEngineConsist(Consist):
         self.class_refit_groups = ['pax']
         self.label_refits_allowed = []
         self.label_refits_disallowed = []
-        self.default_cargo = 'PASS'
+        self.default_cargos = ['PASS']
 
 
 class MailCargoEngineConsist(Consist):
@@ -519,7 +533,7 @@ class MailCargoEngineConsist(Consist):
         self.class_refit_groups = ['mail', 'express_freight']
         self.label_refits_allowed = [] # no specific labels needed
         self.label_refits_disallowed = ['TOUR']
-        self.default_cargo = 'MAIL'
+        self.default_cargos = ['MAIL']
 
 
 class WagonConsist(Consist):
@@ -556,14 +570,17 @@ class WagonConsist(Consist):
             cost = 125
         capacity_factors = []
         for unit in self.units:
-            if self.default_cargo == 'PASS':
+            print("buy_cost depending on old default_cargo implementation, disabling for now")
+            """
+            if self.default_cargos[0] == 'PASS':
                 # pax coaches have seats and stuff, are expensive to build
                 capacity_factors.append(3 * unit.default_cargo_capacity)
-            elif self.default_cargo == 'MAIL':
+            elif self.default_cargos[0] == 'MAIL':
                 # mail cars have pax-grade eqpt, but no seats etc, so moderately expensive
                 capacity_factors.append(2 * unit.default_cargo_capacity)
             else:
                 capacity_factors.append(unit.default_cargo_capacity)
+            """
         cost = cost + sum(capacity_factors)
         return 0.5 * cost # dibble all the things
 
@@ -573,12 +590,16 @@ class WagonConsist(Consist):
             cost = self.speed
         else:
             cost = 125
-        if self.default_cargo == 'PASS':
+        print("run_cost depending on old default_cargo implementation, disabling for now")
+        return cost / 8 # temp whilst refactoring old default_cargo
+        """
+        if self.default_cargos[0] == 'PASS':
             return cost / 4
-        elif self.default_cargo == 'MAIL':
+        elif self.default_cargos[0] == 'MAIL':
             return cost / 7
         else:
             return cost / 8
+        """
 
     @property
     def model_life(self):
@@ -623,7 +644,7 @@ class BoxConsist(WagonConsist):
         self.class_refit_groups = ['packaged_freight']
         self.label_refits_allowed = global_constants.allowed_refits_by_label['box_freight']
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_freight_special_cases']
-        self.default_cargo = 'GOOD'
+        self.default_cargos = ['GOOD', 'VPTS', 'FOOD']
 
 
 class CabooseConsist(WagonConsist):
@@ -638,7 +659,6 @@ class CabooseConsist(WagonConsist):
         self.class_refit_groups = [] # refit nothing, don't mess with this, it breaks auto-replace
         self.label_refits_allowed = [] # no specific labels needed
         self.label_refits_disallowed = []
-        self.default_cargo = None
         # no graphics processing - don't random colour cabeese, I tried it, looks daft
         self.random_company_colour_swap = False
 
@@ -653,7 +673,7 @@ class CoveredHopperConsist(WagonConsist):
         self.class_refit_groups = [] # no classes, use explicit labels
         self.label_refits_allowed = ['GRAI', 'WHEA', 'MAIZ', 'SUGR', 'FMSP', 'RFPR', 'CLAY', 'BDMT', 'BEAN', 'NITR', 'RUBR', 'SAND', 'POTA', 'QLME', 'SASH', 'CMNT', 'KAOL', 'FERT', 'SALT', 'CBLK']
         self.label_refits_disallowed = []
-        self.default_cargo = 'GRAI'
+        self.default_cargos = ['GRAI']
         self.loading_speed_multiplier = 2
 
 
@@ -668,7 +688,7 @@ class DumpConsist(WagonConsist):
         self.class_refit_groups = ['hopper_freight']
         self.label_refits_allowed = [] # no specific labels needed
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_hopper_freight']
-        self.default_cargo = 'IORE'
+        self.default_cargos = ['IORE']
         self.loading_speed_multiplier = 2
         # Cargo Graphics
         self.visible_cargo.bulk = True
@@ -688,7 +708,7 @@ class EdiblesTankConsist(WagonConsist):
         self.class_refit_groups = ['liquids']
         self.label_refits_allowed = ['FOOD']
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_edible_liquids']
-        self.default_cargo = 'WATR'
+        self.default_cargos = ['WATR']
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
         self.loading_speed_multiplier = 2
 
@@ -704,7 +724,7 @@ class FlatConsist(WagonConsist):
         self.class_refit_groups = ['flatcar_freight']
         self.label_refits_allowed = ['GOOD']
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_flatcar_freight']
-        self.default_cargo = 'STEL'
+        self.default_cargos = ['STEL']
         # Cargo graphics
         self.visible_cargo.piece_groups = ['base']
 
@@ -720,7 +740,7 @@ class FruitVegConsist(WagonConsist):
         self.class_refit_groups = []
         self.label_refits_allowed = ['FRUT', 'BEAN', 'CASS', 'JAVA', 'NUTS']
         self.label_refits_disallowed = []
-        self.default_cargo = 'FRUT'
+        self.default_cargos = ['FRUT']
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
 
 
@@ -735,7 +755,7 @@ class HopperConsist(WagonConsist):
         self.class_refit_groups = ['hopper_freight']
         self.label_refits_allowed = [] # none needed
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_hopper_freight']
-        self.default_cargo = 'COAL'
+        self.default_cargos = ['COAL']
         self.loading_speed_multiplier = 2
         # Cargo graphics
         self.visible_cargo.bulk = True
@@ -752,7 +772,7 @@ class IntermodalConsist(WagonConsist):
         self.class_refit_groups = ['express_freight', 'packaged_freight']
         self.label_refits_allowed = global_constants.allowed_refits_by_label['box_freight']
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_freight_special_cases']
-        self.default_cargo = 'GOOD'
+        self.default_cargos = ['GOOD']
         self.loading_speed_multiplier = 2
 
 
@@ -767,7 +787,7 @@ class LivestockConsist(WagonConsist):
         self.class_refit_groups = []
         self.label_refits_allowed = ['LVST']
         self.label_refits_disallowed = []
-        self.default_cargo = 'LVST'
+        self.default_cargos = ['LVST']
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
 
 
@@ -782,7 +802,7 @@ class SiloConsist(WagonConsist):
         self.class_refit_groups = [] # no classes, use explicit labels
         self.label_refits_allowed = ['FOOD', 'SUGR', 'FMSP', 'RFPR', 'BDMT', 'RUBR', 'QLME', 'SASH', 'CMNT']
         self.label_refits_disallowed = []
-        self.default_cargo = 'GRAI'
+        self.default_cargos = ['GRAI']
         self.loading_speed_multiplier = 2
         self.visible_cargo = VisibleCargoLiveryOnly()
         self.visible_cargo.tanker = True
@@ -799,7 +819,7 @@ class StakeConsist(WagonConsist):
         self.class_refit_groups = []
         self.label_refits_allowed = ['WOOD', 'WDPR', 'PIPE'] # limited refits by design eh
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_flatcar_freight']
-        self.default_cargo = 'WOOD'
+        self.default_cargos = ['WOOD']
         self.loading_speed_multiplier = 2
         # Cargo graphics
         self.visible_cargo = VisibleCargoCustom({'WOOD': [0]},
@@ -819,7 +839,7 @@ class MailConsist(WagonConsist):
         self.class_refit_groups = ['mail', 'express_freight']
         self.label_refits_allowed = [] # no specific labels needed
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_freight_special_cases']
-        self.default_cargo = 'MAIL'
+        self.default_cargos = ['MAIL']
         self.random_company_colour_swap = False
 
 
@@ -835,7 +855,7 @@ class MetalConsist(WagonConsist):
         self.class_refit_groups = []
         self.label_refits_allowed = ['STEL', 'COPR', 'IRON', 'SLAG', 'METL']
         self.label_refits_disallowed = []
-        self.default_cargo = 'STEL'
+        self.default_cargos = ['STEL']
         self.loading_speed_multiplier = 2
         self.auto_buy_menu_sprite = False # !! this is hax to suppress white warnings, buy menu handling needs figuring out for these wagons
 
@@ -851,7 +871,7 @@ class OpenConsist(WagonConsist):
         self.class_refit_groups = ['all_freight']
         self.label_refits_allowed = [] # no specific labels needed
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_freight_special_cases']
-        self.default_cargo = 'GOOD'
+        self.default_cargos = ['GOOD']
         # Cargo Graphics
         self.visible_cargo.bulk = True
         self.visible_cargo.piece_groups = ['base', 'pseudo_bulk']
@@ -868,7 +888,7 @@ class PassengerConsistBase(WagonConsist):
         self.class_refit_groups = ['pax']
         self.label_refits_allowed = []
         self.label_refits_disallowed = []
-        self.default_cargo = 'PASS'
+        self.default_cargos = ['PASS']
         self.random_company_colour_swap = False
 
 
@@ -921,7 +941,7 @@ class SuppliesConsist(WagonConsist):
         self.class_refit_groups = []
         self.label_refits_allowed = ['ENSP', 'FMSP', 'VEHI']
         self.label_refits_disallowed = []
-        self.default_cargo = 'ENSP'
+        self.default_cargos = ['ENSP']
 
 
 class TankConsist(WagonConsist):
@@ -938,7 +958,7 @@ class TankConsist(WagonConsist):
         self.class_refit_groups = ['liquids']
         self.label_refits_allowed = []
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['edible_liquids']
-        self.default_cargo = 'OIL_'
+        self.default_cargos = ['OIL_']
         self.loading_speed_multiplier = 3
         self.visible_cargo = VisibleCargoLiveryOnly()
         self.visible_cargo.tanker = True
@@ -955,7 +975,7 @@ class VehicleTransporterConsist(WagonConsist):
         self.class_refit_groups = []
         self.label_refits_allowed = ['VEHI']
         self.label_refits_disallowed = []
-        self.default_cargo = 'VEHI'
+        self.default_cargos = ['VEHI']
         self.date_variant_var = 'current_year'
 
 
@@ -1072,7 +1092,7 @@ class CargoSprinter(Train):
         self.label_refits_allowed = ['FRUT','WATR']
         self.label_refits_disallowed = ['FISH','LVST','OIL_','TOUR','WOOD']
         self.loading_speed_multiplier = 2
-        self.default_cargo = 'GOOD'
+        self.default_cargos = ['GOOD']
         self.engine_class = 'ENGINE_CLASS_DIESEL'
         self.visual_effect = 'VISUAL_EFFECT_DISABLE' # intended - positioning smoke correctly for this vehicle type is too fiddly
         """
@@ -1108,7 +1128,7 @@ class FreightCar(Wagon):
         self.capacity = kwargs['vehicle_length'] * roster_obj.freight_car_capacity_per_unit_length[self.consist.track_type][self.consist.gen - 1]
 
 
-class CabooseCar(FreightCar):
+class CabooseCar(Wagon):
     """
     Caboose Car. This sub-class only exists to set weight in absence of cargo capacity, in other respects it's just a standard wagon.
     """
