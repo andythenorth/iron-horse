@@ -342,6 +342,7 @@ class CarConsist(Consist):
         self.cargo_age_period = kwargs.get('cargo_age_period', global_constants.CARGO_AGE_PERIOD)
         self.auto_buy_menu_sprite = True # assume all wagons are auto-buy menu; this might fail for articulated wagons (none at time of writing)
         self.random_company_colour_swap = True # assume all wagons randomly swap CC, revert to False in wagon subclasses as needed
+        self.capacity_cost_factor = 1 # adjust this in subclasses to modify buy cost for more complex cars
 
     @property
     def buy_cost(self):
@@ -351,17 +352,7 @@ class CarConsist(Consist):
             cost = 125
         capacity_factors = []
         for unit in self.units:
-            print("buy_cost depending on old default_cargo implementation, disabling for now")
-            """
-            if self.default_cargos[0] == 'PASS':
-                # pax coaches have seats and stuff, are expensive to build
-                capacity_factors.append(3 * unit.default_cargo_capacity)
-            elif self.default_cargos[0] == 'MAIL':
-                # mail cars have pax-grade eqpt, but no seats etc, so moderately expensive
-                capacity_factors.append(2 * unit.default_cargo_capacity)
-            else:
-                capacity_factors.append(unit.default_cargo_capacity)
-            """
+            capacity_factors.append(unit.default_cargo_capacity * self.capacity_cost_factor)
         cost = cost + sum(capacity_factors)
         return 0.5 * cost # dibble all the things
 
@@ -493,6 +484,7 @@ class EdiblesTankCarConsist(CarConsist):
         self.default_cargos = ['WATR']
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
         self.loading_speed_multiplier = 2
+        self.capacity_cost_factor = 1.5
 
 
 class FlatCarConsist(CarConsist):
@@ -524,6 +516,7 @@ class FruitVegCarConsist(CarConsist):
         self.label_refits_disallowed = []
         self.default_cargos = ['FRUT']
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
+        self.capacity_cost_factor = 1.5
 
 
 class HopperCarConsist(CarConsist):
@@ -541,6 +534,7 @@ class HopperCarConsist(CarConsist):
         self.loading_speed_multiplier = 2
         # Cargo graphics
         self.visible_cargo.bulk = True
+        self.capacity_cost_factor = 1.5
 
 
 class IntermodalCarConsist(CarConsist):
@@ -571,6 +565,7 @@ class LivestockCarConsist(CarConsist):
         self.label_refits_disallowed = []
         self.default_cargos = ['LVST']
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
+        self.capacity_cost_factor = 1.5
 
 
 class SiloCarConsist(CarConsist):
@@ -588,6 +583,7 @@ class SiloCarConsist(CarConsist):
         self.loading_speed_multiplier = 2
         self.visible_cargo = VisibleCargoLiveryOnly()
         self.visible_cargo.tanker = True
+        self.capacity_cost_factor = 1.5
 
 
 class StakeCarConsist(CarConsist):
@@ -623,6 +619,7 @@ class MailCarConsist(CarConsist):
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_freight_special_cases']
         self.default_cargos = ['MAIL']
         self.random_company_colour_swap = False
+        self.capacity_cost_factor = 1.5
 
 
 class MetalCarConsist(CarConsist):
@@ -640,6 +637,7 @@ class MetalCarConsist(CarConsist):
         self.default_cargos = ['STEL']
         self.loading_speed_multiplier = 2
         self.auto_buy_menu_sprite = False # !! this is hax to suppress white warnings, buy menu handling needs figuring out for these wagons
+        self.capacity_cost_factor = 1.5
 
 
 class OpenCarConsist(CarConsist):
@@ -682,6 +680,7 @@ class PassengerCarConsist(PassengerCarConsistBase):
         self.base_id = 'passenger_car'
         super().__init__(**kwargs)
         self.title = '[Passenger Car]'
+        self.capacity_cost_factor = 2
 
 
 class PassengerLuxuryCarConsist(PassengerCarConsistBase):
@@ -694,6 +693,7 @@ class PassengerLuxuryCarConsist(PassengerCarConsistBase):
         super().__init__(**kwargs)
         self.title = '[Luxury Passenger Car]'
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
+        self.capacity_cost_factor = 3
 
 
 class ReeferCarConsist(CarConsist):
@@ -710,6 +710,7 @@ class ReeferCarConsist(CarConsist):
         self.label_refits_disallowed = []
         self.default_cargo = 'FOOD'
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
+        self.capacity_cost_factor = 1.5
 
 
 class SuppliesCarConsist(CarConsist):
@@ -744,6 +745,7 @@ class TankCarConsist(CarConsist):
         self.loading_speed_multiplier = 3
         self.visible_cargo = VisibleCargoLiveryOnly()
         self.visible_cargo.tanker = True
+        self.capacity_cost_factor = 1.5
 
 
 class VehicleTransporterCarConsist(CarConsist):
