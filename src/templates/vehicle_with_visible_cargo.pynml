@@ -1,4 +1,4 @@
-<tal:include metal:use-macro="load: offsets_standard.pynml" />
+<tal:include metal:use-macro="load: spriteset_templates.pynml" />
 
 <tal:sprites_random_variations repeat="variation_num python:range(consist.get_num_spritesets())">
     spriteset(${vehicle.id}_ss_empty_${variation_num}, "${global_constants.graphics_path}${consist.id}_${variation_num}.png") {
@@ -74,8 +74,6 @@
 <tal:include metal:use-macro="load: graphics_switches.pynml" />
 
 // buy menu graphics
-<tal:include metal:use-macro="load: offsets_buy_menu.pynml" />
-
 spriteset(${vehicle.id}_ss_purchase, "${global_constants.graphics_path}${consist.id}_0.png") {
   spriteset_template_purchase_${vehicle.id}()
 }

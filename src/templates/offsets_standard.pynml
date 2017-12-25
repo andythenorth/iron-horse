@@ -1,7 +1,0 @@
-// graphics
-template spriteset_template_${vehicle.id}(y) {
-    <tal:sprite repeat="bounding_box global_constants.spritesheet_bounding_boxes">
-        //[left_x,  upper_y,    width,      height,     offset_x,      offset_y]
-        [${bounding_box[0]}, y, ${bounding_box[1]}, ${bounding_box[2]}, ${vehicle.offsets[repeat.bounding_box.index][0]}, ${vehicle.offsets[repeat.bounding_box.index][1]} ${', ANIM' if consist.suppress_animated_pixel_warnings else ''}]
-    </tal:sprite>
-}
