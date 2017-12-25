@@ -3,7 +3,7 @@
     e.g. tank cars with black for oil, cc for chemicals, grey for petrol etc.
 -->
 
-<tal:include metal:use-macro="load: vehicle_offsets_standard.pynml" />
+<tal:include metal:use-macro="load: offsets_standard.pynml" />
 
 <tal:sprites_random_variations repeat="variation_num python:range(consist.get_num_spritesets())">
     <tal:cargo_variants repeat="cargo_variant_num python:range(consist.visible_cargo.num_cargo_sprite_variants)">

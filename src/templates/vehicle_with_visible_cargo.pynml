@@ -1,4 +1,4 @@
-<tal:include metal:use-macro="load: vehicle_offsets_standard.pynml" />
+<tal:include metal:use-macro="load: offsets_standard.pynml" />
 
 <tal:sprites_random_variations repeat="variation_num python:range(consist.get_num_spritesets())">
     spriteset(${vehicle.id}_ss_empty_${variation_num}, "${global_constants.graphics_path}${consist.id}_${variation_num}.png") {
