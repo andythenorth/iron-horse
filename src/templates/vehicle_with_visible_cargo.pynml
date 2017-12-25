@@ -74,7 +74,7 @@
 <tal:include metal:use-macro="load: graphics_switches.pynml" />
 
 // buy menu graphics
-<tal:include metal:use-macro="load: vehicle_offsets_buy_menu.pynml" />
+<tal:include metal:use-macro="load: offsets_buy_menu.pynml" />
 
 spriteset(${vehicle.id}_ss_purchase, "${global_constants.graphics_path}${consist.id}_0.png") {
   spriteset_template_purchase_${vehicle.id}()
