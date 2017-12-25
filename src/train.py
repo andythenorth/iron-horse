@@ -739,7 +739,7 @@ class TankCarConsist(CarConsist):
         self.class_refit_groups = ['liquids']
         self.label_refits_allowed = []
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['edible_liquids']
-        self.default_cargos = ['OIL_']
+        self.default_cargos = ['OIL_', 'KAOL', 'RUBR']
         self.loading_speed_multiplier = 3
         self.visible_cargo = VisibleCargoLiveryOnly()
         self.visible_cargo.tanker = True
