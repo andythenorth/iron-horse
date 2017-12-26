@@ -33,15 +33,15 @@ else
   REPO_VERSION = ${exported_version}
 endif
 
+REPO_TITLE = "$(PROJECT_NAME) $(REPO_VERSION)"
 PROJECT_VERSIONED_NAME = $(PROJECT_NAME)-$(REPO_VERSION)
 ARGS = '$(REPO_REVISION)' '$(REPO_VERSION)' '$(PW)' '$(ROSTER)'
 
-GRF_FILE = $(PROJECT_NAME).grf
-TAR_FILE = $(PROJECT_NAME).tar
-ZIP_FILE = $(PROJECT_NAME).zip
+GRF_FILE = generated/$(PROJECT_NAME).grf
+TAR_FILE = $(PROJECT_VERSIONED_NAME).tar
+ZIP_FILE = $(PROJECT_VERSIONED_NAME).zip
 MD5_FILE = $(PROJECT_NAME).check.md5
 
-DOC_FILES = docs/license.txt docs/changelog.txt
 HTML_DOCS = docs
 
 SOURCE_NAME = $(PROJECT_VERSIONED_NAME)-source
@@ -81,8 +81,17 @@ $(NML_FILE): $(shell $(FIND_FILES) --ext=.py --ext=.pynml src)
 $(GRF_FILE): $(GRAPHICS_DIR) $(LANG_DIR) $(NML_FILE) $(HTML_DOCS)
 	$(NMLC) $(NML_FLAGS) --grf=$(GRF_FILE) $(NML_FILE)
 
-$(TAR_FILE): $(GRF_FILE) $(DOC_FILES)
-	$(MK_ARCHIVE) --tar --output=$(TAR_FILE) --flatten --base=$(PROJECT_VERSIONED_NAME) $(DOC_FILES) $(GRF_FILE)
+$(TAR_FILE): $(GRF_FILE)
+# the goal here is a sparse tar that bananas will accept; bananas can't accept html docs etc, hence they're not included
+	# create an intermediate dir, and copy in what we need for bananas
+	mkdir $(PROJECT_VERSIONED_NAME)
+	cp docs/readme.txt $(PROJECT_VERSIONED_NAME)
+	cp docs/license.txt $(PROJECT_VERSIONED_NAME)
+	cp docs/changelog.txt $(PROJECT_VERSIONED_NAME)
+	cp $(GRF_FILE) $(PROJECT_VERSIONED_NAME)
+	$(MK_ARCHIVE) --tar --output=$(TAR_FILE) --base=$(PROJECT_VERSIONED_NAME) $(PROJECT_VERSIONED_NAME)
+	# delete the intermediate dir
+	rm -r $(PROJECT_VERSIONED_NAME)
 
 $(ZIP_FILE): $(TAR_FILE)
 	$(ZIP) -9rq $(ZIP_FILE) $(TAR_FILE) >/dev/null
