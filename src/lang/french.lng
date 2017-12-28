@@ -15,7 +15,7 @@ STR_PARAM_ROSTER_OPTION_2                                       :L'antilope de f
 
 # keep these alphabetised, easier
 STR_NAME_SUFFIX_BATTERY                                         :(Batterie)
-STR_NAME_SUFFIX_CAR                                             :Voiture
+STR_NAME_SUFFIX_CAR                                             :Wagon
 STR_NAME_SUFFIX_DIESEL                                          :(Diesel)
 STR_NAME_SUFFIX_ELECTRIC                                        :(Électrique)
 STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Électro-Diesel)
@@ -26,18 +26,82 @@ STR_NAME_SUFFIX_STEAM                                           :(Vapeur)
 # the 'small x car' etc isn't wise to split to substrings, the size modifier might vary in context per language
 # so just write out 3 full strings for each car type
 STR_NAME_SUFFIX_BOX_CAR                                         :Fourgon
-STR_NAME_SUFFIX_CABOOSE_CAR                                     :Fourgon de queue
-STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Wagon trémie couvert
-STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Wagon citerne alimentaire
+STR_NAME_SUFFIX_BOX_CAR_SMALL                                   :Fourgon (petit)
+STR_NAME_SUFFIX_BOX_CAR_MEDIUM                                  :Fourgon (moyen)
+STR_NAME_SUFFIX_BOX_CAR_LARGE                                   :Fourgon (grand)
+STR_NAME_SUFFIX_CABOOSE_CAR                                     :Fourgon-frein
+STR_NAME_SUFFIX_CABOOSE_CAR_SMALL                               :Fourgon-frein (petit)
+STR_NAME_SUFFIX_CABOOSE_CAR_MEDIUM                              :Fourgon-frein (moyen)
+STR_NAME_SUFFIX_CABOOSE_CAR_LARGE                               :Fourgon-frein (grand)
+STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Wagon-trémie couvert
+STR_NAME_SUFFIX_COVERED_HOPPER_CAR_SMALL                        :Wagon-trémie couvert (petit)
+STR_NAME_SUFFIX_COVERED_HOPPER_CAR_MEDIUM                       :Wagon-trémie couvert (moyen)
+STR_NAME_SUFFIX_COVERED_HOPPER_CAR_LARGE                        :Wagon-trémie couvert (grand)
+STR_NAME_SUFFIX_DUMP_CAR                                        :Wagon à benne basculante
+STR_NAME_SUFFIX_DUMP_CAR_SMALL                                  :Wagon à benne basculante (petit)
+STR_NAME_SUFFIX_DUMP_CAR_MEDIUM                                 :Wagon à benne basculante (moyen)
+STR_NAME_SUFFIX_DUMP_CAR_LARGE                                  :Wagon à benne basculante (grand)
+STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Wagon-citerne alimentaire
+STR_NAME_SUFFIX_EDIBLES_TANK_CAR_SMALL                          :Wagon-citerne alimentaire (petit)
+STR_NAME_SUFFIX_EDIBLES_TANK_CAR_MEDIUM                         :Wagon-citerne alimentaire (moyen)
+STR_NAME_SUFFIX_EDIBLES_TANK_CAR_LARGE                          :Wagon-citerne alimentaire (grand)
 STR_NAME_SUFFIX_FLAT_CAR                                        :Wagon plat
-STR_NAME_SUFFIX_FRUIT_CAR                                       :Wagon pour fruits
-STR_NAME_SUFFIX_HOPPER_CAR                                      :Wagon trémie
-STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Fourgon à bétail
+STR_NAME_SUFFIX_FLAT_CAR_SMALL                                  :Wagon plat (petit)
+STR_NAME_SUFFIX_FLAT_CAR_MEDIUM                                 :Wagon plat (moyen)
+STR_NAME_SUFFIX_FLAT_CAR_LARGE                                  :Wagon plat (grand)
+STR_NAME_SUFFIX_FRUIT_CAR                                       :Wagon à primeurs
+STR_NAME_SUFFIX_FRUIT_CAR_SMALL                                 :Wagon à primeurs (petit)
+STR_NAME_SUFFIX_FRUIT_CAR_MEDIUM                                :Wagon à primeurs (moyen)
+STR_NAME_SUFFIX_FRUIT_CAR_LARGE                                 :Wagon à primeurs (grand)
+STR_NAME_SUFFIX_HIGH_SPEED_MAIL_CAR                             :Fourgon postal grande vitesse
+STR_NAME_SUFFIX_HIGH_SPEED_PASSENGER_CAR                        :Voiture grande vitesse
+STR_NAME_SUFFIX_HOPPER_CAR                                      :Wagon-trémie
+STR_NAME_SUFFIX_HOPPER_CAR_SMALL                                :Wagon-trémie (petit)
+STR_NAME_SUFFIX_HOPPER_CAR_MEDIUM                               :Wagon-trémie (moyen)
+STR_NAME_SUFFIX_HOPPER_CAR_LARGE                                :Wagon-trémie (grand)
+STR_NAME_SUFFIX_INTERMODAL_CAR                                  :Wagon intermodal
+STR_NAME_SUFFIX_INTERMODAL_CAR_SMALL                            :Wagon intermodal (petit)
+STR_NAME_SUFFIX_INTERMODAL_CAR_MEDIUM                           :Wagon intermodal (moyen)
+STR_NAME_SUFFIX_INTERMODAL_CAR_LARGE                            :Wagon intermodal (grand)
+STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Wagon à bétail
+STR_NAME_SUFFIX_LIVESTOCK_CAR_SMALL                             :Wagon à bétail (petit)
+STR_NAME_SUFFIX_LIVESTOCK_CAR_MEDIUM                            :Wagon à bétail (moyen)
+STR_NAME_SUFFIX_LIVESTOCK_CAR_LARGE                             :Wagon à bétail (grand)
+STR_NAME_SUFFIX_LUXURY_PASSENGER_CAR                            :Voiture de luxe
 STR_NAME_SUFFIX_MAIL_CAR                                        :Fourgon postal
-STR_NAME_SUFFIX_METAL_CAR                                       :Voiture métallique
-STR_NAME_SUFFIX_OPEN_CAR                                        :Wagon tombereau
-STR_NAME_SUFFIX_PASSENGER_CAR                                   :Wagon passagers
+STR_NAME_SUFFIX_MAIL_CAR_SMALL                                  :Fourgon postal (petit)
+STR_NAME_SUFFIX_MAIL_CAR_MEDIUM                                 :Fourgon postal (moyen)
+STR_NAME_SUFFIX_MAIL_CAR_LARGE                                  :Fourgon postal (grand)
+STR_NAME_SUFFIX_METAL_CAR                                       :Wagon à métal
+STR_NAME_SUFFIX_METAL_CAR_SMALL                                 :Wagon à métal (petit)
+STR_NAME_SUFFIX_METAL_CAR_MEDIUM                                :Wagon à métal (moyen)
+STR_NAME_SUFFIX_METAL_CAR_LARGE                                 :Wagon à métal (grand)
+STR_NAME_SUFFIX_OPEN_CAR                                        :Wagon-tombereau
+STR_NAME_SUFFIX_OPEN_CAR_SMALL                                  :Wagon-tombereau (petit)
+STR_NAME_SUFFIX_OPEN_CAR_MEDIUM                                 :Wagon-tombereau (moyen)
+STR_NAME_SUFFIX_OPEN_CAR_LARGE                                  :Wagon-tombereau (grand)
+STR_NAME_SUFFIX_PASSENGER_CAR                                   :Voiture
 STR_NAME_SUFFIX_REEFER_CAR                                      :Wagon frigorifique
+STR_NAME_SUFFIX_REEFER_CAR_SMALL                                :Wagon frigorifique (petit)
+STR_NAME_SUFFIX_REEFER_CAR_MEDIUM                               :Wagon frigorifique (moyen)
+STR_NAME_SUFFIX_REEFER_CAR_LARGE                                :Wagon frigorifique (grand)
+STR_NAME_SUFFIX_SILO_CAR                                        :Wagon-silo
+STR_NAME_SUFFIX_SILO_CAR_SMALL                                  :Wagon-silo (petit)
+STR_NAME_SUFFIX_SILO_CAR_MEDIUM                                 :Wagon-silo (moyen)
+STR_NAME_SUFFIX_SILO_CAR_LARGE                                  :Wagon-silo (grand)
+STR_NAME_SUFFIX_STAKE_CAR                                       :Wagon à ranchers
+STR_NAME_SUFFIX_STAKE_CAR_SMALL                                 :Wagon à ranchers (petit)
+STR_NAME_SUFFIX_STAKE_CAR_MEDIUM                                :Wagon à ranchers (moyen)
+STR_NAME_SUFFIX_STAKE_CAR_LARGE                                 :Wagon à ranchers (grand)
 STR_NAME_SUFFIX_SUPPLIES_CAR                                    :Wagon de provisions
-STR_NAME_SUFFIX_TANK_CAR                                        :Wagon citerne
+STR_NAME_SUFFIX_SUPPLIES_CAR_SMALL                              :Wagon de provisions (petit)
+STR_NAME_SUFFIX_SUPPLIES_CAR_MEDIUM                             :Wagon de provisions (moyen)
+STR_NAME_SUFFIX_SUPPLIES_CAR_LARGE                              :Wagon de provisions (grand)
+STR_NAME_SUFFIX_TANK_CAR                                        :Wagon-citerne
+STR_NAME_SUFFIX_TANK_CAR_SMALL                                  :Wagon-citerne (petit)
+STR_NAME_SUFFIX_TANK_CAR_MEDIUM                                 :Wagon-citerne (moyen)
+STR_NAME_SUFFIX_TANK_CAR_LARGE                                  :Wagon-citerne (grand)
 STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Wagon porte-automobiles
+STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR_SMALL                   :Wagon porte-automobiles (petit)
+STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR_MEDIUM                  :Wagon porte-automobiles (moyen)
+STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR_LARGE                   :Wagon porte-automobiles (grand)
