@@ -28,6 +28,7 @@ STR_NAME_SUFFIX_STEAM                                           :(Parní)
 # so just write out 3 full strings for each car type
 STR_NAME_SUFFIX_BOX_CAR                                         :Uzavřený vůz
 STR_NAME_SUFFIX_CABOOSE_CAR                                     :Služební vůz
+STR_NAME_SUFFIX_CABOOSE_CAR_LARGE                               :Velký kupé vůz
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Krytý násypný vůz
 STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Vůz na potraviny
 STR_NAME_SUFFIX_FLAT_CAR                                        :Plochý vůz
@@ -39,6 +40,8 @@ STR_NAME_SUFFIX_METAL_CAR                                       :Kovový vůz
 STR_NAME_SUFFIX_OPEN_CAR                                        :Otevřený vůz
 STR_NAME_SUFFIX_PASSENGER_CAR                                   :Vůz pro cestující
 STR_NAME_SUFFIX_REEFER_CAR                                      :Chlazený vůz
+STR_NAME_SUFFIX_REEFER_CAR_SMALL                                :Malý chladící vůz
 STR_NAME_SUFFIX_SUPPLIES_CAR                                    :Vůz na zásoby
 STR_NAME_SUFFIX_TANK_CAR                                        :Cisternový vůz
 STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Vůz pro přepravu vozidel
+STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR_SMALL                   :Malý automobilový transportér
