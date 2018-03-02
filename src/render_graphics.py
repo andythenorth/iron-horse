@@ -10,6 +10,7 @@ from multiprocessing import Pool
 import multiprocessing
 logger = multiprocessing.log_to_stderr()
 logger.setLevel(25)
+from time import time
 
 import iron_horse
 import utils
@@ -20,8 +21,10 @@ makefile_args = utils.get_makefile_args(sys)
 num_pool_workers = makefile_args.get('num_pool_workers', 0) # default to no mp, makes debugging easier (mp fails to pickle errors correctly)
 if num_pool_workers == 0:
     use_multiprocessing = False
+    print('Multiprocessing disabled: (PW=0)') # just print, no need for a coloured echo_message
 else:
     use_multiprocessing = True
+    print('Multiprocessing enabled: (PW=' + str(num_pool_workers) + ')') # just print, no need for a coloured echo_message
 
 graphics_input = os.path.join(currentdir, 'src', 'graphics')
 graphics_output_path = os.path.join(iron_horse.generated_files_path, 'graphics')
@@ -60,7 +63,6 @@ def main():
             variants.append((variant, consist))
 
     if use_multiprocessing == False:
-        utils.echo_message('Multiprocessing disabled: (pw=0)')
         for variant in variants:
             run_pipeline(variant)
     else:

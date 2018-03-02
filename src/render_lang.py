@@ -6,6 +6,7 @@ import utils
 import shutil
 import os
 currentdir = os.curdir
+from time import time
 
 import sys
 sys.path.append(os.path.join('src')) # add to the module search path

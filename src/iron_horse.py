@@ -120,12 +120,13 @@ def get_consists_in_buy_menu_order():
         utils.echo_message("Warning: consist " + id + " in buy_menu_sort_order, but not found in registered_consists")
     for id in consist_id_defender.difference(buy_menu_defender):
         utils.echo_message("Warning: consist " + id + " in consists, but not in buy_menu_sort_order - won't show in game")
+
+    return consists
+
+def vacant_numeric_ids_formatted():
     # when adding vehicles it's useful to know what the next free numeric ID is
     # tidy-mind problem, but do we have any vacant numeric ID slots in the currently used range?
     # 'print' eh? - but it's fine echo_message isn't intended for this kind of info, don't bother changing
     id_gaps = [str(i - 10) for i in numeric_id_defender if not (i - 10) in numeric_id_defender and i is not 0 and i%10 is 0]
-    print("Vacant numeric ID slots:", ', '.join(id_gaps) + " and from" if len(id_gaps) > 0 else '', max(numeric_id_defender) + 10, "onwards")
 
-    return consists
-
-
+    return "Vacant numeric ID slots: " + ', '.join(id_gaps) + (" and from " if len(id_gaps) > 0 else '' ) + str(max(numeric_id_defender) + 10) + " onwards"

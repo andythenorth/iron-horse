@@ -6,6 +6,7 @@ import shutil
 import sys
 import os
 currentdir = os.curdir
+from time import time
 
 from PIL import Image
 
