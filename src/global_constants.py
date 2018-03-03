@@ -1,4 +1,4 @@
-from polar_fox import base_refits_by_class, cargo_labels, chameleon_cache_dir, generated_files_dir, graphics_path, max_game_date
+from polar_fox import base_refits_by_class, cargo_labels, disallowed_refits_by_label, chameleon_cache_dir, generated_files_dir, graphics_path, max_game_date
 
 # wagon ids are generic and are composed to specific vehicle ids elsewhere
 # order is significant
@@ -24,13 +24,6 @@ buy_menu_sort_order_wagons = ['metro_car',
                               'vehicle_transporter_car',
                               'metal_car',
                               'caboose_car']
-
-# rather than using disallowed classes (can cause breakage), specific labels are disallowed
-disallowed_refits_by_label = {'non_dump_bulk': ['WOOD', 'SGCN', 'FICR', 'BDMT', 'WDPR', 'GRAI', 'WHEA', 'CERE', 'MAIZ', 'FRUT', 'BEAN', 'CMNT', 'CTCD', 'FERT', 'OLSD', 'SUGR', 'SULP', 'TOFF', 'URAN'],
-                              'edible_liquids': ['MILK', 'WATR', 'BEER', 'FOOD', 'EOIL'],
-                              'non_edible_liquids': ['RFPR', 'OIL_', 'FMSP', 'PETR', 'RUBR', 'SULP'],
-                              'non_flatbed_freight': ['FOOD', 'FISH', 'LVST', 'FRUT', 'BEER', 'MILK', 'JAVA', 'SUGR', 'NUTS', 'EOIL', 'BOOM', 'FERT'],
-                              'non_freight_special_cases': ['TOUR']}
 
 # occasionally label refits need to be shared across vehicle classes
 allowed_refits_by_label = {'box_freight': ['MAIL', 'GRAI', 'WHEA', 'MAIZ', 'FRUT', 'BEAN', 'NITR']}
