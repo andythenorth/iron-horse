@@ -1,3 +1,5 @@
+from polar_fox import cargo_labels, chameleon_cache_dir, generated_files_dir, graphics_path, max_game_date
+
 # wagon ids are generic and are composed to specific vehicle ids elsewhere
 # order is significant
 buy_menu_sort_order_wagons = ['metro_car',
@@ -57,105 +59,10 @@ param_adjust_vehicle_capacity = 1
 # mailbags are < 1t, multiply capacity appropriately
 mail_multiplier = 2
 
-# used to construct the cargo table automatically
-# ! order is significant ! - openttd will cascade through default cargos in the order specified by the cargo table
-cargo_labels = ['PASS', # pax first
-                'TOUR',
-                # "the mail must get through"
-                'MAIL',
-                # all other cargos - append new ones to end, don't change order
-                'COAL',
-                'IORE',
-                'GRVL',
-                'SAND',
-                'AORE',
-                'CORE',
-                'CLAY',
-                'SCMT',
-                'WOOD',
-                'LIME',
-                'GOOD',
-                'FOOD',
-                'STEL',
-                'FMSP',
-                'ENSP',
-                'BEER',
-                'BDMT',
-                'MNSP',
-                'PAPR',
-                'WDPR',
-                'VEHI',
-                'COPR',
-                'DYES',
-                'OIL_',
-                'RFPR',
-                'PETR',
-                'PLAS',
-                'WATR',
-                'FISH',
-                'CERE',
-                'FICR',
-                'FRVG',
-                'FRUT',
-                'GRAI',
-                'LVST',
-                'MAIZ',
-                'MILK',
-                'RUBR',
-                'SGBT',
-                'SGCN',
-                'WHEA',
-                'WOOL',
-                'OLSD',
-                'SUGR',
-                'JAVA',
-                'BEAN',
-                'NITR',
-                'VEHI',
-                'EOIL',
-                'NUTS',
-                'CASS',
-                'MNO2',
-                'PHOS',
-                'POTA',
-                'PORE',
-                'IRON',
-                'NICK',
-                'SLAG',
-                'QLME',
-                'BOOM',
-                'METL',
-                'SULP',
-                'SASH',
-                'CMNT',
-                'COKE',
-                'KAOL',
-                'FERT',
-                'PIPE',
-                'SALT',
-                'CBLK',
-                'CHLO',
-                'VPTS',
-                'ACID',
-                #
-                'NULL']
-
 grfid = r"CA\12\1F"
-
-# chameleon templating goes faster if a cache dir is used; this specifies which dir is cache dir
-chameleon_cache_dir = '.chameleon_cache'
-
-# specify location for intermediate files generated during build (nml, graphics, lang etc)
-generated_files_dir = 'generated'
-
-# this is for nml or grfcodec, don't need to use python path module here
-graphics_path = 'generated/graphics/'
 
 # cargo aging constant - OTTD default is 185
 CARGO_AGE_PERIOD = 185
-
-# OpenTTD's max date
-max_game_date = 5000001
 
 # standard offsets for trains
 default_spritesheet_offsets = {'3': [[-3, -25], [-3, -21], [-16, -12], [5, -17], [-3, -14], [-14, -17], [-16, -12], [-8, -23]],
