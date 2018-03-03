@@ -1,4 +1,4 @@
-from polar_fox import cargo_labels, chameleon_cache_dir, generated_files_dir, graphics_path, max_game_date
+from polar_fox import base_refits_by_class, cargo_labels, chameleon_cache_dir, generated_files_dir, graphics_path, max_game_date
 
 # wagon ids are generic and are composed to specific vehicle ids elsewhere
 # order is significant
@@ -24,20 +24,6 @@ buy_menu_sort_order_wagons = ['metro_car',
                               'vehicle_transporter_car',
                               'metal_car',
                               'caboose_car']
-
-
-# shared lists of allowed classes, shared across multiple vehicle types
-# these lists are similar but not identical across Iron Horse, Squid, Road Hog etc
-base_refits_by_class = {'empty': [],
-                        'all_freight': ['CC_BULK', 'CC_PIECE_GOODS', 'CC_EXPRESS', 'CC_LIQUID', 'CC_ARMOURED', 'CC_REFRIGERATED', 'CC_COVERED', 'CC_NON_POURABLE'],
-                        'pax': ['CC_PASSENGERS'],
-                        'mail': ['CC_MAIL'],
-                        'liquids': ['CC_LIQUID'],
-                        'packaged_freight': ['CC_PIECE_GOODS', 'CC_EXPRESS', 'CC_ARMOURED', 'CC_LIQUID'],
-                        'flatcar_freight': ['CC_PIECE_GOODS'],
-                        'hopper_freight': ['CC_BULK'],
-                        'refrigerated_freight': ['CC_REFRIGERATED'],
-                        'express_freight': ['CC_EXPRESS','CC_ARMOURED']}
 
 # rather than using disallowed classes (can cause breakage), specific labels are disallowed
 # this is done per vehicle type, or added to global_constants for ease of reuse and updating

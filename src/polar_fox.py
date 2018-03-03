@@ -91,6 +91,19 @@ cargo_labels = ['PASS', # pax first
                 #
                 'NULL']
 
+# shared lists of allowed classes, shared across multiple vehicle types
+base_refits_by_class = {'empty': [],
+                        'all_freight': ['CC_BULK', 'CC_PIECE_GOODS', 'CC_EXPRESS', 'CC_LIQUID', 'CC_ARMOURED', 'CC_REFRIGERATED', 'CC_COVERED', 'CC_NON_POURABLE'],
+                        'pax': ['CC_PASSENGERS'],
+                        'mail': ['CC_MAIL'],
+                        'liquids': ['CC_LIQUID'],
+                        'packaged_freight': ['CC_PIECE_GOODS', 'CC_EXPRESS', 'CC_ARMOURED', 'CC_LIQUID'],
+                        'flatbed_freight': ['CC_PIECE_GOODS'],
+                        'dump_freight': ['CC_BULK'],
+                        'covered_hopper_freight': [], # explicit allowal by label instead
+                        'refrigerated_freight': ['CC_REFRIGERATED'],
+                        'express_freight': ['CC_EXPRESS','CC_ARMOURED']}
+
 # chameleon templating goes faster if a cache dir is used; this specifies which dir is cache dir
 chameleon_cache_dir = '.chameleon_cache'
 

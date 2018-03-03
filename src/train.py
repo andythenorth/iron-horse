@@ -450,7 +450,7 @@ class DumpCarConsist(CarConsist):
         self.base_id = 'dump_car'
         super().__init__(**kwargs)
         self.title = self.get_wagon_title('Dump Car')
-        self.class_refit_groups = ['hopper_freight']
+        self.class_refit_groups = ['dump_freight']
         self.label_refits_allowed = [] # no specific labels needed
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_hopper_freight']
         self.default_cargos = ['IORE', 'MNO2', 'NITR']
@@ -487,7 +487,7 @@ class FlatCarConsist(CarConsist):
         self.base_id = 'flat_car'
         super().__init__(**kwargs)
         self.title = self.get_wagon_title('Flat Car')
-        self.class_refit_groups = ['flatcar_freight']
+        self.class_refit_groups = ['flatbed_freight']
         self.label_refits_allowed = ['GOOD']
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_flatcar_freight']
         self.default_cargos = ['STEL', 'COPR', 'METL']
@@ -519,7 +519,7 @@ class HopperCarConsist(CarConsist):
         self.base_id = 'hopper_car'
         super().__init__(**kwargs)
         self.title = self.get_wagon_title('Hopper Car')
-        self.class_refit_groups = ['hopper_freight']
+        self.class_refit_groups = ['dump_freight']
         self.label_refits_allowed = [] # none needed
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_hopper_freight']
         self.default_cargos = ['COAL', 'CORE', 'PORE']
