@@ -452,7 +452,7 @@ class DumpCarConsist(CarConsist):
         self.title = self.get_wagon_title('Dump Car')
         self.class_refit_groups = ['dump_freight']
         self.label_refits_allowed = [] # no specific labels needed
-        self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_hopper_freight']
+        self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_dump_bulk']
         self.default_cargos = ['IORE', 'MNO2', 'NITR']
         self.loading_speed_multiplier = 2
         # Cargo Graphics
@@ -489,7 +489,7 @@ class FlatCarConsist(CarConsist):
         self.title = self.get_wagon_title('Flat Car')
         self.class_refit_groups = ['flatbed_freight']
         self.label_refits_allowed = ['GOOD']
-        self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_flatcar_freight']
+        self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_flatbed_freight']
         self.default_cargos = ['STEL', 'COPR', 'METL']
         # Cargo graphics
         self.visible_cargo.piece_groups = ['base']
@@ -521,7 +521,7 @@ class HopperCarConsist(CarConsist):
         self.title = self.get_wagon_title('Hopper Car')
         self.class_refit_groups = ['dump_freight']
         self.label_refits_allowed = [] # none needed
-        self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_hopper_freight']
+        self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_dump_bulk']
         self.default_cargos = ['COAL', 'CORE', 'PORE']
         self.loading_speed_multiplier = 2
         # Cargo graphics
@@ -589,7 +589,7 @@ class StakeCarConsist(CarConsist):
         self.title = self.get_wagon_title('Stake Car')
         self.class_refit_groups = []
         self.label_refits_allowed = ['WOOD', 'WDPR', 'PIPE'] # limited refits by design eh
-        self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_flatcar_freight']
+        self.label_refits_disallowed = []
         self.default_cargos = ['WOOD']
         self.loading_speed_multiplier = 2
         # Cargo graphics

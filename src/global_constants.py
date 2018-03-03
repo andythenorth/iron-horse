@@ -29,10 +29,10 @@ buy_menu_sort_order_wagons = ['metro_car',
 # this is done per vehicle type, or added to global_constants for ease of reuse and updating
 # these lists are similar but not identical across Iron Horse, Squid, Road Hog etc
 # notably, Sugar Beet and Cassava are farm cargos allowed to travel by hopper, most farm cargos cannot
-disallowed_refits_by_label = {'non_hopper_freight': ['WOOD', 'SGCN', 'FICR', 'BDMT', 'WDPR', 'GRAI', 'WHEA', 'MAIZ', 'FRUT', 'BEAN', 'CMNT'],
+disallowed_refits_by_label = {'non_dump_bulk': ['WOOD', 'SGCN', 'FICR', 'BDMT', 'WDPR', 'GRAI', 'WHEA', 'MAIZ', 'FRUT', 'BEAN', 'CMNT'],
                               'edible_liquids': ['MILK', 'WATR', 'BEER', 'FOOD', 'EOIL'],
                               'non_edible_liquids': ['RFPR', 'OIL_', 'FMSP', 'PETR', 'RUBR', 'SULP', 'ACID', 'CHLO', 'KAOL'],
-                              'non_flatcar_freight': ['FOOD', 'FISH', 'LVST', 'FRUT', 'BEER', 'MILK', 'JAVA', 'SUGR', 'NUTS', 'EOIL', 'BOOM', 'FERT'],
+                              'non_flatbed_freight': ['FOOD', 'FISH', 'LVST', 'FRUT', 'BEER', 'MILK', 'JAVA', 'SUGR', 'NUTS', 'EOIL', 'BOOM', 'FERT'],
                               'non_freight_special_cases': ['TOUR']}
 
 # occasionally label refits need to be shared across vehicle classes
