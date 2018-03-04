@@ -122,3 +122,6 @@ graphics_path = generated_files_dir + '/graphics/'
 
 # OpenTTD's max date
 max_game_date = 5000001
+
+# mailbags are < 1t, multiply capacity appropriately
+mail_multiplier = 2
