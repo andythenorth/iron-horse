@@ -1,4 +1,4 @@
-from time import time
+print("[RENDER DOCS] render_docs.py")
 
 import codecs # used for writing files - more unicode friendly than standard open() module
 
@@ -152,8 +152,6 @@ def render_docs_images():
 
 def main():
     start = time()
-    print("[RENDER DOCS] render_docs.py")
-
     # render standard docs from a list
     html_docs = ['trains', 'code_reference', 'get_started', 'translations']
     txt_docs = ['license', 'readme']

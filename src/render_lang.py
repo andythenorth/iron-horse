@@ -1,4 +1,4 @@
-from time import time
+print("[RENDER LANG] render_lang.py")
 
 import iron_horse
 import utils
@@ -32,7 +32,6 @@ hint_file.close()
 
 def main():
     start = time()
-    print("[RENDER LANG] render_lang.py")
     consists = iron_horse.get_consists_in_buy_menu_order()
 
     languages_with_generation = ('english',)

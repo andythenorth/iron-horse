@@ -1,4 +1,4 @@
-from time import time
+print("[RENDER GRAPHICS] render_graphics.py")
 
 import codecs # used for writing files - more unicode friendly than standard open() module
 
@@ -48,7 +48,6 @@ def run_pipeline(items):
 # wrapped in a main() function so this can be called explicitly, because unexpected multiprocessing fork bombs are bad
 def main():
     start = time()
-    print("[RENDER GRAPHICS] render_graphics.py")
     consists = iron_horse.get_consists_in_buy_menu_order()
 
     variants = []

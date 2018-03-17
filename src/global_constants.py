@@ -1,5 +1,3 @@
-from polar_fox import base_refits_by_class, cargo_labels, default_cargos, disallowed_refits_by_label, chameleon_cache_dir, generated_files_dir, graphics_path, mail_multiplier, max_game_date
-
 # wagon ids are generic and are composed to specific vehicle ids elsewhere
 # order is significant
 buy_menu_sort_order_wagons = ['metro_car',
@@ -53,3 +51,16 @@ spritesheet_bounding_boxes = ((60, 8, 29), (76, 26, 24), (107, 40, 16), (156, 26
 
 buy_menu_sprite_width = 36 # 36 is correct, but some spritesheets might have wrong widths due to copy-pasteo etc
 buy_menu_sprite_height = 16
+
+# shared global constants via Polar Fox library - import at end to make the this project's constants easier to work with
+# assignments are clunky - they exist to stop pyflakes tripping on 'unused' imports
+import polar_fox
+base_refits_by_class = polar_fox.base_refits_by_class
+cargo_labels = polar_fox.cargo_labels
+chameleon_cache_dir = polar_fox.chameleon_cache_dir
+default_cargos = polar_fox.default_cargos
+disallowed_refits_by_label = polar_fox.disallowed_refits_by_label
+generated_files_dir = polar_fox.generated_files_dir
+graphics_path = polar_fox.graphics_path
+mail_multiplier = polar_fox.mail_multiplier
+max_game_date = polar_fox.max_game_date

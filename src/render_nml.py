@@ -1,17 +1,15 @@
-#!/usr/bin/env python
-
-from time import time
+print("[RENDER NML] render_nml.py")
 
 import codecs # used for writing files - more unicode friendly than standard open() module
 
 import sys
 import os
 currentdir = os.curdir
+from time import time
 
 import iron_horse
 import utils
 import global_constants
-import vehicles
 
 # get args passed by makefile
 makefile_args = utils.get_makefile_args(sys)
@@ -41,7 +39,6 @@ def render_consist_nml(consist):
 
 def main():
     start = time()
-    print("[RENDER NML] render_nml.py")
     print(iron_horse.vacant_numeric_ids_formatted())
 
     generated_nml_path = os.path.join(generated_files_path, 'nml')
