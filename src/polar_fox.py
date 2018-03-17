@@ -111,6 +111,33 @@ disallowed_refits_by_label = {'non_dump_bulk': ['WOOD', 'SGCN', 'FICR', 'BDMT', 
                               'non_flatbed_freight': ['FOOD', 'FISH', 'LVST', 'FRUT', 'BEER', 'MILK', 'JAVA', 'SUGR', 'NUTS', 'EOIL', 'BOOM', 'FERT'],
                               'non_freight_special_cases': ['TOUR']}
 
+# cascading lists of default cargos, if the first cargo(s) are not available, all will be tried in order
+# avoids an issue where default cargo was weird for, e.g. some FIRS economies
+# don't conflate this with general refittability, they're different concerns ;)
+# vehicle classes can also just provide their own list locally, using this is convenient, not obligatory
+default_cargos = {'box': ['GOOD', 'VPTS', 'FOOD'],
+                  'covered_hopper': ['GRAI', 'KAOL'],
+                  'dump': ['IORE', 'MNO2', 'NITR'],
+                  'edibles_tank': ['WATR', 'MILK', 'BEER'],
+                  'flat': ['STEL', 'COPR', 'METL'],
+                  'fruit_veg': ['FRUT', 'BEAN', 'CASS', 'JAVA', 'NUTS'],
+                  'hopper': ['COAL', 'CORE', 'PORE'],
+                  'intermodal': ['GOOD', 'VPTS', 'FOOD'],
+                  'silo': ['CMNT', 'BDMT', 'RFPR', 'QLME', 'FMSP'],
+                  'stake': ['WOOD'],
+                  'mail': ['MAIL'],
+                  'metal': ['STEL', 'COPR'],
+                  'open': ['GOOD'],
+                  'pax': ['PASS'],
+                  'reefer': ['FOOD'],
+                  'supplies': ['ENSP'],
+                  'tank': ['OIL_', 'KAOL', 'RUBR'],
+
+                  }
+
+
+
+
 # chameleon templating goes faster if a cache dir is used; this specifies which dir is cache dir
 chameleon_cache_dir = '.chameleon_cache'
 

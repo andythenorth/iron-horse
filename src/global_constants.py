@@ -1,4 +1,4 @@
-from polar_fox import base_refits_by_class, cargo_labels, disallowed_refits_by_label, chameleon_cache_dir, generated_files_dir, graphics_path, mail_multiplier, max_game_date
+from polar_fox import base_refits_by_class, cargo_labels, default_cargos, disallowed_refits_by_label, chameleon_cache_dir, generated_files_dir, graphics_path, mail_multiplier, max_game_date
 
 # wagon ids are generic and are composed to specific vehicle ids elsewhere
 # order is significant
