@@ -56,7 +56,6 @@ class Consist(object):
         # automatic buy menu sprite from – sprite, or explicit buy menu sprite?
         self.auto_buy_menu_sprite = kwargs.get('auto_buy_menu_sprite', False)
         # one default cargo for the whole consist, no mixed cargo shenanigans, it fails with auto-replace
-        self.default_cargo = None
         self.default_cargos = []
         # cargo /livery graphics options
         self.visible_cargo = VisibleCargo()
