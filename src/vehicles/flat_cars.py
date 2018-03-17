@@ -4,10 +4,10 @@ from train import FlatCarConsist, FreightCar
 def main():
     #--------------- pony NG ----------------------------------------------------------------------
     consist = FlatCarConsist(roster='pony',
-                          base_numeric_id=1170,
-                          gen=1,
-                          subtype='A',
-                          track_type='NG')
+                             base_numeric_id=1170,
+                             gen=1,
+                             subtype='A',
+                             track_type='NG')
 
     consist.add_unit(type=FreightCar,
                      cargo_length=3,
@@ -18,9 +18,9 @@ def main():
 
     #--------------- pony ----------------------------------------------------------------------
     consist = FlatCarConsist(roster='pony',
-                          base_numeric_id=1140,
-                          gen=1,
-                          subtype='A')
+                             base_numeric_id=1140,
+                             gen=1,
+                             subtype='A')
 
     consist.add_unit(type=FreightCar,
                      cargo_length=3,
@@ -30,9 +30,9 @@ def main():
                               graphics_processor=consist.graphics_processors[0])
 
     consist = FlatCarConsist(roster='pony',
-                          base_numeric_id=1150,
-                          gen=2,
-                          subtype='B')
+                             base_numeric_id=1150,
+                             gen=2,
+                             subtype='B')
 
     consist.add_unit(type=FreightCar,
                      cargo_length=3,
@@ -42,9 +42,9 @@ def main():
                               graphics_processor=consist.graphics_processors[0])
 
     consist = FlatCarConsist(roster='pony',
-                          base_numeric_id=1160,
-                          gen=3,
-                          subtype='B')
+                             base_numeric_id=1160,
+                             gen=3,
+                             subtype='B')
 
     consist.add_unit(type=FreightCar,
                      cargo_length=3,
@@ -54,9 +54,9 @@ def main():
                               graphics_processor=consist.graphics_processors[0])
 
     consist = FlatCarConsist(roster='pony',
-                          base_numeric_id=2550,
-                          gen=3,
-                          subtype='C')
+                             base_numeric_id=2550,
+                             gen=3,
+                             subtype='C')
 
     consist.add_unit(type=FreightCar,
                      cargo_length=3,
@@ -66,9 +66,9 @@ def main():
                               graphics_processor=consist.graphics_processors[0])
 
     consist = FlatCarConsist(roster='pony',
-                          base_numeric_id=2540,
-                          gen=4,
-                          subtype='B')
+                             base_numeric_id=2540,
+                             gen=4,
+                             subtype='B')
 
     consist.add_unit(type=FreightCar,
                      cargo_length=3,
@@ -78,9 +78,9 @@ def main():
                               graphics_processor=consist.graphics_processors[0])
 
     consist = FlatCarConsist(roster='pony',
-                          base_numeric_id=2530,
-                          gen=4,
-                          subtype='C')
+                             base_numeric_id=2530,
+                             gen=4,
+                             subtype='C')
 
     consist.add_unit(type=FreightCar,
                      cargo_length=4,
@@ -90,9 +90,9 @@ def main():
                               graphics_processor=consist.graphics_processors[0])
 
     consist = FlatCarConsist(roster='pony',
-                          base_numeric_id=2520,
-                          gen=5,
-                          subtype='B')
+                             base_numeric_id=2520,
+                             gen=5,
+                             subtype='B')
 
     consist.add_unit(type=FreightCar,
                      cargo_length=3,
@@ -102,9 +102,9 @@ def main():
                               graphics_processor=consist.graphics_processors[0])
 
     consist = FlatCarConsist(roster='pony',
-                          base_numeric_id=2510,
-                          gen=5,
-                          subtype='C')
+                             base_numeric_id=2510,
+                             gen=5,
+                             subtype='C')
 
     consist.add_unit(type=FreightCar,
                      cargo_length=4,
@@ -117,9 +117,9 @@ def main():
 
     #--------------- llama ----------------------------------------------------------------------
     consist = FlatCarConsist(roster='llama',
-                          base_numeric_id=1180,
-                          gen=1,
-                          subtype='A')
+                             base_numeric_id=1180,
+                             gen=1,
+                             subtype='A')
 
     consist.add_unit(type=FreightCar,
                      cargo_length=3,
@@ -129,9 +129,9 @@ def main():
                               graphics_processor=consist.graphics_processors[0])
 
     consist = FlatCarConsist(roster='llama',
-                          base_numeric_id=1510,
-                          gen=2,
-                          subtype='A')
+                             base_numeric_id=1510,
+                             gen=2,
+                             subtype='A')
 
     consist.add_unit(type=FreightCar,
                      cargo_length=3,
@@ -141,10 +141,10 @@ def main():
                               graphics_processor=consist.graphics_processors[0])
 
     consist = FlatCarConsist(roster='llama',
-                          base_numeric_id=520,
-                          gen=1,
-                          subtype='A',
-                          track_type='NG')
+                             base_numeric_id=520,
+                             gen=1,
+                             subtype='A',
+                             track_type='NG')
 
     consist.add_unit(type=FreightCar,
                      cargo_length=3,
@@ -154,10 +154,10 @@ def main():
                               graphics_processor=consist.graphics_processors[0])
 
     consist = FlatCarConsist(roster='llama',
-                          base_numeric_id=1500,
-                          gen=2,
-                          subtype='A',
-                          track_type='NG')
+                             base_numeric_id=1500,
+                             gen=2,
+                             subtype='A',
+                             track_type='NG')
 
     consist.add_unit(type=FreightCar,
                      cargo_length=3,
@@ -168,9 +168,9 @@ def main():
 
     #--------------- antelope ----------------------------------------------------------------------
     consist = FlatCarConsist(roster='antelope',
-                          base_numeric_id=1640,
-                          gen=1,
-                          subtype='A')
+                             base_numeric_id=1640,
+                             gen=1,
+                             subtype='A')
 
     consist.add_unit(type=FreightCar,
                      cargo_length=3,
@@ -180,9 +180,9 @@ def main():
                               graphics_processor=consist.graphics_processors[0])
 
     consist = FlatCarConsist(roster='antelope',
-                          base_numeric_id=1650,
-                          gen=2,
-                          subtype='A')
+                             base_numeric_id=1650,
+                             gen=2,
+                             subtype='A')
 
     consist.add_unit(type=FreightCar,
                      cargo_length=3,
@@ -192,10 +192,10 @@ def main():
                               graphics_processor=consist.graphics_processors[0])
 
     consist = FlatCarConsist(roster='antelope',
-                          base_numeric_id=2110,
-                          gen=1,
-                          subtype='A',
-                          track_type='NG')
+                             base_numeric_id=2110,
+                             gen=1,
+                             subtype='A',
+                             track_type='NG')
 
     consist.add_unit(type=FreightCar,
                      cargo_length=3,
@@ -205,10 +205,10 @@ def main():
                               graphics_processor=consist.graphics_processors[0])
 
     consist = FlatCarConsist(roster='antelope',
-                          base_numeric_id=1930,
-                          gen=2,
-                          subtype='A',
-                          track_type='NG')
+                             base_numeric_id=1930,
+                             gen=2,
+                             subtype='A',
+                             track_type='NG')
 
     consist.add_unit(type=FreightCar,
                      cargo_length=3,

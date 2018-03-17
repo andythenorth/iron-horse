@@ -4,10 +4,10 @@ from train import MailCarConsist, TrainCar
 def main():
     #--------------- pony NG ----------------------------------------------------------------------
     consist = MailCarConsist(roster='pony',
-                          base_numeric_id=950,
-                          gen=1,
-                          subtype='A',
-                          track_type='NG')
+                             base_numeric_id=950,
+                             gen=1,
+                             subtype='A',
+                             track_type='NG')
 
     consist.add_unit(type=TrainCar,
                      capacity=12,
@@ -17,9 +17,9 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0)
 
     consist = MailCarConsist(roster='pony',
-                          base_numeric_id=2280,
-                          gen=1,
-                          subtype='A')
+                             base_numeric_id=2280,
+                             gen=1,
+                             subtype='A')
 
     consist.add_unit(type=TrainCar,
                      capacity=10,
@@ -28,9 +28,9 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0)
 
     consist = MailCarConsist(roster='pony',
-                          base_numeric_id=2220,
-                          gen=1,
-                          subtype='B')
+                             base_numeric_id=2220,
+                             gen=1,
+                             subtype='B')
 
     consist.add_unit(type=TrainCar,
                      capacity=12,
@@ -39,9 +39,9 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0)
 
     consist = MailCarConsist(roster='pony',
-                          base_numeric_id=2290,
-                          gen=2,
-                          subtype='A')
+                             base_numeric_id=2290,
+                             gen=2,
+                             subtype='A')
 
     consist.add_unit(type=TrainCar,
                      capacity=10,
@@ -50,9 +50,9 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0)
 
     consist = MailCarConsist(roster='pony',
-                          base_numeric_id=920,
-                          gen=2,
-                          subtype='B')
+                             base_numeric_id=920,
+                             gen=2,
+                             subtype='B')
 
     consist.add_unit(type=TrainCar,
                      capacity=12,
@@ -61,9 +61,9 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0)
 
     consist = MailCarConsist(roster='pony',
-                          base_numeric_id=2300,
-                          gen=3,
-                          subtype='B')
+                             base_numeric_id=2300,
+                             gen=3,
+                             subtype='B')
 
     consist.add_unit(type=TrainCar,
                      capacity=12,
@@ -72,9 +72,9 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0)
 
     consist = MailCarConsist(roster='pony',
-                          base_numeric_id=940,
-                          gen=3,
-                          subtype='C')
+                             base_numeric_id=940,
+                             gen=3,
+                             subtype='C')
 
     consist.add_unit(type=TrainCar,
                      capacity=15,
@@ -83,9 +83,9 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0)
 
     consist = MailCarConsist(roster='pony',
-                          base_numeric_id=3160,
-                          gen=4,
-                          subtype='B')
+                             base_numeric_id=3160,
+                             gen=4,
+                             subtype='B')
 
     consist.add_unit(type=TrainCar,
                      capacity=12,
@@ -94,9 +94,9 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0)
 
     consist = MailCarConsist(roster='pony',
-                          base_numeric_id=3170,
-                          gen=4,
-                          subtype='C')
+                             base_numeric_id=3170,
+                             gen=4,
+                             subtype='C')
 
     consist.add_unit(type=TrainCar,
                      capacity=15,
@@ -105,9 +105,9 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0)
 
     consist = MailCarConsist(roster='pony',
-                          base_numeric_id=970,
-                          gen=5,
-                          subtype='B')
+                             base_numeric_id=970,
+                             gen=5,
+                             subtype='B')
 
     consist.add_unit(type=TrainCar,
                      capacity=12,
@@ -116,9 +116,9 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0)
 
     consist = MailCarConsist(roster='pony',
-                          base_numeric_id=3140,
-                          gen=5,
-                          subtype='C')
+                             base_numeric_id=3140,
+                             gen=5,
+                             subtype='C')
 
     consist.add_unit(type=TrainCar,
                      capacity=15,
@@ -207,9 +207,9 @@ def main():
     """
     #--------------- antelope ----------------------------------------------------------------------
     consist = MailCarConsist(roster='antelope',
-                          base_numeric_id=1730,
-                          gen=1,
-                          subtype='A')
+                             base_numeric_id=1730,
+                             gen=1,
+                             subtype='A')
 
     consist.add_unit(type=TrainCar,
                      capacity=10,
@@ -218,10 +218,10 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0)
 
     consist = MailCarConsist(roster='antelope',
-                          base_numeric_id=2120,
-                          gen=1,
-                          subtype='A',
-                          track_type='NG')
+                             base_numeric_id=2120,
+                             gen=1,
+                             subtype='A',
+                             track_type='NG')
 
     consist.add_unit(type=TrainCar,
                      capacity=20,
@@ -230,10 +230,10 @@ def main():
     consist.add_model_variant(spritesheet_suffix=0)
 
     consist = MailCarConsist(roster='antelope',
-                          base_numeric_id=1950,
-                          gen=2,
-                          subtype='A',
-                          track_type='NG')
+                             base_numeric_id=1950,
+                             gen=2,
+                             subtype='A',
+                             track_type='NG')
 
     consist.add_unit(type=TrainCar,
                      capacity=30,

@@ -4,9 +4,9 @@ from train import CoveredHopperCarConsist, FreightCar
 def main():
     #--------------- pony ----------------------------------------------------------------------
     consist = CoveredHopperCarConsist(roster='pony',
-                                   base_numeric_id=1270,
-                                   gen=2,
-                                   subtype='A')
+                                      base_numeric_id=1270,
+                                      gen=2,
+                                      subtype='A')
 
     consist.add_unit(type=FreightCar,
                      vehicle_length=4)
@@ -15,9 +15,9 @@ def main():
                               graphics_processor=consist.graphics_processors[0])
 
     consist = CoveredHopperCarConsist(roster='pony',
-                                   base_numeric_id=1260,
-                                   gen=3,
-                                   subtype='A')
+                                      base_numeric_id=1260,
+                                      gen=3,
+                                      subtype='A')
 
     consist.add_unit(type=FreightCar,
                      vehicle_length=4)
@@ -26,9 +26,9 @@ def main():
                               graphics_processor=consist.graphics_processors[0])
 
     consist = CoveredHopperCarConsist(roster='pony',
-                                   base_numeric_id=2940,
-                                   gen=4,
-                                   subtype='A')
+                                      base_numeric_id=2940,
+                                      gen=4,
+                                      subtype='A')
 
     consist.add_unit(type=FreightCar,
                      vehicle_length=4)
@@ -37,9 +37,9 @@ def main():
                               graphics_processor=consist.graphics_processors[0])
 
     consist = CoveredHopperCarConsist(roster='pony',
-                                   base_numeric_id=1230,
-                                   gen=4,
-                                   subtype='B')
+                                      base_numeric_id=1230,
+                                      gen=4,
+                                      subtype='B')
 
     consist.add_unit(type=FreightCar,
                      vehicle_length=6)
@@ -48,9 +48,9 @@ def main():
                               graphics_processor=consist.graphics_processors[0])
 
     consist = CoveredHopperCarConsist(roster='pony',
-                                   base_numeric_id=1240,
-                                   gen=5,
-                                   subtype='B')
+                                      base_numeric_id=1240,
+                                      gen=5,
+                                      subtype='B')
 
     consist.add_unit(type=FreightCar,
                      vehicle_length=6)
@@ -59,9 +59,9 @@ def main():
                               graphics_processor=consist.graphics_processors[0])
 
     consist = CoveredHopperCarConsist(roster='pony',
-                                   base_numeric_id=2700,
-                                   gen=5,
-                                   subtype='C')
+                                      base_numeric_id=2700,
+                                      gen=5,
+                                      subtype='C')
 
     consist.add_unit(type=FreightCar,
                      vehicle_length=8)
@@ -70,9 +70,9 @@ def main():
                               graphics_processor=consist.graphics_processors[0])
 
     consist = CoveredHopperCarConsist(roster='pony',
-                                   base_numeric_id=3040,
-                                   gen=6,
-                                   subtype='B')
+                                      base_numeric_id=3040,
+                                      gen=6,
+                                      subtype='B')
 
     consist.add_unit(type=FreightCar,
                      vehicle_length=6)
@@ -81,9 +81,9 @@ def main():
                               graphics_processor=consist.graphics_processors[0])
 
     consist = CoveredHopperCarConsist(roster='pony',
-                                   base_numeric_id=2910,
-                                   gen=6,
-                                   subtype='C')
+                                      base_numeric_id=2910,
+                                      gen=6,
+                                      subtype='C')
 
     consist.add_unit(type=FreightCar,
                      vehicle_length=8)

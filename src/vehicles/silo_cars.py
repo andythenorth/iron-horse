@@ -4,9 +4,9 @@ from train import SiloCarConsist, FreightCar
 def main():
     #--------------- pony ----------------------------------------------------------------------
     consist = SiloCarConsist(roster='pony',
-                          base_numeric_id=2950,
-                          gen=4,
-                          subtype='A')
+                             base_numeric_id=2950,
+                             gen=4,
+                             subtype='A')
 
     consist.add_unit(type=FreightCar,
                      vehicle_length=4)
@@ -15,9 +15,9 @@ def main():
                               graphics_processor=consist.graphics_processors[0])
 
     consist = SiloCarConsist(roster='pony',
-                          base_numeric_id=2980,
-                          gen=5,
-                          subtype='B')
+                             base_numeric_id=2980,
+                             gen=5,
+                             subtype='B')
 
     consist.add_unit(type=FreightCar,
                      vehicle_length=6)
@@ -26,9 +26,9 @@ def main():
                               graphics_processor=consist.graphics_processors[0])
 
     consist = SiloCarConsist(roster='pony',
-                          base_numeric_id=2960,
-                          gen=5,
-                          subtype='C')
+                             base_numeric_id=2960,
+                             gen=5,
+                             subtype='C')
 
     consist.add_unit(type=FreightCar,
                      vehicle_length=8)
