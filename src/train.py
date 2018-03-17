@@ -705,7 +705,7 @@ class ReeferCarConsist(CarConsist):
         self.class_refit_groups = ['refrigerated_freight']
         self.label_refits_allowed = [] # no specific labels needed
         self.label_refits_disallowed = []
-        self.default_cargo = 'FOOD'
+        self.default_cargos = ['FOOD']
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
         self.capacity_cost_factor = 1.5
         self.run_cost_divisor = 6
