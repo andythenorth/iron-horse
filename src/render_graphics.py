@@ -39,10 +39,10 @@ hint_file.close()
 def run_pipeline(items):
     variant = items[0]
     consist = items[1]
-    if variant.graphics_processor is None:
+    if consist.gestalt_graphics.pipeline is None:
         shutil.copy(os.path.join(graphics_input, consist.roster_id, variant.get_spritesheet_name(consist)), graphics_output_path)
     else:
-        result = variant.graphics_processor.pipeline.render(variant, consist, global_constants)
+        result = consist.gestalt_graphics.pipeline.render(variant, consist, global_constants)
         return result
 
 # wrapped in a main() function so this can be called explicitly, because unexpected multiprocessing fork bombs are bad

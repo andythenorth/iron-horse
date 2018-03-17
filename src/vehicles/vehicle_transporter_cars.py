@@ -14,8 +14,4 @@ def main():
                      capacity=30,
                      vehicle_length=7)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
-
-    consist.add_model_variant(spritesheet_suffix=1,
-                              graphics_processor=consist.graphics_processors[1])
+    consist.add_model_variant(spritesheet_suffix=0)

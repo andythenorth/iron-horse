@@ -13,8 +13,7 @@ def main():
                      cargo_length=3,
                      vehicle_length=3)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     #--------------- pony ----------------------------------------------------------------------
     consist = FlatCarConsist(roster='pony',
@@ -26,8 +25,7 @@ def main():
                      cargo_length=3,
                      vehicle_length=4)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = FlatCarConsist(roster='pony',
                              base_numeric_id=1150,
@@ -38,8 +36,7 @@ def main():
                      cargo_length=3,
                      vehicle_length=6)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = FlatCarConsist(roster='pony',
                              base_numeric_id=1160,
@@ -50,8 +47,7 @@ def main():
                      cargo_length=3,
                      vehicle_length=6)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = FlatCarConsist(roster='pony',
                              base_numeric_id=2550,
@@ -62,8 +58,7 @@ def main():
                      cargo_length=3,
                      vehicle_length=8)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = FlatCarConsist(roster='pony',
                              base_numeric_id=2540,
@@ -74,8 +69,7 @@ def main():
                      cargo_length=3,
                      vehicle_length=6)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = FlatCarConsist(roster='pony',
                              base_numeric_id=2530,
@@ -86,8 +80,7 @@ def main():
                      cargo_length=4,
                      vehicle_length=8)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = FlatCarConsist(roster='pony',
                              base_numeric_id=2520,
@@ -98,8 +91,7 @@ def main():
                      cargo_length=3,
                      vehicle_length=6)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = FlatCarConsist(roster='pony',
                              base_numeric_id=2510,
@@ -110,8 +102,7 @@ def main():
                      cargo_length=4,
                      vehicle_length=8)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     # no gen 6 flat cars, cap to gen 5 in Pony
 
@@ -125,8 +116,7 @@ def main():
                      cargo_length=3,
                      vehicle_length=5)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = FlatCarConsist(roster='llama',
                              base_numeric_id=1510,
@@ -137,8 +127,7 @@ def main():
                      cargo_length=3,
                      vehicle_length=5)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = FlatCarConsist(roster='llama',
                              base_numeric_id=520,
@@ -150,8 +139,7 @@ def main():
                      cargo_length=3,
                      vehicle_length=5)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = FlatCarConsist(roster='llama',
                              base_numeric_id=1500,
@@ -163,8 +151,7 @@ def main():
                      cargo_length=3,
                      vehicle_length=5)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     #--------------- antelope ----------------------------------------------------------------------
     consist = FlatCarConsist(roster='antelope',
@@ -176,8 +163,7 @@ def main():
                      cargo_length=3,
                      vehicle_length=8)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = FlatCarConsist(roster='antelope',
                              base_numeric_id=1650,
@@ -188,8 +174,7 @@ def main():
                      cargo_length=3,
                      vehicle_length=8)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = FlatCarConsist(roster='antelope',
                              base_numeric_id=2110,
@@ -201,8 +186,7 @@ def main():
                      cargo_length=3,
                      vehicle_length=8)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = FlatCarConsist(roster='antelope',
                              base_numeric_id=1930,
@@ -214,8 +198,4 @@ def main():
                      cargo_length=3,
                      vehicle_length=8)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
-
-    consist.add_model_variant(spritesheet_suffix=1,
-                              graphics_processor=consist.graphics_processors[1])
+    consist.add_model_variant(spritesheet_suffix=0)

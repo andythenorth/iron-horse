@@ -13,8 +13,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=4)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = ReeferCarConsist(roster='pony',
                                base_numeric_id=720,
@@ -24,8 +23,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=4)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = ReeferCarConsist(roster='pony',
                                base_numeric_id=2560,
@@ -35,8 +33,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=4)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = ReeferCarConsist(roster='pony',
                                base_numeric_id=2590,
@@ -46,8 +43,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=6)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = ReeferCarConsist(roster='pony',
                                base_numeric_id=2570,
@@ -57,8 +53,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=6)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = ReeferCarConsist(roster='pony',
                                base_numeric_id=2580,
@@ -68,8 +63,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=8)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     #--------------- llama ----------------------------------------------------------------------
     consist = ReeferCarConsist(roster='llama',
@@ -81,8 +75,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=6)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     # no gen 2 reefers - straight to gen 3
     consist = ReeferCarConsist(roster='llama',
@@ -94,8 +87,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=6)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = ReeferCarConsist(roster='llama',
                                base_numeric_id=1410,
@@ -107,8 +99,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=6)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     # no gen 2 reefers - straight to gen 3
     consist = ReeferCarConsist(roster='llama',
@@ -121,8 +112,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=6)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     #--------------- antelope ----------------------------------------------------------------------
     consist = ReeferCarConsist(roster='antelope',
@@ -134,8 +124,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=8)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = ReeferCarConsist(roster='antelope',
                                base_numeric_id=1900,
@@ -147,8 +136,4 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=6)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
-
-    consist.add_model_variant(spritesheet_suffix=1,
-                              graphics_processor=consist.graphics_processors[1])
+    consist.add_model_variant(spritesheet_suffix=0)

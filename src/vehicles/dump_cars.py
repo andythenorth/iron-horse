@@ -11,8 +11,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=4)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = DumpCarConsist(roster='pony',
                              base_numeric_id=2360,
@@ -22,8 +21,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=6)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = DumpCarConsist(roster='pony',
                              base_numeric_id=2370,
@@ -33,8 +31,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=4)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = DumpCarConsist(roster='pony',
                              base_numeric_id=2380,
@@ -44,8 +41,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=6)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = DumpCarConsist(roster='pony',
                              base_numeric_id=1340,
@@ -55,8 +51,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=4)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = DumpCarConsist(roster='pony',
                              base_numeric_id=1810,
@@ -66,8 +61,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=6)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = DumpCarConsist(roster='pony',
                              base_numeric_id=2400,
@@ -77,8 +71,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=6)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = DumpCarConsist(roster='pony',
                              base_numeric_id=2390,
@@ -88,11 +81,8 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=8)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
-    consist.add_model_variant(spritesheet_suffix=1,
-                              graphics_processor=consist.graphics_processors[1])
     #--------------- llama ----------------------------------------------------------------------
 
     #--------------- antelope ----------------------------------------------------------------------

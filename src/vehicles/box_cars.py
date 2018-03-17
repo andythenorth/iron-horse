@@ -12,11 +12,8 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=4)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
-    consist.add_model_variant(spritesheet_suffix=1,
-                              graphics_processor=consist.graphics_processors[1])
     #--------------- pony ----------------------------------------------------------------------
 
     # only type A for gen 1
@@ -29,8 +26,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=4)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     # no new type A for gen 2, gen 1 type A continues
 
@@ -42,8 +38,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=6)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = BoxCarConsist(roster='pony',
                             base_numeric_id=560,
@@ -53,8 +48,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=4)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = BoxCarConsist(roster='pony',
                             base_numeric_id=2340,
@@ -64,8 +58,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=6)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = BoxCarConsist(roster='pony',
                             base_numeric_id=570,
@@ -75,8 +68,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=4)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = BoxCarConsist(roster='pony',
                             base_numeric_id=2500,
@@ -86,8 +78,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=6)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = BoxCarConsist(roster='pony',
                             base_numeric_id=2480,
@@ -97,8 +88,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=6)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = BoxCarConsist(roster='pony',
                             base_numeric_id=2490,
@@ -108,8 +98,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=8)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     # no gen 6 box cars, cap to gen 5 in Pony
 
@@ -122,8 +111,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=5)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = BoxCarConsist(roster='llama',
                             base_numeric_id=600,
@@ -133,8 +121,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=6)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = BoxCarConsist(roster='llama',
                             base_numeric_id=610,
@@ -144,8 +131,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=7)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = BoxCarConsist(roster='llama',
                             base_numeric_id=620,
@@ -156,8 +142,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=6)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = BoxCarConsist(roster='llama',
                             base_numeric_id=1310,
@@ -168,8 +153,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=6)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     #--------------- antelope ----------------------------------------------------------------------
     consist = BoxCarConsist(roster='antelope',
@@ -180,8 +164,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=6)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = BoxCarConsist(roster='antelope',
                             base_numeric_id=1740,
@@ -191,8 +174,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=8)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = BoxCarConsist(roster='antelope',
                             base_numeric_id=2100,
@@ -203,8 +185,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=5)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = BoxCarConsist(roster='antelope',
                             base_numeric_id=1850,
@@ -215,8 +196,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=6)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = BoxCarConsist(roster='antelope',
                             base_numeric_id=1860,
@@ -227,8 +207,4 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=8)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
-
-    consist.add_model_variant(spritesheet_suffix=1,
-                              graphics_processor=consist.graphics_processors[1])
+    consist.add_model_variant(spritesheet_suffix=0)

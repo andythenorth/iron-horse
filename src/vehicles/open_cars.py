@@ -13,11 +13,8 @@ def main():
                      cargo_length=3,
                      vehicle_length=3)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
-    consist.add_model_variant(spritesheet_suffix=1,
-                              graphics_processor=consist.graphics_processors[1])
     #--------------- pony ----------------------------------------------------------------------
 
     # only type A for gen 1
@@ -31,8 +28,7 @@ def main():
                      cargo_length=3,
                      vehicle_length=4)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     # no new type A for gen 2, gen 1 type A continues
 
@@ -45,8 +41,7 @@ def main():
                      cargo_length=3,
                      vehicle_length=6)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = OpenCarConsist(roster='pony',
                              base_numeric_id=840,
@@ -57,8 +52,7 @@ def main():
                      cargo_length=3,
                      vehicle_length=4)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = OpenCarConsist(roster='pony',
                              base_numeric_id=2440,
@@ -69,8 +63,7 @@ def main():
                      cargo_length=3,
                      vehicle_length=6)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = OpenCarConsist(roster='pony',
                              base_numeric_id=1450,
@@ -81,8 +74,7 @@ def main():
                      cargo_length=3,
                      vehicle_length=4)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = OpenCarConsist(roster='pony',
                              base_numeric_id=2450,
@@ -93,8 +85,7 @@ def main():
                      cargo_length=3,
                      vehicle_length=6)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = OpenCarConsist(roster='pony',
                              base_numeric_id=2460,
@@ -105,8 +96,7 @@ def main():
                      cargo_length=3,
                      vehicle_length=6)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = OpenCarConsist(roster='pony',
                              base_numeric_id=2470,
@@ -117,8 +107,7 @@ def main():
                      cargo_length=3,
                      vehicle_length=8)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     # no gen 6 open cars, cap to gen 5 in Pony
 
@@ -132,8 +121,7 @@ def main():
                      cargo_length=3,
                      vehicle_length=5)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = OpenCarConsist(roster='llama',
                              base_numeric_id=1330,
@@ -144,8 +132,7 @@ def main():
                      cargo_length=3,
                      vehicle_length=5)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = OpenCarConsist(roster='llama',
                              base_numeric_id=870,
@@ -157,8 +144,7 @@ def main():
                      cargo_length=3,
                      vehicle_length=5)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = OpenCarConsist(roster='llama',
                              base_numeric_id=1320,
@@ -170,8 +156,7 @@ def main():
                      cargo_length=3,
                      vehicle_length=5)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     #--------------- antelope ----------------------------------------------------------------------
     consist = OpenCarConsist(roster='antelope',
@@ -183,8 +168,7 @@ def main():
                      cargo_length=3,
                      vehicle_length=5)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = OpenCarConsist(roster='antelope',
                              base_numeric_id=1770,
@@ -195,8 +179,7 @@ def main():
                      cargo_length=3,
                      vehicle_length=8)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = OpenCarConsist(roster='antelope',
                              base_numeric_id=2090,
@@ -208,8 +191,7 @@ def main():
                      cargo_length=3,
                      vehicle_length=5)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = OpenCarConsist(roster='antelope',
                              base_numeric_id=1830,
@@ -221,8 +203,7 @@ def main():
                      cargo_length=3,
                      vehicle_length=6)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
+    consist.add_model_variant(spritesheet_suffix=0)
 
     consist = OpenCarConsist(roster='antelope',
                              base_numeric_id=1820,
@@ -234,8 +215,4 @@ def main():
                      cargo_length=3,
                      vehicle_length=6)
 
-    consist.add_model_variant(spritesheet_suffix=0,
-                              graphics_processor=consist.graphics_processors[0])
-
-    consist.add_model_variant(spritesheet_suffix=1,
-                              graphics_processor=consist.graphics_processors[1])
+    consist.add_model_variant(spritesheet_suffix=0)

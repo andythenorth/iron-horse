@@ -15,8 +15,8 @@ templates = PageTemplateLoader(os.path.join(currentdir, 'src', 'templates'))
 import global_constants # expose all constants for easy passing to templates
 import utils
 
-from graphics_processor.visible_cargo import VisibleCargo, VisibleCargoCustom, VisibleCargoLiveryOnly
-import graphics_processor.utils as graphics_utils
+from graphics_processor.gestalt_graphics import GestaltGraphics, GestaltGraphicsVisibleCargo, GestaltGraphicsLiveryOnly, GestaltGraphicsCustom
+import graphics_processor.graphics_constants as graphics_constants
 
 from rosters import registered_rosters
 from vehicles import numeric_id_defender
@@ -57,11 +57,14 @@ class Consist(object):
         self.auto_buy_menu_sprite = kwargs.get('auto_buy_menu_sprite', False)
         # one default cargo for the whole consist, no mixed cargo shenanigans, it fails with auto-replace
         self.default_cargos = []
-        # cargo /livery graphics options
-        self.visible_cargo = VisibleCargo()
+        # create a structure for cargo /livery graphics options
+        self.gestalt_graphics = GestaltGraphics()
+        # option to swap company colours (uses remap sprites in-game, rather than pixa)
         self.random_company_colour_swap = False # over-ride in subclasses as needed
         # roster is set when the vehicle is registered to a roster, only one roster per vehicle
         self.roster_id = None
+        # !! temp whilst refactoring GestaltGraphics
+        self.graphics_processors = ['foo', 'bar']
          # optionally suppress nmlc warnings about animated pixels for consists where they're intentional
         self.suppress_animated_pixel_warnings = kwargs.get('suppress_animated_pixel_warnings', False)
 
@@ -138,16 +141,10 @@ class Consist(object):
             if unit.always_use_same_spriterow:
                 unit_rows.append(('always_use_same_spriterow', 1))
             else:
-                # assumes visible_cargo is used to handle any other rows, no other cases at time of writing, could be changed eh?
-                unit_rows.extend(self.visible_cargo.get_output_row_counts_by_type())
+                # assumes gestalt_graphics is used to handle any other rows, no other cases at time of writing, could be changed eh?
+                unit_rows.extend(self.gestalt_graphics.get_output_row_counts_by_type())
             result.append(unit_rows)
         return result
-
-    @property
-    def graphics_processors(self):
-        # wrapper to get the graphics processors
-        template = self.id + '_template.png'
-        return graphics_utils.get_composited_cargo_processors(template = template)
 
     @property
     def buy_cost(self):
@@ -454,8 +451,8 @@ class DumpCarConsist(CarConsist):
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_dump_bulk']
         self.default_cargos = global_constants.default_cargos['dump']
         self.loading_speed_multiplier = 2
-        # Cargo Graphics
-        self.visible_cargo.bulk = True
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsVisibleCargo(bulk=True)
 
 
 class EdiblesTankCarConsist(CarConsist):
@@ -490,8 +487,9 @@ class FlatCarConsist(CarConsist):
         self.label_refits_allowed = ['GOOD']
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_flatbed_freight']
         self.default_cargos = global_constants.default_cargos['flat']
-        # Cargo graphics
-        self.visible_cargo.piece_groups = ['base']
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsVisibleCargo(piece=True)
+        print('Flatcar graphics not handling previous base/pseudo-piece split currently')
 
 
 class FruitVegCarConsist(CarConsist):
@@ -523,9 +521,9 @@ class HopperCarConsist(CarConsist):
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_dump_bulk']
         self.default_cargos = global_constants.default_cargos['hopper']
         self.loading_speed_multiplier = 2
-        # Cargo graphics
-        self.visible_cargo.bulk = True
         self.capacity_cost_factor = 1.5
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsVisibleCargo(bulk=True)
 
 
 class IntermodalCarConsist(CarConsist):
@@ -573,9 +571,9 @@ class SiloCarConsist(CarConsist):
         self.label_refits_disallowed = []
         self.default_cargos = global_constants.default_cargos['silo']
         self.loading_speed_multiplier = 2
-        self.visible_cargo = VisibleCargoLiveryOnly()
-        self.visible_cargo.tanker = True
         self.capacity_cost_factor = 1.5
+        # Grpahics configuration
+        self.gestalt_graphics = GestaltGraphicsLiveryOnly(recolour_maps=graphics_constants.silo_livery_recolour_maps)
 
 
 class StakeCarConsist(CarConsist):
@@ -591,10 +589,10 @@ class StakeCarConsist(CarConsist):
         self.label_refits_disallowed = []
         self.default_cargos = global_constants.default_cargos['stake']
         self.loading_speed_multiplier = 2
-        # Cargo graphics
-        self.visible_cargo = VisibleCargoCustom({'WOOD': [0]},
-                                                'vehicle_with_visible_cargo.pynml',
-                                                generic_rows = [0])
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsCustom({'WOOD': [0]},
+                                                       'vehicle_with_visible_cargo.pynml',
+                                                       generic_rows = [0])
 
 
 class MailCarConsist(CarConsist):
@@ -646,9 +644,12 @@ class OpenCarConsist(CarConsist):
         self.label_refits_allowed = [] # no specific labels needed
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_freight_special_cases']
         self.default_cargos = global_constants.default_cargos['open']
-        # Cargo Graphics
-        self.visible_cargo.bulk = True
-        self.visible_cargo.piece_groups = ['base', 'pseudo_bulk']
+        # Graphics configuration
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsVisibleCargo(bulk=True,
+                                                            piece=True)
+        print('Open car graphics not handling previous base/pseudo-piece split currently')
+        #self.gestalt_graphics.piece_groups = ['base', 'pseudo_bulk']
 
 
 class PassengerCarConsistBase(CarConsist):
@@ -740,9 +741,10 @@ class TankCarConsist(CarConsist):
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['edible_liquids']
         self.default_cargos = global_constants.default_cargos['tank']
         self.loading_speed_multiplier = 3
-        self.visible_cargo = VisibleCargoLiveryOnly()
-        self.visible_cargo.tanker = True
+        self.gestalt_graphics.tanker = True
         self.capacity_cost_factor = 1.5
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsLiveryOnly(recolour_maps=graphics_constants.tanker_livery_recolour_maps)
 
 
 class VehicleTransporterCarConsist(CarConsist):
@@ -890,8 +892,8 @@ class Train(object):
     @property
     def vehicle_nml_template(self):
         if not self.always_use_same_spriterow:
-            if self.consist.visible_cargo.nml_template:
-                return self.consist.visible_cargo.nml_template
+            if self.consist.gestalt_graphics.nml_template:
+                return self.consist.gestalt_graphics.nml_template
         # default case
         return 'vehicle_default.pynml'
 
