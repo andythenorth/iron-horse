@@ -1,7 +1,7 @@
 // -- smoke etc -- //
 <!--! ridiculously complicated due to support for railtype changes AND randomly reversed variants AND user-flipped vehicles -->
 <tal:model_variants repeat="variant_num python:range(consist.get_num_spritesets())">
-    <tal:flipped_or_not repeat="flipped [('', 1), ('_flipped', -1)]">
+    <tal:flipped_or_not repeat="flipped [('', 1 if variant_num == 1 else 1), ('_flipped', 1 if variant_num == 1 else 1)]">
         switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_visual_effect_and_powered_by_variant${flipped[0]}_${variant_num}, current_railtype) {
             <tal:only_if_overrides_exist condition="consist.visual_effect_override_by_railtype is not None">
                 <tal:railtype_specific_effects repeat="railtype consist.visual_effect_override_by_railtype.keys()">
