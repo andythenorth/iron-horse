@@ -138,7 +138,7 @@ def render_docs_images():
     # for development, just run render_graphics manually before running render_docs
     vehicle_graphics_src = os.path.join(currentdir, 'generated', 'graphics')
     for consist in consists:
-        vehicle_spritesheet = Image.open(os.path.join(vehicle_graphics_src, consist.id + '_0.png'))
+        vehicle_spritesheet = Image.open(os.path.join(vehicle_graphics_src, consist.id + '.png'))
         # !! currently assumes buy menu sprite in 7th column, this won't always be valid assumption, and needs to be detected in the vehicle (which knows)
         processed_vehicle_image = vehicle_spritesheet.crop(box=(consist.buy_menu_x_loc,
                                                                 10,

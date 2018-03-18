@@ -1,10 +1,10 @@
 <!--! for random variants using different realsprites -->
 
 <!--! ridiculous compile micro-optimisation - only render this switch if needed -->
-<tal:random_variants condition="len(consist.model_variants) > 1">
+<tal:random_variants condition="consist.get_num_spritesets() > 1">
     random_switch (FEAT_TRAINS, ${vehicle.location_of_random_bits_for_model_variant}, ${vehicle.id}_switch_graphics) {
-        <tal:random_graphics_variations repeat="variant consist.model_variants">
-            1: return ${vehicle.id}_switch_graphics_${variant.spritesheet_suffix};
+        <tal:random_graphics_variations repeat="variation_num python:range(consist.get_num_spritesets())">
+            1: return ${vehicle.id}_switch_graphics_${variation_num};
         </tal:random_graphics_variations>
     }
 </tal:random_variants>

@@ -43,6 +43,8 @@ class Consist(object):
         self.power_by_railtype = kwargs.get('power_by_railtype', None)
         self.visual_effect_override_by_railtype = kwargs.get('visual_effect_override_by_railtype', None)
         self.dual_headed = 1 if kwargs.get('dual_headed', False) else 0
+        # reversible means (1) randomised reversing of sprites when vehicle is built (2) player can also flip vehicle
+        self.reversible = kwargs.get('reversible', False)
         # arbitrary adjustments of points that can be applied to adjust buy cost and running cost, over-ride in consist as needed
         # values can be -ve or +ve to dibble specific vehicles (but total calculated points cannot exceed 255)
         self.type_base_buy_cost_points = kwargs.get('type_base_buy_cost_points', 15)
@@ -103,8 +105,11 @@ class Consist(object):
         return numeric_id
 
     def get_num_spritesets(self):
-        # historical reasons, this used to be more complex, and is now very simple; possibly now an abstraction too far?
-        return len(self.model_variants)
+        # bit crude eh?  Append for variations like reversible (the only variation as of March 2018)
+        count = 1
+        if self.reversible:
+            count = count+1
+        return count
 
     def get_name_substr(self):
         # relies on name being in format "Foo [Bar]" for Name [Type Suffix]
@@ -768,7 +773,7 @@ class ModelVariant(object):
         self.reversed = reversed
 
     def get_spritesheet_name(self, consist):
-        return consist.id + '_' + str(self.spritesheet_suffix) + '.png'
+        return consist.id + '.png'
 
 
 class Train(object):
@@ -853,7 +858,9 @@ class Train(object):
 
     @property
     def special_flags(self):
-        special_flags = ['TRAIN_FLAG_2CC', 'TRAIN_FLAG_FLIP']
+        special_flags = ['TRAIN_FLAG_2CC']
+        if self.consist.reversible:
+            special_flags.append('TRAIN_FLAG_FLIP')
         if self.autorefit:
             special_flags.append('TRAIN_FLAG_AUTOREFIT')
         if self.tilt_bonus:
@@ -912,28 +919,29 @@ class Train(object):
         # vehicles can also over-ride this on init (stored on each model_variant as _visual_effect_offset)
         return 0
 
-    def get_visual_effect_offset(self, variant):
+    def get_visual_effect_offset(self, variant_num):
         # probably-too-magical handling of visual effect offsets
         result = self._visual_effect_offset
         if result is None:
             result = self.visual_effect_offset
-        if variant.reversed:
+        if variant_num == 1:
+            # variant 1 is for (randomly) reversed sprites, so flip the offset location
             result = result * -1
         return result
 
     def get_nml_for_visual_effect_and_powered_cb(self):
         # ridiculous compile micro-optimisation, some random switches will be dropped if only 1 model variant
-        if len(self.consist.model_variants) > 1:
+        if self.consist.get_num_spritesets() > 1:
             return self.id + "_switch_visual_effect_and_powered_variants"
         else:
-            return self.id + "_switch_visual_effect_and_powered_by_variant_" + str(self.consist.model_variants[0].spritesheet_suffix)
+            return self.id + "_switch_visual_effect_and_powered_by_variant_0"
 
     def get_nml_for_graphics_switch(self):
         # ridiculous compile micro-optimisation, some random switches will be dropped if only 1 model variant
-        if len(self.consist.model_variants) > 1:
+        if self.consist.get_num_spritesets() > 1:
             return self.id + "_switch_graphics"
         else:
-            return self.id + "_switch_graphics_" + str(self.consist.model_variants[0].spritesheet_suffix)
+            return self.id + "_switch_graphics_0"
 
     def get_nml_expression_for_cargo_variant_random_switch(self, variation_num, cargo_id=None):
         # having a method to calculate the nml for this is overkill

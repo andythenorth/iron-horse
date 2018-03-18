@@ -8,6 +8,7 @@ consist = EngineConsist(id='express_tank',
                         speed=95,
                         type_base_buy_cost_points=-2,  # dibble buy cost for game balance
                         type_base_running_cost_points=-6,  # dibble running costs for game balance
+                        reversible=True,
                         gen=3)
 
 consist.add_unit(type=SteamEngineUnit,
@@ -16,6 +17,3 @@ consist.add_unit(type=SteamEngineUnit,
                  spriterow_num=0)
 
 consist.add_model_variant(spritesheet_suffix=0)
-
-consist.add_model_variant(spritesheet_suffix=1,
-                          reversed=True)
