@@ -66,8 +66,8 @@ class Consist(object):
          # optionally suppress nmlc warnings about animated pixels for consists where they're intentional
         self.suppress_animated_pixel_warnings = kwargs.get('suppress_animated_pixel_warnings', False)
 
-    def add_model_variant(self, spritesheet_suffix, graphics_processor=None, visual_effect_offset=None):
-        self.model_variants.append(ModelVariant(spritesheet_suffix, graphics_processor, visual_effect_offset))
+    def add_model_variant(self, spritesheet_suffix, graphics_processor=None, visual_effect_offset=None, reversed=False):
+        self.model_variants.append(ModelVariant(spritesheet_suffix, graphics_processor, visual_effect_offset, reversed))
 
     def add_unit(self, type, repeat=1, **kwargs):
         vehicle = type(consist=self, **kwargs)
@@ -763,10 +763,11 @@ class VehicleTransporterCarConsist(CarConsist):
 class ModelVariant(object):
     # simple class to hold model variants (randomised graphics)
     # must be a minimum of one variant per train
-    def __init__(self, spritesheet_suffix, graphics_processor, visual_effect_offset):
+    def __init__(self, spritesheet_suffix, graphics_processor, visual_effect_offset, reversed):
         self.spritesheet_suffix = spritesheet_suffix # use digits for these - to match spritesheet filenames
         self.graphics_processor = graphics_processor
-        self.visual_effect_offset = visual_effect_offset # used to move effects around when flipping vehicle - might be a better way?
+        self.visual_effect_offset = visual_effect_offset # used to position effects reliably if auto-positioning doesn't work
+        self.reversed = reversed
 
     def get_spritesheet_name(self, consist):
         return consist.id + '_' + str(self.spritesheet_suffix) + '.png'
@@ -908,18 +909,17 @@ class Train(object):
             return False
 
     def get_visual_effect_offset(self, variant):
-        # no sign here of bonkers complexity just to flip smoke on flipped engines
-        if variant.visual_effect_offset is None:
+        # too-magical handling of visual effect offsets
+        result = variant.visual_effect_offset
+        if result is None:
             if self.default_visual_effect_offset == 'FRONT':
-                return int(math.floor(-0.5 * self.vehicle_length))
+                result = int(math.floor(-0.5 * self.vehicle_length))
             else:
-                return self.default_visual_effect_offset
-        else:
-            if variant.visual_effect_offset == 'AUTOFLIP':
-                print("get_visual_effect_offset() 'AUTOFLIP' detection is silly, and needs refactored")
-                return int(math.floor(0.5 * (self.vehicle_length - self.vehicle_length))) # !! this is legacy and will now result in 0 always
-            else:
-                return variant.visual_effect_offset
+                result = self.default_visual_effect_offset
+        if variant.reversed:
+            result = result * -1
+        print(self.id, result)
+        return result
 
     def get_nml_for_visual_effect_and_powered_cb(self):
         # ridiculous compile micro-optimisation, some random switches will be dropped if only 1 model variant

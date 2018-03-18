@@ -18,4 +18,4 @@ consist.add_unit(type=SteamEngineUnit,
 consist.add_model_variant(spritesheet_suffix=0)
 
 consist.add_model_variant(spritesheet_suffix=1,
-                          visual_effect_offset='AUTOFLIP')
+                          reversed=True)
