@@ -924,7 +924,7 @@ class Train(object):
     def get_nml_for_visual_effect_and_powered_cb(self):
         # ridiculous compile micro-optimisation, some random switches will be dropped if only 1 model variant
         if len(self.consist.model_variants) > 1:
-            return self.id + "_switch_visual_effect_and_powered"
+            return self.id + "_switch_visual_effect_and_powered_variants"
         else:
             return self.id + "_switch_visual_effect_and_powered_by_variant_" + str(self.consist.model_variants[0].spritesheet_suffix)
 
