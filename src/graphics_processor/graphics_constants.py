@@ -17,8 +17,6 @@ spritesheet_top_margin = 10
 # assumes auto-buy menu sprite (from 7th column), not explicit buy menu
 spritesheet_width = 316
 
-vehicles_input_dir = 'vehicles'
-
 # --- Cargo Maps ---- #
 # label order matters, so tuples are used not dicts
 # could probably have used orderedict or named tuple, but...blah
