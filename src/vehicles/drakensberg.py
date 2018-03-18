@@ -20,7 +20,8 @@ consist.add_unit(type=SteamEngineTenderUnit,
 consist.add_unit(type=SteamEngineUnit,
                  weight=80,
                  vehicle_length=6,
-                 spriterow_num=1)
+                 spriterow_num=1,
+                 visual_effect_offset=-3)
 
 consist.add_unit(type=SteamEngineTenderUnit,
                  weight=65,
@@ -32,5 +33,4 @@ consist.add_unit(type=SteamEngineTenderUnit,
                  vehicle_length=6,
                  spriterow_num=3)
 
-consist.add_model_variant(visual_effect_offset=-3,
-                          spritesheet_suffix=0)
+consist.add_model_variant(spritesheet_suffix=0)

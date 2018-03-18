@@ -66,8 +66,8 @@ class Consist(object):
          # optionally suppress nmlc warnings about animated pixels for consists where they're intentional
         self.suppress_animated_pixel_warnings = kwargs.get('suppress_animated_pixel_warnings', False)
 
-    def add_model_variant(self, spritesheet_suffix, visual_effect_offset=None, reversed=False):
-        self.model_variants.append(ModelVariant(spritesheet_suffix, visual_effect_offset, reversed))
+    def add_model_variant(self, spritesheet_suffix, reversed=False):
+        self.model_variants.append(ModelVariant(spritesheet_suffix, reversed))
 
     def add_unit(self, type, repeat=1, **kwargs):
         vehicle = type(consist=self, **kwargs)
@@ -763,11 +763,9 @@ class VehicleTransporterCarConsist(CarConsist):
 class ModelVariant(object):
     # simple class to hold model variants (randomised graphics)
     # must be a minimum of one variant per train
-    def __init__(self, spritesheet_suffix, visual_effect_offset, reversed):
+    def __init__(self, spritesheet_suffix, reversed):
         self.spritesheet_suffix = spritesheet_suffix # use digits for these - to match spritesheet filenames
         self.reversed = reversed
-        # used to over-ride effects position if auto-positioning isn't accurate enough
-        self._visual_effect_offset = visual_effect_offset
 
     def get_spritesheet_name(self, consist):
         return consist.id + '_' + str(self.spritesheet_suffix) + '.png'
@@ -795,6 +793,7 @@ class Train(object):
         self.tilt_bonus = False # over-ride in subclass as needed
         self.engine_class = 'ENGINE_CLASS_STEAM' # nml constant (STEAM is sane default)
         self.visual_effect = 'VISUAL_EFFECT_DISABLE' # nml constant
+        self._visual_effect_offset = kwargs.get('visual_effect_offset', None) # optional, use to over-ride automatic effect positioning
         # optional - some consists have sequences like A1-B-A2, where A1 and A2 look the same but have different IDs for implementation reasons
         # avoid duplicating sprites on the spritesheet by forcing A2 to use A1's spriterow_num, fiddly eh?
         # ugly, but eh.  Zero-indexed, based on position in units[]
@@ -911,12 +910,11 @@ class Train(object):
     def visual_effect_offset(self):
         # over-ride this in subclasses as needed (e.g. to move steam engine smoke to front by default
         # vehicles can also over-ride this on init (stored on each model_variant as _visual_effect_offset)
-        print("Would be better to store visual_effect_offset on the vehicle not the model variant")
         return 0
 
     def get_visual_effect_offset(self, variant):
         # too-magical handling of visual effect offsets
-        result = variant._visual_effect_offset
+        result = self._visual_effect_offset
         if result is None:
             result = self.visual_effect_offset
         if variant.reversed:
@@ -989,7 +987,6 @@ class SteamEngineUnit(Train):
         super().__init__(**kwargs)
         self.engine_class = 'ENGINE_CLASS_STEAM'
         self.visual_effect = 'VISUAL_EFFECT_STEAM'
-        self.default_visual_effect_offset = 'FRONT'
 
     @property
     def visual_effect_offset(self):
