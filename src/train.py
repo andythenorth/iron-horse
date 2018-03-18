@@ -913,7 +913,7 @@ class Train(object):
         return 0
 
     def get_visual_effect_offset(self, variant):
-        # too-magical handling of visual effect offsets
+        # probably-too-magical handling of visual effect offsets
         result = self._visual_effect_offset
         if result is None:
             result = self.visual_effect_offset
