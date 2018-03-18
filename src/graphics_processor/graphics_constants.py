@@ -72,7 +72,8 @@ container_recolour_maps = ({170 + i: CC1 + i for i in range(8)},
                            {170 + i: CC2 + i for i in range(8)},
                            {170 + i: 8 + i for i in range(8)})
 
-# --- End Cargo Maps --- #
+# shared global constants via Polar Fox library - import at end to make the this project's constants easier to work with
+# assignments are clunky - they exist to stop pyflakes tripping on 'unused' imports
 import polar_fox
 bulk_cargo_recolour_maps = polar_fox.bulk_cargo_recolour_maps
 piece_cargo_maps = polar_fox.piece_cargo_maps
