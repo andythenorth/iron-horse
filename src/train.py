@@ -49,8 +49,6 @@ class Consist(object):
         # values can be -ve or +ve to dibble specific vehicles (but total calculated points cannot exceed 255)
         self.type_base_buy_cost_points = kwargs.get('type_base_buy_cost_points', 15)
         self.type_base_running_cost_points = kwargs.get('type_base_running_cost_points', 15)
-        # mostly vehicles vary graphics by build year, but for date-sensitive cargo, we want to vary by current year
-        self.date_variant_var = kwargs.get('date_variant_var', 'build_year')
         # create structure to hold the units
         self.units = []
         # automatic buy menu sprite from – sprite, or explicit buy menu sprite?
@@ -317,7 +315,6 @@ class CarConsist(Consist):
     """
     def __init__(self, speedy=False, **kwargs):
         # self.base_id = '' # provide in subclass
-        self.date_variant_var = kwargs.get('date_variant_var', None)
 
         # persist roster id for lookups, not roster obj directly, because of multiprocessing problems with object references
         self.roster_id = kwargs.get('roster', None)
@@ -757,7 +754,6 @@ class VehicleTransporterCarConsist(CarConsist):
         self.label_refits_allowed = ['VEHI']
         self.label_refits_disallowed = []
         self.default_cargos = ['VEHI']
-        self.date_variant_var = 'current_year'
 
 
 class Train(object):
