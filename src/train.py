@@ -795,7 +795,6 @@ class Train(object):
         self.tilt_bonus = False # over-ride in subclass as needed
         self.engine_class = 'ENGINE_CLASS_STEAM' # nml constant (STEAM is sane default)
         self.visual_effect = 'VISUAL_EFFECT_DISABLE' # nml constant
-        self.default_visual_effect_offset = 0 # visual effect handling is fiddly, check ModelVariant also
         # optional - some consists have sequences like A1-B-A2, where A1 and A2 look the same but have different IDs for implementation reasons
         # avoid duplicating sprites on the spritesheet by forcing A2 to use A1's spriterow_num, fiddly eh?
         # ugly, but eh.  Zero-indexed, based on position in units[]
@@ -908,14 +907,18 @@ class Train(object):
         else:
             return False
 
+    @property
+    def visual_effect_offset(self):
+        # over-ride this in subclasses as needed (e.g. to move steam engine smoke to front by default
+        # vehicles can also over-ride this on init (stored on each model_variant as _visual_effect_offset)
+        print("Would be better to store visual_effect_offset on the vehicle not the model variant")
+        return 0
+
     def get_visual_effect_offset(self, variant):
         # too-magical handling of visual effect offsets
         result = variant._visual_effect_offset
         if result is None:
-            if self.default_visual_effect_offset == 'FRONT':
-                result = int(math.floor(-0.5 * self.vehicle_length))
-            else:
-                result = self.default_visual_effect_offset
+            result = self.visual_effect_offset
         if variant.reversed:
             result = result * -1
         return result
@@ -987,6 +990,11 @@ class SteamEngineUnit(Train):
         self.engine_class = 'ENGINE_CLASS_STEAM'
         self.visual_effect = 'VISUAL_EFFECT_STEAM'
         self.default_visual_effect_offset = 'FRONT'
+
+    @property
+    def visual_effect_offset(self):
+        # force steam engine smoke to front by default, can also over-ride per unit for more precise positioning
+        return int(math.floor(-0.5 * self.vehicle_length))
 
 
 class SteamEngineTenderUnit(Train):
