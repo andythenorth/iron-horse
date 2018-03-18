@@ -766,8 +766,9 @@ class ModelVariant(object):
     def __init__(self, spritesheet_suffix, graphics_processor, visual_effect_offset, reversed):
         self.spritesheet_suffix = spritesheet_suffix # use digits for these - to match spritesheet filenames
         self.graphics_processor = graphics_processor
-        self.visual_effect_offset = visual_effect_offset # used to position effects reliably if auto-positioning doesn't work
         self.reversed = reversed
+        # used to over-ride effects position if auto-positioning isn't accurate enough
+        self._visual_effect_offset = visual_effect_offset
 
     def get_spritesheet_name(self, consist):
         return consist.id + '_' + str(self.spritesheet_suffix) + '.png'
@@ -910,7 +911,7 @@ class Train(object):
 
     def get_visual_effect_offset(self, variant):
         # too-magical handling of visual effect offsets
-        result = variant.visual_effect_offset
+        result = variant._visual_effect_offset
         if result is None:
             if self.default_visual_effect_offset == 'FRONT':
                 result = int(math.floor(-0.5 * self.vehicle_length))
@@ -918,7 +919,6 @@ class Train(object):
                 result = self.default_visual_effect_offset
         if variant.reversed:
             result = result * -1
-        print(self.id, result)
         return result
 
     def get_nml_for_visual_effect_and_powered_cb(self):
