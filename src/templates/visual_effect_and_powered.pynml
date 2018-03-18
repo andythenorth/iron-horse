@@ -1,22 +1,15 @@
 // -- smoke etc -- //
-<!--! ridiculously complicated due to support for railtype changes AND randomly reversed variants AND user-flipped vehicles -->
+<!--! complicated due to support for railtype changes AND randomly reversed variants
+      however user-flipped vehicles will automatically have visual effect offset flipped by ottd -->
 <tal:model_variants repeat="variant_num python:range(consist.get_num_spritesets())">
-    <tal:flipped_or_not repeat="flipped [('', 1 if variant_num == 1 else 1), ('_flipped', 1 if variant_num == 1 else 1)]">
-        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_visual_effect_and_powered_by_variant${flipped[0]}_${variant_num}, current_railtype) {
-            <tal:only_if_overrides_exist condition="consist.visual_effect_override_by_railtype is not None">
-                <tal:railtype_specific_effects repeat="railtype consist.visual_effect_override_by_railtype.keys()">
-                    ${railtype}: return visual_effect_and_powered(${consist.visual_effect_override_by_railtype[railtype]}, ${flipped[1] * vehicle.get_visual_effect_offset(variant_num)}, DISABLE_WAGON_POWER);
-                </tal:railtype_specific_effects>
-            </tal:only_if_overrides_exist>
-            return visual_effect_and_powered(${vehicle.visual_effect}, ${flipped[1] * vehicle.get_visual_effect_offset(variant_num)}, DISABLE_WAGON_POWER);
-        }
-    </tal:flipped_or_not>
-    <tal:optionally_reversible condition="consist.reversible">
-        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_visual_effect_and_powered_calculate_offset_${variant_num}, vehicle_is_flipped) {
-            1: return ${vehicle.id}_switch_visual_effect_and_powered_by_variant_flipped_${variant_num};
-            return ${vehicle.id}_switch_visual_effect_and_powered_by_variant_${variant_num};
-        }
-    </tal:optionally_reversible>
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_visual_effect_and_powered_by_variant_${variant_num}, current_railtype) {
+        <tal:only_if_overrides_exist condition="consist.visual_effect_override_by_railtype is not None">
+            <tal:railtype_specific_effects repeat="railtype consist.visual_effect_override_by_railtype.keys()">
+                ${railtype}: return visual_effect_and_powered(${consist.visual_effect_override_by_railtype[railtype]}, ${vehicle.get_visual_effect_offset(variant_num)}, DISABLE_WAGON_POWER);
+            </tal:railtype_specific_effects>
+        </tal:only_if_overrides_exist>
+        return visual_effect_and_powered(${vehicle.visual_effect}, ${vehicle.get_visual_effect_offset(variant_num)}, DISABLE_WAGON_POWER);
+    }
 </tal:model_variants>
 
 <!--! ridiculous compile micro-optimisation - only render this switch if needed -->
@@ -24,7 +17,7 @@
     random_switch (FEAT_TRAINS, ${vehicle.location_of_random_bits_for_model_variant}, ${vehicle.id}_switch_visual_effect_and_powered_variants) {
         dependent: ${vehicle.id}_switch_graphics;
         <tal:random_graphics_variations repeat="variant_num python:range(consist.get_num_spritesets())">
-            1: ${vehicle.id}_switch_visual_effect_and_powered_calculate_offset_${variant_num};
+            1: ${vehicle.id}_switch_visual_effect_and_powered_by_variant_${variant_num};
         </tal:random_graphics_variations>
     }
 </tal:random_variants>
