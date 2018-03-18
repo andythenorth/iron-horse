@@ -63,8 +63,6 @@ class Consist(object):
         self.random_company_colour_swap = False # over-ride in subclasses as needed
         # roster is set when the vehicle is registered to a roster, only one roster per vehicle
         self.roster_id = None
-        # !! temp whilst refactoring GestaltGraphics
-        self.graphics_processors = ['foo', 'bar']
          # optionally suppress nmlc warnings about animated pixels for consists where they're intentional
         self.suppress_animated_pixel_warnings = kwargs.get('suppress_animated_pixel_warnings', False)
 
