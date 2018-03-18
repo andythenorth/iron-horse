@@ -14,6 +14,5 @@ consist.add_unit(type=DieselEngineUnit,
                  vehicle_length=8,
                  spriterow_num=0)
 
-consist.add_model_variant(spritesheet_suffix=0)
 
 # I tried the Big Boat with a long-hood forward random variant, but it looked bad, removed it.

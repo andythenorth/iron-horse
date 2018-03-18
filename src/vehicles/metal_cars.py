@@ -15,8 +15,7 @@ def main():
                      vehicle_length=5,
                      spriterow_num=0)
 
-    consist.add_model_variant(spritesheet_suffix=0)
-
+    
     consist = MetalCarConsist(roster='pony',
                               base_numeric_id=900,
                               gen=2,
@@ -28,8 +27,7 @@ def main():
                      vehicle_length=8,
                      spriterow_num=0)
 
-    consist.add_model_variant(spritesheet_suffix=0)
-
+    
     consist = MetalCarConsist(roster='pony',
                               base_numeric_id=910,
                               gen=3,
@@ -46,8 +44,7 @@ def main():
                      vehicle_length=6,
                      spriterow_num=0)
 
-    consist.add_model_variant(spritesheet_suffix=0)
-
+    
     consist = MetalCarConsist(roster='pony',
                               base_numeric_id=2670,
                               gen=4,
@@ -64,8 +61,7 @@ def main():
                      vehicle_length=6,
                      spriterow_num=0)
 
-    consist.add_model_variant(spritesheet_suffix=0)
-
+    
     consist = MetalCarConsist(roster='pony',
                               base_numeric_id=2160,
                               gen=5,
@@ -82,4 +78,4 @@ def main():
                      vehicle_length=6,
                      spriterow_num=0)
 
-    consist.add_model_variant(spritesheet_suffix=0)
+    

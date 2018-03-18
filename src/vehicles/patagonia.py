@@ -22,4 +22,3 @@ consist.add_unit(type=DieselEngineUnit,
                  capacity=35,
                  spriterow_num=1)
 
-consist.add_model_variant(spritesheet_suffix=0)

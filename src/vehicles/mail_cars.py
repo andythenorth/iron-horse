@@ -14,8 +14,7 @@ def main():
                      vehicle_length=5)
 
     #--------------- pony ----------------------------------------------------------------------
-    consist.add_model_variant(spritesheet_suffix=0)
-
+    
     consist = MailCarConsist(roster='pony',
                              base_numeric_id=2280,
                              gen=1,
@@ -25,8 +24,7 @@ def main():
                      capacity=10,
                      vehicle_length=4)
 
-    consist.add_model_variant(spritesheet_suffix=0)
-
+    
     consist = MailCarConsist(roster='pony',
                              base_numeric_id=2220,
                              gen=1,
@@ -36,8 +34,7 @@ def main():
                      capacity=12,
                      vehicle_length=6)
 
-    consist.add_model_variant(spritesheet_suffix=0)
-
+    
     consist = MailCarConsist(roster='pony',
                              base_numeric_id=2290,
                              gen=2,
@@ -47,8 +44,7 @@ def main():
                      capacity=10,
                      vehicle_length=4)
 
-    consist.add_model_variant(spritesheet_suffix=0)
-
+    
     consist = MailCarConsist(roster='pony',
                              base_numeric_id=920,
                              gen=2,
@@ -58,8 +54,7 @@ def main():
                      capacity=12,
                      vehicle_length=6)
 
-    consist.add_model_variant(spritesheet_suffix=0)
-
+    
     consist = MailCarConsist(roster='pony',
                              base_numeric_id=2300,
                              gen=3,
@@ -69,8 +64,7 @@ def main():
                      capacity=12,
                      vehicle_length=6)
 
-    consist.add_model_variant(spritesheet_suffix=0)
-
+    
     consist = MailCarConsist(roster='pony',
                              base_numeric_id=940,
                              gen=3,
@@ -80,8 +74,7 @@ def main():
                      capacity=15,
                      vehicle_length=8)
 
-    consist.add_model_variant(spritesheet_suffix=0)
-
+    
     consist = MailCarConsist(roster='pony',
                              base_numeric_id=3160,
                              gen=4,
@@ -91,8 +84,7 @@ def main():
                      capacity=12,
                      vehicle_length=6)
 
-    consist.add_model_variant(spritesheet_suffix=0)
-
+    
     consist = MailCarConsist(roster='pony',
                              base_numeric_id=3170,
                              gen=4,
@@ -102,8 +94,7 @@ def main():
                      capacity=15,
                      vehicle_length=8)
 
-    consist.add_model_variant(spritesheet_suffix=0)
-
+    
     consist = MailCarConsist(roster='pony',
                              base_numeric_id=970,
                              gen=5,
@@ -113,8 +104,7 @@ def main():
                      capacity=12,
                      vehicle_length=6)
 
-    consist.add_model_variant(spritesheet_suffix=0)
-
+    
     consist = MailCarConsist(roster='pony',
                              base_numeric_id=3140,
                              gen=5,
@@ -124,8 +114,7 @@ def main():
                      capacity=15,
                      vehicle_length=8)
 
-    consist.add_model_variant(spritesheet_suffix=0)
-
+    
     # no gen 6 for brit roster, max speed reached for engines
 
     """
@@ -139,7 +128,6 @@ def main():
                             capacity = 30,
                             vehicle_length = 7)
 
-    consist.add_model_variant()
 
 
     consist = MailCarConsist(roster = 'llama',
@@ -151,7 +139,6 @@ def main():
                             capacity = 45,
                             vehicle_length = 7)
 
-    consist.add_model_variant()
 
 
     consist = MailCarConsist(roster = 'llama',
@@ -163,7 +150,6 @@ def main():
                             capacity = 60,
                             vehicle_length = 8)
 
-    consist.add_model_variant()
 
 
     consist = MailCarConsist(roster = 'llama',
@@ -176,7 +162,6 @@ def main():
                             capacity = 30,
                             vehicle_length = 6)
 
-    consist.add_model_variant()
 
 
     consist = MailCarConsist(roster = 'llama',
@@ -189,7 +174,6 @@ def main():
                             capacity = 40,
                             vehicle_length = 6)
 
-    consist.add_model_variant()
 
 
     consist = MailCarConsist(roster = 'llama',
@@ -202,7 +186,6 @@ def main():
                             capacity = 50,
                             vehicle_length = 6)
 
-    consist.add_model_variant()
 
     """
     #--------------- antelope ----------------------------------------------------------------------
@@ -215,8 +198,7 @@ def main():
                      capacity=10,
                      vehicle_length=8)
 
-    consist.add_model_variant(spritesheet_suffix=0)
-
+    
     consist = MailCarConsist(roster='antelope',
                              base_numeric_id=2120,
                              gen=1,
@@ -227,8 +209,7 @@ def main():
                      capacity=20,
                      vehicle_length=5)
 
-    consist.add_model_variant(spritesheet_suffix=0)
-
+    
     consist = MailCarConsist(roster='antelope',
                              base_numeric_id=1950,
                              gen=2,
@@ -239,4 +220,4 @@ def main():
                      capacity=30,
                      vehicle_length=8)
 
-    consist.add_model_variant(spritesheet_suffix=0)
+    

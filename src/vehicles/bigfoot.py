@@ -15,4 +15,3 @@ consist.add_unit(type=DieselEngineUnit,
                  vehicle_length=5,
                  spriterow_num=0)
 
-consist.add_model_variant(spritesheet_suffix=0)

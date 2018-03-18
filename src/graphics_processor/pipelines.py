@@ -17,7 +17,7 @@ Or they can compose units for more complicated tasks, such as colouring and load
 
 class Pipeline(object):
     def __init__(self, name):
-        # this should be sparse, don't store any consist or variant info in Pipelines, pass them at render time
+        # this should be sparse, don't store any consist info in Pipelines, pass at render time
         self.name = name
 
     def make_spritesheet_from_image(self, input_image):
@@ -31,12 +31,12 @@ class Pipeline(object):
         # I considered having this return the Image, not just the path, but it's not saving much, and is less obvious what it does when used
         return os.path.join(currentdir, 'src', 'graphics', self.consist.roster_id, self.consist.id + '.png')
 
-    def render_common(self, variant, consist, input_image, units):
+    def render_common(self, consist, input_image, units):
         # expects to be passed a PIL Image object
         # units is a list of objects, with their config data already baked in (don't have to pass anything to units except the spritesheet)
         # each unit is then called in order, passing in and returning a pixa SpriteSheet
         # finally the spritesheet is saved
-        output_path = os.path.join(currentdir, 'generated', 'graphics', variant.get_spritesheet_name(consist))
+        output_path = os.path.join(currentdir, 'generated', 'graphics', consist.id + '.png')
         spritesheet = self.make_spritesheet_from_image(input_image)
 
         for unit in units:
@@ -45,20 +45,20 @@ class Pipeline(object):
         #spritesheet.sprites.show()
         spritesheet.save(output_path)
 
-    def render(self, variant, consist):
+    def render(self, consist):
         raise NotImplementedError("Implement me in %s" % repr(self))
 
 
 class PassThroughPipeline(Pipeline):
     def __init__(self):
-        # this should be sparse, don't store any consist or variant info in Pipelines, pass them at render time
+        # this should be sparse, don't store any consist info in Pipelines, pass at render time
         super(PassThroughPipeline, self).__init__("pass_through_pipeline")
 
-    def render(self, variant, consist, global_constants):
+    def render(self, consist, global_constants):
         self.units = []
         self.consist = consist
         input_image = Image.open(self.input_path)
-        result = self.render_common(variant, self.consist, input_image, self.units)
+        result = self.render_common(self.consist, input_image, self.units)
         return result
 
 
@@ -69,7 +69,7 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
         Not easy to simplify, generating graphics has many facets.
     """
     def __init__(self):
-        # this should be sparse, don't store any consist or variant info in Pipelines, pass them at render time
+        # this should be sparse, don't store any consist info in Pipelines, pass at render time
         # initing things here is proven to have unexpected results, as the processor will be shared across multiple vehicles
         super(ExtendSpriterowsForCompositedCargosPipeline, self).__init__("extend_spriterows_for_composited_cargos_pipeline")
 
@@ -231,7 +231,7 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
                 vehicle_comped_image_as_spritesheet = self.make_spritesheet_from_image(vehicle_comped_image)
                 self.units.append(AppendToSpritesheet(vehicle_comped_image_as_spritesheet, crop_box_dest))
 
-    def render(self, variant, consist, global_constants):
+    def render(self, consist, global_constants):
         self.units = [] # graphics units not same as consist units ! confusing overlap of terminology :(
         self.consist = consist
 
@@ -258,7 +258,7 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
                 cumulative_input_spriterow_count += input_spriterow_count
 
         input_image = Image.open(self.input_path).crop((0, 0, graphics_constants.spritesheet_width, 10))
-        result = self.render_common(variant, consist, input_image, self.units)
+        result = self.render_common(consist, input_image, self.units)
         return result
 
 def get_pipeline(pipeline_name):

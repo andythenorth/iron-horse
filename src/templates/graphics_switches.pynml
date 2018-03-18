@@ -1,8 +1,6 @@
-<!--! for random variants using different realsprites -->
-
 <!--! ridiculous compile micro-optimisation - only render this switch if needed -->
 <tal:random_variants condition="consist.get_num_spritesets() > 1">
-    random_switch (FEAT_TRAINS, ${vehicle.location_of_random_bits_for_model_variant}, ${vehicle.id}_switch_graphics) {
+    random_switch (FEAT_TRAINS, ${vehicle.location_of_random_bits_for_random_variant}, ${vehicle.id}_switch_graphics) {
         <tal:random_graphics_variations repeat="variation_num python:range(consist.get_num_spritesets())">
             1: return ${vehicle.id}_switch_graphics_${variation_num};
         </tal:random_graphics_variations>
@@ -13,7 +11,7 @@
 
 <!--! for random colour remapping  -->
 <tal:random_company_colour_swap condition="consist.random_company_colour_swap">
-    random_switch (FEAT_TRAINS, ${vehicle.location_of_random_bits_for_model_variant}, ${vehicle.id}_switch_colour_mapping) {
+    random_switch (FEAT_TRAINS, ${vehicle.location_of_random_bits_for_random_variant}, ${vehicle.id}_switch_colour_mapping) {
         1: return base_sprite_2cc + 16 * company_colour2 + company_colour1; <!--! apply regular 1CC and 2CC -->
         1: return base_sprite_2cc + 16 * company_colour1 + company_colour2; <!--! swap 1CC and 2CC -->
     }

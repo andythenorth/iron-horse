@@ -16,4 +16,3 @@ consist.add_unit(type=SteamEngineUnit,
                  vehicle_length=6,
                  spriterow_num=0)
 
-consist.add_model_variant(spritesheet_suffix=0)

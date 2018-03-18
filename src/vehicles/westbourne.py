@@ -21,4 +21,3 @@ consist.add_unit(type=MetroUnit,
                  capacity=160,
                  spriterow_num=1)
 
-consist.add_model_variant(spritesheet_suffix=0)

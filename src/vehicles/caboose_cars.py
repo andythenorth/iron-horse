@@ -12,8 +12,7 @@ def main():
     consist.add_unit(type=CabooseCar,
                      vehicle_length=4)
 
-    consist.add_model_variant(spritesheet_suffix=0)
-
+    
     #--------------- pony ----------------------------------------------------------------------
     consist = CabooseCarConsist(roster='pony',
                                 base_numeric_id=1280,
@@ -23,8 +22,7 @@ def main():
     consist.add_unit(type=CabooseCar,
                      vehicle_length=4)
 
-    consist.add_model_variant(spritesheet_suffix=0)
-
+    
     consist = CabooseCarConsist(roster='pony',
                                 base_numeric_id=2210,
                                 gen=1,
@@ -33,8 +31,7 @@ def main():
     consist.add_unit(type=CabooseCar,
                      vehicle_length=6)
 
-    consist.add_model_variant(spritesheet_suffix=0)
-
+    
 
 """
     #--------------- llama ----------------------------------------------------------------------
@@ -46,8 +43,7 @@ def main():
     consist.add_unit(type = CabooseCar,
                             vehicle_length = 5)
 
-    consist.add_model_variant(spritesheet_suffix=0)
-
+    
 
     #--------------- antelope ----------------------------------------------------------------------
     consist = CabooseCarConsist(title = '[Caboose Car]',
@@ -58,8 +54,7 @@ def main():
     consist.add_unit(type = CabooseCar,
                            vehicle_length = 6)
 
-    consist.add_model_variant(spritesheet_suffix=0)
-
+    
 
     consist = CabooseCarConsist(title = '[Caboose Car]',
                              roster = 'antelope',
@@ -70,7 +65,6 @@ def main():
     consist.add_unit(type = CabooseCar,
                            vehicle_length = 6)
 
-    consist.add_model_variant(spritesheet_suffix=0)
-
+    
 
 """

@@ -49,8 +49,6 @@ class Consist(object):
         # values can be -ve or +ve to dibble specific vehicles (but total calculated points cannot exceed 255)
         self.type_base_buy_cost_points = kwargs.get('type_base_buy_cost_points', 15)
         self.type_base_running_cost_points = kwargs.get('type_base_running_cost_points', 15)
-        # create a structure to hold model variants
-        self.model_variants = []
         # mostly vehicles vary graphics by build year, but for date-sensitive cargo, we want to vary by current year
         self.date_variant_var = kwargs.get('date_variant_var', 'build_year')
         # create structure to hold the units
@@ -67,9 +65,6 @@ class Consist(object):
         self.roster_id = None
          # optionally suppress nmlc warnings about animated pixels for consists where they're intentional
         self.suppress_animated_pixel_warnings = kwargs.get('suppress_animated_pixel_warnings', False)
-
-    def add_model_variant(self, spritesheet_suffix, reversed=False):
-        self.model_variants.append(ModelVariant(spritesheet_suffix, reversed))
 
     def add_unit(self, type, repeat=1, **kwargs):
         vehicle = type(consist=self, **kwargs)
@@ -765,17 +760,6 @@ class VehicleTransporterCarConsist(CarConsist):
         self.date_variant_var = 'current_year'
 
 
-class ModelVariant(object):
-    # simple class to hold model variants (randomised graphics)
-    # must be a minimum of one variant per train
-    def __init__(self, spritesheet_suffix, reversed):
-        self.spritesheet_suffix = spritesheet_suffix # use digits for these - to match spritesheet filenames
-        self.reversed = reversed
-
-    def get_spritesheet_name(self, consist):
-        return consist.id + '.png'
-
-
 class Train(object):
     """Base class for all types of trains"""
     def __init__(self, **kwargs):
@@ -902,7 +886,7 @@ class Train(object):
         return 'vehicle_default.pynml'
 
     @property
-    def location_of_random_bits_for_model_variant(self):
+    def location_of_random_bits_for_random_variant(self):
         return 'FORWARD_SELF(' + str(self.numeric_id - self.consist.base_numeric_id) + ')'
 
     @property

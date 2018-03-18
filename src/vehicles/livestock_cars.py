@@ -12,8 +12,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=4)
 
-    consist.add_model_variant(spritesheet_suffix=0)
-
+    
     #--------------- pony ----------------------------------------------------------------------
     consist = LivestockCarConsist(roster='pony',
                                   base_numeric_id=1010,
@@ -23,8 +22,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=4)
 
-    consist.add_model_variant(spritesheet_suffix=0)
-
+    
     # no gen 2 needed
 
     consist = LivestockCarConsist(roster='pony',
@@ -35,8 +33,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=4)
 
-    consist.add_model_variant(spritesheet_suffix=0)
-
+    
     consist = LivestockCarConsist(roster='pony',
                                   base_numeric_id=1020,
                                   gen=4,
@@ -45,8 +42,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=4)
 
-    consist.add_model_variant(spritesheet_suffix=0)
-
+    
     consist = LivestockCarConsist(roster='pony',
                                   base_numeric_id=2720,
                                   gen=5,
@@ -55,8 +51,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=8)
 
-    consist.add_model_variant(spritesheet_suffix=0)
-
+    
     consist = LivestockCarConsist(roster='pony',
                                   base_numeric_id=2710,
                                   gen=6,
@@ -65,8 +60,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=8)
 
-    consist.add_model_variant(spritesheet_suffix=0)
-
+    
     #--------------- llama ----------------------------------------------------------------------
 
     consist = LivestockCarConsist(roster='llama',
@@ -77,8 +71,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=6)
 
-    consist.add_model_variant(spritesheet_suffix=0)
-
+    
     consist = LivestockCarConsist(roster='llama',
                                   base_numeric_id=1430,
                                   gen=2,
@@ -87,8 +80,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=6)
 
-    consist.add_model_variant(spritesheet_suffix=0)
-
+    
     consist = LivestockCarConsist(roster='llama',
                                   base_numeric_id=1050,
                                   gen=1,
@@ -98,8 +90,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=6)
 
-    consist.add_model_variant(spritesheet_suffix=0)
-
+    
     consist = LivestockCarConsist(roster='llama',
                                   base_numeric_id=1520,
                                   gen=2,
@@ -109,8 +100,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=6)
 
-    consist.add_model_variant(spritesheet_suffix=0)
-
+    
     #--------------- antelope ----------------------------------------------------------------------
     consist = LivestockCarConsist(roster='antelope',
                                   base_numeric_id=1720,
@@ -120,8 +110,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=8)
 
-    consist.add_model_variant(spritesheet_suffix=0)
-
+    
     consist = LivestockCarConsist(roster='antelope',
                                   base_numeric_id=2150,
                                   gen=1,
@@ -131,4 +120,4 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=5)
 
-    consist.add_model_variant(spritesheet_suffix=0)
+    

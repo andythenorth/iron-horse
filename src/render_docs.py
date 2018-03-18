@@ -97,7 +97,6 @@ class DocHelper(object):
             result = self.fetch_prop(result, 'Buy Cost', vehicle.buy_cost)
             result = self.fetch_prop(result, 'Running Cost', vehicle.running_cost)
             #result = self.fetch_prop(result, 'Loading Speed', vehicle.loading_speed)
-            #result = self.fetch_prop(result, 'Model Variants', len(vehicle.model_variants))
 
             props_to_print[vehicle] = result['vehicle']
             props_to_print[subclass] = result['subclass_props']
