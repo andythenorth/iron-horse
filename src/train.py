@@ -66,8 +66,8 @@ class Consist(object):
          # optionally suppress nmlc warnings about animated pixels for consists where they're intentional
         self.suppress_animated_pixel_warnings = kwargs.get('suppress_animated_pixel_warnings', False)
 
-    def add_model_variant(self, spritesheet_suffix, graphics_processor=None, visual_effect_offset=None, reversed=False):
-        self.model_variants.append(ModelVariant(spritesheet_suffix, graphics_processor, visual_effect_offset, reversed))
+    def add_model_variant(self, spritesheet_suffix, visual_effect_offset=None, reversed=False):
+        self.model_variants.append(ModelVariant(spritesheet_suffix, visual_effect_offset, reversed))
 
     def add_unit(self, type, repeat=1, **kwargs):
         vehicle = type(consist=self, **kwargs)
@@ -763,9 +763,8 @@ class VehicleTransporterCarConsist(CarConsist):
 class ModelVariant(object):
     # simple class to hold model variants (randomised graphics)
     # must be a minimum of one variant per train
-    def __init__(self, spritesheet_suffix, graphics_processor, visual_effect_offset, reversed):
+    def __init__(self, spritesheet_suffix, visual_effect_offset, reversed):
         self.spritesheet_suffix = spritesheet_suffix # use digits for these - to match spritesheet filenames
-        self.graphics_processor = graphics_processor
         self.reversed = reversed
         # used to over-ride effects position if auto-positioning isn't accurate enough
         self._visual_effect_offset = visual_effect_offset
@@ -1085,23 +1084,13 @@ class CargoSprinter(Train):
         self.engine_class = 'ENGINE_CLASS_DIESEL'
         self.visual_effect = 'VISUAL_EFFECT_DISABLE' # intended - positioning smoke correctly for this vehicle type is too fiddly
         """
-        # graphics processor stuff also used at __init__ time
+        # legacy graphics processing - needs recreated as GestaltGraphics
         self.consist.recolour_maps = graphics_constants.container_recolour_maps
         self.consist.num_random_cargo_variants = len(self.consist.recolour_maps)
         self.consist.cargos_with_tanktainer_graphics = ['BEER', 'MILK', 'WATR'] # !! unfinished currently??
          # ugh, the graphics consists are applied to the consist in all other cases,
          # but CargoSprinter doesn't have a dedicated consist subclass, so processors are on the unit, with this nasty passthrough
-        self.consist.graphics_processors = self.graphics_processors
-
-    @property
-    def graphics_processors(self):
-        graphics_options = {'template': 'cargo_sprinter_template_0.png',
-                           'recolour_maps': self.consist.recolour_maps,
-                           'copy_block_top_offset': 0,
-                           'num_rows_per_unit': 3,
-                           'num_unit_types': 3}
-        return GraphicsProcessorFactory('extend_spriterows_for_recoloured_cargos_pipeline', graphics_options)
-    """
+        """
 
 
 class TrainCar(Train):
