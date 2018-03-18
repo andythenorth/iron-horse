@@ -97,12 +97,15 @@ class Consist(object):
         numeric_id_defender.append(numeric_id)
         return numeric_id
 
-    def get_num_spritesets(self):
-        # bit crude eh?  Append for variations like reversible (the only variation as of March 2018)
-        count = 1
+    @property
+    def reversed_variants(self):
+        # Handles 'unreversed' and optional 'reversed' variant, which if provided, will be chosen at random per consist
+        # NOT the same as 'flipped' which is a player choice in-game, and handled separately
+        # Previous model_variant approach for this was deprecated March 2018, needlessly complicated
+        result = ['unreversed']
         if self.reversible:
-            count = count+1
-        return count
+            result.append('reversed')
+        return result
 
     def get_name_substr(self):
         # relies on name being in format "Foo [Bar]" for Name [Type Suffix]
@@ -899,35 +902,35 @@ class Train(object):
         # vehicles can also over-ride this on init (stored on each model_variant as _visual_effect_offset)
         return 0
 
-    def get_visual_effect_offset(self, variant_num):
+    def get_visual_effect_offset(self, reversed_variant):
         # probably-too-magical handling of visual effect offsets
         result = self._visual_effect_offset
         if result is None:
             result = self.visual_effect_offset
-        if variant_num == 1:
-            # variant 1 is for (randomly) reversed sprites, so flip the offset location
+        if reversed_variant == 'reversed':
+            # sprites will be reversed for this vehicle, so flip the offset location
             result = result * -1
         return result
 
     def get_nml_for_visual_effect_and_powered_cb(self):
         # ridiculous compile micro-optimisation, some random switches will be dropped if only 1 model variant
-        if self.consist.get_num_spritesets() > 1:
+        if len(self.consist.reversed_variants) > 1:
             return self.id + "_switch_visual_effect_and_powered_variants"
         else:
-            return self.id + "_switch_visual_effect_and_powered_by_variant_0"
+            return self.id + "_switch_visual_effect_and_powered_by_variant_" + self.consist.reversed_variants[0]
 
     def get_nml_for_graphics_switch(self):
         # ridiculous compile micro-optimisation, some random switches will be dropped if only 1 model variant
-        if self.consist.get_num_spritesets() > 1:
+        if len(self.consist.reversed_variants) > 1:
             return self.id + "_switch_graphics"
         else:
-            return self.id + "_switch_graphics_0"
+            return self.id + "_switch_graphics_" + self.consist.reversed_variants[0]
 
-    def get_nml_expression_for_cargo_variant_random_switch(self, variation_num, cargo_id=None):
+    def get_nml_expression_for_cargo_variant_random_switch(self, reversed_variant, cargo_id=None):
         # having a method to calculate the nml for this is overkill
         # legacy of multi-part vehicles, where the trigger needed to be run on an adjacent vehicle
         # this could be unpicked and moved directly into the templates
-        switch_id = self.id + "_switch_graphics_" + str(variation_num) + ('_' + str(cargo_id) if cargo_id is not None else '')
+        switch_id = self.id + "_switch_graphics_" + reversed_variant + ('_' + str(cargo_id) if cargo_id is not None else '')
         return "SELF," + switch_id + ", bitmask(TRIGGER_VEHICLE_NEW_LOAD)"
 
     def get_nml_expression_for_grfid_of_neighbouring_unit(self, unit_offset):

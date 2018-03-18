@@ -1,78 +1,76 @@
 <tal:include metal:use-macro="load: spriteset_templates.pynml" />
 
-<tal:sprites_random_variations repeat="variation_num python:range(consist.get_num_spritesets())">
-    <tal:optional_reversed define="reversed '_reversed' if variation_num == 1 else ''">
-        spriteset(${vehicle.id}_ss_empty_${variation_num}, "${global_constants.graphics_path}${consist.id}.png") {
-          spriteset_template${reversed}_${vehicle.id}(${vehicle.spriterow_num * 30} + 10)
+<tal:reversible_variants repeat="reversed_variant consist.reversed_variants">
+    spriteset(${vehicle.id}_ss_empty_${reversed_variant}, "${global_constants.graphics_path}${consist.id}.png") {
+      spriteset_template_${reversed_variant}_${vehicle.id}(${vehicle.spriterow_num * 30} + 10)
+    }
+
+    spritegroup ${vehicle.id}_sg_empty_${reversed_variant} {
+        loaded:  [
+            ${vehicle.id}_ss_empty_${reversed_variant},
+        ];
+        loading: [
+            ${vehicle.id}_ss_empty_${reversed_variant},
+        ];
+    }
+
+    <tal:cargo_variants repeat="cargo_variant_num python:range(consist.gestalt_graphics.num_cargo_sprite_variants)">
+        spriteset(${vehicle.id}_ss_loading_${reversed_variant}_${cargo_variant_num}, "${global_constants.graphics_path}${consist.id}.png") {
+          spriteset_template_${reversed_variant}_${vehicle.id}(${vehicle.spriterow_num * 30} + ${cargo_variant_num * 60} + 40)
+        }
+        spriteset(${vehicle.id}_ss_loaded_${reversed_variant}_${cargo_variant_num}, "${global_constants.graphics_path}${consist.id}.png") {
+          spriteset_template_${reversed_variant}_${vehicle.id}(${vehicle.spriterow_num * 30} + ${cargo_variant_num * 60} + 70)
         }
 
-        spritegroup ${vehicle.id}_sg_empty_${variation_num} {
+        spritegroup ${vehicle.id}_sg_loading_${reversed_variant}_${cargo_variant_num} {
             loaded:  [
-                ${vehicle.id}_ss_empty_${variation_num},
+                ${vehicle.id}_ss_loading_${reversed_variant}_${cargo_variant_num},
             ];
             loading: [
-                ${vehicle.id}_ss_empty_${variation_num},
+                ${vehicle.id}_ss_loading_${reversed_variant}_${cargo_variant_num},
+            ];
+        }
+        spritegroup ${vehicle.id}_sg_loaded_${reversed_variant}_${cargo_variant_num} {
+            loaded:  [
+                ${vehicle.id}_ss_loaded_${reversed_variant}_${cargo_variant_num},
+            ];
+            loading: [
+                ${vehicle.id}_ss_loaded_${reversed_variant}_${cargo_variant_num},
             ];
         }
 
-        <tal:cargo_variants repeat="cargo_variant_num python:range(consist.gestalt_graphics.num_cargo_sprite_variants)">
-            spriteset(${vehicle.id}_ss_loading_${variation_num}_${cargo_variant_num}, "${global_constants.graphics_path}${consist.id}.png") {
-              spriteset_template${reversed}_${vehicle.id}(${vehicle.spriterow_num * 30} + ${cargo_variant_num * 60} + 40)
-            }
-            spriteset(${vehicle.id}_ss_loaded_${variation_num}_${cargo_variant_num}, "${global_constants.graphics_path}${consist.id}.png") {
-              spriteset_template${reversed}_${vehicle.id}(${vehicle.spriterow_num * 30} + ${cargo_variant_num * 60} + 70)
-            }
+        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_percent_loaded_${reversed_variant}_${cargo_variant_num}, cargo_count*100/cargo_capacity) {
+                0: return ${vehicle.id}_sg_empty_${reversed_variant};
+                1..99: return ${vehicle.id}_sg_loading_${reversed_variant}_${cargo_variant_num};
+            return ${vehicle.id}_sg_loaded_${reversed_variant}_${cargo_variant_num};
+        }
+    </tal:cargo_variants>
 
-            spritegroup ${vehicle.id}_sg_loading_${variation_num}_${cargo_variant_num} {
-                loaded:  [
-                    ${vehicle.id}_ss_loading_${variation_num}_${cargo_variant_num},
-                ];
-                loading: [
-                    ${vehicle.id}_ss_loading_${variation_num}_${cargo_variant_num},
-                ];
+    <tal:cargo_random_switches repeat="mapping consist.gestalt_graphics.cargo_row_map.items()">
+        <tal:exclude_default_cargo condition="mapping[0] != 'DFLT'">
+            random_switch (FEAT_TRAINS, ${vehicle.get_nml_expression_for_cargo_variant_random_switch(reversed_variant, mapping[0])}) {
+                <tal:random_graphics_variations repeat="spriterow_num mapping[1]">
+                    1: return ${vehicle.id}_switch_graphics_percent_loaded_${reversed_variant}_${spriterow_num};
+                </tal:random_graphics_variations>
             }
-            spritegroup ${vehicle.id}_sg_loaded_${variation_num}_${cargo_variant_num} {
-                loaded:  [
-                    ${vehicle.id}_ss_loaded_${variation_num}_${cargo_variant_num},
-                ];
-                loading: [
-                    ${vehicle.id}_ss_loaded_${variation_num}_${cargo_variant_num},
-                ];
-            }
+        </tal:exclude_default_cargo>
+    </tal:cargo_random_switches>
 
-            switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_percent_loaded_${variation_num}_${cargo_variant_num}, cargo_count*100/cargo_capacity) {
-                    0: return ${vehicle.id}_sg_empty_${variation_num};
-                    1..99: return ${vehicle.id}_sg_loading_${variation_num}_${cargo_variant_num};
-                return ${vehicle.id}_sg_loaded_${variation_num}_${cargo_variant_num};
-            }
-        </tal:cargo_variants>
+    random_switch (FEAT_TRAINS, ${vehicle.get_nml_expression_for_cargo_variant_random_switch(reversed_variant, 'generic_cargos')}) {
+        <tal:random_graphics_variations repeat="spriterow_num consist.gestalt_graphics.generic_rows">
+            1: return ${vehicle.id}_switch_graphics_percent_loaded_${reversed_variant}_${spriterow_num};
+        </tal:random_graphics_variations>
+    }
 
-        <tal:cargo_random_switches repeat="mapping consist.gestalt_graphics.cargo_row_map.items()">
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${reversed_variant}, cargo_type_in_veh) {
+        <tal:cargos repeat="mapping consist.gestalt_graphics.cargo_row_map.items()">
             <tal:exclude_default_cargo condition="mapping[0] != 'DFLT'">
-                random_switch (FEAT_TRAINS, ${vehicle.get_nml_expression_for_cargo_variant_random_switch(variation_num, mapping[0])}) {
-                    <tal:random_graphics_variations repeat="spriterow_num mapping[1]">
-                        1: return ${vehicle.id}_switch_graphics_percent_loaded_${variation_num}_${spriterow_num};
-                    </tal:random_graphics_variations>
-                }
+                ${mapping[0]}: return ${vehicle.id}_switch_graphics_${reversed_variant}_${mapping[0]};
             </tal:exclude_default_cargo>
-        </tal:cargo_random_switches>
-
-        random_switch (FEAT_TRAINS, ${vehicle.get_nml_expression_for_cargo_variant_random_switch(variation_num, 'generic_cargos')}) {
-            <tal:random_graphics_variations repeat="spriterow_num consist.gestalt_graphics.generic_rows">
-                1: return ${vehicle.id}_switch_graphics_percent_loaded_${variation_num}_${spriterow_num};
-            </tal:random_graphics_variations>
-        }
-
-        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${variation_num}, cargo_type_in_veh) {
-            <tal:cargos repeat="mapping consist.gestalt_graphics.cargo_row_map.items()">
-                <tal:exclude_default_cargo condition="mapping[0] != 'DFLT'">
-                    ${mapping[0]}: return ${vehicle.id}_switch_graphics_${variation_num}_${mapping[0]};
-                </tal:exclude_default_cargo>
-            </tal:cargos>
-            return ${vehicle.id}_switch_graphics_${variation_num}_generic_cargos;
-        }
-    </tal:optional_reversed>
-</tal:sprites_random_variations>
+        </tal:cargos>
+        return ${vehicle.id}_switch_graphics_${reversed_variant}_generic_cargos;
+    }
+</tal:reversible_variants>
 
 <tal:include metal:use-macro="load: graphics_switches.pynml" />
 

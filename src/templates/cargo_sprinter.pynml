@@ -3,7 +3,7 @@
 
 <tal:include metal:use-macro="load: offsets_standard.pynml" />
 
-<tal:sprites_random_variations repeat="variation_num python:range(consist.get_num_spritesets())">
+<tal:reversible_variants repeat="variation_num python:range(consist.reversed_variants)">
     <tal:cargo_colour_variant repeat="cargo_variant_num python:range(3)">
         <!--! Cabs: A = front, B = middle (no cab), C = rear -->
         <tal:cab_variants repeat="cab_variant python:range(3)">
@@ -88,7 +88,7 @@
         </tal:random_graphics_variations>
     }
 
-</tal:sprites_random_variations>
+</tal:reversible_variants>
 
 <tal:include metal:use-macro="load: graphics_switches.pynml" />
 

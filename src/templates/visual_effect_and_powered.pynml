@@ -1,23 +1,23 @@
 // -- smoke etc -- //
 <!--! complicated due to support for railtype changes AND randomly reversed variants
       however user-flipped vehicles will automatically have visual effect offset flipped by ottd -->
-<tal:random_variants repeat="variant_num python:range(consist.get_num_spritesets())">
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_visual_effect_and_powered_by_variant_${variant_num}, current_railtype) {
+<tal:reversible_variants repeat="reversed_variant consist.reversed_variants">
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_visual_effect_and_powered_by_variant_${reversed_variant}, current_railtype) {
         <tal:only_if_overrides_exist condition="consist.visual_effect_override_by_railtype is not None">
             <tal:railtype_specific_effects repeat="railtype consist.visual_effect_override_by_railtype.keys()">
-                ${railtype}: return visual_effect_and_powered(${consist.visual_effect_override_by_railtype[railtype]}, ${vehicle.get_visual_effect_offset(variant_num)}, DISABLE_WAGON_POWER);
+                ${railtype}: return visual_effect_and_powered(${consist.visual_effect_override_by_railtype[railtype]}, ${vehicle.get_visual_effect_offset(reversed_variant)}, DISABLE_WAGON_POWER);
             </tal:railtype_specific_effects>
         </tal:only_if_overrides_exist>
-        return visual_effect_and_powered(${vehicle.visual_effect}, ${vehicle.get_visual_effect_offset(variant_num)}, DISABLE_WAGON_POWER);
+        return visual_effect_and_powered(${vehicle.visual_effect}, ${vehicle.get_visual_effect_offset(reversed_variant)}, DISABLE_WAGON_POWER);
     }
-</tal:random_variants>
+</tal:reversible_variants>
 
 <!--! ridiculous compile micro-optimisation - only render this switch if needed -->
-<tal:random_variants condition="consist.get_num_spritesets() > 1">
+<tal:optional_reversible_variants condition="len(consist.reversed_variants) > 1">
     random_switch (FEAT_TRAINS, ${vehicle.location_of_random_bits_for_random_variant}, ${vehicle.id}_switch_visual_effect_and_powered_variants) {
         dependent: ${vehicle.id}_switch_graphics;
-        <tal:random_graphics_variations repeat="variant_num python:range(consist.get_num_spritesets())">
-            1: ${vehicle.id}_switch_visual_effect_and_powered_by_variant_${variant_num};
-        </tal:random_graphics_variations>
+        <tal:versible_variants repeat="reversed_variant consist.reversed_variants">
+            1: ${vehicle.id}_switch_visual_effect_and_powered_by_variant_${reversed_variant};
+        </tal:versible_variants>
     }
-</tal:random_variants>
+</tal:optional_reversible_variants>
