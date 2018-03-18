@@ -201,3 +201,24 @@ piece_cargo_maps = ((['DFLT'], ['tarps_2cc_1']),  # see note on DFLT above
 pseudo_bulk_cargo_maps = ((['FRUT'], ['fruit']),
                           (['JAVA'], ['coffee']),
                           (['NUTS'], ['nuts']))
+
+# Tanker recolour maps
+# OIL_ is in first position as the buy menu sprites should be the Oil sprites, and this is the easiest way to do it
+# in principle that's wrong, because in a map without oil, the buy menu won't match the sprites of the vehicle when built
+# try it and see what happens eh?
+tanker_livery_recolour_maps = (("OIL_", {136: 1, 137: 2, 138: 3, 139: 4,
+                                         140: 5, 141: 6, 142: 7, 143: 8}),  # see note on oil above
+                               # see note on DFLT above
+                               ("DFLT", {136: 198, 137: 199, 138: 200, 139: 201,
+                                         140: 202, 141: 203, 142: 204, 143: 205}),
+                               ("SULP", {136: 62, 137: 63, 138: 64, 139: 65,
+                                         140: 66, 141: 67, 142: 68, 143: 69}),
+                               ("CHLO", {136: 154, 137: 155, 138: 156, 139: 157,
+                                         140: 158, 141: 159, 142: 160, 143: 161}),
+                               # RFPR deliberately 2CC to allow combining with 1CC livery details
+                               ("RFPR", {136: 80, 137: 81, 138: 82, 139: 83,
+                                         140: 84, 141: 85, 142: 86, 143: 87}),
+                               ("RUBR", {136: 40, 137: 41, 138: 42, 139: 43,
+                                         140: 44, 141: 45, 142: 46, 143: 47}),
+                               ("PETR", {136: 16, 137: 17, 138: 18, 139: 19,
+                                         140: 20, 141: 21, 142: 22, 143: 23}))
