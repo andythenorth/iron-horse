@@ -11,11 +11,10 @@ def main():
                               suppress_animated_pixel_warnings=True)
 
     consist.add_unit(type=FreightCar,
-                     capacity=30,
                      vehicle_length=5,
                      spriterow_num=0)
 
-    
+
     consist = MetalCarConsist(roster='pony',
                               base_numeric_id=900,
                               gen=2,
@@ -23,11 +22,10 @@ def main():
                               suppress_animated_pixel_warnings=True)
 
     consist.add_unit(type=FreightCar,
-                     capacity=60,
                      vehicle_length=8,
                      spriterow_num=0)
 
-    
+
     consist = MetalCarConsist(roster='pony',
                               base_numeric_id=910,
                               gen=3,
@@ -35,16 +33,14 @@ def main():
                               suppress_animated_pixel_warnings=True)
 
     consist.add_unit(type=FreightCar,
-                     capacity=45,
                      vehicle_length=6,
                      spriterow_num=0)
 
     consist.add_unit(type=FreightCar,
-                     capacity=45,
                      vehicle_length=6,
                      spriterow_num=0)
 
-    
+
     consist = MetalCarConsist(roster='pony',
                               base_numeric_id=2670,
                               gen=4,
@@ -52,16 +48,14 @@ def main():
                               suppress_animated_pixel_warnings=True)
 
     consist.add_unit(type=FreightCar,
-                     capacity=45,
                      vehicle_length=6,
                      spriterow_num=0)
 
     consist.add_unit(type=FreightCar,
-                     capacity=45,
                      vehicle_length=6,
                      spriterow_num=0)
 
-    
+
     consist = MetalCarConsist(roster='pony',
                               base_numeric_id=2160,
                               gen=5,
@@ -69,13 +63,10 @@ def main():
                               suppress_animated_pixel_warnings=True)
 
     consist.add_unit(type=FreightCar,
-                     capacity=45,
                      vehicle_length=6,
                      spriterow_num=0)
 
     consist.add_unit(type=FreightCar,
-                     capacity=45,
                      vehicle_length=6,
                      spriterow_num=0)
 
-    

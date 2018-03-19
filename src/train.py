@@ -630,6 +630,7 @@ class MetalCarConsist(CarConsist):
         self.auto_buy_menu_sprite = False # !! this is hax to suppress white warnings, buy menu handling needs figuring out for these wagons
         self.capacity_cost_factor = 1.5
         self.run_cost_divisor = 7
+        # !! probably want some capacity multiplier here, metal cars have higher capacity per unit length (at high cost!)
 
 
 class OpenCarConsist(CarConsist):
