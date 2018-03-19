@@ -334,7 +334,7 @@ class CarConsist(Consist):
         self.weight_factor = 0.5 # over-ride in sub-class as needed
         self.loading_speed_multiplier = kwargs.get('loading_speed_multiplier', 1)
         self.cargo_age_period = kwargs.get('cargo_age_period', global_constants.CARGO_AGE_PERIOD)
-        self.auto_buy_menu_sprite = True # assume all wagons are auto-buy menu; this might fail for articulated wagons (none at time of writing)
+        self.auto_buy_menu_sprite = True # assume all wagons are auto-buy menu; this might fail for articulated wagons (e.g. metal cars)
         self.random_company_colour_swap = True # assume all wagons randomly swap CC, revert to False in wagon subclasses as needed
         self.capacity_cost_factor = 1 # default value, adjust this in subclasses to modify buy cost for more complex cars
         self.run_cost_divisor = 8 # default value, adjust this in subclasses to modify run cost for more complex cars
