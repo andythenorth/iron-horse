@@ -203,11 +203,9 @@ pseudo_bulk_cargo_maps = ((['FRUT'], ['fruit']),
                           (['NUTS'], ['nuts']))
 
 # Tanker recolour maps
-# OIL_ is in first position as the buy menu sprites should be the Oil sprites, and this is the easiest way to do it
-# in principle that's wrong, because in a map without oil, the buy menu won't match the sprites of the vehicle when built
-# try it and see what happens eh?
+# DFLT label is a hack to support cargos with no specific sprites (including unknown cargos), and should not be added to cargo translation table
 tanker_livery_recolour_maps = (("OIL_", {136: 1, 137: 2, 138: 3, 139: 4,
-                                         140: 5, 141: 6, 142: 7, 143: 8}),  # see note on oil above
+                                         140: 5, 141: 6, 142: 7, 143: 8}),
                                # see note on DFLT above
                                ("DFLT", {136: 198, 137: 199, 138: 200, 139: 201,
                                          140: 202, 141: 203, 142: 204, 143: 205}),
