@@ -51,8 +51,6 @@ class Consist(object):
         self.type_base_running_cost_points = kwargs.get('type_base_running_cost_points', 15)
         # create structure to hold the units
         self.units = []
-        # automatic buy menu sprite from – sprite, or explicit buy menu sprite?
-        self.auto_buy_menu_sprite = kwargs.get('auto_buy_menu_sprite', False)
         # one default cargo for the whole consist, no mixed cargo shenanigans, it fails with auto-replace
         self.default_cargos = []
         # create a structure for cargo /livery graphics options
@@ -217,7 +215,9 @@ class Consist(object):
 
     @property
     def buy_menu_x_loc(self):
-        if self.auto_buy_menu_sprite:
+        # automatic buy menu sprite if single-unit consist
+        # extend this with _auto_buy_menu_sprite property if more cases are needed in future
+        if len(self.units) == 1:
             return global_constants.spritesheet_bounding_boxes[6][0]
         else:
             return 316 # hard-coded default case
@@ -334,7 +334,6 @@ class CarConsist(Consist):
         self.weight_factor = 0.5 # over-ride in sub-class as needed
         self.loading_speed_multiplier = kwargs.get('loading_speed_multiplier', 1)
         self.cargo_age_period = kwargs.get('cargo_age_period', global_constants.CARGO_AGE_PERIOD)
-        self.auto_buy_menu_sprite = True # assume all wagons are auto-buy menu; this might fail for articulated wagons (e.g. metal cars)
         self.random_company_colour_swap = True # assume all wagons randomly swap CC, revert to False in wagon subclasses as needed
         self.capacity_cost_factor = 1 # default value, adjust this in subclasses to modify buy cost for more complex cars
         self.run_cost_divisor = 8 # default value, adjust this in subclasses to modify run cost for more complex cars
@@ -627,7 +626,6 @@ class MetalCarConsist(CarConsist):
         self.label_refits_disallowed = []
         self.default_cargos = global_constants.default_cargos['metal']
         self.loading_speed_multiplier = 2
-        self.auto_buy_menu_sprite = False # !! this is hax to suppress white warnings, buy menu handling needs figuring out for these wagons
         self.capacity_cost_factor = 1.5
         self.run_cost_divisor = 7
         # !! probably want some capacity multiplier here, metal cars have higher capacity per unit length (at high cost!)
