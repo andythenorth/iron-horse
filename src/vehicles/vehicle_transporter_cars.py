@@ -11,7 +11,5 @@ def main():
                                            subtype='A')
 
     consist.add_unit(type=FreightCar,
-                     capacity=30,
-                     vehicle_length=7)
+                     vehicle_length=8)
 
-    
