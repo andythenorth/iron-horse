@@ -1123,7 +1123,7 @@ class FreightCar(TrainCar):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         if kwargs.get('capacity', None) is not None:
-             print(self.consist.id, kwargs.get('capacity', None))
+             print(self.consist.id, ' has a capacity set in init - possibly incorrect', kwargs.get('capacity', None))
         roster_obj = self.consist.get_roster(self.consist.roster_id)
         # magic to set freight car capacity subject to length
         self.capacity = kwargs['vehicle_length'] * roster_obj.freight_car_capacity_per_unit_length[self.consist.track_type][self.consist.gen - 1]
