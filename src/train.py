@@ -485,7 +485,7 @@ class FlatCarConsist(CarConsist):
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_flatbed_freight']
         self.default_cargos = global_constants.default_cargos['flat']
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsVisibleCargo(piece=True)
+        self.gestalt_graphics = GestaltGraphicsVisibleCargo(piece='flat')
         print('Flatcar graphics not handling previous base/pseudo-piece split currently')
         #self.gestalt_graphics.piece_groups = ['base', 'pseudo_bulk']
         # see open cars
@@ -646,7 +646,7 @@ class OpenCarConsist(CarConsist):
         # Graphics configuration
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(bulk=True,
-                                                            piece=True)
+                                                            piece='open')
         print('Open car graphics not handling previous base/pseudo-piece split currently')
         #self.gestalt_graphics.piece_groups = ['base', 'pseudo_bulk']
         # see http://dev.openttdcoop.org/projects/iron-horse/repository/revisions/6bf25122b9b6/diff/src/graphics_processor/visible_cargo.py

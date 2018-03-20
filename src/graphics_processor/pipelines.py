@@ -184,7 +184,7 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
                          0,
                          graphics_constants.spritesheet_width,
                          cargo_group_output_row_height)
-        for cargo_labels, cargo_filenames in graphics_constants.piece_cargo_maps:
+        for cargo_labels, cargo_filenames in consist.gestalt_graphics.piece_cargo_maps:
             for cargo_filename in cargo_filenames:
                 cargo_sprites_input_path = os.path.join(currentdir, 'src', 'graphics', 'cargos', cargo_filename + '.png')
                 cargo_sprites_input_image = Image.open(cargo_sprites_input_path)

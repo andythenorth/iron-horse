@@ -43,8 +43,10 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
         # default body recolour to CC1, pass param to over-ride as needed
         self.body_recolour_map = kwargs.get('body_recolour_map', graphics_constants.body_recolour_CC1)
         # cargo flags
-        self.bulk = kwargs.get('bulk', False)
-        self.piece = kwargs.get('piece', False)
+        self.has_bulk = kwargs.get('bulk', False)
+        self.has_piece = kwargs.get('piece', None) is not None
+        if self.has_piece:
+            self.piece_type = kwargs.get('piece')
         # required if piece is set, cargo sprites are available in multiple lengths, set the most appropriate
         self.cargo_length = kwargs.get('cargo_length', None)
 
@@ -52,9 +54,9 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
     def generic_rows(self):
         # map unknown cargos to sprites for some other label
         # assume that piece > input_spriterow_count, it's acceptable to show something like tarps for bulk, but not gravel for piece
-        if self.piece:
+        if self.has_piece:
             return self.cargo_row_map['DFLT']
-        elif self.bulk:
+        elif self.has_bulk:
             return self.cargo_row_map['GRVL']
         else:
             # shouldn't reach here, but eh,
@@ -65,6 +67,20 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
     def nml_template(self):
         return 'vehicle_with_visible_cargo.pynml'
 
+    @property
+    def piece_cargo_maps(self):
+        # I cleaned up how piece cargo maps are *defined* in March 2018
+        # however the pre-existing pipelines and templates expect a specific data structure
+        # it's more effective right now to simply remap the new data structure onto the old
+        # the templates and pipelines can be refactored later, and this can then be simpler
+        result = []
+        sprite_names = graphics_constants.piece_vehicle_type_to_sprites_maps[self.piece_type]
+        for sprite_name in sprite_names:
+            cargo_labels = graphics_constants.piece_sprites_to_cargo_labels_maps[sprite_name]
+            map = (cargo_labels, [sprite_name])
+            result.append(map)
+        return result
+
     def get_output_row_counts_by_type(self):
         # private method because I want to reuse it in subclasses which over-ride the public method
         # provide the number of output rows per cargo group, total row count for the group is calculated later as needed
@@ -72,22 +88,23 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
         result = []
         # assume an empty state spriterow - there was an optional bool flag for this per consist but it was unused so I removed it
         result.append(('empty', 1))
-        if self.bulk:
+        if self.has_bulk:
             result.append(('bulk_cargo', 2 * len(graphics_constants.bulk_cargo_recolour_maps)))
-        if self.piece:
-            result.append(('piece_cargo', 2 * sum([len(cargo_map[1]) for cargo_map in graphics_constants.piece_cargo_maps])))
+        if self.has_piece:
+            result.append(('piece_cargo', 2 * sum([len(cargo_map[1]) for cargo_map in self.piece_cargo_maps])))
+            print(result)
         return result
 
     @property
     def cargo_row_map(self):
         result = {}
         counter = 0
-        if self.bulk:
+        if self.has_bulk:
             for cargo_map in graphics_constants.bulk_cargo_recolour_maps:
                 result[cargo_map[0]] = [counter] # list because multiple spriterows can map to a cargo label
                 counter += 1
-        if self.piece:
-            for cargo_labels, cargo_filenames in graphics_constants.piece_cargo_maps:
+        if self.has_piece:
+            for cargo_labels, cargo_filenames in self.piece_cargo_maps:
                 num_variants = len(cargo_filenames)
                 spriterow_nums = [counter + i for i in range(num_variants)]
                 for cargo_label in cargo_labels:
