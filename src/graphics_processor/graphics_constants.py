@@ -48,31 +48,10 @@ container_recolour_maps = ({170 + i: CC1 + i for i in range(8)},
                            {170 + i: CC2 + i for i in range(8)},
                            {170 + i: 8 + i for i in range(8)})
 
-# piece maps eh?
-piece_vehicle_type_to_sprites_maps = {'open':['barrels_silver', 'copper_coils', 'crates_1', 'logs',
-                                              'lumber_planks', 'paper_coils', 'steel_coils',
-                                              'tarps_2cc_1', 'tarps_blue_1', 'tarps_gold_1', 'tarps_red_1'],
-                                      'flat': ['barrels_silver', 'copper_coils', 'crates_1', 'logs',
-                                              'lumber_planks', 'paper_coils', 'steel_coils',
-                                              'tarps_2cc_1', 'tarps_blue_1', 'tarps_gold_1', 'tarps_red_1']}
-
-# cargo labels can be repeated for different sprites, they'll be used selectively by vehicle types and/or randomised as appropriate
-piece_sprites_to_cargo_labels_maps = {'crates_1': ['GOOD'],
-                                      'tarps_blue_1': ['FMSP'],
-                                      'tarps_red_1': ['BDMT'],
-                                      'tarps_2cc_1': ['DFLT'],  # see note on DFLT above
-                                      'barrels_silver': ['BEER', 'DYES', 'EOIL', 'MILK', 'OIL_', 'PETR', 'RFPR', 'WATR'],
-                                      'copper_coils': ['COPR'],
-                                      'tarps_gold_1': ['ENSP'],
-                                      'tarps_blue_1': ['FMSP'],
-                                      'paper_coils': ['PAPR'],
-                                      'steel_coils': ['STEL'],
-                                      'lumber_planks': ['WDPR'],
-                                      'logs': ['WOOD']}
-
 # shared global constants via Polar Fox library - import at end to make the this project's constants easier to work with
 # assignments are clunky - they exist to stop pyflakes tripping on 'unused' imports
 import polar_fox
 bulk_cargo_recolour_maps = polar_fox.bulk_cargo_recolour_maps
-pseudo_bulk_cargo_maps = polar_fox.pseudo_bulk_cargo_maps
+piece_sprites_to_cargo_labels_maps = polar_fox.piece_sprites_to_cargo_labels_maps
+piece_vehicle_type_to_sprites_maps = polar_fox.piece_vehicle_type_to_sprites_maps
 tanker_livery_recolour_maps = polar_fox.tanker_livery_recolour_maps

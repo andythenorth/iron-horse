@@ -176,31 +176,34 @@ bulk_cargo_recolour_maps = (("AORE", {170: 42, 171: 123, 172: 74, 173: 125, 174:
                             ("SCMT", {170: 104, 171: 3, 172: 2, 173: 70, 174: 71, 175: 72, 176: 3}),
                             ("SGBT", {170: 60, 171: 53, 172: 54, 173: 55, 174: 56, 175: 57, 176: 58}))
 
-# Piece
-# 2-tuples, containing 2 lists (['LBL1', 'LBL2'], ['filename_1', 'filename_2'])
-# this groups labels and sprites, but there's no obvious problem with that right now
-# if a label can't share a group of sprites, it can repeat some filenames, that's just inefficient, but works
-# DFLT label is a hack to support cargos with no specific sprites (including unknown cargos), and should not be added to cargo translation table
-piece_cargo_maps = ((['DFLT'], ['tarps_2cc_1']),  # see note on DFLT above
-                    (['BEER', 'DYES', 'EOIL', 'MILK', 'OIL_',
-                      'PETR', 'RFPR', 'WATR'], ['barrels_silver']),
-                    (['BDMT', ], ['tarps_red_1']),
-                    (['COPR'], ['copper_coils']),
-                    (['ENSP', ], ['tarps_gold_1']),
-                    (['FMSP'], ['tarps_blue_1']),
-                    (['GOOD'], ['crates_1']),
-                    (['PAPR'], ['paper_coils']),
-                    (['STEL'], ['steel_coils']),
-                    (['WDPR'], ['lumber_planks']),
-                    (['WOOD'], ['logs']))
+# Piece maps
+# vehicle types are mapped to specific cargo sprites
+# this permits fine-grained control, e.g. cargos that can only go in open vehicles, outsized cargo that needs flats etc
+# keep alphabetised for general quality-of-life
+piece_vehicle_type_to_sprites_maps = {'flat': ['barrels_silver', 'copper_coils', 'crates_1', 'logs',
+                                              'lumber_planks', 'paper_coils', 'steel_coils',
+                                              'tarps_2cc_1', 'tarps_blue_1', 'tarps_gold_1', 'tarps_red_1'],
+                                      'open':['barrels_silver', 'copper_coils', 'crates_1', 'logs',
+                                              'lumber_planks', 'paper_coils', 'steel_coils',
+                                              'tarps_2cc_1', 'tarps_blue_1', 'tarps_gold_1', 'tarps_red_1']}
 
-# NEEDS REFACTORING EH?
-# some 'bulk' cargos are better implemented as piece, as the bulk recolouring method isn't appropriate
-# !! it's likely that separate maps for supplies are also needed (supplies cars don't need all piece cargos), also logs/pipes?
-# !! rename as piece_open, piece_stakes, piece_supplies, piece_flat?  Or piece_rolls, piece_flows, piece_bulky, piece_simple?
-pseudo_bulk_cargo_maps = ((['FRUT'], ['fruit']),
-                          (['JAVA'], ['coffee']),
-                          (['NUTS'], ['nuts']))
+# cargo labels can be repeated for different sprites, they'll be used selectively by vehicle types and/or randomised as appropriate
+# keep alphabetised for general quality-of-life
+# DFLT label is a hack to support cargos with no specific sprites (including unknown cargos), and should not be added to cargo translation table
+piece_sprites_to_cargo_labels_maps = {'barrels_silver': ['BEER', 'DYES', 'EOIL', 'MILK', 'OIL_', 'PETR', 'RFPR', 'WATR'],
+                                      'coffee': ['JAVA'],
+                                      'copper_coils': ['COPR'],
+                                      'crates_1': ['GOOD'],
+                                      'fruit': ['FRUIT'],
+                                      'logs': ['WOOD'],
+                                      'lumber_planks': ['WDPR'],
+                                      'nuts': ['NUTS'],
+                                      'paper_coils': ['PAPR'],
+                                      'steel_coils': ['STEL'],
+                                      'tarps_blue_1': ['FMSP'],
+                                      'tarps_gold_1': ['ENSP'],
+                                      'tarps_red_1': ['BDMT'],
+                                      'tarps_2cc_1': ['DFLT']}  # see note on use of DFLT above
 
 # Tanker recolour maps
 # DFLT label is a hack to support cargos with no specific sprites (including unknown cargos), and should not be added to cargo translation table

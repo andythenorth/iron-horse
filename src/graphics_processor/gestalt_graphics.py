@@ -92,7 +92,6 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
             result.append(('bulk_cargo', 2 * len(graphics_constants.bulk_cargo_recolour_maps)))
         if self.has_piece:
             result.append(('piece_cargo', 2 * sum([len(cargo_map[1]) for cargo_map in self.piece_cargo_maps])))
-            print(result)
         return result
 
     @property
