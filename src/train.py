@@ -575,25 +575,6 @@ class SiloCarConsist(CarConsist):
         self.gestalt_graphics = GestaltGraphicsLiveryOnly(recolour_maps=graphics_constants.silo_livery_recolour_maps)
 
 
-class StakeCarConsist(CarConsist):
-    """
-    Specialist transporter for logs, pipes and similar
-    """
-    def __init__(self, **kwargs):
-        self.base_id = 'stake_car'
-        super().__init__(**kwargs)
-        self.title = self.get_wagon_title('Stake Car')
-        self.class_refit_groups = []
-        self.label_refits_allowed = ['WOOD', 'WDPR', 'PIPE'] # limited refits by design eh
-        self.label_refits_disallowed = []
-        self.default_cargos = global_constants.default_cargos['stake']
-        self.loading_speed_multiplier = 2
-        # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsCustom({'WOOD': [0]},
-                                                       'vehicle_with_visible_cargo.pynml',
-                                                       generic_rows = [0])
-
-
 class MailCarConsist(CarConsist):
     """
     Mail cars - also handle express freight, valuables.
@@ -710,6 +691,25 @@ class ReeferCarConsist(CarConsist):
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
         self.capacity_cost_factor = 1.5
         self.run_cost_divisor = 6
+
+
+class StakeCarConsist(CarConsist):
+    """
+    Specialist transporter for logs, pipes and similar
+    """
+    def __init__(self, **kwargs):
+        self.base_id = 'stake_car'
+        super().__init__(**kwargs)
+        self.title = self.get_wagon_title('Stake Car')
+        self.class_refit_groups = []
+        self.label_refits_allowed = ['WOOD', 'WDPR', 'PIPE'] # limited refits by design eh
+        self.label_refits_disallowed = []
+        self.default_cargos = global_constants.default_cargos['stake']
+        self.loading_speed_multiplier = 2
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsCustom({'WOOD': [0]},
+                                                       'vehicle_with_visible_cargo.pynml',
+                                                       generic_rows = [0])
 
 
 class SuppliesCarConsist(CarConsist):
