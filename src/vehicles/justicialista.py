@@ -2,7 +2,7 @@ from train import EngineConsist, DieselEngineUnit
 
 consist = EngineConsist(id='justicialista',
                         base_numeric_id=250,
-                        title='Justicialista',
+                        name='Justicialista',
                         power=5880,  # yes, really, it's high powered
                         speed=85,
                         intro_date=1955)

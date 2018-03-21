@@ -2,7 +2,7 @@ from train import PassengerEngineConsist, ElectricPaxUnit
 
 consist = PassengerEngineConsist(id='apt_thing',
                                  base_numeric_id=3060,
-                                 title='APT Thing',
+                                 name='APT Thing',
                                  power=1200,
                                  speed=140,
                                  type_base_running_cost_points=-32,  # dibble running costs for game balance

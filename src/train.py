@@ -30,7 +30,7 @@ class Consist(object):
         self.id = kwargs.get('id', None)
         self.vehicle_module_path = inspect.stack()[2][1]
         # setup properties for this consist (props either shared for all vehicles, or placed on lead vehicle of consist)
-        self.title = kwargs.get('title', None)
+        self._name = kwargs.get('name', None) # private var, used to store a name substr for engines, composed into name with other strings as needed
         self.base_numeric_id = kwargs.get('base_numeric_id', None)
         self._intro_date = kwargs.get('intro_date', None) # private var as wagons have their own method for automated intro dates
         self.vehicle_life = kwargs.get('vehicle_life', 40)
@@ -105,7 +105,8 @@ class Consist(object):
             result.append('reversed')
         return result
 
-    def get_name(self):
+    @property
+    def name(self):
         return "string(STR_NAME_CONSIST, string(STR_NAME_" + self.id +"), string(" + self.str_name_suffix + "))"
 
     def unit_requires_variable_power(self, vehicle):
@@ -378,7 +379,8 @@ class CarConsist(Consist):
             subtype_str = 'STR_NAME_SUFFIX_LARGE'
         return subtype_str
 
-    def get_name(self):
+    @property
+    def name(self):
         return "string(STR_NAME_CONSIST, string(" + self.get_wagon_title_class_str() + "), string(" + self.get_wagon_title_subtype_str() + "))"
 
 

@@ -2,7 +2,7 @@ from train import EngineConsist, DieselEngineUnit
 
 consist = EngineConsist(id='okapi',
                         base_numeric_id=1960,
-                        title='Okapi',
+                        name='Okapi',
                         power=1850,
                         track_type='NG',
                         speed=65,

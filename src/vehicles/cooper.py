@@ -2,7 +2,7 @@ from train import EngineConsist, DieselEngineUnit
 # GE Shovelnose - meter gauge ish
 consist = EngineConsist(id='cooper',
                         base_numeric_id=1440,
-                        title='Cooper',
+                        name='Cooper',
                         power=1000,
                         track_type='NG',
                         speed=55,

@@ -2,7 +2,7 @@ from train import PassengerEngineConsist, DieselEngineUnit
 
 consist = PassengerEngineConsist(id='tin_rocket',
                                  base_numeric_id=530,
-                                 title='Tin Rocket',
+                                 name='Tin Rocket',
                                  power=600,
                                  speed=90,
                                  type_base_running_cost_points=-36,  # dibble running costs for game balance

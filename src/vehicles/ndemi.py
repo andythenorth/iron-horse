@@ -2,7 +2,7 @@ from train import EngineConsist, SteamEngineUnit, SteamEngineTenderUnit
 
 consist = EngineConsist(id='ndemi',
                         base_numeric_id=2070,
-                        title='4-8-0 Ndemi',
+                        name='4-8-0 Ndemi',
                         power=1700,
                         track_type='NG',
                         speed=35,

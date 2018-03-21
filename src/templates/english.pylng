@@ -6,7 +6,7 @@ STR_NAME_CONSIST                                                :{STRING} ({STRI
 
 <!--! consist names (engines) -->
 <tal:consist_names repeat="consist consists">
-<tal:consist_name condition="consist.title is not None">
-STR_NAME_${consist.id}                                          :${consist.title}
+<tal:consist_name condition="consist._name is not None">
+STR_NAME_${consist.id}                                          :${consist._name}
 </tal:consist_name>
 </tal:consist_names>

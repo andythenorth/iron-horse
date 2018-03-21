@@ -2,7 +2,7 @@ from train import PassengerEngineConsist, DieselEngineUnit
 
 consist = PassengerEngineConsist(id='happy_train',
                                  base_numeric_id=100,
-                                 title='Happy Train',
+                                 name='Happy Train',
                                  power=750,
                                  # matched to fast (in this gen) freight speeds
                                  speed=110,

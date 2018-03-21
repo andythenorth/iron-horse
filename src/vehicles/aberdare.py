@@ -2,7 +2,7 @@ from train import EngineConsist, SteamEngineUnit, SteamEngineTenderUnit
 
 consist = EngineConsist(id='aberdare',
                         base_numeric_id=0,
-                        title='2-6-0 Aberdare',
+                        name='2-6-0 Aberdare',
                         power=1250,
                         tractive_effort_coefficient=0.22,
                         speed=45,

@@ -2,7 +2,7 @@ from train import EngineConsist, SteamEngineUnit, SteamEngineTenderUnit
 
 consist = EngineConsist(id='bertha',
                         base_numeric_id=70,
-                        title='0-10-0 Big Bertha',
+                        name='0-10-0 Big Bertha',
                         power=1800,
                         tractive_effort_coefficient=0.33,
                         speed=45,

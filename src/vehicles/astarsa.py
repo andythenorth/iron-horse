@@ -2,7 +2,7 @@ from train import EngineConsist, DieselEngineUnit
 # for rest of stats, look up EMD G22CW
 consist = EngineConsist(id='astarsa',
                         base_numeric_id=50,
-                        title='Astarsa',
+                        name='Astarsa',
                         power=1600,
                         speed=65,
                         type_base_buy_cost_points=-10,  # dibble buy cost for game balance

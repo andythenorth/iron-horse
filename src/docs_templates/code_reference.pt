@@ -43,7 +43,7 @@
                     <tr>
                         <td>${consist.base_numeric_id}</td>
                         <td>${consist.id}</td>
-                        <td>${consist.title}</td>
+                        <td>${doc_helper.unpack_name_string(consist)}</td>
                     </tr>
                 </tal:consists>
             </tbody>

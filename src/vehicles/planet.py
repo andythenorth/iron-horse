@@ -2,7 +2,7 @@ from train import EngineConsist, DieselEngineUnit
 
 consist = EngineConsist(id='planet',
                         base_numeric_id=360,
-                        title='Planet',
+                        name='Planet',
                         track_type='NG',
                         power=500,
                         speed=55,

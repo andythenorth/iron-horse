@@ -2,7 +2,7 @@ from train import EngineConsist, DieselEngineUnit
 # roughly an SAR 91-000 class
 consist = EngineConsist(id='bigfoot',
                         base_numeric_id=1620,
-                        title='Bigfoot',
+                        name='Bigfoot',
                         power=900,
                         track_type='NG',
                         speed=70,
