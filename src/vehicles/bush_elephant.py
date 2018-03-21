@@ -2,7 +2,7 @@ from train import EngineConsist, SteamEngineUnit, SteamEngineTenderUnit
 
 consist = EngineConsist(id='bush_elephant',
                         base_numeric_id=2000,
-                        title='2-6-6-2 Bush Elephant [Steam]',
+                        title='2-6-6-2 Bush Elephant',
                         power=2200,
                         track_type='NG',
                         speed=45,

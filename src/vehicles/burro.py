@@ -2,7 +2,7 @@ from train import EngineConsist, SteamEngineUnit
 
 consist = EngineConsist(id='burro',
                         base_numeric_id=90,
-                        title='0-4-2 Burro [Steam]',
+                        title='0-4-2 Burro',
                         power=650,
                         speed=55,
                         type_base_buy_cost_points=-10,  # dibble buy cost for game balance

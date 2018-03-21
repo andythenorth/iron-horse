@@ -2,7 +2,7 @@ from train import EngineConsist, SteamEngineUnit, SteamEngineTenderUnit
 
 consist = EngineConsist(id='super_mountain',
                         base_numeric_id=510,
-                        title='4-8-4 Super Mountain [Steam]',
+                        title='4-8-4 Super Mountain',
                         power=2100,
                         speed=75,
                         intro_date=1935)

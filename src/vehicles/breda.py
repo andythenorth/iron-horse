@@ -2,7 +2,7 @@ from train import EngineConsist, ElectricEngineUnit
 
 consist = EngineConsist(id='breda',
                         base_numeric_id=80,
-                        title='Breda E32 [Electric]',
+                        title='Breda E32',
                         power=900,
                         speed=55,
                         type_base_buy_cost_points=-10,  # dibble buy cost for game balance

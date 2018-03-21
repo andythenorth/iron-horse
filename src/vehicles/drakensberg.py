@@ -3,7 +3,7 @@ from train import EngineConsist, SteamEngineUnit, SteamEngineTenderUnit
 consist = EngineConsist(id='drakensberg',
                         # !! This vehicle needs more than one id range due to length
                         base_numeric_id=1800,
-                        title='4-8-2+2-8-4 Drakensberg [Steam]',
+                        title='4-8-2+2-8-4 Drakensberg',
                         tractive_effort_coefficient=0.25,
                         power=3000,
                         track_type='NG',

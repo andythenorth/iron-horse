@@ -2,7 +2,7 @@ from train import EngineConsist, SteamEngineUnit, SteamEngineTenderUnit
 
 consist = EngineConsist(id='americano',
                         base_numeric_id=20,
-                        title='4-4-0 Americano [Steam]',
+                        title='4-4-0 Americano',
                         power=1000,
                         speed=65,
                         intro_date=1850)

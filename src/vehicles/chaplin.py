@@ -2,7 +2,7 @@ from train import EngineConsist, SteamEngineUnit
 
 consist = EngineConsist(id='chaplin',
                         base_numeric_id=110,
-                        title='2-4-0 Chaplin [Steam]',
+                        title='2-4-0 Chaplin',
                         power=500,
                         tractive_effort_coefficient=0.2,
                         speed=65,

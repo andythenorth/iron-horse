@@ -2,7 +2,7 @@ from train import MailEngineConsist, DieselEngineUnit
 
 consist = MailEngineConsist(id='plastic_postbox',
                             base_numeric_id=3080,
-                            title='Plastic Postbox [Diesel]',
+                            title='Plastic Postbox',
                             power=720,
                             speed=90,
                             type_base_running_cost_points=-32,  # dibble running costs for game balance

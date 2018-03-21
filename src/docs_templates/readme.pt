@@ -1,7 +1,5 @@
 --- THIS README NEEDS RE-WRITING :o ---
 
-<tal:consists_list repeat="consist consists">${consist.title} ${' ' * (28-len(consist.title))} Introduced: ${consist.intro_date};</tal:consists_list>
-
 My Fancy NewGRF Name
 -----------------------------------
 

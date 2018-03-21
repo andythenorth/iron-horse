@@ -105,23 +105,11 @@ class Consist(object):
             result.append('reversed')
         return result
 
-    def get_name_substr(self):
-        # relies on name being in format "Foo [Bar]" for Name [Type Suffix]
-        name = self.title.split('[')[0]
-        # enforce a space if name is not empty
-        if len(name) is not 0:
-            name = name + ' '
-        return name
-
     def get_str_name_suffix(self):
-        # used in vehicle name string only, relies on name property value being in format "Foo [Bar]" for Name [Type Suffix]
-        type_suffix = self.title.split('[')[1].split(']')[0]
-        type_suffix = type_suffix.upper()
-        type_suffix = '_'.join(type_suffix.split(' '))
-        return 'STR_NAME_SUFFIX_' + type_suffix
+        return 'STR_NAME_SUFFIX_STEAM'
 
     def get_name(self):
-        return "string(STR_NAME_" + self.id +", string(" + self.get_str_name_suffix() + "))"
+        return "string(STR_NAME_CONSIST, string(STR_NAME_" + self.id +"), string(" + self.get_str_name_suffix() + "))"
 
     def unit_requires_variable_power(self, vehicle):
         if self.power_by_railtype is not None and vehicle.is_lead_unit_of_consist:
@@ -381,13 +369,20 @@ class CarConsist(Consist):
         result = '_'.join((id_base, kwargs['roster'], 'gen', str(kwargs['gen']) + str(kwargs['subtype'])))
         return result
 
-    def get_wagon_title(self, class_title):
-        if self.subtype == "C":
-            return '['+ class_title + ' Large]'
-        elif self.subtype == "B":
-            return '['+ class_title + ' Medium]'
-        else:
-            return '['+ class_title + ' Small]'
+    def get_wagon_title_class_str(self):
+        return 'STR_NAME_SUFFIX_' + self.base_id.upper()
+
+    def get_wagon_title_subtype_str(self):
+        if self.subtype == 'A':
+            subtype_str = 'STR_NAME_SUFFIX_SMALL'
+        elif self.subtype == 'B':
+            subtype_str = 'STR_NAME_SUFFIX_MEDIUM'
+        elif self.subtype == 'C':
+            subtype_str = 'STR_NAME_SUFFIX_LARGE'
+        return subtype_str
+
+    def get_name(self):
+        return "string(STR_NAME_CONSIST, string(" + self.get_wagon_title_class_str() + "), string(" + self.get_wagon_title_subtype_str() + "))"
 
 
 class BoxCarConsist(CarConsist):
@@ -397,7 +392,6 @@ class BoxCarConsist(CarConsist):
     def __init__(self, **kwargs):
         self.base_id = 'box_car'
         super().__init__(**kwargs)
-        self.title = self.get_wagon_title('Box Car')
         self.class_refit_groups = ['packaged_freight']
         self.label_refits_allowed = global_constants.allowed_refits_by_label['box_freight']
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_freight_special_cases']
@@ -411,7 +405,6 @@ class CabooseCarConsist(CarConsist):
     def __init__(self, **kwargs):
         self.base_id = 'caboose_car'
         super().__init__(**kwargs)
-        self.title = self.get_wagon_title('Caboose Car')
         self.speed_class = None # no speed limit
         self.class_refit_groups = [] # refit nothing, don't mess with this, it breaks auto-replace
         self.label_refits_allowed = [] # no specific labels needed
@@ -427,7 +420,6 @@ class CoveredHopperCarConsist(CarConsist):
     def __init__(self, **kwargs):
         self.base_id = 'covered_hopper_car'
         super().__init__(**kwargs)
-        self.title = self.get_wagon_title('Covered Hopper Car')
         self.class_refit_groups = [] # no classes, use explicit labels
         self.label_refits_allowed = ['GRAI', 'WHEA', 'MAIZ', 'SUGR', 'FMSP', 'RFPR', 'CLAY', 'BDMT', 'BEAN', 'NITR', 'RUBR', 'SAND', 'POTA', 'QLME', 'SASH', 'CMNT', 'KAOL', 'FERT', 'SALT', 'CBLK']
         self.label_refits_disallowed = []
@@ -442,7 +434,6 @@ class DumpCarConsist(CarConsist):
     def __init__(self, **kwargs):
         self.base_id = 'dump_car'
         super().__init__(**kwargs)
-        self.title = self.get_wagon_title('Dump Car')
         self.class_refit_groups = ['dump_freight']
         self.label_refits_allowed = [] # no specific labels needed
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_dump_bulk']
@@ -461,7 +452,6 @@ class EdiblesTankCarConsist(CarConsist):
         super().__init__(**kwargs)
         # tank cars are unrealistically autorefittable, and at no cost
         # Pikka: if people complain that it's unrealistic, tell them "don't do it then"
-        self.title = self.get_wagon_title('Edibles Tank Car')
         self.speed_class = 'fast_freight'
         self.class_refit_groups = ['liquids']
         self.label_refits_allowed = ['FOOD']
@@ -479,7 +469,6 @@ class FlatCarConsist(CarConsist):
     def __init__(self, **kwargs):
         self.base_id = 'flat_car'
         super().__init__(**kwargs)
-        self.title = self.get_wagon_title('Flat Car')
         self.class_refit_groups = ['flatbed_freight']
         self.label_refits_allowed = ['GOOD']
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_flatbed_freight']
@@ -498,7 +487,6 @@ class FruitVegCarConsist(CarConsist):
     def __init__(self, **kwargs):
         self.base_id = 'fruit_veg_car'
         super().__init__(**kwargs)
-        self.title = self.get_wagon_title('Fruit Car')
         self.class_refit_groups = []
         self.label_refits_allowed = ['FRUT', 'BEAN', 'CASS', 'JAVA', 'NUTS']
         self.label_refits_disallowed = []
@@ -514,7 +502,6 @@ class HopperCarConsist(CarConsist):
     def __init__(self, **kwargs):
         self.base_id = 'hopper_car'
         super().__init__(**kwargs)
-        self.title = self.get_wagon_title('Hopper Car')
         self.class_refit_groups = ['dump_freight']
         self.label_refits_allowed = [] # none needed
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_dump_bulk']
@@ -532,7 +519,6 @@ class IntermodalCarConsist(CarConsist):
     def __init__(self, **kwargs):
         self.base_id = 'intermodal_car'
         super().__init__(**kwargs)
-        self.title = self.get_wagon_title('Intermodal Car')
         self.class_refit_groups = ['express_freight', 'packaged_freight']
         self.label_refits_allowed = global_constants.allowed_refits_by_label['box_freight']
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_freight_special_cases']
@@ -547,7 +533,6 @@ class LivestockCarConsist(CarConsist):
     def __init__(self, **kwargs):
         self.base_id = 'livestock_car'
         super().__init__(**kwargs)
-        self.title = self.get_wagon_title('Livestock Car')
         self.class_refit_groups = []
         self.label_refits_allowed = ['LVST']
         self.label_refits_disallowed = []
@@ -564,7 +549,6 @@ class SiloCarConsist(CarConsist):
     def __init__(self, **kwargs):
         self.base_id = 'silo_car'
         super().__init__(**kwargs)
-        self.title = self.get_wagon_title('Silo Car')
         self.class_refit_groups = [] # no classes, use explicit labels
         self.label_refits_allowed = ['FOOD', 'SUGR', 'FMSP', 'RFPR', 'BDMT', 'RUBR', 'QLME', 'SASH', 'CMNT']
         self.label_refits_disallowed = []
@@ -582,7 +566,6 @@ class MailCarConsist(CarConsist):
     def __init__(self, **kwargs):
         self.base_id = 'mail_car'
         super().__init__(**kwargs)
-        self.title = self.get_wagon_title('Mail Car')
         self.speed_class = 'pax_mail'
         self.class_refit_groups = ['mail', 'express_freight']
         self.label_refits_allowed = [] # no specific labels needed
@@ -601,7 +584,6 @@ class MetalCarConsist(CarConsist):
     def __init__(self, **kwargs):
         self.base_id = 'metal_car'
         super().__init__(**kwargs)
-        self.title = self.get_wagon_title('Metal Car')
         self.class_refit_groups = []
         self.label_refits_allowed = ['STEL', 'COPR', 'IRON', 'SLAG', 'METL']
         self.label_refits_disallowed = []
@@ -619,7 +601,6 @@ class OpenCarConsist(CarConsist):
     def __init__(self, **kwargs):
         self.base_id = 'open_car'
         super().__init__(**kwargs)
-        self.title = self.get_wagon_title('Open Car')
         self.class_refit_groups = ['all_freight']
         self.label_refits_allowed = [] # no specific labels needed
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_freight_special_cases']
@@ -656,7 +637,6 @@ class PassengerCarConsist(PassengerCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = 'passenger_car'
         super().__init__(**kwargs)
-        self.title = '[Passenger Car]'
         self.capacity_cost_factor = 2
         self.run_cost_divisor = 5
 
@@ -669,7 +649,6 @@ class PassengerLuxuryCarConsist(PassengerCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = 'luxury_passenger_car'
         super().__init__(**kwargs)
-        self.title = '[Luxury Passenger Car]'
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
         self.capacity_cost_factor = 3
         self.run_cost_divisor = 3
@@ -682,7 +661,6 @@ class ReeferCarConsist(CarConsist):
     def __init__(self, **kwargs):
         self.base_id = 'reefer_car'
         super().__init__(**kwargs)
-        self.title = self.get_wagon_title('Reefer Car')
         self.speed_class = 'fast_freight'
         self.class_refit_groups = ['refrigerated_freight']
         self.label_refits_allowed = [] # no specific labels needed
@@ -700,7 +678,6 @@ class StakeCarConsist(CarConsist):
     def __init__(self, **kwargs):
         self.base_id = 'stake_car'
         super().__init__(**kwargs)
-        self.title = self.get_wagon_title('Stake Car')
         self.class_refit_groups = []
         self.label_refits_allowed = ['WOOD', 'WDPR', 'PIPE'] # limited refits by design eh
         self.label_refits_disallowed = []
@@ -719,7 +696,6 @@ class SuppliesCarConsist(CarConsist):
     def __init__(self, **kwargs):
         self.base_id = 'supplies_car'
         super().__init__(**kwargs)
-        self.title = self.get_wagon_title('Supplies Car')
         self.class_refit_groups = []
         self.label_refits_allowed = ['ENSP', 'FMSP', 'VEHI']
         self.label_refits_disallowed = []
@@ -733,7 +709,6 @@ class TankCarConsist(CarConsist):
     def __init__(self, **kwargs):
         self.base_id = 'tank_car'
         super().__init__(**kwargs)
-        self.title = self.get_wagon_title('Tank Car')
         # tank cars are unrealistically autorefittable, and at no cost
         # Pikka: if people complain that it's unrealistic, tell them "don't do it then"
         # they also change livery at stations if refitted between certain cargo types <shrug>
@@ -755,7 +730,6 @@ class VehicleTransporterCarConsist(CarConsist):
     def __init__(self, **kwargs):
         self.base_id = 'vehicle_transporter_car'
         super().__init__(**kwargs)
-        self.title = self.get_wagon_title('Vehicle Transporter Car')
         self.class_refit_groups = []
         self.label_refits_allowed = ['VEHI']
         self.label_refits_disallowed = []

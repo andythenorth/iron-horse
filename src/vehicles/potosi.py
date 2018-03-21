@@ -2,7 +2,7 @@ from train import EngineConsist, SteamEngineUnit, SteamEngineTenderUnit
 
 consist = EngineConsist(id='potosi',
                         base_numeric_id=370,
-                        title='4-8-2+2-8-4 Potosi [Steam]',
+                        title='4-8-2+2-8-4 Potosi',
                         power=4500,
                         speed=60,
                         type_base_buy_cost_points=5,  # dibble buy cost for game balance

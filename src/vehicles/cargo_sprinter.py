@@ -3,7 +3,7 @@ from train import EngineConsist, CargoSprinter
 # cargo_sprinter is full of special cases, lots of yak-shaving to get it done
 consist = EngineConsist(id='cargo_sprinter',
                         base_numeric_id=100,
-                        title='Cargo Sprinter [Diesel]',
+                        title='Cargo Sprinter',
                         power=1000,
                         speed=100,
                         # cargo sprinter is hard to balance stats for, it needs to be fast, cheap, powerful

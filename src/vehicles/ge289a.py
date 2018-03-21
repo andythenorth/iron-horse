@@ -2,7 +2,7 @@ from train import EngineConsist, ElectricEngineUnit
 
 consist = EngineConsist(id='ge289a',
                         base_numeric_id=1460,
-                        title='GE 289a Boxcab [Electric]',
+                        title='GE 289a Boxcab',
                         power=1200,
                         track_type='NG',
                         speed=45,

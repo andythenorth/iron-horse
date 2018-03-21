@@ -2,7 +2,7 @@ from train import EngineConsist, SteamEngineUnit, SteamEngineTenderUnit
 
 consist = EngineConsist(id='hyena',
                         base_numeric_id=2080,
-                        title='4-6-2 Hyena [Steam]',
+                        title='4-6-2 Hyena',
                         power=1400,
                         tractive_effort_coefficient=0.19,
                         track_type='NG',

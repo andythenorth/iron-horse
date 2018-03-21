@@ -2,7 +2,7 @@ from train import EngineConsist, DieselEngineUnit
 # class 70-ish thing
 consist = EngineConsist(id='toaster',
                         base_numeric_id=990,
-                        title='Toaster [Diesel]',
+                        title='Toaster',
                         power=4200,
                         # dibble for game balance, assume super-slip control
                         tractive_effort_coefficient=0.4,

@@ -2,7 +2,7 @@ from train import EngineConsist, ElectricEngineUnit
 
 consist = EngineConsist(id='ut440',
                         base_numeric_id=440,
-                        title='UT440 [Electric]',
+                        title='UT440',
                         power=900,
                         speed=55,
                         type_base_buy_cost_points=-10,  # dibble buy cost for game balance

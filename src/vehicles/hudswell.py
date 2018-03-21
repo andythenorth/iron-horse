@@ -2,7 +2,7 @@ from train import EngineConsist, SteamEngineUnit
 
 consist = EngineConsist(id='hudswell',
                         base_numeric_id=240,
-                        title='2-6-4 Hudswell [Steam]',
+                        title='2-6-4 Hudswell',
                         track_type='NG',
                         power=650,
                         tractive_effort_coefficient=0.2,

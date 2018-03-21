@@ -2,7 +2,7 @@ from train import EngineConsist, SteamEngineUnit, SteamEngineTenderUnit
 
 consist = EngineConsist(id='lemon',
                         base_numeric_id=270,
-                        title='4-8-0 Lemon [Steam]',
+                        title='4-8-0 Lemon',
                         power=2400,
                         tractive_effort_coefficient=0.29,
                         type_base_running_cost_points=30,  # dibble running costs for game balance

@@ -2,7 +2,7 @@ from train import MailEngineConsist, MetroUnit
 
 consist = MailEngineConsist(id='tyburn',
                             base_numeric_id=2190,
-                            title='Tyburn [Metro Train]',
+                            title='Tyburn',
                             track_type='METRO',
                             power=900,
                             speed=55,

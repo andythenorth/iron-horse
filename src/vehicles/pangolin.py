@@ -2,7 +2,7 @@ from train import EngineConsist, SteamEngineUnit, SteamEngineTenderUnit
 
 consist = EngineConsist(id='pangolin',
                         base_numeric_id=2060,
-                        title='2-6-0 Pangolin [Steam]',
+                        title='2-6-0 Pangolin',
                         power=1200,
                         track_type='NG',
                         speed=45,

@@ -2,7 +2,7 @@ from train import EngineConsist, DieselEngineUnit
 # for rest of stats, look up Krauss Maffei Brazil
 consist = EngineConsist(id='krauss',
                         base_numeric_id=260,
-                        title='Krauss [Diesel]',
+                        title='Krauss',
                         track_type='NG',
                         power=3500,
                         speed=70,

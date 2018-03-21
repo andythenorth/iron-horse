@@ -2,7 +2,7 @@ from train import PassengerEngineConsist, MetroUnit
 
 consist = PassengerEngineConsist(id='serpentine',
                                  base_numeric_id=460,
-                                 title='Serpentine [Metro Train]',
+                                 title='Serpentine',
                                  track_type='METRO',
                                  power=600,
                                  speed=40,

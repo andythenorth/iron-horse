@@ -2,7 +2,11 @@ STR_GRF_NAME                                                    :Iron Horse ${ma
 <!--! empty string is not translated :) -->
 STR_EMPTY                                                       :
 
-<!--! consist names -->
-<tal:build_consist_names repeat="consist consists">
-STR_NAME_${consist.id}                                          :${consist.get_name_substr()}{STRING}
-</tal:build_consist_names>
+STR_NAME_CONSIST                                                :{STRING} ({STRING})
+
+<!--! consist names (engines) -->
+<tal:consist_names repeat="consist consists">
+<tal:consist_name condition="consist.title is not None">
+STR_NAME_${consist.id}                                          :${consist.title}
+</tal:consist_name>
+</tal:consist_names>

@@ -2,7 +2,7 @@ from train import MailEngineConsist, MetroUnit
 
 consist = MailEngineConsist(id='longwater',
                             base_numeric_id=290,
-                            title='Longwater [Metro Train]',
+                            title='Longwater',
                             track_type='METRO',
                             power=600,
                             speed=40,

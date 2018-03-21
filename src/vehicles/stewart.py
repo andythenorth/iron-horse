@@ -2,7 +2,7 @@ from train import EngineConsist, SteamEngineUnit
 
 consist = EngineConsist(id='stewart',
                         base_numeric_id=490,
-                        title='4-4-0 Stewart [Steam]',
+                        title='4-4-0 Stewart',
                         track_type='NG',
                         power=350,
                         tractive_effort_coefficient=0.2,

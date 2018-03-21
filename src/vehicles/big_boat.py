@@ -2,7 +2,7 @@ from train import EngineConsist, DieselEngineUnit
 
 consist = EngineConsist(id='big_boat',
                         base_numeric_id=1600,
-                        title='Big Boat [Diesel]',
+                        title='Big Boat',
                         power=4500,
                         # dibble up TE, modern diesels can cheat adhesion using wheel slip
                         tractive_effort_coefficient=0.35,
