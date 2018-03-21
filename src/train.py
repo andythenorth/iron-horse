@@ -539,23 +539,6 @@ class LivestockCarConsist(CarConsist):
         self.run_cost_divisor = 7
 
 
-class SiloCarConsist(CarConsist):
-    """
-    Powder bulk cargos needing protection and special equipment for unloading.
-    """
-    def __init__(self, **kwargs):
-        self.base_id = 'silo_car'
-        super().__init__(**kwargs)
-        self.class_refit_groups = [] # no classes, use explicit labels
-        self.label_refits_allowed = ['FOOD', 'SUGR', 'FMSP', 'RFPR', 'BDMT', 'RUBR', 'QLME', 'SASH', 'CMNT']
-        self.label_refits_disallowed = []
-        self.default_cargos = global_constants.default_cargos['silo']
-        self.loading_speed_multiplier = 2
-        self.capacity_cost_factor = 1.5
-        # Grpahics configuration
-        self.gestalt_graphics = GestaltGraphicsLiveryOnly(recolour_maps=graphics_constants.silo_livery_recolour_maps)
-
-
 class MailCarConsist(CarConsist):
     """
     Mail cars - also handle express freight, valuables.
@@ -666,6 +649,23 @@ class ReeferCarConsist(CarConsist):
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
         self.capacity_cost_factor = 1.5
         self.run_cost_divisor = 6
+
+
+class SiloCarConsist(CarConsist):
+    """
+    Powder bulk cargos needing protection and special equipment for unloading.
+    """
+    def __init__(self, **kwargs):
+        self.base_id = 'silo_car'
+        super().__init__(**kwargs)
+        self.class_refit_groups = [] # no classes, use explicit labels
+        self.label_refits_allowed = ['FOOD', 'SUGR', 'FMSP', 'RFPR', 'BDMT', 'RUBR', 'QLME', 'SASH', 'CMNT']
+        self.label_refits_disallowed = []
+        self.default_cargos = global_constants.default_cargos['silo']
+        self.loading_speed_multiplier = 2
+        self.capacity_cost_factor = 1.5
+        # Grpahics configuration
+        self.gestalt_graphics = GestaltGraphicsLiveryOnly(recolour_maps=graphics_constants.silo_livery_recolour_maps)
 
 
 class StakeCarConsist(CarConsist):
