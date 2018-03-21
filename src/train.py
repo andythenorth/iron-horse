@@ -472,9 +472,6 @@ class FlatCarConsist(CarConsist):
         self.default_cargos = global_constants.default_cargos['flat']
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(piece='flat')
-        print('Flatcar graphics not handling previous base/pseudo-piece split currently')
-        #self.gestalt_graphics.piece_groups = ['base', 'pseudo_bulk']
-        # see open cars
 
 
 class FruitVegCarConsist(CarConsist):
@@ -589,10 +586,6 @@ class OpenCarConsist(CarConsist):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(bulk=True,
                                                             piece='open')
-        print('Open car graphics not handling previous base/pseudo-piece split currently')
-        #self.gestalt_graphics.piece_groups = ['base', 'pseudo_bulk']
-        # see http://dev.openttdcoop.org/projects/iron-horse/repository/revisions/6bf25122b9b6/diff/src/graphics_processor/visible_cargo.py
-        # and http://dev.openttdcoop.org/projects/iron-horse/repository/revisions/6bf25122b9b6/diff/src/train.py
 
 
 class PassengerCarConsistBase(CarConsist):
