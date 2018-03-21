@@ -34,7 +34,7 @@
                                              width="${2 * global_constants.buy_menu_sprite_width}"
                                              height="${2 * global_constants.buy_menu_sprite_height}" />
                                     </td>
-                                    <td>${consist.get_name()}  <!--!${consist.get_name_substr()} ${base_lang_strings[consist.get_str_name_suffix()]}--></td>
+                                    <td>${doc_helper.unpack_name_string(consist)}</td>
                                     <td>${consist.intro_date}</td>
                                     <td>${consist.power}</td>
                                     <td>${consist.speed}</td>
@@ -64,7 +64,7 @@
                                                  width="${2 * global_constants.buy_menu_sprite_width}"
                                                  height="${2 * global_constants.buy_menu_sprite_height}" />
                                         </td>
-                                        <td>${consist.get_name()}<!--!${consist.get_name_substr()} ${base_lang_strings[consist.get_str_name_suffix()]}--></td>
+                                        <td>${doc_helper.unpack_name_string(consist)}</td>
                                         <td>${consist.intro_date}</td>
                                         <td>${sum([unit.default_cargo_capacity for unit in consist.units])}</td>
                                         <td>${consist.speed}</td>

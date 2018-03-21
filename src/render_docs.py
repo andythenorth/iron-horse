@@ -83,6 +83,17 @@ class DocHelper(object):
         result['subclass_props'].append(prop_name)
         return result
 
+    def unpack_name_string(self, consist):
+        #<!--!${consist.get_name_substr()} ${base_lang_strings[consist.get_str_name_suffix()]}-->
+        substrings = consist.get_name().split('string(')
+        # engines have an untranslated title defined, wagons use a translated string
+        if consist.title is not None:
+            name = consist.title
+        else:
+            name = base_lang_strings[substrings[2][0:-3]]
+        suffix = base_lang_strings[substrings[3][0:-2]]
+        return name + ' (' + suffix + ')'
+
     def get_props_to_print_in_code_reference(self, subclass):
         props_to_print = {}
         for vehicle in self.get_vehicles_by_subclass()[subclass]:
