@@ -13,13 +13,9 @@ STR_PARAM_ROSTER_OPTION_1                                       :Ijzeren lama
 STR_PARAM_ROSTER_OPTION_2                                       :Ijzeren antilope
 
 # keep these alphabetised, easier
-STR_NAME_SUFFIX_BATTERY                                         :(Batterij)
-STR_NAME_SUFFIX_CAR                                             :Wagon
 STR_NAME_SUFFIX_DIESEL                                          :(Diesel)
 STR_NAME_SUFFIX_ELECTRIC                                        :(Elektrisch)
 STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Elektrisch-Diesel)
-STR_NAME_SUFFIX_METRO_CAR                                       :Wagen (Metro)
-STR_NAME_SUFFIX_METRO_TRAIN                                     :(Metro)
 STR_NAME_SUFFIX_STEAM                                           :(Stoom)
 
 # the 'small x car' etc isn't wise to split to substrings, the size modifier might vary in context per language
@@ -29,7 +25,6 @@ STR_NAME_SUFFIX_CABOOSE_CAR                                     :Personeelswagon
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Overdekte stortgoedwagon
 STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Voedseltankwagon
 STR_NAME_SUFFIX_FLAT_CAR                                        :Platte wagon
-STR_NAME_SUFFIX_FRUIT_CAR                                       :Fruitwagon
 STR_NAME_SUFFIX_HOPPER_CAR                                      :Stortgoedwagon
 STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Veewagon
 STR_NAME_SUFFIX_MAIL_CAR                                        :Postwagon

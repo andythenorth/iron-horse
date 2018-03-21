@@ -14,13 +14,9 @@ STR_PARAM_ROSTER_OPTION_1                                       :Llama de hierro
 STR_PARAM_ROSTER_OPTION_2                                       :Antílope de hierro
 
 # keep these alphabetised, easier
-STR_NAME_SUFFIX_BATTERY                                         :(batería)
-STR_NAME_SUFFIX_CAR                                             :Vagón
 STR_NAME_SUFFIX_DIESEL                                          :(diésel)
 STR_NAME_SUFFIX_ELECTRIC                                        :(eléctrica)
 STR_NAME_SUFFIX_ELECTRODIESEL                                   :(diésel eléctrica)
-STR_NAME_SUFFIX_METRO_CAR                                       :Coche (metro)
-STR_NAME_SUFFIX_METRO_TRAIN                                     :(metro)
 STR_NAME_SUFFIX_STEAM                                           :(vapor)
 
 # the 'small x car' etc isn't wise to split to substrings, the size modifier might vary in context per language
@@ -30,7 +26,6 @@ STR_NAME_SUFFIX_CABOOSE_CAR                                     :Cabús
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Tolva cubierta
 STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Cisterna de alimentos
 STR_NAME_SUFFIX_FLAT_CAR                                        :Plataforma
-STR_NAME_SUFFIX_FRUIT_CAR                                       :Vagón frutero
 STR_NAME_SUFFIX_HOPPER_CAR                                      :Tolva
 STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Vagón de ganado
 STR_NAME_SUFFIX_MAIL_CAR                                        :Vagón postal

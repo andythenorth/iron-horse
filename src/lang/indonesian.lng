@@ -8,7 +8,6 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Hebat
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Terlalu banyak
 
 # keep these alphabetised, easier
-STR_NAME_SUFFIX_CAR                                             :Gerbong
 STR_NAME_SUFFIX_DIESEL                                          :(Diesel)
 STR_NAME_SUFFIX_ELECTRIC                                        :(Listrik)
 STR_NAME_SUFFIX_STEAM                                           :(Uap)

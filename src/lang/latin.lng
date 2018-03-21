@@ -12,13 +12,9 @@ STR_PARAM_ROSTER                                                :Vehicula Adhibe
 STR_PARAM_ROSTER_DESC                                           :Eligere hamaxostichos adhibendos.
 
 # keep these alphabetised, easier
-STR_NAME_SUFFIX_BATTERY                                         :(Pilae Electricae)
-STR_NAME_SUFFIX_CAR                                             :Currus
 STR_NAME_SUFFIX_DIESEL                                          :(Diseliana)
 STR_NAME_SUFFIX_ELECTRIC                                        :(Electrica)
 STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Electrica Diselianaque)
-STR_NAME_SUFFIX_METRO_CAR                                       :Currus (Metropolitanus)
-STR_NAME_SUFFIX_METRO_TRAIN                                     :(Metropolitana)
 STR_NAME_SUFFIX_STEAM                                           :(Vaporaria)
 
 # the 'small x car' etc isn't wise to split to substrings, the size modifier might vary in context per language

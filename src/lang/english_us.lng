@@ -12,13 +12,9 @@ STR_PARAM_ROSTER_OPTION_0                                       :A horse! A hors
 STR_PARAM_ROSTER_OPTION_1                                       :Caballada
 
 # keep these alphabetised, easier
-STR_NAME_SUFFIX_BATTERY                                         :(Battery)
-STR_NAME_SUFFIX_CAR                                             :Car
 STR_NAME_SUFFIX_DIESEL                                          :(Diesel)
 STR_NAME_SUFFIX_ELECTRIC                                        :(Electric)
 STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Electro-Diesel)
-STR_NAME_SUFFIX_METRO_CAR                                       :Car (Subway)
-STR_NAME_SUFFIX_METRO_TRAIN                                     :(Subway)
 STR_NAME_SUFFIX_STEAM                                           :(Steam)
 
 # the 'small x car' etc isn't wise to split to substrings, the size modifier might vary in context per language

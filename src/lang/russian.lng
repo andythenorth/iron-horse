@@ -15,13 +15,9 @@ STR_PARAM_ROSTER_OPTION_1                                       :Железна�
 STR_PARAM_ROSTER_OPTION_2                                       :Железная Антилопа
 
 # keep these alphabetised, easier
-STR_NAME_SUFFIX_BATTERY                                         :(Энергоблок)
-STR_NAME_SUFFIX_CAR                                             :Вагон
 STR_NAME_SUFFIX_DIESEL                                          :(Тепловоз)
 STR_NAME_SUFFIX_ELECTRIC                                        :(Электровоз)
 STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Электротепловоз)
-STR_NAME_SUFFIX_METRO_CAR                                       :Вагон (Метро)
-STR_NAME_SUFFIX_METRO_TRAIN                                     :(Метро)
 STR_NAME_SUFFIX_STEAM                                           :(Паровоз)
 
 # the 'small x car' etc isn't wise to split to substrings, the size modifier might vary in context per language
@@ -31,7 +27,6 @@ STR_NAME_SUFFIX_CABOOSE_CAR                                     :Тормозн�
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Закрытый хоппер
 STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Цистерна для продуктов
 STR_NAME_SUFFIX_FLAT_CAR                                        :Платформа
-STR_NAME_SUFFIX_FRUIT_CAR                                       :Продуктовый вагон
 STR_NAME_SUFFIX_HOPPER_CAR                                      :Хоппер
 STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Скотовоз
 STR_NAME_SUFFIX_MAIL_CAR                                        :Почтовый вагон
