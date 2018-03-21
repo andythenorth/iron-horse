@@ -105,11 +105,8 @@ class Consist(object):
             result.append('reversed')
         return result
 
-    def get_str_name_suffix(self):
-        return 'STR_NAME_SUFFIX_STEAM'
-
     def get_name(self):
-        return "string(STR_NAME_CONSIST, string(STR_NAME_" + self.id +"), string(" + self.get_str_name_suffix() + "))"
+        return "string(STR_NAME_CONSIST, string(STR_NAME_" + self.id +"), string(" + self.str_name_suffix + "))"
 
     def unit_requires_variable_power(self, vehicle):
         if self.power_by_railtype is not None and vehicle.is_lead_unit_of_consist:
@@ -955,6 +952,7 @@ class SteamEngineUnit(Train):
         super().__init__(**kwargs)
         self.engine_class = 'ENGINE_CLASS_STEAM'
         self.visual_effect = 'VISUAL_EFFECT_STEAM'
+        self.consist.str_name_suffix = 'STR_NAME_SUFFIX_STEAM'
 
     @property
     def visual_effect_offset(self):
@@ -979,6 +977,7 @@ class DieselEngineUnit(Train):
         super().__init__(**kwargs)
         self.engine_class = 'ENGINE_CLASS_DIESEL'
         self.visual_effect = 'VISUAL_EFFECT_DIESEL'
+        self.consist.str_name_suffix = 'STR_NAME_SUFFIX_DIESEL'
 
 
 class ElectricEngineUnit(Train):
@@ -998,6 +997,7 @@ class ElectricEngineUnit(Train):
             kwargs['consist'].track_type = "ELRL"
         self.engine_class = 'ENGINE_CLASS_ELECTRIC'
         self.visual_effect = 'VISUAL_EFFECT_ELECTRIC'
+        self.consist.str_name_suffix = 'STR_NAME_SUFFIX_ELECTRIC'
 
 
 class ElectroDieselEngineUnit(Train):
@@ -1009,6 +1009,7 @@ class ElectroDieselEngineUnit(Train):
         self.engine_class = 'ENGINE_CLASS_DIESEL'
         self.visual_effect = 'VISUAL_EFFECT_DIESEL'
         self.consist.visual_effect_override_by_railtype = {'ELRL': 'VISUAL_EFFECT_ELECTRIC'}
+        self.consist.str_name_suffix = 'STR_NAME_SUFFIX_ELECTRODIESEL'
 
 
 class ElectricPaxUnit(Train):
@@ -1028,6 +1029,7 @@ class ElectricPaxUnit(Train):
             kwargs['consist'].track_type = "ELRL"
         self.engine_class = 'ENGINE_CLASS_ELECTRIC'
         self.visual_effect = 'VISUAL_EFFECT_ELECTRIC'
+        self.consist.str_name_suffix = 'STR_NAME_SUFFIX_ELECTRIC'
         self.tilt_bonus = True
 
 
@@ -1040,6 +1042,7 @@ class MetroUnit(Train):
         self.loading_speed_multiplier = 2
         self.engine_class = 'ENGINE_CLASS_ELECTRIC'
         self.visual_effect = 'VISUAL_EFFECT_ELECTRIC'
+        self.consist.str_name_suffix = 'STR_NAME_SUFFIX_METRO'
 
 
 class CargoSprinter(Train):
