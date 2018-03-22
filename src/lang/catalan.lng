@@ -18,8 +18,9 @@ STR_NAME_SUFFIX_ELECTRIC                                        :(Elèctrica)
 STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Electro-Dièsel)
 STR_NAME_SUFFIX_STEAM                                           :(Vapor)
 
-# the 'small x car' etc isn't wise to split to substrings, the size modifier might vary in context per language
-# so just write out 3 full strings for each car type
+# size suffixes
+
+# wagon class suffixes
 STR_NAME_SUFFIX_BOX_CAR                                         :Furgó
 STR_NAME_SUFFIX_CABOOSE_CAR                                     :Furgó de Cua
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Cotxe cobert amb tremuja

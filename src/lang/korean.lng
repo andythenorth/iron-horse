@@ -19,8 +19,9 @@ STR_NAME_SUFFIX_ELECTRIC                                        :(전기)
 STR_NAME_SUFFIX_ELECTRODIESEL                                   :(전기-디젤)
 STR_NAME_SUFFIX_STEAM                                           :(증기)
 
-# the 'small x car' etc isn't wise to split to substrings, the size modifier might vary in context per language
-# so just write out 3 full strings for each car type
+# size suffixes
+
+# wagon class suffixes
 STR_NAME_SUFFIX_BOX_CAR                                         :유개차
 STR_NAME_SUFFIX_CABOOSE_CAR                                     :차장차
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :유개호퍼차

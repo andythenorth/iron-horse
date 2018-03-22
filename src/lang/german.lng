@@ -17,8 +17,9 @@ STR_NAME_SUFFIX_ELECTRIC                                        :(Elektrisch)
 STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Elektro-Diesel)
 STR_NAME_SUFFIX_STEAM                                           :(Dampf)
 
-# the 'small x car' etc isn't wise to split to substrings, the size modifier might vary in context per language
-# so just write out 3 full strings for each car type
+# size suffixes
+
+# wagon class suffixes
 STR_NAME_SUFFIX_BOX_CAR                                         :geschlossener Wagen
 STR_NAME_SUFFIX_CABOOSE_CAR                                     :Bremserwagen
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :gedeckter Schüttgutwagen

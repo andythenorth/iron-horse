@@ -20,8 +20,9 @@ STR_NAME_SUFFIX_ELECTRIC                                        :(Električni)
 STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Elektro-dizel)
 STR_NAME_SUFFIX_STEAM                                           :(Para)
 
-# the 'small x car' etc isn't wise to split to substrings, the size modifier might vary in context per language
-# so just write out 3 full strings for each car type
+# size suffixes
+
+# wagon class suffixes
 STR_NAME_SUFFIX_BOX_CAR                                         :Zatvoreni vagon
 STR_NAME_SUFFIX_CABOOSE_CAR                                     :Vagon za kočničara
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Pokriveni vagon za rasuti teret
