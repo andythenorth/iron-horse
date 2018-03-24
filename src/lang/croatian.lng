@@ -15,12 +15,16 @@ STR_PARAM_ROSTER_OPTION_1                                       :Željezna ljama
 STR_PARAM_ROSTER_OPTION_2                                       :Željezna antilopa
 
 # keep these alphabetised, easier
-STR_NAME_SUFFIX_DIESEL                                          :(Dizel)
-STR_NAME_SUFFIX_ELECTRIC                                        :(Električni)
-STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Elektro-dizel)
-STR_NAME_SUFFIX_STEAM                                           :(Para)
+STR_NAME_SUFFIX_DIESEL                                          :Dizel
+STR_NAME_SUFFIX_ELECTRIC                                        :Električni
+STR_NAME_SUFFIX_ELECTRODIESEL                                   :Elektro-dizel
+STR_NAME_SUFFIX_METRO                                           :Metro
+STR_NAME_SUFFIX_STEAM                                           :Para
 
 # size suffixes
+STR_NAME_SUFFIX_SMALL                                           :Mali
+STR_NAME_SUFFIX_MEDIUM                                          :Srednji
+STR_NAME_SUFFIX_LARGE                                           :Veliki
 
 # wagon class suffixes
 STR_NAME_SUFFIX_BOX_CAR                                         :Zatvoreni vagon
@@ -29,6 +33,7 @@ STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Pokriveni vagon
 STR_NAME_SUFFIX_DUMP_CAR                                        :Kiper
 STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Vagon cisterna za prehrambene proizvode
 STR_NAME_SUFFIX_FLAT_CAR                                        :Plato-vagon
+STR_NAME_SUFFIX_FRUIT_VEG_CAR                                   :Vagon za voće i povrće
 STR_NAME_SUFFIX_HIGH_SPEED_MAIL_CAR                             :Ekspresni poštanski vagon
 STR_NAME_SUFFIX_HIGH_SPEED_PASSENGER_CAR                        :Ekspresni putnički vagon
 STR_NAME_SUFFIX_HOPPER_CAR                                      :Vagon za rasuti teret
