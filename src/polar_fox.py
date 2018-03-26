@@ -122,7 +122,7 @@ default_cargos = {'box': ['GOOD', 'VPTS', 'FOOD'],
                   'flat': ['STEL', 'COPR', 'METL'],
                   'fruit_veg': ['FRUT', 'BEAN', 'CASS', 'JAVA', 'NUTS'],
                   'hopper': ['COAL', 'CORE', 'PORE'],
-                  'intermodal': ['GOOD', 'VPTS', 'FOOD'],
+                  # no intermodal, uses box
                   'silo': ['CMNT', 'BDMT', 'RFPR', 'QLME', 'FMSP'],
                   'stake': ['WOOD'],
                   'mail': ['MAIL'],
@@ -179,6 +179,7 @@ bulk_cargo_recolour_maps = (("AORE", {170: 42, 171: 123, 172: 74, 173: 125, 174:
 # Piece maps
 # vehicle types are mapped to specific cargo sprites
 # this permits fine-grained control, e.g. cargos that can only go in open vehicles, outsized cargo that needs flats etc
+# also supports multiple cargo sprite types to suit vehicle, e.g. piled fruit, fruit in crates etc
 # keep alphabetised for general quality-of-life
 piece_vehicle_type_to_sprites_maps = {'flat': ['barrels_silver', 'copper_coils', 'crates_1', 'logs',
                                               'lumber_planks', 'paper_coils', 'steel_coils',
