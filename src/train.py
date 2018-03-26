@@ -153,21 +153,21 @@ class Consist(object):
 
     @property
     def model_life(self):
-        """
         similar_consists = []
-        for consist in self.roster.consists:
-            if type(consist) == type(self):
-                # the order of if statements here is specific and to split tram / road vehicles reliably
-                if self.roadveh_flag_tram:
-                    if consist.roadveh_flag_tram:
-                        # all trams are currently considered compatible, unless/until new tram_types are added
+        for consist in self.roster.engine_consists:
+            if consist.role == self.role:
+                # no way to avoid railtype-specific handling here
+                if self.track_type in ['NG', 'METRO']:
+                    # exact match required for these types
+                    if self.track_type == consist.track_type:
+                        similar_consists.append(consist)
+                elif self.track_type in ['RAIL', 'ELRL']:
+                    # for vehicle replacement purposes, RAIL and ELRL are cross-compatible
+                    if consist.track_type in ['RAIL', 'ELRL']:
                         similar_consists.append(consist)
                 else:
-                    if consist.road_type == self.road_type:
-                        # all road_types are currently considered to require exact match, unless/until new road_types are added
-                        similar_consists.append(consist)
+                    raise Exception('track_type for consist ' + self.id + ' unrecognised in model_life method')
         replacement_consist = None
-        print(self.id, [consist.id for consist in similar_consists])
         for consist in sorted(similar_consists, key=lambda consist: consist.intro_date):
             if consist.intro_date > self.intro_date:
                 replacement_consist = consist
@@ -176,10 +176,12 @@ class Consist(object):
             return 'VEHICLE_NEVER_EXPIRES'
         else:
             return replacement_consist.intro_date - self.intro_date
-        """
-        # hard-coded for now, based on 30 year generations
-        # !! needs to be over-rideable for engines that span generations
-        return 40
+
+    @property
+    def retire_early(self):
+        # affects when vehicle is removed from buy menu (in combination with model life)
+        # to understand why this is needed see https://newgrf-specs.tt-wiki.net/wiki/NML:Vehicles#Engine_life_cycle
+        return -10 # retire at end of model life + 10 (fudge factor - no need to be more precise than that)
 
     @property
     def speed(self):
