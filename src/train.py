@@ -510,15 +510,15 @@ class HopperCarConsist(CarConsist):
 
 class IntermodalCarConsist(CarConsist):
     """
-    Specialist intermodal (containers), limited range of cargos. Match cargos to BoxCarConsist
+    Specialist intermodal (containers), limited range of cargos. Match cargos and speed to BoxCarConsist
     """
     def __init__(self, **kwargs):
         self.base_id = 'intermodal_car'
         super().__init__(**kwargs)
-        self.class_refit_groups = ['express_freight', 'packaged_freight']
+        self.class_refit_groups = ['packaged_freight']
         self.label_refits_allowed = global_constants.allowed_refits_by_label['box_freight']
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_freight_special_cases']
-        self.default_cargos = global_constants.default_cargos['intermodal']
+        self.default_cargos = global_constants.default_cargos['intermodal'] # arguably this could just be same as box too
         self.loading_speed_multiplier = 2
 
 
