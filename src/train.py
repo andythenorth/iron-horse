@@ -149,11 +149,34 @@ class Consist(object):
         if self._intro_date:
             return self._intro_date
         else:
-            roster_obj = self.get_roster(self.roster_id)
-            return roster_obj.intro_dates[self.gen - 1]
+            return self.roster.intro_dates[self.gen - 1]
 
     @property
     def model_life(self):
+        """
+        similar_consists = []
+        for consist in self.roster.consists:
+            if type(consist) == type(self):
+                # the order of if statements here is specific and to split tram / road vehicles reliably
+                if self.roadveh_flag_tram:
+                    if consist.roadveh_flag_tram:
+                        # all trams are currently considered compatible, unless/until new tram_types are added
+                        similar_consists.append(consist)
+                else:
+                    if consist.road_type == self.road_type:
+                        # all road_types are currently considered to require exact match, unless/until new road_types are added
+                        similar_consists.append(consist)
+        replacement_consist = None
+        print(self.id, [consist.id for consist in similar_consists])
+        for consist in sorted(similar_consists, key=lambda consist: consist.intro_date):
+            if consist.intro_date > self.intro_date:
+                replacement_consist = consist
+                break
+        if replacement_consist is None:
+            return 'VEHICLE_NEVER_EXPIRES'
+        else:
+            return replacement_consist.intro_date - self.intro_date
+        """
         # hard-coded for now, based on 30 year generations
         # !! needs to be over-rideable for engines that span generations
         return 40
@@ -168,8 +191,7 @@ class Consist(object):
             # !! eh this relies currently on railtypes being 'RAIL' or 'NG'
             # it only works because electric engines currently have their speed set explicitly :P
             # could be fixed by checking a list of railtypes
-            roster_obj = self.get_roster(self.roster_id)
-            return roster_obj.speeds[self.track_type][self.speed_class][self.gen - 1]
+            return self.roster.speeds[self.track_type][self.speed_class][self.gen - 1]
         else:
             # assume no speed limit
             return None
@@ -178,15 +200,15 @@ class Consist(object):
     def weight(self):
         return sum([getattr(unit, 'weight', 0) for unit in self.units])
 
-    def get_roster(self, roster_id):
+    @property
+    def roster(self):
         for roster in registered_rosters:
-            if roster_id == roster.id:
+            if roster.id == self.roster_id:
                 return roster
 
     def get_expression_for_rosters(self):
         # the working definition is one and only one roster per vehicle
-        roster = self.get_roster(self.roster_id)
-        return 'param[1]==' + str(roster.numeric_id - 1)
+        return 'param[1]==' + str(self.roster.numeric_id - 1)
 
     def get_nml_expression_for_default_cargos(self):
         # sometimes first default cargo is not available, so we use a list
@@ -306,16 +328,13 @@ class CarConsist(Consist):
     """
     def __init__(self, speedy=False, **kwargs):
         # self.base_id = '' # provide in subclass
-
-        # persist roster id for lookups, not roster obj directly, because of multiprocessing problems with object references
-        self.roster_id = kwargs.get('roster', None)
-        roster_obj = self.get_roster(self.roster_id)  # roster_obj for local reference only, don't persist this
-
         id = self.get_wagon_id(self.base_id, **kwargs)
         kwargs['id'] = id
         super().__init__(**kwargs)
 
-        roster_obj.register_wagon_consist(self)
+        # persist roster id for lookups, not roster obj directly, because of multiprocessing problems with object references
+        self.roster_id = kwargs.get('roster', None)
+        self.roster.register_wagon_consist(self)
 
         self.speed_class = 'freight' # over-ride this for, e.g. fast_freight consists
         self.subtype = kwargs['subtype']
@@ -349,8 +368,7 @@ class CarConsist(Consist):
     @property
     def model_life(self):
         # automatically span wagon model life across gap to next generation
-        roster_obj = self.get_roster(self.roster_id)
-        roster_gens_for_class = sorted(set([wagon.gen for wagon in roster_obj.wagon_consists[self.base_id] if wagon.subtype == self.subtype]))
+        roster_gens_for_class = sorted(set([wagon.gen for wagon in self.roster.wagon_consists[self.base_id] if wagon.subtype == self.subtype]))
         this_index = roster_gens_for_class.index(self.gen)
         if this_index == len(roster_gens_for_class) - 1:
             return 'VEHICLE_NEVER_EXPIRES'
@@ -1097,9 +1115,8 @@ class FreightCar(TrainCar):
         super().__init__(**kwargs)
         if kwargs.get('capacity', None) is not None:
              print(self.consist.id, ' has a capacity set in init - possibly incorrect', kwargs.get('capacity', None))
-        roster_obj = self.consist.get_roster(self.consist.roster_id)
         # magic to set freight car capacity subject to length
-        self.capacity = kwargs['vehicle_length'] * roster_obj.freight_car_capacity_per_unit_length[self.consist.track_type][self.consist.gen - 1]
+        self.capacity = kwargs['vehicle_length'] * self.consist.roster.freight_car_capacity_per_unit_length[self.consist.track_type][self.consist.gen - 1]
 
 
 class CabooseCar(TrainCar):
