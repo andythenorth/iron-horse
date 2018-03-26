@@ -63,15 +63,15 @@ class Consist(object):
         self.suppress_animated_pixel_warnings = kwargs.get('suppress_animated_pixel_warnings', False)
 
     def add_unit(self, type, repeat=1, **kwargs):
-        vehicle = type(consist=self, **kwargs)
+        unit = type(consist=self, **kwargs)
         count = len(self.unique_units)
         if count == 0:
-            vehicle.id = self.id # first vehicle gets no numeric id suffix - for compatibility with buy menu list ids etc
+            unit.id = self.id # first vehicle gets no numeric id suffix - for compatibility with buy menu list ids etc
         else:
-            vehicle.id = self.id + '_' + str(count)
-        vehicle.numeric_id = self.get_and_verify_numeric_id(count)
-        vehicle.vehicle_length
-        self.units.append(vehicle)
+            unit.id = self.id + '_' + str(count)
+        unit.numeric_id = self.get_and_verify_numeric_id(count)
+        for repeat_num in range(repeat):
+            self.units.append(unit)
 
     @property
     def unique_units(self):
