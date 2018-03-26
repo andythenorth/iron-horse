@@ -3,6 +3,7 @@ from train import EngineConsist, DieselEngineUnit
 consist = EngineConsist(id='walker',
                         base_numeric_id=430,
                         name='Walker',
+                        role='branch',
                         power=900,
                         track_type='NG',
                         speed=55,

@@ -3,6 +3,7 @@ from train import EngineConsist, DieselEngineUnit
 consist = EngineConsist(id='turtle',
                         base_numeric_id=3150,
                         name='Turtle',
+                        role='express_1',
                         power=3450,
                         speed=125,
                         type_base_buy_cost_points=30,  # dibble buy cost for game balance

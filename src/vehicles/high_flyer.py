@@ -3,6 +3,7 @@ from train import EngineConsist, SteamEngineUnit, SteamEngineTenderUnit
 consist = EngineConsist(id='high_flyer',
                         base_numeric_id=230,
                         name='4-4-2 High Flyer',
+                        role='express_1',
                         power=1300,
                         tractive_effort_coefficient=0.25,
                         speed=80,

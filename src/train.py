@@ -57,6 +57,8 @@ class Consist(object):
         self.gestalt_graphics = GestaltGraphics()
         # option to swap company colours (uses remap sprites in-game, rather than pixa)
         self.random_company_colour_swap = False # over-ride in subclasses as needed
+        # role is e.g. Heavy Freight, Express etc, and is used to automatically set model life as well as in docs
+        self.role = kwargs.get('role', None)
         # roster is set when the vehicle is registered to a roster, only one roster per vehicle
         self.roster_id = None
          # optionally suppress nmlc warnings about animated pixels for consists where they're intentional

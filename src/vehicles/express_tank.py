@@ -3,6 +3,7 @@ from train import EngineConsist, SteamEngineUnit
 consist = EngineConsist(id='express_tank',
                         base_numeric_id=1300,
                         name='2-6-2 Express Tank',
+                        role='branch',
                         power=800,
                         tractive_effort_coefficient=0.2,
                         speed=95,

@@ -3,6 +3,7 @@ from train import PassengerEngineConsist, ElectricPaxUnit
 consist = PassengerEngineConsist(id='velaro_thing',
                                  base_numeric_id=130,
                                  name='Velaro Thing',
+                                 role='pax_high_speed',
                                  power=2600,
                                  speed=200,
                                  type_base_running_cost_points=-32,  # dibble running costs for game balance

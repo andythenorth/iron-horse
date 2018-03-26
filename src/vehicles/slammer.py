@@ -3,6 +3,7 @@ from train import PassengerEngineConsist, DieselEngineUnit
 consist = PassengerEngineConsist(id='slammer',
                                  base_numeric_id=470,
                                  name='Slammer',
+                                 role='pax_railcar',
                                  power=300,
                                  speed=75,
                                  type_base_running_cost_points=-32,  # dibble running costs for game balance

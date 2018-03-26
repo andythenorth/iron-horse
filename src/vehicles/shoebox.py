@@ -3,6 +3,7 @@ from train import EngineConsist, ElectroDieselEngineUnit
 consist = EngineConsist(id='shoebox',
                         base_numeric_id=280,
                         name='Shoebox',
+                        role='branch',
                         power=950,
                         speed=110,
                         type_base_buy_cost_points=0,  # dibble buy cost for game balance

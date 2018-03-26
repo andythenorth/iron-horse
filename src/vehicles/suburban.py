@@ -3,6 +3,7 @@ from train import EngineConsist, SteamEngineUnit
 consist = EngineConsist(id='suburban',
                         base_numeric_id=500,
                         name='2-6-2 Suburban',
+                        role='branch',
                         power=650,
                         tractive_effort_coefficient=0.2,
                         speed=80,

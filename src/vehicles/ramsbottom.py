@@ -3,6 +3,7 @@ from train import EngineConsist, SteamEngineUnit, SteamEngineTenderUnit
 consist = EngineConsist(id='ramsbottom',
                         base_numeric_id=380,
                         name='0-6-0 Ramsbottom',
+                        role='freight',
                         power=1100,
                         tractive_effort_coefficient=0.22,
                         speed=45,

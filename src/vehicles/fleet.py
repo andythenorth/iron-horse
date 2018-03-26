@@ -3,6 +3,7 @@ from train import PassengerEngineConsist, MetroUnit
 consist = PassengerEngineConsist(id='fleet',
                                  base_numeric_id=210,
                                  name='Fleet',
+                                 role='pax_metro',
                                  track_type='METRO',
                                  power=1100,
                                  speed=65,

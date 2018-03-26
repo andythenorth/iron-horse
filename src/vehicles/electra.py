@@ -3,6 +3,7 @@ from train import EngineConsist, ElectricEngineUnit
 consist = EngineConsist(id='electra',
                         base_numeric_id=170,
                         name='Electra',
+                        role='express_2',
                         power=2400,
                         tractive_effort_coefficient=0.25,
                         speed=95,

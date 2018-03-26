@@ -20,6 +20,7 @@
                             <tr>
                                 <td><!--! empty cell --></td>
                                 <th>Vehicle Name</th>
+                                <th>Role</th>
                                 <th>Intro Date</th>
                                 <th>Power (hp)</th>
                                 <th>Speed (mph)</th>
@@ -35,6 +36,7 @@
                                              height="${2 * global_constants.buy_menu_sprite_height}" />
                                     </td>
                                     <td>${doc_helper.unpack_name_string(consist)}</td>
+                                    <td>${consist.role}</td>
                                     <td>${consist.intro_date}</td>
                                     <td>${consist.power}</td>
                                     <td>${consist.speed}</td>
