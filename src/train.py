@@ -16,8 +16,8 @@ import polar_fox
 import global_constants # expose all constants for easy passing to templates
 import utils
 
-from graphics_processor.gestalt_graphics import GestaltGraphics, GestaltGraphicsVisibleCargo, GestaltGraphicsLiveryOnly, GestaltGraphicsCustom
-import graphics_processor.graphics_constants as graphics_constants
+from gestalt_graphics.gestalt_graphics import GestaltGraphics, GestaltGraphicsVisibleCargo, GestaltGraphicsLiveryOnly, GestaltGraphicsCustom
+import gestalt_graphics.graphics_constants as graphics_constants
 
 from rosters import registered_rosters
 from vehicles import numeric_id_defender

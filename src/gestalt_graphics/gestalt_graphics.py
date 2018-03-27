@@ -1,6 +1,6 @@
 import polar_fox
-import graphics_processor.graphics_constants as graphics_constants
-from graphics_processor import pipelines
+import gestalt_graphics.graphics_constants as graphics_constants
+from gestalt_graphics import pipelines
 import utils
 
 class GestaltGraphics(object):
