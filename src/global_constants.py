@@ -56,6 +56,7 @@ buy_menu_sprite_width = 36 # 36 is correct, but some spritesheets might have wro
 buy_menu_sprite_height = 16
 
 # shared global constants via Polar Fox library - import at end to make the this project's constants easier to work with
+# done this way so we don't have to pass Polar Fox to templates, we can just pass global_constants
 # assignments are clunky - they exist to stop pyflakes tripping on 'unused' imports
 import polar_fox.constants
 base_refits_by_class = polar_fox.constants.base_refits_by_class
