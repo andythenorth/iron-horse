@@ -47,11 +47,3 @@ silo_livery_recolour_maps = (("OIL_", {136: 1, 137: 2, 138: 3, 139: 4,
 container_recolour_maps = ({170 + i: CC1 + i for i in range(8)},
                            {170 + i: CC2 + i for i in range(8)},
                            {170 + i: 8 + i for i in range(8)})
-
-# shared global constants via Polar Fox library - import at end to make the this project's constants easier to work with
-# assignments are clunky - they exist to stop pyflakes tripping on 'unused' imports
-import polar_fox.constants
-bulk_cargo_recolour_maps = polar_fox.constants.bulk_cargo_recolour_maps
-piece_sprites_to_cargo_labels_maps = polar_fox.constants.piece_sprites_to_cargo_labels_maps
-piece_vehicle_type_to_sprites_maps = polar_fox.constants.piece_vehicle_type_to_sprites_maps
-tanker_livery_recolour_maps = polar_fox.constants.tanker_livery_recolour_maps

@@ -1,3 +1,4 @@
+import polar_fox
 import graphics_processor.graphics_constants as graphics_constants
 from graphics_processor import pipelines
 import utils
@@ -74,9 +75,9 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
         # it's more effective right now to simply remap the new data structure onto the old
         # the templates and pipelines can be refactored later, and this can then be simpler
         result = []
-        sprite_names = graphics_constants.piece_vehicle_type_to_sprites_maps[self.piece_type]
+        sprite_names = polar_fox.constants.piece_vehicle_type_to_sprites_maps[self.piece_type]
         for sprite_name in sprite_names:
-            cargo_labels = graphics_constants.piece_sprites_to_cargo_labels_maps[sprite_name]
+            cargo_labels = polar_fox.constants.piece_sprites_to_cargo_labels_maps[sprite_name]
             map = (cargo_labels, [sprite_name])
             result.append(map)
         return result
@@ -89,7 +90,7 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
         # assume an empty state spriterow - there was an optional bool flag for this per consist but it was unused so I removed it
         result.append(('empty', 1))
         if self.has_bulk:
-            result.append(('bulk_cargo', 2 * len(graphics_constants.bulk_cargo_recolour_maps)))
+            result.append(('bulk_cargo', 2 * len(polar_fox.constants.bulk_cargo_recolour_maps)))
         if self.has_piece:
             result.append(('piece_cargo', 2 * sum([len(cargo_map[1]) for cargo_map in self.piece_cargo_maps])))
         return result
@@ -99,7 +100,7 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
         result = {}
         counter = 0
         if self.has_bulk:
-            for cargo_map in graphics_constants.bulk_cargo_recolour_maps:
+            for cargo_map in polar_fox.constants.bulk_cargo_recolour_maps:
                 result[cargo_map[0]] = [counter] # list because multiple spriterows can map to a cargo label
                 counter += 1
         if self.has_piece:

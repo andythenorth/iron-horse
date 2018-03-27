@@ -121,7 +121,7 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
                          0,
                          graphics_constants.spritesheet_width,
                          cargo_group_row_height)
-        for label, recolour_map in graphics_constants.bulk_cargo_recolour_maps:
+        for label, recolour_map in polar_fox.constants.bulk_cargo_recolour_maps:
             self.units.append(AppendToSpritesheet(vehicle_bulk_cargo_input_as_spritesheet, crop_box_dest))
             self.units.append(SimpleRecolour(recolour_map))
 
@@ -248,7 +248,7 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
                 elif spriterow_type == 'livery_only':
                     input_spriterow_count = 1
                      # specific to tankers, see notes in method about container support in future
-                    self.add_livery_only_spriterows(graphics_constants.tanker_livery_recolour_maps)
+                    self.add_livery_only_spriterows(polar_fox.constants.tanker_livery_recolour_maps)
                 elif spriterow_type == 'bulk_cargo':
                     input_spriterow_count = 2
                     self.add_bulk_cargo_spriterows()
