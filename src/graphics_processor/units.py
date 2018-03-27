@@ -47,7 +47,13 @@ class SimpleRecolour(ProcessingUnit):
 class SwapCompanyColours(ProcessingUnit):
     """ SwapCompanyColours """
     def __init__(self):
-        self.recolour_map = graphics_constants.CC1_CC2_SWAP_MAP
+        # colour defaults
+        CC1 = 198
+        CC2 = 80
+        self.recolour_map = {}
+        for i in range(8):
+            self.recolour_map[CC1 + i] = CC2 + i
+            self.recolour_map[CC2 + i] = CC1 + i
         super(SwapCompanyColours, self).__init__()
 
     def render(self, spritesheet):

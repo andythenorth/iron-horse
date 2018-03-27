@@ -2,12 +2,6 @@
 CC1 = 198
 CC2 = 80
 
-# a convenience constant that holds a mapping for swapping CC1 and CC2 around
-CC1_CC2_SWAP_MAP = {}
-for i in range(8):
-    CC1_CC2_SWAP_MAP[CC1 + i] = CC2 + i
-    CC1_CC2_SWAP_MAP[CC2 + i] = CC1 + i
-
 body_recolour_CC1 = {136: CC1, 137: CC1+1, 138: CC1+2, 139: CC1+3, 140: CC1+4, 141: CC1+5, 142: CC1+6, 143: CC1+7}
 body_recolour_CC1 = {136: CC2, 137: CC2+1, 138: CC2+2, 139: CC2+3, 140: CC2+4, 141: CC2+5, 142: CC2+6, 143: CC2+7}
 
