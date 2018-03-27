@@ -57,13 +57,13 @@ buy_menu_sprite_height = 16
 
 # shared global constants via Polar Fox library - import at end to make the this project's constants easier to work with
 # assignments are clunky - they exist to stop pyflakes tripping on 'unused' imports
-import polar_fox
-base_refits_by_class = polar_fox.base_refits_by_class
-cargo_labels = polar_fox.cargo_labels
-chameleon_cache_dir = polar_fox.chameleon_cache_dir
-default_cargos = polar_fox.default_cargos
-disallowed_refits_by_label = polar_fox.disallowed_refits_by_label
-generated_files_dir = polar_fox.generated_files_dir
-graphics_path = polar_fox.graphics_path
-mail_multiplier = polar_fox.mail_multiplier
-max_game_date = polar_fox.max_game_date
+import polar_fox.constants
+base_refits_by_class = polar_fox.constants.base_refits_by_class
+cargo_labels = polar_fox.constants.cargo_labels
+chameleon_cache_dir = polar_fox.constants.chameleon_cache_dir
+default_cargos = polar_fox.constants.default_cargos
+disallowed_refits_by_label = polar_fox.constants.disallowed_refits_by_label
+generated_files_dir = polar_fox.constants.generated_files_dir
+graphics_path = polar_fox.constants.graphics_path
+mail_multiplier = polar_fox.constants.mail_multiplier
+max_game_date = polar_fox.constants.max_game_date
