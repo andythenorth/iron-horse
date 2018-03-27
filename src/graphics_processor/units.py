@@ -1,4 +1,3 @@
-from graphics_processor import graphics_constants
 from PIL import Image
 
 DOS_PALETTE = Image.open('palette_key.png').palette
