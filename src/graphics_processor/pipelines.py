@@ -4,9 +4,9 @@ currentdir = os.curdir
 from PIL import Image
 
 import polar_fox
+from polar_fox.graphics_units import SimpleRecolour, AppendToSpritesheet
 from polar_fox.pixa import Spritesheet, pixascan
 from graphics_processor import graphics_constants
-from graphics_processor.units import SimpleRecolour, AppendToSpritesheet
 
 DOS_PALETTE = Image.open('palette_key.png').palette
 
