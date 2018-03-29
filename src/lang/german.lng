@@ -8,16 +8,20 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :kümmerlich
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :phänomenal
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :übermäßig
 STR_PARAM_ROSTER_DESC                                           :Wähle ein Zug-Set aus
-STR_PARAM_ROSTER_OPTION_0                                       :Ein Pferd! Ein Pferd! Mein Königreich für ein Pferd!
-STR_PARAM_ROSTER_OPTION_1                                       :Caballada
+STR_PARAM_ROSTER_OPTION_0                                       :Eisernes Pony
+STR_PARAM_ROSTER_OPTION_1                                       :Eisernes Llama
+STR_PARAM_ROSTER_OPTION_2                                       :Eiserne Antilope
 
 # keep these alphabetised, easier
-STR_NAME_SUFFIX_DIESEL                                          :(Diesel)
-STR_NAME_SUFFIX_ELECTRIC                                        :(Elektrisch)
-STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Elektro-Diesel)
-STR_NAME_SUFFIX_STEAM                                           :(Dampf)
+STR_NAME_SUFFIX_DIESEL                                          :Diesel
+STR_NAME_SUFFIX_ELECTRIC                                        :Elektrisch
+STR_NAME_SUFFIX_ELECTRODIESEL                                   :Dieselelektrisch
+STR_NAME_SUFFIX_STEAM                                           :Dampf
 
 # size suffixes
+STR_NAME_SUFFIX_SMALL                                           :Klein
+STR_NAME_SUFFIX_MEDIUM                                          :Mittel
+STR_NAME_SUFFIX_LARGE                                           :Groß
 
 # wagon class suffixes
 STR_NAME_SUFFIX_BOX_CAR                                         :geschlossener Wagen
@@ -25,11 +29,19 @@ STR_NAME_SUFFIX_CABOOSE_CAR                                     :Bremserwagen
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :gedeckter Schüttgutwagen
 STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Lebensmittel-Kesselwagen
 STR_NAME_SUFFIX_FLAT_CAR                                        :Flachwagen
+STR_NAME_SUFFIX_FRUIT_VEG_CAR                                   :Wagen für Obst und Gemüse
+STR_NAME_SUFFIX_HIGH_SPEED_MAIL_CAR                             :Hochgeschwindigkeitspostwagen
+STR_NAME_SUFFIX_HIGH_SPEED_PASSENGER_CAR                        :Hochgeschwindigkeitspassagierwagen
 STR_NAME_SUFFIX_HOPPER_CAR                                      :Schüttgutwagen
+STR_NAME_SUFFIX_INTERMODAL_CAR                                  :Wagen für kombinierten Verkehr
 STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Viehwagen
+STR_NAME_SUFFIX_LUXURY_PASSENGER_CAR                            :Luxuspassagierwagen
 STR_NAME_SUFFIX_MAIL_CAR                                        :Postwagen
 STR_NAME_SUFFIX_METAL_CAR                                       :Metallwagen
 STR_NAME_SUFFIX_OPEN_CAR                                        :offener Wagen
 STR_NAME_SUFFIX_PASSENGER_CAR                                   :Personenwagen
 STR_NAME_SUFFIX_REEFER_CAR                                      :Kühlwagen
+STR_NAME_SUFFIX_SILO_CAR                                        :Silowagen
+STR_NAME_SUFFIX_STAKE_CAR                                       :Rungenwagen
 STR_NAME_SUFFIX_TANK_CAR                                        :Kesselwagen
+STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Autotransportwagen
