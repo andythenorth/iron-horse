@@ -64,6 +64,9 @@ class Consist(object):
         self.roster_id = None
          # optionally suppress nmlc warnings about animated pixels for consists where they're intentional
         self.suppress_animated_pixel_warnings = kwargs.get('suppress_animated_pixel_warnings', False)
+        # aids 'project management'
+        self.sprites_complete = kwargs.get('sprites_complete', False)
+        print(self.id, 'sprites are not complete') if not self.sprites_complete else None
 
     def add_unit(self, type, repeat=1, **kwargs):
         unit = type(consist=self, **kwargs)
