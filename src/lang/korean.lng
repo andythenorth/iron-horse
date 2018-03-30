@@ -14,12 +14,16 @@ STR_PARAM_ROSTER_OPTION_1                                       :철제 라마
 STR_PARAM_ROSTER_OPTION_2                                       :철제 영양
 
 # keep these alphabetised, easier
-STR_NAME_SUFFIX_DIESEL                                          :(디젤)
-STR_NAME_SUFFIX_ELECTRIC                                        :(전기)
-STR_NAME_SUFFIX_ELECTRODIESEL                                   :(전기-디젤)
-STR_NAME_SUFFIX_STEAM                                           :(증기)
+STR_NAME_SUFFIX_DIESEL                                          :디젤
+STR_NAME_SUFFIX_ELECTRIC                                        :전기
+STR_NAME_SUFFIX_ELECTRODIESEL                                   :전기-디젤
+STR_NAME_SUFFIX_METRO                                           :도시철도
+STR_NAME_SUFFIX_STEAM                                           :증기
 
 # size suffixes
+STR_NAME_SUFFIX_SMALL                                           :작음
+STR_NAME_SUFFIX_MEDIUM                                          :중간
+STR_NAME_SUFFIX_LARGE                                           :큼
 
 # wagon class suffixes
 STR_NAME_SUFFIX_BOX_CAR                                         :유개차
@@ -28,6 +32,7 @@ STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :유개호퍼차
 STR_NAME_SUFFIX_DUMP_CAR                                        :덤프 차량
 STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :식품 탱크 차
 STR_NAME_SUFFIX_FLAT_CAR                                        :평판차
+STR_NAME_SUFFIX_FRUIT_VEG_CAR                                   :과일 및 채소 차량
 STR_NAME_SUFFIX_HIGH_SPEED_MAIL_CAR                             :고속 우편 수송 차량
 STR_NAME_SUFFIX_HIGH_SPEED_PASSENGER_CAR                        :고속 승객 수송 차량
 STR_NAME_SUFFIX_HOPPER_CAR                                      :호퍼차
