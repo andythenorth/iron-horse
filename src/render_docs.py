@@ -106,6 +106,7 @@ class DocHelper(object):
             result = self.fetch_prop(result, 'Vehicle Life', vehicle.vehicle_life)
             result = self.fetch_prop(result, 'Buy Cost', vehicle.buy_cost)
             result = self.fetch_prop(result, 'Running Cost', vehicle.running_cost)
+            result = self.fetch_prop(result, 'Sprites Complete', vehicle.sprites_complete)
             #result = self.fetch_prop(result, 'Loading Speed', vehicle.loading_speed)
 
             props_to_print[vehicle] = result['vehicle']
