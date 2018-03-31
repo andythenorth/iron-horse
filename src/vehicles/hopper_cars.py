@@ -61,7 +61,9 @@ def main():
     consist = HopperCarConsist(roster='pony',
                                base_numeric_id=1080,
                                gen=5,
-                               subtype='A')
+                               subtype='A',
+                               chassis='2_axle_sparse_16px',
+                               sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
                      vehicle_length=4)
