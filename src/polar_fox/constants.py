@@ -167,8 +167,8 @@ cargo_spritesheet_bounding_boxes_base = ((10, 10, 18, 26), (22, 10, 44, 26), (48
 piece_vehicle_type_to_sprites_maps = {'flat': ['barrels_silver', 'copper_coils', 'crates_1', 'logs',
                                               'lumber_planks', 'paper_coils', 'steel_coils',
                                               'tarps_2cc_1', 'tarps_blue_1', 'tarps_gold_1', 'tarps_red_1'],
-                                      'open':['barrels_silver', 'copper_coils', 'crates_1', 'logs',
-                                              'lumber_planks', 'paper_coils', 'steel_coils',
+                                      'open':['barrels_silver', 'coffee', 'copper_coils', 'crates_1', 'fruit', 'logs',
+                                              'lumber_planks', 'nuts', 'paper_coils', 'steel_coils',
                                               'tarps_2cc_1', 'tarps_blue_1', 'tarps_gold_1', 'tarps_red_1']}
 
 # cargo labels can be repeated for different sprites, they'll be used selectively by vehicle types and/or randomised as appropriate
