@@ -345,6 +345,7 @@ class CarConsist(Consist):
         self.roster_id = kwargs.get('roster', None)
         self.roster.register_wagon_consist(self)
 
+        self.chassis = kwargs.get('chassis', 'test')
         self.speed_class = 'freight' # over-ride this for, e.g. fast_freight consists
         self.subtype = kwargs['subtype']
         self.weight_factor = 0.5 # over-ride in sub-class as needed
