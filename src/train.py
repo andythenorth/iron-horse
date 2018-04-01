@@ -344,7 +344,6 @@ class CarConsist(Consist):
         self.roster_id = kwargs.get('roster', None)
         self.roster.register_wagon_consist(self)
 
-        self.chassis = kwargs.get('chassis', 'test')
         self.speed_class = 'freight' # over-ride this for, e.g. fast_freight consists
         self.subtype = kwargs['subtype']
         self.weight_factor = 0.5 # over-ride in sub-class as needed
@@ -790,11 +789,13 @@ class Train(object):
         # for cases where the template handles cargo, but some units in the consist might not show cargo, e.g. tractor units etc
         # can also be used to suppress compile failures during testing when spritesheet is unfinished (missing rows etc)
         self.always_use_same_spriterow = kwargs.get('always_use_same_spriterow', False)
-        # only set if the graphics processor requires it to generate cargo sprites
+        # optional -only set if the graphics processor requires it to generate cargo sprites
         # defines the size of cargo sprite to use
         # if the vehicle cargo area is not an OTTD unit length, use the next size up and the masking will sort it out
         # some longer vehicles may place multiple shorter cargo sprites, e.g. 7/8 vehicle, 2 * 4/8 cargo sprites (with some overlapping)
         self.cargo_length = kwargs.get('cargo_length', None)
+        # optional - only set if the graphics processor generates the vehicle chassis
+        self.chassis = kwargs.get('chassis', 'test')
 
     def get_capacity_variations(self, capacity):
         # capacity is variable, controlled by a newgrf parameter

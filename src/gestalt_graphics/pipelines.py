@@ -35,7 +35,7 @@ class Pipeline(object):
     @property
     def chassis_input_path(self):
         # convenience method to get the path for the chassis image
-        return os.path.join(currentdir, 'src', 'graphics', 'chassis', self.consist.chassis + '.png')
+        return os.path.join(currentdir, 'src', 'graphics', 'chassis', self.vehicle_unit.chassis + '.png')
 
     def render_common(self, consist, input_image, units):
         # expects to be passed a PIL Image object
@@ -289,6 +289,8 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
         # the cumulative_input_spriterow_count updates per processed group of spriterows, and is key to making this work
         cumulative_input_spriterow_count = 0
         for vehicle_counter, vehicle_rows in enumerate(consist.get_spriterows_for_consist_or_subpart(consist.unique_units)):
+            # 'vehicle_unit' not 'unit' to avoid conflating with graphics processor 'unit'
+            self.vehicle_unit = consist.unique_units[vehicle_counter] # !!  this is ugly hax, I didn't want to refactor the iterator above to contain the vehicle
             self.cur_vehicle_empty_row_offset = 10 + cumulative_input_spriterow_count * graphics_constants.spriterow_height
             for spriterow_data in vehicle_rows:
                 spriterow_type = spriterow_data[0]

@@ -11,22 +11,22 @@ def main():
                                base_numeric_id=2310,
                                gen=2,
                                subtype='A',
-                               chassis='2_axle_gapped_16px',
                                sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=4)
+                     vehicle_length=4,
+                     chassis='2_axle_gapped_16px')
 
 
     consist = HopperCarConsist(roster='pony',
                                base_numeric_id=1070,
                                gen=3,
                                subtype='A',
-                               chassis='2_axle_gapped_16px',
                                sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=4)
+                     vehicle_length=4,
+                     chassis='2_axle_gapped_16px')
 
 
     consist = HopperCarConsist(roster='pony',
@@ -42,11 +42,11 @@ def main():
                                base_numeric_id=2320,
                                gen=4,
                                subtype='A',
-                               chassis='2_axle_gapped_16px',
                                sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=4)
+                     vehicle_length=4,
+                     chassis='2_axle_gapped_16px')
 
 
     consist = HopperCarConsist(roster='pony',
@@ -62,11 +62,11 @@ def main():
                                base_numeric_id=1080,
                                gen=5,
                                subtype='A',
-                               chassis='2_axle_sparse_16px',
                                sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=4)
+                     vehicle_length=4,
+                     chassis='2_axle_sparse_16px')
 
 
     consist = HopperCarConsist(roster='pony',

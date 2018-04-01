@@ -25,11 +25,11 @@ def main():
     consist = TankCarConsist(roster='pony',
                              base_numeric_id=3180,
                              gen=2,
-                             subtype='B',
-                             chassis='4_axle_gapped_24px')
+                             subtype='B')
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=6)
+                     vehicle_length=6,
+                     chassis='4_axle_gapped_24px')
 
 
     consist = TankCarConsist(roster='pony',

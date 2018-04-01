@@ -21,12 +21,12 @@ def main():
     consist = OpenCarConsist(roster='pony',
                              base_numeric_id=820,
                              gen=1,
-                             subtype='A',
-                             chassis='2_axle_filled_16px')
+                             subtype='A')
 
     consist.add_unit(type=FreightCar,
                      cargo_length=3,
-                     vehicle_length=4)
+                     vehicle_length=4,
+                     chassis='2_axle_filled_16px')
 
 
     # no new type A for gen 2, gen 1 type A continues
@@ -34,12 +34,12 @@ def main():
     consist = OpenCarConsist(roster='pony',
                              base_numeric_id=830,
                              gen=2,
-                             subtype='B',
-                             chassis='4_axle_gapped_24px')
+                             subtype='B')
 
     consist.add_unit(type=FreightCar,
                      cargo_length=3,
-                     vehicle_length=6)
+                     vehicle_length=6,
+                     chassis='4_axle_gapped_24px')
 
 
     consist = OpenCarConsist(roster='pony',
