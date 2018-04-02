@@ -29,7 +29,9 @@ class GestaltGraphics(object):
 
     def get_output_row_counts_by_type(self):
         # stub, for template compatibility reasons
-        return []
+        result = []
+        result.append(('single_row', 1))
+        return result
 
 
 class GestaltGraphicsVisibleCargo(GestaltGraphics):
