@@ -12,7 +12,7 @@ def main():
     consist.add_unit(type=CabooseCar,
                      vehicle_length=4)
 
-    
+
     #--------------- pony ----------------------------------------------------------------------
     consist = CabooseCarConsist(roster='pony',
                                 base_numeric_id=1280,
@@ -20,9 +20,10 @@ def main():
                                 subtype='A')
 
     consist.add_unit(type=CabooseCar,
-                     vehicle_length=4)
+                     vehicle_length=4,
+                     chassis='2_axle_filled_16px')
 
-    
+
     consist = CabooseCarConsist(roster='pony',
                                 base_numeric_id=2210,
                                 gen=1,
@@ -31,7 +32,7 @@ def main():
     consist.add_unit(type=CabooseCar,
                      vehicle_length=6)
 
-    
+
 
 """
     #--------------- llama ----------------------------------------------------------------------
@@ -43,7 +44,7 @@ def main():
     consist.add_unit(type = CabooseCar,
                             vehicle_length = 5)
 
-    
+
 
     #--------------- antelope ----------------------------------------------------------------------
     consist = CabooseCarConsist(title = '[Caboose Car]',
@@ -54,7 +55,7 @@ def main():
     consist.add_unit(type = CabooseCar,
                            vehicle_length = 6)
 
-    
+
 
     consist = CabooseCarConsist(title = '[Caboose Car]',
                              roster = 'antelope',
@@ -65,6 +66,6 @@ def main():
     consist.add_unit(type = CabooseCar,
                            vehicle_length = 6)
 
-    
+
 
 """

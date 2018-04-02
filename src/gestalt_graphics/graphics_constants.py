@@ -3,7 +3,7 @@ CC1 = 198
 CC2 = 80
 
 body_recolour_CC1 = {136: CC1, 137: CC1+1, 138: CC1+2, 139: CC1+3, 140: CC1+4, 141: CC1+5, 142: CC1+6, 143: CC1+7}
-body_recolour_CC1 = {136: CC2, 137: CC2+1, 138: CC2+2, 139: CC2+3, 140: CC2+4, 141: CC2+5, 142: CC2+6, 143: CC2+7}
+body_recolour_CC2 = {136: CC2, 137: CC2+1, 138: CC2+2, 139: CC2+3, 140: CC2+4, 141: CC2+5, 142: CC2+6, 143: CC2+7}
 
 # facts about 'standard' spritesheets, spritesheets varying from this will be painful
 spriterow_height = 30
@@ -35,6 +35,8 @@ silo_livery_recolour_maps = (("OIL_", {136: 1, 137: 2, 138: 3, 139: 4,
                                ("PETR", {136: 16, 137: 17, 138: 18, 139: 19,
                                          140: 20, 141: 21, 142: 22, 143: 23}))
 
+caboose_livery_recolour_maps = (# see note on DFLT above
+                               ("DFLT", body_recolour_CC1),)
 
 # Containers
 # !! simple recolouring, not cargo specific.  May need work ??  Could be cargo-specific??

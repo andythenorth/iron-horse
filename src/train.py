@@ -436,7 +436,9 @@ class CabooseCarConsist(CarConsist):
         self.class_refit_groups = [] # refit nothing, don't mess with this, it breaks auto-replace
         self.label_refits_allowed = [] # no specific labels needed
         self.label_refits_disallowed = []
-        # no graphics processing - don't random colour cabeese, I tried it, looks daft
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsLiveryOnly(recolour_maps=graphics_constants.caboose_livery_recolour_maps)
+        # no random colour cabeese, I tried it, looks daft
         self.random_company_colour_swap = False
 
 
@@ -613,7 +615,6 @@ class OpenCarConsist(CarConsist):
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_freight_special_cases']
         self.default_cargos = global_constants.default_cargos['open']
         # Graphics configuration
-        # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(bulk=True,
                                                             piece='open')
 
@@ -687,7 +688,7 @@ class SiloCarConsist(CarConsist):
         self.default_cargos = global_constants.default_cargos['silo']
         self.loading_speed_multiplier = 2
         self.capacity_cost_factor = 1.5
-        # Grpahics configuration
+        # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsLiveryOnly(recolour_maps=graphics_constants.silo_livery_recolour_maps)
 
 
