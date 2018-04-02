@@ -45,7 +45,8 @@ def main():
 
     consist.add_unit(type=FreightCar,
                      cargo_length=6,
-                     vehicle_length=6)
+                     vehicle_length=6,
+                     chassis='4_axle_gapped_24px')
 
 
     consist = FlatCarConsist(roster='pony',
@@ -54,8 +55,9 @@ def main():
                              subtype='C')
 
     consist.add_unit(type=FreightCar,
-                     cargo_length=3,
-                     vehicle_length=8)
+                     cargo_length=8,
+                     vehicle_length=8,
+                     chassis='4_axle_gapped_32px')
 
 
     consist = FlatCarConsist(roster='pony',
