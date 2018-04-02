@@ -118,7 +118,9 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
 class GestaltGraphicsLiveryOnly(GestaltGraphics):
     """
         Used to handle the specific case of cargos shown only by vehicle livery.
-        This can also be used for recolouring vehicles with just a *single* livery which isn't cargo-specific.
+        This can also be used with vehicles with just a *single* livery which isn't cargo-specific for
+            - adding automated chassis
+            - recolouring from false body colour (easier than using paint bucket on individual sprites)
     """
     def __init__(self, recolour_maps, **kwargs):
         super().__init__()
