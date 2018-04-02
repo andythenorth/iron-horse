@@ -22,8 +22,10 @@ def main():
 
     consist.add_unit(type=FreightCar,
                      cargo_length=4,
-                     vehicle_length=4)
+                     vehicle_length=4,
+                     chassis='2_axle_filled_16px')
 
+    # no gen 2A, gen 1A continues in pony
 
     consist = FlatCarConsist(roster='pony',
                              base_numeric_id=1150,

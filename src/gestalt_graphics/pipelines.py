@@ -181,7 +181,7 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
         # Cargo spritesheets provide multiple lengths, using a specific format of rows
         # given a base set, find the bounding boxes for the rows per length
         cargo_spritesheet_bounding_boxes = {}
-        for counter, length in enumerate([3, 4]):
+        for counter, length in enumerate([3, 4, 5, 6, 7, 8]):
             bb_result = []
             for y_offset in [0, 20]:
                 bb_y_offset = (counter * 40) + y_offset
