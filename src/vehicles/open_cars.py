@@ -49,7 +49,8 @@ def main():
 
     consist.add_unit(type=FreightCar,
                      cargo_length=3,
-                     vehicle_length=4)
+                     vehicle_length=4,
+                     chassis='2_axle_filled_16px')
 
 
     consist = OpenCarConsist(roster='pony',
