@@ -21,7 +21,7 @@ def main():
                              subtype='A')
 
     consist.add_unit(type=FreightCar,
-                     cargo_length=3,
+                     cargo_length=4,
                      vehicle_length=4)
 
 
@@ -31,7 +31,7 @@ def main():
                              subtype='B')
 
     consist.add_unit(type=FreightCar,
-                     cargo_length=3,
+                     cargo_length=6,
                      vehicle_length=6,
                      chassis='4_axle_gapped_24px')
 
@@ -42,7 +42,7 @@ def main():
                              subtype='B')
 
     consist.add_unit(type=FreightCar,
-                     cargo_length=3,
+                     cargo_length=6,
                      vehicle_length=6)
 
 
@@ -62,7 +62,7 @@ def main():
                              subtype='B')
 
     consist.add_unit(type=FreightCar,
-                     cargo_length=3,
+                     cargo_length=6,
                      vehicle_length=6)
 
 
@@ -72,7 +72,7 @@ def main():
                              subtype='C')
 
     consist.add_unit(type=FreightCar,
-                     cargo_length=4,
+                     cargo_length=8,
                      vehicle_length=8)
 
 
@@ -82,7 +82,7 @@ def main():
                              subtype='B')
 
     consist.add_unit(type=FreightCar,
-                     cargo_length=3,
+                     cargo_length=6,
                      vehicle_length=6)
 
 
@@ -92,94 +92,8 @@ def main():
                              subtype='C')
 
     consist.add_unit(type=FreightCar,
-                     cargo_length=4,
+                     cargo_length=8,
                      vehicle_length=8)
 
 
     # no gen 6 flat cars, cap to gen 5 in Pony
-
-    #--------------- llama ----------------------------------------------------------------------
-    consist = FlatCarConsist(roster='llama',
-                             base_numeric_id=1180,
-                             gen=1,
-                             subtype='A')
-
-    consist.add_unit(type=FreightCar,
-                     cargo_length=3,
-                     vehicle_length=5)
-
-
-    consist = FlatCarConsist(roster='llama',
-                             base_numeric_id=1510,
-                             gen=2,
-                             subtype='A')
-
-    consist.add_unit(type=FreightCar,
-                     cargo_length=3,
-                     vehicle_length=5)
-
-
-    consist = FlatCarConsist(roster='llama',
-                             base_numeric_id=520,
-                             gen=1,
-                             subtype='A',
-                             track_type='NG')
-
-    consist.add_unit(type=FreightCar,
-                     cargo_length=3,
-                     vehicle_length=5)
-
-
-    consist = FlatCarConsist(roster='llama',
-                             base_numeric_id=1500,
-                             gen=2,
-                             subtype='A',
-                             track_type='NG')
-
-    consist.add_unit(type=FreightCar,
-                     cargo_length=3,
-                     vehicle_length=5)
-
-
-    #--------------- antelope ----------------------------------------------------------------------
-    consist = FlatCarConsist(roster='antelope',
-                             base_numeric_id=1640,
-                             gen=1,
-                             subtype='A')
-
-    consist.add_unit(type=FreightCar,
-                     cargo_length=3,
-                     vehicle_length=8)
-
-
-    consist = FlatCarConsist(roster='antelope',
-                             base_numeric_id=1650,
-                             gen=2,
-                             subtype='A')
-
-    consist.add_unit(type=FreightCar,
-                     cargo_length=3,
-                     vehicle_length=8)
-
-
-    consist = FlatCarConsist(roster='antelope',
-                             base_numeric_id=2110,
-                             gen=1,
-                             subtype='A',
-                             track_type='NG')
-
-    consist.add_unit(type=FreightCar,
-                     cargo_length=3,
-                     vehicle_length=8)
-
-
-    consist = FlatCarConsist(roster='antelope',
-                             base_numeric_id=1930,
-                             gen=2,
-                             subtype='A',
-                             track_type='NG')
-
-    consist.add_unit(type=FreightCar,
-                     cargo_length=3,
-                     vehicle_length=8)
-
