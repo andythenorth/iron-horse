@@ -300,7 +300,6 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
                     self.add_generic_spriterow()
                 elif spriterow_type == 'livery_only':
                     input_spriterow_count = 1
-                     # specific to tankers, see notes in method about container support in future
                     self.add_livery_only_spriterows(consist.gestalt_graphics.recolour_maps)
                 elif spriterow_type == 'bulk_cargo':
                     input_spriterow_count = 2
