@@ -1,19 +1,30 @@
 // STANDARD GRAPHICS
 // -----------------
 
-template spriteset_template_unreversed_${vehicle.id}(y) {
+template spriteset_template_asymmetric_unreversed_${vehicle.id}(y) {
     <tal:sprite repeat="bounding_box global_constants.spritesheet_bounding_boxes">
         //[left_x,  upper_y,    width,      height,     offset_x,      offset_y]
         [${bounding_box[0]}, y, ${bounding_box[1]}, ${bounding_box[2]}, ${vehicle.offsets[repeat.bounding_box.index][0]}, ${vehicle.offsets[repeat.bounding_box.index][1]} ${', ANIM' if consist.suppress_animated_pixel_warnings else ''}]
     </tal:sprite>
 }
 
-template spriteset_template_reversed_${vehicle.id}(y) {
+template spriteset_template_asymmetric_reversed_${vehicle.id}(y) {
     <tal:sprite repeat="bounding_box global_constants.spritesheet_bounding_boxes_reversed">
         //[left_x,  upper_y,    width,      height,     offset_x,      offset_y]
         [${bounding_box[0]}, y, ${bounding_box[1]}, ${bounding_box[2]}, ${vehicle.offsets[repeat.bounding_box.index][0]}, ${vehicle.offsets[repeat.bounding_box.index][1]} ${', ANIM' if consist.suppress_animated_pixel_warnings else ''}]
     </tal:sprite>
 }
+
+template spriteset_template_symmetric_unreversed_${vehicle.id}(y) {
+    <tal:sprite repeat="bounding_box global_constants.spritesheet_bounding_boxes">
+        //[left_x,  upper_y,    width,      height,     offset_x,      offset_y]
+        [${bounding_box[0]}, y, ${bounding_box[1]}, ${bounding_box[2]}, ${vehicle.offsets[repeat.bounding_box.index][0]}, ${vehicle.offsets[repeat.bounding_box.index][1]} ${', ANIM' if consist.suppress_animated_pixel_warnings else ''}]
+    </tal:sprite>
+}
+
+<!--!
+    template spriteset_template_symmetric_reversed is not defined, it would make no sense to reverse a symmetric vehicle
+-->
 
 
 // PURCHASE MENU

@@ -2,7 +2,7 @@
 
 <tal:reversible_variants repeat="reversed_variant consist.reversed_variants">
     spriteset(${vehicle.id}_ss_empty_${reversed_variant}, "${global_constants.graphics_path}${consist.id}.png") {
-      spriteset_template_${reversed_variant}_${vehicle.id}(${vehicle.spriterow_num * 30} + 10)
+      spriteset_template_${vehicle.symmetry_type}_${reversed_variant}_${vehicle.id}(${vehicle.spriterow_num * 30} + 10)
     }
 
     spritegroup ${vehicle.id}_sg_empty_${reversed_variant} {
@@ -16,10 +16,10 @@
 
     <tal:cargo_variants repeat="cargo_variant_num python:range(consist.gestalt_graphics.num_cargo_sprite_variants)">
         spriteset(${vehicle.id}_ss_loading_${reversed_variant}_${cargo_variant_num}, "${global_constants.graphics_path}${consist.id}.png") {
-          spriteset_template_${reversed_variant}_${vehicle.id}(${vehicle.spriterow_num * 30} + ${cargo_variant_num * 60} + 40)
+          spriteset_template_${vehicle.symmetry_type}_${reversed_variant}_${vehicle.id}(${vehicle.spriterow_num * 30} + ${cargo_variant_num * 60} + 40)
         }
         spriteset(${vehicle.id}_ss_loaded_${reversed_variant}_${cargo_variant_num}, "${global_constants.graphics_path}${consist.id}.png") {
-          spriteset_template_${reversed_variant}_${vehicle.id}(${vehicle.spriterow_num * 30} + ${cargo_variant_num * 60} + 70)
+          spriteset_template_${vehicle.symmetry_type}_${reversed_variant}_${vehicle.id}(${vehicle.spriterow_num * 30} + ${cargo_variant_num * 60} + 70)
         }
 
         spritegroup ${vehicle.id}_sg_loading_${reversed_variant}_${cargo_variant_num} {

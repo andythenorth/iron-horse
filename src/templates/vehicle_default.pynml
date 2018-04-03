@@ -4,7 +4,7 @@
 
 <tal:reversible_variants repeat="reversed_variant consist.reversed_variants">
     spriteset(${vehicle.id}_ss_${reversed_variant}, "${global_constants.graphics_path}${consist.id}.png") {
-      spriteset_template_${reversed_variant}_${vehicle.id}(10 + ${vehicle.spriterow_num * 30})
+      spriteset_template_${vehicle.symmetry_type}_${reversed_variant}_${vehicle.id}(10 + ${vehicle.spriterow_num * 30})
     }
 
     spritegroup ${vehicle.id}_sg_${reversed_variant} {
