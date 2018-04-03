@@ -38,6 +38,9 @@ silo_livery_recolour_maps = (("OIL_", {136: 1, 137: 2, 138: 3, 139: 4,
 caboose_livery_recolour_maps = (# see note on DFLT above
                                ("DFLT", body_recolour_CC1),)
 
+livestock_livery_recolour_maps = (# see note on DFLT above
+                                 ("DFLT", body_recolour_CC2),)
+
 # Containers
 # !! simple recolouring, not cargo specific.  May need work ??  Could be cargo-specific??
 container_recolour_maps = ({170 + i: CC1 + i for i in range(8)},

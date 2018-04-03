@@ -566,6 +566,8 @@ class LivestockCarConsist(CarConsist):
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
         self.capacity_cost_factor = 1.5
         self.run_cost_divisor = 7
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsLiveryOnly(recolour_maps=graphics_constants.livestock_livery_recolour_maps)
 
 
 class MailCarConsist(CarConsist):
