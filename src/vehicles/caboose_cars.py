@@ -7,7 +7,8 @@ def main():
                                 base_numeric_id=1290,
                                 gen=1,
                                 subtype='A',
-                                track_type='NG')
+                                track_type='NG',
+                                sprites_complete=True)
 
     consist.add_unit(type=CabooseCar,
                      vehicle_length=4)
