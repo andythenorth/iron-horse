@@ -256,7 +256,7 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
                 vehicle_comped_image = piece_cargo_rows_image.copy()
                 for pixel in loc_points:
                     angle_num = 0
-                    for counter, bbox in enumerate(global_constants.spritesheet_bounding_boxes):
+                    for counter, bbox in enumerate(global_constants.spritesheet_bounding_boxes_asymmetric_unreversed):
                         if pixel[0] >= bbox[0]:
                             angle_num = counter
                     # clamp angle_num to 4, cargo sprites are symmetrical, only 4 angles provided

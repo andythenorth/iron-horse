@@ -233,7 +233,7 @@ class Consist(object):
         # automatic buy menu sprite if single-unit consist
         # extend this to check an auto_buy_menu_sprite property if manual over-rides are needed in future
         if len(self.units) == 1:
-            return global_constants.spritesheet_bounding_boxes[6][0]
+            return global_constants.spritesheet_bounding_boxes_asymmetric_unreversed[6][0]
         else:
             return 316 # hard-coded default case
 

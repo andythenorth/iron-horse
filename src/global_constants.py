@@ -46,11 +46,17 @@ default_spritesheet_offsets = {'3': [[-3, -25], [-3, -21], [0, -12], [5, -17], [
 
 # spritesheet bounding boxes, each defined by a 3 tuple (left x, width, height);
 # upper y is determined by spritesheet row position, so isn't defined as a constant
-spritesheet_bounding_boxes = ((60, 8, 29), (73, 26, 24), (104, 33, 16), (143, 26, 24),
-                              (180, 8, 29), (193, 26, 24), (224, 33, 16), (263, 26, 24))
+spritesheet_bounding_boxes_asymmetric_unreversed = ((60, 8, 29), (73, 26, 24), (104, 33, 16), (143, 26, 24),
+                                                    (180, 8, 29), (193, 26, 24), (224, 33, 16), (263, 26, 24))
 
-spritesheet_bounding_boxes_reversed = (spritesheet_bounding_boxes[4], spritesheet_bounding_boxes[5], spritesheet_bounding_boxes[6], spritesheet_bounding_boxes[7],
-                                       spritesheet_bounding_boxes[0], spritesheet_bounding_boxes[1], spritesheet_bounding_boxes[2], spritesheet_bounding_boxes[3])
+spritesheet_bounding_boxes_asymmetric_reversed = list(spritesheet_bounding_boxes_asymmetric_unreversed[4:8])
+spritesheet_bounding_boxes_asymmetric_reversed.extend(spritesheet_bounding_boxes_asymmetric_unreversed[0:4])
+
+# pick the RHS block of sprites, I prefer drawing on that side :P
+spritesheet_bounding_boxes_symmetric_unreversed = list(spritesheet_bounding_boxes_asymmetric_unreversed[4:8])
+spritesheet_bounding_boxes_symmetric_unreversed.extend(spritesheet_bounding_boxes_asymmetric_unreversed[4:8])
+
+# spritesheet_bounding_boxes_symmetric_unreversed isn't defined as it would make no sense (reversing symmetrical vehicles is meaningless)
 
 # these only used in docs as of April 2018; buy menu sprites in the grf refactored to work differently; consider moving these constants to render_docs
 buy_menu_sprite_width = 33 # was 36; now 33 is correct, but some spritesheets might have wrong widths due to copy-paste history etc
