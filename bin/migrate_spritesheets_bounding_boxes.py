@@ -18,6 +18,9 @@ base_template_spritesheet = Image.open(os.path.join('graphics_sources','base_10_
 spriterow_height = 30
 DOS_PALETTE = Image.open('palette_key.png').palette
 
+chassis_names = ['2_axle_filled_16px', '2_axle_filled_24px', '2_axle_gapped_16px', '2_axle_sparse_16px',
+                 '4_axle_gapped_24px', '4_axle_gapped_32px', 'test']
+
 def get_legacy_bounding_boxes(y=0):
     return [[60,  y, 8, 29], [76,  y, 26, 24], [107, y, 33, 16], [156, y, 26, 24],
             [188, y, 8, 29], [200, y, 26, 24], [235, y, 33, 16], [284, y, 26, 24]]
@@ -75,6 +78,7 @@ def main():
     os.mkdir(output_graphics_dir)
     for roster in registered_rosters:
         os.mkdir(os.path.join(output_graphics_dir, roster.id))
+    os.mkdir(os.path.join(output_graphics_dir, 'chassis'))
 
     for consist in consists:
         filename = os.path.join(consist.id + '.png')
@@ -84,7 +88,16 @@ def main():
         migrated_spritesheet = recomp_rows(spritesheet, rows_with_valid_content)
         #migrated_spritesheet.show()
         migrated_spritesheet.save(output_path)
-    print(len(consists), 'spritesheets migrated')
+
+    for chassis_name in chassis_names:
+        filename = os.path.join(chassis_name + '.png')
+        output_path = os.path.join(output_graphics_dir, 'chassis', filename)
+        spritesheet = Image.open(os.path.join(input_graphics_dir, 'chassis', filename))
+        rows_with_valid_content = detect_spriterows_with_content(filename, spritesheet)
+        migrated_spritesheet = recomp_rows(spritesheet, rows_with_valid_content)
+        migrated_spritesheet.save(output_path)
+
+    print(len(consists) + len(chassis_names), 'spritesheets migrated')
     print('[DONE]')
 
 if __name__ == '__main__':
