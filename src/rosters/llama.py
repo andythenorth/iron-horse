@@ -1,7 +1,6 @@
 from roster import Roster
 
 from vehicles import ge289a
-from vehicles import amazon
 from vehicles import americano
 from vehicles import anaconda
 from vehicles import argentina
@@ -71,7 +70,6 @@ roster = Roster(id = 'llama',
                            universal,
                            evolucao,
                            roca,
-                           amazon,
                            anaconda,
                            patagonia,
                            riachuelo,
