@@ -98,6 +98,7 @@ class DocHelper(object):
         for vehicle in self.get_vehicles_by_subclass()[subclass]:
             result = {'vehicle':{}, 'subclass_props': []}
             result = self.fetch_prop(result, 'Vehicle Name', self.unpack_name_string(vehicle))
+            result = self.fetch_prop(result, 'Railtype', vehicle.track_type)
             result = self.fetch_prop(result, 'HP', int(vehicle.power))
             result = self.fetch_prop(result, 'Speed (mph)', vehicle.speed)
             result = self.fetch_prop(result, 'Weight (t)', vehicle.weight)
