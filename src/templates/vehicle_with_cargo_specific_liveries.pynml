@@ -77,7 +77,8 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase, cargo_type_in
         </tal:block>
     </tal:default_cargo>
 }
-
-<tal:include metal:use-macro="load: capacity_switches.pynml" />
+<tal:optional_capacity_switches condition="vehicle.has_cargo_capacity">
+    <tal:include metal:use-macro="load: capacity_switches.pynml" />
+</tal:optional_capacity_switches>
 
 <tal:include metal:use-macro="load: properties.pynml" />
