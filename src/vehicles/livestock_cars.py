@@ -41,10 +41,12 @@ def main():
     consist = LivestockCarConsist(roster='pony',
                                   base_numeric_id=1020,
                                   gen=4,
-                                  subtype='A')
+                                  subtype='A',
+                                  sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=4)
+                     vehicle_length=4,
+                     chassis='2_axle_filled_16px')
 
 
     consist = LivestockCarConsist(roster='pony',
