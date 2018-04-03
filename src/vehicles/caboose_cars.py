@@ -7,8 +7,7 @@ def main():
                                 base_numeric_id=1290,
                                 gen=1,
                                 subtype='A',
-                                track_type='NG',
-                                sprites_complete=True)
+                                track_type='NG')
 
     consist.add_unit(type=CabooseCar,
                      vehicle_length=4)
@@ -18,7 +17,8 @@ def main():
     consist = CabooseCarConsist(roster='pony',
                                 base_numeric_id=1280,
                                 gen=1,
-                                subtype='A')
+                                subtype='A',
+                                sprites_complete=True)
 
     consist.add_unit(type=CabooseCar,
                      vehicle_length=4,
