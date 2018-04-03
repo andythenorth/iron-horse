@@ -1,0 +1,3 @@
+Spritesheet layout was migrated with a script April 2018.
+
+These spritesheets are in old format.

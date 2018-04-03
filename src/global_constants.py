@@ -46,13 +46,14 @@ default_spritesheet_offsets = {'3': [[-3, -25], [-3, -21], [0, -12], [5, -17], [
 
 # spritesheet bounding boxes, each defined by a 3 tuple (left x, width, height);
 # upper y is determined by spritesheet row position, so isn't defined as a constant
-spritesheet_bounding_boxes = ((60, 8, 29), (76, 26, 24), (107, 40, 16), (156, 26, 24),
-                              (188, 8, 29), (200, 26, 24), (235, 40, 16), (284, 26, 24))
+spritesheet_bounding_boxes = ((60, 8, 29), (73, 26, 24), (104, 33, 16), (143, 26, 24),
+                              (180, 8, 29), (193, 26, 24), (224, 33, 16), (263, 26, 24))
 
 spritesheet_bounding_boxes_reversed = (spritesheet_bounding_boxes[4], spritesheet_bounding_boxes[5], spritesheet_bounding_boxes[6], spritesheet_bounding_boxes[7],
                                        spritesheet_bounding_boxes[0], spritesheet_bounding_boxes[1], spritesheet_bounding_boxes[2], spritesheet_bounding_boxes[3])
 
-buy_menu_sprite_width = 36 # 36 is correct, but some spritesheets might have wrong widths due to copy-pasteo etc
+# these only used in docs as of April 2018; buy menu sprites in the grf refactored to work differently; consider moving these constants to render_docs
+buy_menu_sprite_width = 33 # was 36; now 33 is correct, but some spritesheets might have wrong widths due to copy-paste history etc
 buy_menu_sprite_height = 16
 
 # shared global constants via Polar Fox library - import at end to make the this project's constants easier to work with
