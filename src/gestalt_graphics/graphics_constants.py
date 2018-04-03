@@ -9,7 +9,8 @@ body_recolour_CC2 = {136: CC2, 137: CC2+1, 138: CC2+2, 139: CC2+3, 140: CC2+4, 1
 spriterow_height = 30
 spritesheet_top_margin = 10
 # assumes auto-buy menu sprite (from 7th column), not explicit buy menu
-spritesheet_width = 316
+# wider than sprites, allows room to print cargo labels to aid drawing / debugging generated cargos
+spritesheet_width = 360
 
 # --- Cargo Maps ---- #
 # label order matters, so tuples are used not dicts

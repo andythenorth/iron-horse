@@ -58,6 +58,10 @@ spritesheet_bounding_boxes_symmetric_unreversed.extend(spritesheet_bounding_boxe
 
 # spritesheet_bounding_boxes_symmetric_unreversed isn't defined as it would make no sense (reversing symmetrical vehicles is meaningless)
 
+# rather than total spritesheet width, we often need to know the max x extent that actually contains sprites
+# this is calculated from bounding boxes
+sprites_max_x_extent = spritesheet_bounding_boxes_asymmetric_unreversed[7][0] + spritesheet_bounding_boxes_asymmetric_unreversed[7][1]
+
 # these only used in docs as of April 2018; buy menu sprites in the grf refactored to work differently; consider moving these constants to render_docs
 buy_menu_sprite_width = 33 # was 36; now 33 is correct, but some spritesheets might have wrong widths due to copy-paste history etc
 buy_menu_sprite_height = 16

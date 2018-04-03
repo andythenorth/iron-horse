@@ -1,7 +1,7 @@
 import os.path
 currentdir = os.curdir
 
-from PIL import Image
+from PIL import Image, ImageDraw, ImageFont
 
 import polar_fox
 from polar_fox.graphics_units import SimpleRecolour, AppendToSpritesheet
@@ -9,6 +9,8 @@ from polar_fox.pixa import Spritesheet, pixascan
 from gestalt_graphics import graphics_constants
 
 DOS_PALETTE = Image.open('palette_key.png').palette
+
+label_font = ImageFont.truetype(os.path.join('font','slkscr.ttf'), 8)
 
 """
 Pipelines can be dedicated to a single task such as SimpleRecolourPipeline
@@ -80,11 +82,10 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
         super(ExtendSpriterowsForCompositedCargosPipeline, self).__init__("extend_spriterows_for_composited_cargos_pipeline")
 
     def comp_chassis_and_body(self, body_image):
-
         crop_box_chassis = (0,
-                                10,
-                                graphics_constants.spritesheet_width,
-                                10 + graphics_constants.spriterow_height)
+                            10,
+                            graphics_constants.spritesheet_width,
+                            10 + graphics_constants.spriterow_height)
         chassis_image = Image.open(self.chassis_input_path).crop(crop_box_chassis)
         #chassis_image.show()
         # the body image has false colour pixels for the chassis, to aid drawing; remove these by converting to white, also convert any blue to white
@@ -114,7 +115,7 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
         vehicle_generic_spriterow_input_as_spritesheet = self.make_spritesheet_from_image(vehicle_generic_spriterow_input_image)
         crop_box_dest = (0,
                          0,
-                         graphics_constants.spritesheet_width,
+                         self.sprites_max_x_extent,
                          graphics_constants.spriterow_height)
         self.units.append(AppendToSpritesheet(vehicle_generic_spriterow_input_as_spritesheet, crop_box_dest))
 
@@ -165,13 +166,16 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
 
         bulk_cargo_rows_image.paste(vehicle_bulk_cargo_input_image_1, crop_box_comp_dest_1)
         bulk_cargo_rows_image.paste(vehicle_bulk_cargo_input_image_2, crop_box_comp_dest_2)
-        bulk_cargo_rows_image_as_spritesheet = self.make_spritesheet_from_image(bulk_cargo_rows_image)
 
         crop_box_dest = (0,
                          0,
-                         graphics_constants.spritesheet_width,
+                         self.sprites_max_x_extent,
                          cargo_group_row_height)
         for label, recolour_map in polar_fox.constants.bulk_cargo_recolour_maps:
+            bulk_cargo_rows_image_as_spritesheet = self.make_spritesheet_from_image(bulk_cargo_rows_image)
+            draw_cargo_labels = ImageDraw.Draw(bulk_cargo_rows_image_as_spritesheet.sprites)
+            draw_cargo_labels.text((0, 0), label, font=label_font)
+
             self.units.append(AppendToSpritesheet(bulk_cargo_rows_image_as_spritesheet, crop_box_dest))
             self.units.append(SimpleRecolour(recolour_map))
 
@@ -233,7 +237,7 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
         #piece_cargo_rows_image.show()
         crop_box_dest = (0,
                          0,
-                         graphics_constants.spritesheet_width,
+                         self.sprites_max_x_extent,
                          cargo_group_output_row_height)
         for cargo_labels, cargo_filenames in consist.gestalt_graphics.piece_cargo_maps:
             for cargo_filename in cargo_filenames:
@@ -285,6 +289,7 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
     def render(self, consist, global_constants):
         self.units = [] # graphics units not same as consist units ! confusing overlap of terminology :(
         self.consist = consist
+        self.sprites_max_x_extent = global_constants.sprites_max_x_extent
 
         # the cumulative_input_spriterow_count updates per processed group of spriterows, and is key to making this work
         cumulative_input_spriterow_count = 0
