@@ -120,7 +120,6 @@ def get_consists_in_buy_menu_order():
         utils.echo_message("Warning: consist " + id + " in buy_menu_sort_order, but not found in registered_consists")
     for id in consist_id_defender.difference(buy_menu_defender):
         utils.echo_message("Warning: consist " + id + " in consists, but not in buy_menu_sort_order - won't show in game")
-
     return consists
 
 def vacant_numeric_ids_formatted():

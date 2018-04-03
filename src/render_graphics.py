@@ -43,6 +43,11 @@ def run_pipeline(consist):
         result = consist.gestalt_graphics.pipeline.render(consist, global_constants)
         return result
 
+def report_sprites_complete(consists):
+    # project management eh :P
+    complete = len([consist.sprites_complete for consist in consists if consist.sprites_complete])
+    print("Sprites complete for", complete, "consists; incomplete for", len(consists) - complete, "consists")
+
 # wrapped in a main() function so this can be called explicitly, because unexpected multiprocessing fork bombs are bad
 def main():
     start = time()
@@ -56,6 +61,7 @@ def main():
         pool.map(run_pipeline, consists)
         pool.close()
 
+    report_sprites_complete(consists)
     print(format((time() - start), '.2f')+'s')
 
 if __name__ == '__main__':
