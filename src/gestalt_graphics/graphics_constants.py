@@ -10,7 +10,7 @@ spriterow_height = 30
 spritesheet_top_margin = 10
 # assumes auto-buy menu sprite (from 7th column), not explicit buy menu
 # wider than sprites, allows room to print cargo labels to aid drawing / debugging generated cargos
-spritesheet_width = 360
+spritesheet_width = 400
 
 # --- Cargo Maps ---- #
 # label order matters, so tuples are used not dicts
