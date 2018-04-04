@@ -14,7 +14,12 @@ import os
 from PIL import Image, ImageDraw, ImageFont
 
 DOS_PALETTE = Image.open('palette_key.png').palette
-label_font = ImageFont.truetype(os.path.join('font','slkscr.ttf'), 8)
+try:
+    # truetype fonts may not be available in older versions of PIL / Pillow
+    label_font = ImageFont.truetype(os.path.join('font','slkscr.ttf'), 8)
+except:
+    # if truetype fonts are not available, 'None' will trigger fallback to PIL default bitmap font
+    label_font = None
 
 class ProcessingUnit(object):
     def __init__(self):
@@ -102,11 +107,13 @@ class AppendToSpritesheet(ProcessingUnit):
 
 class AddCargoLabel(ProcessingUnit):
     """AddCargoLabel"""
-    """Adds a cargo (or other) label to the spritesheet at the specified (x, y) position"""
+    """Adds a cargo (or other) label to the spritesheet"""
 
     def __init__(self, label, x_offset, y_offset):
         self.label = label
         self.x_offset = x_offset
+        # the y_offset is usually negative, as it's a relative offset to the *bottom* of the spritesheet, with y=0 at the top
+        # this is so that we can print labels as we add cargo rows to the end of the spritesheet (via AppendToSpritesheet label)
         self.y_offset = y_offset
         super(AddCargoLabel, self).__init__()
 
