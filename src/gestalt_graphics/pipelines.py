@@ -320,6 +320,8 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
                     input_spriterow_count = 2
                     self.add_piece_cargo_spriterows(consist, consist.unique_units[vehicle_counter], global_constants)
                 cumulative_input_spriterow_count += input_spriterow_count
+            # self.vehicle_unit is hax, and is only valid inside this loop, so clear it to prevent incorrectly relying on it outside the loop in future :P
+            self.vehicle_unit = None
 
         input_image = Image.open(self.input_path).crop((0, 0, graphics_constants.spritesheet_width, 10))
         result = self.render_common(consist, input_image, self.units)
