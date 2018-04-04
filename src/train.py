@@ -1015,7 +1015,7 @@ class DieselEngineUnit(Train):
         self.engine_class = 'ENGINE_CLASS_DIESEL'
         self.visual_effect = 'VISUAL_EFFECT_DIESEL'
         self.consist.str_name_suffix = 'STR_NAME_SUFFIX_DIESEL'
-        self._symmetry_type = 'asymmetric' # most diesel engines are asymmetric, over-ride per vehicle as needed
+        self._symmetry_type = kwargs.get('symmetry_type', 'asymmetric') # most diesel engines are asymmetric, over-ride per vehicle as needed
 
 
 class ElectricEngineUnit(Train):
@@ -1036,7 +1036,7 @@ class ElectricEngineUnit(Train):
         self.engine_class = 'ENGINE_CLASS_ELECTRIC'
         self.visual_effect = 'VISUAL_EFFECT_ELECTRIC'
         self.consist.str_name_suffix = 'STR_NAME_SUFFIX_ELECTRIC'
-        self._symmetry_type = 'asymmetric' # almost all electric engines are asymmetric, over-ride per vehicle as needed
+        self._symmetry_type = kwargs.get('symmetry_type', 'asymmetric') # almost all electric engines are asymmetric, over-ride per vehicle as needed
 
 
 class ElectroDieselEngineUnit(Train):
@@ -1049,7 +1049,7 @@ class ElectroDieselEngineUnit(Train):
         self.visual_effect = 'VISUAL_EFFECT_DIESEL'
         self.consist.visual_effect_override_by_railtype = {'ELRL': 'VISUAL_EFFECT_ELECTRIC'}
         self.consist.str_name_suffix = 'STR_NAME_SUFFIX_ELECTRODIESEL'
-        self._symmetry_type = 'asymmetric' # almost all electro-diesel engines are asymmetric, over-ride per vehicle as needed
+        self._symmetry_type = kwargs.get('symmetry_type', 'asymmetric') # almost all electro-diesel engines are asymmetric, over-ride per vehicle as needed
 
 
 class ElectricPaxUnit(Train):
@@ -1128,7 +1128,7 @@ class TrainCar(Train):
             self.loading_speed_multiplier = self.consist.loading_speed_multiplier
         if hasattr(self.consist, 'cargo_age_period'):
             self.cargo_age_period = self.consist.cargo_age_period
-        self._symmetry_type = 'symmetric' # most wagons are symmetric, over-ride per vehicle as needed
+        self._symmetry_type = kwargs.get('symmetry_type', 'symmetric') # most wagons are symmetric, over-ride per vehicle as needed
 
     @property
     def weight(self):
