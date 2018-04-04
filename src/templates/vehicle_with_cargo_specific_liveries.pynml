@@ -22,7 +22,9 @@
     </tal:cargo_variants>
 
     <!--! this triggers random on a new load, which was designed for use specifically with containers where colours are randomised on load
-          it's not necessary for e.g. tankers, which only have one livery option per cargo -->
+          it's not necessary for e.g. tankers, which only have one livery option per cargo
+          !! April 2018 - I'm not convinced this is doing what the comment suggests,
+             I think it's one and only one remap per cargo label currently, with no option for multiple variants per cargo -->
     <tal:cargo_random_switches repeat="mapping consist.gestalt_graphics.cargo_row_map.items()">
         random_switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${reversed_variant}_${mapping[0]}, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
             <tal:random_graphics_variations repeat="spriterow_num mapping[1]">
