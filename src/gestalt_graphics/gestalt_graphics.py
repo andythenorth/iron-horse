@@ -151,6 +151,8 @@ class GestaltGraphicsLiveryOnly(GestaltGraphics):
         counter = 0
         for cargo_map in self.recolour_maps:
             result[cargo_map[0]] = [counter] # list because multiple spriterows can map to a cargo label
+            # !! ^ but this should be appending 'counter' to the list, not just replacing the entire list
+            # !! ^^ no real consequence as long as only one livery per cargo label is used, but will need fixed if multiple liveries per label are ever needed
             counter += 1
         return result
 
