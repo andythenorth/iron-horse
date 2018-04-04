@@ -23,6 +23,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      cargo_length=4,
                      vehicle_length=4,
+                     symmetry_type = 'asymmetric', # !! temp while refactoring graphics pipelines, remove, set in a subclass instead
                      chassis='2_axle_filled_16px')
 
     # no gen 2A, gen 1A continues in pony

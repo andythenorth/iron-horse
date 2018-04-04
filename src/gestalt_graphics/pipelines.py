@@ -80,11 +80,24 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
         super(ExtendSpriterowsForCompositedCargosPipeline, self).__init__("extend_spriterows_for_composited_cargos_pipeline")
 
     def comp_chassis_and_body(self, body_image):
-        crop_box_chassis = (0,
-                            10,
-                            self.sprites_max_x_extent,
-                            10 + graphics_constants.spriterow_height)
-        chassis_image = Image.open(self.chassis_input_path).crop(crop_box_chassis)
+
+        crop_box_chassis_1 = (0,
+                             10,
+                             self.sprites_max_x_extent,
+                             10 + graphics_constants.spriterow_height)
+        chassis_image = Image.open(self.chassis_input_path).crop(crop_box_chassis_1)
+        # chassis are *always* symmetrical, with 4 angles drawn; for vehicles with asymmetric bodies, copy and paste to provide all 8 angles
+        if self.vehicle_unit.symmetry_type == 'asymmetric':
+            crop_box_chassis_2 = (self.global_constants.spritesheet_bounding_boxes_symmetric_unreversed[4][0],
+                                  0,
+                                  self.sprites_max_x_extent,
+                                  0 + graphics_constants.spriterow_height)
+            chassis_image_2 = chassis_image.copy().crop(crop_box_chassis_2)
+            crop_box_chassis_2_dest = (self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed[0][0],
+                                       0,
+                                       self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed[0][0] + chassis_image_2.size[0],
+                                       0 + graphics_constants.spriterow_height)
+            chassis_image.paste(chassis_image_2, crop_box_chassis_2_dest)
         #chassis_image.show()
         # the body image has false colour pixels for the chassis, to aid drawing; remove these by converting to white, also convert any blue to white
         body_image = body_image.point(lambda i: 255 if (i in range(178, 192) or i == 0) else i)
@@ -183,7 +196,7 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
                                             x_offset=self.sprites_max_x_extent + 5,
                                             y_offset=  -1 * cargo_group_row_height))
 
-    def add_piece_cargo_spriterows(self, consist, vehicle, global_constants):
+    def add_piece_cargo_spriterows(self, consist, vehicle):
         # !! this could possibly be optimised by slicing all the cargos once, globally, instead of per-unit
         cargo_group_output_row_height = 2 * graphics_constants.spriterow_height
         # Cargo spritesheets provide multiple lengths, using a specific format of rows
@@ -199,7 +212,9 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
         # 2 spriterows for the vehicle loading / loaded states, with pink loc points for cargo
         # a mask row for the vehicle, with pink mask area, which is converted to black and white mask image
         # an overlay for the vehicle, created from the vehicle empty state spriterow, and comped with the mask after each cargo has been placed
-        # there is a case not handled, where long cargo sprites will cabbed vehicles in / direction with cab at N end, hard to solve
+        # - there is a case not handled, where long cargo sprites will overlap cabbed vehicles in / direction with cab at N end, hard to solve
+        # - this has no awareness of vehicle symmetry_type property, so will needlessly scan too many pixels for symmetric vehicles
+        #   that's TMWFTLB to fix right now, as it will require relative offsets of all the loc points for probably very little performance gain
         crop_box_vehicle_cargo_loc_row = (0,
                            self.base_offset,
                            graphics_constants.spritesheet_width,
@@ -264,7 +279,7 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
                 vehicle_comped_image = piece_cargo_rows_image.copy()
                 for pixel in loc_points:
                     angle_num = 0
-                    for counter, bbox in enumerate(global_constants.spritesheet_bounding_boxes_asymmetric_unreversed):
+                    for counter, bbox in enumerate(self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed):
                         if pixel[0] >= bbox[0]:
                             angle_num = counter
                     # clamp angle_num to 4, cargo sprites are symmetrical, only 4 angles provided
@@ -296,7 +311,8 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
     def render(self, consist, global_constants):
         self.units = [] # graphics units not same as consist units ! confusing overlap of terminology :(
         self.consist = consist
-        self.sprites_max_x_extent = global_constants.sprites_max_x_extent
+        self.global_constants = global_constants
+        self.sprites_max_x_extent = self.global_constants.sprites_max_x_extent
 
         # the cumulative_input_spriterow_count updates per processed group of spriterows, and is key to making this work
         cumulative_input_spriterow_count = 0
@@ -318,7 +334,7 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
                     self.add_bulk_cargo_spriterows()
                 elif spriterow_type == 'piece_cargo':
                     input_spriterow_count = 2
-                    self.add_piece_cargo_spriterows(consist, consist.unique_units[vehicle_counter], global_constants)
+                    self.add_piece_cargo_spriterows(consist, consist.unique_units[vehicle_counter])
                 cumulative_input_spriterow_count += input_spriterow_count
             # self.vehicle_unit is hax, and is only valid inside this loop, so clear it to prevent incorrectly relying on it outside the loop in future :P
             self.vehicle_unit = None
