@@ -6,10 +6,12 @@ def main():
     consist = DumpCarConsist(roster='pony',
                              base_numeric_id=2350,
                              gen=3,
-                             subtype='A')
+                             subtype='A',
+                             sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=4)
+                     vehicle_length=4,
+                     chassis='2_axle_gapped_16px')
 
 
     consist = DumpCarConsist(roster='pony',
@@ -26,10 +28,12 @@ def main():
     consist = DumpCarConsist(roster='pony',
                              base_numeric_id=2370,
                              gen=4,
-                             subtype='A')
+                             subtype='A',
+                             sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=4)
+                     vehicle_length=4,
+                     chassis='2_axle_gapped_16px')
 
 
     consist = DumpCarConsist(roster='pony',
