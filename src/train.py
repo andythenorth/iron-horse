@@ -317,6 +317,9 @@ class PassengerEngineConsist(EngineConsist):
         self.label_refits_allowed = []
         self.label_refits_disallowed = []
         self.default_cargos = ['PASS']
+        self.reversible = True
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery()
 
 
 class MailEngineConsist(EngineConsist):
@@ -638,6 +641,9 @@ class PassengerCarConsistBase(CarConsist):
         self.label_refits_disallowed = []
         self.default_cargos = global_constants.default_cargos['pax']
         self.random_company_colour_swap = False
+        self.reversible = True
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery()
 
 
 class PassengerCarConsist(PassengerCarConsistBase):
@@ -1025,6 +1031,15 @@ class DieselEngineUnit(Train):
         self.visual_effect = 'VISUAL_EFFECT_DIESEL'
         self.consist.str_name_suffix = 'STR_NAME_SUFFIX_DIESEL'
         self._symmetry_type = kwargs.get('symmetry_type', 'asymmetric') # most diesel engines are asymmetric, over-ride per vehicle as needed
+
+
+class DieselRailcarUnit(DieselEngineUnit):
+    """
+    Unit for a diesel railcar.  Just a sparse subclass to force the symmetry type
+    """
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self._symmetry_type = kwargs.get('symmetry_type', 'symmetric') # diesel railcars are all symmetric
 
 
 class ElectricEngineUnit(Train):

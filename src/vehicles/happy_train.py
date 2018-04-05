@@ -1,4 +1,4 @@
-from train import PassengerEngineConsist, DieselEngineUnit
+from train import PassengerEngineConsist, DieselRailcarUnit
 
 consist = PassengerEngineConsist(id='happy_train',
                                  base_numeric_id=100,
@@ -10,7 +10,7 @@ consist = PassengerEngineConsist(id='happy_train',
                                  type_base_running_cost_points=-36,  # dibble running costs for game balance
                                  intro_date=2015)  # explicit intro date by design
 
-consist.add_unit(type=DieselEngineUnit,
+consist.add_unit(type=DieselRailcarUnit,
                  weight=40,
                  vehicle_length=8,
                  capacity=75,

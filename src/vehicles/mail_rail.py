@@ -1,4 +1,4 @@
-from train import MailEngineConsist, DieselEngineUnit
+from train import MailEngineConsist, DieselRailcarUnit
 
 consist = MailEngineConsist(id='mail_rail',
                             base_numeric_id=3000,
@@ -10,7 +10,7 @@ consist = MailEngineConsist(id='mail_rail',
                             type_base_running_cost_points=-32,  # dibble running costs for game balance
                             intro_date=2015)  # explicit intro date by design
 
-consist.add_unit(type=DieselEngineUnit,
+consist.add_unit(type=DieselRailcarUnit,
                  weight=37,
                  vehicle_length=8,
                  capacity=40,
