@@ -17,7 +17,7 @@ import global_constants # expose all constants for easy passing to templates
 import utils
 
 from gestalt_graphics.gestalt_graphics import (GestaltGraphics, GestaltGraphicsVisibleCargo, GestaltGraphicsCargoSpecificLivery,
-                                               GestaltGraphicsCustom, GestaltGraphicsEngineSpecificLivery)
+                                               GestaltGraphicsCustom, GestaltGraphicsConsistSpecificLivery)
 import gestalt_graphics.graphics_constants as graphics_constants
 
 from rosters import registered_rosters
@@ -588,7 +588,7 @@ class MailCarConsist(CarConsist):
         self.run_cost_divisor = 7
         self.reversible = True
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsEngineSpecificLivery()
+        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery()
 
 
 class MetalCarConsist(CarConsist):

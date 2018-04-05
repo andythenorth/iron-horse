@@ -140,8 +140,8 @@ class GestaltGraphicsCargoSpecificLivery(GestaltGraphics):
 
     def get_output_row_counts_by_type(self):
         # the template for visible livery requires the count of _all_ the liveries, *no calculating later*
-        # 3 rows per livery (empty, 50% load, 100% load)
-        return [('livery_only', 3 * self.num_cargo_sprite_variants)]
+        # 1 row per livery, no loading / loaded states
+        return [('livery_only', self.num_cargo_sprite_variants)]
 
     @property
     def cargo_row_map(self):
@@ -157,14 +157,16 @@ class GestaltGraphicsCargoSpecificLivery(GestaltGraphics):
         return result
 
 
-class GestaltGraphicsEngineSpecificLivery(object):
+class GestaltGraphicsConsistSpecificLivery(object):
     """
-        Used when the vehicle changes livery to match the engine (based on engine 'role')
+        Used when the vehicle changes livery to match
+        - the engine (based on engine 'role')
+        - major cargo refit in the consist (mail vs. freight)
+        - position in consist (pax restaurant cars etc)
         Intended for pax and mail cars, possibly also caboose
          - multiple engine roles might map to one livery
-         - livery shown might be random: engine-specific or solid CC
-         - player might toggle engine-livery or solid CC by flipping vehicle
-         - over-rides might be provided for specific cargo refits (mail vs. freight)
+         - livery shown _might_ be random at construction time: engine-specific or solid 1CC+2CC (!! Unconfirmed as of April 2018)
+         - player can toggle engine-livery or solid CC by flipping vehicle
          - intended for closed vehicles with doors, 'loaded' sprites are same as 'empty'
          - option to show cargo loading sprites (open doors) via 1 or 2 'loading' rows
     """
@@ -175,7 +177,7 @@ class GestaltGraphicsEngineSpecificLivery(object):
     @property
     def nml_template(self):
         # over-ride in sub-classes as needed
-        return 'vehicle_with_engine_specific_liveries.pynml'
+        return 'vehicle_with_consist_specific_liveries.pynml'
 
     """
     # may or may not be needed in this gestalt
