@@ -12,13 +12,12 @@ spritesheet_top_margin = 10
 # wider than sprites, allows room to print cargo labels to aid drawing / debugging generated cargos
 spritesheet_width = 400
 
-# --- Cargo Maps ---- #
+# --- Cargo Maps ---- move to  #
 # label order matters, so tuples are used not dicts
 # could probably have used orderedict or named tuple, but...blah
 
 # DYES
 # PLAS
-print("Silo remaps unfinished")
 silo_livery_recolour_maps = (("OIL_", {136: 1, 137: 2, 138: 3, 139: 4,
                                          140: 5, 141: 6, 142: 7, 143: 8}),  # see note on oil above
                                # see note on DFLT above
