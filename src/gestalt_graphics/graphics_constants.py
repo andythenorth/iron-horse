@@ -36,7 +36,12 @@ silo_livery_recolour_maps = (("OIL_", {136: 1, 137: 2, 138: 3, 139: 4,
                                          140: 20, 141: 21, 142: 22, 143: 23}))
 
 box_livery_recolour_maps = (# see note on DFLT above
-                           ("DFLT", body_recolour_CC1),)
+                           ("DFLT", {136: CC1, 137: CC1+1, 138: CC1+2, 139: CC1+3,
+                                     140: CC1+4, 141: CC1+5, 142: CC1+6, 143: CC1+7,
+                                     40: CC1, 41: CC1+1, 42: CC1+2, 43: CC1+3,
+                                     44: CC1+4, 45: CC1+5, 46: CC1+6, 47: CC1+7,
+                                     CC2: CC1, CC2+1: CC1+1, CC2+2: CC1+2, CC2+3: CC1+3,
+                                     CC2+4: CC1+4, CC2+5: CC1+5, CC2+6: CC1+6, CC2+7: CC1+7}),)
 
 caboose_livery_recolour_maps = (# see note on DFLT above
                                ("DFLT", body_recolour_CC1),)
@@ -45,7 +50,12 @@ fruit_veg_livery_recolour_maps = (# see note on DFLT above
                                  ("DFLT", body_recolour_CC1),)
 
 refrigerated_livery_recolour_maps = (# see note on DFLT above
-                                    ("DFLT", body_recolour_CC1),)
+                                    ("DFLT", {136: 18, 137: 19, 138: 20, 139: 21,
+                                              140: 22, 141: 13, 142: 14, 143: 15,
+                                              40: 18, 41: 19, 42: 20, 43: 21,
+                                              44: 22, 45: 13, 46: 14, 47: 15,
+                                              CC2: CC1, CC2+1: CC1+1, CC2+2: CC1+2, CC2+3: CC1+3,
+                                              CC2+4: CC1+4, CC2+5: CC1+5, CC2+6: CC1+6, CC2+7: CC1+7}),)
 
 livestock_livery_recolour_maps = (# see note on DFLT above
                                  ("DFLT", body_recolour_CC2),)

@@ -155,20 +155,43 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
                                             y_offset= -1 * graphics_constants.spriterow_height))
 
     def add_box_car_with_opening_doors_spriterows(self):
-        # !!!! one spriterow, no loading / loaded states, intended for tankers etc
-        crop_box_source = (0,
-                           self.base_offset,
-                           self.sprites_max_x_extent,
-                           self.base_offset + graphics_constants.spriterow_height)
-        box_car_spriterow_input_image = self.comp_chassis_and_body(Image.open(self.input_path).crop(crop_box_source))
-        # vehicle_generic_spriterow_input_image.show() # comment in to see the image when debugging
-        box_car_spriterow_input_as_spritesheet = self.make_spritesheet_from_image(box_car_spriterow_input_image)
+        # all wagons using this gestalt repaint the relevant box car sprite for the wagon's generation and subtype
+        box_car_id = self.consist.get_wagon_id(id_base='box_car', roster=self.consist.roster.id, gen=self.consist.gen, subtype=self.consist.subtype)
+        box_car_input_path = os.path.join(currentdir, 'src', 'graphics', self.consist.roster_id, box_car_id + '.png')
+        # two spriterows, closed doors and open doors
+        crop_box_source_1 = (0,
+                             self.base_offset,
+                             self.sprites_max_x_extent,
+                             self.base_offset + graphics_constants.spriterow_height)
+        crop_box_source_2 = (0,
+                             self.base_offset + graphics_constants.spriterow_height,
+                             self.sprites_max_x_extent,
+                             self.base_offset + 2 * graphics_constants.spriterow_height)
+        box_car_input_image_1 = self.comp_chassis_and_body(Image.open(box_car_input_path).crop(crop_box_source_1))
+        box_car_input_image_2 = self.comp_chassis_and_body(Image.open(box_car_input_path).crop(crop_box_source_2))
+        #vehicle_box_car_input_image_1.show() # comment in to see the image when debugging
+        #loading and loaded state will need pasting once each, so two crop boxes needed
+        crop_box_comp_dest_1 = (0,
+                                0,
+                                self.sprites_max_x_extent,
+                                graphics_constants.spriterow_height)
+        crop_box_comp_dest_2 = (0,
+                                graphics_constants.spriterow_height,
+                                self.sprites_max_x_extent,
+                                2 * graphics_constants.spriterow_height)
+        box_car_rows_image = Image.new("P", (graphics_constants.spritesheet_width, 2 * graphics_constants.spriterow_height))
+        box_car_rows_image.putpalette(DOS_PALETTE)
+
+        box_car_rows_image.paste(box_car_input_image_1, crop_box_comp_dest_1)
+        box_car_rows_image.paste(box_car_input_image_2, crop_box_comp_dest_2)
+
         crop_box_dest = (0,
                          0,
                          self.sprites_max_x_extent,
-                         graphics_constants.spriterow_height)
-        self.units.append(AppendToSpritesheet(box_car_spriterow_input_as_spritesheet, crop_box_dest))
-        #self.units.append(SimpleRecolour(recolour_map))
+                         2 * graphics_constants.spriterow_height)
+        box_car_rows_image_as_spritesheet = self.make_spritesheet_from_image(box_car_rows_image)
+        self.units.append(AppendToSpritesheet(box_car_rows_image_as_spritesheet, crop_box_dest))
+        self.units.append(SimpleRecolour(self.consist.gestalt_graphics.recolour_map))
 
     def add_bulk_cargo_spriterows(self):
         cargo_group_row_height = 2 * graphics_constants.spriterow_height

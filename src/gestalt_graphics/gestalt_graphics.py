@@ -127,7 +127,7 @@ class GestaltGraphicsBoxCarOpeningDoors(GestaltGraphics):
         self.pipeline = pipelines.get_pipeline('extend_spriterows_for_composited_cargos_pipeline')
         # common format for recolour_maps provides multiple remaps
         # but just one livery remap is supported for this gestalt, and should be the first in the remap list
-        self.recolour_map = recolour_maps[0]
+        self.recolour_map = recolour_maps[0][1]
 
     @property
     def generic_rows(self):
