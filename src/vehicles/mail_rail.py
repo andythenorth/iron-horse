@@ -1,6 +1,6 @@
-from train import MailEngineConsist, DieselRailcarUnit
+from train import MailEngineRailcarConsist, DieselRailcarUnit
 
-consist = MailEngineConsist(id='mail_rail',
+consist = MailEngineRailcarConsist(id='mail_rail',
                             base_numeric_id=3000,
                             name='Mail Rail',
                             role='mail_railcar',

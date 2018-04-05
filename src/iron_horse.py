@@ -4,19 +4,21 @@ import os.path
 currentdir = os.curdir
 
 import sys
-sys.path.append(os.path.join('src')) # add to the module search path
+sys.path.append(os.path.join('src'))  # add to the module search path
 
 import global_constants
 import utils
 makefile_args = utils.get_makefile_args(sys)
 
 # setting up a cache for compiled chameleon templates can significantly speed up template rendering
-chameleon_cache_path = os.path.join(currentdir, global_constants.chameleon_cache_dir)
+chameleon_cache_path = os.path.join(
+    currentdir, global_constants.chameleon_cache_dir)
 if not os.path.exists(chameleon_cache_path):
     os.mkdir(chameleon_cache_path)
 os.environ['CHAMELEON_CACHE'] = chameleon_cache_path
 
-generated_files_path = os.path.join(currentdir, global_constants.generated_files_dir)
+generated_files_path = os.path.join(
+    currentdir, global_constants.generated_files_dir)
 if not os.path.exists(generated_files_path):
     os.mkdir(generated_files_path)
 
@@ -96,13 +98,17 @@ tank_cars.main()
 from vehicles import vehicle_transporter_cars
 vehicle_transporter_cars.main()
 
+
 def get_active_rosters():
     #  for a faster single-roster compiles when testing, optionally pass a roster id (lower case) as a makefile arg
     if makefile_args.get('roster', '*') == '*':
-        active_rosters = [roster for roster in registered_rosters if not roster.disabled]
+        active_rosters = [
+            roster for roster in registered_rosters if not roster.disabled]
     else:
-        active_rosters = [roster for roster in registered_rosters if roster.id == makefile_args['roster']] # make sure it's iterable
+        active_rosters = [roster for roster in registered_rosters if roster.id ==
+                          makefile_args['roster']]  # make sure it's iterable
     return active_rosters
+
 
 def get_consists_in_buy_menu_order():
     consists = []
@@ -117,15 +123,19 @@ def get_consists_in_buy_menu_order():
     consist_id_defender = set([consist.id for consist in consists])
     buy_menu_defender = set(buy_menu_sort_order)
     for id in buy_menu_defender.difference(consist_id_defender):
-        utils.echo_message("Warning: consist " + id + " in buy_menu_sort_order, but not found in registered_consists")
+        utils.echo_message("Warning: consist " + id +
+                           " in buy_menu_sort_order, but not found in registered_consists")
     for id in consist_id_defender.difference(buy_menu_defender):
-        utils.echo_message("Warning: consist " + id + " in consists, but not in buy_menu_sort_order - won't show in game")
+        utils.echo_message("Warning: consist " + id +
+                           " in consists, but not in buy_menu_sort_order - won't show in game")
     return consists
+
 
 def vacant_numeric_ids_formatted():
     # when adding vehicles it's useful to know what the next free numeric ID is
     # tidy-mind problem, but do we have any vacant numeric ID slots in the currently used range?
     # 'print' eh? - but it's fine echo_message isn't intended for this kind of info, don't bother changing
-    id_gaps = [str(i - 10) for i in numeric_id_defender if not (i - 10) in numeric_id_defender and i is not 0 and i%10 is 0]
+    id_gaps = [str(i - 10) for i in numeric_id_defender if not (i - 10)
+               in numeric_id_defender and i is not 0 and i % 10 is 0]
 
-    return "Vacant numeric ID slots: " + ', '.join(id_gaps) + (" and from " if len(id_gaps) > 0 else '' ) + str(max(numeric_id_defender) + 10) + " onwards"
+    return "Vacant numeric ID slots: " + ', '.join(id_gaps) + (" and from " if len(id_gaps) > 0 else '') + str(max(numeric_id_defender) + 10) + " onwards"

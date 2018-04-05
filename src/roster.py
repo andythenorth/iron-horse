@@ -2,10 +2,12 @@ from rosters import registered_rosters
 import global_constants
 import pickle
 
+
 class Roster(object):
     """
     Rosters compose a set of vehicles which is complete for gameplay.
     """
+
     def __init__(self, **kwargs):
         self.id = kwargs.get('id')
         self.numeric_id = kwargs.get('numeric_id')
@@ -13,10 +15,12 @@ class Roster(object):
         for engine in kwargs.get('engines'):
             self.engine_consists.append(engine.consist)
             engine.consist.roster_id = self.id
-        self.wagon_consists = dict([(base_id, []) for base_id in global_constants.buy_menu_sort_order_wagons])
+        self.wagon_consists = dict(
+            [(base_id, []) for base_id in global_constants.buy_menu_sort_order_wagons])
         self.intro_dates = kwargs.get('intro_dates')
         self.speeds = kwargs.get('speeds')
-        self.freight_car_capacity_per_unit_length = kwargs.get('freight_car_capacity_per_unit_length')
+        self.freight_car_capacity_per_unit_length = kwargs.get(
+            'freight_car_capacity_per_unit_length')
         self.disabled = False
 
     @property
@@ -24,7 +28,8 @@ class Roster(object):
         result = []
         result.extend([consist.id for consist in self.engine_consists])
         for base_id in global_constants.buy_menu_sort_order_wagons:
-            result.extend(sorted([wagon_consist.id for wagon_consist in self.wagon_consists[base_id]]))
+            result.extend(
+                sorted([wagon_consist.id for wagon_consist in self.wagon_consists[base_id]]))
         return result
 
     @property
@@ -33,8 +38,10 @@ class Roster(object):
         result.extend(self.engine_consists)
         for track_type in ['RAIL', 'NG']:
             for base_id in global_constants.buy_menu_sort_order_wagons:
-                wagon_consists = [wagon_consist for wagon_consist in self.wagon_consists[base_id] if wagon_consist.track_type == track_type]
-                result.extend(sorted(wagon_consists, key=lambda wagon_consist: wagon_consist.subtype))
+                wagon_consists = [wagon_consist for wagon_consist in self.wagon_consists[base_id]
+                                  if wagon_consist.track_type == track_type]
+                result.extend(
+                    sorted(wagon_consists, key=lambda wagon_consist: wagon_consist.subtype))
         for consist in result:
             # if consist won't pickle, then multiprocessing blows up, catching it here is faster and easier
             try:

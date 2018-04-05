@@ -1,6 +1,6 @@
-from train import PassengerEngineConsist, DieselRailcarUnit
+from train import PassengerEngineRailcarConsist, DieselRailcarUnit
 
-consist = PassengerEngineConsist(id='slammer',
+consist = PassengerEngineRailcarConsist(id='slammer',
                                  base_numeric_id=470,
                                  name='Slammer',
                                  role='pax_railcar',

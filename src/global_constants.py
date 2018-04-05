@@ -24,7 +24,8 @@ buy_menu_sort_order_wagons = ['metro_car',
                               'caboose_car']
 
 # occasionally label refits need to be shared across vehicle classes
-allowed_refits_by_label = {'box_freight': ['MAIL', 'GRAI', 'WHEA', 'MAIZ', 'FRUT', 'BEAN', 'NITR']}
+allowed_refits_by_label = {'box_freight': [
+    'MAIL', 'GRAI', 'WHEA', 'MAIZ', 'FRUT', 'BEAN', 'NITR']}
 
 # capacity multipliers for user-configurable capacity parameter
 capacity_multipliers = [0.67, 1, 1.33]
@@ -49,12 +50,16 @@ default_spritesheet_offsets = {'3': [[-3, -25], [-3, -21], [0, -12], [5, -17], [
 spritesheet_bounding_boxes_asymmetric_unreversed = [(60, 8, 29), (73, 26, 24), (104, 33, 16), (143, 26, 24),
                                                     (180, 8, 29), (193, 26, 24), (224, 33, 16), (263, 26, 24)]
 
-spritesheet_bounding_boxes_asymmetric_reversed = list(spritesheet_bounding_boxes_asymmetric_unreversed[4:8])
-spritesheet_bounding_boxes_asymmetric_reversed.extend(spritesheet_bounding_boxes_asymmetric_unreversed[0:4])
+spritesheet_bounding_boxes_asymmetric_reversed = list(
+    spritesheet_bounding_boxes_asymmetric_unreversed[4:8])
+spritesheet_bounding_boxes_asymmetric_reversed.extend(
+    spritesheet_bounding_boxes_asymmetric_unreversed[0:4])
 
 # pick the RHS block of sprites, I prefer drawing on that side :P
-spritesheet_bounding_boxes_symmetric_unreversed = list(spritesheet_bounding_boxes_asymmetric_unreversed[4:8])
-spritesheet_bounding_boxes_symmetric_unreversed.extend(spritesheet_bounding_boxes_asymmetric_unreversed[4:8])
+spritesheet_bounding_boxes_symmetric_unreversed = list(
+    spritesheet_bounding_boxes_asymmetric_unreversed[4:8])
+spritesheet_bounding_boxes_symmetric_unreversed.extend(
+    spritesheet_bounding_boxes_asymmetric_unreversed[4:8])
 
 # spritesheet_bounding_boxes_symmetric_reversed is identical to symmetric unreversed
 # (reversing symmetrical vehicles is meaningless, but used for livery hax when some vehicles are flipped)
@@ -62,10 +67,12 @@ spritesheet_bounding_boxes_symmetric_reversed = spritesheet_bounding_boxes_symme
 
 # rather than total spritesheet width, we often need to know the max x extent that actually contains sprites
 # this is calculated from bounding boxes
-sprites_max_x_extent = spritesheet_bounding_boxes_asymmetric_unreversed[7][0] + spritesheet_bounding_boxes_asymmetric_unreversed[7][1]
+sprites_max_x_extent = spritesheet_bounding_boxes_asymmetric_unreversed[
+    7][0] + spritesheet_bounding_boxes_asymmetric_unreversed[7][1]
 
 # these only used in docs as of April 2018; buy menu sprites in the grf refactored to work differently; consider moving these constants to render_docs
-buy_menu_sprite_width = 33 # was 36; now 33 is correct, but some spritesheets might have wrong widths due to copy-paste history etc
+# was 36; now 33 is correct, but some spritesheets might have wrong widths due to copy-paste history etc
+buy_menu_sprite_width = 33
 buy_menu_sprite_height = 16
 
 # shared global constants via Polar Fox library - import at end to make the this project's constants easier to work with
