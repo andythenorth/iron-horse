@@ -1105,7 +1105,9 @@ class Train(object):
         # some templates don't support the random_reverse (by design, they're symmetrical sprites, and reversing bloats the template)
         if self.consist.random_reverse:
             if hasattr(self.consist, 'gestalt_graphics'):
-                for nml_template in ['vehicle_with_visible_cargo.pynml', 'vehicle_box_car_with_opening_doors.pynml']:
+                for nml_template in ['vehicle_with_visible_cargo.pynml',
+                                     'vehicle_box_car_with_opening_doors.pynml',
+                                     'vehicle_with_consist_specific_liveries.pynml']:
                     assert self.consist.gestalt_graphics.nml_template != nml_template, \
                         "%s has 'random_reverse set True, which isn't supported by nml_template %s" % (self.consist.id, nml_template)
 

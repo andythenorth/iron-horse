@@ -8,34 +8,32 @@
 
 <tal:include metal:use-macro="load: spriteset_templates.pynml" />
 
-<!--! 'reversed' is random reversal on construction, depending on vehicle random bits
-      'flipped' is user flipping vehicle in depot
+<!--! 'random_reverse' property is not supported in this template, vehicles using this template are all symmetrical, reversing would do nothing
+      'flipped' is user flipping vehicle in depot and *is* supported here (used for livery selection tricks)
       don't conflate them :) -->
 // default graphics chain
-<tal:random_reverse_variants repeat="reversed_variant consist.reversed_variants">
-    <tal:user_flipped repeat="flipped [('unflipped', 0), ('flipped', 1)]">
-        spriteset(${vehicle.id}_ss_doors_closed_${reversed_variant}_${flipped[0]}, "${global_constants.graphics_path}${consist.id}.png") {
-          spriteset_template_${vehicle.symmetry_type}_${reversed_variant}_${vehicle.id}_${flipped[0]}(10 + ${flipped[1] * 60})
-        }
-        spriteset(${vehicle.id}_ss_doors_open_${reversed_variant}_${flipped[0]}, "${global_constants.graphics_path}${consist.id}.png") {
-          spriteset_template_${vehicle.symmetry_type}_${reversed_variant}_${vehicle.id}_${flipped[0]}(10 + ${flipped[1] * 60} + 30)
-        }
-
-        spritegroup ${vehicle.id}_sg_${reversed_variant}_${flipped[0]} {
-            loaded:  [
-                ${vehicle.id}_ss_doors_closed_${reversed_variant}_${flipped[0]},
-            ];
-            loading: [
-                ${vehicle.id}_ss_doors_open_${reversed_variant}_${flipped[0]},
-            ];
-        }
-    </tal:user_flipped>
-    // handle user flipped state
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${reversed_variant}, vehicle_is_flipped) {
-        1: return ${vehicle.id}_sg_${reversed_variant}_flipped;
-        return ${vehicle.id}_sg_${reversed_variant}_unflipped;
+<tal:user_flipped repeat="flipped [('unflipped', 0), ('flipped', 1)]">
+    spriteset(${vehicle.id}_ss_doors_closed_${flipped[0]}, "${global_constants.graphics_path}${consist.id}.png") {
+      spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.id}_${flipped[0]}(10 + ${flipped[1] * 60})
     }
-</tal:random_reverse_variants>
+    spriteset(${vehicle.id}_ss_doors_open_${flipped[0]}, "${global_constants.graphics_path}${consist.id}.png") {
+      spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.id}_${flipped[0]}(10 + ${flipped[1] * 60} + 30)
+    }
+
+    spritegroup ${vehicle.id}_sg_${flipped[0]} {
+        loaded:  [
+            ${vehicle.id}_ss_doors_closed_${flipped[0]},
+        ];
+        loading: [
+            ${vehicle.id}_ss_doors_open_${flipped[0]},
+        ];
+    }
+</tal:user_flipped>
+// handle user flipped state
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_unreversed, vehicle_is_flipped) {
+    1: return ${vehicle.id}_sg_flipped;
+    return ${vehicle.id}_sg_unflipped;
+}
 
 <tal:include metal:use-macro="load: graphics_switches.pynml" />
 
