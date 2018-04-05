@@ -35,8 +35,17 @@ silo_livery_recolour_maps = (("OIL_", {136: 1, 137: 2, 138: 3, 139: 4,
                                ("PETR", {136: 16, 137: 17, 138: 18, 139: 19,
                                          140: 20, 141: 21, 142: 22, 143: 23}))
 
+box_livery_recolour_maps = (# see note on DFLT above
+                           ("DFLT", body_recolour_CC1),)
+
 caboose_livery_recolour_maps = (# see note on DFLT above
                                ("DFLT", body_recolour_CC1),)
+
+fruit_veg_livery_recolour_maps = (# see note on DFLT above
+                                 ("DFLT", body_recolour_CC1),)
+
+refrigerated_livery_recolour_maps = (# see note on DFLT above
+                                    ("DFLT", body_recolour_CC1),)
 
 livestock_livery_recolour_maps = (# see note on DFLT above
                                  ("DFLT", body_recolour_CC2),)

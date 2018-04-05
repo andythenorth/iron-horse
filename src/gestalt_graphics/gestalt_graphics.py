@@ -115,6 +115,39 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
         return result
 
 
+class GestaltGraphicsBoxCarOpeningDoors(GestaltGraphics):
+    """
+        Used to handle the specific case of box-type freight cars
+        - doors open during loading, but no cargo is shown (as of April 2018)
+        - base boxcar template for generation is recoloured to make refrigerated car, fruit & veg car etc
+    """
+    def __init__(self, recolour_maps, **kwargs):
+        super().__init__()
+        # as of Jan 2018 only one pipeline is used, but support is in place for alternative pipelines
+        self.pipeline = pipelines.get_pipeline('extend_spriterows_for_composited_cargos_pipeline')
+        # common format for recolour_maps provides multiple remaps
+        # but just one livery remap is supported for this gestalt, and should be the first in the remap list
+        self.recolour_map = recolour_maps[0]
+
+    @property
+    def generic_rows(self):
+        utils.echo_message ('generic_rows not implemented in GestaltGraphicsBoxCarOpeningDoorsGestaltGraphics (by design)')
+        return None
+
+    @property
+    def nml_template(self):
+        return 'vehicle_default.pynml'
+
+    def get_output_row_counts_by_type(self):
+        # just 1 livery with 2 rows: empty & loaded (doors closed), loading (doors open)
+        return [('box_car_with_opening_doors_spriterows', 2)]
+
+    @property
+    def cargo_row_map(self):
+        utils.echo_message ('cargo_row_map not implemented in GestaltGraphicsBoxCarOpeningDoorsGestaltGraphics (by design)')
+        return None
+
+
 class GestaltGraphicsCargoSpecificLivery(GestaltGraphics):
     """
         Used to handle the specific case of cargos shown only by vehicle livery.
@@ -131,7 +164,7 @@ class GestaltGraphicsCargoSpecificLivery(GestaltGraphics):
 
     @property
     def generic_rows(self):
-        utils.echo_message ('generic_rows not implemented in GestaltGraphicsCargoSpecificLivery')
+        utils.echo_message ('generic_rows not implemented in GestaltGraphicsCargoSpecificLivery (by design)')
         return None
 
     @property

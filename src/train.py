@@ -16,8 +16,8 @@ import polar_fox
 import global_constants # expose all constants for easy passing to templates
 import utils
 
-from gestalt_graphics.gestalt_graphics import (GestaltGraphics, GestaltGraphicsVisibleCargo, GestaltGraphicsCargoSpecificLivery,
-                                               GestaltGraphicsCustom, GestaltGraphicsConsistSpecificLivery)
+from gestalt_graphics.gestalt_graphics import (GestaltGraphics, GestaltGraphicsVisibleCargo, GestaltGraphicsBoxCarOpeningDoors,
+                                               GestaltGraphicsCargoSpecificLivery, GestaltGraphicsConsistSpecificLivery, GestaltGraphicsCustom)
 import gestalt_graphics.graphics_constants as graphics_constants
 
 from rosters import registered_rosters
@@ -427,6 +427,8 @@ class BoxCarConsist(CarConsist):
         self.label_refits_allowed = global_constants.allowed_refits_by_label['box_freight']
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_freight_special_cases']
         self.default_cargos = global_constants.default_cargos['box']
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(recolour_maps=graphics_constants.box_livery_recolour_maps)
 
 
 class CabooseCarConsist(CarConsist):
@@ -523,6 +525,8 @@ class FruitVegCarConsist(CarConsist):
         self.default_cargos = global_constants.default_cargos['fruit_veg']
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
         self.capacity_cost_factor = 1.5
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(recolour_maps=graphics_constants.fruit_veg_livery_recolour_maps)
 
 
 class HopperCarConsist(CarConsist):
@@ -685,6 +689,8 @@ class ReeferCarConsist(CarConsist):
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
         self.capacity_cost_factor = 1.5
         self.run_cost_divisor = 6
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(recolour_maps=graphics_constants.refrigerated_livery_recolour_maps)
 
 
 class SiloCarConsist(CarConsist):

@@ -70,7 +70,7 @@ class PassThroughPipeline(Pipeline):
 
 class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
     """"
-        Extends a cargo carrier spritesheet with variations on cargo colours.
+        Extends a cargo carrier spritesheet with variations on cargos.
         Copied from Road Hog where it became convoluted to handle many cases.
         Not easy to simplify, generating graphics has many facets.
     """
@@ -153,6 +153,22 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
             self.units.append(AddCargoLabel(label=label,
                                             x_offset=self.sprites_max_x_extent + 5,
                                             y_offset= -1 * graphics_constants.spriterow_height))
+
+    def add_box_car_with_opening_doors_spriterows(self):
+        # !!!! one spriterow, no loading / loaded states, intended for tankers etc
+        crop_box_source = (0,
+                           self.base_offset,
+                           self.sprites_max_x_extent,
+                           self.base_offset + graphics_constants.spriterow_height)
+        box_car_spriterow_input_image = self.comp_chassis_and_body(Image.open(self.input_path).crop(crop_box_source))
+        # vehicle_generic_spriterow_input_image.show() # comment in to see the image when debugging
+        box_car_spriterow_input_as_spritesheet = self.make_spritesheet_from_image(box_car_spriterow_input_image)
+        crop_box_dest = (0,
+                         0,
+                         self.sprites_max_x_extent,
+                         graphics_constants.spriterow_height)
+        self.units.append(AppendToSpritesheet(box_car_spriterow_input_as_spritesheet, crop_box_dest))
+        #self.units.append(SimpleRecolour(recolour_map))
 
     def add_bulk_cargo_spriterows(self):
         cargo_group_row_height = 2 * graphics_constants.spriterow_height
@@ -327,6 +343,9 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
                 elif spriterow_type == 'livery_spriterow':
                     input_spriterow_count = 1
                     self.add_livery_spriterow()
+                elif spriterow_type == 'box_car_with_opening_doors_spriterows':
+                    input_spriterow_count = 2
+                    self.add_box_car_with_opening_doors_spriterows()
                 elif spriterow_type == 'bulk_cargo':
                     input_spriterow_count = 2
                     self.add_bulk_cargo_spriterows()
