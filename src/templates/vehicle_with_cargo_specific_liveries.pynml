@@ -34,7 +34,7 @@
     <tal:cargo_random_switches repeat="mapping consist.gestalt_graphics.cargo_row_map.items()">
             <tal:random_graphics_variations repeat="spriterow_num mapping[1]">
                 // handle user flipped state
-                switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_flipped_${reversed_variant}_${spriterow_num}, vehicle_is_flipped) {
+                switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_flipped_${reversed_variant}_${spriterow_num}, vehicle_is_flipped) {
                     1: return ${vehicle.id}_sg_${reversed_variant}_${spriterow_num}_flipped;
                     return ${vehicle.id}_sg_${reversed_variant}_${spriterow_num}_unflipped;
                 }
@@ -42,7 +42,7 @@
 
         random_switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${reversed_variant}_${mapping[0]}, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
             <tal:random_graphics_variations repeat="spriterow_num mapping[1]">
-                1: return ${vehicle.id}_switch_flipped_${reversed_variant}_${spriterow_num};
+                1: return ${vehicle.id}_switch_graphics_flipped_${reversed_variant}_${spriterow_num};
             </tal:random_graphics_variations>
         }
     </tal:cargo_random_switches>
