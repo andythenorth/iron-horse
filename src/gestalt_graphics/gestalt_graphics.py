@@ -2,6 +2,7 @@ import polar_fox
 import gestalt_graphics.graphics_constants as graphics_constants
 from gestalt_graphics import pipelines
 import utils
+import inspect
 
 class GestaltGraphics(object):
     """
@@ -38,6 +39,7 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
     """
         Used for vehicle with visible cargos
         Supports *only* pixa-generated cargos; mixing with custom cargo rows isn't handled, TMWFTLB
+        Should not be used with 'reversible' property, composited cargos are symmetric, so cargo template doesn't handle reversible.
     """
     def __init__(self, **kwargs):
         super().__init__()

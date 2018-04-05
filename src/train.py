@@ -56,6 +56,7 @@ class Consist(object):
             'visual_effect_override_by_railtype', None)
         self.dual_headed = 1 if kwargs.get('dual_headed', False) else 0
         # reversible means (1) randomised reversing of sprites when vehicle is built (2) player can also flip vehicle
+        # reversible is not supported in some templates
         self.reversible = kwargs.get('reversible', False)
         # arbitrary adjustments of points that can be applied to adjust buy cost and running cost, over-ride in consist as needed
         # values can be -ve or +ve to dibble specific vehicles (but total calculated points cannot exceed 255)
@@ -1069,12 +1070,11 @@ class Train(object):
         else:
             return self.id + "_switch_graphics_" + self.consist.reversed_variants[0]
 
-    def get_nml_expression_for_cargo_variant_random_switch(self, reversed_variant, cargo_id=None):
+    def get_nml_expression_for_cargo_variant_random_switch(self, cargo_id=None):
         # having a method to calculate the nml for this is overkill
         # legacy of multi-part vehicles, where the trigger needed to be run on an adjacent vehicle
         # this could be unpicked and moved directly into the templates
-        switch_id = self.id + "_switch_graphics_" + reversed_variant + \
-            ('_' + str(cargo_id) if cargo_id is not None else '')
+        switch_id = self.id + "_switch_graphics" + ('_' + str(cargo_id) if cargo_id is not None else '')
         return "SELF," + switch_id + ", bitmask(TRIGGER_VEHICLE_NEW_LOAD)"
 
     def get_nml_expression_for_grfid_of_neighbouring_unit(self, unit_offset):
@@ -1100,6 +1100,14 @@ class Train(object):
     def get_cargo_suffix(self):
         return 'string(' + self.cargo_units_refit_menu + ')'
 
+    def assert_reversible(self):
+        # some templates don't support the reversible property (by design, they're symmetrical, and reversing bloats the template)
+        if self.consist.reversible:
+            if hasattr(self.consist, 'gestalt_graphics'):
+                for nml_template in ['vehicle_with_visible_cargo.pynml']:
+                    assert self.consist.gestalt_graphics.nml_template != nml_template, \
+                        "%s has 'reversible set True, which isn't supported by nml_template %s" % (self.consist.id, nml_template)
+
     def assert_cargo_labels(self, cargo_labels):
         for i in cargo_labels:
             if i not in global_constants.cargo_labels:
@@ -1108,6 +1116,7 @@ class Train(object):
 
     def render(self):
         # integrity tests
+        self.assert_reversible()
         self.assert_cargo_labels(self.label_refits_allowed)
         self.assert_cargo_labels(self.label_refits_disallowed)
         # templating
