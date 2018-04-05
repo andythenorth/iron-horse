@@ -136,7 +136,7 @@ class GestaltGraphicsBoxCarOpeningDoors(GestaltGraphics):
 
     @property
     def nml_template(self):
-        return 'vehicle_default.pynml'
+        return 'vehicle_box_car_with_opening_doors.pynml'
 
     def get_output_row_counts_by_type(self):
         # just 1 livery with 2 rows: empty & loaded (doors closed), loading (doors open)

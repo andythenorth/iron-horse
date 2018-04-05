@@ -47,7 +47,12 @@ caboose_livery_recolour_maps = (# see note on DFLT above
                                ("DFLT", body_recolour_CC1),)
 
 fruit_veg_livery_recolour_maps = (# see note on DFLT above
-                                 ("DFLT", body_recolour_CC1),)
+                                 ("DFLT", {136: CC2, 137: CC2+1, 138: CC2+2, 139: CC2+3,
+                                           140: CC2+4, 141: CC2+5, 142: CC2+6, 143: CC2+7,
+                                           40: 71, 41: 72, 42: 73, 43: 74,
+                                           44: 75, 45: 77, 46: 78, 47: 79,
+                                           CC1: 71, CC1+1: 72, CC1+2: 73, CC1+3: 74,
+                                           CC1+4: 75, CC1+5: 77, CC1+6: 78, CC1+7: 79}),)
 
 refrigerated_livery_recolour_maps = (# see note on DFLT above
                                     ("DFLT", {136: 18, 137: 19, 138: 20, 139: 21,
