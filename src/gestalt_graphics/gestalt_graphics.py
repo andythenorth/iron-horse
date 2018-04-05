@@ -39,7 +39,7 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
     """
         Used for vehicle with visible cargos
         Supports *only* pixa-generated cargos; mixing with custom cargo rows isn't handled, TMWFTLB
-        Should not be used with 'reversible' property, composited cargos are symmetric, so cargo template doesn't handle reversible.
+        Should not be used with 'random_reverse' property, composited cargos are symmetric, so cargo template doesn't handle random_reverse.
     """
     def __init__(self, **kwargs):
         super().__init__()

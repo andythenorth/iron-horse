@@ -6,7 +6,7 @@
       'flipped' is user flipping vehicle in depot
       don't conflate them :) -->
 // default graphics chain
-<tal:reversible_variants repeat="reversed_variant consist.reversed_variants">
+<tal:random_reverse_variants repeat="reversed_variant consist.reversed_variants">
     <tal:user_flipped repeat="flipped ['unflipped', 'flipped']">
         spriteset(${vehicle.id}_ss_${reversed_variant}_${flipped}, "${global_constants.graphics_path}${consist.id}.png") {
           spriteset_template_${vehicle.symmetry_type}_${reversed_variant}_${vehicle.id}_${flipped}(10 + ${vehicle.spriterow_num * 30})
@@ -26,7 +26,7 @@
         1: return ${vehicle.id}_sg_${reversed_variant}_flipped;
         return ${vehicle.id}_sg_${reversed_variant}_unflipped;
     }
-</tal:reversible_variants>
+</tal:random_reverse_variants>
 
 <tal:include metal:use-macro="load: graphics_switches.pynml" />
 

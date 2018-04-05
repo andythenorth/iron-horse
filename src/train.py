@@ -55,9 +55,10 @@ class Consist(object):
         self.visual_effect_override_by_railtype = kwargs.get(
             'visual_effect_override_by_railtype', None)
         self.dual_headed = 1 if kwargs.get('dual_headed', False) else 0
-        # reversible means (1) randomised reversing of sprites when vehicle is built (2) player can also flip vehicle
-        # reversible is not supported in some templates
-        self.reversible = kwargs.get('reversible', False)
+        # random_reverse means (1) randomised reversing of sprites when vehicle is built (2) player can also flip vehicle
+        # random_reverse is not supported in some templates
+        self.random_reverse = kwargs.get('random_reverse', False)
+        self.allow_flip = self.random_reverse # random_reverse vehicles can always be flipped, but flip can also be set in other cases (by subclass)
         # arbitrary adjustments of points that can be applied to adjust buy cost and running cost, over-ride in consist as needed
         # values can be -ve or +ve to dibble specific vehicles (but total calculated points cannot exceed 255)
         self.type_base_buy_cost_points = kwargs.get(
@@ -124,7 +125,7 @@ class Consist(object):
         # NOT the same as 'flipped' which is a player choice in-game, and handled separately
         # Previous model_variant approach for this was deprecated March 2018, needlessly complicated
         result = ['unreversed']
-        if self.reversible:
+        if self.random_reverse:
             result.append('reversed')
         return result
 
@@ -353,7 +354,7 @@ class PassengerEngineRailcarConsist(PassengerEngineConsist):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.reversible = True
+        self.allow_flip = True
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery()
 
@@ -378,7 +379,7 @@ class MailEngineRailcarConsist(MailEngineConsist):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.reversible = True
+        self.allow_flip = True
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery()
 
@@ -677,7 +678,7 @@ class MailCarConsist(CarConsist):
         self.random_company_colour_swap = False
         self.capacity_cost_factor = 1.5
         self.run_cost_divisor = 7
-        self.reversible = True
+        self.allow_flip = True
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery()
 
@@ -733,7 +734,7 @@ class PassengerCarConsistBase(CarConsist):
         self.label_refits_disallowed = []
         self.default_cargos = global_constants.default_cargos['pax']
         self.random_company_colour_swap = False
-        self.reversible = True
+        self.allow_flip = True
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery()
 
@@ -978,7 +979,7 @@ class Train(object):
     @property
     def special_flags(self):
         special_flags = ['TRAIN_FLAG_2CC']
-        if self.consist.reversible:
+        if self.consist.allow_flip:
             special_flags.append('TRAIN_FLAG_FLIP')
         if self.autorefit:
             special_flags.append('TRAIN_FLAG_AUTOREFIT')
@@ -1100,13 +1101,13 @@ class Train(object):
     def get_cargo_suffix(self):
         return 'string(' + self.cargo_units_refit_menu + ')'
 
-    def assert_reversible(self):
-        # some templates don't support the reversible property (by design, they're symmetrical, and reversing bloats the template)
-        if self.consist.reversible:
+    def assert_random_reverse(self):
+        # some templates don't support the random_reverse (by design, they're symmetrical sprites, and reversing bloats the template)
+        if self.consist.random_reverse:
             if hasattr(self.consist, 'gestalt_graphics'):
                 for nml_template in ['vehicle_with_visible_cargo.pynml', 'vehicle_box_car_with_opening_doors.pynml']:
                     assert self.consist.gestalt_graphics.nml_template != nml_template, \
-                        "%s has 'reversible set True, which isn't supported by nml_template %s" % (self.consist.id, nml_template)
+                        "%s has 'random_reverse set True, which isn't supported by nml_template %s" % (self.consist.id, nml_template)
 
     def assert_cargo_labels(self, cargo_labels):
         for i in cargo_labels:
@@ -1116,7 +1117,7 @@ class Train(object):
 
     def render(self):
         # integrity tests
-        self.assert_reversible()
+        self.assert_random_reverse()
         self.assert_cargo_labels(self.label_refits_allowed)
         self.assert_cargo_labels(self.label_refits_disallowed)
         # templating

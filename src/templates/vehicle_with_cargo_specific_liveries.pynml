@@ -9,7 +9,7 @@
       'flipped' is user flipping vehicle in depot
       don't conflate them :) -->
 // default graphics chain
-<tal:reversible_variants repeat="reversed_variant consist.reversed_variants">
+<tal:random_reverse_variants repeat="reversed_variant consist.reversed_variants">
     <tal:cargo_variants repeat="cargo_variant_num python:range(consist.gestalt_graphics.num_cargo_sprite_variants)">
         <tal:user_flipped repeat="flipped ['unflipped', 'flipped']">
             spriteset(${vehicle.id}_ss_${reversed_variant}_${cargo_variant_num}_${flipped}, "${global_constants.graphics_path}${consist.id}.png") {
@@ -61,7 +61,7 @@
             </tal:block>
         </tal:default_cargo>
     }
-</tal:reversible_variants>
+</tal:random_reverse_variants>
 
 <tal:include metal:use-macro="load: graphics_switches.pynml" />
 

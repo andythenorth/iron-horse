@@ -2,7 +2,7 @@
 
 <tal:include metal:use-macro="load: spriteset_templates.pynml" />
 
-<!--! this template does not support 'reversible' property or user-flipping
+<!--! this template does not support 'random_reverse' property or user-flipping
       box cars are always symmetrical, no need for extra complexity  -->
 // default graphics chain
 spriteset(${vehicle.id}_ss_doors_closed, "${global_constants.graphics_path}${consist.id}.png") {

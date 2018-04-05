@@ -9,7 +9,7 @@ consist = EngineConsist(id='suburban',
                         speed=80,
                         type_base_buy_cost_points=-2,  # dibble buy cost for game balance
                         type_base_running_cost_points=-6,  # dibble running costs for game balance
-                        reversible=True,
+                        random_reverse=True,
                         gen=2)
 
 consist.add_unit(type=SteamEngineUnit,

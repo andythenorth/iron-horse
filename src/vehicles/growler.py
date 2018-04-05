@@ -6,7 +6,7 @@ consist = EngineConsist(id='growler',
                         role='freight',
                         power=1550,
                         speed=75,
-                        reversible=True,
+                        random_reverse=True,
                         gen=4)
 
 consist.add_unit(type=DieselEngineUnit,

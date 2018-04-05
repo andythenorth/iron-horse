@@ -8,7 +8,7 @@ consist = EngineConsist(id='milne',
                         speed=55,
                         type_base_buy_cost_points=-10,  # dibble buy cost for game balance
                         type_base_running_cost_points=-15,  # dibble running costs for game balance
-                        reversible=True,
+                        random_reverse=True,
                         intro_date=1910)
 
 consist.add_unit(type=SteamEngineUnit,
