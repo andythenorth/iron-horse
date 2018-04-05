@@ -133,22 +133,22 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
                                         x_offset=self.sprites_max_x_extent + 5,
                                         y_offset= -1 * graphics_constants.spriterow_height))
 
-    def add_livery_only_spriterows(self):
+    def add_livery_spriterow(self):
         # one spriterow, no loading / loaded states, intended for tankers etc
         crop_box_source = (0,
                            self.base_offset,
                            self.sprites_max_x_extent,
                            self.base_offset + graphics_constants.spriterow_height)
-        vehicle_livery_only_spriterow_input_image = self.comp_chassis_and_body(Image.open(self.input_path).crop(crop_box_source))
+        vehicle_livery_spriterow_input_image = self.comp_chassis_and_body(Image.open(self.input_path).crop(crop_box_source))
         # vehicle_generic_spriterow_input_image.show() # comment in to see the image when debugging
-        vehicle_livery_only_spriterow_input_as_spritesheet = self.make_spritesheet_from_image(vehicle_livery_only_spriterow_input_image)
+        vehicle_livery_spriterow_input_as_spritesheet = self.make_spritesheet_from_image(vehicle_livery_spriterow_input_image)
 
         for label, recolour_map in self.consist.gestalt_graphics.recolour_maps:
             crop_box_dest = (0,
                              0,
                              self.sprites_max_x_extent,
                              graphics_constants.spriterow_height)
-            self.units.append(AppendToSpritesheet(vehicle_livery_only_spriterow_input_as_spritesheet, crop_box_dest))
+            self.units.append(AppendToSpritesheet(vehicle_livery_spriterow_input_as_spritesheet, crop_box_dest))
             self.units.append(SimpleRecolour(recolour_map))
             self.units.append(AddCargoLabel(label=label,
                                             x_offset=self.sprites_max_x_extent + 5,
@@ -324,9 +324,9 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
                 if spriterow_type == 'always_use_same_spriterow' or spriterow_type == 'empty':
                     input_spriterow_count = 1
                     self.add_generic_spriterow()
-                elif spriterow_type == 'livery_only':
+                elif spriterow_type == 'livery_spriterow':
                     input_spriterow_count = 1
-                    self.add_livery_only_spriterows()
+                    self.add_livery_spriterow()
                 elif spriterow_type == 'bulk_cargo':
                     input_spriterow_count = 2
                     self.add_bulk_cargo_spriterows()

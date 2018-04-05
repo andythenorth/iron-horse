@@ -141,7 +141,7 @@ class GestaltGraphicsCargoSpecificLivery(GestaltGraphics):
     def get_output_row_counts_by_type(self):
         # the template for visible livery requires the count of _all_ the liveries, *no calculating later*
         # 1 row per livery, no loading / loaded states
-        return [('livery_only', self.num_cargo_sprite_variants)]
+        return [('livery_spriterow', self.num_cargo_sprite_variants)]
 
     @property
     def cargo_row_map(self):
