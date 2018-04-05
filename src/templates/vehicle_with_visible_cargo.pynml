@@ -7,7 +7,7 @@
 <tal:reversible_variants repeat="reversed_variant consist.reversed_variants">
     <tal:user_flipped repeat="flipped ['unflipped', 'flipped']">
         spriteset(${vehicle.id}_ss_empty_${reversed_variant}_${flipped}, "${global_constants.graphics_path}${consist.id}.png") {
-          spriteset_template_${vehicle.symmetry_type}_${reversed_variant}_${vehicle.id}_${flipped}(${vehicle.spriterow_num * 30} + 10)
+          spriteset_template_${vehicle.symmetry_type}_${reversed_variant}_${vehicle.id}_${flipped}(10)
         }
 
         spritegroup ${vehicle.id}_sg_empty_${reversed_variant}_${flipped} {
@@ -23,10 +23,10 @@
     <tal:cargo_variants repeat="cargo_variant_num python:range(consist.gestalt_graphics.num_cargo_sprite_variants)">
         <tal:user_flipped repeat="flipped ['unflipped', 'flipped']">
             spriteset(${vehicle.id}_ss_loading_${reversed_variant}_${cargo_variant_num}_${flipped}, "${global_constants.graphics_path}${consist.id}.png") {
-              spriteset_template_${vehicle.symmetry_type}_${reversed_variant}_${vehicle.id}_${flipped}(${vehicle.spriterow_num * 30} + ${cargo_variant_num * 60} + 40)
+              spriteset_template_${vehicle.symmetry_type}_${reversed_variant}_${vehicle.id}_${flipped}(${cargo_variant_num * 60} + 40)
             }
             spriteset(${vehicle.id}_ss_loaded_${reversed_variant}_${cargo_variant_num}_${flipped}, "${global_constants.graphics_path}${consist.id}.png") {
-              spriteset_template_${vehicle.symmetry_type}_${reversed_variant}_${vehicle.id}_${flipped}(${vehicle.spriterow_num * 30} + ${cargo_variant_num * 60} + 70)
+              spriteset_template_${vehicle.symmetry_type}_${reversed_variant}_${vehicle.id}_${flipped}(${cargo_variant_num * 60} + 70)
             }
 
             spritegroup ${vehicle.id}_sg_loading_${reversed_variant}_${cargo_variant_num}_${flipped} {

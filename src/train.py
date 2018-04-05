@@ -891,8 +891,8 @@ class Train(object):
         self.capacity = kwargs.get('capacity', 0)
         self.loading_speed_multiplier = kwargs.get(
             'loading_speed_multiplier', 1)
-        # spriterow_num, first row = 0
-        self.spriterow_num = kwargs.get('spriterow_num', 0)
+        # spriterow_num allows assigning sprites for multi-part vehicles, and is not supported in all vehicle templates (by design - TMWFTLB to support)
+        self.spriterow_num = kwargs.get('spriterow_num', 0) # first row = 0;
         # set defaults for props otherwise set by subclass as needed (not set by kwargs as specific models do not over-ride them)
         self.class_refit_groups = []
         self.label_refits_allowed = []  # no specific labels needed
