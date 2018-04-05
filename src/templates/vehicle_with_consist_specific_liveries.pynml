@@ -13,17 +13,20 @@
       don't conflate them :) -->
 // default graphics chain
 <tal:reversible_variants repeat="reversed_variant consist.reversed_variants">
-    <tal:user_flipped repeat="flipped [('unflipped', 0), ('flipped', 30)]">
-        spriteset(${vehicle.id}_ss_${reversed_variant}_${flipped[0]}, "${global_constants.graphics_path}${consist.id}.png") {
-          spriteset_template_${vehicle.symmetry_type}_${reversed_variant}_${vehicle.id}_${flipped[0]}(10 + ${flipped[1]} + ${vehicle.spriterow_num * 30})
+    <tal:user_flipped repeat="flipped [('unflipped', 0), ('flipped', 1)]">
+        spriteset(${vehicle.id}_ss_doors_closed_${reversed_variant}_${flipped[0]}, "${global_constants.graphics_path}${consist.id}.png") {
+          spriteset_template_${vehicle.symmetry_type}_${reversed_variant}_${vehicle.id}_${flipped[0]}(10 + ${flipped[1] * 60} + ${vehicle.spriterow_num * 30})
+        }
+        spriteset(${vehicle.id}_ss_doors_open_${reversed_variant}_${flipped[0]}, "${global_constants.graphics_path}${consist.id}.png") {
+          spriteset_template_${vehicle.symmetry_type}_${reversed_variant}_${vehicle.id}_${flipped[0]}(10 + ${flipped[1] * 60} + ${vehicle.spriterow_num * 30} + 30)
         }
 
         spritegroup ${vehicle.id}_sg_${reversed_variant}_${flipped[0]} {
             loaded:  [
-                ${vehicle.id}_ss_${reversed_variant}_${flipped[0]},
+                ${vehicle.id}_ss_doors_closed_${reversed_variant}_${flipped[0]},
             ];
             loading: [
-                ${vehicle.id}_ss_${reversed_variant}_${flipped[0]},
+                ${vehicle.id}_ss_doors_open_${reversed_variant}_${flipped[0]},
             ];
         }
     </tal:user_flipped>
