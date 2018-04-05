@@ -1,4 +1,10 @@
-<!--! this is the default template for trains that don't supply their own template -->
+<!--! liveries that change depending on the 'role' of the engine
+      intended for pax and mail cars, possibly limited other types
+      a few tricks:
+      - flipping vehicle to swap randomised liveries
+      - some specific cargos over-ride engine livery
+      - loaded and empty state are same, but optional loading state (for opening doors at stations)
+ -->
 
 <tal:include metal:use-macro="load: spriteset_templates.pynml" />
 

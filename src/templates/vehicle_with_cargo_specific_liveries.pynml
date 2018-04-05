@@ -5,20 +5,26 @@
 
 <tal:include metal:use-macro="load: spriteset_templates.pynml" />
 
+<!--! 'reversed' is random reversal on construction, depending on vehicle random bits
+      'flipped' is user flipping vehicle in depot
+      don't conflate them :) -->
+// default graphics chain
 <tal:reversible_variants repeat="reversed_variant consist.reversed_variants">
     <tal:cargo_variants repeat="cargo_variant_num python:range(consist.gestalt_graphics.num_cargo_sprite_variants)">
-        spriteset(${vehicle.id}_ss_${reversed_variant}_${cargo_variant_num}, "${global_constants.graphics_path}${consist.id}.png") {
-          spriteset_template_${vehicle.symmetry_type}_${reversed_variant}_${vehicle.id}(10 + ${cargo_variant_num * 30})
-        }
+        <tal:user_flipped repeat="flipped ['unflipped', 'flipped']">
+            spriteset(${vehicle.id}_ss_${reversed_variant}_${cargo_variant_num}_${flipped}, "${global_constants.graphics_path}${consist.id}.png") {
+              spriteset_template_${vehicle.symmetry_type}_${reversed_variant}_${vehicle.id}_${flipped}(10 + ${cargo_variant_num * 30})
+            }
 
-        spritegroup ${vehicle.id}_sg_${reversed_variant}_${cargo_variant_num} {
-            loaded:  [
-                ${vehicle.id}_ss_${reversed_variant}_${cargo_variant_num},
-            ];
-            loading: [
-                ${vehicle.id}_ss_${reversed_variant}_${cargo_variant_num},
-            ];
-        }
+            spritegroup ${vehicle.id}_sg_${reversed_variant}_${cargo_variant_num}_${flipped} {
+                loaded:  [
+                    ${vehicle.id}_ss_${reversed_variant}_${cargo_variant_num}_${flipped},
+                ];
+                loading: [
+                    ${vehicle.id}_ss_${reversed_variant}_${cargo_variant_num}_${flipped},
+                ];
+            }
+        </tal:user_flipped>
     </tal:cargo_variants>
 
     <!--! this triggers random on a new load, which was designed for use specifically with containers where colours are randomised on load
@@ -26,9 +32,17 @@
           !! April 2018 - I'm not convinced this is doing what the comment suggests,
              I think it's one and only one remap per cargo label currently, with no option for multiple variants per cargo -->
     <tal:cargo_random_switches repeat="mapping consist.gestalt_graphics.cargo_row_map.items()">
+            <tal:random_graphics_variations repeat="spriterow_num mapping[1]">
+                // handle user flipped state
+                switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_flipped_${reversed_variant}_${spriterow_num}, vehicle_is_flipped) {
+                    1: return ${vehicle.id}_sg_${reversed_variant}_${spriterow_num}_flipped;
+                    return ${vehicle.id}_sg_${reversed_variant}_${spriterow_num}_unflipped;
+                }
+            </tal:random_graphics_variations>
+
         random_switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${reversed_variant}_${mapping[0]}, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
             <tal:random_graphics_variations repeat="spriterow_num mapping[1]">
-                1: return ${vehicle.id}_sg_${reversed_variant}_${spriterow_num};
+                1: return ${vehicle.id}_switch_flipped_${reversed_variant}_${spriterow_num};
             </tal:random_graphics_variations>
         }
     </tal:cargo_random_switches>
@@ -49,7 +63,7 @@
 
 <tal:include metal:use-macro="load: graphics_switches.pynml" />
 
-// buy menu graphics
+// buy menu graphics chain
 <tal:cargo_variants repeat="cargo_variant_num python:range(consist.gestalt_graphics.num_cargo_sprite_variants)">
     spriteset(${vehicle.id}_ss_purchase_${cargo_variant_num}, "${global_constants.graphics_path}${consist.id}.png") {
       spriteset_template_purchase_${vehicle.id}(10 + ${cargo_variant_num * 30})
@@ -65,8 +79,8 @@
     }
 </tal:cargo_variants>
 
-// purchase sprites always go through a switch in case the template does anything specific for purchase graphics
-// if there was nothing specific, then this would just be a null switch, but in this case we switch to the livery for (default) cargo
+<!--! purchase sprites always go through a switch in case the template does anything specific for purchase graphics
+      if there was nothing specific, then this would just be a null switch, but in this case we switch to the livery for (default) cargo -->
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase, cargo_type_in_veh) {
     <tal:cargos repeat="mapping consist.gestalt_graphics.cargo_row_map.items()">
         <tal:exclude_default_cargo condition="mapping[0] != 'DFLT'">

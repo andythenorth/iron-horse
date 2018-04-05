@@ -46,8 +46,8 @@ default_spritesheet_offsets = {'3': [[-3, -25], [-3, -21], [0, -12], [5, -17], [
 
 # spritesheet bounding boxes, each defined by a 3 tuple (left x, width, height);
 # upper y is determined by spritesheet row position, so isn't defined as a constant
-spritesheet_bounding_boxes_asymmetric_unreversed = ((60, 8, 29), (73, 26, 24), (104, 33, 16), (143, 26, 24),
-                                                    (180, 8, 29), (193, 26, 24), (224, 33, 16), (263, 26, 24))
+spritesheet_bounding_boxes_asymmetric_unreversed = [(60, 8, 29), (73, 26, 24), (104, 33, 16), (143, 26, 24),
+                                                    (180, 8, 29), (193, 26, 24), (224, 33, 16), (263, 26, 24)]
 
 spritesheet_bounding_boxes_asymmetric_reversed = list(spritesheet_bounding_boxes_asymmetric_unreversed[4:8])
 spritesheet_bounding_boxes_asymmetric_reversed.extend(spritesheet_bounding_boxes_asymmetric_unreversed[0:4])
@@ -56,7 +56,9 @@ spritesheet_bounding_boxes_asymmetric_reversed.extend(spritesheet_bounding_boxes
 spritesheet_bounding_boxes_symmetric_unreversed = list(spritesheet_bounding_boxes_asymmetric_unreversed[4:8])
 spritesheet_bounding_boxes_symmetric_unreversed.extend(spritesheet_bounding_boxes_asymmetric_unreversed[4:8])
 
-# spritesheet_bounding_boxes_symmetric_unreversed isn't defined as it would make no sense (reversing symmetrical vehicles is meaningless)
+# spritesheet_bounding_boxes_symmetric_reversed is identical to symmetric unreversed
+# (reversing symmetrical vehicles is meaningless, but used for livery hax when some vehicles are flipped)
+spritesheet_bounding_boxes_symmetric_reversed = spritesheet_bounding_boxes_symmetric_unreversed
 
 # rather than total spritesheet width, we often need to know the max x extent that actually contains sprites
 # this is calculated from bounding boxes

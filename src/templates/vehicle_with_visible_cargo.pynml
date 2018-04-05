@@ -1,8 +1,12 @@
 <tal:include metal:use-macro="load: spriteset_templates.pynml" />
 
+<!--! 'reversed' is random reversal on construction, depending on vehicle random bits
+      'flipped' is user flipping vehicle in depot
+      don't conflate them :) -->
+// default graphics chain
 <tal:reversible_variants repeat="reversed_variant consist.reversed_variants">
     spriteset(${vehicle.id}_ss_empty_${reversed_variant}, "${global_constants.graphics_path}${consist.id}.png") {
-      spriteset_template_${vehicle.symmetry_type}_${reversed_variant}_${vehicle.id}(${vehicle.spriterow_num * 30} + 10)
+      spriteset_template_${vehicle.symmetry_type}_${reversed_variant}_${vehicle.id}_unflipped(${vehicle.spriterow_num * 30} + 10)
     }
 
     spritegroup ${vehicle.id}_sg_empty_${reversed_variant} {
@@ -16,10 +20,10 @@
 
     <tal:cargo_variants repeat="cargo_variant_num python:range(consist.gestalt_graphics.num_cargo_sprite_variants)">
         spriteset(${vehicle.id}_ss_loading_${reversed_variant}_${cargo_variant_num}, "${global_constants.graphics_path}${consist.id}.png") {
-          spriteset_template_${vehicle.symmetry_type}_${reversed_variant}_${vehicle.id}(${vehicle.spriterow_num * 30} + ${cargo_variant_num * 60} + 40)
+          spriteset_template_${vehicle.symmetry_type}_${reversed_variant}_${vehicle.id}_unflipped(${vehicle.spriterow_num * 30} + ${cargo_variant_num * 60} + 40)
         }
         spriteset(${vehicle.id}_ss_loaded_${reversed_variant}_${cargo_variant_num}, "${global_constants.graphics_path}${consist.id}.png") {
-          spriteset_template_${vehicle.symmetry_type}_${reversed_variant}_${vehicle.id}(${vehicle.spriterow_num * 30} + ${cargo_variant_num * 60} + 70)
+          spriteset_template_${vehicle.symmetry_type}_${reversed_variant}_${vehicle.id}_unflipped(${vehicle.spriterow_num * 30} + ${cargo_variant_num * 60} + 70)
         }
 
         spritegroup ${vehicle.id}_sg_loading_${reversed_variant}_${cargo_variant_num} {
@@ -74,7 +78,7 @@
 
 <tal:include metal:use-macro="load: graphics_switches.pynml" />
 
-// buy menu graphics
+// buy menu graphics chain
 spriteset(${vehicle.id}_ss_purchase, "${global_constants.graphics_path}${consist.id}.png") {
   spriteset_template_purchase_${vehicle.id}(10)
 }
@@ -88,8 +92,8 @@ spritegroup ${vehicle.id}_sg_purchase {
     ];
 }
 
-// purchase sprites always go through a switch in case the template does anything specific for purchase graphics
-// if there's nothing specific, then this should just be a null switch
+<!--! purchase sprites always go through a switch in case the template does anything specific for purchase graphics
+      if there was nothing specific, then this would just be a null switch, but in this case we switch to the livery for (default) cargo -->
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase, 0) {
     return ${vehicle.id}_sg_purchase;
 }

@@ -16,7 +16,8 @@ import polar_fox
 import global_constants # expose all constants for easy passing to templates
 import utils
 
-from gestalt_graphics.gestalt_graphics import GestaltGraphics, GestaltGraphicsVisibleCargo, GestaltGraphicsLiveryOnly, GestaltGraphicsCustom
+from gestalt_graphics.gestalt_graphics import (GestaltGraphics, GestaltGraphicsVisibleCargo, GestaltGraphicsCargoSpecificLivery,
+                                               GestaltGraphicsCustom, GestaltGraphicsEngineSpecificLivery)
 import gestalt_graphics.graphics_constants as graphics_constants
 
 from rosters import registered_rosters
@@ -437,7 +438,7 @@ class CabooseCarConsist(CarConsist):
         self.label_refits_allowed = [] # no specific labels needed
         self.label_refits_disallowed = []
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsLiveryOnly(recolour_maps=graphics_constants.caboose_livery_recolour_maps)
+        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.caboose_livery_recolour_maps)
         # no random colour cabeese, I tried it, looks daft
         self.random_company_colour_swap = False
 
@@ -567,7 +568,7 @@ class LivestockCarConsist(CarConsist):
         self.capacity_cost_factor = 1.5
         self.run_cost_divisor = 7
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsLiveryOnly(recolour_maps=graphics_constants.livestock_livery_recolour_maps)
+        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.livestock_livery_recolour_maps)
 
 
 class MailCarConsist(CarConsist):
@@ -585,6 +586,9 @@ class MailCarConsist(CarConsist):
         self.random_company_colour_swap = False
         self.capacity_cost_factor = 1.5
         self.run_cost_divisor = 7
+        self.reversible = True
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsEngineSpecificLivery()
 
 
 class MetalCarConsist(CarConsist):
@@ -691,7 +695,7 @@ class SiloCarConsist(CarConsist):
         self.loading_speed_multiplier = 2
         self.capacity_cost_factor = 1.5
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsLiveryOnly(recolour_maps=graphics_constants.silo_livery_recolour_maps)
+        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.silo_livery_recolour_maps)
 
 
 class StakeCarConsist(CarConsist):
@@ -743,7 +747,7 @@ class TankCarConsist(CarConsist):
         self.gestalt_graphics.tanker = True
         self.capacity_cost_factor = 1.5
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsLiveryOnly(recolour_maps=polar_fox.constants.tanker_livery_recolour_maps)
+        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=polar_fox.constants.tanker_livery_recolour_maps)
 
 
 class VehicleTransporterCarConsist(CarConsist):
@@ -880,10 +884,15 @@ class Train(object):
                 'ENGINE_CLASS_DIESEL': 'RUNNING_COST_DIESEL',
                 'ENGINE_CLASS_ELECTRIC': 'RUNNING_COST_ELECTRIC'}[self.engine_class]
 
-    @property
-    def offsets(self):
+    def get_offsets(self, flipped=False):
         # offsets can also be over-ridden on a per-model basis by providing this property in the model class
-        return global_constants.default_spritesheet_offsets[str(self.vehicle_length)]
+        base_offsets = global_constants.default_spritesheet_offsets[str(self.vehicle_length)]
+        if flipped:
+            flipped_offsets = list(base_offsets[4:8])
+            flipped_offsets.extend(base_offsets[0:4])
+            return flipped_offsets
+        else:
+            return base_offsets
 
     @property
     def vehicle_nml_template(self):

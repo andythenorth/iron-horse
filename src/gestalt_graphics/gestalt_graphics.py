@@ -115,7 +115,7 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
         return result
 
 
-class GestaltGraphicsLiveryOnly(GestaltGraphics):
+class GestaltGraphicsCargoSpecificLivery(GestaltGraphics):
     """
         Used to handle the specific case of cargos shown only by vehicle livery.
         This can also be used with vehicles with just a *single* livery which isn't cargo-specific for
@@ -131,7 +131,7 @@ class GestaltGraphicsLiveryOnly(GestaltGraphics):
 
     @property
     def generic_rows(self):
-        utils.echo_message ('generic_rows not implemented in GestaltGraphicsLiveryOnly')
+        utils.echo_message ('generic_rows not implemented in GestaltGraphicsCargoSpecificLivery')
         return None
 
     @property
@@ -156,6 +156,35 @@ class GestaltGraphicsLiveryOnly(GestaltGraphics):
             counter += 1
         return result
 
+
+class GestaltGraphicsEngineSpecificLivery(object):
+    """
+        Used when the vehicle changes livery to match the engine (based on engine 'role')
+        Intended for pax and mail cars, possibly also caboose
+         - multiple engine roles might map to one livery
+         - livery shown might be random: engine-specific or solid CC
+         - player might toggle engine-livery or solid CC by flipping vehicle
+         - over-rides might be provided for specific cargo refits (mail vs. freight)
+         - intended for closed vehicles with doors, 'loaded' sprites are same as 'empty'
+         - option to show cargo loading sprites (open doors) via 1 or 2 'loading' rows
+    """
+    def __init__(self):
+        # no graphics processing by default
+        self.pipeline = None
+
+    @property
+    def nml_template(self):
+        # over-ride in sub-classes as needed
+        return 'vehicle_with_engine_specific_liveries.pynml'
+
+    """
+    # may or may not be needed in this gestalt
+    def get_output_row_counts_by_type(self):
+        # stub, for template compatibility reasons
+        result = []
+        result.append(('single_row', 1))
+        return result
+    """
 
 class GestaltGraphicsCustom(GestaltGraphics):
     """
