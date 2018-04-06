@@ -20,7 +20,8 @@ class GestaltGraphics(object):
         return 'vehicle_default.pynml'
 
     @property
-    def num_cargo_sprite_variants(self, cargo_type=None):
+    def num_cargo_sprite_variants(self):
+        # this tends to be common across multiple templates, so provide it in the base class
         # rows can be reused across multiple cargo labels, so find uniques (assumes row nums are identical when reused across labels)
         unique_row_nums = []
         for row_nums in self.cargo_row_map.values():
@@ -192,7 +193,7 @@ class GestaltGraphicsCargoSpecificLivery(GestaltGraphics):
         return result
 
 
-class GestaltGraphicsConsistSpecificLivery(object):
+class GestaltGraphicsConsistSpecificLivery(GestaltGraphics):
     """
         Used when the vehicle changes livery to match
         - the engine (based on engine 'role')
@@ -205,23 +206,41 @@ class GestaltGraphicsConsistSpecificLivery(object):
          - intended for closed vehicles with doors, 'loaded' sprites are same as 'empty'
          - option to show cargo loading sprites (open doors) via 1 or 2 'loading' rows
     """
-    def __init__(self):
-        # no graphics processing by default
+    def __init__(self, **kwargs):
+        # no graphics processing for this gestalt
+        super().__init__()
         self.pipeline = None
+        self.has_freight_specific_livery = kwargs.get('freight_specific_livery', False)
+        self.has_mail_specific_livery = kwargs.get('mail_specific_livery', False)
+        self.has_pax_specific_livery = kwargs.get('pax_specific_livery', False)
 
     @property
     def nml_template(self):
         # over-ride in sub-classes as needed
         return 'vehicle_with_consist_specific_liveries.pynml'
 
-    """
-    # may or may not be needed in this gestalt
-    def get_output_row_counts_by_type(self):
-        # stub, for template compatibility reasons
-        result = []
-        result.append(('single_row', 1))
+    @property
+    def cargo_row_map(self):
+        result = {}
+        counter = 0
+        """
+        if self.has_freight_specific_livery:
+            result['DFLT'] = [counter]
+            counter += 1
+        else:
+            result['DFLT'] =
+        """
+        if self.has_pax_specific_livery:
+            result['PASS'] = [counter] # list because multiple spriterow groups can map to a consist cargo
+            counter += 1
+        if self.has_mail_specific_livery:
+            result['MAIL'] = [counter] # list because multiple spriterow groups can map to a consist cargo
+            counter += 1
+        if self.has_freight_specific_livery:
+            result['DFLT'] = [counter] # list because multiple spriterow groups can map to a consist cargo
+            counter += 1
         return result
-    """
+
 
 class GestaltGraphicsCustom(GestaltGraphics):
     """

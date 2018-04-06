@@ -12,28 +12,68 @@
       'flipped' is user flipping vehicle in depot and *is* supported here (used for livery selection tricks)
       don't conflate them :) -->
 // default graphics chain
-<tal:user_flipped repeat="flipped [('unflipped', 0), ('flipped', 1)]">
-    spriteset(${vehicle.id}_ss_doors_closed_${flipped[0]}, "${global_constants.graphics_path}${consist.id}.png") {
-      spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.id}_${flipped[0]}(10 + ${flipped[1] * 60})
-    }
-    spriteset(${vehicle.id}_ss_doors_open_${flipped[0]}, "${global_constants.graphics_path}${consist.id}.png") {
-      spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.id}_${flipped[0]}(10 + ${flipped[1] * 60} + 30)
-    }
+<tal:consist_cargo_variants repeat="cargo_variant_num python:range(consist.gestalt_graphics.num_cargo_sprite_variants)">
+    <tal:user_flipped repeat="flipped ['unflipped', 'flipped']">
+        spriteset(${vehicle.id}_ss_doors_closed_livery_1_${cargo_variant_num}_${flipped}, "${global_constants.graphics_path}${consist.id}.png") {
+          spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.id}_${flipped}(10 + ${cargo_variant_num * 120})
+        }
+        spriteset(${vehicle.id}_ss_doors_open_livery_1_${cargo_variant_num}_${flipped}, "${global_constants.graphics_path}${consist.id}.png") {
+          spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.id}_${flipped}(10 + ${cargo_variant_num * 120} + 30)
+        }
+        spriteset(${vehicle.id}_ss_doors_closed_livery_2_${cargo_variant_num}_${flipped}, "${global_constants.graphics_path}${consist.id}.png") {
+          spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.id}_${flipped}(10 + ${cargo_variant_num * 120} + 60)
+        }
+        spriteset(${vehicle.id}_ss_doors_open_livery_2_${cargo_variant_num}_${flipped}, "${global_constants.graphics_path}${consist.id}.png") {
+          spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.id}_${flipped}(10 + ${cargo_variant_num * 120} + 90)
+        }
 
-    spritegroup ${vehicle.id}_sg_${flipped[0]} {
-        loaded:  [
-            ${vehicle.id}_ss_doors_closed_${flipped[0]},
-        ];
-        loading: [
-            ${vehicle.id}_ss_doors_open_${flipped[0]},
-        ];
+        spritegroup ${vehicle.id}_sg_livery_1_${cargo_variant_num}_${flipped} {
+            loaded:  [
+                ${vehicle.id}_ss_doors_closed_livery_1_${cargo_variant_num}_${flipped},
+            ];
+            loading: [
+                ${vehicle.id}_ss_doors_open_livery_1_${cargo_variant_num}_${flipped},
+            ];
+        }
+        spritegroup ${vehicle.id}_sg_livery_2_${cargo_variant_num}_${flipped} {
+            loaded:  [
+                ${vehicle.id}_ss_doors_closed_livery_2_${cargo_variant_num}_${flipped},
+            ];
+            loading: [
+                ${vehicle.id}_ss_doors_open_livery_2_${cargo_variant_num}_${flipped},
+            ];
+        }
+    </tal:user_flipped>
+    // handle user flipped state
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_livery_1_${cargo_variant_num}, vehicle_is_flipped) {
+        1: return ${vehicle.id}_sg_livery_2_${cargo_variant_num}_flipped;
+        return ${vehicle.id}_sg_livery_1_${cargo_variant_num}_unflipped;
     }
-</tal:user_flipped>
-// handle user flipped state
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_unreversed, vehicle_is_flipped) {
-    1: return ${vehicle.id}_sg_flipped;
-    return ${vehicle.id}_sg_unflipped;
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_livery_2_${cargo_variant_num}, vehicle_is_flipped) {
+        1: return ${vehicle.id}_sg_livery_1_${cargo_variant_num}_flipped;
+        return ${vehicle.id}_sg_livery_2_${cargo_variant_num}_unflipped;
+    }
+    switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_graphics_engine_id_${cargo_variant_num}, vehicle_type_id) {
+        <!--! this doesn't check grfid currently - add later if needed -->
+        <tal:livery_2_engine_ids repeat="engine_id consist.livery_2_engine_ids">
+            ${engine_id}: return ${vehicle.id}_switch_graphics_livery_2_${cargo_variant_num};
+        </tal:livery_2_engine_ids>
+        return ${vehicle.id}_switch_graphics_livery_1_${cargo_variant_num};
+    }
+</tal:consist_cargo_variants>
+
+
+switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_graphics_unreversed, most_common_refit) {
+    <tal:consist_cargo condition="consist.gestalt_graphics.has_mail_specific_livery">
+        MAIL: return ${vehicle.id}_switch_graphics_engine_id_${1 if consist.gestalt_graphics.has_pax_specific_livery else 0};
+    </tal:consist_cargo>
+    <tal:consist_cargo condition="consist.gestalt_graphics.has_pax_specific_livery">
+        PASS: return ${vehicle.id}_switch_graphics_engine_id_${0};
+    </tal:consist_cargo>
+    return ${vehicle.id}_switch_graphics_engine_id_${2 if (consist.gestalt_graphics.has_mail_specific_livery and consist.gestalt_graphics.has_pax_specific_livery) else 0};
 }
+
+
 
 <tal:include metal:use-macro="load: graphics_switches.pynml" />
 

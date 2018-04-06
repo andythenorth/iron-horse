@@ -175,6 +175,16 @@ class Consist(object):
             return self.roster.intro_dates[self.gen - 1]
 
     @property
+    def livery_2_engine_ids(self):
+        # for vehicles with consist-specific liveries
+        # will switch vehicle to livery 2 for specific roles of lead engine
+        result = []
+        for consist in self.roster.engine_consists:
+            if consist.role in ['express_1', 'express_2']:
+                result.append(consist.id)
+        return result
+
+    @property
     def model_life(self):
         similar_consists = []
         for consist in self.roster.engine_consists:
@@ -356,7 +366,7 @@ class PassengerEngineRailcarConsist(PassengerEngineConsist):
         super().__init__(**kwargs)
         self.allow_flip = True
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery()
+        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(pax_specific_livery=True)
 
 
 class MailEngineConsist(EngineConsist):
@@ -381,7 +391,7 @@ class MailEngineRailcarConsist(MailEngineConsist):
         super().__init__(**kwargs)
         self.allow_flip = True
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery()
+        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(mail_specific_livery=True)
 
 
 class CarConsist(Consist):
@@ -680,7 +690,9 @@ class MailCarConsist(CarConsist):
         self.run_cost_divisor = 7
         self.allow_flip = True
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery()
+        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(mail_specific_livery=True,
+                                                                     pax_specific_livery=True,
+                                                                     freight_specific_livery=True)
 
 
 class MetalCarConsist(CarConsist):
@@ -736,7 +748,7 @@ class PassengerCarConsistBase(CarConsist):
         self.random_company_colour_swap = False
         self.allow_flip = True
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery()
+        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(pax_specific_livery=True)
 
 
 class PassengerCarConsist(PassengerCarConsistBase):
