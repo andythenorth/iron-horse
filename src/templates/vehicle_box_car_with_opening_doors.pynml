@@ -3,7 +3,7 @@
 <tal:include metal:use-macro="load: spriteset_templates.pynml" />
 
 <!--! this template does not support 'random_reverse' property or 'allow_flip' user-flipping
-      box cars are always symmetrical, no need for extra complexity
+      cargo vehicles using this template are always symmetrical, no need for extra complexity
       there is an assert for this in train.py -->
 // default graphics chain
 spriteset(${vehicle.id}_ss_doors_closed, "${global_constants.graphics_path}${consist.id}.png") {

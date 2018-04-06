@@ -5,7 +5,7 @@
 
 <tal:include metal:use-macro="load: spriteset_templates.pynml" />
 
-<!--! this template does not support 'random_reverse' property or user-flipping
+<!--! this template does not support 'random_reverse' property or 'allow_flip' user-flipping
       cargo vehicles using this template are always symmetrical, no need for extra complexity
       there is an assert for this in train.py -->
 // default graphics chain
