@@ -238,7 +238,13 @@ class GestaltGraphicsConsistSpecificLivery(GestaltGraphics):
     """
 
     def get_variants_with_position_keys(self, cargo_row_map):
-        return cargo_row_map
+        # just formatting for human-readable access to positions in templates where mapping[0][n] was fiddly
+        # the cargo_row_map structure can't use a dict for compatibility reasons, so handle it here
+        result = {}
+        for i, name in enumerate(self.consist_positions_ordered):
+            result[name] = cargo_row_map[1][i]
+        print(result)
+        return result
 
     @property
     def cargo_row_map(self):
@@ -264,6 +270,7 @@ class GestaltGraphicsConsistSpecificLivery(GestaltGraphics):
         # - otherwise provide something we can use for the default switch result
         if 'DFLT' not in result.keys():
             result['DFLT'] = [0, 0, 0, 0] # number of entries must match number of consist positions checked in template
+            assert(len(result['DFLT']) == len(self.consist_positions_ordered))
         return result
 
 

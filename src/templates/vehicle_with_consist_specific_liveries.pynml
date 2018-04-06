@@ -65,21 +65,23 @@
 <tal:position_in_consist repeat="cargo_row_map consist.gestalt_graphics.cargo_row_map.items()">
     <tal:vars define="cargo_label cargo_row_map[0];
                       variants consist.gestalt_graphics.get_variants_with_position_keys(cargo_row_map)">
+        <!--! rulesets must comply with the position names in gestalt_graphics.consist_positions_ordered
+              these could be extended or made arbitrary, but that's unwanted complexity -->
         <tal:position_ruleset condition="consist.gestalt_graphics.consist_ruleset == 'pax_cars'">
             switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_position_first_${cargo_label}, num_vehs_in_vehid_chain) {
                 <!--! don't show 'first' if same id chain < 5 vehicles -->
-                0..4: return ${vehicle.id}_switch_graphics_engine_id_${variants[1][0]};
-                return ${vehicle.id}_switch_graphics_engine_id_${variants[1][1]};
+                0..4: return ${vehicle.id}_switch_graphics_engine_id_${variants['default']};
+                return ${vehicle.id}_switch_graphics_engine_id_${variants['first']};
             }
 
             switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_position_in_consist_${cargo_label}, position_in_vehid_chain) {
-                0: return ${vehicle.id}_switch_graphics_position_first_${variants[0]};
-                return ${vehicle.id}_switch_graphics_engine_id_${variants[1][0]};
+                0: return ${vehicle.id}_switch_graphics_position_first_${cargo_label};
+                return ${vehicle.id}_switch_graphics_engine_id_${variants['default']};
             }
         </tal:position_ruleset>
         <tal:position_ruleset condition="consist.gestalt_graphics.consist_ruleset == None">
             switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_position_in_consist_${cargo_label}, 0) {
-                return ${vehicle.id}_switch_graphics_engine_id_${variants[1][0]};
+                return ${vehicle.id}_switch_graphics_engine_id_${variants['default']};
             }
         </tal:position_ruleset>
     </tal:vars>
