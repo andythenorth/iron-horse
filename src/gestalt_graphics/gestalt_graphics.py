@@ -257,7 +257,6 @@ class GestaltGraphicsConsistSpecificLivery(GestaltGraphics):
         # - otherwise provide something we can use for the default switch result
         if 'DFLT' not in result.keys():
             result['DFLT'] = [0, 0, 0, 0] # number of entries must match number of consist positions checked in template
-        print(result)
         return result
 
 
