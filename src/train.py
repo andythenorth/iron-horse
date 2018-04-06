@@ -359,15 +359,15 @@ class PassengerEngineConsist(EngineConsist):
 
 class PassengerEngineRailcarConsist(PassengerEngineConsist):
     """
-    Consist for a pax railcar.  Just a sparse subclass to force the gestalt_graphics and reversibility
+    Consist for a pax railcar.  Just a sparse subclass to force the gestalt_graphics and allow_flip
     """
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.allow_flip = True
         # Graphics configuration
-        spriterow_group_mappings = {'pax': {'default': 0, 'first': 0, 'last': 0, 'special': 0}}
-        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings)
+        spriterow_group_mappings = {'pax': {'default': 0, 'first': 1, 'last': 2, 'special': 0}}
+        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings, consist_ruleset="railcars")
 
 
 class MailEngineConsist(EngineConsist):
@@ -385,7 +385,7 @@ class MailEngineConsist(EngineConsist):
 
 class MailEngineRailcarConsist(MailEngineConsist):
     """
-    Consist for a mail railcar.  Just a sparse subclass to force the gestalt_graphics and reversibility
+    Consist for a mail railcar.  Just a sparse subclass to force the gestalt_graphics and allow_flip
     """
 
     def __init__(self, **kwargs):

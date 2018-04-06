@@ -106,9 +106,23 @@
                 return ${vehicle.id}_switch_graphics_position_check_first_${cargo_label};
             }
         </tal:position_ruleset>
+
+        <tal:position_ruleset condition="consist.gestalt_graphics.consist_ruleset == 'railcars'">
+            <!--! if odd numbered, show leading car or single car -->
+            switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_position_in_consist_check_first_${cargo_label}, position_in_vehid_chain_from_end) {
+                0: return ${vehicle.id}_switch_graphics_engine_id_${variants['special']};
+                return ${vehicle.id}_switch_graphics_engine_id_${variants['first']};
+            }
+            <!--! check odd or even -->
+            switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_position_in_consist_entry_point_${cargo_label}, position_in_vehid_chain % 2) {
+                1: return ${vehicle.id}_switch_graphics_engine_id_${variants['last']};
+                return ${vehicle.id}_switch_graphics_position_in_consist_check_first_${cargo_label};
+            }
+        </tal:position_ruleset>
+
         <tal:position_ruleset condition="consist.gestalt_graphics.consist_ruleset == None">
             switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_position_in_consist_entry_point_${cargo_label}, 0) {
-                return ${vehicle.id}_switch_graphics_engine_id_${variants['default']};
+                return ${vehicle.id}_switch_graphics_engine_id_${variants['special']};
             }
         </tal:position_ruleset>
     </tal:vars>
