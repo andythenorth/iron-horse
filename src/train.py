@@ -366,7 +366,7 @@ class PassengerEngineRailcarConsist(PassengerEngineConsist):
         super().__init__(**kwargs)
         self.allow_flip = True
         # Graphics configuration
-        spriterow_group_mappings = {'pax': {'default': 0, 'first': 0, 'last': 0, 'middle': 0}}
+        spriterow_group_mappings = {'pax': {'default': 0, 'first': 0, 'last': 0, 'special': 0}}
         self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings)
 
 
@@ -393,8 +393,8 @@ class MailEngineRailcarConsist(MailEngineConsist):
         self.allow_flip = True
         # Graphics configuration
         """
-        spriterow_group_mappings = {'freight': {'default': 0, 'first': 0, 'last': 0, 'middle': 0},
-                                       'mail': {'default': 0, 'first': 0, 'last': 0, 'middle': 0}}
+        spriterow_group_mappings = {'freight': {'default': 0, 'first': 0, 'last': 0, 'special': 0},
+                                       'mail': {'default': 0, 'first': 0, 'last': 0, 'special': 0}}
         self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings)
         """
 
@@ -694,9 +694,9 @@ class MailCarConsist(CarConsist):
         self.run_cost_divisor = 7
         self.allow_flip = True
         # Graphics configuration
-        spriterow_group_mappings = {'freight': {'default': 0, 'first': 0, 'last': 0, 'middle': 0},
-                                       'mail': {'default': 0, 'first': 0, 'last': 0, 'middle': 0},
-                                        'pax': {'default': 0, 'first': 0, 'last': 0, 'middle': 0}}
+        spriterow_group_mappings = {'freight': {'default': 0, 'first': 0, 'last': 0, 'special': 0},
+                                       'mail': {'default': 0, 'first': 0, 'last': 0, 'special': 0},
+                                        'pax': {'default': 0, 'first': 0, 'last': 0, 'special': 0}}
         self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings)
 
 
@@ -753,8 +753,8 @@ class PassengerCarConsistBase(CarConsist):
         self.random_company_colour_swap = False
         self.allow_flip = True
         # Graphics configuration
-        spriterow_group_mappings = {'pax': {'default': 0, 'first': 0, 'last': 0, 'middle': 0}}
-        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings)
+        spriterow_group_mappings = {'pax': {'default': 0, 'first': 1, 'last': 2, 'special': 3}}
+        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings, consist_ruleset='pax_cars')
 
 
 class PassengerCarConsist(PassengerCarConsistBase):

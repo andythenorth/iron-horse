@@ -212,9 +212,14 @@ class GestaltGraphicsConsistSpecificLivery(GestaltGraphics):
         # (1) consist-cargo types for which specific liveries are provided
         # (2) spriterow numbers for named positions in consist
         # spriterow numbers are zero-indexed *relative* to the start of the consist-cargo block, to reduce shuffling them all if new rows are inserted in future
+        # *all* of the values in consist_positions_ordered must be provided in the mapping, set them to 0 if unused
         self.spriterow_group_mappings = spriterow_group_mappings
+        # rulesets are used to define for different types of vehicle how sprites change depending on consist position
+        self.consist_ruleset = kwargs.get('consist_ruleset', None)
         # it's nice to use a dict for the consist position->row mapping, but order matters for the spritesheet, so have an ordered set of keys
-        self.consist_positions_ordered = ['default', 'first', 'last', 'middle']
+        # also, although rulesets allow fine-grained control, there are deliberately only 4 configuration options
+        # this stops rules getting out of control and simplifies other methods
+        self.consist_positions_ordered = ['default', 'first', 'last', 'special']
 
     @property
     def nml_template(self):
@@ -230,8 +235,10 @@ class GestaltGraphicsConsistSpecificLivery(GestaltGraphics):
     # to build switches we want absolute spriterow group numbers, which are switched per cargo type then per position
     # we get the absolute row numbers by summing from the unique row count so far
     switch_walking_structure {'pax': [0, 1, 2, 3, 4], 'mail': [5, 5, 5, 5, 5], 'freight: [6, 6, 6, 6, 6]}
-
     """
+
+    def get_variants_with_position_keys(self, cargo_row_map):
+        return cargo_row_map
 
     @property
     def cargo_row_map(self):
