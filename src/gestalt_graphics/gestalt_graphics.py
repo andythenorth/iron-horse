@@ -243,7 +243,6 @@ class GestaltGraphicsConsistSpecificLivery(GestaltGraphics):
         result = {}
         for i, name in enumerate(self.consist_positions_ordered):
             result[name] = cargo_row_map[1][i]
-        print(result)
         return result
 
     @property
