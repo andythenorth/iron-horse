@@ -23,11 +23,11 @@ class GestaltGraphics(object):
     def num_cargo_sprite_variants(self):
         # this tends to be common across multiple templates, so provide it in the base class
         # rows can be reused across multiple cargo labels, so find uniques (assumes row nums are identical when reused across labels)
-        unique_row_nums = []
+        row_nums_seen = []
         for row_nums in self.cargo_row_map.values():
-            if row_nums not in unique_row_nums:
-                unique_row_nums.append(row_nums)
-        return sum([len(i) for i in unique_row_nums])
+            for row_num in row_nums:
+                row_nums_seen.append(row_num)
+        return len(set(row_nums_seen))
 
     def get_output_row_counts_by_type(self):
         # stub, for template compatibility reasons
@@ -83,7 +83,7 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
         sprite_names = polar_fox.constants.piece_vehicle_type_to_sprites_maps[self.piece_type]
         for sprite_name in sprite_names:
             cargo_labels = polar_fox.constants.piece_sprites_to_cargo_labels_maps[sprite_name]
-            map = (cargo_labels, [sprite_name])
+            map = (sprite_name, cargo_labels)
             result.append(map)
         return result
 
@@ -109,12 +109,10 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
                 result[cargo_map[0]] = [counter] # list because multiple spriterows can map to a cargo label
                 counter += 1
         if self.has_piece:
-            for cargo_labels, cargo_filenames in self.piece_cargo_maps:
-                num_variants = len(cargo_filenames)
-                spriterow_nums = [counter + i for i in range(num_variants)]
+            for cargo_filename, cargo_labels in self.piece_cargo_maps:
                 for cargo_label in cargo_labels:
-                    result[cargo_label] = spriterow_nums
-                counter += num_variants
+                    result.setdefault(cargo_label, []).append(counter)
+                counter += 1
         return result
 
 
@@ -206,39 +204,60 @@ class GestaltGraphicsConsistSpecificLivery(GestaltGraphics):
          - intended for closed vehicles with doors, 'loaded' sprites are same as 'empty'
          - option to show cargo loading sprites (open doors) via 1 or 2 'loading' rows
     """
-    def __init__(self, **kwargs):
+    def __init__(self, spriterow_group_mappings, **kwargs):
         # no graphics processing for this gestalt
         super().__init__()
         self.pipeline = None
-        self.has_freight_specific_livery = kwargs.get('freight_specific_livery', False)
-        self.has_mail_specific_livery = kwargs.get('mail_specific_livery', False)
-        self.has_pax_specific_livery = kwargs.get('pax_specific_livery', False)
+        # spriterow_group_mappings provided by subclass calling gestalt_graphics:
+        # (1) consist-cargo types for which specific liveries are provided
+        # (2) spriterow numbers for named positions in consist
+        # spriterow numbers are zero-indexed *relative* to the start of the consist-cargo block, to reduce shuffling them all if new rows are inserted in future
+        self.spriterow_group_mappings = spriterow_group_mappings
+        # it's nice to use a dict for the consist position->row mapping, but order matters for the spritesheet, so have an ordered set of keys
+        self.consist_positions_ordered = ['default', 'first', 'last', 'middle']
 
     @property
     def nml_template(self):
         # over-ride in sub-classes as needed
         return 'vehicle_with_consist_specific_liveries.pynml'
+    """
+    # row numbers, relative to start of mail block, zero-indexed
+    {'MAIL' : {'first': 0, 'last': 0, 'middle': 0, 'default_1': 0, 'default_2'}: 0}
+    mail_num_spriterow_groups = set(values)
+    ...
+    num_sprite_row_groups = pax_num_spriterow_groups + mail_num_spriterow_groups + freight_num_spriterow_groups
+
+    # to build switches we want absolute spriterow group numbers, which are switched per cargo type then per position
+    # we get the absolute row numbers by summing from the unique row count so far
+    switch_walking_structure {'pax': [0, 1, 2, 3, 4], 'mail': [5, 5, 5, 5, 5], 'freight: [6, 6, 6, 6, 6]}
+
+    """
 
     @property
     def cargo_row_map(self):
+        # This is tied completely to the spritesheet format, which as of April 2018 was:
+        # - pax consist liveries (n vehicle variants x 2 liveries x 2 rows: empty & loaded, loading)
+        # - mail consist liveries (n vehicle variants x 2 liveries x 2 rows: empty & loaded, loading)
+        # - freight consist liveries (n vehicle variants x 2 liveries x 2 rows: empty & loaded, loading)
+        # these are mapped by the subclass using spriterow_group_mappings to consist positions that the
+        #  template expects for e.g. restaurant cars, brake coaches etc
+        # consist-cargo liveries are optional, but it makes no sense to provide none in the subclass :P
         result = {}
         counter = 0
-        """
-        if self.has_freight_specific_livery:
-            result['DFLT'] = [counter]
-            counter += 1
-        else:
-            result['DFLT'] =
-        """
-        if self.has_pax_specific_livery:
-            result['PASS'] = [counter] # list because multiple spriterow groups can map to a consist cargo
-            counter += 1
-        if self.has_mail_specific_livery:
-            result['MAIL'] = [counter] # list because multiple spriterow groups can map to a consist cargo
-            counter += 1
-        if self.has_freight_specific_livery:
-            result['DFLT'] = [counter] # list because multiple spriterow groups can map to a consist cargo
-            counter += 1
+        # this doesn't account for cargos like TOUR, but could be extended so cargo labels are a list, TMWFTLB as of April 2018 though
+        # not a dict because order matters
+        for livery_type, cargo_label in (('pax', 'PASS'), ('mail', 'MAIL'), ('freight', 'DFLT')):
+            if livery_type in self.spriterow_group_mappings:
+                # we have to rebuild the row_nums in a predictable order (they're stored in a dict for convenience when configuring)
+                relative_row_nums = [self.spriterow_group_mappings[livery_type][position] for position in self.consist_positions_ordered]
+                result[cargo_label] = [counter + row_num for row_num in relative_row_nums] # we make relative row_nums absolute here
+                counter += len(set(relative_row_nums))
+        # we rely on DFLT here as there is no meaningful cargo label for 'freight' we can check, so:
+        # - if freight is provided, assume that it's defined as 'not PASS or MAIL', and use it in the default switch result
+        # - otherwise provide something we can use for the default switch result
+        if 'DFLT' not in result.keys():
+            result['DFLT'] = [0, 0, 0, 0] # number of entries must match number of consist positions checked in template
+        print(result)
         return result
 
 
