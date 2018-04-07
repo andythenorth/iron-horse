@@ -207,7 +207,7 @@ class GestaltGraphicsConsistSpecificLivery(GestaltGraphics):
     def __init__(self, spriterow_group_mappings, **kwargs):
         # no graphics processing for this gestalt
         super().__init__()
-        self.pipeline = None
+        self.pipeline = pipelines.get_pipeline('extend_spriterows_for_composited_cargos_pipeline')
         # spriterow_group_mappings provided by subclass calling gestalt_graphics:
         # (1) consist-cargo types for which specific liveries are provided
         # (2) spriterow numbers for named positions in consist
@@ -225,17 +225,10 @@ class GestaltGraphicsConsistSpecificLivery(GestaltGraphics):
     def nml_template(self):
         # over-ride in sub-classes as needed
         return 'vehicle_with_consist_specific_liveries.pynml'
-    """
-    # row numbers, relative to start of mail block, zero-indexed
-    {'MAIL' : {'first': 0, 'last': 0, 'middle': 0, 'default_1': 0, 'default_2'}: 0}
-    mail_num_spriterow_groups = set(values)
-    ...
-    num_sprite_row_groups = pax_num_spriterow_groups + mail_num_spriterow_groups + freight_num_spriterow_groups
 
-    # to build switches we want absolute spriterow group numbers, which are switched per cargo type then per position
-    # we get the absolute row numbers by summing from the unique row count so far
-    switch_walking_structure {'pax': [0, 1, 2, 3, 4], 'mail': [5, 5, 5, 5, 5], 'freight: [6, 6, 6, 6, 6]}
-    """
+    def get_output_row_counts_by_type(self):
+        # 2 liveries with 2 rows each: empty & loaded (doors closed), loading (doors open)
+        return [('pax_mail_cars_with_doors', 4 * self.num_cargo_sprite_variants)]
 
     def get_variants_with_position_keys(self, cargo_row_map):
         # just formatting for human-readable access to positions in templates where mapping[0][n] was fiddly

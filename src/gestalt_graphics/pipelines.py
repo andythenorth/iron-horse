@@ -154,6 +154,38 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
                                             x_offset=self.sprites_max_x_extent + 5,
                                             y_offset= -1 * graphics_constants.spriterow_height))
 
+    def add_pax_mail_car_with_opening_doors_spriterows(self, row_count):
+        for row_num in range(int(row_count / 2)):
+            row_offset = row_num * graphics_constants.spriterow_height
+            crop_box_source = (0,
+                               self.base_offset + row_offset,
+                               self.sprites_max_x_extent,
+                               self.base_offset + row_offset + graphics_constants.spriterow_height)
+            pax_mail_car_spriterow_input_image = self.comp_chassis_and_body(Image.open(self.input_path).crop(crop_box_source))
+            #empty/loaded state and loading state will need pasting once each, so two crop boxes needed
+            crop_box_comp_dest_1 = (0,
+                                    0,
+                                    self.sprites_max_x_extent,
+                                    graphics_constants.spriterow_height)
+            crop_box_comp_dest_2 = (0,
+                                    graphics_constants.spriterow_height,
+                                    self.sprites_max_x_extent,
+                                    2 * graphics_constants.spriterow_height)
+            pax_mail_car_rows_image = Image.new("P", (graphics_constants.spritesheet_width, 2 * graphics_constants.spriterow_height))
+            pax_mail_car_rows_image.putpalette(DOS_PALETTE)
+
+            pax_mail_car_rows_image.paste(pax_mail_car_spriterow_input_image, crop_box_comp_dest_1)
+            pax_mail_car_rows_image.paste(pax_mail_car_spriterow_input_image, crop_box_comp_dest_2)
+            if self.consist.id == 'luxury_passenger_car_pony_gen_5A':
+                pax_mail_car_rows_image.show()
+
+            crop_box_dest = (0,
+                             0,
+                             self.sprites_max_x_extent,
+                             2 * graphics_constants.spriterow_height)
+            pax_mail_car_rows_image_as_spritesheet = self.make_spritesheet_from_image(pax_mail_car_rows_image)
+            self.units.append(AppendToSpritesheet(pax_mail_car_rows_image_as_spritesheet, crop_box_dest))
+
     def add_box_car_with_opening_doors_spriterows(self):
         # all wagons using this gestalt repaint the relevant box car sprite for the wagon's generation and subtype
         box_car_id = self.consist.get_wagon_id(id_base='box_car', roster=self.consist.roster.id, gen=self.consist.gen, subtype=self.consist.subtype)
@@ -170,7 +202,7 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
         box_car_input_image_1 = self.comp_chassis_and_body(Image.open(box_car_input_path).crop(crop_box_source_1))
         box_car_input_image_2 = self.comp_chassis_and_body(Image.open(box_car_input_path).crop(crop_box_source_2))
         #vehicle_box_car_input_image_1.show() # comment in to see the image when debugging
-        #loading and loaded state will need pasting once each, so two crop boxes needed
+        #empty/loaded state and loading state will need pasting once each, so two crop boxes needed
         crop_box_comp_dest_1 = (0,
                                 0,
                                 self.sprites_max_x_extent,
@@ -368,6 +400,9 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
                 elif spriterow_type == 'box_car_with_opening_doors_spriterows':
                     input_spriterow_count = 2
                     self.add_box_car_with_opening_doors_spriterows()
+                elif spriterow_type == 'pax_mail_cars_with_doors':
+                    input_spriterow_count = 2
+                    self.add_pax_mail_car_with_opening_doors_spriterows(spriterow_data[1])
                 elif spriterow_type == 'bulk_cargo':
                     input_spriterow_count = 2
                     self.add_bulk_cargo_spriterows()

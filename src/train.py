@@ -141,7 +141,7 @@ class Consist(object):
 
     def get_spriterows_for_consist_or_subpart(self, units):
         # pass either list of all units in consist, or a slice of the consist starting from front (arbitrary slices not useful)
-        # spriterow count is number of output sprite rows from graphics processor, to be used by nml sprite templating
+        # spriterow count is number of output sprite rows from graphics processor
         result = []
         for unit in units:
             unit_rows = []
