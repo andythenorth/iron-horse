@@ -366,7 +366,7 @@ class PassengerEngineRailcarConsist(PassengerEngineConsist):
         super().__init__(**kwargs)
         self.allow_flip = True
         # Graphics configuration
-        spriterow_group_mappings = {'pax': {'default': 0, 'first': 1, 'last': 2, 'special': 0}}
+        spriterow_group_mappings = {'pax': {'default': 0, 'first': 1, 'last': 2, 'special': 3}}
         self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings, consist_ruleset="railcars")
 
 
