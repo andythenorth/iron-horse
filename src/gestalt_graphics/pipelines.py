@@ -176,8 +176,7 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
 
             pax_mail_car_rows_image.paste(pax_mail_car_spriterow_input_image, crop_box_comp_dest_1)
             pax_mail_car_rows_image.paste(pax_mail_car_spriterow_input_image, crop_box_comp_dest_2)
-            if self.consist.id == 'luxury_passenger_car_pony_gen_5A':
-                pax_mail_car_rows_image.show()
+            #pax_mail_car_rows_image.show()
 
             crop_box_dest = (0,
                              0,
