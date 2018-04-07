@@ -393,8 +393,7 @@ class MailEngineRailcarConsist(MailEngineConsist):
         self.allow_flip = True
         # Graphics configuration
         # by design, mail railcars don't change livery in a pax consist, but do have mail / freight liveries
-        spriterow_group_mappings = {'freight': {'default': 0, 'first': 0, 'last': 0, 'special': 0},
-                                       'mail': {'default': 0, 'first': 0, 'last': 0, 'special': 0}}
+        spriterow_group_mappings = {'mail': {'default': 0, 'first': 0, 'last': 0, 'special': 0}}
         self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings)
 
 class CarConsist(Consist):
@@ -693,9 +692,8 @@ class MailCarConsist(CarConsist):
         self.run_cost_divisor = 7
         self.allow_flip = True
         # Graphics configuration
-        spriterow_group_mappings = {'freight': {'default': 0, 'first': 0, 'last': 0, 'special': 0},
-                                       'mail': {'default': 0, 'first': 0, 'last': 0, 'special': 0},
-                                        'pax': {'default': 0, 'first': 0, 'last': 0, 'special': 0}}
+        spriterow_group_mappings = {'mail': {'default': 0, 'first': 0, 'last': 0, 'special': 0},
+                                    'pax': {'default': 0, 'first': 0, 'last': 0, 'special': 0}}
         self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings)
 
 

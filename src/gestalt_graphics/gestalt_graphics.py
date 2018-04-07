@@ -250,23 +250,19 @@ class GestaltGraphicsConsistSpecificLivery(GestaltGraphics):
         # This is tied completely to the spritesheet format, which as of April 2018 was:
         # - pax consist liveries (n vehicle variants x 2 liveries x 2 rows: empty & loaded, loading)
         # - mail consist liveries (n vehicle variants x 2 liveries x 2 rows: empty & loaded, loading)
-        # - freight consist liveries (n vehicle variants x 2 liveries x 2 rows: empty & loaded, loading)
-        # these are mapped by the subclass using spriterow_group_mappings to consist positions that the
-        #  template expects for e.g. restaurant cars, brake coaches etc
-        # consist-cargo liveries are optional, but it makes no sense to provide none in the subclass :P
+        # these are mapped by the subclass using spriterow_group_mappings to consist positions that
+        #   the template expects for e.g. restaurant cars, brake coaches etc
         result = {}
         counter = 0
         # this doesn't account for cargos like TOUR, but could be extended so cargo labels are a list, TMWFTLB as of April 2018 though
         # not a dict because order matters
-        for livery_type, cargo_label in (('pax', 'PASS'), ('mail', 'MAIL'), ('freight', 'DFLT')):
+        for livery_type, cargo_label in (('pax', 'PASS'), ('mail', 'MAIL')):
             if livery_type in self.spriterow_group_mappings:
                 # we have to rebuild the row_nums in a predictable order (they're stored in a dict for convenience when configuring)
                 relative_row_nums = [self.spriterow_group_mappings[livery_type][position] for position in self.consist_positions_ordered]
                 result[cargo_label] = [counter + row_num for row_num in relative_row_nums] # we make relative row_nums absolute here
                 counter += len(set(relative_row_nums))
-        # we rely on DFLT here as there is no meaningful cargo label for 'freight' we can check, so:
-        # - if freight is provided, assume that it's defined as 'not PASS or MAIL', and use it in the default switch result
-        # - otherwise copy something we can use for the default switch result
+        # we rely on DFLT here to explicitly catch the case for 'freight' (which has no label we can check)
         if 'DFLT' not in result.keys():
             # this will error if neither pax nor mail are defined
             # default to mail if available (to handle mail cars in freight consists)
