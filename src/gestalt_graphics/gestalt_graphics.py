@@ -266,10 +266,15 @@ class GestaltGraphicsConsistSpecificLivery(GestaltGraphics):
                 counter += len(set(relative_row_nums))
         # we rely on DFLT here as there is no meaningful cargo label for 'freight' we can check, so:
         # - if freight is provided, assume that it's defined as 'not PASS or MAIL', and use it in the default switch result
-        # - otherwise provide something we can use for the default switch result
+        # - otherwise copy something we can use for the default switch result
         if 'DFLT' not in result.keys():
-            result['DFLT'] = [0, 0, 0, 0] # number of entries must match number of consist positions checked in template
-            assert(len(result['DFLT']) == len(self.consist_positions_ordered))
+            # this will error if neither pax nor mail are defined
+            # default to mail if available (to handle mail cars in freight consists)
+            if 'MAIL' in result.keys():
+                result['DFLT'] = result['MAIL']
+            else:
+                # fallback to pax if nothing else
+                result['DFLT'] = result['PASS']
         return result
 
 
