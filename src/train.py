@@ -692,7 +692,9 @@ class MailCarConsist(CarConsist):
         self.run_cost_divisor = 7
         self.allow_flip = True
         # Graphics configuration
-        spriterow_group_mappings = {'mail': {'default': 0, 'first': 1, 'last': 1, 'special': 0},
+        # longer mail cars get an additional sprite option in the consist ruleset; shorter mail cars don't as it's TMWFTLB
+        bonus_sprites = 1 if self.subtype == 'C' else 0
+        spriterow_group_mappings = {'mail': {'default': 0, 'first': bonus_sprites, 'last': bonus_sprites, 'special': 0},
                                     'pax': {'default': 0, 'first': 0, 'last': 0, 'special': 0}}
         self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings, consist_ruleset='mail_cars')
 
