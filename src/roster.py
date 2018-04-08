@@ -51,6 +51,17 @@ class Roster(object):
                 raise
         return result
 
+    @property
+    def intro_date_ranges(self):
+        # return a list of date pairs (first year, last year) for generations
+        result = []
+        end_date = global_constants.max_game_date
+        for intro_date in reversed(self.intro_dates):
+            result.append((intro_date, end_date))
+            end_date = intro_date - 1
+        result.reverse()
+        return result
+
     def register_wagon_consist(self, wagon_consist):
         self.wagon_consists[wagon_consist.base_id].append(wagon_consist)
         wagon_consist.roster_id = self.id
