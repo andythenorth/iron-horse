@@ -692,9 +692,9 @@ class MailCarConsist(CarConsist):
         self.run_cost_divisor = 7
         self.allow_flip = True
         # Graphics configuration
-        spriterow_group_mappings = {'mail': {'default': 0, 'first': 0, 'last': 0, 'special': 0},
+        spriterow_group_mappings = {'mail': {'default': 0, 'first': 1, 'last': 1, 'special': 0},
                                     'pax': {'default': 0, 'first': 0, 'last': 0, 'special': 0}}
-        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings)
+        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings, consist_ruleset='mail_cars')
 
 
 class MetalCarConsist(CarConsist):

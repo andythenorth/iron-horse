@@ -132,6 +132,33 @@
             }
         </tal:position_ruleset>
 
+        <tal:position_ruleset condition="consist.gestalt_graphics.consist_ruleset == 'mail_cars'">
+            switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_position_default_${cargo_label}, 0) {
+                return ${vehicle.id}_switch_graphics_engine_id_${variants['default']};
+            }
+
+            <!--! if first -->
+            switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_position_first_check_length_${cargo_label}, num_vehs_in_vehid_chain) {
+                <!--! don't show 'first' if same id chain < 5 vehicles -->
+                0..4: return ${vehicle.id}_switch_graphics_position_default_${cargo_label};
+                return ${vehicle.id}_switch_graphics_engine_id_${variants['first']};
+            }
+            switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_position_check_first_${cargo_label}, position_in_vehid_chain) {
+                0: return ${vehicle.id}_switch_graphics_position_first_check_length_${cargo_label};
+                ${vehicle.id}_switch_graphics_position_default_${cargo_label};
+            }
+
+            <!--! if last -->
+            switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_position_check_last_${cargo_label}, position_in_vehid_chain_from_end) {
+                0: return ${vehicle.id}_switch_graphics_engine_id_${variants['last']};
+                ${vehicle.id}_switch_graphics_position_check_first_${cargo_label};
+            }
+
+            switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_position_in_consist_entry_point_${cargo_label}, 0) {
+                return ${vehicle.id}_switch_graphics_position_check_last_${cargo_label};
+            }
+        </tal:position_ruleset>
+
         <tal:position_ruleset condition="consist.gestalt_graphics.consist_ruleset == 'mail_railcars'">
             <!--! if 1st unit in sequence -->
             switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_position_in_consist_check_1st_${cargo_label}, position_in_vehid_chain_from_end) {
@@ -149,6 +176,7 @@
                 return ${vehicle.id}_switch_graphics_position_in_consist_check_2nd_${cargo_label};
             }
         </tal:position_ruleset>
+
         <tal:position_ruleset condition="consist.gestalt_graphics.consist_ruleset == None">
             switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_position_in_consist_entry_point_${cargo_label}, 0) {
                 return ${vehicle.id}_switch_graphics_engine_id_${variants['special']};
