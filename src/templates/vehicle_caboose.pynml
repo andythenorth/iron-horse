@@ -6,7 +6,7 @@
       cargo vehicles using this template are always symmetrical, no need for extra complexity
       there is an assert for this in train.py -->
 // default graphics chain
-<tal:livery_variants repeat="livery_variant [1,2]">
+<tal:livery_variants repeat="livery_variant [1,2,3]">
         spriteset(${vehicle.id}_ss_${livery_variant}, "${global_constants.graphics_path}${consist.id}.png") {
           spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.id}_unflipped(10 + ${(livery_variant -1) * 30})
         }
@@ -27,6 +27,9 @@ switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_graphics_unreversed, vehicle_t
 <tal:livery_2_engine_ids repeat="engine_id ['growler']">
     ${engine_id}: return ${vehicle.id}_sg_2;
 </tal:livery_2_engine_ids>
+<tal:livery_3_engine_ids repeat="engine_id ['wizzo']">
+    ${engine_id}: return ${vehicle.id}_sg_3;
+</tal:livery_3_engine_ids>
 return ${vehicle.id}_sg_1;
 }
 

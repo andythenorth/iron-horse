@@ -224,7 +224,7 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
         self.units.append(AppendToSpritesheet(box_car_rows_image_as_spritesheet, crop_box_dest))
         self.units.append(SimpleRecolour(self.consist.gestalt_graphics.recolour_map))
 
-    def add_caboose_spriterows(self, row_count=2):
+    def add_caboose_spriterows(self, row_count=3):
         # !!! this is overly complex, it could just copy all the rows in one operation ??
         #    - what about remap variants for same base sprite though?
         for row_num in range(int(row_count)):
