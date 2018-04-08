@@ -30,10 +30,8 @@ class GestaltGraphics(object):
         return len(set(row_nums_seen))
 
     def get_output_row_counts_by_type(self):
-        # stub, for template compatibility reasons
-        result = []
-        result.append(('single_row', 1))
-        return result
+        # stub, for compatibility reasons
+        return [('single_row', 1)]
 
 
 class GestaltGraphicsVisibleCargo(GestaltGraphics):
@@ -147,6 +145,40 @@ class GestaltGraphicsBoxCarOpeningDoors(GestaltGraphics):
     def cargo_row_map(self):
         utils.echo_message ('cargo_row_map not implemented in GestaltGraphicsBoxCarOpeningDoorsGestaltGraphics (by design)')
         return None
+
+
+class GestaltGraphicsCaboose(GestaltGraphics):
+    """
+        Used to handle specific rules for caboose cars
+        - colour remap
+        - specific livery variants (pixels, not just colour remap) for specific engine IDs
+    """
+    def __init__(self, recolour_maps, **kwargs):
+        super().__init__()
+        # as of Jan 2018 only one pipeline is used, but support is in place for alternative pipelines
+        self.pipeline = pipelines.get_pipeline('extend_spriterows_for_composited_cargos_pipeline')
+        # common format for recolour_maps provides multiple remaps
+        # but just one livery remap is supported for this gestalt, and should be the first in the remap list
+        self.recolour_map = recolour_maps[0][1]
+
+    @property
+    def generic_rows(self):
+        utils.echo_message ('generic_rows not implemented in GestaltGraphicsCaboose (by design)')
+        return None
+
+    @property
+    def nml_template(self):
+        return 'vehicle_default.pynml'
+
+    def get_output_row_counts_by_type(self):
+        # !! will need to return the number of liveries known
+        return [('caboose_spriterows', 1)]
+
+    @property
+    def cargo_row_map(self):
+        utils.echo_message ('cargo_row_map not implemented in GestaltGraphicsBoxCarOpeningDoorsGestaltGraphics (by design)')
+        return None
+
 
 
 class GestaltGraphicsCargoSpecificLivery(GestaltGraphics):

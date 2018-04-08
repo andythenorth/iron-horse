@@ -20,7 +20,8 @@ import global_constants  # expose all constants for easy passing to templates
 import utils
 
 from gestalt_graphics.gestalt_graphics import (GestaltGraphics, GestaltGraphicsVisibleCargo, GestaltGraphicsBoxCarOpeningDoors,
-                                               GestaltGraphicsCargoSpecificLivery, GestaltGraphicsConsistSpecificLivery, GestaltGraphicsCustom)
+                                               GestaltGraphicsCaboose, GestaltGraphicsCargoSpecificLivery,
+                                               GestaltGraphicsConsistSpecificLivery, GestaltGraphicsCustom)
 import gestalt_graphics.graphics_constants as graphics_constants
 
 from rosters import registered_rosters
@@ -519,11 +520,11 @@ class CabooseCarConsist(CarConsist):
         self.class_refit_groups = []
         self.label_refits_allowed = []  # no specific labels needed
         self.label_refits_disallowed = []
-        # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(
-            recolour_maps=graphics_constants.caboose_livery_recolour_maps)
         # no random colour cabeese, I tried it, looks daft
         self.random_company_colour_swap = False
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsCaboose(
+            recolour_maps=graphics_constants.caboose_livery_recolour_maps)
 
 
 class CoveredHopperCarConsist(CarConsist):

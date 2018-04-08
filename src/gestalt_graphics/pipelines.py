@@ -399,8 +399,11 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
                 elif spriterow_type == 'box_car_with_opening_doors_spriterows':
                     input_spriterow_count = 2
                     self.add_box_car_with_opening_doors_spriterows()
+                elif spriterow_type == 'caboose_spriterows':
+                    input_spriterow_count = 1 # this wouldn't work for Hog-style handling of multiple units in one spritesheet, should be the actual count of input rows, TMWFTLB to change
+                    self.add_generic_spriterow()
                 elif spriterow_type == 'pax_mail_cars_with_doors':
-                    input_spriterow_count = 2
+                    input_spriterow_count = 2 # this wouldn't work for Hog-style handling of multiple units in one spritesheet, should be the actual count of input rows, TMWFTLB to change
                     self.add_pax_mail_car_with_opening_doors_spriterows(spriterow_data[1])
                 elif spriterow_type == 'bulk_cargo':
                     input_spriterow_count = 2
