@@ -6,7 +6,7 @@
       cargo vehicles using this template are always symmetrical, no need for extra complexity
       there is an assert for this in train.py -->
 // default graphics chain
-<tal:livery_variants repeat="livery_variant [1,2,3,4]">
+<tal:livery_variants repeat="livery_variant [1,2,3,4,5,6]">
         spriteset(${vehicle.id}_ss_${livery_variant}, "${global_constants.graphics_path}${consist.id}.png") {
           spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.id}_unflipped(10 + ${(livery_variant -1) * 30})
         }
@@ -24,14 +24,20 @@
 switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_graphics_unreversed, vehicle_type_id) {
 <!--! this doesn't check grfid currently - add later if needed -->
 <!--!<tal:livery_2_engine_ids repeat="engine_id consist.livery_2_engine_ids"> -->
-<tal:livery_2_engine_ids repeat="engine_id ['growler']">
+<tal:livery_2_engine_ids repeat="engine_id ['bertha']">
     ${engine_id}: return ${vehicle.id}_sg_2;
 </tal:livery_2_engine_ids>
-<tal:livery_3_engine_ids repeat="engine_id ['wizzo']">
+<tal:livery_2_engine_ids repeat="engine_id ['lemon']">
     ${engine_id}: return ${vehicle.id}_sg_3;
+</tal:livery_2_engine_ids>
+<tal:livery_3_engine_ids repeat="engine_id ['growler']">
+    ${engine_id}: return ${vehicle.id}_sg_4;
 </tal:livery_3_engine_ids>
 <tal:livery_3_engine_ids repeat="engine_id ['slug']">
-    ${engine_id}: return ${vehicle.id}_sg_4;
+    ${engine_id}: return ${vehicle.id}_sg_5;
+</tal:livery_3_engine_ids>
+<tal:livery_3_engine_ids repeat="engine_id ['tug']">
+    ${engine_id}: return ${vehicle.id}_sg_6;
 </tal:livery_3_engine_ids>
 return ${vehicle.id}_sg_1;
 }
