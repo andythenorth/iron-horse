@@ -41,7 +41,8 @@ class Consist(object):
         # private var, used to store a name substr for engines, composed into name with other strings as needed
         self._name = kwargs.get('name', None)
         self.base_numeric_id = kwargs.get('base_numeric_id', None)
-        # private var as wagons have their own method for automated intro dates
+        # either gen xor intro_date is required, don't set both, one will be interpolated from the other
+        self._gen = kwargs.get('gen', None)
         self._intro_date = kwargs.get('intro_date', None)
         self.vehicle_life = kwargs.get('vehicle_life', 40)
         self.power = kwargs.get('power', 0)
@@ -50,7 +51,6 @@ class Consist(object):
             'tractive_effort_coefficient', 0.3)  # 0.3 is recommended default value
         # private var, can be used to over-rides default (per generation, per class) speed
         self._speed = kwargs.get('speed', None)
-        self.gen = kwargs.get('gen', None)  # optional
         # used by multi-mode engines such as electro-diesel, otherwise ignored
         self.power_by_railtype = kwargs.get('power_by_railtype', None)
         self.visual_effect_override_by_railtype = kwargs.get(
@@ -171,9 +171,25 @@ class Consist(object):
     def intro_date(self):
         # automatic intro_date, but can over-ride by passing in kwargs for consist
         if self._intro_date:
+            assert(self._gen == None), "%s consist has both gen and intro_date set, which is incorrect" % self.id
             return self._intro_date
         else:
+            assert(self._gen != None), "%s consist has neither gen nor intro_date set, which is incorrect" % self.id
             return self.roster.intro_dates[self.gen - 1]
+
+    @property
+    def gen(self):
+        # gen is usually set in the vehicle, but can be left unset if intro_date is set
+        if self._gen:
+            assert(self._intro_date == None), "%s consist has both gen and intro_date set, which is incorrect" % self.id
+            return self._gen
+        else:
+            assert(self._intro_date != None), "%s consist has neither gen nor intro_date set, which is incorrect" % self.id
+            for gen_counter, intro_date in enumerate(self.roster.intro_dates):
+                if self.intro_date < intro_date:
+                    return gen_counter
+            # if no result is found in list, it's last gen
+            return len(self.roster.intro_dates)
 
     @property
     def livery_2_engine_ids(self):
@@ -522,6 +538,9 @@ class CabooseCarConsist(CarConsist):
         # liveries swap CC on user-flip, so no swapping CC randomly
         self.random_company_colour_swap = False
         self.allow_flip = True
+        for consist in self.roster.engine_consists:
+            None
+            # print(consist.gen)
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsCaboose(num_generations=len(self.roster.intro_dates),
                                                        recolour_maps=graphics_constants.caboose_livery_recolour_maps)
@@ -1150,10 +1169,13 @@ class Train(object):
 
     def render(self):
         # integrity tests
-        self.assert_random_reverse()
         self.assert_auto_flip()
         self.assert_cargo_labels(self.label_refits_allowed)
         self.assert_cargo_labels(self.label_refits_disallowed)
+        self.assert_random_reverse()
+        # test interpolated gen and intro_date
+        assert(self.consist.gen), '%s consist.gen is None, which is invalid.  Set gen or intro_date' % self.id
+        assert(self.consist.intro_date), '%s consist.gen is None, which is invalid.  Set gen or intro_date' % self.id
         # templating
         template_name = self.vehicle_nml_template
         template = templates[template_name]
