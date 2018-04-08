@@ -6,40 +6,57 @@
       cargo vehicles using this template are always symmetrical, no need for extra complexity
       there is an assert for this in train.py -->
 // default graphics chain
-<tal:livery_variants repeat="livery_variant [1,2,3,4,5,6]">
-        spriteset(${vehicle.id}_ss_${livery_variant}, "${global_constants.graphics_path}${consist.id}.png") {
-          spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.id}_unflipped(10 + ${(livery_variant -1) * 30})
-        }
+<!--! num_cargo_sprite_variants isn't strictly correct, but we're reusing an existing structure that should probably be renamed - April 2018 -->
+<tal:livery_variant_nums repeat="livery_variant_num python:range(consist.gestalt_graphics.num_generations)">
+    spriteset(${vehicle.id}_ss_${livery_variant_num}_unflipped, "${global_constants.graphics_path}${consist.id}.png") {
+      spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.id}_unflipped(10 + ${livery_variant_num * 60})
+    }
+    spriteset(${vehicle.id}_ss_${livery_variant_num}_flipped, "${global_constants.graphics_path}${consist.id}.png") {
+      spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.id}_flipped(10 + ${livery_variant_num * 60} + 30)
+    }
 
-        spritegroup ${vehicle.id}_sg_${livery_variant} {
-            loaded:  [
-                ${vehicle.id}_ss_${livery_variant},
-            ];
-            loading: [
-                ${vehicle.id}_ss_${livery_variant},
-            ];
-        }
-</tal:livery_variants>
+    spritegroup ${vehicle.id}_sg_${livery_variant_num}_unflipped {
+        loaded:  [
+            ${vehicle.id}_ss_${livery_variant_num}_unflipped,
+        ];
+        loading: [
+            ${vehicle.id}_ss_${livery_variant_num}_unflipped,
+        ];
+    }
+    spritegroup ${vehicle.id}_sg_${livery_variant_num}_flipped {
+        loaded:  [
+            ${vehicle.id}_ss_${livery_variant_num}_flipped,
+        ];
+        loading: [
+            ${vehicle.id}_ss_${livery_variant_num}_flipped,
+        ];
+    }
+    // handle user flipped state
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_livery_${livery_variant_num}, vehicle_is_flipped) {
+        1: return ${vehicle.id}_sg_${livery_variant_num}_flipped;
+        return ${vehicle.id}_sg_${livery_variant_num}_unflipped;
+    }
+</tal:livery_variant_nums>
 
 switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_graphics_unreversed, vehicle_type_id) {
 <!--! this doesn't check grfid currently - add later if needed -->
 <!--!<tal:livery_2_engine_ids repeat="engine_id consist.livery_2_engine_ids"> -->
 <tal:livery_2_engine_ids repeat="engine_id ['bertha']">
-    ${engine_id}: return ${vehicle.id}_sg_2;
+    ${engine_id}: return ${vehicle.id}_switch_graphics_livery_1;
 </tal:livery_2_engine_ids>
 <tal:livery_2_engine_ids repeat="engine_id ['lemon']">
-    ${engine_id}: return ${vehicle.id}_sg_3;
+    ${engine_id}: return ${vehicle.id}_switch_graphics_livery_2;
 </tal:livery_2_engine_ids>
 <tal:livery_3_engine_ids repeat="engine_id ['growler']">
-    ${engine_id}: return ${vehicle.id}_sg_4;
+    ${engine_id}: return ${vehicle.id}_switch_graphics_livery_3;
 </tal:livery_3_engine_ids>
 <tal:livery_3_engine_ids repeat="engine_id ['slug']">
-    ${engine_id}: return ${vehicle.id}_sg_5;
+    ${engine_id}: return ${vehicle.id}_switch_graphics_livery_4;
 </tal:livery_3_engine_ids>
 <tal:livery_3_engine_ids repeat="engine_id ['tug']">
-    ${engine_id}: return ${vehicle.id}_sg_6;
+    ${engine_id}: return ${vehicle.id}_switch_graphics_livery_5;
 </tal:livery_3_engine_ids>
-return ${vehicle.id}_sg_1;
+return ${vehicle.id}_switch_graphics_livery_0;
 }
 
 <tal:include metal:use-macro="load: graphics_switches.pynml" />

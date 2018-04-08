@@ -43,8 +43,15 @@ box_livery_recolour_maps = (# see note on DFLT above
                                      CC2: CC1, CC2+1: CC1+1, CC2+2: CC1+2, CC2+3: CC1+3,
                                      CC2+4: CC1+4, CC2+5: CC1+5, CC2+6: CC1+6, CC2+7: CC1+7}),)
 
-caboose_livery_recolour_maps = (# see note on DFLT above
-                               ("DFLT", body_recolour_CC1),)
+caboose_livery_recolour_maps = (# DFLT can be used twice here with no problems, it's not a unique key
+                               ("DFLT", {136: CC1, 137: CC1+1, 138: CC1+2, 139: CC1+3,
+                                        140: CC1+4, 141: CC1+5, 142: CC1+6, 143: CC1+7,
+                                        40: CC2, 41: CC2+1, 42: CC2+2, 43: CC2+3,
+                                        44: CC2+4, 45: CC2+5, 46: CC2+6, 47: CC2+7}),
+                               ("DFLT", {136: CC2, 137: CC2+1, 138: CC2+2, 139: CC2+3,
+                                         140: CC2+4, 141: CC2+5, 142: CC2+6, 143: CC2+7,
+                                         40: CC1, 41: CC1+1, 42: CC1+2, 43: CC1+3,
+                                         44: CC1+4, 45: CC1+5, 46: CC1+6, 47: CC1+7}),)
 
 fruit_veg_livery_recolour_maps = (# see note on DFLT above
                                  ("DFLT", {136: CC2, 137: CC2+1, 138: CC2+2, 139: CC2+3,

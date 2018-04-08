@@ -503,8 +503,7 @@ class BoxCarConsist(CarConsist):
             'non_freight_special_cases']
         self.default_cargos = global_constants.default_cargos['box']
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
-            recolour_maps=graphics_constants.box_livery_recolour_maps)
+        self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(recolour_maps=graphics_constants.box_livery_recolour_maps)
 
 
 class CabooseCarConsist(CarConsist):
@@ -520,11 +519,12 @@ class CabooseCarConsist(CarConsist):
         self.class_refit_groups = []
         self.label_refits_allowed = []  # no specific labels needed
         self.label_refits_disallowed = []
-        # no random colour cabeese, I tried it, looks daft
+        # liveries swap CC on user-flip, so no swapping CC randomly
         self.random_company_colour_swap = False
+        self.allow_flip = True
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsCaboose(
-            recolour_maps=graphics_constants.caboose_livery_recolour_maps)
+        self.gestalt_graphics = GestaltGraphicsCaboose(num_generations=len(self.roster.intro_dates),
+                                                       recolour_maps=graphics_constants.caboose_livery_recolour_maps)
 
 
 class CoveredHopperCarConsist(CarConsist):

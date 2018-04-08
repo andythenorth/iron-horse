@@ -224,10 +224,8 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
         self.units.append(AppendToSpritesheet(box_car_rows_image_as_spritesheet, crop_box_dest))
         self.units.append(SimpleRecolour(self.consist.gestalt_graphics.recolour_map))
 
-    def add_caboose_spriterows(self, row_count=6):
-        # !!! this is overly complex, it could just copy all the rows in one operation ??
-        #    - what about remap variants for same base sprite though?
-        for row_num in range(int(row_count)):
+    def add_caboose_spriterows(self, row_count):
+        for row_num in range(int(row_count/2)):
             row_offset = row_num * graphics_constants.spriterow_height
             crop_box_source = (0,
                                self.base_offset + row_offset,
@@ -250,7 +248,9 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
                              graphics_constants.spriterow_height)
             caboose_car_rows_image_as_spritesheet = self.make_spritesheet_from_image(caboose_car_rows_image)
             self.units.append(AppendToSpritesheet(caboose_car_rows_image_as_spritesheet, crop_box_dest))
-            self.units.append(SimpleRecolour(self.consist.gestalt_graphics.recolour_map))
+            self.units.append(SimpleRecolour(self.consist.gestalt_graphics.recolour_map_1))
+            self.units.append(AppendToSpritesheet(caboose_car_rows_image_as_spritesheet, crop_box_dest))
+            self.units.append(SimpleRecolour(self.consist.gestalt_graphics.recolour_map_2))
 
     def add_bulk_cargo_spriterows(self):
         cargo_group_row_height = 2 * graphics_constants.spriterow_height
@@ -428,10 +428,10 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
                     input_spriterow_count = 2
                     self.add_box_car_with_opening_doors_spriterows()
                 elif spriterow_type == 'caboose_spriterows':
-                    input_spriterow_count = 1 # this wouldn't work for Hog-style handling of multiple units in one spritesheet, should be the actual count of input rows, TMWFTLB to change
-                    self.add_caboose_spriterows()
+                    input_spriterow_count = spriterow_data[1]
+                    self.add_caboose_spriterows(spriterow_data[1])
                 elif spriterow_type == 'pax_mail_cars_with_doors':
-                    input_spriterow_count = 2 # this wouldn't work for Hog-style handling of multiple units in one spritesheet, should be the actual count of input rows, TMWFTLB to change
+                    input_spriterow_count = spriterow_data[1]
                     self.add_pax_mail_car_with_opening_doors_spriterows(spriterow_data[1])
                 elif spriterow_type == 'bulk_cargo':
                     input_spriterow_count = 2
