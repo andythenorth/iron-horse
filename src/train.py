@@ -1125,6 +1125,7 @@ class Train(object):
             if hasattr(self.consist, 'gestalt_graphics'):
                 for nml_template in ['vehicle_with_visible_cargo.pynml',
                                      'vehicle_box_car_with_opening_doors.pynml',
+                                     'vehicle_caboose.pynml',
                                      'vehicle_with_cargo_specific_liveries.pynml',
                                      'vehicle_with_consist_specific_liveries.pynml']:
                     assert self.consist.gestalt_graphics.nml_template != nml_template, \
@@ -1135,6 +1136,7 @@ class Train(object):
         if self.consist.random_reverse:
             if hasattr(self.consist, 'gestalt_graphics'):
                 for nml_template in ['vehicle_with_visible_cargo.pynml',
+                                     'vehicle_caboose.pynml',
                                      'vehicle_with_cargo_specific_liveries.pynml',
                                      'vehicle_box_car_with_opening_doors.pynml']:
                     assert self.consist.gestalt_graphics.nml_template != nml_template, \

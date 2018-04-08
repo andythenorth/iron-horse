@@ -224,6 +224,34 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
         self.units.append(AppendToSpritesheet(box_car_rows_image_as_spritesheet, crop_box_dest))
         self.units.append(SimpleRecolour(self.consist.gestalt_graphics.recolour_map))
 
+    def add_caboose_spriterows(self, row_count=2):
+        # !!! this is overly complex, it could just copy all the rows in one operation ??
+        #    - what about remap variants for same base sprite though?
+        for row_num in range(int(row_count)):
+            row_offset = row_num * graphics_constants.spriterow_height
+            crop_box_source = (0,
+                               self.base_offset + row_offset,
+                               self.sprites_max_x_extent,
+                               self.base_offset + row_offset + graphics_constants.spriterow_height)
+            caboose_car_spriterow_input_image = self.comp_chassis_and_body(Image.open(self.input_path).crop(crop_box_source))
+            crop_box_comp_dest = (0,
+                                  0,
+                                  self.sprites_max_x_extent,
+                                  graphics_constants.spriterow_height)
+            caboose_car_rows_image = Image.new("P", (graphics_constants.spritesheet_width, graphics_constants.spriterow_height))
+            caboose_car_rows_image.putpalette(DOS_PALETTE)
+
+            caboose_car_rows_image.paste(caboose_car_spriterow_input_image, crop_box_comp_dest)
+            #caboose_car_rows_image.show()
+
+            crop_box_dest = (0,
+                             0,
+                             self.sprites_max_x_extent,
+                             graphics_constants.spriterow_height)
+            caboose_car_rows_image_as_spritesheet = self.make_spritesheet_from_image(caboose_car_rows_image)
+            self.units.append(AppendToSpritesheet(caboose_car_rows_image_as_spritesheet, crop_box_dest))
+            self.units.append(SimpleRecolour(self.consist.gestalt_graphics.recolour_map))
+
     def add_bulk_cargo_spriterows(self):
         cargo_group_row_height = 2 * graphics_constants.spriterow_height
         crop_box_source_1 = (0,
@@ -401,7 +429,7 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
                     self.add_box_car_with_opening_doors_spriterows()
                 elif spriterow_type == 'caboose_spriterows':
                     input_spriterow_count = 1 # this wouldn't work for Hog-style handling of multiple units in one spritesheet, should be the actual count of input rows, TMWFTLB to change
-                    self.add_generic_spriterow()
+                    self.add_caboose_spriterows()
                 elif spriterow_type == 'pax_mail_cars_with_doors':
                     input_spriterow_count = 2 # this wouldn't work for Hog-style handling of multiple units in one spritesheet, should be the actual count of input rows, TMWFTLB to change
                     self.add_pax_mail_car_with_opening_doors_spriterows(spriterow_data[1])

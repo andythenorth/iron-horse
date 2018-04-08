@@ -168,7 +168,7 @@ class GestaltGraphicsCaboose(GestaltGraphics):
 
     @property
     def nml_template(self):
-        return 'vehicle_default.pynml'
+        return 'vehicle_caboose.pynml'
 
     def get_output_row_counts_by_type(self):
         # !! will need to return the number of liveries known
