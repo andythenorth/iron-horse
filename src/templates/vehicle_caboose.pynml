@@ -40,23 +40,11 @@
 
 switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_graphics_unreversed, vehicle_type_id) {
 <!--! this doesn't check grfid currently - add later if needed -->
-<!--!<tal:livery_2_engine_ids repeat="engine_id consist.livery_2_engine_ids"> -->
-<tal:livery_2_engine_ids repeat="engine_id ['bertha']">
-    ${engine_id}: return ${vehicle.id}_switch_graphics_livery_1;
-</tal:livery_2_engine_ids>
-<tal:livery_2_engine_ids repeat="engine_id ['lemon']">
-    ${engine_id}: return ${vehicle.id}_switch_graphics_livery_2;
-</tal:livery_2_engine_ids>
-<tal:livery_3_engine_ids repeat="engine_id ['growler']">
-    ${engine_id}: return ${vehicle.id}_switch_graphics_livery_3;
-</tal:livery_3_engine_ids>
-<tal:livery_3_engine_ids repeat="engine_id ['slug']">
-    ${engine_id}: return ${vehicle.id}_switch_graphics_livery_4;
-</tal:livery_3_engine_ids>
-<tal:livery_3_engine_ids repeat="engine_id ['tug']">
-    ${engine_id}: return ${vehicle.id}_switch_graphics_livery_5;
-</tal:livery_3_engine_ids>
-return ${vehicle.id}_switch_graphics_livery_0;
+    <tal:livery_2_engine_ids repeat="engine_consist consist.roster.engine_consists">
+        <!--! note that livery variants are zero-indexed, generations are one-indexed -->
+        ${engine_consist.id}: return ${vehicle.id}_switch_graphics_livery_${engine_consist.gen - 1};
+    </tal:livery_2_engine_ids>
+    return ${vehicle.id}_switch_graphics_livery_0;
 }
 
 <tal:include metal:use-macro="load: graphics_switches.pynml" />

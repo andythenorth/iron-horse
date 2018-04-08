@@ -538,9 +538,6 @@ class CabooseCarConsist(CarConsist):
         # liveries swap CC on user-flip, so no swapping CC randomly
         self.random_company_colour_swap = False
         self.allow_flip = True
-        for consist in self.roster.engine_consists:
-            None
-            # print(consist.gen)
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsCaboose(num_generations=len(self.roster.intro_dates),
                                                        recolour_maps=graphics_constants.caboose_livery_recolour_maps)
