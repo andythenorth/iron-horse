@@ -385,6 +385,7 @@ class PassengerEngineRailcarConsist(PassengerEngineConsist):
         super().__init__(**kwargs)
         self.allow_flip = True
         # Graphics configuration
+        self.generate_unit_roofs = True
         spriterow_group_mappings = {'pax': {'default': 0, 'first': 1, 'last': 2, 'special': 3}}
         self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings, consist_ruleset="pax_railcars")
 
@@ -412,6 +413,7 @@ class MailEngineRailcarConsist(MailEngineConsist):
         self.allow_flip = True
         # Graphics configuration
         # by design, mail railcars don't change livery in a pax consist, but do have mail / freight liveries
+        self.generate_unit_roofs = True
         spriterow_group_mappings = {'mail': {'default': 0, 'first': 1, 'last': 2, 'special': 0}}
         self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings, consist_ruleset="mail_railcars")
 
@@ -714,6 +716,7 @@ class MailCarConsist(CarConsist):
         self.allow_flip = True
         # Graphics configuration
         # longer mail cars get an additional sprite option in the consist ruleset; shorter mail cars don't as it's TMWFTLB
+        self.generate_unit_roofs = True
         bonus_sprites = 1 if self.subtype == 'C' else 0
         spriterow_group_mappings = {'mail': {'default': 0, 'first': bonus_sprites, 'last': bonus_sprites, 'special': 0},
                                     'pax': {'default': 0, 'first': 0, 'last': 0, 'special': 0}}
@@ -773,6 +776,8 @@ class PassengerCarConsistBase(CarConsist):
         self.random_company_colour_swap = False
         self.allow_flip = True
         # Graphics configuration
+        # roofs might need extending to handle clerestory variant (fixed rule per consist.gen?)
+        self.generate_unit_roofs = True
         spriterow_group_mappings = {'pax': {'default': 0, 'first': 1, 'last': 2, 'special': 3}}
         self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings, consist_ruleset='pax_cars')
 
@@ -963,8 +968,6 @@ class Train(object):
         self.cargo_length = kwargs.get('cargo_length', None)
         # optional - only set if the graphics processor generates the vehicle chassis
         self.chassis = kwargs.get('chassis', 'test')
-        # optional - only set if the graphics processor generates the vehicle roof
-        self.roof = kwargs.get('roof', None)
         # 'symmetric' or 'asymmetric'?
         # defaults to symmetric, over-ride in sub-classes or per vehicle as needed
         self._symmetry_type = kwargs.get('symmetry_type', 'symmetric')
@@ -1072,6 +1075,14 @@ class Train(object):
     @property
     def location_of_random_bits_for_random_variant(self):
         return 'FORWARD_SELF(' + str(self.numeric_id - self.consist.base_numeric_id) + ')'
+
+    @property
+    def roof(self):
+        # fetch spritesheet name to use for roof when generating graphics
+        if self.consist.generate_unit_roofs:
+            return str(4 * self.vehicle_length) + 'px'
+        else:
+            return None
 
     @property
     def unit_requires_visual_effect(self):
@@ -1365,8 +1376,6 @@ class TrainCar(Train):
             self.loading_speed_multiplier = self.consist.loading_speed_multiplier
         if hasattr(self.consist, 'cargo_age_period'):
             self.cargo_age_period = self.consist.cargo_age_period
-        if self.consist.generate_unit_roofs:
-            self.roof = str(4 * self.vehicle_length) + 'px'
         # most wagons are symmetric, over-ride per vehicle as needed
         self._symmetry_type = kwargs.get('symmetry_type', 'symmetric')
 

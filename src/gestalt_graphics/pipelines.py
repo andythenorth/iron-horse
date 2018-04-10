@@ -185,7 +185,6 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
         doors_mask = doors_image.copy()
         doors_mask = doors_mask.point(lambda i: 0 if i == 255 else 255).convert("1") # the inversion here of blue and white looks a bit odd, but potato / potato
         #doors_image.show()
-
         for row_num in range(int(row_count / 2)):
             row_offset = row_num * graphics_constants.spriterow_height
             crop_box_source = (0,

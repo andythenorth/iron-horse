@@ -11,7 +11,7 @@ def main():
 
     consist.add_unit(type=TrainCar,
                      capacity=12,
-                     vehicle_length=5)
+                     vehicle_length=4)
 
     #--------------- pony ----------------------------------------------------------------------
 
@@ -126,107 +126,3 @@ def main():
 
 
     # no gen 6 for brit roster, max speed reached for engines
-
-    """
-    #--------------- llama ----------------------------------------------------------------------
-    consist = MailCarConsist(roster = 'llama',
-                          base_numeric_id = 960,
-                          gen = 1,
-                                    subtype='A')
-
-    consist.add_unit(type = TrainCar,
-                            capacity = 30,
-                            vehicle_length = 7)
-
-
-
-    consist = MailCarConsist(roster = 'llama',
-                          base_numeric_id = 970,
-                          gen = 2,
-                                    subtype='A')
-
-    consist.add_unit(type = TrainCar,
-                            capacity = 45,
-                            vehicle_length = 7)
-
-
-
-    consist = MailCarConsist(roster = 'llama',
-                          base_numeric_id = 980,
-                          gen = 3,
-                                    subtype='A')
-
-    consist.add_unit(type = TrainCar,
-                            capacity = 60,
-                            vehicle_length = 8)
-
-
-
-    consist = MailCarConsist(roster = 'llama',
-                          base_numeric_id = 990,
-                          gen = 1,
-                                    subtype='A',
-                          track_type = 'NG')
-
-    consist.add_unit(type = TrainCar,
-                            capacity = 30,
-                            vehicle_length = 6)
-
-
-
-    consist = MailCarConsist(roster = 'llama',
-                          base_numeric_id = 1380,
-                          gen = 2,
-                                    subtype='A',
-                          track_type = 'NG')
-
-    consist.add_unit(type = TrainCar,
-                            capacity = 40,
-                            vehicle_length = 6)
-
-
-
-    consist = MailCarConsist(roster = 'llama',
-                          base_numeric_id = 1450,
-                          gen = 3,
-                                    subtype='A',
-                                                              track_type = 'NG')
-
-    consist.add_unit(type = TrainCar,
-                            capacity = 50,
-                            vehicle_length = 6)
-
-
-    """
-    #--------------- antelope ----------------------------------------------------------------------
-    consist = MailCarConsist(roster='antelope',
-                             base_numeric_id=1730,
-                             gen=1,
-                             subtype='A')
-
-    consist.add_unit(type=TrainCar,
-                     capacity=10,
-                     vehicle_length=8)
-
-
-    consist = MailCarConsist(roster='antelope',
-                             base_numeric_id=2120,
-                             gen=1,
-                             subtype='A',
-                             track_type='NG')
-
-    consist.add_unit(type=TrainCar,
-                     capacity=20,
-                     vehicle_length=5)
-
-
-    consist = MailCarConsist(roster='antelope',
-                             base_numeric_id=1950,
-                             gen=2,
-                             subtype='A',
-                             track_type='NG')
-
-    consist.add_unit(type=TrainCar,
-                     capacity=30,
-                     vehicle_length=8)
-
