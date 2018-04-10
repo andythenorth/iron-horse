@@ -32,7 +32,8 @@ def main():
 
     consist.add_unit(type=TrainCar,
                      capacity=12,
-                     vehicle_length=6)
+                     vehicle_length=6,
+                     chassis='4_axle_solid_express_24px')
 
 
     consist = MailCarConsist(roster='pony',
@@ -52,7 +53,8 @@ def main():
 
     consist.add_unit(type=TrainCar,
                      capacity=12,
-                     vehicle_length=6)
+                     vehicle_length=6,
+                     chassis='4_axle_solid_express_24px')
 
 
     consist = MailCarConsist(roster='pony',
@@ -72,7 +74,8 @@ def main():
 
     consist.add_unit(type=TrainCar,
                      capacity=12,
-                     vehicle_length=6)
+                     vehicle_length=6,
+                     chassis='4_axle_solid_express_24px')
 
 
     consist = MailCarConsist(roster='pony',
@@ -82,7 +85,8 @@ def main():
 
     consist.add_unit(type=TrainCar,
                      capacity=15,
-                     vehicle_length=8)
+                     vehicle_length=8,
+                     chassis='4_axle_solid_express_32px')
 
 
     consist = MailCarConsist(roster='pony',
@@ -92,7 +96,8 @@ def main():
 
     consist.add_unit(type=TrainCar,
                      capacity=12,
-                     vehicle_length=6)
+                     vehicle_length=6,
+                     chassis='4_axle_solid_express_24px')
 
 
     consist = MailCarConsist(roster='pony',
@@ -102,7 +107,8 @@ def main():
 
     consist.add_unit(type=TrainCar,
                      capacity=15,
-                     vehicle_length=8)
+                     vehicle_length=8,
+                     chassis='4_axle_solid_express_32px')
 
 
     consist = MailCarConsist(roster='pony',
@@ -112,7 +118,8 @@ def main():
 
     consist.add_unit(type=TrainCar,
                      capacity=12,
-                     vehicle_length=6)
+                     vehicle_length=6,
+                     chassis='4_axle_solid_express_24px')
 
 
     consist = MailCarConsist(roster='pony',
@@ -122,7 +129,8 @@ def main():
 
     consist.add_unit(type=TrainCar,
                      capacity=15,
-                     vehicle_length=8)
+                     vehicle_length=8,
+                     chassis='4_axle_solid_express_32px')
 
 
     # no gen 6 for brit roster, max speed reached for engines

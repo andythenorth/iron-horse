@@ -22,7 +22,8 @@ def main():
 
     consist.add_unit(type=TrainCar,
                      capacity=25,
-                     vehicle_length=6)
+                     vehicle_length=6,
+                     chassis='4_axle_solid_express_24px')
 
 
     consist = PassengerCarConsist(roster='pony',
@@ -32,7 +33,8 @@ def main():
 
     consist.add_unit(type=TrainCar,
                      capacity=40,
-                     vehicle_length=6)
+                     vehicle_length=6,
+                     chassis='4_axle_solid_express_24px')
 
 
     consist = PassengerCarConsist(roster='pony',
@@ -42,7 +44,8 @@ def main():
 
     consist.add_unit(type=TrainCar,
                      capacity=40,
-                     vehicle_length=6)
+                     vehicle_length=6,
+                     chassis='4_axle_solid_express_24px')
 
 
     consist = PassengerCarConsist(roster='pony',
@@ -52,7 +55,8 @@ def main():
 
     consist.add_unit(type=TrainCar,
                      capacity=50,
-                     vehicle_length=6)
+                     vehicle_length=6,
+                     chassis='4_axle_solid_express_24px')
 
 
     consist = PassengerCarConsist(roster='pony',
@@ -62,7 +66,8 @@ def main():
 
     consist.add_unit(type=TrainCar,
                      capacity=50,
-                     vehicle_length=6)
+                     vehicle_length=6,
+                     chassis='4_axle_solid_express_24px')
 
     # no gen 6 for brit roster, max speed reached for engines
 

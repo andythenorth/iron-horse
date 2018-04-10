@@ -10,9 +10,10 @@ def main():
 
     consist.add_unit(type=TrainCar,
                      capacity=25,
-                     vehicle_length=8)
+                     vehicle_length=8,
+                     chassis='4_axle_solid_express_32px')
 
-    
+
     consist = PassengerLuxuryCarConsist(roster='pony',
                                         base_numeric_id=2260,
                                         gen=2,
@@ -20,9 +21,10 @@ def main():
 
     consist.add_unit(type=TrainCar,
                      capacity=40,
-                     vehicle_length=8)
+                     vehicle_length=8,
+                     chassis='4_axle_solid_express_32px')
 
-    
+
     consist = PassengerLuxuryCarConsist(roster='pony',
                                         base_numeric_id=2270,
                                         gen=3,
@@ -30,9 +32,10 @@ def main():
 
     consist.add_unit(type=TrainCar,
                      capacity=40,
-                     vehicle_length=8)
+                     vehicle_length=8,
+                     chassis='4_axle_solid_express_32px')
 
-    
+
     consist = PassengerLuxuryCarConsist(roster='pony',
                                         base_numeric_id=3120,
                                         gen=4,
@@ -40,9 +43,10 @@ def main():
 
     consist.add_unit(type=TrainCar,
                      capacity=40,
-                     vehicle_length=8)
+                     vehicle_length=8,
+                     chassis='4_axle_solid_express_32px')
 
-    
+
     consist = PassengerLuxuryCarConsist(roster='pony',
                                         base_numeric_id=3130,
                                         gen=5,
@@ -50,9 +54,10 @@ def main():
 
     consist.add_unit(type=TrainCar,
                      capacity=40,
-                     vehicle_length=8)
+                     vehicle_length=8,
+                     chassis='4_axle_solid_express_32px')
 
-    
+
     # no gen 6 for brit roster, max speed reached for engines
 
     #--------------- llama ----------------------------------------------------------------------
