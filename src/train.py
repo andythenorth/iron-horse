@@ -635,6 +635,7 @@ class FruitVegCarConsist(CarConsist):
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
         self.capacity_cost_factor = 1.5
         # Graphics configuration
+        self.generate_unit_roofs = True
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             recolour_maps=graphics_constants.fruit_veg_livery_recolour_maps)
 
@@ -825,6 +826,7 @@ class ReeferCarConsist(CarConsist):
         self.capacity_cost_factor = 1.5
         self.run_cost_divisor = 6
         # Graphics configuration
+        self.generate_unit_roofs = True
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             recolour_maps=graphics_constants.refrigerated_livery_recolour_maps)
 

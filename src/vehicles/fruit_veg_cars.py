@@ -64,38 +64,8 @@ def main():
                                  subtype='C')
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=8)
+                     vehicle_length=8,
+                     chassis='4_axle_cc_filled_32px')
 
 
     # no gen 6 fruit & veg cars, cap to gen 5 in Pony
-
-    #--------------- antelope ----------------------------------------------------------------------
-    consist = FruitVegCarConsist(roster='antelope',
-                                 base_numeric_id=2140,
-                                 gen=1,
-                                 subtype='A',
-                                 track_type='NG')
-
-    consist.add_unit(type=FreightCar,
-                     vehicle_length=5)
-
-
-    consist = FruitVegCarConsist(roster='antelope',
-                                 base_numeric_id=2170,
-                                 gen=2,
-                                 subtype='A',
-                                 track_type='NG')
-
-    consist.add_unit(type=FreightCar,
-                     vehicle_length=6)
-
-
-    consist = FruitVegCarConsist(roster='antelope',
-                                 base_numeric_id=2180,
-                                 gen=3,
-                                 subtype='A',
-                                 track_type='NG')
-
-    consist.add_unit(type=FreightCar,
-                     vehicle_length=8)
-
