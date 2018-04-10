@@ -65,7 +65,7 @@ def main():
 
     consist.add_unit(type=FreightCar,
                      vehicle_length=8,
-                     chassis='4_axle_cc_filled_32px')
+                     chassis='4_axle_2cc_filled_32px')
 
 
     # no gen 6 fruit & veg cars, cap to gen 5 in Pony

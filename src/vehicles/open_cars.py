@@ -102,8 +102,9 @@ def main():
                              subtype='C')
 
     consist.add_unit(type=FreightCar,
-                     cargo_length=3,
-                     vehicle_length=8)
+                     cargo_length=8,
+                     vehicle_length=8,
+                     chassis='4_axle_1cc_filled_32px')
 
 
     # no gen 6 open cars, cap to gen 5 in Pony
