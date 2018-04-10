@@ -89,18 +89,19 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
                             10,
                             self.sprites_max_x_extent,
                             10 + graphics_constants.spriterow_height)
-        crop_box_roof_dest = (0,
-                            0,
-                            self.sprites_max_x_extent,
-                            graphics_constants.spriterow_height)
         chassis_image = Image.open(self.chassis_input_path).crop(crop_box_input_1)
-        roof_image = Image.open(self.roof_input_path).crop(crop_box_input_1)
-        # the roof image has false colour pixels to aid drawing; remove these by converting to white, also convert any blue to white
-        roof_image = roof_image.point(lambda i: 255 if i == 226 else i)
-        # create a mask so that we paste only the roof pixels over the chassis (no blue pixels)
-        roof_mask = roof_image.copy()
-        roof_mask = roof_mask.point(lambda i: 0 if i == 255 else 255).convert("1") # the inversion here of blue and white looks a bit odd, but potato / potato
-        chassis_image.paste(roof_image, crop_box_roof_dest, roof_mask)
+        if self.vehicle_unit.roof is not None:
+            crop_box_roof_dest = (0,
+                                0,
+                                self.sprites_max_x_extent,
+                                graphics_constants.spriterow_height)
+            roof_image = Image.open(self.roof_input_path).crop(crop_box_input_1)
+            # the roof image has false colour pixels to aid drawing; remove these by converting to white, also convert any blue to white
+            roof_image = roof_image.point(lambda i: 255 if i == 226 else i)
+            # create a mask so that we paste only the roof pixels over the chassis (no blue pixels)
+            roof_mask = roof_image.copy()
+            roof_mask = roof_mask.point(lambda i: 0 if i == 255 else 255).convert("1") # the inversion here of blue and white looks a bit odd, but potato / potato
+            chassis_image.paste(roof_image, crop_box_roof_dest, roof_mask)
 
         # chassis and roofs are *always* symmetrical, with 4 angles drawn; for vehicles with asymmetric bodies, copy and paste to provide all 8 angles
         if self.vehicle_unit.symmetry_type == 'asymmetric':
@@ -115,7 +116,6 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
                                      0 + graphics_constants.spriterow_height)
             chassis_image.paste(chassis_image_2, crop_box_input_2_dest)
 
-        #chassis_image.show()
         # the body image has false colour pixels for the chassis, to aid drawing; remove these by converting to white, also convert any blue to white
         body_image = body_image.point(lambda i: 255 if (i in range(178, 192) or i == 0) else i)
         #body_image.show()
@@ -237,7 +237,7 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
                              self.base_offset + 2 * graphics_constants.spriterow_height)
         box_car_input_image_1 = self.comp_chassis_and_body(Image.open(box_car_input_path).crop(crop_box_source_1))
         box_car_input_image_2 = self.comp_chassis_and_body(Image.open(box_car_input_path).crop(crop_box_source_2))
-        #vehicle_box_car_input_image_1.show() # comment in to see the image when debugging
+        #box_car_input_image_1.show() # comment in to see the image when debugging
         #empty/loaded state and loading state will need pasting once each, so two crop boxes needed
         crop_box_comp_dest_1 = (0,
                                 0,
