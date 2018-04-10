@@ -52,7 +52,8 @@ def main():
     consist = LivestockCarConsist(roster='pony',
                                   base_numeric_id=2720,
                                   gen=5,
-                                  subtype='C')
+                                  subtype='C',
+                                  sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
                      vehicle_length=8,
@@ -62,7 +63,8 @@ def main():
     consist = LivestockCarConsist(roster='pony',
                                   base_numeric_id=2710,
                                   gen=6,
-                                  subtype='C')
+                                  subtype='C',
+                                  sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
                      vehicle_length=8,
