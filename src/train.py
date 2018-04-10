@@ -72,6 +72,8 @@ class Consist(object):
         self.default_cargos = []
         # create a structure for cargo /livery graphics options
         self.gestalt_graphics = GestaltGraphics()
+        # option to provide automatic roof for all units in the consist
+        self.auto_roof = False
         # option to swap company colours (uses remap sprites in-game, rather than pixa)
         self.random_company_colour_swap = False  # over-ride in subclasses as needed
         # role is e.g. Heavy Freight, Express etc, and is used to automatically set model life as well as in docs
@@ -686,6 +688,7 @@ class LivestockCarConsist(CarConsist):
         self.capacity_cost_factor = 1.5
         self.run_cost_divisor = 7
         # Graphics configuration
+        self.auto_roof = True
         self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(
             recolour_maps=graphics_constants.livestock_livery_recolour_maps)
 
@@ -959,6 +962,8 @@ class Train(object):
         self.cargo_length = kwargs.get('cargo_length', None)
         # optional - only set if the graphics processor generates the vehicle chassis
         self.chassis = kwargs.get('chassis', 'test')
+        # optional - only set if the graphics processor generates the vehicle roof
+        self.roof = kwargs.get('roof', 'null')
         # 'symmetric' or 'asymmetric'?
         # defaults to symmetric, over-ride in sub-classes or per vehicle as needed
         self._symmetry_type = kwargs.get('symmetry_type', 'symmetric')
@@ -1359,6 +1364,8 @@ class TrainCar(Train):
             self.loading_speed_multiplier = self.consist.loading_speed_multiplier
         if hasattr(self.consist, 'cargo_age_period'):
             self.cargo_age_period = self.consist.cargo_age_period
+        if self.consist.auto_roof:
+            self.roof = str(4 * self.vehicle_length) + 'px'
         # most wagons are symmetric, over-ride per vehicle as needed
         self._symmetry_type = kwargs.get('symmetry_type', 'symmetric')
 

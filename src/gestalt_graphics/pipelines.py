@@ -37,6 +37,11 @@ class Pipeline(object):
         # convenience method to get the path for the chassis image
         return os.path.join(currentdir, 'src', 'graphics', 'chassis', self.vehicle_unit.chassis + '.png')
 
+    @property
+    def roof_input_path(self):
+        # convenience method to get the path for the chassis image
+        return os.path.join(currentdir, 'src', 'graphics', 'roofs', self.vehicle_unit.roof + '.png')
+
     def render_common(self, consist, input_image, units):
         # expects to be passed a PIL Image object
         # units is a list of objects, with their config data already baked in (don't have to pass anything to units except the spritesheet)
@@ -80,24 +85,36 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
         super(ExtendSpriterowsForCompositedCargosPipeline, self).__init__("extend_spriterows_for_composited_cargos_pipeline")
 
     def comp_chassis_and_body(self, body_image):
+        crop_box_input_1 = (0,
+                            10,
+                            self.sprites_max_x_extent,
+                            10 + graphics_constants.spriterow_height)
+        crop_box_roof_dest = (0,
+                            0,
+                            self.sprites_max_x_extent,
+                            graphics_constants.spriterow_height)
+        chassis_image = Image.open(self.chassis_input_path).crop(crop_box_input_1)
+        roof_image = Image.open(self.roof_input_path).crop(crop_box_input_1)
+        # the roof image has false colour pixels to aid drawing; remove these by converting to white, also convert any blue to white
+        roof_image = roof_image.point(lambda i: 255 if i == 226 else i)
+        # create a mask so that we paste only the roof pixels over the chassis (no blue pixels)
+        roof_mask = roof_image.copy()
+        roof_mask = roof_mask.point(lambda i: 0 if i == 255 else 255).convert("1") # the inversion here of blue and white looks a bit odd, but potato / potato
+        chassis_image.paste(roof_image, crop_box_roof_dest, roof_mask)
 
-        crop_box_chassis_1 = (0,
-                             10,
-                             self.sprites_max_x_extent,
-                             10 + graphics_constants.spriterow_height)
-        chassis_image = Image.open(self.chassis_input_path).crop(crop_box_chassis_1)
-        # chassis are *always* symmetrical, with 4 angles drawn; for vehicles with asymmetric bodies, copy and paste to provide all 8 angles
+        # chassis and roofs are *always* symmetrical, with 4 angles drawn; for vehicles with asymmetric bodies, copy and paste to provide all 8 angles
         if self.vehicle_unit.symmetry_type == 'asymmetric':
-            crop_box_chassis_2 = (self.global_constants.spritesheet_bounding_boxes_symmetric_unreversed[4][0],
-                                  0,
-                                  self.sprites_max_x_extent,
-                                  0 + graphics_constants.spriterow_height)
-            chassis_image_2 = chassis_image.copy().crop(crop_box_chassis_2)
-            crop_box_chassis_2_dest = (self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed[0][0],
-                                       0,
-                                       self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed[0][0] + chassis_image_2.size[0],
-                                       0 + graphics_constants.spriterow_height)
-            chassis_image.paste(chassis_image_2, crop_box_chassis_2_dest)
+            crop_box_input_2 = (self.global_constants.spritesheet_bounding_boxes_symmetric_unreversed[4][0],
+                                0,
+                                self.sprites_max_x_extent,
+                                0 + graphics_constants.spriterow_height)
+            chassis_image_2 = chassis_image.copy().crop(crop_box_input_2)
+            crop_box_input_2_dest = (self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed[0][0],
+                                     0,
+                                     self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed[0][0] + chassis_image_2.size[0],
+                                     0 + graphics_constants.spriterow_height)
+            chassis_image.paste(chassis_image_2, crop_box_input_2_dest)
+
         #chassis_image.show()
         # the body image has false colour pixels for the chassis, to aid drawing; remove these by converting to white, also convert any blue to white
         body_image = body_image.point(lambda i: 255 if (i in range(178, 192) or i == 0) else i)
