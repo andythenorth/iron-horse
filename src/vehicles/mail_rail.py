@@ -13,5 +13,6 @@ consist = MailEngineRailcarConsist(id='mail_rail',
 consist.add_unit(type=DieselRailcarUnit,
                  weight=37,
                  vehicle_length=8,
-                 capacity=40)
+                 capacity=40,
+                 chassis='railcar')
 
