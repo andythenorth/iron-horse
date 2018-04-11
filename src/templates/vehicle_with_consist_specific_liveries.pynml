@@ -1,9 +1,14 @@
-<!--! liveries that change depending on the 'role' of the engine
-      intended for pax and mail cars, possibly limited other types
-      a few tricks:
-      - flipping vehicle to swap randomised liveries
-      - some specific cargos over-ride engine livery
-      - loaded and empty state are same, but optional loading state (for opening doors at stations)
+<!--! Liveries that change depending on one or both of:
+      - the 'role' of the engine
+      - the major cargo in the consist
+      Intended for pax and mail cars, possibly limited other types.
+      - liveries are in pairs (livery_1, livery_2)
+      - flipping vehicle swaps livery
+          - N.B. asymmetric sprites won't reverse when flipped, they maintain same orientation and change livery
+          - most sprites are symmetric, except, e.g. brake coaches
+      - consist cargos can be checked by label and reference a block of the spritesheet
+      - loaded and empty state are same, but loading state is provided (for opening doors at stations)
+            - open doors are comped in by the graphics processor
  -->
 
 <tal:include metal:use-macro="load: spriteset_templates.pynml" />
@@ -12,6 +17,9 @@
       'flipped' is user flipping vehicle in depot and *is* supported here (used for livery selection tricks)
       don't conflate them :) -->
 // default graphics chain
+<!-- ! cargo_variant_num should possibly be renamed, it's copied from the visible_cargo implementation
+       here it is an an absolute index to a set of rows in the spritesheet, and is really just a 'variant_num'
+       I didn't refactor that as of April 2018, but it would be worth doing -->
 <tal:consist_cargo_variants repeat="cargo_variant_num python:range(consist.gestalt_graphics.num_cargo_sprite_variants)">
     <tal:user_flipped repeat="flipped ['unflipped', 'flipped']">
         spriteset(${vehicle.id}_ss_doors_closed_livery_1_${cargo_variant_num}_${flipped}, "${global_constants.graphics_path}${consist.id}.png") {
