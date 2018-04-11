@@ -386,6 +386,13 @@ class PassengerEngineRailcarConsist(PassengerEngineConsist):
         self.allow_flip = True
         # Graphics configuration
         self.generate_unit_roofs = True
+        # 2 liveries, should match local and express liveries of pax cars for this generation
+        # position variants
+        # * unit with driving cabs both ends
+        # * unit with driving cab front end
+        # * unit with driving cab rear end
+        # * unit with no cabs (center car)
+        # ruleset will combine these to make multiple-units 1, 2, or 3 vehicles long, then repeating the pattern
         spriterow_group_mappings = {'pax': {'default': 0, 'first': 1, 'last': 2, 'special': 3}}
         self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings, consist_ruleset="pax_railcars")
 
@@ -412,8 +419,13 @@ class MailEngineRailcarConsist(MailEngineConsist):
         super().__init__(**kwargs)
         self.allow_flip = True
         # Graphics configuration
-        # by design, mail railcars don't change livery in a pax consist, but do have mail / freight liveries
         self.generate_unit_roofs = True
+        # by design, mail railcars don't change livery in a pax consist, but do have 2 liveries, matching mail cars for this generation
+        # position variants
+        # * unit with driving cabs both ends
+        # * unit with driving cab front end
+        # * unit with driving cab rear end
+        # ruleset will combine these to make multiple-units 1 or 2 vehicles long, then repeating the pattern
         spriterow_group_mappings = {'mail': {'default': 0, 'first': 1, 'last': 2, 'special': 0}}
         self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings, consist_ruleset="mail_railcars")
 
@@ -716,7 +728,13 @@ class MailCarConsist(CarConsist):
         self.run_cost_divisor = 7
         self.allow_flip = True
         # Graphics configuration
+        # mail cars have consist cargo mappings for pax, mail (freight uses mail)
+        # * pax matches pax liveries for generation
+        # * mail gets a TPO/RPO striped livery, and a 1CC/2CC duotone livery
+        # * solid block can be used, but looks like freight cars, so duotone liveries are preferred (see caboose cars for inspiration)
+        # position based variants
         # longer mail cars get an additional sprite option in the consist ruleset; shorter mail cars don't as it's TMWFTLB
+        # * windows or similar variation for first, last vehicles (maybe also every nth vehicle?)
         self.generate_unit_roofs = True
         bonus_sprites = 1 if self.subtype == 'C' else 0
         spriterow_group_mappings = {'mail': {'default': 0, 'first': bonus_sprites, 'last': bonus_sprites, 'special': 0},
@@ -777,8 +795,14 @@ class PassengerCarConsistBase(CarConsist):
         self.random_company_colour_swap = False
         self.allow_flip = True
         # Graphics configuration
-        # roofs might need extending to handle clerestory variant (fixed rule per consist.gen?)
+        # !! roofs might need extending to handle clerestory variant (fixed rule per consist.gen?)
         self.generate_unit_roofs = True
+        # pax cars only have one consist cargo mapping, which they always default to, whatever the consist cargo is
+        # position based variants:
+        #   * standard coach
+        #   * brake coach front
+        #   * brake coach rear
+        #   * restaurant car (approximately in middle of consist)
         spriterow_group_mappings = {'pax': {'default': 0, 'first': 1, 'last': 2, 'special': 3}}
         self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings, consist_ruleset='pax_cars')
 
