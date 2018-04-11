@@ -8,7 +8,8 @@ def main():
     consist = ReeferCarConsist(roster='pony',
                                base_numeric_id=730,
                                gen=2,
-                               subtype='A')
+                               subtype='A',
+                               sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
                      vehicle_length=4,
@@ -18,7 +19,8 @@ def main():
     consist = ReeferCarConsist(roster='pony',
                                base_numeric_id=720,
                                gen=3,
-                               subtype='A')
+                               subtype='A',
+                               sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
                      vehicle_length=4,
@@ -28,7 +30,8 @@ def main():
     consist = ReeferCarConsist(roster='pony',
                                base_numeric_id=2560,
                                gen=4,
-                               subtype='A')
+                               subtype='A',
+                               sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
                      vehicle_length=4,
@@ -38,7 +41,8 @@ def main():
     consist = ReeferCarConsist(roster='pony',
                                base_numeric_id=2590,
                                gen=4,
-                               subtype='B')
+                               subtype='B',
+                               sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
                      vehicle_length=6,
@@ -48,7 +52,8 @@ def main():
     consist = ReeferCarConsist(roster='pony',
                                base_numeric_id=2570,
                                gen=5,
-                               subtype='B')
+                               subtype='B',
+                               sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
                      vehicle_length=6,
@@ -58,7 +63,8 @@ def main():
     consist = ReeferCarConsist(roster='pony',
                                base_numeric_id=2580,
                                gen=5,
-                               subtype='C')
+                               subtype='C',
+                               sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
                      vehicle_length=8,

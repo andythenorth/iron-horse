@@ -6,7 +6,8 @@ def main():
     consist = FruitVegCarConsist(roster='pony',
                                  base_numeric_id=2640,
                                  gen=2,
-                                 subtype='A')
+                                 subtype='A',
+                                 sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
                      vehicle_length=4,
@@ -16,7 +17,8 @@ def main():
     consist = FruitVegCarConsist(roster='pony',
                                  base_numeric_id=2630,
                                  gen=3,
-                                 subtype='A')
+                                 subtype='A',
+                                 sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
                      vehicle_length=4,
@@ -26,7 +28,8 @@ def main():
     consist = FruitVegCarConsist(roster='pony',
                                  base_numeric_id=2620,
                                  gen=3,
-                                 subtype='B')
+                                 subtype='B',
+                                 sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
                      vehicle_length=6,
@@ -36,7 +39,8 @@ def main():
     consist = FruitVegCarConsist(roster='pony',
                                  base_numeric_id=2600,
                                  gen=4,
-                                 subtype='A')
+                                 subtype='A',
+                                 sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
                      vehicle_length=4,
@@ -46,7 +50,8 @@ def main():
     consist = FruitVegCarConsist(roster='pony',
                                  base_numeric_id=2610,
                                  gen=4,
-                                 subtype='B')
+                                 subtype='B',
+                                 sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
                      vehicle_length=6,
@@ -56,7 +61,8 @@ def main():
     consist = FruitVegCarConsist(roster='pony',
                                  base_numeric_id=2650,
                                  gen=5,
-                                 subtype='B')
+                                 subtype='B',
+                                 sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
                      vehicle_length=6,
@@ -66,7 +72,8 @@ def main():
     consist = FruitVegCarConsist(roster='pony',
                                  base_numeric_id=2660,
                                  gen=5,
-                                 subtype='C')
+                                 subtype='C',
+                                 sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
                      vehicle_length=8,
