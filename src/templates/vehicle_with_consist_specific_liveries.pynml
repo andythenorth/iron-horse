@@ -18,9 +18,9 @@
       'flipped' is user flipping vehicle in depot and *is* supported here (used for livery selection tricks)
       don't conflate them :) -->
 // default graphics chain
-<!-- ! cargo_variant_num should possibly be renamed, it's copied from the visible_cargo implementation
-       here it is an an absolute index to a set of rows in the spritesheet, and is really just a 'variant_num'
-       I didn't refactor that as of April 2018, but it would be worth doing -->
+<!--! cargo_variant_num should possibly be renamed, it's copied from the visible_cargo implementation
+      here it is an an absolute index to a set of rows in the spritesheet, and is really just a 'variant_num'
+      I didn't refactor that as of April 2018, but it would be worth doing -->
 <tal:consist_cargo_variants repeat="cargo_variant_num python:range(consist.gestalt_graphics.num_cargo_sprite_variants)">
     <tal:user_flipped repeat="flipped ['unflipped', 'flipped']">
         spriteset(${vehicle.id}_ss_doors_closed_livery_1_${cargo_variant_num}_${flipped}, "${global_constants.graphics_path}${consist.id}.png") {
