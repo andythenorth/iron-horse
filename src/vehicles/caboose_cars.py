@@ -31,42 +31,5 @@ def main():
                                 subtype='B')
 
     consist.add_unit(type=CabooseCar,
-                     vehicle_length=6)
-
-
-
-"""
-    #--------------- llama ----------------------------------------------------------------------
-    consist = CabooseCarConsist(title = '[Caboose Car]',
-                             roster = 'llama',
-                             base_numeric_id = 1300,
-                             gen = 1)
-
-    consist.add_unit(type = CabooseCar,
-                            vehicle_length = 5)
-
-
-
-    #--------------- antelope ----------------------------------------------------------------------
-    consist = CabooseCarConsist(title = '[Caboose Car]',
-                             roster = 'antelope',
-                             base_numeric_id = 1780,
-                             gen = 1)
-
-    consist.add_unit(type = CabooseCar,
-                           vehicle_length = 6)
-
-
-
-    consist = CabooseCarConsist(title = '[Caboose Car]',
-                             roster = 'antelope',
-                             base_numeric_id = 1880,
-                             gen = 1,
-                             track_type = 'NG')
-
-    consist.add_unit(type = CabooseCar,
-                           vehicle_length = 6)
-
-
-
-"""
+                     vehicle_length=6,
+                     chassis='4_axle_caboose_24px')
