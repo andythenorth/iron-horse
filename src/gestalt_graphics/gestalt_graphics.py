@@ -117,8 +117,9 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
 class GestaltGraphicsBoxCarOpeningDoors(GestaltGraphics):
     """
         Used to handle the specific case of box-type freight cars
-        - doors open during loading, but no cargo is shown (as of April 2018)
         - base boxcar template for generation is recoloured to make refrigerated car, fruit & veg car etc
+        - doors open during loading
+        - no cargo is shown by design (TMWFTLB: piece sprites could be generated in, but setting up masks etc for all vehicles is unwanted complexity)
     """
     def __init__(self, recolour_maps, **kwargs):
         super().__init__()

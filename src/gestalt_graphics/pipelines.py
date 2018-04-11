@@ -237,7 +237,8 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
         box_car_input_image_1 = self.comp_chassis_and_body(Image.open(box_car_input_path).crop(crop_box_source_1))
         box_car_input_image_2 = self.comp_chassis_and_body(Image.open(box_car_input_path).crop(crop_box_source_2))
         #box_car_input_image_1.show() # comment in to see the image when debugging
-        #empty/loaded state and loading state will need pasting once each, so two crop boxes needed
+        # empty/loaded state and loading state will need pasting once each, so two crop boxes needed
+        # open doors are shown, but no cargo, TMWFTLB, see notes in GestaltGraphicsBoxCarOpeningDoors
         crop_box_comp_dest_1 = (0,
                                 0,
                                 self.sprites_max_x_extent,
