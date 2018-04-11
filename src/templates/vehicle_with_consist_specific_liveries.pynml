@@ -9,6 +9,7 @@
       - consist cargos can be checked by label and reference a block of the spritesheet
       - loaded and empty state are same, but loading state is provided (for opening doors at stations)
             - open doors are comped in by the graphics processor
+    - see also notes in
  -->
 
 <tal:include metal:use-macro="load: spriteset_templates.pynml" />

@@ -232,12 +232,21 @@ class GestaltGraphicsConsistSpecificLivery(GestaltGraphics):
         - the engine (based on engine 'role')
         - major cargo refit in the consist (mail vs. freight)
         - position in consist (pax restaurant cars etc)
-        Intended for pax and mail cars, possibly also caboose
+        Intended for pax and mail cars
          - multiple engine roles might map to one livery
-         - livery shown _might_ be random at construction time: engine-specific or solid 1CC+2CC (!! Unconfirmed as of April 2018)
+         - livery shown is specific to the engine role and/or the major cargo in the consist
          - player can toggle engine-livery or solid CC by flipping vehicle
          - intended for closed vehicles with doors, 'loaded' sprites are same as 'empty'
          - option to show cargo loading sprites (open doors) via 1 or 2 'loading' rows
+       - vehicles can be configured to optionally show 1 of 4 different sprites depending on position in consist
+            - 'default'
+            - 'first'
+            - 'last'
+            - 'special'
+        - 'positions' are flexible, and hax can safely be used within reason to get worthwhile results / save time
+            - positions are controlled by consist_rulesets, defined per Consist type as needed
+            - the positions are just keywords, mapped onto spriterow nums, and can be remapped fairly freely
+        - the limit of 4 is arbitrary, and self-imposed to prevent combinatorial explosion (and consequent need to draw sprites)
     """
     def __init__(self, spriterow_group_mappings, **kwargs):
         # no graphics processing for this gestalt
