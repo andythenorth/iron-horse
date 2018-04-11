@@ -90,6 +90,7 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
                             self.sprites_max_x_extent,
                             10 + graphics_constants.spriterow_height)
         chassis_image = Image.open(self.chassis_input_path).crop(crop_box_input_1)
+        # roof is composited (N.B. gangways are not, just draw them in vehicle sprite, handling asymmetric railcar cases would be one step too far on automation)
         if self.vehicle_unit.roof is not None:
             crop_box_roof_dest = (0,
                                 0,
