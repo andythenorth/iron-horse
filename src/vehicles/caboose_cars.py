@@ -22,13 +22,14 @@ def main():
 
     consist.add_unit(type=CabooseCar,
                      vehicle_length=4,
-                     chassis='2_axle_filled_16px')
+                     chassis='2_axle_caboose_16px')
 
 
     consist = CabooseCarConsist(roster='pony',
                                 base_numeric_id=2210,
                                 gen=1,
-                                subtype='B')
+                                subtype='B',
+                                sprites_complete=True)
 
     consist.add_unit(type=CabooseCar,
                      vehicle_length=6,
