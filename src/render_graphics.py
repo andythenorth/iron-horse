@@ -54,10 +54,16 @@ def run_pipeline(consist):
 
 def report_sprites_complete(consists):
     # project management eh :P
-    complete = len(
-        [consist.sprites_complete for consist in consists if consist.sprites_complete])
+    complete = len([consist.sprites_complete for consist in consists if consist.sprites_complete])
     print("Sprites complete for", complete, "consists; incomplete for",
           len(consists) - complete, "consists;", str(int(100 * (complete / len(consists)))) + '%')
+    incomplete_by_track_type = {}
+    for consist in consists:
+        if not consist.sprites_complete:
+            incomplete_by_track_type.setdefault(consist.track_type, []).append(consist)
+    incomplete_by_track_type['RAIL'].extend(incomplete_by_track_type.pop('ELRL', []))
+    for track_type, incomplete_consists in incomplete_by_track_type.items():
+        print("  *", track_type, len(incomplete_consists))
 
 # wrapped in a main() function so this can be called explicitly, because unexpected multiprocessing fork bombs are bad
 def main():
