@@ -87,95 +87,31 @@ def main():
     consist = HopperCarConsist(roster='pony',
                                base_numeric_id=2780,
                                gen=5,
-                               subtype='C')
+                               subtype='C',
+                               sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=8)
+                     vehicle_length=8,
+                     chassis='4_axle_sparse_32px')
 
 
     consist = HopperCarConsist(roster='pony',
                                base_numeric_id=3010,
                                gen=6,
-                               subtype='B')
+                               subtype='B',
+                               sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=6)
+                     vehicle_length=6,
+                     chassis='4_axle_sparse_24px')
 
 
     consist = HopperCarConsist(roster='pony',
                                base_numeric_id=3020,
                                gen=6,
-                               subtype='C')
+                               subtype='C',
+                               sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=8)
-
-
-    #--------------- llama ----------------------------------------------------------------------
-    consist = HopperCarConsist(roster='llama',
-                               base_numeric_id=1100,
-                               gen=2,
-                               subtype='A')
-
-    consist.add_unit(type=FreightCar,
-                     vehicle_length=6)
-
-
-    consist = HopperCarConsist(roster='llama',
-                               base_numeric_id=1110,
-                               gen=3,
-                               subtype='A')
-
-    consist.add_unit(type=FreightCar,
-                     vehicle_length=6)
-
-
-    consist = HopperCarConsist(roster='llama',
-                               base_numeric_id=1120,
-                               gen=2,
-                               subtype='A',
-                               track_type='NG')
-
-    consist.add_unit(type=FreightCar,
-                     vehicle_length=6)
-
-
-    consist = HopperCarConsist(roster='llama',
-                               base_numeric_id=1130,
-                               gen=3,
-                               subtype='A',
-                               track_type='NG')
-
-    consist.add_unit(type=FreightCar,
-                     vehicle_length=6)
-
-
-    #--------------- antelope ----------------------------------------------------------------------
-    consist = HopperCarConsist(roster='antelope',
-                               base_numeric_id=1630,
-                               gen=1,
-                               subtype='A')
-
-    consist.add_unit(type=FreightCar,
-                     vehicle_length=6)
-
-
-    consist = HopperCarConsist(roster='antelope',
-                               base_numeric_id=1660,
-                               gen=2,
-                               subtype='A')
-
-    consist.add_unit(type=FreightCar,
-                     vehicle_length=6)
-
-
-    # no gen 1 NG hopper in Antelope, straight to gen 2
-    consist = HopperCarConsist(roster='antelope',
-                               base_numeric_id=1890,
-                               gen=2,
-                               subtype='A',
-                               track_type='NG')
-
-    consist.add_unit(type=FreightCar,
-                     vehicle_length=6)
-
+                     vehicle_length=8,
+                     chassis='4_axle_sparse_32px')
