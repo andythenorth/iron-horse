@@ -57,11 +57,9 @@ def report_sprites_complete(consists):
     complete = len(
         [consist.sprites_complete for consist in consists if consist.sprites_complete])
     print("Sprites complete for", complete, "consists; incomplete for",
-          len(consists) - complete, "consists")
+          len(consists) - complete, "consists;", str(int(100 * (complete / len(consists)))) + '%')
 
 # wrapped in a main() function so this can be called explicitly, because unexpected multiprocessing fork bombs are bad
-
-
 def main():
     start = time()
     consists = iron_horse.get_consists_in_buy_menu_order()
