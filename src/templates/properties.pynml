@@ -55,7 +55,7 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
         track_type:                     ${consist.track_type};
     }
     graphics {
-        default:                        ${vehicle.get_nml_for_graphics_switch()};
+        default:                        ${vehicle.id}_switch_graphics_vehicle;
         purchase:                       ${vehicle.id}_switch_graphics_purchase;
         <tal:random_company_colour_swap condition="consist.random_company_colour_swap">
             colour_mapping:                 ${vehicle.id}_switch_colour_mapping;

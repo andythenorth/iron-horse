@@ -28,6 +28,12 @@
     }
 </tal:random_reverse_variants>
 
+random_switch (FEAT_TRAINS, ${vehicle.location_of_random_bits_for_random_variant}, ${vehicle.id}_switch_graphics_vehicle) {
+    <tal:random_graphics_variations repeat="reversed_variant consist.reversed_variants">
+        1: return ${vehicle.id}_switch_graphics_${reversed_variant};
+    </tal:random_graphics_variations>
+}
+
 <tal:include metal:use-macro="load: graphics_switches.pynml" />
 
 // buy menu graphics chain

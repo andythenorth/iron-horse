@@ -38,7 +38,7 @@
     }
 </tal:livery_variant_nums>
 
-switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_graphics_unreversed, vehicle_type_id) {
+switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_graphics_vehicle, vehicle_type_id) {
 <!--! this doesn't check grfid currently - add later if needed -->
     <tal:livery_2_engine_ids repeat="engine_consist consist.roster.engine_consists">
         <!--! note that livery variants are zero-indexed, generations are one-indexed -->

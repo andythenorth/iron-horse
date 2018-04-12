@@ -38,7 +38,7 @@
     }
 </tal:cargo_random_switches>
 
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_unreversed, cargo_type_in_veh) {
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, cargo_type_in_veh) {
     <tal:cargos repeat="mapping consist.gestalt_graphics.cargo_row_map.items()">
         <tal:exclude_default_cargo condition="mapping[0] != 'DFLT'">
             ${mapping[0]}: return ${vehicle.id}_switch_graphics_${mapping[0]};

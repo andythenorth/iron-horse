@@ -1,12 +1,3 @@
-<!--! ridiculous compile micro-optimisation - only render this switch if needed -->
-<tal:random_reverse_variants condition="len(consist.reversed_variants) > 1">
-    random_switch (FEAT_TRAINS, ${vehicle.location_of_random_bits_for_random_variant}, ${vehicle.id}_switch_graphics) {
-        <tal:random_graphics_variations repeat="reversed_variant consist.reversed_variants">
-            1: return ${vehicle.id}_switch_graphics_${reversed_variant};
-        </tal:random_graphics_variations>
-    }
-</tal:random_reverse_variants>
-
 <!--! ############################# -->
 
 <!--! for random colour remapping  -->

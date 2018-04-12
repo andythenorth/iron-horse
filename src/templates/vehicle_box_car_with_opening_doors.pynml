@@ -22,7 +22,7 @@ spritegroup ${vehicle.id}_sg {
     ];
 }
 // a default switch_graphics is always needed
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_unreversed, 0) {
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, 0) {
     1: return ${vehicle.id}_sg;
     return ${vehicle.id}_sg;
 }

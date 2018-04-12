@@ -15,7 +15,7 @@
 <!--! ridiculous compile micro-optimisation - only render this switch if needed -->
 <tal:optional_random_reverse_variants condition="len(consist.reversed_variants) > 1">
     random_switch (FEAT_TRAINS, ${vehicle.location_of_random_bits_for_random_variant}, ${vehicle.id}_switch_visual_effect_and_powered_variants) {
-        dependent: ${vehicle.id}_switch_graphics;
+        dependent: ${vehicle.id}_switch_graphics_vehicle;
         <tal:versible_variants repeat="reversed_variant consist.reversed_variants   ">
             1: ${vehicle.id}_switch_visual_effect_and_powered_by_variant_${reversed_variant};
         </tal:versible_variants>

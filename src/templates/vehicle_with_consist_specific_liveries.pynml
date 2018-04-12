@@ -194,7 +194,7 @@
     </tal:vars>
 </tal:position_in_consist>
 
-switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_graphics_unreversed, most_common_cargo_type) {
+switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_graphics_vehicle, most_common_cargo_type) {
     <tal:cargos repeat="cargo_label consist.gestalt_graphics.cargo_row_map.keys()">
     <!--!  assume that we always want first entry from the cargo's list of spritegroup row nums
            this will be the spritegroup row num for the 'default' vehicle graphical variant -->
