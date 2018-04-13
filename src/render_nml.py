@@ -55,7 +55,7 @@ def main():
 
     consists = iron_horse.get_consists_in_buy_menu_order()
 
-    header_items = ['header', 'cargo_table', 'railtype_table']
+    header_items = ['header', 'cargo_table', 'railtype_table', 'rear_lights']
     for header_item in header_items:
         grf_nml.write(render_header_item_nml(header_item, consists))
 

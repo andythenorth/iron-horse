@@ -1,13 +1,8 @@
-<!--! !!! move spritesets to own templates when proven to work -->
-spriteset(${vehicle.id}_ss_rear_light, "${global_constants.graphics_path}/rear_lights/24px.png") {
-  spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.id}_unflipped(10)
-}
-
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_layer_vehicle, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
     return ${vehicle.id}_switch_graphics_vehicle;
 }
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_layer_rear_light, STORE_TEMP(PALETTE_USE_DEFAULT, 0x100)) {
-    return ${vehicle.id}_ss_rear_light;
+    return ss_rear_light;
 }
 
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_layers, getbits(extra_callback_info1, 8, 8)) {

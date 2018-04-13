@@ -1,0 +1,14 @@
+template spriteset_rear_light(y) {
+        //[left_x, upper_y, width, height, offset_x, offset_y]
+    <tal:sprite repeat="bounding_box global_constants.spritesheet_bounding_boxes_asymmetric_unreversed">
+        <tal:offsets define="offsets global_constants.default_spritesheet_offsets['4']">
+            [${bounding_box[0]}, y, ${bounding_box[1]}, ${bounding_box[2]}, ${offsets[repeat.bounding_box.index][0]}, ${offsets[repeat.bounding_box.index][1]}, ANIM]
+        </tal:offsets>
+    </tal:sprite>
+}
+
+<!--! !!! move spritesets to own templates when proven to work -->
+spriteset(ss_rear_light, "${global_constants.graphics_path}rear_lights/24px.png") {
+  spriteset_rear_light(10)
+}
+
