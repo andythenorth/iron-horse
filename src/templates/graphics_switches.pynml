@@ -2,7 +2,7 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_layer_vehicle, STORE_TE
     return ${vehicle.id}_switch_graphics_vehicle;
 }
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_layer_rear_light, STORE_TEMP(PALETTE_USE_DEFAULT, 0x100)) {
-    return ss_rear_light;
+    return ss_rear_light_24px;
 }
 
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_layers, getbits(extra_callback_info1, 8, 8)) {
