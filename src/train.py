@@ -1100,7 +1100,12 @@ class Train(object):
 
     @property
     def location_of_random_bits_for_random_variant(self):
-        return 'FORWARD_SELF(' + str(self.numeric_id - self.consist.base_numeric_id) + ')'
+        # articulated vehicles should get random bits from first unit, so that all units randomise consistently
+        if len(self.consist.units) > 1:
+            return 'FORWARD_SELF(' + str(self.numeric_id - self.consist.base_numeric_id) + ')'
+        else:
+            # cannot rely on returning FORWARD_SELF(0), it causes register 0x100 to be read and cleared, where 0x100 is needed for graphics layers
+            return 'SELF'
 
     @property
     def roof(self):
