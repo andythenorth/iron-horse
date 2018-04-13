@@ -1,5 +1,23 @@
+<!--! !!! move spritesets to own templates when proven to work -->
+spriteset(${vehicle.id}_ss_rear_light, "${global_constants.graphics_path}/rear_lights/24px.png") {
+  spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.id}_unflipped(10)
+}
 
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics, 0) {
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_layer_vehicle, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
+    return ${vehicle.id}_switch_graphics_vehicle;
+}
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_layer_rear_light, STORE_TEMP(PALETTE_USE_DEFAULT, 0x100)) {
+    return ${vehicle.id}_ss_rear_light;
+}
+
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_layers, getbits(extra_callback_info1, 8, 8)) {
+    0: return ${vehicle.id}_switch_graphics_layer_vehicle;
+    return ${vehicle.id}_switch_graphics_layer_rear_light;
+}
+
+<!--! only use layers if last vehicle in consist -->
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics, position_in_consist_from_end) {
+    0: return ${vehicle.id}_switch_graphics_layers;
     return ${vehicle.id}_switch_graphics_vehicle;
 }
 
@@ -12,3 +30,4 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics, 0) {
         1: return base_sprite_2cc + 16 * company_colour1 + company_colour2; <!--! swap 1CC and 2CC -->
     }
 </tal:random_company_colour_swap>
+

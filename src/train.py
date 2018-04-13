@@ -1047,7 +1047,7 @@ class Train(object):
 
     @property
     def special_flags(self):
-        special_flags = ['TRAIN_FLAG_2CC']
+        special_flags = ['TRAIN_FLAG_2CC', 'TRAIN_FLAG_SPRITE_STACK']
         if self.consist.allow_flip:
             special_flags.append('TRAIN_FLAG_FLIP')
         if self.autorefit:
