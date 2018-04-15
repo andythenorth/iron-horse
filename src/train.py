@@ -386,6 +386,7 @@ class PassengerEngineRailcarConsist(PassengerEngineConsist):
         self.allow_flip = True
         # Graphics configuration
         self.generate_unit_roofs = True
+        self.roof_type = 'pax_mail'
         # 2 liveries, should match local and express liveries of pax cars for this generation
         # position variants
         # * unit with driving cabs both ends
@@ -420,6 +421,7 @@ class MailEngineRailcarConsist(MailEngineConsist):
         self.allow_flip = True
         # Graphics configuration
         self.generate_unit_roofs = True
+        self.roof_type = 'pax_mail'
         # by design, mail railcars don't change livery in a pax consist, but do have 2 liveries, matching mail cars for this generation
         # position variants
         # * unit with driving cabs both ends
@@ -536,6 +538,7 @@ class BoxCarConsist(CarConsist):
         self.default_cargos = global_constants.default_cargos['box']
         # Graphics configuration
         self.generate_unit_roofs = True
+        self.roof_type = 'freight'
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(recolour_maps=graphics_constants.box_livery_recolour_maps)
 
 
@@ -648,6 +651,7 @@ class FruitVegCarConsist(CarConsist):
         self.capacity_cost_factor = 1.5
         # Graphics configuration
         self.generate_unit_roofs = True
+        self.roof_type = 'freight'
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             recolour_maps=graphics_constants.fruit_veg_livery_recolour_maps)
 
@@ -705,6 +709,7 @@ class LivestockCarConsist(CarConsist):
         self.run_cost_divisor = 7
         # Graphics configuration
         self.generate_unit_roofs = True
+        self.roof_type = 'freight'
         self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(
             recolour_maps=graphics_constants.livestock_livery_recolour_maps)
 
@@ -736,6 +741,7 @@ class MailCarConsist(CarConsist):
         # longer mail cars get an additional sprite option in the consist ruleset; shorter mail cars don't as it's TMWFTLB
         # * windows or similar variation for first, last vehicles (maybe also every nth vehicle?)
         self.generate_unit_roofs = True
+        self.roof_type = 'pax_mail'
         bonus_sprites = 1 if self.subtype == 'C' else 0
         spriterow_group_mappings = {'mail': {'default': 0, 'first': bonus_sprites, 'last': bonus_sprites, 'special': 0},
                                     'pax': {'default': 0, 'first': 0, 'last': 0, 'special': 0}}
@@ -797,6 +803,7 @@ class PassengerCarConsistBase(CarConsist):
         # Graphics configuration
         # !! roofs might need extending to handle clerestory variant (fixed rule per consist.gen?)
         self.generate_unit_roofs = True
+        self.roof_type = 'pax_mail'
         # pax cars only have one consist cargo mapping, which they always default to, whatever the consist cargo is
         # position based variants:
         #   * standard coach
@@ -851,6 +858,7 @@ class ReeferCarConsist(CarConsist):
         self.run_cost_divisor = 6
         # Graphics configuration
         self.generate_unit_roofs = True
+        self.roof_type = 'freight'
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             recolour_maps=graphics_constants.refrigerated_livery_recolour_maps)
 
@@ -1111,7 +1119,7 @@ class Train(object):
     def roof(self):
         # fetch spritesheet name to use for roof when generating graphics
         if self.consist.generate_unit_roofs:
-            return str(4 * self.vehicle_length) + 'px'
+            return str(4 * self.vehicle_length) + 'px_' + self.consist.roof_type
         else:
             return None
 

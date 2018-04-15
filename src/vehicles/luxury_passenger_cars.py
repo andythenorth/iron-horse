@@ -57,8 +57,17 @@ def main():
                      vehicle_length=8,
                      chassis='4_axle_solid_express_32px')
 
+    # gen 6 broadly same as gen 5, but new liveries (any other difference?)
 
-    # no gen 6 for brit roster, max speed reached for engines
+    consist = PassengerLuxuryCarConsist(roster='pony',
+                                        base_numeric_id=1860,
+                                        gen=6,
+                                        subtype='A')
+
+    consist.add_unit(type=TrainCar,
+                     capacity=40,
+                     vehicle_length=8,
+                     chassis='4_axle_solid_express_32px')
 
     #--------------- llama ----------------------------------------------------------------------
 

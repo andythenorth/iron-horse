@@ -90,6 +90,17 @@ def main():
 
 
     consist = MailCarConsist(roster='pony',
+                             base_numeric_id=1430,
+                             gen=4,
+                             subtype='A')
+
+    consist.add_unit(type=TrainCar,
+                     capacity=12,
+                     vehicle_length=4,
+                     chassis='4_axle_solid_express_24px')
+
+
+    consist = MailCarConsist(roster='pony',
                              base_numeric_id=3160,
                              gen=4,
                              subtype='B')
@@ -133,4 +144,25 @@ def main():
                      chassis='4_axle_solid_express_32px')
 
 
-    # no gen 6 for brit roster, max speed reached for engines
+    # gen 6 broadly same as gen 5, but new liveries (any other difference?)
+
+    consist = MailCarConsist(roster='pony',
+                             base_numeric_id=1950,
+                             gen=6,
+                             subtype='B')
+
+    consist.add_unit(type=TrainCar,
+                     capacity=12,
+                     vehicle_length=6,
+                     chassis='4_axle_solid_express_24px')
+
+
+    consist = MailCarConsist(roster='pony',
+                             base_numeric_id=10,
+                             gen=6,
+                             subtype='C')
+
+    consist.add_unit(type=TrainCar,
+                     capacity=15,
+                     vehicle_length=8,
+                     chassis='4_axle_solid_express_32px')
