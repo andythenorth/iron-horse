@@ -146,6 +146,17 @@
                 return ${vehicle.id}_switch_graphics_engine_id_${variants['default']};
             }
 
+            <!--! if special -->
+            switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_position_special_check_length_${cargo_label}, num_vehs_in_vehid_chain) {
+                <!--! don't show 'special' if same id chain < 4 vehicles -->
+                0..3: return ${vehicle.id}_switch_graphics_position_default_${cargo_label};
+                return ${vehicle.id}_switch_graphics_engine_id_${variants['special']};
+            }
+            switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_position_check_special_${cargo_label}, position_in_vehid_chain_from_end - position_in_vehid_chain) {
+                0..1: return ${vehicle.id}_switch_graphics_position_special_check_length_${cargo_label};
+                ${vehicle.id}_switch_graphics_position_default_${cargo_label};
+            }
+
             <!--! if first -->
             switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_position_first_check_length_${cargo_label}, num_vehs_in_vehid_chain) {
                 <!--! don't show 'first' if same id chain < 5 vehicles -->
@@ -154,7 +165,7 @@
             }
             switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_position_check_first_${cargo_label}, position_in_vehid_chain) {
                 0: return ${vehicle.id}_switch_graphics_position_first_check_length_${cargo_label};
-                ${vehicle.id}_switch_graphics_position_default_${cargo_label};
+                ${vehicle.id}_switch_graphics_position_check_special_${cargo_label};
             }
 
             <!--! if last -->

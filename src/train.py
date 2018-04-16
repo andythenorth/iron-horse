@@ -742,8 +742,9 @@ class MailCarConsist(CarConsist):
         # * windows or similar variation for first, last vehicles (maybe also every nth vehicle?)
         self.generate_unit_roofs = True
         self.roof_type = 'pax_mail'
-        bonus_sprites = 1 if self.subtype == 'C' else 0
-        spriterow_group_mappings = {'mail': {'default': 0, 'first': bonus_sprites, 'last': bonus_sprites, 'special': 0},
+        brake_car_sprites = 1 if self.subtype in ['B', 'C'] else 0
+        bonus_sprites = 2 if self.subtype in ['C'] else 0
+        spriterow_group_mappings = {'mail': {'default': 0, 'first': brake_car_sprites, 'last': brake_car_sprites, 'special': bonus_sprites},
                                     'pax': {'default': 0, 'first': 0, 'last': 0, 'special': 0}}
         self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings, consist_ruleset='mail_cars')
 

@@ -97,7 +97,7 @@ def main():
     consist.add_unit(type=TrainCar,
                      capacity=12,
                      vehicle_length=4,
-                     chassis='4_axle_solid_express_24px')
+                     chassis='2_axle_solid_express_16px')
 
 
     consist = MailCarConsist(roster='pony',
