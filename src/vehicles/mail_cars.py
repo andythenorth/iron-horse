@@ -123,6 +123,17 @@ def main():
 
 
     consist = MailCarConsist(roster='pony',
+                             base_numeric_id=520,
+                             gen=5,
+                             subtype='A')
+
+    consist.add_unit(type=TrainCar,
+                     capacity=12,
+                     vehicle_length=4,
+                     chassis='2_axle_solid_express_16px')
+
+
+    consist = MailCarConsist(roster='pony',
                              base_numeric_id=970,
                              gen=5,
                              subtype='B')
@@ -145,6 +156,17 @@ def main():
 
 
     # gen 6 broadly same as gen 5, but new liveries (any other difference?)
+
+    consist = MailCarConsist(roster='pony',
+                             base_numeric_id=870,
+                             gen=6,
+                             subtype='A')
+
+    consist.add_unit(type=TrainCar,
+                     capacity=12,
+                     vehicle_length=4,
+                     chassis='2_axle_solid_express_16px')
+
 
     consist = MailCarConsist(roster='pony',
                              base_numeric_id=1950,
