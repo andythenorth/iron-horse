@@ -386,7 +386,7 @@ class PassengerEngineRailcarConsist(PassengerEngineConsist):
         self.allow_flip = True
         # Graphics configuration
         self.generate_unit_roofs = True
-        self.roof_type = 'pax_mail'
+        self.roof_type = 'pax_mail_smooth'
         # 2 liveries, should match local and express liveries of pax cars for this generation
         # position variants
         # * unit with driving cabs both ends
@@ -421,7 +421,7 @@ class MailEngineRailcarConsist(MailEngineConsist):
         self.allow_flip = True
         # Graphics configuration
         self.generate_unit_roofs = True
-        self.roof_type = 'pax_mail'
+        self.roof_type = 'pax_mail_smooth'
         # by design, mail railcars don't change livery in a pax consist, but do have 2 liveries, matching mail cars for this generation
         # position variants
         # * unit with driving cabs both ends
@@ -741,7 +741,7 @@ class MailCarConsist(CarConsist):
         # longer mail cars get an additional sprite option in the consist ruleset; shorter mail cars don't as it's TMWFTLB
         # * windows or similar variation for first, last vehicles (maybe also every nth vehicle?)
         self.generate_unit_roofs = True
-        self.roof_type = 'pax_mail'
+        self.roof_type = 'pax_mail_smooth'
         brake_car_sprites = 1 if self.subtype in ['B', 'C'] else 0
         bonus_sprites = 2 if self.subtype in ['C'] else 0
         spriterow_group_mappings = {'mail': {'default': 0, 'first': brake_car_sprites, 'last': brake_car_sprites, 'special': bonus_sprites},
@@ -802,9 +802,11 @@ class PassengerCarConsistBase(CarConsist):
         self.random_company_colour_swap = False
         self.allow_flip = True
         # Graphics configuration
-        # !! roofs might need extending to handle clerestory variant (fixed rule per consist.gen?)
         self.generate_unit_roofs = True
-        self.roof_type = 'pax_mail'
+        if self.gen == 3:
+            self.roof_type = 'pax_mail_ridged'
+        else:
+            self.roof_type = 'pax_mail_smooth'
         # pax cars only have one consist cargo mapping, which they always default to, whatever the consist cargo is
         # position based variants:
         #   * standard coach
