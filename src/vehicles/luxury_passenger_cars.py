@@ -11,7 +11,7 @@ def main():
     consist.add_unit(type=TrainCar,
                      capacity=25,
                      vehicle_length=8,
-                     chassis='4_axle_solid_express_32px')
+                     chassis='6_axle_solid_express_32px')
 
 
     consist = PassengerLuxuryCarConsist(roster='pony',
@@ -22,7 +22,7 @@ def main():
     consist.add_unit(type=TrainCar,
                      capacity=40,
                      vehicle_length=8,
-                     chassis='4_axle_solid_express_32px')
+                     chassis='6_axle_solid_express_32px')
 
 
     consist = PassengerLuxuryCarConsist(roster='pony',
@@ -33,7 +33,7 @@ def main():
     consist.add_unit(type=TrainCar,
                      capacity=40,
                      vehicle_length=8,
-                     chassis='4_axle_solid_express_32px')
+                     chassis='6_axle_solid_express_32px')
 
 
     consist = PassengerLuxuryCarConsist(roster='pony',
