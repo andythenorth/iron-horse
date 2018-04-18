@@ -733,6 +733,11 @@ class MailCarConsist(CarConsist):
         self.run_cost_divisor = 7
         self.allow_flip = True
         # Graphics configuration
+        self.generate_unit_roofs = True
+        if self.gen == 3:
+            self.roof_type = 'pax_mail_ridged'
+        else:
+            self.roof_type = 'pax_mail_smooth'
         # mail cars have consist cargo mappings for pax, mail (freight uses mail)
         # * pax matches pax liveries for generation
         # * mail gets a TPO/RPO striped livery, and a 1CC/2CC duotone livery
@@ -740,8 +745,6 @@ class MailCarConsist(CarConsist):
         # position based variants
         # longer mail cars get an additional sprite option in the consist ruleset; shorter mail cars don't as it's TMWFTLB
         # * windows or similar variation for first, last vehicles (maybe also every nth vehicle?)
-        self.generate_unit_roofs = True
-        self.roof_type = 'pax_mail_smooth'
         brake_car_sprites = 1 if self.subtype in ['B', 'C'] else 0
         bonus_sprites = 2 if self.subtype in ['C'] else 0
         spriterow_group_mappings = {'mail': {'default': 0, 'first': brake_car_sprites, 'last': brake_car_sprites, 'special': bonus_sprites},
