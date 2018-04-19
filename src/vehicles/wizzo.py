@@ -8,6 +8,7 @@ consist = EngineConsist(id='wizzo',
                         speed=110,
                         type_base_buy_cost_points=30,  # dibble buy cost for game balance
                         type_base_running_cost_points=30,  # dibble running costs for game balance
+                        random_reverse=True,
                         gen=4)
 
 consist.add_unit(type=DieselEngineUnit,
