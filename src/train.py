@@ -734,7 +734,9 @@ class MailCarConsist(CarConsist):
         self.allow_flip = True
         # Graphics configuration
         self.generate_unit_roofs = True
-        if self.gen in [2, 3]:
+        if self.gen in [1]:
+            self.roof_type = 'pax_mail_clerestory'
+        elif self.gen in [2, 3]:
             self.roof_type = 'pax_mail_ridged'
         else:
             self.roof_type = 'pax_mail_smooth'
@@ -806,7 +808,9 @@ class PassengerCarConsistBase(CarConsist):
         self.allow_flip = True
         # Graphics configuration
         self.generate_unit_roofs = True
-        if self.gen in [2, 3]:
+        if self.gen in [1]:
+            self.roof_type = 'pax_mail_clerestory'
+        elif self.gen in [2, 3]:
             self.roof_type = 'pax_mail_ridged'
         else:
             self.roof_type = 'pax_mail_smooth'
