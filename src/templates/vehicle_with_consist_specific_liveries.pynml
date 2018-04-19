@@ -162,6 +162,7 @@
                 return ${vehicle.id}_switch_graphics_engine_id_${variants['last']};
             }
 
+            <!--! this is a remainder block, how many units are in it? -->
             switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_less_than_6_remaining_${cargo_label}, num_vehs_in_vehid_chain % 6) {
                 1: return ${vehicle.id}_switch_graphics_modulo_num_units_in_consist_1_${cargo_label};
                 2: return ${vehicle.id}_switch_graphics_modulo_num_units_in_consist_2_${cargo_label};
@@ -171,6 +172,7 @@
                 return ${vehicle.id}_switch_graphics_modulo_num_units_in_consist_6_${cargo_label};
             }
 
+            <!--! given the consist, how many blocks of 6 units are there?  Is the unit within a block of 6, or a remainder block? -->
             switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_position_in_consist_entry_point_${cargo_label}, position_in_vehid_chain >= (num_vehs_in_vehid_chain - (num_vehs_in_vehid_chain  % 6))) {
                 1: return ${vehicle.id}_switch_graphics_less_than_6_remaining_${cargo_label};
                 return ${vehicle.id}_switch_graphics_modulo_num_units_in_consist_6_${cargo_label};
