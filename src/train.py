@@ -350,7 +350,8 @@ class EngineConsist(Consist):
                                " has intro_date > 2030, which is too much")
         date_cost_points = max((self.intro_date - 1870), 0) / 4
 
-        return power_cost_points + speed_cost_points + high_speed_cost_points + date_cost_points
+        result = power_cost_points + speed_cost_points + high_speed_cost_points + date_cost_points
+        return result
 
     @property
     def buy_cost(self):
