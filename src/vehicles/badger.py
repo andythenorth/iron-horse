@@ -7,6 +7,7 @@ consist = EngineConsist(id='badger',
                         power=5000,
                         speed=125,
                         type_base_buy_cost_points=71,  # dibble buy cost for game balance
+                        random_reverse=True,
                         gen=5)
 
 consist.add_unit(type=ElectricEngineUnit,
