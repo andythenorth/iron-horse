@@ -2,7 +2,7 @@ from train import EngineConsist, DieselEngineUnit
 
 consist = EngineConsist(id='turtle',
                         base_numeric_id=3150,
-                        name='Turtle',
+                        name='EuroTurtle',
                         role='express_1',
                         power=3450,
                         speed=140,
