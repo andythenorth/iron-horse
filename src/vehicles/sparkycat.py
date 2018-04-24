@@ -5,10 +5,11 @@ consist = EngineConsist(id='sparkycat',
                         name='SparkyCat',
                         role='freight',
                         power=1850,
+                        power_by_railtype={'RAIL': 1850, 'ELRL': 3700},
                         speed=110,
                         type_base_buy_cost_points=60,  # dibble buy cost for game balance
-                        gen=6,
-                        power_by_railtype={'RAIL': 1850, 'ELRL': 3700})
+                        random_reverse=True,
+                        gen=6)
 
 consist.add_unit(type=ElectroDieselEngineUnit,
                  weight=120,
