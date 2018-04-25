@@ -169,6 +169,11 @@ def render_docs_images():
                                                                 10,
                                                                 consist.buy_menu_x_loc + global_constants.buy_menu_sprite_width,
                                                                 10 + global_constants.buy_menu_sprite_height))
+        # recolour to more pleasing CC combos
+        cc_remap = {198: 179, 199: 180, 200: 181, 201: 182, 202: 183, 203: 164, 204: 165, 205: 166,
+                    80: 8, 81: 9, 82: 10, 83: 11, 84: 12, 85: 13, 86: 14, 87: 15}
+        processed_vehicle_image = processed_vehicle_image.point(lambda i: cc_remap[i] if i in cc_remap.keys() else i)
+
         # oversize the images to account for how browsers interpolate the images on retina / HDPI screens
         processed_vehicle_image = processed_vehicle_image.resize((4 * global_constants.buy_menu_sprite_width, 4 * global_constants.buy_menu_sprite_height),
                                                                  resample=Image.NEAREST)
