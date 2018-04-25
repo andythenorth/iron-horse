@@ -7,6 +7,7 @@ from vehicles import chaplin
 from vehicles import chinook
 from vehicles import collett
 from vehicles import donegal
+from vehicles import dragon
 from vehicles import electra
 from vehicles import express_tank
 from vehicles import fleet
@@ -46,7 +47,6 @@ from vehicles import ultra_shoebox
 from vehicles import velaro_thing
 from vehicles import walker
 from vehicles import westbourne
-from vehicles import wizzo
 
 roster = Roster(id = 'pony',
                 numeric_id = 1,
@@ -79,7 +79,7 @@ roster = Roster(id = 'pony',
                            shoebox,
                            growler,
                            chinook,
-                           wizzo,
+                           dragon,
                            roarer,
                            super_shoebox,
                            slug,
