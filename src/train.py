@@ -241,6 +241,7 @@ class Consist(object):
     def speed(self):
         # automatic speed, but can over-ride by passing in kwargs for consist
         if self._speed:
+            print(self.id, 'has speed set', self._speed, self.role)
             return self._speed
         elif self.speed_class:
             # speed by class, if speed_class is not None
@@ -447,7 +448,7 @@ class CarConsist(Consist):
         self.roster_id = kwargs.get('roster', None)
         self.roster.register_wagon_consist(self)
 
-        self.speed_class = 'freight'  # over-ride this for, e.g. fast_freight consists
+        self.speed_class = 'standard'  # over-ride this in sub-class for, e.g. express freight consists
         self.subtype = kwargs['subtype']
         self.weight_factor = 0.5  # over-ride in sub-class as needed
         self.loading_speed_multiplier = kwargs.get(
@@ -604,11 +605,16 @@ class EdiblesTankCarConsist(CarConsist):
     """
 
     def __init__(self, **kwargs):
-        self.base_id = 'edibles_tank_car'
-        super().__init__(**kwargs)
         # tank cars are unrealistically autorefittable, and at no cost
         # Pikka: if people complain that it's unrealistic, tell them "don't do it then"
-        self.speed_class = 'fast_freight'
+        self.base_id = 'edibles_tank_car'
+        super().__init__(**kwargs)
+        # these are 'express' up to gen 5, then capped, because eh why not
+        if self.gen < 5:
+            self.speed_class = 'express'
+        else:
+            # this is quite evil, and probably unwise
+            self._speed = self.roster.speeds_1[self.track_type][self.speed_class][5]
         self.class_refit_groups = ['liquids']
         self.label_refits_allowed = ['FOOD']
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label[
@@ -617,7 +623,6 @@ class EdiblesTankCarConsist(CarConsist):
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
         self.loading_speed_multiplier = 2
         self.capacity_cost_factor = 1.5
-
 
 class FlatCarConsist(CarConsist):
     """
@@ -723,7 +728,7 @@ class MailCarConsist(CarConsist):
     def __init__(self, **kwargs):
         self.base_id = 'mail_car'
         super().__init__(**kwargs)
-        self.speed_class = 'pax_mail'
+        self.speed_class = 'express'
         self.class_refit_groups = ['mail', 'express_freight']
         self.label_refits_allowed = []  # no specific labels needed
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label[
@@ -800,7 +805,7 @@ class PassengerCarConsistBase(CarConsist):
     def __init__(self, **kwargs):
         # don't set base_id here, let subclasses do it
         super().__init__(**kwargs)
-        self.speed_class = 'pax_mail'
+        self.speed_class = 'express'
         self.class_refit_groups = ['pax']
         self.label_refits_allowed = []
         self.label_refits_disallowed = []
@@ -859,7 +864,12 @@ class ReeferCarConsist(CarConsist):
     def __init__(self, **kwargs):
         self.base_id = 'reefer_car'
         super().__init__(**kwargs)
-        self.speed_class = 'fast_freight'
+        # these are 'express' up to gen 5, then capped, because eh why not
+        if self.gen < 5:
+            self.speed_class = 'express'
+        else:
+            # this is quite evil, and probably unwise
+            self._speed = self.roster.speeds_1[self.track_type][self.speed_class][5]
         self.class_refit_groups = ['refrigerated_freight']
         self.label_refits_allowed = []  # no specific labels needed
         self.label_refits_disallowed = []

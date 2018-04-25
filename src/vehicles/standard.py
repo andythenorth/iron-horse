@@ -6,7 +6,7 @@ consist = EngineConsist(id='standard',
                         role='express_1',
                         power=950,
                         tractive_effort_coefficient=0.07,
-                        speed=65,
+                        speed=60,
                         type_base_buy_cost_points=18,  # dibble buy cost for game balance
                         gen=1)
 

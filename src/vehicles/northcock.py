@@ -6,7 +6,7 @@ consist = EngineConsist(id='northcock',
                         role='express_1',
                         power=1750,
                         tractive_effort_coefficient=0.25,
-                        speed=95,
+                        speed=90,
                         buy_cost=81,
                         gen=3)
 
