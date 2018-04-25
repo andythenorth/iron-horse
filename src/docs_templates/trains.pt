@@ -31,7 +31,10 @@
                             <tal:engine_consists repeat="consist roster.engine_consists">
                                 <tr id="${consist.id}">
                                     <td style="vertical-align:middle; width:${2 * global_constants.buy_menu_sprite_width};">
-                                        <img src="static/img/${consist.id}.png"
+                                        <img src="static/img/${consist.id}_blue.png"
+                                             width="${2 * global_constants.buy_menu_sprite_width}"
+                                             height="${2 * global_constants.buy_menu_sprite_height}" />
+                                        <img src="static/img/${consist.id}_red.png"
                                              width="${2 * global_constants.buy_menu_sprite_width}"
                                              height="${2 * global_constants.buy_menu_sprite_height}" />
                                     </td>

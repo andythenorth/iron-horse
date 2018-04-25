@@ -165,21 +165,23 @@ def render_docs_images():
         vehicle_spritesheet = Image.open(os.path.join(
             vehicle_graphics_src, consist.id + '.png'))
         # !! currently assumes buy menu sprite in 7th column, this won't always be valid assumption, and needs to be detected in the vehicle (which knows)
-        processed_vehicle_image = vehicle_spritesheet.crop(box=(consist.buy_menu_x_loc,
+        source_vehicle_image = vehicle_spritesheet.crop(box=(consist.buy_menu_x_loc,
                                                                 10,
                                                                 consist.buy_menu_x_loc + global_constants.buy_menu_sprite_width,
                                                                 10 + global_constants.buy_menu_sprite_height))
         # recolour to more pleasing CC combos
-        cc_remap = {198: 179, 199: 180, 200: 181, 201: 182, 202: 183, 203: 164, 204: 165, 205: 166,
-                    80: 8, 81: 9, 82: 10, 83: 11, 84: 12, 85: 13, 86: 14, 87: 15}
-        processed_vehicle_image = processed_vehicle_image.point(lambda i: cc_remap[i] if i in cc_remap.keys() else i)
+        cc_remap_1 = {198: 179, 199: 180, 200: 181, 201: 182, 202: 183, 203: 164, 204: 165, 205: 166,
+                      80: 8, 81: 9, 82: 10, 83: 11, 84: 12, 85: 13, 86: 14, 87: 15}
+        cc_remap_2 = {80: 198, 81: 199, 82: 200, 83: 201, 84: 202, 85: 203, 86: 204, 87: 205}
+        for colour_name, cc_remap in {'red': cc_remap_1, 'blue': cc_remap_2}.items():
+            processed_vehicle_image = source_vehicle_image.copy().point(lambda i: cc_remap[i] if i in cc_remap.keys() else i)
 
-        # oversize the images to account for how browsers interpolate the images on retina / HDPI screens
-        processed_vehicle_image = processed_vehicle_image.resize((4 * global_constants.buy_menu_sprite_width, 4 * global_constants.buy_menu_sprite_height),
-                                                                 resample=Image.NEAREST)
-        output_path = os.path.join(images_dir_dst, consist.id + '.png')
-        processed_vehicle_image.save(
-            output_path, optimize=True, transparency=0)
+            # oversize the images to account for how browsers interpolate the images on retina / HDPI screens
+            processed_vehicle_image = processed_vehicle_image.resize((4 * global_constants.buy_menu_sprite_width, 4 * global_constants.buy_menu_sprite_height),
+                                                                     resample=Image.NEAREST)
+            output_path = os.path.join(images_dir_dst, consist.id + '_' + colour_name + '.png')
+            processed_vehicle_image.save(
+                output_path, optimize=True, transparency=0)
 
 
 def main():
