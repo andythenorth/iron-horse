@@ -48,27 +48,24 @@ from vehicles import velaro_thing
 from vehicles import walker
 from vehicles import westbourne
 
-"""
-speeds = {'RAIL': {'freight': [45, 45, 60, 75, 90, 110],
-                   'fast_freight': [65, 80, 95, 110, 110, 110],
-                   'pax_mail': [65, 80, 95, 110, 125, 140]},
-          'NG': {'freight': [75, 110],
-                 'fast_freight': [55, 55],
-                 'pax_mail': [55, 55]}},
-"""
-
 roster = Roster(id = 'pony',
                 numeric_id = 1,
                 # default intro dates per generation, can be over-ridden if needed by setting intro_date kw on consist
                 intro_dates = [1860, 1900, 1930, 1960, 1990, 2020],
                 # default speeds per generation, can be over-ridden if needed by setting speed kw arg on consist
                 # speeds roughly same as RH trucks of same era + 5mph or so, and a bit higher at the top end (back and forth on this many times eh?),
-                speeds = {'RAIL': {'freight': [35, 45, 45, 60, 75, 90],
-                                   'fast_freight': [45, 60, 75, 90, 90, 90],
-                                   'pax_mail': [45, 60, 75, 90, 110, 125]},
-                          'NG': {'freight': [75, 110],
-                                 'fast_freight': [55, 55],
-                                 'pax_mail': [55, 55]}},
+                speeds_1 = {'RAIL': {'freight': [45, 45, 60, 75, 90, 110],
+                                     'fast_freight': [65, 80, 95, 110, 110, 110],
+                                     'pax_mail': [65, 80, 95, 110, 125, 140]},
+                            'NG': {'freight': [75, 110],
+                                   'fast_freight': [55, 55],
+                                   'pax_mail': [55, 55]}},
+                speeds_2 = {'RAIL': {'freight': [35, 45, 45, 60, 75, 90],
+                                     'fast_freight': [45, 60, 75, 90, 90, 90],
+                                     'pax_mail': [45, 60, 75, 90, 110, 125]},
+                            'NG': {'freight': [75, 110],
+                                   'fast_freight': [55, 55],
+                                   'pax_mail': [55, 55]}},
 
                 # capacity factor per generation, will be multiplied by vehicle length
                 freight_car_capacity_per_unit_length =  {'RAIL': [5, 5, 5, 5, 5, 5],

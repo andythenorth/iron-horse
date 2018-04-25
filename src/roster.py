@@ -18,7 +18,8 @@ class Roster(object):
         self.wagon_consists = dict(
             [(base_id, []) for base_id in global_constants.buy_menu_sort_order_wagons])
         self.intro_dates = kwargs.get('intro_dates')
-        self.speeds = kwargs.get('speeds')
+        self.speeds_1 = kwargs.get('speeds_1')
+        self.speeds_2 = kwargs.get('speeds_2')
         self.freight_car_capacity_per_unit_length = kwargs.get(
             'freight_car_capacity_per_unit_length')
         self.disabled = False

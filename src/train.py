@@ -247,7 +247,7 @@ class Consist(object):
             # !! eh this relies currently on railtypes being 'RAIL' or 'NG'
             # it only works because electric engines currently have their speed set explicitly :P
             # could be fixed by checking a list of railtypes
-            return self.roster.speeds[self.track_type][self.speed_class][self.gen - 1]
+            return self.roster.speeds_1[self.track_type][self.speed_class][self.gen - 1]
         else:
             # assume no speed limit
             return None
