@@ -1,6 +1,6 @@
 from train import EngineConsist, DieselEngineUnit
 # class 70-ish thing
-consist = EngineConsist(id='toaster',
+consist = EngineConsist(id='chimera',
                         base_numeric_id=990,
                         name='Chimera',
                         role='heavy_freight',

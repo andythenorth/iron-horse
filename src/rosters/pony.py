@@ -5,6 +5,7 @@ from vehicles import apt_thing
 from vehicles import bertha
 from vehicles import chaplin
 from vehicles import cheddar_valley
+from vehicles import chimera
 from vehicles import chinook
 from vehicles import collett
 from vehicles import donegal
@@ -40,7 +41,6 @@ from vehicles import super_shoebox
 from vehicles import thunderbird
 from vehicles import tideway
 from vehicles import tin_rocket
-from vehicles import toaster
 from vehicles import turtle
 from vehicles import tyburn
 from vehicles import ultra_shoebox
@@ -88,7 +88,7 @@ roster = Roster(id = 'pony',
                            screamer,
                            ultra_shoebox,
                            phoenix,
-                           toaster,
+                           chimera,
                            turtle,
                            sizzler,
                            slammer,
