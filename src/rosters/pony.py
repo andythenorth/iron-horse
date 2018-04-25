@@ -3,7 +3,7 @@ from roster import Roster
 from vehicles import aberdare
 from vehicles import apt_thing
 from vehicles import badger
-from vehicles import badger_2
+from vehicles import sizzler
 from vehicles import bertha
 from vehicles import chaplin
 from vehicles import chinook
@@ -90,7 +90,7 @@ roster = Roster(id = 'pony',
                            sparkycat,
                            toaster,
                            turtle,
-                           badger_2,
+                           sizzler,
                            slammer,
                            tin_rocket,
                            happy_train,

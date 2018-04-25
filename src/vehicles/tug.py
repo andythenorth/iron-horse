@@ -2,7 +2,7 @@ from train import EngineConsist, DieselEngineUnit
 
 consist = EngineConsist(id='tug',
                         base_numeric_id=220,
-                        name='Strongbow',
+                        name='Cheddar Valley',
                         role='heavy_freight',
                         power=3600,
                         # dibble for game balance, assume super-slip control
