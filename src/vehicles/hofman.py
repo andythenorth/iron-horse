@@ -6,7 +6,6 @@ consist = EngineConsist(id='hofman',
                         tractive_effort_coefficient=0.27,  # dibble for game balance
                         power=750,
                         track_type='NG',
-                        speed=60,
                         type_base_buy_cost_points=-5,  # dibble buy cost for game balance
                         type_base_running_cost_points=-10,  # dibble running costs for game balance
                         intro_date=1940)

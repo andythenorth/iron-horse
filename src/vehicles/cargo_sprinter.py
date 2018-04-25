@@ -5,7 +5,6 @@ consist = EngineConsist(id='cargo_sprinter',
                         base_numeric_id=100,
                         name='Cargo Sprinter',
                         power=1000,
-                        speed=100,
                         # cargo sprinter is hard to balance stats for, it needs to be fast, cheap, powerful
                         # after experiments, it's now balanced suited to express intermodal, reaching top speed quickly
                         # it's not intended for very marginal routes to compete with RVs

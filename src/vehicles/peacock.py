@@ -5,7 +5,6 @@ consist = EngineConsist(id='peacock',
                         name='2-6-0 Peacock',
                         power=1200,
                         tractive_effort_coefficient=0.32,
-                        speed=50,
                         intro_date=1885)
 
 consist.add_unit(type=SteamEngineUnit,

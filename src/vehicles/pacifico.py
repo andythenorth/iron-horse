@@ -4,7 +4,6 @@ consist = EngineConsist(id='pacifico',
                         base_numeric_id=310,
                         name='4-6-2 Pacifico',
                         power=1800,
-                        speed=65,
                         intro_date=1910)
 
 consist.add_unit(type=SteamEngineUnit,

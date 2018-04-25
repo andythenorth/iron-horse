@@ -6,7 +6,6 @@ consist = EngineConsist(id='raven',
                         role='express_2',
                         power=1800,
                         tractive_effort_coefficient=0.25,
-                        speed=75,
                         buy_cost=77,
                         intro_date=1905)  # explicit intro date by design
 

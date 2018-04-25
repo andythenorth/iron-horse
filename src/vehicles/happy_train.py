@@ -5,8 +5,6 @@ consist = PassengerEngineRailcarConsist(id='happy_train',
                                  name='Happy Train',
                                  role='pax_railcar',
                                  power=750,
-                                 # matched to fast (in this gen) freight speeds
-                                 speed=110,
                                  type_base_running_cost_points=-36,  # dibble running costs for game balance
                                  intro_date=2015)  # explicit intro date by design
 

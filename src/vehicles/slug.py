@@ -5,7 +5,6 @@ consist = EngineConsist(id='slug',
                         name='Slug',
                         role='freight',
                         power=1700,
-                        speed=90,
                         random_reverse=True,
                         gen=5)
 

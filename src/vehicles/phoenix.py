@@ -5,7 +5,6 @@ consist = EngineConsist(id='phoenix',
                         name='Phoenix',
                         role='freight',
                         power=1850,
-                        speed=110,
                         type_base_buy_cost_points=60,  # dibble buy cost for game balance
                         random_reverse=True,
                         gen=6)

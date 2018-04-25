@@ -5,7 +5,6 @@ consist = PassengerEngineConsist(id='pendolino_thing',
                                  name='Pendolino Thing',
                                  role='pax_high_speed',
                                  power=1900,
-                                 speed=170,
                                  type_base_running_cost_points=-32,  # dibble running costs for game balance
                                  intro_date=2000)  # explicit intro date by design
 

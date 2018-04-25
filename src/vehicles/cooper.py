@@ -5,7 +5,6 @@ consist = EngineConsist(id='cooper',
                         name='Cooper',
                         power=1000,
                         track_type='NG',
-                        speed=55,
                         intro_date=1949)
 
 consist.add_unit(type=DieselEngineUnit,

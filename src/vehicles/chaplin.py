@@ -6,7 +6,6 @@ consist = EngineConsist(id='chaplin',
                         role='branch',
                         power=500,
                         tractive_effort_coefficient=0.2,
-                        speed=60,
                         type_base_buy_cost_points=-3,  # dibble buy cost for game balance
                         random_reverse=True,
                         gen=1)

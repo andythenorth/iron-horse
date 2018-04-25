@@ -5,7 +5,6 @@ consist = EngineConsist(id='thunderbird',
                         name='Thunderbird',
                         role='express_1',
                         power=2650,
-                        speed=120,
                         type_base_buy_cost_points=30,  # dibble buy cost for game balance
                         type_base_running_cost_points=30,  # dibble running costs for game balance
                         random_reverse=True,

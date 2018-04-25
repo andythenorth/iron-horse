@@ -6,7 +6,6 @@ consist = PassengerEngineConsist(id='westbourne',
                                  role='pax_metro',
                                  track_type='METRO',
                                  power=900,
-                                 speed=55,
                                  type_base_buy_cost_points=60,  # dibble buy cost for game balance
                                  intro_date=1950)
 

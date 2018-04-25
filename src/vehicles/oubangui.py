@@ -5,7 +5,6 @@ consist = EngineConsist(id='oubangui',
                         name='2-6-6-2 Oubangui',
                         power=1500,
                         track_type='NG',
-                        speed=55,
                         intro_date=1920)
 
 consist.add_unit(type=SteamEngineUnit,

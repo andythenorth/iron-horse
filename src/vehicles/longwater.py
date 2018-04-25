@@ -6,7 +6,6 @@ consist = MailEngineConsist(id='longwater',
                             role='mail_metro',
                             track_type='METRO',
                             power=600,
-                            speed=40,
                             type_base_buy_cost_points=36,  # dibble buy cost for game balance
                             intro_date=1900)
 

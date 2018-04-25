@@ -4,7 +4,6 @@ consist = EngineConsist(id='cooke',
                         base_numeric_id=150,
                         name='4-6-0 Cooke',
                         power=1500,
-                        speed=65,
                         intro_date=1885)
 
 consist.add_unit(type=SteamEngineUnit,

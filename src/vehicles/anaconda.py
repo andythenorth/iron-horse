@@ -4,7 +4,6 @@ consist = EngineConsist(id='anaconda',
                         base_numeric_id=30,
                         name='Anaconda',
                         power=300,
-                        speed=75,
                         type_base_running_cost_points=-32,  # dibble running costs for game balance
                         intro_date=1980)
 

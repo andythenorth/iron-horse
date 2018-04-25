@@ -6,7 +6,6 @@ consist = EngineConsist(id='hyena',
                         power=1400,
                         tractive_effort_coefficient=0.19,
                         track_type='NG',
-                        speed=65,
                         type_base_buy_cost_points=25,  # dibble buy cost for game balance
                         type_base_running_cost_points=35,  # dibble running costs for game balance
                         intro_date=1915)

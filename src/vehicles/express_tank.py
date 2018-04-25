@@ -6,7 +6,6 @@ consist = EngineConsist(id='express_tank',
                         role='branch',
                         power=800,
                         tractive_effort_coefficient=0.2,
-                        speed=90,
                         type_base_buy_cost_points=-2,  # dibble buy cost for game balance
                         type_base_running_cost_points=-6,  # dibble running costs for game balance
                         random_reverse=True,

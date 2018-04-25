@@ -7,7 +7,6 @@ consist = EngineConsist(id='lemon',
                         power=2400,
                         tractive_effort_coefficient=0.29,
                         type_base_running_cost_points=30,  # dibble running costs for game balance
-                        speed=60,
                         buy_cost=114,
                         gen=3)
 

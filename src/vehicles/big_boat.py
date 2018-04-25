@@ -6,7 +6,6 @@ consist = EngineConsist(id='big_boat',
                         power=4500,
                         # dibble up TE, modern diesels can cheat adhesion using wheel slip
                         tractive_effort_coefficient=0.35,
-                        speed=75,
                         intro_date=1985)
 
 consist.add_unit(type=DieselEngineUnit,

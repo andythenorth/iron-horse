@@ -5,7 +5,6 @@ consist = EngineConsist(id='oribi',
                         name='Oribi',
                         power=450,
                         track_type='NG',
-                        speed=65,
                         type_base_running_cost_points=-28,  # dibble running costs for game balance
                         intro_date=1960)
 

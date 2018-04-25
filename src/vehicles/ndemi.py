@@ -5,7 +5,6 @@ consist = EngineConsist(id='ndemi',
                         name='4-8-0 Ndemi',
                         power=1700,
                         track_type='NG',
-                        speed=35,
                         type_base_buy_cost_points=35,  # dibble buy cost for game balance
                         type_base_running_cost_points=35,  # dibble running costs for game balance
                         intro_date=1887)

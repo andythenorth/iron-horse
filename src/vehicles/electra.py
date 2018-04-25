@@ -6,7 +6,6 @@ consist = EngineConsist(id='electra',
                         role='express_2',
                         power=2400,
                         tractive_effort_coefficient=0.25,
-                        speed=90,
                         type_base_buy_cost_points=10,  # dibble buy cost for game balance
                         intro_date=1935)  # explicit intro date by design
 

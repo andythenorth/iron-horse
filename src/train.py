@@ -240,15 +240,21 @@ class Consist(object):
     @property
     def speed(self):
         # automatic speed, but can over-ride by passing in kwargs for consist
+        speed_track_type_mapping = {'RAIL':'RAIL', 'ELRL':'RAIL', 'NG':'NG', 'ELNG':'NG', 'METRO':'METRO'}
+        speeds_by_track_type = self.roster.speeds[speed_track_type_mapping[self.track_type]]
         if self._speed:
-            print(self.id, 'has speed set', self._speed, self.role)
             return self._speed
-        elif self.speed_class:
-            # speed by class, if speed_class is not None
-            # !! eh this relies currently on railtypes being 'RAIL' or 'NG'
-            # it only works because electric engines currently have their speed set explicitly :P
+        elif getattr(self, 'speed_class', None):
+            # speed by class, if speed_class is set explicitly (and not None)
+            # !! this doesn't handle RAIL / ELRL correctly
             # could be fixed by checking a list of railtypes
-            return self.roster.speeds[self.track_type][self.speed_class][self.gen - 1]
+            return speeds_by_track_type[self.speed_class][self.gen - 1]
+        elif self.role:
+            express_roles = ['express_1', 'express_2']
+            if self.role in express_roles:
+                return speeds_by_track_type['express'][self.gen - 1]
+            else:
+                return speeds_by_track_type['standard'][self.gen - 1]
         else:
             # assume no speed limit
             return None
