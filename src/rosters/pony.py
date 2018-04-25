@@ -2,8 +2,6 @@ from roster import Roster
 
 from vehicles import aberdare
 from vehicles import apt_thing
-from vehicles import badger
-from vehicles import sizzler
 from vehicles import bertha
 from vehicles import chaplin
 from vehicles import chinook
@@ -21,16 +19,18 @@ from vehicles import longwater
 from vehicles import mail_rail
 from vehicles import northcock
 from vehicles import pendolino_thing
+from vehicles import phoenix
 from vehicles import plastic_postbox
 from vehicles import ramsbottom
 from vehicles import raven
 from vehicles import roarer
 from vehicles import scooby
+from vehicles import screamer
 from vehicles import serpentine
 from vehicles import shoebox
+from vehicles import sizzler
 from vehicles import slammer
 from vehicles import slug
-from vehicles import sparkycat
 from vehicles import standard
 from vehicles import stewart
 from vehicles import suburban
@@ -85,9 +85,9 @@ roster = Roster(id = 'pony',
                            slug,
                            tug,
                            thunderbird,
-                           badger,
+                           screamer,
                            ultra_shoebox,
-                           sparkycat,
+                           phoenix,
                            toaster,
                            turtle,
                            sizzler,
