@@ -248,7 +248,7 @@ class Consist(object):
             # !! eh this relies currently on railtypes being 'RAIL' or 'NG'
             # it only works because electric engines currently have their speed set explicitly :P
             # could be fixed by checking a list of railtypes
-            return self.roster.speeds_1[self.track_type][self.speed_class][self.gen - 1]
+            return self.roster.speeds[self.track_type][self.speed_class][self.gen - 1]
         else:
             # assume no speed limit
             return None
@@ -614,7 +614,7 @@ class EdiblesTankCarConsist(CarConsist):
             self.speed_class = 'express'
         else:
             # this is quite evil, and probably unwise
-            self._speed = self.roster.speeds_1[self.track_type][self.speed_class][5]
+            self._speed = self.roster.speeds[self.track_type][self.speed_class][5]
         self.class_refit_groups = ['liquids']
         self.label_refits_allowed = ['FOOD']
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label[
@@ -869,7 +869,7 @@ class ReeferCarConsist(CarConsist):
             self.speed_class = 'express'
         else:
             # this is quite evil, and probably unwise
-            self._speed = self.roster.speeds_1[self.track_type][self.speed_class][5]
+            self._speed = self.roster.speeds[self.track_type][self.speed_class][5]
         self.class_refit_groups = ['refrigerated_freight']
         self.label_refits_allowed = []  # no specific labels needed
         self.label_refits_disallowed = []
