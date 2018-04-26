@@ -1,4 +1,4 @@
-from train import PassengerCarConsist, TrainCar
+from train import PassengerCarConsist, PaxMailCar
 
 
 def main():
@@ -9,7 +9,7 @@ def main():
                                   subtype='A',
                                   track_type='NG')
 
-    consist.add_unit(type=TrainCar,
+    consist.add_unit(type=PaxMailCar,
                      capacity=25,
                      vehicle_length=6)
 
@@ -20,7 +20,7 @@ def main():
                                   gen=1,
                                   subtype='A')
 
-    consist.add_unit(type=TrainCar,
+    consist.add_unit(type=PaxMailCar,
                      capacity=25,
                      vehicle_length=6,
                      chassis='4_axle_solid_express_24px')
@@ -31,7 +31,7 @@ def main():
                                   gen=2,
                                   subtype='A')
 
-    consist.add_unit(type=TrainCar,
+    consist.add_unit(type=PaxMailCar,
                      capacity=40,
                      vehicle_length=6,
                      chassis='4_axle_solid_express_24px')
@@ -42,7 +42,7 @@ def main():
                                   gen=3,
                                   subtype='A')
 
-    consist.add_unit(type=TrainCar,
+    consist.add_unit(type=PaxMailCar,
                      capacity=40,
                      vehicle_length=6,
                      chassis='4_axle_solid_express_24px')
@@ -53,7 +53,7 @@ def main():
                                   gen=4,
                                   subtype='A')
 
-    consist.add_unit(type=TrainCar,
+    consist.add_unit(type=PaxMailCar,
                      capacity=50,
                      vehicle_length=6,
                      chassis='4_axle_solid_express_24px')
@@ -64,7 +64,7 @@ def main():
                                   gen=5,
                                   subtype='A')
 
-    consist.add_unit(type=TrainCar,
+    consist.add_unit(type=PaxMailCar,
                      capacity=50,
                      vehicle_length=6,
                      chassis='4_axle_solid_express_24px')
@@ -76,7 +76,7 @@ def main():
                                   gen=6,
                                   subtype='A')
 
-    consist.add_unit(type=TrainCar,
+    consist.add_unit(type=PaxMailCar,
                      capacity=50,
                      vehicle_length=6,
                      chassis='4_axle_solid_express_24px')

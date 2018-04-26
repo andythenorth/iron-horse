@@ -310,6 +310,26 @@ class GestaltGraphicsConsistSpecificLivery(GestaltGraphics):
                 result['DFLT'] = result['PASS']
         return result
 
+    def get_asymmetric_source_row(self, input_row_num):
+        # used in graphics processor to figure out how to make correct asymmetric sprites for 'first' and 'last'
+        result = {}
+        counter = 0
+        for livery_type, cargo_label in (('pax', 'PASS'), ('mail', 'MAIL')):
+            counter = len(result.keys())
+            if livery_type in self.spriterow_group_mappings:
+                for position, relative_row_num in self.spriterow_group_mappings[livery_type].items():
+                    result.setdefault(counter + relative_row_num, []).append(position)
+        # there are two liveries, but the count so floordiv the input_row_num by 2
+        row_positions = result[input_row_num // 2]
+        if 'first' in row_positions and 'last' not in row_positions:
+            # assume asymmetric, and offset to last row
+            return input_row_num + 2
+        elif 'last' in row_positions and 'first' not in row_positions:
+            # assume asymmetric, and offset to first row
+            return input_row_num - 2
+        else:
+            return input_row_num
+
 
 class GestaltGraphicsCustom(GestaltGraphics):
     """

@@ -1459,13 +1459,22 @@ class TrainCar(Train):
             self.loading_speed_multiplier = self.consist.loading_speed_multiplier
         if hasattr(self.consist, 'cargo_age_period'):
             self.cargo_age_period = self.consist.cargo_age_period
-        # most wagons are symmetric, over-ride per vehicle as needed
+        # most wagons are symmetric, over-ride per vehicle or subclass as needed
         self._symmetry_type = kwargs.get('symmetry_type', 'symmetric')
 
     @property
     def weight(self):
         # set weight based on capacity  * a multiplier from consist (default 0.5 or so)
         return self.consist.weight_factor * self.default_cargo_capacity
+
+class PaxMailCar(TrainCar):
+    """
+    Pax or mail wagon. This subclass only exists to set symmetry_type to asymmetric.  It may need split again if pax/mail wagons diverge further.
+    """
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # pax and mail wagons may be asymmetric, there is magic in the graphics processing to make symmetric pax/mail sprites also work with this
+        self._symmetry_type = kwargs.get('symmetry_type', 'symmetric')
 
 
 class FreightCar(TrainCar):
