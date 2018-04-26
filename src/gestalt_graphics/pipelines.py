@@ -187,15 +187,32 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
         doors_mask = doors_mask.point(lambda i: 0 if i == 255 else 255).convert("1") # the inversion here of blue and white looks a bit odd, but potato / potato
         #doors_image.show()
         for row_num in range(int(row_count / 2)):
+            # this is complex necessarily
+            # 'first' and 'last' vehicles tend to be asymmetric, but only one direction is drawn for each
+            # for the alternative direction, we swap the sprites for 'first' and 'last' by picking a different input row num
+            # then we copy them into the first column of the spritesheet which is for the ———> orientation
+            # 'default' and 'special' vehicles are assumed to be symmetric, or near enough that it's not important to swap the sprites
             input_row_nums = [row_num]
-            for cargo_key, spriterow_group_mapping in self.consist.gestalt_graphics.spriterow_group_mappings.items():
-                 if row_num == spriterow_group_mapping['first']:
-                    input_row_nums.append(spriterow_group_mapping['last'])
-                 if row_num == spriterow_group_mapping['last']:
-                    input_row_nums.append(spriterow_group_mapping['first'])
+            for cargo_key, position_row_mapping in self.consist.gestalt_graphics.cargo_row_map.items():
+                # 'first' is always [1] and 'last' is always [2] in cargo_row_map
+                # if 'first' does not use same spriterow num as 'last' then we can assume it's asymmetric
+                if position_row_mapping[1] != position_row_mapping[2]:
+                    if row_num == position_row_mapping[1]:
+                        # 'first', so ---> angle uses 'last'
+                        input_row_nums.append(position_row_mapping[2])
+                        break # only need to find asymmetry once
+                    if row_num == position_row_mapping[2]:
+                        # 'last', so ---> angle uses 'first'
+                        input_row_nums.append(position_row_mapping[1])
+                        break  # only need to find asymmetry once
+            # if not asymmetric, just use the same input row num again
             if len(input_row_nums) == 1:
                 input_row_nums.append(row_num)
-            print(self.consist.id, input_row_nums)
+            # guard against the unexpected eh, although this should never be reached, it will help debugging in future if it is triggered
+            assert(len(input_row_nums) == 2), "must be exactly 2 entries in input_row_nums list for %s; %s" % (self.consist.id, input_row_nums)
+            #print(self.consist.id, input_row_nums)
+            # this loop builds the spriterow and comps doors etc
+            # we repeat it twice per output row to create asymmetrical output from symmetrical input (see notes above)
             for row_offset in [row_num * graphics_constants.spriterow_height for rown_num in input_row_nums]:
                 crop_box_source = (0,
                                    self.base_offset + row_offset,
