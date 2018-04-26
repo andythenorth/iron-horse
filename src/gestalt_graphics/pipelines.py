@@ -232,10 +232,10 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
                 pax_mail_car_col_image.paste(pax_mail_car_spriterow_input_image, crop_box_comp_col_dest_1)
                 pax_mail_car_col_image.paste(pax_mail_car_spriterow_input_image, crop_box_comp_col_dest_2)
                 # add doors
+                # !! temp disabled whilst fixing asymmetry, needs re-enabled !!
                 #pax_mail_car_col_image.paste(doors_image, crop_box_comp_col_dest_doors, doors_mask)
-                if self.consist.id == 'luxury_passenger_car_pony_gen_6A':
+                #if self.consist.id == 'luxury_passenger_car_pony_gen_6A':
                      #pax_mail_car_col_image.show()
-                     print(input_row_nums, col_count, row_offset)
                 row_dest_start_x = [second_col_start_x, first_col_start_x][col_count]
                 crop_box_comp_row_dest = (row_dest_start_x,
                                           0,
