@@ -2,7 +2,7 @@ from train import EngineConsist, SteamEngineUnit
 
 consist = EngineConsist(id='collett',
                         base_numeric_id=1880,
-                        name='2-8-2 Collett',
+                        name='2-8-2 Gwynt',
                         role='freight',
                         power=1400,
                         type_base_buy_cost_points=12,  # dibble buy cost for game balance

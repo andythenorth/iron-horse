@@ -2,7 +2,7 @@ from train import EngineConsist, ElectricEngineUnit
 
 consist = EngineConsist(id='raven',
                         base_numeric_id=390,
-                        name='Raven',
+                        name='Hurly Burly',
                         role='express_2',
                         power=1800,
                         tractive_effort_coefficient=0.25,
