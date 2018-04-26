@@ -417,8 +417,9 @@ class PassengerEngineVeryHighSpeedConsist(PassengerEngineConsist):
         super().__init__(**kwargs)
         self.allow_flip = True
         # Graphics configuration
-        self.generate_unit_roofs = True
-        self.roof_type = 'pax_mail_smooth'
+        # can't generate roofs as power cars are slopey, the roof would need to be variable length per unit
+        self.generate_unit_roofs = False
+        self.roof_type = None
         # 2 liveries, should match local and express liveries of pax cars for this generation
         # position variants
         # * unit with driving cabs both ends
