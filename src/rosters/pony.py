@@ -59,7 +59,7 @@ roster = Roster(id = 'pony',
                                    'very_high_speed': [0, 0, 0, 140, 170, 200]},
                           'METRO': {'standard': [45, 45, 55, 65, 65]}, # no express for metro in Horse
                           'NG': {'standard': [50, 50, 50, 50, 50],
-                                 'express': [55, 55]}},
+                                 'express': [55, 55, 55, 55, 55]}},
 
                 # capacity factor per generation, will be multiplied by vehicle length
                 freight_car_capacity_per_unit_length =  {'RAIL': [5, 5, 5, 5, 5, 5],

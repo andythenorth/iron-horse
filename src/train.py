@@ -250,7 +250,7 @@ class Consist(object):
             # could be fixed by checking a list of railtypes
             return speeds_by_track_type[self.speed_class][self.gen - 1]
         elif self.role:
-            express_roles = ['express_1', 'express_2']
+            express_roles = ['express_1', 'express_2', 'branch']
             if self.role in express_roles:
                 return speeds_by_track_type['express'][self.gen - 1]
             elif self.role in ['pax_high_speed']:
