@@ -1,6 +1,6 @@
-from train import PassengerEngineConsist, ElectricPaxUnit
+from train import PassengerEngineVeryHighSpeedConsist, ElectricPaxUnit
 
-consist = PassengerEngineConsist(id='velaro_thing',
+consist = PassengerEngineVeryHighSpeedConsist(id='velaro_thing',
                                  base_numeric_id=130,
                                  name='Brenner',
                                  role='pax_high_speed',
@@ -15,11 +15,5 @@ consist.add_unit(type=ElectricPaxUnit,
                  weight=55,
                  vehicle_length=8,
                  capacity=40,
-                 spriterow_num=0)
-
-consist.add_unit(type=ElectricPaxUnit,
-                 weight=55,
-                 vehicle_length=8,
-                 capacity=40,
-                 spriterow_num=0)
-
+                 spriterow_num=0,
+                 repeat=2)

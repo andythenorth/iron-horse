@@ -1,6 +1,6 @@
-from train import PassengerEngineConsist, ElectricPaxUnit
+from train import PassengerEngineVeryHighSpeedConsist, ElectricPaxUnit
 
-consist = PassengerEngineConsist(id='apt_thing',
+consist = PassengerEngineVeryHighSpeedConsist(id='apt_thing',
                                  base_numeric_id=3060,
                                  name='Helm Wind',
                                  role='pax_high_speed',

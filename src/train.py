@@ -253,6 +253,8 @@ class Consist(object):
             express_roles = ['express_1', 'express_2']
             if self.role in express_roles:
                 return speeds_by_track_type['express'][self.gen - 1]
+            elif self.role in ['pax_high_speed']:
+                return speeds_by_track_type['very_high_speed'][self.gen - 1]
             else:
                 return speeds_by_track_type['standard'][self.gen - 1]
         else:
@@ -387,6 +389,28 @@ class PassengerEngineConsist(EngineConsist):
 class PassengerEngineRailcarConsist(PassengerEngineConsist):
     """
     Consist for a pax railcar.  Just a sparse subclass to force the gestalt_graphics and allow_flip
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.allow_flip = True
+        # Graphics configuration
+        self.generate_unit_roofs = True
+        self.roof_type = 'pax_mail_smooth'
+        # 2 liveries, should match local and express liveries of pax cars for this generation
+        # position variants
+        # * unit with driving cabs both ends
+        # * unit with driving cab front end
+        # * unit with driving cab rear end
+        # * unit with no cabs (center car)
+        # ruleset will combine these to make multiple-units 1, 2, or 3 vehicles long, then repeating the pattern
+        spriterow_group_mappings = {'pax': {'default': 0, 'first': 1, 'last': 2, 'special': 3}}
+        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings, consist_ruleset="pax_railcars")
+
+
+class PassengerEngineVeryHighSpeedConsist(PassengerEngineConsist):
+    """
+    Consist for a pax very high speed train (TGV etc).  Just a sparse subclass to force the gestalt_graphics and allow_flip
     """
 
     def __init__(self, **kwargs):
@@ -1308,8 +1332,8 @@ class DieselRailcarUnit(DieselEngineUnit):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # diesel railcars are all symmetric
-        self._symmetry_type = kwargs.get('symmetry_type', 'symmetric')
+        # the cab magic won't work unless it's asymmetric eh? :)
+        self._symmetry_type = kwargs.get('symmetry_type', 'asymmetric')
 
 
 class ElectricEngineUnit(Train):
