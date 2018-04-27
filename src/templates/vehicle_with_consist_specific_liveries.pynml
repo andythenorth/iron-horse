@@ -24,16 +24,16 @@
 <tal:consist_cargo_variants repeat="cargo_variant_num python:range(consist.gestalt_graphics.num_cargo_sprite_variants)">
     <tal:user_flipped repeat="flipped ['unflipped', 'flipped']">
         spriteset(${vehicle.id}_ss_doors_closed_livery_1_${cargo_variant_num}_${flipped}, "${global_constants.graphics_path}${consist.id}.png") {
-          spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.id}_${flipped}(10 + ${cargo_variant_num * 120})
+          spriteset_template_${vehicle.symmetry_type}_${'reversed' if flipped == 'flipped' else 'unreversed'}_${vehicle.id}_${flipped}(10 + ${cargo_variant_num * 120})
         }
         spriteset(${vehicle.id}_ss_doors_open_livery_1_${cargo_variant_num}_${flipped}, "${global_constants.graphics_path}${consist.id}.png") {
-          spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.id}_${flipped}(10 + ${cargo_variant_num * 120} + 30)
+          spriteset_template_${vehicle.symmetry_type}_${'reversed' if flipped == 'flipped' else 'unreversed'}_${vehicle.id}_${flipped}(10 + ${cargo_variant_num * 120} + 30)
         }
         spriteset(${vehicle.id}_ss_doors_closed_livery_2_${cargo_variant_num}_${flipped}, "${global_constants.graphics_path}${consist.id}.png") {
-          spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.id}_${flipped}(10 + ${cargo_variant_num * 120} + 60)
+          spriteset_template_${vehicle.symmetry_type}_${'reversed' if flipped == 'flipped' else 'unreversed'}_${vehicle.id}_${flipped}(10 + ${cargo_variant_num * 120} + 60)
         }
         spriteset(${vehicle.id}_ss_doors_open_livery_2_${cargo_variant_num}_${flipped}, "${global_constants.graphics_path}${consist.id}.png") {
-          spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.id}_${flipped}(10 + ${cargo_variant_num * 120} + 90)
+          spriteset_template_${vehicle.symmetry_type}_${'reversed' if flipped == 'flipped' else 'unreversed'}_${vehicle.id}_${flipped}(10 + ${cargo_variant_num * 120} + 90)
         }
 
         spritegroup ${vehicle.id}_sg_livery_1_${cargo_variant_num}_${flipped} {

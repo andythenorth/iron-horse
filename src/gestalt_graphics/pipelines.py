@@ -186,7 +186,7 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
         # create a mask so that we paste only the door pixels over the body (no blue pixels)
         doors_mask = doors_image.copy()
         doors_mask = doors_mask.point(lambda i: 0 if i == 255 else 255).convert("1") # the inversion here of blue and white looks a bit odd, but potato / potato
-        #doors_image.show()
+        #doors_mask.show()
         for row_num in range(int(row_count / 2)):
             # this is complex necessarily
             # 'first' and 'last' vehicles tend to be asymmetric, but only one direction is drawn for each
@@ -224,17 +224,16 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
                                             graphics_constants.spriterow_height,
                                             col_image_width,
                                             2 * graphics_constants.spriterow_height)
-                crop_box_comp_col_dest_doors = (doors_bboxes[5][0],
+                crop_box_comp_col_dest_doors = (doors_bboxes[5][0] - 200,
                                                 graphics_constants.spriterow_height,
-                                                doors_bboxes[7][0] + doors_bboxes[7][1],
+                                                doors_bboxes[7][0] + doors_bboxes[7][1] - 200,
                                                 2 * graphics_constants.spriterow_height)
                 pax_mail_car_col_image = Image.new("P", (col_image_width, 2 * graphics_constants.spriterow_height))
                 pax_mail_car_col_image.putpalette(DOS_PALETTE)
                 pax_mail_car_col_image.paste(pax_mail_car_spriterow_input_image, crop_box_comp_col_dest_1)
                 pax_mail_car_col_image.paste(pax_mail_car_spriterow_input_image, crop_box_comp_col_dest_2)
                 # add doors
-                # !! temp disabled whilst fixing asymmetry, needs re-enabled !!
-                #pax_mail_car_col_image.paste(doors_image, crop_box_comp_col_dest_doors, doors_mask)
+                pax_mail_car_col_image.paste(doors_image, crop_box_comp_col_dest_doors, doors_mask)
                 #if self.consist.id == 'luxury_passenger_car_pony_gen_6A':
                      #pax_mail_car_col_image.show()
                 row_dest_start_x = [second_col_start_x, first_col_start_x][col_count]
@@ -472,7 +471,6 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
                                             y_offset= -1 * cargo_group_output_row_height))
 
     def add_custom_buy_menu_sprite(self):
-        print("Add custom buy menu sprite")
         # hard-coded positions for buy menu sprite (if used - it's optional)
         crop_box = (360,
                     10,
