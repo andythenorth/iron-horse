@@ -1103,7 +1103,7 @@ class Train(object):
     @property
     def symmetry_type(self):
         assert(self._symmetry_type in ['symmetric', 'asymmetric']), "symmetry_type '%s' is invalid in %s" % (
-            self.symmetry_type, self.consist.id)
+            self._symmetry_type, self.consist.id)
         return self._symmetry_type
 
     @property
@@ -1469,6 +1469,7 @@ class TrainCar(Train):
         # set weight based on capacity  * a multiplier from consist (default 0.5 or so)
         return self.consist.weight_factor * self.default_cargo_capacity
 
+
 class PaxMailCar(TrainCar):
     """
     Pax or mail wagon. This subclass only exists to set symmetry_type to asymmetric.  It may need split again if pax/mail wagons diverge further.
@@ -1476,7 +1477,7 @@ class PaxMailCar(TrainCar):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # pax and mail wagons may be asymmetric, there is magic in the graphics processing to make symmetric pax/mail sprites also work with this
-        self._symmetry_type = kwargs.get('symmetry_type', 'symmetric')
+        self._symmetry_type = 'asymmetric'
 
 
 class FreightCar(TrainCar):
