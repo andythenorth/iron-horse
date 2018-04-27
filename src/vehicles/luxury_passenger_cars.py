@@ -1,4 +1,4 @@
-from train import PassengerLuxuryCarConsist, TrainCar
+from train import PassengerLuxuryCarConsist, PaxMailCar
 
 
 def main():
@@ -8,7 +8,7 @@ def main():
                                         gen=1,
                                         subtype='A')
 
-    consist.add_unit(type=TrainCar,
+    consist.add_unit(type=PaxMailCar,
                      capacity=25,
                      vehicle_length=8,
                      chassis='6_axle_solid_express_32px')
@@ -19,7 +19,7 @@ def main():
                                         gen=2,
                                         subtype='A')
 
-    consist.add_unit(type=TrainCar,
+    consist.add_unit(type=PaxMailCar,
                      capacity=40,
                      vehicle_length=8,
                      chassis='6_axle_solid_express_32px')
@@ -30,7 +30,7 @@ def main():
                                         gen=3,
                                         subtype='A')
 
-    consist.add_unit(type=TrainCar,
+    consist.add_unit(type=PaxMailCar,
                      capacity=40,
                      vehicle_length=8,
                      chassis='6_axle_solid_express_32px')
@@ -41,7 +41,7 @@ def main():
                                         gen=4,
                                         subtype='A')
 
-    consist.add_unit(type=TrainCar,
+    consist.add_unit(type=PaxMailCar,
                      capacity=40,
                      vehicle_length=8,
                      chassis='4_axle_solid_express_32px')
@@ -52,7 +52,7 @@ def main():
                                         gen=5,
                                         subtype='A')
 
-    consist.add_unit(type=TrainCar,
+    consist.add_unit(type=PaxMailCar,
                      capacity=40,
                      vehicle_length=8,
                      chassis='4_axle_solid_express_32px')
@@ -64,7 +64,7 @@ def main():
                                         gen=6,
                                         subtype='A')
 
-    consist.add_unit(type=TrainCar,
+    consist.add_unit(type=PaxMailCar,
                      capacity=40,
                      vehicle_length=8,
                      chassis='4_axle_solid_express_32px')
