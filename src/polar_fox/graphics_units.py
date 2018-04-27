@@ -4,12 +4,6 @@ Don't make changes here, make them in the Polar Fox project and redistribute.
 Any changes made here are liable to be over-written.
 """
 
-"""
-This file is generated from the Polar Fox project.
-Don't make changes here, make them in the Polar Fox project and redistribute.
-Any changes made here are liable to be over-written.
-"""
-
 import os
 from PIL import Image, ImageDraw, ImageFont
 
@@ -102,6 +96,20 @@ class AppendToSpritesheet(ProcessingUnit):
         spritesheet.sprites = temp
         box = (0, previous.size[1], image_to_paste.size[0], previous.size[1] + image_to_paste.size[1])
         spritesheet.sprites.paste(image_to_paste, box)
+        return spritesheet
+
+
+class AddBuyMenuSprite(ProcessingUnit):
+    """ AddBuyMenuSprite """
+    """ Inserts at a defined position. """
+    def __init__(self, custom_buy_menu_sprite, crop_box):
+        self.custom_buy_menu_sprite = custom_buy_menu_sprite
+        # 4 tuple for box size (left, upper, right, lower)
+        self.crop_box = crop_box
+        super(AddBuyMenuSprite, self).__init__()
+
+    def render(self, spritesheet):
+        spritesheet.sprites.paste(self.custom_buy_menu_sprite, self.crop_box)
         return spritesheet
 
 

@@ -4,7 +4,7 @@ currentdir = os.curdir
 from PIL import Image, ImageDraw
 
 import polar_fox
-from polar_fox.graphics_units import SimpleRecolour, AppendToSpritesheet, AddCargoLabel
+from polar_fox.graphics_units import SimpleRecolour, AppendToSpritesheet, AddCargoLabel, AddBuyMenuSprite
 from polar_fox.pixa import Spritesheet, pixascan
 from gestalt_graphics import graphics_constants
 
@@ -53,7 +53,8 @@ class Pipeline(object):
         for unit in units:
             spritesheet = unit.render(spritesheet)
         # I don't normally leave commented-out code behind, but I'm bored of looking in the PIL docs for how to show the image during compile
-        #spritesheet.sprites.show()
+        #if self.consist.id == 'velaro_thing':
+            #spritesheet.sprites.show()
         spritesheet.save(output_path)
 
     def render(self, consist):
@@ -470,6 +471,17 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
                                             x_offset=self.sprites_max_x_extent + 5,
                                             y_offset= -1 * cargo_group_output_row_height))
 
+    def add_custom_buy_menu_sprite(self):
+        print("Add custom buy menu sprite")
+        # hard-coded positions for buy menu sprite (if used - it's optional)
+        crop_box = (360,
+                    10,
+                    425,
+                    26)
+        custom_buy_menu_sprite = Image.open(self.input_path).crop(crop_box)
+        #custom_buy_menu_sprite.show()
+        self.units.append(AddBuyMenuSprite(custom_buy_menu_sprite, crop_box))
+
     def render(self, consist, global_constants):
         self.units = [] # graphics units not same as consist units ! confusing overlap of terminology :(
         self.consist = consist
@@ -509,6 +521,9 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
                 cumulative_input_spriterow_count += input_spriterow_count
             # self.vehicle_unit is hax, and is only valid inside this loop, so clear it to prevent incorrectly relying on it outside the loop in future :P
             self.vehicle_unit = None
+
+        if self.consist.buy_menu_x_loc == 360:
+            self.add_custom_buy_menu_sprite()
 
         input_image = Image.open(self.input_path).crop((0, 0, graphics_constants.spritesheet_width, 10))
         result = self.render_common(consist, input_image, self.units)
