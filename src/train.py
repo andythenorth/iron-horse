@@ -296,6 +296,7 @@ class Consist(object):
         if len(self.units) == 1:
             return global_constants.spritesheet_bounding_boxes_asymmetric_unreversed[6][0]
         else:
+            print(self.id, "non-standard buy menu")
             return 316  # hard-coded default case
 
     @property
