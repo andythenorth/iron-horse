@@ -103,7 +103,8 @@ def main():
     consist = FlatCarConsist(roster='pony',
                              base_numeric_id=2510,
                              gen=5,
-                             subtype='C')
+                             subtype='C',
+                             sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
                      cargo_length=8,
