@@ -2,6 +2,8 @@ from roster import Roster
 
 from vehicles import aberdare
 from vehicles import apt_thing
+from vehicles import banana
+from vehicles import bananagram
 from vehicles import bertha
 from vehicles import chaplin
 from vehicles import cheddar_valley
@@ -92,9 +94,11 @@ roster = Roster(id = 'pony',
                            chimera,
                            turtle,
                            sizzler,
+                           banana,
                            slammer,
                            tin_rocket,
                            happy_train,
+                           bananagram,
                            scooby,
                            plastic_postbox,
                            mail_rail,
