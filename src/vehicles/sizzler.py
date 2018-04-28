@@ -7,7 +7,7 @@ consist = EngineConsist(id='sizzler',
                         power=7400,
                         type_base_buy_cost_points=63,  # dibble buy cost for game balance
                         random_reverse=True,
-                        gen=6)
+                        intro_date=2025)  # explicit intro date by design
 
 consist.add_unit(type=ElectricEngineUnit,
                  weight=82,
