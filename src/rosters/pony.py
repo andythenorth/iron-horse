@@ -58,7 +58,7 @@ roster = Roster(id = 'pony',
                 intro_dates = [1860, 1900, 1930, 1960, 1990, 2020],
                 # default speeds per generation, can be over-ridden if needed by setting speed kw arg on consist
                 # speeds roughly same as RH trucks of same era + 5mph or so, and a bit higher at the top end (back and forth on this many times eh?),
-                speeds = {'RAIL': {'standard': [45, 45, 60, 75, 90, 105],
+                speeds = {'RAIL': {'standard': [45, 45, 60, 75, 87, 100], # gen 5 and 6 forced down by design, really fast freight is imbalanced
                                    'express': [60, 75, 90, 105, 120, 135],
                                    'very_high_speed': [0, 0, 0, 140, 170, 200]},
                           'METRO': {'standard': [45, 45, 55, 65, 65]}, # no express for metro in Horse
