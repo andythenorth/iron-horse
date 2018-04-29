@@ -85,6 +85,8 @@ class Consist(object):
         # optionally suppress nmlc warnings about animated pixels for consists where they're intentional
         self.suppress_animated_pixel_warnings = kwargs.get(
             'suppress_animated_pixel_warnings', False)
+        # by design, occasional 'joker' engines are included that don't fit the roster pattern, this is to add variety
+        self.joker = kwargs.get('joker', False)
         # aids 'project management'
         self.sprites_complete = kwargs.get('sprites_complete', False)
 

@@ -15,6 +15,7 @@ from vehicles import dragon
 from vehicles import electra
 from vehicles import express_tank
 from vehicles import fleet
+from vehicles import flanders_storm
 from vehicles import growler
 from vehicles import happy_train
 from vehicles import high_flyer
@@ -23,6 +24,7 @@ from vehicles import lemon
 from vehicles import longwater
 from vehicles import mail_rail
 from vehicles import northcock
+from vehicles import peasweep
 from vehicles import pendolino_thing
 from vehicles import phoenix
 from vehicles import plastic_postbox
@@ -84,6 +86,7 @@ roster = Roster(id = 'pony',
                            chinook,
                            dragon,
                            roarer,
+                           peasweep,
                            super_shoebox,
                            slug,
                            cheddar_valley,
@@ -94,6 +97,7 @@ roster = Roster(id = 'pony',
                            chimera,
                            turtle,
                            sizzler,
+                           flanders_storm,
                            banana,
                            slammer,
                            tin_rocket,
