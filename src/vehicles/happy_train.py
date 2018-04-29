@@ -6,7 +6,8 @@ consist = PassengerEngineRailcarConsist(id='happy_train',
                                  role='pax_railcar',
                                  power=750,
                                  type_base_running_cost_points=-36,  # dibble running costs for game balance
-                                 intro_date=2015)  # explicit intro date by design
+                                 gen=6,
+                                 intro_date_offset=-5) # introduce early by design
 
 consist.add_unit(type=DieselRailcarUnit,
                  weight=40,

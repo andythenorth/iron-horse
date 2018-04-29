@@ -42,8 +42,10 @@ class Consist(object):
         self._name = kwargs.get('name', None)
         self.base_numeric_id = kwargs.get('base_numeric_id', None)
         # either gen xor intro_date is required, don't set both, one will be interpolated from the other
-        self._gen = kwargs.get('gen', None)
         self._intro_date = kwargs.get('intro_date', None)
+        self._gen = kwargs.get('gen', None)
+        # if gen is used, the calculated intro date can be adjusted with +ve or -ve offset
+        self.intro_date_offset = kwargs.get('intro_date_offset', None)
         self.vehicle_life = kwargs.get('vehicle_life', 40)
         self.power = kwargs.get('power', 0)
         self.track_type = kwargs.get('track_type', 'RAIL')
@@ -173,11 +175,16 @@ class Consist(object):
     def intro_date(self):
         # automatic intro_date, but can over-ride by passing in kwargs for consist
         if self._intro_date:
+            print(self.id)
             assert(self._gen == None), "%s consist has both gen and intro_date set, which is incorrect" % self.id
+            assert(self.intro_date_offset == None), "%s consist has both intro_date and intro_date_offset set, which is incorrect" % self.id
             return self._intro_date
         else:
             assert(self._gen != None), "%s consist has neither gen nor intro_date set, which is incorrect" % self.id
-            return self.roster.intro_dates[self.gen - 1]
+            result = self.roster.intro_dates[self.gen - 1]
+            if self.intro_date_offset is not None:
+                result = result + self.intro_date_offset
+            return result
 
     @property
     def gen(self):

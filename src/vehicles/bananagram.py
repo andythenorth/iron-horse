@@ -6,7 +6,8 @@ consist = MailEngineRailcarConsist(id='bananagram',
                             role='mail_railcar',
                             power=280,
                             type_base_running_cost_points=-32,  # dibble running costs for game balance
-                            intro_date=1925)  # explicit intro date by design
+                            gen=3,
+                            intro_date_offset=-5) # introduce early by design
 
 consist.add_unit(type=DieselRailcarUnit,
                  weight=30,
