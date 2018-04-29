@@ -3,7 +3,7 @@ from train import EngineConsist, SteamEngineUnit, SteamEngineTenderUnit
 consist = EngineConsist(id='bertha',
                         base_numeric_id=70,
                         name='0-10-0 Big Bertha',
-                        role='heavy_freight',
+                        role='heavy_freight_1',
                         power=1800,
                         tractive_effort_coefficient=0.33,
                         type_base_buy_cost_points=10,  # dibble buy cost for game balance
