@@ -7,7 +7,7 @@ consist = PassengerEngineConsist(id='serpentine',
                                  track_type='METRO',
                                  power=600,
                                  type_base_buy_cost_points=40,  # dibble buy cost for game balance
-                                 intro_date=1900)
+                                 gen=2) # no intro_date_offset for this unit by design
 
 # should be 4 units not 2, would look nicer short
 consist.add_unit(type=MetroUnit,

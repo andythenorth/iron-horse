@@ -175,7 +175,6 @@ class Consist(object):
     def intro_date(self):
         # automatic intro_date, but can over-ride by passing in kwargs for consist
         if self._intro_date:
-            print(self.id)
             assert(self._gen == None), "%s consist has both gen and intro_date set, which is incorrect" % self.id
             assert(self.intro_date_offset == None), "%s consist has both intro_date and intro_date_offset set, which is incorrect" % self.id
             return self._intro_date
