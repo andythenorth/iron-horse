@@ -7,7 +7,8 @@ consist = EngineConsist(id='electra',
                         power=2400,
                         tractive_effort_coefficient=0.25,
                         type_base_buy_cost_points=10,  # dibble buy cost for game balance
-                        intro_date=1935)  # explicit intro date by design
+                        gen=3,
+                        intro_date_offset=5) # introduce later than gen epoch by design
 
 consist.add_unit(type=ElectricEngineUnit,
                  weight=105,

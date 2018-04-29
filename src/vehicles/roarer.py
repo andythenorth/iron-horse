@@ -7,7 +7,8 @@ consist = EngineConsist(id='roarer',
                         power=3200,
                         type_base_buy_cost_points=30,  # dibble buy cost for game balance
                         random_reverse=True,
-                        intro_date=1965)  # explicit intro date by design
+                        gen=4,
+                        intro_date_offset=5) # introduce later than gen epoch by design
 
 consist.add_unit(type=ElectricEngineUnit,
                  weight=80,

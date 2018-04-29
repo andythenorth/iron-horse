@@ -7,7 +7,8 @@ consist = EngineConsist(id='raven',
                         power=1800,
                         tractive_effort_coefficient=0.25,
                         buy_cost=77,
-                        intro_date=1905)  # explicit intro date by design
+                        gen=2,
+                        intro_date_offset=5) # introduce later than gen epoch by design
 
 consist.add_unit(type=ElectricEngineUnit,
                  weight=90,
