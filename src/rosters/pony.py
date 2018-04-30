@@ -21,6 +21,7 @@ from vehicles import happy_train
 from vehicles import high_flyer
 from vehicles import hudswell
 from vehicles import lemon
+from vehicles import little_bear
 from vehicles import longwater
 from vehicles import mail_rail
 from vehicles import northcock
@@ -82,6 +83,7 @@ roster = Roster(id = 'pony',
                            lemon,
                            electra,
                            shoebox,
+                           little_bear,
                            growler,
                            dragon,
                            chinook,
