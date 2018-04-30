@@ -4,7 +4,7 @@ consist = EngineConsist(id='growler',
                         base_numeric_id=2240,
                         name='Growler',
                         role='freight',
-                        power=1550,
+                        power=1600,
                         random_reverse=True,
                         gen=4)
 

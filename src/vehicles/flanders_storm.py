@@ -6,12 +6,12 @@ consist = EngineConsist(id='flanders_storm',
                         role='heavy_freight_2',
                         power=7500,
                         # dibble for game balance, assume super-slip control
-                        tractive_effort_coefficient=0.36,
+                        tractive_effort_coefficient=0.4,
                         type_base_buy_cost_points=63,  # dibble buy cost for game balance
                         random_reverse=True,
                         joker=True, # this engine doesn't fit the set roster pattern, by design it's to mix things up
-                        gen=6,
-                        intro_date_offset=-15) # introduce earlier than gen epoch by design
+                        gen=5,
+                        intro_date_offset=5) # introduce later than gen epoch by design
 
 consist.add_unit(type=ElectricEngineUnit,
                  weight=120,
