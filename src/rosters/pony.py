@@ -14,6 +14,7 @@ from vehicles import donegal
 from vehicles import dragon
 from vehicles import electra
 from vehicles import express_tank
+from vehicles import faun
 from vehicles import fleet
 from vehicles import flanders_storm
 from vehicles import growler
@@ -90,6 +91,7 @@ roster = Roster(id = 'pony',
                            roarer,
                            peasweep,
                            super_shoebox,
+                           faun,
                            slug,
                            thunderbird,
                            cheddar_valley,

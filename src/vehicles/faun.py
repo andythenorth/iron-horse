@@ -1,17 +1,17 @@
 from train import EngineConsist, DieselEngineUnit
 
-consist = EngineConsist(id='little_bear',
-                        base_numeric_id=1730,
-                        name='Little Bear',
+consist = EngineConsist(id='faun',
+                        base_numeric_id=1720,
+                        name='Faun',
                         role='freight_2',
-                        power=1200,
+                        power=1400,
                         random_reverse=True,
                         joker=True,
-                        gen=4,
+                        gen=5,
                         intro_date_offset=-5)
 
 consist.add_unit(type=DieselEngineUnit,
-                 weight=65,
+                 weight=70,
                  vehicle_length=6,
                  spriterow_num=0)
 
