@@ -3,7 +3,7 @@ from train import EngineConsist, DieselEngineUnit
 consist = EngineConsist(id='walker',
                         base_numeric_id=430,
                         name='Walker',
-                        role='branch',
+                        role='branch_express',
                         power=900,
                         track_type='NG',
                         type_base_buy_cost_points=-10,  # dibble buy cost for game balance

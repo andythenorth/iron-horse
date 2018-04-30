@@ -3,7 +3,7 @@ from train import EngineConsist, SteamEngineUnit
 consist = EngineConsist(id='express_tank',
                         base_numeric_id=1300,
                         name='2-6-2 Blackthorn',
-                        role='branch',
+                        role='branch_express',
                         power=800,
                         tractive_effort_coefficient=0.2,
                         type_base_buy_cost_points=-2,  # dibble buy cost for game balance

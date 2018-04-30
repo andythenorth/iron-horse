@@ -3,7 +3,7 @@ from train import EngineConsist, DieselEngineUnit
 consist = EngineConsist(id='little_bear',
                         base_numeric_id=1730,
                         name='Little Bear',
-                        role='freight_2',
+                        role='branch_freight',
                         power=1200,
                         random_reverse=True,
                         joker=True,
