@@ -4,7 +4,7 @@ consist = EngineConsist(id='flanders_storm',
                         base_numeric_id=1740,
                         name='Flanders Storm',
                         role='heavy_freight_2',
-                        power=7500,
+                        power=6400,
                         # dibble for game balance, assume super-slip control
                         tractive_effort_coefficient=0.4,
                         type_base_buy_cost_points=63,  # dibble buy cost for game balance

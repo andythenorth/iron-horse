@@ -17,6 +17,7 @@ from vehicles import express_tank
 from vehicles import faun
 from vehicles import fleet
 from vehicles import flanders_storm
+from vehicles import freight_tank
 from vehicles import growler
 from vehicles import happy_train
 from vehicles import high_flyer
@@ -79,6 +80,7 @@ roster = Roster(id = 'pony',
                            bertha,
                            raven,
                            express_tank,
+                           freight_tank,
                            collett,
                            northcock,
                            lemon,
