@@ -12,7 +12,6 @@ from vehicles import chinook
 from vehicles import collett
 from vehicles import donegal
 from vehicles import dragon
-from vehicles import electra
 from vehicles import express_tank
 from vehicles import faun
 from vehicles import fleet
@@ -22,17 +21,18 @@ from vehicles import growler
 from vehicles import happy_train
 from vehicles import high_flyer
 from vehicles import hudswell
+from vehicles import hurly_burly
 from vehicles import lemon
 from vehicles import little_bear
 from vehicles import longwater
 from vehicles import mail_rail
+from vehicles import moor_gallop
 from vehicles import northcock
 from vehicles import peasweep
 from vehicles import pendolino_thing
 from vehicles import phoenix
 from vehicles import plastic_postbox
 from vehicles import ramsbottom
-from vehicles import raven
 from vehicles import roarer
 from vehicles import scooby
 from vehicles import screamer
@@ -78,13 +78,13 @@ roster = Roster(id = 'pony',
                            aberdare,
                            high_flyer,
                            bertha,
-                           raven,
+                           hurly_burly,
                            express_tank,
                            freight_tank,
                            collett,
                            northcock,
                            lemon,
-                           electra,
+                           moor_gallop,
                            shoebox,
                            little_bear,
                            growler,
