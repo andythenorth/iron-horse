@@ -174,19 +174,6 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
                                             y_offset= -1 * graphics_constants.spriterow_height))
 
     def add_pax_mail_car_with_opening_doors_spriterows(self, row_count):
-        doors_bboxes = self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed
-        crop_box_doors_source = (doors_bboxes[1][0],
-                                 self.base_offset,
-                                 doors_bboxes[3][0] + doors_bboxes[3][1],
-                                 self.base_offset + graphics_constants.spriterow_height)
-        doors_image = Image.open(self.input_path).crop(crop_box_doors_source)
-        # the doors image has false colour pixels for the body, to aid drawing; remove these by converting to white, also convert any blue to white
-        doors_image = doors_image.point(lambda i: 255 if (i in range(178, 192) or i == 0) else i)
-        #doors_image.show()
-        # create a mask so that we paste only the door pixels over the body (no blue pixels)
-        doors_mask = doors_image.copy()
-        doors_mask = doors_mask.point(lambda i: 0 if i == 255 else 255).convert("1") # the inversion here of blue and white looks a bit odd, but potato / potato
-        #doors_mask.show()
         for row_num in range(int(row_count / 2)):
             # this is complex necessarily
             # 'first' and 'last' vehicles tend to be asymmetric, but only one direction is drawn for each
@@ -201,6 +188,22 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
             # we repeat it twice per output row to create asymmetrical output from symmetrical input (see notes above)
             pax_mail_car_rows_image = Image.new("P", (graphics_constants.spritesheet_width, 2 * graphics_constants.spriterow_height), 255)
             pax_mail_car_rows_image.putpalette(DOS_PALETTE)
+            # get doors
+            doors_bboxes = self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed
+            crop_box_doors_source = (doors_bboxes[1][0],
+                                     self.base_offset + (row_num * graphics_constants.spriterow_height),
+                                     doors_bboxes[3][0] + doors_bboxes[3][1],
+                                     self.base_offset + (row_num * graphics_constants.spriterow_height) + graphics_constants.spriterow_height)
+            doors_image = Image.open(self.input_path).crop(crop_box_doors_source)
+            # the doors image has false colour pixels for the body, to aid drawing; remove these by converting to white, also convert any blue to white
+            doors_image = doors_image.point(lambda i: 255 if (i in range(178, 192) or i == 0) else i)
+            #if self.consist.id == 'mail_car_pony_gen_4C':
+                #doors_image.show()
+            # create a mask so that we paste only the door pixels over the body (no blue pixels)
+            doors_mask = doors_image.copy()
+            doors_mask = doors_mask.point(lambda i: 0 if i == 255 else 255).convert("1") # the inversion here of blue and white looks a bit odd, but potato / potato
+            #doors_mask.show()
+
             for col_count, row_offset in enumerate([row_num * graphics_constants.spriterow_height for row_num in input_row_nums]):
                 crop_box_source = (0,
                                    self.base_offset + row_offset,
@@ -224,9 +227,9 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
                                             graphics_constants.spriterow_height,
                                             col_image_width,
                                             2 * graphics_constants.spriterow_height)
-                crop_box_comp_col_dest_doors = (doors_bboxes[5][0] - 200,
+                crop_box_comp_col_dest_doors = (doors_bboxes[1][0] - doors_bboxes[0][0],
                                                 graphics_constants.spriterow_height,
-                                                doors_bboxes[7][0] + doors_bboxes[7][1] - 200,
+                                                doors_bboxes[1][0] - doors_bboxes[0][0] + doors_image.size[0],
                                                 2 * graphics_constants.spriterow_height)
                 pax_mail_car_col_image = Image.new("P", (col_image_width, 2 * graphics_constants.spriterow_height))
                 pax_mail_car_col_image.putpalette(DOS_PALETTE)
