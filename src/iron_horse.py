@@ -59,8 +59,11 @@ fruit_veg_cars.main()
 from vehicles import hopper_cars
 hopper_cars.main()
 
+"""
+# commented out for 2.0 alpha
 from vehicles import intermodal_cars
 intermodal_cars.main()
+"""
 
 from vehicles import livestock_cars
 livestock_cars.main()
@@ -71,8 +74,11 @@ luxury_passenger_cars.main()
 from vehicles import mail_cars
 mail_cars.main()
 
+"""
+# commented out for 2.0 alpha
 from vehicles import metal_cars
 metal_cars.main()
+"""
 
 from vehicles import open_cars
 open_cars.main()
@@ -86,8 +92,11 @@ reefer_cars.main()
 from vehicles import stake_cars
 stake_cars.main()
 
+"""
+# commented out for 2.0 alpha
 from vehicles import silo_cars
 silo_cars.main()
+"""
 
 from vehicles import supplies_cars
 supplies_cars.main()
@@ -95,9 +104,11 @@ supplies_cars.main()
 from vehicles import tank_cars
 tank_cars.main()
 
+"""
+# commented out for 2.0 alpha
 from vehicles import vehicle_transporter_cars
 vehicle_transporter_cars.main()
-
+"""
 
 def get_active_rosters():
     #  for a faster single-roster compiles when testing, optionally pass a roster id (lower case) as a makefile arg
