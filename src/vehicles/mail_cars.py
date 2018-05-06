@@ -11,7 +11,9 @@ def main():
 
     consist.add_unit(type=PaxMailCar,
                      capacity=12,
-                     vehicle_length=4)
+                     vehicle_length=4,
+                     chassis='2_axle_filled_16px')
+
 
     #--------------- pony ----------------------------------------------------------------------
 

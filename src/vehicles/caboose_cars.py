@@ -10,7 +10,8 @@ def main():
                                 track_type='NG')
 
     consist.add_unit(type=CabooseCar,
-                     vehicle_length=4)
+                     vehicle_length=4,
+                     chassis='2_axle_caboose_16px')
 
 
     #--------------- pony ----------------------------------------------------------------------

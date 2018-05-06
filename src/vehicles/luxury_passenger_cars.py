@@ -2,6 +2,19 @@ from train import PassengerLuxuryCarConsist, PaxMailCar
 
 
 def main():
+    #--------------- pony NG ----------------------------------------------------------------------
+    consist = PassengerLuxuryCarConsist(roster='pony',
+                                        base_numeric_id=1530,
+                                        gen=1,
+                                        subtype='A',
+                                        track_type='NG')
+
+    consist.add_unit(type=PaxMailCar,
+                     capacity=25,
+                     vehicle_length=6,
+                     chassis='4_axle_filled_24px')
+
+
     #--------------- pony ----------------------------------------------------------------------
     consist = PassengerLuxuryCarConsist(roster='pony',
                                         base_numeric_id=2250,

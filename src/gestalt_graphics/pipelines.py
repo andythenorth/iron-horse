@@ -39,7 +39,7 @@ class Pipeline(object):
 
     @property
     def roof_input_path(self):
-        # convenience method to get the path for the chassis image
+        # convenience method to get the path for the roof image
         return os.path.join(currentdir, 'src', 'graphics', 'roofs', self.vehicle_unit.roof + '.png')
 
     def render_common(self, consist, input_image, units):
@@ -256,7 +256,11 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
 
     def add_box_car_with_opening_doors_spriterows(self):
         # all wagons using this gestalt repaint the relevant box car sprite for the wagon's generation and subtype
-        box_car_id = self.consist.get_wagon_id(id_base='box_car', roster=self.consist.roster.id, gen=self.consist.gen, subtype=self.consist.subtype)
+        if self.consist.track_type == 'NG':
+            id_base='box_car_ng'
+        else:
+            id_base='box_car'
+        box_car_id = self.consist.get_wagon_id(id_base=id_base, roster=self.consist.roster.id, gen=self.consist.gen, subtype=self.consist.subtype)
         box_car_input_path = os.path.join(currentdir, 'src', 'graphics', self.consist.roster_id, box_car_id + '.png')
         # two spriterows, closed doors and open doors
         crop_box_source_1 = (0,

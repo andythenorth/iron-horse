@@ -15,17 +15,6 @@ def main():
                      chassis='2_axle_filled_16px')
 
 
-    consist = PassengerCarConsist(roster='pony',
-                                  base_numeric_id=1530,
-                                  gen=1,
-                                  subtype='B',
-                                  track_type='NG')
-
-    consist.add_unit(type=PaxMailCar,
-                     capacity=25,
-                     vehicle_length=6,
-                     chassis='4_axle_filled_24px')
-
     #--------------- pony ----------------------------------------------------------------------
 
     consist = PassengerCarConsist(roster='pony',
