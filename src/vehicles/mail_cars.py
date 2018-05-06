@@ -130,7 +130,8 @@ def main():
     consist = MailCarConsist(roster='pony',
                              base_numeric_id=520,
                              gen=5,
-                             subtype='A')
+                             subtype='A',
+                             sprites_complete=True)
 
     consist.add_unit(type=PaxMailCar,
                      capacity=12,
