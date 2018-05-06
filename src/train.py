@@ -1181,7 +1181,11 @@ class Train(object):
     def roof(self):
         # fetch spritesheet name to use for roof when generating graphics
         if self.consist.generate_unit_roofs:
-            return str(4 * self.vehicle_length) + 'px_' + self.consist.roof_type
+            if self.consist.track_type == 'NG':
+                ng_prefix = 'ng_'
+            else:
+                ng_prefix = ''
+            return str(4 * self.vehicle_length) + 'px_' + ng_prefix + self.consist.roof_type
         else:
             return None
 
