@@ -4,7 +4,7 @@ consist = EngineConsist(id='walker',
                         base_numeric_id=430,
                         name='Walker',
                         role='branch_express',
-                        power=900,
+                        power=650,
                         track_type='NG',
                         type_base_buy_cost_points=-10,  # dibble buy cost for game balance
                         type_base_running_cost_points=-15,  # dibble running costs for game balance

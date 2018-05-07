@@ -2,7 +2,7 @@ from train import EngineConsist, SteamEngineUnit
 
 consist = EngineConsist(id='stewart',
                         base_numeric_id=490,
-                        name='4-4-0 Stewart',
+                        name='0-6-2 Stewart',
                         role='branch_express',
                         track_type='NG',
                         power=350,
@@ -13,6 +13,6 @@ consist = EngineConsist(id='stewart',
 
 consist.add_unit(type=SteamEngineUnit,
                  weight=30,
-                 vehicle_length=5,
+                 vehicle_length=4,
                  spriterow_num=0)
 
