@@ -4,6 +4,7 @@ from vehicles import aberdare
 from vehicles import apt_thing
 from vehicles import banana
 from vehicles import bananagram
+from vehicles import bean_feast
 from vehicles import bertha
 from vehicles import boar_cat
 from vehicles import chaplin
@@ -22,7 +23,6 @@ from vehicles import freight_tank
 from vehicles import growler
 from vehicles import happy_train
 from vehicles import high_flyer
-from vehicles import hudswell
 from vehicles import hurly_burly
 from vehicles import lemon
 from vehicles import little_bear
@@ -125,7 +125,7 @@ roster = Roster(id = 'pony',
                            tideway,
                            # brit ng
                            cheese_bug,
-                           hudswell,
+                           bean_feast,
                            walker,
                            boar_cat,
                            donegal])

@@ -1,6 +1,6 @@
 from train import EngineConsist, SteamEngineUnit
 
-consist = EngineConsist(id='hudswell',
+consist = EngineConsist(id='bean_feast',
                         base_numeric_id=240,
                         name='2-6-4 Bean Feast',
                         role='universal',
