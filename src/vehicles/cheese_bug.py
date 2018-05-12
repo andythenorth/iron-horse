@@ -1,9 +1,9 @@
 from train import EngineConsist, SteamEngineUnit
 
-consist = EngineConsist(id='stewart',
+consist = EngineConsist(id='cheese_bug',
                         base_numeric_id=490,
-                        name='0-6-2 Stewart',
-                        role='branch_express',
+                        name='0-6-2 Cheese Bug',
+                        role='universal',
                         track_type='NG',
                         power=350,
                         tractive_effort_coefficient=0.2,

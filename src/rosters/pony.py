@@ -5,8 +5,10 @@ from vehicles import apt_thing
 from vehicles import banana
 from vehicles import bananagram
 from vehicles import bertha
+from vehicles import boar_cat
 from vehicles import chaplin
 from vehicles import cheddar_valley
+from vehicles import cheese_bug
 from vehicles import chimera
 from vehicles import chinook
 from vehicles import collett
@@ -42,7 +44,6 @@ from vehicles import sizzler
 from vehicles import slammer
 from vehicles import slug
 from vehicles import standard
-from vehicles import stewart
 from vehicles import suburban
 from vehicles import super_shoebox
 from vehicles import thunderbird
@@ -64,9 +65,9 @@ roster = Roster(id = 'pony',
                 speeds = {'RAIL': {'standard': [45, 45, 60, 75, 87, 100], # gen 5 and 6 forced down by design, really fast freight is imbalanced
                                    'express': [60, 75, 90, 105, 120, 135],
                                    'very_high_speed': [0, 0, 0, 140, 170, 200]},
-                          'METRO': {'standard': [45, 45, 55, 65, 65]}, # no express for metro in Horse
-                          'NG': {'standard': [50, 50, 50, 50, 50],
-                                 'express': [55, 55, 55, 55, 55]}},
+                          'METRO': {'standard': [45, 45, 55, 65, 65]}, # no express for metro in Pony
+                          'NG': {'standard': [35, 35, 45, 55, 55], # NG standard/express all same in Pony
+                                 'express': [35, 35, 45, 55, 55]}},
 
                 # capacity factor per generation, will be multiplied by vehicle length
                 freight_car_capacity_per_unit_length =  {'RAIL': [5, 5, 5, 5, 5, 5],
@@ -123,7 +124,8 @@ roster = Roster(id = 'pony',
                            tyburn,
                            tideway,
                            # brit ng
-                           stewart,
+                           cheese_bug,
                            hudswell,
-                           donegal,
-                           walker])
+                           walker,
+                           boar_cat,
+                           donegal])

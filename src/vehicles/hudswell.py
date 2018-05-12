@@ -2,8 +2,8 @@ from train import EngineConsist, SteamEngineUnit
 
 consist = EngineConsist(id='hudswell',
                         base_numeric_id=240,
-                        name='2-6-4 Hudswell',
-                        role='branch_express',
+                        name='2-6-4 Bean Feast',
+                        role='universal',
                         track_type='NG',
                         power=500,
                         tractive_effort_coefficient=0.2,
