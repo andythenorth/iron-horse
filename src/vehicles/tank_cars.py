@@ -10,7 +10,8 @@ def main():
                              track_type='NG')
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=4)
+                     vehicle_length=4,
+                     chassis='2_axle_filled_16px')
 
         #--------------- pony ----------------------------------------------------------------------
     consist = TankCarConsist(roster='pony',
