@@ -14,7 +14,6 @@ def main():
                      vehicle_length=6,
                      chassis='4_axle_filled_24px')
 
-
     #--------------- pony ----------------------------------------------------------------------
     consist = PassengerLuxuryCarConsist(roster='pony',
                                         base_numeric_id=2250,
@@ -26,7 +25,6 @@ def main():
                      vehicle_length=8,
                      chassis='6_axle_solid_express_32px')
 
-
     consist = PassengerLuxuryCarConsist(roster='pony',
                                         base_numeric_id=2260,
                                         gen=2,
@@ -36,7 +34,6 @@ def main():
                      capacity=40,
                      vehicle_length=8,
                      chassis='6_axle_solid_express_32px')
-
 
     consist = PassengerLuxuryCarConsist(roster='pony',
                                         base_numeric_id=2270,
@@ -48,7 +45,6 @@ def main():
                      vehicle_length=8,
                      chassis='6_axle_solid_express_32px')
 
-
     consist = PassengerLuxuryCarConsist(roster='pony',
                                         base_numeric_id=3120,
                                         gen=4,
@@ -59,7 +55,6 @@ def main():
                      capacity=40,
                      vehicle_length=8,
                      chassis='4_axle_solid_express_32px')
-
 
     consist = PassengerLuxuryCarConsist(roster='pony',
                                         base_numeric_id=3130,

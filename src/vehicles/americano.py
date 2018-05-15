@@ -15,4 +15,3 @@ consist.add_unit(type=SteamEngineTenderUnit,
                  weight=30,
                  vehicle_length=4,
                  spriterow_num=1)
-

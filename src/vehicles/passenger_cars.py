@@ -14,7 +14,6 @@ def main():
                      vehicle_length=4,
                      chassis='2_axle_filled_16px')
 
-
     #--------------- pony ----------------------------------------------------------------------
 
     consist = PassengerCarConsist(roster='pony',
@@ -27,7 +26,6 @@ def main():
                      vehicle_length=6,
                      chassis='4_axle_solid_express_24px')
 
-
     consist = PassengerCarConsist(roster='pony',
                                   base_numeric_id=750,
                                   gen=2,
@@ -37,7 +35,6 @@ def main():
                      capacity=40,
                      vehicle_length=6,
                      chassis='4_axle_solid_express_24px')
-
 
     consist = PassengerCarConsist(roster='pony',
                                   base_numeric_id=760,
@@ -49,7 +46,6 @@ def main():
                      vehicle_length=6,
                      chassis='4_axle_solid_express_24px')
 
-
     consist = PassengerCarConsist(roster='pony',
                                   base_numeric_id=3110,
                                   gen=4,
@@ -60,7 +56,6 @@ def main():
                      capacity=50,
                      vehicle_length=6,
                      chassis='4_axle_solid_express_24px')
-
 
     consist = PassengerCarConsist(roster='pony',
                                   base_numeric_id=3100,
@@ -87,4 +82,3 @@ def main():
                      chassis='4_axle_solid_express_24px')
 
     # no gen 6 for brit roster, max speed reached for engines
-

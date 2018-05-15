@@ -13,7 +13,6 @@ def main():
                      vehicle_length=4,
                      chassis='2_axle_filled_16px')
 
-
     #--------------- pony ----------------------------------------------------------------------
     consist = LivestockCarConsist(roster='pony',
                                   base_numeric_id=1010,
@@ -24,7 +23,6 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=4,
                      chassis='2_axle_filled_16px')
-
 
     # no gen 2 needed
 
@@ -38,7 +36,6 @@ def main():
                      vehicle_length=4,
                      chassis='2_axle_filled_16px')
 
-
     consist = LivestockCarConsist(roster='pony',
                                   base_numeric_id=1020,
                                   gen=4,
@@ -49,7 +46,6 @@ def main():
                      vehicle_length=4,
                      chassis='2_axle_filled_16px')
 
-
     consist = LivestockCarConsist(roster='pony',
                                   base_numeric_id=2720,
                                   gen=5,
@@ -59,7 +55,6 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=8,
                      chassis='4_axle_2cc_filled_32px')
-
 
     consist = LivestockCarConsist(roster='pony',
                                   base_numeric_id=2710,

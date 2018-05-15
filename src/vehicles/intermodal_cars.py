@@ -11,7 +11,6 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=6)
 
-    
     consist = IntermodalCarConsist(roster='pony',
                                    base_numeric_id=2800,
                                    gen=4,
@@ -20,7 +19,6 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=8)
 
-    
     consist = IntermodalCarConsist(roster='pony',
                                    base_numeric_id=2810,
                                    gen=5,
@@ -29,7 +27,6 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=6)
 
-    
     consist = IntermodalCarConsist(roster='pony',
                                    base_numeric_id=2820,
                                    gen=5,
@@ -38,7 +35,6 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=8)
 
-    
     consist = IntermodalCarConsist(roster='pony',
                                    base_numeric_id=2830,
                                    gen=6,
@@ -47,7 +43,6 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=6)
 
-    
     consist = IntermodalCarConsist(roster='pony',
                                    base_numeric_id=2840,
                                    gen=6,
@@ -56,5 +51,4 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=8)
 
-    
     #--------------- llama ----------------------------------------------------------------------

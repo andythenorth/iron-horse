@@ -14,7 +14,6 @@ def main():
                      vehicle_length=4,
                      chassis='2_axle_filled_16px')
 
-
     #--------------- pony ----------------------------------------------------------------------
     consist = FlatCarConsist(roster='pony',
                              base_numeric_id=1140,
@@ -40,7 +39,6 @@ def main():
                      vehicle_length=6,
                      chassis='4_axle_gapped_24px')
 
-
     consist = FlatCarConsist(roster='pony',
                              base_numeric_id=1160,
                              gen=3,
@@ -51,7 +49,6 @@ def main():
                      cargo_length=6,
                      vehicle_length=6,
                      chassis='4_axle_gapped_24px')
-
 
     consist = FlatCarConsist(roster='pony',
                              base_numeric_id=2550,
@@ -64,7 +61,6 @@ def main():
                      vehicle_length=8,
                      chassis='4_axle_gapped_32px')
 
-
     consist = FlatCarConsist(roster='pony',
                              base_numeric_id=2540,
                              gen=4,
@@ -75,7 +71,6 @@ def main():
                      cargo_length=6,
                      vehicle_length=6,
                      chassis='2_axle_filled_24px')
-
 
     consist = FlatCarConsist(roster='pony',
                              base_numeric_id=2530,
@@ -88,7 +83,6 @@ def main():
                      vehicle_length=8,
                      chassis='4_axle_gapped_32px')
 
-
     consist = FlatCarConsist(roster='pony',
                              base_numeric_id=2520,
                              gen=5,
@@ -99,7 +93,6 @@ def main():
                      cargo_length=6,
                      vehicle_length=6,
                      chassis='2_axle_filled_24px')
-
 
     consist = FlatCarConsist(roster='pony',
                              base_numeric_id=2510,

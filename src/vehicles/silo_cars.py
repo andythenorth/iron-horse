@@ -11,7 +11,6 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=4)
 
-    
     consist = SiloCarConsist(roster='pony',
                              base_numeric_id=2980,
                              gen=5,
@@ -20,7 +19,6 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=6)
 
-    
     consist = SiloCarConsist(roster='pony',
                              base_numeric_id=2960,
                              gen=5,
@@ -29,6 +27,6 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=8)
 
-        #--------------- llama ----------------------------------------------------------------------
+    #--------------- llama ----------------------------------------------------------------------
 
     #--------------- antelope ----------------------------------------------------------------------

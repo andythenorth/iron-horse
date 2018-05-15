@@ -8,7 +8,7 @@ consist = MailEngineConsist(id='tyburn',
                             power=900,
                             type_base_buy_cost_points=56,  # dibble buy cost for game balance
                             gen=3,
-                            intro_date_offset=20) # introduce later than gen epoch by design
+                            intro_date_offset=20)  # introduce later than gen epoch by design
 
 consist.add_unit(type=MetroUnit,
                  weight=35,
@@ -21,4 +21,3 @@ consist.add_unit(type=MetroUnit,
                  vehicle_length=8,
                  capacity=60,
                  spriterow_num=1)
-

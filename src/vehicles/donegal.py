@@ -15,4 +15,3 @@ consist.add_unit(type=DieselRailcarUnit,
                  vehicle_length=7,
                  capacity=35,
                  spriterow_num=0)
-

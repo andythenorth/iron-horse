@@ -12,4 +12,3 @@ def main():
 
     consist.add_unit(type=FreightCar,
                      vehicle_length=8)
-

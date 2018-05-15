@@ -21,4 +21,3 @@ consist.add_unit(type=CargoSprinter,
                  vehicle_length=7,
                  capacity=36,  # matched to 1.5x standard Road Hog and Squid containers
                  repeat=2)
-

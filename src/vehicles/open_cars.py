@@ -14,7 +14,6 @@ def main():
                      vehicle_length=4,
                      chassis='2_axle_filled_16px')
 
-
     #--------------- pony ----------------------------------------------------------------------
 
     # only type A for gen 1
@@ -30,7 +29,6 @@ def main():
                      vehicle_length=4,
                      chassis='2_axle_filled_16px')
 
-
     # no new type A for gen 2, gen 1 type A continues
 
     consist = OpenCarConsist(roster='pony',
@@ -44,7 +42,6 @@ def main():
                      vehicle_length=6,
                      chassis='4_axle_gapped_24px')
 
-
     consist = OpenCarConsist(roster='pony',
                              base_numeric_id=840,
                              gen=3,
@@ -55,7 +52,6 @@ def main():
                      cargo_length=4,
                      vehicle_length=4,
                      chassis='2_axle_filled_16px')
-
 
     consist = OpenCarConsist(roster='pony',
                              base_numeric_id=2440,
@@ -68,7 +64,6 @@ def main():
                      vehicle_length=6,
                      chassis='4_axle_gapped_24px')
 
-
     consist = OpenCarConsist(roster='pony',
                              base_numeric_id=1450,
                              gen=4,
@@ -79,7 +74,6 @@ def main():
                      cargo_length=4,
                      vehicle_length=4,
                      chassis='2_axle_filled_16px')
-
 
     consist = OpenCarConsist(roster='pony',
                              base_numeric_id=2450,
@@ -92,7 +86,6 @@ def main():
                      vehicle_length=6,
                      chassis='2_axle_filled_24px')
 
-
     consist = OpenCarConsist(roster='pony',
                              base_numeric_id=2460,
                              gen=5,
@@ -104,7 +97,6 @@ def main():
                      vehicle_length=6,
                      chassis='2_axle_filled_24px')
 
-
     consist = OpenCarConsist(roster='pony',
                              base_numeric_id=2470,
                              gen=5,
@@ -115,6 +107,5 @@ def main():
                      cargo_length=8,
                      vehicle_length=8,
                      chassis='4_axle_1cc_filled_32px')
-
 
     # no gen 6 open cars, cap to gen 5 in Pony (really though??)

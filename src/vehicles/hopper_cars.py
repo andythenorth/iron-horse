@@ -17,7 +17,6 @@ def main():
                      vehicle_length=4,
                      chassis='2_axle_gapped_16px')
 
-
     consist = HopperCarConsist(roster='pony',
                                base_numeric_id=1070,
                                gen=3,
@@ -27,7 +26,6 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=4,
                      chassis='2_axle_gapped_16px')
-
 
     consist = HopperCarConsist(roster='pony',
                                base_numeric_id=2330,
@@ -39,7 +37,6 @@ def main():
                      vehicle_length=6,
                      chassis='4_axle_gapped_24px')
 
-
     consist = HopperCarConsist(roster='pony',
                                base_numeric_id=2320,
                                gen=4,
@@ -49,7 +46,6 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=4,
                      chassis='2_axle_gapped_16px')
-
 
     consist = HopperCarConsist(roster='pony',
                                base_numeric_id=1380,
@@ -61,7 +57,6 @@ def main():
                      vehicle_length=6,
                      chassis='4_axle_sparse_24px')
 
-
     consist = HopperCarConsist(roster='pony',
                                base_numeric_id=1080,
                                gen=5,
@@ -71,7 +66,6 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=4,
                      chassis='2_axle_sparse_16px')
-
 
     consist = HopperCarConsist(roster='pony',
                                base_numeric_id=1090,
@@ -83,7 +77,6 @@ def main():
                      vehicle_length=6,
                      chassis='4_axle_sparse_24px')
 
-
     consist = HopperCarConsist(roster='pony',
                                base_numeric_id=2780,
                                gen=5,
@@ -94,7 +87,6 @@ def main():
                      vehicle_length=8,
                      chassis='4_axle_sparse_32px')
 
-
     consist = HopperCarConsist(roster='pony',
                                base_numeric_id=3010,
                                gen=6,
@@ -104,7 +96,6 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=6,
                      chassis='4_axle_sparse_24px')
-
 
     consist = HopperCarConsist(roster='pony',
                                base_numeric_id=3020,

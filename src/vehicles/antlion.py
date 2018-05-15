@@ -12,4 +12,3 @@ consist.add_unit(type=DieselEngineUnit,
                  vehicle_length=8,
                  capacity=45,
                  spriterow_num=0)
-

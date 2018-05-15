@@ -13,7 +13,6 @@ def main():
                      vehicle_length=4,
                      chassis='2_axle_filled_16px')
 
-
     consist = FruitVegCarConsist(roster='pony',
                                  base_numeric_id=2630,
                                  gen=3,
@@ -23,7 +22,6 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=4,
                      chassis='2_axle_filled_16px')
-
 
     consist = FruitVegCarConsist(roster='pony',
                                  base_numeric_id=2620,
@@ -35,7 +33,6 @@ def main():
                      vehicle_length=6,
                      chassis='4_axle_filled_24px')
 
-
     consist = FruitVegCarConsist(roster='pony',
                                  base_numeric_id=2600,
                                  gen=4,
@@ -45,7 +42,6 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=4,
                      chassis='2_axle_filled_16px')
-
 
     consist = FruitVegCarConsist(roster='pony',
                                  base_numeric_id=2610,
@@ -57,7 +53,6 @@ def main():
                      vehicle_length=6,
                      chassis='2_axle_filled_24px')
 
-
     consist = FruitVegCarConsist(roster='pony',
                                  base_numeric_id=2650,
                                  gen=5,
@@ -68,7 +63,6 @@ def main():
                      vehicle_length=6,
                      chassis='2_axle_filled_24px')
 
-
     consist = FruitVegCarConsist(roster='pony',
                                  base_numeric_id=2660,
                                  gen=5,
@@ -78,6 +72,5 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=8,
                      chassis='4_axle_2cc_filled_32px')
-
 
     # no gen 6 fruit & veg cars, cap to gen 5 in Pony

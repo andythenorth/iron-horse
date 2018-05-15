@@ -14,7 +14,6 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=4)
 
-    
     consist = EdiblesTankCarConsist(roster='pony',
                                     base_numeric_id=1190,
                                     gen=3,
@@ -23,7 +22,6 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=4)
 
-    
     consist = EdiblesTankCarConsist(roster='pony',
                                     base_numeric_id=2990,
                                     gen=4,
@@ -32,7 +30,6 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=4)
 
-    
     consist = EdiblesTankCarConsist(roster='pony',
                                     base_numeric_id=3050,
                                     gen=5,
@@ -41,7 +38,6 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=8)
 
-    
     # no need for gen 6, would be same speed + capacity as gen 5
 
     #--------------- llama ----------------------------------------------------------------------
@@ -53,7 +49,6 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=6)
 
-    
     # no gen 2 for edibles tank cars - straight to gen 3
 
     consist = EdiblesTankCarConsist(roster='llama',
@@ -64,7 +59,6 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=8)
 
-    
     #--------------- antelope ----------------------------------------------------------------------
     consist = EdiblesTankCarConsist(roster='antelope',
                                     base_numeric_id=1690,
@@ -74,7 +68,6 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=6)
 
-    
     consist = EdiblesTankCarConsist(roster='antelope',
                                     base_numeric_id=1700,
                                     gen=2,
@@ -82,5 +75,3 @@ def main():
 
     consist.add_unit(type=FreightCar,
                      vehicle_length=8)
-
-    

@@ -10,4 +10,3 @@ consist.add_unit(type=DieselEngineUnit,
                  weight=105,
                  vehicle_length=7,
                  spriterow_num=0)
-

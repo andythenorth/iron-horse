@@ -20,4 +20,3 @@ consist.add_unit(type=MetroUnit,
                  vehicle_length=8,
                  capacity=160,
                  spriterow_num=1)
-

@@ -14,7 +14,6 @@ def main():
                      vehicle_length=4,
                      chassis='2_axle_filled_16px')
 
-
     #--------------- pony ----------------------------------------------------------------------
 
     consist = MailCarConsist(roster='pony',
@@ -27,7 +26,6 @@ def main():
                      vehicle_length=4,
                      chassis='3_axle_solid_express_16px')
 
-
     consist = MailCarConsist(roster='pony',
                              base_numeric_id=2220,
                              gen=1,
@@ -37,7 +35,6 @@ def main():
                      capacity=12,
                      vehicle_length=6,
                      chassis='4_axle_solid_express_24px')
-
 
     consist = MailCarConsist(roster='pony',
                              base_numeric_id=2290,
@@ -49,7 +46,6 @@ def main():
                      vehicle_length=4,
                      chassis='3_axle_solid_express_16px')
 
-
     consist = MailCarConsist(roster='pony',
                              base_numeric_id=920,
                              gen=2,
@@ -59,7 +55,6 @@ def main():
                      capacity=12,
                      vehicle_length=6,
                      chassis='4_axle_solid_express_24px')
-
 
     consist = MailCarConsist(roster='pony',
                              base_numeric_id=1830,
@@ -71,7 +66,6 @@ def main():
                      vehicle_length=4,
                      chassis='2_axle_solid_express_16px')
 
-
     consist = MailCarConsist(roster='pony',
                              base_numeric_id=2300,
                              gen=3,
@@ -82,7 +76,6 @@ def main():
                      vehicle_length=6,
                      chassis='4_axle_solid_express_24px')
 
-
     consist = MailCarConsist(roster='pony',
                              base_numeric_id=940,
                              gen=3,
@@ -92,7 +85,6 @@ def main():
                      capacity=15,
                      vehicle_length=8,
                      chassis='4_axle_solid_express_32px')
-
 
     consist = MailCarConsist(roster='pony',
                              base_numeric_id=1430,
@@ -105,7 +97,6 @@ def main():
                      vehicle_length=4,
                      chassis='2_axle_solid_express_16px')
 
-
     consist = MailCarConsist(roster='pony',
                              base_numeric_id=3160,
                              gen=4,
@@ -116,7 +107,6 @@ def main():
                      capacity=12,
                      vehicle_length=6,
                      chassis='4_axle_solid_express_24px')
-
 
     consist = MailCarConsist(roster='pony',
                              base_numeric_id=3170,
@@ -129,7 +119,6 @@ def main():
                      vehicle_length=8,
                      chassis='4_axle_solid_express_32px')
 
-
     consist = MailCarConsist(roster='pony',
                              base_numeric_id=520,
                              gen=5,
@@ -140,7 +129,6 @@ def main():
                      capacity=12,
                      vehicle_length=4,
                      chassis='2_axle_solid_express_16px')
-
 
     consist = MailCarConsist(roster='pony',
                              base_numeric_id=970,
@@ -153,7 +141,6 @@ def main():
                      vehicle_length=6,
                      chassis='4_axle_solid_express_24px')
 
-
     consist = MailCarConsist(roster='pony',
                              base_numeric_id=3140,
                              gen=5,
@@ -164,7 +151,6 @@ def main():
                      capacity=15,
                      vehicle_length=8,
                      chassis='4_axle_solid_express_32px')
-
 
     # gen 6 broadly same as gen 5, but new liveries (any other difference?)
 
@@ -178,7 +164,6 @@ def main():
                      vehicle_length=4,
                      chassis='2_axle_solid_express_16px')
 
-
     consist = MailCarConsist(roster='pony',
                              base_numeric_id=1950,
                              gen=6,
@@ -188,7 +173,6 @@ def main():
                      capacity=12,
                      vehicle_length=6,
                      chassis='4_axle_solid_express_24px')
-
 
     consist = MailCarConsist(roster='pony',
                              base_numeric_id=10,

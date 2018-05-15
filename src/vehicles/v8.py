@@ -12,4 +12,3 @@ consist.add_unit(type=ElectricEngineUnit,
                  weight=160,
                  vehicle_length=8,
                  spriterow_num=0)
-

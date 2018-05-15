@@ -1,12 +1,12 @@
 from train import PassengerEngineVeryHighSpeedConsist, ElectricPaxUnit
 
 consist = PassengerEngineVeryHighSpeedConsist(id='velaro_thing',
-                                 base_numeric_id=130,
-                                 name='Brenner',
-                                 role='pax_high_speed',
-                                 power=2600,
-                                 type_base_running_cost_points=-32,  # dibble running costs for game balance
-                                 gen=6) # no intro date offset for this unit
+                                              base_numeric_id=130,
+                                              name='Brenner',
+                                              role='pax_high_speed',
+                                              power=2600,
+                                              type_base_running_cost_points=-32,  # dibble running costs for game balance
+                                              gen=6)  # no intro date offset for this unit
 
 # 4 units (2-tiles) because building these is annoying if the units are too small?
 # or 2 units (1-tile) to make any integer length?

@@ -13,7 +13,7 @@ def main():
                      vehicle_length=4,
                      chassis='2_axle_filled_16px')
 
-        #--------------- pony ----------------------------------------------------------------------
+    #--------------- pony ----------------------------------------------------------------------
     consist = TankCarConsist(roster='pony',
                              base_numeric_id=1200,
                              gen=2,
@@ -22,7 +22,6 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=4,
                      chassis='2_axle_filled_16px')
-
 
     consist = TankCarConsist(roster='pony',
                              base_numeric_id=3180,
@@ -33,7 +32,6 @@ def main():
                      vehicle_length=6,
                      chassis='4_axle_gapped_24px')
 
-
     consist = TankCarConsist(roster='pony',
                              base_numeric_id=630,
                              gen=3,
@@ -42,7 +40,6 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=4,
                      chassis='2_axle_filled_16px')
-
 
     consist = TankCarConsist(roster='pony',
                              base_numeric_id=2430,
@@ -53,7 +50,6 @@ def main():
                      vehicle_length=6,
                      chassis='4_axle_gapped_24px')
 
-
     consist = TankCarConsist(roster='pony',
                              base_numeric_id=2900,
                              gen=3,
@@ -62,7 +58,6 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=8,
                      chassis='4_axle_gapped_32px')
-
 
     consist = TankCarConsist(roster='pony',
                              base_numeric_id=640,
@@ -73,7 +68,6 @@ def main():
                      vehicle_length=4,
                      chassis='2_axle_sparse_16px')
 
-
     consist = TankCarConsist(roster='pony',
                              base_numeric_id=960,
                              gen=4,
@@ -82,7 +76,6 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=6,
                      chassis='4_axle_sparse_24px')
-
 
     consist = TankCarConsist(roster='pony',
                              base_numeric_id=1250,
@@ -93,7 +86,6 @@ def main():
                      vehicle_length=8,
                      chassis='4_axle_sparse_32px')
 
-
     consist = TankCarConsist(roster='pony',
                              base_numeric_id=2410,
                              gen=5,
@@ -102,7 +94,6 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=4,
                      chassis='2_axle_sparse_16px')
-
 
     consist = TankCarConsist(roster='pony',
                              base_numeric_id=2420,
@@ -113,7 +104,6 @@ def main():
                      vehicle_length=6,
                      chassis='4_axle_sparse_24px')
 
-
     consist = TankCarConsist(roster='pony',
                              base_numeric_id=2930,
                              gen=5,
@@ -122,7 +112,6 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=8,
                      chassis='4_axle_sparse_32px')
-
 
     consist = TankCarConsist(roster='pony',
                              base_numeric_id=2920,
@@ -133,7 +122,6 @@ def main():
                      vehicle_length=4,
                      chassis='2_axle_sparse_16px')
 
-
     consist = TankCarConsist(roster='pony',
                              base_numeric_id=2970,
                              gen=6,
@@ -143,7 +131,6 @@ def main():
                      vehicle_length=6,
                      chassis='4_axle_sparse_24px')
 
-
     consist = TankCarConsist(roster='pony',
                              base_numeric_id=2790,
                              gen=6,
@@ -152,4 +139,3 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=8,
                      chassis='4_axle_sparse_32px')
-
