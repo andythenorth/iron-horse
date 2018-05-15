@@ -4,7 +4,7 @@ consist = MailEngineRailcarConsist(id='mail_rail',
                             base_numeric_id=3000,
                             name='Mail Rail',
                             role='mail_railcar',
-                            power=870,
+                            power=700,
                             # matched to fast (in this gen) freight speeds
                             type_base_running_cost_points=-32,  # dibble running costs for game balance
                             gen=6,
