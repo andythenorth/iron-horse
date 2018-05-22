@@ -1,0 +1,50 @@
+##grflangid 0x2e
+##plural 0
+STR_GRF_DESCRIPTION                                             :Licens: {SILVER}GPL v2{}{BLACK}
+
+STR_PARAM_ADJUST_VEHICLE_CAPACITY                               :Tågkapacitet
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :Väldigt liten
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Enastående
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Överdriven
+STR_PARAM_ROSTER                                                :Lista
+STR_PARAM_ROSTER_DESC                                           :Välj vilket set av tåg som skall användas.
+STR_PARAM_ROSTER_OPTION_0                                       :Järnponnyn
+STR_PARAM_ROSTER_OPTION_1                                       :Järnlaman
+STR_PARAM_ROSTER_OPTION_2                                       :Järnantilopen
+
+# keep these alphabetised, easier
+STR_NAME_SUFFIX_DIESEL                                          :Diesel
+STR_NAME_SUFFIX_ELECTRIC                                        :Elektrisk
+STR_NAME_SUFFIX_ELECTRODIESEL                                   :Elektrodiesel
+STR_NAME_SUFFIX_METRO                                           :Tunnelbana
+STR_NAME_SUFFIX_STEAM                                           :Ånga
+
+# size suffixes
+STR_NAME_SUFFIX_SMALL                                           :Liten
+STR_NAME_SUFFIX_MEDIUM                                          :Medium
+STR_NAME_SUFFIX_LARGE                                           :Stor
+
+# wagon class suffixes
+STR_NAME_SUFFIX_BOX_CAR                                         :Skåpbil
+STR_NAME_SUFFIX_CABOOSE_CAR                                     :Bromsvagn
+STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Sluten Lådvagn
+STR_NAME_SUFFIX_DUMP_CAR                                        :Dumpningsbar Lastvagn
+STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Tankvagn för Matolja
+STR_NAME_SUFFIX_FLAT_CAR                                        :Flakvagn
+STR_NAME_SUFFIX_FRUIT_VEG_CAR                                   :Grönsaker och Fruktvagn
+STR_NAME_SUFFIX_HIGH_SPEED_MAIL_CAR                             :Höghastighets Postvagn
+STR_NAME_SUFFIX_HIGH_SPEED_PASSENGER_CAR                        :Snabb Passagerarbil
+STR_NAME_SUFFIX_HOPPER_CAR                                      :Lådvagn
+STR_NAME_SUFFIX_INTERMODAL_CAR                                  :Kombinationsflakvagn
+STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Boskapsvagn
+STR_NAME_SUFFIX_LUXURY_PASSENGER_CAR                            :Lyxig Passagerarvagn
+STR_NAME_SUFFIX_MAIL_CAR                                        :Postvagn
+STR_NAME_SUFFIX_METAL_CAR                                       :Metallvagn
+STR_NAME_SUFFIX_OPEN_CAR                                        :Öppen Vagn
+STR_NAME_SUFFIX_PASSENGER_CAR                                   :Passagerarvagn
+STR_NAME_SUFFIX_REEFER_CAR                                      :Kylvagn
+STR_NAME_SUFFIX_SILO_CAR                                        :Cisternvagn
+STR_NAME_SUFFIX_STAKE_CAR                                       :Stolpflakvagn
+STR_NAME_SUFFIX_SUPPLIES_CAR                                    :Underhållsvagn
+STR_NAME_SUFFIX_TANK_CAR                                        :Tankvagn
+STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Fordonsvagn
