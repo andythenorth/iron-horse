@@ -17,9 +17,13 @@ STR_PARAM_ROSTER_OPTION_2                                       :L'antilope de f
 STR_NAME_SUFFIX_DIESEL                                          :(Diesel)
 STR_NAME_SUFFIX_ELECTRIC                                        :(Électrique)
 STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Électro-Diesel)
+STR_NAME_SUFFIX_METRO                                           :Métro
 STR_NAME_SUFFIX_STEAM                                           :(Vapeur)
 
 # size suffixes
+STR_NAME_SUFFIX_SMALL                                           :Court
+STR_NAME_SUFFIX_MEDIUM                                          :Moyen
+STR_NAME_SUFFIX_LARGE                                           :Long
 
 # wagon class suffixes
 STR_NAME_SUFFIX_BOX_CAR                                         :Fourgon
@@ -28,6 +32,7 @@ STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Wagon-trémie c
 STR_NAME_SUFFIX_DUMP_CAR                                        :Wagon à benne basculante
 STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Wagon-citerne alimentaire
 STR_NAME_SUFFIX_FLAT_CAR                                        :Wagon plat
+STR_NAME_SUFFIX_FRUIT_VEG_CAR                                   :Wagon de fruits et végétaux
 STR_NAME_SUFFIX_HIGH_SPEED_MAIL_CAR                             :Fourgon postal grande vitesse
 STR_NAME_SUFFIX_HIGH_SPEED_PASSENGER_CAR                        :Voiture grande vitesse
 STR_NAME_SUFFIX_HOPPER_CAR                                      :Wagon-trémie
