@@ -2,7 +2,7 @@ from train import MailEngineRailcarConsist, DieselRailcarUnit
 
 consist = MailEngineRailcarConsist(id='bananagram',
                                    base_numeric_id=1760,
-                                   name='Bananagram',
+                                   name='Gowsty',
                                    role='mail_railcar',
                                    power=280,
                                    type_base_running_cost_points=-32,  # dibble running costs for game balance

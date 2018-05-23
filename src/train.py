@@ -404,7 +404,10 @@ class PassengerEngineRailcarConsist(PassengerEngineConsist):
         self.allow_flip = True
         # Graphics configuration
         self.generate_unit_roofs = True
-        self.roof_type = 'pax_mail_smooth'
+        if self.gen in [2, 3]:
+            self.roof_type = 'pax_mail_ridged'
+        else:
+            self.roof_type = 'pax_mail_smooth'
         # 2 liveries, should match local and express liveries of pax cars for this generation
         # position variants
         # * unit with driving cabs both ends
@@ -462,7 +465,10 @@ class MailEngineRailcarConsist(MailEngineConsist):
         self.allow_flip = True
         # Graphics configuration
         self.generate_unit_roofs = True
-        self.roof_type = 'pax_mail_smooth'
+        if self.gen in [2, 3]:
+            self.roof_type = 'pax_mail_ridged'
+        else:
+            self.roof_type = 'pax_mail_smooth'
         # by design, mail railcars don't change livery in a pax consist, but do have 2 liveries, matching mail cars for this generation
         # position variants
         # * unit with driving cabs both ends
