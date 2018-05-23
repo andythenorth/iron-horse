@@ -5,9 +5,9 @@ consist = MailEngineRailcarConsist(id='mail_rail',
                                    name='Mail Rail',
                                    role='mail_railcar',
                                    power=700,
-                                   # matched to fast (in this gen) freight speeds
                                    type_base_running_cost_points=-32,  # dibble running costs for game balance
                                    gen=6,
+                                   sprites_complete=True,
                                    intro_date_offset=-5)  # introduce early by design
 
 consist.add_unit(type=DieselRailcarUnit,
