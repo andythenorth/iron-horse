@@ -394,6 +394,22 @@ class PassengerEngineConsist(EngineConsist):
         self.default_cargos = ['PASS']
 
 
+class PassengerEngineMetroConsist(PassengerEngineConsist):
+    """
+    Consist for a pax metro train.  Just a sparse subclass to force the gestalt_graphics
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # Graphics configuration
+        # 1 livery as can't be flipped, 1 spriterow may be left blank for compatibility with Gestalt (TBC)
+        # position variants
+        # * unit with driving cab front end
+        # * unit with driving cab rear end
+        spriterow_group_mappings = {'pax': {'default': 0, 'first': 0, 'last': 1, 'special': 0}}
+        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings, consist_ruleset="pax_railcars")
+
+
 class PassengerEngineRailcarConsist(PassengerEngineConsist):
     """
     Consist for a pax railcar.  Just a sparse subclass to force the gestalt_graphics and allow_flip
@@ -410,10 +426,10 @@ class PassengerEngineRailcarConsist(PassengerEngineConsist):
             self.roof_type = 'pax_mail_smooth'
         # 2 liveries, should match local and express liveries of pax cars for this generation
         # position variants
-        # * unit with driving cabs both ends
         # * unit with driving cab front end
         # * unit with driving cab rear end
         # * unit with no cabs (center car)
+        # * special unit with no cabs (center car)
         # ruleset will combine these to make multiple-units 1, 2, or 3 vehicles long, then repeating the pattern
         spriterow_group_mappings = {'pax': {'default': 0, 'first': 1, 'last': 2, 'special': 3}}
         self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings, consist_ruleset="pax_railcars")
@@ -431,13 +447,13 @@ class PassengerEngineVeryHighSpeedConsist(PassengerEngineConsist):
         # can't generate roofs as power cars are slopey, the roof would need to be variable length per unit
         self.generate_unit_roofs = False
         self.roof_type = None
-        # 2 liveries, should match local and express liveries of pax cars for this generation
+        # 1 livery as can't be flipped, 1 spriterow may be left blank for compatibility with Gestalt (TBC)
         # position variants
         # * unit with driving cabs both ends
         # * unit with driving cab front end
         # * unit with driving cab rear end
         # * unit with no cabs (center car)
-        # ruleset will combine these to make multiple-units 1, 2, or 3 vehicles long, then repeating the pattern
+        # ruleset will combine these to make multiple-units n vehicles long
         spriterow_group_mappings = {'pax': {'default': 0, 'first': 1, 'last': 2, 'special': 3}}
         self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings, consist_ruleset="pax_very_high_speed")
 
@@ -1431,7 +1447,7 @@ class MetroUnit(Train):
         self.engine_class = 'ENGINE_CLASS_ELECTRIC'
         self.visual_effect = 'VISUAL_EFFECT_ELECTRIC'
         self.consist.str_name_suffix = 'STR_NAME_SUFFIX_METRO'
-        # metros are asymmetric, with cab at one end of each vehicle only
+        # the cab magic won't work unless it's asymmetrical eh? :P
         self._symmetry_type = 'asymmetric'
 
 
