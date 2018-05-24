@@ -407,7 +407,7 @@ class PassengerEngineMetroConsist(PassengerEngineConsist):
         # * unit with driving cab front end
         # * unit with driving cab rear end
         spriterow_group_mappings = {'pax': {'default': 0, 'first': 0, 'last': 1, 'special': 0}}
-        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings, consist_ruleset="pax_railcars")
+        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings, consist_ruleset="metro")
 
 
 class PassengerEngineRailcarConsist(PassengerEngineConsist):
@@ -484,7 +484,7 @@ class MailEngineMetroConsist(MailEngineConsist):
         # * unit with driving cab front end
         # * unit with driving cab rear end
         spriterow_group_mappings = {'pax': {'default': 0, 'first': 0, 'last': 1, 'special': 0}}
-        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings, consist_ruleset="mail_railcars")
+        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings, consist_ruleset="metro")
 
 
 class MailEngineRailcarConsist(MailEngineConsist):
