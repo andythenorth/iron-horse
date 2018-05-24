@@ -471,6 +471,22 @@ class MailEngineConsist(EngineConsist):
         self.default_cargos = ['MAIL']
 
 
+class MailEngineMetroConsist(MailEngineConsist):
+    """
+    Consist for a mail metro train.  Just a sparse subclass to force the gestalt_graphics
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # Graphics configuration
+        # 1 livery as can't be flipped, 1 spriterow may be left blank for compatibility with Gestalt (TBC)
+        # position variants
+        # * unit with driving cab front end
+        # * unit with driving cab rear end
+        spriterow_group_mappings = {'pax': {'default': 0, 'first': 0, 'last': 1, 'special': 0}}
+        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings, consist_ruleset="mail_railcars")
+
+
 class MailEngineRailcarConsist(MailEngineConsist):
     """
     Consist for a mail railcar.  Just a sparse subclass to force the gestalt_graphics and allow_flip
@@ -493,6 +509,7 @@ class MailEngineRailcarConsist(MailEngineConsist):
         # ruleset will combine these to make multiple-units 1 or 2 vehicles long, then repeating the pattern
         spriterow_group_mappings = {'mail': {'default': 0, 'first': 1, 'last': 2, 'special': 0}}
         self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings, consist_ruleset="mail_railcars")
+
 
 class CarConsist(Consist):
     """
