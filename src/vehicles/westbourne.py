@@ -8,6 +8,7 @@ consist = PassengerEngineMetroConsist(id='westbourne',
                                       power=900,
                                       type_base_buy_cost_points=60,  # dibble buy cost for game balance
                                       gen=3,
+                                      sprites_complete=True,
                                       intro_date_offset=20)  # introduce later than gen epoch by design
 
 consist.add_unit(type=MetroUnit,

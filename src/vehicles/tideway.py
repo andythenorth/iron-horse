@@ -8,6 +8,7 @@ consist = MailEngineMetroConsist(id='tideway',
                                  power=1100,
                                  type_base_buy_cost_points=36,  # dibble buy cost for game balance
                                  gen=5,
+                                 sprites_complete=True,
                                  intro_date_offset=10)  # introduce later than gen epoch by design
 
 consist.add_unit(type=MetroUnit,
