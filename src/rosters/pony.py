@@ -2,7 +2,6 @@ from roster import Roster
 
 from vehicles import aberdare
 from vehicles import apt_thing
-from vehicles import banana
 from vehicles import bananagram
 from vehicles import bean_feast
 from vehicles import bertha
@@ -13,6 +12,7 @@ from vehicles import cheese_bug
 from vehicles import chimera
 from vehicles import chinook
 from vehicles import collett
+from vehicles import deasil
 from vehicles import donegal
 from vehicles import dragon
 from vehicles import express_tank
@@ -105,7 +105,7 @@ roster = Roster(id = 'pony',
                            turtle,
                            chimera,
                            sizzler,
-                           banana,
+                           deasil,
                            slammer,
                            tin_rocket,
                            happy_train,
