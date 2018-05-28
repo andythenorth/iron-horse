@@ -2,7 +2,6 @@ from roster import Roster
 
 from vehicles import aberdare
 from vehicles import apt_thing
-from vehicles import bananagram
 from vehicles import bean_feast
 from vehicles import bertha
 from vehicles import boar_cat
@@ -20,6 +19,7 @@ from vehicles import faun
 from vehicles import fleet
 from vehicles import flanders_storm
 from vehicles import freight_tank
+from vehicles import gowsty
 from vehicles import growler
 from vehicles import happy_train
 from vehicles import high_flyer
@@ -109,7 +109,7 @@ roster = Roster(id = 'pony',
                            slammer,
                            tin_rocket,
                            happy_train,
-                           bananagram,
+                           gowsty,
                            scooby,
                            plastic_postbox,
                            mail_rail,
