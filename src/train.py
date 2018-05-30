@@ -553,7 +553,8 @@ class CarConsist(Consist):
             capacity_factors.append(
                 unit.default_cargo_capacity * self.capacity_cost_factor)
         cost = cost + sum(capacity_factors)
-        return 0.5 * cost  # dibble all the things
+        # only 1 decimal place of precision is needed here (using more does no harm for nml, but looks really bad in docs)
+        return round(0.5 * cost, 1)  # dibble all the things
 
     @property
     def running_cost(self):
