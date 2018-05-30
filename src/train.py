@@ -373,12 +373,14 @@ class EngineConsist(Consist):
     @property
     def buy_cost(self):
         # type_base_buy_cost_points is an arbitrary adjustment that can be applied on a type-by-type basis,
-        return self.get_engine_cost_points() + self.type_base_buy_cost_points
+        # only 1 decimal place of precision is needed here (using more does no harm for nml, but looks really bad in docs)
+        return round(self.get_engine_cost_points() + self.type_base_buy_cost_points, 1)
 
     @property
     def running_cost(self):
         # type_base_running_cost_points is an arbitrary adjustment that can be applied on a type-by-type basis,
-        return self.get_engine_cost_points() + self.type_base_running_cost_points
+        # only 1 decimal place of precision is needed here (using more does no harm for nml, but looks really bad in docs)
+        return round(self.get_engine_cost_points() + self.type_base_running_cost_points, 1)
 
 
 class PassengerEngineConsist(EngineConsist):
@@ -559,7 +561,8 @@ class CarConsist(Consist):
             cost = self.speed
         else:
             cost = 125
-        return cost / self.run_cost_divisor
+        # only 1 decimal place of precision is needed here (using more does no harm for nml, but looks really bad in docs)
+        return round(cost / self.run_cost_divisor, 1)
 
     @property
     def model_life(self):
