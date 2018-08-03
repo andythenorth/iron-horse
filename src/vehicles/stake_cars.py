@@ -6,7 +6,8 @@ def main():
     consist = StakeCarConsist(roster='pony',
                               base_numeric_id=2740,
                               gen=2,
-                              subtype='A')
+                              subtype='A',
+                              sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
                      vehicle_length=4,
@@ -16,7 +17,8 @@ def main():
     consist = StakeCarConsist(roster='pony',
                               base_numeric_id=2730,
                               gen=3,
-                              subtype='A')
+                              subtype='A',
+                              sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
                      vehicle_length=4,
@@ -35,7 +37,8 @@ def main():
     consist = StakeCarConsist(roster='pony',
                               base_numeric_id=1710,
                               gen=4,
-                              subtype='A')
+                              subtype='A',
+                              sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
                      vehicle_length=4,
@@ -54,7 +57,8 @@ def main():
     consist = StakeCarConsist(roster='pony',
                               base_numeric_id=930,
                               gen=5,
-                              subtype='A')
+                              subtype='A',
+                              sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
                      vehicle_length=4,
