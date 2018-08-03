@@ -57,7 +57,8 @@ def main():
     consist = TankCarConsist(roster='pony',
                              base_numeric_id=2900,
                              gen=3,
-                             subtype='C')
+                             subtype='C',
+                             sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
                      vehicle_length=8,
