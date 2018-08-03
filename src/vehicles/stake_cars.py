@@ -28,11 +28,13 @@ def main():
     consist = StakeCarConsist(roster='pony',
                               base_numeric_id=2750,
                               gen=3,
-                              subtype='B')
+                              subtype='B',
+                              sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
                      vehicle_length=6,
-                     cargo_length=6)
+                     cargo_length=6,
+                     chassis='4_axle_filled_24px')
 
     consist = StakeCarConsist(roster='pony',
                               base_numeric_id=1710,
@@ -48,11 +50,13 @@ def main():
     consist = StakeCarConsist(roster='pony',
                               base_numeric_id=2760,
                               gen=4,
-                              subtype='B')
+                              subtype='B',
+                              sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
                      vehicle_length=6,
-                     cargo_length=6)
+                     cargo_length=6,
+                     chassis='4_axle_filled_24px')
 
     consist = StakeCarConsist(roster='pony',
                               base_numeric_id=930,
@@ -68,11 +72,13 @@ def main():
     consist = StakeCarConsist(roster='pony',
                               base_numeric_id=2770,
                               gen=5,
-                              subtype='B')
+                              subtype='B',
+                              sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
                      vehicle_length=6,
-                     cargo_length=6)
+                     cargo_length=6,
+                     chassis='2_axle_filled_24px')
 
     # no gen 6 stake cars, cap to gen 5 in Pony
 
