@@ -1003,9 +1003,7 @@ class StakeCarConsist(CarConsist):
         self.default_cargos = global_constants.default_cargos['stake']
         self.loading_speed_multiplier = 2
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsCustom({'WOOD': [0]},
-                                                      'vehicle_with_visible_cargo.pynml',
-                                                      generic_rows=[0])
+        self.gestalt_graphics = GestaltGraphicsVisibleCargo(piece='flat')
 
 
 class SuppliesCarConsist(CarConsist):

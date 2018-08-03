@@ -9,7 +9,9 @@ def main():
                               subtype='A')
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=4)
+                     vehicle_length=4,
+                     cargo_length=4,
+                     chassis='2_axle_filled_16px')
 
     consist = StakeCarConsist(roster='pony',
                               base_numeric_id=2730,
@@ -17,7 +19,9 @@ def main():
                               subtype='A')
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=4)
+                     vehicle_length=4,
+                     cargo_length=4,
+                     chassis='2_axle_filled_16px')
 
     consist = StakeCarConsist(roster='pony',
                               base_numeric_id=2750,
@@ -25,7 +29,8 @@ def main():
                               subtype='B')
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=6)
+                     vehicle_length=6,
+                     cargo_length=6)
 
     consist = StakeCarConsist(roster='pony',
                               base_numeric_id=1710,
@@ -33,7 +38,9 @@ def main():
                               subtype='A')
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=4)
+                     vehicle_length=4,
+                     cargo_length=4,
+                     chassis='2_axle_filled_16px')
 
     consist = StakeCarConsist(roster='pony',
                               base_numeric_id=2760,
@@ -41,7 +48,8 @@ def main():
                               subtype='B')
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=6)
+                     vehicle_length=6,
+                     cargo_length=6)
 
     consist = StakeCarConsist(roster='pony',
                               base_numeric_id=930,
@@ -49,7 +57,9 @@ def main():
                               subtype='A')
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=4)
+                     vehicle_length=4,
+                     cargo_length=4,
+                     chassis='2_axle_filled_16px')
 
     consist = StakeCarConsist(roster='pony',
                               base_numeric_id=2770,
@@ -57,7 +67,8 @@ def main():
                               subtype='B')
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=6)
+                     vehicle_length=6,
+                     cargo_length=6)
 
     # no gen 6 stake cars, cap to gen 5 in Pony
 
