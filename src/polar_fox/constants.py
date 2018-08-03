@@ -169,7 +169,8 @@ piece_vehicle_type_to_sprites_maps = {'flat': ['barrels_silver', 'copper_coils',
                                               'tarps_2cc_1', 'tarps_blue_1', 'tarps_gold_1', 'tarps_red_1'],
                                       'open':['barrels_silver', 'coffee', 'copper_coils', 'crates_1', 'fruit', 'logs',
                                               'lumber_planks', 'nuts', 'paper_coils', 'steel_coils',
-                                              'tarps_2cc_1', 'tarps_blue_1', 'tarps_gold_1', 'tarps_red_1']}
+                                              'tarps_2cc_1', 'tarps_blue_1', 'tarps_gold_1', 'tarps_red_1'],
+                                      'stake':['logs', 'lumber_planks']}
 
 # cargo labels can be repeated for different sprites, they'll be used selectively by vehicle types and/or randomised as appropriate
 # keep alphabetised for general quality-of-life
