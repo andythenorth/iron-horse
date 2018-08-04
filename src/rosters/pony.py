@@ -70,7 +70,7 @@ roster = Roster(id = 'pony',
                                  'express': [35, 35, 45, 55, 55]}},
 
                 # capacity factor per generation, will be multiplied by vehicle length
-                freight_car_capacity_per_unit_length =  {'RAIL': [5, 5, 5, 5, 5, 5],
+                freight_car_capacity_per_unit_length =  {'RAIL': [4, 4, 5, 6, 6, 6],
                                                          'NG': [3, 3, 3, 3, 3, 3]},
                 engines = [chaplin,
                            ramsbottom,
