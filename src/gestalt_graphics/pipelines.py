@@ -69,8 +69,10 @@ class PassThroughPipeline(Pipeline):
     def render(self, consist, global_constants):
         self.units = []
         self.consist = consist
+
         input_image = Image.open(self.input_path)
         result = self.render_common(self.consist, input_image, self.units)
+
         return result
 
 
