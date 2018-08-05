@@ -94,8 +94,8 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
                 counter += 1
         if self.has_heavy_items:
             # n.b. keys have to be sorted as order needs to be consistent everywhere
-            for cargo_filename in sorted(self.heavy_items_sprites_to_cargo_labels_maps.keys()):
-                for cargo_label in self.heavy_items_sprites_to_cargo_labels_maps[cargo_filename]:
+            for cargo_filename, cargo_labels in sorted(self.heavy_items_sprites_to_cargo_labels_maps.items(), key = lambda x: x[0]):
+                for cargo_label in cargo_labels:
                     result.setdefault(cargo_label, []).append(counter)
                 counter += 1
         if self.has_piece:
