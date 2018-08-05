@@ -1,4 +1,4 @@
-from train import SuppliesCarConsist, FreightCar
+from train import SuppliesCarConsist, SuppliesCar
 
 
 def main():
@@ -8,7 +8,7 @@ def main():
                                  gen=2,
                                  subtype='A')
 
-    consist.add_unit(type=FreightCar,
+    consist.add_unit(type=SuppliesCar,
                      vehicle_length=4)
 
     consist = SuppliesCarConsist(roster='pony',
@@ -16,7 +16,7 @@ def main():
                                  gen=3,
                                  subtype='A')
 
-    consist.add_unit(type=FreightCar,
+    consist.add_unit(type=SuppliesCar,
                      vehicle_length=4)
 
     consist = SuppliesCarConsist(roster='pony',
@@ -24,7 +24,7 @@ def main():
                                  gen=3,
                                  subtype='B')
 
-    consist.add_unit(type=FreightCar,
+    consist.add_unit(type=SuppliesCar,
                      vehicle_length=6)
 
     consist = SuppliesCarConsist(roster='pony',
@@ -32,7 +32,7 @@ def main():
                                  gen=4,
                                  subtype='B')
 
-    consist.add_unit(type=FreightCar,
+    consist.add_unit(type=SuppliesCar,
                      vehicle_length=6)
 
     consist = SuppliesCarConsist(roster='pony',
@@ -40,7 +40,7 @@ def main():
                                  gen=4,
                                  subtype='C')
 
-    consist.add_unit(type=FreightCar,
+    consist.add_unit(type=SuppliesCar,
                      vehicle_length=8)
 
     consist = SuppliesCarConsist(roster='pony',
@@ -48,7 +48,7 @@ def main():
                                  gen=5,
                                  subtype='A')
 
-    consist.add_unit(type=FreightCar,
+    consist.add_unit(type=SuppliesCar,
                      vehicle_length=4)
 
     consist = SuppliesCarConsist(roster='pony',
@@ -56,7 +56,7 @@ def main():
                                  gen=5,
                                  subtype='B')
 
-    consist.add_unit(type=FreightCar,
+    consist.add_unit(type=SuppliesCar,
                      vehicle_length=6)
 
     consist = SuppliesCarConsist(roster='pony',
@@ -64,7 +64,7 @@ def main():
                                  gen=5,
                                  subtype='C')
 
-    consist.add_unit(type=FreightCar,
+    consist.add_unit(type=SuppliesCar,
                      vehicle_length=8)
 
     # no gen 6 supplies cars, cap to gen 5 in Pony

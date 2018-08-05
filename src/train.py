@@ -1018,6 +1018,8 @@ class SuppliesCarConsist(CarConsist):
         self.label_refits_allowed = ['ENSP', 'FMSP', 'VEHI']
         self.label_refits_disallowed = []
         self.default_cargos = global_constants.default_cargos['supplies']
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsVisibleCargo(heavy_items=True)
 
 
 class TankCarConsist(CarConsist):
@@ -1548,6 +1550,16 @@ class FreightCar(TrainCar):
         self.capacity = kwargs['vehicle_length'] * \
             self.consist.roster.freight_car_capacity_per_unit_length[
                 self.consist.track_type][self.consist.gen - 1]
+
+
+class SuppliesCar(FreightCar):
+    """
+    Supplies wagon. This subclass only exists to set symmetry_type to asymmetric.
+    """
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # supplies wagons may be asymmetric, there is magic in the graphics processing to make cargo sprites work with this
+        self._symmetry_type = 'asymmetric'
 
 
 class CabooseCar(TrainCar):

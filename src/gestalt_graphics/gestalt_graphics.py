@@ -48,6 +48,7 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
         self.body_recolour_map = kwargs.get('body_recolour_map', graphics_constants.body_recolour_CC1)
         # cargo flags
         self.has_bulk = kwargs.get('bulk', False)
+        self.has_heavy_items = kwargs.get('heavy_items', None) is not None
         self.has_piece = kwargs.get('piece', None) is not None
         if self.has_piece:
             self.piece_type = kwargs.get('piece')
@@ -94,6 +95,8 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
         result.append(('empty', 1))
         if self.has_bulk:
             result.append(('bulk_cargo', 2 * len(polar_fox.constants.bulk_cargo_recolour_maps)))
+        if self.has_heavy_items:
+            result.append(('heavy_items_cargo', 2))
         if self.has_piece:
             result.append(('piece_cargo', 2 * sum([len(cargo_map[1]) for cargo_map in self.piece_cargo_maps])))
         return result
@@ -106,6 +109,8 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
             for cargo_map in polar_fox.constants.bulk_cargo_recolour_maps:
                 result[cargo_map[0]] = [counter] # list because multiple spriterows can map to a cargo label
                 counter += 1
+        if self.has_heavy_items:
+            result['DFLT'] = [0] # !! winging it here just to make it work
         if self.has_piece:
             for cargo_filename, cargo_labels in self.piece_cargo_maps:
                 for cargo_label in cargo_labels:
