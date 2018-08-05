@@ -59,7 +59,7 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
     def generic_rows(self):
         # map unknown cargos to sprites for some other label
         # assume that piece > input_spriterow_count, it's acceptable to show something like tarps for bulk, but not gravel for piece
-        if self.has_piece:
+        if self.has_piece or self.has_heavy_items:
             return self.cargo_row_map['DFLT']
         elif self.has_bulk:
             return self.cargo_row_map['GRVL']
@@ -87,7 +87,6 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
         return result
 
     def get_output_row_counts_by_type(self):
-        # private method because I want to reuse it in subclasses which over-ride the public method
         # provide the number of output rows per cargo group, total row count for the group is calculated later as needed
         # uses a list of 2-tuples, not a dict as order must be preserved
         result = []
@@ -97,8 +96,10 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
             result.append(('bulk_cargo', 2 * len(polar_fox.constants.bulk_cargo_recolour_maps)))
         if self.has_heavy_items:
             result.append(('heavy_items_cargo', 2))
+            print(self.piece_sprites_to_cargo_labels_maps)
         if self.has_piece:
             result.append(('piece_cargo', 2 * sum([len(cargo_map[1]) for cargo_map in self.piece_cargo_maps])))
+            print(self.piece_cargo_maps)
         return result
 
     @property
@@ -110,7 +111,10 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
                 result[cargo_map[0]] = [counter] # list because multiple spriterows can map to a cargo label
                 counter += 1
         if self.has_heavy_items:
-            result['DFLT'] = [0] # !! winging it here just to make it work
+            for cargo_filename, cargo_labels in self.piece_sprites_to_cargo_labels_maps.items():
+                for cargo_label in cargo_labels:
+                    result.setdefault(cargo_label, []).append(counter)
+                counter += 1
         if self.has_piece:
             for cargo_filename, cargo_labels in self.piece_cargo_maps:
                 for cargo_label in cargo_labels:
@@ -123,6 +127,7 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
     # keep alphabetised for general quality-of-life
     # DFLT label is a hack to support cargos with no specific sprites (including unknown cargos), and should not be added to cargo translation table
     piece_sprites_to_cargo_labels_maps = {'trucks_1': ['ENSP', 'FMSP'],
+                                          'tractors_1': ['FMSP'],
                                           'tarps_2cc_1': ['DFLT']}  # see note on use of DFLT above
 
 

@@ -1,3 +1,5 @@
+// CABBAGE
+
 <tal:include metal:use-macro="load: spriteset_templates.pynml" />
 
 <!--! this template does not support 'random_reverse' property or 'allow_flip' user-flipping
