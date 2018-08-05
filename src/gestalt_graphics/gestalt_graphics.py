@@ -77,18 +77,17 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
         # uses a list of 2-tuples, not a dict as order must be preserved
         result = []
         # assume an empty state spriterow - there was an optional bool flag for this per consist but it was unused so I removed it
-        result.append(('empty', 1))
+        # row count isn't needed for visible cargo generator, so set None
+        result.append(('empty', None))
         if self.has_bulk:
-            result.append(('bulk_cargo', 2 * len(polar_fox.constants.bulk_cargo_recolour_maps)))
+            # row count isn't needed for visible cargo generator, so set None
+            result.append(('bulk_cargo', None))
         if self.has_heavy_items:
-            result.append(('heavy_items_cargo', 2))
+            # row count isn't needed for visible cargo generator, so set None
+            result.append(('heavy_items_cargo', None))
         if self.has_piece:
-            # handle that piece cargos are defined in dicts as {filename:[labels]}, where most cargo sprite stuff uses ((label, values), (label, values)) pairs format
-            counter = 0
-            cargo_filenames = polar_fox.constants.piece_vehicle_type_to_sprites_maps[self.piece_type]
-            for cargo_filename in cargo_filenames:
-                counter += len(polar_fox.constants.piece_sprites_to_cargo_labels_maps[cargo_filename])
-            result.append(('piece_cargo', 2 * counter))
+            # row count isn't needed for visible cargo generator, so set None
+            result.append(('piece_cargo', None))
         return result
 
     @property

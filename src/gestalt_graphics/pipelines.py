@@ -412,7 +412,6 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
 
         # n.b. keys have to be sorted as order needs to be consistent everywhere
         for cargo_filename in sorted(consist.gestalt_graphics.heavy_items_sprites_to_cargo_labels_maps.keys()):
-            print(cargo_filename)
             cargo_filename = cargo_filename + '_' +  str(4 * vehicle.vehicle_length) + 'px'
             cargo_sprites_input_path = os.path.join(currentdir, 'src', 'graphics', 'heavy_items_cargo', cargo_filename + '.png')
             # temp, needs defined per cargo graphic type
