@@ -410,7 +410,7 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
                            10 + graphics_constants.spriterow_height)
         vehicle_TEMP_VAR_spriterow_input_image = self.comp_chassis_and_body(Image.open(self.input_path).crop(crop_box_source))
 
-        for cargo_filename in consist.gestalt_graphics.piece_sprites_to_cargo_labels_maps:
+        for cargo_filename in consist.gestalt_graphics.heavy_items_sprites_to_cargo_labels_maps:
             cargo_filename = cargo_filename + '_' +  str(4 * vehicle.vehicle_length) + 'px'
             cargo_sprites_input_path = os.path.join(currentdir, 'src', 'graphics', 'heavy_items_cargo', cargo_filename + '.png')
             # temp, needs defined per cargo graphic type

@@ -84,6 +84,7 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
             cargo_labels = polar_fox.constants.piece_sprites_to_cargo_labels_maps[sprite_name]
             map = (sprite_name, cargo_labels)
             result.append(map)
+        print(result)
         return result
 
     def get_output_row_counts_by_type(self):
@@ -109,7 +110,7 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
                 result[cargo_map[0]] = [counter] # list because multiple spriterows can map to a cargo label
                 counter += 1
         if self.has_heavy_items:
-            for cargo_filename, cargo_labels in self.piece_sprites_to_cargo_labels_maps.items():
+            for cargo_filename, cargo_labels in self.heavy_items_sprites_to_cargo_labels_maps.items():
                 for cargo_label in cargo_labels:
                     result.setdefault(cargo_label, []).append(counter)
                 counter += 1
@@ -124,9 +125,9 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
     # cargo labels can be repeated for different sprites, they'll be used selectively by vehicle types and/or randomised as appropriate
     # keep alphabetised for general quality-of-life
     # DFLT label is a hack to support cargos with no specific sprites (including unknown cargos), and should not be added to cargo translation table
-    piece_sprites_to_cargo_labels_maps = {'trucks_1': ['ENSP', 'FMSP'],
-                                          'tractors_1': ['FMSP'],
-                                          'tarps_2cc_1': ['DFLT']}  # see note on use of DFLT above
+    heavy_items_sprites_to_cargo_labels_maps = {'trucks_1': ['ENSP', 'FMSP'],
+                                                'tractors_1': ['FMSP'],
+                                                'tarps_2cc_1': ['DFLT']}  # see note on use of DFLT above
 
 
 class GestaltGraphicsBoxCarOpeningDoors(GestaltGraphics):
