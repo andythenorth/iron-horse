@@ -404,6 +404,7 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
 
     def add_heavy_items_cargo_spriterows(self, consist, vehicle):
         # indivisible cargos, generation-specific sprites, asymmetric, pre-positioned to suit the vehicle
+        # used for supply cars, others if needed
         crop_box_source = (0,
                            10,
                            self.sprites_max_x_extent,
@@ -438,28 +439,23 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
                                    self.sprites_max_x_extent,
                                    graphics_constants.spriterow_height)
 
-            vehicle_TEMP_VAR_spriterow_input_image = vehicle_spriterow_input_image.copy()
-            vehicle_TEMP_VAR_spriterow_input_image.paste(cargo_image, crop_box_cargo_dest, cargo_mask)
-            # vehicle_TEMP_VAR_spriterow_input_image.show()
+            vehicle_comped_image = vehicle_spriterow_input_image.copy()
+            vehicle_comped_image.paste(cargo_image, crop_box_cargo_dest, cargo_mask)
+            # vehicle_comped_image_as_spritesheet.show()
 
-            crop_box_comp_dest_1 = (0,
-                                    0,
-                                    self.sprites_max_x_extent,
-                                    graphics_constants.spriterow_height)
-            crop_box_comp_dest_2 = (0,
-                                    0,
-                                    self.sprites_max_x_extent,
-                                    graphics_constants.spriterow_height)
+            crop_box_comp_dest = (0,
+                                  0,
+                                  self.sprites_max_x_extent,
+                                  graphics_constants.spriterow_height)
 
-            vehicle_TEMP_VAR_spriterow_input_as_spritesheet = self.make_spritesheet_from_image(vehicle_TEMP_VAR_spriterow_input_image)
+            vehicle_comped_image_as_spritesheet = self.make_spritesheet_from_image(vehicle_comped_image)
 
             # loaded and loading states are same for these vehicles, but template expects spriterows for both, so add result twice
-            self.units.append(AppendToSpritesheet(vehicle_TEMP_VAR_spriterow_input_as_spritesheet, crop_box_comp_dest_1))
-            self.units.append(AppendToSpritesheet(vehicle_TEMP_VAR_spriterow_input_as_spritesheet, crop_box_comp_dest_2))
+            self.units.append(AppendToSpritesheet(vehicle_comped_image_as_spritesheet, crop_box_comp_dest))
+            self.units.append(AppendToSpritesheet(vehicle_comped_image_as_spritesheet, crop_box_comp_dest))
             self.units.append(AddCargoLabel(label=cargo_filename,
                                             x_offset=self.sprites_max_x_extent + 5,
                                             y_offset= -1 * graphics_constants.spriterow_height))
-
 
     def add_piece_cargo_spriterows(self, consist, vehicle):
         # !! this could possibly be optimised by slicing all the cargos once, globally, instead of per-unit
