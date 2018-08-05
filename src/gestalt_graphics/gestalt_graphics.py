@@ -72,19 +72,6 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
     def nml_template(self):
         return 'vehicle_with_visible_cargo.pynml'
 
-    @property
-    def piece_cargo_maps(self):
-        # I cleaned up how piece cargo maps are *defined* in March 2018
-        # however the pre-existing templates expect a specific data structure with pairs of values
-        # it's more effective to simply remap the data structure onto the data structure with pairs of values
-        result = []
-        sprite_names = polar_fox.constants.piece_vehicle_type_to_sprites_maps[self.piece_type]
-        for sprite_name in sprite_names:
-            cargo_labels = polar_fox.constants.piece_sprites_to_cargo_labels_maps[sprite_name]
-            map = (sprite_name, cargo_labels)
-            result.append(map)
-        return result
-
     def get_output_row_counts_by_type(self):
         # provide the number of output rows per cargo group, total row count for the group is calculated later as needed
         # uses a list of 2-tuples, not a dict as order must be preserved
@@ -96,7 +83,12 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
         if self.has_heavy_items:
             result.append(('heavy_items_cargo', 2))
         if self.has_piece:
-            result.append(('piece_cargo', 2 * sum([len(cargo_map[1]) for cargo_map in self.piece_cargo_maps])))
+            # handle that piece cargos are defined in dicts as {filename:[labels]}, where most cargo sprite stuff uses ((label, values), (label, values)) pairs format
+            counter = 0
+            cargo_filenames = polar_fox.constants.piece_vehicle_type_to_sprites_maps[self.piece_type]
+            for cargo_filename in cargo_filenames:
+                counter += len(polar_fox.constants.piece_sprites_to_cargo_labels_maps[cargo_filename])
+            result.append(('piece_cargo', 2 * counter))
         return result
 
     @property
@@ -113,6 +105,7 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
                     result.setdefault(cargo_label, []).append(counter)
                 counter += 1
         if self.has_piece:
+            # handle that piece cargos are defined in dicts as {filename:[labels]}, where most cargo sprite stuff uses ((label, values), (label, values)) pairs format
             for cargo_filename in polar_fox.constants.piece_vehicle_type_to_sprites_maps[self.piece_type]:
                 for cargo_label in polar_fox.constants.piece_sprites_to_cargo_labels_maps[cargo_filename]:
                     result.setdefault(cargo_label, []).append(counter)
