@@ -66,7 +66,7 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
         else:
             # shouldn't reach here, but eh,
             utils.echo_message('generic_rows hit an unknown result in GestaltGraphics')
-            return [0]
+            return ['FAIL']
 
     @property
     def nml_template(self):
@@ -75,16 +75,14 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
     @property
     def piece_cargo_maps(self):
         # I cleaned up how piece cargo maps are *defined* in March 2018
-        # however the pre-existing templates expect a specific data structure
-        # it's more effective right now to simply remap the new data structure onto the old
-        # the templates and pipelines can be refactored later, and this can then be simpler
+        # however the pre-existing templates expect a specific data structure with pairs of values
+        # it's more effective to simply remap the data structure onto the data structure with pairs of values
         result = []
         sprite_names = polar_fox.constants.piece_vehicle_type_to_sprites_maps[self.piece_type]
         for sprite_name in sprite_names:
             cargo_labels = polar_fox.constants.piece_sprites_to_cargo_labels_maps[sprite_name]
             map = (sprite_name, cargo_labels)
             result.append(map)
-        print(result)
         return result
 
     def get_output_row_counts_by_type(self):
@@ -115,8 +113,8 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
                     result.setdefault(cargo_label, []).append(counter)
                 counter += 1
         if self.has_piece:
-            for cargo_filename, cargo_labels in self.piece_cargo_maps:
-                for cargo_label in cargo_labels:
+            for cargo_filename in polar_fox.constants.piece_vehicle_type_to_sprites_maps[self.piece_type]:
+                for cargo_label in polar_fox.constants.piece_sprites_to_cargo_labels_maps[cargo_filename]:
                     result.setdefault(cargo_label, []).append(counter)
                 counter += 1
         return result
