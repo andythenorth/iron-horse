@@ -75,7 +75,7 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
     @property
     def piece_cargo_maps(self):
         # I cleaned up how piece cargo maps are *defined* in March 2018
-        # however the pre-existing pipelines and templates expect a specific data structure
+        # however the pre-existing templates expect a specific data structure
         # it's more effective right now to simply remap the new data structure onto the old
         # the templates and pipelines can be refactored later, and this can then be simpler
         result = []
@@ -96,10 +96,8 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
             result.append(('bulk_cargo', 2 * len(polar_fox.constants.bulk_cargo_recolour_maps)))
         if self.has_heavy_items:
             result.append(('heavy_items_cargo', 2))
-            print(self.piece_sprites_to_cargo_labels_maps)
         if self.has_piece:
             result.append(('piece_cargo', 2 * sum([len(cargo_map[1]) for cargo_map in self.piece_cargo_maps])))
-            print(self.piece_cargo_maps)
         return result
 
     @property

@@ -526,7 +526,7 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
                          self.sprites_max_x_extent,
                          cargo_group_output_row_height)
 
-        for cargo_filename, cargo_labels in consist.gestalt_graphics.piece_cargo_maps:
+        for cargo_filename in polar_fox.constants.piece_vehicle_type_to_sprites_maps[consist.gestalt_graphics.piece_type]:
             cargo_sprites_input_path = os.path.join(currentdir, 'src', 'polar_fox', 'cargo_graphics', cargo_filename + '.png')
             cargo_sprites_input_image = Image.open(cargo_sprites_input_path)
             cargo_sprites = []
