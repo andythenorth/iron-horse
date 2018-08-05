@@ -100,8 +100,9 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
                 result[cargo_map[0]] = [counter] # list because multiple spriterows can map to a cargo label
                 counter += 1
         if self.has_heavy_items:
-            for cargo_filename, cargo_labels in self.heavy_items_sprites_to_cargo_labels_maps.items():
-                for cargo_label in cargo_labels:
+            # n.b. keys have to be sorted as order needs to be consistent everywhere
+            for cargo_filename in sorted(self.heavy_items_sprites_to_cargo_labels_maps.keys()):
+                for cargo_label in self.heavy_items_sprites_to_cargo_labels_maps[cargo_filename]:
                     result.setdefault(cargo_label, []).append(counter)
                 counter += 1
         if self.has_piece:
