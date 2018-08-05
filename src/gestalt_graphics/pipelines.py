@@ -601,14 +601,13 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
         self.sprites_max_x_extent = self.global_constants.sprites_max_x_extent
 
         # the cumulative_input_spriterow_count updates per processed group of spriterows, and is key to making this work
+        # !! input_spriterow_count looks a bit weird though; I tried moving it to gestalts, but didn't really work
         cumulative_input_spriterow_count = 0
         for vehicle_counter, vehicle_rows in enumerate(consist.get_spriterows_for_consist_or_subpart(consist.unique_units)):
             # 'vehicle_unit' not 'unit' to avoid conflating with graphics processor 'unit'
             self.vehicle_unit = consist.unique_units[vehicle_counter] # !!  this is ugly hax, I didn't want to refactor the iterator above to contain the vehicle
             self.cur_vehicle_empty_row_offset = 10 + cumulative_input_spriterow_count * graphics_constants.spriterow_height
-            for spriterow_data in vehicle_rows:
-                spriterow_type = spriterow_data[0]
-                print(spriterow_data)
+            for spriterow_type in vehicle_rows:
                 self.base_offset = 10 + (graphics_constants.spriterow_height * cumulative_input_spriterow_count)
                 if spriterow_type == 'always_use_same_spriterow' or spriterow_type == 'empty':
                     input_spriterow_count = 1
@@ -620,15 +619,17 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
                     input_spriterow_count = 2
                     self.add_box_car_with_opening_doors_spriterows()
                 elif spriterow_type == 'caboose_spriterows':
-                    input_spriterow_count = spriterow_data[1]
+                    input_spriterow_count = 2 * consist.gestalt_graphics.num_generations
                     self.add_caboose_spriterows(input_spriterow_count)
                 elif spriterow_type == 'pax_mail_cars_with_doors':
-                    input_spriterow_count = spriterow_data[1]
+                    # 2 liveries with 2 rows each: empty & loaded (doors closed), loading (doors open)
+                    input_spriterow_count = 4 * consist.gestalt_graphics.num_cargo_sprite_variants
                     self.add_pax_mail_car_with_opening_doors_spriterows(input_spriterow_count)
                 elif spriterow_type == 'bulk_cargo':
                     input_spriterow_count = 2
                     self.add_bulk_cargo_spriterows()
                 elif spriterow_type == 'heavy_items_cargo':
+                    input_spriterow_count = 1
                     self.add_heavy_items_cargo_spriterows(consist, consist.unique_units[vehicle_counter])
                 elif spriterow_type == 'piece_cargo':
                     input_spriterow_count = 2

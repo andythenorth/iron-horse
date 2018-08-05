@@ -29,9 +29,9 @@ class GestaltGraphics(object):
                 row_nums_seen.append(row_num)
         return len(set(row_nums_seen))
 
-    def get_output_row_counts_by_type(self):
+    def get_output_row_types(self):
         # stub, for compatibility reasons
-        return [('single_row', 1)]
+        return ['single_row']
 
 
 class GestaltGraphicsVisibleCargo(GestaltGraphics):
@@ -72,22 +72,16 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
     def nml_template(self):
         return 'vehicle_with_visible_cargo.pynml'
 
-    def get_output_row_counts_by_type(self):
-        # provide the number of output rows per cargo group, total row count for the group is calculated later as needed
-        # uses a list of 2-tuples, not a dict as order must be preserved
+    def get_output_row_types(self):
         result = []
         # assume an empty state spriterow - there was an optional bool flag for this per consist but it was unused so I removed it
-        # row count isn't needed for visible cargo generator, so set None
-        result.append(('empty', None))
+        result.append('empty')
         if self.has_bulk:
-            # row count isn't needed for visible cargo generator, so set None
-            result.append(('bulk_cargo', None))
+            result.append('bulk_cargo')
         if self.has_heavy_items:
-            # row count isn't needed for visible cargo generator, so set None
-            result.append(('heavy_items_cargo', None))
+            result.append('heavy_items_cargo')
         if self.has_piece:
-            # row count isn't needed for visible cargo generator, so set None
-            result.append(('piece_cargo', None))
+            result.append('piece_cargo')
         return result
 
     @property
@@ -145,10 +139,8 @@ class GestaltGraphicsBoxCarOpeningDoors(GestaltGraphics):
     def nml_template(self):
         return 'vehicle_box_car_with_opening_doors.pynml'
 
-    def get_output_row_counts_by_type(self):
-        # just 1 livery with 2 rows: empty & loaded (doors closed), loading (doors open)
-        # spriterow count set to None, not needed for box car generator
-        return [('box_car_with_opening_doors_spriterows', None)]
+    def get_output_row_types(self):
+        return ['box_car_with_opening_doors_spriterows']
 
     @property
     def cargo_row_map(self):
@@ -181,9 +173,8 @@ class GestaltGraphicsCaboose(GestaltGraphics):
     def nml_template(self):
         return 'vehicle_caboose.pynml'
 
-    def get_output_row_counts_by_type(self):
-        # Each roster generation has 1 variant with 2 liveries
-        return [('caboose_spriterows', 2 * self.num_generations)]
+    def get_output_row_types(self):
+        return ['caboose_spriterows']
 
     @property
     def cargo_row_map(self):
@@ -215,11 +206,8 @@ class GestaltGraphicsCargoSpecificLivery(GestaltGraphics):
     def nml_template(self):
         return 'vehicle_with_cargo_specific_liveries.pynml'
 
-    def get_output_row_counts_by_type(self):
-        # the template for visible livery requires the count of _all_ the liveries, *no calculating later*
-        # 1 row per livery, no loading / loaded states
-        # spriterow count is set to None, count not needed for livery spriterows
-        return [('livery_spriterow', None)]
+    def get_output_row_types(self):
+        return ['livery_spriterow']
 
     @property
     def cargo_row_map(self):
@@ -279,9 +267,8 @@ class GestaltGraphicsConsistSpecificLivery(GestaltGraphics):
         # over-ride in sub-classes as needed
         return 'vehicle_with_consist_specific_liveries.pynml'
 
-    def get_output_row_counts_by_type(self):
-        # 2 liveries with 2 rows each: empty & loaded (doors closed), loading (doors open)
-        return [('pax_mail_cars_with_doors', 4 * self.num_cargo_sprite_variants)]
+    def get_output_row_types(self):
+        return ['pax_mail_cars_with_doors']
 
     def get_variants_with_position_keys(self, cargo_row_map):
         # just formatting for human-readable access to positions in templates where mapping[0][n] was fiddly
@@ -365,13 +352,8 @@ class GestaltGraphicsCustom(GestaltGraphics):
     def nml_template(self):
         return self._nml_template
 
-    def get_output_row_counts_by_type(self):
-        # assume we want whatever the base class count of rows is (handles empty state etc)
-        # ^ that might not be viable as it ties 'custom' to same template assumptions as base class - change if needed eh?
-        result = []
-        # assume two output rows (loading, loaded) - extend this if it's not viable
-        result.append(('custom_cargo', 2))
-        return result
+    def get_output_row_types(self):
+        return ['custom_cargo']
 
     @property
     def cargo_row_map(self):
