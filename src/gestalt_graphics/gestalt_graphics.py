@@ -147,7 +147,8 @@ class GestaltGraphicsBoxCarOpeningDoors(GestaltGraphics):
 
     def get_output_row_counts_by_type(self):
         # just 1 livery with 2 rows: empty & loaded (doors closed), loading (doors open)
-        return [('box_car_with_opening_doors_spriterows', 2)]
+        # spriterow count set to None, not needed for box car generator
+        return [('box_car_with_opening_doors_spriterows', None)]
 
     @property
     def cargo_row_map(self):
@@ -217,7 +218,8 @@ class GestaltGraphicsCargoSpecificLivery(GestaltGraphics):
     def get_output_row_counts_by_type(self):
         # the template for visible livery requires the count of _all_ the liveries, *no calculating later*
         # 1 row per livery, no loading / loaded states
-        return [('livery_spriterow', self.num_cargo_sprite_variants)]
+        # spriterow count is set to None, count not needed for livery spriterows
+        return [('livery_spriterow', None)]
 
     @property
     def cargo_row_map(self):
