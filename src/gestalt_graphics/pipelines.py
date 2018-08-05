@@ -415,7 +415,7 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
         for cargo_filename in sorted(consist.gestalt_graphics.heavy_items_sprites_to_cargo_labels_maps.keys()):
             cargo_filename = cargo_filename + '_' +  str(4 * vehicle.vehicle_length) + 'px'
             cargo_sprites_input_path = os.path.join(currentdir, 'src', 'graphics', 'heavy_items_cargo', cargo_filename + '.png')
-            # temp, needs defined per cargo graphic type
+            # !! temp, needs defined per cargo graphic type
             cargo_spriterow_offset = {1: 0, 2: 0, 3: 0, 4: 1, 5: 1, 6: 1}[consist.gen]
 
             crop_box_cargo_source = (0,
