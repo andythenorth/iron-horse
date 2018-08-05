@@ -1,0 +1,3 @@
+As of August 2018, only used in Iron Horse, and very specific sprite positioning for train wagons.
+
+Maybe move to Polar Fox in future and use generic sprite positioning (pink pixel locs)
