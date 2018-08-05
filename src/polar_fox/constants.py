@@ -161,7 +161,8 @@ cargo_spritesheet_bounding_boxes_base = ((10, 10, 18, 26), (22, 10, 44, 26), (48
 
 # Piece maps
 # vehicle types are mapped to specific cargo sprites
-# this permits fine-grained control, e.g. cargos that can only go in open vehicles, outsized cargo that needs flats etc
+# 1. provides predictable order for cargo rows (by arranging in list), required for nml template to match spritesheet
+# 2. this permits fine-grained control, e.g. cargos that can only go in open vehicles, outsized cargo that needs flats etc
 # also supports multiple cargo sprite types to suit vehicle, e.g. piled fruit, fruit in crates etc
 # keep alphabetised for general quality-of-life
 piece_vehicle_type_to_sprites_maps = {'flat': ['barrels_silver', 'copper_coils', 'crates_1', 'logs',
