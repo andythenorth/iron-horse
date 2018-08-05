@@ -408,7 +408,7 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
                            10,
                            self.sprites_max_x_extent,
                            10 + graphics_constants.spriterow_height)
-        vehicle_TEMP_VAR_spriterow_input_image = self.comp_chassis_and_body(Image.open(self.input_path).crop(crop_box_source))
+        vehicle_spriterow_input_image = self.comp_chassis_and_body(Image.open(self.input_path).crop(crop_box_source))
 
         # n.b. keys have to be sorted as order needs to be consistent everywhere
         for cargo_filename in sorted(consist.gestalt_graphics.heavy_items_sprites_to_cargo_labels_maps.keys()):
@@ -437,6 +437,8 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
                                    0,
                                    self.sprites_max_x_extent,
                                    graphics_constants.spriterow_height)
+
+            vehicle_TEMP_VAR_spriterow_input_image = vehicle_spriterow_input_image.copy()
             vehicle_TEMP_VAR_spriterow_input_image.paste(cargo_image, crop_box_cargo_dest, cargo_mask)
             # vehicle_TEMP_VAR_spriterow_input_image.show()
 
