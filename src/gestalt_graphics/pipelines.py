@@ -410,53 +410,53 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
                            10 + graphics_constants.spriterow_height)
         vehicle_TEMP_VAR_spriterow_input_image = self.comp_chassis_and_body(Image.open(self.input_path).crop(crop_box_source))
 
-        cargo_filename = 'heavy_items_cargo_' + str(vehicle.vehicle_length)
-        cargo_sprites_input_path = os.path.join(currentdir, 'src', 'graphics', 'heavy_items_cargo', cargo_filename + '.png')
-        # temp, needs defined per cargo graphic type
-        cargo_spriterow_offset = {1: 0, 2: 0, 3: 0, 4: 1, 5: 1, 6: 1}[consist.gen]
+        for cargo_filename in consist.gestalt_graphics.piece_sprites_to_cargo_labels_maps:
+            cargo_filename = cargo_filename + '_' +  str(4 * vehicle.vehicle_length) + 'px'
+            cargo_sprites_input_path = os.path.join(currentdir, 'src', 'graphics', 'heavy_items_cargo', cargo_filename + '.png')
+            # temp, needs defined per cargo graphic type
+            cargo_spriterow_offset = {1: 0, 2: 0, 3: 0, 4: 1, 5: 1, 6: 1}[consist.gen]
 
-        crop_box_cargo_source = (0,
-                                 10 + (cargo_spriterow_offset * graphics_constants.spriterow_height),
-                                 self.sprites_max_x_extent,
-                                 10 + ((cargo_spriterow_offset + 1) * graphics_constants.spriterow_height))
+            crop_box_cargo_source = (0,
+                                     10 + (cargo_spriterow_offset * graphics_constants.spriterow_height),
+                                     self.sprites_max_x_extent,
+                                     10 + ((cargo_spriterow_offset + 1) * graphics_constants.spriterow_height))
 
-        cargo_image = Image.open(cargo_sprites_input_path).crop(crop_box_cargo_source)
-        # cargo_image.show()
+            cargo_image = Image.open(cargo_sprites_input_path).crop(crop_box_cargo_source)
+            # cargo_image.show()
 
-        # the cargo image has false colour pixels for the chassis, to aid drawing; remove these by converting to white, also convert any blue to white
-        cargo_image = cargo_image.point(lambda i: 255 if (i in range(178, 192) or i == 0) else i)
+            # the cargo image has false colour pixels for the chassis, to aid drawing; remove these by converting to white, also convert any blue to white
+            cargo_image = cargo_image.point(lambda i: 255 if (i in range(178, 192) or i == 0) else i)
 
-        # create a mask so that we paste only the cargo pixels over the body (no blue pixels)
-        cargo_mask = cargo_image.copy()
-        cargo_mask = cargo_image.point(lambda i: 0 if i == 255 else 255).convert("1") # the inversion here of blue and white looks a bit odd, but potato / potato
-        # cargo_mask.show()
+            # create a mask so that we paste only the cargo pixels over the body (no blue pixels)
+            cargo_mask = cargo_image.copy()
+            cargo_mask = cargo_image.point(lambda i: 0 if i == 255 else 255).convert("1") # the inversion here of blue and white looks a bit odd, but potato / potato
+            # cargo_mask.show()
 
-        crop_box_cargo_dest = (0,
-                               0,
-                               self.sprites_max_x_extent,
-                               graphics_constants.spriterow_height)
-        vehicle_TEMP_VAR_spriterow_input_image.paste(cargo_image, crop_box_cargo_dest, cargo_mask)
-        # vehicle_TEMP_VAR_spriterow_input_image.show()
+            crop_box_cargo_dest = (0,
+                                   0,
+                                   self.sprites_max_x_extent,
+                                   graphics_constants.spriterow_height)
+            vehicle_TEMP_VAR_spriterow_input_image.paste(cargo_image, crop_box_cargo_dest, cargo_mask)
+            # vehicle_TEMP_VAR_spriterow_input_image.show()
 
-        crop_box_comp_dest_1 = (0,
-                                0,
-                                self.sprites_max_x_extent,
-                                graphics_constants.spriterow_height)
-        crop_box_comp_dest_2 = (0,
-                                0,
-                                self.sprites_max_x_extent,
-                                graphics_constants.spriterow_height)
+            crop_box_comp_dest_1 = (0,
+                                    0,
+                                    self.sprites_max_x_extent,
+                                    graphics_constants.spriterow_height)
+            crop_box_comp_dest_2 = (0,
+                                    0,
+                                    self.sprites_max_x_extent,
+                                    graphics_constants.spriterow_height)
 
-        vehicle_TEMP_VAR_spriterow_input_as_spritesheet = self.make_spritesheet_from_image(vehicle_TEMP_VAR_spriterow_input_image)
+            vehicle_TEMP_VAR_spriterow_input_as_spritesheet = self.make_spritesheet_from_image(vehicle_TEMP_VAR_spriterow_input_image)
 
-        # loaded and loading states are same for these vehicles, but template expects spriterows for both, so add result twice
-        self.units.append(AppendToSpritesheet(vehicle_TEMP_VAR_spriterow_input_as_spritesheet, crop_box_comp_dest_1))
-        self.units.append(AppendToSpritesheet(vehicle_TEMP_VAR_spriterow_input_as_spritesheet, crop_box_comp_dest_2))
-        """
-        self.units.append(AddCargoLabel(label=label,
-                                        x_offset=self.sprites_max_x_extent + 5,
-                                        y_offset= -1 * graphics_constants.spriterow_height))
-        """
+            # loaded and loading states are same for these vehicles, but template expects spriterows for both, so add result twice
+            self.units.append(AppendToSpritesheet(vehicle_TEMP_VAR_spriterow_input_as_spritesheet, crop_box_comp_dest_1))
+            self.units.append(AppendToSpritesheet(vehicle_TEMP_VAR_spriterow_input_as_spritesheet, crop_box_comp_dest_2))
+            self.units.append(AddCargoLabel(label=cargo_filename,
+                                            x_offset=self.sprites_max_x_extent + 5,
+                                            y_offset= -1 * graphics_constants.spriterow_height))
+
 
     def add_piece_cargo_spriterows(self, consist, vehicle):
         # !! this could possibly be optimised by slicing all the cargos once, globally, instead of per-unit
