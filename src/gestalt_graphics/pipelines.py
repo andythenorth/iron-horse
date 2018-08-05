@@ -608,6 +608,7 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
             self.cur_vehicle_empty_row_offset = 10 + cumulative_input_spriterow_count * graphics_constants.spriterow_height
             for spriterow_data in vehicle_rows:
                 spriterow_type = spriterow_data[0]
+                print(spriterow_data)
                 self.base_offset = 10 + (graphics_constants.spriterow_height * cumulative_input_spriterow_count)
                 if spriterow_type == 'always_use_same_spriterow' or spriterow_type == 'empty':
                     input_spriterow_count = 1
@@ -620,10 +621,10 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
                     self.add_box_car_with_opening_doors_spriterows()
                 elif spriterow_type == 'caboose_spriterows':
                     input_spriterow_count = spriterow_data[1]
-                    self.add_caboose_spriterows(spriterow_data[1])
+                    self.add_caboose_spriterows(input_spriterow_count)
                 elif spriterow_type == 'pax_mail_cars_with_doors':
                     input_spriterow_count = spriterow_data[1]
-                    self.add_pax_mail_car_with_opening_doors_spriterows(spriterow_data[1])
+                    self.add_pax_mail_car_with_opening_doors_spriterows(input_spriterow_count)
                 elif spriterow_type == 'bulk_cargo':
                     input_spriterow_count = 2
                     self.add_bulk_cargo_spriterows()

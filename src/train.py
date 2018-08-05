@@ -153,7 +153,7 @@ class Consist(object):
         for unit in units:
             unit_rows = []
             if unit.always_use_same_spriterow:
-                unit_rows.append(('always_use_same_spriterow', 1))
+                unit_rows.append(('always_use_same_spriterow', None))
             else:
                 # assumes gestalt_graphics is used to handle any other rows, no other cases at time of writing, could be changed eh?
                 unit_rows.extend(
