@@ -9,7 +9,8 @@ def main():
                                  subtype='A')
 
     consist.add_unit(type=SuppliesCar,
-                     vehicle_length=4)
+                     vehicle_length=4,
+                     chassis='2_axle_filled_16px')
 
     consist = SuppliesCarConsist(roster='pony',
                                  base_numeric_id=700,
@@ -17,7 +18,8 @@ def main():
                                  subtype='A')
 
     consist.add_unit(type=SuppliesCar,
-                     vehicle_length=4)
+                     vehicle_length=4,
+                     chassis='2_axle_filled_16px')
 
     consist = SuppliesCarConsist(roster='pony',
                                  base_numeric_id=2850,
@@ -25,7 +27,8 @@ def main():
                                  subtype='B')
 
     consist.add_unit(type=SuppliesCar,
-                     vehicle_length=6)
+                     vehicle_length=6,
+                     chassis='4_axle_filled_24px')
 
     consist = SuppliesCarConsist(roster='pony',
                                  base_numeric_id=2860,
@@ -33,7 +36,8 @@ def main():
                                  subtype='B')
 
     consist.add_unit(type=SuppliesCar,
-                     vehicle_length=6)
+                     vehicle_length=6,
+                     chassis='4_axle_filled_24px')
 
     consist = SuppliesCarConsist(roster='pony',
                                  base_numeric_id=2870,
@@ -49,7 +53,8 @@ def main():
                                  subtype='A')
 
     consist.add_unit(type=SuppliesCar,
-                     vehicle_length=4)
+                     vehicle_length=4,
+                     chassis='2_axle_filled_16px')
 
     consist = SuppliesCarConsist(roster='pony',
                                  base_numeric_id=2890,
@@ -57,7 +62,8 @@ def main():
                                  subtype='B')
 
     consist.add_unit(type=SuppliesCar,
-                     vehicle_length=6)
+                     vehicle_length=6,
+                     chassis='4_axle_filled_24px')
 
     consist = SuppliesCarConsist(roster='pony',
                                  base_numeric_id=2690,
