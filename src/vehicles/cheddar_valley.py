@@ -9,7 +9,8 @@ consist = EngineConsist(id='cheddar_valley',
                         tractive_effort_coefficient=0.4,
                         type_base_buy_cost_points=30,  # dibble buy cost for game balance
                         random_reverse=True,
-                        gen=5)
+                        gen=5,
+                        sprites_complete=True)
 
 consist.add_unit(type=DieselEngineUnit,
                  weight=125,
