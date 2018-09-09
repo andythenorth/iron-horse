@@ -569,7 +569,6 @@ class CarConsist(Consist):
         # automatically span wagon model life across gap to next generation
         roster_gens_for_class = sorted(set(
             [wagon.gen for wagon in self.roster.wagon_consists[self.base_id] if (wagon.subtype == self.subtype and wagon.track_type == self.track_type)]))
-        print(roster_gens_for_class)
         this_index = roster_gens_for_class.index(self.gen)
         if this_index == len(roster_gens_for_class) - 1:
             return 'VEHICLE_NEVER_EXPIRES'
@@ -662,7 +661,9 @@ class CoveredHopperCarConsist(CarConsist):
         self.default_cargos = global_constants.default_cargos['covered_hopper']
         self.loading_speed_multiplier = 2
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsVisibleCargo(bulk=True)
+        # !! re-use silo remap?
+        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(
+            recolour_maps=graphics_constants.silo_livery_recolour_maps)
 
 
 class DumpCarConsist(CarConsist):

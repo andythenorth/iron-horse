@@ -17,6 +17,8 @@ spritesheet_width = 425
 
 # DYES
 # PLAS
+# !! unfinished - copy of tanker remaps, needs remapping to silo cargos
+# !! may also be used for covered hoppers?
 silo_livery_recolour_maps = (("OIL_", {136: 1, 137: 2, 138: 3, 139: 4,
                                          140: 5, 141: 6, 142: 7, 143: 8}),  # see note on oil above
                                # see note on DFLT above
