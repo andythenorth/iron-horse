@@ -6,7 +6,8 @@ def main():
     consist = CoveredHopperCarConsist(roster='pony',
                                       base_numeric_id=1270,
                                       gen=2,
-                                      subtype='A')
+                                      subtype='A',
+                                      chassis='2_axle_gapped_16px')
 
     consist.add_unit(type=FreightCar,
                      vehicle_length=4)
@@ -14,7 +15,8 @@ def main():
     consist = CoveredHopperCarConsist(roster='pony',
                                       base_numeric_id=1260,
                                       gen=3,
-                                      subtype='A')
+                                      subtype='A',
+                                      chassis='2_axle_gapped_16px')
 
     consist.add_unit(type=FreightCar,
                      vehicle_length=4)
