@@ -15,15 +15,27 @@ spritesheet_width = 425
 # label order matters, so tuples are used not dicts
 # could probably have used orderedict or named tuple, but...blah
 
-# DYES
-# PLAS
+# !! unfinished - copy of tanker remaps, needs remapping to covered hopper cargos
+# intended to be sparse, there aren't enough colours to give a guide to the cargos
+# so this is just a visual tweak to give some variety when covered hoppers are widely used in a game
+# this just recolours the hatches, so only 2 pruple colours are used
+covered_hopper_livery_remap_white = {141: 13, 142: 14}
+covered_hopper_livery_remap_bluish_grey = {141: 19, 142: 20}
+covered_hopper_livery_recolour_maps = (("DFLT", {141: CC1+5, 142: CC1+6}),
+                                       ("SAND", {141: 36, 142: 37}),
+                                       ("BDMT", covered_hopper_livery_remap_bluish_grey),
+                                       ("CMNT", covered_hopper_livery_remap_bluish_grey),
+                                       ("SALT", covered_hopper_livery_remap_white),
+                                       ("QLME", covered_hopper_livery_remap_white),
+                                       ("SASH", covered_hopper_livery_remap_white),
+                                       ("RUBR", {141: 42, 142: 43}),)
+
 # !! unfinished - copy of tanker remaps, needs remapping to silo cargos
-# !! may also be used for covered hoppers?
 silo_livery_recolour_maps = (("QLME", {136: 1, 137: 2, 138: 3, 139: 4,
                                          140: 5, 141: 6, 142: 7, 143: 8}),  # see note on oil above
                                # see note on DFLT above
-                               ("DFLT", {136: CC1, 137: CC1+1, 138: CC1+2, 139: CC1+3,
-                                         140: CC1+4, 141: CC1+5, 142: CC1+6, 143: CC1+7}),
+                               ("DFLT", {136: 16, 137: 17, 138: 18, 139: 19,
+                                         140: 20, 141: 21, 142: 22, 143: 23}),
                                ("SAND", {136: 62, 137: 63, 138: 64, 139: 65,
                                          140: 66, 141: 67, 142: 68, 143: 69}),
                                ("CHLO", {136: 154, 137: 155, 138: 156, 139: 157,

@@ -663,7 +663,7 @@ class CoveredHopperCarConsist(CarConsist):
         # Graphics configuration
         # !! re-use silo remap?
         self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(
-            recolour_maps=graphics_constants.silo_livery_recolour_maps)
+            recolour_maps=graphics_constants.covered_hopper_livery_recolour_maps)
 
 
 class DumpCarConsist(CarConsist):
