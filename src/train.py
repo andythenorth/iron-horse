@@ -1306,12 +1306,11 @@ class Train(object):
                     assert self.consist.gestalt_graphics.nml_template != nml_template, \
                         "%s has 'random_reverse set True, which isn't supported by nml_template %s" % (self.consist.id, nml_template)
 
-    def assert_auto_flip(self):
+    def assert_allow_flip(self):
         # some templates don't support the auto_flip (by design, they're symmetrical sprites with no livery flip hax, flipping bloats template)
-        if self.consist.random_reverse:
+        if self.consist.allow_flip:
             if hasattr(self.consist, 'gestalt_graphics'):
                 for nml_template in ['vehicle_with_visible_cargo.pynml',
-                                     'vehicle_caboose.pynml',
                                      'vehicle_with_cargo_specific_liveries.pynml',
                                      'vehicle_box_car_with_opening_doors.pynml']:
                     assert self.consist.gestalt_graphics.nml_template != nml_template, \
@@ -1325,7 +1324,7 @@ class Train(object):
 
     def render(self):
         # integrity tests
-        self.assert_auto_flip()
+        self.assert_allow_flip()
         self.assert_cargo_labels(self.label_refits_allowed)
         self.assert_cargo_labels(self.label_refits_disallowed)
         self.assert_random_reverse()

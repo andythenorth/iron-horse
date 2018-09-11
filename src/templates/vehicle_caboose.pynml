@@ -2,9 +2,9 @@
 
 <tal:include metal:use-macro="load: spriteset_templates.pynml" />
 
-<!--! this template does not support 'random_reverse' property or 'allow_flip' user-flipping
-      cargo vehicles using this template are always symmetrical, no need for extra complexity
-      there is an assert for this in train.py -->
+<!--! 'random_reverse' property is not supported in this template, vehicles using this template are all symmetrical, reversing would do nothing
+      'flipped' is user flipping vehicle in depot and *is* supported here (used for livery selection tricks)
+      don't conflate them :) -->
 // default graphics chain
 <tal:livery_variant_nums repeat="livery_variant_num range(consist.gestalt_graphics.num_generations)">
     spriteset(${vehicle.id}_ss_${livery_variant_num}_unflipped, "${global_constants.graphics_path}${consist.id}.png") {
