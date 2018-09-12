@@ -373,7 +373,7 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
                            self.cur_vehicle_empty_row_offset + graphics_constants.spriterow_height)
         vehicle_base_image = self.comp_chassis_and_body(Image.open(self.input_path).crop(crop_box_vehicle_body))
         #vehicle_base_image.show()
-        ""
+        """
         crop_box_source_1 = (0,
                              self.base_offset,
                              self.sprites_max_x_extent,
