@@ -227,12 +227,9 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
                                    self.base_offset + row_offset + graphics_constants.spriterow_height)
                 pax_mail_car_spriterow_input_image = self.comp_chassis_and_body(Image.open(self.input_path).crop(crop_box_source))
 
-                first_col_start_x = self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed[0][0]
-                second_col_start_x = self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed[4][0]
-                col_image_width = self.sprites_max_x_extent - second_col_start_x
-                crop_box_comped_body_and_chassis = (second_col_start_x,
+                crop_box_comped_body_and_chassis = (self.second_col_start_x,
                                                     0,
-                                                    second_col_start_x + col_image_width,
+                                                    self.second_col_start_x + self.col_image_width,
                                                     graphics_constants.spriterow_height)
 
                 pax_mail_car_spriterow_input_image = pax_mail_car_spriterow_input_image.crop(crop_box_comped_body_and_chassis)
@@ -240,18 +237,18 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
                 #empty/loaded state and loading state will need pasting once each, so two crop boxes needed
                 crop_box_comp_col_dest_1 = (0,
                                             0,
-                                            col_image_width,
+                                            self.col_image_width,
                                             graphics_constants.spriterow_height)
                 crop_box_comp_col_dest_2 = (0,
                                             graphics_constants.spriterow_height,
-                                            col_image_width,
+                                            self.col_image_width,
                                             2 * graphics_constants.spriterow_height)
                 crop_box_comp_col_dest_doors = (doors_bboxes[1][0] - doors_bboxes[0][0],
                                                 graphics_constants.spriterow_height,
                                                 doors_bboxes[1][0] - doors_bboxes[0][0] + doors_image.size[0],
                                                 2 * graphics_constants.spriterow_height)
 
-                pax_mail_car_col_image = Image.new("P", (col_image_width, 2 * graphics_constants.spriterow_height))
+                pax_mail_car_col_image = Image.new("P", (self.col_image_width, 2 * graphics_constants.spriterow_height))
                 pax_mail_car_col_image.putpalette(DOS_PALETTE)
                 pax_mail_car_col_image.paste(pax_mail_car_spriterow_input_image, crop_box_comp_col_dest_1)
                 pax_mail_car_col_image.paste(pax_mail_car_spriterow_input_image, crop_box_comp_col_dest_2)
@@ -260,10 +257,10 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
                 #if self.consist.id == 'luxury_passenger_car_pony_gen_6A':
                      #pax_mail_car_col_image.show()
 
-                row_dest_start_x = [second_col_start_x, first_col_start_x][col_count]
+                row_dest_start_x = [self.second_col_start_x, self.first_col_start_x][col_count]
                 crop_box_comp_row_dest = (row_dest_start_x,
                                           0,
-                                          row_dest_start_x + col_image_width,
+                                          row_dest_start_x + self.col_image_width,
                                           2 * graphics_constants.spriterow_height)
                 pax_mail_car_rows_image.paste(pax_mail_car_col_image, crop_box_comp_row_dest)
             #if self.consist.id == 'luxury_passenger_car_pony_gen_6A':
@@ -368,13 +365,9 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
         vehicle_base_image = self.comp_chassis_and_body(Image.open(self.input_path).crop(crop_box_vehicle_body))
         #vehicle_base_image.show()
 
-        first_col_start_x = self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed[0][0]
-        second_col_start_x = self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed[4][0]
-        col_image_width = self.sprites_max_x_extent - second_col_start_x
-
-        crop_box_cargo = (first_col_start_x,
+        crop_box_cargo = (self.first_col_start_x,
                           self.base_offset,
-                          first_col_start_x + col_image_width,
+                          self.first_col_start_x + self.col_image_width,
                           self.base_offset + (2 * graphics_constants.spriterow_height))
         cargo_base_image = Image.open(self.input_path).crop(crop_box_cargo)
         # the loading/loaded image has false colour pixels for the cargo; keep only these, removing everything else
@@ -396,9 +389,9 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
                                 graphics_constants.spriterow_height,
                                 self.sprites_max_x_extent,
                                 2 * graphics_constants.spriterow_height)
-        crop_box_comp_dest_3 = (second_col_start_x,
+        crop_box_comp_dest_3 = (self.second_col_start_x,
                                 0,
-                                second_col_start_x + col_image_width,
+                                self.second_col_start_x + self.col_image_width,
                                 2 * graphics_constants.spriterow_height)
 
         bulk_cargo_rows_image = Image.new("P", (graphics_constants.spritesheet_width, cargo_group_row_height), 255)
@@ -408,8 +401,8 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
         bulk_cargo_rows_image.paste(vehicle_base_image, crop_box_comp_dest_1)
         bulk_cargo_rows_image.paste(vehicle_base_image, crop_box_comp_dest_2)
         bulk_cargo_rows_image.paste(cargo_base_image, crop_box_comp_dest_3, cargo_base_mask)
-        if self.consist.id == "dump_car_pony_gen_3A":
-            bulk_cargo_rows_image.show()
+        #if self.consist.id == "dump_car_pony_gen_3A":
+            #bulk_cargo_rows_image.show()
 
         crop_box_dest = (0,
                          0,
@@ -540,7 +533,8 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
         # paste empty states in for the cargo rows (base image = empty state)
         piece_cargo_rows_image.paste(vehicle_base_image, crop_box_comp_dest_1)
         piece_cargo_rows_image.paste(vehicle_base_image, crop_box_comp_dest_2)
-        #piece_cargo_rows_image.show()
+        if self.consist.id == "open_car_pony_gen_1A":
+            piece_cargo_rows_image.show()
 
         crop_box_dest = (0,
                          0,
@@ -619,6 +613,9 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
         self.consist = consist
         self.global_constants = global_constants
         self.sprites_max_x_extent = self.global_constants.sprites_max_x_extent
+        self.first_col_start_x = self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed[0][0]
+        self.second_col_start_x = self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed[4][0]
+        self.col_image_width = self.sprites_max_x_extent - self.second_col_start_x
 
         # the cumulative_input_spriterow_count updates per processed group of spriterows, and is key to making this work
         # !! input_spriterow_count looks a bit weird though; I tried moving it to gestalts, but didn't really work
