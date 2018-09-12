@@ -15,21 +15,6 @@ spritesheet_width = 425
 # label order matters, so tuples are used not dicts
 # could probably have used orderedict or named tuple, but...blah
 
-# !! unfinished - copy of tanker remaps, needs remapping to covered hopper cargos
-# intended to be sparse, there aren't enough colours to give a guide to the cargos
-# so this is just a visual tweak to give some variety when covered hoppers are widely used in a game
-# this just recolours the hatches, so only 2 pruple colours are used
-covered_hopper_livery_remap_white = {141: 13, 142: 14}
-covered_hopper_livery_remap_bluish_grey = {141: 19, 142: 20}
-covered_hopper_livery_recolour_maps = (("DFLT", {141: CC1+5, 142: CC1+6}),
-                                       ("SAND", {141: 36, 142: 37}),
-                                       ("BDMT", covered_hopper_livery_remap_bluish_grey),
-                                       ("CMNT", covered_hopper_livery_remap_bluish_grey),
-                                       ("SALT", covered_hopper_livery_remap_white),
-                                       ("QLME", covered_hopper_livery_remap_white),
-                                       ("SASH", covered_hopper_livery_remap_white),
-                                       ("RUBR", {141: 42, 142: 43}),)
-
 # !! unfinished - copy of tanker remaps, needs remapping to silo cargos
 silo_livery_recolour_maps = (("QLME", {136: 1, 137: 2, 138: 3, 139: 4,
                                          140: 5, 141: 6, 142: 7, 143: 8}),  # see note on oil above
