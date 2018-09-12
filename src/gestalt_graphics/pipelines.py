@@ -355,7 +355,6 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
             self.units.append(SimpleRecolour(self.consist.gestalt_graphics.recolour_map_2))
 
     def add_bulk_cargo_spriterows(self):
-        print(self.consist.id)
         cargo_group_row_height = 2 * graphics_constants.spriterow_height
 
         crop_box_vehicle_body = (0,
@@ -493,13 +492,13 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
         # - there is a case not handled, where long cargo sprites will overlap cabbed vehicles in / direction with cab at N end, hard to solve
         # - this has no awareness of vehicle symmetry_type property, so will needlessly scan too many pixels for symmetric vehicles
         #   that's TMWFTLB to fix right now, as it will require relative offsets of all the loc points for probably very little performance gain
-        crop_box_vehicle_cargo_loc_row = (0,
-                           self.base_offset,
-                           graphics_constants.spritesheet_width,
-                           self.base_offset + graphics_constants.spriterow_height)
+        crop_box_vehicle_cargo_loc_row = (self.first_col_start_x,
+                                          self.base_offset,
+                                          self.first_col_start_x + self.col_image_width,
+                                          self.base_offset + graphics_constants.spriterow_height)
         vehicle_cargo_loc_image = Image.open(self.input_path).crop(crop_box_vehicle_cargo_loc_row)
         # get the loc points
-        loc_points = [pixel for pixel in pixascan(vehicle_cargo_loc_image) if pixel[2] == 226]
+        loc_points = [(pixel[0] + self.second_col_start_x, pixel[1], pixel[2]) for pixel in pixascan(vehicle_cargo_loc_image) if pixel[2] == 226]
         # two cargo rows needed, so extend the loc points list
         loc_points.extend([(pixel[0], pixel[1] + 30, pixel[2]) for pixel in loc_points])
         # sort them in y order, this causes sprites to overlap correctly when there are multiple loc points for an angle
@@ -511,12 +510,19 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
                            self.cur_vehicle_empty_row_offset + graphics_constants.spriterow_height)
         vehicle_base_image = self.comp_chassis_and_body(Image.open(self.input_path).crop(crop_box_vehicle_body))
 
-        crop_box_mask = (0,
-                         self.base_offset + graphics_constants.spriterow_height,
-                         self.sprites_max_x_extent,
-                         self.base_offset + (2 * graphics_constants.spriterow_height))
-        vehicle_mask = Image.open(self.input_path).crop(crop_box_mask).point(lambda i: 255 if i == 226 else 0).convert("1")
-        #vehicle_mask.show()
+        crop_box_mask_source = (self.first_col_start_x,
+                                self.base_offset + graphics_constants.spriterow_height,
+                                self.first_col_start_x + self.col_image_width,
+                                self.base_offset + (2 * graphics_constants.spriterow_height))
+        crop_box_mask_dest = (self.second_col_start_x,
+                              0,
+                              self.second_col_start_x + self.col_image_width,
+                              graphics_constants.spriterow_height)
+        vehicle_mask_source = Image.open(self.input_path).crop(crop_box_mask_source).point(lambda i: 255 if i == 226 else 0).convert("1")
+        vehicle_mask = Image.new("1", (self.sprites_max_x_extent, graphics_constants.spriterow_height), 0)
+        vehicle_mask.paste(vehicle_mask_source, crop_box_mask_dest)
+        #if self.consist.id == "open_car_pony_gen_1A":
+            #vehicle_mask.show()
 
         #mask and empty state will need pasting once for each of two cargo rows, so two crop boxes needed
         crop_box_comp_dest_1 = (0,
@@ -533,8 +539,8 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
         # paste empty states in for the cargo rows (base image = empty state)
         piece_cargo_rows_image.paste(vehicle_base_image, crop_box_comp_dest_1)
         piece_cargo_rows_image.paste(vehicle_base_image, crop_box_comp_dest_2)
-        if self.consist.id == "open_car_pony_gen_1A":
-            piece_cargo_rows_image.show()
+        #if self.consist.id == "open_car_pony_gen_1A":
+            #piece_cargo_rows_image.show()
 
         crop_box_dest = (0,
                          0,
@@ -589,7 +595,8 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
             # vehicle overlay with mask - overlays any areas where cargo shouldn't show
             vehicle_comped_image.paste(vehicle_base_image, crop_box_comp_dest_1, vehicle_mask)
             vehicle_comped_image.paste(vehicle_base_image, crop_box_comp_dest_2, vehicle_mask)
-            #vehicle_comped_image.show()
+            #if self.consist.id == "open_car_pony_gen_1A":
+                #vehicle_comped_image.show()
 
             vehicle_comped_image_as_spritesheet = self.make_spritesheet_from_image(vehicle_comped_image)
 
