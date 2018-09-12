@@ -42,6 +42,11 @@ class Pipeline(object):
         # convenience method to get the path for the roof image
         return os.path.join(currentdir, 'src', 'graphics', 'roofs', self.vehicle_unit.roof + '.png')
 
+    @property
+    def spritesheet_first_4_angles_props(self):
+        bboxes = self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed
+        return {'x': bboxes[1][0], 'width': bboxes[3][0] + bboxes[3][1]}
+
     def render_common(self, consist, input_image, units):
         # expects to be passed a PIL Image object
         # units is a list of objects, with their config data already baked in (don't have to pass anything to units except the spritesheet)
@@ -203,10 +208,9 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
             pax_mail_car_rows_image.putpalette(DOS_PALETTE)
 
             # get doors
-            doors_bboxes = self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed
-            crop_box_doors_source = (doors_bboxes[1][0],
+            crop_box_doors_source = (self.spritesheet_first_4_angles_props['x'],
                                      self.base_offset + (row_num * graphics_constants.spriterow_height),
-                                     doors_bboxes[3][0] + doors_bboxes[3][1],
+                                     self.spritesheet_first_4_angles_props['x'] + self.spritesheet_first_4_angles_props['width'],
                                      self.base_offset + (row_num * graphics_constants.spriterow_height) + graphics_constants.spriterow_height)
             doors_image = Image.open(self.input_path).crop(crop_box_doors_source)
 
@@ -219,6 +223,7 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
             doors_mask = doors_image.copy()
             doors_mask = doors_mask.point(lambda i: 0 if i == 255 else 255).convert("1") # the inversion here of blue and white looks a bit odd, but potato / potato
             #doors_mask.show()
+            doors_bboxes = self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed
 
             for col_count, row_offset in enumerate([row_num * graphics_constants.spriterow_height for row_num in input_row_nums]):
                 crop_box_source = (0,
@@ -360,6 +365,15 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
     def add_bulk_cargo_spriterows(self):
         cargo_group_row_height = 2 * graphics_constants.spriterow_height
 
+        """
+        print(self.consist.id)
+        crop_box_vehicle_body = (0,
+                           self.cur_vehicle_empty_row_offset,
+                           self.sprites_max_x_extent,
+                           self.cur_vehicle_empty_row_offset + graphics_constants.spriterow_height)
+        vehicle_base_image = self.comp_chassis_and_body(Image.open(self.input_path).crop(crop_box_vehicle_body))
+        #vehicle_base_image.show()
+        ""
         crop_box_source_1 = (0,
                              self.base_offset,
                              self.sprites_max_x_extent,
@@ -369,6 +383,7 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
                              self.sprites_max_x_extent,
                              self.base_offset + 2 * graphics_constants.spriterow_height)
 
+        # the loading and loaded rows are split as it's the easiest way to comp with the chassis image, which expects a single row
         vehicle_bulk_cargo_input_image_1 = self.comp_chassis_and_body(Image.open(self.input_path).crop(crop_box_source_1))
         vehicle_bulk_cargo_input_image_2 = self.comp_chassis_and_body(Image.open(self.input_path).crop(crop_box_source_2))
         #vehicle_bulk_cargo_input_image_1.show() # comment in to see the image when debugging
