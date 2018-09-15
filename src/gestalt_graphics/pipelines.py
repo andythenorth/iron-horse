@@ -364,9 +364,9 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
         vehicle_base_image = self.comp_chassis_and_body(Image.open(self.input_path).crop(crop_box_vehicle_body))
         #vehicle_base_image.show()
 
-        crop_box_cargo = (self.first_col_start_x,
+        crop_box_cargo = (self.second_col_start_x,
                           self.base_offset,
-                          self.first_col_start_x + self.col_image_width,
+                          self.second_col_start_x + self.col_image_width,
                           self.base_offset + (2 * graphics_constants.spriterow_height))
         cargo_base_image = Image.open(self.input_path).crop(crop_box_cargo)
         # the loading/loaded image has false colour pixels for the cargo; keep only these, removing everything else
@@ -492,9 +492,9 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
         # - there is a case not handled, where long cargo sprites will overlap cabbed vehicles in / direction with cab at N end, hard to solve
         # - this has no awareness of vehicle symmetry_type property, so will needlessly scan too many pixels for symmetric vehicles
         #   that's TMWFTLB to fix right now, as it will require relative offsets of all the loc points for probably very little performance gain
-        crop_box_vehicle_cargo_loc_row = (self.first_col_start_x,
+        crop_box_vehicle_cargo_loc_row = (self.second_col_start_x,
                                           self.base_offset,
-                                          self.first_col_start_x + self.col_image_width,
+                                          self.second_col_start_x + self.col_image_width,
                                           self.base_offset + graphics_constants.spriterow_height)
         vehicle_cargo_loc_image = Image.open(self.input_path).crop(crop_box_vehicle_cargo_loc_row)
         # get the loc points
@@ -510,9 +510,9 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
                            self.cur_vehicle_empty_row_offset + graphics_constants.spriterow_height)
         vehicle_base_image = self.comp_chassis_and_body(Image.open(self.input_path).crop(crop_box_vehicle_body))
 
-        crop_box_mask_source = (self.first_col_start_x,
+        crop_box_mask_source = (self.second_col_start_x,
                                 self.base_offset + graphics_constants.spriterow_height,
-                                self.first_col_start_x + self.col_image_width,
+                                self.second_col_start_x + self.col_image_width,
                                 self.base_offset + (2 * graphics_constants.spriterow_height))
         crop_box_mask_dest = (self.second_col_start_x,
                               0,
