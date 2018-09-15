@@ -21,12 +21,19 @@
 <tal:cargo_variants define="num_cargo_sprite_variants consist.gestalt_graphics.num_cargo_sprite_variants"
                     repeat="cargo_variant_num python:range(num_cargo_sprite_variants)">
     <tal:liveries_cargo repeat="livery_num range(consist.gestalt_graphics.num_visible_cargo_liveries)">
-        spriteset(${vehicle.id}_ss_loading_${cargo_variant_num}_livery_${livery_num}, "${global_constants.graphics_path}${consist.id}.png") {
-          spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.id}_unflipped(${cargo_variant_num * 60} + 40)
-        }
-        spriteset(${vehicle.id}_ss_loaded_${cargo_variant_num}_livery_${livery_num}, "${global_constants.graphics_path}${consist.id}.png") {
-          spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.id}_unflipped(${cargo_variant_num * 60} + 70)
-        }
+        <tal:cargo_spritesets define="flipped 'flipped' if livery_num == 1 else 'unflipped';
+                                      cargo_rows_base_y_offset 10 + (consist.gestalt_graphics.num_visible_cargo_liveries * 30);
+                                      livery_y_offset livery_num * num_cargo_sprite_variants * 60;
+                                      cargo_y_offset cargo_variant_num * 60">
+            spriteset(${vehicle.id}_ss_loading_${cargo_variant_num}_livery_${livery_num}, "${global_constants.graphics_path}${consist.id}.png") {
+              spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.id}_${flipped}(
+                                            ${cargo_rows_base_y_offset} + ${livery_y_offset} + ${cargo_y_offset})
+            }
+            spriteset(${vehicle.id}_ss_loaded_${cargo_variant_num}_livery_${livery_num}, "${global_constants.graphics_path}${consist.id}.png") {
+              spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.id}_${flipped}(
+                                            ${cargo_rows_base_y_offset} + ${livery_y_offset} + ${cargo_y_offset} + 30)
+            }
+        </tal:cargo_spritesets>
         spritegroup ${vehicle.id}_sg_loading_${cargo_variant_num}_livery_${livery_num} {
             loaded:  [
                 ${vehicle.id}_ss_loading_${cargo_variant_num}_livery_${livery_num},
