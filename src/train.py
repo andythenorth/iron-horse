@@ -769,7 +769,7 @@ class HopperCarConsist(CarConsist):
         # CC is swapped randomly (player can't choose), but also swap base livery on flip (player can choose
         self.allow_flip = True
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsVisibleCargo(bulk=True, has_alt_visible_cargo_livery=True)
+        self.gestalt_graphics = GestaltGraphicsVisibleCargo(bulk=True, has_alt_livery=True)
 
 
 class IntermodalCarConsist(CarConsist):
@@ -1316,8 +1316,7 @@ class Train(object):
         # some templates don't support the auto_flip (by design, they're symmetrical sprites with no livery flip hax, flipping bloats template)
         if self.consist.allow_flip:
             if hasattr(self.consist, 'gestalt_graphics'):
-                for nml_template in ['vehicle_with_visible_cargo.pynml',
-                                     'vehicle_with_cargo_specific_liveries.pynml',
+                for nml_template in ['vehicle_with_cargo_specific_liveries.pynml',
                                      'vehicle_box_car_with_opening_doors.pynml']:
                     assert self.consist.gestalt_graphics.nml_template != nml_template, \
                         "%s has 'allow_flip set True, which isn't supported by nml_template %s" % (self.consist.id, nml_template)
