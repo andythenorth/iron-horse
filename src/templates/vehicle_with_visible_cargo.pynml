@@ -17,7 +17,7 @@ spritegroup ${vehicle.id}_sg_empty_unflipped {
 }
 <tal:second_livery condition="consist.allow_flip">
     spriteset(${vehicle.id}_ss_empty_flipped, "${global_constants.graphics_path}${consist.id}.png") {
-      spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.id}_flipped(${consist.gestalt_graphics.num_cargo_sprite_variants * 60} + 10)
+      spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.id}_flipped(40)
     }
     spritegroup ${vehicle.id}_sg_empty_flipped {
         loaded:  [
