@@ -660,8 +660,7 @@ class CoveredHopperCarConsist(CarConsist):
         self.label_refits_disallowed = []
         self.default_cargos = global_constants.default_cargos['covered_hopper']
         self.loading_speed_multiplier = 2
-        # swap CC randomly (player can't choose), but also swap base livery on flip (player can choose
-        self.random_company_colour_swap = True
+        # CC is swapped randomly (player can't choose), but also swap base livery on flip (player can choose
         self.allow_flip = True
         # Graphics configuration
         # covered hopper cars only have one consist cargo mapping, which they always default to, whatever the consist cargo is
@@ -767,8 +766,10 @@ class HopperCarConsist(CarConsist):
         self.default_cargos = global_constants.default_cargos['hopper']
         self.loading_speed_multiplier = 2
         self.capacity_cost_factor = 1.5
+        # CC is swapped randomly (player can't choose), but also swap base livery on flip (player can choose
+        self.allow_flip = True
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsVisibleCargo(bulk=True)
+        self.gestalt_graphics = GestaltGraphicsVisibleCargo(bulk=True, has_alt_visible_cargo_livery=True)
 
 
 class IntermodalCarConsist(CarConsist):

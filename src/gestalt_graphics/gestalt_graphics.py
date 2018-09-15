@@ -46,6 +46,8 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
         self.pipeline = pipelines.get_pipeline('extend_spriterows_for_composited_cargos_pipeline')
         # default body recolour to CC1, pass param to over-ride as needed
         self.body_recolour_map = kwargs.get('body_recolour_map', graphics_constants.body_recolour_CC1)
+        # option for alternative livery, will be selected by player flip on depot, default to 1 if not set
+        self.num_visible_cargo_liveries = 2 if kwargs.get('has_alt_visible_cargo_livery', False) else 1
         # cargo flags
         self.has_bulk = kwargs.get('bulk', False)
         self.has_heavy_items = kwargs.get('heavy_items', None) is not None
@@ -74,8 +76,10 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
 
     def get_output_row_types(self):
         result = []
-        # assume an empty state spriterow - there was an optional bool flag for this per consist but it was unused so I removed it
-        result.append('empty')
+        # assume an empty state spriterow per livery
+        for i in range(self.num_visible_cargo_liveries):
+            result.append('empty')
+
         if self.has_bulk:
             result.append('bulk_cargo')
         if self.has_heavy_items:

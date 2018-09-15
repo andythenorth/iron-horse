@@ -357,13 +357,6 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
     def add_bulk_cargo_spriterows(self):
         cargo_group_row_height = 2 * graphics_constants.spriterow_height
 
-        crop_box_vehicle_body = (0,
-                           self.cur_vehicle_empty_row_offset,
-                           self.sprites_max_x_extent,
-                           self.cur_vehicle_empty_row_offset + graphics_constants.spriterow_height)
-        vehicle_base_image = self.comp_chassis_and_body(Image.open(self.input_path).crop(crop_box_vehicle_body))
-        #vehicle_base_image.show()
-
         crop_box_cargo = (self.second_col_start_x,
                           self.base_offset,
                           self.second_col_start_x + self.col_image_width,
@@ -373,6 +366,7 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
         cargo_base_image = cargo_base_image.point(lambda i: 255 if (i not in range(170, 177)) else i)
         #if self.consist.id == "dump_car_pony_gen_3A":
             #cargo_base_image.show()
+
         # create a mask so that we paste only the cargo pixels over the body (no blue pixels)
         cargo_base_mask = cargo_base_image.copy()
         cargo_base_mask = cargo_base_mask.point(lambda i: 0 if i == 255 else 255).convert("1") # the inversion here of blue and white looks a bit odd, but potato / potato
@@ -393,28 +387,39 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
                                 self.second_col_start_x + self.col_image_width,
                                 2 * graphics_constants.spriterow_height)
 
-        bulk_cargo_rows_image = Image.new("P", (graphics_constants.spritesheet_width, cargo_group_row_height), 255)
-        bulk_cargo_rows_image.putpalette(DOS_PALETTE)
+        # trick to infer a second livery if flip is enabled, possibly fragile but works for now (allow_flip is a 0 or 1 boolean)
+        for livery_counter in range(self.consist.gestalt_graphics.num_visible_cargo_liveries):
+            empty_row_livery_offset = livery_counter * graphics_constants.spriterow_height
+            crop_box_vehicle_body = (0,
+                                     self.cur_vehicle_empty_row_offset + empty_row_livery_offset,
+                                     self.sprites_max_x_extent,
+                                     self.cur_vehicle_empty_row_offset + empty_row_livery_offset + graphics_constants.spriterow_height)
 
-        # paste the empty state into two rows, then paste the cargo over those rows
-        bulk_cargo_rows_image.paste(vehicle_base_image, crop_box_comp_dest_1)
-        bulk_cargo_rows_image.paste(vehicle_base_image, crop_box_comp_dest_2)
-        bulk_cargo_rows_image.paste(cargo_base_image, crop_box_comp_dest_3, cargo_base_mask)
-        #if self.consist.id == "dump_car_pony_gen_3A":
-            #bulk_cargo_rows_image.show()
+            vehicle_base_image = self.comp_chassis_and_body(Image.open(self.input_path).crop(crop_box_vehicle_body))
+            #vehicle_base_image.show()
 
-        crop_box_dest = (0,
-                         0,
-                         self.sprites_max_x_extent,
-                         cargo_group_row_height)
-        bulk_cargo_rows_image_as_spritesheet = self.make_spritesheet_from_image(bulk_cargo_rows_image)
+            bulk_cargo_rows_image = Image.new("P", (graphics_constants.spritesheet_width, cargo_group_row_height), 255)
+            bulk_cargo_rows_image.putpalette(DOS_PALETTE)
 
-        for label, recolour_map in polar_fox.constants.bulk_cargo_recolour_maps:
-            self.units.append(AppendToSpritesheet(bulk_cargo_rows_image_as_spritesheet, crop_box_dest))
-            self.units.append(SimpleRecolour(recolour_map))
-            self.units.append(AddCargoLabel(label=label,
-                                            x_offset=self.sprites_max_x_extent + 5,
-                                            y_offset=  -1 * cargo_group_row_height))
+            # paste the empty state into two rows, then paste the cargo over those rows
+            bulk_cargo_rows_image.paste(vehicle_base_image, crop_box_comp_dest_1)
+            bulk_cargo_rows_image.paste(vehicle_base_image, crop_box_comp_dest_2)
+            bulk_cargo_rows_image.paste(cargo_base_image, crop_box_comp_dest_3, cargo_base_mask)
+            #if self.consist.id == "dump_car_pony_gen_3A":
+                #bulk_cargo_rows_image.show()
+
+            crop_box_dest = (0,
+                             0,
+                             self.sprites_max_x_extent,
+                             cargo_group_row_height)
+            bulk_cargo_rows_image_as_spritesheet = self.make_spritesheet_from_image(bulk_cargo_rows_image)
+
+            for label, recolour_map in polar_fox.constants.bulk_cargo_recolour_maps:
+                self.units.append(AppendToSpritesheet(bulk_cargo_rows_image_as_spritesheet, crop_box_dest))
+                self.units.append(SimpleRecolour(recolour_map))
+                self.units.append(AddCargoLabel(label=label,
+                                                x_offset=self.sprites_max_x_extent + 5,
+                                                y_offset=  -1 * cargo_group_row_height))
 
     def add_heavy_items_cargo_spriterows(self, consist, vehicle):
         # indivisible cargos, generation-specific sprites, asymmetric, pre-positioned to suit the vehicle
@@ -505,9 +510,9 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
         loc_points = sorted(loc_points, key=lambda x: x[1])
 
         crop_box_vehicle_body = (0,
-                           self.cur_vehicle_empty_row_offset,
-                           self.sprites_max_x_extent,
-                           self.cur_vehicle_empty_row_offset + graphics_constants.spriterow_height)
+                                 self.cur_vehicle_empty_row_offset,
+                                 self.sprites_max_x_extent,
+                                 self.cur_vehicle_empty_row_offset + graphics_constants.spriterow_height)
         vehicle_base_image = self.comp_chassis_and_body(Image.open(self.input_path).crop(crop_box_vehicle_body))
 
         crop_box_mask_source = (self.second_col_start_x,
