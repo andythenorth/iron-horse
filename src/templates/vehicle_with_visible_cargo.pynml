@@ -4,78 +4,57 @@
       'flipped' is user flipping vehicle in depot and *is* supported here (used for livery selection tricks)
       don't conflate them :) -->
 // default graphics chain
-spriteset(${vehicle.id}_ss_empty_unflipped, "${global_constants.graphics_path}${consist.id}.png") {
-  spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.id}_unflipped(10)
-}
-spritegroup ${vehicle.id}_sg_empty_unflipped {
-    loaded:  [
-        ${vehicle.id}_ss_empty_unflipped,
-    ];
-    loading: [
-        ${vehicle.id}_ss_empty_unflipped,
-    ];
-}
-<tal:second_livery condition="consist.allow_flip">
-    spriteset(${vehicle.id}_ss_empty_flipped, "${global_constants.graphics_path}${consist.id}.png") {
-      spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.id}_flipped(40)
+<tal:liveries_empty repeat="livery_num range(consist.gestalt_graphics.num_visible_cargo_liveries)">
+    spriteset(${vehicle.id}_ss_empty_livery_${livery_num}, "${global_constants.graphics_path}${consist.id}.png") {
+      spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.id}_${'flipped' if livery_num == 1 else 'unflipped'}(10 + (${livery_num * 30}))
     }
-    spritegroup ${vehicle.id}_sg_empty_flipped {
+    spritegroup ${vehicle.id}_sg_empty_livery_${livery_num} {
         loaded:  [
-            ${vehicle.id}_ss_empty_flipped,
+            ${vehicle.id}_ss_empty_livery_${livery_num},
         ];
         loading: [
-            ${vehicle.id}_ss_empty_flipped,
+            ${vehicle.id}_ss_empty_livery_${livery_num},
         ];
     }
-</tal:second_livery>
+</tal:liveries_empty>
 
 <tal:cargo_variants define="num_cargo_sprite_variants consist.gestalt_graphics.num_cargo_sprite_variants"
                     repeat="cargo_variant_num python:range(num_cargo_sprite_variants)">
-    spriteset(${vehicle.id}_ss_loading_${cargo_variant_num}_unflipped, "${global_constants.graphics_path}${consist.id}.png") {
-      spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.id}_unflipped(${cargo_variant_num * 60} + 40)
-    }
-    spriteset(${vehicle.id}_ss_loaded_${cargo_variant_num}_unflipped, "${global_constants.graphics_path}${consist.id}.png") {
-      spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.id}_unflipped(${cargo_variant_num * 60} + 70)
-    }
-    <tal:second_livery condition="consist.allow_flip">
-        // hard-coded assumption that only two liveries here :P
-        spriteset(${vehicle.id}_ss_loading_${cargo_variant_num}_flipped, "${global_constants.graphics_path}${consist.id}.png") {
-          spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.id}_flipped(${num_cargo_sprite_variants * 60} + ${cargo_variant_num * 60} + 40)
+    <tal:liveries_cargo repeat="livery_num range(consist.gestalt_graphics.num_visible_cargo_liveries)">
+        spriteset(${vehicle.id}_ss_loading_${cargo_variant_num}_livery_${livery_num}, "${global_constants.graphics_path}${consist.id}.png") {
+          spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.id}_unflipped(${cargo_variant_num * 60} + 40)
         }
-        spriteset(${vehicle.id}_ss_loaded_${cargo_variant_num}_flipped, "${global_constants.graphics_path}${consist.id}.png") {
-          spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.id}_flipped(${num_cargo_sprite_variants * 60} + ${cargo_variant_num * 60} + 70)
+        spriteset(${vehicle.id}_ss_loaded_${cargo_variant_num}_livery_${livery_num}, "${global_constants.graphics_path}${consist.id}.png") {
+          spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.id}_unflipped(${cargo_variant_num * 60} + 70)
         }
-    </tal:second_livery>
-
-    <tal:percent_loaded repeat="flipped ['unflipped', 'flipped'] if consist.allow_flip else ['unflipped']">
-        spritegroup ${vehicle.id}_sg_loading_${cargo_variant_num}_${flipped} {
+        spritegroup ${vehicle.id}_sg_loading_${cargo_variant_num}_livery_${livery_num} {
             loaded:  [
-                ${vehicle.id}_ss_loading_${cargo_variant_num}_${flipped},
+                ${vehicle.id}_ss_loading_${cargo_variant_num}_livery_${livery_num},
             ];
             loading: [
-                ${vehicle.id}_ss_loading_${cargo_variant_num}_${flipped},
+                ${vehicle.id}_ss_loading_${cargo_variant_num}_livery_${livery_num},
             ];
         }
-        spritegroup ${vehicle.id}_sg_loaded_${cargo_variant_num}_${flipped} {
+        spritegroup ${vehicle.id}_sg_loaded_${cargo_variant_num}_livery_${livery_num} {
             loaded:  [
-                ${vehicle.id}_ss_loaded_${cargo_variant_num}_${flipped},
+                ${vehicle.id}_ss_loaded_${cargo_variant_num}_livery_${livery_num},
             ];
             loading: [
-                ${vehicle.id}_ss_loaded_${cargo_variant_num}_${flipped},
+                ${vehicle.id}_ss_loaded_${cargo_variant_num}_livery_${livery_num},
             ];
         }
-        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_percent_loaded_${cargo_variant_num}_${flipped}, cargo_count*100/cargo_capacity) {
-                0: return ${vehicle.id}_sg_empty_${flipped};
-                1..99: return ${vehicle.id}_sg_loading_${cargo_variant_num}_${flipped};
-            return ${vehicle.id}_sg_loaded_${cargo_variant_num}_${flipped};
+        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_percent_loaded_${cargo_variant_num}_livery_${livery_num}, cargo_count*100/cargo_capacity) {
+                0: return ${vehicle.id}_sg_empty_livery_${livery_num};
+                1..99: return ${vehicle.id}_sg_loading_${cargo_variant_num}_livery_${livery_num};
+            return ${vehicle.id}_sg_loaded_${cargo_variant_num}_livery_${livery_num};
         }
-    </tal:percent_loaded>
+    </tal:liveries_cargo>
     // handle user flipped state
     switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_flip_${cargo_variant_num}, vehicle_is_flipped) {
         <tal:flip_allowed condition="consist.allow_flip">
-            1: return ${vehicle.id}_switch_graphics_percent_loaded_${cargo_variant_num}_flipped;
+            1: return ${vehicle.id}_switch_graphics_percent_loaded_${cargo_variant_num}_livery_1;
         </tal:flip_allowed>
-        return ${vehicle.id}_switch_graphics_percent_loaded_${cargo_variant_num}_unflipped;
+        return ${vehicle.id}_switch_graphics_percent_loaded_${cargo_variant_num}_livery_0;
     }
 </tal:cargo_variants>
 
