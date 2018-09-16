@@ -26,7 +26,8 @@ def main():
     consist = CoveredHopperCarConsist(roster='pony',
                                       base_numeric_id=2940,
                                       gen=4,
-                                      subtype='A')
+                                      subtype='A',
+                                      sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
                      vehicle_length=4,
