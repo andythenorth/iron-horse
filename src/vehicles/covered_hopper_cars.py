@@ -39,7 +39,8 @@ def main():
                                       subtype='B')
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=6)
+                     vehicle_length=6,
+                     chassis='2_axle_gapped_24px')
 
     consist = CoveredHopperCarConsist(roster='pony',
                                       base_numeric_id=1240,
