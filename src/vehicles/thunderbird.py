@@ -8,7 +8,8 @@ consist = EngineConsist(id='thunderbird',
                         type_base_buy_cost_points=30,  # dibble buy cost for game balance
                         type_base_running_cost_points=30,  # dibble running costs for game balance
                         random_reverse=True,
-                        gen=5)
+                        gen=5,
+                        sprites_complete=True)
 
 consist.add_unit(type=DieselEngineUnit,
                  weight=90,
