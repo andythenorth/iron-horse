@@ -58,9 +58,8 @@
     </tal:liveries_cargo>
     // handle user flipped state
     switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_flip_${cargo_variant_num}, vehicle_is_flipped) {
-        <tal:flip_allowed condition="consist.allow_flip">
-            1: return ${vehicle.id}_switch_graphics_percent_loaded_${cargo_variant_num}_livery_1;
-        </tal:flip_allowed>
+        <!--! possibly fragile trick here: bool allow_flip happens to match livery 0 being unflipped and livery 1 being flipped -->
+        1: return ${vehicle.id}_switch_graphics_percent_loaded_${cargo_variant_num}_livery_${consist.allow_flip};
         return ${vehicle.id}_switch_graphics_percent_loaded_${cargo_variant_num}_livery_0;
     }
 </tal:cargo_variants>
