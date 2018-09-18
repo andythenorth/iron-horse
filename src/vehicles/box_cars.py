@@ -7,12 +7,12 @@ def main():
                             base_numeric_id=580,
                             gen=1,
                             subtype='A',
-                            track_type='NG')
+                            track_type='NG',
+                            sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
                      vehicle_length=4,
-                     # !! wrong chassis !!
-                     chassis='2_axle_filled_16px')
+                     chassis='4_axle_ng_16px')
 
     #--------------- pony ----------------------------------------------------------------------
 
