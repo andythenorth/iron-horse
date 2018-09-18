@@ -11,6 +11,7 @@ def main():
 
     consist.add_unit(type=FreightCar,
                      vehicle_length=4,
+                     # !! wrong chassis !!
                      chassis='2_axle_filled_16px')
 
     #--------------- pony ----------------------------------------------------------------------

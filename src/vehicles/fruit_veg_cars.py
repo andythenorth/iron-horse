@@ -2,6 +2,18 @@ from train import FruitVegCarConsist, FreightCar
 
 
 def main():
+    #--------------- pony NG ----------------------------------------------------------------------
+    consist = FruitVegCarConsist(roster='pony',
+                                 base_numeric_id=1310,
+                                 gen=1,
+                                 subtype='A',
+                                 track_type='NG')
+
+    consist.add_unit(type=FreightCar,
+                     vehicle_length=4,
+                     # !! wrong chassis !!
+                     chassis='2_axle_filled_16px')
+
     #--------------- pony --------------------------------------------------------------------------
     consist = FruitVegCarConsist(roster='pony',
                                  base_numeric_id=2640,
