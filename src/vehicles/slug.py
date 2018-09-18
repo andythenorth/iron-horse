@@ -6,7 +6,8 @@ consist = EngineConsist(id='slug',
                         role='freight',
                         power=1750,
                         random_reverse=True,
-                        gen=5)
+                        gen=5,
+                        sprites_complete=True)
 
 consist.add_unit(type=DieselEngineUnit,
                  weight=110,
