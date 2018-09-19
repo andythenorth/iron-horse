@@ -61,17 +61,17 @@ roster = Roster(id = 'pony',
                 # default intro dates per generation, can be over-ridden if needed by setting intro_date kw on consist
                 # copy ELRL from RAIL manually, it's crude and duplicative, but anything else is TMWFTLB for current use case
                 intro_dates = {'RAIL': [1860, 1900, 1930, 1960, 1990, 2020],
-                               'ELRL': [1860, 1900, 1930, 1960, 1990, 2020],
+                               'ELRL': [1860, 1900, 1930, 1960, 1990, 2020], # keep ELRL same as RAIL
                                'METRO': [1900, 1950, 2000],
-                               'NG': [1860, 1900, 1930, 1960, 1990, 2020]},
+                               'NG': [1860, 1910, 1950, 1990]},
                 # default speeds per generation, can be over-ridden if needed by setting speed kw arg on consist
                 # speeds roughly same as RH trucks of same era + 5mph or so, and a bit higher at the top end (back and forth on this many times eh?),
                 speeds = {'RAIL': {'standard': [45, 45, 60, 75, 87, 100], # gen 5 and 6 forced down by design, really fast freight is imbalanced
                                    'express': [60, 75, 90, 105, 120, 135],
                                    'very_high_speed': [0, 0, 0, 140, 170, 200]},
-                          'METRO': {'standard': [45, 45, 55, 65, 65]}, # no express for metro in Pony
-                          'NG': {'standard': [35, 35, 45, 55, 55], # NG standard/express all same in Pony
-                                 'express': [35, 35, 45, 55, 55]}},
+                          'METRO': {'standard': [45, 55, 65]}, # no express for metro in Pony
+                          'NG': {'standard': [35, 35, 45, 55], # NG standard/express all same in Pony
+                                 'express': [35, 35, 45, 55]}},
 
                 # capacity factor per generation, will be multiplied by vehicle length
                 freight_car_capacity_per_unit_length =  {'RAIL': [4, 4, 5, 6, 6, 6],

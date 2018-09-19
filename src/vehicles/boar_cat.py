@@ -8,7 +8,7 @@ consist = EngineConsist(id='boar_cat',
                         track_type='NG',
                         type_base_buy_cost_points=-10,  # dibble buy cost for game balance
                         type_base_running_cost_points=-15,  # dibble running costs for game balance
-                        intro_date=1990)
+                        gen=4)
 
 consist.add_unit(type=DieselEngineUnit,
                  weight=40,

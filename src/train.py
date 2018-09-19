@@ -211,6 +211,22 @@ class Consist(object):
         return result
 
     @property
+    def engine_consists_for_caboose_cars(self):
+        # caboose cars adjust livery depending on engine
+        # this could be renamed for use with non-caboose types if ever needed
+        result = []
+        for consist in self.roster.engine_consists:
+            if self.track_type in ['NG', 'METRO']:
+                # exact match required for these types
+                if self.track_type == consist.track_type:
+                    result.append(consist)
+            elif self.track_type in ['RAIL', 'ELRL']:
+                # for this purpose, RAIL and ELRL are cross-compatible
+                if consist.track_type in ['RAIL', 'ELRL']:
+                    result.append(consist)
+        return result
+
+    @property
     def model_life(self):
         similar_consists = []
         for consist in self.roster.engine_consists:

@@ -9,7 +9,7 @@ consist = EngineConsist(id='bean_feast',
                         tractive_effort_coefficient=0.2,
                         type_base_buy_cost_points=-11,  # dibble buy cost for game balance
                         type_base_running_cost_points=0,  # dibble running costs for game balance
-                        intro_date=1910)
+                        gen=2)
 
 consist.add_unit(type=SteamEngineUnit,
                  weight=45,

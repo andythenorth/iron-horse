@@ -39,7 +39,7 @@
 
 switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_graphics_vehicle, vehicle_type_id) {
 <!--! this doesn't check grfid currently - add later if needed -->
-    <tal:livery_2_engine_ids repeat="engine_consist consist.roster.engine_consists">
+    <tal:livery_2_engine_ids repeat="engine_consist consist.engine_consists_for_caboose_cars">
         <!--! note that livery variants are zero-indexed, generations are one-indexed -->
         ${engine_consist.id}: return ${vehicle.id}_switch_graphics_livery_${engine_consist.gen - 1};
     </tal:livery_2_engine_ids>
