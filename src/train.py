@@ -181,7 +181,7 @@ class Consist(object):
             return self._intro_date
         else:
             assert(self._gen != None), "%s consist has neither gen nor intro_date set, which is incorrect" % self.id
-            result = self.roster.intro_dates[self.gen - 1]
+            result = self.roster.intro_dates[self.track_type][self.gen - 1]
             if self.intro_date_offset is not None:
                 result = result + self.intro_date_offset
             return result
@@ -194,11 +194,11 @@ class Consist(object):
             return self._gen
         else:
             assert(self._intro_date != None), "%s consist has neither gen nor intro_date set, which is incorrect" % self.id
-            for gen_counter, intro_date in enumerate(self.roster.intro_dates):
+            for gen_counter, intro_date in enumerate(self.roster.intro_dates[self.track_type]):
                 if self.intro_date < intro_date:
                     return gen_counter
             # if no result is found in list, it's last gen
-            return len(self.roster.intro_dates)
+            return len(self.roster.intro_dates[self.track_type])
 
     @property
     def livery_2_engine_ids(self):
@@ -642,7 +642,7 @@ class CabooseCarConsist(CarConsist):
         self.random_company_colour_swap = False
         self.allow_flip = True
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsCaboose(num_generations=len(self.roster.intro_dates),
+        self.gestalt_graphics = GestaltGraphicsCaboose(num_generations=len(self.roster.intro_dates[self.track_type]),
                                                        recolour_maps=graphics_constants.caboose_livery_recolour_maps)
 
 

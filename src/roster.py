@@ -51,12 +51,11 @@ class Roster(object):
                 raise
         return result
 
-    @property
-    def intro_date_ranges(self):
+    def intro_date_ranges(self, track_type):
         # return a list of date pairs (first year, last year) for generations
         result = []
         end_date = global_constants.max_game_date
-        for intro_date in reversed(self.intro_dates):
+        for intro_date in reversed(self.intro_dates[track_type]):
             result.append((intro_date, end_date))
             end_date = intro_date - 1
         result.reverse()

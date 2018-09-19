@@ -59,7 +59,11 @@ from vehicles import westbourne
 roster = Roster(id = 'pony',
                 numeric_id = 1,
                 # default intro dates per generation, can be over-ridden if needed by setting intro_date kw on consist
-                intro_dates = [1860, 1900, 1930, 1960, 1990, 2020],
+                # copy ELRL from RAIL manually, it's crude and duplicative, but anything else is TMWFTLB for current use case
+                intro_dates = {'RAIL': [1860, 1900, 1930, 1960, 1990, 2020],
+                               'ELRL': [1860, 1900, 1930, 1960, 1990, 2020],
+                               'METRO': [1860, 1900, 1930, 1960, 1990, 2020],
+                               'NG': [1860, 1900, 1930, 1960, 1990, 2020]},
                 # default speeds per generation, can be over-ridden if needed by setting speed kw arg on consist
                 # speeds roughly same as RH trucks of same era + 5mph or so, and a bit higher at the top end (back and forth on this many times eh?),
                 speeds = {'RAIL': {'standard': [45, 45, 60, 75, 87, 100], # gen 5 and 6 forced down by design, really fast freight is imbalanced
