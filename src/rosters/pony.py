@@ -18,6 +18,7 @@ from vehicles import express_tank
 from vehicles import faun
 from vehicles import fleet
 from vehicles import flanders_storm
+from vehicles import forehorse
 from vehicles import freight_tank
 from vehicles import gowsty
 from vehicles import growler
@@ -53,7 +54,6 @@ from vehicles import turtle
 from vehicles import tyburn
 from vehicles import ultra_shoebox
 from vehicles import velaro_thing
-from vehicles import walker
 from vehicles import westbourne
 
 roster = Roster(id = 'pony',
@@ -130,6 +130,6 @@ roster = Roster(id = 'pony',
                            # brit ng
                            cheese_bug,
                            bean_feast,
-                           walker,
+                           forehorse,
                            boar_cat,
                            donegal])
