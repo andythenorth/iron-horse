@@ -1485,6 +1485,7 @@ class MetroUnit(Train):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        kwargs['consist'].track_type = 'METRO'
         self.loading_speed_multiplier = 2
         self.engine_class = 'ENGINE_CLASS_ELECTRIC'
         self.visual_effect = 'VISUAL_EFFECT_ELECTRIC'

@@ -3,7 +3,6 @@ from train import PassengerEngineConsist, MetroUnit
 consist = PassengerEngineConsist(id='riachuelo',
                                  base_numeric_id=1470,
                                  name='Riachuelo',
-                                 track_type='METRO',
                                  power=600,
                                  type_base_buy_cost_points=40,  # dibble buy cost for game balance
                                  intro_date=1900)

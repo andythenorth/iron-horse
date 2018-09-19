@@ -4,8 +4,7 @@ consist = PassengerEngineMetroConsist(id='fleet',
                                       base_numeric_id=210,
                                       name='Fleet',
                                       role='pax_metro',
-                                      track_type='METRO',
-                                      power=1100,
+                                           power=1100,
                                       type_base_buy_cost_points=80,  # dibble buy cost for game balance
                                       gen=3,
                                       sprites_complete=True)
