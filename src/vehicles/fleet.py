@@ -7,9 +7,8 @@ consist = PassengerEngineMetroConsist(id='fleet',
                                       track_type='METRO',
                                       power=1100,
                                       type_base_buy_cost_points=80,  # dibble buy cost for game balance
-                                      gen=5,
-                                      sprites_complete=True,
-                                      intro_date_offset=10)  # introduce later than gen epoch by design
+                                      gen=3,
+                                      sprites_complete=True)
 
 # should be 4 short units, not 2 long but eh
 consist.add_unit(type=MetroUnit,
