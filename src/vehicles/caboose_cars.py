@@ -11,7 +11,7 @@ def main():
 
     consist.add_unit(type=CabooseCar,
                      vehicle_length=4,
-                     chassis='2_axle_caboose_16px')
+                     chassis='4_axle_ng_16px')
 
     #--------------- pony ----------------------------------------------------------------------
     consist = CabooseCarConsist(roster='pony',
