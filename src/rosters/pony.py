@@ -58,10 +58,9 @@ from vehicles import westbourne
 
 roster = Roster(id = 'pony',
                 numeric_id = 1,
+                # ELRL, ELNG is mapped to RAIL, NG etc
                 # default intro dates per generation, can be over-ridden if needed by setting intro_date kw on consist
-                # copy ELRL from RAIL manually, it's crude and duplicative, but anything else is TMWFTLB for current use case
                 intro_dates = {'RAIL': [1860, 1900, 1930, 1960, 1990, 2020],
-                               'ELRL': [1860, 1900, 1930, 1960, 1990, 2020], # keep ELRL same as RAIL
                                'METRO': [1900, 1950, 2000],
                                'NG': [1860, 1910, 1950, 1990]},
                 # default speeds per generation, can be over-ridden if needed by setting speed kw arg on consist

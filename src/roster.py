@@ -36,10 +36,10 @@ class Roster(object):
     def consists_in_buy_menu_order(self):
         result = []
         result.extend(self.engine_consists)
-        for track_type in ['RAIL', 'NG']:
+        for base_track_type in ['RAIL', 'NG']:
             for base_id in global_constants.buy_menu_sort_order_wagons:
                 wagon_consists = [wagon_consist for wagon_consist in self.wagon_consists[base_id]
-                                  if wagon_consist.track_type == track_type]
+                                  if wagon_consist.base_track_type == base_track_type]
                 result.extend(
                     sorted(wagon_consists, key=lambda wagon_consist: wagon_consist.subtype))
         for consist in result:
@@ -51,11 +51,11 @@ class Roster(object):
                 raise
         return result
 
-    def intro_date_ranges(self, track_type):
+    def intro_date_ranges(self, base_track_type):
         # return a list of date pairs (first year, last year) for generations
         result = []
         end_date = global_constants.max_game_date
-        for intro_date in reversed(self.intro_dates[track_type]):
+        for intro_date in reversed(self.intro_dates[base_track_type]):
             result.append((intro_date, end_date))
             end_date = intro_date - 1
         result.reverse()
