@@ -48,7 +48,7 @@ class Consist(object):
         self.intro_date_offset = kwargs.get('intro_date_offset', None)
         self.vehicle_life = kwargs.get('vehicle_life', 40)
         self.power = kwargs.get('power', 0)
-        self.track_type = kwargs.get('base_track_type', 'RAIL')
+        self.base_track_type = kwargs.get('base_track_type', 'RAIL')
         self.tractive_effort_coefficient = kwargs.get(
             'tractive_effort_coefficient', 0.3)  # 0.3 is recommended default value
         # private var, can be used to over-rides default (per generation, per class) speed
@@ -259,6 +259,16 @@ class Consist(object):
         # to understand why this is needed see https://newgrf-specs.tt-wiki.net/wiki/NML:Vehicles#Engine_life_cycle
         # retire at end of model life + 10 (fudge factor - no need to be more precise than that)
         return -10
+
+    @property
+    def track_type(self):
+        # are you sure you don't want base_track_type instead?
+        # track_type handles converting base_track_type to ELRL, ELNG etc as needed for electric engines
+        # it's often more convenient to use base_track_type prop, which treats ELRL and RAIL as same (for example)
+        print('track_type is unfinished')
+        # !! doesn't convert ELRL yet eh :)
+        return self.base_track_type
+
 
     @property
     def speed(self):
@@ -1425,12 +1435,13 @@ class ElectricEngineUnit(Train):
         if hasattr(kwargs['consist'], 'base_track_type'):
             # all NG vehicles should set 'NG' only, this class then over-rides that to electrified NG as needed
             # why? this might be daft?
-            if kwargs['consist'].track_type == "NG":
-                kwargs['consist'].track_type = "ELNG"
+            print("Setting kwargs['consist'].track_type looks weird here, there's a better way?")
+            if kwargs['consist'].base_track_type == "NG":
+                kwargs['consist'].base_track_type = "ELNG"
             else:
-                kwargs['consist'].track_type = "ELRL"
+                kwargs['consist'].base_track_type = "ELRL"
         else:
-            kwargs['consist'].track_type = "ELRL"
+            kwargs['consist'].base_track_type = "ELRL"
         self.engine_class = 'ENGINE_CLASS_ELECTRIC'
         self.visual_effect = 'VISUAL_EFFECT_ELECTRIC'
         self.consist.str_name_suffix = 'STR_NAME_SUFFIX_ELECTRIC'
@@ -1464,12 +1475,13 @@ class ElectricPaxUnit(Train):
         if hasattr(kwargs['consist'], 'base_track_type'):
             # all NG vehicles should set 'NG' only, this class then over-rides that to electrified NG as needed
             # why? this might be daft?
-            if kwargs['consist'].track_type == "NG":
-                kwargs['consist'].track_type = "ELNG"
+            print("There's a better way")
+            if kwargs['consist'].base_track_type == "NG":
+                kwargs['consist'].base_track_type = "ELNG"
             else:
-                kwargs['consist'].track_type = "ELRL"
+                kwargs['consist'].base_track_type = "ELRL"
         else:
-            kwargs['consist'].track_type = "ELRL"
+            kwargs['consist'].base_track_type = "ELRL"
         self.engine_class = 'ENGINE_CLASS_ELECTRIC'
         self.visual_effect = 'VISUAL_EFFECT_ELECTRIC'
         self.consist.str_name_suffix = 'STR_NAME_SUFFIX_ELECTRIC'
@@ -1485,7 +1497,7 @@ class MetroUnit(Train):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        kwargs['consist'].track_type = 'METRO'
+        kwargs['consist'].base_track_type = 'METRO'
         self.loading_speed_multiplier = 2
         self.engine_class = 'ENGINE_CLASS_ELECTRIC'
         self.visual_effect = 'VISUAL_EFFECT_ELECTRIC'
