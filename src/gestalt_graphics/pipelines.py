@@ -276,7 +276,7 @@ class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
 
     def add_box_car_with_opening_doors_spriterows(self):
         # all wagons using this gestalt repaint the relevant box car sprite for the wagon's generation and subtype
-        if self.consist.track_type == 'NG':
+        if self.consist.base_track_type == 'NG':
             id_base='box_car_ng'
         else:
             id_base='box_car'

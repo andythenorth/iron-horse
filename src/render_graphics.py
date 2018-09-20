@@ -58,8 +58,7 @@ def report_sprites_complete(consists):
     incomplete_by_track_type = {}
     for consist in consists:
         if not consist.sprites_complete:
-            incomplete_by_track_type.setdefault(consist.track_type, []).append(consist)
-    incomplete_by_track_type['RAIL'].extend(incomplete_by_track_type.pop('ELRL', []))
+            incomplete_by_track_type.setdefault(consist.base_track_type, []).append(consist)
     for track_type, incomplete_consists in incomplete_by_track_type.items():
         print("  *", track_type, len(incomplete_consists))
 
