@@ -7,13 +7,13 @@ def main():
                                   base_numeric_id=770,
                                   gen=1,
                                   subtype='A',
-                                  base_track_type='NG')
+                                  base_track_type='NG',
+                                  sprites_complete=True)
 
     consist.add_unit(type=PaxMailCar,
                      capacity=25,
                      vehicle_length=4,
-                     chassis='4_axle_ng_16px',
-                     sprites_complete=True)
+                     chassis='4_axle_ng_16px')
 
     #--------------- pony ----------------------------------------------------------------------
 
