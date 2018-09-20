@@ -4,7 +4,7 @@ consist = EngineConsist(id='ge289a',
                         base_numeric_id=1460,
                         name='GE 289a Boxcab',
                         power=1200,
-                        track_type='NG',
+                        base_track_type='NG',
                         type_base_buy_cost_points=35,  # dibble buy cost for game balance
                         type_base_running_cost_points=-10,  # dibble running costs for game balance
                         intro_date=1922)

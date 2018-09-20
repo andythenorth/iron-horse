@@ -4,7 +4,7 @@ consist = EngineConsist(id='bigfoot',
                         base_numeric_id=1620,
                         name='Bigfoot',
                         power=900,
-                        track_type='NG',
+                        base_track_type='NG',
                         type_base_buy_cost_points=-5,  # dibble buy cost for game balance
                         type_base_running_cost_points=-10,  # dibble running costs for game balance
                         intro_date=1970)

@@ -4,7 +4,7 @@ consist = EngineConsist(id='gazelle',
                         base_numeric_id=2030,
                         name='Gazelle',
                         power=1800,
-                        track_type='NG',
+                        base_track_type='NG',
                         intro_date=1975)
 
 consist.add_unit(type=DieselEngineUnit,

@@ -7,7 +7,7 @@ def main():
                                 base_numeric_id=1290,
                                 gen=1,
                                 subtype='A',
-                                track_type='NG')
+                                base_track_type='NG')
 
     consist.add_unit(type=CabooseCar,
                      vehicle_length=4,

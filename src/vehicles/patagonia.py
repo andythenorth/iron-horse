@@ -3,7 +3,7 @@ from train import EngineConsist, DieselEngineUnit
 consist = EngineConsist(id='patagonia',
                         base_numeric_id=330,
                         name='Patagonia',
-                        track_type='NG',
+                        base_track_type='NG',
                         power=500,
                         type_base_buy_cost_points=-18,  # dibble buy cost for game balance
                         type_base_running_cost_points=-30,  # dibble running costs for game balance

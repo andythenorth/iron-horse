@@ -4,7 +4,7 @@ consist = EngineConsist(id='donegal',
                         base_numeric_id=140,
                         name='Donnegal',
                         role='pax_railcar',
-                        track_type='NG',
+                        base_track_type='NG',
                         power=250,
                         type_base_buy_cost_points=-18,  # dibble buy cost for game balance
                         type_base_running_cost_points=-30,  # dibble running costs for game balance

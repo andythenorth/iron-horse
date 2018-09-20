@@ -48,7 +48,7 @@ class Consist(object):
         self.intro_date_offset = kwargs.get('intro_date_offset', None)
         self.vehicle_life = kwargs.get('vehicle_life', 40)
         self.power = kwargs.get('power', 0)
-        self.track_type = kwargs.get('track_type', 'RAIL')
+        self.track_type = kwargs.get('base_track_type', 'RAIL')
         self.tractive_effort_coefficient = kwargs.get(
             'tractive_effort_coefficient', 0.3)  # 0.3 is recommended default value
         # private var, can be used to over-rides default (per generation, per class) speed
@@ -599,7 +599,7 @@ class CarConsist(Consist):
 
         # special case NG - extend this for other track_types as needed
         # 'narmal' rail and 'elrail' doesn't require an id modifier
-        if kwargs.get('track_type', None) == 'NG':
+        if kwargs.get('base_track_type', None) == 'NG':
             id_base = id_base + '_ng'
         result = '_'.join((id_base, kwargs['roster'], 'gen', str(
             kwargs['gen']) + str(kwargs['subtype'])))
@@ -1422,7 +1422,7 @@ class ElectricEngineUnit(Train):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        if hasattr(kwargs['consist'], 'track_type'):
+        if hasattr(kwargs['consist'], 'base_track_type'):
             # all NG vehicles should set 'NG' only, this class then over-rides that to electrified NG as needed
             # why? this might be daft?
             if kwargs['consist'].track_type == "NG":
@@ -1461,7 +1461,7 @@ class ElectricPaxUnit(Train):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        if hasattr(kwargs['consist'], 'track_type'):
+        if hasattr(kwargs['consist'], 'base_track_type'):
             # all NG vehicles should set 'NG' only, this class then over-rides that to electrified NG as needed
             # why? this might be daft?
             if kwargs['consist'].track_type == "NG":

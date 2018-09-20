@@ -4,7 +4,7 @@ consist = EngineConsist(id='cheese_bug',
                         base_numeric_id=490,
                         name='0-6-2 Cheese Bug',
                         role='universal',
-                        track_type='NG',
+                        base_track_type='NG',
                         power=350,
                         tractive_effort_coefficient=0.2,
                         type_base_buy_cost_points=-5,  # dibble buy cost for game balance

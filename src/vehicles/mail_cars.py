@@ -7,7 +7,7 @@ def main():
                              base_numeric_id=950,
                              gen=1,
                              subtype='A',
-                             track_type='NG')
+                             base_track_type='NG')
 
     consist.add_unit(type=PaxMailCar,
                      capacity=12,

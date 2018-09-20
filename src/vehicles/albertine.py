@@ -5,7 +5,7 @@ consist = EngineConsist(id='albertine',
                         name='4-4-2 Albertine',
                         power=1200,
                         tractive_effort_coefficient=0.19,
-                        track_type='NG',
+                        base_track_type='NG',
                         type_base_buy_cost_points=25,  # dibble buy cost for game balance
                         type_base_running_cost_points=35,  # dibble running costs for game balance
                         intro_date=1885)

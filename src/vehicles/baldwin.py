@@ -4,7 +4,7 @@ consist = EngineConsist(id='baldwin',
                         base_numeric_id=60,
                         name='2-8-2 Baldwin',
                         power=1600,
-                        track_type='NG',
+                        base_track_type='NG',
                         intro_date=1920)
 
 consist.add_unit(type=SteamEngineUnit,

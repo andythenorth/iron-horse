@@ -7,7 +7,7 @@ def main():
                              base_numeric_id=1170,
                              gen=1,
                              subtype='A',
-                             track_type='NG',
+                             base_track_type='NG',
                              sprites_complete=True)
 
     consist.add_unit(type=FreightCar,

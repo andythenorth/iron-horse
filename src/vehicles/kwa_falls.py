@@ -5,7 +5,7 @@ consist = EngineConsist(id='kwa_falls',
                         name='2-8-2 Kwa Falls',
                         power=1800,
                         tractive_effort_coefficient=0.19,
-                        track_type='NG',
+                        base_track_type='NG',
                         intro_date=1945)
 
 consist.add_unit(type=SteamEngineUnit,
