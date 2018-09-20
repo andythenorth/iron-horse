@@ -49,6 +49,10 @@ class Consist(object):
         self.vehicle_life = kwargs.get('vehicle_life', 40)
         self.power = kwargs.get('power', 0)
         self.base_track_type = kwargs.get('base_track_type', 'RAIL')
+        # modify base_track_type for electric engines when writing out the actual rail type
+        # without this, RAIL and ELRL have to be specially handled whenever a list of compatible consists is wanted
+        # this *does* need a specific flag, can't rely on unit visual effect or unit engine type props - they are used for other things
+        self.requires_electric_rails = False # set by unit subclasses as needed, not a kwarg
         self.tractive_effort_coefficient = kwargs.get(
             'tractive_effort_coefficient', 0.3)  # 0.3 is recommended default value
         # private var, can be used to over-rides default (per generation, per class) speed
@@ -265,9 +269,12 @@ class Consist(object):
         # are you sure you don't want base_track_type instead?
         # track_type handles converting base_track_type to ELRL, ELNG etc as needed for electric engines
         # it's often more convenient to use base_track_type prop, which treats ELRL and RAIL as same (for example)
-        print('track_type is unfinished')
-        # !! doesn't convert ELRL yet eh :)
-        return self.base_track_type
+        # the assumption here is that METRO is always METRO, whether electric flag is set or not
+        eltrack_type_mapping = {'RAIL': 'ELRL', 'NG': 'ELNG', 'METRO': 'METRO'}
+        if self.requires_electric_rails:
+            return eltrack_type_mapping[self.base_track_type]
+        else:
+            return self.base_track_type
 
 
     @property
@@ -1432,16 +1439,7 @@ class ElectricEngineUnit(Train):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        if hasattr(kwargs['consist'], 'base_track_type'):
-            # all NG vehicles should set 'NG' only, this class then over-rides that to electrified NG as needed
-            # why? this might be daft?
-            print("Setting kwargs['consist'].track_type looks weird here, there's a better way?")
-            if kwargs['consist'].base_track_type == "NG":
-                kwargs['consist'].base_track_type = "ELNG"
-            else:
-                kwargs['consist'].base_track_type = "ELRL"
-        else:
-            kwargs['consist'].base_track_type = "ELRL"
+        self.consist.requires_electric_rails = True
         self.engine_class = 'ENGINE_CLASS_ELECTRIC'
         self.visual_effect = 'VISUAL_EFFECT_ELECTRIC'
         self.consist.str_name_suffix = 'STR_NAME_SUFFIX_ELECTRIC'
@@ -1472,16 +1470,7 @@ class ElectricPaxUnit(Train):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        if hasattr(kwargs['consist'], 'base_track_type'):
-            # all NG vehicles should set 'NG' only, this class then over-rides that to electrified NG as needed
-            # why? this might be daft?
-            print("There's a better way")
-            if kwargs['consist'].base_track_type == "NG":
-                kwargs['consist'].base_track_type = "ELNG"
-            else:
-                kwargs['consist'].base_track_type = "ELRL"
-        else:
-            kwargs['consist'].base_track_type = "ELRL"
+        self.consist.requires_electric_rails = True
         self.engine_class = 'ENGINE_CLASS_ELECTRIC'
         self.visual_effect = 'VISUAL_EFFECT_ELECTRIC'
         self.consist.str_name_suffix = 'STR_NAME_SUFFIX_ELECTRIC'
