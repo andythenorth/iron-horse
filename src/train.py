@@ -185,7 +185,7 @@ class Consist(object):
             return self._intro_date
         else:
             assert(self._gen != None), "%s consist has neither gen nor intro_date set, which is incorrect" % self.id
-            result = self.roster.intro_dates[self.track_type][self.gen - 1]
+            result = self.roster.intro_dates[self.base_track_type][self.gen - 1]
             if self.intro_date_offset is not None:
                 result = result + self.intro_date_offset
             return result
@@ -198,11 +198,11 @@ class Consist(object):
             return self._gen
         else:
             assert(self._intro_date != None), "%s consist has neither gen nor intro_date set, which is incorrect" % self.id
-            for gen_counter, intro_date in enumerate(self.roster.intro_dates[self.track_type]):
+            for gen_counter, intro_date in enumerate(self.roster.intro_dates[self.base_track_type]):
                 if self.intro_date < intro_date:
                     return gen_counter
             # if no result is found in list, it's last gen
-            return len(self.roster.intro_dates[self.track_type])
+            return len(self.roster.intro_dates[self.base_track_type])
 
     @property
     def livery_2_engine_ids(self):
@@ -269,19 +269,19 @@ class Consist(object):
         # are you sure you don't want base_track_type instead?
         # track_type handles converting base_track_type to ELRL, ELNG etc as needed for electric engines
         # it's often more convenient to use base_track_type prop, which treats ELRL and RAIL as same (for example)
-        # the assumption here is that METRO is always METRO, whether electric flag is set or not
-        eltrack_type_mapping = {'RAIL': 'ELRL', 'NG': 'ELNG', 'METRO': 'METRO'}
+        eltrack_type_mapping = {'RAIL': 'ELRL',
+                                'NG': 'ELNG',
+                                'METRO': 'METRO'} # assume METRO is always METRO, whether electric flag is set or not
         if self.requires_electric_rails:
             return eltrack_type_mapping[self.base_track_type]
         else:
             return self.base_track_type
 
-
     @property
     def speed(self):
         # automatic speed, but can over-ride by passing in kwargs for consist
         speed_track_type_mapping = {'RAIL':'RAIL', 'ELRL':'RAIL', 'NG':'NG', 'ELNG':'NG', 'METRO':'METRO'}
-        speeds_by_track_type = self.roster.speeds[speed_track_type_mapping[self.track_type]]
+        speeds_by_track_type = self.roster.speeds[speed_track_type_mapping[self.base_track_type]]
         if self._speed:
             return self._speed
         elif getattr(self, 'speed_class', None):
@@ -601,7 +601,7 @@ class CarConsist(Consist):
     def model_life(self):
         # automatically span wagon model life across gap to next generation
         roster_gens_for_class = sorted(set(
-            [wagon.gen for wagon in self.roster.wagon_consists[self.base_id] if (wagon.subtype == self.subtype and wagon.track_type == self.track_type)]))
+            [wagon.gen for wagon in self.roster.wagon_consists[self.base_id] if (wagon.subtype == self.subtype and wagon.base_track_type == self.base_track_type)]))
         this_index = roster_gens_for_class.index(self.gen)
         if this_index == len(roster_gens_for_class) - 1:
             return 'VEHICLE_NEVER_EXPIRES'
@@ -675,7 +675,7 @@ class CabooseCarConsist(CarConsist):
         self.random_company_colour_swap = False
         self.allow_flip = True
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsCaboose(num_generations=len(self.roster.intro_dates[self.track_type]),
+        self.gestalt_graphics = GestaltGraphicsCaboose(num_generations=len(self.roster.intro_dates[self.base_track_type]),
                                                        recolour_maps=graphics_constants.caboose_livery_recolour_maps)
 
 
@@ -736,7 +736,7 @@ class EdiblesTankCarConsist(CarConsist):
             self.speed_class = 'express'
         else:
             # this is quite evil, and probably unwise
-            self._speed = self.roster.speeds[self.track_type][self.speed_class][5]
+            self._speed = self.roster.speeds[self.base_track_type][self.speed_class][5]
         self.class_refit_groups = ['liquids']
         self.label_refits_allowed = ['FOOD']
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label[
@@ -993,7 +993,7 @@ class ReeferCarConsist(CarConsist):
             self.speed_class = 'express'
         else:
             # this is quite evil, and probably unwise
-            self._speed = self.roster.speeds[self.track_type][self.speed_class][5]
+            self._speed = self.roster.speeds[self.base_track_type][self.speed_class][5]
         self.class_refit_groups = ['refrigerated_freight']
         self.label_refits_allowed = []  # no specific labels needed
         self.label_refits_disallowed = []
@@ -1264,7 +1264,7 @@ class Train(object):
     def roof(self):
         # fetch spritesheet name to use for roof when generating graphics
         if self.consist.generate_unit_roofs:
-            if self.consist.track_type == 'NG':
+            if self.consist.base_track_type == 'NG':
                 ng_prefix = 'ng_'
             else:
                 ng_prefix = ''
@@ -1572,7 +1572,7 @@ class FreightCar(TrainCar):
         # magic to set freight car capacity subject to length
         self.capacity = kwargs['vehicle_length'] * \
             self.consist.roster.freight_car_capacity_per_unit_length[
-                self.consist.track_type][self.consist.gen - 1]
+                self.consist.base_track_type][self.consist.gen - 1]
 
 
 class SuppliesCar(FreightCar):
