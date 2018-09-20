@@ -220,33 +220,16 @@ class Consist(object):
         # this could be renamed for use with non-caboose types if ever needed
         result = []
         for consist in self.roster.engine_consists:
-            if self.track_type in ['NG', 'METRO']:
-                # exact match required for these types
-                if self.track_type == consist.track_type:
-                    result.append(consist)
-            elif self.track_type in ['RAIL', 'ELRL']:
-                # for this purpose, RAIL and ELRL are cross-compatible
-                if consist.track_type in ['RAIL', 'ELRL']:
-                    result.append(consist)
+            if self.base_track_type == consist.base_track_type:
+                result.append(consist)
         return result
 
     @property
     def model_life(self):
         similar_consists = []
         for consist in self.roster.engine_consists:
-            if consist.role == self.role:
-                # no way to avoid railtype-specific handling here
-                if self.track_type in ['NG', 'METRO']:
-                    # exact match required for these types
-                    if self.track_type == consist.track_type:
-                        similar_consists.append(consist)
-                elif self.track_type in ['RAIL', 'ELRL']:
-                    # for vehicle replacement purposes, RAIL and ELRL are cross-compatible
-                    if consist.track_type in ['RAIL', 'ELRL']:
-                        similar_consists.append(consist)
-                else:
-                    raise Exception('track_type for consist ' +
-                                    self.id + ' unrecognised in model_life method')
+            if consist.role == self.role and consist.base_track_type == self.base_track_type:
+                similar_consists.append(consist)
         replacement_consist = None
         for consist in sorted(similar_consists, key=lambda consist: consist.intro_date):
             if consist.intro_date > self.intro_date:
