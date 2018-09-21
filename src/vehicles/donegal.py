@@ -2,7 +2,7 @@ from train import PassengerEngineRailcarConsist, DieselRailcarUnit
 
 consist = PassengerEngineRailcarConsist(id='donegal',
                                         base_numeric_id=140,
-                                        name='Donnegal',
+                                        name='Donegal',
                                         role='pax_railcar',
                                         base_track_type='NG',
                                         power=250,
