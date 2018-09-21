@@ -15,6 +15,32 @@ def main():
                      vehicle_length=4,
                      chassis='4_axle_ng_16px')
 
+    # no gen 2 for NG, straight to gen 3
+
+    consist = MailCarConsist(roster='pony',
+                             base_numeric_id=610,
+                             gen=3,
+                             subtype='A',
+                             base_track_type='NG',
+                             sprites_complete=False)
+
+    consist.add_unit(type=PaxMailCar,
+                     capacity=12,
+                     vehicle_length=4,
+                     chassis='4_axle_ng_16px')
+
+    consist = MailCarConsist(roster='pony',
+                             base_numeric_id=670,
+                             gen=4,
+                             subtype='A',
+                             base_track_type='NG',
+                             sprites_complete=False)
+
+    consist.add_unit(type=PaxMailCar,
+                     capacity=12,
+                     vehicle_length=4,
+                     chassis='4_axle_ng_16px')
+
     #--------------- pony ----------------------------------------------------------------------
 
     consist = MailCarConsist(roster='pony',
