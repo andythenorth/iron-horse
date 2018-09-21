@@ -15,6 +15,32 @@ def main():
                      vehicle_length=6,
                      chassis='4_axle_filled_24px')
 
+    # no gen 2 for NG, straight to gen 3
+
+    consist = PassengerLuxuryCarConsist(roster='pony',
+                                        base_numeric_id=600,
+                                        gen=3,
+                                        subtype='A',
+                                        base_track_type='NG',
+                                        sprites_complete=False)
+
+    consist.add_unit(type=PaxMailCar,
+                     capacity=25,
+                     vehicle_length=6,
+                     chassis='4_axle_filled_24px')
+
+    consist = PassengerLuxuryCarConsist(roster='pony',
+                                        base_numeric_id=660,
+                                        gen=4,
+                                        subtype='A',
+                                        base_track_type='NG',
+                                        sprites_complete=False)
+
+    consist.add_unit(type=PaxMailCar,
+                     capacity=25,
+                     vehicle_length=6,
+                     chassis='4_axle_filled_24px')
+
     #--------------- pony ----------------------------------------------------------------------
     consist = PassengerLuxuryCarConsist(roster='pony',
                                         base_numeric_id=2250,
