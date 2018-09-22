@@ -18,7 +18,6 @@ from vehicles import express_tank
 from vehicles import faun
 from vehicles import fleet
 from vehicles import flanders_storm
-from vehicles import forehorse
 from vehicles import freight_tank
 from vehicles import gowsty
 from vehicles import growler
@@ -33,6 +32,7 @@ from vehicles import moor_gallop
 from vehicles import northcock
 from vehicles import peasweep
 from vehicles import pendolino_thing
+from vehicles import pikel
 from vehicles import phoenix
 from vehicles import plastic_postbox
 from vehicles import ramsbottom
@@ -129,6 +129,6 @@ roster = Roster(id = 'pony',
                            # brit ng
                            cheese_bug,
                            bean_feast,
-                           forehorse,
+                           pikel,
                            boar_cat,
                            donegal])

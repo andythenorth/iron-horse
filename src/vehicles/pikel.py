@@ -1,8 +1,8 @@
 from train import EngineConsist, DieselEngineUnit
 
-consist = EngineConsist(id='forehorse',
+consist = EngineConsist(id='pikel',
                         base_numeric_id=430,
-                        name='Forehorse',
+                        name='Pikel',
                         role='universal',
                         power=650,
                         base_track_type='NG',
