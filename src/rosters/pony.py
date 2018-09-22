@@ -44,6 +44,7 @@ from vehicles import shoebox
 from vehicles import sizzler
 from vehicles import slammer
 from vehicles import slug
+from vehicles import snapper
 from vehicles import standard
 from vehicles import suburban
 from vehicles import super_shoebox
@@ -131,4 +132,5 @@ roster = Roster(id = 'pony',
                            bean_feast,
                            pikel,
                            boar_cat,
-                           donegal])
+                           donegal,
+                           snapper])
