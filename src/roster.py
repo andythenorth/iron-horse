@@ -21,6 +21,7 @@ class Roster(object):
         self.speeds = kwargs.get('speeds')
         self.freight_car_capacity_per_unit_length = kwargs.get(
             'freight_car_capacity_per_unit_length')
+        self.freight_car_weight_factors = kwargs.get('freight_car_weight_factors')
         self.disabled = False
 
     @property

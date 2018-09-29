@@ -76,6 +76,9 @@ roster = Roster(id = 'pony',
                 # capacity factor per generation, will be multiplied by vehicle length
                 freight_car_capacity_per_unit_length =  {'RAIL': [4, 4, 5, 5.5, 6, 6],
                                                          'NG': [3, 3, 4, 4]},
+                # freight car weight factor varies slightly by gen, reflecting modern cars with lighter weight
+                freight_car_weight_factors = [1, 1, 1, 0.95, 0.9, 0.9],
+
                 engines = [chaplin,
                            ramsbottom,
                            standard,
