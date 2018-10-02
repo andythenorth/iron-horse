@@ -95,6 +95,24 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
         # initing things here is proven to have unexpected results, as the processor will be shared across multiple vehicles
         super(ExtendSpriterowsForCompositedSpritesPipeline, self).__init__("extend_spriterows_for_composited_cargos_pipeline")
 
+    def get_arbitrary_angles(self, input_image, bounding_boxes):
+        # given an image and a list of arbitrary bounding boxes...
+        # ...return a list of two tuples with sprite and mask
+        # this can then be used for compositing
+        # note the arbitrary order of sprites which makes this very flexible
+        result = []
+        for bounding_box in bounding_boxes:
+            sprite = input_image.copy()
+            sprite = sprite.crop(bounding_box)
+            mask = sprite.copy()
+            # !! .point is noticeably slow although not signifcantly so with only 3 cargo types
+            # !! check this again if optimisation is a concern - can cargos be processed once and passed to the pipeline?
+            # !! as of Oct 2018, commenting out *all* piece cargo processing cut only 1s from an 11s graphics processing run on single CPU
+            # !! so optimising this is TMWFTLB currently; instead simply using multiprocessing cuts graphics run to 2s
+            mask = mask.point(lambda i: 0 if i == 0 else 255).convert("1")
+            result.append((sprite, mask))
+        return result
+
     def comp_chassis_and_body(self, body_image):
         crop_box_input_1 = (0,
                             10,
@@ -495,7 +513,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             bb_result = []
             for y_offset in [0, 20]:
                 bb_y_offset = (counter * 40) + y_offset
-                bb_result.append(tuple([(i[0], i[1] + bb_y_offset, i[2], i[3] + bb_y_offset) for i in polar_fox.constants.cargo_spritesheet_bounding_boxes_base]))
+                bb_result.extend(tuple([(i[0], i[1] + bb_y_offset, i[2], i[3] + bb_y_offset) for i in polar_fox.constants.cargo_spritesheet_bounding_boxes_base]))
             cargo_spritesheet_bounding_boxes[length] = bb_result
 
         # Overview
@@ -561,27 +579,13 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                          cargo_group_output_row_height)
 
         for cargo_filename in polar_fox.constants.piece_vehicle_type_to_sprites_maps[consist.gestalt_graphics.piece_type]:
-            # build a list, with a two-tuple (cargo_sprite, mask) for each of 4 angles
+            # get a list, with a two-tuple (cargo_sprite, mask) for each of 4 angles
             # cargo sprites are assumed to be symmetrical, only 4 angles are needed
             # cargos with 8 angles (e.g. bulldozers) aren't handled here, assume heavy_items_cargo should handle those (might need extended)
-            # loading states are first 4 sprites, loaded are second 4, all in one list
-            # !! make this a generic function for fetching angles from a spriterow, given a set of bounding boxes
-            # !! the returned list can be in any order, controlled entirely by the bounding boxes
-            cargo_sprites = []
+            # loading states are first 4 sprites, loaded are second 4, all in one list, just pick them out as needed
             cargo_sprites_input_path = os.path.join(currentdir, 'src', 'polar_fox', 'cargo_graphics', cargo_filename + '.png')
             cargo_sprites_input_image = Image.open(cargo_sprites_input_path)
-
-            for bboxes in cargo_spritesheet_bounding_boxes[vehicle.cargo_length]:
-                for i in bboxes:
-                    cargo_sprite = cargo_sprites_input_image.copy()
-                    cargo_sprite = cargo_sprite.crop(i)
-                    cargo_mask = cargo_sprite.copy()
-                    # !! .point is noticeably slow although not signifcantly so with only 3 cargo types
-                    # !! check this again if optimisation is a concern - can cargos be processed once and passed to the pipeline?
-                    # !! as of Oct 2018, commenting out *all* piece cargo processing cuts only 1s from an 11s graphics processing run on single CPU
-                    # !! so optimising this is TMWFTLB currently; instead simply using multiprocessing cuts graphics run to 2s
-                    cargo_mask = cargo_mask.point(lambda i: 0 if i == 0 else 255).convert("1")
-                    cargo_sprites.append((cargo_sprite, cargo_mask))
+            cargo_sprites = self.get_arbitrary_angles(cargo_sprites_input_image, cargo_spritesheet_bounding_boxes[vehicle.cargo_length])
 
             vehicle_comped_image = piece_cargo_rows_image.copy()
 
