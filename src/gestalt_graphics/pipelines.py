@@ -576,6 +576,8 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                     cargo_mask = cargo_sprite.copy()
                     # !! .point is noticeably slow although not signifcantly so with only 3 cargo types
                     # !! check this again if optimisation is a concern - can cargos be processed once and passed to the pipeline?
+                    # !! as of Oct 2018, commenting out *all* piece cargo processing cuts only 1s from an 11s graphics processing run on single CPU
+                    # !! so optimising this is TMWFTLB currently; instead simply using multiprocessing cuts graphics run to 2s
                     cargo_mask = cargo_mask.point(lambda i: 0 if i == 0 else 255).convert("1")
                     cargo_sprites.append((cargo_sprite, cargo_mask))
 
