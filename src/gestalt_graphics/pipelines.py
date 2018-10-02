@@ -76,16 +76,24 @@ class PassThroughPipeline(Pipeline):
         return result
 
 
-class ExtendSpriterowsForCompositedCargosPipeline(Pipeline):
+class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
     """"
-        Extends a cargo carrier spritesheet with variations on cargos.
+        Extends a spritesheet with variations on vehicle graphics, liveries, cargos etc.
         Copied from Road Hog where it became convoluted to handle many cases.
         Not easy to simplify, generating graphics has many facets.
+        Individual methods handle specific compositing tasks.
+        == Commentary ==
+        Arguably there is some structural entity missing, between pipeline and unit.
+        The methods maybe do too much without being encapsulated.
+        Maybe a UnitConfig or something.
+        But it seems to work.
+        And I can read it.
+        So eh.
     """
     def __init__(self):
         # this should be sparse, don't store any consist info in Pipelines, pass at render time
         # initing things here is proven to have unexpected results, as the processor will be shared across multiple vehicles
-        super(ExtendSpriterowsForCompositedCargosPipeline, self).__init__("extend_spriterows_for_composited_cargos_pipeline")
+        super(ExtendSpriterowsForCompositedSpritesPipeline, self).__init__("extend_spriterows_for_composited_cargos_pipeline")
 
     def comp_chassis_and_body(self, body_image):
         crop_box_input_1 = (0,
@@ -678,7 +686,7 @@ def get_pipeline(pipeline_name):
     # return a pipeline by name;
     # add pipelines here when creating new ones
     for pipeline in [PassThroughPipeline(),
-                     ExtendSpriterowsForCompositedCargosPipeline()]:
+                     ExtendSpriterowsForCompositedSpritesPipeline()]:
         if pipeline_name == pipeline.name:
             return pipeline
     raise Exception("Pipeline not found: " + pipeline_name) # should never get to here
