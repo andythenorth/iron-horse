@@ -561,14 +561,16 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                          cargo_group_output_row_height)
 
         for cargo_filename in polar_fox.constants.piece_vehicle_type_to_sprites_maps[consist.gestalt_graphics.piece_type]:
-            cargo_sprites_input_path = os.path.join(currentdir, 'src', 'polar_fox', 'cargo_graphics', cargo_filename + '.png')
-            cargo_sprites_input_image = Image.open(cargo_sprites_input_path)
-            cargo_sprites = []
-
             # build a list, with a two-tuple (cargo_sprite, mask) for each of 4 angles
             # cargo sprites are assumed to be symmetrical, only 4 angles are needed
-            # for cargos with 8 angles (e.g. bulldozers), provide those manually as custom cargos?
+            # cargos with 8 angles (e.g. bulldozers) aren't handled here, assume heavy_items_cargo should handle those (might need extended)
             # loading states are first 4 sprites, loaded are second 4, all in one list
+            # !! make this a generic function for fetching angles from a spriterow, given a set of bounding boxes
+            # !! the returned list can be in any order, controlled entirely by the bounding boxes
+            cargo_sprites = []
+            cargo_sprites_input_path = os.path.join(currentdir, 'src', 'polar_fox', 'cargo_graphics', cargo_filename + '.png')
+            cargo_sprites_input_image = Image.open(cargo_sprites_input_path)
+
             for bboxes in cargo_spritesheet_bounding_boxes[vehicle.cargo_length]:
                 for i in bboxes:
                     cargo_sprite = cargo_sprites_input_image.copy()
