@@ -93,7 +93,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
     def __init__(self):
         # this should be sparse, don't store any consist info in Pipelines, pass at render time
         # initing things here is proven to have unexpected results, as the processor will be shared across multiple vehicles
-        super().__init__("extend_spriterows_for_composited_cargos_pipeline")
+        super().__init__("extend_spriterows_for_composited_sprites_pipeline")
 
     def get_arbitrary_angles(self, input_image, bounding_boxes):
         # given an image and a list of arbitrary bounding boxes...

@@ -6,6 +6,7 @@ consist = PassengerEngineVeryHighSpeedConsist(id='velaro_thing',
                                               role='pax_high_speed',
                                               power=2600,
                                               type_base_running_cost_points=-32,  # dibble running costs for game balance
+                                              pantograph_type=1,
                                               gen=6)  # no intro date offset for this unit
 
 # 4 units (2-tiles) because building these is annoying if the units are too small?
