@@ -17,9 +17,10 @@ Or they can compose units for more complicated tasks, such as colouring and load
 
 
 class Pipeline(object):
-    def __init__(self, name):
+    def __init__(self):
         # this should be sparse, don't store any consist info in Pipelines, pass at render time
-        self.name = name
+        # actually, there's nothing to do eh :P
+        pass
 
     def make_spritesheet_from_image(self, input_image):
         spritesheet = Spritesheet(width=input_image.size[0], height=input_image.size[1] , palette=DOS_PALETTE)
@@ -67,7 +68,7 @@ class PassThroughPipeline(Pipeline):
     """
     def __init__(self):
         # this should be sparse, don't store any consist info in Pipelines, pass at render time
-        super().__init__("pass_through_pipeline")
+        super().__init__()
 
     def render(self, consist, global_constants):
         self.units = []
@@ -87,8 +88,8 @@ class PassThroughAndGenerateAdditionalSpritesheetsPipeline(Pipeline):
     """
     def __init__(self):
         # this should be sparse, don't store any consist info in Pipelines, pass at render time
-        super().__init__("pass_through_and_generate_additional_spritesheets_pipeline")
-        #print("PassThroughAndGenerateAdditionalSpritesheetsPipeline: pipeline not implemented yet")
+        super().__init__()
+        print("PassThroughAndGenerateAdditionalSpritesheetsPipeline: pipeline not implemented yet")
 
     def render(self, consist, global_constants):
         self.units = []
@@ -117,7 +118,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
     def __init__(self):
         # this should be sparse, don't store any consist info in Pipelines, pass at render time
         # initing things here is proven to have unexpected results, as the processor will be shared across multiple vehicles
-        super().__init__("extend_spriterows_for_composited_sprites_pipeline")
+        super().__init__()
 
     def get_arbitrary_angles(self, input_image, bounding_boxes):
         # given an image and a list of arbitrary bounding boxes...
@@ -717,13 +718,13 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
 def get_pipeline(pipeline_name):
     # return a pipeline by name;
     # add pipelines here when creating new ones
-    # ¿ why it just doesn't use a dict and simple key access I don't know, historical reasons
-    for pipeline in [PassThroughPipeline(),
-                     ExtendSpriterowsForCompositedSpritesPipeline(),
-                     PassThroughAndGenerateAdditionalSpritesheetsPipeline()]:
-        if pipeline_name == pipeline.name:
-            return pipeline
-    raise Exception("Pipeline not found: " + pipeline_name) # should never get to here
+    # this is a bit hokey, there's probably a simpler way to do this but eh
+    # refactored October 2018 to be less hokey (and to not keep initing pipelines just to check their name)
+    pipelines= {"pass_through_pipeline": PassThroughPipeline,
+                "extend_spriterows_for_composited_sprites_pipeline": ExtendSpriterowsForCompositedSpritesPipeline,
+                "pass_through_and_generate_additional_spritesheets_pipeline": PassThroughAndGenerateAdditionalSpritesheetsPipeline}
+    pipeline = pipelines[pipeline_name]
+    return pipeline()
 
 def main():
     print("yeah, pipelines.main() does nothing")
