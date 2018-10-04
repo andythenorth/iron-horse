@@ -44,7 +44,7 @@ class Pipeline(object):
         return os.path.join(currentdir, 'src', 'graphics', 'roofs', self.vehicle_unit.roof + '.png')
 
     def add_pantograph_spritesheets(self):
-        print(self.consist.pantograph_type)
+        print('pantograph_type:', self.consist.pantograph_type)
 
     def render_common(self, input_image, units):
         # expects to be passed a PIL Image object
@@ -91,7 +91,6 @@ class PassThroughAndGenerateAdditionalSpritesheetsPipeline(Pipeline):
     def __init__(self):
         # this should be sparse, don't store any consist info in Pipelines, pass at render time
         super().__init__()
-        print("PassThroughAndGenerateAdditionalSpritesheetsPipeline: pipeline not implemented yet")
 
     def render(self, consist, global_constants):
         self.units = []
@@ -711,6 +710,9 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                 cumulative_input_spriterow_count += input_spriterow_count
             # self.vehicle_unit is hax, and is only valid inside this loop, so clear it to prevent incorrectly relying on it outside the loop in future :P
             self.vehicle_unit = None
+
+        if self.consist.pantograph_type is not None:
+            self.add_pantograph_spritesheets()
 
         if self.consist.buy_menu_x_loc == 360:
             self.add_custom_buy_menu_sprite()
