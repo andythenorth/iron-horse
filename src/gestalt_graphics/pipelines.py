@@ -43,6 +43,9 @@ class Pipeline(object):
         # convenience method to get the path for the roof image
         return os.path.join(currentdir, 'src', 'graphics', 'roofs', self.vehicle_unit.roof + '.png')
 
+    def add_pantograph_spritesheets(self):
+        print(self.consist.pantograph_type)
+
     def render_common(self, consist, input_image, units):
         # expects to be passed a PIL Image object
         # units is a list of objects, with their config data already baked in (don't have to pass anything to units except the spritesheet)
@@ -76,7 +79,6 @@ class PassThroughPipeline(Pipeline):
 
         input_image = Image.open(self.input_path)
         result = self.render_common(self.consist, input_image, self.units)
-
         return result
 
 
@@ -95,9 +97,11 @@ class PassThroughAndGenerateAdditionalSpritesheetsPipeline(Pipeline):
         self.units = []
         self.consist = consist
 
+        if self.consist.pantograph_type is not None:
+            self.add_pantograph_spritesheets()
+
         input_image = Image.open(self.input_path)
         result = self.render_common(self.consist, input_image, self.units)
-
         return result
 
 
