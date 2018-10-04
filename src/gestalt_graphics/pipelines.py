@@ -62,9 +62,33 @@ class Pipeline(object):
 
 
 class PassThroughPipeline(Pipeline):
+    """
+    Solely opens the input image and saves it, this more of a theoretical case, there's no actual reason to use this.
+    """
     def __init__(self):
         # this should be sparse, don't store any consist info in Pipelines, pass at render time
         super().__init__("pass_through_pipeline")
+
+    def render(self, consist, global_constants):
+        self.units = []
+        self.consist = consist
+
+        input_image = Image.open(self.input_path)
+        result = self.render_common(self.consist, input_image, self.units)
+
+        return result
+
+
+class PassThroughAndGenerateAdditionalSpritesheetsPipeline(Pipeline):
+    """
+    Leaves the input spritesheet unchanged (opens and saves), whilst generating additional spritesheets as new files.
+    Whilst this is not a common use case, when it's needed, it's needed.
+    The original case for this was pantographs, it could also be used for other specific sprite overlays that use in-game compositing.
+    """
+    def __init__(self):
+        # this should be sparse, don't store any consist info in Pipelines, pass at render time
+        super().__init__("pass_through_and_generate_additional_spritesheets_pipeline")
+        #print("PassThroughAndGenerateAdditionalSpritesheetsPipeline: pipeline not implemented yet")
 
     def render(self, consist, global_constants):
         self.units = []
@@ -693,8 +717,10 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
 def get_pipeline(pipeline_name):
     # return a pipeline by name;
     # add pipelines here when creating new ones
+    # ¿ why it just doesn't use a dict and simple key access I don't know, historical reasons
     for pipeline in [PassThroughPipeline(),
-                     ExtendSpriterowsForCompositedSpritesPipeline()]:
+                     ExtendSpriterowsForCompositedSpritesPipeline(),
+                     PassThroughAndGenerateAdditionalSpritesheetsPipeline()]:
         if pipeline_name == pipeline.name:
             return pipeline
     raise Exception("Pipeline not found: " + pipeline_name) # should never get to here
