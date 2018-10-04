@@ -44,7 +44,12 @@ class Pipeline(object):
         return os.path.join(currentdir, 'src', 'graphics', 'roofs', self.vehicle_unit.roof + '.png')
 
     def add_pantograph_spritesheets(self):
-        print('pantograph_type:', self.consist.pantograph_type)
+        pantograph_input_path = os.path.join(currentdir, 'src', 'graphics', 'pantographs', 'type_' + str(self.consist.pantograph_type) + '.png')
+        pantograph_input_image = Image.open(pantograph_input_path)
+        pantograph_input_image.show()
+        pantograph_spritesheet = self.make_spritesheet_from_image(pantograph_input_image)
+        pantograph_output_path = os.path.join(currentdir, 'generated', 'graphics', self.consist.id + '_pantographs.png')
+        pantograph_spritesheet.save(pantograph_output_path)
 
     def render_common(self, input_image, units):
         # expects to be passed a PIL Image object
