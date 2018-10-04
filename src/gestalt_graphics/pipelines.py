@@ -4,7 +4,7 @@ currentdir = os.curdir
 from PIL import Image, ImageDraw
 
 import polar_fox
-from polar_fox.graphics_units import SimpleRecolour, AppendToSpritesheet, AddCargoLabel, AddBuyMenuSprite
+from polar_fox.graphics_units import SimpleRecolour, AppendToSpritesheet, AddCargoLabel, AddBuyMenuSprite, GenerateAdditionalSpritesheet
 from polar_fox.pixa import Spritesheet, pixascan
 from gestalt_graphics import graphics_constants
 
@@ -46,10 +46,10 @@ class Pipeline(object):
     def add_pantograph_spritesheets(self):
         pantograph_input_path = os.path.join(currentdir, 'src', 'graphics', 'pantographs', 'type_' + str(self.consist.pantograph_type) + '.png')
         pantograph_input_image = Image.open(pantograph_input_path)
-        pantograph_input_image.show()
+        #pantograph_input_image.show()
         pantograph_spritesheet = self.make_spritesheet_from_image(pantograph_input_image)
         pantograph_output_path = os.path.join(currentdir, 'generated', 'graphics', self.consist.id + '_pantographs.png')
-        pantograph_spritesheet.save(pantograph_output_path)
+        self.units.append(GenerateAdditionalSpritesheet(pantograph_spritesheet, pantograph_output_path))
 
     def render_common(self, input_image, units):
         # expects to be passed a PIL Image object

@@ -4,6 +4,12 @@ Don't make changes here, make them in the Polar Fox project and redistribute.
 Any changes made here are liable to be over-written.
 """
 
+"""
+This file is generated from the Polar Fox project.
+Don't make changes here, make them in the Polar Fox project and redistribute.
+Any changes made here are liable to be over-written.
+"""
+
 import os
 from PIL import Image, ImageDraw, ImageFont
 
@@ -39,7 +45,7 @@ class PassThrough(ProcessingUnit):
     """ PassThrough """
     # just an example unit that does nothing
     def __init__(self):
-        super(PassThrough, self).__init__()
+        super().__init__()
 
     def render(self, spritesheet):
         return spritesheet
@@ -49,7 +55,7 @@ class SimpleRecolour(ProcessingUnit):
     """ SimpleRecolour """
     def __init__(self, recolour_map):
         self.recolour_map = recolour_map
-        super(SimpleRecolour, self).__init__()
+        super().__init__()
 
     def render(self, spritesheet):
         self.selective_recolour(spritesheet, self.recolour_map)
@@ -66,7 +72,7 @@ class SwapCompanyColours(ProcessingUnit):
         for i in range(8):
             self.recolour_map[CC1 + i] = CC2 + i
             self.recolour_map[CC2 + i] = CC1 + i
-        super(SwapCompanyColours, self).__init__()
+        super().__init__()
 
     def render(self, spritesheet):
         self.selective_recolour(spritesheet, self.recolour_map)
@@ -82,7 +88,7 @@ class AppendToSpritesheet(ProcessingUnit):
         self.crop_box = crop_box
         if self.crop_box is None:
             self.crop_box = (0, 0, spritesheet_to_paste.sprites.size[0], spritesheet_to_paste.sprites.size[1])
-        super(AppendToSpritesheet, self).__init__()
+        super().__init__()
 
     def render(self, spritesheet):
         image_to_paste = self.spritesheet_to_paste.sprites.copy()
@@ -106,7 +112,7 @@ class AddBuyMenuSprite(ProcessingUnit):
         self.custom_buy_menu_sprite = custom_buy_menu_sprite
         # 4 tuple for box size (left, upper, right, lower)
         self.crop_box = crop_box
-        super(AddBuyMenuSprite, self).__init__()
+        super().__init__()
 
     def render(self, spritesheet):
         spritesheet.sprites.paste(self.custom_buy_menu_sprite, self.crop_box)
@@ -123,10 +129,30 @@ class AddCargoLabel(ProcessingUnit):
         # the y_offset is usually negative, as it's a relative offset to the *bottom* of the spritesheet, with y=0 at the top
         # this is so that we can print labels as we add cargo rows to the end of the spritesheet (via AppendToSpritesheet label)
         self.y_offset = y_offset
-        super(AddCargoLabel, self).__init__()
+        super().__init__()
 
     def render(self, spritesheet):
         position = (self.x_offset, spritesheet.sprites.size[1] + self.y_offset)
         draw_cargo_labels = ImageDraw.Draw(spritesheet.sprites)
         draw_cargo_labels.text(position, self.label, font=label_font)
         return spritesheet
+
+
+class GenerateAdditionalSpritesheet(ProcessingUnit):
+    """ GenerateAdditionalSpritesheet """
+    """
+        Creates and saves an additional spritesheet using the passed filename and an image for content.
+        Used when it's simpler to use a separate spritesheet with in-game sprite compositing.
+        Returns the original spritesheet unchanged, so can be used anywhere in a pipeline.
+        Arguably this could have just been done in the pipeline, but it's cleaner to do it in the pipeline as a unit.
+    """
+    def __init__(self, additional_spritesheet, output_path):
+        self.additional_spritesheet = additional_spritesheet
+        self.output_path = output_path
+        super().__init__()
+
+    def render(self, spritesheet):
+        self.additional_spritesheet.save(self.output_path)
+        return spritesheet
+
+
