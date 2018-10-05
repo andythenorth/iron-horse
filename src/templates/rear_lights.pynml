@@ -12,3 +12,7 @@
         }
     </tal:defines>
 </tal:lengths>
+
+spriteset(ss_rear_light_empty, "${global_constants.graphics_path}rear_lights/empty.png") {
+  spriteset_rear_light_32px(10)
+}

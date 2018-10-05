@@ -18,7 +18,7 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_layer_vehicle, STORE_TE
 // !!!! needs to return an empty spriteset if not last
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_rear_light, position_in_consist_from_end) {
     0: return ss_rear_light_${vehicle.vehicle_length * 4}px;
-    return ss_rear_light_${vehicle.vehicle_length * 4}px;
+    return ss_rear_light_empty;
 }
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_layer_rear_light, STORE_TEMP(PALETTE_USE_DEFAULT, 0x100)) {
     return ${vehicle.id}_switch_graphics_rear_light;
