@@ -34,7 +34,7 @@ class GestaltGraphics(object):
         return ['single_row']
 
 
-class GestaltGraphicsOnlyAddPantographs(object):
+class GestaltGraphicsOnlyAddPantographs(GestaltGraphics):
     """
         Simple Gestalt specifically for engines that have absolutely no other graphics processing except pantograph generation.
         Any Gestalt can also add pantographs as needed (it's a method on Pipeline base class).

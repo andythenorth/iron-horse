@@ -1,19 +1,33 @@
+<tal:pantographs condition="consist.pantograph_type is not None">
+    <tal:include metal:use-macro="load: pantographs.pynml" />
+</tal:pantographs>
+
+<!--! ############################# -->
+
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_layer_vehicle, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
     return ${vehicle.id}_switch_graphics_vehicle;
 }
+
+<tal:conditional_pantograph condition="consist.pantograph_type is not None">
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_layer_pantograph, STORE_TEMP(PALETTE_USE_DEFAULT, 0x100)) {
+        return ${vehicle.id}_switch_graphics_pantographs;
+    }
+</tal:conditional_pantograph>
+
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_layer_rear_light, STORE_TEMP(PALETTE_USE_DEFAULT, 0x100)) {
     return ss_rear_light_${vehicle.vehicle_length * 4}px;
 }
-
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_layers, getbits(extra_callback_info1, 8, 8)) {
-    0: return ${vehicle.id}_switch_graphics_layer_vehicle;
-    return ${vehicle.id}_switch_graphics_layer_rear_light;
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_check_rear_light, position_in_consist_from_end) {
+    0: return ${vehicle.id}_switch_graphics_layer_rear_light;
+    return ${vehicle.id}_switch_graphics_vehicle;
 }
 
-<!--! only use layers if last vehicle in consist -->
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics, position_in_consist_from_end) {
-    0: return ${vehicle.id}_switch_graphics_layers;
-    return ${vehicle.id}_switch_graphics_vehicle;
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics, getbits(extra_callback_info1, 8, 8)) {
+    0: return ${vehicle.id}_switch_graphics_layer_vehicle;
+    <tal:conditional_pantograph condition="consist.pantograph_type is not None">
+        1: return ${vehicle.id}_switch_graphics_layer_pantograph;
+    </tal:conditional_pantograph>
+    return ${vehicle.id}_switch_graphics_check_rear_light;
 }
 
 <!--! ############################# -->
