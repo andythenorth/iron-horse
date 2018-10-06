@@ -14,26 +14,10 @@
       spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.id}_flipped(10 + ${livery_variant_num * 60} + 30)
     }
 
-    spritegroup ${vehicle.id}_sg_${livery_variant_num}_unflipped {
-        loaded:  [
-            ${vehicle.id}_ss_${livery_variant_num}_unflipped,
-        ];
-        loading: [
-            ${vehicle.id}_ss_${livery_variant_num}_unflipped,
-        ];
-    }
-    spritegroup ${vehicle.id}_sg_${livery_variant_num}_flipped {
-        loaded:  [
-            ${vehicle.id}_ss_${livery_variant_num}_flipped,
-        ];
-        loading: [
-            ${vehicle.id}_ss_${livery_variant_num}_flipped,
-        ];
-    }
     // handle user flipped state
     switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_livery_${livery_variant_num}, vehicle_is_flipped) {
-        1: return ${vehicle.id}_sg_${livery_variant_num}_flipped;
-        return ${vehicle.id}_sg_${livery_variant_num}_unflipped;
+        1: return ${vehicle.id}_ss_${livery_variant_num}_flipped;
+        return ${vehicle.id}_ss_${livery_variant_num}_unflipped;
     }
 </tal:livery_variant_nums>
 

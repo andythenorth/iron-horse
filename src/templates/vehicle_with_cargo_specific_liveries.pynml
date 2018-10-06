@@ -13,15 +13,6 @@
     spriteset(${vehicle.id}_ss_${cargo_variant_num}, "${global_constants.graphics_path}${consist.id}.png") {
       spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.id}_unflipped(10 + ${cargo_variant_num * 30})
     }
-
-    spritegroup ${vehicle.id}_sg_${cargo_variant_num} {
-        loaded:  [
-            ${vehicle.id}_ss_${cargo_variant_num},
-        ];
-        loading: [
-            ${vehicle.id}_ss_${cargo_variant_num},
-        ];
-    }
 </tal:cargo_variants>
 
 <!--! this triggers random on a new load, which was designed for use specifically with containers where colours are randomised on load
@@ -33,7 +24,7 @@
 <tal:cargo_random_switches repeat="mapping consist.gestalt_graphics.cargo_row_map.items()">
     random_switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${mapping[0]}, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
         <tal:random_graphics_variations repeat="spriterow_num mapping[1]">
-            1: return ${vehicle.id}_sg_${spriterow_num};
+            1: return ${vehicle.id}_ss_${spriterow_num};
         </tal:random_graphics_variations>
     }
 </tal:cargo_random_switches>
