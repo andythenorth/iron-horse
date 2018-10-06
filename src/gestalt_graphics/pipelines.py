@@ -97,9 +97,11 @@ class Pipeline(object):
         for i in range(5):
             pantograph_output_image.paste(empty_spriterow_image, (0, 10 + (i*graphics_constants.spriterow_height)))
 
-        for state_map in spriterow_pantograph_state_maps[self.consist.pantograph_type]:
+        for counter, state_map in enumerate(spriterow_pantograph_state_maps[self.consist.pantograph_type]):
+            yoffset = counter * graphics_constants.spriterow_height
             print(state_map)
             for pixel in loc_points:
+                print(pixel[2])
                 angle_num = 0
                 for counter, bbox in enumerate(global_constants.spritesheet_bounding_boxes_asymmetric_unreversed):
                     if pixel[0] >= bbox[0]:
@@ -115,10 +117,16 @@ class Pipeline(object):
                 # the +1s for height adjust the crop box to include the loc point
                 # (needed beause loc points are left-bottom not left-top as per co-ordinate system, makes drawing loc points easier)
                 pantograph_bounding_box = (pixel[0],
-                                           pixel[1] - pantograph_height + 1,
+                                           yoffset + pixel[1] - pantograph_height + 1,
                                            pixel[0] + pantograph_width,
-                                           pixel[1] + 1)
-                pantograph_output_image.paste(pantograph_sprites[pantograph_sprite_num][0], pantograph_bounding_box, pantograph_sprites[pantograph_sprite_num][1])
+                                           yoffset + pixel[1] + 1)
+                if pixel[2] == 244:
+                    # it's b or B
+                    state_sprites = pantograph_state_sprite_map[state_map[1]]
+                else:
+                    # it's a or A
+                    state_sprites = pantograph_state_sprite_map[state_map[0]]
+                pantograph_output_image.paste(state_sprites[pantograph_sprite_num][0], pantograph_bounding_box, state_sprites[pantograph_sprite_num][1])
 
         #vehicle_comped_image_as_spritesheet = self.make_spritesheet_from_image(vehicle_comped_image)
 
@@ -324,7 +332,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             # this is complex necessarily
             # 'first' and 'last' vehicles tend to be asymmetric, but only one direction is drawn for each
             # for the alternative direction, we swap the sprites for 'first' and 'last' by picking a different input row num
-            # then we copy them into the first column of the spritesheet which is for the â€”â€”â€”> orientation
+            # then we copy them into the first column of the spritesheet which is for the ÑÑÑ> orientation
             # 'default' and 'special' vehicles are assumed to be symmetric, or near enough that it's not important to swap the sprites
             input_row_nums = [row_num]
             input_row_nums.append(self.consist.gestalt_graphics.get_asymmetric_source_row(row_num))
