@@ -56,15 +56,6 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, cargo_type_in_
     spriteset(${vehicle.id}_ss_purchase_${cargo_variant_num}, "${global_constants.graphics_path}${consist.id}.png") {
       spriteset_template_purchase_${vehicle.id}(10 + ${cargo_variant_num * 30})
     }
-
-    spritegroup ${vehicle.id}_sg_purchase_${cargo_variant_num} {
-        loaded:  [
-            ${vehicle.id}_ss_purchase_${cargo_variant_num},
-        ];
-        loading: [
-            ${vehicle.id}_ss_purchase_${cargo_variant_num},
-        ];
-    }
 </tal:cargo_variants>
 
 <tal:include metal:use-macro="load: graphics_switches.pynml" />
@@ -74,12 +65,12 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, cargo_type_in_
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase_vehicle, cargo_type_in_veh) {
     <tal:cargos repeat="mapping consist.gestalt_graphics.cargo_row_map.items()">
         <tal:exclude_default_cargo condition="mapping[0] != 'DFLT'">
-            ${mapping[0]}: return ${vehicle.id}_sg_purchase_${mapping[1][0]};
+            ${mapping[0]}: return ${vehicle.id}_ss_purchase_${mapping[1][0]};
         </tal:exclude_default_cargo>
     </tal:cargos>
     <tal:default_cargo repeat="mapping consist.gestalt_graphics.cargo_row_map.items()">
         <tal:block condition="mapping[0] == 'DFLT'">
-            return ${vehicle.id}_sg_purchase_${mapping[1][0]};
+            return ${vehicle.id}_ss_purchase_${mapping[1][0]};
         </tal:block>
     </tal:default_cargo>
 }
