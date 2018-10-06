@@ -44,28 +44,19 @@ class Pipeline(object):
         return os.path.join(currentdir, 'src', 'graphics', 'roofs', self.vehicle_unit.roof + '.png')
 
     def add_pantograph_spritesheets(self, global_constants):
-        pantograph_input_images = {'diamond': 'diamond.png', 'z-shaped-single': 'z-shaped.png', 'z-shaped-double': 'z-shaped.png'}
+        pantograph_input_images = {'diamond-single': 'diamond.png', 'diamond-double': 'diamond.png',
+                                   'z-shaped-single': 'z-shaped.png', 'z-shaped-double': 'z-shaped.png'}
         pantograph_input_path = os.path.join(currentdir, 'src', 'graphics', 'pantographs', pantograph_input_images[self.consist.pantograph_type])
         pantograph_input_image = Image.open(pantograph_input_path)
 
         bboxes = []
         # only a 3 tuple in global constants bounding box definitions (no y position), we need a 4 tuple inc. y position
         # also the format of bounding boxes needs converted to PIL crop box format
-        for bbox in global_constants.spritesheet_bounding_boxes_asymmetric_unreversed:
-            bboxes.append([bbox[0], 10, bbox[0] + bbox[1], 10 + bbox[2]])
+        for yoffset in (10, 40):
+            for bbox in global_constants.spritesheet_bounding_boxes_asymmetric_unreversed:
+                bboxes.append([bbox[0], yoffset, bbox[0] + bbox[1], yoffset + bbox[2]])
 
         pantograph_sprites = self.get_arbitrary_angles(pantograph_input_image, bboxes)
-
-        vehicle_input_image = Image.open(self.input_path)
-        # get the loc points
-        loc_points = [(pixel[0], pixel[1], pixel[2]) for pixel in pixascan(vehicle_input_image) if pixel[2] == 226 or pixel[2] == 244]
-        print(loc_points)
-        # two cargo rows needed, so extend the loc points list
-        #loc_points.extend([(pixel[0], pixel[1] + 30, pixel[2]) for pixel in loc_points])
-        # sort them in y order, this causes sprites to overlap correctly when there are multiple loc points for an angle
-        loc_points = sorted(loc_points, key=lambda x: x[1])
-
-
         # needs to slice out A down, A up, B down, B up, depending on type
         # but B is probably just A reversed
         # so two spriterows is probably enough: down, up
@@ -75,43 +66,59 @@ class Pipeline(object):
         # could probably just be hard-coded in this pipeline?  Not many pantograph types eh?
         # hard-code (dict) a ruleset here for which spriterow to pick for each type?
         # key: [(a, b), (A,b) etc] where a, bar are spriterow indices
-        foo = {1: [[0, 0], [1, 1], [1, 1], [1, 1]], # diamond single or double (or split this for single and double?)
-               2: [[0], [1], [1], [1]], # z-shaped single, asymmetric, flippable
-               3: [[0, 0], [1, 0], [0, 1], [1, 1]]} # z-shaped double, maintains position on vehicle flip
-        """
-        for k, v in foo.items():
-            for i in v:
-                print(i)
-        """
+        spriterow_pantograph_state_maps = {'diamond-single': [['a'], ['A']],
+                                           'diamond-double': [['a', 'a'], ['A', 'A']], # A and B functionally identical here, so just use A
+                                           'z-shaped-single': [['a'], ['A']],
+                                           'z-shaped-double': [['a', 'b'], ['A', 'b'], ['a', 'B'], ['A', 'B']]}
+        pantograph_state_sprite_map = {'a': [pantograph_sprites[0], pantograph_sprites[1], pantograph_sprites[2], pantograph_sprites[3],
+                                             pantograph_sprites[4], pantograph_sprites[5], pantograph_sprites[6], pantograph_sprites[7]],
+                                       'A': [pantograph_sprites[8], pantograph_sprites[9], pantograph_sprites[10], pantograph_sprites[11],
+                                             pantograph_sprites[12], pantograph_sprites[13], pantograph_sprites[14], pantograph_sprites[15]],
+                                       'b': [pantograph_sprites[0], pantograph_sprites[1], pantograph_sprites[2], pantograph_sprites[3],
+                                             pantograph_sprites[4], pantograph_sprites[5], pantograph_sprites[6], pantograph_sprites[7]],
+                                       'B': [pantograph_sprites[8], pantograph_sprites[9], pantograph_sprites[10], pantograph_sprites[11],
+                                             pantograph_sprites[12], pantograph_sprites[13], pantograph_sprites[14], pantograph_sprites[15]]}
 
-        vehicle_comped_image = vehicle_input_image.copy()
+        vehicle_input_image = Image.open(self.input_path)
+        # get the loc points
+        loc_points = [(pixel[0], pixel[1], pixel[2]) for pixel in pixascan(vehicle_input_image) if pixel[2] == 226 or pixel[2] == 244]
+        # two cargo rows needed, so extend the loc points list
+        #loc_points.extend([(pixel[0], pixel[1] + 30, pixel[2]) for pixel in loc_points])
+        # sort them in y order, this causes sprites to overlap correctly when there are multiple loc points for an angle
+        loc_points = sorted(loc_points, key=lambda x: x[1])
 
-        pantograph_output_image = Image.new("P", (graphics_constants.spritesheet_width, 5 * graphics_constants.spriterow_height), 255)
+        empty_spriterow_image = Image.open(os.path.join(currentdir, 'src', 'graphics', 'spriterow_template.png'))
+        empty_spriterow_image = empty_spriterow_image.crop((0, 10, graphics_constants.spritesheet_width, graphics_constants.spriterow_height))
+
+        pantograph_output_image = Image.new("P", (graphics_constants.spritesheet_width, (5 * graphics_constants.spriterow_height) + 10), 255)
         pantograph_output_image.putpalette(DOS_PALETTE)
 
+        # create the empty spritesheet to paste into; in some cases this creates redundant spriterows, but it's fine
+        for i in range(5):
+            pantograph_output_image.paste(empty_spriterow_image, (0, 10 + (i*graphics_constants.spriterow_height)))
 
-        for pixel in loc_points:
-            angle_num = 0
-            for counter, bbox in enumerate(global_constants.spritesheet_bounding_boxes_asymmetric_unreversed):
-                if pixel[0] >= bbox[0]:
-                    angle_num = counter
-            pantograph_sprite_num = angle_num
+        for state_map in spriterow_pantograph_state_maps[self.consist.pantograph_type]:
+            print(state_map)
+            for pixel in loc_points:
+                angle_num = 0
+                for counter, bbox in enumerate(global_constants.spritesheet_bounding_boxes_asymmetric_unreversed):
+                    if pixel[0] >= bbox[0]:
+                        angle_num = counter
+                pantograph_sprite_num = angle_num
 
-            # loaded sprites are the second block of 4 in the cargo sprites list
-            #if pixel[1] >= graphics_constants.spriterow_height:
-                #cargo_sprite_num = cargo_sprite_num + 4
+                # loaded sprites are the second block of 4 in the cargo sprites list
+                #if pixel[1] >= graphics_constants.spriterow_height:
+                    #cargo_sprite_num = cargo_sprite_num + 4
 
-            pantograph_width = pantograph_sprites[pantograph_sprite_num][0].size[0]
-            pantograph_height = pantograph_sprites[pantograph_sprite_num][0].size[1]
-            # the +1s for height adjust the crop box to include the loc point
-            # (needed beause loc points are left-bottom not left-top as per co-ordinate system, makes drawing loc points easier)
-            pantograph_bounding_box = (pixel[0],
-                                       pixel[1] - pantograph_height + 1,
-                                       pixel[0] + pantograph_width,
-                                       pixel[1] + 1)
-            vehicle_comped_image.paste(pantograph_sprites[pantograph_sprite_num][0], pantograph_bounding_box, pantograph_sprites[pantograph_sprite_num][1])
-
-        #vehicle_comped_image.show()
+                pantograph_width = pantograph_sprites[pantograph_sprite_num][0].size[0]
+                pantograph_height = pantograph_sprites[pantograph_sprite_num][0].size[1]
+                # the +1s for height adjust the crop box to include the loc point
+                # (needed beause loc points are left-bottom not left-top as per co-ordinate system, makes drawing loc points easier)
+                pantograph_bounding_box = (pixel[0],
+                                           pixel[1] - pantograph_height + 1,
+                                           pixel[0] + pantograph_width,
+                                           pixel[1] + 1)
+                pantograph_output_image.paste(pantograph_sprites[pantograph_sprite_num][0], pantograph_bounding_box, pantograph_sprites[pantograph_sprite_num][1])
 
         #vehicle_comped_image_as_spritesheet = self.make_spritesheet_from_image(vehicle_comped_image)
 

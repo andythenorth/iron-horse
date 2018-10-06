@@ -8,7 +8,7 @@ consist = EngineConsist(id='moor_gallop',
                         tractive_effort_coefficient=0.25,
                         type_base_buy_cost_points=10,  # dibble buy cost for game balance
                         gen=3,
-                        pantograph_type='diamond',
+                        pantograph_type='diamond-double',
                         intro_date_offset=5)  # introduce later than gen epoch by design
 
 consist.add_unit(type=ElectricEngineUnit,
