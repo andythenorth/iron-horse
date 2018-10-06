@@ -9,7 +9,7 @@ consist = EngineConsist(id='shoebox',
                         type_base_buy_cost_points=0,  # dibble buy cost for game balance
                         type_base_running_cost_points=-28,  # dibble run cost for game balance
                         random_reverse=True,
-                        pantograph_type=1,
+                        pantograph_type='z-shaped-single',
                         gen=4)
 
 consist.add_unit(type=ElectroDieselEngineUnit,

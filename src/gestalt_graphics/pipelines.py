@@ -43,13 +43,58 @@ class Pipeline(object):
         # convenience method to get the path for the roof image
         return os.path.join(currentdir, 'src', 'graphics', 'roofs', self.vehicle_unit.roof + '.png')
 
-    def add_pantograph_spritesheets(self):
-        pantograph_input_path = os.path.join(currentdir, 'src', 'graphics', 'pantographs', 'type_' + str(self.consist.pantograph_type) + '.png')
+    def add_pantograph_spritesheets(self, global_constants):
+        pantograph_input_images = {'diamond': 'diamond.png', 'z-shaped-single': 'z-shaped.png'}
+        pantograph_input_path = os.path.join(currentdir, 'src', 'graphics', 'pantographs', pantograph_input_images[self.consist.pantograph_type])
         pantograph_input_image = Image.open(pantograph_input_path)
-        #pantograph_input_image.show()
+
+        bboxes = []
+        # only a 3 tuple in global constants bounding box definitions (no y position), we need a 4 tuple inc. y position
+        # also the format of bounding boxes needs converted to PIL crop box format
+        for bbox in global_constants.spritesheet_bounding_boxes_asymmetric_unreversed:
+            bboxes.append([bbox[0], 10, bbox[0] + bbox[1], 10 + bbox[2]])
+
+        pantograph_angles = self.get_arbitrary_angles(pantograph_input_image, bboxes)
+        pantograph_angles[0][0].show()
+
+        # needs to slice out A down, A up, B down, B up, depending on type
+        # but B is probably just A reversed
+        # so two spriterows is probably enough: down, up
+        # two colours of loc pixel, for A and B positions
+        # output needs to be: ab, Ab, aB, AB
+        # some engines only use ab, AB.  Should that be handled in graphics generation, or template?
+        # could probably just be hard-coded in this pipeline?  Not many pantograph types eh?
+        # hard-code (dict) a ruleset here for which spriterow to pick for each type?
+        # key: [(a, b), (A,b) etc] where a, bar are spriterow indices
+        foo = {1: [[0, 0], [1, 1], [1, 1], [1, 1]], # diamond single or double (or split this for single and double?)
+               2: [[0], [1], [1], [1]], # z-shaped single, asymmetric, flippable
+               3: [[0, 0], [1, 0], [0, 1], [1, 1]]} # z-shaped double, maintains position on vehicle flip
+        for k, v in foo.items():
+            for i in v:
+                print(i)
+
         pantograph_spritesheet = self.make_spritesheet_from_image(pantograph_input_image)
         pantograph_output_path = os.path.join(currentdir, 'generated', 'graphics', self.consist.id + '_pantographs.png')
         self.units.append(GenerateAdditionalSpritesheet(pantograph_spritesheet, pantograph_output_path))
+
+    def get_arbitrary_angles(self, input_image, bounding_boxes):
+        # given an image and a list of arbitrary bounding boxes...
+        # ...return a list of two tuples with sprite and mask
+        # this can then be used for compositing
+        # note the arbitrary order of sprites which makes this very flexible
+        result = []
+        for bounding_box in bounding_boxes:
+            sprite = input_image.copy()
+            sprite = sprite.crop(bounding_box)
+            mask = sprite.copy()
+            # !! .point is noticeably slow although not signifcantly so with only 3 cargo types
+            # !! check this again if optimisation is a concern - can cargos be processed once and passed to the pipeline?
+            # !! as of Oct 2018, I tested commenting out *all* piece cargo processing, including calls to this method
+            # !! that cut only 1s from an 11s graphics processing run on single CPU
+            # !! so optimising this is TMWFTLB currently; instead simply using multiprocessing cuts graphics run to 2s
+            mask = mask.point(lambda i: 0 if i == 0 else 255).convert("1")
+            result.append((sprite, mask))
+        return result
 
     def render_common(self, input_image, units):
         # expects to be passed a PIL Image object
@@ -102,7 +147,7 @@ class PassThroughAndGenerateAdditionalSpritesheetsPipeline(Pipeline):
         self.consist = consist
 
         if self.consist.pantograph_type is not None:
-            self.add_pantograph_spritesheets()
+            self.add_pantograph_spritesheets(global_constants)
 
         input_image = Image.open(self.input_path)
         result = self.render_common(input_image, self.units)
@@ -127,24 +172,6 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
         # this should be sparse, don't store any consist info in Pipelines, pass at render time
         # initing things here is proven to have unexpected results, as the processor will be shared across multiple vehicles
         super().__init__()
-
-    def get_arbitrary_angles(self, input_image, bounding_boxes):
-        # given an image and a list of arbitrary bounding boxes...
-        # ...return a list of two tuples with sprite and mask
-        # this can then be used for compositing
-        # note the arbitrary order of sprites which makes this very flexible
-        result = []
-        for bounding_box in bounding_boxes:
-            sprite = input_image.copy()
-            sprite = sprite.crop(bounding_box)
-            mask = sprite.copy()
-            # !! .point is noticeably slow although not signifcantly so with only 3 cargo types
-            # !! check this again if optimisation is a concern - can cargos be processed once and passed to the pipeline?
-            # !! as of Oct 2018, commenting out *all* piece cargo processing cut only 1s from an 11s graphics processing run on single CPU
-            # !! so optimising this is TMWFTLB currently; instead simply using multiprocessing cuts graphics run to 2s
-            mask = mask.point(lambda i: 0 if i == 0 else 255).convert("1")
-            result.append((sprite, mask))
-        return result
 
     def comp_chassis_and_body(self, body_image):
         crop_box_input_1 = (0,
@@ -717,7 +744,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             self.vehicle_unit = None
 
         if self.consist.pantograph_type is not None:
-            self.add_pantograph_spritesheets()
+            self.add_pantograph_spritesheets(global_constants)
 
         if self.consist.buy_menu_x_loc == 360:
             self.add_custom_buy_menu_sprite()
