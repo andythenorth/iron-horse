@@ -88,8 +88,8 @@ class Pipeline(object):
         loc_points = sorted(loc_points, key=lambda x: x[1])
 
         empty_spriterow_image = Image.open(os.path.join(currentdir, 'src', 'graphics', 'spriterow_template.png'))
-        empty_spriterow_image = empty_spriterow_image.crop((0, 10, graphics_constants.spritesheet_width, graphics_constants.spriterow_height))
-
+        empty_spriterow_image = empty_spriterow_image.crop((0, 10, graphics_constants.spritesheet_width, 10 + graphics_constants.spriterow_height))
+        #empty_spriterow_image.show()
         pantograph_output_image = Image.new("P", (graphics_constants.spritesheet_width, (5 * graphics_constants.spriterow_height) + 10), 255)
         pantograph_output_image.putpalette(DOS_PALETTE)
 
