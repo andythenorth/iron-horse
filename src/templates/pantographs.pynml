@@ -20,3 +20,8 @@ random_switch (FEAT_TRAINS, ${vehicle.location_of_random_bits_for_random_variant
         1: return ${vehicle.id}_pantographs_switch_graphics_${reversed_variant};
     </tal:random_graphics_variations>
 }
+
+// purchase menu pantograph (uses down state)
+spriteset(${vehicle.id}_ss_purchase_pantograph, "${global_constants.graphics_path}${consist.id}_pantographs.png") {
+  spriteset_template_purchase_${vehicle.id}(10)
+}
