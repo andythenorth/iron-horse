@@ -34,8 +34,6 @@ random_switch (FEAT_TRAINS, ${vehicle.location_of_random_bits_for_random_variant
     </tal:random_graphics_variations>
 }
 
-<tal:include metal:use-macro="load: graphics_switches.pynml" />
-
 // buy menu graphics chain
 spriteset(${vehicle.id}_ss_purchase, "${global_constants.graphics_path}${consist.id}.png") {
   spriteset_template_purchase_${vehicle.id}(10)
@@ -55,6 +53,8 @@ spritegroup ${vehicle.id}_sg_purchase {
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase_vehicle, 0) {
     return ${vehicle.id}_sg_purchase;
 }
+
+<tal:include metal:use-macro="load: graphics_switches.pynml" />
 
 <tal:optional_capacity_switches condition="vehicle.has_cargo_capacity">
     <tal:include metal:use-macro="load: capacity_switches.pynml" />

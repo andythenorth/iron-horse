@@ -46,8 +46,6 @@ switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_graphics_vehicle, vehicle_type
     return ${vehicle.id}_switch_graphics_livery_0;
 }
 
-<tal:include metal:use-macro="load: graphics_switches.pynml" />
-
 // buy menu graphics chain
 <tal:livery_variants repeat="livery_variant_num range(consist.gestalt_graphics.num_generations)">
     spriteset(${vehicle.id}_ss_purchase_${livery_variant_num}, "${global_constants.graphics_path}${consist.id}.png") {
@@ -72,6 +70,8 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase_vehicle, curre
     </tal:livery_variants>
     return ${vehicle.id}_sg_purchase_0;
 }
+
+<tal:include metal:use-macro="load: graphics_switches.pynml" />
 
 <tal:optional_capacity_switches condition="vehicle.has_cargo_capacity">
     <tal:include metal:use-macro="load: capacity_switches.pynml" />

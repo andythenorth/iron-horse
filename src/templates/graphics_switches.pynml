@@ -15,7 +15,6 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_layer_vehicle, STORE_TE
 </tal:conditional_pantograph>
 
 
-// !!!! needs to return an empty spriteset if not last
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_rear_light, position_in_consist_from_end) {
     0: return ss_rear_light_${vehicle.vehicle_length * 4}px;
     return ss_rear_light_empty;
@@ -31,6 +30,24 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics, getbits(extra_callback
     </tal:conditional_pantograph>
     return ${vehicle.id}_switch_graphics_layer_rear_light;
 }
+
+<!--! purchase switches -->
+
+
+<tal:conditional_pantograph condition="consist.pantograph_type is not None">
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase_layer_vehicle, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
+        return ${vehicle.id}_switch_graphics_purchase_vehicle;
+    }
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase_layer_pantograph, STORE_TEMP(PALETTE_USE_DEFAULT, 0x100)) {
+        return ${vehicle.id}_switch_graphics_pantographs;
+    }
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase_layers, getbits(extra_callback_info1, 8, 8)) {
+        <tal:conditional_pantograph condition="consist.pantograph_type is not None">
+            1: return ${vehicle.id}_switch_graphics_purchase_layer_pantograph;
+        </tal:conditional_pantograph>
+        return ${vehicle.id}_switch_graphics_purchase_layer_vehicle;
+    }
+</tal:conditional_pantograph>
 
 <!--! ############################# -->
 
