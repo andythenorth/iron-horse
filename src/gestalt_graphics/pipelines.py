@@ -99,9 +99,7 @@ class Pipeline(object):
 
         for counter, state_map in enumerate(spriterow_pantograph_state_maps[self.consist.pantograph_type]):
             yoffset = counter * graphics_constants.spriterow_height
-            print(state_map)
             for pixel in loc_points:
-                print(pixel[2])
                 angle_num = 0
                 for counter, bbox in enumerate(global_constants.spritesheet_bounding_boxes_asymmetric_unreversed):
                     if pixel[0] >= bbox[0]:
