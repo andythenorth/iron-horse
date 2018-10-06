@@ -69,7 +69,7 @@ class Pipeline(object):
         spriterow_pantograph_state_maps = {'diamond-single': [['a'], ['A']],
                                            'diamond-double': [['a', 'a'], ['A', 'A']], # A and B functionally identical here, so just use A
                                            'z-shaped-single': [['a'], ['A']],
-                                           'z-shaped-double': [['a', 'b'], ['A', 'b'], ['a', 'B'], ['A', 'B']]}
+                                           'z-shaped-double': [['a', 'b'], ['A', 'b'], ['a', 'B']]}
         pantograph_state_sprite_map = {'a': [pantograph_sprites[0], pantograph_sprites[1], pantograph_sprites[2], pantograph_sprites[3],
                                              pantograph_sprites[4], pantograph_sprites[5], pantograph_sprites[6], pantograph_sprites[7]],
                                        'A': [pantograph_sprites[8], pantograph_sprites[9], pantograph_sprites[10], pantograph_sprites[11],
