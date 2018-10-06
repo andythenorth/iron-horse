@@ -44,7 +44,7 @@ class Pipeline(object):
         return os.path.join(currentdir, 'src', 'graphics', 'roofs', self.vehicle_unit.roof + '.png')
 
     def add_pantograph_spritesheets(self, global_constants):
-        pantograph_input_images = {'diamond': 'diamond.png', 'z-shaped-single': 'z-shaped.png'}
+        pantograph_input_images = {'diamond': 'diamond.png', 'z-shaped-single': 'z-shaped.png', 'z-shaped-double': 'z-shaped.png'}
         pantograph_input_path = os.path.join(currentdir, 'src', 'graphics', 'pantographs', pantograph_input_images[self.consist.pantograph_type])
         pantograph_input_image = Image.open(pantograph_input_path)
 
@@ -54,8 +54,17 @@ class Pipeline(object):
         for bbox in global_constants.spritesheet_bounding_boxes_asymmetric_unreversed:
             bboxes.append([bbox[0], 10, bbox[0] + bbox[1], 10 + bbox[2]])
 
-        pantograph_angles = self.get_arbitrary_angles(pantograph_input_image, bboxes)
-        pantograph_angles[0][0].show()
+        pantograph_sprites = self.get_arbitrary_angles(pantograph_input_image, bboxes)
+
+        vehicle_input_image = Image.open(self.input_path)
+        # get the loc points
+        loc_points = [(pixel[0], pixel[1], pixel[2]) for pixel in pixascan(vehicle_input_image) if pixel[2] == 226 or pixel[2] == 244]
+        print(loc_points)
+        # two cargo rows needed, so extend the loc points list
+        #loc_points.extend([(pixel[0], pixel[1] + 30, pixel[2]) for pixel in loc_points])
+        # sort them in y order, this causes sprites to overlap correctly when there are multiple loc points for an angle
+        loc_points = sorted(loc_points, key=lambda x: x[1])
+
 
         # needs to slice out A down, A up, B down, B up, depending on type
         # but B is probably just A reversed
@@ -69,11 +78,44 @@ class Pipeline(object):
         foo = {1: [[0, 0], [1, 1], [1, 1], [1, 1]], # diamond single or double (or split this for single and double?)
                2: [[0], [1], [1], [1]], # z-shaped single, asymmetric, flippable
                3: [[0, 0], [1, 0], [0, 1], [1, 1]]} # z-shaped double, maintains position on vehicle flip
+        """
         for k, v in foo.items():
             for i in v:
                 print(i)
+        """
 
-        pantograph_spritesheet = self.make_spritesheet_from_image(pantograph_input_image)
+        vehicle_comped_image = vehicle_input_image.copy()
+
+        pantograph_output_image = Image.new("P", (graphics_constants.spritesheet_width, 5 * graphics_constants.spriterow_height), 255)
+        pantograph_output_image.putpalette(DOS_PALETTE)
+
+
+        for pixel in loc_points:
+            angle_num = 0
+            for counter, bbox in enumerate(global_constants.spritesheet_bounding_boxes_asymmetric_unreversed):
+                if pixel[0] >= bbox[0]:
+                    angle_num = counter
+            pantograph_sprite_num = angle_num
+
+            # loaded sprites are the second block of 4 in the cargo sprites list
+            #if pixel[1] >= graphics_constants.spriterow_height:
+                #cargo_sprite_num = cargo_sprite_num + 4
+
+            pantograph_width = pantograph_sprites[pantograph_sprite_num][0].size[0]
+            pantograph_height = pantograph_sprites[pantograph_sprite_num][0].size[1]
+            # the +1s for height adjust the crop box to include the loc point
+            # (needed beause loc points are left-bottom not left-top as per co-ordinate system, makes drawing loc points easier)
+            pantograph_bounding_box = (pixel[0],
+                                       pixel[1] - pantograph_height + 1,
+                                       pixel[0] + pantograph_width,
+                                       pixel[1] + 1)
+            vehicle_comped_image.paste(pantograph_sprites[pantograph_sprite_num][0], pantograph_bounding_box, pantograph_sprites[pantograph_sprite_num][1])
+
+        #vehicle_comped_image.show()
+
+        #vehicle_comped_image_as_spritesheet = self.make_spritesheet_from_image(vehicle_comped_image)
+
+        pantograph_spritesheet = self.make_spritesheet_from_image(pantograph_output_image)
         pantograph_output_path = os.path.join(currentdir, 'generated', 'graphics', self.consist.id + '_pantographs.png')
         self.units.append(GenerateAdditionalSpritesheet(pantograph_spritesheet, pantograph_output_path))
 
