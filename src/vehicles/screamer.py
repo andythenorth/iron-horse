@@ -8,6 +8,7 @@ consist = EngineConsist(id='screamer',
                         type_base_buy_cost_points=71,  # dibble buy cost for game balance
                         random_reverse=True,
                         gen=5,
+                        pantograph_type='z-shaped-double',
                         intro_date_offset=5)  # introduce later than gen epoch by design
 
 consist.add_unit(type=ElectricEngineUnit,
