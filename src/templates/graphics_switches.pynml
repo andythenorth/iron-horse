@@ -1,19 +1,8 @@
-<tal:pantographs condition="consist.pantograph_type is not None">
-    <tal:include metal:use-macro="load: pantographs.pynml" />
-</tal:pantographs>
-
 <!--! ############################# -->
 
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_layer_vehicle, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_set_layers_register_more_sprites, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
     return ${vehicle.id}_switch_graphics_vehicle;
 }
-
-<tal:conditional_pantograph condition="consist.pantograph_type is not None">
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_layer_pantograph, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
-        return ${vehicle.id}_switch_graphics_pantographs;
-    }
-</tal:conditional_pantograph>
-
 
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_rear_light, position_in_consist_from_end) {
     0: return ss_rear_light_${vehicle.vehicle_length * 4}px;
@@ -24,11 +13,11 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_layer_rear_light, STORE
 }
 
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics, getbits(extra_callback_info1, 8, 8)) {
-    0: return ${vehicle.id}_switch_graphics_layer_vehicle;
-    <!--! !! for vehicles with consist specific rulesets, it might be better to switch the pantograph layer later in the chain
-          !! it's probably possible to check layers twice ?? -->
+    0: return ${vehicle.id}_switch_set_layers_register_more_sprites;
     <tal:conditional_pantograph condition="consist.pantograph_type is not None">
-        1: return ${vehicle.id}_switch_graphics_layer_pantograph;
+        <!--! if there are pantographs to draw we will handle that later in the graphics chain,
+              but we need to reserve layer 1 for the pantographs as well as layer 0 for the vehicle  -->
+        1: return ${vehicle.id}_switch_set_layers_register_more_sprites;
     </tal:conditional_pantograph>
     return ${vehicle.id}_switch_graphics_layer_rear_light;
 }
