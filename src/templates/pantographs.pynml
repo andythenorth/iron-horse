@@ -15,6 +15,7 @@
     }
 </tal:random_reverse_variants>
 
+<!--! this only applies for z-shaped single pantographs, others shouldn't be random -->
 random_switch (FEAT_TRAINS, ${vehicle.location_of_random_bits_for_random_variant}, ${vehicle.id}_switch_graphics_pantographs) {
     <tal:random_graphics_variations repeat="reversed_variant consist.reversed_variants">
         1: return ${vehicle.id}_pantographs_switch_graphics_${reversed_variant};
