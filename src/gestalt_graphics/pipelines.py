@@ -44,6 +44,9 @@ class Pipeline(object):
         return os.path.join(currentdir, 'src', 'graphics', 'roofs', self.vehicle_unit.roof + '.png')
 
     def add_pantograph_spritesheets(self, global_constants):
+        # !! this will eventually need extending for articulated vehicles
+        # !! that can be done by weaving in a repeat over units, to draw multiple pantograph blocks, and then a multiplier to y offset in templates
+
         pantograph_input_images = {'diamond-single': 'diamond.png', 'diamond-double': 'diamond.png',
                                    'z-shaped-single': 'z-shaped.png', 'z-shaped-double': 'z-shaped.png'}
         pantograph_input_path = os.path.join(currentdir, 'src', 'graphics', 'pantographs', pantograph_input_images[self.consist.pantograph_type])

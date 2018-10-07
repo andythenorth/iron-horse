@@ -25,6 +25,8 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_layer_rear_light, STORE
 
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics, getbits(extra_callback_info1, 8, 8)) {
     0: return ${vehicle.id}_switch_graphics_layer_vehicle;
+    <!--! !! for vehicles with consist specific rulesets, it might be better to switch the pantograph layer later in the chain
+          !! it's probably possible to check layers twice ?? -->
     <tal:conditional_pantograph condition="consist.pantograph_type is not None">
         1: return ${vehicle.id}_switch_graphics_layer_pantograph;
     </tal:conditional_pantograph>
