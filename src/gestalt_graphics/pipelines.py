@@ -43,7 +43,7 @@ class Pipeline(object):
         # convenience method to get the path for the roof image
         return os.path.join(currentdir, 'src', 'graphics', 'roofs', self.vehicle_unit.roof + '.png')
 
-    def add_pantograph_spritesheets(self, global_constants):
+    def add_pantograph_spritesheet(self, global_constants):
         # !! this will eventually need extending for articulated vehicles
         # !! that can be done by weaving in a repeat over units, to draw multiple pantograph blocks, and then a multiplier to y offset in templates
 
@@ -98,7 +98,7 @@ class Pipeline(object):
 
         # create the empty spritesheet to paste into; in some cases this creates redundant spriterows, but it's fine
         for i in range(5):
-            pantograph_output_image.paste(empty_spriterow_image, (0, 10 + (i*graphics_constants.spriterow_height)))
+            pantograph_output_image.paste(empty_spriterow_image, (0, 10 + (i * graphics_constants.spriterow_height)))
 
         for counter, state_map in enumerate(spriterow_pantograph_state_maps[self.consist.pantograph_type]):
             yoffset = counter * graphics_constants.spriterow_height
@@ -129,7 +129,14 @@ class Pipeline(object):
                     state_sprites = pantograph_state_sprite_map[state_map[0]]
                 pantograph_output_image.paste(state_sprites[pantograph_sprite_num][0], pantograph_bounding_box, state_sprites[pantograph_sprite_num][1])
 
-        #vehicle_comped_image_as_spritesheet = self.make_spritesheet_from_image(vehicle_comped_image)
+        # add debug sprites with vehicle-pantograph comp for ease of checking
+        vehicle_debug_image = vehicle_input_image.copy().crop((0, 10, graphics_constants.spritesheet_width, 10 + graphics_constants.spriterow_height))
+        pantograph_output_image.paste(vehicle_debug_image, (0, 10 + (3 * graphics_constants.spriterow_height)))
+        pantograph_output_image.paste(vehicle_debug_image, (0, 10 + (4 * graphics_constants.spriterow_height)))
+        pantograph_debug_image = pantograph_output_image.copy().crop((0, 10, graphics_constants.spritesheet_width, 10 + (2 * graphics_constants.spriterow_height)))
+        pantograph_debug_mask = pantograph_debug_image.copy()
+        pantograph_debug_mask = pantograph_debug_mask.point(lambda i: 0 if i == 255 or i == 0 else 255).convert("1") # the inversion here of blue and white looks a bit odd, but potato / potato
+        pantograph_output_image.paste(pantograph_debug_image, (0, 10 + (3 * graphics_constants.spriterow_height)), pantograph_debug_mask)
 
         pantograph_spritesheet = self.make_spritesheet_from_image(pantograph_output_image)
         pantograph_output_path = os.path.join(currentdir, 'generated', 'graphics', self.consist.id + '_pantographs.png')
@@ -205,7 +212,7 @@ class PassThroughAndGenerateAdditionalSpritesheetsPipeline(Pipeline):
         self.consist = consist
 
         if self.consist.pantograph_type is not None:
-            self.add_pantograph_spritesheets(global_constants)
+            self.add_pantograph_spritesheet(global_constants)
 
         input_image = Image.open(self.input_path)
         result = self.render_common(input_image, self.units)
@@ -802,7 +809,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             self.vehicle_unit = None
 
         if self.consist.pantograph_type is not None:
-            self.add_pantograph_spritesheets(global_constants)
+            self.add_pantograph_spritesheet(global_constants)
 
         if self.consist.buy_menu_x_loc == 360:
             self.add_custom_buy_menu_sprite()
