@@ -62,17 +62,12 @@ class Pipeline(object):
         pantograph_sprites = self.get_arbitrary_angles(pantograph_input_image, bboxes)
         # needs to slice out A down, A up, B down, B up, depending on type
         # but B is probably just A reversed
-        # so two spriterows is probably enough: down, up
+        # so two spriterows is enough: down, up
         # two colours of loc pixel, for A and B positions
-        # output needs to be: ab, Ab, aB, AB
-        # some engines only use ab, AB.  Should that be handled in graphics generation, or template?
-        # could probably just be hard-coded in this pipeline?  Not many pantograph types eh?
-        # hard-code (dict) a ruleset here for which spriterow to pick for each type?
-        # key: [(a, b), (A,b) etc] where a, bar are spriterow indices
         spriterow_pantograph_state_maps = {'diamond-single': [['a'], ['A']],
                                            'diamond-double': [['a', 'a'], ['A', 'A']], # A and B functionally identical here, so just use A
                                            'z-shaped-single': [['a'], ['A']],
-                                           'z-shaped-double': [['a', 'b'], ['A', 'b'], ['a', 'B']]}
+                                           'z-shaped-double': [['a', 'b'], ['A', 'b']]} # aB was tried and removed, TMWFTLB, instead just use Ab and respect depot flip
         pantograph_state_sprite_map = {'a': [pantograph_sprites[0], pantograph_sprites[1], pantograph_sprites[2], pantograph_sprites[3],
                                              pantograph_sprites[4], pantograph_sprites[5], pantograph_sprites[6], pantograph_sprites[7]],
                                        'A': [pantograph_sprites[8], pantograph_sprites[9], pantograph_sprites[10], pantograph_sprites[11],
@@ -93,7 +88,7 @@ class Pipeline(object):
         empty_spriterow_image = Image.open(os.path.join(currentdir, 'src', 'graphics', 'spriterow_template.png'))
         empty_spriterow_image = empty_spriterow_image.crop((0, 10, graphics_constants.spritesheet_width, 10 + graphics_constants.spriterow_height))
         #empty_spriterow_image.show()
-        pantograph_output_image = Image.new("P", (graphics_constants.spritesheet_width, (5 * graphics_constants.spriterow_height) + 10), 255)
+        pantograph_output_image = Image.new("P", (graphics_constants.spritesheet_width, (4 * graphics_constants.spriterow_height) + 10), 255)
         pantograph_output_image.putpalette(DOS_PALETTE)
 
         # create the empty spritesheet to paste into; in some cases this creates redundant spriterows, but it's fine
@@ -131,16 +126,16 @@ class Pipeline(object):
 
         # add debug sprites with vehicle-pantograph comp for ease of checking
         vehicle_debug_image = vehicle_input_image.copy().crop((0, 10, graphics_constants.spritesheet_width, 10 + graphics_constants.spriterow_height))
+        pantograph_output_image.paste(vehicle_debug_image, (0, 10 + (2 * graphics_constants.spriterow_height)))
         pantograph_output_image.paste(vehicle_debug_image, (0, 10 + (3 * graphics_constants.spriterow_height)))
-        pantograph_output_image.paste(vehicle_debug_image, (0, 10 + (4 * graphics_constants.spriterow_height)))
         pantograph_debug_image = pantograph_output_image.copy().crop((0, 10, graphics_constants.spritesheet_width, 10 + (2 * graphics_constants.spriterow_height)))
         pantograph_debug_mask = pantograph_debug_image.copy()
         pantograph_debug_mask = pantograph_debug_mask.point(lambda i: 0 if i == 255 or i == 0 else 255).convert("1") # the inversion here of blue and white looks a bit odd, but potato / potato
-        pantograph_output_image.paste(pantograph_debug_image, (0, 10 + (3 * graphics_constants.spriterow_height)), pantograph_debug_mask)
+        pantograph_output_image.paste(pantograph_debug_image, (0, 10 + (2 * graphics_constants.spriterow_height)), pantograph_debug_mask)
 
         # !! these hard-coded values should really be using graphics_constants.spriterow_height etc
         # !! this approach won't work when custom buy menu sprites are used - there aren't many of those, just draw in the buy menu sprite pantographs in that case?
-        buy_menu_sprites = pantograph_output_image.copy().crop((224, 100, 257, 146))
+        buy_menu_sprites = pantograph_output_image.copy().crop((224, 70, 257, 116))
 
         pantograph_spritesheet = self.make_spritesheet_from_image(pantograph_output_image)
         pantograph_output_path = os.path.join(currentdir, 'generated', 'graphics', self.consist.id + '_pantographs.png')
