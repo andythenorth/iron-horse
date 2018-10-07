@@ -138,9 +138,14 @@ class Pipeline(object):
         pantograph_debug_mask = pantograph_debug_mask.point(lambda i: 0 if i == 255 or i == 0 else 255).convert("1") # the inversion here of blue and white looks a bit odd, but potato / potato
         pantograph_output_image.paste(pantograph_debug_image, (0, 10 + (3 * graphics_constants.spriterow_height)), pantograph_debug_mask)
 
+        # !! these hard-coded values should really be using graphics_constants.spriterow_height etc
+        # !! this approach won't work when custom buy menu sprites are used - there aren't many of those, just draw in the buy menu sprite pantographs in that case?
+        buy_menu_sprites = pantograph_output_image.copy().crop((224, 100, 257, 146))
+
         pantograph_spritesheet = self.make_spritesheet_from_image(pantograph_output_image)
         pantograph_output_path = os.path.join(currentdir, 'generated', 'graphics', self.consist.id + '_pantographs.png')
         self.units.append(GenerateAdditionalSpritesheet(pantograph_spritesheet, pantograph_output_path))
+        self.units.append(AddBuyMenuSprite(buy_menu_sprites, (360, 10, 393, 56)))
 
     def get_arbitrary_angles(self, input_image, bounding_boxes):
         # given an image and a list of arbitrary bounding boxes...

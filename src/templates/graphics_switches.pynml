@@ -35,24 +35,6 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics, getbits(extra_callback
 
 <!--! ############################# -->
 
-<!--! purchase switches -->
-<tal:conditional_pantograph condition="consist.pantograph_type is not None">
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase_layer_vehicle, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
-        return ${vehicle.id}_switch_graphics_purchase_vehicle;
-    }
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase_layer_pantograph, STORE_TEMP(PALETTE_USE_DEFAULT, 0x100)) {
-        return ${vehicle.id}_ss_purchase_pantograph;
-    }
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase_layers, getbits(extra_callback_info1, 8, 8)) {
-        <tal:conditional_pantograph condition="consist.pantograph_type is not None">
-            1: return ${vehicle.id}_switch_graphics_purchase_layer_pantograph;
-        </tal:conditional_pantograph>
-        return ${vehicle.id}_switch_graphics_purchase_layer_vehicle;
-    }
-</tal:conditional_pantograph>
-
-<!--! ############################# -->
-
 <!--! for random colour remapping  -->
 <tal:random_company_colour_swap condition="consist.random_company_colour_swap">
     random_switch (FEAT_TRAINS, ${vehicle.location_of_random_bits_for_random_variant}, ${vehicle.id}_switch_colour_mapping) {

@@ -56,12 +56,7 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
     }
     graphics {
         default:                        ${vehicle.id}_switch_graphics;
-        <tal:conditional_pantograph condition="consist.pantograph_type is None">
-            purchase:                       ${vehicle.id}_switch_graphics_purchase_vehicle;
-        </tal:conditional_pantograph>
-        <tal:conditional_no_pantograph condition="consist.pantograph_type is not None">
-            purchase:                       ${vehicle.id}_switch_graphics_purchase_layers;
-        </tal:conditional_no_pantograph>
+        purchase:                       ${vehicle.id}_switch_graphics_purchase;
         <tal:random_company_colour_swap condition="consist.random_company_colour_swap">
             colour_mapping:                 ${vehicle.id}_switch_colour_mapping;
         </tal:random_company_colour_swap>
