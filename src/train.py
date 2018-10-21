@@ -723,12 +723,7 @@ class EdiblesTankCarConsist(CarConsist):
         # Pikka: if people complain that it's unrealistic, tell them "don't do it then"
         self.base_id = 'edibles_tank_car'
         super().__init__(**kwargs)
-        # these are 'express' up to gen 5, then capped, because eh why not
-        if self.gen < 5:
-            self.speed_class = 'express'
-        else:
-            # this is quite evil, and probably unwise
-            self._speed = self.roster.speeds[self.base_track_type][self.speed_class][5]
+        self.speed_class = 'express'
         self.class_refit_groups = ['liquids']
         self.label_refits_allowed = ['FOOD']
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label[
@@ -980,12 +975,7 @@ class ReeferCarConsist(CarConsist):
     def __init__(self, **kwargs):
         self.base_id = 'reefer_car'
         super().__init__(**kwargs)
-        # these are 'express' up to gen 5, then capped, because eh why not
-        if self.gen < 5:
-            self.speed_class = 'express'
-        else:
-            # this is quite evil, and probably unwise
-            self._speed = self.roster.speeds[self.base_track_type][self.speed_class][5]
+        self.speed_class = 'express'
         self.class_refit_groups = ['refrigerated_freight']
         self.label_refits_allowed = []  # no specific labels needed
         self.label_refits_disallowed = []
