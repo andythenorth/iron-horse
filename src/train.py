@@ -78,6 +78,9 @@ class Consist(object):
         self.units = []
         # one default cargo for the whole consist, no mixed cargo shenanigans, it fails with auto-replace
         self.default_cargos = []
+        self.class_refit_groups = []
+        self.label_refits_allowed = []
+        self.label_refits_disallowed = []
         # create a structure for cargo /livery graphics options
         self.gestalt_graphics = GestaltGraphics()
         # option to provide automatic roof for all units in the consist
@@ -494,7 +497,7 @@ class MailEngineConsist(EngineConsist):
         self.class_refit_groups = ['mail', 'express_freight']
         self.label_refits_allowed = []  # no specific labels needed
         self.label_refits_disallowed = ['TOUR']
-        self.default_cargos = ['MAIL']
+        self.default_cargos = global_constants.default_cargos['mail']
 
 
 class MailEngineMetroConsist(MailEngineConsist):
@@ -1099,10 +1102,10 @@ class Train(object):
             'loading_speed_multiplier', 1)
         # spriterow_num allows assigning sprites for multi-part vehicles, and is not supported in all vehicle templates (by design - TMWFTLB to support)
         self.spriterow_num = kwargs.get('spriterow_num', 0) # first row = 0;
-        # set defaults for props otherwise set by subclass as needed (not set by kwargs as specific models do not over-ride them)
-        self.class_refit_groups = []
-        self.label_refits_allowed = []  # no specific labels needed
-        self.label_refits_disallowed = []
+        # !! the need to copy cargo refits from the consist is probably historical (mixed cargo articulated trains), and could likely be refactored !!
+        self.class_refit_groups = self.consist.class_refit_groups
+        self.label_refits_allowed = self.consist.label_refits_allowed
+        self.label_refits_disallowed = self.consist.label_refits_disallowed
         self.autorefit = True
         self.tilt_bonus = False  # over-ride in subclass as needed
         # nml constant (STEAM is sane default)
