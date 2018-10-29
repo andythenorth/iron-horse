@@ -340,7 +340,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             # this is complex necessarily
             # 'first' and 'last' vehicles tend to be asymmetric, but only one direction is drawn for each
             # for the alternative direction, we swap the sprites for 'first' and 'last' by picking a different input row num
-            # then we copy them into the first column of the spritesheet which is for the ÑÑÑ> orientation
+            # then we copy them into the first column of the spritesheet which is for the -> orientation
             # 'default' and 'special' vehicles are assumed to be symmetric, or near enough that it's not important to swap the sprites
             input_row_nums = [row_num]
             input_row_nums.append(self.consist.gestalt_graphics.get_asymmetric_source_row(row_num))
