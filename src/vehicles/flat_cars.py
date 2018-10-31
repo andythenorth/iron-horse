@@ -6,7 +6,7 @@ def main():
     consist = FlatCarConsist(roster='pony',
                              base_numeric_id=1170,
                              gen=1,
-                             subtype='A',
+                             subtype='U',
                              base_track_type='NG',
                              sprites_complete=True)
 
@@ -20,7 +20,7 @@ def main():
     consist = FlatCarConsist(roster='pony',
                              base_numeric_id=1130,
                              gen=3,
-                             subtype='A',
+                             subtype='U',
                              base_track_type='NG',
                              sprites_complete=True)
 
@@ -32,7 +32,7 @@ def main():
     consist = FlatCarConsist(roster='pony',
                              base_numeric_id=1370,
                              gen=4,
-                             subtype='A',
+                             subtype='U',
                              base_track_type='NG',
                              sprites_complete=True)
 

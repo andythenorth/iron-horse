@@ -6,7 +6,7 @@ def main():
     consist = FruitVegCarConsist(roster='pony',
                                  base_numeric_id=1310,
                                  gen=1,
-                                 subtype='A',
+                                 subtype='U',
                                  base_track_type='NG',
                                  sprites_complete=True)
 
@@ -19,7 +19,7 @@ def main():
     consist = FruitVegCarConsist(roster='pony',
                                  base_numeric_id=1360,
                                  gen=3,
-                                 subtype='A',
+                                 subtype='U',
                                  base_track_type='NG',
                                  sprites_complete=True)
 
@@ -30,7 +30,7 @@ def main():
     consist = FruitVegCarConsist(roster='pony',
                                  base_numeric_id=1520,
                                  gen=4,
-                                 subtype='A',
+                                 subtype='U',
                                  base_track_type='NG',
                                  sprites_complete=True)
 

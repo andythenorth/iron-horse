@@ -6,7 +6,7 @@ def main():
     consist = PassengerCarConsist(roster='pony',
                                   base_numeric_id=770,
                                   gen=1,
-                                  subtype='A',
+                                  subtype='U',
                                   base_track_type='NG',
                                   sprites_complete=True)
 
@@ -20,7 +20,7 @@ def main():
     consist = PassengerCarConsist(roster='pony',
                                   base_numeric_id=800,
                                   gen=3,
-                                  subtype='A',
+                                  subtype='U',
                                   base_track_type='NG',
                                   sprites_complete=False)
 
@@ -32,7 +32,7 @@ def main():
     consist = PassengerCarConsist(roster='pony',
                                   base_numeric_id=860,
                                   gen=4,
-                                  subtype='A',
+                                  subtype='U',
                                   base_track_type='NG',
                                   sprites_complete=False)
 

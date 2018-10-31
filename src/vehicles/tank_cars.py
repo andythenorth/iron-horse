@@ -6,7 +6,7 @@ def main():
     consist = TankCarConsist(roster='pony',
                              base_numeric_id=650,
                              gen=1,
-                             subtype='A',
+                             subtype='U',
                              base_track_type='NG',
                              sprites_complete=True)
 
@@ -19,7 +19,7 @@ def main():
     consist = TankCarConsist(roster='pony',
                              base_numeric_id=2980,
                              gen=3,
-                             subtype='A',
+                             subtype='U',
                              base_track_type='NG',
                              sprites_complete=True)
 
@@ -30,7 +30,7 @@ def main():
     consist = TankCarConsist(roster='pony',
                              base_numeric_id=690,
                              gen=4,
-                             subtype='A',
+                             subtype='U',
                              base_track_type='NG',
                              sprites_complete=True)
 
