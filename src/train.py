@@ -632,6 +632,7 @@ class CarConsist(Consist):
     @property
     def name(self):
         if self.subtype == 'U':
+            # subtype U is a hack to indicate there is only one subtype for this wagon, so no suffix needed
             return "string(STR_NAME_CONSIST_PLAIN, string(" + self.get_wagon_title_class_str() + "))"
         else:
             return "string(STR_NAME_CONSIST_PARENTHESES, string(" + self.get_wagon_title_class_str() + "), string(" + self.get_wagon_title_subtype_str() + "))"
