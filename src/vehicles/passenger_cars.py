@@ -46,7 +46,7 @@ def main():
     consist = PassengerCarConsist(roster='pony',
                                   base_numeric_id=740,
                                   gen=1,
-                                  subtype='A',
+                                  subtype='U',
                                   sprites_complete=True)
 
     consist.add_unit(type=PaxMailCar,
@@ -57,7 +57,7 @@ def main():
     consist = PassengerCarConsist(roster='pony',
                                   base_numeric_id=750,
                                   gen=2,
-                                  subtype='A',
+                                  subtype='U',
                                   sprites_complete=True)
 
     consist.add_unit(type=PaxMailCar,
@@ -68,7 +68,7 @@ def main():
     consist = PassengerCarConsist(roster='pony',
                                   base_numeric_id=760,
                                   gen=3,
-                                  subtype='A',
+                                  subtype='U',
                                   sprites_complete=True)
 
     consist.add_unit(type=PaxMailCar,
@@ -79,7 +79,7 @@ def main():
     consist = PassengerCarConsist(roster='pony',
                                   base_numeric_id=3110,
                                   gen=4,
-                                  subtype='A',
+                                  subtype='U',
                                   sprites_complete=True)
 
     consist.add_unit(type=PaxMailCar,
@@ -90,7 +90,7 @@ def main():
     consist = PassengerCarConsist(roster='pony',
                                   base_numeric_id=3100,
                                   gen=5,
-                                  subtype='A',
+                                  subtype='U',
                                   sprites_complete=True)
 
     consist.add_unit(type=PaxMailCar,
@@ -103,7 +103,7 @@ def main():
     consist = PassengerCarConsist(roster='pony',
                                   base_numeric_id=1580,
                                   gen=6,
-                                  subtype='A',
+                                  subtype='U',
                                   sprites_complete=True)
 
     consist.add_unit(type=PaxMailCar,

@@ -45,7 +45,7 @@ def main():
     consist = PassengerLuxuryCarConsist(roster='pony',
                                         base_numeric_id=2250,
                                         gen=1,
-                                        subtype='A',
+                                        subtype='U',
                                         sprites_complete=True)
 
     consist.add_unit(type=PaxMailCar,
@@ -56,7 +56,7 @@ def main():
     consist = PassengerLuxuryCarConsist(roster='pony',
                                         base_numeric_id=2260,
                                         gen=2,
-                                        subtype='A',
+                                        subtype='U',
                                         sprites_complete=True)
 
     consist.add_unit(type=PaxMailCar,
@@ -67,7 +67,7 @@ def main():
     consist = PassengerLuxuryCarConsist(roster='pony',
                                         base_numeric_id=2270,
                                         gen=3,
-                                        subtype='A',
+                                        subtype='U',
                                         sprites_complete=True)
 
     consist.add_unit(type=PaxMailCar,
@@ -78,7 +78,7 @@ def main():
     consist = PassengerLuxuryCarConsist(roster='pony',
                                         base_numeric_id=3120,
                                         gen=4,
-                                        subtype='A',
+                                        subtype='U',
                                         sprites_complete=True)
 
     consist.add_unit(type=PaxMailCar,
@@ -89,7 +89,7 @@ def main():
     consist = PassengerLuxuryCarConsist(roster='pony',
                                         base_numeric_id=3130,
                                         gen=5,
-                                        subtype='A',
+                                        subtype='U',
                                         sprites_complete=True)
 
     consist.add_unit(type=PaxMailCar,
@@ -102,7 +102,7 @@ def main():
     consist = PassengerLuxuryCarConsist(roster='pony',
                                         base_numeric_id=1860,
                                         gen=6,
-                                        subtype='A',
+                                        subtype='U',
                                         sprites_complete=True)
 
     consist.add_unit(type=PaxMailCar,
