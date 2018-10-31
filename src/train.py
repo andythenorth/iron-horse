@@ -147,7 +147,7 @@ class Consist(object):
 
     @property
     def name(self):
-        return "string(STR_NAME_CONSIST, string(STR_NAME_" + self.id + "), string(" + self.str_name_suffix + "))"
+        return "string(STR_NAME_CONSIST_PARENTHESES, string(STR_NAME_" + self.id + "), string(" + self.str_name_suffix + "))"
 
     def unit_requires_variable_power(self, vehicle):
         if self.power_by_railtype is not None and vehicle.is_lead_unit_of_consist:
@@ -631,7 +631,10 @@ class CarConsist(Consist):
 
     @property
     def name(self):
-        return "string(STR_NAME_CONSIST, string(" + self.get_wagon_title_class_str() + "), string(" + self.get_wagon_title_subtype_str() + "))"
+        if self.subtype == 'U':
+            return "string(STR_NAME_CONSIST_PLAIN, string(" + self.get_wagon_title_class_str() + "))"
+        else:
+            return "string(STR_NAME_CONSIST_PARENTHESES, string(" + self.get_wagon_title_class_str() + "), string(" + self.get_wagon_title_subtype_str() + "))"
 
 
 class BoxCarConsist(CarConsist):

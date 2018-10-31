@@ -2,7 +2,8 @@ STR_GRF_NAME                                                    :Iron Horse ${ma
 <!--! empty string is not translated :) -->
 STR_EMPTY                                                       :
 
-STR_NAME_CONSIST                                                :{STRING} ({STRING})
+STR_NAME_CONSIST_PLAIN                                          :{STRING}
+STR_NAME_CONSIST_PARENTHESES                                    :{STRING} ({STRING})
 
 <!--! consist names (engines) -->
 <tal:consist_names repeat="consist consists">

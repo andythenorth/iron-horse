@@ -6,7 +6,7 @@ def main():
     consist = CabooseCarConsist(roster='pony',
                                 base_numeric_id=1290,
                                 gen=1,
-                                subtype='A',
+                                subtype='U',
                                 base_track_type='NG',
                                 sprites_complete=True)
 

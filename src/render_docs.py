@@ -92,9 +92,15 @@ class DocHelper(object):
         if consist._name is not None:
             name = consist._name
         else:
-            name = base_lang_strings[substrings[2][0:-3]]
-        suffix = base_lang_strings[substrings[3][0:-2]]
-        return name + ' (' + suffix + ')'
+            # strip out spaces and some nml boilerplate to get the string name in isolation
+            name_substr = substrings[2].translate({ord(c):'' for c in '), '})
+            name = base_lang_strings[name_substr]
+        # !! this would be better generalised to 'consist.has_suffix', currently docs rendering is knowing too much about the internals of trains
+        if getattr(consist, 'subtype', None) is not 'U':
+            suffix = base_lang_strings[substrings[3][0:-2]]
+            return name + ' (' + suffix + ')'
+        else:
+            return name
 
     def get_props_to_print_in_code_reference(self, subclass):
         props_to_print = {}
