@@ -12,7 +12,6 @@ from vehicles import chimera
 from vehicles import chinook
 from vehicles import collett
 from vehicles import deasil
-from vehicles import donegal
 from vehicles import dragon
 from vehicles import express_tank
 from vehicles import faun
@@ -29,6 +28,7 @@ from vehicles import little_bear
 from vehicles import longwater
 from vehicles import mail_rail
 from vehicles import moor_gallop
+from vehicles import mumble
 from vehicles import northcock
 from vehicles import peasweep
 from vehicles import pendolino_thing
@@ -135,5 +135,5 @@ roster = Roster(id = 'pony',
                            bean_feast,
                            pikel,
                            boar_cat,
-                           donegal,
+                           mumble,
                            snapper])

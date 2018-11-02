@@ -1,8 +1,8 @@
 from train import PassengerEngineRailcarConsist, DieselRailcarUnit
 
-consist = PassengerEngineRailcarConsist(id='donegal',
+consist = PassengerEngineRailcarConsist(id='mumble',
                                         base_numeric_id=140,
-                                        name='Donegal',
+                                        name='Mumble',
                                         role='pax_railcar',
                                         base_track_type='NG',
                                         power=250,
