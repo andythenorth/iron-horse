@@ -5,7 +5,6 @@ consist = EngineConsist(id='okapi',
                         name='Okapi',
                         power=1850,
                         base_track_type='NG',
-                        type_base_running_cost_points=-2,  # dibble running costs for game balance
                         intro_date=1958)
 
 consist.add_unit(type=DieselEngineUnit,

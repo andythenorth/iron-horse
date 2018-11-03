@@ -5,7 +5,6 @@ consist = EngineConsist(id='waterbuck',
                         name='Waterbuck',
                         power=2200,
                         base_track_type='NG',
-                        type_base_running_cost_points=-2,  # dibble running costs for game balance
                         intro_date=1990)
 
 consist.add_unit(type=DieselEngineUnit,

@@ -4,7 +4,6 @@ consist = EngineConsist(id='springburn',
                         base_numeric_id=1790,
                         name='Springburn',
                         power=1200,
-                        type_base_running_cost_points=-20,  # dibble run cost for game balance
                         intro_date=1950)
 
 consist.add_unit(type=DieselEngineUnit,

@@ -7,7 +7,6 @@ consist = PassengerEngineRailcarConsist(id='snapper',
                                         base_track_type='NG',
                                         power=350,
                                         type_base_buy_cost_points=-18,  # dibble buy cost for game balance
-                                        type_base_running_cost_points=-30,  # dibble running costs for game balance
                                         gen=4,
                                         sprites_complete=True)
 

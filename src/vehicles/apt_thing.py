@@ -5,7 +5,6 @@ consist = PassengerEngineVeryHighSpeedConsist(id='apt_thing',
                                               name='Helm Wind',
                                               role='pax_high_speed',
                                               power=1200,
-                                              type_base_running_cost_points=-32,  # dibble running costs for game balance
                                               gen=4,
                                               intro_date_offset=20)  # introduce later than gen epoch by design
 

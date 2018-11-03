@@ -5,7 +5,6 @@ consist = PassengerEngineVeryHighSpeedConsist(id='pendolino_thing',
                                               name='Blaze',
                                               role='pax_high_speed',
                                               power=1900,
-                                              type_base_running_cost_points=-32,  # dibble running costs for game balance
                                               gen=5,
                                               intro_date_offset=10)  # introduce later than gen epoch by design
 

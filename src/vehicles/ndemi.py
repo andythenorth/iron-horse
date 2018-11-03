@@ -6,7 +6,6 @@ consist = EngineConsist(id='ndemi',
                         power=1700,
                         base_track_type='NG',
                         type_base_buy_cost_points=35,  # dibble buy cost for game balance
-                        type_base_running_cost_points=35,  # dibble running costs for game balance
                         intro_date=1887)
 
 consist.add_unit(type=SteamEngineUnit,

@@ -5,7 +5,6 @@ consist = EngineConsist(id='potosi',
                         name='4-8-2+2-8-4 Potosi',
                         power=4500,
                         type_base_buy_cost_points=5,  # dibble buy cost for game balance
-                        type_base_running_cost_points=5,  # dibble running costs for game balance
                         intro_date=1935)
 
 consist.add_unit(type=SteamEngineTenderUnit,

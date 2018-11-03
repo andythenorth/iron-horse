@@ -5,7 +5,6 @@ consist = EngineConsist(id='estados',
                         name='Estados Boxcab',
                         power=1450,
                         type_base_buy_cost_points=35,  # dibble buy cost for game balance
-                        type_base_running_cost_points=-10,  # dibble running costs for game balance
                         intro_date=1925)
 
 consist.add_unit(type=ElectricEngineUnit,

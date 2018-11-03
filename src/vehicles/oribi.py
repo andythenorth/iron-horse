@@ -5,7 +5,6 @@ consist = EngineConsist(id='oribi',
                         name='Oribi',
                         power=450,
                         base_track_type='NG',
-                        type_base_running_cost_points=-28,  # dibble running costs for game balance
                         intro_date=1960)
 
 consist.add_unit(type=DieselEngineUnit,

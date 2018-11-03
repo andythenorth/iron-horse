@@ -5,7 +5,6 @@ consist = EngineConsist(id='v8',
                         name='V8 2-C+C-2',
                         power=4000,
                         type_base_buy_cost_points=35,  # dibble buy cost for game balance
-                        type_base_running_cost_points=-10,  # dibble running costs for game balance
                         intro_date=1949)
 
 consist.add_unit(type=ElectricEngineUnit,

@@ -6,7 +6,6 @@ consist = EngineConsist(id='peasweep',
                         role='heavy_freight_2',
                         power=3600,
                         type_base_buy_cost_points=40,  # dibble buy cost for game balance
-                        type_base_running_cost_points=-5,  # dibble run cost for game balance
                         joker=True,  # this engine doesn't fit the set roster pattern, by design it's to mix things up
                         gen=4,
                         pantograph_type='diamond-double',

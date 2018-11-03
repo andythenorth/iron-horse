@@ -6,7 +6,6 @@ consist = EngineConsist(id='ge289a',
                         power=1200,
                         base_track_type='NG',
                         type_base_buy_cost_points=35,  # dibble buy cost for game balance
-                        type_base_running_cost_points=-10,  # dibble running costs for game balance
                         intro_date=1922)
 
 consist.add_unit(type=ElectricEngineUnit,

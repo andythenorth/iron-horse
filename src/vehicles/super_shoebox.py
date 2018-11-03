@@ -7,7 +7,6 @@ consist = EngineConsist(id='super_shoebox',
                         power=1200,  # a bit higher than progression would require, to support higher speed
                         power_by_railtype={'RAIL': 1200, 'ELRL': 2200},
                         type_base_buy_cost_points=0,  # dibble buy cost for game balance
-                        type_base_running_cost_points=-28,  # dibble run cost for game balance
                         random_reverse=True,
                         pantograph_type='z-shaped-single',
                         gen=5)

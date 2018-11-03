@@ -5,7 +5,6 @@ consist = PassengerEngineRailcarConsist(id='tin_rocket',
                                         name='Tin Rocket',
                                         role='pax_railcar',
                                         power=400,
-                                        type_base_running_cost_points=-36,  # dibble running costs for game balance
                                         gen=5,
                                         sprites_complete=True,
                                         intro_date_offset=-5)  # introduce early by design
