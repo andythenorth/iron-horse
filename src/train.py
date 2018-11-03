@@ -589,6 +589,8 @@ class CarConsist(Consist):
             cost = self.speed
         else:
             cost = 125
+        consist_length = sum([unit.vehicle_length for unit in self.units])
+        cost = (cost / 8) * consist_length
         # only 1 decimal place of precision is needed here (using more does no harm for nml, but looks really bad in docs)
         return round(cost / self.run_cost_divisor, 1)
 
