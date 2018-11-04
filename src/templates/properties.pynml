@@ -35,7 +35,7 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
         tractive_effort_coefficient:    ${consist.tractive_effort_coefficient};
         cost_factor:                    ${consist.buy_cost};
         running_cost_base:              ${vehicle.running_cost_base};
-        running_cost_factor:            ${consist.running_cost};
+        running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
         refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
         refittable_cargo_classes:       bitmask(${vehicle.refittable_classes});
         non_refittable_cargo_classes:   bitmask(); // don't set non-refittable classes, increases likelihood of breaking cargo support
@@ -57,6 +57,7 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
     graphics {
         default:                        ${vehicle.id}_switch_graphics;
         purchase:                       ${vehicle.id}_switch_graphics_purchase;
+        running_cost_factor:            ${int(consist.running_cost)}; // CB used as it is capped to max 32k, prop is only 255
         <tal:random_company_colour_swap condition="consist.random_company_colour_swap">
             colour_mapping:                 ${vehicle.id}_switch_colour_mapping;
         </tal:random_company_colour_swap>

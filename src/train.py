@@ -71,9 +71,9 @@ class Consist(object):
         # arbitrary adjustments of points that can be applied to adjust buy cost and running cost, over-ride in consist as needed
         # values can be -ve or +ve to dibble specific vehicles (but total calculated points cannot exceed 255)
         self.type_base_buy_cost_points = kwargs.get(
-            'type_base_buy_cost_points', 15)
+            'type_base_buy_cost_points', 0)
         self.type_base_running_cost_points = kwargs.get(
-            'type_base_running_cost_points', 15)
+            'type_base_running_cost_points', 0)
         # create structure to hold the units
         self.units = []
         # one default cargo for the whole consist, no mixed cargo shenanigans, it fails with auto-replace
@@ -371,28 +371,25 @@ class EngineConsist(Consist):
             self.gestalt_graphics = GestaltGraphicsOnlyAddPantographs()
 
     def get_engine_cost_points(self):
-        # Up to 80 points for power. 1 point per 100hp
-        # Power is therefore capped at 8000hp by design, this isn't a hard limit, but raise a warning
-        if self.power > 8000:
-            utils.echo_message("Consist " + self.id +
-                               " has power > 8000hp, which is too much")
-        power_cost_points = self.power / 100
+        print('get_engine_cost_points deprecated')
+        # up to 250 points (max ottd value is 255)
+        # vehicle can also adjust points up or down as an over-ride, that might get clipped if it exceeds 255
 
-        # Up to 20 points for speed up to 80mph. 1 point per 2mph
-        speed_cost_points = min(self.speed, 80) / 2
+        # Up to 200 points for power. 1 point per 50hp.
+        power_cost_points = self.power / 50
 
-        # Up to 80 points for speed above 80mph up to 200mph. 1 point per 1.5mph
-        if self.speed > 200:
-            utils.echo_message("Consist " + self.id +
-                               " has speed > 200, which is too much")
-        high_speed_cost_points = max((self.speed - 80), 0) / 1.5
+        # Up to 10 points for speed up to 100mph. 1 point per 10mph.
+        speed_cost_points = min(self.speed, 100) / 10
 
-        # Up to 40 points for intro date after 1870. 1 point per 4 years.
+        # Up to 20 points for speed above 100mph up to 200mph. 1 point per 5mph
+        high_speed_cost_points = max((self.speed - 100), 0) / 5
+
+        # Up to 20 points for intro date after 1870. 1 point per 8 years.
         # Intro dates capped at 2030, this isn't a hard limit, but raise a warning
         if self.intro_date > 2030:
             utils.echo_message("Consist " + self.id +
                                " has intro_date > 2030, which is too much")
-        date_cost_points = max((self.intro_date - 1870), 0) / 4
+        date_cost_points = max((self.intro_date - 1870), 0) / 8
 
         result = power_cost_points + speed_cost_points + high_speed_cost_points + date_cost_points
         return result
@@ -401,13 +398,34 @@ class EngineConsist(Consist):
     def buy_cost(self):
         # type_base_buy_cost_points is an arbitrary adjustment that can be applied on a type-by-type basis,
         # only 1 decimal place of precision is needed here (using more does no harm for nml, but looks really bad in docs)
-        return round(self.get_engine_cost_points() + self.type_base_buy_cost_points, 1)
+        buy_cost_points = 100
+        return round(buy_cost_points + self.type_base_buy_cost_points, 1)
 
     @property
     def running_cost(self):
+        # max ottd value 255
+        # max speed = 200 by design
+        if self.speed > 200:
+            utils.echo_message("Consist " + self.id + " has speed > 200, which is too much")
+        # max power 10000hp by design
+        if self.power > 10000:
+            utils.echo_message("Consist " + self.id + " has power > 10000hp, which is too much")
+        # up to 25 points for speed
+        speed_cost_points = self.speed / 8
+        # multiplier for power, from 0 to 10, giving up to 250 points total
+        power_factor = self.power / 1000
+        # bonus for electric engines, ~20% lower running costs
+        # !! this is an abuse of requires_electric_rails, but it's _probably_ fine :P
+        if self.requires_electric_rails:
+            power_factor = 0.8 * power_factor
+        # stick 2 points on everything for luck, seems to work
         # type_base_running_cost_points is an arbitrary adjustment that can be applied on a type-by-type basis,
-        # only 1 decimal place of precision is needed here (using more does no harm for nml, but looks really bad in docs)
-        return round(self.get_engine_cost_points() + self.type_base_running_cost_points, 1)
+        run_cost_points = 2 + (speed_cost_points * power_factor) + self.type_base_running_cost_points
+        # if I set cost base as high as I want for engines, wagon costs aren't fine grained enough
+        # so just treble engine costs, which works
+        run_cost_points = 3 * run_cost_points
+        # cap to int for nml
+        return int(run_cost_points)
 
 
 class PassengerEngineConsist(EngineConsist):
@@ -567,7 +585,7 @@ class CarConsist(Consist):
         # default value, adjust this in subclasses to modify buy cost for more complex cars
         self.capacity_cost_factor = 1
         # default value, adjust this in subclasses to modify run cost for more complex cars
-        self.run_cost_divisor = 8
+        self.run_cost_divisor = 4
 
     @property
     def buy_cost(self):
@@ -585,14 +603,18 @@ class CarConsist(Consist):
 
     @property
     def running_cost(self):
+        # factor should be same as base running cost adjustments in header
+        speed_factor = 2
         if self.speed is not None:
-            cost = self.speed
+            speed_cost = self.speed / speed_factor
         else:
-            cost = 125
+            # assume unlimited speed costs about same as 160mph
+            speed_cost = 160 / speed_factor
         consist_length = sum([unit.vehicle_length for unit in self.units])
-        cost = (cost / 8) * consist_length
+        cost = (speed_cost / 8) * consist_length
         # only 1 decimal place of precision is needed here (using more does no harm for nml, but looks really bad in docs)
-        return round(cost / self.run_cost_divisor, 1)
+        # also cap to 255 to prevent overflow
+        return min(round(cost / self.run_cost_divisor, 1), 255)
 
     @property
     def model_life(self):
@@ -832,7 +854,7 @@ class LivestockCarConsist(CarConsist):
         self.default_cargos = ['LVST']
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
         self.capacity_cost_factor = 1.5
-        self.run_cost_divisor = 7
+        self.run_cost_divisor = 3.5
         # Graphics configuration
         self.generate_unit_roofs = True
         self.roof_type = 'freight'
@@ -856,7 +878,7 @@ class MailCarConsist(CarConsist):
         self.default_cargos = global_constants.default_cargos['mail']
         self.random_company_colour_swap = False
         self.capacity_cost_factor = 1.5
-        self.run_cost_divisor = 7
+        self.run_cost_divisor = 3.5
         self.allow_flip = True
         # Graphics configuration
         self.generate_unit_roofs = True
@@ -895,7 +917,7 @@ class MetalCarConsist(CarConsist):
         self.default_cargos = global_constants.default_cargos['metal']
         self.loading_speed_multiplier = 2
         self.capacity_cost_factor = 1.5
-        self.run_cost_divisor = 7
+        self.run_cost_divisor = 3
         # !! probably want some capacity multiplier here, metal cars have higher capacity per unit length (at high cost!)
 
 
@@ -959,7 +981,7 @@ class PassengerCarConsist(PassengerCarConsistBase):
         self.base_id = 'passenger_car'
         super().__init__(**kwargs)
         self.capacity_cost_factor = 2
-        self.run_cost_divisor = 5
+        self.run_cost_divisor = 3
 
 
 class PassengerLuxuryCarConsist(PassengerCarConsistBase):
@@ -973,7 +995,7 @@ class PassengerLuxuryCarConsist(PassengerCarConsistBase):
         super().__init__(**kwargs)
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
         self.capacity_cost_factor = 3
-        self.run_cost_divisor = 3
+        self.run_cost_divisor = 2
 
 
 class ReeferCarConsist(CarConsist):
@@ -991,7 +1013,7 @@ class ReeferCarConsist(CarConsist):
         self.default_cargos = global_constants.default_cargos['reefer']
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
         self.capacity_cost_factor = 1.5
-        self.run_cost_divisor = 6
+        self.run_cost_divisor = 2.5
         # Graphics configuration
         self.generate_unit_roofs = True
         self.roof_type = 'freight'

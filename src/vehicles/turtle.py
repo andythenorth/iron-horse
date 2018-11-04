@@ -6,7 +6,6 @@ consist = EngineConsist(id='turtle',
                         role='express_1',
                         power=3450,
                         type_base_buy_cost_points=30,  # dibble buy cost for game balance
-                        type_base_running_cost_points=30,  # dibble running costs for game balance
                         random_reverse=True,
                         gen=6)
 
