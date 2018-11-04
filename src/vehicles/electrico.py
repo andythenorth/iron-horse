@@ -4,7 +4,6 @@ consist = EngineConsist(id='electrico',
                         base_numeric_id=180,
                         name='Electrico 2-B+B-2',
                         power=2400,
-                        type_base_buy_cost_points=35,  # dibble buy cost for game balance
                         intro_date=1920)
 
 consist.add_unit(type=ElectricEngineUnit,

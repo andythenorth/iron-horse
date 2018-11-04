@@ -5,7 +5,6 @@ consist = EngineConsist(id='dragon',
                         name='Dragon',
                         role='express_1',
                         power=2200,
-                        type_base_buy_cost_points=30,  # dibble buy cost for game balance
                         random_reverse=True,
                         gen=4,
                         sprites_complete=True)

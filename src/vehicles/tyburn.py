@@ -5,7 +5,6 @@ consist = MailEngineMetroConsist(id='tyburn',
                                  name='Tyburn',
                                  role='mail_metro',
                                  power=900,
-                                 type_base_buy_cost_points=56,  # dibble buy cost for game balance
                                  gen=2,
                                  sprites_complete=True)
 

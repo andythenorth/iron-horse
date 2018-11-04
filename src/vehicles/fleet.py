@@ -5,7 +5,6 @@ consist = PassengerEngineMetroConsist(id='fleet',
                                       name='Fleet',
                                       role='pax_metro',
                                            power=1100,
-                                      type_base_buy_cost_points=80,  # dibble buy cost for game balance
                                       gen=3,
                                       sprites_complete=True)
 

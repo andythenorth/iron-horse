@@ -5,7 +5,6 @@ consist = EngineConsist(id='freight_tank',
                         name='2-8-2 Gwynt',
                         role='branch_freight',
                         power=1000,
-                        type_base_buy_cost_points=-2,  # dibble buy cost for game balance
                         random_reverse=True,
                         gen=3)
 

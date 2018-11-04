@@ -5,7 +5,6 @@ consist = EngineConsist(id='planet',
                         name='Planet',
                         base_track_type='NG',
                         power=500,
-                        type_base_buy_cost_points=-20,  # dibble buy cost for game balance
                         intro_date=1950)
 
 consist.add_unit(type=DieselEngineUnit,

@@ -5,7 +5,6 @@ consist = EngineConsist(id='milne',
                         name='4-8-2 Milne',
                         power=600,
                         base_track_type='NG',
-                        type_base_buy_cost_points=-10,  # dibble buy cost for game balance
                         random_reverse=True,
                         intro_date=1910)
 

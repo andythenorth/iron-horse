@@ -5,7 +5,6 @@ consist = EngineConsist(id='bigfoot',
                         name='Bigfoot',
                         power=900,
                         base_track_type='NG',
-                        type_base_buy_cost_points=-5,  # dibble buy cost for game balance
                         intro_date=1970)
 
 consist.add_unit(type=DieselEngineUnit,

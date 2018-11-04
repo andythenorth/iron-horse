@@ -6,7 +6,6 @@ consist = EngineConsist(id='moor_gallop',
                         role='express_2',
                         power=2400,
                         tractive_effort_coefficient=0.25,
-                        type_base_buy_cost_points=10,  # dibble buy cost for game balance
                         gen=3,
                         pantograph_type='diamond-double',
                         intro_date_offset=5)  # introduce later than gen epoch by design

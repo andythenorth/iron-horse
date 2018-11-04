@@ -5,7 +5,6 @@ consist = EngineConsist(id='bush_elephant',
                         name='2-6-6-2 Bush Elephant',
                         power=2200,
                         base_track_type='NG',
-                        type_base_buy_cost_points=35,  # dibble buy cost for game balance
                         intro_date=1915)
 
 consist.add_unit(type=SteamEngineUnit,

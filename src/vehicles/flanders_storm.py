@@ -7,7 +7,6 @@ consist = EngineConsist(id='flanders_storm',
                         power=6400,
                         # dibble for game balance, assume super-slip control
                         tractive_effort_coefficient=0.4,
-                        type_base_buy_cost_points=63,  # dibble buy cost for game balance
                         random_reverse=True,
                         joker=True,  # this engine doesn't fit the set roster pattern, by design it's to mix things up
                         gen=5,

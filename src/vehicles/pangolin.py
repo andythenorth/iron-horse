@@ -5,7 +5,6 @@ consist = EngineConsist(id='pangolin',
                         name='2-6-0 Pangolin',
                         power=1200,
                         base_track_type='NG',
-                        type_base_buy_cost_points=0,  # dibble buy cost for game balance
                         intro_date=1860)
 
 consist.add_unit(type=SteamEngineUnit,

@@ -7,7 +7,6 @@ consist = EngineConsist(id='pikel',
                         power=650,
                         random_reverse=True,
                         base_track_type='NG',
-                        type_base_buy_cost_points=-10,  # dibble buy cost for game balance
                         gen=3,
                         sprites_complete=True)
 

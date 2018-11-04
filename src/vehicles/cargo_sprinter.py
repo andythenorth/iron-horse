@@ -12,7 +12,6 @@ consist = EngineConsist(id='cargo_sprinter',
                         # it's also balanced to add capacity by adding more cargo sprinter units,
                         # rather than adding capacity by adding trailing wagons
                         # it doesn't make a good loco for unpowered consists, although one or two trailing wagons should be ok per unit
-                        type_base_buy_cost_points=-2,  # dibble buy cost for game balance
                         intro_date=1999)  # explicit intro date by design
 
 consist.add_unit(type=CargoSprinter,

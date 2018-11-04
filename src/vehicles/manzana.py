@@ -4,7 +4,6 @@ consist = PassengerEngineConsist(id='manzana',
                                  base_numeric_id=1480,
                                  name='Manzana',
                                  power=900,
-                                 type_base_buy_cost_points=60,  # dibble buy cost for game balance
                                  intro_date=1950)
 
 # should be 4 units not 2

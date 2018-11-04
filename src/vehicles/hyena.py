@@ -6,7 +6,6 @@ consist = EngineConsist(id='hyena',
                         power=1400,
                         tractive_effort_coefficient=0.19,
                         base_track_type='NG',
-                        type_base_buy_cost_points=25,  # dibble buy cost for game balance
                         intro_date=1915)
 
 consist.add_unit(type=SteamEngineUnit,

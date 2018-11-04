@@ -7,7 +7,6 @@ consist = EngineConsist(id='boar_cat',
                         power=800,
                         random_reverse=True,
                         base_track_type='NG',
-                        type_base_buy_cost_points=-10,  # dibble buy cost for game balance
                         gen=4,
                         sprites_complete=True)
 

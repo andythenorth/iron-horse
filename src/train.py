@@ -68,10 +68,6 @@ class Consist(object):
         # random_reverse is not supported in some templates
         self.random_reverse = kwargs.get('random_reverse', False)
         self.allow_flip = self.random_reverse # random_reverse vehicles can always be flipped, but flip can also be set in other cases (by subclass)
-        # arbitrary adjustments of points that can be applied to adjust buy cost and running cost, over-ride in consist as needed
-        # values can be -ve or +ve to dibble specific vehicles (but total calculated points cannot exceed 255)
-        self.type_base_buy_cost_points = kwargs.get(
-            'type_base_buy_cost_points', 0)
         # arbitrary multiplier to the calculated run cost, e.g. 1.1, 0.9 etc
         # set to 1 by default, over-ride in subclasses as needed
         self.running_cost_adjustment_factor = 1
@@ -401,11 +397,9 @@ class EngineConsist(Consist):
 
     @property
     def buy_cost(self):
-        # type_base_buy_cost_points is an arbitrary adjustment that can be applied on a type-by-type basis,
-        # only 1 decimal place of precision is needed here (using more does no harm for nml, but looks really bad in docs)
         self.get_engine_cost_points()
         buy_cost_points = 100
-        return round(buy_cost_points + self.type_base_buy_cost_points, 1)
+        return round(buy_cost_points, 1)
 
     @property
     def running_cost(self):

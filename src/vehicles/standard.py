@@ -6,7 +6,6 @@ consist = EngineConsist(id='standard',
                         role='express_1',
                         power=950,
                         tractive_effort_coefficient=0.07,
-                        type_base_buy_cost_points=18,  # dibble buy cost for game balance
                         gen=1)
 
 consist.add_unit(type=SteamEngineUnit,

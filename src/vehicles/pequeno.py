@@ -5,7 +5,6 @@ consist = EngineConsist(id='pequeno',
                         name='0-4-0 Pequeno',
                         power=350,
                         base_track_type='NG',
-                        type_base_buy_cost_points=-10,  # dibble buy cost for game balance
                         intro_date=1865)
 
 consist.add_unit(type=SteamEngineUnit,
