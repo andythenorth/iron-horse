@@ -68,6 +68,9 @@ class Consist(object):
         # random_reverse is not supported in some templates
         self.random_reverse = kwargs.get('random_reverse', False)
         self.allow_flip = self.random_reverse # random_reverse vehicles can always be flipped, but flip can also be set in other cases (by subclass)
+        # arbitrary multiplier to the calculated buy cost, e.g. 1.1, 0.9 etc
+        # set to 1 by default, over-ride in subclasses as needed
+        self.buy_cost_adjustment_factor = 1
         # arbitrary multiplier to the calculated run cost, e.g. 1.1, 0.9 etc
         # set to 1 by default, over-ride in subclasses as needed
         self.running_cost_adjustment_factor = 1
@@ -397,7 +400,22 @@ class EngineConsist(Consist):
                                " has intro_date > 2030, which is too much")
         date_cost_points = max((self.intro_date - 1870), 0) / 8
         """
-        buy_cost_points = 100
+        # max speed = 200mph by design - see assert_speed()
+        # up to 25 points for speed
+        speed_cost_points = self.speed / 8
+        # max power 10000hp by design - see assert_power()
+        # multiplier for power, from 0 to 10, giving up to 250 points total
+        power_factor = self.power / 1000
+        # malus for electric engines, ~20% higher equipment costs
+        # !! this is an abuse of requires_electric_rails, but it's _probably_ fine :P
+        if self.requires_electric_rails:
+            power_factor = 1.2 * power_factor
+        # basic cost from speed, power, subclass factor (e.g. engine with pax capacity might cost more to buy)
+        buy_cost_points = speed_cost_points * power_factor * self.buy_cost_adjustment_factor
+        # if I set cost base as high as I want for engines, wagon costs aren't fine grained enough
+        # so just treble engine costs, which works
+        buy_cost_points = 3 * buy_cost_points
+        # cap to int for nml
         return int(buy_cost_points)
 
     @property
@@ -434,7 +452,9 @@ class PassengerEngineConsist(EngineConsist):
         self.label_refits_allowed = []
         self.label_refits_disallowed = []
         self.default_cargos = ['PASS']
-        self.running_cost_adjustment_factor = 2 # raise run cost for having seats and stuff eh?
+         # increased costs for having seats and stuff eh?
+        self.buy_cost_adjustment_factor = 2
+        self.running_cost_adjustment_factor = 2
 
 class PassengerEngineMetroConsist(PassengerEngineConsist):
     """
