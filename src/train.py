@@ -519,6 +519,7 @@ class MailEngineConsist(EngineConsist):
         self.label_refits_allowed = []  # no specific labels needed
         self.label_refits_disallowed = ['TOUR']
         self.default_cargos = global_constants.default_cargos['mail']
+        self.run_cost_adjustment_factor = 1.5 # raise run cost for having extra doors and stuff eh?
 
 
 class MailEngineMetroConsist(MailEngineConsist):
