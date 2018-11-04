@@ -592,27 +592,25 @@ class CarConsist(Consist):
             'cargo_age_period', global_constants.CARGO_AGE_PERIOD)
         # assume all wagons randomly swap CC, revert to False in wagon subclasses as needed
         self.random_company_colour_swap = True
-        # default value, adjust this in subclasses to modify buy cost for more complex cars
-        self.capacity_cost_factor = 1
 
     @property
     def buy_cost(self):
         if self.speed is not None:
-            cost = self.speed
+            speed_cost_points = self.speed
         else:
-            cost = 125
-        capacity_factors = []
-        for unit in self.units:
-            capacity_factors.append(
-                unit.default_cargo_capacity * self.capacity_cost_factor)
-        cost = cost + sum(capacity_factors)
+            # assume unlimited speed costs about same as 160mph
+            speed_cost_points = 160
+        length_cost_factor = self.length / 8
+        # Horse allows some variation in wagon buy costs, reflecting equipment etc
+        buy_cost_points = speed_cost_points * length_cost_factor * self.buy_cost_adjustment_factor
+        # multiply it all by 1.66, seems to work about right
+        buy_cost_points = 1.66 * buy_cost_points
         # int for nml
-        return int(0.5 * cost)
+        return int(buy_cost_points)
 
     @property
     def running_cost(self):
-        # factor should be same as base running cost adjustments in header
-        speed_factor = 8
+        speed_factor = 8 # arbitrary factor that works
         if self.speed is not None:
             speed_cost_points = self.speed / speed_factor
         else:
@@ -682,6 +680,7 @@ class BoxCarConsist(CarConsist):
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label[
             'non_freight_special_cases']
         self.default_cargos = global_constants.default_cargos['box']
+        self.buy_cost_adjustment_factor = 1.2
         # Graphics configuration
         self.generate_unit_roofs = True
         self.roof_type = 'freight'
@@ -723,6 +722,7 @@ class CoveredHopperCarConsist(CarConsist):
         self.label_refits_disallowed = []
         self.default_cargos = global_constants.default_cargos['covered_hopper']
         self.loading_speed_multiplier = 2
+        self.buy_cost_adjustment_factor = 1.2
         # CC is swapped randomly (player can't choose), but also swap base livery on flip (player can choose
         self.allow_flip = True
         # Graphics configuration
@@ -746,7 +746,8 @@ class DumpCarConsist(CarConsist):
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label[
             'non_dump_bulk']
         self.default_cargos = global_constants.default_cargos['dump']
-        self.loading_speed_multiplier = 2
+        self.loading_speed_multiplier = 1.5
+        self.buy_cost_adjustment_factor = 1.1
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(bulk=True)
 
@@ -769,7 +770,9 @@ class EdiblesTankCarConsist(CarConsist):
         self.default_cargos = global_constants.default_cargos['edibles_tank']
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
         self.loading_speed_multiplier = 2
-        self.capacity_cost_factor = 1.5
+        self.buy_cost_adjustment_factor = 1.33
+        self.running_cost_adjustment_factor = 1.33
+
 
 class FlatCarConsist(CarConsist):
     """
@@ -801,7 +804,7 @@ class FruitVegCarConsist(CarConsist):
         self.label_refits_disallowed = []
         self.default_cargos = global_constants.default_cargos['fruit_veg']
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
-        self.capacity_cost_factor = 1.5
+        self.buy_cost_adjustment_factor = 1.2
         # Graphics configuration
         self.generate_unit_roofs = True
         self.roof_type = 'freight'
@@ -823,7 +826,7 @@ class HopperCarConsist(CarConsist):
             'non_dump_bulk']
         self.default_cargos = global_constants.default_cargos['hopper']
         self.loading_speed_multiplier = 2
-        self.capacity_cost_factor = 1.5
+        self.buy_cost_adjustment_factor = 1.2
         # CC is swapped randomly (player can't choose), but also swap base livery on flip (player can choose
         self.allow_flip = True
         # Graphics configuration
@@ -860,7 +863,7 @@ class LivestockCarConsist(CarConsist):
         # no point using polar fox default_cargos for a vehicle with single refit
         self.default_cargos = ['LVST']
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
-        self.capacity_cost_factor = 1.5
+        self.buy_cost_adjustment_factor = 1.2
         self.running_cost_adjustment_factor = 1.2
         # Graphics configuration
         self.generate_unit_roofs = True
@@ -884,7 +887,6 @@ class MailCarConsist(CarConsist):
             'non_freight_special_cases']
         self.default_cargos = global_constants.default_cargos['mail']
         self.random_company_colour_swap = False
-        self.capacity_cost_factor = 1.5
         self.running_cost_adjustment_factor = 1.1
         self.allow_flip = True
         # Graphics configuration
@@ -923,7 +925,7 @@ class MetalCarConsist(CarConsist):
         self.label_refits_disallowed = []
         self.default_cargos = global_constants.default_cargos['metal']
         self.loading_speed_multiplier = 2
-        self.capacity_cost_factor = 1.5
+        self.buy_cost_adjustment_factor = 1.2
         self.running_cost_adjustment_factor = 1.25
         # !! probably want some capacity multiplier here, metal cars have higher capacity per unit length (at high cost!)
 
@@ -987,7 +989,7 @@ class PassengerCarConsist(PassengerCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = 'passenger_car'
         super().__init__(**kwargs)
-        self.capacity_cost_factor = 2
+        self.buy_cost_adjustment_factor = 1.3
         self.running_cost_adjustment_factor = 1.33
 
 
@@ -1001,7 +1003,7 @@ class PassengerLuxuryCarConsist(PassengerCarConsistBase):
         self.base_id = 'luxury_passenger_car'
         super().__init__(**kwargs)
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
-        self.capacity_cost_factor = 3
+        self.buy_cost_adjustment_factor = 1.6
         self.running_cost_adjustment_factor = 1.8
 
 
@@ -1019,7 +1021,7 @@ class ReeferCarConsist(CarConsist):
         self.label_refits_disallowed = []
         self.default_cargos = global_constants.default_cargos['reefer']
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
-        self.capacity_cost_factor = 1.5
+        self.buy_cost_adjustment_factor = 1.33
         self.running_cost_adjustment_factor = 1.33
         # Graphics configuration
         self.generate_unit_roofs = True
@@ -1042,7 +1044,7 @@ class SiloCarConsist(CarConsist):
         self.label_refits_disallowed = []
         self.default_cargos = global_constants.default_cargos['silo']
         self.loading_speed_multiplier = 2
-        self.capacity_cost_factor = 1.5
+        self.buy_cost_adjustment_factor = 1.2
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(
             recolour_maps=graphics_constants.silo_livery_recolour_maps)
@@ -1099,9 +1101,9 @@ class TankCarConsist(CarConsist):
             'edible_liquids']
         self.default_cargos = global_constants.default_cargos['tank']
         self.loading_speed_multiplier = 3
-        self.gestalt_graphics.tanker = True
-        self.capacity_cost_factor = 1.5
+        self.buy_cost_adjustment_factor = 1.2
         # Graphics configuration
+        self.gestalt_graphics.tanker = True
         self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(
             recolour_maps=polar_fox.constants.tanker_livery_recolour_maps)
 
@@ -1118,6 +1120,7 @@ class VehicleTransporterCarConsist(CarConsist):
         self.label_refits_allowed = ['VEHI']
         self.label_refits_disallowed = []
         self.default_cargos = ['VEHI']
+        self.buy_cost_adjustment_factor = 1.2
 
 
 class Train(object):
