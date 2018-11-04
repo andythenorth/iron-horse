@@ -424,6 +424,9 @@ class EngineConsist(Consist):
             power_factor = 0.8 * power_factor
         # basic cost from speed, power, subclass factor (e.g. engine with pax capacity might cost more to run)
         run_cost_points = speed_cost_points * power_factor * self.running_cost_adjustment_factor
+        # narrow gauge gets a bonus
+        if self.base_track_type == 'NG':
+            run_cost_points = 0.8 * run_cost_points
         # stick 2 point baseline on everything for luck, seems to work
         run_cost_points += 2
         # if I set cost base as high as I want for engines, wagon costs aren't fine grained enough
@@ -618,6 +621,9 @@ class CarConsist(Consist):
             speed_cost_points = 160 / speed_factor
         length_cost_factor = self.length / 8
         run_cost_points = speed_cost_points * length_cost_factor * self.running_cost_adjustment_factor
+        # narrow gauge gets a bonus
+        if self.base_track_type == 'NG':
+            run_cost_points = 0.8 * run_cost_points
         # cap to int for nml
         return int(run_cost_points)
 
