@@ -614,9 +614,9 @@ class CarConsist(Consist):
             # assume unlimited speed costs about same as 160mph
             speed_cost = 160 / speed_factor
         consist_length = sum([unit.vehicle_length for unit in self.units])
-        cost = (speed_cost / 8) * consist_length
+        run_cost_points = (speed_cost / 8) * consist_length
         # cap to int for nml
-        return int(cost / self.run_cost_divisor)
+        return int(run_cost_points / self.run_cost_divisor)
 
     @property
     def model_life(self):
