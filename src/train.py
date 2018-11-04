@@ -421,6 +421,7 @@ class EngineConsist(Consist):
             power_factor = 0.8 * power_factor
         # basic cost from speed, power, subclass factor (e.g. engine with pax capacity might cost more to run)
         run_cost_points = speed_cost_points * power_factor * self.run_cost_adjustment_factor
+        print(self.id, self.run_cost_adjustment_factor, run_cost_points)
         # stick 2 point baseline on everything for luck, seems to work
         run_cost_points += 2
         # if I set cost base as high as I want for engines, wagon costs aren't fine grained enough
@@ -441,7 +442,7 @@ class PassengerEngineConsist(EngineConsist):
         self.label_refits_allowed = []
         self.label_refits_disallowed = []
         self.default_cargos = ['PASS']
-
+        self.run_cost_adjustment_factor = 2 # raise run cost for having seats and stuff eh?
 
 class PassengerEngineMetroConsist(PassengerEngineConsist):
     """
