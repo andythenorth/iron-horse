@@ -72,8 +72,9 @@ class Consist(object):
         # values can be -ve or +ve to dibble specific vehicles (but total calculated points cannot exceed 255)
         self.type_base_buy_cost_points = kwargs.get(
             'type_base_buy_cost_points', 0)
-        self.type_base_running_cost_points = kwargs.get(
-            'type_base_running_cost_points', 0)
+        # arbitrary multiplier to the calculated run cost, e.g. 1.1, 0.9 etc
+        # set to 1 by default, over-ride in subclasses as needed
+        self.run_cost_adjustment_factor = 1
         # create structure to hold the units
         self.units = []
         # one default cargo for the whole consist, no mixed cargo shenanigans, it fails with auto-replace
@@ -414,13 +415,14 @@ class EngineConsist(Consist):
         speed_cost_points = self.speed / 8
         # multiplier for power, from 0 to 10, giving up to 250 points total
         power_factor = self.power / 1000
-        # bonus for electric engines, ~20% lower running costs
+        # bonus for electric engines, ~20% lower power costs
         # !! this is an abuse of requires_electric_rails, but it's _probably_ fine :P
         if self.requires_electric_rails:
             power_factor = 0.8 * power_factor
-        # stick 2 points on everything for luck, seems to work
-        # type_base_running_cost_points is an arbitrary adjustment that can be applied on a type-by-type basis,
-        run_cost_points = 2 + (speed_cost_points * power_factor) + self.type_base_running_cost_points
+        # basic cost from speed, power, subclass factor (e.g. engine with pax capacity might cost more to run)
+        run_cost_points = speed_cost_points * power_factor * self.run_cost_adjustment_factor
+        # stick 2 point baseline on everything for luck, seems to work
+        run_cost_points += 2
         # if I set cost base as high as I want for engines, wagon costs aren't fine grained enough
         # so just treble engine costs, which works
         run_cost_points = 3 * run_cost_points
