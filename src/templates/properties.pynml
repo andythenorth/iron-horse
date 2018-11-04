@@ -57,7 +57,7 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
     graphics {
         default:                        ${vehicle.id}_switch_graphics;
         purchase:                       ${vehicle.id}_switch_graphics_purchase;
-        running_cost_factor:            ${int(consist.running_cost)}; // CB used as it is capped to max 32k, prop is only 255
+        running_cost_factor:            ${consist.running_cost}; // CB used as it is capped to max 32k, prop is only 255
         <tal:random_company_colour_swap condition="consist.random_company_colour_swap">
             colour_mapping:                 ${vehicle.id}_switch_colour_mapping;
         </tal:random_company_colour_swap>

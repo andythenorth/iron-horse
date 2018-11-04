@@ -421,7 +421,6 @@ class EngineConsist(Consist):
             power_factor = 0.8 * power_factor
         # basic cost from speed, power, subclass factor (e.g. engine with pax capacity might cost more to run)
         run_cost_points = speed_cost_points * power_factor * self.run_cost_adjustment_factor
-        print(self.id, self.run_cost_adjustment_factor, run_cost_points)
         # stick 2 point baseline on everything for luck, seems to work
         run_cost_points += 2
         # if I set cost base as high as I want for engines, wagon costs aren't fine grained enough
@@ -616,9 +615,8 @@ class CarConsist(Consist):
             speed_cost = 160 / speed_factor
         consist_length = sum([unit.vehicle_length for unit in self.units])
         cost = (speed_cost / 8) * consist_length
-        # only 1 decimal place of precision is needed here (using more does no harm for nml, but looks really bad in docs)
-        # also cap to 255 to prevent overflow
-        return min(round(cost / self.run_cost_divisor, 1), 255)
+        # cap to int for nml
+        return int(cost / self.run_cost_divisor)
 
     @property
     def model_life(self):
