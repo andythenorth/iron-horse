@@ -346,7 +346,23 @@ class Consist(object):
         else:
             return ''
 
+    def assert_speed(self):
+        # speed is assumed to be limited to 200mph
+        # this isn't an OpenTTD limit, it's used to give a scale for buy and run cost spreads
+        if self.speed is not None:
+            if self.speed > 200:
+                utils.echo_message("Consist " + self.id + " has speed > 200, which is too much")
+
+    def assert_power(self):
+        # power is assumed to be limited to 10,000hp
+        # this isn't an OpenTTD limit, it's used to give a scale for buy and run cost spreads
+        if self.speed is not None:
+            if self.power > 10000:
+                utils.echo_message("Consist " + self.id + " has power > 10000hp, which is too much")
+
     def render(self):
+        self.assert_speed()
+        self.assert_power()
         # templating
         nml_result = ''
         if len(self.units) > 1:
@@ -403,15 +419,10 @@ class EngineConsist(Consist):
 
     @property
     def running_cost(self):
-        # max ottd value 255
-        # max speed = 200 by design
-        if self.speed > 200:
-            utils.echo_message("Consist " + self.id + " has speed > 200, which is too much")
-        # max power 10000hp by design
-        if self.power > 10000:
-            utils.echo_message("Consist " + self.id + " has power > 10000hp, which is too much")
+        # max speed = 200mph by design - see assert_speed()
         # up to 25 points for speed
         speed_cost_points = self.speed / 8
+        # max power 10000hp by design - see assert_power()
         # multiplier for power, from 0 to 10, giving up to 250 points total
         power_factor = self.power / 1000
         # bonus for electric engines, ~20% lower power costs
