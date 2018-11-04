@@ -415,7 +415,7 @@ class EngineConsist(Consist):
     def buy_cost(self):
         self.get_engine_cost_points()
         buy_cost_points = 100
-        return round(buy_cost_points, 1)
+        return int(buy_cost_points)
 
     @property
     def running_cost(self):
@@ -609,8 +609,8 @@ class CarConsist(Consist):
             capacity_factors.append(
                 unit.default_cargo_capacity * self.capacity_cost_factor)
         cost = cost + sum(capacity_factors)
-        # only 1 decimal place of precision is needed here (using more does no harm for nml, but looks really bad in docs)
-        return round(0.5 * cost, 1)  # dibble all the things
+        # int for nml
+        return int(0.5 * cost)
 
     @property
     def running_cost(self):
