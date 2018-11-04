@@ -617,7 +617,8 @@ class CarConsist(Consist):
         else:
             # assume unlimited speed costs about same as 160mph
             speed_cost = 160 / speed_factor
-        run_cost_points = (speed_cost / 8) * self.length
+        length_cost_factor = self.length / 8
+        run_cost_points = speed_cost * length_cost_factor
         # cap to int for nml
         return int(run_cost_points / self.run_cost_divisor)
 
