@@ -403,6 +403,7 @@ class EngineConsist(Consist):
     def buy_cost(self):
         # type_base_buy_cost_points is an arbitrary adjustment that can be applied on a type-by-type basis,
         # only 1 decimal place of precision is needed here (using more does no harm for nml, but looks really bad in docs)
+        self.get_engine_cost_points()
         buy_cost_points = 100
         return round(buy_cost_points + self.type_base_buy_cost_points, 1)
 
