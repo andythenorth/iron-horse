@@ -387,33 +387,16 @@ class EngineConsist(Consist):
         if self.pantograph_type is not None:
             self.gestalt_graphics = GestaltGraphicsOnlyAddPantographs()
 
-    def get_engine_cost_points(self):
-        print('get_engine_cost_points deprecated')
-        # up to 250 points (max ottd value is 255)
-        # vehicle can also adjust points up or down as an over-ride, that might get clipped if it exceeds 255
-
-        # Up to 200 points for power. 1 point per 50hp.
-        power_cost_points = self.power / 50
-
-        # Up to 10 points for speed up to 100mph. 1 point per 10mph.
-        speed_cost_points = min(self.speed, 100) / 10
-
-        # Up to 20 points for speed above 100mph up to 200mph. 1 point per 5mph
-        high_speed_cost_points = max((self.speed - 100), 0) / 5
-
+    @property
+    def buy_cost(self):
+        """
         # Up to 20 points for intro date after 1870. 1 point per 8 years.
         # Intro dates capped at 2030, this isn't a hard limit, but raise a warning
         if self.intro_date > 2030:
             utils.echo_message("Consist " + self.id +
                                " has intro_date > 2030, which is too much")
         date_cost_points = max((self.intro_date - 1870), 0) / 8
-
-        result = power_cost_points + speed_cost_points + high_speed_cost_points + date_cost_points
-        return result
-
-    @property
-    def buy_cost(self):
-        self.get_engine_cost_points()
+        """
         buy_cost_points = 100
         return int(buy_cost_points)
 
