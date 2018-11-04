@@ -1572,14 +1572,27 @@ class TrainCar(Train):
         return int(self.consist.weight_factor * self.default_cargo_capacity * self.consist.roster.freight_car_weight_factors[self.consist.gen - 1])
 
 
-class PaxMailCar(TrainCar):
+class PaxCar(TrainCar):
     """
-    Pax or mail wagon. This subclass only exists to set symmetry_type to asymmetric.  It may need split again if pax/mail wagons diverge further.
+    Pax wagon. This subclass only exists to set symmetry_type to asymmetric.
     """
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # pax and mail wagons may be asymmetric, there is magic in the graphics processing to make symmetric pax/mail sprites also work with this
+        # pax wagons may be asymmetric, there is magic in the graphics processing to make symmetric pax/mail sprites also work with this
         self._symmetry_type = 'asymmetric'
+
+
+class MailCar(TrainCar):
+    """
+    Mail wagon.
+    """
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # mail wagons may be asymmetric, there is magic in the graphics processing to make symmetric pax/mail sprites also work with this
+        self._symmetry_type = 'asymmetric'
+        # magic to set capacity subject to length
+        base_capacity = self.consist.roster.freight_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
+        self.capacity = (kwargs['vehicle_length'] * base_capacity) / polar_fox.constants.mail_multiplier
 
 
 class FreightCar(TrainCar):
@@ -1593,9 +1606,8 @@ class FreightCar(TrainCar):
             print(self.consist.id, ' has a capacity set in init - possibly incorrect',
                   kwargs.get('capacity', None))
         # magic to set freight car capacity subject to length
-        self.capacity = kwargs['vehicle_length'] * \
-            self.consist.roster.freight_car_capacity_per_unit_length[
-                self.consist.base_track_type][self.consist.gen - 1]
+        base_capacity = self.consist.roster.freight_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
+        self.capacity = (kwargs['vehicle_length'] * base_capacity)
 
 
 class SuppliesCar(FreightCar):

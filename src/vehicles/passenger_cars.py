@@ -1,4 +1,4 @@
-from train import PassengerCarConsist, PaxMailCar
+from train import PassengerCarConsist, PaxCar
 
 
 def main():
@@ -10,7 +10,7 @@ def main():
                                   base_track_type='NG',
                                   sprites_complete=True)
 
-    consist.add_unit(type=PaxMailCar,
+    consist.add_unit(type=PaxCar,
                      capacity=25,
                      vehicle_length=4,
                      chassis='4_axle_ng_16px')
@@ -24,7 +24,7 @@ def main():
                                   base_track_type='NG',
                                   sprites_complete=True)
 
-    consist.add_unit(type=PaxMailCar,
+    consist.add_unit(type=PaxCar,
                      capacity=25,
                      vehicle_length=4,
                      chassis='4_axle_ng_16px')
@@ -36,7 +36,7 @@ def main():
                                   base_track_type='NG',
                                   sprites_complete=False)
 
-    consist.add_unit(type=PaxMailCar,
+    consist.add_unit(type=PaxCar,
                      capacity=25,
                      vehicle_length=4,
                      chassis='4_axle_ng_16px')
@@ -49,7 +49,7 @@ def main():
                                   subtype='U',
                                   sprites_complete=True)
 
-    consist.add_unit(type=PaxMailCar,
+    consist.add_unit(type=PaxCar,
                      capacity=25,
                      vehicle_length=6,
                      chassis='4_axle_solid_express_24px')
@@ -60,7 +60,7 @@ def main():
                                   subtype='U',
                                   sprites_complete=True)
 
-    consist.add_unit(type=PaxMailCar,
+    consist.add_unit(type=PaxCar,
                      capacity=40,
                      vehicle_length=6,
                      chassis='4_axle_solid_express_24px')
@@ -71,7 +71,7 @@ def main():
                                   subtype='U',
                                   sprites_complete=True)
 
-    consist.add_unit(type=PaxMailCar,
+    consist.add_unit(type=PaxCar,
                      capacity=40,
                      vehicle_length=6,
                      chassis='4_axle_solid_express_24px')
@@ -82,7 +82,7 @@ def main():
                                   subtype='U',
                                   sprites_complete=True)
 
-    consist.add_unit(type=PaxMailCar,
+    consist.add_unit(type=PaxCar,
                      capacity=50,
                      vehicle_length=6,
                      chassis='4_axle_solid_express_24px')
@@ -93,7 +93,7 @@ def main():
                                   subtype='U',
                                   sprites_complete=True)
 
-    consist.add_unit(type=PaxMailCar,
+    consist.add_unit(type=PaxCar,
                      capacity=50,
                      vehicle_length=6,
                      chassis='4_axle_solid_express_24px')
@@ -106,7 +106,7 @@ def main():
                                   subtype='U',
                                   sprites_complete=True)
 
-    consist.add_unit(type=PaxMailCar,
+    consist.add_unit(type=PaxCar,
                      capacity=50,
                      vehicle_length=6,
                      chassis='4_axle_solid_express_24px')
