@@ -295,6 +295,11 @@ class Consist(object):
         return sum([getattr(unit, 'weight', 0) for unit in self.units])
 
     @property
+    def length(self):
+        # total length of the consist
+        return sum([unit.vehicle_length for unit in self.units])
+
+    @property
     def roster(self):
         for roster in registered_rosters:
             if roster.id == self.roster_id:
@@ -331,9 +336,8 @@ class Consist(object):
     @property
     def buy_menu_width(self):
         # max sensible width in buy menu is 64px
-        consist_length = 4 * sum([unit.vehicle_length for unit in self.units])
-        if consist_length < 64:
-            return consist_length
+        if 4 * self.length < 64:
+            return 4 * self.length
         else:
             return 64
 
@@ -613,8 +617,7 @@ class CarConsist(Consist):
         else:
             # assume unlimited speed costs about same as 160mph
             speed_cost = 160 / speed_factor
-        consist_length = sum([unit.vehicle_length for unit in self.units])
-        run_cost_points = (speed_cost / 8) * consist_length
+        run_cost_points = (speed_cost / 8) * self.length
         # cap to int for nml
         return int(run_cost_points / self.run_cost_divisor)
 
