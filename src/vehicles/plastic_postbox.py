@@ -12,5 +12,6 @@ consist = MailEngineRailcarConsist(id='plastic_postbox',
 consist.add_unit(type=DieselRailcarUnit,
                  weight=37,
                  vehicle_length=8,
-                 capacity=40,
+                 # set capacity for freight; mail cap will be double this; match to 8/8 mail car for this gen
+                 capacity=24,
                  chassis='railcar')
