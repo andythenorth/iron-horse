@@ -392,14 +392,6 @@ class EngineConsist(Consist):
 
     @property
     def buy_cost(self):
-        """
-        # Up to 20 points for intro date after 1870. 1 point per 8 years.
-        # Intro dates capped at 2030, this isn't a hard limit, but raise a warning
-        if self.intro_date > 2030:
-            utils.echo_message("Consist " + self.id +
-                               " has intro_date > 2030, which is too much")
-        date_cost_points = max((self.intro_date - 1870), 0) / 8
-        """
         # max speed = 200mph by design - see assert_speed()
         # up to 25 points for speed
         speed_cost_points = self.speed / 8
