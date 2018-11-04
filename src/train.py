@@ -74,7 +74,7 @@ class Consist(object):
             'type_base_buy_cost_points', 0)
         # arbitrary multiplier to the calculated run cost, e.g. 1.1, 0.9 etc
         # set to 1 by default, over-ride in subclasses as needed
-        self.run_cost_adjustment_factor = 1
+        self.running_cost_adjustment_factor = 1
         # create structure to hold the units
         self.units = []
         # one default cargo for the whole consist, no mixed cargo shenanigans, it fails with auto-replace
@@ -424,7 +424,7 @@ class EngineConsist(Consist):
         if self.requires_electric_rails:
             power_factor = 0.8 * power_factor
         # basic cost from speed, power, subclass factor (e.g. engine with pax capacity might cost more to run)
-        run_cost_points = speed_cost_points * power_factor * self.run_cost_adjustment_factor
+        run_cost_points = speed_cost_points * power_factor * self.running_cost_adjustment_factor
         # stick 2 point baseline on everything for luck, seems to work
         run_cost_points += 2
         # if I set cost base as high as I want for engines, wagon costs aren't fine grained enough
@@ -445,7 +445,7 @@ class PassengerEngineConsist(EngineConsist):
         self.label_refits_allowed = []
         self.label_refits_disallowed = []
         self.default_cargos = ['PASS']
-        self.run_cost_adjustment_factor = 2 # raise run cost for having seats and stuff eh?
+        self.running_cost_adjustment_factor = 2 # raise run cost for having seats and stuff eh?
 
 class PassengerEngineMetroConsist(PassengerEngineConsist):
     """
@@ -522,7 +522,7 @@ class MailEngineConsist(EngineConsist):
         self.label_refits_allowed = []  # no specific labels needed
         self.label_refits_disallowed = ['TOUR']
         self.default_cargos = global_constants.default_cargos['mail']
-        self.run_cost_adjustment_factor = 1.5 # raise run cost for having extra doors and stuff eh?
+        self.running_cost_adjustment_factor = 1.5 # raise run cost for having extra doors and stuff eh?
 
 
 class MailEngineMetroConsist(MailEngineConsist):
@@ -591,8 +591,6 @@ class CarConsist(Consist):
         self.random_company_colour_swap = True
         # default value, adjust this in subclasses to modify buy cost for more complex cars
         self.capacity_cost_factor = 1
-        # default value, adjust this in subclasses to modify run cost for more complex cars
-        self.run_cost_divisor = 4
 
     @property
     def buy_cost(self):
@@ -611,16 +609,16 @@ class CarConsist(Consist):
     @property
     def running_cost(self):
         # factor should be same as base running cost adjustments in header
-        speed_factor = 2
+        speed_factor = 8
         if self.speed is not None:
-            speed_cost = self.speed / speed_factor
+            speed_cost_points = self.speed / speed_factor
         else:
             # assume unlimited speed costs about same as 160mph
-            speed_cost = 160 / speed_factor
+            speed_cost_points = 160 / speed_factor
         length_cost_factor = self.length / 8
-        run_cost_points = speed_cost * length_cost_factor
+        run_cost_points = speed_cost_points * length_cost_factor * self.running_cost_adjustment_factor
         # cap to int for nml
-        return int(run_cost_points / self.run_cost_divisor)
+        return int(run_cost_points)
 
     @property
     def model_life(self):
@@ -860,7 +858,7 @@ class LivestockCarConsist(CarConsist):
         self.default_cargos = ['LVST']
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
         self.capacity_cost_factor = 1.5
-        self.run_cost_divisor = 3.5
+        self.running_cost_adjustment_factor = 1.2
         # Graphics configuration
         self.generate_unit_roofs = True
         self.roof_type = 'freight'
@@ -884,7 +882,7 @@ class MailCarConsist(CarConsist):
         self.default_cargos = global_constants.default_cargos['mail']
         self.random_company_colour_swap = False
         self.capacity_cost_factor = 1.5
-        self.run_cost_divisor = 3.5
+        self.running_cost_adjustment_factor = 1.1
         self.allow_flip = True
         # Graphics configuration
         self.generate_unit_roofs = True
@@ -923,7 +921,7 @@ class MetalCarConsist(CarConsist):
         self.default_cargos = global_constants.default_cargos['metal']
         self.loading_speed_multiplier = 2
         self.capacity_cost_factor = 1.5
-        self.run_cost_divisor = 3
+        self.running_cost_adjustment_factor = 1.25
         # !! probably want some capacity multiplier here, metal cars have higher capacity per unit length (at high cost!)
 
 
@@ -987,7 +985,7 @@ class PassengerCarConsist(PassengerCarConsistBase):
         self.base_id = 'passenger_car'
         super().__init__(**kwargs)
         self.capacity_cost_factor = 2
-        self.run_cost_divisor = 3
+        self.running_cost_adjustment_factor = 1.33
 
 
 class PassengerLuxuryCarConsist(PassengerCarConsistBase):
@@ -1001,7 +999,7 @@ class PassengerLuxuryCarConsist(PassengerCarConsistBase):
         super().__init__(**kwargs)
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
         self.capacity_cost_factor = 3
-        self.run_cost_divisor = 2
+        self.running_cost_adjustment_factor = 1.8
 
 
 class ReeferCarConsist(CarConsist):
@@ -1019,7 +1017,7 @@ class ReeferCarConsist(CarConsist):
         self.default_cargos = global_constants.default_cargos['reefer']
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
         self.capacity_cost_factor = 1.5
-        self.run_cost_divisor = 2.5
+        self.running_cost_adjustment_factor = 1.33
         # Graphics configuration
         self.generate_unit_roofs = True
         self.roof_type = 'freight'
