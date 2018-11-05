@@ -11,7 +11,7 @@ def main():
                                   sprites_complete=True)
 
     consist.add_unit(type=PaxCar,
-                     capacity=25,
+                     capacity=20,
                      vehicle_length=4,
                      chassis='4_axle_ng_16px')
 
@@ -25,7 +25,7 @@ def main():
                                   sprites_complete=True)
 
     consist.add_unit(type=PaxCar,
-                     capacity=25,
+                     capacity=24,
                      vehicle_length=4,
                      chassis='4_axle_ng_16px')
 
@@ -37,7 +37,7 @@ def main():
                                   sprites_complete=False)
 
     consist.add_unit(type=PaxCar,
-                     capacity=25,
+                     capacity=28,
                      vehicle_length=4,
                      chassis='4_axle_ng_16px')
 
@@ -50,7 +50,7 @@ def main():
                                   sprites_complete=True)
 
     consist.add_unit(type=PaxCar,
-                     capacity=25,
+                     capacity=40,
                      vehicle_length=6,
                      chassis='4_axle_solid_express_24px')
 
@@ -72,7 +72,7 @@ def main():
                                   sprites_complete=True)
 
     consist.add_unit(type=PaxCar,
-                     capacity=40,
+                     capacity=48,
                      vehicle_length=6,
                      chassis='4_axle_solid_express_24px')
 
@@ -83,7 +83,7 @@ def main():
                                   sprites_complete=True)
 
     consist.add_unit(type=PaxCar,
-                     capacity=50,
+                     capacity=48,
                      vehicle_length=6,
                      chassis='4_axle_solid_express_24px')
 
@@ -94,7 +94,7 @@ def main():
                                   sprites_complete=True)
 
     consist.add_unit(type=PaxCar,
-                     capacity=50,
+                     capacity=56,
                      vehicle_length=6,
                      chassis='4_axle_solid_express_24px')
 
@@ -107,7 +107,7 @@ def main():
                                   sprites_complete=True)
 
     consist.add_unit(type=PaxCar,
-                     capacity=50,
+                     capacity=56,
                      vehicle_length=6,
                      chassis='4_axle_solid_express_24px')
 
