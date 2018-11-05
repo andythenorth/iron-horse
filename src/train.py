@@ -892,9 +892,11 @@ class MailCarConsist(CarConsist):
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label[
             'non_freight_special_cases']
         self.default_cargos = global_constants.default_cargos['mail']
-        self.random_company_colour_swap = False
+        # adjust weight factor because mail car freight capacity is 1/2 of other wagons, but weight should be same
+        self.weight_factor = 0.5 * polar_fox.constants.mail_multiplier
         self.running_cost_adjustment_factor = 1.1
         self.allow_flip = True
+        self.random_company_colour_swap = False
         # Graphics configuration
         self.generate_unit_roofs = True
         if self.gen in [1]:
