@@ -1645,4 +1645,7 @@ class CabooseCar(TrainCar):
     @property
     def weight(self):
         # special handling of weight
-        return 5 * self.vehicle_length
+        weight_factor = 3 if self.consist.base_track_type == 'NG' else 5
+        return weight_factor * self.vehicle_length
+
+
