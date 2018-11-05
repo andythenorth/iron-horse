@@ -11,7 +11,7 @@ def main():
                                   sprites_complete=True)
 
     consist.add_unit(type=PaxCar,
-                     capacity=15,
+                     capacity=22,
                      vehicle_length=4,
                      chassis='4_axle_ng_16px')
 
@@ -25,7 +25,7 @@ def main():
                                   sprites_complete=True)
 
     consist.add_unit(type=PaxCar,
-                     capacity=15,
+                     capacity=30,
                      vehicle_length=4,
                      chassis='4_axle_ng_16px')
 
@@ -37,7 +37,7 @@ def main():
                                   sprites_complete=False)
 
     consist.add_unit(type=PaxCar,
-                     capacity=20,
+                     capacity=30,
                      vehicle_length=4,
                      chassis='4_axle_ng_16px')
 
