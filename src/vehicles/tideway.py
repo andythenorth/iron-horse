@@ -11,7 +11,7 @@ consist = MailEngineMetroConsist(id='tideway',
 consist.add_unit(type=MetroUnit,
                  weight=30,
                  vehicle_length=8,
-                 # set capacity for freight; mail cap will be double this
+                 # set capacity for freight; mail will be automatically calculated
                  capacity=30,
                  chassis='railcar',
                  repeat=2)
