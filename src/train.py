@@ -588,7 +588,7 @@ class CarConsist(Consist):
 
         self.speed_class = 'standard'  # over-ride this in sub-class for, e.g. express freight consists
         self.subtype = kwargs['subtype']
-        self.weight_factor = 0.5  # over-ride in sub-class as needed
+        self.weight_factor = 1  # over-ride in sub-class as needed
         self.loading_speed_multiplier = kwargs.get(
             'loading_speed_multiplier', 1)
         self.cargo_age_period = kwargs.get(
@@ -893,7 +893,7 @@ class MailCarConsist(CarConsist):
             'non_freight_special_cases']
         self.default_cargos = global_constants.default_cargos['mail']
         # adjust weight factor because mail car freight capacity is 1/2 of other wagons, but weight should be same
-        self.weight_factor = 0.5 * polar_fox.constants.mail_multiplier
+        self.weight_factor = polar_fox.constants.mail_multiplier
         self.running_cost_adjustment_factor = 1.1
         self.allow_flip = True
         self.random_company_colour_swap = False
@@ -1576,7 +1576,7 @@ class TrainCar(Train):
 
     @property
     def weight(self):
-        # set weight based on capacity  * a multiplier from consist (default 0.5 or so)
+        # set weight based on capacity  * a multiplier from consist * roster gen factor
         return int(self.consist.weight_factor * self.default_cargo_capacity * self.consist.roster.freight_car_weight_factors[self.consist.gen - 1])
 
 
