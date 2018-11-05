@@ -588,7 +588,9 @@ class CarConsist(Consist):
 
         self.speed_class = 'standard'  # over-ride this in sub-class for, e.g. express freight consists
         self.subtype = kwargs['subtype']
-        self.weight_factor = 1  # over-ride in sub-class as needed
+        # Weight factor: over-ride in sub-class as needed
+        # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
+        self.weight_factor = 0.8 if self.base_track_type == 'NG' else 1
         self.loading_speed_multiplier = kwargs.get(
             'loading_speed_multiplier', 1)
         self.cargo_age_period = kwargs.get(
