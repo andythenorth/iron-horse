@@ -997,6 +997,7 @@ class PassengerCarConsist(PassengerCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = 'passenger_car'
         super().__init__(**kwargs)
+        self.weight_factor = 1.5
         self.buy_cost_adjustment_factor = 1.3
         self.running_cost_adjustment_factor = 1.33
 
@@ -1011,9 +1012,9 @@ class PassengerLuxuryCarConsist(PassengerCarConsistBase):
         self.base_id = 'luxury_passenger_car'
         super().__init__(**kwargs)
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
+        self.weight_factor = 2
         self.buy_cost_adjustment_factor = 1.6
         self.running_cost_adjustment_factor = 1.8
-
 
 class ReeferCarConsist(CarConsist):
     """
