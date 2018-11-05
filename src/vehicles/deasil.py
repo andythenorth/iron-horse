@@ -12,5 +12,5 @@ consist = PassengerEngineRailcarConsist(id='deasil',
 consist.add_unit(type=DieselRailcarUnit,
                  weight=30,
                  vehicle_length=8,
-                 capacity=30,
+                 capacity=36,
                  chassis='railcar')

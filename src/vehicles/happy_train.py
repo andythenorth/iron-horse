@@ -12,5 +12,5 @@ consist = PassengerEngineRailcarConsist(id='happy_train',
 consist.add_unit(type=DieselRailcarUnit,
                  weight=40,
                  vehicle_length=8,
-                 capacity=75,
+                 capacity=40,
                  chassis='railcar')
