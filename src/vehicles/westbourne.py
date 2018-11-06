@@ -9,7 +9,7 @@ consist = PassengerEngineMetroConsist(id='westbourne',
                                       sprites_complete=True)
 
 consist.add_unit(type=MetroUnit,
-                 weight=40,
+                 weight=36,
                  vehicle_length=8,
                  capacity=160,
                  chassis='railcar',
