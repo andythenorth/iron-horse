@@ -11,6 +11,6 @@ consist = EngineConsist(id='cheese_bug',
 
 
 consist.add_unit(type=SteamEngineUnit,
-                 weight=30,
+                 weight=16,
                  vehicle_length=4,
                  spriterow_num=0)

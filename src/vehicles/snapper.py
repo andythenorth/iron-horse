@@ -10,7 +10,7 @@ consist = PassengerEngineRailcarConsist(id='snapper',
                                         sprites_complete=True)
 
 consist.add_unit(type=DieselRailcarUnit,
-                 weight=20,
+                 weight=18,
                  vehicle_length=6,
                  capacity=30,
                  chassis='railcar_ng')

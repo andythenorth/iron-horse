@@ -11,6 +11,6 @@ consist = EngineConsist(id='pikel',
                         sprites_complete=True)
 
 consist.add_unit(type=DieselEngineUnit,
-                 weight=40,
+                 weight=18,
                  vehicle_length=4,
                  spriterow_num=0)
