@@ -83,8 +83,8 @@ class Consist(object):
         self.label_refits_disallowed = []
         # create a structure for cargo /livery graphics options
         self.gestalt_graphics = GestaltGraphics()
-        # option to provide automatic roof for all units in the consist
-        self.generate_unit_roofs = False
+        # option to provide automatic roof for all units in the consist, leave as None for no generation
+        self.roof_type = None
         # option to swap company colours (uses remap sprites in-game, rather than pixa)
         self.random_company_colour_swap = False  # over-ride in subclasses as needed
         # role is e.g. Heavy Freight, Express etc, and is used to automatically set model life as well as in docs
@@ -476,7 +476,6 @@ class PassengerEngineRailcarConsist(PassengerEngineConsist):
         super().__init__(**kwargs)
         self.allow_flip = True
         # Graphics configuration
-        self.generate_unit_roofs = True
         if self.gen in [2, 3]:
             self.roof_type = 'pax_mail_ridged'
         else:
@@ -501,9 +500,8 @@ class PassengerEngineVeryHighSpeedConsist(PassengerEngineConsist):
         super().__init__(**kwargs)
         self.allow_flip = True
         # Graphics configuration
-        # can't generate roofs as power cars are slopey, the roof would need to be variable length per unit
-        self.generate_unit_roofs = False
-        self.roof_type = None
+        # don't generate roofs as power cars are slopey, the roof would need to be variable length per unit
+
         # 1 livery as can't be flipped, 1 spriterow may be left blank for compatibility with Gestalt (TBC)
         # position variants
         # * unit with driving cabs both ends
@@ -556,7 +554,6 @@ class MailEngineRailcarConsist(MailEngineConsist):
         super().__init__(**kwargs)
         self.allow_flip = True
         # Graphics configuration
-        self.generate_unit_roofs = True
         if self.gen in [2, 3]:
             self.roof_type = 'pax_mail_ridged'
         else:
@@ -690,7 +687,6 @@ class BoxCarConsist(CarConsist):
         self.default_cargos = global_constants.default_cargos['box']
         self.buy_cost_adjustment_factor = 1.2
         # Graphics configuration
-        self.generate_unit_roofs = True
         self.roof_type = 'freight'
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(recolour_maps=graphics_constants.box_livery_recolour_maps)
 
@@ -814,7 +810,6 @@ class FruitVegCarConsist(CarConsist):
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
         self.buy_cost_adjustment_factor = 1.2
         # Graphics configuration
-        self.generate_unit_roofs = True
         self.roof_type = 'freight'
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             recolour_maps=graphics_constants.fruit_veg_livery_recolour_maps)
@@ -874,7 +869,6 @@ class LivestockCarConsist(CarConsist):
         self.buy_cost_adjustment_factor = 1.2
         self.running_cost_adjustment_factor = 1.2
         # Graphics configuration
-        self.generate_unit_roofs = True
         self.roof_type = 'freight'
         self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(
             recolour_maps=graphics_constants.livestock_livery_recolour_maps)
@@ -900,7 +894,6 @@ class MailCarConsist(CarConsist):
         self.allow_flip = True
         self.random_company_colour_swap = False
         # Graphics configuration
-        self.generate_unit_roofs = True
         if self.gen in [1]:
             self.roof_type = 'pax_mail_clerestory'
         elif self.gen in [2, 3]:
@@ -974,7 +967,6 @@ class PassengerCarConsistBase(CarConsist):
         self.random_company_colour_swap = False
         self.allow_flip = True
         # Graphics configuration
-        self.generate_unit_roofs = True
         if self.gen in [1]:
             self.roof_type = 'pax_mail_clerestory'
         elif self.gen in [2, 3]:
@@ -1038,7 +1030,6 @@ class ReeferCarConsist(CarConsist):
         self.buy_cost_adjustment_factor = 1.33
         self.running_cost_adjustment_factor = 1.33
         # Graphics configuration
-        self.generate_unit_roofs = True
         self.roof_type = 'freight'
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             recolour_maps=graphics_constants.refrigerated_livery_recolour_maps)
@@ -1300,7 +1291,7 @@ class Train(object):
     @property
     def roof(self):
         # fetch spritesheet name to use for roof when generating graphics
-        if self.consist.generate_unit_roofs:
+        if self.consist.roof_type is not None:
             if self.consist.base_track_type == 'NG':
                 ng_prefix = 'ng_'
             else:
