@@ -80,8 +80,8 @@ class Pipeline(object):
         vehicle_input_image = Image.open(self.input_path)
         # get the loc points
         loc_points = [(pixel[0], pixel[1], pixel[2]) for pixel in pixascan(vehicle_input_image) if pixel[2] == 226 or pixel[2] == 164]
-        # two cargo rows needed, so extend the loc points list
-        #loc_points.extend([(pixel[0], pixel[1] + 30, pixel[2]) for pixel in loc_points])
+        # loc points are in second row in source spritesheet, so shift the y offset to first row
+        loc_points = [(pixel[0], pixel[1] - 30, pixel[2]) for pixel in loc_points]
         # sort them in y order, this causes sprites to overlap correctly when there are multiple loc points for an angle
         loc_points = sorted(loc_points, key=lambda x: x[1])
 
