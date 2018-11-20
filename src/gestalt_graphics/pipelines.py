@@ -135,7 +135,13 @@ class Pipeline(object):
 
         # !! these hard-coded values should really be using graphics_constants.spriterow_height etc
         # !! this approach won't work when custom buy menu sprites are used - there aren't many of those, just draw in the buy menu sprite pantographs in that case?
-        buy_menu_sprites = pantograph_output_image.copy().crop((224, 70, 257, 116))
+        if len(self.consist.units) > 1:
+            # this is silly, it copies the custom buy menu sprite and reinserts it
+            # this to avoid wrapping a conditional around self.units.append(AddBuyMenuSprite...) below
+            # but eh, hitting complexity limits here IMHO
+            buy_menu_sprites = vehicle_input_image.copy().crop((360, 10, 393, 56))
+        else:
+            buy_menu_sprites = pantograph_output_image.copy().crop((224, 70, 257, 116))
 
         pantograph_spritesheet = self.make_spritesheet_from_image(pantograph_output_image)
         pantograph_output_path = os.path.join(currentdir, 'generated', 'graphics', self.consist.id + '_pantographs.png')
