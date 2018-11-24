@@ -6,7 +6,6 @@ consist = EngineConsist(id='hurly_burly',
                         role='express_2',
                         power=1800,
                         tractive_effort_coefficient=0.25,
-                        buy_cost=77,
                         gen=2,
                         pantograph_type='diamond-double',
                         intro_date_offset=5)  # introduce later than gen epoch by design
