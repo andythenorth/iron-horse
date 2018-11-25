@@ -2,7 +2,7 @@ from train import EngineConsist, SteamEngineUnit, SteamEngineTenderUnit
 
 # basically a Q1, which is why it's 0-6-0 even though it replaces a 2-6-0
 
-consist = EngineConsist(id='collett',
+consist = EngineConsist(id='haar',
                         base_numeric_id=1880,
                         name='0-8-0 Haar',
                         role='freight',

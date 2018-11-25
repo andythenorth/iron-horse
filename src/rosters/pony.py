@@ -10,7 +10,6 @@ from vehicles import cheddar_valley
 from vehicles import cheese_bug
 from vehicles import chimera
 from vehicles import chinook
-from vehicles import collett
 from vehicles import deasil
 from vehicles import dragon
 from vehicles import express_tank
@@ -21,6 +20,7 @@ from vehicles import flindermouse
 from vehicles import freight_tank
 from vehicles import gowsty
 from vehicles import growler
+from vehicles import haar
 from vehicles import happy_train
 from vehicles import high_flyer
 from vehicles import hurly_burly
@@ -91,7 +91,7 @@ roster = Roster(id = 'pony',
                            flindermouse,
                            express_tank,
                            freight_tank,
-                           collett,
+                           haar,
                            northcock,
                            lemon,
                            moor_gallop,
