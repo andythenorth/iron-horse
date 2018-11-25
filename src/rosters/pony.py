@@ -1,10 +1,10 @@
 from roster import Roster
 
-from vehicles import aberdare
 from vehicles import apt_thing
 from vehicles import bean_feast
 from vehicles import bertha
 from vehicles import boar_cat
+from vehicles import braf
 from vehicles import chaplin
 from vehicles import cheddar_valley
 from vehicles import cheese_bug
@@ -84,7 +84,7 @@ roster = Roster(id = 'pony',
                            ramsbottom,
                            standard,
                            suburban,
-                           aberdare,
+                           braf,
                            high_flyer,
                            bertha,
                            hurly_burly,
