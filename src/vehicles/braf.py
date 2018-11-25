@@ -1,6 +1,6 @@
 from train import EngineConsist, SteamEngineUnit, SteamEngineTenderUnit
 
-consist = EngineConsist(id='aberdare',
+consist = EngineConsist(id='braf',
                         base_numeric_id=0,
                         name='2-6-0 Braf',
                         role='freight',
