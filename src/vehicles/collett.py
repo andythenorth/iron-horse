@@ -11,10 +11,10 @@ consist = EngineConsist(id='collett',
 
 consist.add_unit(type=SteamEngineUnit,
                  weight=70,
-                 vehicle_length=6,
+                 vehicle_length=5,
                  spriterow_num=0)
 
 consist.add_unit(type=SteamEngineTenderUnit,
                  weight=30,
-                 vehicle_length=4,
+                 vehicle_length=3,
                  spriterow_num=1)
