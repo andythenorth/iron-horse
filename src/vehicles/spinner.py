@@ -1,8 +1,8 @@
 from train import EngineConsist, SteamEngineUnit, SteamEngineTenderUnit
 
-consist = EngineConsist(id='standard',
+consist = EngineConsist(id='spinner',
                         base_numeric_id=480,
-                        name='4-2-2 Standard',
+                        name='4-2-2 Spinner',
                         role='express_1',
                         power=950,
                         tractive_effort_coefficient=0.07,

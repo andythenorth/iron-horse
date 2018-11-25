@@ -46,7 +46,7 @@ from vehicles import sizzler
 from vehicles import slammer
 from vehicles import slug
 from vehicles import snapper
-from vehicles import standard
+from vehicles import spinner
 from vehicles import suburban
 from vehicles import super_shoebox
 from vehicles import thunderbird
@@ -82,7 +82,7 @@ roster = Roster(id = 'pony',
 
                 engines = [chaplin,
                            ramsbottom,
-                           standard,
+                           spinner,
                            suburban,
                            braf,
                            high_flyer,
