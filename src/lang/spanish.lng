@@ -20,6 +20,8 @@ STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Electro-Diése
 STR_NAME_SUFFIX_STEAM                                           :(Vapor)
 
 # size suffixes
+STR_NAME_SUFFIX_MEDIUM                                          :Medio
+STR_NAME_SUFFIX_LARGE                                           :Grande
 
 # wagon class suffixes
 STR_NAME_SUFFIX_BOX_CAR                                         :Vagón cerrado
