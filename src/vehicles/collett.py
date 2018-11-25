@@ -4,17 +4,17 @@ from train import EngineConsist, SteamEngineUnit, SteamEngineTenderUnit
 
 consist = EngineConsist(id='collett',
                         base_numeric_id=1880,
-                        name='0-6-0 Haar',
+                        name='0-8-0 Haar',
                         role='freight',
                         power=1450,
                         gen=3)
 
 consist.add_unit(type=SteamEngineUnit,
                  weight=70,
-                 vehicle_length=5,
+                 vehicle_length=6,
                  spriterow_num=0)
 
 consist.add_unit(type=SteamEngineTenderUnit,
                  weight=30,
-                 vehicle_length=3,
+                 vehicle_length=4,
                  spriterow_num=1)
