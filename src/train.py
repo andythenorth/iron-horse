@@ -778,6 +778,8 @@ class EdiblesTankCarConsist(CarConsist):
         self.loading_speed_multiplier = 2
         self.buy_cost_adjustment_factor = 1.33
         self.running_cost_adjustment_factor = 1.33
+        # CC is swapped randomly (player can't choose), but also swap base livery on flip (player can choose
+        self.allow_flip = True
 
 
 class FlatCarConsist(CarConsist):
