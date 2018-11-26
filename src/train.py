@@ -868,6 +868,8 @@ class LivestockCarConsist(CarConsist):
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
         self.buy_cost_adjustment_factor = 1.2
         self.running_cost_adjustment_factor = 1.2
+        # allow flipping, used to flip company colour
+        self.allow_flip = True
         # Graphics configuration
         self.roof_type = 'freight'
         self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(
