@@ -5,8 +5,8 @@
 
 <tal:include metal:use-macro="load: spriteset_templates.pynml" />
 
-<!--! 'reversed' is random reversal on construction, depending on vehicle random bits
-      'flipped' is user flipping vehicle in depot
+<!--! 'random_reverse' property is not supported in this template, vehicles using this template are all symmetrical, reversing would do nothing
+      'flipped' is user flipping vehicle in depot and *is* supported here (used for livery selection tricks)
       don't conflate them :) -->
 // default graphics chain
 <tal:cargo_variants repeat="cargo_variant_num python:range(consist.gestalt_graphics.num_cargo_sprite_variants)">
