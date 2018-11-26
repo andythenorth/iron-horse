@@ -4,7 +4,7 @@ consist = EngineConsist(id='flindermouse',
                         base_numeric_id=790,
                         name='Flindermouse',
                         role='heavy_freight_2',
-                        power=1100,
+                        power=2000,
                         joker=True,  # this engine doesn't fit the set roster pattern, by design it's to mix things up
                         gen=3,
                         pantograph_type='diamond-double',
@@ -13,4 +13,5 @@ consist = EngineConsist(id='flindermouse',
 consist.add_unit(type=ElectricEngineUnit,
                  weight=65,
                  vehicle_length=6,
-                 spriterow_num=0)
+                 spriterow_num=0,
+                 repeat=2)
