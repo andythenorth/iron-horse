@@ -10,8 +10,17 @@
       there is an assert for this in train.py -->
 // default graphics chain
 <tal:cargo_variants repeat="cargo_variant_num python:range(consist.gestalt_graphics.num_cargo_sprite_variants)">
-    spriteset(${vehicle.id}_ss_${cargo_variant_num}, "${global_constants.graphics_path}${consist.id}.png") {
+    spriteset(${vehicle.id}_ss_${cargo_variant_num}_unflipped, "${global_constants.graphics_path}${consist.id}.png") {
       spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.id}_unflipped(10 + ${cargo_variant_num * 30})
+    }
+    spriteset(${vehicle.id}_ss_${cargo_variant_num}_flipped, "${global_constants.graphics_path}${consist.id}.png") {
+      spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.id}_flipped(10 + ${cargo_variant_num * 30})
+    }
+
+    // handle user flipped state
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_livery_${cargo_variant_num}, vehicle_is_flipped) {
+        1: return ${vehicle.id}_ss_${cargo_variant_num}_flipped;
+        return ${vehicle.id}_ss_${cargo_variant_num}_unflipped;
     }
 </tal:cargo_variants>
 
@@ -24,7 +33,7 @@
 <tal:cargo_random_switches repeat="mapping consist.gestalt_graphics.cargo_row_map.items()">
     random_switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${mapping[0]}, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
         <tal:random_graphics_variations repeat="spriterow_num mapping[1]">
-            1: return ${vehicle.id}_ss_${spriterow_num};
+            1: return ${vehicle.id}_switch_graphics_livery_${spriterow_num};
         </tal:random_graphics_variations>
     }
 </tal:cargo_random_switches>

@@ -1107,6 +1107,8 @@ class TankCarConsist(CarConsist):
         self.default_cargos = global_constants.default_cargos['tank']
         self.loading_speed_multiplier = 3
         self.buy_cost_adjustment_factor = 1.2
+        # allow flipping, used to flip company colour
+        self.allow_flip = True
         # Graphics configuration
         self.gestalt_graphics.tanker = True
         self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(
@@ -1377,8 +1379,7 @@ class Train(object):
         # some templates don't support the auto_flip (by design, they're symmetrical sprites with no livery flip hax, flipping bloats template)
         if self.consist.allow_flip:
             if hasattr(self.consist, 'gestalt_graphics'):
-                for nml_template in ['vehicle_with_cargo_specific_liveries.pynml',
-                                     'vehicle_box_car_with_opening_doors.pynml']:
+                for nml_template in ['vehicle_box_car_with_opening_doors.pynml']:
                     assert self.consist.gestalt_graphics.nml_template != nml_template, \
                         "%s has 'allow_flip set True, which isn't supported by nml_template %s" % (self.consist.id, nml_template)
 
