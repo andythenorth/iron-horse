@@ -686,6 +686,8 @@ class BoxCarConsist(CarConsist):
             'non_freight_special_cases']
         self.default_cargos = global_constants.default_cargos['box']
         self.buy_cost_adjustment_factor = 1.2
+        # allow flipping, used to flip company colour
+        self.allow_flip = True
         # Graphics configuration
         self.roof_type = 'freight'
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(recolour_maps=graphics_constants.box_livery_recolour_maps)
@@ -809,6 +811,8 @@ class FruitVegCarConsist(CarConsist):
         self.default_cargos = global_constants.default_cargos['fruit_veg']
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
         self.buy_cost_adjustment_factor = 1.2
+        # allow flipping, used to flip company colour
+        self.allow_flip = True
         # Graphics configuration
         self.roof_type = 'freight'
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
@@ -1031,6 +1035,8 @@ class ReeferCarConsist(CarConsist):
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
         self.buy_cost_adjustment_factor = 1.33
         self.running_cost_adjustment_factor = 1.33
+        # allow flipping, used to flip company colour
+        self.allow_flip = True
         # Graphics configuration
         self.roof_type = 'freight'
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
@@ -1377,14 +1383,6 @@ class Train(object):
                     assert self.consist.gestalt_graphics.nml_template != nml_template, \
                         "%s has 'random_reverse set True, which isn't supported by nml_template %s" % (self.consist.id, nml_template)
 
-    def assert_allow_flip(self):
-        # some templates don't support the auto_flip (by design, they're symmetrical sprites with no livery flip hax, flipping bloats template)
-        if self.consist.allow_flip:
-            if hasattr(self.consist, 'gestalt_graphics'):
-                for nml_template in ['vehicle_box_car_with_opening_doors.pynml']:
-                    assert self.consist.gestalt_graphics.nml_template != nml_template, \
-                        "%s has 'allow_flip set True, which isn't supported by nml_template %s" % (self.consist.id, nml_template)
-
     def assert_cargo_labels(self, cargo_labels):
         for i in cargo_labels:
             if i not in global_constants.cargo_labels:
@@ -1393,7 +1391,6 @@ class Train(object):
 
     def render(self):
         # integrity tests
-        self.assert_allow_flip()
         self.assert_cargo_labels(self.label_refits_allowed)
         self.assert_cargo_labels(self.label_refits_disallowed)
         self.assert_random_reverse()

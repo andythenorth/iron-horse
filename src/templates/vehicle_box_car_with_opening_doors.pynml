@@ -2,29 +2,32 @@
 
 <tal:include metal:use-macro="load: spriteset_templates.pynml" />
 
-<!--! this template does not support 'random_reverse' property or 'allow_flip' user-flipping
-      cargo vehicles using this template are always symmetrical, no need for extra complexity
-      there is an assert for this in train.py -->
-// default graphics chain
-spriteset(${vehicle.id}_ss_doors_closed, "${global_constants.graphics_path}${consist.id}.png") {
-  spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.id}_unflipped(10)
-}
-spriteset(${vehicle.id}_ss_doors_open, "${global_constants.graphics_path}${consist.id}.png") {
-  spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.id}_unflipped(10 + 30)
-}
+<!--! 'reversed' is random reversal on construction, depending on vehicle random bits
+      'flipped' is user flipping vehicle in depot
+      don't conflate them :) -->
+<tal:user_flipped repeat="flipped ['unflipped', 'flipped']">
+    // default graphics chain
+    spriteset(${vehicle.id}_ss_doors_closed_${flipped}, "${global_constants.graphics_path}${consist.id}.png") {
+      spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.id}_${flipped}(10)
+    }
+    spriteset(${vehicle.id}_ss_doors_open_${flipped}, "${global_constants.graphics_path}${consist.id}.png") {
+      spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.id}_${flipped}(10 + 30)
+    }
 
-spritegroup ${vehicle.id}_sg {
-    loaded:  [
-        ${vehicle.id}_ss_doors_closed,
-    ];
-    loading: [
-        ${vehicle.id}_ss_doors_open,
-    ];
-}
-// a default switch_graphics is always needed
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, 0) {
-    1: return ${vehicle.id}_sg;
-    return ${vehicle.id}_sg;
+    spritegroup ${vehicle.id}_sg_${flipped} {
+        loaded:  [
+            ${vehicle.id}_ss_doors_closed_${flipped},
+        ];
+        loading: [
+            ${vehicle.id}_ss_doors_open_${flipped},
+        ];
+    }
+</tal:user_flipped>
+
+// handle user flipped state
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, vehicle_is_flipped) {
+    1: return ${vehicle.id}_sg_flipped;
+    return ${vehicle.id}_sg_unflipped;
 }
 
 <tal:include metal:use-macro="load: graphics_switches.pynml" />
