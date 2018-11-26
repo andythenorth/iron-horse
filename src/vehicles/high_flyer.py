@@ -11,7 +11,7 @@ consist = EngineConsist(id='high_flyer',
 
 consist.add_unit(type=SteamEngineUnit,
                  weight=80,
-                 vehicle_length=7,
+                 vehicle_length=5,
                  spriterow_num=0)
 
 consist.add_unit(type=SteamEngineTenderUnit,
