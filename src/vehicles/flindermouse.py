@@ -8,7 +8,7 @@ consist = EngineConsist(id='flindermouse',
                         joker=True,  # this engine doesn't fit the set roster pattern, by design it's to mix things up
                         gen=3,
                         pantograph_type='diamond-double',
-                        intro_date_offset=-20)  # introduce earlier than gen epoch by design
+                        intro_date_offset=-23)  # introduce earlier than gen epoch by design
 
 consist.add_unit(type=ElectricEngineUnit,
                  weight=65,
