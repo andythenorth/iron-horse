@@ -8,14 +8,7 @@
     spriteset(${vehicle.id}_ss_empty_livery_${livery_num}, "${global_constants.graphics_path}${consist.id}.png") {
       spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.id}_${'flipped' if livery_num == 1 else 'unflipped'}(10 + (${livery_num * 30}))
     }
-    spritegroup ${vehicle.id}_sg_empty_livery_${livery_num} {
-        loaded:  [
-            ${vehicle.id}_ss_empty_livery_${livery_num},
-        ];
-        loading: [
-            ${vehicle.id}_ss_empty_livery_${livery_num},
-        ];
-    }
+    <!--! spritegroups aren't used here, direct to spriteset -->
 </tal:liveries_empty>
 
 <tal:cargo_variants define="num_cargo_sprite_variants consist.gestalt_graphics.num_cargo_sprite_variants"
@@ -34,26 +27,11 @@
                                             ${cargo_rows_base_y_offset} + ${livery_y_offset} + ${cargo_y_offset} + 30)
             }
         </tal:cargo_spritesets>
-        spritegroup ${vehicle.id}_sg_loading_${cargo_variant_num}_livery_${livery_num} {
-            loaded:  [
-                ${vehicle.id}_ss_loading_${cargo_variant_num}_livery_${livery_num},
-            ];
-            loading: [
-                ${vehicle.id}_ss_loading_${cargo_variant_num}_livery_${livery_num},
-            ];
-        }
-        spritegroup ${vehicle.id}_sg_loaded_${cargo_variant_num}_livery_${livery_num} {
-            loaded:  [
-                ${vehicle.id}_ss_loaded_${cargo_variant_num}_livery_${livery_num},
-            ];
-            loading: [
-                ${vehicle.id}_ss_loaded_${cargo_variant_num}_livery_${livery_num},
-            ];
-        }
+        <!--! spritegroups aren't needed here, the loading state is calculated explicitly -->
         switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_percent_loaded_${cargo_variant_num}_livery_${livery_num}, cargo_count*100/cargo_capacity) {
-                0: return ${vehicle.id}_sg_empty_livery_${livery_num};
-                1..99: return ${vehicle.id}_sg_loading_${cargo_variant_num}_livery_${livery_num};
-            return ${vehicle.id}_sg_loaded_${cargo_variant_num}_livery_${livery_num};
+                0: return ${vehicle.id}_ss_empty_livery_${livery_num};
+                1..99: return ${vehicle.id}_ss_loading_${cargo_variant_num}_livery_${livery_num};
+            return ${vehicle.id}_ss_loaded_${cargo_variant_num}_livery_${livery_num};
         }
     </tal:liveries_cargo>
     // handle user flipped state
