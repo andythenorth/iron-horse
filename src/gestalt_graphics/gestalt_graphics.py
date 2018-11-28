@@ -120,6 +120,51 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
                 counter += 1
         return result
 
+    @property
+    def unique_spritesets(self):
+        # the template for this gestalt was getting complex with loops and logic where logic shouldn't be
+        # so instead we delegate that logic here and simplify the loop
+        # this builds heavily on the row numbers already in cargo_row_map, reformatting that data to make it easy to render in the template
+        row_nums_seen = []
+        result = []
+        for row_nums in self.cargo_row_map.values():
+            for row_num in row_nums:
+                row_nums_seen.append(row_num)
+        unique_cargo_rows = set(row_nums_seen)
+
+        row_height = graphics_constants.spriterow_height
+        start_y = graphics_constants.spritesheet_top_margin
+        empty_state_offset = 0
+
+        for flipped in ['unflipped', 'flipped']:
+            # there are _always_ two liveries (flipped and unflipped)
+            # but some vehicles have custom realsprites for the second livery, not just a recolor
+            # so add another empty row and do some offset admin
+            if self.num_visible_cargo_liveries == 2:
+                if flipped == 'unflipped':
+                    # cargo rows need an offset for 2 empty rows
+                    cargo_rows_base_y_offset = start_y + (2 * row_height)
+                else:
+                    # empty state needs an offset to the flipped empty state
+                    empty_state_offset = row_height
+                    # cargo rows need an offset for 2 empty rows, plus the previous livery
+                    cargo_rows_base_y_offset = start_y + (2 * row_height) + (len(unique_cargo_rows) * 2 * row_height)
+            else:
+                # cargo rows need an offset for just 1 empty row
+                cargo_rows_base_y_offset = start_y + row_height
+
+            # add a row for empty sprite
+            result.append(['empty', flipped, start_y + empty_state_offset])
+
+            # !! not sure unique_cargo_rows order will reliably match to what's needed, but if it doesn't, explicitly sort it eh
+            for row_num in unique_cargo_rows:
+                row_y_offset = cargo_rows_base_y_offset + (row_num * 2 * row_height)
+                result.append(['loading_' + str(row_num), flipped, row_y_offset])
+                result.append(['loaded_' + str(row_num), flipped, row_y_offset + 30])
+            print(result)
+        return result
+
+
     # !! possibly move this to polar fox later, currently heavy item cargos are restricted to Iron Horse, but will be needed in Road Hog at least
     # cargo labels can be repeated for different sprites, they'll be used selectively by vehicle types and/or randomised as appropriate
     # keep alphabetised for general quality-of-life
