@@ -754,6 +754,8 @@ class DumpCarConsist(CarConsist):
         self.default_cargos = global_constants.default_cargos['dump']
         self.loading_speed_multiplier = 1.5
         self.buy_cost_adjustment_factor = 1.1
+        # allow flipping, used to flip company colour
+        self.allow_flip = True
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(bulk=True)
 
@@ -795,6 +797,8 @@ class FlatCarConsist(CarConsist):
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label[
             'non_flatbed_freight']
         self.default_cargos = global_constants.default_cargos['flat']
+        # allow flipping, used to flip company colour
+        self.allow_flip = True
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(piece='flat')
 
@@ -954,6 +958,8 @@ class OpenCarConsist(CarConsist):
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label[
             'non_freight_special_cases']
         self.default_cargos = global_constants.default_cargos['open']
+        # allow flipping, used to flip company colour
+        self.allow_flip = True
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(bulk=True,
                                                             piece='open')
@@ -1079,6 +1085,8 @@ class StakeCarConsist(CarConsist):
         self.label_refits_disallowed = []
         self.default_cargos = global_constants.default_cargos['stake']
         self.loading_speed_multiplier = 2
+        # allow flipping, used to flip company colour
+        self.allow_flip = True
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(piece='stake')
 
@@ -1095,6 +1103,7 @@ class SuppliesCarConsist(CarConsist):
         self.label_refits_allowed = ['ENSP', 'FMSP', 'VEHI']
         self.label_refits_disallowed = []
         self.default_cargos = global_constants.default_cargos['supplies']
+        # !! flipping not currently allowed as don't know if asymmetric sprites support is working (might be fine?)
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(heavy_items=True)
 
