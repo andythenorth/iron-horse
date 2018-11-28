@@ -156,12 +156,11 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
             # add a row for empty sprite
             result.append(['empty', flipped, start_y + empty_state_offset])
 
-            # !! not sure unique_cargo_rows order will reliably match to what's needed, but if it doesn't, explicitly sort it eh
+            # !! not sure unique_cargo_rows order will always reliably match to what's needed, but if it doesn't, explicitly sort it eh
             for row_num in unique_cargo_rows:
                 row_y_offset = cargo_rows_base_y_offset + (row_num * 2 * row_height)
                 result.append(['loading_' + str(row_num), flipped, row_y_offset])
                 result.append(['loaded_' + str(row_num), flipped, row_y_offset + 30])
-            print(result)
         return result
 
 
