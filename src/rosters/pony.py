@@ -2,7 +2,6 @@ from roster import Roster
 
 from vehicles import apt_thing
 from vehicles import bean_feast
-from vehicles import bertha
 from vehicles import boar_cat
 from vehicles import braf
 from vehicles import cheddar_valley
@@ -15,11 +14,12 @@ from vehicles import faun
 from vehicles import fleet
 from vehicles import flanders_storm
 from vehicles import flindermouse
+from vehicles import girt_licker
 from vehicles import gowsty
 from vehicles import growler
+from vehicles import gwynt
 from vehicles import haar
 from vehicles import happy_train
-from vehicles import high_flyer
 from vehicles import hurly_burly
 from vehicles import lark
 from vehicles import lemon
@@ -36,7 +36,6 @@ from vehicles import pikel
 from vehicles import phoenix
 from vehicles import plastic_postbox
 from vehicles import proper_job
-from vehicles import ramsbottom
 from vehicles import roarer
 from vehicles import saxon
 from vehicles import scooby
@@ -49,12 +48,15 @@ from vehicles import slug
 from vehicles import snapper
 from vehicles import spinner
 from vehicles import super_shoebox
+from vehicles import tencendur
 from vehicles import thunderbird
 from vehicles import tideway
 from vehicles import tin_rocket
 from vehicles import turtle
 from vehicles import tyburn
+from vehicles import trojan
 from vehicles import ultra_shoebox
+from vehicles import upcountry
 from vehicles import velaro_thing
 from vehicles import westbourne
 
@@ -87,7 +89,8 @@ roster = Roster(id = 'pony',
                            super_shoebox,
                            ultra_shoebox,
                            spinner,
-                           high_flyer,
+                           upcountry,
+                           tencendur,
                            pegasus,
                            dragon,
                            thunderbird,
@@ -95,13 +98,14 @@ roster = Roster(id = 'pony',
                            saxon,
                            little_bear,
                            faun,
-                           ramsbottom,
+                           trojan,
+                           gwynt,
                            braf,
                            haar,
                            growler,
                            slug,
                            phoenix,
-                           bertha,
+                           girt_licker,
                            lemon,
                            chinook,
                            cheddar_valley,

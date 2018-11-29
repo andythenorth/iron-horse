@@ -4,7 +4,7 @@ consist = EngineConsist(id='thunderbird',
                         base_numeric_id=3090,
                         name='Thunderbird',
                         role='express_1',
-                        power=2650,
+                        power=2700,
                         random_reverse=True,
                         gen=5,
                         sprites_complete=True)

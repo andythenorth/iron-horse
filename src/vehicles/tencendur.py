@@ -1,20 +1,20 @@
 from train import EngineConsist, SteamEngineUnit, SteamEngineTenderUnit
 
-consist = EngineConsist(id='pegasus',
-                        base_numeric_id=300,
-                        name='2-8-2 Pegasus',
+consist = EngineConsist(id='tencendur',
+                        base_numeric_id=890,
+                        name='4-4-0 Tencendur',
                         role='express_1',
-                        power=2000,
+                        power=1550,
                         tractive_effort_coefficient=0.25,
-                        buy_cost=81,
+                        buy_cost=47,
                         gen=3)
 
 consist.add_unit(type=SteamEngineUnit,
-                 weight=110,
-                 vehicle_length=8,
+                 weight=80,
+                 vehicle_length=5,
                  spriterow_num=0)
 
 consist.add_unit(type=SteamEngineTenderUnit,
-                 weight=40,
-                 vehicle_length=4,
+                 weight=30,
+                 vehicle_length=3,
                  spriterow_num=1)

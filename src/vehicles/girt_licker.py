@@ -1,8 +1,8 @@
 from train import EngineConsist, SteamEngineUnit, SteamEngineTenderUnit
 
-consist = EngineConsist(id='bertha',
+consist = EngineConsist(id='girt_licker',
                         base_numeric_id=70,
-                        name='0-10-0 Big Bertha',
+                        name='0-10-0 Girt Licker',
                         role='heavy_freight_1',
                         power=1800,
                         tractive_effort_coefficient=0.33,
