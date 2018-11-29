@@ -1,8 +1,8 @@
 from train import EngineConsist, SteamEngineUnit
 
-consist = EngineConsist(id='chaplin',
+consist = EngineConsist(id='lark',
                         base_numeric_id=110,
-                        name='4-4-2 Chaplin',
+                        name='4-4-2 Lark',
                         role='branch_express',
                         power=500,
                         tractive_effort_coefficient=0.2,

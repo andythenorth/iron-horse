@@ -1,8 +1,8 @@
 from train import EngineConsist, SteamEngineUnit
 
-consist = EngineConsist(id='gwynt',
+consist = EngineConsist(id='saxon',
                         base_numeric_id=1330,
-                        name='2-8-2 Gwynt',
+                        name='0-8-0 Saxon',
                         role='branch_freight',
                         power=1000,
                         random_reverse=True,

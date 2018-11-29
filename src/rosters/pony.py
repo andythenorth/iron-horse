@@ -5,39 +5,40 @@ from vehicles import bean_feast
 from vehicles import bertha
 from vehicles import boar_cat
 from vehicles import braf
-from vehicles import chaplin
 from vehicles import cheddar_valley
 from vehicles import cheese_bug
 from vehicles import chimera
 from vehicles import chinook
 from vehicles import deasil
 from vehicles import dragon
-from vehicles import express_tank
 from vehicles import faun
 from vehicles import fleet
 from vehicles import flanders_storm
 from vehicles import flindermouse
 from vehicles import gowsty
 from vehicles import growler
-from vehicles import gwynt
 from vehicles import haar
 from vehicles import happy_train
 from vehicles import high_flyer
 from vehicles import hurly_burly
+from vehicles import lark
 from vehicles import lemon
 from vehicles import little_bear
 from vehicles import longwater
 from vehicles import mail_rail
+from vehicles import merrylegs
 from vehicles import moor_gallop
 from vehicles import mumble
-from vehicles import northcock
 from vehicles import peasweep
+from vehicles import pegasus
 from vehicles import pendolino_thing
 from vehicles import pikel
 from vehicles import phoenix
 from vehicles import plastic_postbox
+from vehicles import proper_job
 from vehicles import ramsbottom
 from vehicles import roarer
+from vehicles import saxon
 from vehicles import scooby
 from vehicles import screamer
 from vehicles import serpentine
@@ -47,7 +48,6 @@ from vehicles import slammer
 from vehicles import slug
 from vehicles import snapper
 from vehicles import spinner
-from vehicles import suburban
 from vehicles import super_shoebox
 from vehicles import thunderbird
 from vehicles import tideway
@@ -80,19 +80,19 @@ roster = Roster(id = 'pony',
                 # freight car weight factor varies slightly by gen, reflecting modern cars with lighter weight
                 freight_car_weight_factors = [0.5, 0.5, 0.5, 0.48, 0.44, 0.44],
 
-                engines = [chaplin,
-                           suburban,
-                           express_tank,
+                engines = [lark,
+                           merrylegs,
+                           proper_job,
                            shoebox,
                            super_shoebox,
                            ultra_shoebox,
                            spinner,
                            high_flyer,
-                           northcock,
+                           pegasus,
                            dragon,
                            thunderbird,
                            turtle,
-                           gwynt,
+                           saxon,
                            little_bear,
                            faun,
                            ramsbottom,
