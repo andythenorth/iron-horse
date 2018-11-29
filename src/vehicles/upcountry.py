@@ -5,7 +5,7 @@ consist = EngineConsist(id='upcountry',
                         name='4-4-0 Upcountry',
                         role='express_1',
                         power=1200,
-                        tractive_effort_coefficient=0.16,
+                        tractive_effort_coefficient=0.18,
                         buy_cost=47,
                         gen=2)
 
