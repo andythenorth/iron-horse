@@ -4,8 +4,8 @@ consist = EngineConsist(id='tencendur',
                         base_numeric_id=890,
                         name='4-4-0 Tencendur',
                         role='express_1',
-                        power=1550,
-                        tractive_effort_coefficient=0.25,
+                        power=1450,
+                        tractive_effort_coefficient=0.16,
                         buy_cost=47,
                         gen=3)
 

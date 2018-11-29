@@ -5,11 +5,11 @@ consist = EngineConsist(id='spinner',
                         name='4-2-2 Spinner',
                         role='express_1',
                         power=950,
-                        tractive_effort_coefficient=0.07,
+                        tractive_effort_coefficient=0.1,
                         gen=1)
 
 consist.add_unit(type=SteamEngineUnit,
-                 weight=62,
+                 weight=48,
                  vehicle_length=5,
                  spriterow_num=0)
 

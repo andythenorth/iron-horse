@@ -5,7 +5,7 @@ consist = EngineConsist(id='gwynt',
                         name='0-6-0 Gwynt',
                         role='freight',
                         power=1100,
-                        tractive_effort_coefficient=0.22,
+                        tractive_effort_coefficient=0.28,
                         gen=1)
 
 consist.add_unit(type=SteamEngineUnit,

@@ -4,13 +4,13 @@ consist = EngineConsist(id='upcountry',
                         base_numeric_id=230,
                         name='4-4-0 Upcountry',
                         role='express_1',
-                        power=1300,
-                        tractive_effort_coefficient=0.25,
+                        power=1200,
+                        tractive_effort_coefficient=0.16,
                         buy_cost=47,
                         gen=2)
 
 consist.add_unit(type=SteamEngineUnit,
-                 weight=80,
+                 weight=60,
                  vehicle_length=5,
                  spriterow_num=0)
 
