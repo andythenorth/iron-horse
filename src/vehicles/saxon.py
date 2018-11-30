@@ -11,6 +11,6 @@ consist = EngineConsist(id='saxon',
                         intro_date_offset=-8)  # introduce earlier than gen epoch by design
 
 consist.add_unit(type=SteamEngineUnit,
-                 weight=65,
+                 weight=72,
                  vehicle_length=6,
                  spriterow_num=0)

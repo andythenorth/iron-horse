@@ -12,6 +12,6 @@ consist = EngineConsist(id='trojan',
                         sprites_complete=True)
 
 consist.add_unit(type=DieselEngineUnit,
-                 weight=70,
+                 weight=80,
                  vehicle_length=6,
                  spriterow_num=0)
