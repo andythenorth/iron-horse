@@ -4,7 +4,7 @@ consist = EngineConsist(id='pegasus',
                         base_numeric_id=300,
                         name='2-8-2 Pegasus',
                         role='express_1',
-                        power=2000,
+                        power=1750,
                         tractive_effort_coefficient=0.25,
                         buy_cost=81,
                         gen=3)
