@@ -6,7 +6,7 @@ from train import EngineConsist, DieselEngineUnit
 consist = EngineConsist(id='shredder',
                         base_numeric_id=900,
                         name='Shredder',
-                        role='express_1',
+                        role='heavy_express_1', # Shredder is last of the heavy_express_1 type in Brit roster
                         power=2750,
                         joker=True,  # this engine doesn't fit the set roster pattern, by design it's to mix things up
                         random_reverse=True,

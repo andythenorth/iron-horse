@@ -3,7 +3,7 @@ from train import EngineConsist, ElectricEngineUnit
 consist = EngineConsist(id='moor_gallop',
                         base_numeric_id=170,
                         name='Moor Gallop',
-                        role='express_2',
+                        role='heavy_express_2',
                         power=2400,
                         tractive_effort_coefficient=0.25,
                         random_reverse=True,

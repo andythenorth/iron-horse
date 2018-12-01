@@ -215,7 +215,7 @@ class Consist(object):
         # will switch vehicle to livery 2 for specific roles of lead engine
         result = []
         for consist in self.roster.engine_consists:
-            if consist.role in ['express_1', 'express_2']:
+            if consist.role in ['heavy_express_1', 'heavy_express_2']:
                 result.append(consist.id)
         return result
 
@@ -278,7 +278,7 @@ class Consist(object):
             # could be fixed by checking a list of railtypes
             return speeds_by_track_type[self.speed_class][self.gen - 1]
         elif self.role:
-            express_roles = ['express_1', 'express_2', 'branch_express']
+            express_roles = ['express_1', 'express_2', 'heavy_express_1', 'heavy_express_2' 'branch_express']
             if self.role in express_roles:
                 return speeds_by_track_type['express'][self.gen - 1]
             elif self.role in ['pax_high_speed']:

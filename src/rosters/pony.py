@@ -4,6 +4,7 @@ from vehicles import apt_thing
 from vehicles import bean_feast
 from vehicles import boar_cat
 from vehicles import braf
+from vehicles import carrack
 from vehicles import cheddar_valley
 from vehicles import cheese_bug
 from vehicles import chimera
@@ -90,13 +91,14 @@ roster = Roster(id = 'pony',
                            super_shoebox,
                            ultra_shoebox,
                            spinner,
+                           carrack,
                            tencendur,
                            dragon,
+                           thunderbird,
+                           turtle,
                            upcountry,
                            pegasus,
                            shredder,
-                           thunderbird,
-                           turtle,
                            saxon,
                            little_bear,
                            faun,
