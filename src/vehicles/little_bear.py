@@ -5,8 +5,6 @@ consist = EngineConsist(id='little_bear',
                         name='Little Bear',
                         role='branch_freight',
                         power=1200,
-                        # dibble TE for game balance, assume magic or sand or something
-                        tractive_effort_coefficient=0.35,
                         random_reverse=True,
                         joker=True,
                         gen=4,
