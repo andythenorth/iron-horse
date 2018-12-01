@@ -11,6 +11,6 @@ consist = EngineConsist(id='ultra_shoebox',
                         gen=6)
 
 consist.add_unit(type=ElectroDieselEngineUnit,
-                 weight=65,
+                 weight=67,
                  vehicle_length=6,
                  spriterow_num=0)

@@ -10,6 +10,6 @@ consist = EngineConsist(id='merrylegs',
                         gen=2)
 
 consist.add_unit(type=SteamEngineUnit,
-                 weight=57,
+                 weight=49,
                  vehicle_length=6,
                  spriterow_num=0)

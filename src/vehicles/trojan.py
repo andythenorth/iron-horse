@@ -5,6 +5,8 @@ consist = EngineConsist(id='trojan',
                         name='Trojan',
                         role='branch_freight',
                         power=1600,
+                        # dibble TE for game balance, assume magic or sand or something
+                        tractive_effort_coefficient=0.35,
                         random_reverse=True,
                         joker=True,
                         gen=6,
@@ -12,6 +14,6 @@ consist = EngineConsist(id='trojan',
                         sprites_complete=True)
 
 consist.add_unit(type=DieselEngineUnit,
-                 weight=80,
+                 weight=74,
                  vehicle_length=6,
                  spriterow_num=0)
