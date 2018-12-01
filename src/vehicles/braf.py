@@ -9,11 +9,11 @@ consist = EngineConsist(id='braf',
                         gen=2)
 
 consist.add_unit(type=SteamEngineUnit,
-                 weight=67,
+                 weight=68,
                  vehicle_length=5,
                  spriterow_num=0)
 
 consist.add_unit(type=SteamEngineTenderUnit,
-                 weight=40,
+                 weight=30,
                  vehicle_length=3,
                  spriterow_num=1)

@@ -7,6 +7,7 @@ consist = EngineConsist(id='haar',
                         name='0-8-0 Haar',
                         role='freight',
                         power=1450,
+                        tractive_effort_coefficient=0.24,
                         gen=3)
 
 consist.add_unit(type=SteamEngineUnit,
@@ -15,6 +16,6 @@ consist.add_unit(type=SteamEngineUnit,
                  spriterow_num=0)
 
 consist.add_unit(type=SteamEngineTenderUnit,
-                 weight=30,
+                 weight=40,
                  vehicle_length=3,
                  spriterow_num=1)
