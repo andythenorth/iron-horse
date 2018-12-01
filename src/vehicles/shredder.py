@@ -1,5 +1,8 @@
 from train import EngineConsist, DieselEngineUnit
 
+# Shredder replces Pegasus, so is 2 * 6/8
+# a single 6/8 conflates with the branch engines, that's not useful
+
 consist = EngineConsist(id='shredder',
                         base_numeric_id=900,
                         name='Shredder',
