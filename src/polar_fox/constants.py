@@ -120,6 +120,7 @@ default_cargos = {'box': ['GOOD', 'VPTS', 'FOOD'],
                   'covered_hopper': ['GRAI', 'KAOL'],
                   'dump': ['IORE', 'MNO2', 'NITR'],
                   'edibles_tank': ['WATR', 'MILK', 'BEER'],
+                  'express': ['ENSP', 'FMSP', 'GOOD', 'FOOD', 'MAIL'],
                   'flat': ['STEL', 'COPR', 'METL'],
                   'fruit_veg': ['FRUT', 'BEAN', 'CASS', 'JAVA', 'NUTS'],
                   'hopper': ['COAL', 'CORE', 'PORE'],
@@ -133,7 +134,6 @@ default_cargos = {'box': ['GOOD', 'VPTS', 'FOOD'],
                   'reefer': ['FOOD'],
                   'supplies': ['ENSP'],
                   'tank': ['OIL_', 'KAOL', 'RUBR'],
-
                   }
 
 

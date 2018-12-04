@@ -50,6 +50,9 @@ dump_cars.main()
 from vehicles import edibles_tank_cars
 edibles_tank_cars.main()
 
+from vehicles import express_cars
+express_cars.main()
+
 from vehicles import flat_cars
 flat_cars.main()
 

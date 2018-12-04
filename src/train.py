@@ -784,6 +784,42 @@ class EdiblesTankCarConsist(CarConsist):
         self.allow_flip = True
 
 
+class ExpressCarConsist(CarConsist):
+    """
+    Express cars - express freight, valuables, mails.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = 'express_car'
+        super().__init__(**kwargs)
+        self.speed_class = 'express'
+        self.class_refit_groups = ['mail', 'express_freight']
+        self.label_refits_allowed = []  # no specific labels needed
+        self.label_refits_disallowed = global_constants.disallowed_refits_by_label[
+            'non_freight_special_cases']
+        self.default_cargos = global_constants.default_cargos['express']
+        # adjust weight factor because express car freight capacity is 1/2 of other wagons, but weight should be same
+        self.weight_factor = polar_fox.constants.mail_multiplier
+        self.running_cost_adjustment_factor = 1.1
+        self.allow_flip = True
+        self.random_company_colour_swap = False
+        # Graphics configuration
+        # Graphics configuration
+        self.roof_type = 'freight'
+        # mail cars have consist cargo mappings for pax, mail (freight uses mail)
+        # * pax matches pax liveries for generation
+        # * mail gets a TPO/RPO striped livery, and a 1CC/2CC duotone livery
+        # * solid block can be used, but looks like freight cars, so duotone liveries are preferred (see caboose cars for inspiration)
+        # position based variants
+        # longer mail cars get an additional sprite option in the consist ruleset; shorter mail cars don't as it's TMWFTLB
+        # * windows or similar variation for first, last vehicles (maybe also every nth vehicle?)
+        brake_car_sprites = 1 if self.subtype in ['B', 'C'] else 0
+        bonus_sprites = 2 if self.subtype in ['C'] else 0
+        spriterow_group_mappings = {'mail': {'default': 0, 'first': brake_car_sprites, 'last': brake_car_sprites, 'special': bonus_sprites},
+                                    'pax': {'default': 0, 'first': 0, 'last': 0, 'special': 0}}
+        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings, consist_ruleset='mail_cars')
+
+
 class FlatCarConsist(CarConsist):
     """
     Flatbed - refits wide range of cargos, but not bulk.
@@ -1608,6 +1644,18 @@ class MailCar(TrainCar):
         self._symmetry_type = 'asymmetric'
         # magic to set capacity subject to length
         base_capacity = self.consist.roster.freight_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
+        self.capacity = (kwargs['vehicle_length'] * base_capacity) / polar_fox.constants.mail_multiplier
+
+
+class ExpressCar(TrainCar):
+    """
+    Express freight wagon.
+    """
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # magic to set capacity subject to length
+        base_capacity = self.consist.roster.freight_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
+        # we nerf down express car capacity to same as mail cars, to account for them being faster
         self.capacity = (kwargs['vehicle_length'] * base_capacity) / polar_fox.constants.mail_multiplier
 
 
