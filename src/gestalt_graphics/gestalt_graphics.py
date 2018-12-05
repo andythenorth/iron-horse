@@ -187,6 +187,7 @@ class GestaltGraphicsBoxCarOpeningDoors(GestaltGraphics):
         # common format for recolour_maps provides multiple remaps
         # but just one livery remap is supported for this gestalt, and should be the first in the remap list
         self.recolour_map = recolour_maps[0][1]
+        self.id_base = kwargs.get('id_base')
 
     @property
     def generic_rows(self):

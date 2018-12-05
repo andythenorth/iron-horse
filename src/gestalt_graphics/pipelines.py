@@ -432,13 +432,12 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             self.units.append(AppendToSpritesheet(pax_mail_car_rows_image_as_spritesheet, crop_box_dest))
 
     def add_box_car_with_opening_doors_spriterows(self):
-        # all wagons using this gestalt repaint the relevant box car sprite for the wagon's generation and subtype
+        # all wagons using this gestalt repaint the relevant base sprite for the wagon's generation and subtype
+        id_base = self.consist.gestalt_graphics.id_base
         if self.consist.base_track_type == 'NG':
-            id_base='box_car_ng'
-        else:
-            id_base='box_car'
-        box_car_id = self.consist.get_wagon_id(id_base=id_base, roster=self.consist.roster.id, gen=self.consist.gen, subtype=self.consist.subtype)
-        box_car_input_path = os.path.join(currentdir, 'src', 'graphics', self.consist.roster_id, box_car_id + '.png')
+            id_base = id_base + '_ng'
+        box_car_id = self.consist.get_wagon_id(id_base=id_base, roster=self.consist.roster.id, gen=self.consist.gen, subtype=self.consist.subtype + '.png')
+        box_car_input_path = os.path.join(currentdir, 'src', 'graphics', self.consist.roster_id, box_car_id)
 
         # two spriterows, closed doors and open doors
         crop_box_source_1 = (0,

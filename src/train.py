@@ -690,7 +690,9 @@ class BoxCarConsist(CarConsist):
         self.allow_flip = True
         # Graphics configuration
         self.roof_type = 'freight'
-        self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(recolour_maps=graphics_constants.box_livery_recolour_maps)
+        self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
+            id_base='box_car',
+            recolour_maps=graphics_constants.box_livery_recolour_maps)
 
 
 class CabooseCarConsist(CarConsist):
@@ -802,22 +804,11 @@ class ExpressCarConsist(CarConsist):
         self.weight_factor = polar_fox.constants.mail_multiplier
         self.running_cost_adjustment_factor = 1.1
         self.allow_flip = True
-        self.random_company_colour_swap = False
-        # Graphics configuration
         # Graphics configuration
         self.roof_type = 'freight'
-        # mail cars have consist cargo mappings for pax, mail (freight uses mail)
-        # * pax matches pax liveries for generation
-        # * mail gets a TPO/RPO striped livery, and a 1CC/2CC duotone livery
-        # * solid block can be used, but looks like freight cars, so duotone liveries are preferred (see caboose cars for inspiration)
-        # position based variants
-        # longer mail cars get an additional sprite option in the consist ruleset; shorter mail cars don't as it's TMWFTLB
-        # * windows or similar variation for first, last vehicles (maybe also every nth vehicle?)
-        brake_car_sprites = 1 if self.subtype in ['B', 'C'] else 0
-        bonus_sprites = 2 if self.subtype in ['C'] else 0
-        spriterow_group_mappings = {'mail': {'default': 0, 'first': brake_car_sprites, 'last': brake_car_sprites, 'special': bonus_sprites},
-                                    'pax': {'default': 0, 'first': 0, 'last': 0, 'special': 0}}
-        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings, consist_ruleset='mail_cars')
+        self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
+            id_base='express_car',
+            recolour_maps=graphics_constants.box_livery_recolour_maps)
 
 
 class FlatCarConsist(CarConsist):
@@ -858,6 +849,7 @@ class FruitVegCarConsist(CarConsist):
         # Graphics configuration
         self.roof_type = 'freight'
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
+            id_base='box_car',
             recolour_maps=graphics_constants.fruit_veg_livery_recolour_maps)
 
 
@@ -1084,6 +1076,7 @@ class ReeferCarConsist(CarConsist):
         # Graphics configuration
         self.roof_type = 'freight'
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
+            id_base='box_car',
             recolour_maps=graphics_constants.refrigerated_livery_recolour_maps)
 
 
