@@ -805,7 +805,12 @@ class ExpressCarConsist(CarConsist):
         self.running_cost_adjustment_factor = 1.1
         self.allow_flip = True
         # Graphics configuration
-        self.roof_type = 'freight'
+        if self.gen in [1]:
+            self.roof_type = 'pax_mail_clerestory'
+        elif self.gen in [2, 3]:
+            self.roof_type = 'pax_mail_ridged'
+        else:
+            self.roof_type = 'pax_mail_smooth'
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             id_base='express_car',
             recolour_maps=graphics_constants.box_livery_recolour_maps)
