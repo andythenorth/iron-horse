@@ -215,7 +215,8 @@ class Consist(object):
         # will switch vehicle to livery 2 for specific roles of lead engine
         result = []
         for consist in self.roster.engine_consists:
-            if consist.role in ['heavy_express_1', 'heavy_express_2']:
+            # second livery choice is deliberate, means 'as seen in buy menu' livery is built for common case of express_1, heavy_express_1
+            if consist.role in ['branch_express', 'express_2', 'heavy_express_2']:
                 result.append(consist.id)
         return result
 
