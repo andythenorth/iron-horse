@@ -67,6 +67,17 @@ def main():
                      chassis='4_axle_gapped_24px')
 
     consist = FlatCarConsist(roster='pony',
+                             base_numeric_id=1350,
+                             gen=3,
+                             subtype='A',
+                             sprites_complete=True)
+
+    consist.add_unit(type=FreightCar,
+                     cargo_length=4,
+                     vehicle_length=4,
+                     chassis='2_axle_filled_16px')
+
+    consist = FlatCarConsist(roster='pony',
                              base_numeric_id=1160,
                              gen=3,
                              subtype='B',
