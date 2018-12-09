@@ -10,7 +10,7 @@ consist = EngineConsist(id='girt_licker',
 
 consist.add_unit(type=SteamEngineUnit,
                  weight=95,
-                 vehicle_length=8,
+                 vehicle_length=6,
                  spriterow_num=0)
 
 consist.add_unit(type=SteamEngineTenderUnit,
