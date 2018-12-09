@@ -4,7 +4,7 @@ consist = EngineConsist(id='flindermouse',
                         base_numeric_id=790,
                         name='Flindermouse',
                         role='heavy_freight_2',
-                        power=2000,
+                        power=2400,
                         joker=True,  # this engine doesn't fit the set roster pattern, by design it's to mix things up
                         gen=3,
                         pantograph_type='diamond-double',
