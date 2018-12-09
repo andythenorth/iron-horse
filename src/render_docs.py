@@ -64,6 +64,12 @@ registered_rosters = iron_horse.registered_rosters
 class DocHelper(object):
     # dirty class to help do some doc formatting
 
+    # Some constants
+
+    # these only used in docs as of April 2018; buy menu sprites in the grf refactored to work differently; consider moving these constants to render_docs
+    buy_menu_sprite_width = 39 # this should be 49 really to show 12/8, but it it would need special handling
+    buy_menu_sprite_height = 16
+
     def get_vehicles_by_subclass(self, filter_subclasses_by_name=None):
         vehicles_by_subclass = {}
         for consist in consists:
@@ -166,6 +172,9 @@ def render_docs_images():
     # vehicles: assumes render_graphics has been run and generated dir has correct content
     # I'm not going to try and handle that in python, makefile will handle it in production
     # for development, just run render_graphics manually before running render_docs
+
+    doc_helper = DocHelper()
+
     vehicle_graphics_src = os.path.join(currentdir, 'generated', 'graphics')
     for consist in consists:
         vehicle_spritesheet = Image.open(os.path.join(
@@ -173,8 +182,8 @@ def render_docs_images():
         # !! currently assumes buy menu sprite in 7th column, this won't always be valid assumption, and needs to be detected in the vehicle (which knows)
         source_vehicle_image = vehicle_spritesheet.crop(box=(consist.buy_menu_x_loc,
                                                                 10,
-                                                                consist.buy_menu_x_loc + global_constants.buy_menu_sprite_width,
-                                                                10 + global_constants.buy_menu_sprite_height))
+                                                                consist.buy_menu_x_loc + doc_helper.buy_menu_sprite_width,
+                                                                10 + doc_helper.buy_menu_sprite_height))
         # recolour to more pleasing CC combos
         cc_remap_1 = {198: 179, 199: 180, 200: 181, 201: 182, 202: 183, 203: 164, 204: 165, 205: 166,
                       80: 8, 81: 9, 82: 10, 83: 11, 84: 12, 85: 13, 86: 14, 87: 15}
@@ -183,7 +192,7 @@ def render_docs_images():
             processed_vehicle_image = source_vehicle_image.copy().point(lambda i: cc_remap[i] if i in cc_remap.keys() else i)
 
             # oversize the images to account for how browsers interpolate the images on retina / HDPI screens
-            processed_vehicle_image = processed_vehicle_image.resize((4 * global_constants.buy_menu_sprite_width, 4 * global_constants.buy_menu_sprite_height),
+            processed_vehicle_image = processed_vehicle_image.resize((4 * doc_helper.buy_menu_sprite_width, 4 * doc_helper.buy_menu_sprite_height),
                                                                      resample=Image.NEAREST)
             output_path = os.path.join(images_dir_dst, consist.id + '_' + colour_name + '.png')
             processed_vehicle_image.save(

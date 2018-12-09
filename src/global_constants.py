@@ -71,11 +71,6 @@ spritesheet_bounding_boxes_symmetric_reversed = spritesheet_bounding_boxes_symme
 sprites_max_x_extent = spritesheet_bounding_boxes_asymmetric_unreversed[
     7][0] + spritesheet_bounding_boxes_asymmetric_unreversed[7][1]
 
-# these only used in docs as of April 2018; buy menu sprites in the grf refactored to work differently; consider moving these constants to render_docs
-# was 36; now 33 is correct, but some spritesheets might have wrong widths due to copy-paste history etc
-buy_menu_sprite_width = 33
-buy_menu_sprite_height = 16
-
 # shared global constants via Polar Fox library - import at end to make the this project's constants easier to work with
 # done this way so we don't have to pass Polar Fox to templates, we can just pass global_constants
 # assignments are clunky - they exist to stop pyflakes tripping on 'unused' imports
