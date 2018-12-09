@@ -32,6 +32,7 @@ STR_NAME_SUFFIX_CABOOSE_CAR                                     :Vagon za kočni
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Pokriveni vagon za rasuti teret
 STR_NAME_SUFFIX_DUMP_CAR                                        :Kiper
 STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Vagon cisterna za prehrambene proizvode
+STR_NAME_SUFFIX_EXPRESS_CAR                                     :Ekspresni vagon
 STR_NAME_SUFFIX_FLAT_CAR                                        :Plato-vagon
 STR_NAME_SUFFIX_FRUIT_VEG_CAR                                   :Vagon za voće i povrće
 STR_NAME_SUFFIX_HIGH_SPEED_MAIL_CAR                             :Ekspresni poštanski vagon
