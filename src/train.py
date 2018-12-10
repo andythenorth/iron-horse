@@ -636,10 +636,9 @@ class CarConsist(Consist):
         if this_index == len(roster_gens_for_class) - 1:
             return 'VEHICLE_NEVER_EXPIRES'
         else:
-            next_gen = roster_gens_for_class[roster_gens_for_class.index(
-                self.gen) + 1]
-            gen_span = next_gen - self.gen
-            return 10 + (30 * gen_span)
+            next_gen = roster_gens_for_class[roster_gens_for_class.index(self.gen) + 1]
+            next_gen_intro_date = self.roster.intro_dates[self.base_track_type][next_gen-1]
+            return next_gen_intro_date - self.intro_date
 
     def get_wagon_id(self, id_base, **kwargs):
         # auto id creator, used for wagons not locos
