@@ -135,4 +135,25 @@ def main():
                      vehicle_length=8,
                      chassis='4_axle_1cc_filled_32px')
 
-    # no gen 6 open cars, cap to gen 5 in Pony (really though??)
+    consist = OpenCarConsist(roster='pony',
+                             base_numeric_id=1650,
+                             gen=6,
+                             subtype='B',
+                             sprites_complete=False)
+
+    consist.add_unit(type=FreightCar,
+                     cargo_length=6,
+                     vehicle_length=6,
+                     chassis='2_axle_filled_24px')
+
+    consist = OpenCarConsist(roster='pony',
+                             base_numeric_id=1660,
+                             gen=6,
+                             subtype='C',
+                             sprites_complete=False)
+
+    consist.add_unit(type=FreightCar,
+                     cargo_length=8,
+                     vehicle_length=8,
+                     chassis='4_axle_1cc_filled_32px')
+
