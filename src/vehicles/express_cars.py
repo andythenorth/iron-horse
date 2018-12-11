@@ -111,7 +111,7 @@ def main():
                      chassis='2_axle_solid_express_16px')
 
     consist = ExpressCarConsist(roster='pony',
-                             base_numeric_id=1610,
+                             base_numeric_id=1510,
                              gen=6,
                              subtype='B',
                              sprites_complete=False)
