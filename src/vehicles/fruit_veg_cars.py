@@ -93,7 +93,7 @@ def main():
                                  base_numeric_id=2650,
                                  gen=5,
                                  subtype='B',
-                                 sprites_complete=True)
+                                 sprites_complete=False)
 
     consist.add_unit(type=FreightCar,
                      vehicle_length=6,
@@ -103,10 +103,29 @@ def main():
                                  base_numeric_id=2660,
                                  gen=5,
                                  subtype='C',
-                                 sprites_complete=True)
+                                 sprites_complete=False)
+
+    consist.add_unit(type=FreightCar,
+                     vehicle_length=8,
+                     chassis='4_axle_filled_32px')
+
+    consist = FruitVegCarConsist(roster='pony',
+                                 base_numeric_id=1890,
+                                 gen=6,
+                                 subtype='B',
+                                 sprites_complete=False)
+
+    consist.add_unit(type=FreightCar,
+                     vehicle_length=6,
+                     chassis='2_axle_filled_24px')
+
+    consist = FruitVegCarConsist(roster='pony',
+                                 base_numeric_id=1900,
+                                 gen=6,
+                                 subtype='C',
+                                 sprites_complete=False)
 
     consist.add_unit(type=FreightCar,
                      vehicle_length=8,
                      chassis='4_axle_2cc_filled_32px')
 
-    # no gen 6 fruit & veg cars, cap to gen 5 in Pony
