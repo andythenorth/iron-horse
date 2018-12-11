@@ -50,7 +50,8 @@ def main():
                                       sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=6)
+                     vehicle_length=6,
+                     chassis='4_axle_sparse_24px')
 
     consist = CoveredHopperCarConsist(roster='pony',
                                       base_numeric_id=2700,
