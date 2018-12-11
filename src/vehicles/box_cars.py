@@ -124,4 +124,22 @@ def main():
                      vehicle_length=8,
                      chassis='4_axle_1cc_filled_32px')
 
-    # no gen 6 box cars, cap to gen 5 in Pony
+    consist = BoxCarConsist(roster='pony',
+                            base_numeric_id=1670,
+                            gen=6,
+                            subtype='B',
+                            sprites_complete=False)
+
+    consist.add_unit(type=FreightCar,
+                     vehicle_length=6,
+                     chassis='2_axle_filled_24px')
+
+    consist = BoxCarConsist(roster='pony',
+                            base_numeric_id=1680,
+                            gen=6,
+                            subtype='C',
+                            sprites_complete=False)
+
+    consist.add_unit(type=FreightCar,
+                     vehicle_length=8,
+                     chassis='4_axle_1cc_filled_32px')
