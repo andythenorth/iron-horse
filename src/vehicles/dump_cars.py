@@ -67,7 +67,7 @@ def main():
                              base_numeric_id=1940,
                              gen=6,
                              subtype='A',
-                             sprites_complete=True)
+                             sprites_complete=False)
 
     consist.add_unit(type=FreightCar,
                      vehicle_length=4,
