@@ -48,3 +48,5 @@ STR_NAME_SUFFIX_STAKE_CAR                                       :Stolpflakvagn
 STR_NAME_SUFFIX_SUPPLIES_CAR                                    :Underhållsvagn
 STR_NAME_SUFFIX_TANK_CAR                                        :Tankvagn
 STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Fordonsvagn
+
+# project management

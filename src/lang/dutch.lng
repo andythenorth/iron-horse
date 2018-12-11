@@ -36,3 +36,5 @@ STR_NAME_SUFFIX_REEFER_CAR                                      :Koelwagon
 STR_NAME_SUFFIX_SUPPLIES_CAR                                    :Materieelwagon
 STR_NAME_SUFFIX_TANK_CAR                                        :Tankwagon
 STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Voertuigen transporteur
+
+# project management

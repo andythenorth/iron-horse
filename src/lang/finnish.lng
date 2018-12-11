@@ -43,3 +43,5 @@ STR_NAME_SUFFIX_STAKE_CAR                                       :Yleisavovaunu
 STR_NAME_SUFFIX_SUPPLIES_CAR                                    :Tarvikevaunu
 STR_NAME_SUFFIX_TANK_CAR                                        :Säiliövaunu
 STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Ajoneuvonkuljetusvaunu
+
+# project management
