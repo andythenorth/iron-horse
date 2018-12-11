@@ -61,25 +61,27 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tal:wagon_classes repeat="wagon_class sorted(roster.wagon_consists)">
-                                <tal:wagon_consists repeat="consist roster.wagon_consists[wagon_class]">
-                                    <tr id="${consist.id}">
-                                        <td style="vertical-align:middle; width:${2 * doc_helper.buy_menu_sprite_width};">
-                                            <img src="static/img/${consist.id}_blue.png"
-                                                 width="${2 * doc_helper.buy_menu_sprite_width}"
-                                                 height="${2 * doc_helper.buy_menu_sprite_height}" />
-                                            <img src="static/img/${consist.id}_red.png"
-                                                 width="${2 * doc_helper.buy_menu_sprite_width}"
-                                                 height="${2 * doc_helper.buy_menu_sprite_height}" />
-                                        </td>
-                                        <td><a class="table-link-dark" href="#${consist.id}">${doc_helper.unpack_name_string(consist)}</a></td>
-                                        <td>${consist.intro_date}</td>
-                                        <td>${sum([unit.default_cargo_capacity for unit in consist.units])}</td>
-                                        <td>${consist.speed}</td>
-                                        <td>${consist.track_type}</td>
-                                    </tr>
-                                </tal:wagon_consists>
-                            </tal:wagon_classes>
+                            <tal:base_track_type repeat="base_track_type ['RAIL', 'NG']">
+                                <tal:wagon_classes repeat="wagon_class global_constants.buy_menu_sort_order_wagons">
+                                    <tal:wagon_consists repeat="consist roster.wagon_consists[wagon_class]">
+                                        <tr tal:condition="consist.base_track_type == base_track_type" id="${consist.id}">
+                                            <td style="vertical-align:middle; width:${2 * doc_helper.buy_menu_sprite_width};">
+                                                <img src="static/img/${consist.id}_blue.png"
+                                                     width="${2 * doc_helper.buy_menu_sprite_width}"
+                                                     height="${2 * doc_helper.buy_menu_sprite_height}" />
+                                                <img src="static/img/${consist.id}_red.png"
+                                                     width="${2 * doc_helper.buy_menu_sprite_width}"
+                                                     height="${2 * doc_helper.buy_menu_sprite_height}" />
+                                            </td>
+                                            <td><a class="table-link-dark" href="#${consist.id}">${doc_helper.unpack_name_string(consist)}</a></td>
+                                            <td>${consist.intro_date}</td>
+                                            <td>${sum([unit.default_cargo_capacity for unit in consist.units])}</td>
+                                            <td>${consist.speed}</td>
+                                            <td>${consist.track_type}</td>
+                                        </tr>
+                                    </tal:wagon_consists>
+                                </tal:wagon_classes>
+                            </tal:base_track_type>
                         </tbody>
                     </table>
                 </tal:active_rosters_only>
