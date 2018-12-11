@@ -62,3 +62,70 @@ def main():
                      vehicle_length=6,
                      chassis='4_axle_solid_express_24px')
 
+
+    consist = ExpressCarConsist(roster='pony',
+                             base_numeric_id=1390,
+                             gen=4,
+                             subtype='A',
+                             sprites_complete=False)
+
+    consist.add_unit(type=ExpressCar,
+                     vehicle_length=4,
+                     chassis='2_axle_solid_express_16px')
+
+
+    consist = ExpressCarConsist(roster='pony',
+                             base_numeric_id=1400,
+                             gen=4,
+                             subtype='B',
+                             sprites_complete=False)
+
+    consist.add_unit(type=ExpressCar,
+                     vehicle_length=6,
+                     chassis='4_axle_solid_express_24px')
+
+
+    consist = ExpressCarConsist(roster='pony',
+                             base_numeric_id=1410,
+                             gen=5,
+                             subtype='A',
+                             sprites_complete=False)
+
+    consist.add_unit(type=ExpressCar,
+                     vehicle_length=4,
+                     chassis='2_axle_solid_express_16px')
+
+
+    consist = ExpressCarConsist(roster='pony',
+                             base_numeric_id=1420,
+                             gen=5,
+                             subtype='B',
+                             sprites_complete=False)
+
+    consist.add_unit(type=ExpressCar,
+                     vehicle_length=6,
+                     chassis='4_axle_solid_express_24px')
+
+
+    consist = ExpressCarConsist(roster='pony',
+                             base_numeric_id=1500,
+                             gen=6,
+                             subtype='A',
+                             sprites_complete=False)
+
+    consist.add_unit(type=ExpressCar,
+                     vehicle_length=4,
+                     chassis='2_axle_solid_express_16px')
+
+
+    consist = ExpressCarConsist(roster='pony',
+                             base_numeric_id=1610,
+                             gen=6,
+                             subtype='B',
+                             sprites_complete=False)
+
+    consist.add_unit(type=ExpressCar,
+                     vehicle_length=6,
+                     chassis='4_axle_solid_express_24px')
+
+
