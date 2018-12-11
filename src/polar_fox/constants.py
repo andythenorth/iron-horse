@@ -108,7 +108,7 @@ base_refits_by_class = {'empty': [],
 disallowed_refits_by_label = {'non_dump_bulk': ['WOOD', 'SGCN', 'FICR', 'BDMT', 'WDPR', 'GRAI', 'WHEA', 'CERE', 'MAIZ', 'FRUT', 'BEAN', 'CMNT', 'CTCD', 'FERT', 'OLSD', 'SUGR', 'SULP', 'TOFF', 'URAN'],
                               'edible_liquids': ['MILK', 'WATR', 'BEER', 'FOOD', 'EOIL'],
                               # !! would it be better to do an include list for edibles tankers?  Excluding liquids by label is a PITA
-                              'non_edible_liquids': ['RFPR', 'OIL_', 'FMSP', 'PETR', 'RUBR', 'SULP', 'ACID', 'CHLO'],
+                              'non_edible_liquids': ['RFPR', 'OIL_', 'FMSP', 'PETR', 'RUBR', 'SULP', 'ACID', 'CHLO', 'KAOL'],
                               'non_flatbed_freight': ['FOOD', 'FISH', 'LVST', 'FRUT', 'BEER', 'MILK', 'JAVA', 'SUGR', 'NUTS', 'EOIL', 'BOOM', 'FERT'],
                               'non_freight_special_cases': ['TOUR']}
 
@@ -134,6 +134,7 @@ default_cargos = {'box': ['GOOD', 'VPTS', 'FOOD'],
                   'reefer': ['FOOD'],
                   'supplies': ['ENSP'],
                   'tank': ['OIL_', 'KAOL', 'RUBR'],
+
                   }
 
 
