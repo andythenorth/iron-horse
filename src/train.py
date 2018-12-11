@@ -759,7 +759,7 @@ class DumpCarConsist(CarConsist):
         # allow flipping, used to flip company colour
         self.allow_flip = True
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsVisibleCargo(bulk=True)
+        self.gestalt_graphics = GestaltGraphicsVisibleCargo(bulk=True, has_alt_livery=True)
 
 
 class EdiblesTankCarConsist(CarConsist):
