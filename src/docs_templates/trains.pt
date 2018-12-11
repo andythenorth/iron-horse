@@ -61,7 +61,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tal:wagon_classes repeat="wagon_class roster.wagon_consists">
+                            <tal:wagon_classes repeat="wagon_class sorted(roster.wagon_consists)">
                                 <tal:wagon_consists repeat="consist roster.wagon_consists[wagon_class]">
                                     <tr id="${consist.id}">
                                         <td style="vertical-align:middle; width:${2 * doc_helper.buy_menu_sprite_width};">
