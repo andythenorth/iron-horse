@@ -543,8 +543,8 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                                 self.second_col_start_x + self.col_image_width,
                                 2 * graphics_constants.spriterow_height)
 
-        # infer a second livery iff flip is enabled, possibly fragile, but works for now (demands symmetry for visible cargo which is fine)
-        for livery_counter in range(2 if self.consist.allow_flip else 1):
+        # 2 sets of rows iff there's a second livery, otherwise 1
+        for livery_counter in range(self.consist.gestalt_graphics.num_visible_cargo_liveries):
             empty_row_livery_offset = livery_counter * graphics_constants.spriterow_height
             crop_box_vehicle_body = (0,
                                      self.cur_vehicle_empty_row_offset + empty_row_livery_offset,
