@@ -1163,7 +1163,6 @@ class TankCarConsist(CarConsist):
         # allow flipping, used to flip company colour
         self.allow_flip = True
         # Graphics configuration
-        self.gestalt_graphics.tanker = True
         self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(
             recolour_maps=polar_fox.constants.tanker_livery_recolour_maps)
 
