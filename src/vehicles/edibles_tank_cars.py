@@ -38,40 +38,12 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=8)
 
-    # no need for gen 6, would be same speed + capacity as gen 5
-
-    #--------------- llama ----------------------------------------------------------------------
-    consist = EdiblesTankCarConsist(roster='llama',
-                                    base_numeric_id=1210,
-                                    gen=1,
-                                    subtype='A')
+    consist = EdiblesTankCarConsist(roster='pony',
+                                    base_numeric_id=2090,
+                                    gen=6,
+                                    subtype='C')
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=6)
+                     vehicle_length=8,
+                     chassis='4_axle_sparse_32px')
 
-    # no gen 2 for edibles tank cars - straight to gen 3
-
-    consist = EdiblesTankCarConsist(roster='llama',
-                                    base_numeric_id=1220,
-                                    gen=3,
-                                    subtype='A')
-
-    consist.add_unit(type=FreightCar,
-                     vehicle_length=8)
-
-    #--------------- antelope ----------------------------------------------------------------------
-    consist = EdiblesTankCarConsist(roster='antelope',
-                                    base_numeric_id=1690,
-                                    gen=1,
-                                    subtype='A')
-
-    consist.add_unit(type=FreightCar,
-                     vehicle_length=6)
-
-    consist = EdiblesTankCarConsist(roster='antelope',
-                                    base_numeric_id=1700,
-                                    gen=2,
-                                    subtype='A')
-
-    consist.add_unit(type=FreightCar,
-                     vehicle_length=8)

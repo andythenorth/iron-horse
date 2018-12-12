@@ -784,6 +784,9 @@ class EdiblesTankCarConsist(CarConsist):
         self.running_cost_adjustment_factor = 1.33
         # CC is swapped randomly (player can't choose), but also swap base livery on flip (player can choose
         self.allow_flip = True
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(
+            recolour_maps=polar_fox.constants.tanker_livery_recolour_maps)
 
 
 class ExpressCarConsist(CarConsist):
