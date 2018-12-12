@@ -62,7 +62,7 @@ def main():
                               base_numeric_id=1930,
                               gen=4,
                               subtype='C',
-                              sprites_complete=False)
+                              sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
                      vehicle_length=8,
@@ -84,7 +84,7 @@ def main():
                               base_numeric_id=930,
                               gen=5,
                               subtype='C',
-                              sprites_complete=False)
+                              sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
                      vehicle_length=8,
@@ -106,7 +106,7 @@ def main():
                               base_numeric_id=1920,
                               gen=6,
                               subtype='C',
-                              sprites_complete=False)
+                              sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
                      vehicle_length=8,
