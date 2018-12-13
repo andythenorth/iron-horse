@@ -12,7 +12,8 @@ def main():
                                     subtype='A')
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=4)
+                     vehicle_length=4,
+                     chassis='3_axle_solid_express_16px')
 
     consist = EdiblesTankCarConsist(roster='pony',
                                     base_numeric_id=1190,
@@ -20,7 +21,8 @@ def main():
                                     subtype='A')
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=4)
+                     vehicle_length=4,
+                     chassis='3_axle_solid_express_16px')
 
     consist = EdiblesTankCarConsist(roster='pony',
                                     base_numeric_id=2990,
@@ -28,7 +30,8 @@ def main():
                                     subtype='A')
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=4)
+                     vehicle_length=4,
+                     chassis='3_axle_solid_express_16px')
 
     consist = EdiblesTankCarConsist(roster='pony',
                                     base_numeric_id=3050,
@@ -36,7 +39,8 @@ def main():
                                     subtype='C')
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=8)
+                     vehicle_length=8,
+                     chassis='4_axle_sparse_32px')
 
     consist = EdiblesTankCarConsist(roster='pony',
                                     base_numeric_id=2090,
