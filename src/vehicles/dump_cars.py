@@ -64,6 +64,16 @@ def main():
                      chassis='4_axle_sparse_24px')
 
     consist = DumpCarConsist(roster='pony',
+                             base_numeric_id=2110,
+                             gen=5,
+                             subtype='C',
+                             sprites_complete=False)
+
+    consist.add_unit(type=FreightCar,
+                     vehicle_length=8,
+                     chassis='4_axle_sparse_32px')
+
+    consist = DumpCarConsist(roster='pony',
                              base_numeric_id=1940,
                              gen=6,
                              subtype='A',
