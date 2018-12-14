@@ -34,6 +34,24 @@ def main():
                      chassis='3_axle_solid_express_16px')
 
     consist = EdiblesTankCarConsist(roster='pony',
+                                    base_numeric_id=1690,
+                                    gen=4,
+                                    subtype='B')
+
+    consist.add_unit(type=FreightCar,
+                     vehicle_length=6,
+                     chassis='4_axle_sparse_24px')
+
+    consist = EdiblesTankCarConsist(roster='pony',
+                                    base_numeric_id=1220,
+                                    gen=4,
+                                    subtype='C')
+
+    consist.add_unit(type=FreightCar,
+                     vehicle_length=8,
+                     chassis='4_axle_sparse_32px')
+
+    consist = EdiblesTankCarConsist(roster='pony',
                                     base_numeric_id=1210,
                                     gen=5,
                                     subtype='A')
@@ -43,6 +61,15 @@ def main():
                      chassis='3_axle_solid_express_16px')
 
     consist = EdiblesTankCarConsist(roster='pony',
+                                    base_numeric_id=1700,
+                                    gen=5,
+                                    subtype='B')
+
+    consist.add_unit(type=FreightCar,
+                     vehicle_length=6,
+                     chassis='4_axle_sparse_24px')
+
+    consist = EdiblesTankCarConsist(roster='pony',
                                     base_numeric_id=3050,
                                     gen=5,
                                     subtype='C')
@@ -50,6 +77,16 @@ def main():
     consist.add_unit(type=FreightCar,
                      vehicle_length=8,
                      chassis='4_axle_sparse_32px')
+
+    consist = EdiblesTankCarConsist(roster='pony',
+                                    base_numeric_id=2100,
+                                    gen=6,
+                                    subtype='B')
+
+    consist.add_unit(type=FreightCar,
+                     vehicle_length=6,
+                     chassis='4_axle_sparse_24px')
+
 
     consist = EdiblesTankCarConsist(roster='pony',
                                     base_numeric_id=2090,
