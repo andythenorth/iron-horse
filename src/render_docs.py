@@ -71,6 +71,7 @@ class DocHelper(object):
     buy_menu_sprite_height = 16
 
     def get_vehicles_by_subclass(self, filter_subclasses_by_name=None):
+        # first find all the subclasses + their vehicles
         vehicles_by_subclass = {}
         for consist in consists:
             subclass = type(consist)
@@ -79,7 +80,9 @@ class DocHelper(object):
                     vehicles_by_subclass[subclass].append(consist)
                 else:
                     vehicles_by_subclass[subclass] = [consist]
-        return vehicles_by_subclass
+        # reformat to a list we can then sort so order is consistent
+        result = [{'name': i.__name__, 'doc': i.__doc__, 'class_obj': subclass, 'vehicles': vehicles_by_subclass[i]} for i in vehicles_by_subclass]
+        return sorted(result, key=lambda subclass: subclass['name'])
 
     def get_engine_consists(self):
         result = []
@@ -110,7 +113,7 @@ class DocHelper(object):
 
     def get_props_to_print_in_code_reference(self, subclass):
         props_to_print = {}
-        for vehicle in self.get_vehicles_by_subclass()[subclass]:
+        for vehicle in subclass['vehicles']:
             result = {'vehicle': {}, 'subclass_props': []}
             result = self.fetch_prop(
                 result, 'Vehicle Name', self.unpack_name_string(vehicle))
@@ -132,8 +135,7 @@ class DocHelper(object):
             #result = self.fetch_prop(result, 'Loading Speed', vehicle.loading_speed)
 
             props_to_print[vehicle] = result['vehicle']
-            props_to_print[subclass] = result['subclass_props']
-
+            props_to_print[subclass['name']] = result['subclass_props']
         return props_to_print
 
     def get_base_numeric_id(self, consist):

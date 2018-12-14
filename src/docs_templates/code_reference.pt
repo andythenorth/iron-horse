@@ -6,20 +6,20 @@
         <hr />
         <tal:subclasses repeat="subclass doc_helper.get_vehicles_by_subclass()">
             <tal:props_for_subclass define="props_to_print doc_helper.get_props_to_print_in_code_reference(subclass)">
-                <h4>${subclass.__name__} <small>Subclass</small></h4>
-                <p>${subclass.__doc__}</p>
+                <h4>${subclass['name']} <small>Subclass</small></h4>
+                <p>${subclass['doc']}</p>
                 <table style="font-size:84%;" class="table table-striped table-condensed table-bordered tablesorter">
                     <thead>
                         <tr>
-                           <tal:props repeat="prop props_to_print[subclass]">
+                           <tal:props repeat="prop props_to_print[subclass['name']]">
                                 <th style="background-color:#eee; vertical-align:top">${prop}</th>
                             </tal:props>
                         </tr>
                     </thead>
                     <tbody>
-                        <tal:vehicles repeat="vehicle doc_helper.get_vehicles_by_subclass()[subclass]">
+                        <tal:vehicles repeat="vehicle subclass['vehicles']">
                             <tr>
-                                <tal:props repeat="prop_name props_to_print[subclass]">
+                                <tal:props repeat="prop_name props_to_print[subclass['name']]">
                                     <td>${props_to_print[vehicle][prop_name]}</td>
                                 </tal:props>
                             </tr>
