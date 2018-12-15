@@ -9,7 +9,7 @@ consist = EngineConsist(id='trojan',
                         joker=True,
                         gen=6,
                         intro_date_offset=+5,
-                        sprites_complete=True)
+                        sprites_complete=False)
 
 consist.add_unit(type=DieselEngineUnit,
                  weight=74,
