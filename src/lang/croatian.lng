@@ -48,7 +48,6 @@ STR_NAME_SUFFIX_PASSENGER_CAR                                   :Putnički vagon
 STR_NAME_SUFFIX_REEFER_CAR                                      :Vagon hladnjača
 STR_NAME_SUFFIX_SILO_CAR                                        :Vagon-silos
 STR_NAME_SUFFIX_STAKE_CAR                                       :Plato-vagon sa stupcima
-STR_NAME_SUFFIX_SUPPLIES_CAR                                    :Vagon za opskrbu
 STR_NAME_SUFFIX_TANK_CAR                                        :Vagon cisterna
 STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Vagon za prijevoz vozila
 

@@ -32,7 +32,6 @@ STR_NAME_SUFFIX_METAL_CAR                                       :Currus Metallic
 STR_NAME_SUFFIX_OPEN_CAR                                        :Currus Apertus
 STR_NAME_SUFFIX_PASSENGER_CAR                                   :Currus Vectorius
 STR_NAME_SUFFIX_REEFER_CAR                                      :Currus Frigidarius
-STR_NAME_SUFFIX_SUPPLIES_CAR                                    :Currus Apparatuum
 STR_NAME_SUFFIX_TANK_CAR                                        :Currus Cisterninus
 
 # project management
