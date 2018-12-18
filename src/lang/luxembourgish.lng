@@ -33,7 +33,6 @@ STR_NAME_SUFFIX_METAL_CAR                                       :Metallwaggon
 STR_NAME_SUFFIX_OPEN_CAR                                        :Openen Waggon
 STR_NAME_SUFFIX_PASSENGER_CAR                                   :Passagéierwaggon
 STR_NAME_SUFFIX_REEFER_CAR                                      :Killwaggon
-STR_NAME_SUFFIX_SUPPLIES_CAR                                    :Gidderwaggon
 STR_NAME_SUFFIX_TANK_CAR                                        :Tankwaggon
 STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Autotransportwagon
 

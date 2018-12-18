@@ -46,7 +46,6 @@ STR_NAME_SUFFIX_PASSENGER_CAR                                   :승객 수송 �
 STR_NAME_SUFFIX_REEFER_CAR                                      :냉동차
 STR_NAME_SUFFIX_SILO_CAR                                        :사일로 차량
 STR_NAME_SUFFIX_STAKE_CAR                                       :평판차
-STR_NAME_SUFFIX_SUPPLIES_CAR                                    :재료 수송 차
 STR_NAME_SUFFIX_TANK_CAR                                        :탱크차
 STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :자동차 수송 차량
 

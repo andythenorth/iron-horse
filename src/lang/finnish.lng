@@ -40,7 +40,6 @@ STR_NAME_SUFFIX_PASSENGER_CAR                                   :Matkustajavaunu
 STR_NAME_SUFFIX_REEFER_CAR                                      :Jäähdytysvaunu
 STR_NAME_SUFFIX_SILO_CAR                                        :Jauhevaunu
 STR_NAME_SUFFIX_STAKE_CAR                                       :Yleisavovaunu
-STR_NAME_SUFFIX_SUPPLIES_CAR                                    :Tarvikevaunu
 STR_NAME_SUFFIX_TANK_CAR                                        :Säiliövaunu
 STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Ajoneuvonkuljetusvaunu
 
