@@ -46,9 +46,9 @@ STR_NAME_SUFFIX_PASSENGER_CAR                                   :Passenger Car
 STR_NAME_SUFFIX_REEFER_CAR                                      :Refrigerated Car
 STR_NAME_SUFFIX_SILO_CAR                                        :Silo Car
 STR_NAME_SUFFIX_STAKE_CAR                                       :Stake Car
-STR_NAME_SUFFIX_SUPPLIES_CAR                                    :Supplies Car
 STR_NAME_SUFFIX_TANK_CAR                                        :Tank Car
 STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Vehicle Transporter Car
+STR_NAME_SUFFIX_WELL_CAR                                        :Well Car
 
 # project management
 STR_SPRITES_COMPLETE                                            :{}Sprites Complete: {GOLD}Yup

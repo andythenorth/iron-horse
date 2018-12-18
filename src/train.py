@@ -1128,13 +1128,13 @@ class StakeCarConsist(CarConsist):
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(piece='stake')
 
 
-class SuppliesCarConsist(CarConsist):
+class WellCarConsist(CarConsist):
     """
-    Specialist vehicle for supplies and building materials
+    Low-floor wagon, with support for asymmetric sprites
     """
 
     def __init__(self, **kwargs):
-        self.base_id = 'supplies_car'
+        self.base_id = 'well_car'
         super().__init__(**kwargs)
         self.class_refit_groups = []
         self.label_refits_allowed = ['ENSP', 'FMSP', 'VEHI']
@@ -1674,13 +1674,13 @@ class FreightCar(TrainCar):
         self.capacity = (kwargs['vehicle_length'] * base_capacity)
 
 
-class SuppliesCar(FreightCar):
+class WellCar(FreightCar):
     """
-    Supplies wagon. This subclass only exists to set symmetry_type to asymmetric.
+    Well Car. This subclass only exists to set symmetry_type to asymmetric.
     """
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # supplies wagons may be asymmetric, there is magic in the graphics processing to make cargo sprites work with this
+        # well cars may be asymmetric, there is magic in the graphics processing to make cargo sprites work with this
         self._symmetry_type = 'asymmetric'
 
 
