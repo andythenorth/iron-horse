@@ -11,7 +11,8 @@ consist = EngineConsist(id='shredder',
                         joker=True,  # this engine doesn't fit the set roster pattern, by design it's to mix things up
                         random_reverse=True,
                         intro_date_offset=2, # let's not have everything turn up in 1960
-                        gen=4)
+                        gen=4,
+                        sprites_complete=True)
 
 consist.add_unit(type=DieselEngineUnit,
                  weight=72,
