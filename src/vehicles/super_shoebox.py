@@ -8,7 +8,8 @@ consist = EngineConsist(id='super_shoebox',
                         power_by_railtype={'RAIL': 1200, 'ELRL': 2200},
                         random_reverse=True,
                         pantograph_type='z-shaped-single',
-                        gen=5)
+                        gen=5,
+                        sprites_complete=True)
 
 consist.add_unit(type=ElectroDieselEngineUnit,
                  weight=66,
