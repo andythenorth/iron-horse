@@ -72,10 +72,10 @@ class Pipeline(object):
                                              pantograph_sprites[4], pantograph_sprites[5], pantograph_sprites[6], pantograph_sprites[7]],
                                        'A': [pantograph_sprites[8], pantograph_sprites[9], pantograph_sprites[10], pantograph_sprites[11],
                                              pantograph_sprites[12], pantograph_sprites[13], pantograph_sprites[14], pantograph_sprites[15]],
-                                       'b': [pantograph_sprites[0], pantograph_sprites[1], pantograph_sprites[2], pantograph_sprites[3],
-                                             pantograph_sprites[4], pantograph_sprites[5], pantograph_sprites[6], pantograph_sprites[7]],
-                                       'B': [pantograph_sprites[8], pantograph_sprites[9], pantograph_sprites[10], pantograph_sprites[11],
-                                             pantograph_sprites[12], pantograph_sprites[13], pantograph_sprites[14], pantograph_sprites[15]]}
+                                       'b': [pantograph_sprites[4], pantograph_sprites[5], pantograph_sprites[6], pantograph_sprites[7],
+                                             pantograph_sprites[0], pantograph_sprites[1], pantograph_sprites[2], pantograph_sprites[3]],
+                                       'B': [pantograph_sprites[12], pantograph_sprites[13], pantograph_sprites[14], pantograph_sprites[15],
+                                             pantograph_sprites[8], pantograph_sprites[9], pantograph_sprites[10], pantograph_sprites[11]]}
 
         vehicle_input_image = Image.open(self.input_path)
         # get the loc points
