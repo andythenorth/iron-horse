@@ -104,10 +104,6 @@ class Pipeline(object):
                         angle_num = counter
                 pantograph_sprite_num = angle_num
 
-                # loaded sprites are the second block of 4 in the cargo sprites list
-                #if pixel[1] >= graphics_constants.spriterow_height:
-                    #cargo_sprite_num = cargo_sprite_num + 4
-
                 pantograph_width = pantograph_sprites[pantograph_sprite_num][0].size[0]
                 pantograph_height = pantograph_sprites[pantograph_sprite_num][0].size[1]
                 # the +1s for height adjust the crop box to include the loc point
