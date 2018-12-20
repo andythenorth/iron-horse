@@ -50,8 +50,11 @@ dump_cars.main()
 from vehicles import edibles_tank_cars
 edibles_tank_cars.main()
 
+"""
+# commented out for 2.0 alpha
 from vehicles import express_cars
 express_cars.main()
+"""
 
 from vehicles import flat_cars
 flat_cars.main()
@@ -101,9 +104,6 @@ from vehicles import silo_cars
 silo_cars.main()
 """
 
-from vehicles import well_cars
-well_cars.main()
-
 from vehicles import tank_cars
 tank_cars.main()
 
@@ -111,6 +111,12 @@ tank_cars.main()
 # commented out for 2.0 alpha
 from vehicles import vehicle_transporter_cars
 vehicle_transporter_cars.main()
+"""
+
+"""
+# commented out for 2.0 alpha
+from vehicles import well_cars
+well_cars.main()
 """
 
 def get_active_rosters():
