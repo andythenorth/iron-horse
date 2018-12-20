@@ -1016,21 +1016,13 @@ class PassengerCarConsistBase(CarConsist):
         self.default_cargos = global_constants.default_cargos['pax']
         self.random_company_colour_swap = False
         self.allow_flip = True
-        # Graphics configuration
+        # roof configuration
         if self.gen in [1]:
             self.roof_type = 'pax_mail_clerestory'
         elif self.gen in [2, 3]:
             self.roof_type = 'pax_mail_ridged'
         else:
             self.roof_type = 'pax_mail_smooth'
-        # pax cars only have one consist cargo mapping, which they always default to, whatever the consist cargo is
-        # position based variants:
-        #   * standard coach
-        #   * brake coach front
-        #   * brake coach rear
-        #   * restaurant car (approximately in middle of consist)
-        spriterow_group_mappings = {'pax': {'default': 0, 'first': 1, 'last': 2, 'special': 3}}
-        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings, consist_ruleset='pax_cars')
 
 
 class PassengerCarConsist(PassengerCarConsistBase):
@@ -1045,6 +1037,15 @@ class PassengerCarConsist(PassengerCarConsistBase):
         self.running_cost_adjustment_factor = 1.33
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 0.66 if self.base_track_type == 'NG' else 1.5
+        # Graphics configuration
+        # pax cars only have one consist cargo mapping, which they always default to, whatever the consist cargo is
+        # position based variants:
+        #   * standard coach
+        #   * brake coach front
+        #   * brake coach rear
+        #   * I removed special (restaurant) coaches from PassengerCarConsistBase Dec 2018, overkill
+        spriterow_group_mappings = {'pax': {'default': 0, 'first': 1, 'last': 2, 'special': 0}}
+        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings, consist_ruleset='pax_cars')
 
 
 class PassengerLuxuryCarConsist(PassengerCarConsistBase):
@@ -1061,6 +1062,15 @@ class PassengerLuxuryCarConsist(PassengerCarConsistBase):
         self.running_cost_adjustment_factor = 1.8
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 1 if self.base_track_type == 'NG' else 2
+        # Graphics configuration
+        # pax cars only have one consist cargo mapping, which they always default to, whatever the consist cargo is
+        # position based variants:
+        #   * standard coach
+        #   * brake coach front
+        #   * brake coach rear
+        #   * special (restaurant) coach
+        spriterow_group_mappings = {'pax': {'default': 0, 'first': 1, 'last': 2, 'special': 3}}
+        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings, consist_ruleset='pax_cars')
 
 
 class ReeferCarConsist(CarConsist):
