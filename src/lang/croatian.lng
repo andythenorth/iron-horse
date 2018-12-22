@@ -50,5 +50,8 @@ STR_NAME_SUFFIX_SILO_CAR                                        :Vagon-silos
 STR_NAME_SUFFIX_STAKE_CAR                                       :Plato-vagon sa stupcima
 STR_NAME_SUFFIX_TANK_CAR                                        :Vagon cisterna
 STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Vagon za prijevoz vozila
+STR_NAME_SUFFIX_WELL_CAR                                        :Vagon za kontejnere na kat
 
 # project management
+STR_SPRITES_COMPLETE                                            :{}Kompletirani spriteovi: {GOLD}Da
+STR_SPRITES_INCOMPLETE                                          :{}Kompletirani spriteovi: {GOLD}Ne
