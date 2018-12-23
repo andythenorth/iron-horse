@@ -67,7 +67,8 @@ def main():
     consist = EdiblesTankCarConsist(roster='pony',
                                     base_numeric_id=1700,
                                     gen=5,
-                                    subtype='B')
+                                    subtype='B',
+                                    sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
                      vehicle_length=6,
@@ -76,7 +77,8 @@ def main():
     consist = EdiblesTankCarConsist(roster='pony',
                                     base_numeric_id=3050,
                                     gen=5,
-                                    subtype='C')
+                                    subtype='C',
+                                    sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
                      vehicle_length=8,
