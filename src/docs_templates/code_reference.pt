@@ -14,6 +14,7 @@
                            <tal:props repeat="prop props_to_print[subclass['name']]">
                                 <th style="background-color:#eee; vertical-align:top">${prop}</th>
                             </tal:props>
+                            <th style="background-color:#eee; vertical-align:top">Sprites Complete</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -22,6 +23,9 @@
                                 <tal:props repeat="prop_name props_to_print[subclass['name']]">
                                     <td>${props_to_print[vehicle][prop_name]}</td>
                                 </tal:props>
+                                <td>
+                                    ${structure: "&amp;#10004;" if vehicle.sprites_complete else "&lt;span style='color:red;'&gt;Nope&lt;/span&gt;"}
+                                </td>
                             </tr>
                         </tal:vehicles>
                     </tbody>
