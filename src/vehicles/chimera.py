@@ -8,7 +8,8 @@ consist = EngineConsist(id='chimera',
                         # dibble for game balance, assume super-slip control
                         tractive_effort_coefficient=0.4,
                         random_reverse=True,
-                        gen=6)
+                        gen=6,
+                        sprites_complete=True)
 
 consist.add_unit(type=DieselEngineUnit,
                  weight=140,
