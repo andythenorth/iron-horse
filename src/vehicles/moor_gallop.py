@@ -9,7 +9,8 @@ consist = EngineConsist(id='moor_gallop',
                         random_reverse=True,
                         gen=3,
                         pantograph_type='diamond-double',
-                        intro_date_offset=5)  # introduce later than gen epoch by design
+                        intro_date_offset=5,  # introduce later than gen epoch by design
+                        sprites_complete=True)
 
 consist.add_unit(type=ElectricEngineUnit,
                  weight=105,
