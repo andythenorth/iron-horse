@@ -1,6 +1,28 @@
 Changelog
 =========
 
+---------------------
+2.0.0 Alpha 1 Release
+---------------------
+
+Iron Horse 2.
+
+It ain't done but it's kind of fun.
+
+Stick to 1950-2050.  Sprites aren't complete for 1860-1950 trains.
+
+Designed to be used with 'vehicles expire' set to to 'on', Horse 2 has a *lot* of vehicles and crowds the buy menu unless expiry is used.
+
+*Release Notes, for the Reading of*
+
+- use with Termite railtype grf to get Metro and Narrow Gauge trains
+- the alpha doesn't contain every train planned, stay tuned for future cookies
+- running and buy costs are set, but might need tweaks
+- vehicle sprite alignment issues are known
+- extensive cargo sprite support, but some cargo sprites are known to be missing
+- no savegame compatibility with Iron Horse 1
+- can be used _alongside_ Iron Horse 1, if you must (kind of odd, but eh)
+
 -------------
 1.9.1 Release
 -------------
