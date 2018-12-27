@@ -10,6 +10,7 @@ from vehicles import cheese_bug
 from vehicles import chimera
 from vehicles import chinook
 from vehicles import deasil
+from vehicles import double_tide
 from vehicles import dragon
 from vehicles import faun
 from vehicles import fleet
@@ -125,6 +126,7 @@ roster = Roster(id = 'pony',
                            flindermouse,
                            peasweep,
                            flanders_storm,
+                           double_tide,
                            # railcars
                            deasil,
                            slammer,

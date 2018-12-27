@@ -4,7 +4,7 @@ consist = EngineConsist(id='peasweep',
                         base_numeric_id=1750,
                         name='Peasweep',
                         role='heavy_freight_2',
-                        power=3600,
+                        power=3700,
                         joker=True,  # this engine doesn't fit the set roster pattern, by design it's to mix things up
                         gen=4,
                         pantograph_type='diamond-double',
