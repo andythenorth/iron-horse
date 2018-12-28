@@ -41,6 +41,7 @@ from vehicles import proper_job
 from vehicles import roarer
 from vehicles import saxon
 from vehicles import scooby
+from vehicles import scorcher
 from vehicles import screamer
 from vehicles import serpentine
 from vehicles import shoebox
@@ -101,6 +102,7 @@ roster = Roster(id = 'pony',
                            upcountry,
                            pegasus,
                            shredder,
+                           scorcher,
                            hurly_burly,
                            moor_gallop,
                            roarer,
