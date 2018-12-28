@@ -139,10 +139,9 @@ roster = Roster(id = 'pony',
                            plastic_postbox,
                            mail_rail,
                            # brit high speed pax
-                           # !! commented out for 2.0 Alpha
-                           #apt_thing,
-                           #pendolino_thing,
-                           #velaro_thing,
+                           apt_thing,
+                           pendolino_thing,
+                           velaro_thing,
                            # metro
                            serpentine,
                            westbourne,
