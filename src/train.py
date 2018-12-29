@@ -64,6 +64,7 @@ class Consist(object):
         # some engines require pantograph sprites composited, don't bother setting this unless required
         self.pantograph_type = kwargs.get('pantograph_type', None)
         self.dual_headed = 1 if kwargs.get('dual_headed', False) else 0
+        self.tilt_bonus = False  # over-ride in subclass as needed
         # some engines will increase power if specific wagon IDs are in the consist,
         # empty list unless required, the list is filled by the engine subclass as needed
         self.ids_of_wagons_adding_power = []
@@ -519,6 +520,7 @@ class PassengerVeryHighSpeedCabEngineConsist(PassengerEngineConsist):
         super().__init__(**kwargs)
         self.middle_id = self.id.split('_cab')[0] + '_middle'
         self.ids_of_wagons_adding_power = [self.middle_id]
+        self.tilt_bonus = True
         print(self.ids_of_wagons_adding_power)
 
 
@@ -532,6 +534,7 @@ class PassengerVeryHighSpeedMiddleEngineConsist(PassengerEngineConsist):
         super().__init__(**kwargs)
         self.cab_id = self.id.split('_middle')[0] + '_cab'
         print(self.cab_id) # !! is this going to be actually used?
+        self.tilt_bonus = True
         # Graphics configuration
         # 1 livery as can't be flipped, 1 spriterow may be left blank for compatibility with Gestalt (TBC)
         # position variants
@@ -1247,7 +1250,6 @@ class Train(object):
         self.label_refits_allowed = self.consist.label_refits_allowed
         self.label_refits_disallowed = self.consist.label_refits_disallowed
         self.autorefit = True
-        self.tilt_bonus = False  # over-ride in subclass as needed
         # nml constant (STEAM is sane default)
         self.engine_class = 'ENGINE_CLASS_STEAM'
         self.visual_effect = 'VISUAL_EFFECT_DISABLE'  # nml constant
@@ -1330,7 +1332,7 @@ class Train(object):
             special_flags.append('TRAIN_FLAG_FLIP')
         if self.autorefit:
             special_flags.append('TRAIN_FLAG_AUTOREFIT')
-        if self.tilt_bonus:
+        if self.consist.tilt_bonus:
             special_flags.append('TRAIN_FLAG_TILT')
         return ','.join(special_flags)
 
@@ -1590,7 +1592,6 @@ class ElectricPaxUnit(Train):
         self.engine_class = 'ENGINE_CLASS_ELECTRIC'
         self.visual_effect = 'VISUAL_EFFECT_ELECTRIC'
         self.consist.str_name_suffix = 'STR_NAME_SUFFIX_ELECTRIC'
-        self.tilt_bonus = True
         # the cab magic won't work unless it's asymmetrical eh? :P
         self._symmetry_type = 'asymmetric'
 
