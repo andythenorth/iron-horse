@@ -4,8 +4,11 @@
     <tal:include metal:use-macro="load: visual_effect_and_powered.pynml" />
 </tal:visual_effect>
 
-<tal:variable_power condition="consist.engine_varies_power_by_railtype(vehicle)">
-    // -- power -- //
+<!--! two options for variable power
+      these are incompatible with each other as of Dec 2018, but that could be changed in theory
+      depends on https://github.com/OpenTTD/OpenTTD/pull/7000 adn refactoring power_by_railtype approach -->
+<tal:railtype_varies_power condition="consist.engine_varies_power_by_railtype(vehicle)">
+    // -- power varies by railtype -- //
     switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_power, current_railtype) {
         <tal:only_if_overrides_exist condition="consist.power_by_railtype is not None">
             <tal:railtype_specific_effects repeat="railtype consist.power_by_railtype.keys()">
@@ -14,15 +17,21 @@
         </tal:only_if_overrides_exist>
         return ${consist.power};
     }
-
     <!--! only useful if this is merged: https://github.com/OpenTTD/OpenTTD/pull/7000 -->
     <!--!switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_power, var[0x6a, 8, 0xFF, ELRL]) {
         1: return 2000; // unfinished eh
         return ${consist.power};
     }-->
     <!--! end variable power -->
-</tal:variable_power>
+</tal:railtype_varies_power>
 
+<tal:wagons_add_power condition="consist.wagons_add_power(vehicle)">
+    // -- power varies if specific wagons are attached -- //
+    <!--! note use of PARENT not SELF - we want the whole consist here -->
+    switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_power, 1) {
+        return [1200 + ((count_veh_id(helm_wind_middle) * 1200) / count_veh_id(helm_wind_cab))];
+    }
+</tal:wagons_add_power>
 
 item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
     property {
@@ -77,10 +86,8 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
             loading_speed:                  ${vehicle.id + '_switch_loading_speed'};
         </tal:optional_capacity_switches>
         <!--! no buy menu extra text in this grf by design; extra text is associated with BAD FEATURES -->
-        <tal:variable_power condition="consist.engine_varies_power_by_railtype(vehicle)">
+        <tal:variable_power condition="consist.engine_varies_power_by_railtype(vehicle) or consist.wagons_add_power(vehicle)">
             power:                          ${vehicle.id}_switch_power;
-            <!--! railtype is not available in purchase menu, so just use the static property (usually set to the lowest power to avoid disappointment after building) -->
-            purchase_power:                 ${consist.power};
         </tal:variable_power>
         <!--! only use the visual effect switches if needed, saves a couple of seconds on compile -->
         <tal:visual_effect condition="vehicle.unit_requires_visual_effect">

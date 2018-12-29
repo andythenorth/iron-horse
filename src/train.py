@@ -154,13 +154,21 @@ class Consist(object):
 
     def engine_varies_power_by_railtype(self, vehicle):
         if self.power_by_railtype is not None and vehicle.is_lead_unit_of_consist:
+            # as of Dec 2018, can't use both variable power and wagon power
+            # that could be changed if https://github.com/OpenTTD/OpenTTD/pull/7000 is done
+            # would require quite a bit of refactoring though eh
+            assert(self.wagons_add_power(vehicle) == False), "%s consist has both engine_varies_power_by_railtype and power_by_railtype, which conflict" % self.id
             return True
         else:
             return False
-    """
+
+    def wagons_add_power(self, vehicle):
+        # as of Dec 2018, can't use both variable power and wagon power
+        # but don't bother here asserting engine_varies_power_by_railtype, one check is enough, and eh recursion also
         if len(self.ids_of_wagons_adding_power) > 0 and vehicle.is_lead_unit_of_consist:
             return True
-    """
+        else:
+            return False
 
     def get_spriterows_for_consist_or_subpart(self, units):
         # pass either list of all units in consist, or a slice of the consist starting from front (arbitrary slices not useful)
