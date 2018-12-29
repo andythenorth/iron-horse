@@ -3,6 +3,8 @@ from roster import Roster
 from vehicles import bean_feast
 from vehicles import boar_cat
 from vehicles import braf
+from vehicles import brenner_cab
+from vehicles import brenner_middle
 from vehicles import carrack
 from vehicles import cheddar_valley
 from vehicles import cheese_bug
@@ -63,8 +65,6 @@ from vehicles import tyburn
 from vehicles import trojan
 from vehicles import ultra_shoebox
 from vehicles import upcountry
-from vehicles import velaro_thing_cab
-from vehicles import velaro_thing_middle
 from vehicles import westbourne
 
 roster = Roster(id = 'pony',
@@ -146,8 +146,8 @@ roster = Roster(id = 'pony',
                            helm_wind_middle,
                            pendolino_thing_cab,
                            pendolino_thing_middle,
-                           velaro_thing_cab,
-                           velaro_thing_middle,
+                           brenner_cab,
+                           brenner_middle,
                            # metro
                            serpentine,
                            westbourne,

@@ -1,8 +1,7 @@
 from train import PassengerVeryHighSpeedMiddleEngineConsist, ElectricPaxUnit
 
-consist = PassengerVeryHighSpeedMiddleEngineConsist(id='velaro_thing_middle',
+consist = PassengerVeryHighSpeedMiddleEngineConsist(id='brenner_middle',
                                                     base_numeric_id=2880,
-                                                    cab_unit_id='helm_wind',
                                                     name='Brenner - Middle',
                                                     role='pax_high_speed',
                                                     power=0, # set power 0, when attached to correct cab, cab power will be increased

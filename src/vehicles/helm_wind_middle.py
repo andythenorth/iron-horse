@@ -2,7 +2,6 @@ from train import PassengerVeryHighSpeedMiddleEngineConsist, ElectricPaxUnit
 
 consist = PassengerVeryHighSpeedMiddleEngineConsist(id='helm_wind_middle',
                                                     base_numeric_id=2890,
-                                                    cab_unit_id='helm_wind',
                                                     name='Helm Wind - Middle',
                                                     role='pax_high_speed',
                                                     power=0, # set power 0, when attached to correct cab, cab power will be increased
