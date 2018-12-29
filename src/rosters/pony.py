@@ -26,6 +26,8 @@ from vehicles import happy_train
 from vehicles import helm_wind_cab
 from vehicles import helm_wind_middle
 from vehicles import hurly_burly
+from vehicles import landlash_cab
+from vehicles import landlash_middle
 from vehicles import lark
 from vehicles import lemon
 from vehicles import little_bear
@@ -36,8 +38,6 @@ from vehicles import moor_gallop
 from vehicles import mumble
 from vehicles import peasweep
 from vehicles import pegasus
-from vehicles import pendolino_thing_cab
-from vehicles import pendolino_thing_middle
 from vehicles import pikel
 from vehicles import phoenix
 from vehicles import plastic_postbox
@@ -144,8 +144,8 @@ roster = Roster(id = 'pony',
                            # brit high speed pax
                            helm_wind_cab,
                            helm_wind_middle,
-                           pendolino_thing_cab,
-                           pendolino_thing_middle,
+                           landlash_cab,
+                           landlash_middle,
                            brenner_cab,
                            brenner_middle,
                            # metro

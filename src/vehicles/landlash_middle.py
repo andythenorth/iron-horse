@@ -1,8 +1,8 @@
 from train import PassengerVeryHighSpeedMiddleEngineConsist, ElectricPaxUnit
 
-consist = PassengerVeryHighSpeedMiddleEngineConsist(id='pendolino_thing_middle',
+consist = PassengerVeryHighSpeedMiddleEngineConsist(id='landlash_middle',
                                                     base_numeric_id=2870,
-                                                    name='Blaze - Middle',
+                                                    name='Landlash - Middle',
                                                     role='pax_high_speed',
                                                     power=0, # set power 0, when attached to correct cab, cab power will be increased
                                                     gen=5,

@@ -1,8 +1,8 @@
 from train import PassengerVeryHighSpeedCabEngineConsist, ElectricPaxUnit
 
-consist = PassengerVeryHighSpeedCabEngineConsist(id='pendolino_thing_cab',
+consist = PassengerVeryHighSpeedCabEngineConsist(id='landlash_cab',
                                                  base_numeric_id=980,
-                                                 name='Blaze - Cab',
+                                                 name='Landlash - Cab',
                                                  role='pax_high_speed',
                                                  dual_headed=True,
                                                  power=1900,
