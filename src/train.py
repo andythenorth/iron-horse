@@ -64,6 +64,9 @@ class Consist(object):
         # some engines require pantograph sprites composited, don't bother setting this unless required
         self.pantograph_type = kwargs.get('pantograph_type', None)
         self.dual_headed = 1 if kwargs.get('dual_headed', False) else 0
+        # some engines will increase power if specific wagon IDs are in the consist,
+        # empty list unless required, the list is filled by the engine subclass as needed
+        self.ids_of_wagons_adding_power = []
         # random_reverse means (1) randomised reversing of sprites when vehicle is built (2) player can also flip vehicle
         # random_reverse is not supported in some templates
         self.random_reverse = kwargs.get('random_reverse', False)
@@ -149,11 +152,15 @@ class Consist(object):
     def name(self):
         return "string(STR_NAME_CONSIST_PARENTHESES, string(STR_NAME_" + self.id + "), string(" + self.str_name_suffix + "))"
 
-    def unit_requires_variable_power(self, vehicle):
+    def engine_varies_power_by_railtype(self, vehicle):
         if self.power_by_railtype is not None and vehicle.is_lead_unit_of_consist:
             return True
         else:
             return False
+    """
+        if len(self.ids_of_wagons_adding_power) > 0 and vehicle.is_lead_unit_of_consist:
+            return True
+    """
 
     def get_spriterows_for_consist_or_subpart(self, units):
         # pass either list of all units in consist, or a slice of the consist starting from front (arbitrary slices not useful)
@@ -452,6 +459,7 @@ class PassengerEngineConsist(EngineConsist):
         self.buy_cost_adjustment_factor = 2
         self.running_cost_adjustment_factor = 2
 
+
 class PassengerEngineMetroConsist(PassengerEngineConsist):
     """
     Consist for a pax metro train.  Just a sparse subclass to force the gestalt_graphics
@@ -492,17 +500,31 @@ class PassengerEngineRailcarConsist(PassengerEngineConsist):
         self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings, consist_ruleset="pax_railcars")
 
 
-class PassengerEngineVeryHighSpeedConsist(PassengerEngineConsist):
+class PassengerVeryHighSpeedCabEngineConsist(PassengerEngineConsist):
     """
-    Consist for a pax very high speed train (TGV etc).  Just a sparse subclass to force the gestalt_graphics and allow_flip
+    Consist for a cab (leading) motor very high speed train (TGV etc).
+    This has power by default and would usually be set as a dual-headed engine.
+    Adding specific middle engines (with correct ID) will increase power for this engine.
     """
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.allow_flip = True
-        # Graphics configuration
-        # don't generate roofs as power cars are slopey, the roof would need to be variable length per unit
+        self.middle_id = self.id.split('_cab')[0] + '_middle'
+        self.ids_of_wagons_adding_power = [self.middle_id]
+        print(self.ids_of_wagons_adding_power)
 
+
+class PassengerVeryHighSpeedMiddleEngineConsist(PassengerEngineConsist):
+    """
+    Consist for an intermediate motor unit for very high speed train (TGV etc).
+    When added to the correct cab engine, this vehicle will cause cab power to increase.
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.cab_id = self.id.split('_middle')[0] + '_cab'
+        print(self.cab_id) # !! is this going to be actually used?
+        # Graphics configuration
         # 1 livery as can't be flipped, 1 spriterow may be left blank for compatibility with Gestalt (TBC)
         # position variants
         # * unit with driving cabs both ends

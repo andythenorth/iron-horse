@@ -4,7 +4,7 @@
     <tal:include metal:use-macro="load: visual_effect_and_powered.pynml" />
 </tal:visual_effect>
 
-<tal:variable_power condition="consist.unit_requires_variable_power(vehicle)">
+<tal:variable_power condition="consist.engine_varies_power_by_railtype(vehicle)">
     // -- power -- //
     switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_power, current_railtype) {
         <tal:only_if_overrides_exist condition="consist.power_by_railtype is not None">
@@ -77,7 +77,7 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
             loading_speed:                  ${vehicle.id + '_switch_loading_speed'};
         </tal:optional_capacity_switches>
         <!--! no buy menu extra text in this grf by design; extra text is associated with BAD FEATURES -->
-        <tal:variable_power condition="consist.unit_requires_variable_power(vehicle)">
+        <tal:variable_power condition="consist.engine_varies_power_by_railtype(vehicle)">
             power:                          ${vehicle.id}_switch_power;
             <!--! railtype is not available in purchase menu, so just use the static property (usually set to the lowest power to avoid disappointment after building) -->
             purchase_power:                 ${consist.power};

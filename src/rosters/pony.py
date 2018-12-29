@@ -1,6 +1,5 @@
 from roster import Roster
 
-from vehicles import apt_thing
 from vehicles import bean_feast
 from vehicles import boar_cat
 from vehicles import braf
@@ -22,6 +21,8 @@ from vehicles import growler
 from vehicles import gwynt
 from vehicles import haar
 from vehicles import happy_train
+from vehicles import helm_wind_cab
+from vehicles import helm_wind_middle
 from vehicles import hurly_burly
 from vehicles import lark
 from vehicles import lemon
@@ -139,7 +140,8 @@ roster = Roster(id = 'pony',
                            plastic_postbox,
                            mail_rail,
                            # brit high speed pax
-                           apt_thing,
+                           helm_wind_cab,
+                           helm_wind_middle,
                            pendolino_thing,
                            velaro_thing,
                            # metro
