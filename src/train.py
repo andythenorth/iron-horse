@@ -519,6 +519,8 @@ class PassengerVeryHighSpeedCabEngineConsist(PassengerEngineConsist):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.middle_id = self.id.split('_cab')[0] + '_middle'
+        # implemented as a list to allow multiple middle vehicles, e.g. double-deck, mail etc
+        # but...theoretical as of Dec 2018 as nml power template doesn't support iterating over multiple middle vehicles
         self.ids_of_wagons_adding_power = [self.middle_id]
         self.tilt_bonus = True
         print(self.ids_of_wagons_adding_power)

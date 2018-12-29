@@ -27,9 +27,10 @@
 
 <tal:wagons_add_power condition="consist.wagons_add_power(vehicle)">
     // -- power varies if specific wagons are attached -- //
+    <!--! in principle this could be extended to support multiple types of middle vehicle, but as of Dec 2018 I didn't bother -->
     <!--! note use of PARENT not SELF - we want the whole consist here -->
     switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_power, 1) {
-        return [1200 + ((count_veh_id(helm_wind_middle) * 1200) / count_veh_id(helm_wind_cab))];
+        return [1200 + ((count_veh_id(${consist.ids_of_wagons_adding_power[0]}) * 1200) / count_veh_id(${vehicle.id}))];
     }
 </tal:wagons_add_power>
 
@@ -88,6 +89,7 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
         <!--! no buy menu extra text in this grf by design; extra text is associated with BAD FEATURES -->
         <tal:variable_power condition="consist.engine_varies_power_by_railtype(vehicle) or consist.wagons_add_power(vehicle)">
             power:                          ${vehicle.id}_switch_power;
+            purchase_power:                 ${consist.power};
         </tal:variable_power>
         <!--! only use the visual effect switches if needed, saves a couple of seconds on compile -->
         <tal:visual_effect condition="vehicle.unit_requires_visual_effect">

@@ -34,7 +34,8 @@ from vehicles import moor_gallop
 from vehicles import mumble
 from vehicles import peasweep
 from vehicles import pegasus
-from vehicles import pendolino_thing
+from vehicles import pendolino_thing_cab
+from vehicles import pendolino_thing_middle
 from vehicles import pikel
 from vehicles import phoenix
 from vehicles import plastic_postbox
@@ -62,7 +63,8 @@ from vehicles import tyburn
 from vehicles import trojan
 from vehicles import ultra_shoebox
 from vehicles import upcountry
-from vehicles import velaro_thing
+from vehicles import velaro_thing_cab
+from vehicles import velaro_thing_middle
 from vehicles import westbourne
 
 roster = Roster(id = 'pony',
@@ -142,8 +144,10 @@ roster = Roster(id = 'pony',
                            # brit high speed pax
                            helm_wind_cab,
                            helm_wind_middle,
-                           pendolino_thing,
-                           velaro_thing,
+                           pendolino_thing_cab,
+                           pendolino_thing_middle,
+                           velaro_thing_cab,
+                           velaro_thing_middle,
                            # metro
                            serpentine,
                            westbourne,
