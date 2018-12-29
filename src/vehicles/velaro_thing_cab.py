@@ -16,5 +16,4 @@ consist.add_unit(type=ElectricPaxUnit,
                  vehicle_length=8,
                  capacity=40,
                  spriterow_num=0,
-                 chassis='4_axle_solid_express_32px',
-                 repeat=2)
+                 chassis='4_axle_solid_express_32px')
