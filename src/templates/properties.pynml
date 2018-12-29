@@ -14,6 +14,12 @@
         </tal:only_if_overrides_exist>
         return ${consist.power};
     }
+
+    <!--! only useful if this is merged: https://github.com/OpenTTD/OpenTTD/pull/7000 -->
+    <!--!switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_power, var[0x6a, 8, 0xFF, ELRL]) {
+        1: return 2000; // unfinished eh
+        return ${consist.power};
+    }-->
     <!--! end variable power -->
 </tal:variable_power>
 
