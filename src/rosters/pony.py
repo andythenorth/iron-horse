@@ -20,6 +20,7 @@ from vehicles import flanders_storm
 from vehicles import flindermouse
 from vehicles import girt_licker
 from vehicles import gowsty
+from vehicles import griffon
 from vehicles import growler
 from vehicles import gwynt
 from vehicles import haar
@@ -51,8 +52,7 @@ from vehicles import scooby
 from vehicles import screamer
 from vehicles import serpentine
 from vehicles import shoebox
-from vehicles import shredder_2
-from vehicles import shredder_3
+from vehicles import shredder
 from vehicles import sizzler
 from vehicles import slammer
 from vehicles import slug
@@ -103,8 +103,8 @@ roster = Roster(id = 'pony',
                            carrack,
                            tencendur,
                            kelpie,
-                           shredder_2,
-                           shredder_3,
+                           griffon,
+                           shredder,
                            upcountry,
                            pegasus,
                            dragon,

@@ -4,16 +4,16 @@ from train import EngineConsist, DieselEngineUnit
 # the assumption is that the Ultra Shoebox can replace it eh?
 # this might cause a monoculture of Ultra Shoeboxes, which might be boring?
 
-consist = EngineConsist(id='shredder_2',
-                        base_numeric_id=2840,
-                        name='Shredder 2',
+consist = EngineConsist(id='shredder',
+                        base_numeric_id=2830,
+                        name='Shredder',
                         role='express_1',
-                        power=1650,
+                        power=1850,
                         random_reverse=True,
-                        gen=5,
+                        gen=6,
                         sprites_complete=False)
 
 consist.add_unit(type=DieselEngineUnit,
-                 weight=72,
+                 weight=74,
                  vehicle_length=6,
                  spriterow_num=0)
