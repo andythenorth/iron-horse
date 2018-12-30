@@ -30,7 +30,7 @@
     <!--! in principle this could be extended to support multiple types of middle vehicle, but as of Dec 2018 I didn't bother -->
     <!--! note use of PARENT not SELF - we want the whole consist here -->
     switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_power, 1) {
-        return [1200 + ((count_veh_id(${consist.ids_of_wagons_adding_power[0]}) * 1200) / count_veh_id(${vehicle.id}))];
+        return [${consist.power} + ((count_veh_id(${consist.ids_of_wagons_adding_power[0]}) * ${consist.power}) / count_veh_id(${vehicle.id}))];
     }
 </tal:wagons_add_power>
 
