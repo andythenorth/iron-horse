@@ -52,6 +52,7 @@ from vehicles import serpentine
 from vehicles import shoebox
 from vehicles import shredder
 from vehicles import shredder_2
+from vehicles import shredder_3
 from vehicles import sizzler
 from vehicles import slammer
 from vehicles import slug
@@ -64,7 +65,7 @@ from vehicles import tideway
 from vehicles import tin_rocket
 from vehicles import turtle
 from vehicles import tyburn
-# from vehicles import trojan
+from vehicles import trojan
 from vehicles import ultra_shoebox
 from vehicles import upcountry
 from vehicles import westbourne
@@ -103,6 +104,7 @@ roster = Roster(id = 'pony',
                            tencendur,
                            shredder,
                            shredder_2,
+                           shredder_3,
                            upcountry,
                            pegasus,
                            dragon,
@@ -119,7 +121,7 @@ roster = Roster(id = 'pony',
                            saxon,
                            little_bear,
                            faun,
-                           #trojan, # deprecated?
+                           trojan,
                            gwynt,
                            braf,
                            haar,
