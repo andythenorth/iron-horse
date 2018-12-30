@@ -4,7 +4,7 @@ consist = EngineConsist(id='faun',
                         base_numeric_id=1720,
                         name='Faun',
                         role='branch_freight',
-                        power=1200,
+                        power=1300,
                         # dibble TE up for game balance, assume low gearing or something
                         tractive_effort_coefficient=0.375,
                         random_reverse=True,
