@@ -2,6 +2,7 @@ from train import EngineConsist, DieselEngineUnit
 
 # as of Dec 2018 there is no replacement for Shredder in the tech tree
 # the assumption is that the Shoebox can replace it eh?
+# this might cause a monoculture of Shoeboxes, which might be boring?
 
 consist = EngineConsist(id='shredder',
                         base_numeric_id=900,

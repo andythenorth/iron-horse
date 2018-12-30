@@ -1,5 +1,9 @@
 from train import EngineConsist, DieselEngineUnit
 
+# deprecated Dec 2018
+# - can't make the 16/8 length work in a way that fits power progression + fits buy menu
+# - shorter lengths run up against problem that HSTs 'only look right with all lux cars', but then integer lengths fail
+
 # no wagon attach cb should be used, let them eat cake etc.
 
 consist = EngineConsist(id='blaze',
