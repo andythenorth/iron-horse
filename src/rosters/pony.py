@@ -27,6 +27,7 @@ from vehicles import happy_train
 from vehicles import helm_wind_cab
 from vehicles import helm_wind_middle
 from vehicles import hurly_burly
+from vehicles import kelpie
 from vehicles import landlash_cab
 from vehicles import landlash_middle
 from vehicles import lark
@@ -50,7 +51,6 @@ from vehicles import scooby
 from vehicles import screamer
 from vehicles import serpentine
 from vehicles import shoebox
-from vehicles import shredder
 from vehicles import shredder_2
 from vehicles import shredder_3
 from vehicles import sizzler
@@ -102,7 +102,7 @@ roster = Roster(id = 'pony',
                            spinner,
                            carrack,
                            tencendur,
-                           shredder,
+                           kelpie,
                            shredder_2,
                            shredder_3,
                            upcountry,

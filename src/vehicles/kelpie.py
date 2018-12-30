@@ -4,9 +4,9 @@ from train import EngineConsist, DieselEngineUnit
 # the assumption was that the Shoebox can replace it eh?
 # this might cause a monoculture of Shoeboxes, which might be boring?
 
-consist = EngineConsist(id='shredder',
+consist = EngineConsist(id='kelpie',
                         base_numeric_id=900,
-                        name='Shredder',
+                        name='Kelpie',
                         role='express_1',
                         power=1450,
                         random_reverse=True,
