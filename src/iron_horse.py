@@ -24,11 +24,13 @@ if not os.path.exists(generated_files_path):
 
 from rosters import registered_rosters
 
+"""
 from rosters import antelope
 antelope.roster.register(disabled=True)
 
 from rosters import llama
 llama.roster.register(disabled=True)
+"""
 
 from rosters import pony
 pony.roster.register(disabled=False)

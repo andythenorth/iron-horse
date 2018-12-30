@@ -25,13 +25,20 @@
     <!--! end variable power -->
 </tal:railtype_varies_power>
 
-<tal:wagons_add_power condition="consist.wagons_add_power(vehicle)">
+<tal:wagons_add_power condition="consist.wagons_add_power">
+    // -- power varies if specific engines are present in the consist -- //
+    switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_power, [count_veh_id(${consist.cab_id}) > 0]) {
+        1: return ${consist.cab_power};
+        return 0;
+    }
+    <!--! ALTERNATIVE METHOD - DEPRECATED? -->
     // -- power varies if specific wagons are attached -- //
     <!--! in principle this could be extended to support multiple types of middle vehicle, but as of Dec 2018 I didn't bother -->
     <!--! note use of PARENT not SELF - we want the whole consist here -->
+    <!--!
     switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_power, 1) {
         return [${consist.power} + ((count_veh_id(${consist.ids_of_wagons_adding_power[0]}) * ${consist.power}) / count_veh_id(${vehicle.id}))];
-    }
+    }-->
 </tal:wagons_add_power>
 
 item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
@@ -87,7 +94,7 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
             loading_speed:                  ${vehicle.id + '_switch_loading_speed'};
         </tal:optional_capacity_switches>
         <!--! no buy menu extra text in this grf by design; extra text is associated with BAD FEATURES -->
-        <tal:variable_power condition="consist.engine_varies_power_by_railtype(vehicle) or consist.wagons_add_power(vehicle)">
+        <tal:variable_power condition="consist.engine_varies_power_by_railtype(vehicle) or consist.wagons_add_power">
             power:                          ${vehicle.id}_switch_power;
             purchase_power:                 ${consist.power};
         </tal:variable_power>

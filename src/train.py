@@ -65,9 +65,8 @@ class Consist(object):
         self.pantograph_type = kwargs.get('pantograph_type', None)
         self.dual_headed = 1 if kwargs.get('dual_headed', False) else 0
         self.tilt_bonus = False  # over-ride in subclass as needed
-        # some engines will increase power if specific wagon IDs are in the consist,
-        # empty list unless required, the list is filled by the engine subclass as needed
-        self.ids_of_wagons_adding_power = []
+        # some wagons will provide power if specific engine IDs are in the consist
+        self.wagons_add_power = False
         # random_reverse means (1) randomised reversing of sprites when vehicle is built (2) player can also flip vehicle
         # random_reverse is not supported in some templates
         self.random_reverse = kwargs.get('random_reverse', False)
@@ -158,15 +157,7 @@ class Consist(object):
             # as of Dec 2018, can't use both variable power and wagon power
             # that could be changed if https://github.com/OpenTTD/OpenTTD/pull/7000 is done
             # would require quite a bit of refactoring though eh
-            assert(self.wagons_add_power(vehicle) == False), "%s consist has both engine_varies_power_by_railtype and power_by_railtype, which conflict" % self.id
-            return True
-        else:
-            return False
-
-    def wagons_add_power(self, vehicle):
-        # as of Dec 2018, can't use both variable power and wagon power
-        # but don't bother here asserting engine_varies_power_by_railtype, one check is enough, and eh recursion also
-        if len(self.ids_of_wagons_adding_power) > 0 and vehicle.is_lead_unit_of_consist:
+            assert(self.wagons_add_power == False), "%s consist has both engine_varies_power_by_railtype and power_by_railtype, which conflict" % self.id
             return True
         else:
             return False
@@ -521,9 +512,7 @@ class PassengerVeryHighSpeedCabEngineConsist(PassengerEngineConsist):
         self.middle_id = self.id.split('_cab')[0] + '_middle'
         # implemented as a list to allow multiple middle vehicles, e.g. double-deck, mail etc
         # but...theoretical as of Dec 2018 as nml power template doesn't support iterating over multiple middle vehicles
-        self.ids_of_wagons_adding_power = [self.middle_id]
         self.tilt_bonus = True
-        print(self.ids_of_wagons_adding_power)
 
 
 class PassengerVeryHighSpeedMiddleEngineConsist(PassengerEngineConsist):
@@ -535,7 +524,7 @@ class PassengerVeryHighSpeedMiddleEngineConsist(PassengerEngineConsist):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.cab_id = self.id.split('_middle')[0] + '_cab'
-        print(self.cab_id) # !! is this going to be actually used?
+        self.wagons_add_power = True
         self.tilt_bonus = True
         # Graphics configuration
         # 1 livery as can't be flipped, 1 spriterow may be left blank for compatibility with Gestalt (TBC)
@@ -547,6 +536,13 @@ class PassengerVeryHighSpeedMiddleEngineConsist(PassengerEngineConsist):
         # ruleset will combine these to make multiple-units n vehicles long
         spriterow_group_mappings = {'pax': {'default': 0, 'first': 1, 'last': 2, 'special': 3}}
         self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings, consist_ruleset="pax_very_high_speed")
+
+    @property
+    def cab_power(self):
+        # match middle engine power to cab engine power
+        for engine_consist in self.roster.engine_consists:
+            if engine_consist.id == self.cab_id:
+                return engine_consist.power
 
 
 class MailEngineConsist(EngineConsist):
