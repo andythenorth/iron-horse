@@ -51,6 +51,7 @@ from vehicles import screamer
 from vehicles import serpentine
 from vehicles import shoebox
 from vehicles import shredder
+from vehicles import shredder_2
 from vehicles import sizzler
 from vehicles import slammer
 from vehicles import slug
@@ -101,6 +102,7 @@ roster = Roster(id = 'pony',
                            carrack,
                            tencendur,
                            shredder,
+                           shredder_2,
                            upcountry,
                            pegasus,
                            dragon,
