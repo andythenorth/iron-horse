@@ -2,7 +2,7 @@ from roster import Roster
 
 from vehicles import bean_feast
 from vehicles import boar_cat
-from vehicles import blaze
+# from vehicles import blaze # deprecated?
 from vehicles import braf
 from vehicles import brenner_cab
 from vehicles import brenner_middle
@@ -46,7 +46,7 @@ from vehicles import proper_job
 from vehicles import roarer
 from vehicles import saxon
 from vehicles import scooby
-from vehicles import scorcher
+# from vehicles import scorcher # deprecated?
 from vehicles import screamer
 from vehicles import serpentine
 from vehicles import shoebox
@@ -106,8 +106,8 @@ roster = Roster(id = 'pony',
                            dragon,
                            thunderbird,
                            turtle,
-                           scorcher,
-                           blaze,
+                           #scorcher, # deprecated?
+                           #blaze, # deprecated?
                            hurly_burly,
                            moor_gallop,
                            roarer,
