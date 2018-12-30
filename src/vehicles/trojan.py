@@ -1,5 +1,8 @@
 from train import EngineConsist, DieselEngineUnit
 
+# deprecated Dec 2018 - replace with Ultra Shoebox
+# this might cause a monoculture of Ultra Shoeboxes, which might be boring?
+
 consist = EngineConsist(id='trojan',
                         base_numeric_id=780,
                         name='Trojan',

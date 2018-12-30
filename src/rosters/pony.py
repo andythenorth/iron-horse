@@ -63,7 +63,7 @@ from vehicles import tideway
 from vehicles import tin_rocket
 from vehicles import turtle
 from vehicles import tyburn
-from vehicles import trojan
+# from vehicles import trojan
 from vehicles import ultra_shoebox
 from vehicles import upcountry
 from vehicles import westbourne
@@ -117,8 +117,7 @@ roster = Roster(id = 'pony',
                            saxon,
                            little_bear,
                            faun,
-                           # !! commented out for 2.0 Alpha
-                           #trojan,
+                           #trojan, # deprecated?
                            gwynt,
                            braf,
                            haar,
