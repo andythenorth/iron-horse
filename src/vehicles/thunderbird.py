@@ -3,8 +3,8 @@ from train import EngineConsist, DieselEngineUnit
 consist = EngineConsist(id='thunderbird',
                         base_numeric_id=3090,
                         name='Thunderbird',
-                        role='express_1',
-                        power=2750,
+                        role='heavy_express_1',
+                        power=2950,
                         random_reverse=True,
                         gen=5,
                         sprites_complete=True)

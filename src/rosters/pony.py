@@ -2,6 +2,7 @@ from roster import Roster
 
 from vehicles import bean_feast
 from vehicles import boar_cat
+from vehicles import blaze
 from vehicles import braf
 from vehicles import brenner_cab
 from vehicles import brenner_middle
@@ -99,13 +100,14 @@ roster = Roster(id = 'pony',
                            spinner,
                            carrack,
                            tencendur,
+                           shredder,
+                           upcountry,
+                           pegasus,
                            dragon,
                            thunderbird,
                            turtle,
-                           upcountry,
-                           pegasus,
-                           shredder,
                            scorcher,
+                           blaze,
                            hurly_burly,
                            moor_gallop,
                            roarer,
