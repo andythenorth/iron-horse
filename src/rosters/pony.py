@@ -12,13 +12,13 @@ from vehicles import cheese_bug
 from vehicles import chimera
 from vehicles import chinook
 from vehicles import deasil
-from vehicles import double_tide
 from vehicles import dragon
-from vehicles import faun
 from vehicles import fleet
 from vehicles import flanders_storm
 from vehicles import flindermouse
 from vehicles import girt_licker
+from vehicles import goliath
+from vehicles import gosling_blast
 from vehicles import gowsty
 from vehicles import griffon
 from vehicles import growler
@@ -27,6 +27,7 @@ from vehicles import haar
 from vehicles import happy_train
 from vehicles import helm_wind_cab
 from vehicles import helm_wind_middle
+from vehicles import hercules
 from vehicles import hurly_burly
 from vehicles import kelpie
 from vehicles import landlash_cab
@@ -65,7 +66,6 @@ from vehicles import tideway
 from vehicles import tin_rocket
 from vehicles import turtle
 from vehicles import tyburn
-from vehicles import trojan
 from vehicles import ultra_shoebox
 from vehicles import upcountry
 from vehicles import westbourne
@@ -120,8 +120,8 @@ roster = Roster(id = 'pony',
                            # freight
                            saxon,
                            little_bear,
-                           faun,
-                           trojan,
+                           hercules,
+                           goliath,
                            gwynt,
                            braf,
                            haar,
@@ -136,7 +136,7 @@ roster = Roster(id = 'pony',
                            flindermouse,
                            peasweep,
                            flanders_storm,
-                           double_tide,
+                           gosling_blast,
                            # railcars
                            deasil,
                            slammer,

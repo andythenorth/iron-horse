@@ -1,8 +1,8 @@
 from train import EngineConsist, DieselEngineUnit
 
-consist = EngineConsist(id='faun',
+consist = EngineConsist(id='hercules',
                         base_numeric_id=1720,
-                        name='Faun',
+                        name='Hercules',
                         role='branch_freight',
                         power=1300,
                         # dibble TE up for game balance, assume low gearing or something

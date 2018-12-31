@@ -1,8 +1,8 @@
 from train import EngineConsist, ElectricEngineUnit
 
-consist = EngineConsist(id='double_tide',
+consist = EngineConsist(id='gosling_blast',
                         base_numeric_id=2960,
-                        name='Double Tide',
+                        name='Gosling Blast',
                         role='heavy_freight_2',
                         power=8500,
                         # dibble for game balance, assume super-slip control
