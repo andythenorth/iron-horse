@@ -11,7 +11,7 @@ consist = EngineConsist(id='little_bear',
                         joker=True,
                         gen=4,
                         intro_date_offset=-6,
-                        sprites_complete=True)
+                        sprites_complete=False)
 
 consist.add_unit(type=DieselEngineUnit,
                  weight=68,
