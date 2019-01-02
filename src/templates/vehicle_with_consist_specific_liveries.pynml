@@ -33,24 +33,6 @@
           spriteset_template_${vehicle.symmetry_type}_${'reversed' if flipped == 'flipped' else 'unreversed'}_${vehicle.id}_${flipped}(10 + ${variant_num * 120} + 90)
         }
 
-        spritegroup ${vehicle.id}_sg_livery_1_${variant_num}_${flipped} {
-            loaded:  [
-                ${vehicle.id}_ss_doors_closed_livery_1_${variant_num}_${flipped},
-            ];
-            loading: [
-                ${vehicle.id}_ss_doors_open_livery_1_${variant_num}_${flipped},
-            ];
-        }
-        spritegroup ${vehicle.id}_sg_livery_2_${variant_num}_${flipped} {
-            loaded:  [
-                ${vehicle.id}_ss_doors_closed_livery_2_${variant_num}_${flipped},
-            ];
-            loading: [
-                ${vehicle.id}_ss_doors_open_livery_2_${variant_num}_${flipped},
-            ];
-        }
-
-
         <!--! be aware that 'loaded' in nml is really 'moving', i.e. not in a station loading/unloading -->
         <!--!spritegroup ${vehicle.id}_sg_part_load_or_empty_${flipped} {
             loaded:  [
@@ -69,6 +51,14 @@
             ];
         }-->
         <tal:livery repeat="livery ['livery_1', 'livery_2']">
+            spritegroup ${vehicle.id}_sg_${livery}_${variant_num}_${flipped} {
+                loaded:  [
+                    ${vehicle.id}_ss_doors_closed_${livery}_${variant_num}_${flipped},
+                ];
+                loading: [
+                    ${vehicle.id}_ss_doors_open_${livery}_${variant_num}_${flipped},
+                ];
+            }
             <!--! spritegroups aren't needed here, the loading state is calculated explicitly -->
             switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_percent_loaded_livery_${livery}_${variant_num}_${flipped}, cargo_count*100/cargo_capacity) {
                     0..99: return ${vehicle.id}_sg_${livery}_${variant_num}_${flipped};
