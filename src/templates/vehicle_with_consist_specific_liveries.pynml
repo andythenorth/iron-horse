@@ -60,7 +60,7 @@
                 ];
             }
             <!--! spritegroups aren't needed here, the loading state is calculated explicitly -->
-            switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_percent_loaded_livery_${livery}_${variant_num}_${flipped}, cargo_count*100/cargo_capacity) {
+            switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_percent_loaded_${livery}_${variant_num}_${flipped}, cargo_count*100/cargo_capacity) {
                     0..99: return ${vehicle.id}_sg_${livery}_${variant_num}_${flipped};
                 return ${vehicle.id}_sg_${livery}_${variant_num}_${flipped};
             }
@@ -70,12 +70,12 @@
     </tal:user_flipped>
     // handle user flipped state
     switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_livery_1_${variant_num}, vehicle_is_flipped) {
-        1: return ${vehicle.id}_sg_livery_2_${variant_num}_flipped;
-        return ${vehicle.id}_sg_livery_1_${variant_num}_unflipped;
+        1: return ${vehicle.id}_switch_graphics_percent_loaded_livery_2_${variant_num}_flipped;
+        return ${vehicle.id}_switch_graphics_percent_loaded_livery_1_${variant_num}_unflipped;
     }
     switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_livery_2_${variant_num}, vehicle_is_flipped) {
-        1: return ${vehicle.id}_sg_livery_1_${variant_num}_flipped;
-        return ${vehicle.id}_sg_livery_2_${variant_num}_unflipped;
+        1: return ${vehicle.id}_switch_graphics_percent_loaded_livery_1_${variant_num}_flipped;
+        return ${vehicle.id}_switch_graphics_percent_loaded_livery_2_${variant_num}_unflipped;
     }
     switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_graphics_engine_id_${variant_num}, vehicle_type_id) {
         <!--! this doesn't check grfid currently - add later if needed -->
