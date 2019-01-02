@@ -49,6 +49,34 @@
                 ${vehicle.id}_ss_doors_open_livery_2_${variant_num}_${flipped},
             ];
         }
+
+
+        <!--! be aware that 'loaded' in nml is really 'moving', i.e. not in a station loading/unloading -->
+        <!--!spritegroup ${vehicle.id}_sg_part_load_or_empty_${flipped} {
+            loaded:  [
+                ${vehicle.id}_ss_doors_closed_${flipped},
+            ];
+            loading: [
+                ${vehicle.id}_ss_doors_open_${flipped},
+            ];
+        }
+        spritegroup ${vehicle.id}_sg_full_load_${flipped} {
+            loaded:  [
+                ${vehicle.id}_ss_doors_closed_${flipped},
+            ];
+            loading: [
+                ${vehicle.id}_ss_doors_closed_${flipped},
+            ];
+        }-->
+        <tal:livery repeat="livery ['livery_1', 'livery_2']">
+            <!--! spritegroups aren't needed here, the loading state is calculated explicitly -->
+            switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_percent_loaded_livery_${livery}_${variant_num}_${flipped}, cargo_count*100/cargo_capacity) {
+                    0..99: return ${vehicle.id}_sg_${livery}_${variant_num}_${flipped};
+                return ${vehicle.id}_sg_${livery}_${variant_num}_${flipped};
+            }
+        </tal:livery>
+
+
     </tal:user_flipped>
     // handle user flipped state
     switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_livery_1_${variant_num}, vehicle_is_flipped) {
