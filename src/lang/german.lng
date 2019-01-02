@@ -30,8 +30,6 @@ STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :gedeckter Schü
 STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Lebensmittel-Kesselwagen
 STR_NAME_SUFFIX_FLAT_CAR                                        :Flachwagen
 STR_NAME_SUFFIX_FRUIT_VEG_CAR                                   :Wagen für Obst und Gemüse
-STR_NAME_SUFFIX_HIGH_SPEED_MAIL_CAR                             :Hochgeschwindigkeitspostwagen
-STR_NAME_SUFFIX_HIGH_SPEED_PASSENGER_CAR                        :Hochgeschwindigkeitspassagierwagen
 STR_NAME_SUFFIX_HOPPER_CAR                                      :Schüttgutwagen
 STR_NAME_SUFFIX_INTERMODAL_CAR                                  :Wagen für kombinierten Verkehr
 STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Viehwagen

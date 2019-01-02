@@ -27,8 +27,6 @@ STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Irtotavaravaunu
 STR_NAME_SUFFIX_DUMP_CAR                                        :Kippivaunu
 STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Elintarvikesäiliövaunu
 STR_NAME_SUFFIX_FLAT_CAR                                        :Avovaunu
-STR_NAME_SUFFIX_HIGH_SPEED_MAIL_CAR                             :Pikajunapostivaunu
-STR_NAME_SUFFIX_HIGH_SPEED_PASSENGER_CAR                        :Pikajunavaunu
 STR_NAME_SUFFIX_HOPPER_CAR                                      :Rikastevaunu
 STR_NAME_SUFFIX_INTERMODAL_CAR                                  :Yhdistettyjen kuljetusten vaunu
 STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Karjavaunu
