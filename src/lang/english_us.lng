@@ -1,8 +1,29 @@
 ##grflangid 0x00
 ##plural 0
+# this is the default translation and is en-gb
 STR_GRF_DESCRIPTION                                             :License: {SILVER}GPL v2{}{BLACK}
 
+STR_PARAM_ADJUST_VEHICLE_CAPACITY                               :Train capacity
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :Puny
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Marvelous
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Excessive
+STR_PARAM_ROSTER                                                :Roster
+STR_PARAM_ROSTER_DESC                                           :Choose which set of trains to use.
+STR_PARAM_ROSTER_OPTION_0                                       :A horse! A horse! My kingdom for a horse!
+STR_PARAM_ROSTER_OPTION_1                                       :Caballada
+
+# keep these alphabetised, easier
+STR_NAME_SUFFIX_DIESEL                                          :(Diesel)
+STR_NAME_SUFFIX_ELECTRIC                                        :(Electric)
+STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Electro-Diesel)
+STR_NAME_SUFFIX_STEAM                                           :(Steam)
+
+# size suffixes
+
 # wagon class suffixes
+# as of Jan 2019 these are switched from en-us to en-gb
+# the en-us translation should be updated appropriately when making changes here
+# !! consider splitting strings per roster?? A caboose is still a caboose in en-gb, not a brake van
 STR_NAME_SUFFIX_BOX_CAR                                         :Box Car
 STR_NAME_SUFFIX_CABOOSE_CAR                                     :Caboose Car
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Covered Hopper Car
@@ -25,3 +46,5 @@ STR_NAME_SUFFIX_STAKE_CAR                                       :Stake Car
 STR_NAME_SUFFIX_TANK_CAR                                        :Tank Car
 STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Vehicle Transporter Car
 STR_NAME_SUFFIX_WELL_CAR                                        :Depressed-Center Flat Car
+
+# project management

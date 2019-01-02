@@ -1,6 +1,7 @@
 ##grflangid 0x22
 ##plural 0
 ##gender Masculin Femenin
+# this is the default translation and is en-gb
 STR_GRF_DESCRIPTION                                             :Llicència: {SILVER}GPL v2{}{BLACK}
 
 STR_PARAM_ADJUST_VEHICLE_CAPACITY                               :Capacitat del tren
@@ -21,6 +22,9 @@ STR_NAME_SUFFIX_STEAM                                           :(Vapor)
 # size suffixes
 
 # wagon class suffixes
+# as of Jan 2019 these are switched from en-us to en-gb
+# the en-us translation should be updated appropriately when making changes here
+# !! consider splitting strings per roster?? A caboose is still a caboose in en-gb, not a brake van
 STR_NAME_SUFFIX_BOX_CAR                                         :Furgó
 STR_NAME_SUFFIX_CABOOSE_CAR                                     :Furgó de Cua
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Cotxe cobert amb tremuja
