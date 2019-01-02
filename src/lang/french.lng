@@ -1,6 +1,7 @@
 ##grflangid 0x03
 ##plural 2
 ##gender m m2 f
+# this is the default translation and is en-gb
 STR_GRF_DESCRIPTION                                             :Licence: {SILVER}GPL v2{}{BLACK}
 
 STR_PARAM_ADJUST_VEHICLE_CAPACITY                               :Capacité des trains
@@ -26,6 +27,9 @@ STR_NAME_SUFFIX_MEDIUM                                          :Moyen
 STR_NAME_SUFFIX_LARGE                                           :Long
 
 # wagon class suffixes
+# as of Jan 2019 these are switched from en-us to en-gb
+# the en-us translation should be updated appropriately when making changes here
+# !! consider splitting strings per roster?? A caboose is still a caboose in en-gb, not a brake van
 STR_NAME_SUFFIX_BOX_CAR                                         :Fourgon
 STR_NAME_SUFFIX_CABOOSE_CAR                                     :Fourgon-frein
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Wagon-trémie couvert

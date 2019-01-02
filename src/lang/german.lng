@@ -1,6 +1,7 @@
 ##grflangid 0x02
 ##plural 0
 ##gender m w n p
+# this is the default translation and is en-gb
 STR_GRF_DESCRIPTION                                             :Lizenz: {SILVER}GPL v2{}{BLACK}
 
 STR_PARAM_ADJUST_VEHICLE_CAPACITY                               :Zugkapazität
@@ -24,6 +25,9 @@ STR_NAME_SUFFIX_MEDIUM                                          :Mittel
 STR_NAME_SUFFIX_LARGE                                           :Groß
 
 # wagon class suffixes
+# as of Jan 2019 these are switched from en-us to en-gb
+# the en-us translation should be updated appropriately when making changes here
+# !! consider splitting strings per roster?? A caboose is still a caboose in en-gb, not a brake van
 STR_NAME_SUFFIX_BOX_CAR                                         :geschlossener Wagen
 STR_NAME_SUFFIX_CABOOSE_CAR                                     :Bremserwagen
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :gedeckter Schüttgutwagen

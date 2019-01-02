@@ -1,6 +1,7 @@
 ##grflangid 0x3a
 ##plural 11
 ##gender m f
+# this is the default translation and is en-gb
 STR_GRF_DESCRIPTION                                             :라이선스: {SILVER}GPL v2{}{BLACK}
 
 STR_PARAM_ADJUST_VEHICLE_CAPACITY                               :열차 정원
@@ -26,6 +27,9 @@ STR_NAME_SUFFIX_MEDIUM                                          :중간
 STR_NAME_SUFFIX_LARGE                                           :큼
 
 # wagon class suffixes
+# as of Jan 2019 these are switched from en-us to en-gb
+# the en-us translation should be updated appropriately when making changes here
+# !! consider splitting strings per roster?? A caboose is still a caboose in en-gb, not a brake van
 STR_NAME_SUFFIX_BOX_CAR                                         :유개차
 STR_NAME_SUFFIX_CABOOSE_CAR                                     :차장차
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :유개호퍼차
