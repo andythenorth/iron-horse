@@ -1,5 +1,6 @@
 ##grflangid 0x01
 ##plural 0
+# this is the default translation and is en-gb
 STR_GRF_DESCRIPTION                                             :License: {SILVER}GPL v2{}{BLACK}
 
 STR_PARAM_ADJUST_VEHICLE_CAPACITY                               :Train capacity
@@ -25,30 +26,33 @@ STR_NAME_SUFFIX_MEDIUM                                          :Medium
 STR_NAME_SUFFIX_LARGE                                           :Large
 
 # wagon class suffixes
-STR_NAME_SUFFIX_BOX_CAR                                         :Box Car
-STR_NAME_SUFFIX_CABOOSE_CAR                                     :Caboose Car
-STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Covered Hopper Car
+# as of Jan 2019 these are switched from en-us to en-gb
+# the en-us translation should be updated appropriately when making changes here
+# !! consider splitting strings per roster?? A caboose is still a caboose in en-gb, not a brake van
+STR_NAME_SUFFIX_BOX_CAR                                         :Box Van
+STR_NAME_SUFFIX_CABOOSE_CAR                                     :Brake Van
+STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Covered Hopper
 STR_NAME_SUFFIX_DUMP_CAR                                        :Dump Car
-STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Edibles Tank Car
+STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Edibles Tanker
 STR_NAME_SUFFIX_EXPRESS_CAR                                     :Express Car
-STR_NAME_SUFFIX_FLAT_CAR                                        :Flat Car
-STR_NAME_SUFFIX_FRUIT_VEG_CAR                                   :Fruit & Vegetables Car
+STR_NAME_SUFFIX_FLAT_CAR                                        :Flat Wagon
+STR_NAME_SUFFIX_FRUIT_VEG_CAR                                   :Fruit & Vegetables Van
 STR_NAME_SUFFIX_HIGH_SPEED_MAIL_CAR                             :High Speed Mail Car
 STR_NAME_SUFFIX_HIGH_SPEED_PASSENGER_CAR                        :High Speed Passenger Car
-STR_NAME_SUFFIX_HOPPER_CAR                                      :Hopper Car
+STR_NAME_SUFFIX_HOPPER_CAR                                      :Hopper
 STR_NAME_SUFFIX_INTERMODAL_CAR                                  :Intermodal Car
-STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Livestock Car
-STR_NAME_SUFFIX_LUXURY_PASSENGER_CAR                            :Luxury Passenger Car
-STR_NAME_SUFFIX_MAIL_CAR                                        :Mail Car
-STR_NAME_SUFFIX_METAL_CAR                                       :Metal Car
-STR_NAME_SUFFIX_OPEN_CAR                                        :Open Car
-STR_NAME_SUFFIX_PASSENGER_CAR                                   :Passenger Car
-STR_NAME_SUFFIX_REEFER_CAR                                      :Refrigerated Car
-STR_NAME_SUFFIX_SILO_CAR                                        :Silo Car
-STR_NAME_SUFFIX_STAKE_CAR                                       :Stake Car
-STR_NAME_SUFFIX_TANK_CAR                                        :Tank Car
-STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Vehicle Transporter Car
-STR_NAME_SUFFIX_WELL_CAR                                        :Well Car
+STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Livestock Wagon
+STR_NAME_SUFFIX_LUXURY_PASSENGER_CAR                            :Luxury Passenger Coach
+STR_NAME_SUFFIX_MAIL_CAR                                        :Mail Van
+STR_NAME_SUFFIX_METAL_CAR                                       :Metal Wagon
+STR_NAME_SUFFIX_OPEN_CAR                                        :Open Wagon
+STR_NAME_SUFFIX_PASSENGER_CAR                                   :Passenger Coach
+STR_NAME_SUFFIX_REEFER_CAR                                      :Refrigerated Van
+STR_NAME_SUFFIX_SILO_CAR                                        :Silo Wagon
+STR_NAME_SUFFIX_STAKE_CAR                                       :Stake Wagon
+STR_NAME_SUFFIX_TANK_CAR                                        :Tanker
+STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Vehicle Transporter
+STR_NAME_SUFFIX_WELL_CAR                                        :Well Wagon
 
 # project management
 STR_SPRITES_COMPLETE                                            :{}Sprites Complete: {GOLD}Yup
