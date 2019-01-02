@@ -14,7 +14,8 @@
       spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.id}_${flipped}(10 + 30)
     }
 
-    spritegroup ${vehicle.id}_sg_${flipped} {
+    <!--! be aware that 'loaded' in nml is really 'moving', i.e. not in a station loading/unloading -->
+    spritegroup ${vehicle.id}_sg_part_load_or_empty_${flipped} {
         loaded:  [
             ${vehicle.id}_ss_doors_closed_${flipped},
         ];
@@ -22,12 +23,26 @@
             ${vehicle.id}_ss_doors_open_${flipped},
         ];
     }
+    spritegroup ${vehicle.id}_sg_full_load_${flipped} {
+        loaded:  [
+            ${vehicle.id}_ss_doors_closed_${flipped},
+        ];
+        loading: [
+            ${vehicle.id}_ss_doors_closed_${flipped},
+        ];
+    }
+    <!--! spritegroups aren't needed here, the loading state is calculated explicitly -->
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_percent_loaded_${flipped}, cargo_count*100/cargo_capacity) {
+            0..99: return ${vehicle.id}_sg_part_load_or_empty_${flipped};
+        return ${vehicle.id}_sg_full_load_${flipped};
+    }
+
 </tal:user_flipped>
 
 // handle user flipped state
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, vehicle_is_flipped) {
-    1: return ${vehicle.id}_sg_flipped;
-    return ${vehicle.id}_sg_unflipped;
+    1: return ${vehicle.id}_switch_graphics_percent_loaded_flipped;
+    return ${vehicle.id}_switch_graphics_percent_loaded_unflipped;
 }
 
 <tal:include metal:use-macro="load: graphics_switches.pynml" />
