@@ -2,7 +2,7 @@ Changelog
 =========
 
 ---------------------
-2.0.0 Alpha 1 Release
+2.0.0 Alpha 2 Release
 ---------------------
 
 Iron Horse 2.
@@ -23,6 +23,30 @@ Designed to be used with 'vehicles expire' set to to 'on', Horse 2 has a *lot* o
 - no savegame compatibility with Iron Horse 1
 - can be used _alongside_ Iron Horse 1, if you must (kind of odd, but eh)
 
+*Changes from 2.0.0 Alpha 1*
+
+- no savegame compatibility with 2.0.0 Alpha 1
+- adjusted small freight engines
+    - renamed Faun to Hercules
+    - added Goliath small freight engine
+    - improved sprites
+- reorganised express engines
+    - Dragon is now high-HP and is an upgrade from Pegasus, not Tencendur
+    - added Kelpie, upgrade from Tencendur
+    - added Griffon, upgrade from Kelpie
+    - Shredder adjusted, now a smaller engine, in gen 6, upgrade from Griffon
+    - changed colour scheme of Turtle
+- electric freight engines
+    - added Gosling Blast gen 6 electric freight engine
+    - adjusted HP for Peasweep and Flanders Storm for balance
+- added Express Cars as an alternative to Mail cars
+- completed all sprites for narrow gauge wagons
+- wagons with opening doors now close them in stations if fully loaded
+- reorganised engines in buy menu
+- changed the en-gb translation to use more typically British names for wagons
+- updated translations from web translators
+
+
 -------------
 1.9.1 Release
 -------------
@@ -31,6 +55,7 @@ Designed to be used with 'vehicles expire' set to to 'on', Horse 2 has a *lot* o
 
 - weight was too high for Slammer and Tin Rocket, now reduced
 - Tin Rocket HP reduced in line with reduced weight
+
 
 -------------
 1.9.0 Release
