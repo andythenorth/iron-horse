@@ -12,7 +12,7 @@ consist = EngineConsist(id='kelpie',
                         random_reverse=True,
                         intro_date_offset=-2, # let's not have everything turn up in 1960
                         gen=4,
-                        sprites_complete=False)
+                        sprites_complete=True)
 
 consist.add_unit(type=DieselEngineUnit,
                  weight=72,
