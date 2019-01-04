@@ -11,7 +11,7 @@ consist = EngineConsist(id='shredder',
                         power=1850,
                         random_reverse=True,
                         gen=6,
-                        sprites_complete=False)
+                        sprites_complete=True)
 
 consist.add_unit(type=DieselEngineUnit,
                  weight=74,
