@@ -79,7 +79,7 @@ $(NML_FILE): $(shell $(FIND_FILES) --ext=.py --ext=.pynml src)
 	$(_V) $(PYTHON3) src/render_nml.py $(ARGS)
 
 $(GRF_FILE): $(GRAPHICS_DIR) $(LANG_DIR) $(NML_FILE) $(HTML_DOCS)
-	time $(NMLC) $(NML_FLAGS) --grf=$(GRF_FILE) $(NML_FILE)
+	$(NMLC) $(NML_FLAGS) --grf=$(GRF_FILE) $(NML_FILE)
 
 $(TAR_FILE): $(GRF_FILE)
 # the goal here is a sparse tar that bananas will accept; bananas can't accept html docs etc, hence they're not included
