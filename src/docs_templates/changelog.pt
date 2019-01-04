@@ -30,11 +30,12 @@ Designed to be used with 'vehicles expire' set to to 'on', Horse 2 has a *lot* o
     - renamed Faun to Hercules
     - added Goliath small freight engine
     - improved sprites
+    - adjusted HP to balance away from medium-sized express engine
 - reorganised express engines
     - Dragon is now high-HP and is an upgrade from Pegasus, not Tencendur
     - added Kelpie, upgrade from Tencendur
     - added Griffon, upgrade from Kelpie
-    - Shredder adjusted, now a smaller engine, in gen 6, upgrade from Griffon
+    - Shredder adjusted, now a medium-sized engine, in gen 6, upgrade from Griffon
     - changed colour scheme of Turtle
 - electric freight engines
     - added Gosling Blast gen 6 electric freight engine
