@@ -104,7 +104,7 @@ def main():
                              base_numeric_id=1500,
                              gen=6,
                              subtype='A',
-                             sprites_complete=False)
+                             sprites_complete=True)
 
     consist.add_unit(type=ExpressCar,
                      vehicle_length=4,
@@ -114,7 +114,7 @@ def main():
                              base_numeric_id=1510,
                              gen=6,
                              subtype='B',
-                             sprites_complete=False)
+                             sprites_complete=True)
 
     consist.add_unit(type=ExpressCar,
                      vehicle_length=6,
