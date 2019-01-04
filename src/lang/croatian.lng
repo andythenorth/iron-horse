@@ -34,7 +34,7 @@ STR_NAME_SUFFIX_LARGE                                           :Veliki
 STR_NAME_SUFFIX_BOX_CAR                                         :Zatvoreni vagon
 STR_NAME_SUFFIX_CABOOSE_CAR                                     :Vagon za kočničara
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Pokriveni vagon za rasuti teret
-STR_NAME_SUFFIX_DUMP_CAR                                        :Kiper
+STR_NAME_SUFFIX_DUMP_CAR                                        :Vagon za rudače
 STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Vagon cisterna za prehrambene proizvode
 STR_NAME_SUFFIX_EXPRESS_CAR                                     :Ekspresni vagon
 STR_NAME_SUFFIX_FLAT_CAR                                        :Plato-vagon
