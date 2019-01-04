@@ -4,7 +4,7 @@ grf {
 	name: string(STR_GRF_NAME);
 	desc: string(STR_GRF_DESCRIPTION);
 	version: ${makefile_args.repo_revision};
-	min_compatible_version: 1449;
+	min_compatible_version: 2928;
 	param 0 {
         param_adjust_vehicle_capacity {
             type:    int;
