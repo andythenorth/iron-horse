@@ -130,9 +130,11 @@ class Pipeline(object):
                 pantograph_spritesheet = self.make_spritesheet_from_image(pantograph_output_image)
                 pantograph_output_path = os.path.join(currentdir, 'generated', 'graphics', self.consist.id + '_pantographs_' + pantograph_state + '.png')
                 self.units.append(GenerateAdditionalSpritesheet(pantograph_spritesheet, pantograph_output_path))
-                # custom buy menu handling (quite hax as of Jan 2019)
-                # as of Jan 2019 defaulting to 'down' pans in purchase menu, might change to 'up', dunno
+                # will be used for custom buy menu handling
+                # default to 'down' pans in purchase menu, looks better than up
                 if pantograph_state == 'down':
+                    pantograph_down_output_image = pantograph_output_image
+                    # hax, trying to refactor so this is all handled in buy menu function
                     if len(self.consist.units) > 1:
                         # this is silly, it copies the custom buy menu sprite and reinserts it
                         # this to avoid wrapping a conditional around self.units.append(AddBuyMenuSprite...) below
@@ -143,6 +145,9 @@ class Pipeline(object):
                         # !! this approach won't work when custom buy menu sprites are used - there aren't many of those, just draw in the buy menu sprite pantographs in that case?
                         buy_menu_sprites = pantograph_output_image.copy().crop((224, 40, 257, 86))
                     self.units.append(AddBuyMenuSprite(buy_menu_sprites, (360, 10, 393, 56)))
+
+        # unusually, here we return an image, which we'll want to use further down the pipeline for buy menu sprites
+        return pantograph_down_output_image
 
     def get_arbitrary_angles(self, input_image, bounding_boxes):
         # given an image and a list of arbitrary bounding boxes...
@@ -752,7 +757,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                                             x_offset=self.sprites_max_x_extent + 5,
                                             y_offset= -1 * cargo_group_output_row_height))
 
-    def add_custom_buy_menu_sprite(self):
+    def add_custom_buy_menu_sprite(self, pantograph_down_output_image):
         # hard-coded positions for buy menu sprite (if used - it's optional)
         crop_box = (360,
                     10,
@@ -810,10 +815,13 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             self.vehicle_unit = None
 
         if self.consist.pantograph_type is not None:
-            self.add_pantograph_spritesheet(global_constants)
+            pantograph_down_output_image = self.add_pantograph_spritesheet(global_constants)
+            print("Is pantograph_down_output_image actually used?")
+        else:
+            pantograph_down_output_image = None
 
         if self.consist.buy_menu_x_loc == 360:
-            self.add_custom_buy_menu_sprite()
+            self.add_custom_buy_menu_sprite(pantograph_down_output_image)
 
         input_image = Image.open(self.input_path).crop((0, 0, graphics_constants.spritesheet_width, 10))
         result = self.render_common(input_image, self.units)
