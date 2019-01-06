@@ -219,6 +219,7 @@ class PassThroughAndGenerateAdditionalSpritesheetsPipeline(Pipeline):
         self.consist = consist
 
         if self.consist.pantograph_type is not None:
+            print("Oof, forgot there were additional pipelines handling pans")
             self.add_pantograph_spritesheet(global_constants)
 
         input_image = Image.open(self.input_path)
