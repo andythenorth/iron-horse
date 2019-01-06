@@ -527,6 +527,7 @@ class PassengerVeryHighSpeedMiddleEngineConsist(PassengerEngineConsist):
         self.wagons_add_power = True
         self.tilt_bonus = True
         # Graphics configuration
+        self.roof_type = 'pax_mail_smooth'
         # 1 livery as can't be flipped, 1 spriterow may be left blank for compatibility with Gestalt (TBC)
         # position variants
         # * unit with driving cabs both ends
@@ -535,7 +536,7 @@ class PassengerVeryHighSpeedMiddleEngineConsist(PassengerEngineConsist):
         # * unit with no cabs (center car)
         # ruleset will combine these to make multiple-units n vehicles long
         spriterow_group_mappings = {'pax': {'default': 0, 'first': 1, 'last': 2, 'special': 3}}
-        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings, consist_ruleset="pax_very_high_speed")
+        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings, consist_ruleset="pax_cars")
 
     @property
     def cab_power(self):

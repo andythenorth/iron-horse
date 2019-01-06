@@ -186,26 +186,6 @@
             }
         </tal:position_ruleset>
 
-        <tal:position_ruleset condition="consist.gestalt_graphics.consist_ruleset == 'pax_very_high_speed'">
-            switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_position_check_special_${cargo_label}, position_in_vehid_chain % 5) {
-                <!--! show special every n units -->
-                2: return ${vehicle.id}_switch_graphics_engine_id_${variants['special']};
-                return ${vehicle.id}_switch_graphics_engine_id_${variants['default']};
-            }
-
-            switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_position_in_consist_check_last_${cargo_label}, position_in_vehid_chain_from_end) {
-                <!--! if last unit in sequence -->
-                0: return ${vehicle.id}_switch_graphics_engine_id_${variants['last']};
-                ${vehicle.id}_switch_graphics_position_check_special_${cargo_label};
-            }
-
-            switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_position_in_consist_entry_point_${cargo_label}, position_in_vehid_chain) {
-                <!--! if first unit in sequence -->
-                0: return ${vehicle.id}_switch_graphics_engine_id_${variants['first']};
-                ${vehicle.id}_switch_graphics_position_in_consist_check_last_${cargo_label};
-            }
-        </tal:position_ruleset>
-
         <tal:position_ruleset condition="consist.gestalt_graphics.consist_ruleset == 'mail_cars'">
             switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_position_default_${cargo_label}, 0) {
                 return ${vehicle.id}_switch_graphics_engine_id_${variants['default']};

@@ -813,6 +813,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             self.add_pantograph_spritesheet(global_constants)
 
         if self.consist.buy_menu_x_loc == 360:
+            print(self.consist.pantograph_type)
             self.add_custom_buy_menu_sprite()
 
         input_image = Image.open(self.input_path).crop((0, 0, graphics_constants.spritesheet_width, 10))
