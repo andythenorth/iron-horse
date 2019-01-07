@@ -206,7 +206,7 @@ class PassThroughPipeline(Pipeline):
         self.consist = consist
 
         input_image = Image.open(self.input_path)
-        result = self.render_common(self.consist, input_image, self.units)
+        result = self.render_common(input_image, self.units)
         return result
 
 
@@ -842,11 +842,10 @@ def get_pipeline(pipeline_name):
     # add pipelines here when creating new ones
     # this is a bit hokey, there's probably a simpler way to do this but eh
     # refactored October 2018 to be less hokey (and to not keep initing pipelines just to check their name)
-    pipelines= {"pass_through_pipeline": PassThroughPipeline,
-                "extend_spriterows_for_composited_sprites_pipeline": ExtendSpriterowsForCompositedSpritesPipeline,
-                "pass_through_and_generate_additional_spritesheets_pipeline": PassThroughAndGenerateAdditionalSpritesheetsPipeline}
+    pipelines = {"pass_through_pipeline": PassThroughPipeline,
+                 "extend_spriterows_for_composited_sprites_pipeline": ExtendSpriterowsForCompositedSpritesPipeline,
+                 "pass_through_and_generate_additional_spritesheets_pipeline": PassThroughAndGenerateAdditionalSpritesheetsPipeline}
     pipeline = pipelines[pipeline_name]
-    print("Can there be multiple pipelines per gestalt? - this would ease the buy menu question and would avoid having to pass functions around")
     return pipeline()
 
 def main():

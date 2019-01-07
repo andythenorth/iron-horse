@@ -41,8 +41,8 @@ class GestaltGraphicsOnlyAddPantographs(GestaltGraphics):
     """
     def __init__(self):
         # no graphics processing by default
-        self.pipelines = [pipelines.get_pipeline('pass_through_and_generate_additional_spritesheets_pipeline')]
-
+        #self.pipelines = [pipelines.get_pipeline('pass_through_pipeline'), pipelines.get_pipeline('pass_through_and_generate_additional_spritesheets_pipeline')]
+        self.pipelines = [pipelines.get_pipeline('pass_through_pipeline'), pipelines.get_pipeline('pass_through_and_generate_additional_spritesheets_pipeline')]
 
 class GestaltGraphicsVisibleCargo(GestaltGraphics):
     """
