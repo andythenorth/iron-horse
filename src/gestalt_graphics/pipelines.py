@@ -134,6 +134,7 @@ class Pipeline(object):
                 pantograph_spritesheet = self.make_spritesheet_from_image(pantograph_output_image)
                 pantograph_output_path = os.path.join(currentdir, 'generated', 'graphics', self.consist.id + '_pantographs_' + pantograph_state + '.png')
                 self.units.append(GenerateAdditionalSpritesheet(pantograph_spritesheet, pantograph_output_path))
+
                 # will be used for custom buy menu handling
                 # default to 'down' pans in purchase menu, looks better than up
                 if pantograph_state == 'down':
@@ -144,16 +145,12 @@ class Pipeline(object):
                         # this to avoid wrapping a conditional around self.units.append(AddBuyMenuSprite...) below
                         # but eh, hitting complexity limits here IMHO
                         buy_menu_sprites = vehicle_input_image.copy().crop((360, 10, 393, 56))
-                    else:
-                        # !! these hard-coded values should really be using graphics_constants.spriterow_height etc
-                        # !! this approach won't work when custom buy menu sprites are used - there aren't many of those, just draw in the buy menu sprite pantographs in that case?
-                        buy_menu_sprites = pantograph_output_image.copy().crop((224, 40, 257, 86))
                     # !! we don't want to be doing this, this causes buy menu sprite to be drawn in vehicle spritesheet
                     # !! we want buy menu sprites provided in pantograph spritessheets
                     # !! there's no trivial way to reuse AddBuyMenuSprite unit, because it operates on the original Spritesheet
                     # !! instead make add_custom_buy_menu_sprite generic so it can return a buy menu image from any given spritesheet
                     # !! then paste that directly into the pantograph spritesheet
-                    self.units.append(AddBuyMenuSprite(buy_menu_sprites, (360, 10, 393, 56), foo_test))
+                    #self.units.append(AddBuyMenuSprite(buy_menu_sprites, (360, 10, 393, 56), foo_test))
 
         # unusually, here we return an image, which we'll want to use further down the pipeline for buy menu sprites
         return pantograph_down_output_image
