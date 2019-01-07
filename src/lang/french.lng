@@ -35,8 +35,9 @@ STR_NAME_SUFFIX_CABOOSE_CAR                                     :Fourgon-frein
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Wagon-trémie couvert
 STR_NAME_SUFFIX_DUMP_CAR                                        :Wagon à benne basculante
 STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Wagon-citerne alimentaire
+STR_NAME_SUFFIX_EXPRESS_CAR                                     :Fourgon express
 STR_NAME_SUFFIX_FLAT_CAR                                        :Wagon plat
-STR_NAME_SUFFIX_FRUIT_VEG_CAR                                   :Wagon de fruits et végétaux
+STR_NAME_SUFFIX_FRUIT_VEG_CAR                                   :Wagon de fruits et légumes
 STR_NAME_SUFFIX_HOPPER_CAR                                      :Wagon-trémie
 STR_NAME_SUFFIX_INTERMODAL_CAR                                  :Wagon intermodal
 STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Wagon à bétail
@@ -50,5 +51,8 @@ STR_NAME_SUFFIX_SILO_CAR                                        :Wagon-silo
 STR_NAME_SUFFIX_STAKE_CAR                                       :Wagon à ranchers
 STR_NAME_SUFFIX_TANK_CAR                                        :Wagon-citerne
 STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Wagon porte-automobiles
+STR_NAME_SUFFIX_WELL_CAR                                        :Wagon surbaissé
 
 # project management
+STR_SPRITES_COMPLETE                                            :{}Sprites terminés{NBSP}: {GOLD}oui
+STR_SPRITES_INCOMPLETE                                          :{}Sprites terminés{NBSP}: {GOLD}non
