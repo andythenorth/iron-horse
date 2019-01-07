@@ -210,11 +210,11 @@ class PassThroughPipeline(Pipeline):
         return result
 
 
-class PassThroughAndGenerateAdditionalSpritesheetsPipeline(Pipeline):
+class GeneratePantographSpritesheetsPipeline(Pipeline):
     """
-    Leaves the input spritesheet unchanged (opens and saves), whilst generating additional spritesheets as new files.
+    Adds additional spritesheets for pantographs (up and down), which are provided in the grf as sprite layers.
     Whilst this is not a common use case, when it's needed, it's needed.
-    The original case for this was pantographs, it could also be used for other specific sprite overlays that use in-game compositing.
+    Similar approach can be used for anything else provided in sprite layers.
     """
     def __init__(self):
         # this should be sparse, don't store any consist info in Pipelines, pass at render time
@@ -224,9 +224,8 @@ class PassThroughAndGenerateAdditionalSpritesheetsPipeline(Pipeline):
         self.units = []
         self.consist = consist
 
-        if self.consist.pantograph_type is not None:
-            print("Oof, forgot there were additional pipelines handling pans")
-            self.add_pantograph_spritesheet(global_constants)
+        print("Oof, forgot there were additional pipelines handling pans")
+        self.add_pantograph_spritesheet(global_constants)
 
         # any other layers we need to generate would be handled here
 
@@ -844,7 +843,7 @@ def get_pipelines(pipeline_names):
     # looks like it could be replaced by a simple dict lookup directly from gestal_graphics, but eh, I tried, it's faff
     pipelines = {"pass_through_pipeline": PassThroughPipeline,
                  "extend_spriterows_for_composited_sprites_pipeline": ExtendSpriterowsForCompositedSpritesPipeline,
-                 "pass_through_and_generate_additional_spritesheets_pipeline": PassThroughAndGenerateAdditionalSpritesheetsPipeline}
+                 "generate_pantograph_spritesheets": GeneratePantographSpritesheetsPipeline}
     return [pipelines[pipeline_name]() for pipeline_name in pipeline_names]
 
 def main():
