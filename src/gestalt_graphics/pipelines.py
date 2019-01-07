@@ -110,13 +110,9 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
     def __init__(self):
         # this should be sparse, don't store any consist info in Pipelines, pass at render time
         super().__init__()
-        print("GeneratePantographSpritesheetPipeline needs split to up xor down")
-        print('pantograph_state', self.pantograph_state)
-        # ^ do this by subclassing?  Or changing pipeline instantiation to allow a config parameter to be passed?
-        # ^^ just do sparse subclasses to set up or down
-        # it looks initially cleaner to do it with args, but it really isn't, subclasses are correct
 
     def add_pantograph_spritesheet(self, global_constants):
+        print("add_pantograph_spritesheet should be moved simply to render() method, and needs to handle up/down state coming from subclass")
         # !! this will eventually need extending for articulated vehicles
         # !! that can be done by weaving in a repeat over units, to draw multiple pantograph blocks, using the same pattern as the vehicle Spritesheet
         # !! the spriteset templates should then match the main vehicle, just changing path
