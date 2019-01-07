@@ -101,7 +101,7 @@ class PassThroughPipeline(Pipeline):
         return result
 
 
-class GeneratePantographSpritesheetPipeline(Pipeline):
+class GeneratePantographsSpritesheetPipeline(Pipeline):
     """
     Adds additional spritesheets for pantographs (up and down), which are provided in the grf as sprite layers.
     Whilst this is not a common use case, when it's needed, it's needed.
@@ -111,7 +111,10 @@ class GeneratePantographSpritesheetPipeline(Pipeline):
         # this should be sparse, don't store any consist info in Pipelines, pass at render time
         super().__init__()
         print("GeneratePantographSpritesheetPipeline needs split to up xor down")
+        print('pantograph_state', self.pantograph_state)
         # ^ do this by subclassing?  Or changing pipeline instantiation to allow a config parameter to be passed?
+        # ^^ just do sparse subclasses to set up or down
+        # it looks initially cleaner to do it with args, but it really isn't, subclasses are correct
 
     def add_pantograph_spritesheet(self, global_constants):
         # !! this will eventually need extending for articulated vehicles
@@ -230,6 +233,18 @@ class GeneratePantographSpritesheetPipeline(Pipeline):
         input_image = Image.open(self.input_path)
         result = self.render_common(input_image, self.units)
         return result
+
+
+class GeneratePantographsUpSpritesheetPipeline(GeneratePantographsSpritesheetPipeline):
+    pantograph_state = 'up'
+    def __init__(self):
+        super().__init__()
+
+
+class GeneratePantographsDownSpritesheetPipeline(GeneratePantographsSpritesheetPipeline):
+    pantograph_state = 'down'
+    def __init__(self):
+        super().__init__()
 
 
 class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
@@ -835,8 +850,8 @@ def get_pipelines(pipeline_names):
     # looks like it could be replaced by a simple dict lookup directly from gestal_graphics, but eh, I tried, it's faff
     pipelines = {"pass_through_pipeline": PassThroughPipeline,
                  "extend_spriterows_for_composited_sprites_pipeline": ExtendSpriterowsForCompositedSpritesPipeline,
-                 "generate_pantographs_up_spritesheet": GeneratePantographSpritesheetPipeline,
-                 "generate_pantographs_down_spritesheet": GeneratePantographSpritesheetPipeline}
+                 "generate_pantographs_up_spritesheet": GeneratePantographsUpSpritesheetPipeline,
+                 "generate_pantographs_down_spritesheet": GeneratePantographsDownSpritesheetPipeline}
     return [pipelines[pipeline_name]() for pipeline_name in pipeline_names]
 
 def main():
