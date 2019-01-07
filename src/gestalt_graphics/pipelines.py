@@ -205,7 +205,6 @@ class GeneratePantographSpritesheetPipeline(Pipeline):
                 # will be used for custom buy menu handling
                 # default to 'down' pans in purchase menu, looks better than up
                 if pantograph_state == 'down':
-                    pantograph_down_output_image = pantograph_output_image
                     # hax, trying to refactor so this is all handled in buy menu function
                     if len(self.consist.units) > 1:
                         # this is silly, it copies the custom buy menu sprite and reinserts it
@@ -218,9 +217,6 @@ class GeneratePantographSpritesheetPipeline(Pipeline):
                     # !! instead make add_custom_buy_menu_sprite generic so it can return a buy menu image from any given spritesheet
                     # !! then paste that directly into the pantograph spritesheet
                     #self.units.append(AddBuyMenuSprite(buy_menu_sprites, (360, 10, 393, 56), foo_test))
-
-        # unusually, here we return an image, which we'll want to use further down the pipeline for buy menu sprites
-        return pantograph_down_output_image
 
     def render(self, consist, global_constants):
         self.units = []
@@ -768,7 +764,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                                             x_offset=self.sprites_max_x_extent + 5,
                                             y_offset= -1 * cargo_group_output_row_height))
 
-    def add_custom_buy_menu_sprite(self, pantograph_down_output_image):
+    def add_custom_buy_menu_sprite(self):
         # hard-coded positions for buy menu sprite (if used - it's optional)
         crop_box = (360,
                     10,
@@ -825,16 +821,8 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             # self.vehicle_unit is hax, and is only valid inside this loop, so clear it to prevent incorrectly relying on it outside the loop in future :P
             self.vehicle_unit = None
 
-        if self.consist.pantograph_type is not None:
-            # !! I don't think this is reached - pans are handled differently
-            pantograph_down_output_image = self.add_pantograph_spritesheet(global_constants)
-            print("Is pantograph_down_output_image actually used?")
-        else:
-            pantograph_down_output_image = None
-            print("Is pantograph_down_output_image actually used?")
-
         if self.consist.buy_menu_x_loc == 360:
-            self.add_custom_buy_menu_sprite(pantograph_down_output_image)
+            self.add_custom_buy_menu_sprite()
 
         input_image = Image.open(self.input_path).crop((0, 0, graphics_constants.spritesheet_width, 10))
         result = self.render_common(input_image, self.units)
