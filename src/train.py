@@ -334,7 +334,7 @@ class Consist(object):
     def buy_menu_x_loc(self):
         # automatic buy menu sprite if single-unit consist
         # extend this to check an auto_buy_menu_sprite property if manual over-rides are needed in future
-        if self.pantograph_type is not None or len(self.units) > 1:
+        if len(self.units) > 1:
             return 360  # custom buy menu sprite
         else:
             # default to just using 6th angle of vehicle
