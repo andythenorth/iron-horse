@@ -101,7 +101,7 @@ class PassThroughPipeline(Pipeline):
         return result
 
 
-class GeneratePantographSpritesheetsPipeline(Pipeline):
+class GeneratePantographSpritesheetPipeline(Pipeline):
     """
     Adds additional spritesheets for pantographs (up and down), which are provided in the grf as sprite layers.
     Whilst this is not a common use case, when it's needed, it's needed.
@@ -110,6 +110,8 @@ class GeneratePantographSpritesheetsPipeline(Pipeline):
     def __init__(self):
         # this should be sparse, don't store any consist info in Pipelines, pass at render time
         super().__init__()
+        print("GeneratePantographSpritesheetPipeline needs split to up xor down")
+        # ^ do this by subclassing?  Or changing pipeline instantiation to allow a config parameter to be passed?
 
     def add_pantograph_spritesheet(self, global_constants):
         # !! this will eventually need extending for articulated vehicles
@@ -227,7 +229,7 @@ class GeneratePantographSpritesheetsPipeline(Pipeline):
         self.add_pantograph_spritesheet(global_constants)
 
         # then render the vehicle spritesheet
-        print("NB GeneratePantographSpritesheetsPipeline needs to render the pan spritesheet, not the vehicle")
+        print("NB GeneratePantographSpritesheetPipeline needs to render the pan spritesheet, not the vehicle")
         # !! ^^ kinda is, but make sure eh?
         input_image = Image.open(self.input_path)
         result = self.render_common(input_image, self.units)
@@ -824,10 +826,12 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             self.vehicle_unit = None
 
         if self.consist.pantograph_type is not None:
+            # !! I don't think this is reached - pans are handled differently
             pantograph_down_output_image = self.add_pantograph_spritesheet(global_constants)
             print("Is pantograph_down_output_image actually used?")
         else:
             pantograph_down_output_image = None
+            print("Is pantograph_down_output_image actually used?")
 
         if self.consist.buy_menu_x_loc == 360:
             self.add_custom_buy_menu_sprite(pantograph_down_output_image)
@@ -843,7 +847,8 @@ def get_pipelines(pipeline_names):
     # looks like it could be replaced by a simple dict lookup directly from gestal_graphics, but eh, I tried, it's faff
     pipelines = {"pass_through_pipeline": PassThroughPipeline,
                  "extend_spriterows_for_composited_sprites_pipeline": ExtendSpriterowsForCompositedSpritesPipeline,
-                 "generate_pantograph_spritesheets": GeneratePantographSpritesheetsPipeline}
+                 "generate_pantographs_up_spritesheet": GeneratePantographSpritesheetPipeline,
+                 "generate_pantographs_down_spritesheet": GeneratePantographSpritesheetPipeline}
     return [pipelines[pipeline_name]() for pipeline_name in pipeline_names]
 
 def main():
