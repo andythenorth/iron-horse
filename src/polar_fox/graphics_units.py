@@ -108,13 +108,21 @@ class AppendToSpritesheet(ProcessingUnit):
 class AddBuyMenuSprite(ProcessingUnit):
     """ AddBuyMenuSprite """
     """ Inserts at a defined position. """
-    def __init__(self, custom_buy_menu_sprite, crop_box):
+    def __init__(self, custom_buy_menu_sprite, crop_box, processing_function):
         self.custom_buy_menu_sprite = custom_buy_menu_sprite
         # 4 tuple for box size (left, upper, right, lower)
         self.crop_box = crop_box
+        # !! really, we're going to start passing functions around now?
+        # !! the rationale for this is that in some cases, we can't slice out buy menu sprites until the sprites are processed
+        # !! we need to do that in the pipeline, using this unit
+        # !! but this unit is in Polar Fox and generic, and shouldn't know too much about specific rules for RVs / trains / boats etc
+        # !! therefore we pass in a custom slicing / comping function to it at init, and use that when rendering
+        print("local hax on AddBuyMenuSprite - needs reimplemented in Polar Fox repo")
+        self.processing_function = processing_function
         super().__init__()
 
     def render(self, spritesheet):
+        self.processing_function()
         spritesheet.sprites.paste(self.custom_buy_menu_sprite, self.crop_box)
         return spritesheet
 

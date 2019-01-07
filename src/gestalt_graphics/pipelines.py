@@ -15,6 +15,9 @@ Pipelines can be dedicated to a single task such as SimpleRecolourPipeline
 Or they can compose units for more complicated tasks, such as colouring and loading a specific vehicle type
 """
 
+def foo_test():
+    print("Test - custom buy menu function called in render step")
+
 
 class Pipeline(object):
     def __init__(self):
@@ -45,7 +48,8 @@ class Pipeline(object):
 
     def add_pantograph_spritesheet(self, global_constants):
         # !! this will eventually need extending for articulated vehicles
-        # !! that can be done by weaving in a repeat over units, to draw multiple pantograph blocks, and then a multiplier to y offset in templates
+        # !! that can be done by weaving in a repeat over units, to draw multiple pantograph blocks, using the same pattern as the vehicle Spritesheet
+        # !! the spriteset templates should then match the main vehicle, just changing path
 
         pantograph_input_images = {'diamond-single': 'diamond.png', 'diamond-double': 'diamond.png',
                                    'z-shaped-single': 'z-shaped.png', 'z-shaped-double': 'z-shaped.png'}
@@ -144,7 +148,12 @@ class Pipeline(object):
                         # !! these hard-coded values should really be using graphics_constants.spriterow_height etc
                         # !! this approach won't work when custom buy menu sprites are used - there aren't many of those, just draw in the buy menu sprite pantographs in that case?
                         buy_menu_sprites = pantograph_output_image.copy().crop((224, 40, 257, 86))
-                    self.units.append(AddBuyMenuSprite(buy_menu_sprites, (360, 10, 393, 56)))
+                    # !! we don't want to be doing this, this causes buy menu sprite to be drawn in vehicle spritesheet
+                    # !! we want buy menu sprites provided in pantograph spritessheets
+                    # !! there's no trivial way to reuse AddBuyMenuSprite unit, because it operates on the original Spritesheet
+                    # !! instead make add_custom_buy_menu_sprite generic so it can return a buy menu image from any given spritesheet
+                    # !! then paste that directly into the pantograph spritesheet
+                    self.units.append(AddBuyMenuSprite(buy_menu_sprites, (360, 10, 393, 56), foo_test))
 
         # unusually, here we return an image, which we'll want to use further down the pipeline for buy menu sprites
         return pantograph_down_output_image
@@ -222,6 +231,9 @@ class PassThroughAndGenerateAdditionalSpritesheetsPipeline(Pipeline):
             print("Oof, forgot there were additional pipelines handling pans")
             self.add_pantograph_spritesheet(global_constants)
 
+        # any other layers we need to generate would be handled here
+
+        # then render the vehicle spritesheet
         input_image = Image.open(self.input_path)
         result = self.render_common(input_image, self.units)
         return result
@@ -766,7 +778,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                     26)
         custom_buy_menu_sprite = Image.open(self.input_path).crop(crop_box)
         #custom_buy_menu_sprite.show()
-        self.units.append(AddBuyMenuSprite(custom_buy_menu_sprite, crop_box))
+        self.units.append(AddBuyMenuSprite(custom_buy_menu_sprite, crop_box, foo_test))
 
     def render(self, consist, global_constants):
         self.units = [] # graphics units not same as consist units ! confusing overlap of terminology :(
