@@ -50,7 +50,6 @@ random_switch (FEAT_TRAINS, ${vehicle.location_of_random_bits_for_random_variant
 }
 
 // buy menu graphics chain
-<!--! !! this can be turned into a repeat over consist-defined layers -->
 spriteset(${vehicle.id}_ss_vehicle_purchase, "${global_constants.graphics_path}${consist.id}.png") {
   spriteset_template_purchase_${vehicle.id}(10)
 }
@@ -62,7 +61,6 @@ spriteset(${vehicle.id}_ss_vehicle_purchase, "${global_constants.graphics_path}$
         return ${vehicle.id}_ss_vehicle_purchase;
     }
 </tal:conditional_pantograph>
-
 
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase, getbits(extra_callback_info1, 8, 8)) {
     <tal:conditional_pantograph switch="consist.pantograph_type is not None">
