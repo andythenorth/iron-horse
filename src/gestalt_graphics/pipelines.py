@@ -846,6 +846,7 @@ def get_pipeline(pipeline_name):
                 "extend_spriterows_for_composited_sprites_pipeline": ExtendSpriterowsForCompositedSpritesPipeline,
                 "pass_through_and_generate_additional_spritesheets_pipeline": PassThroughAndGenerateAdditionalSpritesheetsPipeline}
     pipeline = pipelines[pipeline_name]
+    print("Can there be multiple pipelines per gestalt? - this would ease the buy menu question and would avoid having to pass functions around")
     return pipeline()
 
 def main():
