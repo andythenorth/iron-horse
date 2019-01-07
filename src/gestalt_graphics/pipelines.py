@@ -236,13 +236,17 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
 
 
 class GeneratePantographsUpSpritesheetPipeline(GeneratePantographsSpritesheetPipeline):
-    pantograph_state = 'up'
+    """ Sparse subclass, solely to set pan 'up' state (simplest way to implement this). """
+    pantograph_state = 'up' # lol, actually valid class vars
+
     def __init__(self):
         super().__init__()
 
 
 class GeneratePantographsDownSpritesheetPipeline(GeneratePantographsSpritesheetPipeline):
-    pantograph_state = 'down'
+    """ Sparse subclass, solely to set pan 'down' state (simplest way to implement this). """
+    pantograph_state = 'down' # lol, actually valid class vars
+
     def __init__(self):
         super().__init__()
 
