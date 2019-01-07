@@ -46,6 +46,71 @@ class Pipeline(object):
         # convenience method to get the path for the roof image
         return os.path.join(currentdir, 'src', 'graphics', 'roofs', self.vehicle_unit.roof + '.png')
 
+    def get_arbitrary_angles(self, input_image, bounding_boxes):
+        # given an image and a list of arbitrary bounding boxes...
+        # ...return a list of two tuples with sprite and mask
+        # this can then be used for compositing
+        # note the arbitrary order of sprites which makes this very flexible
+        result = []
+        for bounding_box in bounding_boxes:
+            sprite = input_image.copy()
+            sprite = sprite.crop(bounding_box)
+            mask = sprite.copy()
+            # !! .point is noticeably slow although not signifcantly so with only 3 cargo types
+            # !! check this again if optimisation is a concern - can cargos be processed once and passed to the pipeline?
+            # !! as of Oct 2018, I tested commenting out *all* piece cargo processing, including calls to this method
+            # !! that cut only 1s from an 11s graphics processing run on single CPU
+            # !! so optimising this is TMWFTLB currently; instead simply using multiprocessing cuts graphics run to 2s
+            mask = mask.point(lambda i: 0 if i == 0 else 255).convert("1")
+            result.append((sprite, mask))
+        return result
+
+    def render_common(self, input_image, units):
+        # expects to be passed a PIL Image object
+        # units is a list of objects, with their config data already baked in (don't have to pass anything to units except the spritesheet)
+        # each unit is then called in order, passing in and returning a pixa SpriteSheet
+        # finally the spritesheet is saved
+        output_path = os.path.join(currentdir, 'generated', 'graphics', self.consist.id + '.png')
+        spritesheet = self.make_spritesheet_from_image(input_image)
+
+        for unit in units:
+            spritesheet = unit.render(spritesheet)
+        # I don't normally leave commented-out code behind, but I'm bored of looking in the PIL docs for how to show the image during compile
+        #if self.consist.id == 'velaro_thing':
+            #spritesheet.sprites.show()
+        spritesheet.save(output_path)
+
+    def render(self, consist):
+        raise NotImplementedError("Implement me in %s" % repr(self))
+
+
+class PassThroughPipeline(Pipeline):
+    """
+    Solely opens the input image and saves it, this more of a theoretical case, there's no actual reason to use this.
+    """
+    def __init__(self):
+        # this should be sparse, don't store any consist info in Pipelines, pass at render time
+        super().__init__()
+
+    def render(self, consist, global_constants):
+        self.units = []
+        self.consist = consist
+
+        input_image = Image.open(self.input_path)
+        result = self.render_common(input_image, self.units)
+        return result
+
+
+class GeneratePantographSpritesheetsPipeline(Pipeline):
+    """
+    Adds additional spritesheets for pantographs (up and down), which are provided in the grf as sprite layers.
+    Whilst this is not a common use case, when it's needed, it's needed.
+    Similar approach can be used for anything else provided in sprite layers.
+    """
+    def __init__(self):
+        # this should be sparse, don't store any consist info in Pipelines, pass at render time
+        super().__init__()
+
     def add_pantograph_spritesheet(self, global_constants):
         # !! this will eventually need extending for articulated vehicles
         # !! that can be done by weaving in a repeat over units, to draw multiple pantograph blocks, using the same pattern as the vehicle Spritesheet
@@ -155,81 +220,15 @@ class Pipeline(object):
         # unusually, here we return an image, which we'll want to use further down the pipeline for buy menu sprites
         return pantograph_down_output_image
 
-    def get_arbitrary_angles(self, input_image, bounding_boxes):
-        # given an image and a list of arbitrary bounding boxes...
-        # ...return a list of two tuples with sprite and mask
-        # this can then be used for compositing
-        # note the arbitrary order of sprites which makes this very flexible
-        result = []
-        for bounding_box in bounding_boxes:
-            sprite = input_image.copy()
-            sprite = sprite.crop(bounding_box)
-            mask = sprite.copy()
-            # !! .point is noticeably slow although not signifcantly so with only 3 cargo types
-            # !! check this again if optimisation is a concern - can cargos be processed once and passed to the pipeline?
-            # !! as of Oct 2018, I tested commenting out *all* piece cargo processing, including calls to this method
-            # !! that cut only 1s from an 11s graphics processing run on single CPU
-            # !! so optimising this is TMWFTLB currently; instead simply using multiprocessing cuts graphics run to 2s
-            mask = mask.point(lambda i: 0 if i == 0 else 255).convert("1")
-            result.append((sprite, mask))
-        return result
-
-    def render_common(self, input_image, units):
-        # expects to be passed a PIL Image object
-        # units is a list of objects, with their config data already baked in (don't have to pass anything to units except the spritesheet)
-        # each unit is then called in order, passing in and returning a pixa SpriteSheet
-        # finally the spritesheet is saved
-        output_path = os.path.join(currentdir, 'generated', 'graphics', self.consist.id + '.png')
-        spritesheet = self.make_spritesheet_from_image(input_image)
-
-        for unit in units:
-            spritesheet = unit.render(spritesheet)
-        # I don't normally leave commented-out code behind, but I'm bored of looking in the PIL docs for how to show the image during compile
-        #if self.consist.id == 'velaro_thing':
-            #spritesheet.sprites.show()
-        spritesheet.save(output_path)
-
-    def render(self, consist):
-        raise NotImplementedError("Implement me in %s" % repr(self))
-
-
-class PassThroughPipeline(Pipeline):
-    """
-    Solely opens the input image and saves it, this more of a theoretical case, there's no actual reason to use this.
-    """
-    def __init__(self):
-        # this should be sparse, don't store any consist info in Pipelines, pass at render time
-        super().__init__()
-
     def render(self, consist, global_constants):
         self.units = []
         self.consist = consist
 
-        input_image = Image.open(self.input_path)
-        result = self.render_common(input_image, self.units)
-        return result
-
-
-class GeneratePantographSpritesheetsPipeline(Pipeline):
-    """
-    Adds additional spritesheets for pantographs (up and down), which are provided in the grf as sprite layers.
-    Whilst this is not a common use case, when it's needed, it's needed.
-    Similar approach can be used for anything else provided in sprite layers.
-    """
-    def __init__(self):
-        # this should be sparse, don't store any consist info in Pipelines, pass at render time
-        super().__init__()
-
-    def render(self, consist, global_constants):
-        self.units = []
-        self.consist = consist
-
-        print("Oof, forgot there were additional pipelines handling pans")
         self.add_pantograph_spritesheet(global_constants)
 
-        # any other layers we need to generate would be handled here
-
         # then render the vehicle spritesheet
+        print("NB GeneratePantographSpritesheetsPipeline needs to render the pan spritesheet, not the vehicle")
+        # !! ^^ kinda is, but make sure eh?
         input_image = Image.open(self.input_path)
         result = self.render_common(input_image, self.units)
         return result
@@ -245,8 +244,9 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
         Arguably there is some structural entity missing, between pipeline and unit.
         The methods maybe do too much without being encapsulated.
         Maybe a UnitConfig or something.
-        But it seems to work.
+        But it seems to work ok.
         And I can read it.
+        Which matters.
         So eh.
     """
     def __init__(self):
