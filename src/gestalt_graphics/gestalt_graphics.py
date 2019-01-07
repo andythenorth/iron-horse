@@ -41,8 +41,7 @@ class GestaltGraphicsOnlyAddPantographs(GestaltGraphics):
     """
     def __init__(self):
         # no graphics processing by default
-        #self.pipelines = [pipelines.get_pipeline('pass_through_pipeline'), pipelines.get_pipeline('pass_through_and_generate_additional_spritesheets_pipeline')]
-        self.pipelines = [pipelines.get_pipeline('pass_through_pipeline'), pipelines.get_pipeline('pass_through_and_generate_additional_spritesheets_pipeline')]
+        self.pipelines = pipelines.get_pipelines(['pass_through_pipeline', 'pass_through_and_generate_additional_spritesheets_pipeline'])
 
 class GestaltGraphicsVisibleCargo(GestaltGraphics):
     """
@@ -52,8 +51,7 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
     """
     def __init__(self, **kwargs):
         super().__init__()
-        # as of Jan 2018 only one pipeline is used, but support is in place for alternative pipelines
-        self.pipelines = [pipelines.get_pipeline('extend_spriterows_for_composited_sprites_pipeline')]
+        self.pipelines = pipelines.get_pipelines(['extend_spriterows_for_composited_sprites_pipeline'])
         # default body recolour to CC1, pass param to over-ride as needed
         self.body_recolour_map = kwargs.get('body_recolour_map', graphics_constants.body_recolour_CC1)
         # option for alternative livery, will be selected by player flip on depot, default to 1 if not set
@@ -183,7 +181,7 @@ class GestaltGraphicsBoxCarOpeningDoors(GestaltGraphics):
     def __init__(self, recolour_maps, **kwargs):
         super().__init__()
         # as of Jan 2018 only one pipeline is used, but support is in place for alternative pipelines
-        self.pipelines = [pipelines.get_pipeline('extend_spriterows_for_composited_sprites_pipeline')]
+        self.pipelines = pipelines.get_pipelines(['extend_spriterows_for_composited_sprites_pipeline'])
         # common format for recolour_maps provides multiple remaps
         # but just one livery remap is supported for this gestalt, and should be the first in the remap list
         self.recolour_map = recolour_maps[0][1]
@@ -216,7 +214,7 @@ class GestaltGraphicsCaboose(GestaltGraphics):
     def __init__(self, num_generations, recolour_maps, **kwargs):
         super().__init__()
         # as of Jan 2018 only one pipeline is used, but support is in place for alternative pipelines
-        self.pipelines = [pipelines.get_pipeline('extend_spriterows_for_composited_sprites_pipeline')]
+        self.pipelines = pipelines.get_pipelines(['extend_spriterows_for_composited_sprites_pipeline'])
         self.num_generations = num_generations
         # common format for recolour_maps provides multiple remaps
         # but just one livery remap is supported for this gestalt, and should be the first in the remap list
@@ -252,7 +250,7 @@ class GestaltGraphicsCargoSpecificLivery(GestaltGraphics):
     def __init__(self, recolour_maps, **kwargs):
         super().__init__()
         # as of Jan 2018 only one pipeline is used, but support is in place for alternative pipelines
-        self.pipelines = [pipelines.get_pipeline('extend_spriterows_for_composited_sprites_pipeline')]
+        self.pipelines = pipelines.get_pipelines(['extend_spriterows_for_composited_sprites_pipeline'])
         # recolour_maps map cargo labels to liveries, use 'DFLT' as the labe in the case of just one livery
         self.recolour_maps = recolour_maps
 
@@ -307,7 +305,7 @@ class GestaltGraphicsConsistSpecificLivery(GestaltGraphics):
     def __init__(self, spriterow_group_mappings, **kwargs):
         # no graphics processing for this gestalt
         super().__init__()
-        self.pipelines = [pipelines.get_pipeline('extend_spriterows_for_composited_sprites_pipeline')]
+        self.pipelines = pipelines.get_pipelines(['extend_spriterows_for_composited_sprites_pipeline'])
         # spriterow_group_mappings provided by subclass calling gestalt_graphics:
         # (1) consist-cargo types for which specific liveries are provided
         # (2) spriterow numbers for named positions in consist
@@ -396,7 +394,7 @@ class GestaltGraphicsCustom(GestaltGraphics):
     """
     def __init__(self, _cargo_row_map, _nml_template, generic_rows):
         super().__init__()
-        self.pipelines = [pipelines.get_pipeline('pass_through_pipeline')]
+        self.pipelines = pipelines.get_pipelines(['pass_through_pipeline'])
         # options
         self._nml_template = _nml_template
         self._cargo_row_map = _cargo_row_map

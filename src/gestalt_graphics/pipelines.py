@@ -837,16 +837,15 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
         result = self.render_common(input_image, self.units)
         return result
 
-def get_pipeline(pipeline_name):
+def get_pipelines(pipeline_names):
     # return a pipeline by name;
     # add pipelines here when creating new ones
     # this is a bit hokey, there's probably a simpler way to do this but eh
-    # refactored October 2018 to be less hokey (and to not keep initing pipelines just to check their name)
+    # looks like it could be replaced by a simple dict lookup directly from gestal_graphics, but eh, I tried, it's faff
     pipelines = {"pass_through_pipeline": PassThroughPipeline,
                  "extend_spriterows_for_composited_sprites_pipeline": ExtendSpriterowsForCompositedSpritesPipeline,
                  "pass_through_and_generate_additional_spritesheets_pipeline": PassThroughAndGenerateAdditionalSpritesheetsPipeline}
-    pipeline = pipelines[pipeline_name]
-    return pipeline()
+    return [pipelines[pipeline_name]() for pipeline_name in pipeline_names]
 
 def main():
     print("yeah, pipelines.main() does nothing")
