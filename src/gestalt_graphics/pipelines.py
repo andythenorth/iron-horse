@@ -65,6 +65,20 @@ class Pipeline(object):
             result.append((sprite, mask))
         return result
 
+    def add_custom_buy_menu_sprite(self):
+        # !! this needs to take a rendered spritesheet (passed as arg?), and on the basis of the consist units, assemble a buy menu sprite
+        # !! we'll need to get the processed pixels, rather than the input pixels,
+        # !! so this method might need to be passed to the graphics unit as an uncalled function, which is then called until that unit renders
+        # !! (otherwise polar fox has to know about trains, which is a nope)
+        # hard-coded positions for buy menu sprite (if used - it's optional)
+        crop_box = (360,
+                    10,
+                    425,
+                    26)
+        custom_buy_menu_sprite = Image.open(self.input_path).crop(crop_box)
+        #custom_buy_menu_sprite.show()
+        self.units.append(AddBuyMenuSprite(custom_buy_menu_sprite, crop_box, foo_test))
+
     def render_common(self, input_image, units, output_suffix=''):
         # expects to be passed a PIL Image object
         # units is a list of objects, with their config data already baked in (don't have to pass anything to units except the spritesheet)
@@ -111,7 +125,7 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
         # this should be sparse, don't store any consist info in Pipelines, pass at render time
         super().__init__()
 
-    def add_pantograph_spritesheet(self):
+    def add_pantograph_spriterows(self):
         # !! this will eventually need extending for articulated vehicles
         # !! that can be done by weaving in a repeat over units, to draw multiple pantograph blocks, using the same pattern as the vehicle Spritesheet
         # !! the spriteset templates should then match the main vehicle, just changing path
@@ -204,23 +218,22 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
                          self.global_constants.sprites_max_x_extent,
                          10 + (2 * graphics_constants.spriterow_height))
         self.units.append(AppendToSpritesheet(pantograph_spritesheet, crop_box_dest))
-        """
-        # will be used for custom buy menu handling
-        # default to 'down' pans in purchase menu, looks better than up
-        if pantograph_state == 'down':
-            # add buy menu unit appropriately
-        """
 
     def render(self, consist, global_constants):
         self.units = []
         self.consist = consist
         self.global_constants = global_constants
 
-        self.add_pantograph_spritesheet()
+        self.add_pantograph_spriterows()
 
-        # then render the vehicle spritesheet
-        print("NB GeneratePantographSpritesheetPipeline needs to render the pan spritesheet, not the vehicle")
-        # !! ^^ kinda is, but make sure eh?
+        # default to 'down' pans in purchase menu, looks better than up
+        if self.pantograph_state == 'down':
+            if self.consist.buy_menu_x_loc == 360:
+                # !! this currently will cause the vehicle spritesheet buy menu sprites to be copied to the pans spritesheet,
+                # !! it needs pixels from the pans spritesheet, but automated buy menu sprites need providing first
+                self.add_custom_buy_menu_sprite()
+
+        # this will render a spritesheet with an additional suffix, separate from the vehicle spritesheet
         input_image = Image.open(self.input_path).crop((0, 0, graphics_constants.spritesheet_width, 10))
         output_suffix = '_pantographs_' + self.pantograph_state
         result = self.render_common(input_image, self.units, output_suffix=output_suffix)
@@ -774,16 +787,6 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             self.units.append(AddCargoLabel(label=cargo_filename,
                                             x_offset=self.sprites_max_x_extent + 5,
                                             y_offset= -1 * cargo_group_output_row_height))
-
-    def add_custom_buy_menu_sprite(self):
-        # hard-coded positions for buy menu sprite (if used - it's optional)
-        crop_box = (360,
-                    10,
-                    425,
-                    26)
-        custom_buy_menu_sprite = Image.open(self.input_path).crop(crop_box)
-        #custom_buy_menu_sprite.show()
-        self.units.append(AddBuyMenuSprite(custom_buy_menu_sprite, crop_box, foo_test))
 
     def render(self, consist, global_constants):
         self.units = [] # graphics units not same as consist units ! confusing overlap of terminology :(
