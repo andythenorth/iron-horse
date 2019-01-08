@@ -4,7 +4,7 @@ currentdir = os.curdir
 from PIL import Image, ImageDraw
 
 import polar_fox
-from polar_fox.graphics_units import SimpleRecolour, AppendToSpritesheet, AddCargoLabel, AddBuyMenuSprite, GenerateAdditionalSpritesheet
+from polar_fox.graphics_units import SimpleRecolour, AppendToSpritesheet, AddCargoLabel, AddBuyMenuSprite
 from polar_fox.pixa import Spritesheet, pixascan
 from gestalt_graphics import graphics_constants
 
@@ -77,7 +77,7 @@ class Pipeline(object):
                     26)
         custom_buy_menu_sprite = Image.open(self.input_path).crop(crop_box)
         #custom_buy_menu_sprite.show()
-        self.units.append(AddBuyMenuSprite(custom_buy_menu_sprite, crop_box, foo_test))
+        self.units.append(AddBuyMenuSprite(custom_buy_menu_sprite, crop_box))
 
     def render_common(self, input_image, units, output_suffix=''):
         # expects to be passed a PIL Image object
