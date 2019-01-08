@@ -65,12 +65,12 @@ class Pipeline(object):
             result.append((sprite, mask))
         return result
 
-    def render_common(self, input_image, units):
+    def render_common(self, input_image, units, output_suffix=''):
         # expects to be passed a PIL Image object
         # units is a list of objects, with their config data already baked in (don't have to pass anything to units except the spritesheet)
         # each unit is then called in order, passing in and returning a pixa SpriteSheet
         # finally the spritesheet is saved
-        output_path = os.path.join(currentdir, 'generated', 'graphics', self.consist.id + '.png')
+        output_path = os.path.join(currentdir, 'generated', 'graphics', self.consist.id + output_suffix + '.png')
         spritesheet = self.make_spritesheet_from_image(input_image)
 
         for unit in units:
@@ -111,8 +111,7 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
         # this should be sparse, don't store any consist info in Pipelines, pass at render time
         super().__init__()
 
-    def add_pantograph_spritesheet(self, global_constants):
-        print("add_pantograph_spritesheet should be moved simply to render() method, and needs to handle up/down state coming from subclass")
+    def add_pantograph_spritesheet(self):
         # !! this will eventually need extending for articulated vehicles
         # !! that can be done by weaving in a repeat over units, to draw multiple pantograph blocks, using the same pattern as the vehicle Spritesheet
         # !! the spriteset templates should then match the main vehicle, just changing path
@@ -126,7 +125,7 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
         # only a 3 tuple in global constants bounding box definitions (no y position), we need a 4 tuple inc. y position
         # also the format of bounding boxes needs converted to PIL crop box format
         for yoffset in (10, 40):
-            for bbox in global_constants.spritesheet_bounding_boxes_asymmetric_unreversed:
+            for bbox in self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed:
                 bboxes.append([bbox[0], yoffset, bbox[0] + bbox[1], yoffset + bbox[2]])
 
         pantograph_sprites = self.get_arbitrary_angles(pantograph_input_image, bboxes)
@@ -159,75 +158,72 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
         empty_spriterow_image = empty_spriterow_image.crop((0, 10, graphics_constants.spritesheet_width, 10 + graphics_constants.spriterow_height))
         #empty_spriterow_image.show()
 
-        for pantograph_state, state_map in spriterow_pantograph_state_maps[self.consist.pantograph_type].items():
-            # create the empty spritesheet to paste into; in some cases this creates redundant spriterows, but it's fine
-            pantograph_output_image = Image.new("P", (graphics_constants.spritesheet_width, (4 * graphics_constants.spriterow_height) + 10), 255)
-            pantograph_output_image.putpalette(DOS_PALETTE)
-            for i in range(3):
-                pantograph_output_image.paste(empty_spriterow_image, (0, 10 + (i * graphics_constants.spriterow_height)))
-            for pixel in loc_points:
-                angle_num = 0
-                for counter, bbox in enumerate(global_constants.spritesheet_bounding_boxes_asymmetric_unreversed):
-                    if pixel[0] >= bbox[0]:
-                        angle_num = counter
-                pantograph_sprite_num = angle_num
+        # create the empty spritesheet to paste into; in some cases this creates redundant spriterows, but it's fine
+        pantograph_output_image = Image.new("P", (graphics_constants.spritesheet_width, (4 * graphics_constants.spriterow_height) + 10), 255)
+        pantograph_output_image.putpalette(DOS_PALETTE)
+        for i in range(2):
+            pantograph_output_image.paste(empty_spriterow_image, (0, 10 + (i * graphics_constants.spriterow_height)))
 
-                pantograph_width = pantograph_sprites[pantograph_sprite_num][0].size[0]
-                pantograph_height = pantograph_sprites[pantograph_sprite_num][0].size[1]
-                # the +1s for height adjust the crop box to include the loc point
-                # (needed beause loc points are left-bottom not left-top as per co-ordinate system, makes drawing loc points easier)
-                pantograph_bounding_box = (pixel[0],
-                                           pixel[1] - pantograph_height + 1,
-                                           pixel[0] + pantograph_width,
-                                           pixel[1] + 1)
-                if pixel[2] == 164:
-                    # it's b or B
-                    state_sprites = pantograph_state_sprite_map[state_map[1]]
-                else:
-                    # it's a or A
-                    state_sprites = pantograph_state_sprite_map[state_map[0]]
-                pantograph_output_image.paste(state_sprites[pantograph_sprite_num][0], pantograph_bounding_box, state_sprites[pantograph_sprite_num][1])
+        state_map = spriterow_pantograph_state_maps[self.consist.pantograph_type][self.pantograph_state]
+        for pixel in loc_points:
+            angle_num = 0
+            for counter, bbox in enumerate(self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed):
+                if pixel[0] >= bbox[0]:
+                    angle_num = counter
+            pantograph_sprite_num = angle_num
 
-                # add debug sprites with vehicle-pantograph comp for ease of checking
-                vehicle_debug_image = vehicle_input_image.copy().crop((0, 10, graphics_constants.spritesheet_width, 10 + graphics_constants.spriterow_height))
-                pantograph_output_image.paste(vehicle_debug_image, (0, 10 + graphics_constants.spriterow_height))
-                pantograph_debug_image = pantograph_output_image.copy().crop((0, 10, graphics_constants.spritesheet_width, 10 + graphics_constants.spriterow_height))
-                pantograph_debug_mask = pantograph_debug_image.copy()
-                pantograph_debug_mask = pantograph_debug_mask.point(lambda i: 0 if i == 255 or i == 0 else 255).convert("1") # the inversion here of blue and white looks a bit odd, but potato / potato
-                pantograph_output_image.paste(pantograph_debug_image, (0, 10 + graphics_constants.spriterow_height), pantograph_debug_mask)
+            pantograph_width = pantograph_sprites[pantograph_sprite_num][0].size[0]
+            pantograph_height = pantograph_sprites[pantograph_sprite_num][0].size[1]
+            # the +1s for height adjust the crop box to include the loc point
+            # (needed beause loc points are left-bottom not left-top as per co-ordinate system, makes drawing loc points easier)
+            pantograph_bounding_box = (pixel[0],
+                                       pixel[1] - pantograph_height + 1,
+                                       pixel[0] + pantograph_width,
+                                       pixel[1] + 1)
+            if pixel[2] == 164:
+                # it's b or B
+                state_sprites = pantograph_state_sprite_map[state_map[1]]
+            else:
+                # it's a or A
+                state_sprites = pantograph_state_sprite_map[state_map[0]]
+            pantograph_output_image.paste(state_sprites[pantograph_sprite_num][0], pantograph_bounding_box, state_sprites[pantograph_sprite_num][1])
 
-                # make spritesheet and filename
-                pantograph_spritesheet = self.make_spritesheet_from_image(pantograph_output_image)
-                pantograph_output_path = os.path.join(currentdir, 'generated', 'graphics', self.consist.id + '_pantographs_' + pantograph_state + '.png')
-                self.units.append(GenerateAdditionalSpritesheet(pantograph_spritesheet, pantograph_output_path))
+        # add debug sprites with vehicle-pantograph comp for ease of checking
+        vehicle_debug_image = vehicle_input_image.copy().crop((0, 10, graphics_constants.spritesheet_width, 10 + graphics_constants.spriterow_height))
+        pantograph_output_image.paste(vehicle_debug_image, (0, 10 + graphics_constants.spriterow_height))
+        pantograph_debug_image = pantograph_output_image.copy().crop((0, 10, graphics_constants.spritesheet_width, 10 + graphics_constants.spriterow_height))
+        pantograph_debug_mask = pantograph_debug_image.copy()
+        pantograph_debug_mask = pantograph_debug_mask.point(lambda i: 0 if i == 255 or i == 0 else 255).convert("1") # the inversion here of blue and white looks a bit odd, but potato / potato
+        pantograph_output_image.paste(pantograph_debug_image, (0, 10 + graphics_constants.spriterow_height), pantograph_debug_mask)
 
-                # will be used for custom buy menu handling
-                # default to 'down' pans in purchase menu, looks better than up
-                if pantograph_state == 'down':
-                    # hax, trying to refactor so this is all handled in buy menu function
-                    if len(self.consist.units) > 1:
-                        # this is silly, it copies the custom buy menu sprite and reinserts it
-                        # this to avoid wrapping a conditional around self.units.append(AddBuyMenuSprite...) below
-                        # but eh, hitting complexity limits here IMHO
-                        buy_menu_sprites = vehicle_input_image.copy().crop((360, 10, 393, 56))
-                    # !! we don't want to be doing this, this causes buy menu sprite to be drawn in vehicle spritesheet
-                    # !! we want buy menu sprites provided in pantograph spritessheets
-                    # !! there's no trivial way to reuse AddBuyMenuSprite unit, because it operates on the original Spritesheet
-                    # !! instead make add_custom_buy_menu_sprite generic so it can return a buy menu image from any given spritesheet
-                    # !! then paste that directly into the pantograph spritesheet
-                    #self.units.append(AddBuyMenuSprite(buy_menu_sprites, (360, 10, 393, 56), foo_test))
+        # make spritesheet
+        pantograph_spritesheet = self.make_spritesheet_from_image(pantograph_output_image)
+        pantograph_output_path = os.path.join(currentdir, 'generated', 'graphics', self.consist.id + '_pantographs_' + self.pantograph_state + '.png')
+        crop_box_dest = (0,
+                         10,
+                         self.global_constants.sprites_max_x_extent,
+                         10 + (2 * graphics_constants.spriterow_height))
+        self.units.append(AppendToSpritesheet(pantograph_spritesheet, crop_box_dest))
+        """
+        # will be used for custom buy menu handling
+        # default to 'down' pans in purchase menu, looks better than up
+        if pantograph_state == 'down':
+            # add buy menu unit appropriately
+        """
 
     def render(self, consist, global_constants):
         self.units = []
         self.consist = consist
+        self.global_constants = global_constants
 
-        self.add_pantograph_spritesheet(global_constants)
+        self.add_pantograph_spritesheet()
 
         # then render the vehicle spritesheet
         print("NB GeneratePantographSpritesheetPipeline needs to render the pan spritesheet, not the vehicle")
         # !! ^^ kinda is, but make sure eh?
-        input_image = Image.open(self.input_path)
-        result = self.render_common(input_image, self.units)
+        input_image = Image.open(self.input_path).crop((0, 0, graphics_constants.spritesheet_width, 10))
+        output_suffix = '_pantographs_' + self.pantograph_state
+        result = self.render_common(input_image, self.units, output_suffix=output_suffix)
         return result
 
 
