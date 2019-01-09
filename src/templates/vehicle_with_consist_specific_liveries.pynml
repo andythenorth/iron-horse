@@ -91,6 +91,16 @@
         </tal:livery_2_engine_ids>
         return ${vehicle.id}_switch_graphics_livery_1_${variant_num};
     }
+
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_layers_${variant_num}, getbits(extra_callback_info1, 8, 8)) {
+        0: return ${vehicle.id}_switch_graphics_engine_id_${variant_num};
+        <tal:conditional_pantograph condition="consist.pantograph_type is not None">
+            <!--! if there are pantographs to draw we will handle that later in the graphics chain,
+                  but we need to reserve layer 1 for the pantographs as well as layer 0 for the vehicle  -->
+            1: return ${vehicle.id}_switch_graphics_pantographs_${variant_num}_unflipped;
+        </tal:conditional_pantograph>
+    }
+
 </tal:consist_cargo_variants>
 
 <tal:position_in_consist repeat="cargo_row_map consist.gestalt_graphics.cargo_row_map.items()">
@@ -100,14 +110,14 @@
               these could be extended or made arbitrary, but that's unwanted complexity -->
         <tal:position_ruleset condition="consist.gestalt_graphics.consist_ruleset == 'pax_cars'">
             switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_position_default_${cargo_label}, 0) {
-                return ${vehicle.id}_switch_graphics_engine_id_${variants['default']};
+                return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['default']};
             }
 
             <!--! if special -->
             switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_position_special_check_length_${cargo_label}, num_vehs_in_vehid_chain) {
                 <!--! don't show 'special' if same id chain < 4 vehicles -->
                 0..3: return ${vehicle.id}_switch_graphics_position_default_${cargo_label};
-                return ${vehicle.id}_switch_graphics_engine_id_${variants['special']};
+                return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['special']};
             }
             switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_position_check_special_${cargo_label}, position_in_vehid_chain_from_end - position_in_vehid_chain) {
                 0..1: return ${vehicle.id}_switch_graphics_position_special_check_length_${cargo_label};
@@ -116,7 +126,7 @@
 
             <!--! if last -->
             switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_position_check_last_${cargo_label}, position_in_vehid_chain_from_end) {
-                0: return ${vehicle.id}_switch_graphics_engine_id_${variants['last']};
+                0: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['last']};
                 ${vehicle.id}_switch_graphics_position_check_special_${cargo_label};
             }
 
@@ -124,7 +134,7 @@
             switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_position_first_check_length_${cargo_label}, num_vehs_in_vehid_chain) {
                 <!--! don't show 'first' if same id chain < 5 vehicles -->
                 0..4: return ${vehicle.id}_switch_graphics_position_default_${cargo_label};
-                return ${vehicle.id}_switch_graphics_engine_id_${variants['first']};
+                return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['first']};
             }
             switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_position_check_first_${cargo_label}, position_in_vehid_chain) {
                 0: return ${vehicle.id}_switch_graphics_position_first_check_length_${cargo_label};
@@ -141,47 +151,47 @@
         <tal:position_ruleset condition="consist.gestalt_graphics.consist_ruleset == 'pax_railcars'">
             <!--! if 1 unit in sequence -->
             switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_modulo_num_units_in_consist_1_${cargo_label}, position_in_vehid_chain % 6) {
-                0: return ${vehicle.id}_switch_graphics_engine_id_${variants['default']};
+                0: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['default']};
             }
 
             <!--! if 2 units in sequence -->
             switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_modulo_num_units_in_consist_2_${cargo_label}, position_in_vehid_chain % 6) {
-                0: return ${vehicle.id}_switch_graphics_engine_id_${variants['first']};
-                return ${vehicle.id}_switch_graphics_engine_id_${variants['last']};
+                0: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['first']};
+                return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['last']};
             }
 
             <!--! if 3 units in sequence -->
             switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_modulo_num_units_in_consist_3_${cargo_label}, position_in_vehid_chain % 6) {
-                0: return ${vehicle.id}_switch_graphics_engine_id_${variants['first']};
-                1: return ${vehicle.id}_switch_graphics_engine_id_${variants['special']};
-                return ${vehicle.id}_switch_graphics_engine_id_${variants['last']};
+                0: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['first']};
+                1: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['special']};
+                return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['last']};
             }
 
             <!--! if 4 units in sequence -->
             switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_modulo_num_units_in_consist_4_${cargo_label}, position_in_vehid_chain % 6) {
-                0: return ${vehicle.id}_switch_graphics_engine_id_${variants['first']};
-                1: return ${vehicle.id}_switch_graphics_engine_id_${variants['last']};
-                2: return ${vehicle.id}_switch_graphics_engine_id_${variants['first']};
-                return ${vehicle.id}_switch_graphics_engine_id_${variants['last']};
+                0: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['first']};
+                1: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['last']};
+                2: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['first']};
+                return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['last']};
             }
 
             <!--! if 5 units in sequence -->
             switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_modulo_num_units_in_consist_5_${cargo_label}, position_in_vehid_chain % 6) {
-                0: return ${vehicle.id}_switch_graphics_engine_id_${variants['first']};
-                1: return ${vehicle.id}_switch_graphics_engine_id_${variants['special']};
-                2: return ${vehicle.id}_switch_graphics_engine_id_${variants['last']};
-                3: return ${vehicle.id}_switch_graphics_engine_id_${variants['first']};
-                return ${vehicle.id}_switch_graphics_engine_id_${variants['last']};
+                0: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['first']};
+                1: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['special']};
+                2: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['last']};
+                3: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['first']};
+                return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['last']};
             }
 
             <!--! if 6 units in sequence -->
             switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_modulo_num_units_in_consist_6_${cargo_label}, position_in_vehid_chain % 6) {
-                0: return ${vehicle.id}_switch_graphics_engine_id_${variants['first']};
-                1: return ${vehicle.id}_switch_graphics_engine_id_${variants['special']};
-                2: return ${vehicle.id}_switch_graphics_engine_id_${variants['last']};
-                3: return ${vehicle.id}_switch_graphics_engine_id_${variants['first']};
-                4: return ${vehicle.id}_switch_graphics_engine_id_${variants['special']};
-                return ${vehicle.id}_switch_graphics_engine_id_${variants['last']};
+                0: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['first']};
+                1: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['special']};
+                2: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['last']};
+                3: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['first']};
+                4: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['special']};
+                return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['last']};
             }
 
             <!--! this is a remainder block, how many units are in it? -->
@@ -203,14 +213,14 @@
 
         <tal:position_ruleset condition="consist.gestalt_graphics.consist_ruleset == 'mail_cars'">
             switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_position_default_${cargo_label}, 0) {
-                return ${vehicle.id}_switch_graphics_engine_id_${variants['default']};
+                return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['default']};
             }
 
             <!--! if special -->
             switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_position_special_check_length_${cargo_label}, num_vehs_in_vehid_chain) {
                 <!--! don't show 'special' if same id chain < 4 vehicles -->
                 0..3: return ${vehicle.id}_switch_graphics_position_default_${cargo_label};
-                return ${vehicle.id}_switch_graphics_engine_id_${variants['special']};
+                return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['special']};
             }
             switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_position_check_special_${cargo_label}, position_in_vehid_chain_from_end - position_in_vehid_chain) {
                 0..1: return ${vehicle.id}_switch_graphics_position_special_check_length_${cargo_label};
@@ -221,7 +231,7 @@
             switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_position_first_check_length_${cargo_label}, num_vehs_in_vehid_chain) {
                 <!--! don't show 'first' if same id chain < 5 vehicles -->
                 0..4: return ${vehicle.id}_switch_graphics_position_default_${cargo_label};
-                return ${vehicle.id}_switch_graphics_engine_id_${variants['first']};
+                return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['first']};
             }
             switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_position_check_first_${cargo_label}, position_in_vehid_chain) {
                 0: return ${vehicle.id}_switch_graphics_position_first_check_length_${cargo_label};
@@ -230,7 +240,7 @@
 
             <!--! if last -->
             switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_position_check_last_${cargo_label}, position_in_vehid_chain_from_end) {
-                0: return ${vehicle.id}_switch_graphics_engine_id_${variants['last']};
+                0: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['last']};
                 ${vehicle.id}_switch_graphics_position_check_first_${cargo_label};
             }
 
@@ -242,13 +252,13 @@
         <tal:position_ruleset condition="consist.gestalt_graphics.consist_ruleset == 'mail_railcars'">
             <!--! if 1st unit in sequence -->
             switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_position_in_consist_check_1st_${cargo_label}, position_in_vehid_chain_from_end) {
-                0: return ${vehicle.id}_switch_graphics_engine_id_${variants['default']};
-                return ${vehicle.id}_switch_graphics_engine_id_${variants['first']};
+                0: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['default']};
+                return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['first']};
             }
 
             <!--! if 2nd unit in sequence -->
             switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_position_in_consist_check_2nd_${cargo_label}, 0) {
-                return ${vehicle.id}_switch_graphics_engine_id_${variants['last']};
+                return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['last']};
             }
 
             switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_position_in_consist_entry_point_${cargo_label}, position_in_vehid_chain % 2) {
@@ -260,13 +270,13 @@
         <tal:position_ruleset condition="consist.gestalt_graphics.consist_ruleset == 'metro'">
             <!--! if 1st unit in sequence -->
             switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_position_in_consist_check_1st_${cargo_label}, position_in_vehid_chain_from_end) {
-                0: return ${vehicle.id}_switch_graphics_engine_id_${variants['default']};
-                return ${vehicle.id}_switch_graphics_engine_id_${variants['first']};
+                0: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['default']};
+                return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['first']};
             }
 
             <!--! if 2nd unit in sequence -->
             switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_position_in_consist_check_2nd_${cargo_label}, 0) {
-                return ${vehicle.id}_switch_graphics_engine_id_${variants['last']};
+                return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['last']};
             }
 
             switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_position_in_consist_entry_point_${cargo_label}, position_in_vehid_chain % 2) {
@@ -277,7 +287,7 @@
 
         <tal:position_ruleset condition="consist.gestalt_graphics.consist_ruleset == None">
             switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_position_in_consist_entry_point_${cargo_label}, 0) {
-                return ${vehicle.id}_switch_graphics_engine_id_${variants['special']};
+                return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['special']};
             }
         </tal:position_ruleset>
     </tal:vars>
