@@ -6,13 +6,15 @@ import inspect
 
 class GestaltGraphics(object):
     """
-        Simple stub class, which is extended in sub-classes to configure:
+        Simple class, which is extended in sub-classes to configure:
          - base vehicle recolour (if any)
          - cargo graphics (if any)
+         - pantographs (if any)
+         - other processing as required
     """
     def __init__(self):
-        # no graphics processing by default
-        self.pipelines = []
+        # by default, check for buy menu only
+        self.pipelines = pipelines.get_pipelines(['check_buy_menu_only'])
 
     @property
     def nml_template(self):

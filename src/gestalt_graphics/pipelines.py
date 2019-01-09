@@ -127,6 +127,28 @@ class PassThroughPipeline(Pipeline):
         return result
 
 
+class CheckBuyMenuOnlyPipeline(Pipeline):
+    """
+    Oens the input image, inserts a custom buy menu if required, then saves with no other changes.
+    """
+    def __init__(self):
+        # this should be sparse, don't store any consist info in Pipelines, pass at render time
+        super().__init__()
+
+    def render(self, consist, global_constants):
+        self.units = []
+        self.consist = consist
+
+        if self.consist.buy_menu_x_loc == 360:
+            # !! this currently will cause the vehicle spritesheet buy menu sprites to be copied to the pans spritesheet,
+            # !! it needs pixels from the pans spritesheet, but automated buy menu sprites need providing first
+            self.units.append(AddBuyMenuSprite(self.process_buy_menu_sprite))
+
+        input_image = Image.open(self.input_path)
+        result = self.render_common(input_image, self.units)
+        return result
+
+
 class GeneratePantographsSpritesheetPipeline(Pipeline):
     """
     Adds additional spritesheets for pantographs (up and down), which are provided in the grf as sprite layers.
@@ -241,8 +263,6 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
         # default to 'down' pans in purchase menu, looks better than up
         if self.pantograph_state == 'down':
             if self.consist.buy_menu_x_loc == 360:
-                # !! this currently will cause the vehicle spritesheet buy menu sprites to be copied to the pans spritesheet,
-                # !! it needs pixels from the pans spritesheet, but automated buy menu sprites need providing first
                 self.units.append(AddBuyMenuSprite(self.process_buy_menu_sprite))
 
         # this will render a spritesheet with an additional suffix, separate from the vehicle spritesheet
@@ -860,6 +880,7 @@ def get_pipelines(pipeline_names):
     # this is a bit hokey, there's probably a simpler way to do this but eh
     # looks like it could be replaced by a simple dict lookup directly from gestal_graphics, but eh, I tried, it's faff
     pipelines = {"pass_through_pipeline": PassThroughPipeline,
+                 "check_buy_menu_only": CheckBuyMenuOnlyPipeline,
                  "extend_spriterows_for_composited_sprites_pipeline": ExtendSpriterowsForCompositedSpritesPipeline,
                  "generate_pantographs_up_spritesheet": GeneratePantographsUpSpritesheetPipeline,
                  "generate_pantographs_down_spritesheet": GeneratePantographsDownSpritesheetPipeline}
