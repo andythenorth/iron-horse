@@ -189,16 +189,10 @@ def render_docs_images():
         source_vehicle_image.putpalette(Image.open('palette_key.png').palette)
 
         if not consist.dual_headed:
-            source_vehicle_image_1 = vehicle_spritesheet.crop(box=(consist.buy_menu_x_loc,
-                                                                   10,
-                                                                   consist.buy_menu_x_loc + doc_helper.buy_menu_sprite_max_width,
-                                                                   10 + doc_helper.buy_menu_sprite_height))
-            source_vehicle_image_tmp = source_vehicle_image.copy()
-            source_vehicle_image_tmp.paste(source_vehicle_image_1, (0,
-                                                                    0,
-                                                                    source_vehicle_image_1.width,
-                                                                    doc_helper.buy_menu_sprite_height))
-
+            source_vehicle_image_tmp = vehicle_spritesheet.crop(box=(consist.buy_menu_x_loc,
+                                                                     10,
+                                                                     consist.buy_menu_x_loc + doc_helper.buy_menu_sprite_width(consist),
+                                                                     10 + doc_helper.buy_menu_sprite_height))
         if consist.dual_headed:
             # oof, super special handling of dual-headed vehicles, OpenTTD handles this automatically in the buy menu, but docs have to handle explicitly
             # !! hard-coded values might fail in future, sort that out then if needed, they can be looked up in global constants
@@ -224,6 +218,20 @@ def render_docs_images():
                          doc_helper.buy_menu_sprite_width(consist),
                          doc_helper.buy_menu_sprite_height)
         source_vehicle_image.paste(source_vehicle_image_tmp.crop(crop_box_dest), crop_box_dest)
+
+        # add pantographs if needed
+        if consist.pantograph_type is not None:
+            # !! this doesn't handle the dual head case yet eh, blah blah, wasn't needed when coding it
+            # buy menu uses pans 'down', but in docs pans 'up' looks better, weird eh?
+            pantographs_spritesheet = Image.open(os.path.join(vehicle_graphics_src, consist.id + '_pantographs_up.png'))
+            pantographs_image = pantographs_spritesheet.crop(box=(consist.buy_menu_x_loc,
+                                                                  10,
+                                                                  consist.buy_menu_x_loc + doc_helper.buy_menu_sprite_width(consist),
+                                                                  10 + doc_helper.buy_menu_sprite_height))
+            pantographs_mask = pantographs_image.copy()
+            pantographs_mask = pantographs_mask.point(lambda i: 0 if i == 255 or i == 0 else 255).convert("1") # the inversion here of blue and white looks a bit odd, but potato / potato
+            source_vehicle_image.paste(pantographs_image.crop(crop_box_dest), crop_box_dest, pantographs_mask.crop(crop_box_dest))
+
         # recolour to more pleasing CC combos
         cc_remap_1 = {198: 179, 199: 180, 200: 181, 201: 182, 202: 183, 203: 164, 204: 165, 205: 166,
                       80: 8, 81: 9, 82: 10, 83: 11, 84: 12, 85: 13, 86: 14, 87: 15}
