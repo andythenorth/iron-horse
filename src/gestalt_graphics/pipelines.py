@@ -71,18 +71,24 @@ class Pipeline(object):
         # n.b if buy menu sprite processing has conditions by vehicle type, could pass a dedicated function for each type of processing
 
         # hard-coded positions for buy menu sprite (if used - it's optional)
-        crop_box_src = (224,
-                        10,
-                        257,
-                        26)
-        crop_box_dest = (360,
-                         10,
-                         393,
-                         26)
-        print(self.consist.units)
-        custom_buy_menu_sprite = spritesheet.sprites.copy().crop(crop_box_src)
+        x_offset = 0
+        for unit in self.consist.units:
+            unit_length_in_pixels = 4 * unit.vehicle_length
+            crop_box_src = (224,
+                            10,
+                            224 + unit_length_in_pixels + 1, # allow for 1px coupler / corrider overhang
+                            26)
+            crop_box_dest = (360 + x_offset,
+                             10,
+                             360 + x_offset + unit_length_in_pixels + 1, # allow for 1px coupler / corrider overhang
+                             26)
+            custom_buy_menu_sprite = spritesheet.sprites.copy().crop(crop_box_src)
+            spritesheet.sprites.paste(custom_buy_menu_sprite, crop_box_dest)
+            # increment x offset for pasting in next vehicle
+            x_offset += unit_length_in_pixels
+            print(unit.spriterow_num)
+        # consist has a buy_menu_width prop which caps to 64
         #custom_buy_menu_sprite.show()
-        spritesheet.sprites.paste(custom_buy_menu_sprite, crop_box_dest)
         return spritesheet
 
     def render_common(self, input_image, units, output_suffix=''):
