@@ -89,7 +89,6 @@ class Pipeline(object):
             spritesheet.sprites.paste(custom_buy_menu_sprite, crop_box_dest)
             # increment x offset for pasting in next vehicle
             x_offset += unit_length_in_pixels
-            print(unit.spriterow_num)
         return spritesheet
 
     def render_common(self, input_image, units, output_suffix=''):
