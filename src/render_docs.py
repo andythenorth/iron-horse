@@ -231,9 +231,6 @@ def render_docs_images():
             pantographs_mask = pantographs_image.copy()
             pantographs_mask = pantographs_mask.point(lambda i: 0 if i == 255 or i == 0 else 255).convert("1") # the inversion here of blue and white looks a bit odd, but potato / potato
             source_vehicle_image.paste(pantographs_image.crop(crop_box_dest), crop_box_dest, pantographs_mask.crop(crop_box_dest))
-            if consist.id == "helm_wind_middle":
-                source_vehicle_image.show()
-                pantographs_image.show()
 
         # recolour to more pleasing CC combos
         cc_remap_1 = {198: 179, 199: 180, 200: 181, 201: 182, 202: 183, 203: 164, 204: 165, 205: 166,
