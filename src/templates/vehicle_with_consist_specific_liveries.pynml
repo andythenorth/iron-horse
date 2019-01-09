@@ -19,6 +19,7 @@
       don't conflate them :) -->
 // default graphics chain
 <tal:consist_cargo_variants repeat="variant_num python:range(consist.gestalt_graphics.num_cargo_sprite_variants)">
+
     <tal:user_flipped repeat="flipped ['unflipped', 'flipped']">
         spriteset(${vehicle.id}_ss_doors_closed_livery_1_${variant_num}_${flipped}, "${global_constants.graphics_path}${consist.id}.png") {
           spriteset_template_${vehicle.symmetry_type}_${'reversed' if flipped == 'flipped' else 'unreversed'}_${vehicle.id}_${flipped}(10 + ${variant_num * 120})
@@ -58,6 +59,20 @@
             }
         </tal:livery>
 
+        <!--! in case there wasn't enough complexity here, let's do pantographs too, in a separate layer -->
+        <tal:pantographs condition="consist.pantograph_type is not None">
+            <!--! !! the y base offsets here won't work for multi-unit vehicles, they need a different calculation -->
+            <tal:pantographs repeat="pantograph_state ['down', 'up']">
+                spriteset(${vehicle.id}_ss_pantographs_${pantograph_state}_${variant_num}_${flipped}, "${global_constants.graphics_path}${consist.id}_pantographs_${pantograph_state}.png") {
+                  spriteset_template_${vehicle.symmetry_type}_${'reversed' if flipped == 'flipped' else 'unreversed'}_${vehicle.id}_${flipped}(10 + ${variant_num * 30})
+                }
+            </tal:pantographs>
+            <!--! this is crude and won't work, for e.g. ELNG, or for 3rd-party electrified railtypes which aren't ELRL -->
+            switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_pantographs_${variant_num}_${flipped}, current_railtype) {
+                ELRL: return ${vehicle.id}_ss_pantographs_up_${variant_num}_${flipped};
+                return ${vehicle.id}_ss_pantographs_down_${variant_num}_${flipped};
+            }
+        </tal:pantographs>
 
     </tal:user_flipped>
     // handle user flipped state
