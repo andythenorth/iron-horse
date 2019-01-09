@@ -5,6 +5,7 @@ consist = PassengerVeryHighSpeedMiddleEngineConsist(id='helm_wind_middle',
                                                     name='Helm Wind - Middle',
                                                     role='pax_high_speed',
                                                     power=0, # set power 0, when attached to correct cab, cab power will be increased
+                                                    pantograph_type='z-shaped-single',
                                                     gen=4,
                                                     intro_date_offset=20)  # introduce later than gen epoch by design
 

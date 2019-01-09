@@ -164,6 +164,11 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
         # !! that can be done by weaving in a repeat over units, to draw multiple pantograph blocks, using the same pattern as the vehicle Spritesheet
         # !! the spriteset templates should then match the main vehicle, just changing path
 
+        try:
+            print(self.consist.id, self.consist.gestalt_graphics.num_cargo_sprite_variants)
+        except:
+            print('failed', self.consist.id)
+
         pantograph_input_images = {'diamond-single': 'diamond.png', 'diamond-double': 'diamond.png',
                                    'z-shaped-single': 'z-shaped.png', 'z-shaped-double': 'z-shaped.png'}
         pantograph_input_path = os.path.join(currentdir, 'src', 'graphics', 'pantographs', pantograph_input_images[self.consist.pantograph_type])

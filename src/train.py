@@ -497,7 +497,8 @@ class PassengerEngineRailcarConsist(PassengerEngineConsist):
         # * special unit with no cabs (center car)
         # ruleset will combine these to make multiple-units 1, 2, or 3 vehicles long, then repeating the pattern
         spriterow_group_mappings = {'pax': {'default': 0, 'first': 1, 'last': 2, 'special': 3}}
-        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings, consist_ruleset="pax_railcars")
+        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings, consist_ruleset="pax_railcars",
+                                                                     pantograph_type=self.pantograph_type)
 
 
 class PassengerVeryHighSpeedCabEngineConsist(PassengerEngineConsist):
@@ -536,7 +537,8 @@ class PassengerVeryHighSpeedMiddleEngineConsist(PassengerEngineConsist):
         # * unit with no cabs (center car)
         # ruleset will combine these to make multiple-units n vehicles long
         spriterow_group_mappings = {'pax': {'default': 0, 'first': 1, 'last': 2, 'special': 3}}
-        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings, consist_ruleset="pax_cars")
+        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings, consist_ruleset="pax_cars",
+                                                                     pantograph_type=self.pantograph_type)
 
     @property
     def cab_power(self):
@@ -598,7 +600,8 @@ class MailEngineRailcarConsist(MailEngineConsist):
         # * unit with driving cab rear end
         # ruleset will combine these to make multiple-units 1 or 2 vehicles long, then repeating the pattern
         spriterow_group_mappings = {'mail': {'default': 0, 'first': 1, 'last': 2, 'special': 0}}
-        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings, consist_ruleset="mail_railcars")
+        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings, consist_ruleset="mail_railcars",
+                                                                     pantograph_type=self.pantograph_type)
 
 
 class CarConsist(Consist):

@@ -25,6 +25,7 @@ class GestaltGraphics(object):
     def num_cargo_sprite_variants(self):
         # this tends to be common across multiple templates, so provide it in the base class
         # rows can be reused across multiple cargo labels, so find uniques (assumes row nums are identical when reused across labels)
+        # !! fails if the subclass doesn't have cargo_row_map
         row_nums_seen = []
         for row_nums in self.cargo_row_map.values():
             for row_num in row_nums:
@@ -309,6 +310,8 @@ class GestaltGraphicsConsistSpecificLivery(GestaltGraphics):
         # no graphics processing for this gestalt
         super().__init__()
         self.pipelines = pipelines.get_pipelines(['extend_spriterows_for_composited_sprites_pipeline'])
+        if kwargs.get('pantograph_type', None) is not None:
+            self.pipelines.extend(pipelines.get_pipelines(['generate_pantographs_up_spritesheet', 'generate_pantographs_down_spritesheet']))
         # spriterow_group_mappings provided by subclass calling gestalt_graphics:
         # (1) consist-cargo types for which specific liveries are provided
         # (2) spriterow numbers for named positions in consist
