@@ -65,9 +65,11 @@ class Pipeline(object):
             result.append((sprite, mask))
         return result
 
-    def process_buy_menu_sprite(self, spritesheet, processing_args):
+    def process_buy_menu_sprite(self, spritesheet):
         # this function is passed (uncalled) into the pipeline, and then called at render time
         # this is so that it has the processed spritesheet available, which is essential for creating buy menu sprites
+        # n.b if buy menu sprite processing has conditions by vehicle type, could pass a dedicated function for each type of processing
+
         # hard-coded positions for buy menu sprite (if used - it's optional)
         crop_box_src = (224,
                         10,
@@ -77,14 +79,11 @@ class Pipeline(object):
                          10,
                          393,
                          26)
+        print(self.consist.units)
         custom_buy_menu_sprite = spritesheet.sprites.copy().crop(crop_box_src)
         #custom_buy_menu_sprite.show()
         spritesheet.sprites.paste(custom_buy_menu_sprite, crop_box_dest)
         return spritesheet
-
-    def configure_custom_buy_menu_sprite(self):
-        args = {}
-        self.units.append(AddBuyMenuSprite(self.process_buy_menu_sprite, args))
 
     def render_common(self, input_image, units, output_suffix=''):
         # expects to be passed a PIL Image object
@@ -238,7 +237,7 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
             if self.consist.buy_menu_x_loc == 360:
                 # !! this currently will cause the vehicle spritesheet buy menu sprites to be copied to the pans spritesheet,
                 # !! it needs pixels from the pans spritesheet, but automated buy menu sprites need providing first
-                self.configure_custom_buy_menu_sprite()
+                self.units.append(AddBuyMenuSprite(self.process_buy_menu_sprite))
 
         # this will render a spritesheet with an additional suffix, separate from the vehicle spritesheet
         input_image = Image.open(self.input_path).crop((0, 0, graphics_constants.spritesheet_width, 10))
@@ -843,7 +842,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             self.vehicle_unit = None
 
         if self.consist.buy_menu_x_loc == 360:
-            self.configure_custom_buy_menu_sprite()
+            self.units.append(AddBuyMenuSprite(self.process_buy_menu_sprite))
 
         input_image = Image.open(self.input_path).crop((0, 0, graphics_constants.spritesheet_width, 10))
         result = self.render_common(input_image, self.units)
