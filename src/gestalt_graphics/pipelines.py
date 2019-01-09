@@ -65,11 +65,13 @@ class Pipeline(object):
             result.append((sprite, mask))
         return result
 
-    def add_custom_buy_menu_sprite(self):
-        # !! this needs to take a rendered spritesheet (passed as arg?), and on the basis of the consist units, assemble a buy menu sprite
-        # !! we'll need to get the processed pixels, rather than the input pixels,
-        # !! so this method might need to be passed to the graphics unit as an uncalled function, which is then called until that unit renders
-        # !! (otherwise polar fox has to know about trains, which is a nope)
+    def process_buy_menu_sprite(self, spritesheet, processing_args):
+        # this function is passed (uncalled) into the pipeline, and then called at render time
+        # this is so that it has the processed spritesheet available, which is essential for creating buy menu sprites
+        spritesheet.sprites.paste(processing_args['custom_buy_menu_sprite'], processing_args['crop_box'])
+        return spritesheet
+
+    def configure_custom_buy_menu_sprite(self):
         # hard-coded positions for buy menu sprite (if used - it's optional)
         crop_box = (360,
                     10,
@@ -77,7 +79,8 @@ class Pipeline(object):
                     26)
         custom_buy_menu_sprite = Image.open(self.input_path).crop(crop_box)
         #custom_buy_menu_sprite.show()
-        self.units.append(AddBuyMenuSprite(custom_buy_menu_sprite, crop_box))
+        args = {'crop_box': crop_box, 'custom_buy_menu_sprite': custom_buy_menu_sprite}
+        self.units.append(AddBuyMenuSprite(self.process_buy_menu_sprite, args))
 
     def render_common(self, input_image, units, output_suffix=''):
         # expects to be passed a PIL Image object
@@ -231,7 +234,7 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
             if self.consist.buy_menu_x_loc == 360:
                 # !! this currently will cause the vehicle spritesheet buy menu sprites to be copied to the pans spritesheet,
                 # !! it needs pixels from the pans spritesheet, but automated buy menu sprites need providing first
-                self.add_custom_buy_menu_sprite()
+                self.configure_custom_buy_menu_sprite()
 
         # this will render a spritesheet with an additional suffix, separate from the vehicle spritesheet
         input_image = Image.open(self.input_path).crop((0, 0, graphics_constants.spritesheet_width, 10))
@@ -836,7 +839,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             self.vehicle_unit = None
 
         if self.consist.buy_menu_x_loc == 360:
-            self.add_custom_buy_menu_sprite()
+            self.configure_custom_buy_menu_sprite()
 
         input_image = Image.open(self.input_path).crop((0, 0, graphics_constants.spritesheet_width, 10))
         result = self.render_common(input_image, self.units)

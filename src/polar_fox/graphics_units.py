@@ -10,6 +10,12 @@ Don't make changes here, make them in the Polar Fox project and redistribute.
 Any changes made here are liable to be over-written.
 """
 
+"""
+This file is generated from the Polar Fox project.
+Don't make changes here, make them in the Polar Fox project and redistribute.
+Any changes made here are liable to be over-written.
+"""
+
 import os
 from PIL import Image, ImageDraw, ImageFont
 
@@ -107,17 +113,17 @@ class AppendToSpritesheet(ProcessingUnit):
 
 class AddBuyMenuSprite(ProcessingUnit):
     """ AddBuyMenuSprite """
-    """ Inserts at a defined position. """
-    def __init__(self, custom_buy_menu_sprite, crop_box):
-        self.custom_buy_menu_sprite = custom_buy_menu_sprite
-        # 4 tuple for box size (left, upper, right, lower)
-        self.crop_box = crop_box
+    """ Inserts a (custom) buy menu sprite for articulated vehicles etc. """
+    # to create the buy menu sprite, we need the *processed* vehicle sprites
+    # to do that, we use this unit at or near the end of the pipeline
+    # it requires a function to be passed, which can process the buy menu sprite, and isn't called until the pipeline is rendered
+    def __init__(self, processing_function, processing_args):
+        self.processing_function = processing_function
+        self.processing_args = processing_args
         super().__init__()
 
     def render(self, spritesheet):
-        spritesheet.sprites.paste(self.custom_buy_menu_sprite, self.crop_box)
-        return spritesheet
-
+        return self.processing_function(spritesheet, self.processing_args)
 
 class AddCargoLabel(ProcessingUnit):
     """AddCargoLabel"""
