@@ -68,18 +68,22 @@ class Pipeline(object):
     def process_buy_menu_sprite(self, spritesheet, processing_args):
         # this function is passed (uncalled) into the pipeline, and then called at render time
         # this is so that it has the processed spritesheet available, which is essential for creating buy menu sprites
-        spritesheet.sprites.paste(processing_args['custom_buy_menu_sprite'], processing_args['crop_box'])
+        # hard-coded positions for buy menu sprite (if used - it's optional)
+        crop_box_src = (224,
+                        10,
+                        257,
+                        26)
+        crop_box_dest = (360,
+                         10,
+                         393,
+                         26)
+        custom_buy_menu_sprite = spritesheet.sprites.copy().crop(crop_box_src)
+        #custom_buy_menu_sprite.show()
+        spritesheet.sprites.paste(custom_buy_menu_sprite, crop_box_dest)
         return spritesheet
 
     def configure_custom_buy_menu_sprite(self):
-        # hard-coded positions for buy menu sprite (if used - it's optional)
-        crop_box = (360,
-                    10,
-                    425,
-                    26)
-        custom_buy_menu_sprite = Image.open(self.input_path).crop(crop_box)
-        #custom_buy_menu_sprite.show()
-        args = {'crop_box': crop_box, 'custom_buy_menu_sprite': custom_buy_menu_sprite}
+        args = {}
         self.units.append(AddBuyMenuSprite(self.process_buy_menu_sprite, args))
 
     def render_common(self, input_image, units, output_suffix=''):
