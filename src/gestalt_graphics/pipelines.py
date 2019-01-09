@@ -265,10 +265,8 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
 
         self.add_pantograph_spriterows()
 
-        # default to 'down' pans in purchase menu, looks better than up
-        if self.pantograph_state == 'down':
-            if self.consist.buy_menu_x_loc == 360:
-                self.units.append(AddBuyMenuSprite(self.process_buy_menu_sprite))
+        if self.consist.buy_menu_x_loc == 360:
+            self.units.append(AddBuyMenuSprite(self.process_buy_menu_sprite))
 
         # this will render a spritesheet with an additional suffix, separate from the vehicle spritesheet
         input_image = Image.open(self.input_path).crop((0, 0, graphics_constants.spritesheet_width, 10))
