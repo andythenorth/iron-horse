@@ -67,8 +67,15 @@ class DocHelper(object):
     # Some constants
 
     # these only used in docs as of April 2018
-    buy_menu_sprite_width = 65 # up to 2 units eh
+    buy_menu_sprite_max_width = 65 # up to 2 units eh
     buy_menu_sprite_height = 16
+
+    def buy_menu_sprite_width(self, consist):
+        if not consist.dual_headed:
+            return min((4 * consist.length) + 1, self.buy_menu_sprite_max_width)
+        # openttd automatically handles dual head, but we need to calculate double width explicitly for docs
+        if consist.dual_headed:
+            return min((2 * 4 * consist.length) + 1, self.buy_menu_sprite_max_width)
 
     def get_vehicles_by_subclass(self, filter_subclasses_by_name=None):
         # first find all the subclasses + their vehicles
@@ -177,26 +184,20 @@ def render_docs_images():
 
     vehicle_graphics_src = os.path.join(currentdir, 'generated', 'graphics')
     for consist in consists:
-        vehicle_spritesheet = Image.open(os.path.join(
-            vehicle_graphics_src, consist.id + '.png'))
-        source_vehicle_image = Image.new("P", (doc_helper.buy_menu_sprite_width, doc_helper.buy_menu_sprite_height), 255)
+        vehicle_spritesheet = Image.open(os.path.join(vehicle_graphics_src, consist.id + '.png'))
+        source_vehicle_image = Image.new("P", (doc_helper.buy_menu_sprite_width(consist), doc_helper.buy_menu_sprite_height), 255)
         source_vehicle_image.putpalette(Image.open('palette_key.png').palette)
 
         if not consist.dual_headed:
             source_vehicle_image_1 = vehicle_spritesheet.crop(box=(consist.buy_menu_x_loc,
                                                                    10,
-                                                                   consist.buy_menu_x_loc + doc_helper.buy_menu_sprite_width,
+                                                                   consist.buy_menu_x_loc + doc_helper.buy_menu_sprite_max_width,
                                                                    10 + doc_helper.buy_menu_sprite_height))
             source_vehicle_image_tmp = source_vehicle_image.copy()
             source_vehicle_image_tmp.paste(source_vehicle_image_1, (0,
                                                                     0,
                                                                     source_vehicle_image_1.width,
                                                                     doc_helper.buy_menu_sprite_height))
-            crop_box_dest = (0,
-                             0,
-                             min((4 * consist.length) + 1, 65),
-                             doc_helper.buy_menu_sprite_height)
-            source_vehicle_image.paste(source_vehicle_image_tmp.crop(crop_box_dest), crop_box_dest)
 
         if consist.dual_headed:
             # oof, super special handling of dual-headed vehicles, OpenTTD handles this automatically in the buy menu, but docs have to handle explicitly
@@ -218,11 +219,11 @@ def render_docs_images():
                                                                     0,
                                                                     source_vehicle_image_1.width - 1 + source_vehicle_image_2.width,
                                                                     doc_helper.buy_menu_sprite_height))
-            crop_box_dest = (0,
-                             0,
-                             min((2 * 4 * consist.length) + 1, 65), # 2 units not 1 here, so eh
-                             doc_helper.buy_menu_sprite_height)
-            source_vehicle_image.paste(source_vehicle_image_tmp.crop(crop_box_dest), crop_box_dest)
+        crop_box_dest = (0,
+                         0,
+                         doc_helper.buy_menu_sprite_width(consist),
+                         doc_helper.buy_menu_sprite_height)
+        source_vehicle_image.paste(source_vehicle_image_tmp.crop(crop_box_dest), crop_box_dest)
         # recolour to more pleasing CC combos
         cc_remap_1 = {198: 179, 199: 180, 200: 181, 201: 182, 202: 183, 203: 164, 204: 165, 205: 166,
                       80: 8, 81: 9, 82: 10, 83: 11, 84: 12, 85: 13, 86: 14, 87: 15}
@@ -231,7 +232,7 @@ def render_docs_images():
             processed_vehicle_image = source_vehicle_image.copy().point(lambda i: cc_remap[i] if i in cc_remap.keys() else i)
 
             # oversize the images to account for how browsers interpolate the images on retina / HDPI screens
-            processed_vehicle_image = processed_vehicle_image.resize((4 * doc_helper.buy_menu_sprite_width, 4 * doc_helper.buy_menu_sprite_height),
+            processed_vehicle_image = processed_vehicle_image.resize((4 * processed_vehicle_image.width, 4 * doc_helper.buy_menu_sprite_height),
                                                                      resample=Image.NEAREST)
             output_path = os.path.join(images_dir_dst, consist.id + '_' + colour_name + '.png')
             processed_vehicle_image.save(

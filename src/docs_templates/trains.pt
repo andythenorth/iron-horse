@@ -18,7 +18,7 @@
                     <table class="table table-striped tablesorter">
                         <thead>
                             <tr>
-                                <td><!--! empty cell --></td>
+                                <td colspan="2"><!--! empty cell --></td>
                                 <th>Vehicle Name</th>
                                 <th>Role</th>
                                 <th>Intro Date</th>
@@ -30,12 +30,14 @@
                         <tbody>
                             <tal:engine_consists repeat="consist roster.engine_consists">
                                 <tr id="${consist.id}">
-                                    <td style="vertical-align:middle; width:${2 * doc_helper.buy_menu_sprite_width};">
+                                    <td style="text-align:center; vertical-align:middle; width:${2 * doc_helper.buy_menu_sprite_max_width};">
                                         <img src="static/img/${consist.id}_blue.png"
-                                             width="${2 * doc_helper.buy_menu_sprite_width}"
+                                             width="${2 * doc_helper.buy_menu_sprite_width(consist)}"
                                              height="${2 * doc_helper.buy_menu_sprite_height}" />
+                                    </td>
+                                    <td style="text-align:center; vertical-align:middle; width:${2 * doc_helper.buy_menu_sprite_max_width};">
                                         <img src="static/img/${consist.id}_red.png"
-                                             width="${2 * doc_helper.buy_menu_sprite_width}"
+                                             width="${2 * doc_helper.buy_menu_sprite_width(consist)}"
                                              height="${2 * doc_helper.buy_menu_sprite_height}" />
                                     </td>
                                     <td><a class="table-link-dark" href="#${consist.id}">${doc_helper.unpack_name_string(consist)}</a></td>
@@ -65,12 +67,14 @@
                                 <tal:wagon_classes repeat="wagon_class global_constants.buy_menu_sort_order_wagons">
                                     <tal:wagon_consists repeat="consist roster.wagon_consists[wagon_class]">
                                         <tr tal:condition="consist.base_track_type == base_track_type" id="${consist.id}">
-                                            <td style="vertical-align:middle; width:${2 * doc_helper.buy_menu_sprite_width};">
+                                            <td style="text-align:center; vertical-align:middle; width:${2 * doc_helper.buy_menu_sprite_max_width};">
                                                 <img src="static/img/${consist.id}_blue.png"
-                                                     width="${2 * doc_helper.buy_menu_sprite_width}"
+                                                     width="${2 * doc_helper.buy_menu_sprite_width(consist)}"
                                                      height="${2 * doc_helper.buy_menu_sprite_height}" />
+                                            </td>
+                                            <td style="text-align:center; vertical-align:middle; width:${2 * doc_helper.buy_menu_sprite_max_width};">
                                                 <img src="static/img/${consist.id}_red.png"
-                                                     width="${2 * doc_helper.buy_menu_sprite_width}"
+                                                     width="${2 * doc_helper.buy_menu_sprite_width(consist)}"
                                                      height="${2 * doc_helper.buy_menu_sprite_height}" />
                                             </td>
                                             <td><a class="table-link-dark" href="#${consist.id}">${doc_helper.unpack_name_string(consist)}</a></td>
