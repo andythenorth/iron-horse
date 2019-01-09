@@ -164,10 +164,10 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
         # !! that can be done by weaving in a repeat over units, to draw multiple pantograph blocks, using the same pattern as the vehicle Spritesheet
         # !! the spriteset templates should then match the main vehicle, just changing path
 
-        try:
-            print(self.consist.id, self.consist.gestalt_graphics.num_cargo_sprite_variants)
-        except:
-            print('failed', self.consist.id)
+        # the gestalt can optionally tell us how many spriterows are needed, but if it doesn't, fallback to the unique spriterows
+        # we do it this way because the gestalt doesn't have easy access to the consist, so easier to do the fallback here
+        num_pantograph_rows = getattr(self.consist.gestalt_graphics, 'num_pantograph_rows', len(self.consist.unique_spriterow_nums))
+        print(num_pantograph_rows)
 
         pantograph_input_images = {'diamond-single': 'diamond.png', 'diamond-double': 'diamond.png',
                                    'z-shaped-single': 'z-shaped.png', 'z-shaped-double': 'z-shaped.png'}
@@ -202,8 +202,8 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
         vehicle_input_image = Image.open(self.input_path)
         # get the loc points
         loc_points = [(pixel[0], pixel[1], pixel[2]) for pixel in pixascan(vehicle_input_image) if pixel[2] == 226 or pixel[2] == 164]
-        # loc points are in second row in source spritesheet, so shift the y offset to first row
-        loc_points = [(pixel[0], pixel[1] - 30, pixel[2]) for pixel in loc_points]
+        # loc points are in arbitrary row in source spritesheet but need to be moved up in output, so shift the y offset by the required amount
+        loc_points = [(pixel[0], pixel[1] - (num_pantograph_rows * graphics_constants.spriterow_height), pixel[2]) for pixel in loc_points]
         # sort them in y order, this causes sprites to overlap correctly when there are multiple loc points for an angle
         loc_points = sorted(loc_points, key=lambda x: x[1])
 
@@ -212,9 +212,9 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
         #empty_spriterow_image.show()
 
         # create the empty spritesheet to paste into; in some cases this creates redundant spriterows, but it's fine
-        pantograph_output_image = Image.new("P", (graphics_constants.spritesheet_width, (4 * graphics_constants.spriterow_height) + 10), 255)
+        pantograph_output_image = Image.new("P", (graphics_constants.spritesheet_width, (2 * num_pantograph_rows * graphics_constants.spriterow_height) + 10), 255)
         pantograph_output_image.putpalette(DOS_PALETTE)
-        for i in range(2):
+        for i in range(num_pantograph_rows + 1):
             pantograph_output_image.paste(empty_spriterow_image, (0, 10 + (i * graphics_constants.spriterow_height)))
 
         state_map = spriterow_pantograph_state_maps[self.consist.pantograph_type][self.pantograph_state]
@@ -243,11 +243,11 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
 
         # add debug sprites with vehicle-pantograph comp for ease of checking
         vehicle_debug_image = vehicle_input_image.copy().crop((0, 10, graphics_constants.spritesheet_width, 10 + graphics_constants.spriterow_height))
-        pantograph_output_image.paste(vehicle_debug_image, (0, 10 + graphics_constants.spriterow_height))
+        pantograph_output_image.paste(vehicle_debug_image, (0, 10 + (num_pantograph_rows * graphics_constants.spriterow_height)))
         pantograph_debug_image = pantograph_output_image.copy().crop((0, 10, graphics_constants.spritesheet_width, 10 + graphics_constants.spriterow_height))
         pantograph_debug_mask = pantograph_debug_image.copy()
         pantograph_debug_mask = pantograph_debug_mask.point(lambda i: 0 if i == 255 or i == 0 else 255).convert("1") # the inversion here of blue and white looks a bit odd, but potato / potato
-        pantograph_output_image.paste(pantograph_debug_image, (0, 10 + graphics_constants.spriterow_height), pantograph_debug_mask)
+        pantograph_output_image.paste(pantograph_debug_image, (0, 10 + (num_pantograph_rows * graphics_constants.spriterow_height)), pantograph_debug_mask)
 
         # make spritesheet
         pantograph_spritesheet = self.make_spritesheet_from_image(pantograph_output_image)
@@ -255,7 +255,7 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
         crop_box_dest = (0,
                          10,
                          self.global_constants.sprites_max_x_extent,
-                         10 + (2 * graphics_constants.spriterow_height))
+                         10 + (2 * num_pantograph_rows * graphics_constants.spriterow_height))
         self.units.append(AppendToSpritesheet(pantograph_spritesheet, crop_box_dest))
 
     def render(self, consist, global_constants):

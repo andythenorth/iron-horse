@@ -309,9 +309,6 @@ class GestaltGraphicsConsistSpecificLivery(GestaltGraphics):
     def __init__(self, spriterow_group_mappings, **kwargs):
         # no graphics processing for this gestalt
         super().__init__()
-        self.pipelines = pipelines.get_pipelines(['extend_spriterows_for_composited_sprites_pipeline'])
-        if kwargs.get('pantograph_type', None) is not None:
-            self.pipelines.extend(pipelines.get_pipelines(['generate_pantographs_up_spritesheet', 'generate_pantographs_down_spritesheet']))
         # spriterow_group_mappings provided by subclass calling gestalt_graphics:
         # (1) consist-cargo types for which specific liveries are provided
         # (2) spriterow numbers for named positions in consist
@@ -324,6 +321,12 @@ class GestaltGraphicsConsistSpecificLivery(GestaltGraphics):
         # also, although rulesets allow fine-grained control, there are deliberately only 4 configuration options
         # this stops rules getting out of control and simplifies other methods
         self.consist_positions_ordered = ['default', 'first', 'last', 'special']
+
+        self.pipelines = pipelines.get_pipelines(['extend_spriterows_for_composited_sprites_pipeline'])
+        if kwargs.get('pantograph_type', None) is not None:
+            self.pipelines.extend(pipelines.get_pipelines(['generate_pantographs_up_spritesheet', 'generate_pantographs_down_spritesheet']))
+            # !! is this the best proxy for num rows needed? or something else?  test !!
+            self.num_pantograph_rows = len(self.consist_ruleset)
 
     @property
     def nml_template(self):
