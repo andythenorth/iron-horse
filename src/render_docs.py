@@ -180,10 +180,36 @@ def render_docs_images():
         vehicle_spritesheet = Image.open(os.path.join(
             vehicle_graphics_src, consist.id + '.png'))
         # !! currently assumes buy menu sprite in 7th column, this won't always be valid assumption, and needs to be detected in the vehicle (which knows)
-        source_vehicle_image = vehicle_spritesheet.crop(box=(consist.buy_menu_x_loc,
-                                                                10,
-                                                                consist.buy_menu_x_loc + doc_helper.buy_menu_sprite_width,
-                                                                10 + doc_helper.buy_menu_sprite_height))
+        if not consist.dual_headed:
+            source_vehicle_image = vehicle_spritesheet.crop(box=(consist.buy_menu_x_loc,
+                                                                 10,
+                                                                 consist.buy_menu_x_loc + doc_helper.buy_menu_sprite_width,
+                                                                 10 + doc_helper.buy_menu_sprite_height))
+        if consist.dual_headed:
+            # oof, super special handling of dual-headed vehicles, OpenTTD handles this automatically in the buy menu, but docs have to handle explicitly
+            # !! hard-coded values might fail in future, sort that out then if needed, they can be looked up in global constants
+            source_vehicle_image_1 = vehicle_spritesheet.copy().crop(box=(224,
+                                                                          10,
+                                                                          224 + (4 * consist.length) + 1,
+                                                                          10 + doc_helper.buy_menu_sprite_height))
+            source_vehicle_image_2 = vehicle_spritesheet.copy().crop(box=(104,
+                                                                          10,
+                                                                          104 + (4 * consist.length) + 1,
+                                                                          10 + doc_helper.buy_menu_sprite_height))
+            source_vehicle_image = Image.new("P", (source_vehicle_image_1.width + source_vehicle_image_2.width, doc_helper.buy_menu_sprite_height), 255)
+            source_vehicle_image.putpalette(Image.open('palette_key.png').palette)
+            source_vehicle_image.paste(source_vehicle_image_1, (0,
+                                                                0,
+                                                                source_vehicle_image_1.width,
+                                                                doc_helper.buy_menu_sprite_height))
+            source_vehicle_image.paste(source_vehicle_image_2, (source_vehicle_image_1.width - 1,
+                                                                0,
+                                                                source_vehicle_image_1.width - 1 + source_vehicle_image_2.width,
+                                                                doc_helper.buy_menu_sprite_height))
+            source_vehicle_image = source_vehicle_image.crop((0,
+                                                              0,
+                                                              doc_helper.buy_menu_sprite_width,
+                                                              doc_helper.buy_menu_sprite_height))
         # recolour to more pleasing CC combos
         cc_remap_1 = {198: 179, 199: 180, 200: 181, 201: 182, 202: 183, 203: 164, 204: 165, 205: 166,
                       80: 8, 81: 9, 82: 10, 83: 11, 84: 12, 85: 13, 86: 14, 87: 15}
