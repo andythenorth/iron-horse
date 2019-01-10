@@ -1,4 +1,4 @@
-from train import PassengerVeryHighSpeedCabEngineConsist, ElectricPaxUnit
+from train import PassengerVeryHighSpeedCabEngineConsist, ElectricHighSpeedPaxUnit
 
 consist = PassengerVeryHighSpeedCabEngineConsist(id='helm_wind_cab',
                                                  base_numeric_id=3060,
@@ -12,7 +12,7 @@ consist = PassengerVeryHighSpeedCabEngineConsist(id='helm_wind_cab',
 # 4 units (2-tiles) because building these is annoying if the units are too small?
 # or 2 units (1-tile) to make any integer length?
 
-consist.add_unit(type=ElectricPaxUnit,
+consist.add_unit(type=ElectricHighSpeedPaxUnit,
                  weight=31,
                  vehicle_length=8,
                  capacity=40,

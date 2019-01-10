@@ -1588,7 +1588,7 @@ class ElectroDieselEngineUnit(Train):
         self._symmetry_type = kwargs.get('symmetry_type', 'asymmetric')
 
 
-class ElectricPaxUnit(Train):
+class ElectricHighSpeedPaxUnit(Train):
     """
     Unit for a high-speed, high-power pax electric train, intended to be 2-car, with template magic for cabs etc
     """

@@ -1,4 +1,4 @@
-from train import PassengerVeryHighSpeedCabEngineConsist, ElectricPaxUnit
+from train import PassengerVeryHighSpeedCabEngineConsist, ElectricHighSpeedPaxUnit
 
 consist = PassengerVeryHighSpeedCabEngineConsist(id='landlash_cab',
                                                  base_numeric_id=980,
@@ -9,7 +9,7 @@ consist = PassengerVeryHighSpeedCabEngineConsist(id='landlash_cab',
                                                  gen=5,
                                                  intro_date_offset=10)  # introduce later than gen epoch by design
 
-consist.add_unit(type=ElectricPaxUnit,
+consist.add_unit(type=ElectricHighSpeedPaxUnit,
                  weight=41,
                  vehicle_length=8,
                  capacity=40,
