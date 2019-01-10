@@ -15,10 +15,6 @@ Pipelines can be dedicated to a single task such as SimpleRecolourPipeline
 Or they can compose units for more complicated tasks, such as colouring and loading a specific vehicle type
 """
 
-def foo_test():
-    print("Test - custom buy menu function called in render step")
-
-
 class Pipeline(object):
     def __init__(self):
         # this should be sparse, don't store any consist info in Pipelines, pass at render time
@@ -167,7 +163,6 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
         # the gestalt can optionally tell us how many spriterows are needed, but if it doesn't, fallback to the unique spriterows
         # we do it this way because the gestalt doesn't have easy access to the consist, so easier to do the fallback here
         num_pantograph_rows = getattr(self.consist.gestalt_graphics, 'num_pantograph_rows', len(self.consist.unique_spriterow_nums))
-        print(num_pantograph_rows)
 
         pantograph_input_images = {'diamond-single': 'diamond.png', 'diamond-double': 'diamond.png',
                                    'z-shaped-single': 'z-shaped.png', 'z-shaped-double': 'z-shaped.png'}
