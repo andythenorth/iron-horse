@@ -207,11 +207,11 @@ def render_docs_images():
             source_vehicle_image_tmp = source_vehicle_image.copy()
             source_vehicle_image_tmp.paste(source_vehicle_image_1, (0,
                                                                     0,
-                                                                    source_vehicle_image_1.width,
+                                                                    source_vehicle_image_1.size[0],
                                                                     doc_helper.buy_menu_sprite_height))
-            source_vehicle_image_tmp.paste(source_vehicle_image_2, (source_vehicle_image_1.width - 1,
+            source_vehicle_image_tmp.paste(source_vehicle_image_2, (source_vehicle_image_1.size[0] - 1,
                                                                     0,
-                                                                    source_vehicle_image_1.width - 1 + source_vehicle_image_2.width,
+                                                                    source_vehicle_image_1.size[0] - 1 + source_vehicle_image_2.size[0],
                                                                     doc_helper.buy_menu_sprite_height))
         crop_box_dest = (0,
                          0,
@@ -240,7 +240,7 @@ def render_docs_images():
             processed_vehicle_image = source_vehicle_image.copy().point(lambda i: cc_remap[i] if i in cc_remap.keys() else i)
 
             # oversize the images to account for how browsers interpolate the images on retina / HDPI screens
-            processed_vehicle_image = processed_vehicle_image.resize((4 * processed_vehicle_image.width, 4 * doc_helper.buy_menu_sprite_height),
+            processed_vehicle_image = processed_vehicle_image.resize((4 * processed_vehicle_image.size[0], 4 * doc_helper.buy_menu_sprite_height),
                                                                      resample=Image.NEAREST)
             output_path = os.path.join(images_dir_dst, consist.id + '_' + colour_name + '.png')
             processed_vehicle_image.save(
