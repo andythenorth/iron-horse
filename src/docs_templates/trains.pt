@@ -15,7 +15,7 @@
                         <span tal:condition="roster.id == 'llama'">Argentina, Chile and Peru</span>
                         <span tal:condition="roster.id == 'pony'">Britain and Ireland</span>
                     </p>
-                    <table class="table table-striped tablesorter">
+                    <table class="table table-striped tablesorter vehicle-table">
                         <thead>
                             <tr>
                                 <td colspan="2"><!--! empty cell --></td>
@@ -30,12 +30,14 @@
                         <tbody>
                             <tal:engine_consists repeat="consist roster.engine_consists">
                                 <tr id="${consist.id}">
-                                    <td style="text-align:center; vertical-align:middle; width:${2 * doc_helper.buy_menu_sprite_max_width};">
+                                    <td class="vehicle-image"
+                                        style="width:${2 * doc_helper.buy_menu_sprite_max_width};">
                                         <img src="static/img/${consist.id}_blue.png"
                                              width="${2 * doc_helper.buy_menu_sprite_width(consist)}"
                                              height="${2 * doc_helper.buy_menu_sprite_height}" />
                                     </td>
-                                    <td style="text-align:center; vertical-align:middle; width:${2 * doc_helper.buy_menu_sprite_max_width};">
+                                    <td class="vehicle-image"
+                                        style="width:${2 * doc_helper.buy_menu_sprite_max_width};">
                                         <img src="static/img/${consist.id}_red.png"
                                              width="${2 * doc_helper.buy_menu_sprite_width(consist)}"
                                              height="${2 * doc_helper.buy_menu_sprite_height}" />
@@ -51,7 +53,7 @@
                         </tbody>
                     </table>
                     ${sum([len(roster.wagon_consists[wagon_class]) for wagon_class in roster.wagon_consists])} wagons
-                    <table class="table table-striped tablesorter">
+                    <table class="table table-striped tablesorter vehicle-table">
                         <thead>
                             <tr>
                                 <td><!--! empty cell --></td>
@@ -67,12 +69,14 @@
                                 <tal:wagon_classes repeat="wagon_class global_constants.buy_menu_sort_order_wagons">
                                     <tal:wagon_consists repeat="consist roster.wagon_consists[wagon_class]">
                                         <tr tal:condition="consist.base_track_type == base_track_type" id="${consist.id}">
-                                            <td style="text-align:center; vertical-align:middle; width:${2 * doc_helper.buy_menu_sprite_max_width};">
+                                            <td class="vehicle-image"
+                                                style="width:${2 * doc_helper.buy_menu_sprite_max_width};">
                                                 <img src="static/img/${consist.id}_blue.png"
                                                      width="${2 * doc_helper.buy_menu_sprite_width(consist)}"
                                                      height="${2 * doc_helper.buy_menu_sprite_height}" />
                                             </td>
-                                            <td style="text-align:center; vertical-align:middle; width:${2 * doc_helper.buy_menu_sprite_max_width};">
+                                            <td class="vehicle-image"
+                                                style="width:${2 * doc_helper.buy_menu_sprite_max_width};">
                                                 <img src="static/img/${consist.id}_red.png"
                                                      width="${2 * doc_helper.buy_menu_sprite_width(consist)}"
                                                      height="${2 * doc_helper.buy_menu_sprite_height}" />

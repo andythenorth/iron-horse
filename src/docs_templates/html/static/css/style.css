@@ -24,3 +24,12 @@ th a.table-link-dark, td a.table-link-dark {
     border-top:solid 1px #14347c;
     padding-bottom:40px;
 }
+
+.vehicle-table td {
+    vertical-align: middle;
+}
+
+td.vehicle-image {
+    padding-bottom: 13px;
+    text-align: center;
+}
