@@ -3,6 +3,7 @@
 buy_menu_sort_order_wagons = ['metro_car',
                               'passenger_car',
                               'luxury_passenger_car',
+                              'mu_trailer_car',
                               'mail_car',
                               'express_car',
                               'open_car',

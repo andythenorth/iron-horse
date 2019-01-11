@@ -110,5 +110,3 @@ def main():
                      capacity=40,
                      vehicle_length=6,
                      chassis='4_axle_solid_express_24px')
-
-    # no gen 6 for brit roster, max speed reached for engines

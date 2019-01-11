@@ -85,6 +85,9 @@ from vehicles import metal_cars
 metal_cars.main()
 """
 
+from vehicles import mu_trailer_cars
+mu_trailer_cars.main()
+
 from vehicles import open_cars
 open_cars.main()
 
