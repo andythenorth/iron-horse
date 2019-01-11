@@ -4,7 +4,7 @@ consist = PassengerEngineRailcarConsist(id='geronimo',
                                         base_numeric_id=2140,
                                         name='Geronimo',
                                         role='pax_railcar',
-                                        power=800,
+                                        power=1500, # RL EMU HP is much lower, but eh
                                         pantograph_type='z-shaped-single',
                                         gen=4,
                                         sprites_complete=False,
