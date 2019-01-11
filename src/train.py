@@ -1113,31 +1113,6 @@ class PassengerLuxuryCarConsist(PassengerCarConsistBase):
         self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings, consist_ruleset='pax_cars')
 
 
-class PassengerMUTrailerCarConsist(PassengerCarConsistBase):
-    """
-    Unpowered trailer car for railcars, EMUs etc.
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = 'mu_trailer_car'
-        super().__init__(**kwargs)
-        self.speed_class = 'standard' # only for use with railcars and EMUs, which are not express
-        self.buy_cost_adjustment_factor = 1.3
-        self.running_cost_adjustment_factor = 1.33
-        # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
-        self.weight_factor = 0.66 if self.base_track_type == 'NG' else 1.5
-        # Graphics configuration
-        # 2 liveries, should match local and express liveries of pax cars for this generation
-        # position variants
-        # * unit with driving cab front end
-        # * unit with driving cab rear end
-        # * unit with no cabs (center car)
-        # * special unit with no cabs (center car)
-        # ruleset will combine these to make multiple-units 1, 2, or 3 vehicles long, then repeating the pattern
-        spriterow_group_mappings = {'pax': {'default': 0, 'first': 1, 'last': 2, 'special': 3}}
-        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings, consist_ruleset='pax_railcars')
-
-
 class ReeferCarConsist(CarConsist):
     """
     Refrigerated cargos, with improved decay rate
