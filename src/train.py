@@ -1588,6 +1588,21 @@ class ElectroDieselEngineUnit(Train):
         self._symmetry_type = kwargs.get('symmetry_type', 'asymmetric')
 
 
+class ElectricRailcarUnit(Train):
+    """
+    Unit for an electric railcar.
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.consist.requires_electric_rails = True
+        self.engine_class = 'ENGINE_CLASS_ELECTRIC'
+        self.visual_effect = 'VISUAL_EFFECT_ELECTRIC'
+        self.consist.str_name_suffix = 'STR_NAME_SUFFIX_ELECTRIC'
+        # the cab magic won't work unless it's asymmetrical eh? :P
+        self._symmetry_type = 'asymmetric'
+
+
 class ElectricHighSpeedPaxUnit(Train):
     """
     Unit for a high-speed, high-power pax electric train, intended to be 2-car, with template magic for cabs etc

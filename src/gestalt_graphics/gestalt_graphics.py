@@ -325,8 +325,8 @@ class GestaltGraphicsConsistSpecificLivery(GestaltGraphics):
         self.pipelines = pipelines.get_pipelines(['extend_spriterows_for_composited_sprites_pipeline'])
         if kwargs.get('pantograph_type', None) is not None:
             self.pipelines.extend(pipelines.get_pipelines(['generate_pantographs_up_spritesheet', 'generate_pantographs_down_spritesheet']))
-            # !! is this the best proxy for num rows needed? or something else?  test !!
-            self.num_pantograph_rows = len(self.consist_ruleset)
+            # !! magic numbers :( is this the best proxy for num rows needed? or something else?  test !!
+            self.num_pantograph_rows = len(2 * self.cargo_row_map['DFLT'])
 
     @property
     def nml_template(self):

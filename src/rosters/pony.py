@@ -16,6 +16,7 @@ from vehicles import dragon
 from vehicles import fleet
 from vehicles import flanders_storm
 from vehicles import flindermouse
+from vehicles import geronimo
 from vehicles import girt_licker
 from vehicles import goliath
 from vehicles import gosling_blast
@@ -146,6 +147,8 @@ roster = Roster(id = 'pony',
                            scooby,
                            plastic_postbox,
                            mail_rail,
+                           # emus
+                           geronimo,
                            # brit high speed pax
                            helm_wind_cab,
                            helm_wind_middle,
