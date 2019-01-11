@@ -325,8 +325,11 @@ class GestaltGraphicsConsistSpecificLivery(GestaltGraphics):
         self.pipelines = pipelines.get_pipelines(['extend_spriterows_for_composited_sprites_pipeline'])
         if kwargs.get('pantograph_type', None) is not None:
             self.pipelines.extend(pipelines.get_pipelines(['generate_pantographs_up_spritesheet', 'generate_pantographs_down_spritesheet']))
-            # !! magic numbers :( is this the best proxy for num rows needed? or something else?  test !!
-            self.num_pantograph_rows = len(2 * self.cargo_row_map['DFLT'])
+            # this relies on DFLT mapping being safe to take
+            # *and* assumes no gaps in the spriterows, so take the max spriterow num
+            # *and* assumes 2 liveries are in use
+            # note the +1 because livery rows are zero indexed
+            self.num_pantograph_rows = 2 * (max([int(i) + 1 for i in self.cargo_row_map['DFLT']]))
 
     @property
     def nml_template(self):

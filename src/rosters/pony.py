@@ -12,6 +12,7 @@ from vehicles import cheese_bug
 from vehicles import chimera
 from vehicles import chinook
 from vehicles import deasil
+from vehicles import dover
 from vehicles import dragon
 from vehicles import fleet
 from vehicles import flanders_storm
@@ -149,6 +150,7 @@ roster = Roster(id = 'pony',
                            mail_rail,
                            # emus
                            geronimo,
+                           dover,
                            # brit high speed pax
                            helm_wind_cab,
                            helm_wind_middle,
