@@ -48,6 +48,7 @@ from vehicles import pikel
 from vehicles import phoenix
 from vehicles import plastic_postbox
 from vehicles import proper_job
+from vehicles import pylon
 from vehicles import roarer
 from vehicles import saxon
 from vehicles import scooby
@@ -151,6 +152,8 @@ roster = Roster(id = 'pony',
                            # emus
                            geronimo,
                            dover,
+
+                           pylon,
                            # brit high speed pax
                            helm_wind_cab,
                            helm_wind_middle,
