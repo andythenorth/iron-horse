@@ -1,8 +1,8 @@
 from train import MailEngineRailcarConsist, ElectricRailcarUnit
 
-consist = MailEngineRailcarConsist(id='breeze',
+consist = MailEngineRailcarConsist(id='saturn',
                                    base_numeric_id=3190,
-                                   name='Breeze',
+                                   name='Saturn',
                                    role='mail_railcar',
                                    power=850,
                                    pantograph_type='z-shaped-single',
