@@ -1,8 +1,8 @@
 from train import PassengerEngineRailcarConsist, ElectricRailcarUnit
 
-consist = PassengerEngineRailcarConsist(id='echo',
+consist = PassengerEngineRailcarConsist(id='breeze',
                                         base_numeric_id=3200,
-                                        name='Echo',
+                                        name='Breeze',
                                         role='pax_railcar',
                                         power=650, # RL EMU HP is much lower, but eh
                                         pantograph_type='z-shaped-single',

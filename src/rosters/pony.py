@@ -6,6 +6,7 @@ from vehicles import bean_feast
 from vehicles import boar_cat
 # from vehicles import blaze # deprecated?
 from vehicles import braf
+from vehicles import breeze
 from vehicles import brenner_cab
 from vehicles import brenner_middle
 from vehicles import carrack
@@ -16,7 +17,6 @@ from vehicles import chinook
 from vehicles import deasil
 from vehicles import dover
 from vehicles import dragon
-from vehicles import echo
 from vehicles import fleet
 from vehicles import flanders_storm
 from vehicles import flindermouse
@@ -157,7 +157,7 @@ roster = Roster(id = 'pony',
                            # emus
                            athena,
                            geronimo,
-                           echo,
+                           breeze,
                            zeus,
                            ares,
                            dover,
