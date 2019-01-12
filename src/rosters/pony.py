@@ -16,6 +16,7 @@ from vehicles import chinook
 from vehicles import deasil
 from vehicles import dover
 from vehicles import dragon
+from vehicles import echo
 from vehicles import fleet
 from vehicles import flanders_storm
 from vehicles import flindermouse
@@ -155,7 +156,7 @@ roster = Roster(id = 'pony',
                            # emus
                            athena,
                            geronimo,
-
+                           echo,
                            ares,
                            dover,
                            ixion,
