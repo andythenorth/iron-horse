@@ -6,6 +6,7 @@ from vehicles import bean_feast
 from vehicles import boar_cat
 # from vehicles import blaze # deprecated?
 from vehicles import braf
+from vehicles import breeze
 from vehicles import brenner_cab
 from vehicles import brenner_middle
 from vehicles import carrack
@@ -34,7 +35,6 @@ from vehicles import helm_wind_cab
 from vehicles import helm_wind_middle
 from vehicles import hercules
 from vehicles import hurly_burly
-from vehicles import ixion
 from vehicles import kelpie
 from vehicles import landlash_cab
 from vehicles import landlash_middle
@@ -161,7 +161,7 @@ roster = Roster(id = 'pony',
                            zeus,
                            ares,
                            dover,
-                           ixion,
+                           breeze,
                            pylon,
                            # brit high speed pax
                            helm_wind_cab,
