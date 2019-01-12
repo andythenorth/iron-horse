@@ -5,7 +5,7 @@ consist = MailEngineRailcarConsist(id='ares',
                                    name='Ares',
                                    role='mail_railcar',
                                    power=550,
-                                   pantograph_type='z-shaped-single',
+                                   pantograph_type='diamond-single',
                                    gen=3,
                                    sprites_complete=False,
                                    intro_date_offset=-3)  # introduce early by design
