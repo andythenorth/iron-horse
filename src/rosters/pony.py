@@ -6,6 +6,7 @@ from vehicles import bean_feast
 from vehicles import boar_cat
 # from vehicles import blaze # deprecated?
 from vehicles import braf
+from vehicles import breeze
 from vehicles import brenner_cab
 from vehicles import brenner_middle
 from vehicles import carrack
@@ -157,6 +158,7 @@ roster = Roster(id = 'pony',
                            athena,
                            geronimo,
                            echo,
+                           breeze,
                            ares,
                            dover,
                            ixion,
