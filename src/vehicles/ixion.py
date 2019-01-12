@@ -1,12 +1,12 @@
 from train import MailEngineRailcarConsist, ElectricRailcarUnit
 
-consist = MailEngineRailcarConsist(id='pylon',
-                                   base_numeric_id=2120,
-                                   name='Pylon',
+consist = MailEngineRailcarConsist(id='ixion',
+                                   base_numeric_id=3190,
+                                   name='Ixion',
                                    role='mail_railcar',
-                                   power=1000,
+                                   power=850,
                                    pantograph_type='z-shaped-single',
-                                   gen=6,
+                                   gen=4,
                                    sprites_complete=False,
                                    intro_date_offset=-3)  # introduce early by design
 

@@ -8,7 +8,7 @@ consist = MailEngineRailcarConsist(id='dover',
                                    pantograph_type='z-shaped-single',
                                    gen=4,
                                    sprites_complete=False,
-                                   intro_date_offset=-5)  # introduce early by design
+                                   intro_date_offset=-3)  # introduce early by design
 
 consist.add_unit(type=ElectricRailcarUnit,
                  weight=45,

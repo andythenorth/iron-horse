@@ -1,5 +1,7 @@
 from roster import Roster
 
+from vehicles import ares
+from vehicles import athena
 from vehicles import bean_feast
 from vehicles import boar_cat
 # from vehicles import blaze # deprecated?
@@ -31,6 +33,7 @@ from vehicles import helm_wind_cab
 from vehicles import helm_wind_middle
 from vehicles import hercules
 from vehicles import hurly_burly
+from vehicles import ixion
 from vehicles import kelpie
 from vehicles import landlash_cab
 from vehicles import landlash_middle
@@ -150,9 +153,12 @@ roster = Roster(id = 'pony',
                            plastic_postbox,
                            mail_rail,
                            # emus
+                           athena,
                            geronimo,
-                           dover,
 
+                           ares,
+                           dover,
+                           ixion,
                            pylon,
                            # brit high speed pax
                            helm_wind_cab,
