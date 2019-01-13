@@ -78,6 +78,16 @@ def main():
                      vehicle_length=6,
                      chassis='4_axle_solid_express_24px')
 
+    consist = ExpressCarConsist(roster='pony',
+                             base_numeric_id=3220,
+                             gen=4,
+                             subtype='C',
+                             sprites_complete=False)
+
+    consist.add_unit(type=ExpressCar,
+                     vehicle_length=8,
+                     chassis='4_axle_solid_express_32px')
+
     # !! should there be no 4/8 car for gen 5-6? (but add 8/8 car instead starting gen 4)
 
     consist = ExpressCarConsist(roster='pony',
@@ -101,6 +111,16 @@ def main():
                      chassis='4_axle_solid_express_24px')
 
     consist = ExpressCarConsist(roster='pony',
+                             base_numeric_id=3240,
+                             gen=5,
+                             subtype='C',
+                             sprites_complete=False)
+
+    consist.add_unit(type=ExpressCar,
+                     vehicle_length=8,
+                     chassis='4_axle_solid_express_32px')
+
+    consist = ExpressCarConsist(roster='pony',
                              base_numeric_id=1500,
                              gen=6,
                              subtype='A',
@@ -119,5 +139,15 @@ def main():
     consist.add_unit(type=ExpressCar,
                      vehicle_length=6,
                      chassis='4_axle_solid_express_24px')
+
+    consist = ExpressCarConsist(roster='pony',
+                             base_numeric_id=3230,
+                             gen=6,
+                             subtype='C',
+                             sprites_complete=False)
+
+    consist.add_unit(type=ExpressCar,
+                     vehicle_length=8,
+                     chassis='4_axle_solid_express_32px')
 
 
