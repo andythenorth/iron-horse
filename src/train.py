@@ -748,6 +748,7 @@ class CabooseCarConsist(CarConsist):
         self.class_refit_groups = []
         self.label_refits_allowed = []  # no specific labels needed
         self.label_refits_disallowed = []
+        self.buy_cost_adjustment_factor = 0.75 # chop down caboose costs, they're just eye candy eh
         # liveries swap CC on user-flip, so no swapping CC randomly
         self.random_company_colour_swap = False
         self.allow_flip = True
