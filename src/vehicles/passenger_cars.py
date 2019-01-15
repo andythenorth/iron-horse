@@ -101,23 +101,45 @@ def main():
     consist = PassengerCarConsist(roster='pony',
                                   base_numeric_id=3100,
                                   gen=5,
-                                  subtype='U',
+                                  subtype='B',
                                   sprites_complete=True)
 
     consist.add_unit(type=PaxCar,
                      capacity=40,
                      vehicle_length=6,
                      chassis='4_axle_solid_express_24px')
+
+    consist = PassengerCarConsist(roster='pony',
+                                  base_numeric_id=3280,
+                                  gen=5,
+                                  subtype='C',
+                                  sprites_complete=False)
+
+    consist.add_unit(type=PaxCar,
+                     capacity=40,
+                     vehicle_length=8,
+                     chassis='4_axle_solid_express_32px')
 
     # gen 6 broadly same as gen 5, but new liveries (any other difference?)
 
     consist = PassengerCarConsist(roster='pony',
                                   base_numeric_id=1580,
                                   gen=6,
-                                  subtype='U',
+                                  subtype='B',
                                   sprites_complete=True)
 
     consist.add_unit(type=PaxCar,
                      capacity=40,
                      vehicle_length=6,
                      chassis='4_axle_solid_express_24px')
+
+    consist = PassengerCarConsist(roster='pony',
+                                  base_numeric_id=3270,
+                                  gen=6,
+                                  subtype='C',
+                                  sprites_complete=False)
+
+    consist.add_unit(type=PaxCar,
+                     capacity=40,
+                     vehicle_length=8,
+                     chassis='4_axle_solid_express_32px')
