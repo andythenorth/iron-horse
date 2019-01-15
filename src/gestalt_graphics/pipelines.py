@@ -198,7 +198,6 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
         # get the loc points
         loc_points = [(pixel[0], pixel[1], pixel[2]) for pixel in pixascan(vehicle_input_image) if pixel[2] == 226 or pixel[2] == 164]
         # loc points are in arbitrary row in source spritesheet but need to be moved up in output, so shift the y offset by the required amount
-        print(self.consist.id, num_pantograph_rows)
         loc_points = [(pixel[0], pixel[1] - (num_pantograph_rows * graphics_constants.spriterow_height), pixel[2]) for pixel in loc_points]
         # sort them in y order, this causes sprites to overlap correctly when there are multiple loc points for an angle
         loc_points = sorted(loc_points, key=lambda x: x[1])
