@@ -43,6 +43,19 @@
     }-->
 </tal:wagons_add_power>
 
+<!--! some vehicles vary their speed depending on lead engine, this should be very limited use, silly easter egg -->
+<tal:variable_speed condition="consist.easter_egg_haulage_speed_bonus">
+    <tal:block define="express_speed consist.get_speed_by_class('express')">
+        switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_speed, vehicle_type_id) {
+            <!--! this doesn't check grfid currently - add later if needed -->
+            <tal:livery_2_engine_ids repeat="engine_id consist.livery_2_engine_ids">
+                ${engine_id}: return ${int(1.60934 * express_speed)};
+            </tal:livery_2_engine_ids>
+            return ${int(1.60934 * consist.speed)};
+        }
+    </tal:block>
+</tal:variable_speed>
+
 item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
     property {
         name:                           ${consist.name};
@@ -100,6 +113,10 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
             power:                          ${vehicle.id}_switch_power;
             purchase_power:                 ${consist.power};
         </tal:variable_power>
+        <tal:speed_is_optional condition="consist.easter_egg_haulage_speed_bonus">
+            speed:                          ${vehicle.id}_switch_speed;
+            purchase_speed:                 ${int(1.60934 * consist.speed)};
+        </tal:speed_is_optional>
         <!--! only use the visual effect switches if needed, saves a couple of seconds on compile -->
         <tal:visual_effect condition="vehicle.unit_requires_visual_effect">
             visual_effect_and_powered:      ${vehicle.get_nml_for_visual_effect_and_powered_cb()};

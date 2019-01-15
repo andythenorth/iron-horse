@@ -67,6 +67,8 @@ class Consist(object):
         self.tilt_bonus = False  # over-ride in subclass as needed
         # some wagons will provide power if specific engine IDs are in the consist
         self.wagons_add_power = False
+        # some vehicles will get a higher speed if hauled by an express engine (use rarely)
+        self.easter_egg_haulage_speed_bonus = kwargs.get('easter_egg_haulage_speed_bonus', False)
         # random_reverse means (1) randomised reversing of sprites when vehicle is built (2) player can also flip vehicle
         # random_reverse is not supported in some templates
         self.random_reverse = kwargs.get('random_reverse', False)
@@ -284,25 +286,28 @@ class Consist(object):
         # aside: total abuse of @property, I have no justification other than it fits the pattern in context :P
         return ['branch_express', 'express_1', 'express_2', 'heavy_express_1', 'heavy_express_2']
 
-    @property
-    def speed(self):
+    def get_speed_by_class(self, speed_class):
         # automatic speed, but can over-ride by passing in kwargs for consist
         speed_track_type_mapping = {'RAIL':'RAIL', 'ELRL':'RAIL', 'NG':'NG', 'ELNG':'NG', 'METRO':'METRO'}
         speeds_by_track_type = self.roster.speeds[speed_track_type_mapping[self.base_track_type]]
+        return speeds_by_track_type[speed_class][self.gen - 1]
+
+    @property
+    def speed(self):
         if self._speed:
             return self._speed
         elif getattr(self, 'speed_class', None):
             # speed by class, if speed_class is set explicitly (and not None)
             # !! this doesn't handle RAIL / ELRL correctly
             # could be fixed by checking a list of railtypes
-            return speeds_by_track_type[self.speed_class][self.gen - 1]
+            return self.get_speed_by_class(self.speed_class)
         elif self.role:
             if self.role in self.express_roles:
-                return speeds_by_track_type['express'][self.gen - 1]
+                return self.get_speed_by_class('express')
             elif self.role in ['pax_high_speed']:
-                return speeds_by_track_type['very_high_speed'][self.gen - 1]
+                return self.get_speed_by_class('very_high_speed')
             else:
-                return speeds_by_track_type['standard'][self.gen - 1]
+                return self.get_speed_by_class('standard')
         else:
             # assume no speed limit
             return None
