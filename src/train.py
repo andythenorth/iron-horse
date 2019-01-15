@@ -279,6 +279,12 @@ class Consist(object):
             return self.base_track_type
 
     @property
+    def express_roles(self):
+        # for cases where we need to know all the roles that reduce to 'express'
+        # aside: total abuse of @property, I have no justification other than it fits the pattern in context :P
+        return ['branch_express', 'express_1', 'express_2', 'heavy_express_1', 'heavy_express_2']
+
+    @property
     def speed(self):
         # automatic speed, but can over-ride by passing in kwargs for consist
         speed_track_type_mapping = {'RAIL':'RAIL', 'ELRL':'RAIL', 'NG':'NG', 'ELNG':'NG', 'METRO':'METRO'}
@@ -291,8 +297,7 @@ class Consist(object):
             # could be fixed by checking a list of railtypes
             return speeds_by_track_type[self.speed_class][self.gen - 1]
         elif self.role:
-            express_roles = ['branch_express', 'express_1', 'express_2', 'heavy_express_1', 'heavy_express_2']
-            if self.role in express_roles:
+            if self.role in self.express_roles:
                 return speeds_by_track_type['express'][self.gen - 1]
             elif self.role in ['pax_high_speed']:
                 return speeds_by_track_type['very_high_speed'][self.gen - 1]
