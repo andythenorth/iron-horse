@@ -6,6 +6,7 @@ consist = MailEngineRailcarConsist(id='jupiter',
                                    role='mail_railcar',
                                    power=850,
                                    pantograph_type='z-shaped-single',
+                                   easter_egg_haulage_speed_bonus=True,
                                    gen=5,
                                    sprites_complete=False,
                                    intro_date_offset=-3)  # introduce early by design
