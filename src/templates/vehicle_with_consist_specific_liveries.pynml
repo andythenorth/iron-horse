@@ -92,12 +92,18 @@
         return ${vehicle.id}_switch_graphics_livery_1_${variant_num};
     }
 
+    <tal:conditional_pantograph condition="consist.pantograph_type is not None">
+        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_pantographs_${variant_num}, vehicle_is_flipped) {
+            1: return ${vehicle.id}_switch_graphics_pantographs_${variant_num}_flipped;
+            return ${vehicle.id}_switch_graphics_pantographs_${variant_num}_unflipped;
+        }
+    </tal:conditional_pantograph>
     switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_layers_${variant_num}, getbits(extra_callback_info1, 8, 8)) {
         0: return ${vehicle.id}_switch_graphics_engine_id_${variant_num};
         <tal:conditional_pantograph condition="consist.pantograph_type is not None">
             <!--! if there are pantographs to draw we will handle that later in the graphics chain,
                   but we need to reserve layer 1 for the pantographs as well as layer 0 for the vehicle  -->
-            1: return ${vehicle.id}_switch_graphics_pantographs_${variant_num}_unflipped;
+            1: return ${vehicle.id}_switch_graphics_pantographs_${variant_num};
         </tal:conditional_pantograph>
     }
 
