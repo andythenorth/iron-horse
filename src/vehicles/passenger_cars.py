@@ -47,7 +47,7 @@ def main():
                                   base_numeric_id=3300,
                                   gen=1,
                                   subtype='A',
-                                  sprites_complete=False)
+                                  sprites_complete=True)
 
     consist.add_unit(type=PaxCar,
                      capacity=20,
@@ -69,7 +69,7 @@ def main():
                                   base_numeric_id=3310,
                                   gen=2,
                                   subtype='A',
-                                  sprites_complete=False)
+                                  sprites_complete=True)
 
     consist.add_unit(type=PaxCar,
                      capacity=20,
