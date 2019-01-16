@@ -101,6 +101,8 @@ class Consist(object):
             'suppress_animated_pixel_warnings', False)
         # by design, occasional 'joker' engines are included that don't fit the roster pattern, this is to add variety
         self.joker = kwargs.get('joker', False)
+        # occasionally we want to force a specific spriterow for docs, not needed often, set in kwargs as needed
+        self.docs_image_spriterow = kwargs.get('docs_image_spriterow', 0) # 0 indexed spriterows, position in generated spritesheet
         # aids 'project management'
         self.sprites_complete = kwargs.get('sprites_complete', False)
 

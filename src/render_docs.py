@@ -189,10 +189,11 @@ def render_docs_images():
         source_vehicle_image.putpalette(Image.open('palette_key.png').palette)
 
         if not consist.dual_headed:
+            y_offset = consist.docs_image_spriterow * 30
             source_vehicle_image_tmp = vehicle_spritesheet.crop(box=(consist.buy_menu_x_loc,
-                                                                     10,
+                                                                     10 + y_offset,
                                                                      consist.buy_menu_x_loc + doc_helper.buy_menu_sprite_width(consist),
-                                                                     10 + doc_helper.buy_menu_sprite_height))
+                                                                     10 + y_offset + doc_helper.buy_menu_sprite_height))
         if consist.dual_headed:
             # oof, super special handling of dual-headed vehicles, OpenTTD handles this automatically in the buy menu, but docs have to handle explicitly
             # !! hard-coded values might fail in future, sort that out then if needed, they can be looked up in global constants

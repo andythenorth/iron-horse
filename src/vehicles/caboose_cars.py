@@ -19,6 +19,7 @@ def main():
                                 base_numeric_id=1280,
                                 gen=1,
                                 subtype='A',
+                                docs_image_spriterow=6,
                                 sprites_complete=True)
 
     consist.add_unit(type=CabooseCar,
@@ -29,6 +30,7 @@ def main():
                                 base_numeric_id=2210,
                                 gen=1,
                                 subtype='B',
+                                docs_image_spriterow=6,
                                 sprites_complete=True)
 
     consist.add_unit(type=CabooseCar,
