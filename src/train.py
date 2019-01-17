@@ -690,8 +690,10 @@ class CarConsist(Consist):
     @property
     def model_life(self):
         # automatically span wagon model life across gap to next generation
+        # FYI next generation might be +n, not +1
+        # don't check wagon subtype, only wagon subclass and track type (otherwise, e.g. A never expire even if replaced permanently by B)
         roster_gens_for_class = sorted(set(
-            [wagon.gen for wagon in self.roster.wagon_consists[self.base_id] if (wagon.subtype == self.subtype and wagon.base_track_type == self.base_track_type)]))
+            [wagon.gen for wagon in self.roster.wagon_consists[self.base_id] if wagon.base_track_type == self.base_track_type]))
         this_index = roster_gens_for_class.index(self.gen)
         if this_index == len(roster_gens_for_class) - 1:
             return 'VEHICLE_NEVER_EXPIRES'
