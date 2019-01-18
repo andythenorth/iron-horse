@@ -97,8 +97,8 @@ roster = Roster(id = 'pony',
                 # capacity factor per generation, will be multiplied by vehicle length
                 freight_car_capacity_per_unit_length =  {'RAIL': [4, 4, 5, 5.5, 6, 6],
                                                          'NG': [3, 3, 4, 4]},
-                pac_car_capacity_per_unit_length =  {'RAIL': [4, 4, 5, 5.5, 6, 6],
-                                                     'NG': [3, 3, 4, 4]},
+                pax_car_capacity_per_unit_length =  {'RAIL': [5, 6, 7, 8, 8, 8],
+                                                     'NG': [6, 6, 7, 7]},
                 # freight car weight factor varies slightly by gen, reflecting modern cars with lighter weight
                 train_car_weight_factors = [0.5, 0.5, 0.5, 0.48, 0.44, 0.44],
 

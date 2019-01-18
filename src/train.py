@@ -1713,12 +1713,28 @@ class TrainCar(Train):
 
 class PaxCar(TrainCar):
     """
-    Pax wagon. This subclass only exists to set symmetry_type to asymmetric.
+    Pax wagon. This subclass only exists to set capacity and symmetry_type.
     """
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # pax wagons may be asymmetric, there is magic in the graphics processing to make symmetric pax/mail sprites also work with this
         self._symmetry_type = 'asymmetric'
+        # magic to set pax car capacity subject to length
+        base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
+        self.capacity = kwargs['vehicle_length'] * base_capacity
+
+
+class LuxuryPaxCar(TrainCar):
+    """
+    Luxury pax wagon. This subclass only exists to set capacity and symmetry_type.
+    """
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # pax wagons may be asymmetric, there is magic in the graphics processing to make symmetric pax/mail sprites also work with this
+        self._symmetry_type = 'asymmetric'
+        # magic to set pax car capacity subject to length
+        base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
+        self.capacity = int(kwargs['vehicle_length'] * base_capacity * 0.625)
 
 
 class MailCar(TrainCar):
