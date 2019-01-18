@@ -1708,7 +1708,7 @@ class TrainCar(Train):
     @property
     def weight(self):
         # set weight based on capacity  * a multiplier from consist * roster gen factor
-        return int(self.consist.weight_factor * self.default_cargo_capacity * self.consist.roster.freight_car_weight_factors[self.consist.gen - 1])
+        return int(self.consist.weight_factor * self.default_cargo_capacity * self.consist.roster.train_car_weight_factors[self.consist.gen - 1])
 
 
 class PaxCar(TrainCar):
