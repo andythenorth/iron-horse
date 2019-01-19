@@ -165,7 +165,8 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
         num_pantograph_rows = getattr(self.consist.gestalt_graphics, 'num_pantograph_rows', len(self.consist.unique_spriterow_nums))
 
         pantograph_input_images = {'diamond-single': 'diamond.png', 'diamond-double': 'diamond.png',
-                                   'z-shaped-single': 'z-shaped.png', 'z-shaped-double': 'z-shaped.png'}
+                                   'z-shaped-single': 'z-shaped.png', 'z-shaped-double': 'z-shaped.png',
+                                   'z-shaped-single-with-base': 'z-shaped-with-base.png'}
         pantograph_input_path = os.path.join(currentdir, 'src', 'graphics', 'pantographs', pantograph_input_images[self.consist.pantograph_type])
         pantograph_input_image = Image.open(pantograph_input_path)
 
@@ -184,7 +185,8 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
         spriterow_pantograph_state_maps = {'diamond-single': {'down': ['a'], 'up': ['A']},
                                            'diamond-double': {'down': ['a', 'a'], 'up': ['A', 'A']}, # A and B functionally identical here, so just use A
                                            'z-shaped-single': {'down': ['a'], 'up': ['A']},
-                                           'z-shaped-double': {'down': ['a', 'b'], 'up': ['A', 'b']}} # aB was tried and removed, TMWFTLB, instead just use Ab and respect depot flip
+                                           'z-shaped-double': {'down': ['a', 'b'], 'up': ['A', 'b']},  # aB was tried and removed, TMWFTLB, instead just use Ab and respect depot flip
+                                           'z-shaped-single-with-base': {'down': ['a'], 'up': ['A']}}
         pantograph_state_sprite_map = {'a': [pantograph_sprites[0], pantograph_sprites[1], pantograph_sprites[2], pantograph_sprites[3],
                                              pantograph_sprites[4], pantograph_sprites[5], pantograph_sprites[6], pantograph_sprites[7]],
                                        'A': [pantograph_sprites[8], pantograph_sprites[9], pantograph_sprites[10], pantograph_sprites[11],
