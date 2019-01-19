@@ -6,7 +6,7 @@ def main(roster):
                                             id='tin_rocket',
                                             base_numeric_id=530,
                                             name='Tin Rocket',
-                                            role='pax_railcar',
+                                            role='pax_railcar_1',
                                             power=400,
                                             gen=5,
                                             sprites_complete=True,

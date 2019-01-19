@@ -6,7 +6,7 @@ def main(roster):
                                        id='scooby',
                                        base_numeric_id=3070,
                                        name='Scooby',
-                                       role='mail_railcar',
+                                       role='mail_railcar_1',
                                        power=420,
                                        gen=4,
                                        sprites_complete=True,

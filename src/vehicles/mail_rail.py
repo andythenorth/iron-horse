@@ -6,7 +6,7 @@ def main(roster):
                                        id='mail_rail',
                                        base_numeric_id=3000,
                                        name='Mail Rail',
-                                       role='mail_railcar',
+                                       role='mail_railcar_1',
                                        power=700,
                                        gen=6,
                                        sprites_complete=True,

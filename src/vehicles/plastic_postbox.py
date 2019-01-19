@@ -6,7 +6,7 @@ def main(roster):
                                        id='plastic_postbox',
                                        base_numeric_id=3080,
                                        name='Plastic Postbox',
-                                       role='mail_railcar',
+                                       role='mail_railcar_1',
                                        power=560,
                                        gen=5,
                                        sprites_complete=True,

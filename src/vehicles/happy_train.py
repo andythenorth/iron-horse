@@ -6,7 +6,7 @@ def main(roster):
                                             id='happy_train',
                                             base_numeric_id=100,
                                             name='Happy Train',
-                                            role='pax_railcar',
+                                            role='pax_railcar_1',
                                             power=500,
                                             gen=6,
                                             sprites_complete=True,

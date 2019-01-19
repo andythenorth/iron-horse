@@ -6,7 +6,7 @@ def main(roster):
                                             id='deasil',
                                             base_numeric_id=1770,
                                             name='Deasil',
-                                            role='pax_railcar',
+                                            role='pax_railcar_1',
                                             power=200,
                                             gen=3,
                                             sprites_complete=True,

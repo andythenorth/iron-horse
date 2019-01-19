@@ -6,7 +6,7 @@ def main(roster):
                                        id='pylon',
                                        base_numeric_id=2120,
                                        name='Pylon',
-                                       role='mail_railcar',
+                                       role='mail_railcar_2',
                                        power=1000,
                                        pantograph_type='z-shaped-single',
                                        easter_egg_haulage_speed_bonus=True,

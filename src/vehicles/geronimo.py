@@ -6,7 +6,7 @@ def main(roster):
                                             id='geronimo',
                                             base_numeric_id=2140,
                                             name='Geronimo',
-                                            role='pax_railcar',
+                                            role='pax_railcar_2',
                                             power=500,  # RL EMU HP is much lower, but eh
                                             pantograph_type='z-shaped-single',
                                             easter_egg_haulage_speed_bonus=True,

@@ -6,7 +6,7 @@ def main(roster):
                                             id='mumble',
                                             base_numeric_id=140,
                                             name='Mumble',
-                                            role='pax_railcar',
+                                            role='pax_railcar_1',
                                             base_track_type='NG',
                                             power=250,
                                             gen=3,

@@ -6,7 +6,7 @@ def main(roster):
                                             id='athena',
                                             base_numeric_id=2150,
                                             name='Athena',
-                                            role='pax_railcar',
+                                            role='pax_railcar_2',
                                             power=350,  # RL EMU HP is much lower, but eh
                                             pantograph_type='diamond-single',
                                             easter_egg_haulage_speed_bonus=True,
