@@ -23,6 +23,29 @@ Designed to be used with 'vehicles expire' set to to 'on', Horse 2 has a *lot* o
 - no savegame compatibility with Iron Horse 1
 - can be used _alongside_ Iron Horse 1, if you must (kind of odd, but eh)
 
+
+*Changes from 2.0.0 Alpha 2*
+
+- no savegame compatibility with previous 2.0.0 Alpha releases
+- add electric railcars:
+    - Athena, Geronimo, Breeze, Zeus for passengers
+    - Ares, Dover, Jupiter, Pylon for mail/express cargos
+    - introduced 1927-2017
+    - hidden silly easter egg for electric railcars, hard to find
+- add more 'standard' passenger cars
+    - 3 short passenger cars introduced 1860-1930
+    - 3 long passenger cars introduced 1960-2020
+- increased capacity of all passenger railcars and all 'standard' passenger cars
+- added 3 long express cars, introduced 1960-2020
+- improved appearance of vehicle images in docs
+- updated translations from web translators
+- numerous codechanges for graphics generation, capacity calculation etc
+
+
+---------------------
+2.0.0 Alpha 2 Release
+---------------------
+
 *Changes from 2.0.0 Alpha 1*
 
 - no savegame compatibility with 2.0.0 Alpha 1
@@ -46,6 +69,13 @@ Designed to be used with 'vehicles expire' set to to 'on', Horse 2 has a *lot* o
 - reorganised engines in buy menu
 - changed the en-gb translation to use more typically British names for wagons
 - updated translations from web translators
+
+
+---------------------
+2.0.0 Alpha 1 Release
+---------------------
+
+Assume *everything* changed.  Except things that didn't.
 
 
 -------------
