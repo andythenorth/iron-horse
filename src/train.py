@@ -41,6 +41,9 @@ class Consist(object):
         # private var, used to store a name substr for engines, composed into name with other strings as needed
         self._name = kwargs.get('name', None)
         self.base_numeric_id = kwargs.get('base_numeric_id', None)
+        # roster is set when the vehicle is registered to a roster, only one roster per vehicle
+        # persist roster id for lookups, not roster obj directly, because of multiprocessing problems with object references
+        self.roster_id = kwargs.get('roster_id') # just fail if there's no roster
         # either gen xor intro_date is required, don't set both, one will be interpolated from the other
         self._intro_date = kwargs.get('intro_date', None)
         self._gen = kwargs.get('gen', None)
@@ -94,8 +97,6 @@ class Consist(object):
         self.random_company_colour_swap = False  # over-ride in subclasses as needed
         # role is e.g. Heavy Freight, Express etc, and is used to automatically set model life as well as in docs
         self.role = kwargs.get('role', None)
-        # roster is set when the vehicle is registered to a roster, only one roster per vehicle
-        self.roster_id = None
         # optionally suppress nmlc warnings about animated pixels for consists where they're intentional
         self.suppress_animated_pixel_warnings = kwargs.get(
             'suppress_animated_pixel_warnings', False)
@@ -336,6 +337,8 @@ class Consist(object):
         for roster in registered_rosters:
             if roster.id == self.roster_id:
                 return roster
+        else:
+            raise Exception('no roster found for ', self.id)
 
     def get_expression_for_rosters(self):
         # the working definition is one and only one roster per vehicle
@@ -415,6 +418,7 @@ class EngineConsist(Consist):
     """
 
     def __init__(self, **kwargs):
+        kwargs['roster_id'] = kwargs.get('roster').id
         super().__init__(**kwargs)
         # Graphics configuration only as required
         # just check if pantograph generation is needed for this engine
@@ -638,10 +642,8 @@ class CarConsist(Consist):
         # self.base_id = '' # provide in subclass
         id = self.get_wagon_id(self.base_id, **kwargs)
         kwargs['id'] = id
+        kwargs['roster_id'] = kwargs['roster'] # conflation of 'roster' and 'roster_id' here, could be refactored, but eh
         super().__init__(**kwargs)
-
-        # persist roster id for lookups, not roster obj directly, because of multiprocessing problems with object references
-        self.roster_id = kwargs.get('roster', None)
         self.roster.register_wagon_consist(self)
 
         self.speed_class = 'standard'  # over-ride this in sub-class for, e.g. express freight consists

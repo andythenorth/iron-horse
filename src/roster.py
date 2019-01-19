@@ -14,7 +14,6 @@ class Roster(object):
         self.engine_consists = []
         for engine in kwargs.get('engines'):
             consist = engine.main(self)
-            consist.roster_id = self.id
             self.engine_consists.append(consist)
         self.wagon_consists = dict(
             [(base_id, []) for base_id in global_constants.buy_menu_sort_order_wagons])
