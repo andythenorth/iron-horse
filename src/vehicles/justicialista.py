@@ -1,8 +1,9 @@
 from train import EngineConsist, DieselEngineUnit
 
 
-def main():
-    consist = EngineConsist(id='justicialista',
+def main(roster):
+    consist = EngineConsist(roster=roster,
+                            id='justicialista',
                             base_numeric_id=250,
                             name='Justicialista',
                             power=5880,  # yes, really, it's high powered

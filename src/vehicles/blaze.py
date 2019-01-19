@@ -7,8 +7,9 @@ from train import EngineConsist, DieselEngineUnit
 # no wagon attach cb should be used, let them eat cake etc.
 
 
-def main():
-    consist = EngineConsist(id='blaze',
+def main(roster):
+    consist = EngineConsist(roster=roster,
+                            id='blaze',
                             base_numeric_id=2860,
                             name='Blaze',
                             role='heavy_express_1',

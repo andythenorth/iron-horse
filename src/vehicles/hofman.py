@@ -1,8 +1,9 @@
 from train import EngineConsist, SteamEngineUnit, SteamEngineTenderUnit
 
 
-def main():
-    consist = EngineConsist(id='hofman',
+def main(roster):
+    consist = EngineConsist(roster=roster,
+                            id='hofman',
                             base_numeric_id=1840,
                             name='2-6-2+2-6-2 Hofman',
                             tractive_effort_coefficient=0.27,  # dibble for game balance

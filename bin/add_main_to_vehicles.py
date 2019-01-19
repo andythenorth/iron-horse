@@ -13,10 +13,11 @@ for filename in os.listdir(os.path.join('src','vehicles')):
 
 def insert_main(filename):
     content = codecs.open(os.path.join('src','vehicles',filename),'r', encoding='utf-8').read()
-    if 'def main():' in content:
-        print(filename, 'already has main(), skipping')
+    if not 'return consist' in content:
+        print(filename, 'is not an engine, skipping')
         return
     else:
+        """"
         lines = codecs.open(os.path.join('src','vehicles',filename),'r', encoding='utf-8').readlines()
         modified_lines = []
         for index, line in enumerate(lines):
@@ -28,11 +29,21 @@ def insert_main(filename):
         modified_lines.insert(1, '\n')
         modified_lines.insert(2, 'def main():')
         modified_lines.append('\n    return consist')
-
+        """
+        lines = codecs.open(os.path.join('src','vehicles',filename),'r', encoding='utf-8').readlines()
+        modified_lines = []
+        for line in lines:
+            if 'def main():\n' in line:
+                modified_lines.append('def main(roster):\n')
+            elif '(id=' in line:
+                splits = line.split('(')
+                print(splits)
+                modified_lines.append('(roster=roster,\n   '.join(splits))
+            else:
+                modified_lines.append(line)
         file = open(os.path.join('src','vehicles',filename),'w')
         file.write(''.join(modified_lines))
         file.close
-
 
 for filename in filenames:
     insert_main(filename)

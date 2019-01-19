@@ -1,8 +1,9 @@
 from train import EngineConsist, SteamEngineUnit
 
 
-def main():
-    consist = EngineConsist(id='bean_feast',
+def main(roster):
+    consist = EngineConsist(roster=roster,
+                            id='bean_feast',
                             base_numeric_id=240,
                             name='2-6-4 Bean Feast',
                             role='universal',

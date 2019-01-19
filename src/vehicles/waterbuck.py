@@ -1,8 +1,9 @@
 from train import EngineConsist, DieselEngineUnit
 
 
-def main():
-    consist = EngineConsist(id='waterbuck',
+def main(roster):
+    consist = EngineConsist(roster=roster,
+                            id='waterbuck',
                             base_numeric_id=2020,
                             name='Waterbuck',
                             power=2200,

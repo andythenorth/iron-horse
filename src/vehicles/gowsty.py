@@ -1,8 +1,9 @@
 from train import MailEngineRailcarConsist, DieselRailcarBaseUnit
 
 
-def main():
-    consist = MailEngineRailcarConsist(id='gowsty',
+def main(roster):
+    consist = MailEngineRailcarConsist(roster=roster,
+                                       id='gowsty',
                                        base_numeric_id=1760,
                                        name='Gowsty',
                                        role='mail_railcar',

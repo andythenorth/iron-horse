@@ -1,8 +1,9 @@
 from train import MailEngineMetroConsist, MetroUnit
 
 
-def main():
-    consist = MailEngineMetroConsist(id='tideway',
+def main(roster):
+    consist = MailEngineMetroConsist(roster=roster,
+                                     id='tideway',
                                      base_numeric_id=2200,
                                      name='Tideway',
                                      role='mail_metro',

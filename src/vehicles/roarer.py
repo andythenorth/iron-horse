@@ -1,8 +1,9 @@
 from train import EngineConsist, ElectricEngineUnit
 
 
-def main():
-    consist = EngineConsist(id='roarer',
+def main(roster):
+    consist = EngineConsist(roster=roster,
+                            id='roarer',
                             base_numeric_id=2230,
                             name='Roarer',
                             role='heavy_express_2',

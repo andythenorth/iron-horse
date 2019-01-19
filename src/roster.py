@@ -13,7 +13,7 @@ class Roster(object):
         self.numeric_id = kwargs.get('numeric_id')
         self.engine_consists = []
         for engine in kwargs.get('engines'):
-            consist = engine.main()
+            consist = engine.main(self)
             consist.roster_id = self.id
             self.engine_consists.append(consist)
         self.wagon_consists = dict(

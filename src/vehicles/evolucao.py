@@ -3,7 +3,8 @@
 
 def main(): from train import EngineConsist, DieselEngineUnit
 # for rest of stats, look up GE Evolution
-    consist = EngineConsist(id='evolucao',
+    consist = EngineConsist(roster=roster,
+                            id='evolucao',
                             base_numeric_id=200,
                             name='Evolução',
                             power=4400,

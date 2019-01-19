@@ -1,8 +1,9 @@
 from train import PassengerVeryHighSpeedMiddleEngineConsist, ElectricHighSpeedPaxUnit
 
 
-def main():
-    consist = PassengerVeryHighSpeedMiddleEngineConsist(id='brenner_middle',
+def main(roster):
+    consist = PassengerVeryHighSpeedMiddleEngineConsist(roster=roster,
+                                                        id='brenner_middle',
                                                         base_numeric_id=2880,
                                                         name='Brenner - Middle',
                                                         role='pax_high_speed',

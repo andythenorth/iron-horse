@@ -1,8 +1,9 @@
 from train import PassengerVeryHighSpeedCabEngineConsist, ElectricHighSpeedPaxUnit
 
 
-def main():
-    consist = PassengerVeryHighSpeedCabEngineConsist(id='landlash_cab',
+def main(roster):
+    consist = PassengerVeryHighSpeedCabEngineConsist(roster=roster,
+                                                     id='landlash_cab',
                                                      base_numeric_id=980,
                                                      name='Landlash - Cab',
                                                      role='pax_high_speed',

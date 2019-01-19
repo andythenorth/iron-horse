@@ -2,7 +2,8 @@ from train import EngineConsist, DieselEngineUnit
 
 
 def main():    # for rest of stats, look up Chinese CKD8G
-    consist = EngineConsist(id='roca',
+    consist = EngineConsist(roster=roster,
+                            id='roca',
                             base_numeric_id=400,
                             name='Roca',
                             power=3000,
