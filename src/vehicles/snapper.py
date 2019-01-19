@@ -1,4 +1,4 @@
-from train import PassengerEngineRailcarConsist, DieselRailcarBaseUnit
+from train import PassengerEngineRailcarConsist, DieselRailcarPaxUnit
 
 
 def main(roster):
@@ -12,10 +12,9 @@ def main(roster):
                                             gen=4,
                                             sprites_complete=True)
 
-    consist.add_unit(type=DieselRailcarBaseUnit,
+    consist.add_unit(type=DieselRailcarPaxUnit,
                      weight=18,
                      vehicle_length=6,
-                     capacity=30,
                      chassis='railcar_ng')
 
     return consist
