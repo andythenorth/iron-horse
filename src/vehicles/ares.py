@@ -8,10 +8,10 @@ def main(roster):
                                        name='Ares',
                                        role='mail_railcar_2',
                                        power=550,
-                                       pantograph_type='diamond-single',
+                                       pantograph_type='z-shaped-single-with-base',
                                        easter_egg_haulage_speed_bonus=True,
                                        gen=3,
-                                       sprites_complete=False,
+                                       sprites_complete=True,
                                        intro_date_offset=-3)  # introduce early by design
 
     consist.add_unit(type=ElectricRailcarMailUnit,
