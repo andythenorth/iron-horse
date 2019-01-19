@@ -1,4 +1,4 @@
-from train import MailEngineRailcarConsist, DieselRailcarUnit
+from train import MailEngineRailcarConsist, DieselRailcarBaseUnit
 
 consist = MailEngineRailcarConsist(id='scooby',
                                    base_numeric_id=3070,
@@ -9,7 +9,7 @@ consist = MailEngineRailcarConsist(id='scooby',
                                    sprites_complete=True,
                                    intro_date_offset=-5)  # introduce early by design
 
-consist.add_unit(type=DieselRailcarUnit,
+consist.add_unit(type=DieselRailcarBaseUnit,
                  weight=37,
                  vehicle_length=8,
                  # set capacity for freight; mail will be automatically calculated; match to 8/8 mail car for this gen

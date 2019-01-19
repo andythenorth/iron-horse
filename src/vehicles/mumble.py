@@ -1,4 +1,4 @@
-from train import PassengerEngineRailcarConsist, DieselRailcarUnit
+from train import PassengerEngineRailcarConsist, DieselRailcarBaseUnit
 
 consist = PassengerEngineRailcarConsist(id='mumble',
                                         base_numeric_id=140,
@@ -9,7 +9,7 @@ consist = PassengerEngineRailcarConsist(id='mumble',
                                         gen=3,
                                         sprites_complete=True)
 
-consist.add_unit(type=DieselRailcarUnit,
+consist.add_unit(type=DieselRailcarBaseUnit,
                  weight=18,
                  vehicle_length=6,
                  capacity=30,
