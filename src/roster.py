@@ -11,12 +11,9 @@ class Roster(object):
     def __init__(self, **kwargs):
         self.id = kwargs.get('id')
         self.numeric_id = kwargs.get('numeric_id')
+        # engines only used once at __init__ time, it's a list of modules, not the actual consists
+        self.engines = kwargs.get('engines')
         self.engine_consists = []
-        for engine in kwargs.get('engines'):
-            consist = engine.main(self)
-            self.engine_consists.append(consist)
-        self.wagon_consists = dict(
-            [(base_id, []) for base_id in global_constants.buy_menu_sort_order_wagons])
         self.intro_dates = kwargs.get('intro_dates')
         self.speeds = kwargs.get('speeds')
         self.freight_car_capacity_per_unit_length = kwargs.get(
@@ -73,3 +70,8 @@ class Roster(object):
     def register(self, disabled=False):
         registered_rosters.append(self)
         self.disabled = disabled
+        for engine in self.engines:
+            consist = engine.main(self)
+            self.engine_consists.append(consist)
+        self.wagon_consists = dict(
+            [(base_id, []) for base_id in global_constants.buy_menu_sort_order_wagons])

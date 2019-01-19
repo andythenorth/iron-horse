@@ -1589,6 +1589,7 @@ class DieselRailcarPaxUnit(DieselRailcarBaseUnit):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        #print(self.consist.roster.pax_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1])
 
     """
     @property
