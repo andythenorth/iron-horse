@@ -1582,6 +1582,18 @@ class DieselRailcarBaseUnit(DieselEngineUnit):
         self._symmetry_type = kwargs.get('symmetry_type', 'asymmetric')
 
 
+class DieselRailcarMailUnit(DieselRailcarBaseUnit):
+    """
+    Unit for a mail diesel railcar.  Just a sparse subclass to set capacity.
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # magic to set capacity subject to length
+        base_capacity = self.consist.roster.freight_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
+        self.capacity = (kwargs['vehicle_length'] * base_capacity) / polar_fox.constants.mail_multiplier
+
+
 class DieselRailcarPaxUnit(DieselRailcarBaseUnit):
     """
     Unit for a pax diesel railcar.  Just a sparse subclass to set capacity.
@@ -1627,7 +1639,7 @@ class ElectroDieselEngineUnit(Train):
 
 class ElectricRailcarBaseUnit(Train):
     """
-    Unit for an electric railcar.
+    Unit for an electric railcar.  Capacity set in subclasses
     """
 
     def __init__(self, **kwargs):
@@ -1638,14 +1650,23 @@ class ElectricRailcarBaseUnit(Train):
         self.consist.str_name_suffix = 'STR_NAME_SUFFIX_ELECTRIC'
         # the cab magic won't work unless it's asymmetrical eh? :P
         self._symmetry_type = 'asymmetric'
+
+
+class ElectricRailcarMailUnit(ElectricRailcarBaseUnit):
+    """
+    Unit for a mail electric railcar.  Just a sparse subclass to set capacity.
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
         # magic to set capacity subject to length
-        #base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
-        #self.capacity = kwargs['vehicle_length'] * base_capacity
+        base_capacity = self.consist.roster.freight_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
+        self.capacity = (kwargs['vehicle_length'] * base_capacity) / polar_fox.constants.mail_multiplier
 
 
 class ElectricRailcarPaxUnit(ElectricRailcarBaseUnit):
     """
-    Unit for a pax diesel railcar.  Just a sparse subclass to set capacity.
+    Unit for a pax electric railcar.  Just a sparse subclass to set capacity.
     """
 
     def __init__(self, **kwargs):

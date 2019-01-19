@@ -1,4 +1,4 @@
-from train import MailEngineRailcarConsist, DieselRailcarBaseUnit
+from train import MailEngineRailcarConsist, DieselRailcarMailUnit
 
 
 def main(roster):
@@ -12,11 +12,9 @@ def main(roster):
                                        sprites_complete=True,
                                        intro_date_offset=-5)  # introduce early by design
 
-    consist.add_unit(type=DieselRailcarBaseUnit,
+    consist.add_unit(type=DieselRailcarMailUnit,
                      weight=30,
                      vehicle_length=8,
-                     # set capacity for freight; mail will be automatically calculated; match to 8/8 mail car for this gen
-                     capacity=20,
                      chassis='railcar')
 
     return consist
