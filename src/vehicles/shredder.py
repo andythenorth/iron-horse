@@ -1,10 +1,6 @@
 from train import EngineConsist, DieselEngineUnit
 
-def main():    
-    # as of Dec 2018 there is no replacement for Shredder 2 in the tech tree
-    # the assumption is that the Ultra Shoebox can replace it eh?
-    # this might cause a monoculture of Ultra Shoeboxes, which might be boring?
-    
+def main():
     consist = EngineConsist(id='shredder',
                             base_numeric_id=2830,
                             name='Shredder',
@@ -13,7 +9,7 @@ def main():
                             random_reverse=True,
                             gen=6,
                             sprites_complete=True)
-    
+
     consist.add_unit(type=DieselEngineUnit,
                      weight=74,
                      vehicle_length=6,
