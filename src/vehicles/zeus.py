@@ -8,7 +8,7 @@ def main(roster):
                                             name='Zeus',
                                             role='pax_railcar_2',
                                             power=800,  # RL EMU HP is much lower, but eh
-                                            pantograph_type='z-shaped-single',
+                                            pantograph_type='z-shaped-single-with-base',
                                             easter_egg_haulage_speed_bonus=True,
                                             gen=6,
                                             sprites_complete=False,
