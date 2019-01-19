@@ -1,6 +1,7 @@
 from train import MailEngineRailcarConsist, DieselRailcarBaseUnit
 
-def main():    
+
+def main():
     consist = MailEngineRailcarConsist(id='plastic_postbox',
                                        base_numeric_id=3080,
                                        name='Plastic Postbox',
@@ -9,7 +10,7 @@ def main():
                                        gen=5,
                                        sprites_complete=True,
                                        intro_date_offset=-5)  # introduce early by design
-    
+
     consist.add_unit(type=DieselRailcarBaseUnit,
                      weight=37,
                      vehicle_length=8,

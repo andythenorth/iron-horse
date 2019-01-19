@@ -1,6 +1,7 @@
 from train import EngineConsist, SteamEngineUnit, SteamEngineTenderUnit
 
-def main():    
+
+def main():
     consist = EngineConsist(id='tencendur',
                             base_numeric_id=890,
                             name='4-4-0 Tencendur',
@@ -9,12 +10,12 @@ def main():
                             tractive_effort_coefficient=0.18,
                             buy_cost=47,
                             gen=3)
-    
+
     consist.add_unit(type=SteamEngineUnit,
                      weight=70,
                      vehicle_length=5,
                      spriterow_num=0)
-    
+
     consist.add_unit(type=SteamEngineTenderUnit,
                      weight=40,
                      vehicle_length=3,

@@ -6,6 +6,7 @@ from train import EngineConsist, DieselEngineUnit
 
 # no wagon attach cb should be used, let them eat cake etc.
 
+
 def main():
     consist = EngineConsist(id='blaze',
                             base_numeric_id=2860,

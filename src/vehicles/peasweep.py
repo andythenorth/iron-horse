@@ -1,6 +1,7 @@
 from train import EngineConsist, ElectricEngineUnit
 
-def main():    
+
+def main():
     consist = EngineConsist(id='peasweep',
                             base_numeric_id=1750,
                             name='Peasweep',
@@ -11,7 +12,7 @@ def main():
                             pantograph_type='diamond-double',
                             intro_date_offset=-13,  # introduce earlier than gen epoch by design
                             sprites_complete=True)
-    
+
     consist.add_unit(type=ElectricEngineUnit,
                      weight=75,
                      vehicle_length=6,

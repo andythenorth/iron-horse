@@ -1,6 +1,7 @@
 from train import MailEngineMetroConsist, MetroUnit
 
-def main():    
+
+def main():
     consist = MailEngineMetroConsist(id='longwater',
                                      base_numeric_id=290,
                                      name='Longwater',
@@ -8,7 +9,7 @@ def main():
                                      power=600,
                                      gen=1,
                                      sprites_complete=True)
-    
+
     consist.add_unit(type=MetroUnit,
                      weight=32,
                      vehicle_length=8,

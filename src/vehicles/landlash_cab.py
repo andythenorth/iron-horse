@@ -1,6 +1,7 @@
 from train import PassengerVeryHighSpeedCabEngineConsist, ElectricHighSpeedPaxUnit
 
-def main():    
+
+def main():
     consist = PassengerVeryHighSpeedCabEngineConsist(id='landlash_cab',
                                                      base_numeric_id=980,
                                                      name='Landlash - Cab',
@@ -9,7 +10,7 @@ def main():
                                                      power=1900,
                                                      gen=5,
                                                      intro_date_offset=10)  # introduce later than gen epoch by design
-    
+
     consist.add_unit(type=ElectricHighSpeedPaxUnit,
                      weight=41,
                      vehicle_length=8,

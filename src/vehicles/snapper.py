@@ -1,6 +1,7 @@
 from train import PassengerEngineRailcarConsist, DieselRailcarBaseUnit
 
-def main():    
+
+def main():
     consist = PassengerEngineRailcarConsist(id='snapper',
                                             base_numeric_id=590,
                                             name='Snapper',
@@ -9,7 +10,7 @@ def main():
                                             power=350,
                                             gen=4,
                                             sprites_complete=True)
-    
+
     consist.add_unit(type=DieselRailcarBaseUnit,
                      weight=18,
                      vehicle_length=6,

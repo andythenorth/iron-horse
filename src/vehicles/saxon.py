@@ -1,6 +1,7 @@
 from train import EngineConsist, SteamEngineUnit
 
-def main():    
+
+def main():
     consist = EngineConsist(id='saxon',
                             base_numeric_id=1330,
                             name='0-8-0 Saxon',
@@ -12,7 +13,7 @@ def main():
                             joker=True,  # this engine doesn't fit the set roster pattern, by design it's to mix things up
                             gen=3,
                             intro_date_offset=-8)  # introduce earlier than gen epoch by design
-    
+
     consist.add_unit(type=SteamEngineUnit,
                      weight=65,
                      vehicle_length=6,

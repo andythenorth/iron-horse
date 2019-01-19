@@ -1,5 +1,6 @@
 from train import EngineConsist, DieselEngineUnit
 
+
 def main():    # class 70-ish thing
     consist = EngineConsist(id='chimera',
                             base_numeric_id=990,
@@ -11,7 +12,7 @@ def main():    # class 70-ish thing
                             random_reverse=True,
                             gen=6,
                             sprites_complete=True)
-    
+
     consist.add_unit(type=DieselEngineUnit,
                      weight=140,
                      vehicle_length=8,

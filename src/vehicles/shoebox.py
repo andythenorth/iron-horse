@@ -1,6 +1,7 @@
 from train import EngineConsist, ElectroDieselEngineUnit
 
-def main():    
+
+def main():
     consist = EngineConsist(id='shoebox',
                             base_numeric_id=280,
                             name='Shoebox',
@@ -11,7 +12,7 @@ def main():
                             pantograph_type='z-shaped-single',
                             gen=4,
                             sprites_complete=True)
-    
+
     consist.add_unit(type=ElectroDieselEngineUnit,
                      weight=65,
                      vehicle_length=6,

@@ -1,6 +1,7 @@
 from train import EngineConsist, CargoSprinter
 
-def main():    
+
+def main():
     # cargo_sprinter is full of special cases, lots of yak-shaving to get it done
     consist = EngineConsist(id='cargo_sprinter',
                             base_numeric_id=100,
@@ -14,7 +15,7 @@ def main():
                             # rather than adding capacity by adding trailing wagons
                             # it doesn't make a good loco for unpowered consists, although one or two trailing wagons should be ok per unit
                             intro_date=1999)  # explicit intro date by design
-    
+
     consist.add_unit(type=CargoSprinter,
                      weight=46,
                      vehicle_length=7,

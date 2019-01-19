@@ -1,5 +1,6 @@
 from train import EngineConsist, DieselEngineUnit
 
+
 def main():
     consist = EngineConsist(id='griffon',
                             base_numeric_id=2840,

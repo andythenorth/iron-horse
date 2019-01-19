@@ -1,6 +1,7 @@
 from train import EngineConsist, SteamEngineUnit, SteamEngineTenderUnit
 
-def main():    
+
+def main():
     consist = EngineConsist(id='spinner',
                             base_numeric_id=480,
                             name='4-2-2 Spinner',
@@ -8,12 +9,12 @@ def main():
                             power=950,
                             tractive_effort_coefficient=0.12,
                             gen=1)
-    
+
     consist.add_unit(type=SteamEngineUnit,
                      weight=48,
                      vehicle_length=5,
                      spriterow_num=0)
-    
+
     consist.add_unit(type=SteamEngineTenderUnit,
                      weight=30,
                      vehicle_length=3,

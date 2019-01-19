@@ -1,6 +1,7 @@
 from train import EngineConsist, DieselEngineUnit
 
-def main():    
+
+def main():
     consist = EngineConsist(id='phoenix',
                             base_numeric_id=160,
                             name='Phoenix',
@@ -9,7 +10,7 @@ def main():
                             random_reverse=True,
                             gen=6,
                             sprites_complete=True)
-    
+
     consist.add_unit(type=DieselEngineUnit,
                      weight=120,
                      vehicle_length=8,

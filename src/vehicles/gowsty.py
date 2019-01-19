@@ -1,6 +1,7 @@
 from train import MailEngineRailcarConsist, DieselRailcarBaseUnit
 
-def main():    
+
+def main():
     consist = MailEngineRailcarConsist(id='gowsty',
                                        base_numeric_id=1760,
                                        name='Gowsty',
@@ -9,7 +10,7 @@ def main():
                                        gen=3,
                                        sprites_complete=True,
                                        intro_date_offset=-5)  # introduce early by design
-    
+
     consist.add_unit(type=DieselRailcarBaseUnit,
                      weight=30,
                      vehicle_length=8,

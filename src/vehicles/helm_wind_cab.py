@@ -1,6 +1,7 @@
 from train import PassengerVeryHighSpeedCabEngineConsist, ElectricHighSpeedPaxUnit
 
-def main():    
+
+def main():
     consist = PassengerVeryHighSpeedCabEngineConsist(id='helm_wind_cab',
                                                      base_numeric_id=3060,
                                                      name='Helm Wind - Cab',
@@ -9,10 +10,10 @@ def main():
                                                      dual_headed=True,
                                                      gen=4,
                                                      intro_date_offset=20)  # introduce later than gen epoch by design
-    
+
     # 4 units (2-tiles) because building these is annoying if the units are too small?
     # or 2 units (1-tile) to make any integer length?
-    
+
     consist.add_unit(type=ElectricHighSpeedPaxUnit,
                      weight=31,
                      vehicle_length=8,
