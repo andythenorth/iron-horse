@@ -1590,7 +1590,6 @@ class DieselRailcarPaxUnit(DieselRailcarBaseUnit):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # magic to set capacity subject to length
-        # n.b. can't be a static property as the consist isn't in scope at __init__ time
         base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
         self.capacity = kwargs['vehicle_length'] * base_capacity
 
@@ -1626,9 +1625,9 @@ class ElectroDieselEngineUnit(Train):
         self._symmetry_type = kwargs.get('symmetry_type', 'asymmetric')
 
 
-class ElectricRailcarUnit(Train):
+class ElectricRailcarBaseUnit(Train):
     """
-    Unit for an electric railcar.  Just a sparse subclass to set capacity and symmetry.
+    Unit for an electric railcar.
     """
 
     def __init__(self, **kwargs):
@@ -1642,6 +1641,18 @@ class ElectricRailcarUnit(Train):
         # magic to set capacity subject to length
         #base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
         #self.capacity = kwargs['vehicle_length'] * base_capacity
+
+
+class ElectricRailcarPaxUnit(ElectricRailcarBaseUnit):
+    """
+    Unit for a pax diesel railcar.  Just a sparse subclass to set capacity.
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # magic to set capacity subject to length
+        base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
+        self.capacity = kwargs['vehicle_length'] * base_capacity
 
 
 class ElectricHighSpeedPaxUnit(Train):
