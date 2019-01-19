@@ -156,4 +156,3 @@ def main():
                      cargo_length=8,
                      vehicle_length=8,
                      chassis='4_axle_1cc_filled_32px')
-

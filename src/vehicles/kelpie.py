@@ -10,7 +10,7 @@ consist = EngineConsist(id='kelpie',
                         role='express_1',
                         power=1450,
                         random_reverse=True,
-                        intro_date_offset=-2, # let's not have everything turn up in 1960
+                        intro_date_offset=-2,  # let's not have everything turn up in 1960
                         gen=4,
                         sprites_complete=True)
 

@@ -13,7 +13,7 @@ consist = EngineConsist(id='blaze',
                         power=5350,
                         joker=True,  # this engine doesn't fit the set roster pattern, by design it's to mix things up
                         dual_headed=True,
-                        intro_date_offset=-2, # let's be a little bit earlier for this one
+                        intro_date_offset=-2,  # let's be a little bit earlier for this one
                         gen=6,
                         sprites_complete=False)
 
