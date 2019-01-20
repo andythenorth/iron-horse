@@ -8,7 +8,7 @@ def main(roster):
                                        name='Ares',
                                        role='mail_railcar_2',
                                        power=550,
-                                       pantograph_type='z-shaped-single-with-base',
+                                       pantograph_type='diamond-single-with-base',
                                        easter_egg_haulage_speed_bonus=True,
                                        gen=3,
                                        sprites_complete=True,
