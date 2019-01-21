@@ -8,7 +8,7 @@ def main(roster):
                                                         name='Helm Wind - Middle',
                                                         role='pax_high_speed',
                                                         power=0,  # set power 0, when attached to correct cab, cab power will be increased
-                                                        pantograph_type='z-shaped-single',
+                                                        # no pantographs for Helm Wind middle cars
                                                         gen=5,
                                                         intro_date_offset=-3)  # introduce earlier than gen epoch by design
 

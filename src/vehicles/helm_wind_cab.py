@@ -9,6 +9,7 @@ def main(roster):
                                                      role='pax_high_speed',
                                                      power=1600,
                                                      dual_headed=True,
+                                                     pantograph_type='z-shaped-single',
                                                      gen=5,
                                                      intro_date_offset=-3)  # introduce earlier than gen epoch by design
 
