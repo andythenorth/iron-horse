@@ -36,8 +36,6 @@ from vehicles import hercules
 from vehicles import hurly_burly
 from vehicles import jupiter
 from vehicles import kelpie
-from vehicles import landlash_cab
-from vehicles import landlash_middle
 from vehicles import lark
 from vehicles import lemon
 from vehicles import little_bear
@@ -89,7 +87,7 @@ roster = Roster(id = 'pony',
                 # speeds roughly same as RH trucks of same era + 5mph or so, and a bit higher at the top end (back and forth on this many times eh?),
                 speeds = {'RAIL': {'standard': [45, 45, 60, 75, 87, 100], # gen 5 and 6 forced down by design, really fast freight is imbalanced
                                    'express': [60, 75, 90, 105, 120, 135], # 135 is for a reason, can't remember what :P
-                                   'very_high_speed': [0, 0, 0, 140, 170, 200]},
+                                   'very_high_speed': [0, 0, 0, 0, 140, 200]},
                           'METRO': {'standard': [45, 55, 65]}, # no express for metro in Pony
                           'NG': {'standard': [35, 35, 45, 55], # NG standard/express all same in Pony
                                  'express': [35, 35, 45, 55]}},
@@ -168,8 +166,6 @@ roster = Roster(id = 'pony',
                            # brit high speed pax
                            helm_wind_cab,
                            helm_wind_middle,
-                           landlash_cab,
-                           landlash_middle,
                            brenner_cab,
                            brenner_middle,
                            # metro

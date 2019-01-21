@@ -1,5 +1,6 @@
 from train import PassengerVeryHighSpeedCabEngineConsist, ElectricHighSpeedPaxUnit
 
+# deprecated, only 2 generations of high speed needed for Brit roster
 
 def main(roster):
     consist = PassengerVeryHighSpeedCabEngineConsist(roster=roster,
@@ -9,7 +10,7 @@ def main(roster):
                                                      role='pax_high_speed',
                                                      dual_headed=True,
                                                      power=1900,
-                                                     gen=5,
+                                                     gen=6,
                                                      intro_date_offset=10)  # introduce later than gen epoch by design
 
     consist.add_unit(type=ElectricHighSpeedPaxUnit,

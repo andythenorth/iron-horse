@@ -1,5 +1,6 @@
 from train import PassengerVeryHighSpeedMiddleEngineConsist, ElectricHighSpeedPaxUnit
 
+# deprecated, only 2 generations of high speed needed for Brit roster
 
 def main(roster):
     consist = PassengerVeryHighSpeedMiddleEngineConsist(roster=roster,

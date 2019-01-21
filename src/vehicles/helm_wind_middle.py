@@ -9,11 +9,8 @@ def main(roster):
                                                         role='pax_high_speed',
                                                         power=0,  # set power 0, when attached to correct cab, cab power will be increased
                                                         pantograph_type='z-shaped-single',
-                                                        gen=4,
-                                                        intro_date_offset=20)  # introduce later than gen epoch by design
-
-    # 4 units (2-tiles) because building these is annoying if the units are too small?
-    # or 2 units (1-tile) to make any integer length?
+                                                        gen=5,
+                                                        intro_date_offset=-3)  # introduce earlier than gen epoch by design
 
     consist.add_unit(type=ElectricHighSpeedPaxUnit,
                      weight=31,
