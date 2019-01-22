@@ -10,7 +10,8 @@ def main(roster):
                                                         pantograph_type='z-shaped-single',
                                                         power=0,  # set power 0, when attached to correct cab, cab power will be increased
                                                         gen=6,
-                                                        intro_date_offset=-3)  # introduce earlier than gen epoch by design
+                                                        intro_date_offset=-3,  # introduce earlier than gen epoch by design
+                                                        sprites_complete=False)
 
     consist.add_unit(type=ElectricHighSpeedPaxUnit,
                      weight=55,
