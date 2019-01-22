@@ -8,7 +8,7 @@ def main(roster):
                                                      name='Brenner - Cab',
                                                      role='pax_high_speed',
                                                      dual_headed=True,
-                                                     power=2600,
+                                                     power=3000,
                                                      gen=6,
                                                      intro_date_offset=-3)  # introduce earlier than gen epoch by design
 
