@@ -102,7 +102,7 @@ class Consist(object):
             'suppress_animated_pixel_warnings', False)
         # by design, occasional 'joker' engines are included that don't fit the roster pattern, this is to add variety
         self.joker = kwargs.get('joker', False)
-        # occasionally we want to force a specific spriterow for docs, not needed often, set in kwargs as needed
+        # occasionally we want to force a specific spriterow for docs, not needed often, set in kwargs as needed, see also buy_menu_spriterow_num
         self.docs_image_spriterow = kwargs.get('docs_image_spriterow', 0) # 0 indexed spriterows, position in generated spritesheet
         # aids 'project management'
         self.sprites_complete = kwargs.get('sprites_complete', False)
@@ -1652,6 +1652,8 @@ class ElectricRailcarBaseUnit(Train):
         self.consist.str_name_suffix = 'STR_NAME_SUFFIX_ELECTRIC'
         # offset to second livery, to differentiate from diesel equivalent which will use first
         self.buy_menu_spriterow_num = 2 # note that it's 2 because opening doors are in row 1, livery 2 starts at 2, zero-indexed
+        self.consist.docs_image_spriterow = 2 # frankly hax at this point :|
+
         # the cab magic won't work unless it's asymmetrical eh? :P
         self._symmetry_type = 'asymmetric'
 
