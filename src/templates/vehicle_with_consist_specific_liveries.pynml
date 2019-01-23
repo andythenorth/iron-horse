@@ -312,7 +312,7 @@ switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_graphics_vehicle, most_common_
 
 // buy menu graphics chain
 spriteset(${vehicle.id}_ss_vehicle_purchase, "${global_constants.graphics_path}${consist.id}.png") {
-  spriteset_template_purchase_${vehicle.id}(10)
+  spriteset_template_purchase_${vehicle.id}(10 + ${vehicle.buy_menu_spriterow_num * 30})
 }
 <tal:conditional_pantographs switch="consist.pantograph_type is not None">
     <tal:has_pantographs case="True">

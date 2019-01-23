@@ -233,7 +233,7 @@ class Consist(object):
         result = []
         for consist in self.roster.engine_consists:
             # second livery choice is deliberate, means 'as seen in buy menu' livery is built for common case of express_1, heavy_express_1
-            if consist.role in ['branch_express', 'express_2', 'heavy_express_2']:
+            if consist.role in ['branch_express', 'express_2', 'heavy_express_2', 'pax_railcar_2', 'mail_railcar_2']:
                 result.append(consist.id)
         return result
 
@@ -1277,6 +1277,8 @@ class Train(object):
             'loading_speed_multiplier', 1)
         # spriterow_num allows assigning sprites for multi-part vehicles, and is not supported in all vehicle templates (by design - TMWFTLB to support)
         self.spriterow_num = kwargs.get('spriterow_num', 0) # first row = 0;
+        # sometimes we want to offset the buy menu spriterow (!! this is incomplete hax, not supported by generated buy menu sprites etc)
+        self.buy_menu_spriterow_num = 0 # set in the subclass as needed, (or extend to kwargs in future)
         # !! the need to copy cargo refits from the consist is probably historical (mixed cargo articulated trains), and could likely be refactored !!
         self.class_refit_groups = self.consist.class_refit_groups
         self.label_refits_allowed = self.consist.label_refits_allowed
@@ -1648,6 +1650,8 @@ class ElectricRailcarBaseUnit(Train):
         self.engine_class = 'ENGINE_CLASS_ELECTRIC'
         self.visual_effect = 'VISUAL_EFFECT_ELECTRIC'
         self.consist.str_name_suffix = 'STR_NAME_SUFFIX_ELECTRIC'
+        # offset to second livery, to differentiate from diesel equivalent which will use first
+        self.buy_menu_spriterow_num = 2 # note that it's 2 because opening doors are in row 1, livery 2 starts at 2, zero-indexed
         # the cab magic won't work unless it's asymmetrical eh? :P
         self._symmetry_type = 'asymmetric'
 
