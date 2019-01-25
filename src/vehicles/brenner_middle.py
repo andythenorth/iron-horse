@@ -7,7 +7,7 @@ def main(roster):
                                                         base_numeric_id=2880,
                                                         name='Brenner - Middle',
                                                         role='pax_high_speed',
-                                                        pantograph_type='z-shaped-single',
+                                                        pantograph_type='z-shaped-single-with-base',
                                                         power=0,  # set power 0, when attached to correct cab, cab power will be increased
                                                         gen=6,
                                                         intro_date_offset=-3,  # introduce earlier than gen epoch by design
