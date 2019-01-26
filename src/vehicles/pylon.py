@@ -8,7 +8,7 @@ def main(roster):
                                        name='Pylon',
                                        role='mail_railcar_2',
                                        power=1000,
-                                       power_by_railtype={'RAIL': 450, 'ELRL': 1000},
+                                       power_by_railtype={'RAIL': 450, 'ELRL': 1000}, # bit nerfed on diesel, by design
                                        pantograph_type='z-shaped-single-with-base',
                                        easter_egg_haulage_speed_bonus=True,
                                        gen=6,
