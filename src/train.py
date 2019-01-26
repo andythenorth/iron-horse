@@ -1639,6 +1639,49 @@ class ElectroDieselEngineUnit(Train):
         self._symmetry_type = kwargs.get('symmetry_type', 'asymmetric')
 
 
+class ElectroDieselRailcarBaseUnit(Train):
+    """
+    Unit for a bi-mode railcar - operates on electrical power or diesel.
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.engine_class = 'ENGINE_CLASS_DIESEL'
+        self.visual_effect = 'VISUAL_EFFECT_DIESEL'
+        self.consist.visual_effect_override_by_railtype = {
+            'ELRL': 'VISUAL_EFFECT_ELECTRIC'}
+        self.consist.str_name_suffix = 'STR_NAME_SUFFIX_ELECTRODIESEL'
+        # offset to second livery, to differentiate from diesel equivalent which will use first
+        self.buy_menu_spriterow_num = 2 # note that it's 2 because opening doors are in row 1, livery 2 starts at 2, zero-indexed
+        self.consist.docs_image_spriterow = 2 # frankly hax at this point :|
+        # the cab magic won't work unless it's asymmetrical eh? :P
+        self._symmetry_type = 'asymmetric'
+
+
+class ElectroDieselRailcarMailUnit(ElectroDieselRailcarBaseUnit):
+    """
+    Unit for a mail electro-diesel railcar.  Just a sparse subclass to set capacity.
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # magic to set capacity subject to length
+        base_capacity = self.consist.roster.freight_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
+        self.capacity = (kwargs['vehicle_length'] * base_capacity) / polar_fox.constants.mail_multiplier
+
+
+class ElectroDieselRailcarPaxUnit(ElectroDieselRailcarBaseUnit):
+    """
+    Unit for a pax electro-diesel railcar.  Just a sparse subclass to set capacity.
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # magic to set capacity subject to length
+        base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
+        self.capacity = kwargs['vehicle_length'] * base_capacity
+
+
 class ElectricRailcarBaseUnit(Train):
     """
     Unit for an electric railcar.  Capacity set in subclasses
@@ -1653,7 +1696,6 @@ class ElectricRailcarBaseUnit(Train):
         # offset to second livery, to differentiate from diesel equivalent which will use first
         self.buy_menu_spriterow_num = 2 # note that it's 2 because opening doors are in row 1, livery 2 starts at 2, zero-indexed
         self.consist.docs_image_spriterow = 2 # frankly hax at this point :|
-
         # the cab magic won't work unless it's asymmetrical eh? :P
         self._symmetry_type = 'asymmetric'
 
