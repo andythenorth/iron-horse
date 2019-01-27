@@ -543,7 +543,20 @@ class PassengerVeryHighSpeedCabEngineConsist(PassengerEngineConsist):
         # implemented as a list to allow multiple middle vehicles, e.g. double-deck, mail etc
         # but...theoretical as of Dec 2018 as nml power template doesn't support iterating over multiple middle vehicles
         self.tilt_bonus = True
-
+        """
+        # !! this type needs new graphics processing and/or template rules if it is to handle opening doors
+        # !! box car variant expects symmetry
+        # !! pax variant handles asymmetry differently to what is needed for the dual-head routine
+        # !! pax variant graphics generation can be made to work (with clunky hax) but the template would need still new rulesets for that
+        # !! writing a new processor and a template for doors probably isn't very hard (give all default vehicles option for opening doors?)
+        # Graphics configuration
+        # self.roof_type = 'pax_mail_smooth'
+        # 1 livery as can't be flipped, 1 spriterow may be left blank for compatibility with Gestalt (TBC)
+        # all position variants resolve to same spriterow
+        spriterow_group_mappings = {'pax': {'default': 0, 'first': 0, 'last': 0, 'special': 0}}
+        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings, consist_ruleset="pax_cars",
+                                                                     pantograph_type=self.pantograph_type)
+        """
 
 class PassengerVeryHighSpeedMiddleEngineConsist(PassengerEngineConsist):
     """
@@ -560,11 +573,10 @@ class PassengerVeryHighSpeedMiddleEngineConsist(PassengerEngineConsist):
         self.roof_type = 'pax_mail_smooth'
         # 1 livery as can't be flipped, 1 spriterow may be left blank for compatibility with Gestalt (TBC)
         # position variants
-        # * unit with driving cabs both ends
-        # * unit with driving cab front end
-        # * unit with driving cab rear end
-        # * unit with no cabs (center car)
-        # ruleset will combine these to make multiple-units n vehicles long
+        # * default unit
+        # * unit with pantograph - leading end
+        # * unit with pantograph -  rear end
+        # * restaurant unit
         spriterow_group_mappings = {'pax': {'default': 0, 'first': 1, 'last': 2, 'special': 3}}
         self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings, consist_ruleset="pax_cars",
                                                                      pantograph_type=self.pantograph_type)
@@ -1726,7 +1738,7 @@ class ElectricRailcarPaxUnit(ElectricRailcarBaseUnit):
 
 class ElectricHighSpeedPaxUnit(Train):
     """
-    Unit for a high-speed, high-power pax electric train, intended to be 2-car, with template magic for cabs etc
+    Unit for the cabs of high-speed, high-power pax electric train, using dual-headed property
     """
 
     def __init__(self, **kwargs):
