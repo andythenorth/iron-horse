@@ -4,7 +4,6 @@ from vehicles import ares
 from vehicles import athena
 from vehicles import bean_feast
 from vehicles import boar_cat
-# from vehicles import blaze # deprecated?
 from vehicles import braf
 from vehicles import breeze
 from vehicles import brenner_cab
