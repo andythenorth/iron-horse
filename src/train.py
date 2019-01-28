@@ -1738,7 +1738,7 @@ class ElectricRailcarPaxUnit(ElectricRailcarBaseUnit):
 
 class ElectricHighSpeedPaxUnit(Train):
     """
-    Unit for the cabs of high-speed, high-power pax electric train, using dual-headed property
+    Unit for high-speed, high-power pax electric train
     """
 
     def __init__(self, **kwargs):
@@ -1749,6 +1749,14 @@ class ElectricHighSpeedPaxUnit(Train):
         self.consist.str_name_suffix = 'STR_NAME_SUFFIX_ELECTRIC'
         # the cab magic won't work unless it's asymmetrical eh? :P
         self._symmetry_type = 'asymmetric'
+        # magic to set high speed pax car capacity subject to length
+        # uses a value in between pax and lux pax; this won't work with double deck high speed in future, extend a kwarg then if needed
+        # use a conditional so that some cab cars can set capacity 0
+        if kwargs.get('capacity', None) is not None:
+            self.capacity = kwargs['capacity']
+        else:
+            base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
+            self.capacity = int(kwargs['vehicle_length'] * base_capacity * 0.8125)
 
 
 class MetroUnit(Train):

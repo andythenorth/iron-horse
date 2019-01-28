@@ -18,6 +18,7 @@ def main(roster):
                      weight=31,
                      vehicle_length=8,
                      # no pax capacity on Helm Wind cabs
+                     capacity=0,
                      spriterow_num=0,
                      chassis='4_axle_solid_express_32px')
 

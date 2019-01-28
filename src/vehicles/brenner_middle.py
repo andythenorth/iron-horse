@@ -16,7 +16,6 @@ def main(roster):
     consist.add_unit(type=ElectricHighSpeedPaxUnit,
                      weight=55,
                      vehicle_length=8,
-                     capacity=40,
                      spriterow_num=0,
                      chassis='jacobs_solid_express_32px',
                      repeat=2)
