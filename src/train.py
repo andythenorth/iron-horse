@@ -600,7 +600,10 @@ class PassengerVeryHighSpeedMiddleEngineConsist(PassengerEngineConsist):
         # match middle engine buy cost to cab engine buy cost
         for engine_consist in self.roster.engine_consists:
             if engine_consist.id == self.cab_id:
-                return engine_consist.buy_cost
+                # engine and wagon base costs are set differently, attempt to compensate for that
+                # !! this does not account for wagon costs currently, just engine
+                adjustment_factor = 2 * abs(global_constants.PR_BUILD_VEHICLE_TRAIN)
+                return engine_consist.buy_cost * adjustment_factor
 
     @property
     def running_cost(self):
