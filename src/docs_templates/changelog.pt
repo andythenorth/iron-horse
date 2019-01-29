@@ -2,7 +2,7 @@ Changelog
 =========
 
 ---------------------
-2.0.0 Alpha 3 Release
+2.0.0 Alpha 4 Release
 ---------------------
 
 Iron Horse 2.
@@ -23,6 +23,19 @@ Designed to be used with 'vehicles expire' set to to 'on', Horse 2 has a *lot* o
 - no savegame compatibility with Iron Horse 1
 - can be used _alongside_ Iron Horse 1, if you must (kind of odd, but eh)
 
+*Changes from 2.0.0 Alpha 3*
+
+- Helm Wind (1987) and Brenner (2017) high speed passenger trains
+    - distributed traction: all middle cars add power when attached to the correct cab car
+    - this means that high speed passenger trains always have enough power, whatever the total length
+- swap the default livery for electric (and electro-diesel railcars), so they're visually distinct from diesel railcars in buy menu
+- Pylon and Zeus electric railcars are now electro-diesel
+- diamond shaped pantographs for Ares and Athena electric railcars
+
+
+---------------------
+2.0.0 Alpha 3 Release
+---------------------
 
 *Changes from 2.0.0 Alpha 2*
 
