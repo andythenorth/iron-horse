@@ -539,11 +539,16 @@ class PassengerVeryHighSpeedCabEngineConsist(PassengerEngineConsist):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.middle_id = self.id.split('_cab')[0] + '_middle'
         # implemented as a list to allow multiple middle vehicles, e.g. double-deck, mail etc
         # but...theoretical as of Dec 2018 as nml power template doesn't support iterating over multiple middle vehicles
+        self.middle_id = self.id.split('_cab')[0] + '_middle'
         self.tilt_bonus = True
         # note no cargo age bonus, the speed offsets that
+
+        # extra increased run costs for being super fast etc
+        # this leads to high costs, but in tests, fully-loaded trains will still print money
+        # note that buy costs aren't adjusted from pax base, as it makes them insane high
+        self.running_cost_adjustment_factor = 3
         """
         # !! this type needs new graphics processing and/or template rules if it is to handle opening doors
         # !! box car variant expects symmetry
@@ -589,6 +594,20 @@ class PassengerVeryHighSpeedMiddleEngineConsist(PassengerEngineConsist):
         for engine_consist in self.roster.engine_consists:
             if engine_consist.id == self.cab_id:
                 return engine_consist.power
+
+    @property
+    def buy_cost(self):
+        # match middle engine buy cost to cab engine buy cost
+        for engine_consist in self.roster.engine_consists:
+            if engine_consist.id == self.cab_id:
+                return engine_consist.buy_cost
+
+    @property
+    def running_cost(self):
+        # match middle engine running cost to cab engine running cost
+        for engine_consist in self.roster.engine_consists:
+            if engine_consist.id == self.cab_id:
+                return engine_consist.running_cost
 
 
 class MailEngineConsist(EngineConsist):
