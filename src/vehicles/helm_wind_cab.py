@@ -7,7 +7,7 @@ def main(roster):
                                                      base_numeric_id=3060,
                                                      name='Helm Wind - Cab',
                                                      role='pax_high_speed',
-                                                     power=1600,
+                                                     power=1700,
                                                      dual_headed=True,
                                                      pantograph_type='z-shaped-single',
                                                      gen=5,
@@ -15,7 +15,7 @@ def main(roster):
                                                      sprites_complete=True)
 
     consist.add_unit(type=ElectricHighSpeedPaxUnit,
-                     weight=31,
+                     weight=48,
                      vehicle_length=8,
                      # no pax capacity on Helm Wind cabs
                      capacity=0,
