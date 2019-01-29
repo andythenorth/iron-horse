@@ -543,6 +543,7 @@ class PassengerVeryHighSpeedCabEngineConsist(PassengerEngineConsist):
         # implemented as a list to allow multiple middle vehicles, e.g. double-deck, mail etc
         # but...theoretical as of Dec 2018 as nml power template doesn't support iterating over multiple middle vehicles
         self.tilt_bonus = True
+        # note no cargo age bonus, the speed offsets that
         """
         # !! this type needs new graphics processing and/or template rules if it is to handle opening doors
         # !! box car variant expects symmetry
@@ -569,6 +570,7 @@ class PassengerVeryHighSpeedMiddleEngineConsist(PassengerEngineConsist):
         self.cab_id = self.id.split('_middle')[0] + '_cab'
         self.wagons_add_power = True
         self.tilt_bonus = True
+        # note no cargo age bonus, the speed offsets that
         # Graphics configuration
         self.roof_type = 'pax_mail_smooth'
         # 1 livery as can't be flipped, 1 spriterow may be left blank for compatibility with Gestalt (TBC)
