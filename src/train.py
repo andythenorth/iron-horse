@@ -545,9 +545,10 @@ class PassengerVeryHighSpeedCabEngineConsist(PassengerEngineConsist):
         self.tilt_bonus = True
         # note no cargo age bonus, the speed offsets that
 
+        # note that buy costs are actually adjusted down from pax base, to account for distributed traction etc
+        self.buy_cost_adjustment_factor = 1
         # extra increased run costs for being super fast etc
         # this leads to high costs, but in tests, fully-loaded trains will still print money
-        # note that buy costs aren't adjusted from pax base, as it makes them insane high
         self.running_cost_adjustment_factor = 3
         """
         # !! this type needs new graphics processing and/or template rules if it is to handle opening doors
