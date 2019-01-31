@@ -68,6 +68,8 @@ class Consist(object):
         self.pantograph_type = kwargs.get('pantograph_type', None)
         self.dual_headed = 1 if kwargs.get('dual_headed', False) else 0
         self.tilt_bonus = False  # over-ride in subclass as needed
+        # solely used for ottd livery (company colour) selection, set in subclass as needed
+        self.train_flag_mu = False
         # some wagons will provide power if specific engine IDs are in the consist
         self.wagons_add_power = False
         # some vehicles will get a higher speed if hauled by an express engine (use rarely)
@@ -513,6 +515,8 @@ class PassengerEngineRailcarConsist(PassengerEngineConsist):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.allow_flip = True
+        # train_flag_mu solely used for ottd livery (company colour) selection
+        self.train_flag_mu = True
         # Graphics configuration
         if self.gen in [2, 3]:
             self.roof_type = 'pax_mail_ridged'
@@ -655,6 +659,8 @@ class MailEngineRailcarConsist(MailEngineConsist):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.allow_flip = True
+        # train_flag_mu solely used for ottd livery (company colour) selection
+        self.train_flag_mu = True
         # Graphics configuration
         if self.gen in [2, 3]:
             self.roof_type = 'pax_mail_ridged'
@@ -1406,6 +1412,8 @@ class Train(object):
             special_flags.append('TRAIN_FLAG_AUTOREFIT')
         if self.consist.tilt_bonus:
             special_flags.append('TRAIN_FLAG_TILT')
+        if self.consist.train_flag_mu:
+            special_flags.append('TRAIN_FLAG_MU')
         return ','.join(special_flags)
 
     @property
