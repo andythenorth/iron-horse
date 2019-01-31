@@ -450,11 +450,11 @@ class EngineConsist(Consist):
     @property
     def running_cost(self):
         # max speed = 200mph by design - see assert_speed()
-        # up to 25 points for speed
-        speed_cost_points = self.speed / 8
+        # up to 40 points for speed
+        speed_cost_points = self.speed / 5
         # max power 10000hp by design - see assert_power()
-        # multiplier for power, from 0 to 10, giving up to 250 points total
-        power_factor = self.power / 1000
+        # multiplier for power, from 0 to 2.5, giving 100 points
+        power_factor = self.power / 4000
         # bonus for electric engines, ~20% lower power costs
         # !! this is an abuse of requires_electric_rails, but it's _probably_ fine :P
         if self.requires_electric_rails:
@@ -464,11 +464,11 @@ class EngineConsist(Consist):
         # narrow gauge gets a bonus
         if self.base_track_type == 'NG':
             run_cost_points = 0.5 * run_cost_points
-        # stick 2 point baseline on everything for luck, seems to work
-        run_cost_points += 2
         # if I set cost base as high as I want for engines, wagon costs aren't fine grained enough
         # so just treble engine costs, which works
         run_cost_points = 3 * run_cost_points
+        # stick 20 point baseline on everything for luck, seems to work
+        run_cost_points += 20
         # cap to int for nml
         return int(run_cost_points)
 
