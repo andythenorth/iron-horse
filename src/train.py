@@ -607,29 +607,30 @@ class PassengerVeryHighSpeedMiddleEngineConsist(PassengerEngineConsist):
                                                                      pantograph_type=self.pantograph_type)
 
     @property
-    def cab_power(self):
-        # match middle engine power to cab engine power
+    def cab_consist(self):
+        # fetch the consist for the cab engine
         for engine_consist in self.roster.engine_consists:
             if engine_consist.id == self.cab_id:
-                return engine_consist.power
+                return engine_consist
+
+    @property
+    def cab_power(self):
+        # match middle engine power to cab engine power
+        return self.cab_consist.power
 
     @property
     def buy_cost(self):
         # match middle engine buy cost to cab engine buy cost
-        for engine_consist in self.roster.engine_consists:
-            if engine_consist.id == self.cab_id:
-                # engine and wagon base costs are set differently, attempt to compensate for that
-                # !! this does not account for wagon costs currently, just engine
-                # 6.25 is a magic number, 2 is to double the factor for each base cost adjustment step
-                adjustment_factor = 6.25 * 2 * abs(global_constants.PR_BUILD_VEHICLE_TRAIN)
-                return int(engine_consist.buy_cost * adjustment_factor)
+        # engine and wagon base costs are set differently, attempt to compensate for that
+        # !! this does not account for wagon costs currently, just engine
+        # 6.25 is a magic number, 2 is to double the factor for each base cost adjustment step
+        adjustment_factor = 6.25 * 2 * abs(global_constants.PR_BUILD_VEHICLE_TRAIN)
+        return int(self.cab_consist.buy_cost * adjustment_factor)
 
     @property
     def running_cost(self):
         # match middle engine running cost to cab engine running cost
-        for engine_consist in self.roster.engine_consists:
-            if engine_consist.id == self.cab_id:
-                return engine_consist.running_cost
+        return self.cab_consist.running_cost
 
 
 class MailEngineConsist(EngineConsist):
