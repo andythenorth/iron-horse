@@ -16,9 +16,9 @@ STR_PARAM_ROSTER_OPTION_1                                       :Železná lama
 STR_PARAM_ROSTER_OPTION_2                                       :Železná antilopa
 
 # keep these alphabetised, easier
-STR_NAME_SUFFIX_DIESEL                                          :Dieselový
-STR_NAME_SUFFIX_ELECTRIC                                        :Elektrický
-STR_NAME_SUFFIX_ELECTRODIESEL                                   :Diesel-Elektrický
+STR_NAME_SUFFIX_DIESEL                                          :Dieselová
+STR_NAME_SUFFIX_ELECTRIC                                        :Elektrická
+STR_NAME_SUFFIX_ELECTRODIESEL                                   :Diesel-Elektrická
 STR_NAME_SUFFIX_METRO                                           :Metro
 STR_NAME_SUFFIX_STEAM                                           :Parní
 
