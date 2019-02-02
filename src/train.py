@@ -585,6 +585,8 @@ class PassengerVeryHighSpeedCabEngineConsist(PassengerEngineConsist):
         self.floating_run_cost_multiplier = 3
         # ...but very high fixed (baseline) run costs on this subtype
         self.fixed_run_cost_points = 180
+        # train_flag_mu solely used for ottd livery (company colour) selection
+        self.train_flag_mu = True
         """
         # !! this type needs new graphics processing and/or template rules if it is to handle opening doors
         # !! box car variant expects symmetry
@@ -612,6 +614,12 @@ class PassengerVeryHighSpeedMiddleEngineConsist(PassengerEngineConsist):
         self.wagons_add_power = True
         self.tilt_bonus = True
         # note no cargo age bonus, the speed offsets that
+
+        # train_flag_mu solely used for ottd livery (company colour) selection
+        # eh as of Feb 2019, OpenTTD won't actually use this for middle cars, as not engines
+        # this means the buy menu won't match, but wagons will match anyway when attached to cab
+        # prop left in place in case that ever gets changed :P
+        self.train_flag_mu = True
         # Graphics configuration
         self.roof_type = 'pax_mail_smooth'
         # 1 livery as can't be flipped, 1 spriterow may be left blank for compatibility with Gestalt (TBC)
