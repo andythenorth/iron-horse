@@ -78,6 +78,8 @@ class Consist(object):
         # random_reverse is not supported in some templates
         self.random_reverse = kwargs.get('random_reverse', False)
         self.allow_flip = self.random_reverse # random_reverse vehicles can always be flipped, but flip can also be set in other cases (by subclass)
+        # just a simple buy cost tweak, only use when needed
+        self.electro_diesel_buy_cost_malus = None
         # arbitrary multiplier to the calculated buy cost, e.g. 1.1, 0.9 etc
         # set to 1 by default, over-ride in subclasses as needed
         self.buy_cost_adjustment_factor = 1
@@ -446,22 +448,28 @@ class EngineConsist(Consist):
     @property
     def buy_cost(self):
         # max speed = 200mph by design - see assert_speed()
-        # up to 25 points for speed
+        # multiplier for speed, max value will be 25
         speed_cost_points = self.speed / 8
         # max power 10000hp by design - see assert_power()
-        # multiplier for power, from 0 to 10, giving up to 250 points total
-        power_factor = self.power / 1000
-        # malus for electric engines, ~20% higher equipment costs
+        # malus for electric engines, ~33% higher equipment costs
         # !! this is an abuse of requires_electric_rails, but it's _probably_ fine :P
         if self.requires_electric_rails:
-            power_factor = 1.2 * power_factor
+            power_factor = self.power / 750
+        # malus for complex electro-diesels, ~33% higher equipment costs, based on elrl power
+        # this sometimes causes a steep jump from non-electro-diesels in a tech tree (due to power jump), but eh, fine
+        elif self.electro_diesel_buy_cost_malus is not None:
+            power_factor = (self.electro_diesel_buy_cost_malus * self.power_by_railtype['ELRL']) / 750
+        # multiplier for non-electric power, max value will be 10
+        else:
+            power_factor = self.power / 1000
         # basic cost from speed, power, subclass factor (e.g. engine with pax capacity might cost more to buy)
         buy_cost_points = speed_cost_points * power_factor * self.buy_cost_adjustment_factor
         # if I set cost base as high as I want for engines, wagon costs aren't fine grained enough
-        # so just treble engine costs, which works
-        buy_cost_points = 3 * buy_cost_points
+        # so just apply arbitrary multiplier to engine costs, which works
+        buy_cost_points = 2 * buy_cost_points
+        # start from an arbitrary baseline of 100 points, add points for gen, cost points, seems to work
         # cap to int for nml
-        return int(buy_cost_points)
+        return int(10 + self.gen + buy_cost_points)
 
     @property
     def running_cost(self):
@@ -515,7 +523,7 @@ class PassengerEngineConsist(EngineConsist):
         self.label_refits_disallowed = []
         self.default_cargos = ['PASS']
          # increased buy costs for having seats and stuff eh?
-        self.buy_cost_adjustment_factor = 2
+        self.buy_cost_adjustment_factor = 1.8
         # reduce the impact of the floating costs, this is for pure balancing reasons
         self.floating_run_cost_multiplier = 5
         # ...also reduce fixed (baseline) run costs on this subtype, purely for balancing reasons
@@ -581,7 +589,7 @@ class PassengerVeryHighSpeedCabEngineConsist(PassengerEngineConsist):
         # note no cargo age bonus, the speed offsets that
 
         # note that buy costs are actually adjusted down from pax base, to account for distributed traction etc
-        self.buy_cost_adjustment_factor = 0.7
+        self.buy_cost_adjustment_factor = 0.95
         # run costs are set to make high speed train costs all high, with floating costs having smaller effect relative to normal trains
         # note that run cost multiplier is actually adjusted down from pax base, to account for distributed traction etc
         self.floating_run_cost_multiplier = 6
@@ -673,7 +681,7 @@ class MailEngineConsist(EngineConsist):
         self.label_refits_disallowed = ['TOUR']
         self.default_cargos = global_constants.default_cargos['mail']
         # increased costs for having extra doors and stuff eh?
-        self.buy_cost_adjustment_factor = 1.5
+        self.buy_cost_adjustment_factor = 1.4
         # reduce the impact of the floating costs, this is for pure balancing reasons
         self.floating_run_cost_multiplier = 5
         # ...also reduce fixed (baseline) run costs on this subtype, purely for balancing reasons
@@ -1732,6 +1740,8 @@ class ElectroDieselEngineUnit(Train):
         self.consist.visual_effect_override_by_railtype = {
             'ELRL': 'VISUAL_EFFECT_ELECTRIC'}
         self.consist.str_name_suffix = 'STR_NAME_SUFFIX_ELECTRODIESEL'
+        # electro-diesels are complex eh?
+        self.consist.electro_diesel_buy_cost_malus = 1 # will get same buy cost factor as electric engine of same gen (blah balancing)
         # almost all electro-diesel engines are asymmetric, over-ride per vehicle as needed
         self._symmetry_type = kwargs.get('symmetry_type', 'asymmetric')
 
@@ -1748,6 +1758,8 @@ class ElectroDieselRailcarBaseUnit(Train):
         self.consist.visual_effect_override_by_railtype = {
             'ELRL': 'VISUAL_EFFECT_ELECTRIC'}
         self.consist.str_name_suffix = 'STR_NAME_SUFFIX_ELECTRODIESEL'
+        # electro-diesels are complex eh?
+        self.consist.electro_diesel_buy_cost_malus = 1.15 # will get higher buy cost factor than electric railcar of same gen (blah balancing)
         # offset to second livery, to differentiate from diesel equivalent which will use first
         self.buy_menu_spriterow_num = 2 # note that it's 2 because opening doors are in row 1, livery 2 starts at 2, zero-indexed
         self.consist.docs_image_spriterow = 2 # frankly hax at this point :|
