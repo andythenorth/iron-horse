@@ -470,13 +470,14 @@ class EngineConsist(Consist):
         # note some string to handle NG trains, which tend to have a smaller range of speed, cost, power
         # max speed = 200mph by design - see assert_speed() - (NG assumes 100mph max)
         # multiplier for speed, max value will be 12.5
-        speed_cost_factor = self.speed / (8 if self.base_track_type == 'NG' else 16)
+        is_NG = True if self.base_track_type == 'NG' else False
+        speed_cost_factor = self.speed / (8 if is_NG else 16)
         # max power 10000hp by design - see assert_power() - (NG assumes 5000hp max)
         # multiplier for power, max value will be 20
-        power_factor = self.power / (250 if self.base_track_type == 'NG' else 500)
+        power_factor = self.power / (250 if is_NG else 500)
         # max weight = 500t by design - see assert_weight() - (NG assumes 200t max)
         # multiplier for weight, max value will be 6.25, min value 1 (otherwise small trains go < 1)
-        weight_factor = max(1, self.weight / (32 if self.base_track_type == 'NG' else 80))
+        weight_factor = max(1, self.weight / (32 if is_NG else 80))
 
         # bonus for electric engines, ~40% lower power costs
         # !! this is an abuse of requires_electric_rails, but it's _probably_ fine :P
@@ -491,7 +492,7 @@ class EngineConsist(Consist):
         fixed_run_cost_points = self.fixed_run_cost_points
         # massive bonus for NG
         # !! these NG multipliers are just magic numbers that work for Pony NG roster, they probably fail in other rosters
-        if self.base_track_type == 'NG':
+        if is_NG:
             floating_run_cost_points = 0.4 * floating_run_cost_points
             fixed_run_cost_points = 0.6 * fixed_run_cost_points
         # add floating cost to the fixed (baseline) cost (which is arbitrary points, range 0-200-ish)
