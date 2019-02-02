@@ -38,9 +38,6 @@ grf {
 basecost {
  	PR_BUILD_VEHICLE_TRAIN: ${global_constants.PR_BUILD_VEHICLE_TRAIN};
  	PR_BUILD_VEHICLE_WAGON: ${global_constants.PR_BUILD_VEHICLE_WAGON};
- 	PR_RUNNING_TRAIN_STEAM: ${global_constants.PR_RUNNING_TRAIN_STEAM};
- 	PR_RUNNING_TRAIN_DIESEL: ${global_constants.PR_RUNNING_TRAIN_DIESEL};
-    PR_RUNNING_TRAIN_ELECTRIC: ${global_constants.PR_RUNNING_TRAIN_ELECTRIC};
 }
 
 // disable default trains

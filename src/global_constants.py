@@ -38,13 +38,10 @@ grfid = r"CA\12\1F"
 # cargo aging constant - OTTD default is 185
 CARGO_AGE_PERIOD = 185
 
-# buy and run cost base factors
+# buy cost base factors
 PR_BUILD_VEHICLE_TRAIN = -2
 PR_BUILD_VEHICLE_WAGON = 1
-# running cost multipliers are kept as default, use high vehilce cost factors instead (using cb to allow high values)
-PR_RUNNING_TRAIN_STEAM = 0
-PR_RUNNING_TRAIN_DIESEL = 0
-PR_RUNNING_TRAIN_ELECTRIC = 0
+# run cost base factors remain default, use high vehicle cost factors instead (cb instead of prop to allow high values)
 
 # standard offsets for trains
 default_spritesheet_offsets = {'3': [[-3, -25], [-3, -21], [0, -12], [5, -17], [-3, -14], [-14, -17], [-16, -12], [-8, -23]], # not used?
