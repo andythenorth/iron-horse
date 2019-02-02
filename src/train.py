@@ -470,14 +470,14 @@ class EngineConsist(Consist):
         # note some string to handle NG trains, which tend to have a smaller range of speed, cost, power
         is_NG = True if self.base_track_type == 'NG' else False
         # max speed = 200mph by design - see assert_speed() - (NG assumes 100mph max)
-        # multiplier for speed, max value will be 10
-        speed_cost_factor = self.speed / (10 if is_NG else 20)
+        # multiplier for speed, max value will be 12.5
+        speed_cost_factor = self.speed / (8 if is_NG else 16)
         # max power 10000hp by design - see assert_power() - (NG assumes 4000hp max)
-        # multiplier for power, max value will be 12.5
-        power_factor = self.power / (320 if is_NG else 800)
+        # multiplier for power, max value will be 16
+        power_factor = self.power / (250 if is_NG else 625)
         # max weight = 500t by design - see assert_weight() - (NG assumes 200t max)
-        # multiplier for weight, max value will be 6.25
-        weight_factor = self.weight / (32 if is_NG else 80)
+        # multiplier for weight, max value will be 8
+        weight_factor = self.weight / (32 if is_NG else 62.5)
 
         # bonus for electric engines, ~40% lower power costs
         # !! this is an abuse of requires_electric_rails, but it's _probably_ fine :P
@@ -496,9 +496,11 @@ class EngineConsist(Consist):
             floating_run_cost_points = 0.4 * floating_run_cost_points
             fixed_run_cost_points = 0.6 * fixed_run_cost_points
         # add floating cost to the fixed (baseline) cost (which is arbitrary points, range 0-200-ish)
-        # multiply by an arbitrary factor to give the results I want
+        # multiply by gen and an arbitrary factor to give the results I want
+        # the aim is to space costs widely across types within a generation, but mostly flatten them across generations of same type
+        gen_multiplier = 7 + (7 - self.gen)
         # cap to int for nml
-        return int(11 * (fixed_run_cost_points + floating_run_cost_points))
+        return int(gen_multiplier * (fixed_run_cost_points + floating_run_cost_points))
 
 
 class PassengerEngineConsist(EngineConsist):
@@ -515,7 +517,7 @@ class PassengerEngineConsist(EngineConsist):
          # increased buy costs for having seats and stuff eh?
         self.buy_cost_adjustment_factor = 2
         # reduce the impact of the floating costs, this is for pure balancing reasons
-        self.floating_run_cost_multiplier = 3
+        self.floating_run_cost_multiplier = 5
         # ...also reduce fixed (baseline) run costs on this subtype, purely for balancing reasons
         self.fixed_run_cost_points = 72
 
@@ -582,9 +584,9 @@ class PassengerVeryHighSpeedCabEngineConsist(PassengerEngineConsist):
         self.buy_cost_adjustment_factor = 0.7
         # run costs are set to make high speed train costs all high, with floating costs having smaller effect relative to normal trains
         # note that run cost multiplier is actually adjusted down from pax base, to account for distributed traction etc
-        self.floating_run_cost_multiplier = 4
+        self.floating_run_cost_multiplier = 6
         # ...but very high fixed (baseline) run costs on this subtype
-        self.fixed_run_cost_points = 220
+        self.fixed_run_cost_points = 250
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
         """
@@ -673,7 +675,7 @@ class MailEngineConsist(EngineConsist):
         # increased costs for having extra doors and stuff eh?
         self.buy_cost_adjustment_factor = 1.5
         # reduce the impact of the floating costs, this is for pure balancing reasons
-        self.floating_run_cost_multiplier = 3
+        self.floating_run_cost_multiplier = 5
         # ...also reduce fixed (baseline) run costs on this subtype, purely for balancing reasons
         self.fixed_run_cost_points = 72
 
