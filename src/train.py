@@ -496,10 +496,9 @@ class EngineConsist(Consist):
             floating_run_cost_points = 0.4 * floating_run_cost_points
             fixed_run_cost_points = 0.6 * fixed_run_cost_points
         # add floating cost to the fixed (baseline) cost (which is arbitrary points, range 0-200-ish)
-        # multiply by 4, to get quite high run costs (keep base costs default)
-        # and by another 4, because base run costs are nerfed down by -2 (reduction by factor 2^3) to get fine-grained control
+        # multiply by an arbitrary factor to give the results I want
         # cap to int for nml
-        return int(4 * 4 * (fixed_run_cost_points + floating_run_cost_points))
+        return int(12 * (fixed_run_cost_points + floating_run_cost_points))
 
 
 class PassengerEngineConsist(EngineConsist):
