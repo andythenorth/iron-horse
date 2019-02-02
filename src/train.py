@@ -756,9 +756,14 @@ class CarConsist(Consist):
             speed_cost_points = 160 / speed_factor
         length_cost_factor = self.length / 8
         run_cost_points = speed_cost_points * length_cost_factor * self.floating_run_cost_multiplier
+        # multiply up by 14, because we're using low running cost factor to allow fine grained control (integer maths issues)
+        # (it's 14 because it uses RV run costs, which are 3.5x lower than steam engine run costs, which this algorithm was tuned for)
+        # AND steam engine run costs have PR adjustment of 2, so 3.5 * 2 * 2 = 14
+        run_cost_points = 14 * run_cost_points
         # narrow gauge gets a bonus
         if self.base_track_type == 'NG':
             run_cost_points = 0.5 * run_cost_points
+        print(self.id, run_cost_points, int(run_cost_points))
         # cap to int for nml
         return int(run_cost_points)
 
@@ -1885,6 +1890,10 @@ class TrainCar(Train):
             self.cargo_age_period = self.consist.cargo_age_period
         # most wagons are symmetric, over-ride per vehicle or subclass as needed
         self._symmetry_type = kwargs.get('symmetry_type', 'symmetric')
+
+    @property
+    def running_cost_base(self):
+        return 'RUNNING_COST_ROADVEH'
 
     @property
     def weight(self):
