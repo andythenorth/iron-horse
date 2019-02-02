@@ -468,9 +468,9 @@ class EngineConsist(Consist):
         # algorithmic calculation of engine run costs
         # as of Feb 2019, it's fixed cost (set by subtype) + floating costs (derived from power, speed, weight)
         # note some string to handle NG trains, which tend to have a smaller range of speed, cost, power
+        is_NG = True if self.base_track_type == 'NG' else False
         # max speed = 200mph by design - see assert_speed() - (NG assumes 100mph max)
         # multiplier for speed, max value will be 12.5
-        is_NG = True if self.base_track_type == 'NG' else False
         speed_cost_factor = self.speed / (8 if is_NG else 16)
         # max power 10000hp by design - see assert_power() - (NG assumes 5000hp max)
         # multiplier for power, max value will be 20
