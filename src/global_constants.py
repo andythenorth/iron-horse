@@ -38,10 +38,15 @@ grfid = r"CA\12\1F"
 # cargo aging constant - OTTD default is 185
 CARGO_AGE_PERIOD = 185
 
-# buy cost base factors
+# buy and run cost base factors
 PR_BUILD_VEHICLE_TRAIN = -2
 PR_BUILD_VEHICLE_WAGON = 1
-# run cost base factors remain default, use high vehicle cost factors instead (cb instead of prop to allow high values)
+# running cost multipliers nerfed down to makes smaller base cost incremements available
+# the vehicle cost factor is then set high (using cb) to get a sensible final cost (but with fine-grained control)
+# NOTE: all engines use RUNNING_COST_STEAM, and steam/diesel/electric variations are handled internaly in Iron Horse
+PR_RUNNING_TRAIN_STEAM = -2
+# NOTE: all wagons use RUNNING_COST_DIESEL, nerfed down to small increments, for fine-grained control over low wagon run costs
+PR_RUNNING_TRAIN_DIESEL = -4
 
 # standard offsets for trains
 default_spritesheet_offsets = {'3': [[-3, -25], [-3, -21], [0, -12], [5, -17], [-3, -14], [-14, -17], [-16, -12], [-8, -23]], # not used?

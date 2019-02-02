@@ -497,8 +497,9 @@ class EngineConsist(Consist):
             fixed_run_cost_points = 0.6 * fixed_run_cost_points
         # add floating cost to the fixed (baseline) cost (which is arbitrary points, range 0-200-ish)
         # multiply by 4, to get quite high run costs (keep base costs default)
+        # and by another 4, because base run costs are nerfed down by -2 (reduction by factor 2^3) to get fine-grained control
         # cap to int for nml
-        return int(4 * (fixed_run_cost_points + floating_run_cost_points))
+        return int(4 * 4 * (fixed_run_cost_points + floating_run_cost_points))
 
 
 class PassengerEngineConsist(EngineConsist):
@@ -750,18 +751,16 @@ class CarConsist(Consist):
 
     @property
     def running_cost(self):
-        speed_factor = 8 # arbitrary factor that works
         if self.speed is not None:
-            speed_cost_points = self.speed / speed_factor
+            speed_cost_points = self.speed
         else:
             # assume unlimited speed costs about same as 160mph
-            speed_cost_points = 160 / speed_factor
+            speed_cost_points = 160
         length_cost_factor = self.length / 8
         run_cost_points = speed_cost_points * length_cost_factor * self.floating_run_cost_multiplier
-        # multiply up by 14, because we're using low running cost factor to allow fine grained control (integer maths issues)
-        # (it's 14 because it uses RV run costs, which are 3.5x lower than steam engine run costs, which this algorithm was tuned for)
-        # AND steam engine run costs have PR adjustment of 2, so 3.5 * 2 * 2 = 14
-        run_cost_points = 14 * run_cost_points
+        # multiply up by arbitrary amount, to where I want wagon run costs to be
+        # (base cost is set deliberately low to allow small increments for fine-grained control)
+        run_cost_points = 8 * run_cost_points
         # narrow gauge gets a bonus
         if self.base_track_type == 'NG':
             run_cost_points = 0.5 * run_cost_points
@@ -1471,9 +1470,10 @@ class Train(object):
 
     @property
     def running_cost_base(self):
-        return {'ENGINE_CLASS_STEAM': 'RUNNING_COST_STEAM',
-                'ENGINE_CLASS_DIESEL': 'RUNNING_COST_DIESEL',
-                'ENGINE_CLASS_ELECTRIC': 'RUNNING_COST_ELECTRIC'}[self.engine_class]
+        # all engines use the same RUNNING_COST_STEAM, and Iron Horse provides the variation between steam/electric/diesel
+        # this will break base cost mod grfs, but "Pikka says it's ok"
+        # wagons will use RUNNING_COST_DIESEL - set in wagon subclass
+        return 'RUNNING_COST_STEAM'
 
     def get_offsets(self, flipped=False):
         # offsets can also be over-ridden on a per-model basis by providing this property in the model class
@@ -1895,7 +1895,10 @@ class TrainCar(Train):
 
     @property
     def running_cost_base(self):
-        return 'RUNNING_COST_ROADVEH'
+        # all wagons use the same RUNNING_COST_DIESEL, this is nerfed down to give appropriate increments for low wagon run costs
+        # this will break base cost mod grfs, but "Pikka says it's ok"
+        # engines will all use RUNNING_COST_STEAM
+        return 'RUNNING_COST_DIESEL'
 
     @property
     def weight(self):
