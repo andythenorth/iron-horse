@@ -15,7 +15,7 @@ def main(roster):
                             sprites_complete=True)
 
     consist.add_unit(type=DieselEngineUnit,
-                     weight=140,
+                     weight=130, # weight reduced from 140 to nerf run cost down :P
                      vehicle_length=8,
                      spriterow_num=0)
 
