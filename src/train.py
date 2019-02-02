@@ -431,8 +431,8 @@ class EngineConsist(Consist):
     def __init__(self, **kwargs):
         kwargs['roster_id'] = kwargs.get('roster').id
         super().__init__(**kwargs)
-        # train base cost is nerfed down to give fine grained control over wagon run costs
-        # so for engines set the multiplier to 12 by default, compensates for the base cost nerf
+        # arbitrary multiplier to floating run costs (factors are speed, power, weight)
+        # adjust per subtype as needed
         self.floating_run_cost_multiplier = 12
         # fixed (baseline) run costs on this subtype
         self.fixed_run_cost_points = 80
@@ -470,14 +470,14 @@ class EngineConsist(Consist):
         # note some string to handle NG trains, which tend to have a smaller range of speed, cost, power
         is_NG = True if self.base_track_type == 'NG' else False
         # max speed = 200mph by design - see assert_speed() - (NG assumes 100mph max)
-        # multiplier for speed, max value will be 12.5
-        speed_cost_factor = self.speed / (8 if is_NG else 16)
-        # max power 10000hp by design - see assert_power() - (NG assumes 5000hp max)
-        # multiplier for power, max value will be 20
-        power_factor = self.power / (250 if is_NG else 500)
+        # multiplier for speed, max value will be 10
+        speed_cost_factor = self.speed / (10 if is_NG else 20)
+        # max power 10000hp by design - see assert_power() - (NG assumes 4000hp max)
+        # multiplier for power, max value will be 16
+        power_factor = self.power / (250 if is_NG else 625)
         # max weight = 500t by design - see assert_weight() - (NG assumes 200t max)
-        # multiplier for weight, max value will be 6.25, min value 1 (otherwise small trains go < 1)
-        weight_factor = max(1, self.weight / (32 if is_NG else 80))
+        # multiplier for weight, max value will be 6.25
+        weight_factor = self.weight / (32 if is_NG else 80)
 
         # bonus for electric engines, ~40% lower power costs
         # !! this is an abuse of requires_electric_rails, but it's _probably_ fine :P
@@ -516,6 +516,8 @@ class PassengerEngineConsist(EngineConsist):
         self.buy_cost_adjustment_factor = 2
         # reduce the impact of the floating costs, this is for pure balancing reasons
         self.floating_run_cost_multiplier = 3
+        # ...also reduce fixed (baseline) run costs on this subtype, purely for balancing reasons
+        self.fixed_run_cost_points = 64
 
 
 class PassengerEngineMetroConsist(PassengerEngineConsist):
@@ -664,6 +666,8 @@ class MailEngineConsist(EngineConsist):
         self.buy_cost_adjustment_factor = 1.5
         # reduce the impact of the floating costs, this is for pure balancing reasons
         self.floating_run_cost_multiplier = 3
+        # ...also reduce fixed (baseline) run costs on this subtype, purely for balancing reasons
+        self.fixed_run_cost_points = 64
 
 
 class MailEngineMetroConsist(MailEngineConsist):
