@@ -60,6 +60,8 @@ class Consist(object):
             'tractive_effort_coefficient', 0.3)  # 0.3 is recommended default value
         # private var, can be used to over-rides default (per generation, per class) speed
         self._speed = kwargs.get('speed', None)
+        # default cargo age period, over-ride in subclass as needed
+        self.cargo_age_period = global_constants.CARGO_AGE_PERIOD
         # used by multi-mode engines such as electro-diesel, otherwise ignored
         self.power_by_railtype = kwargs.get('power_by_railtype', None)
         self.visual_effect_override_by_railtype = kwargs.get(
@@ -524,10 +526,8 @@ class PassengerEngineConsist(EngineConsist):
         self.default_cargos = ['PASS']
          # increased buy costs for having seats and stuff eh?
         self.buy_cost_adjustment_factor = 1.8
-        # reduce the impact of the floating costs, this is for pure balancing reasons
-        self.floating_run_cost_multiplier = 5
-        # ...also reduce fixed (baseline) run costs on this subtype, purely for balancing reasons
-        self.fixed_run_cost_points = 72
+        # also reduce fixed (baseline) run costs on this subtype, purely for balancing reasons
+        self.fixed_run_cost_points = 96
 
 
 class PassengerEngineMetroConsist(PassengerEngineConsist):
@@ -586,13 +586,12 @@ class PassengerVeryHighSpeedCabEngineConsist(PassengerEngineConsist):
         # but...theoretical as of Dec 2018 as nml power template doesn't support iterating over multiple middle vehicles
         self.middle_id = self.id.split('_cab')[0] + '_middle'
         self.tilt_bonus = True
-        # note no cargo age bonus, the speed offsets that
-
+        self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
         # note that buy costs are actually adjusted down from pax base, to account for distributed traction etc
         self.buy_cost_adjustment_factor = 0.95
         # run costs are set to make high speed train costs all high, with floating costs having smaller effect relative to normal trains
         # note that run cost multiplier is actually adjusted down from pax base, to account for distributed traction etc
-        self.floating_run_cost_multiplier = 6
+        self.floating_run_cost_multiplier = 5
         # ...but very high fixed (baseline) run costs on this subtype
         self.fixed_run_cost_points = 250
         # train_flag_mu solely used for ottd livery (company colour) selection
@@ -623,8 +622,8 @@ class PassengerVeryHighSpeedMiddleEngineConsist(PassengerEngineConsist):
         self.cab_id = self.id.split('_middle')[0] + '_cab'
         self.wagons_add_power = True
         self.tilt_bonus = True
-        # note no cargo age bonus, the speed offsets that
-
+        # moderate cargo age bonus
+        self.cargo_age_period = 1.5 * global_constants.CARGO_AGE_PERIOD
         # train_flag_mu solely used for ottd livery (company colour) selection
         # eh as of Feb 2019, OpenTTD won't actually use this for middle cars, as not engines
         # this means the buy menu won't match, but wagons will match anyway when attached to cab
@@ -682,10 +681,8 @@ class MailEngineConsist(EngineConsist):
         self.default_cargos = global_constants.default_cargos['mail']
         # increased costs for having extra doors and stuff eh?
         self.buy_cost_adjustment_factor = 1.4
-        # reduce the impact of the floating costs, this is for pure balancing reasons
-        self.floating_run_cost_multiplier = 5
-        # ...also reduce fixed (baseline) run costs on this subtype, purely for balancing reasons
-        self.fixed_run_cost_points = 72
+        # reduce fixed (baseline) run costs on this subtype, purely for balancing reasons
+        self.fixed_run_cost_points = 96
 
 
 class MailEngineMetroConsist(MailEngineConsist):
@@ -750,8 +747,6 @@ class CarConsist(Consist):
         self.weight_factor = 0.8 if self.base_track_type == 'NG' else 1
         self.loading_speed_multiplier = kwargs.get(
             'loading_speed_multiplier', 1)
-        self.cargo_age_period = kwargs.get(
-            'cargo_age_period', global_constants.CARGO_AGE_PERIOD)
         # assume all wagons randomly swap CC, revert to False in wagon subclasses as needed
         self.random_company_colour_swap = True
 
@@ -1370,8 +1365,6 @@ class Train(object):
 
         # setup properties for this train
         self.numeric_id = kwargs.get('numeric_id', None)
-        self.cargo_age_period = kwargs.get(
-            'cargo_age_period', global_constants.CARGO_AGE_PERIOD)
         self.vehicle_length = kwargs.get('vehicle_length', None)
         self._weight = kwargs.get('weight', None)
         self.capacity = kwargs.get('capacity', 0)
@@ -1915,8 +1908,6 @@ class TrainCar(Train):
         self.label_refits_disallowed = self.consist.label_refits_disallowed
         if hasattr(self.consist, 'loading_speed_multiplier'):
             self.loading_speed_multiplier = self.consist.loading_speed_multiplier
-        if hasattr(self.consist, 'cargo_age_period'):
-            self.cargo_age_period = self.consist.cargo_age_period
         # most wagons are symmetric, over-ride per vehicle or subclass as needed
         self._symmetry_type = kwargs.get('symmetry_type', 'symmetric')
 

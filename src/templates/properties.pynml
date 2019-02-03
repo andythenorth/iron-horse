@@ -85,7 +85,7 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
         non_refittable_cargo_classes:   bitmask(); // don't set non-refittable classes, increases likelihood of breaking cargo support
         cargo_allow_refit:              [${vehicle.get_label_refits_allowed()}];
         cargo_disallow_refit:           [${vehicle.get_label_refits_disallowed()}];
-        cargo_age_period:               ${vehicle.cargo_age_period};
+        cargo_age_period:               ${consist.cargo_age_period};
         <tal:default_cargo condition="len(consist.default_cargos) > 0">
             default_cargo_type:             ${consist.get_nml_expression_for_default_cargos()};
         </tal:default_cargo>
