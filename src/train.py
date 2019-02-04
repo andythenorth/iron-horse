@@ -519,8 +519,13 @@ class EngineConsist(Consist):
         # multiply by gen and an arbitrary factor to give the results I want
         # the aim is to space costs widely across types within a generation, but mostly flatten them across generations of same type
         gen_multiplier = 13 - self.gen
+        run_cost = gen_multiplier * (fixed_run_cost_points + floating_run_cost_points)
+        # freight engines get a substantial run cost bonus as they'll often be sat waiting for loads, so balance (also super realism!!)
+        # doing this is preferable to doing variable run costs, which are weird and confusing (can't trust the costs showin in vehicle window)
+        if 'freight' in self.role:
+            run_cost = 0.8 * run_cost
         # cap to int for nml
-        return int(gen_multiplier * (fixed_run_cost_points + floating_run_cost_points))
+        return int(run_cost)
 
 
 class PassengerEngineConsist(EngineConsist):
