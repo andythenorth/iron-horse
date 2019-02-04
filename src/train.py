@@ -518,7 +518,7 @@ class EngineConsist(Consist):
         # add floating cost to the fixed (baseline) cost (which is arbitrary points, range 0-200-ish)
         # multiply by gen and an arbitrary factor to give the results I want
         # the aim is to space costs widely across types within a generation, but mostly flatten them across generations of same type
-        gen_multiplier = 7 + (7 - self.gen)
+        gen_multiplier = 13 - self.gen
         # cap to int for nml
         return int(gen_multiplier * (fixed_run_cost_points + floating_run_cost_points))
 
