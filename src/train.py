@@ -489,10 +489,20 @@ class EngineConsist(Consist):
         # multiplier for weight, max value will be 8
         weight_factor = self.weight / (32 if is_NG else 62.5)
 
-        # bonus for electric engines, ~40% lower power costs
         # !! this is an abuse of requires_electric_rails, but it's _probably_ fine :P
         if self.requires_electric_rails:
-            power_factor = 0.8 * power_factor
+            if 'railcar' in self.role:
+                # massive bonus to el railcars
+                power_factor = 0.4 * power_factor
+            else:
+                # much smaller bonus to electric engines
+                # they already tend to be lighter per unit power (so cheaper to run) than similar power types
+                power_factor = 0.8 * power_factor
+        elif self.electro_diesel_buy_cost_malus is not None:
+            if 'railcar' in self.role:
+                # bonus to ED railcars (ED engines are fine without this)
+                power_factor = 0.6 * power_factor
+
         # basic cost from speed, power, weight
         floating_run_cost_points = speed_cost_factor * power_factor * weight_factor
         # then multiply by a factor specific to the subtype, so that we can control how much floating costs matter for this subtype
@@ -556,6 +566,9 @@ class PassengerEngineRailcarConsist(PassengerEngineConsist):
         self.allow_flip = True
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
+        # this will knock standard age period down, so this train is less profitable over ~128 tiles than a similar luxuryy train
+        self.cargo_age_period = global_constants.CARGO_AGE_PERIOD_STANDARD_PAX_MALUS
+
         # Graphics configuration
         if self.gen in [2, 3]:
             self.roof_type = 'pax_mail_ridged'
@@ -586,14 +599,15 @@ class PassengerVeryHighSpeedCabEngineConsist(PassengerEngineConsist):
         # but...theoretical as of Dec 2018 as nml power template doesn't support iterating over multiple middle vehicles
         self.middle_id = self.id.split('_cab')[0] + '_middle'
         self.tilt_bonus = True
-        self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
+        # moderate cargo age bonus
+        self.cargo_age_period = 1.33 * global_constants.CARGO_AGE_PERIOD
         # note that buy costs are actually adjusted down from pax base, to account for distributed traction etc
         self.buy_cost_adjustment_factor = 0.95
         # run costs are set to make high speed train costs all high, with floating costs having smaller effect relative to normal trains
         # note that run cost multiplier is actually adjusted down from pax base, to account for distributed traction etc
-        self.floating_run_cost_multiplier = 5
+        self.floating_run_cost_multiplier = 6
         # ...but very high fixed (baseline) run costs on this subtype
-        self.fixed_run_cost_points = 250
+        self.fixed_run_cost_points = 200
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
         """
@@ -623,7 +637,7 @@ class PassengerVeryHighSpeedMiddleEngineConsist(PassengerEngineConsist):
         self.wagons_add_power = True
         self.tilt_bonus = True
         # moderate cargo age bonus
-        self.cargo_age_period = 1.5 * global_constants.CARGO_AGE_PERIOD
+        self.cargo_age_period = 1.33 * global_constants.CARGO_AGE_PERIOD
         # train_flag_mu solely used for ottd livery (company colour) selection
         # eh as of Feb 2019, OpenTTD won't actually use this for middle cars, as not engines
         # this means the buy menu won't match, but wagons will match anyway when attached to cab
@@ -1195,8 +1209,10 @@ class PassengerCarConsist(PassengerCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = 'passenger_car'
         super().__init__(**kwargs)
+        # this will knock standard age period down, so this train is less profitable over ~128 tiles than a similar luxuryy train
+        self.cargo_age_period = global_constants.CARGO_AGE_PERIOD_STANDARD_PAX_MALUS
         self.buy_cost_adjustment_factor = 1.3
-        self.floating_run_cost_multiplier = 1.66
+        self.floating_run_cost_multiplier = 1.5
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 0.66 if self.base_track_type == 'NG' else 1.5
         # Graphics configuration
@@ -1219,9 +1235,10 @@ class PassengerLuxuryCarConsist(PassengerCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = 'luxury_passenger_car'
         super().__init__(**kwargs)
+        # this won't make much difference except over *very* long routes, but set it anyway
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
         self.buy_cost_adjustment_factor = 1.6
-        self.floating_run_cost_multiplier = 2.5
+        self.floating_run_cost_multiplier = 2.25
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 1 if self.base_track_type == 'NG' else 2
         # Graphics configuration
@@ -1846,7 +1863,7 @@ class ElectricHighSpeedPaxUnit(Train):
             self.capacity = kwargs['capacity']
         else:
             base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
-            self.capacity = int(kwargs['vehicle_length'] * base_capacity * 0.8125)
+            self.capacity = int(kwargs['vehicle_length'] * base_capacity * 0.875)
 
 
 class MetroUnit(Train):
