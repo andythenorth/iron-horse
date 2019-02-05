@@ -120,15 +120,7 @@ def main():
                      vehicle_length=8,
                      chassis='4_axle_solid_express_32px')
 
-    consist = ExpressCarConsist(roster='pony',
-                                base_numeric_id=1500,
-                                gen=6,
-                                subtype='A',
-                                sprites_complete=True)
-
-    consist.add_unit(type=ExpressCar,
-                     vehicle_length=4,
-                     chassis='2_axle_solid_express_16px')
+    # no gen 6A 4/8 express car, removed Feb 2019, excessive number of express cars
 
     consist = ExpressCarConsist(roster='pony',
                                 base_numeric_id=1510,
