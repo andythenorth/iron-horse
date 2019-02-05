@@ -2,7 +2,7 @@ Changelog
 =========
 
 ---------------------
-2.0.0 Alpha 4 Release
+2.0.0 Alpha 5 Release
 ---------------------
 
 Iron Horse 2.
@@ -23,6 +23,28 @@ Designed to be used with 'vehicles expire' set to to 'on', Horse 2 has a *lot* o
 - no savegame compatibility with Iron Horse 1
 - can be used _alongside_ Iron Horse 1, if you must (kind of odd, but eh)
 
+*Changes from 2.0.0 Alpha 4*
+
+- no savegame compatibility with 2.0.0 Alpha 4
+- rebalanced all buy costs and run costs
+    - engines now generally cost more to buy
+    - smaller engines generally cost more to run
+    - larger engines generally cost less to run
+    - fixed a bug where medium wagons cost 2x as much as small wagons, instead of 1.5x
+- fixed cargo payment bonus for luxury passenger cars
+    - now implemented as a penalty for long delivery times on standard passenger cars and passenger railcars
+    - for long delivery times, the luxury cars will pay significantly more
+    - the effect will only show up on routes longer than about 64 tiles (depending on speed of train)
+- added support for DMU/EMU livery (company colour) settings, available in OpenTTD nightlies from Feb 2019
+- removed gen 6 Express Car, over-provided with express and mail cars at that point
+- tweaked some engine weights for balance
+- updated translations from web translators
+
+
+---------------------
+2.0.0 Alpha 4 Release
+---------------------
+
 *Changes from 2.0.0 Alpha 3*
 
 - Helm Wind (1987) and Brenner (2017) high speed passenger trains
@@ -40,12 +62,12 @@ Designed to be used with 'vehicles expire' set to to 'on', Horse 2 has a *lot* o
 *Changes from 2.0.0 Alpha 2*
 
 - no savegame compatibility with previous 2.0.0 Alpha releases
-- add electric railcars:
+- added electric railcars:
     - Athena, Geronimo, Breeze, Zeus for passengers
     - Ares, Dover, Jupiter, Pylon for mail/express cargos
     - introduced 1927-2017
     - hidden silly easter egg for electric railcars, hard to find
-- add more 'standard' passenger cars
+- added more 'standard' passenger cars
     - 3 short passenger cars introduced 1860-1930
     - 3 long passenger cars introduced 1960-2020
 - increased capacity of all passenger railcars and all 'standard' passenger cars
@@ -76,7 +98,7 @@ Designed to be used with 'vehicles expire' set to to 'on', Horse 2 has a *lot* o
 - electric freight engines
     - added Gosling Blast gen 6 electric freight engine
     - adjusted HP for Peasweep and Flanders Storm for balance
-- added Express Cars as an alternative to Mail cars
+- added Express Cars as an alternative to Mail Cars
 - completed all sprites for narrow gauge wagons
 - wagons with opening doors now close them in stations if fully loaded
 - reorganised engines in buy menu
