@@ -1965,6 +1965,16 @@ class TrainCar(Train):
         return int(self.consist.weight_factor * self.default_cargo_capacity * self.consist.roster.train_car_weight_factors[self.consist.gen - 1])
 
 
+class AlignmentCar(TrainCar):
+    """
+    Alignment Car, for debugging sprite positions
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self._symmetry_type = 'asymmetric'
+
+
 class CabooseCar(TrainCar):
     """
     Caboose Car. This sub-class only exists to set weight in absence of cargo capacity, in other respects it's just a standard wagon.
