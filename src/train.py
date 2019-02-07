@@ -852,6 +852,25 @@ class CarConsist(Consist):
             return "string(STR_NAME_CONSIST_PARENTHESES, string(" + self.get_wagon_title_class_str() + "), string(" + self.get_wagon_title_subtype_str() + "))"
 
 
+class AlignmentCarConsist(CarConsist):
+    """
+    For checking sprite alignment
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = 'alignment_car'
+        super().__init__(**kwargs)
+        self.speed_class = None  # no speed limit
+        # refit nothing
+        self.class_refit_groups = []
+        self.label_refits_allowed = []  # no specific labels needed
+        self.label_refits_disallowed = []
+        self.buy_cost_adjustment_factor = 0 # free
+        # no random CC, no flip
+        self.random_company_colour_swap = False
+        self.allow_flip = False
+
+
 class BoxCarConsist(CarConsist):
     """
     Box car, van - express, piece goods cargos, other selected cargos.
@@ -1946,6 +1965,34 @@ class TrainCar(Train):
         return int(self.consist.weight_factor * self.default_cargo_capacity * self.consist.roster.train_car_weight_factors[self.consist.gen - 1])
 
 
+class CabooseCar(TrainCar):
+    """
+    Caboose Car. This sub-class only exists to set weight in absence of cargo capacity, in other respects it's just a standard wagon.
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+    @property
+    def weight(self):
+        # special handling of weight
+        weight_factor = 3 if self.consist.base_track_type == 'NG' else 5
+        return weight_factor * self.vehicle_length
+
+
+class MailCar(TrainCar):
+    """
+    Mail wagon.
+    """
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # mail wagons may be asymmetric, there is magic in the graphics processing to make symmetric pax/mail sprites also work with this
+        self._symmetry_type = 'asymmetric'
+        # magic to set capacity subject to length
+        base_capacity = self.consist.roster.freight_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
+        self.capacity = (kwargs['vehicle_length'] * base_capacity) / polar_fox.constants.mail_multiplier
+
+
 class PaxCar(TrainCar):
     """
     Pax wagon. This subclass only exists to set capacity and symmetry_type.
@@ -1970,19 +2017,6 @@ class LuxuryPaxCar(TrainCar):
         # magic to set luxury pax car capacity subject to length
         base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
         self.capacity = int(kwargs['vehicle_length'] * base_capacity * 0.625)
-
-
-class MailCar(TrainCar):
-    """
-    Mail wagon.
-    """
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        # mail wagons may be asymmetric, there is magic in the graphics processing to make symmetric pax/mail sprites also work with this
-        self._symmetry_type = 'asymmetric'
-        # magic to set capacity subject to length
-        base_capacity = self.consist.roster.freight_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
-        self.capacity = (kwargs['vehicle_length'] * base_capacity) / polar_fox.constants.mail_multiplier
 
 
 class ExpressCar(TrainCar):
@@ -2020,20 +2054,4 @@ class WellCar(FreightCar):
         super().__init__(**kwargs)
         # well cars may be asymmetric, there is magic in the graphics processing to make cargo sprites work with this
         self._symmetry_type = 'asymmetric'
-
-
-class CabooseCar(TrainCar):
-    """
-    Caboose Car. This sub-class only exists to set weight in absence of cargo capacity, in other respects it's just a standard wagon.
-    """
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-
-    @property
-    def weight(self):
-        # special handling of weight
-        weight_factor = 3 if self.consist.base_track_type == 'NG' else 5
-        return weight_factor * self.vehicle_length
-
 

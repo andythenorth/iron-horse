@@ -37,6 +37,9 @@ pony.roster.register(disabled=False)
 
 from vehicles import numeric_id_defender
 
+from vehicles import alignment_cars
+alignment_cars.main()
+
 from vehicles import box_cars
 box_cars.main()
 
