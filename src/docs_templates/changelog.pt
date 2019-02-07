@@ -2,7 +2,7 @@ Changelog
 =========
 
 ---------------------
-2.0.0 Alpha 5 Release
+2.0.0 Alpha 6 Release
 ---------------------
 
 Iron Horse 2.
@@ -22,6 +22,15 @@ Designed to be used with 'vehicles expire' set to to 'on', Horse 2 has a *lot* o
 - extensive cargo sprite support, but some cargo sprites are known to be missing
 - no savegame compatibility with Iron Horse 1
 - can be used _alongside_ Iron Horse 1, if you must (kind of odd, but eh)
+
+*Changes from 2.0.0 Alpha 5*
+
+- fixed vehicle sprite offsets
+- updated translations from web translators
+
+---------------------
+2.0.0 Alpha 5 Release
+---------------------
 
 *Changes from 2.0.0 Alpha 4*
 
