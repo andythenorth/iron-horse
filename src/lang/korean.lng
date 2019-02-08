@@ -30,25 +30,30 @@ STR_NAME_SUFFIX_LARGE                                           :큼
 # as of Jan 2019 these are switched from en-us to en-gb
 # the en-us translation should be updated appropriately when making changes here
 # !! consider splitting strings per roster?? A US caboose is still a 'caboose' in en-gb, not a brake van
+STR_NAME_SUFFIX_ALIGNMENT_CAR                                   :정렬 차량
 STR_NAME_SUFFIX_BOX_CAR                                         :유개차
-STR_NAME_SUFFIX_CABOOSE_CAR                                     :차장차
+STR_NAME_SUFFIX_CABOOSE_CAR                                     :제동차
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :유개호퍼차
-STR_NAME_SUFFIX_DUMP_CAR                                        :덤프 차량
-STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :식품 탱크 차
-STR_NAME_SUFFIX_FLAT_CAR                                        :평판차
+STR_NAME_SUFFIX_DUMP_CAR                                        :광물화차
+STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :식품 유조차
+STR_NAME_SUFFIX_EXPRESS_CAR                                     :특급 유개화물차
+STR_NAME_SUFFIX_FLAT_CAR                                        :평판화차
 STR_NAME_SUFFIX_FRUIT_VEG_CAR                                   :과일 및 채소 차량
 STR_NAME_SUFFIX_HOPPER_CAR                                      :호퍼차
 STR_NAME_SUFFIX_INTERMODAL_CAR                                  :복합 차량
-STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :가축차
+STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :가축 수송 차량
 STR_NAME_SUFFIX_LUXURY_PASSENGER_CAR                            :호화 승객 수송 차량
 STR_NAME_SUFFIX_MAIL_CAR                                        :우편 수송 차량
 STR_NAME_SUFFIX_METAL_CAR                                       :철제 차
 STR_NAME_SUFFIX_OPEN_CAR                                        :무개차
 STR_NAME_SUFFIX_PASSENGER_CAR                                   :승객 수송 차량
 STR_NAME_SUFFIX_REEFER_CAR                                      :냉동차
-STR_NAME_SUFFIX_SILO_CAR                                        :사일로 차량
-STR_NAME_SUFFIX_STAKE_CAR                                       :평판차
-STR_NAME_SUFFIX_TANK_CAR                                        :탱크차
+STR_NAME_SUFFIX_SILO_CAR                                        :사일로 화차
+STR_NAME_SUFFIX_STAKE_CAR                                       :말뚝화차
+STR_NAME_SUFFIX_TANK_CAR                                        :유조차
 STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :자동차 수송 차량
+STR_NAME_SUFFIX_WELL_CAR                                        :더블스택 차량
 
 # project management
+STR_SPRITES_COMPLETE                                            :{}스트라이트 완성: {GOLD}됨
+STR_SPRITES_INCOMPLETE                                          :{}스프라이트 완성: {GOLD}안 됨
