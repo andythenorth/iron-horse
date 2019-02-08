@@ -798,7 +798,7 @@ class CarConsist(Consist):
         run_cost_points = run_cost_points * length_cost_factor
         # multiply up by arbitrary amount, to where I want wagon run costs to be
         # (base cost is set deliberately low to allow small increments for fine-grained control)
-        run_cost_points = 3 * run_cost_points * self.floating_run_cost_multiplier
+        run_cost_points = 2 * run_cost_points * self.floating_run_cost_multiplier
         # narrow gauge gets a bonus
         if self.base_track_type == 'NG':
             run_cost_points = 0.5 * run_cost_points
@@ -1138,7 +1138,7 @@ class MailCarConsist(CarConsist):
         self.default_cargos = global_constants.default_cargos['mail']
         # adjust weight factor because mail car freight capacity is 1/2 of other wagons, but weight should be same
         self.weight_factor = polar_fox.constants.mail_multiplier
-        self.floating_run_cost_multiplier = 1.2
+        self.floating_run_cost_multiplier = 1.66
         self.allow_flip = True
         self.random_company_colour_swap = False
         # Graphics configuration
@@ -1236,7 +1236,7 @@ class PassengerCarConsist(PassengerCarConsistBase):
         # this will knock standard age period down, so this train is less profitable over ~128 tiles than a similar luxuryy train
         self.cargo_age_period = global_constants.CARGO_AGE_PERIOD_STANDARD_PAX_MALUS
         self.buy_cost_adjustment_factor = 1.3
-        self.floating_run_cost_multiplier = 1.5
+        self.floating_run_cost_multiplier = 2.25
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 0.66 if self.base_track_type == 'NG' else 1.5
         # Graphics configuration
@@ -1262,7 +1262,7 @@ class PassengerLuxuryCarConsist(PassengerCarConsistBase):
         # this won't make much difference except over *very* long routes, but set it anyway
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
         self.buy_cost_adjustment_factor = 1.6
-        self.floating_run_cost_multiplier = 2.25
+        self.floating_run_cost_multiplier = 3.3
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 1 if self.base_track_type == 'NG' else 2
         # Graphics configuration
