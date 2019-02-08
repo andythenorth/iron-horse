@@ -510,11 +510,6 @@ class EngineConsist(Consist):
         # this means that floating_run_cost_multiplier might need to be > 3 to reset the base cost nerf
         floating_run_cost_points = floating_run_cost_points * self.floating_run_cost_multiplier
         fixed_run_cost_points = self.fixed_run_cost_points
-        # massive bonus for NG
-        # !! these NG multipliers are just magic numbers that work for Pony NG roster, they probably fail in other rosters
-        if is_NG:
-            floating_run_cost_points = 0.4 * floating_run_cost_points
-            fixed_run_cost_points = 0.6 * fixed_run_cost_points
         # add floating cost to the fixed (baseline) cost (which is arbitrary points, range 0-200-ish)
         # multiply by gen and an arbitrary factor to give the results I want
         # the aim is to space costs widely across types within a generation, but mostly flatten them across generations of same type
@@ -524,6 +519,9 @@ class EngineConsist(Consist):
         # doing this is preferable to doing variable run costs, which are weird and confusing (can't trust the costs showin in vehicle window)
         if 'freight' in self.role:
             run_cost = 0.66 * run_cost
+        # massive bonus for NG
+        if is_NG:
+            run_cost = 0.5 * run_cost
         # cap to int for nml
         return int(run_cost)
 
