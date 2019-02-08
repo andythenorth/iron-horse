@@ -1005,7 +1005,7 @@ class ExpressCarConsist(CarConsist):
         self.default_cargos = global_constants.default_cargos['express']
         # adjust weight factor because express car freight capacity is 1/2 of other wagons, but weight should be same
         self.weight_factor = polar_fox.constants.mail_multiplier
-        self.floating_run_cost_multiplier = 1.2
+        self.floating_run_cost_multiplier = 1.66
         self.allow_flip = True
         # Graphics configuration
         if self.gen in [1]:
