@@ -523,7 +523,7 @@ class EngineConsist(Consist):
         # freight engines get a substantial run cost bonus as they'll often be sat waiting for loads, so balance (also super realism!!)
         # doing this is preferable to doing variable run costs, which are weird and confusing (can't trust the costs showin in vehicle window)
         if 'freight' in self.role:
-            run_cost = 0.8 * run_cost
+            run_cost = 0.66 * run_cost
         # cap to int for nml
         return int(run_cost)
 
