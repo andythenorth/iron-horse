@@ -2024,7 +2024,7 @@ class LuxuryPaxCar(TrainCar):
         self._symmetry_type = 'asymmetric'
         # magic to set luxury pax car capacity subject to length
         base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
-        self.capacity = int(kwargs['vehicle_length'] * base_capacity * 0.625)
+        self.capacity = int(kwargs['vehicle_length'] * base_capacity * 0.75)
 
 
 class ExpressCar(TrainCar):
