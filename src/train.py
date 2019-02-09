@@ -1234,7 +1234,7 @@ class PassengerCarConsist(PassengerCarConsistBase):
         # this will knock standard age period down, so this train is less profitable over ~128 tiles than a similar luxuryy train
         self.cargo_age_period = global_constants.CARGO_AGE_PERIOD_STANDARD_PAX_MALUS
         self.buy_cost_adjustment_factor = 1.3
-        self.floating_run_cost_multiplier = 2.25
+        self.floating_run_cost_multiplier = 3.33
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 0.66 if self.base_track_type == 'NG' else 1.5
         # Graphics configuration
@@ -1260,7 +1260,7 @@ class PassengerLuxuryCarConsist(PassengerCarConsistBase):
         # this won't make much difference except over *very* long routes, but set it anyway
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
         self.buy_cost_adjustment_factor = 1.6
-        self.floating_run_cost_multiplier = 3.3
+        self.floating_run_cost_multiplier = 4.33
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 1 if self.base_track_type == 'NG' else 2
         # Graphics configuration
