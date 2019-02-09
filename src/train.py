@@ -493,15 +493,11 @@ class EngineConsist(Consist):
         if self.requires_electric_rails:
             if 'railcar' in self.role:
                 # massive bonus to el railcars
-                power_factor = 0.4 * power_factor
+                power_factor = 0.6 * power_factor
             else:
-                # much smaller bonus to electric engines
+                # small bonus to electric engines
                 # they already tend to be lighter per unit power (so cheaper to run) than similar power types
                 power_factor = 0.8 * power_factor
-        elif self.electro_diesel_buy_cost_malus is not None:
-            if 'railcar' in self.role:
-                # bonus to ED railcars (ED engines are fine without this)
-                power_factor = 0.6 * power_factor
 
         # basic cost from speed, power, weight
         floating_run_cost_points = speed_cost_factor * power_factor * weight_factor
@@ -513,7 +509,7 @@ class EngineConsist(Consist):
         # add floating cost to the fixed (baseline) cost (which is arbitrary points, range 0-200-ish)
         # multiply by gen and an arbitrary factor to give the results I want
         # the aim is to space costs widely across types within a generation, but mostly flatten them across generations of same type
-        gen_multiplier = 11 - self.gen
+        gen_multiplier = 10 - self.gen
         run_cost = gen_multiplier * (fixed_run_cost_points + floating_run_cost_points)
         # freight engines get a substantial run cost bonus as they'll often be sat waiting for loads, so balance (also super realism!!)
         # doing this is preferable to doing variable run costs, which are weird and confusing (can't trust the costs showin in vehicle window)
@@ -606,11 +602,11 @@ class PassengerVeryHighSpeedCabEngineConsist(PassengerEngineConsist):
         self.cargo_age_period = 1.33 * global_constants.CARGO_AGE_PERIOD
         # note that buy costs are actually adjusted down from pax base, to account for distributed traction etc
         self.buy_cost_adjustment_factor = 0.95
-        # run costs are set to make high speed train costs all high, with floating costs having smaller effect relative to normal trains
-        # note that run cost multiplier is actually adjusted down from pax base, to account for distributed traction etc
-        self.floating_run_cost_multiplier = 6
-        # ...but very high fixed (baseline) run costs on this subtype
-        self.fixed_run_cost_points = 200
+        # high speed should only be effective over longer distances
+        # ....run cost multiplier is adjusted up from pax base
+        self.floating_run_cost_multiplier = 24
+        # ...and very high fixed (baseline) run costs on this subtype
+        self.fixed_run_cost_points = 256
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
         """
@@ -1136,7 +1132,7 @@ class MailCarConsist(CarConsist):
         self.default_cargos = global_constants.default_cargos['mail']
         # adjust weight factor because mail car freight capacity is 1/2 of other wagons, but weight should be same
         self.weight_factor = polar_fox.constants.mail_multiplier
-        self.floating_run_cost_multiplier = 1.66
+        self.floating_run_cost_multiplier = 3
         self.allow_flip = True
         self.random_company_colour_swap = False
         # Graphics configuration
@@ -1234,7 +1230,7 @@ class PassengerCarConsist(PassengerCarConsistBase):
         # this will knock standard age period down, so this train is less profitable over ~128 tiles than a similar luxuryy train
         self.cargo_age_period = global_constants.CARGO_AGE_PERIOD_STANDARD_PAX_MALUS
         self.buy_cost_adjustment_factor = 1.3
-        self.floating_run_cost_multiplier = 3.33
+        self.floating_run_cost_multiplier = 4
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 0.66 if self.base_track_type == 'NG' else 1.5
         # Graphics configuration
@@ -1258,9 +1254,9 @@ class PassengerLuxuryCarConsist(PassengerCarConsistBase):
         self.base_id = 'luxury_passenger_car'
         super().__init__(**kwargs)
         # this won't make much difference except over *very* long routes, but set it anyway
-        self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
+        self.cargo_age_period = 8 * global_constants.CARGO_AGE_PERIOD
         self.buy_cost_adjustment_factor = 1.6
-        self.floating_run_cost_multiplier = 4.33
+        self.floating_run_cost_multiplier = 5
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 1 if self.base_track_type == 'NG' else 2
         # Graphics configuration
