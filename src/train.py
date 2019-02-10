@@ -493,7 +493,7 @@ class EngineConsist(Consist):
         if self.requires_electric_rails:
             if 'railcar' in self.role:
                 # massive bonus to el railcars
-                power_factor = 0.6 * power_factor
+                power_factor = 0.55 * power_factor
             else:
                 # small bonus to electric engines
                 # they already tend to be lighter per unit power (so cheaper to run) than similar power types
@@ -509,12 +509,12 @@ class EngineConsist(Consist):
         # add floating cost to the fixed (baseline) cost (which is arbitrary points, range 0-200-ish)
         # multiply by gen and an arbitrary factor to give the results I want
         # the aim is to space costs widely across types within a generation, but mostly flatten them across generations of same type
-        gen_multiplier = 10 - self.gen
+        gen_multiplier = 9 - (0.75 * self.gen)
         run_cost = gen_multiplier * (fixed_run_cost_points + floating_run_cost_points)
         # freight engines get a substantial run cost bonus as they'll often be sat waiting for loads, so balance (also super realism!!)
         # doing this is preferable to doing variable run costs, which are weird and confusing (can't trust the costs showin in vehicle window)
         if 'freight' in self.role:
-            run_cost = 0.66 * run_cost
+            run_cost = 0.8 * run_cost
         # massive bonus for NG
         if is_NG:
             run_cost = 0.5 * run_cost
@@ -533,10 +533,11 @@ class PassengerEngineConsist(EngineConsist):
         self.label_refits_allowed = []
         self.label_refits_disallowed = []
         self.default_cargos = ['PASS']
-         # increased buy costs for having seats and stuff eh?
+         # increased buy and run costs for having seats and stuff eh?
         self.buy_cost_adjustment_factor = 1.8
-        # also reduce fixed (baseline) run costs on this subtype, purely for balancing reasons
-        self.fixed_run_cost_points = 96
+        self.floating_run_cost_multiplier = 12
+        # ...but reduce fixed (baseline) run costs on this subtype, purely for balancing reasons
+        self.fixed_run_cost_points = 112
 
 
 class PassengerEngineMetroConsist(PassengerEngineConsist):
@@ -694,8 +695,9 @@ class MailEngineConsist(EngineConsist):
         self.default_cargos = global_constants.default_cargos['mail']
         # increased costs for having extra doors and stuff eh?
         self.buy_cost_adjustment_factor = 1.4
-        # reduce fixed (baseline) run costs on this subtype, purely for balancing reasons
-        self.fixed_run_cost_points = 96
+        self.floating_run_cost_multiplier = 12
+        # ...but reduce fixed (baseline) run costs on this subtype, purely for balancing reasons
+        self.fixed_run_cost_points = 128
 
 
 class MailEngineMetroConsist(MailEngineConsist):
