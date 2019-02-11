@@ -10,7 +10,7 @@ def main(roster):
                                             base_track_type='NG',
                                             power=350,
                                             gen=4,
-                                            sprites_complete=False)
+                                            sprites_complete=True)
 
     consist.add_unit(type=DieselRailcarPaxUnit,
                      weight=18,
