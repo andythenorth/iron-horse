@@ -41,6 +41,8 @@ CARGO_AGE_PERIOD = 185
 # setting bonuses has limited effect on pax payment over 0-256 tile routes (might show up on longer routes)
 # so instead set a malus, this nerfs standard pax so are relatively less profitable above somewhere around 64-128 tiles
 CARGO_AGE_PERIOD_STANDARD_PAX_MALUS = 56
+# metro mail and pax gets a total nerf, only use it on short routes
+CARGO_AGE_PERIOD_METRO_MALUS = 10
 
 # buy and run cost base factors
 PR_BUILD_VEHICLE_TRAIN = -2

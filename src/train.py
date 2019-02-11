@@ -547,6 +547,13 @@ class PassengerEngineMetroConsist(PassengerEngineConsist):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        # this will knock standard age period down, so this train is only profitable over short routes
+        self.cargo_age_period = global_constants.CARGO_AGE_PERIOD_METRO_MALUS
+        # buy costs increased above baseline, account for 2 units + underground nonsense
+        self.buy_cost_adjustment_factor = 2
+        # metro should only be effective over short distances
+        # ....run cost multiplier is adjusted up from pax base for underground nonsense, also account for 2 units
+        self.floating_run_cost_multiplier = 36
         # Graphics configuration
         # 1 livery as can't be flipped, 1 spriterow may be left blank for compatibility with Gestalt (TBC)
         # position variants
@@ -566,7 +573,7 @@ class PassengerEngineRailcarConsist(PassengerEngineConsist):
         self.allow_flip = True
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
-        # this will knock standard age period down, so this train is less profitable over ~128 tiles than a similar luxuryy train
+        # this will knock standard age period down, so this train is less profitable over ~128 tiles than a similar luxury train
         self.cargo_age_period = global_constants.CARGO_AGE_PERIOD_STANDARD_PAX_MALUS
 
         # Graphics configuration
@@ -707,6 +714,13 @@ class MailEngineMetroConsist(MailEngineConsist):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        # this will knock standard age period down, so this train is only profitable over short routes
+        self.cargo_age_period = global_constants.CARGO_AGE_PERIOD_METRO_MALUS
+        # buy costs increased above baseline, account for 2 units + underground nonsense
+        self.buy_cost_adjustment_factor = 2
+        # metro should only be effective over short distances
+        # ....run cost multiplier is adjusted up from pax base for underground nonsense, also account for 2 units
+        self.floating_run_cost_multiplier = 36
         # Graphics configuration
         # 1 livery as can't be flipped, 1 spriterow may be left blank for compatibility with Gestalt (TBC)
         # position variants
