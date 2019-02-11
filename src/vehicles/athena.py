@@ -11,7 +11,7 @@ def main(roster):
                                             pantograph_type='diamond-single-with-base',
                                             easter_egg_haulage_speed_bonus=True,
                                             gen=3,
-                                            sprites_complete=True,
+                                            sprites_complete=False,
                                             intro_date_offset=-3)  # introduce early by design
 
     consist.add_unit(type=ElectricRailcarPaxUnit,

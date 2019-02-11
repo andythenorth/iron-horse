@@ -9,7 +9,7 @@ def main(roster):
                                             role='pax_railcar_1',
                                             power=400,
                                             gen=5,
-                                            sprites_complete=True,
+                                            sprites_complete=False,
                                             intro_date_offset=-5)  # introduce early by design
 
     consist.add_unit(type=DieselRailcarPaxUnit,

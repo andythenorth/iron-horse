@@ -8,7 +8,7 @@ def main():
                                   gen=1,
                                   subtype='U',
                                   base_track_type='NG',
-                                  sprites_complete=True)
+                                  sprites_complete=False)
 
     consist.add_unit(type=PaxCar,
                      vehicle_length=4,
@@ -21,7 +21,7 @@ def main():
                                   gen=3,
                                   subtype='U',
                                   base_track_type='NG',
-                                  sprites_complete=True)
+                                  sprites_complete=False)
 
     consist.add_unit(type=PaxCar,
                      vehicle_length=4,
@@ -32,7 +32,7 @@ def main():
                                   gen=4,
                                   subtype='U',
                                   base_track_type='NG',
-                                  sprites_complete=True)
+                                  sprites_complete=False)
 
     consist.add_unit(type=PaxCar,
                      vehicle_length=4,
@@ -44,7 +44,7 @@ def main():
                                   base_numeric_id=3300,
                                   gen=1,
                                   subtype='A',
-                                  sprites_complete=True)
+                                  sprites_complete=False)
 
     consist.add_unit(type=PaxCar,
                      vehicle_length=4,
@@ -54,7 +54,7 @@ def main():
                                   base_numeric_id=740,
                                   gen=1,
                                   subtype='B',
-                                  sprites_complete=True)
+                                  sprites_complete=False)
 
     consist.add_unit(type=PaxCar,
                      vehicle_length=6,
@@ -64,7 +64,7 @@ def main():
                                   base_numeric_id=3310,
                                   gen=2,
                                   subtype='A',
-                                  sprites_complete=True)
+                                  sprites_complete=False)
 
     consist.add_unit(type=PaxCar,
                      vehicle_length=4,
@@ -74,7 +74,7 @@ def main():
                                   base_numeric_id=750,
                                   gen=2,
                                   subtype='B',
-                                  sprites_complete=True)
+                                  sprites_complete=False)
 
     consist.add_unit(type=PaxCar,
                      vehicle_length=6,
@@ -84,7 +84,7 @@ def main():
                                   base_numeric_id=3290,
                                   gen=3,
                                   subtype='A',
-                                  sprites_complete=True)
+                                  sprites_complete=False)
 
     consist.add_unit(type=PaxCar,
                      vehicle_length=4,
@@ -94,7 +94,7 @@ def main():
                                   base_numeric_id=760,
                                   gen=3,
                                   subtype='B',
-                                  sprites_complete=True)
+                                  sprites_complete=False)
 
     consist.add_unit(type=PaxCar,
                      vehicle_length=6,
@@ -104,7 +104,7 @@ def main():
                                   base_numeric_id=3110,
                                   gen=4,
                                   subtype='B',
-                                  sprites_complete=True)
+                                  sprites_complete=False)
 
     consist.add_unit(type=PaxCar,
                      vehicle_length=6,
@@ -114,7 +114,7 @@ def main():
                                   base_numeric_id=3260,
                                   gen=4,
                                   subtype='C',
-                                  sprites_complete=True)
+                                  sprites_complete=False)
 
     consist.add_unit(type=PaxCar,
                      vehicle_length=8,
@@ -124,7 +124,7 @@ def main():
                                   base_numeric_id=3100,
                                   gen=5,
                                   subtype='B',
-                                  sprites_complete=True)
+                                  sprites_complete=False)
 
     consist.add_unit(type=PaxCar,
                      vehicle_length=6,
@@ -134,7 +134,7 @@ def main():
                                   base_numeric_id=3280,
                                   gen=5,
                                   subtype='C',
-                                  sprites_complete=True)
+                                  sprites_complete=False)
 
     consist.add_unit(type=PaxCar,
                      vehicle_length=8,
@@ -146,7 +146,7 @@ def main():
                                   base_numeric_id=1580,
                                   gen=6,
                                   subtype='B',
-                                  sprites_complete=True)
+                                  sprites_complete=False)
 
     consist.add_unit(type=PaxCar,
                      vehicle_length=6,
@@ -156,7 +156,7 @@ def main():
                                   base_numeric_id=3270,
                                   gen=6,
                                   subtype='C',
-                                  sprites_complete=True)
+                                  sprites_complete=False)
 
     consist.add_unit(type=PaxCar,
                      vehicle_length=8,
