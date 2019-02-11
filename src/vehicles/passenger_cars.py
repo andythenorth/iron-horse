@@ -124,7 +124,7 @@ def main():
                                   base_numeric_id=3100,
                                   gen=5,
                                   subtype='B',
-                                  sprites_complete=False)
+                                  sprites_complete=True)
 
     consist.add_unit(type=PaxCar,
                      vehicle_length=6,
@@ -134,7 +134,7 @@ def main():
                                   base_numeric_id=3280,
                                   gen=5,
                                   subtype='C',
-                                  sprites_complete=False)
+                                  sprites_complete=True)
 
     consist.add_unit(type=PaxCar,
                      vehicle_length=8,
