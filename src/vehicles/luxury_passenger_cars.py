@@ -8,7 +8,7 @@ def main():
                                         gen=1,
                                         subtype='U',
                                         base_track_type='NG',
-                                        sprites_complete=True)
+                                        sprites_complete=False)
 
     consist.add_unit(type=LuxuryPaxCar,
                      vehicle_length=6,
@@ -21,7 +21,7 @@ def main():
                                         gen=3,
                                         subtype='U',
                                         base_track_type='NG',
-                                        sprites_complete=True)
+                                        sprites_complete=False)
 
     consist.add_unit(type=LuxuryPaxCar,
                      vehicle_length=6,
@@ -32,7 +32,7 @@ def main():
                                         gen=4,
                                         subtype='U',
                                         base_track_type='NG',
-                                        sprites_complete=True)
+                                        sprites_complete=False)
 
     consist.add_unit(type=LuxuryPaxCar,
                      vehicle_length=6,
@@ -43,7 +43,7 @@ def main():
                                         base_numeric_id=2250,
                                         gen=1,
                                         subtype='U',
-                                        sprites_complete=True)
+                                        sprites_complete=False)
 
     consist.add_unit(type=LuxuryPaxCar,
                      vehicle_length=8,
@@ -53,7 +53,7 @@ def main():
                                         base_numeric_id=2260,
                                         gen=2,
                                         subtype='U',
-                                        sprites_complete=True)
+                                        sprites_complete=False)
 
     consist.add_unit(type=LuxuryPaxCar,
                      vehicle_length=8,
@@ -63,7 +63,7 @@ def main():
                                         base_numeric_id=2270,
                                         gen=3,
                                         subtype='U',
-                                        sprites_complete=True)
+                                        sprites_complete=False)
 
     consist.add_unit(type=LuxuryPaxCar,
                      vehicle_length=8,
@@ -73,7 +73,7 @@ def main():
                                         base_numeric_id=3120,
                                         gen=4,
                                         subtype='U',
-                                        sprites_complete=True)
+                                        sprites_complete=False)
 
     consist.add_unit(type=LuxuryPaxCar,
                      vehicle_length=8,
@@ -83,7 +83,7 @@ def main():
                                         base_numeric_id=3130,
                                         gen=5,
                                         subtype='U',
-                                        sprites_complete=True)
+                                        sprites_complete=False)
 
     consist.add_unit(type=LuxuryPaxCar,
                      vehicle_length=8,
@@ -95,7 +95,7 @@ def main():
                                         base_numeric_id=1860,
                                         gen=6,
                                         subtype='U',
-                                        sprites_complete=True)
+                                        sprites_complete=False)
 
     consist.add_unit(type=LuxuryPaxCar,
                      vehicle_length=8,
