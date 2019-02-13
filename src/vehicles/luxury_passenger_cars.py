@@ -43,7 +43,7 @@ def main():
                                         base_numeric_id=2250,
                                         gen=1,
                                         subtype='U',
-                                        sprites_complete=False)
+                                        sprites_complete=True)
 
     consist.add_unit(type=LuxuryPaxCar,
                      vehicle_length=8,
@@ -53,7 +53,7 @@ def main():
                                         base_numeric_id=2260,
                                         gen=2,
                                         subtype='U',
-                                        sprites_complete=False)
+                                        sprites_complete=True)
 
     consist.add_unit(type=LuxuryPaxCar,
                      vehicle_length=8,
