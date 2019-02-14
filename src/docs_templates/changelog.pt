@@ -2,7 +2,7 @@ Changelog
 =========
 
 ---------------------
-2.0.0 Alpha 6 Release
+2.0.0 Alpha 7 Release
 ---------------------
 
 Iron Horse 2.
@@ -23,10 +23,31 @@ Designed to be used with 'vehicles expire' set to to 'on', Horse 2 has a *lot* o
 - no savegame compatibility with Iron Horse 1
 - can be used _alongside_ Iron Horse 1, if you must (kind of odd, but eh)
 
+
+*Changes from 2.0.0 Alpha 6*
+
+- no savegame compatibility with previous 2.0.0 Alpha releases
+- rebalanced (again) all run costs compare to 2.0.0 Alpha 6
+    - most vehicles now cost less to run,
+    - a small number vehicles cost more to run, generally these are passenger vehicles with very high earning potential
+    - play-tested in detail with medium cost settings (and FIRS cargo payment rates)
+- reduced passenger vehicle capacities for balance
+- set cargo aging period for metro trains
+    - these are very profitable on short routes (up to about 16 tiles), if fully loaded
+    - but profitability will fall on longer routes
+- improved the appearance of passenger vehicle sprites when doors are open for loading/unloading
+- updated translations from web translators
+
+
+---------------------
+2.0.0 Alpha 6 Release
+---------------------
+
 *Changes from 2.0.0 Alpha 5*
 
 - fixed vehicle sprite offsets
 - updated translations from web translators
+
 
 ---------------------
 2.0.0 Alpha 5 Release
