@@ -7,11 +7,11 @@ def main(roster):
                             base_numeric_id=2950,
                             name='Scorcher',
                             role='heavy_express_1',
-                            power=4050,
+                            power=6000,
                             joker=True,  # this engine doesn't fit the set roster pattern, by design it's to mix things up
                             dual_headed=True,
-                            intro_date_offset=-2,  # let's be a little bit earlier for this one
-                            gen=5,
+                            intro_date_offset=-9,  # let's be a little bit earlier for this one
+                            gen=6,
                             sprites_complete=False)
 
     consist.add_unit(type=DieselEngineUnit,
