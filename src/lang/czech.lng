@@ -8,7 +8,7 @@ STR_GRF_DESCRIPTION                                             :Licence: {SILVE
 STR_PARAM_ADJUST_VEHICLE_CAPACITY                               :Kapacita vlaku
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :Maličká
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Obrovská
-STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Nadměrný
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Nadměrná
 STR_PARAM_ROSTER                                                :Seznam
 STR_PARAM_ROSTER_DESC                                           :Vyber použitý set vlaků.
 STR_PARAM_ROSTER_OPTION_0                                       :Železný poník
@@ -31,6 +31,7 @@ STR_NAME_SUFFIX_LARGE                                           :Velký
 # as of Jan 2019 these are switched from en-us to en-gb
 # the en-us translation should be updated appropriately when making changes here
 # !! consider splitting strings per roster?? A US caboose is still a 'caboose' in en-gb, not a brake van
+STR_NAME_SUFFIX_ALIGNMENT_CAR                                   :Zarovnávací vůz
 STR_NAME_SUFFIX_BOX_CAR                                         :Krytý nákladní vůz
 STR_NAME_SUFFIX_CABOOSE_CAR                                     :Služební vůz
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Krytý násypný vůz
