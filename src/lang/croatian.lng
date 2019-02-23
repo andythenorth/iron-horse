@@ -31,6 +31,7 @@ STR_NAME_SUFFIX_LARGE                                           :Veliki
 # as of Jan 2019 these are switched from en-us to en-gb
 # the en-us translation should be updated appropriately when making changes here
 # !! consider splitting strings per roster?? A US caboose is still a 'caboose' in en-gb, not a brake van
+STR_NAME_SUFFIX_ALIGNMENT_CAR                                   :Vagon za poravnanje
 STR_NAME_SUFFIX_BOX_CAR                                         :Zatvoreni vagon
 STR_NAME_SUFFIX_CABOOSE_CAR                                     :Vagon za kočničara
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Pokriveni vagon za rasuti teret
