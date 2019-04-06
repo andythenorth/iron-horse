@@ -86,6 +86,8 @@ def main():
                      vehicle_length=8,
                      chassis='4_axle_sparse_32px')
 
+    # gen 6A not included - could add?
+
     consist = EdiblesTankCarConsist(roster='pony',
                                     base_numeric_id=2100,
                                     gen=6,
