@@ -112,7 +112,7 @@ base_refits_by_class = {'empty': [],
 
 # rather than using disallowed classes (can cause breakage), specific labels are disallowed
 disallowed_refits_by_label = {'non_dump_bulk': ['WOOD', 'SGCN', 'FICR', 'BDMT', 'WDPR', 'GRAI', 'WHEA', 'CERE', 'MAIZ', 'FRUT', 'BEAN', 'CMNT',
-                                                'CTCD', 'FERT', 'OLSD', 'SUGR', 'SULP', 'TOFF', 'URAN', 'CBLK', 'PLAS'],
+                                                'CTCD', 'FERT', 'OLSD', 'SUGR', 'TOFF', 'URAN', 'CBLK', 'PLAS'],
                               'edible_liquids': ['MILK', 'WATR', 'BEER', 'FOOD', 'EOIL'],
                               # !! would it be better to do an include list for edibles tankers?  Excluding liquids by label is a PITA
                               # ^ see Iron Horse train.py for lists of label_refits_allowed that could be moved to Polar Fox
