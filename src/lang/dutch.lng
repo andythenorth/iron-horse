@@ -14,30 +14,45 @@ STR_PARAM_ROSTER_OPTION_1                                       :Ijzeren lama
 STR_PARAM_ROSTER_OPTION_2                                       :Ijzeren antilope
 
 # keep these alphabetised, easier
-STR_NAME_SUFFIX_DIESEL                                          :(Diesel)
-STR_NAME_SUFFIX_ELECTRIC                                        :(Elektrisch)
-STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Elektrisch-Diesel)
-STR_NAME_SUFFIX_STEAM                                           :(Stoom)
+STR_NAME_SUFFIX_DIESEL                                          :Diesel
+STR_NAME_SUFFIX_ELECTRIC                                        :Elektrisch
+STR_NAME_SUFFIX_ELECTRODIESEL                                   :Diesel-elektrisch
+STR_NAME_SUFFIX_METRO                                           :Metro
+STR_NAME_SUFFIX_STEAM                                           :Stoom
 
 # size suffixes
+STR_NAME_SUFFIX_SMALL                                           :Klein
+STR_NAME_SUFFIX_MEDIUM                                          :Gemiddeld
+STR_NAME_SUFFIX_LARGE                                           :Groot
 
 # wagon class suffixes
 # as of Jan 2019 these are switched from en-us to en-gb
 # the en-us translation should be updated appropriately when making changes here
 # !! consider splitting strings per roster?? A US caboose is still a 'caboose' in en-gb, not a brake van
-STR_NAME_SUFFIX_BOX_CAR                                         :Dichte vrachtwagon
-STR_NAME_SUFFIX_CABOOSE_CAR                                     :Personeelswagon
-STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Overdekte stortgoedwagon
-STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Voedseltankwagon
+STR_NAME_SUFFIX_ALIGNMENT_CAR                                   :Lijnwagen
+STR_NAME_SUFFIX_BOX_CAR                                         :Gesloten wagon
+STR_NAME_SUFFIX_CABOOSE_CAR                                     :Remwagon
+STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Overdekte onderlosser
+STR_NAME_SUFFIX_DUMP_CAR                                        :Mineralenwagon
+STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Voedseltanker
+STR_NAME_SUFFIX_EXPRESS_CAR                                     :Expreswagen
 STR_NAME_SUFFIX_FLAT_CAR                                        :Platte wagon
-STR_NAME_SUFFIX_HOPPER_CAR                                      :Stortgoedwagon
+STR_NAME_SUFFIX_FRUIT_VEG_CAR                                   :Fruit- en groentenwagen
+STR_NAME_SUFFIX_HOPPER_CAR                                      :Onderlosser
+STR_NAME_SUFFIX_INTERMODAL_CAR                                  :Intermodale wagen
 STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Veewagon
+STR_NAME_SUFFIX_LUXURY_PASSENGER_CAR                            :Luxe passagiersrijtuig
 STR_NAME_SUFFIX_MAIL_CAR                                        :Postwagon
-STR_NAME_SUFFIX_METAL_CAR                                       :Metalen auto
+STR_NAME_SUFFIX_METAL_CAR                                       :Metaalwagon
 STR_NAME_SUFFIX_OPEN_CAR                                        :Open wagon
-STR_NAME_SUFFIX_PASSENGER_CAR                                   :Passagierswagon
+STR_NAME_SUFFIX_PASSENGER_CAR                                   :Passagiersrijtuig
 STR_NAME_SUFFIX_REEFER_CAR                                      :Koelwagon
-STR_NAME_SUFFIX_TANK_CAR                                        :Tankwagon
-STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Voertuigen transporteur
+STR_NAME_SUFFIX_SILO_CAR                                        :Silowagon
+STR_NAME_SUFFIX_STAKE_CAR                                       :Rongenwagon
+STR_NAME_SUFFIX_TANK_CAR                                        :Tanker
+STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Voertuigtransport
+STR_NAME_SUFFIX_WELL_CAR                                        :Double stack-wagon
 
 # project management
+STR_SPRITES_COMPLETE                                            :{}Sprites gereed: {GOLD}Ja
+STR_SPRITES_INCOMPLETE                                          :{}Sprites gereed: {GOLD}Nee
