@@ -974,6 +974,32 @@ class DumpCarConsist(CarConsist):
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(bulk=True, has_alt_livery=True)
 
 
+class CryoTankCarConsist(CarConsist):
+    """
+    Specialist tank cars for gases, e.g. Oxygen, Chlorine etc
+    """
+
+    def __init__(self, **kwargs):
+        # tank cars are unrealistically autorefittable, and at no cost
+        # Pikka: if people complain that it's unrealistic, tell them "don't do it then"
+        self.base_id = 'cryo_tank_car'
+        super().__init__(**kwargs)
+        self.class_refit_groups = []  # no classes, use explicit labels
+        # shouldn't these be in polar fox?
+        self.label_refits_allowed = ['CHLO', 'O2__']
+        #self.default_cargos = global_constants.default_cargos['cryo_tank']
+        self.default_cargos = ['O2__']
+        self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
+        self.loading_speed_multiplier = 2
+        self.buy_cost_adjustment_factor = 1.33
+        self.floating_run_cost_multiplier = 1.5
+        # CC is swapped randomly (player can't choose), but also swap base livery on flip (player can choose
+        self.allow_flip = True
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(
+            recolour_maps=polar_fox.constants.tanker_livery_recolour_maps)
+
+
 class EdiblesTankCarConsist(CarConsist):
     """
     Wine, milk, water etc.

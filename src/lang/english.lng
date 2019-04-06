@@ -33,6 +33,7 @@ STR_NAME_SUFFIX_ALIGNMENT_CAR                                   :Alignment Van
 STR_NAME_SUFFIX_BOX_CAR                                         :Box Van
 STR_NAME_SUFFIX_CABOOSE_CAR                                     :Brake Van
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Covered Hopper
+STR_NAME_SUFFIX_CRYO_TANK_CAR                                   :Cryo Tanker
 STR_NAME_SUFFIX_DUMP_CAR                                        :Mineral Wagon
 STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Edibles Tanker
 STR_NAME_SUFFIX_EXPRESS_CAR                                     :Express Van

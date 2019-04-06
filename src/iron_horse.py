@@ -52,6 +52,9 @@ caboose_cars.main()
 from vehicles import covered_hopper_cars
 covered_hopper_cars.main()
 
+from vehicles import cryo_tank_cars
+cryo_tank_cars.main()
+
 from vehicles import dump_cars
 dump_cars.main()
 
