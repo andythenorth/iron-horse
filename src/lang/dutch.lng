@@ -33,6 +33,7 @@ STR_NAME_SUFFIX_ALIGNMENT_CAR                                   :Lijnwagen
 STR_NAME_SUFFIX_BOX_CAR                                         :Gesloten wagon
 STR_NAME_SUFFIX_CABOOSE_CAR                                     :Remwagon
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Overdekte onderlosser
+STR_NAME_SUFFIX_CRYO_TANK_CAR                                   :Cryotanker
 STR_NAME_SUFFIX_DUMP_CAR                                        :Mineralenwagon
 STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Voedseltanker
 STR_NAME_SUFFIX_EXPRESS_CAR                                     :Expreswagen
