@@ -873,7 +873,7 @@ class AlignmentCarConsist(CarConsist):
         self.speed_class = None  # no speed limit
         # refit nothing
         self.class_refit_groups = []
-        self.label_refits_allowed = []  # no specific labels needed
+        self.label_refits_allowed = []
         self.label_refits_disallowed = []
         self.buy_cost_adjustment_factor = 0 # free
         # no random CC, no flip
@@ -914,7 +914,7 @@ class CabooseCarConsist(CarConsist):
         self.speed_class = None  # no speed limit
         # refit nothing, don't mess with this, it breaks auto-replace
         self.class_refit_groups = []
-        self.label_refits_allowed = []  # no specific labels needed
+        self.label_refits_allowed = []
         self.label_refits_disallowed = []
         self.buy_cost_adjustment_factor = 0.75 # chop down caboose costs, they're just eye candy eh
         # liveries swap CC on user-flip, so no swapping CC randomly
@@ -1009,7 +1009,7 @@ class EdiblesTankCarConsist(CarConsist):
         self.base_id = 'edibles_tank_car'
         super().__init__(**kwargs)
         self.speed_class = 'express'
-        self.class_refit_groups = []
+        self.class_refit_groups = [] # no classes, use explicit labels
         self.label_refits_allowed = global_constants.allowed_refits_by_label['edible_liquids']
         self.label_refits_disallowed = []
         self.default_cargos = global_constants.default_cargos['edibles_tank']
@@ -1079,7 +1079,7 @@ class FruitVegCarConsist(CarConsist):
     def __init__(self, **kwargs):
         self.base_id = 'fruit_veg_car'
         super().__init__(**kwargs)
-        self.class_refit_groups = []
+        self.class_refit_groups = [] # no classes, use explicit labels
         self.label_refits_allowed = ['FRUT', 'BEAN', 'CASS', 'JAVA', 'NUTS']
         self.label_refits_disallowed = []
         self.default_cargos = global_constants.default_cargos['fruit_veg']
@@ -1137,7 +1137,7 @@ class LivestockCarConsist(CarConsist):
     def __init__(self, **kwargs):
         self.base_id = 'livestock_car'
         super().__init__(**kwargs)
-        self.class_refit_groups = []
+        self.class_refit_groups = [] # no classes, use explicit labels
         self.label_refits_allowed = ['LVST']
         self.label_refits_disallowed = []
         # no point using polar fox default_cargos for a vehicle with single refit
@@ -1201,7 +1201,7 @@ class MetalCarConsist(CarConsist):
     def __init__(self, **kwargs):
         self.base_id = 'metal_car'
         super().__init__(**kwargs)
-        self.class_refit_groups = []
+        self.class_refit_groups = [] # no classes, use explicit labels
         self.label_refits_allowed = ['STEL', 'COPR', 'IRON', 'SLAG', 'METL']
         self.label_refits_disallowed = []
         self.default_cargos = global_constants.default_cargos['metal']
@@ -1358,7 +1358,7 @@ class StakeCarConsist(CarConsist):
     def __init__(self, **kwargs):
         self.base_id = 'stake_car'
         super().__init__(**kwargs)
-        self.class_refit_groups = []
+        self.class_refit_groups = [] # no classes, use explicit labels
         # limited refits by design eh
         self.label_refits_allowed = ['WOOD', 'WDPR', 'PIPE']
         self.label_refits_disallowed = []
@@ -1378,7 +1378,7 @@ class WellCarConsist(CarConsist):
     def __init__(self, **kwargs):
         self.base_id = 'well_car'
         super().__init__(**kwargs)
-        self.class_refit_groups = []
+        self.class_refit_groups = [] # no classes, use explicit labels
         self.label_refits_allowed = ['ENSP', 'FMSP', 'VEHI']
         self.label_refits_disallowed = []
         self.default_cargos = global_constants.default_cargos['supplies']
@@ -1419,7 +1419,7 @@ class VehicleTransporterCarConsist(CarConsist):
     def __init__(self, **kwargs):
         self.base_id = 'vehicle_transporter_car'
         super().__init__(**kwargs)
-        self.class_refit_groups = []
+        self.class_refit_groups = [] # no classes, use explicit labels
         self.label_refits_allowed = ['VEHI']
         self.label_refits_disallowed = []
         self.default_cargos = ['VEHI']
