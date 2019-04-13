@@ -1400,7 +1400,7 @@ class TankCarConsist(CarConsist):
         # they also change livery at stations if refitted between certain cargo types <shrug>
         self.class_refit_groups = ['liquids']
         self.label_refits_allowed = []
-        self.label_refits_disallowed = global_constants.disallowed_refits_by_label['edible_liquids']
+        self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_generic_liquids']
         self.default_cargos = global_constants.default_cargos['tank']
         self.loading_speed_multiplier = 3
         self.buy_cost_adjustment_factor = 1.2
