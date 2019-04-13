@@ -27,8 +27,7 @@ buy_menu_sort_order_wagons = ['alignment_car',
                               'caboose_car']
 
 # occasionally label refits need to be shared across vehicle classes
-allowed_refits_by_label = {'box_freight': [
-    'MAIL', 'GRAI', 'WHEA', 'MAIZ', 'FRUT', 'BEAN', 'NITR']}
+allowed_refits_by_label = {'box_freight': ['MAIL', 'GRAI', 'WHEA', 'MAIZ', 'FRUT', 'BEAN', 'NITR']}
 
 # capacity multipliers for user-configurable capacity parameter
 capacity_multipliers = [0.67, 1, 1.33]

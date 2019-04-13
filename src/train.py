@@ -891,8 +891,7 @@ class BoxCarConsist(CarConsist):
         super().__init__(**kwargs)
         self.class_refit_groups = ['packaged_freight']
         self.label_refits_allowed = global_constants.allowed_refits_by_label['box_freight']
-        self.label_refits_disallowed = global_constants.disallowed_refits_by_label[
-            'non_freight_special_cases']
+        self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_freight_special_cases']
         self.default_cargos = global_constants.default_cargos['box']
         self.buy_cost_adjustment_factor = 1.2
         # allow flipping, used to flip company colour
@@ -963,8 +962,7 @@ class DumpCarConsist(CarConsist):
         super().__init__(**kwargs)
         self.class_refit_groups = ['dump_freight']
         self.label_refits_allowed = []  # no specific labels needed
-        self.label_refits_disallowed = global_constants.disallowed_refits_by_label[
-            'non_dump_bulk']
+        self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_dump_bulk']
         self.default_cargos = global_constants.default_cargos['dump']
         self.loading_speed_multiplier = 1.5
         self.buy_cost_adjustment_factor = 1.1
@@ -1013,8 +1011,7 @@ class EdiblesTankCarConsist(CarConsist):
         self.speed_class = 'express'
         self.class_refit_groups = ['liquids']
         self.label_refits_allowed = ['FOOD']
-        self.label_refits_disallowed = global_constants.disallowed_refits_by_label[
-            'non_edible_liquids']
+        self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_edible_liquids']
         self.default_cargos = global_constants.default_cargos['edibles_tank']
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
         self.loading_speed_multiplier = 2
@@ -1038,8 +1035,7 @@ class ExpressCarConsist(CarConsist):
         self.speed_class = 'express'
         self.class_refit_groups = ['mail', 'express_freight']
         self.label_refits_allowed = []  # no specific labels needed
-        self.label_refits_disallowed = global_constants.disallowed_refits_by_label[
-            'non_freight_special_cases']
+        self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_freight_special_cases']
         self.default_cargos = global_constants.default_cargos['express']
         # adjust weight factor because express car freight capacity is 1/2 of other wagons, but weight should be same
         self.weight_factor = polar_fox.constants.mail_multiplier
@@ -1067,8 +1063,7 @@ class FlatCarConsist(CarConsist):
         super().__init__(**kwargs)
         self.class_refit_groups = ['flatbed_freight']
         self.label_refits_allowed = ['GOOD']
-        self.label_refits_disallowed = global_constants.disallowed_refits_by_label[
-            'non_flatbed_freight']
+        self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_flatbed_freight']
         self.default_cargos = global_constants.default_cargos['flat']
         # allow flipping, used to flip company colour
         self.allow_flip = True
@@ -1109,8 +1104,7 @@ class HopperCarConsist(CarConsist):
         super().__init__(**kwargs)
         self.class_refit_groups = ['dump_freight']
         self.label_refits_allowed = []  # none needed
-        self.label_refits_disallowed = global_constants.disallowed_refits_by_label[
-            'non_dump_bulk']
+        self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_dump_bulk']
         self.default_cargos = global_constants.default_cargos['hopper']
         self.loading_speed_multiplier = 2
         self.buy_cost_adjustment_factor = 1.2
@@ -1130,8 +1124,7 @@ class IntermodalCarConsist(CarConsist):
         super().__init__(**kwargs)
         self.class_refit_groups = ['packaged_freight']
         self.label_refits_allowed = global_constants.allowed_refits_by_label['box_freight']
-        self.label_refits_disallowed = global_constants.disallowed_refits_by_label[
-            'non_freight_special_cases']
+        self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_freight_special_cases']
         self.default_cargos = global_constants.default_cargos['box']
         self.loading_speed_multiplier = 2
 
@@ -1171,8 +1164,7 @@ class MailCarConsist(CarConsist):
         self.speed_class = 'express'
         self.class_refit_groups = ['mail', 'express_freight']
         self.label_refits_allowed = []  # no specific labels needed
-        self.label_refits_disallowed = global_constants.disallowed_refits_by_label[
-            'non_freight_special_cases']
+        self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_freight_special_cases']
         self.default_cargos = global_constants.default_cargos['mail']
         # adjust weight factor because mail car freight capacity is 1/2 of other wagons, but weight should be same
         self.weight_factor = polar_fox.constants.mail_multiplier
@@ -1229,8 +1221,7 @@ class OpenCarConsist(CarConsist):
         super().__init__(**kwargs)
         self.class_refit_groups = ['all_freight']
         self.label_refits_allowed = []  # no specific labels needed
-        self.label_refits_disallowed = global_constants.disallowed_refits_by_label[
-            'non_freight_special_cases']
+        self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_freight_special_cases']
         self.default_cargos = global_constants.default_cargos['open']
         # allow flipping, used to flip company colour
         self.allow_flip = True
@@ -1409,8 +1400,7 @@ class TankCarConsist(CarConsist):
         # they also change livery at stations if refitted between certain cargo types <shrug>
         self.class_refit_groups = ['liquids']
         self.label_refits_allowed = []
-        self.label_refits_disallowed = global_constants.disallowed_refits_by_label[
-            'edible_liquids']
+        self.label_refits_disallowed = global_constants.disallowed_refits_by_label['edible_liquids']
         self.default_cargos = global_constants.default_cargos['tank']
         self.loading_speed_multiplier = 3
         self.buy_cost_adjustment_factor = 1.2
