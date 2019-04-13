@@ -118,7 +118,7 @@ allowed_refits_by_label = {'edible_liquids': ['MILK', 'WATR', 'BEER', 'FOOD', 'E
 # rather than using disallowed classes (can cause breakage), specific labels are disallowed
 disallowed_refits_by_label = {'non_dump_bulk': ['WOOD', 'SGCN', 'FICR', 'BDMT', 'WDPR', 'GRAI', 'WHEA', 'CERE', 'MAIZ', 'FRUT', 'BEAN', 'CMNT',
                                                 'CTCD', 'FERT', 'OLSD', 'SUGR', 'TOFF', 'URAN', 'CBLK', 'PLAS'],
-                              'non_generic_liquids': ['MILK', 'WATR', 'BEER', 'FOOD', 'EOIL'], # used to exclude from standard tankers
+                              'non_generic_liquids': ['MILK', 'WATR', 'BEER', 'FOOD', 'EOIL', 'O2__', 'CHLO'], # used to exclude from standard tankers
                               'non_flatbed_freight': ['FOOD', 'FISH', 'LVST', 'FRUT', 'BEER', 'MILK', 'JAVA', 'SUGR', 'NUTS', 'EOIL', 'BOOM',
                                                       'FERT', 'PLAS', 'CBLK'],
                               'non_freight_special_cases': ['TOUR']}
