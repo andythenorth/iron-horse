@@ -110,13 +110,17 @@ base_refits_by_class = {'empty': [],
                         'refrigerated_freight': ['CC_REFRIGERATED'],
                         'express_freight': ['CC_EXPRESS','CC_ARMOURED']}
 
+# generally we want to allow refit on classes, and disallow on labels (see disallowed_refits_by_label)
+# BUT for _some_ specialist vehicle types, it's simpler to just allow refit by label
+allowed_refits_by_label = {'edible_liquids': ['MILK', 'WATR', 'BEER', 'FOOD', 'EOIL'],
+                           'box_freight': ['MAIL', 'GRAI', 'WHEA', 'MAIZ', 'FRUT', 'BEAN', 'NITR']} # box cars get some extended cargos
+
 # rather than using disallowed classes (can cause breakage), specific labels are disallowed
 disallowed_refits_by_label = {'non_dump_bulk': ['WOOD', 'SGCN', 'FICR', 'BDMT', 'WDPR', 'GRAI', 'WHEA', 'CERE', 'MAIZ', 'FRUT', 'BEAN', 'CMNT',
                                                 'CTCD', 'FERT', 'OLSD', 'SUGR', 'TOFF', 'URAN', 'CBLK', 'PLAS'],
                               'edible_liquids': ['MILK', 'WATR', 'BEER', 'FOOD', 'EOIL'],
                               # !! would it be better to do an include list for edibles tankers?  Excluding liquids by label is a PITA
                               # ^ see Iron Horse train.py for lists of label_refits_allowed that could be moved to Polar Fox
-                              'non_edible_liquids': ['RFPR', 'OIL_', 'FMSP', 'PETR', 'RUBR', 'SULP', 'ACID', 'CHLO', 'KAOL', 'CTAR', 'O2__'],
                               'non_flatbed_freight': ['FOOD', 'FISH', 'LVST', 'FRUT', 'BEER', 'MILK', 'JAVA', 'SUGR', 'NUTS', 'EOIL', 'BOOM',
                                                       'FERT', 'PLAS', 'CBLK'],
                               'non_freight_special_cases': ['TOUR']}
