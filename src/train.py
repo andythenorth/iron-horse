@@ -982,7 +982,7 @@ class CryoTankCarConsist(CarConsist):
         super().__init__(**kwargs)
         self.class_refit_groups = []  # no classes, use explicit labels
         # shouldn't these be in polar fox?
-        self.label_refits_allowed = ['CHLO', 'O2__']
+        self.label_refits_allowed = global_constants.allowed_refits_by_label['cryo_gases']
         #self.default_cargos = global_constants.default_cargos['cryo_tank']
         self.default_cargos = ['O2__']
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
