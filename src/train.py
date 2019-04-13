@@ -1200,7 +1200,7 @@ class MetalCarConsist(CarConsist):
         self.base_id = 'metal_car'
         super().__init__(**kwargs)
         self.class_refit_groups = [] # no classes, use explicit labels
-        self.label_refits_allowed = ['STEL', 'COPR', 'IRON', 'SLAG', 'METL']
+        self.label_refits_allowed = ['STEL', 'COPR', 'IRON', 'SLAG', 'METL'] # not convinced about these at all eh
         self.label_refits_disallowed = []
         self.default_cargos = global_constants.default_cargos['metal']
         self.loading_speed_multiplier = 2
@@ -1337,8 +1337,7 @@ class SiloCarConsist(CarConsist):
         self.base_id = 'silo_car'
         super().__init__(**kwargs)
         self.class_refit_groups = []  # no classes, use explicit labels
-        self.label_refits_allowed = [
-            'FOOD', 'SUGR', 'FMSP', 'RFPR', 'BDMT', 'RUBR', 'QLME', 'SASH', 'CMNT']
+        self.label_refits_allowed = ['FOOD', 'SUGR', 'FMSP', 'RFPR', 'BDMT', 'RUBR', 'QLME', 'SASH', 'CMNT'] # move to Polar Fox (maybe??)
         self.label_refits_disallowed = []
         self.default_cargos = global_constants.default_cargos['silo']
         self.loading_speed_multiplier = 2
@@ -1358,7 +1357,7 @@ class StakeCarConsist(CarConsist):
         super().__init__(**kwargs)
         self.class_refit_groups = [] # no classes, use explicit labels
         # limited refits by design eh
-        self.label_refits_allowed = ['WOOD', 'WDPR', 'PIPE']
+        self.label_refits_allowed = ['WOOD', 'WDPR', 'PIPE'] # move to Polar Fox (maybe??)
         self.label_refits_disallowed = []
         self.default_cargos = global_constants.default_cargos['stake']
         self.loading_speed_multiplier = 2
