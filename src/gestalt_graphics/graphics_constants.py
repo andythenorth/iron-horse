@@ -11,9 +11,11 @@ spritesheet_top_margin = 10
 # wider than sprites, allows room for custom buy menu sprites, also to print cargo labels to aid drawing / debugging generated cargos
 spritesheet_width = 425
 
-# --- Cargo Maps ---- move to  #
+# --- Cargo Maps ---- #
 # label order matters, so tuples are used not dicts
 # could probably have used orderedict or named tuple, but...blah
+
+# DFLT label is a hack to support cargos with no specific sprites (including unknown cargos), and should not be added to cargo translation table
 
 # !! unfinished - copy of tanker remaps, needs remapping to silo cargos
 silo_livery_recolour_maps = (("QLME", {136: 1, 137: 2, 138: 3, 139: 4,
@@ -68,6 +70,9 @@ refrigerated_livery_recolour_maps = (# see note on DFLT above
 
 livestock_livery_recolour_maps = (# see note on DFLT above
                                  ("DFLT", body_recolour_CC2),)
+
+edibles_tank_car_livery_recolour_maps = (# see note on DFLT above
+                                        ("DFLT", {}),)
 
 # Containers
 # !! simple recolouring, not cargo specific.  May need work ??  Could be cargo-specific??
