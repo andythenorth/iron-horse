@@ -935,9 +935,7 @@ class CoveredHopperCarConsist(CarConsist):
         super().__init__(**kwargs)
         self.class_refit_groups = []  # no classes, use explicit labels
         # shouldn't these be in polar fox?
-        self.label_refits_allowed = ['GRAI', 'WHEA', 'MAIZ', 'SUGR', 'FMSP', 'RFPR', 'CLAY', 'BDMT',
-                                     'BEAN', 'NITR', 'RUBR', 'SAND', 'POTA', 'QLME', 'SASH', 'CMNT',
-                                     'KAOL', 'FERT', 'SALT', 'CBLK', 'PLAS']
+        self.label_refits_allowed = global_constants.allowed_refits_by_label['covered_hoppers']
         self.label_refits_disallowed = []
         self.default_cargos = global_constants.default_cargos['covered_hopper']
         self.loading_speed_multiplier = 2

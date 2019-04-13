@@ -113,7 +113,10 @@ base_refits_by_class = {'empty': [],
 # generally we want to allow refit on classes, and disallow on labels (see disallowed_refits_by_label)
 # BUT for _some_ specialist vehicle types, it's simpler to just allow refit by label
 allowed_refits_by_label = {'edible_liquids': ['MILK', 'WATR', 'BEER', 'FOOD', 'EOIL'],
-                           'box_freight': ['MAIL', 'GRAI', 'WHEA', 'MAIZ', 'FRUT', 'BEAN', 'NITR']} # box cars get some extended cargos
+                           'box_freight': ['MAIL', 'GRAI', 'WHEA', 'MAIZ', 'FRUT', 'BEAN', 'NITR'],
+                           'covered_hoppers': ['GRAI', 'WHEA', 'MAIZ', 'SUGR', 'FMSP', 'RFPR', 'CLAY', 'BDMT',
+                                               'BEAN', 'NITR', 'RUBR', 'SAND', 'POTA', 'QLME', 'SASH', 'CMNT',
+                                               'KAOL', 'FERT', 'SALT', 'CBLK', 'PLAS']} # box cars get some extended cargos
 
 # rather than using disallowed classes (can cause breakage), specific labels are disallowed
 disallowed_refits_by_label = {'non_dump_bulk': ['WOOD', 'SGCN', 'FICR', 'BDMT', 'WDPR', 'GRAI', 'WHEA', 'CERE', 'MAIZ', 'FRUT', 'BEAN', 'CMNT',
@@ -205,6 +208,13 @@ piece_sprites_to_cargo_labels_maps = {'barrels_silver': ['BEER', 'DYES', 'EOIL',
                                       'tarps_red_1': ['BDMT'],
                                       'tarps_2cc_1': ['DFLT']}  # see note on use of DFLT above
 
+"""
+saved for cryo tanker recolours
+                               ("CHLO", {136: 154, 137: 155, 138: 156, 139: 157,
+                                         140: 158, 141: 159, 142: 160, 143: 161}),
+
+"""
+
 # Tanker recolour maps
 # DFLT label is a hack to support cargos with no specific sprites (including unknown cargos), and should not be added to cargo translation table
 tanker_livery_recolour_maps = (("OIL_", {136: 1, 137: 2, 138: 3, 139: 4,
@@ -216,8 +226,6 @@ tanker_livery_recolour_maps = (("OIL_", {136: 1, 137: 2, 138: 3, 139: 4,
                                          140: 202, 141: 203, 142: 204, 143: 205}),
                                ("SULP", {136: 62, 137: 63, 138: 64, 139: 65,
                                          140: 66, 141: 67, 142: 68, 143: 69}),
-                               ("CHLO", {136: 154, 137: 155, 138: 156, 139: 157,
-                                         140: 158, 141: 159, 142: 160, 143: 161}),
                                # RFPR deliberately 2CC to allow combining with 1CC livery details
                                ("RFPR", {136: 80, 137: 81, 138: 82, 139: 83,
                                          140: 84, 141: 85, 142: 86, 143: 87}),
