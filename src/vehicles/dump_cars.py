@@ -8,7 +8,7 @@ def main():
                              gen=3,
                              subtype='U',
                              base_track_type='NG',
-                             sprites_complete=False)
+                             sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
                      cargo_length=4,
@@ -20,7 +20,7 @@ def main():
                              gen=4,
                              subtype='U',
                              base_track_type='NG',
-                             sprites_complete=False)
+                             sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
                      cargo_length=4,
