@@ -4,6 +4,26 @@ from train import CryoTankCarConsist, FreightCar
 def main():
     #--------------- pony ----------------------------------------------------------------------
     consist = CryoTankCarConsist(roster='pony',
+                             base_numeric_id=180,
+                             gen=3,
+                             subtype='A',
+                             sprites_complete=False)
+
+    consist.add_unit(type=FreightCar,
+                     vehicle_length=4,
+                     chassis='2_axle_sparse_16px')
+
+    consist = CryoTankCarConsist(roster='pony',
+                             base_numeric_id=250,
+                             gen=3,
+                             subtype='B',
+                             sprites_complete=False)
+
+    consist.add_unit(type=FreightCar,
+                     vehicle_length=6,
+                     chassis='4_axle_sparse_24px')
+
+    consist = CryoTankCarConsist(roster='pony',
                              base_numeric_id=20,
                              gen=4,
                              subtype='A',
