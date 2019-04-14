@@ -560,7 +560,8 @@ class PassengerEngineMetroConsist(PassengerEngineConsist):
         # * unit with driving cab front end
         # * unit with driving cab rear end
         spriterow_group_mappings = {'pax': {'default': 0, 'first': 0, 'last': 1, 'special': 0}}
-        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings, consist_ruleset="metro")
+        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings,
+                                                                     consist_ruleset="metro")
 
 
 class PassengerEngineRailcarConsist(PassengerEngineConsist):
@@ -589,7 +590,8 @@ class PassengerEngineRailcarConsist(PassengerEngineConsist):
         # * special unit with no cabs (center car)
         # ruleset will combine these to make multiple-units 1, 2, or 3 vehicles long, then repeating the pattern
         spriterow_group_mappings = {'pax': {'default': 0, 'first': 1, 'last': 2, 'special': 3}}
-        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings, consist_ruleset="pax_railcars",
+        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings,
+                                                                     consist_ruleset="pax_railcars",
                                                                      pantograph_type=self.pantograph_type)
 
 
@@ -659,7 +661,8 @@ class PassengerVeryHighSpeedMiddleEngineConsist(PassengerEngineConsist):
         # * unit with pantograph -  rear end
         # * restaurant unit
         spriterow_group_mappings = {'pax': {'default': 0, 'first': 1, 'last': 2, 'special': 3}}
-        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings, consist_ruleset="pax_cars",
+        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings,
+                                                                     consist_ruleset="pax_cars",
                                                                      pantograph_type=self.pantograph_type)
 
     @property
@@ -727,7 +730,8 @@ class MailEngineMetroConsist(MailEngineConsist):
         # * unit with driving cab front end
         # * unit with driving cab rear end
         spriterow_group_mappings = {'pax': {'default': 0, 'first': 0, 'last': 1, 'special': 0}}
-        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings, consist_ruleset="metro")
+        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings,
+                                                                     consist_ruleset="metro")
 
 
 class MailEngineRailcarConsist(MailEngineConsist):
@@ -752,7 +756,8 @@ class MailEngineRailcarConsist(MailEngineConsist):
         # * unit with driving cab rear end
         # ruleset will combine these to make multiple-units 1 or 2 vehicles long, then repeating the pattern
         spriterow_group_mappings = {'mail': {'default': 0, 'first': 1, 'last': 2, 'special': 0}}
-        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings, consist_ruleset="mail_railcars",
+        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings,
+                                                                     consist_ruleset="mail_railcars",
                                                                      pantograph_type=self.pantograph_type)
 
 
@@ -898,9 +903,8 @@ class BoxCarConsist(CarConsist):
         self.allow_flip = True
         # Graphics configuration
         self.roof_type = 'freight'
-        self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
-            id_base='box_car',
-            recolour_maps=graphics_constants.box_livery_recolour_maps)
+        self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(id_base='box_car',
+                                                                  recolour_maps=graphics_constants.box_livery_recolour_maps)
 
 
 class CabooseCarConsist(CarConsist):
@@ -947,7 +951,8 @@ class CoveredHopperCarConsist(CarConsist):
         # the player can simply choose the alternative livery on flip
         # there is no randomisation of livery, but CC is randomised
         spriterow_group_mappings = {'pax': {'default': 0, 'first': 0, 'last': 0, 'special': 0}}
-        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings, consist_ruleset=None)
+        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings,
+                                                                     consist_ruleset=None)
 
 
 class DumpCarConsist(CarConsist):
@@ -967,7 +972,8 @@ class DumpCarConsist(CarConsist):
         # allow flipping, used to flip company colour
         self.allow_flip = True
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsVisibleCargo(bulk=True, has_alt_livery=True)
+        self.gestalt_graphics = GestaltGraphicsVisibleCargo(bulk=True,
+                                                            has_alt_livery=True)
 
 
 class CryoTankCarConsist(CarConsist):
@@ -992,8 +998,7 @@ class CryoTankCarConsist(CarConsist):
         # CC is swapped randomly (player can't choose), but also swap base livery on flip (player can choose
         self.allow_flip = True
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(
-            recolour_maps=polar_fox.constants.tanker_livery_recolour_maps)
+        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=polar_fox.constants.tanker_livery_recolour_maps)
 
 
 class EdiblesTankCarConsist(CarConsist):
@@ -1045,9 +1050,8 @@ class ExpressCarConsist(CarConsist):
             self.roof_type = 'pax_mail_ridged'
         else:
             self.roof_type = 'pax_mail_smooth'
-        self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
-            id_base='express_car',
-            recolour_maps=graphics_constants.box_livery_recolour_maps)
+        self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(id_base='express_car',
+                                                                  recolour_maps=graphics_constants.box_livery_recolour_maps)
 
 
 class FlatCarConsist(CarConsist):
@@ -1086,9 +1090,8 @@ class FruitVegCarConsist(CarConsist):
         self.allow_flip = True
         # Graphics configuration
         self.roof_type = 'freight'
-        self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
-            id_base='box_car',
-            recolour_maps=graphics_constants.fruit_veg_livery_recolour_maps)
+        self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(id_base='box_car',
+                                                                  recolour_maps=graphics_constants.fruit_veg_livery_recolour_maps)
 
 
 class HopperCarConsist(CarConsist):
@@ -1108,7 +1111,8 @@ class HopperCarConsist(CarConsist):
         # CC is swapped randomly (player can't choose), but also swap base livery on flip (player can choose
         self.allow_flip = True
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsVisibleCargo(bulk=True, has_alt_livery=True)
+        self.gestalt_graphics = GestaltGraphicsVisibleCargo(bulk=True,
+                                                            has_alt_livery=True)
 
 
 class IntermodalCarConsist(CarConsist):
@@ -1146,8 +1150,7 @@ class LivestockCarConsist(CarConsist):
         self.allow_flip = True
         # Graphics configuration
         self.roof_type = 'freight'
-        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(
-            recolour_maps=graphics_constants.livestock_livery_recolour_maps)
+        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.livestock_livery_recolour_maps)
 
 
 class MailCarConsist(CarConsist):
@@ -1186,7 +1189,8 @@ class MailCarConsist(CarConsist):
         bonus_sprites = 2 if self.subtype in ['C'] else 0
         spriterow_group_mappings = {'mail': {'default': 0, 'first': brake_car_sprites, 'last': brake_car_sprites, 'special': bonus_sprites},
                                     'pax': {'default': 0, 'first': 0, 'last': 0, 'special': 0}}
-        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings, consist_ruleset='mail_cars')
+        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings,
+                                                                     consist_ruleset='mail_cars')
 
 
 class MetalCarConsist(CarConsist):
@@ -1273,7 +1277,8 @@ class PassengerCarConsist(PassengerCarConsistBase):
         #   * brake coach rear
         #   * I removed special (restaurant) coaches from PassengerCarConsistBase Dec 2018, overkill
         spriterow_group_mappings = {'pax': {'default': 0, 'first': 1, 'last': 2, 'special': 0}}
-        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings, consist_ruleset='pax_cars')
+        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings,
+                                                                     consist_ruleset='pax_cars')
 
 
 class PassengerLuxuryCarConsist(PassengerCarConsistBase):
@@ -1299,7 +1304,8 @@ class PassengerLuxuryCarConsist(PassengerCarConsistBase):
         #   * brake coach rear
         #   * special (restaurant) coach
         spriterow_group_mappings = {'pax': {'default': 0, 'first': 1, 'last': 2, 'special': 3}}
-        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings, consist_ruleset='pax_cars')
+        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings,
+                                                                     consist_ruleset='pax_cars')
 
 
 class ReeferCarConsist(CarConsist):
@@ -1342,8 +1348,7 @@ class SiloCarConsist(CarConsist):
         self.loading_speed_multiplier = 2
         self.buy_cost_adjustment_factor = 1.2
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(
-            recolour_maps=graphics_constants.silo_livery_recolour_maps)
+        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.silo_livery_recolour_maps)
 
 
 class StakeCarConsist(CarConsist):
@@ -1403,8 +1408,7 @@ class TankCarConsist(CarConsist):
         # allow flipping, used to flip company colour
         self.allow_flip = True
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(
-            recolour_maps=polar_fox.constants.tanker_livery_recolour_maps)
+        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=polar_fox.constants.tanker_livery_recolour_maps)
 
 
 class VehicleTransporterCarConsist(CarConsist):
