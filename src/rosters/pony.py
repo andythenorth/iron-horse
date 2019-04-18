@@ -89,8 +89,8 @@ roster = Roster(id = 'pony',
                                    'express': [60, 75, 90, 105, 120, 135], # 135 is for a reason, can't remember what :P
                                    'very_high_speed': [0, 0, 0, 0, 140, 186]},
                           'METRO': {'standard': [45, 55, 65]}, # no express for metro in Pony
-                          'NG': {'standard': [45, 45, 55, 65], # NG standard/express all same in Pony, balanced against trams, RVs
-                                 'express': [45, 45, 55, 65]}},
+                          'NG': {'standard': [45, 45, 60, 70], # NG standard/express all same in Pony, balanced against trams, RVs
+                                 'express': [45, 45, 60, 70]}}, # NG is Corsican-style 1000mm, brit NG is not a thing
 
                 # capacity factor per generation, will be multiplied by vehicle length
                 freight_car_capacity_per_unit_length =  {'RAIL': [4, 4, 5, 5.5, 6, 6],
