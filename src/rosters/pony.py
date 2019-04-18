@@ -74,7 +74,9 @@ from vehicles import tyburn
 from vehicles import ultra_shoebox
 from vehicles import upcountry
 from vehicles import westbourne
+from vehicles import workish
 from vehicles import zeus
+from vehicles import zorro
 
 roster = Roster(id = 'pony',
                 numeric_id = 1,
@@ -181,4 +183,6 @@ roster = Roster(id = 'pony',
                            pikel,
                            boar_cat,
                            mumble,
-                           snapper])
+                           snapper,
+                           workish,
+                           zorro])
