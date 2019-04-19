@@ -2,7 +2,7 @@ Changelog
 =========
 
 ---------------------
-2.0.0 Alpha 7 Release
+2.0.0 Alpha 8 Release
 ---------------------
 
 Iron Horse 2.
@@ -23,6 +23,31 @@ Designed to be used with 'vehicles expire' set to to 'on', Horse 2 has a *lot* o
 - no savegame compatibility with Iron Horse 1
 - can be used _alongside_ Iron Horse 1, if you must (kind of odd, but eh)
 
+*Changes from 2.0.0 Alpha 7*
+
+- no savegame compatibility with previous 2.0.0 Alpha releases
+- increased narrow gauge speeds, to better differentiate from trams in Road Hog
+- added Workish (1950) and Zorro (2000) narrow gauge mail railcars
+- improved Boar Cat and Pikel sprites
+- added cryo tank cars
+    - refit Chlorine and Oxygen
+    - available from around 1930
+- added narrow gauge dump cars
+- changed tank car refits
+    - now supports Coal Tar with dedicated livery
+    - tank cars no longer refit Chlorine or Oxgyen
+- added bulk cargo sprites for Limestone, Kaolin, Salt, Slag, Soda Ash, Sulphur
+- tarpaulin load sprites now provided for all wagon lengths (used for all cargos that don't have dedicated sprites)
+- dump / hopper cars now refit Sulphur
+- extended cargo support for FIRS cargos
+- fixed Helm Wind weights
+- remove unwanted yellow pixels from the chassis of some 4/8 vehicles
+- updated translations from web translators
+
+
+---------------------
+2.0.0 Alpha 7 Release
+---------------------
 
 *Changes from 2.0.0 Alpha 6*
 
