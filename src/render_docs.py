@@ -149,6 +149,11 @@ class DocHelper(object):
     def get_active_nav(self, doc_name, nav_link):
         return ('', 'active')[doc_name == nav_link]
 
+    def get_base_track_types(self):
+        result = []
+        for consist in consists:
+            result.append(consist.base_track_type)
+        return sorted(set(result))
 
 def render_docs(doc_list, file_type, use_markdown=False):
     for doc_name in doc_list:
