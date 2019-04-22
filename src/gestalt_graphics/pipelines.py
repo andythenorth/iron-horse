@@ -832,6 +832,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
         self.col_image_width = self.sprites_max_x_extent - self.second_col_start_x
 
         self.vehicle_source_image = Image.open(self.input_path)
+
         # the cumulative_input_spriterow_count updates per processed group of spriterows, and is key to making this work
         # !! input_spriterow_count looks a bit weird though; I tried moving it to gestalts, but didn't really work
         cumulative_input_spriterow_count = 0
