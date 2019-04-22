@@ -27,7 +27,7 @@ class Pipeline(object):
         return spritesheet
 
     @property
-    def input_path(self):
+    def vehicle_source_input_path(self):
         # convenience method to get the vehicle template image
         # I considered having this return the Image, not just the path, but it's not saving much, and is less obvious what it does when used
         return os.path.join(currentdir, 'src', 'graphics', self.consist.roster_id, self.consist.id + '.png')
@@ -118,7 +118,7 @@ class PassThroughPipeline(Pipeline):
         self.units = []
         self.consist = consist
 
-        input_image = Image.open(self.input_path)
+        input_image = Image.open(self.vehicle_source_input_path)
         result = self.render_common(input_image, self.units)
         return result
 
@@ -140,7 +140,7 @@ class CheckBuyMenuOnlyPipeline(Pipeline):
             # !! it needs pixels from the pans spritesheet, but automated buy menu sprites need providing first
             self.units.append(AddBuyMenuSprite(self.process_buy_menu_sprite))
 
-        input_image = Image.open(self.input_path)
+        input_image = Image.open(self.vehicle_source_input_path)
         result = self.render_common(input_image, self.units)
         return result
 
@@ -198,7 +198,7 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
                                        'B': [pantograph_sprites[12], pantograph_sprites[13], pantograph_sprites[14], pantograph_sprites[15],
                                              pantograph_sprites[8], pantograph_sprites[9], pantograph_sprites[10], pantograph_sprites[11]]}
 
-        vehicle_input_image = Image.open(self.input_path)
+        vehicle_input_image = Image.open(self.vehicle_source_input_path)
         # get the loc points
         loc_points = [(pixel[0], pixel[1], pixel[2]) for pixel in pixascan(vehicle_input_image) if pixel[2] == 226 or pixel[2] == 164]
         # loc points are in arbitrary row in source spritesheet but need to be moved up in output, so shift the y offset by the required amount
@@ -268,7 +268,7 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
             self.units.append(AddBuyMenuSprite(self.process_buy_menu_sprite))
 
         # this will render a spritesheet with an additional suffix, separate from the vehicle spritesheet
-        input_image = Image.open(self.input_path).crop((0, 0, graphics_constants.spritesheet_width, 10))
+        input_image = Image.open(self.vehicle_source_input_path).crop((0, 0, graphics_constants.spritesheet_width, 10))
         output_suffix = '_pantographs_' + self.pantograph_state
         result = self.render_common(input_image, self.units, output_suffix=output_suffix)
         return result
@@ -831,7 +831,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
         self.second_col_start_x = self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed[4][0]
         self.col_image_width = self.sprites_max_x_extent - self.second_col_start_x
 
-        self.vehicle_source_image = Image.open(self.input_path)
+        self.vehicle_source_image = Image.open(self.vehicle_source_input_path)
 
         # the cumulative_input_spriterow_count updates per processed group of spriterows, and is key to making this work
         # !! input_spriterow_count looks a bit weird though; I tried moving it to gestalts, but didn't really work
