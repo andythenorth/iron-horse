@@ -880,7 +880,7 @@ def get_pipelines(pipeline_names):
     # return a pipeline by name;
     # add pipelines here when creating new ones
     # this is a bit hokey, there's probably a simpler way to do this but eh
-    # looks like it could be replaced by a simple dict lookup directly from gestal_graphics, but eh, I tried, it's faff
+    # looks like it could be replaced by a simple dict lookup directly from gestalt_graphics, but eh, I tried, it's faff
     pipelines = {"pass_through_pipeline": PassThroughPipeline,
                  "check_buy_menu_only": CheckBuyMenuOnlyPipeline,
                  "extend_spriterows_for_composited_sprites_pipeline": ExtendSpriterowsForCompositedSpritesPipeline,
