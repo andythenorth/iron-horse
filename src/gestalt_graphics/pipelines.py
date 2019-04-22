@@ -370,7 +370,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                            self.base_offset,
                            self.sprites_max_x_extent,
                            self.base_offset + graphics_constants.spriterow_height)
-        vehicle_generic_spriterow_input_image = self.comp_chassis_and_body(self.vehicle_base_image.copy().crop(crop_box_source))
+        vehicle_generic_spriterow_input_image = self.comp_chassis_and_body(self.vehicle_source_image.copy().crop(crop_box_source))
 
         # vehicle_generic_spriterow_input_image.show() # comment in to see the image when debugging
         vehicle_generic_spriterow_input_as_spritesheet = self.make_spritesheet_from_image(vehicle_generic_spriterow_input_image)
@@ -390,7 +390,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                            self.base_offset,
                            self.sprites_max_x_extent,
                            self.base_offset + graphics_constants.spriterow_height)
-        vehicle_livery_spriterow_input_image = self.comp_chassis_and_body(self.vehicle_base_image.copy().crop(crop_box_source))
+        vehicle_livery_spriterow_input_image = self.comp_chassis_and_body(self.vehicle_source_image.copy().crop(crop_box_source))
 
         # vehicle_generic_spriterow_input_image.show() # comment in to see the image when debugging
         vehicle_livery_spriterow_input_as_spritesheet = self.make_spritesheet_from_image(vehicle_livery_spriterow_input_image)
@@ -431,7 +431,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                                      self.base_offset + (row_num * graphics_constants.spriterow_height),
                                      doors_bboxes[3][0] + doors_bboxes[3][1],
                                      self.base_offset + (row_num * graphics_constants.spriterow_height) + graphics_constants.spriterow_height)
-            doors_image = self.vehicle_base_image.copy().crop(crop_box_doors_source)
+            doors_image = self.vehicle_source_image.copy().crop(crop_box_doors_source)
 
             # the doors image has false colour pixels for the body, to aid drawing; remove these by converting to white, also convert any blue to white
             doors_image = doors_image.point(lambda i: 255 if (i in range(178, 192) or i == 0) else i)
@@ -448,7 +448,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                                    self.base_offset + row_offset,
                                    self.sprites_max_x_extent,
                                    self.base_offset + row_offset + graphics_constants.spriterow_height)
-                pax_mail_car_spriterow_input_image = self.comp_chassis_and_body(self.vehicle_base_image.copy().crop(crop_box_source))
+                pax_mail_car_spriterow_input_image = self.comp_chassis_and_body(self.vehicle_source_image.copy().crop(crop_box_source))
 
                 crop_box_comped_body_and_chassis = (self.second_col_start_x,
                                                     0,
@@ -552,7 +552,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                                self.base_offset + row_offset,
                                self.sprites_max_x_extent,
                                self.base_offset + row_offset + graphics_constants.spriterow_height)
-            caboose_car_spriterow_input_image = self.comp_chassis_and_body(self.vehicle_base_image.copy().crop(crop_box_source))
+            caboose_car_spriterow_input_image = self.comp_chassis_and_body(self.vehicle_source_image.copy().crop(crop_box_source))
 
             crop_box_comp_dest = (0,
                                   0,
@@ -583,7 +583,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                           self.base_offset,
                           self.second_col_start_x + self.col_image_width,
                           self.base_offset + (2 * graphics_constants.spriterow_height))
-        cargo_base_image = self.vehicle_base_image.copy().crop(crop_box_cargo)
+        cargo_base_image = self.vehicle_source_image.copy().crop(crop_box_cargo)
         # the loading/loaded image has false colour pixels for the cargo; keep only these, removing everything else
         cargo_base_image = cargo_base_image.point(lambda i: 255 if (i not in range(170, 177)) else i)
         #if self.consist.id == "dump_car_pony_gen_3A":
@@ -617,7 +617,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                                      self.sprites_max_x_extent,
                                      self.cur_vehicle_empty_row_offset + empty_row_livery_offset + graphics_constants.spriterow_height)
 
-            vehicle_base_image = self.comp_chassis_and_body(self.vehicle_base_image.copy().crop(crop_box_vehicle_body))
+            vehicle_base_image = self.comp_chassis_and_body(self.vehicle_source_image.copy().crop(crop_box_vehicle_body))
             #vehicle_base_image.show()
 
             bulk_cargo_rows_image = Image.new("P", (graphics_constants.spritesheet_width, cargo_group_row_height), 255)
@@ -650,7 +650,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                            10,
                            self.sprites_max_x_extent,
                            10 + graphics_constants.spriterow_height)
-        vehicle_spriterow_input_image = self.comp_chassis_and_body(self.vehicle_base_image.copy().crop(crop_box_source))
+        vehicle_spriterow_input_image = self.comp_chassis_and_body(self.vehicle_source_image.copy().crop(crop_box_source))
 
         # n.b. keys have to be sorted as order needs to be consistent everywhere
         for cargo_filename in sorted(self.consist.gestalt_graphics.heavy_items_sprites_to_cargo_labels_maps.keys()):
@@ -723,7 +723,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                                           self.base_offset,
                                           self.second_col_start_x + self.col_image_width,
                                           self.base_offset + graphics_constants.spriterow_height)
-        vehicle_cargo_loc_image = self.vehicle_base_image.copy().crop(crop_box_vehicle_cargo_loc_row)
+        vehicle_cargo_loc_image = self.vehicle_source_image.copy().crop(crop_box_vehicle_cargo_loc_row)
         # get the loc points
         loc_points = [(pixel[0] + self.second_col_start_x, pixel[1], pixel[2]) for pixel in pixascan(vehicle_cargo_loc_image) if pixel[2] == 226]
         # two cargo rows needed, so extend the loc points list
@@ -735,7 +735,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                                  self.cur_vehicle_empty_row_offset,
                                  self.sprites_max_x_extent,
                                  self.cur_vehicle_empty_row_offset + graphics_constants.spriterow_height)
-        vehicle_base_image = self.comp_chassis_and_body(self.vehicle_base_image.copy().crop(crop_box_vehicle_body))
+        vehicle_base_image = self.comp_chassis_and_body(self.vehicle_source_image.copy().crop(crop_box_vehicle_body))
 
         crop_box_mask_source = (self.second_col_start_x,
                                 self.base_offset + graphics_constants.spriterow_height,
@@ -745,7 +745,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                               0,
                               self.second_col_start_x + self.col_image_width,
                               graphics_constants.spriterow_height)
-        vehicle_mask_source = self.vehicle_base_image.copy().crop(crop_box_mask_source).point(lambda i: 255 if i == 226 else 0).convert("1")
+        vehicle_mask_source = self.vehicle_source_image.copy().crop(crop_box_mask_source).point(lambda i: 255 if i == 226 else 0).convert("1")
         vehicle_mask = Image.new("1", (self.sprites_max_x_extent, graphics_constants.spriterow_height), 0)
         vehicle_mask.paste(vehicle_mask_source, crop_box_mask_dest)
         #if self.consist.id == "open_car_pony_gen_1A":
@@ -831,7 +831,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
         self.second_col_start_x = self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed[4][0]
         self.col_image_width = self.sprites_max_x_extent - self.second_col_start_x
 
-        self.vehicle_base_image = Image.open(self.input_path)
+        self.vehicle_source_image = Image.open(self.input_path)
         # the cumulative_input_spriterow_count updates per processed group of spriterows, and is key to making this work
         # !! input_spriterow_count looks a bit weird though; I tried moving it to gestalts, but didn't really work
         cumulative_input_spriterow_count = 0
