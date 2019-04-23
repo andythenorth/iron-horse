@@ -643,7 +643,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                                                 x_offset=self.sprites_max_x_extent + 5,
                                                 y_offset=  -1 * cargo_group_row_height))
 
-    def add_heavy_items_cargo_spriterows(self, vehicle):
+    def add_heavy_items_cargo_spriterows(self):
         # indivisible cargos, generation-specific sprites, asymmetric, pre-positioned to suit the vehicle
         # used for supply cars, others if needed
         crop_box_source = (0,
@@ -654,7 +654,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
 
         # n.b. keys have to be sorted as order needs to be consistent everywhere
         for cargo_filename in sorted(self.consist.gestalt_graphics.heavy_items_sprites_to_cargo_labels_maps.keys()):
-            cargo_filename = cargo_filename + '_' +  str(4 * vehicle.vehicle_length) + 'px'
+            cargo_filename = cargo_filename + '_' +  str(4 * self.vehicle_unit.vehicle_length) + 'px'
             cargo_sprites_input_path = os.path.join(currentdir, 'src', 'graphics', 'heavy_items_cargo', cargo_filename + '.png')
             # !! temp, needs defined per cargo graphic type
             cargo_spriterow_offset = {1: 0, 2: 0, 3: 0, 4: 1, 5: 1, 6: 1}[self.consist.gen]
@@ -698,7 +698,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                                             x_offset=self.sprites_max_x_extent + 5,
                                             y_offset= -1 * graphics_constants.spriterow_height))
 
-    def add_piece_cargo_spriterows(self, vehicle):
+    def add_piece_cargo_spriterows(self):
         # !! this could possibly be optimised by slicing all the cargos once, globally, instead of per-unit
         cargo_group_output_row_height = 2 * graphics_constants.spriterow_height
 
@@ -781,7 +781,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             # loading states are first 4 sprites, loaded are second 4, all in one list, just pick them out as needed
             cargo_sprites_input_path = os.path.join(currentdir, 'src', 'polar_fox', 'cargo_graphics', cargo_filename + '.png')
             cargo_sprites_input_image = Image.open(cargo_sprites_input_path)
-            cargo_sprites = self.get_arbitrary_angles(cargo_sprites_input_image, cargo_spritesheet_bounding_boxes[vehicle.cargo_length])
+            cargo_sprites = self.get_arbitrary_angles(cargo_sprites_input_image, cargo_spritesheet_bounding_boxes[self.vehicle_unit.cargo_length])
 
             vehicle_comped_image = piece_cargo_rows_image.copy()
 
@@ -863,10 +863,10 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                     self.add_bulk_cargo_spriterows()
                 elif spriterow_type == 'heavy_items_cargo':
                     input_spriterow_count = 1
-                    self.add_heavy_items_cargo_spriterows(self.consist.unique_units[vehicle_counter])
+                    self.add_heavy_items_cargo_spriterows()
                 elif spriterow_type == 'piece_cargo':
                     input_spriterow_count = 2
-                    self.add_piece_cargo_spriterows(self.consist.unique_units[vehicle_counter])
+                    self.add_piece_cargo_spriterows()
                 cumulative_input_spriterow_count += input_spriterow_count
             # self.vehicle_unit is hax, and is only valid inside this loop, so clear it to prevent incorrectly relying on it outside the loop in future :P
             self.vehicle_unit = None
