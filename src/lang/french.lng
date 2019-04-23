@@ -33,6 +33,7 @@ STR_NAME_SUFFIX_LARGE                                           :Long
 STR_NAME_SUFFIX_BOX_CAR                                         :Fourgon
 STR_NAME_SUFFIX_CABOOSE_CAR                                     :Fourgon-frein
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Wagon-trémie couvert
+STR_NAME_SUFFIX_CRYO_TANK_CAR                                   :Wagon-citerne cryogénique
 STR_NAME_SUFFIX_DUMP_CAR                                        :Wagon à benne basculante
 STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Wagon-citerne alimentaire
 STR_NAME_SUFFIX_EXPRESS_CAR                                     :Fourgon express
