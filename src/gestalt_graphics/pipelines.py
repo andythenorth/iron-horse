@@ -68,11 +68,17 @@ class Pipeline(object):
 
         # hard-coded positions for buy menu sprite (if used - it's optional)
         x_offset = 0
-        for unit in self.consist.units:
+        for counter, unit in enumerate(self.consist.units):
             # !! currently no cap on purchase menu sprite width
             # !! consist has a buy_menu_width prop which caps to 64 which could be used (+1px overlap)
             unit_length_in_pixels = 4 * unit.vehicle_length
-            unit_spriterow_offset = unit.spriterow_num * graphics_constants.spriterow_height
+            # this is jank because some articulated consists with fancy rulesets need to flip some vehicles
+            # this is probably pretty fragile, but eh, JFDI
+            ruleset_offset_num_rows_jank = 0
+            if getattr(self.consist.gestalt_graphics, 'consist_ruleset', None) in ['metro']:
+                if counter % 2 != 0:
+                    ruleset_offset_num_rows_jank = 4 # hard-coded to metro currently
+            unit_spriterow_offset = (unit.spriterow_num + ruleset_offset_num_rows_jank) * graphics_constants.spriterow_height
             crop_box_src = (224,
                             10 + unit_spriterow_offset,
                             224 + unit_length_in_pixels + 1, # allow for 1px coupler / corrider overhang
@@ -768,7 +774,6 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
         piece_cargo_rows_image.paste(vehicle_base_image, crop_box_comp_dest_2)
         #if self.consist.id == "open_car_pony_gen_1A":
             #piece_cargo_rows_image.show()
-
         crop_box_dest = (0,
                          0,
                          self.sprites_max_x_extent,
