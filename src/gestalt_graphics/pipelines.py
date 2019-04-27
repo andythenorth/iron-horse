@@ -131,7 +131,7 @@ class PassThroughPipeline(Pipeline):
 
 class CheckBuyMenuOnlyPipeline(Pipeline):
     """
-    Oens the input image, inserts a custom buy menu if required, then saves with no other changes.
+    Opens the input image, inserts a custom buy menu if required, then saves with no other changes.
     """
     def __init__(self):
         # this should be sparse, don't store any consist info in Pipelines, pass at render time
