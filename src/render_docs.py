@@ -190,6 +190,7 @@ def render_docs_images():
     vehicle_graphics_src = os.path.join(currentdir, 'generated', 'graphics')
     for consist in consists:
         vehicle_spritesheet = Image.open(os.path.join(vehicle_graphics_src, consist.id + '.png'))
+        # these 'source' var names for images are misleading
         source_vehicle_image = Image.new("P", (doc_helper.buy_menu_sprite_width(consist), doc_helper.buy_menu_sprite_height), 255)
         source_vehicle_image.putpalette(Image.open('palette_key.png').palette)
 
