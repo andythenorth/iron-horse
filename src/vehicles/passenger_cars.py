@@ -11,7 +11,6 @@ def main():
                                   sprites_complete=True)
 
     consist.add_unit(type=PaxCar,
-                     vehicle_length=4,
                      chassis='4_axle_ng_16px')
 
     # no gen 2 for NG, straight to gen 3
@@ -24,7 +23,6 @@ def main():
                                   sprites_complete=True)
 
     consist.add_unit(type=PaxCar,
-                     vehicle_length=4,
                      chassis='4_axle_ng_16px')
 
     consist = PassengerCarConsist(roster='pony',
@@ -35,7 +33,6 @@ def main():
                                   sprites_complete=True)
 
     consist.add_unit(type=PaxCar,
-                     vehicle_length=4,
                      chassis='4_axle_ng_16px')
 
     #--------------- pony ----------------------------------------------------------------------
@@ -47,7 +44,6 @@ def main():
                                   sprites_complete=True)
 
     consist.add_unit(type=PaxCar,
-                     vehicle_length=4,
                      chassis='3_axle_solid_express_16px')
 
     consist = PassengerCarConsist(roster='pony',
@@ -57,7 +53,6 @@ def main():
                                   sprites_complete=True)
 
     consist.add_unit(type=PaxCar,
-                     vehicle_length=6,
                      chassis='4_axle_solid_express_24px')
 
     consist = PassengerCarConsist(roster='pony',
@@ -67,7 +62,6 @@ def main():
                                   sprites_complete=True)
 
     consist.add_unit(type=PaxCar,
-                     vehicle_length=4,
                      chassis='3_axle_solid_express_16px')
 
     consist = PassengerCarConsist(roster='pony',
@@ -77,7 +71,6 @@ def main():
                                   sprites_complete=True)
 
     consist.add_unit(type=PaxCar,
-                     vehicle_length=6,
                      chassis='4_axle_solid_express_24px')
 
     consist = PassengerCarConsist(roster='pony',
@@ -87,7 +80,6 @@ def main():
                                   sprites_complete=True)
 
     consist.add_unit(type=PaxCar,
-                     vehicle_length=4,
                      chassis='3_axle_solid_express_16px')
 
     consist = PassengerCarConsist(roster='pony',
@@ -97,7 +89,6 @@ def main():
                                   sprites_complete=True)
 
     consist.add_unit(type=PaxCar,
-                     vehicle_length=6,
                      chassis='4_axle_solid_express_24px')
 
     consist = PassengerCarConsist(roster='pony',
@@ -107,7 +98,6 @@ def main():
                                   sprites_complete=True)
 
     consist.add_unit(type=PaxCar,
-                     vehicle_length=6,
                      chassis='4_axle_solid_express_24px')
 
     consist = PassengerCarConsist(roster='pony',
@@ -117,7 +107,6 @@ def main():
                                   sprites_complete=True)
 
     consist.add_unit(type=PaxCar,
-                     vehicle_length=8,
                      chassis='4_axle_solid_express_32px')
 
     consist = PassengerCarConsist(roster='pony',
@@ -127,7 +116,6 @@ def main():
                                   sprites_complete=True)
 
     consist.add_unit(type=PaxCar,
-                     vehicle_length=6,
                      chassis='4_axle_solid_express_24px')
 
     consist = PassengerCarConsist(roster='pony',
@@ -137,7 +125,6 @@ def main():
                                   sprites_complete=True)
 
     consist.add_unit(type=PaxCar,
-                     vehicle_length=8,
                      chassis='4_axle_solid_express_32px')
 
     # gen 6 broadly same as gen 5, but new liveries (any other difference?)
@@ -149,7 +136,6 @@ def main():
                                   sprites_complete=True)
 
     consist.add_unit(type=PaxCar,
-                     vehicle_length=6,
                      chassis='4_axle_solid_express_24px')
 
     consist = PassengerCarConsist(roster='pony',
@@ -159,5 +145,4 @@ def main():
                                   sprites_complete=True)
 
     consist.add_unit(type=PaxCar,
-                     vehicle_length=8,
                      chassis='4_axle_solid_express_32px')

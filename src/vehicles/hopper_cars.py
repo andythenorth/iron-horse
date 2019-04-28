@@ -14,7 +14,6 @@ def main():
                                sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=4,
                      chassis='2_axle_gapped_16px')
 
     consist = HopperCarConsist(roster='pony',
@@ -24,7 +23,6 @@ def main():
                                sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=4,
                      chassis='2_axle_gapped_16px')
 
     consist = HopperCarConsist(roster='pony',
@@ -34,7 +32,6 @@ def main():
                                sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=6,
                      chassis='4_axle_gapped_24px')
 
     consist = HopperCarConsist(roster='pony',
@@ -44,7 +41,6 @@ def main():
                                sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=4,
                      chassis='2_axle_gapped_16px')
 
     consist = HopperCarConsist(roster='pony',
@@ -54,7 +50,6 @@ def main():
                                sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=6,
                      chassis='2_axle_gapped_24px')
 
     consist = HopperCarConsist(roster='pony',
@@ -64,7 +59,6 @@ def main():
                                sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=4,
                      chassis='2_axle_sparse_16px')
 
     consist = HopperCarConsist(roster='pony',
@@ -74,7 +68,6 @@ def main():
                                sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=6,
                      chassis='4_axle_sparse_24px')
 
     consist = HopperCarConsist(roster='pony',
@@ -84,7 +77,6 @@ def main():
                                sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=8,
                      chassis='4_axle_sparse_32px')
 
     consist = HopperCarConsist(roster='pony',
@@ -94,7 +86,6 @@ def main():
                                sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=6,
                      chassis='4_axle_sparse_24px')
 
     consist = HopperCarConsist(roster='pony',
@@ -104,5 +95,4 @@ def main():
                                sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=8,
                      chassis='4_axle_sparse_32px')

@@ -13,7 +13,6 @@ def main(roster):
 
     consist.add_unit(type=MetroUnit,
                      weight=36,
-                     vehicle_length=8,
                      capacity=160,
                      chassis='railcar_32px',
                      repeat=2)

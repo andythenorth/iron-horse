@@ -11,7 +11,6 @@ def main():
                                         sprites_complete=True)
 
     consist.add_unit(type=LuxuryPaxCar,
-                     vehicle_length=6,
                      chassis='4_axle_filled_24px')
 
     # no gen 2 for NG, straight to gen 3
@@ -24,7 +23,6 @@ def main():
                                         sprites_complete=True)
 
     consist.add_unit(type=LuxuryPaxCar,
-                     vehicle_length=6,
                      chassis='4_axle_filled_24px')
 
     consist = PassengerLuxuryCarConsist(roster='pony',
@@ -35,7 +33,6 @@ def main():
                                         sprites_complete=True)
 
     consist.add_unit(type=LuxuryPaxCar,
-                     vehicle_length=6,
                      chassis='4_axle_filled_24px')
 
     #--------------- pony ----------------------------------------------------------------------
@@ -46,7 +43,6 @@ def main():
                                         sprites_complete=True)
 
     consist.add_unit(type=LuxuryPaxCar,
-                     vehicle_length=8,
                      chassis='6_axle_solid_express_32px')
 
     consist = PassengerLuxuryCarConsist(roster='pony',
@@ -56,7 +52,6 @@ def main():
                                         sprites_complete=True)
 
     consist.add_unit(type=LuxuryPaxCar,
-                     vehicle_length=8,
                      chassis='6_axle_solid_express_32px')
 
     consist = PassengerLuxuryCarConsist(roster='pony',
@@ -66,7 +61,6 @@ def main():
                                         sprites_complete=True)
 
     consist.add_unit(type=LuxuryPaxCar,
-                     vehicle_length=8,
                      chassis='6_axle_solid_express_32px')
 
     consist = PassengerLuxuryCarConsist(roster='pony',
@@ -76,7 +70,6 @@ def main():
                                         sprites_complete=True)
 
     consist.add_unit(type=LuxuryPaxCar,
-                     vehicle_length=8,
                      chassis='4_axle_solid_express_32px')
 
     consist = PassengerLuxuryCarConsist(roster='pony',
@@ -86,7 +79,6 @@ def main():
                                         sprites_complete=True)
 
     consist.add_unit(type=LuxuryPaxCar,
-                     vehicle_length=8,
                      chassis='4_axle_solid_express_32px')
 
     # gen 6 broadly same as gen 5, but new liveries (any other difference?)
@@ -98,7 +90,6 @@ def main():
                                         sprites_complete=True)
 
     consist.add_unit(type=LuxuryPaxCar,
-                     vehicle_length=8,
                      chassis='4_axle_solid_express_32px')
 
     #--------------- llama ----------------------------------------------------------------------

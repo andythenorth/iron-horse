@@ -12,7 +12,6 @@ def main():
                                sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=4,
                      chassis='2_axle_filled_16px')
 
     consist = ReeferCarConsist(roster='pony',
@@ -22,7 +21,6 @@ def main():
                                sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=4,
                      chassis='2_axle_filled_16px')
 
     consist = ReeferCarConsist(roster='pony',
@@ -32,7 +30,6 @@ def main():
                                sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=4,
                      chassis='2_axle_filled_16px')
 
     consist = ReeferCarConsist(roster='pony',
@@ -42,7 +39,6 @@ def main():
                                sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=6,
                      chassis='2_axle_filled_24px')
 
     consist = ReeferCarConsist(roster='pony',
@@ -52,7 +48,6 @@ def main():
                                sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=6,
                      chassis='2_axle_filled_24px')
 
     consist = ReeferCarConsist(roster='pony',
@@ -62,7 +57,6 @@ def main():
                                sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=8,
                      chassis='4_axle_1cc_filled_32px')
 
     consist = ReeferCarConsist(roster='pony',
@@ -72,7 +66,6 @@ def main():
                                sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=6,
                      chassis='2_axle_filled_24px')
 
     consist = ReeferCarConsist(roster='pony',
@@ -82,5 +75,4 @@ def main():
                                sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=8,
                      chassis='4_axle_1cc_filled_32px')

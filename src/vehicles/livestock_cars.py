@@ -11,7 +11,6 @@ def main():
                                   sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=4,
                      chassis='4_axle_ng_16px')
 
     # no gen 2 for NG, straight to gen 3
@@ -24,7 +23,6 @@ def main():
                                   sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=4,
                      chassis='4_axle_ng_16px')
 
     consist = LivestockCarConsist(roster='pony',
@@ -35,7 +33,6 @@ def main():
                                   sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=4,
                      chassis='4_axle_ng_16px')
 
     #--------------- pony ----------------------------------------------------------------------
@@ -46,7 +43,6 @@ def main():
                                   sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=4,
                      chassis='2_axle_filled_16px')
 
     # no gen 2 needed
@@ -58,7 +54,6 @@ def main():
                                   sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=4,
                      chassis='2_axle_filled_16px')
 
     consist = LivestockCarConsist(roster='pony',
@@ -68,7 +63,6 @@ def main():
                                   sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=4,
                      chassis='2_axle_filled_16px')
 
     consist = LivestockCarConsist(roster='pony',
@@ -78,7 +72,6 @@ def main():
                                   sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=8,
                      chassis='4_axle_2cc_filled_32px')
 
     consist = LivestockCarConsist(roster='pony',
@@ -88,5 +81,4 @@ def main():
                                   sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=8,
                      chassis='4_axle_2cc_filled_32px')

@@ -10,7 +10,6 @@ def main():
                               sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=4,
                      cargo_length=4,
                      chassis='2_axle_filled_16px')
 
@@ -21,7 +20,6 @@ def main():
                               sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=4,
                      cargo_length=4,
                      chassis='2_axle_filled_16px')
 
@@ -32,7 +30,6 @@ def main():
                               sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=6,
                      cargo_length=6,
                      chassis='4_axle_filled_24px')
 
@@ -43,7 +40,6 @@ def main():
                               sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=4,
                      cargo_length=4,
                      chassis='2_axle_filled_16px')
 
@@ -54,7 +50,6 @@ def main():
                               sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=6,
                      cargo_length=6,
                      chassis='4_axle_filled_24px')
 
@@ -65,7 +60,6 @@ def main():
                               sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=8,
                      cargo_length=8,
                      chassis='4_axle_gapped_32px')
 
@@ -76,7 +70,6 @@ def main():
                               sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=6,
                      cargo_length=6,
                      chassis='2_axle_filled_24px')
 
@@ -87,7 +80,6 @@ def main():
                               sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=8,
                      cargo_length=8,
                      chassis='4_axle_filled_32px')
 
@@ -98,7 +90,6 @@ def main():
                               sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=6,
                      cargo_length=6,
                      chassis='2_axle_filled_24px')
 
@@ -109,7 +100,6 @@ def main():
                               sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=8,
                      cargo_length=8,
                      chassis='4_axle_2cc_filled_32px')
 

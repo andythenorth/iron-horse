@@ -16,7 +16,6 @@ def main(roster):
 
     consist.add_unit(type=ElectricHighSpeedPaxUnit,
                      weight=76,
-                     vehicle_length=8,
                      # no pax capacity on Helm Wind cabs
                      capacity=0,
                      spriterow_num=0,

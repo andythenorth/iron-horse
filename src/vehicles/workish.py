@@ -14,7 +14,6 @@ def main(roster):
 
     consist.add_unit(type=DieselRailcarMailUnit,
                      weight=18,
-                     vehicle_length=6,
                      chassis='railcar_ng_24px')
 
     return consist

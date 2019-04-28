@@ -12,7 +12,6 @@ def main():
 
     consist.add_unit(type=FreightCar,
                      cargo_length=4,
-                     vehicle_length=4,
                      chassis='4_axle_ng_16px')
 
     # no gen 2 for NG, straight to gen 3
@@ -26,7 +25,6 @@ def main():
 
     consist.add_unit(type=FreightCar,
                      cargo_length=4,
-                     vehicle_length=4,
                      chassis='4_axle_ng_16px')
 
     consist = OpenCarConsist(roster='pony',
@@ -38,7 +36,6 @@ def main():
 
     consist.add_unit(type=FreightCar,
                      cargo_length=4,
-                     vehicle_length=4,
                      chassis='4_axle_ng_16px')
 
     #--------------- pony ----------------------------------------------------------------------
@@ -53,7 +50,6 @@ def main():
 
     consist.add_unit(type=FreightCar,
                      cargo_length=4,
-                     vehicle_length=4,
                      chassis='2_axle_filled_16px')
 
     # no new type A for gen 2, gen 1 type A continues
@@ -66,7 +62,6 @@ def main():
 
     consist.add_unit(type=FreightCar,
                      cargo_length=6,
-                     vehicle_length=6,
                      chassis='4_axle_gapped_24px')
 
     consist = OpenCarConsist(roster='pony',
@@ -77,7 +72,6 @@ def main():
 
     consist.add_unit(type=FreightCar,
                      cargo_length=4,
-                     vehicle_length=4,
                      chassis='2_axle_filled_16px')
 
     consist = OpenCarConsist(roster='pony',
@@ -88,7 +82,6 @@ def main():
 
     consist.add_unit(type=FreightCar,
                      cargo_length=6,
-                     vehicle_length=6,
                      chassis='4_axle_gapped_24px')
 
     consist = OpenCarConsist(roster='pony',
@@ -99,7 +92,6 @@ def main():
 
     consist.add_unit(type=FreightCar,
                      cargo_length=4,
-                     vehicle_length=4,
                      chassis='2_axle_filled_16px')
 
     consist = OpenCarConsist(roster='pony',
@@ -110,7 +102,6 @@ def main():
 
     consist.add_unit(type=FreightCar,
                      cargo_length=6,
-                     vehicle_length=6,
                      chassis='2_axle_filled_24px')
 
     consist = OpenCarConsist(roster='pony',
@@ -121,7 +112,6 @@ def main():
 
     consist.add_unit(type=FreightCar,
                      cargo_length=6,
-                     vehicle_length=6,
                      chassis='2_axle_filled_24px')
 
     consist = OpenCarConsist(roster='pony',
@@ -132,7 +122,6 @@ def main():
 
     consist.add_unit(type=FreightCar,
                      cargo_length=8,
-                     vehicle_length=8,
                      chassis='4_axle_1cc_filled_32px')
 
     consist = OpenCarConsist(roster='pony',
@@ -143,7 +132,6 @@ def main():
 
     consist.add_unit(type=FreightCar,
                      cargo_length=6,
-                     vehicle_length=6,
                      chassis='2_axle_filled_24px')
 
     consist = OpenCarConsist(roster='pony',
@@ -154,5 +142,4 @@ def main():
 
     consist.add_unit(type=FreightCar,
                      cargo_length=8,
-                     vehicle_length=8,
                      chassis='4_axle_1cc_filled_32px')

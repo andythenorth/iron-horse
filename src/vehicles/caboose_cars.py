@@ -11,7 +11,6 @@ def main():
                                 sprites_complete=True)
 
     consist.add_unit(type=CabooseCar,
-                     vehicle_length=4,
                      chassis='4_axle_ng_16px')
 
     #--------------- pony ----------------------------------------------------------------------
@@ -23,7 +22,6 @@ def main():
                                 sprites_complete=True)
 
     consist.add_unit(type=CabooseCar,
-                     vehicle_length=4,
                      chassis='2_axle_caboose_16px')
 
     consist = CabooseCarConsist(roster='pony',
@@ -34,5 +32,4 @@ def main():
                                 sprites_complete=True)
 
     consist.add_unit(type=CabooseCar,
-                     vehicle_length=6,
                      chassis='4_axle_caboose_24px')

@@ -15,7 +15,6 @@ def main():
                                 sprites_complete=True)
 
     consist.add_unit(type=ExpressCar,
-                     vehicle_length=4,
                      chassis='3_axle_solid_express_16px')
 
     consist = ExpressCarConsist(roster='pony',
@@ -25,7 +24,6 @@ def main():
                                 sprites_complete=True)
 
     consist.add_unit(type=ExpressCar,
-                     vehicle_length=4,
                      chassis='3_axle_solid_express_16px')
 
     consist = ExpressCarConsist(roster='pony',
@@ -35,7 +33,6 @@ def main():
                                 sprites_complete=True)
 
     consist.add_unit(type=ExpressCar,
-                     vehicle_length=6,
                      chassis='4_axle_solid_express_24px')
 
     consist = ExpressCarConsist(roster='pony',
@@ -45,7 +42,6 @@ def main():
                                 sprites_complete=True)
 
     consist.add_unit(type=ExpressCar,
-                     vehicle_length=4,
                      chassis='3_axle_solid_express_16px')
 
     consist = ExpressCarConsist(roster='pony',
@@ -55,7 +51,6 @@ def main():
                                 sprites_complete=True)
 
     consist.add_unit(type=ExpressCar,
-                     vehicle_length=6,
                      chassis='4_axle_solid_express_24px')
 
     consist = ExpressCarConsist(roster='pony',
@@ -65,7 +60,6 @@ def main():
                                 sprites_complete=True)
 
     consist.add_unit(type=ExpressCar,
-                     vehicle_length=4,
                      chassis='2_axle_solid_express_16px')
 
     consist = ExpressCarConsist(roster='pony',
@@ -75,7 +69,6 @@ def main():
                                 sprites_complete=True)
 
     consist.add_unit(type=ExpressCar,
-                     vehicle_length=6,
                      chassis='4_axle_solid_express_24px')
 
     consist = ExpressCarConsist(roster='pony',
@@ -85,7 +78,6 @@ def main():
                                 sprites_complete=True)
 
     consist.add_unit(type=ExpressCar,
-                     vehicle_length=8,
                      chassis='4_axle_solid_express_32px')
 
     # !! should there be no 4/8 car for gen 5-6? (but add 8/8 car instead starting gen 4)
@@ -97,7 +89,6 @@ def main():
                                 sprites_complete=True)
 
     consist.add_unit(type=ExpressCar,
-                     vehicle_length=4,
                      chassis='2_axle_solid_express_16px')
 
     consist = ExpressCarConsist(roster='pony',
@@ -107,7 +98,6 @@ def main():
                                 sprites_complete=True)
 
     consist.add_unit(type=ExpressCar,
-                     vehicle_length=6,
                      chassis='4_axle_solid_express_24px')
 
     consist = ExpressCarConsist(roster='pony',
@@ -117,7 +107,6 @@ def main():
                                 sprites_complete=True)
 
     consist.add_unit(type=ExpressCar,
-                     vehicle_length=8,
                      chassis='4_axle_solid_express_32px')
 
     # no gen 6A 4/8 express car, removed Feb 2019, excessive number of express cars
@@ -129,7 +118,6 @@ def main():
                                 sprites_complete=True)
 
     consist.add_unit(type=ExpressCar,
-                     vehicle_length=6,
                      chassis='4_axle_solid_express_24px')
 
     consist = ExpressCarConsist(roster='pony',
@@ -139,5 +127,4 @@ def main():
                                 sprites_complete=True)
 
     consist.add_unit(type=ExpressCar,
-                     vehicle_length=8,
                      chassis='4_axle_solid_express_32px')

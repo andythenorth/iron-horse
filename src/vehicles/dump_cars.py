@@ -12,7 +12,6 @@ def main():
 
     consist.add_unit(type=FreightCar,
                      cargo_length=4,
-                     vehicle_length=4,
                      chassis='4_axle_ng_16px')
 
     consist = DumpCarConsist(roster='pony',
@@ -24,7 +23,6 @@ def main():
 
     consist.add_unit(type=FreightCar,
                      cargo_length=4,
-                     vehicle_length=4,
                      chassis='4_axle_ng_16px')
 
     #--------------- pony ----------------------------------------------------------------------
@@ -35,7 +33,6 @@ def main():
                              sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=4,
                      chassis='2_axle_gapped_16px')
 
     consist = DumpCarConsist(roster='pony',
@@ -45,7 +42,6 @@ def main():
                              sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=6,
                      chassis='4_axle_sparse_24px')
 
     consist = DumpCarConsist(roster='pony',
@@ -55,7 +51,6 @@ def main():
                              sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=4,
                      chassis='2_axle_gapped_16px')
 
     consist = DumpCarConsist(roster='pony',
@@ -65,7 +60,6 @@ def main():
                              sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=6,
                      chassis='4_axle_sparse_24px')
 
     consist = DumpCarConsist(roster='pony',
@@ -75,7 +69,6 @@ def main():
                              sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=4,
                      chassis='2_axle_gapped_16px')
 
     consist = DumpCarConsist(roster='pony',
@@ -85,7 +78,6 @@ def main():
                              sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=6,
                      chassis='4_axle_sparse_24px')
 
     consist = DumpCarConsist(roster='pony',
@@ -95,7 +87,6 @@ def main():
                              sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=8,
                      chassis='4_axle_sparse_32px')
 
     consist = DumpCarConsist(roster='pony',
@@ -105,7 +96,6 @@ def main():
                              sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=4,
                      chassis='2_axle_gapped_16px')
 
     consist = DumpCarConsist(roster='pony',
@@ -115,7 +105,6 @@ def main():
                              sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=6,
                      chassis='4_axle_sparse_24px')
 
     consist = DumpCarConsist(roster='pony',
@@ -125,7 +114,6 @@ def main():
                              sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=8,
                      chassis='4_axle_sparse_32px')
 
     #--------------- llama ----------------------------------------------------------------------

@@ -10,7 +10,6 @@ def main():
                              sprites_complete=False)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=4,
                      chassis='2_axle_sparse_16px')
 
     consist = CryoTankCarConsist(roster='pony',
@@ -20,7 +19,6 @@ def main():
                              sprites_complete=False)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=6,
                      chassis='4_axle_sparse_24px')
 
     consist = CryoTankCarConsist(roster='pony',
@@ -30,7 +28,6 @@ def main():
                              sprites_complete=False)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=4,
                      chassis='2_axle_sparse_16px')
 
     consist = CryoTankCarConsist(roster='pony',
@@ -40,7 +37,6 @@ def main():
                              sprites_complete=False)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=6,
                      chassis='4_axle_sparse_24px')
 
     consist = CryoTankCarConsist(roster='pony',
@@ -50,7 +46,6 @@ def main():
                              sprites_complete=False)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=8,
                      chassis='4_axle_sparse_32px')
 
     consist = CryoTankCarConsist(roster='pony',
@@ -60,7 +55,6 @@ def main():
                              sprites_complete=False)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=4,
                      chassis='2_axle_sparse_16px')
 
     consist = CryoTankCarConsist(roster='pony',
@@ -70,7 +64,6 @@ def main():
                              sprites_complete=False)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=6,
                      chassis='4_axle_sparse_24px')
 
     consist = CryoTankCarConsist(roster='pony',
@@ -80,7 +73,6 @@ def main():
                              sprites_complete=False)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=8,
                      chassis='4_axle_sparse_32px')
 
     # gen 6A not included - could add?
@@ -93,7 +85,6 @@ def main():
                              sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=4,
                      chassis='2_axle_sparse_16px')
     """
 
@@ -104,7 +95,6 @@ def main():
                              sprites_complete=False)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=6,
                      chassis='4_axle_sparse_24px')
 
     consist = CryoTankCarConsist(roster='pony',
@@ -114,6 +104,5 @@ def main():
                              sprites_complete=False)
 
     consist.add_unit(type=FreightCar,
-                     vehicle_length=8,
                      chassis='4_axle_sparse_32px')
 
