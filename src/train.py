@@ -1760,7 +1760,7 @@ class DieselRailcarMailUnit(DieselRailcarBaseUnit):
         super().__init__(**kwargs)
         # magic to set capacity subject to length
         base_capacity = self.consist.roster.freight_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
-        self.capacity = (kwargs['vehicle_length'] * base_capacity) / polar_fox.constants.mail_multiplier
+        self.capacity = (self.vehicle_length * base_capacity) / polar_fox.constants.mail_multiplier
 
 
 class DieselRailcarPaxUnit(DieselRailcarBaseUnit):
@@ -1772,7 +1772,7 @@ class DieselRailcarPaxUnit(DieselRailcarBaseUnit):
         super().__init__(**kwargs)
         # magic to set capacity subject to length
         base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
-        self.capacity = kwargs['vehicle_length'] * base_capacity
+        self.capacity = self.vehicle_length * base_capacity
 
 
 class ElectricEngineUnit(Train):
@@ -1838,7 +1838,7 @@ class ElectroDieselRailcarMailUnit(ElectroDieselRailcarBaseUnit):
         super().__init__(**kwargs)
         # magic to set capacity subject to length
         base_capacity = self.consist.roster.freight_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
-        self.capacity = (kwargs['vehicle_length'] * base_capacity) / polar_fox.constants.mail_multiplier
+        self.capacity = (self.vehicle_length * base_capacity) / polar_fox.constants.mail_multiplier
 
 
 class ElectroDieselRailcarPaxUnit(ElectroDieselRailcarBaseUnit):
@@ -1850,7 +1850,7 @@ class ElectroDieselRailcarPaxUnit(ElectroDieselRailcarBaseUnit):
         super().__init__(**kwargs)
         # magic to set capacity subject to length
         base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
-        self.capacity = kwargs['vehicle_length'] * base_capacity
+        self.capacity = self.vehicle_length * base_capacity
 
 
 class ElectricRailcarBaseUnit(Train):
@@ -1880,7 +1880,7 @@ class ElectricRailcarMailUnit(ElectricRailcarBaseUnit):
         super().__init__(**kwargs)
         # magic to set capacity subject to length
         base_capacity = self.consist.roster.freight_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
-        self.capacity = (kwargs['vehicle_length'] * base_capacity) / polar_fox.constants.mail_multiplier
+        self.capacity = (self.vehicle_length * base_capacity) / polar_fox.constants.mail_multiplier
 
 
 class ElectricRailcarPaxUnit(ElectricRailcarBaseUnit):
@@ -1892,7 +1892,7 @@ class ElectricRailcarPaxUnit(ElectricRailcarBaseUnit):
         super().__init__(**kwargs)
         # magic to set capacity subject to length
         base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
-        self.capacity = kwargs['vehicle_length'] * base_capacity
+        self.capacity = self.vehicle_length * base_capacity
 
 
 class ElectricHighSpeedPaxUnit(Train):
@@ -1915,7 +1915,7 @@ class ElectricHighSpeedPaxUnit(Train):
             self.capacity = kwargs['capacity']
         else:
             base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
-            self.capacity = int(kwargs['vehicle_length'] * base_capacity * 0.875)
+            self.capacity = int(self.vehicle_length * base_capacity * 0.875)
 
 
 class MetroUnit(Train):
@@ -2028,7 +2028,7 @@ class MailCar(TrainCar):
         self._symmetry_type = 'asymmetric'
         # magic to set capacity subject to length
         base_capacity = self.consist.roster.freight_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
-        self.capacity = (kwargs['vehicle_length'] * base_capacity) / polar_fox.constants.mail_multiplier
+        self.capacity = (self.vehicle_length * base_capacity) / polar_fox.constants.mail_multiplier
 
 
 class PaxCar(TrainCar):
@@ -2041,7 +2041,7 @@ class PaxCar(TrainCar):
         self._symmetry_type = 'asymmetric'
         # magic to set pax car capacity subject to length
         base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
-        self.capacity = kwargs['vehicle_length'] * base_capacity
+        self.capacity = self.vehicle_length * base_capacity
 
 
 class LuxuryPaxCar(TrainCar):
@@ -2054,7 +2054,7 @@ class LuxuryPaxCar(TrainCar):
         self._symmetry_type = 'asymmetric'
         # magic to set luxury pax car capacity subject to length
         base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
-        self.capacity = int(kwargs['vehicle_length'] * base_capacity * 0.75)
+        self.capacity = int(self.vehicle_length * base_capacity * 0.75)
 
 
 class ExpressCar(TrainCar):
@@ -2066,7 +2066,7 @@ class ExpressCar(TrainCar):
         # magic to set capacity subject to length
         base_capacity = self.consist.roster.freight_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
         # we nerf down express car capacity to same as mail cars, to account for them being faster
-        self.capacity = (kwargs['vehicle_length'] * base_capacity) / polar_fox.constants.mail_multiplier
+        self.capacity = (self.vehicle_length * base_capacity) / polar_fox.constants.mail_multiplier
 
 
 class FreightCar(TrainCar):
@@ -2081,7 +2081,7 @@ class FreightCar(TrainCar):
                   kwargs.get('capacity', None))
         # magic to set freight car capacity subject to length
         base_capacity = self.consist.roster.freight_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
-        self.capacity = (kwargs['vehicle_length'] * base_capacity)
+        self.capacity = (self.vehicle_length * base_capacity)
 
 
 class WellCar(FreightCar):
