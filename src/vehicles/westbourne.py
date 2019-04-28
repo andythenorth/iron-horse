@@ -15,7 +15,7 @@ def main(roster):
                      weight=36,
                      vehicle_length=8,
                      capacity=160,
-                     chassis='railcar',
+                     chassis='railcar_32px',
                      repeat=2)
 
     return consist
