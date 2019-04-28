@@ -1471,7 +1471,7 @@ class Train(object):
         # some longer vehicles may place multiple shorter cargo sprites, e.g. 7/8 vehicle, 2 * 4/8 cargo sprites (with some overlapping)
         self.cargo_length = kwargs.get('cargo_length', None)
         # optional - only set if the graphics processor generates the vehicle chassis
-        self.chassis = kwargs.get('chassis', 'test')
+        self.chassis = kwargs.get('chassis', None)
         # 'symmetric' or 'asymmetric'?
         # defaults to symmetric, over-ride in sub-classes or per vehicle as needed
         self._symmetry_type = kwargs.get('symmetry_type', 'symmetric')
