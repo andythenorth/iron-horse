@@ -55,9 +55,6 @@ cryo_tank_car_livery_recolour_maps = (("DFLT", {136: 5, 137: 7, 138: 9, 139: 11,
                                       ("CHLO", {136: 154, 137: 155, 138: 157, 139: 158,
                                                 140: 159, 141: 159, 142: 160, 143: 161}),)
 
-tarpaulin_car_livery_recolour_maps = (("DFLT", {136: CC1, 137: CC1+1, 138: CC1+2, 139: CC1+3,
-                                                140: CC1+4, 141: CC1+5, 142: CC1+6, 143: CC1+7}),)
-
 edibles_tank_car_livery_recolour_maps = (("DFLT", {}),)
 
 fruit_veg_livery_recolour_maps = (("DFLT", {136: CC2, 137: CC2+1, 138: CC2+2, 139: CC2+3,
@@ -67,6 +64,8 @@ fruit_veg_livery_recolour_maps = (("DFLT", {136: CC2, 137: CC2+1, 138: CC2+2, 13
                                             CC1: 71, CC1+1: 72, CC1+2: 73, CC1+3: 74,
                                             CC1+4: 75, CC1+5: 77, CC1+6: 78, CC1+7: 79}),)
 
+livestock_livery_recolour_maps = (("DFLT", body_recolour_CC2),)
+
 refrigerated_livery_recolour_maps = (("DFLT", {136: 18, 137: 19, 138: 20, 139: 21,
                                                140: 22, 141: 13, 142: 14, 143: 15,
                                                40: 18, 41: 19, 42: 20, 43: 21,
@@ -74,7 +73,9 @@ refrigerated_livery_recolour_maps = (("DFLT", {136: 18, 137: 19, 138: 20, 139: 2
                                                CC2: CC1, CC2+1: CC1+1, CC2+2: CC1+2, CC2+3: CC1+3,
                                                CC2+4: CC1+4, CC2+5: CC1+5, CC2+6: CC1+6, CC2+7: CC1+7}),)
 
-livestock_livery_recolour_maps = (("DFLT", body_recolour_CC2),)
+tarpaulin_car_livery_recolour_maps = (("DFLT", {136: CC1, 137: CC1+1, 138: CC1+2, 139: CC1+3,
+                                                140: CC1+4, 141: CC1+5, 142: CC1+6, 143: CC1+7}),)
+
 
 # Containers
 # !! simple recolouring, not cargo specific.  May need work ??  Could be cargo-specific??
