@@ -4,25 +4,7 @@ from train import CurtainSideCarConsist, FreightCar
 def main():
     #--------------- pony ----------------------------------------------------------------------
 
-    # gen 4 start, only B and C lengths
-
-    consist = CurtainSideCarConsist(roster='pony',
-                            base_numeric_id=320,
-                            gen=4,
-                            subtype='B',
-                            sprites_complete=False)
-
-    consist.add_unit(type=FreightCar,
-                     chassis='2_axle_filled_24px')
-
-    consist = CurtainSideCarConsist(roster='pony',
-                            base_numeric_id=330,
-                            gen=4,
-                            subtype='C',
-                            sprites_complete=False)
-
-    consist.add_unit(type=FreightCar,
-                     chassis='4_axle_1cc_filled_32px')
+    # gen 5 start, only B and C lengths
 
     consist = CurtainSideCarConsist(roster='pony',
                             base_numeric_id=340,
