@@ -1021,6 +1021,27 @@ class CryoTankCarConsist(CarConsist):
         self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.cryo_tank_car_livery_recolour_maps)
 
 
+class DumpCarConsist(CarConsist):
+    """
+    Limited set of bulk (mineral) cargos, same set as hopper cars.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = 'dump_car'
+        super().__init__(**kwargs)
+        self.class_refit_groups = ['dump_freight']
+        self.label_refits_allowed = []  # no specific labels needed
+        self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_dump_bulk']
+        self.default_cargos = global_constants.default_cargos['dump']
+        self.loading_speed_multiplier = 1.5
+        self.buy_cost_adjustment_factor = 1.1
+        # allow flipping, used to flip company colour
+        self.allow_flip = True
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsVisibleCargo(bulk=True,
+                                                            has_alt_livery=True)
+
+
 class EdiblesTankCarConsist(CarConsist):
     """
     Wine, milk, water etc.
