@@ -103,6 +103,9 @@ passenger_cars.main()
 from vehicles import reefer_cars
 reefer_cars.main()
 
+from vehicles import sliding_wall_cars
+sliding_wall_cars.main()
+
 from vehicles import stake_cars
 stake_cars.main()
 
