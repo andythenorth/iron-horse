@@ -34,7 +34,6 @@ STR_NAME_SUFFIX_BOX_CAR                                         :Box Van
 STR_NAME_SUFFIX_CABOOSE_CAR                                     :Brake Van
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Covered Hopper
 STR_NAME_SUFFIX_CRYO_TANK_CAR                                   :Cryo Tanker
-STR_NAME_SUFFIX_CURTAIN_SIDE_CAR                                :Curtain Side Van
 STR_NAME_SUFFIX_DUMP_CAR                                        :Mineral Wagon
 STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Edibles Tanker
 STR_NAME_SUFFIX_EXPRESS_CAR                                     :Express Van
@@ -52,6 +51,7 @@ STR_NAME_SUFFIX_REEFER_CAR                                      :Refrigerated Va
 STR_NAME_SUFFIX_SILO_CAR                                        :Silo Wagon
 STR_NAME_SUFFIX_STAKE_CAR                                       :Stake Wagon
 STR_NAME_SUFFIX_TANK_CAR                                        :Tanker
+STR_NAME_SUFFIX_TARPAULIN_CAR                                   :Tarpaulin Wagon
 STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Vehicle Transporter
 STR_NAME_SUFFIX_WELL_CAR                                        :Well Wagon
 

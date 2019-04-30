@@ -955,26 +955,6 @@ class CoveredHopperCarConsist(CarConsist):
                                                                      consist_ruleset=None)
 
 
-class CurtainSideCarConsist(CarConsist):
-    """
-    Tarpaulin car - a graphical alternative to flat car, with identical refits
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = 'curtain_side_car'
-        super().__init__(**kwargs)
-        self.class_refit_groups = ['flatbed_freight']
-        self.label_refits_allowed = ['GOOD']
-        self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_flatbed_freight']
-        self.default_cargos = global_constants.default_cargos['flat']
-        self.buy_cost_adjustment_factor = 1.1
-        # allow flipping, used to flip company colour
-        self.allow_flip = True
-        # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(id_base='curtain_side_car',
-                                                                  recolour_maps=graphics_constants.curtain_side_livery_recolour_maps)
-
-
 class DumpCarConsist(CarConsist):
     """
     Limited set of bulk (mineral) cargos, same set as hopper cars.
@@ -1410,6 +1390,26 @@ class StakeCarConsist(CarConsist):
         self.allow_flip = True
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(piece='stake')
+
+
+class TarpaulinCarConsist(CarConsist):
+    """
+    Tarpaulin car - a graphical alternative to flat car, with identical refits
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = 'tarpaulin_car'
+        super().__init__(**kwargs)
+        self.class_refit_groups = ['flatbed_freight']
+        self.label_refits_allowed = ['GOOD']
+        self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_flatbed_freight']
+        self.default_cargos = global_constants.default_cargos['flat']
+        self.buy_cost_adjustment_factor = 1.1
+        # allow flipping, used to flip company colour
+        self.allow_flip = True
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(id_base='tarpaulin_car',
+                                                                  recolour_maps=graphics_constants.tarpaulin_car_livery_recolour_maps)
 
 
 class WellCarConsist(CarConsist):

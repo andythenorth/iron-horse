@@ -55,8 +55,8 @@ covered_hopper_cars.main()
 from vehicles import cryo_tank_cars
 cryo_tank_cars.main()
 
-from vehicles import curtain_side_cars
-curtain_side_cars.main()
+from vehicles import tarpaulin_cars
+tarpaulin_cars.main()
 
 from vehicles import dump_cars
 dump_cars.main()
