@@ -50,8 +50,10 @@ STR_NAME_SUFFIX_OPEN_CAR                                        :Wagon-tombereau
 STR_NAME_SUFFIX_PASSENGER_CAR                                   :Voiture
 STR_NAME_SUFFIX_REEFER_CAR                                      :Wagon frigorifique
 STR_NAME_SUFFIX_SILO_CAR                                        :Wagon-silo
+STR_NAME_SUFFIX_SLIDING_WALL_CAR                                :Wagon à parois coulissantes
 STR_NAME_SUFFIX_STAKE_CAR                                       :Wagon à ranchers
 STR_NAME_SUFFIX_TANK_CAR                                        :Wagon-citerne
+STR_NAME_SUFFIX_TARPAULIN_CAR                                   :Wagon bâché
 STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Wagon porte-automobiles
 STR_NAME_SUFFIX_WELL_CAR                                        :Wagon surbaissé
 
