@@ -1001,6 +1001,27 @@ class CryoTankCarConsist(CarConsist):
         self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.cryo_tank_car_livery_recolour_maps)
 
 
+class CurtainSideCarBoxConsist(CarConsist):
+    """
+    Curtain side box car - same refits as box car.
+    *Not* tarpaulin car which is curtain roof flat.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = 'curtain_side_box_car'
+        super().__init__(**kwargs)
+        self.class_refit_groups = ['packaged_freight']
+        self.label_refits_allowed = global_constants.allowed_refits_by_label['box_freight']
+        self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_freight_special_cases']
+        self.default_cargos = global_constants.default_cargos['box']
+        self.buy_cost_adjustment_factor = 1.2
+        # allow flipping, used to flip company colour
+        self.allow_flip = True
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(id_base='curtain_side_box_car',
+                                                                  recolour_maps=graphics_constants.box_livery_recolour_maps)
+
+
 class DumpCarConsist(CarConsist):
     """
     Limited set of bulk (mineral) cargos, same set as hopper cars.

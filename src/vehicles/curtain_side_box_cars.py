@@ -1,12 +1,30 @@
-from train import SlidingWallCarConsist, FreightCar
+from train import CurtainSideCarBoxConsist, FreightCar
 
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
 
-    # gen 5 start, only B and C lengths
+    # gen 4 start, only B and C lengths
+    consist = CurtainSideCarBoxConsist(roster='pony',
+                            base_numeric_id=540,
+                            gen=4,
+                            subtype='B',
+                            sprites_complete=False)
 
-    consist = SlidingWallCarConsist(roster='pony',
+    consist.add_unit(type=FreightCar,
+                     chassis='2_axle_1cc_filled_24px')
+
+    consist = CurtainSideCarBoxConsist(roster='pony',
+                            base_numeric_id=510,
+                            gen=4,
+                            subtype='C',
+                            sprites_complete=False)
+
+    consist.add_unit(type=FreightCar,
+                     chassis='4_axle_1cc_filled_32px')
+
+    """
+    consist = CurtainSideCarBoxConsist(roster='pony',
                             base_numeric_id=410,
                             gen=5,
                             subtype='B',
@@ -15,7 +33,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      chassis='2_axle_1cc_filled_24px')
 
-    consist = SlidingWallCarConsist(roster='pony',
+    consist = CurtainSideCarBoxConsist(roster='pony',
                             base_numeric_id=440,
                             gen=5,
                             subtype='C',
@@ -25,7 +43,7 @@ def main():
                      chassis='4_axle_1cc_filled_32px')
 
 
-    consist = SlidingWallCarConsist(roster='pony',
+    consist = CurtainSideCarBoxConsist(roster='pony',
                             base_numeric_id=330,
                             gen=6,
                             subtype='B',
@@ -35,7 +53,7 @@ def main():
                      chassis='2_axle_1cc_filled_24px')
 
 
-    consist = SlidingWallCarConsist(roster='pony',
+    consist = CurtainSideCarBoxConsist(roster='pony',
                             base_numeric_id=320,
                             gen=6,
                             subtype='C',
@@ -43,3 +61,4 @@ def main():
 
     consist.add_unit(type=FreightCar,
                      chassis='4_axle_1cc_filled_32px')
+    """
