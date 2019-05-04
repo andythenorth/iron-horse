@@ -49,8 +49,10 @@ STR_NAME_SUFFIX_OPEN_CAR                                        :Open wagon
 STR_NAME_SUFFIX_PASSENGER_CAR                                   :Passagiersrijtuig
 STR_NAME_SUFFIX_REEFER_CAR                                      :Koelwagon
 STR_NAME_SUFFIX_SILO_CAR                                        :Silowagon
+STR_NAME_SUFFIX_SLIDING_WALL_CAR                                :Voertuig met schuifdeuren
 STR_NAME_SUFFIX_STAKE_CAR                                       :Rongenwagon
 STR_NAME_SUFFIX_TANK_CAR                                        :Tanker
+STR_NAME_SUFFIX_TARPAULIN_CAR                                   :Wagon met dekzeil
 STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Voertuigtransport
 STR_NAME_SUFFIX_WELL_CAR                                        :Double stack-wagon
 
