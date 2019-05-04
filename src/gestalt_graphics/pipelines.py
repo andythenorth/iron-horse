@@ -1,7 +1,7 @@
 import os.path
 currentdir = os.curdir
 
-from PIL import Image, ImageDraw
+from PIL import Image
 
 import polar_fox
 from polar_fox.graphics_units import SimpleRecolour, AppendToSpritesheet, AddCargoLabel, AddBuyMenuSprite
@@ -256,7 +256,6 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
 
         # make spritesheet
         pantograph_spritesheet = self.make_spritesheet_from_image(pantograph_output_image)
-        pantograph_output_path = os.path.join(currentdir, 'generated', 'graphics', self.consist.id + '_pantographs_' + self.pantograph_state + '.png')
         crop_box_dest = (0,
                          10,
                          self.global_constants.sprites_max_x_extent,

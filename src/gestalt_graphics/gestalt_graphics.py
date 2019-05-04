@@ -2,7 +2,6 @@ import polar_fox
 import gestalt_graphics.graphics_constants as graphics_constants
 from gestalt_graphics import pipelines
 import utils
-import inspect
 
 class GestaltGraphics(object):
     """

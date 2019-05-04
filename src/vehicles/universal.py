@@ -2,8 +2,7 @@ from train import EngineConsist, DieselEngineUnit
 
 
 def main():    # for rest of stats, look up GE Export models U5B-U8B
-    consist = EngineConsist(roster=roster,
-                            id='universal',
+    consist = EngineConsist(id='universal',
                             base_numeric_id=540,
                             name='Universal',
                             power=800,

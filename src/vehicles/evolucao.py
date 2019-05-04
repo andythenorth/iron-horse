@@ -1,10 +1,10 @@
 # coding=utf-8
 
+from train import EngineConsist, DieselEngineUnit
 
-def main(): from train import EngineConsist, DieselEngineUnit
+def main():
 # for rest of stats, look up GE Evolution
-    consist = EngineConsist(roster=roster,
-                            id='evolucao',
+    consist = EngineConsist(id='evolucao',
                             base_numeric_id=200,
                             name='Evolução',
                             power=4400,

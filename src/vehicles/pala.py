@@ -2,8 +2,7 @@ from train import EngineConsist, DieselEngineUnit
 
 
 def main():    # standard gauge GE Shovelnose
-    consist = EngineConsist(roster=roster,
-                            id='pala',
+    consist = EngineConsist(id='pala',
                             base_numeric_id=320,
                             name='Pala',
                             power=1200,

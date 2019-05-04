@@ -49,7 +49,7 @@ def run_pipelines(consist):
     else:
         # run pipelines, obvs
         for pipeline in consist.gestalt_graphics.pipelines:
-            result = pipeline.render(consist, global_constants)
+            pipeline.render(consist, global_constants)
 
 def report_sprites_complete(consists):
     # project management eh :P

@@ -21,7 +21,7 @@ import utils
 
 from gestalt_graphics.gestalt_graphics import (GestaltGraphics, GestaltGraphicsVisibleCargo, GestaltGraphicsBoxCarOpeningDoors,
                                                GestaltGraphicsCaboose, GestaltGraphicsCargoSpecificLivery, GestaltGraphicsOnlyAddPantographs,
-                                               GestaltGraphicsConsistSpecificLivery, GestaltGraphicsCustom)
+                                               GestaltGraphicsConsistSpecificLivery)
 import gestalt_graphics.graphics_constants as graphics_constants
 
 from rosters import registered_rosters
@@ -953,27 +953,6 @@ class CoveredHopperCarConsist(CarConsist):
         spriterow_group_mappings = {'pax': {'default': 0, 'first': 0, 'last': 0, 'special': 0}}
         self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings,
                                                                      consist_ruleset=None)
-
-
-class DumpCarConsist(CarConsist):
-    """
-    Limited set of bulk (mineral) cargos, same set as hopper cars.
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = 'dump_car'
-        super().__init__(**kwargs)
-        self.class_refit_groups = ['dump_freight']
-        self.label_refits_allowed = []  # no specific labels needed
-        self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_dump_bulk']
-        self.default_cargos = global_constants.default_cargos['dump']
-        self.loading_speed_multiplier = 1.5
-        self.buy_cost_adjustment_factor = 1.1
-        # allow flipping, used to flip company colour
-        self.allow_flip = True
-        # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsVisibleCargo(bulk=True,
-                                                            has_alt_livery=True)
 
 
 class CryoTankCarConsist(CarConsist):
