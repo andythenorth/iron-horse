@@ -31,7 +31,7 @@ def main():
                             sprites_complete=False)
 
     consist.add_unit(type=FreightCar,
-                     chassis='2_axle_2cc_filled_24px')
+                     chassis='2_axle_filled_24px')
 
     consist = CurtainSideCarBoxConsist(roster='pony',
                             base_numeric_id=980,
@@ -50,7 +50,7 @@ def main():
                             sprites_complete=False)
 
     consist.add_unit(type=FreightCar,
-                     chassis='2_axle_2cc_filled_24px')
+                     chassis='2_axle_filled_24px')
 
 
     consist = CurtainSideCarBoxConsist(roster='pony',
