@@ -12,7 +12,7 @@ def main():
                             sprites_complete=False)
 
     consist.add_unit(type=FreightCar,
-                     chassis='2_axle_1cc_filled_24px')
+                     chassis='2_axle_filled_24px')
 
     consist = CurtainSideCarBoxConsist(roster='pony',
                             base_numeric_id=510,
@@ -21,44 +21,43 @@ def main():
                             sprites_complete=False)
 
     consist.add_unit(type=FreightCar,
-                     chassis='4_axle_1cc_filled_32px')
+                     chassis='4_axle_2cc_filled_32px')
 
-    """
+
     consist = CurtainSideCarBoxConsist(roster='pony',
-                            base_numeric_id=410,
+                            base_numeric_id=710,
                             gen=5,
                             subtype='B',
                             sprites_complete=False)
 
     consist.add_unit(type=FreightCar,
-                     chassis='2_axle_1cc_filled_24px')
+                     chassis='2_axle_2cc_filled_24px')
 
     consist = CurtainSideCarBoxConsist(roster='pony',
-                            base_numeric_id=440,
+                            base_numeric_id=980,
                             gen=5,
                             subtype='C',
                             sprites_complete=False)
 
     consist.add_unit(type=FreightCar,
-                     chassis='4_axle_1cc_filled_32px')
+                     chassis='4_axle_2cc_filled_32px')
 
 
     consist = CurtainSideCarBoxConsist(roster='pony',
-                            base_numeric_id=330,
+                            base_numeric_id=1440,
                             gen=6,
                             subtype='B',
                             sprites_complete=False)
 
     consist.add_unit(type=FreightCar,
-                     chassis='2_axle_1cc_filled_24px')
+                     chassis='2_axle_2cc_filled_24px')
 
 
     consist = CurtainSideCarBoxConsist(roster='pony',
-                            base_numeric_id=320,
+                            base_numeric_id=1460,
                             gen=6,
                             subtype='C',
                             sprites_complete=False)
 
     consist.add_unit(type=FreightCar,
-                     chassis='4_axle_1cc_filled_32px')
-    """
+                     chassis='4_axle_2cc_filled_32px')
