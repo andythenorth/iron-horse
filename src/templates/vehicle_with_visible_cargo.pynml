@@ -1,4 +1,4 @@
-<tal:include metal:use-macro="load: spriteset_templates.pynml" />
+<tal:include metal:use-macro="load: spriteset_templates_purchase.pynml" />
 
 <!--! 'random_reverse' property is not supported in this template, vehicles using this template are all symmetrical, reversing would do nothing
       'flipped' is user flipping vehicle in depot and *is* supported here (used for livery selection tricks)
@@ -8,7 +8,7 @@
     <!--! spriteset loops got too complex in the templates, with livery, empty state, cargo loading, cargo loaded, and random variants
           so I moved the logic for spritesets into the gestalt, and simply render out all from a list with a trivial loop -->
     spriteset(${vehicle.id}_ss_${spriteset_data[0]}_${spriteset_data[1]}, "${global_constants.graphics_path}${consist.id}.png") {
-      spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.id}_${spriteset_data[1]}(${spriteset_data[2]})
+      spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.vehicle_length}_8_${spriteset_data[1]}(${spriteset_data[2]})
     }
     <!--! spritegroups aren't used here, direct to spriteset -->
 </tal:spritesets>

@@ -12,7 +12,7 @@
     - see also notes in
  -->
 
-<tal:include metal:use-macro="load: spriteset_templates.pynml" />
+<tal:include metal:use-macro="load: spriteset_templates_purchase.pynml" />
 
 <!--! 'random_reverse' property is not supported in this template, vehicles using this template are all symmetrical, reversing would do nothing
       'flipped' is user flipping vehicle in depot and *is* supported here (used for livery selection tricks)
@@ -22,16 +22,16 @@
 
     <tal:user_flipped repeat="flipped ['unflipped', 'flipped']">
         spriteset(${vehicle.id}_ss_doors_closed_livery_1_${variant_num}_${flipped}, "${global_constants.graphics_path}${consist.id}.png") {
-          spriteset_template_${vehicle.symmetry_type}_${'reversed' if flipped == 'flipped' else 'unreversed'}_${vehicle.id}_${flipped}(10 + ${variant_num * 120})
+          spriteset_template_${vehicle.symmetry_type}_${'reversed' if flipped == 'flipped' else 'unreversed'}_${vehicle.vehicle_length}_8_${flipped}(10 + ${variant_num * 120})
         }
         spriteset(${vehicle.id}_ss_doors_open_livery_1_${variant_num}_${flipped}, "${global_constants.graphics_path}${consist.id}.png") {
-          spriteset_template_${vehicle.symmetry_type}_${'reversed' if flipped == 'flipped' else 'unreversed'}_${vehicle.id}_${flipped}(10 + ${variant_num * 120} + 30)
+          spriteset_template_${vehicle.symmetry_type}_${'reversed' if flipped == 'flipped' else 'unreversed'}_${vehicle.vehicle_length}_8_${flipped}(10 + ${variant_num * 120} + 30)
         }
         spriteset(${vehicle.id}_ss_doors_closed_livery_2_${variant_num}_${flipped}, "${global_constants.graphics_path}${consist.id}.png") {
-          spriteset_template_${vehicle.symmetry_type}_${'reversed' if flipped == 'flipped' else 'unreversed'}_${vehicle.id}_${flipped}(10 + ${variant_num * 120} + 60)
+          spriteset_template_${vehicle.symmetry_type}_${'reversed' if flipped == 'flipped' else 'unreversed'}_${vehicle.vehicle_length}_8_${flipped}(10 + ${variant_num * 120} + 60)
         }
         spriteset(${vehicle.id}_ss_doors_open_livery_2_${variant_num}_${flipped}, "${global_constants.graphics_path}${consist.id}.png") {
-          spriteset_template_${vehicle.symmetry_type}_${'reversed' if flipped == 'flipped' else 'unreversed'}_${vehicle.id}_${flipped}(10 + ${variant_num * 120} + 90)
+          spriteset_template_${vehicle.symmetry_type}_${'reversed' if flipped == 'flipped' else 'unreversed'}_${vehicle.vehicle_length}_8_${flipped}(10 + ${variant_num * 120} + 90)
         }
 
         <tal:livery repeat="livery ['livery_1', 'livery_2']">
@@ -64,7 +64,7 @@
             <!--! !! the y base offsets here won't work for multi-unit vehicles, they need a different calculation -->
             <tal:pantographs repeat="pantograph_state ['down', 'up']">
                 spriteset(${vehicle.id}_ss_pantographs_${pantograph_state}_${variant_num}_${flipped}, "${global_constants.graphics_path}${consist.id}_pantographs_${pantograph_state}.png") {
-                  spriteset_template_${vehicle.symmetry_type}_${'reversed' if flipped == 'flipped' else 'unreversed'}_${vehicle.id}_${flipped}(10 + ${variant_num * 60})
+                  spriteset_template_${vehicle.symmetry_type}_${'reversed' if flipped == 'flipped' else 'unreversed'}_${vehicle.vehicle_length}_8_${flipped}(10 + ${variant_num * 60})
                 }
             </tal:pantographs>
             <!--! this is crude and won't work, for e.g. ELNG, or for 3rd-party electrified railtypes which aren't ELRL -->

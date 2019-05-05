@@ -1,6 +1,6 @@
 import os.path
 import codecs  # used for writing files - more unicode friendly than standard open() module
-
+import global_constants
 
 def get_makefile_args(sys):
     # get args passed by makefile
@@ -35,6 +35,16 @@ def parse_base_lang():
         ':', 1)[1].strip()) for line in text if ':' in line)
     return strings
 
+# this should be in utils
+def get_offsets(length, flipped=False):
+    # offsets can also be over-ridden on a per-model basis by providing this property in the model class
+    base_offsets = global_constants.default_spritesheet_offsets[str(length)]
+    if flipped:
+        flipped_offsets = list(base_offsets[4:8])
+        flipped_offsets.extend(base_offsets[0:4])
+        return flipped_offsets
+    else:
+        return base_offsets
 
 def echo_message(message):
     # use to raise messages from templates to standard out (can't print directly from template render)

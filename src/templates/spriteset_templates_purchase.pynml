@@ -1,0 +1,30 @@
+// buy menu spriteset template
+template spriteset_template_purchase_${vehicle.id}(y) {
+    <tal:dual_head switch="consist.dual_headed">
+        <tal:false case="False">
+            //[left_x,  upper_y,    width,      height,     offset_x,      offset_y]
+            [60,    10, 1, 1, 0, 0]
+            [60,    10, 1, 1, 0, 0]
+            [60,    10, 1, 1, 0, 0]
+            [60,    10, 1, 1, 0, 0]
+            [60,    10, 1, 1, 0, 0]
+            [60,    10, 1, 1, 0, 0]
+            // allow for buffers/couplings being 1px additional to the unit (they overlap in consists, but show in buy menu)
+            [${consist.buy_menu_x_loc}, y, ${consist.buy_menu_width + 1}, 16, -${int(consist.buy_menu_width / 2)}, -11 ${', ANIM' if consist.suppress_animated_pixel_warnings else ''}]
+            [60,    10, 1, 1, 0, 0]
+        </tal:false>
+        <tal:true case="True">
+            [60,    10, 1, 1, 0, 0]
+            [60,    10, 1, 1, 0, 0]
+            [104, y, ${consist.buy_menu_width + 1}, 16, 1 - ${int(consist.buy_menu_width / 2)}, -11 ${', ANIM' if consist.suppress_animated_pixel_warnings else ''}]
+            [60,    10, 1, 1, 0, 0]
+            [60,    10, 1, 1, 0, 0]
+            [60,    10, 1, 1, 0, 0]
+            // allow for buffers/couplings being 1px additional to the unit (they overlap in consists, but show in buy menu)
+            [${consist.buy_menu_x_loc}, y, ${consist.buy_menu_width + 1}, 16, -2 - ${int(consist.buy_menu_width / 2)}, -11 ${', ANIM' if consist.suppress_animated_pixel_warnings else ''}]
+            [60,    10, 1, 1, 0, 0]
+        </tal:true>
+    </tal:dual_head>
+
+}
+
