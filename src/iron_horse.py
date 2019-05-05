@@ -76,11 +76,8 @@ fruit_veg_cars.main()
 from vehicles import hopper_cars
 hopper_cars.main()
 
-"""
-# commented out for 2.0 alpha
 from vehicles import intermodal_cars
 intermodal_cars.main()
-"""
 
 from vehicles import livestock_cars
 livestock_cars.main()

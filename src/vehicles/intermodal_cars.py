@@ -4,7 +4,7 @@ from train import IntermodalCarConsist, FreightCar
 def main():
     #--------------- pony ----------------------------------------------------------------------
     consist = IntermodalCarConsist(roster='pony',
-                                   base_numeric_id=1060,
+                                   base_numeric_id=1600,
                                    gen=4,
                                    subtype='A')
 
@@ -36,7 +36,7 @@ def main():
                      vehicle_length=8)
 
     consist = IntermodalCarConsist(roster='pony',
-                                   base_numeric_id=2830,
+                                   base_numeric_id=1610,
                                    gen=6,
                                    subtype='A')
 
@@ -44,7 +44,7 @@ def main():
                      vehicle_length=6)
 
     consist = IntermodalCarConsist(roster='pony',
-                                   base_numeric_id=2840,
+                                   base_numeric_id=1620,
                                    gen=6,
                                    subtype='B')
 
