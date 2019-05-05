@@ -7,7 +7,7 @@
         template spriteset_template_asymmetric_unreversed_${vehicle_length}_8_${flipped[1]}(y) {
                 //[left_x, upper_y, width, height, offset_x, offset_y]
             <tal:sprite repeat="bounding_box global_constants.spritesheet_bounding_boxes_asymmetric_unreversed">
-                [${bounding_box[0]}, y, ${bounding_box[1]}, ${bounding_box[2]}, ${utils.get_offsets(vehicle_length,flipped=flipped[0])[repeat.bounding_box.index][0]}, ${utils.get_offsets(vehicle_length,flipped=flipped[0])[repeat.bounding_box.index][1]} <!--!${', ANIM' if consist.suppress_animated_pixel_warnings else ''}-->]
+                [${bounding_box[0]}, y, ${bounding_box[1]}, ${bounding_box[2]}, ${utils.get_offsets(vehicle_length,flipped=flipped[0])[repeat.bounding_box.index][0]}, ${utils.get_offsets(vehicle_length,flipped=flipped[0])[repeat.bounding_box.index][1]} <!--!${', ANIM' if consist.suppress_animated_pixel_warnings else ''}-->]<!--! suppressed when spriteseheets were made global, can restore by repeating on anim/non-anim -->
             </tal:sprite>
         }
 
