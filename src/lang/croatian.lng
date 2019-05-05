@@ -36,6 +36,7 @@ STR_NAME_SUFFIX_BOX_CAR                                         :Zatvoreni vagon
 STR_NAME_SUFFIX_CABOOSE_CAR                                     :Vagon za kočničara
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Pokriveni vagon za rasuti teret
 STR_NAME_SUFFIX_CRYO_TANK_CAR                                   :Krio-cisterna
+STR_NAME_SUFFIX_CURTAIN_SIDE_BOX_CAR                            :Vagon sa stranicama od cerade
 STR_NAME_SUFFIX_DUMP_CAR                                        :Vagon za rudače
 STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Vagon cisterna za prehrambene proizvode
 STR_NAME_SUFFIX_EXPRESS_CAR                                     :Ekspresni vagon
@@ -51,8 +52,10 @@ STR_NAME_SUFFIX_OPEN_CAR                                        :Otvoreni vagon
 STR_NAME_SUFFIX_PASSENGER_CAR                                   :Putnički vagon
 STR_NAME_SUFFIX_REEFER_CAR                                      :Vagon hladnjača
 STR_NAME_SUFFIX_SILO_CAR                                        :Vagon-silos
+STR_NAME_SUFFIX_SLIDING_WALL_CAR                                :Vagon sa pomičnim stranicama
 STR_NAME_SUFFIX_STAKE_CAR                                       :Plato-vagon sa stupcima
 STR_NAME_SUFFIX_TANK_CAR                                        :Vagon cisterna
+STR_NAME_SUFFIX_TARPAULIN_CAR                                   :Vagon sa ceradom
 STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Vagon za prijevoz vozila
 STR_NAME_SUFFIX_WELL_CAR                                        :Vagon za kontejnere na kat
 
