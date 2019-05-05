@@ -103,6 +103,9 @@ open_cars.main()
 from vehicles import passenger_cars
 passenger_cars.main()
 
+from vehicles import plate_cars
+plate_cars.main()
+
 from vehicles import reefer_cars
 reefer_cars.main()
 

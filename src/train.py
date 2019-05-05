@@ -1330,6 +1330,24 @@ class PassengerLuxuryCarConsist(PassengerCarConsistBase):
                                                                      consist_ruleset='pax_cars')
 
 
+class PlateCarConsist(CarConsist):
+    """
+    Low-side wagon - variant on flat wagon, refits same
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = 'plate_car'
+        super().__init__(**kwargs)
+        self.class_refit_groups = ['flatbed_freight']
+        self.label_refits_allowed = ['GOOD']
+        self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_flatbed_freight']
+        self.default_cargos = global_constants.default_cargos['flat']
+        # allow flipping, used to flip company colour
+        self.allow_flip = True
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsVisibleCargo(piece='flat')
+
+
 class ReeferCarConsist(CarConsist):
     """
     Refrigerated cargos, with improved decay rate
