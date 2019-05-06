@@ -134,7 +134,7 @@ def main():
                      chassis='2_axle_filled_16px')
     """
     consist = PlateCarConsist(roster='pony',
-                             base_numeric_id=1840,
+                             base_numeric_id=1800,
                              gen=5,
                              subtype='B',
                              sprites_complete=False)
@@ -142,7 +142,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      cargo_length=6,
                      chassis='2_axle_filled_24px')
-    """
+
     consist = PlateCarConsist(roster='pony',
                              base_numeric_id=1870,
                              gen=5,
@@ -151,7 +151,7 @@ def main():
 
     consist.add_unit(type=FreightCar,
                      cargo_length=8,
-                     chassis='4_axle_1cc_filled_32px')
+                     chassis='4_axle_filled_32px')
 
     consist = PlateCarConsist(roster='pony',
                              base_numeric_id=1960,
@@ -172,4 +172,4 @@ def main():
     consist.add_unit(type=FreightCar,
                      cargo_length=8,
                      chassis='4_axle_1cc_filled_32px')
-    """
+
