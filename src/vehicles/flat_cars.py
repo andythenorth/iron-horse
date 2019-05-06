@@ -149,7 +149,7 @@ def main():
 
     consist.add_unit(type=FreightCar,
                      cargo_length=8,
-                     chassis='4_axle_1cc_filled_32px')
+                     chassis='4_axle_filled_32px')
 
     consist = FlatCarConsist(roster='pony',
                              base_numeric_id=1630,
