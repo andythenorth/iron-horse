@@ -48,6 +48,7 @@ STR_NAME_SUFFIX_MAIL_CAR                                        :Postwagon
 STR_NAME_SUFFIX_METAL_CAR                                       :Metaalwagon
 STR_NAME_SUFFIX_OPEN_CAR                                        :Open wagon
 STR_NAME_SUFFIX_PASSENGER_CAR                                   :Passagiersrijtuig
+STR_NAME_SUFFIX_PLATE_CAR                                       :Plaatwagon
 STR_NAME_SUFFIX_REEFER_CAR                                      :Koelwagon
 STR_NAME_SUFFIX_SILO_CAR                                        :Silowagon
 STR_NAME_SUFFIX_SLIDING_WALL_CAR                                :Voertuig met schuifdeuren
