@@ -90,8 +90,8 @@ mail_cars.main()
 
 """
 # commented out for 2.0 alpha
-from vehicles import metal_cars
-metal_cars.main()
+from vehicles import torpedo_cars
+torpedo_cars.main()
 """
 
 from vehicles import open_cars

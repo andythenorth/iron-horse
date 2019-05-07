@@ -1215,19 +1215,19 @@ class MailCarConsist(CarConsist):
                                                                      consist_ruleset='mail_cars')
 
 
-class MetalCarConsist(CarConsist):
+class TorpedoCarConsist(CarConsist):
     """
     Specialist heavy haul metal transport e.g. torpedo car, ladle, etc
     High capacity, not very fast, refits to small subset of finished metal cargos (and slag, which bends the rules a bit).
     """
 
     def __init__(self, **kwargs):
-        self.base_id = 'metal_car'
+        self.base_id = 'torpedo_car'
         super().__init__(**kwargs)
         self.class_refit_groups = [] # no classes, use explicit labels
         self.label_refits_allowed = ['STEL', 'COPR', 'IRON', 'SLAG', 'METL'] # not convinced about these at all eh
         self.label_refits_disallowed = []
-        self.default_cargos = global_constants.default_cargos['metal']
+        self.default_cargos = global_constants.default_cargos['metal'] # should this be hot_metal ?
         self.loading_speed_multiplier = 2
         self.buy_cost_adjustment_factor = 1.2
         self.floating_run_cost_multiplier = 1.33
