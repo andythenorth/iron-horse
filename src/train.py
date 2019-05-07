@@ -929,6 +929,26 @@ class CabooseCarConsist(CarConsist):
                                                        recolour_maps=graphics_constants.caboose_livery_recolour_maps)
 
 
+class CoilCarConsist(CarConsist):
+    """
+    Coil car - for finished metals (steel, copper etc)
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = 'coil_car'
+        super().__init__(**kwargs)
+        self.class_refit_groups = []
+        self.label_refits_allowed = global_constants.allowed_refits_by_label['cold_metal']
+        self.label_refits_disallowed = []
+        self.default_cargos = global_constants.default_cargos['metal']
+        self.buy_cost_adjustment_factor = 1.1
+        # allow flipping, used to flip company colour
+        self.allow_flip = True
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(id_base='coil_car',
+                                                                  recolour_maps=graphics_constants.coil_car_livery_recolour_maps)
+
+
 class CoveredHopperCarConsist(CarConsist):
     """
     Bulk cargos needing covered protection.

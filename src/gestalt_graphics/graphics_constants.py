@@ -50,6 +50,9 @@ caboose_livery_recolour_maps = (# DFLT can be used twice here with no problems, 
                                           40: CC1, 41: CC1+1, 42: CC1+2, 43: CC1+3,
                                           44: CC1+4, 45: CC1+5, 46: CC1+6, 47: CC1+7}),)
 
+coil_car_livery_recolour_maps = (("DFLT", {136: CC1, 137: CC1+1, 138: CC1+2, 139: CC1+3,
+                                           140: CC1+4, 141: CC1+5, 142: CC1+6, 143: CC1+7}),)
+
 cryo_tank_car_livery_recolour_maps = (("DFLT", {136: 5, 137: 7, 138: 9, 139: 11,
                                                 140: 12, 141: 13, 142: 14, 143: 15}),
                                       ("CHLO", {136: 154, 137: 155, 138: 157, 139: 158,

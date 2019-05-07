@@ -118,7 +118,8 @@ allowed_refits_by_label = {'edible_liquids': ['MILK', 'WATR', 'BEER', 'FOOD', 'E
                                                'BEAN', 'NITR', 'RUBR', 'SAND', 'POTA', 'QLME', 'SASH', 'CMNT',
                                                'KAOL', 'FERT', 'SALT', 'CBLK', 'PLAS'],
                            'cryo_gases': ['CHLO', 'O2__'],
-                           'fruit_veg': ['FRUT', 'BEAN', 'CASS', 'JAVA', 'NUTS']}
+                           'fruit_veg': ['FRUT', 'BEAN', 'CASS', 'JAVA', 'NUTS'],
+                           'cold_metal': ['STEL', 'METL', 'STCB', 'STAL', 'STST', 'COPR']}
 
 # rather than using disallowed classes (can cause breakage), specific labels are disallowed
 disallowed_refits_by_label = {'non_dump_bulk': ['WOOD', 'SGCN', 'FICR', 'BDMT', 'WDPR', 'GRAI', 'WHEA', 'CERE', 'MAIZ', 'FRUT', 'BEAN', 'CMNT',
@@ -209,13 +210,6 @@ piece_sprites_to_cargo_labels_maps = {'barrels_silver': ['BEER', 'DYES', 'EOIL',
                                       'tarps_gold_1': ['ENSP'],
                                       'tarps_red_1': ['BDMT'],
                                       'tarps_2cc_1': ['DFLT']}  # see note on use of DFLT above
-
-"""
-saved for cryo tanker recolours
-                               ("CHLO", {136: 154, 137: 155, 138: 156, 139: 157,
-                                         140: 158, 141: 159, 142: 160, 143: 161}),
-
-"""
 
 # Tanker recolour maps
 # DFLT label is a hack to support cargos with no specific sprites (including unknown cargos), and should not be added to cargo translation table
