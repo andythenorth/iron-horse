@@ -25,6 +25,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      chassis='4_axle_ng_16px')
 
+
     consist = BoxCarConsist(roster='pony',
                             base_numeric_id=810,
                             gen=4,
@@ -50,6 +51,7 @@ def main():
 
     # no new type A for gen 2, gen 1 type A continues
 
+
     consist = BoxCarConsist(roster='pony',
                             base_numeric_id=550,
                             gen=2,
@@ -58,6 +60,7 @@ def main():
 
     consist.add_unit(type=FreightCar,
                      chassis='4_axle_gapped_24px')
+
 
     consist = BoxCarConsist(roster='pony',
                             base_numeric_id=560,
@@ -68,6 +71,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      chassis='2_axle_filled_16px')
 
+
     consist = BoxCarConsist(roster='pony',
                             base_numeric_id=2340,
                             gen=3,
@@ -76,6 +80,7 @@ def main():
 
     consist.add_unit(type=FreightCar,
                      chassis='4_axle_filled_24px')
+
 
     consist = BoxCarConsist(roster='pony',
                             base_numeric_id=570,
@@ -86,6 +91,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      chassis='2_axle_filled_16px')
 
+
     consist = BoxCarConsist(roster='pony',
                             base_numeric_id=2500,
                             gen=4,
@@ -94,6 +100,7 @@ def main():
 
     consist.add_unit(type=FreightCar,
                      chassis='2_axle_filled_24px')
+
 
     consist = BoxCarConsist(roster='pony',
                             base_numeric_id=2480,
@@ -104,6 +111,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      chassis='2_axle_filled_24px')
 
+
     consist = BoxCarConsist(roster='pony',
                             base_numeric_id=2490,
                             gen=5,
@@ -113,6 +121,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      chassis='4_axle_1cc_filled_32px')
 
+
     consist = BoxCarConsist(roster='pony',
                             base_numeric_id=1670,
                             gen=6,
@@ -121,6 +130,7 @@ def main():
 
     consist.add_unit(type=FreightCar,
                      chassis='2_axle_filled_24px')
+
 
     consist = BoxCarConsist(roster='pony',
                             base_numeric_id=1680,
