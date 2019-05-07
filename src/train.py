@@ -1553,6 +1553,9 @@ class Train(object):
         self.cargo_length = kwargs.get('cargo_length', None)
         # optional - only set if the graphics processor generates the vehicle chassis
         self.chassis = kwargs.get('chassis', None)
+        # optional - occasionally we need to suppress composited roof sprites and just draw our own
+        self.suppress_roof_sprite = kwargs.get('suppress_roof_sprite', False)
+
         # 'symmetric' or 'asymmetric'?
         # defaults to symmetric, over-ride in sub-classes or per vehicle as needed
         self._symmetry_type = kwargs.get('symmetry_type', 'symmetric')

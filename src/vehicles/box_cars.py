@@ -103,6 +103,17 @@ def main():
 
 
     consist = BoxCarConsist(roster='pony',
+                            base_numeric_id=1980,
+                            gen=4,
+                            subtype='C',
+                            sprites_complete=False)
+
+    consist.add_unit(type=FreightCar,
+                     suppress_roof_sprite=True, # non-standard roof for this wagon
+                     chassis='4_axle_1cc_filled_32px')
+
+
+    consist = BoxCarConsist(roster='pony',
                             base_numeric_id=2480,
                             gen=5,
                             subtype='B',
