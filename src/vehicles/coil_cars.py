@@ -11,8 +11,7 @@ def main():
                              sprites_complete=False)
 
     consist.add_unit(type=FreightCar,
-                     cargo_length=8,
-                     chassis='4_axle_sparse_24px')
+                     chassis='4_axle_gapped_24px')
 
 
     consist = CoilCarConsist(roster='pony',
@@ -22,8 +21,7 @@ def main():
                              sprites_complete=False)
 
     consist.add_unit(type=FreightCar,
-                     cargo_length=8,
-                     chassis='4_axle_sparse_32px')
+                     chassis='4_axle_gapped_32px')
 
 
     consist = CoilCarConsist(roster='pony',
@@ -33,7 +31,6 @@ def main():
                              sprites_complete=False)
 
     consist.add_unit(type=FreightCar,
-                     cargo_length=8,
                      chassis='4_axle_sparse_24px')
 
 
@@ -44,7 +41,6 @@ def main():
                              sprites_complete=False)
 
     consist.add_unit(type=FreightCar,
-                     cargo_length=8,
                      chassis='4_axle_sparse_32px')
 
 
@@ -55,7 +51,6 @@ def main():
                              sprites_complete=False)
 
     consist.add_unit(type=FreightCar,
-                     cargo_length=8,
                      chassis='4_axle_sparse_24px')
 
 
@@ -66,5 +61,4 @@ def main():
                              sprites_complete=False)
 
     consist.add_unit(type=FreightCar,
-                     cargo_length=8,
                      chassis='4_axle_sparse_32px')
