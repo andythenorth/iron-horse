@@ -32,7 +32,6 @@ STR_NAME_SUFFIX_FLAT_CAR                                        :Currus Planus
 STR_NAME_SUFFIX_HOPPER_CAR                                      :Currus Infundibularis
 STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Currus Pecuarius
 STR_NAME_SUFFIX_MAIL_CAR                                        :Currus Cursualis
-STR_NAME_SUFFIX_METAL_CAR                                       :Currus Metallicus
 STR_NAME_SUFFIX_OPEN_CAR                                        :Currus Apertus
 STR_NAME_SUFFIX_PASSENGER_CAR                                   :Currus Vectorius
 STR_NAME_SUFFIX_REEFER_CAR                                      :Currus Frigidarius
