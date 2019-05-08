@@ -4,6 +4,8 @@ from train import CoilCarConsist, FreightCar
 def main():
     #--------------- pony ----------------------------------------------------------------------
 
+    # start gen 4, B and C lengths only
+
     consist = CoilCarConsist(roster='pony',
                              base_numeric_id=2030,
                              gen=4,
