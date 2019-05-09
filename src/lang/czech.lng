@@ -19,7 +19,7 @@ STR_PARAM_ROSTER_OPTION_2                                       :Železná antil
 STR_NAME_SUFFIX_DIESEL                                          :Dieselová
 STR_NAME_SUFFIX_ELECTRIC                                        :Elektrická
 STR_NAME_SUFFIX_ELECTRODIESEL                                   :Diesel-Elektrická
-STR_NAME_SUFFIX_METRO                                           :Metro
+STR_NAME_SUFFIX_METRO                                           :Metro vůz
 STR_NAME_SUFFIX_STEAM                                           :Parní
 
 # size suffixes
@@ -34,12 +34,14 @@ STR_NAME_SUFFIX_LARGE                                           :Velký
 STR_NAME_SUFFIX_ALIGNMENT_CAR                                   :Zarovnávací vůz
 STR_NAME_SUFFIX_BOX_CAR                                         :Krytý nákladní vůz
 STR_NAME_SUFFIX_CABOOSE_CAR                                     :Služební vůz
+STR_NAME_SUFFIX_COIL_CAR                                        :Kabelové vozy
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Krytý násypný vůz
 STR_NAME_SUFFIX_CRYO_TANK_CAR                                   :Chladící cisterna
+STR_NAME_SUFFIX_CURTAIN_SIDE_BOX_CAR                            :Kontejnerový vůz
 STR_NAME_SUFFIX_DUMP_CAR                                        :Výsypný vůz
 STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Potravinová cisterna
 STR_NAME_SUFFIX_EXPRESS_CAR                                     :Expresní vůz
-STR_NAME_SUFFIX_FLAT_CAR                                        :Plošinový vůz
+STR_NAME_SUFFIX_FLAT_CAR                                        :Nízkostěnný vůz
 STR_NAME_SUFFIX_FRUIT_VEG_CAR                                   :Vůz na ovoce a zeleninu
 STR_NAME_SUFFIX_HOPPER_CAR                                      :Násypný vůz
 STR_NAME_SUFFIX_INTERMODAL_CAR                                  :Intermodální vůz
@@ -48,10 +50,14 @@ STR_NAME_SUFFIX_LUXURY_PASSENGER_CAR                            :Luxusní osobn�
 STR_NAME_SUFFIX_MAIL_CAR                                        :Poštovní vůz
 STR_NAME_SUFFIX_OPEN_CAR                                        :Otevřený vůz
 STR_NAME_SUFFIX_PASSENGER_CAR                                   :Vůz pro cestující
+STR_NAME_SUFFIX_PLATE_CAR                                       :Plošinový vůz
 STR_NAME_SUFFIX_REEFER_CAR                                      :Chladící vůz
 STR_NAME_SUFFIX_SILO_CAR                                        :Silo vůz
+STR_NAME_SUFFIX_SLIDING_WALL_CAR                                :Vůz s posuvnými stěnami
 STR_NAME_SUFFIX_STAKE_CAR                                       :Vůz na dřevo
 STR_NAME_SUFFIX_TANK_CAR                                        :Cisterna
+STR_NAME_SUFFIX_TARPAULIN_CAR                                   :Plachtový vůz
+STR_NAME_SUFFIX_TORPEDO_CAR                                     :Torpédový vůz
 STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Vůz pro přepravu vozidel
 STR_NAME_SUFFIX_WELL_CAR                                        :Kontejnerový vůz
 
