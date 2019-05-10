@@ -2,50 +2,13 @@ from train import PlateCarConsist, FreightCar
 
 
 def main():
-    #--------------- pony NG ----------------------------------------------------------------------
-    """
-    consist = PlateCarConsist(roster='pony',
-                             base_numeric_id=1170,
-                             gen=1,
-                             subtype='U',
-                             base_track_type='NG',
-                             sprites_complete=False)
-
-    consist.add_unit(type=FreightCar,
-                     cargo_length=4,
-                     chassis='4_axle_ng_16px')
-
-    # no gen 2 for NG, straight to gen 3
-
-    consist = PlateCarConsist(roster='pony',
-                             base_numeric_id=1130,
-                             gen=3,
-                             subtype='U',
-                             base_track_type='NG',
-                             sprites_complete=False)
-
-    consist.add_unit(type=FreightCar,
-                     cargo_length=4,
-                     chassis='4_axle_ng_16px')
-
-    consist = PlateCarConsist(roster='pony',
-                             base_numeric_id=1370,
-                             gen=4,
-                             subtype='U',
-                             base_track_type='NG',
-                             sprites_complete=False)
-
-    consist.add_unit(type=FreightCar,
-                     cargo_length=4,
-                     chassis='4_axle_ng_16px')
-    """
     #--------------- pony ----------------------------------------------------------------------
 
     consist = PlateCarConsist(roster='pony',
                              base_numeric_id=1480,
                              gen=1,
                              subtype='A',
-                             sprites_complete=False)
+                             sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
                      cargo_length=4,
@@ -67,7 +30,7 @@ def main():
                              base_numeric_id=1500,
                              gen=3,
                              subtype='A',
-                             sprites_complete=False)
+                             sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
                      cargo_length=4,
@@ -97,7 +60,7 @@ def main():
                              base_numeric_id=1550,
                              gen=4,
                              subtype='A',
-                             sprites_complete=False)
+                             sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
                      cargo_length=4,
