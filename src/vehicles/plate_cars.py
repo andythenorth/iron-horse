@@ -20,7 +20,7 @@ def main():
                              base_numeric_id=1490,
                              gen=2,
                              subtype='B',
-                             sprites_complete=False)
+                             sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
                      cargo_length=6,
@@ -40,7 +40,7 @@ def main():
                              base_numeric_id=1540,
                              gen=3,
                              subtype='B',
-                             sprites_complete=False)
+                             sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
                      cargo_length=6,
@@ -70,7 +70,7 @@ def main():
                              base_numeric_id=1470,
                              gen=4,
                              subtype='B',
-                             sprites_complete=False)
+                             sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
                      cargo_length=6,
@@ -90,7 +90,7 @@ def main():
                              base_numeric_id=1800,
                              gen=5,
                              subtype='B',
-                             sprites_complete=False)
+                             sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
                      cargo_length=6,
@@ -110,7 +110,7 @@ def main():
                              base_numeric_id=1960,
                              gen=6,
                              subtype='B',
-                             sprites_complete=False)
+                             sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
                      cargo_length=6,
