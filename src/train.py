@@ -1017,7 +1017,7 @@ class CurtainSideCarBoxConsist(CarConsist):
         # allow flipping, used to flip company colour
         self.allow_flip = True
         # Graphics configuration
-        # roofs are drawn in by hand for curtain side cars
+        self.roof_type = 'freight'
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(id_base='curtain_side_box_car',
                                                                   recolour_maps=graphics_constants.curtain_side_livery_recolour_maps)
 
