@@ -14,34 +14,51 @@ STR_PARAM_ROSTER_OPTION_1                                       :Rautalaama
 STR_PARAM_ROSTER_OPTION_2                                       :Rauta-antilooppi
 
 # keep these alphabetised, easier
-STR_NAME_SUFFIX_DIESEL                                          :(Diesel)
-STR_NAME_SUFFIX_ELECTRIC                                        :(Sähkö)
-STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Sähkö-Diesel)
-STR_NAME_SUFFIX_STEAM                                           :(Höyry)
+STR_NAME_SUFFIX_DIESEL                                          :Diesel
+STR_NAME_SUFFIX_ELECTRIC                                        :Sähkö
+STR_NAME_SUFFIX_ELECTRODIESEL                                   :Sähkö-Diesel
+STR_NAME_SUFFIX_METRO                                           :Metro
+STR_NAME_SUFFIX_STEAM                                           :Höyry
 
 # size suffixes
+STR_NAME_SUFFIX_SMALL                                           :Kevyt
+STR_NAME_SUFFIX_MEDIUM                                          :Keskiraskas
+STR_NAME_SUFFIX_LARGE                                           :Raskas
 
 # wagon class suffixes
 # as of Jan 2019 these are switched from en-us to en-gb
 # the en-us translation should be updated appropriately when making changes here
 # !! consider splitting strings per roster?? A US caboose is still a 'caboose' in en-gb, not a brake van
+STR_NAME_SUFFIX_ALIGNMENT_CAR                                   :Ryhmitysvaunu
 STR_NAME_SUFFIX_BOX_CAR                                         :Yleisvaunu
-STR_NAME_SUFFIX_CABOOSE_CAR                                     :Konduktöörivaunu
-STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Irtotavaravaunu
-STR_NAME_SUFFIX_DUMP_CAR                                        :Kippivaunu
+STR_NAME_SUFFIX_CABOOSE_CAR                                     :Jarruvaunu
+STR_NAME_SUFFIX_COIL_CAR                                        :Teräskelavaunu
+STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Katettu Irtotavaravaunu
+STR_NAME_SUFFIX_CRYO_TANK_CAR                                   :Kryosäiliövaunu
+STR_NAME_SUFFIX_CURTAIN_SIDE_BOX_CAR                            :Sivupeitevaunu
+STR_NAME_SUFFIX_DUMP_CAR                                        :Rikastevaunu
 STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Elintarvikesäiliövaunu
+STR_NAME_SUFFIX_EXPRESS_CAR                                     :Päivävaunu
 STR_NAME_SUFFIX_FLAT_CAR                                        :Avovaunu
-STR_NAME_SUFFIX_HOPPER_CAR                                      :Rikastevaunu
+STR_NAME_SUFFIX_FRUIT_VEG_CAR                                   :Hedelmä- ja vihannesvaunu
+STR_NAME_SUFFIX_HOPPER_CAR                                      :Irtotavaravaunu
 STR_NAME_SUFFIX_INTERMODAL_CAR                                  :Yhdistettyjen kuljetusten vaunu
 STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Karjavaunu
 STR_NAME_SUFFIX_LUXURY_PASSENGER_CAR                            :Luksusmatkustajavaunu
 STR_NAME_SUFFIX_MAIL_CAR                                        :Postivaunu
 STR_NAME_SUFFIX_OPEN_CAR                                        :Laidallinen avovaunu
 STR_NAME_SUFFIX_PASSENGER_CAR                                   :Matkustajavaunu
+STR_NAME_SUFFIX_PLATE_CAR                                       :Järeän tavaran vaunu
 STR_NAME_SUFFIX_REEFER_CAR                                      :Jäähdytysvaunu
 STR_NAME_SUFFIX_SILO_CAR                                        :Jauhevaunu
+STR_NAME_SUFFIX_SLIDING_WALL_CAR                                :Siirtokatevaunu
 STR_NAME_SUFFIX_STAKE_CAR                                       :Yleisavovaunu
 STR_NAME_SUFFIX_TANK_CAR                                        :Säiliövaunu
+STR_NAME_SUFFIX_TARPAULIN_CAR                                   :Peitekangasvaunu
+STR_NAME_SUFFIX_TORPEDO_CAR                                     :Torpedovaunu
 STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Ajoneuvonkuljetusvaunu
+STR_NAME_SUFFIX_WELL_CAR                                        :Konttivaunu
 
 # project management
+STR_SPRITES_COMPLETE                                            :{}Grafiikat piirretty: {GOLD}Kyllä
+STR_SPRITES_INCOMPLETE                                          :{}Grafiikat piirretty: {GOLD}Ei
