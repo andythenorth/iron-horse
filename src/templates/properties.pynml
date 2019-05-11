@@ -68,7 +68,7 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
         climates_available:             NO_CLIMATE; // nml constant
         engine_class:                   ${vehicle.engine_class};
         visual_effect_and_powered:      visual_effect_and_powered(VISUAL_EFFECT_DISABLE, 0, DISABLE_WAGON_POWER);
-        introduction_date:              date(${consist.intro_date},01,01); // consist just supplies intro year - openttd randomises intro dates a bit anyway
+        introduction_date:              date(${consist.intro_date},01,01) + ${consist.intro_date_days_offset};
         cargo_capacity:                 ${vehicle.default_cargo_capacity};
         sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
         power:                          ${consist.power}hp;

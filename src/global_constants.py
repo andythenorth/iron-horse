@@ -56,6 +56,18 @@ PR_RUNNING_TRAIN_STEAM = -2
 # NOTE: all wagons use RUNNING_COST_DIESEL, nerfed down to small increments, for fine-grained control over low wagon run costs
 PR_RUNNING_TRAIN_DIESEL = -4
 
+# days offset is used to control *synchronising* (or not) intro dates across groups of vehicles where needed
+# see https://github.com/OpenTTD/OpenTTD/pull/7147 for explanation
+# the actual values don't matter very much, so just use small steps
+intro_date_offsets_by_role_group = {'universal': 0,
+                                    'express': 1,
+                                    'freight': 2,
+                                    'railcar': 3,
+                                    'metro': 4,
+                                    'high_speed': 5,
+                                    'food_wagons': 6,
+                                    'non_core_wagons': 7}
+
 # standard offsets for trains
 default_spritesheet_offsets = {'3': [[-3, -26],  [-3, -20],   [0, -12],  [5, -16], [-3, -16], [-14, -15], [-16, -12],  [-8, -21]],
                                '4': [[-3, -24],  [-6, -19],   [0, -12],  [0, -16], [-3, -16], [-14, -15], [-16, -12],  [-8, -20]],

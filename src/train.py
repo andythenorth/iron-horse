@@ -49,6 +49,8 @@ class Consist(object):
         self._gen = kwargs.get('gen', None)
         # if gen is used, the calculated intro date can be adjusted with +ve or -ve offset
         self.intro_date_offset = kwargs.get('intro_date_offset', None)
+        # used for synchronising / desynchronising intro dates for groups vehicles, see https://github.com/OpenTTD/OpenTTD/pull/7147
+        self._intro_date_days_offset = None # defined in subclasses, no need for instances to define this
         self.vehicle_life = kwargs.get('vehicle_life', 40)
         self.power = kwargs.get('power', 0)
         self.base_track_type = kwargs.get('base_track_type', 'RAIL')
@@ -219,6 +221,29 @@ class Consist(object):
             if self.intro_date_offset is not None:
                 result = result + self.intro_date_offset
             return result
+
+    @property
+    def intro_date_days_offset(self):
+        # days offset is used to control *synchronising* (or not) intro dates across groups of vehicles where needed
+        # see https://github.com/OpenTTD/OpenTTD/pull/7147 for explanation
+        role_to_role_groups_mapping = {'express': ['branch_express', 'express_1', 'heavy_express_1', 'heavy_express_2'],
+                                       'freight': ['branch_freight', 'freight', 'heavy_freight_1', 'heavy_freight_2'],
+                                       'metro': ['mail_metro', 'pax_metro'],
+                                       'railcar': ['mail_railcar_1', 'mail_railcar_2', 'pax_railcar_1', 'pax_railcar_2'],
+                                       'high_speed': ['pax_high_speed'],
+                                       'universal': ['universal']}
+        if self._intro_date_days_offset is not None:
+            # offset defined in class (probably a wagon)
+            return self._intro_date_days_offset
+        else:
+            result = None
+            # assume role is defined (_probably_ fine)
+            for group_key, group_role_list in role_to_role_groups_mapping.items():
+                if self.role in group_role_list:
+                    result = global_constants.intro_date_offsets_by_role_group[group_key]
+            # check we actually got a result
+            assert(result != None), 'no role group found for role %s for consist %s' % (self.role,  self.id)
+        return result
 
     @property
     def gen(self):
@@ -781,6 +806,9 @@ class CarConsist(Consist):
         self.weight_factor = 0.8 if self.base_track_type == 'NG' else 1
         self.loading_speed_multiplier = kwargs.get(
             'loading_speed_multiplier', 1)
+        # used to synchronise / desynchronise groups of vehicles, see https://github.com/OpenTTD/OpenTTD/pull/7147 for explanation
+        # default all to car consists to 'universal' offset, over-ride in subclasses as needed
+        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['universal']
         # assume all wagons randomly swap CC, revert to False in wagon subclasses as needed
         self.random_company_colour_swap = True
 
@@ -942,6 +970,7 @@ class CoilCarConsist(CarConsist):
         self.label_refits_disallowed = []
         self.default_cargos = global_constants.default_cargos['metal']
         self.buy_cost_adjustment_factor = 1.1
+        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['non_core_wagons']
         # allow flipping, used to flip company colour
         self.allow_flip = True
         # Graphics configuration
@@ -964,6 +993,7 @@ class CoveredHopperCarConsist(CarConsist):
         self.default_cargos = global_constants.default_cargos['covered_hopper']
         self.loading_speed_multiplier = 2
         self.buy_cost_adjustment_factor = 1.2
+        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['non_core_wagons']
         # CC is swapped randomly (player can't choose), but also swap base livery on flip (player can choose
         self.allow_flip = True
         # Graphics configuration
@@ -994,6 +1024,7 @@ class CryoTankCarConsist(CarConsist):
         self.loading_speed_multiplier = 2
         self.buy_cost_adjustment_factor = 1.33
         self.floating_run_cost_multiplier = 1.5
+        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['non_core_wagons']
         # CC is swapped randomly (player can't choose), but also swap base livery on flip (player can choose
         self.allow_flip = True
         # Graphics configuration
@@ -1014,6 +1045,7 @@ class CurtainSideCarBoxConsist(CarConsist):
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_freight_special_cases']
         self.default_cargos = global_constants.default_cargos['box']
         self.buy_cost_adjustment_factor = 1.2
+        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['non_core_wagons']
         # allow flipping, used to flip company colour
         self.allow_flip = True
         # Graphics configuration
@@ -1062,6 +1094,7 @@ class EdiblesTankCarConsist(CarConsist):
         self.loading_speed_multiplier = 2
         self.buy_cost_adjustment_factor = 1.33
         self.floating_run_cost_multiplier = 1.5
+        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['food_wagons']
         # CC is swapped randomly (player can't choose), but also swap base livery on flip (player can choose
         self.allow_flip = True
         # Graphics configuration
@@ -1084,6 +1117,7 @@ class ExpressCarConsist(CarConsist):
         # adjust weight factor because express car freight capacity is 1/2 of other wagons, but weight should be same
         self.weight_factor = polar_fox.constants.mail_multiplier
         self.floating_run_cost_multiplier = 1.66
+        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['express']
         self.allow_flip = True
         # Graphics configuration
         if self.gen in [1]:
@@ -1128,6 +1162,7 @@ class FruitVegCarConsist(CarConsist):
         self.default_cargos = global_constants.default_cargos['fruit_veg']
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
         self.buy_cost_adjustment_factor = 1.2
+        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['non_core_wagons']
         # allow flipping, used to flip company colour
         self.allow_flip = True
         # Graphics configuration
@@ -1211,6 +1246,7 @@ class MailCarConsist(CarConsist):
         # adjust weight factor because mail car freight capacity is 1/2 of other wagons, but weight should be same
         self.weight_factor = polar_fox.constants.mail_multiplier
         self.floating_run_cost_multiplier = 3
+        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['express']
         self.allow_flip = True
         self.random_company_colour_swap = False
         # Graphics configuration
@@ -1251,6 +1287,7 @@ class TorpedoCarConsist(CarConsist):
         self.loading_speed_multiplier = 2
         self.buy_cost_adjustment_factor = 1.2
         self.floating_run_cost_multiplier = 1.33
+        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['non_core_wagons']
         # !! probably want some capacity multiplier here, metal cars have higher capacity per unit length (at high cost!)
 
 
@@ -1286,6 +1323,7 @@ class PassengerCarConsistBase(CarConsist):
         self.label_refits_allowed = []
         self.label_refits_disallowed = []
         self.default_cargos = global_constants.default_cargos['pax']
+        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['express']
         self.random_company_colour_swap = False
         self.allow_flip = True
         # roof configuration
@@ -1362,6 +1400,7 @@ class PlateCarConsist(CarConsist):
         self.label_refits_allowed = ['GOOD']
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_flatbed_freight']
         self.default_cargos = global_constants.default_cargos['flat']
+        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['non_core_wagons']
         # allow flipping, used to flip company colour
         self.allow_flip = True
         # Graphics configuration
@@ -1384,6 +1423,7 @@ class ReeferCarConsist(CarConsist):
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
         self.buy_cost_adjustment_factor = 1.33
         self.floating_run_cost_multiplier = 1.66
+        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['food_wagons']
         # allow flipping, used to flip company colour
         self.allow_flip = True
         # Graphics configuration
@@ -1407,6 +1447,7 @@ class SiloCarConsist(CarConsist):
         self.default_cargos = global_constants.default_cargos['silo']
         self.loading_speed_multiplier = 2
         self.buy_cost_adjustment_factor = 1.2
+        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['non_core_wagons']
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.silo_livery_recolour_maps)
 
@@ -1424,6 +1465,7 @@ class SlidingWallCarConsist(CarConsist):
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_freight_special_cases']
         self.default_cargos = global_constants.default_cargos['box']
         self.buy_cost_adjustment_factor = 1.2
+        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['non_core_wagons']
         # allow flipping, used to flip company colour
         self.allow_flip = True
         # Graphics configuration
@@ -1445,6 +1487,7 @@ class StakeCarConsist(CarConsist):
         self.label_refits_disallowed = []
         self.default_cargos = global_constants.default_cargos['stake']
         self.loading_speed_multiplier = 2
+        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['non_core_wagons']
         # allow flipping, used to flip company colour
         self.allow_flip = True
         # Graphics configuration
@@ -1464,6 +1507,7 @@ class TarpaulinCarConsist(CarConsist):
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_flatbed_freight']
         self.default_cargos = global_constants.default_cargos['flat']
         self.buy_cost_adjustment_factor = 1.1
+        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['non_core_wagons']
         # allow flipping, used to flip company colour
         self.allow_flip = True
         # Graphics configuration
@@ -1483,6 +1527,7 @@ class WellCarConsist(CarConsist):
         self.label_refits_allowed = ['ENSP', 'FMSP', 'VEHI']
         self.label_refits_disallowed = []
         self.default_cargos = global_constants.default_cargos['supplies']
+        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['non_core_wagons']
         # !! flipping not currently allowed as don't know if asymmetric sprites support is working (might be fine?)
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(heavy_items=True)
@@ -1524,6 +1569,7 @@ class VehicleTransporterCarConsist(CarConsist):
         self.label_refits_disallowed = []
         self.default_cargos = ['VEHI']
         self.buy_cost_adjustment_factor = 1.2
+        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['non_core_wagons']
 
 
 class Train(object):
