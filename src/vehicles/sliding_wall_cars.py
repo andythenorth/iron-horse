@@ -4,12 +4,13 @@ from train import SlidingWallCarConsist, FreightCar
 def main():
     #--------------- pony ----------------------------------------------------------------------
 
-    # starts with gen 4, only B and C lengths
+    # starts gen 4, B and C only
 
     consist = SlidingWallCarConsist(roster='pony',
                             base_numeric_id=1570,
                             gen=4,
                             subtype='B',
+                            intro_date_offset=5,  # let's be a little bit later for this one
                             sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
