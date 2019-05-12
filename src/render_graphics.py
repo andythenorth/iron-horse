@@ -32,9 +32,8 @@ else:
 graphics_input_path = os.path.join(currentdir, 'src', 'graphics')
 graphics_output_path = os.path.join(
     iron_horse.generated_files_path, 'graphics')
-if os.path.exists(graphics_output_path):
-    shutil.rmtree(graphics_output_path)
-os.mkdir(graphics_output_path)
+if not os.path.exists(graphics_output_path):
+    os.mkdir(graphics_output_path)
 
 hint_file = codecs.open(os.path.join(
     graphics_output_path, '_graphics_files_here_are_generated.txt'), 'w', 'utf8')
@@ -81,8 +80,10 @@ def main():
     report_sprites_complete(consists)
 
     for dir_name in ['rear_lights']:
-        dir_path =  os.path.join(graphics_input_path, dir_name)
-        shutil.copytree(dir_path, os.path.join(graphics_output_path, dir_name))
+        target_path =  os.path.join(graphics_input_path, dir_name)
+        dest_path =  os.path.join(graphics_output_path, dir_name)
+        if not os.path.exists(dest_path):
+                shutil.copytree(target_path, dest_path)
 
     print(format((time() - start), '.2f') + 's')
 

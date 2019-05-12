@@ -1,6 +1,7 @@
 import os.path
 currentdir = os.curdir
 
+import filecmp
 from PIL import Image
 
 import polar_fox
@@ -99,6 +100,7 @@ class Pipeline(object):
         # each unit is then called in order, passing in and returning a pixa SpriteSheet
         # finally the spritesheet is saved
         output_path = os.path.join(currentdir, 'generated', 'graphics', self.consist.id + output_suffix + '.png')
+        output_path_tmp = os.path.join(currentdir, 'generated', 'graphics', self.consist.id + output_suffix + '.new.png')
         spritesheet = self.make_spritesheet_from_image(input_image)
 
         for unit in units:
@@ -106,7 +108,20 @@ class Pipeline(object):
         # I don't normally leave commented-out code behind, but I'm bored of looking in the PIL docs for how to show the image during compile
         #if self.consist.id == 'velaro_thing':
             #spritesheet.sprites.show()
-        spritesheet.save(output_path)
+
+        # save a tmp file first and compare to existing file (if any)
+        # this prevents destroying the nmlc sprite cache with every graphics run by needlessly replacing the files
+        # !! this should arguably be moved into pixa
+        if os.path.exists(output_path):
+            # save tmp file
+            spritesheet.save(output_path_tmp)
+            # only save final output file if an existing file doesn't match tmp
+            if not filecmp.cmp(output_path, output_path_tmp):
+                print("replacing", output_path)
+                spritesheet.save(output_path)
+            os.remove(output_path_tmp)
+        else:
+            spritesheet.save(output_path)
 
     def render(self, consist):
         raise NotImplementedError("Implement me in %s" % repr(self))
