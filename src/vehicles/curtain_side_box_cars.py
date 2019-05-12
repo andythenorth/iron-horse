@@ -23,7 +23,7 @@ def main():
 
     consist.add_unit(type=FreightCar,
                      suppress_roof_sprite=True, # non-standard roof for this wagon
-                     chassis='4_axle_2cc_filled_32px')
+                     chassis='4_axle_1cc_filled_32px')
 
 
     consist = CurtainSideCarBoxConsist(roster='pony',
@@ -43,7 +43,7 @@ def main():
                             sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     chassis='4_axle_2cc_filled_32px')
+                     chassis='4_axle_filled_32px')
 
 
     consist = CurtainSideCarBoxConsist(roster='pony',
@@ -53,7 +53,7 @@ def main():
                             sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     chassis='2_axle_2cc_filled_24px')
+                     chassis='2_axle_1cc_filled_24px')
 
 
     consist = CurtainSideCarBoxConsist(roster='pony',
@@ -63,4 +63,4 @@ def main():
                             sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     chassis='4_axle_2cc_filled_32px')
+                     chassis='4_axle_1cc_filled_32px')
