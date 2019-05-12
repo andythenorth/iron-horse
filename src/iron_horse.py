@@ -49,8 +49,11 @@ box_cars.main()
 from vehicles import caboose_cars
 caboose_cars.main()
 
+"""
+# commented out for 2.0 alpha
 from vehicles import coil_cars
 coil_cars.main()
+"""
 
 from vehicles import covered_hopper_cars
 covered_hopper_cars.main()
@@ -79,8 +82,11 @@ fruit_veg_cars.main()
 from vehicles import hopper_cars
 hopper_cars.main()
 
+"""
+# commented out for 2.0 alpha
 from vehicles import intermodal_cars
 intermodal_cars.main()
+"""
 
 from vehicles import livestock_cars
 livestock_cars.main()
