@@ -12,7 +12,6 @@ def main():
                             sprites_complete=False)
 
     consist.add_unit(type=FreightCar,
-                     suppress_roof_sprite=True, # non-standard roof for this wagon
                      chassis='2_axle_filled_24px')
 
 
