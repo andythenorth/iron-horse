@@ -1469,6 +1469,7 @@ class SlidingWallCarConsist(CarConsist):
         # allow flipping, used to flip company colour
         self.allow_flip = True
         # Graphics configuration
+        self.roof_type = 'freight'
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(id_base='sliding_wall_car',
                                                                   recolour_maps=graphics_constants.sliding_wall_livery_recolour_maps)
 

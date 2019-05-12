@@ -4,7 +4,17 @@ from train import SlidingWallCarConsist, FreightCar
 def main():
     #--------------- pony ----------------------------------------------------------------------
 
-    # starts with gen 4C only, then gen 5 and 6, B and C lengths
+    # starts with gen 4, only B and C lengths
+
+    consist = SlidingWallCarConsist(roster='pony',
+                            base_numeric_id=1570,
+                            gen=4,
+                            subtype='B',
+                            sprites_complete=True)
+
+    consist.add_unit(type=FreightCar,
+                     chassis='2_axle_1cc_filled_24px')
+
 
     consist = SlidingWallCarConsist(roster='pony',
                             base_numeric_id=1790,
@@ -14,6 +24,7 @@ def main():
                             sprites_complete=False)
 
     consist.add_unit(type=FreightCar,
+                     suppress_roof_sprite=True, # non-standard roof for this wagon
                      chassis='4_axle_1cc_filled_32px')
 
 
@@ -24,6 +35,7 @@ def main():
                             sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
+                     suppress_roof_sprite=True, # non-standard roof for this wagon
                      chassis='2_axle_1cc_filled_24px')
 
 
@@ -34,6 +46,7 @@ def main():
                             sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
+                     suppress_roof_sprite=True, # non-standard roof for this wagon
                      chassis='4_axle_1cc_filled_32px')
 
 
@@ -44,6 +57,7 @@ def main():
                             sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
+                     suppress_roof_sprite=True, # non-standard roof for this wagon
                      chassis='2_axle_1cc_filled_24px')
 
 
@@ -54,4 +68,5 @@ def main():
                             sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
+                     suppress_roof_sprite=True, # non-standard roof for this wagon
                      chassis='4_axle_1cc_filled_32px')
