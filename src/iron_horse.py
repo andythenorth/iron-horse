@@ -43,6 +43,9 @@ from vehicles import alignment_cars
 alignment_cars.main()
 """
 
+from vehicles import automated_hopper_cars
+automated_hopper_cars.main()
+
 from vehicles import box_cars
 box_cars.main()
 

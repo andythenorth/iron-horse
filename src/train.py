@@ -1191,6 +1191,27 @@ class HopperCarConsist(CarConsist):
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(bulk=True,
                                                             has_alt_livery=True)
 
+# !! out of alphabetical order - this is just a graphical variant, convert to a subclasss of hopper?
+class AutomatedHopperCarConsist(CarConsist):
+    """
+    Limited set of bulk (mineral) cargos.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = 'automated_hopper_car'
+        super().__init__(**kwargs)
+        self.class_refit_groups = ['dump_freight']
+        self.label_refits_allowed = []  # none needed
+        self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_dump_bulk']
+        self.default_cargos = global_constants.default_cargos['hopper']
+        self.loading_speed_multiplier = 2
+        self.buy_cost_adjustment_factor = 1.2
+        # CC is swapped randomly (player can't choose), but also swap base livery on flip (player can choose
+        self.allow_flip = True
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsVisibleCargo(bulk=True,
+                                                            has_alt_livery=True)
+
 
 class IntermodalCarConsist(CarConsist):
     """

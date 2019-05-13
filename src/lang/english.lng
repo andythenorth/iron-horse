@@ -30,6 +30,7 @@ STR_NAME_SUFFIX_LARGE                                           :Large
 # the en-us translation should be updated appropriately when making changes here
 # !! consider splitting strings per roster?? A US caboose is still a 'caboose' in en-gb, not a brake van
 STR_NAME_SUFFIX_ALIGNMENT_CAR                                   :Alignment Van
+STR_NAME_SUFFIX_AUTOMATED_HOPPER_CAR                            :Automated Hopper
 STR_NAME_SUFFIX_BOX_CAR                                         :Box Van
 STR_NAME_SUFFIX_CABOOSE_CAR                                     :Brake Van
 STR_NAME_SUFFIX_COIL_CAR                                        :Coil Car
