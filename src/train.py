@@ -906,7 +906,7 @@ class AggregateHopperCarConsist(CarConsist):
         self.class_refit_groups = ['dump_freight']
         self.label_refits_allowed = []  # none needed
         self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_dump_bulk']
-        self.default_cargos = []
+        self.default_cargos = ['LIME', 'GRVL', 'SAND', 'CLAY', 'PHOS', 'SALT', 'KAOL'] # agg. hoppers are specific to Horse, not in Polar Fox
         self.loading_speed_multiplier = 2
         self.buy_cost_adjustment_factor = 1.2
         # CC is swapped randomly (player can't choose), but also swap base livery on flip (player can choose
