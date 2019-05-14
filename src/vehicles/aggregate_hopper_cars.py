@@ -8,6 +8,7 @@ def main():
                                base_numeric_id=1610,
                                gen=5,
                                subtype='A',
+                               intro_date_offset=5,  # let's be a little bit later for this one
                                sprites_complete=False)
 
     consist.add_unit(type=FreightCar,
@@ -18,6 +19,7 @@ def main():
                                base_numeric_id=1600,
                                gen=5,
                                subtype='B',
+                               intro_date_offset=5,  # let's be a little bit later for this one
                                sprites_complete=False)
 
     consist.add_unit(type=FreightCar,
