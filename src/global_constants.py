@@ -1,7 +1,6 @@
 # wagon ids are generic and are composed to specific vehicle ids elsewhere
 # order is significant
 buy_menu_sort_order_wagons = ['alignment_car',
-                              'metro_car',
                               'passenger_car',
                               'luxury_passenger_car',
                               'mail_car',
