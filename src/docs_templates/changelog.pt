@@ -2,7 +2,7 @@ Changelog
 =========
 
 ---------------------
-2.0.0 Alpha 8 Release
+2.0.0 Alpha 9 Release
 ---------------------
 
 Iron Horse 2.
@@ -22,6 +22,45 @@ Designed to be used with 'vehicles expire' set to to 'on', Horse 2 has a *lot* o
 - extensive cargo sprite support, but some cargo sprites are known to be missing
 - no savegame compatibility with Iron Horse 1
 - can be used _alongside_ Iron Horse 1, if you must (kind of odd, but eh)
+
+*Changes from 2.0.0 Alpha 8*
+
+- no savegame compatibility with previous 2.0.0 Alpha releases
+- synchronise / desynchronise intro dates for different types of vehicles as appropriate
+    - uses new OpenTTD intro date randomisation handling - see https://github.com/OpenTTD/OpenTTD/pull/7147
+    - guarantees that some vehicles which depend on each other will be introduced at the same time, for example high speed unit cab cars and middle cars
+    - non-dependent vehicles remain randomised
+    - core group of wagons are introduced all at the same time, non-core wagon types will be introduced separately
+    - this is the first time this is used, and behaviour might need tweaking in future
+- added sliding wall box cars and curtain side box cars
+    - same refits as box cars, different appearance
+    - available from around 1960
+- added plate cars
+    - same refits as flat cars, different appearance
+    - available from around 1860
+- added tarpaulin cars
+    - same refits as flat cars, different appearance
+    - available from around 1990
+- removed gen 5A (1990) flat car (the shortest one, shorter cars are generally dropped from 1990 onwards)
+- adjusted appearance of gen 5 (1990) and gen 6 (2020) open cars and box cars
+- adjusted appearance of gen 4 (1960) hoppers
+- fixed incorrectly reversed rear unit of metro trains in buy menu sprites
+- adjusted gen 1 metro roof colour to match standard pax roof colours
+- fixed out-of-place cargo masks for some flat cars
+- fixed wrong cargo sprite positions for stake cars
+- reduced height of stakes on flat wagons, better appearance
+- improved appearance of freight car roofs
+- improved cc filled freight chassis appearance
+- grouped vehicles by base railtype in docs vehicle listing tables
+- fixed misaligned wagon table header cells in docs
+- multiple codechanges
+    - improved maintainability by removing the need to explicitly set vehicle length when it's known from chassis
+    - sped up nmlc compile by not destroying the spritecache every time the graphics are generated
+- updated translations from web translators
+
+---------------------
+2.0.0 Alpha 8 Release
+---------------------
 
 *Changes from 2.0.0 Alpha 7*
 
