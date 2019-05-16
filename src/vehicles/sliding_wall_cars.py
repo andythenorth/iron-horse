@@ -22,7 +22,7 @@ def main():
                             gen=4,
                             subtype='C',
                             intro_date_offset=5,  # let's be a little bit later for this one
-                            sprites_complete=False)
+                            sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
                      suppress_roof_sprite=True, # non-standard roof for this wagon
