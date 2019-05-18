@@ -1,9 +1,9 @@
 Changelog
 =========
 
----------------------
-2.0.0 Alpha 9 Release
----------------------
+----------------------
+2.0.0 Alpha 10 Release
+----------------------
 
 Iron Horse 2.
 
@@ -22,6 +22,24 @@ Designed to be used with 'vehicles expire' set to to 'on', Horse 2 has a *lot* o
 - extensive cargo sprite support, but some cargo sprites are known to be missing
 - no savegame compatibility with Iron Horse 1
 - can be used _alongside_ Iron Horse 1, if you must (kind of odd, but eh)
+
+*Changes from 2.0.0 Alpha 9*
+
+- sprites complete for
+    - Saxon 0-8-0
+    - gen 4C box car
+    - gen 4C curtain side box car
+    - gen 4C sliding wall car
+    - cryo tank cars
+- reduced NG run costs further, for game balance
+- fixed position of pantographs in docs image for Helm Wind
+- improved docs 'Trains' and 'Code Reference' pages
+- updated translations from web translators
+
+
+---------------------
+2.0.0 Alpha 9 Release
+---------------------
 
 *Changes from 2.0.0 Alpha 8*
 
