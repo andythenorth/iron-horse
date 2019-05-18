@@ -243,16 +243,31 @@ def render_docs_images():
 
         # add pantographs if needed
         if consist.pantograph_type is not None:
-            # !! this doesn't handle the dual head case yet eh, blah blah, wasn't needed when coding it
             # buy menu uses pans 'down', but in docs pans 'up' looks better, weird eh?
             pantographs_spritesheet = Image.open(os.path.join(vehicle_graphics_src, consist.id + '_pantographs_up.png'))
+            pan_crop_width = global_constants.spritesheet_bounding_boxes_asymmetric_unreversed[6][1]
             pantographs_image = pantographs_spritesheet.crop(box=(consist.buy_menu_x_loc,
                                                                   10,
-                                                                  consist.buy_menu_x_loc + doc_helper.buy_menu_sprite_width(consist),
+                                                                  consist.buy_menu_x_loc + pan_crop_width,
                                                                   10 + doc_helper.buy_menu_sprite_height))
             pantographs_mask = pantographs_image.copy()
             pantographs_mask = pantographs_mask.point(lambda i: 0 if i == 255 or i == 0 else 255).convert("1") # the inversion here of blue and white looks a bit odd, but potato / potato
             source_vehicle_image.paste(pantographs_image.crop(crop_box_dest), crop_box_dest, pantographs_mask.crop(crop_box_dest))
+
+            if consist.dual_headed:
+                # oof, super special handling of pans for dual-headed vehicles
+                pan_start_x_loc = global_constants.spritesheet_bounding_boxes_asymmetric_unreversed[2][0]
+                pantographs_image = pantographs_spritesheet.crop(box=(pan_start_x_loc,
+                                                                      10,
+                                                                      pan_start_x_loc + pan_crop_width,
+                                                                      10 + doc_helper.buy_menu_sprite_height))
+                crop_box_dest_pan_2 = (int(doc_helper.buy_menu_sprite_width(consist) / 2),
+                                       0,
+                                       int(doc_helper.buy_menu_sprite_width(consist) / 2) + pan_crop_width,
+                                       doc_helper.buy_menu_sprite_height)
+                pantographs_mask = pantographs_image.copy()
+                pantographs_mask = pantographs_mask.point(lambda i: 0 if i == 255 or i == 0 else 255).convert("1") # the inversion here of blue and white looks a bit odd, but potato / potato
+                source_vehicle_image.paste(pantographs_image, crop_box_dest_pan_2, pantographs_mask)
 
         # recolour to more pleasing CC combos
         cc_remap_1 = {198: 179, 199: 180, 200: 181, 201: 182, 202: 183, 203: 164, 204: 165, 205: 166,
