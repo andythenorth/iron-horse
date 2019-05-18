@@ -30,10 +30,14 @@ STR_NAME_SUFFIX_LARGE                                           :큼
 # as of Jan 2019 these are switched from en-us to en-gb
 # the en-us translation should be updated appropriately when making changes here
 # !! consider splitting strings per roster?? A US caboose is still a 'caboose' in en-gb, not a brake van
+STR_NAME_SUFFIX_AGGREGATE_HOPPER_CAR                            :종합호퍼차
 STR_NAME_SUFFIX_ALIGNMENT_CAR                                   :정렬 차량
 STR_NAME_SUFFIX_BOX_CAR                                         :유개차
 STR_NAME_SUFFIX_CABOOSE_CAR                                     :제동차
+STR_NAME_SUFFIX_COIL_CAR                                        :코일 화차
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :유개호퍼차
+STR_NAME_SUFFIX_CRYO_TANK_CAR                                   :저온 유조차
+STR_NAME_SUFFIX_CURTAIN_SIDE_BOX_CAR                            :커튼 사이드 밴
 STR_NAME_SUFFIX_DUMP_CAR                                        :광물화차
 STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :식품 유조차
 STR_NAME_SUFFIX_EXPRESS_CAR                                     :특급 유개화물차
@@ -46,10 +50,14 @@ STR_NAME_SUFFIX_LUXURY_PASSENGER_CAR                            :호화 승객 �
 STR_NAME_SUFFIX_MAIL_CAR                                        :우편 수송 차량
 STR_NAME_SUFFIX_OPEN_CAR                                        :무개차
 STR_NAME_SUFFIX_PASSENGER_CAR                                   :승객 수송 차량
+STR_NAME_SUFFIX_PLATE_CAR                                       :평판화차
 STR_NAME_SUFFIX_REEFER_CAR                                      :냉동차
 STR_NAME_SUFFIX_SILO_CAR                                        :사일로 화차
+STR_NAME_SUFFIX_SLIDING_WALL_CAR                                :슬라이딩 월 밴
 STR_NAME_SUFFIX_STAKE_CAR                                       :말뚝화차
 STR_NAME_SUFFIX_TANK_CAR                                        :유조차
+STR_NAME_SUFFIX_TARPAULIN_CAR                                   :방수포 화차
+STR_NAME_SUFFIX_TORPEDO_CAR                                     :어뢰 화차
 STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :자동차 수송 차량
 STR_NAME_SUFFIX_WELL_CAR                                        :더블스택 차량
 
