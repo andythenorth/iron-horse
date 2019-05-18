@@ -125,6 +125,8 @@ class DocHelper(object):
             result = self.fetch_prop(
                 result, 'Vehicle Name', self.unpack_name_string(vehicle))
             result = self.fetch_prop(result, 'Gen', vehicle.gen)
+            if vehicle.role is not None:
+                result = self.fetch_prop(result, 'Role', vehicle.role)
             result = self.fetch_prop(result, 'Railtype', vehicle.track_type)
             result = self.fetch_prop(result, 'HP', int(vehicle.power))
             result = self.fetch_prop(result, 'Speed (mph)', vehicle.speed)
