@@ -19,7 +19,7 @@ def main():
                             base_numeric_id=510,
                             gen=4,
                             subtype='C',
-                            sprites_complete=False)
+                            sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
                      suppress_roof_sprite=True, # non-standard roof for this wagon
