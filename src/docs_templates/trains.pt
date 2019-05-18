@@ -26,6 +26,7 @@
                         </tal:base_track_type>
                     </ul>
                     <tal:base_track_type repeat="base_track_type doc_helper.get_base_track_types().items()">
+                        <hr />
                         <h4 id="${base_track_type[0]}-engines">${base_track_type[1]} Engines</h4>
                         <table class="table table-striped tablesorter vehicle-table">
                             <thead>
@@ -66,6 +67,7 @@
                         </table>
                     </tal:base_track_type>
                     <tal:base_track_type repeat="base_track_type doc_helper.get_base_track_types().items()">
+                        <hr />
                         <h4 id="${base_track_type[0]}-wagons">${base_track_type[1]} Wagons</h4>
                         <table class="table table-striped tablesorter vehicle-table">
                             <thead>
