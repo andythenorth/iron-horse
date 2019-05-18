@@ -9,20 +9,24 @@
             <tal:roster repeat="roster registered_rosters">
                 <tal:active_rosters_only condition="roster.disabled is False">
                     <h3 id="${roster.id}">${base_lang_strings['STR_PARAM_ROSTER_OPTION_' + str(roster.numeric_id - 1)]}</h3>
-                    <tal:base_track_type repeat="base_track_type doc_helper.get_base_track_types()">
-                        <a href="#${base_track_type}-engines">${base_track_type} Engines</a>
-                    </tal:base_track_type>
-                    <tal:base_track_type repeat="base_track_type doc_helper.get_base_track_types()">
-                        <a href="#${base_track_type}-wagons">${base_track_type} Wagons</a>
-                    </tal:base_track_type>
                     <p>
-                        ${len(roster.engine_consists)} engines inspired by
+                        ${len(roster.engine_consists)} engines and
+                        ${sum([len(roster.wagon_consists[wagon_class]) for wagon_class in roster.wagon_consists])} wagons
+                        inspired by
                         <span tal:condition="roster.id == 'antelope'">Central and Western Africa</span>
                         <span tal:condition="roster.id == 'llama'">Argentina, Chile and Peru</span>
                         <span tal:condition="roster.id == 'pony'">Britain and Ireland</span>
                     </p>
-                    <tal:base_track_type repeat="base_track_type doc_helper.get_base_track_types()">
-                        <h4 id="${base_track_type}-engines">${base_track_type} Engines</h4>
+                    <ul class="inline">
+                        <tal:base_track_type repeat="base_track_type doc_helper.get_base_track_types().items()">
+                            <li><a href="#${base_track_type[0]}-engines">${base_track_type[1]} Engines</a></li>
+                        </tal:base_track_type>
+                        <tal:base_track_type repeat="base_track_type doc_helper.get_base_track_types().items()">
+                            <li><a href="#${base_track_type[0]}-wagons">${base_track_type[1]} Wagons</a></li>
+                        </tal:base_track_type>
+                    </ul>
+                    <tal:base_track_type repeat="base_track_type doc_helper.get_base_track_types().items()">
+                        <h4 id="${base_track_type[0]}-engines">${base_track_type[1]} Engines</h4>
                         <table class="table table-striped tablesorter vehicle-table">
                             <thead>
                                 <tr>
@@ -37,7 +41,7 @@
                             </thead>
                             <tbody>
                                 <tal:engine_consists repeat="consist roster.engine_consists">
-                                    <tr id="${consist.id}" tal:condition="consist.base_track_type == base_track_type">
+                                    <tr id="${consist.id}" tal:condition="consist.base_track_type == base_track_type[0]">
                                         <td class="vehicle-image"
                                             style="width:${2 * doc_helper.buy_menu_sprite_max_width};">
                                             <img src="static/img/${consist.id}_blue.png"
@@ -61,9 +65,8 @@
                             </tbody>
                         </table>
                     </tal:base_track_type>
-                    ${sum([len(roster.wagon_consists[wagon_class]) for wagon_class in roster.wagon_consists])} wagons
-                    <tal:base_track_type repeat="base_track_type doc_helper.get_base_track_types()">
-                        <h4 id="${base_track_type}-wagons">${base_track_type} Wagons</h4>
+                    <tal:base_track_type repeat="base_track_type doc_helper.get_base_track_types().items()">
+                        <h4 id="${base_track_type[0]}-wagons">${base_track_type[1]} Wagons</h4>
                         <table class="table table-striped tablesorter vehicle-table">
                             <thead>
                                 <tr>
@@ -78,7 +81,7 @@
                             <tbody>
                                 <tal:wagon_classes repeat="wagon_class global_constants.buy_menu_sort_order_wagons">
                                     <tal:wagon_consists repeat="consist roster.wagon_consists[wagon_class]">
-                                        <tr tal:condition="consist.base_track_type == base_track_type" id="${consist.id}">
+                                        <tr tal:condition="consist.base_track_type == base_track_type[0]" id="${consist.id}">
                                             <td class="vehicle-image"
                                                 style="width:${2 * doc_helper.buy_menu_sprite_max_width};">
                                                 <img src="static/img/${consist.id}_blue.png"

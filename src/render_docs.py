@@ -152,10 +152,7 @@ class DocHelper(object):
         return ('', 'active')[doc_name == nav_link]
 
     def get_base_track_types(self):
-        result = []
-        for consist in consists:
-            result.append(consist.base_track_type)
-        return sorted(set(result))
+        return {'RAIL': 'Standard Gauge', 'NG': 'Narrow Gauge', 'METRO': 'Metro'}
 
 def render_docs(doc_list, file_type, use_markdown=False):
     for doc_name in doc_list:
