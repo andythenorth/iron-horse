@@ -97,6 +97,21 @@ class DocHelper(object):
             result.extend(i)
         return result
 
+    def get_engines_by_roster_and_base_track_type(self, roster, base_track_type):
+        result = []
+        for consist in roster.engine_consists:
+            if consist.base_track_type == base_track_type:
+                result.append(consist)
+        return result
+
+    def get_wagons_by_roster_and_base_track_type(self, roster, base_track_type):
+        result = []
+        for wagon_class in global_constants.buy_menu_sort_order_wagons:
+            for consist in roster.wagon_consists[wagon_class]:
+                if consist.base_track_type == base_track_type:
+                    result.append(consist)
+        return result
+
     def fetch_prop(self, result, prop_name, value):
         result['vehicle'][prop_name] = value
         result['subclass_props'].append(prop_name)
@@ -152,7 +167,8 @@ class DocHelper(object):
         return ('', 'active')[doc_name == nav_link]
 
     def get_base_track_types(self):
-        return {'RAIL': 'Standard Gauge', 'NG': 'Narrow Gauge', 'METRO': 'Metro'}
+        # tuple of pairs, need consistent order so can't use dict
+        return (('RAIL', 'Standard Gauge'), ('NG', 'Narrow Gauge'), ('METRO', 'Metro'))
 
 def render_docs(doc_list, file_type, use_markdown=False):
     for doc_name in doc_list:
