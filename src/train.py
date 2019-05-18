@@ -842,9 +842,9 @@ class CarConsist(Consist):
         # multiply up by arbitrary amount, to where I want wagon run costs to be
         # (base cost is set deliberately low to allow small increments for fine-grained control)
         run_cost_points = 2 * run_cost_points * self.floating_run_cost_multiplier
-        # narrow gauge gets a massive bonus
+        # narrow gauge gets a massive bonus - NG wagons are lower cap, so earn relatively much less / length
         if self.base_track_type == 'NG':
-            run_cost_points = 0.33 * run_cost_points
+            run_cost_points = 0.2 * run_cost_points
         # cap to int for nml
         return int(run_cost_points)
 
