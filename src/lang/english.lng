@@ -60,6 +60,14 @@ STR_NAME_SUFFIX_TORPEDO_CAR                                     :Torpedo Wagon
 STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Vehicle Transporter
 STR_NAME_SUFFIX_WELL_CAR                                        :Well Wagon
 
+# role information for buy menu
+STR_ROLE                                                        :Role: {GOLD}{STRING}
+STR_ROLE_FREIGHT                                                :Freight
+STR_ROLE_GENERAL_PURPOSE                                        :General Purpose
+STR_ROLE_GENERAL_PURPOSE_EXPRESS                                :Express / General Purpose
+STR_ROLE_VERY_HIGH_SPEED                                        :Very High Speed
+STR_ROLE_METRO                                                  :High Capacity Urban
+
 # project management
 STR_SPRITES_COMPLETE                                            :{}Sprites Complete: {GOLD}Yup
 STR_SPRITES_INCOMPLETE                                          :{}Sprites Complete: {GOLD}Nope

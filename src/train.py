@@ -409,6 +409,19 @@ class Consist(object):
         else:
             return 64
 
+    @property
+    def buy_menu_role_string(self):
+        # !! see express_roles, there could be a reusable mapping maintained for consolidating roles
+        role_mapping = {'STR_ROLE_FREIGHT': ['branch_freight', 'freight', 'heavy_freight_1', 'heavy_freight_2'],
+                        'STR_ROLE_GENERAL_PURPOSE': ['universal', 'mail_railcar_1', 'mail_railcar_2', 'pax_railcar_1', 'pax_railcar_2'],
+                        'STR_ROLE_GENERAL_PURPOSE_EXPRESS': ['branch_express', 'express_1', 'express_2', 'heavy_express_1', 'heavy_express_2'],
+                        'STR_ROLE_VERY_HIGH_SPEED': ['pax_high_speed'],
+                        'STR_ROLE_METRO': ['mail_metro', 'pax_metro']}
+        for role_string, roles in role_mapping.items():
+            if self.role in roles:
+                return role_string
+        raise Exception('no role string found for ', self.id)
+
     def render_articulated_switch(self):
         if len(self.units) > 1:
             template = templates["articulated_parts.pynml"]
