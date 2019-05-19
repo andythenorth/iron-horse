@@ -5,6 +5,7 @@ SED = sed
 ZIP = zip
 
 NMLC = nmlc
+GRFCODEC = grfcodec
 GRFID = grfid
 
 HG_INFO = bin/hg-info
@@ -37,6 +38,7 @@ REPO_TITLE = "$(PROJECT_NAME) $(REPO_VERSION)"
 PROJECT_VERSIONED_NAME = $(PROJECT_NAME)-$(REPO_VERSION)
 ARGS = '$(REPO_REVISION)' '$(REPO_VERSION)' '$(PW)' '$(ROSTER)' '$(SC)'
 
+NFO_FILE = generated/$(PROJECT_NAME).nfo
 GRF_FILE = generated/$(PROJECT_NAME).grf
 TAR_FILE = $(PROJECT_VERSIONED_NAME).tar
 ZIP_FILE = $(PROJECT_VERSIONED_NAME).zip
@@ -55,6 +57,7 @@ bundle_zip: $(ZIP_FILE)
 graphics: $(GRAPHICS_DIR)
 lang: $(LANG_DIR)
 nml: $(NML_FILE)
+nfo: $(NFO_FILE)
 grf: $(GRF_FILE)
 tar: $(TAR_FILE)
 html_docs: $(HTML_DOCS)
@@ -78,8 +81,15 @@ $(HTML_DOCS): $(GRAPHICS_DIR) $(shell $(FIND_FILES) --ext=.py --ext=.pynml --ext
 $(NML_FILE): $(shell $(FIND_FILES) --ext=.py --ext=.pynml src)
 	$(_V) $(PYTHON3) src/render_nml.py $(ARGS)
 
-$(GRF_FILE): $(GRAPHICS_DIR) $(LANG_DIR) $(NML_FILE) $(HTML_DOCS)
-	$(NMLC) $(NML_FLAGS) --grf=$(GRF_FILE) $(NML_FILE)
+$(NFO_FILE): $(GRAPHICS_DIR) $(LANG_DIR) $(NML_FILE) $(HTML_DOCS)
+	$(NMLC) $(NML_FLAGS) --nfo=$(NFO_FILE) $(NML_FILE)
+
+$(GRF_FILE): $(GRAPHICS_DIR) $(LANG_DIR) $(NML_FILE) $(NFO_FILE) $(HTML_DOCS)
+	$(GRFCODEC) -s -e $(PROJECT_NAME).grf generated
+	# grf codec can't compile into a specific target dir, so move the compiled grf to appropriate dir
+	mv $(PROJECT_NAME).grf $(GRF_FILE)
+	# get rid of the .bak file, we don't need it
+	rm $(PROJECT_NAME).bak
 
 $(TAR_FILE): $(GRF_FILE)
 # the goal here is a sparse tar that bananas will accept; bananas can't accept html docs etc, hence they're not included
