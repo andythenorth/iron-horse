@@ -81,15 +81,13 @@ $(HTML_DOCS): $(GRAPHICS_DIR) $(shell $(FIND_FILES) --ext=.py --ext=.pynml --ext
 $(NML_FILE): $(shell $(FIND_FILES) --ext=.py --ext=.pynml src)
 	$(_V) $(PYTHON3) src/render_nml.py $(ARGS)
 
-$(NFO_FILE): $(GRAPHICS_DIR) $(LANG_DIR) $(NML_FILE) $(HTML_DOCS)
+$(NFO_FILE): $(LANG_DIR) $(NML_FILE)
 	$(NMLC) $(NML_FLAGS) --nfo=$(NFO_FILE) $(NML_FILE)
 
-# grf codec can't compile into a specific target dir, so move the compiled grf to appropriate dir
-# also get rid of the .bak file, we don't need it
+# grf codec can't compile into a specific target dir, so after compiling, move the compiled grf to appropriate dir
 $(GRF_FILE): $(GRAPHICS_DIR) $(LANG_DIR) $(NML_FILE) $(NFO_FILE) $(HTML_DOCS)
 	$(GRFCODEC) -s -e $(PROJECT_NAME).grf generated
 	mv $(PROJECT_NAME).grf $(GRF_FILE)
-	rm $(PROJECT_NAME).bak
 
 $(TAR_FILE): $(GRF_FILE)
 # the goal here is a sparse tar that bananas will accept; bananas can't accept html docs etc, hence they're not included
