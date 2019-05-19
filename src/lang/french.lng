@@ -33,6 +33,7 @@ STR_NAME_SUFFIX_LARGE                                           :Long
 STR_NAME_SUFFIX_ALIGNMENT_CAR                                   :Fourgon chaotique bon
 STR_NAME_SUFFIX_BOX_CAR                                         :Fourgon
 STR_NAME_SUFFIX_CABOOSE_CAR                                     :Fourgon-frein
+STR_NAME_SUFFIX_COIL_CAR                                        :Wagon porte-bobines
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Wagon-trémie couvert
 STR_NAME_SUFFIX_CRYO_TANK_CAR                                   :Wagon-citerne cryogénique
 STR_NAME_SUFFIX_DUMP_CAR                                        :Wagon à benne basculante
@@ -55,6 +56,8 @@ STR_NAME_SUFFIX_TANK_CAR                                        :Wagon-citerne
 STR_NAME_SUFFIX_TARPAULIN_CAR                                   :Wagon bâché
 STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Wagon porte-automobiles
 STR_NAME_SUFFIX_WELL_CAR                                        :Wagon surbaissé
+
+# role information for buy menu
 
 # project management
 STR_SPRITES_COMPLETE                                            :{}Sprites terminés{NBSP}: {GOLD}oui

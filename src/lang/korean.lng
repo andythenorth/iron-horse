@@ -61,6 +61,8 @@ STR_NAME_SUFFIX_TORPEDO_CAR                                     :어뢰 화차
 STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :자동차 수송 차량
 STR_NAME_SUFFIX_WELL_CAR                                        :더블스택 차량
 
+# role information for buy menu
+
 # project management
 STR_SPRITES_COMPLETE                                            :{}스트라이트 완성: {GOLD}됨
 STR_SPRITES_INCOMPLETE                                          :{}스프라이트 완성: {GOLD}안 됨

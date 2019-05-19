@@ -60,6 +60,8 @@ STR_NAME_SUFFIX_TORPEDO_CAR                                     :Torpedowagen
 STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Voertuigtransport
 STR_NAME_SUFFIX_WELL_CAR                                        :Double stack-wagon
 
+# role information for buy menu
+
 # project management
 STR_SPRITES_COMPLETE                                            :{}Sprites gereed: {GOLD}Ja
 STR_SPRITES_INCOMPLETE                                          :{}Sprites gereed: {GOLD}Nee
