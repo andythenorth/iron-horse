@@ -37,6 +37,7 @@ endif
 REPO_TITLE = "$(PROJECT_NAME) $(REPO_VERSION)"
 PROJECT_VERSIONED_NAME = $(PROJECT_NAME)-$(REPO_VERSION)
 ARGS = '$(REPO_REVISION)' '$(REPO_VERSION)' '$(PW)' '$(ROSTER)' '$(SC)'
+# Args for faster compiles: PW=n (num pool workers) SC=bool (suppress cargo sprites)
 
 NFO_FILE = generated/$(PROJECT_NAME).nfo
 GRF_FILE = generated/$(PROJECT_NAME).grf
@@ -65,6 +66,7 @@ html_docs: $(HTML_DOCS)
 # default num. pool workers for python compile,
 # default is 0 to disable multiprocessing (also avoids multiprocessing pickle failures masking genuine python errors)
 PW = 0
+SC = 'False'
 ROSTER = *
 # remove the @ for more verbose output (@ suppresses command output)
 _V ?= @
