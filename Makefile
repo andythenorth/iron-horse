@@ -51,7 +51,7 @@ BUNDLE_DIR = bundle_dir
 
 # Build rules
 .PHONY: default graphics lang nml grf tar bundle_tar bundle_zip bundle_src clean
-default: html_docs grf
+default: grf
 bundle_tar: tar
 bundle_zip: $(ZIP_FILE)
 graphics: $(GRAPHICS_DIR)
@@ -87,7 +87,7 @@ $(NFO_FILE): $(LANG_DIR) $(NML_FILE)
 	$(NMLC) $(NML_FLAGS) --nfo=$(NFO_FILE) $(NML_FILE)
 
 # N.B grf codec can't compile into a specific target dir, so after compiling, move the compiled grf to appropriate dir
-$(GRF_FILE): $(GRAPHICS_DIR) $(LANG_DIR) $(NML_FILE) $(NFO_FILE) $(HTML_DOCS)
+$(GRF_FILE): $(GRAPHICS_DIR) $(LANG_DIR) $(HTML_DOCS) $(NML_FILE) $(NFO_FILE)
 	$(GRFCODEC) -s -e $(PROJECT_NAME).grf generated
 	mv $(PROJECT_NAME).grf $(GRF_FILE)
 
