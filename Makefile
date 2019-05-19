@@ -84,11 +84,11 @@ $(NML_FILE): $(shell $(FIND_FILES) --ext=.py --ext=.pynml src)
 $(NFO_FILE): $(GRAPHICS_DIR) $(LANG_DIR) $(NML_FILE) $(HTML_DOCS)
 	$(NMLC) $(NML_FLAGS) --nfo=$(NFO_FILE) $(NML_FILE)
 
+# grf codec can't compile into a specific target dir, so move the compiled grf to appropriate dir
+# also get rid of the .bak file, we don't need it
 $(GRF_FILE): $(GRAPHICS_DIR) $(LANG_DIR) $(NML_FILE) $(NFO_FILE) $(HTML_DOCS)
 	$(GRFCODEC) -s -e $(PROJECT_NAME).grf generated
-	# grf codec can't compile into a specific target dir, so move the compiled grf to appropriate dir
 	mv $(PROJECT_NAME).grf $(GRF_FILE)
-	# get rid of the .bak file, we don't need it
 	rm $(PROJECT_NAME).bak
 
 $(TAR_FILE): $(GRF_FILE)
