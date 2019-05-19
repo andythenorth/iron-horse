@@ -774,7 +774,7 @@ class MailEngineMetroConsist(MailEngineConsist):
 
 class MailEngineRailcarConsist(MailEngineConsist):
     """
-    Consist for a mail railcar.  Just a sparse subclass to force the gestalt_graphics and allow_flip
+    Consist for a mail railcar.  Just a sparse subclass to force the gestalt_graphics and allow_flip.
     """
 
     def __init__(self, **kwargs):
@@ -1607,7 +1607,9 @@ class VehicleTransporterCarConsist(CarConsist):
 
 
 class Train(object):
-    """Base class for all types of trains"""
+    """
+    Base class for all types of trains
+    """
 
     def __init__(self, **kwargs):
         self.consist = kwargs.get('consist')
