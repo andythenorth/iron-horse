@@ -31,9 +31,11 @@ STR_NAME_SUFFIX_LARGE                                           :Veliki
 # as of Jan 2019 these are switched from en-us to en-gb
 # the en-us translation should be updated appropriately when making changes here
 # !! consider splitting strings per roster?? A US caboose is still a 'caboose' in en-gb, not a brake van
+STR_NAME_SUFFIX_AGGREGATE_HOPPER_CAR                            :Vagon za rasuti teret
 STR_NAME_SUFFIX_ALIGNMENT_CAR                                   :Vagon za poravnanje
 STR_NAME_SUFFIX_BOX_CAR                                         :Zatvoreni vagon
 STR_NAME_SUFFIX_CABOOSE_CAR                                     :Vagon za kočničara
+STR_NAME_SUFFIX_COIL_CAR                                        :Vagon za zavojnice
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Pokriveni vagon za rasuti teret
 STR_NAME_SUFFIX_CRYO_TANK_CAR                                   :Krio-cisterna
 STR_NAME_SUFFIX_CURTAIN_SIDE_BOX_CAR                            :Vagon sa stranicama od cerade
@@ -49,14 +51,24 @@ STR_NAME_SUFFIX_LUXURY_PASSENGER_CAR                            :Luksuzni putni�
 STR_NAME_SUFFIX_MAIL_CAR                                        :Poštanski vagon
 STR_NAME_SUFFIX_OPEN_CAR                                        :Otvoreni vagon
 STR_NAME_SUFFIX_PASSENGER_CAR                                   :Putnički vagon
+STR_NAME_SUFFIX_PLATE_CAR                                       :Plato-vagon
 STR_NAME_SUFFIX_REEFER_CAR                                      :Vagon hladnjača
 STR_NAME_SUFFIX_SILO_CAR                                        :Vagon-silos
 STR_NAME_SUFFIX_SLIDING_WALL_CAR                                :Vagon sa pomičnim stranicama
 STR_NAME_SUFFIX_STAKE_CAR                                       :Plato-vagon sa stupcima
 STR_NAME_SUFFIX_TANK_CAR                                        :Vagon cisterna
 STR_NAME_SUFFIX_TARPAULIN_CAR                                   :Vagon sa ceradom
+STR_NAME_SUFFIX_TORPEDO_CAR                                     :Vagon-torpedo
 STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Vagon za prijevoz vozila
 STR_NAME_SUFFIX_WELL_CAR                                        :Vagon za kontejnere na kat
+
+# role information for buy menu
+STR_ROLE                                                        :Uloga: {GOLD}{STRING}
+STR_ROLE_FREIGHT                                                :Teret
+STR_ROLE_GENERAL_PURPOSE                                        :Opća namjena
+STR_ROLE_GENERAL_PURPOSE_EXPRESS                                :Ekspresni / opća namjena
+STR_ROLE_VERY_HIGH_SPEED                                        :Vrlo visoka brzina
+STR_ROLE_METRO                                                  :Gradski visokog kapaciteta
 
 # project management
 STR_SPRITES_COMPLETE                                            :{}Kompletirani spriteovi: {GOLD}Da

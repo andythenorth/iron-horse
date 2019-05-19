@@ -59,6 +59,8 @@ STR_NAME_SUFFIX_TORPEDO_CAR                                     :Torpedovaunu
 STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Ajoneuvonkuljetusvaunu
 STR_NAME_SUFFIX_WELL_CAR                                        :Konttivaunu
 
+# role information for buy menu
+
 # project management
 STR_SPRITES_COMPLETE                                            :{}Grafiikat piirretty: {GOLD}Kyllä
 STR_SPRITES_INCOMPLETE                                          :{}Grafiikat piirretty: {GOLD}Ei
