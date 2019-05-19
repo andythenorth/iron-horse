@@ -274,7 +274,7 @@ class Consist(object):
     def haulage_bonus_engine_id_tree(self):
         express_engine_ids = []
         for consist in self.roster.engine_consists:
-            if consist.role in self.express_roles:
+            if consist.role in global_constants.role_group_mapping['express']:
                 express_engine_ids.append(consist.id)
         return [(count, id) for count, id in enumerate(express_engine_ids)]
 
@@ -324,12 +324,6 @@ class Consist(object):
         else:
             return self.base_track_type
 
-    @property
-    def express_roles(self):
-        # for cases where we need to know all the roles that reduce to 'express'
-        # aside: total abuse of @property, I have no justification other than it fits the pattern in context :P
-        return ['branch_express', 'express_1', 'express_2', 'heavy_express_1', 'heavy_express_2']
-
     def get_speed_by_class(self, speed_class):
         # automatic speed, but can over-ride by passing in kwargs for consist
         speed_track_type_mapping = {'RAIL':'RAIL', 'ELRL':'RAIL', 'NG':'NG', 'ELNG':'NG', 'METRO':'METRO'}
@@ -346,7 +340,7 @@ class Consist(object):
             # could be fixed by checking a list of railtypes
             return self.get_speed_by_class(self.speed_class)
         elif self.role:
-            if self.role in self.express_roles:
+            if self.role in global_constants.role_group_mapping['express']:
                 return self.get_speed_by_class('express')
             elif self.role in ['pax_high_speed']:
                 return self.get_speed_by_class('very_high_speed')
@@ -411,15 +405,14 @@ class Consist(object):
 
     @property
     def buy_menu_role_string(self):
-        # !! see express_roles, there could be a reusable mapping maintained for consolidating roles
-        role_mapping = {'STR_ROLE_FREIGHT': ['branch_freight', 'freight', 'heavy_freight_1', 'heavy_freight_2'],
-                        'STR_ROLE_GENERAL_PURPOSE': ['universal', 'mail_railcar_1', 'mail_railcar_2', 'pax_railcar_1', 'pax_railcar_2'],
-                        'STR_ROLE_GENERAL_PURPOSE_EXPRESS': ['branch_express', 'express_1', 'express_2', 'heavy_express_1', 'heavy_express_2'],
-                        'STR_ROLE_VERY_HIGH_SPEED': ['pax_high_speed'],
-                        'STR_ROLE_METRO': ['mail_metro', 'pax_metro']}
-        for role_string, roles in role_mapping.items():
+        role_string_mapping = {'freight': 'STR_ROLE_FREIGHT',
+                               'universal': 'STR_ROLE_GENERAL_PURPOSE',
+                               'express': 'STR_ROLE_GENERAL_PURPOSE_EXPRESS',
+                               'metro': 'STR_ROLE_METRO',
+                               'high_speed': 'STR_ROLE_VERY_HIGH_SPEED'}
+        for role_group, roles in global_constants.role_group_mapping.items():
             if self.role in roles:
-                return role_string
+                return role_string_mapping[role_group]
         raise Exception('no role string found for ', self.id)
 
     def render_articulated_switch(self):

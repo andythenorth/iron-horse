@@ -68,6 +68,12 @@ intro_date_offsets_by_role_group = {'universal': 0,
                                     'food_wagons': 6,
                                     'non_core_wagons': 7}
 
+role_group_mapping = {'express': ['branch_express', 'express_1', 'express_2', 'heavy_express_1', 'heavy_express_2'],
+                      'freight': ['branch_freight', 'freight', 'heavy_freight_1', 'heavy_freight_2'],
+                      'high_speed': ['pax_high_speed'],
+                      'metro': ['mail_metro', 'pax_metro'],
+                      'universal': ['universal', 'mail_railcar_1', 'mail_railcar_2', 'pax_railcar_1', 'pax_railcar_2']}
+
 # standard offsets for trains
 default_spritesheet_offsets = {'3': [[-3, -26],  [-3, -20],   [0, -12],  [5, -16], [-3, -16], [-14, -15], [-16, -12],  [-8, -21]],
                                '4': [[-3, -24],  [-6, -19],   [0, -12],  [0, -16], [-3, -16], [-14, -15], [-16, -12],  [-8, -20]],
