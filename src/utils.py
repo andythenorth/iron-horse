@@ -12,7 +12,6 @@ def get_makefile_args(sys):
         makefile_args = {'repo_revision': 0, 'repo_version': 0}
     return makefile_args
 
-
 def unescape_chameleon_output(escaped_nml):
     # first drop as much whitespace as we sensibly can
     # in tests, this doesn't make the compile any faster at all, but it reduced firs.nml (v3.0.4) from 326k lines to 226k lines,
@@ -24,7 +23,6 @@ def unescape_chameleon_output(escaped_nml):
     escaped_nml = '<'.join(escaped_nml.split('&lt;'))
     escaped_nml = '&'.join(escaped_nml.split('&amp;'))
     return escaped_nml
-
 
 def parse_base_lang():
     # expose base lang strings to python - for reuse in docs
