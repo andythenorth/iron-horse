@@ -43,11 +43,9 @@ from vehicles import alignment_cars
 alignment_cars.main()
 """
 
-"""
 # commented out for 2.0 alpha
 from vehicles import aggregate_hopper_cars
 aggregate_hopper_cars.main()
-"""
 
 from vehicles import box_cars
 box_cars.main()
