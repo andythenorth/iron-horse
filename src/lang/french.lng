@@ -30,12 +30,14 @@ STR_NAME_SUFFIX_LARGE                                           :Long
 # as of Jan 2019 these are switched from en-us to en-gb
 # the en-us translation should be updated appropriately when making changes here
 # !! consider splitting strings per roster?? A US caboose is still a 'caboose' in en-gb, not a brake van
+STR_NAME_SUFFIX_AGGREGATE_HOPPER_CAR                            :Wagon-trémie à agrégats
 STR_NAME_SUFFIX_ALIGNMENT_CAR                                   :Fourgon chaotique bon
 STR_NAME_SUFFIX_BOX_CAR                                         :Fourgon
 STR_NAME_SUFFIX_CABOOSE_CAR                                     :Fourgon-frein
 STR_NAME_SUFFIX_COIL_CAR                                        :Wagon porte-bobines
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Wagon-trémie couvert
 STR_NAME_SUFFIX_CRYO_TANK_CAR                                   :Wagon-citerne cryogénique
+STR_NAME_SUFFIX_CURTAIN_SIDE_BOX_CAR                            :Fourgon à rideau coulissant
 STR_NAME_SUFFIX_DUMP_CAR                                        :Wagon à benne basculante
 STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Wagon-citerne alimentaire
 STR_NAME_SUFFIX_EXPRESS_CAR                                     :Fourgon express
@@ -48,16 +50,24 @@ STR_NAME_SUFFIX_LUXURY_PASSENGER_CAR                            :Voiture de luxe
 STR_NAME_SUFFIX_MAIL_CAR                                        :Fourgon postal
 STR_NAME_SUFFIX_OPEN_CAR                                        :Wagon-tombereau
 STR_NAME_SUFFIX_PASSENGER_CAR                                   :Voiture
+STR_NAME_SUFFIX_PLATE_CAR                                       :Wagon plat à ridelles
 STR_NAME_SUFFIX_REEFER_CAR                                      :Wagon frigorifique
 STR_NAME_SUFFIX_SILO_CAR                                        :Wagon-silo
 STR_NAME_SUFFIX_SLIDING_WALL_CAR                                :Wagon à parois coulissantes
 STR_NAME_SUFFIX_STAKE_CAR                                       :Wagon à ranchers
 STR_NAME_SUFFIX_TANK_CAR                                        :Wagon-citerne
 STR_NAME_SUFFIX_TARPAULIN_CAR                                   :Wagon bâché
+STR_NAME_SUFFIX_TORPEDO_CAR                                     :Wagon torpille
 STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Wagon porte-automobiles
 STR_NAME_SUFFIX_WELL_CAR                                        :Wagon surbaissé
 
 # role information for buy menu
+STR_ROLE                                                        :Service{NBSP}: {GOLD}{STRING}
+STR_ROLE_FREIGHT                                                :Fret
+STR_ROLE_GENERAL_PURPOSE                                        :Universel
+STR_ROLE_GENERAL_PURPOSE_EXPRESS                                :Express/Universel
+STR_ROLE_VERY_HIGH_SPEED                                        :Grande vitesse
+STR_ROLE_METRO                                                  :Transport urbain
 
 # project management
 STR_SPRITES_COMPLETE                                            :{}Sprites terminés{NBSP}: {GOLD}oui
