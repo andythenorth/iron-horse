@@ -35,3 +35,13 @@ def main():
 
     consist.add_unit(type=FreightCar,
                      chassis='4_axle_gapped_32px')
+
+
+    consist = AggregateHopperCarConsist(roster='pony',
+                               base_numeric_id=1990,
+                               gen=6,
+                               subtype='C',
+                               sprites_complete=False)
+
+    consist.add_unit(type=FreightCar,
+                     chassis='4_axle_sparse_32px')
