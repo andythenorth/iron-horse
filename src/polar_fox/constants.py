@@ -134,13 +134,14 @@ disallowed_refits_by_label = {'non_dump_bulk': ['WOOD', 'SGCN', 'FICR', 'BDMT', 
 # don't conflate this with general refittability, they're different concerns ;)
 # vehicle classes can also just provide their own list locally, using this is convenient, not obligatory
 default_cargos = {'box': ['GOOD', 'VPTS', 'FOOD'],
+                  'coal_hopper': ['COAL', 'COKE', 'NITR', 'KAOL'],
                   'covered_hopper': ['GRAI', 'KAOL'],
-                  'dump': ['IORE', 'MNO2', 'NITR'],
+                  'dump': ['IORE', 'MNO2', 'NITR', 'PHOS'],
                   'edibles_tank': ['WATR', 'MILK', 'BEER'],
                   'express': ['ENSP', 'FMSP', 'GOOD', 'FOOD', 'MAIL'],
                   'flat': ['STEL', 'STCB', 'COPR', 'METL'],
                   'fruit_veg': ['FRUT', 'BEAN', 'CASS', 'JAVA', 'NUTS'],
-                  'hopper': ['COAL', 'CORE', 'PORE'],
+                  'hopper': ['LIME', 'GRVL', 'SAND', 'PORE', 'SALT', 'IORE', 'CORE'],
                   # no intermodal, uses box
                   'silo': ['CMNT', 'BDMT', 'RFPR', 'QLME', 'FMSP'],
                   'stake': ['WOOD'],

@@ -901,27 +901,6 @@ class CarConsist(Consist):
             return "string(STR_NAME_CONSIST_PARENTHESES, string(" + self.get_wagon_title_class_str() + "), string(" + self.get_wagon_title_subtype_str() + "))"
 
 
-class AggregateHopperCarConsist(CarConsist):
-    """
-    Limited set of bulk (mineral) cargos.  Same as hopper, but different appearance and defaults to stone-type cargos.
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = 'aggregate_hopper_car'
-        super().__init__(**kwargs)
-        self.class_refit_groups = ['dump_freight']
-        self.label_refits_allowed = []  # none needed
-        self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_dump_bulk']
-        self.default_cargos = ['LIME', 'GRVL', 'SAND', 'CLAY', 'PHOS', 'SALT', 'KAOL'] # agg. hoppers are specific to Horse, not in Polar Fox
-        self.loading_speed_multiplier = 2
-        self.buy_cost_adjustment_factor = 1.2
-        # CC is swapped randomly (player can't choose), but also swap base livery on flip (player can choose
-        self.allow_flip = True
-        # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsVisibleCargo(bulk=True,
-                                                            has_alt_livery=True)
-
-
 class AlignmentCarConsist(CarConsist):
     """
     For checking sprite alignment
@@ -982,6 +961,27 @@ class CabooseCarConsist(CarConsist):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsCaboose(num_generations=len(self.roster.intro_dates[self.base_track_type]),
                                                        recolour_maps=graphics_constants.caboose_livery_recolour_maps)
+
+
+class CoalHopperCarConsist(CarConsist):
+    """
+    Limited set of bulk (mineral) cargos.  Same as standard hopper, but different appearance and defaults to coal.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = 'coal_hopper_car'
+        super().__init__(**kwargs)
+        self.class_refit_groups = ['dump_freight']
+        self.label_refits_allowed = []  # none needed
+        self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_dump_bulk']
+        self.default_cargos = global_constants.default_cargos['coal_hopper']
+        self.loading_speed_multiplier = 2
+        self.buy_cost_adjustment_factor = 1.2
+        # CC is swapped randomly (player can't choose), but also swap base livery on flip (player can choose
+        self.allow_flip = True
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsVisibleCargo(bulk=True,
+                                                            has_alt_livery=True)
 
 
 class CoilCarConsist(CarConsist):
@@ -1199,7 +1199,7 @@ class FruitVegCarConsist(CarConsist):
 
 class HopperCarConsist(CarConsist):
     """
-    Limited set of bulk (mineral) cargos.
+    Limited set of bulk (mineral) cargos.  Defaults to stone/ore-type cargos, a specific coal hopper is provided separately that defaults to coal.
     """
 
     def __init__(self, **kwargs):
