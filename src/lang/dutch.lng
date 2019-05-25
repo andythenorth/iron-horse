@@ -29,7 +29,6 @@ STR_NAME_SUFFIX_LARGE                                           :Groot
 # as of Jan 2019 these are switched from en-us to en-gb
 # the en-us translation should be updated appropriately when making changes here
 # !! consider splitting strings per roster?? A US caboose is still a 'caboose' in en-gb, not a brake van
-STR_NAME_SUFFIX_AGGREGATE_HOPPER_CAR                            :Bulkonderlosser
 STR_NAME_SUFFIX_ALIGNMENT_CAR                                   :Lijnwagen
 STR_NAME_SUFFIX_BOX_CAR                                         :Gesloten wagon
 STR_NAME_SUFFIX_CABOOSE_CAR                                     :Remwagon
