@@ -43,10 +43,6 @@ from vehicles import alignment_cars
 alignment_cars.main()
 """
 
-# commented out for 2.0 alpha
-from vehicles import aggregate_hopper_cars
-aggregate_hopper_cars.main()
-
 from vehicles import box_cars
 box_cars.main()
 
@@ -58,6 +54,9 @@ caboose_cars.main()
 from vehicles import coil_cars
 coil_cars.main()
 """
+
+from vehicles import coal_hopper_cars
+coal_hopper_cars.main()
 
 from vehicles import covered_hopper_cars
 covered_hopper_cars.main()
