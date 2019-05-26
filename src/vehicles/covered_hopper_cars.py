@@ -28,7 +28,7 @@ def main():
                                       sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     chassis='2_axle_gapped_16px')
+                     chassis='2_axle_sparse_16px')
 
     consist = CoveredHopperCarConsist(roster='pony',
                                       base_numeric_id=1230,
@@ -37,7 +37,7 @@ def main():
                                       sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     chassis='2_axle_gapped_24px')
+                     chassis='4_axle_sparse_24px')
 
     consist = CoveredHopperCarConsist(roster='pony',
                                       base_numeric_id=1240,
@@ -46,7 +46,7 @@ def main():
                                       sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     chassis='4_axle_sparse_24px')
+                     chassis='4_axle_filled_24px')
 
     consist = CoveredHopperCarConsist(roster='pony',
                                       base_numeric_id=2700,
@@ -55,7 +55,7 @@ def main():
                                       sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     chassis='4_axle_sparse_32px')
+                     chassis='4_axle_filled_32px')
 
     consist = CoveredHopperCarConsist(roster='pony',
                                       base_numeric_id=3040,
@@ -64,7 +64,7 @@ def main():
                                       sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     chassis='4_axle_sparse_24px')
+                     chassis='4_axle_filled_24px')
 
     consist = CoveredHopperCarConsist(roster='pony',
                                       base_numeric_id=2910,
@@ -73,7 +73,7 @@ def main():
                                       sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     chassis='4_axle_sparse_32px')
+                     chassis='4_axle_filled_32px')
 
     # no gen 6 covered hopper cars, cap to gen 5 in Pony
 
