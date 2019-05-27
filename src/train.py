@@ -1007,7 +1007,7 @@ class CoilCarConsist(CarConsist):
 
 class CoveredHopperCarConsist(CarConsist):
     """
-    Bulk cargos needing covered protection.
+    Bulk cargos needing covered protection.  See also Grain Hopper which is similar, but reduced refits.
     """
 
     def __init__(self, **kwargs):
@@ -1195,6 +1195,33 @@ class FruitVegCarConsist(CarConsist):
         self.roof_type = 'freight'
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(id_base='box_car',
                                                                   recolour_maps=graphics_constants.fruit_veg_livery_recolour_maps)
+
+
+class GrainHopperCarConsist(CarConsist):
+    """
+    Covered wagon for grain and similar cargos.  See also Covered Hopper, which is similar, but more generic.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = 'grain_hopper_car'
+        super().__init__(**kwargs)
+        self.class_refit_groups = []  # no classes, use explicit labels
+        # shouldn't these be in polar fox?
+        self.label_refits_allowed = global_constants.allowed_refits_by_label['covered_hoppers']
+        self.label_refits_disallowed = []
+        self.default_cargos = global_constants.default_cargos['covered_hopper']
+        self.loading_speed_multiplier = 2
+        self.buy_cost_adjustment_factor = 1.2
+        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['non_core_wagons']
+        # CC is swapped randomly (player can't choose), but also swap base livery on flip (player can choose
+        self.allow_flip = True
+        # Graphics configuration
+        # covered hopper cars only have one consist cargo mapping, which they always default to, whatever the consist cargo is
+        # the player can simply choose the alternative livery on flip
+        # there is no randomisation of livery, but CC is randomised
+        spriterow_group_mappings = {'pax': {'default': 0, 'first': 0, 'last': 0, 'special': 0}}
+        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings,
+                                                                     consist_ruleset=None)
 
 
 class HopperCarConsist(CarConsist):

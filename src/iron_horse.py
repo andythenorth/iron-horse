@@ -79,6 +79,9 @@ express_cars.main()
 from vehicles import flat_cars
 flat_cars.main()
 
+from vehicles import grain_hopper_cars
+grain_hopper_cars.main()
+
 from vehicles import fruit_veg_cars
 fruit_veg_cars.main()
 
