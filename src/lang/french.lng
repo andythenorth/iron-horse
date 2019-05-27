@@ -33,6 +33,7 @@ STR_NAME_SUFFIX_LARGE                                           :Long
 STR_NAME_SUFFIX_ALIGNMENT_CAR                                   :Fourgon chaotique bon
 STR_NAME_SUFFIX_BOX_CAR                                         :Fourgon
 STR_NAME_SUFFIX_CABOOSE_CAR                                     :Fourgon-frein
+STR_NAME_SUFFIX_COAL_HOPPER_CAR                                 :Wagon-trémie à charbon
 STR_NAME_SUFFIX_COIL_CAR                                        :Wagon porte-bobines
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Wagon-trémie couvert
 STR_NAME_SUFFIX_CRYO_TANK_CAR                                   :Wagon-citerne cryogénique
