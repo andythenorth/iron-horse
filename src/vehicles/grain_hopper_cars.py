@@ -64,9 +64,9 @@ def main():
     consist.add_unit(type=FreightCar,
                      chassis='4_axle_filled_24px')
 
-
+    """
     consist = GrainHopperCarConsist(roster='pony',
-                                      base_numeric_id=2700,
+                                      base_numeric_id=2690,
                                       gen=5,
                                       subtype='C',
                                       sprites_complete=False)
@@ -74,7 +74,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      chassis='4_axle_filled_32px')
 
-
+    """
     consist = GrainHopperCarConsist(roster='pony',
                                       base_numeric_id=2060,
                                       gen=6,
