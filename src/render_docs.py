@@ -6,6 +6,10 @@ import shutil
 import sys
 import os
 currentdir = os.curdir
+from multiprocessing import Pool
+import multiprocessing
+logger = multiprocessing.log_to_stderr()
+logger.setLevel(25)
 from time import time
 
 from PIL import Image
@@ -13,6 +17,19 @@ from PIL import Image
 import iron_horse
 import utils
 import global_constants
+
+# get args passed by makefile
+makefile_args = utils.get_makefile_args(sys)
+# default to no mp, makes debugging easier (mp fails to pickle errors correctly)
+num_pool_workers = makefile_args.get('num_pool_workers', 0)
+if num_pool_workers == 0:
+    use_multiprocessing = False
+    # just print, no need for a coloured echo_message
+    print('Multiprocessing disabled: (PW=0)')
+else:
+    use_multiprocessing = True
+    # just print, no need for a coloured echo_message
+    print('Multiprocessing enabled: (PW=' + str(num_pool_workers) + ')')
 
 # setting up a cache for compiled chameleon templates can significantly speed up template rendering
 chameleon_cache_path = os.path.join(
@@ -192,7 +209,7 @@ def render_docs(doc_list, file_type, use_markdown=False):
         doc_file.close()
 
 
-def render_docs_images():
+def render_docs_images(consist):
     # process vehicle buy menu sprites for reuse in docs
     # extend this similar to render_docs if other image types need processing in future
 
@@ -203,85 +220,84 @@ def render_docs_images():
     doc_helper = DocHelper()
 
     vehicle_graphics_src = os.path.join(currentdir, 'generated', 'graphics')
-    for consist in consists:
-        vehicle_spritesheet = Image.open(os.path.join(vehicle_graphics_src, consist.id + '.png'))
-        # these 'source' var names for images are misleading
-        source_vehicle_image = Image.new("P", (doc_helper.buy_menu_sprite_width(consist), doc_helper.buy_menu_sprite_height), 255)
-        source_vehicle_image.putpalette(Image.open('palette_key.png').palette)
+    vehicle_spritesheet = Image.open(os.path.join(vehicle_graphics_src, consist.id + '.png'))
+    # these 'source' var names for images are misleading
+    source_vehicle_image = Image.new("P", (doc_helper.buy_menu_sprite_width(consist), doc_helper.buy_menu_sprite_height), 255)
+    source_vehicle_image.putpalette(Image.open('palette_key.png').palette)
 
-        if not consist.dual_headed:
-            y_offset = consist.docs_image_spriterow * 30
-            source_vehicle_image_tmp = vehicle_spritesheet.crop(box=(consist.buy_menu_x_loc,
-                                                                     10 + y_offset,
-                                                                     consist.buy_menu_x_loc + doc_helper.buy_menu_sprite_width(consist),
-                                                                     10 + y_offset + doc_helper.buy_menu_sprite_height))
+    if not consist.dual_headed:
+        y_offset = consist.docs_image_spriterow * 30
+        source_vehicle_image_tmp = vehicle_spritesheet.crop(box=(consist.buy_menu_x_loc,
+                                                                 10 + y_offset,
+                                                                 consist.buy_menu_x_loc + doc_helper.buy_menu_sprite_width(consist),
+                                                                 10 + y_offset + doc_helper.buy_menu_sprite_height))
+    if consist.dual_headed:
+        # oof, super special handling of dual-headed vehicles, OpenTTD handles this automatically in the buy menu, but docs have to handle explicitly
+        # !! hard-coded values might fail in future, sort that out then if needed, they can be looked up in global constants
+        source_vehicle_image_1 = vehicle_spritesheet.copy().crop(box=(224,
+                                                                      10,
+                                                                      224 + (4 * consist.length) + 1,
+                                                                      10 + doc_helper.buy_menu_sprite_height))
+        source_vehicle_image_2 = vehicle_spritesheet.copy().crop(box=(104,
+                                                                      10,
+                                                                      104 + (4 * consist.length) + 1,
+                                                                      10 + doc_helper.buy_menu_sprite_height))
+        source_vehicle_image_tmp = source_vehicle_image.copy()
+        source_vehicle_image_tmp.paste(source_vehicle_image_1, (0,
+                                                                0,
+                                                                source_vehicle_image_1.size[0],
+                                                                doc_helper.buy_menu_sprite_height))
+        source_vehicle_image_tmp.paste(source_vehicle_image_2, (source_vehicle_image_1.size[0] - 1,
+                                                                0,
+                                                                source_vehicle_image_1.size[0] - 1 + source_vehicle_image_2.size[0],
+                                                                doc_helper.buy_menu_sprite_height))
+    crop_box_dest = (0,
+                     0,
+                     doc_helper.buy_menu_sprite_width(consist),
+                     doc_helper.buy_menu_sprite_height)
+    source_vehicle_image.paste(source_vehicle_image_tmp.crop(crop_box_dest), crop_box_dest)
+
+    # add pantographs if needed
+    if consist.pantograph_type is not None:
+        # buy menu uses pans 'down', but in docs pans 'up' looks better, weird eh?
+        pantographs_spritesheet = Image.open(os.path.join(vehicle_graphics_src, consist.id + '_pantographs_up.png'))
+        pan_crop_width = global_constants.spritesheet_bounding_boxes_asymmetric_unreversed[6][1]
+        pantographs_image = pantographs_spritesheet.crop(box=(consist.buy_menu_x_loc,
+                                                              10,
+                                                              consist.buy_menu_x_loc + pan_crop_width,
+                                                              10 + doc_helper.buy_menu_sprite_height))
+        pantographs_mask = pantographs_image.copy()
+        pantographs_mask = pantographs_mask.point(lambda i: 0 if i == 255 or i == 0 else 255).convert("1") # the inversion here of blue and white looks a bit odd, but potato / potato
+        source_vehicle_image.paste(pantographs_image.crop(crop_box_dest), crop_box_dest, pantographs_mask.crop(crop_box_dest))
+
         if consist.dual_headed:
-            # oof, super special handling of dual-headed vehicles, OpenTTD handles this automatically in the buy menu, but docs have to handle explicitly
-            # !! hard-coded values might fail in future, sort that out then if needed, they can be looked up in global constants
-            source_vehicle_image_1 = vehicle_spritesheet.copy().crop(box=(224,
-                                                                          10,
-                                                                          224 + (4 * consist.length) + 1,
-                                                                          10 + doc_helper.buy_menu_sprite_height))
-            source_vehicle_image_2 = vehicle_spritesheet.copy().crop(box=(104,
-                                                                          10,
-                                                                          104 + (4 * consist.length) + 1,
-                                                                          10 + doc_helper.buy_menu_sprite_height))
-            source_vehicle_image_tmp = source_vehicle_image.copy()
-            source_vehicle_image_tmp.paste(source_vehicle_image_1, (0,
-                                                                    0,
-                                                                    source_vehicle_image_1.size[0],
-                                                                    doc_helper.buy_menu_sprite_height))
-            source_vehicle_image_tmp.paste(source_vehicle_image_2, (source_vehicle_image_1.size[0] - 1,
-                                                                    0,
-                                                                    source_vehicle_image_1.size[0] - 1 + source_vehicle_image_2.size[0],
-                                                                    doc_helper.buy_menu_sprite_height))
-        crop_box_dest = (0,
-                         0,
-                         doc_helper.buy_menu_sprite_width(consist),
-                         doc_helper.buy_menu_sprite_height)
-        source_vehicle_image.paste(source_vehicle_image_tmp.crop(crop_box_dest), crop_box_dest)
-
-        # add pantographs if needed
-        if consist.pantograph_type is not None:
-            # buy menu uses pans 'down', but in docs pans 'up' looks better, weird eh?
-            pantographs_spritesheet = Image.open(os.path.join(vehicle_graphics_src, consist.id + '_pantographs_up.png'))
-            pan_crop_width = global_constants.spritesheet_bounding_boxes_asymmetric_unreversed[6][1]
-            pantographs_image = pantographs_spritesheet.crop(box=(consist.buy_menu_x_loc,
+            # oof, super special handling of pans for dual-headed vehicles
+            pan_start_x_loc = global_constants.spritesheet_bounding_boxes_asymmetric_unreversed[2][0]
+            pantographs_image = pantographs_spritesheet.crop(box=(pan_start_x_loc,
                                                                   10,
-                                                                  consist.buy_menu_x_loc + pan_crop_width,
+                                                                  pan_start_x_loc + pan_crop_width,
                                                                   10 + doc_helper.buy_menu_sprite_height))
+            crop_box_dest_pan_2 = (int(doc_helper.buy_menu_sprite_width(consist) / 2),
+                                   0,
+                                   int(doc_helper.buy_menu_sprite_width(consist) / 2) + pan_crop_width,
+                                   doc_helper.buy_menu_sprite_height)
             pantographs_mask = pantographs_image.copy()
             pantographs_mask = pantographs_mask.point(lambda i: 0 if i == 255 or i == 0 else 255).convert("1") # the inversion here of blue and white looks a bit odd, but potato / potato
-            source_vehicle_image.paste(pantographs_image.crop(crop_box_dest), crop_box_dest, pantographs_mask.crop(crop_box_dest))
+            source_vehicle_image.paste(pantographs_image, crop_box_dest_pan_2, pantographs_mask)
 
-            if consist.dual_headed:
-                # oof, super special handling of pans for dual-headed vehicles
-                pan_start_x_loc = global_constants.spritesheet_bounding_boxes_asymmetric_unreversed[2][0]
-                pantographs_image = pantographs_spritesheet.crop(box=(pan_start_x_loc,
-                                                                      10,
-                                                                      pan_start_x_loc + pan_crop_width,
-                                                                      10 + doc_helper.buy_menu_sprite_height))
-                crop_box_dest_pan_2 = (int(doc_helper.buy_menu_sprite_width(consist) / 2),
-                                       0,
-                                       int(doc_helper.buy_menu_sprite_width(consist) / 2) + pan_crop_width,
-                                       doc_helper.buy_menu_sprite_height)
-                pantographs_mask = pantographs_image.copy()
-                pantographs_mask = pantographs_mask.point(lambda i: 0 if i == 255 or i == 0 else 255).convert("1") # the inversion here of blue and white looks a bit odd, but potato / potato
-                source_vehicle_image.paste(pantographs_image, crop_box_dest_pan_2, pantographs_mask)
+    # recolour to more pleasing CC combos
+    cc_remap_1 = {198: 179, 199: 180, 200: 181, 201: 182, 202: 183, 203: 164, 204: 165, 205: 166,
+                  80: 8, 81: 9, 82: 10, 83: 11, 84: 12, 85: 13, 86: 14, 87: 15}
+    cc_remap_2 = {80: 198, 81: 199, 82: 200, 83: 201, 84: 202, 85: 203, 86: 204, 87: 205}
+    for colour_name, cc_remap in {'red': cc_remap_1, 'blue': cc_remap_2}.items():
+        processed_vehicle_image = source_vehicle_image.copy().point(lambda i: cc_remap[i] if i in cc_remap.keys() else i)
 
-        # recolour to more pleasing CC combos
-        cc_remap_1 = {198: 179, 199: 180, 200: 181, 201: 182, 202: 183, 203: 164, 204: 165, 205: 166,
-                      80: 8, 81: 9, 82: 10, 83: 11, 84: 12, 85: 13, 86: 14, 87: 15}
-        cc_remap_2 = {80: 198, 81: 199, 82: 200, 83: 201, 84: 202, 85: 203, 86: 204, 87: 205}
-        for colour_name, cc_remap in {'red': cc_remap_1, 'blue': cc_remap_2}.items():
-            processed_vehicle_image = source_vehicle_image.copy().point(lambda i: cc_remap[i] if i in cc_remap.keys() else i)
-
-            # oversize the images to account for how browsers interpolate the images on retina / HDPI screens
-            processed_vehicle_image = processed_vehicle_image.resize((4 * processed_vehicle_image.size[0], 4 * doc_helper.buy_menu_sprite_height),
-                                                                     resample=Image.NEAREST)
-            output_path = os.path.join(images_dir_dst, consist.id + '_' + colour_name + '.png')
-            processed_vehicle_image.save(
-                output_path, optimize=True, transparency=0)
+        # oversize the images to account for how browsers interpolate the images on retina / HDPI screens
+        processed_vehicle_image = processed_vehicle_image.resize((4 * processed_vehicle_image.size[0], 4 * doc_helper.buy_menu_sprite_height),
+                                                                 resample=Image.NEAREST)
+        output_path = os.path.join(images_dir_dst, consist.id + '_' + colour_name + '.png')
+        processed_vehicle_image.save(
+            output_path, optimize=True, transparency=0)
 
 
 def main():
@@ -296,8 +312,19 @@ def main():
     # just render the markdown docs twice to get txt and html versions, simples no?
     render_docs(markdown_docs, 'txt')
     render_docs(markdown_docs, 'html', use_markdown=True)
+
     # process images for use in docs
-    render_docs_images()
+    # yes, I really did bother using a pool to save at best a couple of seconds, because FML :)
+    if use_multiprocessing == False:
+        for consist in consists:
+            render_docs_images(consist)
+    else:
+        # Would this go faster if the pipelines from each consist were placed in MP pool, not just the consist?
+        # probably potato / potato tbh
+        pool = Pool(processes=num_pool_workers)
+        pool.map(render_docs_images, consists)
+        pool.close()
+
 
     print(format((time() - start), '.2f') + 's')
 
