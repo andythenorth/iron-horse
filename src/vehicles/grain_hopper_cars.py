@@ -54,17 +54,17 @@ def main():
     consist.add_unit(type=FreightCar,
                      chassis='2_axle_filled_16px')
 
-
+    """
     consist = GrainHopperCarConsist(roster='pony',
-                                      base_numeric_id=1240,
+                                      base_numeric_id=2800,
                                       gen=5,
                                       subtype='B',
                                       sprites_complete=False)
 
     consist.add_unit(type=FreightCar,
-                     chassis='4_axle_filled_24px')
+                     chassis='2_axle_filled_24px')
 
-    """
+
     consist = GrainHopperCarConsist(roster='pony',
                                       base_numeric_id=2690,
                                       gen=5,
@@ -74,19 +74,9 @@ def main():
     consist.add_unit(type=FreightCar,
                      chassis='4_axle_filled_32px')
 
-    """
-    consist = GrainHopperCarConsist(roster='pony',
-                                      base_numeric_id=2060,
-                                      gen=6,
-                                      subtype='A',
-                                      sprites_complete=False)
-
-    consist.add_unit(type=FreightCar,
-                     chassis='2_axle_filled_16px')
-
 
     consist = GrainHopperCarConsist(roster='pony',
-                                      base_numeric_id=3040,
+                                      base_numeric_id=2810,
                                       gen=6,
                                       subtype='B',
                                       sprites_complete=False)
@@ -94,9 +84,9 @@ def main():
     consist.add_unit(type=FreightCar,
                      chassis='4_axle_filled_24px')
 
-
+    """
     consist = GrainHopperCarConsist(roster='pony',
-                                      base_numeric_id=2910,
+                                      base_numeric_id=2820,
                                       gen=6,
                                       subtype='C',
                                       sprites_complete=False)
