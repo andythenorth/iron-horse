@@ -7,7 +7,7 @@ def main():
     # start gen 4, B and C lengths only
 
     consist = CoilCarConsist(roster='pony',
-                             base_numeric_id=2030,
+                             base_numeric_id=2950,
                              gen=4,
                              subtype='B',
                              sprites_complete=False)
@@ -17,7 +17,7 @@ def main():
 
 
     consist = CoilCarConsist(roster='pony',
-                             base_numeric_id=2040,
+                             base_numeric_id=3250,
                              gen=4,
                              subtype='C',
                              sprites_complete=False)
@@ -27,7 +27,7 @@ def main():
 
 
     consist = CoilCarConsist(roster='pony',
-                             base_numeric_id=2010,
+                             base_numeric_id=3320,
                              gen=5,
                              subtype='B',
                              sprites_complete=False)
@@ -37,7 +37,7 @@ def main():
 
 
     consist = CoilCarConsist(roster='pony',
-                             base_numeric_id=2020,
+                             base_numeric_id=3330,
                              gen=5,
                              subtype='C',
                              sprites_complete=False)
@@ -47,7 +47,7 @@ def main():
 
 
     consist = CoilCarConsist(roster='pony',
-                             base_numeric_id=1990,
+                             base_numeric_id=3340,
                              gen=6,
                              subtype='B',
                              sprites_complete=False)
@@ -57,7 +57,7 @@ def main():
 
 
     consist = CoilCarConsist(roster='pony',
-                             base_numeric_id=2000,
+                             base_numeric_id=3350,
                              gen=6,
                              subtype='C',
                              sprites_complete=False)

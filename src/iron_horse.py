@@ -49,11 +49,8 @@ box_cars.main()
 from vehicles import caboose_cars
 caboose_cars.main()
 
-"""
-# commented out for 2.0 alpha
 from vehicles import coil_cars
 coil_cars.main()
-"""
 
 from vehicles import coal_hopper_cars
 coal_hopper_cars.main()
@@ -127,11 +124,9 @@ sliding_wall_cars.main()
 from vehicles import stake_cars
 stake_cars.main()
 
-"""
 # commented out for 2.0 alpha
 from vehicles import silo_cars
 silo_cars.main()
-"""
 
 from vehicles import tank_cars
 tank_cars.main()
