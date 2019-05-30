@@ -58,23 +58,26 @@ PR_RUNNING_TRAIN_STEAM = -2
 # NOTE: all wagons use RUNNING_COST_DIESEL, nerfed down to small increments, for fine-grained control over low wagon run costs
 PR_RUNNING_TRAIN_DIESEL = -4
 
-# days offset is used to control *synchronising* (or not) intro dates across groups of vehicles where needed
-# see https://github.com/OpenTTD/OpenTTD/pull/7147 for explanation
-# the actual values don't matter very much, so just use small steps
-intro_date_offsets_by_role_group = {'universal': 0,
-                                    'express': 1,
-                                    'freight': 2,
-                                    'railcar': 3,
-                                    'metro': 4,
-                                    'high_speed': 5,
-                                    'food_wagons': 6,
-                                    'non_core_wagons': 7}
-
+# generalised mapping of roles to groups
 role_group_mapping = {'express': ['branch_express', 'express_1', 'express_2', 'heavy_express_1', 'heavy_express_2'],
                       'freight': ['branch_freight', 'freight', 'heavy_freight_1', 'heavy_freight_2'],
                       'high_speed': ['pax_high_speed'],
                       'metro': ['mail_metro', 'pax_metro'],
                       'universal': ['universal', 'mail_railcar_1', 'mail_railcar_2', 'pax_railcar_1', 'pax_railcar_2']}
+
+# days offset is used to control *synchronising* (or not) intro dates across groups of vehicles where needed
+# see https://github.com/OpenTTD/OpenTTD/pull/7147 for explanation
+# the actual values don't matter very much, so just use small steps
+intro_date_offsets_by_role_group = {'universal': 0,
+                                    'express_core': 1,
+                                    'express_non_core': 2,
+                                    'freight_core': 3,
+                                    'freight_non_core': 4,
+                                    'railcar': 5,
+                                    'metro': 6,
+                                    'high_speed': 7,
+                                    'food_wagons': 8,
+                                    'non_core_wagons': 9}
 
 # standard offsets for trains
 default_spritesheet_offsets = {'3': [[-3, -26],  [-3, -20],   [0, -12],  [5, -16], [-3, -16], [-14, -15], [-16, -12],  [-8, -21]],

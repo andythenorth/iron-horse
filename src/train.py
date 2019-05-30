@@ -226,8 +226,11 @@ class Consist(object):
     def intro_date_days_offset(self):
         # days offset is used to control *synchronising* (or not) intro dates across groups of vehicles where needed
         # see https://github.com/OpenTTD/OpenTTD/pull/7147 for explanation
-        role_to_role_groups_mapping = {'express': ['branch_express', 'express_1', 'heavy_express_1', 'heavy_express_2'],
-                                       'freight': ['branch_freight', 'freight', 'heavy_freight_1', 'heavy_freight_2'],
+        # this does *not* use the role group mapping in global constants, as it's more fragmented to avoid too many new vehicle messages at once
+        role_to_role_groups_mapping = {'express_core': ['express_1', 'heavy_express_1'],
+                                       'express_non_core': ['branch_express', 'express_2', 'heavy_express_2'],
+                                       'freight_core': ['freight', 'heavy_freight_1',],
+                                       'freight_non_core': ['branch_freight', 'heavy_freight_2'],
                                        'metro': ['mail_metro', 'pax_metro'],
                                        'railcar': ['mail_railcar_1', 'mail_railcar_2', 'pax_railcar_1', 'pax_railcar_2'],
                                        'high_speed': ['pax_high_speed'],
@@ -1167,7 +1170,7 @@ class ExpressCarConsist(CarConsist):
         # adjust weight factor because express car freight capacity is 1/2 of other wagons, but weight should be same
         self.weight_factor = polar_fox.constants.mail_multiplier
         self.floating_run_cost_multiplier = 1.66
-        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['express']
+        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['express_core']
         self.allow_flip = True
         # Graphics configuration
         if self.gen in [1]:
@@ -1323,7 +1326,7 @@ class MailCarConsist(CarConsist):
         # adjust weight factor because mail car freight capacity is 1/2 of other wagons, but weight should be same
         self.weight_factor = polar_fox.constants.mail_multiplier
         self.floating_run_cost_multiplier = 3
-        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['express']
+        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['express_core']
         self.allow_flip = True
         self.random_company_colour_swap = False
         # Graphics configuration
@@ -1400,7 +1403,7 @@ class PassengerCarConsistBase(CarConsist):
         self.label_refits_allowed = []
         self.label_refits_disallowed = []
         self.default_cargos = global_constants.default_cargos['pax']
-        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['express']
+        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['express_core']
         self.random_company_colour_swap = False
         self.allow_flip = True
         # roof configuration
