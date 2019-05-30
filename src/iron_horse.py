@@ -52,8 +52,11 @@ caboose_cars.main()
 from vehicles import chemicals_tank_cars
 chemicals_tank_cars.main()
 
+"""
+# commented out until further notice - not convinced they're good
 from vehicles import coil_cars
 coil_cars.main()
+"""
 
 from vehicles import coal_hopper_cars
 coal_hopper_cars.main()
