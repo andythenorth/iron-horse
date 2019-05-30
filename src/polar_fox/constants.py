@@ -114,6 +114,7 @@ base_refits_by_class = {'empty': [],
 # BUT for _some_ specialist vehicle types, it's simpler to just allow refit by label
 allowed_refits_by_label = {'edible_liquids': ['MILK', 'WATR', 'BEER', 'FOOD', 'EOIL'],
                            'box_freight': ['MAIL', 'GRAI', 'WHEA', 'MAIZ', 'FRUT', 'BEAN', 'NITR'], # box cars get some extended cargos
+                           'chemicals': ['ACID', 'RFPR', 'CHLO'],
                            'covered_hoppers': ['GRAI', 'WHEA', 'MAIZ', 'SUGR', 'FMSP', 'RFPR', 'CLAY', 'BDMT',
                                                'BEAN', 'NITR', 'RUBR', 'SAND', 'POTA', 'QLME', 'SASH', 'CMNT',
                                                'KAOL', 'FERT', 'SALT', 'CBLK', 'PLAS'],
@@ -134,6 +135,7 @@ disallowed_refits_by_label = {'non_dump_bulk': ['WOOD', 'SGCN', 'FICR', 'BDMT', 
 # don't conflate this with general refittability, they're different concerns ;)
 # vehicle classes can also just provide their own list locally, using this is convenient, not obligatory
 default_cargos = {'box': ['GOOD', 'VPTS', 'FOOD'],
+                  'chemicals_tank': ['ACID', 'RFPR', 'CHLO'],
                   'coal_hopper': ['COAL', 'COKE', 'NITR', 'KAOL'],
                   'covered_hopper': ['GRAI', 'KAOL'],
                   'dump': ['IORE', 'MNO2', 'NITR', 'PHOS'],

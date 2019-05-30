@@ -49,6 +49,9 @@ box_cars.main()
 from vehicles import caboose_cars
 caboose_cars.main()
 
+from vehicles import chemicals_tank_cars
+chemicals_tank_cars.main()
+
 from vehicles import coil_cars
 coil_cars.main()
 

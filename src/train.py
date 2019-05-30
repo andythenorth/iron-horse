@@ -1032,9 +1032,33 @@ class CoveredHopperCarConsist(CarConsist):
                                                                      consist_ruleset=None)
 
 
+class ChemicalsTankCarConsist(CarConsist):
+    """
+    Specialist tank cars for chemicals, but excluding gases which go in the cryo tank car.
+    """
+
+    def __init__(self, **kwargs):
+        # tank cars are unrealistically autorefittable, and at no cost
+        # Pikka: if people complain that it's unrealistic, tell them "don't do it then"
+        self.base_id = 'chemicals_tank_car'
+        super().__init__(**kwargs)
+        self.class_refit_groups = []  # no classes, use explicit labels
+        self.label_refits_allowed = global_constants.allowed_refits_by_label['chemicals']
+        self.default_cargos = global_constants.default_cargos['chemicals_tank']
+        self.loading_speed_multiplier = 2
+        self.buy_cost_adjustment_factor = 1.33
+        self.floating_run_cost_multiplier = 1.5
+        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['non_core_wagons']
+        # allow flipping, used to flip company colour
+        self.allow_flip = True
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.cryo_tank_car_livery_recolour_maps)
+
+
+
 class CryoTankCarConsist(CarConsist):
     """
-    Specialist tank cars for gases, e.g. Oxygen, Chlorine etc
+    Specialist tank cars for gases, e.g. Oxygen, Chlorine etc.
     """
 
     def __init__(self, **kwargs):
@@ -1051,7 +1075,7 @@ class CryoTankCarConsist(CarConsist):
         self.buy_cost_adjustment_factor = 1.33
         self.floating_run_cost_multiplier = 1.5
         self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['non_core_wagons']
-        # CC is swapped randomly (player can't choose), but also swap base livery on flip (player can choose
+        # allow flipping, used to flip company colour
         self.allow_flip = True
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.cryo_tank_car_livery_recolour_maps)

@@ -32,6 +32,7 @@ STR_NAME_SUFFIX_LARGE                                           :Large
 STR_NAME_SUFFIX_ALIGNMENT_CAR                                   :Alignment Van
 STR_NAME_SUFFIX_BOX_CAR                                         :Box Van
 STR_NAME_SUFFIX_CABOOSE_CAR                                     :Brake Van
+STR_NAME_SUFFIX_CHEMICALS_TANK_CAR                              :Chemicals Tank Car
 STR_NAME_SUFFIX_COAL_HOPPER_CAR                                 :Coal Hopper
 STR_NAME_SUFFIX_COIL_CAR                                        :Coil Car
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Covered Hopper
