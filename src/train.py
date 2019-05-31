@@ -1265,11 +1265,10 @@ class HopperCarConsist(CarConsist):
         self.default_cargos = global_constants.default_cargos['hopper']
         self.loading_speed_multiplier = 2
         self.buy_cost_adjustment_factor = 1.2
-        # CC is swapped randomly (player can't choose), but also swap base livery on flip (player can choose
+        # allow flipping, used to flip company colour
         self.allow_flip = True
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsVisibleCargo(bulk=True,
-                                                            has_alt_livery=True)
+        self.gestalt_graphics = GestaltGraphicsVisibleCargo(bulk=True)
 
 
 class IntermodalCarConsist(CarConsist):
