@@ -1350,26 +1350,6 @@ class MailCarConsist(CarConsist):
                                                                      consist_ruleset='mail_cars')
 
 
-class TorpedoCarConsist(CarConsist):
-    """
-    Specialist heavy haul metal transport e.g. torpedo car, ladle, etc
-    High capacity, not very fast, refits to small subset of finished metal cargos (and slag, which bends the rules a bit).
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = 'torpedo_car'
-        super().__init__(**kwargs)
-        self.class_refit_groups = [] # no classes, use explicit labels
-        self.label_refits_allowed = ['STEL', 'COPR', 'IRON', 'SLAG', 'METL'] # not convinced about these at all eh
-        self.label_refits_disallowed = []
-        self.default_cargos = global_constants.default_cargos['metal'] # should this be hot_metal ?
-        self.loading_speed_multiplier = 2
-        self.buy_cost_adjustment_factor = 1.2
-        self.floating_run_cost_multiplier = 1.33
-        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['non_core_wagons']
-        # !! probably want some capacity multiplier here, metal cars have higher capacity per unit length (at high cost!)
-
-
 class OpenCarConsist(CarConsist):
     """
     General cargo - refits everything except mail, pax.
@@ -1574,45 +1554,6 @@ class StakeCarConsist(CarConsist):
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(piece='stake')
 
 
-class TarpaulinCarConsist(CarConsist):
-    """
-    Tarpaulin car - a graphical alternative to flat car, with identical refits
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = 'tarpaulin_car'
-        super().__init__(**kwargs)
-        self.class_refit_groups = ['flatbed_freight']
-        self.label_refits_allowed = ['GOOD']
-        self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_flatbed_freight']
-        self.default_cargos = global_constants.default_cargos['flat']
-        self.buy_cost_adjustment_factor = 1.1
-        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['non_core_wagons']
-        # allow flipping, used to flip company colour
-        self.allow_flip = True
-        # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(id_base='tarpaulin_car',
-                                                                  recolour_maps=graphics_constants.tarpaulin_car_livery_recolour_maps)
-
-
-class WellCarConsist(CarConsist):
-    """
-    Low-floor wagon, with support for asymmetric sprites
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = 'well_car'
-        super().__init__(**kwargs)
-        self.class_refit_groups = [] # no classes, use explicit labels
-        self.label_refits_allowed = ['ENSP', 'FMSP', 'VEHI']
-        self.label_refits_disallowed = []
-        self.default_cargos = global_constants.default_cargos['supplies']
-        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['non_core_wagons']
-        # !! flipping not currently allowed as don't know if asymmetric sprites support is working (might be fine?)
-        # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsVisibleCargo(heavy_items=True)
-
-
 class TankCarConsist(CarConsist):
     """
     All non-edible liquid cargos
@@ -1636,6 +1577,47 @@ class TankCarConsist(CarConsist):
         self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=polar_fox.constants.tanker_livery_recolour_maps)
 
 
+class TarpaulinCarConsist(CarConsist):
+    """
+    Tarpaulin car - a graphical alternative to flat car, with identical refits
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = 'tarpaulin_car'
+        super().__init__(**kwargs)
+        self.class_refit_groups = ['flatbed_freight']
+        self.label_refits_allowed = ['GOOD']
+        self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_flatbed_freight']
+        self.default_cargos = global_constants.default_cargos['flat']
+        self.buy_cost_adjustment_factor = 1.1
+        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['non_core_wagons']
+        # allow flipping, used to flip company colour
+        self.allow_flip = True
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(id_base='tarpaulin_car',
+                                                                  recolour_maps=graphics_constants.tarpaulin_car_livery_recolour_maps)
+
+
+class TorpedoCarConsist(CarConsist):
+    """
+    Specialist heavy haul metal transport e.g. torpedo car, ladle, etc
+    High capacity, not very fast, refits to small subset of finished metal cargos (and slag, which bends the rules a bit).
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = 'torpedo_car'
+        super().__init__(**kwargs)
+        self.class_refit_groups = [] # no classes, use explicit labels
+        self.label_refits_allowed = ['STEL', 'COPR', 'IRON', 'SLAG', 'METL'] # not convinced about these at all eh
+        self.label_refits_disallowed = []
+        self.default_cargos = global_constants.default_cargos['metal'] # should this be hot_metal ?
+        self.loading_speed_multiplier = 2
+        self.buy_cost_adjustment_factor = 1.2
+        self.floating_run_cost_multiplier = 1.33
+        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['non_core_wagons']
+        # !! probably want some capacity multiplier here, metal cars have higher capacity per unit length (at high cost!)
+
+
 class VehicleTransporterCarConsist(CarConsist):
     """
     Transports vehicles cargo
@@ -1650,6 +1632,24 @@ class VehicleTransporterCarConsist(CarConsist):
         self.default_cargos = ['VEHI']
         self.buy_cost_adjustment_factor = 1.2
         self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['non_core_wagons']
+
+
+class WellCarConsist(CarConsist):
+    """
+    Low-floor wagon, with support for asymmetric sprites
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = 'well_car'
+        super().__init__(**kwargs)
+        self.class_refit_groups = [] # no classes, use explicit labels
+        self.label_refits_allowed = ['ENSP', 'FMSP', 'VEHI']
+        self.label_refits_disallowed = []
+        self.default_cargos = global_constants.default_cargos['supplies']
+        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['non_core_wagons']
+        # !! flipping not currently allowed as don't know if asymmetric sprites support is working (might be fine?)
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsVisibleCargo(heavy_items=True)
 
 
 class Train(object):
