@@ -7,7 +7,7 @@ def main():
                                       base_numeric_id=2850,
                                       gen=2,
                                       subtype='A',
-                                      sprites_complete=False)
+                                      sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
                      chassis='2_axle_gapped_16px')
@@ -17,7 +17,7 @@ def main():
                                       base_numeric_id=2870,
                                       gen=3,
                                       subtype='A',
-                                      sprites_complete=False)
+                                      sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
                      chassis='2_axle_gapped_16px')
@@ -27,7 +27,7 @@ def main():
                                       base_numeric_id=2080,
                                       gen=4,
                                       subtype='A',
-                                      sprites_complete=False)
+                                      sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
                      chassis='2_axle_gapped_16px')
@@ -37,7 +37,7 @@ def main():
                                       base_numeric_id=2670,
                                       gen=4,
                                       subtype='B',
-                                      sprites_complete=False)
+                                      sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
                      chassis='2_axle_gapped_24px')
