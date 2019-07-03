@@ -16,31 +16,59 @@ STR_PARAM_ROSTER_OPTION_1                                       :Llama di Ferro
 STR_PARAM_ROSTER_OPTION_2                                       :Antilope di Ferro
 
 # keep these alphabetised, easier
-STR_NAME_SUFFIX_DIESEL                                          :(Diesel)
-STR_NAME_SUFFIX_ELECTRIC                                        :(Elettrica)
-STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Diesel-Elettrica)
+STR_NAME_SUFFIX_DIESEL                                          :Diesel
+STR_NAME_SUFFIX_ELECTRIC                                        :Elettrica
+STR_NAME_SUFFIX_ELECTRODIESEL                                   :Diesel-Elettrica
+STR_NAME_SUFFIX_METRO                                           :Metropolitana
 STR_NAME_SUFFIX_STEAM                                           :(A vapore)
 
 # size suffixes
+STR_NAME_SUFFIX_SMALL                                           :Piccolo
+STR_NAME_SUFFIX_MEDIUM                                          :Intermedio
+STR_NAME_SUFFIX_LARGE                                           :Grande
 
 # wagon class suffixes
 # as of Jan 2019 these are switched from en-us to en-gb
 # the en-us translation should be updated appropriately when making changes here
 # !! consider splitting strings per roster?? A US caboose is still a 'caboose' in en-gb, not a brake van
+STR_NAME_SUFFIX_ALIGNMENT_CAR                                   :Carro per allineamento
 STR_NAME_SUFFIX_BOX_CAR                                         :Carro chiuso
 STR_NAME_SUFFIX_CABOOSE_CAR                                     :Carro di fine convoglio
+STR_NAME_SUFFIX_CHEMICALS_TANK_CAR                              :Carro cisterna per prodotti chimici
+STR_NAME_SUFFIX_COAL_HOPPER_CAR                                 :Carro a tramoggia per carbone
+STR_NAME_SUFFIX_COIL_CAR                                        :Carro per molle
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Carro a tramoggia coperto
-STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Carro cisterna per alimentari
+STR_NAME_SUFFIX_CURTAIN_SIDE_BOX_CAR                            :Carro a tendine laterali
+STR_NAME_SUFFIX_DUMP_CAR                                        :Carro per minerali
+STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Carro cisterna per prodotti alimentari
+STR_NAME_SUFFIX_EXPRESS_CAR                                     :Carro per merci leggere
 STR_NAME_SUFFIX_FLAT_CAR                                        :Carro piatto
+STR_NAME_SUFFIX_FRUIT_VEG_CAR                                   :Carro per frutta e verdura
+STR_NAME_SUFFIX_GRAIN_HOPPER_CAR                                :Carro a tramoggia per grano
 STR_NAME_SUFFIX_HOPPER_CAR                                      :Carro a tramoggia
+STR_NAME_SUFFIX_INTERMODAL_CAR                                  :Carro intermodale
 STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Carro bestiame
+STR_NAME_SUFFIX_LUXURY_PASSENGER_CAR                            :Carrozza viaggiatori di lusso
 STR_NAME_SUFFIX_MAIL_CAR                                        :Carro postale
 STR_NAME_SUFFIX_OPEN_CAR                                        :Carro aperto
 STR_NAME_SUFFIX_PASSENGER_CAR                                   :Carrozza passeggeri
+STR_NAME_SUFFIX_PLATE_CAR                                       :Carro piatto
 STR_NAME_SUFFIX_REEFER_CAR                                      :Carro frigorifero
+STR_NAME_SUFFIX_SILO_CAR                                        :Carro silos
+STR_NAME_SUFFIX_SLIDING_WALL_CAR                                :Carro a pareti scorrevoli
+STR_NAME_SUFFIX_STAKE_CAR                                       :Carro a stanti
 STR_NAME_SUFFIX_TANK_CAR                                        :Carro cisterna
+STR_NAME_SUFFIX_TARPAULIN_CAR                                   :Carro telonato
 STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Carro per trasporto veicoli
 
 # role information for buy menu
+STR_ROLE                                                        :Ruolo: {GOLD}{STRING}
+STR_ROLE_FREIGHT                                                :Merci
+STR_ROLE_GENERAL_PURPOSE                                        :Universale
+STR_ROLE_GENERAL_PURPOSE_EXPRESS                                :Merci leggere / Universale
+STR_ROLE_VERY_HIGH_SPEED                                        :Alta Velocità
+STR_ROLE_METRO                                                  :Urbano ad alta capacità
 
 # project management
+STR_SPRITES_COMPLETE                                            :{}Sprite Completi: {GOLD}Sì
+STR_SPRITES_INCOMPLETE                                          :{}Sprite Completi: {GOLD}No
