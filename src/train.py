@@ -736,7 +736,7 @@ class MailEngineConsist(EngineConsist):
         self.class_refit_groups = ['mail', 'express_freight']
         self.label_refits_allowed = []  # no specific labels needed
         self.label_refits_disallowed = ['TOUR']
-        self.default_cargos = global_constants.default_cargos['mail']
+        self.default_cargos = polar_fox.constants.default_cargos['mail']
         # increased costs for having extra doors and stuff eh?
         self.buy_cost_adjustment_factor = 1.4
         self.floating_run_cost_multiplier = 12
@@ -932,9 +932,9 @@ class BoxCarConsist(CarConsist):
         self.base_id = 'box_car'
         super().__init__(**kwargs)
         self.class_refit_groups = ['packaged_freight']
-        self.label_refits_allowed = global_constants.allowed_refits_by_label['box_freight']
-        self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_freight_special_cases']
-        self.default_cargos = global_constants.default_cargos['box']
+        self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label['box_freight']
+        self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label['non_freight_special_cases']
+        self.default_cargos = polar_fox.constants.default_cargos['box']
         self.buy_cost_adjustment_factor = 1.2
         # allow flipping, used to flip company colour
         self.allow_flip = True
@@ -976,8 +976,8 @@ class CoalHopperCarConsist(CarConsist):
         super().__init__(**kwargs)
         self.class_refit_groups = ['dump_freight']
         self.label_refits_allowed = []  # none needed
-        self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_dump_bulk']
-        self.default_cargos = global_constants.default_cargos['coal_hopper']
+        self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label['non_dump_bulk']
+        self.default_cargos = polar_fox.constants.default_cargos['coal_hopper']
         self.loading_speed_multiplier = 2
         self.buy_cost_adjustment_factor = 1.2
         # CC is swapped randomly (player can't choose), but also swap base livery on flip (player can choose
@@ -996,9 +996,9 @@ class CoilCarConsist(CarConsist):
         self.base_id = 'coil_car'
         super().__init__(**kwargs)
         self.class_refit_groups = []
-        self.label_refits_allowed = global_constants.allowed_refits_by_label['cold_metal']
+        self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label['cold_metal']
         self.label_refits_disallowed = []
-        self.default_cargos = global_constants.default_cargos['metal']
+        self.default_cargos = polar_fox.constants.default_cargos['metal']
         self.buy_cost_adjustment_factor = 1.1
         self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['non_core_wagons']
         # allow flipping, used to flip company colour
@@ -1017,10 +1017,9 @@ class CoveredHopperCarConsist(CarConsist):
         self.base_id = 'covered_hopper_car'
         super().__init__(**kwargs)
         self.class_refit_groups = []  # no classes, use explicit labels
-        # shouldn't these be in polar fox?
-        self.label_refits_allowed = global_constants.allowed_refits_by_label['covered_hoppers']
+        self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label['covered_hoppers']
         self.label_refits_disallowed = []
-        self.default_cargos = global_constants.default_cargos['covered_hopper']
+        self.default_cargos = polar_fox.constants.default_cargos['covered_hopper']
         self.loading_speed_multiplier = 2
         self.buy_cost_adjustment_factor = 1.2
         self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['non_core_wagons']
@@ -1046,9 +1045,8 @@ class ChemicalsTankCarConsist(CarConsist):
         self.base_id = 'chemicals_tank_car'
         super().__init__(**kwargs)
         self.class_refit_groups = []  # no classes, use explicit labels
-        # shouldn't these be in polar fox?
-        self.label_refits_allowed = global_constants.allowed_refits_by_label['chemicals']
-        self.default_cargos = global_constants.default_cargos['chemicals_tank']
+        self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label['chemicals']
+        self.default_cargos = polar_fox.constants.default_cargos['chemicals_tank']
         self.loading_speed_multiplier = 2
         self.buy_cost_adjustment_factor = 1.33
         self.floating_run_cost_multiplier = 1.5
@@ -1071,9 +1069,8 @@ class CryoTankCarConsist(CarConsist):
         self.base_id = 'cryo_tank_car'
         super().__init__(**kwargs)
         self.class_refit_groups = []  # no classes, use explicit labels
-        # shouldn't these be in polar fox?
-        self.label_refits_allowed = global_constants.allowed_refits_by_label['cryo_gases']
-        self.default_cargos = ['O2__', 'CHLO']
+        self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label['cryo_gases']
+        self.default_cargos = polar_fox.constants.default_cargos['cryo_gases']
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
         self.loading_speed_multiplier = 2
         self.buy_cost_adjustment_factor = 1.33
@@ -1095,9 +1092,9 @@ class CurtainSideCarBoxConsist(CarConsist):
         self.base_id = 'curtain_side_box_car'
         super().__init__(**kwargs)
         self.class_refit_groups = ['packaged_freight']
-        self.label_refits_allowed = global_constants.allowed_refits_by_label['box_freight']
-        self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_freight_special_cases']
-        self.default_cargos = global_constants.default_cargos['box']
+        self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label['box_freight']
+        self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label['non_freight_special_cases']
+        self.default_cargos = polar_fox.constants.default_cargos['box']
         self.buy_cost_adjustment_factor = 1.2
         self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['non_core_wagons']
         # allow flipping, used to flip company colour
@@ -1118,8 +1115,8 @@ class DumpCarConsist(CarConsist):
         super().__init__(**kwargs)
         self.class_refit_groups = ['dump_freight']
         self.label_refits_allowed = []  # no specific labels needed
-        self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_dump_bulk']
-        self.default_cargos = global_constants.default_cargos['dump']
+        self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label['non_dump_bulk']
+        self.default_cargos = polar_fox.constants.default_cargos['dump']
         self.loading_speed_multiplier = 1.5
         self.buy_cost_adjustment_factor = 1.1
         # allow flipping, used to flip company colour
@@ -1141,9 +1138,9 @@ class EdiblesTankCarConsist(CarConsist):
         super().__init__(**kwargs)
         self.speed_class = 'express'
         self.class_refit_groups = [] # no classes, use explicit labels
-        self.label_refits_allowed = global_constants.allowed_refits_by_label['edible_liquids']
+        self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label['edible_liquids']
         self.label_refits_disallowed = []
-        self.default_cargos = global_constants.default_cargos['edibles_tank']
+        self.default_cargos = polar_fox.constants.default_cargos['edibles_tank']
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
         self.loading_speed_multiplier = 2
         self.buy_cost_adjustment_factor = 1.33
@@ -1166,8 +1163,8 @@ class ExpressCarConsist(CarConsist):
         self.speed_class = 'express'
         self.class_refit_groups = ['mail', 'express_freight']
         self.label_refits_allowed = []  # no specific labels needed
-        self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_freight_special_cases']
-        self.default_cargos = global_constants.default_cargos['express']
+        self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label['non_freight_special_cases']
+        self.default_cargos = polar_fox.constants.default_cargos['express']
         # adjust weight factor because express car freight capacity is 1/2 of other wagons, but weight should be same
         self.weight_factor = polar_fox.constants.mail_multiplier
         self.floating_run_cost_multiplier = 1.66
@@ -1194,8 +1191,8 @@ class FlatCarConsist(CarConsist):
         super().__init__(**kwargs)
         self.class_refit_groups = ['flatbed_freight']
         self.label_refits_allowed = ['GOOD']
-        self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_flatbed_freight']
-        self.default_cargos = global_constants.default_cargos['flat']
+        self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label['non_flatbed_freight']
+        self.default_cargos = polar_fox.constants.default_cargos['flat']
         # allow flipping, used to flip company colour
         self.allow_flip = True
         # Graphics configuration
@@ -1211,9 +1208,9 @@ class FruitVegCarConsist(CarConsist):
         self.base_id = 'fruit_veg_car'
         super().__init__(**kwargs)
         self.class_refit_groups = [] # no classes, use explicit labels
-        self.label_refits_allowed = global_constants.allowed_refits_by_label['fruit_veg']
+        self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label['fruit_veg']
         self.label_refits_disallowed = []
-        self.default_cargos = global_constants.default_cargos['fruit_veg']
+        self.default_cargos = polar_fox.constants.default_cargos['fruit_veg']
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
         self.buy_cost_adjustment_factor = 1.2
         self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['non_core_wagons']
@@ -1235,9 +1232,9 @@ class GrainHopperCarConsist(CarConsist):
         super().__init__(**kwargs)
         self.class_refit_groups = []  # no classes, use explicit labels
         # shouldn't these be in polar fox?
-        self.label_refits_allowed = global_constants.allowed_refits_by_label['covered_hoppers']
+        self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label['covered_hoppers']
         self.label_refits_disallowed = []
-        self.default_cargos = global_constants.default_cargos['covered_hopper']
+        self.default_cargos = polar_fox.constants.default_cargos['covered_hopper']
         self.loading_speed_multiplier = 2
         self.buy_cost_adjustment_factor = 1.2
         self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['non_core_wagons']
@@ -1262,8 +1259,8 @@ class HopperCarConsist(CarConsist):
         super().__init__(**kwargs)
         self.class_refit_groups = ['dump_freight']
         self.label_refits_allowed = []  # none needed
-        self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_dump_bulk']
-        self.default_cargos = global_constants.default_cargos['hopper']
+        self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label['non_dump_bulk']
+        self.default_cargos = polar_fox.constants.default_cargos['hopper']
         self.loading_speed_multiplier = 2
         self.buy_cost_adjustment_factor = 1.2
         # allow flipping, used to flip company colour
@@ -1281,9 +1278,9 @@ class IntermodalCarConsist(CarConsist):
         self.base_id = 'intermodal_car'
         super().__init__(**kwargs)
         self.class_refit_groups = ['packaged_freight']
-        self.label_refits_allowed = global_constants.allowed_refits_by_label['box_freight']
-        self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_freight_special_cases']
-        self.default_cargos = global_constants.default_cargos['box']
+        self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label['box_freight']
+        self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label['non_freight_special_cases']
+        self.default_cargos = polar_fox.constants.default_cargos['box']
         self.loading_speed_multiplier = 2
 
 
@@ -1321,8 +1318,8 @@ class MailCarConsist(CarConsist):
         self.speed_class = 'express'
         self.class_refit_groups = ['mail', 'express_freight']
         self.label_refits_allowed = []  # no specific labels needed
-        self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_freight_special_cases']
-        self.default_cargos = global_constants.default_cargos['mail']
+        self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label['non_freight_special_cases']
+        self.default_cargos = polar_fox.constants.default_cargos['mail']
         # adjust weight factor because mail car freight capacity is 1/2 of other wagons, but weight should be same
         self.weight_factor = polar_fox.constants.mail_multiplier
         self.floating_run_cost_multiplier = 3
@@ -1361,8 +1358,8 @@ class OpenCarConsist(CarConsist):
         super().__init__(**kwargs)
         self.class_refit_groups = ['all_freight']
         self.label_refits_allowed = []  # no specific labels needed
-        self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_freight_special_cases']
-        self.default_cargos = global_constants.default_cargos['open']
+        self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label['non_freight_special_cases']
+        self.default_cargos = polar_fox.constants.default_cargos['open']
         # allow flipping, used to flip company colour
         self.allow_flip = True
         # Graphics configuration
@@ -1382,7 +1379,7 @@ class PassengerCarConsistBase(CarConsist):
         self.class_refit_groups = ['pax']
         self.label_refits_allowed = []
         self.label_refits_disallowed = []
-        self.default_cargos = global_constants.default_cargos['pax']
+        self.default_cargos = polar_fox.constants.default_cargos['pax']
         self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['express_core']
         self.random_company_colour_swap = False
         self.allow_flip = True
@@ -1458,8 +1455,8 @@ class PlateCarConsist(CarConsist):
         super().__init__(**kwargs)
         self.class_refit_groups = ['flatbed_freight']
         self.label_refits_allowed = ['GOOD']
-        self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_flatbed_freight']
-        self.default_cargos = global_constants.default_cargos['flat']
+        self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label['non_flatbed_freight']
+        self.default_cargos = polar_fox.constants.default_cargos['flat']
         self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['non_core_wagons']
         # allow flipping, used to flip company colour
         self.allow_flip = True
@@ -1479,7 +1476,7 @@ class ReeferCarConsist(CarConsist):
         self.class_refit_groups = ['refrigerated_freight']
         self.label_refits_allowed = []  # no specific labels needed
         self.label_refits_disallowed = []
-        self.default_cargos = global_constants.default_cargos['reefer']
+        self.default_cargos = polar_fox.constants.default_cargos['reefer']
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
         self.buy_cost_adjustment_factor = 1.33
         self.floating_run_cost_multiplier = 1.66
@@ -1504,7 +1501,7 @@ class SiloCarConsist(CarConsist):
         self.class_refit_groups = []  # no classes, use explicit labels
         self.label_refits_allowed = ['FOOD', 'SUGR', 'FMSP', 'RFPR', 'BDMT', 'RUBR', 'QLME', 'SASH', 'CMNT'] # move to Polar Fox (maybe??)
         self.label_refits_disallowed = []
-        self.default_cargos = global_constants.default_cargos['silo']
+        self.default_cargos = polar_fox.constants.default_cargos['silo']
         self.loading_speed_multiplier = 2
         self.buy_cost_adjustment_factor = 1.2
         self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['non_core_wagons']
@@ -1521,9 +1518,9 @@ class SlidingWallCarConsist(CarConsist):
         self.base_id = 'sliding_wall_car'
         super().__init__(**kwargs)
         self.class_refit_groups = ['packaged_freight']
-        self.label_refits_allowed = global_constants.allowed_refits_by_label['box_freight']
-        self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_freight_special_cases']
-        self.default_cargos = global_constants.default_cargos['box']
+        self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label['box_freight']
+        self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label['non_freight_special_cases']
+        self.default_cargos = polar_fox.constants.default_cargos['box']
         self.buy_cost_adjustment_factor = 1.2
         self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['non_core_wagons']
         # allow flipping, used to flip company colour
@@ -1546,7 +1543,7 @@ class StakeCarConsist(CarConsist):
         # limited refits by design eh
         self.label_refits_allowed = ['WOOD', 'WDPR', 'PIPE'] # move to Polar Fox (maybe??)
         self.label_refits_disallowed = []
-        self.default_cargos = global_constants.default_cargos['stake']
+        self.default_cargos = polar_fox.constants.default_cargos['stake']
         self.loading_speed_multiplier = 2
         self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['non_core_wagons']
         # allow flipping, used to flip company colour
@@ -1568,8 +1565,8 @@ class TankCarConsist(CarConsist):
         # they also change livery at stations if refitted between certain cargo types <shrug>
         self.class_refit_groups = ['liquids']
         self.label_refits_allowed = []
-        self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_generic_liquids']
-        self.default_cargos = global_constants.default_cargos['tank']
+        self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label['non_generic_liquids']
+        self.default_cargos = polar_fox.constants.default_cargos['tank']
         self.loading_speed_multiplier = 3
         self.buy_cost_adjustment_factor = 1.2
         # allow flipping, used to flip company colour
@@ -1588,8 +1585,8 @@ class TarpaulinCarConsist(CarConsist):
         super().__init__(**kwargs)
         self.class_refit_groups = ['flatbed_freight']
         self.label_refits_allowed = ['GOOD']
-        self.label_refits_disallowed = global_constants.disallowed_refits_by_label['non_flatbed_freight']
-        self.default_cargos = global_constants.default_cargos['flat']
+        self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label['non_flatbed_freight']
+        self.default_cargos = polar_fox.constants.default_cargos['flat']
         self.buy_cost_adjustment_factor = 1.1
         self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['non_core_wagons']
         # allow flipping, used to flip company colour
@@ -1611,7 +1608,7 @@ class TorpedoCarConsist(CarConsist):
         self.class_refit_groups = [] # no classes, use explicit labels
         self.label_refits_allowed = ['STEL', 'COPR', 'IRON', 'SLAG', 'METL'] # not convinced about these at all eh
         self.label_refits_disallowed = []
-        self.default_cargos = global_constants.default_cargos['metal'] # should this be hot_metal ?
+        self.default_cargos = polar_fox.constants.default_cargos['metal'] # should this be hot_metal ?
         self.loading_speed_multiplier = 2
         self.buy_cost_adjustment_factor = 1.2
         self.floating_run_cost_multiplier = 1.33
@@ -1646,7 +1643,7 @@ class WellCarConsist(CarConsist):
         self.class_refit_groups = [] # no classes, use explicit labels
         self.label_refits_allowed = ['ENSP', 'FMSP', 'VEHI']
         self.label_refits_disallowed = []
-        self.default_cargos = global_constants.default_cargos['supplies']
+        self.default_cargos = polar_fox.constants.default_cargos['supplies']
         self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['non_core_wagons']
         # !! flipping not currently allowed as don't know if asymmetric sprites support is working (might be fine?)
         # Graphics configuration
