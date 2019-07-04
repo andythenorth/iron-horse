@@ -1046,6 +1046,7 @@ class ChemicalsTankCarConsist(CarConsist):
         self.base_id = 'chemicals_tank_car'
         super().__init__(**kwargs)
         self.class_refit_groups = []  # no classes, use explicit labels
+        # shouldn't these be in polar fox?
         self.label_refits_allowed = global_constants.allowed_refits_by_label['chemicals']
         self.default_cargos = global_constants.default_cargos['chemicals_tank']
         self.loading_speed_multiplier = 2
