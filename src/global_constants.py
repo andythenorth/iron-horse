@@ -67,7 +67,7 @@ role_group_mapping = {'express': ['branch_express', 'express_1', 'express_2', 'h
 
 # days offset is used to control *synchronising* (or not) intro dates across groups of vehicles where needed
 # see https://github.com/OpenTTD/OpenTTD/pull/7147 for explanation
-# the actual values don't matter very much, so just use small steps
+# the actual values will be translated into months later
 intro_date_offsets_by_role_group = {'universal': 0,
                                     'express_core': 1,
                                     'express_non_core': 2,
