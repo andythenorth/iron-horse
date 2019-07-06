@@ -66,7 +66,7 @@ STR_NAME_SUFFIX_WELL_CAR                                        :Well Wagon
 STR_ROLE                                                        :Role: {GOLD}{STRING}
 STR_ROLE_FREIGHT                                                :Freight
 STR_ROLE_GENERAL_PURPOSE                                        :General Purpose
-STR_ROLE_GENERAL_PURPOSE_EXPRESS                                :Express / General Purpose
+STR_ROLE_GENERAL_PURPOSE_EXPRESS                                :General Purpose / Express
 STR_ROLE_VERY_HIGH_SPEED                                        :Very High Speed
 STR_ROLE_METRO                                                  :High Capacity Urban
 
