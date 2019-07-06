@@ -2,7 +2,7 @@ Changelog
 =========
 
 ----------------------
-2.0.0 Alpha 10 Release
+2.0.0 Alpha 11 Release
 ----------------------
 
 Iron Horse 2.
@@ -22,6 +22,36 @@ Designed to be used with 'vehicles expire' set to to 'on', Horse 2 has a *lot* o
 - extensive cargo sprite support, but some cargo sprites are known to be missing
 - no savegame compatibility with Iron Horse 1
 - can be used _alongside_ Iron Horse 1, if you must (kind of odd, but eh)
+
+*Changes from 2.0.0 Alpha 10*
+
+- added coal hopper cars, separate from generic hopper cars
+- rework generic hopper car appearance
+- added grain hopper cars, separate from generic covered hopper cars
+- rework generic hopper car appearance
+- added chemical tank cars, separate from generic tank cars
+- sprites complete for
+    - Haar 0-8-0
+    - coal hopper cars
+    - hopper cars
+    - grain hopper cars
+    - gen 4A, 4B and 5A covered hopper cars
+- tweaks to chassis sprites
+- fix gen 3C mail car TPO livery out-of-order / \ angles
+- show role types for engines in buy menu text
+- split up express and freight vehicle intro date offsets more, to avoid too many simultaneous new vehicle messages
+- fix spacing of vehicle intro dates, using month offsets not days, as OpenTTD is believed to round to nearest month
+- compile optimisations
+    - use nml->nfo->grfcodec to produce the final grf, this provides a *much* faster compile in cases where only graphics have changed
+    - option to compile without cargo sprites, speeds up compile by about 55% in tests
+    - adjust how makefile triggers docs generation
+    - use multiprocessing pool for docs image generation
+- updated translations from web translators
+
+
+----------------------
+2.0.0 Alpha 10 Release
+----------------------
 
 *Changes from 2.0.0 Alpha 9*
 
