@@ -6,7 +6,7 @@ def main(roster):
                             id='gwynt',
                             base_numeric_id=380,
                             name='0-6-0 Gwynt',
-                            role='freight',
+                            role='freight_1',
                             power=1100,
                             tractive_effort_coefficient=0.24,
                             gen=1)

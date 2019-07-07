@@ -6,7 +6,7 @@ def main(roster):
                             id='phoenix',
                             base_numeric_id=160,
                             name='Phoenix',
-                            role='freight',
+                            role='freight_1',
                             power=1900,
                             random_reverse=True,
                             gen=6,

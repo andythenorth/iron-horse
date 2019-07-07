@@ -229,8 +229,8 @@ class Consist(object):
         # this does *not* use the role group mapping in global constants, as it's more fragmented to avoid too many new vehicle messages at once
         role_to_role_groups_mapping = {'express_core': ['express_1', 'heavy_express_1'],
                                        'express_non_core': ['branch_express', 'express_2', 'heavy_express_2'],
-                                       'freight_core': ['freight', 'heavy_freight_1',],
-                                       'freight_non_core': ['branch_freight', 'heavy_freight_2'],
+                                       'freight_core': ['freight_1', 'heavy_freight_1',],
+                                       'freight_non_core': ['branch_freight', 'freight_2', 'heavy_freight_2'],
                                        'metro': ['mail_metro', 'pax_metro'],
                                        'railcar': ['mail_railcar_1', 'mail_railcar_2', 'pax_railcar_1', 'pax_railcar_2'],
                                        'high_speed': ['pax_high_speed'],

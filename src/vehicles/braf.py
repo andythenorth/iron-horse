@@ -6,7 +6,7 @@ def main(roster):
                             id='braf',
                             base_numeric_id=0,
                             name='2-6-0 Braf',
-                            role='freight',
+                            role='freight_1',
                             power=1250,
                             tractive_effort_coefficient=0.24,
                             gen=2)

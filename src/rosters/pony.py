@@ -3,7 +3,7 @@ from roster import Roster
 from vehicles import ares
 from vehicles import athena
 from vehicles import bean_feast
-#from vehicles import blaze
+from vehicles import blaze
 from vehicles import boar_cat
 from vehicles import braf
 from vehicles import breeze
@@ -54,7 +54,7 @@ from vehicles import pylon
 from vehicles import roarer
 from vehicles import saxon
 from vehicles import scooby
-#from vehicles import scorcher
+from vehicles import scorcher
 from vehicles import screamer
 from vehicles import serpentine
 from vehicles import shoebox
