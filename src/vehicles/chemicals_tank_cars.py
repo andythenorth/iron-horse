@@ -3,6 +3,17 @@ from train import ChemicalsTankCarConsist, FreightCar
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
+
+    consist = ChemicalsTankCarConsist(roster='pony',
+                             base_numeric_id=2860,
+                             gen=2,
+                             subtype='A',
+                             sprites_complete=False)
+
+    consist.add_unit(type=FreightCar,
+                     chassis='2_axle_sparse_16px')
+
+
     consist = ChemicalsTankCarConsist(roster='pony',
                              base_numeric_id=3360,
                              gen=3,
