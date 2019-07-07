@@ -10,7 +10,7 @@ def main(roster):
                             power=2200,
                             random_reverse=True,
                             gen=4,
-                            intro_date_offset=-1,  # introduce earlier than gen epoch by design
+                            intro_date_offset=-2,  # let's not have everything turn up in 1960
                             sprites_complete=False)
 
     consist.add_unit(type=DieselEngineUnit,
