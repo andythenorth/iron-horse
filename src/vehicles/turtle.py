@@ -6,10 +6,11 @@ def main(roster):
                             id='turtle',
                             base_numeric_id=3150,
                             name='Turtle',
-                            role='heavy_express_1',
-                            power=3450,
+                            role='heavy_express_3',
+                            power=3850,
                             random_reverse=True,
                             gen=6,
+                            intro_date_offset=5,  # introduce later than gen epoch by design
                             sprites_complete=True)
 
     consist.add_unit(type=DieselEngineUnit,

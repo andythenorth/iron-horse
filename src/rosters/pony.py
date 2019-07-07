@@ -41,6 +41,7 @@ from vehicles import lemon
 from vehicles import little_bear
 from vehicles import longwater
 from vehicles import mail_rail
+from vehicles import medusa
 from vehicles import merrylegs
 from vehicles import moor_gallop
 from vehicles import mumble
@@ -75,6 +76,7 @@ from vehicles import ultra_shoebox
 from vehicles import upcountry
 from vehicles import westbourne
 from vehicles import workish
+from vehicles import wyvern
 from vehicles import zeus
 from vehicles import zorro
 
@@ -118,8 +120,10 @@ roster = Roster(id = 'pony',
                            shredder,
                            upcountry,
                            pegasus,
-                           dragon,
+                           wyvern,
                            thunderbird,
+                           dragon,
+                           medusa,
                            turtle,
                            hurly_burly,
                            moor_gallop,

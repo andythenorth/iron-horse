@@ -7,7 +7,7 @@ def main(roster):
                             base_numeric_id=230,
                             name='4-6-0 Upcountry',
                             role='heavy_express_1',
-                            power=1450,
+                            power=1500,
                             tractive_effort_coefficient=0.18,
                             buy_cost=47,
                             gen=2)
