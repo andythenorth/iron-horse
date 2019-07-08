@@ -60,7 +60,7 @@ PR_RUNNING_TRAIN_DIESEL = -4
 
 # generalised mapping of roles to groups
 role_group_mapping = {'express': ['branch_express', 'express_1', 'express_2', 'heavy_express_1', 'heavy_express_2', 'heavy_express_3'],
-                      'freight': ['branch_freight', 'freight_1', 'freight_2', 'heavy_freight_1', 'heavy_freight_2'],
+                      'freight': ['branch_freight', 'freight_1', 'freight_2', 'heavy_freight_1', 'heavy_freight_2', 'heavy_freight_3'],
                       'high_speed': ['pax_high_speed'],
                       'metro': ['mail_metro', 'pax_metro'],
                       'universal': ['universal', 'mail_railcar_1', 'mail_railcar_2', 'pax_railcar_1', 'pax_railcar_2']}

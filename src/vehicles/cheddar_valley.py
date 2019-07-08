@@ -6,11 +6,12 @@ def main(roster):
                             id='cheddar_valley',
                             base_numeric_id=220,
                             name='Cheddar Valley',
-                            role='heavy_freight_1',
-                            power=3600,
+                            role='heavy_freight_3',
+                            power=4000,
                             # dibble for game balance, assume super-slip control
                             tractive_effort_coefficient=0.4,
                             random_reverse=True,
+                            intro_date_offset=5,  # let's be a little bit later for this one
                             gen=5,
                             sprites_complete=True)
 

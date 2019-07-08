@@ -230,7 +230,7 @@ class Consist(object):
         role_to_role_groups_mapping = {'express_core': ['express_1', 'heavy_express_1'],
                                        'express_non_core': ['branch_express', 'express_2', 'heavy_express_2', 'heavy_express_3'],
                                        'freight_core': ['freight_1', 'heavy_freight_1',],
-                                       'freight_non_core': ['branch_freight', 'freight_2', 'heavy_freight_2'],
+                                       'freight_non_core': ['branch_freight', 'freight_2', 'heavy_freight_2', 'heavy_freight_3'],
                                        'metro': ['mail_metro', 'pax_metro'],
                                        'railcar': ['mail_railcar_1', 'mail_railcar_2', 'pax_railcar_1', 'pax_railcar_2'],
                                        'high_speed': ['pax_high_speed'],

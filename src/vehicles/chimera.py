@@ -6,8 +6,8 @@ def main(roster):
                             id='chimera',
                             base_numeric_id=990,
                             name='Chimera',
-                            role='heavy_freight_1',
-                            power=4200,
+                            role='heavy_freight_3',
+                            power=4800,
                             # dibble for game balance, assume super-slip control
                             tractive_effort_coefficient=0.4,
                             random_reverse=True,

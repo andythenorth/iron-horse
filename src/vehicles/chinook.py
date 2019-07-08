@@ -7,7 +7,7 @@ def main(roster):
                             base_numeric_id=120,
                             name='Chinook',
                             role='heavy_freight_1',
-                            power=3000,
+                            power=2900,
                             gen=4,
                             sprites_complete=True)
 

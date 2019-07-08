@@ -10,7 +10,7 @@ def main(roster):
                             power=6000,
                             joker=True,  # this engine doesn't fit the set roster pattern, by design it's to mix things up
                             dual_headed=True,
-                            intro_date_offset=-12,  # let's be a little bit earlier for this one
+                            intro_date_offset=-10,  # let's be a little bit earlier for this one
                             gen=6,
                             sprites_complete=False)
 
