@@ -6,7 +6,7 @@ def main(roster):
                                                         id='helm_wind_middle',
                                                         base_numeric_id=2890,
                                                         name='Helm Wind - Middle',
-                                                        role='pax_high_speed',
+                                                        role='pax_very_high_speed',
                                                         power=0,  # set power 0, when attached to correct cab, cab power will be increased
                                                         # no pantographs for Helm Wind middle cars
                                                         gen=5,

@@ -91,6 +91,9 @@ fruit_veg_cars.main()
 from vehicles import hopper_cars
 hopper_cars.main()
 
+from vehicles import hst_passenger_cars
+hst_passenger_cars.main()
+
 """
 # commented out for 2.0 alpha
 from vehicles import intermodal_cars

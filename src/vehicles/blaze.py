@@ -10,13 +10,13 @@ from train import EngineConsist, DieselEngineUnit
 def main(roster):
     consist = EngineConsist(roster=roster,
                             id='blaze',
-                            base_numeric_id=3250,
-                            name='Blaze',
-                            role='heavy_express_1',
-                            power=5000,
+                            base_numeric_id=3330,
+                            name='Blaze HST',
+                            role='hst_express_1', # quite a specific role, may or may not scale to other rosters
+                            power=5500,
                             joker=True,  # this engine doesn't fit the set roster pattern, by design it's to mix things up
                             dual_headed=True,
-                            intro_date_offset=-10,  # let's be a little bit earlier for this one
+                            intro_date_offset=-10,  # let's be a little bit earlier for this one - keep coaches matched
                             gen=5,
                             sprites_complete=False)
 

@@ -44,6 +44,7 @@ STR_NAME_SUFFIX_EXPRESS_CAR                                     :Express Van
 STR_NAME_SUFFIX_FLAT_CAR                                        :Flat Wagon
 STR_NAME_SUFFIX_FRUIT_VEG_CAR                                   :Fruit & Vegetables Van
 STR_NAME_SUFFIX_GRAIN_HOPPER_CAR                                :Grain Hopper
+STR_NAME_SUFFIX_HST_PASSENGER_CAR                               :HST Passenger Coaches
 STR_NAME_SUFFIX_HOPPER_CAR                                      :Hopper
 STR_NAME_SUFFIX_INTERMODAL_CAR                                  :Intermodal Car
 STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Livestock Wagon
@@ -67,8 +68,9 @@ STR_ROLE                                                        :Role: {GOLD}{ST
 STR_ROLE_FREIGHT                                                :Freight
 STR_ROLE_GENERAL_PURPOSE                                        :General Purpose
 STR_ROLE_GENERAL_PURPOSE_EXPRESS                                :General Purpose / Express
-STR_ROLE_VERY_HIGH_SPEED                                        :Very High Speed
+STR_ROLE_HST_EXPRESS                                            :Express
 STR_ROLE_METRO                                                  :High Capacity Urban
+STR_ROLE_VERY_HIGH_SPEED                                        :Very High Speed
 
 # project management
 STR_SPRITES_COMPLETE                                            :{}Sprites Complete: {GOLD}Yup

@@ -1,6 +1,7 @@
 # wagon ids are generic and are composed to specific vehicle ids elsewhere
 # order is significant
 buy_menu_sort_order_wagons = ['alignment_car',
+                              'hst_passenger_car',
                               'passenger_car',
                               'luxury_passenger_car',
                               'mail_car',
@@ -59,9 +60,9 @@ PR_RUNNING_TRAIN_STEAM = -2
 PR_RUNNING_TRAIN_DIESEL = -4
 
 # generalised mapping of roles to groups
-role_group_mapping = {'express': ['branch_express', 'express_1', 'express_2', 'heavy_express_1', 'heavy_express_2', 'heavy_express_3'],
+role_group_mapping = {'express': ['branch_express', 'express_1', 'express_2', 'heavy_express_1', 'heavy_express_2', 'heavy_express_3', 'hst_express_1'],
                       'freight': ['branch_freight', 'freight_1', 'freight_2', 'heavy_freight_1', 'heavy_freight_2', 'heavy_freight_3'],
-                      'high_speed': ['pax_high_speed'],
+                      'very_high_speed': ['pax_very_high_speed'],
                       'metro': ['mail_metro', 'pax_metro'],
                       'universal': ['universal', 'mail_railcar_1', 'mail_railcar_2', 'pax_railcar_1', 'pax_railcar_2']}
 
@@ -71,13 +72,14 @@ role_group_mapping = {'express': ['branch_express', 'express_1', 'express_2', 'h
 intro_date_offsets_by_role_group = {'universal': 0,
                                     'express_core': 1,
                                     'express_non_core': 2,
-                                    'freight_core': 3,
-                                    'freight_non_core': 4,
-                                    'railcar': 5,
-                                    'metro': 6,
-                                    'high_speed': 7,
-                                    'food_wagons': 8,
-                                    'non_core_wagons': 9}
+                                    'hst': 3,
+                                    'freight_core': 4,
+                                    'freight_non_core': 5,
+                                    'railcar': 6,
+                                    'metro': 7,
+                                    'very_high_speed': 8,
+                                    'food_wagons': 9,
+                                    'non_core_wagons': 10}
 
 # standard offsets for trains
 default_spritesheet_offsets = {'3': [[-3, -26],  [-4, -20],   [4, -12],  [2, -16], [-3, -16], [-14, -15], [-16, -12],  [-8, -21]],

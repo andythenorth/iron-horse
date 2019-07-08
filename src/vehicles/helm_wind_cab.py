@@ -6,7 +6,7 @@ def main(roster):
                                                      id='helm_wind_cab',
                                                      base_numeric_id=3060,
                                                      name='Helm Wind - Cab',
-                                                     role='pax_high_speed',
+                                                     role='pax_very_high_speed',
                                                      power=1700,
                                                      dual_headed=True,
                                                      pantograph_type='z-shaped-single',

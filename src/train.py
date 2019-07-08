@@ -229,11 +229,12 @@ class Consist(object):
         # this does *not* use the role group mapping in global constants, as it's more fragmented to avoid too many new vehicle messages at once
         role_to_role_groups_mapping = {'express_core': ['express_1', 'heavy_express_1'],
                                        'express_non_core': ['branch_express', 'express_2', 'heavy_express_2', 'heavy_express_3'],
+                                       'hst': ['hst_express_1'],
                                        'freight_core': ['freight_1', 'heavy_freight_1',],
                                        'freight_non_core': ['branch_freight', 'freight_2', 'heavy_freight_2', 'heavy_freight_3'],
                                        'metro': ['mail_metro', 'pax_metro'],
                                        'railcar': ['mail_railcar_1', 'mail_railcar_2', 'pax_railcar_1', 'pax_railcar_2'],
-                                       'high_speed': ['pax_high_speed'],
+                                       'very_high_speed': ['pax_very_high_speed'],
                                        'universal': ['universal']}
         if self._intro_date_days_offset is not None:
             # offset defined in class (probably a wagon)
@@ -345,7 +346,7 @@ class Consist(object):
         elif self.role:
             if self.role in global_constants.role_group_mapping['express']:
                 return self.get_speed_by_class('express')
-            elif self.role in ['pax_high_speed']:
+            elif self.role in ['pax_very_high_speed']:
                 return self.get_speed_by_class('very_high_speed')
             else:
                 return self.get_speed_by_class('standard')
@@ -412,7 +413,11 @@ class Consist(object):
                                'universal': 'STR_ROLE_GENERAL_PURPOSE',
                                'express': 'STR_ROLE_GENERAL_PURPOSE_EXPRESS',
                                'metro': 'STR_ROLE_METRO',
-                               'high_speed': 'STR_ROLE_VERY_HIGH_SPEED'}
+                               'very_high_speed': 'STR_ROLE_VERY_HIGH_SPEED'}
+        # first try a direct lookup, to handle cases where a non-group role string is needed
+        if self.role == 'hst_express_1':
+            return 'STR_ROLE_HST_EXPRESS'
+        # then fall through to group role
         for role_group, roles in global_constants.role_group_mapping.items():
             if self.role in roles:
                 return role_string_mapping[role_group]
@@ -1395,6 +1400,7 @@ class PassengerCarConsistBase(CarConsist):
 class PassengerCarConsist(PassengerCarConsistBase):
     """
     Standard pax car.
+    Position-dependent sprites for brake car etc.
     """
 
     def __init__(self, **kwargs):
@@ -1418,10 +1424,39 @@ class PassengerCarConsist(PassengerCarConsistBase):
                                                                      consist_ruleset='pax_cars')
 
 
+class PassengerHSTCarConsist(PassengerCarConsistBase):
+    """
+    Trailer dedicated for HST-type trains (no wagon attach, but matching stats and livery).
+    Moderately improved decay rate compared to standard pax car.
+    Position-dependent sprites for restaurant car, brake car etc.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = 'hst_passenger_car'
+        super().__init__(**kwargs)
+        # this won't make much difference except over *very* long routes, but set it anyway
+        # moderate cargo age bonus
+        self.cargo_age_period = 1.33 * global_constants.CARGO_AGE_PERIOD
+        self.buy_cost_adjustment_factor = 1.6
+        self.floating_run_cost_multiplier = 5
+        # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
+        self.weight_factor = 1 if self.base_track_type == 'NG' else 2
+        # Graphics configuration
+        # pax cars only have one consist cargo mapping, which they always default to, whatever the consist cargo is
+        # position based variants:
+        #   * standard coach
+        #   * brake coach front
+        #   * brake coach rear
+        #   * special (restaurant) coach
+        spriterow_group_mappings = {'pax': {'default': 0, 'first': 1, 'last': 2, 'special': 3}}
+        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings,
+                                                                     consist_ruleset='pax_cars')
+
+
 class PassengerLuxuryCarConsist(PassengerCarConsistBase):
     """
     Improved decay rate and lower capacity per unit length compared to standard pax car.
-    Possibly random sprites for restaurant car, observation car etc.
+    Position-dependent sprites for restaurant car, brake car etc.
     """
 
     def __init__(self, **kwargs):
@@ -1431,6 +1466,7 @@ class PassengerLuxuryCarConsist(PassengerCarConsistBase):
         self.cargo_age_period = 8 * global_constants.CARGO_AGE_PERIOD
         self.buy_cost_adjustment_factor = 1.6
         self.floating_run_cost_multiplier = 5
+        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['hst']
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 1 if self.base_track_type == 'NG' else 2
         # Graphics configuration
@@ -2293,6 +2329,19 @@ class PaxCar(TrainCar):
         # magic to set pax car capacity subject to length
         base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
         self.capacity = self.vehicle_length * base_capacity
+
+
+class HSTPaxCar(TrainCar):
+    """
+    Pax wagon for HST-type trains. This subclass only exists to set capacity and symmetry_type.
+    """
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # pax wagons may be asymmetric, there is magic in the graphics processing to make symmetric pax/mail sprites also work with this
+        self._symmetry_type = 'asymmetric'
+        # magic to set dedicated pax car capacity subject to length
+        base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
+        self.capacity = int(self.vehicle_length * base_capacity * 0.875)
 
 
 class LuxuryPaxCar(TrainCar):
