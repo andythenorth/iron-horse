@@ -10,6 +10,7 @@ from vehicles import breeze
 from vehicles import brenner_cab
 from vehicles import brenner_middle
 from vehicles import carrack
+from vehicles import centaur
 from vehicles import cheddar_valley
 from vehicles import cheese_bug
 from vehicles import chimera
@@ -26,6 +27,7 @@ from vehicles import goliath
 from vehicles import gosling_blast
 from vehicles import gowsty
 from vehicles import grid
+from vehicles import grid_2
 from vehicles import griffon
 from vehicles import growler
 from vehicles import gwynt
@@ -71,7 +73,6 @@ from vehicles import tencendur
 from vehicles import thunderbird
 from vehicles import tideway
 from vehicles import tin_rocket
-from vehicles import turtle
 from vehicles import tyburn
 from vehicles import ultra_shoebox
 from vehicles import upcountry
@@ -125,7 +126,7 @@ roster = Roster(id = 'pony',
                            thunderbird,
                            dragon,
                            medusa,
-                           turtle,
+                           centaur,
                            hurly_burly,
                            moor_gallop,
                            roarer,
@@ -146,6 +147,7 @@ roster = Roster(id = 'pony',
                            lemon,
                            chinook,
                            grid,
+                           grid_2,
                            cheddar_valley,
                            chimera,
                            flindermouse,
