@@ -3,9 +3,9 @@ from train import EngineConsist, DieselEngineUnit
 
 def main(roster):
     consist = EngineConsist(roster=roster,
-                            id='centaur',
+                            id='grid',
                             base_numeric_id=3350,
-                            name='Centaur',
+                            name='Grid',
                             role='heavy_freight_1',
                             power=3300,
                             joker=True,  # this engine doesn't fit the intro date pattern  by design

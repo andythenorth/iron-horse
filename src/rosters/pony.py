@@ -10,7 +10,6 @@ from vehicles import breeze
 from vehicles import brenner_cab
 from vehicles import brenner_middle
 from vehicles import carrack
-from vehicles import centaur
 from vehicles import cheddar_valley
 from vehicles import cheese_bug
 from vehicles import chimera
@@ -26,6 +25,7 @@ from vehicles import girt_licker
 from vehicles import goliath
 from vehicles import gosling_blast
 from vehicles import gowsty
+from vehicles import grid
 from vehicles import griffon
 from vehicles import growler
 from vehicles import gwynt
@@ -145,7 +145,7 @@ roster = Roster(id = 'pony',
                            girt_licker,
                            lemon,
                            chinook,
-                           centaur,
+                           grid,
                            cheddar_valley,
                            chimera,
                            flindermouse,
