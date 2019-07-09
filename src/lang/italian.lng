@@ -66,8 +66,8 @@ STR_ROLE                                                        :Ruolo: {GOLD}{S
 STR_ROLE_FREIGHT                                                :Merci
 STR_ROLE_GENERAL_PURPOSE                                        :Universale
 STR_ROLE_GENERAL_PURPOSE_EXPRESS                                :Merci leggere / Universale
-STR_ROLE_VERY_HIGH_SPEED                                        :Alta Velocità
 STR_ROLE_METRO                                                  :Urbano ad alta capacità
+STR_ROLE_VERY_HIGH_SPEED                                        :Alta Velocità
 
 # project management
 STR_SPRITES_COMPLETE                                            :{}Sprite Completi: {GOLD}Sì

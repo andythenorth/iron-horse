@@ -67,8 +67,8 @@ STR_ROLE                                                        :Service{NBSP}: 
 STR_ROLE_FREIGHT                                                :Fret
 STR_ROLE_GENERAL_PURPOSE                                        :Universel
 STR_ROLE_GENERAL_PURPOSE_EXPRESS                                :Express/Universel
-STR_ROLE_VERY_HIGH_SPEED                                        :Grande vitesse
 STR_ROLE_METRO                                                  :Transport urbain
+STR_ROLE_VERY_HIGH_SPEED                                        :Grande vitesse
 
 # project management
 STR_SPRITES_COMPLETE                                            :{}Sprites terminés{NBSP}: {GOLD}oui

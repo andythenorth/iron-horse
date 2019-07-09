@@ -69,8 +69,8 @@ STR_ROLE                                                        :Uloga: {GOLD}{S
 STR_ROLE_FREIGHT                                                :Teret
 STR_ROLE_GENERAL_PURPOSE                                        :Opća namjena
 STR_ROLE_GENERAL_PURPOSE_EXPRESS                                :Ekspresni / opća namjena
-STR_ROLE_VERY_HIGH_SPEED                                        :Vrlo visoka brzina
 STR_ROLE_METRO                                                  :Gradski visokog kapaciteta
+STR_ROLE_VERY_HIGH_SPEED                                        :Vrlo visoka brzina
 
 # project management
 STR_SPRITES_COMPLETE                                            :{}Kompletirani spriteovi: {GOLD}Da
