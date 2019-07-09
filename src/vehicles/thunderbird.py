@@ -7,7 +7,7 @@ def main(roster):
                             base_numeric_id=3090,
                             name='Thunderbird',
                             role='heavy_express_1',
-                            power=2550,
+                            power=2500,
                             random_reverse=True,
                             gen=5,
                             intro_date_offset=-2,  # let's not have everything turn up in 1990

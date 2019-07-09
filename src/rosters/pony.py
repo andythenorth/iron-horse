@@ -18,6 +18,7 @@ from vehicles import chinook
 from vehicles import deasil
 from vehicles import dover
 from vehicles import dragon
+from vehicles import electro_turtle
 from vehicles import fleet
 from vehicles import flanders_storm
 from vehicles import flindermouse
@@ -125,6 +126,7 @@ roster = Roster(id = 'pony',
                            pegasus,
                            wyvern,
                            thunderbird,
+                           electro_turtle,
                            dragon,
                            medusa,
                            centaur,
