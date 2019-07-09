@@ -229,12 +229,12 @@ class Consist(object):
         # this does *not* use the role group mapping in global constants, as it's more fragmented to avoid too many new vehicle messages at once
         role_to_role_groups_mapping = {'express_core': ['express_1', 'heavy_express_1'],
                                        'express_non_core': ['branch_express', 'express_2', 'heavy_express_2', 'heavy_express_3'],
-                                       'hst': ['hst_express_1'],
                                        'freight_core': ['freight_1', 'heavy_freight_1',],
                                        'freight_non_core': ['branch_freight', 'freight_2', 'heavy_freight_2', 'heavy_freight_3'],
+                                       'hst': ['hst'],
                                        'metro': ['mail_metro', 'pax_metro'],
                                        'railcar': ['mail_railcar_1', 'mail_railcar_2', 'pax_railcar_1', 'pax_railcar_2'],
-                                       'very_high_speed': ['pax_very_high_speed'],
+                                       'very_high_speed': ['very_high_speed'],
                                        'universal': ['universal']}
         if self._intro_date_days_offset is not None:
             # offset defined in class (probably a wagon)
@@ -346,7 +346,9 @@ class Consist(object):
         elif self.role:
             if self.role in global_constants.role_group_mapping['express']:
                 return self.get_speed_by_class('express')
-            elif self.role in ['pax_very_high_speed']:
+            elif self.role in ['hst']:
+                return self.get_speed_by_class('hst')
+            elif self.role in ['very_high_speed']:
                 return self.get_speed_by_class('very_high_speed')
             else:
                 return self.get_speed_by_class('standard')
@@ -413,11 +415,8 @@ class Consist(object):
                                'universal': 'STR_ROLE_GENERAL_PURPOSE',
                                'express': 'STR_ROLE_GENERAL_PURPOSE_EXPRESS',
                                'metro': 'STR_ROLE_METRO',
+                               'hst': 'STR_ROLE_HST',
                                'very_high_speed': 'STR_ROLE_VERY_HIGH_SPEED'}
-        # first try a direct lookup, to handle cases where a non-group role string is needed
-        if self.role == 'hst_express_1':
-            return 'STR_ROLE_HST_EXPRESS'
-        # then fall through to group role
         for role_group, roles in global_constants.role_group_mapping.items():
             if self.role in roles:
                 return role_string_mapping[role_group]
@@ -1434,6 +1433,7 @@ class PassengerHSTCarConsist(PassengerCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = 'hst_passenger_car'
         super().__init__(**kwargs)
+        self.speed_class = 'hst'
         # this won't make much difference except over *very* long routes, but set it anyway
         # moderate cargo age bonus
         self.cargo_age_period = 1.33 * global_constants.CARGO_AGE_PERIOD

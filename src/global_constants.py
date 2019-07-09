@@ -1,9 +1,9 @@
 # wagon ids are generic and are composed to specific vehicle ids elsewhere
 # order is significant
 buy_menu_sort_order_wagons = ['alignment_car',
-                              'hst_passenger_car',
                               'passenger_car',
                               'luxury_passenger_car',
+                              'hst_passenger_car',
                               'mail_car',
                               'express_car',
                               #'intermodal_car',
@@ -60,9 +60,10 @@ PR_RUNNING_TRAIN_STEAM = -2
 PR_RUNNING_TRAIN_DIESEL = -4
 
 # generalised mapping of roles to groups
-role_group_mapping = {'express': ['branch_express', 'express_1', 'express_2', 'heavy_express_1', 'heavy_express_2', 'heavy_express_3', 'hst_express_1'],
+role_group_mapping = {'express': ['branch_express', 'express_1', 'express_2', 'heavy_express_1', 'heavy_express_2', 'heavy_express_3'],
                       'freight': ['branch_freight', 'freight_1', 'freight_2', 'heavy_freight_1', 'heavy_freight_2', 'heavy_freight_3'],
-                      'very_high_speed': ['pax_very_high_speed'],
+                      'hst': ['hst'],
+                      'very_high_speed': ['very_high_speed'],
                       'metro': ['mail_metro', 'pax_metro'],
                       'universal': ['universal', 'mail_railcar_1', 'mail_railcar_2', 'pax_railcar_1', 'pax_railcar_2']}
 

@@ -92,8 +92,9 @@ roster = Roster(id = 'pony',
                 # default speeds per generation, can be over-ridden if needed by setting speed kw arg on consist
                 # speeds roughly same as RH trucks of same era + 5mph or so, and a bit higher at the top end (back and forth on this many times eh?),
                 # NG is Corsican-style 1000mm, native brit NG is not a thing for gameplay
-                speeds = {'RAIL': {'standard': [45, 45, 60, 75, 87, 100], # gen 5 and 6 forced down by design, really fast freight is imbalanced
-                                   'express': [60, 75, 90, 105, 120, 135], # 135 is for a reason, can't remember what :P
+                speeds = {'RAIL': {'standard': [45, 45, 60, 75, 87, 96], # gen 5 and 6 forced down by design, really fast freight is imbalanced
+                                   'express': [60, 75, 90, 105, 115, 125], # smaller steps in gen 5 and 6, balances against faster HSTs
+                                   'hst': [0, 0, 0, 0, 125, 140], # only gen 5 and 6 HST provided
                                    'very_high_speed': [0, 0, 0, 0, 140, 186]},
                           'METRO': {'standard': [45, 55, 65]}, # no express for metro in Pony
                           'NG': {'standard': [45, 45, 55, 65], # NG standard/express all same in Pony, balanced against trams, RVs

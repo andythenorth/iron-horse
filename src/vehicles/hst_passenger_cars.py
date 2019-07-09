@@ -10,8 +10,7 @@ def main():
                                      sprites_complete=False)
 
     consist.add_unit(type=HSTPaxCar,
-                     chassis='4_axle_solid_express_32px',
-                     repeat=2)
+                     chassis='4_axle_solid_express_32px')
 
 
     consist = PassengerHSTCarConsist(roster='pony',
@@ -22,5 +21,4 @@ def main():
                                      sprites_complete=False)
 
     consist.add_unit(type=HSTPaxCar,
-                     chassis='4_axle_solid_express_32px',
-                     repeat=2)
+                     chassis='4_axle_solid_express_32px')

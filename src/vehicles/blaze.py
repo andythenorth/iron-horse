@@ -12,7 +12,7 @@ def main(roster):
                             id='blaze',
                             base_numeric_id=3330,
                             name='Blaze HST',
-                            role='hst_express_1', # quite a specific role, may or may not scale to other rosters
+                            role='hst', # quite a specific role, may or may not scale to other rosters
                             power=5500,
                             joker=True,  # this engine doesn't fit the set roster pattern, by design it's to mix things up
                             dual_headed=True,
