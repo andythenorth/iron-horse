@@ -62,6 +62,8 @@ STR_NAME_SUFFIX_TORPEDO_CAR                                     :Wagon torpille
 STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Wagon porte-automobiles
 STR_NAME_SUFFIX_WELL_CAR                                        :Wagon surbaissé
 
+# buy menu wrappers
+
 # role information for buy menu
 STR_ROLE                                                        :Service{NBSP}: {GOLD}{STRING}
 STR_ROLE_FREIGHT                                                :Fret
@@ -69,6 +71,8 @@ STR_ROLE_GENERAL_PURPOSE                                        :Universel
 STR_ROLE_GENERAL_PURPOSE_EXPRESS                                :Express/Universel
 STR_ROLE_METRO                                                  :Transport urbain
 STR_ROLE_VERY_HIGH_SPEED                                        :Grande vitesse
+
+# assumes only diesel and electric currently; only handles power display in imperial hp
 
 # project management
 STR_SPRITES_COMPLETE                                            :{}Sprites terminés{NBSP}: {GOLD}oui

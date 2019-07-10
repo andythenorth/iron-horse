@@ -62,6 +62,8 @@ STR_NAME_SUFFIX_TORPEDO_CAR                                     :Torpedowagen
 STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Voertuigtransport
 STR_NAME_SUFFIX_WELL_CAR                                        :Double stack-wagon
 
+# buy menu wrappers
+
 # role information for buy menu
 STR_ROLE                                                        :Rol: {GOLD}{STRING}
 STR_ROLE_FREIGHT                                                :Vracht
@@ -69,6 +71,8 @@ STR_ROLE_GENERAL_PURPOSE                                        :Algemeen gebrui
 STR_ROLE_GENERAL_PURPOSE_EXPRESS                                :Expresse / algemeen gebruik
 STR_ROLE_METRO                                                  :Hoge capaciteit stedelijk
 STR_ROLE_VERY_HIGH_SPEED                                        :Zeer hoge snelheid
+
+# assumes only diesel and electric currently; only handles power display in imperial hp
 
 # project management
 STR_SPRITES_COMPLETE                                            :{}Sprites gereed: {GOLD}Ja

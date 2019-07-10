@@ -61,7 +61,11 @@ STR_NAME_SUFFIX_TORPEDO_CAR                                     :Torpédový vů
 STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Vůz pro přepravu vozidel
 STR_NAME_SUFFIX_WELL_CAR                                        :Kontejnerový vůz
 
+# buy menu wrappers
+
 # role information for buy menu
+
+# assumes only diesel and electric currently; only handles power display in imperial hp
 
 # project management
 STR_SPRITES_COMPLETE                                            :Grafika dokončena:  {GOLD} Jo

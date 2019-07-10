@@ -49,6 +49,10 @@ STR_NAME_SUFFIX_STAKE_CAR                                       :Stolpflakvagn
 STR_NAME_SUFFIX_TANK_CAR                                        :Tankvagn
 STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Fordonsvagn
 
+# buy menu wrappers
+
 # role information for buy menu
+
+# assumes only diesel and electric currently; only handles power display in imperial hp
 
 # project management
