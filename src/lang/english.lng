@@ -63,14 +63,21 @@ STR_NAME_SUFFIX_TORPEDO_CAR                                     :Torpedo Wagon
 STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Vehicle Transporter
 STR_NAME_SUFFIX_WELL_CAR                                        :Well Wagon
 
+# buy menu wrappers
+STR_BUY_MENU_WRAPPER_ONE_SUBSTR                                 :{STRING}
+STR_BUY_MENU_WRAPPER_TWO_SUBSTR                                 :{STRING}{}{STRING}
+
 # role information for buy menu
-STR_ROLE                                                        :Role: {GOLD}{STRING}
+STR_ROLE                                                        :{BLACK}Role: {GOLD}{STRING}
 STR_ROLE_FREIGHT                                                :Freight
 STR_ROLE_GENERAL_PURPOSE                                        :General Purpose
 STR_ROLE_GENERAL_PURPOSE_EXPRESS                                :General Purpose / Express
 STR_ROLE_HST                                                    :High Speed
 STR_ROLE_METRO                                                  :High Capacity Urban
 STR_ROLE_VERY_HIGH_SPEED                                        :Very High Speed
+
+# assumes only diesel and electric currently; only handles power display in imperial hp
+STR_POWER_BY_RAILTYPE                                           :{BLACK}Power on Diesel: {GOLD}{COMMA} hp{}{BLACK}Power on Electric: {GOLD}{COMMA} hp
 
 # project management
 STR_SPRITES_COMPLETE                                            :{}Sprites Complete: {GOLD}Yup

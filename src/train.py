@@ -409,6 +409,24 @@ class Consist(object):
         else:
             return 64
 
+    def get_buy_menu_string(self, vehicle):
+        result = []
+        if self.engine_varies_power_by_railtype(vehicle):
+            result.append(self.buy_menu_power_by_railtype_string)
+        # engines will always show a role string
+        result.append(self.buy_menu_role_string)
+
+        if len(result) == 1:
+            return 'STR_BUY_MENU_WRAPPER_ONE_SUBSTR, string(' + result[0] + ')'
+        if len(result) == 2:
+            return 'STR_BUY_MENU_WRAPPER_TWO_SUBSTR, string(' + result[0] + '), string(' + result[1] + ')'
+        # should never be reached, extend this if we do
+        raise Exception('Unsupported number of buy menu strings for ', self.id)
+
+    @property
+    def buy_menu_power_by_railtype_string(self):
+        return 'STR_POWER_BY_RAILTYPE, ' + str(self.power_by_railtype['RAIL']) +',' + str(self.power_by_railtype['ELRL'])
+
     @property
     def buy_menu_role_string(self):
         role_string_mapping = {'freight': 'STR_ROLE_FREIGHT',
@@ -419,7 +437,7 @@ class Consist(object):
                                'very_high_speed': 'STR_ROLE_VERY_HIGH_SPEED'}
         for role_group, roles in global_constants.role_group_mapping.items():
             if self.role in roles:
-                return role_string_mapping[role_group]
+                return 'STR_ROLE, string(' + role_string_mapping[role_group] + ')'
         raise Exception('no role string found for ', self.id)
 
     def render_articulated_switch(self):
