@@ -21,6 +21,10 @@ STR_NAME_SUFFIX_STEAM                                           :(Vapor)
 # the en-us translation should be updated appropriately when making changes here
 # !! consider splitting strings per roster?? A US caboose is still a 'caboose' in en-gb, not a brake van
 
+# buy menu wrappers
+
 # role information for buy menu
+
+# assumes only diesel and electric currently; only handles power display in imperial hp
 
 # project management

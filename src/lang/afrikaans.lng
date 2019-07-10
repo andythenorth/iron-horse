@@ -38,6 +38,10 @@ STR_NAME_SUFFIX_PASSENGER_CAR                                   :Passasiersmotor
 STR_NAME_SUFFIX_REEFER_CAR                                      :Verkoelde Wa
 STR_NAME_SUFFIX_TANK_CAR                                        :Tenk Wa
 
+# buy menu wrappers
+
 # role information for buy menu
+
+# assumes only diesel and electric currently; only handles power display in imperial hp
 
 # project management

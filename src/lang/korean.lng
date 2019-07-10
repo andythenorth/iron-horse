@@ -60,7 +60,11 @@ STR_NAME_SUFFIX_TORPEDO_CAR                                     :어뢰 화차
 STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :자동차 수송 차량
 STR_NAME_SUFFIX_WELL_CAR                                        :더블스택 차량
 
+# buy menu wrappers
+
 # role information for buy menu
+
+# assumes only diesel and electric currently; only handles power display in imperial hp
 
 # project management
 STR_SPRITES_COMPLETE                                            :{}스트라이트 완성: {GOLD}됨

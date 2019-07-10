@@ -61,6 +61,8 @@ STR_NAME_SUFFIX_TANK_CAR                                        :Carro cisterna
 STR_NAME_SUFFIX_TARPAULIN_CAR                                   :Carro telonato
 STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Carro per trasporto veicoli
 
+# buy menu wrappers
+
 # role information for buy menu
 STR_ROLE                                                        :Ruolo: {GOLD}{STRING}
 STR_ROLE_FREIGHT                                                :Merci
@@ -68,6 +70,8 @@ STR_ROLE_GENERAL_PURPOSE                                        :Universale
 STR_ROLE_GENERAL_PURPOSE_EXPRESS                                :Merci leggere / Universale
 STR_ROLE_METRO                                                  :Urbano ad alta capacità
 STR_ROLE_VERY_HIGH_SPEED                                        :Alta Velocità
+
+# assumes only diesel and electric currently; only handles power display in imperial hp
 
 # project management
 STR_SPRITES_COMPLETE                                            :{}Sprite Completi: {GOLD}Sì
