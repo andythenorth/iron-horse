@@ -8,7 +8,7 @@ def main(roster):
                             name='Electro Turtle',
                             role='heavy_express_1',
                             power=2750,
-                            power_by_railtype={'RAIL': 2750, 'ELRL': 4500},
+                            power_by_railtype={'RAIL': 2750, 'ELRL': 5000},
                             random_reverse=True,
                             pantograph_type='z-shaped-single',
                             gen=6,

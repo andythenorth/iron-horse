@@ -7,7 +7,7 @@ def main(roster):
                             base_numeric_id=3150,
                             name='Centaur',
                             role='heavy_express_3',
-                            power=3850,
+                            power=4250,
                             random_reverse=True,
                             gen=6,
                             intro_date_offset=5,  # introduce later than gen epoch by design
