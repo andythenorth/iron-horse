@@ -18,7 +18,7 @@ def main(roster):
                             dual_headed=True,
                             intro_date_offset=-10,  # let's be a little bit earlier for this one - keep coaches matched
                             gen=5,
-                            sprites_complete=False)
+                            sprites_complete=True)
 
     consist.add_unit(type=DieselEngineUnit,
                      weight=70,

@@ -7,7 +7,7 @@ def main():
                                      gen=5,
                                      subtype='U',
                                      intro_date_offset=-10, # match to Blaze HST
-                                     sprites_complete=False)
+                                     sprites_complete=True)
 
     consist.add_unit(type=HSTPaxCar,
                      chassis='4_axle_solid_express_32px')
