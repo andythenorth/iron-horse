@@ -67,8 +67,8 @@ STR_ROLE                                                        :Rol: {GOLD}{STR
 STR_ROLE_FREIGHT                                                :Vracht
 STR_ROLE_GENERAL_PURPOSE                                        :Algemeen gebruik
 STR_ROLE_GENERAL_PURPOSE_EXPRESS                                :Expresse / algemeen gebruik
-STR_ROLE_VERY_HIGH_SPEED                                        :Zeer hoge snelheid
 STR_ROLE_METRO                                                  :Hoge capaciteit stedelijk
+STR_ROLE_VERY_HIGH_SPEED                                        :Zeer hoge snelheid
 
 # project management
 STR_SPRITES_COMPLETE                                            :{}Sprites gereed: {GOLD}Ja
