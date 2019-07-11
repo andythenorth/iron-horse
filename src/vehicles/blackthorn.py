@@ -10,7 +10,7 @@ def main(roster):
                             power=3500,
                             random_reverse=True,
                             gen=6,
-                            sprites_complete=False)
+                            sprites_complete=True)
 
     consist.add_unit(type=DieselEngineUnit,
                      weight=120,
