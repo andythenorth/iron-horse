@@ -6,11 +6,11 @@ def main(roster):
                             id='centaur',
                             base_numeric_id=3150,
                             name='Centaur',
-                            role='heavy_express_3',
-                            power=4250,
+                            role='heavy_express_1',
+                            power=3700,
                             random_reverse=True,
                             gen=6,
-                            intro_date_offset=5,  # introduce later than gen epoch by design
+                            intro_date_offset=5,  # introduce much earlier than gen epoch by design
                             sprites_complete=True)
 
     consist.add_unit(type=DieselEngineUnit,

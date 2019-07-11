@@ -11,7 +11,6 @@ from vehicles import breeze
 from vehicles import brenner_cab
 from vehicles import brenner_middle
 from vehicles import carrack
-from vehicles import centaur
 from vehicles import cheddar_valley
 from vehicles import cheese_bug
 from vehicles import chimera
@@ -19,7 +18,6 @@ from vehicles import chinook
 from vehicles import deasil
 from vehicles import dover
 from vehicles import dragon
-from vehicles import electro_turtle
 from vehicles import fleet
 from vehicles import flanders_storm
 from vehicles import flindermouse
@@ -55,6 +53,7 @@ from vehicles import phoenix
 from vehicles import plastic_postbox
 from vehicles import proper_job
 from vehicles import pylon
+from vehicles import revolution
 from vehicles import roarer
 from vehicles import saxon
 from vehicles import scooby
@@ -63,7 +62,6 @@ from vehicles import screamer
 from vehicles import serpentine
 from vehicles import shoebox
 from vehicles import shredder
-from vehicles import sizzler
 from vehicles import slammer
 from vehicles import slug
 from vehicles import snapper
@@ -75,7 +73,6 @@ from vehicles import tideway
 from vehicles import tin_rocket
 from vehicles import tyburn
 from vehicles import ultra_shoebox
-from vehicles import unicorn
 from vehicles import upcountry
 from vehicles import westbourne
 from vehicles import workish
@@ -122,19 +119,16 @@ roster = Roster(id = 'pony',
                            kelpie,
                            griffon,
                            shredder,
-                           upcountry,
-                           pegasus,
                            wyvern,
                            thunderbird,
-                           electro_turtle,
+                           revolution,
+                           upcountry,
+                           pegasus,
                            dragon,
-                           unicorn,
-                           centaur,
                            hurly_burly,
                            moor_gallop,
                            roarer,
                            screamer,
-                           sizzler,
                            # freight
                            saxon,
                            little_bear,

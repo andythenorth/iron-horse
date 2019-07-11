@@ -6,8 +6,8 @@ def main(roster):
                             id='unicorn',
                             base_numeric_id=3250,
                             name='Unicorn',
-                            role='heavy_express_3',
-                            power=3500,
+                            role='heavy_express_1',
+                            power=3200,
                             random_reverse=True,
                             gen=5,
                             intro_date_offset=5,  # introduce later than gen epoch by design

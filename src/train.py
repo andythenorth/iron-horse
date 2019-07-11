@@ -52,6 +52,9 @@ class Consist(object):
         # used for synchronising / desynchronising intro dates for groups vehicles, see https://github.com/OpenTTD/OpenTTD/pull/7147
         self._intro_date_days_offset = None # defined in subclasses, no need for instances to define this
         self.vehicle_life = kwargs.get('vehicle_life', 40)
+        #  most consists are automatically replaced by the next consist in the role tree
+        # ocasionally we need to merge two branches of the role, in this case set replacement consist id
+        self.replacement_consist_id = kwargs.get('replacement_consist_id', None)
         self.power = kwargs.get('power', 0)
         self.base_track_type = kwargs.get('base_track_type', 'RAIL')
         # modify base_track_type for electric engines when writing out the actual rail type
@@ -295,18 +298,26 @@ class Consist(object):
     @property
     def model_life(self):
         similar_consists = []
-        for consist in self.roster.engine_consists:
-            if consist.role == self.role and consist.base_track_type == self.base_track_type:
-                similar_consists.append(consist)
-        replacement_consist = None
-        for consist in sorted(similar_consists, key=lambda consist: consist.intro_date):
-            if consist.intro_date > self.intro_date:
-                replacement_consist = consist
-                break
-        if replacement_consist is None:
-            return 'VEHICLE_NEVER_EXPIRES'
+        # option exists to force a replacement consist, this is used to merge
+        if self.replacement_consist_id is not None:
+            for consist in  self.roster.engine_consists:
+                if consist.id == self.replacement_consist_id:
+                    return consist.intro_date - self.intro_date
+            # if we don't return a valid result, that's an error, probably a broken replacement id
+            raise Exception('replacement consist id ' + self.replacement_consist_id +  ' not found for consist ' + self.id)
         else:
-            return replacement_consist.intro_date - self.intro_date
+            replacement_consist = None
+            for consist in self.roster.engine_consists:
+                if consist.role == self.role and consist.base_track_type == self.base_track_type:
+                    similar_consists.append(consist)
+            for consist in sorted(similar_consists, key=lambda consist: consist.intro_date):
+                if consist.intro_date > self.intro_date:
+                    replacement_consist = consist
+                    break
+            if replacement_consist is None:
+                return 'VEHICLE_NEVER_EXPIRES'
+            else:
+                return replacement_consist.intro_date - self.intro_date
 
     @property
     def retire_early(self):

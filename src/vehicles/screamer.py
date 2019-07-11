@@ -12,6 +12,7 @@ def main(roster):
                             gen=5,
                             pantograph_type='z-shaped-double',
                             intro_date_offset=5,   # introduce later than gen epoch by design
+                            replacement_consist_id='revolution', # this line ends with Screamer and is merged to heavy_express_3
                             sprites_complete=True)
 
     consist.add_unit(type=ElectricEngineUnit,

@@ -7,7 +7,7 @@ def main(roster):
                             base_numeric_id=300,
                             name='2-8-2 Pegasus',
                             role='heavy_express_1',
-                            power=1850,
+                            power=2000,
                             tractive_effort_coefficient=0.25,
                             buy_cost=81,
                             gen=3)
