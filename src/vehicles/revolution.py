@@ -12,7 +12,7 @@ def main(roster):
                             random_reverse=True,
                             pantograph_type='z-shaped-single',
                             gen=6,
-                            sprites_complete=False)
+                            sprites_complete=True)
 
     consist.add_unit(type=ElectroDieselEngineUnit,
                      weight=86,
