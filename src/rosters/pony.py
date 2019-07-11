@@ -3,6 +3,7 @@ from roster import Roster
 from vehicles import ares
 from vehicles import athena
 from vehicles import bean_feast
+from vehicles import blackthorn
 from vehicles import blaze
 from vehicles import boar_cat
 from vehicles import braf
@@ -28,7 +29,6 @@ from vehicles import goliath
 from vehicles import gosling_blast
 from vehicles import gowsty
 from vehicles import grid
-from vehicles import grid_2
 from vehicles import griffon
 from vehicles import growler
 from vehicles import gwynt
@@ -150,7 +150,7 @@ roster = Roster(id = 'pony',
                            lemon,
                            chinook,
                            grid,
-                           grid_2,
+                           blackthorn,
                            cheddar_valley,
                            chimera,
                            flindermouse,
