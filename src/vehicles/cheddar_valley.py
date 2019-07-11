@@ -11,7 +11,7 @@ def main(roster):
                             # dibble for game balance, assume super-slip control
                             tractive_effort_coefficient=0.4,
                             random_reverse=True,
-                            intro_date_offset=5,  # let's be a little bit later for this one
+                            intro_date_offset=3,  # let's be a little bit later for this one
                             gen=5,
                             sprites_complete=True)
 
