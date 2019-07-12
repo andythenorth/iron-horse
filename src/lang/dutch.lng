@@ -44,6 +44,7 @@ STR_NAME_SUFFIX_EXPRESS_CAR                                     :Expreswagen
 STR_NAME_SUFFIX_FLAT_CAR                                        :Platte wagon
 STR_NAME_SUFFIX_FRUIT_VEG_CAR                                   :Fruit- en groentenwagen
 STR_NAME_SUFFIX_GRAIN_HOPPER_CAR                                :Graanonderlosser
+STR_NAME_SUFFIX_HST_PASSENGER_CAR                               :HST-passagiersrijtuig
 STR_NAME_SUFFIX_HOPPER_CAR                                      :Onderlosser
 STR_NAME_SUFFIX_INTERMODAL_CAR                                  :Intermodale wagen
 STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Veewagon
@@ -63,16 +64,20 @@ STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Voertuigtranspo
 STR_NAME_SUFFIX_WELL_CAR                                        :Double stack-wagon
 
 # buy menu wrappers
+STR_BUY_MENU_WRAPPER_ONE_SUBSTR                                 :{STRING}
+STR_BUY_MENU_WRAPPER_TWO_SUBSTR                                 :{STRING}{}{STRING}
 
 # role information for buy menu
-STR_ROLE                                                        :Rol: {GOLD}{STRING}
+STR_ROLE                                                        :{BLACK}Rol: {GOLD}{STRING}
 STR_ROLE_FREIGHT                                                :Vracht
 STR_ROLE_GENERAL_PURPOSE                                        :Algemeen gebruik
-STR_ROLE_GENERAL_PURPOSE_EXPRESS                                :Expresse / algemeen gebruik
+STR_ROLE_GENERAL_PURPOSE_EXPRESS                                :Algemeen gebruik / expresse
+STR_ROLE_HST                                                    :Hoge snelheid
 STR_ROLE_METRO                                                  :Hoge capaciteit stedelijk
 STR_ROLE_VERY_HIGH_SPEED                                        :Zeer hoge snelheid
 
 # assumes only diesel and electric currently; only handles power display in imperial hp
+STR_POWER_BY_RAILTYPE                                           :{BLACK}Vermogen met diesel: {GOLD}{COMMA} pk{}{BLACK}Vermogen elektrisch: {GOLD}{COMMA} pk
 
 # project management
 STR_SPRITES_COMPLETE                                            :{}Sprites gereed: {GOLD}Ja
