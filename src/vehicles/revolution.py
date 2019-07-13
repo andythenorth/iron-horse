@@ -8,10 +8,11 @@ def main(roster):
                             name='Revolution',
                             role='heavy_express_3',
                             power=2800,
-                            power_by_railtype={'RAIL': 2800, 'ELRL': 5400},
+                            power_by_railtype={'RAIL': 2800, 'ELRL': 4800},
                             random_reverse=True,
                             pantograph_type='z-shaped-single',
                             gen=6,
+                            intro_date_offset=-2,  # introduce earlier than gen epoch by design
                             sprites_complete=True)
 
     consist.add_unit(type=ElectroDieselEngineUnit,

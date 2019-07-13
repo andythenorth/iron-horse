@@ -6,14 +6,14 @@ def main(roster):
                             id='screamer',
                             base_numeric_id=450,
                             name='Screamer',
-                            role='heavy_express_2',
-                            power=5000,
+                            role='heavy_express_4',
+                            power=6000,
+                            joker=True,  # this engine doesn't fit the set roster pattern, by design it's to mix things up
                             random_reverse=True,
                             gen=5,
                             pantograph_type='z-shaped-double',
                             intro_date_offset=3,   # introduce later than gen epoch by design
-                            replacement_consist_id='revolution', # this line ends with Screamer and is merged to heavy_express_3
-                            sprites_complete=True)
+                            sprites_complete=False)
 
     consist.add_unit(type=ElectricEngineUnit,
                      weight=85,

@@ -11,7 +11,7 @@ def main(roster):
                             random_reverse=True,
                             joker=True,
                             gen=6,
-                            intro_date_offset=+5,
+                            intro_date_offset=2, # introduce later than gen epoch by design
                             sprites_complete=True)
 
     consist.add_unit(type=DieselEngineUnit,

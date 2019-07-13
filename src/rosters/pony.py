@@ -21,6 +21,7 @@ from vehicles import dragon
 from vehicles import fleet
 from vehicles import flanders_storm
 from vehicles import flindermouse
+from vehicles import fury
 from vehicles import geronimo
 from vehicles import girt_licker
 from vehicles import goliath
@@ -62,6 +63,7 @@ from vehicles import screamer
 from vehicles import serpentine
 from vehicles import shoebox
 from vehicles import shredder
+from vehicles import sizzler
 from vehicles import slammer
 from vehicles import slug
 from vehicles import snapper
@@ -128,7 +130,9 @@ roster = Roster(id = 'pony',
                            hurly_burly,
                            moor_gallop,
                            roarer,
+                           fury,
                            screamer,
+                           sizzler,
                            # freight
                            saxon,
                            little_bear,

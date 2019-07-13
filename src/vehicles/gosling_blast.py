@@ -11,10 +11,9 @@ def main(roster):
                             # dibble for game balance, assume super-slip control
                             tractive_effort_coefficient=0.4,
                             random_reverse=True,
-                            joker=True,  # this engine doesn't fit the set roster pattern, by design it's to mix things up
                             gen=6,
                             pantograph_type='z-shaped-double',
-                            intro_date_offset=7,  # introduce later than gen epoch by design
+                            intro_date_offset=2,  # introduce later than gen epoch by design
                             sprites_complete=True)
 
     consist.add_unit(type=ElectricEngineUnit,
