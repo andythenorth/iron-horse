@@ -273,7 +273,8 @@ class Consist(object):
         result = []
         for consist in self.roster.engine_consists:
             # second livery choice is deliberate, means 'as seen in buy menu' livery is built for common case of express_1, heavy_express_1
-            if consist.role in ['branch_express', 'express_2', 'heavy_express_2', 'heavy_express_4', 'pax_railcar_2', 'mail_railcar_2']:
+            # 'heavy_express_4' doesn't use livery_2 by design (tied to Pony engine livery assumptions)
+            if consist.role in ['branch_express', 'express_2', 'heavy_express_2', 'pax_railcar_2', 'mail_railcar_2']:
                 result.append(consist.id)
         return result
 
