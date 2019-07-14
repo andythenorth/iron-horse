@@ -22,7 +22,7 @@ def main():
                                     sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     chassis='3_axle_solid_express_16px')
+                     chassis='3_axle_filled_16px')
 
     consist = EdiblesTankCarConsist(roster='pony',
                                     base_numeric_id=2990,
@@ -31,7 +31,7 @@ def main():
                                     sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     chassis='3_axle_solid_express_16px')
+                     chassis='3_axle_filled_16px')
 
     consist = EdiblesTankCarConsist(roster='pony',
                                     base_numeric_id=1690,
@@ -58,7 +58,7 @@ def main():
                                     sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     chassis='3_axle_solid_express_16px')
+                     chassis='3_axle_filled_16px')
 
     consist = EdiblesTankCarConsist(roster='pony',
                                     base_numeric_id=1700,
