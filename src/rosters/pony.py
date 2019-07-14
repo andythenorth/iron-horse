@@ -49,8 +49,9 @@ from vehicles import moor_gallop
 from vehicles import mumble
 from vehicles import peasweep
 from vehicles import pegasus
-from vehicles import pikel
 from vehicles import phoenix
+from vehicles import pikel
+from vehicles import pinhorse
 from vehicles import plastic_postbox
 from vehicles import proper_job
 from vehicles import pylon
@@ -68,6 +69,7 @@ from vehicles import slammer
 from vehicles import slug
 from vehicles import snapper
 from vehicles import spinner
+from vehicles import stoat
 from vehicles import super_shoebox
 from vehicles import tencendur
 from vehicles import thunderbird
@@ -108,13 +110,16 @@ roster = Roster(id = 'pony',
                 # freight car weight factor varies slightly by gen, reflecting modern cars with lighter weight
                 train_car_weight_factors = [0.5, 0.5, 0.5, 0.48, 0.44, 0.44],
 
-                engines = [# express
+                engines = [# branch express
                            lark,
                            merrylegs,
                            proper_job,
+                           stoat,
+                           pinhorse,
                            shoebox,
                            super_shoebox,
                            ultra_shoebox,
+                           # express
                            spinner,
                            carrack,
                            tencendur,
@@ -133,11 +138,12 @@ roster = Roster(id = 'pony',
                            fury,
                            screamer,
                            sizzler,
-                           # freight
+                           # branch freight
                            saxon,
                            little_bear,
                            hercules,
                            goliath,
+                           # freight
                            gwynt,
                            braf,
                            haar,
@@ -155,7 +161,7 @@ roster = Roster(id = 'pony',
                            peasweep,
                            flanders_storm,
                            gosling_blast,
-                           # railcars
+                           # diesel railcars
                            deasil,
                            slammer,
                            tin_rocket,
@@ -164,7 +170,7 @@ roster = Roster(id = 'pony',
                            scooby,
                            plastic_postbox,
                            mail_rail,
-                           # emus
+                           # electric railcars
                            athena,
                            geronimo,
                            breeze,
@@ -187,11 +193,12 @@ roster = Roster(id = 'pony',
                            longwater,
                            tyburn,
                            tideway,
-                           # ng
+                           # ng engines
                            cheese_bug,
                            bean_feast,
                            pikel,
                            boar_cat,
+                           # ng railcars
                            mumble,
                            snapper,
                            workish,

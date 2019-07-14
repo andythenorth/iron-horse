@@ -12,7 +12,8 @@ def main(roster):
                             random_reverse=True,
                             gen=2,
                             pantograph_type='diamond-double',
-                            intro_date_offset=5)  # introduce later than gen epoch by design
+                            intro_date_offset=5,  # introduce later than gen epoch by design
+                            sprites_complete=False)
 
     consist.add_unit(type=ElectricEngineUnit,
                      weight=90,
