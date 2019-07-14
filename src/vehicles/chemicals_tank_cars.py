@@ -8,40 +8,40 @@ def main():
                              base_numeric_id=2860,
                              gen=2,
                              subtype='A',
-                             sprites_complete=False)
+                             sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     chassis='2_axle_sparse_16px')
+                     chassis='2_axle_filled_16px')
 
 
     consist = ChemicalsTankCarConsist(roster='pony',
                              base_numeric_id=3360,
                              gen=3,
                              subtype='A',
-                             sprites_complete=False)
+                             sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     chassis='2_axle_sparse_16px')
+                     chassis='3_axle_filled_16px')
 
 
     consist = ChemicalsTankCarConsist(roster='pony',
                              base_numeric_id=3370,
                              gen=3,
                              subtype='B',
-                             sprites_complete=False)
+                             sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     chassis='4_axle_sparse_24px')
+                     chassis='4_axle_gapped_24px')
 
 
     consist = ChemicalsTankCarConsist(roster='pony',
                              base_numeric_id=3460,
                              gen=3,
                              subtype='C',
-                             sprites_complete=False)
+                             sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     chassis='4_axle_sparse_32px')
+                     chassis='4_axle_gapped_32px')
 
 
     consist = ChemicalsTankCarConsist(roster='pony',
