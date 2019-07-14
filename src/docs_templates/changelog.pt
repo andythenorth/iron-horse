@@ -2,7 +2,7 @@ Changelog
 =========
 
 ----------------------
-2.0.0 Alpha 11 Release
+2.0.0 Alpha 12 Release
 ----------------------
 
 Iron Horse 2.
@@ -23,7 +23,40 @@ Designed to be used with 'vehicles expire' set to to 'on', Horse 2 has a *lot* o
 - no savegame compatibility with Iron Horse 1
 - can be used _alongside_ Iron Horse 1, if you must (kind of odd, but eh)
 
-*Changes from 2.0.0 Alpha 10*
+*Changes from 2.0.0 Alpha 11*
+
+- no savegame compatibility with previous 2.0.0 Alpha releases
+- added new general purpose / express engines
+    - Stoat electric (1905)
+    - Pinhorse electric (1935)
+    - Wyvern diesel (1955)
+    - Fury electric (1989)
+    - Revolution electro-diesel (2018)
+- added new freight engines
+    - Grid diesel (1983)
+    - Blackthorn diesel (2020)
+- added new high speed trains
+    - Blaze diesel (1980)
+    - Scorcher diesel (2010)
+- removed Turtle diesel engine (replaced by Revolution electro-diesel)
+- adjusted date and power of some other engines to balance against new additions
+- reduced gen 5 and gen 6 express speeds for game balance with high speed trains
+- sprites complete for
+    - chemicals tank cars
+    - covered hopper cars
+- reworked sprites for
+    - Screamer electric engine
+    - Sizzler electric engine
+    - Gosling Blast electric engine
+- for electro-diesels, power on both diesel and electric is now shown in the buy menu
+- fixed some minor sprite bugs
+- set oxygen ahead of chlorine in cryo tank car default refits
+- updated translations from web translators
+
+
+----------------------
+2.0.0 Alpha 11 Release
+----------------------
 
 - added coal hopper cars, separate from generic hopper cars
 - rework generic hopper car appearance
