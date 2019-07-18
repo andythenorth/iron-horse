@@ -677,7 +677,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             cargo_filename = cargo_filename + '_' +  str(4 * self.vehicle_unit.vehicle_length) + 'px'
             cargo_sprites_input_path = os.path.join(currentdir, 'src', 'graphics', 'heavy_items_cargo', cargo_filename + '.png')
             # !! temp, needs defined per cargo graphic type
-            cargo_spriterow_offset = {1: 0, 2: 0, 3: 0, 4: 1, 5: 1, 6: 1}[self.consist.gen]
+            cargo_spriterow_offset = {1: 0, 2: 0, 3: 0, 4: 1, 5: 0, 6: 0}[self.consist.gen]
 
             crop_box_cargo_source = (0,
                                      10 + (cargo_spriterow_offset * graphics_constants.spriterow_height),
