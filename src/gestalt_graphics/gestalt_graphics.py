@@ -173,7 +173,8 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
                                                 'tractors_1': ['FMSP'],
                                                 'trucks_2': ['ENSP', 'FMSP', 'VEHI'],
                                                 'trucks_3': ['ENSP', 'FMSP', 'VEHI'],
-                                                'trucks_4': ['ENSP', 'FMSP', 'VEHI']}
+                                                'trucks_4': ['ENSP', 'FMSP', 'VEHI'],
+                                                'trucks_5': ['ENSP', 'FMSP', 'VEHI']}
 
 
 class GestaltGraphicsBoxCarOpeningDoors(GestaltGraphics):
