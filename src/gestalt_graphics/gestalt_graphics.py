@@ -169,9 +169,9 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
     # cargo labels can be repeated for different sprites, they'll be used selectively by vehicle types and/or randomised as appropriate
     # keep alphabetised for general quality-of-life
     # DFLT label is a hack to support cargos with no specific sprites (including unknown cargos), and should not be added to cargo translation table
-    heavy_items_sprites_to_cargo_labels_maps = {'trucks_1': ['ENSP', 'FMSP'],
+    heavy_items_sprites_to_cargo_labels_maps = {'tarps_2cc_1': ['DFLT'],
                                                 'tractors_1': ['FMSP'],
-                                                'tarps_2cc_1': ['DFLT']}  # see note on use of DFLT above
+                                                'trucks_1': ['ENSP', 'FMSP', 'VEHI']}  # see note on use of DFLT above
 
 
 class GestaltGraphicsBoxCarOpeningDoors(GestaltGraphics):

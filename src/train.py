@@ -1691,11 +1691,14 @@ class VehicleTransporterCarConsist(CarConsist):
         self.base_id = 'vehicle_transporter_car'
         super().__init__(**kwargs)
         self.class_refit_groups = [] # no classes, use explicit labels
-        self.label_refits_allowed = ['VEHI']
+        self.label_refits_allowed = ['VEHI', 'ENSP', 'FMSP']
         self.label_refits_disallowed = []
         self.default_cargos = ['VEHI']
-        self.buy_cost_adjustment_factor = 1.2
         self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['non_core_wagons']
+        # !! flipping not currently allowed as don't know if asymmetric sprites support is working (might be fine?)
+        self.allow_flip = True # hax test because template failing to return correct cargo sprites
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsVisibleCargo(heavy_items=True)
 
 
 class WellCarConsist(CarConsist):

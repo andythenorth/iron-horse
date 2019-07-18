@@ -685,7 +685,8 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                                      10 + ((cargo_spriterow_offset + 1) * graphics_constants.spriterow_height))
 
             cargo_image = Image.open(cargo_sprites_input_path).crop(crop_box_cargo_source)
-            # cargo_image.show()
+            #if cargo_filename == 'trucks_1_32px':
+                #cargo_image.show()
 
             # the cargo image has false colour pixels for the chassis, to aid drawing; remove these by converting to white, also convert any blue to white
             cargo_image = cargo_image.point(lambda i: 255 if (i in range(178, 192) or i == 0) else i)

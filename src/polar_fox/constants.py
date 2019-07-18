@@ -31,7 +31,6 @@ cargo_labels = ['PASS', # pax first
                 'MNSP',
                 'PAPR',
                 'WDPR',
-                'VEHI',
                 'COPR',
                 'DYES',
                 'OIL_',

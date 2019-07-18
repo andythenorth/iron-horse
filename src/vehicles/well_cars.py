@@ -9,7 +9,6 @@ def main():
                              subtype='A')
 
     consist.add_unit(type=WellCar,
-                     vehicle_length=4,
                      chassis='2_axle_filled_16px')
 
     consist = WellCarConsist(roster='pony',
@@ -18,7 +17,6 @@ def main():
                              subtype='A')
 
     consist.add_unit(type=WellCar,
-                     vehicle_length=4,
                      chassis='2_axle_filled_16px')
 
     consist = WellCarConsist(roster='pony',
@@ -27,7 +25,6 @@ def main():
                              subtype='B')
 
     consist.add_unit(type=WellCar,
-                     vehicle_length=6,
                      chassis='4_axle_filled_24px')
 
     consist = WellCarConsist(roster='pony',
@@ -36,9 +33,9 @@ def main():
                              subtype='B')
 
     consist.add_unit(type=WellCar,
-                     vehicle_length=6,
                      chassis='4_axle_filled_24px')
 
+    """
     consist = WellCarConsist(roster='pony',
                              base_numeric_id=2870,
                              gen=4,
@@ -46,6 +43,7 @@ def main():
 
     consist.add_unit(type=WellCar,
                      vehicle_length=8)
+    """
 
     consist = WellCarConsist(roster='pony',
                              base_numeric_id=2880,
@@ -53,7 +51,6 @@ def main():
                              subtype='A')
 
     consist.add_unit(type=WellCar,
-                     vehicle_length=4,
                      chassis='2_axle_filled_16px')
 
     consist = WellCarConsist(roster='pony',
@@ -62,9 +59,9 @@ def main():
                              subtype='B')
 
     consist.add_unit(type=WellCar,
-                     vehicle_length=6,
                      chassis='4_axle_filled_24px')
 
+    """
     consist = WellCarConsist(roster='pony',
                              base_numeric_id=2690,
                              gen=5,
@@ -72,7 +69,7 @@ def main():
 
     consist.add_unit(type=WellCar,
                      vehicle_length=8)
-
+    """
     # no gen 6 supplies cars, cap to gen 5 in Pony
 
     #--------------- antelope ----------------------------------------------------------------------
