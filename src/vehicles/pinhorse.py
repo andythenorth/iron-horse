@@ -9,7 +9,7 @@ def main(roster):
                             role='branch_express',
                             power=1200,
                             random_reverse=True,
-                            pantograph_type='diamond-double',
+                            pantograph_type='diamond-single',
                             gen=3,
                             intro_date_offset=5, # introduce later than gen epoch by design
                             sprites_complete=False)
