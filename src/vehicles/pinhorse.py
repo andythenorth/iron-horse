@@ -7,7 +7,7 @@ def main(roster):
                             base_numeric_id=3250,
                             name='Pinhorse',
                             role='branch_express',
-                            power=1200,
+                            power=1100,
                             random_reverse=True,
                             pantograph_type='diamond-single',
                             gen=3,
@@ -15,7 +15,7 @@ def main(roster):
                             sprites_complete=True)
 
     consist.add_unit(type=ElectricEngineUnit,
-                     weight=62,
+                     weight=60,
                      vehicle_length=6,
                      spriterow_num=0)
 
