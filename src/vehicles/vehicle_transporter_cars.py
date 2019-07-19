@@ -6,9 +6,18 @@ def main():
     # no gen 1 or 2, straight to gen 3
 
     consist = VehicleTransporterCarConsist(roster='pony',
+                                           base_numeric_id=3580,
+                                           gen=5,
+                                           subtype='B')
+
+    consist.add_unit(type=FreightCar,
+                     chassis='2_axle_filled_24px')
+
+
+    consist = VehicleTransporterCarConsist(roster='pony',
                                            base_numeric_id=3570,
                                            gen=5,
                                            subtype='C')
 
     consist.add_unit(type=FreightCar,
-                     chassis='4_axle_gapped_32px')
+                     chassis='4_axle_filled_32px')
