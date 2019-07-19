@@ -12,7 +12,7 @@ def main(roster):
                             pantograph_type='diamond-single',
                             gen=3,
                             intro_date_offset=5, # introduce later than gen epoch by design
-                            sprites_complete=False)
+                            sprites_complete=True)
 
     consist.add_unit(type=ElectricEngineUnit,
                      weight=62,
