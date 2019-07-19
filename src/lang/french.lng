@@ -33,6 +33,7 @@ STR_NAME_SUFFIX_LARGE                                           :Long
 STR_NAME_SUFFIX_ALIGNMENT_CAR                                   :Fourgon chaotique bon
 STR_NAME_SUFFIX_BOX_CAR                                         :Fourgon
 STR_NAME_SUFFIX_CABOOSE_CAR                                     :Fourgon-frein
+STR_NAME_SUFFIX_CHEMICALS_TANK_CAR                              :Wagon-citerne chimique
 STR_NAME_SUFFIX_COAL_HOPPER_CAR                                 :Wagon-trémie à charbon
 STR_NAME_SUFFIX_COIL_CAR                                        :Wagon porte-bobines
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Wagon-trémie couvert
@@ -44,6 +45,7 @@ STR_NAME_SUFFIX_EXPRESS_CAR                                     :Fourgon express
 STR_NAME_SUFFIX_FLAT_CAR                                        :Wagon plat
 STR_NAME_SUFFIX_FRUIT_VEG_CAR                                   :Wagon de fruits et légumes
 STR_NAME_SUFFIX_GRAIN_HOPPER_CAR                                :Wagon-trémie à céréales
+STR_NAME_SUFFIX_HST_PASSENGER_CAR                               :HST Voiture passagers
 STR_NAME_SUFFIX_HOPPER_CAR                                      :Wagon-trémie
 STR_NAME_SUFFIX_INTERMODAL_CAR                                  :Wagon intermodal
 STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Wagon à bétail
@@ -63,16 +65,20 @@ STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Wagon porte-aut
 STR_NAME_SUFFIX_WELL_CAR                                        :Wagon surbaissé
 
 # buy menu wrappers
+STR_BUY_MENU_WRAPPER_ONE_SUBSTR                                 :{STRING}
+STR_BUY_MENU_WRAPPER_TWO_SUBSTR                                 :{STRING}{}{STRING}
 
 # role information for buy menu
-STR_ROLE                                                        :Service{NBSP}: {GOLD}{STRING}
+STR_ROLE                                                        :{BLACK}Service{NBSP}: {GOLD}{STRING}
 STR_ROLE_FREIGHT                                                :Fret
 STR_ROLE_GENERAL_PURPOSE                                        :Universel
-STR_ROLE_GENERAL_PURPOSE_EXPRESS                                :Express/Universel
+STR_ROLE_GENERAL_PURPOSE_EXPRESS                                :Universel/Express
+STR_ROLE_HST                                                    :Grande vitesse
 STR_ROLE_METRO                                                  :Transport urbain
-STR_ROLE_VERY_HIGH_SPEED                                        :Grande vitesse
+STR_ROLE_VERY_HIGH_SPEED                                        :Très Grande vitesse
 
 # assumes only diesel and electric currently; only handles power display in imperial hp
+STR_POWER_BY_RAILTYPE                                           :{BLACK}Diesel{NBSP}: {GOLD}{COMMA} ch{}{BLACK}Électrique{NBSP}: {GOLD}{COMMA} ch
 
 # project management
 STR_SPRITES_COMPLETE                                            :{}Sprites terminés{NBSP}: {GOLD}oui
