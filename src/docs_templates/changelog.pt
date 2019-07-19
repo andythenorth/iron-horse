@@ -2,14 +2,14 @@ Changelog
 =========
 
 ----------------------
-2.0.0 Alpha 12 Release
+2.0.0 Alpha 14 Release
 ----------------------
 
 Iron Horse 2.
 
 It ain't done but it's kind of fun.
 
-Stick to 1950-2050.  Trains introduced before 1950 may have unfinished sprites.
+Stick to 1935-2050.  Trains introduced before 1935 may have unfinished sprites.
 
 Designed to be used with 'vehicles expire' set to to 'on', Horse 2 has a *lot* of vehicles and crowds the buy menu unless expiry is used.
 
@@ -23,7 +23,24 @@ Designed to be used with 'vehicles expire' set to to 'on', Horse 2 has a *lot* o
 - no savegame compatibility with Iron Horse 1
 - can be used _alongside_ Iron Horse 1, if you must (kind of odd, but eh)
 
-*Changes from 2.0.0 Alpha 11*
+*Changes from 2.0.0 Alpha 12*
+
+- no Alpha 13 due to superstition
+- added Coil cars, refit various metal cargos
+- sprites complete for
+    - Flindermouse electric engine
+    - Hurly Burly electric engine
+    - Pinhorse electric engine
+    - Stoat electric engine
+- fixed incorrect offsets for / and \ angles
+- fixed some minor sprite bugs
+- adjusted order of wagons in buy menu
+- updated translations from web translators
+
+
+----------------------
+2.0.0 Alpha 11 Release
+----------------------
 
 - no savegame compatibility with previous 2.0.0 Alpha releases
 - added new general purpose / express engines
