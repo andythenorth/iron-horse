@@ -6,7 +6,7 @@ def main(roster):
                             id='lark',
                             base_numeric_id=110,
                             name='4-4-2 Lark',
-                            role='branch_express',
+                            role='branch_express_1',
                             power=500,
                             tractive_effort_coefficient=0.2,
                             random_reverse=True,

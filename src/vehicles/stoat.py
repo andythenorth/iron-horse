@@ -6,7 +6,7 @@ def main(roster):
                             id='stoat',
                             base_numeric_id=3340,
                             name='Stoat',
-                            role='branch_express',
+                            role='branch_express_2',
                             power=800,
                             random_reverse=True,
                             pantograph_type='diamond-single',

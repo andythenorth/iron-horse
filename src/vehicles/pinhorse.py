@@ -6,7 +6,7 @@ def main(roster):
                             id='pinhorse',
                             base_numeric_id=3250,
                             name='Pinhorse',
-                            role='branch_express',
+                            role='branch_express_2',
                             power=1100,
                             random_reverse=True,
                             pantograph_type='diamond-single',

@@ -231,7 +231,7 @@ class Consist(object):
         # see https://github.com/OpenTTD/OpenTTD/pull/7147 for explanation
         # this does *not* use the role group mapping in global constants, as it's more fragmented to avoid too many new vehicle messages at once
         role_to_role_groups_mapping = {'express_core': ['express_1', 'heavy_express_1'],
-                                       'express_non_core': ['branch_express', 'express_2', 'heavy_express_2', 'heavy_express_3', 'heavy_express_4'],
+                                       'express_non_core': ['branch_express_1', 'branch_express_2', 'express_2', 'heavy_express_2', 'heavy_express_3', 'heavy_express_4'],
                                        'freight_core': ['freight_1', 'heavy_freight_1',],
                                        'freight_non_core': ['branch_freight', 'freight_2', 'heavy_freight_2', 'heavy_freight_3'],
                                        'hst': ['hst'],
@@ -274,7 +274,7 @@ class Consist(object):
         for consist in self.roster.engine_consists:
             # second livery choice is deliberate, means 'as seen in buy menu' livery is built for common case of express_1, heavy_express_1
             # 'heavy_express_4' doesn't use livery_2 by design (tied to Pony engine livery assumptions)
-            if consist.role in ['branch_express', 'express_2', 'heavy_express_2', 'pax_railcar_2', 'mail_railcar_2']:
+            if consist.role in ['branch_express_1', 'branch_express_2', 'express_2', 'heavy_express_2', 'pax_railcar_2', 'mail_railcar_2']:
                 result.append(consist.id)
         return result
 

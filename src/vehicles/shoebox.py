@@ -6,7 +6,7 @@ def main(roster):
                             id='shoebox',
                             base_numeric_id=280,
                             name='Shoebox',
-                            role='branch_express',
+                            role='branch_express_2',
                             power=950,
                             power_by_railtype={'RAIL': 950, 'ELRL': 1800},
                             random_reverse=True,

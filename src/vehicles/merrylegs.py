@@ -6,7 +6,7 @@ def main(roster):
                             id='merrylegs',
                             base_numeric_id=500,
                             name='2-6-2 Merrylegs',
-                            role='branch_express',
+                            role='branch_express_1',
                             power=650,
                             tractive_effort_coefficient=0.2,
                             random_reverse=True,
