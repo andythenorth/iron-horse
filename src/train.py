@@ -1469,6 +1469,7 @@ class PassengerHSTCarConsist(PassengerCarConsistBase):
         self.cargo_age_period = 1.33 * global_constants.CARGO_AGE_PERIOD
         self.buy_cost_adjustment_factor = 1.6
         self.floating_run_cost_multiplier = 5
+        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['hst']
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 1 if self.base_track_type == 'NG' else 2
         # Graphics configuration
@@ -1496,7 +1497,6 @@ class PassengerLuxuryCarConsist(PassengerCarConsistBase):
         self.cargo_age_period = 8 * global_constants.CARGO_AGE_PERIOD
         self.buy_cost_adjustment_factor = 1.6
         self.floating_run_cost_multiplier = 5
-        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['hst']
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 1 if self.base_track_type == 'NG' else 2
         # Graphics configuration
