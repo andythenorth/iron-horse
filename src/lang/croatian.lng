@@ -46,6 +46,7 @@ STR_NAME_SUFFIX_EXPRESS_CAR                                     :Ekspresni vagon
 STR_NAME_SUFFIX_FLAT_CAR                                        :Plato-vagon
 STR_NAME_SUFFIX_FRUIT_VEG_CAR                                   :Vagon za voće i povrće
 STR_NAME_SUFFIX_GRAIN_HOPPER_CAR                                :Otvoreni vagon za žito
+STR_NAME_SUFFIX_HST_PASSENGER_CAR                               :Putnički vagon za vlak velike brzine
 STR_NAME_SUFFIX_HOPPER_CAR                                      :Vagon za rasuti teret
 STR_NAME_SUFFIX_INTERMODAL_CAR                                  :Intermodalni vagon
 STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Vagon za stoku
@@ -65,16 +66,20 @@ STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Vagon za prijev
 STR_NAME_SUFFIX_WELL_CAR                                        :Vagon za kontejnere na kat
 
 # buy menu wrappers
+STR_BUY_MENU_WRAPPER_ONE_SUBSTR                                 :{STRING}
+STR_BUY_MENU_WRAPPER_TWO_SUBSTR                                 :{STRING}{}{STRING}
 
 # role information for buy menu
-STR_ROLE                                                        :Uloga: {GOLD}{STRING}
+STR_ROLE                                                        :{BLACK}Uloga: {GOLD}{STRING}
 STR_ROLE_FREIGHT                                                :Teret
 STR_ROLE_GENERAL_PURPOSE                                        :Opća namjena
-STR_ROLE_GENERAL_PURPOSE_EXPRESS                                :Ekspresni / opća namjena
+STR_ROLE_GENERAL_PURPOSE_EXPRESS                                :Opća namjena / ekspresni
+STR_ROLE_HST                                                    :Visoka brzina
 STR_ROLE_METRO                                                  :Gradski visokog kapaciteta
 STR_ROLE_VERY_HIGH_SPEED                                        :Vrlo visoka brzina
 
 # assumes only diesel and electric currently; only handles power display in imperial hp
+STR_POWER_BY_RAILTYPE                                           :{BLACK}Snaga uz dizel pogon: {GOLD}{COMMA} hp{}{BLACK}Snaga uz električni pogon: {GOLD}{COMMA} hp
 
 # project management
 STR_SPRITES_COMPLETE                                            :{}Kompletirani spriteovi: {GOLD}Da
