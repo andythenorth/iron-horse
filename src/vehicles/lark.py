@@ -11,7 +11,8 @@ def main(roster):
                             tractive_effort_coefficient=0.2,
                             fixed_run_cost_points=100, # substantial cost bonus so it can make money
                             random_reverse=True,
-                            gen=1)
+                            gen=1,
+                            sprites_complete=True)
 
     consist.add_unit(type=SteamEngineUnit,
                      weight=35,
