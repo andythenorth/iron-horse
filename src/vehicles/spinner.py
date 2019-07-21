@@ -10,7 +10,8 @@ def main(roster):
                             power=950,
                             tractive_effort_coefficient=0.12,
                             fixed_run_cost_points=160, # minor cost bonus so it can make money
-                            gen=1)
+                            gen=1,
+                            sprites_complete=True)
 
     consist.add_unit(type=SteamEngineUnit,
                      weight=48,
