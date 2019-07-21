@@ -9,6 +9,7 @@ def main(roster):
                             role='branch_express_1',
                             power=500,
                             tractive_effort_coefficient=0.2,
+                            fixed_run_cost_points=105, # substantial cost bonus so it can make money
                             random_reverse=True,
                             gen=1)
 
