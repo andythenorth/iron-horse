@@ -2,7 +2,7 @@ Changelog
 =========
 
 ----------------------
-2.0.0 Alpha 14 Release
+2.0.0 Alpha 15 Release
 ----------------------
 
 Iron Horse 2.
@@ -20,7 +20,25 @@ Designed to be used with 'vehicles expire' set to to 'on', Horse 2 has a *lot* o
 - no savegame compatibility with Iron Horse 1
 - can be used _alongside_ Iron Horse 1, if you must (kind of odd, but eh)
 
-*Changes from 2.0.0 Alpha 12*
+*Changes from 2.0.0 Alpha 14*
+
+- sprites complete for
+    - Lark steam engine
+    - Spinner steam engine
+    - Gwynt steam engine
+- increase power for Cheddar Valley and Chimera, for more differentiation from Grid and Blackthorn
+- reduce running costs of some early engines, including Lark, Stoat, Merrylegs and Spinner, to aid profitability in early game
+- core set of freight wagons are introduced at same time as core freight engines, in most cases
+- fixed incorrect expiry dates on Merrylegs and Proper Job, and some early short freight wagons (gen 1A)
+- fixed HST coach intro dates so they are introduced at same time as HST engines
+- fixed one door sprite that was too wide on gen 6C mail car
+- fixed some minor sprite bugs
+- updated translations from web translators
+
+
+----------------------
+2.0.0 Alpha 14 Release
+----------------------
 
 - no Alpha 13 due to superstition
 - added Coil cars, refit various metal cargos
