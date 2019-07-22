@@ -12,6 +12,7 @@ def main(roster):
                             pantograph_type='diamond-single',
                             gen=2,
                             intro_date_offset=6, # introduce later than gen epoch by design
+                            fixed_run_cost_points=105, # substantial cost bonus so it can make money
                             sprites_complete=True)
 
     consist.add_unit(type=ElectricEngineUnit,
