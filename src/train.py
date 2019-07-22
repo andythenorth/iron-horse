@@ -893,16 +893,36 @@ class CarConsist(Consist):
     def model_life(self):
         # automatically span wagon model life across gap to next generation
         # FYI next generation might be +n, not +1
-        # don't check wagon subtype, only wagon subclass and track type (otherwise, e.g. A never expire even if replaced permanently by B)
-        roster_gens_for_class = sorted(set(
-            [wagon.gen for wagon in self.roster.wagon_consists[self.base_id] if wagon.base_track_type == self.base_track_type]))
-        this_index = roster_gens_for_class.index(self.gen)
-        if this_index == len(roster_gens_for_class) - 1:
+        # this has to handle the cases of
+        # - subtype that is the end of the tree for that type and should always be available
+        # - subtype that ends but *should* be replaced by another subtype that continues the tree
+        # - subtype where there is a generation gap in the tree, but the subtype continues across the gap
+
+        tree_permissive = []
+        tree_strict = []
+        for wagon in self.roster.wagon_consists[self.base_id]:
+            if wagon.base_track_type == self.base_track_type:
+                tree_permissive.append(wagon.gen)
+                if wagon.subtype == self.subtype:
+                    tree_strict.append(wagon.gen)
+
+        tree_permissive = sorted(set(tree_permissive))
+        tree_strict = sorted(set(tree_strict))
+
+        if tree_permissive.index(self.gen) == len(tree_permissive) - 1:
+            # this is the last generation of this type, on this track type, so keep it around
+            # note that there may also be other subtypes in this generation, but they'll all be the last of the type
             return 'VEHICLE_NEVER_EXPIRES'
+
+        if tree_strict.index(self.gen) != len(tree_strict) - 1:
+            # this is not the last of this subtype, so span strictly over to the next of this subtype
+            next_gen = tree_strict[tree_strict.index(self.gen) + 1]
         else:
-            next_gen = roster_gens_for_class[roster_gens_for_class.index(self.gen) + 1]
-            next_gen_intro_date = self.roster.intro_dates[self.base_track_type][next_gen-1]
-            return next_gen_intro_date - self.intro_date
+            # this is the last of this subtype, but there are other later generations of other subtypes
+            next_gen = tree_permissive[tree_permissive.index(self.gen) + 1]
+        next_gen_intro_date = self.roster.intro_dates[self.base_track_type][next_gen-1]
+        return next_gen_intro_date - self.intro_date
+
 
     def get_wagon_id(self, id_base, **kwargs):
         # auto id creator, used for wagons not locos
