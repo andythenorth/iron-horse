@@ -9,8 +9,8 @@ def main(roster):
                             role='heavy_express_1',
                             power=1500,
                             tractive_effort_coefficient=0.18,
-                            buy_cost=47,
-                            gen=2)
+                            gen=2,
+                            sprites_complete=True)
 
     consist.add_unit(type=SteamEngineUnit,
                      weight=90,

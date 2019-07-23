@@ -10,7 +10,6 @@ def main(roster):
                             joker=True,  # this engine doesn't fit the intro date pattern, to mix things up a bit
                             power=1050,
                             tractive_effort_coefficient=0.18,
-                            buy_cost=47,
                             gen=2,
                             intro_date_offset=-3,  # introduce earlier than gen epoch by design
                             sprites_complete=True)
