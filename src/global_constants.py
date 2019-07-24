@@ -47,7 +47,7 @@ CARGO_AGE_PERIOD = 185
 # so instead set a malus, this nerfs standard pax so are relatively less profitable above somewhere around 64-128 tiles
 CARGO_AGE_PERIOD_STANDARD_PAX_MALUS = 56
 # metro mail and pax gets a total nerf, only use it on short routes
-CARGO_AGE_PERIOD_METRO_MALUS = 10
+CARGO_AGE_PERIOD_METRO_MALUS = 32
 
 # buy and run cost base factors
 PR_BUILD_VEHICLE_TRAIN = -2
