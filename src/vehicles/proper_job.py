@@ -11,6 +11,7 @@ def main(roster):
                             gen=3,
                             replacement_consist_id='shoebox', # this line ends with Shoebox and is merged with branch_express_2
                             tractive_effort_coefficient=0.2,
+                            fixed_run_cost_points=120, # substantial cost bonus so it can make money
                             random_reverse=True,
                             sprites_complete=True)
 
