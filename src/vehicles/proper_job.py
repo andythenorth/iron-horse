@@ -11,7 +11,8 @@ def main(roster):
                             gen=3,
                             replacement_consist_id='shoebox', # this line ends with Shoebox and is merged with branch_express_2
                             tractive_effort_coefficient=0.2,
-                            random_reverse=True)
+                            random_reverse=True,
+                            sprites_complete=True)
 
     consist.add_unit(type=SteamEngineUnit,
                      weight=57,
