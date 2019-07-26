@@ -1,0 +1,100 @@
+Drafting a gameplay guide, early days, but eh.  Clarifications?
+
+[b][size=150]Gameplay Guide - Iron Pony[/size][/b]
+
+"The main thing is that in Iron Horse you can still have a good game by just picking the train that you think looks nice".
+
+For those who want more, Iron Horse has a fully developed tech tree, with multiple different railtypes and engine roles.
+It's best explore by diving in and just playing, but this gameplay guide provides a brief outline of the tech tree and the vehicle types.
+
+[b]General Purpose / Express Engines[/b]
+    [list]
+    [*] passengers, mail and valuables
+    [*] high-priority freight cargos like food and engineering supplies, which can be carried in high-speed mail cars and express cars
+    [*] general freight, but if a dedicated freight engine is available with similar power, the freight engine will generally be lower cost, and higher performance
+    [/list]
+[b]Freight Engines[/b]
+    [list]
+    [*] all general freight except cargos like food and engineering supplies, which can be carried in high-speed mail cars and express cars, which freight engines can't haul at maximum speed
+    [/list]
+[b]Railcars / Multiple-Unit Trains[/b]
+    [list]
+    [*] these run at the speed of freight trains, and are suited to
+        [list]
+        [*] short routes
+        [*] routes which are heavily used by freight trains, which limit the maximum speed of other trains on the route
+        [/list]
+    [*] railcars can generally haul one additional unpowered coach, mail car or other wagon, on level routes
+    [*] railcars can be combined as needed
+    [/list]
+[b]High Speed Trains[/b]
+    [list]
+    [*] high speed diesel passenger engines with dedicated high-speed coaches
+    [*] can attach other types of cars to haul mail or freight cargos but will travel at maximum engine speed
+    [/list]
+[b]Very High Speed Trains[/b]
+    [list]
+    [*] TGV-style electric passenger trains with very high speeds
+    [*] power is distributed throughout the train
+        [list]
+        [*] engines are relatively low power
+        [*] every set of coaches attached to the engine adds more power
+        [/list]
+    [*] tilt bonus for higher speed through curves
+    [*] attaching other types of cars is not recommended, the train will be very underpowered and will travel at much less than maximum engine speed
+    [/list]
+[b]Metro Trains[/b]
+    [list]
+    [*] pax, mail, valuables, food and similar town cargos
+    [*] for very busy routes in and around large cities
+        [list]
+        [*] metro trains have very high capacity and relatively high run costs
+        [*] cargo will age quickly due to crowding
+        [*] to be profitable, metro needs to be used on routes with short distances between stations, and very high loadings
+        [/list]
+    [*] can be used in stations  as small as 1 tile
+    [*] metro trains can be combined as needed
+    [/list]
+[b]Narrow Gauge Trains[/b]
+    [list]
+    [*] low power trains with low buy and run costs, and relatively low speeds
+    [*] effective for short routes
+    [*] can be quite effective on long routes
+    [*] one general purpose engine per generation, combine them as needed for more power
+    [*] narrow gauge railcars available later in the game
+        [list]
+        [*] same speed as general purpose engine
+        [*] can generally haul one additional unpowered coach, mail car or other wagon, on level routes
+        [*] narrow gauge railcars can be combined as needed
+        [/list]
+    [/list]
+[b]Electric vs. Steam / Diesel[/b]
+    [list]
+    [*] electric engines generally cost more to buy, and less to run than similar steam / diesel equivalents
+    [/list]
+[b]Electro-Diesels[/b]
+    [list]
+    [*] go-anywhere-do-anything engines that work on both diesel and electric power
+    [*] power on electric will generally be much higher than power on diesel
+    [*] for routes with a mix of electrified and non-electrified rails
+    [/list]
+[b]Brake Vans[/b]
+    [list]
+    [*] just for eye candy on freight trains, no gameplay effect
+    [/list]
+[b]Passenger Coaches vs. Luxury Passenger Coaches[/b]
+    [list]
+    [*] on long routes (64 tiles or more) luxury passenger coaches will benefit from a better cargo payment rate compared to ordinary coaches
+    [*] on shorter routes there is little difference
+    [/list]
+[b]Livery Tricks[/b]
+    [list]
+    [*] All engines and coaches use both company colours
+    [*] Some wagons use both company colours
+    [*] Some vehicles have alternative liveries available, including all coaches and railcars, and some wagons
+    [list]
+        [*] Alternative liveries are either random, or engine specific, or cargo specific
+        [*] Some liveries can be selected by the player by flipping (ctrl-click) the vehicle in depot
+    [/list]
+    [*] Known bug: if the 'EMU' livery is set, Very High Speed engines will use it, but their dedicated coaches will not, this is a limitation in OpenTTD for which there is no current solution.
+    [/list]
