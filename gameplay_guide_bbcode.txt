@@ -27,12 +27,12 @@ It's best explored by diving in and just playing, but this gameplay guide provid
     [*] railcars can generally haul one additional unpowered coach, mail car or other wagon, on level routes
     [*] railcars can be combined as needed
     [/list]
-[b]High Speed Trains[/b]
+[b]High-Speed Trains[/b]
     [list]
-    [*] high speed diesel passenger engines with dedicated high-speed coaches
+    [*] high-speed diesel passenger engines with dedicated high-speed coaches
     [*] can attach other types of cars to haul mail or freight cargos but will travel at less than maximum engine speed
     [/list]
-[b]Very High Speed Trains[/b]
+[b]Very High-Speed Trains[/b]
     [list]
     [*] TGV-style electric passenger trains with very high speeds
     [*] power is distributed throughout the train
@@ -97,3 +97,24 @@ It's best explored by diving in and just playing, but this gameplay guide provid
         [*] Some liveries can be selected by the player by flipping (ctrl-click) the vehicle in depot
     [/list]
     [/list]
+[b] Weight Multiplier for Freight[/b]
+[list]
+    [*] Iron Horse has been designed and play-tested with 'Weight multiplier for freight to simulate heavy trains' set to 1
+    [*] Obviously this setting is a player choice and Iron Horse will work with other values for the setting
+    [*] Typically each increment of the setting requires adding one extra engine to a train
+[/list]
+[b]Inspiration[/b]
+[list]
+[*] The Iron Pony roster is inspired by trains from Britain and Ireland
+[*] Vehicle stats such as power, speed, intro date etc are all inspired by reality, but adjusted for well balanced gameplay
+[*] Train appearance is inspired by a range of sources, including:
+[list]
+[*] Iconic real-life trains, such as the HST ('Blaze', 'Scorcher'), Pendolino ('Brenner'), Midland 4-2-2 ('Spinner'), SR 4-4-0 Schools ('Tencendur'), LMS 0-10-0 Lickey Banker ('Girt Licker'), LNER 2-8-2 P2 ('Pegasus'), NER electric locomotives ('Hurly Burly', 'Flindermouse'), and BR diesel and electric locomotives like classes 20, 37, 45, 56, 59, 70, 73, 76, 77, 86, 90, 91 and 92
+[*] Trains which are a composite of similar real-life trains, such as class 25/27/33 ('Kelpie', 'Griffon', 'Shredder'), class 42/52 ('Dragon'), class 47/50 ('Thunderbird'), the DMU and EMU railcars, and multiple steam locomotives.
+[*] Trains which are fictional, such as the 'Pinhorse' electric, 4-8-0 'Lemon', 'Hercules' and 'Goliath'
+[*] Narrow gauge trains are inspired by real-life examples from Ireland
+[*] Metro trains are inspired by London Underground
+[*] Coaches and freight wagons in many cases resemble recognisable real-life equivalents, but extensively adjusted to fit into the roster tech tree
+[/list]
+[*] Compared to other planned Iron Horse rosters, the Iron Pony roster is balanced to offer relatively high speeds, and medium capacity per unit
+[/list]
