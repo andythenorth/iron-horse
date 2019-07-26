@@ -9,7 +9,6 @@ def main(roster):
                             role='heavy_freight_1',
                             power=2400,
                             tractive_effort_coefficient=0.29,
-                            buy_cost=114,
                             gen=3,
                             sprites_complete=True)
 
