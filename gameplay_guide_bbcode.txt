@@ -96,5 +96,4 @@ It's best explore by diving in and just playing, but this gameplay guide provide
         [*] Alternative liveries are either random, or engine specific, or cargo specific
         [*] Some liveries can be selected by the player by flipping (ctrl-click) the vehicle in depot
     [/list]
-    [*] Known bug: if the 'EMU' livery is set, Very High Speed engines will use it, but their dedicated coaches will not, this is a limitation in OpenTTD for which there is no current solution.
     [/list]
