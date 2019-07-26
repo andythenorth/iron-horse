@@ -30,7 +30,7 @@ It's best explored by diving in and just playing, but this gameplay guide provid
 [b]High Speed Trains[/b]
     [list]
     [*] high speed diesel passenger engines with dedicated high-speed coaches
-    [*] can attach other types of cars to haul mail or freight cargos but will travel at maximum engine speed
+    [*] can attach other types of cars to haul mail or freight cargos but will travel at less than maximum engine speed
     [/list]
 [b]Very High Speed Trains[/b]
     [list]
