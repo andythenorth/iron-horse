@@ -5,7 +5,7 @@ Drafting a gameplay guide, early days, but eh.  Clarifications?
 "The main thing is that in Iron Horse you can still have a good game by just picking the train that you think looks nice".
 
 For those who want more, Iron Horse has a fully developed tech tree, with multiple different railtypes and engine roles.
-It's best explore by diving in and just playing, but this gameplay guide provides a brief outline of the tech tree and the vehicle types.
+It's best explored by diving in and just playing, but this gameplay guide provides a brief outline of the tech tree and the vehicle types.
 
 [b]General Purpose / Express Engines[/b]
     [list]
