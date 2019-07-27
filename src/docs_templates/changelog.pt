@@ -2,7 +2,7 @@ Changelog
 =========
 
 ----------------------
-2.0.0 Alpha 16 Release
+2.0.0 Alpha 17 Release
 ----------------------
 
 Iron Horse 2.
@@ -20,7 +20,21 @@ Designed to be used with 'vehicles expire' set to to 'on', Horse 2 has a *lot* o
 - no savegame compatibility with Iron Horse 1
 - can be used _alongside_ Iron Horse 1, if you must (kind of odd, but eh)
 
-*Changes from 2.0.0 Alpha 15*
+*Changes from 2.0.0 Alpha 16*
+
+- sprites complete for
+    - Girt Licker steam engine
+    - Lemon steam engine
+    - Tencendur steam engine
+- minor tweaks to multiple other sprites
+- reduce Proper Job running costs to aid profitability
+- fixed cargo sprite out of place for gen 4B coal hopper
+- Very High Speed trains no longer attempt to use player's EMU company colour choice, as the middle units don't pick it up
+
+
+----------------------
+2.0.0 Alpha 16 Release
+----------------------
 
 - sprites complete for
     - Braf steam engine
