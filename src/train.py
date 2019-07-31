@@ -620,6 +620,8 @@ class PassengerEngineMetroConsist(PassengerEngineConsist):
         # metro should only be effective over short distances
         # ....run cost multiplier is adjusted up from pax base for underground nonsense, also account for 2 units
         self.floating_run_cost_multiplier = 36
+        # train_flag_mu solely used for ottd livery (company colour) selection
+        self.train_flag_mu = True
         # Graphics configuration
         # 1 livery as can't be flipped, 1 spriterow may be left blank for compatibility with Gestalt (TBC)
         # position variants
@@ -792,6 +794,8 @@ class MailEngineMetroConsist(MailEngineConsist):
         # metro should only be effective over short distances
         # ....run cost multiplier is adjusted up from pax base for underground nonsense, also account for 2 units
         self.floating_run_cost_multiplier = 36
+        # train_flag_mu solely used for ottd livery (company colour) selection
+        self.train_flag_mu = True
         # Graphics configuration
         # 1 livery as can't be flipped, 1 spriterow may be left blank for compatibility with Gestalt (TBC)
         # position variants
