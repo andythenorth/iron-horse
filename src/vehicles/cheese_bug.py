@@ -10,7 +10,9 @@ def main(roster):
                             base_track_type='NG',
                             power=350,
                             tractive_effort_coefficient=0.2,
-                            gen=1)
+                            gen=1,
+                            random_reverse=True,
+                            sprites_complete=False)
 
     consist.add_unit(type=SteamEngineUnit,
                      weight=16,
