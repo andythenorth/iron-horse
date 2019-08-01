@@ -5,7 +5,7 @@ def main(roster):
     consist = EngineConsist(roster=roster,
                             id='cheese_bug',
                             base_numeric_id=490,
-                            name='2-4-2 Cheese Bug',
+                            name='2-6-2 Cheese Bug',
                             role='universal',
                             base_track_type='NG',
                             power=350,
