@@ -4,13 +4,13 @@
         template spriteset_tail_light_${pixel_length_as_str}_unflipped(y) {
                 //[left_x, upper_y, width, height, offset_x, offset_y]
             <tal:sprite repeat="bounding_box global_constants.spritesheet_bounding_boxes_asymmetric_unreversed">
-                [${bounding_box[0]}, y, ${bounding_box[1]}, ${bounding_box[2]}, ${offsets[repeat.bounding_box.index][0]}, ${offsets[repeat.bounding_box.index][1]}, ANIM]
+                [${bounding_box[0]}, y, ${bounding_box[1]}, ${bounding_box[2]}, ${utils.get_offsets(vehicle_length,flipped=False)[repeat.bounding_box.index][0]}, ${utils.get_offsets(vehicle_length,flipped=False)[repeat.bounding_box.index][1]}]
             </tal:sprite>
         }
         template spriteset_tail_light_${pixel_length_as_str}_flipped(y) {
                 //[left_x, upper_y, width, height, offset_x, offset_y]
             <tal:sprite repeat="bounding_box global_constants.spritesheet_bounding_boxes_asymmetric_reversed">
-                [${bounding_box[0]}, y, ${bounding_box[1]}, ${bounding_box[2]}, ${offsets[repeat.bounding_box.index][0]}, ${offsets[repeat.bounding_box.index][1]}, ANIM]
+                [${bounding_box[0]}, y, ${bounding_box[1]}, ${bounding_box[2]}, ${utils.get_offsets(vehicle_length,flipped=True)[repeat.bounding_box.index][0]}, ${utils.get_offsets(vehicle_length,flipped=True)[repeat.bounding_box.index][1]}]
             </tal:sprite>
         }
         spriteset(ss_tail_light_${pixel_length_as_str}_unflipped, "${global_constants.graphics_path}tail_lights/${pixel_length_as_str}.png") {
@@ -24,17 +24,18 @@
 
 <tal:engine_consists repeat="engine [('railcar_32px_1', 8), ('railcar_32px_2', 8), ('railcar_32px_3', 8),
                                      ('metro_32px_1', 8), ('hst_32px_1', 8)]">
-    <tal:block define="offsets global_constants.default_spritesheet_offsets[str(engine[1])]">
+    <tal:block define="vehicle_length str(engine[1]);
+                       offsets global_constants.default_spritesheet_offsets[vehicle_length]">
         template spriteset_tail_light_${engine[0]}_unflipped(y) {
                 //[left_x, upper_y, width, height, offset_x, offset_y]
             <tal:sprite repeat="bounding_box global_constants.spritesheet_bounding_boxes_asymmetric_unreversed">
-                [${bounding_box[0]}, y, ${bounding_box[1]}, ${bounding_box[2]}, ${offsets[repeat.bounding_box.index][0]}, ${offsets[repeat.bounding_box.index][1]}, ANIM]
+                [${bounding_box[0]}, y, ${bounding_box[1]}, ${bounding_box[2]}, ${utils.get_offsets(vehicle_length,flipped=False)[repeat.bounding_box.index][0]}, ${utils.get_offsets(vehicle_length,flipped=False)[repeat.bounding_box.index][1]}]
             </tal:sprite>
         }
         template spriteset_tail_light_${engine[0]}_flipped(y) {
                 //[left_x, upper_y, width, height, offset_x, offset_y]
             <tal:sprite repeat="bounding_box global_constants.spritesheet_bounding_boxes_asymmetric_reversed">
-                [${bounding_box[0]}, y, ${bounding_box[1]}, ${bounding_box[2]}, ${offsets[repeat.bounding_box.index][0]}, ${offsets[repeat.bounding_box.index][1]}, ANIM]
+                [${bounding_box[0]}, y, ${bounding_box[1]}, ${bounding_box[2]}, ${utils.get_offsets(vehicle_length,flipped=True)[repeat.bounding_box.index][0]}, ${utils.get_offsets(vehicle_length,flipped=True)[repeat.bounding_box.index][1]}]
             </tal:sprite>
         }
 
