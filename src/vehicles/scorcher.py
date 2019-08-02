@@ -17,6 +17,7 @@ def main(roster):
     consist.add_unit(type=DieselEngineUnit,
                      weight=70,
                      vehicle_length=8,
-                     spriterow_num=0)
+                     spriterow_num=0,
+                     tail_light='hst_32px_1')
 
     return consist
