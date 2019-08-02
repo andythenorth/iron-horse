@@ -2,7 +2,7 @@ Changelog
 =========
 
 ----------------------
-2.0.0 Alpha 17 Release
+2.0.0 Alpha 18 Release
 ----------------------
 
 Iron Horse 2.
@@ -20,7 +20,18 @@ Designed to be used with 'vehicles expire' set to to 'on', Horse 2 has a *lot* o
 - no savegame compatibility with Iron Horse 1
 - can be used _alongside_ Iron Horse 1, if you must (kind of odd, but eh)
 
-*Changes from 2.0.0 Alpha 16*
+*Changes from 2.0.0 Alpha 17*
+
+- sprites complete for Pegasus steam engine
+- tweaks to Tencendur sprites
+- use player's EMU livery choice for metro trains
+- set correct positions for wagon tail lights
+- remove tail lights from engines, railcars etc which need custom tail light sprites drawing (later)
+
+
+----------------------
+2.0.0 Alpha 17 Release
+----------------------
 
 - sprites complete for
     - Girt Licker steam engine
