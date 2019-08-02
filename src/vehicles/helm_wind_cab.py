@@ -19,6 +19,7 @@ def main(roster):
                      # no pax capacity on Helm Wind cabs
                      capacity=0,
                      spriterow_num=0,
-                     chassis='4_axle_solid_express_32px')
+                     chassis='4_axle_solid_express_32px',
+                     tail_light='very_high_speed_32px_1')
 
     return consist

@@ -29,7 +29,8 @@
 </tal:auto_lengths>
 
 <tal:engine_consists repeat="engine [('railcar_32px_1', 8), ('railcar_32px_2', 8), ('railcar_32px_3', 8),
-                                     ('railcar_24px_1', 6), ('metro_32px_1', 8), ('hst_32px_1', 8)]">
+                                     ('railcar_24px_1', 6), ('metro_32px_1', 8), ('hst_32px_1', 8),
+                                     ('very_high_speed_32px_1', 8), ('very_high_speed_32px_2', 8)]">
     <tal:block define="vehicle_length str(engine[1]);
                        offsets global_constants.default_spritesheet_offsets[vehicle_length]">
         template spriteset_tail_light_${engine[0]}_unflipped(y) {
