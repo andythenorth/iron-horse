@@ -1,3 +1,9 @@
+<!--!
+    Separate repeats for 'auto' default tail lights and dedicated engine tail lights.
+    These could be consolidated, they do similar things, but have different input list formats.
+    TMWFTLB to consolidate, they rarely change, and it would demand more complexity.
+-->
+
 <tal:auto_lengths repeat="vehicle_length global_constants.default_spritesheet_offsets.keys()">
     <tal:block define="pixel_length_as_str str(int(vehicle_length) * 4) + 'px';
                          offsets global_constants.default_spritesheet_offsets[vehicle_length]">
@@ -23,7 +29,7 @@
 </tal:auto_lengths>
 
 <tal:engine_consists repeat="engine [('railcar_32px_1', 8), ('railcar_32px_2', 8), ('railcar_32px_3', 8),
-                                     ('metro_32px_1', 8), ('hst_32px_1', 8)]">
+                                     ('railcar_24px_1', 6), ('metro_32px_1', 8), ('hst_32px_1', 8)]">
     <tal:block define="vehicle_length str(engine[1]);
                        offsets global_constants.default_spritesheet_offsets[vehicle_length]">
         template spriteset_tail_light_${engine[0]}_unflipped(y) {
