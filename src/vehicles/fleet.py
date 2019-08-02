@@ -16,6 +16,7 @@ def main(roster):
                      weight=36,
                      capacity=200,
                      chassis='railcar_32px',
+                     tail_light='metro_32px_1',
                      repeat=2)
 
     return consist

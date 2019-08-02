@@ -16,6 +16,7 @@ def main(roster):
                      # set capacity for freight; mail will be automatically calculated
                      capacity=24,
                      chassis='railcar_32px',
+                     tail_light='metro_32px_1',
                      repeat=2)
 
     return consist
