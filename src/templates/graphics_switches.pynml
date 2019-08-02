@@ -5,7 +5,7 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_set_layers_register_more_sprites
 }
 
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_tail_light, position_in_consist_from_end) {
-    0: return ss_tail_light_${vehicle.vehicle_length * 4}px;
+    0: return ss_tail_light_${vehicle.tail_light};
     return ss_tail_light_empty;
 }
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_layer_tail_light, STORE_TEMP(PALETTE_USE_DEFAULT, 0x100)) {
