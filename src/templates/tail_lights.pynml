@@ -1,18 +1,18 @@
 <tal:lengths repeat="vehicle_length global_constants.default_spritesheet_offsets.keys()">
     <tal:defines define="pixel_length_as_str str(int(vehicle_length) * 4) + 'px';
                          offsets global_constants.default_spritesheet_offsets[vehicle_length]">
-        template spriteset_rear_light_${pixel_length_as_str}(y) {
+        template spriteset_tail_light_${pixel_length_as_str}(y) {
                 //[left_x, upper_y, width, height, offset_x, offset_y]
             <tal:sprite repeat="bounding_box global_constants.spritesheet_bounding_boxes_asymmetric_unreversed">
                 [${bounding_box[0]}, y, ${bounding_box[1]}, ${bounding_box[2]}, ${offsets[repeat.bounding_box.index][0]}, ${offsets[repeat.bounding_box.index][1]}, ANIM]
             </tal:sprite>
         }
-        spriteset(ss_rear_light_${pixel_length_as_str}, "${global_constants.graphics_path}rear_lights/${pixel_length_as_str}.png") {
-          spriteset_rear_light_${pixel_length_as_str}(10)
+        spriteset(ss_tail_light_${pixel_length_as_str}, "${global_constants.graphics_path}tail_lights/${pixel_length_as_str}.png") {
+          spriteset_tail_light_${pixel_length_as_str}(10)
         }
     </tal:defines>
 </tal:lengths>
 
-spriteset(ss_rear_light_empty, "${global_constants.graphics_path}rear_lights/empty.png") {
-  spriteset_rear_light_32px(10)
+spriteset(ss_tail_light_empty, "${global_constants.graphics_path}tail_lights/empty.png") {
+  spriteset_tail_light_32px(10)
 }

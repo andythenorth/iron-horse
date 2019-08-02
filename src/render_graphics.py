@@ -79,7 +79,7 @@ def main():
 
     report_sprites_complete(consists)
 
-    for dir_name in ['rear_lights']:
+    for dir_name in ['tail_lights']:
         target_path =  os.path.join(graphics_input_path, dir_name)
         dest_path =  os.path.join(graphics_output_path, dir_name)
         if not os.path.exists(dest_path):
