@@ -82,8 +82,9 @@ def main():
     for dir_name in ['tail_lights']:
         target_path =  os.path.join(graphics_input_path, dir_name)
         dest_path =  os.path.join(graphics_output_path, dir_name)
-        if not os.path.exists(dest_path):
-                shutil.copytree(target_path, dest_path)
+        if os.path.exists(dest_path):
+            shutil.rmtree(dest_path)
+        shutil.copytree(target_path, dest_path)
 
     print(format((time() - start), '.2f') + 's')
 
