@@ -1,9 +1,9 @@
 Changelog
 =========
 
-----------------------
-2.0.0 Alpha 18 Release
-----------------------
+--------------------
+2.0.0 Beta 1 Release
+--------------------
 
 Iron Horse 2.
 
@@ -20,14 +20,25 @@ Designed to be used with 'vehicles expire' set to to 'on', Horse 2 has a *lot* o
 - no savegame compatibility with Iron Horse 1
 - can be used _alongside_ Iron Horse 1, if you must (kind of odd, but eh)
 
-*Changes from 2.0.0 Alpha 17*
+*Changes from 2.0.0 Alpha 18*
+
+- sprites complete for
+    - Bean Feast steam engine
+    - Cheese Bug steam engine
+- add tail lights to railcars, metro, high speed trains and very high speed trains
+- improve general appearance of tail lights
+- for vehicles with variable power, buy menu text now displays using correct power units, instead of always being imperial hp
+- tweaks to multiple sprites
+
+----------------------
+2.0.0 Alpha 18 Release
+----------------------
 
 - sprites complete for Pegasus steam engine
 - tweaks to Tencendur sprites
 - use player's EMU livery choice for metro trains
 - set correct positions for wagon tail lights
 - remove tail lights from engines, railcars etc which need custom tail light sprites drawing (later)
-
 
 ----------------------
 2.0.0 Alpha 17 Release
