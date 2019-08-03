@@ -421,8 +421,9 @@ class Consist(object):
 
     def get_buy_menu_string(self, vehicle):
         result = []
+        # optional string if engine varies power by railtype
         if self.engine_varies_power_by_railtype(vehicle):
-            result.append(self.buy_menu_power_by_railtype_string)
+            result.append('STR_POWER_BY_RAILTYPE')
         # engines will always show a role string
         result.append(self.buy_menu_role_string)
 
@@ -432,10 +433,6 @@ class Consist(object):
             return 'STR_BUY_MENU_WRAPPER_TWO_SUBSTR, string(' + result[0] + '), string(' + result[1] + ')'
         # should never be reached, extend this if we do
         raise Exception('Unsupported number of buy menu strings for ', self.id)
-
-    @property
-    def buy_menu_power_by_railtype_string(self):
-        return 'STR_POWER_BY_RAILTYPE, ' + str(self.power_by_railtype['RAIL']) +',' + str(self.power_by_railtype['ELRL'])
 
     @property
     def buy_menu_role_string(self):
