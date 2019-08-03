@@ -79,7 +79,7 @@ STR_ROLE_METRO                                                  :Gradski visokog
 STR_ROLE_VERY_HIGH_SPEED                                        :Vrlo visoka brzina
 
 # assumes only diesel and electric currently; only handles power display in imperial hp
-STR_POWER_BY_RAILTYPE                                           :{BLACK}Snaga uz dizel pogon: {GOLD}{POWER} {}{BLACK}Snaga uz električni pogon: {GOLD}{POWER}
+STR_POWER_BY_RAILTYPE                                           :{BLACK}Snaga uz dizel pogon: {GOLD}{POWER}{}{BLACK}Snaga uz električni pogon: {GOLD}{POWER}
 
 # project management
 STR_SPRITES_COMPLETE                                            :{}Kompletirani spriteovi: {GOLD}Da

@@ -78,7 +78,7 @@ STR_ROLE_METRO                                                  :Transport urbai
 STR_ROLE_VERY_HIGH_SPEED                                        :Très Grande vitesse
 
 # assumes only diesel and electric currently; only handles power display in imperial hp
-STR_POWER_BY_RAILTYPE                                           :{BLACK}Diesel{NBSP}: {GOLD}{POWER} {}{BLACK}Électrique{NBSP}: {GOLD}{POWER}
+STR_POWER_BY_RAILTYPE                                           :{BLACK}Diesel{NBSP}: {GOLD}{POWER}{}{BLACK}Électrique{NBSP}: {GOLD}{POWER}
 
 # project management
 STR_SPRITES_COMPLETE                                            :{}Sprites terminés{NBSP}: {GOLD}oui
