@@ -1,8 +1,13 @@
-<!--! some switches are common to all vehicles so included with properties -->
 
 <tal:visual_effect condition="vehicle.unit_requires_visual_effect">
     <tal:include metal:use-macro="load: visual_effect_and_powered.pynml" />
 </tal:visual_effect>
+
+<tal:buy_menu_text condition="vehicle.is_lead_unit_of_consist and consist.power > 0">
+    <tal:include metal:use-macro="load: buy_menu_text.pynml" />
+</tal:buy_menu_text>
+
+<!--! some switches are common to all vehicles so included with properties -->
 
 <!--! two options for variable power
       these are incompatible with each other as of Dec 2018, but that could be changed in theory
@@ -132,7 +137,7 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
         </tal:add_articulated_parts>
         <!--! only setting buy menu text for engines currently -->
         <tal:buy_menu_text condition="vehicle.is_lead_unit_of_consist and consist.power > 0">
-            additional_text:                string(${consist.get_buy_menu_string(vehicle)});
+            additional_text:                ${vehicle.id}_switch_buy_menu_text;
         </tal:buy_menu_text>
     }
 }
