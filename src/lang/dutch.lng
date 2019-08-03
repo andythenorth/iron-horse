@@ -77,7 +77,7 @@ STR_ROLE_METRO                                                  :Hoge capaciteit
 STR_ROLE_VERY_HIGH_SPEED                                        :Zeer hoge snelheid
 
 # assumes only diesel and electric currently; only handles power display in imperial hp
-STR_POWER_BY_RAILTYPE                                           :{BLACK}Vermogen met diesel: {GOLD}{COMMA} pk{}{BLACK}Vermogen elektrisch: {GOLD}{COMMA} pk
+STR_POWER_BY_RAILTYPE                                           :{BLACK}Vermogen met diesel: {GOLD}{POWER} {}{BLACK}Vermogen elektrisch: {GOLD}{POWER}
 
 # project management
 STR_SPRITES_COMPLETE                                            :{}Sprites gereed: {GOLD}Ja

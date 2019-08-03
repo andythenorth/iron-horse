@@ -79,7 +79,7 @@ STR_ROLE_METRO                                                  :Vysoká městsk
 STR_ROLE_VERY_HIGH_SPEED                                        :Velmi vysoká rychlost
 
 # assumes only diesel and electric currently; only handles power display in imperial hp
-STR_POWER_BY_RAILTYPE                                           :{BLACK}Výkon na dieselu: {GOLD}{COMMA} hp{}{BLACK}Výkon na elektřině: {GOLD}{COMMA} hp
+STR_POWER_BY_RAILTYPE                                           :{BLACK}Výkon na dieselu: {GOLD}{POWER} {}{BLACK}Výkon na elektřině: {GOLD}{POWER}
 
 # project management
 STR_SPRITES_COMPLETE                                            :Grafika dokončena:  {GOLD} Jo
