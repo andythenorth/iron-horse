@@ -1973,8 +1973,9 @@ class Train(object):
         if result is None:
             result = self.visual_effect_offset
         if reversed_variant == 'reversed':
-            # sprites will be reversed for this vehicle, so flip the offset location
-            result = result * -1
+            # sprites will be reversed for this vehicle, so look up a better value
+            # !! always using 0 is hax, but appears to work, for whatever reason
+            result = 0 #(0, 0, 0, 0, 0, 0, 0, 0)[abs(result)-1]
         return result
 
     def get_nml_for_visual_effect_and_powered_cb(self):
