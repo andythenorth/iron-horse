@@ -1994,7 +1994,8 @@ class Train(object):
         else:
             return [0, 0]
 
-    def get_nml_for_visual_effect_and_powered_cb(self):
+    @property
+    def switch_id_for_create_effect(self):
         # ridiculous compile micro-optimisation, some random switches will be dropped if only 1 model variant
         if len(self.consist.reversed_variants) > 1:
             return self.id + "_switch_visual_effect_and_powered_variants"
