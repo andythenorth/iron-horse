@@ -2311,35 +2311,6 @@ class MetroUnit(Train):
         self._symmetry_type = 'asymmetric'
 
 
-class CargoSprinter(Train):
-    """
-    Unit for a diesel-powered dedicated freight train.
-    """
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        # refits should match those of the intermodal cars
-        self.class_refit_groups = ['express_freight', 'packaged_freight']
-        self.label_refits_allowed = ['FRUT', 'WATR']
-        self.label_refits_disallowed = ['FISH', 'LVST', 'OIL_', 'TOUR', 'WOOD']
-        self.loading_speed_multiplier = 2
-        self.default_cargos = ['GOOD']
-        self.engine_class = 'ENGINE_CLASS_DIESEL'
-        # intended - positioning smoke correctly for this vehicle type is too fiddly
-        self.visual_effect = 'VISUAL_EFFECT_DISABLE'
-        self.effect_spawn_model = 'EFFECT_SPAWN_MODEL_NONE'
-        # cargo sprinters are asymmetric, with cab at one end of each vehicle only
-        self._symmetry_type = 'asymmetric'
-        """
-        # legacy graphics processing - needs recreated as GestaltGraphics
-        self.consist.recolour_maps = graphics_constants.container_recolour_maps
-        self.consist.num_random_cargo_variants = len(self.consist.recolour_maps)
-        self.consist.cargos_with_tanktainer_graphics = ['BEER', 'MILK', 'WATR'] # !! unfinished currently??
-         # ugh, the graphics consists are applied to the consist in all other cases,
-         # but CargoSprinter doesn't have a dedicated consist subclass, so processors are on the unit, with this nasty passthrough
-        """
-
-
 class TrainCar(Train):
     """
     Intermediate class for actual cars (wagons) to subclass from, provides some common properties.
