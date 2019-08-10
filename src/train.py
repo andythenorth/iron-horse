@@ -68,7 +68,6 @@ class Consist(object):
         self.cargo_age_period = global_constants.CARGO_AGE_PERIOD
         # used by multi-mode engines such as electro-diesel, otherwise ignored
         self.power_by_railtype = kwargs.get('power_by_railtype', None)
-        self.visual_effect_override_by_railtype = kwargs.get('visual_effect_override_by_railtype', None)
         # some engines require pantograph sprites composited, don't bother setting this unless required
         self.pantograph_type = kwargs.get('pantograph_type', None)
         self.dual_headed = 1 if kwargs.get('dual_headed', False) else 0
@@ -1962,7 +1961,7 @@ class Train(object):
     @property
     def default_effect_offsets(self):
         # over-ride this in subclasses as needed (e.g. to move steam engine smoke to front by default
-        # vehicles can also over-ride this on init (stored on each model_variant as _visual_effect_offset)
+        # vehicles can also over-ride this on init (stored on each model_variant as _effect_offsets)
         return [(0, 0)]
 
     def get_nml_expression_for_effects(self, reversed_variant, railtype='default'):
