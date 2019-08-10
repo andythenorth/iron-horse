@@ -1965,7 +1965,7 @@ class Train(object):
         # vehicles can also over-ride this on init (stored on each model_variant as _visual_effect_offset)
         return [(0, 0)]
 
-    def get_effects(self, reversed_variant, railtype='default'):
+    def get_nml_expression_for_effects(self, reversed_variant, railtype='default'):
         # provides part of nml switch for effects (smoke)
 
         # effects can be over-ridden per vehicle, or use a default from the vehicle subclass
@@ -1984,6 +1984,7 @@ class Train(object):
         else:
             z_offset = self.default_effect_z_offset
 
+        # changing sprite by railtype is supported, changing position is *not* as of August 2019
         effect_sprite = self.effects[railtype][1]
 
         result = []

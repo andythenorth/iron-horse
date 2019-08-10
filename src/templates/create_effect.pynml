@@ -1,33 +1,35 @@
 // -- smoke etc -- //
-<!--! complicated due to support for railtype changes AND randomly reversed variants -->
-
-<!--!<tal:random_reverse_variants repeat="reversed_variant consist.reversed_variants">
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_visual_effect_and_powered_by_variant_${reversed_variant}, current_railtype) {
-        <tal:only_if_overrides_exist condition="consist.visual_effect_override_by_railtype is not None">
-            <tal:railtype_specific_effects repeat="railtype consist.visual_effect_override_by_railtype.keys()">
-                ${railtype}: return ${vehicle.get_effects()[0]};
-            </tal:railtype_specific_effects>
-        </tal:only_if_overrides_exist>
-        return visual_effect_and_powered(${vehicle.visual_effect}, ${vehicle.get_visual_effect_offset(reversed_variant)}, DISABLE_WAGON_POWER);
-    }
-</tal:random_reverse_variants>
--->
 
 // -- spawn model -- //
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_id_for_effect_spawn_model_and_powered, 1) {
+<!--! it's important to explicitly check known railtypes and otherwise return a general default, as not all types will be known for the default value -->
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_id_for_effect_spawn_model_and_powered, current_railtype) {
+    <tal:railtypes repeat="railtype vehicle.effects">
+        <tal:not_default condition="railtype is not 'default'">
+            ${railtype}: return ${vehicle.effects[railtype][0]};
+        </tal:not_default>
+    </tal:railtypes>
     return ${vehicle.effects['default'][0]};
 }
 
 
 // -- create effect -- //
-
+<!--! complicated due to support for railtype changes AND randomly reversed variants -->
+<!--! it's important to explicitly check known railtypes and otherwise return a general default, as not all types will be known for the default value -->
 <tal:random_reverse_variants repeat="reversed_variant consist.reversed_variants">
-    <tal:effect define="effects vehicle.get_effects(reversed_variant)">
-        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_create_effect_default_${reversed_variant}, ${effects[0]}) {
-            return ${effects[1]};
-        }
-    </tal:effect>
+    <tal:railtypes repeat="railtype vehicle.effects">
+        <tal:effect define="effects vehicle.get_nml_expression_for_effects(reversed_variant, railtype)">
+            switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_create_effect_${railtype}_${reversed_variant}, ${effects[0]}) {
+                return ${effects[1]};
+            }
+        </tal:effect>
+    </tal:railtypes>
+
     switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_create_effect_check_railtype_${reversed_variant}, current_railtype) {
+        <tal:railtypes repeat="railtype vehicle.effects">
+            <tal:not_default condition="railtype is not 'default'">
+                ${railtype}: return ${vehicle.id}_switch_create_effect_${railtype}_${reversed_variant};
+            </tal:not_default>
+        </tal:railtypes>
         return ${vehicle.id}_switch_create_effect_default_${reversed_variant};
     }
 </tal:random_reverse_variants>
