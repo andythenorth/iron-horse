@@ -76,7 +76,7 @@ STR_ROLE_HST                                                    :High Speed
 STR_ROLE_METRO                                                  :High Capacity Urban
 STR_ROLE_VERY_HIGH_SPEED                                        :Very High Speed
 
-# assumes only diesel and electric currently; only handles power display in imperial hp
+# assumes only diesel and electric currently
 STR_POWER_BY_RAILTYPE                                           :{BLACK}Power on Diesel: {GOLD}{POWER} {}{BLACK}Power on Electric: {GOLD}{POWER}
 
 # project management
