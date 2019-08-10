@@ -1777,7 +1777,11 @@ class Train(object):
         self.engine_class = 'ENGINE_CLASS_STEAM'
         self.effect_spawn_model = 'EFFECT_SPAWN_MODEL_NONE' # nml constant
         # optional, use to over-ride automatic effect positioning
-        self._visual_effect_offset = kwargs.get('visual_effect_offset', None)
+        # expects a list of offset pairs [(x, y), (x, y)] etc
+        # n.b max 4 effects (nml limit)
+        self._effect_offsets = kwargs.get('effect_offsets', None)
+        # z offset is rarely used and is handled separately, mostly just for low-height engines
+        self._effect_z_offset = kwargs.get('effect_z_offset', None)
         # optional - some consists have sequences like A1-B-A2, where A1 and A2 look the same but have different IDs for implementation reasons
         # avoid duplicating sprites on the spritesheet by forcing A2 to use A1's spriterow_num, fiddly eh?
         # ugly, but eh.  Zero-indexed, based on position in units[]
@@ -1954,32 +1958,28 @@ class Train(object):
             return None
 
     @property
-    def visual_effect_offset(self):
+    def default_effect_offsets(self):
         # over-ride this in subclasses as needed (e.g. to move steam engine smoke to front by default
         # vehicles can also over-ride this on init (stored on each model_variant as _visual_effect_offset)
-        return 0
-
-    def get_visual_effect_offset(self, reversed_variant):
-        # probably-too-magical handling of visual effect offsets
-        result = self._visual_effect_offset
-        if result is None:
-            result = self.visual_effect_offset
-        if reversed_variant == 'reversed':
-            # sprites will be reversed for this vehicle, so look up a better value
-            # !! always using 0 is hax, but appears to work, for whatever reason
-            result = 0 #(0, 0, 0, 0, 0, 0, 0, 0)[abs(result)-1]
-        return result
+        return [(0, 0)]
 
     def get_effects(self, reversed_variant):
         # provides part of nml switch for effects (smoke)
+        effect_offsets = self.default_effect_offsets
+        # when vehicles (e.g. steam engines) are reversed, invert the effect x position
+        if reversed_variant == 'reversed':
+            effect_offsets = [(-1 + (offsets[0] * -1), offsets[1]) for offsets in effect_offsets]
+
+        # z offset is handled independently to x, y for simplicity, option to over-ride z offset default per vehicle
+        if self._effect_z_offset is not None:
+            z_offset = self._effect_z_offset
+        else:
+            z_offset = 13
+
         result = []
-        self.effects = [self.effect_sprite + ', -2, 0, 10']
-        print(reversed_variant == 'reversed')
-        if len(self.effects) > 0:
-            for index, effect in enumerate(self.effects):
-                 result.append('STORE_TEMP(create_effect(' + effect + '), 0x10' + str(index) + ')')
-        elif self.default_effect_sprite is not None:
-            result.append('STORE_TEMP(create_effect(' + self.default_effect_sprite + ', -2, 0, 10), 0x100)')
+        for index, offset_pair in enumerate(effect_offsets):
+            items = [self.effect_sprite, str(offset_pair[0]), str(offset_pair[1]), str(z_offset)]
+            result.append('STORE_TEMP(create_effect(' + ','.join(items) + '), 0x10' + str(index) + ')')
         return ['[' + ','.join(result) + ']', str(len(result)) + ' + CB_RESULT_CREATE_EFFECT_CENTER']
 
     @property
@@ -2068,9 +2068,9 @@ class SteamEngineUnit(Train):
         self._symmetry_type = 'asymmetric'  # assume all steam engines are asymmetric
 
     @property
-    def visual_effect_offset(self):
+    def default_effect_offsets(self):
         # force steam engine smoke to front by default, can also over-ride per unit for more precise positioning
-        return int(math.floor(-0.5 * self.vehicle_length))
+        return [(int(math.floor(-0.5 * self.vehicle_length)), 0)]
 
 
 class SteamEngineTenderUnit(Train):
