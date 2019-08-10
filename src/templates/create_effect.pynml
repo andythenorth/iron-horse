@@ -24,17 +24,19 @@ switch (FEAT_ROADVEHS, SELF, ${vehicle.id}_create_visual_effect, ${vehicle.get_e
 -->
 
 <tal:random_reverse_variants repeat="reversed_variant consist.reversed_variants">
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_create_visual_effect_${reversed_variant}, ${vehicle.get_effects()[0]}) {
-        return ${vehicle.get_effects()[1]};
-    }
+    <tal:effect define="effects vehicle.get_effects(reversed_variant)">
+        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_create_effect_${reversed_variant}, ${effects[0]}) {
+            return ${effects[1]};
+        }
+    </tal:effect>
 </tal:random_reverse_variants>
 
-<!--! ridiculous compile micro-optimisation - only render this switch if needed -->
 <tal:optional_random_reverse_variants condition="len(consist.reversed_variants) > 1">
-    random_switch (FEAT_TRAINS, ${vehicle.location_of_random_bits_for_random_variant}, ${vehicle.id}_switch_visual_effect_and_powered_variants) {
+    random_switch (FEAT_TRAINS, ${vehicle.location_of_random_bits_for_random_variant}, ${vehicle.id}_switch_create_effect_reversed_variants) {
         dependent: ${vehicle.id}_switch_graphics_vehicle;
         <tal:reversible_variants repeat="reversed_variant consist.reversed_variants">
-            1: ${vehicle.id}_create_visual_effect_${reversed_variant};
+            1: ${vehicle.id}_switch_create_effect_${reversed_variant};
         </tal:reversible_variants>
     }
 </tal:optional_random_reverse_variants>
+

@@ -1971,7 +1971,7 @@ class Train(object):
             result = 0 #(0, 0, 0, 0, 0, 0, 0, 0)[abs(result)-1]
         return result
 
-    def get_effects(self):
+    def get_effects(self, reversed_variant):
         # provides part of nml switch for effects (smoke)
         result = []
         self.effects = [self.effect_sprite + ', -2, 0, 10']
@@ -1984,11 +1984,11 @@ class Train(object):
 
     @property
     def switch_id_for_create_effect(self):
-        # ridiculous compile micro-optimisation, some random switches will be dropped if only 1 model variant
+        # randomly reversed vehicles need to use a dependent random switch, this doesn't exist for non-reversible vehicles, so need to conditionally handle switch routing
         if len(self.consist.reversed_variants) > 1:
-            return self.id + "_switch_visual_effect_and_powered_variants"
+            return self.id + "_switch_create_effect_reversed_variants"
         else:
-            return self.id + "_create_visual_effect_" + self.consist.reversed_variants[0]
+            return self.id + "_switch_create_effect_" + self.consist.reversed_variants[0]
 
     def get_nml_expression_for_cargo_variant_random_switch(self, cargo_id=None):
         # having a method to calculate the nml for this is overkill
