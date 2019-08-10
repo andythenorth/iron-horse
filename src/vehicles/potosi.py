@@ -17,8 +17,7 @@ def main(roster):
     consist.add_unit(type=SteamEngineUnit,
                      weight=80,
                      vehicle_length=8,
-                     spriterow_num=1,
-                     visual_effect_offset=-3)
+                     spriterow_num=1)
 
     consist.add_unit(type=SteamEngineTenderUnit,
                      weight=65,

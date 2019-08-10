@@ -1775,7 +1775,6 @@ class Train(object):
         self.autorefit = True
         # nml constant (STEAM is sane default)
         self.engine_class = 'ENGINE_CLASS_STEAM'
-        self.visual_effect = 'VISUAL_EFFECT_DISABLE' # nml constant
         self.effect_spawn_model = 'EFFECT_SPAWN_MODEL_NONE' # nml constant
         # optional, use to over-ride automatic effect positioning
         self._visual_effect_offset = kwargs.get('visual_effect_offset', None)
@@ -1975,6 +1974,7 @@ class Train(object):
         # provides part of nml switch for effects (smoke)
         result = []
         self.effects = [self.effect_sprite + ', -2, 0, 10']
+        print(reversed_variant == 'reversed')
         if len(self.effects) > 0:
             for index, effect in enumerate(self.effects):
                  result.append('STORE_TEMP(create_effect(' + effect + '), 0x10' + str(index) + ')')
