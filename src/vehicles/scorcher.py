@@ -17,6 +17,7 @@ def main(roster):
     consist.add_unit(type=DieselEngineUnit,
                      weight=70,
                      vehicle_length=8,
+                     effect_offsets=[(0, 1), (0, -1)], # double the smoke eh?
                      spriterow_num=0,
                      tail_light='hst_32px_1')
 

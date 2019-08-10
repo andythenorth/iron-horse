@@ -15,6 +15,7 @@ def main(roster):
     consist.add_unit(type=SteamEngineUnit,
                      weight=110,
                      vehicle_length=8,
+                     effect_offsets=[(-3, 0), (-2, 0)], # double the smoke eh?
                      spriterow_num=0)
 
     consist.add_unit(type=SteamEngineTenderUnit,
