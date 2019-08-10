@@ -79,6 +79,9 @@ STR_ROLE_VERY_HIGH_SPEED                                        :Very High Speed
 # assumes only diesel and electric currently
 STR_POWER_BY_RAILTYPE                                           :{BLACK}Power on Diesel: {GOLD}{POWER} {}{BLACK}Power on Electric: {GOLD}{POWER}
 
+# distributed power (dedicated wagons add power)
+STR_WAGONS_ADD_POWER                                            :Distributed Power
+
 # project management
 STR_SPRITES_COMPLETE                                            :{}Sprites Complete: {GOLD}Yup
 STR_SPRITES_INCOMPLETE                                          :{}Sprites Complete: {GOLD}Nope

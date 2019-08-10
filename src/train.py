@@ -76,6 +76,7 @@ class Consist(object):
         self.train_flag_mu = False
         # some wagons will provide power if specific engine IDs are in the consist
         self.wagons_add_power = False
+        self.buy_menu_hint_wagons_add_power = False
         # some vehicles will get a higher speed if hauled by an express engine (use rarely)
         self.easter_egg_haulage_speed_bonus = kwargs.get('easter_egg_haulage_speed_bonus', False)
         # random_reverse means (1) randomised reversing of sprites when vehicle is built (2) player can also flip vehicle
@@ -423,6 +424,11 @@ class Consist(object):
         # optional string if engine varies power by railtype
         if self.engine_varies_power_by_railtype(vehicle):
             result.append('STR_POWER_BY_RAILTYPE')
+        # optional string if dedicated wagons add power
+        if self.buy_menu_hint_wagons_add_power:
+            print(self.buy_menu_distributed_power_substring)
+            result.append('STR_WAGONS_ADD_POWER')
+
         # engines will always show a role string
         result.append(self.buy_menu_role_string)
 
@@ -671,6 +677,7 @@ class PassengerVeryHighSpeedCabEngineConsist(PassengerEngineConsist):
         # implemented as a list to allow multiple middle vehicles, e.g. double-deck, mail etc
         # but...theoretical as of Dec 2018 as nml power template doesn't support iterating over multiple middle vehicles
         self.middle_id = self.id.split('_cab')[0] + '_middle'
+        self.buy_menu_hint_wagons_add_power = True
         self.tilt_bonus = True
         # moderate cargo age bonus
         self.cargo_age_period = 1.33 * global_constants.CARGO_AGE_PERIOD
@@ -699,6 +706,10 @@ class PassengerVeryHighSpeedCabEngineConsist(PassengerEngineConsist):
                                                                      pantograph_type=self.pantograph_type)
         """
 
+    @property
+    def buy_menu_distributed_power_substring(self):
+        return self.middle_id
+
 class PassengerVeryHighSpeedMiddleEngineConsist(PassengerEngineConsist):
     """
     Consist for an intermediate motor unit for very high speed train (TGV etc).
@@ -709,6 +720,7 @@ class PassengerVeryHighSpeedMiddleEngineConsist(PassengerEngineConsist):
         super().__init__(**kwargs)
         self.cab_id = self.id.split('_middle')[0] + '_cab'
         self.wagons_add_power = True
+        self.buy_menu_hint_wagons_add_power = True
         self.tilt_bonus = True
         # moderate cargo age bonus
         self.cargo_age_period = 1.33 * global_constants.CARGO_AGE_PERIOD
@@ -757,6 +769,9 @@ class PassengerVeryHighSpeedMiddleEngineConsist(PassengerEngineConsist):
         # match middle engine running cost to cab engine running cost
         return self.cab_consist.running_cost
 
+    @property
+    def buy_menu_distributed_power_substring(self):
+        return self.cab_id
 
 class MailEngineConsist(EngineConsist):
     """
