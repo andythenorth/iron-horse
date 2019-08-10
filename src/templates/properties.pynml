@@ -1,7 +1,7 @@
 
-<tal:visual_effect condition="vehicle.unit_requires_visual_effect">
-    <tal:include metal:use-macro="load: visual_effect_and_powered.pynml" />
-</tal:visual_effect>
+<tal:create_effect condition="vehicle.effect_spawn_model is not 'EFFECT_SPAWN_MODEL_NONE'">
+    <tal:include metal:use-macro="load: create_effect.pynml" />
+</tal:create_effect>
 
 <tal:buy_menu_text condition="vehicle.is_lead_unit_of_consist and consist.power > 0">
     <tal:include metal:use-macro="load: buy_menu_text.pynml" />
@@ -129,7 +129,7 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
             purchase_speed:                 ${int(1.60934 * consist.speed)};
         </tal:speed_is_optional>
         <!--! only use the visual effect switches if needed, saves a couple of seconds on compile -->
-        <tal:create_effect condition="vehicle.unit_requires_visual_effect">
+        <tal:create_effect condition="vehicle.effect_spawn_model is not 'EFFECT_SPAWN_MODEL_NONE'">
             create_effect:      ${vehicle.switch_id_for_create_effect};
         </tal:create_effect>
         <tal:add_articulated_parts condition="vehicle.is_lead_unit_of_consist and len(consist.units) > 1">

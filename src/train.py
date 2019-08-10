@@ -1955,14 +1955,6 @@ class Train(object):
             return None
 
     @property
-    def unit_requires_visual_effect(self):
-        # tiny compile optimisation
-        if self.effect_spawn_model is not 'EFFECT_SPAWN_MODEL_NONE':
-            return True
-        else:
-            return False
-
-    @property
     def visual_effect_offset(self):
         # over-ride this in subclasses as needed (e.g. to move steam engine smoke to front by default
         # vehicles can also over-ride this on init (stored on each model_variant as _visual_effect_offset)
@@ -1980,19 +1972,15 @@ class Train(object):
         return result
 
     def get_effects(self):
-        # provides part of nml switch for effects (smoke), or none if no effects defined in vehicle or subclass
+        # provides part of nml switch for effects (smoke)
         result = []
-        self.effects = [self.effect_sprite + ', -2, 1, 10']
+        self.effects = [self.effect_sprite + ', -2, 0, 10']
         if len(self.effects) > 0:
             for index, effect in enumerate(self.effects):
                  result.append('STORE_TEMP(create_effect(' + effect + '), 0x10' + str(index) + ')')
         elif self.default_effect_sprite is not None:
             result.append('STORE_TEMP(create_effect(' + self.default_effect_sprite + ', -2, 0, 10), 0x100)')
-        # only return a list if there's a list to return :P
-        if len(result) > 0:
-            return ['[' + ','.join(result) + ']', len(result)]
-        else:
-            return [0, 0]
+        return ['[' + ','.join(result) + ']', str(len(result)) + ' + CB_RESULT_CREATE_EFFECT_CENTER']
 
     @property
     def switch_id_for_create_effect(self):
