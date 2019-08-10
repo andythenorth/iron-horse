@@ -1775,7 +1775,8 @@ class Train(object):
         self.autorefit = True
         # nml constant (STEAM is sane default)
         self.engine_class = 'ENGINE_CLASS_STEAM'
-        self.effect_spawn_model = 'EFFECT_SPAWN_MODEL_NONE' # nml constant
+        # structure for effect spawn and sprites, default and per railtype as needed
+        self.effects = {} # empty if no effects, set in subtypes as needed
         # optional, use to over-ride automatic effect positioning
         # expects a list of offset pairs [(x, y), (x, y)] etc
         # n.b max 4 effects (nml limit)
@@ -1964,7 +1965,7 @@ class Train(object):
         # vehicles can also over-ride this on init (stored on each model_variant as _visual_effect_offset)
         return [(0, 0)]
 
-    def get_effects(self, reversed_variant):
+    def get_effects(self, reversed_variant, railtype='default'):
         # provides part of nml switch for effects (smoke)
 
         # effects can be over-ridden per vehicle, or use a default from the vehicle subclass
@@ -1983,9 +1984,11 @@ class Train(object):
         else:
             z_offset = self.default_effect_z_offset
 
+        effect_sprite = self.effects[railtype][1]
+
         result = []
         for index, offset_pair in enumerate(effect_offsets):
-            items = [self.effect_sprite, str(offset_pair[0]), str(offset_pair[1]), str(z_offset)]
+            items = [effect_sprite, str(offset_pair[0]), str(offset_pair[1]), str(z_offset)]
             result.append('STORE_TEMP(create_effect(' + ','.join(items) + '), 0x10' + str(index) + ')')
         return ['[' + ','.join(result) + ']', str(len(result)) + ' + CB_RESULT_CREATE_EFFECT_CENTER']
 
@@ -1995,7 +1998,7 @@ class Train(object):
         if len(self.consist.reversed_variants) > 1:
             return self.id + "_switch_create_effect_reversed_variants"
         else:
-            return self.id + "_switch_create_effect_" + self.consist.reversed_variants[0]
+            return self.id + "_switch_create_effect_check_railtype_" + self.consist.reversed_variants[0]
 
     def get_nml_expression_for_cargo_variant_random_switch(self, cargo_id=None):
         # having a method to calculate the nml for this is overkill
@@ -2069,8 +2072,7 @@ class SteamEngineUnit(Train):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.engine_class = 'ENGINE_CLASS_STEAM'
-        self.effect_sprite = 'EFFECT_SPRITE_STEAM'
-        self.effect_spawn_model = 'EFFECT_SPAWN_MODEL_STEAM'
+        self.effects = {'default': ['EFFECT_SPAWN_MODEL_STEAM', 'EFFECT_SPRITE_STEAM']}
         self.consist.str_name_suffix = 'STR_NAME_SUFFIX_STEAM'
         self.default_effect_z_offset = 13 # optimised for Pony steam trains
         self._symmetry_type = 'asymmetric'  # assume all steam engines are asymmetric
@@ -2101,8 +2103,7 @@ class DieselEngineUnit(Train):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.engine_class = 'ENGINE_CLASS_DIESEL'
-        self.effect_sprite = 'EFFECT_SPRITE_DIESEL'
-        self.effect_spawn_model = 'EFFECT_SPAWN_MODEL_DIESEL'
+        self.effects = {'default': ['EFFECT_SPAWN_MODEL_DIESEL', 'EFFECT_SPRITE_DIESEL']}
         self.consist.str_name_suffix = 'STR_NAME_SUFFIX_DIESEL'
         # most diesel engines are asymmetric, over-ride per vehicle as needed
         self._symmetry_type = kwargs.get('symmetry_type', 'asymmetric')
@@ -2152,8 +2153,7 @@ class ElectricEngineUnit(Train):
         super().__init__(**kwargs)
         self.consist.requires_electric_rails = True
         self.engine_class = 'ENGINE_CLASS_ELECTRIC'
-        self.effect_sprite = 'EFFECT_SPRITE_ELECTRIC'
-        self.effect_spawn_model = 'EFFECT_SPAWN_MODEL_ELECTRIC'
+        self.effects = {'default': ['EFFECT_SPAWN_MODEL_ELECTRIC', 'EFFECT_SPRITE_ELECTRIC']}
         self.consist.str_name_suffix = 'STR_NAME_SUFFIX_ELECTRIC'
         # almost all electric engines are asymmetric, over-ride per vehicle as needed
         self._symmetry_type = kwargs.get('symmetry_type', 'asymmetric')
@@ -2167,10 +2167,8 @@ class ElectroDieselEngineUnit(Train):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.engine_class = 'ENGINE_CLASS_DIESEL'
-        self.effect_sprite = 'EFFECT_SPRITE_DIESEL'
-        self.effect_spawn_model = 'EFFECT_SPAWN_MODEL_DIESEL'
-        self.consist.visual_effect_override_by_railtype = {'ELRL': {'visual_effect': 'VISUAL_EFFECT_ELECTRIC',
-                                                                    'effect_spawn_model': 'EFFECT_SPAWN_MODEL_ELECTRIC'}}
+        self.effects = {'default': ['EFFECT_SPAWN_MODEL_DIESEL', 'EFFECT_SPRITE_DIESEL'],
+                        'ELRL': ['EFFECT_SPAWN_MODEL_ELECTRIC', 'EFFECT_SPRITE_ELECTRIC']}
         self.consist.str_name_suffix = 'STR_NAME_SUFFIX_ELECTRODIESEL'
         # electro-diesels are complex eh?
         self.consist.electro_diesel_buy_cost_malus = 1 # will get same buy cost factor as electric engine of same gen (blah balancing)
@@ -2186,10 +2184,8 @@ class ElectroDieselRailcarBaseUnit(Train):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.engine_class = 'ENGINE_CLASS_DIESEL'
-        self.effect_sprite = 'EFFECT_SPRITE_DIESEL'
-        self.effect_spawn_model = 'EFFECT_SPAWN_MODEL_DIESEL'
-        self.consist.visual_effect_override_by_railtype = {'ELRL': {'visual_effect': 'VISUAL_EFFECT_ELECTRIC',
-                                                                    'effect_spawn_model': 'EFFECT_SPAWN_MODEL_ELECTRIC'}}
+        self.effects = {'default': ['EFFECT_SPAWN_MODEL_DIESEL', 'EFFECT_SPRITE_DIESEL'],
+                        'ELRL': ['EFFECT_SPAWN_MODEL_ELECTRIC', 'EFFECT_SPRITE_ELECTRIC']}
         self.consist.str_name_suffix = 'STR_NAME_SUFFIX_ELECTRODIESEL'
         # electro-diesels are complex eh?
         self.consist.electro_diesel_buy_cost_malus = 1.15 # will get higher buy cost factor than electric railcar of same gen (blah balancing)
@@ -2233,8 +2229,7 @@ class ElectricRailcarBaseUnit(Train):
         super().__init__(**kwargs)
         self.consist.requires_electric_rails = True
         self.engine_class = 'ENGINE_CLASS_ELECTRIC'
-        self.effect_sprite = 'EFFECT_SPRITE_ELECTRIC'
-        self.effect_spawn_model = 'EFFECT_SPAWN_MODEL_ELECTRIC'
+        self.effects = {'default': ['EFFECT_SPAWN_MODEL_DIESEL', 'EFFECT_SPRITE_DIESEL']}
         self.consist.str_name_suffix = 'STR_NAME_SUFFIX_ELECTRIC'
         # offset to second livery, to differentiate from diesel equivalent which will use first
         self.buy_menu_spriterow_num = 2 # note that it's 2 because opening doors are in row 1, livery 2 starts at 2, zero-indexed
@@ -2276,8 +2271,7 @@ class ElectricHighSpeedPaxUnit(Train):
         super().__init__(**kwargs)
         self.consist.requires_electric_rails = True
         self.engine_class = 'ENGINE_CLASS_ELECTRIC'
-        self.effect_sprite = 'EFFECT_SPRITE_ELECTRIC'
-        self.effect_spawn_model = 'EFFECT_SPAWN_MODEL_ELECTRIC'
+        self.effects = {'default': ['EFFECT_SPAWN_MODEL_DIESEL', 'EFFECT_SPRITE_DIESEL']}
         self.consist.str_name_suffix = 'STR_NAME_SUFFIX_ELECTRIC'
         # the cab magic won't work unless it's asymmetrical eh? :P
         self._symmetry_type = 'asymmetric'
@@ -2301,8 +2295,7 @@ class MetroUnit(Train):
         kwargs['consist'].base_track_type = 'METRO'
         self.loading_speed_multiplier = 2
         self.engine_class = 'ENGINE_CLASS_ELECTRIC'
-        self.effect_sprite = 'EFFECT_SPRITE_ELECTRIC'
-        self.effect_spawn_model = 'EFFECT_SPAWN_MODEL_ELECTRIC'
+        self.effects = {'default': ['EFFECT_SPAWN_MODEL_DIESEL', 'EFFECT_SPRITE_DIESEL']}
         self.consist.str_name_suffix = 'STR_NAME_SUFFIX_METRO'
         # the cab magic won't work unless it's asymmetrical eh? :P
         self._symmetry_type = 'asymmetric'

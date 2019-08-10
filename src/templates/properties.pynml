@@ -1,5 +1,5 @@
 
-<tal:create_effect condition="vehicle.effect_spawn_model is not 'EFFECT_SPAWN_MODEL_NONE'">
+<tal:create_effect condition="len(vehicle.effects) > 0">
     <tal:include metal:use-macro="load: create_effect.pynml" />
 </tal:create_effect>
 
@@ -72,7 +72,6 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
         name:                           ${consist.name};
         climates_available:             NO_CLIMATE; // nml constant
         engine_class:                   ${vehicle.engine_class};
-        effect_spawn_model_and_powered: ${vehicle.effect_spawn_model};
         introduction_date:              date(${consist.intro_date}, ${1 + consist.intro_date_days_offset}, 1);
         cargo_capacity:                 ${vehicle.default_cargo_capacity};
         sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
@@ -129,7 +128,8 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
             purchase_speed:                 ${int(1.60934 * consist.speed)};
         </tal:speed_is_optional>
         <!--! only use the visual effect switches if needed, saves a couple of seconds on compile -->
-        <tal:create_effect condition="vehicle.effect_spawn_model is not 'EFFECT_SPAWN_MODEL_NONE'">
+        <tal:create_effect condition="len(vehicle.effects) > 0">
+            effect_spawn_model_and_powered: ${vehicle.id}_switch_id_for_effect_spawn_model_and_powered;
             create_effect:      ${vehicle.switch_id_for_create_effect};
         </tal:create_effect>
         <tal:add_articulated_parts condition="vehicle.is_lead_unit_of_consist and len(consist.units) > 1">
