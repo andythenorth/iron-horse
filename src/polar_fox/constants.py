@@ -179,7 +179,7 @@ mail_multiplier = 2
 # ------------------
 
 # locations of the bounding boxes for (piece) cargo spritesheets
-cargo_spritesheet_bounding_boxes_base = ((10, 10, 18, 26), (22, 10, 44, 26), (48, 10, 80, 22), (84, 10, 106, 26))
+cargo_spritesheet_bounding_boxes_base = ((10, 10, 18, 36), (22, 10, 44, 26), (48, 10, 80, 22), (84, 10, 106, 26))
 
 # Piece maps
 # vehicle types are mapped to specific cargo sprites

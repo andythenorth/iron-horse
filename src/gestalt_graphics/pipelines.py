@@ -728,8 +728,8 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
         cargo_spritesheet_bounding_boxes = {}
         for counter, length in enumerate([3, 4, 5, 6, 7, 8]):
             bb_result = []
-            for y_offset in [0, 20]:
-                bb_y_offset = (counter * 40) + y_offset
+            for y_offset in [0, 30]:
+                bb_y_offset = (counter * 60) + y_offset
                 bb_result.extend(tuple([(i[0], i[1] + bb_y_offset, i[2], i[3] + bb_y_offset) for i in polar_fox.constants.cargo_spritesheet_bounding_boxes_base]))
             cargo_spritesheet_bounding_boxes[length] = bb_result
 
