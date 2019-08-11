@@ -76,8 +76,10 @@ STR_ROLE_HST                                                    :Hoge snelheid
 STR_ROLE_METRO                                                  :Hoge capaciteit stedelijk
 STR_ROLE_VERY_HIGH_SPEED                                        :Zeer hoge snelheid
 
-# assumes only diesel and electric currently; only handles power display in imperial hp
+# assumes only diesel and electric currently
 STR_POWER_BY_RAILTYPE                                           :{BLACK}Vermogen met diesel: {GOLD}{POWER}{}{BLACK}Vermogen elektrisch: {GOLD}{POWER}
+
+# distributed power (dedicated wagons add power)
 
 # project management
 STR_SPRITES_COMPLETE                                            :{}Sprites gereed: {GOLD}Ja

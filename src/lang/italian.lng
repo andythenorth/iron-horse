@@ -71,7 +71,9 @@ STR_ROLE_GENERAL_PURPOSE_EXPRESS                                :Merci leggere /
 STR_ROLE_METRO                                                  :Urbano ad alta capacità
 STR_ROLE_VERY_HIGH_SPEED                                        :Alta Velocità
 
-# assumes only diesel and electric currently; only handles power display in imperial hp
+# assumes only diesel and electric currently
+
+# distributed power (dedicated wagons add power)
 
 # project management
 STR_SPRITES_COMPLETE                                            :{}Sprite Completi: {GOLD}Sì

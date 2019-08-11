@@ -41,6 +41,8 @@ STR_NAME_SUFFIX_TANK_CAR                                        :Currus Cisterni
 
 # role information for buy menu
 
-# assumes only diesel and electric currently; only handles power display in imperial hp
+# assumes only diesel and electric currently
+
+# distributed power (dedicated wagons add power)
 
 # project management
