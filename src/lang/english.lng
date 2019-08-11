@@ -80,8 +80,8 @@ STR_ROLE_VERY_HIGH_SPEED                                        :Very High Speed
 STR_POWER_BY_RAILTYPE                                           :{BLACK}Power on Diesel: {GOLD}{POWER} {}{BLACK}Power on Electric: {GOLD}{POWER}
 
 # distributed power (dedicated wagons add power)
-STR_WAGONS_ADD_POWER_CAB                                        :Distributed Power: {GOLD}{STRING} units add power when attached
-STR_WAGONS_ADD_POWER_MIDDLE                                     :Powered: {GOLD}when attached to {STRING} unit
+STR_WAGONS_ADD_POWER_CAB                                        :Power (Distributed): {GOLD}{POWER} per {STRING} unit attached
+STR_WAGONS_ADD_POWER_MIDDLE                                     :Power (Distributed): {GOLD}{POWER} when attached to {STRING} unit
 
 # project management
 STR_SPRITES_COMPLETE                                            :{}Sprites Complete: {GOLD}Yup

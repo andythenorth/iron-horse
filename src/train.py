@@ -419,6 +419,16 @@ class Consist(object):
         else:
             return 64
 
+    def get_buy_menu_format(self, vehicle):
+        # keep the template logic simple, present strings for a switch/case tree
+        # variable_power and wagons_add_power are mutually exclusive (asserted by engine_varies_power_by_railtype as of August 2019)
+        if self.engine_varies_power_by_railtype(vehicle):
+            return 'variable_power'
+        elif self.buy_menu_hint_wagons_add_power:
+            return 'wagons_add_power'
+        else:
+            return 'default'
+
     def get_buy_menu_string(self, vehicle):
         result = []
         # optional string if engine varies power by railtype
@@ -707,7 +717,15 @@ class PassengerVeryHighSpeedCabEngineConsist(PassengerEngineConsist):
 
     @property
     def buy_menu_distributed_power_substring(self):
-        return 'STR_WAGONS_ADD_POWER_CAB, string(STR_NAME_' + self.middle_id + ')'
+        return 'STR_WAGONS_ADD_POWER_CAB'
+
+    @property
+    def buy_menu_distributed_power_name_substring(self):
+        return self.middle_id
+
+    @property
+    def buy_menu_distributed_power_hp_value(self):
+        return self.power
 
 
 class PassengerVeryHighSpeedMiddleEngineConsist(PassengerEngineConsist):
@@ -771,7 +789,15 @@ class PassengerVeryHighSpeedMiddleEngineConsist(PassengerEngineConsist):
 
     @property
     def buy_menu_distributed_power_substring(self):
-        return 'STR_WAGONS_ADD_POWER_MIDDLE, string(STR_NAME_' + self.cab_id + ')'
+        return 'STR_WAGONS_ADD_POWER_MIDDLE'
+
+    @property
+    def buy_menu_distributed_power_name_substring(self):
+        return self.cab_id
+
+    @property
+    def buy_menu_distributed_power_hp_value(self):
+        return self.cab_consist.power
 
 
 class MailEngineConsist(EngineConsist):

@@ -3,15 +3,22 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_buy_menu_text_result, 1) {
 }
 
 <!--! for variable power, we need to stuff the text stack with the values for power -->
-<tal:block switch="consist.engine_varies_power_by_railtype(vehicle)">
-    <tal:variable_power case="True">
+<tal:block switch="consist.get_buy_menu_format(vehicle)">
+    <tal:variable_power case="'variable_power'">
         switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_buy_menu_text, [
             STORE_TEMP(${consist.power_by_railtype['RAIL']} | (${consist.power_by_railtype['ELRL']} << 16), 0x100)
         ]) {
             return ${vehicle.id}_switch_buy_menu_text_result;
         }
     </tal:variable_power>
-    <tal:default case="False">
+    <tal:wagons_add_power case="'wagons_add_power'">
+        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_buy_menu_text, [
+            STORE_TEMP((${consist.buy_menu_distributed_power_hp_value} | string(STR_NAME_${consist.buy_menu_distributed_power_name_substring}) << 16), 0x100)
+        ]) {
+            return ${vehicle.id}_switch_buy_menu_text_result;
+        }
+    </tal:wagons_add_power>
+    <tal:default case="'default'">
         switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_buy_menu_text, 1) {
             return ${vehicle.id}_switch_buy_menu_text_result;
         }

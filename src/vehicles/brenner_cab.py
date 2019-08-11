@@ -5,7 +5,7 @@ def main(roster):
     consist = PassengerVeryHighSpeedCabEngineConsist(roster=roster,
                                                      id='brenner_cab',
                                                      base_numeric_id=130,
-                                                     name='Brenner - Cab',
+                                                     name='Brenner Cab',
                                                      role='very_high_speed',
                                                      dual_headed=True,
                                                      power=3000,
