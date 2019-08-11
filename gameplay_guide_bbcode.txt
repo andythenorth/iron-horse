@@ -97,6 +97,10 @@ It's best explored by diving in and just playing, but this gameplay guide provid
         [*] Some liveries can be selected by the player by flipping (ctrl-click) the vehicle in depot
     [/list]
     [/list]
+[b]Easter Egg[/b]
+[list]
+[*]Electric and Electro-Diesel railcars will increase their maximum speed when attached to express engines, and can be used as cab cars, including with the engine at the rear of the train.
+[/list]
 [b] Weight Multiplier for Freight[/b]
 [list]
     [*] Iron Horse has been designed and play-tested with 'Weight multiplier for freight to simulate heavy trains' set to 1
