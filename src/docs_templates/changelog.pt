@@ -2,7 +2,7 @@ Changelog
 =========
 
 --------------------
-2.0.0 Beta 2 Release
+2.0.0 Beta 3 Release
 --------------------
 
 Iron Horse 2.
@@ -18,7 +18,36 @@ Designed to be used with 'vehicles expire' set to to 'on', Horse 2 has a *lot* o
 - no savegame compatibility with Iron Horse 1
 - can be used _alongside_ Iron Horse 1, if you must (kind of odd, but eh)
 
-*Changes from 2.0.0 Beta 1*
+*Changes from 2.0.0 Beta 2*
+
+- show distributed power values in buy menu for cab and middle units of very high speed trains
+- add dedicated mail livery for gen 3 mail cars
+- update Ares livery to match gen 3 passenger and mail cars
+- update Gowsty mail livery to match gen 3 passenger and mail cars
+- cargo sprites complete for
+    - alloy steel
+    - carbon steel
+    - copper
+    - coffee
+    - fruit
+    - logs
+    - lumber
+    - nuts
+    - paper
+    - stainless steel
+    - steel
+- generic cargo sprites complete for
+    - barrels
+    - crates
+    - tarps
+- tweaks to multiple sprites
+- fix steam engine tenders showing smoke
+- updated translations from web translators
+
+
+--------------------
+2.0.0 Beta 2 Release
+--------------------
 
 - improved position of vehicle visual effects for many vehicles
 - tweaks to Bean Feast sprites
