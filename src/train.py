@@ -426,8 +426,7 @@ class Consist(object):
             result.append('STR_POWER_BY_RAILTYPE')
         # optional string if dedicated wagons add power
         if self.buy_menu_hint_wagons_add_power:
-            print(self.buy_menu_distributed_power_substring)
-            result.append('STR_WAGONS_ADD_POWER')
+            result.append(self.buy_menu_distributed_power_substring)
 
         # engines will always show a role string
         result.append(self.buy_menu_role_string)
@@ -708,7 +707,8 @@ class PassengerVeryHighSpeedCabEngineConsist(PassengerEngineConsist):
 
     @property
     def buy_menu_distributed_power_substring(self):
-        return self.middle_id
+        return 'STR_WAGONS_ADD_POWER_CAB, string(STR_NAME_' + self.middle_id + ')'
+
 
 class PassengerVeryHighSpeedMiddleEngineConsist(PassengerEngineConsist):
     """
@@ -771,7 +771,8 @@ class PassengerVeryHighSpeedMiddleEngineConsist(PassengerEngineConsist):
 
     @property
     def buy_menu_distributed_power_substring(self):
-        return self.cab_id
+        return 'STR_WAGONS_ADD_POWER_MIDDLE, string(STR_NAME_' + self.cab_id + ')'
+
 
 class MailEngineConsist(EngineConsist):
     """
