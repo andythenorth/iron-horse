@@ -2311,6 +2311,7 @@ class MetroUnit(Train):
         self.loading_speed_multiplier = 2
         self.engine_class = 'ENGINE_CLASS_ELECTRIC'
         self.effects = {'default': ['EFFECT_SPAWN_MODEL_ELECTRIC', 'EFFECT_SPRITE_ELECTRIC']}
+        self.default_effect_z_offset = 1 # optimised for Pony diesel and electric trains
         self.consist.str_name_suffix = 'STR_NAME_SUFFIX_METRO'
         # the cab magic won't work unless it's asymmetrical eh? :P
         self._symmetry_type = 'asymmetric'
