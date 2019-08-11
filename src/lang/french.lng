@@ -15,11 +15,11 @@ STR_PARAM_ROSTER_OPTION_1                                       :Le lama de fer
 STR_PARAM_ROSTER_OPTION_2                                       :L'antilope de fer
 
 # keep these alphabetised, easier
-STR_NAME_SUFFIX_DIESEL                                          :(Diesel)
-STR_NAME_SUFFIX_ELECTRIC                                        :(Électrique)
-STR_NAME_SUFFIX_ELECTRODIESEL                                   :(Électro-Diesel)
+STR_NAME_SUFFIX_DIESEL                                          :Diesel
+STR_NAME_SUFFIX_ELECTRIC                                        :Électrique
+STR_NAME_SUFFIX_ELECTRODIESEL                                   :Électro-Diesel
 STR_NAME_SUFFIX_METRO                                           :Métro
-STR_NAME_SUFFIX_STEAM                                           :(Vapeur)
+STR_NAME_SUFFIX_STEAM                                           :Vapeur
 
 # size suffixes
 STR_NAME_SUFFIX_SMALL                                           :Court
@@ -77,8 +77,12 @@ STR_ROLE_HST                                                    :Grande vitesse
 STR_ROLE_METRO                                                  :Transport urbain
 STR_ROLE_VERY_HIGH_SPEED                                        :Très Grande vitesse
 
-# assumes only diesel and electric currently; only handles power display in imperial hp
+# assumes only diesel and electric currently
 STR_POWER_BY_RAILTYPE                                           :{BLACK}Diesel{NBSP}: {GOLD}{POWER}{}{BLACK}Électrique{NBSP}: {GOLD}{POWER}
+
+# distributed power (dedicated wagons add power)
+STR_WAGONS_ADD_POWER_CAB                                        :Puissance (distribuée){NBSP}: {GOLD}{POWER} par unité {STRING} couplée
+STR_WAGONS_ADD_POWER_MIDDLE                                     :Puissance (distribuée){NBSP}: {GOLD}{POWER} quand couplé à une unité {STRING}
 
 # project management
 STR_SPRITES_COMPLETE                                            :{}Sprites terminés{NBSP}: {GOLD}oui

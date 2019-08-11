@@ -78,8 +78,10 @@ STR_ROLE_HST                                                    :Visoka brzina
 STR_ROLE_METRO                                                  :Gradski visokog kapaciteta
 STR_ROLE_VERY_HIGH_SPEED                                        :Vrlo visoka brzina
 
-# assumes only diesel and electric currently; only handles power display in imperial hp
+# assumes only diesel and electric currently
 STR_POWER_BY_RAILTYPE                                           :{BLACK}Snaga uz dizel pogon: {GOLD}{POWER}{}{BLACK}Snaga uz električni pogon: {GOLD}{POWER}
+
+# distributed power (dedicated wagons add power)
 
 # project management
 STR_SPRITES_COMPLETE                                            :{}Kompletirani spriteovi: {GOLD}Da
