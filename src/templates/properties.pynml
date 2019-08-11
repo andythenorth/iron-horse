@@ -103,6 +103,7 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
         vehicle_life:                   ${consist.vehicle_life};
         length:                         ${vehicle.vehicle_length};
         track_type:                     ${consist.track_type};
+        effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
     }
     graphics {
         default:                        ${vehicle.id}_switch_graphics;
