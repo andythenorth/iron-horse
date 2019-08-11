@@ -2244,7 +2244,7 @@ class ElectricRailcarBaseUnit(Train):
         super().__init__(**kwargs)
         self.consist.requires_electric_rails = True
         self.engine_class = 'ENGINE_CLASS_ELECTRIC'
-        self.effects = {'default': ['EFFECT_SPAWN_MODEL_DIESEL', 'EFFECT_SPRITE_DIESEL']}
+        self.effects = {'default': ['EFFECT_SPAWN_MODEL_ELECTRIC', 'EFFECT_SPRITE_ELECTRIC']}
         self.consist.str_name_suffix = 'STR_NAME_SUFFIX_ELECTRIC'
         # offset to second livery, to differentiate from diesel equivalent which will use first
         self.buy_menu_spriterow_num = 2 # note that it's 2 because opening doors are in row 1, livery 2 starts at 2, zero-indexed
@@ -2286,7 +2286,7 @@ class ElectricHighSpeedPaxUnit(Train):
         super().__init__(**kwargs)
         self.consist.requires_electric_rails = True
         self.engine_class = 'ENGINE_CLASS_ELECTRIC'
-        self.effects = {'default': ['EFFECT_SPAWN_MODEL_DIESEL', 'EFFECT_SPRITE_DIESEL']}
+        self.effects = {'default': ['EFFECT_SPAWN_MODEL_ELECTRIC', 'EFFECT_SPRITE_ELECTRIC']}
         self.consist.str_name_suffix = 'STR_NAME_SUFFIX_ELECTRIC'
         # the cab magic won't work unless it's asymmetrical eh? :P
         self._symmetry_type = 'asymmetric'
@@ -2310,7 +2310,7 @@ class MetroUnit(Train):
         kwargs['consist'].base_track_type = 'METRO'
         self.loading_speed_multiplier = 2
         self.engine_class = 'ENGINE_CLASS_ELECTRIC'
-        self.effects = {'default': ['EFFECT_SPAWN_MODEL_DIESEL', 'EFFECT_SPRITE_DIESEL']}
+        self.effects = {'default': ['EFFECT_SPAWN_MODEL_ELECTRIC', 'EFFECT_SPRITE_ELECTRIC']}
         self.consist.str_name_suffix = 'STR_NAME_SUFFIX_METRO'
         # the cab magic won't work unless it's asymmetrical eh? :P
         self._symmetry_type = 'asymmetric'
