@@ -2160,6 +2160,7 @@ class DieselRailcarBaseUnit(DieselEngineUnit):
         super().__init__(**kwargs)
         # the cab magic won't work unless it's asymmetric eh? :)
         self._symmetry_type = kwargs.get('symmetry_type', 'asymmetric')
+        # note that railcar effects are left in default position, no attempt to move them to end of vehicle, or double them (tried, looks weird)
 
 
 class DieselRailcarMailUnit(DieselRailcarBaseUnit):
