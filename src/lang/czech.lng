@@ -82,6 +82,8 @@ STR_ROLE_VERY_HIGH_SPEED                                        :Velmi vysoká r
 STR_POWER_BY_RAILTYPE                                           :{BLACK}Výkon na dieselu: {GOLD}{POWER}{}{BLACK}Výkon na elektřině: {GOLD}{POWER}
 
 # distributed power (dedicated wagons add power)
+STR_WAGONS_ADD_POWER_CAB                                        :Výkon (Distribuováno): {GOLD}{POWER} za {STRING} připojený vagon
+STR_WAGONS_ADD_POWER_MIDDLE                                     :Výkon (Distribuováno): {GOLD} {POWER}, když je připojen k  {STRING} jednotce
 
 # project management
 STR_SPRITES_COMPLETE                                            :Grafika dokončena:  {GOLD} Jo

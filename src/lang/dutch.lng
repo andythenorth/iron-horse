@@ -80,6 +80,8 @@ STR_ROLE_VERY_HIGH_SPEED                                        :Zeer hoge snelh
 STR_POWER_BY_RAILTYPE                                           :{BLACK}Vermogen met diesel: {GOLD}{POWER}{}{BLACK}Vermogen elektrisch: {GOLD}{POWER}
 
 # distributed power (dedicated wagons add power)
+STR_WAGONS_ADD_POWER_CAB                                        :Vermogen (verdeeld): {GOLD}{POWER} per aangesloten {STRING} eenheid
+STR_WAGONS_ADD_POWER_MIDDLE                                     :Vermogen (verdeeld): {GOLD}{POWER} bij aansluiten op {STRING} eenheid
 
 # project management
 STR_SPRITES_COMPLETE                                            :{}Sprites gereed: {GOLD}Ja
