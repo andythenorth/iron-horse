@@ -153,7 +153,7 @@ default_cargos = {'box': ['GOOD', 'VPTS', 'FOOD'],
                   'pax': ['PASS'],
                   'reefer': ['FOOD'],
                   'supplies': ['ENSP'],
-                  'tank': ['OIL_', 'KAOL', 'RUBR'],
+                  'tank': ['OIL_', 'CTAR', 'KAOL', 'RUBR'],
 
                   }
 
