@@ -29,6 +29,7 @@ from vehicles import gosling_blast
 from vehicles import gowsty
 from vehicles import grid
 from vehicles import griffon
+# from vehicles import gronk # lolz no
 from vehicles import growler
 from vehicles import gwynt
 from vehicles import haar
