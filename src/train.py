@@ -237,7 +237,11 @@ class Consist(object):
                                        'railcar': ['mail_railcar_1', 'mail_railcar_2', 'pax_railcar_1', 'pax_railcar_2'],
                                        'very_high_speed': ['very_high_speed'],
                                        'universal': ['universal']}
-        if self._intro_date_days_offset is not None:
+        if self.gen == 1:
+            # to ensure a fully playable roster is available for gen 1, force the days offset to 0
+            # for explanation see https://www.tt-forums.net/viewtopic.php?f=26&t=68616&start=460#p1224299
+            return 0
+        elif self._intro_date_days_offset is not None:
             # offset defined in class (probably a wagon)
             return self._intro_date_days_offset
         else:
