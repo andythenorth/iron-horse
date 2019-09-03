@@ -25,7 +25,7 @@ def main():
                              subtype='B')
 
     consist.add_unit(type=WellCar,
-                     chassis='4_axle_filled_greebled_24px')
+                     chassis='4_axle_filled_24px')
 
     consist = WellCarConsist(roster='pony',
                              base_numeric_id=2860,
@@ -33,7 +33,7 @@ def main():
                              subtype='B')
 
     consist.add_unit(type=WellCar,
-                     chassis='4_axle_filled_greebled_24px')
+                     chassis='4_axle_filled_24px')
 
     """
     consist = WellCarConsist(roster='pony',

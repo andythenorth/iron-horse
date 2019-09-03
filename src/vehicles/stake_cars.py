@@ -31,7 +31,7 @@ def main():
                               sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     chassis='4_axle_filled_greebled_24px')
+                     chassis='4_axle_filled_24px')
 
 
     consist = StakeCarConsist(roster='pony',
@@ -51,7 +51,7 @@ def main():
                               sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     chassis='4_axle_filled_greebled_24px')
+                     chassis='4_axle_filled_24px')
 
 
     consist = StakeCarConsist(roster='pony',
