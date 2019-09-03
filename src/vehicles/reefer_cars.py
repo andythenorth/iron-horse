@@ -46,6 +46,17 @@ def main():
 
 
     consist = ReeferCarConsist(roster='pony',
+                            base_numeric_id=3580,
+                            gen=4,
+                            subtype='C',
+                            sprites_complete=True)
+
+    consist.add_unit(type=FreightCar,
+                     suppress_roof_sprite=True, # non-standard roof for this wagon
+                     chassis='4_axle_1cc_filled_32px')
+
+
+    consist = ReeferCarConsist(roster='pony',
                                base_numeric_id=2570,
                                gen=5,
                                subtype='B',
