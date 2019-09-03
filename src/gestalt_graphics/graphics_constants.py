@@ -18,9 +18,7 @@ spritesheet_width = 425
 # DFLT label is a hack to support cargos with no specific sprites (including unknown cargos), and should not be added to cargo translation table
 
 silo_livery_recolour_maps = (("DFLT", {136: CC1, 137: CC1+1, 138: CC1+2, 139: CC1+3,
-                                       140: CC1+4, 141: CC1+5, 142: CC1+6, 143: CC1+7}),
-                             ("CMNT", {136: 16, 137: 17, 138: 18, 139: 19,
-                                       140: 20, 141: 21, 142: 22, 143: 23}))
+                                       140: CC1+4, 141: CC1+5, 142: CC1+6, 143: CC1+7}),)
 
 box_livery_recolour_maps = (("DFLT", {136: CC1, 137: CC1+1, 138: CC1+2, 139: CC1+3,
                                       140: CC1+4, 141: CC1+5, 142: CC1+6, 143: CC1+7,
