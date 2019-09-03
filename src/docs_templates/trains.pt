@@ -15,7 +15,8 @@
                         inspired by
                         <span tal:condition="roster.id == 'antelope'">Central and Western Africa</span>
                         <span tal:condition="roster.id == 'llama'">Argentina, Chile and Peru</span>
-                        <span tal:condition="roster.id == 'pony'">Britain and Ireland</span>
+                        <span tal:condition="roster.id == 'pony'">British</span>
+                        trains
                     </p>
                     <ul class="inline">
                         <tal:base_track_type repeat="base_track_type doc_helper.get_base_track_types()">
