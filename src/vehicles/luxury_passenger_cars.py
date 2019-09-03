@@ -11,7 +11,7 @@ def main():
                                         sprites_complete=True)
 
     consist.add_unit(type=LuxuryPaxCar,
-                     chassis='4_axle_filled_24px')
+                     chassis='4_axle_filled_greebled_24px')
 
     # no gen 2 for NG, straight to gen 3
 
@@ -23,7 +23,7 @@ def main():
                                         sprites_complete=True)
 
     consist.add_unit(type=LuxuryPaxCar,
-                     chassis='4_axle_filled_24px')
+                     chassis='4_axle_filled_greebled_24px')
 
 
     consist = PassengerLuxuryCarConsist(roster='pony',
@@ -34,7 +34,7 @@ def main():
                                         sprites_complete=True)
 
     consist.add_unit(type=LuxuryPaxCar,
-                     chassis='4_axle_filled_24px')
+                     chassis='4_axle_filled_greebled_24px')
 
 
     #--------------- pony ----------------------------------------------------------------------

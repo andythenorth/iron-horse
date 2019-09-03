@@ -20,4 +20,4 @@ def main():
                                            subtype='C')
 
     consist.add_unit(type=FreightCar,
-                     chassis='4_axle_filled_32px')
+                     chassis='4_axle_filled_greebled_32px')
