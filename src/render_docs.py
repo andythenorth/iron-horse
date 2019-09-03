@@ -150,6 +150,12 @@ class DocHelper(object):
         else:
             return name
 
+    def unpack_role_string(self, consist):
+        # strip off some nml boilerplate
+        role_key = consist.buy_menu_role_string.replace('STR_ROLE, string(', '')
+        role_key = role_key.replace(')', '')
+        return base_lang_strings[role_key]
+
     def get_props_to_print_in_code_reference(self, subclass):
         props_to_print = {}
         for vehicle in subclass['vehicles']:
