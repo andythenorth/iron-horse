@@ -25,6 +25,7 @@ def main():
     consist.add_unit(type=PaxCar,
                      chassis='4_axle_ng_16px')
 
+
     consist = PassengerCarConsist(roster='pony',
                                   base_numeric_id=860,
                                   gen=4,
@@ -34,6 +35,7 @@ def main():
 
     consist.add_unit(type=PaxCar,
                      chassis='4_axle_ng_16px')
+
 
     #--------------- pony ----------------------------------------------------------------------
 
@@ -46,6 +48,7 @@ def main():
     consist.add_unit(type=PaxCar,
                      chassis='3_axle_solid_express_16px')
 
+
     consist = PassengerCarConsist(roster='pony',
                                   base_numeric_id=740,
                                   gen=1,
@@ -54,6 +57,7 @@ def main():
 
     consist.add_unit(type=PaxCar,
                      chassis='4_axle_solid_express_24px')
+
 
     consist = PassengerCarConsist(roster='pony',
                                   base_numeric_id=3310,
@@ -64,6 +68,7 @@ def main():
     consist.add_unit(type=PaxCar,
                      chassis='3_axle_solid_express_16px')
 
+
     consist = PassengerCarConsist(roster='pony',
                                   base_numeric_id=750,
                                   gen=2,
@@ -72,6 +77,7 @@ def main():
 
     consist.add_unit(type=PaxCar,
                      chassis='4_axle_solid_express_24px')
+
 
     consist = PassengerCarConsist(roster='pony',
                                   base_numeric_id=3290,
@@ -91,6 +97,7 @@ def main():
     consist.add_unit(type=PaxCar,
                      chassis='4_axle_solid_express_24px')
 
+
     consist = PassengerCarConsist(roster='pony',
                                   base_numeric_id=3110,
                                   gen=4,
@@ -99,6 +106,7 @@ def main():
 
     consist.add_unit(type=PaxCar,
                      chassis='4_axle_solid_express_24px')
+
 
     consist = PassengerCarConsist(roster='pony',
                                   base_numeric_id=3260,
@@ -109,6 +117,7 @@ def main():
     consist.add_unit(type=PaxCar,
                      chassis='4_axle_solid_express_32px')
 
+
     consist = PassengerCarConsist(roster='pony',
                                   base_numeric_id=3100,
                                   gen=5,
@@ -117,6 +126,7 @@ def main():
 
     consist.add_unit(type=PaxCar,
                      chassis='4_axle_solid_express_24px')
+
 
     consist = PassengerCarConsist(roster='pony',
                                   base_numeric_id=3280,
@@ -137,6 +147,7 @@ def main():
 
     consist.add_unit(type=PaxCar,
                      chassis='4_axle_solid_express_24px')
+
 
     consist = PassengerCarConsist(roster='pony',
                                   base_numeric_id=3270,

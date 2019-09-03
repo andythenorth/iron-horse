@@ -15,6 +15,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      chassis='4_axle_filled_24px')
 
+
     consist = TarpaulinCarConsist(roster='pony',
                             base_numeric_id=350,
                             gen=5,
@@ -24,6 +25,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      chassis='4_axle_filled_32px')
 
+
     consist = TarpaulinCarConsist(roster='pony',
                             base_numeric_id=370,
                             gen=6,
@@ -32,6 +34,7 @@ def main():
 
     consist.add_unit(type=FreightCar,
                      chassis='4_axle_1cc_filled_24px')
+
 
     consist = TarpaulinCarConsist(roster='pony',
                             base_numeric_id=400,

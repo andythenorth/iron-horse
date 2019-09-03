@@ -13,6 +13,7 @@ def main():
     consist.add_unit(type=CabooseCar,
                      chassis='4_axle_ng_16px')
 
+
     #--------------- pony ----------------------------------------------------------------------
     consist = CabooseCarConsist(roster='pony',
                                 base_numeric_id=1280,
@@ -23,6 +24,7 @@ def main():
 
     consist.add_unit(type=CabooseCar,
                      chassis='2_axle_caboose_16px')
+
 
     consist = CabooseCarConsist(roster='pony',
                                 base_numeric_id=2210,

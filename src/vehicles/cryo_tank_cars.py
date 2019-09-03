@@ -12,6 +12,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      chassis='2_axle_sparse_16px')
 
+
     consist = CryoTankCarConsist(roster='pony',
                              base_numeric_id=250,
                              gen=3,
@@ -20,6 +21,7 @@ def main():
 
     consist.add_unit(type=FreightCar,
                      chassis='4_axle_sparse_24px')
+
 
     consist = CryoTankCarConsist(roster='pony',
                              base_numeric_id=20,
@@ -30,6 +32,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      chassis='2_axle_sparse_16px')
 
+
     consist = CryoTankCarConsist(roster='pony',
                              base_numeric_id=50,
                              gen=4,
@@ -38,6 +41,7 @@ def main():
 
     consist.add_unit(type=FreightCar,
                      chassis='4_axle_sparse_24px')
+
 
     consist = CryoTankCarConsist(roster='pony',
                              base_numeric_id=60,
@@ -48,6 +52,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      chassis='4_axle_sparse_32px')
 
+
     consist = CryoTankCarConsist(roster='pony',
                              base_numeric_id=80,
                              gen=5,
@@ -57,6 +62,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      chassis='2_axle_sparse_16px')
 
+
     consist = CryoTankCarConsist(roster='pony',
                              base_numeric_id=90,
                              gen=5,
@@ -65,6 +71,7 @@ def main():
 
     consist.add_unit(type=FreightCar,
                      chassis='4_axle_sparse_24px')
+
 
     consist = CryoTankCarConsist(roster='pony',
                              base_numeric_id=150,
@@ -88,6 +95,7 @@ def main():
                      chassis='2_axle_sparse_16px')
     """
 
+
     consist = CryoTankCarConsist(roster='pony',
                              base_numeric_id=190,
                              gen=6,
@@ -96,6 +104,7 @@ def main():
 
     consist.add_unit(type=FreightCar,
                      chassis='4_axle_sparse_24px')
+
 
     consist = CryoTankCarConsist(roster='pony',
                              base_numeric_id=200,

@@ -25,6 +25,7 @@ def main():
     consist.add_unit(type=LuxuryPaxCar,
                      chassis='4_axle_filled_24px')
 
+
     consist = PassengerLuxuryCarConsist(roster='pony',
                                         base_numeric_id=660,
                                         gen=4,
@@ -34,6 +35,7 @@ def main():
 
     consist.add_unit(type=LuxuryPaxCar,
                      chassis='4_axle_filled_24px')
+
 
     #--------------- pony ----------------------------------------------------------------------
     consist = PassengerLuxuryCarConsist(roster='pony',
@@ -45,6 +47,7 @@ def main():
     consist.add_unit(type=LuxuryPaxCar,
                      chassis='6_axle_solid_express_32px')
 
+
     consist = PassengerLuxuryCarConsist(roster='pony',
                                         base_numeric_id=2260,
                                         gen=2,
@@ -53,6 +56,7 @@ def main():
 
     consist.add_unit(type=LuxuryPaxCar,
                      chassis='6_axle_solid_express_32px')
+
 
     consist = PassengerLuxuryCarConsist(roster='pony',
                                         base_numeric_id=2270,
@@ -63,6 +67,7 @@ def main():
     consist.add_unit(type=LuxuryPaxCar,
                      chassis='6_axle_solid_express_32px')
 
+
     consist = PassengerLuxuryCarConsist(roster='pony',
                                         base_numeric_id=3120,
                                         gen=4,
@@ -71,6 +76,7 @@ def main():
 
     consist.add_unit(type=LuxuryPaxCar,
                      chassis='4_axle_solid_express_32px')
+
 
     consist = PassengerLuxuryCarConsist(roster='pony',
                                         base_numeric_id=3130,

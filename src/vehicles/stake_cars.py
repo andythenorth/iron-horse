@@ -3,6 +3,7 @@ from train import StakeCarConsist, FreightCar
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
+
     consist = StakeCarConsist(roster='pony',
                               base_numeric_id=2740,
                               gen=2,
@@ -11,6 +12,7 @@ def main():
 
     consist.add_unit(type=FreightCar,
                      chassis='2_axle_filled_16px')
+
 
     consist = StakeCarConsist(roster='pony',
                               base_numeric_id=2730,
@@ -21,6 +23,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      chassis='2_axle_filled_16px')
 
+
     consist = StakeCarConsist(roster='pony',
                               base_numeric_id=2750,
                               gen=3,
@@ -29,6 +32,7 @@ def main():
 
     consist.add_unit(type=FreightCar,
                      chassis='4_axle_filled_24px')
+
 
     consist = StakeCarConsist(roster='pony',
                               base_numeric_id=1710,
@@ -39,6 +43,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      chassis='2_axle_filled_16px')
 
+
     consist = StakeCarConsist(roster='pony',
                               base_numeric_id=2760,
                               gen=4,
@@ -47,6 +52,7 @@ def main():
 
     consist.add_unit(type=FreightCar,
                      chassis='4_axle_filled_24px')
+
 
     consist = StakeCarConsist(roster='pony',
                               base_numeric_id=1930,
@@ -57,6 +63,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      chassis='4_axle_gapped_32px')
 
+
     consist = StakeCarConsist(roster='pony',
                               base_numeric_id=2770,
                               gen=5,
@@ -65,6 +72,7 @@ def main():
 
     consist.add_unit(type=FreightCar,
                      chassis='2_axle_filled_24px')
+
 
     consist = StakeCarConsist(roster='pony',
                               base_numeric_id=930,
@@ -75,6 +83,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      chassis='4_axle_filled_32px')
 
+
     consist = StakeCarConsist(roster='pony',
                               base_numeric_id=1910,
                               gen=6,
@@ -83,6 +92,7 @@ def main():
 
     consist.add_unit(type=FreightCar,
                      chassis='2_axle_filled_24px')
+
 
     consist = StakeCarConsist(roster='pony',
                               base_numeric_id=1920,

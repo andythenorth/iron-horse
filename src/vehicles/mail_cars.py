@@ -25,6 +25,7 @@ def main():
     consist.add_unit(type=MailCar,
                      chassis='4_axle_ng_16px')
 
+
     consist = MailCarConsist(roster='pony',
                              base_numeric_id=670,
                              gen=4,
@@ -34,6 +35,7 @@ def main():
 
     consist.add_unit(type=MailCar,
                      chassis='4_axle_ng_16px')
+
 
     #--------------- pony ----------------------------------------------------------------------
 
@@ -46,6 +48,7 @@ def main():
     consist.add_unit(type=MailCar,
                      chassis='3_axle_solid_express_16px')
 
+
     consist = MailCarConsist(roster='pony',
                              base_numeric_id=2220,
                              gen=1,
@@ -54,6 +57,7 @@ def main():
 
     consist.add_unit(type=MailCar,
                      chassis='4_axle_solid_express_24px')
+
 
     consist = MailCarConsist(roster='pony',
                              base_numeric_id=2290,
@@ -64,6 +68,7 @@ def main():
     consist.add_unit(type=MailCar,
                      chassis='3_axle_solid_express_16px')
 
+
     consist = MailCarConsist(roster='pony',
                              base_numeric_id=920,
                              gen=2,
@@ -72,6 +77,7 @@ def main():
 
     consist.add_unit(type=MailCar,
                      chassis='4_axle_solid_express_24px')
+
 
     consist = MailCarConsist(roster='pony',
                              base_numeric_id=1830,
@@ -82,6 +88,7 @@ def main():
     consist.add_unit(type=MailCar,
                      chassis='3_axle_solid_express_16px')
 
+
     consist = MailCarConsist(roster='pony',
                              base_numeric_id=2300,
                              gen=3,
@@ -90,6 +97,7 @@ def main():
 
     consist.add_unit(type=MailCar,
                      chassis='4_axle_solid_express_24px')
+
 
     consist = MailCarConsist(roster='pony',
                              base_numeric_id=940,
@@ -100,6 +108,7 @@ def main():
     consist.add_unit(type=MailCar,
                      chassis='4_axle_solid_express_32px')
 
+
     consist = MailCarConsist(roster='pony',
                              base_numeric_id=1430,
                              gen=4,
@@ -108,6 +117,7 @@ def main():
 
     consist.add_unit(type=MailCar,
                      chassis='2_axle_solid_express_16px')
+
 
     consist = MailCarConsist(roster='pony',
                              base_numeric_id=3160,
@@ -118,6 +128,7 @@ def main():
     consist.add_unit(type=MailCar,
                      chassis='4_axle_solid_express_24px')
 
+
     consist = MailCarConsist(roster='pony',
                              base_numeric_id=3170,
                              gen=4,
@@ -126,6 +137,7 @@ def main():
 
     consist.add_unit(type=MailCar,
                      chassis='4_axle_solid_express_32px')
+
 
     consist = MailCarConsist(roster='pony',
                              base_numeric_id=520,
@@ -136,6 +148,7 @@ def main():
     consist.add_unit(type=MailCar,
                      chassis='2_axle_solid_express_16px')
 
+
     consist = MailCarConsist(roster='pony',
                              base_numeric_id=970,
                              gen=5,
@@ -144,6 +157,7 @@ def main():
 
     consist.add_unit(type=MailCar,
                      chassis='4_axle_solid_express_24px')
+
 
     consist = MailCarConsist(roster='pony',
                              base_numeric_id=3140,
@@ -165,6 +179,7 @@ def main():
     consist.add_unit(type=MailCar,
                      chassis='2_axle_solid_express_16px')
 
+
     consist = MailCarConsist(roster='pony',
                              base_numeric_id=1950,
                              gen=6,
@@ -173,6 +188,7 @@ def main():
 
     consist.add_unit(type=MailCar,
                      chassis='4_axle_solid_express_24px')
+
 
     consist = MailCarConsist(roster='pony',
                              base_numeric_id=10,

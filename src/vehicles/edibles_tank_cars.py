@@ -15,6 +15,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      chassis='2_axle_filled_16px')
 
+
     consist = EdiblesTankCarConsist(roster='pony',
                                     base_numeric_id=1190,
                                     gen=3,
@@ -23,6 +24,7 @@ def main():
 
     consist.add_unit(type=FreightCar,
                      chassis='3_axle_filled_16px')
+
 
     consist = EdiblesTankCarConsist(roster='pony',
                                     base_numeric_id=2990,
@@ -33,6 +35,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      chassis='3_axle_filled_16px')
 
+
     consist = EdiblesTankCarConsist(roster='pony',
                                     base_numeric_id=1690,
                                     gen=4,
@@ -41,6 +44,7 @@ def main():
 
     consist.add_unit(type=FreightCar,
                      chassis='4_axle_sparse_24px')
+
 
     consist = EdiblesTankCarConsist(roster='pony',
                                     base_numeric_id=1220,
@@ -51,6 +55,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      chassis='4_axle_sparse_32px')
 
+
     consist = EdiblesTankCarConsist(roster='pony',
                                     base_numeric_id=1210,
                                     gen=5,
@@ -60,6 +65,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      chassis='3_axle_filled_16px')
 
+
     consist = EdiblesTankCarConsist(roster='pony',
                                     base_numeric_id=1700,
                                     gen=5,
@@ -68,6 +74,7 @@ def main():
 
     consist.add_unit(type=FreightCar,
                      chassis='4_axle_sparse_24px')
+
 
     consist = EdiblesTankCarConsist(roster='pony',
                                     base_numeric_id=3050,
@@ -88,6 +95,7 @@ def main():
 
     consist.add_unit(type=FreightCar,
                      chassis='4_axle_sparse_24px')
+
 
     consist = EdiblesTankCarConsist(roster='pony',
                                     base_numeric_id=2090,

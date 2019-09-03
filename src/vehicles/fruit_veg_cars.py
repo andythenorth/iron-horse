@@ -25,6 +25,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      chassis='4_axle_ng_16px')
 
+
     consist = FruitVegCarConsist(roster='pony',
                                  base_numeric_id=1520,
                                  gen=4,
@@ -34,6 +35,7 @@ def main():
 
     consist.add_unit(type=FreightCar,
                      chassis='4_axle_ng_16px')
+
 
     #--------------- pony --------------------------------------------------------------------------
     consist = FruitVegCarConsist(roster='pony',
@@ -45,6 +47,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      chassis='2_axle_filled_16px')
 
+
     consist = FruitVegCarConsist(roster='pony',
                                  base_numeric_id=2630,
                                  gen=3,
@@ -53,6 +56,7 @@ def main():
 
     consist.add_unit(type=FreightCar,
                      chassis='2_axle_filled_16px')
+
 
     consist = FruitVegCarConsist(roster='pony',
                                  base_numeric_id=2620,
@@ -63,6 +67,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      chassis='4_axle_filled_24px')
 
+
     consist = FruitVegCarConsist(roster='pony',
                                  base_numeric_id=2600,
                                  gen=4,
@@ -71,6 +76,7 @@ def main():
 
     consist.add_unit(type=FreightCar,
                      chassis='2_axle_filled_16px')
+
 
     consist = FruitVegCarConsist(roster='pony',
                                  base_numeric_id=2610,
@@ -81,6 +87,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      chassis='2_axle_filled_24px')
 
+
     consist = FruitVegCarConsist(roster='pony',
                                  base_numeric_id=2650,
                                  gen=5,
@@ -89,6 +96,7 @@ def main():
 
     consist.add_unit(type=FreightCar,
                      chassis='2_axle_filled_24px')
+
 
     consist = FruitVegCarConsist(roster='pony',
                                  base_numeric_id=2660,
@@ -99,6 +107,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      chassis='4_axle_filled_32px')
 
+
     consist = FruitVegCarConsist(roster='pony',
                                  base_numeric_id=1890,
                                  gen=6,
@@ -107,6 +116,7 @@ def main():
 
     consist.add_unit(type=FreightCar,
                      chassis='2_axle_filled_24px')
+
 
     consist = FruitVegCarConsist(roster='pony',
                                  base_numeric_id=1900,
