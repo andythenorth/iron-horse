@@ -10,7 +10,6 @@ def main():
                               sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     cargo_length=4,
                      chassis='2_axle_filled_16px')
 
     consist = StakeCarConsist(roster='pony',
@@ -20,7 +19,6 @@ def main():
                               sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     cargo_length=4,
                      chassis='2_axle_filled_16px')
 
     consist = StakeCarConsist(roster='pony',
@@ -30,7 +28,6 @@ def main():
                               sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     cargo_length=6,
                      chassis='4_axle_filled_24px')
 
     consist = StakeCarConsist(roster='pony',
@@ -40,7 +37,6 @@ def main():
                               sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     cargo_length=4,
                      chassis='2_axle_filled_16px')
 
     consist = StakeCarConsist(roster='pony',
@@ -50,7 +46,6 @@ def main():
                               sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     cargo_length=6,
                      chassis='4_axle_filled_24px')
 
     consist = StakeCarConsist(roster='pony',
@@ -60,7 +55,6 @@ def main():
                               sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     cargo_length=8,
                      chassis='4_axle_gapped_32px')
 
     consist = StakeCarConsist(roster='pony',
@@ -70,7 +64,6 @@ def main():
                               sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     cargo_length=6,
                      chassis='2_axle_filled_24px')
 
     consist = StakeCarConsist(roster='pony',
@@ -80,7 +73,6 @@ def main():
                               sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     cargo_length=8,
                      chassis='4_axle_filled_32px')
 
     consist = StakeCarConsist(roster='pony',
@@ -90,7 +82,6 @@ def main():
                               sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     cargo_length=6,
                      chassis='2_axle_filled_24px')
 
     consist = StakeCarConsist(roster='pony',
@@ -100,7 +91,6 @@ def main():
                               sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     cargo_length=8,
                      chassis='4_axle_2cc_filled_32px')
 
     # --------------- antelope ----------------------------------------------------------------------

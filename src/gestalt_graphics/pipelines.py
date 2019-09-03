@@ -801,7 +801,8 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             # loading states are first 4 sprites, loaded are second 4, all in one list, just pick them out as needed
             cargo_sprites_input_path = os.path.join(currentdir, 'src', 'polar_fox', 'cargo_graphics', cargo_filename + '.png')
             cargo_sprites_input_image = Image.open(cargo_sprites_input_path)
-            cargo_sprites = self.get_arbitrary_angles(cargo_sprites_input_image, cargo_spritesheet_bounding_boxes[self.vehicle_unit.cargo_length])
+            # n.b. Iron Horse assumes cargo length is always equivalent from vehicle length (probably fine)
+            cargo_sprites = self.get_arbitrary_angles(cargo_sprites_input_image, cargo_spritesheet_bounding_boxes[self.vehicle_unit.vehicle_length])
 
             vehicle_comped_image = piece_cargo_rows_image.copy()
 

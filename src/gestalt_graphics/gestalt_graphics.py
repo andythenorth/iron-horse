@@ -65,8 +65,6 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
         self.has_piece = kwargs.get('piece', None) is not None
         if self.has_piece:
             self.piece_type = kwargs.get('piece')
-        # required if piece is set, cargo sprites are available in multiple lengths, set the most appropriate
-        self.cargo_length = kwargs.get('cargo_length', None)
 
     @property
     def generic_rows(self):

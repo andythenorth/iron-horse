@@ -11,7 +11,6 @@ def main():
                              sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     cargo_length=4,
                      chassis='4_axle_ng_16px')
 
     # no gen 2 for NG, straight to gen 3
@@ -24,7 +23,6 @@ def main():
                              sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     cargo_length=4,
                      chassis='4_axle_ng_16px')
 
 
@@ -36,7 +34,6 @@ def main():
                              sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     cargo_length=4,
                      chassis='4_axle_ng_16px')
 
     #--------------- pony ----------------------------------------------------------------------
@@ -47,7 +44,6 @@ def main():
                              sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     cargo_length=4,
                      chassis='2_axle_filled_16px')
 
     # no gen 2A, gen 1A continues in pony
@@ -59,7 +55,6 @@ def main():
                              sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     cargo_length=6,
                      chassis='4_axle_gapped_24px')
 
 
@@ -70,7 +65,6 @@ def main():
                              sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     cargo_length=4,
                      chassis='2_axle_filled_16px')
 
 
@@ -81,7 +75,6 @@ def main():
                              sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     cargo_length=6,
                      chassis='4_axle_gapped_24px')
 
 
@@ -92,7 +85,6 @@ def main():
                              sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     cargo_length=8,
                      chassis='4_axle_gapped_32px')
 
 
@@ -103,7 +95,6 @@ def main():
                              sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     cargo_length=4,
                      chassis='2_axle_filled_16px')
 
 
@@ -114,7 +105,6 @@ def main():
                              sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     cargo_length=6,
                      chassis='2_axle_filled_24px')
 
 
@@ -125,7 +115,6 @@ def main():
                              sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     cargo_length=8,
                      chassis='4_axle_gapped_32px')
 
 
@@ -136,7 +125,6 @@ def main():
                              sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     cargo_length=6,
                      chassis='2_axle_filled_24px')
 
 
@@ -147,7 +135,6 @@ def main():
                              sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     cargo_length=8,
                      chassis='4_axle_filled_32px')
 
 
@@ -158,7 +145,6 @@ def main():
                              sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     cargo_length=6,
                      chassis='2_axle_1cc_filled_24px')
 
 
@@ -169,5 +155,4 @@ def main():
                              sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     cargo_length=8,
                      chassis='4_axle_1cc_filled_32px')

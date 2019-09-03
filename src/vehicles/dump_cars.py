@@ -11,7 +11,6 @@ def main():
                              sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     cargo_length=4,
                      chassis='4_axle_ng_16px')
 
     consist = DumpCarConsist(roster='pony',
@@ -22,7 +21,6 @@ def main():
                              sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     cargo_length=4,
                      chassis='4_axle_ng_16px')
 
     #--------------- pony ----------------------------------------------------------------------

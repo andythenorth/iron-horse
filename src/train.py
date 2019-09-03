@@ -1841,11 +1841,6 @@ class Train(object):
         # can also be used to suppress compile failures during testing when spritesheet is unfinished (missing rows etc)
         self.always_use_same_spriterow = kwargs.get(
             'always_use_same_spriterow', False)
-        # optional -only set if the graphics processor requires it to generate cargo sprites
-        # defines the size of cargo sprite to use
-        # if the vehicle cargo area is not an OTTD unit length, use the next size up and the masking will sort it out
-        # some longer vehicles may place multiple shorter cargo sprites, e.g. 7/8 vehicle, 2 * 4/8 cargo sprites (with some overlapping)
-        self.cargo_length = kwargs.get('cargo_length', None)
         # optional - only set if the graphics processor generates the vehicle chassis
         self.chassis = kwargs.get('chassis', None)
         # optional - occasionally we need to suppress composited roof sprites and just draw our own
