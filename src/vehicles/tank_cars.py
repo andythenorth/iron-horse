@@ -38,7 +38,7 @@ def main():
     #--------------- pony ----------------------------------------------------------------------
     consist = TankCarConsist(roster='pony',
                              base_numeric_id=1200,
-                             gen=2,
+                             gen=1,
                              subtype='A',
                              sprites_complete=True)
 
