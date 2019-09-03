@@ -17,19 +17,8 @@ spritesheet_width = 425
 
 # DFLT label is a hack to support cargos with no specific sprites (including unknown cargos), and should not be added to cargo translation table
 
-# !! unfinished - copy of tanker remaps, needs remapping to silo cargos
-silo_livery_recolour_maps = (("QLME", {136: 1, 137: 2, 138: 3, 139: 4,
-                                       140: 5, 141: 6, 142: 7, 143: 8}),  # see note on oil above
-                             ("DFLT", {136: 16, 137: 17, 138: 18, 139: 19,
-                                       140: 20, 141: 21, 142: 22, 143: 23}),
-                             ("SAND", {136: 62, 137: 63, 138: 64, 139: 65,
-                                       140: 66, 141: 67, 142: 68, 143: 69}),
-                             ("CHLO", {136: 154, 137: 155, 138: 156, 139: 157,
-                                       140: 158, 141: 159, 142: 160, 143: 161}),
-                             ("SALT", {136: 8, 137: 9, 138: 10, 139: 11,
-                                       140: 12, 141: 13, 142: 14, 143: 15}),
-                             ("RUBR", {136: 40, 137: 41, 138: 42, 139: 43,
-                                       140: 44, 141: 45, 142: 46, 143: 47}),
+silo_livery_recolour_maps = (("DFLT", {136: CC1, 137: CC1+1, 138: CC1+2, 139: CC1+3,
+                                       140: CC1+4, 141: CC1+5, 142: CC1+6, 143: CC1+7}),
                              ("CMNT", {136: 16, 137: 17, 138: 18, 139: 19,
                                        140: 20, 141: 21, 142: 22, 143: 23}))
 
