@@ -91,11 +91,8 @@ hopper_cars.main()
 from vehicles import hst_passenger_cars
 hst_passenger_cars.main()
 
-"""
-# commented out for 2.0.x
 from vehicles import intermodal_cars
 intermodal_cars.main()
-"""
 
 from vehicles import livestock_cars
 livestock_cars.main()

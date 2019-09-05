@@ -1,0 +1,54 @@
+<!--! this is the default template for trains that don't supply their own template -->
+
+<tal:include metal:use-macro="load: spriteset_templates_purchase.pynml" />
+
+<!--! 'reversed' is random reversal on construction, depending on vehicle random bits
+      'flipped' is user flipping vehicle in depot
+      don't conflate them :) -->
+
+spriteset(${vehicle.id}_ss_containers_temp, "src/containers_temp.png") {
+  spriteset_template_symmetric_unreversed_8_8_unflipped(10)
+}
+
+// default graphics chain
+<tal:random_reverse_variants repeat="reversed_variant consist.reversed_variants">
+    <tal:user_flipped repeat="flipped ['unflipped', 'flipped']">
+        spriteset(${vehicle.id}_ss_${reversed_variant}_${flipped}, "${global_constants.graphics_path}${consist.id}.png") {
+          spriteset_template_${vehicle.symmetry_type}_${reversed_variant}_${vehicle.vehicle_length}_8_${flipped}(10 + ${vehicle.spriterow_num * 30})
+        }
+
+        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_layers_${reversed_variant}_${flipped}, getbits(extra_callback_info1, 8, 8)) {
+            0: return ${vehicle.id}_ss_${reversed_variant}_${flipped};
+            1: return ${vehicle.id}_ss_containers_temp;
+        }
+    </tal:user_flipped>
+
+    // handle user flipped state
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${reversed_variant}, vehicle_is_flipped) {
+        1: return ${vehicle.id}_switch_graphics_vehicle_layers_${reversed_variant}_flipped;
+        return ${vehicle.id}_switch_graphics_vehicle_layers_${reversed_variant}_unflipped;
+    }
+</tal:random_reverse_variants>
+
+random_switch (FEAT_TRAINS, ${vehicle.location_of_random_bits_for_random_variant}, ${vehicle.id}_switch_graphics_vehicle) {
+    <tal:random_graphics_variations repeat="reversed_variant consist.reversed_variants">
+        1: return ${vehicle.id}_switch_graphics_${reversed_variant};
+    </tal:random_graphics_variations>
+}
+
+// buy menu graphics chain
+spriteset(${vehicle.id}_ss_vehicle_purchase, "${global_constants.graphics_path}${consist.id}.png") {
+  spriteset_template_purchase_${vehicle.id}(10)
+}
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase, 0) {
+    0: return ${vehicle.id}_ss_vehicle_purchase;
+}
+
+<tal:include metal:use-macro="load: graphics_switches.pynml" />
+
+<tal:optional_capacity_switches condition="vehicle.has_cargo_capacity">
+    <tal:include metal:use-macro="load: capacity_switches.pynml" />
+</tal:optional_capacity_switches>
+
+<tal:include metal:use-macro="load: properties.pynml" />
+

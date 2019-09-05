@@ -21,7 +21,7 @@ import utils
 
 from gestalt_graphics.gestalt_graphics import (GestaltGraphics, GestaltGraphicsVisibleCargo, GestaltGraphicsBoxCarOpeningDoors,
                                                GestaltGraphicsCaboose, GestaltGraphicsCargoSpecificLivery, GestaltGraphicsOnlyAddPantographs,
-                                               GestaltGraphicsConsistSpecificLivery)
+                                               GestaltGraphicsConsistSpecificLivery, GestaltGraphicsIntermodal)
 import gestalt_graphics.graphics_constants as graphics_constants
 
 from rosters import registered_rosters
@@ -1376,17 +1376,22 @@ class HopperCarConsist(CarConsist):
 
 class IntermodalCarConsist(CarConsist):
     """
-    Specialist intermodal (containers), limited range of cargos. Match cargos and speed to BoxCarConsist
+    General cargo - refits everything except mail, pax.
     """
 
     def __init__(self, **kwargs):
         self.base_id = 'intermodal_car'
         super().__init__(**kwargs)
-        self.class_refit_groups = ['packaged_freight']
-        self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label['box_freight']
+        self.class_refit_groups = ['all_freight']
+        self.label_refits_allowed = []  # no specific labels needed
         self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label['non_freight_special_cases']
-        self.default_cargos = polar_fox.constants.default_cargos['box']
+        self.default_cargos = polar_fox.constants.default_cargos['open']
         self.loading_speed_multiplier = 2
+        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['freight_core']
+        # allow flipping, used to flip company colour
+        self.allow_flip = True
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsIntermodal()
 
 
 class LivestockCarConsist(CarConsist):

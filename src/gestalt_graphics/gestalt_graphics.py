@@ -239,9 +239,27 @@ class GestaltGraphicsCaboose(GestaltGraphics):
 
     @property
     def cargo_row_map(self):
-        utils.echo_message ('cargo_row_map not implemented in GestaltGraphicsBoxCarOpeningDoorsGestaltGraphics (by design)')
+        utils.echo_message ('cargo_row_map not implemented in GestaltGraphicsCaboose (by design)')
         return None
 
+
+class GestaltGraphicsIntermodal(GestaltGraphics):
+    """
+        Used to handle specific rules for intermodal cars
+        - specific template to handle containers which are in separate layer
+    """
+    def __init__(self):
+        # we use the composited sprites pipeline so we can make use of chassis compositing
+        self.pipelines = pipelines.get_pipelines(['extend_spriterows_for_composited_sprites_pipeline'])
+
+    def get_output_row_types(self):
+        # just the one row, we're only using the composited sprites pipeline for chassis compositing
+        return ['empty']
+
+    @property
+    def nml_template(self):
+        # over-ride in sub-classes as needed
+        return 'vehicle_intermodal.pynml'
 
 
 class GestaltGraphicsCargoSpecificLivery(GestaltGraphics):
