@@ -112,7 +112,7 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
         running_cost_factor:            ${consist.running_cost}; // CB used as it is capped to max 32k, prop is only 255
         <!--! !!! quite unfinished handling of random_trgigger -->
         <tal:conditional_random_trigger condition="consist.gestalt_graphics.__class__.__name__ == 'GestaltGraphicsIntermodal'">
-            random_trigger:                 ${vehicle.id}_switch_graphics_vehicle_containers_random;
+            random_trigger:                 ${vehicle.id}_switch_graphics_vehicle_containers;
         </tal:conditional_random_trigger>
         <tal:random_company_colour_swap condition="consist.random_company_colour_swap">
             colour_mapping:                 ${vehicle.id}_switch_colour_mapping;
