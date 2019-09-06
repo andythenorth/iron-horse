@@ -28,30 +28,18 @@ random_switch (FEAT_TRAINS, ${vehicle.location_of_random_bits_for_random_variant
 }
 
 // graphics chain for containers
-spriteset(${vehicle.id}_ss_containers_empty, "src/containers_temp.png") {
-  spriteset_template_symmetric_unreversed_8_8_unflipped(10)
-}
-spriteset(${vehicle.id}_ss_containers_temp_1, "src/containers_temp.png") {
-  spriteset_template_symmetric_unreversed_8_8_unflipped(40)
-}
-spriteset(${vehicle.id}_ss_containers_temp_2, "src/containers_temp.png") {
-  spriteset_template_symmetric_unreversed_8_8_unflipped(70)
-}
-spriteset(${vehicle.id}_ss_containers_temp_3, "src/containers_temp.png") {
-  spriteset_template_symmetric_unreversed_8_8_unflipped(100)
-}
-
+<!--! note that spritesets are global for intermodal containers -->
 random_switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_containers_random, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
     independent: ${vehicle.id}_switch_graphics_vehicle_platform;
-    1: return ${vehicle.id}_ss_containers_temp_1;
-    1: return ${vehicle.id}_ss_containers_temp_2;
-    1: return ${vehicle.id}_ss_containers_temp_3;
+    1: return ss_intermodal_containers_temp_1;
+    1: return ss_intermodal_containers_temp_2;
+    1: return ss_intermodal_containers_temp_3;
 }
 
 <!--! load state is assumed to be all or nothing - any cargo = full load of containers -->
 <!--! !! might want to handle intermediate load states when multiple containers are used ?? 50:50 -->
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_containers, cargo_count) {
-        0: return ${vehicle.id}_ss_containers_empty;
+        0: return ss_intermodal_containers_empty;
     return ${vehicle.id}_switch_graphics_vehicle_containers_random;
 }
 

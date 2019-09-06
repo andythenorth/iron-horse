@@ -1,0 +1,14 @@
+<!--! container spritesets are shared between all intermodal vehicles, no need to duplicate them -->
+
+spriteset(ss_intermodal_containers_empty, "src/graphics/spriterow_template.png") {
+  spriteset_template_symmetric_unreversed_8_8_unflipped(10)
+}
+spriteset(ss_intermodal_containers_temp_1, "src/graphics/intermodal_containers/intermodal_box_32px.png") {
+  spriteset_template_symmetric_unreversed_8_8_unflipped(10)
+}
+spriteset(ss_intermodal_containers_temp_2, "src/graphics/intermodal_containers/intermodal_box_32px.png") {
+  spriteset_template_symmetric_unreversed_8_8_unflipped(40)
+}
+spriteset(ss_intermodal_containers_temp_3, "src/graphics/intermodal_containers/intermodal_box_32px.png") {
+  spriteset_template_symmetric_unreversed_8_8_unflipped(70)
+}
