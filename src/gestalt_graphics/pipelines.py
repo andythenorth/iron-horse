@@ -143,8 +143,7 @@ class PassThroughPipeline(Pipeline):
         self.consist = consist
 
         input_image = Image.open(self.vehicle_source_input_path)
-        result = self.render_common(input_image, self.units)
-        return result
+        self.render_common(input_image, self.units)
 
 
 class GenerateCompositedIntermodalContainers(Pipeline):
@@ -161,8 +160,7 @@ class GenerateCompositedIntermodalContainers(Pipeline):
 
         input_path = os.path.join(currentdir, 'src', 'graphics', 'intermodal_containers', intermodal_container_gestalt.id + '.png')
         input_image = Image.open(input_path)
-        result = self.render_common(input_image, self.units)
-        return result
+        #self.render_common(input_image, self.units)
 
 
 class CheckBuyMenuOnlyPipeline(Pipeline):
@@ -183,8 +181,7 @@ class CheckBuyMenuOnlyPipeline(Pipeline):
             self.units.append(AddBuyMenuSprite(self.process_buy_menu_sprite))
 
         input_image = Image.open(self.vehicle_source_input_path)
-        result = self.render_common(input_image, self.units)
-        return result
+        self.render_common(input_image, self.units)
 
 
 class GeneratePantographsSpritesheetPipeline(Pipeline):
@@ -311,8 +308,7 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
         # this will render a spritesheet with an additional suffix, separate from the vehicle spritesheet
         input_image = Image.open(self.vehicle_source_input_path).crop((0, 0, graphics_constants.spritesheet_width, 10))
         output_suffix = '_pantographs_' + self.pantograph_state
-        result = self.render_common(input_image, self.units, output_suffix=output_suffix)
-        return result
+        self.render_common(input_image, self.units, output_suffix=output_suffix)
 
 
 class GeneratePantographsUpSpritesheetPipeline(GeneratePantographsSpritesheetPipeline):
@@ -919,8 +915,8 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
         # for this pipeline, input_image is just blank white 10px high image, to which the vehicle sprites are then appended
         input_image = Image.new("P", (graphics_constants.spritesheet_width, 10), 255)
         input_image.putpalette(DOS_PALETTE)
-        result = self.render_common(input_image, self.units)
-        return result
+        self.render_common(input_image, self.units)
+
 
 def get_pipelines(pipeline_names):
     # return a pipeline by name;
