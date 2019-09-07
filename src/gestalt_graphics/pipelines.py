@@ -94,13 +94,16 @@ class Pipeline(object):
             x_offset += unit_length_in_pixels
         return spritesheet
 
-    def render_common(self, input_image, units, output_suffix=''):
+    def render_common(self, input_image, units, output_base_name=None, output_suffix=''):
         # expects to be passed a PIL Image object
         # units is a list of objects, with their config data already baked in (don't have to pass anything to units except the spritesheet)
         # each unit is then called in order, passing in and returning a pixa SpriteSheet
         # finally the spritesheet is saved
-        output_path = os.path.join(currentdir, 'generated', 'graphics', self.consist.id + output_suffix + '.png')
-        output_path_tmp = os.path.join(currentdir, 'generated', 'graphics', self.consist.id + output_suffix + '.new.png')
+        if output_base_name is None:
+            # default to consist name for file name, but can over-ride for e.g. containers by passing something in
+            output_base_name = self.consist.id
+        output_path = os.path.join(currentdir, 'generated', 'graphics', output_base_name + output_suffix + '.png')
+        output_path_tmp = os.path.join(currentdir, 'generated', 'graphics', output_base_name + output_suffix + '.new.png')
         spritesheet = self.make_spritesheet_from_image(input_image)
 
         for unit in units:
@@ -140,6 +143,24 @@ class PassThroughPipeline(Pipeline):
         self.consist = consist
 
         input_image = Image.open(self.vehicle_source_input_path)
+        result = self.render_common(input_image, self.units)
+        return result
+
+
+class GenerateCompositedIntermodalContainers(Pipeline):
+    """
+    Creates a spritesheet with a set of composited intermodal containers,
+    This works a little differently to vehicle pipelines, but close enough that it's worth using pipelines to share spritesheet save code etc.
+    """
+    def __init__(self):
+        # this should be sparse, don't store any consist info in Pipelines, pass at render time
+        super().__init__()
+
+    def render(self, intermodal_container_gestalt, global_constants):
+        self.units = []
+
+        input_path = os.path.join(currentdir, 'src', 'graphics', 'intermodal_containers', intermodal_container_gestalt.id + '.png')
+        input_image = Image.open(input_path)
         result = self.render_common(input_image, self.units)
         return result
 

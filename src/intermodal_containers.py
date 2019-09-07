@@ -1,5 +1,7 @@
 # intermodal containers are sandboxed into their own module to avoid them spawning tentacles into gestalt graphics, global constants, train.py etc
 
+from gestalt_graphics.pipelines import GenerateCompositedIntermodalContainers
+
 class IntermodalContainerGestalt(object):
     """ Sparse class to hold container gestalts """
     # a gestalt is a set of containers of specific length and appearance
@@ -15,7 +17,7 @@ class IntermodalContainerGestalt(object):
     # - combinations of container types
     # - container colours
     def __init__(self):
-        print("__init__")
+        self.pipeline = GenerateCompositedIntermodalContainers()
 
     @property
     def id(self):
@@ -28,126 +30,147 @@ class IntermodalContainerGestalt(object):
 
 class IntermodalBox16px(IntermodalContainerGestalt):
     def __init__(self):
+        super().__init__()
         self.length = 16
         self.type = 'box'
 
 
 class IntermodalBox24px(IntermodalContainerGestalt):
     def __init__(self):
+        super().__init__()
         self.length = 24
         self.type = 'box'
 
 
 class IntermodalBox32px(IntermodalContainerGestalt):
     def __init__(self):
+        super().__init__()
         self.length = 32
         self.type = 'box'
 
 
 class IntermodalBulk16px(IntermodalContainerGestalt):
     def __init__(self):
+        super().__init__()
         self.length = 16
         self.type = 'bulk'
 
 
 class IntermodalBulk24px(IntermodalContainerGestalt):
     def __init__(self):
+        super().__init__()
         self.length = 24
         self.type = 'bulk'
 
 
 class IntermodalBulk32px(IntermodalContainerGestalt):
     def __init__(self):
+        super().__init__()
         self.length = 32
         self.type = 'bulk'
 
 
 class IntermodalEdiblesTank16px(IntermodalContainerGestalt):
     def __init__(self):
+        super().__init__()
         self.length = 16
         self.type = 'edibles_tank'
 
 
 class IntermodalEdiblesTank24px(IntermodalContainerGestalt):
     def __init__(self):
+        super().__init__()
         self.length = 24
         self.type = 'edibles_tank'
 
 
 class IntermodalEdiblesTank32px(IntermodalContainerGestalt):
     def __init__(self):
+        super().__init__()
         self.length = 32
         self.type = 'edibles_tank'
 
 
 class IntermodalFlat16px(IntermodalContainerGestalt):
     def __init__(self):
+        super().__init__()
         self.length = 16
         self.type = 'flat'
 
 
 class IntermodalFlat24px(IntermodalContainerGestalt):
     def __init__(self):
+        super().__init__()
         self.length = 24
         self.type = 'flat'
 
 
 class IntermodalFlat32px(IntermodalContainerGestalt):
     def __init__(self):
+        super().__init__()
         self.length = 32
         self.type = 'flat'
 
 
 class IntermodalLivestock16px(IntermodalContainerGestalt):
     def __init__(self):
+        super().__init__()
         self.length = 16
         self.type = 'livestock'
 
 
 class IntermodalLivestock24px(IntermodalContainerGestalt):
     def __init__(self):
+        super().__init__()
         self.length = 24
         self.type = 'livestock'
 
 
 class IntermodalLivestock32px(IntermodalContainerGestalt):
     def __init__(self):
+        super().__init__()
         self.length = 32
         self.type = 'livestock'
 
 
 class IntermodalReefer16px(IntermodalContainerGestalt):
     def __init__(self):
+        super().__init__()
         self.length = 16
         self.type = 'reefer'
 
 
 class IntermodalReefer24px(IntermodalContainerGestalt):
     def __init__(self):
+        super().__init__()
         self.length = 24
         self.type = 'reefer'
 
 
 class IntermodalReefer32px(IntermodalContainerGestalt):
     def __init__(self):
+        super().__init__()
         self.length = 32
         self.type = 'reefer'
 
 
 class IntermodalTank16px(IntermodalContainerGestalt):
     def __init__(self):
+        super().__init__()
         self.length = 16
         self.type = 'tank'
 
 
 class IntermodalTank24px(IntermodalContainerGestalt):
     def __init__(self):
+        super().__init__()
         self.length = 24
         self.type = 'tank'
 
 
 class IntermodalTank32px(IntermodalContainerGestalt):
     def __init__(self):
+        super().__init__()
         self.length = 32
         self.type = 'tank'
 
