@@ -53,7 +53,7 @@ def run_consist_pipelines(consist):
 def run_intermodal_container_pipelines(intermodal_container_gestalt):
     # no pipelines to run yet, just copy graphics file
     shutil.copy(os.path.join(graphics_input_path, 'intermodal_containers',
-                             intermodal_container_gestalt + '.png'), graphics_output_path)
+                             intermodal_container_gestalt.id + '.png'), graphics_output_path)
 
 def report_sprites_complete(consists):
     # project management eh :P
