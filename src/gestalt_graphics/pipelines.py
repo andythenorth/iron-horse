@@ -160,7 +160,7 @@ class GenerateCompositedIntermodalContainers(Pipeline):
 
         input_path = os.path.join(currentdir, 'src', 'graphics', 'intermodal_containers', intermodal_container_gestalt.id + '.png')
         input_image = Image.open(input_path)
-        #self.render_common(input_image, self.units)
+        self.render_common(input_image, self.units, output_base_name=intermodal_container_gestalt.id)
 
 
 class CheckBuyMenuOnlyPipeline(Pipeline):

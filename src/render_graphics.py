@@ -51,10 +51,6 @@ def run_consist_pipelines(consist):
             pipeline.render(consist, global_constants)
 
 def run_intermodal_container_pipelines(intermodal_container_gestalt):
-    # no finished pipelines to run yet, just copy graphics file
-    shutil.copy(os.path.join(graphics_input_path, 'intermodal_containers',
-                             intermodal_container_gestalt.id + '.png'), graphics_output_path)
-    # test pipeline
     intermodal_container_gestalt.pipeline.render(intermodal_container_gestalt, global_constants)
 
 def report_sprites_complete(consists):
