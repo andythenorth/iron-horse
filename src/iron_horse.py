@@ -22,6 +22,8 @@ generated_files_path = os.path.join(
 if not os.path.exists(generated_files_path):
     os.mkdir(generated_files_path)
 
+
+# import rosters
 from rosters import registered_rosters
 
 """
@@ -35,6 +37,11 @@ llama.roster.register(disabled=True)
 from rosters import pony
 pony.roster.register(disabled=False)
 
+# import intermodal containers
+import intermodal_containers
+intermodal_containers.main()
+
+# import vehicles
 from vehicles import numeric_id_defender
 
 """

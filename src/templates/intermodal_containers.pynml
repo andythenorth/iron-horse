@@ -4,22 +4,12 @@ spriteset(ss_intermodal_containers_empty, "src/graphics/spriterow_template.png")
   spriteset_template_symmetric_unreversed_8_8_unflipped(10)
 }
 
-spriteset(ss_intermodal_containers_bulk_1, "src/graphics/intermodal_containers/intermodal_bulk_32px.png") {
-  spriteset_template_symmetric_unreversed_8_8_unflipped(10)
-}
-spriteset(ss_intermodal_containers_bulk_2, "src/graphics/intermodal_containers/intermodal_bulk_32px.png") {
-  spriteset_template_symmetric_unreversed_8_8_unflipped(40)
-}
-spriteset(ss_intermodal_containers_bulk_3, "src/graphics/intermodal_containers/intermodal_bulk_32px.png") {
-  spriteset_template_symmetric_unreversed_8_8_unflipped(70)
-}
-
-spriteset(ss_intermodal_containers_box_1, "src/graphics/intermodal_containers/intermodal_box_32px.png") {
-  spriteset_template_symmetric_unreversed_8_8_unflipped(10)
-}
-spriteset(ss_intermodal_containers_box_2, "src/graphics/intermodal_containers/intermodal_box_32px.png") {
-  spriteset_template_symmetric_unreversed_8_8_unflipped(40)
-}
-spriteset(ss_intermodal_containers_box_3, "src/graphics/intermodal_containers/intermodal_box_32px.png") {
-  spriteset_template_symmetric_unreversed_8_8_unflipped(70)
-}
+<tal:container_spritesets repeat="container_type global_constants.intermodal_container_types.keys()">
+    <tal:container_types repeat="container_type_num global_constants.intermodal_container_types[container_type]">
+        <tal:length_variants repeat="length_variant [16, 24, 32]">
+            spriteset(ss_intermodal_containers_${container_type}_${container_type_num}_${length_variant}px, "generated/graphics/intermodal_${container_type}_${length_variant}px.png") {
+              spriteset_template_symmetric_unreversed_8_8_unflipped(10 + ${repeat.container_type_num.index * 30})
+            }
+        </tal:length_variants>
+    </tal:container_types>
+</tal:container_spritesets>

@@ -29,44 +29,43 @@ random_switch (FEAT_TRAINS, ${vehicle.location_of_random_bits_for_random_variant
 
 // graphics chain for containers
 <!--! note that spritesets are global for intermodal containers -->
-random_switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_containers_random_box, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
-    independent: ${vehicle.id}_switch_graphics_vehicle_platform;
-    1: return ss_intermodal_containers_box_1;
-    1: return ss_intermodal_containers_box_2;
-    1: return ss_intermodal_containers_box_3;
-}
-random_switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_containers_random_bulk, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
-    independent: ${vehicle.id}_switch_graphics_vehicle_platform;
-    1: return ss_intermodal_containers_bulk_1;
-    1: return ss_intermodal_containers_bulk_2;
-    1: return ss_intermodal_containers_bulk_3;
-}
-
+<tal:container_type_random_switches repeat="container_type global_constants.intermodal_container_types.keys()">
+    random_switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_containers_random_${container_type}, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+        independent: ${vehicle.id}_switch_graphics_vehicle_platform;
+        <tal:container_types repeat="container_type_num global_constants.intermodal_container_types[container_type]">
+            1: return ss_intermodal_containers_${container_type}_${container_type_num}_${4 * vehicle.vehicle_length}px;
+        </tal:container_types>
+    }
+</tal:container_type_random_switches>
 <!--! pseudo cargo checking code
     1. check known labels -> named random switch
     2. check known classes -> named random switch
     3. fall back to random switch for box
 -->
 
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_containers_check_cargo_class, cargo_classes) {
-    bitmask(CC_BULK): return ${vehicle.id}_switch_graphics_vehicle_containers_random_bulk;
-    ${vehicle.id}_switch_graphics_vehicle_containers_random_box;
+// check generic cargo classes
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_containers_check_cargo_class_liquid, cargo_classes & bitmask(CC_LIQUID)) {
+    0: ${vehicle.id}_switch_graphics_vehicle_containers_random_box;
+    return ${vehicle.id}_switch_graphics_vehicle_containers_random_tank;
 }
 
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_containers_check_cargo_label, 1) {
-    <!--! !! unfinished, just chain to class for now -->
-    return ${vehicle.id}_switch_graphics_vehicle_containers_check_cargo_class;
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_containers_check_cargo_class_bulk, cargo_classes & bitmask(CC_BULK)) {
+    0: ${vehicle.id}_switch_graphics_vehicle_containers_check_cargo_class_liquid;
+    return ${vehicle.id}_switch_graphics_vehicle_containers_random_bulk;
 }
 
-<!--!
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, cargo_type_in_veh) {
-    <tal:cargos repeat="mapping consist.gestalt_graphics.cargo_row_map.items()">
-        <tal:exclude_default_cargo condition="mapping[0] != 'DFLT'">
-            ${mapping[0]}: return ${vehicle.id}_switch_graphics_${mapping[0]};
-        </tal:exclude_default_cargo>
-    </tal:cargos>
-    return ${vehicle.id}_switch_graphics_generic_cargos;
-}-->
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_containers_check_cargo_class_refrigerated, cargo_classes & bitmask(CC_REFRIGERATED)) {
+    0: ${vehicle.id}_switch_graphics_vehicle_containers_check_cargo_class_bulk;
+    return ${vehicle.id}_switch_graphics_vehicle_containers_random_reefer;
+}
+
+// check explicit cargo labels
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_containers_check_cargo_label, cargo_type_in_veh) {
+    <tal:cargo_label_container_type_mapping repeat="cargo_label global_constants.intermodal_container_cargo_label_mapping.items()">
+        ${cargo_label[0]}: ${vehicle.id}_switch_graphics_vehicle_containers_random_${cargo_label[1]};
+    </tal:cargo_label_container_type_mapping>
+    return ${vehicle.id}_switch_graphics_vehicle_containers_check_cargo_class_refrigerated;
+}
 
 <!--! load state is assumed to be all or nothing - any cargo = full load of containers -->
 <!--! !! might want to handle intermediate load states when multiple containers are used ?? 50:50 -->
