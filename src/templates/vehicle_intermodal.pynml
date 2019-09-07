@@ -1,5 +1,3 @@
-<!--! this is the default template for trains that don't supply their own template -->
-
 <tal:include metal:use-macro="load: spriteset_templates_purchase.pynml" />
 
 <!--! 'reversed' is random reversal on construction, depending on vehicle random bits
