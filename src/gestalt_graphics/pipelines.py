@@ -155,8 +155,39 @@ class GenerateCompositedIntermodalContainers(Pipeline):
         # this should be sparse, don't store any consist info in Pipelines, pass at render time
         super().__init__()
 
+    def resolve_template(self, variant):
+        # figure out which template png to use based on gestalt length + container pattern
+        # - e.g. 32px_40_20, 32px_20_20_20 etc?
+        result = [str(self.intermodal_container_gestalt.length) + 'px']
+        for container in variant:
+            result.append(container.split('_foot')[0][-2:])
+        return '_'.join(result)
+
+    def add_container_spriterows(self):
+        for variant in self.intermodal_container_gestalt.variants:
+            print("Drawing containers: ", variant)
+            print(self.resolve_template(variant))
+            for container in variant:
+                print("\n")
+                #input_path = os.path.join(currentdir, 'src', 'graphics', 'intermodal_containers', intermodal_container_gestalt.id + '.png')
+                #input_image = Image.open(input_path)
+        # provide an empty spritesheet (or skip compositing) if container is 'empty'
+        # ¿¿ can required template be auto-resolved based on
+        # - length
+        # - number of containers
+        # - sequence of containers
+        # - split on '_foot' and slice last 2 chars out of left-side result
+        # but what about offsetting containers to end or middle? e.g. 40ft container on 60ft wagon
+        # - always default to offset centered if < total length
+        # - offsetting to end is achieved by including 'empty' containers
+        print(len(self.intermodal_container_gestalt.variants))
+
     def render(self, intermodal_container_gestalt, global_constants):
         self.units = []
+        self.intermodal_container_gestalt = intermodal_container_gestalt
+        self.global_constants = global_constants
+
+        self.add_container_spriterows()
 
         input_path = os.path.join(currentdir, 'src', 'graphics', 'intermodal_containers', intermodal_container_gestalt.id + '.png')
         input_image = Image.open(input_path)
