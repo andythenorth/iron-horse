@@ -29,10 +29,10 @@ random_switch (FEAT_TRAINS, ${vehicle.location_of_random_bits_for_random_variant
 
 // graphics chain for containers
 <!--! note that spritesets are global for intermodal containers -->
-<tal:container_type_random_switches repeat="container_type global_constants.intermodal_container_types.keys()">
+<tal:container_type_random_switches repeat="container_type intermodal_containers.get_container_types().keys()">
     random_switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_containers_random_${container_type}, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
         independent: ${vehicle.id}_switch_graphics_vehicle_platform;
-        <tal:container_types repeat="container_type_num global_constants.intermodal_container_types[container_type]">
+        <tal:container_types repeat="container_type_num intermodal_containers.get_container_types()[container_type]">
             1: return ss_intermodal_containers_${container_type}_${container_type_num}_${4 * vehicle.vehicle_length}px;
         </tal:container_types>
     }

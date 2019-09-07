@@ -26,7 +26,7 @@ import gestalt_graphics.graphics_constants as graphics_constants
 
 from rosters import registered_rosters
 from vehicles import numeric_id_defender
-
+import intermodal_containers
 
 class Consist(object):
     """
@@ -2108,7 +2108,7 @@ class Train(object):
         template_name = self.vehicle_nml_template
         template = templates[template_name]
         nml_result = template(
-            vehicle=self, consist=self.consist, global_constants=global_constants)
+            vehicle=self, consist=self.consist, global_constants=global_constants, intermodal_containers=intermodal_containers)
         return nml_result
 
 

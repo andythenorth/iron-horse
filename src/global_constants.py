@@ -127,8 +127,6 @@ graphics_path = polar_fox.constants.graphics_path
 mail_multiplier = polar_fox.constants.mail_multiplier
 max_game_date = polar_fox.constants.max_game_date
 
-intermodal_container_types = {'bulk': [1, 2, 3], 'reefer': [1, 2, 3], 'box': [1, 2, 3], 'tank': [1, 2, 3],
-                              'livestock': [1, 2, 3], 'flat': [1, 2, 3], 'edibles_tank': [1, 2, 3]}
 intermodal_container_cargo_label_mapping = {'LVST': 'livestock',
                                             'MILK': 'edibles_tank',
                                             'WOOD': 'flat'}

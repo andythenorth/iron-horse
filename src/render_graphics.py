@@ -50,11 +50,10 @@ def run_consist_pipelines(consist):
         for pipeline in consist.gestalt_graphics.pipelines:
             pipeline.render(consist, global_constants)
 
-def run_intermodal_container_pipelines(intermodal_container_combo):
+def run_intermodal_container_pipelines(intermodal_container_gestalt):
     # no pipelines to run yet, just copy graphics file
     shutil.copy(os.path.join(graphics_input_path, 'intermodal_containers',
-                             intermodal_container_combo + '.png'), graphics_output_path)
-
+                             intermodal_container_gestalt + '.png'), graphics_output_path)
 
 def report_sprites_complete(consists):
     # project management eh :P
@@ -72,19 +71,19 @@ def report_sprites_complete(consists):
 def main():
     start = time()
     consists = iron_horse.get_consists_in_buy_menu_order()
-    intermodal_container_combos = iron_horse.intermodal_containers.registered_intermodal_container_combos
+    intermodal_container_gestalts = iron_horse.intermodal_containers.registered_container_gestalts
 
     if use_multiprocessing == False:
         for consist in consists:
             run_consist_pipelines(consist)
-        for intermodal_container_combo in intermodal_container_combos:
-            run_intermodal_container_pipelines(intermodal_container_combo)
+        for intermodal_container_gestalt in intermodal_container_gestalts:
+            run_intermodal_container_pipelines(intermodal_container_gestalt)
     else:
         # Would this go faster if the pipelines from each consist were placed in MP pool, not just the consist?
         # probably potato / potato tbh
         pool = Pool(processes=num_pool_workers)
         pool.map(run_consist_pipelines, consists)
-        pool.map(run_intermodal_container_pipelines, intermodal_container_combos)
+        pool.map(run_intermodal_container_pipelines, intermodal_container_gestalts)
         pool.close()
 
     report_sprites_complete(consists)

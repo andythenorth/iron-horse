@@ -21,15 +21,14 @@ templates = PageTemplateLoader(os.path.join(currentdir, 'src', 'templates'))
 
 generated_files_path = iron_horse.generated_files_path
 
-
 def render_header_item_nml(header_item, consists):
     template = templates[header_item + '.pynml']
     return utils.unescape_chameleon_output(template(consists=consists,
                                                     global_constants=global_constants,
                                                     utils=utils,
                                                     active_rosters=iron_horse.get_active_rosters(),
+                                                    intermodal_containers = iron_horse.intermodal_containers,
                                                     makefile_args=makefile_args))
-
 
 def render_consist_nml(consist):
     result = utils.unescape_chameleon_output(consist.render())
@@ -40,7 +39,6 @@ def render_consist_nml(consist):
     consist_nml.close()
     # also return the nml directly for writing to the concatenated nml, don't faff around opening the generated nml files from disk
     return result
-
 
 def main():
     start = time()
