@@ -39,7 +39,6 @@ pony.roster.register(disabled=False)
 
 # import intermodal containers
 import intermodal_containers
-intermodal_containers.main()
 
 # import vehicles
 from vehicles import numeric_id_defender

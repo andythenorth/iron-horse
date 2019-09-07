@@ -21,6 +21,11 @@ class IntermodalContainerGestalt(object):
     def id(self):
         return "intermodal_" + self.type + "_" + str(self.length) + "px"
 
+    @property
+    def variants(self):
+        return [1, 2, 3]
+
+
 class IntermodalBox16px(IntermodalContainerGestalt):
     def __init__(self):
         self.length = 16
@@ -153,6 +158,13 @@ def get_container_types():
     return {'bulk': [1, 2, 3], 'reefer': [1, 2, 3], 'box': [1, 2, 3], 'tank': [1, 2, 3],
             'livestock': [1, 2, 3], 'flat': [1, 2, 3], 'edibles_tank': [1, 2, 3]}
 
+def get_container_gestalts_by_length(vehicle_length):
+    result = []
+    for container_gestalt in registered_container_gestalts:
+        if container_gestalt.length == 4 * vehicle_length:
+            result.append(container_gestalt)
+    return result
+
 registered_container_gestalts = [IntermodalBox16px(),
                                  IntermodalBox24px(),
                                  IntermodalBox32px(),
@@ -174,7 +186,3 @@ registered_container_gestalts = [IntermodalBox16px(),
                                  IntermodalTank16px(),
                                  IntermodalTank24px(),
                                  IntermodalTank32px()]
-
-def main():
-    print("Intermodal Containers!")
-

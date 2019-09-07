@@ -27,14 +27,14 @@ random_switch (FEAT_TRAINS, ${vehicle.location_of_random_bits_for_random_variant
 
 // graphics chain for containers
 <!--! note that spritesets are global for intermodal containers -->
-<tal:container_type_random_switches repeat="container_type intermodal_containers.get_container_types().keys()">
-    random_switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_containers_random_${container_type}, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+<tal:container_spriteset_random_switches repeat="container_gestalt intermodal_containers.get_container_gestalts_by_length(vehicle.vehicle_length)">
+    random_switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_containers_random_${container_gestalt.type}, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
         independent: ${vehicle.id}_switch_graphics_vehicle_platform;
-        <tal:container_types repeat="container_type_num intermodal_containers.get_container_types()[container_type]">
-            1: return ss_intermodal_containers_${container_type}_${container_type_num}_${4 * vehicle.vehicle_length}px;
+        <tal:container_types repeat="variant container_gestalt.variants">
+            1: return ss_intermodal_containers_${container_gestalt.type}_${4 * vehicle.vehicle_length}px_${repeat.variant.index};
         </tal:container_types>
     }
-</tal:container_type_random_switches>
+</tal:container_spriteset_random_switches>
 <!--! pseudo cargo checking code
     1. check known labels -> named random switch
     2. check known classes -> named random switch
