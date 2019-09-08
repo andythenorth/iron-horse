@@ -155,24 +155,37 @@ class GenerateCompositedIntermodalContainers(Pipeline):
         # this should be sparse, don't store any consist info in Pipelines, pass at render time
         super().__init__()
 
-    def resolve_template(self, variant):
+    def resolve_template_name(self, variant):
         # figure out which template png to use based on gestalt length + container pattern
         # - e.g. 32px_40_20, 32px_20_20_20 etc?
         result = [str(self.intermodal_container_gestalt.length) + 'px']
         for container in variant:
             result.append(container.split('_foot')[0][-2:])
-        return '_'.join(result)
+        return 'intermodal_template_' + '_'.join(result)
 
     def add_container_spriterows(self):
         for variant in self.intermodal_container_gestalt.variants:
-            print("Drawing containers: ", variant)
-            print(self.resolve_template(variant))
-            template_path = os.path.join(currentdir, 'src', 'graphics', 'intermodal_containers', 'intermodal_template_32px_20_20' + '.png')
+            print("Drawing containers: ", variant, '...')
+            template_path = os.path.join(currentdir, 'src', 'graphics', 'intermodal_containers', self.resolve_template_name(variant) + '.png')
             template_image = Image.open(template_path)
             #if self.intermodal_container_gestalt.id == 'intermodal_box_32px':
                 #template_image.show()
-            # get the loc points
+
+            # get the loc points and sort them for display
             loc_points = [(pixel[0], pixel[1] - 10, pixel[2]) for pixel in pixascan(template_image) if pixel[2] in [226, 240, 244]]
+            loc_points_grouped_and_sorted_for_display = {}
+            for angle_index, bbox in enumerate(self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed):
+                pixels=[]
+                for pixel in loc_points:
+                    if pixel[0] >= bbox[0] and pixel[0] <= (bbox[0] + bbox[1]):
+                        pixels.append(pixel)
+                # fake sprite sorter - containers nearer front need to overlap containers behind
+                # position pixel colour indexes (in the palette) must be in ascending order for left->right positions in <- view
+                # the fake sprite sorter then just sorts ascending or descending as required for each angle
+                pixels = sorted(pixels, key=lambda pixel: pixel[2])
+                if angle_index in [3, 4, 5]:
+                    pixels.reverse()
+                loc_points_grouped_and_sorted_for_display[angle_index] = pixels
 
             for container in variant:
                 container_path = os.path.join(currentdir, 'src', 'graphics', 'intermodal_containers', container + '.png')
@@ -185,40 +198,27 @@ class GenerateCompositedIntermodalContainers(Pipeline):
                 for bbox in self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed:
                     bboxes.append([bbox[0], 10, bbox[0] + bbox[1], 10 + bbox[2]])
 
+                # !! containers are symmetric?
+                # !! angles 0-3 need to be copied from angles 4-7
                 container_sprites = self.get_arbitrary_angles(container_image, bboxes)
                 #if self.intermodal_container_gestalt.id == 'intermodal_box_32px':
                     #container_sprites[6][0].show()
 
-                variant_output_image = Image.open(os.path.join(currentdir, 'src', 'graphics', 'spriterow_template.png'))
-                variant_output_image = variant_output_image.crop((0, 10, graphics_constants.spritesheet_width, 10 + graphics_constants.spriterow_height))
+            variant_output_image = Image.open(os.path.join(currentdir, 'src', 'graphics', 'spriterow_template.png'))
+            variant_output_image = variant_output_image.crop((0, 10, graphics_constants.spritesheet_width, 10 + graphics_constants.spriterow_height))
 
-                # !! loc points will need re-ordered, per angle, so that sprites are sorted correctly rear to front
-                # !! or do it on some conditional check, but I'm favouring shuffling the loc points in order, based on fixed rule per angle
-                # !! relying on order of index number for pixel colour = order of containers for <– view (low to high), and all other angles follow accordingly
-                for pixel in loc_points:
-                    angle_num = 0
-                    for counter, bbox in enumerate(self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed):
-                        if pixel[0] >= bbox[0]:
-                            angle_num = counter
-                    container_sprite_num = angle_num
-
-                    container_width = container_sprites[container_sprite_num][0].size[0]
-                    container_height = container_sprites[container_sprite_num][0].size[1]
+            for angle_index, pixels in loc_points_grouped_and_sorted_for_display.items():
+                for pixel in pixels:
+                    container_width = container_sprites[angle_index][0].size[0]
+                    container_height = container_sprites[angle_index][0].size[1]
                     # the +1s for height adjust the crop box to include the loc point
                     # (needed beause loc points are left-bottom not left-top as per co-ordinate system, makes drawing loc points easier)
                     container_bounding_box = (pixel[0],
                                               pixel[1] - container_height + 1,
                                               pixel[0] + container_width,
                                               pixel[1] + 1)
-                    """
-                    if pixel[2] == 164:
-                        # it's b or B
-                        state_sprites = pantograph_state_sprite_map[state_map[1]]
-                    else:
-                        # it's a or A
-                        state_sprites = pantograph_state_sprite_map[state_map[0]]
-                    """
-                    variant_output_image.paste(container_sprites[container_sprite_num][0], container_bounding_box, container_sprites[container_sprite_num][1])
+
+                    variant_output_image.paste(container_sprites[angle_index][0], container_bounding_box, container_sprites[angle_index][1])
             #if self.intermodal_container_gestalt.id == 'intermodal_box_32px':
                 #variant_output_image.show()
             variant_spritesheet = self.make_spritesheet_from_image(variant_output_image)
@@ -227,6 +227,7 @@ class GenerateCompositedIntermodalContainers(Pipeline):
                              self.global_constants.sprites_max_x_extent,
                              graphics_constants.spriterow_height)
             self.units.append(AppendToSpritesheet(variant_spritesheet, crop_box_dest))
+
         # provide an empty spritesheet (or skip compositing) if container is 'empty'
         # but what about offsetting containers to end or middle? e.g. 40ft container on 60ft wagon
         # - always default to offset centered if < total length
