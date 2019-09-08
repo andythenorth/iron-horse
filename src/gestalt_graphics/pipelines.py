@@ -167,10 +167,9 @@ class GenerateCompositedIntermodalContainers(Pipeline):
         for variant in self.intermodal_container_gestalt.variants:
             template_path = os.path.join(currentdir, 'src', 'graphics', 'intermodal_containers', self.resolve_template_name(variant) + '.png')
             template_image = Image.open(template_path)
-            #if self.intermodal_container_gestalt.id == 'intermodal_box_32px':
-                #template_image.show()
 
             # get the loc points and sort them for display
+            # !! loc points might need extended to support double stack ??
             loc_points = [(pixel[0], pixel[1] - 10, pixel[2]) for pixel in pixascan(template_image) if pixel[2] in [226, 240, 244]]
             loc_points_grouped_and_sorted_for_display = {}
             for angle_index, bbox in enumerate(self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed):
@@ -188,6 +187,7 @@ class GenerateCompositedIntermodalContainers(Pipeline):
                 # position pixel colour indexes (in the palette) must be in ascending order for left->right positions in <- view
                 # required index colours are 226, 240, 244
                 # the fake sprite sorter then just sorts ascending or descending as required for each angle
+                # !! double stack might be possible to handle just using this rudimentary sprite sorting ?? (or extending it??)
                 pixels = sorted(pixels, key=lambda pixel: pixel[2])
                 if angle_index in [3, 4, 5]:
                     pixels.reverse()
@@ -233,6 +233,21 @@ class GenerateCompositedIntermodalContainers(Pipeline):
                                               pixel[1] + 1)
 
                     variant_output_image.paste(container_sprites[angle_index][0], container_bounding_box, container_sprites[angle_index][1])
+
+            # create a mask to place black shadows between adjacent containers
+            # !! either this will need to detect non-adjacent combinations with 'empty' containers,
+            # !! or specific templates need to be used for variants wtih non-adjacent gaps, with black drawn accordingly
+            # !! kinda depends whether [20 20 empty] is valid or not (requires shadow) vs. [20 empty 20] (no shadow needed)
+            # !! BUT [20 20 empty] can be done by just doing [20 20] on 60 foot wagon, it's only [empty 20 20] that's not supported eh?
+            shadow_image = template_image.copy().crop((0, 10, self.global_constants.sprites_max_x_extent, 10 + graphics_constants.spriterow_height))
+            shadow_mask = shadow_image.copy()
+            shadow_mask = shadow_mask.point(lambda i: 255 if i == 1 else 0).convert("1") # assume shadow is always colour index 1 in the palette
+            #if self.intermodal_container_gestalt.id == 'intermodal_box_24px':
+                #shadow_mask.show()
+                #shadow_image.show()
+                #variant_output_image.show()
+            variant_output_image.paste(shadow_image, mask=shadow_mask)
+
             #if self.intermodal_container_gestalt.id == 'intermodal_box_32px':
                 #variant_output_image.show()
             variant_spritesheet = self.make_spritesheet_from_image(variant_output_image)

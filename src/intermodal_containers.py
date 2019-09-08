@@ -16,6 +16,9 @@ class IntermodalContainerGestalt(object):
     # - combinations of container lengths
     # - combinations of container types
     # - container colours
+    # !!! containers are going to need 'base sets' to allow double stack, cropped for well cars etc
+    # !!! the consist needs to encode the set type to fetch the right spritesets
+    # !!! base sets will also have to be encoded in gestalts here, unless they're done by (sets * gestalts) combinatorially?
     def __init__(self):
         self.pipeline = GenerateCompositedIntermodalContainers()
 
@@ -46,8 +49,8 @@ class IntermodalBox32px(IntermodalContainerGestalt):
         super().__init__()
         self.length = 32
         self.type = 'box'
-        self.variants = [['box_20_foot_1CC'],
-                         ['box_20_foot_red']]
+        self.variants = [['box_20_foot_1CC', 'empty_20_foot', 'empty_20_foot'],
+                         ['box_20_foot_red', 'empty_20_foot', 'empty_20_foot']]
 
 
 class IntermodalBulk16px(IntermodalContainerGestalt):
@@ -63,7 +66,7 @@ class IntermodalBulk24px(IntermodalContainerGestalt):
         super().__init__()
         self.length = 24
         self.type = 'bulk'
-        self.variants = [['box_20_foot_red']]
+        self.variants = [['box_20_foot_red', 'empty_20_foot',]]
 
 
 class IntermodalBulk32px(IntermodalContainerGestalt):
@@ -71,7 +74,7 @@ class IntermodalBulk32px(IntermodalContainerGestalt):
         super().__init__()
         self.length = 32
         self.type = 'bulk'
-        self.variants = [['box_20_foot_red']]
+        self.variants = [['box_20_foot_red', 'empty_20_foot', 'empty_20_foot']]
 
 
 class IntermodalEdiblesTank16px(IntermodalContainerGestalt):
@@ -87,7 +90,7 @@ class IntermodalEdiblesTank24px(IntermodalContainerGestalt):
         super().__init__()
         self.length = 24
         self.type = 'edibles_tank'
-        self.variants = [['box_20_foot_red']]
+        self.variants = [['box_20_foot_red', 'empty_20_foot',]]
 
 
 class IntermodalEdiblesTank32px(IntermodalContainerGestalt):
@@ -95,7 +98,7 @@ class IntermodalEdiblesTank32px(IntermodalContainerGestalt):
         super().__init__()
         self.length = 32
         self.type = 'edibles_tank'
-        self.variants = [['box_20_foot_red']]
+        self.variants = [['box_20_foot_red', 'empty_20_foot', 'empty_20_foot']]
 
 
 class IntermodalFlat16px(IntermodalContainerGestalt):
@@ -111,7 +114,7 @@ class IntermodalFlat24px(IntermodalContainerGestalt):
         super().__init__()
         self.length = 24
         self.type = 'flat'
-        self.variants = [['box_20_foot_red']]
+        self.variants = [['box_20_foot_red', 'empty_20_foot',]]
 
 
 class IntermodalFlat32px(IntermodalContainerGestalt):
@@ -119,7 +122,7 @@ class IntermodalFlat32px(IntermodalContainerGestalt):
         super().__init__()
         self.length = 32
         self.type = 'flat'
-        self.variants = [['box_20_foot_red']]
+        self.variants = [['box_20_foot_red', 'empty_20_foot', 'empty_20_foot']]
 
 
 class IntermodalLivestock16px(IntermodalContainerGestalt):
@@ -135,7 +138,7 @@ class IntermodalLivestock24px(IntermodalContainerGestalt):
         super().__init__()
         self.length = 24
         self.type = 'livestock'
-        self.variants = [['box_20_foot_red']]
+        self.variants = [['box_20_foot_red', 'empty_20_foot',]]
 
 
 class IntermodalLivestock32px(IntermodalContainerGestalt):
@@ -143,7 +146,7 @@ class IntermodalLivestock32px(IntermodalContainerGestalt):
         super().__init__()
         self.length = 32
         self.type = 'livestock'
-        self.variants = [['box_20_foot_red']]
+        self.variants = [['box_20_foot_red', 'empty_20_foot', 'empty_20_foot']]
 
 
 class IntermodalReefer16px(IntermodalContainerGestalt):
@@ -159,7 +162,7 @@ class IntermodalReefer24px(IntermodalContainerGestalt):
         super().__init__()
         self.length = 24
         self.type = 'reefer'
-        self.variants = [['box_20_foot_red']]
+        self.variants = [['box_20_foot_red', 'empty_20_foot',]]
 
 
 class IntermodalReefer32px(IntermodalContainerGestalt):
@@ -167,7 +170,7 @@ class IntermodalReefer32px(IntermodalContainerGestalt):
         super().__init__()
         self.length = 32
         self.type = 'reefer'
-        self.variants = [['box_20_foot_red']]
+        self.variants = [['box_20_foot_red', 'empty_20_foot', 'empty_20_foot']]
 
 
 class IntermodalTank16px(IntermodalContainerGestalt):
@@ -183,7 +186,7 @@ class IntermodalTank24px(IntermodalContainerGestalt):
         super().__init__()
         self.length = 24
         self.type = 'tank'
-        self.variants = [['box_20_foot_red']]
+        self.variants = [['box_20_foot_red', 'empty_20_foot',]]
 
 
 class IntermodalTank32px(IntermodalContainerGestalt):
@@ -191,7 +194,7 @@ class IntermodalTank32px(IntermodalContainerGestalt):
         super().__init__()
         self.length = 32
         self.type = 'tank'
-        self.variants = [['box_20_foot_red']]
+        self.variants = [['box_20_foot_red', 'empty_20_foot', 'empty_20_foot']]
 
 
 def get_container_types():
