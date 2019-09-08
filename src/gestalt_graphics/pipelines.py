@@ -235,18 +235,21 @@ class GenerateCompositedIntermodalContainers(Pipeline):
                     variant_output_image.paste(container_sprites[angle_index][0], container_bounding_box, container_sprites[angle_index][1])
 
             # create a mask to place black shadows between adjacent containers
-            # !! either this will need to detect non-adjacent combinations with 'empty' containers,
-            # !! or specific templates need to be used for variants wtih non-adjacent gaps, with black drawn accordingly
-            # !! kinda depends whether [20 20 empty] is valid or not (requires shadow) vs. [20 empty 20] (no shadow needed)
-            # !! BUT [20 20 empty] can be done by just doing [20 20] on 60 foot wagon, it's only [empty 20 20] that's not supported eh?
-            shadow_image = template_image.copy().crop((0, 10, self.global_constants.sprites_max_x_extent, 10 + graphics_constants.spriterow_height))
-            shadow_mask = shadow_image.copy()
-            shadow_mask = shadow_mask.point(lambda i: 255 if i == 1 else 0).convert("1") # assume shadow is always colour index 1 in the palette
-            #if self.intermodal_container_gestalt.id == 'intermodal_box_24px':
-                #shadow_mask.show()
-                #shadow_image.show()
-                #variant_output_image.show()
-            variant_output_image.paste(shadow_image, mask=shadow_mask)
+            combo_check = ['empty' if 'empty' in i else 'occupied' for i in variant]
+            # *vehicles with 3 containers only (32px)*
+            # don't allow combinations of only two adjacent 20 foot containers as it's TMWFTLB to provide the shadow for them
+            # two 20 foot with a gap between are supported
+            # solitary 20 foot containers of any length in any position are not prevented, but look bad (looks like loading didn't finish)
+            if len(combo_check) == 3:
+                if combo_check in [['occupied', 'occupied', 'empty'], ['empty', 'occupied', 'occupied']]:
+                    raise ValueError(self.intermodal_container_gestalt.id +" - this pattern of (20 foot) containers isn't supported (can't composite shadows for it): " + str(combo_check))
+
+            # don't draw shadows if there are empty slots
+            if combo_check.count('empty') == 0:
+                shadow_image = template_image.copy().crop((0, 10, self.global_constants.sprites_max_x_extent, 10 + graphics_constants.spriterow_height))
+                shadow_mask = shadow_image.copy()
+                shadow_mask = shadow_mask.point(lambda i: 255 if i == 1 else 0).convert("1") # assume shadow is always colour index 1 in the palette
+                variant_output_image.paste(shadow_image, mask=shadow_mask)
 
             #if self.intermodal_container_gestalt.id == 'intermodal_box_32px':
                 #variant_output_image.show()
