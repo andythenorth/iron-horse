@@ -165,7 +165,6 @@ class GenerateCompositedIntermodalContainers(Pipeline):
 
     def add_container_spriterows(self):
         for variant in self.intermodal_container_gestalt.variants:
-            print("Drawing containers: ", variant, '...')
             template_path = os.path.join(currentdir, 'src', 'graphics', 'intermodal_containers', self.resolve_template_name(variant) + '.png')
             template_image = Image.open(template_path)
             #if self.intermodal_container_gestalt.id == 'intermodal_box_32px':
@@ -179,14 +178,25 @@ class GenerateCompositedIntermodalContainers(Pipeline):
                 for pixel in loc_points:
                     if pixel[0] >= bbox[0] and pixel[0] <= (bbox[0] + bbox[1]):
                         pixels.append(pixel)
+                        # catch invalid pixels
+                        if (1 + [226, 240, 244].index(pixel[2])) > len(variant):
+                            message = template_path
+                            message += " contains pixel colour " + str(pixel[2]) + " which implies " + str(1 + [226, 240, 244].index(pixel[2])) + " containers"
+                            message += " but the variant only defines " + str(len(variant)) + " container sprite(s)"
+                            raise ValueError(message)
                 # fake sprite sorter - containers nearer front need to overlap containers behind
                 # position pixel colour indexes (in the palette) must be in ascending order for left->right positions in <- view
+                # required index colours are 226, 240, 244
                 # the fake sprite sorter then just sorts ascending or descending as required for each angle
                 pixels = sorted(pixels, key=lambda pixel: pixel[2])
                 if angle_index in [3, 4, 5]:
                     pixels.reverse()
                 loc_points_grouped_and_sorted_for_display[angle_index] = pixels
 
+            # get the sprites for all containers for this variant, and put them in a single structure
+            # n.b the implementation of this is likely inefficient as it will repetively open the same containers from the filesystem,
+            # but so far that seems to have negligible performance cost, and caching all containers earlier in the loop would add unwanted complexity
+            container_sprites_for_this_variant = []
             for container in variant:
                 container_path = os.path.join(currentdir, 'src', 'graphics', 'intermodal_containers', container + '.png')
                 container_image = Image.open(container_path)
@@ -203,12 +213,16 @@ class GenerateCompositedIntermodalContainers(Pipeline):
                 container_sprites = self.get_arbitrary_angles(container_image, bboxes)
                 #if self.intermodal_container_gestalt.id == 'intermodal_box_32px':
                     #container_sprites[6][0].show()
+                container_sprites_for_this_variant.append(container_sprites)
 
             variant_output_image = Image.open(os.path.join(currentdir, 'src', 'graphics', 'spriterow_template.png'))
             variant_output_image = variant_output_image.crop((0, 10, graphics_constants.spritesheet_width, 10 + graphics_constants.spriterow_height))
 
             for angle_index, pixels in loc_points_grouped_and_sorted_for_display.items():
                 for pixel in pixels:
+                    # use the pixel colour to look up which container sprites to use, relies on hard-coded pixel colours
+                    # print(self.intermodal_container_gestalt.id, variant, angle_index, pixels, container_sprites_for_this_variant)
+                    container_sprites = container_sprites_for_this_variant[[226, 240, 244].index(pixel[2])] # one line python stupidity
                     container_width = container_sprites[angle_index][0].size[0]
                     container_height = container_sprites[angle_index][0].size[1]
                     # the +1s for height adjust the crop box to include the loc point
