@@ -45,7 +45,8 @@ class IntermodalBox32px(IntermodalContainerGestalt):
         super().__init__()
         self.length = 32
         self.type = 'box'
-        self.variants = [['box_20_foot_red']]
+        self.variants = [['box_20_foot_1CC'],
+                         ['box_20_foot_red']]
 
 
 class IntermodalBulk16px(IntermodalContainerGestalt):

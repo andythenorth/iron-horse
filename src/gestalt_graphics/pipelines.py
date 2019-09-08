@@ -167,20 +167,76 @@ class GenerateCompositedIntermodalContainers(Pipeline):
         for variant in self.intermodal_container_gestalt.variants:
             print("Drawing containers: ", variant)
             print(self.resolve_template(variant))
+            template_path = os.path.join(currentdir, 'src', 'graphics', 'intermodal_containers', 'intermodal_template_32px_20_20' + '.png')
+            template_image = Image.open(template_path)
+            #if self.intermodal_container_gestalt.id == 'intermodal_box_32px':
+                #template_image.show()
+            # get the loc points
+            loc_points = [(pixel[0], pixel[1] - 10, pixel[2]) for pixel in pixascan(template_image) if pixel[2] in [226, 240, 244]]
+
             for container in variant:
-                print("\n")
-                #input_path = os.path.join(currentdir, 'src', 'graphics', 'intermodal_containers', intermodal_container_gestalt.id + '.png')
-                #input_image = Image.open(input_path)
+                container_path = os.path.join(currentdir, 'src', 'graphics', 'intermodal_containers', container + '.png')
+                container_image = Image.open(container_path)
+                #if self.intermodal_container_gestalt.id == 'intermodal_box_32px':
+                    #container_image.show()
+                bboxes = []
+                # only a 3 tuple in global constants bounding box definitions (no y position), we need a 4 tuple inc. y position
+                # also the format of bounding boxes needs converted to PIL crop box format
+                for bbox in self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed:
+                    bboxes.append([bbox[0], 10, bbox[0] + bbox[1], 10 + bbox[2]])
+
+                container_sprites = self.get_arbitrary_angles(container_image, bboxes)
+                #if self.intermodal_container_gestalt.id == 'intermodal_box_32px':
+                    #container_sprites[6][0].show()
+
+                variant_output_image = Image.open(os.path.join(currentdir, 'src', 'graphics', 'spriterow_template.png'))
+                variant_output_image = variant_output_image.crop((0, 10, graphics_constants.spritesheet_width, 10 + graphics_constants.spriterow_height))
+
+                # !! loc points will need re-ordered, per angle, so that sprites are sorted correctly rear to front
+                # !! or do it on some conditional check, but I'm favouring shuffling the loc points in order, based on fixed rule per angle
+                # !! relying on order of index number for pixel colour = order of containers for <– view (low to high), and all other angles follow accordingly
+                for pixel in loc_points:
+                    angle_num = 0
+                    for counter, bbox in enumerate(self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed):
+                        if pixel[0] >= bbox[0]:
+                            angle_num = counter
+                    container_sprite_num = angle_num
+
+                    container_width = container_sprites[container_sprite_num][0].size[0]
+                    container_height = container_sprites[container_sprite_num][0].size[1]
+                    # the +1s for height adjust the crop box to include the loc point
+                    # (needed beause loc points are left-bottom not left-top as per co-ordinate system, makes drawing loc points easier)
+                    container_bounding_box = (pixel[0],
+                                              pixel[1] - container_height + 1,
+                                              pixel[0] + container_width,
+                                              pixel[1] + 1)
+                    """
+                    if pixel[2] == 164:
+                        # it's b or B
+                        state_sprites = pantograph_state_sprite_map[state_map[1]]
+                    else:
+                        # it's a or A
+                        state_sprites = pantograph_state_sprite_map[state_map[0]]
+                    """
+                    variant_output_image.paste(container_sprites[container_sprite_num][0], container_bounding_box, container_sprites[container_sprite_num][1])
+            #if self.intermodal_container_gestalt.id == 'intermodal_box_32px':
+                #variant_output_image.show()
+            variant_spritesheet = self.make_spritesheet_from_image(variant_output_image)
+            crop_box_dest = (0,
+                             0,
+                             self.global_constants.sprites_max_x_extent,
+                             graphics_constants.spriterow_height)
+            self.units.append(AppendToSpritesheet(variant_spritesheet, crop_box_dest))
         # provide an empty spritesheet (or skip compositing) if container is 'empty'
-        # ¿¿ can required template be auto-resolved based on
-        # - length
-        # - number of containers
-        # - sequence of containers
-        # - split on '_foot' and slice last 2 chars out of left-side result
         # but what about offsetting containers to end or middle? e.g. 40ft container on 60ft wagon
         # - always default to offset centered if < total length
         # - offsetting to end is achieved by including 'empty' containers
-        print(len(self.intermodal_container_gestalt.variants))
+        # == #
+        # each template will need to provide a row of black pixels to use between containers
+        # - no mask for singles
+        # - don't insert the mask if empty
+        # - this means 20-20-empty is not going to be possible, probably fine
+        # - add a guard against 20-20-empty and empty-20-20
 
     def render(self, intermodal_container_gestalt, global_constants):
         self.units = []
@@ -189,8 +245,9 @@ class GenerateCompositedIntermodalContainers(Pipeline):
 
         self.add_container_spriterows()
 
-        input_path = os.path.join(currentdir, 'src', 'graphics', 'intermodal_containers', intermodal_container_gestalt.id + '.png')
-        input_image = Image.open(input_path)
+        # for this pipeline, input_image is just blank white 10px high image, to which the vehicle sprites are then appended
+        input_image = Image.new("P", (graphics_constants.spritesheet_width, 10), 255)
+        input_image.putpalette(DOS_PALETTE)
         self.render_common(input_image, self.units, output_base_name=intermodal_container_gestalt.id)
 
 
