@@ -32,7 +32,10 @@ class IntermodalBox16px(IntermodalContainerGestalt):
         super().__init__()
         self.length = 16
         self.type = 'box'
-        self.variants = [['box_20_foot_red']]
+        self.variants = [['box_30_foot_1CC'],
+                         ['box_30_foot_2CC'],
+                         ['box_30_foot_red']]
+
 
 
 class IntermodalBox24px(IntermodalContainerGestalt):
@@ -41,7 +44,10 @@ class IntermodalBox24px(IntermodalContainerGestalt):
         self.length = 24
         self.type = 'box'
         self.variants = [['box_20_foot_1CC', 'box_20_foot_red'],
-                         ['box_20_foot_red', 'box_20_foot_1CC']]
+                         ['box_20_foot_red', 'box_20_foot_1CC'],
+                         ['box_40_foot_1CC'],
+                         ['box_40_foot_2CC'],
+                         ['box_40_foot_red']]
 
 
 class IntermodalBox32px(IntermodalContainerGestalt):
@@ -49,11 +55,17 @@ class IntermodalBox32px(IntermodalContainerGestalt):
         super().__init__()
         self.length = 32
         self.type = 'box'
-        self.variants = [['box_20_foot_1CC', 'empty_20_foot', 'box_20_foot_red'],
-                         ['box_20_foot_1CC', 'box_20_foot_red', 'box_20_foot_1CC'],
+        self.variants = [['box_20_foot_1CC', 'box_20_foot_1CC', 'box_20_foot_red'],
                          ['box_20_foot_red', 'box_20_foot_red', 'box_20_foot_red'],
                          ['box_20_foot_2CC', 'box_20_foot_2CC', 'box_20_foot_2CC'],
-                         ['box_20_foot_1CC', 'box_20_foot_1CC', 'box_20_foot_1CC']]
+                         ['box_20_foot_1CC', 'box_20_foot_1CC', 'box_20_foot_1CC'],
+                         ['box_20_foot_1CC', 'box_40_foot_1CC'],
+                         ['box_20_foot_2CC', 'box_40_foot_1CC'],
+                         ['box_20_foot_red', 'box_40_foot_red'],
+                         ['box_40_foot_1CC', 'box_20_foot_1CC'],
+                         ['box_40_foot_2CC', 'box_20_foot_2CC'],
+                         ['box_40_foot_2CC', 'box_20_foot_1CC'],
+                         ['box_30_foot_1CC', 'box_30_foot_1CC']]
 
 
 class IntermodalBulk16px(IntermodalContainerGestalt):
@@ -61,7 +73,8 @@ class IntermodalBulk16px(IntermodalContainerGestalt):
         super().__init__()
         self.length = 16
         self.type = 'bulk'
-        self.variants = [['box_20_foot_red']]
+        self.variants = [['box_30_foot_1CC'],
+                         ['box_30_foot_2CC']]
 
 
 class IntermodalBulk24px(IntermodalContainerGestalt):
@@ -69,7 +82,11 @@ class IntermodalBulk24px(IntermodalContainerGestalt):
         super().__init__()
         self.length = 24
         self.type = 'bulk'
-        self.variants = [['box_20_foot_red', 'empty_20_foot',]]
+        self.variants = [['box_20_foot_1CC', 'box_20_foot_red'],
+                         ['box_20_foot_red', 'box_20_foot_1CC'],
+                         ['box_40_foot_1CC'],
+                         ['box_40_foot_2CC'],
+                         ['box_40_foot_red']]
 
 
 class IntermodalBulk32px(IntermodalContainerGestalt):
@@ -77,7 +94,16 @@ class IntermodalBulk32px(IntermodalContainerGestalt):
         super().__init__()
         self.length = 32
         self.type = 'bulk'
-        self.variants = [['box_20_foot_red', 'empty_20_foot', 'empty_20_foot']]
+        self.variants = [['box_20_foot_1CC', 'box_20_foot_red', 'box_20_foot_1CC'],
+                         ['box_20_foot_red', 'box_20_foot_red', 'box_20_foot_red'],
+                         ['box_20_foot_2CC', 'box_20_foot_2CC', 'box_20_foot_2CC'],
+                         ['box_20_foot_1CC', 'box_20_foot_1CC', 'box_20_foot_1CC'],
+                         ['box_20_foot_1CC', 'box_40_foot_1CC'],
+                         ['box_20_foot_2CC', 'box_40_foot_1CC'],
+                         ['box_20_foot_red', 'box_40_foot_red'],
+                         ['box_40_foot_1CC', 'box_20_foot_1CC'],
+                         ['box_40_foot_2CC', 'box_20_foot_2CC'],
+                         ['box_40_foot_2CC', 'box_20_foot_1CC']]
 
 
 class IntermodalEdiblesTank16px(IntermodalContainerGestalt):
@@ -85,7 +111,9 @@ class IntermodalEdiblesTank16px(IntermodalContainerGestalt):
         super().__init__()
         self.length = 16
         self.type = 'edibles_tank'
-        self.variants = [['box_20_foot_red']]
+        self.variants = [['box_30_foot_1CC'],
+                         ['box_30_foot_2CC']]
+
 
 
 class IntermodalEdiblesTank24px(IntermodalContainerGestalt):
@@ -93,7 +121,11 @@ class IntermodalEdiblesTank24px(IntermodalContainerGestalt):
         super().__init__()
         self.length = 24
         self.type = 'edibles_tank'
-        self.variants = [['box_20_foot_red', 'empty_20_foot',]]
+        self.variants = [['box_20_foot_1CC', 'box_20_foot_red'],
+                         ['box_20_foot_red', 'box_20_foot_1CC'],
+                         ['box_40_foot_1CC'],
+                         ['box_40_foot_2CC'],
+                         ['box_40_foot_red']]
 
 
 class IntermodalEdiblesTank32px(IntermodalContainerGestalt):
@@ -101,7 +133,16 @@ class IntermodalEdiblesTank32px(IntermodalContainerGestalt):
         super().__init__()
         self.length = 32
         self.type = 'edibles_tank'
-        self.variants = [['box_20_foot_red', 'empty_20_foot', 'empty_20_foot']]
+        self.variants = [['box_20_foot_1CC', 'box_20_foot_red', 'box_20_foot_1CC'],
+                         ['box_20_foot_red', 'box_20_foot_red', 'box_20_foot_red'],
+                         ['box_20_foot_2CC', 'box_20_foot_2CC', 'box_20_foot_2CC'],
+                         ['box_20_foot_1CC', 'box_20_foot_1CC', 'box_20_foot_1CC'],
+                         ['box_20_foot_1CC', 'box_40_foot_1CC'],
+                         ['box_20_foot_2CC', 'box_40_foot_1CC'],
+                         ['box_20_foot_red', 'box_40_foot_red'],
+                         ['box_40_foot_1CC', 'box_20_foot_1CC'],
+                         ['box_40_foot_2CC', 'box_20_foot_2CC'],
+                         ['box_40_foot_2CC', 'box_20_foot_1CC']]
 
 
 class IntermodalFlat16px(IntermodalContainerGestalt):
@@ -109,7 +150,9 @@ class IntermodalFlat16px(IntermodalContainerGestalt):
         super().__init__()
         self.length = 16
         self.type = 'flat'
-        self.variants = [['box_20_foot_red']]
+        self.variants = [['box_30_foot_1CC'],
+                         ['box_30_foot_2CC']]
+
 
 
 class IntermodalFlat24px(IntermodalContainerGestalt):
@@ -133,7 +176,9 @@ class IntermodalLivestock16px(IntermodalContainerGestalt):
         super().__init__()
         self.length = 16
         self.type = 'livestock'
-        self.variants = [['box_20_foot_red']]
+        self.variants = [['box_30_foot_1CC'],
+                         ['box_30_foot_2CC']]
+
 
 
 class IntermodalLivestock24px(IntermodalContainerGestalt):
@@ -157,7 +202,9 @@ class IntermodalReefer16px(IntermodalContainerGestalt):
         super().__init__()
         self.length = 16
         self.type = 'reefer'
-        self.variants = [['box_20_foot_red']]
+        self.variants = [['box_30_foot_1CC'],
+                         ['box_30_foot_2CC']]
+
 
 
 class IntermodalReefer24px(IntermodalContainerGestalt):
@@ -181,7 +228,9 @@ class IntermodalTank16px(IntermodalContainerGestalt):
         super().__init__()
         self.length = 16
         self.type = 'tank'
-        self.variants = [['box_20_foot_red']]
+        self.variants = [['box_30_foot_1CC'],
+                         ['box_30_foot_2CC']]
+
 
 
 class IntermodalTank24px(IntermodalContainerGestalt):
