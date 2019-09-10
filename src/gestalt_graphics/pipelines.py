@@ -198,7 +198,7 @@ class GenerateCompositedIntermodalContainers(Pipeline):
             # but so far that seems to have negligible performance cost, and caching all containers earlier in the loop would add unwanted complexity
             container_sprites_for_this_variant = []
             for container in variant:
-                container_path = os.path.join(currentdir, 'src', 'graphics', 'intermodal_containers', container + '.png')
+                container_path = os.path.join(currentdir, 'src', 'polar_fox', 'intermodal_container_graphics', container + '.png')
                 container_image = Image.open(container_path)
                 #if self.intermodal_container_gestalt.id == 'intermodal_box_32px':
                     #container_image.show()
