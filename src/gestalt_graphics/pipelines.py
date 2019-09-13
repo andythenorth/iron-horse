@@ -227,13 +227,19 @@ class GenerateCompositedIntermodalContainers(Pipeline):
                     container_sprites = container_sprites_for_this_variant[[226, 240, 244].index(pixel[2])] # one line python stupidity
                     container_width = container_sprites[angle_index][0].size[0]
                     container_height = container_sprites[angle_index][0].size[1]
-
+                    # loc_point_y_transform then moves the loc point for \ and / angles to the left-most corner of the container
+                    # this makes it easier to place the loc point pixels in the templates
+                    loc_point_y_transforms = {'20': [0, 2, 0, 2, 0, 2, 0, 2],
+                                              '30': [0, 2, 0, 2, 0, 2, 0, 2],
+                                              '40': [0, 2, 0, 3, 0, 2, 0, 3]}
+                    container_foot_length = container.split('_foot')[0][-2:]
+                    loc_point_y_transform = loc_point_y_transforms[container_foot_length][angle_index]
                     # the +1s for height adjust the crop box to include the loc point
                     # (needed beause loc points are left-bottom not left-top as per co-ordinate system, makes drawing loc points easier)
                     container_bounding_box = (pixel[0],
-                                              pixel[1] - container_height + 1,
+                                              pixel[1] + 1 - container_height + loc_point_y_transform,
                                               pixel[0] + container_width,
-                                              pixel[1] + 1)
+                                              pixel[1] + 1 + loc_point_y_transform)
 
                     variant_output_image.paste(container_sprites[angle_index][0], container_bounding_box, container_sprites[angle_index][1])
 
