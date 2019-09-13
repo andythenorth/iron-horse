@@ -196,10 +196,11 @@ class GenerateCompositedIntermodalContainers(Pipeline):
             # get the sprites for all containers for this variant, and put them in a single structure
             # n.b the implementation of this is likely inefficient as it will repetively open the same containers from the filesystem,
             # but so far that seems to have negligible performance cost, and caching all containers earlier in the loop would add unwanted complexity
-            container_sprites_for_this_variant = []
+            containers_for_this_variant = []
             for container in variant:
                 container_path = os.path.join(currentdir, 'src', 'polar_fox', 'intermodal_container_graphics', container + '.png')
                 container_image = Image.open(container_path)
+
                 #if self.intermodal_container_gestalt.id == 'intermodal_box_32px':
                     #container_image.show()
                 bboxes = []
@@ -215,7 +216,8 @@ class GenerateCompositedIntermodalContainers(Pipeline):
 
                 #if self.intermodal_container_gestalt.id == 'intermodal_box_32px':
                     #container_sprites[0][0].show()
-                container_sprites_for_this_variant.append(container_sprites)
+
+                containers_for_this_variant.append((container, container_sprites))
 
             variant_output_image = Image.open(os.path.join(currentdir, 'src', 'graphics', 'spriterow_template.png'))
             variant_output_image = variant_output_image.crop((0, 10, graphics_constants.spritesheet_width, 10 + graphics_constants.spriterow_height))
@@ -224,22 +226,24 @@ class GenerateCompositedIntermodalContainers(Pipeline):
                 for pixel in pixels:
                     # use the pixel colour to look up which container sprites to use, relies on hard-coded pixel colours
                     # print(self.intermodal_container_gestalt.id, variant, angle_index, pixels, container_sprites_for_this_variant)
-                    container_sprites = container_sprites_for_this_variant[[226, 240, 244].index(pixel[2])] # one line python stupidity
+                    container_for_this_loc_point = containers_for_this_variant[[226, 240, 244].index(pixel[2])] # one line python stupidity
+                    container_sprites = container_for_this_loc_point[1]
                     container_width = container_sprites[angle_index][0].size[0]
                     container_height = container_sprites[angle_index][0].size[1]
-                    # loc_point_y_transform then moves the loc point for \ and / angles to the left-most corner of the container
+                    # loc_point_y_transform then moves the loc point to the left-most corner of the container
                     # this makes it easier to place the loc point pixels in the templates
-                    loc_point_y_transforms = {'20': [0, 2, 0, 2, 0, 2, 0, 2],
-                                              '30': [0, 2, 0, 2, 0, 2, 0, 2],
-                                              '40': [0, 2, 0, 3, 0, 2, 0, 3]}
-                    container_foot_length = container.split('_foot')[0][-2:]
+                    loc_point_y_transforms = {'20': [1, 3, 1, 3, 1, 3, 1, 3],
+                                              '30': [1, 3, 1, 4, 1, 3, 1, 4],
+                                              '40': [1, 3, 1, 5, 1, 3, 1, 5]}
+                    container_foot_length = container_for_this_loc_point[0].split('_foot')[0][-2:] # extra special way to slice the length out of the name :P
                     loc_point_y_transform = loc_point_y_transforms[container_foot_length][angle_index]
-                    # the +1s for height adjust the crop box to include the loc point
+                    if angle_index == 3 and container_foot_length == '40':
+                        print(self.resolve_template_name(variant), '\n angle_index', angle_index, 'container_foot_length', container_foot_length, 'loc_point_y_transform', loc_point_y_transform)
                     # (needed beause loc points are left-bottom not left-top as per co-ordinate system, makes drawing loc points easier)
                     container_bounding_box = (pixel[0],
-                                              pixel[1] + 1 - container_height + loc_point_y_transform,
+                                              pixel[1] - container_height + loc_point_y_transform,
                                               pixel[0] + container_width,
-                                              pixel[1] + 1 + loc_point_y_transform)
+                                              pixel[1] + loc_point_y_transform)
 
                     variant_output_image.paste(container_sprites[angle_index][0], container_bounding_box, container_sprites[angle_index][1])
 
