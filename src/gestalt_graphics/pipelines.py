@@ -208,11 +208,13 @@ class GenerateCompositedIntermodalContainers(Pipeline):
                 for bbox in self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed:
                     bboxes.append([bbox[0], 10, bbox[0] + bbox[1], 10 + bbox[2]])
 
-                # !! containers are symmetric?
-                # !! angles 0-3 need to be copied from angles 4-7
                 container_sprites = self.get_arbitrary_angles(container_image, bboxes)
+                # containers are symmetric, angles 0-3 need to be copied from angles 4-7
+                for i in range(4):
+                    container_sprites[i] = container_sprites[i + 4]
+
                 #if self.intermodal_container_gestalt.id == 'intermodal_box_32px':
-                    #container_sprites[6][0].show()
+                    #container_sprites[0][0].show()
                 container_sprites_for_this_variant.append(container_sprites)
 
             variant_output_image = Image.open(os.path.join(currentdir, 'src', 'graphics', 'spriterow_template.png'))
@@ -225,6 +227,7 @@ class GenerateCompositedIntermodalContainers(Pipeline):
                     container_sprites = container_sprites_for_this_variant[[226, 240, 244].index(pixel[2])] # one line python stupidity
                     container_width = container_sprites[angle_index][0].size[0]
                     container_height = container_sprites[angle_index][0].size[1]
+
                     # the +1s for height adjust the crop box to include the loc point
                     # (needed beause loc points are left-bottom not left-top as per co-ordinate system, makes drawing loc points easier)
                     container_bounding_box = (pixel[0],

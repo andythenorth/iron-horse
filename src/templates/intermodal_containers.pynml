@@ -1,13 +1,13 @@
 <!--! container spritesets are shared between all intermodal vehicles, no need to duplicate them -->
 
 spriteset(ss_intermodal_containers_empty, "src/graphics/spriterow_template.png") {
-  spriteset_template_symmetric_unreversed_8_8_unflipped(10)
+    spriteset_template_asymmetric_unreversed_8_8_unflipped(10)
 }
 
 <tal:container_spritesets repeat="container_gestalt intermodal_containers.registered_container_gestalts">
     <tal:variants repeat="variant container_gestalt.variants">
         spriteset(ss_intermodal_containers_${container_gestalt.type}_${container_gestalt.length}px_${repeat.variant.index}, "${global_constants.graphics_path}${container_gestalt.id}.png") {
-          spriteset_template_symmetric_unreversed_8_8_unflipped(10 + ${repeat.variant.index * 30})
+            spriteset_template_asymmetric_unreversed_8_8_unflipped(10 + ${repeat.variant.index * 30})
         }
     </tal:variants>
 </tal:container_spritesets>
