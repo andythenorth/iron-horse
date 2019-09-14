@@ -4,6 +4,26 @@ from train import DumpCarHighSideConsist, FreightCar
 def main():
     #--------------- pony ----------------------------------------------------------------------
     consist = DumpCarHighSideConsist(roster='pony',
+                             base_numeric_id=3860,
+                             gen=3,
+                             subtype='A',
+                             sprites_complete=False)
+
+    consist.add_unit(type=FreightCar,
+                     chassis='2_axle_filled_16px')
+
+
+    consist = DumpCarHighSideConsist(roster='pony',
+                             base_numeric_id=3870,
+                             gen=3,
+                             subtype='B',
+                             sprites_complete=False)
+
+    consist.add_unit(type=FreightCar,
+                     chassis='4_axle_filled_24px')
+
+
+    consist = DumpCarHighSideConsist(roster='pony',
                              base_numeric_id=3780,
                              gen=4,
                              subtype='A',
@@ -30,7 +50,7 @@ def main():
                              sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     chassis='2_axle_gapped_16px')
+                     chassis='2_axle_gapped_greebled_16px')
 
 
     consist = DumpCarHighSideConsist(roster='pony',
@@ -60,7 +80,7 @@ def main():
                              sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     chassis='2_axle_gapped_16px')
+                     chassis='2_axle_gapped_greebled_16px')
 
 
     consist = DumpCarHighSideConsist(roster='pony',
