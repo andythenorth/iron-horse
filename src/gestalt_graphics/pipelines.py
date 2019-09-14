@@ -237,8 +237,6 @@ class GenerateCompositedIntermodalContainers(Pipeline):
                                               '40': [1, 3, 1, 5, 1, 3, 1, 5]}
                     container_foot_length = container_for_this_loc_point[0].split('_foot')[0][-2:] # extra special way to slice the length out of the name :P
                     loc_point_y_transform = loc_point_y_transforms[container_foot_length][angle_index]
-                    if angle_index == 3 and container_foot_length == '40':
-                        print(self.resolve_template_name(variant), '\n angle_index', angle_index, 'container_foot_length', container_foot_length, 'loc_point_y_transform', loc_point_y_transform)
                     # (needed beause loc points are left-bottom not left-top as per co-ordinate system, makes drawing loc points easier)
                     container_bounding_box = (pixel[0],
                                               pixel[1] - container_height + loc_point_y_transform,

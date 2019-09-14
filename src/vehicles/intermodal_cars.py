@@ -47,7 +47,7 @@ def main():
                                    sprites_complete=False)
 
     consist.add_unit(type=FreightCar,
-                     chassis='2_axle_filled_16px')
+                     chassis='2_axle_1cc_filled_16px')
 
 
     consist = IntermodalCarConsist(roster='pony',
