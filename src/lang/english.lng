@@ -39,6 +39,7 @@ STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Covered Hopper
 STR_NAME_SUFFIX_CRYO_TANK_CAR                                   :Cryo Tanker
 STR_NAME_SUFFIX_CURTAIN_SIDE_BOX_CAR                            :Curtain Side Van
 STR_NAME_SUFFIX_DUMP_CAR                                        :Mineral Wagon
+STR_NAME_SUFFIX_DUMP_CAR_HIGH_SIDE                              :High Side Mineral Wagon
 STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Edibles Tanker
 STR_NAME_SUFFIX_EXPRESS_CAR                                     :Express Van
 STR_NAME_SUFFIX_FLAT_CAR                                        :Flat Wagon

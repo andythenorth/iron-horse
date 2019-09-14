@@ -76,6 +76,9 @@ curtain_side_box_cars.main()
 from vehicles import dump_cars
 dump_cars.main()
 
+from vehicles import dump_cars_high_side
+dump_cars_high_side.main()
+
 from vehicles import edibles_tank_cars
 edibles_tank_cars.main()
 

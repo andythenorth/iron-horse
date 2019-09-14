@@ -1207,13 +1207,13 @@ class CurtainSideCarBoxConsist(CarConsist):
                                                                   recolour_maps=graphics_constants.curtain_side_livery_recolour_maps)
 
 
-class DumpCarConsist(CarConsist):
+class DumpCarConsistBase(CarConsist):
     """
+    Common base class for dump cars.
     Limited set of bulk (mineral) cargos, same set as hopper cars.
     """
 
     def __init__(self, **kwargs):
-        self.base_id = 'dump_car'
         super().__init__(**kwargs)
         self.class_refit_groups = ['dump_freight']
         self.label_refits_allowed = []  # no specific labels needed
@@ -1227,6 +1227,28 @@ class DumpCarConsist(CarConsist):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(bulk=True,
                                                             has_alt_livery=True)
+
+
+class DumpCarConsist(DumpCarConsistBase):
+    """
+    Standard (Low Side) Dump Car
+    Limited set of bulk (mineral) cargos, same set as hopper cars.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = 'dump_car'
+        super().__init__(**kwargs)
+
+
+class DumpCarHighSideConsist(DumpCarConsistBase):
+    """
+    High Side Dump Car
+    Limited set of bulk (mineral) cargos, same set as hopper cars.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = 'dump_car_high_side'
+        super().__init__(**kwargs)
 
 
 class EdiblesTankCarConsist(CarConsist):
