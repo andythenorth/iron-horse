@@ -219,57 +219,62 @@ class GenerateCompositedIntermodalContainers(Pipeline):
 
                 containers_for_this_variant.append((container, container_sprites))
 
-            variant_output_image = Image.open(os.path.join(currentdir, 'src', 'graphics', 'spriterow_template.png'))
-            variant_output_image = variant_output_image.crop((0, 10, graphics_constants.spritesheet_width, 10 + graphics_constants.spriterow_height))
+            for floor_height_variant in self.intermodal_container_gestalt.floor_height_variants:
+                variant_output_image = Image.open(os.path.join(currentdir, 'src', 'graphics', 'spriterow_template.png'))
+                variant_output_image = variant_output_image.crop((0, 10, graphics_constants.spritesheet_width, 10 + graphics_constants.spriterow_height))
+                floor_height_yoffset = floor_height_variant[1]
 
-            for angle_index, pixels in loc_points_grouped_and_sorted_for_display.items():
-                for pixel in pixels:
-                    # use the pixel colour to look up which container sprites to use, relies on hard-coded pixel colours
-                    # print(self.intermodal_container_gestalt.id, variant, angle_index, pixels, container_sprites_for_this_variant)
-                    container_for_this_loc_point = containers_for_this_variant[[226, 240, 244].index(pixel[2])] # one line python stupidity
-                    container_sprites = container_for_this_loc_point[1]
-                    container_width = container_sprites[angle_index][0].size[0]
-                    container_height = container_sprites[angle_index][0].size[1]
-                    # loc_point_y_transform then moves the loc point to the left-most corner of the container
-                    # this makes it easier to place the loc point pixels in the templates
-                    loc_point_y_transforms = {'20': [1, 3, 1, 3, 1, 3, 1, 3],
-                                              '30': [1, 3, 1, 4, 1, 3, 1, 4],
-                                              '40': [1, 3, 1, 5, 1, 3, 1, 5]}
-                    container_foot_length = container_for_this_loc_point[0].split('_foot')[0][-2:] # extra special way to slice the length out of the name :P
-                    loc_point_y_transform = loc_point_y_transforms[container_foot_length][angle_index]
-                    # (needed beause loc points are left-bottom not left-top as per co-ordinate system, makes drawing loc points easier)
-                    container_bounding_box = (pixel[0],
-                                              pixel[1] - container_height + loc_point_y_transform,
-                                              pixel[0] + container_width,
-                                              pixel[1] + loc_point_y_transform)
+                for angle_index, pixels in loc_points_grouped_and_sorted_for_display.items():
+                    for pixel in pixels:
+                        # use the pixel colour to look up which container sprites to use, relies on hard-coded pixel colours
+                        # print(self.intermodal_container_gestalt.id, variant, angle_index, pixels, container_sprites_for_this_variant)
+                        container_for_this_loc_point = containers_for_this_variant[[226, 240, 244].index(pixel[2])] # one line python stupidity
+                        container_sprites = container_for_this_loc_point[1]
+                        container_width = container_sprites[angle_index][0].size[0]
+                        container_height = container_sprites[angle_index][0].size[1]
+                        # loc_point_y_transform then moves the loc point to the left-most corner of the container
+                        # this makes it easier to place the loc point pixels in the templates
+                        loc_point_y_transforms = {'20': [1, 3, 1, 3, 1, 3, 1, 3],
+                                                  '30': [1, 3, 1, 4, 1, 3, 1, 4],
+                                                  '40': [1, 3, 1, 5, 1, 3, 1, 5]}
+                        container_foot_length = container_for_this_loc_point[0].split('_foot')[0][-2:] # extra special way to slice the length out of the name :P
+                        loc_point_y_transform = loc_point_y_transforms[container_foot_length][angle_index]
+                        # (needed beause loc points are left-bottom not left-top as per co-ordinate system, makes drawing loc points easier)
+                        container_bounding_box = (pixel[0],
+                                                  pixel[1] - container_height + loc_point_y_transform + floor_height_yoffset,
+                                                  pixel[0] + container_width,
+                                                  pixel[1] + loc_point_y_transform + floor_height_yoffset)
 
-                    variant_output_image.paste(container_sprites[angle_index][0], container_bounding_box, container_sprites[angle_index][1])
+                        variant_output_image.paste(container_sprites[angle_index][0], container_bounding_box, container_sprites[angle_index][1])
 
-            # create a mask to place black shadows between adjacent containers
-            combo_check = ['empty' if 'empty' in i else 'occupied' for i in variant]
-            # *vehicles with 3 containers only (32px)*
-            # don't allow combinations of only two adjacent 20 foot containers as it's TMWFTLB to provide the shadow for them
-            # two 20 foot with a gap between are supported
-            # solitary 20 foot containers of any length in any position are not prevented, but look bad (looks like loading didn't finish)
-            if len(combo_check) == 3:
-                if combo_check in [['occupied', 'occupied', 'empty'], ['empty', 'occupied', 'occupied']]:
-                    raise ValueError(self.intermodal_container_gestalt.id +" - this pattern of (20 foot) containers isn't supported (can't composite shadows for it): " + str(combo_check))
+                # create a mask to place black shadows between adjacent containers
+                combo_check = ['empty' if 'empty' in i else 'occupied' for i in variant]
+                # *vehicles with 3 containers only (32px)*
+                # don't allow combinations of only two adjacent 20 foot containers as it's TMWFTLB to provide the shadow for them
+                # two 20 foot with a gap between are supported
+                # solitary 20 foot containers of any length in any position are not prevented, but look bad (looks like loading didn't finish)
+                if len(combo_check) == 3:
+                    if combo_check in [['occupied', 'occupied', 'empty'], ['empty', 'occupied', 'occupied']]:
+                        raise ValueError(self.intermodal_container_gestalt.id +" - this pattern of (20 foot) containers isn't supported (can't composite shadows for it): " + str(combo_check))
 
-            # don't draw shadows if there are empty slots
-            if combo_check.count('empty') == 0:
-                shadow_image = template_image.copy().crop((0, 10, self.global_constants.sprites_max_x_extent, 10 + graphics_constants.spriterow_height))
-                shadow_mask = shadow_image.copy()
-                shadow_mask = shadow_mask.point(lambda i: 255 if i == 1 else 0).convert("1") # assume shadow is always colour index 1 in the palette
-                variant_output_image.paste(shadow_image, mask=shadow_mask)
+                # don't draw shadows if there are empty slots
+                if combo_check.count('empty') == 0:
+                    shadow_image = template_image.copy().crop((0,
+                                                               10 - floor_height_yoffset,
+                                                               self.global_constants.sprites_max_x_extent,
+                                                               10 + graphics_constants.spriterow_height - floor_height_yoffset))
+                    shadow_mask = shadow_image.copy()
+                    shadow_mask = shadow_mask.point(lambda i: 255 if i == 1 else 0).convert("1") # assume shadow is always colour index 1 in the palette
+                    variant_output_image.paste(shadow_image, mask=shadow_mask)
 
-            #if self.intermodal_container_gestalt.id == 'intermodal_box_32px':
-                #variant_output_image.show()
-            variant_spritesheet = self.make_spritesheet_from_image(variant_output_image)
-            crop_box_dest = (0,
-                             0,
-                             self.global_constants.sprites_max_x_extent,
-                             graphics_constants.spriterow_height)
-            self.units.append(AppendToSpritesheet(variant_spritesheet, crop_box_dest))
+                #if self.intermodal_container_gestalt.id == 'intermodal_box_32px':
+                    #variant_output_image.show()
+                variant_spritesheet = self.make_spritesheet_from_image(variant_output_image)
+                crop_box_dest = (0,
+                                 0,
+                                 self.global_constants.sprites_max_x_extent,
+                                 graphics_constants.spriterow_height)
+                self.units.append(AppendToSpritesheet(variant_spritesheet, crop_box_dest))
 
     def render(self, intermodal_container_gestalt, global_constants):
         self.units = []

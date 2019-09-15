@@ -2,6 +2,18 @@ from train import IntermodalCarConsist, FreightCar
 
 
 def main():
+    #--------------- pony ng ----------------------------------------------------------------------
+    consist = IntermodalCarConsist(roster='pony',
+                                   base_numeric_id=3960,
+                                   gen=4,
+                                   subtype='U',
+                                   base_track_type='NG',
+                                   sprites_complete=False)
+
+    consist.add_unit(type=FreightCar,
+                     chassis='4_axle_ng_16px')
+
+
     #--------------- pony ----------------------------------------------------------------------
     consist = IntermodalCarConsist(roster='pony',
                                    base_numeric_id=3880,

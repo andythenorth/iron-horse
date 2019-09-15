@@ -31,7 +31,7 @@ random_switch (FEAT_TRAINS, ${vehicle.location_of_random_bits_for_random_variant
     random_switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_containers_random_${container_gestalt.type}, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
         independent: ${vehicle.id}_switch_graphics_vehicle_platform;
         <tal:container_types repeat="variant container_gestalt.variants">
-            1: return ss_intermodal_containers_${container_gestalt.type}_${4 * vehicle.vehicle_length}px_${repeat.variant.index};
+            1: return ss_intermodal_containers_${consist.floor_height_type}_${container_gestalt.type}_${4 * vehicle.vehicle_length}px_${repeat.variant.index};
         </tal:container_types>
     }
 </tal:container_spriteset_random_switches>

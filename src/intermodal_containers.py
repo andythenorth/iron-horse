@@ -23,6 +23,17 @@ class IntermodalContainerGestalt(object):
         self.pipeline = GenerateCompositedIntermodalContainers()
 
     @property
+    def floor_height_variants(self):
+        # used to handle, e.g. low floor, narrow gauge etc by putting a yoffset in the generated container sprites
+        # extend to accomodate double stack later (only one floor height probably)?
+        # format is (label, yoffset for floor-height) - leave floor height as 0 for default floor heights
+        if self.stack_type == 'single':
+            return (('default', 0), ('low_floor', 1))
+        else:
+            # other values not implemented yet
+            raise ValueError()
+
+    @property
     def id(self):
         return "intermodal_" + self.type + "_" + str(self.length) + "px"
 
@@ -32,6 +43,7 @@ class IntermodalBox16px(IntermodalContainerGestalt):
         super().__init__()
         self.length = 16
         self.type = 'box'
+        self.stack_type = 'single'
         self.variants = [['box_30_foot_1CC'],
                          ['box_30_foot_2CC'],
                          ['box_30_foot_red']]
@@ -43,6 +55,7 @@ class IntermodalBox24px(IntermodalContainerGestalt):
         super().__init__()
         self.length = 24
         self.type = 'box'
+        self.stack_type = 'single'
         self.variants = [['box_20_foot_1CC', 'box_20_foot_red'],
                          ['box_20_foot_red', 'box_20_foot_1CC'],
                          ['box_40_foot_1CC'],
@@ -55,6 +68,7 @@ class IntermodalBox32px(IntermodalContainerGestalt):
         super().__init__()
         self.length = 32
         self.type = 'box'
+        self.stack_type = 'single'
         self.variants = [['box_20_foot_1CC', 'box_20_foot_1CC', 'box_20_foot_red'],
                          ['box_20_foot_red', 'box_20_foot_red', 'box_20_foot_red'],
                          ['box_20_foot_2CC', 'box_20_foot_2CC', 'box_20_foot_2CC'],
@@ -73,6 +87,7 @@ class IntermodalBulk16px(IntermodalContainerGestalt):
         super().__init__()
         self.length = 16
         self.type = 'bulk'
+        self.stack_type = 'single'
         self.variants = [['box_30_foot_1CC'],
                          ['box_30_foot_2CC']]
 
@@ -82,6 +97,7 @@ class IntermodalBulk24px(IntermodalContainerGestalt):
         super().__init__()
         self.length = 24
         self.type = 'bulk'
+        self.stack_type = 'single'
         self.variants = [['box_20_foot_1CC', 'box_20_foot_red'],
                          ['box_20_foot_red', 'box_20_foot_1CC'],
                          ['box_40_foot_1CC'],
@@ -94,6 +110,7 @@ class IntermodalBulk32px(IntermodalContainerGestalt):
         super().__init__()
         self.length = 32
         self.type = 'bulk'
+        self.stack_type = 'single'
         self.variants = [['box_20_foot_1CC', 'box_20_foot_red', 'box_20_foot_1CC'],
                          ['box_20_foot_red', 'box_20_foot_red', 'box_20_foot_red'],
                          ['box_20_foot_2CC', 'box_20_foot_2CC', 'box_20_foot_2CC'],
@@ -111,6 +128,7 @@ class IntermodalEdiblesTank16px(IntermodalContainerGestalt):
         super().__init__()
         self.length = 16
         self.type = 'edibles_tank'
+        self.stack_type = 'single'
         self.variants = [['box_30_foot_1CC'],
                          ['box_30_foot_2CC']]
 
@@ -121,6 +139,7 @@ class IntermodalEdiblesTank24px(IntermodalContainerGestalt):
         super().__init__()
         self.length = 24
         self.type = 'edibles_tank'
+        self.stack_type = 'single'
         self.variants = [['box_20_foot_1CC', 'box_20_foot_red'],
                          ['box_20_foot_red', 'box_20_foot_1CC'],
                          ['box_40_foot_1CC'],
@@ -133,6 +152,7 @@ class IntermodalEdiblesTank32px(IntermodalContainerGestalt):
         super().__init__()
         self.length = 32
         self.type = 'edibles_tank'
+        self.stack_type = 'single'
         self.variants = [['box_20_foot_1CC', 'box_20_foot_red', 'box_20_foot_1CC'],
                          ['box_20_foot_red', 'box_20_foot_red', 'box_20_foot_red'],
                          ['box_20_foot_2CC', 'box_20_foot_2CC', 'box_20_foot_2CC'],
@@ -150,6 +170,7 @@ class IntermodalFlat16px(IntermodalContainerGestalt):
         super().__init__()
         self.length = 16
         self.type = 'flat'
+        self.stack_type = 'single'
         self.variants = [['box_30_foot_1CC'],
                          ['box_30_foot_2CC']]
 
@@ -160,6 +181,7 @@ class IntermodalFlat24px(IntermodalContainerGestalt):
         super().__init__()
         self.length = 24
         self.type = 'flat'
+        self.stack_type = 'single'
         self.variants = [['box_20_foot_red', 'empty_20_foot',]]
 
 
@@ -168,6 +190,7 @@ class IntermodalFlat32px(IntermodalContainerGestalt):
         super().__init__()
         self.length = 32
         self.type = 'flat'
+        self.stack_type = 'single'
         self.variants = [['box_20_foot_red', 'empty_20_foot', 'empty_20_foot']]
 
 
@@ -176,6 +199,7 @@ class IntermodalLivestock16px(IntermodalContainerGestalt):
         super().__init__()
         self.length = 16
         self.type = 'livestock'
+        self.stack_type = 'single'
         self.variants = [['box_30_foot_1CC'],
                          ['box_30_foot_2CC']]
 
@@ -186,6 +210,7 @@ class IntermodalLivestock24px(IntermodalContainerGestalt):
         super().__init__()
         self.length = 24
         self.type = 'livestock'
+        self.stack_type = 'single'
         self.variants = [['box_20_foot_red', 'empty_20_foot',]]
 
 
@@ -194,6 +219,7 @@ class IntermodalLivestock32px(IntermodalContainerGestalt):
         super().__init__()
         self.length = 32
         self.type = 'livestock'
+        self.stack_type = 'single'
         self.variants = [['box_20_foot_red', 'empty_20_foot', 'empty_20_foot']]
 
 
@@ -202,6 +228,7 @@ class IntermodalReefer16px(IntermodalContainerGestalt):
         super().__init__()
         self.length = 16
         self.type = 'reefer'
+        self.stack_type = 'single'
         self.variants = [['box_30_foot_1CC'],
                          ['box_30_foot_2CC']]
 
@@ -212,6 +239,7 @@ class IntermodalReefer24px(IntermodalContainerGestalt):
         super().__init__()
         self.length = 24
         self.type = 'reefer'
+        self.stack_type = 'single'
         self.variants = [['box_20_foot_red', 'empty_20_foot',]]
 
 
@@ -220,6 +248,7 @@ class IntermodalReefer32px(IntermodalContainerGestalt):
         super().__init__()
         self.length = 32
         self.type = 'reefer'
+        self.stack_type = 'single'
         self.variants = [['box_20_foot_red', 'empty_20_foot', 'empty_20_foot']]
 
 
@@ -228,6 +257,7 @@ class IntermodalTank16px(IntermodalContainerGestalt):
         super().__init__()
         self.length = 16
         self.type = 'tank'
+        self.stack_type = 'single'
         self.variants = [['box_30_foot_1CC'],
                          ['box_30_foot_2CC']]
 
@@ -238,6 +268,7 @@ class IntermodalTank24px(IntermodalContainerGestalt):
         super().__init__()
         self.length = 24
         self.type = 'tank'
+        self.stack_type = 'single'
         self.variants = [['box_20_foot_red', 'empty_20_foot',]]
 
 
@@ -246,6 +277,7 @@ class IntermodalTank32px(IntermodalContainerGestalt):
         super().__init__()
         self.length = 32
         self.type = 'tank'
+        self.stack_type = 'single'
         self.variants = [['box_20_foot_red', 'empty_20_foot', 'empty_20_foot']]
 
 

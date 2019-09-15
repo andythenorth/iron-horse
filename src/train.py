@@ -1326,6 +1326,12 @@ class ExpressIntermodalCarConsist(CarConsist):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsIntermodal()
 
+    @property
+    # account for variable floor height
+    def floor_height_type(self):
+        # !! express intermodal all default currently, extend as needed
+        return 'default'
+
 
 class FlatCarConsist(CarConsist):
     """
@@ -1436,6 +1442,14 @@ class IntermodalCarConsist(CarConsist):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsIntermodal()
 
+    @property
+    # account for variable floor height
+    def floor_height_type(self):
+        # currently we're only checking NG or not, this might need extended in future (might need prop directly on the consist?)
+        if self.track_type == 'NG':
+            return 'low_floor'
+        else:
+            return 'default'
 
 class LivestockCarConsist(CarConsist):
     """

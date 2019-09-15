@@ -6,8 +6,10 @@ spriteset(ss_intermodal_containers_empty, "src/graphics/spriterow_template.png")
 
 <tal:container_spritesets repeat="container_gestalt intermodal_containers.registered_container_gestalts">
     <tal:variants repeat="variant container_gestalt.variants">
-        spriteset(ss_intermodal_containers_${container_gestalt.type}_${container_gestalt.length}px_${repeat.variant.index}, "${global_constants.graphics_path}${container_gestalt.id}.png") {
-            spriteset_template_asymmetric_unreversed_8_8_unflipped(10 + ${repeat.variant.index * 30})
-        }
+        <tal:floor_height_types repeat="floor_height_type container_gestalt.floor_height_variants">
+            spriteset(ss_intermodal_containers_${floor_height_type[0]}_${container_gestalt.type}_${container_gestalt.length}px_${repeat.variant.index}, "${global_constants.graphics_path}${container_gestalt.id}.png") {
+                spriteset_template_asymmetric_unreversed_8_8_unflipped(10 + ${repeat.variant.index * 60} + ${repeat.floor_height_type.index * 30})
+            }
+        </tal:floor_height_types>
     </tal:variants>
 </tal:container_spritesets>
