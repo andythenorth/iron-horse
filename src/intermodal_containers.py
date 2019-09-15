@@ -249,11 +249,6 @@ class IntermodalTank32px(IntermodalContainerGestalt):
         self.variants = [['box_20_foot_red', 'empty_20_foot', 'empty_20_foot']]
 
 
-def get_container_types():
-    for container_gestalt in registered_container_gestalts:
-        print(container_gestalt.id)
-    return {'bulk': [1, 2, 3], 'reefer': [1, 2, 3], 'box': [1, 2, 3], 'tank': [1, 2, 3],
-            'livestock': [1, 2, 3], 'flat': [1, 2, 3], 'edibles_tank': [1, 2, 3]}
 
 def get_container_gestalts_by_length(vehicle_length):
     result = []

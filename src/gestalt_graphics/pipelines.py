@@ -271,17 +271,6 @@ class GenerateCompositedIntermodalContainers(Pipeline):
                              graphics_constants.spriterow_height)
             self.units.append(AppendToSpritesheet(variant_spritesheet, crop_box_dest))
 
-        # provide an empty spritesheet (or skip compositing) if container is 'empty'
-        # but what about offsetting containers to end or middle? e.g. 40ft container on 60ft wagon
-        # - always default to offset centered if < total length
-        # - offsetting to end is achieved by including 'empty' containers
-        # == #
-        # each template will need to provide a row of black pixels to use between containers
-        # - no mask for singles
-        # - don't insert the mask if empty
-        # - this means 20-20-empty is not going to be possible, probably fine
-        # - add a guard against 20-20-empty and empty-20-20
-
     def render(self, intermodal_container_gestalt, global_constants):
         self.units = []
         self.intermodal_container_gestalt = intermodal_container_gestalt
