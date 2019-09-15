@@ -39,8 +39,10 @@ STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Overdekte onder
 STR_NAME_SUFFIX_CRYO_TANK_CAR                                   :Cryotanker
 STR_NAME_SUFFIX_CURTAIN_SIDE_BOX_CAR                            :Voertuig met schuifdeuren
 STR_NAME_SUFFIX_DUMP_CAR                                        :Mineralenwagon
+STR_NAME_SUFFIX_DUMP_CAR_HIGH_SIDE                              :Mineralenwagon met hoge zijkant
 STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Voedseltanker
 STR_NAME_SUFFIX_EXPRESS_CAR                                     :Expreswagen
+STR_NAME_SUFFIX_EXPRESS_INTERMODAL_CAR                          :Intermodale expressewagen
 STR_NAME_SUFFIX_FLAT_CAR                                        :Platte wagon
 STR_NAME_SUFFIX_FRUIT_VEG_CAR                                   :Fruit- en groentenwagen
 STR_NAME_SUFFIX_GRAIN_HOPPER_CAR                                :Graanonderlosser
