@@ -44,7 +44,7 @@ def main():
                                    base_numeric_id=3770,
                                    gen=6,
                                    subtype='A',
-                                   sprites_complete=False)
+                                   sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
                      chassis='2_axle_1cc_filled_16px')
@@ -54,7 +54,7 @@ def main():
                                    base_numeric_id=3750,
                                    gen=6,
                                    subtype='B',
-                                   sprites_complete=False)
+                                   sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
                      chassis='4_axle_1cc_filled_24px')
@@ -64,9 +64,7 @@ def main():
                                    base_numeric_id=3760,
                                    gen=6,
                                    subtype='C',
-                                   sprites_complete=False)
+                                   sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
                      chassis='4_axle_1cc_filled_32px')
-
-    #--------------- llama ----------------------------------------------------------------------
