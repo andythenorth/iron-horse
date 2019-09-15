@@ -85,6 +85,9 @@ edibles_tank_cars.main()
 from vehicles import express_cars
 express_cars.main()
 
+from vehicles import express_intermodal_cars
+express_intermodal_cars.main()
+
 from vehicles import flat_cars
 flat_cars.main()
 
