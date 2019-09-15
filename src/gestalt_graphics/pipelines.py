@@ -234,9 +234,9 @@ class GenerateCompositedIntermodalContainers(Pipeline):
                         container_height = container_sprites[angle_index][0].size[1]
                         # loc_point_y_transform then moves the loc point to the left-most corner of the container
                         # this makes it easier to place the loc point pixels in the templates
-                        loc_point_y_transforms = {'20': [1, 3, 1, 3, 1, 3, 1, 3],
-                                                  '30': [1, 3, 1, 4, 1, 3, 1, 4],
-                                                  '40': [1, 3, 1, 5, 1, 3, 1, 5]}
+                        loc_point_y_transforms = {'20': [1, 3, 1, 2, 1, 3, 1, 2],
+                                                  '30': [1, 3, 1, 3, 1, 3, 1, 3],
+                                                  '40': [1, 3, 1, 4, 1, 3, 1, 4]}
                         container_foot_length = container_for_this_loc_point[0].split('_foot')[0][-2:] # extra special way to slice the length out of the name :P
                         loc_point_y_transform = loc_point_y_transforms[container_foot_length][angle_index]
                         # (needed beause loc points are left-bottom not left-top as per co-ordinate system, makes drawing loc points easier)
