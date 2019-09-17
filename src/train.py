@@ -1437,7 +1437,9 @@ class IntermodalCarConsist(CarConsist):
         self.default_cargos = polar_fox.constants.default_cargos['open']
         self.loading_speed_multiplier = 2
         self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['freight_core']
-        # allow flipping, used to flip company colour
+        # assume all wagons randomly swap CC, revert to False in wagon subclasses as needed
+        self.random_company_colour_swap = False
+        # allow flipping, used to flip company colour deliberately
         self.allow_flip = True
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsIntermodal()

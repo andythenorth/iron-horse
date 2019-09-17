@@ -278,7 +278,9 @@ class IntermodalTank32px(IntermodalContainerGestalt):
         self.length = 32
         self.type = 'tank'
         self.stack_type = 'single'
-        self.variants = [['box_20_foot_red', 'empty_20_foot', 'empty_20_foot']]
+        self.variants = [['tank_20_foot_1CC', 'tank_20_foot_1CC', 'tank_20_foot_1CC'],
+                         ['tank_30_foot_1CC', 'tank_30_foot_1CC'],
+                         ['tank_40_foot_1CC', 'tank_20_foot_1CC']]
 
 
 
