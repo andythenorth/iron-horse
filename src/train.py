@@ -183,6 +183,17 @@ class Consist(object):
         else:
             return False
 
+    @property
+    def requires_colour_mapping_cb(self):
+        # maybe overly abstracted, but the condition in properties template was getting ugly
+        # this is pretty clunky, but JFDI eh?  Fix it later if needed.  Hmm will break if class names change!
+        if self.random_company_colour_swap:
+            return True
+        elif self.gestalt_graphics.__class__.__name__ == 'GestaltGraphicsIntermodal':
+            return True
+        else:
+            return False
+
     def get_spriterows_for_consist_or_subpart(self, units):
         # pass either list of all units in consist, or a slice of the consist starting from front (arbitrary slices not useful)
         result = []

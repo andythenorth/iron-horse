@@ -23,7 +23,7 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_platform, vehic
 <tal:container_spriteset_random_switches repeat="container_gestalt intermodal_containers.get_container_gestalts_by_length(vehicle.vehicle_length)">
     random_switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_containers_random_${container_gestalt.type}, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
         <tal:container_types repeat="variant container_gestalt.variants">
-            1: return ss_intermodal_containers_${consist.floor_height_type}_${container_gestalt.type}_${4 * vehicle.vehicle_length}px_${repeat.variant.index};
+            1: return switch_intermodal_containers_${consist.floor_height_type}_${container_gestalt.type}_${4 * vehicle.vehicle_length}px_${repeat.variant.index};
         </tal:container_types>
     }
 </tal:container_spriteset_random_switches>
@@ -60,9 +60,13 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_containers_chec
 
 <!--! load state is assumed to be all or nothing - any cargo = full load of containers -->
 <!--! !! might want to handle intermediate load states when multiple containers are used ?? 50:50 -->
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_containers, cargo_count) {
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_containers_check_cargo, cargo_count) {
         0: return ss_intermodal_containers_empty;
     return ${vehicle.id}_switch_graphics_vehicle_containers_check_cargo_label;
+}
+
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_containers, STORE_TEMP(base_sprite_2cc + 16 * company_colour2 + company_colour1, 0x100)) {
+    return ${vehicle.id}_switch_graphics_vehicle_containers_check_cargo;
 }
 
 // switch layers: base platform / containers
@@ -81,6 +85,14 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase, 0) {
 }
 
 <tal:include metal:use-macro="load: graphics_switches.pynml" />
+
+<!--! dedicated colour remapping of second intermodal livery
+     (does this work for NA Horse? Dunno yet, find out when that happens)  -->
+// handle user flipped state
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_colour_mapping, vehicle_is_flipped) {
+    1: return base_sprite_2cc + 16 * company_colour1 + company_colour2; <!--! swap 1CC and 2CC -->
+    return base_sprite_2cc + 16 * company_colour2 + company_colour1; <!--! apply regular 1CC and 2CC -->
+}
 
 <tal:optional_capacity_switches condition="vehicle.has_cargo_capacity">
     <tal:include metal:use-macro="load: capacity_switches.pynml" />

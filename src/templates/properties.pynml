@@ -110,12 +110,14 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
         purchase:                       ${vehicle.id}_switch_graphics_purchase;
         cost_factor:                    ${consist.buy_cost}; // CB used as it is capped to max 32k, prop is only 255
         running_cost_factor:            ${consist.running_cost}; // CB used as it is capped to max 32k, prop is only 255
-        <!--! !!! quite unfinished handling of random_trgigger -->
+        <!--! !!! quite unfinished handling of random_trigger condition check -->
         <tal:conditional_random_trigger condition="consist.gestalt_graphics.__class__.__name__ == 'GestaltGraphicsIntermodal'">
             random_trigger:                 ${vehicle.id}_switch_graphics_vehicle_containers;
         </tal:conditional_random_trigger>
-        <tal:random_company_colour_swap condition="consist.random_company_colour_swap">
+        <!--! !!! condition check now looks ugly eh? -->
+        <tal:random_company_colour_swap condition="consist.requires_colour_mapping_cb">
             colour_mapping:                 ${vehicle.id}_switch_colour_mapping;
+            purchase_colour_mapping:        base_sprite_2cc + 16 * company_colour2 + company_colour1; <!--! apply regular 1CC and 2CC -->
         </tal:random_company_colour_swap>
         <!--! only use the capacity switches if vehicle carries cargo, makes faster compile (saved about 20% of time) -->
         <tal:optional_capacity_switches condition="vehicle.has_cargo_capacity">
