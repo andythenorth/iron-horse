@@ -1322,6 +1322,10 @@ class ExpressIntermodalCarConsist(CarConsist):
         self.weight_factor = polar_fox.constants.mail_multiplier
         self.floating_run_cost_multiplier = 1.66
         self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['express_core']
+        # intermodal containers can't use random colour swaps on the wagons...
+        # ...because the random bits are re-randomised when new cargo loads, to get new random containers, which would also cause new random wagon colour
+        # player can still flip to the second livery
+        self.random_company_colour_swap = False
         self.allow_flip = True
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsIntermodal()
@@ -1437,9 +1441,10 @@ class IntermodalCarConsist(CarConsist):
         self.default_cargos = polar_fox.constants.default_cargos['open']
         self.loading_speed_multiplier = 2
         self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['freight_core']
-        # assume all wagons randomly swap CC, revert to False in wagon subclasses as needed
+        # intermodal containers can't use random colour swaps on the wagons...
+        # ...because the random bits are re-randomised when new cargo loads, to get new random containers, which would also cause new random wagon colour
+        # player can still flip to the second livery
         self.random_company_colour_swap = False
-        # allow flipping, used to flip company colour deliberately
         self.allow_flip = True
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsIntermodal()

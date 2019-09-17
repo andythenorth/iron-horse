@@ -5,31 +5,23 @@
       don't conflate them :) -->
 
 // graphics chain for vehicle platform
-<tal:random_reverse_variants repeat="reversed_variant consist.reversed_variants">
-    <tal:user_flipped repeat="flipped ['unflipped', 'flipped']">
-        spriteset(${vehicle.id}_ss_${reversed_variant}_${flipped}, "${global_constants.graphics_path}${consist.id}.png") {
-          spriteset_template_${vehicle.symmetry_type}_${reversed_variant}_${vehicle.vehicle_length}_8_${flipped}(10 + ${vehicle.spriterow_num * 30})
-        }
-    </tal:user_flipped>
+spriteset(${vehicle.id}_ss_unflipped, "${global_constants.graphics_path}${consist.id}.png") {
+  spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.vehicle_length}_8_unflipped(10 + ${vehicle.spriterow_num * 30})
+}
+spriteset(${vehicle.id}_ss_flipped, "${global_constants.graphics_path}${consist.id}.png") {
+  spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.vehicle_length}_8_flipped(10 + ${vehicle.spriterow_num * 30} + 30)
+}
 
-    // handle user flipped state
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${reversed_variant}, vehicle_is_flipped) {
-        1: return ${vehicle.id}_ss_${reversed_variant}_flipped;
-        return ${vehicle.id}_ss_${reversed_variant}_unflipped;
-    }
-</tal:random_reverse_variants>
-
-random_switch (FEAT_TRAINS, ${vehicle.location_of_random_bits_for_random_variant}, ${vehicle.id}_switch_graphics_vehicle_platform) {
-    <tal:random_graphics_variations repeat="reversed_variant consist.reversed_variants">
-        1: return ${vehicle.id}_switch_graphics_${reversed_variant};
-    </tal:random_graphics_variations>
+// handle user flipped state
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_platform, vehicle_is_flipped) {
+    1: return ${vehicle.id}_ss_flipped;
+    return ${vehicle.id}_ss_unflipped;
 }
 
 // graphics chain for containers
 <!--! note that spritesets are global for intermodal containers -->
 <tal:container_spriteset_random_switches repeat="container_gestalt intermodal_containers.get_container_gestalts_by_length(vehicle.vehicle_length)">
     random_switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_containers_random_${container_gestalt.type}, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
-        independent: ${vehicle.id}_switch_graphics_vehicle_platform;
         <tal:container_types repeat="variant container_gestalt.variants">
             1: return ss_intermodal_containers_${consist.floor_height_type}_${container_gestalt.type}_${4 * vehicle.vehicle_length}px_${repeat.variant.index};
         </tal:container_types>
