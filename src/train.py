@@ -1260,6 +1260,7 @@ class DumpCarHighSideConsist(DumpCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = 'dump_car_high_side'
         super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos['dump_high_sides']
 
 
 class EdiblesTankCarConsist(CarConsist):
@@ -1449,7 +1450,7 @@ class IntermodalCarConsist(CarConsist):
         self.class_refit_groups = ['all_freight']
         self.label_refits_allowed = []  # no specific labels needed
         self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label['non_freight_special_cases']
-        self.default_cargos = polar_fox.constants.default_cargos['open']
+        self.default_cargos = polar_fox.constants.default_cargos['box']
         self.loading_speed_multiplier = 2
         self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['freight_core']
         # intermodal containers can't use random colour swaps on the wagons...
@@ -1675,7 +1676,7 @@ class PlateCarConsist(CarConsist):
         self.class_refit_groups = ['flatbed_freight']
         self.label_refits_allowed = ['GOOD']
         self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label['non_flatbed_freight']
-        self.default_cargos = polar_fox.constants.default_cargos['flat']
+        self.default_cargos = polar_fox.constants.default_cargos['plate']
         self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['non_core_wagons']
         # allow flipping, used to flip company colour
         self.allow_flip = True

@@ -92,7 +92,9 @@ cargo_labels = ['PASS', # pax first
                 'STAL',
                 'STCB',
                 'STST',
-                'CAST',
+                'CSTI',
+                'PEAT',
+                'ZINC',
                 #
                 'NULL']
 
@@ -139,22 +141,23 @@ default_cargos = {'box': ['GOOD', 'VPTS', 'FOOD'],
                   'cryo_gases': ['O2__', 'CHLO'],
                   'covered_hopper': ['GRAI', 'KAOL'],
                   'dump': ['IORE', 'MNO2', 'NITR', 'PHOS'],
+                  'dump_high_sides': ['COKE', 'SCMT', 'PEAT', 'COAL'],
                   'edibles_tank': ['WATR', 'MILK', 'BEER'],
                   'express': ['ENSP', 'FMSP', 'GOOD', 'FOOD', 'MAIL'],
                   'flat': ['STEL', 'STCB', 'COPR', 'METL'],
                   'fruit_veg': ['FRUT', 'BEAN', 'CASS', 'JAVA', 'NUTS'],
                   'hopper': ['LIME', 'GRVL', 'SAND', 'PORE', 'SALT', 'IORE', 'CORE'],
-                  # no intermodal, uses box
+                  # intermodal, uses box
                   'silo': ['CMNT', 'BDMT', 'RFPR', 'QLME', 'FMSP'],
                   'stake': ['WOOD'],
                   'mail': ['MAIL'],
                   'metal': ['STEL', 'COPR'],
                   'open': ['GOOD'],
                   'pax': ['PASS'],
+                  'plate': ['IRON', 'CSTI', 'ZINC', 'METL'],
                   'reefer': ['FOOD'],
                   'supplies': ['ENSP'],
                   'tank': ['OIL_', 'CTAR', 'KAOL', 'RUBR'],
-
                   }
 
 
