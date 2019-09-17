@@ -27,6 +27,7 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_platform, vehic
         </tal:container_types>
     }
 </tal:container_spriteset_random_switches>
+
 <!--! pseudo cargo checking code
     1. check known labels -> named random switch
     2. check known classes -> named random switch
