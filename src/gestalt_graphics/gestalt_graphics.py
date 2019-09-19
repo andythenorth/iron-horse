@@ -253,9 +253,9 @@ class GestaltGraphicsIntermodal(GestaltGraphics):
         self.pipelines = pipelines.get_pipelines(['extend_spriterows_for_composited_sprites_pipeline'])
 
     def get_output_row_types(self):
-        # two liveries so two rows, we're only using the composited sprites pipeline for chassis compositing, containers are provided on separate layer
-        # note to self, remarkably adding a second empty row appears to just work here :o
-        return ['empty', 'empty']
+        # 2 liveries * 4 variants so 8 empty rows, we're only using the composited sprites pipeline for chassis compositing, containers are provided on separate layer
+        # note to self, remarkably adding multiple empty rows appears to just work here :o
+        return ['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty']
 
     @property
     def nml_template(self):

@@ -7,10 +7,10 @@
 // graphics chain for vehicle platform
 <tal:position_variants repeat="position_variant ['default', 'first', 'last', 'middle']">
     spriteset(${vehicle.id}_ss_${position_variant}_unflipped, "${global_constants.graphics_path}${consist.id}.png") {
-      spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.vehicle_length}_8_unflipped(10 + ${vehicle.spriterow_num * 30})
+      spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.vehicle_length}_8_unflipped(10 + ${repeat.position_variant.index * 60})
     }
     spriteset(${vehicle.id}_ss_${position_variant}_flipped, "${global_constants.graphics_path}${consist.id}.png") {
-      spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.vehicle_length}_8_flipped(10 + ${vehicle.spriterow_num * 30} + 30)
+      spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.vehicle_length}_8_flipped(10 + ${repeat.position_variant.index * 60} + 30)
     }
 
     // handle user flipped state
