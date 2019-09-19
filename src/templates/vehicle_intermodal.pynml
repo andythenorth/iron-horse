@@ -5,7 +5,7 @@
       don't conflate them :) -->
 
 // graphics chain for vehicle platform
-<tal:position_variants repeat="position_variant ['default', 'first', 'last', 'inner']">
+<tal:position_variants repeat="position_variant ['default', 'first', 'last', 'middle']">
     spriteset(${vehicle.id}_ss_${position_variant}_unflipped, "${global_constants.graphics_path}${consist.id}.png") {
       spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.vehicle_length}_8_unflipped(10 + ${vehicle.spriterow_num * 30})
     }
@@ -14,83 +14,79 @@
     }
 
     // handle user flipped state
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_platform_${position_variant}, vehicle_is_flipped) {
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_platform_${position_variant}, vehicle_is_flipped) {
         1: return ${vehicle.id}_ss_${position_variant}_flipped;
         return ${vehicle.id}_ss_${position_variant}_unflipped;
     }
 </tal:position_variants>
 
-<tal:position_ruleset condition="False">
-    <!--! if 1 unit in sequence -->
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_modulo_num_units_in_consist_1_${cargo_label}, position_in_vehid_chain % 6) {
-        0: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['default']};
-    }
+// consist position switches - copied from railcars
+<!--! if 1 unit in sequence -->
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_platform_modulo_num_units_in_consist_1, position_in_vehid_chain % 6) {
+    0: return ${vehicle.id}_switch_graphics_platform_default;
+}
 
-    <!--! if 2 units in sequence -->
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_modulo_num_units_in_consist_2_${cargo_label}, position_in_vehid_chain % 6) {
-        0: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['first']};
-        return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['last']};
-    }
+<!--! if 2 units in sequence -->
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_platform_modulo_num_units_in_consist_2, position_in_vehid_chain % 6) {
+    0: return ${vehicle.id}_switch_graphics_platform_first;
+    return ${vehicle.id}_switch_graphics_platform_last;
+}
 
-    <!--! if 3 units in sequence -->
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_modulo_num_units_in_consist_3_${cargo_label}, position_in_vehid_chain % 6) {
-        0: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['first']};
-        1: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['special']};
-        return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['last']};
-    }
+<!--! if 3 units in sequence -->
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_platform_modulo_num_units_in_consist_3, position_in_vehid_chain % 6) {
+    0: return ${vehicle.id}_switch_graphics_platform_first;
+    1: return ${vehicle.id}_switch_graphics_platform_middle;
+    return ${vehicle.id}_switch_graphics_platform_last;
+}
 
-    <!--! if 4 units in sequence -->
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_modulo_num_units_in_consist_4_${cargo_label}, position_in_vehid_chain % 6) {
-        0: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['first']};
-        1: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['last']};
-        2: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['first']};
-        return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['last']};
-    }
+<!--! if 4 units in sequence -->
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_platform_modulo_num_units_in_consist_4, position_in_vehid_chain % 6) {
+    0: return ${vehicle.id}_switch_graphics_platform_first;
+    1: return ${vehicle.id}_switch_graphics_platform_last;
+    2: return ${vehicle.id}_switch_graphics_platform_first;
+    return ${vehicle.id}_switch_graphics_platform_last;
+}
 
-    <!--! if 5 units in sequence -->
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_modulo_num_units_in_consist_5_${cargo_label}, position_in_vehid_chain % 6) {
-        0: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['first']};
-        1: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['special']};
-        2: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['last']};
-        3: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['first']};
-        return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['last']};
-    }
+<!--! if 5 units in sequence -->
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_platform_modulo_num_units_in_consist_5, position_in_vehid_chain % 6) {
+    0: return ${vehicle.id}_switch_graphics_platform_first;
+    1: return ${vehicle.id}_switch_graphics_platform_middle;
+    2: return ${vehicle.id}_switch_graphics_platform_last;
+    3: return ${vehicle.id}_switch_graphics_platform_first;
+    return ${vehicle.id}_switch_graphics_platform_last;
+}
 
-    <!--! if 6 units in sequence -->
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_modulo_num_units_in_consist_6_${cargo_label}, position_in_vehid_chain % 6) {
-        0: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['first']};
-        1: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['special']};
-        2: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['last']};
-        3: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['first']};
-        4: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['special']};
-        return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['last']};
-    }
+<!--! if 6 units in sequence -->
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_platform_modulo_num_units_in_consist_6, position_in_vehid_chain % 6) {
+    0: return ${vehicle.id}_switch_graphics_platform_first;
+    1: return ${vehicle.id}_switch_graphics_platform_middle;
+    2: return ${vehicle.id}_switch_graphics_platform_last;
+    3: return ${vehicle.id}_switch_graphics_platform_first;
+    4: return ${vehicle.id}_switch_graphics_platform_middle;
+    return ${vehicle.id}_switch_graphics_platform_last;
+}
 
-    <!--! this is a remainder block, how many units are in it? -->
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_less_than_6_remaining_${cargo_label}, num_vehs_in_vehid_chain % 6) {
-        1: return ${vehicle.id}_switch_graphics_modulo_num_units_in_consist_1_${cargo_label};
-        2: return ${vehicle.id}_switch_graphics_modulo_num_units_in_consist_2_${cargo_label};
-        3: return ${vehicle.id}_switch_graphics_modulo_num_units_in_consist_3_${cargo_label};
-        4: return ${vehicle.id}_switch_graphics_modulo_num_units_in_consist_4_${cargo_label};
-        5: return ${vehicle.id}_switch_graphics_modulo_num_units_in_consist_5_${cargo_label};
-        return ${vehicle.id}_switch_graphics_modulo_num_units_in_consist_6_${cargo_label};
-    }
+<!--! this is a remainder block, how many units are in it? -->
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_platform_less_than_6_remaining, num_vehs_in_vehid_chain % 6) {
+    1: return ${vehicle.id}_switch_graphics_platform_modulo_num_units_in_consist_1;
+    2: return ${vehicle.id}_switch_graphics_platform_modulo_num_units_in_consist_2;
+    3: return ${vehicle.id}_switch_graphics_platform_modulo_num_units_in_consist_3;
+    4: return ${vehicle.id}_switch_graphics_platform_modulo_num_units_in_consist_4;
+    5: return ${vehicle.id}_switch_graphics_platform_modulo_num_units_in_consist_5;
+    return ${vehicle.id}_switch_graphics_platform_modulo_num_units_in_consist_6;
+}
 
-    <!--! given the consist, how many blocks of 6 units are there?  Is the unit within a block of 6, or a remainder block? -->
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_position_in_consist_entry_point_${cargo_label}, position_in_vehid_chain >= (num_vehs_in_vehid_chain - (num_vehs_in_vehid_chain  % 6))) {
-        1: return ${vehicle.id}_switch_graphics_less_than_6_remaining_${cargo_label};
-        return ${vehicle.id}_switch_graphics_modulo_num_units_in_consist_6_${cargo_label};
-    }
-</tal:position_ruleset>
-
-
-
+<!--! given the consist, how many blocks of 6 units are there?  Is the unit within a block of 6, or a remainder block? -->
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_platform_position_in_consist_entry_point, position_in_vehid_chain >= (num_vehs_in_vehid_chain - (num_vehs_in_vehid_chain  % 6))) {
+    1: return ${vehicle.id}_switch_graphics_platform_less_than_6_remaining;
+    return ${vehicle.id}_switch_graphics_platform_modulo_num_units_in_consist_6;
+}
 
 
 // graphics chain for containers
 <!--! note that spritesets are global for intermodal containers -->
 <tal:container_spriteset_random_switches repeat="container_gestalt intermodal_containers.get_container_gestalts_by_length(vehicle.vehicle_length)">
-    random_switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_containers_random_${container_gestalt.type}, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+    random_switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_containers_random_${container_gestalt.type}, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
         <tal:container_types repeat="variant container_gestalt.variants">
             1: return switch_intermodal_containers_${consist.floor_height_type}_${container_gestalt.type}_${4 * vehicle.vehicle_length}px_${repeat.variant.index};
         </tal:container_types>
@@ -104,44 +100,44 @@
 -->
 
 // check generic cargo classes
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_containers_check_cargo_class_liquid, cargo_classes & bitmask(CC_LIQUID)) {
-    0: ${vehicle.id}_switch_graphics_vehicle_containers_random_box;
-    return ${vehicle.id}_switch_graphics_vehicle_containers_random_tank;
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_containers_check_cargo_class_liquid, cargo_classes & bitmask(CC_LIQUID)) {
+    0: ${vehicle.id}_switch_graphics_containers_random_box;
+    return ${vehicle.id}_switch_graphics_containers_random_tank;
 }
 
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_containers_check_cargo_class_bulk, cargo_classes & bitmask(CC_BULK)) {
-    0: ${vehicle.id}_switch_graphics_vehicle_containers_check_cargo_class_liquid;
-    return ${vehicle.id}_switch_graphics_vehicle_containers_random_bulk;
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_containers_check_cargo_class_bulk, cargo_classes & bitmask(CC_BULK)) {
+    0: ${vehicle.id}_switch_graphics_containers_check_cargo_class_liquid;
+    return ${vehicle.id}_switch_graphics_containers_random_bulk;
 }
 
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_containers_check_cargo_class_refrigerated, cargo_classes & bitmask(CC_REFRIGERATED)) {
-    0: ${vehicle.id}_switch_graphics_vehicle_containers_check_cargo_class_bulk;
-    return ${vehicle.id}_switch_graphics_vehicle_containers_random_reefer;
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_containers_check_cargo_class_refrigerated, cargo_classes & bitmask(CC_REFRIGERATED)) {
+    0: ${vehicle.id}_switch_graphics_containers_check_cargo_class_bulk;
+    return ${vehicle.id}_switch_graphics_containers_random_reefer;
 }
 
 // check explicit cargo labels
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_containers_check_cargo_label, cargo_type_in_veh) {
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_containers_check_cargo_label, cargo_type_in_veh) {
     <tal:cargo_label_container_type_mapping repeat="cargo_label global_constants.intermodal_container_cargo_label_mapping.items()">
-        ${cargo_label[0]}: ${vehicle.id}_switch_graphics_vehicle_containers_random_${cargo_label[1]};
+        ${cargo_label[0]}: ${vehicle.id}_switch_graphics_containers_random_${cargo_label[1]};
     </tal:cargo_label_container_type_mapping>
-    return ${vehicle.id}_switch_graphics_vehicle_containers_check_cargo_class_refrigerated;
+    return ${vehicle.id}_switch_graphics_containers_check_cargo_class_refrigerated;
 }
 
 <!--! load state is assumed to be all or nothing - any cargo = full load of containers -->
 <!--! !! might want to handle intermediate load states when multiple containers are used ?? 50:50 -->
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_containers_check_cargo, cargo_count) {
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_containers_check_cargo, cargo_count) {
         0: return ss_intermodal_containers_empty;
-    return ${vehicle.id}_switch_graphics_vehicle_containers_check_cargo_label;
+    return ${vehicle.id}_switch_graphics_containers_check_cargo_label;
 }
 
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_containers, STORE_TEMP(base_sprite_2cc + 16 * company_colour2 + company_colour1, 0x100)) {
-    return ${vehicle.id}_switch_graphics_vehicle_containers_check_cargo;
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_containers, STORE_TEMP(base_sprite_2cc + 16 * company_colour2 + company_colour1, 0x100)) {
+    return ${vehicle.id}_switch_graphics_containers_check_cargo;
 }
 
 // switch layers: base platform / containers
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, getbits(extra_callback_info1, 8, 8)) {
-    0: return ${vehicle.id}_switch_graphics_vehicle_platform_default;
-    1: return ${vehicle.id}_switch_graphics_vehicle_containers;
+    0: return ${vehicle.id}_switch_graphics_platform_position_in_consist_entry_point;
+    1: return ${vehicle.id}_switch_graphics_containers;
 }
 
 
