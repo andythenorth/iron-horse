@@ -52,7 +52,7 @@ def main():
                                    sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     chassis='2_axle_filled_greebled_16px')
+                     chassis='2_axle_1cc_filled_16px')
 
 
     consist = IntermodalCarConsist(roster='pony',
@@ -62,7 +62,7 @@ def main():
                                    sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     chassis='4_axle_filled_greebled_24px')
+                     chassis='4_axle_1cc_filled_24px')
 
 
     consist = IntermodalCarConsist(roster='pony',
@@ -72,7 +72,7 @@ def main():
                                    sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     chassis='4_axle_filled_greebled_32px')
+                     chassis='4_axle_1cc_filled_32px')
 
 
     consist = IntermodalCarConsist(roster='pony',

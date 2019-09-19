@@ -5,18 +5,87 @@
       don't conflate them :) -->
 
 // graphics chain for vehicle platform
-spriteset(${vehicle.id}_ss_unflipped, "${global_constants.graphics_path}${consist.id}.png") {
-  spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.vehicle_length}_8_unflipped(10 + ${vehicle.spriterow_num * 30})
-}
-spriteset(${vehicle.id}_ss_flipped, "${global_constants.graphics_path}${consist.id}.png") {
-  spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.vehicle_length}_8_flipped(10 + ${vehicle.spriterow_num * 30} + 30)
-}
+<tal:position_variants repeat="position_variant ['default', 'first', 'last', 'inner']">
+    spriteset(${vehicle.id}_ss_${position_variant}_unflipped, "${global_constants.graphics_path}${consist.id}.png") {
+      spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.vehicle_length}_8_unflipped(10 + ${vehicle.spriterow_num * 30})
+    }
+    spriteset(${vehicle.id}_ss_${position_variant}_flipped, "${global_constants.graphics_path}${consist.id}.png") {
+      spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.vehicle_length}_8_flipped(10 + ${vehicle.spriterow_num * 30} + 30)
+    }
 
-// handle user flipped state
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_platform, vehicle_is_flipped) {
-    1: return ${vehicle.id}_ss_flipped;
-    return ${vehicle.id}_ss_unflipped;
-}
+    // handle user flipped state
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_platform_${position_variant}, vehicle_is_flipped) {
+        1: return ${vehicle.id}_ss_${position_variant}_flipped;
+        return ${vehicle.id}_ss_${position_variant}_unflipped;
+    }
+</tal:position_variants>
+
+<tal:position_ruleset condition="False">
+    <!--! if 1 unit in sequence -->
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_modulo_num_units_in_consist_1_${cargo_label}, position_in_vehid_chain % 6) {
+        0: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['default']};
+    }
+
+    <!--! if 2 units in sequence -->
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_modulo_num_units_in_consist_2_${cargo_label}, position_in_vehid_chain % 6) {
+        0: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['first']};
+        return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['last']};
+    }
+
+    <!--! if 3 units in sequence -->
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_modulo_num_units_in_consist_3_${cargo_label}, position_in_vehid_chain % 6) {
+        0: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['first']};
+        1: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['special']};
+        return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['last']};
+    }
+
+    <!--! if 4 units in sequence -->
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_modulo_num_units_in_consist_4_${cargo_label}, position_in_vehid_chain % 6) {
+        0: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['first']};
+        1: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['last']};
+        2: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['first']};
+        return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['last']};
+    }
+
+    <!--! if 5 units in sequence -->
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_modulo_num_units_in_consist_5_${cargo_label}, position_in_vehid_chain % 6) {
+        0: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['first']};
+        1: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['special']};
+        2: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['last']};
+        3: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['first']};
+        return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['last']};
+    }
+
+    <!--! if 6 units in sequence -->
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_modulo_num_units_in_consist_6_${cargo_label}, position_in_vehid_chain % 6) {
+        0: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['first']};
+        1: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['special']};
+        2: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['last']};
+        3: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['first']};
+        4: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['special']};
+        return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['last']};
+    }
+
+    <!--! this is a remainder block, how many units are in it? -->
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_less_than_6_remaining_${cargo_label}, num_vehs_in_vehid_chain % 6) {
+        1: return ${vehicle.id}_switch_graphics_modulo_num_units_in_consist_1_${cargo_label};
+        2: return ${vehicle.id}_switch_graphics_modulo_num_units_in_consist_2_${cargo_label};
+        3: return ${vehicle.id}_switch_graphics_modulo_num_units_in_consist_3_${cargo_label};
+        4: return ${vehicle.id}_switch_graphics_modulo_num_units_in_consist_4_${cargo_label};
+        5: return ${vehicle.id}_switch_graphics_modulo_num_units_in_consist_5_${cargo_label};
+        return ${vehicle.id}_switch_graphics_modulo_num_units_in_consist_6_${cargo_label};
+    }
+
+    <!--! given the consist, how many blocks of 6 units are there?  Is the unit within a block of 6, or a remainder block? -->
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_position_in_consist_entry_point_${cargo_label}, position_in_vehid_chain >= (num_vehs_in_vehid_chain - (num_vehs_in_vehid_chain  % 6))) {
+        1: return ${vehicle.id}_switch_graphics_less_than_6_remaining_${cargo_label};
+        return ${vehicle.id}_switch_graphics_modulo_num_units_in_consist_6_${cargo_label};
+    }
+</tal:position_ruleset>
+
+
+
+
 
 // graphics chain for containers
 <!--! note that spritesets are global for intermodal containers -->
@@ -71,7 +140,7 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_containers, STO
 
 // switch layers: base platform / containers
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, getbits(extra_callback_info1, 8, 8)) {
-    0: return ${vehicle.id}_switch_graphics_vehicle_platform;
+    0: return ${vehicle.id}_switch_graphics_vehicle_platform_default;
     1: return ${vehicle.id}_switch_graphics_vehicle_containers;
 }
 
