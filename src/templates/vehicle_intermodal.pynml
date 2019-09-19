@@ -22,64 +22,43 @@
 
 // consist position switches - copied from railcars
 <!--! if 1 unit in sequence -->
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_platform_modulo_num_units_in_consist_1, position_in_vehid_chain % 6) {
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_platform_modulo_num_units_in_consist_1, position_in_vehid_chain % 4) {
     0: return ${vehicle.id}_switch_graphics_platform_default;
 }
 
 <!--! if 2 units in sequence -->
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_platform_modulo_num_units_in_consist_2, position_in_vehid_chain % 6) {
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_platform_modulo_num_units_in_consist_2, position_in_vehid_chain % 4) {
     0: return ${vehicle.id}_switch_graphics_platform_first;
     return ${vehicle.id}_switch_graphics_platform_last;
 }
 
 <!--! if 3 units in sequence -->
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_platform_modulo_num_units_in_consist_3, position_in_vehid_chain % 6) {
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_platform_modulo_num_units_in_consist_3, position_in_vehid_chain % 4) {
     0: return ${vehicle.id}_switch_graphics_platform_first;
     1: return ${vehicle.id}_switch_graphics_platform_middle;
     return ${vehicle.id}_switch_graphics_platform_last;
 }
 
 <!--! if 4 units in sequence -->
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_platform_modulo_num_units_in_consist_4, position_in_vehid_chain % 6) {
-    0: return ${vehicle.id}_switch_graphics_platform_first;
-    1: return ${vehicle.id}_switch_graphics_platform_last;
-    2: return ${vehicle.id}_switch_graphics_platform_first;
-    return ${vehicle.id}_switch_graphics_platform_last;
-}
-
-<!--! if 5 units in sequence -->
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_platform_modulo_num_units_in_consist_5, position_in_vehid_chain % 6) {
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_platform_modulo_num_units_in_consist_4, position_in_vehid_chain % 4) {
     0: return ${vehicle.id}_switch_graphics_platform_first;
     1: return ${vehicle.id}_switch_graphics_platform_middle;
-    2: return ${vehicle.id}_switch_graphics_platform_last;
-    3: return ${vehicle.id}_switch_graphics_platform_first;
-    return ${vehicle.id}_switch_graphics_platform_last;
-}
-
-<!--! if 6 units in sequence -->
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_platform_modulo_num_units_in_consist_6, position_in_vehid_chain % 6) {
-    0: return ${vehicle.id}_switch_graphics_platform_first;
-    1: return ${vehicle.id}_switch_graphics_platform_middle;
-    2: return ${vehicle.id}_switch_graphics_platform_last;
-    3: return ${vehicle.id}_switch_graphics_platform_first;
-    4: return ${vehicle.id}_switch_graphics_platform_middle;
+    2: return ${vehicle.id}_switch_graphics_platform_middle;
     return ${vehicle.id}_switch_graphics_platform_last;
 }
 
 <!--! this is a remainder block, how many units are in it? -->
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_platform_less_than_6_remaining, num_vehs_in_vehid_chain % 6) {
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_platform_less_than_4_remaining, num_vehs_in_vehid_chain % 4) {
     1: return ${vehicle.id}_switch_graphics_platform_modulo_num_units_in_consist_1;
     2: return ${vehicle.id}_switch_graphics_platform_modulo_num_units_in_consist_2;
     3: return ${vehicle.id}_switch_graphics_platform_modulo_num_units_in_consist_3;
-    4: return ${vehicle.id}_switch_graphics_platform_modulo_num_units_in_consist_4;
-    5: return ${vehicle.id}_switch_graphics_platform_modulo_num_units_in_consist_5;
-    return ${vehicle.id}_switch_graphics_platform_modulo_num_units_in_consist_6;
+    return ${vehicle.id}_switch_graphics_platform_modulo_num_units_in_consist_4;
 }
 
-<!--! given the consist, how many blocks of 6 units are there?  Is the unit within a block of 6, or a remainder block? -->
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_platform_position_in_consist_entry_point, position_in_vehid_chain >= (num_vehs_in_vehid_chain - (num_vehs_in_vehid_chain  % 6))) {
-    1: return ${vehicle.id}_switch_graphics_platform_less_than_6_remaining;
-    return ${vehicle.id}_switch_graphics_platform_modulo_num_units_in_consist_6;
+<!--! given the consist, how many blocks of 6 units are there?  Is the unit within a block of 4, or a remainder block? -->
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_platform_position_in_consist_entry_point, position_in_vehid_chain >= (num_vehs_in_vehid_chain - (num_vehs_in_vehid_chain  % 4))) {
+    1: return ${vehicle.id}_switch_graphics_platform_less_than_4_remaining;
+    return ${vehicle.id}_switch_graphics_platform_modulo_num_units_in_consist_4;
 }
 
 
