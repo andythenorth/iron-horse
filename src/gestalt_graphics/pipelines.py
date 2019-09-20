@@ -640,7 +640,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                 pax_mail_car_col_image.paste(pax_mail_car_spriterow_input_image, crop_box_comp_col_dest_2)
                 # add doors
                 pax_mail_car_col_image.paste(doors_image, crop_box_comp_col_dest_doors, doors_mask)
-                #if self.consist.id == 'luxury_passenger_car_pony_gen_6A':
+                #if self.consist.id == 'luxury_passenger_car_pony_gen_6U':
                      #pax_mail_car_col_image.show()
 
                 row_dest_start_x = [self.second_col_start_x, self.first_col_start_x][col_count]
@@ -649,7 +649,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                                           row_dest_start_x + self.col_image_width,
                                           2 * graphics_constants.spriterow_height)
                 pax_mail_car_rows_image.paste(pax_mail_car_col_image, crop_box_comp_row_dest)
-            #if self.consist.id == 'luxury_passenger_car_pony_gen_6A':
+            #if self.consist.id == 'luxury_passenger_car_pony_gen_6U':
                  #pax_mail_car_rows_image.show()
 
             crop_box_dest = (0,
