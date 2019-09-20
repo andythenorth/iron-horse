@@ -1,4 +1,4 @@
-from train import ExpressIntermodalCarConsist, ExpressCar
+from train import ExpressIntermodalCarConsist, ExpressIntermodalCar
 
 
 def main():
@@ -12,7 +12,7 @@ def main():
                                    subtype='B',
                                    sprites_complete=True)
 
-    consist.add_unit(type=ExpressCar,
+    consist.add_unit(type=ExpressIntermodalCar,
                      chassis='2_axle_1cc_filled_24px')
 
 
@@ -22,7 +22,7 @@ def main():
                                    subtype='C',
                                    sprites_complete=True)
 
-    consist.add_unit(type=ExpressCar,
+    consist.add_unit(type=ExpressIntermodalCar,
                      chassis='4_axle_1cc_filled_32px')
 
 
@@ -32,7 +32,7 @@ def main():
                                    subtype='B',
                                    sprites_complete=True)
 
-    consist.add_unit(type=ExpressCar,
+    consist.add_unit(type=ExpressIntermodalCar,
                      chassis='2_axle_1cc_filled_24px')
 
 
@@ -42,5 +42,5 @@ def main():
                                    subtype='C',
                                    sprites_complete=True)
 
-    consist.add_unit(type=ExpressCar,
+    consist.add_unit(type=ExpressIntermodalCar,
                      chassis='4_axle_1cc_filled_32px')

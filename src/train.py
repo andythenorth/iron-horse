@@ -2538,7 +2538,7 @@ class LuxuryPaxCar(TrainCar):
 
 class ExpressCar(TrainCar):
     """
-    Express freight wagon.
+    Express freight car.
     """
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -2546,6 +2546,16 @@ class ExpressCar(TrainCar):
         base_capacity = self.consist.roster.freight_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
         # we nerf down express car capacity to same as mail cars, to account for them being faster
         self.capacity = (self.vehicle_length * base_capacity) / polar_fox.constants.mail_multiplier
+
+
+class ExpressIntermodalCar(ExpressCar):
+    """
+    Express container car, subclassed from express car.  This subclass only exists to set symmetry_type to asymmetric.
+    """
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # express intermodal cars may be asymmetric, there is magic in the graphics processing to make symmetric pax/mail sprites also work with this
+        self._symmetry_type = 'asymmetric'
 
 
 class FreightCar(TrainCar):
@@ -2561,6 +2571,16 @@ class FreightCar(TrainCar):
         # magic to set freight car capacity subject to length
         base_capacity = self.consist.roster.freight_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
         self.capacity = (self.vehicle_length * base_capacity)
+
+
+class IntermodalCar(FreightCar):
+    """
+    Intermodal Car. This subclass only exists to set symmetry_type to asymmetric.
+    """
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # intermodal cars may be asymmetric, there is magic in the graphics processing to make cargo sprites work with this
+        self._symmetry_type = 'asymmetric'
 
 
 class WellCar(FreightCar):

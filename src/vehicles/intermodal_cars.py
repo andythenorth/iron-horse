@@ -1,4 +1,4 @@
-from train import IntermodalCarConsist, FreightCar
+from train import IntermodalCarConsist, IntermodalCar
 
 
 def main():
@@ -10,7 +10,7 @@ def main():
                                    base_track_type='NG',
                                    sprites_complete=True)
 
-    consist.add_unit(type=FreightCar,
+    consist.add_unit(type=IntermodalCar,
                      chassis='4_axle_ng_16px')
 
 
@@ -21,7 +21,7 @@ def main():
                                    subtype='A',
                                    sprites_complete=True)
 
-    consist.add_unit(type=FreightCar,
+    consist.add_unit(type=IntermodalCar,
                      chassis='2_axle_filled_16px')
 
 
@@ -31,7 +31,7 @@ def main():
                                    subtype='B',
                                    sprites_complete=True)
 
-    consist.add_unit(type=FreightCar,
+    consist.add_unit(type=IntermodalCar,
                      chassis='4_axle_gapped_24px')
 
 
@@ -41,7 +41,7 @@ def main():
                                    subtype='C',
                                    sprites_complete=True)
 
-    consist.add_unit(type=FreightCar,
+    consist.add_unit(type=IntermodalCar,
                      chassis='4_axle_gapped_32px')
 
 
@@ -51,7 +51,7 @@ def main():
                                    subtype='A',
                                    sprites_complete=True)
 
-    consist.add_unit(type=FreightCar,
+    consist.add_unit(type=IntermodalCar,
                      chassis='2_axle_1cc_filled_16px')
 
 
@@ -61,7 +61,7 @@ def main():
                                    subtype='B',
                                    sprites_complete=True)
 
-    consist.add_unit(type=FreightCar,
+    consist.add_unit(type=IntermodalCar,
                      chassis='4_axle_1cc_filled_24px')
 
 
@@ -71,7 +71,7 @@ def main():
                                    subtype='C',
                                    sprites_complete=True)
 
-    consist.add_unit(type=FreightCar,
+    consist.add_unit(type=IntermodalCar,
                      chassis='4_axle_1cc_filled_32px')
 
 
@@ -81,7 +81,7 @@ def main():
                                    subtype='A',
                                    sprites_complete=True)
 
-    consist.add_unit(type=FreightCar,
+    consist.add_unit(type=IntermodalCar,
                      chassis='2_axle_1cc_filled_16px')
 
 
@@ -91,7 +91,7 @@ def main():
                                    subtype='B',
                                    sprites_complete=True)
 
-    consist.add_unit(type=FreightCar,
+    consist.add_unit(type=IntermodalCar,
                      chassis='4_axle_1cc_filled_24px')
 
 
@@ -101,5 +101,5 @@ def main():
                                    subtype='C',
                                    sprites_complete=True)
 
-    consist.add_unit(type=FreightCar,
+    consist.add_unit(type=IntermodalCar,
                      chassis='4_axle_1cc_filled_32px')
