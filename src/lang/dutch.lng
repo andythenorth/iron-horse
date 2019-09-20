@@ -42,13 +42,13 @@ STR_NAME_SUFFIX_DUMP_CAR                                        :Mineralenwagon
 STR_NAME_SUFFIX_DUMP_CAR_HIGH_SIDE                              :Mineralenwagon met hoge zijkant
 STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Voedseltanker
 STR_NAME_SUFFIX_EXPRESS_CAR                                     :Expreswagen
-STR_NAME_SUFFIX_EXPRESS_INTERMODAL_CAR                          :Intermodale expressewagen
+STR_NAME_SUFFIX_EXPRESS_INTERMODAL_CAR                          :Expresse-containerwagon
 STR_NAME_SUFFIX_FLAT_CAR                                        :Platte wagon
 STR_NAME_SUFFIX_FRUIT_VEG_CAR                                   :Fruit- en groentenwagen
 STR_NAME_SUFFIX_GRAIN_HOPPER_CAR                                :Graanonderlosser
 STR_NAME_SUFFIX_HST_PASSENGER_CAR                               :HST-passagiersrijtuig
 STR_NAME_SUFFIX_HOPPER_CAR                                      :Onderlosser
-STR_NAME_SUFFIX_INTERMODAL_CAR                                  :Intermodale wagen
+STR_NAME_SUFFIX_INTERMODAL_CAR                                  :Containerwagon
 STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Veewagon
 STR_NAME_SUFFIX_LUXURY_PASSENGER_CAR                            :Luxe passagiersrijtuig
 STR_NAME_SUFFIX_MAIL_CAR                                        :Postwagon
