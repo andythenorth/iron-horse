@@ -283,6 +283,33 @@ class IntermodalTank32px(IntermodalContainerGestalt):
                          ['tank_40_foot_1CC', 'tank_20_foot_1CC']]
 
 
+class IntermodalCOAL16px(IntermodalContainerGestalt):
+    def __init__(self):
+        super().__init__()
+        self.length = 16
+        self.type = 'COAL'
+        self.stack_type = 'single'
+        self.variants = [['box_30_foot_1CC']]
+
+
+class IntermodalCOAL24px(IntermodalContainerGestalt):
+    def __init__(self):
+        super().__init__()
+        self.length = 24
+        self.type = 'COAL'
+        self.stack_type = 'single'
+        self.variants = [['box_20_foot_red', 'box_20_foot_red']]
+
+
+class IntermodalCOAL32px(IntermodalContainerGestalt):
+    def __init__(self):
+        super().__init__()
+        self.length = 32
+        self.type = 'COAL'
+        self.stack_type = 'single'
+        self.variants = [['COAL_20_foot', 'COAL_20_foot', 'COAL_20_foot']]
+
+
 def get_container_gestalts_by_length(vehicle_length):
     result = []
     for container_gestalt in registered_container_gestalts:
@@ -310,7 +337,10 @@ registered_container_gestalts = [IntermodalBox16px(),
                                  IntermodalReefer32px(),
                                  IntermodalTank16px(),
                                  IntermodalTank24px(),
-                                 IntermodalTank32px()]
+                                 IntermodalTank32px(),
+                                 IntermodalCOAL16px(),
+                                 IntermodalCOAL24px(),
+                                 IntermodalCOAL32px()]
 
 def main():
     # just to placate pyflakes

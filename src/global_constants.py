@@ -131,4 +131,5 @@ max_game_date = polar_fox.constants.max_game_date
 
 intermodal_container_cargo_label_mapping = {'LVST': 'livestock',
                                             'MILK': 'edibles_tank',
-                                            'WOOD': 'flat'}
+                                            'WOOD': 'flat',
+                                            'COAL': 'COAL'}
