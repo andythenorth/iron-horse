@@ -1,6 +1,7 @@
 # intermodal containers are sandboxed into their own module to avoid them spawning tentacles into gestalt graphics, global constants, train.py etc
 
 from gestalt_graphics.pipelines import GenerateCompositedIntermodalContainers
+import polar_fox
 
 class IntermodalContainerGestalt(object):
     """ Sparse class to hold container gestalts """
@@ -283,31 +284,36 @@ class IntermodalTank32px(IntermodalContainerGestalt):
 # containers with visible cargo
 # -----------------------------
 
-class IntermodalCOAL16px(IntermodalContainerGestalt):
-    def __init__(self):
+class IntermodalOpenBulkBase(IntermodalContainerGestalt):
+    def __init__(self, cargo_label):
         super().__init__()
+        self.type = cargo_label
+
+
+class IntermodalOpenBulk16px(IntermodalOpenBulkBase):
+    def __init__(self, cargo_label):
+        super().__init__(cargo_label)
         self.length = 16
-        self.type = 'COAL'
         self.stack_type = 'single'
         self.variants = [['box_30_foot_1CC']]
 
 
-class IntermodalCOAL24px(IntermodalContainerGestalt):
-    def __init__(self):
-        super().__init__()
+class IntermodalOpenBulk24px(IntermodalOpenBulkBase):
+    def __init__(self, cargo_label):
+        super().__init__(cargo_label)
         self.length = 24
-        self.type = 'COAL'
         self.stack_type = 'single'
-        self.variants = [['box_20_foot_red', 'box_20_foot_red']]
+        bulk_20_foot_red = cargo_label + '_20_foot'
+        self.variants = [[bulk_20_foot_red, bulk_20_foot_red]]
 
 
-class IntermodalCOAL32px(IntermodalContainerGestalt):
-    def __init__(self):
-        super().__init__()
+class IntermodalOpenBulk32px(IntermodalOpenBulkBase):
+    def __init__(self, cargo_label):
+        super().__init__(cargo_label)
         self.length = 32
-        self.type = 'COAL'
         self.stack_type = 'single'
-        self.variants = [['COAL_20_foot', 'COAL_20_foot', 'COAL_20_foot']]
+        bulk_20_foot_red = cargo_label + '_20_foot'
+        self.variants = [[bulk_20_foot_red, bulk_20_foot_red, bulk_20_foot_red]]
 
 
 def get_container_gestalts_by_length(vehicle_length):
@@ -317,31 +323,32 @@ def get_container_gestalts_by_length(vehicle_length):
             result.append(container_gestalt)
     return result
 
-registered_container_gestalts = [IntermodalBox16px(),
-                                 IntermodalBox24px(),
-                                 IntermodalBox32px(),
-                                 IntermodalBulk16px(),
-                                 IntermodalBulk24px(),
-                                 IntermodalBulk32px(),
-                                 IntermodalEdiblesTank16px(),
-                                 IntermodalEdiblesTank24px(),
-                                 IntermodalEdiblesTank32px(),
-                                 IntermodalFlat16px(),
-                                 IntermodalFlat24px(),
-                                 IntermodalFlat32px(),
-                                 IntermodalLivestock16px(),
-                                 IntermodalLivestock24px(),
-                                 IntermodalLivestock32px(),
-                                 IntermodalReefer16px(),
-                                 IntermodalReefer24px(),
-                                 IntermodalReefer32px(),
-                                 IntermodalTank16px(),
-                                 IntermodalTank24px(),
-                                 IntermodalTank32px(),
-                                 IntermodalCOAL16px(),
-                                 IntermodalCOAL24px(),
-                                 IntermodalCOAL32px()]
+registered_container_gestalts = []
 
 def main():
-    # just to placate pyflakes
-    pass
+    registered_container_gestalts.extend([IntermodalBox16px(),
+                                          IntermodalBox24px(),
+                                          IntermodalBox32px(),
+                                          IntermodalBulk16px(),
+                                          IntermodalBulk24px(),
+                                          IntermodalBulk32px(),
+                                          IntermodalEdiblesTank16px(),
+                                          IntermodalEdiblesTank24px(),
+                                          IntermodalEdiblesTank32px(),
+                                          IntermodalFlat16px(),
+                                          IntermodalFlat24px(),
+                                          IntermodalFlat32px(),
+                                          IntermodalLivestock16px(),
+                                          IntermodalLivestock24px(),
+                                          IntermodalLivestock32px(),
+                                          IntermodalReefer16px(),
+                                          IntermodalReefer24px(),
+                                          IntermodalReefer32px(),
+                                          IntermodalTank16px(),
+                                          IntermodalTank24px(),
+                                          IntermodalTank32px()])
+
+    for cargo_label, recolor_map in polar_fox.constants.bulk_cargo_recolour_maps:
+        registered_container_gestalts.append(IntermodalOpenBulk16px(cargo_label))
+        registered_container_gestalts.append(IntermodalOpenBulk24px(cargo_label))
+        registered_container_gestalts.append(IntermodalOpenBulk32px(cargo_label))
