@@ -1340,7 +1340,8 @@ class ExpressIntermodalCarConsist(CarConsist):
         self.random_company_colour_swap = False
         self.allow_flip = True
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsIntermodal()
+        # !! note to future, if e.g. NA Horse needs longer express intermodal sets, set the consist_ruleset conditionally by checking roster
+        self.gestalt_graphics = GestaltGraphicsIntermodal(consist_ruleset='2_unit_sets')
 
     @property
     # account for variable floor height
@@ -1459,7 +1460,8 @@ class IntermodalCarConsist(CarConsist):
         self.random_company_colour_swap = False
         self.allow_flip = True
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsIntermodal()
+        # !! note to future, if a roster needs shorter intermodal sets, set the consist_ruleset conditionally by checking roster
+        self.gestalt_graphics = GestaltGraphicsIntermodal(consist_ruleset='4_unit_sets')
 
     @property
     # account for variable floor height

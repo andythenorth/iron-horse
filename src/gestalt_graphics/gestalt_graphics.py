@@ -248,9 +248,10 @@ class GestaltGraphicsIntermodal(GestaltGraphics):
         Used to handle specific rules for intermodal cars
         - specific template to handle containers which are in separate layer
     """
-    def __init__(self):
+    def __init__(self, **kwargs):
         # we use the composited sprites pipeline so we can make use of chassis compositing
         self.pipelines = pipelines.get_pipelines(['extend_spriterows_for_composited_sprites_pipeline'])
+        self.consist_ruleset = kwargs.get('consist_ruleset', None)
         # intermodal cars are asymmetric, sprites are drawn in second col, first col needs populated, map is [col 1 dest]: [col 2 source]
         # two liveries
         self.asymmetric_row_map = {1: 1, 2: 2, # default: default
