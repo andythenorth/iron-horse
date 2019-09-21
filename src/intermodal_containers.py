@@ -38,6 +38,9 @@ class IntermodalContainerGestalt(object):
         return "intermodal_" + self.type + "_" + str(self.length) + "px"
 
 
+# containers without visible cargo
+# --------------------------------
+
 class IntermodalBox16px(IntermodalContainerGestalt):
     def __init__(self):
         super().__init__()
@@ -47,7 +50,6 @@ class IntermodalBox16px(IntermodalContainerGestalt):
         self.variants = [['box_30_foot_1CC'],
                          ['box_30_foot_2CC'],
                          ['box_30_foot_red']]
-
 
 
 class IntermodalBox24px(IntermodalContainerGestalt):
@@ -133,7 +135,6 @@ class IntermodalEdiblesTank16px(IntermodalContainerGestalt):
                          ['box_30_foot_2CC']]
 
 
-
 class IntermodalEdiblesTank24px(IntermodalContainerGestalt):
     def __init__(self):
         super().__init__()
@@ -175,7 +176,6 @@ class IntermodalFlat16px(IntermodalContainerGestalt):
                          ['box_30_foot_2CC']]
 
 
-
 class IntermodalFlat24px(IntermodalContainerGestalt):
     def __init__(self):
         super().__init__()
@@ -202,7 +202,6 @@ class IntermodalLivestock16px(IntermodalContainerGestalt):
         self.stack_type = 'single'
         self.variants = [['box_30_foot_1CC'],
                          ['box_30_foot_2CC']]
-
 
 
 class IntermodalLivestock24px(IntermodalContainerGestalt):
@@ -233,7 +232,6 @@ class IntermodalReefer16px(IntermodalContainerGestalt):
                          ['box_30_foot_2CC']]
 
 
-
 class IntermodalReefer24px(IntermodalContainerGestalt):
     def __init__(self):
         super().__init__()
@@ -262,7 +260,6 @@ class IntermodalTank16px(IntermodalContainerGestalt):
                          ['box_30_foot_2CC']]
 
 
-
 class IntermodalTank24px(IntermodalContainerGestalt):
     def __init__(self):
         super().__init__()
@@ -282,6 +279,9 @@ class IntermodalTank32px(IntermodalContainerGestalt):
                          ['tank_30_foot_1CC', 'tank_30_foot_1CC'],
                          ['tank_40_foot_1CC', 'tank_20_foot_1CC']]
 
+
+# containers with visible cargo
+# -----------------------------
 
 class IntermodalCOAL16px(IntermodalContainerGestalt):
     def __init__(self):
