@@ -283,7 +283,6 @@ class IntermodalTank32px(IntermodalContainerGestalt):
                          ['tank_40_foot_1CC', 'tank_20_foot_1CC']]
 
 
-
 def get_container_gestalts_by_length(vehicle_length):
     result = []
     for container_gestalt in registered_container_gestalts:
@@ -312,3 +311,7 @@ registered_container_gestalts = [IntermodalBox16px(),
                                  IntermodalTank16px(),
                                  IntermodalTank24px(),
                                  IntermodalTank32px()]
+
+def main():
+    # just to placate pyflakes
+    pass
