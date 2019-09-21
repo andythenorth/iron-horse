@@ -118,13 +118,12 @@ class AppendToSpritesheet(ProcessingUnit):
 
 
 class TransposeAsymmetricSprites(ProcessingUnit):
-    """ !! """
+    """ TransposeAsymmetricSprites """
+    """ Provides column 1 sprites for asymmetric vehicles.  Maps from column 2 sprites."""
     def __init__(self, spriterow_height, bboxes, row_map):
         self.spriterow_height = spriterow_height
-        self.bboxes = bboxes
-        self.row_map = row_map
-        #self.row_map = {1: 1, 2: 2, 3: 3, 4: 4, 5: 9, 6: 10, 7: 11, 8: 12, 9: 5, 10: 6, 11: 7, 12: 8, 13: 13, 14: 14, 15: 15, 16: 16}
-        print("reminder - move TransposeAsymmetricSprites to upstream Polar Fox")
+        self.bboxes = bboxes # spriteset bounding boxes, usually in global_constants
+        self.row_map = row_map # mapping of {row num to provide in col 1: row num to copy from in col 2}
 
     def render(self, spritesheet):
         source =  spritesheet.sprites.copy()
@@ -139,7 +138,6 @@ class TransposeAsymmetricSprites(ProcessingUnit):
                                                 dest_row_y_loc,
                                                 self.bboxes[3][0] + self.bboxes[3][2],
                                                 dest_row_y_loc + self.spriterow_height))
-        #spritesheet.sprites.show()
         return spritesheet
 
 
