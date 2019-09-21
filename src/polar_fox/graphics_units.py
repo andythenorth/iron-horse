@@ -117,6 +117,32 @@ class AppendToSpritesheet(ProcessingUnit):
         return spritesheet
 
 
+class TransposeAsymmetricSprites(ProcessingUnit):
+    """ !! """
+    def __init__(self, spriterow_height, bboxes):
+        self.spriterow_height = spriterow_height
+        self.bboxes = bboxes
+        #self.row_map = {1: 1, 2: 2, 3: 3, 4: 4, 5: 9, 6: 10, 7: 11, 8: 12, 9: 5, 10: 6, 11: 7, 12: 8, 13: 13, 14: 14, 15: 15, 16: 16}
+        self.row_map = {1: 1, 2: 2, 3: 5, 4: 6, 5: 3, 6: 4, 7: 7, 8: 8}
+        print("reminder - move TransposeAsymmetricSprites to upstream Polar Fox")
+
+    def render(self, spritesheet):
+        source =  spritesheet.sprites.copy()
+        for dest_row, source_row in self.row_map.items():
+            source_row_y_loc = 10 + ((source_row - 1) * self.spriterow_height)
+            content = source.copy().crop((self.bboxes[4][0],
+                                          source_row_y_loc,
+                                          self.bboxes[7][0] + self.bboxes[7][2],
+                                          source_row_y_loc + self.spriterow_height))
+            dest_row_y_loc = 10 + ((dest_row - 1) * self.spriterow_height)
+            spritesheet.sprites.paste(content, (self.bboxes[0][0],
+                                                dest_row_y_loc,
+                                                self.bboxes[3][0] + self.bboxes[3][2],
+                                                dest_row_y_loc + self.spriterow_height))
+        spritesheet.sprites.show()
+        return spritesheet
+
+
 class AddBuyMenuSprite(ProcessingUnit):
     """ AddBuyMenuSprite """
     """ Inserts a (custom) buy menu sprite for articulated vehicles etc. """

@@ -5,7 +5,7 @@ import filecmp
 from PIL import Image
 
 import polar_fox
-from polar_fox.graphics_units import SimpleRecolour, AppendToSpritesheet, AddCargoLabel, AddBuyMenuSprite
+from polar_fox.graphics_units import SimpleRecolour, AppendToSpritesheet, AddCargoLabel, AddBuyMenuSprite, TransposeAsymmetricSprites
 from polar_fox.pixa import Spritesheet, pixascan
 from gestalt_graphics import graphics_constants
 
@@ -1034,6 +1034,10 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                 cumulative_input_spriterow_count += input_spriterow_count
             # self.vehicle_unit is hax, and is only valid inside this loop, so clear it to prevent incorrectly relying on it outside the loop in future :P
             self.vehicle_unit = None
+
+        if self.consist.id == 'intermodal_car_pony_gen_6C':
+            self.units.append(TransposeAsymmetricSprites(graphics_constants.spriterow_height,
+                                                         global_constants.spritesheet_bounding_boxes_asymmetric_unreversed))
 
         if self.consist.buy_menu_x_loc == 360:
             self.units.append(AddBuyMenuSprite(self.process_buy_menu_sprite))
