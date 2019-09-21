@@ -346,9 +346,6 @@ class GestaltGraphicsConsistSpecificLivery(GestaltGraphics):
         # also, although rulesets allow fine-grained control, there are deliberately only 4 configuration options
         # this stops rules getting out of control and simplifies other methods
         self.consist_positions_ordered = ['default', 'first', 'last', 'special']
-        # intermodal cars are asymmetric, sprites are drawn in second col, first col needs populated, map is [col 1 dest]: [col 2 source]
-        # two liveries * two loaded/loading states
-        self.asymmetric_row_map = {1: 1, 2: 2, 3: 3, 4: 4, 5: 9, 6: 10, 7: 11, 8: 12, 9: 5, 10: 6, 11: 7, 12: 8, 13: 13, 14: 14, 15: 15, 16: 16}
 
         self.pipelines = pipelines.get_pipelines(['extend_spriterows_for_composited_sprites_pipeline'])
         if kwargs.get('pantograph_type', None) is not None:
@@ -403,26 +400,25 @@ class GestaltGraphicsConsistSpecificLivery(GestaltGraphics):
                 result['DFLT'] = result['PASS']
         return result
 
-    def get_asymmetric_source_row(self, input_row_num):
-        print('is get_asymmetric_source_row deprecated?')
+    @property
+    def asymmetric_row_map(self):
         # used in graphics processor to figure out how to make correct asymmetric sprites for 'first' and 'last'
-        result = {}
-        counter = 0
-        for livery_type, cargo_label in (('pax', 'PASS'), ('mail', 'MAIL')):
-            counter = len(result.keys())
-            if livery_type in self.spriterow_group_mappings:
-                for position, relative_row_num in self.spriterow_group_mappings[livery_type].items():
-                    result.setdefault(counter + relative_row_num, []).append(position)
-        # there are two liveries, but the count so floordiv the input_row_num by 2
-        row_positions = result[input_row_num // 2]
-        if 'first' in row_positions and 'last' not in row_positions:
-            # assume asymmetric, and offset to last row
-            return input_row_num + 2
-        elif 'last' in row_positions and 'first' not in row_positions:
-            # assume asymmetric, and offset to first row
-            return input_row_num - 2
-        else:
-            return input_row_num
+        # pax / mail cars are asymmetric, sprites are drawn in second col, first col needs populated, map is [col 1 dest]: [col 2 source]
+        for variant in range(self.num_cargo_sprite_variants):
+            # !! this is very hokey and assumes (by excluding mail) that only pax needs asymmetric, and will always need to flip row groups 1 and 2
+            # !! if that fails in future, the actual 'first' and 'last' numbers can be looked up self.spriterow_group_mappings
+            # !! just applying JFDI for now
+            if variant == 1 and 'mail' not in self.spriterow_group_mappings:
+                source_row_num = 2
+            elif variant == 2 and 'mail' not in self.spriterow_group_mappings:
+                source_row_num = 1
+            else:
+                source_row_num = variant
+            # group of 4 rows - two liveries * two loaded/loading states (opening doors)
+            for i in range(1, 5):
+                result[(4 * variant) + i] = (4 * source_row_num) + i
+        print(result)
+        return(result)
 
 
 class GestaltGraphicsCustom(GestaltGraphics):
