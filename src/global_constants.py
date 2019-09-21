@@ -128,10 +128,3 @@ generated_files_dir = polar_fox.constants.generated_files_dir
 graphics_path = polar_fox.constants.graphics_path
 mail_multiplier = polar_fox.constants.mail_multiplier
 max_game_date = polar_fox.constants.max_game_date
-
-# !! this is hacks for now, needs moved somewhere, probably polar fox?
-intermodal_container_cargo_label_mapping = {'LVST': 'livestock',
-                                            'MILK': 'edibles_tank',
-                                            'WOOD': 'flat',
-                                            'COAL': 'COAL',
-                                            'SCMT': 'SCMT'}

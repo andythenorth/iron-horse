@@ -248,6 +248,7 @@ class GestaltGraphicsIntermodal(GestaltGraphics):
         Used to handle specific rules for intermodal cars
         - specific template to handle containers which are in separate layer
     """
+
     def __init__(self, **kwargs):
         # we use the composited sprites pipeline so we can make use of chassis compositing
         self.pipelines = pipelines.get_pipelines(['extend_spriterows_for_composited_sprites_pipeline'])
@@ -263,6 +264,18 @@ class GestaltGraphicsIntermodal(GestaltGraphics):
         # 2 liveries * 4 variants so 8 empty rows, we're only using the composited sprites pipeline for chassis compositing, containers are provided on separate layer
         # note to self, remarkably adding multiple empty rows appears to just work here :o
         return ['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty']
+
+    @property
+    def cargo_label_mapping(self):
+        # set explicit labels
+        # !! maybe move to Polar Fox?
+        result = {'LVST': 'livestock',
+                  'MILK': 'edibles_tank',
+                  'WOOD': 'flat'}
+        # add the bulk labels
+        for cargo_label, recolour_map in polar_fox.constants.bulk_cargo_recolour_maps:
+            result[cargo_label] = cargo_label
+        return result
 
     @property
     def nml_template(self):
