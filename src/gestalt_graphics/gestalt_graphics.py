@@ -346,6 +346,9 @@ class GestaltGraphicsConsistSpecificLivery(GestaltGraphics):
         # also, although rulesets allow fine-grained control, there are deliberately only 4 configuration options
         # this stops rules getting out of control and simplifies other methods
         self.consist_positions_ordered = ['default', 'first', 'last', 'special']
+        # intermodal cars are asymmetric, sprites are drawn in second col, first col needs populated, map is [col 1 dest]: [col 2 source]
+        # two liveries * two loaded/loading states
+        self.asymmetric_row_map = {1: 1, 2: 2, 3: 3, 4: 4, 5: 9, 6: 10, 7: 11, 8: 12, 9: 5, 10: 6, 11: 7, 12: 8, 13: 13, 14: 14, 15: 15, 16: 16}
 
         self.pipelines = pipelines.get_pipelines(['extend_spriterows_for_composited_sprites_pipeline'])
         if kwargs.get('pantograph_type', None) is not None:
@@ -401,6 +404,7 @@ class GestaltGraphicsConsistSpecificLivery(GestaltGraphics):
         return result
 
     def get_asymmetric_source_row(self, input_row_num):
+        print('is get_asymmetric_source_row deprecated?')
         # used in graphics processor to figure out how to make correct asymmetric sprites for 'first' and 'last'
         result = {}
         counter = 0
