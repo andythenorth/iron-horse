@@ -404,6 +404,7 @@ class GestaltGraphicsConsistSpecificLivery(GestaltGraphics):
     def asymmetric_row_map(self):
         # used in graphics processor to figure out how to make correct asymmetric sprites for 'first' and 'last'
         # pax / mail cars are asymmetric, sprites are drawn in second col, first col needs populated, map is [col 1 dest]: [col 2 source]
+        result = {}
         for variant in range(self.num_cargo_sprite_variants):
             # !! this is very hokey and assumes (by excluding mail) that only pax needs asymmetric, and will always need to flip row groups 1 and 2
             # !! if that fails in future, the actual 'first' and 'last' numbers can be looked up self.spriterow_group_mappings
@@ -417,7 +418,6 @@ class GestaltGraphicsConsistSpecificLivery(GestaltGraphics):
             # group of 4 rows - two liveries * two loaded/loading states (opening doors)
             for i in range(1, 5):
                 result[(4 * variant) + i] = (4 * source_row_num) + i
-        print(result)
         return(result)
 
 
