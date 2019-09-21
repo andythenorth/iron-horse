@@ -119,11 +119,11 @@ class AppendToSpritesheet(ProcessingUnit):
 
 class TransposeAsymmetricSprites(ProcessingUnit):
     """ !! """
-    def __init__(self, spriterow_height, bboxes):
+    def __init__(self, spriterow_height, bboxes, row_map):
         self.spriterow_height = spriterow_height
         self.bboxes = bboxes
+        self.row_map = row_map
         #self.row_map = {1: 1, 2: 2, 3: 3, 4: 4, 5: 9, 6: 10, 7: 11, 8: 12, 9: 5, 10: 6, 11: 7, 12: 8, 13: 13, 14: 14, 15: 15, 16: 16}
-        self.row_map = {1: 1, 2: 2, 3: 5, 4: 6, 5: 3, 6: 4, 7: 7, 8: 8}
         print("reminder - move TransposeAsymmetricSprites to upstream Polar Fox")
 
     def render(self, spritesheet):
@@ -139,7 +139,7 @@ class TransposeAsymmetricSprites(ProcessingUnit):
                                                 dest_row_y_loc,
                                                 self.bboxes[3][0] + self.bboxes[3][2],
                                                 dest_row_y_loc + self.spriterow_height))
-        spritesheet.sprites.show()
+        #spritesheet.sprites.show()
         return spritesheet
 
 

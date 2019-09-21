@@ -251,6 +251,12 @@ class GestaltGraphicsIntermodal(GestaltGraphics):
     def __init__(self):
         # we use the composited sprites pipeline so we can make use of chassis compositing
         self.pipelines = pipelines.get_pipelines(['extend_spriterows_for_composited_sprites_pipeline'])
+        # intermodal cars are asymmetric, sprites are drawn in second col, first col needs populated, map is [col 1 dest]: [col 2 source]
+        # two liveries
+        self.asymmetric_row_map = {1: 1, 2: 2, # default: default
+                                   3: 5, 4: 6, # first: last
+                                   5: 3, 6: 4, # last: first
+                                   7: 7, 8: 8} # middle: middle
 
     def get_output_row_types(self):
         # 2 liveries * 4 variants so 8 empty rows, we're only using the composited sprites pipeline for chassis compositing, containers are provided on separate layer
