@@ -571,10 +571,8 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                                             y_offset= -1 * graphics_constants.spriterow_height))
 
     def add_pax_mail_car_with_opening_doors_spriterows(self, row_count):
+        # this loop builds the spriterow and comps doors etc
         for row_num in range(int(row_count / 2)):
-            # this loop builds the spriterow and comps doors etc
-            pax_mail_car_rows_image = Image.new("P", (graphics_constants.spritesheet_width, 2 * graphics_constants.spriterow_height), 255)
-            pax_mail_car_rows_image.putpalette(DOS_PALETTE)
 
             # get doors
             doors_bboxes = self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed
@@ -594,7 +592,6 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             doors_mask = doors_mask.point(lambda i: 0 if i == 255 else 255).convert("1") # the inversion here of blue and white looks a bit odd, but potato / potato
             #doors_mask.show()
 
-            # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             crop_box_source = (0,
                                self.base_yoffs + (row_num * graphics_constants.spriterow_height),
                                self.sprites_max_x_extent,
@@ -609,44 +606,36 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             pax_mail_car_spriterow_input_image = pax_mail_car_spriterow_input_image.crop(crop_box_comped_body_and_chassis)
 
             #empty/loaded state and loading state will need pasting once each, so two crop boxes needed
-            crop_box_comp_col_dest_1 = (0,
-                                        0,
-                                        self.col_image_width,
-                                        graphics_constants.spriterow_height)
-            crop_box_comp_col_dest_2 = (0,
+            crop_box_comp_dest_1 = (self.second_col_start_x,
+                                    0,
+                                    self.second_col_start_x + self.col_image_width,
+                                    graphics_constants.spriterow_height)
+            crop_box_comp_dest_2 = (self.second_col_start_x,
+                                    graphics_constants.spriterow_height,
+                                    self.second_col_start_x + self.col_image_width,
+                                    2 * graphics_constants.spriterow_height)
+            crop_box_comp_dest_doors = (self.second_col_start_x + doors_bboxes[1][0] - doors_bboxes[0][0],
                                         graphics_constants.spriterow_height,
-                                        self.col_image_width,
+                                        self.second_col_start_x + doors_bboxes[1][0] - doors_bboxes[0][0] + doors_image.size[0],
                                         2 * graphics_constants.spriterow_height)
-            crop_box_comp_col_dest_doors = (doors_bboxes[1][0] - doors_bboxes[0][0],
-                                            graphics_constants.spriterow_height,
-                                            doors_bboxes[1][0] - doors_bboxes[0][0] + doors_image.size[0],
-                                            2 * graphics_constants.spriterow_height)
 
-            pax_mail_car_col_image = Image.new("P", (self.col_image_width, 2 * graphics_constants.spriterow_height))
-            pax_mail_car_col_image.putpalette(DOS_PALETTE)
-            pax_mail_car_col_image.paste(pax_mail_car_spriterow_input_image, crop_box_comp_col_dest_1)
-            pax_mail_car_col_image.paste(pax_mail_car_spriterow_input_image, crop_box_comp_col_dest_2)
+            pax_mail_car_image = Image.new("P", (graphics_constants.spritesheet_width, 2 * graphics_constants.spriterow_height), 255)
+            pax_mail_car_image.putpalette(DOS_PALETTE)
+            pax_mail_car_image.paste(pax_mail_car_spriterow_input_image, crop_box_comp_dest_1)
+            pax_mail_car_image.paste(pax_mail_car_spriterow_input_image, crop_box_comp_dest_2)
             # add doors
-            pax_mail_car_col_image.paste(doors_image, crop_box_comp_col_dest_doors, doors_mask)
+            pax_mail_car_image.paste(doors_image, crop_box_comp_dest_doors, doors_mask)
             #if self.consist.id == 'luxury_passenger_car_pony_gen_6U':
                  #pax_mail_car_col_image.show()
-
-            crop_box_comp_row_dest = (self.second_col_start_x,
-                                      0,
-                                      self.second_col_start_x + self.col_image_width,
-                                      2 * graphics_constants.spriterow_height)
-            pax_mail_car_rows_image.paste(pax_mail_car_col_image, crop_box_comp_row_dest)
-            # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            #if self.consist.id == 'luxury_passenger_car_pony_gen_6U':
-                 #pax_mail_car_rows_image.show()
 
             crop_box_dest = (0,
                              0,
                              self.sprites_max_x_extent,
                              2 * graphics_constants.spriterow_height)
-            pax_mail_car_rows_image_as_spritesheet = self.make_spritesheet_from_image(pax_mail_car_rows_image)
-
-            self.units.append(AppendToSpritesheet(pax_mail_car_rows_image_as_spritesheet, crop_box_dest))
+            pax_mail_car_image_as_spritesheet = self.make_spritesheet_from_image(pax_mail_car_image)
+            #if self.consist.id == 'luxury_passenger_car_pony_gen_6U':
+                #pax_mail_car_image_as_spritesheet.sprites.show()
+            self.units.append(AppendToSpritesheet(pax_mail_car_image_as_spritesheet, crop_box_dest))
 
     def add_box_car_with_opening_doors_spriterows(self):
         # all wagons using this gestalt repaint the relevant base sprite for the wagon's generation and subtype
