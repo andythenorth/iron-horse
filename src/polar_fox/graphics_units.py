@@ -131,12 +131,12 @@ class TransposeAsymmetricSprites(ProcessingUnit):
             source_row_y_loc = 10 + ((source_row - 1) * self.spriterow_height)
             content = source.copy().crop((self.bboxes[4][0],
                                           source_row_y_loc,
-                                          self.bboxes[7][0] + self.bboxes[7][2],
+                                          self.bboxes[7][0] + self.bboxes[7][1],
                                           source_row_y_loc + self.spriterow_height))
             dest_row_y_loc = 10 + ((dest_row - 1) * self.spriterow_height)
             spritesheet.sprites.paste(content, (self.bboxes[0][0],
                                                 dest_row_y_loc,
-                                                self.bboxes[3][0] + self.bboxes[3][2],
+                                                self.bboxes[3][0] + self.bboxes[3][1],
                                                 dest_row_y_loc + self.spriterow_height))
         return spritesheet
 
