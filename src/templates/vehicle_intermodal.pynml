@@ -5,7 +5,8 @@
       don't conflate them :) -->
 
 // graphics chain for vehicle platform
-<tal:position_variants repeat="position_variant ['default', 'first', 'last', 'middle']">
+// position variants are 'default', 'first', 'last', 'middle', etc, and are dependent on consist_ruleset
+<tal:position_variants repeat="position_variant consist.gestalt_graphics.position_variants">
     spriteset(${vehicle.id}_ss_${position_variant}_unflipped, "${global_constants.graphics_path}${consist.id}.png") {
       spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.vehicle_length}_8_unflipped(10 + ${repeat.position_variant.index * 60})
     }

@@ -283,6 +283,12 @@ class GestaltGraphicsIntermodal(GestaltGraphics):
         return result
 
     @property
+    def position_variants(self):
+        # used in spriteset templating
+        # 2 unit articulated sets only need 3 variants, > 2 units also need
+        return ['default', 'first', 'last'] if self.consist_ruleset == '2_unit_sets' else ['default', 'first', 'last', 'middle']
+
+    @property
     def nml_template(self):
         # over-ride in sub-classes as needed
         return 'vehicle_intermodal.pynml'
