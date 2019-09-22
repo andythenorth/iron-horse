@@ -301,7 +301,8 @@ class IntermodalTank16px(IntermodalTankBase):
         super().__init__(cargo_label)
         self.length = 16
         self.stack_type = 'single'
-        self.variants = [['tank_30_foot_1CC']]
+        tank_30_foot = 'tank_' + cargo_label + '_30_foot'
+        self.variants = [[tank_30_foot]]
 
 
 class IntermodalTank24px(IntermodalTankBase):
@@ -357,9 +358,7 @@ def main():
         registered_container_gestalts.append(IntermodalOpenBulk24px(cargo_label))
         registered_container_gestalts.append(IntermodalOpenBulk32px(cargo_label))
 
-    """
     for cargo_label, cargo_recolour_map in polar_fox.constants.tanker_livery_recolour_maps:
         registered_container_gestalts.append(IntermodalTank16px(cargo_label))
         registered_container_gestalts.append(IntermodalTank24px(cargo_label))
         registered_container_gestalts.append(IntermodalTank32px(cargo_label))
-    """
