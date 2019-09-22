@@ -296,6 +296,7 @@ class IntermodalOpenBulk16px(IntermodalOpenBulkBase):
         self.length = 16
         self.stack_type = 'single'
         # !!!!!!!!!!!!!!!!! unfinished variants
+        # by design, bulk containers are single-colour, no random variants
         self.variants = [['box_30_foot_1CC']]
 
 
@@ -304,6 +305,7 @@ class IntermodalOpenBulk24px(IntermodalOpenBulkBase):
         super().__init__(cargo_label)
         self.length = 24
         self.stack_type = 'single'
+        # by design, bulk containers are single-colour, no random variants
         bulk_20_foot = cargo_label + '_20_foot'
         self.variants = [[bulk_20_foot, bulk_20_foot]]
 
@@ -313,6 +315,7 @@ class IntermodalOpenBulk32px(IntermodalOpenBulkBase):
         super().__init__(cargo_label)
         self.length = 32
         self.stack_type = 'single'
+        # by design, bulk containers are single-colour, no random variants
         bulk_20_foot = cargo_label + '_20_foot'
         self.variants = [[bulk_20_foot, bulk_20_foot, bulk_20_foot]]
 
