@@ -251,43 +251,13 @@ class IntermodalReefer32px(IntermodalContainerGestalt):
         self.variants = [['box_20_foot_red', 'empty_20_foot', 'empty_20_foot']]
 
 
-class IntermodalTank16px(IntermodalContainerGestalt):
-    def __init__(self):
-        super().__init__()
-        self.length = 16
-        self.type = 'tank'
-        self.stack_type = 'single'
-        self.variants = [['box_30_foot_1CC'],
-                         ['box_30_foot_2CC']]
-
-
-class IntermodalTank24px(IntermodalContainerGestalt):
-    def __init__(self):
-        super().__init__()
-        self.length = 24
-        self.type = 'tank'
-        self.stack_type = 'single'
-        self.variants = [['box_20_foot_red', 'empty_20_foot',]]
-
-
-class IntermodalTank32px(IntermodalContainerGestalt):
-    def __init__(self):
-        super().__init__()
-        self.length = 32
-        self.type = 'tank'
-        self.stack_type = 'single'
-        self.variants = [['tank_20_foot_1CC', 'tank_20_foot_1CC', 'tank_20_foot_1CC'],
-                         ['tank_30_foot_1CC', 'tank_30_foot_1CC'],
-                         ['tank_40_foot_1CC', 'tank_20_foot_1CC']]
-
-
-# containers with visible cargo
-# -----------------------------
+# containers with visible cargo or cargo-specific liveries
+# --------------------------------------------------------
 
 class IntermodalOpenBulkBase(IntermodalContainerGestalt):
     def __init__(self, cargo_label):
         super().__init__()
-        self.type = cargo_label
+        self.type = 'bulk_' + cargo_label
 
 
 class IntermodalOpenBulk16px(IntermodalOpenBulkBase):
@@ -306,7 +276,7 @@ class IntermodalOpenBulk24px(IntermodalOpenBulkBase):
         self.length = 24
         self.stack_type = 'single'
         # by design, bulk containers are single-colour, no random variants
-        bulk_20_foot = cargo_label + '_20_foot'
+        bulk_20_foot = 'bulk_' + cargo_label + '_20_foot'
         self.variants = [[bulk_20_foot, bulk_20_foot]]
 
 
@@ -316,8 +286,41 @@ class IntermodalOpenBulk32px(IntermodalOpenBulkBase):
         self.length = 32
         self.stack_type = 'single'
         # by design, bulk containers are single-colour, no random variants
-        bulk_20_foot = cargo_label + '_20_foot'
+        bulk_20_foot = 'bulk_' + cargo_label + '_20_foot'
         self.variants = [[bulk_20_foot, bulk_20_foot, bulk_20_foot]]
+
+
+class IntermodalTankBase(IntermodalContainerGestalt):
+    def __init__(self, cargo_label):
+        super().__init__()
+        self.type = 'tank_' + cargo_label
+
+
+class IntermodalTank16px(IntermodalTankBase):
+    def __init__(self, cargo_label):
+        super().__init__(cargo_label)
+        self.length = 16
+        self.stack_type = 'single'
+        self.variants = [['tank_30_foot_1CC']]
+
+
+class IntermodalTank24px(IntermodalTankBase):
+    def __init__(self, cargo_label):
+        super().__init__(cargo_label)
+        self.length = 24
+        self.stack_type = 'single'
+        self.variants = [['box_20_foot_red', 'empty_20_foot',]]
+
+
+class IntermodalTank32px(IntermodalTankBase):
+    def __init__(self, cargo_label):
+        super().__init__(cargo_label)
+        self.length = 32
+        self.stack_type = 'single'
+        self.variants = [['tank_20_foot_1CC', 'tank_20_foot_1CC', 'tank_20_foot_1CC'],
+                         ['tank_30_foot_1CC', 'tank_30_foot_1CC'],
+                         ['tank_40_foot_1CC', 'tank_20_foot_1CC']]
+
 
 
 def get_container_gestalts_by_length(vehicle_length):
@@ -347,12 +350,16 @@ def main():
                                           IntermodalLivestock32px(),
                                           IntermodalReefer16px(),
                                           IntermodalReefer24px(),
-                                          IntermodalReefer32px(),
-                                          IntermodalTank16px(),
-                                          IntermodalTank24px(),
-                                          IntermodalTank32px()])
+                                          IntermodalReefer32px()])
 
     for cargo_label, body_recolour_name, cargo_recolour_map in polar_fox.constants.bulk_cargo_recolour_maps:
         registered_container_gestalts.append(IntermodalOpenBulk16px(cargo_label))
         registered_container_gestalts.append(IntermodalOpenBulk24px(cargo_label))
         registered_container_gestalts.append(IntermodalOpenBulk32px(cargo_label))
+
+    """
+    for cargo_label, cargo_recolour_map in polar_fox.constants.tanker_livery_recolour_maps:
+        registered_container_gestalts.append(IntermodalTank16px(cargo_label))
+        registered_container_gestalts.append(IntermodalTank24px(cargo_label))
+        registered_container_gestalts.append(IntermodalTank32px(cargo_label))
+    """

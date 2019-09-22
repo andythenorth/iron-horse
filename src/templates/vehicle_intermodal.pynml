@@ -108,7 +108,7 @@
 // check generic cargo classes
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_containers_check_cargo_class_liquid, cargo_classes & bitmask(CC_LIQUID)) {
     0: ${vehicle.id}_switch_graphics_containers_random_box;
-    return ${vehicle.id}_switch_graphics_containers_random_tank;
+    return ${vehicle.id}_switch_graphics_containers_random_box;  <!--! !!!! hax to make compile work -->
 }
 
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_containers_check_cargo_class_bulk, cargo_classes & bitmask(CC_BULK)) {

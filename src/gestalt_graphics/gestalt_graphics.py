@@ -274,7 +274,9 @@ class GestaltGraphicsIntermodal(GestaltGraphics):
                   'WOOD': 'flat'}
         # add the bulk labels
         for cargo_label, body_recolour_name, recolour_map in polar_fox.constants.bulk_cargo_recolour_maps:
-            result[cargo_label] = cargo_label
+            result[cargo_label] = 'bulk_' + cargo_label
+        # !! tank labels will be needed
+        # !! what about cases where there are sprites for more than one cargo??
         return result
 
     @property
