@@ -109,7 +109,7 @@
 // check generic cargo classes
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_containers_check_cargo_class_liquid, cargo_classes & bitmask(CC_LIQUID)) {
     0: ${vehicle.id}_switch_graphics_containers_random_box;
-    return ${vehicle.id}_switch_graphics_containers_random_box;  <!--! !!!! hax to make compile work -->
+    return ${vehicle.id}_switch_graphics_containers_random_tank_DFLT;
 }
 
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_containers_check_cargo_class_bulk, cargo_classes & bitmask(CC_BULK)) {
@@ -125,7 +125,9 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_containers_check_cargo_
 // check explicit cargo labels
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_containers_check_cargo_label, cargo_type_in_veh) {
     <tal:cargo_label_container_type_mapping repeat="cargo_label consist.gestalt_graphics.cargo_label_mapping.items()">
-        ${cargo_label[0]}: ${vehicle.id}_switch_graphics_containers_random_${cargo_label[1]};
+        <tal:exclude_default condition="cargo_label[0] is not 'DFLT'">
+            ${cargo_label[0]}: ${vehicle.id}_switch_graphics_containers_random_${cargo_label[1]};
+        </tal:exclude_default>
     </tal:cargo_label_container_type_mapping>
     return ${vehicle.id}_switch_graphics_containers_check_cargo_class_refrigerated;
 }

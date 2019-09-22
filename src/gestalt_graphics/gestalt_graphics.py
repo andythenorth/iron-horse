@@ -277,8 +277,7 @@ class GestaltGraphicsIntermodal(GestaltGraphics):
             result[cargo_label] = 'bulk_' + cargo_label
         # add tank labels
         for cargo_label, recolour_map in polar_fox.constants.tanker_livery_recolour_maps:
-            if cargo_label is not 'DFLT':
-                result[cargo_label] = 'tank_' + cargo_label
+            result[cargo_label] = 'tank_' + cargo_label
         # !! what about cases where there are sprites for more than one cargo??
         return result
 
