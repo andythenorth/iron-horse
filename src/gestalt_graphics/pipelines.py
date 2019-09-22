@@ -776,9 +776,9 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                              cargo_group_row_height)
             bulk_cargo_rows_image_as_spritesheet = self.make_spritesheet_from_image(bulk_cargo_rows_image)
 
-            for label, recolour_map in polar_fox.constants.bulk_cargo_recolour_maps:
+            for label, body_recolour_name, cargo_recolour_map in polar_fox.constants.bulk_cargo_recolour_maps:
                 self.units.append(AppendToSpritesheet(bulk_cargo_rows_image_as_spritesheet, crop_box_dest))
-                self.units.append(SimpleRecolour(recolour_map))
+                self.units.append(SimpleRecolour(cargo_recolour_map))
                 self.units.append(AddCargoLabel(label=label,
                                                 x_offset=self.sprites_max_x_extent + 5,
                                                 y_offset=  -1 * cargo_group_row_height))

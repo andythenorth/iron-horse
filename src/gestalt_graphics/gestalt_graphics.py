@@ -273,7 +273,7 @@ class GestaltGraphicsIntermodal(GestaltGraphics):
                   'MILK': 'edibles_tank',
                   'WOOD': 'flat'}
         # add the bulk labels
-        for cargo_label, recolour_map in polar_fox.constants.bulk_cargo_recolour_maps:
+        for cargo_label, body_recolour_name, recolour_map in polar_fox.constants.bulk_cargo_recolour_maps:
             result[cargo_label] = cargo_label
         return result
 
