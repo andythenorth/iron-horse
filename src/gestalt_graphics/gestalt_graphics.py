@@ -272,13 +272,20 @@ class GestaltGraphicsIntermodal(GestaltGraphics):
         result = {'LVST': 'livestock',
                   'MILK': 'edibles_tank',
                   'WOOD': 'flat'}
+        # !! this needs re-expressing as a generic loop over an ordered set of maps, so that the duplicate handling can be done once
         # add the bulk labels
         for cargo_label, body_recolour_name, recolour_map in polar_fox.constants.bulk_cargo_recolour_maps:
             result[cargo_label] = 'bulk_' + cargo_label
         # add tank labels
         for cargo_label, body_recolour_name, recolour_map in polar_fox.constants.tanker_livery_recolour_maps:
+            # because containers are populated by re-using maps for specific wagon types
+            # it's quite possible that labels are handled multiply, e.g. SULP is handled by both bulk and tank
+            # for containers we need to only handle each label once
+            # so we over-write bulk with tank, and so on
+            # if explicit control is needed for explicit labels, extend this so that specific cargos can be protected or over-written
+            if cargo_label in result and cargo_label not in ['SULP']:
+               print('GestaltGraphicsIntermodal.cargo_label_mapping: cargo_label', cargo_label, 'already exists, being over-written by tank label')
             result[cargo_label] = 'tank_' + cargo_label
-        # !! what about cases where there are sprites for more than one cargo?? - tank will currently have precedence
         return result
 
     @property
