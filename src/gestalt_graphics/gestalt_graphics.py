@@ -274,10 +274,10 @@ class GestaltGraphicsIntermodal(GestaltGraphics):
                   'WOOD': 'flat'}
         # !! this needs re-expressing as a generic loop over an ordered set of maps, so that the duplicate handling can be done once
         # add the bulk labels
-        for cargo_label, body_recolour_name, recolour_map in polar_fox.constants.bulk_cargo_recolour_maps:
+        for cargo_label, recolour_map in polar_fox.constants.bulk_cargo_recolour_maps:
             result[cargo_label] = 'bulk_' + cargo_label
         # add tank labels
-        for cargo_label, body_recolour_name, recolour_map in polar_fox.constants.tanker_livery_recolour_maps:
+        for cargo_label, recolour_map in polar_fox.constants.tanker_livery_recolour_maps:
             # because containers are populated by re-using maps for specific wagon types
             # it's quite possible that labels are handled multiply, e.g. SULP is handled by both bulk and tank
             # for containers we need to only handle each label once

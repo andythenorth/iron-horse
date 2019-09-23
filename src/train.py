@@ -1798,8 +1798,7 @@ class TankCarConsist(CarConsist):
         self.allow_flip = True
         # Graphics configuration
         # recolour maps need processing, it includes an option for intermodal container body colour, not wanted here
-        recolour_maps = [(i[0], i[2]) for i in polar_fox.constants.tanker_livery_recolour_maps]
-        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=recolour_maps)
+        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=polar_fox.constants.tanker_livery_recolour_maps)
 
 
 class TarpaulinCarConsist(CarConsist):
