@@ -311,7 +311,9 @@ class IntermodalTank24px(IntermodalTankBase):
         super().__init__(cargo_label)
         self.length = 24
         self.stack_type = 'single'
-        self.variants = [['box_20_foot_red', 'empty_20_foot',]]
+        tank_20_foot = 'tank_' + cargo_label + '_20_foot'
+        tank_40_foot = 'tank_' + cargo_label + '_40_foot'
+        self.variants = [[tank_20_foot, tank_20_foot]]
 
 
 class IntermodalTank32px(IntermodalTankBase):
@@ -319,9 +321,12 @@ class IntermodalTank32px(IntermodalTankBase):
         super().__init__(cargo_label)
         self.length = 32
         self.stack_type = 'single'
-        self.variants = [['tank_20_foot_1CC', 'tank_20_foot_1CC', 'tank_20_foot_1CC'],
-                         ['tank_30_foot_1CC', 'tank_30_foot_1CC'],
-                         ['tank_40_foot_1CC', 'tank_20_foot_1CC']]
+        tank_20_foot = 'tank_' + cargo_label + '_20_foot'
+        tank_30_foot = 'tank_' + cargo_label + '_30_foot'
+        tank_40_foot = 'tank_' + cargo_label + '_40_foot'
+        self.variants = [[tank_20_foot, tank_20_foot, tank_20_foot],
+                         [tank_30_foot, tank_30_foot],
+                         [tank_40_foot, tank_20_foot]]
 
 
 
