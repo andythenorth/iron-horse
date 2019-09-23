@@ -1,6 +1,7 @@
 # intermodal containers are sandboxed into their own module to avoid them spawning tentacles into gestalt graphics, global constants, train.py etc
 
 from gestalt_graphics.pipelines import GenerateCompositedIntermodalContainers
+from gestalt_graphics.gestalt_graphics import GestaltGraphicsIntermodal
 import polar_fox
 
 class IntermodalContainerGestalt(object):
@@ -334,6 +335,7 @@ def get_container_gestalts_by_length(vehicle_length):
 registered_container_gestalts = []
 
 def main():
+    # provide gestalts for generic container graphics
     registered_container_gestalts.extend([IntermodalBox16px(),
                                           IntermodalBox24px(),
                                           IntermodalBox32px(),
@@ -353,12 +355,14 @@ def main():
                                           IntermodalReefer24px(),
                                           IntermodalReefer32px()])
 
-    for cargo_label, body_recolour_name, cargo_recolour_map in polar_fox.constants.bulk_cargo_recolour_maps:
-        registered_container_gestalts.append(IntermodalOpenBulk16px(cargo_label))
-        registered_container_gestalts.append(IntermodalOpenBulk24px(cargo_label))
-        registered_container_gestalts.append(IntermodalOpenBulk32px(cargo_label))
-
-    for cargo_label, cargo_recolour_map in polar_fox.constants.tanker_livery_recolour_maps:
-        registered_container_gestalts.append(IntermodalTank16px(cargo_label))
-        registered_container_gestalts.append(IntermodalTank24px(cargo_label))
-        registered_container_gestalts.append(IntermodalTank32px(cargo_label))
+    for cargo_label, container_subtype in GestaltGraphicsIntermodal().cargo_label_mapping.items():
+        # provide gestalts for cargo-specific container graphics
+        container_type = container_subtype.split('_')[0]
+        if container_type == 'bulk':
+            registered_container_gestalts.append(IntermodalOpenBulk16px(cargo_label))
+            registered_container_gestalts.append(IntermodalOpenBulk24px(cargo_label))
+            registered_container_gestalts.append(IntermodalOpenBulk32px(cargo_label))
+        if container_type == 'tank':
+            registered_container_gestalts.append(IntermodalTank16px(cargo_label))
+            registered_container_gestalts.append(IntermodalTank24px(cargo_label))
+            registered_container_gestalts.append(IntermodalTank32px(cargo_label))

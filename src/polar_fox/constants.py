@@ -219,22 +219,22 @@ piece_sprites_to_cargo_labels_maps = {'barrels_silver': ['BEER', 'DYES', 'EOIL',
 
 # Tanker recolour maps
 # DFLT label is a hack to support cargos with no specific sprites (including unknown cargos), and should not be added to cargo translation table
-tanker_livery_recolour_maps = (("OIL_", {136: 1, 137: 2, 138: 3, 139: 4,
-                                         140: 5, 141: 6, 142: 7, 143: 8}),
-                               ("CTAR", {136: 1, 137: 2, 138: 3, 139: 4,
-                                         140: 5, 141: 6, 142: 7, 143: 8}),
+tanker_livery_recolour_maps = (("OIL_", "1CC", # second value is body recolour map for intermodal bulk containers
+                                {136: 1, 137: 2, 138: 3, 139: 4, 140: 5, 141: 6, 142: 7, 143: 8}),
+                               ("CTAR", "1CC",
+                                {136: 1, 137: 2, 138: 3, 139: 4, 140: 5, 141: 6, 142: 7, 143: 8}),
                                # see note on DFLT above
-                               ("DFLT", {136: 198, 137: 199, 138: 200, 139: 201,
-                                         140: 202, 141: 203, 142: 204, 143: 205}),
-                               ("SULP", {136: 62, 137: 63, 138: 64, 139: 65,
-                                         140: 66, 141: 67, 142: 68, 143: 69}),
+                               ("DFLT",  "2CC",
+                                {136: 198, 137: 199, 138: 200, 139: 201, 140: 202, 141: 203, 142: 204, 143: 205}),
+                               ("SULP",  "1CC",
+                                {136: 62, 137: 63, 138: 64, 139: 65, 140: 66, 141: 67, 142: 68, 143: 69}),
                                # RFPR deliberately 2CC to allow combining with 1CC livery details
-                               ("RFPR", {136: 80, 137: 81, 138: 82, 139: 83,
-                                         140: 84, 141: 85, 142: 86, 143: 87}),
-                               ("RUBR", {136: 40, 137: 41, 138: 42, 139: 43,
-                                         140: 44, 141: 45, 142: 46, 143: 47}),
-                               ("PETR", {136: 16, 137: 17, 138: 18, 139: 19,
-                                         140: 20, 141: 21, 142: 22, 143: 23}))
+                               ("RFPR",  "1CC",
+                                {136: 80, 137: 81, 138: 82, 139: 83, 140: 84, 141: 85, 142: 86, 143: 87}),
+                               ("RUBR",  "1CC",
+                                {136: 40, 137: 41, 138: 42, 139: 43, 140: 44, 141: 45, 142: 46, 143: 47}),
+                               ("PETR", "1CC",
+                                {136: 16, 137: 17, 138: 18, 139: 19, 140: 20, 141: 21, 142: 22, 143: 23}))
 
 # Bulk
 # keep cargos in alphabetical order for ease of reading

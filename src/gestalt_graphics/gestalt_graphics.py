@@ -276,9 +276,9 @@ class GestaltGraphicsIntermodal(GestaltGraphics):
         for cargo_label, body_recolour_name, recolour_map in polar_fox.constants.bulk_cargo_recolour_maps:
             result[cargo_label] = 'bulk_' + cargo_label
         # add tank labels
-        for cargo_label, recolour_map in polar_fox.constants.tanker_livery_recolour_maps:
+        for cargo_label, body_recolour_name, recolour_map in polar_fox.constants.tanker_livery_recolour_maps:
             result[cargo_label] = 'tank_' + cargo_label
-        # !! what about cases where there are sprites for more than one cargo??
+        # !! what about cases where there are sprites for more than one cargo?? - tank will currently have precedence
         return result
 
     @property
