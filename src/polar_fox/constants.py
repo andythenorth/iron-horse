@@ -291,3 +291,6 @@ bulk_cargo_recolour_maps_extended = (("AORE", "1CC", # second value is body reco
                                       {170: 65, 171: 67, 172: 66, 173: 67, 174: 68, 175: 69, 176: 69}))
 
 bulk_cargo_recolour_maps = [(i[0], i[2]) for i in bulk_cargo_recolour_maps_extended]
+
+cryo_tanker_livery_recolour_maps = (("DFLT", {136: 5, 137: 7, 138: 9, 139: 11, 140: 12, 141: 13, 142: 14, 143: 15}),
+                                    ("CHLO", {136: 154, 137: 155, 138: 157, 139: 158, 140: 159, 141: 159, 142: 160, 143: 161}),)

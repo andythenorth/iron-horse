@@ -1192,7 +1192,7 @@ class CryoTankCarConsist(CarConsist):
         # allow flipping, used to flip company colour
         self.allow_flip = True
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.cryo_tank_car_livery_recolour_maps)
+        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=polar_fox.constants.cryo_tanker_livery_recolour_maps)
 
 
 class CurtainSideCarBoxConsist(CarConsist):
