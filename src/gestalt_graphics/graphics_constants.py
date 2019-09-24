@@ -42,7 +42,7 @@ coil_car_livery_recolour_maps = (("DFLT", body_recolour_CC1),)
 chemicals_tank_car_livery_recolour_maps = (("DFLT", {136: CC1, 137: CC1+1, 138: CC1+2, 139: CC1+3,
                                                      140: CC1+4, 141: CC1+5, 142: CC1+6, 143: CC1+7}),)
 
-curtain_side_livery_recolour_maps = (("DFLT", body_recolour_CC1,)
+curtain_side_livery_recolour_maps = (("DFLT", body_recolour_CC1),)
 
 edibles_tank_car_livery_recolour_maps = (("DFLT", {}),)
 
@@ -65,7 +65,7 @@ refrigerated_livery_recolour_maps = (("DFLT", {136: 18, 137: 19, 138: 20, 139: 2
 sliding_wall_livery_recolour_maps = (("DFLT", {40: 4, 41: 5, 42: 6, 43: 7,
                                                44: 20, 45: 21, 46: 22, 47: 13}),)
 
-tarpaulin_car_livery_recolour_maps = (("DFLT", body_recolour_CC2,)
+tarpaulin_car_livery_recolour_maps = (("DFLT", body_recolour_CC2),)
 
 
 # Containers
