@@ -2,7 +2,6 @@
 
 from gestalt_graphics.pipelines import GenerateCompositedIntermodalContainers
 from gestalt_graphics.gestalt_graphics import GestaltGraphicsIntermodal
-import polar_fox
 
 class IntermodalContainerGestalt(object):
     """ Sparse class to hold container gestalts """
@@ -312,7 +311,7 @@ class IntermodalTank24px(IntermodalTankBase):
         self.length = 24
         self.stack_type = 'single'
         tank_20_foot = 'tank_' + cargo_label + '_20_foot'
-        tank_40_foot = 'tank_' + cargo_label + '_40_foot'
+        #tank_40_foot = 'tank_' + cargo_label + '_40_foot'
         self.variants = [[tank_20_foot, tank_20_foot]]
 
 
