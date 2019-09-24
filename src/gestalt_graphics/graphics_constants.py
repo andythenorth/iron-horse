@@ -39,9 +39,6 @@ caboose_livery_recolour_maps = (# DFLT can be used twice here with no problems, 
 
 coil_car_livery_recolour_maps = (("DFLT", body_recolour_CC1),)
 
-chemicals_tank_car_livery_recolour_maps = (("DFLT", {136: CC1, 137: CC1+1, 138: CC1+2, 139: CC1+3,
-                                                     140: CC1+4, 141: CC1+5, 142: CC1+6, 143: CC1+7}),)
-
 curtain_side_livery_recolour_maps = (("DFLT", body_recolour_CC1),)
 
 edibles_tank_car_livery_recolour_maps = (("DFLT", {}),)
