@@ -296,7 +296,14 @@ bulk_cargo_recolour_maps_extended = (("AORE", "1CC", # second value is body reco
 
 bulk_cargo_recolour_maps = [(i[0], i[2]) for i in bulk_cargo_recolour_maps_extended]
 
-chemicals_tanker_livery_recolour_maps = (("DFLT", {136: CC1, 137: CC1+1, 138: CC1+2, 139: CC1+3, 140: CC1+4, 141: CC1+5, 142: CC1+6, 143: CC1+7}),)
+chemicals_tanker_livery_recolour_maps_extended = (("DFLT", "1CC",
+                                                   {136: CC1, 137: CC1+1, 138: CC1+2, 139: CC1+3, 140: CC1+4, 141: CC1+5, 142: CC1+6, 143: CC1+7}),)
 
-cryo_tanker_livery_recolour_maps = (("DFLT", {136: 5, 137: 7, 138: 9, 139: 11, 140: 12, 141: 13, 142: 14, 143: 15}),
-                                    ("CHLO", {136: 154, 137: 155, 138: 157, 139: 158, 140: 159, 141: 159, 142: 160, 143: 161}),)
+chemicals_tanker_livery_recolour_maps = [(i[0], i[2]) for i in chemicals_tanker_livery_recolour_maps_extended]
+
+cryo_tanker_livery_recolour_maps_extended = (("DFLT", "1CC",
+                                              {136: 5, 137: 7, 138: 9, 139: 11, 140: 12, 141: 13, 142: 14, 143: 15}),
+                                             ("CHLO", "1CC",
+                                              {136: 154, 137: 155, 138: 157, 139: 158, 140: 159, 141: 159, 142: 160, 143: 161}),)
+
+cryo_tanker_livery_recolour_maps = [(i[0], i[2]) for i in cryo_tanker_livery_recolour_maps_extended]
