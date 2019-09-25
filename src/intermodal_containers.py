@@ -328,6 +328,81 @@ class IntermodalTank32px(IntermodalTankBase):
                          [tank_40_foot, tank_20_foot]]
 
 
+class IntermodalChemicalsTankBase(IntermodalContainerGestalt):
+    def __init__(self, cargo_label):
+        super().__init__()
+        self.type = 'chemicals_tank_' + cargo_label
+
+
+class IntermodalChemicalsTank16px(IntermodalChemicalsTankBase):
+    def __init__(self, cargo_label):
+        super().__init__(cargo_label)
+        self.length = 16
+        self.stack_type = 'single'
+        chemicals_tank_30_foot = 'chemicals_tank_' + cargo_label + '_30_foot'
+        self.variants = [[chemicals_tank_30_foot]]
+
+
+class IntermodalChemicalsTank24px(IntermodalChemicalsTankBase):
+    def __init__(self, cargo_label):
+        super().__init__(cargo_label)
+        self.length = 24
+        self.stack_type = 'single'
+        chemicals_tank_20_foot = 'chemicals_tank_' + cargo_label + '_20_foot'
+        #chemicals_tank_40_foot = 'chemicals_tank_' + cargo_label + '_40_foot'
+        self.variants = [[chemicals_tank_20_foot, chemicals_tank_20_foot]]
+
+
+class IntermodalChemicalsTank32px(IntermodalChemicalsTankBase):
+    def __init__(self, cargo_label):
+        super().__init__(cargo_label)
+        self.length = 32
+        self.stack_type = 'single'
+        chemicals_tank_20_foot = 'chemicals_tank_' + cargo_label + '_20_foot'
+        chemicals_tank_30_foot = 'chemicals_tank_' + cargo_label + '_30_foot'
+        chemicals_tank_40_foot = 'chemicals_tank_' + cargo_label + '_40_foot'
+        self.variants = [[chemicals_tank_20_foot, chemicals_tank_20_foot, chemicals_tank_20_foot],
+                         [chemicals_tank_30_foot, chemicals_tank_30_foot],
+                         [chemicals_tank_40_foot, chemicals_tank_20_foot]]
+
+
+class IntermodalCryoTankBase(IntermodalContainerGestalt):
+    def __init__(self, cargo_label):
+        super().__init__()
+        self.type = 'cryo_tank_' + cargo_label
+
+
+class IntermodalCryoTank16px(IntermodalCryoTankBase):
+    def __init__(self, cargo_label):
+        super().__init__(cargo_label)
+        self.length = 16
+        self.stack_type = 'single'
+        cryo_tank_30_foot = 'cryo_tank_' + cargo_label + '_30_foot'
+        self.variants = [[cryo_tank_30_foot]]
+
+
+class IntermodalCryoTank24px(IntermodalCryoTankBase):
+    def __init__(self, cargo_label):
+        super().__init__(cargo_label)
+        self.length = 24
+        self.stack_type = 'single'
+        cryo_tank_20_foot = 'cryo_tank_' + cargo_label + '_20_foot'
+        #cryo_tank_40_foot = 'cryo_tank_' + cargo_label + '_40_foot'
+        self.variants = [[cryo_tank_20_foot, cryo_tank_20_foot]]
+
+
+class IntermodalCryoTank32px(IntermodalCryoTankBase):
+    def __init__(self, cargo_label):
+        super().__init__(cargo_label)
+        self.length = 32
+        self.stack_type = 'single'
+        cryo_tank_20_foot = 'cryo_tank_' + cargo_label + '_20_foot'
+        cryo_tank_30_foot = 'cryo_tank_' + cargo_label + '_30_foot'
+        cryo_tank_40_foot = 'cryo_tank_' + cargo_label + '_40_foot'
+        self.variants = [[cryo_tank_20_foot, cryo_tank_20_foot, cryo_tank_20_foot],
+                         [cryo_tank_30_foot, cryo_tank_30_foot],
+                         [cryo_tank_40_foot, cryo_tank_20_foot]]
+
 
 def get_container_gestalts_by_length(vehicle_length):
     result = []
@@ -359,14 +434,21 @@ def main():
                                           IntermodalReefer24px(),
                                           IntermodalReefer32px()])
 
-    for cargo_label, container_subtype in GestaltGraphicsIntermodal().cargo_label_mapping.items():
+    for cargo_label, container_type in GestaltGraphicsIntermodal().cargo_label_mapping.items():
         # provide gestalts for cargo-specific container graphics
-        container_type = container_subtype.split('_')[0]
-        if container_type == 'bulk':
+        if container_type.startswith('bulk'):
             registered_container_gestalts.append(IntermodalOpenBulk16px(cargo_label))
             registered_container_gestalts.append(IntermodalOpenBulk24px(cargo_label))
             registered_container_gestalts.append(IntermodalOpenBulk32px(cargo_label))
-        if container_type == 'tank':
+        if container_type.startswith('tank'):
             registered_container_gestalts.append(IntermodalTank16px(cargo_label))
             registered_container_gestalts.append(IntermodalTank24px(cargo_label))
             registered_container_gestalts.append(IntermodalTank32px(cargo_label))
+        if container_type.startswith('chemicals_tank'):
+            registered_container_gestalts.append(IntermodalChemicalsTank16px(cargo_label))
+            registered_container_gestalts.append(IntermodalChemicalsTank24px(cargo_label))
+            registered_container_gestalts.append(IntermodalChemicalsTank32px(cargo_label))
+        if container_type.startswith('cryo_tank'):
+            registered_container_gestalts.append(IntermodalCryoTank16px(cargo_label))
+            registered_container_gestalts.append(IntermodalCryoTank24px(cargo_label))
+            registered_container_gestalts.append(IntermodalCryoTank32px(cargo_label))

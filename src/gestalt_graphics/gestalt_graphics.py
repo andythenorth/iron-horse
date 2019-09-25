@@ -272,20 +272,18 @@ class GestaltGraphicsIntermodal(GestaltGraphics):
         result = {'LVST': 'livestock',
                   'MILK': 'edibles_tank',
                   'WOOD': 'flat'}
-        # !! this needs re-expressing as a generic loop over an ordered set of maps, so that the duplicate handling can be done once
-        # add the bulk labels
-        for cargo_label, recolour_map in polar_fox.constants.bulk_cargo_recolour_maps:
-            result[cargo_label] = 'bulk_' + cargo_label
-        # add tank labels
-        for cargo_label, recolour_map in polar_fox.constants.tanker_livery_recolour_maps:
-            # because containers are populated by re-using maps for specific wagon types
-            # it's quite possible that labels are handled multiply, e.g. SULP is handled by both bulk and tank
-            # for containers we need to only handle each label once
-            # so we over-write bulk with tank, and so on
-            # if explicit control is needed for explicit labels, extend this so that specific cargos can be protected or over-written
-            if cargo_label in result and cargo_label not in ['SULP']:
-               print('GestaltGraphicsIntermodal.cargo_label_mapping: cargo_label', cargo_label, 'already exists, being over-written by tank label')
-            result[cargo_label] = 'tank_' + cargo_label
+        # ...configuration of containers with cargo-specific liveries or visible cargos with recolouring
+        # tuple because type order matters
+        cargo_specific_container_maps = (('bulk', polar_fox.constants.bulk_cargo_recolour_maps),
+                                         ('chemicals_tank', polar_fox.constants.chemicals_tanker_livery_recolour_maps),
+                                         ('cryo_tank', polar_fox.constants.cryo_tanker_livery_recolour_maps),
+                                         ('tank', polar_fox.constants.tanker_livery_recolour_maps))
+
+        for container_type, recolour_maps in cargo_specific_container_maps:
+            for cargo_label, recolour_map in recolour_maps:
+                if cargo_label in result and cargo_label not in ['DFLT']:
+                   print('GestaltGraphicsIntermodal.cargo_label_mapping: cargo_label', cargo_label, 'already exists, being over-written by', container_type, 'label')
+                result[cargo_label] = container_type + '_' + cargo_label
         return result
 
     @property
