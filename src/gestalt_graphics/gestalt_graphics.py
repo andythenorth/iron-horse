@@ -265,10 +265,28 @@ class GestaltGraphicsIntermodal(GestaltGraphics):
         # note to self, remarkably adding multiple empty rows appears to just work here :o
         return ['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty']
 
+    def allow_adding_cargo_label(self, cargo_label, container_type, result):
+        # don't ship DFLT as actual cargo label, it's not a valid cargo and will cause nml to barf
+        # the generation of the DFLT container sprites is handled separately without using cargo_label_mapping
+        if cargo_label is 'DFLT':
+            return False
+        # explicit control over contested cargo_labels, by specifying which container type should be used (there can only be one type for label based support)
+        contested_cargo_labels = {'CHLO': 'cryo_tank',
+                                  'RFPR': 'chemicals_tank',
+                                  'SULP': 'tank'}
+        if cargo_label in contested_cargo_labels.keys():
+            if container_type == contested_cargo_labels[cargo_label]:
+                return True
+            else:
+                return False
+        # print a note if an unhandled contested cargo is found, so the contested cargos can be updated to handle the cargo label
+        if cargo_label in result:
+            print('GestaltGraphicsIntermodal.cargo_label_mapping: cargo_label', cargo_label, 'already exists, being over-written by', container_type, 'label')
+        # default to allowing, most cargos aren't contested
+        return True
+
     @property
     def cargo_label_mapping(self):
-        # tuple because type order is relied on for increasing specificity of cargo:type mapping
-        # e.g. cryo tank > chemical tank > tank
         # first result is known refits which will fallback to xxxxx_DFLT
         # second result is known cargo sprites / livery recolours, which will map explicitly
         container_cargo_maps = (('box', ([], [])), # box currently all generic?
@@ -289,19 +307,12 @@ class GestaltGraphicsIntermodal(GestaltGraphics):
             # nor does explicitly refittable cargos have 1:1 mapping with cargo-specific graphics
             # these will all map cargo_label: container_type_DFLT
             for cargo_label in cargo_maps[0]:
-                # don't ship DFLT as actual cargo label, it's not a valid cargo and will cause nml to barf
-                if cargo_label is not 'DFLT':
-                    if cargo_label in result:
-                       print('GestaltGraphicsIntermodal.cargo_label_mapping: cargo_label', cargo_label, 'already exists, being over-written by', container_type, 'label')
+                if self.allow_adding_cargo_label(cargo_label, container_type, result):
                     result[cargo_label] = container_type + '_DFLT'
 
             # then insert or over-ride entries with cargo_label: container_type_[CARGO_LABEL] where there are explicit graphics for a cargo
             for cargo_label, recolour_map in cargo_maps[1]:
-                # don't ship DFLT as actual cargo label, it's not a valid cargo and will cause nml to barf
-                # the generation of the DFLT container sprites is handled separately to this
-                if cargo_label is not 'DFLT':
-                    if cargo_label in result:
-                       print('GestaltGraphicsIntermodal.cargo_label_mapping: cargo_label', cargo_label, 'already exists, being over-written by', container_type, 'label')
+                if self.allow_adding_cargo_label(cargo_label, container_type, result):
                     result[cargo_label] = container_type + '_' + cargo_label
         return result
 
