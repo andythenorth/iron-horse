@@ -330,7 +330,7 @@ registered_container_gestalts = []
 
 container_type_gestalt_mapping = {'box': [IntermodalBox16px, IntermodalBox24px, IntermodalBox32px],
                                   'edibles_tank': [IntermodalEdiblesTank16px, IntermodalEdiblesTank24px, IntermodalEdiblesTank32px],
-                                  #'flat': [IntermodalFlat16px, IntermodalFlat24px, IntermodalFlat32px],
+                                  #'flat': [IntermodalFlat16px, IntermodalFlat24px, IntermodalFlat32px], # unused currently
                                   'livestock': [IntermodalLivestock16px, IntermodalLivestock24px, IntermodalLivestock32px],
                                   'reefer': [IntermodalReefer16px, IntermodalReefer24px, IntermodalReefer32px],
                                   'bulk': [IntermodalOpenBulk16px, IntermodalOpenBulk24px, IntermodalOpenBulk32px],

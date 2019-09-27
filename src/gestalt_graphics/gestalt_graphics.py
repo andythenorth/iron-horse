@@ -271,9 +271,9 @@ class GestaltGraphicsIntermodal(GestaltGraphics):
         # e.g. cryo tank > chemical tank > tank
         # first result is known refits which will fallback to xxxxx_DFLT
         # second result is known cargo sprites / livery recolours, which will map explicitly
-        container_cargo_maps = (('box', ([], [])),
+        container_cargo_maps = (('box', ([], [])), # box currently all generic?
                                 ('bulk', ([], polar_fox.constants.bulk_cargo_recolour_maps)),
-                                #('flat', ([], [])),
+                                #('flat', ([], [])), # flat currently unused
                                 ('livestock', (['LVST'], [])),
                                 ('tank', ([], polar_fox.constants.tanker_livery_recolour_maps)),
                                 ('edibles_tank', (polar_fox.constants.allowed_refits_by_label['edible_liquids'], [])),
