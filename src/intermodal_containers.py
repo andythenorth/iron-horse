@@ -259,8 +259,9 @@ class IntermodalChemicalsTank24px(IntermodalContainerGestalt):
         self.length = 24
         self.stack_type = 'single'
         chemicals_tank_20_foot = container_subtype + '_20_foot'
-        #chemicals_tank_40_foot = 'chemicals_tank_' + cargo_label + '_40_foot'
-        self.variants = [[chemicals_tank_20_foot, chemicals_tank_20_foot]]
+        chemicals_tank_40_foot = container_subtype + '_40_foot'
+        self.variants = [[chemicals_tank_20_foot, chemicals_tank_20_foot],
+                         [chemicals_tank_40_foot]]
 
 
 class IntermodalChemicalsTank32px(IntermodalContainerGestalt):
@@ -292,7 +293,7 @@ class IntermodalCryoTank24px(IntermodalContainerGestalt):
         self.length = 24
         self.stack_type = 'single'
         cryo_tank_20_foot = container_subtype + '_20_foot'
-        cryo_tank_40_foot = 'cryo_tank_' + cargo_label + '_40_foot'
+        cryo_tank_40_foot = container_subtype + '_40_foot'
         self.variants = [[cryo_tank_20_foot, cryo_tank_20_foot],
                          [cryo_tank_40_foot]]
 
