@@ -9,16 +9,16 @@ spriteset(ss_intermodal_containers_empty, "src/graphics/spriterow_template.png")
         <tal:floor_height_types repeat="floor_height_type container_gestalt.floor_height_variants">
             <!--! crude maintenance-intensive approach to suppress unused container spritesets and switches, to avoid nml warnings -->
             <tal:not_suppressed condition="floor_height_type[0] + str(container_gestalt.length) not in ['low_floor24','low_floor32']">
-                spriteset(ss_intermodal_containers_${floor_height_type[0]}_${container_gestalt.type}_${container_gestalt.length}px_${repeat.variant.index}_unflipped, "${global_constants.graphics_path}${container_gestalt.id}.png") {
+                spriteset(ss_intermodal_containers_${floor_height_type[0]}_${container_gestalt.container_subtype}_${container_gestalt.length}px_${repeat.variant.index}_unflipped, "${global_constants.graphics_path}${container_gestalt.id}.png") {
                     spriteset_template_asymmetric_unreversed_${int(container_gestalt.length / 4)}_8_unflipped(10 + ${repeat.variant.index * 60} + ${repeat.floor_height_type.index * 30})
                 }
-                spriteset(ss_intermodal_containers_${floor_height_type[0]}_${container_gestalt.type}_${container_gestalt.length}px_${repeat.variant.index}_flipped, "${global_constants.graphics_path}${container_gestalt.id}.png") {
+                spriteset(ss_intermodal_containers_${floor_height_type[0]}_${container_gestalt.container_subtype}_${container_gestalt.length}px_${repeat.variant.index}_flipped, "${global_constants.graphics_path}${container_gestalt.id}.png") {
                     spriteset_template_asymmetric_reversed_${int(container_gestalt.length / 4)}_8_flipped(10 + ${repeat.variant.index * 60} + ${repeat.floor_height_type.index * 30})
                 }
                 // handle user flipped state
-                switch (FEAT_TRAINS, SELF, switch_intermodal_containers_${floor_height_type[0]}_${container_gestalt.type}_${container_gestalt.length}px_${repeat.variant.index}, vehicle_is_flipped) {
-                    1: return ss_intermodal_containers_${floor_height_type[0]}_${container_gestalt.type}_${container_gestalt.length}px_${repeat.variant.index}_flipped;
-                    return ss_intermodal_containers_${floor_height_type[0]}_${container_gestalt.type}_${container_gestalt.length}px_${repeat.variant.index}_unflipped;
+                switch (FEAT_TRAINS, SELF, switch_intermodal_containers_${floor_height_type[0]}_${container_gestalt.container_subtype}_${container_gestalt.length}px_${repeat.variant.index}, vehicle_is_flipped) {
+                    1: return ss_intermodal_containers_${floor_height_type[0]}_${container_gestalt.container_subtype}_${container_gestalt.length}px_${repeat.variant.index}_flipped;
+                    return ss_intermodal_containers_${floor_height_type[0]}_${container_gestalt.container_subtype}_${container_gestalt.length}px_${repeat.variant.index}_unflipped;
                 }
             </tal:not_suppressed>
         </tal:floor_height_types>

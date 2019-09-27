@@ -20,8 +20,9 @@ class IntermodalContainerGestalt(object):
     # !!! containers are going to need 'base sets' to allow double stack, cropped for well cars etc
     # !!! the consist needs to encode the set type to fetch the right spritesets
     # !!! base sets will also have to be encoded in gestalts here, unless they're done by (sets * gestalts) combinatorially?
-    def __init__(self):
+    def __init__(self, container_subtype):
         self.pipeline = GenerateCompositedIntermodalContainers()
+        self.container_subtype = container_subtype
 
     @property
     def floor_height_variants(self):
@@ -36,17 +37,13 @@ class IntermodalContainerGestalt(object):
 
     @property
     def id(self):
-        return "intermodal_" + self.type + "_" + str(self.length) + "px"
+        return "intermodal_" + self.container_subtype + "_" + str(self.length) + "px"
 
-
-# containers without visible cargo
-# --------------------------------
 
 class IntermodalBox16px(IntermodalContainerGestalt):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, container_subtype):
+        super().__init__(container_subtype)
         self.length = 16
-        self.type = 'box'
         self.stack_type = 'single'
         self.variants = [['box_30_foot_1CC'],
                          ['box_30_foot_2CC'],
@@ -54,10 +51,9 @@ class IntermodalBox16px(IntermodalContainerGestalt):
 
 
 class IntermodalBox24px(IntermodalContainerGestalt):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, container_subtype):
+        super().__init__(container_subtype)
         self.length = 24
-        self.type = 'box'
         self.stack_type = 'single'
         self.variants = [['box_20_foot_1CC', 'box_20_foot_red'],
                          ['box_20_foot_red', 'box_20_foot_1CC'],
@@ -67,10 +63,9 @@ class IntermodalBox24px(IntermodalContainerGestalt):
 
 
 class IntermodalBox32px(IntermodalContainerGestalt):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, container_subtype):
+        super().__init__(container_subtype)
         self.length = 32
-        self.type = 'box'
         self.stack_type = 'single'
         self.variants = [['box_20_foot_1CC', 'box_20_foot_1CC', 'box_20_foot_red'],
                          ['box_20_foot_red', 'box_20_foot_red', 'box_20_foot_red'],
@@ -85,62 +80,19 @@ class IntermodalBox32px(IntermodalContainerGestalt):
                          ['box_30_foot_1CC', 'box_30_foot_1CC']]
 
 
-class IntermodalBulk16px(IntermodalContainerGestalt):
-    def __init__(self):
-        super().__init__()
-        self.length = 16
-        self.type = 'bulk'
-        self.stack_type = 'single'
-        self.variants = [['box_30_foot_1CC'],
-                         ['box_30_foot_2CC']]
-
-
-class IntermodalBulk24px(IntermodalContainerGestalt):
-    def __init__(self):
-        super().__init__()
-        self.length = 24
-        self.type = 'bulk'
-        self.stack_type = 'single'
-        self.variants = [['box_20_foot_1CC', 'box_20_foot_red'],
-                         ['box_20_foot_red', 'box_20_foot_1CC'],
-                         ['box_40_foot_1CC'],
-                         ['box_40_foot_2CC'],
-                         ['box_40_foot_red']]
-
-
-class IntermodalBulk32px(IntermodalContainerGestalt):
-    def __init__(self):
-        super().__init__()
-        self.length = 32
-        self.type = 'bulk'
-        self.stack_type = 'single'
-        self.variants = [['box_20_foot_1CC', 'box_20_foot_red', 'box_20_foot_1CC'],
-                         ['box_20_foot_red', 'box_20_foot_red', 'box_20_foot_red'],
-                         ['box_20_foot_2CC', 'box_20_foot_2CC', 'box_20_foot_2CC'],
-                         ['box_20_foot_1CC', 'box_20_foot_1CC', 'box_20_foot_1CC'],
-                         ['box_20_foot_1CC', 'box_40_foot_1CC'],
-                         ['box_20_foot_2CC', 'box_40_foot_1CC'],
-                         ['box_20_foot_red', 'box_40_foot_red'],
-                         ['box_40_foot_1CC', 'box_20_foot_1CC'],
-                         ['box_40_foot_2CC', 'box_20_foot_2CC'],
-                         ['box_40_foot_2CC', 'box_20_foot_1CC']]
-
-
 class IntermodalEdiblesTank16px(IntermodalContainerGestalt):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, container_subtype):
+        super().__init__(container_subtype)
         self.length = 16
-        self.type = 'edibles_tank'
         self.stack_type = 'single'
         self.variants = [['box_30_foot_1CC'],
                          ['box_30_foot_2CC']]
 
 
 class IntermodalEdiblesTank24px(IntermodalContainerGestalt):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, container_subtype):
+        super().__init__(container_subtype)
         self.length = 24
-        self.type = 'edibles_tank'
         self.stack_type = 'single'
         self.variants = [['box_20_foot_1CC', 'box_20_foot_red'],
                          ['box_20_foot_red', 'box_20_foot_1CC'],
@@ -150,10 +102,9 @@ class IntermodalEdiblesTank24px(IntermodalContainerGestalt):
 
 
 class IntermodalEdiblesTank32px(IntermodalContainerGestalt):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, container_subtype):
+        super().__init__(container_subtype)
         self.length = 32
-        self.type = 'edibles_tank'
         self.stack_type = 'single'
         self.variants = [['box_20_foot_1CC', 'box_20_foot_red', 'box_20_foot_1CC'],
                          ['box_20_foot_red', 'box_20_foot_red', 'box_20_foot_red'],
@@ -168,101 +119,83 @@ class IntermodalEdiblesTank32px(IntermodalContainerGestalt):
 
 
 class IntermodalFlat16px(IntermodalContainerGestalt):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, container_subtype):
+        super().__init__(container_subtype)
         self.length = 16
-        self.type = 'flat'
         self.stack_type = 'single'
         self.variants = [['box_30_foot_1CC'],
                          ['box_30_foot_2CC']]
 
 
 class IntermodalFlat24px(IntermodalContainerGestalt):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, container_subtype):
+        super().__init__(container_subtype)
         self.length = 24
-        self.type = 'flat'
         self.stack_type = 'single'
         self.variants = [['box_20_foot_red', 'empty_20_foot',]]
 
 
 class IntermodalFlat32px(IntermodalContainerGestalt):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, container_subtype):
+        super().__init__(container_subtype)
         self.length = 32
-        self.type = 'flat'
         self.stack_type = 'single'
         self.variants = [['box_20_foot_red', 'empty_20_foot', 'empty_20_foot']]
 
 
 class IntermodalLivestock16px(IntermodalContainerGestalt):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, container_subtype):
+        super().__init__(container_subtype)
         self.length = 16
-        self.type = 'livestock'
         self.stack_type = 'single'
         self.variants = [['box_30_foot_1CC'],
                          ['box_30_foot_2CC']]
 
 
 class IntermodalLivestock24px(IntermodalContainerGestalt):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, container_subtype):
+        super().__init__(container_subtype)
         self.length = 24
-        self.type = 'livestock'
         self.stack_type = 'single'
         self.variants = [['box_20_foot_red', 'empty_20_foot',]]
 
 
 class IntermodalLivestock32px(IntermodalContainerGestalt):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, container_subtype):
+        super().__init__(container_subtype)
         self.length = 32
-        self.type = 'livestock'
         self.stack_type = 'single'
         self.variants = [['box_20_foot_red', 'empty_20_foot', 'empty_20_foot']]
 
 
 class IntermodalReefer16px(IntermodalContainerGestalt):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, container_subtype):
+        super().__init__(container_subtype)
         self.length = 16
-        self.type = 'reefer'
         self.stack_type = 'single'
         self.variants = [['box_30_foot_1CC'],
                          ['box_30_foot_2CC']]
 
 
 class IntermodalReefer24px(IntermodalContainerGestalt):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, container_subtype):
+        super().__init__(container_subtype)
         self.length = 24
-        self.type = 'reefer'
         self.stack_type = 'single'
         self.variants = [['box_20_foot_red', 'empty_20_foot',]]
 
 
 class IntermodalReefer32px(IntermodalContainerGestalt):
-    def __init__(self):
-        super().__init__()
+    def __init__(self, container_subtype):
+        super().__init__(container_subtype)
         self.length = 32
-        self.type = 'reefer'
         self.stack_type = 'single'
         self.variants = [['box_20_foot_red', 'empty_20_foot', 'empty_20_foot']]
 
 
-# containers with visible cargo or cargo-specific liveries
-# --------------------------------------------------------
-
-class IntermodalOpenBulkBase(IntermodalContainerGestalt):
-    def __init__(self, cargo_label):
-        super().__init__()
-        self.type = 'bulk_' + cargo_label
-
-
-class IntermodalOpenBulk16px(IntermodalOpenBulkBase):
-    def __init__(self, cargo_label):
-        super().__init__(cargo_label)
+class IntermodalOpenBulk16px(IntermodalContainerGestalt):
+    def __init__(self, container_subtype):
+        super().__init__(container_subtype)
         self.length = 16
         self.stack_type = 'single'
         # !!!!!!!!!!!!!!!!! unfinished variants
@@ -270,135 +203,117 @@ class IntermodalOpenBulk16px(IntermodalOpenBulkBase):
         self.variants = [['box_30_foot_1CC']]
 
 
-class IntermodalOpenBulk24px(IntermodalOpenBulkBase):
-    def __init__(self, cargo_label):
-        super().__init__(cargo_label)
+class IntermodalOpenBulk24px(IntermodalContainerGestalt):
+    def __init__(self, container_subtype):
+        super().__init__(container_subtype)
         self.length = 24
         self.stack_type = 'single'
         # by design, bulk containers are single-colour, no random variants
-        bulk_20_foot = 'bulk_' + cargo_label + '_20_foot'
+        bulk_20_foot = container_subtype + '_20_foot'
         self.variants = [[bulk_20_foot, bulk_20_foot]]
 
 
-class IntermodalOpenBulk32px(IntermodalOpenBulkBase):
-    def __init__(self, cargo_label):
-        super().__init__(cargo_label)
+class IntermodalOpenBulk32px(IntermodalContainerGestalt):
+    def __init__(self, container_subtype):
+        super().__init__(container_subtype)
         self.length = 32
         self.stack_type = 'single'
         # by design, bulk containers are single-colour, no random variants
-        bulk_20_foot = 'bulk_' + cargo_label + '_20_foot'
+        bulk_20_foot = container_subtype + '_20_foot'
         self.variants = [[bulk_20_foot, bulk_20_foot, bulk_20_foot]]
 
 
-class IntermodalTankBase(IntermodalContainerGestalt):
-    def __init__(self, cargo_label):
-        super().__init__()
-        self.type = 'tank_' + cargo_label
-
-
-class IntermodalTank16px(IntermodalTankBase):
-    def __init__(self, cargo_label):
-        super().__init__(cargo_label)
+class IntermodalTank16px(IntermodalContainerGestalt):
+    def __init__(self, container_subtype):
+        super().__init__(container_subtype)
         self.length = 16
         self.stack_type = 'single'
-        tank_30_foot = 'tank_' + cargo_label + '_30_foot'
+        tank_30_foot = container_subtype + '_30_foot'
         self.variants = [[tank_30_foot]]
 
 
-class IntermodalTank24px(IntermodalTankBase):
-    def __init__(self, cargo_label):
-        super().__init__(cargo_label)
+class IntermodalTank24px(IntermodalContainerGestalt):
+    def __init__(self, container_subtype):
+        super().__init__(container_subtype)
         self.length = 24
         self.stack_type = 'single'
-        tank_20_foot = 'tank_' + cargo_label + '_20_foot'
+        tank_20_foot = container_subtype + '_20_foot'
         #tank_40_foot = 'tank_' + cargo_label + '_40_foot'
         self.variants = [[tank_20_foot, tank_20_foot]]
 
 
-class IntermodalTank32px(IntermodalTankBase):
-    def __init__(self, cargo_label):
-        super().__init__(cargo_label)
+class IntermodalTank32px(IntermodalContainerGestalt):
+    def __init__(self, container_subtype):
+        super().__init__(container_subtype)
         self.length = 32
         self.stack_type = 'single'
-        tank_20_foot = 'tank_' + cargo_label + '_20_foot'
-        tank_30_foot = 'tank_' + cargo_label + '_30_foot'
-        tank_40_foot = 'tank_' + cargo_label + '_40_foot'
+        tank_20_foot = container_subtype + '_20_foot'
+        tank_30_foot = container_subtype + '_30_foot'
+        tank_40_foot = container_subtype + '_40_foot'
         self.variants = [[tank_20_foot, tank_20_foot, tank_20_foot],
                          [tank_30_foot, tank_30_foot],
                          [tank_40_foot, tank_20_foot]]
 
 
-class IntermodalChemicalsTankBase(IntermodalContainerGestalt):
-    def __init__(self, cargo_label):
-        super().__init__()
-        self.type = 'chemicals_tank_' + cargo_label
-
-
-class IntermodalChemicalsTank16px(IntermodalChemicalsTankBase):
-    def __init__(self, cargo_label):
-        super().__init__(cargo_label)
+class IntermodalChemicalsTank16px(IntermodalContainerGestalt):
+    def __init__(self, container_subtype):
+        super().__init__(container_subtype)
         self.length = 16
         self.stack_type = 'single'
-        chemicals_tank_30_foot = 'chemicals_tank_' + cargo_label + '_30_foot'
+        chemicals_tank_30_foot = container_subtype + '_30_foot'
         self.variants = [[chemicals_tank_30_foot]]
 
 
-class IntermodalChemicalsTank24px(IntermodalChemicalsTankBase):
-    def __init__(self, cargo_label):
-        super().__init__(cargo_label)
+class IntermodalChemicalsTank24px(IntermodalContainerGestalt):
+    def __init__(self, container_subtype):
+        super().__init__(container_subtype)
         self.length = 24
         self.stack_type = 'single'
-        chemicals_tank_20_foot = 'chemicals_tank_' + cargo_label + '_20_foot'
+        chemicals_tank_20_foot = container_subtype + '_20_foot'
         #chemicals_tank_40_foot = 'chemicals_tank_' + cargo_label + '_40_foot'
         self.variants = [[chemicals_tank_20_foot, chemicals_tank_20_foot]]
 
 
-class IntermodalChemicalsTank32px(IntermodalChemicalsTankBase):
-    def __init__(self, cargo_label):
-        super().__init__(cargo_label)
+class IntermodalChemicalsTank32px(IntermodalContainerGestalt):
+    def __init__(self, container_subtype):
+        super().__init__(container_subtype)
         self.length = 32
         self.stack_type = 'single'
-        chemicals_tank_20_foot = 'chemicals_tank_' + cargo_label + '_20_foot'
-        chemicals_tank_30_foot = 'chemicals_tank_' + cargo_label + '_30_foot'
-        chemicals_tank_40_foot = 'chemicals_tank_' + cargo_label + '_40_foot'
+        chemicals_tank_20_foot = container_subtype + '_20_foot'
+        chemicals_tank_30_foot = container_subtype + '_30_foot'
+        chemicals_tank_40_foot = container_subtype + '_40_foot'
         self.variants = [[chemicals_tank_20_foot, chemicals_tank_20_foot, chemicals_tank_20_foot],
                          [chemicals_tank_30_foot, chemicals_tank_30_foot],
                          [chemicals_tank_40_foot, chemicals_tank_20_foot]]
 
 
-class IntermodalCryoTankBase(IntermodalContainerGestalt):
-    def __init__(self, cargo_label):
-        super().__init__()
-        self.type = 'cryo_tank_' + cargo_label
-
-
-class IntermodalCryoTank16px(IntermodalCryoTankBase):
-    def __init__(self, cargo_label):
-        super().__init__(cargo_label)
+class IntermodalCryoTank16px(IntermodalContainerGestalt):
+    def __init__(self, container_subtype):
+        super().__init__(container_subtype)
         self.length = 16
         self.stack_type = 'single'
-        cryo_tank_30_foot = 'cryo_tank_' + cargo_label + '_30_foot'
+        cryo_tank_30_foot = container_subtype + '_30_foot'
         self.variants = [[cryo_tank_30_foot]]
 
 
-class IntermodalCryoTank24px(IntermodalCryoTankBase):
-    def __init__(self, cargo_label):
-        super().__init__(cargo_label)
+class IntermodalCryoTank24px(IntermodalContainerGestalt):
+    def __init__(self, container_subtype):
+        super().__init__(container_subtype)
         self.length = 24
         self.stack_type = 'single'
-        cryo_tank_20_foot = 'cryo_tank_' + cargo_label + '_20_foot'
+        cryo_tank_20_foot = container_subtype + '_20_foot'
         #cryo_tank_40_foot = 'cryo_tank_' + cargo_label + '_40_foot'
         self.variants = [[cryo_tank_20_foot, cryo_tank_20_foot]]
 
 
-class IntermodalCryoTank32px(IntermodalCryoTankBase):
-    def __init__(self, cargo_label):
-        super().__init__(cargo_label)
+class IntermodalCryoTank32px(IntermodalContainerGestalt):
+    def __init__(self, container_subtype):
+        super().__init__(container_subtype)
         self.length = 32
         self.stack_type = 'single'
-        cryo_tank_20_foot = 'cryo_tank_' + cargo_label + '_20_foot'
-        cryo_tank_30_foot = 'cryo_tank_' + cargo_label + '_30_foot'
-        cryo_tank_40_foot = 'cryo_tank_' + cargo_label + '_40_foot'
+        cryo_tank_20_foot = container_subtype + '_20_foot'
+        cryo_tank_30_foot = container_subtype + '_30_foot'
+        cryo_tank_40_foot = container_subtype + '_40_foot'
         self.variants = [[cryo_tank_20_foot, cryo_tank_20_foot, cryo_tank_20_foot],
                          [cryo_tank_30_foot, cryo_tank_30_foot],
                          [cryo_tank_40_foot, cryo_tank_20_foot]]
@@ -413,42 +328,27 @@ def get_container_gestalts_by_length(vehicle_length):
 
 registered_container_gestalts = []
 
-def main():
-    # provide gestalts for generic container graphics
-    registered_container_gestalts.extend([IntermodalBox16px(),
-                                          IntermodalBox24px(),
-                                          IntermodalBox32px(),
-                                          IntermodalBulk16px(),
-                                          IntermodalBulk24px(),
-                                          IntermodalBulk32px(),
-                                          IntermodalEdiblesTank16px(),
-                                          IntermodalEdiblesTank24px(),
-                                          IntermodalEdiblesTank32px(),
-                                          IntermodalFlat16px(),
-                                          IntermodalFlat24px(),
-                                          IntermodalFlat32px(),
-                                          IntermodalLivestock16px(),
-                                          IntermodalLivestock24px(),
-                                          IntermodalLivestock32px(),
-                                          IntermodalReefer16px(),
-                                          IntermodalReefer24px(),
-                                          IntermodalReefer32px()])
+container_type_gestalt_mapping = {'box': [IntermodalBox16px, IntermodalBox24px, IntermodalBox32px],
+                                  'edibles_tank': [IntermodalEdiblesTank16px, IntermodalEdiblesTank24px, IntermodalEdiblesTank32px],
+                                  #'flat': [IntermodalFlat16px, IntermodalFlat24px, IntermodalFlat32px],
+                                  'livestock': [IntermodalLivestock16px, IntermodalLivestock24px, IntermodalLivestock32px],
+                                  'reefer': [IntermodalReefer16px, IntermodalReefer24px, IntermodalReefer32px],
+                                  'bulk': [IntermodalOpenBulk16px, IntermodalOpenBulk24px, IntermodalOpenBulk32px],
+                                  'tank': [IntermodalTank16px, IntermodalTank24px, IntermodalTank32px],
+                                  'chemicals_tank': [IntermodalChemicalsTank16px, IntermodalChemicalsTank24px, IntermodalChemicalsTank32px],
+                                  'cryo_tank': [IntermodalCryoTank16px, IntermodalCryoTank24px, IntermodalCryoTank32px]}
 
-    for cargo_label, container_type in GestaltGraphicsIntermodal().cargo_label_mapping.items():
-        # provide gestalts for cargo-specific container graphics
-        if container_type.startswith('bulk'):
-            registered_container_gestalts.append(IntermodalOpenBulk16px(cargo_label))
-            registered_container_gestalts.append(IntermodalOpenBulk24px(cargo_label))
-            registered_container_gestalts.append(IntermodalOpenBulk32px(cargo_label))
-        if container_type.startswith('tank'):
-            registered_container_gestalts.append(IntermodalTank16px(cargo_label))
-            registered_container_gestalts.append(IntermodalTank24px(cargo_label))
-            registered_container_gestalts.append(IntermodalTank32px(cargo_label))
-        if container_type.startswith('chemicals_tank'):
-            registered_container_gestalts.append(IntermodalChemicalsTank16px(cargo_label))
-            registered_container_gestalts.append(IntermodalChemicalsTank24px(cargo_label))
-            registered_container_gestalts.append(IntermodalChemicalsTank32px(cargo_label))
-        if container_type.startswith('cryo_tank'):
-            registered_container_gestalts.append(IntermodalCryoTank16px(cargo_label))
-            registered_container_gestalts.append(IntermodalCryoTank24px(cargo_label))
-            registered_container_gestalts.append(IntermodalCryoTank32px(cargo_label))
+def register_container_gestalt(container_type, container_subtype):
+    for gestalt in container_type_gestalt_mapping[container_type]:
+        registered_container_gestalts.append(gestalt(container_subtype))
+
+def main():
+    for container_subtype in set(GestaltGraphicsIntermodal().cargo_label_mapping.values()):
+        if 'DFLT' not in container_subtype: # DFLT handled explicitly elsewhere
+            container_type = container_subtype[0:-5]
+            register_container_gestalt(container_type, container_subtype)
+
+    for container_type in container_type_gestalt_mapping.keys():
+        if container_type not in ['bulk']: # exclude some types which have no meaningful default (and will fall back to box)
+            container_subtype = container_type + '_DFLT'
+            register_container_gestalt(container_type, container_subtype)

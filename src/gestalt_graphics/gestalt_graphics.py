@@ -267,20 +267,32 @@ class GestaltGraphicsIntermodal(GestaltGraphics):
 
     @property
     def cargo_label_mapping(self):
-        # set explicit labels
-        # !! maybe move to Polar Fox?
-        result = {'LVST': 'livestock',
-                  'MILK': 'edibles_tank',
-                  'WOOD': 'flat'}
-        # ...configuration of containers with cargo-specific liveries or visible cargos with recolouring
-        # tuple because type order matters
-        cargo_specific_container_maps = (('bulk', polar_fox.constants.bulk_cargo_recolour_maps),
-                                         ('chemicals_tank', polar_fox.constants.chemicals_tanker_livery_recolour_maps),
-                                         ('cryo_tank', polar_fox.constants.cryo_tanker_livery_recolour_maps),
-                                         ('tank', polar_fox.constants.tanker_livery_recolour_maps))
+        # tuple because type order is relied on for increasing specificity of cargo:type mapping
+        # e.g. cryo tank > chemical tank > tank
+        container_cargo_maps = (('box', ([], [])),
+                                ('bulk', ([], polar_fox.constants.bulk_cargo_recolour_maps)),
+                                #('flat', ([], [])),
+                                ('livestock', (['LVST'], [])),
+                                ('tank', ([], polar_fox.constants.tanker_livery_recolour_maps)),
+                                ('edibles_tank', (polar_fox.constants.allowed_refits_by_label['edible_liquids'], [])),
+                                ('chemicals_tank', (polar_fox.constants.allowed_refits_by_label['chemicals'],
+                                                    polar_fox.constants.chemicals_tanker_livery_recolour_maps)),
+                                ('cryo_tank', (polar_fox.constants.allowed_refits_by_label['cryo_gases'],
+                                               polar_fox.constants.cryo_tanker_livery_recolour_maps)))
 
-        for container_type, recolour_maps in cargo_specific_container_maps:
-            for cargo_label, recolour_map in recolour_maps:
+        result = {}
+        for container_type, cargo_maps in container_cargo_maps:
+            # first handle the cargos as explicitly refittable
+            # lists of explicitly refittable cargos are by no means *all* the cargos refittable to for a type
+            # nor does explicitly refittable cargos have 1:1 mapping with cargo-specific graphics
+            # these will all map cargo_label: container_type_DFLT
+            for cargo_label in cargo_maps[0]:
+                if cargo_label in result and cargo_label not in ['DFLT']:
+                   print('GestaltGraphicsIntermodal.cargo_label_mapping: cargo_label', cargo_label, 'already exists, being over-written by', container_type, 'label')
+                result[cargo_label] = container_type + '_DFLT'
+
+            # then insert or over-ride entries with cargo_label: container_type_[CARGO_LABEL] where there are explicit graphics for a cargo
+            for cargo_label, recolour_map in cargo_maps[1]:
                 if cargo_label in result and cargo_label not in ['DFLT']:
                    print('GestaltGraphicsIntermodal.cargo_label_mapping: cargo_label', cargo_label, 'already exists, being over-written by', container_type, 'label')
                 result[cargo_label] = container_type + '_' + cargo_label
