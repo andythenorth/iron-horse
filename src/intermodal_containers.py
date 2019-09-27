@@ -85,8 +85,7 @@ class IntermodalEdiblesTank16px(IntermodalContainerGestalt):
         super().__init__(container_subtype)
         self.length = 16
         self.stack_type = 'single'
-        self.variants = [['box_30_foot_1CC'],
-                         ['box_30_foot_2CC']]
+        self.variants = [['edibles_tank_30_foot']]
 
 
 class IntermodalEdiblesTank24px(IntermodalContainerGestalt):
@@ -94,11 +93,8 @@ class IntermodalEdiblesTank24px(IntermodalContainerGestalt):
         super().__init__(container_subtype)
         self.length = 24
         self.stack_type = 'single'
-        self.variants = [['box_20_foot_1CC', 'box_20_foot_red'],
-                         ['box_20_foot_red', 'box_20_foot_1CC'],
-                         ['box_40_foot_1CC'],
-                         ['box_40_foot_2CC'],
-                         ['box_40_foot_red']]
+        self.variants = [['edibles_tank_20_foot', 'edibles_tank_20_foot'],
+                         ['edibles_tank_40_foot']]
 
 
 class IntermodalEdiblesTank32px(IntermodalContainerGestalt):
@@ -106,16 +102,9 @@ class IntermodalEdiblesTank32px(IntermodalContainerGestalt):
         super().__init__(container_subtype)
         self.length = 32
         self.stack_type = 'single'
-        self.variants = [['box_20_foot_1CC', 'box_20_foot_red', 'box_20_foot_1CC'],
-                         ['box_20_foot_red', 'box_20_foot_red', 'box_20_foot_red'],
-                         ['box_20_foot_2CC', 'box_20_foot_2CC', 'box_20_foot_2CC'],
-                         ['box_20_foot_1CC', 'box_20_foot_1CC', 'box_20_foot_1CC'],
-                         ['box_20_foot_1CC', 'box_40_foot_1CC'],
-                         ['box_20_foot_2CC', 'box_40_foot_1CC'],
-                         ['box_20_foot_red', 'box_40_foot_red'],
-                         ['box_40_foot_1CC', 'box_20_foot_1CC'],
-                         ['box_40_foot_2CC', 'box_20_foot_2CC'],
-                         ['box_40_foot_2CC', 'box_20_foot_1CC']]
+        self.variants = [['edibles_tank_20_foot', 'edibles_tank_20_foot', 'edibles_tank_20_foot'],
+                         ['edibles_tank_30_foot', 'edibles_tank_30_foot'],
+                         ['edibles_tank_20_foot', 'edibles_tank_40_foot']]
 
 
 class IntermodalFlat16px(IntermodalContainerGestalt):
@@ -284,7 +273,8 @@ class IntermodalChemicalsTank32px(IntermodalContainerGestalt):
         chemicals_tank_40_foot = container_subtype + '_40_foot'
         self.variants = [[chemicals_tank_20_foot, chemicals_tank_20_foot, chemicals_tank_20_foot],
                          [chemicals_tank_30_foot, chemicals_tank_30_foot],
-                         [chemicals_tank_40_foot, chemicals_tank_20_foot]]
+                         [chemicals_tank_40_foot, chemicals_tank_20_foot],
+                         [chemicals_tank_20_foot, chemicals_tank_40_foot]]
 
 
 class IntermodalCryoTank16px(IntermodalContainerGestalt):
@@ -302,8 +292,9 @@ class IntermodalCryoTank24px(IntermodalContainerGestalt):
         self.length = 24
         self.stack_type = 'single'
         cryo_tank_20_foot = container_subtype + '_20_foot'
-        #cryo_tank_40_foot = 'cryo_tank_' + cargo_label + '_40_foot'
-        self.variants = [[cryo_tank_20_foot, cryo_tank_20_foot]]
+        cryo_tank_40_foot = 'cryo_tank_' + cargo_label + '_40_foot'
+        self.variants = [[cryo_tank_20_foot, cryo_tank_20_foot],
+                         [cryo_tank_40_foot]]
 
 
 class IntermodalCryoTank32px(IntermodalContainerGestalt):
@@ -316,7 +307,8 @@ class IntermodalCryoTank32px(IntermodalContainerGestalt):
         cryo_tank_40_foot = container_subtype + '_40_foot'
         self.variants = [[cryo_tank_20_foot, cryo_tank_20_foot, cryo_tank_20_foot],
                          [cryo_tank_30_foot, cryo_tank_30_foot],
-                         [cryo_tank_40_foot, cryo_tank_20_foot]]
+                         [cryo_tank_40_foot, cryo_tank_20_foot],
+                         [cryo_tank_20_foot, cryo_tank_40_foot]]
 
 
 def get_container_gestalts_by_length(vehicle_length):
