@@ -269,6 +269,8 @@ class GestaltGraphicsIntermodal(GestaltGraphics):
     def cargo_label_mapping(self):
         # tuple because type order is relied on for increasing specificity of cargo:type mapping
         # e.g. cryo tank > chemical tank > tank
+        # first result is known refits which will fallback to xxxxx_DFLT
+        # second result is known cargo sprites / livery recolours, which will map explicitly
         container_cargo_maps = (('box', ([], [])),
                                 ('bulk', ([], polar_fox.constants.bulk_cargo_recolour_maps)),
                                 #('flat', ([], [])),
