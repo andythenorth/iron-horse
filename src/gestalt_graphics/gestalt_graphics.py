@@ -287,15 +287,20 @@ class GestaltGraphicsIntermodal(GestaltGraphics):
             # nor does explicitly refittable cargos have 1:1 mapping with cargo-specific graphics
             # these will all map cargo_label: container_type_DFLT
             for cargo_label in cargo_maps[0]:
-                if cargo_label in result and cargo_label not in ['DFLT']:
-                   print('GestaltGraphicsIntermodal.cargo_label_mapping: cargo_label', cargo_label, 'already exists, being over-written by', container_type, 'label')
-                result[cargo_label] = container_type + '_DFLT'
+                # don't ship DFLT as actual cargo label, it's not a valid cargo and will cause nml to barf
+                if cargo_label is not 'DFLT':
+                    if cargo_label in result:
+                       print('GestaltGraphicsIntermodal.cargo_label_mapping: cargo_label', cargo_label, 'already exists, being over-written by', container_type, 'label')
+                    result[cargo_label] = container_type + '_DFLT'
 
             # then insert or over-ride entries with cargo_label: container_type_[CARGO_LABEL] where there are explicit graphics for a cargo
             for cargo_label, recolour_map in cargo_maps[1]:
-                if cargo_label in result and cargo_label not in ['DFLT']:
-                   print('GestaltGraphicsIntermodal.cargo_label_mapping: cargo_label', cargo_label, 'already exists, being over-written by', container_type, 'label')
-                result[cargo_label] = container_type + '_' + cargo_label
+                # don't ship DFLT as actual cargo label, it's not a valid cargo and will cause nml to barf
+                # the generation of the DFLT container sprites is handled separately to this
+                if cargo_label is not 'DFLT':
+                    if cargo_label in result:
+                       print('GestaltGraphicsIntermodal.cargo_label_mapping: cargo_label', cargo_label, 'already exists, being over-written by', container_type, 'label')
+                    result[cargo_label] = container_type + '_' + cargo_label
         return result
 
     @property

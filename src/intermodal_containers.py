@@ -343,12 +343,19 @@ def register_container_gestalt(container_type, container_subtype):
         registered_container_gestalts.append(gestalt(container_subtype))
 
 def main():
-    for container_subtype in set(GestaltGraphicsIntermodal().cargo_label_mapping.values()):
-        if 'DFLT' not in container_subtype: # DFLT handled explicitly elsewhere
-            container_type = container_subtype[0:-5]
-            register_container_gestalt(container_type, container_subtype)
+    # yeah this is fiddly
+    # we need to generate both cargo-specific sprites (visible cargo or specific recolour
+    # and semi-generic fallback sprites, with specific type of container - tank, box, etc (and generic cargo and/or default recolour)
 
+    # first do the defaults, which will be named xxxxxx_DFLT
     for container_type in container_type_gestalt_mapping.keys():
         if container_type not in ['bulk']: # exclude some types which have no meaningful default (and will fall back to box)
             container_subtype = container_type + '_DFLT'
             register_container_gestalt(container_type, container_subtype)
+
+    # then do the ones with cargo-specific graphics, e.g. bulk_COAL, tank_PETR etc
+    for container_subtype in set(GestaltGraphicsIntermodal().cargo_label_mapping.values()):
+        if 'DFLT' not in container_subtype: # exclude DFLT, handled explicitly elsewhere
+            container_type = container_subtype[0:-5]
+            register_container_gestalt(container_type, container_subtype)
+
