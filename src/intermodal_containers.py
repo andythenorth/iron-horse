@@ -187,9 +187,8 @@ class IntermodalOpenBulk16px(IntermodalContainerGestalt):
         super().__init__(container_subtype)
         self.length = 16
         self.stack_type = 'single'
-        # !!!!!!!!!!!!!!!!! unfinished variants
-        # by design, bulk containers are single-colour, no random variants
-        self.variants = [['box_30_foot_1CC']]
+        bulk_30_foot = container_subtype + '_30_foot'
+        self.variants = [[bulk_30_foot]]
 
 
 class IntermodalOpenBulk24px(IntermodalContainerGestalt):
@@ -197,9 +196,10 @@ class IntermodalOpenBulk24px(IntermodalContainerGestalt):
         super().__init__(container_subtype)
         self.length = 24
         self.stack_type = 'single'
-        # by design, bulk containers are single-colour, no random variants
         bulk_20_foot = container_subtype + '_20_foot'
-        self.variants = [[bulk_20_foot, bulk_20_foot]]
+        bulk_40_foot = container_subtype + '_40_foot'
+        self.variants = [[bulk_20_foot, bulk_20_foot],
+                         [bulk_40_foot]]
 
 
 class IntermodalOpenBulk32px(IntermodalContainerGestalt):
@@ -207,9 +207,10 @@ class IntermodalOpenBulk32px(IntermodalContainerGestalt):
         super().__init__(container_subtype)
         self.length = 32
         self.stack_type = 'single'
-        # by design, bulk containers are single-colour, no random variants
         bulk_20_foot = container_subtype + '_20_foot'
-        self.variants = [[bulk_20_foot, bulk_20_foot, bulk_20_foot]]
+        bulk_30_foot = container_subtype + '_30_foot'
+        self.variants = [[bulk_20_foot, bulk_20_foot, bulk_20_foot],
+                         [bulk_30_foot, bulk_30_foot]]
 
 
 class IntermodalTank16px(IntermodalContainerGestalt):
@@ -227,8 +228,9 @@ class IntermodalTank24px(IntermodalContainerGestalt):
         self.length = 24
         self.stack_type = 'single'
         tank_20_foot = container_subtype + '_20_foot'
-        #tank_40_foot = 'tank_' + cargo_label + '_40_foot'
-        self.variants = [[tank_20_foot, tank_20_foot]]
+        tank_40_foot = container_subtype + '_40_foot'
+        self.variants = [[tank_20_foot, tank_20_foot],
+                         [tank_40_foot]]
 
 
 class IntermodalTank32px(IntermodalContainerGestalt):
@@ -241,7 +243,8 @@ class IntermodalTank32px(IntermodalContainerGestalt):
         tank_40_foot = container_subtype + '_40_foot'
         self.variants = [[tank_20_foot, tank_20_foot, tank_20_foot],
                          [tank_30_foot, tank_30_foot],
-                         [tank_40_foot, tank_20_foot]]
+                         [tank_40_foot, tank_20_foot],
+                         [tank_20_foot, tank_40_foot]]
 
 
 class IntermodalChemicalsTank16px(IntermodalContainerGestalt):
