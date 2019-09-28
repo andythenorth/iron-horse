@@ -300,7 +300,9 @@ class GestaltGraphicsIntermodal(GestaltGraphics):
                                 ('chemicals_tank', (polar_fox.constants.allowed_refits_by_label['chemicals'],
                                                     polar_fox.constants.chemicals_tanker_livery_recolour_maps)),
                                 ('cryo_tank', (polar_fox.constants.allowed_refits_by_label['cryo_gases'],
-                                               polar_fox.constants.cryo_tanker_livery_recolour_maps)))
+                                               polar_fox.constants.cryo_tanker_livery_recolour_maps)),
+                                ('curtain_side', (['VBOD'], # this single label is a dirty trick to stop warnings about unused DFLT spritesets
+                                                  polar_fox.constants.curtain_side_livery_recolour_maps)))
 
         result = {}
         for container_type, cargo_maps in container_cargo_maps:

@@ -153,7 +153,8 @@ class IntermodalCurtainSide16px(IntermodalContainerGestalt):
         super().__init__(container_subtype)
         self.length = 16
         self.stack_type = 'single'
-        self.variants = [['curtain_side_30_foot']]
+        curtain_side_30_foot = container_subtype + '_30_foot'
+        self.variants = [[curtain_side_30_foot]]
 
 
 class IntermodalCurtainSide24px(IntermodalContainerGestalt):
@@ -161,7 +162,8 @@ class IntermodalCurtainSide24px(IntermodalContainerGestalt):
         super().__init__(container_subtype)
         self.length = 24
         self.stack_type = 'single'
-        self.variants = [['curtain_side_40_foot']]
+        curtain_side_40_foot = container_subtype + '_40_foot'
+        self.variants = [[curtain_side_40_foot]]
 
 
 class IntermodalCurtainSide32px(IntermodalContainerGestalt):
@@ -169,7 +171,8 @@ class IntermodalCurtainSide32px(IntermodalContainerGestalt):
         super().__init__(container_subtype)
         self.length = 32
         self.stack_type = 'single'
-        self.variants = [['curtain_side_30_foot', 'curtain_side_30_foot']]
+        curtain_side_30_foot = container_subtype + '_30_foot'
+        self.variants = [[curtain_side_30_foot, curtain_side_30_foot]]
 
 
 class IntermodalEdiblesTank16px(IntermodalContainerGestalt):

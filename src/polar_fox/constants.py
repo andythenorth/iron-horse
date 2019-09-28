@@ -95,6 +95,9 @@ cargo_labels = ['PASS', # pax first
                 'CSTI',
                 'PEAT',
                 'ZINC',
+                'TYRE',
+                'VBOD',
+                'VENG',
                 #
                 'NULL']
 
@@ -308,3 +311,10 @@ cryo_tanker_livery_recolour_maps_extended = (("DFLT", "1CC",
                                               {136: 154, 137: 155, 138: 157, 139: 158, 140: 159, 141: 159, 142: 160, 143: 161}),)
 
 cryo_tanker_livery_recolour_maps = [(i[0], i[2]) for i in cryo_tanker_livery_recolour_maps_extended]
+
+curtain_side_livery_recolour_maps_extended = (("DFLT", "1CC", {}),
+                                              ("TYRE", "black", {}),
+                                              ("VENG", "grey", {}),
+                                              ("VPTS", "2CC", {}))
+
+curtain_side_livery_recolour_maps = [(i[0], i[2]) for i in curtain_side_livery_recolour_maps_extended]
