@@ -137,8 +137,7 @@ class IntermodalLivestock16px(IntermodalContainerGestalt):
         super().__init__(container_subtype)
         self.length = 16
         self.stack_type = 'single'
-        self.variants = [['box_30_foot_1CC'],
-                         ['box_30_foot_2CC']]
+        self.variants = [['livestock_30_foot']]
 
 
 class IntermodalLivestock24px(IntermodalContainerGestalt):
@@ -146,7 +145,8 @@ class IntermodalLivestock24px(IntermodalContainerGestalt):
         super().__init__(container_subtype)
         self.length = 24
         self.stack_type = 'single'
-        self.variants = [['box_20_foot_red', 'empty_20_foot',]]
+        self.variants = [['livestock_20_foot', 'livestock_20_foot'],
+                         ['livestock_40_foot']]
 
 
 class IntermodalLivestock32px(IntermodalContainerGestalt):
@@ -154,7 +154,9 @@ class IntermodalLivestock32px(IntermodalContainerGestalt):
         super().__init__(container_subtype)
         self.length = 32
         self.stack_type = 'single'
-        self.variants = [['box_20_foot_red', 'empty_20_foot', 'empty_20_foot']]
+        self.variants = [['livestock_20_foot', 'livestock_20_foot', 'livestock_20_foot'],
+                         ['livestock_20_foot', 'livestock_40_foot'],
+                         ['livestock_40_foot', 'livestock_20_foot']]
 
 
 class IntermodalReefer16px(IntermodalContainerGestalt):
