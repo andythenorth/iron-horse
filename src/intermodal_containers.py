@@ -349,6 +349,30 @@ class IntermodalTank32px(IntermodalContainerGestalt):
                          [tank_20_foot, tank_40_foot]]
 
 
+class IntermodalWood16px(IntermodalContainerGestalt):
+    def __init__(self, container_subtype):
+        super().__init__(container_subtype)
+        self.length = 16
+        self.stack_type = 'single'
+        self.variants = [['wood_30_foot']]
+
+
+class IntermodalWood24px(IntermodalContainerGestalt):
+    def __init__(self, container_subtype):
+        super().__init__(container_subtype)
+        self.length = 24
+        self.stack_type = 'single'
+        self.variants = [['wood_40_foot']]
+
+
+class IntermodalWood32px(IntermodalContainerGestalt):
+    def __init__(self, container_subtype):
+        super().__init__(container_subtype)
+        self.length = 32
+        self.stack_type = 'single'
+        self.variants = [['wood_30_foot', 'wood_30_foot']]
+
+
 def get_container_gestalts_by_length(vehicle_length):
     result = []
     for container_gestalt in registered_container_gestalts:
@@ -367,7 +391,8 @@ container_type_gestalt_mapping = {'box': [IntermodalBox16px, IntermodalBox24px, 
                                   #'flat': [IntermodalFlat16px, IntermodalFlat24px, IntermodalFlat32px], # unused currently
                                   'livestock': [IntermodalLivestock16px, IntermodalLivestock24px, IntermodalLivestock32px],
                                   'reefer': [IntermodalReefer16px, IntermodalReefer24px, IntermodalReefer32px],
-                                  'tank': [IntermodalTank16px, IntermodalTank24px, IntermodalTank32px]}
+                                  'tank': [IntermodalTank16px, IntermodalTank24px, IntermodalTank32px],
+                                  'wood': [IntermodalWood16px, IntermodalWood24px, IntermodalWood32px]}
 
 def register_container_gestalt(container_type, container_subtype):
     for gestalt in container_type_gestalt_mapping[container_type]:

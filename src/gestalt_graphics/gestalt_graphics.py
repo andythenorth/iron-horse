@@ -302,7 +302,9 @@ class GestaltGraphicsIntermodal(GestaltGraphics):
                                 ('cryo_tank', (polar_fox.constants.allowed_refits_by_label['cryo_gases'],
                                                polar_fox.constants.cryo_tanker_livery_recolour_maps)),
                                 ('curtain_side', (['VBOD'], # this single label is a dirty trick to stop warnings about unused DFLT spritesets
-                                                  polar_fox.constants.curtain_side_livery_recolour_maps)))
+                                                  polar_fox.constants.curtain_side_livery_recolour_maps)),
+                                ('wood', (['WOOD'], []))) # one label only - extend if other wood-type labels added in future
+
 
         result = {}
         for container_type, cargo_maps in container_cargo_maps:
