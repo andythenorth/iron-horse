@@ -2,6 +2,61 @@ Changelog
 =========
 
 -------------
+2.1.0 Release
+-------------
+
+*Container Wagons*
+
+- added Container Wagons in small, medium and large sizes
+- added Express Container Wagons (high speed, low capacity) in medium and large sizes
+- narrow gauge Container Wagon
+- first available around 1960
+- around 300 different container sprites and colour combinations are included
+- container sprites will be chosen automatically depending on cargo, including
+	- box containers
+	- curtain side containers
+	- bulk cargo containers
+	- tanktainers
+	- chemicals tanktainers
+	- cryogenic tanktainers
+	- edible cargos tanktainers
+	- refrigerated containers
+	- livestock containers
+	- flatracks with wood
+- container sprites may randomise when wagon reloads
+- use depot-flip to show alternate livery for container wagons
+- container wagons automatically combine into articulated sets when built
+
+
+*Other Features*
+
+- introduce first Tanker in generation 1 (1860) not gen 2 (1900)
+- add large generation 4 Fruit & Vegetables Van
+- add large generation 4 Refrigerated Van
+- added narrow gauge Hoppers
+- add High Side Mineral Wagons, split from Mineral Wagons
+- improved selection of default cargos for some wagon types
+
+
+*Fixes*
+
+- tweaks to fix minor errors in multiple sprites
+- force intro dates for generation 1 trains to all be identical, avoiding situation where engines are missing wagons or vice versa around 1860
+
+
+*Docs*
+
+- show vehicle sprites in code reference page
+- better formatting of role string in trains page
+
+
+*Translations*
+
+- some languages updated
+- translator credits http://bundles.openttdcoop.org/iron-horse/push/LATEST/credits.txt
+
+
+-------------
 2.0.0 Release
 -------------
 
