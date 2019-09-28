@@ -55,7 +55,8 @@ class IntermodalBox24px(IntermodalContainerGestalt):
         super().__init__(container_subtype)
         self.length = 24
         self.stack_type = 'single'
-        self.variants = [['box_20_foot_1CC', 'box_20_foot_red'],
+        self.variants = [['box_20_foot_1CC', 'box_20_foot_1CC'],
+                         ['box_20_foot_1CC', 'box_20_foot_red'],
                          ['box_20_foot_red', 'box_20_foot_1CC'],
                          ['box_40_foot_1CC'],
                          ['box_40_foot_2CC'],
@@ -67,7 +68,8 @@ class IntermodalBox32px(IntermodalContainerGestalt):
         super().__init__(container_subtype)
         self.length = 32
         self.stack_type = 'single'
-        self.variants = [['box_20_foot_1CC', 'box_20_foot_1CC', 'box_20_foot_red'],
+        self.variants = [['box_20_foot_1CC', 'box_20_foot_1CC', 'box_20_foot_1CC'],
+                         ['box_20_foot_1CC', 'box_20_foot_1CC', 'box_20_foot_red'],
                          ['box_20_foot_red', 'box_20_foot_red', 'box_20_foot_red'],
                          ['box_20_foot_2CC', 'box_20_foot_2CC', 'box_20_foot_2CC'],
                          ['box_20_foot_1CC', 'box_20_foot_1CC', 'box_20_foot_1CC'],
