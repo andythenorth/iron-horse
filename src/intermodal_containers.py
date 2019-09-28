@@ -80,6 +80,30 @@ class IntermodalBox32px(IntermodalContainerGestalt):
                          ['box_30_foot_1CC', 'box_30_foot_1CC']]
 
 
+class IntermodalCurtainSide16px(IntermodalContainerGestalt):
+    def __init__(self, container_subtype):
+        super().__init__(container_subtype)
+        self.length = 16
+        self.stack_type = 'single'
+        self.variants = [['curtain_side_30_foot']]
+
+
+class IntermodalCurtainSide24px(IntermodalContainerGestalt):
+    def __init__(self, container_subtype):
+        super().__init__(container_subtype)
+        self.length = 24
+        self.stack_type = 'single'
+        self.variants = [['curtain_side_40_foot']]
+
+
+class IntermodalCurtainSide32px(IntermodalContainerGestalt):
+    def __init__(self, container_subtype):
+        super().__init__(container_subtype)
+        self.length = 32
+        self.stack_type = 'single'
+        self.variants = [['curtain_side_30_foot', 'curtain_side_30_foot']]
+
+
 class IntermodalEdiblesTank16px(IntermodalContainerGestalt):
     def __init__(self, container_subtype):
         super().__init__(container_subtype)
@@ -330,6 +354,7 @@ def get_container_gestalts_by_length(vehicle_length):
 registered_container_gestalts = []
 
 container_type_gestalt_mapping = {'box': [IntermodalBox16px, IntermodalBox24px, IntermodalBox32px],
+                                  'curtain_side': [IntermodalCurtainSide16px, IntermodalCurtainSide24px, IntermodalCurtainSide32px],
                                   'edibles_tank': [IntermodalEdiblesTank16px, IntermodalEdiblesTank24px, IntermodalEdiblesTank32px],
                                   #'flat': [IntermodalFlat16px, IntermodalFlat24px, IntermodalFlat32px], # unused currently
                                   'livestock': [IntermodalLivestock16px, IntermodalLivestock24px, IntermodalLivestock32px],
