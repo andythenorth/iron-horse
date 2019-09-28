@@ -11,8 +11,7 @@ Changelog
 - added Express Container Wagons (high speed, low capacity) in medium and large sizes
 - narrow gauge Container Wagon
 - first available around 1960
-- around 300 different container sprites and colour combinations are included
-- container sprites will be chosen automatically depending on cargo, including
+- around 300 different container sprites and colour combinations, chosen automatically depending on cargo from
 	- box containers
 	- curtain side containers
 	- bulk cargo containers
