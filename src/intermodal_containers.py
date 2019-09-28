@@ -162,8 +162,7 @@ class IntermodalReefer16px(IntermodalContainerGestalt):
         super().__init__(container_subtype)
         self.length = 16
         self.stack_type = 'single'
-        self.variants = [['box_30_foot_1CC'],
-                         ['box_30_foot_2CC']]
+        self.variants = [['reefer_30_foot']]
 
 
 class IntermodalReefer24px(IntermodalContainerGestalt):
@@ -171,7 +170,8 @@ class IntermodalReefer24px(IntermodalContainerGestalt):
         super().__init__(container_subtype)
         self.length = 24
         self.stack_type = 'single'
-        self.variants = [['box_20_foot_red', 'empty_20_foot',]]
+        self.variants = [['reefer_20_foot', 'reefer_20_foot'],
+                         ['reefer_40_foot']]
 
 
 class IntermodalReefer32px(IntermodalContainerGestalt):
@@ -179,7 +179,10 @@ class IntermodalReefer32px(IntermodalContainerGestalt):
         super().__init__(container_subtype)
         self.length = 32
         self.stack_type = 'single'
-        self.variants = [['box_20_foot_red', 'empty_20_foot', 'empty_20_foot']]
+        self.variants = [['reefer_20_foot', 'reefer_20_foot', 'reefer_20_foot'],
+                         ['reefer_30_foot', 'reefer_30_foot'],
+                         ['reefer_20_foot', 'reefer_40_foot'],
+                         ['reefer_40_foot', 'reefer_20_foot']]
 
 
 class IntermodalOpenBulk16px(IntermodalContainerGestalt):

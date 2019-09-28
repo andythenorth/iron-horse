@@ -272,6 +272,7 @@ class GestaltGraphicsIntermodal(GestaltGraphics):
             return False
         # explicit control over contested cargo_labels, by specifying which container type should be used (there can only be one type for label based support)
         contested_cargo_labels = {'CHLO': 'cryo_tank',
+                                  'FOOD': 'reefer',
                                   'RFPR': 'chemicals_tank',
                                   'SULP': 'tank'}
         if cargo_label in contested_cargo_labels.keys():
@@ -289,11 +290,12 @@ class GestaltGraphicsIntermodal(GestaltGraphics):
     def cargo_label_mapping(self):
         # first result is known refits which will fallback to xxxxx_DFLT
         # second result is known cargo sprites / livery recolours, which will map explicitly
-        container_cargo_maps = (('box', ([], [])), # box currently all generic?
+        container_cargo_maps = (('box', ([], [])), # box currently generic, and is fallback for all unknown cargos / classes
                                 ('bulk', ([], polar_fox.constants.bulk_cargo_recolour_maps)),
                                 #('flat', ([], [])), # flat currently unused
                                 ('livestock', (['LVST'], [])),
                                 ('tank', ([], polar_fox.constants.tanker_livery_recolour_maps)),
+                                ('reefer', (polar_fox.constants.allowed_refits_by_label['reefer'], [])), # reefer currently uses classes only
                                 ('edibles_tank', (polar_fox.constants.allowed_refits_by_label['edible_liquids'], [])),
                                 ('chemicals_tank', (polar_fox.constants.allowed_refits_by_label['chemicals'],
                                                     polar_fox.constants.chemicals_tanker_livery_recolour_maps)),

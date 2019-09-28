@@ -120,6 +120,7 @@ allowed_refits_by_label = {'edible_liquids': ['MILK', 'WATR', 'BEER', 'FOOD', 'E
                                                'BEAN', 'NITR', 'RUBR', 'SAND', 'POTA', 'QLME', 'SASH', 'CMNT',
                                                'KAOL', 'FERT', 'SALT', 'CBLK', 'PLAS'],
                            'cryo_gases': ['CHLO', 'O2__'],
+                           'reefer': ['FOOD', 'FRUT', 'FISH'], # hax for intermodal container sprite selection - reefer car refits work just fine using CC_REFRIGERATED
                            'fruit_veg': ['FRUT', 'BEAN', 'CASS', 'JAVA', 'NUTS'],
                            'cold_metal': ['STEL', 'METL', 'STCB', 'STAL', 'STST', 'COPR']}
 
