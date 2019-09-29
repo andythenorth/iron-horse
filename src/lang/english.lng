@@ -77,6 +77,7 @@ STR_ROLE_GENERAL_PURPOSE_EXPRESS                                :General Purpose
 STR_ROLE_HST                                                    :High Speed
 STR_ROLE_METRO                                                  :High Capacity Urban
 STR_ROLE_VERY_HIGH_SPEED                                        :Very High Speed
+STR_ROLE_LOLZ                                                   :Lolz
 
 # assumes only diesel and electric currently
 STR_POWER_BY_RAILTYPE                                           :{BLACK}Power on Diesel: {GOLD}{POWER} {}{BLACK}Power on Electric: {GOLD}{POWER}

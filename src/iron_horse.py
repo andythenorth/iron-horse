@@ -140,11 +140,9 @@ sliding_wall_cars.main()
 from vehicles import stake_cars
 stake_cars.main()
 
-"""
-# commented out for 2.0.x
 from vehicles import silo_cars
 silo_cars.main()
-"""
+
 
 from vehicles import tank_cars
 tank_cars.main()
@@ -152,11 +150,8 @@ tank_cars.main()
 from vehicles import tarpaulin_cars
 tarpaulin_cars.main()
 
-"""
-# commented out for 2.0.x
 from vehicles import vehicle_transporter_cars
 vehicle_transporter_cars.main()
-"""
 
 """
 # commented out for 2.0.x

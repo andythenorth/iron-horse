@@ -29,7 +29,7 @@ from vehicles import gosling_blast
 from vehicles import gowsty
 from vehicles import grid
 from vehicles import griffon
-# from vehicles import gronk # lolz no
+from vehicles import gronk
 from vehicles import growler
 from vehicles import gwynt
 from vehicles import haar
@@ -162,6 +162,8 @@ roster = Roster(id = 'pony',
                            peasweep,
                            flanders_storm,
                            gosling_blast,
+                           # super jokers
+                           gronk,
                            # diesel railcars
                            deasil,
                            slammer,

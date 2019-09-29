@@ -6,7 +6,7 @@ def main():
     # no gen 1 or 2, straight to gen 3
 
     consist = VehicleTransporterCarConsist(roster='pony',
-                                           base_numeric_id=3580,
+                                           base_numeric_id=3900,
                                            gen=5,
                                            subtype='B')
 
@@ -15,7 +15,7 @@ def main():
 
 
     consist = VehicleTransporterCarConsist(roster='pony',
-                                           base_numeric_id=3570,
+                                           base_numeric_id=3910,
                                            gen=5,
                                            subtype='C')
 

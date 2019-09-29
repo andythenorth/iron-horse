@@ -247,7 +247,8 @@ class Consist(object):
                                        'metro': ['mail_metro', 'pax_metro'],
                                        'railcar': ['mail_railcar_1', 'mail_railcar_2', 'pax_railcar_1', 'pax_railcar_2'],
                                        'very_high_speed': ['very_high_speed'],
-                                       'universal': ['universal']}
+                                       'universal': ['universal'],
+                                       'lolz': ['lolz']}
         if self.gen == 1:
             # to ensure a fully playable roster is available for gen 1, force the days offset to 0
             # for explanation see https://www.tt-forums.net/viewtopic.php?f=26&t=68616&start=460#p1224299
@@ -470,7 +471,8 @@ class Consist(object):
                                'express': 'STR_ROLE_GENERAL_PURPOSE_EXPRESS',
                                'metro': 'STR_ROLE_METRO',
                                'hst': 'STR_ROLE_HST',
-                               'very_high_speed': 'STR_ROLE_VERY_HIGH_SPEED'}
+                               'very_high_speed': 'STR_ROLE_VERY_HIGH_SPEED',
+                               'lolz': 'STR_ROLE_LOLZ'}
         for role_group, roles in global_constants.role_group_mapping.items():
             if self.role in roles:
                 return 'STR_ROLE, string(' + role_string_mapping[role_group] + ')'

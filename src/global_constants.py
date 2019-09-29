@@ -67,7 +67,8 @@ role_group_mapping = {'express': ['branch_express_1', 'branch_express_2', 'expre
                       'hst': ['hst'],
                       'very_high_speed': ['very_high_speed'],
                       'metro': ['mail_metro', 'pax_metro'],
-                      'universal': ['universal', 'mail_railcar_1', 'mail_railcar_2', 'pax_railcar_1', 'pax_railcar_2']}
+                      'universal': ['universal', 'mail_railcar_1', 'mail_railcar_2', 'pax_railcar_1', 'pax_railcar_2'],
+                      'lolz': ['lolz']}
 
 # days offset is used to control *synchronising* (or not) intro dates across groups of vehicles where needed
 # see https://github.com/OpenTTD/OpenTTD/pull/7147 for explanation
@@ -82,7 +83,8 @@ intro_date_offsets_by_role_group = {'universal': 0,
                                     'metro': 7,
                                     'very_high_speed': 8,
                                     'food_wagons': 9,
-                                    'non_core_wagons': 10}
+                                    'non_core_wagons': 10,
+                                    'lolz': 11}
 
 # standard offsets for trains
 default_spritesheet_offsets = {'3': [[-3, -26],  [ -6, -20], [  4, -12], [ 6, -15], [-3, -16], [-16, -15], [-16, -12], [-4, -20]],

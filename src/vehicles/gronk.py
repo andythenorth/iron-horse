@@ -5,10 +5,10 @@ from train import EngineConsist, DieselEngineUnit
 def main(roster):
     consist = EngineConsist(roster=roster,
                             id='gronk',
-                            base_numeric_id=3570,
+                            base_numeric_id=3970,
                             name='Gronk',
                             role='lolz',
-                            power=350,
+                            power=400,
                             speed=35,
                             # dibble TE up for game balance, assume low gearing or something
                             tractive_effort_coefficient=0.375,
