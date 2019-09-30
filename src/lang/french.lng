@@ -40,14 +40,16 @@ STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Wagon-trémie c
 STR_NAME_SUFFIX_CRYO_TANK_CAR                                   :Wagon-citerne cryogénique
 STR_NAME_SUFFIX_CURTAIN_SIDE_BOX_CAR                            :Fourgon à rideau coulissant
 STR_NAME_SUFFIX_DUMP_CAR                                        :Wagon à benne basculante
+STR_NAME_SUFFIX_DUMP_CAR_HIGH_SIDE                              :Wagon haut à benne basculante
 STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Wagon-citerne alimentaire
 STR_NAME_SUFFIX_EXPRESS_CAR                                     :Fourgon express
+STR_NAME_SUFFIX_EXPRESS_INTERMODAL_CAR                          :Wagon porte-container express
 STR_NAME_SUFFIX_FLAT_CAR                                        :Wagon plat
 STR_NAME_SUFFIX_FRUIT_VEG_CAR                                   :Wagon de fruits et légumes
 STR_NAME_SUFFIX_GRAIN_HOPPER_CAR                                :Wagon-trémie à céréales
 STR_NAME_SUFFIX_HST_PASSENGER_CAR                               :HST Voiture passagers
 STR_NAME_SUFFIX_HOPPER_CAR                                      :Wagon-trémie
-STR_NAME_SUFFIX_INTERMODAL_CAR                                  :Wagon intermodal
+STR_NAME_SUFFIX_INTERMODAL_CAR                                  :Wagon porte-container
 STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Wagon à bétail
 STR_NAME_SUFFIX_LUXURY_PASSENGER_CAR                            :Voiture de luxe
 STR_NAME_SUFFIX_MAIL_CAR                                        :Fourgon postal
@@ -76,6 +78,7 @@ STR_ROLE_GENERAL_PURPOSE_EXPRESS                                :Universel/Expre
 STR_ROLE_HST                                                    :Grande vitesse
 STR_ROLE_METRO                                                  :Transport urbain
 STR_ROLE_VERY_HIGH_SPEED                                        :Très Grande vitesse
+STR_ROLE_LOLZ                                                   :mdr
 
 # assumes only diesel and electric currently
 STR_POWER_BY_RAILTYPE                                           :{BLACK}Diesel{NBSP}: {GOLD}{POWER}{}{BLACK}Électrique{NBSP}: {GOLD}{POWER}
