@@ -2,6 +2,22 @@ Changelog
 =========
 
 -------------
+2.1.1 Release
+-------------
+
+*Fixes*
+
+- medium container wagon sprites were misaligned in \ angle
+- mail railcars had reversed sprites for some angles
+
+
+*Translations*
+
+- some languages updated
+- translator credits http://bundles.openttdcoop.org/iron-horse/push/LATEST/credits.txt
+
+
+-------------
 2.1.0 Release
 -------------
 
