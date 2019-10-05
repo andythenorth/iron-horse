@@ -477,9 +477,6 @@ class GestaltGraphicsConsistSpecificLivery(GestaltGraphics):
                 cargo_label_transposed = {'PASS': 'pax', 'MAIL': 'mail'}[cargo_label]
                 spriterow_group_mapping = self.spriterow_group_mappings[cargo_label_transposed]
         for variant in range(self.num_cargo_sprite_variants):
-            # !! this is very hokey and assumes (by excluding mail) that only pax needs asymmetric, and will always need to flip row groups 1 and 2
-            # !! if that fails in future, the actual 'first' and 'last' numbers can be looked up self.spriterow_group_mappings
-            # !! just applying JFDI for now
             if variant == spriterow_group_mapping['first']:
                 source_row_num = spriterow_group_mapping['last']
             elif variant == spriterow_group_mapping['last']:
@@ -489,7 +486,6 @@ class GestaltGraphicsConsistSpecificLivery(GestaltGraphics):
             # group of 4 rows - two liveries * two loaded/loading states (opening doors)
             for i in range(1, 5):
                 result[(4 * variant) + i] = (4 * source_row_num) + i
-        #print(result)
         return(result)
 
 
