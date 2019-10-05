@@ -470,19 +470,26 @@ class GestaltGraphicsConsistSpecificLivery(GestaltGraphics):
         # used in graphics processor to figure out how to make correct asymmetric sprites for 'first' and 'last'
         # pax / mail cars are asymmetric, sprites are drawn in second col, first col needs populated, map is [col 1 dest]: [col 2 source]
         result = {}
+        for cargo_label, row_mapping in self.cargo_row_map.items():
+            # ignore DFLT, it's used for cargo mapping in graphics chain, not sprite generation
+            if cargo_label is not 'DFLT':
+                # oof cargo labels don't match exactly to the keys in spriterow_group_mappings, so transpose
+                cargo_label_transposed = {'PASS': 'pax', 'MAIL': 'mail'}[cargo_label]
+                spriterow_group_mapping = self.spriterow_group_mappings[cargo_label_transposed]
         for variant in range(self.num_cargo_sprite_variants):
             # !! this is very hokey and assumes (by excluding mail) that only pax needs asymmetric, and will always need to flip row groups 1 and 2
             # !! if that fails in future, the actual 'first' and 'last' numbers can be looked up self.spriterow_group_mappings
             # !! just applying JFDI for now
-            if variant == 1 and 'mail' not in self.spriterow_group_mappings:
-                source_row_num = 2
-            elif variant == 2 and 'mail' not in self.spriterow_group_mappings:
-                source_row_num = 1
+            if variant == spriterow_group_mapping['first']:
+                source_row_num = spriterow_group_mapping['last']
+            elif variant == spriterow_group_mapping['last']:
+                source_row_num = spriterow_group_mapping['first']
             else:
                 source_row_num = variant
             # group of 4 rows - two liveries * two loaded/loading states (opening doors)
             for i in range(1, 5):
                 result[(4 * variant) + i] = (4 * source_row_num) + i
+        #print(result)
         return(result)
 
 
