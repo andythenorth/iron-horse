@@ -1,0 +1,8 @@
+generated/
+docs/
+.nmlcache/
+.chameleon_cache/
+*.bak
+
+# The local makefile should be ignored:
+Makefile.local
