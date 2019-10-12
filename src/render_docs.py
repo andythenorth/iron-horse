@@ -129,6 +129,21 @@ class DocHelper(object):
                     result.append(consist)
         return result
 
+    def engine_roles(self):
+        result = []
+        for consist in consists:
+            if consist.role is not None:
+                result.append(consist.role)
+        return sorted(set(result))
+
+    def get_engine_by_role_and_generation(self, role, gen):
+        for consist in consists:
+            if consist.role == role:
+                if consist.gen == gen:
+                    return consist
+        # default result
+        return None
+
     def fetch_prop(self, result, prop_name, value):
         result['vehicle'][prop_name] = value
         result['subclass_props'].append(prop_name)
@@ -309,7 +324,7 @@ def render_docs_images(consist):
 def main():
     start = time()
     # render standard docs from a list
-    html_docs = ['trains', 'code_reference', 'get_started', 'translations']
+    html_docs = ['trains', 'tech_tree', 'code_reference', 'get_started', 'translations']
     txt_docs = ['license', 'readme']
     markdown_docs = ['changelog']
 
@@ -331,9 +346,7 @@ def main():
         pool.map(render_docs_images, consists)
         pool.close()
 
-
     print(format((time() - start), '.2f') + 's')
-
 
 if __name__ == '__main__':
     main()
