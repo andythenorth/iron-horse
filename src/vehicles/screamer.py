@@ -8,7 +8,6 @@ def main(roster):
                             name='Screamer',
                             role='heavy_express_4',
                             power=6000,
-                            joker=True,  # this engine doesn't fit the set roster pattern, by design it's to mix things up
                             random_reverse=True,
                             gen=5,
                             pantograph_type='z-shaped-double',

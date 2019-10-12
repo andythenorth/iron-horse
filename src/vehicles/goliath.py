@@ -9,7 +9,6 @@ def main(roster):
                             role='branch_freight',
                             power=1450,
                             random_reverse=True,
-                            joker=True,
                             gen=6,
                             intro_date_offset=2, # introduce later than gen epoch by design
                             sprites_complete=True)

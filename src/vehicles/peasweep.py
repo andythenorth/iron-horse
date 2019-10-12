@@ -8,7 +8,6 @@ def main(roster):
                             name='Peasweep',
                             role='heavy_freight_2',
                             power=3700,
-                            joker=True,  # this engine doesn't fit the set roster pattern, by design it's to mix things up
                             gen=4,
                             pantograph_type='diamond-double',
                             intro_date_offset=-13,  # introduce earlier than gen epoch by design

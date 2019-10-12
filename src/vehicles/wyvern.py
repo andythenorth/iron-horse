@@ -8,7 +8,6 @@ def main(roster):
                             name='Wyvern',
                             role='heavy_express_3',
                             power=2000,
-                            joker=True,  # this engine doesn't fit the set roster pattern, by design it's to mix things up
                             random_reverse=True,
                             gen=4,
                             intro_date_offset=-5,  # let's not have everything turn up in 1960

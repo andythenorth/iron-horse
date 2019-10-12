@@ -8,7 +8,6 @@ def main(roster):
                             name='Scorcher HST',
                             role='hst', # quite a specific role, may or may not scale to other rosters
                             power=6600,
-                            joker=True,  # this engine doesn't fit the set roster pattern, by design it's to mix things up
                             dual_headed=True,
                             intro_date_offset=-10,  # let's be a little bit earlier for this one - keep match to HST coaches
                             gen=6,

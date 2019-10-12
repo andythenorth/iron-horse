@@ -111,7 +111,7 @@ class Consist(object):
         # optionally suppress nmlc warnings about animated pixels for consists where they're intentional
         self.suppress_animated_pixel_warnings = kwargs.get(
             'suppress_animated_pixel_warnings', False)
-        # by design, occasional 'joker' engines are included that don't fit the roster pattern, this is to add variety
+        # by design, occasional 'joker' vehicles are included that have no gameplay purpose
         self.joker = kwargs.get('joker', False)
         # occasionally we want to force a specific spriterow for docs, not needed often, set in kwargs as needed, see also buy_menu_spriterow_num
         self.docs_image_spriterow = kwargs.get('docs_image_spriterow', 0) # 0 indexed spriterows, position in generated spritesheet

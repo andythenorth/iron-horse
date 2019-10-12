@@ -11,7 +11,6 @@ def main(roster):
                             # dibble TE up for game balance, assume low gearing or something
                             tractive_effort_coefficient=0.375,
                             random_reverse=True,
-                            joker=True,
                             gen=5,
                             intro_date_offset=2, # introduce later than gen epoch by design
                             sprites_complete=True)

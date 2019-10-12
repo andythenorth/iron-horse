@@ -8,7 +8,6 @@ def main(roster):
                             name='Grid',
                             role='heavy_freight_1',
                             power=3300,
-                            joker=True,  # this engine doesn't fit the intro date pattern  by design
                             random_reverse=True,
                             intro_date_offset=-7,  # let's be a little bit earlier for this one
                             gen=5,

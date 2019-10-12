@@ -7,7 +7,6 @@ def main(roster):
                             base_numeric_id=1040,
                             name='4-4-0 Carrack',
                             role='express_1',
-                            joker=True,  # this engine doesn't fit the intro date pattern, to mix things up a bit
                             power=1050,
                             tractive_effort_coefficient=0.18,
                             gen=2,
