@@ -75,7 +75,7 @@
                                                      height="${2 * doc_helper.buy_menu_sprite_height}" />
                                             </td>
                                             <td><a class="table-link-dark" href="#${consist.id}">${doc_helper.unpack_name_string(consist)}</a></td>
-                                            <td>${doc_helper.unpack_role_string(consist)}</td>
+                                            <td>${doc_helper.unpack_role_string_for_consist(consist)}</td>
                                             <td>${consist.intro_date}</td>
                                             <td>${consist.power}</td>
                                             <td>${consist.speed}</td>

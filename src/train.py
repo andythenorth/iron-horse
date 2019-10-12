@@ -466,16 +466,9 @@ class Consist(object):
 
     @property
     def buy_menu_role_string(self):
-        role_string_mapping = {'freight': 'STR_ROLE_FREIGHT',
-                               'universal': 'STR_ROLE_GENERAL_PURPOSE',
-                               'express': 'STR_ROLE_GENERAL_PURPOSE_EXPRESS',
-                               'metro': 'STR_ROLE_METRO',
-                               'hst': 'STR_ROLE_HST',
-                               'very_high_speed': 'STR_ROLE_VERY_HIGH_SPEED',
-                               'lolz': 'STR_ROLE_LOLZ'}
         for role_group, roles in global_constants.role_group_mapping.items():
             if self.role in roles:
-                return 'STR_ROLE, string(' + role_string_mapping[role_group] + ')'
+                return 'STR_ROLE, string(' + global_constants.role_string_mapping[role_group] + ')'
         raise Exception('no role string found for ', self.id)
 
     def render_articulated_switch(self):

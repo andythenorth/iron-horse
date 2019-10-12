@@ -204,11 +204,17 @@ class DocHelper(object):
         else:
             return name
 
-    def unpack_role_string(self, consist):
+    def unpack_role_string_for_consist(self, consist):
         # strip off some nml boilerplate
         role_key = consist.buy_menu_role_string.replace('STR_ROLE, string(', '')
         role_key = role_key.replace(')', '')
         return base_lang_strings[role_key]
+
+    def get_role_string_from_role(self, role):
+        # mangle on some boilerplate to get the nml string
+        for role_group, roles in global_constants.role_group_mapping.items():
+            if role in roles:
+                return base_lang_strings[global_constants.role_string_mapping[role_group]]
 
     def get_props_to_print_in_code_reference(self, subclass):
         props_to_print = {}

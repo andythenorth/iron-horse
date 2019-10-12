@@ -70,6 +70,14 @@ role_group_mapping = {'express': ['branch_express_1', 'branch_express_2', 'expre
                       'universal': ['universal', 'mail_railcar_1', 'mail_railcar_2', 'pax_railcar_1', 'pax_railcar_2'],
                       'lolz': ['lolz']}
 
+role_string_mapping = {'freight': 'STR_ROLE_FREIGHT',
+                       'universal': 'STR_ROLE_GENERAL_PURPOSE',
+                       'express': 'STR_ROLE_GENERAL_PURPOSE_EXPRESS',
+                       'metro': 'STR_ROLE_METRO',
+                       'hst': 'STR_ROLE_HST',
+                       'very_high_speed': 'STR_ROLE_VERY_HIGH_SPEED',
+                       'lolz': 'STR_ROLE_LOLZ'}
+
 # days offset is used to control *synchronising* (or not) intro dates across groups of vehicles where needed
 # see https://github.com/OpenTTD/OpenTTD/pull/7147 for explanation
 # the actual values will be translated into months later
