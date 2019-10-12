@@ -11,6 +11,7 @@
                         <tr>
                             <th style="text-align:right; padding-right: 20px;">Intro Date:</th>
                             <th style="padding-right: 20px;" tal:repeat="intro_date intro_dates">${intro_date}</th>
+                            <td><!--! empty space cell --></td>
                         </tr>
                     </thead>
                     <tbody>
@@ -19,7 +20,7 @@
                             <th style="text-align: right; width: 180px; padding-right: 20px;">
                                 ${role}
                             </th>
-                            <td tal:repeat="gen range(len(intro_dates))" class="text-center" style="${'width: 160px;' if not repeat.gen.end else None}">
+                            <td tal:repeat="gen range(len(intro_dates))" class="text-center" style="width: 160px;">
                                 <tal:consist define="consist doc_helper.get_engine_by_role_and_base_track_type_and_generation(role, base_track_type, gen + 1)">
                                     <tal:block condition="consist is not None">
                                         <div class="tech_tree_vehicle_container">
@@ -43,6 +44,7 @@
                                     </tal:block>
                                 </tal:consist>
                             </td>
+                            <td><!--! empty space cell --></td>
                         </tr>
                     </tbody>
                 </table>
