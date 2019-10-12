@@ -5,37 +5,46 @@
         <div class="span12">
             <tal:base_track_type repeat="base_track_type doc_helper.get_base_track_types()">
                 <h3>${base_track_type[1]}</h3>
-                <table>
-                    <tr tal:repeat="role doc_helper.engine_roles(base_track_type)"
-                        style="border-top: solid 1px #eee; background: linear-gradient(180deg, #fff 0%, #fafafa 100%);">
-                        <th style="width: 300px;">
-                            ${role}
-                        </th>
-                        <td tal:repeat="gen range(6)" class="text-center">
-                            <tal:consist define="consist doc_helper.get_engine_by_role_and_base_track_type_and_generation(role, base_track_type, gen + 1)">
-                                <tal:block condition="consist is not None">
-                                    <div class="tech_tree_vehicle_container">
-                                        <div class="tech_tree_vehicle ${'tech_tree_vehicle_arrow' if doc_helper.get_engine_by_role_and_base_track_type_and_generation(role, base_track_type, gen + 2) is not None else None}">
-                                            <span style="display:block;">
-                                                ${doc_helper.unpack_name_string(consist).split('(')[0]}
-                                            </span>
-                                            <img src="static/img/${consist.id}_blue.png"
-                                                 width="${2 * doc_helper.buy_menu_sprite_width(consist)}"
-                                                 height="${2 * doc_helper.buy_menu_sprite_height}" />
-                                            <span style="display:block; margin-top: 5px;" class="muted">
-                                                <small style="display:block;">
-                                                    ${doc_helper.unpack_name_string(consist).split('(')[1][:-1]}
-                                                </small>
-                                                <small>${consist.power}hp</small>
-                                                |
-                                                <small>${consist.speed}mph</small>
-                                            </span>
+                <table style="width:100%;"
+                       tal:define="intro_dates doc_helper.get_roster_by_id('pony').intro_dates[base_track_type[0]]">
+                    <thead>
+                        <tr>
+                            <th style="text-align:right; padding-right: 20px;">Intro Date:</th>
+                            <th style="padding-right: 20px;" tal:repeat="intro_date intro_dates">${intro_date}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr tal:repeat="role doc_helper.engine_roles(base_track_type)"
+                            style="border-top: solid 1px #eee; background: linear-gradient(180deg, #fff 0%, #fafafa 100%);">
+                            <th style="text-align: right; width: 180px; padding-right: 20px;">
+                                ${role}
+                            </th>
+                            <td tal:repeat="gen range(len(intro_dates))" class="text-center" style="${'width: 160px;' if not repeat.gen.end else None}">
+                                <tal:consist define="consist doc_helper.get_engine_by_role_and_base_track_type_and_generation(role, base_track_type, gen + 1)">
+                                    <tal:block condition="consist is not None">
+                                        <div class="tech_tree_vehicle_container">
+                                            <div class="tech_tree_vehicle ${'tech_tree_vehicle_arrow' if doc_helper.get_engine_by_role_and_base_track_type_and_generation(role, base_track_type, gen + 2) is not None else None}">
+                                                <span style="display:block;">
+                                                    ${doc_helper.unpack_name_string(consist).split('(')[0]}
+                                                </span>
+                                                <img src="static/img/${consist.id}_blue.png"
+                                                     width="${2 * doc_helper.buy_menu_sprite_width(consist)}"
+                                                     height="${2 * doc_helper.buy_menu_sprite_height}" />
+                                                <span style="display:block; margin-top: 5px;" class="muted">
+                                                    <small style="display:block;">
+                                                        ${doc_helper.unpack_name_string(consist).split('(')[1][:-1]}
+                                                    </small>
+                                                    <small>${consist.power}hp</small>
+                                                    |
+                                                    <small>${consist.speed}mph</small>
+                                                </span>
+                                            </div>
                                         </div>
-                                    </div>
-                                </tal:block>
-                            </tal:consist>
-                        </td>
-                    </tr>
+                                    </tal:block>
+                                </tal:consist>
+                            </td>
+                        </tr>
+                    </tbody>
                 </table>
             </tal:base_track_type>
         </div>

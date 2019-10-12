@@ -129,6 +129,13 @@ class DocHelper(object):
                     result.append(consist)
         return result
 
+    def get_roster_by_id(self, roster_id):
+        for roster in registered_rosters:
+            if roster.id == roster_id:
+                return roster
+        # default result
+        return None
+
     def engine_roles(self, base_track_type):
         # !! horrible hax, this could be done so much better by defining the engine buy menu sort order by role
         # !! also could validate missing entries there, and check strings exist for it
