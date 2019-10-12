@@ -43,14 +43,16 @@ td.vehicle-image {
 }
 
 .tech_tree_vehicle {
-    border: solid 3px #ddd;
     border-radius: 8px;
-    padding: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     display: block;
     width:130px;
-    height: 115px;
-    background: white;
+    background: #fafafa;
     position: absolute;
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1), inset 0 1px #fff;
 }
 
 .tech_tree_vehicle_arrow:after, .tech_tree_vehicle_arrow:before {
@@ -64,12 +66,12 @@ td.vehicle-image {
     border-color: rgba(255, 255, 255, 0);
 }
 .tech_tree_vehicle_arrow:before {
-    border-left-color: #ddd !important;
-    margin-top: -20px;
-    border-width: 20px;
+    border-left-color: rgba(0, 0, 0, 0.1) !important;
+    margin-top: -21px;
+    border-width: 21px;
 }
 .tech_tree_vehicle_arrow:after {
-    border-left-color: white !important;
-    margin-top: -15px;
-    border-width: 15px;
+    border-left-color: #fafafa !important;
+    margin-top: -20px;
+    border-width: 20px;
 }

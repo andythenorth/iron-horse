@@ -5,10 +5,10 @@
         <div class="span12">
             <tal:base_track_type repeat="base_track_type doc_helper.get_base_track_types()">
                 <h3>${base_track_type[1]}</h3>
-                <table style="width:100%;" class="table-striped">
+                <table>
                     <tr tal:repeat="role doc_helper.engine_roles(base_track_type)"
-                        style="border-top: solid 1px #ddd;">
-                        <th>
+                        style="border-top: solid 1px #eee; background: linear-gradient(0deg, #ebfaff 0%, #f5fcff 100%);">
+                        <th style="width: 300px;">
                             ${role}
                         </th>
                         <td tal:repeat="gen range(6)" class="text-center">
@@ -16,7 +16,7 @@
                                 <tal:block condition="consist is not None">
                                     <div class="tech_tree_vehicle_container">
                                         <div class="tech_tree_vehicle ${'tech_tree_vehicle_arrow' if doc_helper.get_engine_by_role_and_base_track_type_and_generation(role, base_track_type, gen + 2) is not None else None}">
-                                            <span style="display:block;">
+                                            <span style="display:block; margin-bottom: 5px;">
                                                 ${doc_helper.unpack_name_string(consist).split('(')[0]}
                                             </span>
                                             <span style="display:block;">
@@ -25,10 +25,9 @@
                                             <img src="static/img/${consist.id}_blue.png"
                                                  width="${2 * doc_helper.buy_menu_sprite_width(consist)}"
                                                  height="${2 * doc_helper.buy_menu_sprite_height}" />
-                                            <span style="display:block">
+                                            <span style="display:block; margin-top: 5px;">
                                                 <small>${consist.power}hp</small>
-                                            </span>
-                                            <span style="display:block">
+                                                |
                                                 <small>${consist.speed}mph</small>
                                             </span>
                                         </div>
