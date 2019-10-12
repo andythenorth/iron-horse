@@ -50,9 +50,9 @@ td.vehicle-image {
     padding-bottom: 10px;
     display: block;
     width:130px;
-    background: #fafafa;
+    background: #f5fcff;
     position: absolute;
-    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1), inset 0 1px #fff;
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1), inset 0 1px #fff, inset 0 -1px #fff;
 }
 
 .tech_tree_vehicle_arrow:after, .tech_tree_vehicle_arrow:before {
@@ -71,7 +71,7 @@ td.vehicle-image {
     border-width: 21px;
 }
 .tech_tree_vehicle_arrow:after {
-    border-left-color: #fafafa !important;
+    border-left-color: #f5fcff !important;
     margin-top: -20px;
     border-width: 20px;
 }
