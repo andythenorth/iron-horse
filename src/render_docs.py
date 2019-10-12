@@ -130,12 +130,42 @@ class DocHelper(object):
         return result
 
     def engine_roles(self, base_track_type):
-        result = []
+        # !! horrible hax, this could be done so much better by defining the engine buy menu sort order by role
+        # !! also could validate missing entries there, and check strings exist for it
+        roles_ordered = ['universal',
+                         'branch_express_1',
+                         'branch_express_2',
+                         'express_1',
+                         'heavy_express_1',
+                         'heavy_express_3',
+                         'heavy_express_2',
+                         'heavy_express_4',
+                         'branch_freight',
+                         'freight_1',
+                         'heavy_freight_1',
+                         'heavy_freight_3',
+                         'heavy_freight_2',
+                         'pax_railcar_1',
+                         'pax_railcar_2',
+                         'mail_railcar_1',
+                         'mail_railcar_2',
+                         'hst',
+                         'very_high_speed',
+                         'lolz',
+                         'pax_metro',
+                         'mail_metro']
+        roles_to_include = []
         for consist in consists:
             if consist.base_track_type == base_track_type[0]:
                 if consist.role is not None:
-                    result.append(consist.role)
-        return sorted(set(result))
+                    if consist.role not in roles_ordered:
+                        raise Exception(consist.role)
+                    roles_to_include.append(consist.role)
+        result = []
+        for role in roles_ordered:
+            if role in set(roles_to_include):
+                result.append(role)
+        return result
 
     def get_engine_by_role_and_base_track_type_and_generation(self, role, base_track_type, gen):
         for consist in consists:
