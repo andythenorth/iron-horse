@@ -129,18 +129,20 @@ class DocHelper(object):
                     result.append(consist)
         return result
 
-    def engine_roles(self):
+    def engine_roles(self, base_track_type):
         result = []
         for consist in consists:
-            if consist.role is not None:
-                result.append(consist.role)
+            if consist.base_track_type == base_track_type[0]:
+                if consist.role is not None:
+                    result.append(consist.role)
         return sorted(set(result))
 
-    def get_engine_by_role_and_generation(self, role, gen):
+    def get_engine_by_role_and_base_track_type_and_generation(self, role, base_track_type, gen):
         for consist in consists:
             if consist.role == role:
-                if consist.gen == gen:
-                    return consist
+                if consist.base_track_type == base_track_type[0]:
+                    if consist.gen == gen:
+                        return consist
         # default result
         return None
 
