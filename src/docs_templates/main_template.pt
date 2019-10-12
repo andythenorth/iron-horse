@@ -41,7 +41,7 @@
                         <a href="trains.html">Trains</a>
                     </li>
                     <li class="${doc_helper.get_active_nav(doc_name, 'tech_tree')}">
-                        <a href="tech_tree.html">Tech Tree</a>
+                        <a href="tech_tree_table.html">Tech Tree</a>
                     </li>
                     <li class="${doc_helper.get_active_nav(doc_name, 'code_reference')}">
                         <a href="code_reference.html">Code Reference</a>

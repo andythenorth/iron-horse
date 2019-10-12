@@ -108,12 +108,6 @@ class DocHelper(object):
         result = [{'name': i.__name__, 'doc': i.__doc__, 'class_obj': subclass, 'vehicles': vehicles_by_subclass[i]} for i in vehicles_by_subclass]
         return sorted(result, key=lambda subclass: subclass['name'])
 
-    def get_engine_consists(self):
-        result = []
-        for i in self.get_vehicles_by_subclass(filter_subclasses_by_name='EngineConsist').values():
-            result.extend(i)
-        return result
-
     def get_engines_by_roster_and_base_track_type(self, roster, base_track_type):
         result = []
         for consist in roster.engine_consists:
@@ -369,15 +363,17 @@ def render_docs_images(consist):
 def main():
     start = time()
     # render standard docs from a list
-    html_docs = ['trains', 'tech_tree', 'code_reference', 'get_started', 'translations']
+    html_docs = ['trains', 'tech_tree_table', 'code_reference', 'get_started', 'translations']
     txt_docs = ['license', 'readme']
     markdown_docs = ['changelog']
+    graph_docs = ['tech_tree_linkgraph']
 
     render_docs(html_docs, 'html')
     render_docs(txt_docs, 'txt')
     # just render the markdown docs twice to get txt and html versions, simples no?
     render_docs(markdown_docs, 'txt')
     render_docs(markdown_docs, 'html', use_markdown=True)
+    render_docs(graph_docs, 'dotall')
 
     # process images for use in docs
     # yes, I really did bother using a pool to save at best a couple of seconds, because FML :)

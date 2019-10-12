@@ -50,6 +50,10 @@ HTML_DOCS = docs
 SOURCE_NAME = $(PROJECT_VERSIONED_NAME)-source
 BUNDLE_DIR = bundle_dir
 
+# graphviz tools
+GVPR ?= $(shell which gvpr)
+DOT  ?= $(shell which dot)
+
 # Build rules
 .PHONY: default graphics lang nml grf tar bundle_tar bundle_zip bundle_src clean
 default: html_docs grf
@@ -79,6 +83,14 @@ $(LANG_DIR): $(shell $(FIND_FILES) --ext=.py --ext=.pynml --ext=.lng src)
 
 $(HTML_DOCS): $(GRAPHICS_DIR) $(shell $(FIND_FILES) --ext=.py --ext=.pynml --ext=.pt --ext=.lng --ext=.png src)
 	$(_V) $(PYTHON3) src/render_docs.py $(ARGS)
+# Insane trick to check whether both DOT and GVPR are not empty.
+ifeq ($(DOT)$(GVPR),$(GVPR)$(DOT))
+	echo "[HTML DOCS] graphviz not found, skipping .dot files"
+else
+	mkdir docs/html/static/img/cargoflow
+	$(GVPR) 'BEG_G { fname = sprintf("docs/html/%s.dot", $$G.name); writeG($$G, fname) }' docs/tech_tree_linkgraph.dotall
+	cd docs/html; $(DOT) -Tsvg -O *.dot
+endif
 
 $(NML_FILE): $(shell $(FIND_FILES) --ext=.py --ext=.pynml src)
 	$(_V) $(PYTHON3) src/render_nml.py $(ARGS)

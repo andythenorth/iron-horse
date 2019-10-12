@@ -1,0 +1,36 @@
+digraph tech_tree {
+    fontname="sans-serif"
+    stylesheet="static/css/cargoflow_styles.css"
+    rankdir="LR"
+    ranksep="0.44"
+    nodesep="0.33"
+    <tal:base_track_type repeat="base_track_type doc_helper.get_base_track_types()">
+        <!--!<tal:generations define="intro_dates ">-->
+        <tal:roles repeat="role doc_helper.engine_roles(base_track_type)">
+            <tal:generations tal:repeat="gen range(len(doc_helper.get_roster_by_id('pony').intro_dates[base_track_type[0]]))">
+                <tal:consist define="consist doc_helper.get_engine_by_role_and_base_track_type_and_generation(role, base_track_type, gen + 1)">
+                    <tal:consist_exists condition="consist is not None">
+                        E_${consist.id} [label="${consist.id}", rank="same"]
+                        <tal:replacement condition="consist.replacement_consist is not None">
+                            E_${consist.id} -> E_${consist.replacement_consist.id}
+                        </tal:replacement>
+                        <tal:replacement condition="consist.replacement_consist is None and not repeat.gen.end">
+                            E_${consist.id} -> E_${base_track_type[0]}_${role}_${gen + 1}
+                        </tal:replacement>
+                    </tal:consist_exists>
+                    <tal:dummy_consist condition="consist is None">
+                        E_${base_track_type[0]}_${role}_${gen} [label="dummy", rank="same"]
+                        <tal:dummy_replacement define="dummy_replacement doc_helper.get_engine_by_role_and_base_track_type_and_generation(role, base_track_type, gen + 2)">
+                            <tal:replacement_exists condition="dummy_replacement is not None">
+                                E_${base_track_type[0]}_${role}_${gen} -> E_${dummy_replacement.id}
+                            </tal:replacement_exists>
+                            <tal:no_replacement condition="dummy_replacement is None and not repeat.gen.end">
+                                E_${base_track_type[0]}_${role}_${gen} -> E_${base_track_type[0]}_${role}_${gen + 1}
+                            </tal:no_replacement>
+                        </tal:dummy_replacement>
+                    </tal:dummy_consist>
+                </tal:consist>
+            </tal:generations>
+        </tal:roles>
+    </tal:base_track_type>
+}
