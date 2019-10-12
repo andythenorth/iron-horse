@@ -33,3 +33,43 @@ td.vehicle-image {
     padding-bottom: 13px;
     text-align: center;
 }
+
+.tech_tree_vehicle_container {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    position: relative;
+    width: 160px;
+    height: 125px;
+}
+
+.tech_tree_vehicle {
+    border: solid 3px #ddd;
+    border-radius: 8px;
+    padding: 5px;
+    display: block;
+    width:130px;
+    height: 115px;
+    background: white;
+    position: absolute;
+}
+
+.tech_tree_vehicle_arrow:after, .tech_tree_vehicle_arrow:before {
+    left: 100%;
+    top: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    border-color: rgba(255, 255, 255, 0);
+}
+.tech_tree_vehicle_arrow:before {
+    border-left-color: #ddd !important;
+    margin-top: -20px;
+    border-width: 20px;
+}
+.tech_tree_vehicle_arrow:after {
+    border-left-color: white !important;
+    margin-top: -15px;
+    border-width: 15px;
+}
