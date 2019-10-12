@@ -24,6 +24,12 @@
                                     <img src="static/img/${consist.id}_blue.png"
                                          width="${2 * doc_helper.buy_menu_sprite_width(consist)}"
                                          height="${2 * doc_helper.buy_menu_sprite_height}" />
+                                    <span style="display:block">
+                                        <small>${consist.power}hp</small>
+                                    </span>
+                                    <span style="display:block">
+                                        <small>${consist.speed}mph</small>
+                                    </span>
                                 </tal:block>
                             </tal:consist>
                         </td>
