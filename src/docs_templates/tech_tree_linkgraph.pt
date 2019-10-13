@@ -4,8 +4,20 @@ digraph tech_tree {
     rankdir="LR"
     ranksep="0.44"
     nodesep="0.33"
-    <tal:base_track_type repeat="base_track_type doc_helper.get_base_track_types()">
-        <!--!<tal:generations define="intro_dates ">-->
+    <tal:base_track_type repeat="base_track_type doc_helper.engines_as_tech_tree_for_graphviz().items()">
+        <tal:hax condition="base_track_type[0] == 'RAIL'">
+            <tal:roles repeat="role base_track_type[1].items()">
+                <tal:consists tal:repeat="engine_node role[1]">
+                        E_${engine_node['id']} [label="${engine_node['id']}", rank="same"]
+                        <tal:replacement condition="'replacement_id' in engine_node.keys()">
+                            E_${engine_node['id']} -> E_${engine_node['replacement_id']}
+                        </tal:replacement>
+                </tal:consists>
+            </tal:roles>
+        </tal:hax>
+    </tal:base_track_type>
+
+    <!--!<tal:base_track_type repeat="base_track_type doc_helper.get_base_track_types()">
         <tal:roles repeat="role doc_helper.engine_roles(base_track_type)">
             <tal:generations tal:repeat="gen range(len(doc_helper.get_roster_by_id('pony').intro_dates[base_track_type[0]]))">
                 <tal:consist define="consist doc_helper.get_engine_by_role_and_base_track_type_and_generation(role, base_track_type, gen + 1)">
@@ -32,5 +44,5 @@ digraph tech_tree {
                 </tal:consist>
             </tal:generations>
         </tal:roles>
-    </tal:base_track_type>
+    </tal:base_track_type>-->
 }

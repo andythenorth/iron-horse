@@ -130,6 +130,43 @@ class DocHelper(object):
         # default result
         return None
 
+    def engines_as_tech_tree_for_graphviz(self):
+        result = {}
+        for base_track_type in self.get_base_track_types():
+            result[base_track_type[0]] = {}
+            for role in self.engine_roles(base_track_type):
+                role_engines = []
+                fill_dummy = True
+                intro_dates = self.get_roster_by_id('pony').intro_dates[base_track_type[0]]
+                for gen, intro_date in enumerate(intro_dates, 1):
+                    consist = self.get_engine_by_role_and_base_track_type_and_generation(role, base_track_type, gen)
+                    engine_node = {}
+                    # get the consist or a dummy node (for spacing the graph correctly by gen)
+                    if consist is not None:
+                        engine_node['id'] = consist.id
+                        if consist.replacement_consist is not None:
+                            fill_dummy = False # prevent adding any more dummy nodes after this real consist
+                            engine_node['replacement_id'] = consist.replacement_consist.id
+                        else:
+                            if gen < len(intro_dates):
+                                fill_dummy = True
+                                engine_node['replacement_id'] = '_'.join(['dummy', base_track_type[0], role, str(gen + 1)])
+                    else:
+                        if fill_dummy:
+                            engine_node['id'] = '_'.join(['dummy', base_track_type[0], role, str(gen)])
+                            # figure out if there's a valid replacement
+                            if gen < len(intro_dates):
+                                next_gen_consist = self.get_engine_by_role_and_base_track_type_and_generation(role, base_track_type, gen + 1)
+                                if next_gen_consist is not None:
+                                    engine_node['replacement_id'] = next_gen_consist.id
+                                else:
+                                    engine_node['replacement_id'] = '_'.join(['dummy', base_track_type[0], role, str(gen + 1)])
+
+                    if len(engine_node) != 0:
+                        role_engines.append(engine_node)
+                result[base_track_type[0]][role] = role_engines
+        return result
+
     def engine_roles(self, base_track_type):
         # !! horrible hax, this could be done so much better by defining the engine buy menu sort order by role
         # !! also could validate missing entries there, and check strings exist for it
