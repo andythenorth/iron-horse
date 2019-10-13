@@ -16,7 +16,7 @@
                     </thead>
                     <tbody>
                         <tr tal:repeat="role doc_helper.engine_roles(base_track_type)"
-                            style="border-top: solid 1px #eee;
+                            style="border-top: solid ${'2px #ccc' if role in ['branch_freight', 'heavy_freight_1', 'heavy_express_1', 'pax_railcar_1', 'hst', 'lolz'] else '1px #eee'};
                                    box-shadow: inset 0 -1px #fff;
                                    background: linear-gradient(180deg, #fff 0%, #fafafa 100%);">
                             <th style="text-align: right; width: 180px; padding-right: 20px;">
