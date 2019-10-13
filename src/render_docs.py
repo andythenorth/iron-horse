@@ -144,7 +144,8 @@ class DocHelper(object):
                     # get the consist or a dummy node (for spacing the graph correctly by gen)
                     if consist is not None:
                         engine_node['id'] = consist.id
-                        engine_node['label'] = consist.id
+                        engine_node['label'] = self.unpack_name_string(consist).split('(')[0]
+                        engine_node['image'] = consist.id + "_blue.png"
                         if consist.replacement_consist is not None:
                             fill_dummy = False # prevent adding any more dummy nodes after this real consist
                             engine_node['replacement_id'] = consist.replacement_consist.id

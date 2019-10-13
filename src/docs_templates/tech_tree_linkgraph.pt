@@ -8,9 +8,19 @@ digraph tech_tree {
         <tal:hax condition="base_track_type[0] == 'RAIL'">
             <tal:roles repeat="role base_track_type[1].items()">
                 <tal:consists tal:repeat="engine_node role[1]">
-                        E_${engine_node['id']} [label="${engine_node['label']}", rank="same"]
+                        E_${engine_node['id']} [label="${engine_node['label']}",
+                                                shape="box",
+                                                width="3",
+                                                height="1",
+                                                style="${'invis' if engine_node['label'] == 'dummy' else 'rounded'}",
+                                                <tal:image condition="engine_node.get('image', None) is not None">
+                                                    image="static/img/${engine_node.get('image', None)}"
+                                                    imagescale="height",
+                                                    imagepos="mc"
+                                                </tal:image>
+                                                ]
                         <tal:replacement condition="'replacement_id' in engine_node.keys()">
-                            E_${engine_node['id']} -> E_${engine_node['replacement_id']}
+                            E_${engine_node['id']} -> E_${engine_node['replacement_id']} [style="${'invis' if engine_node['label'] == 'dummy' else None}"]
                         </tal:replacement>
                 </tal:consists>
             </tal:roles>
