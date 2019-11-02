@@ -149,7 +149,7 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
 }
 
 <tal:rosters condition="vehicle.is_lead_unit_of_consist">
-    if (${consist.get_expression_for_rosters()}) {
+    if (${consist.get_expression_for_availability()}) {
         item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
             property {
                 climates_available:             ALL_CLIMATES;

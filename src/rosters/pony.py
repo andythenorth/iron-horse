@@ -162,7 +162,7 @@ roster = Roster(id = 'pony',
                            peasweep,
                            flanders_storm,
                            gosling_blast,
-                           # super jokers
+                           # joker engines
                            gronk,
                            # diesel railcars
                            deasil,

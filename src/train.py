@@ -403,9 +403,13 @@ class Consist(object):
         else:
             raise Exception('no roster found for ', self.id)
 
-    def get_expression_for_rosters(self):
-        # the working definition is one and only one roster per vehicle
-        return 'param[1]==' + str(self.roster.numeric_id - 1)
+    def get_expression_for_availability(self):
+        result = []
+        # rosters: the working definition is one and only one roster per vehicle
+        result.append('param[1]==' + str(self.roster.numeric_id - 1))
+        if self.joker:
+             result.append('param_jokers_enabled==1')
+        return ' && '.join(result)
 
     def get_nml_expression_for_default_cargos(self):
         # sometimes first default cargo is not available, so we use a list

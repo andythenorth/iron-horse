@@ -7,6 +7,8 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY                               :Train capacity
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :Puny
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Marvellous
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Excessive
+STR_PARAM_NAME_JOKERS_ENABLED                                   :Jokers Enabled
+STR_PARAM_DESC_JOKERS_ENABLED                                   :Jokers Enabled
 STR_PARAM_ROSTER                                                :Roster
 STR_PARAM_ROSTER_DESC                                           :Choose which set of trains to use.
 STR_PARAM_ROSTER_OPTION_0                                       :Iron Pony

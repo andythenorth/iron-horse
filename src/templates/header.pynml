@@ -33,6 +33,15 @@ grf {
 			};
 		}
 	}
+	param 2 {
+		param_jokers_enabled {
+			name: string(STR_PARAM_NAME_JOKERS_ENABLED);
+			desc: string(STR_PARAM_DESC_JOKERS_ENABLED);
+			type: bool;
+			def_value: 1;
+			bit: 1;
+		}
+	}
 }
 
 basecost {
