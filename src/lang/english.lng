@@ -73,6 +73,7 @@ STR_BUY_MENU_WRAPPER_TWO_SUBSTR                                 :{STRING}{}{STRI
 
 # role information for buy menu
 STR_ROLE                                                        :{BLACK}Role: {GOLD}{STRING}
+STR_ROLE_DRIVING_CAB                                            :Driving Cab
 STR_ROLE_FREIGHT                                                :Freight
 STR_ROLE_GENERAL_PURPOSE                                        :General Purpose
 STR_ROLE_GENERAL_PURPOSE_EXPRESS                                :General Purpose / Express
@@ -87,6 +88,9 @@ STR_POWER_BY_RAILTYPE                                           :{BLACK}Power on
 # distributed power (dedicated wagons add power)
 STR_WAGONS_ADD_POWER_CAB                                        :Power (Distributed): {GOLD}{POWER} per {STRING} unit attached
 STR_WAGONS_ADD_POWER_MIDDLE                                     :Power (Distributed): {GOLD}{POWER} when attached to {STRING} unit
+
+# other buy menu hints
+STR_BUY_MENU_HINT_DRIVING_CAB                                   :{BLACK}Attach to front or rear of train, with at least one other engine
 
 # project management
 STR_SPRITES_COMPLETE                                            :{}Sprites Complete: {GOLD}Yup

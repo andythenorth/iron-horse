@@ -79,6 +79,8 @@ class Consist(object):
         self.buy_menu_hint_wagons_add_power = False
         # some vehicles will get a higher speed if hauled by an express engine (use rarely)
         self.easter_egg_haulage_speed_bonus = kwargs.get('easter_egg_haulage_speed_bonus', False)
+        # simple buy menu hint flag for driving cabs
+        self.buy_menu_hint_driving_cab = False
         # random_reverse means (1) randomised reversing of sprites when vehicle is built (2) player can also flip vehicle
         # random_reverse is not supported in some templates
         self.random_reverse = kwargs.get('random_reverse', False)
@@ -171,7 +173,10 @@ class Consist(object):
 
     @property
     def name(self):
-        return "string(STR_NAME_CONSIST_PARENTHESES, string(STR_NAME_" + self.id + "), string(" + self.str_name_suffix + "))"
+        if self.str_name_suffix is not None:
+            return "string(STR_NAME_CONSIST_PARENTHESES, string(STR_NAME_" + self.id + "), string(" + self.str_name_suffix + "))"
+        else:
+            return "string(STR_NAME_" + self.id + ")"
 
     def engine_varies_power_by_railtype(self, vehicle):
         if self.power_by_railtype is not None and vehicle.is_lead_unit_of_consist:
@@ -241,6 +246,7 @@ class Consist(object):
         # this does *not* use the role group mapping in global constants, as it's more fragmented to avoid too many new vehicle messages at once
         role_to_role_groups_mapping = {'express_core': ['express_1', 'heavy_express_1'],
                                        'express_non_core': ['branch_express_1', 'branch_express_2', 'express_2', 'heavy_express_2', 'heavy_express_3', 'heavy_express_4'],
+                                       'driving_cab': ['driving_cab_express_1'],
                                        'freight_core': ['freight_1', 'heavy_freight_1',],
                                        'freight_non_core': ['branch_freight', 'freight_2', 'heavy_freight_2', 'heavy_freight_3'],
                                        'hst': ['hst'],
@@ -374,7 +380,7 @@ class Consist(object):
             # could be fixed by checking a list of railtypes
             return self.get_speed_by_class(self.speed_class)
         elif self.role:
-            if self.role in global_constants.role_group_mapping['express']:
+            if self.role in global_constants.role_group_mapping['express'] or self.role in global_constants.role_group_mapping['driving_cab']:
                 return self.get_speed_by_class('express')
             elif self.role in ['hst']:
                 return self.get_speed_by_class('hst')
@@ -450,6 +456,8 @@ class Consist(object):
             return 'variable_power'
         elif self.buy_menu_hint_wagons_add_power:
             return 'wagons_add_power'
+        elif self.buy_menu_hint_driving_cab:
+            return 'driving_cab'
         else:
             return 'default'
 
@@ -464,6 +472,10 @@ class Consist(object):
 
         # engines will always show a role string
         result.append(self.buy_menu_role_string)
+
+        # driving cab hint comes after role string
+        if self.buy_menu_hint_driving_cab:
+            result.append('STR_BUY_MENU_HINT_DRIVING_CAB')
 
         if len(result) == 1:
             return 'STR_BUY_MENU_WRAPPER_ONE_SUBSTR, string(' + result[0] + ')'
@@ -887,6 +899,28 @@ class MailEngineRailcarConsist(MailEngineConsist):
         self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings,
                                                                      consist_ruleset="mail_railcars",
                                                                      pantograph_type=self.pantograph_type)
+
+
+class MailEngineDrivingCabConsist(MailEngineConsist):
+    """
+    Consist for a mail DVT / cabbage.  Just a sparse subclass to force the gestalt_graphics and allow_flip.
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.power = 10
+        self.role = 'driving_cab_express_1'
+        self.buy_menu_hint_driving_cab = True
+        self.allow_flip = True
+        # Graphics configuration
+        # driving cab cars have consist cargo mappings for pax, mail (freight uses mail)
+        # * pax matches pax liveries for generation
+        # * mail gets a TPO/RPO striped livery, and a 1CC/2CC duotone livery
+        # position based variants
+        spriterow_group_mappings = {'mail': {'default': 0, 'first': 0, 'last': 1, 'special': 0},
+                                    'pax': {'default': 0, 'first': 0, 'last': 1, 'special': 0}}
+        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings,
+                                                                     consist_ruleset='driving_cab_cars')
 
 
 class CarConsist(Consist):
@@ -2273,6 +2307,22 @@ class DieselRailcarPaxUnit(DieselRailcarBaseUnit):
         # magic to set capacity subject to length
         base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
         self.capacity = self.vehicle_length * base_capacity
+
+
+class DrivingCabUnit(Train):
+    """
+    Unit for a driving cab (DVT / Cabbage).  Mail / express freight refits
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.engine_class = 'ENGINE_CLASS_DIESEL' # !! needs changing??
+        self.effects = {}
+        self.consist.str_name_suffix = None
+        self._symmetry_type = 'asymmetric'
+        # magic to set capacity subject to length
+        base_capacity = self.consist.roster.freight_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
+        self.capacity = (self.vehicle_length * base_capacity) / polar_fox.constants.mail_multiplier
 
 
 class ElectricEngineUnit(Train):

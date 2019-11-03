@@ -181,6 +181,7 @@ class DocHelper(object):
                          'heavy_express_3',
                          'heavy_express_2',
                          'heavy_express_4',
+                         'driving_cab_express_1',
                          'branch_freight',
                          'freight_1',
                          'heavy_freight_1',
@@ -232,7 +233,7 @@ class DocHelper(object):
             name_substr = substrings[2].translate({ord(c):'' for c in '), '})
             name = base_lang_strings[name_substr]
         # !! this would be better generalised to 'consist.has_suffix', currently docs rendering is knowing too much about the internals of trains
-        if getattr(consist, 'subtype', None) is not 'U':
+        if getattr(consist, 'subtype', None) is not 'U' and getattr(consist, 'str_name_suffix', None) is not None:
             suffix = base_lang_strings[substrings[3][0:-2]]
             return name + ' (' + suffix + ')'
         else:

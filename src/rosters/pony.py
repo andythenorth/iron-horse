@@ -10,6 +10,7 @@ from vehicles import braf
 from vehicles import breeze
 from vehicles import brenner_cab
 from vehicles import brenner_middle
+from vehicles import cabbage_1
 from vehicles import carrack
 from vehicles import cheddar_valley
 from vehicles import cheese_bug
@@ -139,6 +140,8 @@ roster = Roster(id = 'pony',
                            fury,
                            screamer,
                            sizzler,
+                           # driving cab cars
+                           cabbage_1,
                            # branch freight
                            saxon,
                            little_bear,

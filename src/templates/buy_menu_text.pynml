@@ -18,6 +18,12 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_buy_menu_text_result, 1) {
             return ${vehicle.id}_switch_buy_menu_text_result;
         }
     </tal:wagons_add_power>
+    <tal:driving_cab case="'driving_cab'">
+        <!--! just an explicit passthrough -->
+        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_buy_menu_text, 1) {
+            return ${vehicle.id}_switch_buy_menu_text_result;
+        }
+    </tal:driving_cab
     <tal:default case="'default'">
         switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_buy_menu_text, 1) {
             return ${vehicle.id}_switch_buy_menu_text_result;
