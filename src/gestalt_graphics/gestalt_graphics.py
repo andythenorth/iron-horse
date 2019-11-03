@@ -470,22 +470,27 @@ class GestaltGraphicsConsistSpecificLivery(GestaltGraphics):
         # used in graphics processor to figure out how to make correct asymmetric sprites for 'first' and 'last'
         # pax / mail cars are asymmetric, sprites are drawn in second col, first col needs populated, map is [col 1 dest]: [col 2 source]
         result = {}
-        for cargo_label, row_mapping in self.cargo_row_map.items():
-            # ignore DFLT, it's used for cargo mapping in graphics chain, not sprite generation
-            if cargo_label is not 'DFLT':
-                # oof cargo labels don't match exactly to the keys in spriterow_group_mappings, so transpose
-                cargo_label_transposed = {'PASS': 'pax', 'MAIL': 'mail'}[cargo_label]
-                spriterow_group_mapping = self.spriterow_group_mappings[cargo_label_transposed]
-        for variant in range(self.num_cargo_sprite_variants):
-            if variant == spriterow_group_mapping['first']:
-                source_row_num = spriterow_group_mapping['last']
-            elif variant == spriterow_group_mapping['last']:
-                source_row_num = spriterow_group_mapping['first']
-            else:
-                source_row_num = variant
-            # group of 4 rows - two liveries * two loaded/loading states (opening doors)
-            for i in range(1, 5):
-                result[(4 * variant) + i] = (4 * source_row_num) + i
+        base_row_num = 0
+        # This is tied completely to the spritesheet format, which as of April 2018 was:
+        # - pax consist liveries (n vehicle variants x 2 liveries x 2 rows: empty & loaded, loading)
+        # - mail consist liveries (n vehicle variants x 2 liveries x 2 rows: empty & loaded, loading)
+        # see also cargo_row_map()
+        for livery_type, cargo_label in (('pax', 'PASS'), ('mail', 'MAIL')):
+            if livery_type in self.spriterow_group_mappings:
+                spriterow_group_mapping = self.spriterow_group_mappings[livery_type]
+                num_rows = len(set(spriterow_group_mapping.values()))
+
+                for variant_num in range(num_rows):
+                    if variant_num == spriterow_group_mapping['first']:
+                        source_row_num = spriterow_group_mapping['last']
+                    elif variant_num == spriterow_group_mapping['last']:
+                        source_row_num = spriterow_group_mapping['first']
+                    else:
+                        source_row_num = variant_num
+                    # group of 4 rows - two liveries * two loaded/loading states (opening doors)
+                    for i in range(1, 5):
+                        result[base_row_num + (4 * variant_num) + i] = base_row_num + (4 * source_row_num) + i
+                base_row_num += 4 * num_rows
         return(result)
 
 
