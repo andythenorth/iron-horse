@@ -10,7 +10,7 @@ def main(roster):
                                           sprites_complete=True)
 
     consist.add_unit(type=DrivingCabUnit,
-                     weight=30,
+                     weight=32,
                      chassis='railcar_32px')
 
     return consist

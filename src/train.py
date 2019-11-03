@@ -908,11 +908,12 @@ class MailEngineDrivingCabConsist(MailEngineConsist):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.power = 10
-        self.tractive_effort_coefficient = 0
         self.role = 'driving_cab_express_1'
         self.buy_menu_hint_driving_cab = True
         self.allow_flip = True
+        # nerf power and TE down to minimal values, these confer a tiny performance boost to the train, 'operational efficiency' :P
+        self.power = 200
+        self.tractive_effort_coefficient = 0.1
         # Graphics configuration
         # driving cab cars have consist cargo mappings for pax, mail (freight uses mail)
         # * pax matches pax liveries for generation
