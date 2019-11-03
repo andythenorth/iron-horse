@@ -909,6 +909,7 @@ class MailEngineDrivingCabConsist(MailEngineConsist):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.power = 10
+        self.tractive_effort_coefficient = 0
         self.role = 'driving_cab_express_1'
         self.buy_menu_hint_driving_cab = True
         self.allow_flip = True
