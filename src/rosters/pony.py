@@ -10,7 +10,6 @@ from vehicles import braf
 from vehicles import breeze
 from vehicles import brenner_cab
 from vehicles import brenner_middle
-from vehicles import driving_cab_pony_gen_5
 from vehicles import carrack
 from vehicles import cheddar_valley
 from vehicles import cheese_bug
@@ -19,6 +18,8 @@ from vehicles import chinook
 from vehicles import deasil
 from vehicles import dover
 from vehicles import dragon
+from vehicles import driving_cab_pony_gen_5
+from vehicles import driving_cab_pony_gen_6
 from vehicles import fleet
 from vehicles import flanders_storm
 from vehicles import flindermouse
@@ -142,6 +143,7 @@ roster = Roster(id = 'pony',
                            sizzler,
                            # driving cab cars
                            driving_cab_pony_gen_5,
+                           driving_cab_pony_gen_6,
                            # branch freight
                            saxon,
                            little_bear,
