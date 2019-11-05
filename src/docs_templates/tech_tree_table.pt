@@ -46,16 +46,15 @@
                                                         ${'tech_tree_vehicle_electro_diesel' if consist.str_name_suffix == 'STR_NAME_SUFFIX_ELECTRODIESEL' else None}
                                                         ${'tech_tree_vehicle_arrow' if doc_helper.get_engine_by_role_and_base_track_type_and_generation(role, base_track_type, gen + 2) is not None else None}">
                                                 <span style="display:block;">
-                                                    CABBAGE
-                                                    <!--! ${doc_helper.unpack_name_string(consist).split('(')[0]} -->
+                                                    <!--! this is using a private var, but I am not going to lose sleep over it -->
+                                                    ${consist._name}
                                                 </span>
                                                 <img src="static/img/${consist.id}_blue.png"
                                                      width="${2 * doc_helper.buy_menu_sprite_width(consist)}"
                                                      height="${2 * doc_helper.buy_menu_sprite_height}" />
                                                 <span style="display:block; margin-top: 5px;" class="muted">
                                                     <small style="display:block;">
-                                                        CABBAGE
-                                                        <!--! ${doc_helper.unpack_name_string(consist).split('(')[1][:-1]} -->
+                                                        ${base_lang_strings[consist.str_name_suffix] if consist.str_name_suffix is not None else None}
                                                     </small>
                                                     <small>${consist.power}hp</small>
                                                     |
