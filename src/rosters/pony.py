@@ -87,6 +87,9 @@ from vehicles import wyvern
 from vehicles import zeus
 from vehicles import zorro
 
+# migration note; see also render_docs as it may already have methods for getting the tech tree in generation order
+print('roster engines list should be refactored to use order from role_group_mapping combined with engine generation')
+
 roster = Roster(id = 'pony',
                 numeric_id = 1,
                 # ELRL, ELNG is mapped to RAIL, NG etc
