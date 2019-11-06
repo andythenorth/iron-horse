@@ -74,18 +74,20 @@ role_group_mapping = OrderedDict([('express', ['branch_express_1', 'branch_expre
                                   ('very_high_speed', ['very_high_speed']),
                                   ('metro', ['mail_metro', 'pax_metro'])])
 
-role_string_mapping = {'freight': 'STR_ROLE_FREIGHT',
-                       'universal': 'STR_ROLE_GENERAL_PURPOSE',
+# keep alphabetised, order not significant
+role_string_mapping = {'driving_cab': 'STR_ROLE_DRIVING_CAB',
                        'express': 'STR_ROLE_GENERAL_PURPOSE_EXPRESS',
-                       'driving_cab': 'STR_ROLE_DRIVING_CAB',
-                       'metro': 'STR_ROLE_METRO',
+                       'freight': 'STR_ROLE_FREIGHT',
                        'hst': 'STR_ROLE_HST',
+                       'lolz': 'STR_ROLE_LOLZ',
+                       'metro': 'STR_ROLE_METRO',
                        'very_high_speed': 'STR_ROLE_VERY_HIGH_SPEED',
-                       'lolz': 'STR_ROLE_LOLZ'}
+                       'universal': 'STR_ROLE_GENERAL_PURPOSE'}
 
 # days offset is used to control *synchronising* (or not) intro dates across groups of vehicles where needed
 # see https://github.com/OpenTTD/OpenTTD/pull/7147 for explanation
 # the actual values will be translated into months later
+# keep ordered by offset integer for ease of reading
 intro_date_offsets_by_role_group = {'universal': 0,
                                     'express_core': 1,
                                     'express_non_core': 2,
