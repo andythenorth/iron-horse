@@ -170,39 +170,19 @@ class DocHelper(object):
                 result[base_track_type[0]][role] = role_engines
         return result
 
-    def engine_roles(self, base_track_type):
-        # !! horrible hax, this could be done so much better by defining the engine buy menu sort order by role
-        # !! also could validate missing entries there, and check strings exist for it
-        roles_ordered = ['universal',
-                         'branch_express_1',
-                         'branch_express_2',
-                         'express_1',
-                         'heavy_express_1',
-                         'heavy_express_3',
-                         'heavy_express_2',
-                         'heavy_express_4',
-                         'driving_cab_express_1',
-                         'branch_freight',
-                         'freight_1',
-                         'heavy_freight_1',
-                         'heavy_freight_3',
-                         'heavy_freight_2',
-                         'pax_railcar_1',
-                         'pax_railcar_2',
-                         'mail_railcar_1',
-                         'mail_railcar_2',
-                         'hst',
-                         'very_high_speed',
-                         'lolz',
-                         'pax_metro',
-                         'mail_metro']
+    def engine_roles(self, base_track_type, role_group=None):
+        if role_group is None:
+            print('role_group None passed - needs refactored')
+            return []
+        else:
+            roles_ordered = global_constants.role_group_mapping[role_group]
+
         roles_to_include = []
         for consist in consists:
             if consist.base_track_type == base_track_type[0]:
                 if consist.role is not None:
-                    if consist.role not in roles_ordered:
-                        raise Exception(consist.role)
-                    roles_to_include.append(consist.role)
+                    if consist.role in roles_ordered:
+                        roles_to_include.append(consist.role)
         result = []
         for role in roles_ordered:
             if role in set(roles_to_include):
