@@ -1379,7 +1379,7 @@ class ExpressIntermodalCarConsist(CarConsist):
         self.default_cargos = polar_fox.constants.default_cargos['express']
         # adjust weight factor because express intermodal car freight capacity is 1/2 of other wagons, but weight should be same
         self.weight_factor = polar_fox.constants.mail_multiplier
-        self.floating_run_cost_multiplier = 1.66
+        self.floating_run_cost_multiplier = 1.66 # more than box car, less than mail car
         self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['express_core']
         # intermodal containers can't use random colour swaps on the wagons...
         # ...because the random bits are re-randomised when new cargo loads, to get new random containers, which would also cause new random wagon colour
