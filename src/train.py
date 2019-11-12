@@ -90,6 +90,9 @@ class Consist(object):
         # arbitrary multiplier to the calculated buy cost, e.g. 1.1, 0.9 etc
         # set to 1 by default, over-ride in subclasses as needed
         self.buy_cost_adjustment_factor = 1
+        # fixed (baseline) buy costs on this subtype, 10 points
+        # leave this alone except for edge cases (e.g. driving van trailers which are implemented as engines, but need wagon costs)
+        self.fixed_buy_cost_points = 10
         # arbitrary multiplier to the calculated run cost, e.g. 1.1, 0.9 etc
         # set to 1 by default, over-ride in subclasses as needed
         self.floating_run_cost_multiplier = 1
@@ -576,9 +579,9 @@ class EngineConsist(Consist):
         # if I set cost base as high as I want for engines, wagon costs aren't fine grained enough
         # so just apply arbitrary multiplier to engine costs, which works
         buy_cost_points = 2 * buy_cost_points
-        # start from an arbitrary baseline of 100 points, add points for gen, cost points, seems to work
+        # start from an arbitrary baseline of 10 points, add points for gen, cost points, seems to work
         # cap to int for nml
-        return int(10 + self.gen + buy_cost_points)
+        return int(self.fixed_buy_cost_points + self.gen + buy_cost_points)
 
     @property
     def running_cost(self):
@@ -914,6 +917,11 @@ class MailEngineDrivingCabConsist(MailEngineConsist):
         # nerf power and TE down to minimal values, these confer a tiny performance boost to the train, 'operational efficiency' :P
         self.power = 200
         self.tractive_effort_coefficient = 0.1
+        # ....buy costs reduced from base to make it close to mail cars
+        self.fixed_buy_cost_points = 1 # to reduce it from engine factor
+        self.buy_cost_adjustment_factor = 1
+        # ....run costs reduced from base to make it close to mail cars
+        self.fixed_run_cost_points = 68
         # Graphics configuration
         # driving cab cars have consist cargo mappings for pax, mail (freight uses mail)
         # * pax matches pax liveries for generation
