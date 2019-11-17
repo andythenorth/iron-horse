@@ -7,7 +7,7 @@ def main(roster):
                             id='gronk',
                             base_numeric_id=3970,
                             name='Gronk',
-                            role='lolz',
+                            role='gronk!',
                             power=400,
                             speed=35,
                             # dibble TE up for game balance, assume low gearing or something
