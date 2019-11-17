@@ -933,6 +933,31 @@ class MailEngineDrivingCabConsist(MailEngineConsist):
                                                                      consist_ruleset='driving_cab_cars')
 
 
+class SnowploughEngineConsist(EngineConsist):
+    """
+    Consist for a snowplough.  Implemented as Engine so it can lead a consist in-game.
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.role = 'driving_cab_express_1'
+        self.buy_menu_hint_driving_cab = True
+        self.allow_flip = True
+        # nerf power and TE down to minimal values, these confer a tiny performance boost to the train, 'operational efficiency' :P
+        self.power = 100
+        self.tractive_effort_coefficient = 0.1
+        # give it mail / express capacity so it has some purpose :P
+        self.class_refit_groups = ['mail', 'express_freight']
+        self.label_refits_allowed = []  # no specific labels needed
+        self.label_refits_disallowed = ['TOUR']
+        self.default_cargos = polar_fox.constants.default_cargos['mail']
+        # ....buy costs reduced from base to make it close to mail cars
+        self.fixed_buy_cost_points = 1 # to reduce it from engine factor
+        self.buy_cost_adjustment_factor = 1
+        # ....run costs reduced from base to make it close to mail cars
+        self.fixed_run_cost_points = 68
+
+
 class CarConsist(Consist):
     """
     Intermediate class for car (wagon) consists to subclass from, provides sparse properties, most are declared in subclasses.
@@ -2474,6 +2499,22 @@ class ElectricHighSpeedPaxUnit(Train):
         else:
             base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
             self.capacity = int(self.vehicle_length * base_capacity * 0.875)
+
+
+class SnowploughUnit(Train):
+    """
+    Unit for a snowplough.  Snowploughs have express cargo capacity, so they can actually be useful. :P
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.engine_class = 'ENGINE_CLASS_DIESEL' # !! needs changing??
+        self.effects = {}
+        self.consist.str_name_suffix = None
+        self._symmetry_type = 'asymmetric'
+        # magic to set capacity subject to length
+        base_capacity = self.consist.roster.freight_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
+        self.capacity = (self.vehicle_length * base_capacity) / polar_fox.constants.mail_multiplier
 
 
 class MetroUnit(Train):
