@@ -33,6 +33,7 @@ from vehicles import grid
 from vehicles import griffon
 from vehicles import gronk
 from vehicles import growler
+from vehicles import grub
 from vehicles import gwynt
 from vehicles import haar
 from vehicles import happy_train
@@ -172,6 +173,7 @@ roster = Roster(id = 'pony',
                            flanders_storm,
                            gosling_blast,
                            # joker engines / snowploughs
+                           grub,
                            gronk,
                            snowplough_pony_gen_4,
                            # diesel railcars
