@@ -6,7 +6,7 @@ def main(roster):
                                       base_numeric_id=4000,
                                       name='Snowplough',
                                       gen=4,
-                                      speed=50,
+                                      speed=75,
                                       joker=True,
                                       sprites_complete=True)
 
