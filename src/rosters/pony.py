@@ -72,7 +72,7 @@ from vehicles import sizzler
 from vehicles import slammer
 from vehicles import slug
 from vehicles import snapper
-from vehicles import snowplough_pony_gen_4
+from vehicles import snowplough_pony_gen_2
 from vehicles import spinner
 from vehicles import stoat
 from vehicles import super_shoebox
@@ -175,7 +175,7 @@ roster = Roster(id = 'pony',
                            # joker engines / snowploughs
                            grub,
                            gronk,
-                           snowplough_pony_gen_4,
+                           snowplough_pony_gen_2,
                            # diesel railcars
                            deasil,
                            slammer,

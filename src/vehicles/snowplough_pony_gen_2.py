@@ -2,10 +2,10 @@ from train import SnowploughEngineConsist, SnowploughUnit
 
 def main(roster):
     consist = SnowploughEngineConsist(roster=roster,
-                                      id='snowplough_pony_gen_4',
+                                      id='snowplough_pony_gen_2',
                                       base_numeric_id=4000,
                                       name='Snowplough',
-                                      gen=4,
+                                      gen=2,
                                       speed=75,
                                       joker=True,
                                       sprites_complete=True)
