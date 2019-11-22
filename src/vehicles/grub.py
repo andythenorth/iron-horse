@@ -1,6 +1,4 @@
-from train import EngineConsist, DieselEngineUnit
-
-# not used, maybe restore if there's a 'pointless trains' parameter :P
+from train import EngineConsist, SteamEngineUnit
 
 def main(roster):
     consist = EngineConsist(roster=roster,
@@ -15,9 +13,9 @@ def main(roster):
                             random_reverse=True,
                             joker=True,
                             gen=1,
-                            sprites_complete=False)
+                            sprites_complete=True)
 
-    consist.add_unit(type=DieselEngineUnit,
+    consist.add_unit(type=SteamEngineUnit,
                      weight=35,
                      vehicle_length=4,
                      spriterow_num=0)

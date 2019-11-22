@@ -1,7 +1,5 @@
 from train import EngineConsist, DieselEngineUnit
 
-# not used, maybe restore if there's a 'pointless trains' parameter :P
-
 def main(roster):
     consist = EngineConsist(roster=roster,
                             id='gronk',
