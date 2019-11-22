@@ -1,5 +1,5 @@
 ==================================
-Iron Horse ${makefile_args.repo_version}
+Iron Horse ${makefile_args.repo_revision}
 ==================================
 Trains, for OpenTTD
 
@@ -9,7 +9,7 @@ Iron Horse docs are published online:
 =======
 GRF Name: Iron Horse
 
-This version of Iron Horse is created using repository version ${makefile_args.repo_version}
+This version of Iron Horse is created using repository version ${makefile_args.repo_revision}
 
 Thanks to *all* who helped create Iron Horse.
 

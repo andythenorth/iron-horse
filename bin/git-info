@@ -1,7 +1,12 @@
 #!/usr/bin/env python3
 
+import subprocess, getopt, os, sys
+
 def run():
-    print("1 1 1 1")
+    cmd = ['git', 'rev-list', '--count', 'head']
+    output = subprocess.run(cmd, env=None, check=True, stdout=subprocess.PIPE,
+                                universal_newlines=True).stdout
+    print(output)
 
 if __name__ == '__main__':
     run()
