@@ -1,4 +1,4 @@
-STR_GRF_NAME                                                    :Iron Horse ${makefile_args.repo_revision}
+STR_GRF_NAME                                                    :Iron Horse ${makefile_args.repo_version}
 <!--! empty string is not translated :) -->
 STR_EMPTY                                                       :
 

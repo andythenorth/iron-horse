@@ -25,15 +25,18 @@ NML_FLAGS = -l $(LANG_DIR)  --verbosity=4
 EXPORTED = no
 ifeq ($(strip $(EXPORTED)),no)
   # Not exported source, therefore regular checkout
-  REPO_REVISION = $(shell $(GIT_INFO))
+  REPO_INFO = $(shell $(GIT_INFO))
+  REPO_REVISION = $(word 1,$(REPO_INFO))
+  REPO_VERSION = $(word 2,$(REPO_INFO))
 else
   # Exported version, lines below should get modified in 'bundle_src' target
   REPO_REVISION = ${exported_revision}
+  REPO_VERSION = ${exported_version}
 endif
 
-REPO_TITLE = "$(PROJECT_NAME) $(REPO_REVISION)"
-PROJECT_VERSIONED_NAME = $(PROJECT_NAME)-$(REPO_REVISION)
-ARGS = '$(REPO_REVISION)' '$(PW)' '$(ROSTER)' '$(SC)'
+REPO_TITLE = "$(PROJECT_NAME) $(REPO_VERSION)"
+PROJECT_VERSIONED_NAME = $(PROJECT_NAME)-$(REPO_VERSION)
+ARGS = '$(REPO_REVISION)' '$(REPO_VERSION)' '$(PW)' '$(ROSTER)' '$(SC)'
 # Args for faster compiles: PW=n (num pool workers) SC=bool (suppress cargo sprites)
 
 NFO_FILE = generated/$(PROJECT_NAME).nfo
@@ -127,6 +130,7 @@ bundle_src: $(MD5_FILE)
 	$(FILL_TEMPLATE) --template=Makefile \
 		--output=$(BUNDLE_DIR)/src/Makefile \
 		"exported_revision=$(REPO_REVISION)" \
+		"exported_version=$(REPO_VERSION)"
 	$(SED) -i -e 's/^EXPORTED = no/EXPORTED = yes/' $(BUNDLE_DIR)/src/Makefile
 	$(MK_ARCHIVE) --tar --output=$(SOURCE_NAME).tar --base=$(SOURCE_NAME) \
 		`$(FIND_FILES) $(BUNDLE_DIR)/src` $(MD5_FILE)
