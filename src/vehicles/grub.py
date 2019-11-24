@@ -10,6 +10,7 @@ def main(roster):
                             speed=35,
                             # dibble TE up for game balance, assume low gearing or something
                             tractive_effort_coefficient=0.375,
+                            fixed_run_cost_points=100, # substantial cost bonus so it can make money
                             random_reverse=True,
                             joker=True,
                             gen=1,
