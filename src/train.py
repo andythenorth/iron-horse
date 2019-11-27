@@ -21,7 +21,7 @@ import utils
 
 from gestalt_graphics.gestalt_graphics import (GestaltGraphics, GestaltGraphicsVisibleCargo, GestaltGraphicsBoxCarOpeningDoors,
                                                GestaltGraphicsCaboose, GestaltGraphicsCargoSpecificLivery, GestaltGraphicsOnlyAddPantographs,
-                                               GestaltGraphicsConsistSpecificLivery, GestaltGraphicsIntermodal)
+                                               GestaltGraphicsConsistSpecificLivery, GestaltGraphicsIntermodal, GestaltGraphicsCustom)
 import gestalt_graphics.graphics_constants as graphics_constants
 
 from rosters import registered_rosters
@@ -956,6 +956,8 @@ class SnowploughEngineConsist(EngineConsist):
         self.buy_cost_adjustment_factor = 1
         # ....run costs reduced from base to make it close to mail cars
         self.fixed_run_cost_points = 68
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsCustom(None, 'vehicle_snowplough.pynml', None)
 
 
 class CarConsist(Consist):

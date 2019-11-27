@@ -496,7 +496,7 @@ class GestaltGraphicsConsistSpecificLivery(GestaltGraphics):
 
 class GestaltGraphicsCustom(GestaltGraphics):
     """
-        Used to handle (rare) cases with hand-drawn cargo (no pixa-generated cargos).
+        Used to handle (rare) cases with hand-drawn cargo or no cargo (no pixa-generated cargos).
         There is currently no graphics processing for this:
         - just a simple pass-through, and an interface to the nml templates
         - this could get support for body recolouring if needed
