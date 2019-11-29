@@ -8,7 +8,7 @@ NMLC = nmlc
 GRFCODEC = grfcodec
 GRFID = grfid
 
-GIT_INFO = bin/git-info
+GIT_INFO = $(PYTHON3) src/polar_fox/git_info.py
 FILL_TEMPLATE = bin/fill-template
 FIND_FILES = bin/find-files
 MK_ARCHIVE = bin/mk-archive

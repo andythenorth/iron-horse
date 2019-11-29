@@ -98,7 +98,6 @@ cargo_labels = ['PASS', # pax first
                 'TYRE',
                 'VBOD',
                 'VENG',
-                'NH3_',
                 #
                 'NULL']
 
@@ -123,7 +122,7 @@ allowed_refits_by_label = {'edible_liquids': ['MILK', 'WATR', 'BEER', 'FOOD', 'E
                            'covered_hoppers': ['GRAI', 'WHEA', 'MAIZ', 'SUGR', 'FMSP', 'RFPR', 'CLAY', 'BDMT',
                                                'BEAN', 'NITR', 'RUBR', 'SAND', 'POTA', 'QLME', 'SASH', 'CMNT',
                                                'KAOL', 'FERT', 'SALT', 'CBLK', 'PLAS'],
-                           'cryo_gases': ['CHLO', 'O2__', 'NH3_'],
+                           'cryo_gases': ['CHLO', 'O2__'],
                            'reefer': ['FOOD', 'FRUT', 'FISH'], # hax for intermodal container sprite selection - reefer car refits work just fine using CC_REFRIGERATED
                            'fruit_veg': ['FRUT', 'BEAN', 'CASS', 'JAVA', 'NUTS'],
                            'cold_metal': ['STEL', 'METL', 'STCB', 'STAL', 'STST', 'COPR']}
@@ -143,7 +142,7 @@ disallowed_refits_by_label = {'non_dump_bulk': ['WOOD', 'SGCN', 'FICR', 'BDMT', 
 default_cargos = {'box': ['GOOD', 'VPTS', 'FOOD'],
                   'chemicals_tank': ['ACID', 'RFPR', 'CHLO'],
                   'coal_hopper': ['COAL', 'COKE', 'NITR', 'KAOL'],
-                  'cryo_gases': ['O2__', 'CHLO', 'NH3_'],
+                  'cryo_gases': ['O2__', 'CHLO'],
                   'covered_hopper': ['GRAI', 'KAOL'],
                   'dump': ['IORE', 'MNO2', 'NITR', 'PHOS'],
                   'dump_high_sides': ['COKE', 'SCMT', 'PEAT', 'COAL'],
