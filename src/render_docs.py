@@ -10,7 +10,6 @@ from PIL import Image
 import markdown
 from chameleon import PageTemplateLoader
 
-import iron_horse
 import utils
 import global_constants
 
@@ -24,12 +23,6 @@ metadata = {}
 metadata['dev_thread_url'] = 'http://www.tt-forums.net/viewtopic.php?f=67&t=71219'
 metadata['repo_url'] = 'http://dev.openttdcoop.org/projects/iron-horse/repository'
 metadata['issue_tracker'] = 'http://dev.openttdcoop.org/projects/iron-horse/issues'
-
-consists = iron_horse.get_consists_in_buy_menu_order()
-# default sort for docs is by intro date
-consists = sorted(consists, key=lambda consist: consist.intro_date)
-dates = sorted([i.intro_date for i in consists])
-metadata['dates'] = (dates[0], dates[-1])
 
 # get args passed by makefile
 makefile_args = utils.get_makefile_args(sys)
@@ -51,7 +44,7 @@ class DocHelper(object):
         if consist.dual_headed:
             return min((2 * 4 * consist.length) + 1, self.buy_menu_sprite_max_width)
 
-    def get_vehicles_by_subclass(self, filter_subclasses_by_name=None):
+    def get_vehicles_by_subclass(self, consists, filter_subclasses_by_name=None):
         # first find all the subclasses + their vehicles
         vehicles_by_subclass = {}
         for consist in consists:
@@ -87,11 +80,11 @@ class DocHelper(object):
         # default result
         return None
 
-    def engines_as_tech_tree_for_graphviz(self):
+    def engines_as_tech_tree_for_graphviz(self, consists):
         result = {}
         for base_track_type in self.get_base_track_types():
             result[base_track_type[0]] = {}
-            for role in self.engine_roles(base_track_type):
+            for role in self.engine_roles(base_track_type, consists):
                 role_engines = []
                 fill_dummy = True
                 intro_dates = self.get_roster_by_id('pony').intro_dates[base_track_type[0]]
@@ -127,7 +120,7 @@ class DocHelper(object):
                 result[base_track_type[0]][role] = role_engines
         return result
 
-    def engine_roles(self, base_track_type, role_group=None):
+    def engine_roles(self, base_track_type, consists, role_group=None):
         if role_group is None:
             print('role_group None passed - needs refactored')
             return []
@@ -146,7 +139,7 @@ class DocHelper(object):
                 result.append(role)
         return result
 
-    def get_engine_by_role_and_base_track_type_and_generation(self, role, base_track_type, gen):
+    def get_engine_by_role_and_base_track_type_and_generation(self, consists, role, base_track_type, gen):
         for consist in consists:
             if consist.role == role:
                 if consist.base_track_type == base_track_type[0]:
@@ -225,7 +218,7 @@ class DocHelper(object):
         # tuple of pairs, need consistent order so can't use dict
         return (('RAIL', 'Standard Gauge'), ('NG', 'Narrow Gauge'), ('METRO', 'Metro'))
 
-def render_docs(doc_list, file_type, docs_output_path, use_markdown=False):
+def render_docs(doc_list, file_type, docs_output_path, iron_horse, consists, use_markdown=False):
     for doc_name in doc_list:
         # .pt is the conventional extension for chameleon page templates
         template = docs_templates[doc_name + '.pt']
@@ -371,18 +364,25 @@ def main():
     static_dir_dst = os.path.join(docs_output_path, 'html', 'static')
     shutil.copytree(static_dir_src, static_dir_dst)
 
+    import iron_horse
+    consists = iron_horse.get_consists_in_buy_menu_order()
+    # default sort for docs is by intro date
+    consists = sorted(consists, key=lambda consist: consist.intro_date)
+    dates = sorted([i.intro_date for i in consists])
+    metadata['dates'] = (dates[0], dates[-1])
+
     # render standard docs from a list
     html_docs = ['trains', 'tech_tree_table', 'code_reference', 'get_started', 'translations']
     txt_docs = ['license', 'readme']
     markdown_docs = ['changelog']
     graph_docs = ['tech_tree_linkgraph']
 
-    render_docs(html_docs, 'html', docs_output_path)
-    render_docs(txt_docs, 'txt', docs_output_path)
+    render_docs(html_docs, 'html', docs_output_path, iron_horse, consists)
+    render_docs(txt_docs, 'txt', docs_output_path, iron_horse, consists)
     # just render the markdown docs twice to get txt and html versions, simples no?
-    render_docs(markdown_docs, 'txt', docs_output_path)
-    render_docs(markdown_docs, 'html', docs_output_path, use_markdown=True)
-    render_docs(graph_docs, 'dotall', docs_output_path)
+    render_docs(markdown_docs, 'txt', docs_output_path, iron_horse, consists)
+    render_docs(markdown_docs, 'html', docs_output_path, iron_horse, consists, use_markdown=True)
+    render_docs(graph_docs, 'dotall', docs_output_path, iron_horse, consists)
 
     # process images for use in docs
     # yes, I really did bother using a pool to save at best a couple of seconds, because FML :)

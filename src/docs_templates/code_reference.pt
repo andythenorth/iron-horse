@@ -4,7 +4,7 @@
         <h2>Code Reference</h2>
         <h3>${len(consists)} trains</h3>
         <hr />
-        <tal:subclasses repeat="subclass doc_helper.get_vehicles_by_subclass()">
+        <tal:subclasses repeat="subclass doc_helper.get_vehicles_by_subclass(consists)">
             <tal:props_for_subclass define="props_to_print doc_helper.get_props_to_print_in_code_reference(subclass)">
                 <h4>${subclass['name']} <small>Subclass</small></h4>
                 <p>${subclass['doc']}</p>

@@ -4,7 +4,7 @@ digraph tech_tree {
     rankdir="LR"
     ranksep="0.44"
     nodesep="0.33"
-    <tal:base_track_type repeat="base_track_type doc_helper.engines_as_tech_tree_for_graphviz().items()">
+    <tal:base_track_type repeat="base_track_type doc_helper.engines_as_tech_tree_for_graphviz(consists).items()">
         <tal:hax condition="base_track_type[0] == 'RAIL'">
             <tal:roles repeat="role base_track_type[1].items()">
                 <tal:consists tal:repeat="engine_node role[1]">

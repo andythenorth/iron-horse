@@ -106,7 +106,7 @@
                         </div>
                     </tal:descriptions_metro>
                     <table style="width:100%;"
-                           tal:define="roles doc_helper.engine_roles(base_track_type, role_group);
+                           tal:define="roles doc_helper.engine_roles(base_track_type, consists, role_group);
                                        intro_dates doc_helper.get_roster_by_id('pony', registered_rosters).intro_dates[base_track_type[0]]"
                            tal:condition="len(roles) > 0">
                         <thead>
@@ -140,13 +140,13 @@
                                     </span>
                                 </th>
                                 <td tal:repeat="gen range(len(intro_dates))" class="text-center" style="width: 160px;">
-                                    <tal:consist define="consist doc_helper.get_engine_by_role_and_base_track_type_and_generation(role, base_track_type, gen + 1)">
+                                    <tal:consist define="consist doc_helper.get_engine_by_role_and_base_track_type_and_generation(consists, role, base_track_type, gen + 1)">
                                         <tal:block condition="consist is not None">
                                             <div class="tech_tree_vehicle_container">
                                                 <div class="tech_tree_vehicle
                                                             ${'tech_tree_vehicle_electric' if consist.requires_electric_rails else 'None'}
                                                             ${'tech_tree_vehicle_electro_diesel' if consist.str_name_suffix == 'STR_NAME_SUFFIX_ELECTRODIESEL' else None}
-                                                            ${'tech_tree_vehicle_arrow' if doc_helper.get_engine_by_role_and_base_track_type_and_generation(role, base_track_type, gen + 2) is not None else None}">
+                                                            ${'tech_tree_vehicle_arrow' if doc_helper.get_engine_by_role_and_base_track_type_and_generation(consists, role, base_track_type, gen + 2) is not None else None}">
                                                     <span style="display:block;">
                                                         <!--! this is using a private var, but I am not going to lose sleep over it -->
                                                         ${consist._name}
