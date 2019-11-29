@@ -57,7 +57,8 @@ DOT  ?= $(shell which dot)
 # Build rules
 .PHONY: default graphics lang nml grf tar bundle_tar bundle_zip bundle_src clean
 default: html_docs grf
-bundle_tar: tar
+# bundle needs to clean first to ensure we don't use outdated/cached version info
+bundle_tar: clean tar
 bundle_zip: $(ZIP_FILE)
 graphics: $(GRAPHICS_DIR)
 lang: $(LANG_DIR)
@@ -105,7 +106,7 @@ $(GRF_FILE): $(GRAPHICS_DIR) $(LANG_DIR) $(NML_FILE) $(NFO_FILE)
 	$(GRFCODEC) -s -e $(PROJECT_NAME).grf generated
 	mv $(PROJECT_NAME).grf $(GRF_FILE)
 
-$(TAR_FILE): $(GRF_FILE)
+$(TAR_FILE): $(GRF_FILE) $(HTML_DOCS)
 # the goal here is a sparse tar that bananas will accept; bananas can't accept html docs etc, hence they're not included
 	# create an intermediate dir, and copy in what we need for bananas
 	mkdir $(PROJECT_VERSIONED_NAME)
