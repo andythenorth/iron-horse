@@ -2028,7 +2028,7 @@ class Train(object):
 
     @property
     def has_cargo_capacity(self):
-        if self.default_cargo_capacity is not 0:
+        if self.default_cargo_capacity != 0:
             return True
         else:
             return False

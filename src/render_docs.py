@@ -213,7 +213,7 @@ class DocHelper(object):
             name_substr = substrings[2].translate({ord(c):'' for c in '), '})
             name = base_lang_strings[name_substr]
         # !! this would be better generalised to 'consist.has_suffix', currently docs rendering is knowing too much about the internals of trains
-        if getattr(consist, 'subtype', None) is not 'U' and getattr(consist, 'str_name_suffix', None) is not None:
+        if getattr(consist, 'subtype', None) == 'U' and getattr(consist, 'str_name_suffix', None) != None:
             suffix = base_lang_strings[substrings[3][0:-2]]
             return name + ' (' + suffix + ')'
         else:
@@ -407,6 +407,7 @@ def main():
         pool = Pool(processes=num_pool_workers)
         pool.map(render_docs_images, consists)
         pool.close()
+        pool.join()
 
     print(format((time() - start), '.2f') + 's')
 

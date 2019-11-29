@@ -268,7 +268,7 @@ class GestaltGraphicsIntermodal(GestaltGraphics):
     def allow_adding_cargo_label(self, cargo_label, container_type, result):
         # don't ship DFLT as actual cargo label, it's not a valid cargo and will cause nml to barf
         # the generation of the DFLT container sprites is handled separately without using cargo_label_mapping
-        if cargo_label is 'DFLT':
+        if cargo_label == 'DFLT':
             return False
         # explicit control over contested cargo_labels, by specifying which container type should be used (there can only be one type for label based support)
         contested_cargo_labels = {'CHLO': 'cryo_tank',

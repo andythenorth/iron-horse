@@ -83,6 +83,7 @@ def main():
         pool.map(run_consist_pipelines, consists)
         pool.map(run_intermodal_container_pipelines, intermodal_container_gestalts)
         pool.close()
+        pool.join()
 
     report_sprites_complete(consists)
 
