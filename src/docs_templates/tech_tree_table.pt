@@ -107,7 +107,7 @@
                     </tal:descriptions_metro>
                     <table style="width:100%;"
                            tal:define="roles doc_helper.engine_roles(base_track_type, role_group);
-                                       intro_dates doc_helper.get_roster_by_id('pony').intro_dates[base_track_type[0]]"
+                                       intro_dates doc_helper.get_roster_by_id('pony', registered_rosters).intro_dates[base_track_type[0]]"
                            tal:condition="len(roles) > 0">
                         <thead>
                             <tr>

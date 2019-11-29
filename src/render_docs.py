@@ -1,68 +1,24 @@
-print("[RENDER DOCS] render_docs.py")
-
 import codecs  # used for writing files - more unicode friendly than standard open() module
 
 import shutil
 import sys
 import os
 currentdir = os.curdir
-from multiprocessing import Pool
 import multiprocessing
-logger = multiprocessing.log_to_stderr()
-logger.setLevel(25)
 from time import time
-
 from PIL import Image
+import markdown
+from chameleon import PageTemplateLoader
 
 import iron_horse
 import utils
 import global_constants
 
-# get args passed by makefile
-makefile_args = utils.get_makefile_args(sys)
-# default to no mp, makes debugging easier (mp fails to pickle errors correctly)
-num_pool_workers = makefile_args.get('num_pool_workers', 0)
-if num_pool_workers == 0:
-    use_multiprocessing = False
-    # just print, no need for a coloured echo_message
-    print('Multiprocessing disabled: (PW=0)')
-else:
-    use_multiprocessing = True
-    # just print, no need for a coloured echo_message
-    print('Multiprocessing enabled: (PW=' + str(num_pool_workers) + ')')
-
-# setting up a cache for compiled chameleon templates can significantly speed up template rendering
-chameleon_cache_path = os.path.join(
-    currentdir, global_constants.chameleon_cache_dir)
-if not os.path.exists(chameleon_cache_path):
-    os.mkdir(chameleon_cache_path)
-os.environ['CHAMELEON_CACHE'] = chameleon_cache_path
-
 docs_src = os.path.join(currentdir, 'src', 'docs_templates')
-docs_output_path = os.path.join(currentdir, 'docs')
-if os.path.exists(docs_output_path):
-    shutil.rmtree(docs_output_path)
-os.mkdir(docs_output_path)
-
-shutil.copy(os.path.join(docs_src, 'index.html'), docs_output_path)
-
-static_dir_src = os.path.join(docs_src, 'html', 'static')
-static_dir_dst = os.path.join(docs_output_path, 'html', 'static')
-shutil.copytree(static_dir_src, static_dir_dst)
-
-# we'll be processing some extra images and saving them into the img dir
-images_dir_dst = os.path.join(static_dir_dst, 'img')
-
-import markdown
-# chameleon used in most template cases
-from chameleon import PageTemplateLoader
-# setup the places we look for templates
 docs_templates = PageTemplateLoader(docs_src, format='text')
 
-# get args passed by makefile
-makefile_args = utils.get_makefile_args(sys)
-
 # get the strings from base lang file so they can be used in docs
+lang_start = time()
 base_lang_strings = utils.parse_base_lang()
 metadata = {}
 metadata['dev_thread_url'] = 'http://www.tt-forums.net/viewtopic.php?f=67&t=71219'
@@ -75,7 +31,8 @@ consists = sorted(consists, key=lambda consist: consist.intro_date)
 dates = sorted([i.intro_date for i in consists])
 metadata['dates'] = (dates[0], dates[-1])
 
-registered_rosters = iron_horse.registered_rosters
+# get args passed by makefile
+makefile_args = utils.get_makefile_args(sys)
 
 
 class DocHelper(object):
@@ -123,7 +80,7 @@ class DocHelper(object):
                     result.append(consist)
         return result
 
-    def get_roster_by_id(self, roster_id):
+    def get_roster_by_id(self, roster_id, registered_rosters):
         for roster in registered_rosters:
             if roster.id == roster_id:
                 return roster
@@ -268,11 +225,11 @@ class DocHelper(object):
         # tuple of pairs, need consistent order so can't use dict
         return (('RAIL', 'Standard Gauge'), ('NG', 'Narrow Gauge'), ('METRO', 'Metro'))
 
-def render_docs(doc_list, file_type, use_markdown=False):
+def render_docs(doc_list, file_type, docs_output_path, use_markdown=False):
     for doc_name in doc_list:
         # .pt is the conventional extension for chameleon page templates
         template = docs_templates[doc_name + '.pt']
-        doc = template(consists=consists, global_constants=global_constants, registered_rosters=registered_rosters, makefile_args=makefile_args,
+        doc = template(consists=consists, global_constants=global_constants, registered_rosters=iron_horse.registered_rosters, makefile_args=makefile_args,
                        base_lang_strings=base_lang_strings, metadata=metadata, utils=utils, doc_helper=DocHelper(), doc_name=doc_name)
         if use_markdown:
             # the doc might be in markdown format, if so we need to render markdown to html, and wrap the result in some boilerplate html
@@ -376,38 +333,71 @@ def render_docs_images(consist):
         # oversize the images to account for how browsers interpolate the images on retina / HDPI screens
         processed_vehicle_image = processed_vehicle_image.resize((4 * processed_vehicle_image.size[0], 4 * doc_helper.buy_menu_sprite_height),
                                                                  resample=Image.NEAREST)
-        output_path = os.path.join(images_dir_dst, consist.id + '_' + colour_name + '.png')
-        processed_vehicle_image.save(
-            output_path, optimize=True, transparency=0)
+        output_path = os.path.join(currentdir, 'docs', 'html', 'static', 'img', consist.id + '_' + colour_name + '.png')
+        processed_vehicle_image.save(output_path, optimize=True, transparency=0)
 
 
 def main():
+    print("[RENDER DOCS] render_docs.py")
     start = time()
+
+    # default to no mp, makes debugging easier (mp fails to pickle errors correctly)
+    num_pool_workers = makefile_args.get('num_pool_workers', 0)
+    if num_pool_workers == 0:
+        use_multiprocessing = False
+        # just print, no need for a coloured echo_message
+        print('Multiprocessing disabled: (PW=0)')
+    else:
+        use_multiprocessing = True
+        #logger = multiprocessing.log_to_stderr()
+        #logger.setLevel(25)
+        # just print, no need for a coloured echo_message
+        print('Multiprocessing enabled: (PW=' + str(num_pool_workers) + ')')
+    # setting up a cache for compiled chameleon templates can significantly speed up template rendering
+    chameleon_cache_path = os.path.join(
+        currentdir, global_constants.chameleon_cache_dir)
+    if not os.path.exists(chameleon_cache_path):
+        os.mkdir(chameleon_cache_path)
+    os.environ['CHAMELEON_CACHE'] = chameleon_cache_path
+
+    docs_output_path = os.path.join(currentdir, 'docs')
+    if os.path.exists(docs_output_path):
+        shutil.rmtree(docs_output_path)
+    os.mkdir(docs_output_path)
+
+    shutil.copy(os.path.join(docs_src, 'index.html'), docs_output_path)
+
+    static_dir_src = os.path.join(docs_src, 'html', 'static')
+    static_dir_dst = os.path.join(docs_output_path, 'html', 'static')
+    shutil.copytree(static_dir_src, static_dir_dst)
+
     # render standard docs from a list
     html_docs = ['trains', 'tech_tree_table', 'code_reference', 'get_started', 'translations']
     txt_docs = ['license', 'readme']
     markdown_docs = ['changelog']
     graph_docs = ['tech_tree_linkgraph']
 
-    render_docs(html_docs, 'html')
-    render_docs(txt_docs, 'txt')
+    render_docs(html_docs, 'html', docs_output_path)
+    render_docs(txt_docs, 'txt', docs_output_path)
     # just render the markdown docs twice to get txt and html versions, simples no?
-    render_docs(markdown_docs, 'txt')
-    render_docs(markdown_docs, 'html', use_markdown=True)
-    render_docs(graph_docs, 'dotall')
+    render_docs(markdown_docs, 'txt', docs_output_path)
+    render_docs(markdown_docs, 'html', docs_output_path, use_markdown=True)
+    render_docs(graph_docs, 'dotall', docs_output_path)
 
     # process images for use in docs
     # yes, I really did bother using a pool to save at best a couple of seconds, because FML :)
+    slow_start = time()
     if use_multiprocessing == False:
         for consist in consists:
             render_docs_images(consist)
     else:
         # Would this go faster if the pipelines from each consist were placed in MP pool, not just the consist?
         # probably potato / potato tbh
-        pool = Pool(processes=num_pool_workers)
+        pool = multiprocessing.Pool(processes=num_pool_workers)
         pool.map(render_docs_images, consists)
         pool.close()
         pool.join()
+    print('render_docs_images', time() - slow_start)
 
     print(format((time() - start), '.2f') + 's')
 
