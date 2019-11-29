@@ -19,6 +19,13 @@ from chameleon import PageTemplateLoader
 # setup the places we look for templates
 templates = PageTemplateLoader(os.path.join(currentdir, 'src', 'templates'))
 
+# setting up a cache for compiled chameleon templates can significantly speed up template rendering
+chameleon_cache_path = os.path.join(
+    currentdir, global_constants.chameleon_cache_dir)
+if not os.path.exists(chameleon_cache_path):
+    os.mkdir(chameleon_cache_path)
+os.environ['CHAMELEON_CACHE'] = chameleon_cache_path
+
 generated_files_path = iron_horse.generated_files_path
 
 def render_header_item_nml(header_item, consists):
