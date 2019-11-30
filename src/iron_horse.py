@@ -104,7 +104,7 @@ def vacant_numeric_ids_formatted():
     return "Vacant numeric ID slots: " + ', '.join(id_gaps) + (" and from " if len(id_gaps) > 0 else '') + str(max_id + 10) + " onwards"
 
 def main():
-    pony.roster.register(disabled=False)
+    pony.main(disabled=False)
     intermodal_containers.main()
     # wagons
     """
