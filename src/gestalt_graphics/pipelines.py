@@ -144,7 +144,7 @@ class PassThroughPipeline(Pipeline):
 
         input_image = Image.open(self.vehicle_source_input_path)
         self.render_common(input_image, self.units)
-
+        input_image.close()
 
 class GenerateCompositedIntermodalContainers(Pipeline):
     """
@@ -275,6 +275,8 @@ class GenerateCompositedIntermodalContainers(Pipeline):
                                  self.global_constants.sprites_max_x_extent,
                                  graphics_constants.spriterow_height)
                 self.units.append(AppendToSpritesheet(variant_spritesheet, crop_box_dest))
+                variant_output_image.close()
+            template_image.close()
 
     def render(self, intermodal_container_gestalt, global_constants):
         self.units = []
@@ -308,7 +310,7 @@ class CheckBuyMenuOnlyPipeline(Pipeline):
 
         input_image = Image.open(self.vehicle_source_input_path)
         self.render_common(input_image, self.units)
-
+        input_image.close()
 
 class GeneratePantographsSpritesheetPipeline(Pipeline):
     """
@@ -420,6 +422,9 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
                          self.global_constants.sprites_max_x_extent,
                          10 + (2 * num_pantograph_rows * graphics_constants.spriterow_height))
         self.units.append(AppendToSpritesheet(pantograph_spritesheet, crop_box_dest))
+        pantograph_input_image.close()
+        vehicle_input_image.close()
+        empty_spriterow_image.close()
 
     def render(self, consist, global_constants):
         self.units = []
@@ -435,7 +440,7 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
         input_image = Image.open(self.vehicle_source_input_path).crop((0, 0, graphics_constants.spritesheet_width, 10))
         output_suffix = '_pantographs_' + self.pantograph_state
         self.render_common(input_image, self.units, output_suffix=output_suffix)
-
+        input_image.close()
 
 class GeneratePantographsUpSpritesheetPipeline(GeneratePantographsSpritesheetPipeline):
     """ Sparse subclass, solely to set pan 'up' state (simplest way to implement this). """
@@ -683,6 +688,8 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
 
         self.units.append(AppendToSpritesheet(box_car_rows_image_as_spritesheet, crop_box_dest))
         self.units.append(SimpleRecolour(self.consist.gestalt_graphics.recolour_map))
+        box_car_input_image_1.close()
+        box_car_input_image_1.close()
 
     def add_caboose_spriterows(self, row_count):
         for row_num in range(int(row_count/2)):
@@ -838,6 +845,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             self.units.append(AddCargoLabel(label=cargo_filename,
                                             x_offset=self.sprites_max_x_extent + 5,
                                             y_offset= -1 * graphics_constants.spriterow_height))
+            cargo_image.close()
 
     def add_piece_cargo_spriterows(self):
         # !! this could possibly be optimised by slicing all the cargos once, globally, instead of per-unit
@@ -962,6 +970,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             self.units.append(AddCargoLabel(label=cargo_filename,
                                             x_offset=self.sprites_max_x_extent + 5,
                                             y_offset= -1 * cargo_group_output_row_height))
+            cargo_sprites_input_image.close()
 
     def render(self, consist, global_constants):
         self.units = [] # graphics units not same as consist units ! confusing overlap of terminology :(
@@ -1024,7 +1033,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
         input_image = Image.new("P", (graphics_constants.spritesheet_width, 10), 255)
         input_image.putpalette(DOS_PALETTE)
         self.render_common(input_image, self.units)
-
+        self.vehicle_source_image.close()
 
 def get_pipelines(pipeline_names):
     # return a pipeline by name;
