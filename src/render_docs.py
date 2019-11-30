@@ -364,6 +364,7 @@ def main():
     static_dir_dst = os.path.join(docs_output_path, 'html', 'static')
     shutil.copytree(static_dir_src, static_dir_dst)
 
+    # import iron_horse inside main() as it's so slow to import, and should only be imported explicitly
     import iron_horse
     consists = iron_horse.get_consists_in_buy_menu_order()
     # default sort for docs is by intro date
