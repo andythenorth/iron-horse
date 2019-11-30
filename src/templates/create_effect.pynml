@@ -4,7 +4,7 @@
 <!--! it's important to explicitly check known railtypes and otherwise return a general default, as not all types will be known for the default value -->
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_id_for_effect_spawn_model_and_powered, current_railtype) {
     <tal:railtypes repeat="railtype vehicle.effects">
-        <tal:not_default condition="railtype is not 'default'">
+        <tal:not_default condition="railtype != 'default'">
             ${railtype}: return ${vehicle.effects[railtype][0]};
         </tal:not_default>
     </tal:railtypes>
@@ -26,7 +26,7 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_id_for_effect_spawn_model_and_po
 
     switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_create_effect_check_railtype_${reversed_variant}, current_railtype) {
         <tal:railtypes repeat="railtype vehicle.effects">
-            <tal:not_default condition="railtype is not 'default'">
+            <tal:not_default condition="railtype != 'default'">
                 ${railtype}: return ${vehicle.id}_switch_create_effect_${railtype}_${reversed_variant};
             </tal:not_default>
         </tal:railtypes>
