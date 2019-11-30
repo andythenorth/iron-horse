@@ -23,7 +23,7 @@ from vehicles import numeric_id_defender
 import intermodal_containers
 
 # import wagons
-from vehicles import alignment_cars
+#from vehicles import alignment_cars
 from vehicles import box_cars
 from vehicles import caboose_cars
 from vehicles import chemicals_tank_cars
