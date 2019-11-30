@@ -5,8 +5,6 @@ import sys
 sys.path.append(os.path.join('src'))  # add to the module search path
 
 import math
-# only used for deprecated attempt at partial compiles, remove (and vehicle_module_path var)
-import inspect
 # python builtin templater might be used in some utility cases
 from string import Template
 
@@ -31,7 +29,6 @@ class Consist(object):
 
     def __init__(self, **kwargs):
         self.id = kwargs.get('id', None)
-        self.vehicle_module_path = inspect.stack()[2][1]
         # setup properties for this consist (props either shared for all vehicles, or placed on lead vehicle of consist)
         # private var, used to store a name substr for engines, composed into name with other strings as needed
         self._name = kwargs.get('name', None)
