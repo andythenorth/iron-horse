@@ -315,7 +315,7 @@ def render_docs_images(consist):
             pantographs_mask = pantographs_image.copy()
             pantographs_mask = pantographs_mask.point(lambda i: 0 if i == 255 or i == 0 else 255).convert("1") # the inversion here of blue and white looks a bit odd, but potato / potato
             source_vehicle_image.paste(pantographs_image, crop_box_dest_pan_2, pantographs_mask)
-
+            pantographs_spritesheet.close()
     # recolour to more pleasing CC combos
     cc_remap_1 = {198: 179, 199: 180, 200: 181, 201: 182, 202: 183, 203: 164, 204: 165, 205: 166,
                   80: 8, 81: 9, 82: 10, 83: 11, 84: 12, 85: 13, 86: 14, 87: 15}
@@ -328,7 +328,7 @@ def render_docs_images(consist):
                                                                  resample=Image.NEAREST)
         output_path = os.path.join(currentdir, 'docs', 'html', 'static', 'img', consist.id + '_' + colour_name + '.png')
         processed_vehicle_image.save(output_path, optimize=True, transparency=0)
-
+    source_vehicle_image.close()
 
 def main():
     print("[RENDER DOCS] render_docs.py")
