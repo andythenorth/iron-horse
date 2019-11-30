@@ -3,7 +3,7 @@ from train import CabooseCarConsist, CabooseCar
 
 def main():
     #--------------- pony NG ----------------------------------------------------------------------
-    consist = CabooseCarConsist(roster='pony',
+    consist = CabooseCarConsist(roster_id='pony',
                                 base_numeric_id=1290,
                                 gen=1,
                                 subtype='U',
@@ -15,7 +15,7 @@ def main():
 
 
     #--------------- pony ----------------------------------------------------------------------
-    consist = CabooseCarConsist(roster='pony',
+    consist = CabooseCarConsist(roster_id='pony',
                                 base_numeric_id=1280,
                                 gen=1,
                                 subtype='A',
@@ -26,7 +26,7 @@ def main():
                      chassis='2_axle_caboose_16px')
 
 
-    consist = CabooseCarConsist(roster='pony',
+    consist = CabooseCarConsist(roster_id='pony',
                                 base_numeric_id=2210,
                                 gen=1,
                                 subtype='B',

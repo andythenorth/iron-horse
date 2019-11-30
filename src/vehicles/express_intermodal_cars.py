@@ -6,7 +6,7 @@ def main():
 
     # only gen 5 and 6 eh
 
-    consist = ExpressIntermodalCarConsist(roster='pony',
+    consist = ExpressIntermodalCarConsist(roster_id='pony',
                                    base_numeric_id=3920,
                                    gen=5,
                                    subtype='B',
@@ -16,7 +16,7 @@ def main():
                      chassis='2_axle_1cc_filled_24px')
 
 
-    consist = ExpressIntermodalCarConsist(roster='pony',
+    consist = ExpressIntermodalCarConsist(roster_id='pony',
                                    base_numeric_id=3930,
                                    gen=5,
                                    subtype='C',
@@ -26,7 +26,7 @@ def main():
                      chassis='4_axle_1cc_filled_32px')
 
 
-    consist = ExpressIntermodalCarConsist(roster='pony',
+    consist = ExpressIntermodalCarConsist(roster_id='pony',
                                    base_numeric_id=3940,
                                    gen=6,
                                    subtype='B',
@@ -36,7 +36,7 @@ def main():
                      chassis='2_axle_1cc_filled_24px')
 
 
-    consist = ExpressIntermodalCarConsist(roster='pony',
+    consist = ExpressIntermodalCarConsist(roster_id='pony',
                                    base_numeric_id=3950,
                                    gen=6,
                                    subtype='C',

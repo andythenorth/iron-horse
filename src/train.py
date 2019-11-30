@@ -963,7 +963,6 @@ class CarConsist(Consist):
         # self.base_id = '' # provide in subclass
         id = self.get_wagon_id(self.base_id, **kwargs)
         kwargs['id'] = id
-        kwargs['roster_id'] = kwargs['roster'] # conflation of 'roster' and 'roster_id' here, could be refactored, but eh
         super().__init__(**kwargs)
         self.roster.register_wagon_consist(self)
 
@@ -1058,7 +1057,7 @@ class CarConsist(Consist):
         # 'narmal' rail and 'elrail' doesn't require an id modifier
         if kwargs.get('base_track_type', None) == 'NG':
             id_base = id_base + '_ng'
-        result = '_'.join((id_base, kwargs['roster'], 'gen', str(
+        result = '_'.join((id_base, kwargs['roster_id'], 'gen', str(
             kwargs['gen']) + str(kwargs['subtype'])))
         return result
 

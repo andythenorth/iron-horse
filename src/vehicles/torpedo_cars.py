@@ -4,7 +4,7 @@ from train import TorpedoCarConsist, FreightCar
 def main():
     #--------------- pony ----------------------------------------------------------------------
 
-    consist = TorpedoCarConsist(roster='pony',
+    consist = TorpedoCarConsist(roster_id='pony',
                               base_numeric_id=890,
                               gen=1,
                               subtype='A',
@@ -15,7 +15,7 @@ def main():
                      spriterow_num=0)
 
 
-    consist = TorpedoCarConsist(roster='pony',
+    consist = TorpedoCarConsist(roster_id='pony',
                               base_numeric_id=900,
                               gen=2,
                               subtype='A',
@@ -26,7 +26,7 @@ def main():
                      spriterow_num=0)
 
 
-    consist = TorpedoCarConsist(roster='pony',
+    consist = TorpedoCarConsist(roster_id='pony',
                               base_numeric_id=910,
                               gen=3,
                               subtype='A',
@@ -42,7 +42,7 @@ def main():
                      spriterow_num=0)
 
 
-    consist = TorpedoCarConsist(roster='pony',
+    consist = TorpedoCarConsist(roster_id='pony',
                               base_numeric_id=2670,
                               gen=4,
                               subtype='A',
@@ -57,7 +57,7 @@ def main():
                      spriterow_num=0)
 
 
-    consist = TorpedoCarConsist(roster='pony',
+    consist = TorpedoCarConsist(roster_id='pony',
                               base_numeric_id=2160,
                               gen=5,
                               subtype='A',

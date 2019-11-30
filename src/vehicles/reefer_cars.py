@@ -5,7 +5,7 @@ def main():
     #--------------- pony ----------------------------------------------------------------------
     # no gen 1 reefer - straight to gen 2
 
-    consist = ReeferCarConsist(roster='pony',
+    consist = ReeferCarConsist(roster_id='pony',
                                base_numeric_id=730,
                                gen=2,
                                subtype='A',
@@ -15,7 +15,7 @@ def main():
                      chassis='2_axle_filled_16px')
 
 
-    consist = ReeferCarConsist(roster='pony',
+    consist = ReeferCarConsist(roster_id='pony',
                                base_numeric_id=720,
                                gen=3,
                                subtype='A',
@@ -25,7 +25,7 @@ def main():
                      chassis='2_axle_filled_16px')
 
 
-    consist = ReeferCarConsist(roster='pony',
+    consist = ReeferCarConsist(roster_id='pony',
                                base_numeric_id=2560,
                                gen=4,
                                subtype='A',
@@ -35,7 +35,7 @@ def main():
                      chassis='2_axle_filled_16px')
 
 
-    consist = ReeferCarConsist(roster='pony',
+    consist = ReeferCarConsist(roster_id='pony',
                                base_numeric_id=2590,
                                gen=4,
                                subtype='B',
@@ -45,7 +45,7 @@ def main():
                      chassis='2_axle_filled_24px')
 
 
-    consist = ReeferCarConsist(roster='pony',
+    consist = ReeferCarConsist(roster_id='pony',
                             base_numeric_id=3580,
                             gen=4,
                             subtype='C',
@@ -56,7 +56,7 @@ def main():
                      chassis='4_axle_1cc_filled_32px')
 
 
-    consist = ReeferCarConsist(roster='pony',
+    consist = ReeferCarConsist(roster_id='pony',
                                base_numeric_id=2570,
                                gen=5,
                                subtype='B',
@@ -66,7 +66,7 @@ def main():
                      chassis='2_axle_filled_greebled_24px')
 
 
-    consist = ReeferCarConsist(roster='pony',
+    consist = ReeferCarConsist(roster_id='pony',
                                base_numeric_id=2580,
                                gen=5,
                                subtype='C',
@@ -76,7 +76,7 @@ def main():
                      chassis='4_axle_1cc_filled_32px')
 
 
-    consist = ReeferCarConsist(roster='pony',
+    consist = ReeferCarConsist(roster_id='pony',
                                base_numeric_id=1820,
                                gen=6,
                                subtype='B',
@@ -86,7 +86,7 @@ def main():
                      chassis='2_axle_filled_greebled_24px')
 
 
-    consist = ReeferCarConsist(roster='pony',
+    consist = ReeferCarConsist(roster_id='pony',
                                base_numeric_id=1850,
                                gen=6,
                                subtype='C',

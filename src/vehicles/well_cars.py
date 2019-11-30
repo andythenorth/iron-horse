@@ -3,7 +3,7 @@ from train import WellCarConsist, WellCar
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
-    consist = WellCarConsist(roster='pony',
+    consist = WellCarConsist(roster_id='pony',
                              base_numeric_id=710,
                              gen=2,
                              subtype='A')
@@ -11,7 +11,7 @@ def main():
     consist.add_unit(type=WellCar,
                      chassis='2_axle_filled_16px')
 
-    consist = WellCarConsist(roster='pony',
+    consist = WellCarConsist(roster_id='pony',
                              base_numeric_id=700,
                              gen=3,
                              subtype='A')
@@ -19,7 +19,7 @@ def main():
     consist.add_unit(type=WellCar,
                      chassis='2_axle_filled_16px')
 
-    consist = WellCarConsist(roster='pony',
+    consist = WellCarConsist(roster_id='pony',
                              base_numeric_id=2850,
                              gen=3,
                              subtype='B')
@@ -27,7 +27,7 @@ def main():
     consist.add_unit(type=WellCar,
                      chassis='4_axle_filled_24px')
 
-    consist = WellCarConsist(roster='pony',
+    consist = WellCarConsist(roster_id='pony',
                              base_numeric_id=2860,
                              gen=4,
                              subtype='B')
@@ -36,7 +36,7 @@ def main():
                      chassis='4_axle_filled_24px')
 
     """
-    consist = WellCarConsist(roster='pony',
+    consist = WellCarConsist(roster_id='pony',
                              base_numeric_id=2870,
                              gen=4,
                              subtype='C')
@@ -45,7 +45,7 @@ def main():
                      vehicle_length=8)
     """
 
-    consist = WellCarConsist(roster='pony',
+    consist = WellCarConsist(roster_id='pony',
                              base_numeric_id=2880,
                              gen=5,
                              subtype='A')
@@ -53,7 +53,7 @@ def main():
     consist.add_unit(type=WellCar,
                      chassis='2_axle_filled_16px')
 
-    consist = WellCarConsist(roster='pony',
+    consist = WellCarConsist(roster_id='pony',
                              base_numeric_id=2890,
                              gen=5,
                              subtype='B')
@@ -62,7 +62,7 @@ def main():
                      chassis='4_axle_filled_greebled_24px')
 
     """
-    consist = WellCarConsist(roster='pony',
+    consist = WellCarConsist(roster_id='pony',
                              base_numeric_id=2690,
                              gen=5,
                              subtype='C')

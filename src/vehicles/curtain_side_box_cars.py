@@ -5,7 +5,7 @@ def main():
     #--------------- pony ----------------------------------------------------------------------
 
     # gen 4 start, only B and C lengths
-    consist = CurtainSideCarBoxConsist(roster='pony',
+    consist = CurtainSideCarBoxConsist(roster_id='pony',
                             base_numeric_id=540,
                             gen=4,
                             subtype='B',
@@ -15,7 +15,7 @@ def main():
                      chassis='2_axle_filled_24px')
 
 
-    consist = CurtainSideCarBoxConsist(roster='pony',
+    consist = CurtainSideCarBoxConsist(roster_id='pony',
                             base_numeric_id=510,
                             gen=4,
                             subtype='C',
@@ -26,7 +26,7 @@ def main():
                      chassis='4_axle_1cc_filled_32px')
 
 
-    consist = CurtainSideCarBoxConsist(roster='pony',
+    consist = CurtainSideCarBoxConsist(roster_id='pony',
                             base_numeric_id=710,
                             gen=5,
                             subtype='B',
@@ -36,7 +36,7 @@ def main():
                      chassis='2_axle_filled_greebled_24px')
 
 
-    consist = CurtainSideCarBoxConsist(roster='pony',
+    consist = CurtainSideCarBoxConsist(roster_id='pony',
                             base_numeric_id=980,
                             gen=5,
                             subtype='C',
@@ -46,7 +46,7 @@ def main():
                      chassis='4_axle_filled_greebled_32px')
 
 
-    consist = CurtainSideCarBoxConsist(roster='pony',
+    consist = CurtainSideCarBoxConsist(roster_id='pony',
                             base_numeric_id=1440,
                             gen=6,
                             subtype='B',
@@ -56,7 +56,7 @@ def main():
                      chassis='2_axle_1cc_filled_24px')
 
 
-    consist = CurtainSideCarBoxConsist(roster='pony',
+    consist = CurtainSideCarBoxConsist(roster_id='pony',
                             base_numeric_id=1460,
                             gen=6,
                             subtype='C',

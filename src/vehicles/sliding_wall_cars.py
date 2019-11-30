@@ -6,7 +6,7 @@ def main():
 
     # starts gen 4, B and C only
 
-    consist = SlidingWallCarConsist(roster='pony',
+    consist = SlidingWallCarConsist(roster_id='pony',
                             base_numeric_id=1570,
                             gen=4,
                             subtype='B',
@@ -17,7 +17,7 @@ def main():
                      chassis='2_axle_1cc_filled_24px')
 
 
-    consist = SlidingWallCarConsist(roster='pony',
+    consist = SlidingWallCarConsist(roster_id='pony',
                             base_numeric_id=1790,
                             gen=4,
                             subtype='C',
@@ -29,7 +29,7 @@ def main():
                      chassis='4_axle_1cc_filled_32px')
 
 
-    consist = SlidingWallCarConsist(roster='pony',
+    consist = SlidingWallCarConsist(roster_id='pony',
                             base_numeric_id=410,
                             gen=5,
                             subtype='B',
@@ -40,7 +40,7 @@ def main():
                      chassis='2_axle_1cc_filled_24px')
 
 
-    consist = SlidingWallCarConsist(roster='pony',
+    consist = SlidingWallCarConsist(roster_id='pony',
                             base_numeric_id=440,
                             gen=5,
                             subtype='C',
@@ -51,7 +51,7 @@ def main():
                      chassis='4_axle_1cc_filled_32px')
 
 
-    consist = SlidingWallCarConsist(roster='pony',
+    consist = SlidingWallCarConsist(roster_id='pony',
                             base_numeric_id=330,
                             gen=6,
                             subtype='B',
@@ -62,7 +62,7 @@ def main():
                      chassis='2_axle_1cc_filled_24px')
 
 
-    consist = SlidingWallCarConsist(roster='pony',
+    consist = SlidingWallCarConsist(roster_id='pony',
                             base_numeric_id=320,
                             gen=6,
                             subtype='C',

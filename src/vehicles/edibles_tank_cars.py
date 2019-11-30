@@ -6,7 +6,7 @@ def main():
 
     # no gen 1 or 2 for edibles tank cars - straight to gen 3
 
-    consist = EdiblesTankCarConsist(roster='pony',
+    consist = EdiblesTankCarConsist(roster_id='pony',
                                     base_numeric_id=3030,
                                     gen=2,
                                     subtype='A',
@@ -16,7 +16,7 @@ def main():
                      chassis='2_axle_filled_16px')
 
 
-    consist = EdiblesTankCarConsist(roster='pony',
+    consist = EdiblesTankCarConsist(roster_id='pony',
                                     base_numeric_id=1190,
                                     gen=3,
                                     subtype='A',
@@ -26,7 +26,7 @@ def main():
                      chassis='3_axle_filled_16px')
 
 
-    consist = EdiblesTankCarConsist(roster='pony',
+    consist = EdiblesTankCarConsist(roster_id='pony',
                                     base_numeric_id=2990,
                                     gen=4,
                                     subtype='A',
@@ -36,7 +36,7 @@ def main():
                      chassis='3_axle_filled_16px')
 
 
-    consist = EdiblesTankCarConsist(roster='pony',
+    consist = EdiblesTankCarConsist(roster_id='pony',
                                     base_numeric_id=1690,
                                     gen=4,
                                     subtype='B',
@@ -46,7 +46,7 @@ def main():
                      chassis='4_axle_sparse_24px')
 
 
-    consist = EdiblesTankCarConsist(roster='pony',
+    consist = EdiblesTankCarConsist(roster_id='pony',
                                     base_numeric_id=1220,
                                     gen=4,
                                     subtype='C',
@@ -56,7 +56,7 @@ def main():
                      chassis='4_axle_sparse_32px')
 
 
-    consist = EdiblesTankCarConsist(roster='pony',
+    consist = EdiblesTankCarConsist(roster_id='pony',
                                     base_numeric_id=1210,
                                     gen=5,
                                     subtype='A',
@@ -66,7 +66,7 @@ def main():
                      chassis='3_axle_filled_16px')
 
 
-    consist = EdiblesTankCarConsist(roster='pony',
+    consist = EdiblesTankCarConsist(roster_id='pony',
                                     base_numeric_id=1700,
                                     gen=5,
                                     subtype='B',
@@ -76,7 +76,7 @@ def main():
                      chassis='4_axle_sparse_24px')
 
 
-    consist = EdiblesTankCarConsist(roster='pony',
+    consist = EdiblesTankCarConsist(roster_id='pony',
                                     base_numeric_id=3050,
                                     gen=5,
                                     subtype='C',
@@ -87,7 +87,7 @@ def main():
 
     # gen 6A not included - could add?
 
-    consist = EdiblesTankCarConsist(roster='pony',
+    consist = EdiblesTankCarConsist(roster_id='pony',
                                     base_numeric_id=2100,
                                     gen=6,
                                     subtype='B',
@@ -97,7 +97,7 @@ def main():
                      chassis='4_axle_sparse_24px')
 
 
-    consist = EdiblesTankCarConsist(roster='pony',
+    consist = EdiblesTankCarConsist(roster_id='pony',
                                     base_numeric_id=2090,
                                     gen=6,
                                     subtype='C',

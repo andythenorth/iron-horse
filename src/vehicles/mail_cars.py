@@ -3,7 +3,7 @@ from train import MailCarConsist, MailCar
 
 def main():
     #--------------- pony NG ----------------------------------------------------------------------
-    consist = MailCarConsist(roster='pony',
+    consist = MailCarConsist(roster_id='pony',
                              base_numeric_id=950,
                              gen=1,
                              subtype='U',
@@ -15,7 +15,7 @@ def main():
 
     # no gen 2 for NG, straight to gen 3
 
-    consist = MailCarConsist(roster='pony',
+    consist = MailCarConsist(roster_id='pony',
                              base_numeric_id=610,
                              gen=3,
                              subtype='U',
@@ -26,7 +26,7 @@ def main():
                      chassis='4_axle_ng_16px')
 
 
-    consist = MailCarConsist(roster='pony',
+    consist = MailCarConsist(roster_id='pony',
                              base_numeric_id=670,
                              gen=4,
                              subtype='U',
@@ -39,7 +39,7 @@ def main():
 
     #--------------- pony ----------------------------------------------------------------------
 
-    consist = MailCarConsist(roster='pony',
+    consist = MailCarConsist(roster_id='pony',
                              base_numeric_id=2280,
                              gen=1,
                              subtype='A',
@@ -49,7 +49,7 @@ def main():
                      chassis='3_axle_solid_express_16px')
 
 
-    consist = MailCarConsist(roster='pony',
+    consist = MailCarConsist(roster_id='pony',
                              base_numeric_id=2220,
                              gen=1,
                              subtype='B',
@@ -59,7 +59,7 @@ def main():
                      chassis='4_axle_solid_express_24px')
 
 
-    consist = MailCarConsist(roster='pony',
+    consist = MailCarConsist(roster_id='pony',
                              base_numeric_id=2290,
                              gen=2,
                              subtype='A',
@@ -69,7 +69,7 @@ def main():
                      chassis='3_axle_solid_express_16px')
 
 
-    consist = MailCarConsist(roster='pony',
+    consist = MailCarConsist(roster_id='pony',
                              base_numeric_id=920,
                              gen=2,
                              subtype='B',
@@ -79,7 +79,7 @@ def main():
                      chassis='4_axle_solid_express_24px')
 
 
-    consist = MailCarConsist(roster='pony',
+    consist = MailCarConsist(roster_id='pony',
                              base_numeric_id=1830,
                              gen=3,
                              subtype='A',
@@ -89,7 +89,7 @@ def main():
                      chassis='3_axle_solid_express_16px')
 
 
-    consist = MailCarConsist(roster='pony',
+    consist = MailCarConsist(roster_id='pony',
                              base_numeric_id=2300,
                              gen=3,
                              subtype='B',
@@ -99,7 +99,7 @@ def main():
                      chassis='4_axle_solid_express_24px')
 
 
-    consist = MailCarConsist(roster='pony',
+    consist = MailCarConsist(roster_id='pony',
                              base_numeric_id=940,
                              gen=3,
                              subtype='C',
@@ -109,7 +109,7 @@ def main():
                      chassis='4_axle_solid_express_32px')
 
 
-    consist = MailCarConsist(roster='pony',
+    consist = MailCarConsist(roster_id='pony',
                              base_numeric_id=1430,
                              gen=4,
                              subtype='A',
@@ -119,7 +119,7 @@ def main():
                      chassis='2_axle_solid_express_16px')
 
 
-    consist = MailCarConsist(roster='pony',
+    consist = MailCarConsist(roster_id='pony',
                              base_numeric_id=3160,
                              gen=4,
                              subtype='B',
@@ -129,7 +129,7 @@ def main():
                      chassis='4_axle_solid_express_24px')
 
 
-    consist = MailCarConsist(roster='pony',
+    consist = MailCarConsist(roster_id='pony',
                              base_numeric_id=3170,
                              gen=4,
                              subtype='C',
@@ -139,7 +139,7 @@ def main():
                      chassis='4_axle_solid_express_32px')
 
 
-    consist = MailCarConsist(roster='pony',
+    consist = MailCarConsist(roster_id='pony',
                              base_numeric_id=520,
                              gen=5,
                              subtype='A',
@@ -149,7 +149,7 @@ def main():
                      chassis='2_axle_solid_express_16px')
 
 
-    consist = MailCarConsist(roster='pony',
+    consist = MailCarConsist(roster_id='pony',
                              base_numeric_id=970,
                              gen=5,
                              subtype='B',
@@ -159,7 +159,7 @@ def main():
                      chassis='4_axle_solid_express_24px')
 
 
-    consist = MailCarConsist(roster='pony',
+    consist = MailCarConsist(roster_id='pony',
                              base_numeric_id=3140,
                              gen=5,
                              subtype='C',
@@ -170,7 +170,7 @@ def main():
 
     # gen 6 broadly same as gen 5, but new liveries (any other difference?)
 
-    consist = MailCarConsist(roster='pony',
+    consist = MailCarConsist(roster_id='pony',
                              base_numeric_id=870,
                              gen=6,
                              subtype='A',
@@ -180,7 +180,7 @@ def main():
                      chassis='2_axle_solid_express_16px')
 
 
-    consist = MailCarConsist(roster='pony',
+    consist = MailCarConsist(roster_id='pony',
                              base_numeric_id=1950,
                              gen=6,
                              subtype='B',
@@ -190,7 +190,7 @@ def main():
                      chassis='4_axle_solid_express_24px')
 
 
-    consist = MailCarConsist(roster='pony',
+    consist = MailCarConsist(roster_id='pony',
                              base_numeric_id=10,
                              gen=6,
                              subtype='C',

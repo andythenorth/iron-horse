@@ -2,7 +2,7 @@ from train import PassengerHSTCarConsist, HSTPaxCar
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
-    consist = PassengerHSTCarConsist(roster='pony',
+    consist = PassengerHSTCarConsist(roster_id='pony',
                                      base_numeric_id=3480,
                                      gen=5,
                                      subtype='U',
@@ -13,7 +13,7 @@ def main():
                      chassis='4_axle_solid_express_32px')
 
 
-    consist = PassengerHSTCarConsist(roster='pony',
+    consist = PassengerHSTCarConsist(roster_id='pony',
                                      base_numeric_id=3490,
                                      gen=6,
                                      subtype='U',

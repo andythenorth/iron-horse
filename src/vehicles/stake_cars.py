@@ -4,7 +4,7 @@ from train import StakeCarConsist, FreightCar
 def main():
     #--------------- pony ----------------------------------------------------------------------
 
-    consist = StakeCarConsist(roster='pony',
+    consist = StakeCarConsist(roster_id='pony',
                               base_numeric_id=2740,
                               gen=2,
                               subtype='A',
@@ -14,7 +14,7 @@ def main():
                      chassis='2_axle_filled_16px')
 
 
-    consist = StakeCarConsist(roster='pony',
+    consist = StakeCarConsist(roster_id='pony',
                               base_numeric_id=2730,
                               gen=3,
                               subtype='A',
@@ -24,7 +24,7 @@ def main():
                      chassis='2_axle_filled_16px')
 
 
-    consist = StakeCarConsist(roster='pony',
+    consist = StakeCarConsist(roster_id='pony',
                               base_numeric_id=2750,
                               gen=3,
                               subtype='B',
@@ -34,7 +34,7 @@ def main():
                      chassis='4_axle_filled_24px')
 
 
-    consist = StakeCarConsist(roster='pony',
+    consist = StakeCarConsist(roster_id='pony',
                               base_numeric_id=1710,
                               gen=4,
                               subtype='A',
@@ -44,7 +44,7 @@ def main():
                      chassis='2_axle_filled_16px')
 
 
-    consist = StakeCarConsist(roster='pony',
+    consist = StakeCarConsist(roster_id='pony',
                               base_numeric_id=2760,
                               gen=4,
                               subtype='B',
@@ -54,7 +54,7 @@ def main():
                      chassis='4_axle_filled_24px')
 
 
-    consist = StakeCarConsist(roster='pony',
+    consist = StakeCarConsist(roster_id='pony',
                               base_numeric_id=1930,
                               gen=4,
                               subtype='C',
@@ -64,7 +64,7 @@ def main():
                      chassis='4_axle_gapped_32px')
 
 
-    consist = StakeCarConsist(roster='pony',
+    consist = StakeCarConsist(roster_id='pony',
                               base_numeric_id=2770,
                               gen=5,
                               subtype='B',
@@ -74,7 +74,7 @@ def main():
                      chassis='2_axle_filled_greebled_24px')
 
 
-    consist = StakeCarConsist(roster='pony',
+    consist = StakeCarConsist(roster_id='pony',
                               base_numeric_id=930,
                               gen=5,
                               subtype='C',
@@ -84,7 +84,7 @@ def main():
                      chassis='4_axle_filled_greebled_32px')
 
 
-    consist = StakeCarConsist(roster='pony',
+    consist = StakeCarConsist(roster_id='pony',
                               base_numeric_id=1910,
                               gen=6,
                               subtype='B',
@@ -94,7 +94,7 @@ def main():
                      chassis='2_axle_filled_greebled_24px')
 
 
-    consist = StakeCarConsist(roster='pony',
+    consist = StakeCarConsist(roster_id='pony',
                               base_numeric_id=1920,
                               gen=6,
                               subtype='C',

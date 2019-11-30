@@ -3,7 +3,7 @@ from train import IntermodalCarConsist, IntermodalCar
 
 def main():
     #--------------- pony ng ----------------------------------------------------------------------
-    consist = IntermodalCarConsist(roster='pony',
+    consist = IntermodalCarConsist(roster_id='pony',
                                    base_numeric_id=3960,
                                    gen=4,
                                    subtype='U',
@@ -15,7 +15,7 @@ def main():
 
 
     #--------------- pony ----------------------------------------------------------------------
-    consist = IntermodalCarConsist(roster='pony',
+    consist = IntermodalCarConsist(roster_id='pony',
                                    base_numeric_id=3880,
                                    gen=4,
                                    subtype='A',
@@ -25,7 +25,7 @@ def main():
                      chassis='2_axle_filled_16px')
 
 
-    consist = IntermodalCarConsist(roster='pony',
+    consist = IntermodalCarConsist(roster_id='pony',
                                    base_numeric_id=3890,
                                    gen=4,
                                    subtype='B',
@@ -35,7 +35,7 @@ def main():
                      chassis='4_axle_gapped_24px')
 
 
-    consist = IntermodalCarConsist(roster='pony',
+    consist = IntermodalCarConsist(roster_id='pony',
                                    base_numeric_id=3710,
                                    gen=4,
                                    subtype='C',
@@ -45,7 +45,7 @@ def main():
                      chassis='4_axle_gapped_32px')
 
 
-    consist = IntermodalCarConsist(roster='pony',
+    consist = IntermodalCarConsist(roster_id='pony',
                                    base_numeric_id=3720,
                                    gen=5,
                                    subtype='A',
@@ -55,7 +55,7 @@ def main():
                      chassis='2_axle_1cc_filled_16px')
 
 
-    consist = IntermodalCarConsist(roster='pony',
+    consist = IntermodalCarConsist(roster_id='pony',
                                    base_numeric_id=3730,
                                    gen=5,
                                    subtype='B',
@@ -65,7 +65,7 @@ def main():
                      chassis='4_axle_1cc_filled_24px')
 
 
-    consist = IntermodalCarConsist(roster='pony',
+    consist = IntermodalCarConsist(roster_id='pony',
                                    base_numeric_id=3740,
                                    gen=5,
                                    subtype='C',
@@ -75,7 +75,7 @@ def main():
                      chassis='4_axle_1cc_filled_32px')
 
 
-    consist = IntermodalCarConsist(roster='pony',
+    consist = IntermodalCarConsist(roster_id='pony',
                                    base_numeric_id=3770,
                                    gen=6,
                                    subtype='A',
@@ -85,7 +85,7 @@ def main():
                      chassis='2_axle_1cc_filled_16px')
 
 
-    consist = IntermodalCarConsist(roster='pony',
+    consist = IntermodalCarConsist(roster_id='pony',
                                    base_numeric_id=3750,
                                    gen=6,
                                    subtype='B',
@@ -95,7 +95,7 @@ def main():
                      chassis='4_axle_1cc_filled_24px')
 
 
-    consist = IntermodalCarConsist(roster='pony',
+    consist = IntermodalCarConsist(roster_id='pony',
                                    base_numeric_id=3760,
                                    gen=6,
                                    subtype='C',

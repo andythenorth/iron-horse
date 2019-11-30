@@ -647,7 +647,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
         id_base = self.consist.gestalt_graphics.id_base
         if self.consist.base_track_type == 'NG':
             id_base = id_base + '_ng'
-        box_car_id = self.consist.get_wagon_id(id_base=id_base, roster=self.consist.roster.id, gen=self.consist.gen, subtype=self.consist.subtype + '.png')
+        box_car_id = self.consist.get_wagon_id(id_base=id_base, roster_id=self.consist.roster_id, gen=self.consist.gen, subtype=self.consist.subtype + '.png')
         box_car_input_path = os.path.join(currentdir, 'src', 'graphics', self.consist.roster_id, box_car_id)
 
         # two spriterows, closed doors and open doors
