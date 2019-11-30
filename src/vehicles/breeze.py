@@ -1,8 +1,8 @@
 from train import PassengerEngineRailcarConsist, ElectricRailcarPaxUnit
 
 
-def main(roster):
-    consist = PassengerEngineRailcarConsist(roster=roster,
+def main(roster_id):
+    consist = PassengerEngineRailcarConsist(roster_id=roster_id,
                                             id='breeze',
                                             base_numeric_id=3200,
                                             name='Breeze',

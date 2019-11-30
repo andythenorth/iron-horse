@@ -1,9 +1,9 @@
 from train import EngineConsist, CargoSprinter
 
 
-def main(roster):
+def main(roster_id):
     # cargo_sprinter is full of special cases, lots of yak-shaving to get it done
-    consist = EngineConsist(roster=roster,
+    consist = EngineConsist(roster_id=roster_id,
                             id='cargo_sprinter',
                             base_numeric_id=100,
                             name='Cargo Sprinter',

@@ -1,8 +1,8 @@
 from train import EngineConsist, SteamEngineUnit, SteamEngineTenderUnit
 
 
-def main(roster):
-    consist = EngineConsist(roster=roster,
+def main(roster_id):
+    consist = EngineConsist(roster_id=roster_id,
                             id='girt_licker',
                             base_numeric_id=70,
                             name='0-10-0 Girt Licker',

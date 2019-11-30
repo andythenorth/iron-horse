@@ -538,7 +538,6 @@ class EngineConsist(Consist):
     """
 
     def __init__(self, **kwargs):
-        kwargs['roster_id'] = kwargs.get('roster').id
         super().__init__(**kwargs)
         # arbitrary multiplier to floating run costs (factors are speed, power, weight)
         # adjust per subtype as needed

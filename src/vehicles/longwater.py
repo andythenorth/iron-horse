@@ -1,8 +1,8 @@
 from train import MailEngineMetroConsist, MetroUnit
 
 
-def main(roster):
-    consist = MailEngineMetroConsist(roster=roster,
+def main(roster_id):
+    consist = MailEngineMetroConsist(roster_id=roster_id,
                                      id='longwater',
                                      base_numeric_id=290,
                                      name='Longwater',

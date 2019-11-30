@@ -1,7 +1,7 @@
 from train import SnowploughEngineConsist, SnowploughUnit
 
-def main(roster):
-    consist = SnowploughEngineConsist(roster=roster,
+def main(roster_id):
+    consist = SnowploughEngineConsist(roster_id=roster_id,
                                       id='snowplough_pony_gen_2',
                                       base_numeric_id=4000,
                                       name='Snowplough',

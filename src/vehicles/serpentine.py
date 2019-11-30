@@ -1,8 +1,8 @@
 from train import PassengerEngineMetroConsist, MetroUnit
 
 
-def main(roster):
-    consist = PassengerEngineMetroConsist(roster=roster,
+def main(roster_id):
+    consist = PassengerEngineMetroConsist(roster_id=roster_id,
                                           id='serpentine',
                                           base_numeric_id=460,
                                           name='Serpentine',

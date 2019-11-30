@@ -71,7 +71,7 @@ class Roster(object):
         registered_rosters.append(self)
         self.disabled = disabled
         for engine in self.engines:
-            consist = engine.main(self)
+            consist = engine.main(self.id)
             self.engine_consists.append(consist)
         self.wagon_consists = dict(
             [(base_id, []) for base_id in global_constants.buy_menu_sort_order_wagons])
