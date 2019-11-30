@@ -22,6 +22,8 @@ LANG_DIR = generated/lang
 NML_FILE = generated/iron-horse.nml
 NML_FLAGS = -l $(LANG_DIR)  --verbosity=4
 
+-include Makefile.local
+
 EXPORTED = no
 ifeq ($(strip $(EXPORTED)),no)
   # Not exported source, therefore regular checkout
