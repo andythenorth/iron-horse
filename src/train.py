@@ -897,7 +897,7 @@ class MailEngineRailcarConsist(MailEngineConsist):
 
 class MailEngineDrivingCabConsist(MailEngineConsist):
     """
-    Consist for a mail DVT / cabbage.  Just a sparse subclass to force the gestalt_graphics and allow_flip.
+    Consist for a mail DVT / cabbage.  Implemented as Engine so it can lead a consist in-game.
     """
 
     def __init__(self, **kwargs):
@@ -2338,7 +2338,7 @@ class DieselRailcarPaxUnit(DieselRailcarBaseUnit):
 
 class DrivingCabUnit(Train):
     """
-    Unit for a driving cab (DVT / Cabbage).  Mail / express freight refits
+    Unit for a driving cab (DVT / Cabbage).  Mail / express freight refits.
     """
 
     def __init__(self, **kwargs):
