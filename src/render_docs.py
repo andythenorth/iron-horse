@@ -8,16 +8,12 @@ import multiprocessing
 from time import time
 from PIL import Image
 import markdown
-from chameleon import PageTemplateLoader
 
+import iron_horse
 import utils
 import global_constants
 
-docs_src = os.path.join(currentdir, 'src', 'docs_templates')
-docs_templates = PageTemplateLoader(docs_src, format='text')
-
 # get the strings from base lang file so they can be used in docs
-lang_start = time()
 base_lang_strings = utils.parse_base_lang()
 metadata = {}
 metadata['dev_thread_url'] = 'http://www.tt-forums.net/viewtopic.php?f=67&t=71219'
@@ -27,6 +23,7 @@ metadata['issue_tracker'] = 'http://dev.openttdcoop.org/projects/iron-horse/issu
 # get args passed by makefile
 makefile_args = utils.get_makefile_args(sys)
 
+docs_src = os.path.join(currentdir, 'src', 'docs_templates')
 
 class DocHelper(object):
     # dirty class to help do some doc formatting
@@ -219,6 +216,11 @@ class DocHelper(object):
         return (('RAIL', 'Standard Gauge'), ('NG', 'Narrow Gauge'), ('METRO', 'Metro'))
 
 def render_docs(doc_list, file_type, docs_output_path, iron_horse, consists, use_markdown=False):
+    # imports inside functions are generally avoided
+    # but PageTemplateLoader is expensive to import and causes unnecessary overhead for Pool mapping when processing docs graphics
+    from chameleon import PageTemplateLoader
+    docs_templates = PageTemplateLoader(docs_src, format='text')
+
     for doc_name in doc_list:
         # .pt is the conventional extension for chameleon page templates
         template = docs_templates[doc_name + '.pt']
@@ -238,7 +240,6 @@ def render_docs(doc_list, file_type, docs_output_path, iron_horse, consists, use
             docs_output_path, subdir, doc_name + '.' + file_type), 'w', 'utf8')
         doc_file.write(doc)
         doc_file.close()
-
 
 def render_docs_images(consist):
     # process vehicle buy menu sprites for reuse in docs
@@ -333,6 +334,7 @@ def render_docs_images(consist):
 def main():
     print("[RENDER DOCS] render_docs.py")
     start = time()
+    iron_horse.main()
 
     # default to no mp, makes debugging easier (mp fails to pickle errors correctly)
     num_pool_workers = makefile_args.get('num_pool_workers', 0)
@@ -346,6 +348,7 @@ def main():
         #logger.setLevel(25)
         # just print, no need for a coloured echo_message
         print('Multiprocessing enabled: (PW=' + str(num_pool_workers) + ')')
+
     # setting up a cache for compiled chameleon templates can significantly speed up template rendering
     chameleon_cache_path = os.path.join(
         currentdir, global_constants.chameleon_cache_dir)
@@ -365,7 +368,6 @@ def main():
     shutil.copytree(static_dir_src, static_dir_dst)
 
     # import iron_horse inside main() as it's so slow to import, and should only be imported explicitly
-    import iron_horse
     consists = iron_horse.get_consists_in_buy_menu_order()
     # default sort for docs is by intro date
     consists = sorted(consists, key=lambda consist: consist.intro_date)

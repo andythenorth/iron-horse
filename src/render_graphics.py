@@ -45,7 +45,7 @@ def report_sprites_complete(consists):
 def main():
     print("[RENDER GRAPHICS] render_graphics.py")
     start = time()
-
+    iron_horse.main()
     # get args passed by makefile
     makefile_args = utils.get_makefile_args(sys)
     # default to no mp, makes debugging easier (mp fails to pickle errors correctly)

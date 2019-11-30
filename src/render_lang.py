@@ -36,6 +36,7 @@ hint_file.close()
 
 def main():
     start = time()
+    iron_horse.main()
     consists = iron_horse.get_consists_in_buy_menu_order()
 
     languages_with_generation = ('english',)

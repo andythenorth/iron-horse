@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 import os.path
 currentdir = os.curdir
 
@@ -15,147 +13,51 @@ generated_files_path = os.path.join(
 if not os.path.exists(generated_files_path):
     os.mkdir(generated_files_path)
 
-
 # import rosters
 from rosters import registered_rosters
-
-"""
-from rosters import antelope
-antelope.roster.register(disabled=True)
-
-from rosters import llama
-llama.roster.register(disabled=True)
-"""
-
 from rosters import pony
-pony.roster.register(disabled=False)
+
+from vehicles import numeric_id_defender
 
 # import intermodal containers
 import intermodal_containers
-intermodal_containers.main()
 
-# import vehicles
-from vehicles import numeric_id_defender
-
-"""
-# only comment in if needed for debugging
+# import wagons
 from vehicles import alignment_cars
-alignment_cars.main()
-"""
-
 from vehicles import box_cars
-box_cars.main()
-
 from vehicles import caboose_cars
-caboose_cars.main()
-
 from vehicles import chemicals_tank_cars
-chemicals_tank_cars.main()
-
 from vehicles import coil_cars
-coil_cars.main()
-
 from vehicles import coal_hopper_cars
-coal_hopper_cars.main()
-
 from vehicles import covered_hopper_cars
-covered_hopper_cars.main()
-
 from vehicles import cryo_tank_cars
-cryo_tank_cars.main()
-
 from vehicles import curtain_side_box_cars
-curtain_side_box_cars.main()
-
 from vehicles import dump_cars
-dump_cars.main()
-
 from vehicles import dump_cars_high_side
-dump_cars_high_side.main()
-
 from vehicles import edibles_tank_cars
-edibles_tank_cars.main()
-
 from vehicles import express_cars
-express_cars.main()
-
 from vehicles import express_intermodal_cars
-express_intermodal_cars.main()
-
 from vehicles import flat_cars
-flat_cars.main()
-
-from vehicles import grain_hopper_cars
-grain_hopper_cars.main()
-
 from vehicles import fruit_veg_cars
-fruit_veg_cars.main()
-
+from vehicles import grain_hopper_cars
 from vehicles import hopper_cars
-hopper_cars.main()
-
 from vehicles import hst_passenger_cars
-hst_passenger_cars.main()
-
 from vehicles import intermodal_cars
-intermodal_cars.main()
-
 from vehicles import livestock_cars
-livestock_cars.main()
-
 from vehicles import luxury_passenger_cars
-luxury_passenger_cars.main()
-
 from vehicles import mail_cars
-mail_cars.main()
-
-"""
-# commented out for 2.0 alpha
-from vehicles import torpedo_cars
-torpedo_cars.main()
-"""
-
+# from vehicles import torpedo_cars
 from vehicles import open_cars
-open_cars.main()
-
 from vehicles import passenger_cars
-passenger_cars.main()
-
 from vehicles import plate_cars
-plate_cars.main()
-
 from vehicles import reefer_cars
-reefer_cars.main()
-
 from vehicles import sliding_wall_cars
-sliding_wall_cars.main()
-
 from vehicles import stake_cars
-stake_cars.main()
-
-"""
-# commented out for 2.0.x
-from vehicles import silo_cars
-silo_cars.main()
-"""
-
+#from vehicles import silo_cars
 from vehicles import tank_cars
-tank_cars.main()
-
 from vehicles import tarpaulin_cars
-tarpaulin_cars.main()
-
-"""
-# commented out for 2.0.x
-from vehicles import vehicle_transporter_cars
-vehicle_transporter_cars.main()
-"""
-
-"""
-# commented out for 2.0.x
-from vehicles import well_cars
-well_cars.main()
-"""
+#from vehicles import vehicle_transporter_cars
+#from vehicles import well_cars
 
 def get_active_rosters():
     #  for a faster single-roster compiles when testing, optionally pass a roster id (lower case) as a makefile arg
@@ -200,3 +102,60 @@ def vacant_numeric_ids_formatted():
         if id not in numeric_id_defender:
             id_gaps.append(str(id))
     return "Vacant numeric ID slots: " + ', '.join(id_gaps) + (" and from " if len(id_gaps) > 0 else '') + str(max_id + 10) + " onwards"
+
+def main():
+    pony.roster.register(disabled=False)
+    intermodal_containers.main()
+    # wagons
+    """
+    # only comment in if needed for debugging
+    alignment_cars.main()
+    """
+    box_cars.main()
+    caboose_cars.main()
+    chemicals_tank_cars.main()
+    coil_cars.main()
+    coal_hopper_cars.main()
+    covered_hopper_cars.main()
+    cryo_tank_cars.main()
+    curtain_side_box_cars.main()
+    dump_cars.main()
+    edibles_tank_cars.main()
+    express_cars.main()
+    dump_cars_high_side.main()
+    express_intermodal_cars.main()
+    flat_cars.main()
+    fruit_veg_cars.main()
+    grain_hopper_cars.main()
+    hopper_cars.main()
+    hst_passenger_cars.main()
+    intermodal_cars.main()
+    livestock_cars.main()
+    luxury_passenger_cars.main()
+    mail_cars.main()
+    open_cars.main()
+    passenger_cars.main()
+    plate_cars.main()
+    reefer_cars.main()
+    """
+    # commented out for 2.x
+    silo_cars.main()
+    """
+    sliding_wall_cars.main()
+    stake_cars.main()
+    tank_cars.main()
+    tarpaulin_cars.main()
+    """
+    # commented out for 2.x
+    torpedo_cars.main()
+    """
+    """
+    # commented out for 2.x
+    from vehicles import vehicle_transporter_cars
+    vehicle_transporter_cars.main()
+    """
+    """
+    # commented out for 2.x
+    from vehicles import well_cars
+    well_cars.main()
+    """

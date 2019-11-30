@@ -49,6 +49,7 @@ def render_consist_nml(consist):
 
 def main():
     start = time()
+    iron_horse.main()
     print(iron_horse.vacant_numeric_ids_formatted())
 
     generated_nml_path = os.path.join(generated_files_path, 'nml')
