@@ -3,6 +3,18 @@ from train import DumpCarConsist, FreightCar
 
 def main():
     #--------------- pony NG ----------------------------------------------------------------------
+    # gen 2 start for dump cars eh?
+    consist = DumpCarConsist(roster_id='pony',
+                             base_numeric_id=4020,
+                             gen=2,
+                             subtype='U',
+                             base_track_type='NG',
+                             sprites_complete=True)
+
+    consist.add_unit(type=FreightCar,
+                     chassis='4_axle_ng_16px')
+
+
     consist = DumpCarConsist(roster_id='pony',
                              base_numeric_id=30,
                              gen=3,
@@ -12,6 +24,7 @@ def main():
 
     consist.add_unit(type=FreightCar,
                      chassis='4_axle_ng_16px')
+
 
     consist = DumpCarConsist(roster_id='pony',
                              base_numeric_id=40,
