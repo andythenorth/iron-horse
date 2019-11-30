@@ -10,11 +10,6 @@ import inspect
 # python builtin templater might be used in some utility cases
 from string import Template
 
-# chameleon used in most template cases
-from chameleon import PageTemplateLoader
-# setup the places we look for templates
-templates = PageTemplateLoader(os.path.join(currentdir, 'src', 'templates'))
-
 import polar_fox
 import global_constants  # expose all constants for easy passing to templates
 import utils
@@ -494,7 +489,7 @@ class Consist(object):
                 return 'STR_ROLE, string(' + global_constants.role_string_mapping[role_group] + ')'
         raise Exception('no role string found for ', self.id)
 
-    def render_articulated_switch(self):
+    def render_articulated_switch(self, templates):
         if len(self.units) > 1:
             template = templates["articulated_parts.pynml"]
             nml_result = template(
@@ -524,15 +519,15 @@ class Consist(object):
             if self.weight > 500:
                 utils.echo_message("Consist " + self.id + " has weight > 500t, which is too much")
 
-    def render(self):
+    def render(self, templates):
         self.assert_speed()
         self.assert_power()
         # templating
         nml_result = ''
         if len(self.units) > 1:
-            nml_result = nml_result + self.render_articulated_switch()
+            nml_result = nml_result + self.render_articulated_switch(templates)
         for unit in self.unique_units:
-            nml_result = nml_result + unit.render()
+            nml_result = nml_result + unit.render(templates)
         return nml_result
 
 
@@ -2249,7 +2244,7 @@ class Train(object):
                 utils.echo_message("Warning: vehicle " + self.id + " references cargo label " +
                                    i + " which is not defined in the cargo table")
 
-    def render(self):
+    def render(self, templates):
         # integrity tests
         self.assert_cargo_labels(self.label_refits_allowed)
         self.assert_cargo_labels(self.label_refits_disallowed)
