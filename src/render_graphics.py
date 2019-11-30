@@ -16,9 +16,7 @@ import global_constants
 
 def run_consist_pipelines(consist):
     if len(consist.gestalt_graphics.pipelines) == 0:
-        # no pipelines to run, just copy graphics file
-        shutil.copy(os.path.join(graphics_input_path, consist.roster_id,
-                                 consist.id + '.png'), graphics_output_path)
+        raise Exception('no pipelines')
     else:
         # run pipelines, obvs
         for pipeline in consist.gestalt_graphics.pipelines:
