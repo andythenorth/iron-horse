@@ -8,7 +8,7 @@ def main(roster_id):
                                             name='Zeus',
                                             role='pax_railcar_2',
                                             power=850,  # RL EMU HP is much lower, but eh
-                                            power_by_railtype={'RAIL': 360, 'ELRL': 800}, # bit nerfed on diesel, by design
+                                            power_by_railtype={'RAIL': 360, 'ELRL': 850}, # bit nerfed on diesel, by design
                                             pantograph_type='z-shaped-single-with-base',
                                             easter_egg_haulage_speed_bonus=True,
                                             gen=6,
