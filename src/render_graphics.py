@@ -10,9 +10,7 @@ logger = multiprocessing.log_to_stderr()
 logger.setLevel(25)
 from time import time
 
-slow = time()
 import iron_horse
-print('iron_horse import:', time() - slow)
 import utils
 import global_constants
 
