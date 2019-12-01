@@ -2,6 +2,48 @@ Changelog
 =========
 
 -------------
+2.2.0 Release
+-------------
+
+*Features*
+
+- added 2 Driving Van Trailers (driving cab cars)
+    - attach to front or rear of a train with at least one other engine
+    - for OpenTTD reasons, vehicles must have power to lead a train, so these vehicles include a small amount of power
+    - refittable to mail and express freight cargos
+    - first available around 1990
+    - multiple liveries, livery shown depends on consist cargo and user choice (depot flip the vehicle)
+- added 3 Joker vehicles with limited gameplay benefit
+    - Grub small steam engine (1860), 35mph, 250hp
+    - Gronk small diesel engine (1951), 35mph, 400hp
+    - Snowplough (1900)
+        - Snowplough has a small amount of power set so it can lead a train
+        - Snowplough can refit to a small amount of mail and express freight cargos
+- added parameter to disable Joker vehicles (enabled by default)
+- added narrow gauge mineral car for gen 2 (around 1905)
+- improved appearance of steam engines, diesel shunters, some electric engines by reducing contrast of pixels in the wheel area
+
+
+*Fixes*
+
+- Zeus railcar had incorect electric power value when built (buy menu showed correct value)
+- Scooby and Dover mailcars had incorrect sprites for 2 angles
+
+
+*Docs*
+
+- added experimental tech tree page, showing engine progression
+
+
+*Codechanges*
+
+- ported version / revision info from hg to git
+- rewrote parts of compile for compatibility with python 3.8
+- rewrote parts of compile for speed
+- using combination of python 3.8 and pypy interpreters, compile speed reduced by 40% in local tests
+
+
+-------------
 2.1.1 Release
 -------------
 
