@@ -41,7 +41,7 @@ def main():
                              sprites_complete=False)
 
     consist.add_unit(type=FreightCar,
-                     chassis='2_axle_filled_16px')
+                     chassis='2_axle_gapped_greebled_16px')
 
 
     consist = SiloCarConsist(roster_id='pony',
@@ -81,7 +81,7 @@ def main():
                              sprites_complete=False)
 
     consist.add_unit(type=FreightCar,
-                     chassis='4_axle_1cc_filled_24px')
+                     chassis='4_axle_filled_greebled_24px')
 
 
     consist = SiloCarConsist(roster_id='pony',
@@ -91,7 +91,7 @@ def main():
                              sprites_complete=False)
 
     consist.add_unit(type=FreightCar,
-                     chassis='4_axle_1cc_filled_32px')
+                     chassis='4_axle_filled_greebled_32px')
 
 
     #--------------- llama ----------------------------------------------------------------------
