@@ -53,7 +53,7 @@ from vehicles import plate_cars
 from vehicles import reefer_cars
 from vehicles import sliding_wall_cars
 from vehicles import stake_cars
-#from vehicles import silo_cars
+from vehicles import silo_cars
 from vehicles import tank_cars
 from vehicles import tarpaulin_cars
 #from vehicles import vehicle_transporter_cars
@@ -137,10 +137,7 @@ def main():
     passenger_cars.main()
     plate_cars.main()
     reefer_cars.main()
-    """
-    # commented out for 2.x
     silo_cars.main()
-    """
     sliding_wall_cars.main()
     stake_cars.main()
     tank_cars.main()
