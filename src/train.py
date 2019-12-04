@@ -1785,7 +1785,7 @@ class SiloCarConsist(CarConsist):
         self.base_id = 'silo_car'
         super().__init__(**kwargs)
         self.class_refit_groups = []  # no classes, use explicit labels
-        self.label_refits_allowed = ['FOOD', 'SUGR', 'FMSP', 'RFPR', 'BDMT', 'RUBR', 'QLME', 'SASH', 'CMNT'] # move to Polar Fox (maybe??)
+        self.label_refits_allowed = ['FOOD', 'SUGR', 'FMSP', 'RFPR', 'BDMT', 'RUBR', 'QLME', 'SASH', 'CMNT', 'CBLK'] # move to Polar Fox (maybe??)
         self.label_refits_disallowed = []
         self.default_cargos = polar_fox.constants.default_cargos['silo']
         self.loading_speed_multiplier = 2
