@@ -8,7 +8,7 @@ def main():
                              base_numeric_id=3680,
                              gen=4,
                              subtype='A',
-                             sprites_complete=False)
+                             sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
                      chassis='2_axle_gapped_16px')
@@ -18,7 +18,7 @@ def main():
                              base_numeric_id=3690,
                              gen=4,
                              subtype='B',
-                             sprites_complete=False)
+                             sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
                      chassis='4_axle_filled_24px')
@@ -28,7 +28,7 @@ def main():
                              base_numeric_id=3700,
                              gen=4,
                              subtype='C',
-                             sprites_complete=False)
+                             sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
                      chassis='4_axle_filled_greebled_32px')
@@ -38,7 +38,7 @@ def main():
                              base_numeric_id=3620,
                              gen=5,
                              subtype='A',
-                             sprites_complete=False)
+                             sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
                      chassis='2_axle_gapped_greebled_16px')
@@ -48,7 +48,7 @@ def main():
                              base_numeric_id=3630,
                              gen=5,
                              subtype='B',
-                             sprites_complete=False)
+                             sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
                      chassis='4_axle_1cc_filled_24px')
@@ -58,7 +58,7 @@ def main():
                              base_numeric_id=3640,
                              gen=5,
                              subtype='C',
-                             sprites_complete=False)
+                             sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
                      chassis='4_axle_1cc_filled_32px')
