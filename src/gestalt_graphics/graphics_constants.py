@@ -71,6 +71,8 @@ fruit_veg_livery_recolour_maps = (("DFLT", {136: CC2, 137: CC2+1, 138: CC2+2, 13
                                             CC1: 71, CC1+1: 72, CC1+2: 73, CC1+3: 74,
                                             CC1+4: 75, CC1+5: 77, CC1+6: 78, CC1+7: 79}),)
 
+grain_hopper_car_livery_recolour_maps = (("DFLT", {}),)
+
 livestock_livery_recolour_maps = (("DFLT", body_recolour_CC2),)
 
 refrigerated_livery_recolour_maps = (("DFLT", {136: 18, 137: 19, 138: 20, 139: 21,

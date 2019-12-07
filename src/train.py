@@ -1477,9 +1477,9 @@ class GrainHopperCarConsist(CarConsist):
         # covered hopper cars only have one consist cargo mapping, which they always default to, whatever the consist cargo is
         # the player can simply choose the alternative livery on flip
         # there is no randomisation of livery, but CC is randomised
-        spriterow_group_mappings = {'pax': {'default': 0, 'first': 0, 'last': 0, 'special': 0}}
-        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings,
-                                                                     consist_ruleset=None)
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.grain_hopper_car_livery_recolour_maps,
+                                                                   cargo_specific_livery_uses_dedicated_input_row=True)
 
 
 class HopperCarConsist(CarConsist):
