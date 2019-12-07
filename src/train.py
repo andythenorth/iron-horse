@@ -1556,7 +1556,8 @@ class LivestockCarConsist(CarConsist):
         self.allow_flip = True
         # Graphics configuration
         self.roof_type = 'freight'
-        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.livestock_livery_recolour_maps)
+        self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(id_base='livestock_car',
+                                                                  recolour_maps=graphics_constants.livestock_livery_recolour_maps)
 
 
 class MailCarConsist(CarConsist):
