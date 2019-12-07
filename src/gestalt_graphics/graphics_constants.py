@@ -58,7 +58,28 @@ caboose_livery_recolour_maps = (# DFLT can be used twice here with no problems, 
 
 coil_car_livery_recolour_maps = (("DFLT", body_recolour_CC1),)
 
-covered_hopper_car_livery_recolour_maps = (("DFLT", {}),)
+# quite minimal set for covered hoppers, most look better with default
+covered_hopper_car_livery_recolour_maps = (("DFLT", {136: 4, 137: 5, 138: 6, 139: 7,
+                                                     140: 9, 141: 10, 142: 11, 143: 13,
+                                                     154: CC2, 155: CC2+1, 156: CC2+2, 157: CC2+3,
+                                                     158: CC2+4, 159: CC2+5, 160: CC2+6, 161: CC2+7}),
+                                           ("CBLK", {136: 1, 137: 2, 138: 3, 139: 4,
+                                                     140: 5, 141: 6, 142: 7, 143: 8,
+                                                     154: 1, 155: 2, 156: 3, 157: 4,
+                                                     158: 5, 159: 6, 160: 7, 161: 8}),
+                                           ("KAOL", {136: 7, 137: 8, 138: 9, 139: 10,
+                                                     140: 23, 141: 13, 142: 14, 143: 15,
+                                                     154: CC2, 155: CC2+1, 156: CC2+2, 157: CC2+3,
+                                                     158: CC2+4, 159: CC2+5, 160: CC2+6, 161: CC2+7}),
+                                           ("RUBR", {136: 40, 137: 41, 138: 42, 139: 43,
+                                                     140: 44, 141: 45, 142: 46, 143: 47,
+                                                     154: 40, 155: 41, 156: 42, 157: 43,
+                                                     158: 44, 159: 45, 160: 46, 161: 47}),
+                                           ("SALT", {136: 71, 137: 72, 138: 73, 139: 74,
+                                                     140: 76, 141: 77, 142: 78, 143: 79,
+                                                     154: 71, 155: 72, 156: 73, 157: 74,
+                                                     158: 76, 159: 77, 160: 78, 161: 79}),)
+
 
 curtain_side_livery_recolour_maps = (("DFLT", body_recolour_CC1),)
 
