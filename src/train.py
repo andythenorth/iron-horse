@@ -1231,7 +1231,8 @@ class ChemicalsTankCarConsist(CarConsist):
         # allow flipping, used to flip company colour
         self.allow_flip = True
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=polar_fox.constants.chemicals_tanker_livery_recolour_maps)
+        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=polar_fox.constants.chemicals_tanker_livery_recolour_maps,
+                                                                   cargo_specific_livery_uses_dedicated_input_row=True)
 
 
 
@@ -1350,7 +1351,8 @@ class EdiblesTankCarConsist(CarConsist):
         # CC is swapped randomly (player can't choose), but also swap base livery on flip (player can choose
         self.allow_flip = True
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.edibles_tank_car_livery_recolour_maps)
+        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.edibles_tank_car_livery_recolour_maps,
+                                                                   cargo_specific_livery_uses_dedicated_input_row=True)
 
 
 class ExpressCarConsist(CarConsist):
