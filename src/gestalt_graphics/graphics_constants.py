@@ -67,18 +67,18 @@ covered_hopper_car_livery_recolour_maps = (("DFLT", {136: 4, 137: 5, 138: 6, 139
                                                      140: 5, 141: 6, 142: 7, 143: 8,
                                                      154: 1, 155: 2, 156: 3, 157: 4,
                                                      158: 5, 159: 6, 160: 7, 161: 8}),
-                                           ("KAOL", {136: 7, 137: 8, 138: 9, 139: 10,
-                                                     140: 23, 141: 13, 142: 14, 143: 15,
+                                           ("KAOL", {136: 6, 137: 7, 138: 8, 139: 9,
+                                                     140: 10, 141: 11, 142: 12, 143: 13,
                                                      154: CC2, 155: CC2+1, 156: CC2+2, 157: CC2+3,
                                                      158: CC2+4, 159: CC2+5, 160: CC2+6, 161: CC2+7}),
                                            ("RUBR", {136: 40, 137: 41, 138: 42, 139: 43,
                                                      140: 44, 141: 45, 142: 46, 143: 47,
                                                      154: 40, 155: 41, 156: 42, 157: 43,
                                                      158: 44, 159: 45, 160: 46, 161: 47}),
-                                           ("SALT", {136: 71, 137: 72, 138: 73, 139: 74,
-                                                     140: 76, 141: 77, 142: 78, 143: 79,
-                                                     154: 71, 155: 72, 156: 73, 157: 74,
-                                                     158: 76, 159: 77, 160: 78, 161: 79}),)
+                                           ("SALT", {136: 112, 137: 113, 138: 33, 139: 115,
+                                                     140: 35, 141: 118, 142: 38, 143: 39,
+                                                     154: 112, 155: 113, 156: 33, 157: 115,
+                                                     158: 35, 159: 118, 160: 38, 161: 39}),)
 
 
 curtain_side_livery_recolour_maps = (("DFLT", body_recolour_CC1),)
@@ -92,11 +92,8 @@ fruit_veg_livery_recolour_maps = (("DFLT", {136: CC2, 137: CC2+1, 138: CC2+2, 13
                                             CC1: 71, CC1+1: 72, CC1+2: 73, CC1+3: 74,
                                             CC1+4: 75, CC1+5: 77, CC1+6: 78, CC1+7: 79}),)
 
-# minimalist, just carbon black, more would be overkill
-grain_hopper_car_livery_recolour_maps = (("DFLT", {136: CC1, 137: CC1+1, 138: CC1+2, 139: CC1+3,
-                                                   140: CC1+4, 141: CC1+5, 142: CC1+6, 143: CC1+6}),
-                                         ("CBLK", {136: 1, 137: 2, 138: 3, 139: 4,
-                                                   140: 5, 141: 6, 142: 7, 143: 8}),)
+# minimalist for grain hoppers, just body colour (others were tried but found to be blah blah)
+grain_hopper_car_livery_recolour_maps = (("DFLT", body_recolour_CC1),)
 
 livestock_livery_recolour_maps = (("DFLT", body_recolour_CC2),)
 
