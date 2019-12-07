@@ -358,7 +358,7 @@ class GestaltGraphicsCargoSpecificLivery(GestaltGraphics):
         return 'vehicle_with_cargo_specific_liveries.pynml'
 
     def get_output_row_types(self):
-        return ['livery_spriterow']
+        return ['livery_spriterows']
 
     @property
     def cargo_row_map(self):

@@ -552,7 +552,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                                         x_offset=self.sprites_max_x_extent + 5,
                                         y_offset= -1 * graphics_constants.spriterow_height))
 
-    def add_livery_spriterow(self):
+    def add_livery_spriterows(self):
         # one spriterow, no loading / loaded states, intended for tankers etc
         crop_box_source = (0,
                            self.base_yoffs,
@@ -995,9 +995,9 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                 if spriterow_type == 'always_use_same_spriterow' or spriterow_type == 'empty':
                     input_spriterow_count = 1
                     self.add_generic_spriterow()
-                elif spriterow_type == 'livery_spriterow':
+                elif spriterow_type == 'livery_spriterows':
                     input_spriterow_count = 1
-                    self.add_livery_spriterow()
+                    self.add_livery_spriterows()
                 elif spriterow_type == 'box_car_with_opening_doors_spriterows':
                     input_spriterow_count = 2
                     self.add_box_car_with_opening_doors_spriterows()
