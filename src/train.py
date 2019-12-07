@@ -1200,15 +1200,12 @@ class CoveredHopperCarConsist(CarConsist):
         self.loading_speed_multiplier = 2
         self.buy_cost_adjustment_factor = 1.2
         self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['non_core_wagons']
-        # CC is swapped randomly (player can't choose), but also swap base livery on flip (player can choose
+        # CC is swapped randomly (player can't choose), but also swap base livery on flip (player can choose)
         self.allow_flip = True
         # Graphics configuration
-        # covered hopper cars only have one consist cargo mapping, which they always default to, whatever the consist cargo is
-        # the player can simply choose the alternative livery on flip
-        # there is no randomisation of livery, but CC is randomised
-        spriterow_group_mappings = {'pax': {'default': 0, 'first': 0, 'last': 0, 'special': 0}}
-        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings,
-                                                                     consist_ruleset=None)
+        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.covered_hopper_car_livery_recolour_maps,
+                                                                   cargo_specific_livery_uses_dedicated_input_row=True,
+                                                                   cargo_specific_livery_uses_2CC=True)
 
 
 class ChemicalsTankCarConsist(CarConsist):

@@ -553,7 +553,10 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                                         y_offset= -1 * graphics_constants.spriterow_height))
 
     def add_livery_spriterows(self):
-        # !!!!! one spriterow, no loading / loaded states, intended for tankers etc
+        # no loading / loaded states, intended for tankers etc
+        # provides cargo-specific recolourings, a default recolouring, and a single alternative 1CC or 2CC livery on user flip
+
+        # first add the CC alternative livery, as it's easier to add first than handle adding it after arbitrary cargo livery rows
         crop_box_source = (0,
                            self.base_yoffs,
                            self.sprites_max_x_extent,
@@ -565,9 +568,14 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                          0,
                          self.sprites_max_x_extent,
                          graphics_constants.spriterow_height)
-        # the switch is to 2CC, this preserves the current random company colour when flipping, it's weird if both livery *and* CC swap on flip
-        CC1 = 198
-        CC2 = 80
+        # the default switch is to 2CC, this preserves the current random company colour when flipping, it's weird if both livery *and* CC swap on flip
+        # if the vehicle uses 2CC by default, then the switch needs inverted
+        if self.consist.gestalt_graphics.cargo_specific_livery_uses_2CC:
+            CC1 = 80 # value for CC2
+            CC2 = 198 # value for CC1
+        else:
+            CC1 = 198
+            CC2 = 80
         generic_cc_livery_recolour_map = {CC1: CC2, CC1+1: CC2+1, CC1+2: CC2+2, CC1+3: CC2+3,
                                           CC1+4: CC2+4, CC1+5: CC2+5, CC1+6: CC2+6, CC1+7: CC2+7,
                                           136: CC2, 137: CC2+1, 138: CC2+2, 139: CC2+3,
@@ -579,7 +587,9 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                                         x_offset=self.sprites_max_x_extent + 5,
                                         y_offset= -1 * graphics_constants.spriterow_height))
 
-        # !!!! one spriterow, no loading / loaded states, intended for tankers etc
+        # add arbitray cargo livery rows
+        # note that these can either repurpose the same generic input sprite as the CC livery
+        # or can have a dedicated input sprite, allowing for details to be varied
         if self.consist.gestalt_graphics.cargo_specific_livery_uses_dedicated_input_row:
             cargo_specific_livery_input_row_y_offs = self.base_yoffs + graphics_constants.spriterow_height
         else:
