@@ -553,11 +553,41 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                                         y_offset= -1 * graphics_constants.spriterow_height))
 
     def add_livery_spriterows(self):
-        # one spriterow, no loading / loaded states, intended for tankers etc
+        # !!!!! one spriterow, no loading / loaded states, intended for tankers etc
         crop_box_source = (0,
                            self.base_yoffs,
                            self.sprites_max_x_extent,
                            self.base_yoffs + graphics_constants.spriterow_height)
+        vehicle_livery_spriterow_input_image = self.comp_chassis_and_body(self.vehicle_source_image.copy().crop(crop_box_source))
+
+        vehicle_livery_spriterow_input_as_spritesheet = self.make_spritesheet_from_image(vehicle_livery_spriterow_input_image)
+        crop_box_dest = (0,
+                         0,
+                         self.sprites_max_x_extent,
+                         graphics_constants.spriterow_height)
+        # the switch is to 2CC, this preserves the current random company colour when flipping, it's weird if both livery *and* CC swap on flip
+        CC1 = 198
+        CC2 = 80
+        generic_cc_livery_recolour_map = {CC1: CC2, CC1+1: CC2+1, CC1+2: CC2+2, CC1+3: CC2+3,
+                                          CC1+4: CC2+4, CC1+5: CC2+5, CC1+6: CC2+6, CC1+7: CC2+7,
+                                          136: CC2, 137: CC2+1, 138: CC2+2, 139: CC2+3,
+                                          140: CC2+4, 141: CC2+5, 142: CC2+6, 143: CC2+7}
+
+        self.units.append(AppendToSpritesheet(vehicle_livery_spriterow_input_as_spritesheet, crop_box_dest))
+        self.units.append(SimpleRecolour(generic_cc_livery_recolour_map))
+        self.units.append(AddCargoLabel(label='CC',
+                                        x_offset=self.sprites_max_x_extent + 5,
+                                        y_offset= -1 * graphics_constants.spriterow_height))
+
+        # !!!! one spriterow, no loading / loaded states, intended for tankers etc
+        if self.consist.gestalt_graphics.cargo_specific_livery_uses_dedicated_input_row:
+            cargo_specific_livery_input_row_y_offs = self.base_yoffs + graphics_constants.spriterow_height
+        else:
+            cargo_specific_livery_input_row_y_offs = self.base_yoffs
+        crop_box_source = (0,
+                           cargo_specific_livery_input_row_y_offs,
+                           self.sprites_max_x_extent,
+                           cargo_specific_livery_input_row_y_offs + graphics_constants.spriterow_height)
         vehicle_livery_spriterow_input_image = self.comp_chassis_and_body(self.vehicle_source_image.copy().crop(crop_box_source))
 
         # vehicle_generic_spriterow_input_image.show() # comment in to see the image when debugging
