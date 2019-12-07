@@ -92,7 +92,11 @@ fruit_veg_livery_recolour_maps = (("DFLT", {136: CC2, 137: CC2+1, 138: CC2+2, 13
                                             CC1: 71, CC1+1: 72, CC1+2: 73, CC1+3: 74,
                                             CC1+4: 75, CC1+5: 77, CC1+6: 78, CC1+7: 79}),)
 
-grain_hopper_car_livery_recolour_maps = (("DFLT", {}),)
+# minimalist, just carbon black, more would be overkill
+grain_hopper_car_livery_recolour_maps = (("DFLT", {136: CC1, 137: CC1+1, 138: CC1+2, 139: CC1+3,
+                                                   140: CC1+4, 141: CC1+5, 142: CC1+6, 143: CC1+6}),
+                                         ("CBLK", {136: 1, 137: 2, 138: 3, 139: 4,
+                                                   140: 5, 141: 6, 142: 7, 143: 8}),)
 
 livestock_livery_recolour_maps = (("DFLT", body_recolour_CC2),)
 
