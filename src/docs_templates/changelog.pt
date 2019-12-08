@@ -5,6 +5,19 @@ Changelog
 2.3.0 Release
 -------------
 
+*Features*
+
+- added 9 Silo Wagons
+    - multiple liveries, livery shown depends on vehicle cargo and/or user choice (depot flip the vehicle to toggle cargo livery / solid company colour)
+- added alternative solid company livery (toggle by depot-flipping the vehicle) for the following vehicle types:
+    - Chemicals Tankers
+    - Cryo Tankers
+    - Edibles Tankers
+    - Tankers
+- improved Covered Hopper appearance, including some cargo-specific liveries and tweaks to pixels
+- added opening doors to Livestock Wagons
+- adjusted which default cargo will be set for some vehicles (depends on which cargos are available in game)
+
 
 ---------------------
 2.2.0 - 2.2.1 Release
@@ -31,14 +44,14 @@ The wrong version of 2.2.0 was released to bananas, so 2.2.1 replaces that.
         - can transport a small amount of mail or express freight cargos
         - automatically flips if last vehicle in train
 - added parameter to disable Joker vehicles (enabled by default)
-- added narrow gauge mineral car for gen 2 (around 1905)
+- added narrow gauge mineral wagon for gen 2 (around 1905)
 - improved appearance of steam engines, diesel shunters, some electric engines by reducing contrast of pixels in the wheel area
 
 
 *Fixes*
 
 - Zeus railcar had incorrect electric power value when built (buy menu showed correct value)
-- Scooby and Dover mailcars had incorrect sprites for 2 angles
+- Scooby and Dover railcars had incorrect sprites for 2 angles
 
 
 *Docs*
