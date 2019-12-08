@@ -1204,8 +1204,7 @@ class CoveredHopperCarConsist(CarConsist):
         self.allow_flip = True
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.covered_hopper_car_livery_recolour_maps,
-                                                                   cargo_specific_livery_uses_dedicated_input_row=True,
-                                                                   cargo_specific_livery_uses_2CC=True)
+                                                                   cargo_specific_livery_uses_dedicated_input_row=True)
 
 
 class ChemicalsTankCarConsist(CarConsist):
