@@ -1795,6 +1795,28 @@ class SiloCarConsist(CarConsist):
         self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.silo_livery_recolour_maps)
 
 
+class SlagLadleCarConsist(CarConsist):
+    """
+    Dedicated car for iron / steel slag.  No other refits.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = 'slag_ladle_car'
+        super().__init__(**kwargs)
+        self.class_refit_groups = [] # none needed
+        self.label_refits_allowed = ['SLAG']
+        self.label_refits_disallowed = [] # none needed
+        self.default_cargos = ['SLAG']
+        self.loading_speed_multiplier = 2
+        self.buy_cost_adjustment_factor = 1.2
+        self.weight_factor = 2 # double the default weight
+        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['freight_core']
+        # CC is swapped randomly (player can't choose), but also swap base livery on flip (player can choose
+        self.allow_flip = True
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsVisibleCargo(bulk=True)
+
+
 class SlidingWallCarConsist(CarConsist):
     """
     Sliding wall van - (cargowagon, habfiss, thrall, pullman all-door car etc) - same refits as box car.
@@ -2678,6 +2700,16 @@ class IntermodalCar(FreightCar):
         super().__init__(**kwargs)
         # intermodal cars may be asymmetric, there is magic in the graphics processing to make cargo sprites work with this
         self._symmetry_type = 'asymmetric'
+
+
+class SlagLadleCar(FreightCar):
+    """
+    Slag ladle car. This subclass only exists to set the capacity.
+    """
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # just double whatever is set by the init, what could go wrong? :)
+        self.capacity = 2 * self.capacity
 
 
 class WellCar(FreightCar):

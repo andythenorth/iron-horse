@@ -36,6 +36,7 @@ buy_menu_sort_order_wagons = ['alignment_car',
                               #'well_car',
                               'vehicle_transporter_car',
                               #'torpedo_car',
+                              'slag_ladle_car',
                               'caboose_car']
 
 # capacity multipliers for user-configurable capacity parameter
