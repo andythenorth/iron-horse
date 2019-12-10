@@ -19,7 +19,7 @@ def main():
                                   base_numeric_id=4040,
                                   gen=4,
                                   subtype='U',
-                                  speed=45, # note rare non-standard speed, don't spill molten slag eh?
+                                  speed=35, # note rare non-standard speed, don't spill molten slag eh?
                                   suppress_animated_pixel_warnings=True)
 
     consist.add_unit(type=SlagLadleCar,
