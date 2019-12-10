@@ -20,7 +20,7 @@ PROJECT_NAME = iron-horse
 GRAPHICS_DIR = generated/graphics
 LANG_DIR = generated/lang
 NML_FILE = generated/iron-horse.nml
-NML_FLAGS = -l $(LANG_DIR)  --verbosity=4
+NML_FLAGS = -l $(LANG_DIR) --verbosity=4
 
 -include Makefile.local
 
