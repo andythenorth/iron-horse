@@ -948,7 +948,7 @@ class SnowploughEngineConsist(EngineConsist):
         # ....run costs reduced from base to make it close to mail cars
         self.fixed_run_cost_points = 68
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsCustom(None, 'vehicle_snowplough.pynml', None)
+        self.gestalt_graphics = GestaltGraphicsCustom('vehicle_snowplough.pynml')
 
 
 class CarConsist(Consist):
@@ -1814,8 +1814,12 @@ class SlagLadleCarConsist(CarConsist):
         # CC is swapped randomly (player can't choose), but also swap base livery on flip (player can choose
         self.allow_flip = True
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsVisibleCargo(bulk=True)
-
+        # custom gestalt due to non-standard load sprites, which are hand coloured, not generated
+        self.gestalt_graphics = GestaltGraphicsCustom('vehicle_with_visible_cargo.pynml',
+                                                      cargo_row_map={'SLAG': [0]},
+                                                      generic_rows=[0],
+                                                      unique_spritesets=[['empty', 'flipped', 10], ['loading_0', 'flipped', 40], ['loaded_0', 'flipped', 70],
+                                                                         ['empty', 'unflipped', 10], ['loading_0', 'unflipped', 40], ['loaded_0', 'unflipped', 70]])
 
 class SlidingWallCarConsist(CarConsist):
     """

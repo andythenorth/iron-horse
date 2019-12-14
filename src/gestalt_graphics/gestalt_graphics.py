@@ -506,13 +506,14 @@ class GestaltGraphicsCustom(GestaltGraphics):
         - this could get support for body recolouring if needed
         - this should not get support for compositing custom rows, TMWFTLB, just draw them in the vehicle spritesheet
     """
-    def __init__(self, _cargo_row_map, _nml_template, generic_rows):
+    def __init__(self, _nml_template, cargo_row_map=None, generic_rows=None, unique_spritesets=None):
         super().__init__()
         self.pipelines = pipelines.get_pipelines(['pass_through_pipeline'])
         # options
         self._nml_template = _nml_template
-        self._cargo_row_map = _cargo_row_map
+        self._cargo_row_map = cargo_row_map
         self._generic_rows = generic_rows
+        self._unique_spritesets = unique_spritesets
 
     @property
     def generic_rows(self):
@@ -529,3 +530,7 @@ class GestaltGraphicsCustom(GestaltGraphics):
     @property
     def cargo_row_map(self):
         return self._cargo_row_map
+
+    @property
+    def unique_spritesets(self):
+        return self._unique_spritesets
