@@ -2009,13 +2009,6 @@ class Train(object):
         # z offset is rarely used and is handled separately, mostly just for low-height engines
         self._effect_z_offset = kwargs.get('effect_z_offset', None)
         self.default_effect_z_offset = 12 # optimised for Pony diesel and electric trains
-        # optional - some consists have sequences like A1-B-A2, where A1 and A2 look the same but have different IDs for implementation reasons
-        # avoid duplicating sprites on the spritesheet by forcing A2 to use A1's spriterow_num, fiddly eh?
-        # ugly, but eh.  Zero-indexed, based on position in units[]
-        # watch out for repeated vehicles in the consist when calculating the value for this)
-        # !! I don't really like this solution, might be better to have the graphics processor duplicate this?, with a simple map of [source:duplicate_to]
-        self.unit_num_providing_spriterow_num = kwargs.get(
-            'unit_num_providing_spriterow_num', None)
         # optional - only set if the graphics processor generates the vehicle chassis
         self.chassis = kwargs.get('chassis', None)
         # optional - occasionally we need to suppress composited roof sprites and just draw our own
