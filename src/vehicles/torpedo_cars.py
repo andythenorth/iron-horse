@@ -11,16 +11,13 @@ def main():
                               suppress_animated_pixel_warnings=True)
 
     consist.add_unit(type=TorpedoCar,
-                     vehicle_length=4,
-                     spriterow_num=0)
+                     vehicle_length=4)
 
     consist.add_unit(type=TorpedoCar,
-                     vehicle_length=4,
-                     spriterow_num=0)
+                     vehicle_length=4)
 
     consist.add_unit(type=TorpedoCar,
-                     vehicle_length=4,
-                     spriterow_num=0)
+                     vehicle_length=4)
 
 
     consist = TorpedoCarConsist(roster_id='pony',
@@ -30,16 +27,13 @@ def main():
                               suppress_animated_pixel_warnings=True)
 
     consist.add_unit(type=TorpedoCar,
-                     vehicle_length=4,
-                     spriterow_num=0)
+                     vehicle_length=4)
 
     consist.add_unit(type=TorpedoCar,
-                     vehicle_length=4,
-                     spriterow_num=0)
+                     vehicle_length=4)
 
     consist.add_unit(type=TorpedoCar,
-                     vehicle_length=4,
-                     spriterow_num=0)
+                     vehicle_length=4)
 
 
     consist = TorpedoCarConsist(roster_id='pony',
@@ -49,16 +43,13 @@ def main():
                               suppress_animated_pixel_warnings=True)
 
     consist.add_unit(type=TorpedoCar,
-                     vehicle_length=4,
-                     spriterow_num=0)
+                     vehicle_length=4)
 
     consist.add_unit(type=TorpedoCar,
-                     vehicle_length=4,
-                     spriterow_num=0)
+                     vehicle_length=4)
 
     consist.add_unit(type=TorpedoCar,
-                     vehicle_length=4,
-                     spriterow_num=0)
+                     vehicle_length=4)
 
 
     consist = TorpedoCarConsist(roster_id='pony',
@@ -68,16 +59,13 @@ def main():
                               suppress_animated_pixel_warnings=True)
 
     consist.add_unit(type=TorpedoCar,
-                     vehicle_length=4,
-                     spriterow_num=0)
+                     vehicle_length=4)
 
     consist.add_unit(type=TorpedoCar,
-                     vehicle_length=4,
-                     spriterow_num=0)
+                     vehicle_length=4)
 
     consist.add_unit(type=TorpedoCar,
-                     vehicle_length=4,
-                     spriterow_num=0)
+                     vehicle_length=4)
 
 
     consist = TorpedoCarConsist(roster_id='pony',
@@ -87,13 +75,10 @@ def main():
                               suppress_animated_pixel_warnings=True)
 
     consist.add_unit(type=TorpedoCar,
-                     vehicle_length=4,
-                     spriterow_num=0)
+                     vehicle_length=4)
 
     consist.add_unit(type=TorpedoCar,
-                     vehicle_length=4,
-                     spriterow_num=0)
+                     vehicle_length=4)
 
     consist.add_unit(type=TorpedoCar,
-                     vehicle_length=4,
-                     spriterow_num=0)
+                     vehicle_length=4)
