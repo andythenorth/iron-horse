@@ -1928,6 +1928,7 @@ class TorpedoCarConsist(CarConsist):
         # articulated so can't flip
         self.allow_flip = False
         # Graphics configuration
+        self.random_company_colour_swap = False # can't flip so no random CC
         # custom gestalt due to non-standard load sprites, which are hand coloured, not generated
         self.gestalt_graphics = GestaltGraphicsCustom('vehicle_torpedo_car.pynml')
 
