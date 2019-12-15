@@ -1912,22 +1912,31 @@ class TarpaulinCarConsist(CarConsist):
 
 class TorpedoCarConsist(CarConsist):
     """
-    Specialist heavy haul metal transport e.g. torpedo car, ladle, etc
-    High capacity, not very fast, refits to small subset of finished metal cargos (and slag, which bends the rules a bit).
+    Specialist wagon for hauling molten pig iron.
+    May or may not extend to other metal cargos (probably not).
     """
 
     def __init__(self, **kwargs):
         self.base_id = 'torpedo_car'
         super().__init__(**kwargs)
         self.class_refit_groups = [] # no classes, use explicit labels
-        self.label_refits_allowed = ['STEL', 'COPR', 'IRON', 'SLAG', 'METL'] # not convinced about these at all eh
+        self.label_refits_allowed = ['IRON']
         self.label_refits_disallowed = []
-        self.default_cargos = polar_fox.constants.default_cargos['metal'] # should this be hot_metal ?
+        self.default_cargos = ['IRON']
         self.loading_speed_multiplier = 2
         self.buy_cost_adjustment_factor = 1.2
         self.floating_run_cost_multiplier = 1.33
-        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['non_core_wagons']
-        # !! probably want some capacity multiplier here, metal cars have higher capacity per unit length (at high cost!)
+        self.weight_factor = 2 # double the default weight
+        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['freight_core']
+        # articulated so can't flip
+        self.allow_flip = False
+        # Graphics configuration
+        # custom gestalt due to non-standard load sprites, which are hand coloured, not generated
+        self.gestalt_graphics = GestaltGraphicsCustom('vehicle_with_visible_cargo.pynml',
+                                                      cargo_row_map={'SLAG': [0]},
+                                                      generic_rows=[0],
+                                                      unique_spritesets=[['empty', 'flipped', 10], ['loading_0', 'flipped', 40], ['loaded_0', 'flipped', 70],
+                                                                         ['empty', 'unflipped', 10], ['loading_0', 'unflipped', 40], ['loaded_0', 'unflipped', 70]])
 
 
 class VehicleTransporterCarConsist(CarConsist):
@@ -2714,6 +2723,16 @@ class SlagLadleCar(FreightCar):
         super().__init__(**kwargs)
         # just double whatever is set by the init, what could go wrong? :)
         self.capacity = 2 * self.capacity
+
+
+class TorpedoCar(FreightCar):
+    """
+    Torpedo car. This subclass only exists to set the capacity.
+    """
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # just multiply whatever is set by the init, what could go wrong? :)
+        self.capacity = 1.5 * self.capacity
 
 
 class WellCar(FreightCar):

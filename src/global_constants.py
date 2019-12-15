@@ -35,7 +35,7 @@ buy_menu_sort_order_wagons = ['alignment_car',
                               'fruit_veg_car',
                               #'well_car',
                               'vehicle_transporter_car',
-                              #'torpedo_car',
+                              'torpedo_car',
                               'slag_ladle_car',
                               'caboose_car']
 

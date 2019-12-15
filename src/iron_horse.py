@@ -46,7 +46,7 @@ from vehicles import intermodal_cars
 from vehicles import livestock_cars
 from vehicles import luxury_passenger_cars
 from vehicles import mail_cars
-# from vehicles import torpedo_cars
+from vehicles import torpedo_cars
 from vehicles import open_cars
 from vehicles import passenger_cars
 from vehicles import plate_cars
@@ -144,10 +144,7 @@ def main():
     stake_cars.main()
     tank_cars.main()
     tarpaulin_cars.main()
-    """
-    # commented out for 2.x
     torpedo_cars.main()
-    """
     """
     # commented out for 2.x
     from vehicles import vehicle_transporter_cars
