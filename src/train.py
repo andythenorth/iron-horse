@@ -199,12 +199,9 @@ class Consist(object):
         result = []
         for unit in units:
             unit_rows = []
-            if unit.always_use_same_spriterow:
-                unit_rows.append('always_use_same_spriterow')
-            else:
-                # assumes gestalt_graphics is used to handle any other rows, no other cases at time of writing, could be changed eh?
-                unit_rows.extend(
-                    self.gestalt_graphics.get_output_row_types())
+            # assumes gestalt_graphics is used to handle all row types, no other cases at time of writing, could be changed eh?
+            unit_rows.extend(
+                self.gestalt_graphics.get_output_row_types())
             result.append(unit_rows)
         return result
 
@@ -2019,11 +2016,6 @@ class Train(object):
         # !! I don't really like this solution, might be better to have the graphics processor duplicate this?, with a simple map of [source:duplicate_to]
         self.unit_num_providing_spriterow_num = kwargs.get(
             'unit_num_providing_spriterow_num', None)
-        # optional - force always using same spriterow
-        # for cases where the template handles cargo, but some units in the consist might not show cargo, e.g. tractor units etc
-        # can also be used to suppress compile failures during testing when spritesheet is unfinished (missing rows etc)
-        self.always_use_same_spriterow = kwargs.get(
-            'always_use_same_spriterow', False)
         # optional - only set if the graphics processor generates the vehicle chassis
         self.chassis = kwargs.get('chassis', None)
         # optional - occasionally we need to suppress composited roof sprites and just draw our own
@@ -2154,9 +2146,8 @@ class Train(object):
         if utils.get_makefile_args(sys).get('suppress_cargo_sprites', False):
             return 'vehicle_default.pynml'
 
-        if not self.always_use_same_spriterow:
-            if self.consist.gestalt_graphics.nml_template:
-                return self.consist.gestalt_graphics.nml_template
+        if self.consist.gestalt_graphics.nml_template:
+            return self.consist.gestalt_graphics.nml_template
         # default case
         return 'vehicle_default.pynml'
 

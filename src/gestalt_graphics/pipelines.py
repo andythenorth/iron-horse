@@ -1032,7 +1032,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             self.cur_vehicle_empty_row_yoffs = 10 + cumulative_input_spriterow_count * graphics_constants.spriterow_height
             for spriterow_type in vehicle_rows:
                 self.base_yoffs = 10 + (graphics_constants.spriterow_height * cumulative_input_spriterow_count)
-                if spriterow_type == 'always_use_same_spriterow' or spriterow_type == 'empty':
+                if spriterow_type == 'empty':
                     input_spriterow_count = 1
                     self.add_generic_spriterow()
                 elif spriterow_type == 'livery_spriterows':
