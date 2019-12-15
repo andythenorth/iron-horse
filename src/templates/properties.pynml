@@ -43,10 +43,9 @@
 <!--! some vehicles vary their speed depending on lead engine,
       this should be limited use, it's a *very* silly easter egg -->
 <tal:variable_speed condition="consist.easter_egg_haulage_speed_bonus">
-    switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_speed,
-                                        [STORE_TEMP(${int(1.60934 * consist.get_speed_by_class('express'))}, 1),
-                                         STORE_TEMP(${int(1.60934 * consist.speed)}, 0)]) {
-            return haulage_bonus_switch_speed_0;
+    switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_speed, haulage_bonus_switch_speed_0()) {
+        1: return ${int(1.60934 * consist.get_speed_by_class('express'))};
+        0: return ${int(1.60934 * consist.speed)};
     }
 </tal:variable_speed>
 

@@ -3,12 +3,12 @@
 <tal:haulage_engine_ids repeat="count_and_id reversed(haulage_bonus_engine_id_tree)">
     switch (FEAT_TRAINS, PARENT, haulage_bonus_switch_speed_${count_and_id[0]}, [count_veh_id(${count_and_id[1]}) > 0]) {
             <!--! this doesn't check grfid currently - add later if needed -->
-            1: return LOAD_TEMP(1);
+            1: return 1;
         <tal:next_switch condition="not:repeat.count_and_id.start">
             return haulage_bonus_switch_speed_${count_and_id[0] + 1};
         </tal:next_switch>
         <tal:default condition="repeat.count_and_id.start">
-            return LOAD_TEMP(0);
+            return 0;
         </tal:default>
     }
 </tal:haulage_engine_ids>
