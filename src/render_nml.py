@@ -34,7 +34,8 @@ def render_header_item_nml(header_item, consists):
                                                     global_constants=global_constants,
                                                     utils=utils,
                                                     active_rosters=iron_horse.get_active_rosters(),
-                                                    intermodal_containers = iron_horse.intermodal_containers,
+                                                    intermodal_containers=iron_horse.intermodal_containers,
+                                                    haulage_bonus_engine_id_tree=iron_horse.get_haulage_bonus_engine_id_tree(),
                                                     makefile_args=makefile_args))
 
 def render_consist_nml(consist):
@@ -61,7 +62,7 @@ def main():
 
     consists = iron_horse.get_consists_in_buy_menu_order()
 
-    header_items = ['header', 'cargo_table', 'railtype_table', 'spriteset_templates', 'tail_lights', 'intermodal_containers']
+    header_items = ['header', 'cargo_table', 'railtype_table', 'spriteset_templates', 'tail_lights', 'haulage_bonus', 'intermodal_containers']
     for header_item in header_items:
         grf_nml.write(render_header_item_nml(header_item, consists))
 

@@ -104,6 +104,15 @@ def vacant_numeric_ids_formatted():
             id_gaps.append(str(id))
     return "Vacant numeric ID slots: " + ', '.join(id_gaps) + (" and from " if len(id_gaps) > 0 else '') + str(max_id + 10) + " onwards"
 
+def get_haulage_bonus_engine_id_tree():
+    # supports a BAD FEATURE easter egg, where some railcar speeds are increased when hauled by express engine, and can be used as fast MUs
+    express_engine_ids = []
+    for roster in get_active_rosters():
+        for consist in roster.engine_consists:
+            if consist.role in global_constants.role_group_mapping['express'] or consist.role in global_constants.role_group_mapping['driving_cab']:
+                express_engine_ids.append(consist.id)
+    return [(count, id) for count, id in enumerate(express_engine_ids)]
+
 def main():
     pony.main(disabled=False)
     intermodal_containers.main()

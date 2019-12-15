@@ -291,14 +291,6 @@ class Consist(object):
         return result
 
     @property
-    def haulage_bonus_engine_id_tree(self):
-        express_engine_ids = []
-        for consist in self.roster.engine_consists:
-            if consist.role in global_constants.role_group_mapping['express'] or global_constants.role_group_mapping['driving_cab']:
-                express_engine_ids.append(consist.id)
-        return [(count, id) for count, id in enumerate(express_engine_ids)]
-
-    @property
     def engine_consists_for_caboose_cars(self):
         # caboose cars adjust livery depending on engine
         # this could be renamed for use with non-caboose types if ever needed
