@@ -16,18 +16,15 @@
 
 <tal:cargo_variants define="num_cargo_sprite_variants consist.gestalt_graphics.num_cargo_sprite_variants"
                     repeat="cargo_variant_num python:range(num_cargo_sprite_variants)">
-    <tal:flipped repeat="flipped ['unflipped', 'flipped']">
-        <!--! spritegroups aren't needed here, the loading state is calculated explicitly -->
-        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_percent_loaded_${cargo_variant_num}_${flipped}, cargo_count*100/cargo_capacity) {
-                0: return ${vehicle.id}_ss_empty_${flipped};
-                1..99: return ${vehicle.id}_ss_loading_${cargo_variant_num}_${flipped};
-            return ${vehicle.id}_ss_loaded_${cargo_variant_num}_${flipped};
-        }
-    </tal:flipped>
     // handle user flipped state
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_flip_${cargo_variant_num}, vehicle_is_flipped) {
-        1: return ${vehicle.id}_switch_graphics_percent_loaded_${cargo_variant_num}_flipped;
-        return ${vehicle.id}_switch_graphics_percent_loaded_${cargo_variant_num}_unflipped;
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${cargo_variant_num}, switch_graphics_visible_cargo_flip()) {
+        0: return ${vehicle.id}_ss_empty_unflipped;
+        1: return ${vehicle.id}_ss_loading_${cargo_variant_num}_unflipped;
+        2: return ${vehicle.id}_ss_loaded_${cargo_variant_num}_unflipped;
+        3: return ${vehicle.id}_ss_empty_flipped;
+        4: return ${vehicle.id}_ss_loading_${cargo_variant_num}_flipped;
+        5: return ${vehicle.id}_ss_loaded_${cargo_variant_num}_flipped;
+        return ${vehicle.id}_ss_empty_flipped;
     }
 </tal:cargo_variants>
 
@@ -35,7 +32,7 @@
     <tal:exclude_default_cargo condition="mapping[0] != 'DFLT'">
         random_switch (FEAT_TRAINS, ${vehicle.get_nml_expression_for_cargo_variant_random_switch(mapping[0])}) {
             <tal:random_graphics_variations repeat="spriterow_num mapping[1]">
-                1: return ${vehicle.id}_switch_graphics_flip_${spriterow_num};
+                1: return ${vehicle.id}_switch_graphics_${spriterow_num};
             </tal:random_graphics_variations>
         }
     </tal:exclude_default_cargo>
@@ -43,7 +40,7 @@
 
 random_switch (FEAT_TRAINS, ${vehicle.get_nml_expression_for_cargo_variant_random_switch('generic_cargos')}) {
     <tal:random_graphics_variations repeat="spriterow_num consist.gestalt_graphics.generic_rows">
-        1: return ${vehicle.id}_switch_graphics_flip_${spriterow_num};
+        1: return ${vehicle.id}_switch_graphics_${spriterow_num};
     </tal:random_graphics_variations>
 }
 
