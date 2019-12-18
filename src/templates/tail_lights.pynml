@@ -63,3 +63,14 @@ spriteset(ss_tail_light_empty_unflipped, "${graphics_path}tail_lights/empty.png"
 spriteset(ss_tail_light_empty_flipped, "${graphics_path}tail_lights/empty.png") {
   spriteset_tail_light_32px_flipped(10)
 }
+
+<!--! procecdure for figuring out whether to show tail light unflipped (0), flipped (1), or empty (2) -->
+
+switch (FEAT_TRAINS, SELF, switch_graphics_tail_light_check_flip, vehicle_is_flipped) {
+    1: return 1;
+    return 0;
+}
+switch (FEAT_TRAINS, SELF, switch_graphics_tail_light, position_in_consist_from_end) {
+    0: return switch_graphics_tail_light_check_flip;
+    return 2;
+}
