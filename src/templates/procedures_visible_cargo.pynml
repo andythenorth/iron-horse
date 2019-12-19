@@ -1,3 +1,5 @@
+<!--! common procedures for vehicle_with_visible_cargo and similar templates -->
+
 <tal:flipped repeat="flipped ['unflipped', 'flipped']">
     <!--! spritegroups aren't needed here, the loading state is calculated explicitly -->
     switch (FEAT_TRAINS, SELF, switch_graphics_visible_cargo_percent_loaded_${flipped}, (cargo_count*100)/cargo_capacity) {
