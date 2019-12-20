@@ -55,8 +55,6 @@
     </tal:block>
 </tal:engine_consists>
 
-
-
 spriteset(ss_tail_light_empty_unflipped, "${graphics_path}tail_lights/empty.png") {
   spriteset_tail_light_32px_unflipped(10)
 }
