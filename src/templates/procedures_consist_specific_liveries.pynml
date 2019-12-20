@@ -1,11 +1,12 @@
+<!--! stupid integer stuffing pattern, where livery is 1xx or 2xx, and flip is x0x or x1x -->
 // handle user flipped state
 switch (FEAT_TRAINS, SELF, switch_graphics_consist_specific_livery_1, vehicle_is_flipped) {
-    1: 1;
-    return 0;
+    1: 210; <!--! livery 1 flipped => livery 2 -->
+    return 100;
 }
 switch (FEAT_TRAINS, SELF, switch_graphics_consist_specific_livery_2, vehicle_is_flipped) {
-    1: 3;
-    return 2;
+    1: 110; <!--! livery 2 flipped => livery 1 -->
+    return 200;
 }
 // check engine IDs
 switch (FEAT_TRAINS, PARENT, switch_graphics_consist_specific_livery_check_engine_id, vehicle_type_id) {
@@ -14,4 +15,11 @@ switch (FEAT_TRAINS, PARENT, switch_graphics_consist_specific_livery_check_engin
         ${engine_id}: return switch_graphics_consist_specific_livery_2;
     </tal:livery_2_engine_ids>
     return switch_graphics_consist_specific_livery_1;
+}
+
+
+// handle current load percent
+switch (FEAT_TRAINS, SELF, switch_graphics_switch_graphics_consist_specific_livery_check_fully_loaded, (cargo_count*100)/cargo_capacity) {
+        0..99: return 0; <!--! less than 100 = not fully loaded -->
+    return 1;
 }

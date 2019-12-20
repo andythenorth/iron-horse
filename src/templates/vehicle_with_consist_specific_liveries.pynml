@@ -53,12 +53,7 @@
                     ${vehicle.id}_ss_doors_closed_${livery}_${variant_num}_${flipped},
                 ];
             }
-            switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_percent_loaded_${livery}_${variant_num}_${flipped}, cargo_count*100/cargo_capacity) {
-                    0..99: return ${vehicle.id}_sg_part_load_or_empty_${livery}_${variant_num}_${flipped};
-                return ${vehicle.id}_sg_full_load_${livery}_${variant_num}_${flipped};
-            }
         </tal:livery>
-
         <!--! in case there wasn't enough complexity here, let's do pantographs too, in a separate layer -->
         <tal:pantographs condition="consist.pantograph_type is not None">
             <!--! !! the y base offsets here won't work for multi-unit vehicles, they need a different calculation -->
@@ -75,11 +70,16 @@
         </tal:pantographs>
 
     </tal:user_flipped>
-    switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_graphics_engine_id_${variant_num}, switch_graphics_consist_specific_livery_check_engine_id()) {
-        0: return ${vehicle.id}_switch_graphics_percent_loaded_livery_1_${variant_num}_unflipped;
-        1: return ${vehicle.id}_switch_graphics_percent_loaded_livery_2_${variant_num}_flipped;
-        2: return ${vehicle.id}_switch_graphics_percent_loaded_livery_2_${variant_num}_unflipped;
-        3: return ${vehicle.id}_switch_graphics_percent_loaded_livery_1_${variant_num}_flipped;
+    switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_graphics_engine_id_${variant_num},
+            [switch_graphics_consist_specific_livery_check_engine_id() + switch_graphics_switch_graphics_consist_specific_livery_check_fully_loaded()]) {
+        100: return ${vehicle.id}_sg_part_load_or_empty_livery_1_${variant_num}_unflipped;
+        101: return ${vehicle.id}_sg_full_load_livery_1_${variant_num}_unflipped;
+        110: return ${vehicle.id}_sg_part_load_or_empty_livery_1_${variant_num}_flipped;
+        111: return ${vehicle.id}_sg_full_load_livery_1_${variant_num}_flipped;
+        200: return ${vehicle.id}_sg_part_load_or_empty_livery_2_${variant_num}_unflipped;
+        201: return ${vehicle.id}_sg_full_load_livery_2_${variant_num}_unflipped;
+        210: return ${vehicle.id}_sg_part_load_or_empty_livery_2_${variant_num}_flipped;
+        211: return ${vehicle.id}_sg_full_load_livery_2_${variant_num}_flipped;
     }
 
     <tal:conditional_pantograph condition="consist.pantograph_type is not None">
