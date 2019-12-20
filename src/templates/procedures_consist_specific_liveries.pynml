@@ -1,0 +1,7 @@
+switch (FEAT_TRAINS, PARENT, switch_graphics_use_livery_2, vehicle_type_id) {
+    <!--! this doesn't check grfid currently - add later if needed -->
+    <tal:livery_2_engine_ids repeat="engine_id livery_2_engine_ids">
+        ${engine_id}: 1;
+    </tal:livery_2_engine_ids>
+    return 0;
+}

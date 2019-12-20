@@ -85,11 +85,8 @@
         1: return ${vehicle.id}_switch_graphics_percent_loaded_livery_1_${variant_num}_flipped;
         return ${vehicle.id}_switch_graphics_percent_loaded_livery_2_${variant_num}_unflipped;
     }
-    switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_graphics_engine_id_${variant_num}, vehicle_type_id) {
-        <!--! this doesn't check grfid currently - add later if needed -->
-        <tal:livery_2_engine_ids repeat="engine_id consist.livery_2_engine_ids">
-            ${engine_id}: return ${vehicle.id}_switch_graphics_livery_2_${variant_num};
-        </tal:livery_2_engine_ids>
+    switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_graphics_engine_id_${variant_num}, switch_graphics_use_livery_2()) {
+        1: return ${vehicle.id}_switch_graphics_livery_2_${variant_num};
         return ${vehicle.id}_switch_graphics_livery_1_${variant_num};
     }
 

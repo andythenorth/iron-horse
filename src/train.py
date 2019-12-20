@@ -279,18 +279,6 @@ class Consist(object):
             return len(self.roster.intro_dates[self.base_track_type])
 
     @property
-    def livery_2_engine_ids(self):
-        # for vehicles with consist-specific liveries
-        # will switch vehicle to livery 2 for specific roles of lead engine
-        result = []
-        for consist in self.roster.engine_consists:
-            # second livery choice is deliberate, means 'as seen in buy menu' livery is built for common case of express_1, heavy_express_1
-            # 'heavy_express_4' doesn't use livery_2 by design (tied to Pony engine livery assumptions)
-            if consist.role in ['branch_express_1', 'branch_express_2', 'express_2', 'heavy_express_2', 'pax_railcar_2', 'mail_railcar_2']:
-                result.append(consist.id)
-        return result
-
-    @property
     def engine_consists_for_caboose_cars(self):
         # caboose cars adjust livery depending on engine
         # this could be renamed for use with non-caboose types if ever needed
