@@ -1,0 +1,17 @@
+<!--! stupid integer stuffing pattern, where livery is 1xx or 2xx, and flip is x0x or x1x -->
+// handle user flipped state
+switch (FEAT_TRAINS, SELF, switch_graphics_box_car_with_opening_doors_check_flip, vehicle_is_flipped) {
+    1: 10;
+    return 0;
+}
+
+// should open doors be shown?
+switch (FEAT_TRAINS, SELF, switch_graphics_box_car_with_opening_doors_check_percent_loaded, (cargo_count*100)/cargo_capacity) {
+        0..99: return 1; <!--! less than 100% load, open doors -->
+    return 0;
+}
+<!--! checks 80+ var 0A bit 3, (loading / unloading) which is equivalent to the check the built-in spritegroups do -->
+switch (FEAT_TRAINS, PARENT, switch_graphics_box_car_with_opening_doors_doors_open, var[0x8A, 0, 0xF]) {
+        3: return switch_graphics_box_car_with_opening_doors_check_percent_loaded;
+    return 0; <!--! not in a load / unload state, don't open doors -->
+}

@@ -13,36 +13,15 @@
     spriteset(${vehicle.id}_ss_doors_open_${flipped}, "${graphics_path}${consist.id}.png") {
         ${vehicle.get_spriteset_template_name('unreversed', flipped, 10 + 30)}
     }
-
-    <!--! be aware that 'loaded' in nml is really 'moving', i.e. not in a station loading/unloading -->
-    spritegroup ${vehicle.id}_sg_part_load_or_empty_${flipped} {
-        loaded:  [
-            ${vehicle.id}_ss_doors_closed_${flipped},
-        ];
-        loading: [
-            ${vehicle.id}_ss_doors_open_${flipped},
-        ];
-    }
-    spritegroup ${vehicle.id}_sg_full_load_${flipped} {
-        loaded:  [
-            ${vehicle.id}_ss_doors_closed_${flipped},
-        ];
-        loading: [
-            ${vehicle.id}_ss_doors_closed_${flipped},
-        ];
-    }
-    <!--! spritegroups aren't needed here, the loading state is calculated explicitly -->
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_percent_loaded_${flipped}, cargo_count*100/cargo_capacity) {
-            0..99: return ${vehicle.id}_sg_part_load_or_empty_${flipped};
-        return ${vehicle.id}_sg_full_load_${flipped};
-    }
-
 </tal:user_flipped>
 
-// handle user flipped state
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, vehicle_is_flipped) {
-    1: return ${vehicle.id}_switch_graphics_percent_loaded_flipped;
-    return ${vehicle.id}_switch_graphics_percent_loaded_unflipped;
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle,
+        [switch_graphics_box_car_with_opening_doors_check_flip() + switch_graphics_box_car_with_opening_doors_doors_open()]) {
+    <!--! stupid integer stuffing scheme to detect flip / doors states, see the procedures for the schema -->
+    0: return ${vehicle.id}_ss_doors_closed_unflipped;
+    1: return ${vehicle.id}_ss_doors_open_unflipped;
+    10: return ${vehicle.id}_ss_doors_closed_flipped;
+    11: return ${vehicle.id}_ss_doors_open_flipped;
 }
 
 <tal:include metal:use-macro="load: graphics_switches.pynml" />
