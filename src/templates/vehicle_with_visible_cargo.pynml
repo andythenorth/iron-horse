@@ -24,7 +24,6 @@
         3: return ${vehicle.id}_ss_empty_flipped;
         4: return ${vehicle.id}_ss_loading_${cargo_variant_num}_flipped;
         5: return ${vehicle.id}_ss_loaded_${cargo_variant_num}_flipped;
-        return ${vehicle.id}_ss_empty_flipped;
     }
 </tal:cargo_variants>
 
