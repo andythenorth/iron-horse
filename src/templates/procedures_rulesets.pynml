@@ -1,24 +1,24 @@
 <tal:position_ruleset define="first 0; default 1; last 2;">
     // intermodal platform 2 unit position switches - copied from railcars
     <!--! if 1 unit in sequence -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_platform_ruleset_2_unit_sets_modulo_num_units_in_consist_1, position_in_vehid_chain % 2) {
+    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_2_unit_sets_modulo_num_units_in_consist_1, position_in_vehid_chain % 2) {
         0: return ${default};
     }
 
     <!--! if 2 units in sequence -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_platform_ruleset_2_unit_sets_modulo_num_units_in_consist_2, position_in_vehid_chain % 2) {
+    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_2_unit_sets_modulo_num_units_in_consist_2, position_in_vehid_chain % 2) {
         0: return ${first};
         return ${last};
     }
 
     <!--! this is a remainder block, how many units are in it? -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_platform_ruleset_2_unit_sets_less_than_2_remaining, num_vehs_in_vehid_chain % 2) {
-        1: return switch_graphics_platform_ruleset_2_unit_sets_modulo_num_units_in_consist_1;
-        return switch_graphics_platform_ruleset_2_unit_sets_modulo_num_units_in_consist_2;
+    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_2_unit_sets_less_than_2_remaining, num_vehs_in_vehid_chain % 2) {
+        1: return switch_graphics_intermodal_platform_ruleset_2_unit_sets_modulo_num_units_in_consist_1;
+        return switch_graphics_intermodal_platform_ruleset_2_unit_sets_modulo_num_units_in_consist_2;
     }
-    switch (FEAT_TRAINS, SELF, switch_graphics_platform_ruleset_2_unit_sets, position_in_vehid_chain >= (num_vehs_in_vehid_chain - (num_vehs_in_vehid_chain  % 2))) {
-        1: return switch_graphics_platform_ruleset_2_unit_sets_less_than_2_remaining;
-        return switch_graphics_platform_ruleset_2_unit_sets_modulo_num_units_in_consist_2;
+    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_2_unit_sets, position_in_vehid_chain >= (num_vehs_in_vehid_chain - (num_vehs_in_vehid_chain  % 2))) {
+        1: return switch_graphics_intermodal_platform_ruleset_2_unit_sets_less_than_2_remaining;
+        return switch_graphics_intermodal_platform_ruleset_2_unit_sets_modulo_num_units_in_consist_2;
     }
 </tal:position_ruleset>
 
@@ -26,25 +26,25 @@
     // intermodal platform 4 unit position switches - copied from railcars
     <!--! if 1 unit in sequence -->
     <!--! 0 = first, 1 = middle, 2 = last -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_platform_ruleset_4_unit_sets_modulo_num_units_in_consist_1, position_in_vehid_chain % 4) {
+    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_consist_1, position_in_vehid_chain % 4) {
         0: return ${default};
     }
 
     <!--! if 2 units in sequence -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_platform_ruleset_4_unit_sets_modulo_num_units_in_consist_2, position_in_vehid_chain % 4) {
+    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_consist_2, position_in_vehid_chain % 4) {
         0: return ${first};
         return ${last};
     }
 
     <!--! if 3 units in sequence -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_platform_ruleset_4_unit_sets_modulo_num_units_in_consist_3, position_in_vehid_chain % 4) {
+    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_consist_3, position_in_vehid_chain % 4) {
         0: return ${first};
         1: return ${middle};
         return ${last};
     }
 
     <!--! if 4 units in sequence -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_platform_ruleset_4_unit_sets_modulo_num_units_in_consist_4, position_in_vehid_chain % 4) {
+    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_consist_4, position_in_vehid_chain % 4) {
         0: ${first};
         1: ${middle};
         2: ${middle};
@@ -52,16 +52,56 @@
     }
 
     <!--! this is a remainder block, how many units are in it? -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_platform_ruleset_4_unit_sets_less_than_4_remaining, num_vehs_in_vehid_chain % 4) {
-        1: return switch_graphics_platform_ruleset_4_unit_sets_modulo_num_units_in_consist_1;
-        2: return switch_graphics_platform_ruleset_4_unit_sets_modulo_num_units_in_consist_2;
-        3: return switch_graphics_platform_ruleset_4_unit_sets_modulo_num_units_in_consist_3;
-        return switch_graphics_platform_ruleset_4_unit_sets_modulo_num_units_in_consist_4;
+    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets_less_than_4_remaining, num_vehs_in_vehid_chain % 4) {
+        1: return switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_consist_1;
+        2: return switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_consist_2;
+        3: return switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_consist_3;
+        return switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_consist_4;
     }
 
     <!--! given the consist, how many blocks of 4 units are there?  Is the unit within a block of 4, or a remainder block? -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_platform_ruleset_4_unit_sets, position_in_vehid_chain >= (num_vehs_in_vehid_chain - (num_vehs_in_vehid_chain  % 4))) {
-        1: return switch_graphics_platform_ruleset_4_unit_sets_less_than_4_remaining;
-        return switch_graphics_platform_ruleset_4_unit_sets_modulo_num_units_in_consist_4;
+    switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_4_unit_sets, position_in_vehid_chain >= (num_vehs_in_vehid_chain - (num_vehs_in_vehid_chain  % 4))) {
+        1: return switch_graphics_intermodal_platform_ruleset_4_unit_sets_less_than_4_remaining;
+        return switch_graphics_intermodal_platform_ruleset_4_unit_sets_modulo_num_units_in_consist_4;
+    }
+</tal:position_ruleset>
+
+<tal:position_ruleset define="default 0; first 1; last 2; special 3;">
+    switch (FEAT_TRAINS, SELF, switch_graphics_pax_cars_position_default, 0) {
+        return ${default};
+    }
+
+    <!--! if special -->
+    switch (FEAT_TRAINS, SELF, switch_graphics_pax_cars_position_special_check_length, num_vehs_in_vehid_chain) {
+        <!--! don't show 'special' if same id chain < 4 vehicles -->
+        0..3: return switch_graphics_pax_cars_position_default;
+        return ${special};
+    }
+    switch (FEAT_TRAINS, SELF, switch_graphics_pax_cars_position_check_special, position_in_vehid_chain_from_end - position_in_vehid_chain) {
+        0..1: return switch_graphics_pax_cars_position_special_check_length;
+        switch_graphics_pax_cars_position_default;
+    }
+
+    <!--! if last -->
+    switch (FEAT_TRAINS, SELF, switch_graphics_pax_cars_position_check_last, position_in_vehid_chain_from_end) {
+        0: return ${last};
+        switch_graphics_pax_cars_position_check_special;
+    }
+
+    <!--! if first -->
+    switch (FEAT_TRAINS, SELF, switch_graphics_pax_cars_position_first_check_length, num_vehs_in_vehid_chain) {
+        <!--! don't show 'first' if same id chain < 5 vehicles -->
+        0..4: return switch_graphics_pax_cars_position_default;
+        return ${first};
+    }
+    switch (FEAT_TRAINS, SELF, switch_graphics_pax_cars_position_check_first, position_in_vehid_chain) {
+        0: return switch_graphics_pax_cars_position_first_check_length;
+        switch_graphics_pax_cars_position_check_last;
+    }
+
+    switch (FEAT_TRAINS, SELF, switch_graphics_pax_cars_position_in_consist_entry_point, num_vehs_in_vehid_chain) {
+        <!--! always show default if same id chain < 2 vehicles -->
+        0..1: return switch_graphics_pax_cars_position_default;
+        return switch_graphics_pax_cars_position_check_first;
     }
 </tal:position_ruleset>
