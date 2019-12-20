@@ -35,25 +35,7 @@
                 ${vehicle.get_spriteset_template_name(reversed, flipped, 10 + (variant_num * 120) + 90)}
             }
         </tal:spritesets>
-        <tal:livery repeat="livery ['livery_1', 'livery_2']">
-            <!--! be aware that 'loaded' in nml is really 'moving', i.e. not in a station loading/unloading -->
-            spritegroup ${vehicle.id}_sg_part_load_or_empty_${livery}_${variant_num}_${flipped} {
-                loaded:  [
-                    ${vehicle.id}_ss_doors_closed_${livery}_${variant_num}_${flipped},
-                ];
-                loading: [
-                    ${vehicle.id}_ss_doors_open_${livery}_${variant_num}_${flipped},
-                ];
-            }
-            spritegroup ${vehicle.id}_sg_full_load_${livery}_${variant_num}_${flipped} {
-                loaded:  [
-                    ${vehicle.id}_ss_doors_closed_${livery}_${variant_num}_${flipped},
-                ];
-                loading: [
-                    ${vehicle.id}_ss_doors_closed_${livery}_${variant_num}_${flipped},
-                ];
-            }
-        </tal:livery>
+
         <!--! in case there wasn't enough complexity here, let's do pantographs too, in a separate layer -->
         <tal:pantographs condition="consist.pantograph_type is not None">
             <!--! !! the y base offsets here won't work for multi-unit vehicles, they need a different calculation -->
@@ -70,16 +52,17 @@
         </tal:pantographs>
 
     </tal:user_flipped>
-    switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_graphics_engine_id_${variant_num},
-            [switch_graphics_consist_specific_livery_check_engine_id() + switch_graphics_switch_graphics_consist_specific_livery_check_fully_loaded()]) {
-        100: return ${vehicle.id}_sg_part_load_or_empty_livery_1_${variant_num}_unflipped;
-        101: return ${vehicle.id}_sg_full_load_livery_1_${variant_num}_unflipped;
-        110: return ${vehicle.id}_sg_part_load_or_empty_livery_1_${variant_num}_flipped;
-        111: return ${vehicle.id}_sg_full_load_livery_1_${variant_num}_flipped;
-        200: return ${vehicle.id}_sg_part_load_or_empty_livery_2_${variant_num}_unflipped;
-        201: return ${vehicle.id}_sg_full_load_livery_2_${variant_num}_unflipped;
-        210: return ${vehicle.id}_sg_part_load_or_empty_livery_2_${variant_num}_flipped;
-        211: return ${vehicle.id}_sg_full_load_livery_2_${variant_num}_flipped;
+    <!--! stupid integer stuffing scheme to detect livery / flip / doors states, see the procedures for the schema -->
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_engine_id_${variant_num},
+            [switch_graphics_consist_specific_livery_check_engine_id() + switch_graphics_consist_specific_livery_doors_open()]) {
+        100: return ${vehicle.id}_ss_doors_closed_livery_1_${variant_num}_unflipped;
+        101: return ${vehicle.id}_ss_doors_open_livery_1_${variant_num}_unflipped;
+        110: return ${vehicle.id}_ss_doors_closed_livery_1_${variant_num}_flipped;
+        111: return ${vehicle.id}_ss_doors_open_livery_1_${variant_num}_flipped;
+        200: return ${vehicle.id}_ss_doors_closed_livery_2_${variant_num}_unflipped;
+        201: return ${vehicle.id}_ss_doors_open_livery_2_${variant_num}_unflipped;
+        210: return ${vehicle.id}_ss_doors_closed_livery_2_${variant_num}_flipped;
+        211: return ${vehicle.id}_ss_doors_open_livery_2_${variant_num}_flipped;
     }
 
     <tal:conditional_pantograph condition="consist.pantograph_type is not None">

@@ -8,7 +8,7 @@ switch (FEAT_TRAINS, SELF, switch_graphics_consist_specific_livery_2, vehicle_is
     1: 110; <!--! livery 2 flipped => livery 1 -->
     return 200;
 }
-// check engine IDs
+// check parent engine ID to see if livery should be swapped automatically
 switch (FEAT_TRAINS, PARENT, switch_graphics_consist_specific_livery_check_engine_id, vehicle_type_id) {
     <!--! this doesn't check grfid currently - add later if needed -->
     <tal:livery_2_engine_ids repeat="engine_id livery_2_engine_ids">
@@ -18,8 +18,13 @@ switch (FEAT_TRAINS, PARENT, switch_graphics_consist_specific_livery_check_engin
 }
 
 
-// handle current load percent
-switch (FEAT_TRAINS, SELF, switch_graphics_switch_graphics_consist_specific_livery_check_fully_loaded, (cargo_count*100)/cargo_capacity) {
-        0..99: return 0; <!--! less than 100 = not fully loaded -->
-    return 1;
+// should open doors be shown?
+switch (FEAT_TRAINS, SELF, switch_graphics_consist_specific_livery_check_percent_loaded, (cargo_count*100)/cargo_capacity) {
+        0..99: return 1; <!--! less than 100% load, open doors -->
+    return 0;
+}
+<!--! checks 80+ var 0A bit 3, (loading / unloading) which is equivalent to the check the built-in spritegroups do -->
+switch (FEAT_TRAINS, PARENT, switch_graphics_consist_specific_livery_doors_open, var[0x8A, 0, 0xF]) {
+        3: return switch_graphics_consist_specific_livery_check_percent_loaded;
+    return 0; <!--! not in a load / unload state, don't open doors -->
 }
