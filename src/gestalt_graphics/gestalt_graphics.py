@@ -370,7 +370,7 @@ class GestaltGraphicsCargoSpecificLivery(GestaltGraphics):
         result = {}
         counter = 0
         for cargo_map in self.recolour_maps:
-            result[cargo_map[0]] = [counter] # list because multiple spriterows can map to a cargo label
+            result[cargo_map[0]] = [counter] # list with a single value, this is for compatibility reasons, changing it would require refactoring num_cargo_sprite_variants
             # !! ^ but this should be appending 'counter' to the list, not just replacing the entire list
             # !! ^^ no real consequence as long as only one livery per cargo label is used, but will need fixed if multiple liveries per label are ever needed
             counter += 1
