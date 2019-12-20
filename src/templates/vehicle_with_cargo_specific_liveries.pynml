@@ -16,38 +16,26 @@ spriteset(${vehicle.id}_ss_company_colour, "${global_constants.graphics_path}${c
     spriteset(${vehicle.id}_ss_${cargo_variant_num}_unflipped, "${global_constants.graphics_path}${consist.id}.png") {
       spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.vehicle_length}_8_unflipped(40 + ${cargo_variant_num * 30})
     }
-    // handle user flipped state
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_livery_${cargo_variant_num}, vehicle_is_flipped) {
-        1: return ${vehicle.id}_ss_company_colour;
-        return ${vehicle.id}_ss_${cargo_variant_num}_unflipped;
-    }
 </tal:cargo_variants>
 
-<!--! this triggers random on a new load, which was designed for use specifically with containers where colours are randomised on load
-      it's not necessary for e.g. tankers, which only have one livery option per cargo
-      !! April 2018 - I'm not convinced this is doing what the comment suggests,
-         I think it's one and only one remap per cargo label currently, with no option for multiple variants per cargo
-         this could probably be simplified
-         also containers should just be piece -->
-<tal:cargo_random_switches repeat="mapping consist.gestalt_graphics.cargo_row_map.items()">
-    random_switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${mapping[0]}, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
-        <tal:random_graphics_variations repeat="spriterow_num mapping[1]">
-            1: return ${vehicle.id}_switch_graphics_livery_${spriterow_num};
-        </tal:random_graphics_variations>
-    }
-</tal:cargo_random_switches>
-
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, cargo_type_in_veh) {
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_cargo_type, cargo_type_in_veh) {
     <tal:cargos repeat="mapping consist.gestalt_graphics.cargo_row_map.items()">
         <tal:exclude_default_cargo condition="mapping[0] != 'DFLT'">
-            ${mapping[0]}: return ${vehicle.id}_switch_graphics_${mapping[0]};
+            <!--! cargo_row_map has a legacy list format to support random variants, which isn't used here, just take first item -->
+            ${mapping[0]}: return ${vehicle.id}_ss_${mapping[1][0]}_unflipped;
         </tal:exclude_default_cargo>
     </tal:cargos>
     <tal:default_cargo repeat="mapping consist.gestalt_graphics.cargo_row_map.items()">
         <tal:block condition="mapping[0] == 'DFLT'">
-            return ${vehicle.id}_switch_graphics_${mapping[0]};
+            return  ${vehicle.id}_ss_${mapping[1][0]}_unflipped;
         </tal:block>
     </tal:default_cargo>
+}
+
+// flip state sets cargo-specific livery or CC
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, vehicle_is_flipped) {
+    1: return ${vehicle.id}_ss_company_colour;
+    return ${vehicle.id}_switch_graphics_cargo_type;
 }
 
 // buy menu graphics chain
