@@ -147,11 +147,9 @@
         </tal:position_ruleset>
 
         <tal:position_ruleset condition="consist.gestalt_graphics.consist_ruleset == 'metro'">
-            <!--! !! this one shouldn't really provide default, it's just first or last - could refactor eh? -->
             switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_position_in_consist_entry_point_${cargo_label}, switch_graphics_metro_ruleset()) {
-                0: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['default']};
-                1: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['first']};
-                2: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['last']};
+                0: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['first']};
+                1: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['last']};
             }
         </tal:position_ruleset>
 

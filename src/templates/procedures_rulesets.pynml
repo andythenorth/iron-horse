@@ -238,22 +238,10 @@
     }
 </tal:ruleset>
 
-<tal:ruleset define="default 0; first 1; last 2;">
-    <!--! if 1st unit in sequence -->
-    <!--! Dec 2019 - this is overkill and could likely be refactored to just 1 switch, but eh it works -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_metro_ruleset_position_in_consist_check_1st, position_in_vehid_chain_from_end) {
-        0: return ${default};
-        return ${first};
-    }
-
-    <!--! if 2nd unit in sequence -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_metro_ruleset_position_in_consist_check_2nd, 0) {
-        return ${last};
-    }
-
+<tal:ruleset define="first 0; last 1;">
     switch (FEAT_TRAINS, SELF, switch_graphics_metro_ruleset, position_in_vehid_chain % 2) {
-        0: return switch_graphics_metro_ruleset_position_in_consist_check_1st;
-        return switch_graphics_metro_ruleset_position_in_consist_check_2nd;
+        0: return ${first};
+        return ${last};
     }
 </tal:ruleset>
 
