@@ -103,7 +103,7 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
         counter = 0
         if self.has_bulk:
             for cargo_map in polar_fox.constants.bulk_cargo_recolour_maps:
-                result[cargo_map[0]] = [counter] # list because multiple spriterows can map to a cargo label
+                result[cargo_map[0]] = [counter] # list because in theory multiple spriterows can map to a cargo label, but this is unused - changing would require refactoring num_cargo_sprite_variants
                 counter += 1
         if self.has_heavy_items:
             # n.b. keys have to be sorted as order needs to be consistent everywhere

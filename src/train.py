@@ -2379,13 +2379,6 @@ class Train(object):
         else:
             return self.id + "_switch_create_effect_check_railtype_" + self.consist.reversed_variants[0]
 
-    def get_nml_expression_for_cargo_variant_random_switch(self, cargo_id=None):
-        # having a method to calculate the nml for this is overkill
-        # legacy of multi-part vehicles, where the trigger needed to be run on an adjacent vehicle
-        # this could be unpicked and moved directly into the templates
-        switch_id = self.id + "_switch_graphics" + ('_' + str(cargo_id) if cargo_id is not None else '')
-        return "SELF," + switch_id + ", bitmask(TRIGGER_VEHICLE_NEW_LOAD)"
-
     def get_nml_expression_for_grfid_of_neighbouring_unit(self, unit_offset):
         # offset is number of units
         expression_template = Template(
