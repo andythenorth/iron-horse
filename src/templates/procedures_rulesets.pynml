@@ -67,41 +67,142 @@
 </tal:position_ruleset>
 
 <tal:position_ruleset define="default 0; first 1; last 2; special 3;">
-    switch (FEAT_TRAINS, SELF, switch_graphics_pax_cars_position_default, 0) {
+    switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset_position_default, 0) {
         return ${default};
     }
 
     <!--! if special -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_pax_cars_position_special_check_length, num_vehs_in_vehid_chain) {
+    switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset_position_special_check_length, num_vehs_in_vehid_chain) {
         <!--! don't show 'special' if same id chain < 4 vehicles -->
-        0..3: return switch_graphics_pax_cars_position_default;
+        0..3: return switch_graphics_pax_car_ruleset_position_default;
         return ${special};
     }
-    switch (FEAT_TRAINS, SELF, switch_graphics_pax_cars_position_check_special, position_in_vehid_chain_from_end - position_in_vehid_chain) {
-        0..1: return switch_graphics_pax_cars_position_special_check_length;
-        switch_graphics_pax_cars_position_default;
+    switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset_position_check_special, position_in_vehid_chain_from_end - position_in_vehid_chain) {
+        0..1: return switch_graphics_pax_car_ruleset_position_special_check_length;
+        switch_graphics_pax_car_ruleset_position_default;
     }
 
     <!--! if last -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_pax_cars_position_check_last, position_in_vehid_chain_from_end) {
+    switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset_position_check_last, position_in_vehid_chain_from_end) {
         0: return ${last};
-        switch_graphics_pax_cars_position_check_special;
+        switch_graphics_pax_car_ruleset_position_check_special;
     }
 
     <!--! if first -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_pax_cars_position_first_check_length, num_vehs_in_vehid_chain) {
+    switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset_position_first_check_length, num_vehs_in_vehid_chain) {
         <!--! don't show 'first' if same id chain < 5 vehicles -->
-        0..4: return switch_graphics_pax_cars_position_default;
+        0..4: return switch_graphics_pax_car_ruleset_position_default;
         return ${first};
     }
-    switch (FEAT_TRAINS, SELF, switch_graphics_pax_cars_position_check_first, position_in_vehid_chain) {
-        0: return switch_graphics_pax_cars_position_first_check_length;
-        switch_graphics_pax_cars_position_check_last;
+    switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset_position_check_first, position_in_vehid_chain) {
+        0: return switch_graphics_pax_car_ruleset_position_first_check_length;
+        switch_graphics_pax_car_ruleset_position_check_last;
     }
 
-    switch (FEAT_TRAINS, SELF, switch_graphics_pax_cars_position_in_consist_entry_point, num_vehs_in_vehid_chain) {
+    switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset, num_vehs_in_vehid_chain) {
         <!--! always show default if same id chain < 2 vehicles -->
-        0..1: return switch_graphics_pax_cars_position_default;
-        return switch_graphics_pax_cars_position_check_first;
+        0..1: return switch_graphics_pax_car_ruleset_position_default;
+        return switch_graphics_pax_car_ruleset_position_check_first;
+    }
+</tal:position_ruleset>
+
+<tal:position_ruleset define="default 0; first 1; last 2; special 3;">
+    <!--! if 1 unit in sequence -->
+    switch (FEAT_TRAINS, SELF, switch_graphics_pax_railcar_ruleset_modulo_num_units_in_consist_1, position_in_vehid_chain % 6) {
+        0: return ${default};
+    }
+
+    <!--! if 2 units in sequence -->
+    switch (FEAT_TRAINS, SELF, switch_graphics_pax_railcar_ruleset_modulo_num_units_in_consist_2, position_in_vehid_chain % 6) {
+        0: return ${first};
+        return ${last};
+    }
+
+    <!--! if 3 units in sequence -->
+    switch (FEAT_TRAINS, SELF, switch_graphics_pax_railcar_ruleset_modulo_num_units_in_consist_3, position_in_vehid_chain % 6) {
+        0: return ${first};
+        1: return ${special};
+        return ${last};
+    }
+
+    <!--! if 4 units in sequence -->
+    switch (FEAT_TRAINS, SELF, switch_graphics_pax_railcar_ruleset_modulo_num_units_in_consist_4, position_in_vehid_chain % 6) {
+        0: return ${first};
+        1: return ${last};
+        2: return ${first};
+        return ${last};
+    }
+
+    <!--! if 5 units in sequence -->
+    switch (FEAT_TRAINS, SELF, switch_graphics_pax_railcar_ruleset_modulo_num_units_in_consist_5, position_in_vehid_chain % 6) {
+        0: return ${first};
+        1: return ${special};
+        2: return ${last};
+        3: return ${first};
+        return ${last};
+    }
+
+    <!--! if 6 units in sequence -->
+    switch (FEAT_TRAINS, SELF, switch_graphics_pax_railcar_ruleset_modulo_num_units_in_consist_6, position_in_vehid_chain % 6) {
+        0: return ${first};
+        1: return ${special};
+        2: return ${last};
+        3: return ${first};
+        4: return ${special};
+        return ${last};
+    }
+
+    <!--! this is a remainder block, how many units are in it? -->
+    switch (FEAT_TRAINS, SELF, switch_graphics_pax_railcar_ruleset_less_than_6_remaining, num_vehs_in_vehid_chain % 6) {
+        1: return switch_graphics_pax_railcar_ruleset_modulo_num_units_in_consist_1;
+        2: return switch_graphics_pax_railcar_ruleset_modulo_num_units_in_consist_2;
+        3: return switch_graphics_pax_railcar_ruleset_modulo_num_units_in_consist_3;
+        4: return switch_graphics_pax_railcar_ruleset_modulo_num_units_in_consist_4;
+        5: return switch_graphics_pax_railcar_ruleset_modulo_num_units_in_consist_5;
+        return switch_graphics_pax_railcar_ruleset_modulo_num_units_in_consist_6;
+    }
+
+    <!--! given the consist, how many blocks of 6 units are there?  Is the unit within a block of 6, or a remainder block? -->
+    switch (FEAT_TRAINS, SELF, switch_graphics_pax_railcar_ruleset, position_in_vehid_chain >= (num_vehs_in_vehid_chain - (num_vehs_in_vehid_chain  % 6))) {
+        1: return switch_graphics_pax_railcar_ruleset_less_than_6_remaining;
+        return switch_graphics_pax_railcar_ruleset_modulo_num_units_in_consist_6;
+    }
+</tal:position_ruleset>
+
+<tal:position_ruleset define="default 0; first 1; last 2; special 3;">
+    switch (FEAT_TRAINS, SELF, switch_graphics_mail_car_ruleset_position_default, 0) {
+        return ${default};
+    }
+
+    <!--! if special -->
+    switch (FEAT_TRAINS, SELF, switch_graphics_mail_car_ruleset_position_special_check_length, num_vehs_in_vehid_chain) {
+        <!--! don't show 'special' if same id chain < 4 vehicles -->
+        0..3: return switch_graphics_mail_car_ruleset_position_default;
+        return ${special};
+    }
+    switch (FEAT_TRAINS, SELF, switch_graphics_mail_car_ruleset_position_check_special, position_in_vehid_chain_from_end - position_in_vehid_chain) {
+        0..1: return switch_graphics_mail_car_ruleset_position_special_check_length;
+        switch_graphics_mail_car_ruleset_position_default;
+    }
+
+    <!--! if first -->
+    switch (FEAT_TRAINS, SELF, switch_graphics_mail_car_ruleset_position_first_check_length, num_vehs_in_vehid_chain) {
+        <!--! don't show 'first' if same id chain < 5 vehicles -->
+        0..4: return switch_graphics_mail_car_ruleset_position_default;
+        return ${first};
+    }
+    switch (FEAT_TRAINS, SELF, switch_graphics_mail_car_ruleset_position_check_first, position_in_vehid_chain) {
+        0: return switch_graphics_mail_car_ruleset_position_first_check_length;
+        switch_graphics_mail_car_ruleset_position_check_special;
+    }
+
+    <!--! if last -->
+    switch (FEAT_TRAINS, SELF, switch_graphics_mail_car_ruleset_position_check_last, position_in_vehid_chain_from_end) {
+        0: return ${last};
+        switch_graphics_mail_car_ruleset_position_check_first;
+    }
+
+    switch (FEAT_TRAINS, SELF, switch_graphics_mail_car_ruleset, 0) {
+        return switch_graphics_mail_car_ruleset_position_check_last;
     }
 </tal:position_ruleset>
