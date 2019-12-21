@@ -17,7 +17,6 @@ switch (FEAT_TRAINS, PARENT, switch_graphics_consist_specific_livery_check_engin
     return switch_graphics_consist_specific_livery_1;
 }
 
-
 <!--! should open doors be shown? -->
 switch (FEAT_TRAINS, SELF, switch_graphics_consist_specific_livery_check_percent_loaded, (cargo_count*100)/cargo_capacity) {
         0..99: return 1; <!--! less than 100% load, open doors -->
