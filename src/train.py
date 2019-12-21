@@ -2187,10 +2187,11 @@ class Train(object):
         # optional - some engine units need to set explicit tail light spritesheets
         # subclasses may over-ride this, e.g. wagons have an automatic tail light based on vehicle length
         self.tail_light = kwargs.get('tail_light', 'empty')
-
         # 'symmetric' or 'asymmetric'?
         # defaults to symmetric, over-ride in sub-classes or per vehicle as needed
         self._symmetry_type = kwargs.get('symmetry_type', 'symmetric')
+        # a flag used to detect intermodal cars in templating, bit janky but eh
+        self.is_intermodal_platform = False
 
     def get_capacity_variations(self, capacity):
         # capacity is variable, controlled by a newgrf parameter
@@ -2839,13 +2840,13 @@ class ExpressCar(TrainCar):
 
 class ExpressIntermodalCar(ExpressCar):
     """
-    Express container car, subclassed from express car.  This subclass only exists to set symmetry_type to asymmetric.
+    Express container car, subclassed from express car.  This subclass only exists to set intermodal flag and symmetry_type.
     """
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # express intermodal cars may be asymmetric, there is magic in the graphics processing to make symmetric pax/mail sprites also work with this
         self._symmetry_type = 'asymmetric'
-
+        self.is_intermodal_platform = True
 
 class FreightCar(TrainCar):
     """
@@ -2864,12 +2865,13 @@ class FreightCar(TrainCar):
 
 class IntermodalCar(FreightCar):
     """
-    Intermodal Car. This subclass only exists to set symmetry_type to asymmetric.
+    Intermodal Car. This subclass only exists to set intermodal flag and symmetry_type.
     """
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # intermodal cars may be asymmetric, there is magic in the graphics processing to make cargo sprites work with this
         self._symmetry_type = 'asymmetric'
+        self.is_intermodal_platform = True
 
 
 class SlagLadleCar(FreightCar):
