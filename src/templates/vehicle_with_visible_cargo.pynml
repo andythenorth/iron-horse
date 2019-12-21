@@ -13,31 +13,32 @@
     <!--! spritegroups aren't used here, direct to spriteset -->
 </tal:spritesets>
 
+<!--! I did try consolidating cargo + load + flip into a single switch checking procedures, but it exceeded the 255 limit for varact 2 ranges -->
+<tal:load_state repeat="load_state ['loading', 'loaded']">
+    <tal:flip_state repeat="flip_state ['unflipped', 'flipped']">
+        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_cargo_${load_state}_${flip_state}, cargo_type_in_veh) {
+            <tal:cargos repeat="mapping consist.gestalt_graphics.cargo_row_map.items()">
+                <tal:exclude_default_cargo condition="mapping[0] != 'DFLT'">
+                    <!--!  uses mapping[1][0] as cargo_row_map has a legacy list format to support random variants
+                          fixing cargo_row_map would require refactoring num_cargo_sprite_variants in gestalt graphics -->
+                    ${mapping[0]}: return ${vehicle.id}_ss_${load_state}_${mapping[1][0]}_${flip_state};
+                </tal:exclude_default_cargo>
+            </tal:cargos>
+            <!--! generic cargos -->
+            return ${vehicle.id}_ss_${load_state}_${consist.gestalt_graphics.generic_rows[0]}_${flip_state};
+        }
+    </tal:flip_state>
+</tal:load_state>
 
-<tal:cargo_variants define="num_cargo_sprite_variants consist.gestalt_graphics.num_cargo_sprite_variants"
-                    repeat="cargo_variant_num python:range(num_cargo_sprite_variants)">
-    // handle user flipped state
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${cargo_variant_num}, switch_graphics_visible_cargo_flip()) {
-        0: return ${vehicle.id}_ss_empty_unflipped;
-        1: return ${vehicle.id}_ss_loading_${cargo_variant_num}_unflipped;
-        2: return ${vehicle.id}_ss_loaded_${cargo_variant_num}_unflipped;
-        3: return ${vehicle.id}_ss_empty_flipped;
-        4: return ${vehicle.id}_ss_loading_${cargo_variant_num}_flipped;
-        5: return ${vehicle.id}_ss_loaded_${cargo_variant_num}_flipped;
-    }
-</tal:cargo_variants>
-
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, cargo_type_in_veh) {
-    <tal:cargos repeat="mapping consist.gestalt_graphics.cargo_row_map.items()">
-        <tal:exclude_default_cargo condition="mapping[0] != 'DFLT'">
-            <!--! cargo_row_map has a legacy list format to support random variants, which isn't used here, just take first item
-                  fixing this would require refactoring num_cargo_sprite_variants in gestalt graphics -->
-            ${mapping[0]}: return ${vehicle.id}_switch_graphics_${mapping[1][0]};
-        </tal:exclude_default_cargo>
-    </tal:cargos>
-    <!--! generic cargos -->
-    return ${vehicle.id}_switch_graphics_${consist.gestalt_graphics.generic_rows[0]};
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, switch_graphics_visible_cargo_flip_and_load()) {
+    0: return ${vehicle.id}_ss_empty_unflipped;
+    1: return ${vehicle.id}_switch_cargo_loading_unflipped;
+    2: return ${vehicle.id}_switch_cargo_loaded_unflipped;
+    3: return ${vehicle.id}_ss_empty_flipped;
+    4: return ${vehicle.id}_switch_cargo_loading_flipped;
+    5: return ${vehicle.id}_switch_cargo_loaded_flipped;
 }
+
 
 // buy menu graphics chain
 spriteset(${vehicle.id}_ss_purchase, "${graphics_path}${consist.id}.png") {
