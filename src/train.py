@@ -2279,7 +2279,7 @@ class Train(object):
                 cargo_class) for cargo_class in global_constants.base_refits_by_class[i]]
         return ','.join(set(cargo_classes))  # use set() here to dedupe
 
-    def get_loading_speed(self, cargo_type, capacity_param):
+    def get_loading_speed(self, capacity_param):
         # ottd vehicles load at different rates depending on type,
         # normalise default loading time for this set to 240 ticks, regardless of capacity
         # openttd loading rates vary by transport type, look them up in wiki to find value to use here to normalise loading time to 240 ticks
