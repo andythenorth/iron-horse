@@ -43,7 +43,7 @@
     }
 </tal:random_reverse_variants>
 
-<!--! as of Dec 2019 articulated vehicles only have 1 variant
+<!--! as of Dec 2019 articulated vehicles don't provide random variants, as they can't be flipped, and no other random variations exist
       that means SELF can be checked without worrying about random bits from lead unit of articulated vehicle
       however if articulated vehicle support is need this switch will need to also checking FORWARD_SELF(n)
       location_of_random_bits_for_random_variant can be used for that -->
