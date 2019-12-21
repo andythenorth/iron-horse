@@ -14,7 +14,7 @@
         ${vehicle.get_spriteset_template_name('unreversed', 'flipped', 10 + (livery_variant_num * 60) + 30)}
     }
 
-    // handle user flipped state
+    <!--! handle user flipped state -->
     switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_livery_${livery_variant_num}, vehicle_is_flipped) {
         1: return ${vehicle.id}_ss_${livery_variant_num}_flipped;
         return ${vehicle.id}_ss_${livery_variant_num}_unflipped;

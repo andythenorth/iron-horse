@@ -27,7 +27,7 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics, getbits(extra_callback
         1: return base_sprite_2cc + 16 * company_colour1 + company_colour2; <!--! swap 1CC and 2CC -->
         1: return base_sprite_2cc + 16 * company_colour2 + company_colour1; <!--! apply regular 1CC and 2CC -->
     }
-    // handle user flipped state
+    <!--! handle user flipped state -->
     switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_colour_mapping, vehicle_is_flipped) {
         1: return ${vehicle.id}_switch_colour_mapping_flipped;
         return ${vehicle.id}_switch_colour_mapping_unflipped;

@@ -14,7 +14,7 @@
         ${vehicle.get_spriteset_template_name('reversed', 'flipped', 10 + (repeat.position_variant.index * 60) + 30)}
     }
 
-    // handle user flipped state
+    <!--! handle user flipped state -->
     switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_platform_${position_variant}, vehicle_is_flipped) {
         1: return ${vehicle.id}_ss_${position_variant}_flipped;
         return ${vehicle.id}_ss_${position_variant}_unflipped;
@@ -96,7 +96,7 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase, 0) {
 
 <!--! dedicated colour remapping of second intermodal livery
      (does this work for NA Horse? Dunno yet, find out when that happens)  -->
-// handle user flipped state
+<!--! handle user flipped state -->
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_colour_mapping, vehicle_is_flipped) {
     1: return base_sprite_2cc + 16 * company_colour1 + company_colour2; <!--! swap 1CC and 2CC -->
     return base_sprite_2cc + 16 * company_colour2 + company_colour1; <!--! apply regular 1CC and 2CC -->

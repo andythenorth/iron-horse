@@ -36,7 +36,7 @@
         }
     </tal:user_flipped>
 
-    // handle user flipped state
+    <!--! handle user flipped state -->
     switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${reversed_variant}, vehicle_is_flipped) {
         1: return ${vehicle.id}_switch_graphics_vehicle_layers_${reversed_variant}_flipped;
         return ${vehicle.id}_switch_graphics_vehicle_layers_${reversed_variant}_unflipped;
