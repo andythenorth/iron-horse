@@ -62,7 +62,7 @@ from vehicles import tarpaulin_cars
 
 def get_active_rosters():
     #  for a faster single-roster compiles when testing, optionally pass a roster id (lower case) as a makefile arg
-    if makefile_args.get('roster', '*') == '*':
+    if makefile_args.get('roster', 'ALL') == 'ALL':
         active_rosters = [
             roster for roster in registered_rosters if not roster.disabled]
     else:

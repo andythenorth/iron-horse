@@ -75,7 +75,7 @@ html_docs: $(HTML_DOCS)
 # default is 0 to disable multiprocessing (also avoids multiprocessing pickle failures masking genuine python errors)
 PW = 0
 SC = 'False'
-ROSTER = *
+ROSTER = ALL
 # remove the @ for more verbose output (@ suppresses command output)
 _V ?= @
 
