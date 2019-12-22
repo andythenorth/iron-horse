@@ -17,8 +17,9 @@ MK_ARCHIVE = bin/mk-archive
 # Project details
 PROJECT_NAME = iron-horse
 
-GRAPHICS_DIR = generated/graphics
+GRAPHICS_TARGET = generated/graphics/make_target
 LANG_DIR = generated/lang
+LANG_TARGET = $(LANG_DIR)/english.lng
 NML_FILE = generated/iron-horse.nml
 NML_FLAGS = -l $(LANG_DIR) --verbosity=4
 
@@ -62,8 +63,8 @@ default: html_docs grf
 # bundle needs to clean first to ensure we don't use outdated/cached version info
 bundle_tar: clean tar
 bundle_zip: $(ZIP_FILE)
-graphics: $(GRAPHICS_DIR)
-lang: $(LANG_DIR)
+graphics: $(GRAPHICS_TARGET)
+lang: $(LANG_TARGET)
 nml: $(NML_FILE)
 nfo: $(NFO_FILE)
 grf: $(GRF_FILE)
@@ -78,13 +79,14 @@ ROSTER = *
 # remove the @ for more verbose output (@ suppresses command output)
 _V ?= @
 
-$(GRAPHICS_DIR): $(shell $(FIND_FILES) --ext=.py --ext=.png src)
+$(GRAPHICS_TARGET): $(shell $(FIND_FILES) --ext=.py --ext=.png src)
 	$(_V) $(PYTHON3) src/render_graphics.py $(ARGS)
+	$(_V) touch $(GRAPHICS_TARGET)
 
-$(LANG_DIR): $(shell $(FIND_FILES) --ext=.py --ext=.pynml --ext=.lng src)
+$(LANG_TARGET): $(shell $(FIND_FILES) --ext=.py --ext=.pynml --ext=.lng src)
 	$(_V) $(PYTHON3) src/render_lang.py $(ARGS)
 
-$(HTML_DOCS): $(GRAPHICS_DIR) $(shell $(FIND_FILES) --ext=.py --ext=.pynml --ext=.pt --ext=.lng --ext=.png src)
+$(HTML_DOCS): $(GRAPHICS_TARGET) $(shell $(FIND_FILES) --ext=.py --ext=.pynml --ext=.pt --ext=.lng --ext=.png src)
 	$(_V) $(PYTHON3) src/render_docs.py $(ARGS)
 # Insane trick to check whether both DOT and GVPR are not empty.
 ifeq ($(DOT)$(GVPR),$(GVPR)$(DOT))
@@ -100,11 +102,11 @@ $(NML_FILE): $(shell $(FIND_FILES) --ext=.py --ext=.pynml src)
 
 # nmlc is used to compile a nfo file only, which is then used by grfcodec
 # this means that the (slow) nmlc stage can be skipped if the nml file is unchanged (only graphics changed)
-$(NFO_FILE): $(LANG_DIR) $(NML_FILE)
+$(NFO_FILE): $(LANG_TARGET) $(NML_FILE)
 	$(NMLC) $(NML_FLAGS) --nfo=$(NFO_FILE) $(NML_FILE)
 
 # N.B grf codec can't compile into a specific target dir, so after compiling, move the compiled grf to appropriate dir
-$(GRF_FILE): $(GRAPHICS_DIR) $(LANG_DIR) $(NML_FILE) $(NFO_FILE)
+$(GRF_FILE): $(GRAPHICS_TARGET) $(NFO_FILE)
 	$(GRFCODEC) -s -e $(PROJECT_NAME).grf generated
 	mv $(PROJECT_NAME).grf $(GRF_FILE)
 
@@ -140,7 +142,7 @@ bundle_src: $(MD5_FILE)
 
 # this is a macOS-specifc install location; the pre-2017 Makefile handled multiple platforms, that could be restored if needed
 install: default
-    # remove first, OpenTTD does not like having the _contents_ of the current file change under it, but will handle a removed-and-replaced file correctly
+	# remove first, OpenTTD does not like having the _contents_ of the current file change under it, but will handle a removed-and-replaced file correctly
 	rm ~/Documents/OpenTTD/newgrf/$(PROJECT_NAME).grf
 	cp $(GRF_FILE) ~/Documents/OpenTTD/newgrf/
 
