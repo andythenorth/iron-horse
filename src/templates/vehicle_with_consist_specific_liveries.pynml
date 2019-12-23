@@ -65,7 +65,7 @@
             <!--! !! the y base offsets here won't work for multi-unit vehicles, they need a different calculation -->
             <tal:pantographs repeat="pantograph_state ['down', 'up']">
                 spriteset(${vehicle.id}_ss_pantographs_${pantograph_state}_${variant_num}_${flipped}, "${graphics_path}${consist.id}_pantographs_${pantograph_state}.png") {
-                    spriteset_template_${vehicle.symmetry_type}_${'reversed' if flipped == 'flipped' else 'unreversed'}_${vehicle.vehicle_length}_8_${flipped}(10 + ${variant_num * 60})
+                    ${vehicle.get_spriteset_template_name('reversed' if flipped == 'flipped' else 'unreversed', flipped, 10 + (variant_num * 60))}
                 }
             </tal:pantographs>
             <!--! this is crude and won't work, for e.g. ELNG, or for 3rd-party electrified railtypes which aren't ELRL -->
