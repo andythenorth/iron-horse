@@ -17,22 +17,27 @@
                 [${bounding_box[0]}, y, ${bounding_box[1]}, ${bounding_box[2]}, ${utils.get_offsets(vehicle_length,flipped=flipped[0])[repeat.bounding_box.index][0]}, ${utils.get_offsets(vehicle_length,flipped=flipped[0])[repeat.bounding_box.index][1]}, ANIM <!--!${', ANIM' if consist.suppress_animated_pixel_warnings else ''}-->]
             </tal:sprite>
         }
-        template spriteset_template_symmetric_unreversed_${vehicle_length}_8_${flipped[1]}(y) {
-                //[left_x, upper_y, width, height, offset_x, offset_y]
-            <tal:sprite repeat="bounding_box global_constants.spritesheet_bounding_boxes_symmetric_unreversed">
-                [${bounding_box[0]}, y, ${bounding_box[1]}, ${bounding_box[2]}, ${utils.get_offsets(vehicle_length,flipped=flipped[0])[repeat.bounding_box.index][0]}, ${utils.get_offsets(vehicle_length,flipped=flipped[0])[repeat.bounding_box.index][1]}, ANIM <!--!${', ANIM' if consist.suppress_animated_pixel_warnings else ''}-->]
-            </tal:sprite>
-        }
+        <!--! 8/8 sprites don't need adjusted offsets when flipped, so just provide 4 realsprites for 8/8 symmetric
+              reduces total sprite count, grf file size and compile time
+              non-8/8 sprites will need offsets adjusted if flipped, so have to provide all 8 angles -->
+        <tal:symmetrical define="bb_slice slice(4,8) if vehicle_length == 8 else slice(0,8)">
+            template spriteset_template_symmetric_unreversed_${vehicle_length}_8_${flipped[1]}(y) {
+                    //[left_x, upper_y, width, height, offset_x, offset_y]
+                <tal:sprite repeat="bounding_box global_constants.spritesheet_bounding_boxes_symmetric_unreversed[bb_slice]">
+                    [${bounding_box[0]}, y, ${bounding_box[1]}, ${bounding_box[2]}, ${utils.get_offsets(vehicle_length,flipped=flipped[0])[repeat.bounding_box.index][0]}, ${utils.get_offsets(vehicle_length,flipped=flipped[0])[repeat.bounding_box.index][1]}, ANIM <!--!${', ANIM' if consist.suppress_animated_pixel_warnings else ''}-->]
+                </tal:sprite>
+            }
 
-        <!--!
-            template spriteset_template_symmetric_reversed is identical to spriteset_template_symmetric_reversed
-            'symmetric unreversed' obvs. makes no sense in itself, but vehicle flip is used for silly livery hax
-        -->
-        template spriteset_template_symmetric_reversed_${vehicle_length}_8_${flipped[1]}(y) {
-                //[left_x, upper_y, width, height, offset_x, offset_y]
-            <tal:sprite repeat="bounding_box global_constants.spritesheet_bounding_boxes_symmetric_reversed">
-                [${bounding_box[0]}, y, ${bounding_box[1]}, ${bounding_box[2]}, ${utils.get_offsets(vehicle_length,flipped=flipped[0])[repeat.bounding_box.index][0]}, ${utils.get_offsets(vehicle_length,flipped=flipped[0])[repeat.bounding_box.index][1]}, ANIM <!--!${', ANIM' if consist.suppress_animated_pixel_warnings else ''}-->]
-            </tal:sprite>
-        }
+            <!--!
+                template spriteset_template_symmetric_reversed is identical to spriteset_template_symmetric_reversed
+                'symmetric unreversed' obvs. makes no sense in itself, but vehicle flip is used for silly livery hax
+            -->
+            template spriteset_template_symmetric_reversed_${vehicle_length}_8_${flipped[1]}(y) {
+                    //[left_x, upper_y, width, height, offset_x, offset_y]
+                <tal:sprite repeat="bounding_box global_constants.spritesheet_bounding_boxes_symmetric_reversed[bb_slice]">
+                    [${bounding_box[0]}, y, ${bounding_box[1]}, ${bounding_box[2]}, ${utils.get_offsets(vehicle_length,flipped=flipped[0])[repeat.bounding_box.index][0]}, ${utils.get_offsets(vehicle_length,flipped=flipped[0])[repeat.bounding_box.index][1]}, ANIM <!--!${', ANIM' if consist.suppress_animated_pixel_warnings else ''}-->]
+                </tal:sprite>
+            }
+        </tal:symmetrical>
     </tal:user_flipped>
 </tal:lengths>
