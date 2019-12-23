@@ -107,7 +107,7 @@ $(NFO_FILE): $(LANG_TARGET) $(NML_FILE) | $(GRAPHICS_TARGET)
 
 # N.B grf codec can't compile into a specific target dir, so after compiling, move the compiled grf to appropriate dir
 $(GRF_FILE): $(GRAPHICS_TARGET) $(NFO_FILE)
-	$(GRFCODEC) -s -e $(PROJECT_NAME).grf generated
+	$(GRFCODEC) -s -e -c -n -g 2 $(PROJECT_NAME).grf generated
 	mv $(PROJECT_NAME).grf $(GRF_FILE)
 
 $(TAR_FILE): $(GRF_FILE) $(HTML_DOCS)
