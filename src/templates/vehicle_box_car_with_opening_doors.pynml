@@ -8,10 +8,10 @@
 <tal:user_flipped repeat="flipped ['unflipped', 'flipped']">
     // default graphics chain
     spriteset(${vehicle.id}_ss_doors_closed_${flipped}, "${graphics_path}${consist.id}.png") {
-        spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.vehicle_length}_8_${flipped}(10)
+        ${vehicle.get_spriteset_template_name('unreversed', flipped, 10)}
     }
     spriteset(${vehicle.id}_ss_doors_open_${flipped}, "${graphics_path}${consist.id}.png") {
-        spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.vehicle_length}_8_${flipped}(10 + 30)
+        ${vehicle.get_spriteset_template_name('unreversed', flipped, 10 + 30)}
     }
 
     <!--! be aware that 'loaded' in nml is really 'moving', i.e. not in a station loading/unloading -->

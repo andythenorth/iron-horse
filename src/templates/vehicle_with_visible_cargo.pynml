@@ -8,7 +8,7 @@
     <!--! spriteset loops got too complex in the templates, with livery, empty state, cargo loading, cargo loaded, and random variants
           so I moved the logic for spritesets into the gestalt, and simply render out all from a list with a trivial loop -->
     spriteset(${vehicle.id}_ss_${spriteset_data[0]}_${spriteset_data[1]}, "${graphics_path}${consist.id}.png") {
-        spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.vehicle_length}_8_${spriteset_data[1]}(${spriteset_data[2]})
+        ${vehicle.get_spriteset_template_name('unreversed', spriteset_data[1], spriteset_data[2])}
     }
     <!--! spritegroups aren't used here, direct to spriteset -->
 </tal:spritesets>

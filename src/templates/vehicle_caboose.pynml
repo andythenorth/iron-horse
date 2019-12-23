@@ -8,10 +8,10 @@
 // default graphics chain
 <tal:livery_variant_nums repeat="livery_variant_num range(consist.gestalt_graphics.num_generations)">
     spriteset(${vehicle.id}_ss_${livery_variant_num}_unflipped, "${graphics_path}${consist.id}.png") {
-        spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.vehicle_length}_8_unflipped(10 + ${livery_variant_num * 60})
+        ${vehicle.get_spriteset_template_name('unreversed', 'unflipped', 10 + (livery_variant_num * 60))}
     }
     spriteset(${vehicle.id}_ss_${livery_variant_num}_flipped, "${graphics_path}${consist.id}.png") {
-        spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.vehicle_length}_8_flipped(10 + ${livery_variant_num * 60} + 30)
+        ${vehicle.get_spriteset_template_name('unreversed', 'flipped', 10 + (livery_variant_num * 60) + 30)}
     }
 
     // handle user flipped state

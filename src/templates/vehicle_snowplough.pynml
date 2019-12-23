@@ -7,16 +7,16 @@
       don't conflate them :) -->
 // default graphics chain
 spriteset(${vehicle.id}_ss_unflipped_unreversed, "${graphics_path}${consist.id}.png") {
-    spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.vehicle_length}_8_unflipped(10)
+    ${vehicle.get_spriteset_template_name('unreversed', 'unflipped', 10)}
 }
 spriteset(${vehicle.id}_ss_flipped_unreversed, "${graphics_path}${consist.id}.png") {
-    spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.vehicle_length}_8_flipped(10)
+    ${vehicle.get_spriteset_template_name('unreversed', 'flipped', 10)}
 }
 spriteset(${vehicle.id}_ss_unflipped_reversed, "${graphics_path}${consist.id}.png") {
-    spriteset_template_${vehicle.symmetry_type}_reversed_${vehicle.vehicle_length}_8_unflipped(10)
+    ${vehicle.get_spriteset_template_name('reversed', 'unflipped', 10)}
 }
 spriteset(${vehicle.id}_ss_flipped_reversed, "${graphics_path}${consist.id}.png") {
-    spriteset_template_${vehicle.symmetry_type}_reversed_${vehicle.vehicle_length}_8_flipped(10)
+    ${vehicle.get_spriteset_template_name('reversed', 'flipped', 10)}
 }
 
 // handle user flipped state

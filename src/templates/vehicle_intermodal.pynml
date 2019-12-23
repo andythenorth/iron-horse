@@ -8,10 +8,10 @@
 // position variants are 'default', 'first', 'last', 'middle', etc, and are dependent on consist_ruleset
 <tal:position_variants repeat="position_variant consist.gestalt_graphics.position_variants">
     spriteset(${vehicle.id}_ss_${position_variant}_unflipped, "${graphics_path}${consist.id}.png") {
-        spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.vehicle_length}_8_unflipped(10 + ${repeat.position_variant.index * 60})
+        ${vehicle.get_spriteset_template_name('unreversed', 'unflipped', 10 + (repeat.position_variant.index * 60))}
     }
     spriteset(${vehicle.id}_ss_${position_variant}_flipped, "${graphics_path}${consist.id}.png") {
-        spriteset_template_${vehicle.symmetry_type}_reversed_${vehicle.vehicle_length}_8_flipped(10 + ${repeat.position_variant.index * 60} + 30)
+        ${vehicle.get_spriteset_template_name('reversed', 'flipped', 10 + (repeat.position_variant.index * 60) + 30)}
     }
 
     // handle user flipped state

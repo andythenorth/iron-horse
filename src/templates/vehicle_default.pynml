@@ -9,14 +9,14 @@
 <tal:random_reverse_variants repeat="reversed_variant consist.reversed_variants">
     <tal:user_flipped repeat="flipped ['unflipped', 'flipped']">
         spriteset(${vehicle.id}_ss_${reversed_variant}_${flipped}, "${graphics_path}${consist.id}.png") {
-            spriteset_template_${vehicle.symmetry_type}_${reversed_variant}_${vehicle.vehicle_length}_8_${flipped}(10 + ${vehicle.spriterow_num * 30})
+            ${vehicle.get_spriteset_template_name(reversed_variant, flipped, 10 + (vehicle.spriterow_num * 30))}
         }
 
         <tal:pantographs condition="consist.pantograph_type is not None">
             <!--! !! the y base offsets here won't work for multi-unit vehicles, they need a different calculation -->
             <tal:pantographs repeat="pantograph_state ['down', 'up']">
                 spriteset(${vehicle.id}_ss_pantographs_${pantograph_state}_${reversed_variant}_${flipped}, "${graphics_path}${consist.id}_pantographs_${pantograph_state}.png") {
-                    spriteset_template_${vehicle.symmetry_type}_${reversed_variant}_${vehicle.vehicle_length}_8_${flipped}(10 + ${vehicle.spriterow_num * 30})
+                    ${vehicle.get_spriteset_template_name(reversed_variant, flipped, 10 + (vehicle.spriterow_num * 30))}
                 }
             </tal:pantographs>
             <!--! this is crude and won't work, for e.g. ELNG, or for 3rd-party electrified railtypes which aren't ELRL -->

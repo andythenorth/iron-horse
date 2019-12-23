@@ -2216,6 +2216,10 @@ class Train(object):
             "[STORE_TEMP(${offset}, 0x10F), var[0x61, 0, 0x0000FFFF, 0xC6]]")
         return expression_template.substitute(offset=(3 * unit_offset))
 
+    def get_spriteset_template_name(self, reversed, flipped, y):
+        fragments = ['spriteset_template', self.symmetry_type, reversed, str(self.vehicle_length), '8', flipped]
+        return  '_'.join(fragments) + '(' + str(y) + ')'
+
     def get_label_refits_allowed(self):
         # allowed labels, for fine-grained control in addition to classes
         return ','.join(self.label_refits_allowed)
@@ -2703,11 +2707,12 @@ class SlagLadleCar(FreightCar):
 
 class TorpedoCar(FreightCar):
     """
-    Torpedo car. This subclass only exists to set the capacity.
+    Torpedo car. This subclass sets the symmetry_type to asymmetric, and sets capacity.
     """
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # just multiply whatever is set by the init, what could go wrong? :)
+        self._symmetry_type = 'asymmetric'
         self.capacity = 1.5 * self.capacity
 
 
