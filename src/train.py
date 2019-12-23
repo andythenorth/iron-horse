@@ -2256,8 +2256,11 @@ class Train(object):
         # templating
         template_name = self.vehicle_nml_template
         template = templates[template_name]
-        nml_result = template(
-            vehicle=self, consist=self.consist, global_constants=global_constants, intermodal_containers=intermodal_containers)
+        nml_result = template(vehicle=self,
+                              consist=self.consist,
+                              global_constants=global_constants,
+                              graphics_path=global_constants.graphics_path,
+                              intermodal_containers=intermodal_containers)
         return nml_result
 
 

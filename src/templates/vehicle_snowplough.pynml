@@ -6,16 +6,16 @@
       'flipped' is user flipping vehicle in depot and *is* supported here
       don't conflate them :) -->
 // default graphics chain
-spriteset(${vehicle.id}_ss_unflipped_unreversed, "${global_constants.graphics_path}${consist.id}.png") {
+spriteset(${vehicle.id}_ss_unflipped_unreversed, "${graphics_path}${consist.id}.png") {
     spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.vehicle_length}_8_unflipped(10)
 }
-spriteset(${vehicle.id}_ss_flipped_unreversed, "${global_constants.graphics_path}${consist.id}.png") {
+spriteset(${vehicle.id}_ss_flipped_unreversed, "${graphics_path}${consist.id}.png") {
     spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.vehicle_length}_8_flipped(10)
 }
-spriteset(${vehicle.id}_ss_unflipped_reversed, "${global_constants.graphics_path}${consist.id}.png") {
+spriteset(${vehicle.id}_ss_unflipped_reversed, "${graphics_path}${consist.id}.png") {
     spriteset_template_${vehicle.symmetry_type}_reversed_${vehicle.vehicle_length}_8_unflipped(10)
 }
-spriteset(${vehicle.id}_ss_flipped_reversed, "${global_constants.graphics_path}${consist.id}.png") {
+spriteset(${vehicle.id}_ss_flipped_reversed, "${graphics_path}${consist.id}.png") {
     spriteset_template_${vehicle.symmetry_type}_reversed_${vehicle.vehicle_length}_8_flipped(10)
 }
 
@@ -41,7 +41,7 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, num_vehs_in_co
 
 
 // buy menu graphics chain
-spriteset(${vehicle.id}_ss_purchase, "${global_constants.graphics_path}${consist.id}.png") {
+spriteset(${vehicle.id}_ss_purchase, "${graphics_path}${consist.id}.png") {
     spriteset_template_purchase_${vehicle.id}(10)
 }
 

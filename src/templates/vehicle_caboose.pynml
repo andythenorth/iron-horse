@@ -7,10 +7,10 @@
       don't conflate them :) -->
 // default graphics chain
 <tal:livery_variant_nums repeat="livery_variant_num range(consist.gestalt_graphics.num_generations)">
-    spriteset(${vehicle.id}_ss_${livery_variant_num}_unflipped, "${global_constants.graphics_path}${consist.id}.png") {
+    spriteset(${vehicle.id}_ss_${livery_variant_num}_unflipped, "${graphics_path}${consist.id}.png") {
         spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.vehicle_length}_8_unflipped(10 + ${livery_variant_num * 60})
     }
-    spriteset(${vehicle.id}_ss_${livery_variant_num}_flipped, "${global_constants.graphics_path}${consist.id}.png") {
+    spriteset(${vehicle.id}_ss_${livery_variant_num}_flipped, "${graphics_path}${consist.id}.png") {
         spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.vehicle_length}_8_flipped(10 + ${livery_variant_num * 60} + 30)
     }
 
@@ -32,7 +32,7 @@ switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_graphics_vehicle, vehicle_type
 
 // buy menu graphics chain
 <tal:livery_variants repeat="livery_variant_num range(consist.gestalt_graphics.num_generations)">
-    spriteset(${vehicle.id}_ss_purchase_${livery_variant_num}, "${global_constants.graphics_path}${consist.id}.png") {
+    spriteset(${vehicle.id}_ss_purchase_${livery_variant_num}, "${graphics_path}${consist.id}.png") {
         spriteset_template_purchase_${vehicle.id}(10 + ${livery_variant_num * 60})
     }
 </tal:livery_variants>

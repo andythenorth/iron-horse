@@ -7,13 +7,13 @@
     <tal:cargo_colour_variant repeat="cargo_variant_num python:range(3)">
         <!--! Cabs: A = front, B = middle (no cab), C = rear -->
         <tal:cab_variants repeat="cab_variant python:range(3)">
-            spriteset(${vehicle.id}_ss_empty_${variation_num}_${cargo_variant_num}_${cab_variant}, "${global_constants.graphics_path}${consist.id}.png") {
+            spriteset(${vehicle.id}_ss_empty_${variation_num}_${cargo_variant_num}_${cab_variant}, "${graphics_path}${consist.id}.png") {
                 spriteset_template_${vehicle.id}(10 + ${cargo_variant_num * 270} + ${cab_variant * 90})
             }
-            spriteset(${vehicle.id}_ss_loaded_box_${variation_num}_${cargo_variant_num}_${cab_variant}, "${global_constants.graphics_path}${consist.id}.png") {
+            spriteset(${vehicle.id}_ss_loaded_box_${variation_num}_${cargo_variant_num}_${cab_variant}, "${graphics_path}${consist.id}.png") {
                 spriteset_template_${vehicle.id}(40 + ${cargo_variant_num * 270} + ${cab_variant * 90})
             }
-            spriteset(${vehicle.id}_ss_loaded_liquids_${variation_num}_${cargo_variant_num}_${cab_variant}, "${global_constants.graphics_path}${consist.id}.png") {
+            spriteset(${vehicle.id}_ss_loaded_liquids_${variation_num}_${cargo_variant_num}_${cab_variant}, "${graphics_path}${consist.id}.png") {
                 spriteset_template_${vehicle.id}(70 + ${cargo_variant_num * 270} + ${cab_variant * 90})
             }
 
@@ -95,7 +95,7 @@
 // buy menu graphics
 <tal:include metal:use-macro="load: offsets_buy_menu.pynml" />
 
-spriteset(${vehicle.id}_ss_purchase, "${global_constants.graphics_path}${consist.id}.png") {
+spriteset(${vehicle.id}_ss_purchase, "${graphics_path}${consist.id}.png") {
   spriteset_template_purchase_${vehicle.id}()
 }
 

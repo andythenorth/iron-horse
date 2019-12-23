@@ -8,14 +8,14 @@
 // default graphics chain
 <tal:random_reverse_variants repeat="reversed_variant consist.reversed_variants">
     <tal:user_flipped repeat="flipped ['unflipped', 'flipped']">
-        spriteset(${vehicle.id}_ss_${reversed_variant}_${flipped}, "${global_constants.graphics_path}${consist.id}.png") {
+        spriteset(${vehicle.id}_ss_${reversed_variant}_${flipped}, "${graphics_path}${consist.id}.png") {
             spriteset_template_${vehicle.symmetry_type}_${reversed_variant}_${vehicle.vehicle_length}_8_${flipped}(10 + ${vehicle.spriterow_num * 30})
         }
 
         <tal:pantographs condition="consist.pantograph_type is not None">
             <!--! !! the y base offsets here won't work for multi-unit vehicles, they need a different calculation -->
             <tal:pantographs repeat="pantograph_state ['down', 'up']">
-                spriteset(${vehicle.id}_ss_pantographs_${pantograph_state}_${reversed_variant}_${flipped}, "${global_constants.graphics_path}${consist.id}_pantographs_${pantograph_state}.png") {
+                spriteset(${vehicle.id}_ss_pantographs_${pantograph_state}_${reversed_variant}_${flipped}, "${graphics_path}${consist.id}_pantographs_${pantograph_state}.png") {
                     spriteset_template_${vehicle.symmetry_type}_${reversed_variant}_${vehicle.vehicle_length}_8_${flipped}(10 + ${vehicle.spriterow_num * 30})
                 }
             </tal:pantographs>
@@ -50,13 +50,13 @@ random_switch (FEAT_TRAINS, ${vehicle.location_of_random_bits_for_random_variant
 }
 
 // buy menu graphics chain
-spriteset(${vehicle.id}_ss_vehicle_purchase, "${global_constants.graphics_path}${consist.id}.png") {
+spriteset(${vehicle.id}_ss_vehicle_purchase, "${graphics_path}${consist.id}.png") {
     spriteset_template_purchase_${vehicle.id}(10)
 }
 <tal:conditional_pantographs switch="consist.pantograph_type is not None">
     <tal:has_pantographs case="True">
         <!--! purchase sprites for case where pantograph layer is needed -->
-        spriteset(${vehicle.id}_ss_pantograph_purchase, "${global_constants.graphics_path}${consist.id}_pantographs_down.png") {
+        spriteset(${vehicle.id}_ss_pantograph_purchase, "${graphics_path}${consist.id}_pantographs_down.png") {
             spriteset_template_purchase_${vehicle.id}(10)
         }
         switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_set_layers_register_more_sprites_purchase, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {

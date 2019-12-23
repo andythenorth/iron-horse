@@ -21,16 +21,16 @@
 <tal:consist_cargo_variants repeat="variant_num python:range(consist.gestalt_graphics.num_cargo_sprite_variants)">
 
     <tal:user_flipped repeat="flipped ['unflipped', 'flipped']">
-        spriteset(${vehicle.id}_ss_doors_closed_livery_1_${variant_num}_${flipped}, "${global_constants.graphics_path}${consist.id}.png") {
+        spriteset(${vehicle.id}_ss_doors_closed_livery_1_${variant_num}_${flipped}, "${graphics_path}${consist.id}.png") {
             spriteset_template_${vehicle.symmetry_type}_${'reversed' if flipped == 'flipped' else 'unreversed'}_${vehicle.vehicle_length}_8_${flipped}(10 + ${variant_num * 120})
         }
-        spriteset(${vehicle.id}_ss_doors_open_livery_1_${variant_num}_${flipped}, "${global_constants.graphics_path}${consist.id}.png") {
+        spriteset(${vehicle.id}_ss_doors_open_livery_1_${variant_num}_${flipped}, "${graphics_path}${consist.id}.png") {
             spriteset_template_${vehicle.symmetry_type}_${'reversed' if flipped == 'flipped' else 'unreversed'}_${vehicle.vehicle_length}_8_${flipped}(10 + ${variant_num * 120} + 30)
         }
-        spriteset(${vehicle.id}_ss_doors_closed_livery_2_${variant_num}_${flipped}, "${global_constants.graphics_path}${consist.id}.png") {
+        spriteset(${vehicle.id}_ss_doors_closed_livery_2_${variant_num}_${flipped}, "${graphics_path}${consist.id}.png") {
             spriteset_template_${vehicle.symmetry_type}_${'reversed' if flipped == 'flipped' else 'unreversed'}_${vehicle.vehicle_length}_8_${flipped}(10 + ${variant_num * 120} + 60)
         }
-        spriteset(${vehicle.id}_ss_doors_open_livery_2_${variant_num}_${flipped}, "${global_constants.graphics_path}${consist.id}.png") {
+        spriteset(${vehicle.id}_ss_doors_open_livery_2_${variant_num}_${flipped}, "${graphics_path}${consist.id}.png") {
             spriteset_template_${vehicle.symmetry_type}_${'reversed' if flipped == 'flipped' else 'unreversed'}_${vehicle.vehicle_length}_8_${flipped}(10 + ${variant_num * 120} + 90)
         }
 
@@ -63,7 +63,7 @@
         <tal:pantographs condition="consist.pantograph_type is not None">
             <!--! !! the y base offsets here won't work for multi-unit vehicles, they need a different calculation -->
             <tal:pantographs repeat="pantograph_state ['down', 'up']">
-                spriteset(${vehicle.id}_ss_pantographs_${pantograph_state}_${variant_num}_${flipped}, "${global_constants.graphics_path}${consist.id}_pantographs_${pantograph_state}.png") {
+                spriteset(${vehicle.id}_ss_pantographs_${pantograph_state}_${variant_num}_${flipped}, "${graphics_path}${consist.id}_pantographs_${pantograph_state}.png") {
                     spriteset_template_${vehicle.symmetry_type}_${'reversed' if flipped == 'flipped' else 'unreversed'}_${vehicle.vehicle_length}_8_${flipped}(10 + ${variant_num * 60})
                 }
             </tal:pantographs>
@@ -324,13 +324,13 @@ switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_graphics_vehicle, most_common_
 }
 
 // buy menu graphics chain
-spriteset(${vehicle.id}_ss_vehicle_purchase, "${global_constants.graphics_path}${consist.id}.png") {
+spriteset(${vehicle.id}_ss_vehicle_purchase, "${graphics_path}${consist.id}.png") {
     spriteset_template_purchase_${vehicle.id}(10 + ${vehicle.buy_menu_spriterow_num * 30})
 }
 <tal:conditional_pantographs switch="consist.pantograph_type is not None">
     <tal:has_pantographs case="True">
         <!--! purchase sprites for case where pantograph layer is needed -->
-        spriteset(${vehicle.id}_ss_pantograph_purchase, "${global_constants.graphics_path}${consist.id}_pantographs_down.png") {
+        spriteset(${vehicle.id}_ss_pantograph_purchase, "${graphics_path}${consist.id}_pantographs_down.png") {
             spriteset_template_purchase_${vehicle.id}(10)
         }
         switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_set_layers_register_more_sprites_purchase, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {

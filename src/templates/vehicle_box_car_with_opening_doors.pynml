@@ -7,10 +7,10 @@
       don't conflate them :) -->
 <tal:user_flipped repeat="flipped ['unflipped', 'flipped']">
     // default graphics chain
-    spriteset(${vehicle.id}_ss_doors_closed_${flipped}, "${global_constants.graphics_path}${consist.id}.png") {
+    spriteset(${vehicle.id}_ss_doors_closed_${flipped}, "${graphics_path}${consist.id}.png") {
         spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.vehicle_length}_8_${flipped}(10)
     }
-    spriteset(${vehicle.id}_ss_doors_open_${flipped}, "${global_constants.graphics_path}${consist.id}.png") {
+    spriteset(${vehicle.id}_ss_doors_open_${flipped}, "${graphics_path}${consist.id}.png") {
         spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.vehicle_length}_8_${flipped}(10 + 30)
     }
 
@@ -48,7 +48,7 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, vehicle_is_fli
 <tal:include metal:use-macro="load: graphics_switches.pynml" />
 
 // buy menu graphics chain
-spriteset(${vehicle.id}_ss_purchase, "${global_constants.graphics_path}${consist.id}.png") {
+spriteset(${vehicle.id}_ss_purchase, "${graphics_path}${consist.id}.png") {
     spriteset_template_purchase_${vehicle.id}(10)
 }
 

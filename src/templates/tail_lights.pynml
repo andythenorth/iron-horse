@@ -19,10 +19,10 @@
                 [${bounding_box[0]}, y, ${bounding_box[1]}, ${bounding_box[2]}, ${utils.get_offsets(vehicle_length,flipped=True)[repeat.bounding_box.index][0]}, ${utils.get_offsets(vehicle_length,flipped=True)[repeat.bounding_box.index][1]}]
             </tal:sprite>
         }
-        spriteset(ss_tail_light_${pixel_length_as_str}_unflipped, "${global_constants.graphics_path}tail_lights/${pixel_length_as_str}.png") {
+        spriteset(ss_tail_light_${pixel_length_as_str}_unflipped, "${graphics_path}tail_lights/${pixel_length_as_str}.png") {
           spriteset_tail_light_${pixel_length_as_str}_unflipped(10)
         }
-        spriteset(ss_tail_light_${pixel_length_as_str}_flipped, "${global_constants.graphics_path}tail_lights/${pixel_length_as_str}.png") {
+        spriteset(ss_tail_light_${pixel_length_as_str}_flipped, "${graphics_path}tail_lights/${pixel_length_as_str}.png") {
           spriteset_tail_light_${pixel_length_as_str}_flipped(10)
         }
     </tal:block>
@@ -46,10 +46,10 @@
             </tal:sprite>
         }
 
-        spriteset(ss_tail_light_${engine[0]}_unflipped, "${global_constants.graphics_path}tail_lights/${engine[0]}.png") {
+        spriteset(ss_tail_light_${engine[0]}_unflipped, "${graphics_path}tail_lights/${engine[0]}.png") {
           spriteset_tail_light_${engine[0]}_unflipped(10)
         }
-        spriteset(ss_tail_light_${engine[0]}_flipped, "${global_constants.graphics_path}tail_lights/${engine[0]}.png") {
+        spriteset(ss_tail_light_${engine[0]}_flipped, "${graphics_path}tail_lights/${engine[0]}.png") {
           spriteset_tail_light_${engine[0]}_flipped(10)
         }
     </tal:block>
@@ -57,9 +57,9 @@
 
 
 
-spriteset(ss_tail_light_empty_unflipped, "${global_constants.graphics_path}tail_lights/empty.png") {
+spriteset(ss_tail_light_empty_unflipped, "${graphics_path}tail_lights/empty.png") {
   spriteset_tail_light_32px_unflipped(10)
 }
-spriteset(ss_tail_light_empty_flipped, "${global_constants.graphics_path}tail_lights/empty.png") {
+spriteset(ss_tail_light_empty_flipped, "${graphics_path}tail_lights/empty.png") {
   spriteset_tail_light_32px_flipped(10)
 }
