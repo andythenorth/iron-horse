@@ -10,11 +10,11 @@
       don't conflate them :) -->
 // default graphics chain
 spriteset(${vehicle.id}_ss_company_colour, "${global_constants.graphics_path}${consist.id}.png") {
-  spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.vehicle_length}_8_flipped(10)
+    spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.vehicle_length}_8_flipped(10)
 }
 <tal:cargo_variants repeat="cargo_variant_num python:range(consist.gestalt_graphics.num_cargo_sprite_variants)">
     spriteset(${vehicle.id}_ss_${cargo_variant_num}_unflipped, "${global_constants.graphics_path}${consist.id}.png") {
-      spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.vehicle_length}_8_unflipped(40 + ${cargo_variant_num * 30})
+        spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.vehicle_length}_8_unflipped(40 + ${cargo_variant_num * 30})
     }
 </tal:cargo_variants>
 
@@ -41,7 +41,7 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, vehicle_is_fli
 // buy menu graphics chain
 <tal:cargo_variants repeat="cargo_variant_num python:range(consist.gestalt_graphics.num_cargo_sprite_variants)">
     spriteset(${vehicle.id}_ss_purchase_${cargo_variant_num}, "${global_constants.graphics_path}${consist.id}.png") {
-      spriteset_template_purchase_${vehicle.id}(40 + ${cargo_variant_num * 30})
+        spriteset_template_purchase_${vehicle.id}(40 + ${cargo_variant_num * 30})
     }
 </tal:cargo_variants>
 

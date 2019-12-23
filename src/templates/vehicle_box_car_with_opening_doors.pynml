@@ -8,10 +8,10 @@
 <tal:user_flipped repeat="flipped ['unflipped', 'flipped']">
     // default graphics chain
     spriteset(${vehicle.id}_ss_doors_closed_${flipped}, "${global_constants.graphics_path}${consist.id}.png") {
-      spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.vehicle_length}_8_${flipped}(10)
+        spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.vehicle_length}_8_${flipped}(10)
     }
     spriteset(${vehicle.id}_ss_doors_open_${flipped}, "${global_constants.graphics_path}${consist.id}.png") {
-      spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.vehicle_length}_8_${flipped}(10 + 30)
+        spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.vehicle_length}_8_${flipped}(10 + 30)
     }
 
     <!--! be aware that 'loaded' in nml is really 'moving', i.e. not in a station loading/unloading -->
@@ -49,7 +49,7 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, vehicle_is_fli
 
 // buy menu graphics chain
 spriteset(${vehicle.id}_ss_purchase, "${global_constants.graphics_path}${consist.id}.png") {
-  spriteset_template_purchase_${vehicle.id}(10)
+    spriteset_template_purchase_${vehicle.id}(10)
 }
 
 spritegroup ${vehicle.id}_sg_purchase {

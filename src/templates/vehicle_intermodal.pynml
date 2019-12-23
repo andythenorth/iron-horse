@@ -8,10 +8,10 @@
 // position variants are 'default', 'first', 'last', 'middle', etc, and are dependent on consist_ruleset
 <tal:position_variants repeat="position_variant consist.gestalt_graphics.position_variants">
     spriteset(${vehicle.id}_ss_${position_variant}_unflipped, "${global_constants.graphics_path}${consist.id}.png") {
-      spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.vehicle_length}_8_unflipped(10 + ${repeat.position_variant.index * 60})
+        spriteset_template_${vehicle.symmetry_type}_unreversed_${vehicle.vehicle_length}_8_unflipped(10 + ${repeat.position_variant.index * 60})
     }
     spriteset(${vehicle.id}_ss_${position_variant}_flipped, "${global_constants.graphics_path}${consist.id}.png") {
-      spriteset_template_${vehicle.symmetry_type}_reversed_${vehicle.vehicle_length}_8_flipped(10 + ${repeat.position_variant.index * 60} + 30)
+        spriteset_template_${vehicle.symmetry_type}_reversed_${vehicle.vehicle_length}_8_flipped(10 + ${repeat.position_variant.index * 60} + 30)
     }
 
     // handle user flipped state
@@ -136,7 +136,7 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, getbits(extra_
 
 // buy menu graphics chain
 spriteset(${vehicle.id}_ss_vehicle_purchase, "${global_constants.graphics_path}${consist.id}.png") {
-  spriteset_template_purchase_${vehicle.id}(10)
+    spriteset_template_purchase_${vehicle.id}(10)
 }
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase, 0) {
     0: return ${vehicle.id}_ss_vehicle_purchase;
