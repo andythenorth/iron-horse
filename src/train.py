@@ -1131,27 +1131,6 @@ class CabooseCarConsist(CarConsist):
                                                        recolour_maps=graphics_constants.caboose_livery_recolour_maps)
 
 
-class CoalHopperCarConsist(CarConsist):
-    """
-    Limited set of bulk (mineral) cargos.  Same as standard hopper, but different appearance and defaults to coal.
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = 'coal_hopper_car'
-        super().__init__(**kwargs)
-        self.class_refit_groups = ['dump_freight']
-        self.label_refits_allowed = []  # none needed
-        self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label['non_dump_bulk']
-        self.default_cargos = polar_fox.constants.default_cargos['coal_hopper']
-        self.loading_speed_multiplier = 2
-        self.buy_cost_adjustment_factor = 1.2
-        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['freight_core']
-        # CC is swapped randomly (player can't choose), but also swap base livery on flip (player can choose
-        self.allow_flip = True
-        # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsVisibleCargo(bulk=True)
-
-
 class CoilCarConsist(CarConsist):
     """
     Coil car - for finished metals (steel, copper etc)
@@ -1469,13 +1448,13 @@ class GrainHopperCarConsist(CarConsist):
                                                                    cargo_specific_livery_uses_dedicated_input_row=True)
 
 
-class HopperCarConsist(CarConsist):
+class HopperCarConsistBase(CarConsist):
     """
-    Limited set of bulk (mineral) cargos.  Defaults to stone/ore-type cargos, a specific coal hopper is provided separately that defaults to coal.
+    Common base class for dump cars.
+    Limited set of bulk (mineral) cargos.
     """
 
     def __init__(self, **kwargs):
-        self.base_id = 'hopper_car'
         super().__init__(**kwargs)
         self.class_refit_groups = ['dump_freight']
         self.label_refits_allowed = []  # none needed
@@ -1488,6 +1467,41 @@ class HopperCarConsist(CarConsist):
         self.allow_flip = True
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(bulk=True)
+
+
+class HopperCarConsist(HopperCarConsistBase):
+    """
+    Standard Hopper Car.
+    Defaults to stone/ore-type cargos, specific coal, ore hoppers etc are provided separately with different defaults
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = 'hopper_car'
+        super().__init__(**kwargs)
+
+
+class HopperCarCoalConsist(HopperCarConsistBase):
+    """
+    Same as standard hopper, but different appearance and defaults to coal.
+    The classname breaks convention (would usually be CoalHopper), this is to keep all hopper subclasses togther).
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = 'coal_hopper_car'
+        super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos['coal_hopper']
+
+
+class HopperCarOreConsist(HopperCarConsistBase):
+    """
+    Same as standard hopper, but different appearance and defaults to iron ore.
+    The classname breaks convention (would usually be OreHopper), this is to keep all hopper subclasses togther).
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = 'ore_hopper_car'
+        super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos['coal_hopper'] # !! needs updated
 
 
 class IntermodalCarConsist(CarConsist):
@@ -1606,27 +1620,6 @@ class OpenCarConsist(CarConsist):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(bulk=True,
                                                             piece='open')
-
-
-class OreHopperCarConsist(CarConsist):
-    """
-    Limited set of bulk (mineral) cargos.  Same as standard hopper, but different appearance and defaults to iron ore.
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = 'ore_hopper_car'
-        super().__init__(**kwargs)
-        self.class_refit_groups = ['dump_freight']
-        self.label_refits_allowed = []  # none needed
-        self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label['non_dump_bulk']
-        self.default_cargos = polar_fox.constants.default_cargos['coal_hopper'] # !! needs updated
-        self.loading_speed_multiplier = 2
-        self.buy_cost_adjustment_factor = 1.2
-        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['freight_core']
-        # CC is swapped randomly (player can't choose), but also swap base livery on flip (player can choose
-        self.allow_flip = True
-        # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsVisibleCargo(bulk=True)
 
 
 class PassengerCarConsistBase(CarConsist):
