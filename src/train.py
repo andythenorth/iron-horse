@@ -1275,9 +1275,6 @@ class DumpCarConsist(DumpCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = 'dump_car'
         super().__init__(**kwargs)
-        # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsVisibleCargo(bulk=True,
-                                                            has_alt_livery=True)
 
 
 class DumpCarHighSideConsist(DumpCarConsistBase):
@@ -1303,6 +1300,19 @@ class DumpCarScrapMetalConsist(DumpCarConsistBase):
         self.base_id = 'scrap_metal_car'
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos['dump_high_sides'] # needs changed
+
+
+class DumpCarStoneConsist(DumpCarConsistBase):
+    """
+    Stone Car
+    Same as standard dump car, but different appearance and default cargos.
+    The classname breaks convention (would usually be StoneCar), this is to keep all dump car subclasses togther).
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = 'stone_car'
+        super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos['dump'] # needs changed
 
 
 class EdiblesTankCarConsist(CarConsist):
