@@ -2237,8 +2237,10 @@ class Train(object):
         return expression_template.substitute(offset=(3 * unit_offset))
 
     def get_spriteset_template_name(self, reversed, flipped, y):
-        fragments = ['spriteset_template', self.symmetry_type, reversed, str(self.vehicle_length), '8', flipped]
-        return  '_'.join(fragments) + '(' + str(y) + ')'
+        template_name = '_'.join(['spriteset_template', self.symmetry_type, reversed, str(self.vehicle_length), '8', flipped])
+        anim_flag = 'ANIM' if self.consist.suppress_animated_pixel_warnings else 'NOANIM'
+        args = ','.join([str(y), anim_flag])
+        return template_name + '(' + args + ')'
 
     def get_label_refits_allowed(self):
         # allowed labels, for fine-grained control in addition to classes
