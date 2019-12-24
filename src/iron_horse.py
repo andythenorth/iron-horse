@@ -48,6 +48,7 @@ from vehicles import luxury_passenger_cars
 from vehicles import mail_cars
 from vehicles import torpedo_cars
 from vehicles import open_cars
+from vehicles import ore_hopper_cars
 from vehicles import passenger_cars
 from vehicles import plate_cars
 from vehicles import reefer_cars
@@ -143,6 +144,7 @@ def main():
     livestock_cars.main()
     luxury_passenger_cars.main()
     mail_cars.main()
+    ore_hopper_cars.main()
     open_cars.main()
     passenger_cars.main()
     plate_cars.main()
