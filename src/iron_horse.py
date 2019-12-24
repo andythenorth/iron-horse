@@ -53,11 +53,11 @@ from vehicles import passenger_cars
 from vehicles import plate_cars
 from vehicles import reefer_cars
 from vehicles import scrap_metal_cars
+from vehicles import scrap_metal_cars_high_side
 from vehicles import sliding_wall_cars
 from vehicles import stake_cars
 from vehicles import silo_cars
 from vehicles import slag_ladle_cars
-# from vehicles import stone_cars
 from vehicles import tank_cars
 from vehicles import tarpaulin_cars
 #from vehicles import vehicle_transporter_cars
@@ -153,13 +153,10 @@ def main():
     reefer_cars.main()
     silo_cars.main()
     scrap_metal_cars.main()
+    scrap_metal_cars_high_side.main()
     slag_ladle_cars.main()
     sliding_wall_cars.main()
     stake_cars.main()
-    """
-    # unconvinced by stone cars
-    stone_cars.main()
-    """
     tank_cars.main()
     tarpaulin_cars.main()
     torpedo_cars.main()

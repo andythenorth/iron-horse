@@ -62,9 +62,9 @@ STR_NAME_SUFFIX_REEFER_CAR                                      :Refrigerated Va
 STR_NAME_SUFFIX_SILO_CAR                                        :Silo Wagon
 STR_NAME_SUFFIX_SLAG_LADLE_CAR                                  :Slag Ladle Wagon
 STR_NAME_SUFFIX_SLIDING_WALL_CAR                                :Sliding Wall Van
-STR_NAME_SUFFIX_SCRAP_METAL_CAR                                 :Scrap Metal Wagon
+STR_NAME_SUFFIX_SCRAP_METAL_CAR                                 :Scrap Wagon
+STR_NAME_SUFFIX_SCRAP_METAL_CAR_HIGH_SIDE                       :High Side Scrap Wagon
 STR_NAME_SUFFIX_STAKE_CAR                                       :Stake Wagon
-STR_NAME_SUFFIX_STONE_CAR                                       :Stone Wagon
 STR_NAME_SUFFIX_TANK_CAR                                        :Tanker
 STR_NAME_SUFFIX_TARPAULIN_CAR                                   :Tarpaulin Wagon
 STR_NAME_SUFFIX_TORPEDO_CAR                                     :Torpedo Wagon
