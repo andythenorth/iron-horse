@@ -52,6 +52,7 @@ from vehicles import ore_hopper_cars
 from vehicles import passenger_cars
 from vehicles import plate_cars
 from vehicles import reefer_cars
+from vehicles import scrap_metal_cars
 from vehicles import sliding_wall_cars
 from vehicles import stake_cars
 from vehicles import silo_cars
@@ -150,6 +151,7 @@ def main():
     plate_cars.main()
     reefer_cars.main()
     silo_cars.main()
+    scrap_metal_cars.main()
     slag_ladle_cars.main()
     sliding_wall_cars.main()
     stake_cars.main()

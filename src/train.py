@@ -1264,31 +1264,45 @@ class DumpCarConsistBase(CarConsist):
         # allow flipping, used to flip company colour
         self.allow_flip = True
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsVisibleCargo(bulk=True,
-                                                            has_alt_livery=True)
+        self.gestalt_graphics = GestaltGraphicsVisibleCargo(bulk=True)
 
 
 class DumpCarConsist(DumpCarConsistBase):
     """
-    Standard (Low Side) Dump Car
-    Limited set of bulk (mineral) cargos, same set as hopper cars.
+    Standard (Low Side) Dump Car.
     """
 
     def __init__(self, **kwargs):
         self.base_id = 'dump_car'
         super().__init__(**kwargs)
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsVisibleCargo(bulk=True,
+                                                            has_alt_livery=True)
 
 
 class DumpCarHighSideConsist(DumpCarConsistBase):
     """
-    High Side Dump Car
-    Limited set of bulk (mineral) cargos, same set as hopper cars.
+    High Side Dump Car.
+    Same as standard dump car, but different appearance and default cargos.
     """
 
     def __init__(self, **kwargs):
         self.base_id = 'dump_car_high_side'
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos['dump_high_sides']
+
+
+class DumpCarScrapMetalConsist(DumpCarConsistBase):
+    """
+    Scrap Metal Car
+    Same as standard dump car, but different appearance and default cargos.
+    The classname breaks convention (would usually be ScrapMetalCar), this is to keep all dump car subclasses togther).
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = 'scrap_metal_car'
+        super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos['dump_high_sides'] # needs changed
 
 
 class EdiblesTankCarConsist(CarConsist):
