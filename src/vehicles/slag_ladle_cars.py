@@ -9,7 +9,6 @@ def main():
                                   gen=1,
                                   subtype='U',
                                   speed=35, # note rare non-standard speed, don't spill molten slag eh?
-                                  suppress_animated_pixel_warnings=True,
                                   sprites_complete=True)
 
     consist.add_unit(type=SlagLadleCar,
@@ -21,7 +20,6 @@ def main():
                                   gen=4,
                                   subtype='U',
                                   speed=35, # note rare non-standard speed, don't spill molten slag eh?
-                                  suppress_animated_pixel_warnings=True,
                                   sprites_complete=True)
 
     consist.add_unit(type=SlagLadleCar,

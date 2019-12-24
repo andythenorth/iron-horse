@@ -1822,6 +1822,7 @@ class SlagLadleCarConsist(CarConsist):
         self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['freight_core']
         # CC is swapped randomly (player can't choose), but also swap base livery on flip (player can choose
         self.allow_flip = True
+        self.suppress_animated_pixel_warnings = True
         # Graphics configuration
         # custom gestalt due to non-standard load sprites, which are hand coloured, not generated
         self.gestalt_graphics = GestaltGraphicsCustom('vehicle_with_visible_cargo.pynml',
