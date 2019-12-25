@@ -564,28 +564,6 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
         vehicle_livery_spriterow_input_image = self.comp_chassis_and_body(self.vehicle_source_image.copy().crop(crop_box_source))
 
         vehicle_livery_spriterow_input_as_spritesheet = self.make_spritesheet_from_image(vehicle_livery_spriterow_input_image)
-        crop_box_dest = (0,
-                         0,
-                         self.sprites_max_x_extent,
-                         graphics_constants.spriterow_height)
-        # the default switch is to 2CC, this preserves the current random company colour when flipping, it's weird if both livery *and* CC swap on flip
-        # if the vehicle uses 2CC by default, then the switch needs inverted
-        if self.consist.gestalt_graphics.cargo_specific_livery_uses_2CC:
-            CC1 = 80 # value for CC2
-            CC2 = 198 # value for CC1
-        else:
-            CC1 = 198
-            CC2 = 80
-        generic_cc_livery_recolour_map = {CC1: CC2, CC1+1: CC2+1, CC1+2: CC2+2, CC1+3: CC2+3,
-                                          CC1+4: CC2+4, CC1+5: CC2+5, CC1+6: CC2+6, CC1+7: CC2+7,
-                                          136: CC2, 137: CC2+1, 138: CC2+2, 139: CC2+3,
-                                          140: CC2+4, 141: CC2+5, 142: CC2+6, 143: CC2+7}
-
-        self.units.append(AppendToSpritesheet(vehicle_livery_spriterow_input_as_spritesheet, crop_box_dest))
-        self.units.append(SimpleRecolour(generic_cc_livery_recolour_map))
-        self.units.append(AddCargoLabel(label='CC',
-                                        x_offset=self.sprites_max_x_extent + 5,
-                                        y_offset= -1 * graphics_constants.spriterow_height))
 
         # add arbitray cargo livery rows
         # note that these can either repurpose the same generic input sprite as the CC livery

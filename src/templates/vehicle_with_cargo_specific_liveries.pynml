@@ -8,40 +8,38 @@
 <!--! 'random_reverse' property is not supported in this template, vehicles using this template are all symmetrical, reversing would do nothing
       'flipped' is user flipping vehicle in depot and *is* supported here (used for livery selection tricks)
       don't conflate them :) -->
-// default graphics chain
-spriteset(${vehicle.id}_ss_company_colour, "${graphics_path}${consist.id}.png") {
-    ${vehicle.get_spriteset_template_name('unreversed', 'flipped', 10)}
-}
-<tal:cargo_variants repeat="cargo_variant_num python:range(consist.gestalt_graphics.num_cargo_sprite_variants)">
-    spriteset(${vehicle.id}_ss_${cargo_variant_num}_unflipped, "${graphics_path}${consist.id}.png") {
-        ${vehicle.get_spriteset_template_name('unreversed', 'unflipped', 40 + (cargo_variant_num * 30))}
+<tal:flipped repeat="flipped ['unflipped', 'flipped']">
+    <tal:cargo_variants repeat="cargo_variant_num python:range(consist.gestalt_graphics.num_cargo_sprite_variants)">
+        spriteset(${vehicle.id}_ss_${cargo_variant_num}_${flipped}, "${graphics_path}${consist.id}.png") {
+            ${vehicle.get_spriteset_template_name('unreversed', flipped, 10 + (cargo_variant_num * 30))}
+        }
+    </tal:cargo_variants>
+
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_cargo_type_${flipped}, cargo_type_in_veh) {
+        <tal:cargos repeat="mapping consist.gestalt_graphics.cargo_row_map.items()">
+            <tal:exclude_default_cargo condition="mapping[0] != 'DFLT'">
+                <!--! cargo_row_map has a legacy list format to support random variants, which isn't used here, just take first item -->
+                ${mapping[0]}: return ${vehicle.id}_ss_${mapping[1][0]}_${flipped};
+            </tal:exclude_default_cargo>
+        </tal:cargos>
+        <tal:default_cargo repeat="mapping consist.gestalt_graphics.cargo_row_map.items()">
+            <tal:block condition="mapping[0] == 'DFLT'">
+                return  ${vehicle.id}_ss_${mapping[1][0]}_${flipped};
+            </tal:block>
+        </tal:default_cargo>
     }
-</tal:cargo_variants>
+</tal:flipped>
 
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_cargo_type, cargo_type_in_veh) {
-    <tal:cargos repeat="mapping consist.gestalt_graphics.cargo_row_map.items()">
-        <tal:exclude_default_cargo condition="mapping[0] != 'DFLT'">
-            <!--! cargo_row_map has a legacy list format to support random variants, which isn't used here, just take first item -->
-            ${mapping[0]}: return ${vehicle.id}_ss_${mapping[1][0]}_unflipped;
-        </tal:exclude_default_cargo>
-    </tal:cargos>
-    <tal:default_cargo repeat="mapping consist.gestalt_graphics.cargo_row_map.items()">
-        <tal:block condition="mapping[0] == 'DFLT'">
-            return  ${vehicle.id}_ss_${mapping[1][0]}_unflipped;
-        </tal:block>
-    </tal:default_cargo>
-}
-
-// flip state sets cargo-specific livery or CC
+// handle user flipped state
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, vehicle_is_flipped) {
-    1: return ${vehicle.id}_ss_company_colour;
-    return ${vehicle.id}_switch_graphics_cargo_type;
+    1: return ${vehicle.id}_switch_graphics_cargo_type_flipped;
+    return ${vehicle.id}_switch_graphics_cargo_type_unflipped;
 }
 
 // buy menu graphics chain
 <tal:cargo_variants repeat="cargo_variant_num python:range(consist.gestalt_graphics.num_cargo_sprite_variants)">
     spriteset(${vehicle.id}_ss_purchase_${cargo_variant_num}, "${graphics_path}${consist.id}.png") {
-        spriteset_template_purchase_${vehicle.id}(40 + ${cargo_variant_num * 30})
+        spriteset_template_purchase_${vehicle.id}(10 + ${cargo_variant_num * 30})
     }
 </tal:cargo_variants>
 
