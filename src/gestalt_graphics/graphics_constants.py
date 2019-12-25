@@ -57,6 +57,14 @@ caboose_livery_recolour_maps = (# DFLT can be used twice here with no problems, 
                                           40: CC1, 41: CC1+1, 42: CC1+2, 43: CC1+3,
                                           44: CC1+4, 45: CC1+5, 46: CC1+6, 47: CC1+7}),)
 
+carbon_black_hopper_car_livery_recolour_maps = (# only one livery provided here, black
+                                                ("DFLT", {136: 1, 137: 2, 138: 3, 139: 4,
+                                                     140: 5, 141: 6, 142: 7, 143: 8,
+                                                     96: 1, 97: 2, 98: 3, 99: 4,
+                                                     100: 5, 101: 6, 102: 7, 103: 8,
+                                                     154: 1, 155: 2, 156: 3, 157: 4,
+                                                     158: 5, 159: 6, 160: 7, 161: 8}),)
+
 coil_car_livery_recolour_maps = (("DFLT", body_recolour_CC1),)
 
 # quite minimal set for covered hoppers, most look better with default
@@ -81,12 +89,6 @@ covered_hopper_car_livery_recolour_maps = (("DFLT", {136: 4, 137: 5, 138: 6, 139
                                                      100: 5, 101: 6, 102: 7, 103: 8,
                                                      154: CC1, 155: CC1+1, 156: CC1+2, 157: CC1+3,
                                                      158: CC1+4, 159: CC1+5, 160: CC1+6, 161: CC1+7}),
-                                           ("CBLK", {136: 1, 137: 2, 138: 3, 139: 4,
-                                                     140: 5, 141: 6, 142: 7, 143: 8,
-                                                     96: 1, 97: 2, 98: 3, 99: 4,
-                                                     100: 5, 101: 6, 102: 7, 103: 8,
-                                                     154: 1, 155: 2, 156: 3, 157: 4,
-                                                     158: 5, 159: 6, 160: 7, 161: 8}),
                                            ("CMNT", {136: 53, 137: 54, 138: 6, 139: 57,
                                                      140: 30, 141: 38, 142: 12, 143: 14,
                                                      96: CC1, 97: CC1+1, 98: CC1+2, 99: CC1+3,
