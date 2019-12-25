@@ -95,7 +95,7 @@ def main():
                              sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     chassis='2_axle_gapped_greebled_24px')
+                     chassis='4_axle_sparse_24px')
 
 
     consist = DumpCarConsist(roster_id='pony',
@@ -125,7 +125,7 @@ def main():
                              sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     chassis='2_axle_gapped_greebled_24px')
+                     chassis='4_axle_sparse_24px')
 
 
     consist = DumpCarConsist(roster_id='pony',
@@ -135,4 +135,4 @@ def main():
                              sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
-                     chassis='4_axle_gapped_greebled_32px')
+                     chassis='4_axle_sparse_32px')
