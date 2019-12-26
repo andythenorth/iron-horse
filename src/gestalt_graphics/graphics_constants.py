@@ -141,6 +141,14 @@ fruit_veg_livery_recolour_maps = (("DFLT", {136: CC2, 137: CC2+1, 138: CC2+2, 13
 # minimalist for grain hoppers, just body colour (others were tried but found to be blah blah)
 grain_hopper_car_livery_recolour_maps = (("DFLT", body_recolour_CC1),)
 
+kaolin_clay_car_livery_recolour_maps = (# only one livery provided here, CC + White
+                                        ("DFLT", {136: 6, 137: 7, 138: 8, 139: 9,
+                                                  140: 11, 141: 12, 142: 13, 143: 14,
+                                                  96: 1, 97: 2, 98: 3, 99: 4,
+                                                  100: 5, 101: 6, 102: 7, 103: 8,
+                                                  154: CC1, 155: CC1+1, 156: CC1+2, 157: CC1+3,
+                                                  158: CC1+4, 159: CC1+5, 160: CC1+6, 161: CC1+7}),)
+
 livestock_livery_recolour_maps = (("DFLT", body_recolour_CC2),)
 
 refrigerated_livery_recolour_maps = (("DFLT", {136: 18, 137: 19, 138: 20, 139: 21,

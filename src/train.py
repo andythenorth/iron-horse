@@ -1131,49 +1131,6 @@ class CabooseCarConsist(CarConsist):
                                                        recolour_maps=graphics_constants.caboose_livery_recolour_maps)
 
 
-class CoilCarConsist(CarConsist):
-    """
-    Coil car - for finished metals (steel, copper etc)
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = 'coil_car'
-        super().__init__(**kwargs)
-        self.class_refit_groups = []
-        self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label['cold_metal']
-        self.label_refits_disallowed = []
-        self.default_cargos = polar_fox.constants.default_cargos['metal']
-        self.buy_cost_adjustment_factor = 1.1
-        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['non_core_wagons']
-        # allow flipping, used to flip company colour
-        self.allow_flip = True
-        # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(id_base='coil_car',
-                                                                  recolour_maps=graphics_constants.coil_car_livery_recolour_maps)
-
-
-class CoveredHopperCarConsist(CarConsist):
-    """
-    Bulk cargos needing covered protection.  See also Grain Hopper which is similar, but reduced refits.
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = 'covered_hopper_car'
-        super().__init__(**kwargs)
-        self.class_refit_groups = []  # no classes, use explicit labels
-        self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label['covered_hoppers']
-        self.label_refits_disallowed = []
-        self.default_cargos = polar_fox.constants.default_cargos['covered_hopper']
-        self.loading_speed_multiplier = 2
-        self.buy_cost_adjustment_factor = 1.2
-        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['non_core_wagons']
-        # CC is swapped randomly (player can't choose), but also swap base livery on flip (player can choose)
-        self.allow_flip = True
-        # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.covered_hopper_car_livery_recolour_maps,
-                                                                   cargo_specific_livery_uses_dedicated_input_row=True)
-
-
 class CarbonBlackHopperCarConsist(CarConsist):
     """
     Dedicated covered hopper car for carbon black.  No other cargos.
@@ -1219,6 +1176,49 @@ class ChemicalsTankCarConsist(CarConsist):
         self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=polar_fox.constants.chemicals_tanker_livery_recolour_maps,
                                                                    cargo_specific_livery_uses_dedicated_input_row=True)
 
+
+
+class CoilCarConsist(CarConsist):
+    """
+    Coil car - for finished metals (steel, copper etc)
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = 'coil_car'
+        super().__init__(**kwargs)
+        self.class_refit_groups = []
+        self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label['cold_metal']
+        self.label_refits_disallowed = []
+        self.default_cargos = polar_fox.constants.default_cargos['metal']
+        self.buy_cost_adjustment_factor = 1.1
+        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['non_core_wagons']
+        # allow flipping, used to flip company colour
+        self.allow_flip = True
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(id_base='coil_car',
+                                                                  recolour_maps=graphics_constants.coil_car_livery_recolour_maps)
+
+
+class CoveredHopperCarConsist(CarConsist):
+    """
+    Bulk cargos needing covered protection.  See also Grain Hopper which is similar, but reduced refits.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = 'covered_hopper_car'
+        super().__init__(**kwargs)
+        self.class_refit_groups = []  # no classes, use explicit labels
+        self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label['covered_hoppers']
+        self.label_refits_disallowed = []
+        self.default_cargos = polar_fox.constants.default_cargos['covered_hopper']
+        self.loading_speed_multiplier = 2
+        self.buy_cost_adjustment_factor = 1.2
+        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['non_core_wagons']
+        # CC is swapped randomly (player can't choose), but also swap base livery on flip (player can choose)
+        self.allow_flip = True
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.covered_hopper_car_livery_recolour_maps,
+                                                                   cargo_specific_livery_uses_dedicated_input_row=True)
 
 
 class CryoTankCarConsist(CarConsist):
@@ -1581,6 +1581,29 @@ class IntermodalCarConsist(CarConsist):
             return 'low_floor'
         else:
             return 'default'
+
+
+class KaolinClayCarConsist(CarConsist):
+    """
+    Dedicated covered wagon for kaolin / clay.  No other cargos.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = 'kaolin_clay_car'
+        super().__init__(**kwargs)
+        self.class_refit_groups = []  # no classes, use explicit labels
+        self.label_refits_allowed = ['KAOL', 'CLAY']
+        self.label_refits_disallowed = []
+        self.default_cargos = []
+        self.loading_speed_multiplier = 2
+        self.buy_cost_adjustment_factor = 1.2
+        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['non_core_wagons']
+        # CC is swapped randomly (player can't choose), but also swap base livery on flip (player can choose)
+        self.allow_flip = True
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.kaolin_clay_car_livery_recolour_maps,
+                                                                   cargo_specific_livery_uses_dedicated_input_row=True)
+
 
 class LivestockCarConsist(CarConsist):
     """

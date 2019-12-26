@@ -44,6 +44,7 @@ from vehicles import grain_hopper_cars
 from vehicles import hopper_cars
 from vehicles import hst_passenger_cars
 from vehicles import intermodal_cars
+from vehicles import kaolin_clay_cars
 from vehicles import livestock_cars
 from vehicles import luxury_passenger_cars
 from vehicles import mail_cars
@@ -145,6 +146,7 @@ def main():
     hopper_cars.main()
     hst_passenger_cars.main()
     intermodal_cars.main()
+    kaolin_clay_cars.main()
     livestock_cars.main()
     luxury_passenger_cars.main()
     mail_cars.main()
