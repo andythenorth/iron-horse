@@ -28,7 +28,6 @@ STR_NAME_SUFFIX_STEAM                                           :(vapor)
 # !! consider splitting strings per roster?? A US caboose is still a 'caboose' in en-gb, not a brake van
 STR_NAME_SUFFIX_BOX_CAR                                         :Furgón
 STR_NAME_SUFFIX_CABOOSE_CAR                                     :Cabús
-STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Tolva cubierta
 STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Cisterna de alimentos
 STR_NAME_SUFFIX_FLAT_CAR                                        :Plataforma
 STR_NAME_SUFFIX_HOPPER_CAR                                      :Tolva

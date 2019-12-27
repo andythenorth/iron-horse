@@ -27,7 +27,6 @@ STR_NAME_SUFFIX_STEAM                                           :(Stoom)
 # !! consider splitting strings per roster?? A US caboose is still a 'caboose' in en-gb, not a brake van
 STR_NAME_SUFFIX_BOX_CAR                                         :Boks Wa
 STR_NAME_SUFFIX_CABOOSE_CAR                                     :Kondukteurs Wa
-STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Bedekte Laai Wa
 STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Eetbare Tenk Wa
 STR_NAME_SUFFIX_FLAT_CAR                                        :Plat Wa
 STR_NAME_SUFFIX_HOPPER_CAR                                      :Laai Wa

@@ -31,7 +31,6 @@ STR_NAME_SUFFIX_LARGE                                           :Stor
 # !! consider splitting strings per roster?? A US caboose is still a 'caboose' in en-gb, not a brake van
 STR_NAME_SUFFIX_BOX_CAR                                         :Skåpbil
 STR_NAME_SUFFIX_CABOOSE_CAR                                     :Bromsvagn
-STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Sluten Lådvagn
 STR_NAME_SUFFIX_DUMP_CAR                                        :Dumpningsbar Lastvagn
 STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Tankvagn för Matolja
 STR_NAME_SUFFIX_FLAT_CAR                                        :Flakvagn
