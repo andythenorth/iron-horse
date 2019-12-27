@@ -106,7 +106,7 @@ def main():
 
 
     consist = RubberTankCarConsist(roster_id='pony',
-                             base_numeric_id=4600,
+                             base_numeric_id=4700,
                              gen=5,
                              subtype='C',
                              sprites_complete=True)
@@ -127,7 +127,7 @@ def main():
     """
 
     consist = RubberTankCarConsist(roster_id='pony',
-                             base_numeric_id=4620,
+                             base_numeric_id=4710,
                              gen=6,
                              subtype='B',
                              sprites_complete=True)
@@ -137,7 +137,7 @@ def main():
 
 
     consist = RubberTankCarConsist(roster_id='pony',
-                             base_numeric_id=4630,
+                             base_numeric_id=4720,
                              gen=6,
                              subtype='C',
                              sprites_complete=True)

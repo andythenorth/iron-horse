@@ -55,7 +55,7 @@ from vehicles import plate_cars
 from vehicles import reefer_cars
 from vehicles import rock_hopper_cars
 from vehicles import rock_covered_hopper_cars
-#from vehicles import rubber_tank_cars
+from vehicles import rubber_tank_cars
 from vehicles import scrap_metal_cars
 from vehicles import sliding_wall_cars
 from vehicles import stake_cars
@@ -157,7 +157,7 @@ def main():
     reefer_cars.main()
     rock_hopper_cars.main()
     rock_covered_hopper_cars.main()
-    #rubber_tank_cars.main()
+    rubber_tank_cars.main()
     silo_cars.main()
     scrap_metal_cars.main()
     slag_ladle_cars.main()
