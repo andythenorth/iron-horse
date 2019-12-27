@@ -36,9 +36,9 @@ STR_NAME_SUFFIX_BOX_CAR                                         :Box Van
 STR_NAME_SUFFIX_CABOOSE_CAR                                     :Brake Van
 STR_NAME_SUFFIX_CARBON_BLACK_HOPPER_CAR                         :Carbon Black Hopper
 STR_NAME_SUFFIX_CHEMICALS_TANK_CAR                              :Chemicals Tanker
+STR_NAME_SUFFIX_CLAY_COVERED_HOPPER_CAR                         :Clay Covered Hopper
 STR_NAME_SUFFIX_COAL_HOPPER_CAR                                 :Coal Hopper
 STR_NAME_SUFFIX_COIL_CAR                                        :Coil Car
-STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Covered Rock Hopper
 STR_NAME_SUFFIX_CRYO_TANK_CAR                                   :Cryo Tanker
 STR_NAME_SUFFIX_CURTAIN_SIDE_BOX_CAR                            :Curtain Side Van
 STR_NAME_SUFFIX_DUMP_CAR                                        :Mineral Wagon
@@ -51,16 +51,17 @@ STR_NAME_SUFFIX_FRUIT_VEG_CAR                                   :Fruit & Vegetab
 STR_NAME_SUFFIX_GRAIN_HOPPER_CAR                                :Grain Hopper
 STR_NAME_SUFFIX_HST_PASSENGER_CAR                               :HST Passenger Coach
 STR_NAME_SUFFIX_INTERMODAL_CAR                                  :Container Wagon
-STR_NAME_SUFFIX_KAOLIN_CLAY_CAR                                 :Clay Hopper
 STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Livestock Wagon
 STR_NAME_SUFFIX_LUXURY_PASSENGER_CAR                            :Luxury Passenger Coach
 STR_NAME_SUFFIX_MAIL_CAR                                        :Mail Van
 STR_NAME_SUFFIX_OPEN_CAR                                        :Open Wagon
 STR_NAME_SUFFIX_ORE_HOPPER_CAR                                  :Ore Hopper
+STR_NAME_SUFFIX_ORE_COVERED_HOPPER_CAR                          :Ore Covered Hopper
 STR_NAME_SUFFIX_PASSENGER_CAR                                   :Passenger Coach
 STR_NAME_SUFFIX_PLATE_CAR                                       :Plate Wagon
 STR_NAME_SUFFIX_REEFER_CAR                                      :Refrigerated Van
 STR_NAME_SUFFIX_ROCK_HOPPER_CAR                                 :Rock Hopper
+STR_NAME_SUFFIX_ROCK_COVERED_HOPPER_CAR                         :Rock Covered Hopper
 STR_NAME_SUFFIX_RUBBER_TANK_CAR                                 :Rubber Tanker
 STR_NAME_SUFFIX_SILO_CAR                                        :Powder Tanker
 STR_NAME_SUFFIX_SLAG_LADLE_CAR                                  :Slag Ladle Wagon

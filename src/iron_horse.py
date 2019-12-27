@@ -28,9 +28,9 @@ from vehicles import box_cars
 from vehicles import caboose_cars
 from vehicles import carbon_black_hopper_cars
 from vehicles import chemicals_tank_cars
+from vehicles import clay_covered_hopper_cars
 from vehicles import coil_cars
 from vehicles import coal_hopper_cars
-from vehicles import covered_hopper_cars
 from vehicles import cryo_tank_cars
 from vehicles import curtain_side_box_cars
 from vehicles import dump_cars
@@ -43,17 +43,18 @@ from vehicles import fruit_veg_cars
 from vehicles import grain_hopper_cars
 from vehicles import hst_passenger_cars
 from vehicles import intermodal_cars
-from vehicles import kaolin_clay_cars
 from vehicles import livestock_cars
 from vehicles import luxury_passenger_cars
 from vehicles import mail_cars
 from vehicles import torpedo_cars
 from vehicles import open_cars
 from vehicles import ore_hopper_cars
+from vehicles import ore_covered_hopper_cars
 from vehicles import passenger_cars
 from vehicles import plate_cars
 from vehicles import reefer_cars
 from vehicles import rock_hopper_cars
+from vehicles import rock_covered_hopper_cars
 #from vehicles import rubber_tank_cars
 from vehicles import scrap_metal_cars
 from vehicles import sliding_wall_cars
@@ -130,9 +131,9 @@ def main():
     caboose_cars.main()
     carbon_black_hopper_cars.main()
     chemicals_tank_cars.main()
+    clay_covered_hopper_cars.main()
     coil_cars.main()
     coal_hopper_cars.main()
-    covered_hopper_cars.main()
     cryo_tank_cars.main()
     curtain_side_box_cars.main()
     dump_cars.main()
@@ -145,16 +146,17 @@ def main():
     grain_hopper_cars.main()
     hst_passenger_cars.main()
     intermodal_cars.main()
-    kaolin_clay_cars.main()
     livestock_cars.main()
     luxury_passenger_cars.main()
     mail_cars.main()
     ore_hopper_cars.main()
+    ore_covered_hopper_cars.main()
     open_cars.main()
     passenger_cars.main()
     plate_cars.main()
     reefer_cars.main()
     rock_hopper_cars.main()
+    rock_covered_hopper_cars.main()
     #rubber_tank_cars.main()
     silo_cars.main()
     scrap_metal_cars.main()

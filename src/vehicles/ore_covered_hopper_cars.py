@@ -1,103 +1,103 @@
-from train import CoveredHopperCarConsist, FreightCar
+from train import MineralCoveredHopperCarOreConsist, FreightCar
 
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
-    consist = CoveredHopperCarConsist(roster_id='pony',
-                                      base_numeric_id=1270,
+    consist = MineralCoveredHopperCarOreConsist(roster_id='pony',
+                                      base_numeric_id=4600,
                                       gen=2,
                                       subtype='A',
-                                      sprites_complete=True)
+                                      sprites_complete=False)
 
     consist.add_unit(type=FreightCar,
                      chassis='2_axle_gapped_16px')
 
 
-    consist = CoveredHopperCarConsist(roster_id='pony',
-                                      base_numeric_id=1260,
+    consist = MineralCoveredHopperCarOreConsist(roster_id='pony',
+                                      base_numeric_id=4610,
                                       gen=3,
                                       subtype='A',
-                                      sprites_complete=True)
+                                      sprites_complete=False)
 
     consist.add_unit(type=FreightCar,
                      chassis='2_axle_gapped_16px')
 
 
-    consist = CoveredHopperCarConsist(roster_id='pony',
-                                      base_numeric_id=2940,
+    consist = MineralCoveredHopperCarOreConsist(roster_id='pony',
+                                      base_numeric_id=4620,
                                       gen=4,
                                       subtype='A',
-                                      sprites_complete=True)
+                                      sprites_complete=False)
 
     consist.add_unit(type=FreightCar,
                      chassis='2_axle_sparse_16px')
 
 
-    consist = CoveredHopperCarConsist(roster_id='pony',
-                                      base_numeric_id=1230,
+    consist = MineralCoveredHopperCarOreConsist(roster_id='pony',
+                                      base_numeric_id=4630,
                                       gen=4,
                                       subtype='B',
-                                      sprites_complete=True)
+                                      sprites_complete=False)
 
     consist.add_unit(type=FreightCar,
                      chassis='2_axle_gapped_24px')
 
 
-    consist = CoveredHopperCarConsist(roster_id='pony',
-                                      base_numeric_id=2070,
+    consist = MineralCoveredHopperCarOreConsist(roster_id='pony',
+                                      base_numeric_id=4640,
                                       gen=5,
                                       subtype='A',
-                                      sprites_complete=True)
+                                      sprites_complete=False)
 
     consist.add_unit(type=FreightCar,
                      chassis='2_axle_filled_16px')
 
 
-    consist = CoveredHopperCarConsist(roster_id='pony',
-                                      base_numeric_id=1240,
+    consist = MineralCoveredHopperCarOreConsist(roster_id='pony',
+                                      base_numeric_id=4650,
                                       gen=5,
                                       subtype='B',
-                                      sprites_complete=True)
+                                      sprites_complete=False)
 
     consist.add_unit(type=FreightCar,
                      chassis='4_axle_filled_greebled_24px')
 
 
-    consist = CoveredHopperCarConsist(roster_id='pony',
-                                      base_numeric_id=2700,
+    consist = MineralCoveredHopperCarOreConsist(roster_id='pony',
+                                      base_numeric_id=4660,
                                       gen=5,
                                       subtype='C',
-                                      sprites_complete=True)
+                                      sprites_complete=False)
 
     consist.add_unit(type=FreightCar,
                      chassis='4_axle_filled_greebled_32px')
 
 
-    consist = CoveredHopperCarConsist(roster_id='pony',
-                                      base_numeric_id=2060,
+    consist = MineralCoveredHopperCarOreConsist(roster_id='pony',
+                                      base_numeric_id=4670,
                                       gen=6,
                                       subtype='A',
-                                      sprites_complete=True)
+                                      sprites_complete=False)
 
     consist.add_unit(type=FreightCar,
                      chassis='2_axle_filled_16px')
 
 
-    consist = CoveredHopperCarConsist(roster_id='pony',
-                                      base_numeric_id=3040,
+    consist = MineralCoveredHopperCarOreConsist(roster_id='pony',
+                                      base_numeric_id=4680,
                                       gen=6,
                                       subtype='B',
-                                      sprites_complete=True)
+                                      sprites_complete=False)
 
     consist.add_unit(type=FreightCar,
                      chassis='4_axle_filled_greebled_24px')
 
 
-    consist = CoveredHopperCarConsist(roster_id='pony',
-                                      base_numeric_id=2910,
+    consist = MineralCoveredHopperCarOreConsist(roster_id='pony',
+                                      base_numeric_id=4690,
                                       gen=6,
                                       subtype='C',
-                                      sprites_complete=True)
+                                      sprites_complete=False)
 
     consist.add_unit(type=FreightCar,
                      chassis='4_axle_filled_greebled_32px')
