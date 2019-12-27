@@ -46,16 +46,6 @@ def main():
 
 
     consist = RubberTankCarConsist(roster_id='pony',
-                             base_numeric_id=4320,
-                             gen=3,
-                             subtype='C',
-                             sprites_complete=True)
-
-    consist.add_unit(type=FreightCar,
-                     chassis='4_axle_gapped_32px')
-
-
-    consist = RubberTankCarConsist(roster_id='pony',
                              base_numeric_id=4330,
                              gen=4,
                              subtype='A',
@@ -114,17 +104,6 @@ def main():
     consist.add_unit(type=FreightCar,
                      chassis='4_axle_sparse_32px')
 
-    """
-    # not needed?
-    consist = RubberTankCarConsist(roster_id='pony',
-                             base_numeric_id=4610,
-                             gen=6,
-                             subtype='A',
-                             sprites_complete=True)
-
-    consist.add_unit(type=FreightCar,
-                     chassis='2_axle_sparse_16px')
-    """
 
     consist = RubberTankCarConsist(roster_id='pony',
                              base_numeric_id=4710,
