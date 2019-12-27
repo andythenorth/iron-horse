@@ -164,9 +164,13 @@ rock_covered_hopper_car_livery_recolour_maps = (("DFLT", {136: CC1, 137: CC1+1, 
                                                      154: CC1, 155: CC1+1, 156: CC1+2, 157: CC1+3,
                                                      158: CC1+4, 159: CC1+5, 160: CC1+6, 161: CC1+7}),)
 
+# should be in polar fox
 rubber_tank_car_livery_recolour_maps = (("DFLT", {136: 40, 137: 41, 138: 42, 139: 43,
                                                   140: 44, 141: 45, 142: 46, 143: 47}),)
 
+# should be in polar fox
+sulphur_tank_car_livery_recolour_maps = (("DFLT", {136: 62, 137: 63, 138: 64, 139: 65,
+                                                   140: 66, 141: 67, 142: 68, 143: 69}),)
 
 sliding_wall_livery_recolour_maps = (("DFLT", {40: 4, 41: 5, 42: 6, 43: 7,
                                                44: 20, 45: 21, 46: 22, 47: 13}),)
