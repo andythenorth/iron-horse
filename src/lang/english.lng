@@ -58,6 +58,7 @@ STR_NAME_SUFFIX_OPEN_CAR                                        :Open Wagon
 STR_NAME_SUFFIX_ORE_HOPPER_CAR                                  :Ore Hopper
 STR_NAME_SUFFIX_ORE_COVERED_HOPPER_CAR                          :Ore Covered Hopper
 STR_NAME_SUFFIX_PASSENGER_CAR                                   :Passenger Coach
+STR_NAME_SUFFIX_PETROL_TANK_CAR                                 :Petrol Tanker
 STR_NAME_SUFFIX_PLATE_CAR                                       :Plate Wagon
 STR_NAME_SUFFIX_REEFER_CAR                                      :Refrigerated Van
 STR_NAME_SUFFIX_ROCK_HOPPER_CAR                                 :Rock Hopper
@@ -68,7 +69,7 @@ STR_NAME_SUFFIX_SLAG_LADLE_CAR                                  :Slag Ladle Wago
 STR_NAME_SUFFIX_SLIDING_WALL_CAR                                :Sliding Wall Van
 STR_NAME_SUFFIX_SCRAP_METAL_CAR                                 :Scrap Wagon
 STR_NAME_SUFFIX_STAKE_CAR                                       :Stake Wagon
-STR_NAME_SUFFIX_TANK_CAR                                        :Tanker
+STR_NAME_SUFFIX_TANK_CAR                                        :Oil Tanker
 STR_NAME_SUFFIX_TARPAULIN_CAR                                   :Tarpaulin Wagon
 STR_NAME_SUFFIX_TORPEDO_CAR                                     :Torpedo Wagon
 STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Vehicle Transporter

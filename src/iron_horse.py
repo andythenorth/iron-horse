@@ -51,6 +51,7 @@ from vehicles import open_cars
 from vehicles import ore_hopper_cars
 from vehicles import ore_covered_hopper_cars
 from vehicles import passenger_cars
+from vehicles import petrol_tank_cars
 from vehicles import plate_cars
 from vehicles import reefer_cars
 from vehicles import rock_hopper_cars
@@ -153,6 +154,7 @@ def main():
     ore_covered_hopper_cars.main()
     open_cars.main()
     passenger_cars.main()
+    petrol_tank_cars.main()
     plate_cars.main()
     reefer_cars.main()
     rock_hopper_cars.main()

@@ -1163,9 +1163,10 @@ class ChemicalsTankCarConsist(CarConsist):
         # Pikka: if people complain that it's unrealistic, tell them "don't do it then"
         self.base_id = 'chemicals_tank_car'
         super().__init__(**kwargs)
-        self.class_refit_groups = []  # no classes, use explicit labels
-        self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label['chemicals']
-        self.default_cargos = polar_fox.constants.default_cargos['chemicals_tank']
+        self.class_refit_groups = ['liquids']
+        self.label_refits_allowed = []
+        self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label['non_generic_liquids']
+        self.default_cargos = polar_fox.constants.default_cargos['tank']
         self.loading_speed_multiplier = 2
         self.buy_cost_adjustment_factor = 1.33
         self.floating_run_cost_multiplier = 1.5
@@ -1173,8 +1174,7 @@ class ChemicalsTankCarConsist(CarConsist):
         # allow flipping, used to flip company colour
         self.allow_flip = True
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=polar_fox.constants.chemicals_tanker_livery_recolour_maps,
-                                                                   cargo_specific_livery_uses_dedicated_input_row=True)
+        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.chemicals_tank_car_livery_recolour_maps)
 
 
 
@@ -2022,8 +2022,31 @@ class TankCarConsist(CarConsist):
         # allow flipping, used to flip company colour
         self.allow_flip = True
         # Graphics configuration
-        # recolour maps need processing, it includes an option for intermodal container body colour, not wanted here
         self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=polar_fox.constants.tanker_livery_recolour_maps)
+
+
+class PetrolTankCarConsist(CarConsist):
+    """
+    All non-edible liquid cargos
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = 'petrol_tank_car'
+        super().__init__(**kwargs)
+        # tank cars are unrealistically autorefittable, and at no cost
+        # Pikka: if people complain that it's unrealistic, tell them "don't do it then"
+        # they also change livery at stations if refitted between certain cargo types <shrug>
+        self.class_refit_groups = ['liquids']
+        self.label_refits_allowed = []
+        self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label['non_generic_liquids']
+        self.default_cargos = polar_fox.constants.default_cargos['tank']
+        self.loading_speed_multiplier = 3
+        self.buy_cost_adjustment_factor = 1.2
+        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['freight_core']
+        # allow flipping, used to flip company colour
+        self.allow_flip = True
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.petrol_tank_car_livery_recolour_maps)
 
 
 class TarpaulinCarConsist(CarConsist):

@@ -65,6 +65,10 @@ carbon_black_hopper_car_livery_recolour_maps = (# only one livery provided here,
                                                      154: 1, 155: 2, 156: 3, 157: 4,
                                                      158: 5, 159: 6, 160: 7, 161: 8}),)
 
+# HAX - chemicals_tanker_livery_recolour_maps_extended is already provided in Polar Fox, but I restructured tanker liveries
+chemicals_tank_car_livery_recolour_maps = (("DFLT", {136: CC1, 137: CC1+1, 138: CC1+2, 139: CC1+3,
+                                                     140: CC1+4, 141: CC1+5, 142: CC1+6, 143: CC1+7}),)
+
 clay_covered_hopper_car_livery_recolour_maps = (# only one livery provided here, CC + White
                                                 ("DFLT", {136: 6, 137: 7, 138: 8, 139: 9,
                                                           140: 11, 141: 12, 142: 13, 143: 14,
@@ -97,6 +101,9 @@ ore_covered_hopper_car_livery_recolour_maps = (("DFLT", {136: 112, 137: 113, 138
                                                          100: CC1+4, 101: CC1+5, 102: CC1+6, 103: CC1+7,
                                                          154: 112, 155: 113, 156: 33, 157: 115,
                                                          158: 35, 159: 118, 160: 38, 161: 39}),)
+
+petrol_tank_car_livery_recolour_maps = (("DFLT", {136: 16, 137: 17, 138: 18, 139: 19,
+                                                  140: 20, 141: 21, 142: 22, 143: 23}),)
 
 refrigerated_livery_recolour_maps = (("DFLT", {136: 18, 137: 19, 138: 20, 139: 21,
                                                140: 22, 141: 13, 142: 14, 143: 15,
