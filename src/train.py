@@ -1149,8 +1149,7 @@ class CarbonBlackHopperCarConsist(CarConsist):
         # allow flipping, used to flip company colour
         self.allow_flip = True
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.carbon_black_hopper_car_livery_recolour_maps,
-                                                                   cargo_specific_livery_uses_dedicated_input_row=True)
+        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.carbon_black_hopper_car_livery_recolour_maps)
 
 
 class ChemicalsTankCarConsist(CarConsist):
@@ -1176,6 +1175,30 @@ class ChemicalsTankCarConsist(CarConsist):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.chemicals_tank_car_livery_recolour_maps)
 
+
+# !! not in alphabetical order
+class SulphurTankCarConsist(CarConsist):
+    """
+    Dedicated sulphur tank car.
+    """
+
+    def __init__(self, **kwargs):
+        # tank cars are unrealistically autorefittable, and at no cost
+        # Pikka: if people complain that it's unrealistic, tell them "don't do it then"
+        self.base_id = 'sulphur_tank_car'
+        super().__init__(**kwargs)
+        self.class_refit_groups = []
+        self.label_refits_allowed = ['SULP']
+        self.label_refits_disallowed = []
+        self.default_cargos = []
+        self.loading_speed_multiplier = 2
+        self.buy_cost_adjustment_factor = 1.33
+        self.floating_run_cost_multiplier = 1.5
+        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['non_core_wagons']
+        # allow flipping, used to flip company colour
+        self.allow_flip = True
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=polar_fox.constants.tanker_livery_recolour_maps)
 
 
 class CoilCarConsist(CarConsist):
@@ -2022,7 +2045,7 @@ class TankCarConsist(CarConsist):
         # allow flipping, used to flip company colour
         self.allow_flip = True
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=polar_fox.constants.tanker_livery_recolour_maps)
+        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.oil_tank_car_livery_recolour_maps)
 
 
 class PetrolTankCarConsist(CarConsist):

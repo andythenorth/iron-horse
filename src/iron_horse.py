@@ -57,6 +57,7 @@ from vehicles import reefer_cars
 from vehicles import rock_hopper_cars
 from vehicles import rock_covered_hopper_cars
 from vehicles import rubber_tank_cars
+from vehicles import sulphur_tank_cars
 from vehicles import scrap_metal_cars
 from vehicles import sliding_wall_cars
 from vehicles import stake_cars
@@ -165,6 +166,7 @@ def main():
     slag_ladle_cars.main()
     sliding_wall_cars.main()
     stake_cars.main()
+    sulphur_tank_cars.main()
     tank_cars.main()
     tarpaulin_cars.main()
     torpedo_cars.main()

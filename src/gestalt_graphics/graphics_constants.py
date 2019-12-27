@@ -95,6 +95,9 @@ grain_hopper_car_livery_recolour_maps = (("DFLT", body_recolour_CC1),)
 
 livestock_livery_recolour_maps = (("DFLT", body_recolour_CC2),)
 
+oil_tank_car_livery_recolour_maps = (("DFLT",  {136: 1, 137: 2, 138: 3, 139: 4,
+                                                140: 5, 141: 6, 142: 7, 143: 8}),)
+
 ore_covered_hopper_car_livery_recolour_maps = (("DFLT", {136: 112, 137: 113, 138: 33, 139: 115,
                                                          140: 35, 141: 118, 142: 38, 143: 39,
                                                          96: CC1, 97: CC1+1, 98: CC1+2, 99: CC1+3,
