@@ -1208,9 +1208,9 @@ class CoveredHopperCarConsist(CarConsist):
         self.base_id = 'covered_hopper_car'
         super().__init__(**kwargs)
         self.class_refit_groups = []  # no classes, use explicit labels
-        self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label['covered_hoppers']
+        self.label_refits_allowed = ['SULP', 'LIME', 'SAND', 'SALT', 'KAOL', 'QLME', 'SASH', 'PHOS', 'POTA']#polar_fox.constants.allowed_refits_by_label['covered_hoppers']
         self.label_refits_disallowed = []
-        self.default_cargos = polar_fox.constants.default_cargos['covered_hopper']
+        self.default_cargos = [] #polar_fox.constants.default_cargos['covered_hopper']
         self.loading_speed_multiplier = 2
         self.buy_cost_adjustment_factor = 1.2
         self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['non_core_wagons']
@@ -1321,7 +1321,7 @@ class DumpCarScrapMetalConsist(DumpCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = 'scrap_metal_car'
         super().__init__(**kwargs)
-        self.default_cargos = polar_fox.constants.default_cargos['dump'] # needs changed
+        self.default_cargos = polar_fox.constants.default_cargos['dump_scrap']
 
 
 class DumpCarScrapMetalHighSideConsist(DumpCarConsistBase):
@@ -1334,7 +1334,7 @@ class DumpCarScrapMetalHighSideConsist(DumpCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = 'scrap_metal_car_high_side'
         super().__init__(**kwargs)
-        self.default_cargos = polar_fox.constants.default_cargos['dump_high_sides'] # needs changed
+        self.default_cargos = polar_fox.constants.default_cargos['dump_scrap']
 
 
 class EdiblesTankCarConsist(CarConsist):
@@ -1515,20 +1515,9 @@ class HopperCarConsistBase(CarConsist):
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(bulk=True)
 
 
-class HopperCarConsist(HopperCarConsistBase):
-    """
-    Standard Hopper Car.
-    Defaults to stone/ore-type cargos, specific coal, ore hoppers etc are provided separately with different defaults
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = 'hopper_car'
-        super().__init__(**kwargs)
-
-
 class HopperCarCoalConsist(HopperCarConsistBase):
     """
-    Same as standard hopper, but different appearance and defaults to coal.
+    Defaults to coal.
     The classname breaks convention (would usually be CoalHopper), this is to keep all hopper subclasses togther).
     """
 
@@ -1540,14 +1529,25 @@ class HopperCarCoalConsist(HopperCarConsistBase):
 
 class HopperCarOreConsist(HopperCarConsistBase):
     """
-    Same as standard hopper, but different appearance and defaults to iron ore.
+    Defaults to iron ore.
     The classname breaks convention (would usually be OreHopper), this is to keep all hopper subclasses togther).
     """
 
     def __init__(self, **kwargs):
         self.base_id = 'ore_hopper_car'
         super().__init__(**kwargs)
-        self.default_cargos = polar_fox.constants.default_cargos['coal_hopper'] # !! needs updated
+        self.default_cargos = polar_fox.constants.default_cargos['ore_hopper'] # !! needs updated
+
+
+class HopperCarRockConsist(HopperCarConsistBase):
+    """
+    Defaults to rock/stone-type cargos.
+    The classname breaks convention (would usually be OreHopper), this is to keep all hopper subclasses togther).
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = 'rock_hopper_car'
+        super().__init__(**kwargs)
 
 
 class IntermodalCarConsist(CarConsist):
@@ -1843,6 +1843,53 @@ class ReeferCarConsist(CarConsist):
         self.roof_type = 'freight'
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(id_base='box_car',
                                                                   recolour_maps=graphics_constants.refrigerated_livery_recolour_maps)
+
+
+class RubberTankCarConsist(CarConsist):
+    """
+    Dedicated tank car for rubber.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = 'rubber_tank_car'
+        super().__init__(**kwargs)
+        # tank cars are unrealistically autorefittable, and at no cost
+        # Pikka: if people complain that it's unrealistic, tell them "don't do it then"
+        # they also change livery at stations if refitted between certain cargo types <shrug>
+        self.class_refit_groups = []
+        self.label_refits_allowed = ['RUBR']
+        self.label_refits_disallowed = []
+        self.default_cargos = []
+        self.loading_speed_multiplier = 3
+        self.buy_cost_adjustment_factor = 1.2
+        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['freight_core']
+        # allow flipping, used to flip company colour
+        self.allow_flip = True
+        # Graphics configuration
+        # recolour maps need processing, it includes an option for intermodal container body colour, not wanted here
+        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.rubber_tank_car_livery_recolour_maps)
+
+
+class SaltHopperCarConsist(CarConsist):
+    """
+    !! Bulk cargos needing covered protection.  1:1 alternative to standard covered hopper
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = 'salt_hopper_car'
+        super().__init__(**kwargs)
+        self.class_refit_groups = []  # no classes, use explicit labels
+        self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label['covered_hoppers']
+        self.label_refits_disallowed = []
+        self.default_cargos = polar_fox.constants.default_cargos['covered_hopper']
+        self.loading_speed_multiplier = 2
+        self.buy_cost_adjustment_factor = 1.2
+        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['non_core_wagons']
+        # CC is swapped randomly (player can't choose), but also swap base livery on flip (player can choose)
+        self.allow_flip = True
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.salt_hopper_car_livery_recolour_maps,
+                                                                   cargo_specific_livery_uses_dedicated_input_row=True)
 
 
 class SiloCarConsist(CarConsist):

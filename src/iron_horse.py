@@ -41,7 +41,6 @@ from vehicles import express_intermodal_cars
 from vehicles import flat_cars
 from vehicles import fruit_veg_cars
 from vehicles import grain_hopper_cars
-from vehicles import hopper_cars
 from vehicles import hst_passenger_cars
 from vehicles import intermodal_cars
 from vehicles import kaolin_clay_cars
@@ -54,8 +53,9 @@ from vehicles import ore_hopper_cars
 from vehicles import passenger_cars
 from vehicles import plate_cars
 from vehicles import reefer_cars
+from vehicles import rock_hopper_cars
+#from vehicles import rubber_tank_cars
 from vehicles import scrap_metal_cars
-from vehicles import scrap_metal_cars_high_side
 from vehicles import sliding_wall_cars
 from vehicles import stake_cars
 from vehicles import silo_cars
@@ -143,7 +143,6 @@ def main():
     flat_cars.main()
     fruit_veg_cars.main()
     grain_hopper_cars.main()
-    hopper_cars.main()
     hst_passenger_cars.main()
     intermodal_cars.main()
     kaolin_clay_cars.main()
@@ -155,9 +154,10 @@ def main():
     passenger_cars.main()
     plate_cars.main()
     reefer_cars.main()
+    rock_hopper_cars.main()
+    #rubber_tank_cars.main()
     silo_cars.main()
     scrap_metal_cars.main()
-    scrap_metal_cars_high_side.main()
     slag_ladle_cars.main()
     sliding_wall_cars.main()
     stake_cars.main()

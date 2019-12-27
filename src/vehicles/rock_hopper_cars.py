@@ -1,10 +1,10 @@
-from train import HopperCarConsist, FreightCar
+from train import HopperCarRockConsist, FreightCar
 
 
 def main():
     #--------------- pony NG ----------------------------------------------------------------------
 
-    consist = HopperCarConsist(roster_id='pony',
+    consist = HopperCarRockConsist(roster_id='pony',
                                base_numeric_id=3590,
                                gen=1,
                                subtype='U',
@@ -15,7 +15,7 @@ def main():
                      chassis='4_axle_ng_16px')
 
 
-    consist = HopperCarConsist(roster_id='pony',
+    consist = HopperCarRockConsist(roster_id='pony',
                                base_numeric_id=3600,
                                gen=3,
                                subtype='U',
@@ -26,7 +26,7 @@ def main():
                      chassis='4_axle_ng_16px')
 
 
-    consist = HopperCarConsist(roster_id='pony',
+    consist = HopperCarRockConsist(roster_id='pony',
                                base_numeric_id=3610,
                                gen=4,
                                subtype='U',
@@ -39,7 +39,7 @@ def main():
 
     #--------------- pony ----------------------------------------------------------------------
 
-    consist = HopperCarConsist(roster_id='pony',
+    consist = HopperCarRockConsist(roster_id='pony',
                                base_numeric_id=2310,
                                gen=2,
                                subtype='A',
@@ -49,7 +49,7 @@ def main():
                      chassis='2_axle_gapped_16px')
 
 
-    consist = HopperCarConsist(roster_id='pony',
+    consist = HopperCarRockConsist(roster_id='pony',
                                base_numeric_id=1070,
                                gen=3,
                                subtype='A',
@@ -59,7 +59,7 @@ def main():
                      chassis='2_axle_gapped_16px')
 
 
-    consist = HopperCarConsist(roster_id='pony',
+    consist = HopperCarRockConsist(roster_id='pony',
                                base_numeric_id=2330,
                                gen=3,
                                subtype='B',
@@ -69,7 +69,7 @@ def main():
                      chassis='4_axle_gapped_24px')
 
 
-    consist = HopperCarConsist(roster_id='pony',
+    consist = HopperCarRockConsist(roster_id='pony',
                                base_numeric_id=1080,
                                gen=4,
                                subtype='A',
@@ -79,7 +79,7 @@ def main():
                      chassis='2_axle_sparse_16px')
 
 
-    consist = HopperCarConsist(roster_id='pony',
+    consist = HopperCarRockConsist(roster_id='pony',
                                base_numeric_id=2000,
                                gen=4,
                                subtype='B',
@@ -89,7 +89,7 @@ def main():
                      chassis='4_axle_sparse_24px')
 
 
-    consist = HopperCarConsist(roster_id='pony',
+    consist = HopperCarRockConsist(roster_id='pony',
                                base_numeric_id=2010,
                                gen=4,
                                subtype='C',
@@ -99,7 +99,7 @@ def main():
                      chassis='4_axle_sparse_32px')
 
 
-    consist = HopperCarConsist(roster_id='pony',
+    consist = HopperCarRockConsist(roster_id='pony',
                                base_numeric_id=1610,
                                gen=5,
                                subtype='A',
@@ -109,7 +109,7 @@ def main():
                      chassis='2_axle_filled_16px')
 
 
-    consist = HopperCarConsist(roster_id='pony',
+    consist = HopperCarRockConsist(roster_id='pony',
                                base_numeric_id=1600,
                                gen=5,
                                subtype='B',
@@ -119,7 +119,7 @@ def main():
                      chassis='4_axle_filled_greebled_24px')
 
 
-    consist = HopperCarConsist(roster_id='pony',
+    consist = HopperCarRockConsist(roster_id='pony',
                                base_numeric_id=1620,
                                gen=5,
                                subtype='C',
@@ -129,7 +129,7 @@ def main():
                      chassis='4_axle_filled_greebled_32px')
 
 
-    consist = HopperCarConsist(roster_id='pony',
+    consist = HopperCarRockConsist(roster_id='pony',
                                base_numeric_id=2050,
                                gen=6,
                                subtype='A',
@@ -139,7 +139,7 @@ def main():
                      chassis='2_axle_filled_16px')
 
 
-    consist = HopperCarConsist(roster_id='pony',
+    consist = HopperCarRockConsist(roster_id='pony',
                                base_numeric_id=2020,
                                gen=6,
                                subtype='B',
@@ -149,7 +149,7 @@ def main():
                      chassis='4_axle_filled_greebled_24px')
 
 
-    consist = HopperCarConsist(roster_id='pony',
+    consist = HopperCarRockConsist(roster_id='pony',
                                base_numeric_id=1990,
                                gen=6,
                                subtype='C',

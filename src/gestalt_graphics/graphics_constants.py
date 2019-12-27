@@ -69,12 +69,22 @@ coil_car_livery_recolour_maps = (("DFLT", body_recolour_CC1),)
 
 # quite minimal set for covered hoppers, most look better with default
 # the maps are lacking restraint, there are 3 different recolour ranges, allowing for solebar, body and tarp colours
-covered_hopper_car_livery_recolour_maps = (("DFLT", {136: 4, 137: 5, 138: 6, 139: 7,
+"""
+# !! covhop silver livery as alt ??
+                                           ("DFLT", {136: 4, 137: 5, 138: 6, 139: 7,
                                                      140: 9, 141: 10, 142: 11, 143: 13,
                                                      96: CC1, 97: CC1+1, 98: CC1+2, 99: CC1+3,
                                                      100: CC1+4, 101: CC1+5, 102: CC1+6, 103: CC1+7,
                                                      154: 4, 155: 5, 156: 6, 157: 7,
                                                      158: 9, 159: 10, 160: 11, 161: 13}),
+"""
+
+covered_hopper_car_livery_recolour_maps = (("DFLT", {136: CC1, 137: CC1+1, 138: CC1+2, 139: CC1+3,
+                                                     140: CC1+4, 141: CC1+5, 142: CC1+6, 143: CC1+7,
+                                                     96: 16, 97: 17, 98: 18, 99: 19,
+                                                     100: 20, 101: 21, 102: 22, 103: 23,
+                                                     154: CC1, 155: CC1+1, 156: CC1+2, 157: CC1+3,
+                                                     158: CC1+4, 159: CC1+5, 160: CC1+6, 161: CC1+7}),
                                            # BDMT and CMNT should be kept in sync
                                            ("BDMT", {136: 53, 137: 54, 138: 6, 139: 57,
                                                      140: 30, 141: 38, 142: 12, 143: 14,
@@ -157,6 +167,10 @@ refrigerated_livery_recolour_maps = (("DFLT", {136: 18, 137: 19, 138: 20, 139: 2
                                                44: 22, 45: 13, 46: 14, 47: 15,
                                                CC2: CC1, CC2+1: CC1+1, CC2+2: CC1+2, CC2+3: CC1+3,
                                                CC2+4: CC1+4, CC2+5: CC1+5, CC2+6: CC1+6, CC2+7: CC1+7}),)
+
+rubber_tank_car_livery_recolour_maps = (("DFLT", {136: 40, 137: 41, 138: 42, 139: 43,
+                                                  140: 44, 141: 45, 142: 46, 143: 47}),)
+
 
 sliding_wall_livery_recolour_maps = (("DFLT", {40: 4, 41: 5, 42: 6, 43: 7,
                                                44: 20, 45: 21, 46: 22, 47: 13}),)
