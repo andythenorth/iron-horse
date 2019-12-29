@@ -178,6 +178,11 @@ class DocHelper(object):
             if role in roles:
                 return base_lang_strings[global_constants.role_string_mapping[role_group]]
 
+    def get_replaced_by_name(self, replacement_consist_id, consists):
+        for consist in consists:
+            if consist.id == replacement_consist_id:
+                return self.unpack_name_string(consist)
+
     def get_props_to_print_in_code_reference(self, subclass):
         props_to_print = {}
         for vehicle in subclass['vehicles']:

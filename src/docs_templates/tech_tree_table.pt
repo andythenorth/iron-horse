@@ -146,7 +146,7 @@
                                                 <div class="tech_tree_vehicle
                                                             ${'tech_tree_vehicle_electric' if consist.requires_electric_rails else 'None'}
                                                             ${'tech_tree_vehicle_electro_diesel' if consist.str_name_suffix == 'STR_NAME_SUFFIX_ELECTRODIESEL' else None}
-                                                            ${'tech_tree_vehicle_arrow' if doc_helper.get_engine_by_role_and_base_track_type_and_generation(consists, role, base_track_type, gen + 2) is not None else None}">
+                                                            ${'tech_tree_vehicle_arrow' if (doc_helper.get_engine_by_role_and_base_track_type_and_generation(consists, role, base_track_type, gen + 2) is not None) or (consist._replacement_consist_id is not None) else None}">
                                                     <span style="display:block;">
                                                         <!--! this is using a private var, but I am not going to lose sleep over it -->
                                                         ${consist._name}
@@ -162,6 +162,13 @@
                                                         |
                                                         <small>${consist.speed}mph</small>
                                                     </span>
+                                                </div>
+                                                <div tal:condition="consist._replacement_consist_id is not None"
+                                                     style="float:left; margin-left: 173px; margin-top: 30px;">
+                                                    <div class="muted"
+                                                         style="width: 100px; border: solid 1px #ddd; background: #fffff3; border-radius: 4px; padding: 8px;">
+                                                        Replaced by ${doc_helper.get_replaced_by_name(consist._replacement_consist_id, consists)}
+                                                    </div>
                                                 </div>
                                             </div>
                                         </tal:block>
