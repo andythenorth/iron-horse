@@ -24,6 +24,7 @@
     }
     <!--! only useful if this is merged: https://github.com/OpenTTD/OpenTTD/pull/7000 -->
     <!--! Pantograph visibility switches would also need updated equivalently (search vehicle templates) -->
+    <!--! Create effect switches would also need updated equivalently (search vehicle templates) -->
     <!--!switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_power, var[0x6a, 8, 0xFF, ELRL]) {
         1: return 2000; // unfinished eh
         return ${consist.power};
@@ -43,10 +44,9 @@
 <!--! some vehicles vary their speed depending on lead engine,
       this should be limited use, it's a *very* silly easter egg -->
 <tal:variable_speed condition="consist.easter_egg_haulage_speed_bonus">
-    switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_speed,
-                                        [STORE_TEMP(${int(1.60934 * consist.get_speed_by_class('express'))}, 1),
-                                         STORE_TEMP(${int(1.60934 * consist.speed)}, 0)]) {
-            return haulage_bonus_switch_speed_0;
+    switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_speed, haulage_bonus_switch_speed_0()) {
+        1: return ${int(1.60934 * consist.get_speed_by_class('express'))};
+        0: return ${int(1.60934 * consist.speed)};
     }
 </tal:variable_speed>
 
@@ -93,12 +93,12 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
         purchase:                       ${vehicle.id}_switch_graphics_purchase;
         cost_factor:                    ${consist.buy_cost}; // CB used as it is capped to max 32k, prop is only 255
         running_cost_factor:            ${consist.running_cost}; // CB used as it is capped to max 32k, prop is only 255
-        <!--! JFDI handling of random_trigger condition check, could be made neater, but works for now -->
-        <tal:conditional_random_trigger condition="consist.gestalt_graphics.__class__.__name__ == 'GestaltGraphicsIntermodal'">
+        <!--! JFDI handling of random_trigger condition check, works for now -->
+        <tal:conditional_random_trigger condition="vehicle.is_intermodal_platform">
             random_trigger:                 ${vehicle.id}_switch_graphics_containers;
         </tal:conditional_random_trigger>
         <tal:random_company_colour_swap condition="consist.requires_colour_mapping_cb">
-            colour_mapping:                 ${vehicle.id}_switch_colour_mapping;
+            colour_mapping:                 ${vehicle.id + '_switch_colour_mapping' if vehicle.is_intermodal_platform else 'switch_colour_mapping()'};
             purchase_colour_mapping:        base_sprite_2cc + 16 * company_colour2 + company_colour1; <!--! apply regular 1CC and 2CC -->
         </tal:random_company_colour_swap>
         <!--! only use the capacity switches if vehicle carries cargo, makes faster compile (saved about 20% of time) -->

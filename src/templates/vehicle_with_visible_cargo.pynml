@@ -13,48 +13,32 @@
     <!--! spritegroups aren't used here, direct to spriteset -->
 </tal:spritesets>
 
-
-<tal:cargo_variants define="num_cargo_sprite_variants consist.gestalt_graphics.num_cargo_sprite_variants"
-                    repeat="cargo_variant_num python:range(num_cargo_sprite_variants)">
-    <tal:flipped repeat="flipped ['unflipped', 'flipped']">
-        <!--! spritegroups aren't needed here, the loading state is calculated explicitly -->
-        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_percent_loaded_${cargo_variant_num}_${flipped}, cargo_count*100/cargo_capacity) {
-                0: return ${vehicle.id}_ss_empty_${flipped};
-                1..99: return ${vehicle.id}_ss_loading_${cargo_variant_num}_${flipped};
-            return ${vehicle.id}_ss_loaded_${cargo_variant_num}_${flipped};
+<!--! I did try consolidating cargo + load + flip into a single switch checking procedures, but it exceeded the 255 limit for varact 2 ranges -->
+<tal:load_state repeat="load_state ['loading', 'loaded']">
+    <tal:flip_state repeat="flip_state ['unflipped', 'flipped']">
+        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_cargo_${load_state}_${flip_state}, cargo_type_in_veh) {
+            <tal:cargos repeat="mapping consist.gestalt_graphics.cargo_row_map.items()">
+                <tal:exclude_default_cargo condition="mapping[0] != 'DFLT'">
+                    <!--!  uses mapping[1][0] as cargo_row_map has a legacy list format to support random variants
+                          fixing cargo_row_map would require refactoring num_cargo_sprite_variants in gestalt graphics -->
+                    ${mapping[0]}: return ${vehicle.id}_ss_${load_state}_${mapping[1][0]}_${flip_state};
+                </tal:exclude_default_cargo>
+            </tal:cargos>
+            <!--! generic cargos -->
+            return ${vehicle.id}_ss_${load_state}_${consist.gestalt_graphics.generic_rows[0]}_${flip_state};
         }
-    </tal:flipped>
-    // handle user flipped state
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_flip_${cargo_variant_num}, vehicle_is_flipped) {
-        1: return ${vehicle.id}_switch_graphics_percent_loaded_${cargo_variant_num}_flipped;
-        return ${vehicle.id}_switch_graphics_percent_loaded_${cargo_variant_num}_unflipped;
-    }
-</tal:cargo_variants>
+    </tal:flip_state>
+</tal:load_state>
 
-<tal:cargo_random_switches repeat="mapping consist.gestalt_graphics.cargo_row_map.items()">
-    <tal:exclude_default_cargo condition="mapping[0] != 'DFLT'">
-        random_switch (FEAT_TRAINS, ${vehicle.get_nml_expression_for_cargo_variant_random_switch(mapping[0])}) {
-            <tal:random_graphics_variations repeat="spriterow_num mapping[1]">
-                1: return ${vehicle.id}_switch_graphics_flip_${spriterow_num};
-            </tal:random_graphics_variations>
-        }
-    </tal:exclude_default_cargo>
-</tal:cargo_random_switches>
-
-random_switch (FEAT_TRAINS, ${vehicle.get_nml_expression_for_cargo_variant_random_switch('generic_cargos')}) {
-    <tal:random_graphics_variations repeat="spriterow_num consist.gestalt_graphics.generic_rows">
-        1: return ${vehicle.id}_switch_graphics_flip_${spriterow_num};
-    </tal:random_graphics_variations>
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, switch_graphics_visible_cargo_flip_and_load()) {
+    0: return ${vehicle.id}_ss_empty_unflipped;
+    1: return ${vehicle.id}_switch_cargo_loading_unflipped;
+    2: return ${vehicle.id}_switch_cargo_loaded_unflipped;
+    3: return ${vehicle.id}_ss_empty_flipped;
+    4: return ${vehicle.id}_switch_cargo_loading_flipped;
+    5: return ${vehicle.id}_switch_cargo_loaded_flipped;
 }
 
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, cargo_type_in_veh) {
-    <tal:cargos repeat="mapping consist.gestalt_graphics.cargo_row_map.items()">
-        <tal:exclude_default_cargo condition="mapping[0] != 'DFLT'">
-            ${mapping[0]}: return ${vehicle.id}_switch_graphics_${mapping[0]};
-        </tal:exclude_default_cargo>
-    </tal:cargos>
-    return ${vehicle.id}_switch_graphics_generic_cargos;
-}
 
 // buy menu graphics chain
 spriteset(${vehicle.id}_ss_purchase, "${graphics_path}${consist.id}.png") {

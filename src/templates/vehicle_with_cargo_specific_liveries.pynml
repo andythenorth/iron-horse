@@ -18,7 +18,8 @@
     switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_cargo_type_${flipped}, cargo_type_in_veh) {
         <tal:cargos repeat="mapping consist.gestalt_graphics.cargo_row_map.items()">
             <tal:exclude_default_cargo condition="mapping[0] != 'DFLT'">
-                <!--! cargo_row_map has a legacy list format to support random variants, which isn't used here, just take first item -->
+                <!--! cargo_row_map has a legacy list format to support random variants, which isn't used here, just take first item
+                      fixing this would require refactoring num_cargo_sprite_variants in gestalt graphics -->
                 ${mapping[0]}: return ${vehicle.id}_ss_${mapping[1][0]}_${flipped};
             </tal:exclude_default_cargo>
         </tal:cargos>

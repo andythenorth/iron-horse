@@ -1,6 +1,4 @@
-// -- smoke etc -- //
-
-// -- spawn model -- //
+<!--! set spawn model -->
 <!--! it's important to explicitly check known railtypes and otherwise return a general default, as not all types will be known for the default value -->
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_id_for_effect_spawn_model_and_powered, current_railtype) {
     <tal:railtypes repeat="railtype vehicle.effects">
@@ -12,7 +10,7 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_id_for_effect_spawn_model_and_po
 }
 
 
-// -- create effect -- //
+<!--! create effect -->
 <!--! complicated due to support for railtype changes AND randomly reversed variants -->
 <!--! it's important to explicitly check known railtypes and otherwise return a general default, as not all types will be known for the default value -->
 <tal:random_reverse_variants repeat="reversed_variant consist.reversed_variants">

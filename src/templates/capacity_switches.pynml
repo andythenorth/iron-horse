@@ -1,30 +1,14 @@
-// -- capacity determined according to specific labels that might need to be handled, and otherwise cargo class -- //
-<tal:capacity repeat="param_value python:range(3)">
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_cargo_capacity_by_cargo_${param_value}, cargo_classes & bitmask(CC_PASSENGERS, CC_MAIL, CC_ARMOURED)) {
-        bitmask(CC_MAIL): return ${int(global_constants.mail_multiplier * vehicle.capacities[param_value])};
-        bitmask(CC_ARMOURED): return ${int(global_constants.mail_multiplier * vehicle.capacities[param_value])};
-        return ${vehicle.capacities[param_value]};
-    }
-</tal:capacity>
+<!--! capacity determined according to specific labels that might need to be handled, and otherwise cargo class -->
 
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_cargo_capacity, param[0]) {
-    0: ${vehicle.id}_switch_cargo_capacity_by_cargo_0;
-    1: ${vehicle.id}_switch_cargo_capacity_by_cargo_1;
-    2: ${vehicle.id}_switch_cargo_capacity_by_cargo_2;
+<!--! stuff all 3 values into registers as constants, don't mess about with doing multipliers in varact 2, integer maths causes rounding errors -->
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_cargo_capacity,
+        [STORE_TEMP(${vehicle.capacities[0]}, 0), STORE_TEMP(${vehicle.capacities[1]}, 1), STORE_TEMP(${vehicle.capacities[2]}, 2)]) {
+    return switch_cargo_capacity();
 }
 
-// -- loading speed also determined by capacity, which varies by cargo -- //
-<tal:capacity repeat="param_value python:range(3)">
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_loading_speed_by_cargo_${param_value}, cargo_classes & bitmask(CC_PASSENGERS, CC_MAIL, CC_ARMOURED)) {
-        bitmask(CC_PASSENGERS): return ${vehicle.get_loading_speed('pax', param_value)};
-        bitmask(CC_MAIL): return ${vehicle.get_loading_speed('mail', param_value)};
-        bitmask(CC_ARMOURED): return ${vehicle.get_loading_speed('mail', param_value)};
-        return ${vehicle.get_loading_speed('freight', param_value)};
-    }
-</tal:capacity>
-
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_loading_speed, param[0]) {
-    0: ${vehicle.id}_switch_loading_speed_by_cargo_0;
-    1: ${vehicle.id}_switch_loading_speed_by_cargo_1;
-    2: ${vehicle.id}_switch_loading_speed_by_cargo_2;
+<!--! loading speed also determined by capacity -->
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_loading_speed,
+        [STORE_TEMP(${vehicle.get_loading_speed(0)}, 0), STORE_TEMP(${vehicle.get_loading_speed(1)}, 1), STORE_TEMP(${vehicle.get_loading_speed(2)}, 2)]) {
+    return switch_loading_speed();
 }
+

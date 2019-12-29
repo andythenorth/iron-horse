@@ -1,0 +1,16 @@
+<!--! common procedures for vehicle_with_visible_cargo and similar templates -->
+
+<!--! return silly integer stuffing for flip + load state -->
+<tal:flipped repeat="flipped ['unflipped', 'flipped']">
+    <!--! spritegroups aren't needed here, the loading state is calculated explicitly -->
+    switch (FEAT_TRAINS, SELF, switch_graphics_visible_cargo_percent_loaded_${flipped}, (cargo_count*100)/cargo_capacity) {
+            0: return ${0 if flipped == 'unflipped' else 3};
+            1..99: return ${1 if flipped == 'unflipped' else 4};
+        return ${2 if flipped == 'unflipped' else 5};
+    }
+</tal:flipped>
+<!--! handle user flipped state -->
+switch (FEAT_TRAINS, SELF, switch_graphics_visible_cargo_flip_and_load, vehicle_is_flipped) {
+    1: switch_graphics_visible_cargo_percent_loaded_flipped;
+    switch_graphics_visible_cargo_percent_loaded_unflipped;
+}

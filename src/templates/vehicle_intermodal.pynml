@@ -14,7 +14,7 @@
         ${vehicle.get_spriteset_template_name('reversed', 'flipped', 10 + (repeat.position_variant.index * 60) + 30)}
     }
 
-    // handle user flipped state
+    <!--! handle user flipped state -->
     switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_platform_${position_variant}, vehicle_is_flipped) {
         1: return ${vehicle.id}_ss_${position_variant}_flipped;
         return ${vehicle.id}_ss_${position_variant}_unflipped;
@@ -22,71 +22,21 @@
 </tal:position_variants>
 
 <tal:position_ruleset condition="consist.gestalt_graphics.consist_ruleset == '2_unit_sets'">
-    // consist position switches - copied from railcars
-    <!--! if 1 unit in sequence -->
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_platform_modulo_num_units_in_consist_1, position_in_vehid_chain % 2) {
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_platform_position_in_consist_entry_point, switch_graphics_intermodal_platform_ruleset_2_unit_sets()) {
         0: return ${vehicle.id}_switch_graphics_platform_default;
-    }
-
-    <!--! if 2 units in sequence -->
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_platform_modulo_num_units_in_consist_2, position_in_vehid_chain % 2) {
-        0: return ${vehicle.id}_switch_graphics_platform_first;
-        return ${vehicle.id}_switch_graphics_platform_last;
-    }
-
-    <!--! this is a remainder block, how many units are in it? -->
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_platform_less_than_2_remaining, num_vehs_in_vehid_chain % 2) {
-        1: return ${vehicle.id}_switch_graphics_platform_modulo_num_units_in_consist_1;
-        return ${vehicle.id}_switch_graphics_platform_modulo_num_units_in_consist_2;
-    }
-
-    <!--! given the consist, how many blocks of 2 units are there?  Is the unit within a block of 2, or a remainder block? -->
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_platform_position_in_consist_entry_point, position_in_vehid_chain >= (num_vehs_in_vehid_chain - (num_vehs_in_vehid_chain  % 2))) {
-        1: return ${vehicle.id}_switch_graphics_platform_less_than_2_remaining;
-        return ${vehicle.id}_switch_graphics_platform_modulo_num_units_in_consist_2;
+        1: return ${vehicle.id}_switch_graphics_platform_first;
+        2: return ${vehicle.id}_switch_graphics_platform_last;
+        return ${vehicle.id}_switch_graphics_platform_default;
     }
 </tal:position_ruleset>
 
 <tal:position_ruleset condition="consist.gestalt_graphics.consist_ruleset == '4_unit_sets'">
-    // consist position switches - copied from railcars
-    <!--! if 1 unit in sequence -->
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_platform_modulo_num_units_in_consist_1, position_in_vehid_chain % 4) {
-        0: return ${vehicle.id}_switch_graphics_platform_default;
-    }
-
-    <!--! if 2 units in sequence -->
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_platform_modulo_num_units_in_consist_2, position_in_vehid_chain % 4) {
-        0: return ${vehicle.id}_switch_graphics_platform_first;
-        return ${vehicle.id}_switch_graphics_platform_last;
-    }
-
-    <!--! if 3 units in sequence -->
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_platform_modulo_num_units_in_consist_3, position_in_vehid_chain % 4) {
-        0: return ${vehicle.id}_switch_graphics_platform_first;
-        1: return ${vehicle.id}_switch_graphics_platform_middle;
-        return ${vehicle.id}_switch_graphics_platform_last;
-    }
-
-    <!--! if 4 units in sequence -->
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_platform_modulo_num_units_in_consist_4, position_in_vehid_chain % 4) {
-        0: return ${vehicle.id}_switch_graphics_platform_first;
-        1: return ${vehicle.id}_switch_graphics_platform_middle;
-        2: return ${vehicle.id}_switch_graphics_platform_middle;
-        return ${vehicle.id}_switch_graphics_platform_last;
-    }
-
-    <!--! this is a remainder block, how many units are in it? -->
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_platform_less_than_4_remaining, num_vehs_in_vehid_chain % 4) {
-        1: return ${vehicle.id}_switch_graphics_platform_modulo_num_units_in_consist_1;
-        2: return ${vehicle.id}_switch_graphics_platform_modulo_num_units_in_consist_2;
-        3: return ${vehicle.id}_switch_graphics_platform_modulo_num_units_in_consist_3;
-        return ${vehicle.id}_switch_graphics_platform_modulo_num_units_in_consist_4;
-    }
-
-    <!--! given the consist, how many blocks of 6 units are there?  Is the unit within a block of 4, or a remainder block? -->
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_platform_position_in_consist_entry_point, position_in_vehid_chain >= (num_vehs_in_vehid_chain - (num_vehs_in_vehid_chain  % 4))) {
-        1: return ${vehicle.id}_switch_graphics_platform_less_than_4_remaining;
-        return ${vehicle.id}_switch_graphics_platform_modulo_num_units_in_consist_4;
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_platform_position_in_consist_entry_point, switch_graphics_intermodal_platform_ruleset_4_unit_sets()) {
+        0: ${vehicle.id}_switch_graphics_platform_default;
+        1: return ${vehicle.id}_switch_graphics_platform_first;
+        2: return ${vehicle.id}_switch_graphics_platform_last;
+        3: return ${vehicle.id}_switch_graphics_platform_middle;
+        return ${vehicle.id}_switch_graphics_platform_default;
     }
 </tal:position_ruleset>
 
@@ -146,7 +96,7 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase, 0) {
 
 <!--! dedicated colour remapping of second intermodal livery
      (does this work for NA Horse? Dunno yet, find out when that happens)  -->
-// handle user flipped state
+<!--! handle user flipped state -->
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_colour_mapping, vehicle_is_flipped) {
     1: return base_sprite_2cc + 16 * company_colour1 + company_colour2; <!--! swap 1CC and 2CC -->
     return base_sprite_2cc + 16 * company_colour2 + company_colour1; <!--! apply regular 1CC and 2CC -->

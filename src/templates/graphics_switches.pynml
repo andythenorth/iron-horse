@@ -3,20 +3,6 @@
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_set_layers_register_more_sprites, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
     return ${vehicle.id}_switch_graphics_vehicle;
 }
-
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_tail_light_check_flip, vehicle_is_flipped) {
-    0: return ss_tail_light_${vehicle.tail_light}_unflipped;
-    return ss_tail_light_${vehicle.tail_light}_flipped;
-}
-
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_tail_light, position_in_consist_from_end) {
-    0: return ${vehicle.id}_switch_graphics_tail_light_check_flip;
-    return ss_tail_light_empty_unflipped;
-}
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_layer_tail_light, STORE_TEMP(PALETTE_USE_DEFAULT, 0x100)) {
-    return ${vehicle.id}_switch_graphics_tail_light;
-}
-
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics, getbits(extra_callback_info1, 8, 8)) {
     0: return ${vehicle.id}_switch_set_layers_register_more_sprites;
     <!--! this condition is getting ugly and could be abstracted to the gestalt via some property like 'reserved_layers' or so -->
@@ -26,25 +12,5 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics, getbits(extra_callback
               note that this means pantographs and containers are mutually exclusive -->
         1: return ${vehicle.id}_switch_set_layers_register_more_sprites;
     </tal:conditional_extra_layer>
-    return ${vehicle.id}_switch_graphics_layer_tail_light;
+    return switch_graphics_layer_tail_light_${vehicle.tail_light};
 }
-
-<!--! ############################# -->
-
-<!--! for random colour remapping  -->
-<tal:random_company_colour_swap condition="consist.random_company_colour_swap">
-    random_switch (FEAT_TRAINS, ${vehicle.location_of_random_bits_for_random_variant}, ${vehicle.id}_switch_colour_mapping_flipped) {
-        1: return base_sprite_2cc + 16 * company_colour2 + company_colour1; <!--! apply regular 1CC and 2CC -->
-        1: return base_sprite_2cc + 16 * company_colour1 + company_colour2; <!--! swap 1CC and 2CC -->
-    }
-    random_switch (FEAT_TRAINS, ${vehicle.location_of_random_bits_for_random_variant}, ${vehicle.id}_switch_colour_mapping_unflipped) {
-        1: return base_sprite_2cc + 16 * company_colour1 + company_colour2; <!--! swap 1CC and 2CC -->
-        1: return base_sprite_2cc + 16 * company_colour2 + company_colour1; <!--! apply regular 1CC and 2CC -->
-    }
-    // handle user flipped state
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_colour_mapping, vehicle_is_flipped) {
-        1: return ${vehicle.id}_switch_colour_mapping_flipped;
-        return ${vehicle.id}_switch_colour_mapping_unflipped;
-    }
-</tal:random_company_colour_swap>
-

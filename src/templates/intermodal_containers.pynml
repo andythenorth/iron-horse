@@ -15,7 +15,7 @@ spriteset(ss_intermodal_containers_empty, "src/graphics/spriterow_template.png")
                 spriteset(ss_intermodal_containers_${floor_height_type[0]}_${container_gestalt.container_subtype}_${container_gestalt.length}px_${repeat.variant.index}_flipped, "${graphics_path}${container_gestalt.id}.png") {
                     spriteset_template_asymmetric_reversed_${int(container_gestalt.length / 4)}_8_flipped(10 + ${repeat.variant.index * 60} + ${repeat.floor_height_type.index * 30}, NOANIM)
                 }
-                // handle user flipped state
+                <!--! handle user flipped state -->
                 switch (FEAT_TRAINS, SELF, switch_intermodal_containers_${floor_height_type[0]}_${container_gestalt.container_subtype}_${container_gestalt.length}px_${repeat.variant.index}, vehicle_is_flipped) {
                     1: return ss_intermodal_containers_${floor_height_type[0]}_${container_gestalt.container_subtype}_${container_gestalt.length}px_${repeat.variant.index}_flipped;
                     return ss_intermodal_containers_${floor_height_type[0]}_${container_gestalt.container_subtype}_${container_gestalt.length}px_${repeat.variant.index}_unflipped;

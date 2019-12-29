@@ -279,18 +279,6 @@ class Consist(object):
             return len(self.roster.intro_dates[self.base_track_type])
 
     @property
-    def livery_2_engine_ids(self):
-        # for vehicles with consist-specific liveries
-        # will switch vehicle to livery 2 for specific roles of lead engine
-        result = []
-        for consist in self.roster.engine_consists:
-            # second livery choice is deliberate, means 'as seen in buy menu' livery is built for common case of express_1, heavy_express_1
-            # 'heavy_express_4' doesn't use livery_2 by design (tied to Pony engine livery assumptions)
-            if consist.role in ['branch_express_1', 'branch_express_2', 'express_2', 'heavy_express_2', 'pax_railcar_2', 'mail_railcar_2']:
-                result.append(consist.id)
-        return result
-
-    @property
     def engine_consists_for_caboose_cars(self):
         # caboose cars adjust livery depending on engine
         # this could be renamed for use with non-caboose types if ever needed
@@ -2199,10 +2187,11 @@ class Train(object):
         # optional - some engine units need to set explicit tail light spritesheets
         # subclasses may over-ride this, e.g. wagons have an automatic tail light based on vehicle length
         self.tail_light = kwargs.get('tail_light', 'empty')
-
         # 'symmetric' or 'asymmetric'?
         # defaults to symmetric, over-ride in sub-classes or per vehicle as needed
         self._symmetry_type = kwargs.get('symmetry_type', 'symmetric')
+        # a flag used to detect intermodal cars in templating, bit janky but eh
+        self.is_intermodal_platform = False
 
     def get_capacity_variations(self, capacity):
         # capacity is variable, controlled by a newgrf parameter
@@ -2290,7 +2279,7 @@ class Train(object):
                 cargo_class) for cargo_class in global_constants.base_refits_by_class[i]]
         return ','.join(set(cargo_classes))  # use set() here to dedupe
 
-    def get_loading_speed(self, cargo_type, capacity_param):
+    def get_loading_speed(self, capacity_param):
         # ottd vehicles load at different rates depending on type,
         # normalise default loading time for this set to 240 ticks, regardless of capacity
         # openttd loading rates vary by transport type, look them up in wiki to find value to use here to normalise loading time to 240 ticks
@@ -2390,13 +2379,6 @@ class Train(object):
             return self.id + "_switch_create_effect_reversed_variants"
         else:
             return self.id + "_switch_create_effect_check_railtype_" + self.consist.reversed_variants[0]
-
-    def get_nml_expression_for_cargo_variant_random_switch(self, cargo_id=None):
-        # having a method to calculate the nml for this is overkill
-        # legacy of multi-part vehicles, where the trigger needed to be run on an adjacent vehicle
-        # this could be unpicked and moved directly into the templates
-        switch_id = self.id + "_switch_graphics" + ('_' + str(cargo_id) if cargo_id is not None else '')
-        return "SELF," + switch_id + ", bitmask(TRIGGER_VEHICLE_NEW_LOAD)"
 
     def get_nml_expression_for_grfid_of_neighbouring_unit(self, unit_offset):
         # offset is number of units
@@ -2858,13 +2840,13 @@ class ExpressCar(TrainCar):
 
 class ExpressIntermodalCar(ExpressCar):
     """
-    Express container car, subclassed from express car.  This subclass only exists to set symmetry_type to asymmetric.
+    Express container car, subclassed from express car.  This subclass only exists to set intermodal flag and symmetry_type.
     """
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # express intermodal cars may be asymmetric, there is magic in the graphics processing to make symmetric pax/mail sprites also work with this
         self._symmetry_type = 'asymmetric'
-
+        self.is_intermodal_platform = True
 
 class FreightCar(TrainCar):
     """
@@ -2883,12 +2865,13 @@ class FreightCar(TrainCar):
 
 class IntermodalCar(FreightCar):
     """
-    Intermodal Car. This subclass only exists to set symmetry_type to asymmetric.
+    Intermodal Car. This subclass only exists to set intermodal flag and symmetry_type.
     """
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # intermodal cars may be asymmetric, there is magic in the graphics processing to make cargo sprites work with this
         self._symmetry_type = 'asymmetric'
+        self.is_intermodal_platform = True
 
 
 class SlagLadleCar(FreightCar):

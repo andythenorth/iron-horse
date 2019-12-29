@@ -37,6 +37,7 @@ def render_header_item_nml(header_item, consists):
                                                     graphics_path=global_constants.graphics_path,
                                                     intermodal_containers=iron_horse.intermodal_containers,
                                                     haulage_bonus_engine_id_tree=iron_horse.get_haulage_bonus_engine_id_tree(),
+                                                    livery_2_engine_ids=iron_horse.get_livery_2_engine_ids(),
                                                     makefile_args=makefile_args))
 
 def render_consist_nml(consist):
@@ -63,7 +64,9 @@ def main():
 
     consists = iron_horse.get_consists_in_buy_menu_order()
 
-    header_items = ['header', 'cargo_table', 'railtype_table', 'spriteset_templates', 'tail_lights', 'haulage_bonus', 'intermodal_containers']
+    header_items = ['header', 'cargo_table', 'railtype_table', 'spriteset_templates', 'tail_lights', 'intermodal_containers',
+                    'procedures_capacity', 'procedures_colour_mapping', 'procedures_haulage_bonus', 'procedures_rulesets',
+                    'procedures_box_car_with_opening_doors', 'procedures_consist_specific_liveries', 'procedures_visible_cargo']
     for header_item in header_items:
         grf_nml.write(render_header_item_nml(header_item, consists))
 

@@ -1,0 +1,31 @@
+<!--! capacity determined according to specific labels that might need to be handled, and otherwise cargo class -->
+<!--! assumes registers are stuffed with compile-time constants corresponding to each capacity variation -->
+<tal:capacity repeat="param_value python:range(3)">
+    switch (FEAT_TRAINS, SELF, switch_cargo_capacity_by_cargo_${param_value}, cargo_classes & bitmask(CC_PASSENGERS, CC_MAIL, CC_ARMOURED)) {
+        bitmask(CC_MAIL): return ${global_constants.mail_multiplier} * LOAD_TEMP(${param_value});
+        bitmask(CC_ARMOURED): return ${global_constants.mail_multiplier} * LOAD_TEMP(${param_value});
+        return LOAD_TEMP(${param_value});
+    }
+</tal:capacity>
+
+switch (FEAT_TRAINS, SELF, switch_cargo_capacity, param[0]) {
+    0: switch_cargo_capacity_by_cargo_0;
+    1: switch_cargo_capacity_by_cargo_1;
+    2: switch_cargo_capacity_by_cargo_2;
+}
+
+<!--! loading speed also determined by capacity, which varies by cargo -->
+<!--! assumes registers are stuffed with compile-time constants corresponding to each capacity variation -->
+<tal:loading_speed repeat="param_value python:range(3)">
+    switch (FEAT_TRAINS, SELF, switch_loading_speed_by_cargo_${param_value}, cargo_classes & bitmask(CC_PASSENGERS, CC_MAIL, CC_ARMOURED)) {
+        bitmask(CC_MAIL): return ${global_constants.mail_multiplier} * LOAD_TEMP(${param_value});
+        bitmask(CC_ARMOURED): return ${global_constants.mail_multiplier} * LOAD_TEMP(${param_value});
+        return LOAD_TEMP(${param_value});
+    }
+</tal:loading_speed>
+
+switch (FEAT_TRAINS, SELF, switch_loading_speed, param[0]) {
+    0: switch_loading_speed_by_cargo_0;
+    1: switch_loading_speed_by_cargo_1;
+    2: switch_loading_speed_by_cargo_2;
+}
