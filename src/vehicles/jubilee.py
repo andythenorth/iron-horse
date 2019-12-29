@@ -7,7 +7,7 @@ def main(roster_id):
                             base_numeric_id=4320,
                             name='4-6-2 Jubilee',
                             role='heavy_express_1',
-                            power=1800,
+                            power=1850,
                             tractive_effort_coefficient=0.18,
                             gen=3,
                             fixed_run_cost_points=140, # give a bonus so this can be a genuine mixed-traffic engine
