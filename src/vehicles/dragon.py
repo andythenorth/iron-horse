@@ -6,12 +6,13 @@ def main(roster_id):
                             id='dragon',
                             base_numeric_id=420,
                             name='Dragon',
-                            role='heavy_express_1',
-                            power=2600,
+                            role='heavy_express_3',
+                            power=2750,
                             random_reverse=True,
                             gen=4,
-                            replacement_consist_id='thunderbird', # this line ends with Dragon and is merged to heavy_express_3
-                            intro_date_offset=2,  # introduce later than gen epoch by design
+                            replacement_consist_id='thunderbird', # this line ends with Dragon and is merged to heavy_express_1
+                            intro_date_offset=1,  # introduce later than gen epoch by design
+                            fixed_run_cost_points=280, # give a malus to this one (balancing eh?)
                             sprites_complete=True)
 
     consist.add_unit(type=DieselEngineUnit,

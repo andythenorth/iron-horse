@@ -41,6 +41,7 @@ from vehicles import helm_wind_cab
 from vehicles import helm_wind_middle
 from vehicles import hercules
 from vehicles import hurly_burly
+from vehicles import jubilee
 from vehicles import jupiter
 from vehicles import kelpie
 from vehicles import lark
@@ -51,6 +52,7 @@ from vehicles import mail_rail
 from vehicles import merrylegs
 from vehicles import moor_gallop
 from vehicles import mumble
+from vehicles import onslaught
 from vehicles import peasweep
 from vehicles import pegasus
 from vehicles import phoenix
@@ -134,10 +136,12 @@ def main(disabled=False):
                                kelpie,
                                griffon,
                                shredder,
+                               upcountry,
+                               jubilee,
                                wyvern,
+                               # onslaught,
                                thunderbird,
                                revolution,
-                               upcountry,
                                pegasus,
                                dragon,
                                hurly_burly,

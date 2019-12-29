@@ -6,15 +6,16 @@ def main(roster_id):
                             id='wyvern',
                             base_numeric_id=2950,
                             name='Wyvern',
-                            role='heavy_express_3',
-                            power=2000,
+                            role='heavy_express_1',
+                            power=2300,
                             random_reverse=True,
                             gen=4,
-                            intro_date_offset=-5,  # let's not have everything turn up in 1960
+                            intro_date_offset=-6,  # let's not have everything turn up in 1960
+                            fixed_run_cost_points=60, # give a bonus so this can be a genuine mixed-traffic engine
                             sprites_complete=True)
 
     consist.add_unit(type=DieselEngineUnit,
-                     weight=110,
+                     weight=130,
                      vehicle_length=8,
                      spriterow_num=0)
 
