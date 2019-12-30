@@ -7,7 +7,7 @@ def main(roster_id):
                             base_numeric_id=2950,
                             name='Wyvern',
                             role='heavy_express_1',
-                            power=2300,
+                            power=2200,
                             random_reverse=True,
                             gen=4,
                             intro_date_offset=-6,  # let's not have everything turn up in 1960

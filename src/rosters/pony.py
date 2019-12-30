@@ -52,7 +52,7 @@ from vehicles import mail_rail
 from vehicles import merrylegs
 from vehicles import moor_gallop
 from vehicles import mumble
-# from vehicles import onslaught  # not convinced currently, progression + visual issues
+from vehicles import onslaught
 from vehicles import peasweep
 from vehicles import pegasus
 from vehicles import phoenix
@@ -143,6 +143,7 @@ def main(disabled=False):
                                revolution,
                                pegasus,
                                dragon,
+                               onslaught,
                                hurly_burly,
                                moor_gallop,
                                roarer,
@@ -164,7 +165,6 @@ def main(disabled=False):
                                growler,
                                slug,
                                phoenix,
-                               # onslaught, # not convinced currently, progression + visual issues
                                girt_licker,
                                lemon,
                                chinook,
