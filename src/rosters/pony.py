@@ -11,7 +11,6 @@ from vehicles import breeze
 from vehicles import brenner_cab
 from vehicles import brenner_middle
 from vehicles import carrack
-from vehicles import centaur
 from vehicles import cheddar_valley
 from vehicles import cheese_bug
 from vehicles import chimera
@@ -62,6 +61,7 @@ from vehicles import pinhorse
 from vehicles import plastic_postbox
 from vehicles import proper_job
 from vehicles import pylon
+from vehicles import relentless
 from vehicles import revolution
 from vehicles import roarer
 from vehicles import saxon
@@ -145,7 +145,7 @@ def main(disabled=False):
                                pegasus,
                                dragon,
                                onslaught,
-                               centaur,
+                               relentless,
                                hurly_burly,
                                moor_gallop,
                                roarer,
