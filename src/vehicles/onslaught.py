@@ -10,7 +10,7 @@ def main(roster_id):
                             power=3300,
                             random_reverse=True,
                             gen=5,
-                            intro_date_offset=-7, # let's be really early with this one to give a mail engine matching Blaze HST intro date
+                            intro_date_offset=-8, # let's be really early with this one to give a mail engine matching Blaze HST intro date
                             sprites_complete=False)
 
     consist.add_unit(type=DieselEngineUnit,

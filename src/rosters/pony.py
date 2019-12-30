@@ -11,6 +11,7 @@ from vehicles import breeze
 from vehicles import brenner_cab
 from vehicles import brenner_middle
 from vehicles import carrack
+from vehicles import centaur
 from vehicles import cheddar_valley
 from vehicles import cheese_bug
 from vehicles import chimera
@@ -79,12 +80,12 @@ from vehicles import spinner
 from vehicles import stoat
 from vehicles import super_shoebox
 from vehicles import tencendur
-from vehicles import thunderbird
 from vehicles import tideway
 from vehicles import tin_rocket
 from vehicles import tyburn
 from vehicles import ultra_shoebox
 from vehicles import upcountry
+from vehicles import vanguard
 from vehicles import westbourne
 from vehicles import workish
 from vehicles import wyvern
@@ -139,11 +140,12 @@ def main(disabled=False):
                                upcountry,
                                jubilee,
                                wyvern,
-                               thunderbird,
+                               vanguard,
                                revolution,
                                pegasus,
                                dragon,
                                onslaught,
+                               centaur,
                                hurly_burly,
                                moor_gallop,
                                roarer,

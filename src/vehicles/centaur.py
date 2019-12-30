@@ -4,14 +4,14 @@ from train import EngineConsist, DieselEngineUnit
 def main(roster_id):
     consist = EngineConsist(roster_id=roster_id,
                             id='centaur',
-                            base_numeric_id=3150,
+                            base_numeric_id=4400,
                             name='Centaur',
-                            role='heavy_express_1',
-                            power=3700,
+                            role='heavy_express_3',
+                            power=3850,
                             random_reverse=True,
                             gen=6,
-                            intro_date_offset=5,  # introduce much earlier than gen epoch by design
-                            sprites_complete=True)
+                            intro_date_offset=-7, # let's be earlier on this to keep the mail up with the HSTs etc
+                            sprites_complete=False)
 
     consist.add_unit(type=DieselEngineUnit,
                      weight=95,
