@@ -74,16 +74,7 @@ def main():
     consist.add_unit(type=IntermodalCar,
                      chassis='4_axle_1cc_filled_32px')
 
-
-    consist = IntermodalCarConsist(roster_id='pony',
-                                   base_numeric_id=3770,
-                                   gen=6,
-                                   subtype='A',
-                                   sprites_complete=True)
-
-    consist.add_unit(type=IntermodalCar,
-                     chassis='2_axle_1cc_filled_16px')
-
+    # no gen 6A
 
     consist = IntermodalCarConsist(roster_id='pony',
                                    base_numeric_id=3750,
