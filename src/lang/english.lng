@@ -48,7 +48,7 @@ STR_NAME_SUFFIX_EXPRESS_INTERMODAL_CAR                          :Express Contain
 STR_NAME_SUFFIX_FLAT_CAR                                        :Flat Wagon
 STR_NAME_SUFFIX_FRUIT_VEG_CAR                                   :Fruit & Vegetables Van
 STR_NAME_SUFFIX_GRAIN_HOPPER_CAR                                :Grain Hopper
-STR_NAME_SUFFIX_HOPPER_CAR                                       :Hopper
+STR_NAME_SUFFIX_HOPPER_CAR                                      :Hopper
 STR_NAME_SUFFIX_HST_PASSENGER_CAR                               :HST Passenger Coach
 STR_NAME_SUFFIX_INTERMODAL_CAR                                  :Container Wagon
 STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Livestock Wagon
@@ -62,7 +62,6 @@ STR_NAME_SUFFIX_PETROL_TANK_CAR                                 :Petrol Tanker
 STR_NAME_SUFFIX_PLATE_CAR                                       :Plate Wagon
 STR_NAME_SUFFIX_REEFER_CAR                                      :Refrigerated Van
 STR_NAME_SUFFIX_ROCK_HOPPER_CAR                                 :Rock Hopper
-STR_NAME_SUFFIX_ROCK_COVERED_HOPPER_CAR                         :Rock Covered Hopper
 STR_NAME_SUFFIX_RUBBER_TANK_CAR                                 :Rubber Tanker
 STR_NAME_SUFFIX_SILO_CAR                                        :Powder Tanker
 STR_NAME_SUFFIX_SLAG_LADLE_CAR                                  :Slag Ladle Wagon
