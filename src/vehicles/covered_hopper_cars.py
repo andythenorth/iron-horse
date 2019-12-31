@@ -42,16 +42,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      chassis='2_axle_gapped_24px')
 
-
-    consist = GravityCoveredHopperCarConsist(roster_id='pony',
-                                      base_numeric_id=4540,
-                                      gen=5,
-                                      subtype='A',
-                                      sprites_complete=False)
-
-    consist.add_unit(type=FreightCar,
-                     chassis='2_axle_filled_16px')
-
+    # no gen 5A or 6A
 
     consist = GravityCoveredHopperCarConsist(roster_id='pony',
                                       base_numeric_id=4550,
@@ -71,16 +62,6 @@ def main():
 
     consist.add_unit(type=FreightCar,
                      chassis='4_axle_filled_greebled_32px')
-
-
-    consist = GravityCoveredHopperCarConsist(roster_id='pony',
-                                      base_numeric_id=4570,
-                                      gen=6,
-                                      subtype='A',
-                                      sprites_complete=False)
-
-    consist.add_unit(type=FreightCar,
-                     chassis='2_axle_filled_16px')
 
 
     consist = GravityCoveredHopperCarConsist(roster_id='pony',
