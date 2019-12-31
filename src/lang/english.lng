@@ -37,7 +37,6 @@ STR_NAME_SUFFIX_CABOOSE_CAR                                     :Brake Van
 STR_NAME_SUFFIX_CARBON_BLACK_HOPPER_CAR                         :Carbon Black Hopper
 STR_NAME_SUFFIX_CHEMICALS_TANK_CAR                              :Chemicals Tanker
 STR_NAME_SUFFIX_CLAY_COVERED_HOPPER_CAR                         :Clay Covered Hopper
-STR_NAME_SUFFIX_COAL_HOPPER_CAR                                 :Coal Hopper
 STR_NAME_SUFFIX_COIL_CAR                                        :Coil Car
 STR_NAME_SUFFIX_CRYO_TANK_CAR                                   :Cryo Tanker
 STR_NAME_SUFFIX_CURTAIN_SIDE_BOX_CAR                            :Curtain Side Van
@@ -49,6 +48,7 @@ STR_NAME_SUFFIX_EXPRESS_INTERMODAL_CAR                          :Express Contain
 STR_NAME_SUFFIX_FLAT_CAR                                        :Flat Wagon
 STR_NAME_SUFFIX_FRUIT_VEG_CAR                                   :Fruit & Vegetables Van
 STR_NAME_SUFFIX_GRAIN_HOPPER_CAR                                :Grain Hopper
+STR_NAME_SUFFIX_HOPPER_CAR                                       :Hopper
 STR_NAME_SUFFIX_HST_PASSENGER_CAR                               :HST Passenger Coach
 STR_NAME_SUFFIX_INTERMODAL_CAR                                  :Container Wagon
 STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Livestock Wagon

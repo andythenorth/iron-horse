@@ -30,7 +30,6 @@ from vehicles import carbon_black_hopper_cars
 from vehicles import chemicals_tank_cars
 from vehicles import clay_covered_hopper_cars
 from vehicles import coil_cars
-from vehicles import coal_hopper_cars
 from vehicles import cryo_tank_cars
 from vehicles import curtain_side_box_cars
 from vehicles import dump_cars
@@ -41,6 +40,7 @@ from vehicles import express_intermodal_cars
 from vehicles import flat_cars
 from vehicles import fruit_veg_cars
 from vehicles import grain_hopper_cars
+from vehicles import hopper_cars
 from vehicles import hst_passenger_cars
 from vehicles import intermodal_cars
 from vehicles import livestock_cars
@@ -147,17 +147,17 @@ def main():
     chemicals_tank_cars.main()
     clay_covered_hopper_cars.main()
     coil_cars.main()
-    coal_hopper_cars.main()
     cryo_tank_cars.main()
     curtain_side_box_cars.main()
     dump_cars.main()
+    dump_cars_high_side.main()
     edibles_tank_cars.main()
     express_cars.main()
-    dump_cars_high_side.main()
     express_intermodal_cars.main()
     flat_cars.main()
     fruit_veg_cars.main()
     grain_hopper_cars.main()
+    hopper_cars.main()
     hst_passenger_cars.main()
     intermodal_cars.main()
     livestock_cars.main()
