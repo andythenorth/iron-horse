@@ -65,6 +65,9 @@ carbon_black_hopper_car_livery_recolour_maps = (# only one livery provided here,
                                                      154: 1, 155: 2, 156: 3, 157: 4,
                                                      158: 5, 159: 6, 160: 7, 161: 8}),)
 
+chemicals_tank_car_livery_recolour_maps = (("DFLT", {136: 16, 137: 18, 138: 19, 139: 20,
+                                                     140: 21, 141: 22, 142: 23, 143: 14}),)
+
 covered_hopper_car_livery_recolour_maps = (("DFLT", {136: CC1, 137: CC1+1, 138: CC1+2, 139: CC1+3,
                                                      140: CC1+4, 141: CC1+5, 142: CC1+6, 143: CC1+7,
                                                      96: 16, 97: 17, 98: 18, 99: 19,
