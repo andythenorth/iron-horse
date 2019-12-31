@@ -51,7 +51,7 @@ from vehicles import open_cars
 from vehicles import ore_hopper_cars
 from vehicles import minerals_covered_hopper_cars
 from vehicles import passenger_cars
-from vehicles import petrol_tank_cars
+# from vehicles import petrol_tank_cars # unconvinced so far
 from vehicles import plate_cars
 from vehicles import reefer_cars
 from vehicles import rock_hopper_cars
@@ -166,17 +166,17 @@ def main():
     ore_hopper_cars.main()
     open_cars.main()
     passenger_cars.main()
-    petrol_tank_cars.main()
+    # petrol_tank_cars.main() # unconvinced so far
     plate_cars.main()
     reefer_cars.main()
     rock_hopper_cars.main()
-    rubber_tank_cars.main()
+    rubber_tank_cars.main() # unconvinced so far
     silo_cars.main()
     scrap_metal_cars.main()
     slag_ladle_cars.main()
     sliding_wall_cars.main()
     stake_cars.main()
-    sulphur_tank_cars.main()
+    sulphur_tank_cars.main() # unconvinced so far
     tank_cars.main()
     tarpaulin_cars.main()
     torpedo_cars.main()

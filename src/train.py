@@ -1161,7 +1161,7 @@ class ChemicalsTankCarConsist(CarConsist):
         # allow flipping, used to flip company colour
         self.allow_flip = True
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.chemicals_tank_car_livery_recolour_maps)
+        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=polar_fox.constants.chemicals_tanker_livery_recolour_maps)
 
 
 # !! not in alphabetical order
@@ -2056,7 +2056,7 @@ class TankCarConsist(CarConsist):
         # allow flipping, used to flip company colour
         self.allow_flip = True
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.oil_tank_car_livery_recolour_maps)
+        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=polar_fox.constants.tanker_livery_recolour_maps)
 
 
 class TarpaulinCarConsist(CarConsist):
