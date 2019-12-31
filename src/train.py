@@ -1503,10 +1503,9 @@ class HopperCarConsistBase(CarConsist):
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(bulk=True)
 
 
-class HopperCarCoalConsist(HopperCarConsistBase):
+class HopperCarConsist(HopperCarConsistBase):
     """
-    Defaults to coal.
-    The classname breaks convention (would usually be CoalHopper), this is to keep all hopper subclasses togther).
+    Defaults to coal.  Doesn't need a cargo-indicative name.
     """
 
     def __init__(self, **kwargs):
