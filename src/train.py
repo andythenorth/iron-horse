@@ -1637,7 +1637,7 @@ class MailCarConsist(CarConsist):
                                                                      consist_ruleset='mail_cars')
 
 
-class MineralCoveredHopperCarConsistBase(CarConsist):
+class GravityCoveredHopperCarConsistBase(CarConsist):
     """
     Bulk mineral cargos needing covered protection.  Not for grain, plastic etc which go in sealed / pressure-flow covered hoppers.
     """
@@ -1654,40 +1654,40 @@ class MineralCoveredHopperCarConsistBase(CarConsist):
         self.allow_flip = True
 
 
-class MineralCoveredHopperCarClayConsist(MineralCoveredHopperCarConsistBase):
+class GravityCoveredHopperCarConsist(GravityCoveredHopperCarConsistBase):
     """
     Defaults to clay/kaolin/quicklime type cargos.
-    The classname breaks convention (would usually be ClayMineralCoveredHopperCarConsist), this is to keep all mineral covered hopper subclasses togther).
+    No cargo-specific name.
     """
 
     def __init__(self, **kwargs):
-        self.base_id = 'clay_covered_hopper_car'
-        super().__init__(**kwargs)
-        self.default_cargos = ['KAOL', 'CLAY', 'QLME'] # !! needs updated
-        # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.clay_covered_hopper_car_livery_recolour_maps,
-                                                                   cargo_specific_livery_uses_dedicated_input_row=True)
-
-
-class MineralCoveredHopperCarOreConsist(MineralCoveredHopperCarConsistBase):
-    """
-    Defaults to salt/potash type cargos.
-    The classname breaks convention (would usually be OreMineralCoveredHopperCarConsist), this is to keep all mineral covered hopper subclasses togther).
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = 'ore_covered_hopper_car'
+        self.base_id = 'covered_hopper_car'
         super().__init__(**kwargs)
         self.default_cargos = ['SALT', 'SAND', 'POTA'] # !! needs updated
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.ore_covered_hopper_car_livery_recolour_maps,
+        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.covered_hopper_car_livery_recolour_maps,
                                                                    cargo_specific_livery_uses_dedicated_input_row=True)
 
 
-class MineralCoveredHopperCarRockConsist(MineralCoveredHopperCarConsistBase):
+class GravityCoveredHopperCarMineralsConsist(GravityCoveredHopperCarConsistBase):
+    """
+    Defaults to salt/potash type cargos.
+    The classname breaks convention (would usually be OreGravityCoveredHopperCarConsist), this is to keep all mineral covered hopper subclasses togther).
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = 'minerals_covered_hopper_car'
+        super().__init__(**kwargs)
+        self.default_cargos = ['KAOL', 'CLAY', 'QLME'] # !! needs updated
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.minerals_covered_hopper_car_livery_recolour_maps,
+                                                                   cargo_specific_livery_uses_dedicated_input_row=True)
+
+
+class GravityCoveredHopperCarRockConsist(GravityCoveredHopperCarConsistBase):
     """
     Defaults to sand/soda ash/phosphate/potash type cargos.
-    The classname breaks convention (would usually be RockMineralCoveredHopperCarConsist), this is to keep all mineral covered hopper subclasses togther).
+    The classname breaks convention (would usually be RockGravityCoveredHopperCarConsist), this is to keep all mineral covered hopper subclasses togther).
     """
 
     def __init__(self, **kwargs):

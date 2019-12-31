@@ -28,8 +28,8 @@ from vehicles import box_cars
 from vehicles import caboose_cars
 from vehicles import carbon_black_hopper_cars
 from vehicles import chemicals_tank_cars
-from vehicles import clay_covered_hopper_cars
 from vehicles import coil_cars
+from vehicles import covered_hopper_cars
 from vehicles import cryo_tank_cars
 from vehicles import curtain_side_box_cars
 from vehicles import dump_cars
@@ -49,7 +49,7 @@ from vehicles import mail_cars
 from vehicles import torpedo_cars
 from vehicles import open_cars
 from vehicles import ore_hopper_cars
-from vehicles import ore_covered_hopper_cars
+from vehicles import minerals_covered_hopper_cars
 from vehicles import passenger_cars
 from vehicles import petrol_tank_cars
 from vehicles import plate_cars
@@ -145,8 +145,8 @@ def main():
     caboose_cars.main()
     carbon_black_hopper_cars.main()
     chemicals_tank_cars.main()
-    clay_covered_hopper_cars.main()
     coil_cars.main()
+    covered_hopper_cars.main()
     cryo_tank_cars.main()
     curtain_side_box_cars.main()
     dump_cars.main()
@@ -163,8 +163,8 @@ def main():
     livestock_cars.main()
     luxury_passenger_cars.main()
     mail_cars.main()
+    minerals_covered_hopper_cars.main()
     ore_hopper_cars.main()
-    ore_covered_hopper_cars.main()
     open_cars.main()
     passenger_cars.main()
     petrol_tank_cars.main()

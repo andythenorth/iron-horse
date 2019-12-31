@@ -69,13 +69,12 @@ carbon_black_hopper_car_livery_recolour_maps = (# only one livery provided here,
 chemicals_tank_car_livery_recolour_maps = (("DFLT", {136: CC1, 137: CC1+1, 138: CC1+2, 139: CC1+3,
                                                      140: CC1+4, 141: CC1+5, 142: CC1+6, 143: CC1+7}),)
 
-clay_covered_hopper_car_livery_recolour_maps = (# only one livery provided here, CC + White
-                                                ("DFLT", {136: 6, 137: 7, 138: 8, 139: 9,
-                                                          140: 11, 141: 12, 142: 13, 143: 14,
-                                                          96: 1, 97: 2, 98: 3, 99: 4,
-                                                          100: 5, 101: 6, 102: 7, 103: 8,
-                                                          154: CC1, 155: CC1+1, 156: CC1+2, 157: CC1+3,
-                                                          158: CC1+4, 159: CC1+5, 160: CC1+6, 161: CC1+7}),)
+covered_hopper_car_livery_recolour_maps = (("DFLT", {136: 53, 137: 54, 138: 6, 139: 57,
+                                                     140: 30, 141: 38, 142: 12, 143: 14,
+                                                     96: CC1, 97: CC1+1, 98: CC1+2, 99: CC1+3,
+                                                     100: CC1+4, 101: CC1+5, 102: CC1+6, 103: CC1+7,
+                                                     154: 53, 155: 54, 156: 6, 157: 57,
+                                                     158: 30, 159: 38, 160: 12, 161: 14}),)
 
 coil_car_livery_recolour_maps = (("DFLT", body_recolour_CC1),)
 
@@ -95,15 +94,15 @@ grain_hopper_car_livery_recolour_maps = (("DFLT", body_recolour_CC1),)
 
 livestock_livery_recolour_maps = (("DFLT", body_recolour_CC2),)
 
+minerals_covered_hopper_car_livery_recolour_maps = (("DFLT", {136: 6, 137: 7, 138: 8, 139: 9,
+                                                              140: 11, 141: 12, 142: 13, 143: 14,
+                                                              96: 1, 97: 2, 98: 3, 99: 4,
+                                                              100: 5, 101: 6, 102: 7, 103: 8,
+                                                              154: CC1, 155: CC1+1, 156: CC1+2, 157: CC1+3,
+                                                              158: CC1+4, 159: CC1+5, 160: CC1+6, 161: CC1+7}),)
+
 oil_tank_car_livery_recolour_maps = (("DFLT",  {136: 1, 137: 2, 138: 3, 139: 4,
                                                 140: 5, 141: 6, 142: 7, 143: 8}),)
-
-ore_covered_hopper_car_livery_recolour_maps = (("DFLT", {136: 112, 137: 113, 138: 33, 139: 115,
-                                                         140: 35, 141: 118, 142: 38, 143: 39,
-                                                         96: CC1, 97: CC1+1, 98: CC1+2, 99: CC1+3,
-                                                         100: CC1+4, 101: CC1+5, 102: CC1+6, 103: CC1+7,
-                                                         154: 112, 155: 113, 156: 33, 157: 115,
-                                                         158: 35, 159: 118, 160: 38, 161: 39}),)
 
 petrol_tank_car_livery_recolour_maps = (("DFLT", {136: 16, 137: 17, 138: 18, 139: 19,
                                                   140: 20, 141: 21, 142: 22, 143: 23}),)
