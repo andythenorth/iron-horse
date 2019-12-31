@@ -77,16 +77,7 @@ def main():
     consist.add_unit(type=FreightCar,
                      chassis='4_axle_sparse_24px')
 
-
-    consist = DumpCarConsist(roster_id='pony',
-                             base_numeric_id=1340,
-                             gen=5,
-                             subtype='A',
-                             sprites_complete=True)
-
-    consist.add_unit(type=FreightCar,
-                     chassis='2_axle_gapped_greebled_16px')
-
+    # no gen 5A or 6A
 
     consist = DumpCarConsist(roster_id='pony',
                              base_numeric_id=1810,
@@ -106,17 +97,6 @@ def main():
 
     consist.add_unit(type=FreightCar,
                      chassis='4_axle_gapped_greebled_32px')
-
-
-    consist = DumpCarConsist(roster_id='pony',
-                             base_numeric_id=1940,
-                             gen=6,
-                             subtype='A',
-                             sprites_complete=True)
-
-    consist.add_unit(type=FreightCar,
-                     chassis='2_axle_gapped_greebled_16px')
-
 
     consist = DumpCarConsist(roster_id='pony',
                              base_numeric_id=2400,
