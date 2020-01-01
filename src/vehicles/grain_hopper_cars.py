@@ -1,9 +1,9 @@
-from train import GrainHopperCarConsist, FreightCar
+from train import CoveredHopperCarGrainConsist, FreightCar
 
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
-    consist = GrainHopperCarConsist(roster_id='pony',
+    consist = CoveredHopperCarGrainConsist(roster_id='pony',
                                       base_numeric_id=2850,
                                       gen=2,
                                       subtype='A',
@@ -13,7 +13,7 @@ def main():
                      chassis='2_axle_gapped_16px')
 
 
-    consist = GrainHopperCarConsist(roster_id='pony',
+    consist = CoveredHopperCarGrainConsist(roster_id='pony',
                                       base_numeric_id=2870,
                                       gen=3,
                                       subtype='A',
@@ -23,7 +23,7 @@ def main():
                      chassis='2_axle_gapped_16px')
 
 
-    consist = GrainHopperCarConsist(roster_id='pony',
+    consist = CoveredHopperCarGrainConsist(roster_id='pony',
                                       base_numeric_id=2080,
                                       gen=4,
                                       subtype='A',
@@ -33,7 +33,7 @@ def main():
                      chassis='2_axle_gapped_16px')
 
 
-    consist = GrainHopperCarConsist(roster_id='pony',
+    consist = CoveredHopperCarGrainConsist(roster_id='pony',
                                       base_numeric_id=2670,
                                       gen=4,
                                       subtype='B',
@@ -43,7 +43,7 @@ def main():
                      chassis='2_axle_gapped_24px')
 
 
-    consist = GrainHopperCarConsist(roster_id='pony',
+    consist = CoveredHopperCarGrainConsist(roster_id='pony',
                                       base_numeric_id=2800,
                                       gen=5,
                                       subtype='B',
@@ -53,7 +53,7 @@ def main():
                      chassis='2_axle_filled_greebled_24px')
 
 
-    consist = GrainHopperCarConsist(roster_id='pony',
+    consist = CoveredHopperCarGrainConsist(roster_id='pony',
                                       base_numeric_id=2690,
                                       gen=5,
                                       subtype='C',
@@ -63,7 +63,7 @@ def main():
                      chassis='4_axle_filled_greebled_32px')
 
 
-    consist = GrainHopperCarConsist(roster_id='pony',
+    consist = CoveredHopperCarGrainConsist(roster_id='pony',
                                       base_numeric_id=2810,
                                       gen=6,
                                       subtype='B',
@@ -73,7 +73,7 @@ def main():
                      chassis='4_axle_filled_greebled_24px')
 
 
-    consist = GrainHopperCarConsist(roster_id='pony',
+    consist = CoveredHopperCarGrainConsist(roster_id='pony',
                                       base_numeric_id=2820,
                                       gen=6,
                                       subtype='C',

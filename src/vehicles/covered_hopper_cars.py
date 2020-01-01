@@ -1,9 +1,9 @@
-from train import GravityCoveredHopperCarConsist, FreightCar
+from train import CoveredHopperCarConsist, FreightCar
 
 
 def main():
     #--------------- pony ----------------------------------------------------------------------
-    consist = GravityCoveredHopperCarConsist(roster_id='pony',
+    consist = CoveredHopperCarConsist(roster_id='pony',
                                       base_numeric_id=4500,
                                       gen=2,
                                       subtype='A',
@@ -13,7 +13,7 @@ def main():
                      chassis='2_axle_gapped_16px')
 
 
-    consist = GravityCoveredHopperCarConsist(roster_id='pony',
+    consist = CoveredHopperCarConsist(roster_id='pony',
                                       base_numeric_id=4510,
                                       gen=3,
                                       subtype='A',
@@ -23,7 +23,7 @@ def main():
                      chassis='2_axle_gapped_16px')
 
 
-    consist = GravityCoveredHopperCarConsist(roster_id='pony',
+    consist = CoveredHopperCarConsist(roster_id='pony',
                                       base_numeric_id=4520,
                                       gen=4,
                                       subtype='A',
@@ -33,7 +33,7 @@ def main():
                      chassis='2_axle_sparse_16px')
 
 
-    consist = GravityCoveredHopperCarConsist(roster_id='pony',
+    consist = CoveredHopperCarConsist(roster_id='pony',
                                       base_numeric_id=4530,
                                       gen=4,
                                       subtype='B',
@@ -44,7 +44,7 @@ def main():
 
     # no gen 5A or 6A
 
-    consist = GravityCoveredHopperCarConsist(roster_id='pony',
+    consist = CoveredHopperCarConsist(roster_id='pony',
                                       base_numeric_id=4550,
                                       gen=5,
                                       subtype='B',
@@ -54,7 +54,7 @@ def main():
                      chassis='4_axle_filled_greebled_24px')
 
 
-    consist = GravityCoveredHopperCarConsist(roster_id='pony',
+    consist = CoveredHopperCarConsist(roster_id='pony',
                                       base_numeric_id=4560,
                                       gen=5,
                                       subtype='C',
@@ -64,7 +64,7 @@ def main():
                      chassis='4_axle_filled_greebled_32px')
 
 
-    consist = GravityCoveredHopperCarConsist(roster_id='pony',
+    consist = CoveredHopperCarConsist(roster_id='pony',
                                       base_numeric_id=4580,
                                       gen=6,
                                       subtype='B',
@@ -74,7 +74,7 @@ def main():
                      chassis='4_axle_filled_greebled_24px')
 
 
-    consist = GravityCoveredHopperCarConsist(roster_id='pony',
+    consist = CoveredHopperCarConsist(roster_id='pony',
                                       base_numeric_id=4590,
                                       gen=6,
                                       subtype='C',
