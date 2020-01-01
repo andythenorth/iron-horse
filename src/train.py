@@ -1169,6 +1169,7 @@ class ChemicalsTankCarConsist(CarConsist):
 
 
 # !! not in alphabetical order
+# !! possibly deprecated
 class SulphurTankCarConsist(CarConsist):
     """
     Dedicated sulphur tank car.
@@ -1801,7 +1802,7 @@ class PassengerLuxuryCarConsist(PassengerCarConsistBase):
         self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings,
                                                                      consist_ruleset='pax_cars')
 
-
+# !! possibly deprecated
 class PetrolTankCarConsist(CarConsist):
     """
     All non-edible liquid cargos
@@ -1869,7 +1870,7 @@ class ReeferCarConsist(CarConsist):
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(id_base='box_car',
                                                                   recolour_maps=graphics_constants.refrigerated_livery_recolour_maps)
 
-
+# !! possibly deprecated
 class RubberTankCarConsist(CarConsist):
     """
     Dedicated tank car for rubber.
