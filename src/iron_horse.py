@@ -27,6 +27,7 @@ import intermodal_containers
 from vehicles import box_cars
 from vehicles import caboose_cars
 from vehicles import carbon_black_hopper_cars
+from vehicles import cement_silo_cars
 from vehicles import chemicals_tank_cars
 from vehicles import coil_cars
 from vehicles import covered_hopper_cars
@@ -143,6 +144,7 @@ def main():
     box_cars.main()
     caboose_cars.main()
     carbon_black_hopper_cars.main()
+    cement_silo_cars.main()
     chemicals_tank_cars.main()
     coil_cars.main()
     covered_hopper_cars.main()

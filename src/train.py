@@ -1918,16 +1918,15 @@ class SaltHopperCarConsist(CarConsist):
                                                                    cargo_specific_livery_uses_dedicated_input_row=True)
 
 
-class SiloCarConsist(CarConsist):
+class SiloCarConsistBase(CarConsist):
     """
     Powder bulk cargos needing protection and special equipment for unloading.
     """
 
     def __init__(self, **kwargs):
-        self.base_id = 'silo_car'
         super().__init__(**kwargs)
         self.class_refit_groups = []  # no classes, use explicit labels
-        self.label_refits_allowed = ['SUGR', 'FMSP', 'RFPR', 'BDMT', 'RUBR', 'QLME', 'SASH', 'CMNT', 'CBLK', 'KAOL', 'CLAY', 'SAND'] # move to Polar Fox (maybe??)
+        self.label_refits_allowed = ['SUGR', 'FMSP', 'RFPR', 'BDMT', 'QLME', 'SASH', 'CMNT', 'CBLK', 'SAND'] # move to Polar Fox (maybe??)
         self.label_refits_disallowed = []
         self.default_cargos = polar_fox.constants.default_cargos['silo']
         self.loading_speed_multiplier = 2
@@ -1935,8 +1934,30 @@ class SiloCarConsist(CarConsist):
         self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['non_core_wagons']
         # allow flipping, used to flip company colour
         self.allow_flip = True
+
+
+class SiloCarConsist(SiloCarConsistBase):
+    """
+    Standard silo car.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = 'silo_car'
+        super().__init__(**kwargs)
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.silo_livery_recolour_maps)
+
+
+class SiloCarCementConsist(SiloCarConsistBase):
+    """
+    Cement-coloured silo car.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = 'cement_silo_car'
+        super().__init__(**kwargs)
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.cement_silo_livery_recolour_maps)
 
 
 class SlagLadleCarConsist(CarConsist):
