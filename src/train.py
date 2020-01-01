@@ -1241,8 +1241,7 @@ class CoveredHopperCarConsist(CoveredHopperCarConsistBase):
         super().__init__(**kwargs)
         self.default_cargos = ['SALT', 'SAND', 'POTA'] # !! needs updated
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.covered_hopper_car_livery_recolour_maps,
-                                                                   cargo_specific_livery_uses_dedicated_input_row=True)
+        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.covered_hopper_car_livery_recolour_maps)
 
 
 class CoveredHopperCarMineralsConsist(CoveredHopperCarConsistBase):
