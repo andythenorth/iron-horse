@@ -1150,8 +1150,13 @@ class ChemicalsTankCarConsist(CarConsist):
         # Pikka: if people complain that it's unrealistic, tell them "don't do it then"
         self.base_id = 'chemicals_tank_car'
         super().__init__(**kwargs)
+        self.class_refit_groups = ['liquids']
+        self.label_refits_allowed = []
+        self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label['non_generic_liquids']
+        """
         self.class_refit_groups = []  # no classes, use explicit labels
-        self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label['chemicals']
+        self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label['chemicals_tank']
+        """
         self.default_cargos = polar_fox.constants.default_cargos['chemicals_tank']
         self.loading_speed_multiplier = 2
         self.buy_cost_adjustment_factor = 1.33
