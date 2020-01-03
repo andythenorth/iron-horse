@@ -10,7 +10,7 @@ from vehicles import braf
 from vehicles import breeze
 from vehicles import brenner_cab
 from vehicles import brenner_middle
-#from vehicles import bright_country
+from vehicles import bright_country
 from vehicles import carrack
 from vehicles import cheddar_valley
 from vehicles import cheese_bug
@@ -53,7 +53,7 @@ from vehicles import mail_rail
 from vehicles import merrylegs
 from vehicles import moor_gallop
 from vehicles import mumble
-#from vehicles import olympic
+from vehicles import olympic
 from vehicles import onslaught
 from vehicles import peasweep
 from vehicles import pegasus
@@ -81,7 +81,7 @@ from vehicles import snapper
 from vehicles import snowplough_pony_gen_2
 from vehicles import spinner
 from vehicles import stoat
-#from vehicles import sunshine_coast
+from vehicles import sunshine_coast
 from vehicles import super_shoebox
 from vehicles import tencendur
 from vehicles import tideway
@@ -206,9 +206,9 @@ def main(disabled=False):
                                pylon,
                                # express MUs
                                # !! not convinced yet
-                               #sunshine_coast,
-                               #olympic,
-                               #bright_country,
+                               sunshine_coast,
+                               olympic,
+                               bright_country,
                                # brit high speed pax
                                pullman,
                                blaze,
