@@ -10,6 +10,7 @@ from vehicles import braf
 from vehicles import breeze
 from vehicles import brenner_cab
 from vehicles import brenner_middle
+from vehicles import bright_country
 from vehicles import carrack
 from vehicles import cheddar_valley
 from vehicles import cheese_bug
@@ -60,8 +61,8 @@ from vehicles import phoenix
 from vehicles import pikel
 from vehicles import pinhorse
 from vehicles import plastic_postbox
-from vehicles import poseidon
 from vehicles import proper_job
+from vehicles import pullman
 from vehicles import pylon
 from vehicles import relentless
 from vehicles import revolution
@@ -80,6 +81,7 @@ from vehicles import snapper
 from vehicles import snowplough_pony_gen_2
 from vehicles import spinner
 from vehicles import stoat
+from vehicles import sunshine_coast
 from vehicles import super_shoebox
 from vehicles import tencendur
 from vehicles import tideway
@@ -109,7 +111,7 @@ def main(disabled=False):
                     # NG is Corsican-style 1000mm, native brit NG is not a thing for gameplay
                     speeds = {'RAIL': {'standard': [45, 45, 60, 75, 87, 96], # gen 5 and 6 forced down by design, really fast freight is imbalanced
                                        'express': [60, 75, 90, 105, 115, 125], # smaller steps in gen 5 and 6, balances against faster HSTs
-                                       'hst': [0, 0, 0, 0, 125, 140], # only gen 5 and 6 HST provided
+                                       'hst': [0, 0, 0, 112, 125, 140], # only gen 4, 5 and 6 HST provided
                                        'very_high_speed': [0, 0, 0, 0, 140, 186]},
                               'METRO': {'standard': [45, 55, 65]}, # no express for metro in Pony
                               'NG': {'standard': [45, 45, 55, 65], # NG standard/express all same in Pony, balanced against trams, RVs
@@ -203,9 +205,11 @@ def main(disabled=False):
                                jupiter,
                                pylon,
                                # express MUs
+                               sunshine_coast,
                                olympic,
-                               poseidon,
+                               bright_country,
                                # brit high speed pax
+                               pullman,
                                blaze,
                                scorcher,
                                helm_wind_cab,
