@@ -62,7 +62,7 @@ class Consist(object):
         self.power_by_railtype = kwargs.get('power_by_railtype', None)
         # some engines require pantograph sprites composited, don't bother setting this unless required
         self.pantograph_type = kwargs.get('pantograph_type', None)
-        self.dual_headed = 1 if kwargs.get('dual_headed', False) else 0
+        self.dual_headed = kwargs.get('dual_headed', False)
         self.tilt_bonus = False  # over-ride in subclass as needed
         # solely used for ottd livery (company colour) selection, set in subclass as needed
         self.train_flag_mu = False
@@ -646,7 +646,7 @@ class PassengerEngineMetroConsist(PassengerEngineConsist):
 
 class PassengerEngineRailcarConsist(PassengerEngineConsist):
     """
-    Consist for a pax railcar.  Just a sparse subclass to force the gestalt_graphics and allow_flip
+    Consist for a pax railcar (single unit, combinable).  Just a sparse subclass to force the gestalt_graphics and allow_flip
     """
 
     def __init__(self, **kwargs):
@@ -674,6 +674,37 @@ class PassengerEngineRailcarConsist(PassengerEngineConsist):
                                                                      consist_ruleset="pax_railcars",
                                                                      pantograph_type=self.pantograph_type)
 
+
+class PassengerEngineExpressMUConsist(PassengerEngineConsist):
+    """
+    Consist for an express pax MU (2 vehicles, dual-headed flag set).  Just a sparse subclass to force the gestalt_graphics and allow_flip.
+    Intended for express-speed, high-power long-distance EMUs, use railcars for short / slow / commuter routes.
+    """
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.allow_flip = True
+        self.dual_headed = True
+        # train_flag_mu solely used for ottd livery (company colour) selection
+        self.train_flag_mu = True
+        # this will knock standard age period down, so this train is less profitable over ~128 tiles than a similar luxury train
+        self.cargo_age_period = global_constants.CARGO_AGE_PERIOD_STANDARD_PAX_MALUS
+
+        # Graphics configuration
+        if self.gen in [2, 3]:
+            self.roof_type = 'pax_mail_ridged'
+        else:
+            self.roof_type = 'pax_mail_smooth'
+        """
+        # Graphics configuration
+        # 1 livery as can't be flipped, 1 spriterow may be left blank for compatibility with Gestalt (TBC)
+        # position variants
+        # * unit with driving cab front end
+        # * unit with driving cab rear end
+        spriterow_group_mappings = {'pax': {'default': 0, 'first': 0, 'last': 1, 'special': 0}}
+        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings,
+                                                                     consist_ruleset=None, # ruleset needs renaming
+                                                                     pantograph_type=self.pantograph_type)
+        """
 
 class PassengerVeryHighSpeedCabEngineConsist(PassengerEngineConsist):
     """

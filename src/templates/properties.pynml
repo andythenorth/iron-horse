@@ -78,7 +78,7 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
         </tal:default_cargo>
         misc_flags:                     bitmask(${vehicle.special_flags}); // nml constants
         <tal:dual_headed condition="consist.dual_headed">
-            dual_headed:                    ${consist.dual_headed};
+            dual_headed:                    ${1 if consist.dual_headed else 0};
         </tal:dual_headed>
         model_life:                     ${consist.model_life};
         retire_early:                   ${consist.retire_early};

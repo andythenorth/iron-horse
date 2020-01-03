@@ -52,6 +52,7 @@ from vehicles import mail_rail
 from vehicles import merrylegs
 from vehicles import moor_gallop
 from vehicles import mumble
+from vehicles import olympic
 from vehicles import onslaught
 from vehicles import peasweep
 from vehicles import pegasus
@@ -200,6 +201,8 @@ def main(disabled=False):
                                dover,
                                jupiter,
                                pylon,
+                               # express MUs
+                               olympic,
                                # brit high speed pax
                                blaze,
                                scorcher,
