@@ -3,6 +3,17 @@ from train import PassengerHSTCarConsist, HSTPaxCar
 def main():
     #--------------- pony ----------------------------------------------------------------------
     consist = PassengerHSTCarConsist(roster_id='pony',
+                                     base_numeric_id=3900,
+                                     gen=4,
+                                     subtype='U',
+                                     intro_date_offset=0, # match to Pullman HST
+                                     sprites_complete=False)
+
+    consist.add_unit(type=HSTPaxCar,
+                     chassis='4_axle_solid_express_32px')
+
+
+    consist = PassengerHSTCarConsist(roster_id='pony',
                                      base_numeric_id=3480,
                                      gen=5,
                                      subtype='U',
