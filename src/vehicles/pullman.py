@@ -7,9 +7,10 @@ def main(roster_id):
                             base_numeric_id=3830,
                             name='Pullman',
                             role='hst', # quite a specific role, may or may not scale to other rosters
-                            power=2500, # it's quite under-powered, only for short trains
+                            power=3300, # it's the Deltic that never was!
                             dual_headed=True,
                             gen=4,
+                            fixed_run_cost_points=280, # give a malus to this one (balancing eh?)
                             sprites_complete=False)
 
     consist.add_unit(type=DieselEngineUnit,
