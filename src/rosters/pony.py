@@ -60,6 +60,7 @@ from vehicles import phoenix
 from vehicles import pikel
 from vehicles import pinhorse
 from vehicles import plastic_postbox
+from vehicles import poseidon
 from vehicles import proper_job
 from vehicles import pylon
 from vehicles import relentless
@@ -203,6 +204,7 @@ def main(disabled=False):
                                pylon,
                                # express MUs
                                olympic,
+                               poseidon,
                                # brit high speed pax
                                blaze,
                                scorcher,
