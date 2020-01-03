@@ -1794,7 +1794,7 @@ class PassengerHSTCarConsist(PassengerCarConsistBase):
         self.floating_run_cost_multiplier = 5
         self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['hst']
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
-        self.weight_factor = 1 if self.base_track_type == 'NG' else 2
+        self.weight_factor = 0.8 if self.base_track_type == 'NG' else 1.6
         # Graphics configuration
         # pax cars only have one consist cargo mapping, which they always default to, whatever the consist cargo is
         # position based variants:
