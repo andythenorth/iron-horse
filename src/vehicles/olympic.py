@@ -6,8 +6,8 @@ def main(roster_id):
                                               id='olympic',
                                               base_numeric_id=3040,
                                               name='Olympic',
-                                              role='pax_railcar_2',
-                                              power=3200,
+                                              role='express_emu',
+                                              power=1200, # balanced against Roarer somewhat
                                               pantograph_type='z-shaped-single-with-base',
                                               gen=4,
                                               sprites_complete=False,

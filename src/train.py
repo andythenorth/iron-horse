@@ -237,7 +237,7 @@ class Consist(object):
         # see https://github.com/OpenTTD/OpenTTD/pull/7147 for explanation
         # this does *not* use the role group mapping in global constants, as it's more fragmented to avoid too many new vehicle messages at once
         role_to_role_groups_mapping = {'express_core': ['express_1', 'heavy_express_1'],
-                                       'express_non_core': ['branch_express_1', 'branch_express_2', 'express_2', 'heavy_express_2', 'heavy_express_3', 'heavy_express_4'],
+                                       'express_non_core': ['branch_express_1', 'branch_express_2', 'express_2', 'heavy_express_2', 'heavy_express_3', 'heavy_express_4', 'express_emu'],
                                        'driving_cab': ['driving_cab_express_1'],
                                        'freight_core': ['freight_1', 'heavy_freight_1',],
                                        'freight_non_core': ['branch_freight', 'freight_2', 'heavy_freight_2', 'heavy_freight_3'],
