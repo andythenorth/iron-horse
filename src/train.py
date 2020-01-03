@@ -2686,6 +2686,23 @@ class ElectricRailcarPaxUnit(ElectricRailcarBaseUnit):
         self.capacity = self.vehicle_length * base_capacity
 
 
+class ElectricExpressMUPaxUnit(Train):
+    """
+    Unit for an express electric MU.
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.consist.requires_electric_rails = True
+        self.engine_class = 'ENGINE_CLASS_ELECTRIC'
+        self.effects = {'default': ['EFFECT_SPAWN_MODEL_ELECTRIC', 'EFFECT_SPRITE_ELECTRIC']}
+        self.consist.str_name_suffix = 'STR_NAME_SUFFIX_ELECTRIC'
+        # the cab magic won't work unless it's asymmetrical eh? :P
+        self._symmetry_type = 'asymmetric'
+        base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
+        self.capacity = int(self.vehicle_length * base_capacity * 0.75)
+
+
 class ElectricHighSpeedPaxUnit(Train):
     """
     Unit for high-speed, high-power pax electric train

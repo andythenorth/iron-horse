@@ -1,4 +1,4 @@
-from train import PassengerEngineExpressMUConsist, ElectricRailcarPaxUnit
+from train import PassengerEngineExpressMUConsist, ElectricExpressMUPaxUnit
 
 
 def main(roster_id):
@@ -13,7 +13,7 @@ def main(roster_id):
                                               sprites_complete=False,
                                               intro_date_offset=3)  # introduce later by design
 
-    consist.add_unit(type=ElectricRailcarPaxUnit,
+    consist.add_unit(type=ElectricExpressMUPaxUnit,
                      weight=52,
                      chassis='railcar_32px',
                      tail_light='railcar_32px_2')
