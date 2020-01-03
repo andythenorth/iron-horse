@@ -1,17 +1,15 @@
-from train import EngineConsist, DieselEngineUnit
+from train import PassengerHSTCabEngineConsist, DieselEngineUnit
 
 
 def main(roster_id):
-    consist = EngineConsist(roster_id=roster_id,
-                            id='pullman',
-                            base_numeric_id=3830,
-                            name='Pullman',
-                            role='hst', # quite a specific role, may or may not scale to other rosters
-                            power=3300, # it's the Deltic that never was!
-                            dual_headed=True,
-                            gen=4,
-                            fixed_run_cost_points=280, # give a malus to this one (balancing eh?)
-                            sprites_complete=False)
+    consist = PassengerHSTCabEngineConsist(roster_id=roster_id,
+                                           id='pullman',
+                                           base_numeric_id=3830,
+                                           name='Pullman',
+                                           role='hst', # quite a specific role, may or may not scale to other rosters
+                                           power=3300, # it's the Deltic that never was!
+                                           gen=4,
+                                           sprites_complete=False)
 
     consist.add_unit(type=DieselEngineUnit,
                      weight=65,

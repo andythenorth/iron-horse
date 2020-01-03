@@ -1,18 +1,16 @@
-from train import EngineConsist, DieselEngineUnit
+from train import PassengerHSTCabEngineConsist, DieselEngineUnit
 
 
 def main(roster_id):
-    consist = EngineConsist(roster_id=roster_id,
-                            id='scorcher',
-                            base_numeric_id=3320,
-                            name='Scorcher HST',
-                            role='hst', # quite a specific role, may or may not scale to other rosters
-                            power=6600,
-                            dual_headed=True,
-                            intro_date_offset=-10,  # let's be a little bit earlier for this one - keep match to HST coaches
-                            gen=6,
-                            fixed_run_cost_points=280, # give a malus to this one (balancing eh?)
-                            sprites_complete=True)
+    consist = PassengerHSTCabEngineConsist(roster_id=roster_id,
+                                           id='scorcher',
+                                           base_numeric_id=3320,
+                                           name='Scorcher HST',
+                                           role='hst', # quite a specific role, may or may not scale to other rosters
+                                           power=6600,
+                                           intro_date_offset=-10,  # let's be a little bit earlier for this one - keep match to HST coaches
+                                           gen=6,
+                                           sprites_complete=True)
 
     consist.add_unit(type=DieselEngineUnit,
                      weight=70,

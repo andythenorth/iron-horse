@@ -706,6 +706,27 @@ class PassengerEngineExpressMUConsist(PassengerEngineConsist):
                                                                      pantograph_type=self.pantograph_type)
         """
 
+
+class PassengerHSTCabEngineConsist(PassengerEngineConsist):
+    """
+    Consist for a dual-headed HST (high speed train).
+    May or may not have capacity (set per vehicle).
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # always dual-head
+        self.dual_headed = True
+        # moderate cargo age bonus
+        self.cargo_age_period = 4 * global_constants.CARGO_AGE_PERIOD
+        self.buy_cost_adjustment_factor = 1.2
+        # higher speed should only be effective over longer distances
+        # ....run cost multiplier is adjusted up from pax base for high speed
+        self.floating_run_cost_multiplier = 22
+        # ...and high fixed (baseline) run costs on this subtype
+        self.fixed_run_cost_points = 180
+
+
 class PassengerVeryHighSpeedCabEngineConsist(PassengerEngineConsist):
     """
     Consist for a cab (leading) motor very high speed train (TGV etc).
@@ -1789,9 +1810,9 @@ class PassengerHSTCarConsist(PassengerCarConsistBase):
         self.speed_class = 'hst'
         # this won't make much difference except over *very* long routes, but set it anyway
         # moderate cargo age bonus
-        self.cargo_age_period = 1.33 * global_constants.CARGO_AGE_PERIOD
+        self.cargo_age_period = 4 * global_constants.CARGO_AGE_PERIOD
         self.buy_cost_adjustment_factor = 1.6
-        self.floating_run_cost_multiplier = 5
+        self.floating_run_cost_multiplier = 4.75
         self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['hst']
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 0.8 if self.base_track_type == 'NG' else 1.6
