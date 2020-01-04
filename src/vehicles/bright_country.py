@@ -6,12 +6,10 @@ def main(roster_id):
                                                   id='bright_country',
                                                   base_numeric_id=3800,
                                                   name='Bright Country',
-                                                  role='express_emu',
+                                                  role='luxury_pax_railcar',
                                                   power=900,
                                                   pantograph_type='z-shaped-single-with-base',
                                                   gen=6,
-                                                  speed=125,
-                                                  replacement_consist_id='revolution', # !!! hax
                                                   sprites_complete=False)
 
     consist.add_unit(type=ElectricLuxuryRailcarPaxUnit,

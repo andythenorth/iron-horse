@@ -237,7 +237,7 @@ class Consist(object):
         # see https://github.com/OpenTTD/OpenTTD/pull/7147 for explanation
         # this does *not* use the role group mapping in global constants, as it's more fragmented to avoid too many new vehicle messages at once
         role_to_role_groups_mapping = {'express_core': ['express_1', 'heavy_express_1'],
-                                       'express_non_core': ['branch_express_1', 'branch_express_2', 'express_2', 'heavy_express_2', 'heavy_express_3', 'heavy_express_4', 'express_emu'],
+                                       'express_non_core': ['branch_express_1', 'branch_express_2', 'express_2', 'heavy_express_2', 'heavy_express_3', 'heavy_express_4', 'luxury_pax_railcar'],
                                        'driving_cab': ['driving_cab_express_1'],
                                        'freight_core': ['freight_1', 'heavy_freight_1',],
                                        'freight_non_core': ['branch_freight', 'freight_2', 'heavy_freight_2', 'heavy_freight_3'],
@@ -352,9 +352,13 @@ class Consist(object):
             # could be fixed by checking a list of railtypes
             return self.get_speed_by_class(self.speed_class)
         elif self.role:
-            if self.role in global_constants.role_group_mapping['express'] or self.role in global_constants.role_group_mapping['driving_cab']:
-                return self.get_speed_by_class('express')
-            elif self.role in ['hst']:
+            # first check for express roles, which are determined by multiple role groups
+            for role_group_mapping_key in ['express', 'driving_cab', 'luxury_railcar']:
+                group_roles = global_constants.role_group_mapping[role_group_mapping_key]
+                if self.role in group_roles:
+                    return self.get_speed_by_class('express')
+            # then check other specific roles
+            if self.role in ['hst']:
                 return self.get_speed_by_class('hst')
             elif self.role in ['very_high_speed']:
                 return self.get_speed_by_class('very_high_speed')

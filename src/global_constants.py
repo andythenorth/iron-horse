@@ -74,13 +74,14 @@ PR_RUNNING_TRAIN_DIESEL = -4
 
 # generalised mapping of roles to groups
 # order is significant, so OrderedDict is used (this wouldn't be necessary for python >= 3.7, but at time of writing compile uses python 3.5)
-role_group_mapping = OrderedDict([('express', ['branch_express_1', 'branch_express_2', 'express_1', 'express_2', 'heavy_express_1', 'heavy_express_2', 'heavy_express_3', 'heavy_express_4', 'express_emu']),
+role_group_mapping = OrderedDict([('express', ['branch_express_1', 'branch_express_2', 'express_1', 'express_2', 'heavy_express_1', 'heavy_express_2', 'heavy_express_3', 'heavy_express_4']),
                                   ('driving_cab', ['driving_cab_express_1']),
                                   ('freight', ['branch_freight', 'freight_1', 'freight_2', 'heavy_freight_1', 'heavy_freight_2', 'heavy_freight_3']),
                                   ('universal', ['universal', 'mail_railcar_1', 'mail_railcar_2', 'pax_railcar_1', 'pax_railcar_2']),
-                                  ('lolz', ['gronk!', 'snoughplough!']),
+                                  ('luxury_railcar', ['luxury_pax_railcar']),
                                   ('hst', ['hst']),
                                   ('very_high_speed', ['very_high_speed']),
+                                  ('lolz', ['gronk!', 'snoughplough!']),
                                   ('metro', ['mail_metro', 'pax_metro'])])
 
 # keep alphabetised, order not significant
@@ -89,6 +90,7 @@ role_string_mapping = {'driving_cab': 'STR_ROLE_DRIVING_CAB',
                        'freight': 'STR_ROLE_FREIGHT',
                        'hst': 'STR_ROLE_HST',
                        'lolz': 'STR_ROLE_LOLZ',
+                       'luxury_railcar': 'STR_ROLE_GENERAL_PURPOSE',
                        'metro': 'STR_ROLE_METRO',
                        'very_high_speed': 'STR_ROLE_VERY_HIGH_SPEED',
                        'universal': 'STR_ROLE_GENERAL_PURPOSE'}

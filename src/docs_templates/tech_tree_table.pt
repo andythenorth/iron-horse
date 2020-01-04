@@ -40,13 +40,16 @@
                                             <li>routes which are heavily used by freight trains, which limit the maximum speed of other trains on the route</li>
                                         </ul>
                                     </li>
-                                    <li>railcars can generally haul one additional unpowered coach, mail car or other wagon, on level routes</li>
-                                    <li>railcars can be combined as needed</li>
+                                    <li>Railcars can generally haul one additional unpowered coach, mail car or other wagon, on level routes</li>
+                                    <li>Railcars can be combined as needed</li>
                                 </ul>
                             </div>
-                            <div tal:case="'lolz'">
-                                <h4>Lolz</h4>
-                                <p>Silly trains that don't have any gameplay purpose but look nice.</p>
+                            <div tal:case="'luxury_railcar'">
+                                <h4>Luxury Railcars / Multiple-Unit Trains</h4>
+                                <ul>
+                                    <li>These run at express train speeds, and have more power but lower capacity than standard railcars</li>
+                                    <li>Luxury railcars can be combined as needed</li>
+                                </ul>
                             </div>
                             <div tal:case="'hst'">
                                 <h4>High-Speed Trains</h4>
@@ -67,6 +70,10 @@
                                     <li> tilt bonus for higher speed through curves</li>
                                     <li> attaching other types of cars is not recommended, the train will be very underpowered and will travel at much less than maximum engine speed</li>
                                 </ul>
+                            </div>
+                            <div tal:case="'lolz'">
+                                <h4>Lolz</h4>
+                                <p>Silly trains that don't have any gameplay purpose but look nice.</p>
                             </div>
                         </tal:descriptions>
                     </tal:descriptions_rail>

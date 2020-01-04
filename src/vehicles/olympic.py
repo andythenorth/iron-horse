@@ -6,12 +6,10 @@ def main(roster_id):
                                                   id='olympic',
                                                   base_numeric_id=3770,
                                                   name='Olympic',
-                                                  role='express_emu',
+                                                  role='luxury_pax_railcar',
                                                   power=750,
                                                   pantograph_type='z-shaped-single-with-base',
                                                   gen=5,
-                                                  speed=110,
-                                                  replacement_consist_id='revolution', # !!! hax
                                                   sprites_complete=False)
 
     consist.add_unit(type=ElectricLuxuryRailcarPaxUnit,
