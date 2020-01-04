@@ -1,22 +1,22 @@
-from train import PassengerEngineExpressMUConsist, ElectricExpressMUPaxUnit
+from train import PassengerEngineLuxuryRailcarConsist, ElectricLuxuryRailcarPaxUnit
 
 
 def main(roster_id):
-    consist = PassengerEngineExpressMUConsist(roster_id=roster_id,
-                                              id='bright_country',
-                                              base_numeric_id=3800,
-                                              name='Bright Country',
-                                              role='express_emu',
-                                              power=2200,
-                                              pantograph_type='z-shaped-single-with-base',
-                                              gen=6,
-                                              sprites_complete=False,
-                                              intro_date_offset=3)  # introduce later by design
+    consist = PassengerEngineLuxuryRailcarConsist(roster_id=roster_id,
+                                                  id='bright_country',
+                                                  base_numeric_id=3800,
+                                                  name='Bright Country',
+                                                  role='express_emu',
+                                                  power=900,
+                                                  pantograph_type='z-shaped-single-with-base',
+                                                  gen=6,
+                                                  speed=125,
+                                                  replacement_consist_id='revolution', # !!! hax
+                                                  sprites_complete=False)
 
-    consist.add_unit(type=ElectricExpressMUPaxUnit,
-                     weight=54,
+    consist.add_unit(type=ElectricLuxuryRailcarPaxUnit,
+                     weight=58,
                      chassis='railcar_32px',
-                     tail_light='railcar_32px_2')
+                     tail_light='railcar_32px_3')
 
     return consist
-

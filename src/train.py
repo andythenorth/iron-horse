@@ -646,7 +646,7 @@ class PassengerEngineMetroConsist(PassengerEngineConsist):
 
 class PassengerEngineRailcarConsist(PassengerEngineConsist):
     """
-    Consist for a pax railcar (single unit, combinable).  Just a sparse subclass to force the gestalt_graphics and allow_flip
+    Consist for a pax railcar (single unit, combinable).
     """
 
     def __init__(self, **kwargs):
@@ -675,36 +675,37 @@ class PassengerEngineRailcarConsist(PassengerEngineConsist):
                                                                      pantograph_type=self.pantograph_type)
 
 
-class PassengerEngineExpressMUConsist(PassengerEngineConsist):
+class PassengerEngineLuxuryRailcarConsist(PassengerEngineConsist):
     """
-    Consist for an express pax MU (2 vehicles, dual-headed flag set).  Just a sparse subclass to force the gestalt_graphics and allow_flip.
+    Consist for a luxury pax railcar (single unit, combinable).
     Intended for express-speed, high-power long-distance EMUs, use railcars for short / slow / commuter routes.
     """
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.allow_flip = True
-        self.dual_headed = True
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
-        # this will knock standard age period down, so this train is less profitable over ~128 tiles than a similar luxury train
-        self.cargo_age_period = global_constants.CARGO_AGE_PERIOD_STANDARD_PAX_MALUS
+        # this won't make much difference except over *very* long routes, but set it anyway
+        self.cargo_age_period = 8 * global_constants.CARGO_AGE_PERIOD
+        self.buy_cost_adjustment_factor = 1.3
+        self.floating_run_cost_multiplier = 16
 
         # Graphics configuration
         if self.gen in [2, 3]:
             self.roof_type = 'pax_mail_ridged'
         else:
             self.roof_type = 'pax_mail_smooth'
-        """
-        # Graphics configuration
-        # 1 livery as can't be flipped, 1 spriterow may be left blank for compatibility with Gestalt (TBC)
+        # 2 liveries, should match local and express liveries of pax cars for this generation
         # position variants
         # * unit with driving cab front end
         # * unit with driving cab rear end
-        spriterow_group_mappings = {'pax': {'default': 0, 'first': 0, 'last': 1, 'special': 0}}
+        # * unit with no cabs (center car)
+        # * special unit with no cabs (center car)
+        # ruleset will combine these to make multiple-units 1, 2, or 3 vehicles long, then repeating the pattern
+        spriterow_group_mappings = {'pax': {'default': 0, 'first': 1, 'last': 2, 'special': 3}}
         self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings,
-                                                                     consist_ruleset=None, # ruleset needs renaming
+                                                                     consist_ruleset="pax_railcars",
                                                                      pantograph_type=self.pantograph_type)
-        """
 
 
 class PassengerHSTCabEngineConsist(PassengerEngineConsist):
@@ -2707,19 +2708,14 @@ class ElectricRailcarPaxUnit(ElectricRailcarBaseUnit):
         self.capacity = self.vehicle_length * base_capacity
 
 
-class ElectricExpressMUPaxUnit(Train):
+class ElectricLuxuryRailcarPaxUnit(ElectricRailcarBaseUnit):
     """
-    Unit for an express electric MU.
+    Unit for a luxury pax electric railcar.  Just a sparse subclass to set capacity.
     """
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.consist.requires_electric_rails = True
-        self.engine_class = 'ENGINE_CLASS_ELECTRIC'
-        self.effects = {'default': ['EFFECT_SPAWN_MODEL_ELECTRIC', 'EFFECT_SPRITE_ELECTRIC']}
-        self.consist.str_name_suffix = 'STR_NAME_SUFFIX_ELECTRIC'
-        # the cab magic won't work unless it's asymmetrical eh? :P
-        self._symmetry_type = 'asymmetric'
+        # magic to set capacity subject to length
         base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
         self.capacity = int(self.vehicle_length * base_capacity * 0.75)
 
