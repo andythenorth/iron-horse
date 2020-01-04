@@ -7,7 +7,7 @@ def main(roster_id):
                                             base_numeric_id=3200,
                                             name='Breeze',
                                             role='pax_railcar_2',
-                                            power=650,  # RL EMU HP is much lower, but eh
+                                            power=520,
                                             pantograph_type='z-shaped-single-with-base',
                                             easter_egg_haulage_speed_bonus=True,
                                             gen=5,

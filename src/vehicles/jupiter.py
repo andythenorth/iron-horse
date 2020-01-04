@@ -7,7 +7,7 @@ def main(roster_id):
                                        base_numeric_id=3190,
                                        name='Jupiter',
                                        role='mail_railcar_2',
-                                       power=850,
+                                       power=680,
                                        pantograph_type='z-shaped-single-with-base',
                                        easter_egg_haulage_speed_bonus=True,
                                        gen=5,

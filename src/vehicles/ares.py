@@ -7,7 +7,7 @@ def main(roster_id):
                                        base_numeric_id=2130,
                                        name='Ares',
                                        role='mail_railcar_2',
-                                       power=550,
+                                       power=400,
                                        pantograph_type='diamond-single-with-base',
                                        easter_egg_haulage_speed_bonus=True,
                                        gen=3,

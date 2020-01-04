@@ -7,7 +7,7 @@ def main(roster_id):
                                        base_numeric_id=700,
                                        name='Dover',
                                        role='mail_railcar_2',
-                                       power=700,
+                                       power=540,
                                        pantograph_type='z-shaped-single-with-base',
                                        easter_egg_haulage_speed_bonus=True,
                                        gen=4,
