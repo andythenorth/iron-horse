@@ -1822,6 +1822,8 @@ class PassengerHSTCarConsist(PassengerCarConsistBase):
         self.base_id = 'hst_passenger_car'
         super().__init__(**kwargs)
         self.speed_class = 'hst'
+        # used to get insert the name of the parent into vehicle name
+        self.cab_id = kwargs['cab_id'] # cab_id must be passed, do not mask errors with .get()
         # this won't make much difference except over *very* long routes, but set it anyway
         # moderate cargo age bonus
         self.cargo_age_period = 4 * global_constants.CARGO_AGE_PERIOD
@@ -1840,6 +1842,14 @@ class PassengerHSTCarConsist(PassengerCarConsistBase):
         spriterow_group_mappings = {'pax': {'default': 0, 'first': 1, 'last': 2, 'special': 3}}
         self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings,
                                                                      consist_ruleset='pax_cars')
+
+    @property
+    def name(self):
+        # special name handling to use the cab name
+        # !! this doesn't work in the docs,
+        # !! really for this kind of stuff, there needs to be a python tree/list of strings, then render to nml, html etc later
+        # !! buy menu text kinda does that, but would need to convert all names to do this
+        return "string(STR_NAME_CONSIST_COMPOUND, string(STR_NAME_" + self.cab_id + "), string(STR_NAME_SUFFIX_HST_PASSENGER_CAR))"
 
 
 class PassengerLuxuryCarConsist(PassengerCarConsistBase):

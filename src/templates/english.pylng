@@ -3,6 +3,7 @@ STR_GRF_NAME                                                    :Iron Horse ${ma
 STR_EMPTY                                                       :
 
 STR_NAME_CONSIST_PLAIN                                          :{STRING}
+STR_NAME_CONSIST_COMPOUND                                       :{STRING} {STRING}
 STR_NAME_CONSIST_PARENTHESES                                    :{STRING} ({STRING})
 
 <!--! consist names (engines) -->

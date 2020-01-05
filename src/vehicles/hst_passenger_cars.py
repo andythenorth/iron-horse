@@ -7,6 +7,7 @@ def main():
                                      gen=4,
                                      subtype='U',
                                      intro_date_offset=0, # match to Pullman HST
+                                     cab_id='pullman',
                                      sprites_complete=False)
 
     consist.add_unit(type=HSTPaxCar,
@@ -18,6 +19,7 @@ def main():
                                      gen=5,
                                      subtype='U',
                                      intro_date_offset=-10, # match to Blaze HST
+                                     cab_id='blaze',
                                      sprites_complete=True)
 
     consist.add_unit(type=HSTPaxCar,
@@ -29,6 +31,7 @@ def main():
                                      gen=6,
                                      subtype='U',
                                      intro_date_offset=-10, # match to Scorcher HST
+                                     cab_id='scorcher',
                                      sprites_complete=True)
 
     consist.add_unit(type=HSTPaxCar,

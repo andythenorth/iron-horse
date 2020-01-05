@@ -26,7 +26,7 @@ def unescape_chameleon_output(escaped_nml):
 def parse_base_lang():
     # expose base lang strings to python - for reuse in docs
     base_lang_file = codecs.open(os.path.join(
-        'src', 'lang', 'english.lng'), 'r', 'utf8')
+        'generated', 'lang', 'english.lng'), 'r', 'utf8')
     text = base_lang_file.readlines()
     # this is fragile, playing one line python is silly :)
     strings = dict((line.split(':', 1)[0].strip(), line.split(
