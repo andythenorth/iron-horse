@@ -6,8 +6,8 @@ def main():
                                      base_numeric_id=3900,
                                      gen=4,
                                      subtype='U',
-                                     intro_date_offset=0, # match to Pullman HST
-                                     cab_id='pullman',
+                                     intro_date_offset=0, # match to Firebird
+                                     cab_id='firebird',
                                      sprites_complete=False)
 
     consist.add_unit(type=HSTPaxCar,

@@ -3,9 +3,9 @@ from train import PassengerHSTCabEngineConsist, DieselEngineUnit
 
 def main(roster_id):
     consist = PassengerHSTCabEngineConsist(roster_id=roster_id,
-                                           id='pullman',
+                                           id='firebird',
                                            base_numeric_id=3830,
-                                           name='Pullman',
+                                           name='Firebird',
                                            role='hst', # quite a specific role, may or may not scale to other rosters
                                            power=3300, # it's the Deltic that never was!
                                            gen=4,

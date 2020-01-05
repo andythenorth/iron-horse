@@ -21,6 +21,7 @@ from vehicles import dover
 from vehicles import dragon
 from vehicles import driving_cab_pony_gen_5
 from vehicles import driving_cab_pony_gen_6
+from vehicles import firebird
 from vehicles import fleet
 from vehicles import flanders_storm
 from vehicles import flindermouse
@@ -62,7 +63,6 @@ from vehicles import pikel
 from vehicles import pinhorse
 from vehicles import plastic_postbox
 from vehicles import proper_job
-from vehicles import pullman
 from vehicles import pylon
 from vehicles import relentless
 from vehicles import revolution
@@ -209,7 +209,7 @@ def main(disabled=False):
                                olympic,
                                bright_country,
                                # brit high speed pax
-                               pullman,
+                               firebird,
                                blaze,
                                scorcher,
                                helm_wind_cab,
