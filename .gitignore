@@ -3,6 +3,7 @@ docs/
 .nmlcache/
 .chameleon_cache/
 *.bak
+*.nfo
 
 # The local makefile should be ignored:
 Makefile.local
