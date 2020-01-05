@@ -7,7 +7,7 @@ def main(roster_id):
                             base_numeric_id=1000,
                             name='Slug',
                             role='freight_1',
-                            power=1950,
+                            power=1800,
                             random_reverse=True,
                             gen=5,
                             sprites_complete=True)

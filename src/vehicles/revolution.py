@@ -6,7 +6,7 @@ def main(roster_id):
                             id='revolution',
                             base_numeric_id=3500,
                             name='Revolution',
-                            role='heavy_express_1',
+                            role='heavy_express_2',
                             power=2800,
                             power_by_railtype={'RAIL': 2800, 'ELRL': 4800},
                             random_reverse=True,
