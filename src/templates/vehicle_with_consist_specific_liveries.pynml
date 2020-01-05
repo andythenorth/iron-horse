@@ -96,15 +96,6 @@
             }
         </tal:position_ruleset>
 
-        <tal:position_ruleset condition="consist.gestalt_graphics.consist_ruleset == 'pax_railcars'">
-            switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_position_in_consist_entry_point_${cargo_label}, switch_graphics_pax_railcar_ruleset()) {
-                0: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['default']};
-                1: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['first']};
-                2: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['last']};
-                3: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['special']};
-            }
-        </tal:position_ruleset>
-
         <tal:position_ruleset condition="consist.gestalt_graphics.consist_ruleset == 'mail_cars'">
             switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_position_in_consist_entry_point_${cargo_label}, switch_graphics_mail_car_ruleset()) {
                 0: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['default']};
@@ -114,8 +105,26 @@
             }
         </tal:position_ruleset>
 
-        <tal:position_ruleset condition="consist.gestalt_graphics.consist_ruleset == 'mail_railcars'">
-            switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_position_in_consist_entry_point_${cargo_label}, switch_graphics_mail_railcar_ruleset()) {
+        <tal:position_ruleset condition="consist.gestalt_graphics.consist_ruleset == 'railcars_4_unit_sets'">
+            switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_position_in_consist_entry_point_${cargo_label}, switch_graphics_railcar_ruleset_4_unit_sets()) {
+                0: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['default']};
+                1: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['first']};
+                2: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['last']};
+                3: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['special']};
+            }
+        </tal:position_ruleset>
+
+        <tal:position_ruleset condition="consist.gestalt_graphics.consist_ruleset == 'railcars_3_unit_sets'">
+            switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_position_in_consist_entry_point_${cargo_label}, switch_graphics_railcar_ruleset_3_unit_sets()) {
+                0: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['default']};
+                1: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['first']};
+                2: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['last']};
+                3: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['special']};
+            }
+        </tal:position_ruleset>
+
+        <tal:position_ruleset condition="consist.gestalt_graphics.consist_ruleset == 'railcars_2_unit_sets'">
+            switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_position_in_consist_entry_point_${cargo_label}, switch_graphics_railcar_ruleset_2_unit_sets()) {
                 0: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['default']};
                 1: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['first']};
                 2: return ${vehicle.id}_switch_graphics_vehicle_layers_${variants['last']};

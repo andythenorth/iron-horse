@@ -675,7 +675,7 @@ class PassengerEngineRailcarConsist(PassengerEngineConsist):
         # ruleset will combine these to make multiple-units 1, 2, or 3 vehicles long, then repeating the pattern
         spriterow_group_mappings = {'pax': {'default': 0, 'first': 1, 'last': 2, 'special': 3}}
         self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings,
-                                                                     consist_ruleset="pax_railcars",
+                                                                     consist_ruleset="railcars_3_unit_sets",
                                                                      pantograph_type=self.pantograph_type)
 
 
@@ -711,7 +711,7 @@ class PassengerEngineLuxuryRailcarConsist(PassengerEngineConsist):
         # ruleset will combine these to make multiple-units 1, 2, or 3 vehicles long, then repeating the pattern
         spriterow_group_mappings = {'pax': {'default': 0, 'first': 1, 'last': 2, 'special': 3}}
         self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings,
-                                                                     consist_ruleset="pax_railcars",
+                                                                     consist_ruleset="railcars_4_unit_sets",
                                                                      pantograph_type=self.pantograph_type)
 
 
@@ -928,7 +928,7 @@ class MailEngineRailcarConsist(MailEngineConsist):
         # ruleset will combine these to make multiple-units 1 or 2 vehicles long, then repeating the pattern
         spriterow_group_mappings = {'mail': {'default': 0, 'first': 1, 'last': 2, 'special': 0}}
         self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings,
-                                                                     consist_ruleset="mail_railcars",
+                                                                     consist_ruleset="railcars_2_unit_sets",
                                                                      pantograph_type=self.pantograph_type)
 
 
