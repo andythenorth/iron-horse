@@ -1827,7 +1827,7 @@ class PassengerHSTCarConsist(PassengerCarConsistBase):
         # this won't make much difference except over *very* long routes, but set it anyway
         # moderate cargo age bonus
         self.cargo_age_period = 4 * global_constants.CARGO_AGE_PERIOD
-        self.buy_cost_adjustment_factor = 1.6
+        self.buy_cost_adjustment_factor = 1.66
         self.floating_run_cost_multiplier = 4.75
         self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['hst']
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
