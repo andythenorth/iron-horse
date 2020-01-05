@@ -90,7 +90,7 @@ role_string_mapping = {'driving_cab': 'STR_ROLE_DRIVING_CAB',
                        'freight': 'STR_ROLE_FREIGHT',
                        'hst': 'STR_ROLE_HST',
                        'lolz': 'STR_ROLE_LOLZ',
-                       'luxury_railcar': 'STR_ROLE_GENERAL_PURPOSE',
+                       'luxury_railcar': 'STR_ROLE_GENERAL_PURPOSE_EXPRESS',
                        'metro': 'STR_ROLE_METRO',
                        'very_high_speed': 'STR_ROLE_VERY_HIGH_SPEED',
                        'universal': 'STR_ROLE_GENERAL_PURPOSE'}
