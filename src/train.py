@@ -925,10 +925,16 @@ class MailEngineRailcarConsist(MailEngineConsist):
         # * unit with driving cabs both ends
         # * unit with driving cab front end
         # * unit with driving cab rear end
-        # ruleset will combine these to make multiple-units 1 or 2 vehicles long, then repeating the pattern
-        spriterow_group_mappings = {'mail': {'default': 0, 'first': 1, 'last': 2, 'special': 0}}
+        # * unit with no driving cabs (OPTIONAL - only provided for 4-unit sets)
+        # Rules are 2 unit sets of 3 unit sets (4 could also be supported, but isn't at time of writing)
+        if kwargs.get('use_3_unit_sets', False):
+            consist_ruleset = 'railcars_3_unit_sets'
+            spriterow_group_mappings = {'mail': {'default': 0, 'first': 1, 'last': 2, 'special': 3}}
+        else:
+            consist_ruleset = 'railcars_2_unit_sets'
+            spriterow_group_mappings = {'mail': {'default': 0, 'first': 1, 'last': 2, 'special': 0}}
         self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings,
-                                                                     consist_ruleset="railcars_2_unit_sets",
+                                                                     consist_ruleset=consist_ruleset,
                                                                      pantograph_type=self.pantograph_type)
 
 

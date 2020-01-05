@@ -10,6 +10,7 @@ def main(roster_id):
                                        power=680,
                                        pantograph_type='z-shaped-single-with-base',
                                        easter_egg_haulage_speed_bonus=True,
+                                       use_3_unit_sets=True,
                                        gen=5,
                                        sprites_complete=True,
                                        intro_date_offset=-3)  # introduce early by design
