@@ -7,7 +7,7 @@ def main(roster_id):
                             base_numeric_id=4400,
                             name='Relentless',
                             role='heavy_express_3',
-                            power=3950, # slightly more than standard progression, as high speed needs more HP
+                            power=3950, # slightly more than standard progression, to enable higher speed to be reach quickly
                             random_reverse=True,
                             gen=6,
                             intro_date_offset=-7, # let's be earlier on this to keep the mail up with the HSTs etc
