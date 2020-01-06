@@ -7,7 +7,7 @@ def main(roster_id):
                             base_numeric_id=1000,
                             name='Slug',
                             role='freight_1',
-                            power=1800,
+                            power=1900, # progression calculated to maintain hp/speed ratio from previous gen
                             random_reverse=True,
                             gen=5,
                             sprites_complete=True)
