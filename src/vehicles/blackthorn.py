@@ -7,7 +7,7 @@ def main(roster_id):
                             base_numeric_id=3470,
                             name='Blackthorn',
                             role='heavy_freight_1',
-                            power=3500,
+                            power=3600,
                             random_reverse=True,
                             gen=6,
                             sprites_complete=True)
