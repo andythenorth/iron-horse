@@ -195,6 +195,7 @@ class DocHelper(object):
             result = self.fetch_prop(result, 'Railtype', vehicle.track_type)
             result = self.fetch_prop(result, 'HP', int(vehicle.power))
             result = self.fetch_prop(result, 'Speed (mph)', vehicle.speed)
+            result = self.fetch_prop(result, 'HP/Speed ratio', vehicle.power_speed_ratio)
             result = self.fetch_prop(result, 'Weight (t)', vehicle.weight)
             result = self.fetch_prop(
                 result, 'TE coefficient', vehicle.tractive_effort_coefficient)

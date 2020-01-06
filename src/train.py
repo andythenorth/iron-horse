@@ -369,6 +369,16 @@ class Consist(object):
             return None
 
     @property
+    def power_speed_ratio(self):
+        # used in docs, as a way of comparing performance between vehicles, especially across generations in same branch of tech tree
+        # see also: http://cs.trains.com/trn/f/111/t/188661.aspx
+        # "on a 1% grade, MPH / 18.75 = HP (per ton); the HP requirement will increase roughly proportionally to the grade and speed."
+        if self.power is None or self.speed is None:
+            return None
+        else:
+            return int(self.power / self.speed)
+
+    @property
     def weight(self):
         return sum([getattr(unit, 'weight', 0) for unit in self.units])
 

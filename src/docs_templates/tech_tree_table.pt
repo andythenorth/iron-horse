@@ -166,8 +166,10 @@
                                                             ${base_lang_strings[consist.str_name_suffix] if consist.str_name_suffix is not None else None}
                                                         </small>
                                                         <small>${consist.power}hp</small>
-                                                        |
+
                                                         <small>${consist.speed}mph</small>
+
+                                                        <small>${consist.power_speed_ratio}i</small>
                                                     </span>
                                                 </div>
                                                 <div tal:condition="consist._replacement_consist_id is not None"
