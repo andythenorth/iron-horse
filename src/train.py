@@ -948,8 +948,9 @@ class MailEngineDrivingCabConsist(MailEngineConsist):
         self.role = 'driving_cab_express_1'
         self.buy_menu_hint_driving_cab = True
         self.allow_flip = True
-        # nerf power and TE down to minimal values, these confer a tiny performance boost to the train, 'operational efficiency' :P
-        self.power = 200
+        # confer a small power value for 'operational efficiency' (HEP load removed from engine eh?) :)
+        self.power = 300
+        # nerf TE down to minimal value
         self.tractive_effort_coefficient = 0.1
         # ....buy costs reduced from base to make it close to mail cars
         self.fixed_buy_cost_points = 1 # to reduce it from engine factor
