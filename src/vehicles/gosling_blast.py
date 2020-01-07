@@ -7,7 +7,7 @@ def main(roster_id):
                             base_numeric_id=2960,
                             name='Gosling Blast',
                             role='heavy_freight_2',
-                            power=7300, # relatively small jump from gen 5, compared to gen 4->5, very high-powered single unit engines are unbalanced for Pony
+                            power=6850, # relatively tiny jump from gen 5, compared to gen 4->5, very high-powered single unit engines are unbalanced for Pony
                             # dibble for game balance, assume super-slip control
                             tractive_effort_coefficient=0.4,
                             random_reverse=True,
