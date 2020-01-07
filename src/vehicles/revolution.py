@@ -8,7 +8,7 @@ def main(roster_id):
                             name='Revolution',
                             role='heavy_express_2',
                             power=2800,
-                            power_by_railtype={'RAIL': 2800, 'ELRL': 4800},
+                            power_by_railtype={'RAIL': 2800, 'ELRL': 5400}, # big jump in elrl HP by design compared to Fury
                             random_reverse=True,
                             pantograph_type='z-shaped-single',
                             gen=6,

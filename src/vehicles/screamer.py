@@ -7,7 +7,7 @@ def main(roster_id):
                             base_numeric_id=450,
                             name='Screamer',
                             role='heavy_express_4',
-                            power=6000,
+                            power=5500, # match to same gen HST
                             random_reverse=True,
                             gen=5,
                             pantograph_type='z-shaped-double',
