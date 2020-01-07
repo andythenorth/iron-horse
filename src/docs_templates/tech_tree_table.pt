@@ -161,12 +161,15 @@
                                                     <img src="static/img/${consist.id}_blue.png"
                                                          width="${2 * doc_helper.buy_menu_sprite_width(consist)}"
                                                          height="${2 * doc_helper.buy_menu_sprite_height}" />
-                                                    <span style="display:block; margin-top: 5px;" class="muted">
+                                                    <span style="display:block; margin-top: 5px; line-height:1.3;" class="muted">
                                                         <small style="display:block;">
                                                             ${base_lang_strings[consist.str_name_suffix] if consist.str_name_suffix is not None else None}
                                                         </small>
                                                         <small>${consist.power}hp</small>
-
+                                                        <tal:multi_mode condition="consist.power_by_railtype is not None">
+                                                            <small> / ${consist.power_by_railtype['ELRL']}hp</small>
+                                                        </tal:multi_mode>
+                                                        <br />
                                                         <small>${consist.speed}mph</small>
 
                                                         <small>${consist.power_speed_ratio}i</small>
