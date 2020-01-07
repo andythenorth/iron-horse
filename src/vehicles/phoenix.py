@@ -7,7 +7,7 @@ def main(roster_id):
                             base_numeric_id=160,
                             name='Phoenix',
                             role='freight_1',
-                            power=2050, # progression calculated to maintain hp/speed ratio from previous gen
+                            power=2100, # progression calculated to maintain hp/speed ratio from previous gen
                             random_reverse=True,
                             gen=6,
                             sprites_complete=True)
