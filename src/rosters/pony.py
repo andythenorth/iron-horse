@@ -42,6 +42,7 @@ from vehicles import happy_train
 from vehicles import helm_wind_cab
 from vehicles import helm_wind_middle
 from vehicles import hercules
+from vehicles import high_flyer
 from vehicles import hurly_burly
 from vehicles import jubilee
 from vehicles import jupiter
@@ -205,6 +206,7 @@ def main(disabled=False):
                                jupiter,
                                pylon,
                                # luxury electric railcars
+                               high_flyer,
                                sunshine_coast,
                                olympic,
                                bright_country,

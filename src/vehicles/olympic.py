@@ -10,6 +10,7 @@ def main(roster_id):
                                                   power=750,
                                                   pantograph_type='z-shaped-single-with-base',
                                                   gen=5,
+                                                  intro_date_offset=1,  # introduce later by design
                                                   sprites_complete=False)
 
     consist.add_unit(type=ElectricLuxuryRailcarPaxUnit,
