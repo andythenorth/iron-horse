@@ -14,13 +14,14 @@ from vehicles import bright_country
 from vehicles import carrack
 from vehicles import cheddar_valley
 from vehicles import cheese_bug
-from vehicles import chimera
+#from vehicles import chimera # dropped?
 from vehicles import chinook
 from vehicles import deasil
 from vehicles import dover
 from vehicles import dragon
 from vehicles import driving_cab_pony_gen_5
 from vehicles import driving_cab_pony_gen_6
+from vehicles import endeavour
 from vehicles import firebird
 from vehicles import fleet
 from vehicles import flanders_storm
@@ -179,7 +180,8 @@ def main(disabled=False):
                                grid,
                                blackthorn,
                                cheddar_valley,
-                               chimera,
+                               endeavour,
+                               #chimera, # dropped?
                                flindermouse,
                                peasweep,
                                flanders_storm,

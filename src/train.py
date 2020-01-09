@@ -240,7 +240,7 @@ class Consist(object):
                                        'express_non_core': ['branch_express_1', 'branch_express_2', 'express_2', 'heavy_express_2', 'heavy_express_3', 'heavy_express_4', 'luxury_pax_railcar'],
                                        'driving_cab': ['driving_cab_express_1'],
                                        'freight_core': ['freight_1', 'heavy_freight_1',],
-                                       'freight_non_core': ['branch_freight', 'freight_2', 'heavy_freight_2', 'heavy_freight_3'],
+                                       'freight_non_core': ['branch_freight', 'freight_2', 'heavy_freight_2', 'heavy_freight_3', 'heavy_freight_4'],
                                        'hst': ['hst'],
                                        'metro': ['mail_metro', 'pax_metro'],
                                        'railcar': ['mail_railcar_1', 'mail_railcar_2', 'pax_railcar_1', 'pax_railcar_2'],
