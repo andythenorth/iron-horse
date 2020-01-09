@@ -29,7 +29,7 @@ from vehicles import fury
 from vehicles import geronimo
 from vehicles import girt_licker
 from vehicles import goliath
-from vehicles import gosling_blast
+#from vehicles import gosling_blast # dropped?
 from vehicles import gowsty
 from vehicles import grid
 from vehicles import griffon
@@ -87,6 +87,7 @@ from vehicles import super_shoebox
 from vehicles import tencendur
 from vehicles import tideway
 from vehicles import tin_rocket
+from vehicles import triton
 from vehicles import tyburn
 from vehicles import ultra_shoebox
 from vehicles import upcountry
@@ -182,7 +183,8 @@ def main(disabled=False):
                                flindermouse,
                                peasweep,
                                flanders_storm,
-                               gosling_blast,
+                               triton,
+                               #gosling_blast, # dropped?
                                # joker engines / snowploughs
                                grub,
                                gronk,
