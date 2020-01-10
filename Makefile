@@ -141,8 +141,8 @@ bundle_src: $(MD5_FILE)
 		`$(FIND_FILES) $(BUNDLE_DIR)/src` $(MD5_FILE)
 
 # this is a macOS-specifc install location; the pre-2017 Makefile handled multiple platforms, that could be restored if needed
+# remove first, OpenTTD does not like having the _contents_ of the current file change under it, but will handle a removed-and-replaced file correctly
 install: default
-	# remove first, OpenTTD does not like having the _contents_ of the current file change under it, but will handle a removed-and-replaced file correctly
 	rm ~/Documents/OpenTTD/newgrf/$(PROJECT_NAME).grf
 	cp $(GRF_FILE) ~/Documents/OpenTTD/newgrf/
 
