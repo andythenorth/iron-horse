@@ -86,7 +86,7 @@ $(GRAPHICS_TARGET): $(shell $(FIND_FILES) --ext=.py --ext=.png src)
 $(LANG_TARGET): $(shell $(FIND_FILES) --ext=.py --ext=.pynml --ext=.lng src)
 	$(_V) $(PYTHON3) src/render_lang.py $(ARGS)
 
-$(HTML_DOCS): $(GRAPHICS_TARGET) $(shell $(FIND_FILES) --ext=.py --ext=.pynml --ext=.pt --ext=.lng --ext=.png src)
+$(HTML_DOCS): $(GRAPHICS_TARGET) $(LANG_TARGET) $(shell $(FIND_FILES) --ext=.py --ext=.pynml --ext=.pt --ext=.lng --ext=.png src)
 	$(_V) $(PYTHON3) src/render_docs.py $(ARGS)
 # Insane trick to check whether both DOT and GVPR are not empty.
 ifeq ($(DOT)$(GVPR),$(GVPR)$(DOT))
