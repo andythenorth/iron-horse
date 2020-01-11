@@ -1,0 +1,199 @@
+<!--! fragment to be included in a wrapper -->
+<div class="row">
+    <div class="span12">
+        <p>
+            <a href="tech_tree_table_blue.html">Blue</a>
+            |
+            <a href="tech_tree_table_red.html">Red &amp; White</a>
+        </p>
+        <tal:base_track_type repeat="base_track_type doc_helper.get_base_track_types()">
+            <h3>${base_track_type[1]}</h3>
+            <tal:role_group repeat="role_group global_constants.role_group_mapping">
+                <tal:descriptions_rail condition="base_track_type[0]=='RAIL'">
+                    <tal:descriptions switch="role_group">
+                        <div tal:case="'express'">
+                            <h4>General Purpose / Express Engines</h4>
+                            <ul>
+                                <li>Passengers, mail and valuables</li>
+                                <li>High-priority freight cargos like food and engineering supplies, which can be carried in high-speed mail cars and express cars</li>
+                                <li>General freight, but if a dedicated freight engine is available with similar power, the freight engine will generally be lower cost, and higher performance</li>
+                            </ul>
+                        </div>
+                        <div tal:case="'driving_cab_car'">
+                            <h4>Driving Van Trailers</h4>
+                            <ul>
+                                <li>Attach to front or rear of express trains that have at least one other engine</li>
+                                <li>Carries mail and express freight</li>
+                                <li>Unpowered in real-life, but OpenTTD requires these to have some power so they can lead the train, so a low value is set</li>
+                            </ul>
+                        </div>
+                        <div tal:case="'freight'">
+                            <h4>Freight Engines</h4>
+                            <p>
+                                Recommended for all general freight except cargos like food and engineering supplies, which can be carried in high-speed mail cars and express cars, which freight engines can't haul at maximum speed.
+                            </p>
+                        </div>
+                        <div tal:case="'universal'">
+                            <!--! currently universal is assumed to only be railcars for RAIL, if that changes adjust approach to suit -->
+                            <h4>Railcars / Multiple-Unit Trains</h4>
+                            <ul>
+                                <li>These run at the speed of freight trains, and are suited to
+                                    <ul>
+                                        <li>short routes</li>
+                                        <li>routes which are heavily used by freight trains, which limit the maximum speed of other trains on the route</li>
+                                    </ul>
+                                </li>
+                                <li>Railcars can generally haul one additional unpowered coach, mail car or other wagon, on level routes</li>
+                                <li>Railcars can be combined as needed</li>
+                            </ul>
+                        </div>
+                        <div tal:case="'luxury_railcar'">
+                            <h4>Luxury Railcars / Multiple-Unit Trains</h4>
+                            <ul>
+                                <li>These run at express train speeds, and have more power but lower capacity than standard railcars</li>
+                                <li>Luxury railcars can be combined as needed</li>
+                            </ul>
+                        </div>
+                        <div tal:case="'hst'">
+                            <h4>High-Speed Trains</h4>
+                            <ul>
+                                <li> high-speed diesel passenger engines with dedicated high-speed coaches</li>
+                                <li> can attach other types of cars to haul mail or freight cargos but will travel at less than maximum engine speed</li>
+                            </ul>
+                        </div>
+                        <div tal:case="'very_high_speed'">
+                            <h4>Very High-Speed Trains</h4>
+                            <ul>
+                                <li> TGV-style electric passenger trains with very high speeds</li>
+                                <li> power is distributed throughout the train
+                                    <ul>
+                                    <li> engines are relatively low power</li>
+                                    <li> every set of coaches attached to the engine adds more power</li>
+                                    </ul></li>
+                                <li> tilt bonus for higher speed through curves</li>
+                                <li> attaching other types of cars is not recommended, the train will be very underpowered and will travel at much less than maximum engine speed</li>
+                            </ul>
+                        </div>
+                        <div tal:case="'lolz'">
+                            <h4>Lolz</h4>
+                            <p>Silly trains that don't have any gameplay purpose but look nice.</p>
+                        </div>
+                    </tal:descriptions>
+                </tal:descriptions_rail>
+                <tal:descriptions_ng condition="base_track_type[0]=='NG'">
+                    <div tal:condition="role_group=='universal'">
+                        <h4>Narrow Gauge Trains</h4>
+                        <ul>
+                            <li> low power trains with low buy and run costs, and relatively low speeds</li>
+                            <li> effective for short routes</li>
+                            <li> can be moderately effective on longer routes</li>
+                            <li> one general purpose engine per generation, combine them as needed for more power</li>
+                            <li> narrow gauge railcars available later in the game
+                                <ul>
+                                    <li> same speed as general purpose engine</li>
+                                    <li> can generally haul one additional unpowered coach, mail car or other wagon, on level routes</li>
+                                    <li> narrow gauge railcars can be combined as needed</li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </tal:descriptions_ng>
+                <tal:descriptions_metro condition="base_track_type[0]=='METRO'">
+                    <div tal:condition="role_group=='metro'">
+                        <h4>Metro Trains</h4>
+                        <ul>
+                            <li> pax, mail, valuables, food and similar town cargos</li>
+                            <li> for very busy routes in and around large cities
+                                <ul>
+                                    <li> metro trains have very high capacity and relatively high run costs</li>
+                                    <li> cargo will age quickly due to crowding</li>
+                                    <li> to be profitable, metro needs to be used on routes with short distances between stations, and very high loadings</li>
+                                </ul>
+                            </li>
+                            <li> can be used in stations  as small as 1 tile</li>
+                            <li> metro trains can be combined as needed</li>
+                        </ul>
+                    </div>
+                </tal:descriptions_metro>
+                <table style="width:100%;"
+                       tal:define="roles doc_helper.engine_roles(base_track_type, consists, role_group);
+                                   intro_dates doc_helper.get_roster_by_id('pony', registered_rosters).intro_dates[base_track_type[0]]"
+                       tal:condition="len(roles) > 0">
+                    <thead>
+                        <tr>
+                            <th style="text-align:right; padding-right: 20px;">Intro Date:</th>
+                            <th style="padding-right: 20px;" tal:repeat="intro_date intro_dates">${intro_date}</th>
+                            <td><!--! empty space cell --></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr tal:repeat="role roles"
+                            style="border-top: solid ${'2px #ccc' if role in ['branch_freight', 'heavy_freight_1', 'heavy_express_1', 'pax_railcar_1', 'hst', 'lolz'] else '1px #eee'};
+                                   box-shadow: inset 0 -1px #fff;
+                                   background: linear-gradient(180deg, #fff 0%, #fafafa 100%);">
+                            <th style="text-align: right; width: 180px; padding-right: 20px;">
+                                <!--! this string mangling will be fragile if roles change eh -->
+                                <span tal:condition="'pax' in role">
+                                    Passenger
+                                </span>
+                                <span tal:condition="'mail' in role">
+                                    Mail
+                                </span>
+                                <span tal:condition="'railcar' in role">
+                                    Railcar
+                                </span>
+                                <span tal:condition="'heavy' in role">
+                                    Heavy
+                                </span>
+                                <span tal:condition="'mail_railcar' not in role and 'pax_railcar' not in role">
+                                    ${doc_helper.get_role_string_from_role(role)}
+                                </span>
+                            </th>
+                            <td tal:repeat="gen range(len(intro_dates))" class="text-center" style="width: 160px;">
+                                <tal:consist define="consist doc_helper.get_engine_by_role_and_base_track_type_and_generation(consists, role, base_track_type, gen + 1)">
+                                    <tal:block condition="consist is not None">
+                                        <div class="tech_tree_vehicle_container">
+                                            <div class="tech_tree_vehicle
+                                                        ${'tech_tree_vehicle_electric' if consist.requires_electric_rails else 'None'}
+                                                        ${'tech_tree_vehicle_electro_diesel' if consist.str_name_suffix == 'STR_NAME_SUFFIX_ELECTRODIESEL' else None}
+                                                        ${'tech_tree_vehicle_arrow' if (doc_helper.get_engine_by_role_and_base_track_type_and_generation(consists, role, base_track_type, gen + 2) is not None) or (consist._replacement_consist_id is not None) else None}">
+                                                <span style="display:block;">
+                                                    <!--! this is using a private var, but I am not going to lose sleep over it -->
+                                                    ${consist._name}
+                                                </span>
+                                                <img src="static/img/${consist.id}_${vehicle_cc}.png"
+                                                     width="${2 * doc_helper.buy_menu_sprite_width(consist)}"
+                                                     height="${2 * doc_helper.buy_menu_sprite_height}" />
+                                                <span style="display:block; margin-top: 5px; line-height:1.3;" class="muted">
+                                                    <small style="display:block;">
+                                                        ${base_lang_strings[consist.str_name_suffix] if consist.str_name_suffix is not None else None}
+                                                    </small>
+                                                    <small>${consist.power}hp</small>
+                                                    <tal:multi_mode condition="consist.power_by_railtype is not None">
+                                                        <small> / ${consist.power_by_railtype['ELRL']}hp</small>
+                                                    </tal:multi_mode>
+                                                    <br />
+                                                    <small>${consist.speed}mph</small>
+
+                                                    <small>${consist.power_speed_ratio}i</small>
+                                                </span>
+                                            </div>
+                                            <div tal:condition="consist._replacement_consist_id is not None"
+                                                 style="float:left; margin-left: 173px; margin-top: 30px;">
+                                                <div class="muted"
+                                                     style="width: 100px; border: solid 1px #ddd; background: #fffff3; border-radius: 4px; padding: 8px;">
+                                                    Replaced by ${doc_helper.get_replaced_by_name(consist._replacement_consist_id, consists)}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </tal:block>
+                                </tal:consist>
+                            </td>
+                            <td><!--! empty space cell --></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </tal:role_group>
+        </tal:base_track_type>
+    </div>
+</div>
