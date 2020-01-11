@@ -12,7 +12,7 @@ def main(roster_id):
                             gen=5,
                             intro_date_offset=-8, # let's be really early with this one to give a mail engine matching Blaze HST intro date
                             fixed_run_cost_points=400, # give a serious malus to this one (balancing eh?)
-                            sprites_complete=False)
+                            sprites_complete=True)
 
     consist.add_unit(type=DieselEngineUnit,
                      weight=100,
