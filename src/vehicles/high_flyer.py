@@ -11,7 +11,7 @@ def main(roster_id):
                                                   pantograph_type='z-shaped-single-with-base',
                                                   gen=3,
                                                   intro_date_offset=2,  # introduce later by design
-                                                  sprites_complete=False)
+                                                  sprites_complete=True)
 
     consist.add_unit(type=ElectricLuxuryRailcarPaxUnit,
                      weight=51,
