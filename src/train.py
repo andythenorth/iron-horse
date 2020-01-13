@@ -601,7 +601,7 @@ class EngineConsist(Consist):
         # add floating cost to the fixed (baseline) cost (which is arbitrary points, range 0-200-ish)
         # multiply by gen and an arbitrary factor to give the results I want
         # the aim is to space costs widely across types within a generation, but mostly flatten them across generations of same type
-        gen_multiplier = 9 - (0.75 * self.gen)
+        gen_multiplier = 8 - (0.75 * self.gen)
         run_cost = gen_multiplier * (fixed_run_cost_points + floating_run_cost_points)
         # freight engines get a substantial run cost bonus as they'll often be sat waiting for loads, so balance (also super realism!!)
         # doing this is preferable to doing variable run costs, which are weird and confusing (can't trust the costs showin in vehicle window)
@@ -1059,7 +1059,7 @@ class CarConsist(Consist):
         run_cost_points = run_cost_points * length_cost_factor
         # multiply up by arbitrary amount, to where I want wagon run costs to be
         # (base cost is set deliberately low to allow small increments for fine-grained control)
-        run_cost_points = 2 * run_cost_points * self.floating_run_cost_multiplier
+        run_cost_points = 1.2 * run_cost_points * self.floating_run_cost_multiplier
         # narrow gauge gets a massive bonus - NG wagons are lower cap, so earn relatively much less / length
         if self.base_track_type == 'NG':
             run_cost_points = 0.2 * run_cost_points

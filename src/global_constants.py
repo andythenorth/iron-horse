@@ -67,7 +67,7 @@ PR_BUILD_VEHICLE_TRAIN = -2
 PR_BUILD_VEHICLE_WAGON = 1
 # running cost multipliers nerfed down to makes smaller base cost incremements available
 # the vehicle cost factor is then set high (using cb) to get a sensible final cost (but with fine-grained control)
-# NOTE: all engines use RUNNING_COST_STEAM, and steam/diesel/electric variations are handled internaly in Iron Horse
+# NOTE: all engines use RUNNING_COST_STEAM, and steam/diesel/electric variations are handled internally in Iron Horse
 PR_RUNNING_TRAIN_STEAM = -2
 # NOTE: all wagons use RUNNING_COST_DIESEL, nerfed down to small increments, for fine-grained control over low wagon run costs
 PR_RUNNING_TRAIN_DIESEL = -4
