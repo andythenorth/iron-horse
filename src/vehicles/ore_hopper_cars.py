@@ -51,7 +51,7 @@ def main():
                                base_numeric_id=4130,
                                gen=4,
                                subtype='B',
-                               sprites_complete=False)
+                               sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
                      chassis='4_axle_gapped_24px')
