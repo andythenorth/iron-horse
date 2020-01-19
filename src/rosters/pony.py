@@ -45,7 +45,6 @@ from vehicles import helm_wind_middle
 from vehicles import hercules
 from vehicles import high_flyer
 from vehicles import hurly_burly
-from vehicles import jubilee
 from vehicles import jupiter
 from vehicles import kelpie
 from vehicles import lark
@@ -83,6 +82,7 @@ from vehicles import snapper
 from vehicles import snowplough_pony_gen_2
 from vehicles import spinner
 from vehicles import stoat
+from vehicles import strongbow
 from vehicles import sunshine_coast
 from vehicles import super_shoebox
 from vehicles import tencendur
@@ -145,7 +145,7 @@ def main(disabled=False):
                                griffon,
                                shredder,
                                thunderer,
-                               jubilee,
+                               strongbow,
                                wyvern,
                                vanguard,
                                revolution,
