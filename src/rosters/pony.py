@@ -86,12 +86,12 @@ from vehicles import stoat
 from vehicles import sunshine_coast
 from vehicles import super_shoebox
 from vehicles import tencendur
+from vehicles import thunderer
 from vehicles import tideway
 from vehicles import tin_rocket
 from vehicles import triton
 from vehicles import tyburn
 from vehicles import ultra_shoebox
-from vehicles import upcountry
 from vehicles import vanguard
 from vehicles import westbourne
 from vehicles import workish
@@ -144,7 +144,7 @@ def main(disabled=False):
                                kelpie,
                                griffon,
                                shredder,
-                               upcountry,
+                               thunderer,
                                jubilee,
                                wyvern,
                                vanguard,
