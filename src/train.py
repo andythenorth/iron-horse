@@ -705,7 +705,7 @@ class PassengerEngineLuxuryRailcarConsist(PassengerEngineConsist):
         # to avoid these railcars being super-bargain cheap, add a significant malus
         self.floating_run_cost_multiplier = 24
         # ...and high fixed (baseline) run costs on this subtype
-        self.fixed_run_cost_points = 180
+        self.fixed_run_cost_points = 180 # !! eh this was actually the default value last time I checked :P
 
         # Graphics configuration
         if self.gen in [2, 3]:
@@ -742,7 +742,7 @@ class PassengerHSTCabEngineConsist(PassengerEngineConsist):
         # ....run cost multiplier is adjusted up from pax base for high speed
         self.floating_run_cost_multiplier = 22
         # ...and high fixed (baseline) run costs on this subtype
-        self.fixed_run_cost_points = 180
+        self.fixed_run_cost_points = 180 # ! eh this was actually the default value last time I checked
 
 
 class PassengerVeryHighSpeedCabEngineConsist(PassengerEngineConsist):
@@ -765,7 +765,8 @@ class PassengerVeryHighSpeedCabEngineConsist(PassengerEngineConsist):
         self.buy_cost_adjustment_factor = 0.95
         # high speed should only be effective over longer distances
         # ....run cost multiplier is adjusted up from pax base
-        self.floating_run_cost_multiplier = 24
+        # but allow that every vehicle will have powered run costs, so not too high eh?
+        self.floating_run_cost_multiplier = 18
         # ...and very high fixed (baseline) run costs on this subtype
         self.fixed_run_cost_points = 256
         # train_flag_mu solely used for ottd livery (company colour) selection
