@@ -1323,6 +1323,20 @@ class CoveredHopperCarConsist(CoveredHopperCarConsistBase):
         self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.covered_hopper_car_livery_recolour_maps)
 
 
+class CoveredHopperCarGrainConsist(CoveredHopperCarConsistBase):
+    """
+    Defaults to grain/farm type cargos.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = 'grain_hopper_car'
+        super().__init__(**kwargs)
+        self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label['covered_hoppers']
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.grain_hopper_car_livery_recolour_maps,
+                                                                   cargo_specific_livery_uses_dedicated_input_row=True)
+
+
 class CoveredHopperCarMineralsConsist(CoveredHopperCarConsistBase):
     """
     Defaults to clay/kaolin/quicklime type cargos.
@@ -1337,18 +1351,17 @@ class CoveredHopperCarMineralsConsist(CoveredHopperCarConsistBase):
                                                                    cargo_specific_livery_uses_dedicated_input_row=True)
 
 
-class CoveredHopperCarGrainConsist(CoveredHopperCarConsistBase):
+class CoveredHopperCarPelletConsist(CoveredHopperCarConsistBase):
     """
     Defaults to grain/farm type cargos.
     """
 
     def __init__(self, **kwargs):
-        self.base_id = 'grain_hopper_car'
+        self.base_id = 'pellet_hopper_car'
         super().__init__(**kwargs)
         self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label['covered_hoppers']
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.grain_hopper_car_livery_recolour_maps,
-                                                                   cargo_specific_livery_uses_dedicated_input_row=True)
+        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.pellet_hopper_car_livery_recolour_maps)
 
 
 class CryoTankCarConsist(CarConsist):

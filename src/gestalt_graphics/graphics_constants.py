@@ -149,6 +149,9 @@ minerals_covered_hopper_car_livery_recolour_maps = (("DFLT", {136: 6, 137: 7, 13
                                                               154: CC1, 155: CC1+1, 156: CC1+2, 157: CC1+3,
                                                               158: CC1+4, 159: CC1+5, 160: CC1+6, 161: CC1+7}),)
 
+pellet_hopper_car_livery_recolour_maps = (("DFLT", {136: 16, 137: 17, 138: 18, 139: 19,
+                                                    140: 20, 141: 21, 142: 22, 143: 23}),)
+
 oil_tank_car_livery_recolour_maps = (("DFLT",  {136: 1, 137: 2, 138: 3, 139: 4,
                                                 140: 5, 141: 6, 142: 7, 143: 8}),)
 
