@@ -75,12 +75,12 @@ carbon_black_hopper_car_livery_recolour_maps = (# only one livery provided here,
 chemicals_tank_car_livery_recolour_maps = (("DFLT", {136: 16, 137: 18, 138: 19, 139: 20,
                                                      140: 21, 141: 22, 142: 23, 143: 14}),)
 
-covered_hopper_car_livery_recolour_maps = (("DFLT", {136: CC1, 137: CC1+1, 138: CC1+2, 139: CC1+3,
-                                                     140: CC1+4, 141: CC1+5, 142: CC1+6, 143: CC1+7,
+covered_hopper_car_livery_recolour_maps = (("DFLT", {136: 72, 137: 73, 138: 74, 139: 75,
+                                                     140: 76, 141: 77, 142: 78, 143: 79,
                                                      96: 16, 97: 17, 98: 18, 99: 19,
                                                      100: 20, 101: 21, 102: 22, 103: 23,
-                                                     154: CC1, 155: CC1+1, 156: CC1+2, 157: CC1+3,
-                                                     158: CC1+4, 159: CC1+5, 160: CC1+6, 161: CC1+7}),)
+                                                     154: 72, 155: 73, 156: 74, 157: 75,
+                                                     158: 76, 159: 77, 160: 78, 161: 79}),)
 
 # the maps are lacking restraint, there are 3 different recolour ranges, allowing for solebar, body and tarp colours
 """
