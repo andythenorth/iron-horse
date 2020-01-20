@@ -1995,28 +1995,6 @@ class RubberTankCarConsist(CarConsist):
         self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.rubber_tank_car_livery_recolour_maps)
 
 
-class SaltHopperCarConsist(CarConsist):
-    """
-    !! Bulk cargos needing covered protection.  1:1 alternative to standard covered hopper
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = 'salt_hopper_car'
-        super().__init__(**kwargs)
-        self.class_refit_groups = []  # no classes, use explicit labels
-        self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label['covered_hoppers']
-        self.label_refits_disallowed = []
-        self.default_cargos = polar_fox.constants.default_cargos['covered_hopper']
-        self.loading_speed_multiplier = 2
-        self.buy_cost_adjustment_factor = 1.2
-        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['non_core_wagons']
-        # CC is swapped randomly (player can't choose), but also swap base livery on flip (player can choose)
-        self.allow_flip = True
-        # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.salt_hopper_car_livery_recolour_maps,
-                                                                   cargo_specific_livery_uses_dedicated_input_row=True)
-
-
 class SiloCarConsistBase(CarConsist):
     """
     Powder bulk cargos needing protection and special equipment for unloading.
