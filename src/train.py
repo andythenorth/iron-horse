@@ -1333,8 +1333,7 @@ class CoveredHopperCarGrainConsist(CoveredHopperCarConsistBase):
         super().__init__(**kwargs)
         self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label['covered_hoppers']
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.grain_hopper_car_livery_recolour_maps,
-                                                                   cargo_specific_livery_uses_dedicated_input_row=True)
+        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.grain_hopper_car_livery_recolour_maps)
 
 
 class CoveredHopperCarMineralsConsist(CoveredHopperCarConsistBase):
@@ -1347,8 +1346,7 @@ class CoveredHopperCarMineralsConsist(CoveredHopperCarConsistBase):
         super().__init__(**kwargs)
         self.default_cargos = ['KAOL', 'CLAY', 'QLME'] # !! needs updated
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.minerals_covered_hopper_car_livery_recolour_maps,
-                                                                   cargo_specific_livery_uses_dedicated_input_row=True)
+        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.minerals_covered_hopper_car_livery_recolour_maps)
 
 
 class CoveredHopperCarPelletConsist(CoveredHopperCarConsistBase):
