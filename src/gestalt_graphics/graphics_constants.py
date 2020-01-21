@@ -67,8 +67,6 @@ caboose_livery_recolour_maps = (# DFLT can be used twice here with no problems, 
 carbon_black_hopper_car_livery_recolour_maps = (# only one livery provided here, black
                                                 ("DFLT", {136: 1, 137: 2, 138: 3, 139: 4,
                                                      140: 5, 141: 6, 142: 7, 143: 8,
-                                                     96: 1, 97: 2, 98: 3, 99: 4,
-                                                     100: 5, 101: 6, 102: 7, 103: 8,
                                                      154: 1, 155: 2, 156: 3, 157: 4,
                                                      158: 5, 159: 6, 160: 7, 161: 8}),)
 
