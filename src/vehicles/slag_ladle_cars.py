@@ -10,10 +10,11 @@ def main():
                                   subtype='U',
                                   base_track_type='NG',
                                   speed=35, # note rare non-standard speed, don't spill molten slag eh?
-                                  sprites_complete=False)
+                                  sprites_complete=True)
 
     consist.add_unit(type=SlagLadleCar,
                      chassis='buffers_only_16px')
+
 
     #--------------- pony ----------------------------------------------------------------------
 
