@@ -13,7 +13,7 @@ def main():
                      vehicle_length=4)
 
     consist.add_unit(type=TorpedoCar,
-                     vehicle_length=4)
+                     vehicle_length=6)
 
     consist.add_unit(type=TorpedoCar,
                      vehicle_length=4)
@@ -28,7 +28,7 @@ def main():
                      vehicle_length=4)
 
     consist.add_unit(type=TorpedoCar,
-                     vehicle_length=4)
+                     vehicle_length=6)
 
     consist.add_unit(type=TorpedoCar,
                      vehicle_length=4)
@@ -40,13 +40,13 @@ def main():
                               subtype='U')
 
     consist.add_unit(type=TorpedoCar,
-                     vehicle_length=4)
+                     vehicle_length=3)
 
     consist.add_unit(type=TorpedoCar,
-                     vehicle_length=4)
+                     vehicle_length=6)
 
     consist.add_unit(type=TorpedoCar,
-                     vehicle_length=4)
+                     vehicle_length=3)
 
 
     consist = TorpedoCarConsist(roster_id='pony',
@@ -58,7 +58,7 @@ def main():
                      vehicle_length=4)
 
     consist.add_unit(type=TorpedoCar,
-                     vehicle_length=4)
+                     vehicle_length=6)
 
     consist.add_unit(type=TorpedoCar,
                      vehicle_length=4)
@@ -73,7 +73,7 @@ def main():
                      vehicle_length=4)
 
     consist.add_unit(type=TorpedoCar,
-                     vehicle_length=4)
+                     vehicle_length=6)
 
     consist.add_unit(type=TorpedoCar,
                      vehicle_length=4)
