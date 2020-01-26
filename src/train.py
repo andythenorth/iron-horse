@@ -2893,12 +2893,13 @@ class SlagLadleCar(FreightCar):
 
 class TorpedoCar(FreightCar):
     """
-    Torpedo car. This subclass sets the symmetry_type to asymmetric, and sets capacity.
+    Torpedo car. This subclass sets the symmetry_type to asymmetric.
     """
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # just multiply whatever is set by the init, what could go wrong? :)
         self._symmetry_type = 'asymmetric'
+        # capacity bonus is solely to support using small stations in Steeltown where space between industries is constrained
         self.capacity = 1.5 * self.capacity
 
 

@@ -36,18 +36,16 @@ spriteset(${vehicle.id}_ss_middle_unit_loaded, "${graphics_path}${consist.id}.pn
 }
 
 
-        <!--! spritegroups aren't needed here, the loading state is calculated explicitly -->
-        <!--!
-        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_percent_loaded_${cargo_variant_num}_${flipped}, cargo_count*100/cargo_capacity) {
-                0: return ${vehicle.id}_ss_empty_${flipped};
-                1..99: return ${vehicle.id}_ss_loading_${cargo_variant_num}_${flipped};
-            return ${vehicle.id}_ss_loaded_${cargo_variant_num}_${flipped};
-        }
-        -->
+<!--! spritegroups aren't needed here, the loading state is calculated explicitly -->
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_percent_loaded, cargo_count*100/cargo_capacity) {
+        0: return ${vehicle.id}_ss_middle_unit_empty;
+        1..99: return ${vehicle.id}_ss_middle_unit_loading;
+    return ${vehicle.id}_ss_middle_unit_loaded;
+}
 
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, position_in_articulated_veh) {
     0: return ${vehicle.id}_ss_first_unit;
-    1: return ${vehicle.id}_ss_middle_unit_empty;
+    1: return ${vehicle.id}_switch_graphics_percent_loaded;
     2: return ${vehicle.id}_ss_last_unit;
 }
 
