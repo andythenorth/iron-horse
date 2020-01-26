@@ -1246,32 +1246,6 @@ class ChemicalsTankCarConsist(CarConsist):
         self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.chemicals_tank_car_livery_recolour_maps)
 
 
-# !! not in alphabetical order
-# !! possibly deprecated
-class SulphurTankCarConsist(CarConsist):
-    """
-    Dedicated sulphur tank car.
-    """
-
-    def __init__(self, **kwargs):
-        # tank cars are unrealistically autorefittable, and at no cost
-        # Pikka: if people complain that it's unrealistic, tell them "don't do it then"
-        self.base_id = 'sulphur_tank_car'
-        super().__init__(**kwargs)
-        self.class_refit_groups = []
-        self.label_refits_allowed = ['SULP']
-        self.label_refits_disallowed = []
-        self.default_cargos = []
-        self.loading_speed_multiplier = 2
-        self.buy_cost_adjustment_factor = 1.33
-        self.floating_run_cost_multiplier = 1.5
-        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['non_core_wagons']
-        # allow flipping, used to flip company colour
-        self.allow_flip = True
-        # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.sulphur_tank_car_livery_recolour_maps)
-
-
 class CoilCarConsist(CarConsist):
     """
     Coil car - for finished metals (steel, copper etc)
@@ -1901,30 +1875,6 @@ class PassengerLuxuryCarConsist(PassengerCarConsistBase):
         self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings,
                                                                      consist_ruleset='pax_cars')
 
-# !! possibly deprecated
-class PetrolTankCarConsist(CarConsist):
-    """
-    All non-edible liquid cargos
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = 'petrol_tank_car'
-        super().__init__(**kwargs)
-        # tank cars are unrealistically autorefittable, and at no cost
-        # Pikka: if people complain that it's unrealistic, tell them "don't do it then"
-        # they also change livery at stations if refitted between certain cargo types <shrug>
-        self.class_refit_groups = []
-        self.label_refits_allowed = ['PETR']
-        self.label_refits_disallowed = []
-        self.default_cargos = polar_fox.constants.default_cargos['tank']
-        self.loading_speed_multiplier = 3
-        self.buy_cost_adjustment_factor = 1.2
-        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['freight_core']
-        # allow flipping, used to flip company colour
-        self.allow_flip = True
-        # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.petrol_tank_car_livery_recolour_maps)
-
 
 class PlateCarConsist(CarConsist):
     """
@@ -1968,31 +1918,6 @@ class ReeferCarConsist(CarConsist):
         self.roof_type = 'freight'
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(id_base='box_car',
                                                                   recolour_maps=graphics_constants.refrigerated_livery_recolour_maps)
-
-# !! possibly deprecated
-class RubberTankCarConsist(CarConsist):
-    """
-    Dedicated tank car for rubber.
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = 'rubber_tank_car'
-        super().__init__(**kwargs)
-        # tank cars are unrealistically autorefittable, and at no cost
-        # Pikka: if people complain that it's unrealistic, tell them "don't do it then"
-        # they also change livery at stations if refitted between certain cargo types <shrug>
-        self.class_refit_groups = []
-        self.label_refits_allowed = ['RUBR']
-        self.label_refits_disallowed = []
-        self.default_cargos = []
-        self.loading_speed_multiplier = 3
-        self.buy_cost_adjustment_factor = 1.2
-        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['freight_core']
-        # allow flipping, used to flip company colour
-        self.allow_flip = True
-        # Graphics configuration
-        # recolour maps need processing, it includes an option for intermodal container body colour, not wanted here
-        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.rubber_tank_car_livery_recolour_maps)
 
 
 class SiloCarConsistBase(CarConsist):

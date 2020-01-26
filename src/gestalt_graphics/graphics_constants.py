@@ -153,23 +153,12 @@ pellet_hopper_car_livery_recolour_maps = (("DFLT", {136: 16, 137: 17, 138: 18, 1
 oil_tank_car_livery_recolour_maps = (("DFLT",  {136: 1, 137: 2, 138: 3, 139: 4,
                                                 140: 5, 141: 6, 142: 7, 143: 8}),)
 
-petrol_tank_car_livery_recolour_maps = (("DFLT", {136: 16, 137: 17, 138: 18, 139: 19,
-                                                  140: 20, 141: 21, 142: 22, 143: 23}),)
-
 refrigerated_livery_recolour_maps = (("DFLT", {136: 18, 137: 19, 138: 20, 139: 21,
                                                140: 22, 141: 13, 142: 14, 143: 15,
                                                40: 18, 41: 19, 42: 20, 43: 21,
                                                44: 22, 45: 13, 46: 14, 47: 15,
                                                CC2: CC1, CC2+1: CC1+1, CC2+2: CC1+2, CC2+3: CC1+3,
                                                CC2+4: CC1+4, CC2+5: CC1+5, CC2+6: CC1+6, CC2+7: CC1+7}),)
-
-# should be in polar fox
-rubber_tank_car_livery_recolour_maps = (("DFLT", {136: 40, 137: 41, 138: 42, 139: 43,
-                                                  140: 44, 141: 45, 142: 46, 143: 47}),)
-
-# should be in polar fox
-sulphur_tank_car_livery_recolour_maps = (("DFLT", {136: 62, 137: 63, 138: 64, 139: 65,
-                                                   140: 66, 141: 67, 142: 68, 143: 69}),)
 
 sliding_wall_livery_recolour_maps = (("DFLT", {40: 4, 41: 5, 42: 6, 43: 7,
                                                44: 20, 45: 21, 46: 22, 47: 13}),)
