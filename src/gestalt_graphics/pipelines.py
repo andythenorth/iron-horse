@@ -554,31 +554,15 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
 
     def add_livery_spriterows(self):
         # no loading / loaded states, intended for tankers etc
-        # provides cargo-specific recolourings, a default recolouring, and a single alternative 1CC or 2CC livery on user flip
+        # provides cargo-specific recolourings, a default recolouring, and template alternates 1CC or 2CC livery on user flip
 
         # first add the CC alternative livery, as it's easier to add first than handle adding it after arbitrary cargo livery rows
         crop_box_source = (0,
                            self.base_yoffs,
                            self.sprites_max_x_extent,
                            self.base_yoffs + graphics_constants.spriterow_height)
+
         vehicle_livery_spriterow_input_image = self.comp_chassis_and_body(self.vehicle_source_image.copy().crop(crop_box_source))
-
-        vehicle_livery_spriterow_input_as_spritesheet = self.make_spritesheet_from_image(vehicle_livery_spriterow_input_image)
-
-        # add arbitray cargo livery rows
-        # note that these can either repurpose the same generic input sprite as the CC livery
-        # or can have a dedicated input sprite, allowing for details to be varied
-        if self.consist.gestalt_graphics.cargo_specific_livery_uses_dedicated_input_row:
-            cargo_specific_livery_input_row_y_offs = self.base_yoffs + graphics_constants.spriterow_height
-        else:
-            cargo_specific_livery_input_row_y_offs = self.base_yoffs
-        crop_box_source = (0,
-                           cargo_specific_livery_input_row_y_offs,
-                           self.sprites_max_x_extent,
-                           cargo_specific_livery_input_row_y_offs + graphics_constants.spriterow_height)
-        vehicle_livery_spriterow_input_image = self.comp_chassis_and_body(self.vehicle_source_image.copy().crop(crop_box_source))
-
-        # vehicle_generic_spriterow_input_image.show() # comment in to see the image when debugging
         vehicle_livery_spriterow_input_as_spritesheet = self.make_spritesheet_from_image(vehicle_livery_spriterow_input_image)
 
         for label, recolour_map in self.consist.gestalt_graphics.recolour_maps:

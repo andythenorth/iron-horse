@@ -343,9 +343,6 @@ class GestaltGraphicsCargoSpecificLivery(GestaltGraphics):
     """
     def __init__(self, recolour_maps, **kwargs):
         super().__init__()
-        # optionally provide a second source input row, with specific sprite for cargo-specific graphics
-        # this is used when the cargo-specific sprites vary from the company colour livery option
-        self.cargo_specific_livery_uses_dedicated_input_row = kwargs.get('cargo_specific_livery_uses_dedicated_input_row', False)
         # as of Jan 2018 only one pipeline is used, but support is in place for alternative pipelines
         self.pipelines = pipelines.get_pipelines(['extend_spriterows_for_composited_sprites_pipeline'])
         # recolour_maps map cargo labels to liveries, use 'DFLT' as the labe in the case of just one livery
