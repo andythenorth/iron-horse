@@ -500,6 +500,8 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             roof_mask = roof_image.copy()
             roof_mask = roof_mask.point(lambda i: 0 if i == 255 else 255).convert("1") # the inversion here of blue and white looks a bit odd, but potato / potato
             chassis_image.paste(roof_image, crop_box_roof_dest, roof_mask)
+        #if self.consist.id == 'box_car_pony_gen_1A':
+            #chassis_image.show()
 
         # chassis and roofs are *always* symmetrical, with 4 angles drawn; for vehicles with asymmetric bodies, copy and paste to provide all 8 angles
         if self.vehicle_unit.symmetry_type == 'asymmetric':
@@ -663,7 +665,8 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                              self.base_yoffs + 2 * graphics_constants.spriterow_height)
         box_car_input_image_1 = self.comp_chassis_and_body(Image.open(box_car_input_path).crop(crop_box_source_1))
         box_car_input_image_2 = self.comp_chassis_and_body(Image.open(box_car_input_path).crop(crop_box_source_2))
-        #box_car_input_image_1.show() # comment in to see the image when debugging
+        #if self.consist.id == 'box_car_pony_gen_1A':
+            #box_car_input_image_1.show() # comment in to see the image when debugging
 
         # empty/loaded state and loading state will need pasting once each, so two crop boxes needed
         # open doors are shown, but no cargo, TMWFTLB, see notes in GestaltGraphicsBoxCarOpeningDoors
