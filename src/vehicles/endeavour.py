@@ -7,7 +7,7 @@ def main(roster_id):
                             base_numeric_id=4250,
                             name='Endeavour',
                             role='heavy_freight_3',
-                            power=4700,
+                            power=4650,
                             # dibble for game balance, assume super-slip control
                             tractive_effort_coefficient=0.4,
                             random_reverse=True,
