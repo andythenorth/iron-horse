@@ -13,7 +13,7 @@ def main(roster_id):
                             random_reverse=True,
                             gen=3,
                             intro_date_offset=-8, # introduce earlier than gen epoch by design
-                            sprites_complete=False)
+                            sprites_complete=True)
 
     consist.add_unit(type=SteamEngineUnit,
                      weight=65,
