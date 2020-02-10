@@ -11,7 +11,7 @@ def main(roster_id):
                             tractive_effort_coefficient=0.18,
                             gen=2,
                             intro_date_offset=-3,  # introduce earlier than gen epoch by design
-                            sprites_complete=False)
+                            sprites_complete=True)
 
     consist.add_unit(type=SteamEngineUnit,
                      weight=60,
