@@ -10,7 +10,7 @@ def main(roster_id):
                             power=2200,
                             tractive_effort_coefficient=0.25,
                             gen=3,
-                            sprites_complete=False)
+                            sprites_complete=True)
 
     consist.add_unit(type=SteamEngineUnit,
                      weight=110,
