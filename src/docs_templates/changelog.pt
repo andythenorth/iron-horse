@@ -3,18 +3,79 @@ Changelog
 
 
 -------------
-2.3.0 Release
+2.4.0 Release
 -------------
 
-
-*Gameplay Changes*
-
--
+Not savegame compatible with previous Iron Horse releases.
 
 
 *New and Changed Engines*
 
--
+- reworked medium-power general/purpose express engines
+    - reduced running costs on these to make them genuinely viable for general freight as well as express trains
+    - provided more generations of these engines as they're very useful for trains around 5-6 tiles long
+    - renamed 4-6-0 Upcountry to 4-6-0 Thunderer
+    - added 4-6-0 Strongbow express / general purpose steam engine
+        - inspired by Jubilee / Royal Scot, as featured in original TTD
+        - available around 1930
+    - added Vanguard express / general purpose diesel engine
+        - inspired by the never-built British Rail class 38, a medium-power engine using a class 60 bodyshell
+        - available around 1992
+    - removed Thunderbird
+    - Revolution bi-mode engine adjusted to better fit medium-power general purpose/express role
+        - in diesel mode, Revolution follows Vanguard
+        - in electric mode, power is increased, Revolution follows Fury
+- reworked high-power general purpose express engines
+    - added Onslaught diesel engine, follows Dragon
+        - inspired by British Rail class 50 and the never-built 'Super Deltic'
+        - available around 1982
+    - added Relentless diesel engine, follows Onslaught
+        - inspired by Vossloh and similar European diesel engines
+    - Screamer and Sizzler electric engine power reduced for game balance
+- electric heavy freight engine changes
+    - renamed Gosling Blast to Triton
+    - repainted Triton to be boxy, too many cheese-slope electric locomotives
+    - reduced power of Flanders Storm and Triton for game balance
+- diesel heavy freight engine changes
+    - renamed Chimera to Endeavour
+    - repainted Endeavour, I didn't like the class 70-ish sprite, it's now class 66-ish (livery inspired by Freightliner)
+    - reduced power of Cheddar Valley and Endeavour for game balance
+- added luxury passenger railcars
+    - these run at express train speeds, and have more power but lower capacity than standard railcars
+    - High Flyer (available around 1930)
+    - Sunshine Coast (available around 1960)
+    - Olympic (available around 1990)
+    - Bright Country (available around 2020)
+    - electric railcar power adjusted to balance with the new luxury railcars
+- added Firebird high speed train
+    - inspired by UK Blue Pullman train, but featuring Deltic-type power and speed
+    - available around 1960
+- increased power of Driving Cab Cars a little, as it's of benefit for diesel express trains
+- most steam engines redrawn for improved appearance
+- changed livery for
+    - Fury (inspired by UK Freightliner livery)
+    - Revolution (freestyle livery matching generation 6 driving carb car)
+    - Tencendur (to provide variety in steam engines)
+- tweaks to sprites for
+    - Athena
+    - Blaze
+    - Blackthorn
+    - Dover
+    - Dragon
+    - Flanders Storm
+    - Geronimo
+    - Grid
+    - Happy Train
+    - Jupiter
+    - Plastic Postbox
+    - Scooby
+    - Scorcher
+    - Sizzler
+    - Slammer
+    - Zeus
+- rebalanced power and weight for many engines
+    - based on a ratio derived from power, weight and maximum speed
+    - relative performance differences across multiple generations for each engine role are now more deliberately designed
 
 
 *New and Changed Wagons*
@@ -49,24 +110,41 @@ Changelog
     - same refits as Tanker
     - shiny appearance
 - removed some generation 6 short wagons, not needed
-- improved appearance of Tarpaulin Cars
+- improved appearance for
+    - Tarpaulin Cars
+    - generation 6 Passenger Coaches (all types)
 - use mail as default cargo for Express Vans, not engineering supplies, avoids confusion when adding Express Vans to mail trains
 
 
 *Changes*
 
-- increased spacing of buffer pixels in – views
+- play-testing showed that running costs were too high in many cases
+    - running costs reduced for many trains
+    - should generally aid profitability, too little profit is a bigger gameplay evil than too much profit
+    - notably routes involving transfers should be more profitable
+- minor reduction of speeds of railcars / freight vehicles in later game
+    - 84mph for generation 5 (around 1990), previously 87mph
+    - 93mph generation 6 (around 2020), previously 96mph
+- increased spacing of buffer pixels in - views
 - added description text for Jokers parameter
+- use 3-unit sets for some electric mail railcars (previously 2-unit sets)
 
 
 *Fixes*
 
 - haulage speed bonus calculation was broken, causing electric railcar default speed to be too high
-- missing gangway pixels for some angles of Jupiter and Plastic Postbox
 - HST coaches were too heavy
 - adjusted HST coach buy cost to be about same as luxury passenger coach
-- bad pixels in Blaze and Scorcher roof for some angles
 - removed alternative company livery option that was added for certain wagon types in 2.3, on reflection it was a flawed idea
+
+
+*Docs*
+
+- show hp/speed ratio in docs, as a guide to relative performance of engines
+- option for tech tree table in 1CC (blue) or 2CC (red & white)
+- show both power ratings for bi-mode engines in tech-tree table
+- show 'replaced by' info in tech tree table
+- add anchor links to sections on code reference page
 
 
 *Codechanges*
