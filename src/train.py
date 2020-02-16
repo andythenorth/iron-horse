@@ -2032,7 +2032,7 @@ class TankCarProductConsist(TankCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = 'product_tank_car'
         super().__init__(**kwargs)
-        self.default_cargos = polar_fox.constants.default_cargos['chemicals_tank']
+        self.default_cargos = polar_fox.constants.default_cargos['product_tank']
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.product_tank_car_livery_recolour_maps)
 
