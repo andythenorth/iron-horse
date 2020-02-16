@@ -50,7 +50,6 @@ from vehicles import mail_cars
 from vehicles import torpedo_cars
 from vehicles import open_cars
 from vehicles import ore_hopper_cars
-#from vehicles import minerals_covered_hopper_cars # unconvinced so far
 from vehicles import passenger_cars
 from vehicles import pellet_hopper_cars
 from vehicles import plate_cars
@@ -165,7 +164,6 @@ def main():
     livestock_cars.main()
     luxury_passenger_cars.main()
     mail_cars.main()
-    # minerals_covered_hopper_cars.main() # unconvinced so far
     ore_hopper_cars.main()
     open_cars.main()
     passenger_cars.main()

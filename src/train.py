@@ -1310,19 +1310,6 @@ class CoveredHopperCarGrainConsist(CoveredHopperCarConsistBase):
         self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.grain_hopper_car_livery_recolour_maps)
 
 
-class CoveredHopperCarMineralsConsist(CoveredHopperCarConsistBase):
-    """
-    Defaults to clay/kaolin/quicklime type cargos.
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = 'minerals_covered_hopper_car'
-        super().__init__(**kwargs)
-        self.default_cargos = ['KAOL', 'CLAY', 'QLME'] # !! needs updated
-        # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.minerals_covered_hopper_car_livery_recolour_maps)
-
-
 class CoveredHopperCarPelletConsist(CoveredHopperCarConsistBase):
     """
     Defaults to grain/farm type cargos.
