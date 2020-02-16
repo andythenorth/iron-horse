@@ -119,7 +119,7 @@ base_refits_by_class = {'empty': [],
 # BUT for _some_ specialist vehicle types, it's simpler to just allow refit by label
 allowed_refits_by_label = {'edible_liquids': ['MILK', 'WATR', 'BEER', 'FOOD', 'EOIL'],
                            'box_freight': ['MAIL', 'GRAI', 'WHEA', 'MAIZ', 'FRUT', 'BEAN', 'NITR'], # box cars get some extended cargos
-                           'chemicals': ['ACID', 'RFPR', 'CHLO'],
+                           'chemicals': ['ACID', 'RFPR', 'CHLO'], # seems to be used by intermodal, otherwise chemicals tankers are deprecated in favour of product tankers
                            'covered_hoppers': ['GRAI', 'WHEA', 'MAIZ', 'SUGR', 'FMSP', 'RFPR', 'CLAY', 'BDMT',
                                                'BEAN', 'NITR', 'RUBR', 'SAND', 'POTA', 'QLME', 'SASH', 'CMNT',
                                                'KAOL', 'FERT', 'SALT', 'PLAS'], # not CBLK, gets dedicated vehicles or box
@@ -154,8 +154,6 @@ default_cargos = {'box': ['GOOD', 'VPTS', 'FOOD'],
                   'grain_hopper': ['GRAI', 'PLAS'],
                   'hopper': ['LIME', 'GRVL', 'SAND', 'PORE', 'SALT', 'IORE', 'CORE'],
                   # intermodal, uses box
-                  'silo': ['CMNT', 'BDMT', 'RFPR', 'QLME', 'FMSP'],
-                  'stake': ['WOOD'],
                   'mail': ['MAIL'],
                   'metal': ['STEL', 'COPR'],
                   'open': ['GOOD'],
@@ -164,11 +162,11 @@ default_cargos = {'box': ['GOOD', 'VPTS', 'FOOD'],
                   'plate': ['IRON', 'CSTI', 'ZINC', 'METL'],
                   'product_tank': ['ACID', 'RFPR', 'CHLO'],
                   'reefer': ['FOOD'],
+                  'silo': ['CMNT', 'BDMT', 'RFPR', 'QLME', 'FMSP'],
+                  'stake': ['WOOD'],
                   'supplies': ['ENSP'],
                   'tank': ['OIL_', 'CTAR', 'SULP', 'KAOL', 'RUBR'],
                   }
-
-
 
 
 # chameleon templating goes faster if a cache dir is used; this specifies which dir is cache dir
