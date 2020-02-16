@@ -99,6 +99,8 @@ cargo_labels = ['PASS', # pax first
                 'VBOD',
                 'VENG',
                 'FECR',
+                'GLAS',
+                'POWR',
                 #
                 'NULL']
 
