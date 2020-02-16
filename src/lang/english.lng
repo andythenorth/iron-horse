@@ -36,7 +36,6 @@ STR_NAME_SUFFIX_BOX_CAR                                         :Box Van
 STR_NAME_SUFFIX_CABOOSE_CAR                                     :Brake Van
 STR_NAME_SUFFIX_CEMENT_SILO_CAR                                 :Cement Wagon
 STR_NAME_SUFFIX_CARBON_BLACK_HOPPER_CAR                         :Carbon Black Hopper
-STR_NAME_SUFFIX_CHEMICALS_TANK_CAR                              :Product Tanker
 STR_NAME_SUFFIX_COIL_CAR                                        :Coil Car
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Covered Hopper
 STR_NAME_SUFFIX_CRYO_TANK_CAR                                   :Cryo Tanker
@@ -60,6 +59,7 @@ STR_NAME_SUFFIX_ORE_HOPPER_CAR                                  :Ore Hopper
 STR_NAME_SUFFIX_PASSENGER_CAR                                   :Passenger Coach
 STR_NAME_SUFFIX_PELLET_HOPPER_CAR                               :Pellet Hopper
 STR_NAME_SUFFIX_PLATE_CAR                                       :Plate Wagon
+STR_NAME_SUFFIX_PRODUCT_TANK_CAR                                :Product Tanker
 STR_NAME_SUFFIX_REEFER_CAR                                      :Refrigerated Van
 STR_NAME_SUFFIX_ROCK_HOPPER_CAR                                 :Rock Hopper
 STR_NAME_SUFFIX_SILO_CAR                                        :Silo Wagon

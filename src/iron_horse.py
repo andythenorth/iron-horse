@@ -28,7 +28,6 @@ from vehicles import box_cars
 from vehicles import caboose_cars
 from vehicles import carbon_black_hopper_cars
 from vehicles import cement_silo_cars
-from vehicles import chemicals_tank_cars
 from vehicles import coil_cars
 from vehicles import covered_hopper_cars
 from vehicles import cryo_tank_cars
@@ -53,6 +52,7 @@ from vehicles import ore_hopper_cars
 from vehicles import passenger_cars
 from vehicles import pellet_hopper_cars
 from vehicles import plate_cars
+from vehicles import product_tank_cars
 from vehicles import reefer_cars
 from vehicles import rock_hopper_cars
 from vehicles import scrap_metal_cars
@@ -145,7 +145,6 @@ def main():
     caboose_cars.main()
     carbon_black_hopper_cars.main()
     cement_silo_cars.main()
-    chemicals_tank_cars.main()
     coil_cars.main()
     covered_hopper_cars.main()
     cryo_tank_cars.main()
@@ -169,6 +168,7 @@ def main():
     passenger_cars.main()
     pellet_hopper_cars.main()
     plate_cars.main()
+    product_tank_cars.main()
     reefer_cars.main()
     rock_hopper_cars.main()
     silo_cars.main()
