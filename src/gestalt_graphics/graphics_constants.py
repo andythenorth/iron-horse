@@ -57,6 +57,7 @@ coil_car_livery_recolour_maps = (("DFLT", body_recolour_CC1),)
 
 curtain_side_livery_recolour_maps = (("DFLT", body_recolour_CC1),)
 
+# pass through (recolour gestalt is used only to trigger automatic chassis drawing)
 edibles_tank_car_livery_recolour_maps = (("DFLT", {}),)
 
 fruit_veg_livery_recolour_maps = (("DFLT", {136: CC2, 137: CC2+1, 138: CC2+2, 139: CC2+3,

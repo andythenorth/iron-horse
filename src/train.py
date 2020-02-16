@@ -1462,6 +1462,7 @@ class EdiblesTankCarConsist(CarConsist):
         # CC is swapped randomly (player can't choose), but also swap base livery on flip (player can choose
         self.allow_flip = True
         # Graphics configuration
+        # only one livery, but recolour gestalt used to automate adding chassis
         self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.edibles_tank_car_livery_recolour_maps)
 
 
