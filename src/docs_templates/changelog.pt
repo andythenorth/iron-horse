@@ -1,6 +1,95 @@
 Changelog
 =========
 
+
+-------------
+2.3.0 Release
+-------------
+
+
+*Gameplay Changes*
+
+-
+
+
+*New and Changed Engines*
+
+-
+
+
+*New and Changed Wagons*
+
+- added 7 Carbon Black Hoppers
+    - dedicated to carbon black cargo (found in FIRS v4 Steeltown economy)
+- added 5 Torpedo Wagons
+    - dedicated to pig iron cargo (found in FIRS v4 Steeltown economy)
+- added 3 Slag Ladle Wagons
+    - 2 standard gauge, 1 narrow gauge
+    - dedicated to slag cargo (found in FIRS v4 Steeltown economy)
+    - limited to 35mph due to carrying red-hot molten slag in open top ladles
+- adjusted some wagon types that had an alternative hand-drawn livery using ctrl-click in depot
+    - for most wagon types ctrl-click in depot now only toggles 1st / 2nd company colour
+    - some wagon types have been split or combined
+- hopper-type wagons adjusted to
+    - Hopper (grey)
+    - Rock Hopper (company colour)
+    - Ore Hopper (brown)
+- mineral-type wagons adjusted to
+    - Mineral Wagon (company colour)
+    - High Side Mineral Wagon (company colour)
+    - Scrap Wagon (black)
+- covered-hopper type wagons adjusted to
+    - Covered Hopper (brown)
+    - Grain Hopper (company color + grey)
+    - Pellet Hopper (grey)
+- silo type wagons adjusted to
+    - Silo Wagon (company colour)
+    - Cement Silo Wagon (dirty grey colour)
+- removed Chemicals Tanker in favour of Product Tanker
+    - same refits as Tanker
+    - shiny appearance
+- removed some generation 6 short wagons, not needed
+- improved appearance of Tarpaulin Cars
+- use mail as default cargo for Express Vans, not engineering supplies, avoids confusion when adding Express Vans to mail trains
+
+
+*Changes*
+
+- increased spacing of buffer pixels in – views
+- added description text for Jokers parameter
+
+
+*Fixes*
+
+- haulage speed bonus calculation was broken, causing electric railcar default speed to be too high
+- missing gangway pixels for some angles of Jupiter and Plastic Postbox
+- HST coaches were too heavy
+- adjusted HST coach buy cost to be about same as luxury passenger coach
+- bad pixels in Blaze and Scorcher roof for some angles
+- removed alternative company livery option that was added for certain wagon types in 2.3, on reflection it was a flawed idea
+
+
+*Codechanges*
+
+- local refactoring including removal of unused legacy vars and simplifying of templates
+- Makefile fixes
+    - some shells expanded the roster asterisk in the Makefile, use ALL instead
+    - NML needs the graphics sources at least on first run, so add them as order-only dependencies
+    - don't use directories as dependencies in Makefiles
+- compile optimisation for speed and filesize
+    - save 5k realsprites by setting purchase sprites to [] when no realsprites is needed
+    - set additional grfcodec container and compression options in makefile
+    - forcibly suppress animated pixel warnings
+    - remove around ~7k duplicated realsprites by only providing 4 realsprites for some symmetrical 8/8 vehicles
+    - use stored procedures in multiple places, significantly reducing NML switch counts
+    - use global switches for tail-lights, not per vehicle, significantly reducing NML switch counts
+
+
+*Lang*
+
+- removed some outdated/unused lang strings
+
+
 -------------
 2.3.0 Release
 -------------
