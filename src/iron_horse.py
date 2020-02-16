@@ -169,18 +169,15 @@ def main():
     ore_hopper_cars.main()
     open_cars.main()
     passenger_cars.main()
-    # petrol_tank_cars.main() # unconvinced so far
     pellet_hopper_cars.main()
     plate_cars.main()
     reefer_cars.main()
     rock_hopper_cars.main()
-    # rubber_tank_cars.main() # unconvinced so far
     silo_cars.main()
     scrap_metal_cars.main()
     slag_ladle_cars.main()
     sliding_wall_cars.main()
     stake_cars.main()
-    # sulphur_tank_cars.main() # unconvinced so far
     tank_cars.main()
     tarpaulin_cars.main()
     torpedo_cars.main()
