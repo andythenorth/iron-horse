@@ -46,6 +46,7 @@ def main():
                                base_numeric_id=2030,
                                gen=2,
                                subtype='A',
+                               intro_date_offset=-10,  # let's be earlier for this one
                                sprites_complete=True)
 
     consist.add_unit(type=FreightCar,
