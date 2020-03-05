@@ -40,6 +40,7 @@ def main():
     #--------------- pony ----------------------------------------------------------------------
 
     # no gen 1 hoppers in Pony eh
+    # but gen 2 arrives early
     # also just type A for gen 2 and 3
 
     consist = HopperCarConsist(roster_id='pony',
