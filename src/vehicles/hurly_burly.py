@@ -13,6 +13,7 @@ def main(roster_id):
                             gen=2,
                             pantograph_type='diamond-double',
                             intro_date_offset=5,  # introduce later than gen epoch by design
+                            fixed_run_cost_points=180, # substantial cost bonus for balance against same-era steam engines
                             sprites_complete=True)
 
     consist.add_unit(type=ElectricEngineUnit,
