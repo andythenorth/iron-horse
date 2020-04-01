@@ -19,4 +19,6 @@ def main(roster_id):
                      vehicle_length=6,
                      spriterow_num=0)
 
+    consist.description = """Sturdy tank engine!  Using a design licensed from Mr. William Adams, this engine will move small freight and passenger trains at low cost, and surprisingly high speed."""
+
     return consist

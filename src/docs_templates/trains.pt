@@ -53,10 +53,11 @@
                                         <td colspan="2"><!--! empty cell --></td>
                                         <th>Vehicle Name</th>
                                         <th>Role</th>
-                                        <th>Intro Date</th>
-                                        <th>Power (hp)</th>
-                                        <th>Speed (mph)</th>
+                                        <th class="date">Designed</th>
+                                        <th class="number">Power</th>
+                                        <th class="number">Speed</th>
                                         <th>Track type</th>
+                                        <th><!--! permalink col --></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -74,12 +75,17 @@
                                                      width="${2 * doc_helper.buy_menu_sprite_width(consist)}"
                                                      height="${2 * doc_helper.buy_menu_sprite_height}" />
                                             </td>
-                                            <td><a class="table-link-dark" href="#${consist.id}">${doc_helper.unpack_name_string(consist)}</a></td>
+                                            <td>
+                                                <a class="table-link-dark" href="${consist.id}.html">${doc_helper.unpack_name_string(consist)}</a>
+                                            </td>
                                             <td>${doc_helper.unpack_role_string_for_consist(consist)}</td>
-                                            <td>${consist.intro_date}</td>
-                                            <td>${consist.power}</td>
-                                            <td>${consist.speed}</td>
+                                            <td class="date">${consist.intro_date}</td>
+                                            <td class="number">${consist.power} hp</td>
+                                            <td class="number">${consist.speed} mph</td>
                                             <td>${consist.track_type}</td>
+                                            <td>
+                                                <a style="text-decoration:none;" href="#${consist.id}">&#x1f517;</a>
+                                            </td>
                                         </tr>
                                     </tal:engine_consists>
                                 </tbody>
@@ -98,9 +104,9 @@
                                     <tr>
                                         <td colspan="2"><!--! empty cell --></td>
                                         <th>Vehicle Name</th>
-                                        <th>Intro Date</th>
-                                        <th>Capacity (t)</th>
-                                        <th>Speed (mph)</th>
+                                        <th class="date">Designed</th>
+                                        <th class="number">Capacity</th>
+                                        <th class="number">Speed</th>
                                         <th>Track type</th>
                                     </tr>
                                 </thead>
@@ -119,10 +125,12 @@
                                                      width="${2 * doc_helper.buy_menu_sprite_width(consist)}"
                                                      height="${2 * doc_helper.buy_menu_sprite_height}" />
                                             </td>
-                                            <td><a class="table-link-dark" href="#${consist.id}">${doc_helper.unpack_name_string(consist)}</a></td>
-                                            <td>${consist.intro_date}</td>
-                                            <td>${sum([unit.default_cargo_capacity for unit in consist.units])}</td>
-                                            <td>${consist.speed}</td>
+                                            <td>
+                                                <a class="table-link-dark" href="#${consist.id}">${doc_helper.unpack_name_string(consist)}</a>
+                                            </td>
+                                            <td class="date">${consist.intro_date}</td>
+                                            <td class="number">${sum([unit.default_cargo_capacity for unit in consist.units])} t</td>
+                                            <td class="number">${consist.speed} mph</td>
                                             <td>${consist.track_type}</td>
                                         </tr>
                                     </tal:wagon_consists>

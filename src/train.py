@@ -110,6 +110,8 @@ class Consist(object):
             'suppress_animated_pixel_warnings', False)
         # by design, occasional 'joker' vehicles are included that have no gameplay purpose
         self.joker = kwargs.get('joker', False)
+        # extended description for docs etc
+        self.description = u''
         # occasionally we want to force a specific spriterow for docs, not needed often, set in kwargs as needed, see also buy_menu_spriterow_num
         self.docs_image_spriterow = kwargs.get('docs_image_spriterow', 0) # 0 indexed spriterows, position in generated spritesheet
         # aids 'project management'

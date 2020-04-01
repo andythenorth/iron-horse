@@ -247,6 +247,20 @@ def render_docs(doc_list, file_type, docs_output_path, iron_horse, consists, use
         doc_file.write(doc)
         doc_file.close()
 
+def render_docs_vehicle_details(consist, docs_output_path, consists):
+    # imports inside functions are generally avoided
+    # but PageTemplateLoader is expensive to import and causes unnecessary overhead for Pool mapping when processing docs graphics
+    from chameleon import PageTemplateLoader
+    docs_templates = PageTemplateLoader(docs_src, format='text')
+    template = docs_templates['vehicle_details.pt']
+    doc_name = consist.id
+    doc = template(consist=consist, consists=consists, global_constants=global_constants, registered_rosters=iron_horse.registered_rosters, makefile_args=makefile_args,
+                   base_lang_strings=base_lang_strings, metadata=metadata, utils=utils, doc_helper=DocHelper(), doc_name=doc_name)
+    doc_file = codecs.open(os.path.join(
+        docs_output_path, 'html', doc_name + '.html'), 'w', 'utf8')
+    doc_file.write(doc)
+    doc_file.close()
+
 def render_docs_images(consist):
     # process vehicle buy menu sprites for reuse in docs
     # extend this similar to render_docs if other image types need processing in future
@@ -392,6 +406,11 @@ def main():
     render_docs(markdown_docs, 'txt', docs_output_path, iron_horse, consists)
     render_docs(markdown_docs, 'html', docs_output_path, iron_horse, consists, use_markdown=True)
     render_docs(graph_docs, 'dotall', docs_output_path, iron_horse, consists)
+
+    # render vehicle details
+    for roster in iron_horse.registered_rosters:
+        for consist in roster.engine_consists:
+            render_docs_vehicle_details(consist, docs_output_path, consists)
 
     # process images for use in docs
     # yes, I really did bother using a pool to save at best a couple of seconds, because FML :)
