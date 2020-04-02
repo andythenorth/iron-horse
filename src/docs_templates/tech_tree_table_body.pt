@@ -153,38 +153,43 @@
                                 <tal:consist define="consist doc_helper.get_engine_by_role_and_base_track_type_and_generation(consists, role, base_track_type, gen + 1)">
                                     <tal:block condition="consist is not None">
                                         <div class="tech_tree_vehicle_container">
-                                            <div class="tech_tree_vehicle
-                                                        ${'tech_tree_vehicle_electric' if consist.requires_electric_rails else 'None'}
-                                                        ${'tech_tree_vehicle_electro_diesel' if consist.str_name_suffix == 'STR_NAME_SUFFIX_ELECTRODIESEL' else None}
-                                                        ${'tech_tree_vehicle_arrow' if (doc_helper.get_engine_by_role_and_base_track_type_and_generation(consists, role, base_track_type, gen + 2) is not None) or (consist._replacement_consist_id is not None) else None}">
-                                                <span style="display:block;">
-                                                    <!--! this is using a private var, but I am not going to lose sleep over it -->
-                                                    ${consist._name}
-                                                </span>
-                                                <img src="static/img/${consist.id}_${vehicle_cc}.png"
-                                                     width="${2 * doc_helper.buy_menu_sprite_width(consist)}"
-                                                     height="${2 * doc_helper.buy_menu_sprite_height}" />
-                                                <span style="display:block; margin-top: 5px; line-height:1.3;" class="muted">
-                                                    <small style="display:block;">
-                                                        ${base_lang_strings[consist.str_name_suffix] if consist.str_name_suffix is not None else None}
-                                                    </small>
-                                                    <small>${consist.power}hp</small>
-                                                    <tal:multi_mode condition="consist.power_by_railtype is not None">
-                                                        <small> / ${consist.power_by_railtype['ELRL']}hp</small>
-                                                    </tal:multi_mode>
-                                                    <br />
-                                                    <small>${consist.speed}mph</small>
+                                            <a href="${consist.id}.html">
+                                                <div class="tech_tree_vehicle
+                                                            ${'tech_tree_vehicle_electric' if consist.requires_electric_rails else 'None'}
+                                                            ${'tech_tree_vehicle_electro_diesel' if consist.str_name_suffix == 'STR_NAME_SUFFIX_ELECTRODIESEL' else None}
+                                                            ${'tech_tree_vehicle_arrow' if (doc_helper.get_engine_by_role_and_base_track_type_and_generation(consists, role, base_track_type, gen + 2) is not None) or (consist._replacement_consist_id is not None) else None}">
+                                                    <span style="display:block;">
+                                                        <!--! this is using a private var, but I am not going to lose sleep over it -->
+                                                        ${consist._name}
+                                                    </span>
+                                                    <img src="static/img/${consist.id}_${vehicle_cc}.png"
+                                                         width="${2 * doc_helper.buy_menu_sprite_width(consist)}"
+                                                         height="${2 * doc_helper.buy_menu_sprite_height}" />
+                                                    <span style="display:block; margin-top: 5px; line-height:1.3;" class="muted">
+                                                        <small style="display:block;">
+                                                            ${base_lang_strings[consist.str_name_suffix] if consist.str_name_suffix is not None else None}
+                                                        </small>
+                                                        <small>${consist.power}hp</small>
+                                                        <tal:multi_mode condition="consist.power_by_railtype is not None">
+                                                            <small> / ${consist.power_by_railtype['ELRL']}hp</small>
+                                                        </tal:multi_mode>
+                                                        <br />
+                                                        <small>${consist.speed}mph</small>
 
-                                                    <small>${consist.power_speed_ratio}i</small>
-                                                </span>
-                                            </div>
-                                            <div tal:condition="consist._replacement_consist_id is not None"
-                                                 style="float:left; margin-left: 173px; margin-top: 30px;">
-                                                <div class="muted"
-                                                     style="width: 100px; border: solid 1px #ddd; background: #fffff3; border-radius: 4px; padding: 8px;">
-                                                    Replaced by ${doc_helper.get_replaced_by_name(consist._replacement_consist_id, consists)}
+                                                        <small>${consist.power_speed_ratio}i</small>
+                                                    </span>
                                                 </div>
-                                            </div>
+                                                <div tal:condition="consist._replacement_consist_id is not None"
+                                                     style="float:left; margin-left: 173px; margin-top: 30px;">
+                                                    <!--! this anchor overlaps the main consist anchor, but seems to work -->
+                                                    <a href="${consist.replacement_consist.id}.html">
+                                                        <div class="muted"
+                                                             style="width: 100px; border: solid 1px #ddd; background: #fffff3; border-radius: 4px; padding: 8px;">
+                                                            Replaced by ${doc_helper.get_replaced_by_name(consist.replacement_consist.id, consists)}
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </a>
                                         </div>
                                     </tal:block>
                                 </tal:consist>
