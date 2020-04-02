@@ -16,8 +16,8 @@ import global_constants
 # get the strings from base lang file so they can be used in docs
 base_lang_strings = utils.parse_base_lang()
 metadata = {}
-metadata['dev_thread_url'] = 'http://www.tt-forums.net/viewtopic.php?f=67&t=71219'
-metadata['repo_url'] = 'http://dev.openttdcoop.org/projects/iron-horse/repository'
+metadata['dev_thread_url'] = 'https://www.tt-forums.net/viewtopic.php?f=67&t=71219'
+metadata['repo_url'] = 'https://github.com/andythenorth/iron-horse'
 metadata['issue_tracker'] = 'http://dev.openttdcoop.org/projects/iron-horse/issues'
 
 # get args passed by makefile
@@ -144,6 +144,13 @@ class DocHelper(object):
                         return consist
         # default result
         return None
+
+    def get_vehicle_images_js_array(self, consists):
+        # returns a nested array formatted for JS with [image_id, width]
+        result = []
+        for consist in consists:
+            result.append("['" + consist.id + "','" + str(self.buy_menu_sprite_width(consist)) + "']")
+        return ",".join(result)
 
     def fetch_prop(self, result, prop_name, value):
         result['vehicle'][prop_name] = value

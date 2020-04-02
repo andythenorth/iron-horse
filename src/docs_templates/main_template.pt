@@ -62,7 +62,7 @@
         <div class="container">
             <div class="pull-right" style="margin-top:-30px; margin-bottom:20px;">
                 <script language="JavaScript">
-                    var images=new Array(${(',').join(["['" + consist.id + "','" + str(doc_helper.buy_menu_sprite_width(consist)) + "']" for consist in consists])});
+                    var images=new Array(${doc_helper.get_vehicle_images_js_array(consists)});
                     function random_img(){
                         var index = Math.floor(Math.random()*images.length);
                         var random_image = images.splice(index, 1)[0]; // splice returns an array, and we need the nested array inside it
