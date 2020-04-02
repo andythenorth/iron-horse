@@ -30,7 +30,6 @@
              height="${4 * doc_helper.buy_menu_sprite_height}" />
     </div>
 
-
     <dl>
         <dt>Role</dt>
         <dd>${doc_helper.unpack_role_string_for_consist(consist)}</dd>
@@ -43,11 +42,31 @@
         <dt>Track type</dt>
         <dd>${consist.track_type}</dd>
     </dl>
-    REPLACES??
-    <tal:replacement condition="consist.replacement_consist is not None">
-        Replaced by
-        <a href="${consist.replacement_consist.id}.html">${doc_helper.get_replaced_by_name(consist.replacement_consist.id, consists)}</a>
-    </tal:replacement>
-    <p>${structure:consist.description}</p>
+
+    <dl>
+        <dt>Replaces</dt>
+        <tal:replaces condition="len(consist.replaces_consists) > 0">
+             <tal:replaced_consist repeat="replaced_consist consist.replaces_consists">
+                <dd>
+                    <a href="${replaced_consist.id}.html">${doc_helper.get_replaced_by_name(replaced_consist.id, consists)}</a>
+                </dd>
+             </tal:replaced_consist>
+        </tal:replaces>
+        <tal:replaces_none condition="len(consist.replaces_consists) == 0">
+            <dd>None</dd>
+        </tal:replaces_none>
+
+        <dt>Replaced by</dt>
+        <tal:replacement condition="consist.replacement_consist is not None">
+            <dd>
+                <a href="${consist.replacement_consist.id}.html">${doc_helper.get_replaced_by_name(consist.replacement_consist.id, consists)}</a>
+            </dd>
+        </tal:replacement>
+        <tal:replacement_is_none condition="consist.replacement_consist is None">
+            <dd>None</dd>
+        </tal:replacement_is_none>
+
+        <p>${structure:consist.description}</p>
+    </dl>
 </div>
 </tal:main_template>

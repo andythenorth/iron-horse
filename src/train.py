@@ -312,6 +312,17 @@ class Consist(object):
             return replacement_consist
 
     @property
+    def replaces_consists(self):
+        # note that this depends on replacement_consist property in other consists, and may not work in all cases
+        # a consist can replace more than one other consist
+        result = []
+        for consist in self.roster.engine_consists:
+            if consist.replacement_consist is not None:
+                if consist.replacement_consist.id == self.id:
+                    result.append(consist)
+        return result
+
+    @property
     def model_life(self):
         if self.replacement_consist is None:
             return 'VEHICLE_NEVER_EXPIRES'
