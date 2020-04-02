@@ -7,6 +7,8 @@
 
 <div metal:fill-slot='body'>
     <div class="page-header">
+        <p class="lead"><strong>This page is outdated.</strong></p>
+        <hr />
         <h2>Help Translate Iron Horse</h2>
         <p>Iron Horse has already been translated into multiple languages, and more translations are always welcome.</p>
     </div>
@@ -34,8 +36,8 @@
         <p>Change or update the strings to appropriate translations for the language.</p>
         <p><a class="btn btn-info" href="http://dev.openttdcoop.org/projects/eints/repository/entry/docs/strings.rst">Detailed Guide to Translating</a></p>
         <br />
-        <h4>3. Post Language File for Inclusion in FISH</h4>
-        <p>Post translated files into <a href="${metadata['dev_thread_url']}">this TT-forums thread</a>, or upload to the <a href="${metadata['issue_tracker']}">FISH issue tracker</a>.</p>
+        <h4>3. Post Language File for Inclusion in Iron Horse</h4>
+        <p>Post translated files into <a href="${metadata['dev_thread_url']}">this TT-forums thread</a>.</p>
         <br />
         <h4>4. Have Cake</h4>
         <p>Someone on the FISH team will include your translation as soon as they have time.</p>
