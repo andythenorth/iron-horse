@@ -50,14 +50,15 @@
                             <table class="table table-striped tablesorter vehicle-table">
                                 <thead>
                                     <tr>
-                                        <td colspan="2"><!--! empty cell --></td>
+                                        <th style="text-align:center;">1CC</th>
+                                        <th style="text-align:center;">2CC</th>
                                         <th>Vehicle Name</th>
                                         <th>Role</th>
                                         <th class="date">Designed</th>
                                         <th class="number">Power</th>
                                         <th class="number">Speed</th>
                                         <th>Track type</th>
-                                        <th><!--! permalink col --></th>
+                                        <th>Link</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -102,12 +103,14 @@
                             <table class="table table-striped tablesorter vehicle-table">
                                 <thead>
                                     <tr>
-                                        <td colspan="2"><!--! empty cell --></td>
+                                        <th style="text-align:center;">1CC</th>
+                                        <th style="text-align:center;">2CC</th>
                                         <th>Vehicle Name</th>
                                         <th class="date">Designed</th>
                                         <th class="number">Capacity</th>
                                         <th class="number">Speed</th>
                                         <th>Track type</th>
+                                        <th>Link</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -126,12 +129,15 @@
                                                      height="${2 * doc_helper.buy_menu_sprite_height}" />
                                             </td>
                                             <td>
-                                                <a class="table-link-dark" href="#${consist.id}">${doc_helper.unpack_name_string(consist)}</a>
+                                                ${doc_helper.unpack_name_string(consist)}
                                             </td>
                                             <td class="date">${consist.intro_date}</td>
                                             <td class="number">${sum([unit.default_cargo_capacity for unit in consist.units])} t</td>
                                             <td class="number">${consist.speed} mph</td>
                                             <td>${consist.track_type}</td>
+                                            <td>
+                                                <a style="text-decoration:none;" href="#${consist.id}">&#x1f517;</a>
+                                            </td>
                                         </tr>
                                     </tal:wagon_consists>
                                 </tbody>
