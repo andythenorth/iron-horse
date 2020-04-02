@@ -59,18 +59,32 @@
         </div>
     </div>
     <div class="hero-unit subhead">
-        <script language="JavaScript">
-        function random_img(){
-            var images=new Array("",
-                                 "");
-
-            var random_image=images[Math.floor(Math.random()*images.length)];
-            document.write('<a href="trains.html#' + random_image + '"><img class="pull-right" style="margin-top:-30px; margin-bottom:0;" src="static/img/industries/'+ random_image +'.png"></a>')
-        }
-        random_img()
-        </script>
         <div class="container">
-            <h1 style="font-size:48px; padding-top:30px;">Iron Horse</h1>
+            <div class="pull-right" style="margin-top:-30px; margin-bottom:20px;">
+                <script language="JavaScript">
+                    var images=new Array(${(',').join(["['" + consist.id + "','" + str(doc_helper.buy_menu_sprite_width(consist)) + "']" for consist in consists])});
+                    function random_img(){
+                        var index = Math.floor(Math.random()*images.length);
+                        var random_image = images.splice(index, 1)[0]; // splice returns an array, and we need the nested array inside it
+                        document.write('<a href="trains.html#' + random_image[0] + '" style="display:inline; margin-bottom: 20px;"> \
+                                            <img src="static/img/'+ random_image[0] + '_red.png" \
+                                                 width="' + 4 * random_image[1] + '" \
+                                                 height="${4 * doc_helper.buy_menu_sprite_height}"> \
+                                        </a>')
+                        return true;
+                    }
+                </script>
+                <div tal:repeat="counter range(3)" class="text-right">
+                    <script language="JavaScript">
+                        random_img();
+                        random_img();
+                        random_img();
+                        random_img();
+                        random_img();
+                    </script>
+                </div>
+            </div>
+            <h1 style="font-size:48px; padding-top:40px;">Iron Horse</h1>
             <p class="lead">My Lovely <strike>Horse</strike> Train Set</p>
         </div>
     </div>
