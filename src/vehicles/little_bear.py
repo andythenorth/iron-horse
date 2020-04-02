@@ -20,4 +20,6 @@ def main(roster_id):
                      vehicle_length=6,
                      spriterow_num=0)
 
+    consist.description = """http://www.railphotoarchive.org/rpc_zoom.php?img=0146020007000"""
+
     return consist

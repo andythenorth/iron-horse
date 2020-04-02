@@ -42,7 +42,7 @@
         <dt>Track type</dt>
         <dd>${consist.track_type}</dd>
     </dl>
-    <!--!
+
     <dl>
         <dt>Replaces</dt>
         <tal:replaces condition="len(consist.replaces_consists) > 0">
@@ -67,6 +67,6 @@
         </tal:replacement_is_none>
 
         <p>${structure:consist.description}</p>
-    </dl>-->
+    </dl>
 </div>
 </tal:main_template>
