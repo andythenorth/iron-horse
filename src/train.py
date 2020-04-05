@@ -715,10 +715,8 @@ class PassengerEngineLuxuryRailcarConsist(PassengerEngineConsist):
         # this won't make much difference except over *very* long routes, but set it anyway
         self.cargo_age_period = 8 * global_constants.CARGO_AGE_PERIOD
         self.buy_cost_adjustment_factor = 1.3
-        # to avoid these railcars being super-bargain cheap, add a significant malus
-        self.floating_run_cost_multiplier = 24
-        # ...and high fixed (baseline) run costs on this subtype
-        self.fixed_run_cost_points = 180 # !! eh this was actually the default value last time I checked :P
+        # to avoid these railcars being super-bargain cheap, add a cost malus
+        self.fixed_run_cost_points = 144
 
         # Graphics configuration
         if self.gen in [2, 3]:
