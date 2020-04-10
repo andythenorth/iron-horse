@@ -19,4 +19,6 @@ def main(roster_id):
                      vehicle_length=8,
                      spriterow_num=0)
 
+    consist.description = """ """
+
     return consist
