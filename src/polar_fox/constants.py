@@ -101,6 +101,7 @@ cargo_labels = ['PASS', # pax first
                 'FECR',
                 'GLAS',
                 'POWR',
+                'STSH',
                 #
                 'NULL']
 
@@ -128,7 +129,7 @@ allowed_refits_by_label = {'edible_liquids': ['MILK', 'WATR', 'BEER', 'FOOD', 'E
                            'cryo_gases': ['CHLO', 'O2__'],
                            'reefer': ['FOOD', 'FRUT', 'FISH'], # hax for intermodal container sprite selection - reefer car refits work just fine using CC_REFRIGERATED
                            'fruit_veg': ['FRUT', 'BEAN', 'CASS', 'JAVA', 'NUTS'],
-                           'cold_metal': ['STEL', 'METL', 'STCB', 'STAL', 'STST', 'COPR']}
+                           'cold_metal': ['STEL', 'METL', 'STCB', 'STAL', 'STST', 'COPR', 'STSH']}
 
 # rather than using disallowed classes (can cause breakage), specific labels are disallowed
 disallowed_refits_by_label = {'non_dump_bulk': ['WOOD', 'SGCN', 'FICR', 'BDMT', 'WDPR', 'GRAI', 'WHEA', 'CERE', 'MAIZ', 'FRUT', 'BEAN', 'CMNT',
