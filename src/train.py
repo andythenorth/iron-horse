@@ -598,7 +598,7 @@ class EngineConsist(Consist):
         if self.requires_electric_rails:
             if 'railcar' in self.role:
                 # massive bonus to el railcars
-                power_factor = 0.55 * power_factor
+                power_factor = 0.33 * power_factor
             else:
                 # small bonus to electric engines
                 # they already tend to be lighter per unit power (so cheaper to run) than similar power types
@@ -638,11 +638,10 @@ class PassengerEngineConsist(EngineConsist):
         self.label_refits_allowed = []
         self.label_refits_disallowed = []
         self.default_cargos = ['PASS']
-         # increased buy and run costs for having seats and stuff eh?
+         # increased buy costs for having seats and stuff eh?
         self.buy_cost_adjustment_factor = 1.8
-        self.floating_run_cost_multiplier = 12
         # ...but reduce fixed (baseline) run costs on this subtype, purely for balancing reasons
-        self.fixed_run_cost_points = 112
+        self.fixed_run_cost_points = 84
 
 
 class PassengerEngineMetroConsist(PassengerEngineConsist):
@@ -715,8 +714,8 @@ class PassengerEngineLuxuryRailcarConsist(PassengerEngineConsist):
         # this won't make much difference except over *very* long routes, but set it anyway
         self.cargo_age_period = 8 * global_constants.CARGO_AGE_PERIOD
         self.buy_cost_adjustment_factor = 1.3
-        # to avoid these railcars being super-bargain cheap, add a cost malus
-        self.fixed_run_cost_points = 144
+        # to avoid these railcars being super-bargain cheap, add a cost malus compared to standard railcars (still less than standard engines)
+        self.fixed_run_cost_points = 128
 
         # Graphics configuration
         if self.gen in [2, 3]:
@@ -894,11 +893,10 @@ class MailEngineConsist(EngineConsist):
         self.label_refits_allowed = []  # no specific labels needed
         self.label_refits_disallowed = ['TOUR']
         self.default_cargos = polar_fox.constants.default_cargos['mail']
-        # increased costs for having extra doors and stuff eh?
+        # increased buy costs for having extra doors and stuff eh?
         self.buy_cost_adjustment_factor = 1.4
-        self.floating_run_cost_multiplier = 12
         # ...but reduce fixed (baseline) run costs on this subtype, purely for balancing reasons
-        self.fixed_run_cost_points = 128
+        self.fixed_run_cost_points = 84
 
 
 class MailEngineMetroConsist(MailEngineConsist):
