@@ -14,7 +14,7 @@ def main(roster_id):
                                                   sprites_complete=True)
 
     consist.add_unit(type=ElectricLuxuryRailcarPaxUnit,
-                     weight=52,
+                     weight=45,
                      chassis='railcar_solid_32px',
                      tail_light='railcar_32px_3')
 

@@ -15,7 +15,7 @@ def main(roster_id):
                                             intro_date_offset=-3)  # introduce early by design
 
     consist.add_unit(type=ElectricRailcarPaxUnit,
-                     weight=42,
+                     weight=38,
                      chassis='railcar_32px',
                      tail_light='railcar_32px_3')
 

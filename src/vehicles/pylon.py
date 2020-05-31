@@ -17,7 +17,7 @@ def main(roster_id):
                                        intro_date_offset=-3)  # introduce early by design
 
     consist.add_unit(type=ElectroDieselRailcarMailUnit,
-                     weight=44,
+                     weight=37, # higher weight than previous gen as bi-mode
                      chassis='railcar_32px',
                      tail_light='railcar_32px_2')
 
