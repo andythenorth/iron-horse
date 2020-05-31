@@ -131,6 +131,21 @@ def get_livery_2_engine_ids():
             # 'heavy_express_4' doesn't use livery_2 by design (tied to Pony engine livery assumptions)
             if consist.role in ['branch_express_1', 'branch_express_2', 'express_2', 'heavy_express_2', 'pax_railcar_2', 'mail_railcar_2']:
                 result.append(consist.id)
+    if len(result) > 255:
+        utils.echo_message("action 2 switch is limited to 255 values, get_livery_2_engine_ids exceeds this - needs split across multiple switches")
+    return result
+
+def get_pax_car_ids():
+    # for pax cars with consist-specific liveries
+    # will check for other neighbouring pax cars before showing brake car
+    result = []
+    for roster in get_active_rosters():
+        for consists in roster.wagon_consists.values():
+            for consist in consists:
+                if getattr(consist, 'report_as_pax_car_to_neighbouring_vehicle_in_rulesets', False):
+                    result.append(consist.base_numeric_id)
+    if len(result) > 255:
+        utils.echo_message("action 2 switch is limited to 255 values, get_pax_car_ids exceeds this - needs split across multiple switches")
     return result
 
 def main():

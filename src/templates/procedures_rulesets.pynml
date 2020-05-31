@@ -84,16 +84,30 @@
     }
 
     <!--! if last -->
+    switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset_position_check_last_neighbouring, [STORE_TEMP(1, 0x10F), var[0x61, 0, 0x0000FFFF, 0xC6]]) {
+        <!--! don't show last if preceeding vehicle is also a valid pax car with a different ID -->
+        <tal:pax_car_ids repeat="pax_car_id pax_car_ids">
+        ${pax_car_id}: return ${default};
+        </tal:pax_car_ids>
+        return ${last};
+    }
     switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset_position_check_last, position_in_vehid_chain_from_end) {
-        0: return ${last};
+        0: switch_graphics_pax_car_ruleset_position_check_last_neighbouring;
         switch_graphics_pax_car_ruleset_position_check_special;
     }
 
     <!--! if first -->
+    switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset_position_check_first_neighbouring, [STORE_TEMP(-1, 0x10F), var[0x61, 0, 0x0000FFFF, 0xC6]]) {
+        <!--! don't show first if preceeding vehicle is also a valid pax car with a different ID -->
+        <tal:pax_car_ids repeat="pax_car_id pax_car_ids">
+        ${pax_car_id}: return ${default};
+        </tal:pax_car_ids>
+        return ${first};
+    }
     switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset_position_first_check_length, num_vehs_in_vehid_chain) {
         <!--! don't show 'first' if same id chain < 5 vehicles -->
         0..4: return switch_graphics_pax_car_ruleset_position_default;
-        return ${first};
+        return switch_graphics_pax_car_ruleset_position_check_first_neighbouring;
     }
     switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset_position_check_first, position_in_vehid_chain) {
         0: return switch_graphics_pax_car_ruleset_position_first_check_length;

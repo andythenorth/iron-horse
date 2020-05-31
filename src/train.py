@@ -1728,6 +1728,8 @@ class PassengerCarConsistBase(CarConsist):
     """
     Common base class for passenger cars.
     """
+    # very specific flag used by graphics chain to detect other pax cars (could have used prop 25 userbits, but eh, screw that :)
+    report_as_pax_car_to_neighbouring_vehicle_in_rulesets = True
 
     def __init__(self, **kwargs):
         # don't set base_id here, let subclasses do it
@@ -2367,16 +2369,15 @@ class Train(object):
             return self.id + "_switch_create_effect_check_railtype_" + self.consist.reversed_variants[0]
 
     def get_nml_expression_for_grfid_of_neighbouring_unit(self, unit_offset):
-        # offset is number of units
         expression_template = Template(
-            "[STORE_TEMP(${offset}, 0x10F), var[0x61, 0, 0xFFFFFFFF, 0x25]]")
-        return expression_template.substitute(offset=(3 * unit_offset))
+            "[STORE_TEMP(${unit_offset}, 0x10F), var[0x61, 0, 0xFFFFFFFF, 0x25]]")
+        return expression_template.substitute(unit_offset=unit_offset)
 
     def get_nml_expression_for_id_of_neighbouring_unit(self, unit_offset):
-        # offset is number of units
+        # best used with the check for same grfid, but eh
         expression_template = Template(
-            "[STORE_TEMP(${offset}, 0x10F), var[0x61, 0, 0x0000FFFF, 0xC6]]")
-        return expression_template.substitute(offset=(3 * unit_offset))
+            "[STORE_TEMP(${unit_offset}, 0x10F), var[0x61, 0, 0x0000FFFF, 0xC6]]")
+        return expression_template.substitute(unit_offset=unit_offset)
 
     def get_spriteset_template_name(self, reversed, flipped, y):
         template_name = '_'.join(['spriteset_template', self.symmetry_type, reversed, str(self.vehicle_length), '8', flipped])

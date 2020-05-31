@@ -37,6 +37,7 @@ def render_header_item_nml(header_item, consists):
                                                     graphics_path=global_constants.graphics_path,
                                                     intermodal_containers=iron_horse.intermodal_containers,
                                                     haulage_bonus_engine_id_tree=iron_horse.get_haulage_bonus_engine_id_tree(),
+                                                    pax_car_ids=iron_horse.get_pax_car_ids(),
                                                     livery_2_engine_ids=iron_horse.get_livery_2_engine_ids(),
                                                     makefile_args=makefile_args))
 
