@@ -39,6 +39,16 @@ def main():
 
     #--------------- pony ----------------------------------------------------------------------
     consist = DumpCarConsist(roster_id='pony',
+                             base_numeric_id=2960,
+                             gen=2,
+                             subtype='A',
+                             sprites_complete=True)
+
+    consist.add_unit(type=FreightCar,
+                     chassis='2_axle_gapped_16px')
+
+
+    consist = DumpCarConsist(roster_id='pony',
                              base_numeric_id=2350,
                              gen=3,
                              subtype='A',
