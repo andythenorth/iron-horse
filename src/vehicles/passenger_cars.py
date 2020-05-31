@@ -88,6 +88,7 @@ def main():
     consist.add_unit(type=PaxCar,
                      chassis='3_axle_solid_express_16px')
 
+
     consist = PassengerCarConsist(roster_id='pony',
                                   base_numeric_id=760,
                                   gen=3,
@@ -96,6 +97,16 @@ def main():
 
     consist.add_unit(type=PaxCar,
                      chassis='4_axle_solid_express_24px')
+
+
+    consist = PassengerCarConsist(roster_id='pony',
+                                  base_numeric_id=4570,
+                                  gen=3,
+                                  subtype='C',
+                                  sprites_complete=True)
+
+    consist.add_unit(type=PaxCar,
+                     chassis='4_axle_solid_express_32px')
 
 
     consist = PassengerCarConsist(roster_id='pony',
