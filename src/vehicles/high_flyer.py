@@ -8,7 +8,7 @@ def main(roster_id):
                                                   name='High Flyer',
                                                   role='luxury_pax_railcar',
                                                   power=450,
-                                                  pantograph_type='z-shaped-single-with-base',
+                                                  pantograph_type='diamond-single-with-base',
                                                   gen=3,
                                                   intro_date_offset=2,  # introduce later by design
                                                   sprites_complete=True)
