@@ -281,6 +281,11 @@ class Consist(object):
             return len(self.roster.intro_dates[self.base_track_type])
 
     @property
+    def equivalent_ids_alt_var_41(self):
+        # only implemented in subclasses that require it - easiest thing when writing it, change if needed
+        return None
+
+    @property
     def engine_consists_for_caboose_cars(self):
         # caboose cars adjust livery depending on engine
         # this could be renamed for use with non-caboose types if ever needed
@@ -700,6 +705,27 @@ class PassengerEngineRailcarConsist(PassengerEngineConsist):
                                                                      consist_ruleset="railcars_3_unit_sets",
                                                                      pantograph_type=self.pantograph_type)
 
+    @property
+    def equivalent_ids_alt_var_41(self):
+        # where var 14 checks consecutive chain of a single ID, I provided an alternative checking a list of IDs
+        # may or may not handle articulated vehicles correctly (probably not, no actual use cases for that)
+        # this redefinition specific to pax railcars and will be fragile if railcars or trailers are changed/extended
+        # also relies on same ruleset being used for all of pax_railcar_1, pax_railcar_2 and pax railcar trailers
+        result = []
+        # assume diesel and electric railcars are combinable, this isn't a specific design intent, but stops annoying bugs when both are combined in one consist with trailers
+        # this will create edge cases if diesel and electric MUs have different liveries set, can't have everything perfect eh?
+        # this will catch self also
+        for consist in self.roster.engine_consists:
+            if (consist.gen == self.gen) and (consist.base_track_type == self.base_track_type) and (consist.role in ['pax_railcar_1', 'pax_railcar_2']):
+                result.append(consist.base_numeric_id)
+        for consist in self.roster.wagon_consists['passenger_railcar_trailer_car']:
+            if (consist.gen == self.gen) and (consist.base_track_type == self.base_track_type):
+                result.append(consist.base_numeric_id)
+        # the list requires 16 entries as the nml check has 16 switches, fill out to empty list entries with '-1', which won't match any IDs
+        for i in range (len(result), 16):
+            result.append(-1)
+        return result
+
 
 class PassengerEngineLuxuryRailcarConsist(PassengerEngineConsist):
     """
@@ -957,6 +983,17 @@ class MailEngineRailcarConsist(MailEngineConsist):
                                                                      consist_ruleset=consist_ruleset,
                                                                      pantograph_type=self.pantograph_type)
 
+    @property
+    def equivalent_ids_alt_var_41(self):
+        # where var 14 checks consecutive chain of a single ID, I provided an alternative checking a list of IDs
+        # this is intended for pax railcars, but mail railcars share templating in some cases, so stub in this result to prevent unwanted behaviour
+        # there is no support for mail railcars combining with anything other than their own ID, this is just a compatibility stub
+        result = []
+        result.append(self.base_numeric_id)
+        # the list requires 16 entries as the nml check has 16 switches, fill out to empty list entries with '-1', which won't match any IDs
+        for i in range (len(result), 16):
+            result.append(-1)
+        return result
 
 class MailEngineDrivingCabConsist(MailEngineConsist):
     """
@@ -1883,6 +1920,22 @@ class PassengerRailcarTrailerCarConsist(PassengerCarConsistBase):
                                                                      consist_ruleset="railcars_3_unit_sets",
                                                                      pantograph_type=self.pantograph_type)
 
+    @property
+    def equivalent_ids_alt_var_41(self):
+        # where var 14 checks consecutive chain of a single ID, I provided an alternative checking a list of IDs
+        # may or may not handle articulated vehicles correctly (probably not, no actual use cases for that)
+        # this redefinition specific to pax railcar trailers and will be fragile if railcars or trailers are changed/extended
+        # also relies on same ruleset being used for all of pax_railcar_1, pax_railcar_2 and pax railcar trailers
+        result = []
+        result.append(self.base_numeric_id)
+        for consist in self.roster.engine_consists:
+            if (consist.gen == self.gen) and (consist.base_track_type == self.base_track_type) and (consist.role in ['pax_railcar_1', 'pax_railcar_2']):
+                result.append(consist.base_numeric_id)
+        # the list requires 16 entries as the nml check has 16 switches, fill out to empty list entries with '-1', which won't match any IDs
+        for i in range (len(result), 16):
+            result.append(-1)
+        return result
+
 
 class PlateCarConsist(CarConsist):
     """
@@ -2466,6 +2519,7 @@ class Train(object):
         nml_result = template(vehicle=self,
                               consist=self.consist,
                               global_constants=global_constants,
+                              graphics_temp_storage=global_constants.graphics_temp_storage, # convenience measure
                               graphics_path=global_constants.graphics_path,
                               intermodal_containers=intermodal_containers)
         return nml_result

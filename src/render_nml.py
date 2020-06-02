@@ -32,6 +32,7 @@ def render_header_item_nml(header_item, consists):
     template = templates[header_item + '.pynml']
     return utils.unescape_chameleon_output(template(consists=consists,
                                                     global_constants=global_constants,
+                                                    graphics_temp_storage=global_constants.graphics_temp_storage, # convenience measure
                                                     utils=utils,
                                                     active_rosters=iron_horse.get_active_rosters(),
                                                     graphics_path=global_constants.graphics_path,
@@ -66,7 +67,7 @@ def main():
     consists = iron_horse.get_consists_in_buy_menu_order()
 
     header_items = ['header', 'cargo_table', 'railtype_table', 'spriteset_templates', 'tail_lights', 'intermodal_containers',
-                    'procedures_capacity', 'procedures_colour_mapping', 'procedures_haulage_bonus', 'procedures_rulesets',
+                    'procedures_capacity', 'procedures_colour_mapping', 'procedures_alternative_var_41', 'procedures_haulage_bonus', 'procedures_rulesets',
                     'procedures_box_car_with_opening_doors', 'procedures_consist_specific_liveries', 'procedures_visible_cargo']
     for header_item in header_items:
         grf_nml.write(render_header_item_nml(header_item, consists))

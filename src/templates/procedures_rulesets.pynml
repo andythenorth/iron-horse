@@ -85,7 +85,7 @@
 
     <!--! if last -->
     switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset_position_check_last_neighbouring, [STORE_TEMP(1, 0x10F), var[0x61, 0, 0x0000FFFF, 0xC6]]) {
-        <!--! don't show last if preceeding vehicle is also a valid pax car with a different ID -->
+        <!--! don't show last if following vehicle is also a valid pax car with a different ID -->
         <tal:pax_car_ids repeat="pax_car_id pax_car_ids">
         ${pax_car_id}: return ${default};
         </tal:pax_car_ids>
@@ -252,25 +252,25 @@
 <tal:ruleset define="default 0; first 1; last 2; special 3;">
     // railcar 3 unit position switches
     <!--! if 1 unit in sequence -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_railcar_ruleset_3_unit_sets_modulo_num_units_in_consist_1, position_in_vehid_chain % 6) {
+    switch (FEAT_TRAINS, SELF, switch_graphics_railcar_ruleset_3_unit_sets_modulo_num_units_in_consist_1, switch_alt_var_41_position_in_vehid_chain_multiple_ids() % 6) {
         0: return ${default};
     }
 
     <!--! if 2 units in sequence -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_railcar_ruleset_3_unit_sets_modulo_num_units_in_consist_2, position_in_vehid_chain % 6) {
+    switch (FEAT_TRAINS, SELF, switch_graphics_railcar_ruleset_3_unit_sets_modulo_num_units_in_consist_2, switch_alt_var_41_position_in_vehid_chain_multiple_ids() % 6) {
         0: return ${first};
         return ${last};
     }
 
     <!--! if 3 units in sequence -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_railcar_ruleset_3_unit_sets_modulo_num_units_in_consist_3, position_in_vehid_chain % 6) {
+    switch (FEAT_TRAINS, SELF, switch_graphics_railcar_ruleset_3_unit_sets_modulo_num_units_in_consist_3, switch_alt_var_41_position_in_vehid_chain_multiple_ids() % 6) {
         0: return ${first};
         1: return ${special};
         return ${last};
     }
 
     <!--! if 4 units in sequence -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_railcar_ruleset_3_unit_sets_modulo_num_units_in_consist_4, position_in_vehid_chain % 6) {
+    switch (FEAT_TRAINS, SELF, switch_graphics_railcar_ruleset_3_unit_sets_modulo_num_units_in_consist_4, switch_alt_var_41_position_in_vehid_chain_multiple_ids() % 6) {
         0: return ${first};
         1: return ${last};
         2: return ${first};
@@ -278,7 +278,7 @@
     }
 
     <!--! if 5 units in sequence -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_railcar_ruleset_3_unit_sets_modulo_num_units_in_consist_5, position_in_vehid_chain % 6) {
+    switch (FEAT_TRAINS, SELF, switch_graphics_railcar_ruleset_3_unit_sets_modulo_num_units_in_consist_5, switch_alt_var_41_position_in_vehid_chain_multiple_ids() % 6) {
         0: return ${first};
         1: return ${special};
         2: return ${last};
@@ -287,7 +287,7 @@
     }
 
     <!--! if 6 units in sequence -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_railcar_ruleset_3_unit_sets_modulo_num_units_in_consist_6, position_in_vehid_chain % 6) {
+    switch (FEAT_TRAINS, SELF, switch_graphics_railcar_ruleset_3_unit_sets_modulo_num_units_in_consist_6, switch_alt_var_41_position_in_vehid_chain_multiple_ids() % 6) {
         0: return ${first};
         1: return ${special};
         2: return ${last};
@@ -297,7 +297,7 @@
     }
 
     <!--! this is a remainder block, how many units are in it? -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_railcar_ruleset_3_unit_sets_less_than_6_remaining, num_vehs_in_vehid_chain % 6) {
+    switch (FEAT_TRAINS, SELF, switch_graphics_railcar_ruleset_3_unit_sets_less_than_6_remaining, switch_alt_var_41_num_vehs_in_vehid_chain_multiple_ids() % 6) {
         1: return switch_graphics_railcar_ruleset_3_unit_sets_modulo_num_units_in_consist_1;
         2: return switch_graphics_railcar_ruleset_3_unit_sets_modulo_num_units_in_consist_2;
         3: return switch_graphics_railcar_ruleset_3_unit_sets_modulo_num_units_in_consist_3;
@@ -307,7 +307,7 @@
     }
 
     <!--! given the consist, how many blocks of 6 units are there?  Is the unit within a block of 6, or a remainder block? -->
-    switch (FEAT_TRAINS, SELF, switch_graphics_railcar_ruleset_3_unit_sets, position_in_vehid_chain >= (num_vehs_in_vehid_chain - (num_vehs_in_vehid_chain  % 6))) {
+    switch (FEAT_TRAINS, SELF, switch_graphics_railcar_ruleset_3_unit_sets, switch_alt_var_41_position_in_vehid_chain_multiple_ids() >= (switch_alt_var_41_num_vehs_in_vehid_chain_multiple_ids() - (switch_alt_var_41_num_vehs_in_vehid_chain_multiple_ids() % 6))) {
         1: return switch_graphics_railcar_ruleset_3_unit_sets_less_than_6_remaining;
         return switch_graphics_railcar_ruleset_3_unit_sets_modulo_num_units_in_consist_6;
     }

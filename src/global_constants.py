@@ -111,6 +111,26 @@ intro_date_offsets_by_role_group = {'universal': 0,
                                     'non_core_wagons': 10,
                                     'lolz': 11}
 
+# up to 127 temp storages are available, might as well allocate them exclusively within the graphics chain to avoid any collisions
+graphics_temp_storage = dict(var_num_vehs_matching_id_list = 0, # used only to work around not being able to return an expression from a procedure, but being able to return LOAD_TEMP()
+                             var_id_to_match_1 = 1, # one of 16 temp storages which hold a list of IDs to match, used in re-implementation of var 41 to check multiple IDs not a single ID
+                             var_id_to_match_2 = 2, # one of 16 temp storages which hold a list of IDs to match, used in re-implementation of var 41 to check multiple IDs not a single ID
+                             var_id_to_match_3 = 3, # one of 16 temp storages which hold a list of IDs to match, used in re-implementation of var 41 to check multiple IDs not a single ID
+                             var_id_to_match_4 = 4, # one of 16 temp storages which hold a list of IDs to match, used in re-implementation of var 41 to check multiple IDs not a single ID
+                             var_id_to_match_5 = 5, # one of 16 temp storages which hold a list of IDs to match, used in re-implementation of var 41 to check multiple IDs not a single ID
+                             var_id_to_match_6 = 6, # one of 16 temp storages which hold a list of IDs to match, used in re-implementation of var 41 to check multiple IDs not a single ID
+                             var_id_to_match_7 = 7, # one of 16 temp storages which hold a list of IDs to match, used in re-implementation of var 41 to check multiple IDs not a single ID
+                             var_id_to_match_8 = 8, # one of 16 temp storages which hold a list of IDs to match, used in re-implementation of var 41 to check multiple IDs not a single ID
+                             var_id_to_match_9 = 9, # one of 16 temp storages which hold a list of IDs to match, used in re-implementation of var 41 to check multiple IDs not a single ID
+                             var_id_to_match_10 = 10, # one of 16 temp storages which hold a list of IDs to match, used in re-implementation of var 41 to check multiple IDs not a single ID
+                             var_id_to_match_11 = 11, # one of 16 temp storages which hold a list of IDs to match, used in re-implementation of var 41 to check multiple IDs not a single ID
+                             var_id_to_match_12 = 12, # one of 16 temp storages which hold a list of IDs to match, used in re-implementation of var 41 to check multiple IDs not a single ID
+                             var_id_to_match_13 = 13, # one of 16 temp storages which hold a list of IDs to match, used in re-implementation of var 41 to check multiple IDs not a single ID
+                             var_id_to_match_14 = 14, # one of 16 temp storages which hold a list of IDs to match, used in re-implementation of var 41 to check multiple IDs not a single ID
+                             var_id_to_match_15 = 15, # one of 16 temp storages which hold a list of IDs to match, used in re-implementation of var 41 to check multiple IDs not a single ID
+                             var_id_to_match_16 = 16, # one of 16 temp storages which hold a list of IDs to match, used in re-implementation of var 41 to check multiple IDs not a single ID
+                        )
+
 # standard offsets for trains
 default_spritesheet_offsets = {'3': [[-3, -26],  [ -6, -20], [  4, -12], [ 6, -15], [-3, -16], [-16, -15], [-16, -12], [-4, -20]],
                                '4': [[-3, -24],  [ -8, -19], [  0, -12], [ 4, -15], [-3, -16], [-16, -15], [-16, -12], [-4, -19]],

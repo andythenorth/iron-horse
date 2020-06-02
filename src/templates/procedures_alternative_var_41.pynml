@@ -1,0 +1,59 @@
+<!--! var 41 only checks consecutive chains for a single ID, this provides an alternative checking consecutive chains using up to 16 IDs-->
+
+<!--!
+      Utility switches to check if vehicle ID is in list
+      Up to 16 items in list - arbitrary limit, should be enough for most cases)
+      There's no obvious alternative to having one switch per range of IDs to check
+      Be aware that this might match vehicle ID 0 incorrectly, as OpenTTD will retun 0 when checking var 61 beyond consist length - edge case TBH
+-->
+<tal:switches repeat="pseudo_list_index range(15, -1, -1)">
+    <tal:block define="temp_storage_id python:graphics_temp_storage['var_id_to_match_' + str(pseudo_list_index + 1)]">
+        switch (FEAT_TRAINS, SELF, switch_alt_var_41_match_ids_${pseudo_list_index}, [var[0x61, 0, 0x0000FFFF, 0xC6] == LOAD_TEMP(${temp_storage_id})]) {
+            1: return 1;
+            <tal:last condition="repeat.pseudo_list_index.start">return 0;</tal:last>
+            <tal:not_last condition="not:repeat.pseudo_list_index.start">return switch_alt_var_41_match_ids_${pseudo_list_index + 1};</tal:not_last>
+        }
+    </tal:block>
+</tal:switches>
+<!--! just a stub to use as an entry point without having to include switch number in the call -->
+switch (FEAT_TRAINS, SELF, switch_alt_var_41_match_ids, 1) {
+    return switch_alt_var_41_match_ids_0;
+}
+
+<!--!
+    Position from start of consecutive IDs chain
+    Walks forward from vehicle towards engine, checking if the ID is matched for each 'next vehicle', if matched continues, otherwise return the count of vehicles matched (this represents position in chain)
+-->
+<tal:switches repeat="counter range(127, 0, -1)">
+    switch (FEAT_TRAINS, SELF, switch_alt_var_41_position_in_vehid_chain_multiple_ids_${counter}, [STORE_TEMP(${-1 * counter}, 0x10F), switch_alt_var_41_match_ids()]) {
+        <tal:block condition="not:repeat.counter.start">1: switch_alt_var_41_position_in_vehid_chain_multiple_ids_${counter + 1};</tal:block>
+        return ${counter - 1};
+    }
+</tal:switches>
+<!--! just a stub to use as an entry point without having to include switch number in the call -->
+switch (FEAT_TRAINS, SELF, switch_alt_var_41_position_in_vehid_chain_multiple_ids, 1) {
+    return switch_alt_var_41_position_in_vehid_chain_multiple_ids_1;
+}
+
+<!--!
+    Position from end of consecutive IDs chain
+    Walks backward from vehicle away from engine, checking if the ID is matched for each 'next vehicle', if matched continues, otherwise return the count of vehicles matched (this represents position in chain)
+-->
+<tal:switches repeat="counter range(127, 0, -1)">
+    switch (FEAT_TRAINS, SELF, switch_alt_var_41_position_in_vehid_chain_from_end_multiple_ids_${counter}, [STORE_TEMP(${1 * counter}, 0x10F), switch_alt_var_41_match_ids()]) {
+        <tal:block condition="not:repeat.counter.start">1: switch_alt_var_41_position_in_vehid_chain_from_end_multiple_ids_${counter + 1};</tal:block>
+        return ${counter - 1};
+    }
+</tal:switches>
+<!--! just a stub to use as an entry point without having to include switch number in the call -->
+switch (FEAT_TRAINS, SELF, switch_alt_var_41_position_in_vehid_chain_from_end_multiple_ids, 1) {
+    return switch_alt_var_41_position_in_vehid_chain_from_end_multiple_ids_1;
+}
+
+<!--!
+    Num vehicles in consecutive ID chain
+    Sums vehicle position in consecutive chains from start and from end (0 based), and adds 1 to acccount for current vehicle.
+ -->
+switch (FEAT_TRAINS, SELF, switch_alt_var_41_num_vehs_in_vehid_chain_multiple_ids, STORE_TEMP(1 + switch_alt_var_41_position_in_vehid_chain_multiple_ids() + switch_alt_var_41_position_in_vehid_chain_from_end_multiple_ids(), ${graphics_temp_storage.var_num_vehs_matching_id_list})) {
+    return LOAD_TEMP(${graphics_temp_storage.var_num_vehs_matching_id_list}); // should be possible to have an expression here, instead of abstracting via a register, but nmlc barfs on the expression
+}
