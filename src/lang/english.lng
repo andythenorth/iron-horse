@@ -57,6 +57,7 @@ STR_NAME_SUFFIX_MAIL_CAR                                        :Mail Van
 STR_NAME_SUFFIX_OPEN_CAR                                        :Open Wagon
 STR_NAME_SUFFIX_ORE_HOPPER_CAR                                  :Ore Hopper
 STR_NAME_SUFFIX_PASSENGER_CAR                                   :Passenger Coach
+STR_NAME_SUFFIX_PASSENGER_RAILCAR_TRAILER_CAR                   :Railcar Passenger Trailer
 STR_NAME_SUFFIX_PELLET_HOPPER_CAR                               :Pellet Hopper
 STR_NAME_SUFFIX_PLATE_CAR                                       :Plate Wagon
 STR_NAME_SUFFIX_PRODUCT_TANK_CAR                                :Product Tanker

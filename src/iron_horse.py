@@ -53,6 +53,7 @@ from vehicles import passenger_cars
 from vehicles import pellet_hopper_cars
 from vehicles import plate_cars
 from vehicles import product_tank_cars
+from vehicles import railcar_passenger_trailer_cars
 from vehicles import reefer_cars
 from vehicles import rock_hopper_cars
 from vehicles import scrap_metal_cars
@@ -185,6 +186,7 @@ def main():
     plate_cars.main()
     product_tank_cars.main()
     reefer_cars.main()
+    railcar_passenger_trailer_cars.main()
     rock_hopper_cars.main()
     silo_cars.main()
     scrap_metal_cars.main()

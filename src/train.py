@@ -1846,6 +1846,44 @@ class PassengerLuxuryCarConsist(PassengerCarConsistBase):
                                                                      consist_ruleset='pax_cars')
 
 
+class PassengerRailcarTrailerCarConsist(PassengerCarConsistBase):
+    """
+    Unpowered passenger trailer car for railcars.
+    Position-dependent sprites for cabs etc.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = 'passenger_railcar_trailer_car'
+        super().__init__(**kwargs)
+          # PassengerCarConsistBase sets 'express', but railcar trailers should over-ride this back to 'standard'
+        self.speed_class = 'standard'
+        # train_flag_mu solely used for ottd livery (company colour) selection
+        self.train_flag_mu = True
+        # this will knock standard age period down, so this train is less profitable over ~128 tiles than a similar luxuryy train
+        self.cargo_age_period = global_constants.CARGO_AGE_PERIOD_STANDARD_PAX_MALUS
+        self.buy_cost_adjustment_factor = 1.3
+        self.floating_run_cost_multiplier = 4.75
+        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['railcar']
+        # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
+        self.weight_factor = 0.66 if self.base_track_type == 'NG' else 1.5
+        # Graphics configuration
+        if self.gen in [2, 3]:
+            self.roof_type = 'pax_mail_ridged'
+        else:
+            self.roof_type = 'pax_mail_smooth'
+        # 2 liveries, should match liveries of railcars for this generation
+        # position variants
+        # * unit with driving cab front end
+        # * unit with driving cab rear end
+        # * unit with no cabs (center car)
+        # * special unit with no cabs (center car)
+        # ruleset will combine these to make multiple-units 1, 2, or 3 vehicles long, then repeating the pattern
+        spriterow_group_mappings = {'pax': {'default': 0, 'first': 1, 'last': 2, 'special': 3}}
+        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings,
+                                                                     consist_ruleset="railcars_3_unit_sets",
+                                                                     pantograph_type=self.pantograph_type)
+
+
 class PlateCarConsist(CarConsist):
     """
     Low-side wagon - variant on flat wagon, refits same
@@ -2871,6 +2909,21 @@ class IntermodalCar(FreightCar):
         # intermodal cars may be asymmetric, there is magic in the graphics processing to make cargo sprites work with this
         self._symmetry_type = 'asymmetric'
         self.is_intermodal_platform = True
+
+
+class PaxRailcarTrailerCar(TrainCar):
+    """
+    Railcar unpowered pax trailer. This subclass only exists to set capacity and symmetry_type.
+    """
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # TrainCar sets auto tail light, over-ride it
+        self.tail_light = kwargs['tail_light'] # fail if not passed, required arg
+        # pax wagons may be asymmetric, there is magic in the graphics processing to make symmetric pax/mail sprites also work with this
+        self._symmetry_type = 'asymmetric'
+        # magic to set pax car capacity subject to length
+        base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
+        self.capacity = self.vehicle_length * base_capacity
 
 
 class SlagLadleCar(FreightCar):
