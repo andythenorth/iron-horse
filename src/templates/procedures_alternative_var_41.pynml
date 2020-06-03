@@ -59,6 +59,6 @@ switch (FEAT_TRAINS, SELF, switch_alt_var_41_position_in_vehid_chain_from_end_mu
     Num vehicles in consecutive ID chain
     Sums vehicle position in consecutive chains from start and from end (0 based), and adds 1 to acccount for current vehicle.
  -->
-switch (FEAT_TRAINS, SELF, switch_alt_var_41_num_vehs_in_vehid_chain_multiple_ids, STORE_TEMP(1 + switch_alt_var_41_position_in_vehid_chain_multiple_ids() + switch_alt_var_41_position_in_vehid_chain_from_end_multiple_ids(), ${graphics_temp_storage.var_num_vehs_matching_id_list})) {
-    return LOAD_TEMP(${graphics_temp_storage.var_num_vehs_matching_id_list}); // should be possible to have an expression here, instead of abstracting via a register, but nmlc barfs on the expression
+switch (FEAT_TRAINS, SELF, switch_alt_var_41_num_vehs_in_vehid_chain_multiple_ids, 1) {
+    return 1 + switch_alt_var_41_position_in_vehid_chain_multiple_ids() + switch_alt_var_41_position_in_vehid_chain_from_end_multiple_ids();
 }
