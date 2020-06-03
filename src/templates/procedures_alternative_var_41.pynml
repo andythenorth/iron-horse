@@ -1,4 +1,9 @@
-<!--! var 41 only checks consecutive chains for a single ID, this provides an alternative checking consecutive chains using up to 16 IDs-->
+<!--!
+    Var 41 only checks consecutive chains for a single ID
+    This provides an alternative checking consecutive chains using up to 16 IDs
+    This checks var 61 many many times in graphics chains, and var 61 is not cached, so this _may_ introduce performance problems
+-->
+
 
 <!--!
       Utility switches to check if vehicle ID is in list
