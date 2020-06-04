@@ -13,7 +13,7 @@
 -->
 <tal:switches repeat="pseudo_list_index range(15, -1, -1)">
     <tal:block define="temp_storage_id python:graphics_temp_storage['var_id_to_match_' + str(pseudo_list_index + 1)]">
-        switch (FEAT_TRAINS, SELF, switch_alt_var_41_match_ids_${pseudo_list_index}, [var[0x61, 0, 0x0000FFFF, 0xC6] == LOAD_TEMP(${temp_storage_id})]) {
+        switch (FEAT_TRAINS, SELF, switch_alt_var_41_match_ids_${pseudo_list_index}, [LOAD_TEMP(${graphics_temp_storage.var_id_of_neighbouring_vehicle}) == LOAD_TEMP(${temp_storage_id})]) {
             1: return 1;
             <tal:last condition="repeat.pseudo_list_index.start">return 0;</tal:last>
             <tal:not_last condition="not:repeat.pseudo_list_index.start">return switch_alt_var_41_match_ids_${pseudo_list_index + 1};</tal:not_last>
@@ -21,7 +21,7 @@
     </tal:block>
 </tal:switches>
 <!--! just a stub to use as an entry point without having to include switch number in the call -->
-switch (FEAT_TRAINS, SELF, switch_alt_var_41_match_ids, 1) {
+switch (FEAT_TRAINS, SELF, switch_alt_var_41_match_ids, STORE_TEMP(var[0x61, 0, 0x0000FFFF, 0xC6], ${graphics_temp_storage.var_id_of_neighbouring_vehicle})) {
     return switch_alt_var_41_match_ids_0;
 }
 

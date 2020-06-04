@@ -112,7 +112,7 @@ intro_date_offsets_by_role_group = {'universal': 0,
                                     'lolz': 11}
 
 # up to 127 temp storages are available, might as well allocate them exclusively within the graphics chain to avoid any collisions
-graphics_temp_storage = dict(var_num_vehs_matching_id_list = 0, # used only to work around not being able to return an expression from a procedure, but being able to return LOAD_TEMP()
+graphics_temp_storage = dict(var_id_of_neighbouring_vehicle = 0, # used only to work around not being able to return an expression from a procedure, but being able to return LOAD_TEMP()
                              var_id_to_match_1 = 1, # one of 16 temp storages which hold a list of IDs to match, used in re-implementation of var 41 to check multiple IDs not a single ID
                              var_id_to_match_2 = 2, # one of 16 temp storages which hold a list of IDs to match, used in re-implementation of var 41 to check multiple IDs not a single ID
                              var_id_to_match_3 = 3, # one of 16 temp storages which hold a list of IDs to match, used in re-implementation of var 41 to check multiple IDs not a single ID
