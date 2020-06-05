@@ -164,21 +164,12 @@ switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_graphics_vehicle_cargo, most_c
     return ${vehicle.id}_switch_graphics_position_in_consist_entry_point_DFLT;
 }
 
-<tal:fill_temp_storage condition="consist.equivalent_ids_alt_var_41 is not None">
-    <!--! stuff any temp storages needed for consist specific sprites magic -->
-    <!--! THIS COULD ALSO CALL A PROCEDURE WITH PARAMS, BE CLEANER; NEEDS https://github.com/OpenTTD/nml/pull/155 -->
-    <tal:switches repeat="pseudo_list_index range(15, -1, -1)">
-        <tal:block define="temp_storage_id python:graphics_temp_storage['var_id_to_match_' + str(pseudo_list_index + 1)]">
-            switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_fill_temp_storages_${pseudo_list_index}, STORE_TEMP(${consist.equivalent_ids_alt_var_41[pseudo_list_index]}, ${temp_storage_id})) {
-                <tal:last condition="repeat.pseudo_list_index.start">return ${vehicle.id}_switch_graphics_vehicle_cargo;</tal:last>
-                <tal:not_last condition="not:repeat.pseudo_list_index.start">return ${vehicle.id}_switch_fill_temp_storages_${pseudo_list_index + 1};</tal:not_last>
-            }
-        </tal:block>
-    </tal:switches>
-</tal:fill_temp_storage>
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, 1) {
-    <tal:fill_temp_storage condition="consist.equivalent_ids_alt_var_41 is not None">return ${vehicle.id}_switch_fill_temp_storages_0;</tal:fill_temp_storage>
-    <tal:no_fill_temp_storage condition="consist.equivalent_ids_alt_var_41 is None">return ${vehicle.id}_switch_graphics_vehicle_cargo;</tal:no_fill_temp_storage>
+<!--! (conditional) stuff any temp storages needed for use with the alt_var_41 magic -->
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle,
+    <tal:fill_temp_storage condition="consist.equivalent_ids_alt_var_41 is not None">switch_alt_var_41_fill_temp_storages(${','.join([str(id) for id in consist.equivalent_ids_alt_var_41])})</tal:fill_temp_storage>
+    <tal:no_fill_temp_storage condition="consist.equivalent_ids_alt_var_41 is None">1</tal:no_fill_temp_storage>
+    ) {
+    return ${vehicle.id}_switch_graphics_vehicle_cargo;
 }
 
 // buy menu graphics chain
