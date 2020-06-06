@@ -112,26 +112,26 @@ intro_date_offsets_by_role_group = {'universal': 0,
                                     'lolz': 11}
 
 # up to 127 temp storages are available, might as well allocate them exclusively within the graphics chain to avoid any collisions
-temp_storage_ids = dict(var_id_of_neighbouring_vehicle = 0, # used to avoid expensively reading var 61 multiple times, used in re-implementation of var 41 to check multiple IDs not a single ID
-                        var_id_to_match_1 = 1, # one of 16 temp storages which hold a list of IDs to match, used in re-implementation of var 41 to check multiple IDs not a single ID
-                        var_id_to_match_2 = 2, # one of 16 temp storages which hold a list of IDs to match, used in re-implementation of var 41 to check multiple IDs not a single ID
-                        var_id_to_match_3 = 3, # one of 16 temp storages which hold a list of IDs to match, used in re-implementation of var 41 to check multiple IDs not a single ID
-                        var_id_to_match_4 = 4, # one of 16 temp storages which hold a list of IDs to match, used in re-implementation of var 41 to check multiple IDs not a single ID
-                        var_id_to_match_5 = 5, # one of 16 temp storages which hold a list of IDs to match, used in re-implementation of var 41 to check multiple IDs not a single ID
-                        var_id_to_match_6 = 6, # one of 16 temp storages which hold a list of IDs to match, used in re-implementation of var 41 to check multiple IDs not a single ID
-                        var_id_to_match_7 = 7, # one of 16 temp storages which hold a list of IDs to match, used in re-implementation of var 41 to check multiple IDs not a single ID
-                        var_id_to_match_8 = 8, # one of 16 temp storages which hold a list of IDs to match, used in re-implementation of var 41 to check multiple IDs not a single ID
-                        var_id_to_match_9 = 9, # one of 16 temp storages which hold a list of IDs to match, used in re-implementation of var 41 to check multiple IDs not a single ID
-                        var_id_to_match_10 = 10, # one of 16 temp storages which hold a list of IDs to match, used in re-implementation of var 41 to check multiple IDs not a single ID
-                        var_id_to_match_11 = 11, # one of 16 temp storages which hold a list of IDs to match, used in re-implementation of var 41 to check multiple IDs not a single ID
-                        var_id_to_match_12 = 12, # one of 16 temp storages which hold a list of IDs to match, used in re-implementation of var 41 to check multiple IDs not a single ID
-                        var_id_to_match_13 = 13, # one of 16 temp storages which hold a list of IDs to match, used in re-implementation of var 41 to check multiple IDs not a single ID
-                        var_id_to_match_14 = 14, # one of 16 temp storages which hold a list of IDs to match, used in re-implementation of var 41 to check multiple IDs not a single ID
-                        var_id_to_match_15 = 15, # one of 16 temp storages which hold a list of IDs to match, used in re-implementation of var 41 to check multiple IDs not a single ID
-                        var_id_to_match_16 = 16, # one of 16 temp storages which hold a list of IDs to match, used in re-implementation of var 41 to check multiple IDs not a single ID
-                        var_num_vehs_in_vehid_chain_multiple_ids = 17, # alternative to num_vehs_in_vehid_chain (0x41), handling multiple IDs not one
-                        var_position_in_vehid_chain_multiple_ids = 18, # alternative to num_vehs_in_vehid_chain (0x41), handling multiple IDs not one
-                        var_position_in_vehid_chain_from_end_multiple_ids = 19 # alternative to num_vehs_in_vehid_chain (0x41), handling multiple IDs not one
+temp_storage_ids = dict(id_of_neighbouring_vehicle = 0, # used to avoid expensively reading var 61 multiple times, used in re-implementation of var 41 to check multiple IDs not a single ID
+                        id_to_match_1 = 1, # one of 16 temp storages which hold a list of IDs to match, used in re-implementation of var 41 to check multiple IDs not a single ID
+                        id_to_match_2 = 2, # one of 16 temp storages which hold a list of IDs to match, used in re-implementation of var 41 to check multiple IDs not a single ID
+                        id_to_match_3 = 3, # one of 16 temp storages which hold a list of IDs to match, used in re-implementation of var 41 to check multiple IDs not a single ID
+                        id_to_match_4 = 4, # one of 16 temp storages which hold a list of IDs to match, used in re-implementation of var 41 to check multiple IDs not a single ID
+                        id_to_match_5 = 5, # one of 16 temp storages which hold a list of IDs to match, used in re-implementation of var 41 to check multiple IDs not a single ID
+                        id_to_match_6 = 6, # one of 16 temp storages which hold a list of IDs to match, used in re-implementation of var 41 to check multiple IDs not a single ID
+                        id_to_match_7 = 7, # one of 16 temp storages which hold a list of IDs to match, used in re-implementation of var 41 to check multiple IDs not a single ID
+                        id_to_match_8 = 8, # one of 16 temp storages which hold a list of IDs to match, used in re-implementation of var 41 to check multiple IDs not a single ID
+                        id_to_match_9 = 9, # one of 16 temp storages which hold a list of IDs to match, used in re-implementation of var 41 to check multiple IDs not a single ID
+                        id_to_match_10 = 10, # one of 16 temp storages which hold a list of IDs to match, used in re-implementation of var 41 to check multiple IDs not a single ID
+                        id_to_match_11 = 11, # one of 16 temp storages which hold a list of IDs to match, used in re-implementation of var 41 to check multiple IDs not a single ID
+                        id_to_match_12 = 12, # one of 16 temp storages which hold a list of IDs to match, used in re-implementation of var 41 to check multiple IDs not a single ID
+                        id_to_match_13 = 13, # one of 16 temp storages which hold a list of IDs to match, used in re-implementation of var 41 to check multiple IDs not a single ID
+                        id_to_match_14 = 14, # one of 16 temp storages which hold a list of IDs to match, used in re-implementation of var 41 to check multiple IDs not a single ID
+                        id_to_match_15 = 15, # one of 16 temp storages which hold a list of IDs to match, used in re-implementation of var 41 to check multiple IDs not a single ID
+                        id_to_match_16 = 16, # one of 16 temp storages which hold a list of IDs to match, used in re-implementation of var 41 to check multiple IDs not a single ID
+                        num_vehs_in_vehid_chain_multiple_ids = 17, # alternative to num_vehs_in_vehid_chain (0x41), handling multiple IDs not one
+                        position_in_vehid_chain_multiple_ids = 18, # alternative to num_vehs_in_vehid_chain (0x41), handling multiple IDs not one
+                        position_in_vehid_chain_from_end_multiple_ids = 19 # alternative to num_vehs_in_vehid_chain (0x41), handling multiple IDs not one
                     )
 
 # standard offsets for trains
