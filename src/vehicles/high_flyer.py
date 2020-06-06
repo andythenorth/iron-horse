@@ -15,7 +15,7 @@ def main(roster_id):
 
     consist.add_unit(type=ElectricLuxuryRailcarPaxUnit,
                      weight=48,
-                     chassis='railcar_solid_32px',
+                     chassis='railcar_32px',
                      tail_light='railcar_32px_3')
 
     return consist
