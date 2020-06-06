@@ -2519,7 +2519,7 @@ class Train(object):
         nml_result = template(vehicle=self,
                               consist=self.consist,
                               global_constants=global_constants,
-                              graphics_temp_storage=global_constants.graphics_temp_storage, # convenience measure
+                              temp_storage_ids=global_constants.temp_storage_ids, # convenience measure
                               graphics_path=global_constants.graphics_path,
                               intermodal_containers=intermodal_containers)
         return nml_result

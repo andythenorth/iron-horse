@@ -32,7 +32,7 @@ def render_header_item_nml(header_item, consists):
     template = templates[header_item + '.pynml']
     return utils.unescape_chameleon_output(template(consists=consists,
                                                     global_constants=global_constants,
-                                                    graphics_temp_storage=global_constants.graphics_temp_storage, # convenience measure
+                                                    temp_storage_ids=global_constants.temp_storage_ids, # convenience measure
                                                     utils=utils,
                                                     active_rosters=iron_horse.get_active_rosters(),
                                                     graphics_path=global_constants.graphics_path,
