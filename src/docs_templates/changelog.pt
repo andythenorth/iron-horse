@@ -2,6 +2,40 @@ Changelog
 =========
 
 -------------
+2.6.0 Release
+-------------
+
+*Changes*
+
+- added generation 2 Mineral Wagon
+- added generation 3 large Passenger Coach
+- added unpowered Railcar Passenger Trailers and Railcar Luxury Trailers
+    - these will combine with either railcars or luxury railcars of the same generation, as appropriate
+- reduced railcar running costs which had been power-crept by cost reductions in other vehicles, leaving railcars uncompetitive on target routes
+- renamed 'Coil Car' to 'Coil Carrier'
+- added support for FIRS steel sheet cargo
+- tweaks to railcar chassis sprites
+
+*Fixes*
+
+- use correct pantograph for High Flyer
+- electric railcars generally had weights too high; should be lower than equivalent diesel railcar in most cases
+- don't show brake car sprites for passenger coaches when the neighbouring vehicle is also a passenger car even if a different type
+- removed spurious door light pixels in generation 4 Passenger Coach (Medium)
+
+*Docs*
+
+- re-implemented vehicle images in global header
+- note that translations page is outdated
+- improvements to trains page
+- provided page per vehicle giving more details about the vehicle (experimental feature)
+
+*Translations*
+
+- removed doubled parens in en-us translation (desmondgc)
+
+
+-------------
 2.5.0 Release
 -------------
 
