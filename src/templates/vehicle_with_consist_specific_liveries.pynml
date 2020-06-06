@@ -166,7 +166,7 @@ switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_graphics_vehicle_cargo, most_c
 
 <!--! (conditional) stuff any temp storages needed for use with the alt_var_41 magic -->
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle,
-    <tal:fill_temp_storage condition="consist.equivalent_ids_alt_var_41 is not None">switch_alt_var_41_fill_temp_storages(${','.join([str(id) for id in consist.equivalent_ids_alt_var_41])})</tal:fill_temp_storage>
+    <tal:fill_temp_storage condition="consist.equivalent_ids_alt_var_41 is not None">switch_initialise_alt_var_41(${','.join([str(id) for id in consist.equivalent_ids_alt_var_41])})</tal:fill_temp_storage>
     <tal:no_fill_temp_storage condition="consist.equivalent_ids_alt_var_41 is None">1</tal:no_fill_temp_storage>
     ) {
     return ${vehicle.id}_switch_graphics_vehicle_cargo;

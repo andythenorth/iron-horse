@@ -129,6 +129,9 @@ graphics_temp_storage = dict(var_id_of_neighbouring_vehicle = 0, # used only to 
                              var_id_to_match_14 = 14, # one of 16 temp storages which hold a list of IDs to match, used in re-implementation of var 41 to check multiple IDs not a single ID
                              var_id_to_match_15 = 15, # one of 16 temp storages which hold a list of IDs to match, used in re-implementation of var 41 to check multiple IDs not a single ID
                              var_id_to_match_16 = 16, # one of 16 temp storages which hold a list of IDs to match, used in re-implementation of var 41 to check multiple IDs not a single ID
+                             var_alt_41_num_vehs_in_vehid_chain_multiple_ids = 17, # alternative to num_vehs_in_vehid_chain (0x41), handling multiple IDs not one
+                             var_alt_41_position_in_vehid_chain_multiple_ids = 18, # alternative to num_vehs_in_vehid_chain (0x41), handling multiple IDs not one
+                             var_alt_41_position_in_vehid_chain_from_end_multiple_ids = 19 # alternative to num_vehs_in_vehid_chain (0x41), handling multiple IDs not one
                         )
 
 # standard offsets for trains

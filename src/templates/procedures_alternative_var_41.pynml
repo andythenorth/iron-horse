@@ -2,6 +2,13 @@
     Var 41 only checks consecutive chains for a single ID
     This provides an alternative checking consecutive chains using up to 16 IDs
     This checks var 61 many many times in graphics chains, and var 61 is not cached, so this _may_ introduce performance problems
+    To use:
+        * switch_initialise_alt_var_41() at start of graphics chain
+        * read appropriate temp registers to use the alt var
+        * the available values are similar to var 41: position from start of chain, position from end of chain, num vehicles in chain
+        * LOAD_TEMP(${graphics_temp_storage.var_alt_41_position_in_vehid_chain_multiple_ids})
+        * LOAD_TEMP(${graphics_temp_storage.var_alt_41_position_in_vehid_chain_from_end_multiple_ids})
+        * LOAD_TEMP(${graphics_temp_storage.var_alt_41_num_vehs_in_vehid_chain_multiple_ids})
 -->
 
 
@@ -20,7 +27,6 @@
         }
     </tal:block>
 </tal:switches>
-<!--! just a stub to use as an entry point without having to include switch number in the call -->
 switch (FEAT_TRAINS, SELF, switch_alt_var_41_match_ids, STORE_TEMP(var[0x61, 0, 0x0000FFFF, 0xC6], ${graphics_temp_storage.var_id_of_neighbouring_vehicle})) {
     return switch_alt_var_41_match_ids_0;
 }
@@ -35,10 +41,6 @@ switch (FEAT_TRAINS, SELF, switch_alt_var_41_match_ids, STORE_TEMP(var[0x61, 0, 
         return ${counter - 1};
     }
 </tal:switches>
-<!--! just a stub to use as an entry point without having to include switch number in the call -->
-switch (FEAT_TRAINS, SELF, switch_alt_var_41_position_in_vehid_chain_multiple_ids, 1) {
-    return switch_alt_var_41_position_in_vehid_chain_multiple_ids_1;
-}
 
 <!--!
     Position from end of consecutive IDs chain
@@ -50,26 +52,40 @@ switch (FEAT_TRAINS, SELF, switch_alt_var_41_position_in_vehid_chain_multiple_id
         return ${counter - 1};
     }
 </tal:switches>
-<!--! just a stub to use as an entry point without having to include switch number in the call -->
-switch (FEAT_TRAINS, SELF, switch_alt_var_41_position_in_vehid_chain_from_end_multiple_ids, 1) {
-    return switch_alt_var_41_position_in_vehid_chain_from_end_multiple_ids_1;
-}
 
 <!--!
     Num vehicles in consecutive ID chain
-    Sums vehicle position in consecutive chains from start and from end (0 based), and adds 1 to acccount for current vehicle.
- -->
+    Sum of positions from start and end, plus 1 for current vehicle
+-->
 switch (FEAT_TRAINS, SELF, switch_alt_var_41_num_vehs_in_vehid_chain_multiple_ids, 1) {
-    return 1 + switch_alt_var_41_position_in_vehid_chain_multiple_ids() + switch_alt_var_41_position_in_vehid_chain_from_end_multiple_ids();
+    return 1 + LOAD_TEMP(${graphics_temp_storage.var_alt_41_position_in_vehid_chain_multiple_ids}) + LOAD_TEMP(${graphics_temp_storage.var_alt_41_position_in_vehid_chain_from_end_multiple_ids});
 }
 
+<!--!
+    Store 3 results in temp storage mimicking what built-in var 41 provides
+-->
+switch (FEAT_TRAINS, SELF, switch_initialise_alt_var_41_store_temps, [
+        STORE_TEMP(switch_alt_var_41_position_in_vehid_chain_multiple_ids_1(),
+                   ${graphics_temp_storage.var_alt_41_position_in_vehid_chain_multiple_ids}),
+        STORE_TEMP(switch_alt_var_41_position_in_vehid_chain_from_end_multiple_ids_1(),
+                   ${graphics_temp_storage.var_alt_41_position_in_vehid_chain_from_end_multiple_ids}),
+        STORE_TEMP(switch_alt_var_41_num_vehs_in_vehid_chain_multiple_ids(),
+                   ${graphics_temp_storage.var_alt_41_num_vehs_in_vehid_chain_multiple_ids}),
 
-<!--! to be called by current vehicle to stuff registers with IDs to match -->
-switch (FEAT_TRAINS, SELF, switch_alt_var_41_fill_temp_storages,
-        ${','.join(['id_' + str(i) for i in range(1, 17)])},
-        [<tal:store_temp repeat="counter range(1, 17)">
-            STORE_TEMP(${'id_' + str(counter)}, ${str(graphics_temp_storage['var_id_to_match_' + str(counter)])}) ${',' if not repeat.counter.end else ''}
-        </tal:store_temp>]
-        ){
+        ]) {
     return;
+}
+
+<!--!
+    To be called at start of graphics chain for current vehicle, with 16 params containing vehicle IDs to match
+    No params can be missing, pass -1 for any 'empty' params where no real ID is passed
+-->
+switch (FEAT_TRAINS, SELF, switch_initialise_alt_var_41,
+        ${','.join(['id_' + str(i) for i in range(1, 17)])}, [
+        <tal:store_temp repeat="counter range(1, 17)">
+            STORE_TEMP(${'id_' + str(counter)}, ${str(graphics_temp_storage['var_id_to_match_' + str(counter)])})
+            ${',' if not repeat.counter.end else ''}
+        </tal:store_temp>
+        ]){
+    return switch_initialise_alt_var_41_store_temps;
 }
