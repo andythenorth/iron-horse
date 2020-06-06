@@ -2709,9 +2709,6 @@ class ElectricRailcarBaseUnit(Train):
         self.engine_class = 'ENGINE_CLASS_ELECTRIC'
         self.effects = {'default': ['EFFECT_SPAWN_MODEL_ELECTRIC', 'EFFECT_SPRITE_ELECTRIC']}
         self.consist.str_name_suffix = 'STR_NAME_SUFFIX_ELECTRIC'
-        # offset to second livery, to differentiate from diesel equivalent which will use first
-        self.buy_menu_spriterow_num = 2 # note that it's 2 because opening doors are in row 1, livery 2 starts at 2, zero-indexed
-        self.consist.docs_image_spriterow = 2 # frankly hax at this point :|
         # the cab magic won't work unless it's asymmetrical eh? :P
         self._symmetry_type = 'asymmetric'
 
@@ -2726,6 +2723,9 @@ class ElectricRailcarMailUnit(ElectricRailcarBaseUnit):
         # magic to set capacity subject to length
         base_capacity = self.consist.roster.freight_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
         self.capacity = (self.vehicle_length * base_capacity) / polar_fox.constants.mail_multiplier
+        # offset to second livery, to differentiate from diesel equivalent which will use first
+        self.buy_menu_spriterow_num = 2 # note that it's 2 because opening doors are in row 1, livery 2 starts at 2, zero-indexed
+        self.consist.docs_image_spriterow = self.buy_menu_spriterow_num # frankly hax at this point :|
 
 
 class ElectricRailcarPaxUnit(ElectricRailcarBaseUnit):
@@ -2738,6 +2738,9 @@ class ElectricRailcarPaxUnit(ElectricRailcarBaseUnit):
         # magic to set capacity subject to length
         base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
         self.capacity = self.vehicle_length * base_capacity
+        # offset to second livery, to differentiate from diesel equivalent which will use first
+        self.buy_menu_spriterow_num = 2 # note that it's 2 because opening doors are in row 1, livery 2 starts at 2, zero-indexed
+        self.consist.docs_image_spriterow = self.buy_menu_spriterow_num # frankly hax at this point :|
 
 
 class ElectricLuxuryRailcarPaxUnit(ElectricRailcarBaseUnit):
