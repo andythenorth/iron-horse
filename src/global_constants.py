@@ -5,6 +5,7 @@ from collections import OrderedDict
 buy_menu_sort_order_wagons = ['alignment_car',
                               'hst_passenger_car',
                               'passenger_railcar_trailer_car',
+                              'luxury_passenger_railcar_trailer_car',
                               'passenger_car',
                               'luxury_passenger_car',
                               'mail_car',

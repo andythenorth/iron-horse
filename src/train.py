@@ -760,6 +760,25 @@ class PassengerEngineLuxuryRailcarConsist(PassengerEngineConsist):
                                                                      consist_ruleset="railcars_4_unit_sets",
                                                                      pantograph_type=self.pantograph_type)
 
+    @property
+    def equivalent_ids_alt_var_41(self):
+        # where var 14 checks consecutive chain of a single ID, I provided an alternative checking a list of IDs
+        # may or may not handle articulated vehicles correctly (probably not, no actual use cases for that)
+        # this redefinition specific to luxury pax railcars and will be fragile if railcars or trailers are changed/extended
+        # also relies on same ruleset being used for all of luxury_passenger_railcar_trailer_car trailers
+        result = []
+        # this will catch self also
+        for consist in self.roster.engine_consists:
+            if (consist.gen == self.gen) and (consist.base_track_type == self.base_track_type) and (consist.role in ['luxury_pax_railcar']):
+                result.append(consist.base_numeric_id)
+        for consist in self.roster.wagon_consists['luxury_passenger_railcar_trailer_car']:
+            if (consist.gen == self.gen) and (consist.base_track_type == self.base_track_type):
+                result.append(consist.base_numeric_id)
+        # the list requires 16 entries as the nml check has 16 switches, fill out to empty list entries with '-1', which won't match any IDs
+        for i in range (len(result), 16):
+            result.append(-1)
+        return result
+
 
 class PassengerHSTCabEngineConsist(PassengerEngineConsist):
     """
@@ -1930,6 +1949,58 @@ class PassengerRailcarTrailerCarConsist(PassengerCarConsistBase):
         result.append(self.base_numeric_id)
         for consist in self.roster.engine_consists:
             if (consist.gen == self.gen) and (consist.base_track_type == self.base_track_type) and (consist.role in ['pax_railcar_1', 'pax_railcar_2']):
+                result.append(consist.base_numeric_id)
+        # the list requires 16 entries as the nml check has 16 switches, fill out to empty list entries with '-1', which won't match any IDs
+        for i in range (len(result), 16):
+            result.append(-1)
+        return result
+
+
+class PassengerLuxuryRailcarTrailerCarConsist(PassengerCarConsistBase):
+    """
+    Unpowered passenger trailer car for luxury railcars.
+    Position-dependent sprites for cabs etc.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = 'luxury_passenger_railcar_trailer_car'
+        super().__init__(**kwargs)
+        # train_flag_mu solely used for ottd livery (company colour) selection
+        self.train_flag_mu = True
+        # this won't make much difference except over *very* long routes, but set it anyway
+        self.cargo_age_period = 8 * global_constants.CARGO_AGE_PERIOD
+        self.buy_cost_adjustment_factor = 1.3
+        self.floating_run_cost_multiplier = 5
+        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['express_non_core']
+        # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
+        self.weight_factor = 0.66 if self.base_track_type == 'NG' else 1.5
+        # Graphics configuration
+        if self.gen in [2, 3]:
+            self.roof_type = 'pax_mail_ridged'
+        else:
+            self.roof_type = 'pax_mail_smooth'
+        # 2 liveries, should match local and express liveries of pax cars for this generation
+        # position variants
+        # * unit with driving cab front end
+        # * unit with driving cab rear end
+        # * unit with no cabs (center car)
+        # * special unit with no cabs (center car)
+        # ruleset will combine these to make multiple-units 1, 2, or 3 vehicles long, then repeating the pattern
+        spriterow_group_mappings = {'pax': {'default': 0, 'first': 1, 'last': 2, 'special': 3}}
+        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings,
+                                                                     consist_ruleset="railcars_4_unit_sets",
+                                                                     pantograph_type=self.pantograph_type)
+
+    @property
+    def equivalent_ids_alt_var_41(self):
+        # where var 14 checks consecutive chain of a single ID, I provided an alternative checking a list of IDs
+        # may or may not handle articulated vehicles correctly (probably not, no actual use cases for that)
+        # this redefinition specific to pax railcar trailers and will be fragile if railcars or trailers are changed/extended
+        # also relies on same ruleset being used for all of pax_railcar_1, pax_railcar_2 and pax railcar trailers
+        result = []
+        result.append(self.base_numeric_id)
+        for consist in self.roster.engine_consists:
+            if (consist.gen == self.gen) and (consist.base_track_type == self.base_track_type) and (consist.role in ['luxury_pax_railcar']):
                 result.append(consist.base_numeric_id)
         # the list requires 16 entries as the nml check has 16 switches, fill out to empty list entries with '-1', which won't match any IDs
         for i in range (len(result), 16):
