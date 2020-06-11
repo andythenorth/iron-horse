@@ -7,7 +7,7 @@ def main(roster_id):
                             base_numeric_id=2240,
                             name='Growler',
                             role='freight_1',
-                            power=1650,
+                            power=1750,
                             random_reverse=True,
                             gen=4,
                             sprites_complete=True)
