@@ -2257,6 +2257,28 @@ class TorpedoCarConsist(CarConsist):
         self.gestalt_graphics = GestaltGraphicsCustom('vehicle_torpedo_car.pynml')
 
 
+class VehicleParsBoxCarConsist(CarConsist):
+    """
+    Vehicle parts box car, van - same refits as box car, just a specific visual variation.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = 'vehicle_parts_box_car'
+        super().__init__(**kwargs)
+        self.class_refit_groups = ['packaged_freight']
+        self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label['box_freight']
+        self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label['non_freight_special_cases']
+        self.default_cargos = polar_fox.constants.default_cargos['box']
+        self.buy_cost_adjustment_factor = 1.2
+        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['non_core_wagons']
+        # allow flipping, used to flip company colour
+        self.allow_flip = True
+        # Graphics configuration
+        self.roof_type = 'freight'
+        self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(id_base='vehicle_parts_box_car',
+                                                                  recolour_maps=graphics_constants.box_livery_recolour_maps)
+
+
 class VehicleTransporterCarConsist(CarConsist):
     """
     Transports vehicles cargo
