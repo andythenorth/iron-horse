@@ -25,6 +25,7 @@ import intermodal_containers
 # import wagons
 #from vehicles import alignment_cars
 from vehicles import box_cars
+from vehicles import bulkhead_flat_cars
 from vehicles import caboose_cars
 from vehicles import carbon_black_hopper_cars
 from vehicles import cement_silo_cars
@@ -160,6 +161,7 @@ def main():
     alignment_cars.main()
     """
     box_cars.main()
+    #bulkhead_flat_cars.main()
     caboose_cars.main()
     carbon_black_hopper_cars.main()
     cement_silo_cars.main()
