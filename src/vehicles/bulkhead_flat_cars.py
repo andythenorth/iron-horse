@@ -86,7 +86,7 @@ def main():
                              sprites_complete=False)
 
     consist.add_unit(type=FreightCar,
-                     chassis='2_axle_filled_24px')
+                     chassis='4_axle_filled_24px')
 
 
     consist = BulkheadFlatCarConsist(roster_id='pony',
@@ -106,7 +106,7 @@ def main():
                              sprites_complete=False)
 
     consist.add_unit(type=FreightCar,
-                     chassis='2_axle_filled_greebled_24px')
+                     chassis='4_axle_filled_greebled_24px')
 
 
     consist = BulkheadFlatCarConsist(roster_id='pony',
@@ -126,7 +126,7 @@ def main():
                              sprites_complete=False)
 
     consist.add_unit(type=FreightCar,
-                     chassis='2_axle_1cc_filled_24px')
+                     chassis='4_axle_1cc_filled_24px')
 
 
     consist = BulkheadFlatCarConsist(roster_id='pony',

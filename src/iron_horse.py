@@ -161,7 +161,7 @@ def main():
     alignment_cars.main()
     """
     box_cars.main()
-    #bulkhead_flat_cars.main()
+    bulkhead_flat_cars.main()
     caboose_cars.main()
     carbon_black_hopper_cars.main()
     cement_silo_cars.main()
