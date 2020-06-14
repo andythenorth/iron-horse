@@ -19,8 +19,9 @@
         switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_cargo_${load_state}_${flip_state}, cargo_type_in_veh) {
             <tal:cargos repeat="mapping consist.gestalt_graphics.cargo_row_map.items()">
                 <tal:exclude_default_cargo condition="mapping[0] != 'DFLT'">
-                    <!--!  uses mapping[1][0] as cargo_row_map has a legacy list format to support random variants
-                          fixing cargo_row_map would require refactoring num_cargo_sprite_variants in gestalt graphics -->
+                    <!--! cargo_row_map provides a list format to support multiple variants for same cargo label, but that is unused currently (June 2020) so just take first item
+                          the list could be used to provide random cargo sprites for selected labels, but support for that was unused, and was removed by design in 2020 to speed up compiling
+                        -->
                     ${mapping[0]}: return ${vehicle.id}_ss_${load_state}_${mapping[1][0]}_${flip_state};
                 </tal:exclude_default_cargo>
             </tal:cargos>
