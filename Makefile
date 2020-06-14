@@ -101,13 +101,14 @@ $(NML_FILE): $(shell $(FIND_FILES) --ext=.py --ext=.pynml src)
 	$(_V) $(PYTHON3) src/render_nml.py $(ARGS)
 
 # nmlc is used to compile a nfo file only, which is then used by grfcodec
-# this means that the (slow) nmlc stage can be skipped if the nml file is unchanged (only graphics changed)
+# this means that the (relatively slow) nmlc stage can be skipped if the nml file is unchanged (only graphics changed)
 $(NFO_FILE): $(LANG_TARGET) $(NML_FILE) | $(GRAPHICS_TARGET)
 	$(NMLC) $(NML_FLAGS) --nfo=$(NFO_FILE) $(NML_FILE)
 
 # N.B grf codec can't compile into a specific target dir, so after compiling, move the compiled grf to appropriate dir
+# grfcodec -n was tried, but was slower and produced a large grf file
 $(GRF_FILE): $(GRAPHICS_TARGET) $(NFO_FILE)
-	$(GRFCODEC) -s -e -c -n -g 2 $(PROJECT_NAME).grf generated
+	$(GRFCODEC) -s -e -c -g 2 $(PROJECT_NAME).grf generated
 	mv $(PROJECT_NAME).grf $(GRF_FILE)
 
 $(TAR_FILE): $(GRF_FILE) $(HTML_DOCS)
