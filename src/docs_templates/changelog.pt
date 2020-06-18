@@ -2,6 +2,27 @@ Changelog
 =========
 
 -------------
+2.7.0 Release
+-------------
+
+*Changes*
+
+- added Vehicle Parts Vans
+    - same refits as Box Vans
+    - intended particularly for use with FIRS Steeltown
+- added Bulkhead Flat Wagons
+    - same refits as Flat Wagons, different appearance
+    - intended particularly for metals cargos
+- adjusted appearance of Flat Wagons
+- improved appearance of coil and log cargo sprites
+- slightly increased power for Growler, Slug and Phoenix diesel engines
+
+*Fixes*
+
+- corrected shading on narrow gauge Tankers
+
+
+-------------
 2.6.0 Release
 -------------
 
