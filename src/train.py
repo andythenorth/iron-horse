@@ -2306,6 +2306,7 @@ class VehicleTransporterCarConsist(CarConsist):
     def __init__(self, **kwargs):
         self.base_id = 'vehicle_transporter_car'
         super().__init__(**kwargs)
+        self.speed_class = 'express'
         self.class_refit_groups = [] # no classes, use explicit labels
         self.label_refits_allowed = ['VEHI', 'ENSP', 'FMSP']
         self.label_refits_disallowed = []
