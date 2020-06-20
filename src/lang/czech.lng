@@ -61,7 +61,6 @@ STR_NAME_SUFFIX_TANK_CAR                                        :Cisterna
 STR_NAME_SUFFIX_TARPAULIN_CAR                                   :Plachtový vůz
 STR_NAME_SUFFIX_TORPEDO_CAR                                     :Torpédový vůz
 STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Vůz pro přepravu vozidel
-STR_NAME_SUFFIX_WELL_CAR                                        :Kontejnerový vůz
 
 # buy menu wrappers
 STR_BUY_MENU_WRAPPER_ONE_SUBSTR                                 :{STRING}

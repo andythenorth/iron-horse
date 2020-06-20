@@ -56,7 +56,6 @@ STR_NAME_SUFFIX_TANK_CAR                                        :유조차
 STR_NAME_SUFFIX_TARPAULIN_CAR                                   :방수포 화차
 STR_NAME_SUFFIX_TORPEDO_CAR                                     :어뢰 화차
 STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :자동차 수송 차량
-STR_NAME_SUFFIX_WELL_CAR                                        :더블스택 차량
 
 # buy menu wrappers
 

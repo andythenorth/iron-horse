@@ -59,7 +59,6 @@ STR_NAME_SUFFIX_TANK_CAR                                        :Tanker
 STR_NAME_SUFFIX_TARPAULIN_CAR                                   :Wagon met dekzeil
 STR_NAME_SUFFIX_TORPEDO_CAR                                     :Torpedowagen
 STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Voertuigtransport
-STR_NAME_SUFFIX_WELL_CAR                                        :Double stack-wagon
 
 # buy menu wrappers
 STR_BUY_MENU_WRAPPER_ONE_SUBSTR                                 :{STRING}

@@ -2318,24 +2318,6 @@ class VehicleTransporterCarConsist(CarConsist):
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(heavy_items=True)
 
 
-class WellCarConsist(CarConsist):
-    """
-    Low-floor wagon, with support for asymmetric sprites
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = 'well_car'
-        super().__init__(**kwargs)
-        self.class_refit_groups = [] # no classes, use explicit labels
-        self.label_refits_allowed = ['ENSP', 'FMSP', 'VEHI']
-        self.label_refits_disallowed = []
-        self.default_cargos = polar_fox.constants.default_cargos['supplies']
-        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['non_core_wagons']
-        # !! flipping not currently allowed as don't know if asymmetric sprites support is working (might be fine?)
-        # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsVisibleCargo(heavy_items=True)
-
-
 class Train(object):
     """
     Base class for all types of trains
@@ -3116,14 +3098,4 @@ class TorpedoCar(FreightCar):
         self._symmetry_type = 'asymmetric'
         # capacity bonus is solely to support using small stations in Steeltown where space between industries is constrained
         self.capacity = 1.5 * self.capacity
-
-
-class WellCar(FreightCar):
-    """
-    Well Car. This subclass only exists to set symmetry_type to asymmetric.
-    """
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        # well cars may be asymmetric, there is magic in the graphics processing to make cargo sprites work with this
-        self._symmetry_type = 'asymmetric'
 

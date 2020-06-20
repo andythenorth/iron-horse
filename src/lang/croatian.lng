@@ -59,7 +59,6 @@ STR_NAME_SUFFIX_TANK_CAR                                        :Vagon cisterna
 STR_NAME_SUFFIX_TARPAULIN_CAR                                   :Vagon sa ceradom
 STR_NAME_SUFFIX_TORPEDO_CAR                                     :Vagon-torpedo
 STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Vagon za prijevoz vozila
-STR_NAME_SUFFIX_WELL_CAR                                        :Vagon za kontejnere na kat
 
 # buy menu wrappers
 STR_BUY_MENU_WRAPPER_ONE_SUBSTR                                 :{STRING}

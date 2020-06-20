@@ -67,7 +67,6 @@ from vehicles import tank_cars
 from vehicles import tarpaulin_cars
 from vehicles import vehicle_parts_box_cars
 from vehicles import vehicle_transporter_cars
-#from vehicles import well_cars
 
 def get_active_rosters():
     #  for a faster single-roster compiles when testing, optionally pass a roster id (lower case) as a makefile arg
@@ -203,9 +202,3 @@ def main():
     torpedo_cars.main()
     vehicle_parts_box_cars.main()
     vehicle_transporter_cars.main()
-
-    """
-    # commented out for 2.x
-    from vehicles import well_cars
-    well_cars.main()
-    """

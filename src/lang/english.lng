@@ -75,7 +75,6 @@ STR_NAME_SUFFIX_TARPAULIN_CAR                                   :Tarpaulin Wagon
 STR_NAME_SUFFIX_TORPEDO_CAR                                     :Torpedo Wagon
 STR_NAME_SUFFIX_VEHICLE_PARTS_BOX_CAR                           :Vehicle Parts Van
 STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Vehicle Transporter
-STR_NAME_SUFFIX_WELL_CAR                                        :Well Wagon
 
 # buy menu wrappers
 STR_BUY_MENU_WRAPPER_ONE_SUBSTR                                 :{STRING}

@@ -55,7 +55,6 @@ STR_NAME_SUFFIX_TANK_CAR                                        :Säiliövaunu
 STR_NAME_SUFFIX_TARPAULIN_CAR                                   :Peitekangasvaunu
 STR_NAME_SUFFIX_TORPEDO_CAR                                     :Torpedovaunu
 STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Ajoneuvonkuljetusvaunu
-STR_NAME_SUFFIX_WELL_CAR                                        :Konttivaunu
 
 # buy menu wrappers
 
