@@ -1,4 +1,4 @@
-from train import VehicleTransporterCarConsist, FreightCar
+from train import VehicleTransporterCarConsist, VehicleTransporterCar
 
 
 def main():
@@ -10,7 +10,7 @@ def main():
                                            gen=5,
                                            subtype='B')
 
-    consist.add_unit(type=FreightCar,
+    consist.add_unit(type=VehicleTransporterCar,
                      chassis='2_axle_filled_greebled_24px')
 
 
@@ -19,5 +19,5 @@ def main():
                                            gen=5,
                                            subtype='C')
 
-    consist.add_unit(type=FreightCar,
+    consist.add_unit(type=VehicleTransporterCar,
                      chassis='4_axle_filled_greebled_32px')

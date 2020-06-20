@@ -1,4 +1,28 @@
 <tal:ruleset define="default 0; first 1; last 2;">
+    // vehicle transporter 2 unit position switches
+    <!--! if 1 unit in sequence -->
+    switch (FEAT_TRAINS, SELF, switch_graphics_vehicle_transporter_ruleset_modulo_num_units_in_consist_1, position_in_vehid_chain % 2) {
+        0: return ${default};
+    }
+
+    <!--! if 2 units in sequence -->
+    switch (FEAT_TRAINS, SELF, switch_graphics_vehicle_transporter_ruleset_modulo_num_units_in_consist_2, position_in_vehid_chain % 2) {
+        0: return ${first};
+        return ${last};
+    }
+
+    <!--! this is a remainder block, how many units are in it? -->
+    switch (FEAT_TRAINS, SELF, switch_graphics_vehicle_transporter_ruleset_less_than_2_remaining, num_vehs_in_vehid_chain % 2) {
+        1: return switch_graphics_vehicle_transporter_ruleset_modulo_num_units_in_consist_1;
+        return switch_graphics_vehicle_transporter_ruleset_modulo_num_units_in_consist_2;
+    }
+    switch (FEAT_TRAINS, SELF, switch_graphics_vehicle_transporter_ruleset, position_in_vehid_chain >= (num_vehs_in_vehid_chain - (num_vehs_in_vehid_chain  % 2))) {
+        1: return switch_graphics_vehicle_transporter_ruleset_less_than_2_remaining;
+        return switch_graphics_vehicle_transporter_ruleset_modulo_num_units_in_consist_2;
+    }
+</tal:ruleset>
+
+<tal:ruleset define="default 0; first 1; last 2;">
     // intermodal platform 2 unit position switches
     <!--! if 1 unit in sequence -->
     switch (FEAT_TRAINS, SELF, switch_graphics_intermodal_platform_ruleset_2_unit_sets_modulo_num_units_in_consist_1, position_in_vehid_chain % 2) {

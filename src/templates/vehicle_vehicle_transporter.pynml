@@ -5,7 +5,6 @@
       don't conflate them :) -->
 
 // graphics chain for vehicle platform
-// position variants are 'default', 'first', 'last', 'middle', etc, and are dependent on consist_ruleset
 <tal:position_variants repeat="position_variant consist.gestalt_graphics.position_variants">
     spriteset(${vehicle.id}_ss_${position_variant}_unflipped, "${graphics_path}${consist.id}.png") {
         ${vehicle.get_spriteset_template_name('unreversed', 'unflipped', 10 + (repeat.position_variant.index * 60))}
@@ -21,49 +20,19 @@
     }
 </tal:position_variants>
 
-<tal:position_ruleset condition="consist.gestalt_graphics.consist_ruleset == '2_unit_sets'">
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_platform_position_in_consist_entry_point, switch_graphics_intermodal_platform_ruleset_2_unit_sets()) {
-        0: return ${vehicle.id}_switch_graphics_platform_default;
-        1: return ${vehicle.id}_switch_graphics_platform_first;
-        2: return ${vehicle.id}_switch_graphics_platform_last;
-        return ${vehicle.id}_switch_graphics_platform_default;
-    }
-</tal:position_ruleset>
-
-<tal:position_ruleset condition="consist.gestalt_graphics.consist_ruleset == '4_unit_sets'">
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_platform_position_in_consist_entry_point, switch_graphics_intermodal_platform_ruleset_4_unit_sets()) {
-        0: ${vehicle.id}_switch_graphics_platform_default;
-        1: return ${vehicle.id}_switch_graphics_platform_first;
-        2: return ${vehicle.id}_switch_graphics_platform_last;
-        3: return ${vehicle.id}_switch_graphics_platform_middle;
-        return ${vehicle.id}_switch_graphics_platform_default;
-    }
-</tal:position_ruleset>
-
-// graphics chain for containers
-<!--! pseudo cargo checking code
-    1. check known labels -> named random switch
-    2. check known classes -> named random switch
-    3. fall back to random switch for box
--->
-
-// check generic cargo classes
-// bulk class is explicitly not checked as there are no meaningful default bulk sprites
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_containers_check_cargo_class_liquid, cargo_classes & bitmask(CC_LIQUID)) {
-    0: switch_intermodal_containers_random_${consist.floor_height_type}_box_DFLT_${4 * vehicle.vehicle_length}px;
-    return switch_intermodal_containers_random_${consist.floor_height_type}_tank_DFLT_${4 * vehicle.vehicle_length}px;
-}
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_containers_check_cargo_class_refrigerated, cargo_classes & bitmask(CC_REFRIGERATED)) {
-    0: ${vehicle.id}_switch_graphics_containers_check_cargo_class_liquid;
-    return switch_intermodal_containers_random_${consist.floor_height_type}_reefer_DFLT_${4 * vehicle.vehicle_length}px;
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_platform_position_in_consist_entry_point, switch_graphics_vehicle_transporter_ruleset()) {
+    0: return ${vehicle.id}_switch_graphics_platform_default;
+    1: return ${vehicle.id}_switch_graphics_platform_first;
+    2: return ${vehicle.id}_switch_graphics_platform_last;
+    return ${vehicle.id}_switch_graphics_platform_default;
 }
 
-// check explicit cargo labels
+<!--! check explicit cargo labels, fallback to random if unknown -->
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_containers_check_cargo_label, cargo_type_in_veh) {
     <tal:cargo_label_container_type_mapping repeat="cargo_label consist.gestalt_graphics.cargo_label_mapping.items()">
         ${cargo_label[0]}: switch_intermodal_containers_random_${consist.floor_height_type}_${cargo_label[1]}_${4 * vehicle.vehicle_length}px;
     </tal:cargo_label_container_type_mapping>
-    return ${vehicle.id}_switch_graphics_containers_check_cargo_class_refrigerated;
+    return switch_intermodal_containers_random_${consist.floor_height_type}_box_DFLT_${4 * vehicle.vehicle_length}px;
 }
 
 <!--! load state is assumed to be all or nothing - any cargo = full load of containers -->

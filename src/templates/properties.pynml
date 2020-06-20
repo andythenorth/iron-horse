@@ -93,12 +93,12 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
         purchase:                       ${vehicle.id}_switch_graphics_purchase;
         cost_factor:                    ${consist.buy_cost}; // CB used as it is capped to max 32k, prop is only 255
         running_cost_factor:            ${consist.running_cost}; // CB used as it is capped to max 32k, prop is only 255
-        <!--! JFDI handling of random_trigger condition check, works for now -->
-        <tal:conditional_random_trigger condition="vehicle.is_intermodal_platform">
-            random_trigger:                 ${vehicle.id}_switch_graphics_containers;
+        <tal:conditional_random_trigger condition="vehicle.random_trigger_switch is not None">
+            random_trigger:                 ${vehicle.id + vehicle.random_trigger_switch};
         </tal:conditional_random_trigger>
-        <tal:random_company_colour_swap condition="consist.requires_colour_mapping_cb">
-            colour_mapping:                 ${vehicle.id + '_switch_colour_mapping' if vehicle.is_intermodal_platform else 'switch_colour_mapping()'};
+        <tal:random_company_colour_swap condition="vehicle.requires_colour_mapping_cb">
+            <!--! option to provide dedicated colour mapping switch, or default to randomised/flip -->
+            colour_mapping:                 ${vehicle.id + vehicle.colour_mapping_switch if vehicle.colour_mapping_switch is not None else 'switch_colour_mapping()'};
             purchase_colour_mapping:        base_sprite_2cc + 16 * company_colour2 + company_colour1; <!--! apply regular 1CC and 2CC -->
         </tal:random_company_colour_swap>
         <!--! only use the capacity switches if vehicle carries cargo, makes faster compile (saved about 20% of time) -->

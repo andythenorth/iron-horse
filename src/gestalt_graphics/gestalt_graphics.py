@@ -322,7 +322,6 @@ class GestaltGraphicsVehicleTransporter(GestaltGraphics):
     def __init__(self, **kwargs):
         # we use the composited sprites pipeline so we can make use of chassis compositing
         self.pipelines = pipelines.get_pipelines(['extend_spriterows_for_composited_sprites_pipeline'])
-        self.consist_ruleset = kwargs.get('consist_ruleset', None)
         # vehcile transporter cars are asymmetric, sprites are drawn in second col, first col needs populated, map is [col 1 dest]: [col 2 source]
         # two liveries
         self.asymmetric_row_map = {1: 1, 2: 2, # default: default
@@ -364,19 +363,7 @@ class GestaltGraphicsVehicleTransporter(GestaltGraphics):
         # second result is known cargo sprites / livery recolours, which will map explicitly
         container_cargo_maps = (('box', ([], [])), # box currently generic, and is fallback for all unknown cargos / classes
                                 ('bulk', ([], polar_fox.constants.bulk_cargo_recolour_maps)),
-                                #('flat', ([], [])), # flat currently unused
-                                ('livestock', (['LVST'], [])), # one label only - extend if other livestock labels added in future
-                                ('tank', ([], polar_fox.constants.tanker_livery_recolour_maps)),
-                                ('reefer', (polar_fox.constants.allowed_refits_by_label['reefer'], [])), # reefer currently uses classes only
-                                ('edibles_tank', (polar_fox.constants.allowed_refits_by_label['edible_liquids'], [])),
-                                ('chemicals_tank', (polar_fox.constants.allowed_refits_by_label['chemicals'],
-                                                    polar_fox.constants.chemicals_tanker_livery_recolour_maps)),
-                                ('cryo_tank', (polar_fox.constants.allowed_refits_by_label['cryo_gases'],
-                                               polar_fox.constants.cryo_tanker_livery_recolour_maps)),
-                                ('curtain_side', (['VBOD'], # this single label is a dirty trick to stop warnings about unused DFLT spritesets
-                                                  polar_fox.constants.curtain_side_livery_recolour_maps)),
                                 ('wood', (['WOOD'], []))) # one label only - extend if other wood-type labels added in future
-
 
         result = {}
         for container_type, cargo_maps in container_cargo_maps:
@@ -404,7 +391,7 @@ class GestaltGraphicsVehicleTransporter(GestaltGraphics):
     @property
     def nml_template(self):
         # over-ride in sub-classes as needed
-        return 'vehicle_intermodal.pynml'
+        return 'vehicle_vehicle_transporter.pynml'
 
 
 class GestaltGraphicsCargoSpecificLivery(GestaltGraphics):

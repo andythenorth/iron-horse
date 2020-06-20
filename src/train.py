@@ -185,17 +185,6 @@ class Consist(object):
         else:
             return False
 
-    @property
-    def requires_colour_mapping_cb(self):
-        # maybe overly abstracted, but the condition in properties template was getting ugly
-        # this is pretty clunky, but JFDI eh?  Fix it later if needed.  Hmm will break if class names change!
-        if self.random_company_colour_swap:
-            return True
-        elif self.gestalt_graphics.__class__.__name__ == 'GestaltGraphicsIntermodal':
-            return True
-        else:
-            return False
-
     def get_spriterows_for_consist_or_subpart(self, units):
         # pass either list of all units in consist, or a slice of the consist starting from front (arbitrary slices not useful)
         result = []
@@ -2315,7 +2304,7 @@ class VehicleTransporterCarConsist(CarConsist):
         # !! flipping not currently allowed as don't know if asymmetric sprites support is working (might be fine?)
         self.allow_flip = True # hax test because template failing to return correct cargo sprites
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsVehicleTransporter(consist_ruleset='2_unit_sets')
+        self.gestalt_graphics = GestaltGraphicsVehicleTransporter()
 
     @property
     # account for variable floor height (e.g. NG vs standard, or low-floor wagons etc)
@@ -2370,8 +2359,11 @@ class Train(object):
         # 'symmetric' or 'asymmetric'?
         # defaults to symmetric, over-ride in sub-classes or per vehicle as needed
         self._symmetry_type = kwargs.get('symmetry_type', 'symmetric')
-        # a flag used to detect intermodal cars in templating, bit janky but eh
-        self.is_intermodal_platform = False
+        # optional - a switch name to trigger re-randomising vehicle random bits - over-ride as need in subclasses
+        self.random_trigger_switch = None
+        # optional - a switch name for dedicated colour mapping - over-ride as need in subclasses
+        # see also requires_colour_mapping_cb - there is some unwanted faff, but not worth simplifying right now
+        self.colour_mapping_switch = None
 
     def get_capacity_variations(self, capacity):
         # capacity is variable, controlled by a newgrf parameter
@@ -2517,6 +2509,16 @@ class Train(object):
             return str(4 * self.vehicle_length) + 'px_' + ng_prefix + self.consist.roof_type
         else:
             return None
+
+    @property
+    def requires_colour_mapping_cb(self):
+        # bit weird and janky, various conditions to consider eh
+        if self.consist.random_company_colour_swap:
+            return True
+        elif self.colour_mapping_switch is not None:
+            return True
+        else:
+            return False
 
     @property
     def default_effect_offsets(self):
@@ -3035,13 +3037,15 @@ class ExpressCar(TrainCar):
 
 class ExpressIntermodalCar(ExpressCar):
     """
-    Express container car, subclassed from express car.  This subclass only exists to set intermodal flag and symmetry_type.
+    Express container car, subclassed from express car.  This subclass only exists to symmetry_type, random trigger and colour mapping switches.
     """
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # express intermodal cars may be asymmetric, there is magic in the graphics processing to make symmetric pax/mail sprites also work with this
+        # express intermodal cars may be asymmetric, there is magic in the graphics processing to make this work
         self._symmetry_type = 'asymmetric'
-        self.is_intermodal_platform = True
+        self.random_trigger_switch = '_switch_graphics_containers'
+        self.colour_mapping_switch = '_switch_colour_mapping'
+
 
 class FreightCar(TrainCar):
     """
@@ -3060,13 +3064,14 @@ class FreightCar(TrainCar):
 
 class IntermodalCar(FreightCar):
     """
-    Intermodal Car. This subclass only exists to set intermodal flag and symmetry_type.
+    Intermodal Car. This subclass only exists to symmetry_type, random trigger and colour mapping switches.
     """
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # intermodal cars may be asymmetric, there is magic in the graphics processing to make cargo sprites work with this
+        # intermodal cars may be asymmetric, there is magic in the graphics processing to make this work
         self._symmetry_type = 'asymmetric'
-        self.is_intermodal_platform = True
+        self.random_trigger_switch = '_switch_graphics_containers'
+        self.colour_mapping_switch = '_switch_colour_mapping'
 
 
 class PaxRailcarTrailerCar(TrainCar):
@@ -3077,7 +3082,7 @@ class PaxRailcarTrailerCar(TrainCar):
         super().__init__(**kwargs)
         # TrainCar sets auto tail light, over-ride it
         self.tail_light = kwargs['tail_light'] # fail if not passed, required arg
-        # pax wagons may be asymmetric, there is magic in the graphics processing to make symmetric pax/mail sprites also work with this
+        # pax wagons may be asymmetric, there is magic in the graphics processing to make this work
         self._symmetry_type = 'asymmetric'
         # magic to set pax car capacity subject to length
         base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
@@ -3104,4 +3109,17 @@ class TorpedoCar(FreightCar):
         self._symmetry_type = 'asymmetric'
         # capacity bonus is solely to support using small stations in Steeltown where space between industries is constrained
         self.capacity = 1.5 * self.capacity
+
+
+class VehicleTransporterCar(FreightCar):
+    """
+    Vehicle transporter car.  This subclass only exists to symmetry_type, random trigger and colour mapping switches.
+    """
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # vehicle transporter cars may be asymmetric, there is magic in the graphics processing to make this work
+        self._symmetry_type = 'asymmetric'
+        self.random_trigger_switch = '_switch_graphics_containers'
+        self.colour_mapping_switch = '_switch_colour_mapping'
+
 
