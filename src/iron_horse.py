@@ -66,7 +66,7 @@ from vehicles import slag_ladle_cars
 from vehicles import tank_cars
 from vehicles import tarpaulin_cars
 from vehicles import vehicle_parts_box_cars
-#from vehicles import vehicle_transporter_cars
+from vehicles import vehicle_transporter_cars
 #from vehicles import well_cars
 
 def get_active_rosters():
@@ -202,11 +202,8 @@ def main():
     tarpaulin_cars.main()
     torpedo_cars.main()
     vehicle_parts_box_cars.main()
-    """
-    # commented out for 2.x
-    from vehicles import vehicle_transporter_cars
     vehicle_transporter_cars.main()
-    """
+
     """
     # commented out for 2.x
     from vehicles import well_cars
