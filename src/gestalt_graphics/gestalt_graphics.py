@@ -61,7 +61,6 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
         self.num_visible_cargo_liveries = 2 if kwargs.get('has_alt_livery', False) else 1
         # cargo flags
         self.has_bulk = kwargs.get('bulk', False)
-        self.has_heavy_items = kwargs.get('heavy_items', None) is not None
         self.has_piece = kwargs.get('piece', None) is not None
         if self.has_piece:
             self.piece_type = kwargs.get('piece')
@@ -70,7 +69,7 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
     def generic_rows(self):
         # map unknown cargos to sprites for some other label
         # assume that piece > input_spriterow_count, it's acceptable to show something like tarps for bulk, but not gravel for piece
-        if self.has_piece or self.has_heavy_items:
+        if self.has_piece:
             return self.cargo_row_map['DFLT']
         elif self.has_bulk:
             return self.cargo_row_map['GRVL']
@@ -91,8 +90,6 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
 
         if self.has_bulk:
             result.append('bulk_cargo')
-        if self.has_heavy_items:
-            result.append('heavy_items_cargo')
         if self.has_piece:
             result.append('piece_cargo')
         return result
@@ -104,12 +101,6 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
         if self.has_bulk:
             for cargo_map in polar_fox.constants.bulk_cargo_recolour_maps:
                 result[cargo_map[0]] = [counter] # list because a cargo label can map to multiple spriterows, but that is currently unused for visible cargo gestalt (June 2020)
-                counter += 1
-        if self.has_heavy_items:
-            # n.b. keys have to be sorted as order needs to be consistent everywhere
-            for cargo_filename, cargo_labels in sorted(self.heavy_items_sprites_to_cargo_labels_maps.items(), key = lambda x: x[0]):
-                for cargo_label in cargo_labels:
-                    result.setdefault(cargo_label, []).append(counter)
                 counter += 1
         if self.has_piece:
             # handle that piece cargos are defined in dicts as {filename:[labels]}, where most cargo sprite stuff uses ((label, values), (label, values)) pairs format
@@ -161,18 +152,6 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
                 result.append(['loading_' + str(row_num), flipped, row_y_offset])
                 result.append(['loaded_' + str(row_num), flipped, row_y_offset + 30])
         return result
-
-
-    # !! possibly move this to polar fox later, currently heavy item cargos are restricted to Iron Horse, but will be needed in Road Hog at least
-    # cargo labels can be repeated for different sprites, they'll be used selectively by vehicle types and/or randomised as appropriate
-    # keep alphabetised for general quality-of-life
-    # DFLT label is a hack to support cargos with no specific sprites (including unknown cargos), and should not be added to cargo translation table
-    heavy_items_sprites_to_cargo_labels_maps = {'tarps_2cc_1': ['DFLT'], # see note on use of DFLT above
-                                                'tractors_1': ['FMSP'],
-                                                'trucks_2': ['ENSP', 'FMSP', 'VEHI'],
-                                                'trucks_3': ['ENSP', 'FMSP', 'VEHI'],
-                                                'trucks_4': ['ENSP', 'FMSP', 'VEHI'],
-                                                'trucks_5': ['ENSP', 'FMSP', 'VEHI']}
 
 
 class GestaltGraphicsBoxCarOpeningDoors(GestaltGraphics):
@@ -327,6 +306,100 @@ class GestaltGraphicsIntermodal(GestaltGraphics):
         # used in spriteset templating
         # 2 unit articulated sets only need 3 variants, > 2 units also need
         return ['default', 'first', 'last'] if self.consist_ruleset == '2_unit_sets' else ['default', 'first', 'last', 'middle']
+
+    @property
+    def nml_template(self):
+        # over-ride in sub-classes as needed
+        return 'vehicle_intermodal.pynml'
+
+
+class GestaltGraphicsVehicleTransporter(GestaltGraphics):
+    """
+        Used to handle specific rules for vehicle transporters
+        - specific template to handle vehicles which are in separate layer
+    """
+
+    def __init__(self, **kwargs):
+        # we use the composited sprites pipeline so we can make use of chassis compositing
+        self.pipelines = pipelines.get_pipelines(['extend_spriterows_for_composited_sprites_pipeline'])
+        self.consist_ruleset = kwargs.get('consist_ruleset', None)
+        # vehcile transporter cars are asymmetric, sprites are drawn in second col, first col needs populated, map is [col 1 dest]: [col 2 source]
+        # two liveries
+        self.asymmetric_row_map = {1: 1, 2: 2, # default: default
+                                   3: 5, 4: 6, # first: last
+                                   5: 3, 6: 4, # last: first
+                                   7: 7, 8: 8} # middle: middle
+
+    def get_output_row_types(self):
+        # 2 liveries * 4 variants so 8 empty rows, we're only using the composited sprites pipeline for chassis compositing, containers are provided on separate layer
+        # note to self, remarkably adding multiple empty rows appears to just work here :o
+        return ['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty']
+
+    def allow_adding_cargo_label(self, cargo_label, container_type, result):
+        print('is allow_adding_cargo_label actually needed for GestaltGraphicsVehicleTransporter?')
+        # don't ship DFLT as actual cargo label, it's not a valid cargo and will cause nml to barf
+        # the generation of the DFLT container sprites is handled separately without using cargo_label_mapping
+        if cargo_label == 'DFLT':
+            return False
+        # explicit control over contested cargo_labels, by specifying which container type should be used (there can only be one type for label based support)
+        contested_cargo_labels = {'CHLO': 'cryo_tank',
+                                  'FOOD': 'reefer',
+                                  'RFPR': 'chemicals_tank',
+                                  'SULP': 'tank'}
+        if cargo_label in contested_cargo_labels.keys():
+            if container_type == contested_cargo_labels[cargo_label]:
+                return True
+            else:
+                return False
+        # print a note if an unhandled contested cargo is found, so the contested cargos can be updated to handle the cargo label
+        if cargo_label in result:
+            print('GestaltGraphicsIntermodal.cargo_label_mapping: cargo_label', cargo_label, 'already exists, being over-written by', container_type, 'label')
+        # default to allowing, most cargos aren't contested
+        return True
+
+    @property
+    def cargo_label_mapping(self):
+        print('cargo_label_mapping needs refactoring for GestaltGraphicsVehicleTransporter?')
+        # first result is known refits which will fallback to xxxxx_DFLT
+        # second result is known cargo sprites / livery recolours, which will map explicitly
+        container_cargo_maps = (('box', ([], [])), # box currently generic, and is fallback for all unknown cargos / classes
+                                ('bulk', ([], polar_fox.constants.bulk_cargo_recolour_maps)),
+                                #('flat', ([], [])), # flat currently unused
+                                ('livestock', (['LVST'], [])), # one label only - extend if other livestock labels added in future
+                                ('tank', ([], polar_fox.constants.tanker_livery_recolour_maps)),
+                                ('reefer', (polar_fox.constants.allowed_refits_by_label['reefer'], [])), # reefer currently uses classes only
+                                ('edibles_tank', (polar_fox.constants.allowed_refits_by_label['edible_liquids'], [])),
+                                ('chemicals_tank', (polar_fox.constants.allowed_refits_by_label['chemicals'],
+                                                    polar_fox.constants.chemicals_tanker_livery_recolour_maps)),
+                                ('cryo_tank', (polar_fox.constants.allowed_refits_by_label['cryo_gases'],
+                                               polar_fox.constants.cryo_tanker_livery_recolour_maps)),
+                                ('curtain_side', (['VBOD'], # this single label is a dirty trick to stop warnings about unused DFLT spritesets
+                                                  polar_fox.constants.curtain_side_livery_recolour_maps)),
+                                ('wood', (['WOOD'], []))) # one label only - extend if other wood-type labels added in future
+
+
+        result = {}
+        for container_type, cargo_maps in container_cargo_maps:
+            # first handle the cargos as explicitly refittable
+            # lists of explicitly refittable cargos are by no means *all* the cargos refittable to for a type
+            # nor does explicitly refittable cargos have 1:1 mapping with cargo-specific graphics
+            # these will all map cargo_label: container_type_DFLT
+            for cargo_label in cargo_maps[0]:
+                if self.allow_adding_cargo_label(cargo_label, container_type, result):
+                    result[cargo_label] = container_type + '_DFLT'
+
+            # then insert or over-ride entries with cargo_label: container_type_[CARGO_LABEL] where there are explicit graphics for a cargo
+            for cargo_label, recolour_map in cargo_maps[1]:
+                if self.allow_adding_cargo_label(cargo_label, container_type, result):
+                    result[cargo_label] = container_type + '_' + cargo_label
+        return result
+
+    @property
+    def position_variants(self):
+        # just a remnant from copying intermodal car approach
+        print('position_variants is vestigal in GestaltGraphicsVehicleTransporter and can be refactored out')
+        # used in spriteset templating
+        return ['default', 'first', 'last']
 
     @property
     def nml_template(self):

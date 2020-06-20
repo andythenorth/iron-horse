@@ -795,63 +795,6 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                                                 x_offset=self.sprites_max_x_extent + 5,
                                                 y_offset=  -1 * cargo_group_row_height))
 
-    def add_heavy_items_cargo_spriterows(self):
-        # indivisible cargos, generation-specific sprites, asymmetric, pre-positioned to suit the vehicle
-        # used for supply cars, others if needed
-        crop_box_source = (0,
-                           10,
-                           self.sprites_max_x_extent,
-                           10 + graphics_constants.spriterow_height)
-        vehicle_spriterow_input_image = self.comp_chassis_and_body(self.vehicle_source_image.copy().crop(crop_box_source))
-
-        # n.b. keys have to be sorted as order needs to be consistent everywhere
-        for cargo_filename in sorted(self.consist.gestalt_graphics.heavy_items_sprites_to_cargo_labels_maps.keys()):
-            cargo_filename = cargo_filename + '_' +  str(4 * self.vehicle_unit.vehicle_length) + 'px'
-            cargo_sprites_input_path = os.path.join(currentdir, 'src', 'graphics', 'heavy_items_cargo', cargo_filename + '.png')
-            # !! temp, needs defined per cargo graphic type
-            cargo_spriterow_offset = {1: 0, 2: 0, 3: 0, 4: 1, 5: 0, 6: 0}[self.consist.gen]
-
-            crop_box_cargo_source = (0,
-                                     10 + (cargo_spriterow_offset * graphics_constants.spriterow_height),
-                                     self.sprites_max_x_extent,
-                                     10 + ((cargo_spriterow_offset + 1) * graphics_constants.spriterow_height))
-
-            cargo_image = Image.open(cargo_sprites_input_path).crop(crop_box_cargo_source)
-            #if cargo_filename == 'trucks_1_32px':
-                #cargo_image.show()
-
-            # the cargo image has false colour pixels for the chassis, to aid drawing; remove these by converting to white, also convert any blue to white
-            cargo_image = cargo_image.point(lambda i: 255 if (i in range(178, 192) or i == 0) else i)
-
-            # create a mask so that we paste only the cargo pixels over the body (no blue pixels)
-            cargo_mask = cargo_image.copy()
-            cargo_mask = cargo_image.point(lambda i: 0 if i == 255 else 255).convert("1") # the inversion here of blue and white looks a bit odd, but potato / potato
-            # cargo_mask.show()
-
-            crop_box_cargo_dest = (0,
-                                   0,
-                                   self.sprites_max_x_extent,
-                                   graphics_constants.spriterow_height)
-
-            vehicle_comped_image = vehicle_spriterow_input_image.copy()
-            vehicle_comped_image.paste(cargo_image, crop_box_cargo_dest, cargo_mask)
-            # vehicle_comped_image_as_spritesheet.show()
-
-            crop_box_comp_dest = (0,
-                                  0,
-                                  self.sprites_max_x_extent,
-                                  graphics_constants.spriterow_height)
-
-            vehicle_comped_image_as_spritesheet = self.make_spritesheet_from_image(vehicle_comped_image)
-
-            # loaded and loading states are same for these vehicles, but template expects spriterows for both, so add result twice
-            self.units.append(AppendToSpritesheet(vehicle_comped_image_as_spritesheet, crop_box_comp_dest))
-            self.units.append(AppendToSpritesheet(vehicle_comped_image_as_spritesheet, crop_box_comp_dest))
-            self.units.append(AddCargoLabel(label=cargo_filename,
-                                            x_offset=self.sprites_max_x_extent + 5,
-                                            y_offset= -1 * graphics_constants.spriterow_height))
-            cargo_image.close()
-
     def add_piece_cargo_spriterows(self):
         # !! this could possibly be optimised by slicing all the cargos once, globally, instead of per-unit
         cargo_group_output_row_height = 2 * graphics_constants.spriterow_height
@@ -930,7 +873,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
         for cargo_filename in polar_fox.constants.piece_vehicle_type_to_sprites_maps[self.consist.gestalt_graphics.piece_type]:
             # get a list, with a two-tuple (cargo_sprite, mask) for each of 4 angles
             # cargo sprites are assumed to be symmetrical, only 4 angles are needed
-            # cargos with 8 angles (e.g. bulldozers) aren't handled here, assume heavy_items_cargo should handle those (might need extended)
+            # cargos with 8 angles (e.g. bulldozers) aren't supported, use a different gestalt & template for those (dedicated or custom)
             # loading states are first 4 sprites, loaded are second 4, all in one list, just pick them out as needed
             cargo_sprites_input_path = os.path.join(currentdir, 'src', 'polar_fox', 'cargo_graphics', cargo_filename + '.png')
             cargo_sprites_input_image = Image.open(cargo_sprites_input_path)
@@ -1016,9 +959,6 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                 elif spriterow_type == 'bulk_cargo':
                     input_spriterow_count = 2
                     self.add_bulk_cargo_spriterows()
-                elif spriterow_type == 'heavy_items_cargo':
-                    input_spriterow_count = 1
-                    self.add_heavy_items_cargo_spriterows()
                 elif spriterow_type == 'piece_cargo':
                     input_spriterow_count = 2
                     self.add_piece_cargo_spriterows()

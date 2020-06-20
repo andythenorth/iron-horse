@@ -14,7 +14,7 @@ import utils
 
 from gestalt_graphics.gestalt_graphics import (GestaltGraphics, GestaltGraphicsVisibleCargo, GestaltGraphicsBoxCarOpeningDoors,
                                                GestaltGraphicsCaboose, GestaltGraphicsCargoSpecificLivery, GestaltGraphicsOnlyAddPantographs,
-                                               GestaltGraphicsConsistSpecificLivery, GestaltGraphicsIntermodal, GestaltGraphicsCustom)
+                                               GestaltGraphicsConsistSpecificLivery, GestaltGraphicsIntermodal, GestaltGraphicsCustom, GestaltGraphicsVehicleTransporter)
 import gestalt_graphics.graphics_constants as graphics_constants
 
 from rosters import registered_rosters
@@ -2315,7 +2315,13 @@ class VehicleTransporterCarConsist(CarConsist):
         # !! flipping not currently allowed as don't know if asymmetric sprites support is working (might be fine?)
         self.allow_flip = True # hax test because template failing to return correct cargo sprites
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsVisibleCargo(heavy_items=True)
+        self.gestalt_graphics = GestaltGraphicsVehicleTransporter(consist_ruleset='2_unit_sets')
+
+    @property
+    # account for variable floor height (e.g. NG vs standard, or low-floor wagons etc)
+    def floor_height_type(self):
+        # !! all default currently, extend as needed - see intermodal cars for example
+        return 'default'
 
 
 class Train(object):
