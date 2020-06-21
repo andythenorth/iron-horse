@@ -198,7 +198,7 @@ class GenerateCompositedIntermodalContainers(Pipeline):
             # but so far that seems to have negligible performance cost, and caching all containers earlier in the loop would add unwanted complexity
             containers_for_this_variant = []
             for container in variant:
-                container_path = os.path.join(currentdir, 'src', 'polar_fox', 'intermodal_container_graphics', container + '.png')
+                container_path = os.path.join(currentdir, 'src', 'polar_fox', 'graphics', 'intermodal_containers', container + '.png')
                 container_image = Image.open(container_path)
 
                 #if self.intermodal_container_gestalt.id == 'intermodal_box_32px':
@@ -875,7 +875,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             # cargo sprites are assumed to be symmetrical, only 4 angles are needed
             # cargos with 8 angles (e.g. bulldozers) aren't supported, use a different gestalt & template for those (dedicated or custom)
             # loading states are first 4 sprites, loaded are second 4, all in one list, just pick them out as needed
-            cargo_sprites_input_path = os.path.join(currentdir, 'src', 'polar_fox', 'cargo_graphics', cargo_filename + '.png')
+            cargo_sprites_input_path = os.path.join(currentdir, 'src', 'polar_fox', 'graphics', 'piece_cargos', cargo_filename + '.png')
             cargo_sprites_input_image = Image.open(cargo_sprites_input_path)
             # n.b. Iron Horse assumes cargo length is always equivalent from vehicle length (probably fine)
             cargo_sprites = self.get_arbitrary_angles(cargo_sprites_input_image, cargo_spritesheet_bounding_boxes[self.vehicle_unit.vehicle_length])
