@@ -19,7 +19,9 @@ from rosters import pony
 
 from vehicles import numeric_id_defender
 
+# this format of import is weird, but I don't want the imported modules directly in the iron horse namespace, I want to nest in spritelayer_cargos
 import spritelayer_cargos.intermodal_containers
+import spritelayer_cargos.vehicles_cargos
 
 # import wagons
 #from vehicles import alignment_cars
@@ -151,8 +153,13 @@ def get_pax_car_ids():
     return result
 
 def main():
+    # rosters
     pony.main(disabled=False)
+
+    # cargos that use spritelayers (most dont')
     spritelayer_cargos.intermodal_containers.main()
+    spritelayer_cargos.vehicles_cargos.main()
+
     # wagons
     """
     # only comment in if needed for debugging
