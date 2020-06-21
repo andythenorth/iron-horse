@@ -19,7 +19,6 @@ import gestalt_graphics.graphics_constants as graphics_constants
 
 from rosters import registered_rosters
 from vehicles import numeric_id_defender
-import intermodal_containers
 
 class Consist(object):
     """
@@ -2623,8 +2622,7 @@ class Train(object):
                               consist=self.consist,
                               global_constants=global_constants,
                               temp_storage_ids=global_constants.temp_storage_ids, # convenience measure
-                              graphics_path=global_constants.graphics_path,
-                              intermodal_containers=intermodal_containers)
+                              graphics_path=global_constants.graphics_path)
         return nml_result
 
 

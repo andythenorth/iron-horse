@@ -36,7 +36,7 @@ def render_header_item_nml(header_item, consists):
                                                     utils=utils,
                                                     active_rosters=iron_horse.get_active_rosters(),
                                                     graphics_path=global_constants.graphics_path,
-                                                    intermodal_containers=iron_horse.intermodal_containers,
+                                                    spritelayer_cargos=iron_horse.spritelayer_cargos,
                                                     haulage_bonus_engine_id_tree=iron_horse.get_haulage_bonus_engine_id_tree(),
                                                     pax_car_ids=iron_horse.get_pax_car_ids(),
                                                     livery_2_engine_ids=iron_horse.get_livery_2_engine_ids(),
@@ -66,9 +66,11 @@ def main():
 
     consists = iron_horse.get_consists_in_buy_menu_order()
 
-    header_items = ['header', 'cargo_table', 'railtype_table', 'spriteset_templates', 'tail_lights', 'intermodal_containers',
-                    'procedures_capacity', 'procedures_colour_mapping', 'procedures_alternative_var_41', 'procedures_haulage_bonus', 'procedures_rulesets',
-                    'procedures_box_car_with_opening_doors', 'procedures_consist_specific_liveries', 'procedures_visible_cargo']
+    header_items = ['header', 'cargo_table', 'railtype_table', 'spriteset_templates', 'tail_lights',
+                    'spritelayer_cargos_intermodal_container_cars', 'spritelayer_cargos_vehicle_transporter_cars',
+                    'procedures_capacity', 'procedures_colour_mapping', 'procedures_alternative_var_41',
+                    'procedures_haulage_bonus', 'procedures_rulesets', 'procedures_box_car_with_opening_doors',
+                    'procedures_consist_specific_liveries', 'procedures_visible_cargo']
     for header_item in header_items:
         grf_nml.write(render_header_item_nml(header_item, consists))
 

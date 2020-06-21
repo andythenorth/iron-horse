@@ -19,8 +19,7 @@ from rosters import pony
 
 from vehicles import numeric_id_defender
 
-# import intermodal containers
-import intermodal_containers
+import spritelayer_cargos.intermodal_containers
 
 # import wagons
 #from vehicles import alignment_cars
@@ -153,7 +152,7 @@ def get_pax_car_ids():
 
 def main():
     pony.main(disabled=False)
-    intermodal_containers.main()
+    spritelayer_cargos.intermodal_containers.main()
     # wagons
     """
     # only comment in if needed for debugging

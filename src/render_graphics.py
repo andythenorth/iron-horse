@@ -67,7 +67,7 @@ def main():
     hint_file.close()
 
     consists = iron_horse.get_consists_in_buy_menu_order()
-    intermodal_container_gestalts = iron_horse.intermodal_containers.registered_container_gestalts
+    intermodal_container_gestalts = iron_horse.spritelayer_cargos.intermodal_containers.registered_container_gestalts
 
     if use_multiprocessing == False:
         for consist in consists:
