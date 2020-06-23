@@ -25,6 +25,9 @@ def run_consist_pipelines(consist):
 def run_intermodal_container_pipelines(intermodal_container_gestalt):
     intermodal_container_gestalt.pipeline.render(intermodal_container_gestalt, global_constants)
 
+def run_vehicles_cargos_pipelines(vehicles_cargos_gestalt):
+    vehicles_cargos_gestalt.pipeline.render(vehicles_cargos_gestalt, global_constants)
+
 def report_sprites_complete(consists):
     # project management eh :P
     complete = len([consist.sprites_complete for consist in consists if consist.sprites_complete])
@@ -68,18 +71,22 @@ def main():
 
     consists = iron_horse.get_consists_in_buy_menu_order()
     intermodal_container_gestalts = iron_horse.spritelayer_cargos.intermodal_containers.registered_container_gestalts
+    vehicles_cargos_gestalts = iron_horse.spritelayer_cargos.vehicles_cargos.registered_container_gestalts
 
     if use_multiprocessing == False:
         for consist in consists:
             run_consist_pipelines(consist)
         for intermodal_container_gestalt in intermodal_container_gestalts:
             run_intermodal_container_pipelines(intermodal_container_gestalt)
+        for vehicles_cargos_gestalt in vehicles_cargos_gestalts:
+            run_intermodal_container_pipelines(vehicles_cargos_gestalts)
     else:
         # Would this go faster if the pipelines from each consist were placed in MP pool, not just the consist?
         # probably potato / potato tbh
         pool = Pool(processes=num_pool_workers)
         pool.map(run_consist_pipelines, consists)
         pool.map(run_intermodal_container_pipelines, intermodal_container_gestalts)
+        pool.map(run_vehicles_cargos_pipelines, vehicles_cargos_gestalts)
         pool.close()
         pool.join()
 

@@ -29,16 +29,18 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_platform_position_in_co
 
 <!--! check explicit cargo labels, fallback to random if unknown -->
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_containers_check_cargo_label, cargo_type_in_veh) {
-    <tal:cargo_label_container_type_mapping repeat="cargo_label consist.gestalt_graphics.cargo_label_mapping.items()">
-        ${cargo_label[0]}: switch_intermodal_containers_random_${consist.floor_height_type}_${cargo_label[1]}_${4 * vehicle.vehicle_length}px;
+    <!--!<tal:cargo_label_container_type_mapping repeat="cargo_label consist.gestalt_graphics.cargo_label_mapping.items()">
+        ${cargo_label[0]}: switch_spritelayer_cargos_vehicle_transporter_cargos_random_${consist.floor_height_type}_${cargo_label[1]}_${4 * vehicle.vehicle_length}px;
     </tal:cargo_label_container_type_mapping>
-    return switch_intermodal_containers_random_${consist.floor_height_type}_box_DFLT_${4 * vehicle.vehicle_length}px;
+    return switch_spritelayer_cargos_vehicle_transporter_cargos_random_${consist.floor_height_type}_box_DFLT_${4 * vehicle.vehicle_length}px;
+    -->
+    return;
 }
 
 <!--! load state is assumed to be all or nothing - any cargo = full load of containers -->
 <!--! !! might want to handle intermediate load states when multiple containers are used ?? 50:50 -->
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_containers_check_cargo, cargo_count) {
-        0: return ss_intermodal_containers_empty;
+        0: return ss_spritelayer_cargos_vehicle_transporter_cars_empty;
     return ${vehicle.id}_switch_graphics_containers_check_cargo_label;
 }
 

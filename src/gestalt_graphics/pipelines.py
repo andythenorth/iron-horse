@@ -148,7 +148,152 @@ class PassThroughPipeline(Pipeline):
 
 class GenerateCompositedIntermodalContainers(Pipeline):
     """
-    Creates a spritesheet with a set of composited intermodal containers,
+    Creates a spritesheet with a set of composited intermodal containers.
+    This works a little differently to vehicle pipelines, but close enough that it's worth using pipelines to share spritesheet save code etc.
+    """
+    def __init__(self):
+        # this should be sparse, don't store any consist info in Pipelines, pass at render time
+        super().__init__()
+
+    def resolve_template_name(self, variant):
+        # figure out which template png to use based on gestalt length + container pattern
+        # - e.g. 32px_40_20, 32px_20_20_20 etc?
+        result = [str(self.intermodal_container_gestalt.length) + 'px']
+        for container in variant:
+            result.append(container.split('_foot')[0][-2:])
+        return 'intermodal_template_' + '_'.join(result)
+
+    def add_container_spriterows(self):
+        for variant in self.intermodal_container_gestalt.variants:
+            template_path = os.path.join(currentdir, 'src', 'graphics', 'intermodal_containers', self.resolve_template_name(variant) + '.png')
+            template_image = Image.open(template_path)
+
+            # get the loc points and sort them for display
+            # !! loc points might need extended to support double stack ??
+            loc_points = [(pixel[0], pixel[1] - 10, pixel[2]) for pixel in pixascan(template_image) if pixel[2] in [226, 240, 244]]
+            loc_points_grouped_and_sorted_for_display = {}
+            for angle_index, bbox in enumerate(self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed):
+                pixels=[]
+                for pixel in loc_points:
+                    if pixel[0] >= bbox[0] and pixel[0] <= (bbox[0] + bbox[1]):
+                        pixels.append(pixel)
+                        # catch invalid pixels
+                        if (1 + [226, 240, 244].index(pixel[2])) > len(variant):
+                            message = template_path
+                            message += " contains pixel colour " + str(pixel[2]) + " which implies " + str(1 + [226, 240, 244].index(pixel[2])) + " containers"
+                            message += " but the variant only defines " + str(len(variant)) + " container sprite(s)"
+                            raise ValueError(message)
+                # fake sprite sorter - containers nearer front need to overlap containers behind
+                # position pixel colour indexes (in the palette) must be in ascending order for left->right positions in <- view
+                # required index colours are 226, 240, 244
+                # the fake sprite sorter then just sorts ascending or descending as required for each angle
+                # !! double stack might be possible to handle just using this rudimentary sprite sorting ?? (or extending it??)
+                pixels = sorted(pixels, key=lambda pixel: pixel[2])
+                if angle_index in [3, 4, 5]:
+                    pixels.reverse()
+                loc_points_grouped_and_sorted_for_display[angle_index] = pixels
+
+            # get the sprites for all containers for this variant, and put them in a single structure
+            # n.b the implementation of this is likely inefficient as it will repetively open the same containers from the filesystem,
+            # but so far that seems to have negligible performance cost, and caching all containers earlier in the loop would add unwanted complexity
+            containers_for_this_variant = []
+            for container in variant:
+                container_path = os.path.join(currentdir, 'src', 'polar_fox', 'graphics', 'intermodal_containers', container + '.png')
+                container_image = Image.open(container_path)
+
+                #if self.intermodal_container_gestalt.id == 'intermodal_box_32px':
+                    #container_image.show()
+                bboxes = []
+                # only a 3 tuple in global constants bounding box definitions (no y position), we need a 4 tuple inc. y position
+                # also the format of bounding boxes needs converted to PIL crop box format
+                for bbox in self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed:
+                    bboxes.append([bbox[0], 10, bbox[0] + bbox[1], 10 + bbox[2]])
+
+                container_sprites = self.get_arbitrary_angles(container_image, bboxes)
+                # containers are symmetric, angles 0-3 need to be copied from angles 4-7
+                for i in range(4):
+                    container_sprites[i] = container_sprites[i + 4]
+
+                #if self.intermodal_container_gestalt.id == 'intermodal_box_32px':
+                    #container_sprites[0][0].show()
+
+                containers_for_this_variant.append((container, container_sprites))
+
+            for floor_height_variant in self.intermodal_container_gestalt.floor_height_variants:
+                variant_output_image = Image.open(os.path.join(currentdir, 'src', 'graphics', 'spriterow_template.png'))
+                variant_output_image = variant_output_image.crop((0, 10, graphics_constants.spritesheet_width, 10 + graphics_constants.spriterow_height))
+                floor_height_yoffset = floor_height_variant[1]
+
+                for angle_index, pixels in loc_points_grouped_and_sorted_for_display.items():
+                    for pixel in pixels:
+                        # use the pixel colour to look up which container sprites to use, relies on hard-coded pixel colours
+                        # print(self.intermodal_container_gestalt.id, variant, angle_index, pixels, container_sprites_for_this_variant)
+                        container_for_this_loc_point = containers_for_this_variant[[226, 240, 244].index(pixel[2])] # one line python stupidity
+                        container_sprites = container_for_this_loc_point[1]
+                        container_width = container_sprites[angle_index][0].size[0]
+                        container_height = container_sprites[angle_index][0].size[1]
+                        # loc_point_y_transform then moves the loc point to the left-most corner of the container
+                        # this makes it easier to place the loc point pixels in the templates
+                        loc_point_y_transforms = {'20': [1, 3, 1, 2, 1, 3, 1, 2],
+                                                  '30': [1, 3, 1, 3, 1, 3, 1, 3],
+                                                  '40': [1, 3, 1, 4, 1, 3, 1, 4]}
+                        container_foot_length = container_for_this_loc_point[0].split('_foot')[0][-2:] # extra special way to slice the length out of the name :P
+                        loc_point_y_transform = loc_point_y_transforms[container_foot_length][angle_index]
+                        # (needed beause loc points are left-bottom not left-top as per co-ordinate system, makes drawing loc points easier)
+                        container_bounding_box = (pixel[0],
+                                                  pixel[1] - container_height + loc_point_y_transform + floor_height_yoffset,
+                                                  pixel[0] + container_width,
+                                                  pixel[1] + loc_point_y_transform + floor_height_yoffset)
+
+                        variant_output_image.paste(container_sprites[angle_index][0], container_bounding_box, container_sprites[angle_index][1])
+
+                # create a mask to place black shadows between adjacent containers
+                combo_check = ['empty' if 'empty' in i else 'occupied' for i in variant]
+                # *vehicles with 3 containers only (32px)*
+                # don't allow combinations of only two adjacent 20 foot containers as it's TMWFTLB to provide the shadow for them
+                # two 20 foot with a gap between are supported
+                # solitary 20 foot containers of any length in any position are not prevented, but look bad (looks like loading didn't finish)
+                if len(combo_check) == 3:
+                    if combo_check in [['occupied', 'occupied', 'empty'], ['empty', 'occupied', 'occupied']]:
+                        raise ValueError(self.intermodal_container_gestalt.id +" - this pattern of (20 foot) containers isn't supported (can't composite shadows for it): " + str(combo_check))
+
+                # don't draw shadows if there are empty slots
+                if combo_check.count('empty') == 0:
+                    shadow_image = template_image.copy().crop((0,
+                                                               10 - floor_height_yoffset,
+                                                               self.global_constants.sprites_max_x_extent,
+                                                               10 + graphics_constants.spriterow_height - floor_height_yoffset))
+                    shadow_mask = shadow_image.copy()
+                    shadow_mask = shadow_mask.point(lambda i: 255 if i == 1 else 0).convert("1") # assume shadow is always colour index 1 in the palette
+                    variant_output_image.paste(shadow_image, mask=shadow_mask)
+
+                #if self.intermodal_container_gestalt.id == 'intermodal_box_32px':
+                    #variant_output_image.show()
+                variant_spritesheet = self.make_spritesheet_from_image(variant_output_image)
+                crop_box_dest = (0,
+                                 0,
+                                 self.global_constants.sprites_max_x_extent,
+                                 graphics_constants.spriterow_height)
+                self.units.append(AppendToSpritesheet(variant_spritesheet, crop_box_dest))
+                variant_output_image.close()
+            template_image.close()
+
+    def render(self, intermodal_container_gestalt, global_constants):
+        self.units = []
+        self.intermodal_container_gestalt = intermodal_container_gestalt
+        self.global_constants = global_constants
+
+        self.add_container_spriterows()
+
+        # for this pipeline, input_image is just blank white 10px high image, to which the vehicle sprites are then appended
+        input_image = Image.new("P", (graphics_constants.spritesheet_width, 10), 255)
+        input_image.putpalette(DOS_PALETTE)
+        self.render_common(input_image, self.units, output_base_name=intermodal_container_gestalt.id)
+
+
+class GenerateCompositedVehiclesCargos(Pipeline):
+    """
+    Creates a spritesheet with a set of composited vehicles cargos (trucks etc).
     This works a little differently to vehicle pipelines, but close enough that it's worth using pipelines to share spritesheet save code etc.
     """
     def __init__(self):
