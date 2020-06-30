@@ -310,7 +310,7 @@ class GenerateCompositedVehiclesCargos(Pipeline):
 
     def add_container_spriterows(self):
         for variant in self.intermodal_container_gestalt.variants:
-            template_path = os.path.join(currentdir, 'src', 'graphics', 'intermodal_containers', self.resolve_template_name(variant) + '.png')
+            template_path = os.path.join(currentdir, 'src', 'graphics', 'vehicles_cargos', self.resolve_template_name(variant) + '.png')
             template_image = Image.open(template_path)
 
             # get the loc points and sort them for display
@@ -343,7 +343,7 @@ class GenerateCompositedVehiclesCargos(Pipeline):
             # but so far that seems to have negligible performance cost, and caching all containers earlier in the loop would add unwanted complexity
             containers_for_this_variant = []
             for container in variant:
-                container_path = os.path.join(currentdir, 'src', 'polar_fox', 'graphics', 'intermodal_containers', container + '.png')
+                container_path = os.path.join(currentdir, 'src', 'polar_fox', 'graphics', 'vehicles_cargos', container + '.png')
                 container_image = Image.open(container_path)
 
                 #if self.intermodal_container_gestalt.id == 'intermodal_box_32px':
@@ -379,7 +379,7 @@ class GenerateCompositedVehiclesCargos(Pipeline):
                         container_height = container_sprites[angle_index][0].size[1]
                         # loc_point_y_transform then moves the loc point to the left-most corner of the container
                         # this makes it easier to place the loc point pixels in the templates
-                        loc_point_y_transforms = {'20': [1, 3, 1, 2, 1, 3, 1, 2],
+                        loc_point_y_transforms = {'CC': [1, 3, 1, 2, 1, 3, 1, 2],
                                                   '30': [1, 3, 1, 3, 1, 3, 1, 3],
                                                   '40': [1, 3, 1, 4, 1, 3, 1, 4]}
                         container_foot_length = container_for_this_loc_point[0].split('_foot')[0][-2:] # extra special way to slice the length out of the name :P
@@ -424,6 +424,7 @@ class GenerateCompositedVehiclesCargos(Pipeline):
             template_image.close()
 
     def render(self, intermodal_container_gestalt, global_constants):
+        print("I am not a walrus")
         self.units = []
         self.intermodal_container_gestalt = intermodal_container_gestalt
         self.global_constants = global_constants

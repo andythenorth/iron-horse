@@ -12,6 +12,19 @@ class VehiclesCargoGestalt(object):
     # each set is used for a specific group of cargo labels
     # ====== #
 
+
+    # each gestalt is named for a type of vehicles cargo, e.g. trucks, cars, tractors, bulldozers etc
+    # each gestalt is for a specific length, 16px, 24px, 32px
+    # each gestalt has variants
+    # each variant is composed from source spritesheets
+    # e.g. small truck cc, small truck blue, box truck, etc
+    # each variant has n rows, corresponding to a standard number of date changes
+    # the date change rows are provided directly in each source spritesheet
+    # each variant is asssociated with one of the templates that contain location pixels for the cargo sprites
+
+    # there is a mapping of gestalts to cargo labels and a default
+
+
     # !!!!!! are these up to date for vehicles - remove this when done !!!!!
 
     # each container set may have one or more spriterows
@@ -23,66 +36,45 @@ class VehiclesCargoGestalt(object):
     # !!! containers are going to need 'base sets' to allow double stack, cropped for well cars etc
     # !!! the consist needs to encode the set type to fetch the right spritesets
     # !!! base sets will also have to be encoded in gestalts here, unless they're done by (sets * gestalts) combinatorially?
-    def __init__(self, container_subtype):
+    def __init__(self, vehicles_cargo_subtype):
         self.pipeline = GenerateCompositedVehiclesCargos()
-        self.container_subtype = container_subtype
+        self.vehicles_cargo_subtype = vehicles_cargo_subtype
 
     @property
     def floor_height_variants(self):
         # used to handle, e.g. low floor, narrow gauge etc by putting a yoffset in the generated container sprites
         # extend to accomodate double stack later (only one floor height probably)?
         # format is (label, yoffset for floor-height) - leave floor height as 0 for default floor heights
-        if self.stack_type == 'single':
-            return (('default', 0), ('low_floor', 1))
-        else:
-            # other values not implemented yet
-            raise ValueError()
+        return (('default', 0), ('low_floor', 1))
 
     @property
     def id(self):
-        return "intermodal_" + self.container_subtype + "_" + str(self.length) + "px"
+        return "vehicles_cargo_" + self.vehicles_cargo_subtype + "_" + str(self.length) + "px"
 
 
-class IntermodalBox16px(VehiclesCargoGestalt):
-    def __init__(self, container_subtype):
-        super().__init__(container_subtype)
+class Trucks16px(VehiclesCargoGestalt):
+    def __init__(self, vehicles_cargo_subtype):
+        super().__init__(vehicles_cargo_subtype)
         self.length = 16
-        self.stack_type = 'single'
-        self.variants = [['box_30_foot_1CC'],
-                         ['box_30_foot_2CC'],
-                         ['box_30_foot_red']]
+        self.variants = [['trucks_1_1CC'],
+                         ['trucks_1_1CC'],
+                         ['trucks_1_1CC']]
 
 
-class IntermodalBox24px(VehiclesCargoGestalt):
-    def __init__(self, container_subtype):
-        super().__init__(container_subtype)
+class Trucks24px(VehiclesCargoGestalt):
+    def __init__(self, vehicles_cargo_subtype):
+        super().__init__(vehicles_cargo_subtype)
         self.length = 24
-        self.stack_type = 'single'
-        self.variants = [['box_20_foot_1CC', 'box_20_foot_1CC'],
-                         ['box_20_foot_1CC', 'box_20_foot_red'],
-                         ['box_20_foot_red', 'box_20_foot_1CC'],
-                         ['box_40_foot_1CC'],
-                         ['box_40_foot_2CC'],
-                         ['box_40_foot_red']]
+        self.variants = [['trucks_1_1CC', 'trucks_1_1CC'],
+                         ['trucks_1_1CC']]
 
 
-class IntermodalBox32px(VehiclesCargoGestalt):
-    def __init__(self, container_subtype):
-        super().__init__(container_subtype)
+class Trucks32px(VehiclesCargoGestalt):
+    def __init__(self, vehicles_cargo_subtype):
+        super().__init__(vehicles_cargo_subtype)
         self.length = 32
-        self.stack_type = 'single'
-        self.variants = [['box_20_foot_1CC', 'box_20_foot_1CC', 'box_20_foot_1CC'],
-                         ['box_20_foot_1CC', 'box_20_foot_1CC', 'box_20_foot_red'],
-                         ['box_20_foot_red', 'box_20_foot_red', 'box_20_foot_red'],
-                         ['box_20_foot_2CC', 'box_20_foot_2CC', 'box_20_foot_2CC'],
-                         ['box_20_foot_1CC', 'box_20_foot_1CC', 'box_20_foot_1CC'],
-                         ['box_20_foot_1CC', 'box_40_foot_1CC'],
-                         ['box_20_foot_2CC', 'box_40_foot_1CC'],
-                         ['box_20_foot_red', 'box_40_foot_red'],
-                         ['box_40_foot_1CC', 'box_20_foot_1CC'],
-                         ['box_40_foot_2CC', 'box_20_foot_2CC'],
-                         ['box_40_foot_2CC', 'box_20_foot_1CC'],
-                         ['box_30_foot_1CC', 'box_30_foot_1CC']]
+        self.variants = [['trucks_1_1CC', 'trucks_1_1CC', 'trucks_1_1CC'],
+                         ['trucks_1_1CC', 'trucks_1_1CC', 'trucks_1_1CC']]
 
 
 def get_container_gestalts_by_length(vehicle_length):
@@ -94,29 +86,25 @@ def get_container_gestalts_by_length(vehicle_length):
 
 registered_container_gestalts = []
 
-container_type_gestalt_mapping = {'box': [IntermodalBox16px, IntermodalBox24px, IntermodalBox32px]}
+vehicles_cargo_type_gestalt_mapping = {'box': [Trucks16px, Trucks24px, Trucks32px]}
 
-def register_container_gestalt(container_type, container_subtype):
-    for gestalt in container_type_gestalt_mapping[container_type]:
-        registered_container_gestalts.append(gestalt(container_subtype))
+def register_container_gestalt(vehicles_cargo_type, vehicles_cargo_subtype):
+    for gestalt in vehicles_cargo_type_gestalt_mapping[vehicles_cargo_type]:
+        registered_container_gestalts.append(gestalt(vehicles_cargo_subtype))
 
 def main():
     # yeah this is fiddly
     # we need to generate both cargo-specific sprites (visible cargo or specific recolour
     # and semi-generic fallback sprites, with specific type of container - tank, box, etc (and generic cargo and/or default recolour)
-    """
     # first do the defaults, which will be named xxxxxx_DFLT
-    for container_type in container_type_gestalt_mapping.keys():
-        if container_type not in ['bulk']: # exclude some types which have no meaningful default (and will fall back to box)
-            container_subtype = container_type + '_DFLT'
-            register_container_gestalt(container_type, container_subtype)
 
-    # then do the ones with cargo-specific graphics, e.g. bulk_COAL, tank_PETR etc
-    for container_subtype in set(GestaltGraphicsIntermodal().cargo_label_mapping.values()):
-        if 'DFLT' not in container_subtype: # exclude DFLT, handled explicitly elsewhere
-            container_type = container_subtype[0:-5]
-            register_container_gestalt(container_type, container_subtype)
-    """
+    # !! not clear that we need the subtypes in this way, there's no cargo-specific variation once we're into the vehicles_cargo_type
+
+
+    for vehicles_cargo_type in vehicles_cargo_type_gestalt_mapping.keys():
+        if vehicles_cargo_type not in ['bulk']: # exclude some types which have no meaningful default (and will fall back to box)
+            vehicles_cargo_subtype = vehicles_cargo_type + '_DFLT'
+            register_container_gestalt(vehicles_cargo_type, vehicles_cargo_subtype)
 
     """
     commented by design, this is just for debugging / project management
