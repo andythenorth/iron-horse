@@ -14,7 +14,6 @@ from vehicles import bright_country
 from vehicles import carrack
 from vehicles import cheddar_valley
 from vehicles import cheese_bug
-#from vehicles import chimera # dropped?
 from vehicles import chinook
 from vehicles import deasil
 from vehicles import dover
@@ -89,6 +88,7 @@ from vehicles import tencendur
 from vehicles import thunderer
 from vehicles import tideway
 from vehicles import tin_rocket
+from vehicles import toaster
 from vehicles import triton
 from vehicles import tyburn
 from vehicles import ultra_shoebox
@@ -181,7 +181,7 @@ def main(disabled=False):
                                blackthorn,
                                cheddar_valley,
                                endeavour,
-                               #chimera, # dropped?
+                               toaster,
                                flindermouse,
                                peasweep,
                                flanders_storm,
