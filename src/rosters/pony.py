@@ -6,6 +6,7 @@ from vehicles import bean_feast
 from vehicles import blackthorn
 from vehicles import blaze
 from vehicles import boar_cat
+from vehicles import bone
 from vehicles import braf
 from vehicles import breeze
 from vehicles import brenner_cab
@@ -180,6 +181,7 @@ def main(disabled=False):
                                lemon,
                                chinook,
                                grid,
+                               bone,
                                blackthorn,
                                cheddar_valley,
                                endeavour,
