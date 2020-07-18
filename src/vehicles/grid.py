@@ -6,7 +6,8 @@ def main(roster_id):
                             id='grid',
                             base_numeric_id=3350,
                             name='Grid',
-                            role='heavy_freight_1',
+                            role='heavy_freight',
+                            role_child_branch_num=1,
                             power=3300, # drops a bit on hp/speed from previous gen, but engine weight is lower
                             random_reverse=True,
                             intro_date_offset=-7,  # let's be a little bit earlier for this one

@@ -6,7 +6,8 @@ def main(roster_id):
                             id='toaster',
                             base_numeric_id=4800,
                             name='Toaster',
-                            role='heavy_freight_3',
+                            role='heavy_freight',
+                            role_child_branch_num=3,
                             power=4650,
                             # dibble for game balance, assume super-slip control
                             tractive_effort_coefficient=0.4,

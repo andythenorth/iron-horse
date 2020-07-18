@@ -6,7 +6,8 @@ def main(roster_id):
                             id='revolution',
                             base_numeric_id=3500,
                             name='Revolution',
-                            role='heavy_express_2',
+                            role='heavy_express',
+                            role_child_branch_num=2,
                             power=2800,
                             power_by_railtype={'RAIL': 2800, 'ELRL': 5400}, # big jump in elrl HP by design compared to Fury
                             random_reverse=True,

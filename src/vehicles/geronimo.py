@@ -6,7 +6,8 @@ def main(roster_id):
                                             id='geronimo',
                                             base_numeric_id=2140,
                                             name='Geronimo',
-                                            role='pax_railcar_2',
+                                            role='pax_railcar',
+                                            role_child_branch_num=2,
                                             power=420,  # RL EMU HP is much lower per single car, but eh
                                             pantograph_type='z-shaped-single-with-base',
                                             easter_egg_haulage_speed_bonus=True,

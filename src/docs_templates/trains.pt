@@ -19,7 +19,7 @@
                         trains
                     </p>
                     <ul class="inline">
-                        <tal:base_track_type repeat="base_track_type doc_helper.get_base_track_types()">
+                        <tal:base_track_type repeat="base_track_type doc_helper.base_track_types_and_labels">
                             <tal:not_empty condition="len(doc_helper.get_engines_by_roster_and_base_track_type(roster, base_track_type[0])) > 0">
                                 <li>
                                     <a href="#${base_track_type[0]}-engines">
@@ -29,7 +29,7 @@
                                 </li>
                             </tal:not_empty>
                         </tal:base_track_type>
-                        <tal:base_track_type repeat="base_track_type doc_helper.get_base_track_types()">
+                        <tal:base_track_type repeat="base_track_type doc_helper.base_track_types_and_labels">
                             <tal:not_empty condition="len(doc_helper.get_wagons_by_roster_and_base_track_type(roster, base_track_type[0])) > 0">
                                 <li>
                                     <a href="#${base_track_type[0]}-wagons">
@@ -40,7 +40,7 @@
                             </tal:not_empty>
                         </tal:base_track_type>
                     </ul>
-                    <tal:base_track_type repeat="base_track_type doc_helper.get_base_track_types()">
+                    <tal:base_track_type repeat="base_track_type doc_helper.base_track_types_and_labels">
                         <tal:not_empty condition="len(doc_helper.get_engines_by_roster_and_base_track_type(roster, base_track_type[0])) >  0">
                             <hr />
                             <h4 id="${base_track_type[0]}-engines">
@@ -93,7 +93,7 @@
                             </table>
                         </tal:not_empty>
                     </tal:base_track_type>
-                    <tal:base_track_type repeat="base_track_type doc_helper.get_base_track_types()">
+                    <tal:base_track_type repeat="base_track_type doc_helper.base_track_types_and_labels">
                         <tal:not_empty condition="len(doc_helper.get_wagons_by_roster_and_base_track_type(roster, base_track_type[0])) >  0">
                             <hr />
                             <h4 id="${base_track_type[0]}-wagons">

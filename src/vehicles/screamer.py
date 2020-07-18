@@ -6,7 +6,8 @@ def main(roster_id):
                             id='screamer',
                             base_numeric_id=450,
                             name='Screamer',
-                            role='heavy_express_4',
+                            role='heavy_express',
+                            role_child_branch_num=4,
                             power=5500, # match to same gen HST
                             random_reverse=True,
                             gen=5,

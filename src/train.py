@@ -104,6 +104,9 @@ class Consist(object):
         self.random_company_colour_swap = False  # over-ride in subclasses as needed
         # role is e.g. Heavy Freight, Express etc, and is used to automatically set model life as well as in docs
         self.role = kwargs.get('role', None)
+        # role child branch num places this vehicle on a specific child branch of the tech tree, where the role is the parent branch
+        # 1..n for branches with calculated replacements, -1..-n for jokers which are not automatically replaced in the tree, 0 reserved
+        self.role_child_branch_num = kwargs.get('role_child_branch_num', 0)
         # optionally suppress nmlc warnings about animated pixels for consists where they're intentional
         self.suppress_animated_pixel_warnings = kwargs.get(
             'suppress_animated_pixel_warnings', False)
@@ -226,17 +229,17 @@ class Consist(object):
         # days offset is used to control *synchronising* (or not) intro dates across groups of vehicles where needed
         # see https://github.com/OpenTTD/OpenTTD/pull/7147 for explanation
         # this does *not* use the role group mapping in global constants, as it's more fragmented to avoid too many new vehicle messages at once
-        role_to_role_groups_mapping = {'express_core': ['express_1', 'heavy_express_1'],
-                                       'express_non_core': ['branch_express_1', 'branch_express_2', 'express_2', 'heavy_express_2', 'heavy_express_3', 'heavy_express_4', 'luxury_pax_railcar'],
-                                       'driving_cab': ['driving_cab_express_1'],
-                                       'freight_core': ['freight_1', 'heavy_freight_1',],
-                                       'freight_non_core': ['branch_freight', 'freight_2', 'heavy_freight_2', 'heavy_freight_3', 'heavy_freight_4'],
-                                       'hst': ['hst'],
-                                       'metro': ['mail_metro', 'pax_metro'],
-                                       'railcar': ['mail_railcar_1', 'mail_railcar_2', 'pax_railcar_1', 'pax_railcar_2'],
-                                       'very_high_speed': ['very_high_speed'],
-                                       'universal': ['universal'],
-                                       'lolz': ['joker_heavy_express', 'joker_heavy_freight', 'gronk!', 'snoughplough!']}
+        role_to_role_groups_mapping = {'express_core': {'express': [1], 'heavy_express': [1]},
+                                       'express_non_core': {'branch_express': [1, 2], 'express': [2], 'heavy_express': [2, 3, 4], 'luxury_pax_railcar': [1]},
+                                       'driving_cab': {'driving_cab_express': [1]},
+                                       'freight_core': {'freight': [1], 'heavy_freight':[1]},
+                                       'freight_non_core': {'branch_freight': [1], 'freight': [2], 'heavy_freight': [2, 3, 4]},
+                                       'hst': {'hst': [1]},
+                                       'metro': {'mail_metro': [1], 'pax_metro': [1]},
+                                       'railcar': {'mail_railcar': [1, 2], 'pax_railcar': [1, 2]},
+                                       'very_high_speed': {'very_high_speed': [1, 2]},
+                                       'universal': {'universal': [1]},
+                                       'lolz': {'joker_heavy_express': [-1], 'joker_heavy_freight': [-1], 'gronk!': [-1], 'snoughplough!': [-1]}}
         if self.gen == 1:
             # to ensure a fully playable roster is available for gen 1, force the days offset to 0
             # for explanation see https://www.tt-forums.net/viewtopic.php?f=26&t=68616&start=460#p1224299
@@ -248,8 +251,9 @@ class Consist(object):
             result = None
             # assume role is defined (_probably_ fine)
             for group_key, group_role_list in role_to_role_groups_mapping.items():
-                if self.role in group_role_list:
-                    result = global_constants.intro_date_offsets_by_role_group[group_key]
+                if self.role in group_role_list.keys():
+                    if self.role_child_branch_num in group_role_list[self.role]:
+                        result = global_constants.intro_date_offsets_by_role_group[group_key]
             # check we actually got a result
             assert(result != None), 'no role group found for role %s for consist %s' % (self.role,  self.id)
         return result
@@ -286,6 +290,9 @@ class Consist(object):
     @property
     def replacement_consist(self):
         # option exists to force a replacement consist, this is used to merge tech tree branches
+        if self.role_child_branch_num == 0:
+            print('OOF', self.id, self.role_child_branch_num)
+
         if self._replacement_consist_id is not None:
             for consist in  self.roster.engine_consists:
                 if consist.id == self._replacement_consist_id:
@@ -296,7 +303,7 @@ class Consist(object):
             similar_consists = []
             replacement_consist = None
             for consist in self.roster.engine_consists:
-                if consist.role == self.role and consist.base_track_type == self.base_track_type:
+                if (consist.role == self.role) and (consist.role_child_branch_num == self.role_child_branch_num) and (consist.base_track_type == self.base_track_type):
                     similar_consists.append(consist)
             for consist in sorted(similar_consists, key=lambda consist: consist.intro_date):
                 if consist.intro_date > self.intro_date:
@@ -698,13 +705,13 @@ class PassengerEngineRailcarConsist(PassengerEngineConsist):
         # where var 14 checks consecutive chain of a single ID, I provided an alternative checking a list of IDs
         # may or may not handle articulated vehicles correctly (probably not, no actual use cases for that)
         # this redefinition specific to pax railcars and will be fragile if railcars or trailers are changed/extended
-        # also relies on same ruleset being used for all of pax_railcar_1, pax_railcar_2 and pax railcar trailers
+        # also relies on same ruleset being used for all of pax_railcar and pax railcar trailers
         result = []
         # assume diesel and electric railcars are combinable, this isn't a specific design intent, but stops annoying bugs when both are combined in one consist with trailers
         # this will create edge cases if diesel and electric MUs have different liveries set, can't have everything perfect eh?
         # this will catch self also
         for consist in self.roster.engine_consists:
-            if (consist.gen == self.gen) and (consist.base_track_type == self.base_track_type) and (consist.role in ['pax_railcar_1', 'pax_railcar_2']):
+            if (consist.gen == self.gen) and (consist.base_track_type == self.base_track_type) and (consist.role in ['pax_railcar']):
                 result.append(consist.base_numeric_id)
         for consist in self.roster.wagon_consists['passenger_railcar_trailer_car']:
             if (consist.gen == self.gen) and (consist.base_track_type == self.base_track_type):
@@ -1009,7 +1016,8 @@ class MailEngineDrivingCabConsist(MailEngineConsist):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.role = 'driving_cab_express_1'
+        self.role = 'driving_cab_express'
+        self.role_child_branch_num = 1
         self.buy_menu_hint_driving_cab = True
         self.allow_flip = True
         # confer a small power value for 'operational efficiency' (HEP load removed from engine eh?) :)
@@ -1040,6 +1048,7 @@ class SnowploughEngineConsist(EngineConsist):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.role = 'snoughplough!' # blame Pikka eh?
+        self.role_child_branch_num = -1
         self.buy_menu_hint_driving_cab = True
         self.allow_flip = True
         # nerf power and TE down to minimal values, these confer a tiny performance boost to the train, 'operational efficiency' :P
@@ -1951,11 +1960,11 @@ class PassengerRailcarTrailerCarConsist(PassengerCarConsistBase):
         # where var 14 checks consecutive chain of a single ID, I provided an alternative checking a list of IDs
         # may or may not handle articulated vehicles correctly (probably not, no actual use cases for that)
         # this redefinition specific to pax railcar trailers and will be fragile if railcars or trailers are changed/extended
-        # also relies on same ruleset being used for all of pax_railcar_1, pax_railcar_2 and pax railcar trailers
+        # also relies on same ruleset being used for all of pax_railcar and pax railcar trailers
         result = []
         result.append(self.base_numeric_id)
         for consist in self.roster.engine_consists:
-            if (consist.gen == self.gen) and (consist.base_track_type == self.base_track_type) and (consist.role in ['pax_railcar_1', 'pax_railcar_2']):
+            if (consist.gen == self.gen) and (consist.base_track_type == self.base_track_type) and (consist.role in ['pax_railcar']):
                 result.append(consist.base_numeric_id)
         # the list requires 16 entries as the nml check has 16 switches, fill out to empty list entries with '-1', which won't match any IDs
         for i in range (len(result), 16):
@@ -2003,7 +2012,7 @@ class PassengerLuxuryRailcarTrailerCarConsist(PassengerCarConsistBase):
         # where var 14 checks consecutive chain of a single ID, I provided an alternative checking a list of IDs
         # may or may not handle articulated vehicles correctly (probably not, no actual use cases for that)
         # this redefinition specific to pax railcar trailers and will be fragile if railcars or trailers are changed/extended
-        # also relies on same ruleset being used for all of pax_railcar_1, pax_railcar_2 and pax railcar trailers
+        # also relies on same ruleset being used for all of pax_railcar and pax railcar trailers
         result = []
         result.append(self.base_numeric_id)
         for consist in self.roster.engine_consists:

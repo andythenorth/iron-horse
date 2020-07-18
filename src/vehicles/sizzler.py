@@ -6,7 +6,8 @@ def main(roster_id):
                             id='sizzler',
                             base_numeric_id=3150,
                             name='Sizzler',
-                            role='heavy_express_4',
+                            role='heavy_express',
+                            role_child_branch_num=4,
                             power=6600, # match to same gen HST
                             random_reverse=True,
                             gen=6,

@@ -77,9 +77,69 @@ class DocHelper(object):
         # default result
         return None
 
-    def engines_as_tech_tree_for_graphviz(self, consists):
+    def engines_as_tech_tree(self, consists):
+        # !! does not handle roster at time of writing
+        # structure
+        # |- base_track_type
+        #    |- role_group
+        #       |- role
+        #          |- role child_branch
+        #             |- generation
+        #                |- engine consist
+        # if there's no engine consist matching a combination of keys in the tree, there will be a None entry for that node in the tree, to ease walking the tree
         result = {}
-        for base_track_type in self.get_base_track_types():
+        # much nested loops
+        for base_track_type_and_label in self.base_track_types_and_labels:
+            result[base_track_type_and_label] = {}
+            for role_group in global_constants.role_group_mapping:
+                result[base_track_type_and_label][role_group] = {}
+                for role in global_constants.role_group_mapping[role_group]:
+                    result[base_track_type_and_label][role_group][role] = {}
+                    role_child_branches = {}
+                    for role_child_branch in self.get_role_child_branches(consists, base_track_type_and_label[0], role):
+                        role_child_branches[role_child_branch] = {}
+                        # walk the generations, providing default None objects
+                        for gen in range(1, len(self.get_roster_by_id('pony', iron_horse.registered_rosters).intro_dates[base_track_type_and_label[0]]) + 1):
+                            role_child_branches[role_child_branch][gen] = None
+                    # get the engines matching this role and track type, and place them into the child branches
+                    for consist in consists:
+                        if (consist.base_track_type == base_track_type_and_label[0]) and (consist.role == role):
+                            role_child_branches[consist.role_child_branch_num][consist.gen] = consist
+                    result[base_track_type_and_label][role_group][role] = role_child_branches
+        return result
+
+        if role_group is None:
+            print('role_group None passed - needs refactored')
+            return []
+        else:
+            roles_ordered = global_constants.role_group_mapping[role_group]
+
+        roles_to_include = []
+        for consist in consists:
+            if consist.base_track_type == base_track_type[0]:
+                if consist.role is not None:
+                    if consist.role in roles_ordered:
+                        roles_to_include.append(consist.role)
+        result = []
+        for role in roles_ordered:
+            if role in set(roles_to_include):
+                result.append(role)
+        return result
+
+    def get_role_child_branches(self, consists, base_track_type, role):
+        result = []
+        for consist in consists:
+            if consist.base_track_type == base_track_type:
+                if consist.role is not None and consist.role == role:
+                    result.append(consist.role_child_branch_num)
+        return set(result)
+
+    def engines_as_tech_tree_for_graphviz(self, consists):
+        # deprecated?
+        result = {}
+        # !! return nothing, needs ported to use engines_as_tech_tree
+        return result
+        for base_track_type in self.base_track_types_and_labels:
             result[base_track_type[0]] = {}
             for role in self.engine_roles(base_track_type, consists):
                 role_engines = []
@@ -117,26 +177,8 @@ class DocHelper(object):
                 result[base_track_type[0]][role] = role_engines
         return result
 
-    def engine_roles(self, base_track_type, consists, role_group=None):
-        if role_group is None:
-            print('role_group None passed - needs refactored')
-            return []
-        else:
-            roles_ordered = global_constants.role_group_mapping[role_group]
-
-        roles_to_include = []
-        for consist in consists:
-            if consist.base_track_type == base_track_type[0]:
-                if consist.role is not None:
-                    if consist.role in roles_ordered:
-                        roles_to_include.append(consist.role)
-        result = []
-        for role in roles_ordered:
-            if role in set(roles_to_include):
-                result.append(role)
-        return result
-
     def get_engine_by_role_and_base_track_type_and_generation(self, consists, role, base_track_type, gen):
+        # deprecate, only used by engines_as_tech_tree_for_graphviz
         for consist in consists:
             if consist.role == role:
                 if consist.base_track_type == base_track_type[0]:
@@ -224,9 +266,10 @@ class DocHelper(object):
     def get_active_nav(self, doc_name, nav_link):
         return ('', 'active')[doc_name == nav_link]
 
-    def get_base_track_types(self):
-        # tuple of pairs, need consistent order so can't use dict
-        return (('RAIL', 'Standard Gauge'), ('NG', 'Narrow Gauge'), ('METRO', 'Metro'))
+    @property
+    def base_track_types_and_labels(self):
+        # list of pairs, need consistent order so can't use dict
+        return [('RAIL', 'Standard Gauge'), ('NG', 'Narrow Gauge'), ('METRO', 'Metro')]
 
 def render_docs(doc_list, file_type, docs_output_path, iron_horse, consists, use_markdown=False):
     # imports inside functions are generally avoided

@@ -7,6 +7,7 @@ def main(roster_id):
                             base_numeric_id=1720,
                             name='Hercules',
                             role='branch_freight',
+                            role_child_branch_num=1,
                             power=1350, # progression calculated to maintain hp/speed ratio from previous gen
                             # dibble TE up for game balance, assume low gearing or something
                             tractive_effort_coefficient=0.375,

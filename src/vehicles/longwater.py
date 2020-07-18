@@ -7,6 +7,7 @@ def main(roster_id):
                                      base_numeric_id=290,
                                      name='Longwater',
                                      role='mail_metro',
+                                     role_child_branch_num=1,
                                      power=600,
                                      gen=1,
                                      sprites_complete=True)

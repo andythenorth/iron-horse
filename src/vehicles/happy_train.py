@@ -6,7 +6,8 @@ def main(roster_id):
                                             id='happy_train',
                                             base_numeric_id=100,
                                             name='Happy Train',
-                                            role='pax_railcar_1',
+                                            role='pax_railcar',
+                                            role_child_branch_num=1,
                                             power=500,
                                             gen=6,
                                             intro_date_offset=-5,  # introduce early by design

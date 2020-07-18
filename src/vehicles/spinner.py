@@ -6,7 +6,8 @@ def main(roster_id):
                             id='spinner',
                             base_numeric_id=480,
                             name='4-2-2 Spinner',
-                            role='express_1',
+                            role='express',
+                            role_child_branch_num=1,
                             power=950,
                             tractive_effort_coefficient=0.12,
                             fixed_run_cost_points=160, # minor cost bonus so it can make money

@@ -7,6 +7,7 @@ def main(roster_id):
                                                      base_numeric_id=130,
                                                      name='Brenner Cab',
                                                      role='very_high_speed',
+                                                     role_child_branch_num=1,
                                                      dual_headed=True,
                                                      power=3000,
                                                      gen=6,

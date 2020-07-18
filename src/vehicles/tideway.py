@@ -7,6 +7,7 @@ def main(roster_id):
                                      base_numeric_id=2200,
                                      name='Tideway',
                                      role='mail_metro',
+                                     role_child_branch_num=1,
                                      power=1100,
                                      gen=3,
                                      sprites_complete=True)

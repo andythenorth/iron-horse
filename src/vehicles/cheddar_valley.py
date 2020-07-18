@@ -6,7 +6,8 @@ def main(roster_id):
                             id='cheddar_valley',
                             base_numeric_id=220,
                             name='Cheddar Valley',
-                            role='heavy_freight_3',
+                            role='heavy_freight',
+                            role_child_branch_num=3,
                             power=4200,
                             # dibble for game balance, assume super-slip control
                             tractive_effort_coefficient=0.4,

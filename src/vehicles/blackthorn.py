@@ -6,7 +6,8 @@ def main(roster_id):
                             id='blackthorn',
                             base_numeric_id=3470,
                             name='Blackthorn',
-                            role='heavy_freight_1',
+                            role='heavy_freight',
+                            role_child_branch_num=1,
                             power=3650, # progression calculated to maintain hp/speed ratio from previous gen
                             random_reverse=True,
                             gen=6,

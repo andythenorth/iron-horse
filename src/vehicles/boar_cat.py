@@ -7,6 +7,7 @@ def main(roster_id):
                             base_numeric_id=1320,
                             name='Boar Cat',
                             role='universal',
+                            role_child_branch_num=1,
                             power=800,
                             random_reverse=True,
                             base_track_type='NG',

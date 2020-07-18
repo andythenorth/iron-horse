@@ -7,6 +7,7 @@ def main(roster_id):
                                            base_numeric_id=3330,
                                            name='Blaze HST',
                                            role='hst', # quite a specific role, may or may not scale to other rosters
+                                           role_child_branch_num=1,
                                            power=5500,
                                            intro_date_offset=-10,  # let's be a little bit earlier for this one - keep coaches matched
                                            gen=5,

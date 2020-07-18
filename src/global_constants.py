@@ -75,10 +75,10 @@ PR_RUNNING_TRAIN_DIESEL = -4
 
 # generalised mapping of roles to groups
 # order is significant, so OrderedDict is used (this wouldn't be necessary for python >= 3.7, but at time of writing compile uses python 3.5)
-role_group_mapping = OrderedDict([('express', ['branch_express_1', 'branch_express_2', 'express_1', 'express_2', 'heavy_express_1', 'heavy_express_2', 'heavy_express_3', 'heavy_express_4']),
-                                  ('driving_cab', ['driving_cab_express_1']),
-                                  ('freight', ['branch_freight', 'freight_1', 'freight_2', 'heavy_freight_1', 'heavy_freight_2', 'heavy_freight_3', 'heavy_freight_4']),
-                                  ('universal', ['universal', 'mail_railcar_1', 'mail_railcar_2', 'pax_railcar_1', 'pax_railcar_2']),
+role_group_mapping = OrderedDict([('express', ['branch_express', 'express', 'heavy_express',]),
+                                  ('driving_cab', ['driving_cab_express']),
+                                  ('freight', ['branch_freight', 'freight', 'heavy_freight']),
+                                  ('universal', ['universal', 'mail_railcar', 'pax_railcar']),
                                   ('luxury_railcar', ['luxury_pax_railcar']),
                                   ('hst', ['hst']),
                                   ('very_high_speed', ['very_high_speed']),

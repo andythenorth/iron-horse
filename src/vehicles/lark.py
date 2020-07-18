@@ -6,7 +6,8 @@ def main(roster_id):
                             id='lark',
                             base_numeric_id=110,
                             name='4-4-2 Lark',
-                            role='branch_express_1',
+                            role='branch_express',
+                            role_child_branch_num=1,
                             power=500,
                             tractive_effort_coefficient=0.2,
                             fixed_run_cost_points=100, # substantial cost bonus so it can make money

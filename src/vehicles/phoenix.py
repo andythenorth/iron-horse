@@ -6,7 +6,8 @@ def main(roster_id):
                             id='phoenix',
                             base_numeric_id=160,
                             name='Phoenix',
-                            role='freight_1',
+                            role='freight',
+                            role_child_branch_num=1,
                             power=2150, # progression calculated to maintain hp/speed ratio from previous gen
                             random_reverse=True,
                             gen=6,

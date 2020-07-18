@@ -131,9 +131,10 @@ def get_livery_2_engine_ids():
     result = []
     for roster in get_active_rosters():
         for consist in roster.engine_consists:
-            # second livery choice is deliberate, means 'as seen in buy menu' livery is built for common case of express_1, heavy_express_1
+            # second livery choice is deliberate, means 'as seen in buy menu' livery is built for common case of express 1, heavy_express 1
             # 'heavy_express_4' doesn't use livery_2 by design (tied to Pony engine livery assumptions)
-            if consist.role in ['branch_express_1', 'branch_express_2', 'express_2', 'heavy_express_2', 'pax_railcar_2', 'mail_railcar_2']:
+            # ! this (x,y) tuple format is weird and won't scale well, see train.py intro_date_days_offset() for a dict based solution to a similar problem
+            if (consist.role, consist.role_child_branch_num) in [('branch_express', 1), ('express', 2), ('heavy_express', 2), ('pax_railcar', 2), ('mail_railcar', 2)]:
                 result.append(consist.id)
     if len(result) > 255:
         utils.echo_message("action 2 switch is limited to 255 values, get_livery_2_engine_ids exceeds this - needs split across multiple switches")

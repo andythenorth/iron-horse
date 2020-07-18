@@ -6,7 +6,8 @@ def main(roster_id):
                                        id='pylon',
                                        base_numeric_id=2120,
                                        name='Pylon',
-                                       role='mail_railcar_2',
+                                       role='mail_railcar',
+                                       role_child_branch_num=2,
                                        power=820,
                                        power_by_railtype={'RAIL': 450, 'ELRL': 820}, # bit nerfed on diesel, by design
                                        pantograph_type='z-shaped-single-with-base',

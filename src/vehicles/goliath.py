@@ -7,6 +7,7 @@ def main(roster_id):
                             base_numeric_id=780,
                             name='Goliath',
                             role='branch_freight',
+                            role_child_branch_num=1,
                             power=1450,
                             random_reverse=True,
                             gen=6,

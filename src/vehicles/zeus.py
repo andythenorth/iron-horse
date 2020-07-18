@@ -6,7 +6,8 @@ def main(roster_id):
                                             id='zeus',
                                             base_numeric_id=3210,
                                             name='Zeus',
-                                            role='pax_railcar_2',
+                                            role='pax_railcar',
+                                            role_child_branch_num=2,
                                             power=620,
                                             power_by_railtype={'RAIL': 360, 'ELRL': 620}, # bit nerfed on diesel, by design
                                             pantograph_type='z-shaped-single-with-base',

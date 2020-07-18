@@ -7,6 +7,7 @@ def main(roster_id):
                                                   base_numeric_id=3800,
                                                   name='Bright Country',
                                                   role='luxury_pax_railcar',
+                                                  role_child_branch_num=1,
                                                   power=900,
                                                   pantograph_type='z-shaped-single-with-base',
                                                   gen=6,

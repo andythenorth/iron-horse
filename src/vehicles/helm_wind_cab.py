@@ -7,6 +7,7 @@ def main(roster_id):
                                                      base_numeric_id=3060,
                                                      name='Helm Wind Cab',
                                                      role='very_high_speed',
+                                                     role_child_branch_num=1,
                                                      power=1700,
                                                      dual_headed=True,
                                                      pantograph_type='z-shaped-single',

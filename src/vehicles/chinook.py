@@ -6,7 +6,8 @@ def main(roster_id):
                             id='chinook',
                             base_numeric_id=120,
                             name='Chinook',
-                            role='heavy_freight_1',
+                            role='heavy_freight',
+                            role_child_branch_num=1,
                             power=2900,
                             gen=4,
                             sprites_complete=True)

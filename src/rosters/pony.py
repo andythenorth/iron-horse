@@ -30,7 +30,6 @@ from vehicles import fury
 from vehicles import geronimo
 from vehicles import girt_licker
 from vehicles import goliath
-#from vehicles import gosling_blast # dropped?
 from vehicles import gowsty
 from vehicles import grid
 from vehicles import griffon
@@ -99,6 +98,7 @@ from vehicles import workish
 from vehicles import wyvern
 from vehicles import zeus
 from vehicles import zorro
+
 
 def main(disabled=False):
     # migration note; see also render_docs as it may already have methods for getting the tech tree in generation order

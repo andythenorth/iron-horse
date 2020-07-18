@@ -7,6 +7,7 @@ def main(roster_id):
                             base_numeric_id=240,
                             name='2-6-4 Bean Feast',
                             role='universal',
+                            role_child_branch_num=1,
                             base_track_type='NG',
                             power=500,
                             tractive_effort_coefficient=0.2,

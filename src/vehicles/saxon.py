@@ -7,6 +7,7 @@ def main(roster_id):
                             base_numeric_id=1330,
                             name='0-8-0 Saxon',
                             role='branch_freight',
+                            role_child_branch_num=1,
                             power=1000,
                             # dibble TE up for game balance, assume low gearing or something
                             tractive_effort_coefficient=0.375,

@@ -7,6 +7,7 @@ def main(roster_id):
                                            base_numeric_id=3830,
                                            name='Firebird',
                                            role='hst', # quite a specific role, may or may not scale to other rosters
+                                           role_child_branch_num=1,
                                            power=3300, # it's the Deltic that never was!  It's OP, but eh, it's just cartoon trains.
                                            gen=4,
                                            sprites_complete=True)
