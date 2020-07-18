@@ -235,11 +235,11 @@ class Consist(object):
                                        'freight_core': {'freight': [1], 'heavy_freight':[1]},
                                        'freight_non_core': {'branch_freight': [1], 'freight': [2], 'heavy_freight': [2, 3, 4]},
                                        'hst': {'hst': [1]},
+                                       'jokers': {'gronk!': [-1], 'heavy_express': [-1], 'heavy_freight': [-1], 'snoughplough!': [-1]},
                                        'metro': {'mail_metro': [1], 'pax_metro': [1]},
                                        'railcar': {'mail_railcar': [1, 2], 'pax_railcar': [1, 2]},
                                        'very_high_speed': {'very_high_speed': [1, 2]},
-                                       'universal': {'universal': [1]},
-                                       'lolz': {'joker_heavy_express': [-1], 'joker_heavy_freight': [-1], 'gronk!': [-1], 'snoughplough!': [-1]}}
+                                       'universal': {'universal': [1]}}
         if self.gen == 1:
             # to ensure a fully playable roster is available for gen 1, force the days offset to 0
             # for explanation see https://www.tt-forums.net/viewtopic.php?f=26&t=68616&start=460#p1224299

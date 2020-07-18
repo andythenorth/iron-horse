@@ -6,10 +6,9 @@ def main(roster_id):
                             id='duff',
                             base_numeric_id=4810,
                             name='Duff',
-                            role='joker_heavy_express',
-                            role_child_branch_num=-1,
+                            role='heavy_express',
+                            role_child_branch_num=-1, # -ve because Joker
                             power=2200,
-                            speed=105, # ! jokers aren't able to find correct speed currently
                             random_reverse=True,
                             gen=4,
                             fixed_run_cost_points=60, # give a bonus so this can be a genuine mixed-traffic engine

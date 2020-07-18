@@ -75,7 +75,7 @@ PR_RUNNING_TRAIN_DIESEL = -4
 
 # generalised mapping of roles to groups
 # order is significant, so OrderedDict is used (this wouldn't be necessary for python >= 3.7, but at time of writing compile uses python 3.5)
-role_group_mapping = OrderedDict([('express', ['branch_express', 'express', 'heavy_express',]),
+role_group_mapping = OrderedDict([('express', ['branch_express', 'express', 'heavy_express']),
                                   ('driving_cab', ['driving_cab_express']),
                                   ('freight', ['branch_freight', 'freight', 'heavy_freight']),
                                   ('universal', ['universal', 'mail_railcar', 'pax_railcar']),
@@ -112,7 +112,7 @@ intro_date_offsets_by_role_group = {'universal': 0,
                                     'very_high_speed': 8,
                                     'food_wagons': 9,
                                     'non_core_wagons': 10,
-                                    'lolz': 11}
+                                    'jokers': 11}
 
 # up to 127 temp storages are available, might as well allocate them exclusively within the graphics chain to avoid any collisions
 temp_storage_ids = dict(id_of_neighbouring_vehicle = 0, # used to avoid expensively reading var 61 multiple times, used in re-implementation of var 41 to check multiple IDs not a single ID

@@ -150,6 +150,9 @@
                                         <span tal:condition="'mail_railcar' not in role and 'pax_railcar' not in role">
                                             ${doc_helper.get_role_string_from_role(role)}
                                         </span>
+                                        <span tal:condition="role_child_branch < 0 and role not in ['gronk!', 'snoughplough!']">
+                                            Joker
+                                        </span>
                                     </th>
                                     <td tal:repeat="gen range(1, len(intro_dates) + 1)" class="text-center" style="width: 160px;">
                                         <tal:consist define="consist tech_tree[base_track_type_and_label][role_group][role][role_child_branch][gen]">
