@@ -82,7 +82,7 @@ role_group_mapping = OrderedDict([('express', ['branch_express_1', 'branch_expre
                                   ('luxury_railcar', ['luxury_pax_railcar']),
                                   ('hst', ['hst']),
                                   ('very_high_speed', ['very_high_speed']),
-                                  ('lolz', ['gronk!', 'snoughplough!']),
+                                  ('lolz', ['joker_heavy_express', 'joker_heavy_freight', 'gronk!', 'snoughplough!']),
                                   ('metro', ['mail_metro', 'pax_metro'])])
 
 # keep alphabetised, order not significant

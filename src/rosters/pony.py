@@ -20,6 +20,7 @@ from vehicles import dover
 from vehicles import dragon
 from vehicles import driving_cab_pony_gen_5
 from vehicles import driving_cab_pony_gen_6
+from vehicles import duff
 from vehicles import endeavour
 from vehicles import firebird
 from vehicles import fleet
@@ -147,6 +148,7 @@ def main(disabled=False):
                                thunderer,
                                strongbow,
                                wyvern,
+                               duff,
                                vanguard,
                                revolution,
                                pegasus,
