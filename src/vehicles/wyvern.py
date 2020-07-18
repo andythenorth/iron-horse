@@ -8,7 +8,7 @@ def main(roster_id):
                             name='Wyvern',
                             role='heavy_express',
                             role_child_branch_num=1,
-                            power=2200,
+                            power=2300, # not an exact linear progression in this tree
                             random_reverse=True,
                             gen=4,
                             intro_date_offset=-6,  # let's not have everything turn up in 1960

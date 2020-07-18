@@ -1,7 +1,7 @@
 <!--! fragment to be included in a wrapper -->
 <div class="row">
     <div class="span12">
-        <h1 style="color:red">Arrows to replacement engine are missing in some cases - probably an off-by-one in a calculation?</h1>
+        <h1 style="color:red">Arrows to replacement engine are missing in some cases, unwanted in others - maybe an off-by-one in a calculation?</h1>
         <p>
             <a href="tech_tree_table_blue.html">Blue</a>
             |

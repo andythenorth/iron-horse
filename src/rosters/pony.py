@@ -2,9 +2,11 @@ from roster import Roster
 
 from vehicles import ares
 from vehicles import athena
+#from vehicles import badenoch # doesn't work imho
 from vehicles import bean_feast
 from vehicles import blackthorn
 from vehicles import blaze
+from vehicles import blind_smuir
 from vehicles import boar_cat
 from vehicles import bone
 from vehicles import braf
@@ -153,6 +155,7 @@ def main(disabled=False):
                                vanguard,
                                revolution,
                                pegasus,
+                               #badenoch, # deprecated Joker, sprite is odd, doesn't add much to game
                                dragon,
                                onslaught,
                                relentless,
@@ -174,6 +177,7 @@ def main(disabled=False):
                                gwynt,
                                braf,
                                haar,
+                               blind_smuir,
                                growler,
                                slug,
                                phoenix,

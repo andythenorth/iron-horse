@@ -132,7 +132,7 @@ def get_livery_2_engine_ids():
     for roster in get_active_rosters():
         for consist in roster.engine_consists:
             # second livery choice is deliberate, means 'as seen in buy menu' livery is built for common case of express 1, heavy_express 1
-            # 'heavy_express_4' doesn't use livery_2 by design (tied to Pony engine livery assumptions)
+            # note that -2 is used for heavy_express, be careful which engines are in this joker branch
             # ! this (x,y) tuple format is weird and won't scale well, see train.py intro_date_days_offset() for a dict based solution to a similar problem
             if (consist.role, consist.role_child_branch_num) in [('branch_express', 1), ('express', 2), ('heavy_express', 2), ('pax_railcar', 2), ('mail_railcar', 2)]:
                 result.append(consist.id)
