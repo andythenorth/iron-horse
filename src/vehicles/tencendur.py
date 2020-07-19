@@ -8,7 +8,7 @@ def main(roster_id):
                             name='4-4-0 Tencendur',
                             role='express',
                             role_child_branch_num=1,
-                            power=1250,
+                            power=1400,
                             tractive_effort_coefficient=0.18,
                             gen=3,
                             sprites_complete=True)

@@ -8,7 +8,7 @@ def main(roster_id):
                             name='4-4-0 Carrack',
                             role='express',
                             role_child_branch_num=1,
-                            power=1050,
+                            power=1150,
                             tractive_effort_coefficient=0.18,
                             gen=2,
                             intro_date_offset=-3,  # introduce earlier than gen epoch by design
