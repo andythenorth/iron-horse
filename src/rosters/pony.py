@@ -2,7 +2,7 @@ from roster import Roster
 
 from vehicles import ares
 from vehicles import athena
-#from vehicles import badenoch # doesn't work imho
+from vehicles import avenger
 from vehicles import bean_feast
 from vehicles import blackthorn
 from vehicles import blaze
@@ -49,6 +49,7 @@ from vehicles import high_flyer
 from vehicles import hurly_burly
 from vehicles import jupiter
 from vehicles import kelpie
+from vehicles import lamia
 from vehicles import lark
 from vehicles import lemon
 from vehicles import little_bear
@@ -84,6 +85,7 @@ from vehicles import snapper
 from vehicles import snowplough_pony_gen_2
 from vehicles import spinner
 from vehicles import stoat
+from vehicles import streamer
 from vehicles import strongbow
 from vehicles import sunshine_coast
 from vehicles import super_shoebox
@@ -150,12 +152,12 @@ def main(disabled=False):
                                shredder,
                                thunderer,
                                strongbow,
+                               streamer,
                                wyvern,
                                duff,
                                vanguard,
                                revolution,
                                pegasus,
-                               #badenoch, # deprecated Joker, sprite is odd, doesn't add much to game
                                dragon,
                                onslaught,
                                relentless,
@@ -164,6 +166,7 @@ def main(disabled=False):
                                roarer,
                                fury,
                                screamer,
+                               avenger,
                                sizzler,
                                # driving cab cars
                                driving_cab_pony_gen_5,
@@ -197,6 +200,7 @@ def main(disabled=False):
                                #gosling_blast, # dropped?
                                # joker engines / snowploughs
                                grub,
+                               lamia,
                                gronk,
                                snowplough_pony_gen_2,
                                # diesel railcars

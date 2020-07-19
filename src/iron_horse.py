@@ -134,7 +134,7 @@ def get_livery_2_engine_ids():
             # second livery choice is deliberate, means 'as seen in buy menu' livery is built for common case of express 1, heavy_express 1
             # note that -2 is used for heavy_express, be careful which engines are in this joker branch
             # ! this (x,y) tuple format is weird and won't scale well, see train.py intro_date_days_offset() for a dict based solution to a similar problem
-            if (consist.role, consist.role_child_branch_num) in [('branch_express', 1), ('express', 2), ('heavy_express', 2), ('pax_railcar', 2), ('mail_railcar', 2)]:
+            if (consist.role, consist.role_child_branch_num) in [('branch_express', 1), ('express', 2), ('heavy_express', 2), ('heavy_express', -2), ('pax_railcar', 2), ('mail_railcar', 2)]:
                 result.append(consist.id)
     if len(result) > 255:
         utils.echo_message("action 2 switch is limited to 255 values, get_livery_2_engine_ids exceeds this - needs split across multiple switches")

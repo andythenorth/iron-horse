@@ -15,12 +15,12 @@ def main(roster_id):
                             sprites_complete=True)
 
     consist.add_unit(type=SteamEngineUnit,
-                     weight=94,
+                     weight=96,
                      vehicle_length=6,
                      spriterow_num=0)
 
     consist.add_unit(type=SteamEngineTenderUnit,
-                     weight=36,
+                     weight=34,
                      vehicle_length=4,
                      spriterow_num=1)
 

@@ -7,12 +7,12 @@ def main(roster_id):
                             base_numeric_id=450,
                             name='Screamer',
                             role='heavy_express',
-                            role_child_branch_num=4,
-                            power=5500, # match to same gen HST
+                            role_child_branch_num=-2,
+                            power=5500,
                             random_reverse=True,
                             gen=5,
                             pantograph_type='z-shaped-double',
-                            intro_date_offset=3,   # introduce later than gen epoch by design
+                            intro_date_offset=2, # introduce later than gen epoch by design
                             sprites_complete=True)
 
     consist.add_unit(type=ElectricEngineUnit,

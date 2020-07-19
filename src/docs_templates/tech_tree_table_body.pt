@@ -152,7 +152,7 @@
                                             ${doc_helper.get_role_string_from_role(role)}
                                         </span>
                                         <span tal:condition="role_child_branch < 0 and role not in ['gronk!', 'snoughplough!']">
-                                            Joker
+                                            Joker [${role_child_branch}]
                                         </span>
                                     </th>
                                     <td tal:repeat="gen range(1, len(intro_dates) + 1)" class="text-center" style="width: 160px;">
