@@ -84,11 +84,13 @@ from vehicles import slug
 from vehicles import snapper
 from vehicles import snowplough_pony_gen_2
 from vehicles import spinner
+# from vehicles import steadfast # not convinced
 from vehicles import stoat
 from vehicles import streamer
 from vehicles import strongbow
 from vehicles import sunshine_coast
 from vehicles import super_shoebox
+from vehicles import swift
 from vehicles import tencendur
 from vehicles import thunderer
 from vehicles import tideway
@@ -98,6 +100,7 @@ from vehicles import triton
 from vehicles import tyburn
 from vehicles import ultra_shoebox
 from vehicles import vanguard
+from vehicles import vigilant
 from vehicles import westbourne
 from vehicles import workish
 from vehicles import wyvern
@@ -146,11 +149,12 @@ def main(disabled=False):
                                # express
                                spinner,
                                carrack,
+                               thunderer,
                                tencendur,
                                kelpie,
                                griffon,
                                shredder,
-                               thunderer,
+                               swift,
                                strongbow,
                                streamer,
                                wyvern,
@@ -179,11 +183,13 @@ def main(disabled=False):
                                # freight
                                gwynt,
                                braf,
+                               # steadfast, # dropped joker
                                haar,
-                               blind_smuir,
                                growler,
                                slug,
                                phoenix,
+                               vigilant,
+                               blind_smuir,
                                girt_licker,
                                lemon,
                                chinook,

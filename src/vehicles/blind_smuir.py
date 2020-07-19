@@ -11,7 +11,7 @@ def main(roster_id):
                             replacement_consist_id='duff', # this Joker ends with Duff
                             power=1850, # slightly less than the Strongbow eh
                             speed=75, # for lolz
-                            tractive_effort_coefficient=0.18,
+                            tractive_effort_coefficient=0.22,
                             gen=3,
                             intro_date_offset=2,  # let's be a little bit later for this one
                             sprites_complete=False)
