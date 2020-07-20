@@ -8,7 +8,7 @@ def main(roster_id):
                             role='gronk!',
                             role_child_branch_num=-2,
                             replacement_consist_id='gronk', # this Joker ends with Gronk
-                            power=300,
+                            power=350,
                             speed=35,
                             # dibble TE up for game balance, assume low gearing or something
                             tractive_effort_coefficient=0.375,

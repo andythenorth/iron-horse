@@ -7,7 +7,7 @@ def main(roster_id):
                             name='Grub',
                             role='gronk!',
                             role_child_branch_num=-1,
-                            power=300,
+                            power=350,
                             speed=35,
                             # dibble TE up for game balance, assume low gearing or something
                             tractive_effort_coefficient=0.375,
