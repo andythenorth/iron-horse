@@ -11,6 +11,7 @@ from vehicles import blind_smuir
 from vehicles import boar_cat
 from vehicles import bone
 from vehicles import braf
+from vehicles import braf_2
 from vehicles import breeze
 from vehicles import brenner_cab
 from vehicles import brenner_middle
@@ -179,15 +180,16 @@ def main(disabled=False):
                                driving_cab_pony_gen_5,
                                driving_cab_pony_gen_6,
                                # branch freight
+                               buffalo,
                                saxon,
                                little_bear,
                                atlas,
                                goliath,
                                # freight
-                               buffalo,
                                hercules,
                                braf,
                                # steadfast, # dropped joker
+                               braf_2,
                                haar,
                                growler,
                                slug,
