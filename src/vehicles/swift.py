@@ -14,7 +14,7 @@ def main(roster_id):
                             sprites_complete=False)
 
     consist.add_unit(type=SteamEngineUnit,
-                     weight=90,
+                     weight=80,
                      vehicle_length=6,
                      spriterow_num=0)
 
