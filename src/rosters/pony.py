@@ -2,6 +2,7 @@ from roster import Roster
 
 from vehicles import ares
 from vehicles import athena
+from vehicles import atlas
 from vehicles import avenger
 from vehicles import bean_feast
 from vehicles import blackthorn
@@ -39,7 +40,6 @@ from vehicles import griffon
 from vehicles import gronk
 from vehicles import growler
 from vehicles import grub
-from vehicles import gwynt
 from vehicles import haar
 from vehicles import happy_train
 from vehicles import helm_wind_cab
@@ -178,10 +178,10 @@ def main(disabled=False):
                                # branch freight
                                saxon,
                                little_bear,
-                               hercules,
+                               atlas,
                                goliath,
                                # freight
-                               gwynt,
+                               hercules,
                                braf,
                                # steadfast, # dropped joker
                                haar,
