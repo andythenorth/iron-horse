@@ -9,7 +9,7 @@ def main(roster_id):
                             role='heavy_freight',
                             role_child_branch_num=-2,
                             replacement_consist_id='blind_smuir', # this Joker ends with Blind Smuir
-                            power=1950,
+                            power=1850, # match to Vigilant
                             tractive_effort_coefficient=0.33,
                             fixed_run_cost_points=250, # cost malus, early heavy freight engines are too cheap to run relative to smaller engines
                             gen=2,
