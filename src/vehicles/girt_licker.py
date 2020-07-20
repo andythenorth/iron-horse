@@ -11,6 +11,7 @@ def main(roster_id):
                             replacement_consist_id='blind_smuir', # this Joker ends with Blind Smuir
                             power=1950,
                             tractive_effort_coefficient=0.33,
+                            fixed_run_cost_points=250, # cost malus, early heavy freight engines are too cheap to run relative to smaller engines
                             gen=2,
                             intro_date_offset=6, # introduce a bit later
                             sprites_complete=True)

@@ -10,6 +10,7 @@ def main(roster_id):
                             role_child_branch_num=1,
                             power=1850,
                             tractive_effort_coefficient=0.32,
+                            fixed_run_cost_points=245, # cost malus, early heavy freight engines are too cheap to run relative to smaller engines
                             gen=2,
                             sprites_complete=False)
 
