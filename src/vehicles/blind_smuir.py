@@ -12,6 +12,7 @@ def main(roster_id):
                             power=1850, # slightly less than the Strongbow eh
                             speed=75, # for lolz
                             tractive_effort_coefficient=0.22,
+                            fixed_run_cost_points=150, # small cost bonus for balance against same gen larger engines
                             gen=3,
                             intro_date_offset=2,  # let's be a little bit later for this one
                             sprites_complete=False)
