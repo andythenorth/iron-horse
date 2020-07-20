@@ -8,6 +8,7 @@ def main(roster_id):
                             name='2-4-0 Reliance',
                             role='express',
                             role_child_branch_num=-1,
+                            replacement_consist_id='carrack', # this Joker ends with Carrack
                             power=950,
                             tractive_effort_coefficient=0.12,
                             fixed_run_cost_points=140, # minor cost bonus so it can make money
