@@ -15,6 +15,7 @@ from vehicles import breeze
 from vehicles import brenner_cab
 from vehicles import brenner_middle
 from vehicles import bright_country
+from vehicles import buffalo
 from vehicles import carrack
 from vehicles import cheddar_valley
 from vehicles import cheese_bug
@@ -183,6 +184,7 @@ def main(disabled=False):
                                atlas,
                                goliath,
                                # freight
+                               buffalo,
                                hercules,
                                braf,
                                # steadfast, # dropped joker
