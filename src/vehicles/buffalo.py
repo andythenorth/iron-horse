@@ -6,11 +6,13 @@ def main(roster_id):
                             id='buffalo',
                             base_numeric_id=4900,
                             name='0-6-2 Buffalo',
-                            role='freight',
+                            role='branch_freight',
                             role_child_branch_num=-1,
+                            replacement_consist_id='saxon', # this Joker ends with Saxon
                             power=650,
-                            tractive_effort_coefficient=0.2,
-                            fixed_run_cost_points=100, # substantial cost bonus so it can make money
+                            # dibble TE up for game balance, assume low gearing or something
+                            tractive_effort_coefficient=0.3,
+                            fixed_run_cost_points=110, # substantial cost bonus so it can make money
                             random_reverse=True,
                             gen=1,
                             sprites_complete=False)
