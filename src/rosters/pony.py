@@ -69,6 +69,7 @@ from vehicles import plastic_postbox
 from vehicles import proper_job
 from vehicles import pylon
 from vehicles import relentless
+from vehicles import reliance
 from vehicles import revolution
 from vehicles import roarer
 from vehicles import saxon
@@ -147,6 +148,7 @@ def main(disabled=False):
                                super_shoebox,
                                ultra_shoebox,
                                # express
+                               reliance,
                                spinner,
                                carrack,
                                thunderer,
