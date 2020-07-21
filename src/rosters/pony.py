@@ -57,6 +57,7 @@ from vehicles import lemon
 from vehicles import little_bear
 from vehicles import longwater
 from vehicles import mail_rail
+from vehicles import merlion
 from vehicles import merrylegs
 from vehicles import moor_gallop
 from vehicles import mumble
@@ -191,6 +192,7 @@ def main(disabled=False):
                                # steadfast, # dropped joker
                                braf_2,
                                haar,
+                               merlion,
                                growler,
                                slug,
                                phoenix,
