@@ -105,6 +105,7 @@ from vehicles import tyburn
 from vehicles import ultra_shoebox
 from vehicles import vanguard
 from vehicles import vigilant
+from vehicles import vulcan
 from vehicles import westbourne
 from vehicles import workish
 from vehicles import wyvern
@@ -168,6 +169,7 @@ def main(disabled=False):
                                revolution,
                                pegasus,
                                dragon,
+                               vulcan,
                                onslaught,
                                relentless,
                                hurly_burly,
