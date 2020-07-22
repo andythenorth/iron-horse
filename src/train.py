@@ -235,7 +235,7 @@ class Consist(object):
                                        'freight_core': {'freight': [1], 'heavy_freight':[1]},
                                        'freight_non_core': {'branch_freight': [1], 'freight': [2], 'heavy_freight': [2, 3, 4]},
                                        'hst': {'hst': [1]},
-                                       'jokers': {'gronk!': [-1, -2], 'express': [-1], 'heavy_express': [-1, -2], 'freight': [-1, -2], 'heavy_freight': [-1, -2], 'snoughplough!': [-1]},
+                                       'jokers': {'gronk!': [-1, -2], 'express': [-1], 'heavy_express': [-1, -2, -3], 'freight': [-1, -2], 'heavy_freight': [-1, -2], 'snoughplough!': [-1]},
                                        'metro': {'mail_metro': [1], 'pax_metro': [1]},
                                        'railcar': {'mail_railcar': [1, 2], 'pax_railcar': [1, 2]},
                                        'very_high_speed': {'very_high_speed': [1, 2]},
