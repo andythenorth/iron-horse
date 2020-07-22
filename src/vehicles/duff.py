@@ -11,7 +11,7 @@ def main(roster_id):
                             power=2300,
                             random_reverse=True,
                             gen=4,
-                            fixed_run_cost_points=60, # give a bonus so this can be a genuine mixed-traffic engine
+                            fixed_run_cost_points=30, # give a bonus so this can be a genuine mixed-traffic engine
                             intro_date_offset=8,  # let's be quite a lot later for this one
                             sprites_complete=False)
 

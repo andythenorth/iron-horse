@@ -12,7 +12,7 @@ def main(roster_id):
                             random_reverse=True,
                             gen=4,
                             intro_date_offset=-6,  # let's not have everything turn up in 1960
-                            fixed_run_cost_points=60, # give a bonus so this can be a genuine mixed-traffic engine
+                            fixed_run_cost_points=30, # give a bonus so this can be a genuine mixed-traffic engine
                             sprites_complete=True)
 
     consist.add_unit(type=DieselEngineUnit,
