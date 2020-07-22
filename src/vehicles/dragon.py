@@ -16,7 +16,7 @@ def main(roster_id):
                             sprites_complete=True)
 
     consist.add_unit(type=DieselEngineUnit,
-                     weight=88,
+                     weight=99,
                      vehicle_length=8,
                      effect_offsets=[(-1, 0), (1, 0)], # double the smoke eh?
                      spriterow_num=0)
