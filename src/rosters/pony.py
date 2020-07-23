@@ -26,7 +26,6 @@ from vehicles import dover
 from vehicles import dragon
 from vehicles import driving_cab_pony_gen_5
 from vehicles import driving_cab_pony_gen_6
-from vehicles import duff
 from vehicles import endeavour
 from vehicles import firebird
 from vehicles import fleet
@@ -49,6 +48,7 @@ from vehicles import helm_wind_middle
 from vehicles import hercules
 from vehicles import high_flyer
 from vehicles import hurly_burly
+from vehicles import intrepid
 from vehicles import jupiter
 from vehicles import kelpie
 from vehicles import lamia
@@ -164,7 +164,7 @@ def main(disabled=False):
                                strongbow,
                                streamer,
                                wyvern,
-                               duff,
+                               intrepid,
                                vanguard,
                                revolution,
                                pegasus,

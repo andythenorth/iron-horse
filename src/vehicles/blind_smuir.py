@@ -8,7 +8,7 @@ def main(roster_id):
                             name='4-6-0 Blind Smuir',
                             role='heavy_freight',
                             role_child_branch_num=-1,
-                            replacement_consist_id='duff', # this Joker ends with Duff
+                            replacement_consist_id='intrepid', # this Joker ends with Intrepid
                             power=1850, # slightly less than the Strongbow eh
                             speed=75, # for lolz
                             tractive_effort_coefficient=0.22,
