@@ -73,6 +73,7 @@ from vehicles import proper_job
 from vehicles import pylon
 from vehicles import relentless
 from vehicles import reliance
+from vehicles import resilient
 from vehicles import revolution
 from vehicles import roarer
 from vehicles import saxon
@@ -166,6 +167,7 @@ def main(disabled=False):
                                wyvern,
                                intrepid,
                                vanguard,
+                               resilient,
                                revolution,
                                pegasus,
                                dragon,
