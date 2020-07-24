@@ -62,8 +62,11 @@
         <div class="container">
             <div class="pull-right" style="margin-top:-30px; margin-bottom:20px;">
                 <script language="JavaScript">
-                    var images=new Array(${doc_helper.get_vehicle_images_js_array(consists)});
+                    var all_consists_by_vehicle_type=JSON.parse('${doc_helper.get_vehicle_images_json()}');
+                    vehicle_type_keys = Object.keys(all_consists_by_vehicle_type);
                     function random_img(){
+                        vehicle_type_key = vehicle_type_keys[Math.floor(Math.random()*vehicle_type_keys.length)];
+                        var images = all_consists_by_vehicle_type[vehicle_type_key];
                         var index = Math.floor(Math.random()*images.length);
                         var random_image = images.splice(index, 1)[0]; // splice returns an array, and we need the nested array inside it
                         document.write('<a href="trains.html#' + random_image[0] + '" style="display:inline; margin-bottom: 20px;"> \

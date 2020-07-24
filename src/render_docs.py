@@ -8,6 +8,7 @@ import multiprocessing
 from time import time
 from PIL import Image
 import markdown
+import json
 
 import iron_horse
 import utils
@@ -187,12 +188,21 @@ class DocHelper(object):
         # default result
         return None
 
-    def get_vehicle_images_js_array(self, consists):
-        # returns a nested array formatted for JS with [image_id, width]
-        result = []
-        for consist in consists:
-            result.append("['" + consist.id + "','" + str(self.buy_menu_sprite_width(consist)) + "']")
-        return ",".join(result)
+    def get_vehicle_images_json(self):
+        # returns json formatted as {vehicle_type: [image_id, width]} where vehicle_type is 'engines' or 'wagons' as of July 2020
+        # !! does not account for rosters or base track types as of July 2020
+        result = {}
+        engines = []
+        for roster in iron_horse.registered_rosters:
+            for consist in roster.engine_consists:
+                engines.append([consist.id, str(self.buy_menu_sprite_width(consist))])
+        result['engines'] = engines
+        wagons = []
+        for wagon_class in global_constants.buy_menu_sort_order_wagons:
+            for consist in roster.wagon_consists[wagon_class]:
+                wagons.append([consist.id, str(self.buy_menu_sprite_width(consist))])
+        result['wagons'] = wagons
+        return json.dumps(result)
 
     def fetch_prop(self, result, prop_name, value):
         result['vehicle'][prop_name] = value
@@ -445,7 +455,7 @@ def main():
     metadata['dates'] = (dates[0], dates[-1])
 
     # render standard docs from a list
-    html_docs = ['trains', 'tech_tree_table_blue', 'tech_tree_table_red', 'code_reference', 'get_started', 'translations']
+    html_docs = ['code_reference', 'get_started', 'translations', 'tech_tree_table_blue', 'tech_tree_table_red', 'train_whack', 'trains']
     txt_docs = ['license', 'readme']
     markdown_docs = ['changelog']
     graph_docs = ['tech_tree_linkgraph']
