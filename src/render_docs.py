@@ -9,6 +9,7 @@ from time import time
 from PIL import Image
 import markdown
 import json
+from collections import defaultdict
 
 import iron_horse
 import utils
@@ -189,19 +190,38 @@ class DocHelper(object):
         return None
 
     def get_vehicle_images_json(self):
-        # returns json formatted as {vehicle_type: [image_id, width]} where vehicle_type is 'engines' or 'wagons' as of July 2020
-        # !! does not account for rosters or base track types as of July 2020
-        result = {}
-        engines = []
+        # returns json formatted in various ways for randomising images according to various criteria
+        # does not sort by roster as of July 2020
+        result = {'sorted_by_vehicle_type': defaultdict(list), 'sorted_by_base_track_type_and_vehicle_type': {}}
+
+        for base_track_type, base_track_label in self.base_track_types_and_labels:
+            result['sorted_by_base_track_type_and_vehicle_type'][base_track_type] = defaultdict(list)
+
+        #for vehicle_type, vehicle_consists in [engines, wagons]:
         for roster in iron_horse.registered_rosters:
-            for consist in roster.engine_consists:
-                engines.append([consist.id, str(self.buy_menu_sprite_width(consist))])
-        result['engines'] = engines
-        wagons = []
-        for wagon_class in global_constants.buy_menu_sort_order_wagons:
-            for consist in roster.wagon_consists[wagon_class]:
-                wagons.append([consist.id, str(self.buy_menu_sprite_width(consist))])
-        result['wagons'] = wagons
+            # parse the engine and wagon consists into a consistent structure
+            engines = ('engines', roster.engine_consists)
+            wagon_consists = []
+            for wagon_class in global_constants.buy_menu_sort_order_wagons:
+                wagon_consists.extend([consist for consist in roster.wagon_consists[wagon_class]])
+            wagons = ('wagons', wagon_consists)
+
+            # this code repeats for both engines and wagons, but with different source lists
+            for vehicle_type, vehicle_consists in [engines, wagons]:
+                for consist in vehicle_consists:
+                    vehicle_data = [consist.id, str(self.buy_menu_sprite_width(consist))]
+                    result['sorted_by_vehicle_type'][vehicle_type].append(vehicle_data)
+                    result['sorted_by_base_track_type_and_vehicle_type'][consist.base_track_type][vehicle_type].append(vehicle_data)
+
+        # guard against providing empty vehicle lists as they would require additional guards in js to prevent js failing
+        for base_track_type, base_track_label in self.base_track_types_and_labels:
+            vehicle_consists = result['sorted_by_base_track_type_and_vehicle_type'][base_track_type]
+            for vehicle_type in ['engines', 'wagons']:
+                if len(vehicle_consists[vehicle_type]) == 0:
+                    del vehicle_consists[vehicle_type]
+            if len(vehicle_consists.keys()) == 0:
+                del result['sorted_by_base_track_type_and_vehicle_type'][base_track_type]
+
         return json.dumps(result)
 
     def fetch_prop(self, result, prop_name, value):

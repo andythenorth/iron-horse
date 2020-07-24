@@ -6,44 +6,101 @@
         <div class="container text-center">
             <h1>Iron Horse: Train Whack</h1>
             <h2>${num_consists} Randomised train consists</h2>
+            <!--! !! this should maybe move to a 'filter in' construction of the consists list? allowing more arbitrary parameters -->
             <script language="JavaScript">
-                var all_consists_by_vehicle_type=JSON.parse('${doc_helper.get_vehicle_images_json()}');
-                engines_weighting = [1, 1, 1, 1, 2, 2, 3];
-                wagons_weighting = [3, 4, 5, 5, 5, 5, 6, 6, 6, 6, 7, 7, 7];
-                engines = all_consists_by_vehicle_type['engines']
-                wagons = all_consists_by_vehicle_type['wagons']
                 function random_consist(){
+
                     result = new Array;
-                    num_engines = engines_weighting[Math.floor(Math.random()*engines_weighting.length)];
-                    num_wagons = wagons_weighting[Math.floor(Math.random()*wagons_weighting.length)];
-                    for (i = 0; i < num_engines; i++) {
-                        result.push(get_random_image_html(engines));
+                    // json parsing is inside the function to avoid the function trying the var before the json parse is complete
+                    // inefficient as it will parse json n times, not 1, but easier than figuring out doing it onload
+                    var all_consists_grouped=JSON.parse('${doc_helper.get_vehicle_images_json()}');
+
+                    var engines_weighting = [1, 1, 1, 1, 2, 2, 3];
+                    var wagons_weighting = [3, 4, 5, 5, 5, 5, 6, 6, 6, 6, 7, 7, 7];
+
+                    var base_track_type_keys = Object.keys(all_consists_grouped['sorted_by_base_track_type_and_vehicle_type']);
+
+                    // there is an optional query parameter to force consists to use same base track type
+                    // when that isn't used, alternate simpler engine / wagon lists are used without walking the track types, as it gets better random results
+                    // there's various jank for handling metro and NG due to them being a limited selection of vehicles
+                    if (get_query_param('match_base_track_type') == 'true') {
+                        var base_track_type_keys_weighted = [];
+                        for (base_track_type_key of base_track_type_keys) {
+                            // metro jank, we want metro rather less than other types, without having to know all types, so use this crude hack
+                            if (base_track_type_key == 'METRO') {
+                                base_track_type_keys_weighted.push(base_track_type_key);
+                            }
+                            else if (base_track_type_key == 'NG') {
+                                base_track_type_keys_weighted.push(base_track_type_key);
+                                base_track_type_keys_weighted.push(base_track_type_key);
+                            }
+                            else {
+                                base_track_type_keys_weighted.push(base_track_type_key);
+                                base_track_type_keys_weighted.push(base_track_type_key);
+                                base_track_type_keys_weighted.push(base_track_type_key);
+                            }
+                        }
+                        // note use of weighted keys to prevent too much metro when same base_track_type is enforced
+                        var base_track_type_key = base_track_type_keys_weighted[Math.floor(Math.random()*base_track_type_keys_weighted.length)];
+                        consists = all_consists_grouped['sorted_by_base_track_type_and_vehicle_type'][base_track_type_key];
+                        console.log(consists);
+                        // metro jank, over-ride weightings if metro, as there are no wagons and so more engines than usual are needed
+                        if (base_track_type_key == 'METRO') {
+                            engines_weighting = [1, 2, 2, 3, 3, 4, 4];
+                        }
                     }
-                    for (i = 0; i < num_wagons; i++) {
-                        result.push(get_random_image_html(wagons));
+                    else {
+                        consists = all_consists_grouped['sorted_by_vehicle_type'];
                     }
+
+                    // note the guard here against engines not existing, shouldn't happen, but easier to be consistent as same approach is used for wagons
+                    if (consists['engines'] != undefined) {
+                        var num_engines_to_draw = engines_weighting[Math.floor(Math.random()*engines_weighting.length)];
+                        for (i = 0; i < num_engines_to_draw; i++) {
+                            result.push(get_random_image_html(consists['engines']));
+                        };
+                    }
+
+                    // note the guard here against wagons not existing (e.g. metro)
+                    if (consists['wagons'] != undefined) {
+                        var num_wagons_to_draw = wagons_weighting[Math.floor(Math.random()*wagons_weighting.length)];
+                        for (i = 0; i < num_wagons_to_draw; i++) {
+                            result.push(get_random_image_html(consists['wagons']));
+                        };
+                    }
+
                     document.write(result.toString());
                     return true;
                 }
                 function get_random_image_html(images){
                     var index = Math.floor(Math.random()*images.length);
                     var random_image = images.splice(index, 1)[0]; // splice returns an array, and we need the nested array inside it
-                    return '<a href="trains.html#' + random_image[0] + '" style="display:inline; margin-bottom: 20px;"> \
+                    var sprite_size_factor = get_query_param('sprite_size_factor') ? get_query_param('sprite_size_factor') : 4;
+                    console.log(sprite_size_factor);
+                    return '<a href="trains.html#' + random_image[0] + '" style="display:inline; margin-bottom: 10px;"> \
                                 <img src="static/img/'+ random_image[0] + '_red.png" \
-                                     width="' + 4 * random_image[1] + '" \
-                                     height="${4 * doc_helper.buy_menu_sprite_height}" \
-                                     style="margin:0;"> \
-                           </a>';
+                                     width="' + sprite_size_factor * random_image[1] + '" \
+                                     height="' + sprite_size_factor * ${doc_helper.buy_menu_sprite_height} + '" \
+                                     style="margin:0; margin-right:-' + sprite_size_factor + 'px;"> \
+                           </a>'; // -ve margin right used to overlap buffers etc
+                }
+                function get_query_param(param_name) {
+                       var query = window.location.search.substring(1);
+                       var vars = query.split("&");
+                       for (var i=0;i<vars.length;i++) {
+                               var pair = vars[i].split("=");
+                               if(pair[0] == param_name){return pair[1];}
+                       }
+                       return(false);
                 }
             </script>
-            <div style="margin-top:30px;"
-                 tal:repeat="counter range(num_consists)">
-                <div style="margin-top:10px; margin-bottom:30px; font-size:0;"><!--! font size 0 used to collapse all spaces between inline elements -->
+            <div tal:repeat="counter range(num_consists)">
+                <div style="margin-top:14px; margin-bottom:20px; font-size:0;"><!--! font size 0 used to collapse all spaces between inline elements -->
                     <script language="JavaScript">
                         random_consist();
                     </script>
                 </div>
-                <hr style="border-bottom:0; border-top-color:rgba(0, 0, 0, 0.3); margin:0;"/>
+                <hr style="border-bottom:0; border-top-color:rgba(0, 0, 0, 0.3); line-height:10px; margin:0;"/>
             </div>
         </div>
     </div>
