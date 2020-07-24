@@ -110,6 +110,7 @@ from vehicles import vulcan
 from vehicles import westbourne
 from vehicles import workish
 from vehicles import wyvern
+from vehicles import zebedee
 from vehicles import zeus
 from vehicles import zorro
 
@@ -177,6 +178,7 @@ def main(disabled=False):
                                hurly_burly,
                                moor_gallop,
                                roarer,
+                               zebedee,
                                fury,
                                screamer,
                                avenger,

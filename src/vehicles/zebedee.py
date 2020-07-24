@@ -3,16 +3,16 @@ from train import EngineConsist, ElectricEngineUnit
 
 def main(roster_id):
     consist = EngineConsist(roster_id=roster_id,
-                            id='roarer',
-                            base_numeric_id=2230,
-                            name='Roarer',
+                            id='zebedee',
+                            base_numeric_id=4950,
+                            name='Zebedee',
                             role='heavy_express',
-                            role_child_branch_num=2,
-                            power=3200,
+                            role_child_branch_num=-3,
+                            power=3820,
                             random_reverse=True,
                             gen=4,
                             pantograph_type='z-shaped-double',
-                            intro_date_offset=3,  # introduce later than gen epoch by design
+                            intro_date_offset=10,  # introduce much later than gen epoch by design
                             sprites_complete=False)
 
     consist.add_unit(type=ElectricEngineUnit,
