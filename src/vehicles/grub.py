@@ -13,7 +13,6 @@ def main(roster_id):
                             tractive_effort_coefficient=0.375,
                             fixed_run_cost_points=100, # substantial cost bonus so it can make money
                             random_reverse=True,
-                            joker=True,
                             gen=1,
                             sprites_complete=True)
 

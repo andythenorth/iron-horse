@@ -110,8 +110,6 @@ class Consist(object):
         # optionally suppress nmlc warnings about animated pixels for consists where they're intentional
         self.suppress_animated_pixel_warnings = kwargs.get(
             'suppress_animated_pixel_warnings', False)
-        # by design, occasional 'joker' vehicles are included that have no gameplay purpose
-        self.joker = kwargs.get('joker', False)
         # extended description for docs etc
         self.description = u''
         # occasionally we want to force a specific spriterow for docs, not needed often, set in kwargs as needed, see also buy_menu_spriterow_num
@@ -231,7 +229,7 @@ class Consist(object):
         # this does *not* use the role group mapping in global constants, as it's more fragmented to avoid too many new vehicle messages at once
         role_to_role_groups_mapping = {'express_core': {'express': [1], 'heavy_express': [1]},
                                        'express_non_core': {'branch_express': [1, 2], 'express': [2], 'heavy_express': [2, 3, 4], 'luxury_pax_railcar': [1]},
-                                       'driving_cab': {'driving_cab_express': [1]},
+                                       'driving_cab': {'driving_cab_express': [-1]},
                                        'freight_core': {'freight': [1], 'heavy_freight':[1]},
                                        'freight_non_core': {'branch_freight': [1], 'freight': [2], 'heavy_freight': [2, 3, 4]},
                                        'hst': {'hst': [1]},
@@ -407,6 +405,12 @@ class Consist(object):
                 return roster
         else:
             raise Exception('no roster found for ', self.id)
+
+    @property
+    def joker(self):
+        # jokers are bonus vehicles (mostly) engines which don't fit strict tech tree progression
+        # jokers use -ve value for role_child_branch_num, tech tree vehicles use +ve
+        return self.role_child_branch_num < 0
 
     def get_expression_for_availability(self):
         result = []
@@ -1017,7 +1021,7 @@ class MailEngineDrivingCabConsist(MailEngineConsist):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.role = 'driving_cab_express'
-        self.role_child_branch_num = 1
+        self.role_child_branch_num = -1 # driving cab cars are probably jokers?
         self.buy_menu_hint_driving_cab = True
         self.allow_flip = True
         # confer a small power value for 'operational efficiency' (HEP load removed from engine eh?) :)

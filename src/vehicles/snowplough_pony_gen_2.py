@@ -7,7 +7,6 @@ def main(roster_id):
                                       name='Snowplough',
                                       gen=2,
                                       speed=75,
-                                      joker=True,
                                       sprites_complete=True)
 
     consist.add_unit(type=SnowploughUnit,
