@@ -1,66 +1,66 @@
 <tal:main_template define="main_template load: main_template.pt" metal:use-macro="main_template">
 <div metal:fill-slot='body'>
-    <div class="span12">
-        <h2>Code Reference</h2>
-        <h3>${len(consists)} trains</h3>
-        <hr />
-        <tal:subclasses repeat="subclass doc_helper.get_vehicles_by_subclass(consists)">
-            <tal:props_for_subclass define="props_to_print doc_helper.get_props_to_print_in_code_reference(subclass)">
-                <h4 id="${subclass['name']}">${subclass['name']} <small>Subclass</small></h4>
-                <p>${subclass['doc']}</p>
-                <table style="font-size:84%;" class="table table-striped table-condensed table-bordered tablesorter">
-                    <thead>
-                        <tr>
-                            <th style="background-color:#eee; vertical-align:top">Sprite</th>
-                            <tal:props repeat="prop props_to_print[subclass['name']]">
-                                <th style="background-color:#eee; vertical-align:top">${prop}</th>
-                            </tal:props>
-                            <th style="background-color:#eee; vertical-align:top">Sprites Complete</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tal:vehicles repeat="consist subclass['vehicles']">
+    <div class="container">
+        <div class="span12">
+            <h2>Code Reference</h2>
+            <h3>${len(consists)} trains</h3>
+            <hr />
+            <tal:subclasses repeat="subclass doc_helper.get_vehicles_by_subclass(consists)">
+                <tal:props_for_subclass define="props_to_print doc_helper.get_props_to_print_in_code_reference(subclass)">
+                    <h4 id="${subclass['name']}">${subclass['name']} <small>Subclass</small></h4>
+                    <p>${subclass['doc']}</p>
+                    <table style="font-size:84%;" class="table table-striped table-condensed table-bordered tablesorter">
+                        <thead>
                             <tr>
-                                <td class="vehicle-image"
-                                    style="width:${2 * doc_helper.buy_menu_sprite_max_width};">
-                                    <img src="static/img/${consist.id}_red.png"
-                                         width="${2 * doc_helper.buy_menu_sprite_width(consist)}"
-                                         height="${2 * doc_helper.buy_menu_sprite_height}" />
-                                </td>
-                                <tal:props repeat="prop_name props_to_print[subclass['name']]">
-                                    <td>${props_to_print[consist][prop_name]}</td>
+                                <th style="background-color:#eee; vertical-align:top">Sprite</th>
+                                <tal:props repeat="prop props_to_print[subclass['name']]">
+                                    <th style="background-color:#eee; vertical-align:top">${prop}</th>
                                 </tal:props>
-                                <td>
-                                    ${structure: "&amp;#10004;" if consist.sprites_complete else "&lt;span style='color:red;'&gt;Nope&lt;/span&gt;"}
-                                </td>
+                                <th style="background-color:#eee; vertical-align:top">Sprites Complete</th>
                             </tr>
-                        </tal:vehicles>
-                    </tbody>
-                </table>
-                <br />
-            </tal:props_for_subclass>
-        </tal:subclasses>
-        <hr />
-        <h3>Numeric IDs</h3>
-        <p class="muted">Trailing parts of articulated vehicles are not listed here.</p>
-        <table class="table table-striped table-condensed table-bordered tablesorter">
-            <thead>
-                <th>Numeric ID</th>
-                <th>ID</th>
-                <th>Title</th>
-            </thead>
-            <tbody>
-                <tal:consists repeat="consist sorted(consists, key=doc_helper.get_base_numeric_id)">
-                    <tr>
-                        <td>${consist.base_numeric_id}</td>
-                        <td>${consist.id}</td>
-                        <td>${doc_helper.unpack_name_string(consist)}</td>
-                    </tr>
-                </tal:consists>
-            </tbody>
-        </table>
+                        </thead>
+                        <tbody>
+                            <tal:vehicles repeat="consist subclass['vehicles']">
+                                <tr>
+                                    <td class="vehicle-image"
+                                        style="width:${2 * doc_helper.buy_menu_sprite_max_width};">
+                                        <img src="static/img/${consist.id}_red.png"
+                                             width="${2 * doc_helper.buy_menu_sprite_width(consist)}"
+                                             height="${2 * doc_helper.buy_menu_sprite_height}" />
+                                    </td>
+                                    <tal:props repeat="prop_name props_to_print[subclass['name']]">
+                                        <td>${props_to_print[consist][prop_name]}</td>
+                                    </tal:props>
+                                    <td>
+                                        ${structure: "&amp;#10004;" if consist.sprites_complete else "&lt;span style='color:red;'&gt;Nope&lt;/span&gt;"}
+                                    </td>
+                                </tr>
+                            </tal:vehicles>
+                        </tbody>
+                    </table>
+                    <br />
+                </tal:props_for_subclass>
+            </tal:subclasses>
+            <hr />
+            <h3>Numeric IDs</h3>
+            <p class="muted">Trailing parts of articulated vehicles are not listed here.</p>
+            <table class="table table-striped table-condensed table-bordered tablesorter">
+                <thead>
+                    <th>Numeric ID</th>
+                    <th>ID</th>
+                    <th>Title</th>
+                </thead>
+                <tbody>
+                    <tal:consists repeat="consist sorted(consists, key=doc_helper.get_base_numeric_id)">
+                        <tr>
+                            <td>${consist.base_numeric_id}</td>
+                            <td>${consist.id}</td>
+                            <td>${doc_helper.unpack_name_string(consist)}</td>
+                        </tr>
+                    </tal:consists>
+                </tbody>
+            </table>
+        </div>
     </div>
-
-
 </div>
 </tal:main_template>

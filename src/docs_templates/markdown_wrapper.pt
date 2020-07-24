@@ -3,8 +3,10 @@
 <div metal:fill-slot='sidebar_nav'>
 </div>
 
-<div class="span12" metal:fill-slot='body'>
-    ${structure: content}
+<div class="container">
+    <div class="span12" metal:fill-slot='body'>
+        ${structure: content}
+    </div>
 </div>
 </tal:main_template>
 

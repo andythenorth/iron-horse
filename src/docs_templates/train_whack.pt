@@ -1,0 +1,52 @@
+<tal:suppress_hero_unit define="global suppress_hero_unit True" />
+<tal:main_template define="main_template load: main_template.pt" metal:use-macro="main_template">
+<div metal:fill-slot='body'>
+
+    <div class="hero-unit subhead" style="margin-bottom:0;" tal:define="num_consists 10">
+        <div class="container text-center">
+            <h1>Iron Horse: Train Whack</h1>
+            <h2>${num_consists} Randomised train consists</h2>
+            <script language="JavaScript">
+                var all_consists_by_vehicle_type=JSON.parse('${doc_helper.get_vehicle_images_json()}');
+                engines_weighting = [1, 1, 1, 1, 2, 2, 3];
+                wagons_weighting = [3, 4, 5, 5, 5, 5, 6, 6, 6, 6, 7, 7, 7];
+                engines = all_consists_by_vehicle_type['engines']
+                wagons = all_consists_by_vehicle_type['wagons']
+                function random_consist(){
+                    result = new Array;
+                    num_engines = engines_weighting[Math.floor(Math.random()*engines_weighting.length)];
+                    num_wagons = wagons_weighting[Math.floor(Math.random()*wagons_weighting.length)];
+                    for (i = 0; i < num_engines; i++) {
+                        result.push(get_random_image_html(engines));
+                    }
+                    for (i = 0; i < num_wagons; i++) {
+                        result.push(get_random_image_html(wagons));
+                    }
+                    document.write(result.toString());
+                    return true;
+                }
+                function get_random_image_html(images){
+                    var index = Math.floor(Math.random()*images.length);
+                    var random_image = images.splice(index, 1)[0]; // splice returns an array, and we need the nested array inside it
+                    return '<a href="trains.html#' + random_image[0] + '" style="display:inline; margin-bottom: 20px;"> \
+                                <img src="static/img/'+ random_image[0] + '_red.png" \
+                                     width="' + 4 * random_image[1] + '" \
+                                     height="${4 * doc_helper.buy_menu_sprite_height}" \
+                                     style="margin:0;"> \
+                           </a>';
+                }
+            </script>
+            <div style="margin-top:30px;"
+                 tal:repeat="counter range(num_consists)">
+                <div style="margin-top:10px; margin-bottom:30px; font-size:0;"><!--! font size 0 used to collapse all spaces between inline elements -->
+                    <script language="JavaScript">
+                        random_consist();
+                    </script>
+                </div>
+                <hr style="border-bottom:0; border-top-color:rgba(0, 0, 0, 0.3); margin:0;"/>
+            </div>
+        </div>
+    </div>
+
+</div>
+</tal:main_template>

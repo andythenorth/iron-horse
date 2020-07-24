@@ -1,72 +1,74 @@
 <tal:main_template define="main_template load: main_template.pt" metal:use-macro="main_template">
 <div metal:fill-slot='body'>
-    <h1>
-        ${doc_helper.unpack_name_string(consist)}
-        (${base_lang_strings[consist.str_name_suffix] if consist.str_name_suffix is not None else None})
-    </h1>
+    <div class="container">
+        <h1>
+            ${doc_helper.unpack_name_string(consist)}
+            (${base_lang_strings[consist.str_name_suffix] if consist.str_name_suffix is not None else None})
+        </h1>
 
-    <div class="vehicle-image"
-        style="width:${2 * doc_helper.buy_menu_sprite_max_width};">
-        <img src="static/img/${consist.id}_blue.png"
-             width="${2 * doc_helper.buy_menu_sprite_width(consist)}"
-             height="${2 * doc_helper.buy_menu_sprite_height}" />
-    </div>
-    <div class="vehicle-image"
-        style="width:${2 * doc_helper.buy_menu_sprite_max_width};">
-        <img src="static/img/${consist.id}_red.png"
-             width="${2 * doc_helper.buy_menu_sprite_width(consist)}"
-             height="${2 * doc_helper.buy_menu_sprite_height}" />
-    </div>
-    <div class="vehicle-image"
-        style="width:${4 * doc_helper.buy_menu_sprite_max_width};">
-        <img src="static/img/${consist.id}_blue.png"
-             width="${4 * doc_helper.buy_menu_sprite_width(consist)}"
-             height="${4 * doc_helper.buy_menu_sprite_height}" />
-    </div>
-    <div class="vehicle-image"
-        style="width:${4 * doc_helper.buy_menu_sprite_max_width};">
-        <img src="static/img/${consist.id}_red.png"
-             width="${4 * doc_helper.buy_menu_sprite_width(consist)}"
-             height="${4 * doc_helper.buy_menu_sprite_height}" />
-    </div>
+        <div class="vehicle-image"
+            style="width:${2 * doc_helper.buy_menu_sprite_max_width};">
+            <img src="static/img/${consist.id}_blue.png"
+                 width="${2 * doc_helper.buy_menu_sprite_width(consist)}"
+                 height="${2 * doc_helper.buy_menu_sprite_height}" />
+        </div>
+        <div class="vehicle-image"
+            style="width:${2 * doc_helper.buy_menu_sprite_max_width};">
+            <img src="static/img/${consist.id}_red.png"
+                 width="${2 * doc_helper.buy_menu_sprite_width(consist)}"
+                 height="${2 * doc_helper.buy_menu_sprite_height}" />
+        </div>
+        <div class="vehicle-image"
+            style="width:${4 * doc_helper.buy_menu_sprite_max_width};">
+            <img src="static/img/${consist.id}_blue.png"
+                 width="${4 * doc_helper.buy_menu_sprite_width(consist)}"
+                 height="${4 * doc_helper.buy_menu_sprite_height}" />
+        </div>
+        <div class="vehicle-image"
+            style="width:${4 * doc_helper.buy_menu_sprite_max_width};">
+            <img src="static/img/${consist.id}_red.png"
+                 width="${4 * doc_helper.buy_menu_sprite_width(consist)}"
+                 height="${4 * doc_helper.buy_menu_sprite_height}" />
+        </div>
 
-    <dl>
-        <dt>Role</dt>
-        <dd>${doc_helper.unpack_role_string_for_consist(consist)}</dd>
-        <dt>Intro date / Designed</dt>
-        <dd>${consist.intro_date}</dd>
-        <dt>Power</dt>
-        <dd>${consist.power} hp</dd>
-        <dt>Speed</dt>
-        <dd>${consist.speed} mph</dd>
-        <dt>Track type</dt>
-        <dd>${consist.track_type}</dd>
-    </dl>
+        <dl>
+            <dt>Role</dt>
+            <dd>${doc_helper.unpack_role_string_for_consist(consist)}</dd>
+            <dt>Intro date / Designed</dt>
+            <dd>${consist.intro_date}</dd>
+            <dt>Power</dt>
+            <dd>${consist.power} hp</dd>
+            <dt>Speed</dt>
+            <dd>${consist.speed} mph</dd>
+            <dt>Track type</dt>
+            <dd>${consist.track_type}</dd>
+        </dl>
 
-    <dl>
-        <dt>Replaces</dt>
-        <tal:replaces condition="len(consist.replaces_consists) > 0">
-             <tal:replaced_consist repeat="replaced_consist consist.replaces_consists">
+        <dl>
+            <dt>Replaces</dt>
+            <tal:replaces condition="len(consist.replaces_consists) > 0">
+                 <tal:replaced_consist repeat="replaced_consist consist.replaces_consists">
+                    <dd>
+                        <a href="${replaced_consist.id}.html">${doc_helper.get_replaced_by_name(replaced_consist.id, consists)}</a>
+                    </dd>
+                 </tal:replaced_consist>
+            </tal:replaces>
+            <tal:replaces_none condition="len(consist.replaces_consists) == 0">
+                <dd>None</dd>
+            </tal:replaces_none>
+
+            <dt>Replaced by</dt>
+            <tal:replacement condition="consist.replacement_consist is not None">
                 <dd>
-                    <a href="${replaced_consist.id}.html">${doc_helper.get_replaced_by_name(replaced_consist.id, consists)}</a>
+                    <a href="${consist.replacement_consist.id}.html">${doc_helper.get_replaced_by_name(consist.replacement_consist.id, consists)}</a>
                 </dd>
-             </tal:replaced_consist>
-        </tal:replaces>
-        <tal:replaces_none condition="len(consist.replaces_consists) == 0">
-            <dd>None</dd>
-        </tal:replaces_none>
+            </tal:replacement>
+            <tal:replacement_is_none condition="consist.replacement_consist is None">
+                <dd>None</dd>
+            </tal:replacement_is_none>
 
-        <dt>Replaced by</dt>
-        <tal:replacement condition="consist.replacement_consist is not None">
-            <dd>
-                <a href="${consist.replacement_consist.id}.html">${doc_helper.get_replaced_by_name(consist.replacement_consist.id, consists)}</a>
-            </dd>
-        </tal:replacement>
-        <tal:replacement_is_none condition="consist.replacement_consist is None">
-            <dd>None</dd>
-        </tal:replacement_is_none>
-
-        <p>${structure:consist.description}</p>
-    </dl>
+            <p>${structure:consist.description}</p>
+        </dl>
+    </div>
 </div>
 </tal:main_template>
