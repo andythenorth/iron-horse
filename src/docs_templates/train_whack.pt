@@ -3,20 +3,19 @@
 <div metal:fill-slot='body'>
 
     <div class="hero-unit subhead" style="margin-bottom:0;" tal:define="num_consists 10">
-        <div class="container text-center">
+        <div class="text-center">
             <h1>Iron Horse: Train Whack</h1>
             <h2>${num_consists} Randomised train consists</h2>
             <!--! !! this should maybe move to a 'filter in' construction of the consists list? allowing more arbitrary parameters -->
             <script language="JavaScript">
                 function random_consist(){
-
                     result = new Array;
                     // json parsing is inside the function to avoid the function trying the var before the json parse is complete
                     // inefficient as it will parse json n times, not 1, but easier than figuring out doing it onload
                     var all_consists_grouped=JSON.parse('${doc_helper.get_vehicle_images_json()}');
 
                     var engines_weighting = [1, 1, 1, 1, 2, 2, 3];
-                    var wagons_weighting = [3, 4, 5, 5, 5, 5, 6, 6, 6, 6, 7, 7, 7];
+                    var wagons_weighting = [3, 4, 5, 5, 6, 6, 6, 6, 7, 7, 7, 8, 8, 8, 9, 9, 10, 11, 12];
 
                     var base_track_type_keys = Object.keys(all_consists_grouped['sorted_by_base_track_type_and_vehicle_type']);
 
@@ -43,10 +42,9 @@
                         // note use of weighted keys to prevent too much metro when same base_track_type is enforced
                         var base_track_type_key = base_track_type_keys_weighted[Math.floor(Math.random()*base_track_type_keys_weighted.length)];
                         consists = all_consists_grouped['sorted_by_base_track_type_and_vehicle_type'][base_track_type_key];
-                        console.log(consists);
                         // metro jank, over-ride weightings if metro, as there are no wagons and so more engines than usual are needed
                         if (base_track_type_key == 'METRO') {
-                            engines_weighting = [1, 2, 2, 3, 3, 4, 4];
+                            engines_weighting = [1, 2, 2, 3, 3, 3, 3, 4, 4, 5, 6];
                         }
                     }
                     else {
@@ -75,8 +73,7 @@
                 function get_random_image_html(images){
                     var index = Math.floor(Math.random()*images.length);
                     var random_image = images.splice(index, 1)[0]; // splice returns an array, and we need the nested array inside it
-                    var sprite_size_factor = get_query_param('sprite_size_factor') ? get_query_param('sprite_size_factor') : 4;
-                    console.log(sprite_size_factor);
+                    var sprite_size_factor = get_query_param('sprite_size_factor') ? get_query_param('sprite_size_factor') : 3;
                     return '<a href="trains.html#' + random_image[0] + '" style="display:inline; margin-bottom: 10px;"> \
                                 <img src="static/img/'+ random_image[0] + '_red.png" \
                                      width="' + sprite_size_factor * random_image[1] + '" \
@@ -87,13 +84,38 @@
                 function get_query_param(param_name) {
                        var query = window.location.search.substring(1);
                        var vars = query.split("&");
-                       for (var i=0;i<vars.length;i++) {
+                       for (var i = 0; i < vars.length; i++) {
                                var pair = vars[i].split("=");
                                if(pair[0] == param_name){return pair[1];}
                        }
                        return(false);
                 }
+                function reload_with_parameter_changed(param_name, param_value) {
+                    var query = window.location.search.substring(1);
+                    var vars = query.split("&");
+                    var new_query_vars = [param_name + '=' + param_value];
+                    for (var i = 0; i < vars.length; i++) {
+                        var pair = vars[i].split("=");
+                        // undefined checked to prevent extra junk parameter being added, quite janky
+                        if(pair[0] != param_name && pair[1] != undefined) {
+                            new_query_vars.push(pair[0] + '=' + pair[1]);
+                        }
+                    }
+                    new_url = window.location.protocol + window.location.pathname + '?' + new_query_vars.join('&');
+                    window.location.assign(new_url);
+                }
             </script>
+            Track Type:
+            <a style="color:white;" href="javascript:void(0);" onclick="return reload_with_parameter_changed('match_base_track_type', true);">Same within consist</a>
+            |
+            <a style="color:white;" href="javascript:void(0);" onclick="return reload_with_parameter_changed('match_base_track_type', false);">Random per vehicle</a>
+            &nbsp;&nbsp;&nbsp;
+            Zoom:
+            <a style="color:white;" href="javascript:void(0);" onclick="return reload_with_parameter_changed('sprite_size_factor', 2);">2x</a>
+            |
+            <a style="color:white;" href="javascript:void(0);" onclick="return reload_with_parameter_changed('sprite_size_factor', 3);">3x</a>
+            |
+            <a style="color:white;" href="javascript:void(0);" onclick="return reload_with_parameter_changed('sprite_size_factor', 4);">4x</a>
             <div tal:repeat="counter range(num_consists)">
                 <div style="margin-top:14px; margin-bottom:20px; font-size:0;"><!--! font size 0 used to collapse all spaces between inline elements -->
                     <script language="JavaScript">
