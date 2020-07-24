@@ -209,7 +209,7 @@ class DocHelper(object):
             # this code repeats for both engines and wagons, but with different source lists
             for vehicle_type, vehicle_consists in [engines, wagons]:
                 for consist in vehicle_consists:
-                    vehicle_data = [consist.id, str(self.buy_menu_sprite_width(consist))]
+                    vehicle_data = [consist.id, str(self.buy_menu_sprite_width(consist)), consist.base_numeric_id]
                     result['sorted_by_vehicle_type'][vehicle_type].append(vehicle_data)
                     result['sorted_by_base_track_type_and_vehicle_type'][consist.base_track_type][vehicle_type].append(vehicle_data)
 
