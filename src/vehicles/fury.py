@@ -8,7 +8,7 @@ def main(roster_id):
                             name='Fury',
                             role='heavy_express',
                             role_child_branch_num=2,
-                            power=4000,
+                            power=3600,
                             random_reverse=True,
                             gen=5,
                             replacement_consist_id='revolution', # this line ends with Fury and is merged to heavy_express 3

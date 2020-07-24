@@ -9,7 +9,7 @@ def main(roster_id):
                             role='heavy_express',
                             role_child_branch_num=2,
                             power=2800,
-                            power_by_railtype={'RAIL': 2800, 'ELRL': 5400}, # big jump in elrl HP by design compared to Fury
+                            power_by_railtype={'RAIL': 2800, 'ELRL': 4200}, # compared to IRL, there is more diesel power and less electric
                             random_reverse=True,
                             pantograph_type='z-shaped-single',
                             gen=6,

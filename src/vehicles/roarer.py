@@ -8,7 +8,7 @@ def main(roster_id):
                             name='Roarer',
                             role='heavy_express',
                             role_child_branch_num=2,
-                            power=3200,
+                            power=3000,
                             random_reverse=True,
                             gen=4,
                             pantograph_type='z-shaped-double',
