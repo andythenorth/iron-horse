@@ -46,6 +46,9 @@
                     <li class="${doc_helper.get_active_nav(doc_name, 'code_reference')}">
                         <a href="code_reference.html">Code Reference</a>
                     </li>
+                    <li class="${doc_helper.get_active_nav(doc_name, 'train_whack')}">
+                        <a href="train_whack.html">Train Whack!</a>
+                    </li>
                 </ul>
                 <ul class="nav pull-right">
                     <li class="${doc_helper.get_active_nav(doc_name, 'translations')}">
