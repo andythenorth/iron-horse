@@ -2287,7 +2287,7 @@ class TorpedoCarConsist(CarConsist):
         self.gestalt_graphics = GestaltGraphicsCustom('vehicle_torpedo_car.pynml')
 
 
-class VehicleParsBoxCarConsist(CarConsist):
+class VehiclePartsBoxCarConsist(CarConsist):
     """
     Vehicle parts box car, van - same refits as box car, just a specific visual variation.
     """

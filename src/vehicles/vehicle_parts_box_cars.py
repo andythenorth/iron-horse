@@ -1,4 +1,4 @@
-from train import VehicleParsBoxCarConsist, FreightCar
+from train import VehiclePartsBoxCarConsist, FreightCar
 
 
 def main():
@@ -6,7 +6,7 @@ def main():
 
     # starts gen 4, B and C only
 
-    consist = VehicleParsBoxCarConsist(roster_id='pony',
+    consist = VehiclePartsBoxCarConsist(roster_id='pony',
                             base_numeric_id=4620,
                             gen=4,
                             subtype='B',
@@ -17,7 +17,7 @@ def main():
                      chassis='2_axle_1cc_filled_24px')
 
 
-    consist = VehicleParsBoxCarConsist(roster_id='pony',
+    consist = VehiclePartsBoxCarConsist(roster_id='pony',
                             base_numeric_id=4630,
                             gen=4,
                             subtype='C',
@@ -29,7 +29,7 @@ def main():
                      chassis='4_axle_1cc_filled_32px')
 
 
-    consist = VehicleParsBoxCarConsist(roster_id='pony',
+    consist = VehiclePartsBoxCarConsist(roster_id='pony',
                             base_numeric_id=4640,
                             gen=5,
                             subtype='B',
@@ -40,7 +40,7 @@ def main():
                      chassis='2_axle_1cc_filled_24px')
 
 
-    consist = VehicleParsBoxCarConsist(roster_id='pony',
+    consist = VehiclePartsBoxCarConsist(roster_id='pony',
                             base_numeric_id=4650,
                             gen=5,
                             subtype='C',
@@ -51,7 +51,7 @@ def main():
                      chassis='4_axle_1cc_filled_32px')
 
 
-    consist = VehicleParsBoxCarConsist(roster_id='pony',
+    consist = VehiclePartsBoxCarConsist(roster_id='pony',
                             base_numeric_id=4660,
                             gen=6,
                             subtype='B',
@@ -62,7 +62,7 @@ def main():
                      chassis='2_axle_1cc_filled_24px')
 
 
-    consist = VehicleParsBoxCarConsist(roster_id='pony',
+    consist = VehiclePartsBoxCarConsist(roster_id='pony',
                             base_numeric_id=4670,
                             gen=6,
                             subtype='C',
