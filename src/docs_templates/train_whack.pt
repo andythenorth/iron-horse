@@ -9,12 +9,13 @@
             <p class="lead">
                 You scored <span id="global_high_score_container">0</span>!
                 &nbsp;&nbsp;&nbsp;
-                Snowplough bonus: <span id="global_snoughplough_count_container">0</span>
+                Snowplough bonus: <span id="global_snoughplough_count_container">None</span>
             </p>
             <!--! !! this should maybe move to a 'filter in' construction of the consists list? allowing more arbitrary parameters -->
             <script language="JavaScript">
                 var global_high_score = 0;
                 var global_snoughplough_count = 0;
+
                 function random_consist(){
                     result = new Array;
                     // json parsing is inside the function to avoid the function trying the var before the json parse is complete
@@ -58,32 +59,45 @@
                         consists = all_consists_grouped['sorted_by_vehicle_type'];
                     }
 
-                    // note the guard here against engines not existing, shouldn't happen, but easier to be consistent as same approach is used for wagons
-                    if (consists['engines'] != undefined) {
-                        var num_engines_to_draw = engines_weighting[Math.floor(Math.random()*engines_weighting.length)];
-                        for (i = 0; i < num_engines_to_draw; i++) {
-                            result.push(get_random_image_html(consists['engines']));
-                        };
-                    }
-
-                    // note the guard here against wagons not existing (e.g. metro)
-                    if (consists['wagons'] != undefined) {
-                        var num_wagons_to_draw = wagons_weighting[Math.floor(Math.random()*wagons_weighting.length)];
-                        for (i = 0; i < num_wagons_to_draw; i++) {
-                            result.push(get_random_image_html(consists['wagons']));
-                        };
-                    }
-
+                    // get the images and write into page
+                    result = extend_result(consists['engines'], engines_weighting, result);
+                    result = extend_result(consists['wagons'], wagons_weighting, result);
                     document.write(result.toString());
+
+                    // arbitrary high score crap
                     var global_high_score_container = document.getElementById("global_high_score_container");
                     global_high_score_container.innerHTML = global_high_score * Math.pow(2, global_snoughplough_count);
                     var global_snoughplough_count_container = document.getElementById("global_snoughplough_count_container");
-                    global_snoughplough_count_container.innerHTML = (global_snoughplough_count > 0) ? Math.pow(2, global_snoughplough_count) + 'x' : 0;
+                    if (global_snoughplough_count > 0) {
+                        global_snoughplough_count_container.innerHTML = global_snoughplough_count + ' = ' + Math.pow(2, global_snoughplough_count) + 'x score multiplier';
+                    }
+
                     return true;
                 }
-                function get_random_image_html(images){
+
+                function extend_result(consists, weighting, result) {
+                    // note the guard here against vehicles not existing (e.g. metro wagons)
+                    if (consists != undefined) {
+                        const num_vehicles_to_draw = weighting[Math.floor(Math.random()*weighting.length)];
+                        if (get_query_param('boring_mode') == 'true') {
+                            var random_image = get_random_image(consists);
+                        }
+                        for (i = 0; i < num_vehicles_to_draw; i++) {
+                            if (get_query_param('boring_mode') != 'true') {
+                                random_image = get_random_image(consists);
+                            }
+                            result.push(get_image_html(random_image));
+                        };
+                    }
+                    return result;
+                }
+
+                function get_random_image(images) {
                     var index = Math.floor(Math.random()*images.length);
-                    var random_image = images.splice(index, 1)[0]; // splice returns an array, and we need the nested array inside it
+                    return images.splice(index, 1)[0]; // splice returns an array, and we need the nested array inside it
+                }
+
+                function get_image_html(random_image){
                     // update scores, probably should be a separate function but eh
                     global_high_score += random_image[2];
                     if (random_image[0].indexOf('snowplough') != -1) {
@@ -98,6 +112,7 @@
                                      style="margin:0; margin-right:-' + sprite_size_factor + 'px;"> \
                            </a>'; // -ve margin right used to overlap buffers etc
                 }
+
                 function get_query_param(param_name) {
                        var query = window.location.search.substring(1);
                        var vars = query.split("&");
@@ -107,6 +122,7 @@
                        }
                        return(false);
                 }
+
                 function reload_with_parameter_changed(param_name, param_value) {
                     var query = window.location.search.substring(1);
                     var vars = query.split("&");
@@ -136,6 +152,11 @@
                 <a style="color:white;" href="javascript:void(0);" onclick="return reload_with_parameter_changed('sprite_size_factor', 3);">3x</a>
                 |
                 <a style="color:white;" href="javascript:void(0);" onclick="return reload_with_parameter_changed('sprite_size_factor', 4);">4x</a>
+                &nbsp;&nbsp;&nbsp;
+                Boring Mode:
+                <a style="color:white;" href="javascript:void(0);" onclick="return reload_with_parameter_changed('boring_mode', false);">Off</a>
+                |
+                <a style="color:white;" href="javascript:void(0);" onclick="return reload_with_parameter_changed('boring_mode', true);">On</a>
             </p>
             <div tal:repeat="counter range(num_consists)" style="margin-top:20px;">
                 <div style="margin-top:14px; margin-bottom:20px; font-size:0;"><!--! font size 0 used to collapse all spaces between inline elements -->
