@@ -554,7 +554,9 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
             pantograph_output_image.paste(state_sprites[pantograph_sprite_num][0], pantograph_bounding_box, state_sprites[pantograph_sprite_num][1])
 
         # add debug sprites with vehicle-pantograph comp for ease of checking
-        vehicle_debug_image = vehicle_input_image.copy().crop((0, 10, graphics_constants.spritesheet_width, 10 + graphics_constants.spriterow_height))
+        # this very much assumes that the vehicle image has been generated, which holds currently due to the order pipelines are run in (and are in series)
+        vehicle_debug_image = Image.open(os.path.join(currentdir, 'generated', 'graphics', self.consist.id + '.png'))
+        vehicle_debug_image = vehicle_debug_image.copy().crop((0, 10, graphics_constants.spritesheet_width, 10 + graphics_constants.spriterow_height))
         pantograph_output_image.paste(vehicle_debug_image, (0, 10 + (num_pantograph_rows * graphics_constants.spriterow_height)))
         pantograph_debug_image = pantograph_output_image.copy().crop((0, 10, graphics_constants.spritesheet_width, 10 + graphics_constants.spriterow_height))
         pantograph_debug_mask = pantograph_debug_image.copy()
