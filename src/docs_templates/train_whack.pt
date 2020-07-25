@@ -6,10 +6,15 @@
         <div class="text-center">
             <h1>Iron Horse: Train Whack</h1>
             <h2>${num_consists} Randomised train consists</h2>
-            <p class="lead">You scored <span id="global_high_score_container">0</span>!</p>
+            <p class="lead">
+                You scored <span id="global_high_score_container">0</span>!
+                &nbsp;&nbsp;&nbsp;
+                Snowplough bonus: <span id="global_snoughplough_count_container">0</span>
+            </p>
             <!--! !! this should maybe move to a 'filter in' construction of the consists list? allowing more arbitrary parameters -->
             <script language="JavaScript">
                 var global_high_score = 0;
+                var global_snoughplough_count = 0;
                 function random_consist(){
                     result = new Array;
                     // json parsing is inside the function to avoid the function trying the var before the json parse is complete
@@ -71,14 +76,20 @@
 
                     document.write(result.toString());
                     var global_high_score_container = document.getElementById("global_high_score_container");
-                    global_high_score_container.innerHTML = global_high_score;
+                    global_high_score_container.innerHTML = global_high_score * Math.pow(2, global_snoughplough_count);
+                    var global_snoughplough_count_container = document.getElementById("global_snoughplough_count_container");
+                    global_snoughplough_count_container.innerHTML = (global_snoughplough_count > 0) ? Math.pow(2, global_snoughplough_count) + 'x' : 0;
                     return true;
                 }
                 function get_random_image_html(images){
                     var index = Math.floor(Math.random()*images.length);
                     var random_image = images.splice(index, 1)[0]; // splice returns an array, and we need the nested array inside it
+                    // update scores, probably should be a separate function but eh
                     global_high_score += random_image[2];
-                    console.log(global_high_score);
+                    if (random_image[0].indexOf('snowplough') != -1) {
+                        global_snoughplough_count = global_snoughplough_count + 1;
+                    }
+                    // image
                     var sprite_size_factor = get_query_param('sprite_size_factor') ? get_query_param('sprite_size_factor') : 3;
                     return '<a href="trains.html#' + random_image[0] + '" style="display:inline; margin-bottom: 10px;"> \
                                 <img src="static/img/'+ random_image[0] + '_red.png" \
