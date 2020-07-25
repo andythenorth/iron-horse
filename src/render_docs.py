@@ -393,7 +393,7 @@ def render_docs_images(consist):
     if consist.pantograph_type is not None:
         # buy menu uses pans 'down', but in docs pans 'up' looks better, weird eh?
         pantographs_spritesheet = Image.open(os.path.join(vehicle_graphics_src, consist.id + '_pantographs_up.png'))
-        pan_crop_width = global_constants.spritesheet_bounding_boxes_asymmetric_unreversed[6][1]
+        pan_crop_width = consist.buy_menu_width
         pantographs_image = pantographs_spritesheet.crop(box=(consist.buy_menu_x_loc,
                                                               10,
                                                               consist.buy_menu_x_loc + pan_crop_width,
