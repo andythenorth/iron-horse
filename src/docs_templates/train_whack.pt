@@ -105,7 +105,7 @@
                     }
                     // image
                     var sprite_size_factor = get_query_param('sprite_size_factor') ? get_query_param('sprite_size_factor') : 3;
-                    return '<a href="trains.html#' + random_image[0] + '" style="display:inline; margin-bottom: 10px;"> \
+                    return '<a href="trains.html#' + random_image[0] + '" style="display:inline-block; margin-top:' + 5 * sprite_size_factor + 'px; margin-bottom:' + 5 * sprite_size_factor + 'px"> \
                                 <img src="static/img/'+ random_image[0] + '_red.png" \
                                      width="' + sprite_size_factor * random_image[1] + '" \
                                      height="' + sprite_size_factor * ${doc_helper.buy_menu_sprite_height} + '" \
@@ -158,8 +158,8 @@
                 |
                 <a style="color:white;" href="javascript:void(0);" onclick="return reload_with_parameter_changed('boring_mode', true);">On</a>
             </p>
-            <div tal:repeat="counter range(num_consists)" style="margin-top:20px;">
-                <div style="margin-top:14px; margin-bottom:20px; font-size:0;"><!--! font size 0 used to collapse all spaces between inline elements -->
+            <div tal:repeat="counter range(num_consists)">
+                <div style="font-size:0;"><!--! font size 0 used to collapse all spaces between inline elements -->
                     <script language="JavaScript">
                         random_consist();
                     </script>
