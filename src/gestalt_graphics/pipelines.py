@@ -477,9 +477,12 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
         # we do it this way because the gestalt doesn't have easy access to the consist, so easier to do the fallback here
         num_pantograph_rows = getattr(self.consist.gestalt_graphics, 'num_pantograph_rows', len(self.consist.unique_spriterow_nums))
 
-        pantograph_input_images = {'diamond-single': 'diamond.png', 'diamond-double': 'diamond.png',
+        pantograph_input_images = {'diamond-single': 'diamond.png',
+                                   'diamond-double': 'diamond.png',
                                    'diamond-single-with-base': 'diamond-with-base.png',
-                                   'z-shaped-single': 'z-shaped.png', 'z-shaped-double': 'z-shaped.png',
+                                   'z-shaped-single': 'z-shaped.png',
+                                   'z-shaped-double': 'z-shaped.png',
+                                   'z-shaped-single-reversed': 'z-shaped-reversed.png',
                                    'z-shaped-single-with-base': 'z-shaped-with-base.png'}
         pantograph_input_path = os.path.join(currentdir, 'src', 'graphics', 'pantographs', pantograph_input_images[self.consist.pantograph_type])
         pantograph_input_image = Image.open(pantograph_input_path)
@@ -500,6 +503,7 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
                                            'diamond-double': {'down': ['a', 'a'], 'up': ['A', 'A']}, # A and B functionally identical here, so just use A
                                            'diamond-single-with-base': {'down': ['a'], 'up': ['A']},
                                            'z-shaped-single': {'down': ['a'], 'up': ['A']},
+                                           'z-shaped-single-reversed': {'down': ['a'], 'up': ['A']},
                                            'z-shaped-double': {'down': ['a', 'b'], 'up': ['A', 'b']},  # aB was tried and removed, TMWFTLB, instead just use Ab and respect depot flip
                                            'z-shaped-single-with-base': {'down': ['a'], 'up': ['A']}}
         pantograph_state_sprite_map = {'a': [pantograph_sprites[0], pantograph_sprites[1], pantograph_sprites[2], pantograph_sprites[3],

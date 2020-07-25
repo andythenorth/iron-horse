@@ -10,7 +10,7 @@ def main(roster_id):
                                                      role_child_branch_num=1,
                                                      power=1700,
                                                      dual_headed=True,
-                                                     pantograph_type='z-shaped-single',
+                                                     pantograph_type='z-shaped-single-reversed',
                                                      gen=5,
                                                      intro_date_offset=-3,  # introduce earlier than gen epoch by design
                                                      sprites_complete=True)
