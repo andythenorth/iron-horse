@@ -7,7 +7,7 @@ def main(roster_id):
                                                   base_numeric_id=3770,
                                                   name='Olympic',
                                                   role='luxury_pax_railcar',
-                                                  role_child_branch_num=1,
+                                                  role_child_branch_num=-1, # joker to hide them from simplified mode
                                                   power=750,
                                                   pantograph_type='z-shaped-single-with-base',
                                                   gen=5,
