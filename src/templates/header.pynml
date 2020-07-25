@@ -34,11 +34,11 @@ grf {
 		}
 	}
 	param 2 {
-		param_jokers_enabled {
-			name: string(STR_PARAM_NAME_JOKERS_ENABLED);
-			desc: string(STR_PARAM_DESC_JOKERS_ENABLED);
+		param_simplified_gameplay {
+			name: string(STR_PARAM_SIMPLIFIED_GAMEPLAY);
+			desc: string(STR_PARAM_SIMPLIFIED_GAMEPLAY_DESC);
 			type: bool;
-			def_value: 1;
+			def_value: 0;
 			bit: 1;
 		}
 	}

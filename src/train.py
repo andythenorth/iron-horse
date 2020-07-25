@@ -406,18 +406,12 @@ class Consist(object):
         else:
             raise Exception('no roster found for ', self.id)
 
-    @property
-    def joker(self):
-        # jokers are bonus vehicles (mostly) engines which don't fit strict tech tree progression
-        # jokers use -ve value for role_child_branch_num, tech tree vehicles use +ve
-        return self.role_child_branch_num < 0
-
     def get_expression_for_availability(self):
         result = []
         # rosters: the working definition is one and only one roster per vehicle
         result.append('param[1]==' + str(self.roster.numeric_id - 1))
         if self.joker:
-             result.append('param_jokers_enabled==1')
+             result.append('param_simplified_gameplay==0')
         return ' && '.join(result)
 
     def get_nml_expression_for_default_cargos(self):
@@ -629,6 +623,12 @@ class EngineConsist(Consist):
             run_cost = 0.33 * run_cost
         # cap to int for nml
         return int(run_cost)
+
+    @property
+    def joker(self):
+        # jokers are bonus vehicles (mostly) engines which don't fit strict tech tree progression
+        # for engines, jokers use -ve value for role_child_branch_num, tech tree vehicles use +ve
+        return self.role_child_branch_num < 0
 
 
 class PassengerEngineConsist(EngineConsist):
@@ -1084,6 +1084,7 @@ class CarConsist(Consist):
         super().__init__(**kwargs)
         self.roster.register_wagon_consist(self)
 
+        self._joker = False # over-ride this in sub-class as needed
         self.speed_class = 'standard'  # over-ride this in sub-class for, e.g. express freight consists
         self.subtype = kwargs['subtype']
         # Weight factor: over-ride in sub-class as needed
@@ -1198,6 +1199,15 @@ class CarConsist(Consist):
             return "string(STR_NAME_CONSIST_PLAIN, string(" + self.get_wagon_title_class_str() + "))"
         else:
             return "string(STR_NAME_CONSIST_PARENTHESES, string(" + self.get_wagon_title_class_str() + "), string(" + self.get_wagon_title_subtype_str() + "))"
+
+    @property
+    def joker(self):
+        # jokers are bonus vehicles (mostly) engines which don't fit strict tech tree progression
+        # for cars, jokers are mid-length 'B' vehicles and/or rules from the sub-class
+        if self.subtype == 'B' or self._joker == True:
+            return True
+        else:
+            return False
 
 
 class AlignmentCarConsist(CarConsist):
