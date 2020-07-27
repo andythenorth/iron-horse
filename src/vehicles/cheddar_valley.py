@@ -14,6 +14,7 @@ def main(roster_id):
                             random_reverse=True,
                             intro_date_offset=3,  # let's be a little bit later for this one
                             gen=5,
+                            cc_liveries=['COLOUR_GREY'],
                             sprites_complete=True)
 
     consist.add_unit(type=DieselEngineUnit,

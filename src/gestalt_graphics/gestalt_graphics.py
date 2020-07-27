@@ -45,12 +45,23 @@ class GestaltGraphicsEngine(GestaltGraphics):
     def __init__(self, **kwargs):
         super().__init__()
         self.pipelines = pipelines.get_pipelines(['check_buy_menu_only'])
+        self.cc_liveries = kwargs.get('cc_liveries', [])
         if kwargs.get('pantograph_type', None) is not None:
             self.pipelines.extend(pipelines.get_pipelines(['generate_pantographs_up_spritesheet', 'generate_pantographs_down_spritesheet']))
 
     @property
     def nml_template(self):
         return 'vehicle_engine.pynml'
+
+    # get_output_row_types not re-implemented here as of July 2020, as no actual pixa processing is used for the engine sprites, add it if processing is needed in future
+
+    @property
+    def all_liveries(self):
+        # a convenience property to insert a 'default' for ease of constructing a repeat
+        # extend modifies the list in place, so we need several operations here, otherwise we get an unwanted 'None' as returned by the extend method
+        result = ['default']
+        result.extend(self.cc_liveries)
+        return result
 
 
 class GestaltGraphicsOnlyAddPantographs(GestaltGraphics):
