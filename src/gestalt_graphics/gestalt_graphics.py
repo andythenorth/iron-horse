@@ -12,13 +12,14 @@ class GestaltGraphics(object):
          - other processing as required
     """
     def __init__(self):
-        # by default, check for buy menu only
-        self.pipelines = pipelines.get_pipelines(['check_buy_menu_only'])
+        # by default, pipelines are empty
+        self.pipelines = pipelines.get_pipelines([])
 
     @property
     def nml_template(self):
         # over-ride in sub-classes as needed
-        return 'vehicle_default.pynml'
+        # return a pnml file name, e.g. `return 'vehicle_default.pynml'`
+        return None
 
     @property
     def num_cargo_sprite_variants(self):
@@ -36,12 +37,30 @@ class GestaltGraphics(object):
         return ['single_row']
 
 
-class GestaltGraphicsOnlyAddPantographs(GestaltGraphics):
+class GestaltGraphicsEngine(GestaltGraphics):
     """
         Simple Gestalt specifically for engines that have absolutely no other graphics processing except pantograph generation.
         Any Gestalt can also add pantographs as needed (it's a method on Pipeline base class).
     """
+    def __init__(self, **kwargs):
+        super().__init__()
+        self.pipelines = pipelines.get_pipelines(['check_buy_menu_only'])
+        if kwargs.get('pantograph_type', None) is not None:
+            self.pipelines.extend(pipelines.get_pipelines(['generate_pantographs_up_spritesheet', 'generate_pantographs_down_spritesheet']))
+
+    @property
+    def nml_template(self):
+        return 'vehicle_engine.pynml'
+
+
+class GestaltGraphicsOnlyAddPantographs(GestaltGraphics):
+    """
+        Simple Gestalt specifically for engines that have absolutely no other graphics processing except pantograph generation.
+        Any Gestalt can also add pantographs as needed (it's a method on Pipeline base class).
+        Unused as of July 2020 as replaced by GestaltGraphicsEngine
+    """
     def __init__(self):
+        # super appears to not be used, that may or may not be intentional, I didn't change it as of July 2020 as it risks introducing unexpected results
         # no graphics processing by default
         self.pipelines = pipelines.get_pipelines(['check_buy_menu_only', 'generate_pantographs_up_spritesheet', 'generate_pantographs_down_spritesheet'])
 
