@@ -8,16 +8,18 @@
     <tal:user_flipped repeat="flipped ['unflipped', 'flipped']">
         <!--! all_liveries inserts 'default' at start of cc_liveries, so we can just do one repeat over all needed spritesets -->
         <tal:liveries repeat="livery consist.gestalt_graphics.all_liveries">
-            spriteset(${vehicle.id}_ss_${reversed_variant}_${flipped}_${livery}, "${graphics_path}${consist.id}.png") {
+            spriteset(${vehicle.id}_ss_${reversed_variant}_${flipped}_${repeat.livery.index}, "${graphics_path}${consist.id}.png") {
                 ${vehicle.get_spriteset_template_name(reversed_variant, flipped, 10 + (repeat.livery.index * 30) + (vehicle.spriterow_num * len(consist.gestalt_graphics.all_liveries) * 30))}
             }
         </tal:liveries>
 
-        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_livery_${reversed_variant}_${flipped}, company_colour2) {
+        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_livery_${reversed_variant}_${flipped}, company_colour1) {
             <tal:cc_liveries repeat="cc_livery consist.gestalt_graphics.cc_liveries">
-                ${cc_livery}: return ${vehicle.id}_ss_${reversed_variant}_${flipped}_${cc_livery};
+                <tal:livery_cc_mapping repeat="cc_livery_mapping cc_livery">
+                    ${cc_livery_mapping}: return ${vehicle.id}_ss_${reversed_variant}_${flipped}_${repeat.cc_livery.number};
+                </tal:livery_cc_mapping>
             </tal:cc_liveries>
-            return ${vehicle.id}_ss_${reversed_variant}_${flipped}_default;
+            return ${vehicle.id}_ss_${reversed_variant}_${flipped}_0;
         }
 
         <tal:pantographs condition="consist.pantograph_type is not None">
@@ -64,16 +66,18 @@ random_switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle) {
 // buy menu graphics chain
 <!--! all_liveries inserts 'default' at start of cc_liveries, so we can just do one repeat over all needed spritesets -->
 <tal:liveries repeat="livery consist.gestalt_graphics.all_liveries">
-spriteset(${vehicle.id}_ss_vehicle_purchase_${livery}, "${graphics_path}${consist.id}.png") {
+spriteset(${vehicle.id}_ss_vehicle_purchase_${repeat.livery.index}, "${graphics_path}${consist.id}.png") {
     spriteset_template_purchase_${vehicle.id}(${10 + (repeat.livery.index * 30)})
 }
 </tal:liveries>
 
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_livery_purchase, company_colour2) {
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_livery_purchase, company_colour1) {
     <tal:cc_liveries repeat="cc_livery consist.gestalt_graphics.cc_liveries">
-        ${cc_livery}: return ${vehicle.id}_ss_vehicle_purchase_${cc_livery};
+        <tal:livery_cc_mapping repeat="cc_livery_mapping cc_livery">
+            ${cc_livery_mapping}: return ${vehicle.id}_ss_vehicle_purchase_${repeat.cc_livery.number};
+        </tal:livery_cc_mapping>
     </tal:cc_liveries>
-    return ${vehicle.id}_ss_vehicle_purchase_default;
+    return ${vehicle.id}_ss_vehicle_purchase_0;
 }
 
 <tal:conditional_pantographs switch="consist.pantograph_type is not None">
