@@ -142,6 +142,8 @@ class Consist(object):
     @property
     def unique_spriterow_nums(self):
         # find the unique spriterow numbers, used in graphics generation
+        if self.id == "flanders_storm":
+            return [1, 2]
         return set([unit.spriterow_num for unit in self.units])
 
     def get_and_verify_numeric_id(self, offset):

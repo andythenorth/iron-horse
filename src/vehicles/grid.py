@@ -13,7 +13,7 @@ def main(roster_id):
                             intro_date_offset=-10,  # let's be a little bit earlier for this one
                             gen=5,
                             cc_liveries=[['COLOUR_GREY']],
-                            sprites_complete=True)
+                            sprites_complete=False)
 
     consist.add_unit(type=DieselEngineUnit,
                      weight=120,

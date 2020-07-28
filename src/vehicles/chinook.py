@@ -11,7 +11,7 @@ def main(roster_id):
                             power=2900,
                             gen=4,
                             cc_liveries=[['COLOUR_GREY']],
-                            sprites_complete=True)
+                            sprites_complete=False)
 
     consist.add_unit(type=DieselEngineUnit,
                      weight=80,

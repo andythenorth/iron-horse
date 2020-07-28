@@ -15,7 +15,8 @@ def main(roster_id):
                             gen=5,
                             pantograph_type='z-shaped-double',
                             intro_date_offset=-3,  # introduce earlier than gen epoch by design
-                            sprites_complete=True)
+                            cc_liveries=[['COLOUR_WHITE', 'COLOUR_BROWN']],
+                            sprites_complete=False)
 
     consist.add_unit(type=ElectricEngineUnit,
                      weight=120,

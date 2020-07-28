@@ -11,8 +11,8 @@ def main(roster_id):
                             power=1950, # progression calculated to maintain hp/speed ratio from previous gen
                             random_reverse=True,
                             gen=5,
-                            cc_liveries=[['COLOUR_WHITE'], ['COLOUR_PINK']],
-                            sprites_complete=True)
+                            cc_liveries=[['COLOUR_WHITE', 'COLOUR_BROWN'], ['COLOUR_PINK']],
+                            sprites_complete=False)
 
     consist.add_unit(type=DieselEngineUnit,
                      weight=110,
