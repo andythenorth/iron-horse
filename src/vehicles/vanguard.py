@@ -13,7 +13,7 @@ def main(roster_id):
                             gen=5,
                             intro_date_offset=2,  # let's not have everything turn up in 1990
                             fixed_run_cost_points=100, # give a bonus so this can be a genuine mixed-traffic engine
-                            cc_liveries=[['COLOUR_WHITE']],
+                            cc_livery_keys=['RAILFREIGHT_TRIPLE_GREY'],
                             sprites_complete=False)
 
     consist.add_unit(type=DieselEngineUnit,

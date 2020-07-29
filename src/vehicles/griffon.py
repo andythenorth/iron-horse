@@ -11,7 +11,7 @@ def main(roster_id):
                             power=1650,
                             random_reverse=True,
                             gen=5,
-                            cc_liveries=[['COLOUR_WHITE'], ['COLOUR_PINK']],
+                            cc_livery_keys=['RAILFREIGHT_TRIPLE_GREY', 'EWS'],
                             sprites_complete=False)
 
     consist.add_unit(type=DieselEngineUnit,

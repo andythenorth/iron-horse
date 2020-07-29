@@ -14,7 +14,7 @@ def main(roster_id):
                             random_reverse=True,
                             intro_date_offset=3,  # let's be a little bit later for this one
                             gen=5,
-                            cc_liveries=[['COLOUR_PINK'], ['COLOUR_PALE_GREEN', 'COLOUR_GREEN', 'COLOUR_DARK_GREEN'], ['COLOUR_GREY', 'COLOUR_WHITE']],
+                            cc_livery_keys=['EWS', 'FREIGHTLINER', 'YEOMAN'],
                             sprites_complete=False)
 
     consist.add_unit(type=DieselEngineUnit,

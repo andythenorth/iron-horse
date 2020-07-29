@@ -11,13 +11,23 @@
             spriteset(${vehicle.id}_ss_${reversed_variant}_${flipped}_${repeat.livery.index}, "${graphics_path}${consist.id}.png") {
                 ${vehicle.get_spriteset_template_name(reversed_variant, flipped, 10 + (repeat.livery.index * 30) + (vehicle.spriterow_num * len(consist.gestalt_graphics.all_liveries) * 30))}
             }
+            <!--! check for *excluded* 2cc liveries
+                  only do this if there are cc1 liveries, otherwise this switch will never be reached -->
+            <tal:block condition="len(livery['cc1']) > 0">
+                switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_check_2cc_${reversed_variant}_${flipped}_${repeat.livery.index}, company_colour2) {
+                    <tal:livery_not_cc2_mapping repeat="livery_not_cc2_mapping livery['not_cc2']">
+                        ${livery_not_cc2_mapping}: return ${vehicle.id}_ss_${reversed_variant}_${flipped}_0;
+                    </tal:livery_not_cc2_mapping>
+                    return ${vehicle.id}_ss_${reversed_variant}_${flipped}_${repeat.livery.index};
+                }
+            </tal:block>
         </tal:liveries>
 
         switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_livery_${reversed_variant}_${flipped}, company_colour1) {
             <tal:cc_liveries repeat="cc_livery consist.gestalt_graphics.cc_liveries">
-                <tal:livery_cc_mapping repeat="cc_livery_mapping cc_livery">
-                    ${cc_livery_mapping}: return ${vehicle.id}_ss_${reversed_variant}_${flipped}_${repeat.cc_livery.number};
-                </tal:livery_cc_mapping>
+                <tal:livery_cc1_mapping repeat="cc1_livery_mapping cc_livery['cc1']">
+                    ${cc1_livery_mapping}: return ${vehicle.id}_switch_graphics_check_2cc_${reversed_variant}_${flipped}_${repeat.cc_livery.number};
+                </tal:livery_cc1_mapping>
             </tal:cc_liveries>
             return ${vehicle.id}_ss_${reversed_variant}_${flipped}_0;
         }
@@ -71,11 +81,24 @@ spriteset(${vehicle.id}_ss_vehicle_purchase_${repeat.livery.index}, "${graphics_
 }
 </tal:liveries>
 
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_livery_purchase, company_colour1) {
+<!--! check for *excluded* 2cc liveries
+      only do this if there are cc1 liveries, otherwise this switch will never be reached -->
+<tal:cc_liveries repeat="cc_livery consist.gestalt_graphics.cc_liveries">
+    <tal:block condition="len(cc_livery['cc1']) > 0">
+        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase_livery_check_2cc_${repeat.cc_livery.index}, company_colour2) {
+            <tal:livery_not_cc2_mapping repeat="livery_not_cc2_mapping cc_livery['not_cc2']">
+                ${livery_not_cc2_mapping}: return ${vehicle.id}_ss_vehicle_purchase_0;
+            </tal:livery_not_cc2_mapping>
+            return ${vehicle.id}_ss_vehicle_purchase_${repeat.cc_livery.number};
+        }
+    </tal:block>
+</tal:cc_liveries>
+
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase_livery, company_colour1) {
     <tal:cc_liveries repeat="cc_livery consist.gestalt_graphics.cc_liveries">
-        <tal:livery_cc_mapping repeat="cc_livery_mapping cc_livery">
-            ${cc_livery_mapping}: return ${vehicle.id}_ss_vehicle_purchase_${repeat.cc_livery.number};
-        </tal:livery_cc_mapping>
+        <tal:livery_cc1_mapping repeat="cc1_livery_mapping cc_livery['cc1']">
+            ${cc1_livery_mapping}: return ${vehicle.id}_switch_graphics_purchase_livery_check_2cc_${repeat.cc_livery.index};
+        </tal:livery_cc1_mapping>
     </tal:cc_liveries>
     return ${vehicle.id}_ss_vehicle_purchase_0;
 }
@@ -87,7 +110,7 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_livery_purchase, compan
             spriteset_template_purchase_${vehicle.id}(10)
         }
         switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_set_layers_register_more_sprites_purchase, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
-            return ${vehicle.id}_switch_graphics_livery_purchase;
+            return ${vehicle.id}_switch_graphics_purchase_livery;
         }
         switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase, getbits(extra_callback_info1, 8, 8)) {
             <!--! if there are pantographs to draw we will handle that later in the graphics chain,
@@ -100,12 +123,36 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_livery_purchase, compan
         <!--! purchase sprites always go through a switch in case the template does anything specific for purchase graphics
               when there is nothing specific, then this is just a null switch -->
         switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase, 0) {
-            0: return ${vehicle.id}_switch_graphics_livery_purchase;
+            0: return ${vehicle.id}_switch_graphics_purchase_livery;
         }
     </tal:no_pantographs>
 </tal:conditional_pantographs>
 
 <tal:include metal:use-macro="load: graphics_switches.pynml" />
+
+<!--! dedicated colour remapping with rules against specific cc1 colours-->
+
+<!--! check for *excluded* 2cc liveries
+      only do this if there are cc1 liveries, otherwise this switch will never be reached -->
+<tal:cc_liveries repeat="cc_livery consist.gestalt_graphics.cc_liveries">
+    <tal:block condition="len(cc_livery['cc1']) > 0">
+        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_colour_mapping_check_2cc_${repeat.cc_livery.index}, company_colour2) {
+            <tal:livery_not_cc2_mapping repeat="livery_not_cc2_mapping cc_livery['not_cc2']">
+                ${livery_not_cc2_mapping}: return base_sprite_2cc + 16 * company_colour2 + company_colour1; <!--! apply regular 1CC and 2CC -->
+            </tal:livery_not_cc2_mapping>
+            return palette_2cc(${cc_livery['remap_to_cc'] if cc_livery['remap_to_cc'] is not None else 'company_colour1'}, company_colour2);
+        }
+    </tal:block>
+</tal:cc_liveries>
+
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_colour_mapping, company_colour1) {
+    <tal:cc_liveries repeat="cc_livery consist.gestalt_graphics.cc_liveries">
+        <tal:livery_cc1_mapping repeat="cc1_livery_mapping cc_livery['cc1']">
+            ${cc1_livery_mapping}: return ${vehicle.id}_switch_colour_mapping_check_2cc_${repeat.cc_livery.index};
+        </tal:livery_cc1_mapping>
+    </tal:cc_liveries>
+    return base_sprite_2cc + 16 * company_colour2 + company_colour1; <!--! apply regular 1CC and 2CC -->
+}
 
 <tal:optional_capacity_switches condition="vehicle.has_cargo_capacity">
     <tal:include metal:use-macro="load: capacity_switches.pynml" />

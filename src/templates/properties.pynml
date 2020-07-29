@@ -96,11 +96,15 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
         <tal:conditional_random_trigger condition="vehicle.random_trigger_switch is not None">
             random_trigger:                 ${vehicle.id + vehicle.random_trigger_switch};
         </tal:conditional_random_trigger>
-        <tal:random_company_colour_swap condition="vehicle.requires_colour_mapping_cb">
-            <!--! option to provide dedicated colour mapping switch, or default to randomised/flip -->
-            colour_mapping:                 ${vehicle.id + vehicle.colour_mapping_switch if vehicle.colour_mapping_switch is not None else 'switch_colour_mapping()'};
-            purchase_colour_mapping:        base_sprite_2cc + 16 * company_colour2 + company_colour1; <!--! apply regular 1CC and 2CC -->
-        </tal:random_company_colour_swap>
+        <tal:colour_mapping_cb switch="vehicle.requires_colour_mapping_cb">
+            <tal:random_company_colour_swap case="'random_company_colour_swap'">
+                colour_mapping:                 switch_colour_mapping();
+                purchase_colour_mapping:        base_sprite_2cc + 16 * company_colour2 + company_colour1; <!--! apply regular 1CC and 2CC -->
+            </tal:random_company_colour_swap>
+            <tal:colour_mapping_switch case="'colour_mapping_switch'">
+                colour_mapping:                 ${vehicle.id + consist.gestalt_graphics.colour_mapping_switch};
+            </tal:colour_mapping_switch
+        </tal:colour_mapping_cb>
         <!--! only use the capacity switches if vehicle carries cargo, makes faster compile (saved about 20% of time) -->
         <tal:optional_capacity_switches condition="vehicle.has_cargo_capacity">
             cargo_capacity:                 ${vehicle.id + '_switch_cargo_capacity'};

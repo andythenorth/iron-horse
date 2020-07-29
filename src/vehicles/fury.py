@@ -14,8 +14,8 @@ def main(roster_id):
                             replacement_consist_id='revolution', # this line ends with Fury and is merged to heavy_express 3
                             pantograph_type='z-shaped-double',
                             intro_date_offset=1,  # introduce later than gen epoch by design
-                            cc_liveries=[['COLOUR_WHITE']],
-                            sprites_complete=True)
+                            cc_livery_keys=['RAILFREIGHT_TRIPLE_GREY'],
+                            sprites_complete=False)
 
     consist.add_unit(type=ElectricEngineUnit,
                      weight=82,

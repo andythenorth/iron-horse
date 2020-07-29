@@ -124,25 +124,65 @@ def main(disabled=False):
                     # default intro dates per generation, can be over-ridden if needed by setting intro_date kw on consist
                     intro_dates = {'RAIL': [1860, 1900, 1930, 1960, 1990, 2020],
                                    'METRO': [1900, 1950, 2000],
-                                   'NG': [1860, 1905, 1950, 2000]},
+                                   'NG': [1860, 1905, 1950, 2000]
+                                   },
                     # default speeds per generation, can be over-ridden if needed by setting speed kw arg on consist
                     # speeds roughly same as RH trucks of same era + 5mph or so, and a bit higher at the top end (back and forth on this many times eh?),
                     # NG is Corsican-style 1000mm, native brit NG is not a thing for gameplay
                     speeds = {'RAIL': {'standard': [45, 45, 60, 75, 84, 93], # gen 5 and 6 forced down by design, really fast freight is imbalanced
                                        'express': [60, 75, 90, 105, 115, 125], # smaller steps in gen 5 and 6, balances against faster HSTs
                                        'hst': [0, 0, 0, 112, 125, 140], # only gen 4, 5 and 6 HST provided
-                                       'very_high_speed': [0, 0, 0, 0, 140, 186]},
-                              'METRO': {'standard': [45, 55, 65]}, # no express for metro in Pony
+                                       'very_high_speed': [0, 0, 0, 0, 140, 186]
+                                       },
+                              'METRO': {'standard': [45, 55, 65]
+                                        # no express for metro in Pony
+                                        },
                               'NG': {'standard': [45, 45, 55, 65], # NG standard/express all same in Pony, balanced against trams, RVs
-                                     'express': [45, 45, 55, 65]}},
+                                     'express': [45, 45, 55, 65]}
+                                     },
 
                     # capacity factor per generation, will be multiplied by vehicle length
                     freight_car_capacity_per_unit_length =  {'RAIL': [4, 4, 5, 5.5, 6, 6],
-                                                             'NG': [3, 3, 4, 4]},
+                                                             'NG': [3, 3, 4, 4]
+                                                             },
                     pax_car_capacity_per_unit_length =  {'RAIL': [3, 4, 5, 5, 6, 6],
-                                                         'NG': [3, 4, 5, 6]},
+                                                         'NG': [3, 4, 5, 6]
+                                                         },
                     # freight car weight factor varies slightly by gen, reflecting modern cars with lighter weight
                     train_car_weight_factors = [0.5, 0.5, 0.5, 0.48, 0.44, 0.44],
+
+                    # specify lists of cc1 and not_cc2 colours, and an option to remap all the cc1 to a specific other cc (allowing multiple input colours to map to one result)
+                    livery_presets = {'EWS': {'cc1': ['COLOUR_PINK'],
+                                              'not_cc2': [],
+                                              'remap_to_cc': None
+                                              },
+                                      'FREIGHTLINER': {'cc1': ['COLOUR_PALE_GREEN', 'COLOUR_GREEN', 'COLOUR_DARK_GREEN'],
+                                                       'not_cc2': [],
+                                                       'remap_to_cc': None
+                                                       },
+                                      # red stripe cc1 chosen to give nice wagon colour options
+                                      'RAILFREIGHT_RED_STRIPE': {'cc1': ['COLOUR_GREY', 'COLOUR_BROWN', 'COLOUR_YELLOW', 'COLOUR_ORANGE', 'COLOUR_WHITE'],
+                                                                 'not_cc2': ['COLOUR_GREY', 'COLOUR_BROWN', 'COLOUR_YELLOW', 'COLOUR_ORANGE', 'COLOUR_WHITE'],
+                                                                 'remap_to_cc': 'COLOUR_GREY'
+                                                                 },
+                                       # triple grey cc1 chosen to give nice wagon colour options
+                                       # notcc2 chosen for (a) ensuring contrast of sector symbol (b) also happens to enable dutch yellow/grey livery
+                                       # note the remap to white, to provide lightest of the triple greys as cc1
+                                      'RAILFREIGHT_TRIPLE_GREY': {'cc1': ['COLOUR_GREY', 'COLOUR_BROWN', 'COLOUR_YELLOW', 'COLOUR_ORANGE', 'COLOUR_WHITE'],
+                                                                  'not_cc2': ['COLOUR_GREY', 'COLOUR_BROWN', 'COLOUR_YELLOW', 'COLOUR_ORANGE', 'COLOUR_WHITE'],
+                                                                  'remap_to_cc': 'COLOUR_WHITE',
+                                                                  },
+                                      'RES_FAIL': {'cc1': ['COLOUR_RED', 'COLOUR_PINK'],
+                                                   'not_cc2': ['COLOUR_DARK_BLUE', 'COLOUR_PALE_GREEN', 'COLOUR_YELLOW', 'COLOUR_ORANGE', 'COLOUR_LIGHT_BLUE', 'COLOUR_GREEN',
+                                                               'COLOUR_DARK_GREEN', 'COLOUR_BLUE', 'COLOUR_CREAM', 'COLOUR_MAUVE', 'COLOUR_PURPLE', 'COLOUR_ORANGE',
+                                                               'COLOUR_BROWN', 'COLOUR_GREY', 'COLOUR_WHITE'],
+                                                   'remap_to_cc': None
+                                                   },
+                                      'YEOMAN': {'cc1': ['COLOUR_GREY', 'COLOUR_WHITE'],
+                                                 'not_cc2': [],
+                                                 'remap_to_cc': None
+                                                 }
+                                      },
 
                     engines = [# branch express
                                lark,
@@ -270,5 +310,6 @@ def main(disabled=False):
                                mumble,
                                snapper,
                                workish,
-                               zorro])
+                               zorro
+                               ])
     roster.register(disabled=disabled)

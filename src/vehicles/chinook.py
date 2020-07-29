@@ -10,7 +10,7 @@ def main(roster_id):
                             role_child_branch_num=1,
                             power=2900,
                             gen=4,
-                            cc_liveries=[['COLOUR_GREY']],
+                            cc_livery_keys=['RAILFREIGHT_RED_STRIPE'],
                             sprites_complete=False)
 
     consist.add_unit(type=DieselEngineUnit,

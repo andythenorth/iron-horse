@@ -45,6 +45,7 @@ class GestaltGraphicsEngine(GestaltGraphics):
     def __init__(self, **kwargs):
         super().__init__()
         self.pipelines = pipelines.get_pipelines(['check_buy_menu_only'])
+        self.colour_mapping_switch = '_switch_colour_mapping'
         self.cc_liveries = kwargs.get('cc_liveries', [])
         if kwargs.get('pantograph_type', None) is not None:
             self.pipelines.extend(pipelines.get_pipelines(['generate_pantographs_up_spritesheet', 'generate_pantographs_down_spritesheet']))
@@ -59,7 +60,7 @@ class GestaltGraphicsEngine(GestaltGraphics):
     def all_liveries(self):
         # a convenience property to insert a 'default' for ease of constructing a repeat
         # extend modifies the list in place, so we need several operations here, otherwise we get an unwanted 'None' as returned by the extend method
-        result = ['default']
+        result = [{'cc1': [], 'not_cc2': [], 'remap_to_cc': None}]
         result.extend(self.cc_liveries)
         return result
 
@@ -261,6 +262,7 @@ class GestaltGraphicsIntermodal(GestaltGraphics):
     def __init__(self, **kwargs):
         # we use the composited sprites pipeline so we can make use of chassis compositing
         self.pipelines = pipelines.get_pipelines(['extend_spriterows_for_composited_sprites_pipeline'])
+        self.colour_mapping_switch = '_switch_colour_mapping'
         self.consist_ruleset = kwargs.get('consist_ruleset', None)
         # intermodal cars are asymmetric, sprites are drawn in second col, first col needs populated, map is [col 1 dest]: [col 2 source]
         # two liveries
@@ -352,7 +354,8 @@ class GestaltGraphicsVehicleTransporter(GestaltGraphics):
     def __init__(self, **kwargs):
         # we use the composited sprites pipeline so we can make use of chassis compositing
         self.pipelines = pipelines.get_pipelines(['extend_spriterows_for_composited_sprites_pipeline'])
-        # vehcile transporter cars are asymmetric, sprites are drawn in second col, first col needs populated, map is [col 1 dest]: [col 2 source]
+        self.colour_mapping_switch = '_switch_colour_mapping'
+        # vehicle transporter cars are asymmetric, sprites are drawn in second col, first col needs populated, map is [col 1 dest]: [col 2 source]
         # two liveries
         self.asymmetric_row_map = {1: 1, 2: 2, # default: default
                                    3: 5, 4: 6, # first: last
