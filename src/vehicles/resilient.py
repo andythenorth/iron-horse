@@ -13,7 +13,7 @@ def main(roster_id):
                             gen=5,
                             intro_date_offset=4,  # let's not have everything turn up in 1990
                             fixed_run_cost_points=100, # give a bonus so this can be a genuine mixed-traffic engine
-                            cc_liveries=[['COLOUR_GREEN', 'COLOUR_DARK_GREEN', 'COLOUR_PALE_GREEN'], ['COLOUR_WHITE', 'COLOUR_BROWN']], # tried liveries for grey, white, etc, not convinced, just looks like a box
+                            cc_liveries=[['COLOUR_GREEN', 'COLOUR_DARK_GREEN', 'COLOUR_PALE_GREEN'], ['COLOUR_WHITE']], # tried liveries for RES, etc, not convinced
                             sprites_complete=False)
 
     consist.add_unit(type=DieselEngineUnit,
