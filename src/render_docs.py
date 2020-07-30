@@ -133,43 +133,76 @@ class DocHelper(object):
         input_colours = {'CC1': 198, 'CC2': 80}
         for input_colour, output_colour in remap.items():
             for i in range(0, 8):
-                result[input_colours[input_colour] + i] = self.get_palette_index_for_company_colour(output_colour) + i
+                result[input_colours[input_colour] + i] = self.get_palette_index_for_company_colour(output_colour, i)
         return result
 
-    def get_palette_index_for_company_colour(self, company_colour):
+    def get_palette_index_for_company_colour(self, company_colour, offset):
         # indexes into the DOS palette for a company colour name
         # !! these may not be accurate for all colours, I had to guess, can't find where these are defined in openttd src
-        company_colours = {'COLOUR_DARK_BLUE': 0, # unfinished
+        company_colours = {'COLOUR_DARK_BLUE': 198,
                            'COLOUR_PALE_GREEN': 96,
                            'COLOUR_PINK': 42,
                            'COLOUR_YELLOW': 62, # guessed
                            'COLOUR_RED': 179,
-                           'COLOUR_LIGHT_BLUE': 0, # unfinished
-                           'COLOUR_GREEN': 80,
+                           'COLOUR_LIGHT_BLUE': 154, # guessed
+                           # 'COLOUR_GREEN': 0, # special case handling for green
                            'COLOUR_DARK_GREEN': 88,
-                           'COLOUR_BLUE': 198,
+                           'COLOUR_BLUE': 146,
                            'COLOUR_CREAM': 0, # unfinished
                            'COLOUR_MAUVE': 0, # unfinished
                            'COLOUR_PURPLE': 0, # unfinished
-                           'COLOUR_ORANGE': 0, # unfinished
+                           # 'COLOUR_ORANGE': 0 # special case handling for orange
                            'COLOUR_BROWN': 0, # unfinished
                            'COLOUR_GREY': 4,
                            'COLOUR_WHITE': 8,
                            }
-        return company_colours[company_colour]
+        # special cases without sequential ranges
+        if company_colour == 'COLOUR_ORANGE':
+            return (62, 63, 192, 193, 194, 195, 196, 197)[offset]
+        elif company_colour == 'COLOUR_GREEN':
+            return (82, 83, 84, 85, 206, 207, 208, 209)[offset]
+        else:
+            return company_colours[company_colour] + offset
+
+    @property
+    def company_colour_names(self):
+        return {'COLOUR_DARK_BLUE': 'Dark Blue',
+                'COLOUR_PALE_GREEN': 'Pale Green',
+                'COLOUR_PINK': 'Pink',
+                'COLOUR_YELLOW': 'Yellow',
+                'COLOUR_RED': 'Red',
+                'COLOUR_LIGHT_BLUE': 'Light Blue',
+                'COLOUR_GREEN': 'Green',
+                'COLOUR_DARK_GREEN': 'Dark Green',
+                'COLOUR_BLUE': 'Blue',
+                'COLOUR_CREAM': 'Cream',
+                'COLOUR_MAUVE': 'Mauve',
+                'COLOUR_PURPLE': 'Purple',
+                'COLOUR_ORANGE': 'Orange',
+                'COLOUR_BROWN': 'Brown',
+                'COLOUR_GREY': 'Grey',
+                'COLOUR_WHITE': 'White',
+                }
 
     def get_docs_livery_variants(self, consist):
         # blue and red_white are defaults
-        variants_config = [{'blue': {'CC1': 'COLOUR_BLUE', 'CC2': 'COLOUR_BLUE'},
-                            'red_white': {'CC1': 'COLOUR_RED', 'CC2': 'COLOUR_WHITE'}}]
+        # !! blue is wrong for legacy reasons, the colour used is actually dark blue
+        variants_config = [{'blue': {'cc_remaps': {'CC1': 'COLOUR_DARK_BLUE', 'CC2': 'COLOUR_DARK_BLUE'}, 'docs_image_input_cc': ('COLOUR_DARK_BLUE', 'COLOUR_DARK_BLUE')},
+                            'red_white': {'cc_remaps': {'CC1': 'COLOUR_RED', 'CC2': 'COLOUR_WHITE'}, 'docs_image_input_cc': ('COLOUR_RED', 'COLOUR_WHITE')},
+                            }]
 
         cc_liveries = getattr(consist.gestalt_graphics, 'cc_liveries', None)
         if cc_liveries is not None:
             for cc_livery in cc_liveries:
-                livery_name = (self.get_livery_file_substr(cc_livery['docs_image_input_cc']))
-                CC1_remap = cc_livery['remap_to_cc'] if cc_livery['remap_to_cc'] is not None else cc_livery['docs_image_input_cc'][0] # handle possible remap of CC1
-                CC2_remap = cc_livery['docs_image_input_cc'][1] # no remap for second colour
-                variants_config.append({livery_name: {'CC1': CC1_remap, 'CC2': CC2_remap}})
+                result = {}
+                for cc_remap_pair in cc_livery['docs_image_input_cc']:
+                    livery_name = (self.get_livery_file_substr(cc_remap_pair))
+                    result[livery_name] = {}
+                    CC1_remap = cc_livery['remap_to_cc'] if cc_livery['remap_to_cc'] is not None else cc_remap_pair[0] # handle possible remap of CC1
+                    CC2_remap = cc_remap_pair[1] # no forced remap to another cc for second colour, take it as is
+                    result[livery_name]['cc_remaps'] = {'CC1': CC1_remap, 'CC2': CC2_remap}
+                    result[livery_name]['docs_image_input_cc'] = cc_remap_pair
+                variants_config.append(result)
         return variants_config
 
     def get_livery_file_substr(self, cc_pair):
@@ -472,11 +505,11 @@ def render_docs_images(consist):
                 pantographs_mask = pantographs_mask.point(lambda i: 0 if i == 255 or i == 0 else 255).convert("1") # the inversion here of blue and white looks a bit odd, but potato / potato
                 source_vehicle_image.paste(pantographs_image, crop_box_dest_pan_2, pantographs_mask)
                 pantographs_spritesheet.close()
-        docs_image_variants.append({'source_vehicle_image': source_vehicle_image.copy(), 'cc_remaps': variant})
+        docs_image_variants.append({'source_vehicle_image': source_vehicle_image.copy(), 'livery_metadata': variant})
 
     for variant in docs_image_variants:
-        for colour_name, cc_remap in variant['cc_remaps'].items():
-            cc_remap_indexes = doc_helper.remap_company_colours(cc_remap)
+        for colour_name, livery_metadata in variant['livery_metadata'].items():
+            cc_remap_indexes = doc_helper.remap_company_colours(livery_metadata['cc_remaps'])
             processed_vehicle_image = variant['source_vehicle_image'].copy().point(lambda i: cc_remap_indexes[i] if i in cc_remap_indexes.keys() else i)
 
             # oversize the images to account for how browsers interpolate the images on retina / HDPI screens

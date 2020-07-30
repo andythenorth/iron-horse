@@ -5,51 +5,18 @@
             ${doc_helper.unpack_name_string(consist)}
             (${base_lang_strings[consist.str_name_suffix] if consist.str_name_suffix is not None else None})
         </h1>
-        <table>
-            <tbody>
-                <tal:liveries repeat="livery_variant doc_helper.get_docs_livery_variants(consist)">
-                    <tal:block repeat="livery_name livery_variant.keys()">
-                        <tr>
-                            <td style="vertical-align:top;">
-                                <div class="vehicle-image"
-                                    style="width:${2 * doc_helper.buy_menu_sprite_max_width}; margin-top:52px;">
-                                    <img src="static/img/${consist.id}_${livery_name}.png"
-                                         width="${2 * doc_helper.buy_menu_sprite_width(consist)}"
-                                         height="${2 * doc_helper.buy_menu_sprite_height}" />
-                                </div>
-                            </td>
-                            <td style="vertical-align:top;">
-                                <div class="vehicle-image"
-                                    style="width:${4 * doc_helper.buy_menu_sprite_max_width}; margin-left:64px; margin-right:64px; margin-top:32px; margin-bottom:32px;">
-                                    <img src="static/img/${consist.id}_${livery_name}.png"
-                                         width="${4 * doc_helper.buy_menu_sprite_width(consist)}"
-                                         height="${4 * doc_helper.buy_menu_sprite_height}" />
-                                </div>
-                            </td>
-                            <td style="vertical-align:top; padding-top:52px;">
-                                <tal:livery_info switch="repeat.livery_variant.index == 0">
-                                    <tal:default case="True">
-                                        DEFAULT with CC1 set to ${livery_variant[livery_name]['CC1']} and CC2 set to ${livery_variant[livery_name]['CC2']}
-                                    </tal:default>
-                                    <tal:cc_livery case="False">
-                                        <tal:cc_livery_metadata define="cc_livery_metadata consist.gestalt_graphics.cc_liveries[repeat.livery_variant.index - 1]">
-                                            VARIANT with CC1 set to ${livery_variant[livery_name]['CC1']} and CC2 set to ${livery_variant[livery_name]['CC2']}
-                                            <br />
-                                            This variant will be shown if CC1 is set to: ${', '.join(cc_livery_metadata['cc1'])}
-                                            <br />
-                                            <tal:block condition="len(cc_livery_metadata['not_cc2']) > 0">
-                                                AND CC2 is not set to: ${', '.join(cc_livery_metadata['not_cc2'])}
-                                            </tal:block>
-                                        </tal:cc_livery_metadata>
-                                    </tal:cc_livery>
-                                </tal:livery_info>
-                            </td>
-                        </tr>
-                    </tal:block>
-                </tal:liveries>
-            </tbody>
-        </table>
-
+        <div>
+            <tal:livery repeat="livery_variant doc_helper.get_docs_livery_variants(consist)">
+                <tal:block repeat="livery_name livery_variant.keys()">
+                    <div class="vehicle-image"
+                        style="width:${4 * doc_helper.buy_menu_sprite_max_width}; display:inline-block;">
+                        <img src="static/img/${consist.id}_${livery_name}.png"
+                             width="${4 * doc_helper.buy_menu_sprite_width(consist)}"
+                             height="${4 * doc_helper.buy_menu_sprite_height}" />
+                    </div>
+                </tal:block>
+            </tal:livery>
+        </div>
         <dl>
             <dt>Role</dt>
             <dd>${doc_helper.unpack_role_string_for_consist(consist)}</dd>
@@ -88,6 +55,62 @@
 
             <p>${structure:consist.description}</p>
         </dl>
+
+        <table>
+            <thead>
+                <td><!--! empty spacer --></td>
+                <tal:livery repeat="livery_variant doc_helper.get_docs_livery_variants(consist)">
+                    <th style="padding:16px; text-align:left;">Livery ${repeat.livery_variant.number}</th>
+                </tal:livery>
+            </thead>
+            <tbody>
+                <tr style="vertical-align:top;">
+                    <th style="padding:16px; text-align:right">Examples</th>
+                    <tal:liveries repeat="livery_variant doc_helper.get_docs_livery_variants(consist)">
+                        <td style="padding:16px;">
+                            <tal:block repeat="livery_name livery_variant.keys()">
+                                <div class="vehicle-image"
+                                    style="width:${2 * doc_helper.buy_menu_sprite_max_width}; margin-bottom:16px;">
+                                    <img src="static/img/${consist.id}_${livery_name}.png"
+                                         width="${2 * doc_helper.buy_menu_sprite_width(consist)}"
+                                         height="${2 * doc_helper.buy_menu_sprite_height}" />
+                                </div>
+                                <small>
+                                    ${doc_helper.company_colour_names[livery_variant[livery_name]['docs_image_input_cc'][0]]}
+                                    |
+                                    ${doc_helper.company_colour_names[livery_variant[livery_name]['docs_image_input_cc'][1]]}
+                                </small>
+                            </tal:block>
+                        </td>
+                    </tal:liveries>
+                </tr>
+                <tr style="vertical-align:top;">
+                    <th style="padding:16px; text-align:right">CC Rules</th>
+                    <tal:liveries repeat="livery_variant doc_helper.get_docs_livery_variants(consist)">
+                        <td style="padding:16px; width:${80/len(doc_helper.get_docs_livery_variants(consist))}%">
+                            <tal:not_cc_livery condition="repeat.livery_variant.index == 0">
+                                Shown if no other livery rules are matched.
+                            </tal:not_cc_livery>
+                            <tal:cc_livery condition="repeat.livery_variant.index != 0">
+                                <tal:cc_livery_metadata define="cc_livery_metadata consist.gestalt_graphics.cc_liveries[repeat.livery_variant.index - 1]">
+                                    Shown if CC1 is:
+                                    <ul tal:repeat="cc1 cc_livery_metadata['cc1']">
+                                        <li>${doc_helper.company_colour_names[cc1]}</li>
+                                    </ul>
+                                    <tal:block condition="len(cc_livery_metadata['not_cc2']) > 0">
+                                        AND CC2 is not:
+                                        <ul tal:repeat="not_cc2 cc_livery_metadata['not_cc2']">
+                                            <li>${doc_helper.company_colour_names[not_cc2]}</li>
+                                        </ul>
+                                    </tal:block>
+                                </tal:cc_livery_metadata>
+                            </tal:cc_livery>
+                        </td>
+                    </tal:liveries>
+                </tr>
+            </tbody>
+        </table>
+
     </div>
 </div>
 </tal:main_template>

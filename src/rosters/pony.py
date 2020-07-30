@@ -155,18 +155,18 @@ def main(disabled=False):
                     livery_presets = {'EWS': {'cc1': ['COLOUR_PINK'],
                                               'not_cc2': [],
                                               'remap_to_cc': None,
-                                              'docs_image_input_cc': ('COLOUR_PINK', 'COLOUR_YELLOW')
+                                              'docs_image_input_cc': [('COLOUR_PINK', 'COLOUR_YELLOW')]
                                               },
                                       'FREIGHTLINER': {'cc1': ['COLOUR_PALE_GREEN', 'COLOUR_GREEN', 'COLOUR_DARK_GREEN'],
                                                        'not_cc2': [],
                                                        'remap_to_cc': None,
-                                                       'docs_image_input_cc': ('COLOUR_PALE_GREEN', 'COLOUR_YELLOW')
+                                                       'docs_image_input_cc': [('COLOUR_PALE_GREEN', 'COLOUR_YELLOW'), ('COLOUR_DARK_GREEN', 'COLOUR_ORANGE'), ('COLOUR_GREEN', 'COLOUR_ORANGE')]
                                                        },
                                       # red stripe cc1 chosen to give nice wagon colour options
                                       'RAILFREIGHT_RED_STRIPE': {'cc1': ['COLOUR_GREY', 'COLOUR_BROWN', 'COLOUR_YELLOW', 'COLOUR_ORANGE', 'COLOUR_WHITE'],
                                                                  'not_cc2': ['COLOUR_GREY', 'COLOUR_BROWN', 'COLOUR_YELLOW', 'COLOUR_ORANGE', 'COLOUR_WHITE'],
                                                                  'remap_to_cc': 'COLOUR_GREY',
-                                                                 'docs_image_input_cc': ('COLOUR_GREY', 'COLOUR_RED')
+                                                                 'docs_image_input_cc': [('COLOUR_GREY', 'COLOUR_RED'), ('COLOUR_BROWN', 'COLOUR_PINK')]
                                                                  },
                                        # triple grey cc1 chosen to give nice wagon colour options
                                        # notcc2 chosen for (a) ensuring contrast of sector symbol (b) also happens to enable dutch yellow/grey livery
@@ -174,19 +174,19 @@ def main(disabled=False):
                                       'RAILFREIGHT_TRIPLE_GREY': {'cc1': ['COLOUR_GREY', 'COLOUR_BROWN', 'COLOUR_YELLOW', 'COLOUR_ORANGE', 'COLOUR_WHITE'],
                                                                   'not_cc2': ['COLOUR_GREY', 'COLOUR_BROWN', 'COLOUR_YELLOW', 'COLOUR_ORANGE', 'COLOUR_WHITE'],
                                                                   'remap_to_cc': 'COLOUR_WHITE',
-                                                                  'docs_image_input_cc': ('COLOUR_GREY', 'COLOUR_RED'),
+                                                                  'docs_image_input_cc': [('COLOUR_GREY', 'COLOUR_RED'), ('COLOUR_YELLOW', 'COLOUR_BLUE')],
                                                                   },
                                       'RES_FAIL': {'cc1': ['COLOUR_RED', 'COLOUR_PINK'],
                                                    'not_cc2': ['COLOUR_DARK_BLUE', 'COLOUR_PALE_GREEN', 'COLOUR_YELLOW', 'COLOUR_ORANGE', 'COLOUR_LIGHT_BLUE', 'COLOUR_GREEN',
                                                                'COLOUR_DARK_GREEN', 'COLOUR_BLUE', 'COLOUR_CREAM', 'COLOUR_MAUVE', 'COLOUR_PURPLE', 'COLOUR_ORANGE',
                                                                'COLOUR_BROWN', 'COLOUR_GREY', 'COLOUR_WHITE'],
                                                    'remap_to_cc': None,
-                                                   'docs_image_input_cc': ('COLOUR_RED', 'COLOUR_RED')
+                                                   'docs_image_input_cc': [('COLOUR_RED', 'COLOUR_RED')]
                                                    },
                                       'YEOMAN': {'cc1': ['COLOUR_GREY', 'COLOUR_WHITE'],
                                                  'not_cc2': [],
                                                  'remap_to_cc': None,
-                                                 'docs_image_input_cc': ('COLOUR_GREY', 'COLOUR_BLUE')
+                                                 'docs_image_input_cc': [('COLOUR_GREY', 'COLOUR_BLUE'), ('COLOUR_GREY', 'COLOUR_DARK_BLUE')]
                                                  }
                                       },
 
