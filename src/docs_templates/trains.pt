@@ -72,7 +72,7 @@
                                                 </td>
                                                 <td class="vehicle-image"
                                                     style="width:${2 * doc_helper.buy_menu_sprite_max_width};">
-                                                    <img src="static/img/${consist.id}_red.png"
+                                                    <img src="static/img/${consist.id}_red_white.png"
                                                          width="${2 * doc_helper.buy_menu_sprite_width(consist)}"
                                                          height="${2 * doc_helper.buy_menu_sprite_height}" />
                                                 </td>
@@ -124,7 +124,7 @@
                                                 </td>
                                                 <td class="vehicle-image"
                                                     style="width:${2 * doc_helper.buy_menu_sprite_max_width};">
-                                                    <img src="static/img/${consist.id}_red.png"
+                                                    <img src="static/img/${consist.id}_red_white.png"
                                                          width="${2 * doc_helper.buy_menu_sprite_width(consist)}"
                                                          height="${2 * doc_helper.buy_menu_sprite_height}" />
                                                 </td>

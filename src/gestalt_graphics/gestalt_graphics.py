@@ -60,7 +60,7 @@ class GestaltGraphicsEngine(GestaltGraphics):
     def all_liveries(self):
         # a convenience property to insert a 'default' for ease of constructing a repeat
         # extend modifies the list in place, so we need several operations here, otherwise we get an unwanted 'None' as returned by the extend method
-        result = [{'cc1': [], 'not_cc2': [], 'remap_to_cc': None}]
+        result = [{'cc1': [], 'not_cc2': []}]
         result.extend(self.cc_liveries)
         return result
 

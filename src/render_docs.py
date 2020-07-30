@@ -128,6 +128,56 @@ class DocHelper(object):
                 result.append(role)
         return result
 
+    def remap_company_colours(self, remap):
+        result = {}
+        input_colours = {'CC1': 198, 'CC2': 80}
+        for input_colour, output_colour in remap.items():
+            for i in range(0, 8):
+                result[input_colours[input_colour] + i] = self.get_palette_index_for_company_colour(output_colour) + i
+        return result
+
+    def get_palette_index_for_company_colour(self, company_colour):
+        # indexes into the DOS palette for a company colour name
+        # !! these may not be accurate for all colours, I had to guess, can't find where these are defined in openttd src
+        company_colours = {'COLOUR_DARK_BLUE': 0, # unfinished
+                           'COLOUR_PALE_GREEN': 96,
+                           'COLOUR_PINK': 42,
+                           'COLOUR_YELLOW': 62, # guessed
+                           'COLOUR_RED': 179,
+                           'COLOUR_LIGHT_BLUE': 0, # unfinished
+                           'COLOUR_GREEN': 80,
+                           'COLOUR_DARK_GREEN': 88,
+                           'COLOUR_BLUE': 198,
+                           'COLOUR_CREAM': 0, # unfinished
+                           'COLOUR_MAUVE': 0, # unfinished
+                           'COLOUR_PURPLE': 0, # unfinished
+                           'COLOUR_ORANGE': 0, # unfinished
+                           'COLOUR_BROWN': 0, # unfinished
+                           'COLOUR_GREY': 4,
+                           'COLOUR_WHITE': 8,
+                           }
+        return company_colours[company_colour]
+
+    def get_docs_livery_variants(self, consist):
+        # blue and red_white are defaults
+        variants_config = [{'blue': {'CC1': 'COLOUR_BLUE', 'CC2': 'COLOUR_BLUE'},
+                            'red_white': {'CC1': 'COLOUR_RED', 'CC2': 'COLOUR_WHITE'}}]
+
+        cc_liveries = getattr(consist.gestalt_graphics, 'cc_liveries', None)
+        if cc_liveries is not None:
+            for cc_livery in cc_liveries:
+                livery_name = (self.get_livery_file_substr(cc_livery['docs_image_input_cc']))
+                CC1_remap = cc_livery['remap_to_cc'] if cc_livery['remap_to_cc'] is not None else cc_livery['docs_image_input_cc'][0] # handle possible remap of CC1
+                CC2_remap = cc_livery['docs_image_input_cc'][1] # no remap for second colour
+                variants_config.append({livery_name: {'CC1': CC1_remap, 'CC2': CC2_remap}})
+        return variants_config
+
+    def get_livery_file_substr(self, cc_pair):
+        result = []
+        for colour_name in cc_pair:
+            result.append(colour_name.split('COLOUR_')[1])
+        return ('_').join(result).lower()
+
     def get_role_child_branches(self, consists, base_track_type, role):
         result = []
         for consist in consists:
@@ -357,78 +407,83 @@ def render_docs_images(consist):
     source_vehicle_image = Image.new("P", (doc_helper.buy_menu_sprite_width(consist), doc_helper.buy_menu_sprite_height), 255)
     source_vehicle_image.putpalette(Image.open('palette_key.png').palette)
 
-    if not consist.dual_headed:
-        y_offset = consist.docs_image_spriterow * 30
-        source_vehicle_image_tmp = vehicle_spritesheet.crop(box=(consist.buy_menu_x_loc,
-                                                                 10 + y_offset,
-                                                                 consist.buy_menu_x_loc + doc_helper.buy_menu_sprite_width(consist),
-                                                                 10 + y_offset + doc_helper.buy_menu_sprite_height))
-    if consist.dual_headed:
-        # oof, super special handling of dual-headed vehicles, OpenTTD handles this automatically in the buy menu, but docs have to handle explicitly
-        # !! hard-coded values might fail in future, sort that out then if needed, they can be looked up in global constants
-        source_vehicle_image_1 = vehicle_spritesheet.copy().crop(box=(224,
-                                                                      10,
-                                                                      224 + (4 * consist.length) + 1,
-                                                                      10 + doc_helper.buy_menu_sprite_height))
-        source_vehicle_image_2 = vehicle_spritesheet.copy().crop(box=(104,
-                                                                      10,
-                                                                      104 + (4 * consist.length) + 1,
-                                                                      10 + doc_helper.buy_menu_sprite_height))
-        source_vehicle_image_tmp = source_vehicle_image.copy()
-        source_vehicle_image_tmp.paste(source_vehicle_image_1, (0,
-                                                                0,
-                                                                source_vehicle_image_1.size[0],
-                                                                doc_helper.buy_menu_sprite_height))
-        source_vehicle_image_tmp.paste(source_vehicle_image_2, (source_vehicle_image_1.size[0] - 1,
-                                                                0,
-                                                                source_vehicle_image_1.size[0] - 1 + source_vehicle_image_2.size[0],
-                                                                doc_helper.buy_menu_sprite_height))
-    crop_box_dest = (0,
-                     0,
-                     doc_helper.buy_menu_sprite_width(consist),
-                     doc_helper.buy_menu_sprite_height)
-    source_vehicle_image.paste(source_vehicle_image_tmp.crop(crop_box_dest), crop_box_dest)
+    docs_image_variants = []
 
-    # add pantographs if needed
-    if consist.pantograph_type is not None:
-        # buy menu uses pans 'down', but in docs pans 'up' looks better, weird eh?
-        pantographs_spritesheet = Image.open(os.path.join(vehicle_graphics_src, consist.id + '_pantographs_up.png'))
-        pan_crop_width = consist.buy_menu_width
-        pantographs_image = pantographs_spritesheet.crop(box=(consist.buy_menu_x_loc,
-                                                              10,
-                                                              consist.buy_menu_x_loc + pan_crop_width,
-                                                              10 + doc_helper.buy_menu_sprite_height))
-        pantographs_mask = pantographs_image.copy()
-        pantographs_mask = pantographs_mask.point(lambda i: 0 if i == 255 or i == 0 else 255).convert("1") # the inversion here of blue and white looks a bit odd, but potato / potato
-        source_vehicle_image.paste(pantographs_image.crop(crop_box_dest), crop_box_dest, pantographs_mask.crop(crop_box_dest))
-
+    for livery_counter, variant in enumerate(doc_helper.get_docs_livery_variants(consist)):
+        if not consist.dual_headed:
+            # relies on cc_liveries being in predictable row offsets (should be true as of July 2020)
+            y_offset = (consist.docs_image_spriterow + livery_counter) * 30
+            source_vehicle_image_tmp = vehicle_spritesheet.crop(box=(consist.buy_menu_x_loc,
+                                                                     10 + y_offset,
+                                                                     consist.buy_menu_x_loc + doc_helper.buy_menu_sprite_width(consist),
+                                                                     10 + y_offset + doc_helper.buy_menu_sprite_height))
         if consist.dual_headed:
-            # oof, super special handling of pans for dual-headed vehicles
-            pan_start_x_loc = global_constants.spritesheet_bounding_boxes_asymmetric_unreversed[2][0]
-            pantographs_image = pantographs_spritesheet.crop(box=(pan_start_x_loc,
+            # oof, super special handling of dual-headed vehicles, OpenTTD handles this automatically in the buy menu, but docs have to handle explicitly
+            # !! hard-coded values might fail in future, sort that out then if needed, they can be looked up in global constants
+            # !! this also won't work with engine cc_liveries currently
+            source_vehicle_image_1 = vehicle_spritesheet.copy().crop(box=(224,
+                                                                          10,
+                                                                          224 + (4 * consist.length) + 1,
+                                                                          10 + doc_helper.buy_menu_sprite_height))
+            source_vehicle_image_2 = vehicle_spritesheet.copy().crop(box=(104,
+                                                                          10,
+                                                                          104 + (4 * consist.length) + 1,
+                                                                          10 + doc_helper.buy_menu_sprite_height))
+            source_vehicle_image_tmp = source_vehicle_image.copy()
+            source_vehicle_image_tmp.paste(source_vehicle_image_1, (0,
+                                                                    0,
+                                                                    source_vehicle_image_1.size[0],
+                                                                    doc_helper.buy_menu_sprite_height))
+            source_vehicle_image_tmp.paste(source_vehicle_image_2, (source_vehicle_image_1.size[0] - 1,
+                                                                    0,
+                                                                    source_vehicle_image_1.size[0] - 1 + source_vehicle_image_2.size[0],
+                                                                    doc_helper.buy_menu_sprite_height))
+        crop_box_dest = (0,
+                         0,
+                         doc_helper.buy_menu_sprite_width(consist),
+                         doc_helper.buy_menu_sprite_height)
+        source_vehicle_image.paste(source_vehicle_image_tmp.crop(crop_box_dest), crop_box_dest)
+
+        # add pantographs if needed
+        if consist.pantograph_type is not None:
+            # buy menu uses pans 'down', but in docs pans 'up' looks better, weird eh?
+            pantographs_spritesheet = Image.open(os.path.join(vehicle_graphics_src, consist.id + '_pantographs_up.png'))
+            pan_crop_width = consist.buy_menu_width
+            pantographs_image = pantographs_spritesheet.crop(box=(consist.buy_menu_x_loc,
                                                                   10,
-                                                                  pan_start_x_loc + pan_crop_width,
+                                                                  consist.buy_menu_x_loc + pan_crop_width,
                                                                   10 + doc_helper.buy_menu_sprite_height))
-            crop_box_dest_pan_2 = (int(doc_helper.buy_menu_sprite_width(consist) / 2),
-                                   0,
-                                   int(doc_helper.buy_menu_sprite_width(consist) / 2) + pan_crop_width,
-                                   doc_helper.buy_menu_sprite_height)
             pantographs_mask = pantographs_image.copy()
             pantographs_mask = pantographs_mask.point(lambda i: 0 if i == 255 or i == 0 else 255).convert("1") # the inversion here of blue and white looks a bit odd, but potato / potato
-            source_vehicle_image.paste(pantographs_image, crop_box_dest_pan_2, pantographs_mask)
-            pantographs_spritesheet.close()
-    # recolour to more pleasing CC combos
-    cc_remap_1 = {198: 179, 199: 180, 200: 181, 201: 182, 202: 183, 203: 164, 204: 165, 205: 166,
-                  80: 8, 81: 9, 82: 10, 83: 11, 84: 12, 85: 13, 86: 14, 87: 15}
-    cc_remap_2 = {80: 198, 81: 199, 82: 200, 83: 201, 84: 202, 85: 203, 86: 204, 87: 205}
-    for colour_name, cc_remap in {'red': cc_remap_1, 'blue': cc_remap_2}.items():
-        processed_vehicle_image = source_vehicle_image.copy().point(lambda i: cc_remap[i] if i in cc_remap.keys() else i)
+            source_vehicle_image.paste(pantographs_image.crop(crop_box_dest), crop_box_dest, pantographs_mask.crop(crop_box_dest))
 
-        # oversize the images to account for how browsers interpolate the images on retina / HDPI screens
-        processed_vehicle_image = processed_vehicle_image.resize((4 * processed_vehicle_image.size[0], 4 * doc_helper.buy_menu_sprite_height),
-                                                                 resample=Image.NEAREST)
-        output_path = os.path.join(currentdir, 'docs', 'html', 'static', 'img', consist.id + '_' + colour_name + '.png')
-        processed_vehicle_image.save(output_path, optimize=True, transparency=0)
+            if consist.dual_headed:
+                # oof, super special handling of pans for dual-headed vehicles
+                pan_start_x_loc = global_constants.spritesheet_bounding_boxes_asymmetric_unreversed[2][0]
+                pantographs_image = pantographs_spritesheet.crop(box=(pan_start_x_loc,
+                                                                      10,
+                                                                      pan_start_x_loc + pan_crop_width,
+                                                                      10 + doc_helper.buy_menu_sprite_height))
+                crop_box_dest_pan_2 = (int(doc_helper.buy_menu_sprite_width(consist) / 2),
+                                       0,
+                                       int(doc_helper.buy_menu_sprite_width(consist) / 2) + pan_crop_width,
+                                       doc_helper.buy_menu_sprite_height)
+                pantographs_mask = pantographs_image.copy()
+                pantographs_mask = pantographs_mask.point(lambda i: 0 if i == 255 or i == 0 else 255).convert("1") # the inversion here of blue and white looks a bit odd, but potato / potato
+                source_vehicle_image.paste(pantographs_image, crop_box_dest_pan_2, pantographs_mask)
+                pantographs_spritesheet.close()
+        docs_image_variants.append({'source_vehicle_image': source_vehicle_image.copy(), 'cc_remaps': variant})
+
+    for variant in docs_image_variants:
+        for colour_name, cc_remap in variant['cc_remaps'].items():
+            cc_remap_indexes = doc_helper.remap_company_colours(cc_remap)
+            processed_vehicle_image = variant['source_vehicle_image'].copy().point(lambda i: cc_remap_indexes[i] if i in cc_remap_indexes.keys() else i)
+
+            # oversize the images to account for how browsers interpolate the images on retina / HDPI screens
+            processed_vehicle_image = processed_vehicle_image.resize((4 * processed_vehicle_image.size[0], 4 * doc_helper.buy_menu_sprite_height),
+                                                                     resample=Image.NEAREST)
+            output_path = os.path.join(currentdir, 'docs', 'html', 'static', 'img', consist.id + '_' + colour_name + '.png')
+            processed_vehicle_image.save(output_path, optimize=True, transparency=0)
     source_vehicle_image.close()
 
 def main():

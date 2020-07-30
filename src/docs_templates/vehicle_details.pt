@@ -5,31 +5,50 @@
             ${doc_helper.unpack_name_string(consist)}
             (${base_lang_strings[consist.str_name_suffix] if consist.str_name_suffix is not None else None})
         </h1>
-
-        <div class="vehicle-image"
-            style="width:${2 * doc_helper.buy_menu_sprite_max_width};">
-            <img src="static/img/${consist.id}_blue.png"
-                 width="${2 * doc_helper.buy_menu_sprite_width(consist)}"
-                 height="${2 * doc_helper.buy_menu_sprite_height}" />
-        </div>
-        <div class="vehicle-image"
-            style="width:${2 * doc_helper.buy_menu_sprite_max_width};">
-            <img src="static/img/${consist.id}_red.png"
-                 width="${2 * doc_helper.buy_menu_sprite_width(consist)}"
-                 height="${2 * doc_helper.buy_menu_sprite_height}" />
-        </div>
-        <div class="vehicle-image"
-            style="width:${4 * doc_helper.buy_menu_sprite_max_width};">
-            <img src="static/img/${consist.id}_blue.png"
-                 width="${4 * doc_helper.buy_menu_sprite_width(consist)}"
-                 height="${4 * doc_helper.buy_menu_sprite_height}" />
-        </div>
-        <div class="vehicle-image"
-            style="width:${4 * doc_helper.buy_menu_sprite_max_width};">
-            <img src="static/img/${consist.id}_red.png"
-                 width="${4 * doc_helper.buy_menu_sprite_width(consist)}"
-                 height="${4 * doc_helper.buy_menu_sprite_height}" />
-        </div>
+        <table>
+            <tbody>
+                <tal:liveries repeat="livery_variant doc_helper.get_docs_livery_variants(consist)">
+                    <tal:block repeat="livery_name livery_variant.keys()">
+                        <tr>
+                            <td style="vertical-align:top;">
+                                <div class="vehicle-image"
+                                    style="width:${2 * doc_helper.buy_menu_sprite_max_width}; margin-top:52px;">
+                                    <img src="static/img/${consist.id}_${livery_name}.png"
+                                         width="${2 * doc_helper.buy_menu_sprite_width(consist)}"
+                                         height="${2 * doc_helper.buy_menu_sprite_height}" />
+                                </div>
+                            </td>
+                            <td style="vertical-align:top;">
+                                <div class="vehicle-image"
+                                    style="width:${4 * doc_helper.buy_menu_sprite_max_width}; margin-left:64px; margin-right:64px; margin-top:32px; margin-bottom:32px;">
+                                    <img src="static/img/${consist.id}_${livery_name}.png"
+                                         width="${4 * doc_helper.buy_menu_sprite_width(consist)}"
+                                         height="${4 * doc_helper.buy_menu_sprite_height}" />
+                                </div>
+                            </td>
+                            <td style="vertical-align:top; padding-top:52px;">
+                                <tal:livery_info switch="repeat.livery_variant.index == 0">
+                                    <tal:default case="True">
+                                        DEFAULT with CC1 set to ${livery_variant[livery_name]['CC1']} and CC2 set to ${livery_variant[livery_name]['CC2']}
+                                    </tal:default>
+                                    <tal:cc_livery case="False">
+                                        <tal:cc_livery_metadata define="cc_livery_metadata consist.gestalt_graphics.cc_liveries[repeat.livery_variant.index - 1]">
+                                            VARIANT with CC1 set to ${livery_variant[livery_name]['CC1']} and CC2 set to ${livery_variant[livery_name]['CC2']}
+                                            <br />
+                                            This variant will be shown if CC1 is set to: ${', '.join(cc_livery_metadata['cc1'])}
+                                            <br />
+                                            <tal:block condition="len(cc_livery_metadata['not_cc2']) > 0">
+                                                AND CC2 is not set to: ${', '.join(cc_livery_metadata['not_cc2'])}
+                                            </tal:block>
+                                        </tal:cc_livery_metadata>
+                                    </tal:cc_livery>
+                                </tal:livery_info>
+                            </td>
+                        </tr>
+                    </tal:block>
+                </tal:liveries>
+            </tbody>
+        </table>
 
         <dl>
             <dt>Role</dt>
