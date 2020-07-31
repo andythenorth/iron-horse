@@ -1,5 +1,8 @@
 <!--! this is the default template for trains that don't supply their own template -->
 
+<!--! convenience declaration of a global for shorthand (oof) -->
+<tal:global_alternative_cc_livery define="global alternative_cc_livery consist.gestalt_graphics.alternative_cc_livery" />
+
 <tal:include metal:use-macro="load: spriteset_templates_purchase.pynml" />
 <!--! 'reversed' is random reversal on construction, depending on vehicle random bits
       'flipped' is user flipping vehicle in depot
@@ -24,11 +27,11 @@
         </tal:liveries>
 
         switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_livery_${reversed_variant}_${flipped}, company_colour1) {
-            <tal:block condition="consist.gestalt_graphics.alternative_cc_livery is not None">
-                <tal:livery_cc1_mapping repeat="cc1_livery_mapping consist.gestalt_graphics.alternative_cc_livery['cc1']">
+            <tal:alt_livery condition="alternative_cc_livery is not None">
+                <tal:livery_cc1_mapping repeat="cc1_livery_mapping alternative_cc_livery['cc1']">
                     ${cc1_livery_mapping}: return ${vehicle.id}_switch_graphics_check_2cc_${reversed_variant}_${flipped};
                 </tal:livery_cc1_mapping>
-            </tal:block>
+            </tal:alt_livery>
             return ${vehicle.id}_ss_${reversed_variant}_${flipped}_0;
         }
 
@@ -83,21 +86,21 @@ spriteset(${vehicle.id}_ss_vehicle_purchase_${repeat.livery.index}, "${graphics_
 
 <!--! check for *excluded* 2cc liveries
       only do this if there is an alternative cc livery, otherwise this switch will never be reached -->
-<tal:block condition="consist.gestalt_graphics.alternative_cc_livery is not None">
+<tal:alt_livery condition="alternative_cc_livery is not None">
     switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase_livery_check_2cc, company_colour2) {
-        <tal:livery_not_cc2_mapping repeat="livery_not_cc2_mapping consist.gestalt_graphics.alternative_cc_livery['not_cc2']">
+        <tal:livery_not_cc2_mapping repeat="livery_not_cc2_mapping alternative_cc_livery['not_cc2']">
             ${livery_not_cc2_mapping}: return ${vehicle.id}_ss_vehicle_purchase_0;
         </tal:livery_not_cc2_mapping>
         return ${vehicle.id}_ss_vehicle_purchase_1;
     }
-</tal:block>
+</tal:alt_livery>
 
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase_livery, company_colour1) {
-    <tal:block condition="consist.gestalt_graphics.alternative_cc_livery is not None">
-        <tal:livery_cc1_mapping repeat="cc1_livery_mapping consist.gestalt_graphics.alternative_cc_livery['cc1']">
+    <tal:alt_livery condition="alternative_cc_livery is not None">
+        <tal:livery_cc1_mapping repeat="cc1_livery_mapping alternative_cc_livery['cc1']">
             ${cc1_livery_mapping}: return ${vehicle.id}_switch_graphics_purchase_livery_check_2cc;
         </tal:livery_cc1_mapping>
-    </tal:block>
+    </tal:alt_livery>
     return ${vehicle.id}_ss_vehicle_purchase_0;
 }
 
@@ -132,21 +135,21 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase_livery, compan
 
 <!--! check for *excluded* 2cc liveries
       only do this if there are cc1 liveries, otherwise this switch will never be reached -->
-<tal:block condition="consist.gestalt_graphics.alternative_cc_livery is not None">
+<tal:alt_livery condition="alternative_cc_livery is not None">
     switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_colour_mapping_check_2cc, company_colour2) {
-        <tal:livery_not_cc2_mapping repeat="livery_not_cc2_mapping consist.gestalt_graphics.alternative_cc_livery['not_cc2']">
+        <tal:livery_not_cc2_mapping repeat="livery_not_cc2_mapping alternative_cc_livery['not_cc2']">
             ${livery_not_cc2_mapping}: return base_sprite_2cc + 16 * company_colour2 + company_colour1; <!--! apply regular 1CC and 2CC -->
         </tal:livery_not_cc2_mapping>
-        return palette_2cc(${consist.gestalt_graphics.alternative_cc_livery['remap_to_cc'] if consist.gestalt_graphics.alternative_cc_livery['remap_to_cc'] is not None else 'company_colour1'}, company_colour2);
+        return palette_2cc(${alternative_cc_livery['remap_to_cc'] if alternative_cc_livery['remap_to_cc'] is not None else 'company_colour1'}, company_colour2);
     }
-</tal:block>
+</tal:alt_livery>
 
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_colour_mapping, company_colour1) {
-    <tal:block condition="consist.gestalt_graphics.alternative_cc_livery is not None">
-        <tal:livery_cc1_mapping repeat="cc1_livery_mapping consist.gestalt_graphics.alternative_cc_livery['cc1']">
+    <tal:alt_livery condition="alternative_cc_livery is not None">
+        <tal:livery_cc1_mapping repeat="cc1_livery_mapping alternative_cc_livery['cc1']">
             ${cc1_livery_mapping}: return ${vehicle.id}_switch_colour_mapping_check_2cc;
         </tal:livery_cc1_mapping>
-    </tal:block>
+    </tal:alt_livery>
     return base_sprite_2cc + 16 * company_colour2 + company_colour1; <!--! apply regular 1CC and 2CC -->
 }
 
