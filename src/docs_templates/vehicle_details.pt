@@ -1,204 +1,300 @@
 <tal:title define="global title python: doc_helper.unpack_name_string(consist) + ' - Iron Horse'" />
+<tal:suppress_hero_unit define="global suppress_hero_unit True" />
 
 <tal:main_template define="main_template load: main_template.pt" metal:use-macro="main_template">
 <div metal:fill-slot='body'>
-    <div class="container">
-        <h2>
-            ${doc_helper.unpack_name_string(consist)}
-            ${'(' + base_lang_strings[consist.str_name_suffix] + ')' if consist.str_name_suffix is not None else None}
-        </h2>
-        <div>
-            <tal:livery repeat="livery_variant doc_helper.get_docs_livery_variants(consist)">
-                <tal:block repeat="livery_name livery_variant.keys()">
-                    <div class="vehicle-image"
-                        style="width:${4 * doc_helper.buy_menu_sprite_max_width}; display:inline-block;">
-                        <img src="static/img/${consist.id}_${livery_name}.png"
-                             width="${4 * doc_helper.buy_menu_sprite_width(consist)}"
-                             height="${4 * doc_helper.buy_menu_sprite_height}" />
-                    </div>
-                </tal:block>
-            </tal:livery>
+    <div class="hero-unit subhead" style="padding-top:20px; padding-bottom:20px;">
+        <div class="container text-left">
+            <div class="row">
+                <div class="span10 offset1">
+                    <h1 style="font-size:48px; padding-top:0;">Iron Horse</h1>
+                    <p class="lead">My Lovely <strike>Horse</strike> Train Set</p>
+                </div>
+            </div>
         </div>
-        <h3>Engine Facts!</h3>
-        <dl>
-            <dt>Role</dt>
-            <dd>${doc_helper.unpack_role_string_for_consist(consist)}</dd>
-            <dt>Intro date / Designed</dt>
-            <dd>${consist.intro_date}</dd>
-            <dt>Power</dt>
-            <dd>${consist.power} hp</dd>
-            <dt>Speed</dt>
-            <dd>${consist.speed} mph</dd>
-            <dt>Track type</dt>
-            <dd>${consist.track_type}</dd>
-        </dl>
+    </div>
+    <div class="container text-left">
+        <div class="row">
+            <div class="span10 offset1">
+                <h2>
+                    ${doc_helper.unpack_name_string(consist)}
+                    ${'(' + base_lang_strings[consist.str_name_suffix] + ')' if consist.str_name_suffix is not None else None}
+                    <small>Vehicle Info</small>
+                </h2>
+                <div style="margin-top:30px; margin-bottom:50px;">
+                    <tal:livery repeat="livery_variant doc_helper.get_docs_livery_variants(consist)">
+                        <tal:block repeat="livery_name livery_variant.keys()">
+                            <div class="vehicle-image"
+                                style="width:${4 * doc_helper.buy_menu_sprite_max_width};
+                                       display:inline-block;">
+                                <img src="static/img/${consist.id}_${livery_name}.png"
+                                     width="${4 * doc_helper.buy_menu_sprite_width(consist)}"
+                                     height="${4 * doc_helper.buy_menu_sprite_height}" />
+                            </div>
+                        </tal:block>
+                    </tal:livery>
+                </div>
+                <!--! ugh I hate styles like this, either inline them on the tags, or move them to styles.css eh? -->
+                <style>
+                    dl.vehicle-facts {
+                        background: #e0f4fc;
+                        border-radius: 4px;
+                        font-size: 16px;
+                        text-align: left;
+                        display: table;
+                    }
+                    dl.vehicle-facts dt {
+                        display: inline-block;
+                        background: #b4dcec;
+                        color: #18506c;
+                        width: 210px; /* oof exact pixel sizing, regrettable */
+                        padding: 16px;
+                        text-align: right;
+                        border-bottom: solid 1px #b4dcec;
+                    }
+                    dl.vehicle-facts dt:first-of-type {
+                        padding-top: 21px;
+                        border-top-left-radius: 4px;
+                    }
+                    dl.vehicle-facts dt:last-of-type {
+                        padding-bottom: 21px;
+                        border-bottom-left-radius: 4px;
+                        border-bottom: none;
+                    }
+                    dl.vehicle-facts dd {
+                        display: inline-block;
+                        margin: 0;
+                        padding: 16px;
+                        width: 696px; /* oof exact pixel sizing, regrettable */
+                        border-bottom: solid 1px #b4dcec;
+                    }
+                    dl.vehicle-facts dd:last-of-type {
+                        border-bottom: none;
+                    }
+                </style>
 
-        <dl>
-            <dt>Replaces</dt>
-            <tal:replaces condition="len(consist.replaces_consists) > 0">
-                 <tal:replaced_consist repeat="replaced_consist consist.replaces_consists">
-                    <dd>
-                        <a href="${replaced_consist.id}.html">${doc_helper.get_replaced_by_name(replaced_consist.id, consists)}</a>
-                    </dd>
-                 </tal:replaced_consist>
-            </tal:replaces>
-            <tal:replaces_none condition="len(consist.replaces_consists) == 0">
-                <dd>None</dd>
-            </tal:replaces_none>
+                <dl class="vehicle-facts">
+                    <dt>Role</dt>
+                    <dd>${doc_helper.unpack_role_string_for_consist(consist)}</dd>
+                    <dt>Intro date / Designed</dt>
+                    <dd>${consist.intro_date}</dd>
+                    <dt>Power</dt>
+                    <dd>${consist.power} hp</dd>
+                    <dt>Speed</dt>
+                    <dd>${consist.speed} mph</dd>
+                    <dt>Track type</dt>
+                    <dd>${consist.track_type}</dd>
+                    <dt>Replaces</dt>
+                    <tal:replaces condition="len(consist.replaces_consists) > 0">
+                         <tal:replaced_consist repeat="replaced_consist consist.replaces_consists">
+                            <dd>
+                                <a href="${replaced_consist.id}.html">${doc_helper.get_replaced_by_name(replaced_consist.id, consists)}</a>
+                            </dd>
+                         </tal:replaced_consist>
+                    </tal:replaces>
+                    <tal:replaces_none condition="len(consist.replaces_consists) == 0">
+                        <dd>None</dd>
+                    </tal:replaces_none>
 
-            <dt>Replaced by</dt>
-            <tal:replacement condition="consist.replacement_consist is not None">
-                <dd>
-                    <a href="${consist.replacement_consist.id}.html">${doc_helper.get_replaced_by_name(consist.replacement_consist.id, consists)}</a>
-                </dd>
-            </tal:replacement>
-            <tal:replacement_is_none condition="consist.replacement_consist is None">
-                <dd>None</dd>
-            </tal:replacement_is_none>
-        </dl>
-        <h3>What the Chief Mechanical Engineer says</h3>
-        <blockquote>${structure:consist.description}</blockquote>
+                    <dt>Replaced by</dt>
+                    <tal:replacement condition="consist.replacement_consist is not None">
+                        <dd>
+                            <a href="${consist.replacement_consist.id}.html">${doc_helper.get_replaced_by_name(consist.replacement_consist.id, consists)}</a>
+                        </dd>
+                    </tal:replacement>
+                    <tal:replacement_is_none condition="consist.replacement_consist is None">
+                        <dd>None</dd>
+                    </tal:replacement_is_none>
+                </dl>
 
-        <h3>Appearance</h3>
-        <p>This train ${'can' if consist.allow_flip else 'cannot'} be flipped in depot.</p>
-        <p>This train has ${'2 livery options' if consist.gestalt_graphics.alternative_cc_livery is not None else '1 livery'}.</p>
-        <table style="width:100%; background-color:#eee; border-color:solid 1px #80c4fc; border-radius:4px; background:#e0f4fc; color:black;">
-            <thead>
-                <td style="min-width:215px; width:215px; background:#b4dcec; border-top-left-radius:4px;"><!--! empty spacer --></td>
-                <tal:livery repeat="livery_variant doc_helper.get_docs_livery_variants(consist)">
-                    <th style="padding:16px;
-                               padding-bottom:0;
-                               text-align:left;
-                               border-left:solid 1px #b4dcec;
-                               width:50%;">
-                        <!--!Livery ${repeat.livery_variant.number}-->
-                        ${'Alternative' if repeat.livery_variant.index == 1 else 'Default'} Livery
-                    </th>
-                </tal:livery>
-                <tal:block condition="len(doc_helper.get_docs_livery_variants(consist)) == 1">
-                    <th style="padding:16px;
-                               padding-bottom:0;
-                               text-align:left;
-                               border-left:solid 1px #b4dcec;
-                               width:50%;">
-                        <span style="color:#286078;">Alternative Livery: None</span>
-                    </th>
-                </tal:block>
-            </thead>
-            <tbody>
-                <tr style="vertical-align:top;">
-                    <th style="padding:16px; text-align:right; background:#b4dcec; color:#18506c;">
-                        Company Colour 1
-                    </th>
-                    <tal:liveries repeat="livery_variant doc_helper.get_docs_livery_variants(consist)">
-                        <td style="padding:16px; border-left:solid 1px #b4dcec;">
-                            <tal:not_cc_livery condition="repeat.livery_variant.index == 0">
-                                <tal:block condition="len(doc_helper.get_docs_livery_variants(consist)) == 1">
-                                    Any
-                                </tal:block>
-                                <tal:block condition="len(doc_helper.get_docs_livery_variants(consist)) > 1">
-                                    Any if the rules for the alternative livery are not matched.
-                                </tal:block>
-                            </tal:not_cc_livery>
-                            <tal:cc_livery condition="repeat.livery_variant.index != 0">
-                                <tal:alternative_cc_livery_metadata define="alternative_cc_livery_metadata consist.gestalt_graphics.alternative_cc_livery">
-                                    <ul style="list-style-type:none; margin-left:0; margin-top:0; max-width:305px;">
-                                        <li style="line-height:1; display:inline-block; width:95px;"
-                                            tal:repeat="cc1 alternative_cc_livery_metadata['cc1']">
-                                            <span style="background:linear-gradient(-45deg, rgb${doc_helper.get_company_colour_as_rgb(cc1, offset=3)}, rgb${doc_helper.get_company_colour_as_rgb(cc1, offset=7)});
-                                                         display:inline-block;
-                                                         vertical-align:middle;
-                                                         border:solid 1px #555;
-                                                         width:12px;
-                                                         height:12px;">
-                                            </span>
-                                            ${doc_helper.company_colour_names[cc1]}
-                                        </li>
-                                    </ul>
-                                </tal:alternative_cc_livery_metadata>
-                            </tal:cc_livery>
-                        </td>
-                    </tal:liveries>
-                    <tal:block condition="len(doc_helper.get_docs_livery_variants(consist)) == 1">
-                        <td style="border-left:solid 1px #b4dcec;"><!--! empty spacer td if only 1 livery --></td>
-                    </tal:block>
-                </tr>
-                <tr style="vertical-align:top;">
-                    <th style="padding:16px; text-align:right; background:#b4dcec; color:#18506c;">
-                        Company Colour 2
-                    </th>
-                    <tal:liveries repeat="livery_variant doc_helper.get_docs_livery_variants(consist)">
-                        <td style="padding:16px; border-left:solid 1px #b4dcec;">
-                            <tal:default_livery condition="repeat.livery_variant.index == 0">
-                                Any
-                            </tal:default_livery>
-                            <tal:cc_livery condition="repeat.livery_variant.index != 0">
-                                <tal:alternative_cc_livery_metadata define="alternative_cc_livery_metadata consist.gestalt_graphics.alternative_cc_livery">
-                                    <tal:block condition="len(alternative_cc_livery_metadata['not_cc2']) == 0">
-                                        Any
-                                    </tal:block>
-                                    <tal:block condition="len(alternative_cc_livery_metadata['not_cc2']) > 0">
-                                        Any Except: <ul style="list-style-type:none; margin-left:0; margin-top:0; max-width:330px;">
-                                            <li style="line-height:1; display:inline-block; width:95px;"
-                                                tal:repeat="not_cc2 alternative_cc_livery_metadata['not_cc2']">
-                                                <span style="background:linear-gradient(-45deg, rgb${doc_helper.get_company_colour_as_rgb(not_cc2, offset=3)}, rgb${doc_helper.get_company_colour_as_rgb(not_cc2, offset=7)});
-                                                             display:inline-block;
-                                                             vertical-align:middle;
-                                                             border:solid 1px #555;
-                                                             width:12px;
-                                                             height:12px;">
-                                                </span>
-                                                ${doc_helper.company_colour_names[not_cc2]}
-                                            </li>
-                                        </ul>
-                                    </tal:block>
-                                </tal:alternative_cc_livery_metadata>
-                            </tal:cc_livery>
-                        </td>
-                    </tal:liveries>
-                    <tal:block condition="len(doc_helper.get_docs_livery_variants(consist)) == 1">
-                        <td style="border-left:solid 1px #b4dcec;"><!--! empty spacer td if only 1 livery --></td>
-                    </tal:block>
-                </tr>
-                <tr style="vertical-align:top;">
-                    <th style="padding:16px; text-align:right; background:#b4dcec; border-bottom-left-radius:4px; color:#18506c;">
-                        Examples
-                    </th>
-                    <tal:liveries repeat="livery_variant doc_helper.get_docs_livery_variants(consist)">
-                        <td style="padding:16px; border-left:solid 1px #b4dcec;">
-                            <tal:block repeat="livery_name livery_variant.keys()">
-                                <div style="margin-bottom:16px;">
-                                    <div style="display:inline-block; width:100px;">
-                                        <tal:colours repeat="company_colour livery_variant[livery_name]['docs_image_input_cc']">
-                                            <!--! !! probably should be a caption for a figure ?? -->
-                                            <span style="background:linear-gradient(-45deg, rgb${doc_helper.get_company_colour_as_rgb(company_colour, offset=3)}, rgb${doc_helper.get_company_colour_as_rgb(company_colour, offset=7)});
-                                                         display:inline-block;
-                                                         vertical-align:middle;
-                                                         border:solid 1px #555;
-                                                         width:12px;
-                                                         height:12px;">
-                                            </span>
-                                            <span style="vertical-align:middle; font-size:12px;">${doc_helper.company_colour_names[company_colour]}</span>
-                                            <br />
-                                        </tal:colours>
-                                    </div>
-                                    <div class="vehicle-image"
-                                        style="width:${3 * doc_helper.buy_menu_sprite_max_width}; display:inline-block; vertical-align:top; margin-top:-8px; margin-bottom:10px;">
-                                        <img src="static/img/${consist.id}_${livery_name}.png"
-                                             width="${3 * doc_helper.buy_menu_sprite_width(consist)}"
-                                             height="${3 * doc_helper.buy_menu_sprite_height}" />
-                                    </div>
-                                </div>
+                <h3>What the Chief Mechanical Engineer says</h3>
+                <blockquote>
+                    <p>
+                        ${structure:'Not a lot.' if len(consist.description) == 0 else consist.description}
+                    </p>
+                </blockquote>
+
+                <h3>Appearance</h3>
+                <div style="font-size:16px;">
+                    <p>This vehicle ${'can' if consist.allow_flip else 'cannot'} be flipped in depot.</p>
+                    <p>This vehicle has ${'2 livery options' if consist.gestalt_graphics.alternative_cc_livery is not None else '1 livery'}.</p>
+                </div>
+
+                <!--! ugh I hate styles like this, either inline them on the tags, or move them to styles.css eh? -->
+                <style>
+                    table.livery-table {
+                        width: 100%;
+                        background-color: #eee;
+                        border-color: solid 1px #80c4fc;
+                        border-radius: 4px;
+                        background: #e0f4fc;
+                        color: black;
+                        font-size: 16px;
+                    }
+                    table.livery-table tr {
+                        vertical-align: top;
+                    }
+                    table.livery-table td, table.livery-table th {
+                        padding: 16px;
+                    }
+                    table.livery-table .livery-table-first-col {
+                        min-width: 215px;
+                        width: 215px;
+                        background: #b4dcec;
+                        text-align: right;
+                        background: #b4dcec;
+                        color: #18506c;
+                    }
+                    table.livery-table .livery-table-first-col:first-of-type {
+                        border-top-left-radius: 4px;
+                    }
+                    table.livery-table .livery-table-first-col:last-of-type {
+                        border-bottom-left-radius: 4px;
+                    }
+                    table.livery-table td.livery-table-col-with-divider, table.livery-table th.livery-table-col-with-divider {
+                        border-left: solid 1px #b4dcec;
+                    }
+
+                </style>
+
+                <table class="livery-table text-left">
+                    <thead>
+                        <tr>
+                            <td class="livery-table-first-col"><!--! empty spacer --></td>
+                            <tal:livery repeat="livery_variant doc_helper.get_docs_livery_variants(consist)">
+                                <th style="padding-bottom:0;
+                                           border-left:solid 1px #b4dcec;
+                                           width:50%;">
+                                    <!--!Livery ${repeat.livery_variant.number}-->
+                                    ${'Alternative' if repeat.livery_variant.index == 1 else 'Default'} Livery
+                                </th>
+                            </tal:livery>
+                            <tal:block condition="len(doc_helper.get_docs_livery_variants(consist)) == 1">
+                                <th class="livery-table-col-with-divider"
+                                    style="padding-bottom:0;
+                                           width:50%;">
+                                    <span style="color:#286078;">Alternative Livery: None</span>
+                                </th>
                             </tal:block>
-                        </td>
-                    </tal:liveries>
-                    <tal:block condition="len(doc_helper.get_docs_livery_variants(consist)) == 1">
-                        <td style="border-left:solid 1px #b4dcec;"><!--! empty spacer td if only 1 livery --></td>
-                    </tal:block>
-                </tr>
-            </tbody>
-        </table>
-        <br /><br /><br />
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th class="livery-table-first-col">
+                                Company Colour 1
+                            </th>
+                            <tal:liveries repeat="livery_variant doc_helper.get_docs_livery_variants(consist)">
+                                <td class="livery-table-col-with-divider">
+                                    <tal:not_cc_livery condition="repeat.livery_variant.index == 0">
+                                        <tal:block condition="len(doc_helper.get_docs_livery_variants(consist)) == 1">
+                                            Any
+                                        </tal:block>
+                                        <tal:block condition="len(doc_helper.get_docs_livery_variants(consist)) > 1">
+                                            Any if the rules for the alternative livery are not matched.
+                                        </tal:block>
+                                    </tal:not_cc_livery>
+                                    <tal:cc_livery condition="repeat.livery_variant.index != 0">
+                                        <tal:alternative_cc_livery_metadata define="alternative_cc_livery_metadata consist.gestalt_graphics.alternative_cc_livery">
+                                            <ul style="list-style-type:none; margin-left:0; margin-top:0; max-width:305px;">
+                                                <li style="line-height:1; display:inline-block; width:110px; margin-bottom:7px;"
+                                                    tal:repeat="cc1 alternative_cc_livery_metadata['cc1']">
+                                                    <span style="background:linear-gradient(-45deg, rgb${doc_helper.get_company_colour_as_rgb(cc1, offset=3)}, rgb${doc_helper.get_company_colour_as_rgb(cc1, offset=7)});
+                                                                 display:inline-block;
+                                                                 vertical-align:middle;
+                                                                 border:solid 1px #555;
+                                                                 width:16px;
+                                                                 height:16px;">
+                                                    </span>
+                                                    <span style="vertical-align:middle;">${doc_helper.company_colour_names[cc1]}</span>
+                                                </li>
+                                            </ul>
+                                        </tal:alternative_cc_livery_metadata>
+                                    </tal:cc_livery>
+                                </td>
+                            </tal:liveries>
+                            <tal:block condition="len(doc_helper.get_docs_livery_variants(consist)) == 1">
+                                <td class="livery-table-col-with-divider"><!--! empty spacer td if only 1 livery --></td>
+                            </tal:block>
+                        </tr>
+                        <tr>
+                            <th class="livery-table-first-col">
+                                Company Colour 2
+                            </th>
+                            <tal:liveries repeat="livery_variant doc_helper.get_docs_livery_variants(consist)">
+                                <td class="livery-table-col-with-divider">
+                                    <tal:default_livery condition="repeat.livery_variant.index == 0">
+                                        <p>Any</p>
+                                    </tal:default_livery>
+                                    <tal:cc_livery condition="repeat.livery_variant.index != 0">
+                                        <tal:alternative_cc_livery_metadata define="alternative_cc_livery_metadata consist.gestalt_graphics.alternative_cc_livery">
+                                            <tal:block condition="len(alternative_cc_livery_metadata['not_cc2']) == 0">
+                                                <p>Any</p>
+                                            </tal:block>
+                                            <tal:block condition="len(alternative_cc_livery_metadata['not_cc2']) > 0">
+                                                <p>Any Except:</p>
+                                                <ul style="list-style-type:none; margin-left:0; margin-top:0; max-width:330px;">
+                                                    <li style="line-height:1; display:inline-block; width:110px; margin-bottom:7px;"
+                                                        tal:repeat="not_cc2 alternative_cc_livery_metadata['not_cc2']">
+                                                        <span style="background:linear-gradient(-45deg, rgb${doc_helper.get_company_colour_as_rgb(not_cc2, offset=3)}, rgb${doc_helper.get_company_colour_as_rgb(not_cc2, offset=7)});
+                                                                     display:inline-block;
+                                                                     vertical-align:middle;
+                                                                     border:solid 1px #555;
+                                                                     width:16px;
+                                                                     height:16px;">
+                                                        </span>
+                                                        <span style="vertical-align:middle;">${doc_helper.company_colour_names[not_cc2]}</span>
+                                                    </li>
+                                                </ul>
+                                            </tal:block>
+                                        </tal:alternative_cc_livery_metadata>
+                                    </tal:cc_livery>
+                                </td>
+                            </tal:liveries>
+                            <tal:block condition="len(doc_helper.get_docs_livery_variants(consist)) == 1">
+                                <td class="livery-table-col-with-divider"><!--! empty spacer td if only 1 livery --></td>
+                            </tal:block>
+                        </tr>
+                        <tr>
+                            <th class="livery-table-first-col">
+                                Examples
+                            </th>
+                            <tal:liveries repeat="livery_variant doc_helper.get_docs_livery_variants(consist)">
+                                <td class="livery-table-col-with-divider">
+                                    <tal:block repeat="livery_name livery_variant.keys()">
+                                        <div style="margin-bottom:16px;">
+                                            <div style="display:inline-block; width:100px;">
+                                                <tal:colours repeat="company_colour livery_variant[livery_name]['docs_image_input_cc']">
+                                                    <!--! !! probably should be a caption for a figure ?? -->
+                                                    <span style="background:linear-gradient(-45deg, rgb${doc_helper.get_company_colour_as_rgb(company_colour, offset=3)}, rgb${doc_helper.get_company_colour_as_rgb(company_colour, offset=7)});
+                                                                 display:inline-block;
+                                                                 vertical-align:middle;
+                                                                 border:solid 1px #555;
+                                                                 width:12px;
+                                                                 height:12px;">
+                                                    </span>
+                                                    <span style="vertical-align:middle; font-size:13px;">${doc_helper.company_colour_names[company_colour]}</span>
+                                                    <br />
+                                                </tal:colours>
+                                            </div>
+                                            <div class="vehicle-image"
+                                                style="width:${3 * doc_helper.buy_menu_sprite_max_width}; display:inline-block; vertical-align:top; margin-top:-8px; margin-bottom:10px;">
+                                                <img src="static/img/${consist.id}_${livery_name}.png"
+                                                     width="${3 * doc_helper.buy_menu_sprite_width(consist)}"
+                                                     height="${3 * doc_helper.buy_menu_sprite_height}" />
+                                            </div>
+                                        </div>
+                                    </tal:block>
+                                </td>
+                            </tal:liveries>
+                            <tal:block condition="len(doc_helper.get_docs_livery_variants(consist)) == 1">
+                                <td class="livery-table-col-with-divider"><!--! empty spacer td if only 1 livery --></td>
+                            </tal:block>
+                        </tr>
+                    </tbody>
+                </table>
+                <br /><br /><br />
+            </div>
+        </div>
     </div>
 </div>
 </tal:main_template>
