@@ -13,7 +13,8 @@ def main(roster_id):
                             gen=5,
                             pantograph_type='z-shaped-double',
                             intro_date_offset=2, # introduce later than gen epoch by design
-                            cc_livery_keys=['RAILFREIGHT_TRIPLE_GREY', 'RES_FAIL'],
+                            cc_livery_keys=['FREIGHTLINER'],
+                            default_livery_extra_docs_examples=[('COLOUR_WHITE', 'COLOUR_BLUE'), ('COLOUR_BLUE', 'COLOUR_WHITE'), ('COLOUR_PINK', 'COLOUR_DARK_BLUE')],
                             sprites_complete=False)
 
     consist.add_unit(type=ElectricEngineUnit,

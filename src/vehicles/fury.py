@@ -15,6 +15,7 @@ def main(roster_id):
                             pantograph_type='z-shaped-double',
                             intro_date_offset=1,  # introduce later than gen epoch by design
                             cc_livery_keys=['RAILFREIGHT_TRIPLE_GREY'],
+                            default_livery_extra_docs_examples=[('COLOUR_GREEN', 'COLOUR_YELLOW'), ('COLOUR_PALE_GREEN', 'COLOUR_PALE_GREEN'), ('COLOUR_LIGHT_BLUE', 'COLOUR_WHITE')],
                             sprites_complete=False)
 
     consist.add_unit(type=ElectricEngineUnit,

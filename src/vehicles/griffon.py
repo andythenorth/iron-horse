@@ -11,7 +11,8 @@ def main(roster_id):
                             power=1650,
                             random_reverse=True,
                             gen=5,
-                            cc_livery_keys=['RAILFREIGHT_TRIPLE_GREY', 'EWS'],
+                            cc_livery_keys=['RAILFREIGHT_TRIPLE_GREY'],
+                            default_livery_extra_docs_examples=[('COLOUR_GREY', 'COLOUR_YELLOW'), ('COLOUR_WHITE', 'COLOUR_GREY'), ('COLOUR_GREY', 'COLOUR_GREY'), ('COLOUR_LIGHT_BLUE', 'COLOUR_WHITE')],
                             sprites_complete=False)
 
     consist.add_unit(type=DieselEngineUnit,

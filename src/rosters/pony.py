@@ -186,7 +186,7 @@ def main(disabled=False):
                                       'YEOMAN': {'cc1': ['COLOUR_GREY', 'COLOUR_WHITE'],
                                                  'not_cc2': [],
                                                  'remap_to_cc': None,
-                                                 'docs_image_input_cc': [('COLOUR_GREY', 'COLOUR_BLUE'), ('COLOUR_GREY', 'COLOUR_DARK_BLUE')]
+                                                 'docs_image_input_cc': [('COLOUR_GREY', 'COLOUR_BLUE'), ('COLOUR_WHITE', 'COLOUR_DARK_BLUE')]
                                                  }
                                       },
 

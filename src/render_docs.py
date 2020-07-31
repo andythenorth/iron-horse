@@ -191,24 +191,21 @@ class DocHelper(object):
                 }
 
     def get_docs_livery_variants(self, consist):
-        # blue and red_white are defaults
-        # !! blue is wrong for legacy reasons, the colour used is actually dark blue
-        variants_config = [{'dark_blue_dark_blue': {'cc_remaps': {'CC1': 'COLOUR_DARK_BLUE', 'CC2': 'COLOUR_DARK_BLUE'}, 'docs_image_input_cc': ('COLOUR_DARK_BLUE', 'COLOUR_DARK_BLUE')},
-                            'red_white': {'cc_remaps': {'CC1': 'COLOUR_RED', 'CC2': 'COLOUR_WHITE'}, 'docs_image_input_cc': ('COLOUR_RED', 'COLOUR_WHITE')},
-                            }]
+        # dark blue / dark blue and red / white are defaults
+        variants_config = []
 
-        """
-        default_livery_extra_docs_examples = getattr(consist.gestalt_graphics, 'default_livery_extra_docs_examples', None)
-        if default_livery_extra_docs_examples is not None:
-            result={}
-            for cc_remap_pair in default_livery_extra_docs_examples:
-                livery_name = (self.get_livery_file_substr(cc_remap_pair))
-                result[livery_name] = {}
-                result[livery_name]['cc_remaps'] = {'CC1': cc_remap_pair[0], 'CC2': cc_remap_pair[1]}
-                result[livery_name]['docs_image_input_cc'] = cc_remap_pair
-                print(result)
-            variants_config.append(result)
-        """
+        default_livery_examples = [('COLOUR_DARK_BLUE', 'COLOUR_DARK_BLUE'), ('COLOUR_RED', 'COLOUR_WHITE')]
+        default_livery_examples.extend(getattr(consist.gestalt_graphics, 'default_livery_extra_docs_examples', []))
+
+        result={}
+        for cc_remap_pair in default_livery_examples:
+            livery_name = (self.get_livery_file_substr(cc_remap_pair))
+            result[livery_name] = {}
+            result[livery_name]['cc_remaps'] = {'CC1': cc_remap_pair[0], 'CC2': cc_remap_pair[1]}
+            result[livery_name]['docs_image_input_cc'] = cc_remap_pair
+
+        variants_config.append(result)
+
         cc_liveries = getattr(consist.gestalt_graphics, 'cc_liveries', None)
         if cc_liveries is not None:
             for cc_livery in cc_liveries:

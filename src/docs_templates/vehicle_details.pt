@@ -58,34 +58,36 @@
             <p>${structure:consist.description}</p>
         </dl>
 
-        <table style="width:100%; background-color:#eee; border-color:solid 1px #80c4fc; border-radius:4px; background:#3890e8; color:white;">
+        <table style="width:100%; background-color:#eee; border-color:solid 1px #80c4fc; border-radius:4px; background:#e0f4fc; color:black;">
             <thead>
                 <td style="min-width:160px; width:160px; background:#1878dc; border-top-left-radius:4px;"><!--! empty spacer --></td>
                 <tal:livery repeat="livery_variant doc_helper.get_docs_livery_variants(consist)">
                     <th style="padding:16px;
                                padding-bottom:0;
-                               text-align:left; border-left: solid 1px rgba(255,255,255,0.3);
+                               text-align:left;
+                               border-left: solid 1px #b4dcec;
                                width:330px;">
-                        Livery ${repeat.livery_variant.number}
+                        <!--!Livery ${repeat.livery_variant.number}-->
+                        ${'Default' if repeat.livery_variant.number == 1 else 'Alternative'} Livery
                     </th>
                 </tal:livery>
                 <tal:block condition="len(doc_helper.get_docs_livery_variants(consist)) == 1">
-                    <td style="border-left: solid 1px rgba(255,255,255,0.3);"><!--! empty spacer td if only 1 livery --></td>
+                    <td style="border-left: solid 1px #b4dcec;"><!--! empty spacer td if only 1 livery --></td>
                 </tal:block>
             </thead>
             <tbody>
                 <tr style="vertical-align:top;">
-                    <th style="padding:16px; text-align:right; background:#1878dc;">
+                    <th style="padding:16px; text-align:right; background:#1878dc; color:white;">
                         Company Colour 1
                     </th>
                     <tal:liveries repeat="livery_variant doc_helper.get_docs_livery_variants(consist)">
-                        <td style="padding:16px; border-left:solid 1px rgba(255,255,255,0.3);">
+                        <td style="padding:16px; border-left:solid 1px #b4dcec;">
                             <tal:not_cc_livery condition="repeat.livery_variant.index == 0">
                                 <tal:block condition="len(doc_helper.get_docs_livery_variants(consist)) == 1">
                                     Any
                                 </tal:block>
                                 <tal:block condition="len(doc_helper.get_docs_livery_variants(consist)) > 1">
-                                    Shown if no other livery rules are matched.
+                                    Any if the rules for the alternative livery are not matched.
                                 </tal:block>
                             </tal:not_cc_livery>
                             <tal:cc_livery condition="repeat.livery_variant.index != 0">
@@ -108,15 +110,15 @@
                         </td>
                     </tal:liveries>
                     <tal:block condition="len(doc_helper.get_docs_livery_variants(consist)) == 1">
-                        <td style="border-left: solid 1px rgba(255,255,255,0.3);"><!--! empty spacer td if only 1 livery --></td>
+                        <td style="border-left: solid 1px #b4dcec;"><!--! empty spacer td if only 1 livery --></td>
                     </tal:block>
                 </tr>
                 <tr style="vertical-align:top;">
-                    <th style="padding:16px; text-align:right; background:#1878dc;">
+                    <th style="padding:16px; text-align:right; background:#1878dc; color:white;">
                         Company Colour 2
                     </th>
                     <tal:liveries repeat="livery_variant doc_helper.get_docs_livery_variants(consist)">
-                        <td style="padding:16px; border-left:solid 1px rgba(255,255,255,0.3);">
+                        <td style="padding:16px; border-left:solid 1px #b4dcec;">
                             <tal:default_livery condition="repeat.livery_variant.index == 0">
                                 Any
                             </tal:default_livery>
@@ -145,15 +147,15 @@
                         </td>
                     </tal:liveries>
                     <tal:block condition="len(doc_helper.get_docs_livery_variants(consist)) == 1">
-                        <td style="border-left: solid 1px rgba(255,255,255,0.3);"><!--! empty spacer td if only 1 livery --></td>
+                        <td style="border-left: solid 1px #b4dcec;"><!--! empty spacer td if only 1 livery --></td>
                     </tal:block>
                 </tr>
                 <tr style="vertical-align:top;">
-                    <th style="padding:16px; text-align:right; background:#1878dc; border-bottom-left-radius:4px;">
+                    <th style="padding:16px; text-align:right; background:#1878dc; border-bottom-left-radius:4px; color:white;">
                         Examples
                     </th>
                     <tal:liveries repeat="livery_variant doc_helper.get_docs_livery_variants(consist)">
-                        <td style="padding:16px; border-left:solid 1px rgba(255,255,255,0.3);">
+                        <td style="padding:16px; border-left:solid 1px #b4dcec;">
                             <tal:block repeat="livery_name livery_variant.keys()">
                                 <div style="margin-bottom:16px;">
                                     <div style="display:inline-block; width:100px;">
@@ -181,7 +183,7 @@
                         </td>
                     </tal:liveries>
                     <tal:block condition="len(doc_helper.get_docs_livery_variants(consist)) == 1">
-                        <td style="border-left: solid 1px rgba(255,255,255,0.3);"><!--! empty spacer td if only 1 livery --></td>
+                        <td style="border-left: solid 1px #b4dcec;"><!--! empty spacer td if only 1 livery --></td>
                     </tal:block>
                 </tr>
             </tbody>
