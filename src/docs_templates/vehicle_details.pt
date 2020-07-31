@@ -60,7 +60,7 @@
 
         <table style="width:100%; background-color:#eee; border-color:solid 1px #80c4fc; border-radius:4px; background:#e0f4fc; color:black;">
             <thead>
-                <td style="min-width:215px; width:215px; background:#1878dc; border-top-left-radius:4px;"><!--! empty spacer --></td>
+                <td style="min-width:215px; width:215px; background:#b4dcec; border-top-left-radius:4px;"><!--! empty spacer --></td>
                 <tal:livery repeat="livery_variant doc_helper.get_docs_livery_variants(consist)">
                     <th style="padding:16px;
                                padding-bottom:0;
@@ -68,7 +68,7 @@
                                border-left:solid 1px #b4dcec;
                                width:50%;">
                         <!--!Livery ${repeat.livery_variant.number}-->
-                        ${'Alternative' if repeat.livery_variant.index == 1 else None} Livery
+                        ${'Alternative' if repeat.livery_variant.index == 1 else 'Default'} Livery
                     </th>
                 </tal:livery>
                 <tal:block condition="len(doc_helper.get_docs_livery_variants(consist)) == 1">
@@ -83,7 +83,7 @@
             </thead>
             <tbody>
                 <tr style="vertical-align:top;">
-                    <th style="padding:16px; text-align:right; background:#1878dc; color:white;">
+                    <th style="padding:16px; text-align:right; background:#b4dcec; color:#18506c;">
                         Company Colour 1
                     </th>
                     <tal:liveries repeat="livery_variant doc_helper.get_docs_livery_variants(consist)">
@@ -120,7 +120,7 @@
                     </tal:block>
                 </tr>
                 <tr style="vertical-align:top;">
-                    <th style="padding:16px; text-align:right; background:#1878dc; color:white;">
+                    <th style="padding:16px; text-align:right; background:#b4dcec; color:#18506c;">
                         Company Colour 2
                     </th>
                     <tal:liveries repeat="livery_variant doc_helper.get_docs_livery_variants(consist)">
@@ -157,7 +157,7 @@
                     </tal:block>
                 </tr>
                 <tr style="vertical-align:top;">
-                    <th style="padding:16px; text-align:right; background:#1878dc; border-bottom-left-radius:4px; color:white;">
+                    <th style="padding:16px; text-align:right; background:#b4dcec; border-bottom-left-radius:4px; color:#18506c;">
                         Examples
                     </th>
                     <tal:liveries repeat="livery_variant doc_helper.get_docs_livery_variants(consist)">
