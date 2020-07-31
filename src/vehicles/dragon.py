@@ -21,4 +21,7 @@ def main(roster_id):
                      effect_offsets=[(-1, 0), (1, 0)], # double the smoke eh?
                      spriterow_num=0)
 
+    consist.description = """A right big fast diesel hydraulic this one is."""
+    consist.cite = """Mr. Train"""
+
     return consist

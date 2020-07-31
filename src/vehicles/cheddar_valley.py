@@ -22,4 +22,8 @@ def main(roster_id):
                      vehicle_length=8,
                      spriterow_num=0)
 
+
+    consist.description = """I shipped these in from overseas.  Pull you backwards through a wall this one will.  Right proper engine."""
+    consist.cite = """Mr. Train"""
+
     return consist

@@ -20,4 +20,7 @@ def main(roster_id):
                      vehicle_length=8,
                      spriterow_num=0)
 
+    consist.description = """Daft as a brush if you ask me.  Or mad as a badger.  Goes like stink off a shovel though."""
+    consist.cite = """Mr. Train"""
+
     return consist

@@ -24,4 +24,7 @@ def main(roster_id):
                      vehicle_length=4,
                      spriterow_num=1)
 
+    consist.description = """I'm not saying I'm the best engine builder in the business, but I'd be in the top one."""
+    consist.cite = """Mr. Train"""
+
     return consist

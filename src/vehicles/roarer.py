@@ -20,4 +20,7 @@ def main(roster_id):
                      vehicle_length=8,
                      spriterow_num=0)
 
+    consist.description = """They're right loud these are, but we've got the power right up on em too."""
+    consist.cite = """Mr. Train"""
+
     return consist

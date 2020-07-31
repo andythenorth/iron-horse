@@ -34,17 +34,51 @@
                         </tal:block>
                     </tal:livery>
                 </div>
+                <style>
+                    blockquote.vehicle-quote p {
+                        font-size: 24px;
+                        margin-left: 20px;
+                        max-width: 90%;
+                    }
+                    blockquote.vehicle-quote p:before {
+                        content: "\201C";
+                        left: 0;
+                        top: 0;
+                        margin-left: -20px;
+                        font-size: 36px;
+                        line-height: 32px;
+                        font-weight: 400;
+                    }
+                    blockquote.vehicle-quote p:after {
+                        content: "\201D";
+                        right: 0;
+                        bottom: 0;
+                        font-size: 36px;
+                        line-height: 32px;
+                        font-weight: 400;
+                    }
+                    blockquote.vehicle-quote small {
+                        font-size: 16px;
+                        margin-top: 10px;
+                    }
+                </style>
+                <blockquote class="vehicle-quote">
+                    <p>
+                        ${structure: consist.description}
+                    </p>
+                    <small><cite>${structure: consist.cite}</cite></small>
+                </blockquote>
+
                 <!--! ugh I hate styles like this, either inline them on the tags, or move them to styles.css eh? -->
                 <style>
-                    dl.vehicle-facts {
+                    table.vehicle-facts {
                         background: #e0f4fc;
                         border-radius: 4px;
                         font-size: 16px;
-                        text-align: left;
-                        display: table;
+                        width: 100%;
+                        margin-bottom: 30px;
                     }
-                    dl.vehicle-facts dt {
-                        display: inline-block;
+                    table.vehicle-facts th {
                         background: #b4dcec;
                         color: #18506c;
                         width: 210px; /* oof exact pixel sizing, regrettable */
@@ -52,67 +86,78 @@
                         text-align: right;
                         border-bottom: solid 1px #b4dcec;
                     }
-                    dl.vehicle-facts dt:first-of-type {
+                    table.vehicle-facts tr:first-of-type th {
                         padding-top: 21px;
                         border-top-left-radius: 4px;
                     }
-                    dl.vehicle-facts dt:last-of-type {
+                    table.vehicle-facts tr:last-of-type th {
                         padding-bottom: 21px;
                         border-bottom-left-radius: 4px;
                         border-bottom: none;
                     }
-                    dl.vehicle-facts dd {
-                        display: inline-block;
+                    table.vehicle-facts td {
                         margin: 0;
                         padding: 16px;
-                        width: 696px; /* oof exact pixel sizing, regrettable */
                         border-bottom: solid 1px #b4dcec;
                     }
-                    dl.vehicle-facts dd:last-of-type {
+                    table.vehicle-facts tr:last-of-type td {
                         border-bottom: none;
                     }
                 </style>
 
-                <dl class="vehicle-facts">
-                    <dt>Role</dt>
-                    <dd>${doc_helper.unpack_role_string_for_consist(consist)}</dd>
-                    <dt>Intro date / Designed</dt>
-                    <dd>${consist.intro_date}</dd>
-                    <dt>Power</dt>
-                    <dd>${consist.power} hp</dd>
-                    <dt>Speed</dt>
-                    <dd>${consist.speed} mph</dd>
-                    <dt>Track type</dt>
-                    <dd>${consist.track_type}</dd>
-                    <dt>Replaces</dt>
-                    <tal:replaces condition="len(consist.replaces_consists) > 0">
-                         <tal:replaced_consist repeat="replaced_consist consist.replaces_consists">
-                            <dd>
-                                <a href="${replaced_consist.id}.html">${doc_helper.get_replaced_by_name(replaced_consist.id, consists)}</a>
-                            </dd>
-                         </tal:replaced_consist>
-                    </tal:replaces>
-                    <tal:replaces_none condition="len(consist.replaces_consists) == 0">
-                        <dd>None</dd>
-                    </tal:replaces_none>
+                <table class="vehicle-facts">
+                    <tbody>
+                        <tr>
+                            <th>Role</th>
+                            <td>${doc_helper.unpack_role_string_for_consist(consist)}</td>
+                        </tr>
+                        <tr>
+                            <th>Intro date / Designed</th>
+                            <td>${consist.intro_date}</td>
+                        </tr>
+                        <tr>
+                            <th>Max. Speed</th>
+                            <td>${consist.speed} mph</td>
+                        </tr>
+                        <tr>
+                            <th>Power</th>
+                            <td>${consist.power} hp</td>
+                        </tr>
+                        <tr>
+                            <th>Weight</th>
+                            <td>${consist.weight} t</td>
+                        </tr>
+                        <tr>
+                            <th>Track type</th>
+                            <td>${consist.track_type}</td>
+                        </tr>
+                        <tr>
+                            <th>Replaces</th>
+                            <tal:replaces condition="len(consist.replaces_consists) > 0">
+                                <td>
+                                     <tal:replaced_consist repeat="replaced_consist consist.replaces_consists">
+                                        <a href="${replaced_consist.id}.html">${doc_helper.get_replaced_by_name(replaced_consist.id, consists)}</a>${',' if not repeat.replaced_consist.end else ''}
 
-                    <dt>Replaced by</dt>
-                    <tal:replacement condition="consist.replacement_consist is not None">
-                        <dd>
-                            <a href="${consist.replacement_consist.id}.html">${doc_helper.get_replaced_by_name(consist.replacement_consist.id, consists)}</a>
-                        </dd>
-                    </tal:replacement>
-                    <tal:replacement_is_none condition="consist.replacement_consist is None">
-                        <dd>None</dd>
-                    </tal:replacement_is_none>
-                </dl>
-
-                <h3>What the Chief Mechanical Engineer says</h3>
-                <blockquote>
-                    <p>
-                        ${structure:'Not a lot.' if len(consist.description) == 0 else consist.description}
-                    </p>
-                </blockquote>
+                                     </tal:replaced_consist>
+                                </td>
+                            </tal:replaces>
+                            <tal:replaces_none condition="len(consist.replaces_consists) == 0">
+                                <td>None</td>
+                            </tal:replaces_none>
+                        </tr>
+                        <tr>
+                            <th>Replaced by</th>
+                            <tal:replacement condition="consist.replacement_consist is not None">
+                                <td>
+                                    <a href="${consist.replacement_consist.id}.html">${doc_helper.get_replaced_by_name(consist.replacement_consist.id, consists)}</a>
+                                </td>
+                            </tal:replacement>
+                            <tal:replacement_is_none condition="consist.replacement_consist is None">
+                                <td>None</td>
+                            </tal:replacement_is_none>
+                        </tr>
+                    </tbody>
+                </table>
 
                 <h3>Appearance</h3>
                 <div style="font-size:16px;">

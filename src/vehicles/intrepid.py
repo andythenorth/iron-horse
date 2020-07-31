@@ -20,4 +20,7 @@ def main(roster_id):
                      vehicle_length=8,
                      spriterow_num=0)
 
+    consist.description = """They've put a non-standard hydraulic transmission in these, but they're a bit lighter than a Wyvern so we'll give em a go."""
+    consist.cite = """Mr. Train"""
+
     return consist

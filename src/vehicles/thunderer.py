@@ -11,8 +11,8 @@ def main(roster_id):
                             replacement_consist_id='wyvern', # this Joker ends with Wyvern, long-lived
                             power=1500, # slightly less than the Swift (and lighter engine)
                             tractive_effort_coefficient=0.2,
-                            gen=2,
                             fixed_run_cost_points=140, # give a bonus so this can be a genuine mixed-traffic engine
+                            gen=2,
                             intro_date_offset=10, # introduce later than gen epoch by design
                             sprites_complete=False)
 
@@ -25,5 +25,8 @@ def main(roster_id):
                      weight=30,
                      vehicle_length=4,
                      spriterow_num=1)
+
+    consist.description = """Bit of an odd beast this one.  It's quite happy on passengers and mail or you can put it on freight.  Right long-lived too."""
+    consist.cite = """Mr. Train"""
 
     return consist

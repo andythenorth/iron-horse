@@ -21,4 +21,7 @@ def main(roster_id):
                      vehicle_length=6,
                      spriterow_num=0)
 
+    consist.description = """Nippy little bugger."""
+    consist.cite = """Mr. Train"""
+
     return consist

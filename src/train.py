@@ -110,8 +110,9 @@ class Consist(object):
         # optionally suppress nmlc warnings about animated pixels for consists where they're intentional
         self.suppress_animated_pixel_warnings = kwargs.get(
             'suppress_animated_pixel_warnings', False)
-        # extended description for docs etc
+        # extended description (and a cite from a made up person) for docs etc
         self.description = u''
+        self.cite = u''
         # occasionally we want to force a specific spriterow for docs, not needed often, set in kwargs as needed, see also buy_menu_spriterow_num
         self.docs_image_spriterow = kwargs.get('docs_image_spriterow', 0) # 0 indexed spriterows, position in generated spritesheet
         # aids 'project management'
@@ -525,9 +526,17 @@ class Consist(object):
             if self.weight > 500:
                 utils.echo_message("Consist " + self.id + " has weight > 500t, which is too much")
 
+    def assert_description_and_cite(self):
+        if self.power > 0:
+            if len(self.description) == 0:
+                utils.echo_message("Consist " + self.id + " has no description")
+            if len(self.cite) == 0:
+                utils.echo_message("Consist " + self.id + " has no cite")
+
     def render(self, templates):
         self.assert_speed()
         self.assert_power()
+        self.assert_description_and_cite()
         # templating
         nml_result = ''
         if len(self.units) > 1:

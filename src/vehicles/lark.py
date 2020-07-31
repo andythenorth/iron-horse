@@ -20,6 +20,7 @@ def main(roster_id):
                      vehicle_length=6,
                      spriterow_num=0)
 
-    consist.description = """Sturdy tank engine!  Using a design licensed from Mr. William Adams, this engine will move small freight and passenger trains at low cost, and surprisingly high speed."""
+    consist.description = """These'll do right nicely for small lines.  I stole the design from Mr. Adams, but I won't tell him if you won't."""
+    consist.cite = """Mr. Train"""
 
     return consist

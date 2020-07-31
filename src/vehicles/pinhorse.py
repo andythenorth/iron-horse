@@ -20,4 +20,7 @@ def main(roster_id):
                      vehicle_length=6,
                      spriterow_num=0)
 
+    consist.description = """Mr. Bulleid and Mr. Raworth drew these up for me. For small jobs, you won't go far wrong with em."""
+    consist.cite = """Mr. Train"""
+
     return consist
