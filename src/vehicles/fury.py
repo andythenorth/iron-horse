@@ -14,7 +14,7 @@ def main(roster_id):
                             replacement_consist_id='revolution', # this line ends with Fury and is merged to heavy_express 3
                             pantograph_type='z-shaped-double',
                             intro_date_offset=1,  # introduce later than gen epoch by design
-                            cc_livery_keys=['RAILFREIGHT_TRIPLE_GREY'],
+                            alternative_cc_livery='RAILFREIGHT_TRIPLE_GREY',
                             default_livery_extra_docs_examples=[('COLOUR_GREEN', 'COLOUR_YELLOW'), ('COLOUR_PALE_GREEN', 'COLOUR_PALE_GREEN'), ('COLOUR_LIGHT_BLUE', 'COLOUR_WHITE')],
                             sprites_complete=False)
 

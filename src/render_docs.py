@@ -203,21 +203,19 @@ class DocHelper(object):
             result[livery_name] = {}
             result[livery_name]['cc_remaps'] = {'CC1': cc_remap_pair[0], 'CC2': cc_remap_pair[1]}
             result[livery_name]['docs_image_input_cc'] = cc_remap_pair
-
         variants_config.append(result)
 
-        cc_liveries = getattr(consist.gestalt_graphics, 'cc_liveries', None)
-        if cc_liveries is not None:
-            for cc_livery in cc_liveries:
-                result = {}
-                for cc_remap_pair in cc_livery['docs_image_input_cc']:
-                    livery_name = (self.get_livery_file_substr(cc_remap_pair))
-                    result[livery_name] = {}
-                    CC1_remap = cc_livery['remap_to_cc'] if cc_livery['remap_to_cc'] is not None else cc_remap_pair[0] # handle possible remap of CC1
-                    CC2_remap = cc_remap_pair[1] # no forced remap to another cc for second colour, take it as is
-                    result[livery_name]['cc_remaps'] = {'CC1': CC1_remap, 'CC2': CC2_remap}
-                    result[livery_name]['docs_image_input_cc'] = cc_remap_pair
-                variants_config.append(result)
+        alternative_cc_livery = getattr(consist.gestalt_graphics, 'alternative_cc_livery', None)
+        if alternative_cc_livery is not None:
+            result = {}
+            for cc_remap_pair in alternative_cc_livery['docs_image_input_cc']:
+                livery_name = (self.get_livery_file_substr(cc_remap_pair))
+                result[livery_name] = {}
+                CC1_remap = alternative_cc_livery['remap_to_cc'] if alternative_cc_livery['remap_to_cc'] is not None else cc_remap_pair[0] # handle possible remap of CC1
+                CC2_remap = cc_remap_pair[1] # no forced remap to another cc for second colour, take it as is
+                result[livery_name]['cc_remaps'] = {'CC1': CC1_remap, 'CC2': CC2_remap}
+                result[livery_name]['docs_image_input_cc'] = cc_remap_pair
+            variants_config.append(result)
         return variants_config
 
     def get_livery_file_substr(self, cc_pair):

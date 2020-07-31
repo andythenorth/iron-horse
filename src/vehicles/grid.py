@@ -12,7 +12,7 @@ def main(roster_id):
                             random_reverse=True,
                             intro_date_offset=-10,  # let's be a little bit earlier for this one
                             gen=5,
-                            cc_livery_keys=['RAILFREIGHT_RED_STRIPE'],
+                            alternative_cc_livery='RAILFREIGHT_RED_STRIPE',
                             sprites_complete=False)
 
     consist.add_unit(type=DieselEngineUnit,

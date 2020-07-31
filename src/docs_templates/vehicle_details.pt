@@ -91,10 +91,10 @@
                                 </tal:block>
                             </tal:not_cc_livery>
                             <tal:cc_livery condition="repeat.livery_variant.index != 0">
-                                <tal:cc_livery_metadata define="cc_livery_metadata consist.gestalt_graphics.cc_liveries[repeat.livery_variant.index - 1]">
+                                <tal:alternative_cc_livery_metadata define="alternative_cc_livery_metadata consist.gestalt_graphics.alternative_cc_livery">
                                     <ul style="list-style-type:none; margin-left:0; margin-top:0; max-width:305px;">
                                         <li style="line-height:1; display:inline-block; width:95px;"
-                                            tal:repeat="cc1 cc_livery_metadata['cc1']">
+                                            tal:repeat="cc1 alternative_cc_livery_metadata['cc1']">
                                             <span style="background:linear-gradient(-45deg, rgb${doc_helper.get_company_colour_as_rgb(cc1, offset=3)}, rgb${doc_helper.get_company_colour_as_rgb(cc1, offset=7)});
                                                          display:inline-block;
                                                          vertical-align:middle;
@@ -105,7 +105,7 @@
                                             ${doc_helper.company_colour_names[cc1]}
                                         </li>
                                     </ul>
-                                </tal:cc_livery_metadata>
+                                </tal:alternative_cc_livery_metadata>
                             </tal:cc_livery>
                         </td>
                     </tal:liveries>
@@ -123,14 +123,14 @@
                                 Any
                             </tal:default_livery>
                             <tal:cc_livery condition="repeat.livery_variant.index != 0">
-                                <tal:cc_livery_metadata define="cc_livery_metadata consist.gestalt_graphics.cc_liveries[repeat.livery_variant.index - 1]">
-                                    <tal:block condition="len(cc_livery_metadata['not_cc2']) == 0">
+                                <tal:alternative_cc_livery_metadata define="alternative_cc_livery_metadata consist.gestalt_graphics.alternative_cc_livery">
+                                    <tal:block condition="len(alternative_cc_livery_metadata['not_cc2']) == 0">
                                         Any
                                     </tal:block>
-                                    <tal:block condition="len(cc_livery_metadata['not_cc2']) > 0">
+                                    <tal:block condition="len(alternative_cc_livery_metadata['not_cc2']) > 0">
                                         Any Except: <ul style="list-style-type:none; margin-left:0; margin-top:0; max-width:330px;">
                                             <li style="line-height:1; display:inline-block; width:95px;"
-                                                tal:repeat="not_cc2 cc_livery_metadata['not_cc2']">
+                                                tal:repeat="not_cc2 alternative_cc_livery_metadata['not_cc2']">
                                                 <span style="background:linear-gradient(-45deg, rgb${doc_helper.get_company_colour_as_rgb(not_cc2, offset=3)}, rgb${doc_helper.get_company_colour_as_rgb(not_cc2, offset=7)});
                                                              display:inline-block;
                                                              vertical-align:middle;
@@ -142,7 +142,7 @@
                                             </li>
                                         </ul>
                                     </tal:block>
-                                </tal:cc_livery_metadata>
+                                </tal:alternative_cc_livery_metadata>
                             </tal:cc_livery>
                         </td>
                     </tal:liveries>

@@ -46,7 +46,7 @@ class GestaltGraphicsEngine(GestaltGraphics):
         super().__init__()
         self.pipelines = pipelines.get_pipelines(['check_buy_menu_only'])
         self.colour_mapping_switch = '_switch_colour_mapping'
-        self.cc_liveries = kwargs.get('cc_liveries', [])
+        self.alternative_cc_livery = kwargs.get('alternative_cc_livery', None)
         self.default_livery_extra_docs_examples = kwargs.get('default_livery_extra_docs_examples', [])
         if kwargs.get('pantograph_type', None) is not None:
             self.pipelines.extend(pipelines.get_pipelines(['generate_pantographs_up_spritesheet', 'generate_pantographs_down_spritesheet']))
@@ -62,7 +62,8 @@ class GestaltGraphicsEngine(GestaltGraphics):
         # a convenience property to insert a 'default' for ease of constructing a repeat
         # extend modifies the list in place, so we need several operations here, otherwise we get an unwanted 'None' as returned by the extend method
         result = [{'cc1': [], 'not_cc2': []}]
-        result.extend(self.cc_liveries)
+        if self.alternative_cc_livery is not None:
+            result.append(self.alternative_cc_livery)
         return result
 
 
