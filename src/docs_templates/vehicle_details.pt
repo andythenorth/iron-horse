@@ -60,19 +60,25 @@
 
         <table style="width:100%; background-color:#eee; border-color:solid 1px #80c4fc; border-radius:4px; background:#e0f4fc; color:black;">
             <thead>
-                <td style="min-width:160px; width:160px; background:#1878dc; border-top-left-radius:4px;"><!--! empty spacer --></td>
+                <td style="min-width:215px; width:215px; background:#1878dc; border-top-left-radius:4px;"><!--! empty spacer --></td>
                 <tal:livery repeat="livery_variant doc_helper.get_docs_livery_variants(consist)">
                     <th style="padding:16px;
                                padding-bottom:0;
                                text-align:left;
-                               border-left: solid 1px #b4dcec;
-                               width:330px;">
+                               border-left:solid 1px #b4dcec;
+                               width:50%;">
                         <!--!Livery ${repeat.livery_variant.number}-->
-                        ${'Default' if repeat.livery_variant.number == 1 else 'Alternative'} Livery
+                        ${'Alternative' if repeat.livery_variant.index == 1 else None} Livery
                     </th>
                 </tal:livery>
                 <tal:block condition="len(doc_helper.get_docs_livery_variants(consist)) == 1">
-                    <td style="border-left: solid 1px #b4dcec;"><!--! empty spacer td if only 1 livery --></td>
+                    <th style="padding:16px;
+                               padding-bottom:0;
+                               text-align:left;
+                               border-left:solid 1px #b4dcec;
+                               width:50%;">
+                        <span style="color:#286078;">Alternative Livery: None</span>
+                    </th>
                 </tal:block>
             </thead>
             <tbody>
@@ -98,7 +104,7 @@
                                             <span style="background:linear-gradient(-45deg, rgb${doc_helper.get_company_colour_as_rgb(cc1, offset=3)}, rgb${doc_helper.get_company_colour_as_rgb(cc1, offset=7)});
                                                          display:inline-block;
                                                          vertical-align:middle;
-                                                         border: solid 1px #555;
+                                                         border:solid 1px #555;
                                                          width:12px;
                                                          height:12px;">
                                             </span>
@@ -110,7 +116,7 @@
                         </td>
                     </tal:liveries>
                     <tal:block condition="len(doc_helper.get_docs_livery_variants(consist)) == 1">
-                        <td style="border-left: solid 1px #b4dcec;"><!--! empty spacer td if only 1 livery --></td>
+                        <td style="border-left:solid 1px #b4dcec;"><!--! empty spacer td if only 1 livery --></td>
                     </tal:block>
                 </tr>
                 <tr style="vertical-align:top;">
@@ -134,7 +140,7 @@
                                                 <span style="background:linear-gradient(-45deg, rgb${doc_helper.get_company_colour_as_rgb(not_cc2, offset=3)}, rgb${doc_helper.get_company_colour_as_rgb(not_cc2, offset=7)});
                                                              display:inline-block;
                                                              vertical-align:middle;
-                                                             border: solid 1px #555;
+                                                             border:solid 1px #555;
                                                              width:12px;
                                                              height:12px;">
                                                 </span>
@@ -147,7 +153,7 @@
                         </td>
                     </tal:liveries>
                     <tal:block condition="len(doc_helper.get_docs_livery_variants(consist)) == 1">
-                        <td style="border-left: solid 1px #b4dcec;"><!--! empty spacer td if only 1 livery --></td>
+                        <td style="border-left:solid 1px #b4dcec;"><!--! empty spacer td if only 1 livery --></td>
                     </tal:block>
                 </tr>
                 <tr style="vertical-align:top;">
@@ -164,7 +170,7 @@
                                             <span style="background:linear-gradient(-45deg, rgb${doc_helper.get_company_colour_as_rgb(company_colour, offset=3)}, rgb${doc_helper.get_company_colour_as_rgb(company_colour, offset=7)});
                                                          display:inline-block;
                                                          vertical-align:middle;
-                                                         border: solid 1px #555;
+                                                         border:solid 1px #555;
                                                          width:12px;
                                                          height:12px;">
                                             </span>
@@ -183,7 +189,7 @@
                         </td>
                     </tal:liveries>
                     <tal:block condition="len(doc_helper.get_docs_livery_variants(consist)) == 1">
-                        <td style="border-left: solid 1px #b4dcec;"><!--! empty spacer td if only 1 livery --></td>
+                        <td style="border-left:solid 1px #b4dcec;"><!--! empty spacer td if only 1 livery --></td>
                     </tal:block>
                 </tr>
             </tbody>
