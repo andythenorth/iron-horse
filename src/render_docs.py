@@ -27,6 +27,9 @@ makefile_args = utils.get_makefile_args(sys)
 
 docs_src = os.path.join(currentdir, 'src', 'docs_templates')
 
+palette = utils.dos_palette_to_rgb()
+
+
 class DocHelper(object):
     # dirty class to help do some doc formatting
 
@@ -152,7 +155,7 @@ class DocHelper(object):
                            'COLOUR_MAUVE': 0, # unfinished
                            'COLOUR_PURPLE': 0, # unfinished
                            # 'COLOUR_ORANGE': 0 # special case handling for orange
-                           'COLOUR_BROWN': 0, # unfinished
+                           'COLOUR_BROWN': 32,
                            'COLOUR_GREY': 4,
                            'COLOUR_WHITE': 8,
                            }
@@ -163,6 +166,9 @@ class DocHelper(object):
             return (82, 83, 84, 85, 206, 207, 208, 209)[offset]
         else:
             return company_colours[company_colour] + offset
+
+    def get_company_colour_as_rgb(self, company_colour, offset=0):
+        return palette[self.get_palette_index_for_company_colour(company_colour, offset)]
 
     @property
     def company_colour_names(self):
@@ -187,10 +193,22 @@ class DocHelper(object):
     def get_docs_livery_variants(self, consist):
         # blue and red_white are defaults
         # !! blue is wrong for legacy reasons, the colour used is actually dark blue
-        variants_config = [{'blue': {'cc_remaps': {'CC1': 'COLOUR_DARK_BLUE', 'CC2': 'COLOUR_DARK_BLUE'}, 'docs_image_input_cc': ('COLOUR_DARK_BLUE', 'COLOUR_DARK_BLUE')},
+        variants_config = [{'dark_blue_dark_blue': {'cc_remaps': {'CC1': 'COLOUR_DARK_BLUE', 'CC2': 'COLOUR_DARK_BLUE'}, 'docs_image_input_cc': ('COLOUR_DARK_BLUE', 'COLOUR_DARK_BLUE')},
                             'red_white': {'cc_remaps': {'CC1': 'COLOUR_RED', 'CC2': 'COLOUR_WHITE'}, 'docs_image_input_cc': ('COLOUR_RED', 'COLOUR_WHITE')},
                             }]
 
+        """
+        default_livery_extra_docs_examples = getattr(consist.gestalt_graphics, 'default_livery_extra_docs_examples', None)
+        if default_livery_extra_docs_examples is not None:
+            result={}
+            for cc_remap_pair in default_livery_extra_docs_examples:
+                livery_name = (self.get_livery_file_substr(cc_remap_pair))
+                result[livery_name] = {}
+                result[livery_name]['cc_remaps'] = {'CC1': cc_remap_pair[0], 'CC2': cc_remap_pair[1]}
+                result[livery_name]['docs_image_input_cc'] = cc_remap_pair
+                print(result)
+            variants_config.append(result)
+        """
         cc_liveries = getattr(consist.gestalt_graphics, 'cc_liveries', None)
         if cc_liveries is not None:
             for cc_livery in cc_liveries:
@@ -237,7 +255,7 @@ class DocHelper(object):
                     if consist is not None:
                         engine_node['id'] = consist.id
                         engine_node['label'] = self.unpack_name_string(consist).split('(')[0]
-                        engine_node['image'] = consist.id + "_blue.png"
+                        engine_node['image'] = consist.id + "_dark_blue_dark_blue.png"
                         if consist.replacement_consist is not None:
                             fill_dummy = False # prevent adding any more dummy nodes after this real consist
                             engine_node['replacement_id'] = consist.replacement_consist.id

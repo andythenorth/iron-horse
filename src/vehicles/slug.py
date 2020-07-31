@@ -12,6 +12,7 @@ def main(roster_id):
                             random_reverse=True,
                             gen=5,
                             cc_livery_keys=['RAILFREIGHT_TRIPLE_GREY', 'EWS'],
+                            default_livery_extra_docs_examples=[('COLOUR_GREY', 'COLOUR_YELLOW')],
                             sprites_complete=False)
 
     consist.add_unit(type=DieselEngineUnit,

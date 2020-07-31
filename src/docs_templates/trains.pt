@@ -66,7 +66,7 @@
                                             <tr id="${consist.id}">
                                                 <td class="vehicle-image"
                                                     style="width:${2 * doc_helper.buy_menu_sprite_max_width};">
-                                                    <img src="static/img/${consist.id}_blue.png"
+                                                    <img src="static/img/${consist.id}_dark_blue_dark_blue.png"
                                                          width="${2 * doc_helper.buy_menu_sprite_width(consist)}"
                                                          height="${2 * doc_helper.buy_menu_sprite_height}" />
                                                 </td>
@@ -118,7 +118,7 @@
                                             <tr id="${consist.id}">
                                                 <td class="vehicle-image"
                                                     style="width:${2 * doc_helper.buy_menu_sprite_max_width};">
-                                                    <img src="static/img/${consist.id}_blue.png"
+                                                    <img src="static/img/${consist.id}_dark_blue_dark_blue.png"
                                                          width="${2 * doc_helper.buy_menu_sprite_width(consist)}"
                                                          height="${2 * doc_helper.buy_menu_sprite_height}" />
                                                 </td>

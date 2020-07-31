@@ -47,6 +47,7 @@ class GestaltGraphicsEngine(GestaltGraphics):
         self.pipelines = pipelines.get_pipelines(['check_buy_menu_only'])
         self.colour_mapping_switch = '_switch_colour_mapping'
         self.cc_liveries = kwargs.get('cc_liveries', [])
+        self.default_livery_extra_docs_examples = kwargs.get('default_livery_extra_docs_examples', [])
         if kwargs.get('pantograph_type', None) is not None:
             self.pipelines.extend(pipelines.get_pipelines(['generate_pantographs_up_spritesheet', 'generate_pantographs_down_spritesheet']))
 

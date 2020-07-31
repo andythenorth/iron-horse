@@ -557,7 +557,9 @@ class EngineConsist(Consist):
         cc_liveries = []
         for livery_key in kwargs.get('cc_livery_keys', []):
             cc_liveries.append(self.roster.livery_presets[livery_key])
-        self.gestalt_graphics = GestaltGraphicsEngine(pantograph_type=self.pantograph_type, cc_liveries=cc_liveries)
+        self.gestalt_graphics = GestaltGraphicsEngine(pantograph_type=self.pantograph_type,
+                                                      cc_liveries=cc_liveries,
+                                                      default_livery_extra_docs_examples = kwargs.get('default_livery_extra_docs_examples', []))
 
     @property
     def buy_cost(self):

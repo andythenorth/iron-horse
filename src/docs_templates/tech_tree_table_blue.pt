@@ -1,5 +1,5 @@
 <tal:main_template define="main_template load: main_template.pt" metal:use-macro="main_template">
 <div metal:fill-slot='body'>
-    <tal:include tal:define="vehicle_cc 'blue'" metal:use-macro="load: tech_tree_table_body.pt" />
+    <tal:include tal:define="vehicle_cc 'dark_blue_dark_blue'" metal:use-macro="load: tech_tree_table_body.pt" />
 </div>
 </tal:main_template>
