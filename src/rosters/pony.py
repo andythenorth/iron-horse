@@ -176,13 +176,6 @@ def main(disabled=False):
                                                                   'remap_to_cc': 'COLOUR_WHITE',
                                                                   'docs_image_input_cc': [('COLOUR_GREY', 'COLOUR_RED'), ('COLOUR_YELLOW', 'COLOUR_BLUE'), ('COLOUR_BROWN', 'COLOUR_DARK_BLUE')],
                                                                   },
-                                      'RES_FAIL': {'cc1': ['COLOUR_RED', 'COLOUR_PINK'],
-                                                   'not_cc2': ['COLOUR_DARK_BLUE', 'COLOUR_PALE_GREEN', 'COLOUR_YELLOW', 'COLOUR_ORANGE', 'COLOUR_LIGHT_BLUE', 'COLOUR_GREEN',
-                                                               'COLOUR_DARK_GREEN', 'COLOUR_BLUE', 'COLOUR_CREAM', 'COLOUR_MAUVE', 'COLOUR_PURPLE', 'COLOUR_ORANGE',
-                                                               'COLOUR_BROWN', 'COLOUR_GREY', 'COLOUR_WHITE'],
-                                                   'remap_to_cc': None,
-                                                   'docs_image_input_cc': [('COLOUR_RED', 'COLOUR_RED')]
-                                                   },
                                       'YEOMAN': {'cc1': ['COLOUR_GREY', 'COLOUR_WHITE'],
                                                  'not_cc2': [],
                                                  'remap_to_cc': None,
