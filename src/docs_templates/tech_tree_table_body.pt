@@ -159,7 +159,7 @@
                                         <td tal:repeat="gen range(1, len(intro_dates) + 1)" class="text-center" style="width: 160px;">
                                             <tal:consist define="consist tech_tree[base_track_type_and_label][role_group][role][role_child_branch][gen]">
                                                 <tal:block condition="consist is not None">
-                                                    <div class="tech_tree_vehicle_container">
+                                                    <div id="${consist.id}" class="tech_tree_vehicle_container">
                                                         <a href="${consist.id}.html">
                                                             <div class="tech_tree_vehicle
                                                                         ${'tech_tree_vehicle_electric' if consist.requires_electric_rails else 'None'}

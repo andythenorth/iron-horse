@@ -329,6 +329,16 @@ class Consist(object):
         return result
 
     @property
+    def similar_consists(self):
+        # quite a crude guess at similar engines by role
+        result = []
+        for consist in self.roster.engine_consists:
+            if (consist.base_track_type == self.base_track_type) and (consist.gen == self.gen) and (consist != self):
+                if (consist.role == self.role) or (0 < (consist.power - self.power) < 500) or (0 < (self.power - consist.power) < 500):
+                    result.append(consist)
+        return result
+
+    @property
     def model_life(self):
         if self.replacement_consist is None:
             return 'VEHICLE_NEVER_EXPIRES'

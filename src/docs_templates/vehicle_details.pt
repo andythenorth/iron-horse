@@ -25,6 +25,18 @@
                     <tal:livery repeat="livery_variant doc_helper.get_docs_livery_variants(consist)">
                         <tal:block repeat="livery_name livery_variant.keys()">
                             <div class="vehicle-image"
+                                style="width:${2 * doc_helper.buy_menu_sprite_max_width};
+                                       display:inline-block;">
+                                <img src="static/img/${consist.id}_${livery_name}.png"
+                                     width="${2 * doc_helper.buy_menu_sprite_width(consist)}"
+                                     height="${2 * doc_helper.buy_menu_sprite_height}" />
+                            </div>
+                        </tal:block>
+                    </tal:livery>
+                    <br />
+                    <tal:livery repeat="livery_variant doc_helper.get_docs_livery_variants(consist)">
+                        <tal:block repeat="livery_name livery_variant.keys()">
+                            <div class="vehicle-image"
                                 style="width:${4 * doc_helper.buy_menu_sprite_max_width};
                                        display:inline-block;">
                                 <img src="static/img/${consist.id}_${livery_name}.png"
@@ -131,31 +143,6 @@
                             <th>Track type</th>
                             <td>${consist.track_type}</td>
                         </tr>
-                        <tr>
-                            <th>Replaces</th>
-                            <tal:replaces condition="len(consist.replaces_consists) > 0">
-                                <td>
-                                     <tal:replaced_consist repeat="replaced_consist consist.replaces_consists">
-                                        <a href="${replaced_consist.id}.html">${doc_helper.get_replaced_by_name(replaced_consist.id, consists)}</a>${',' if not repeat.replaced_consist.end else ''}
-
-                                     </tal:replaced_consist>
-                                </td>
-                            </tal:replaces>
-                            <tal:replaces_none condition="len(consist.replaces_consists) == 0">
-                                <td>None</td>
-                            </tal:replaces_none>
-                        </tr>
-                        <tr>
-                            <th>Replaced by</th>
-                            <tal:replacement condition="consist.replacement_consist is not None">
-                                <td>
-                                    <a href="${consist.replacement_consist.id}.html">${doc_helper.get_replaced_by_name(consist.replacement_consist.id, consists)}</a>
-                                </td>
-                            </tal:replacement>
-                            <tal:replacement_is_none condition="consist.replacement_consist is None">
-                                <td>None</td>
-                            </tal:replacement_is_none>
-                        </tr>
                     </tbody>
                 </table>
 
@@ -175,6 +162,7 @@
                         background: #e0f4fc;
                         color: black;
                         font-size: 16px;
+                        margin-bottom: 30px;
                     }
                     table.livery-table tr {
                         vertical-align: top;
@@ -190,10 +178,10 @@
                         background: #b4dcec;
                         color: #18506c;
                     }
-                    table.livery-table .livery-table-first-col:first-of-type {
+                    table.livery-table tr:first-of-type td.livery-table-first-col {
                         border-top-left-radius: 4px;
                     }
-                    table.livery-table .livery-table-first-col:last-of-type {
+                    table.livery-table tr:last-of-type th.livery-table-first-col {
                         border-bottom-left-radius: 4px;
                     }
                     table.livery-table td.livery-table-col-with-divider, table.livery-table th.livery-table-col-with-divider {
@@ -337,7 +325,87 @@
                         </tr>
                     </tbody>
                 </table>
-                <br /><br /><br />
+
+                <h3>Tech Tree</h3>
+                <table class="vehicle-facts">
+                    <tbody>
+                        <tr>
+                            <th style="text-align:center;">Previous</th>
+                            <th style="text-align:center;">This Vehicle</th>
+                            <th style="text-align:center;">Replaced by</th>
+                        </tr>
+                        <tr>
+                            <td style="text-align:center; vertical-align:middle;">
+                                <!--! replaces -->
+                                <tal:replaces condition="len(consist.replaces_consists) > 0">
+                                    <tal:replaced_consist repeat="replaced_consist consist.replaces_consists">
+                                        <div style="margin:10px;">
+                                            <a href="${replaced_consist.id}.html">
+                                                <div class="vehicle-image">
+                                                    <img src="static/img/${replaced_consist.id}_red_white.png"
+                                                         width="${2 * doc_helper.buy_menu_sprite_width(replaced_consist)}"
+                                                         height="${2 * doc_helper.buy_menu_sprite_height}" />
+                                                </div>
+                                                 ${doc_helper.get_replaced_by_name(replaced_consist.id, consists)}
+                                            </a>
+                                        </div>
+                                     </tal:replaced_consist>
+                                </tal:replaces>
+                                <tal:replaces_none condition="len(consist.replaces_consists) == 0">
+                                    <span class="muted">None</span>
+                                </tal:replaces_none>
+                            </td>
+                            <!--! this vehicle -->
+                            <td style="text-align:center; vertical-align:middle;">
+                                <div class="vehicle-image">
+                                    <img src="static/img/${consist.id}_red_white.png"
+                                         width="${4 * doc_helper.buy_menu_sprite_width(consist)}"
+                                         height="${4 * doc_helper.buy_menu_sprite_height}" />
+                                </div>
+                                ${doc_helper.unpack_name_string(consist)}
+                                <br />
+                                <a href="tech_tree_table_red.html#${consist.id}">See in Tech Tree</a>
+                            </td>
+                            <!--! replaced by -->
+                            <td style="text-align:center; vertical-align:middle;">
+                                <tal:replacement condition="consist.replacement_consist is not None">
+                                    <div style="margin:10px;">
+                                        <a href="${consist.replacement_consist.id}.html">
+                                            <div class="vehicle-image">
+                                                <img src="static/img/${consist.replacement_consist.id}_red_white.png"
+                                                     width="${2* doc_helper.buy_menu_sprite_width(consist.replacement_consist)}"
+                                                     height="${2 * doc_helper.buy_menu_sprite_height}" />
+                                            </div>
+                                             ${doc_helper.get_replaced_by_name(consist.replacement_consist.id, consists)}
+                                        </a>
+                                    </div>
+                                </tal:replacement>
+                                <tal:replacement_is_none condition="consist.replacement_consist is None">
+                                    <span class="muted">None</span>
+                                </tal:replacement_is_none>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th colspan="3" style="text-align:center">Vehicles with Similar Role or Power</th>
+                        </tr>
+                        <tr>
+                            <td colspan="3" style="text-align:center">
+                                <tal:similar_consists repeat="similar_consist consist.similar_consists">
+                                    <div style="display:inline-block; margin:10px;">
+                                        <a href="${similar_consist.id}.html">
+                                            <div class="vehicle-image">
+                                                <img src="static/img/${similar_consist.id}_red_white.png"
+                                                     width="${2* doc_helper.buy_menu_sprite_width(similar_consist)}"
+                                                     height="${2 * doc_helper.buy_menu_sprite_height}" />
+                                            </div>
+                                             ${doc_helper.get_replaced_by_name(similar_consist.id, consists)}
+                                        </a>
+                                    </div>
+                                </tal:similar_consists>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
