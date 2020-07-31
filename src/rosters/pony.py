@@ -163,18 +163,18 @@ def main(disabled=False):
                                                        'docs_image_input_cc': [('COLOUR_PALE_GREEN', 'COLOUR_YELLOW'), ('COLOUR_DARK_GREEN', 'COLOUR_ORANGE'), ('COLOUR_GREEN', 'COLOUR_ORANGE')]
                                                        },
                                       # red stripe cc1 chosen to give nice wagon colour options
-                                      'RAILFREIGHT_RED_STRIPE': {'cc1': ['COLOUR_GREY', 'COLOUR_BROWN', 'COLOUR_YELLOW', 'COLOUR_ORANGE', 'COLOUR_WHITE'],
-                                                                 'not_cc2': ['COLOUR_GREY', 'COLOUR_BROWN', 'COLOUR_YELLOW', 'COLOUR_ORANGE', 'COLOUR_WHITE'],
+                                      'RAILFREIGHT_RED_STRIPE': {'cc1': ['COLOUR_GREY', 'COLOUR_BROWN', 'COLOUR_YELLOW', 'COLOUR_ORANGE'], # not white, too limiting for other liveries
+                                                                 'not_cc2': ['COLOUR_GREY', 'COLOUR_BROWN', 'COLOUR_YELLOW', 'COLOUR_ORANGE'],
                                                                  'remap_to_cc': 'COLOUR_GREY',
                                                                  'docs_image_input_cc': [('COLOUR_GREY', 'COLOUR_RED'), ('COLOUR_BROWN', 'COLOUR_PINK')]
                                                                  },
                                        # triple grey cc1 chosen to give nice wagon colour options
                                        # notcc2 chosen for (a) ensuring contrast of sector symbol (b) also happens to enable dutch yellow/grey livery
                                        # note the remap to white, to provide lightest of the triple greys as cc1
-                                      'RAILFREIGHT_TRIPLE_GREY': {'cc1': ['COLOUR_GREY', 'COLOUR_BROWN', 'COLOUR_YELLOW', 'COLOUR_ORANGE', 'COLOUR_WHITE'],
-                                                                  'not_cc2': ['COLOUR_GREY', 'COLOUR_BROWN', 'COLOUR_YELLOW', 'COLOUR_ORANGE', 'COLOUR_WHITE'],
+                                      'RAILFREIGHT_TRIPLE_GREY': {'cc1': ['COLOUR_GREY', 'COLOUR_BROWN', 'COLOUR_YELLOW', 'COLOUR_ORANGE'], # not white, too limiting for other liveries
+                                                                  'not_cc2': ['COLOUR_GREY', 'COLOUR_BROWN', 'COLOUR_YELLOW', 'COLOUR_ORANGE'],
                                                                   'remap_to_cc': 'COLOUR_WHITE',
-                                                                  'docs_image_input_cc': [('COLOUR_GREY', 'COLOUR_RED'), ('COLOUR_YELLOW', 'COLOUR_BLUE')],
+                                                                  'docs_image_input_cc': [('COLOUR_GREY', 'COLOUR_RED'), ('COLOUR_YELLOW', 'COLOUR_BLUE'), ('COLOUR_BROWN', 'COLOUR_DARK_BLUE')],
                                                                   },
                                       'RES_FAIL': {'cc1': ['COLOUR_RED', 'COLOUR_PINK'],
                                                    'not_cc2': ['COLOUR_DARK_BLUE', 'COLOUR_PALE_GREEN', 'COLOUR_YELLOW', 'COLOUR_ORANGE', 'COLOUR_LIGHT_BLUE', 'COLOUR_GREEN',
