@@ -9,7 +9,7 @@
       don't conflate them :) -->
 <tal:random_reverse_variants repeat="reversed_variant consist.reversed_variants">
     <tal:user_flipped repeat="flipped ['unflipped', 'flipped']">
-        <!--! all_liveries inserts 'default' at start of cc_liveries, so we can just do one repeat over all needed spritesets -->
+        <!--! all_liveries inserts 'default' livery, before any alternative_cc_livery so we can just do one repeat over all needed spritesets -->
         <tal:liveries repeat="livery consist.gestalt_graphics.all_liveries">
             spriteset(${vehicle.id}_ss_${reversed_variant}_${flipped}_${repeat.livery.index}, "${graphics_path}${consist.id}.png") {
                 ${vehicle.get_spriteset_template_name(reversed_variant, flipped, 10 + (repeat.livery.index * 30) + (vehicle.spriterow_num * len(consist.gestalt_graphics.all_liveries) * 30))}
@@ -77,7 +77,7 @@ random_switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle) {
 }
 
 // buy menu graphics chain
-<!--! all_liveries inserts 'default' at start of cc_liveries, so we can just do one repeat over all needed spritesets -->
+<!--! all_liveries inserts 'default' livery, before any alternative_cc_livery so we can just do one repeat over all needed spritesets -->
 <tal:liveries repeat="livery consist.gestalt_graphics.all_liveries">
 spriteset(${vehicle.id}_ss_vehicle_purchase_${repeat.livery.index}, "${graphics_path}${consist.id}.png") {
     spriteset_template_purchase_${vehicle.id}(${10 + (repeat.livery.index * 30)})

@@ -145,7 +145,7 @@ class Consist(object):
         result = []
         for unit in set([unit.spriterow_num for unit in self.units]):
             result.append(unit)
-            # extend with any cc_liveries, spritesheet format assumes unit_1_default, unit_1_cc_livery_1, unit_1_cc_livery_2, unit_2_default..unit_1_cc_livery_2 etc
+            # extend with alternative cc livery if present, spritesheet format assumes unit_1_default, unit_1_alternative_cc_livery, unit_2_default, unit_2_alternative_cc_livery if present
             if getattr(self.gestalt_graphics, 'alternative_cc_livery', None) is not None:
                 result.append(unit + 1)
         return result

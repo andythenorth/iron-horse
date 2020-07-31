@@ -457,7 +457,7 @@ def render_docs_images(consist):
 
     for livery_counter, variant in enumerate(doc_helper.get_docs_livery_variants(consist)):
         if not consist.dual_headed:
-            # relies on cc_liveries being in predictable row offsets (should be true as of July 2020)
+            # relies on alternative_cc_livery being in predictable row offsets (should be true as of July 2020)
             y_offset = (consist.docs_image_spriterow + livery_counter) * 30
             source_vehicle_image_tmp = vehicle_spritesheet.crop(box=(consist.buy_menu_x_loc,
                                                                      10 + y_offset,
@@ -466,7 +466,7 @@ def render_docs_images(consist):
         if consist.dual_headed:
             # oof, super special handling of dual-headed vehicles, OpenTTD handles this automatically in the buy menu, but docs have to handle explicitly
             # !! hard-coded values might fail in future, sort that out then if needed, they can be looked up in global constants
-            # !! this also won't work with engine cc_liveries currently
+            # !! this also won't work with engine alternative_cc_livery currently
             source_vehicle_image_1 = vehicle_spritesheet.copy().crop(box=(224,
                                                                           10,
                                                                           224 + (4 * consist.length) + 1,
