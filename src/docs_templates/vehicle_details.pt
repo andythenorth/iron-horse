@@ -3,10 +3,10 @@
 <tal:main_template define="main_template load: main_template.pt" metal:use-macro="main_template">
 <div metal:fill-slot='body'>
     <div class="container">
-        <h1>
+        <h2>
             ${doc_helper.unpack_name_string(consist)}
             ${'(' + base_lang_strings[consist.str_name_suffix] + ')' if consist.str_name_suffix is not None else None}
-        </h1>
+        </h2>
         <div>
             <tal:livery repeat="livery_variant doc_helper.get_docs_livery_variants(consist)">
                 <tal:block repeat="livery_name livery_variant.keys()">
@@ -19,6 +19,7 @@
                 </tal:block>
             </tal:livery>
         </div>
+        <h3>Engine Facts!</h3>
         <dl>
             <dt>Role</dt>
             <dd>${doc_helper.unpack_role_string_for_consist(consist)}</dd>
@@ -54,10 +55,13 @@
             <tal:replacement_is_none condition="consist.replacement_consist is None">
                 <dd>None</dd>
             </tal:replacement_is_none>
-
-            <p>${structure:consist.description}</p>
         </dl>
+        <h3>What the Chief Mechanical Engineer says</h3>
+        <blockquote>${structure:consist.description}</blockquote>
 
+        <h3>Appearance</h3>
+        <p>This train ${'can' if consist.allow_flip else 'cannot'} be flipped in depot.</p>
+        <p>This train has ${'2 livery options' if getattr(consist.gestalt_graphics, 'alternative_cc_livery', None) is not None else '1 livery'}.</p>
         <table style="width:100%; background-color:#eee; border-color:solid 1px #80c4fc; border-radius:4px; background:#e0f4fc; color:black;">
             <thead>
                 <td style="min-width:215px; width:215px; background:#b4dcec; border-top-left-radius:4px;"><!--! empty spacer --></td>
