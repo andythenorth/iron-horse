@@ -205,7 +205,7 @@ class DocHelper(object):
             result[livery_name]['docs_image_input_cc'] = cc_remap_pair
         variants_config.append(result)
 
-        alternative_cc_livery = getattr(consist.gestalt_graphics, 'alternative_cc_livery', None)
+        alternative_cc_livery = consist.gestalt_graphics.alternative_cc_livery
         if alternative_cc_livery is not None:
             result = {}
             for cc_remap_pair in alternative_cc_livery['docs_image_input_cc']:

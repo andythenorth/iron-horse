@@ -61,7 +61,7 @@
 
         <h3>Appearance</h3>
         <p>This train ${'can' if consist.allow_flip else 'cannot'} be flipped in depot.</p>
-        <p>This train has ${'2 livery options' if getattr(consist.gestalt_graphics, 'alternative_cc_livery', None) is not None else '1 livery'}.</p>
+        <p>This train has ${'2 livery options' if consist.gestalt_graphics.alternative_cc_livery is not None else '1 livery'}.</p>
         <table style="width:100%; background-color:#eee; border-color:solid 1px #80c4fc; border-radius:4px; background:#e0f4fc; color:black;">
             <thead>
                 <td style="min-width:215px; width:215px; background:#b4dcec; border-top-left-radius:4px;"><!--! empty spacer --></td>

@@ -79,7 +79,7 @@ class Pipeline(object):
             if getattr(self.consist.gestalt_graphics, 'consist_ruleset', None) in ['metro']:
                 if unit_counter % 2 != 0:
                     ruleset_offset_num_rows_jank = 4 # hard-coded to metro currently
-            if getattr(self.consist.gestalt_graphics, 'alternative_cc_livery', None) is not None: # alternative_cc_livery jank for engines eh
+            if self.consist.gestalt_graphics.alternative_cc_livery is not None: # alternative_cc_livery jank for engines eh
                 ruleset_offset_num_rows_jank = unit_counter
             unit_spriterow_offset = (unit.spriterow_num + ruleset_offset_num_rows_jank) * graphics_constants.spriterow_height
             for cc_livery_counter, cc_livery in enumerate(getattr(self.consist.gestalt_graphics, 'all_liveries', ['default'])):

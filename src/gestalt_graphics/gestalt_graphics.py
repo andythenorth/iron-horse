@@ -14,6 +14,9 @@ class GestaltGraphics(object):
     def __init__(self):
         # by default, pipelines are empty
         self.pipelines = pipelines.get_pipelines([])
+        # specific alt livery for specific company colour choices
+        # this is only used by engines as of July 2020, but we provide a default value here to avoid requiring getattr() in many places, which was masking errors
+        self.alternative_cc_livery = None # over-ride as needed in subclasses
 
     @property
     def nml_template(self):
@@ -262,6 +265,7 @@ class GestaltGraphicsIntermodal(GestaltGraphics):
     """
 
     def __init__(self, **kwargs):
+        super().__init__()
         # we use the composited sprites pipeline so we can make use of chassis compositing
         self.pipelines = pipelines.get_pipelines(['extend_spriterows_for_composited_sprites_pipeline'])
         self.colour_mapping_switch = '_switch_colour_mapping'
@@ -354,6 +358,7 @@ class GestaltGraphicsVehicleTransporter(GestaltGraphics):
     """
 
     def __init__(self, **kwargs):
+        super().__init__()
         # we use the composited sprites pipeline so we can make use of chassis compositing
         self.pipelines = pipelines.get_pipelines(['extend_spriterows_for_composited_sprites_pipeline'])
         self.colour_mapping_switch = '_switch_colour_mapping'
