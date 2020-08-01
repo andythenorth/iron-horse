@@ -52,7 +52,7 @@ td.vehicle-image {
     width:130px;
     background: #f5fcff;
     position: absolute;
-    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.1), inset 0 1px #fff, inset 0 -1px #fff;
+    box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.5), inset 0 1px #fff, inset 0 -1px #fff;
 }
 
 .tech_tree_vehicle_electric {
@@ -73,7 +73,7 @@ td.vehicle-image {
     border-color: rgba(255, 255, 255, 0);
 }
 .tech_tree_vehicle_arrow:before {
-    border-left-color: rgba(0, 0, 0, 0.1) !important;
+    border-left-color: rgba(0, 0, 0, 0.5) !important;
     margin-top: -21px;
     border-width: 21px;
 }
