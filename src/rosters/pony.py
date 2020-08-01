@@ -164,7 +164,7 @@ def main(disabled=False):
                                                        },
                                       # red stripe cc1 chosen to give nice wagon colour options
                                       'RAILFREIGHT_RED_STRIPE': {'cc1': ['COLOUR_GREY', 'COLOUR_BROWN', 'COLOUR_YELLOW', 'COLOUR_ORANGE'], # not white, too limiting for other liveries
-                                                                 'not_cc2': ['COLOUR_GREY', 'COLOUR_BROWN', 'COLOUR_YELLOW', 'COLOUR_ORANGE'],
+                                                                 'not_cc2': ['COLOUR_GREY', 'COLOUR_BROWN', 'COLOUR_YELLOW', 'COLOUR_ORANGE', 'COLOUR_WHITE'], # do ban white though, looks bad as lower stripe
                                                                  'remap_to_cc': 'COLOUR_GREY',
                                                                  'docs_image_input_cc': [('COLOUR_GREY', 'COLOUR_RED'), ('COLOUR_BROWN', 'COLOUR_PINK')]
                                                                  },
@@ -172,7 +172,7 @@ def main(disabled=False):
                                        # notcc2 chosen for (a) ensuring contrast of sector symbol (b) also happens to enable dutch yellow/grey livery
                                        # note the remap to white, to provide lightest of the triple greys as cc1
                                       'RAILFREIGHT_TRIPLE_GREY': {'cc1': ['COLOUR_GREY', 'COLOUR_BROWN', 'COLOUR_YELLOW', 'COLOUR_ORANGE'], # not white, too limiting for other liveries
-                                                                  'not_cc2': ['COLOUR_GREY', 'COLOUR_BROWN', 'COLOUR_YELLOW', 'COLOUR_ORANGE'],
+                                                                  'not_cc2': ['COLOUR_GREY', 'COLOUR_BROWN', 'COLOUR_YELLOW', 'COLOUR_ORANGE', 'COLOUR_WHITE'], # do ban white though, looks bad with sector logo
                                                                   'remap_to_cc': 'COLOUR_WHITE',
                                                                   'docs_image_input_cc': [('COLOUR_GREY', 'COLOUR_RED'), ('COLOUR_YELLOW', 'COLOUR_BLUE'), ('COLOUR_BROWN', 'COLOUR_DARK_BLUE')],
                                                                   },
