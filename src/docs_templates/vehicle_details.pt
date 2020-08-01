@@ -78,7 +78,14 @@
                     <p>
                         ${structure: consist.description}
                     </p>
-                    <small><cite>${structure: consist.cite}</cite></small>
+                    <small>
+                        <cite>
+                            ${structure: consist.cite},
+                            <tal:random define="random import:random">
+                                ${random.choice(["Acting Superintendent of Engines", "Provisional Chief Engineer", "Interim Head of Works", "Transitional General Manager (Traction)"])}
+                            </tal:random>
+                        </cite>
+                    </small>
                 </blockquote>
 
                 <!--! ugh I hate styles like this, either inline them on the tags, or move them to styles.css eh? -->
