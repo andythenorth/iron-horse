@@ -13,7 +13,7 @@ def main(roster_id):
                             intro_date_offset=-10,  # let's be a little bit earlier for this one
                             gen=5,
                             alternative_cc_livery='RAILFREIGHT_RED_STRIPE',
-                            sprites_complete=False)
+                            sprites_complete=True)
 
     consist.add_unit(type=DieselEngineUnit,
                      weight=120,
