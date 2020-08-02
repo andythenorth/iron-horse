@@ -15,6 +15,7 @@ def main(roster_id):
                             random_reverse=True,
                             gen=4,
                             intro_date_offset=-9, # introduce much earlier than gen epoch by design
+                            vehicle_life=60, # extended vehicle life for all gronks eh
                             sprites_complete=True)
 
     consist.add_unit(type=DieselEngineUnit,
