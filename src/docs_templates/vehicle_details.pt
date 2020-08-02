@@ -221,21 +221,21 @@
                     <tbody>
                         <tr>
                             <th class="livery-table-first-col">
-                                Company Colour 1
+                                Shown
                             </th>
                             <tal:liveries repeat="livery_variant doc_helper.get_docs_livery_variants(consist)">
                                 <td class="livery-table-col-with-divider">
                                     <tal:not_cc_livery condition="repeat.livery_variant.index == 0">
                                         <tal:block condition="len(doc_helper.get_docs_livery_variants(consist)) == 1">
-                                            <p>Any</p>
+                                            <p>Always</p>
                                         </tal:block>
                                         <tal:block condition="len(doc_helper.get_docs_livery_variants(consist)) > 1">
-                                            <p>Any if the rules for the alternative livery are not matched.</p>
+                                            <p>When any of the rules for the alternative livery are not matched.</p>
                                         </tal:block>
                                     </tal:not_cc_livery>
                                     <tal:cc_livery condition="repeat.livery_variant.index != 0">
                                         <tal:alternative_cc_livery_metadata define="alternative_cc_livery_metadata consist.gestalt_graphics.alternative_cc_livery">
-                                            <p>First company colour is set to:<p>
+                                            <p>When first company colour is set to:<p>
                                             <ul style="list-style-type:none; margin-left:0; margin-top:0; max-width:305px;">
                                                 <li style="line-height:1; display:inline-block; width:110px; margin-bottom:7px;"
                                                     tal:repeat="cc1 alternative_cc_livery_metadata['cc1']">
@@ -251,26 +251,8 @@
                                             </ul>
                                         </tal:alternative_cc_livery_metadata>
                                     </tal:cc_livery>
-                                </td>
-                            </tal:liveries>
-                            <tal:block condition="len(doc_helper.get_docs_livery_variants(consist)) == 1">
-                                <td class="livery-table-col-with-divider"><!--! empty spacer td if only 1 livery --></td>
-                            </tal:block>
-                        </tr>
-                        <tr>
-                            <th class="livery-table-first-col">
-                                Company Colour 2
-                            </th>
-                            <tal:liveries repeat="livery_variant doc_helper.get_docs_livery_variants(consist)">
-                                <td class="livery-table-col-with-divider">
-                                    <tal:default_livery condition="repeat.livery_variant.index == 0">
-                                        <p>Any</p>
-                                    </tal:default_livery>
                                     <tal:cc_livery condition="repeat.livery_variant.index != 0">
                                         <tal:alternative_cc_livery_metadata define="alternative_cc_livery_metadata consist.gestalt_graphics.alternative_cc_livery">
-                                            <tal:block condition="len(alternative_cc_livery_metadata['not_cc2']) == 0">
-                                                <p>Any</p>
-                                            </tal:block>
                                             <tal:block condition="len(alternative_cc_livery_metadata['not_cc2']) > 0">
                                                 <p>And second company colour is not:</p>
                                                 <ul style="list-style-type:none; margin-left:0; margin-top:0; max-width:330px;">
