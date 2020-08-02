@@ -14,14 +14,14 @@ def main(roster_id):
                             intro_date_offset=2,  # let's not have everything turn up in 1990
                             fixed_run_cost_points=100, # give a bonus so this can be a genuine mixed-traffic engine
                             alternative_cc_livery='RAILFREIGHT_TRIPLE_GREY',
-                            sprites_complete=False)
+                            sprites_complete=True)
 
     consist.add_unit(type=DieselEngineUnit,
                      weight=105,
                      vehicle_length=8,
                      spriterow_num=0)
 
-    consist.description = """They said they wanted these for a freight engine.  No I said.  We need a mixed traffic engine I said.  We can get right good use out of these I said."""
+    consist.description = """They said they wanted these for a freight engine.  No I said.  We need a mixed traffic engine I said.  We talked about it for twenty minutes then we decided I was right."""
     consist.cite = """Mr. Train"""
 
     return consist
