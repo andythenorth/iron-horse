@@ -185,10 +185,10 @@
                         background: #b4dcec;
                         color: #18506c;
                     }
-                    table.livery-table tr:first-of-type td.livery-table-first-col {
+                    table.livery-table thead tr:first-of-type th.livery-table-first-col {
                         border-top-left-radius: 4px;
                     }
-                    table.livery-table tr:last-of-type th.livery-table-first-col {
+                    table.livery-table tbody tr:last-of-type th.livery-table-first-col {
                         border-bottom-left-radius: 4px;
                     }
                     table.livery-table td.livery-table-col-with-divider, table.livery-table th.livery-table-col-with-divider {
@@ -200,13 +200,13 @@
                 <table class="livery-table text-left">
                     <thead>
                         <tr>
-                            <td class="livery-table-first-col"><!--! empty spacer --></td>
+                            <th class="livery-table-first-col">Livery</th>
                             <tal:livery repeat="livery_variant doc_helper.get_docs_livery_variants(consist)">
                                 <th style="padding-bottom:0;
                                            border-left:solid 1px #b4dcec;
                                            width:50%;">
                                     <!--!Livery ${repeat.livery_variant.number}-->
-                                    ${'Alternative' if repeat.livery_variant.index == 1 else 'Default'} Livery
+                                    ${'Alternative' if repeat.livery_variant.index == 1 else 'Default'}
                                 </th>
                             </tal:livery>
                             <tal:block condition="len(doc_helper.get_docs_livery_variants(consist)) == 1">
@@ -227,14 +227,15 @@
                                 <td class="livery-table-col-with-divider">
                                     <tal:not_cc_livery condition="repeat.livery_variant.index == 0">
                                         <tal:block condition="len(doc_helper.get_docs_livery_variants(consist)) == 1">
-                                            Any
+                                            <p>Any</p>
                                         </tal:block>
                                         <tal:block condition="len(doc_helper.get_docs_livery_variants(consist)) > 1">
-                                            Any if the rules for the alternative livery are not matched.
+                                            <p>Any if the rules for the alternative livery are not matched.</p>
                                         </tal:block>
                                     </tal:not_cc_livery>
                                     <tal:cc_livery condition="repeat.livery_variant.index != 0">
                                         <tal:alternative_cc_livery_metadata define="alternative_cc_livery_metadata consist.gestalt_graphics.alternative_cc_livery">
+                                            <p>First company colour is set to:<p>
                                             <ul style="list-style-type:none; margin-left:0; margin-top:0; max-width:305px;">
                                                 <li style="line-height:1; display:inline-block; width:110px; margin-bottom:7px;"
                                                     tal:repeat="cc1 alternative_cc_livery_metadata['cc1']">
@@ -271,7 +272,7 @@
                                                 <p>Any</p>
                                             </tal:block>
                                             <tal:block condition="len(alternative_cc_livery_metadata['not_cc2']) > 0">
-                                                <p>Any Except:</p>
+                                                <p>And second company colour is not:</p>
                                                 <ul style="list-style-type:none; margin-left:0; margin-top:0; max-width:330px;">
                                                     <li style="line-height:1; display:inline-block; width:110px; margin-bottom:7px;"
                                                         tal:repeat="not_cc2 alternative_cc_livery_metadata['not_cc2']">
