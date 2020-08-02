@@ -13,7 +13,7 @@ def main(roster_id):
                             gen=5,
                             alternative_cc_livery='RAILFREIGHT_TRIPLE_GREY',
                             default_livery_extra_docs_examples=[('COLOUR_GREY', 'COLOUR_YELLOW'), ('COLOUR_WHITE', 'COLOUR_GREY'), ('COLOUR_GREY', 'COLOUR_GREY'), ('COLOUR_PALE_GREEN', 'COLOUR_PALE_GREEN'), ('COLOUR_LIGHT_BLUE', 'COLOUR_WHITE')],
-                            sprites_complete=False)
+                            sprites_complete=True)
 
     consist.add_unit(type=DieselEngineUnit,
                      weight=110,
