@@ -13,7 +13,7 @@ def main(roster_id):
                             gen=4,
                             pantograph_type='z-shaped-double',
                             intro_date_offset=3,  # introduce later than gen epoch by design
-                            sprites_complete=False)
+                            sprites_complete=True)
 
     consist.add_unit(type=ElectricEngineUnit,
                      weight=80,
