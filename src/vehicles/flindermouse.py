@@ -20,4 +20,6 @@ def main(roster_id):
                      spriterow_num=0,
                      repeat=2)
 
+    consist.foamer_facts = """NER EF1."""
+
     return consist

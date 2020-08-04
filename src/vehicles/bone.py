@@ -23,5 +23,6 @@ def main(roster_id):
     consist.description = """Rome wasn't built in a day. But I wasn't on that particular job."""
     consist.cite = """Mr. Train"""
     # IRL the quote is Brian Clough
+    consist.foamer_facts = """BR Class 58."""
 
     return consist

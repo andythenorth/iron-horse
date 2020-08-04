@@ -20,4 +20,6 @@ def main(roster_id):
                      chassis='4_axle_solid_express_32px',
                      repeat=2)
 
+    consist.foamer_facts = """BR InterCity 225 (Mk4 Coaches)), Shinkansen-style distributed traction."""
+
     return consist

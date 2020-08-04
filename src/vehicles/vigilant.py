@@ -26,5 +26,6 @@ def main(roster_id):
 
     consist.description = """It's a big engine, it cost a lot of brass, get it to work."""
     consist.cite = """Mr. Train"""
+    consist.foamer_facts = """GCR Class 8K / ROD 2-8-0, GWR 2800 Class."""
 
     return consist

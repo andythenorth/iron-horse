@@ -20,4 +20,6 @@ def main(roster_id):
                      spriterow_num=0,
                      tail_light='hst_32px_1')
 
+    consist.foamer_facts = """BR Class 43 (High Speed Train), life-extended with new primer mover."""
+
     return consist

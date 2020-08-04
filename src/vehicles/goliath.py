@@ -21,4 +21,6 @@ def main(roster_id):
                      vehicle_length=6,
                      spriterow_num=0)
 
+    consist.foamer_facts = """YEC <i>Janus</i>, Corus <i>Trojan</i>, Corus Hunslet Bo-bo"""
+
     return consist

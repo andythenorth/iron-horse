@@ -23,5 +23,6 @@ def main(roster_id):
 
     consist.description = """"""
     consist.cite = """Mr. Train"""
+    consist.foamer_facts = """SR Z class, SR USA class (USATC S100 Class)."""
 
     return consist

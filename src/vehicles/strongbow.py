@@ -26,5 +26,6 @@ def main(roster_id):
 
     consist.description = """Got this one off Mr. Stanier.  It'll go anywhere, do anything, for not too much brass."""
     consist.cite = """Mr. Train"""
+    consist.foamer_facts = """LMS Jubilee, original TTD Chaney 'Jubilee'."""
 
     return consist

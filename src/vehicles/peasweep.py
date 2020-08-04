@@ -20,4 +20,6 @@ def main(roster_id):
                      spriterow_num=0,
                      repeat=2)
 
+    consist.foamer_facts = """LNER EM1 (BR Class 76)."""
+
     return consist

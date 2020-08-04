@@ -23,5 +23,6 @@ def main(roster_id):
 
     consist.description = """Nippy little bugger."""
     consist.cite = """Mr. Train"""
+    consist.foamer_facts = """NER ES1, Metropolitan Railway camel-back and box-cab locomotives, generic steeple-cab locomotives."""
 
     return consist

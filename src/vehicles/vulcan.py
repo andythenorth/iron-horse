@@ -21,5 +21,6 @@ def main(roster_id):
                      vehicle_length=8,
                      effect_offsets=[(-1, 0), (1, 0)], # double the smoke eh?
                      spriterow_num=0)
+    consist.foamer_facts = """English Electric DP2 prototype."""
 
     return consist

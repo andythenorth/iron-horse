@@ -21,4 +21,6 @@ def main(roster_id):
                      vehicle_length=8,
                      spriterow_num=0)
 
+    consist.foamer_facts = """Vossloh Euro Dual (DRS Class 88, ROG Class 93)."""
+
     return consist

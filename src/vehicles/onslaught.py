@@ -21,5 +21,6 @@ def main(roster_id):
                      spriterow_num=0)
 
     consist.description = """ """
+    consist.foamer_facts = """BR Class 50, proposed BR / English Electric 'Super Deltic'."""
 
     return consist

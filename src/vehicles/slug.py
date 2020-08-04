@@ -22,5 +22,6 @@ def main(roster_id):
 
     consist.description = """We made these by uprating the Growler engine.  New paint too, don't spoil it."""
     consist.cite = """Mr. Train"""
+    consist.foamer_facts = """refurbished BR Class 37, with new alternator and uprated engine (per 2,000hp 37292)."""
 
     return consist

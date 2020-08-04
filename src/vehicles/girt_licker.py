@@ -28,5 +28,6 @@ def main(roster_id):
 
     consist.description = """Big ugly thing. Power in spades though."""
     consist.cite = """Mr. Train"""
+    consist.foamer_facts = """Midland Railway 2290 'Big Bertha' Lickey Banker."""
 
     return consist

@@ -113,6 +113,8 @@ class Consist(object):
         # extended description (and a cite from a made up person) for docs etc
         self.description = u''
         self.cite = u''
+        # for 'inspired by' stuff
+        self.foamer_facts = u''
         # occasionally we want to force a specific spriterow for docs, not needed often, set in kwargs as needed, see also buy_menu_spriterow_num
         self.docs_image_spriterow = kwargs.get('docs_image_spriterow', 0) # 0 indexed spriterows, position in generated spritesheet
         # aids 'project management'

@@ -29,5 +29,6 @@ def main(roster_id):
 
     consist.description = """Mr. Stanier helped me out with these.  You'll probably want hundreds of em."""
     consist.cite = """Mr. Train"""
+    consist.foamer_facts = """LMS Black 5, BR Standard 5."""
 
     return consist
