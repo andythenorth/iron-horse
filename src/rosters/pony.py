@@ -2,7 +2,6 @@ from roster import Roster
 
 from vehicles import ares
 from vehicles import athena
-from vehicles import atlas
 from vehicles import avenger
 from vehicles import bean_feast
 from vehicles import blackthorn
@@ -106,6 +105,7 @@ from vehicles import tyburn
 from vehicles import ultra_shoebox
 from vehicles import vanguard
 from vehicles import vigilant
+from vehicles import viking
 from vehicles import vulcan
 from vehicles import westbourne
 from vehicles import workish
@@ -229,7 +229,6 @@ def main(disabled=False):
                                buffalo,
                                saxon,
                                little_bear,
-                               atlas,
                                goliath,
                                # freight
                                hercules,
@@ -238,6 +237,7 @@ def main(disabled=False):
                                braf_2,
                                haar,
                                merlion,
+                               viking,
                                growler,
                                slug,
                                phoenix,
