@@ -213,7 +213,7 @@
                                 <th class="livery-table-col-with-divider"
                                     style="padding-bottom:0;
                                            width:50%;">
-                                    <span style="color:#286078;">Alternative Livery: None</span>
+                                    <span style="color:#286078; font-weight:normal;">No alternative livery</span>
                                 </th>
                             </tal:block>
                         </tr>
