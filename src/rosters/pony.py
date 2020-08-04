@@ -129,7 +129,7 @@ def main(disabled=False):
                     # default speeds per generation, can be over-ridden if needed by setting speed kw arg on consist
                     # speeds roughly same as RH trucks of same era + 5mph or so, and a bit higher at the top end (back and forth on this many times eh?),
                     # NG is Corsican-style 1000mm, native brit NG is not a thing for gameplay
-                    speeds = {'RAIL': {'standard': [45, 45, 60, 75, 84, 93], # gen 5 and 6 forced down by design, really fast freight is imbalanced
+                    speeds = {'RAIL': {'standard': [45, 45, 60, 75, 87, 87], # gen 5 and 6 held down by design, really fast freight is imbalanced
                                        'express': [60, 75, 90, 105, 115, 125], # smaller steps in gen 5 and 6, balances against faster HSTs
                                        'hst': [0, 0, 0, 112, 125, 140], # only gen 4, 5 and 6 HST provided
                                        'very_high_speed': [0, 0, 0, 0, 140, 186]
@@ -142,14 +142,14 @@ def main(disabled=False):
                                      },
 
                     # capacity factor per generation, will be multiplied by vehicle length
-                    freight_car_capacity_per_unit_length =  {'RAIL': [4, 4, 5, 5.5, 6, 6],
+                    freight_car_capacity_per_unit_length =  {'RAIL': [4, 4, 5, 5.5, 6, 6.5],
                                                              'NG': [3, 3, 4, 4]
                                                              },
                     pax_car_capacity_per_unit_length =  {'RAIL': [3, 4, 5, 5, 6, 6],
                                                          'NG': [3, 4, 5, 6]
                                                          },
                     # freight car weight factor varies slightly by gen, reflecting modern cars with lighter weight
-                    train_car_weight_factors = [0.5, 0.5, 0.5, 0.48, 0.44, 0.44],
+                    train_car_weight_factors = [0.5, 0.5, 0.5, 0.48, 0.44, 0.40],
 
                     # specify lists of cc1 and not_cc2 colours, and an option to remap all the cc1 to a specific other cc (allowing multiple input colours to map to one result)
                     livery_presets = {'EWS': {'cc1': ['COLOUR_PINK'],
