@@ -12,4 +12,6 @@ def main(roster_id):
                      weight=34,
                      chassis='railcar_32px')
 
+    consist.foamer_facts = """CAF MK5A Driving Van Trailer (DVT) with added generator."""
+
     return consist

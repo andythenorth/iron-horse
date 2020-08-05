@@ -20,5 +20,6 @@ def main(roster_id):
 
     consist.description = """Needs a good clean."""
     consist.cite = """Mr. Unit"""
+    consist.foamer_facts = """BR Class 128/130."""
 
     return consist

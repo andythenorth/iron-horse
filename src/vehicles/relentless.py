@@ -20,4 +20,6 @@ def main(roster_id):
                      vehicle_length=8,
                      spriterow_num=0)
 
+    consist.foamer_facts = """Newag Griffin, Bombardier Traxx 2, Stadler Euro 4001, Siemens EuroRunner."""
+
     return consist

@@ -20,4 +20,6 @@ def main(roster_id):
                      tail_light='metro_32px_1',
                      repeat=2)
 
+    consist.foamer_facts = """London Underground 'Gate' Stock, Standard Stock."""
+
     return consist

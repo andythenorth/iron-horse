@@ -19,4 +19,6 @@ def main(roster_id):
                      chassis='railcar_32px',
                      tail_light='railcar_32px_3')
 
+    consist.foamer_facts = """SR 5-BEL <i>Brighton Belle</i>."""
+
     return consist

@@ -23,4 +23,6 @@ def main(roster_id):
                      vehicle_length=3,
                      spriterow_num=1)
 
+    consist.foamer_facts = """GWR 4300 Class, LBSCR K Class."""
+
     return consist

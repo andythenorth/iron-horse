@@ -18,5 +18,6 @@ def main(roster_id):
                      effect_z_offset=11, # reduce smoke z position to suit NG engine height
                      chassis='railcar_ng_24px',
                      tail_light='railcar_24px_1')
+    consist.foamer_facts = """CFC X2000/X5000, CFD Autorails."""
 
     return consist

@@ -22,5 +22,6 @@ def main(roster_id):
 
     consist.description = """These'll do right nicely for small lines.  I stole the design from Mr. Adams, but I won't tell him if you won't."""
     consist.cite = """Mr. Train"""
+    consist.foamer_facts = """LSWR 415 Class <i>Radial Tank</i>."""
 
     return consist

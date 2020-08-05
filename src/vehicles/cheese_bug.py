@@ -20,5 +20,6 @@ def main(roster_id):
                      vehicle_length=4,
                      effect_z_offset=10, # reduce smoke z position to suit NG engine height
                      spriterow_num=0)
+    consist.foamer_facts = """generic narrow-gauge steam locomotives."""
 
     return consist

@@ -20,4 +20,6 @@ def main(roster_id):
                      vehicle_length=6,
                      spriterow_num=0)
 
+    consist.foamer_facts = """BR Class 71/74, Class 73."""
+
     return consist

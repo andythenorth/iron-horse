@@ -22,5 +22,7 @@ def main(roster_id):
 
     consist.description = """Larks were getting a bit past it.  These are right well balanced."""
     consist.cite = """Mr. Train"""
+    consist.foamer_facts = """GWR 4500 Class <i>Prairie Tank</i>."""
+
 
     return consist

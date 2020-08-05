@@ -10,6 +10,7 @@ def main(roster_id):
                                      role_child_branch_num=1,
                                      power=1100,
                                      gen=3,
+                                     default_livery_extra_docs_examples=[('COLOUR_RED', 'COLOUR_BLUE')],
                                      sprites_complete=True)
 
     consist.add_unit(type=MetroUnit,
@@ -19,5 +20,7 @@ def main(roster_id):
                      chassis='railcar_32px',
                      tail_light='metro_32px_1',
                      repeat=2)
+
+    consist.foamer_facts = """London Underground 1996 Stock."""
 
     return consist

@@ -27,4 +27,6 @@ def main(roster_id):
                      vehicle_length=3,
                      spriterow_num=1)
 
+    consist.foamer_facts = """LMS <i>Hughes Crab</i>, BR Standard Class 4 2-6-0."""
+
     return consist

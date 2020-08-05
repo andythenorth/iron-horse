@@ -23,4 +23,6 @@ def main(roster_id):
                      vehicle_length=3,
                      spriterow_num=1)
 
+    consist.foamer_facts = """GWR 2301 Dean Goods Class, generic 0-6-0 freight locomotives."""
+
     return consist

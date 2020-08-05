@@ -19,5 +19,6 @@ def main(roster_id):
                      vehicle_length=4,
                      effect_z_offset=9, # reduce smoke z position to suit NG engine height
                      spriterow_num=0)
+    consist.foamer_facts = """CFD Locotracteur BB-400, CIE F Class, FAUR L45H B-B."""
 
     return consist

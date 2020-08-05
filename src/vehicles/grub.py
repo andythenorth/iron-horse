@@ -22,4 +22,6 @@ def main(roster_id):
                      vehicle_length=4,
                      spriterow_num=0)
 
+    consist.foamer_facts = """GER G15/C53 tramway locomotives."""
+
     return consist

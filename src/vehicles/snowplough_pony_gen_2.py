@@ -13,4 +13,6 @@ def main(roster_id):
                      weight=50,
                      vehicle_length=4)
 
+    consist.foamer_facts = """LNER / BR Independent Snowploughs"""
+
     return consist

@@ -20,4 +20,6 @@ def main(roster_id):
                      vehicle_length=6,
                      spriterow_num=0)
 
+    consist.foamer_facts = """Network Rail / GBRF Class 73/9 (re-engineered)."""
+
     return consist

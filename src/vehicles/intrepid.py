@@ -23,6 +23,6 @@ def main(roster_id):
 
     consist.description = """They've put a non-standard hydraulic transmission in these, but they're a bit lighter than a Wyvern so we'll give em a go."""
     consist.cite = """Mr. Train"""
-    consist.foamer_facts = """BR Class 35 <i>Hymek</i>.  BRCW <i>Falcon</i> and <i>Lion</i> prototypes."""
+    consist.foamer_facts = """BR Class 35 <i>Hymek</i>, Brush <i>Falcon</i> prototype and BRCW <i>Lion</i> prototype."""
 
     return consist

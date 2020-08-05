@@ -22,4 +22,6 @@ def main(roster_id):
                      vehicle_length=6,
                      spriterow_num=0)
 
+    consist.foamer_facts = """LNWR Webb <i>Coal Tank</i>."""
+
     return consist

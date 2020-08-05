@@ -542,8 +542,11 @@ class Consist(object):
         if self.power > 0:
             if len(self.description) == 0:
                 utils.echo_message("Consist " + self.id + " has no description")
-            if len(self.cite) == 0:
-                utils.echo_message("Consist " + self.id + " has no cite")
+            #if len(self.cite) == 0:
+                #utils.echo_message("Consist " + self.id + " has no cite")
+            if len(self.foamer_facts) == 0:
+                utils.echo_message("Consist " + self.id + " has no foamer_facts")
+
 
     def render(self, templates):
         self.assert_speed()

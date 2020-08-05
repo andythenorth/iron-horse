@@ -21,4 +21,6 @@ def main(roster_id):
                      chassis='railcar_32px',
                      tail_light='railcar_32px_3')
 
+    consist.foamer_facts = """BR Class 302, BR Class 325."""
+
     return consist
