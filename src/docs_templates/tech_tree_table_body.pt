@@ -2,7 +2,6 @@
 <div class="container">
     <div class="row">
         <div class="span12">
-            <h1 style="color:red">Arrows to replacement engine are missing in some cases, unwanted in others - maybe an off-by-one in a calculation?</h1>
             <p>
                 <a href="tech_tree_table_blue.html">Blue</a>
                 |
@@ -164,7 +163,7 @@
                                                             <div class="tech_tree_vehicle
                                                                         ${'tech_tree_vehicle_electric' if consist.requires_electric_rails else 'None'}
                                                                         ${'tech_tree_vehicle_electro_diesel' if consist.str_name_suffix == 'STR_NAME_SUFFIX_ELECTRODIESEL' else None}
-                                                                        ${'tech_tree_vehicle_arrow' if (doc_helper.get_engine_by_role_and_base_track_type_and_generation(consists, role, base_track_type_and_label, gen + 2) is not None) or (consist._replacement_consist_id is not None) else None}">
+                                                                        ${'tech_tree_vehicle_arrow' if consist.replacement_consist is not None else None}">
                                                                 <span style="display:block;">
                                                                     <!--! this is using a private var, but I am not going to lose sleep over it -->
                                                                     ${consist._name}
