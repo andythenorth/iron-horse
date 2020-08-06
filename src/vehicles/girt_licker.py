@@ -7,8 +7,7 @@ def main(roster_id):
                             base_numeric_id=70,
                             name='0-10-0 Girt Licker',
                             role='heavy_freight',
-                            role_child_branch_num=-2,
-                            replacement_consist_id='blind_smuir', # this Joker ends with Blind Smuir
+                            role_child_branch_num=-1,
                             power=1850, # match to Vigilant
                             tractive_effort_coefficient=0.33,
                             fixed_run_cost_points=250, # cost malus, early heavy freight engines are too cheap to run relative to smaller engines

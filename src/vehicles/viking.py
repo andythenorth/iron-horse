@@ -7,7 +7,7 @@ def main(roster_id):
                             base_numeric_id=780,
                             name='Viking',
                             role='freight',
-                            role_child_branch_num=-2,
+                            role_child_branch_num=-1, # does not directly follow from Merlion
                             power=1950,
                             random_reverse=True,
                             gen=5,

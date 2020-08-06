@@ -8,6 +8,7 @@ def main(roster_id):
                             name='Merlion',
                             role='freight',
                             role_child_branch_num=-2,
+                            replacement_consist_id='slug', # this Joker ends with Slug
                             power=1750,
                             tractive_effort_coefficient=0.26,
                             random_reverse=True,
