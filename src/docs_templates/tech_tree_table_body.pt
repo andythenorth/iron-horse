@@ -185,7 +185,7 @@
                                                                     <small>${consist.power_speed_ratio}i</small>
                                                                 </span>
                                                             </div>
-                                                            <div tal:condition="consist._replacement_consist_id is not None"
+                                                            <div tal:condition="consist.replacement_consist is not None"
                                                                  style="float:left; margin-left: 173px; margin-top: 30px;">
                                                                 <!--! this anchor overlaps the main consist anchor, but seems to work -->
                                                                 <a href="${consist.replacement_consist.id}.html">
