@@ -7,7 +7,7 @@ def main(roster_id):
                             base_numeric_id=170,
                             name='Moor Gallop',
                             role='heavy_express',
-                            role_child_branch_num=2,
+                            role_child_branch_num=3,
                             power=2400,
                             tractive_effort_coefficient=0.25,
                             random_reverse=True,

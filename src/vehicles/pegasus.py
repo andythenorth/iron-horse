@@ -7,7 +7,7 @@ def main(roster_id):
                             base_numeric_id=300,
                             name='2-8-2 Pegasus',
                             role='heavy_express',
-                            role_child_branch_num=3,
+                            role_child_branch_num=2,
                             power=2200,
                             tractive_effort_coefficient=0.25,
                             gen=3,

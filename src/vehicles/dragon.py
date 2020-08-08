@@ -7,7 +7,7 @@ def main(roster_id):
                             base_numeric_id=420,
                             name='Dragon',
                             role='heavy_express',
-                            role_child_branch_num=3,
+                            role_child_branch_num=2,
                             power=2750,
                             random_reverse=True,
                             gen=4,

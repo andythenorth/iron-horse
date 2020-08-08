@@ -7,7 +7,7 @@ def main(roster_id):
                             base_numeric_id=3500,
                             name='Revolution',
                             role='heavy_express',
-                            role_child_branch_num=2,
+                            role_child_branch_num=3,
                             power=2800,
                             power_by_railtype={'RAIL': 2800, 'ELRL': 4200}, # compared to IRL, there is more diesel power and less electric
                             random_reverse=True,

@@ -7,7 +7,7 @@ def main(roster_id):
                             base_numeric_id=4400,
                             name='Relentless',
                             role='heavy_express',
-                            role_child_branch_num=3,
+                            role_child_branch_num=2,
                             power=3950, # slightly more than standard progression, to enable higher speed to be reach quickly
                             random_reverse=True,
                             gen=6,

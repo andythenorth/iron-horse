@@ -161,6 +161,7 @@
                                                 <span tal:condition="role_child_branch < 0 and role not in ['gronk!', 'snoughplough!']">
                                                     Joker [${role_child_branch}]
                                                 </span>
+                                                ${role_child_branch}
                                             </th>
                                             <td tal:repeat="gen range(1, len(intro_dates) + 1)" class="text-center" style="width: 160px;">
                                                 <tal:consist define="consist tech_tree[base_track_type_and_label][role_group][role][role_child_branch][gen]">
