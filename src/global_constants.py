@@ -46,7 +46,8 @@ buy_menu_sort_order_wagons = ['alignment_car',
                               'vehicle_transporter_car',
                               'torpedo_car',
                               'slag_ladle_car',
-                              'caboose_car']
+                              'caboose_car'
+                              ]
 
 # capacity multipliers for user-configurable capacity parameter
 capacity_multipliers = [0.67, 1, 1.33]
@@ -78,12 +79,13 @@ PR_RUNNING_TRAIN_DIESEL = -4
 role_group_mapping = OrderedDict([('express', ['branch_express', 'express', 'heavy_express']),
                                   ('driving_cab', ['driving_cab_express']),
                                   ('freight', ['branch_freight', 'freight', 'heavy_freight']),
-                                  ('universal', ['universal', 'mail_railcar', 'pax_railcar']),
+                                  ('universal', ['universal', 'pax_railcar', 'mail_railcar']), # note pax before mail
                                   ('luxury_railcar', ['luxury_pax_railcar']),
                                   ('hst', ['hst']),
                                   ('very_high_speed', ['very_high_speed']),
                                   ('lolz', ['joker_heavy_express', 'joker_heavy_freight', 'gronk!', 'snoughplough!']),
-                                  ('metro', ['mail_metro', 'pax_metro'])])
+                                  ('metro', ['pax_metro', 'mail_metro']) # note pax before mail
+                                  ])
 
 # keep alphabetised, order not significant
 role_string_mapping = {'driving_cab': 'STR_ROLE_DRIVING_CAB',
@@ -94,7 +96,8 @@ role_string_mapping = {'driving_cab': 'STR_ROLE_DRIVING_CAB',
                        'luxury_railcar': 'STR_ROLE_GENERAL_PURPOSE_EXPRESS',
                        'metro': 'STR_ROLE_METRO',
                        'very_high_speed': 'STR_ROLE_VERY_HIGH_SPEED',
-                       'universal': 'STR_ROLE_GENERAL_PURPOSE'}
+                       'universal': 'STR_ROLE_GENERAL_PURPOSE'
+                       }
 
 # days offset is used to control *synchronising* (or not) intro dates across groups of vehicles where needed
 # see https://github.com/OpenTTD/OpenTTD/pull/7147 for explanation
@@ -112,7 +115,8 @@ intro_date_offsets_by_role_group = {'universal': 0,
                                     'very_high_speed': 8,
                                     'food_wagons': 9,
                                     'non_core_wagons': 10,
-                                    'jokers': 11}
+                                    'jokers': 11
+                                    }
 
 # up to 127 temp storages are available, might as well allocate them exclusively within the graphics chain to avoid any collisions
 temp_storage_ids = dict(id_of_neighbouring_vehicle = 0, # used to avoid expensively reading var 61 multiple times, used in re-implementation of var 41 to check multiple IDs not a single ID

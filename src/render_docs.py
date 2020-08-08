@@ -82,7 +82,7 @@ class DocHelper(object):
         # default result
         return None
 
-    def engines_as_tech_tree(self, consists):
+    def engines_as_tech_tree(self, consists, simplified_gameplay):
         # !! does not handle roster at time of writing
         # structure
         # |- base_track_type
@@ -95,40 +95,33 @@ class DocHelper(object):
         result = {}
         # much nested loops
         for base_track_type_and_label in self.base_track_types_and_labels:
-            result[base_track_type_and_label] = {}
             for role_group in global_constants.role_group_mapping:
-                result[base_track_type_and_label][role_group] = {}
                 for role in global_constants.role_group_mapping[role_group]:
-                    result[base_track_type_and_label][role_group][role] = {}
                     role_child_branches = {}
                     for role_child_branch in self.get_role_child_branches(consists, base_track_type_and_label[0], role):
-                        role_child_branches[role_child_branch] = {}
-                        # walk the generations, providing default None objects
-                        for gen in range(1, len(self.get_roster_by_id('pony', iron_horse.registered_rosters).intro_dates[base_track_type_and_label[0]]) + 1):
-                            role_child_branches[role_child_branch][gen] = None
+                        if not (simplified_gameplay and role_child_branch < 0):
+                            role_child_branches[role_child_branch] = {}
+                            # walk the generations, providing default None objects
+                            for gen in range(1, len(self.get_roster_by_id('pony', iron_horse.registered_rosters).intro_dates[base_track_type_and_label[0]]) + 1):
+                                role_child_branches[role_child_branch][gen] = None
                     # get the engines matching this role and track type, and place them into the child branches
                     for consist in consists:
-                        if (consist.base_track_type == base_track_type_and_label[0]) and (consist.role == role):
-                            role_child_branches[consist.role_child_branch_num][consist.gen] = consist
-                    result[base_track_type_and_label][role_group][role] = role_child_branches
+                        if not (simplified_gameplay and consist.role_child_branch_num < 0):
+                            if (consist.base_track_type == base_track_type_and_label[0]) and (consist.role == role):
+                                role_child_branches[consist.role_child_branch_num][consist.gen] = consist
+                    # only to role group to tree for this track type if there are actual vehicles in it
+                    if len(role_child_branches) > 0:
+                        result.setdefault(base_track_type_and_label, {})
+                        result[base_track_type_and_label].setdefault(role_group, {})
+                        result[base_track_type_and_label][role_group].setdefault(role, {})
+                        result[base_track_type_and_label][role_group][role] = role_child_branches
         return result
 
-        if role_group is None:
-            print('role_group None passed - needs refactored')
-            return []
-        else:
-            roles_ordered = global_constants.role_group_mapping[role_group]
-
-        roles_to_include = []
-        for consist in consists:
-            if consist.base_track_type == base_track_type[0]:
-                if consist.role is not None:
-                    if consist.role in roles_ordered:
-                        roles_to_include.append(consist.role)
-        result = []
-        for role in roles_ordered:
-            if role in set(roles_to_include):
-                result.append(role)
+    def get_role_child_branches_in_order(self, role_child_branches):
+        # adjust the sort so that it's +ve, -ve for each value, e.g. [1, -1, 2, -2, 3, -3, 4, 5] etc
+        # this gives the nicest order of related rows in tech tree, assuming that similar engines are in child_branch 1 and child_branch -1
+        result = [i for i in role_child_branches]
+        result.sort(key=lambda x: (abs(x), -x))
         return result
 
     def remap_company_colours(self, remap):

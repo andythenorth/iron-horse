@@ -3,17 +3,19 @@
     <div class="row">
         <div class="span12">
             <p>
+                ${'Showing' if not simplified_gameplay else 'Show'}
                 Full Gameplay:
-                <a href="tech_tree_table_blue.html">Blue</a>
-                |
                 <a href="tech_tree_table_red.html">Red &amp; White</a>
-                &nbsp;&nbsp;&nbsp;
-                Simplified Gameplay:
-                <a href="tech_tree_table_blue_simplified.html">Blue</a>
                 |
+                <a href="tech_tree_table_blue.html">Blue</a>
+                &nbsp;&nbsp;&nbsp;
+                ${'Showing' if simplified_gameplay else 'Show'}
+                Simplified Gameplay:
                 <a href="tech_tree_table_red_simplified.html">Red &amp; White</a>
+                |
+                <a href="tech_tree_table_blue_simplified.html">Blue</a>
             </p>
-            <tal:tech_tree define="tech_tree doc_helper.engines_as_tech_tree(consists)">
+            <tal:tech_tree define="tech_tree doc_helper.engines_as_tech_tree(consists, simplified_gameplay)">
                 <tal:base_track_type_and_label repeat="base_track_type_and_label tech_tree.keys()">
                     <h3>${base_track_type_and_label[1]}</h3>
                     <tal:role_group define="intro_dates doc_helper.get_roster_by_id('pony', registered_rosters).intro_dates[base_track_type_and_label[0]]"
@@ -136,9 +138,8 @@
                             </thead>
                             <tbody>
                                 <tal:roles repeat="role roles">
-                                    <tal:role_child_branch tal:repeat="role_child_branch tech_tree[base_track_type_and_label][role_group][role].keys()">
-                                        <tr tal:condition="role_child_branch > 0 if simplified_gameplay else True"
-                                            style="border-top: solid ${'2px #ccc' if role in ['branch_freight', 'heavy_freight', 'heavy_express', 'pax_railcar', 'hst', 'lolz'] else '1px #eee'};
+                                    <tal:role_child_branch tal:repeat="role_child_branch doc_helper.get_role_child_branches_in_order(tech_tree[base_track_type_and_label][role_group][role].keys())">
+                                        <tr style="border-top: solid ${'2px #ccc' if role in ['branch_freight', 'heavy_freight', 'heavy_express', 'pax_railcar', 'hst', 'lolz'] else '1px #eee'};
                                                    box-shadow: inset 0 -1px #fff;
                                                    background: linear-gradient(180deg, #fff 0%, #fafafa 100%);">
                                             <th style="text-align: right; width: 180px; padding-right: 20px;">
@@ -159,9 +160,8 @@
                                                     ${doc_helper.get_role_string_from_role(role)}
                                                 </span>
                                                 <span tal:condition="role_child_branch < 0 and role not in ['gronk!', 'snoughplough!']">
-                                                    Joker [${role_child_branch}]
+                                                    Joker
                                                 </span>
-                                                ${role_child_branch}
                                             </th>
                                             <td tal:repeat="gen range(1, len(intro_dates) + 1)" class="text-center" style="width: 160px;">
                                                 <tal:consist define="consist tech_tree[base_track_type_and_label][role_group][role][role_child_branch][gen]">
