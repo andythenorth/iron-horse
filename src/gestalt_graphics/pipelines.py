@@ -168,7 +168,7 @@ class GenerateCompositedIntermodalContainers(Pipeline):
 
     def add_container_spriterows(self):
         for variant in self.intermodal_container_gestalt.variants:
-            template_path = os.path.join(currentdir, 'src', 'graphics', 'intermodal_containers', self.resolve_template_name(variant) + '.png')
+            template_path = os.path.join(currentdir, 'src', 'graphics', 'cargo_templates', self.resolve_template_name(variant) + '.png')
             template_image = Image.open(template_path)
 
             # get the loc points and sort them for display
@@ -313,7 +313,7 @@ class GenerateCompositedVehiclesCargos(Pipeline):
 
     def add_container_spriterows(self):
         for variant in self.intermodal_container_gestalt.variants:
-            template_path = os.path.join(currentdir, 'src', 'graphics', 'vehicles_cargos', self.resolve_template_name(variant) + '.png')
+            template_path = os.path.join(currentdir, 'src', 'graphics', 'cargo_templates', self.resolve_template_name(variant) + '.png')
             template_image = Image.open(template_path)
 
             # get the loc points and sort them for display
