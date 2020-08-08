@@ -8,15 +8,15 @@ def main(roster_id):
                             name='Super Shoebox',
                             role='branch_express',
                             role_child_branch_num=2,
-                            power=1100,
-                            power_by_railtype={'RAIL': 1100, 'ELRL': 2200},
+                            power=1200,
+                            power_by_railtype={'RAIL': 1200, 'ELRL': 2200},
                             random_reverse=True,
                             pantograph_type='z-shaped-single',
                             gen=5,
                             sprites_complete=True)
 
     consist.add_unit(type=ElectroDieselEngineUnit,
-                     weight=66,
+                     weight=72,
                      vehicle_length=6,
                      spriterow_num=0)
 

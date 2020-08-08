@@ -8,7 +8,7 @@ def main(roster_id):
                             name='Shredder',
                             role='express',
                             role_child_branch_num=1,
-                            power=1800,
+                            power=1625,
                             random_reverse=True,
                             gen=6,
                             sprites_complete=True)

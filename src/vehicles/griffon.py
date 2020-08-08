@@ -8,7 +8,7 @@ def main(roster_id):
                             name='Griffon',
                             role='express',
                             role_child_branch_num=1,
-                            power=1650,
+                            power=1550,
                             random_reverse=True,
                             gen=5,
                             alternative_cc_livery='RAILFREIGHT_TRIPLE_GREY',
