@@ -9,6 +9,8 @@ def main(roster_id):
                             role='heavy_express',
                             role_child_branch_num=1,
                             power=2550,
+                            # dibble, assume super-slip control, intent is to give higher TE as a non-significant variation from Resilient
+                            tractive_effort_coefficient=0.4,
                             random_reverse=True,
                             gen=5,
                             intro_date_offset=2,  # let's not have everything turn up in 1990
@@ -17,7 +19,7 @@ def main(roster_id):
                             sprites_complete=True)
 
     consist.add_unit(type=DieselEngineUnit,
-                     weight=105,
+                     weight=115,
                      vehicle_length=8,
                      spriterow_num=0)
 
