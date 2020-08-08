@@ -5,7 +5,7 @@ def main(roster_id):
     consist = EngineConsist(roster_id=roster_id,
                             id='braf',
                             base_numeric_id=0,
-                            name='2-6-0 Braf',
+                            name='2-6-0 Braf', # Welsh for "fine, nice, pleasant" https://omniglot.com/language/weather/welsh.htm
                             role='freight',
                             role_child_branch_num=1,
                             power=1250,
