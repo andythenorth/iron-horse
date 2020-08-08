@@ -10,7 +10,6 @@ from vehicles import blind_smuir
 from vehicles import boar_cat
 from vehicles import bone
 from vehicles import braf
-from vehicles import braf_2
 from vehicles import breeze
 from vehicles import brenner_cab
 from vehicles import brenner_middle
@@ -21,6 +20,7 @@ from vehicles import cheddar_valley
 from vehicles import cheese_bug
 from vehicles import chinook
 from vehicles import deasil
+from vehicles import diablo
 from vehicles import dover
 from vehicles import dragon
 from vehicles import driving_cab_pony_gen_5
@@ -56,6 +56,7 @@ from vehicles import lemon
 from vehicles import little_bear
 from vehicles import longwater
 from vehicles import mail_rail
+from vehicles import magnum_70
 from vehicles import merlion
 from vehicles import merrylegs
 from vehicles import moor_gallop
@@ -88,7 +89,6 @@ from vehicles import slug
 from vehicles import snapper
 from vehicles import snowplough_pony_gen_2
 from vehicles import spinner
-# from vehicles import steadfast # not convinced
 from vehicles import stoat
 from vehicles import streamer
 from vehicles import strongbow
@@ -233,8 +233,7 @@ def main(disabled=False):
                                # freight
                                hercules,
                                braf,
-                               # steadfast, # dropped joker
-                               braf_2,
+                               diablo,
                                haar,
                                merlion,
                                viking,
@@ -256,11 +255,11 @@ def main(disabled=False):
                                peasweep,
                                flanders_storm,
                                triton,
-                               #gosling_blast, # dropped?
                                # joker engines / snowploughs
                                grub,
                                lamia,
                                gronk,
+                               magnum_70,
                                snowplough_pony_gen_2,
                                # diesel railcars
                                deasil,
