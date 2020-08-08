@@ -8,7 +8,7 @@ def main(roster_id):
                             name='Screamer',
                             role='heavy_express',
                             role_child_branch_num=-3,
-                            power=5500,
+                            power=5000, # 4500 might be better, closer to Zebedee?  But longevity into gen 6 suggests 5000?
                             random_reverse=True,
                             gen=5,
                             pantograph_type='z-shaped-double',
