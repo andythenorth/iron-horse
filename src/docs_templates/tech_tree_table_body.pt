@@ -3,9 +3,15 @@
     <div class="row">
         <div class="span12">
             <p>
+                Full Gameplay:
                 <a href="tech_tree_table_blue.html">Blue</a>
                 |
                 <a href="tech_tree_table_red.html">Red &amp; White</a>
+                &nbsp;&nbsp;&nbsp;
+                Simplified Gameplay:
+                <a href="tech_tree_table_blue_simplified.html">Blue</a>
+                |
+                <a href="tech_tree_table_red_simplified.html">Red &amp; White</a>
             </p>
             <tal:tech_tree define="tech_tree doc_helper.engines_as_tech_tree(consists)">
                 <tal:base_track_type_and_label repeat="base_track_type_and_label tech_tree.keys()">
@@ -130,78 +136,80 @@
                             </thead>
                             <tbody>
                                 <tal:roles repeat="role roles">
-                                    <tr tal:repeat="role_child_branch tech_tree[base_track_type_and_label][role_group][role].keys()"
-                                        style="border-top: solid ${'2px #ccc' if role in ['branch_freight', 'heavy_freight', 'heavy_express', 'pax_railcar', 'hst', 'lolz'] else '1px #eee'};
-                                               box-shadow: inset 0 -1px #fff;
-                                               background: linear-gradient(180deg, #fff 0%, #fafafa 100%);">
-                                        <th style="text-align: right; width: 180px; padding-right: 20px;">
-                                            <!--! this string mangling will be fragile if roles change eh -->
-                                            <span tal:condition="'pax' in role">
-                                                Passenger
-                                            </span>
-                                            <span tal:condition="'mail' in role">
-                                                Mail
-                                            </span>
-                                            <span tal:condition="'railcar' in role">
-                                                Railcar
-                                            </span>
-                                            <span tal:condition="'heavy' in role">
-                                                Heavy
-                                            </span>
-                                            <span tal:condition="'mail_railcar' not in role and 'pax_railcar' not in role">
-                                                ${doc_helper.get_role_string_from_role(role)}
-                                            </span>
-                                            <span tal:condition="role_child_branch < 0 and role not in ['gronk!', 'snoughplough!']">
-                                                Joker [${role_child_branch}]
-                                            </span>
-                                        </th>
-                                        <td tal:repeat="gen range(1, len(intro_dates) + 1)" class="text-center" style="width: 160px;">
-                                            <tal:consist define="consist tech_tree[base_track_type_and_label][role_group][role][role_child_branch][gen]">
-                                                <tal:block condition="consist is not None">
-                                                    <div id="${consist.id}" class="tech_tree_vehicle_container">
-                                                        <a href="${consist.id}.html">
-                                                            <div class="tech_tree_vehicle
-                                                                        ${'tech_tree_vehicle_electric' if consist.requires_electric_rails else 'None'}
-                                                                        ${'tech_tree_vehicle_electro_diesel' if consist.str_name_suffix == 'STR_NAME_SUFFIX_ELECTRODIESEL' else None}
-                                                                        ${'tech_tree_vehicle_arrow' if consist.replacement_consist is not None else None}">
-                                                                <span style="display:block;">
-                                                                    <!--! this is using a private var, but I am not going to lose sleep over it -->
-                                                                    ${consist._name}
-                                                                </span>
-                                                                <img src="static/img/${consist.id}_${vehicle_cc}.png"
-                                                                     width="${2 * doc_helper.buy_menu_sprite_width(consist)}"
-                                                                     height="${2 * doc_helper.buy_menu_sprite_height}" />
-                                                                <span style="display:block; margin-top: 5px; line-height:1.3;" class="muted">
-                                                                    <small style="display:block;">
-                                                                        ${base_lang_strings[consist.str_name_suffix] if consist.str_name_suffix is not None else None}
-                                                                    </small>
-                                                                    <small>${consist.power} hp</small>
-                                                                    <tal:multi_mode condition="consist.power_by_railtype is not None">
-                                                                        <small> / ${consist.power_by_railtype['ELRL']} hp</small>
-                                                                    </tal:multi_mode>
-                                                                    <br />
-                                                                    <small>${consist.speed} mph</small>
+                                    <tal:role_child_branch tal:repeat="role_child_branch tech_tree[base_track_type_and_label][role_group][role].keys()">
+                                        <tr tal:condition="role_child_branch > 0 if simplified_gameplay else True"
+                                            style="border-top: solid ${'2px #ccc' if role in ['branch_freight', 'heavy_freight', 'heavy_express', 'pax_railcar', 'hst', 'lolz'] else '1px #eee'};
+                                                   box-shadow: inset 0 -1px #fff;
+                                                   background: linear-gradient(180deg, #fff 0%, #fafafa 100%);">
+                                            <th style="text-align: right; width: 180px; padding-right: 20px;">
+                                                <!--! this string mangling will be fragile if roles change eh -->
+                                                <span tal:condition="'pax' in role">
+                                                    Passenger
+                                                </span>
+                                                <span tal:condition="'mail' in role">
+                                                    Mail
+                                                </span>
+                                                <span tal:condition="'railcar' in role">
+                                                    Railcar
+                                                </span>
+                                                <span tal:condition="'heavy' in role">
+                                                    Heavy
+                                                </span>
+                                                <span tal:condition="'mail_railcar' not in role and 'pax_railcar' not in role">
+                                                    ${doc_helper.get_role_string_from_role(role)}
+                                                </span>
+                                                <span tal:condition="role_child_branch < 0 and role not in ['gronk!', 'snoughplough!']">
+                                                    Joker [${role_child_branch}]
+                                                </span>
+                                            </th>
+                                            <td tal:repeat="gen range(1, len(intro_dates) + 1)" class="text-center" style="width: 160px;">
+                                                <tal:consist define="consist tech_tree[base_track_type_and_label][role_group][role][role_child_branch][gen]">
+                                                    <tal:block condition="consist is not None">
+                                                        <div id="${consist.id}" class="tech_tree_vehicle_container">
+                                                            <a href="${consist.id}.html">
+                                                                <div class="tech_tree_vehicle
+                                                                            ${'tech_tree_vehicle_electric' if consist.requires_electric_rails else 'None'}
+                                                                            ${'tech_tree_vehicle_electro_diesel' if consist.str_name_suffix == 'STR_NAME_SUFFIX_ELECTRODIESEL' else None}
+                                                                            ${'tech_tree_vehicle_arrow' if consist.replacement_consist is not None else None}">
+                                                                    <span style="display:block;">
+                                                                        <!--! this is using a private var, but I am not going to lose sleep over it -->
+                                                                        ${consist._name}
+                                                                    </span>
+                                                                    <img src="static/img/${consist.id}_${vehicle_cc}.png"
+                                                                         width="${2 * doc_helper.buy_menu_sprite_width(consist)}"
+                                                                         height="${2 * doc_helper.buy_menu_sprite_height}" />
+                                                                    <span style="display:block; margin-top: 5px; line-height:1.3;" class="muted">
+                                                                        <small style="display:block;">
+                                                                            ${base_lang_strings[consist.str_name_suffix] if consist.str_name_suffix is not None else None}
+                                                                        </small>
+                                                                        <small>${consist.power} hp</small>
+                                                                        <tal:multi_mode condition="consist.power_by_railtype is not None">
+                                                                            <small> / ${consist.power_by_railtype['ELRL']} hp</small>
+                                                                        </tal:multi_mode>
+                                                                        <br />
+                                                                        <small>${consist.speed} mph</small>
 
-                                                                    <small>${consist.power_speed_ratio}i</small>
-                                                                </span>
-                                                            </div>
-                                                            <div tal:condition="consist.replacement_consist is not None"
-                                                                 style="float:left; margin-left: 173px; margin-top: 30px;">
-                                                                <!--! this anchor overlaps the main consist anchor, but seems to work -->
-                                                                <a href="${consist.replacement_consist.id}.html">
-                                                                    <div class="muted"
-                                                                         style="width: 100px; border: solid 1px #ddd; background: #fffff3; border-radius: 4px; padding: 8px;">
-                                                                        Replaced by ${doc_helper.get_replaced_by_name(consist.replacement_consist.id, consists)}
-                                                                    </div>
-                                                                </a>
-                                                            </div>
-                                                        </a>
-                                                    </div>
-                                                </tal:block>
-                                            </tal:consist>
-                                        </td>
-                                        <td><!--! empty space cell --></td>
-                                    </tr>
+                                                                        <small>${consist.power_speed_ratio}i</small>
+                                                                    </span>
+                                                                </div>
+                                                                <div tal:condition="consist.replacement_consist is not None"
+                                                                     style="float:left; margin-left: 173px; margin-top: 30px;">
+                                                                    <!--! this anchor overlaps the main consist anchor, but seems to work -->
+                                                                    <a href="${consist.replacement_consist.id}.html">
+                                                                        <div class="muted"
+                                                                             style="width: 100px; border: solid 1px #ddd; background: #fffff3; border-radius: 4px; padding: 8px;">
+                                                                            Replaced by ${doc_helper.get_replaced_by_name(consist.replacement_consist.id, consists)}
+                                                                        </div>
+                                                                    </a>
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                    </tal:block>
+                                                </tal:consist>
+                                            </td>
+                                            <td><!--! empty space cell --></td>
+                                        </tr>
+                                    </tal:role_child_branch>
                                 </tal:roles>
                             </tbody>
                         </table>

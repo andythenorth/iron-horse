@@ -576,7 +576,9 @@ def main():
     metadata['dates'] = (dates[0], dates[-1])
 
     # render standard docs from a list
-    html_docs = ['code_reference', 'get_started', 'translations', 'tech_tree_table_blue', 'tech_tree_table_red', 'train_whack', 'trains']
+    html_docs = ['code_reference', 'get_started', 'translations',
+                 'tech_tree_table_blue', 'tech_tree_table_red', 'tech_tree_table_blue_simplified', 'tech_tree_table_red_simplified',
+                 'train_whack', 'trains']
     txt_docs = ['license', 'readme']
     markdown_docs = ['changelog']
     graph_docs = ['tech_tree_linkgraph']
