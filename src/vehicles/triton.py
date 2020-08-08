@@ -7,7 +7,7 @@ def main(roster_id):
                             base_numeric_id=3910,
                             name='Triton',
                             role='heavy_freight',
-                            role_child_branch_num=2,
+                            role_child_branch_num=3,
                             power=6850, # relatively tiny jump from gen 5, compared to gen 4->5, very high-powered single unit engines are unbalanced for Pony
                             # dibble for game balance, assume super-slip control
                             tractive_effort_coefficient=0.4,

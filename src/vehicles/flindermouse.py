@@ -7,7 +7,7 @@ def main(roster_id):
                             base_numeric_id=790,
                             name='Flindermouse',
                             role='heavy_freight',
-                            role_child_branch_num=2,
+                            role_child_branch_num=3,
                             power=2500,
                             gen=3,
                             pantograph_type='diamond-double',
