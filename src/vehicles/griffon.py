@@ -10,7 +10,8 @@ def main(roster_id):
                             role_child_branch_num=-1,
                             power=1650,
                             random_reverse=True,
-                            gen=5,
+                            fixed_run_cost_points=100, # give a bonus so this can be a genuine mixed-traffic engine
+                            gen=5, # not replaced by anything (?)
                             alternative_cc_livery='RAILFREIGHT_TRIPLE_GREY',
                             default_livery_extra_docs_examples=[('COLOUR_GREY', 'COLOUR_YELLOW'), ('COLOUR_WHITE', 'COLOUR_GREY'), ('COLOUR_GREY', 'COLOUR_GREY'), ('COLOUR_LIGHT_BLUE', 'COLOUR_WHITE')],
                             sprites_complete=False)

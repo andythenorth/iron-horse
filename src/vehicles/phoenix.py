@@ -8,7 +8,7 @@ def main(roster_id):
                             name='Phoenix',
                             role='freight',
                             role_child_branch_num=1,
-                            power=2150, # progression calculated to maintain hp/speed ratio from previous gen
+                            power=2100, # really it's just a livery upgrade
                             random_reverse=True,
                             gen=6,
                             sprites_complete=True)

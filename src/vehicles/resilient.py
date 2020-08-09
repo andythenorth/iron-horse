@@ -10,7 +10,7 @@ def main(roster_id):
                             role_child_branch_num=-1,
                             power=2550,
                             random_reverse=True,
-                            gen=5,
+                            gen=5, # not replaced, keep around for freight etc
                             intro_date_offset=4,  # let's not have everything turn up in 1990
                             fixed_run_cost_points=100, # give a bonus so this can be a genuine mixed-traffic engine
                             alternative_cc_livery='FREIGHTLINER', # tried liveries for RES, etc, not convinced

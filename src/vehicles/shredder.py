@@ -10,8 +10,9 @@ def main(roster_id):
                             role_child_branch_num=1,
                             power=1950,
                             random_reverse=True,
+                            fixed_run_cost_points=120, # give a bonus so this can be a genuine mixed-traffic engine
                             gen=5,
-                            speed=125,
+                            speed=125, # Shredder not replaced, but has gen 6 speeds
                             intro_date_offset=7,  # introduce later than gen epoch by design
                             sprites_complete=False)
 
