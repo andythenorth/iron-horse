@@ -6,9 +6,9 @@ def main(roster_id):
                             id='merlion',
                             base_numeric_id=4920,
                             name='Merlion',
-                            role='freight',
-                            role_child_branch_num=-2,
-                            replacement_consist_id='slug', # this Joker ends with Slug
+                            role='express',
+                            role_child_branch_num=1,
+                            #replacement_consist_id='slug', # this Joker ends with Slug
                             power=1750,
                             tractive_effort_coefficient=0.26,
                             random_reverse=True,
@@ -22,7 +22,7 @@ def main(roster_id):
                      vehicle_length=8,
                      spriterow_num=0)
 
-    consist.description = """I don't like the looks of it right much, but I suppose it will do for freight."""
+    consist.description = """I don't like the looks of it right much, but I suppose it will do."""
     consist.cite = """Mr. Train"""
     consist.foamer_facts = """BR Class 31."""
 

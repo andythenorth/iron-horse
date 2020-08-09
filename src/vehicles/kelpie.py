@@ -7,8 +7,8 @@ def main(roster_id):
                             base_numeric_id=900,
                             name='Kelpie',
                             role='express',
-                            role_child_branch_num=1,
-                            power=1475,
+                            role_child_branch_num=-1,
+                            power=1550,
                             random_reverse=True,
                             intro_date_offset=-2,  # let's not have everything turn up in 1960
                             gen=4,

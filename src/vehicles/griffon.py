@@ -5,10 +5,10 @@ def main(roster_id):
     consist = EngineConsist(roster_id=roster_id,
                             id='griffon',
                             base_numeric_id=2840,
-                            name='Griffon',
+                            name='Griffon', # Griffon and Shredder names are wrong way round, but seems to suit the shapes so eh, leave it :)
                             role='express',
-                            role_child_branch_num=1,
-                            power=1550,
+                            role_child_branch_num=-1,
+                            power=1650,
                             random_reverse=True,
                             gen=5,
                             alternative_cc_livery='RAILFREIGHT_TRIPLE_GREY',

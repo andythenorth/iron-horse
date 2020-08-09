@@ -10,7 +10,6 @@ def main(roster_id):
                             role_child_branch_num=1,
                             power=800,
                             gen=3,
-                            replacement_consist_id='shoebox', # this line ends with Shoebox and is merged with branch_express 2
                             tractive_effort_coefficient=0.2,
                             fixed_run_cost_points=120, # substantial cost bonus so it can make money
                             random_reverse=True,

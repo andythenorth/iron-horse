@@ -7,7 +7,7 @@ def main(roster_id):
                             base_numeric_id=880,
                             name='Super Shoebox',
                             role='branch_express',
-                            role_child_branch_num=2,
+                            role_child_branch_num=1,
                             power=1200,
                             power_by_railtype={'RAIL': 1200, 'ELRL': 2200},
                             random_reverse=True,
