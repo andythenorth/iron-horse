@@ -13,7 +13,7 @@ def main(roster_id):
                             random_reverse=True,
                             gen=4,
                             intro_date_offset=1,  # introduce later than gen epoch by design
-                            fixed_run_cost_points=200, # give a serious malus to this one (balancing eh?)
+                            fixed_run_cost_points=240, # give a serious malus to this one (balancing eh?)
                             sprites_complete=False)
 
     consist.add_unit(type=DieselEngineUnit,
