@@ -8,8 +8,8 @@ def main(roster_id):
                             name='Revolution',
                             role='heavy_express',
                             role_child_branch_num=1, # in the diesel branch, not electric
-                            power=2550, # HP capped down, solely for game balance against Resilient
-                            power_by_railtype={'RAIL': 2550, 'ELRL': 4200}, # compared to IRL, there is more diesel power and less electric
+                            power=2750, # HP capped down, solely for game balance against Resilient
+                            power_by_railtype={'RAIL': 2750, 'ELRL': 4200}, # compared to IRL, there is more diesel power and less electric
                             random_reverse=True,
                             pantograph_type='z-shaped-single',
                             gen=6,

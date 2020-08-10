@@ -26,6 +26,7 @@ from vehicles import dragon
 from vehicles import driving_cab_pony_gen_5
 from vehicles import driving_cab_pony_gen_6
 from vehicles import endeavour
+from vehicles import evolution
 from vehicles import firebird
 from vehicles import fleet
 from vehicles import flanders_storm
@@ -194,13 +195,14 @@ def main(disabled=False):
                                ultra_shoebox,
                                # express
                                reliance,
-                               spinner,
-                               carrack,
-                               thunderer,
-                               tencendur,
                                kelpie,
                                griffon,
+                               spinner,
+                               carrack,
+                               tencendur,
+                               merlion,
                                shredder,
+                               thunderer,
                                swift,
                                strongbow,
                                streamer,
@@ -208,6 +210,7 @@ def main(disabled=False):
                                intrepid,
                                vanguard,
                                resilient,
+                               evolution, # out of normal order so that the names read 'Evolution', 'Revolution' (usually jokers come after the tech tree version not before)
                                revolution,
                                pegasus,
                                dragon,
@@ -235,7 +238,6 @@ def main(disabled=False):
                                braf,
                                diablo,
                                haar,
-                               merlion,
                                viking,
                                growler,
                                slug,
