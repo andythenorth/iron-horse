@@ -7,8 +7,8 @@ def main(roster_id):
                             base_numeric_id=4800,
                             name='Toaster',
                             role='heavy_freight',
-                            role_child_branch_num=2,
-                            power=4650,
+                            role_child_branch_num=-1,
+                            power=3600,
                             # dibble for game balance, assume super-slip control
                             tractive_effort_coefficient=0.4,
                             random_reverse=True,
@@ -22,6 +22,6 @@ def main(roster_id):
 
     consist.description = """I've heard these might catch fire, but we're getting them cheap."""
     consist.cite = """Mr. Train"""
-    consist.foamer_facts = """GE Class 70 <i>Powerhaul</i>, uprated GE prime mover."""
+    consist.foamer_facts = """GE Class 70 <i>Powerhaul</i>."""
 
     return consist
