@@ -643,13 +643,15 @@ class EngineConsist(Consist):
         fixed_run_cost_points = self.fixed_run_cost_points
         # add floating cost to the fixed (baseline) cost (which is arbitrary points, range 0-200-ish)
         # multiply by gen and an arbitrary factor to give the results I want
-        # the aim is to space costs widely across types within a generation, but mostly flatten them across generations of same type
-        gen_multiplier = 8 - (0.75 * self.gen)
+        # the aim is to space costs widely across types within a generation, but only have slight increase (or flat) across generations of same type
+        gen_multiplier = 8 - (0.6 * self.gen)
         run_cost = gen_multiplier * (fixed_run_cost_points + floating_run_cost_points)
-        # freight engines get a substantial run cost bonus as they'll often be sat waiting for loads, so balance (also super realism!!)
+        # small freight engines get a run cost bonus as they'll often be sat waiting for loads, so balance (also super realism!!)
         # doing this is preferable to doing variable run costs, which are weird and confusing (can't trust the costs showin in vehicle window)
-        if 'freight' in self.role:
-            run_cost = 0.8 * run_cost
+        if 'heavy_freight' in self.role:
+            run_cost = 0.9 * run_cost # big freight engines don't need a big bonus as they tend to run on large profitable trains/routes
+        elif 'freight' in self.role:
+            run_cost = 0.8 * run_cost # smaller freight gets a bigger bonus as they more likely to be on marginal routes
         # massive bonus for NG
         if is_NG:
             run_cost = 0.33 * run_cost
