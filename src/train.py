@@ -591,7 +591,7 @@ class EngineConsist(Consist):
         # malus for electric engines, ~33% higher equipment costs
         # !! this is an abuse of requires_electric_rails, but it's _probably_ fine :P
         if self.requires_electric_rails:
-            power_factor = self.power / 750
+            power_factor = self.power / 800
         # malus for complex electro-diesels, ~33% higher equipment costs, based on elrl power
         # this sometimes causes a steep jump from non-electro-diesels in a tech tree (due to power jump), but eh, fine
         elif self.electro_diesel_buy_cost_malus is not None:
@@ -618,8 +618,8 @@ class EngineConsist(Consist):
         # multiplier for speed, max value will be 12.5
         speed_cost_factor = self.speed / (8 if is_NG else 16)
         # max power 10000hp by design - see assert_power() - (NG assumes 4000hp max)
-        # multiplier for power, max value will be 16
-        power_factor = self.power / (250 if is_NG else 625)
+        # multiplier for power, max value will be 20
+        power_factor = self.power / (250 if is_NG else 500)
         # max weight = 500t by design - see assert_weight() - (NG assumes 200t max)
         # multiplier for weight, max value will be 8
         weight_factor = self.weight / (32 if is_NG else 62.5)
@@ -632,7 +632,7 @@ class EngineConsist(Consist):
             else:
                 # small bonus to electric engines
                 # they already tend to be lighter per unit power (so cheaper to run) than similar power types
-                power_factor = 0.8 * power_factor
+                power_factor = 0.75 * power_factor
 
         # basic cost from speed, power, weight
         floating_run_cost_points = speed_cost_factor * power_factor * weight_factor
