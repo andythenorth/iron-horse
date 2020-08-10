@@ -11,6 +11,7 @@ def main(roster_id):
                             #replacement_consist_id='slug', # this Joker ends with Slug
                             power=1750,
                             tractive_effort_coefficient=0.26,
+                            fixed_run_cost_points=42, # give a bonus so this can be a genuine mixed-traffic engine
                             random_reverse=True,
                             gen=4,
                             intro_date_offset=-2,  # let's be a littler earlier for this one
