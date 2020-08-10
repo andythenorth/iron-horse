@@ -16,7 +16,7 @@ def main(roster_id):
                             intro_date_offset=2,  # let's not have everything turn up in 1990
                             fixed_run_cost_points=55, # give a bonus so this can be a genuine mixed-traffic engine
                             alternative_cc_livery='RAILFREIGHT_TRIPLE_GREY',
-                            sprites_complete=True)
+                            sprites_complete=False)
 
     consist.add_unit(type=DieselEngineUnit,
                      weight=115,
