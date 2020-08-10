@@ -12,7 +12,7 @@ def main(roster_id):
                             random_reverse=True,
                             gen=6,
                             intro_date_offset=-2,  # let's not have everything turn up in 1990
-                            fixed_run_cost_points=100, # give a bonus so this can be a genuine mixed-traffic engine
+                            fixed_run_cost_points=70, # give a bonus so this can be a genuine mixed-traffic engine
                             alternative_cc_livery='FREIGHTLINER', # tried liveries for RES, etc, not convinced
                             default_livery_extra_docs_examples=[('COLOUR_BLUE', 'COLOUR_WHITE')],
                             sprites_complete=False)
