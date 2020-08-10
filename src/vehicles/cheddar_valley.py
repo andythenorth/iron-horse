@@ -8,12 +8,13 @@ def main(roster_id):
                             name='Cheddar Valley',
                             role='heavy_freight',
                             role_child_branch_num=2,
-                            power=4200,
+                            power=4450, # 850hp steps Revolution -> Endeavor -> Toaster
                             # dibble for game balance, assume super-slip control
                             tractive_effort_coefficient=0.4,
                             random_reverse=True,
                             intro_date_offset=3,  # let's be a little bit later for this one
                             gen=5,
+                            fixed_run_cost_points=240, # unrealism: run cost nerf for being so high-powered
                             alternative_cc_livery='YEOMAN',
                             sprites_complete=False)
 

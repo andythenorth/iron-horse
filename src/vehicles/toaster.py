@@ -7,12 +7,13 @@ def main(roster_id):
                             base_numeric_id=4800,
                             name='Toaster',
                             role='heavy_freight',
-                            role_child_branch_num=-1,
-                            power=3600,
+                            role_child_branch_num=-2, # Joker eh
+                            power=4450, # 850hp steps Revolution -> Endeavor -> Toaster
                             # dibble for game balance, assume super-slip control
                             tractive_effort_coefficient=0.4,
                             random_reverse=True,
                             gen=6,
+                            fixed_run_cost_points=250, # unrealism: run cost nerf for being so high-powered
                             sprites_complete=True)
 
     consist.add_unit(type=DieselEngineUnit,
