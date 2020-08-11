@@ -1154,10 +1154,11 @@ class CarConsist(Consist):
         else:
             # assume unlimited speed costs about same as 160mph
             speed_cost_points = 160
-        length_cost_factor = self.length / 8
         # start from an arbitrary baseline and add speed cost
         run_cost_points = 100 + speed_cost_points
-        # multiply by length (after baseline, so the 8/8 cost is always twice 4/8 etc
+        # multiply by length, so the 8/8 cost is always twice 4/8 etc
+        # (length is also an adequate proxy for capacity)
+        length_cost_factor = self.length / 8
         run_cost_points = run_cost_points * length_cost_factor
         # multiply up by arbitrary amount, to where I want wagon run costs to be
         # (base cost is set deliberately low to allow small increments for fine-grained control)
@@ -1165,6 +1166,9 @@ class CarConsist(Consist):
         # narrow gauge gets a massive bonus - NG wagons are lower cap, so earn relatively much less / length
         if self.base_track_type == 'NG':
             run_cost_points = 0.2 * run_cost_points
+        # arbitrary factor for minor cost inflation by generation (above and beyond speed and length increases)
+        # small balance against later game trains that are more profitable due increased average network speed resulting in faster transit times (clearing junctions etc faster)
+        run_cost_points = math.pow(1.1, self.gen) * run_cost_points
         # cap to int for nml
         return int(run_cost_points)
 
