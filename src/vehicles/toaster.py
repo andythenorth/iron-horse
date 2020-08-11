@@ -13,7 +13,7 @@ def main(roster_id):
                             tractive_effort_coefficient=0.4,
                             random_reverse=True,
                             gen=6,
-                            fixed_run_cost_points=250, # unrealism: run cost nerf for being so high-powered
+                            fixed_run_cost_points=220, # unrealism: run cost nerf for being so high-powered
                             sprites_complete=True)
 
     consist.add_unit(type=DieselEngineUnit,

@@ -14,7 +14,7 @@ def main(roster_id):
                             random_reverse=True,
                             intro_date_offset=3,  # let's be a little bit later for this one
                             gen=5,
-                            fixed_run_cost_points=240, # unrealism: run cost nerf for being so high-powered
+                            fixed_run_cost_points=210, # unrealism: run cost nerf for being so high-powered
                             alternative_cc_livery='YEOMAN',
                             sprites_complete=False)
 
