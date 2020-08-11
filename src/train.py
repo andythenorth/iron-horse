@@ -618,8 +618,8 @@ class EngineConsist(Consist):
         # multiplier for speed, max value will be 12.5
         speed_cost_factor = self.speed / (8 if is_NG else 16)
         # max power 10000hp by design - see assert_power() - (NG assumes 4000hp max)
-        # multiplier for power, max value will be 20
-        power_factor = self.power / (250 if is_NG else 500)
+        # multiplier for power, max value will be ~18
+        power_factor = self.power / (250 if is_NG else 555)
         # max weight = 500t by design - see assert_weight() - (NG assumes 200t max)
         # multiplier for weight, max value will be 8
         weight_factor = self.weight / (32 if is_NG else 62.5)
@@ -642,13 +642,15 @@ class EngineConsist(Consist):
         floating_run_cost_points = floating_run_cost_points * self.floating_run_cost_multiplier
         fixed_run_cost_points = self.fixed_run_cost_points
         # add floating cost to the fixed (baseline) cost (which is arbitrary points, range 0-200-ish)
-        # multiply by gen and an arbitrary factor to give the results I want
+        # do an arbitrary calculation using gen to give the results I want (tried values in a spreadsheet until looked right)
         # the aim is to space costs widely across types within a generation, but only have slight increase (or flat) across generations of same type
-        gen_multiplier = 8 - (0.75 * self.gen)
+        gen_multiplier = 8.52 - math.pow(1.27, self.gen)
         run_cost = gen_multiplier * (fixed_run_cost_points + floating_run_cost_points)
-        # small freight engines get a run cost bonus as they'll often be sat waiting for loads, so balance (also super realism!!)
+        # freight engines get a run cost bonus as they'll often be sat waiting for loads, so balance (also super realism!!)
         # doing this is preferable to doing variable run costs, which are weird and confusing (can't trust the costs showin in vehicle window)
-        if self.role in ['branch_freight', 'freight']: # not heavy_freight
+        if self.role in ['heavy_freight']: # smaller bonus for heavy_freight
+            run_cost = 0.9 * run_cost
+        elif self.role in ['branch_freight', 'freight']: # bigger bonus for other freight
             run_cost = 0.8 * run_cost
         # massive bonus for NG
         if is_NG:
