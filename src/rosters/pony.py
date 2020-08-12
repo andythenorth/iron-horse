@@ -131,6 +131,7 @@ def main(disabled=False):
                     # speeds roughly same as RH trucks of same era + 5mph or so, and a bit higher at the top end (back and forth on this many times eh?),
                     # NG is Corsican-style 1000mm, native brit NG is not a thing for gameplay
                     speeds = {'RAIL': {'standard': [45, 45, 60, 75, 87, 87], # gen 5 and 6 held down by design, really fast freight is imbalanced
+                                       'railcar': [45, 45, 60, 75, 87, 95], # match standard, except gen 6
                                        'express': [60, 75, 90, 105, 115, 125], # smaller steps in gen 5 and 6, balances against faster HSTs
                                        'hst': [0, 0, 0, 112, 125, 140], # only gen 4, 5 and 6 HST provided
                                        'very_high_speed': [0, 0, 0, 0, 140, 186]
@@ -138,7 +139,8 @@ def main(disabled=False):
                               'METRO': {'standard': [45, 55, 65]
                                         # no express for metro in Pony
                                         },
-                              'NG': {'standard': [45, 45, 55, 65], # NG standard/express all same in Pony, balanced against trams, RVs
+                              'NG': {'standard': [45, 45, 55, 65], # NG standard/railcar/express all same in Pony, balanced against trams, RVs
+                                     'railcar': [45, 45, 55, 65],
                                      'express': [45, 45, 55, 65]}
                                      },
 

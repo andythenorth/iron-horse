@@ -389,7 +389,9 @@ class Consist(object):
                 if self.role in group_roles:
                     return self.get_speed_by_class('express')
             # then check other specific roles
-            if self.role in ['hst']:
+            if self.role in ['mail_railcar', 'pax_railcar']:
+                return self.get_speed_by_class('railcar')
+            elif self.role in ['hst']:
                 return self.get_speed_by_class('hst')
             elif self.role in ['very_high_speed']:
                 return self.get_speed_by_class('very_high_speed')
@@ -1988,7 +1990,7 @@ class PassengerRailcarTrailerCarConsist(PassengerCarConsistBase):
         self.base_id = 'passenger_railcar_trailer_car'
         super().__init__(**kwargs)
           # PassengerCarConsistBase sets 'express', but railcar trailers should over-ride this back to 'standard'
-        self.speed_class = 'standard'
+        self.speed_class = 'railcar'
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
         # this will knock standard age period down, so this train is less profitable over ~128 tiles than a similar luxuryy train
