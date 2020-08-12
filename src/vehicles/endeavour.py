@@ -23,6 +23,6 @@ def main(roster_id):
 
     consist.description = """Cut-price version of the Cheddar Valley. Cheaper to buy. Cheaper to run. Less power mind you."""
     consist.cite = """Mr. Train"""
-    consist.foamer_facts = """EMD / Progress Rail JT42CWR (Class 66), uprated Cat C series primer mover."""
+    consist.foamer_facts = """EMD / Progress Rail JT42CWR (Class 66)."""
 
     return consist
