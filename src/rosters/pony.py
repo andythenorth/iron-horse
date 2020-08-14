@@ -32,6 +32,7 @@ from vehicles import fleet
 from vehicles import flanders_storm
 from vehicles import flindermouse
 from vehicles import fury
+from vehicles import garratt
 from vehicles import geronimo
 from vehicles import girt_licker
 from vehicles import goliath
@@ -248,6 +249,7 @@ def main(disabled=False):
                                blind_smuir,
                                girt_licker,
                                lemon,
+                               garratt,
                                chinook,
                                grid,
                                bone,
