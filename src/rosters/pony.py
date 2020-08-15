@@ -161,10 +161,10 @@ def main(disabled=False):
                                               'remap_to_cc': None,
                                               'docs_image_input_cc': [('COLOUR_PINK', 'COLOUR_YELLOW')]
                                               },
-                                      'FREIGHTLINER': {'cc1': ['COLOUR_PALE_GREEN', 'COLOUR_GREEN', 'COLOUR_DARK_GREEN'],
+                                      'FREIGHTLINER_GBRF': {'cc1': ['COLOUR_PALE_GREEN', 'COLOUR_GREEN', 'COLOUR_DARK_GREEN', 'COLOUR_MAUVE'], # includes GBRF
                                                        'not_cc2': [],
                                                        'remap_to_cc': None,
-                                                       'docs_image_input_cc': [('COLOUR_PALE_GREEN', 'COLOUR_YELLOW'), ('COLOUR_DARK_GREEN', 'COLOUR_ORANGE'), ('COLOUR_GREEN', 'COLOUR_ORANGE')]
+                                                       'docs_image_input_cc': [('COLOUR_PALE_GREEN', 'COLOUR_YELLOW'), ('COLOUR_DARK_GREEN', 'COLOUR_ORANGE'), ('COLOUR_GREEN', 'COLOUR_ORANGE'), ('COLOUR_MAUVE', 'COLOUR_ORANGE')]
                                                        },
                                       # red stripe cc1 chosen to give nice wagon colour options
                                       'RAILFREIGHT_RED_STRIPE': {'cc1': ['COLOUR_GREY', 'COLOUR_BROWN', 'COLOUR_YELLOW', 'COLOUR_ORANGE'], # not white, too limiting for other liveries

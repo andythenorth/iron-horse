@@ -14,6 +14,7 @@ def main(roster_id):
                             random_reverse=True,
                             intro_date_offset=-2,  # let's be a little bit earlier for this one
                             gen=6,
+                            alternative_cc_livery='FREIGHTLINER_GBRF',
                             sprites_complete=False)
 
     consist.add_unit(type=DieselEngineUnit,

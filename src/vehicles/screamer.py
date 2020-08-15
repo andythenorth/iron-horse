@@ -13,7 +13,7 @@ def main(roster_id):
                             gen=5,
                             pantograph_type='z-shaped-double',
                             intro_date_offset=2, # introduce later than gen epoch by design
-                            alternative_cc_livery='FREIGHTLINER',
+                            alternative_cc_livery='FREIGHTLINER_GBRF',
                             default_livery_extra_docs_examples=[('COLOUR_WHITE', 'COLOUR_BLUE'), ('COLOUR_BLUE', 'COLOUR_WHITE'), ('COLOUR_PINK', 'COLOUR_DARK_BLUE'), ('COLOUR_WHITE', 'COLOUR_RED')],
                             sprites_complete=True)
 
