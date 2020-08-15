@@ -16,7 +16,7 @@ def main(roster_id):
                             gen=5,
                             fixed_run_cost_points=210, # unrealism: run cost nerf for being so high-powered
                             alternative_cc_livery='YEOMAN',
-                            sprites_complete=False)
+                            sprites_complete=True)
 
     consist.add_unit(type=DieselEngineUnit,
                      weight=125,
