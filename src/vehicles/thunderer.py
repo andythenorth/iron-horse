@@ -14,7 +14,7 @@ def main(roster_id):
                             fixed_run_cost_points=140, # give a bonus so this can be a genuine mixed-traffic engine
                             gen=2,
                             intro_date_offset=10, # introduce later than gen epoch by design
-                            sprites_complete=False)
+                            sprites_complete=True)
 
     consist.add_unit(type=SteamEngineUnit,
                      weight=82,
