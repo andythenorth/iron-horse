@@ -138,25 +138,27 @@ class DocHelper(object):
         company_colours = {'COLOUR_DARK_BLUE': 198,
                            'COLOUR_PALE_GREEN': 96,
                            'COLOUR_PINK': 42,
-                           'COLOUR_YELLOW': 62, # guessed
-                           'COLOUR_RED': 179,
-                           'COLOUR_LIGHT_BLUE': 154, # guessed
+                           'COLOUR_YELLOW': 62,
+                           'COLOUR_RED': 179, # !! needs special case
+                           'COLOUR_LIGHT_BLUE': 154,
                            # 'COLOUR_GREEN': 0, # special case handling for green
                            'COLOUR_DARK_GREEN': 88,
                            'COLOUR_BLUE': 146,
-                           'COLOUR_CREAM': 0, # unfinished
-                           'COLOUR_MAUVE': 0, # unfinished
-                           'COLOUR_PURPLE': 0, # unfinished
+                           'COLOUR_CREAM': 114,
+                           'COLOUR_MAUVE': 128,
+                           'COLOUR_PURPLE': 136,
                            # 'COLOUR_ORANGE': 0 # special case handling for orange
                            'COLOUR_BROWN': 32,
                            'COLOUR_GREY': 4,
                            'COLOUR_WHITE': 8,
                            }
         # special cases without sequential ranges
-        if company_colour == 'COLOUR_ORANGE':
-            return (62, 63, 192, 193, 194, 195, 196, 197)[offset]
+        if company_colour == 'COLOUR_RED':
+            return (179, 180, 181, 182, 183, 164, 165, 166)[offset]
         elif company_colour == 'COLOUR_GREEN':
             return (82, 83, 84, 85, 206, 207, 208, 209)[offset]
+        elif company_colour == 'COLOUR_ORANGE':
+            return (62, 63, 192, 193, 194, 195, 196, 197)[offset]
         else:
             return company_colours[company_colour] + offset
 
