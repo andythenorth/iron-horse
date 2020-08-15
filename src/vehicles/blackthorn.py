@@ -11,6 +11,7 @@ def main(roster_id):
                             power=3600,
                             random_reverse=True,
                             gen=6,
+                            default_livery_extra_docs_examples=[('COLOUR_MAUVE', 'COLOUR_ORANGE')],
                             sprites_complete=True)
 
     consist.add_unit(type=DieselEngineUnit,
