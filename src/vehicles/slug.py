@@ -12,7 +12,7 @@ def main(roster_id):
                             random_reverse=True,
                             gen=5,
                             alternative_cc_livery='RAILFREIGHT_TRIPLE_GREY',
-                            default_livery_extra_docs_examples=[('COLOUR_GREY', 'COLOUR_YELLOW'), ('COLOUR_WHITE', 'COLOUR_GREY'), ('COLOUR_GREY', 'COLOUR_GREY'), ('COLOUR_PALE_GREEN', 'COLOUR_PALE_GREEN'), ('COLOUR_LIGHT_BLUE', 'COLOUR_WHITE')],
+                            default_livery_extra_docs_examples=[('COLOUR_GREY', 'COLOUR_YELLOW'), ('COLOUR_WHITE', 'COLOUR_GREY'), ('COLOUR_GREY', 'COLOUR_GREY'), ('COLOUR_PALE_GREEN', 'COLOUR_PALE_GREEN'), ('COLOUR_LIGHT_BLUE', 'COLOUR_WHITE'), ('COLOUR_YELLOW', 'COLOUR_YELLOW')],
                             sprites_complete=True)
 
     consist.add_unit(type=DieselEngineUnit,

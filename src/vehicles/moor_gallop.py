@@ -14,6 +14,7 @@ def main(roster_id):
                             gen=3,
                             pantograph_type='diamond-double',
                             intro_date_offset=5,  # introduce later than gen epoch by design
+                            default_livery_extra_docs_examples=[('COLOUR_LIGHT_BLUE', 'COLOUR_WHITE'), ('COLOUR_PALE_GREEN', 'COLOUR_WHITE'), ('COLOUR_DARK_GREEN', 'COLOUR_WHITE'), ('COLOUR_BLUE', 'COLOUR_BLUE')],
                             sprites_complete=True)
 
     consist.add_unit(type=ElectricEngineUnit,

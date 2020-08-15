@@ -13,6 +13,7 @@ def main(roster_id):
                             gen=4,
                             pantograph_type='z-shaped-double',
                             intro_date_offset=9,  # introduce much later than gen epoch by design
+                            default_livery_extra_docs_examples=[('COLOUR_BLUE', 'COLOUR_WHITE')],
                             sprites_complete=True)
 
     consist.add_unit(type=ElectricEngineUnit,
