@@ -14,8 +14,8 @@ def main(roster_id):
                             random_reverse=True,
                             gen=4,
                             intro_date_offset=-6,
-                            alternative_cc_livery='RAILFREIGHT_RED_STRIPE',
-                            sprites_complete=False)
+                            # alternative_cc_livery='RAILFREIGHT_RED_STRIPE', # not now, needs sprites
+                            sprites_complete=True)
 
     consist.add_unit(type=DieselEngineUnit,
                      weight=68,
