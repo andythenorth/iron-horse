@@ -16,6 +16,7 @@ from vehicles import brenner_middle
 from vehicles import bright_country
 from vehicles import buffalo
 from vehicles import carrack
+from vehicles import challenger
 from vehicles import cheddar_valley
 from vehicles import cheese_bug
 from vehicles import chinook
@@ -188,6 +189,7 @@ def main(disabled=False):
                                       },
 
                     engines = [# branch express
+                               challenger,
                                lark,
                                merrylegs,
                                proper_job,
