@@ -13,9 +13,9 @@ def main(roster_id):
                             gen=5, # not replaced, keep around for freight etc
                             pantograph_type='z-shaped-double',
                             intro_date_offset=1,  # introduce later than gen epoch by design
-                            alternative_cc_livery='RAILFREIGHT_TRIPLE_GREY',
+                            #alternative_cc_livery='RAILFREIGHT_TRIPLE_GREY', # unfinished
                             default_livery_extra_docs_examples=[('COLOUR_GREEN', 'COLOUR_YELLOW'), ('COLOUR_PALE_GREEN', 'COLOUR_PALE_GREEN'), ('COLOUR_LIGHT_BLUE', 'COLOUR_WHITE')],
-                            sprites_complete=False)
+                            sprites_complete=True)
 
     consist.add_unit(type=ElectricEngineUnit,
                      weight=82,
