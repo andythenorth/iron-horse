@@ -15,7 +15,7 @@ def main(roster_id):
                             intro_date_offset=1,  # introduce later than gen epoch by design
                             fixed_run_cost_points=240, # give a serious malus to this one (balancing eh?)
                             default_livery_extra_docs_examples=[('COLOUR_DARK_GREEN', 'COLOUR_ORANGE'), ('COLOUR_BLUE', 'COLOUR_BLUE')],
-                            sprites_complete=False)
+                            sprites_complete=True)
 
     consist.add_unit(type=DieselEngineUnit,
                      weight=105,
