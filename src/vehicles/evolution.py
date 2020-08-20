@@ -15,7 +15,7 @@ def main(roster_id):
                             fixed_run_cost_points=70, # give a bonus so this can be a genuine mixed-traffic engine
                             alternative_cc_livery='FREIGHTLINER_GBRF', # tried liveries for RES, etc, not convinced
                             default_livery_extra_docs_examples=[('COLOUR_BLUE', 'COLOUR_WHITE')],
-                            sprites_complete=False)
+                            sprites_complete=True)
 
     consist.add_unit(type=DieselEngineUnit,
                      weight=112,
