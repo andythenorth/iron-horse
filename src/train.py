@@ -336,7 +336,7 @@ class Consist(object):
         result = []
         for consist in self.roster.engine_consists:
             if (consist.base_track_type == self.base_track_type) and (consist.gen == self.gen) and (consist != self):
-                if (consist.role == self.role) or (0 < (consist.power - self.power) < 500) or (0 < (self.power - consist.power) < 500):
+                if (consist.role == self.role) or (0 <= (consist.power - self.power) < 500) or (0 <= (self.power - consist.power) < 500):
                     result.append(consist)
         return result
 
