@@ -14,7 +14,7 @@ def main(roster_id):
                             gen=5,
                             speed=125, # Shredder not replaced, but has gen 6 speeds
                             intro_date_offset=7,  # introduce later than gen epoch by design
-                            sprites_complete=False)
+                            sprites_complete=True)
 
     consist.add_unit(type=DieselEngineUnit,
                      weight=76,
