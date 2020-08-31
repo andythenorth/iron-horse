@@ -14,7 +14,7 @@ def main(roster_id):
                             gen=5,
                             alternative_cc_livery='RAILFREIGHT_RED_STRIPE',
                             default_livery_extra_docs_examples=[('COLOUR_BLUE', 'COLOUR_WHITE'), ('COLOUR_PINK', 'COLOUR_YELLOW'), ('COLOUR_PALE_GREEN', 'COLOUR_CREAM'), ('COLOUR_WHITE', 'COLOUR_RED')],
-                            sprites_complete=False)
+                            sprites_complete=True)
 
     consist.add_unit(type=DieselEngineUnit,
                      weight=125, # tiny nerf from Grid, because IRL reasons
