@@ -27,13 +27,13 @@ from vehicles import dragon
 from vehicles import driving_cab_pony_gen_5
 from vehicles import driving_cab_pony_gen_6
 from vehicles import endeavour
+from vehicles import esk
 from vehicles import evolution
 from vehicles import firebird
 from vehicles import fleet
 from vehicles import flanders_storm
 from vehicles import flindermouse
 from vehicles import fury
-from vehicles import garratt
 from vehicles import geronimo
 from vehicles import girt_licker
 from vehicles import goliath
@@ -251,7 +251,7 @@ def main(disabled=False):
                                blind_smuir,
                                girt_licker,
                                lemon,
-                               garratt,
+                               esk,
                                chinook,
                                grid,
                                bone,

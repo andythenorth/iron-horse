@@ -3,9 +3,9 @@ from train import EngineConsist, SteamEngineUnit, SteamEngineTenderUnit
 
 def main(roster_id):
     consist = EngineConsist(roster_id=roster_id,
-                            id='garratt',
+                            id='esk',
                             base_numeric_id=4050,
-                            name='2-6-0+0-6-2 Garratt',
+                            name='2-6-0+0-6-2 Esk',
                             role='heavy_freight',
                             role_child_branch_num=-2,
                             replacement_consist_id='chinook', # this Joker ends with Chinook
