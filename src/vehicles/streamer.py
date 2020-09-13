@@ -14,7 +14,7 @@ def main(roster_id):
                             gen=3,
                             intro_date_offset=4, # introduce later than gen epoch by design
                             default_livery_extra_docs_examples=[('COLOUR_DARK_GREEN', 'COLOUR_DARK_GREEN'), ('COLOUR_GREY', 'COLOUR_WHITE'), ('COLOUR_WHITE', 'COLOUR_BLUE')],
-                            sprites_complete=False)
+                            sprites_complete=True)
 
     consist.add_unit(type=SteamEngineUnit,
                      weight=85,
