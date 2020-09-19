@@ -14,18 +14,18 @@ def main(roster_id):
                             gen=3,
                             sprites_complete=False)
 
-    consist.add_unit(type=SteamEngineUnit,
+    consist.add_unit(type=SteamEngineTenderUnit,
                      weight=60,
                      vehicle_length=3,
                      spriterow_num=0)
 
-    consist.add_unit(type=SteamEngineTenderUnit,
+    consist.add_unit(type=SteamEngineUnit,
                      weight=60,
                      vehicle_length=6,
-                     effect_offsets=[(-3, 0), (-2, 0)], # double the smoke eh?
+                     effect_offsets=[(-3, 0)],
                      spriterow_num=1)
 
-    consist.add_unit(type=SteamEngineUnit,
+    consist.add_unit(type=SteamEngineTenderUnit,
                      weight=60,
                      vehicle_length=3,
                      spriterow_num=2)
