@@ -15,7 +15,7 @@ def main(roster_id):
                             fixed_run_cost_points=150, # small cost bonus for balance against same gen Haar
                             gen=3,
                             intro_date_offset=4, # introduce a bit later
-                            sprites_complete=False)
+                            sprites_complete=True)
 
     consist.add_unit(type=SteamEngineUnit,
                      weight=70,
