@@ -12,7 +12,7 @@ def main(roster_id):
                             random_reverse=True,
                             gen=5,
                             intro_date_offset=6, # introduce later than gen epoch by design
-                            sprites_complete=False)
+                            sprites_complete=True)
 
     consist.add_unit(type=DieselEngineUnit,
                      weight=95,
