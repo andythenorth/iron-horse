@@ -16,7 +16,7 @@ def main(roster_id):
                             gen=6,
                             intro_date_offset=-6, # introduce earlier than gen epoch by design
                             vehicle_life=60, # extended vehicle life for all gronks eh
-                            sprites_complete=False)
+                            sprites_complete=True)
 
     consist.add_unit(type=DieselEngineUnit,
                      weight=70,
