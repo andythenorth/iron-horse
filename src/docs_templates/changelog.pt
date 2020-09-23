@@ -2,6 +2,91 @@ Changelog
 =========
 
 -------------
+2.8.0 Release
+-------------
+
+*Changes*
+
+- 'Vehicle Parts Van' instead of 'Vehicle Parts Box Car'
+- adjust gen 2A hopper sprite to look older
+- improve Growler roof appearance
+- improved Slug and Phoenix sprites
+- tweaks to Dragon sprites
+- use 2CC for high-side dump cars to create contrast with standard dump cars in buy menu
+- add nameplate to Moor Gallop sprite
+- tweak Onslaught engine room window positions
+- tweak to Roarer sprite
+- move Sunshine Coast pans to front of unit
+- Helm Wind looks better with reversed pantograph
+- added / reworked engines
+    - SHREDDER
+    - MERLION
+    - SWIFT
+    - THUNDERER
+    - INTREPID
+    - RESILIENT
+    - REVOLUTION
+    - STREAMER
+    - VULCAN
+    - ZEBEDEE
+    - AVENGER
+    - GOLIATH
+    - (REMOVED) HERCULES
+    - BUFFALO
+    - HERCULES -> GWYNT
+    - DIABLO
+    - VIKING
+    - VIGILANT
+    - BLIND SMUIR
+    - BONE
+    - ENDEAVOUR
+    - ESK
+    - TOASTER
+    - LAMIA
+    - MAGNUM 70
+- MINOR BALANCE CHANGES
+    - ROARER
+    - FURY
+    - REVOLUTION
+    - SUPER SHOEBOX
+    - ULTRA SHOEBOX
+    - TENCENDUR
+    - CARRACK
+    - STRONGBOW
+    - SCREAMER
+    - PHOENIX
+    - BLACKTHORN
+    - CHEDDAR VALLEY
+    - GIRT LICKER
+    - GRUB
+- alternative liveries (FOR WHAT, HOW)
+    - list engines and livery types?
+- simplified gameplay mode (replacing jokers enabled)
+- increase gen 5 freight speed to 87mph (provide as a more worthwhile bump from gen 4), but also cap gen 6 freight speed to same 87mph, as the forced gen 5->6 transition is low yield for gameplay; this also means that some gen 5 engines remain relevant for gen 6; increase gen 6 wagon capacity and reduce tare weight to provide a rationale for gen 6 wagons (tbh this is mostly because the sprites are already all drawn for them)
+- extend model life for Gronk! type engines
+- gen 6 Torpedo Car isn't required, stop at gen 5
+
+*Docs*
+
+
+- add Train Whack pointless mini-game
+- set page titles
+- add ids to vehicle details headings for deep linking
+- improved Tech Tree vehicle box border contrast
+- improved vehicle details page (what?)
+- add space between value and unit suffixes (hp, mph etc)
+- improved ordering of role branches in Tech Tree
+
+*Codechanges*
+
+
+- refactor spritelayer_cargo templating
+- refactor handling of vehicle role and role child branch
+- use the generated vehicle image (with caution) in pantograph debug image, not the raw input image, as it contains the rendered roof and chassis, so is a better debug image (can also then be used in docs)
+- re-implement docs image randomiser using json, with nested engines / wagons
+
+
+-------------
 2.7.0 Release
 -------------
 
@@ -37,6 +122,7 @@ Changelog
 - added support for FIRS steel sheet cargo
 - tweaks to railcar chassis sprites
 
+
 *Fixes*
 
 - use correct pantograph for High Flyer
@@ -44,12 +130,14 @@ Changelog
 - don't show brake car sprites for passenger coaches when the neighbouring vehicle is also a passenger car even if a different type
 - removed spurious door light pixels in generation 4 Passenger Coach (Medium)
 
+
 *Docs*
 
 - re-implemented vehicle images in global header
 - note that translations page is outdated
 - improvements to trains page
 - provided page per vehicle giving more details about the vehicle (experimental feature)
+
 
 *Translations*
 
