@@ -12,9 +12,10 @@ def main(roster_id):
                             speed=35,
                             # dibble TE up for game balance, assume low gearing or something
                             tractive_effort_coefficient=0.375,
-                            fixed_run_cost_points=109, # substantial cost bonus so it can make money
+                            fixed_run_cost_points=101, # substantial cost bonus so it can make money
                             random_reverse=True,
-                            gen=2,
+                            gen=1,
+                            intro_date_offset=2, # introduce later than gen epoch by design
                             vehicle_life=60, # extended vehicle life for all gronks eh
                             sprites_complete=True)
 
