@@ -23,6 +23,8 @@ def main(roster_id):
                      vehicle_length=3,
                      spriterow_num=1)
 
+    consist.description = """Solid little number these. No bother."""
+    consist.cite = """Mr. Train"""
     consist.foamer_facts = """GWR 4300 Class, LBSCR K Class."""
 
     return consist

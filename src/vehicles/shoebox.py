@@ -20,6 +20,8 @@ def main(roster_id):
                      vehicle_length=6,
                      spriterow_num=0)
 
+    consist.description = """This one can go on electric or diesel. Madder than a box of frogs."""
+    consist.cite = """Mr. Train"""
     consist.foamer_facts = """BR Class 71/74, Class 73."""
 
     return consist

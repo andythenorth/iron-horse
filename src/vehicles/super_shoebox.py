@@ -20,6 +20,8 @@ def main(roster_id):
                      vehicle_length=6,
                      spriterow_num=0)
 
+    consist.description = """It's a bigger Shoebox. Well not bigger. But we've got more power in it. Right nice new paint too."""
+    consist.cite = """Mr. Train"""
     consist.foamer_facts = """BR Class 71/74, Class 73."""
 
     return consist

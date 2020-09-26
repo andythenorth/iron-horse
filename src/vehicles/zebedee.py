@@ -21,6 +21,8 @@ def main(roster_id):
                      vehicle_length=8,
                      spriterow_num=0)
 
+    consist.description = """These were heavy on the track, but we had em back and fitted extra springs."""
+    consist.cite = """Mr. Train"""
     consist.foamer_facts = """BR Class 87, Class 86."""
 
     return consist

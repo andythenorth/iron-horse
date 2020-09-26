@@ -12,6 +12,8 @@ def main(roster_id):
                      weight=34,
                      chassis='railcar_32px')
 
+    consist.description = """Front or back of a train, up to you. Supplies hotel power for the coaches, so your main loco has more power for traction. Seems to work, so here's a new version."""
+    consist.cite = """Mr. Train"""
     consist.foamer_facts = """CAF MK5A Driving Van Trailer (DVT) with added generator."""
 
     return consist

@@ -22,6 +22,8 @@ def main(roster_id):
                      vehicle_length=6,
                      spriterow_num=0)
 
+    consist.description = """We were wanting a small engine for coal and that, this will do right well."""
+    consist.cite = """Mr. Train"""
     consist.foamer_facts = """LNWR Webb <i>Coal Tank</i>."""
 
     return consist

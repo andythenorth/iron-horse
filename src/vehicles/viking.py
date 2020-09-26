@@ -19,6 +19,8 @@ def main(roster_id):
                      vehicle_length=8,
                      spriterow_num=0)
 
+    consist.description = """These came in by boat. Nice size, no trouble to run. Steelworks seem to like em."""
+    consist.cite = """Mr. Train"""
     consist.foamer_facts = """MaK / Vossloh G1206/G1700), Corus Di8, Eurotunnel Class 0001 (Class 21)."""
 
     return consist

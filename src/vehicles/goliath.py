@@ -21,6 +21,8 @@ def main(roster_id):
                      vehicle_length=6,
                      spriterow_num=0)
 
+    consist.description = """It gets the job done either way."""
+    consist.cite = """Mr. Train"""
     consist.foamer_facts = """YEC <i>Janus</i>, Corus <i>Trojan</i>, Corus Hunslet Bo-bo"""
 
     return consist
