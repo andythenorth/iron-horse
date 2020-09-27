@@ -5,6 +5,7 @@ import sys
 sys.path.append(os.path.join('src'))  # add to the module search path
 
 import math
+import random
 # python builtin templater might be used in some utility cases
 from string import Template
 
@@ -514,15 +515,21 @@ class Consist(object):
     def cite(self):
         # this assumes that NG and Metro always return the same, irrespective of consist cite
         # that makes sense for Pony roster, but might not work in other rosters, deal with that if it comes up eh?
+        # don't like how much content (text) is in code here, but eh
         if self.base_track_type == 'NG':
-            return "Roberto Flange"
+            cite_name = "Roberto Flange"
+            cite_titles = ["Acting Superintendent of Engines", "Provisional Chief Engineer", "Interim Head of Works", "Transitional General Manager (Traction)"]
         elif self.base_track_type == 'METRO':
-            return "Colonel Transit"
+            cite_name = "JJ Transit"
+            cite_titles = ["Acting Superintendent of Engines", "Provisional Chief Engineer", "Interim Head of Works", "Transitional General Manager (Traction)"]
         else:
             if self._cite is not "":
-                return self._cite
+                cite_name = self._cite
+                cite_titles = ["Acting Superintendent of Engines", "Provisional Chief Engineer", "Interim Head of Works", "Transitional General Manager (Traction)"]
             else:
-                return "Mr Train"
+                cite_name = "Mr Train"
+                cite_titles = ["Acting Superintendent of Engines", "Provisional Chief Engineer", "Interim Head of Works", "Transitional General Manager (Traction)"]
+        return cite_name + ', ' + random.choice(cite_titles)
 
     def render_articulated_switch(self, templates):
         if len(self.units) > 1:

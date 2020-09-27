@@ -80,10 +80,7 @@
                     </p>
                     <small>
                         <cite>
-                            ${structure: consist.cite},
-                            <tal:random define="random import:random">
-                                ${random.choice(["Acting Superintendent of Engines", "Provisional Chief Engineer", "Interim Head of Works", "Transitional General Manager (Traction)"])}
-                            </tal:random>
+                            ${structure: consist.cite}
                         </cite>
                     </small>
                 </blockquote>
