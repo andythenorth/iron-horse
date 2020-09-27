@@ -21,7 +21,6 @@ def main(roster_id):
                      spriterow_num=0)
 
     consist.description = """Top to bottom, it's a old Shoebox made new. Right powerful small engines we have thse days."""
-    consist.cite = """Mr. Train"""
     consist.foamer_facts = """Network Rail / GBRF Class 73/9 (re-engineered)."""
 
     return consist

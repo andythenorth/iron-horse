@@ -20,7 +20,6 @@ def main(roster_id):
                      tail_light='railcar_24px_1')
 
     consist.description = """"""
-    consist.cite = """Roberto Flange"""
     consist.foamer_facts = """CFC Autorail Billard, CFC X2000/X5000."""
 
     return consist

@@ -22,7 +22,6 @@ def main(roster_id):
                      spriterow_num=0)
 
     consist.description = """"""
-    consist.cite = """Roberto Flange"""
     consist.foamer_facts = """generic narrow-gauge steam locomotives."""
 
     return consist

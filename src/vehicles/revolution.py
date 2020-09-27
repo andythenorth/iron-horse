@@ -22,7 +22,6 @@ def main(roster_id):
                      spriterow_num=0)
 
     consist.description = """Bobby-dazzlers these are. How they fit it all in amazes me."""
-    consist.cite = """Mr. Train"""
     consist.foamer_facts = """Vossloh Euro Dual (DRS Class 88, ROG Class 93)."""
 
     return consist

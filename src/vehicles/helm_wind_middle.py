@@ -21,7 +21,6 @@ def main(roster_id):
                      repeat=2)
 
     consist.description = """"""
-    consist.cite = """Dr. Constance Speed"""
     consist.foamer_facts = """BR InterCity 225 (Mk4 Coaches)), Shinkansen-style distributed traction."""
 
     return consist

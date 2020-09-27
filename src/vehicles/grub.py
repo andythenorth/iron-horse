@@ -23,7 +23,6 @@ def main(roster_id):
                      spriterow_num=0)
 
     consist.description = """"""
-    consist.cite = """Mr. Train"""
     consist.foamer_facts = """GER G15/C53 tramway locomotives."""
 
     return consist

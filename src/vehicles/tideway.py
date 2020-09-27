@@ -22,7 +22,6 @@ def main(roster_id):
                      repeat=2)
 
     consist.description = """"""
-    consist.cite = """Colonel Transit"""
     consist.foamer_facts = """London Underground 1996 Stock."""
 
     return consist

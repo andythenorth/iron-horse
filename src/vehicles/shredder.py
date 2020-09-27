@@ -22,7 +22,6 @@ def main(roster_id):
                      spriterow_num=0)
 
     consist.description = """I'm not saying I hate em. But they're not much to love are they?"""
-    consist.cite = """Mr. Train"""
     consist.foamer_facts = """EMD JT42HW-HS (Class 67)."""
 
     return consist

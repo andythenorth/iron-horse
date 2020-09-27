@@ -13,7 +13,6 @@ def main(roster_id):
                      chassis='railcar_32px')
 
     consist.description = """Front or back of a train, up to you. Supplies hotel power for the coaches, so your main loco has more power for traction. Clever idea we had eh?"""
-    consist.cite = """Mr. Train"""
     consist.foamer_facts = """BR MK3 Driving Van Trailer (DVT) with added generator."""
 
     return consist

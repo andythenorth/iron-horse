@@ -27,7 +27,6 @@ def main(roster_id):
                      spriterow_num=1)
 
     consist.description = """Bit of an odd beast this one.  It's quite happy on passengers and mail or you can put it on freight.  Right long-lived too."""
-    consist.cite = """Mr. Train"""
     consist.foamer_facts = """GWR 2900 <i>Saint</i> Class, GWR 4000 <i>Star</i> Class."""
 
     return consist

@@ -21,7 +21,6 @@ def main(roster_id):
                      spriterow_num=0)
 
     consist.description = """Sounds like a tractor, pulls like a train."""
-    consist.cite = """Mr. Train"""
     consist.foamer_facts = """BR Class 37, original TTD UU '37'."""
 
     return consist

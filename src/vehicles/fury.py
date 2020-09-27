@@ -23,7 +23,6 @@ def main(roster_id):
                      spriterow_num=0)
 
     consist.description = """I got these in a job lot and refurbished them.  They'll do to replace the Roarers."""
-    consist.cite = """Mr. Train"""
     consist.foamer_facts = """BR Class 86."""
 
     return consist

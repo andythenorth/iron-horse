@@ -111,10 +111,10 @@ class Consist(object):
         self.suppress_animated_pixel_warnings = kwargs.get(
             'suppress_animated_pixel_warnings', False)
         # extended description (and a cite from a made up person) for docs etc
-        self.description = u''
-        self.cite = u''
+        self.description = """""" # to be set per vehicle, multi-line supported
+        self._cite = "" # optional, set per subclass as needed
         # for 'inspired by' stuff
-        self.foamer_facts = u''
+        self.foamer_facts = """""" # to be set per vehicle, multi-line supported
         # occasionally we want to force a specific spriterow for docs, not needed often, set in kwargs as needed, see also buy_menu_spriterow_num
         self.docs_image_spriterow = kwargs.get('docs_image_spriterow', 0) # 0 indexed spriterows, position in generated spritesheet
         # aids 'project management'
@@ -510,6 +510,20 @@ class Consist(object):
                 return 'STR_ROLE, string(' + global_constants.role_string_mapping[role_group] + ')'
         raise Exception('no role string found for ', self.id)
 
+    @property
+    def cite(self):
+        # this assumes that NG and Metro always return the same, irrespective of consist cite
+        # that makes sense for Pony roster, but might not work in other rosters, deal with that if it comes up eh?
+        if self.base_track_type == 'NG':
+            return "Roberto Flange"
+        elif self.base_track_type == 'METRO':
+            return "Colonel Transit"
+        else:
+            if self._cite is not "":
+                return self._cite
+            else:
+                return "Mr Train"
+
     def render_articulated_switch(self, templates):
         if len(self.units) > 1:
             template = templates["articulated_parts.pynml"]
@@ -545,7 +559,7 @@ class Consist(object):
         if self.power > 0:
             if len(self.description) == 0:
                 utils.echo_message("Consist " + self.id + " has no description")
-            if len(self.cite) == 0:
+            if len(self._cite) == 0:
                 utils.echo_message("Consist " + self.id + " has no cite")
             if len(self.foamer_facts) == 0:
                 utils.echo_message("Consist " + self.id + " has no foamer_facts")
@@ -723,7 +737,8 @@ class PassengerEngineRailcarConsist(PassengerEngineConsist):
         self.train_flag_mu = True
         # this will knock standard age period down, so this train is less profitable over ~128 tiles than a similar luxury train
         self.cargo_age_period = global_constants.CARGO_AGE_PERIOD_STANDARD_PAX_MALUS
-
+        # non-standard cite
+        self._cite = "Arabella Unit"
         # Graphics configuration
         if self.gen in [2, 3]:
             self.roof_type = 'pax_mail_ridged'
@@ -778,7 +793,8 @@ class PassengerEngineLuxuryRailcarConsist(PassengerEngineConsist):
         self.buy_cost_adjustment_factor = 1.3
         # to avoid these railcars being super-bargain cheap, add a cost malus compared to standard railcars (still less than standard engines)
         self.fixed_run_cost_points = 128
-
+        # non-standard cite
+        self._cite = "Dr Constance Speed"
         # Graphics configuration
         if self.gen in [2, 3]:
             self.roof_type = 'pax_mail_ridged'
@@ -834,6 +850,8 @@ class PassengerHSTCabEngineConsist(PassengerEngineConsist):
         self.floating_run_cost_multiplier = 22
         # ...and high fixed (baseline) run costs on this subtype
         self.fixed_run_cost_points = 180 # ! eh this was actually the default value last time I checked
+        # non-standard cite
+        self._cite = "Dr Constance Speed"
 
 
 class PassengerVeryHighSpeedCabEngineConsist(PassengerEngineConsist):
@@ -863,6 +881,8 @@ class PassengerVeryHighSpeedCabEngineConsist(PassengerEngineConsist):
         # train_flag_mu solely used for ottd livery (company colour) selection
         # !! commented out as of July 2019 because the middle engines won't pick this up, which causes inconsistency in the buy menu
         # self.train_flag_mu = True
+        # non-standard cite
+        self._cite = "Dr Constance Speed"
         """
         # !! this type needs new graphics processing and/or template rules if it is to handle opening doors
         # !! box car variant expects symmetry
@@ -911,6 +931,8 @@ class PassengerVeryHighSpeedMiddleEngineConsist(PassengerEngineConsist):
         # prop left in place in case that ever gets changed :P
         # !! commented out as of July 2019 because the middle engines won't pick this up, which causes inconsistency in the buy menu
         # self.train_flag_mu = True
+        # non-standard cite
+        self._cite = "Dr Constance Speed"
         # Graphics configuration
         self.roof_type = 'pax_mail_smooth'
         # 1 livery as can't be flipped, 1 spriterow may be left blank for compatibility with Gestalt (TBC)
@@ -1016,6 +1038,8 @@ class MailEngineRailcarConsist(MailEngineConsist):
         self.allow_flip = True
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
+        # non-standard cite
+        self._cite = "Arabella Unit"
         # Graphics configuration
         if self.gen in [2, 3]:
             self.roof_type = 'pax_mail_ridged'
@@ -1934,6 +1958,8 @@ class PassengerHSTCarConsist(PassengerCarConsistBase):
         self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['hst']
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 0.8 if self.base_track_type == 'NG' else 1.6
+        # non-standard cite
+        self._cite = "Dr Constance Speed"
         # Graphics configuration
         # pax cars only have one consist cargo mapping, which they always default to, whatever the consist cargo is
         # position based variants:

@@ -21,7 +21,6 @@ def main(roster_id):
                      tail_light='very_high_speed_32px_2')
 
     consist.description = """"""
-    consist.cite = """Dr. Constance Speed"""
     consist.foamer_facts = """Alstom Class 390 <i>Pendolino</i>."""
 
     return consist

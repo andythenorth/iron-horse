@@ -23,7 +23,6 @@ def main(roster_id):
                      spriterow_num=0)
 
     consist.description = """I want no epitaphs of profound history and all that type of thing. I contributed - I would hope they would say that, and I would hope somebody liked me."""
-    consist.cite = """Mr. Train"""
     # IRL the quote is Brian Clough
     consist.foamer_facts = """BR Class 14, Clayton DHP1 prototype"""
 

@@ -22,7 +22,6 @@ def main(roster_id):
                      spriterow_num=0)
 
     consist.description = """I've completely rebuilt some Intrepids."""
-    consist.cite = """Mr. Train"""
     consist.foamer_facts = """BR Class 47, Brush Class 57, original TTD UU '47'"""
 
     return consist

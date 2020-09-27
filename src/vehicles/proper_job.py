@@ -21,7 +21,6 @@ def main(roster_id):
                      spriterow_num=0)
 
     consist.description = """For when you need proper engine at proper price. Proper Job."""
-    consist.cite = """Mr. Train"""
     consist.foamer_facts = """BR Standard Class 3, LMS Ivatt Class 2 and GWR 5101/6100 Class <i>Prairie Tanks</i>."""
 
     return consist

@@ -25,7 +25,6 @@ def main(roster_id):
                      spriterow_num=1)
 
     consist.description = """I'm not saying I'm the best engine builder in the business, but I'd be in the top one."""
-    consist.cite = """Mr. Train"""
     consist.foamer_facts = """proposed LMS 'Lemon 4-8-0' freight locomotive, BR Standard Class 9F."""
 
     return consist

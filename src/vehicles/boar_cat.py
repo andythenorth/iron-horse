@@ -21,7 +21,6 @@ def main(roster_id):
                      spriterow_num=0)
 
     consist.description = """"""
-    consist.cite = """Roberto Flange"""
     consist.foamer_facts = """CFD Locotracteur BB-400, CIE F Class, FAUR L45H B-B."""
 
     return consist

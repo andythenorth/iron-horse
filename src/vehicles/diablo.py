@@ -28,7 +28,6 @@ def main(roster_id):
                      spriterow_num=1)
 
     consist.description = """Right happy with the look of these."""
-    consist.cite = """Mr. Train"""
     consist.foamer_facts = """LMS <i>Hughes Crab</i>, BR Standard Class 4 2-6-0."""
 
     return consist
