@@ -540,12 +540,13 @@ class Consist(object):
             if self.weight > 500:
                 utils.echo_message("Consist " + self.id + " has weight > 500t, which is too much")
 
-    def assert_description_and_cite(self):
+    def assert_description_cite_foamer_facts(self):
+        # if these are too noisy, comment them out temporarily
         if self.power > 0:
             if len(self.description) == 0:
                 utils.echo_message("Consist " + self.id + " has no description")
-            #if len(self.cite) == 0:
-                #utils.echo_message("Consist " + self.id + " has no cite")
+            if len(self.cite) == 0:
+                utils.echo_message("Consist " + self.id + " has no cite")
             if len(self.foamer_facts) == 0:
                 utils.echo_message("Consist " + self.id + " has no foamer_facts")
 
@@ -553,7 +554,7 @@ class Consist(object):
     def render(self, templates):
         self.assert_speed()
         self.assert_power()
-        self.assert_description_and_cite()
+        self.assert_description_cite_foamer_facts()
         # templating
         nml_result = ''
         if len(self.units) > 1:
