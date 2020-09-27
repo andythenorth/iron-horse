@@ -19,6 +19,9 @@ def main(roster_id):
                      vehicle_length=4,
                      effect_z_offset=9, # reduce smoke z position to suit NG engine height
                      spriterow_num=0)
+
+    consist.description = """"""
+    consist.cite = """Roberto Flange"""
     consist.foamer_facts = """FAUR L45H B-B, generic narrow-gauge diesel locomotives."""
 
     return consist

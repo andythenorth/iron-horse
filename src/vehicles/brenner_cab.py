@@ -20,6 +20,8 @@ def main(roster_id):
                      chassis='4_axle_solid_express_32px',
                      tail_light='very_high_speed_32px_2')
 
+    consist.description = """"""
+    consist.cite = """Dr. Constance Speed"""
     consist.foamer_facts = """Alstom Class 390 <i>Pendolino</i>."""
 
     return consist

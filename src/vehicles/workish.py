@@ -18,6 +18,9 @@ def main(roster_id):
                      effect_z_offset=11, # reduce smoke z position to suit NG engine height
                      chassis='railcar_ng_24px',
                      tail_light='railcar_24px_1')
+
+    consist.description = """"""
+    consist.cite = """Roberto Flange"""
     consist.foamer_facts = """CFC Autorail Billard, CFC X2000/X5000."""
 
     return consist

@@ -20,6 +20,8 @@ def main(roster_id):
                      tail_light='metro_32px_1',
                      repeat=2)
 
+    consist.description = """"""
+    consist.cite = """Colonel Transit"""
     consist.foamer_facts = """London Underground 1996 Stock."""
 
     return consist

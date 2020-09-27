@@ -20,6 +20,8 @@ def main(roster_id):
                      chassis='railcar_32px',
                      tail_light='railcar_32px_3')
 
+    consist.description = """"""
+    consist.cite = """Arabella Unit"""
     consist.foamer_facts = """BR Class 319, Class 455."""
 
     return consist

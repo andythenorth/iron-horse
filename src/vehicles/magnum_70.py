@@ -23,6 +23,8 @@ def main(roster_id):
                      vehicle_length=4,
                      spriterow_num=0)
 
+    consist.description = """"""
+    consist.cite = """Mr. Train"""
     consist.foamer_facts = """Clayton CB40/CBD80/CBD90."""
 
     return consist

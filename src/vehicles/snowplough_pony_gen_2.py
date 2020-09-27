@@ -13,6 +13,8 @@ def main(roster_id):
                      weight=50,
                      vehicle_length=4)
 
+    consist.description = """Does it ever snow here?  I wouldn't say, but these are waiting just in case."""
+    consist.cite = """Mr. Train"""
     consist.foamer_facts = """LNER / BR Independent Snowploughs"""
 
     return consist
