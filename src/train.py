@@ -518,14 +518,17 @@ class Consist(object):
         # don't like how much content (text) is in code here, but eh
         if self.base_track_type == 'NG':
             cite_name = "Roberto Flange"
-            cite_titles = ["Acting Superintendent of Engines", "Provisional Chief Engineer", "Interim Head of Works", "Transitional General Manager (Traction)"]
+            cite_titles = ["Narrow Gauge Superintendent", "Works Manager (Narrow Gauge)", "Traction Controller, Narrow Gauge Lines"]
         elif self.base_track_type == 'METRO':
             cite_name = "JJ Transit"
-            cite_titles = ["Acting Superintendent of Engines", "Provisional Chief Engineer", "Interim Head of Works", "Transitional General Manager (Traction)"]
+            cite_titles = ["Superintendent (Metro Division)", "Chief Engineer, Mass Mobility Systems"]
         else:
-            if self._cite is not "":
+            if self._cite == "Arabella Unit":
                 cite_name = self._cite
-                cite_titles = ["Acting Superintendent of Engines", "Provisional Chief Engineer", "Interim Head of Works", "Transitional General Manager (Traction)"]
+                cite_titles = ["General Manager (Railcars)", "Senior Engineer, Self-Propelled Traction", "Director, Suburban and Rural Lines"]
+            elif self._cite == "Dr Constance Speed":
+                cite_name = self._cite
+                cite_titles = ["Lead Engineer, High Speed Projects", "Director, Future Traction Concepts", ]
             else:
                 cite_name = "Mr Train"
                 cite_titles = ["Acting Superintendent of Engines", "Provisional Chief Engineer", "Interim Head of Works", "Transitional General Manager (Traction)"]
