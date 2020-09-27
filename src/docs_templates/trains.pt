@@ -83,7 +83,7 @@
                                                 </td>
                                                 <td>${doc_helper.unpack_role_string_for_consist(consist)}</td>
                                                 <td class="date">${consist.intro_date}</td>
-                                                <td class="number">${consist.power} hp</td>
+                                                <td class="number">${doc_helper.power_formatted_for_docs(consist)}</td>
                                                 <td class="number">${consist.speed} mph</td>
                                                 <td>${consist.track_type}</td>
                                                 <td>

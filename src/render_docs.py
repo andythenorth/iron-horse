@@ -353,6 +353,13 @@ class DocHelper(object):
             if consist.id == replacement_consist_id:
                 return self.unpack_name_string(consist)
 
+    def power_formatted_for_docs(self, consist):
+        if consist.power_by_railtype is not None:
+            # assumes RAIL / ELRL, deal with that later if it's a problem later
+            return str(consist.power_by_railtype['RAIL']) + ' hp / ' + str(consist.power_by_railtype['ELRL']) + ' hp'
+        else:
+            return str(consist.power) + ' hp'
+
     def get_props_to_print_in_code_reference(self, subclass):
         props_to_print = {}
         for vehicle in subclass['vehicles']:

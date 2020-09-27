@@ -183,10 +183,7 @@
                                                                         <small style="display:block;">
                                                                             ${base_lang_strings[consist.str_name_suffix] if consist.str_name_suffix is not None else None}
                                                                         </small>
-                                                                        <small>${consist.power} hp</small>
-                                                                        <tal:multi_mode condition="consist.power_by_railtype is not None">
-                                                                            <small> / ${consist.power_by_railtype['ELRL']} hp</small>
-                                                                        </tal:multi_mode>
+                                                                        <small>${doc_helper.power_formatted_for_docs(consist)}</small>
                                                                         <br />
                                                                         <small>${consist.speed} mph</small>
 

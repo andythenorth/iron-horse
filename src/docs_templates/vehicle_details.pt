@@ -137,7 +137,7 @@
                         </tr>
                         <tr>
                             <th>Power</th>
-                            <td>${consist.power} hp</td>
+                            <td>${doc_helper.power_formatted_for_docs(consist)}</td>
                         </tr>
                         <tr>
                             <th>Weight</th>
