@@ -8,7 +8,7 @@ def main(roster_id):
                                            name='Scorcher HST',
                                            role='hst', # quite a specific role, may or may not scale to other rosters
                                            role_child_branch_num=1,
-                                           power=6600,
+                                           power=5850,
                                            intro_date_offset=-10,  # let's be a little bit earlier for this one - keep match to HST coaches
                                            gen=6,
                                            sprites_complete=True)
