@@ -800,7 +800,7 @@ class PassengerEngineLuxuryRailcarConsist(PassengerEngineConsist):
         self.cargo_age_period = 8 * global_constants.CARGO_AGE_PERIOD
         self.buy_cost_adjustment_factor = 1.3
         # to avoid these railcars being super-bargain cheap, add a cost malus compared to standard railcars (still less than standard engines)
-        self.fixed_run_cost_points = 128
+        self.fixed_run_cost_points = 140
         # non-standard cite
         self._cite = "Dr Constance Speed"
         # Graphics configuration

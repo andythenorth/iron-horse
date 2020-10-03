@@ -4,7 +4,17 @@ from train import PassengerLuxuryRailcarTrailerCarConsist, PaxRailcarTrailerCar
 def main():
     #--------------- pony ----------------------------------------------------------------------
 
-    # gen 3 could be added but eh
+    consist = PassengerLuxuryRailcarTrailerCarConsist(roster_id='pony',
+                                                      base_numeric_id=4680,
+                                                      gen=3,
+                                                      subtype='U',
+                                                      intro_date_offset=-5,  # introduce early by design
+                                                      sprites_complete=True)
+
+    consist.add_unit(type=PaxRailcarTrailerCar,
+                     chassis='4_axle_solid_express_32px',
+                     tail_light='railcar_32px_3')
+
 
     consist = PassengerLuxuryRailcarTrailerCarConsist(roster_id='pony',
                                                       base_numeric_id=4540,

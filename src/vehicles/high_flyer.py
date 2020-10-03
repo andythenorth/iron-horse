@@ -8,7 +8,7 @@ def main(roster_id):
                                                   name='High Flyer',
                                                   role='luxury_pax_railcar',
                                                   role_child_branch_num=-1, # joker to hide them from simplified mode
-                                                  power=450,
+                                                  power=840,
                                                   pantograph_type='diamond-single-with-base',
                                                   gen=3,
                                                   intro_date_offset=2,  # introduce later by design

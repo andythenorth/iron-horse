@@ -8,7 +8,7 @@ def main(roster_id):
                                                   name='Bright Country',
                                                   role='luxury_pax_railcar',
                                                   role_child_branch_num=-1, # joker to hide them from simplified mode
-                                                  power=900,
+                                                  power=1240,
                                                   pantograph_type='z-shaped-single-with-base',
                                                   gen=6,
                                                   intro_date_offset=1,  # introduce later by design
