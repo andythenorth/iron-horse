@@ -20,7 +20,7 @@ def main(roster_id):
                      effect_z_offset=9, # reduce smoke z position to suit NG engine height
                      spriterow_num=0)
 
-    consist.description = """"""
+    consist.description = """This diesel engine modernises our narrow gauge lines."""
     consist.foamer_facts = """FAUR L45H B-B, generic narrow-gauge diesel locomotives."""
 
     return consist

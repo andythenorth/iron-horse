@@ -21,7 +21,7 @@ def main(roster_id):
                      effect_z_offset=10, # reduce smoke z position to suit NG engine height
                      spriterow_num=0)
 
-    consist.description = """"""
+    consist.description = """I present you this trusty little engine."""
     consist.foamer_facts = """generic narrow-gauge steam locomotives."""
 
     return consist
