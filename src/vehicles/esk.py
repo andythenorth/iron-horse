@@ -31,6 +31,6 @@ def main(roster_id):
                      spriterow_num=2)
 
     consist.description = """Well it's a big bugger isn't it."""
-    consist.foamer_facts = """ """
+    consist.foamer_facts = """LMS Garratt"""
 
     return consist
