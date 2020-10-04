@@ -18,7 +18,7 @@ def main(roster_id):
                      chassis='railcar_32px',
                      tail_light='railcar_32px_2')
 
-    consist.description = """This is the night mail crossing the border, bringing the cheque and the postal order.""" # WH Auden, The Night Mail
+    consist.description = """"""
     consist.foamer_facts = """BR Class 128, Class 325."""
 
     return consist
