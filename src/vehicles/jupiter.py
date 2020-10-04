@@ -21,7 +21,7 @@ def main(roster_id):
                      chassis='railcar_32px',
                      tail_light='railcar_32px_3')
 
-    consist.description = """"""
+    consist.description = """Just as day is dawning. He picks up all the postbags in his van.""" # Postman Pat Lyrics
     consist.foamer_facts = """BR Class 302, BR Class 325."""
 
     return consist

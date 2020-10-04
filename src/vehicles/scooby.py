@@ -18,7 +18,7 @@ def main(roster_id):
                      chassis='railcar_32px',
                      tail_light='railcar_32px_2')
 
-    consist.description = """Needs a good clean."""
+    consist.description = """Where are you?  We got some work to do now.""" # Scooby Doo theme
     consist.foamer_facts = """BR Class 128/130."""
 
     return consist

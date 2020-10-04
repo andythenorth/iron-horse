@@ -23,7 +23,7 @@ def main(roster_id):
                      chassis='4_axle_solid_express_32px',
                      tail_light='very_high_speed_32px_1')
 
-    consist.description = """"""
+    consist.description = """The Shape of Travel to Come."""
     consist.foamer_facts = """BR InterCity 225 (Class 91), Shinkansen-style distributed traction."""
 
     return consist

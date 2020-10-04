@@ -20,7 +20,7 @@ def main(roster_id):
                      spriterow_num=0,
                      tail_light='hst_32px_1')
 
-    consist.description = """"""
+    consist.description = """Time is everything. Speed is of the essence."""
     consist.foamer_facts = """BR Class 43 (High Speed Train)."""
 
     return consist
