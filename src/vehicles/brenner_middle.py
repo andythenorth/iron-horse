@@ -20,7 +20,7 @@ def main(roster_id):
                      chassis='jacobs_solid_express_32px',
                      repeat=2)
 
-    consist.description = """And you shall know our velocity."""
+    consist.description = """And you shall know this velocity."""
     consist.foamer_facts = """Alstom Class 390 <i>Pendolino</i>."""
 
     return consist

@@ -22,7 +22,7 @@ def main(roster_id):
                      vehicle_length=4,
                      spriterow_num=0)
 
-    consist.description = """"""
+    consist.description = """It's for your little jobs, farms and that."""
     consist.foamer_facts = """GER G15/C53 tramway locomotives."""
 
     return consist
