@@ -571,6 +571,8 @@ class Consist(object):
                 utils.echo_message("Consist " + self.id + " has no description")
             if len(self.foamer_facts) == 0:
                 utils.echo_message("Consist " + self.id + " has no foamer_facts")
+            if '.' in self.foamer_facts:
+                utils.echo_message("Consist " + self.id + " foamer_facts has a '.' in it.")
 
 
     def render(self, templates):
