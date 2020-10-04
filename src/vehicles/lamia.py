@@ -25,6 +25,6 @@ def main(roster_id):
                      spriterow_num=0)
 
     consist.description = """Nice little engine this one."""
-    consist.foamer_facts = """GWR Pannier Tanks, original TTD Kirby Paul Tank"""
+    consist.foamer_facts = """Bagnall saddle tanks"""
 
     return consist
