@@ -5,85 +5,96 @@ Changelog
 2.8.0 Release
 -------------
 
+"We were in the jungle, there were too many of us, we had access to too much money, too much equipment, and little by little we went insane" - Francis Ford Coppola
+
+Not savegame compatible with previous Iron Horse releases.
+
+
+*New and Re-Balanced Engines*
+
+- the engine tech tree has been re-worked
+    - many engines now have one or more equivalent alternates
+        - this is primarily an eye-candy feature, the gameplay difference between alternates is negligible
+        - the new parameter option for simplified gameplay mode will hide the alternates
+    - more engines are available in early game, making early game more interesting
+    - more engines (and more varied engines) are available in late game, which was previously bland
+    - some engines have longer lifespan, and can be used across several generations, particularly express engines moving to a freight role in later years
+    - some gaps in power ranges are filled, especially for electric engines in later game
+- new or significantly changed engines
+    - Avenger, inspired by BR Class 89
+    - Blind Smuir, inspired by LMS Class 5 Black Five, BR Standard 5 Class
+    - Bone, inspired by BR Class 58
+    - Buffalo, inspired by LNWR Webb Coal Tank
+    - Diablo, inspired by LMS Hughes Crab, BR Standard Class 4 2-6-0
+    - Endeavour, inspired by EMD / Progress Rail JT42CWR (Class 66)
+    - Esk, inspired by LMS Garratt
+    - Evolution, inspired by BR Class 47, Brush Class 57, original TTD UU '47'
+    - Goliath, inspired by YEC Janus, Corus Trojan, Corus Hunslet Bo-bo
+    - Intrepid, inspired by BR Class 35 Hymek, Brush Falcon prototype and BRCW Lion prototype
+    - Lamia, inspired by Bagnall saddle tanks
+    - Magnum 70, inspired by Clayton CB40/CBD80/CBD90
+    - Merlion, inspired by BR Class 31
+    - Resilient, inspired by BR Class 47, Brush Class 57, original TTD UU '47'
+    - Shredder, inspired by EMD JT42HW-HS (Class 67)
+    - Streamer, inspired by LNER V2, LNER streamlined B17/A4/P2
+    - Swift, inspired GNR Class C1, Class C2 Klondike
+    - Thunderer, inspired by GWR 2900 Saint Class, GWR 4000 Star Class
+    - Toaster, inspired by GE Class 70 Powerhaul
+    - Vigilant, inspired by GCR Class 8K / ROD 2-8-0, GWR 2800 Class
+    - Viking, inspired by MaK / Vossloh G1206/G1700), Corus Di8, Eurotunnel Class 0001 (Class 21)
+    - Vulcan, inspired by English Electric DP2 prototype
+    - Zebedee, inspired by BR Class 87, Class 86
+- engines with minor changes for balance with the revised tech tree
+    - Blackthorn, Blaze, Carrack, Cheddar Valley, Fury, Girt Licker, Grub, Phoenix, Revolution, Roarer, Scorcher, Screamer, Strongbow, Super Shoebox, Tencendur, Ultra Shoebox
+- renamed
+    - Gwynt is renamed to Hercules
+- removed
+    - Hercules branch freight diesel engine (Hercules name re-used for freight steam engine)
+
+
 *Changes*
 
-- 'Vehicle Parts Van' instead of 'Vehicle Parts Box Car'
-- adjust gen 2A hopper sprite to look older
+- alternative liveries for some company colour combinations
+    - more information in html docs https://grf.farm/
+- increased gen 5 freight speed to 87 mph
+- cap gen 6 freight speed to same 87 mph, as the forced gen 5->6 transition is low yield for gameplay interest, and should be optional
+    - this also means that some gen 5 engines remain relevant for gen 6;
+    - increased gen 6 wagon capacity and reduced tare weight to reward upgrading if players want to take the option
+- increased gen 6 railcar speeds to 99 mph
+- extended model life for Gronk! type engines
+- added a trailer car for High Flyer luxury railcar
+- significantly increased power for all luxury railcars, so they function better with trailers
+- gen 6 Torpedo Car isn't required, stop at gen 5
+- renamed 'Vehicle Parts Box Car' to 'Vehicle Parts Van'
+- adjusted gen 2A hopper sprite to look older
+- use 2CC for high-side dump cars to create contrast with standard dump cars in buy menu
 - improve Growler roof appearance
 - improved Slug and Phoenix sprites
 - tweaks to Dragon sprites
-- use 2CC for high-side dump cars to create contrast with standard dump cars in buy menu
-- add nameplate to Moor Gallop sprite
+- added nameplate to Moor Gallop sprite
 - tweak Onslaught engine room window positions
 - tweak to Roarer sprite
-- move Sunshine Coast pans to front of unit
+- moved Sunshine Coast pans to front of unit
 - Helm Wind looks better with reversed pantograph
-- added / reworked engines
-    - SHREDDER
-    - MERLION
-    - SWIFT
-    - THUNDERER
-    - INTREPID
-    - RESILIENT
-    - REVOLUTION
-    - STREAMER
-    - VULCAN
-    - ZEBEDEE
-    - AVENGER
-    - GOLIATH
-    - (REMOVED) HERCULES
-    - BUFFALO
-    - HERCULES -> GWYNT
-    - DIABLO
-    - VIKING
-    - VIGILANT
-    - BLIND SMUIR
-    - BONE
-    - ENDEAVOUR
-    - ESK
-    - TOASTER
-    - LAMIA
-    - MAGNUM 70
-- MINOR BALANCE CHANGES
-    - ROARER
-    - FURY
-    - REVOLUTION
-    - SUPER SHOEBOX
-    - ULTRA SHOEBOX
-    - TENCENDUR
-    - CARRACK
-    - STRONGBOW
-    - SCREAMER
-    - PHOENIX
-    - BLACKTHORN
-    - CHEDDAR VALLEY
-    - GIRT LICKER
-    - GRUB
-- alternative liveries (FOR WHAT, HOW)
-    - list engines and livery types?
-- simplified gameplay mode (replacing jokers enabled)
-- increase gen 5 freight speed to 87mph (provide as a more worthwhile bump from gen 4), but also cap gen 6 freight speed to same 87mph, as the forced gen 5->6 transition is low yield for gameplay; this also means that some gen 5 engines remain relevant for gen 6; increase gen 6 wagon capacity and reduce tare weight to provide a rationale for gen 6 wagons (tbh this is mostly because the sprites are already all drawn for them)
-- extend model life for Gronk! type engines
-- gen 6 Torpedo Car isn't required, stop at gen 5
+
 
 *Docs*
 
-
-- add Train Whack pointless mini-game
-- set page titles
-- add ids to vehicle details headings for deep linking
-- improved Tech Tree vehicle box border contrast
-- improved vehicle details page (what?)
-- add space between value and unit suffixes (hp, mph etc)
+- added Train Whack pointless mini-game
+- much improved vehicle details page
 - improved ordering of role branches in Tech Tree
+- set titles for docs html pages
+- added anchor links (element ids) to vehicle details headings for deep linking
+- improved Tech Tree vehicle box border contrast
+- added space between value and unit suffixes (hp, mph etc)
+
 
 *Codechanges*
 
-
-- refactor spritelayer_cargo templating
-- refactor handling of vehicle role and role child branch
+- refactored spritelayer_cargo templating
+- refactored handling of vehicle role and role child branch
 - use the generated vehicle image (with caution) in pantograph debug image, not the raw input image, as it contains the rendered roof and chassis, so is a better debug image (can also then be used in docs)
-- re-implement docs image randomiser using json, with nested engines / wagons
+- re-implemented docs image randomiser using json, with nested engines / wagons
 
 
 -------------
