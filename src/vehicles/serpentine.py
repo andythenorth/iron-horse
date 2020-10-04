@@ -20,7 +20,7 @@ def main(roster_id):
                      tail_light='metro_32px_1',
                      repeat=2)
 
-    consist.description = """"""
+    consist.description = """The money feels good. And your life you like it well.""" # The Clash, The Guns of Brixton
     consist.foamer_facts = """London Underground 'Gate' Stock, Standard Stock."""
 
     return consist

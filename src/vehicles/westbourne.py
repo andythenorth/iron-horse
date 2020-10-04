@@ -19,7 +19,7 @@ def main(roster_id):
                      tail_light='metro_32px_1',
                      repeat=2)
 
-    consist.description = """"""
+    consist.description = """And the public wants what the public gets.""" # The Jam, Going Underground
     consist.foamer_facts = """London Underground 1938/1949 Stock."""
 
     return consist
