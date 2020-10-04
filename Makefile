@@ -117,11 +117,8 @@ $(TAR_FILE): $(GRF_FILE) $(HTML_DOCS)
 	mkdir $(PROJECT_VERSIONED_NAME)
 	cp docs/readme.txt $(PROJECT_VERSIONED_NAME)
 	cp docs/changelog.txt $(PROJECT_VERSIONED_NAME)
-	cp $(GRF_FILE) $(PROJECT_VERSIONED_NAME)
-    # bananas won't accept license.txt in a tar, so make a dedicated bananas tar
-	$(MK_ARCHIVE) --tar --output=bananas-dist-$(TAR_FILE) $(PROJECT_VERSIONED_NAME)
-	# we do want license.txt for general distribution, so make another tar
 	cp docs/license.txt $(PROJECT_VERSIONED_NAME)
+	cp $(GRF_FILE) $(PROJECT_VERSIONED_NAME)
 	$(MK_ARCHIVE) --tar --output=$(TAR_FILE) $(PROJECT_VERSIONED_NAME)
 	# delete the intermediate dir
 	rm -r $(PROJECT_VERSIONED_NAME)
