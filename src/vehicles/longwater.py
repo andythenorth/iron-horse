@@ -20,7 +20,7 @@ def main(roster_id):
                      tail_light='metro_32px_1',
                      repeat=2)
 
-    consist.description = """The moles who bury themselves, hidden from society.""" # B-Movie
+    consist.description = """Do they bury themselves? Hidden from society?"""
     consist.foamer_facts = """London Underground 'Gate' Stock, Standard Stock."""
 
     return consist

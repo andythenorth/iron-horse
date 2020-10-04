@@ -20,7 +20,7 @@ def main(roster_id):
                      tail_light='metro_32px_1',
                      repeat=2)
 
-    consist.description = """And after all this, won't you give me a smile?""" # The Clash, London Calling
+    consist.description = """Was the train door jammed? Was the time right?"""
     consist.foamer_facts = """London Underground 1996 Stock."""
 
     return consist

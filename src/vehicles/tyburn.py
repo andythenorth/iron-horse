@@ -20,7 +20,7 @@ def main(roster_id):
                      tail_light='metro_32px_1',
                      repeat=2)
 
-    consist.description = """Moles live in holes underground, they can't be found.""" # B-Movie
+    consist.description = """Do moles live in holes underground? Can they be found?"""
     consist.foamer_facts = """London Underground 1938/1949 Stock."""
 
     return consist

@@ -21,7 +21,7 @@ def main(roster_id):
                      tail_light='metro_32px_1',
                      repeat=2)
 
-    consist.description = """Hate to stand out in the crowd, whispering occasionally.""" # B-Movie
+    consist.description = """Do they whisper occasionally?"""
     consist.foamer_facts = """London Underground 1996 Stock."""
 
     return consist
