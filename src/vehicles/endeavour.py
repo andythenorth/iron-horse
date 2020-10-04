@@ -21,6 +21,7 @@ def main(roster_id):
     consist.add_unit(type=DieselEngineUnit,
                      weight=125,
                      vehicle_length=8,
+                     effect_offsets=[(1, 0)],
                      spriterow_num=0)
 
     consist.description = """Cut-price version of the Cheddar Valley. Cheaper to buy. Cheaper to run. Less power mind you."""

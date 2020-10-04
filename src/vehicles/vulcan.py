@@ -20,7 +20,7 @@ def main(roster_id):
     consist.add_unit(type=DieselEngineUnit,
                      weight=105,
                      vehicle_length=8,
-                     effect_offsets=[(-1, 0), (1, 0)], # double the smoke eh?
+                     effect_offsets=[(0, 1), (0, -1)], # double the smoke eh?
                      spriterow_num=0)
 
     consist.description = """These aren't bad at all. Clever electronics they tell me."""

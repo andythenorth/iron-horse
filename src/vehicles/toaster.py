@@ -19,6 +19,7 @@ def main(roster_id):
     consist.add_unit(type=DieselEngineUnit,
                      weight=128, # weight reduced from 140 to nerf run cost down :P
                      vehicle_length=8,
+                     effect_offsets=[(1, 0)],
                      spriterow_num=0)
 
     consist.description = """I've heard these might catch fire, but we're getting them cheap."""
