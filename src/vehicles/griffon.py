@@ -22,6 +22,6 @@ def main(roster_id):
                      spriterow_num=0)
 
     consist.description = """Kelpie were right good, this is the rebuilt version."""
-    consist.foamer_facts = """BR Class 33."""
+    consist.foamer_facts = """BR Class 33"""
 
     return consist

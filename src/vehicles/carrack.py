@@ -25,6 +25,6 @@ def main(roster_id):
                      spriterow_num=1)
 
     consist.description = """It's not the biggest, but there's nowt wrong wi this one."""
-    consist.foamer_facts = """Midland Railway 483 Class, GWR <i>City</i> 3700 Class, generic 4-4-0 locomotives."""
+    consist.foamer_facts = """Midland Railway 483 Class, GWR <i>City</i> 3700 Class, generic 4-4-0 locomotives"""
 
     return consist

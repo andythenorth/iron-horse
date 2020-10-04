@@ -20,6 +20,6 @@ def main(roster_id):
                      tail_light='railcar_24px_1')
 
     consist.description = """A better railcar, for a new narrow-gauge century."""
-    consist.foamer_facts = """CFC X2000/X5000, CFD Autorails."""
+    consist.foamer_facts = """CFC X2000/X5000, CFD Autorails"""
 
     return consist

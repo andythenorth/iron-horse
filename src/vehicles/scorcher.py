@@ -21,6 +21,6 @@ def main(roster_id):
                      tail_light='hst_32px_1')
 
     consist.description = """Power is of the essence. Faster is everything."""
-    consist.foamer_facts = """BR Class 43 (High Speed Train), life-extended with new primer mover."""
+    consist.foamer_facts = """BR Class 43 (High Speed Train), life-extended with new primer mover"""
 
     return consist

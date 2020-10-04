@@ -21,6 +21,6 @@ def main(roster_id):
                      spriterow_num=0)
 
     consist.description = """Solid piece of kit these."""
-    consist.foamer_facts = """Newag Griffin, Bombardier Traxx 2, Stadler Euro 4001, Siemens EuroRunner."""
+    consist.foamer_facts = """Newag Griffin, Bombardier Traxx 2, Stadler Euro 4001, Siemens EuroRunner"""
 
     return consist

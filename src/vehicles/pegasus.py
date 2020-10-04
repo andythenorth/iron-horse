@@ -25,6 +25,6 @@ def main(roster_id):
                      spriterow_num=1)
 
     consist.description = """A right big'un from Mr. Gresley. Put these in your pipe and smoke it."""
-    consist.foamer_facts = """LNER P2."""
+    consist.foamer_facts = """LNER P2"""
 
     return consist

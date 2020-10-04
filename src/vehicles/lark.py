@@ -21,6 +21,6 @@ def main(roster_id):
                      spriterow_num=0)
 
     consist.description = """These'll do right nicely for small lines.  I stole the design from Mr. Adams, but I won't tell him if you won't."""
-    consist.foamer_facts = """LSWR 415 Class <i>Radial Tank</i>."""
+    consist.foamer_facts = """LSWR 415 Class <i>Radial Tank</i>"""
 
     return consist

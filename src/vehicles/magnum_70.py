@@ -24,6 +24,6 @@ def main(roster_id):
                      spriterow_num=0)
 
     consist.description = """Even Gronks don't last forever."""
-    consist.foamer_facts = """Clayton CB40/CBD80/CBD90."""
+    consist.foamer_facts = """Clayton CB40/CBD80/CBD90"""
 
     return consist

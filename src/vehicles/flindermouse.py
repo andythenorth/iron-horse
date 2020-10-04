@@ -21,6 +21,6 @@ def main(roster_id):
                      repeat=2)
 
     consist.description = """We're giving electrics a go for freight.  Don't right know if they'll catch on, but they can pull, I give em that."""
-    consist.foamer_facts = """NER EF1."""
+    consist.foamer_facts = """NER EF1"""
 
     return consist

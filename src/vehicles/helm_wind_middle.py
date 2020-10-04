@@ -21,6 +21,6 @@ def main(roster_id):
                      repeat=2)
 
     consist.description = """Can we get there faster? That's what drives me."""
-    consist.foamer_facts = """BR InterCity 225 (Mk4 Coaches)), Shinkansen-style distributed traction."""
+    consist.foamer_facts = """BR InterCity 225 (Mk4 Coaches)), Shinkansen-style distributed traction"""
 
     return consist

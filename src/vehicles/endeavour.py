@@ -25,6 +25,6 @@ def main(roster_id):
                      spriterow_num=0)
 
     consist.description = """Cut-price version of the Cheddar Valley. Cheaper to buy. Cheaper to run. Less power mind you."""
-    consist.foamer_facts = """EMD / Progress Rail JT42CWR (Class 66)."""
+    consist.foamer_facts = """EMD / Progress Rail JT42CWR (Class 66)"""
 
     return consist

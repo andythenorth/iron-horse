@@ -19,6 +19,6 @@ def main(roster_id):
                      spriterow_num=0)
 
     consist.description = """The Slugs were right knackered, so we've put a new engine in to make this."""
-    consist.foamer_facts = """Class 37, re-engineered with new prime mover."""
+    consist.foamer_facts = """Class 37, re-engineered with new prime mover"""
 
     return consist

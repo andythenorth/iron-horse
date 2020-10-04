@@ -20,6 +20,6 @@ def main(roster_id):
                      spriterow_num=0)
 
     consist.description = """I've fitted a bigger engine into the Grid.  Still not bad at all."""
-    consist.foamer_facts = """GBRF Class 69 (re-engineered BR Class 56)."""
+    consist.foamer_facts = """GBRF Class 69 (re-engineered BR Class 56)"""
 
     return consist

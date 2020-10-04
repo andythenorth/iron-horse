@@ -22,6 +22,6 @@ def main(roster_id):
                      spriterow_num=0)
 
     consist.description = """I didn't do these, we've shipped them in. On ships like. On the sea. They pull well mind you."""
-    consist.foamer_facts = """SR Z class, SR USA class (USATC S100 Class)."""
+    consist.foamer_facts = """SR Z class, SR USA class (USATC S100 Class)"""
 
     return consist

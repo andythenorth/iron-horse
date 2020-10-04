@@ -21,7 +21,7 @@ def main(roster_id):
                      spriterow_num=0)
 
     consist.description = """Larks were getting a bit past it.  These are right well balanced."""
-    consist.foamer_facts = """GWR 4500 Class <i>Prairie Tank</i>."""
+    consist.foamer_facts = """GWR 4500 Class <i>Prairie Tank</i>"""
 
 
     return consist

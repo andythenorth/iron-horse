@@ -22,6 +22,6 @@ def main(roster_id):
                      tail_light='railcar_32px_3')
 
     consist.description = """A new generation of mail and express freight haulage."""
-    consist.foamer_facts = """BR Class 302, BR Class 325."""
+    consist.foamer_facts = """BR Class 302, BR Class 325"""
 
     return consist

@@ -20,6 +20,6 @@ def main(roster_id):
                      tail_light='railcar_32px_3')
 
     consist.description = """All Pullman Electric Express."""
-    consist.foamer_facts = """SR 5-BEL <i>Brighton Belle</i>."""
+    consist.foamer_facts = """SR 5-BEL <i>Brighton Belle</i>"""
 
     return consist

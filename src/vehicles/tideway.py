@@ -22,6 +22,6 @@ def main(roster_id):
                      repeat=2)
 
     consist.description = """Do they whisper occasionally?"""
-    consist.foamer_facts = """London Underground 1996 Stock."""
+    consist.foamer_facts = """London Underground 1996 Stock"""
 
     return consist

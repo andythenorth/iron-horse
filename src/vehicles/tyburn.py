@@ -21,6 +21,6 @@ def main(roster_id):
                      repeat=2)
 
     consist.description = """Do moles live in holes underground? Can they be found?"""
-    consist.foamer_facts = """London Underground 1938/1949 Stock."""
+    consist.foamer_facts = """London Underground 1938/1949 Stock"""
 
     return consist

@@ -23,6 +23,6 @@ def main(roster_id):
                      spriterow_num=0)
 
     consist.description = """A right big fast diesel hydraulic this one is."""
-    consist.foamer_facts = """BR Class 52 <i>Western</i>, BR Class 42/43 <i>Warship</i>."""
+    consist.foamer_facts = """BR Class 52 <i>Western</i>, BR Class 42/43 <i>Warship</i>"""
 
     return consist

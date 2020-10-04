@@ -22,6 +22,6 @@ def main(roster_id):
                      spriterow_num=0)
 
     consist.description = """These were heavy on the track, but we had em back and fitted extra springs."""
-    consist.foamer_facts = """BR Class 87, Class 86."""
+    consist.foamer_facts = """BR Class 87, Class 86"""
 
     return consist

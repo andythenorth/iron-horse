@@ -21,6 +21,6 @@ def main(roster_id):
                      spriterow_num=0)
 
     consist.description = """A very powerful upgrade for our narrow gauge trains."""
-    consist.foamer_facts = """CFD Locotracteur BB-400, CIE F Class, FAUR L45H B-B."""
+    consist.foamer_facts = """CFD Locotracteur BB-400, CIE F Class, FAUR L45H B-B"""
 
     return consist

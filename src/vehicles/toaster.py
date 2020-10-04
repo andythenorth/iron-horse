@@ -23,6 +23,6 @@ def main(roster_id):
                      spriterow_num=0)
 
     consist.description = """I've heard these might catch fire, but we're getting them cheap."""
-    consist.foamer_facts = """GE Class 70 <i>Powerhaul</i>."""
+    consist.foamer_facts = """GE Class 70 <i>Powerhaul</i>"""
 
     return consist

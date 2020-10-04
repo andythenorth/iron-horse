@@ -21,6 +21,6 @@ def main(roster_id):
                      spriterow_num=0)
 
     consist.description = """Looks like a cheese to me, goes alright though."""
-    consist.foamer_facts = """proposed Bombardier Traxx P200, various electric locomotives from Stadler, Siemens, Adtranz."""
+    consist.foamer_facts = """proposed Bombardier Traxx P200, various electric locomotives from Stadler, Siemens, Adtranz"""
 
     return consist

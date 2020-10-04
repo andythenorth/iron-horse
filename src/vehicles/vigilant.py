@@ -25,6 +25,6 @@ def main(roster_id):
                      spriterow_num=1)
 
     consist.description = """It's a big engine, it cost a lot of brass, get it to work."""
-    consist.foamer_facts = """GCR Class 8K / ROD 2-8-0, GWR 2800 Class."""
+    consist.foamer_facts = """GCR Class 8K / ROD 2-8-0, GWR 2800 Class"""
 
     return consist

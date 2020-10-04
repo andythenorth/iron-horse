@@ -21,6 +21,6 @@ def main(roster_id):
                      spriterow_num=0)
 
     consist.description = """This diesel engine modernises our narrow gauge lines."""
-    consist.foamer_facts = """FAUR L45H B-B, generic narrow-gauge diesel locomotives."""
+    consist.foamer_facts = """FAUR L45H B-B, generic narrow-gauge diesel locomotives"""
 
     return consist

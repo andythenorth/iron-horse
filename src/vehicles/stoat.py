@@ -22,6 +22,6 @@ def main(roster_id):
                      spriterow_num=0)
 
     consist.description = """Nippy little bugger."""
-    consist.foamer_facts = """NER ES1, Metropolitan Railway camel-back and box-cab locomotives, generic steeple-cab locomotives."""
+    consist.foamer_facts = """NER ES1, Metropolitan Railway camel-back and box-cab locomotives, generic steeple-cab locomotives"""
 
     return consist

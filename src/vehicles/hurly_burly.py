@@ -24,6 +24,6 @@ def main(roster_id):
                      spriterow_num=0)
 
     consist.description = """By eck, it's a big electric.  Better put some pennies in the meter."""
-    consist.foamer_facts = """NER Class EE1."""
+    consist.foamer_facts = """NER Class EE1"""
 
     return consist

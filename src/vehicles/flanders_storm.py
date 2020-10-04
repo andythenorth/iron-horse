@@ -24,6 +24,6 @@ def main(roster_id):
                      spriterow_num=0)
 
     consist.description = """This is a right proper engine.  Does work enough for two."""
-    consist.foamer_facts = """BR Class 92."""
+    consist.foamer_facts = """BR Class 92"""
 
     return consist

@@ -23,6 +23,6 @@ def main(roster_id):
                      spriterow_num=0)
 
     consist.description = """We were wanting a small engine for coal and that, this will do right well."""
-    consist.foamer_facts = """LNWR Webb <i>Coal Tank</i>."""
+    consist.foamer_facts = """LNWR Webb <i>Coal Tank</i>"""
 
     return consist

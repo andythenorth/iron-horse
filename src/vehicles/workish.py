@@ -20,6 +20,6 @@ def main(roster_id):
                      tail_light='railcar_24px_1')
 
     consist.description = """A reliable way to move mail, supplies and express freight. Goats are not however, at this time, permitted."""
-    consist.foamer_facts = """CFC Autorail Billard, CFC X2000/X5000."""
+    consist.foamer_facts = """CFC Autorail Billard, CFC X2000/X5000"""
 
     return consist

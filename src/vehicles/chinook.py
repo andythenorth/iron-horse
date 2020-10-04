@@ -25,6 +25,6 @@ def main(roster_id):
                      spriterow_num=1)
 
     consist.description = """I send these out in twos."""
-    consist.foamer_facts = """BR Class 20, uprated EE 8CSVT prime mover."""
+    consist.foamer_facts = """BR Class 20, uprated EE 8CSVT prime mover"""
 
     return consist

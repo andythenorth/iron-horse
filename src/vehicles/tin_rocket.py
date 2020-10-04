@@ -19,6 +19,6 @@ def main(roster_id):
                      tail_light='railcar_32px_3')
 
     consist.description = """Fast quiet trains for a new era. No more rattling Slammers."""
-    consist.foamer_facts = """BR Class 153/155/156/158 <i>Sprinters</i>."""
+    consist.foamer_facts = """BR Class 153/155/156/158 <i>Sprinters</i>"""
 
     return consist

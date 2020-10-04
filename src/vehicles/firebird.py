@@ -21,6 +21,6 @@ def main(roster_id):
                      tail_light='hst_32px_1')
 
     consist.description = """The Train of Today."""
-    consist.foamer_facts = """BR <i>Blue Pullman</i>."""
+    consist.foamer_facts = """BR <i>Blue Pullman</i>"""
 
     return consist

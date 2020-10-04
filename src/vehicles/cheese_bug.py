@@ -22,6 +22,6 @@ def main(roster_id):
                      spriterow_num=0)
 
     consist.description = """I present you this trusty little engine."""
-    consist.foamer_facts = """generic narrow-gauge steam locomotives."""
+    consist.foamer_facts = """generic narrow-gauge steam locomotives"""
 
     return consist

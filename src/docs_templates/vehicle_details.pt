@@ -313,7 +313,7 @@
                     </tbody>
                 </table>
                 <h3 id="foamer-facts">Foamer Facts</h3>
-                <p>Inspired by ${structure: consist.foamer_facts}</p>
+                <p>Inspired by ${structure: consist.foamer_facts}.</p>
 
                 <hr />
                 <h3 id="tech-tree">Tech Tree</h3>

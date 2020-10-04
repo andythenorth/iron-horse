@@ -24,6 +24,6 @@ def main(roster_id):
                      tail_light='very_high_speed_32px_1')
 
     consist.description = """Can we get there faster? That's what drives me."""
-    consist.foamer_facts = """BR InterCity 225 (Class 91), Shinkansen-style distributed traction."""
+    consist.foamer_facts = """BR InterCity 225 (Class 91), Shinkansen-style distributed traction"""
 
     return consist

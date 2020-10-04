@@ -26,6 +26,6 @@ def main(roster_id):
                      spriterow_num=1)
 
     consist.description = """Lots of these about, but ours are best uns."""
-    consist.foamer_facts = """GWR 3201 <i>Stella</i> Class, generic 2-4-0 locomotives."""
+    consist.foamer_facts = """GWR 3201 <i>Stella</i> Class, generic 2-4-0 locomotives"""
 
     return consist
