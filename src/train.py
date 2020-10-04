@@ -576,7 +576,6 @@ class Consist(object):
     def render(self, templates):
         self.assert_speed()
         self.assert_power()
-        self.assert_description_foamer_facts()
         # templating
         nml_result = ''
         if len(self.units) > 1:

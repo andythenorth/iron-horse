@@ -595,6 +595,7 @@ def main():
     # render vehicle details
     for roster in iron_horse.registered_rosters:
         for consist in roster.engine_consists:
+            consist.assert_description_foamer_facts()
             render_docs_vehicle_details(consist, docs_output_path, consists)
 
     # process images for use in docs
