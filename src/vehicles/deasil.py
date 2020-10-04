@@ -18,7 +18,7 @@ def main(roster_id):
                      chassis='railcar_32px',
                      tail_light='railcar_32px_1')
 
-    consist.description = """"""
+    consist.description = """Fast quiet trains for a new era. No more noisy steam engines."""
     consist.foamer_facts = """LNER / Armstrong-Whitworth Railcars."""
 
     return consist
