@@ -112,14 +112,17 @@ $(GRF_FILE): $(GRAPHICS_TARGET) $(NFO_FILE)
 	mv $(PROJECT_NAME).grf $(GRF_FILE)
 
 $(TAR_FILE): $(GRF_FILE) $(HTML_DOCS)
-# the goal here is a sparse tar that bananas will accept; bananas can't accept html docs etc, hence they're not included
-	# create an intermediate dir, and copy in what we need for bananas
+# the goal here is a sparse tar for distribution
+	# create an intermediate dir, and copy in what we need
 	mkdir $(PROJECT_VERSIONED_NAME)
 	cp docs/readme.txt $(PROJECT_VERSIONED_NAME)
-	cp docs/license.txt $(PROJECT_VERSIONED_NAME)
 	cp docs/changelog.txt $(PROJECT_VERSIONED_NAME)
 	cp $(GRF_FILE) $(PROJECT_VERSIONED_NAME)
-	$(MK_ARCHIVE) --tar --output=$(TAR_FILE) --base=$(PROJECT_VERSIONED_NAME) $(PROJECT_VERSIONED_NAME)
+    # bananas won't accept license.txt in a tar, so make a dedicated bananas tar
+	$(MK_ARCHIVE) --tar --output=bananas-dist-$(TAR_FILE) $(PROJECT_VERSIONED_NAME)
+	# we do want license.txt for general distribution, so make another tar
+	cp docs/license.txt $(PROJECT_VERSIONED_NAME)
+	$(MK_ARCHIVE) --tar --output=$(TAR_FILE) $(PROJECT_VERSIONED_NAME)
 	# delete the intermediate dir
 	rm -r $(PROJECT_VERSIONED_NAME)
 
