@@ -4,3 +4,104 @@
 # this is the default translation and is en-gb
 STR_GRF_DESCRIPTION                                             :Licence: {SILVER}GPL v2{}{BLACK}
 
+STR_PARAM_ADJUST_VEHICLE_CAPACITY                               :Capacité des trains
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :Dérisoire
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Admirable
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Démesurée
+STR_PARAM_SIMPLIFIED_GAMEPLAY                                   :Gameplay simplifié
+STR_PARAM_SIMPLIFIED_GAMEPLAY_DESC                              :Jouer avec une liste de locomotives et de wagons réduite à l'essentiel. Certains véhicules (comme le chasse-neige, les voitures-pilotes et les locomotives très lentes) ne seront pas disponibles.
+STR_PARAM_ROSTER                                                :Assortiment
+STR_PARAM_ROSTER_DESC                                           :Choisir avec quelle série de trains jouer.
+STR_PARAM_ROSTER_OPTION_0                                       :Le poney de fer
+STR_PARAM_ROSTER_OPTION_1                                       :Le lama de fer
+STR_PARAM_ROSTER_OPTION_2                                       :l'antilope de fer
+
+# keep these alphabetised, easier
+STR_NAME_SUFFIX_DIESEL                                          :Diesel
+STR_NAME_SUFFIX_ELECTRIC                                        :Électrique
+STR_NAME_SUFFIX_ELECTRODIESEL                                   :Électro-Diesel
+STR_NAME_SUFFIX_METRO                                           :Métro
+STR_NAME_SUFFIX_STEAM                                           :Vapeur
+
+# size suffixes
+STR_NAME_SUFFIX_SMALL                                           :petit
+STR_NAME_SUFFIX_MEDIUM                                          :moyen
+STR_NAME_SUFFIX_LARGE                                           :grand
+
+# wagon class suffixes
+# as of Jan 2019 these are switched from en-us to en-gb
+# the en-us translation should be updated appropriately when making changes here
+# !! consider splitting strings per roster?? A US caboose is still a 'caboose' in en-gb, not a brake van
+STR_NAME_SUFFIX_ALIGNMENT_CAR                                   :Fourgon d'alignement
+STR_NAME_SUFFIX_BOX_CAR                                         :Fourgon
+STR_NAME_SUFFIX_BULKHEAD_FLAT_CAR                               :Wagon plat à cloison
+STR_NAME_SUFFIX_CABOOSE_CAR                                     :Fourgon frein
+STR_NAME_SUFFIX_CEMENT_SILO_CAR                                 :Wagon cimentier
+STR_NAME_SUFFIX_CARBON_BLACK_HOPPER_CAR                         :Trémie à noir de carbone
+STR_NAME_SUFFIX_COIL_CAR                                        :Wagon porte-bobines
+STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Wagon-trémie couvert
+STR_NAME_SUFFIX_CRYO_TANK_CAR                                   :Citerne cryogénique
+STR_NAME_SUFFIX_CURTAIN_SIDE_BOX_CAR                            :Wagon à rideau latéral
+STR_NAME_SUFFIX_DUMP_CAR                                        :Wagon à minerai
+STR_NAME_SUFFIX_DUMP_CAR_HIGH_SIDE                              :Wagon haut à minerai
+STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Citerne alimentaire
+STR_NAME_SUFFIX_EXPRESS_CAR                                     :Fourgon express
+STR_NAME_SUFFIX_EXPRESS_INTERMODAL_CAR                          :Wagon porte-container express
+STR_NAME_SUFFIX_FLAT_CAR                                        :Wagon plat
+STR_NAME_SUFFIX_FRUIT_VEG_CAR                                   :Fourgon à fruits et légumes
+STR_NAME_SUFFIX_GRAIN_HOPPER_CAR                                :Wagon céréalier
+STR_NAME_SUFFIX_HOPPER_CAR                                      :Wagon-trémie
+STR_NAME_SUFFIX_HST_PASSENGER_CAR                               :Voiture
+STR_NAME_SUFFIX_INTERMODAL_CAR                                  :Wagon porte-container
+STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Wagon à bétail
+STR_NAME_SUFFIX_LUXURY_PASSENGER_CAR                            :Voiture de luxe
+STR_NAME_SUFFIX_LUXURY_PASSENGER_RAILCAR_TRAILER_CAR            :Remorque autorail de luxe
+STR_NAME_SUFFIX_MAIL_CAR                                        :Fourgon postal
+STR_NAME_SUFFIX_OPEN_CAR                                        :Wagon-tombereau
+STR_NAME_SUFFIX_ORE_HOPPER_CAR                                  :Trémie à minerai
+STR_NAME_SUFFIX_PASSENGER_CAR                                   :Voiture
+STR_NAME_SUFFIX_PASSENGER_RAILCAR_TRAILER_CAR                   :Remorque autorail
+STR_NAME_SUFFIX_PELLET_HOPPER_CAR                               :Trémie à granulés
+STR_NAME_SUFFIX_PLATE_CAR                                       :Wagon porte-tôles
+STR_NAME_SUFFIX_PRODUCT_TANK_CAR                                :Citerne à produits
+STR_NAME_SUFFIX_REEFER_CAR                                      :Wagon frigorifique
+STR_NAME_SUFFIX_ROCK_HOPPER_CAR                                 :Trémie à pierres
+STR_NAME_SUFFIX_SILO_CAR                                        :Wagon-silo
+STR_NAME_SUFFIX_SLAG_LADLE_CAR                                  :Wagon-poche
+STR_NAME_SUFFIX_SLIDING_WALL_CAR                                :Wagon à parois coulissantes
+STR_NAME_SUFFIX_SCRAP_METAL_CAR                                 :Wagon à ferraille
+STR_NAME_SUFFIX_STAKE_CAR                                       :Wagon à ranchers
+STR_NAME_SUFFIX_TANK_CAR                                        :Wagon-citerne
+STR_NAME_SUFFIX_TARPAULIN_CAR                                   :Wagon bâché
+STR_NAME_SUFFIX_TORPEDO_CAR                                     :Wagon-torpille
+STR_NAME_SUFFIX_VEHICLE_PARTS_BOX_CAR                           :Wagon à carrosseries
+STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Wagon porte-véhicule
+
+# buy menu wrappers
+STR_BUY_MENU_WRAPPER_ONE_SUBSTR                                 :{STRING}
+STR_BUY_MENU_WRAPPER_TWO_SUBSTR                                 :{STRING}{}{STRING}
+
+# role information for buy menu
+STR_ROLE                                                        :{BLACK}Rôle: {GOLD}{STRING}
+STR_ROLE_DRIVING_CAB                                            :Voiture-pilote
+STR_ROLE_FREIGHT                                                :Fret
+STR_ROLE_GENERAL_PURPOSE                                        :Universel
+STR_ROLE_GENERAL_PURPOSE_EXPRESS                                :Universel / Express
+STR_ROLE_HST                                                    :Grande vitesse
+STR_ROLE_LOLZ                                                   :Blague
+STR_ROLE_METRO                                                  :Transport de masse urbain
+STR_ROLE_VERY_HIGH_SPEED                                        :Très grande vitesse
+
+# assumes only diesel and electric currently
+STR_POWER_BY_RAILTYPE                                           :{BLACK}Puissance (Diesel){NBSP}: {GOLD}{POWER} {}{BLACK}Puissance (Électrique){NBSP}: {GOLD}{POWER}
+
+# distributed power (dedicated wagons add power)
+STR_WAGONS_ADD_POWER_CAB                                        :Puissance (Distribuée): {GOLD}{POWER} par {STRING} unité attachée
+STR_WAGONS_ADD_POWER_MIDDLE                                     :Puissance (Distribuée): {GOLD}{POWER} attaché à une unité {STRING}
+
+# other buy menu hints
+STR_BUY_MENU_HINT_DRIVING_CAB                                   :{BLACK}Placer à l'avant ou à l'arrière du train, avec au moins une locomotive à l'autre extrémité
+
+# project management
+STR_SPRITES_COMPLETE                                            :{}Sprites terminés: {GOLD}Ouaip
+STR_SPRITES_INCOMPLETE                                          :{}Sprites terminés: {GOLD}Nan
