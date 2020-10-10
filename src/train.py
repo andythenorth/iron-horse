@@ -2739,37 +2739,6 @@ class Train(object):
         return nml_result
 
 
-class SteamEngineUnit(Train):
-    """
-    Unit for a steam engine, with smoke
-    """
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.engine_class = 'ENGINE_CLASS_STEAM'
-        self.effects = {'default': ['EFFECT_SPAWN_MODEL_STEAM', 'EFFECT_SPRITE_STEAM']}
-        self.consist.str_name_suffix = 'STR_NAME_SUFFIX_STEAM'
-        self.default_effect_z_offset = 13 # optimised for Pony steam trains
-        self._symmetry_type = 'asymmetric'  # assume all steam engines are asymmetric
-
-    @property
-    def default_effect_offsets(self):
-        # force steam engine smoke to front by default, can also over-ride per unit for more precise positioning
-        return [(1 + int(math.floor(-0.5 * self.vehicle_length)), 0)]
-
-
-class SteamEngineTenderUnit(Train):
-    """
-    Unit for a steam engine tender.
-    Arguably this class is pointless, as it is just passthrough.
-    """
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        # assume all steam engine tenders are asymmetric
-        self._symmetry_type = 'asymmetric'
-
-
 class CabbageDVTUnit(Train):
     """
     Unit for a driving cab (DVT / Cabbage).
@@ -2867,6 +2836,29 @@ class ElectricEngineUnit(Train):
         self._symmetry_type = kwargs.get('symmetry_type', 'asymmetric')
 
 
+class ElectricHighSpeedPaxUnit(Train):
+    """
+    Unit for high-speed, high-power pax electric train
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.consist.requires_electric_rails = True
+        self.engine_class = 'ENGINE_CLASS_ELECTRIC'
+        self.effects = {'default': ['EFFECT_SPAWN_MODEL_ELECTRIC', 'EFFECT_SPRITE_ELECTRIC']}
+        self.consist.str_name_suffix = 'STR_NAME_SUFFIX_ELECTRIC'
+        # the cab magic won't work unless it's asymmetrical eh? :P
+        self._symmetry_type = 'asymmetric'
+        # magic to set high speed pax car capacity subject to length
+        # uses a value in between pax and lux pax; this won't work with double deck high speed in future, extend a kwarg then if needed
+        # use a conditional so that some cab cars can set capacity 0
+        if kwargs.get('capacity', None) is not None:
+            self.capacity = kwargs['capacity']
+        else:
+            base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
+            self.capacity = int(self.vehicle_length * base_capacity * 0.875)
+
+
 class ElectroDieselEngineUnit(Train):
     """
     Unit for a bi-mode Locomotive - operates on electrical power or diesel.
@@ -2943,6 +2935,18 @@ class ElectricRailcarBaseUnit(Train):
         self._symmetry_type = 'asymmetric'
 
 
+class ElectricLuxuryRailcarPaxUnit(ElectricRailcarBaseUnit):
+    """
+    Unit for a luxury pax electric railcar.  Just a sparse subclass to set capacity.
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # magic to set capacity subject to length
+        base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
+        self.capacity = int(self.vehicle_length * base_capacity * 0.75)
+
+
 class ElectricRailcarMailUnit(ElectricRailcarBaseUnit):
     """
     Unit for a mail electric railcar.  Just a sparse subclass to set capacity.
@@ -2973,39 +2977,21 @@ class ElectricRailcarPaxUnit(ElectricRailcarBaseUnit):
         self.consist.docs_image_spriterow = self.buy_menu_spriterow_num # frankly hax at this point :|
 
 
-class ElectricLuxuryRailcarPaxUnit(ElectricRailcarBaseUnit):
+class MetroUnit(Train):
     """
-    Unit for a luxury pax electric railcar.  Just a sparse subclass to set capacity.
-    """
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        # magic to set capacity subject to length
-        base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
-        self.capacity = int(self.vehicle_length * base_capacity * 0.75)
-
-
-class ElectricHighSpeedPaxUnit(Train):
-    """
-    Unit for high-speed, high-power pax electric train
+    Unit for an electric metro train, with high loading speed.
     """
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.consist.requires_electric_rails = True
+        kwargs['consist'].base_track_type = 'METRO'
+        self.loading_speed_multiplier = 2
         self.engine_class = 'ENGINE_CLASS_ELECTRIC'
         self.effects = {'default': ['EFFECT_SPAWN_MODEL_ELECTRIC', 'EFFECT_SPRITE_ELECTRIC']}
-        self.consist.str_name_suffix = 'STR_NAME_SUFFIX_ELECTRIC'
+        self.default_effect_z_offset = 1 # optimised for Pony diesel and electric trains
+        self.consist.str_name_suffix = 'STR_NAME_SUFFIX_METRO'
         # the cab magic won't work unless it's asymmetrical eh? :P
         self._symmetry_type = 'asymmetric'
-        # magic to set high speed pax car capacity subject to length
-        # uses a value in between pax and lux pax; this won't work with double deck high speed in future, extend a kwarg then if needed
-        # use a conditional so that some cab cars can set capacity 0
-        if kwargs.get('capacity', None) is not None:
-            self.capacity = kwargs['capacity']
-        else:
-            base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
-            self.capacity = int(self.vehicle_length * base_capacity * 0.875)
 
 
 class SnowploughUnit(Train):
@@ -3024,22 +3010,39 @@ class SnowploughUnit(Train):
         self.capacity = (self.vehicle_length * base_capacity) / polar_fox.constants.mail_multiplier
 
 
-class MetroUnit(Train):
+class SteamEngineUnit(Train):
     """
-    Unit for an electric metro train, with high loading speed.
+    Unit for a steam engine, with smoke
     """
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        kwargs['consist'].base_track_type = 'METRO'
-        self.loading_speed_multiplier = 2
-        self.engine_class = 'ENGINE_CLASS_ELECTRIC'
-        self.effects = {'default': ['EFFECT_SPAWN_MODEL_ELECTRIC', 'EFFECT_SPRITE_ELECTRIC']}
-        self.default_effect_z_offset = 1 # optimised for Pony diesel and electric trains
-        self.consist.str_name_suffix = 'STR_NAME_SUFFIX_METRO'
-        # the cab magic won't work unless it's asymmetrical eh? :P
+        self.engine_class = 'ENGINE_CLASS_STEAM'
+        self.effects = {'default': ['EFFECT_SPAWN_MODEL_STEAM', 'EFFECT_SPRITE_STEAM']}
+        self.consist.str_name_suffix = 'STR_NAME_SUFFIX_STEAM'
+        self.default_effect_z_offset = 13 # optimised for Pony steam trains
+        self._symmetry_type = 'asymmetric'  # assume all steam engines are asymmetric
+
+    @property
+    def default_effect_offsets(self):
+        # force steam engine smoke to front by default, can also over-ride per unit for more precise positioning
+        return [(1 + int(math.floor(-0.5 * self.vehicle_length)), 0)]
+
+
+class SteamEngineTenderUnit(Train):
+    """
+    Unit for a steam engine tender.
+    Arguably this class is pointless, as it is just passthrough.
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # assume all steam engine tenders are asymmetric
         self._symmetry_type = 'asymmetric'
 
+
+# alphabetised (mostly) non-TrainCar subclasses of Train above here
+# then TrainCar subclasses below here, also alphabetised
 
 class TrainCar(Train):
     """
