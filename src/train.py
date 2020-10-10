@@ -1083,7 +1083,7 @@ class MailEngineRailcarConsist(MailEngineConsist):
             result.append(-1)
         return result
 
-class MailEngineDrivingCabConsist(MailEngineConsist):
+class MailEngineCabbageDVTConsist(MailEngineConsist):
     """
     Consist for a mail DVT / cabbage.  Implemented as Engine so it can lead a consist in-game.
     """
@@ -2770,6 +2770,22 @@ class SteamEngineTenderUnit(Train):
         self._symmetry_type = 'asymmetric'
 
 
+class CabbageDVTUnit(Train):
+    """
+    Unit for a driving cab (DVT / Cabbage).
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.engine_class = 'ENGINE_CLASS_DIESEL' # probably fine?
+        self.effects = {}
+        self.consist.str_name_suffix = None
+        self._symmetry_type = 'asymmetric'
+        # magic to set capacity subject to length
+        base_capacity = self.consist.roster.freight_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
+        self.capacity = (self.vehicle_length * base_capacity) / polar_fox.constants.mail_multiplier
+
+
 class DieselEngineUnit(Train):
     """
     Unit for a diesel engine.
@@ -2820,22 +2836,6 @@ class DieselRailcarPaxUnit(DieselRailcarBaseUnit):
         self.capacity = self.vehicle_length * base_capacity
 
 
-class DrivingCabUnitMail(Train):
-    """
-    Unit for a driving cab (DVT / Cabbage).  Mail / express freight refits.
-    """
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.engine_class = 'ENGINE_CLASS_DIESEL' # !! needs changing??
-        self.effects = {}
-        self.consist.str_name_suffix = None
-        self._symmetry_type = 'asymmetric'
-        # magic to set capacity subject to length
-        base_capacity = self.consist.roster.freight_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
-        self.capacity = (self.vehicle_length * base_capacity) / polar_fox.constants.mail_multiplier
-
-
 class DrivingCabUnitPax(Train):
     """
     Unit for a driving cab (DVT / Cabbage).  Pax.
@@ -2848,8 +2848,8 @@ class DrivingCabUnitPax(Train):
         self.consist.str_name_suffix = None
         self._symmetry_type = 'asymmetric'
         # magic to set capacity subject to length
-        base_capacity = self.consist.roster.freight_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
-        self.capacity = (self.vehicle_length * base_capacity) / polar_fox.constants.mail_multiplier
+        base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
+        self.capacity = self.vehicle_length * base_capacity
 
 
 class ElectricEngineUnit(Train):
@@ -3051,9 +3051,6 @@ class TrainCar(Train):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.consist = kwargs['consist']
-        self.class_refit_groups = self.consist.class_refit_groups
-        self.label_refits_allowed = self.consist.label_refits_allowed
-        self.label_refits_disallowed = self.consist.label_refits_disallowed
         if hasattr(self.consist, 'loading_speed_multiplier'):
             self.loading_speed_multiplier = self.consist.loading_speed_multiplier
         # most wagons are symmetric, over-ride per vehicle or subclass as needed

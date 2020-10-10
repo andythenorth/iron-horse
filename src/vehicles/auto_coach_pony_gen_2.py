@@ -1,4 +1,4 @@
-from train import EngineConsist, DrivingCabUnitMail, DrivingCabUnitPax
+from train import EngineConsist, CabbageDVTUnit, DrivingCabUnitPax
 
 
 def main(roster_id):
@@ -15,7 +15,7 @@ def main(roster_id):
     )
 
     consist.add_unit(
-        type=DrivingCabUnitMail,
+        type=CabbageDVTUnit,
         weight=32,
         chassis="jacobs_solid_express_20px",
     )
