@@ -1083,6 +1083,7 @@ class MailEngineRailcarConsist(MailEngineConsist):
             result.append(-1)
         return result
 
+
 class MailEngineCabbageDVTConsist(MailEngineConsist):
     """
     Consist for a mail DVT / cabbage.  Implemented as Engine so it can lead a consist in-game.
@@ -1104,6 +1105,40 @@ class MailEngineCabbageDVTConsist(MailEngineConsist):
         # ....run costs reduced from base to make it close to mail cars
         self.fixed_run_cost_points = 68
         # Graphics configuration
+        # driving cab cars have consist cargo mappings for pax, mail (freight uses mail)
+        # * pax matches pax liveries for generation
+        # * mail gets a TPO/RPO striped livery, and a 1CC/2CC duotone livery
+        # position based variants
+        spriterow_group_mappings = {'mail': {'default': 0, 'first': 0, 'last': 1, 'special': 0},
+                                    'pax': {'default': 0, 'first': 0, 'last': 1, 'special': 0}}
+        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings,
+                                                                     consist_ruleset='driving_cab_cars')
+
+
+class MailEngineAutoCoachCombineConsist(MailEngineConsist):
+    """
+    Consist for an articulated auto coach combine (mail + pax).  Implemented as Engine so it can lead a consist in-game.
+    To keep implementation simple + crude, the consist will default to mail, and should have 2 units.
+    # First unit should be the mail type, second unit should be the pax type with special definition of refit classes.
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.role = 'driving_cab_express'
+        self.role_child_branch_num = -1 # driving cab cars are probably jokers?
+        self.buy_menu_hint_driving_cab = True
+        self.allow_flip = False # articulated innit (even needed?)
+        # confer tiny power value to make this one an engine so it can lead.
+        self.power = 10 # use 10 not 1, because 1 looks weird when added to engine HP
+        # nerf TE down to minimal value
+        self.tractive_effort_coefficient = 0.1
+        # ....buy costs reduced from base to make it close to mail cars
+        self.fixed_buy_cost_points = 1 # to reduce it from engine factor
+        self.buy_cost_adjustment_factor = 1
+        # ....run costs reduced from base to make it close to mail cars
+        self.fixed_run_cost_points = 68
+        # Graphics configuration
+        # !!!!! needs updated: no alt livery, no flip, no engine special handling, dedicated ruleset !!!!
         # driving cab cars have consist cargo mappings for pax, mail (freight uses mail)
         # * pax matches pax liveries for generation
         # * mail gets a TPO/RPO striped livery, and a 1CC/2CC duotone livery
@@ -2448,8 +2483,8 @@ class Train(object):
         self.spriterow_num = kwargs.get('spriterow_num', 0) # first row = 0;
         # sometimes we want to offset the buy menu spriterow (!! this is incomplete hax, not supported by generated buy menu sprites etc)
         self.buy_menu_spriterow_num = 0 # set in the subclass as needed, (or extend to kwargs in future)
-        # !! the need to copy cargo refits from the consist is probably historical (mixed cargo articulated trains), and could likely be refactored !!
-        self.class_refit_groups = self.consist.class_refit_groups
+        # !! the need to copy cargo refits from the consist is legacy from the default multi-unit articulated consists in Iron Horse 1
+        # !! could likely be refactored !!
         self.label_refits_allowed = self.consist.label_refits_allowed
         self.label_refits_disallowed = self.consist.label_refits_disallowed
         self.autorefit = True
@@ -2558,7 +2593,13 @@ class Train(object):
     def refittable_classes(self):
         cargo_classes = []
         # maps lists of allowed classes.  No equivalent for disallowed classes, that's overly restrictive and damages the viability of class-based refitting
-        for i in self.class_refit_groups:
+        if hasattr(self, 'articulated_unit_different_class_refit_groups'):
+            # in *rare* cases an articulated unit might need different refit classes to its parent consist
+            class_refit_groups = self.articulated_unit_different_class_refit_groups
+        else:
+            # by default get the refit classes from the consist
+            class_refit_groups = self.consist.class_refit_groups
+        for i in class_refit_groups:
             [cargo_classes.append(
                 cargo_class) for cargo_class in global_constants.base_refits_by_class[i]]
         return ','.join(set(cargo_classes))  # use set() here to dedupe
@@ -2739,9 +2780,43 @@ class Train(object):
         return nml_result
 
 
+class AutoCoachCombineUnitMail(Train):
+    """
+    Mail unit for a combine auto coach (articulated driving cab consist with mail + pax capacity)
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.engine_class = 'ENGINE_CLASS_DIESEL' # !! needs changing??
+        self.effects = {}
+        self.consist.str_name_suffix = None
+        self._symmetry_type = 'asymmetric'
+        # magic to set capacity subject to length
+        base_capacity = self.consist.roster.freight_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
+        self.capacity = (self.vehicle_length * base_capacity) / polar_fox.constants.mail_multiplier
+
+
+class AutoCoachCombineUnitPax(Train):
+    """
+    Pax unit for a combine auto coach (articulated driving cab consist with mail + pax capacity)
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.engine_class = 'ENGINE_CLASS_DIESEL' # !! needs changing??
+        self.effects = {}
+        self.consist.str_name_suffix = None
+        self._symmetry_type = 'asymmetric'
+        # over-ride the consist's default refit classes for this type of unit
+        self.articulated_unit_different_class_refit_groups = ['pax']
+        # magic to set capacity subject to length
+        base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
+        self.capacity = self.vehicle_length * base_capacity
+
+
 class CabbageDVTUnit(Train):
     """
-    Unit for a driving cab (DVT / Cabbage).
+    Unit for a DVT / Cabbage (driving cab with mail capacity)
     """
 
     def __init__(self, **kwargs):
@@ -2800,22 +2875,6 @@ class DieselRailcarPaxUnit(DieselRailcarBaseUnit):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # magic to set capacity subject to length
-        base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
-        self.capacity = self.vehicle_length * base_capacity
-
-
-class DrivingCabUnitPax(Train):
-    """
-    Unit for a driving cab (DVT / Cabbage).  Pax.
-    """
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.engine_class = 'ENGINE_CLASS_DIESEL' # !! needs changing??
-        self.effects = {}
-        self.consist.str_name_suffix = None
-        self._symmetry_type = 'asymmetric'
         # magic to set capacity subject to length
         base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
         self.capacity = self.vehicle_length * base_capacity

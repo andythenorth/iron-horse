@@ -271,7 +271,7 @@ def main(disabled=False):
                                magnum_70,
                                snowplough_pony_gen_2,
                                # auto-coaches
-                               # auto_coach_pony_gen_2,
+                               auto_coach_pony_gen_2,
                                # diesel railcars
                                deasil,
                                slammer,
