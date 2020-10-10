@@ -2,6 +2,7 @@ from roster import Roster
 
 from vehicles import ares
 from vehicles import athena
+from vehicles import auto_coach_pony_gen_2
 from vehicles import avenger
 from vehicles import bean_feast
 from vehicles import blackthorn
@@ -269,6 +270,8 @@ def main(disabled=False):
                                gronk,
                                magnum_70,
                                snowplough_pony_gen_2,
+                               # auto-coaches
+                               # auto_coach_pony_gen_2,
                                # diesel railcars
                                deasil,
                                slammer,

@@ -1,4 +1,4 @@
-from train import MailEngineDrivingCabConsist, DrivingCabUnit
+from train import MailEngineDrivingCabConsist, DrivingCabUnitMail
 
 def main(roster_id):
     consist = MailEngineDrivingCabConsist(roster_id=roster_id,
@@ -8,7 +8,7 @@ def main(roster_id):
                                           gen=5,
                                           sprites_complete=True)
 
-    consist.add_unit(type=DrivingCabUnit,
+    consist.add_unit(type=DrivingCabUnitMail,
                      weight=32,
                      chassis='railcar_32px')
 

@@ -2820,9 +2820,25 @@ class DieselRailcarPaxUnit(DieselRailcarBaseUnit):
         self.capacity = self.vehicle_length * base_capacity
 
 
-class DrivingCabUnit(Train):
+class DrivingCabUnitMail(Train):
     """
     Unit for a driving cab (DVT / Cabbage).  Mail / express freight refits.
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.engine_class = 'ENGINE_CLASS_DIESEL' # !! needs changing??
+        self.effects = {}
+        self.consist.str_name_suffix = None
+        self._symmetry_type = 'asymmetric'
+        # magic to set capacity subject to length
+        base_capacity = self.consist.roster.freight_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
+        self.capacity = (self.vehicle_length * base_capacity) / polar_fox.constants.mail_multiplier
+
+
+class DrivingCabUnitPax(Train):
+    """
+    Unit for a driving cab (DVT / Cabbage).  Pax.
     """
 
     def __init__(self, **kwargs):
