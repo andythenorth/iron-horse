@@ -691,6 +691,166 @@ class EngineConsist(Consist):
         return self.role_child_branch_num < 0
 
 
+class AutoCoachCombineConsist(EngineConsist):
+    """
+    Consist for an articulated auto coach combine (mail + pax).  Implemented as Engine so it can lead a consist in-game.
+    To keep implementation simple + crude, first unit should be dedicated mail type, second unit should be dedicated pax type
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.role = 'driving_cab_express'
+        self.role_child_branch_num = -1 # driving cab cars are probably jokers?
+        self.buy_menu_hint_driving_cab = True
+        self.allow_flip = False # articulated innit (even needed?)
+        # confer tiny power value to make this one an engine so it can lead.
+        self.power = 10 # use 10 not 1, because 1 looks weird when added to engine HP
+        # nerf TE down to minimal value
+        self.tractive_effort_coefficient = 0
+        # ....buy costs adjusted to match equivalent gen 2 + 3 pax / mail cars
+        self.fixed_buy_cost_points = 6 # to reduce it from engine factor
+        # ....run costs nerfed down to match equivalent gen 2 + 3 pax / mail cars
+        self.fixed_run_cost_points = 43
+        # Graphics configuration
+        # !!!! due to use of custom gestalt, might just need to draw roofs into vehicle sprites
+        # !! what about opening doors and crap?
+        # !! see also very high speed pax cab units which have similar issue when opening doors are needed
+        if self.gen in [2, 3]:
+            self.roof_type = 'pax_mail_ridged'
+        else:
+            self.roof_type = 'pax_mail_smooth'
+        # !!!!! needs updated: no alt livery, no flip, dedicated ruleset, use custom Gestalt and template - see snowplough !!!!
+        # driving cab cars have consist cargo mappings for pax, mail (freight uses mail)
+        # * pax matches pax liveries for generation
+        # * mail gets a TPO/RPO striped livery, and a 1CC/2CC duotone livery
+        # position based variants
+        spriterow_group_mappings = {'mail': {'default': 0, 'first': 0, 'last': 1, 'special': 0},
+                                    'pax': {'default': 0, 'first': 0, 'last': 1, 'special': 0}}
+        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings,
+                                                                     consist_ruleset='driving_cab_cars')
+
+
+class MailEngineConsist(EngineConsist):
+    """
+    Consist of engines / units that has mail (and express freight) capacity
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.class_refit_groups = ['mail', 'express_freight']
+        self.label_refits_allowed = []  # no specific labels needed
+        self.label_refits_disallowed = ['TOUR']
+        self.default_cargos = polar_fox.constants.default_cargos['mail']
+        # increased buy costs for having extra doors and stuff eh?
+        self.buy_cost_adjustment_factor = 1.4
+        # ...but reduce fixed (baseline) run costs on this subtype, purely for balancing reasons
+        self.fixed_run_cost_points = 84
+
+
+class MailEngineCabbageDVTConsist(MailEngineConsist):
+    """
+    Consist for a mail DVT / cabbage.  Implemented as Engine so it can lead a consist in-game.
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.role = 'driving_cab_express'
+        self.role_child_branch_num = -1 # driving cab cars are probably jokers?
+        self.buy_menu_hint_driving_cab = True
+        self.allow_flip = True
+        # confer a small power value for 'operational efficiency' (HEP load removed from engine eh?) :)
+        self.power = 300
+        # nerf TE down to minimal value
+        self.tractive_effort_coefficient = 0.1
+        # ....buy costs reduced from base to make it close to mail cars
+        self.fixed_buy_cost_points = 1 # to reduce it from engine factor
+        self.buy_cost_adjustment_factor = 1
+        # ....run costs reduced from base to make it close to mail cars
+        self.fixed_run_cost_points = 68
+        # Graphics configuration
+        # driving cab cars have consist cargo mappings for pax, mail (freight uses mail)
+        # * pax matches pax liveries for generation
+        # * mail gets a TPO/RPO striped livery, and a 1CC/2CC duotone livery
+        # position based variants
+        spriterow_group_mappings = {'mail': {'default': 0, 'first': 0, 'last': 1, 'special': 0},
+                                    'pax': {'default': 0, 'first': 0, 'last': 1, 'special': 0}}
+        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings,
+                                                                     consist_ruleset='driving_cab_cars')
+
+
+class MailEngineMetroConsist(MailEngineConsist):
+    """
+    Consist for a mail metro train.  Just a sparse subclass to force the gestalt_graphics
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # this will knock standard age period down, so this train is only profitable over short routes
+        self.cargo_age_period = global_constants.CARGO_AGE_PERIOD_METRO_MALUS
+        # buy costs increased above baseline, account for 2 units + underground nonsense
+        self.buy_cost_adjustment_factor = 2
+        # metro should only be effective over short distances
+        # ....run cost multiplier is adjusted up from pax base for underground nonsense, also account for 2 units
+        self.floating_run_cost_multiplier = 26
+        # train_flag_mu solely used for ottd livery (company colour) selection
+        self.train_flag_mu = True
+        # Graphics configuration
+        # 1 livery as can't be flipped, 1 spriterow may be left blank for compatibility with Gestalt (TBC)
+        # position variants
+        # * unit with driving cab front end
+        # * unit with driving cab rear end
+        spriterow_group_mappings = {'pax': {'default': 0, 'first': 0, 'last': 1, 'special': 0}}
+        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings,
+                                                                     consist_ruleset="metro")
+
+
+class MailEngineRailcarConsist(MailEngineConsist):
+    """
+    Consist for a mail railcar.  Just a sparse subclass to force the gestalt_graphics and allow_flip.
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.allow_flip = True
+        # train_flag_mu solely used for ottd livery (company colour) selection
+        self.train_flag_mu = True
+        # non-standard cite
+        self._cite = "Arabella Unit"
+        # Graphics configuration
+        if self.gen in [2, 3]:
+            self.roof_type = 'pax_mail_ridged'
+        else:
+            self.roof_type = 'pax_mail_smooth'
+        # by design, mail railcars don't change livery in a pax consist, but do have 2 liveries, matching mail cars for this generation
+        # position variants
+        # * unit with driving cabs both ends
+        # * unit with driving cab front end
+        # * unit with driving cab rear end
+        # * unit with no driving cabs (OPTIONAL - only provided for 4-unit sets)
+        # Rules are 2 unit sets of 3 unit sets (4 could also be supported, but isn't at time of writing)
+        if kwargs.get('use_3_unit_sets', False):
+            consist_ruleset = 'railcars_3_unit_sets'
+            spriterow_group_mappings = {'mail': {'default': 0, 'first': 1, 'last': 2, 'special': 3}}
+        else:
+            consist_ruleset = 'railcars_2_unit_sets'
+            spriterow_group_mappings = {'mail': {'default': 0, 'first': 1, 'last': 2, 'special': 0}}
+        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings,
+                                                                     consist_ruleset=consist_ruleset,
+                                                                     pantograph_type=self.pantograph_type)
+
+    @property
+    def equivalent_ids_alt_var_41(self):
+        # where var 14 checks consecutive chain of a single ID, I provided an alternative checking a list of IDs
+        # this is intended for pax railcars, but mail railcars share templating in some cases, so stub in this result to prevent unwanted behaviour
+        # there is no support for mail railcars combining with anything other than their own ID, this is just a compatibility stub
+        result = []
+        result.append(self.base_numeric_id)
+        # the list requires 16 entries as the nml check has 16 switches, fill out to empty list entries with '-1', which won't match any IDs
+        for i in range (len(result), 16):
+            result.append(-1)
+        return result
+
+
 class PassengerEngineConsist(EngineConsist):
     """
     Consist of engines / units that has passenger capacity
@@ -706,6 +866,82 @@ class PassengerEngineConsist(EngineConsist):
         self.buy_cost_adjustment_factor = 1.8
         # ...but reduce fixed (baseline) run costs on this subtype, purely for balancing reasons
         self.fixed_run_cost_points = 84
+
+
+class PassengerHSTCabEngineConsist(PassengerEngineConsist):
+    """
+    Consist for a dual-headed HST (high speed train).
+    May or may not have capacity (set per vehicle).
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # always dual-head
+        self.dual_headed = True
+        # moderate cargo age bonus
+        self.cargo_age_period = 4 * global_constants.CARGO_AGE_PERIOD
+        self.buy_cost_adjustment_factor = 1.2
+        # higher speed should only be effective over longer distances
+        # ....run cost multiplier is adjusted up from pax base for high speed
+        self.floating_run_cost_multiplier = 22
+        # ...and high fixed (baseline) run costs on this subtype
+        self.fixed_run_cost_points = 180 # ! eh this was actually the default value last time I checked
+        # non-standard cite
+        self._cite = "Dr Constance Speed"
+
+
+class PassengerEngineLuxuryRailcarConsist(PassengerEngineConsist):
+    """
+    Consist for a luxury pax railcar (single unit, combinable).
+    Intended for express-speed, high-power long-distance EMUs, use railcars for short / slow / commuter routes.
+    """
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.allow_flip = True
+        # train_flag_mu solely used for ottd livery (company colour) selection
+        self.train_flag_mu = True
+        # this won't make much difference except over *very* long routes, but set it anyway
+        self.cargo_age_period = 8 * global_constants.CARGO_AGE_PERIOD
+        self.buy_cost_adjustment_factor = 1.3
+        # to avoid these railcars being super-bargain cheap, add a cost malus compared to standard railcars (still less than standard engines)
+        self.fixed_run_cost_points = 140
+        # non-standard cite
+        self._cite = "Dr Constance Speed"
+        # Graphics configuration
+        if self.gen in [2, 3]:
+            self.roof_type = 'pax_mail_ridged'
+        else:
+            self.roof_type = 'pax_mail_smooth'
+        # 2 liveries, should match local and express liveries of pax cars for this generation
+        # position variants
+        # * unit with driving cab front end
+        # * unit with driving cab rear end
+        # * unit with no cabs (center car)
+        # * special unit with no cabs (center car)
+        # ruleset will combine these to make multiple-units 1, 2, or 3 vehicles long, then repeating the pattern
+        spriterow_group_mappings = {'pax': {'default': 0, 'first': 1, 'last': 2, 'special': 3}}
+        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings,
+                                                                     consist_ruleset="railcars_4_unit_sets",
+                                                                     pantograph_type=self.pantograph_type)
+
+    @property
+    def equivalent_ids_alt_var_41(self):
+        # where var 14 checks consecutive chain of a single ID, I provided an alternative checking a list of IDs
+        # may or may not handle articulated vehicles correctly (probably not, no actual use cases for that)
+        # this redefinition specific to luxury pax railcars and will be fragile if railcars or trailers are changed/extended
+        # also relies on same ruleset being used for all of luxury_passenger_railcar_trailer_car trailers
+        result = []
+        # this will catch self also
+        for consist in self.roster.engine_consists:
+            if (consist.gen == self.gen) and (consist.base_track_type == self.base_track_type) and (consist.role in ['luxury_pax_railcar']):
+                result.append(consist.base_numeric_id)
+        for consist in self.roster.wagon_consists['luxury_passenger_railcar_trailer_car']:
+            if (consist.gen == self.gen) and (consist.base_track_type == self.base_track_type):
+                result.append(consist.base_numeric_id)
+        # the list requires 16 entries as the nml check has 16 switches, fill out to empty list entries with '-1', which won't match any IDs
+        for i in range (len(result), 16):
+            result.append(-1)
+        return result
 
 
 class PassengerEngineMetroConsist(PassengerEngineConsist):
@@ -785,82 +1021,6 @@ class PassengerEngineRailcarConsist(PassengerEngineConsist):
         for i in range (len(result), 16):
             result.append(-1)
         return result
-
-
-class PassengerEngineLuxuryRailcarConsist(PassengerEngineConsist):
-    """
-    Consist for a luxury pax railcar (single unit, combinable).
-    Intended for express-speed, high-power long-distance EMUs, use railcars for short / slow / commuter routes.
-    """
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.allow_flip = True
-        # train_flag_mu solely used for ottd livery (company colour) selection
-        self.train_flag_mu = True
-        # this won't make much difference except over *very* long routes, but set it anyway
-        self.cargo_age_period = 8 * global_constants.CARGO_AGE_PERIOD
-        self.buy_cost_adjustment_factor = 1.3
-        # to avoid these railcars being super-bargain cheap, add a cost malus compared to standard railcars (still less than standard engines)
-        self.fixed_run_cost_points = 140
-        # non-standard cite
-        self._cite = "Dr Constance Speed"
-        # Graphics configuration
-        if self.gen in [2, 3]:
-            self.roof_type = 'pax_mail_ridged'
-        else:
-            self.roof_type = 'pax_mail_smooth'
-        # 2 liveries, should match local and express liveries of pax cars for this generation
-        # position variants
-        # * unit with driving cab front end
-        # * unit with driving cab rear end
-        # * unit with no cabs (center car)
-        # * special unit with no cabs (center car)
-        # ruleset will combine these to make multiple-units 1, 2, or 3 vehicles long, then repeating the pattern
-        spriterow_group_mappings = {'pax': {'default': 0, 'first': 1, 'last': 2, 'special': 3}}
-        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings,
-                                                                     consist_ruleset="railcars_4_unit_sets",
-                                                                     pantograph_type=self.pantograph_type)
-
-    @property
-    def equivalent_ids_alt_var_41(self):
-        # where var 14 checks consecutive chain of a single ID, I provided an alternative checking a list of IDs
-        # may or may not handle articulated vehicles correctly (probably not, no actual use cases for that)
-        # this redefinition specific to luxury pax railcars and will be fragile if railcars or trailers are changed/extended
-        # also relies on same ruleset being used for all of luxury_passenger_railcar_trailer_car trailers
-        result = []
-        # this will catch self also
-        for consist in self.roster.engine_consists:
-            if (consist.gen == self.gen) and (consist.base_track_type == self.base_track_type) and (consist.role in ['luxury_pax_railcar']):
-                result.append(consist.base_numeric_id)
-        for consist in self.roster.wagon_consists['luxury_passenger_railcar_trailer_car']:
-            if (consist.gen == self.gen) and (consist.base_track_type == self.base_track_type):
-                result.append(consist.base_numeric_id)
-        # the list requires 16 entries as the nml check has 16 switches, fill out to empty list entries with '-1', which won't match any IDs
-        for i in range (len(result), 16):
-            result.append(-1)
-        return result
-
-
-class PassengerHSTCabEngineConsist(PassengerEngineConsist):
-    """
-    Consist for a dual-headed HST (high speed train).
-    May or may not have capacity (set per vehicle).
-    """
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        # always dual-head
-        self.dual_headed = True
-        # moderate cargo age bonus
-        self.cargo_age_period = 4 * global_constants.CARGO_AGE_PERIOD
-        self.buy_cost_adjustment_factor = 1.2
-        # higher speed should only be effective over longer distances
-        # ....run cost multiplier is adjusted up from pax base for high speed
-        self.floating_run_cost_multiplier = 22
-        # ...and high fixed (baseline) run costs on this subtype
-        self.fixed_run_cost_points = 180 # ! eh this was actually the default value last time I checked
-        # non-standard cite
-        self._cite = "Dr Constance Speed"
 
 
 class PassengerVeryHighSpeedCabEngineConsist(PassengerEngineConsist):
@@ -992,161 +1152,6 @@ class PassengerVeryHighSpeedMiddleEngineConsist(PassengerEngineConsist):
     @property
     def buy_menu_distributed_power_hp_value(self):
         return self.cab_consist.power
-
-
-class MailEngineConsist(EngineConsist):
-    """
-    Consist of engines / units that has mail (and express freight) capacity
-    """
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.class_refit_groups = ['mail', 'express_freight']
-        self.label_refits_allowed = []  # no specific labels needed
-        self.label_refits_disallowed = ['TOUR']
-        self.default_cargos = polar_fox.constants.default_cargos['mail']
-        # increased buy costs for having extra doors and stuff eh?
-        self.buy_cost_adjustment_factor = 1.4
-        # ...but reduce fixed (baseline) run costs on this subtype, purely for balancing reasons
-        self.fixed_run_cost_points = 84
-
-
-class MailEngineMetroConsist(MailEngineConsist):
-    """
-    Consist for a mail metro train.  Just a sparse subclass to force the gestalt_graphics
-    """
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        # this will knock standard age period down, so this train is only profitable over short routes
-        self.cargo_age_period = global_constants.CARGO_AGE_PERIOD_METRO_MALUS
-        # buy costs increased above baseline, account for 2 units + underground nonsense
-        self.buy_cost_adjustment_factor = 2
-        # metro should only be effective over short distances
-        # ....run cost multiplier is adjusted up from pax base for underground nonsense, also account for 2 units
-        self.floating_run_cost_multiplier = 26
-        # train_flag_mu solely used for ottd livery (company colour) selection
-        self.train_flag_mu = True
-        # Graphics configuration
-        # 1 livery as can't be flipped, 1 spriterow may be left blank for compatibility with Gestalt (TBC)
-        # position variants
-        # * unit with driving cab front end
-        # * unit with driving cab rear end
-        spriterow_group_mappings = {'pax': {'default': 0, 'first': 0, 'last': 1, 'special': 0}}
-        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings,
-                                                                     consist_ruleset="metro")
-
-
-class MailEngineRailcarConsist(MailEngineConsist):
-    """
-    Consist for a mail railcar.  Just a sparse subclass to force the gestalt_graphics and allow_flip.
-    """
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.allow_flip = True
-        # train_flag_mu solely used for ottd livery (company colour) selection
-        self.train_flag_mu = True
-        # non-standard cite
-        self._cite = "Arabella Unit"
-        # Graphics configuration
-        if self.gen in [2, 3]:
-            self.roof_type = 'pax_mail_ridged'
-        else:
-            self.roof_type = 'pax_mail_smooth'
-        # by design, mail railcars don't change livery in a pax consist, but do have 2 liveries, matching mail cars for this generation
-        # position variants
-        # * unit with driving cabs both ends
-        # * unit with driving cab front end
-        # * unit with driving cab rear end
-        # * unit with no driving cabs (OPTIONAL - only provided for 4-unit sets)
-        # Rules are 2 unit sets of 3 unit sets (4 could also be supported, but isn't at time of writing)
-        if kwargs.get('use_3_unit_sets', False):
-            consist_ruleset = 'railcars_3_unit_sets'
-            spriterow_group_mappings = {'mail': {'default': 0, 'first': 1, 'last': 2, 'special': 3}}
-        else:
-            consist_ruleset = 'railcars_2_unit_sets'
-            spriterow_group_mappings = {'mail': {'default': 0, 'first': 1, 'last': 2, 'special': 0}}
-        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings,
-                                                                     consist_ruleset=consist_ruleset,
-                                                                     pantograph_type=self.pantograph_type)
-
-    @property
-    def equivalent_ids_alt_var_41(self):
-        # where var 14 checks consecutive chain of a single ID, I provided an alternative checking a list of IDs
-        # this is intended for pax railcars, but mail railcars share templating in some cases, so stub in this result to prevent unwanted behaviour
-        # there is no support for mail railcars combining with anything other than their own ID, this is just a compatibility stub
-        result = []
-        result.append(self.base_numeric_id)
-        # the list requires 16 entries as the nml check has 16 switches, fill out to empty list entries with '-1', which won't match any IDs
-        for i in range (len(result), 16):
-            result.append(-1)
-        return result
-
-
-class MailEngineCabbageDVTConsist(MailEngineConsist):
-    """
-    Consist for a mail DVT / cabbage.  Implemented as Engine so it can lead a consist in-game.
-    """
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.role = 'driving_cab_express'
-        self.role_child_branch_num = -1 # driving cab cars are probably jokers?
-        self.buy_menu_hint_driving_cab = True
-        self.allow_flip = True
-        # confer a small power value for 'operational efficiency' (HEP load removed from engine eh?) :)
-        self.power = 300
-        # nerf TE down to minimal value
-        self.tractive_effort_coefficient = 0.1
-        # ....buy costs reduced from base to make it close to mail cars
-        self.fixed_buy_cost_points = 1 # to reduce it from engine factor
-        self.buy_cost_adjustment_factor = 1
-        # ....run costs reduced from base to make it close to mail cars
-        self.fixed_run_cost_points = 68
-        # Graphics configuration
-        # driving cab cars have consist cargo mappings for pax, mail (freight uses mail)
-        # * pax matches pax liveries for generation
-        # * mail gets a TPO/RPO striped livery, and a 1CC/2CC duotone livery
-        # position based variants
-        spriterow_group_mappings = {'mail': {'default': 0, 'first': 0, 'last': 1, 'special': 0},
-                                    'pax': {'default': 0, 'first': 0, 'last': 1, 'special': 0}}
-        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings,
-                                                                     consist_ruleset='driving_cab_cars')
-
-
-class MailEngineAutoCoachCombineConsist(MailEngineConsist):
-    """
-    Consist for an articulated auto coach combine (mail + pax).  Implemented as Engine so it can lead a consist in-game.
-    To keep implementation simple + crude, the consist will default to mail, and should have 2 units.
-    # First unit should be the mail type, second unit should be the pax type with special definition of refit classes.
-    """
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.role = 'driving_cab_express'
-        self.role_child_branch_num = -1 # driving cab cars are probably jokers?
-        self.buy_menu_hint_driving_cab = True
-        self.allow_flip = False # articulated innit (even needed?)
-        # confer tiny power value to make this one an engine so it can lead.
-        self.power = 10 # use 10 not 1, because 1 looks weird when added to engine HP
-        # nerf TE down to minimal value
-        self.tractive_effort_coefficient = 0.1
-        # ....buy costs reduced from base to make it close to mail cars
-        self.fixed_buy_cost_points = 1 # to reduce it from engine factor
-        self.buy_cost_adjustment_factor = 1
-        # ....run costs reduced from base to make it close to mail cars
-        self.fixed_run_cost_points = 68
-        # Graphics configuration
-        # !!!!! needs updated: no alt livery, no flip, no engine special handling, dedicated ruleset !!!!
-        # driving cab cars have consist cargo mappings for pax, mail (freight uses mail)
-        # * pax matches pax liveries for generation
-        # * mail gets a TPO/RPO striped livery, and a 1CC/2CC duotone livery
-        # position based variants
-        spriterow_group_mappings = {'mail': {'default': 0, 'first': 0, 'last': 1, 'special': 0},
-                                    'pax': {'default': 0, 'first': 0, 'last': 1, 'special': 0}}
-        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings,
-                                                                     consist_ruleset='driving_cab_cars')
 
 
 class SnowploughEngineConsist(EngineConsist):
@@ -2791,9 +2796,12 @@ class AutoCoachCombineUnitMail(Train):
         self.effects = {}
         self.consist.str_name_suffix = None
         self._symmetry_type = 'asymmetric'
+        # usually refit classes come from consist, but we special case to the unit for this combine coach
+        self.articulated_unit_different_class_refit_groups = ['mail'] # note mail only, no other express cargos
         # magic to set capacity subject to length
         base_capacity = self.consist.roster.freight_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
-        self.capacity = (self.vehicle_length * base_capacity) / polar_fox.constants.mail_multiplier
+        # account for pax capacity 'on' this unit (implemented on adjacent pax unit)
+        self.capacity = (0.75 * self.vehicle_length * base_capacity) / polar_fox.constants.mail_multiplier
 
 
 class AutoCoachCombineUnitPax(Train):
@@ -2807,11 +2815,12 @@ class AutoCoachCombineUnitPax(Train):
         self.effects = {}
         self.consist.str_name_suffix = None
         self._symmetry_type = 'asymmetric'
-        # over-ride the consist's default refit classes for this type of unit
+        # usually refit classes come from consist, but we special case to the unit for this combine coach
         self.articulated_unit_different_class_refit_groups = ['pax']
         # magic to set capacity subject to length
         base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
-        self.capacity = self.vehicle_length * base_capacity
+        # account for pax 'on' the adjacent mail unit (this is roughly matched to equivalent gen railcars)
+        self.capacity = 2 * self.vehicle_length * base_capacity
 
 
 class CabbageDVTUnit(Train):
