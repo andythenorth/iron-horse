@@ -10,6 +10,7 @@ def main(roster_id):
                             role_child_branch_num=1,
                             power=2900,
                             gen=4,
+                            fixed_run_cost_points=118, # minor run cost bonus as default algorithm makes run cost too high
                             alternative_cc_livery='RAILFREIGHT_RED_STRIPE',
                             default_livery_extra_docs_examples=[('COLOUR_PALE_GREEN', 'COLOUR_GREY'), ('COLOUR_BLUE', 'COLOUR_GREY')],
                             sprites_complete=True)
