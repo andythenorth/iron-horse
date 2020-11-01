@@ -9,6 +9,7 @@ def main(roster_id):
                             role='heavy_freight',
                             role_child_branch_num=1,
                             power=2400,
+                            speed=75, # for lolz
                             tractive_effort_coefficient=0.29,
                             gen=3,
                             sprites_complete=True)
