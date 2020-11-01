@@ -21,6 +21,7 @@ from vehicles import carrack
 from vehicles import cheddar_valley
 from vehicles import cheese_bug
 from vehicles import chinook
+from vehicles import chuggypig
 from vehicles import deasil
 from vehicles import diablo
 from vehicles import dover
@@ -268,6 +269,7 @@ def main(disabled=False):
                                grub,
                                lamia,
                                gronk,
+                               chuggypig,
                                magnum_70,
                                snowplough_pony_gen_2,
                                # auto-coach (only one as autoreplace can't handle mixed cargo articulated consists)
