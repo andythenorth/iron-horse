@@ -712,22 +712,7 @@ class AutoCoachCombineConsist(EngineConsist):
         # ....run costs nerfed down to match equivalent gen 2 + 3 pax / mail cars
         self.fixed_run_cost_points = 43
         # Graphics configuration
-        # !!!! due to use of custom gestalt, might just need to draw roofs into vehicle sprites
-        # !! what about opening doors and crap?
-        # !! see also very high speed pax cab units which have similar issue when opening doors are needed
-        if self.gen in [2, 3]:
-            self.roof_type = 'pax_mail_ridged'
-        else:
-            self.roof_type = 'pax_mail_smooth'
-        # !!!!! needs updated: no alt livery, no flip, dedicated ruleset, use custom Gestalt and template - see snowplough !!!!
-        # driving cab cars have consist cargo mappings for pax, mail (freight uses mail)
-        # * pax matches pax liveries for generation
-        # * mail gets a TPO/RPO striped livery, and a 1CC/2CC duotone livery
-        # position based variants
-        spriterow_group_mappings = {'mail': {'default': 0, 'first': 0, 'last': 1, 'special': 0},
-                                    'pax': {'default': 0, 'first': 0, 'last': 1, 'special': 0}}
-        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings,
-                                                                     consist_ruleset='driving_cab_cars')
+        self.gestalt_graphics = GestaltGraphicsCustom('vehicle_autocoach.pynml')
 
 
 class MailEngineConsist(EngineConsist):
