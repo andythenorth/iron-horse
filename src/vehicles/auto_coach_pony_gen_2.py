@@ -9,7 +9,7 @@ def main(roster_id):
         roster_id=roster_id,
         id="auto_coach_pony_gen_2",
         base_numeric_id=4690,
-        name="Auto Coach Set",
+        name="Autocoach Set",
         replacement_consist_id='slammer', # auto-coach ends with gen 4 Slammer
         gen=2,
         intro_date_offset=15, # introduce significantly later than gen epoch
@@ -29,6 +29,6 @@ def main(roster_id):
     )
 
     consist.description = """A coach that you can drive the engine from?  Eee, it's magic."""
-    consist.foamer_facts = """SR and LMS auto-coach sets, LNER articulated coach sets"""
+    consist.foamer_facts = """SR and LMS autocoach sets, LNER articulated coach sets"""
 
     return consist
