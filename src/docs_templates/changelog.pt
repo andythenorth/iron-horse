@@ -2,6 +2,39 @@ Changelog
 =========
 
 -------------
+2.9.0 Release
+-------------
+
+*Changes*
+
+- added Chuggypig joker engine, as alternative to Gronk
+    - available around 1960
+    - 35mph / 400hp
+    - inspired by Thomas Hill Steelman, BR Class 07, miscellaneous industrial diesel shunters
+- added Autocoach Set
+    - available around 1915
+    - attach to front or rear of a train with at least one other engine
+    - for OpenTTD reasons, vehicles must have power to lead a train, so these vehicles include a small amount of power
+    - 75mph, combined pax and mail capacity (not refittable)
+    - inspired by SR and LMS auto-coach sets, LNER articulated coach sets
+- increase Lemon speed to 75mph, so it can stick around for longer in steam-diesel transition period, similar to Diablo and Blind Smuir
+- link to grf.farm docs from in-game
+
+
+*Fixes*
+
+- Chinook run cost was too high
+- incorrect pixels for some liveries for gen 4B mail car
+
+
+*Docs*
+
+- link to grf.farm docs from readme
+- adjust Gronk description
+- change the majority of headings in html docs from title case to sentence case
+
+
+-------------
 2.8.0 Release
 -------------
 
