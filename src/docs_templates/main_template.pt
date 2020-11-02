@@ -35,16 +35,16 @@
             <div class="container">
                 <ul class="nav pull-left">
                     <li class="${doc_helper.get_active_nav(doc_name, 'get_started')}">
-                        <a href="get_started.html">Get Started</a>
+                        <a href="get_started.html">Get started</a>
                     </li>
                     <li class="${doc_helper.get_active_nav(doc_name, 'trains')}">
                         <a href="trains.html">Trains</a>
                     </li>
                     <li class="${doc_helper.get_active_nav(doc_name, 'tech_tree')}">
-                        <a href="tech_tree_table_red.html">Tech Tree</a>
+                        <a href="tech_tree_table_red.html">Tech tree</a>
                     </li>
                     <li class="${doc_helper.get_active_nav(doc_name, 'code_reference')}">
-                        <a href="code_reference.html">Code Reference</a>
+                        <a href="code_reference.html">Code reference</a>
                     </li>
                     <li class="${doc_helper.get_active_nav(doc_name, 'train_whack')}">
                         <a href="train_whack.html">Train Whack!</a>
@@ -52,7 +52,7 @@
                 </ul>
                 <ul class="nav pull-right">
                     <li class="${doc_helper.get_active_nav(doc_name, 'translations')}">
-                        <a href="translations.html"><i class="icon-globe icon-white"></i> Help Translate Iron Horse</a>
+                        <a href="translations.html"><i class="icon-globe icon-white"></i> Help translate Iron Horse</a>
                     </li>
                     <li>
                         <a href="${metadata['dev_thread_url']}"><i class="icon-comment icon-white"></i> Discuss at TT-Forums.net</a>

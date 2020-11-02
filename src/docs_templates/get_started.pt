@@ -4,16 +4,16 @@
         <div class="row">
             <div class="span3">
                 <ul class="nav nav-list well">
-                    <li class="nav-header">Get Started</li>
+                    <li class="nav-header">Get started</li>
                     <li><a href="#download-iron-horse">Download Iron Horse</a></li>
-                    <li><a href="#setting-up">Setting up a Game with Iron Horse</a></li>
-                    <li><a href="#what-next">What Next?</a></li>
-                    <li><a href="#iron-horse-changes">Iron Horse Changes</a></li>
+                    <li><a href="#setting-up">Setting up a game with Iron Horse</a></li>
+                    <li><a href="#what-next">What next?</a></li>
+                    <li><a href="#iron-horse-changes">Iron Horse changes</a></li>
                 </ul>
             </div>
             <div class="span9">
                 <div class="page-header">
-                    <h2>Get Started</h2>
+                    <h2>Get started</h2>
                     <ul class="inline">
                         <li><i class="icon-ok-circle"></i> Intro dates ${metadata['dates'][0]}-${metadata['dates'][1]}</li>
                         <li><i class="icon-ok-circle"></i> Compatible with all known cargos</li>
@@ -35,7 +35,7 @@
                             <a class="btn btn-primary" href="http://wiki.openttd.org/Content_downloading">Instructions</a>
                         </div>
                         <div class="span3">
-                            <h3>Download Source</h3>
+                            <h3>Download source code</h3>
                             <p>Checkout source code and <a href="code_reference.html">compile your own Iron Horse</a>.</p>
                             <a class="btn" href="${metadata['repo_url']}">Iron Horse Source Repo</a>
                         </div>
@@ -45,7 +45,7 @@
                 <hr />
                 <br />
                 <div id="setting-up">
-                    <h2>2. Setting Up a Game with Iron Horse</h2>
+                    <h2>2. Setting up a game with Iron Horse</h2>
                     <p class="lead">
                         A few things to know before setting up a Iron Horse game...
                     </p>
@@ -55,7 +55,7 @@
                 <hr />
                 <br />
                 <div id="what-next">
-                    <h2>3. What Next?</h2>
+                    <h2>3. What next?</h2>
 
                     <p class="lead">Find out more about Iron Horse.  Or try it out in OpenTTD!</p>
                     <a class="btn btn-large btn-primary" href="tech_tree_table_red.html">Tech Tree</a>

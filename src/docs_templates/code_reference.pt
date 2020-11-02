@@ -1,10 +1,10 @@
-<tal:title define="global title 'Iron Horse - Code Reference'" />
+<tal:title define="global title 'Iron Horse - Code reference'" />
 
 <tal:main_template define="main_template load: main_template.pt" metal:use-macro="main_template">
 <div metal:fill-slot='body'>
     <div class="container">
         <div class="span12">
-            <h2>Code Reference</h2>
+            <h2>Code reference</h2>
             <h3>${len(consists)} trains</h3>
             <hr />
             <tal:subclasses repeat="subclass doc_helper.get_vehicles_by_subclass(consists)">

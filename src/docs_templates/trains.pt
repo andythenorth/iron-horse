@@ -26,7 +26,7 @@
                                     <li>
                                         <a href="#${base_track_type[0]}-engines">
                                             ${len(doc_helper.get_engines_by_roster_and_base_track_type(roster, base_track_type[0]))}
-                                            ${base_track_type[1]} Engines
+                                            ${base_track_type[1].lower()} engines
                                         </a>
                                     </li>
                                 </tal:not_empty>
@@ -36,7 +36,7 @@
                                     <li>
                                         <a href="#${base_track_type[0]}-wagons">
                                         ${len(doc_helper.get_wagons_by_roster_and_base_track_type(roster, base_track_type[0]))}
-                                        ${base_track_type[1]} Wagons
+                                        ${base_track_type[1].lower()} wagons
                                         </a>
                                     </li>
                                 </tal:not_empty>
@@ -47,7 +47,7 @@
                                 <hr />
                                 <h4 id="${base_track_type[0]}-engines">
                                     ${len(doc_helper.get_engines_by_roster_and_base_track_type(roster, base_track_type[0]))}
-                                    ${base_track_type[1]} Engines
+                                    ${base_track_type[1].lower()} engines
                                 </h4>
                                 <table class="table table-striped tablesorter vehicle-table">
                                     <thead>
@@ -100,7 +100,7 @@
                                 <hr />
                                 <h4 id="${base_track_type[0]}-wagons">
                                     ${len(doc_helper.get_wagons_by_roster_and_base_track_type(roster, base_track_type[0]))}
-                                    ${base_track_type[1]} Wagons
+                                    ${base_track_type[1].lower()} wagons
                                 </h4>
                                 <table class="table table-striped tablesorter vehicle-table">
                                     <thead>

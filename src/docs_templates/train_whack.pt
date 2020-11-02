@@ -7,7 +7,7 @@
     <div class="hero-unit subhead" style="margin-bottom:0;" tal:define="num_consists 10">
         <div class="text-center">
             <h1>Iron Horse: Train Whack</h1>
-            <h2>${num_consists} Randomised train consists</h2>
+            <h2>${num_consists} randomised train consists</h2>
             <p class="lead">
                 You scored <span id="global_high_score_container">0</span>!
                 &nbsp;&nbsp;&nbsp;
@@ -141,9 +141,9 @@
                 }
             </script>
             <p>
-                Play Again?
+                Play again?
                 &nbsp;&nbsp;&nbsp;
-                Track Type:
+                Track type:
                 <a style="color:white;" href="javascript:void(0);" onclick="return reload_with_parameter_changed('match_base_track_type', true);">Same within consist</a>
                 |
                 <a style="color:white;" href="javascript:void(0);" onclick="return reload_with_parameter_changed('match_base_track_type', false);">Random per vehicle</a>
@@ -155,7 +155,7 @@
                 |
                 <a style="color:white;" href="javascript:void(0);" onclick="return reload_with_parameter_changed('sprite_size_factor', 4);">4x</a>
                 &nbsp;&nbsp;&nbsp;
-                Boring Mode:
+                Boring mode:
                 <a style="color:white;" href="javascript:void(0);" onclick="return reload_with_parameter_changed('boring_mode', false);">Off</a>
                 |
                 <a style="color:white;" href="javascript:void(0);" onclick="return reload_with_parameter_changed('boring_mode', true);">On</a>

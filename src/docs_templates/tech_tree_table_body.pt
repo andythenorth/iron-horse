@@ -4,16 +4,16 @@
         <div class="span12">
             <p>
                 ${'Showing' if not simplified_gameplay else 'Show'}
-                Full Gameplay:
-                <a href="tech_tree_table_red.html">Red &amp; White</a>
+                full gameplay:
+                <a href="tech_tree_table_red.html">red &amp; white</a>
                 |
-                <a href="tech_tree_table_blue.html">Blue</a>
+                <a href="tech_tree_table_blue.html">blue</a>
                 &nbsp;&nbsp;&nbsp;
                 ${'Showing' if simplified_gameplay else 'Show'}
-                Simplified Gameplay:
-                <a href="tech_tree_table_red_simplified.html">Red &amp; White</a>
+                simplified gameplay:
+                <a href="tech_tree_table_red_simplified.html">red &amp; white</a>
                 |
-                <a href="tech_tree_table_blue_simplified.html">Blue</a>
+                <a href="tech_tree_table_blue_simplified.html">blue</a>
             </p>
             <tal:tech_tree define="tech_tree doc_helper.engines_as_tech_tree(consists, simplified_gameplay)">
                 <tal:base_track_type_and_label repeat="base_track_type_and_label tech_tree.keys()">
