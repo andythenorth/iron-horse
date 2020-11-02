@@ -14,6 +14,7 @@ from collections import defaultdict
 import iron_horse
 import utils
 import global_constants
+from polar_fox import git_info
 
 # get the strings from base lang file so they can be used in docs
 base_lang_strings = utils.parse_base_lang()
@@ -409,12 +410,12 @@ def render_docs(doc_list, file_type, docs_output_path, iron_horse, consists, use
         # .pt is the conventional extension for chameleon page templates
         template = docs_templates[doc_name + '.pt']
         doc = template(consists=consists, global_constants=global_constants, registered_rosters=iron_horse.registered_rosters, makefile_args=makefile_args,
-                       base_lang_strings=base_lang_strings, metadata=metadata, utils=utils, doc_helper=DocHelper(), doc_name=doc_name)
+                       git_info=git_info, base_lang_strings=base_lang_strings, metadata=metadata, utils=utils, doc_helper=DocHelper(), doc_name=doc_name)
         if use_markdown:
             # the doc might be in markdown format, if so we need to render markdown to html, and wrap the result in some boilerplate html
             markdown_wrapper = docs_templates['markdown_wrapper.pt']
             doc = markdown_wrapper(content=markdown.markdown(doc), consists=consists, global_constants=global_constants, makefile_args=makefile_args,
-                                   metadata=metadata, utils=utils, doc_helper=DocHelper(), doc_name=doc_name)
+                                   git_info=git_info, metadata=metadata, utils=utils, doc_helper=DocHelper(), doc_name=doc_name)
         if file_type == 'html':
             subdir = 'html'
         else:
@@ -433,7 +434,7 @@ def render_docs_vehicle_details(consist, docs_output_path, consists):
     template = docs_templates['vehicle_details.pt']
     doc_name = consist.id
     doc = template(consist=consist, consists=consists, global_constants=global_constants, registered_rosters=iron_horse.registered_rosters, makefile_args=makefile_args,
-                   base_lang_strings=base_lang_strings, metadata=metadata, utils=utils, doc_helper=DocHelper(), doc_name=doc_name)
+                   git_info=git_info, base_lang_strings=base_lang_strings, metadata=metadata, utils=utils, doc_helper=DocHelper(), doc_name=doc_name)
     doc_file = codecs.open(os.path.join(
         docs_output_path, 'html', doc_name + '.html'), 'w', 'utf8')
     doc_file.write(doc)

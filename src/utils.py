@@ -7,7 +7,8 @@ def get_makefile_args(sys):
     if len(sys.argv) > 1:
         makefile_args = {'repo_revision': sys.argv[1], 'repo_version': sys.argv[2], 'num_pool_workers': int(sys.argv[3]), 'roster': sys.argv[4],
                          'suppress_cargo_sprites': True if sys.argv[5] == 'True' else False}
-    else:  # provide some defaults so templates don't explode when testing python script without command line args
+    else:
+        # provide some defaults so templates don't explode when testing python script without command line args
         makefile_args = {'repo_revision': 0, 'repo_version': 0}
     return makefile_args
 
