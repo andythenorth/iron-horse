@@ -7,7 +7,9 @@
 
 <div metal:fill-slot='body'>
     <div class="page-header">
-        <p class="lead"><strong>This page is outdated.</strong></p>
+        <div class="alert alert-error">
+            <strong>This page is outdated. Translations cannot be updated currently (November 2020).</strong>
+        </div>
         <hr />
         <h2>Help Translate Iron Horse</h2>
         <p>Iron Horse has already been translated into multiple languages, and more translations are always welcome.</p>

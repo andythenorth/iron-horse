@@ -3,6 +3,7 @@ grf {
 	grfid: "${global_constants.grfid}";
 	name: string(STR_GRF_NAME);
 	desc: string(STR_GRF_DESCRIPTION);
+	url: string(STR_GRF_DOCS_URL);
 	version: ${git_info.get_revision()};
 	min_compatible_version: 4756;
 	param 0 {

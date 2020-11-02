@@ -4,7 +4,7 @@ Iron Horse ${git_info.get_version()}
 Trains, for OpenTTD
 
 Iron Horse docs are published online:
-  http://bundles.openttdcoop.org/iron-horse/releases/LATEST/docs/html/get_started.html
+  ${utils.get_docs_url()}
 
 =======
 GRF Name: Iron Horse

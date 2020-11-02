@@ -26,19 +26,13 @@
                 <div id="download-iron-horse">
                     <h2>1. Download Iron Horse</h2>
                     <p class="lead">
-                        Iron Horse is available from the content service in OpenTTD, as a zip for manual installation,
-                        or as a source checkout for compiling locally (requires mercurial and various python dependencies).
+                        Iron Horse is available from the content service in OpenTTD or as a source checkout for compiling locally (requires git and various python dependencies).
                     </p>
                     <div class="row">
                         <div class="span3">
                             <h3>Download in OpenTTD</h3>
                             <p><strong>Easiest</strong>: get Iron Horse from the OpenTTD content service.</p>
                             <a class="btn btn-primary" href="http://wiki.openttd.org/Content_downloading">Instructions</a>
-                        </div>
-                        <div class="span3">
-                            <h3>Download Zip</h3>
-                            <p>Get the latest Iron Horse release for <a href="http://wiki.openttd.org/Newgrf#Manual_install">manual install</a>.</p>
-                            <a class="btn btn-info" href="http://bundles.openttdcoop.org/iron-horse/releases/LATEST/">Download Iron Horse</a>
                         </div>
                         <div class="span3">
                             <h3>Download Source</h3>
@@ -55,7 +49,7 @@
                     <p class="lead">
                         A few things to know before setting up a Iron Horse game...
                     </p>
-                    UNFINISHED - PARAMETERS ETC
+                    <div class="alert alert-warning">UNFINISHED - NEEDS TO LIST PARAMETERS, TERMITE TRACKS ETC</div>
                 </div>
                 <br />
                 <hr />
@@ -64,7 +58,10 @@
                     <h2>3. What Next?</h2>
 
                     <p class="lead">Find out more about Iron Horse.  Or try it out in OpenTTD!</p>
-                    <a class="btn btn-large btn-primary" href="trains.html">List of Trains</a>
+                    <a class="btn btn-large btn-primary" href="tech_tree_table_red.html">Tech Tree</a>
+                    &nbsp;
+                    <a class="btn btn-large btn-info" href="trains.html">List of Trains</a>
+                    &nbsp;
                     <a class="btn btn-large" href="code_reference.html">Code Reference</a>
                 </div>
                 <hr />

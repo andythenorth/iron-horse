@@ -49,7 +49,7 @@ def main():
         dst_file = codecs.open(os.path.join(lang_dst, i + '.lng'), 'w', 'utf8')
         lang_content = src_file.read()
         lang_content = lang_content + \
-            lang_template(consists=consists, makefile_args=makefile_args, git_info=git_info)
+            lang_template(consists=consists, makefile_args=makefile_args, git_info=git_info, utils=utils)
         dst_file.write(lang_content)
         dst_file.close()
 
