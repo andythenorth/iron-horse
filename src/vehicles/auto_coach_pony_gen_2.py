@@ -2,7 +2,7 @@ from train import AutoCoachCombineConsist, AutoCoachCombineUnitMail, AutoCoachCo
 
 # only one autocoach, as autoreplace cannot handle mixed cargo articulated consists
 # this means that gen 3 engines will be speed-limited by this unit
-# but speed still compares favourably with equivalent era railcars
+# but speed still compares favourably with equivalent era railcars, and there's a capacity bonus also
 
 def main(roster_id):
     consist = AutoCoachCombineConsist(
@@ -13,22 +13,22 @@ def main(roster_id):
         replacement_consist_id='slammer', # auto-coach ends with gen 4 Slammer
         gen=2,
         intro_date_offset=15, # introduce significantly later than gen epoch
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(
         type=AutoCoachCombineUnitMail,
-        weight=16,
+        weight=16, # capacity bonus vs similar era non-articulated vehicles
         chassis='empty_20px',
     )
 
     consist.add_unit(
         type=AutoCoachCombineUnitPax,
-        weight=16,
+        weight=16, # capacity bonus vs similar era non-articulated vehicles
         chassis='empty_20px',
     )
 
-    consist.description = """"""
-    consist.foamer_facts = """"""
+    consist.description = """A coach that you can drive the engine from?  Eee, it's magic."""
+    consist.foamer_facts = """SR and LMS auto-coach sets, LNER articulated coach sets"""
 
     return consist
