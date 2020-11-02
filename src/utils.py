@@ -34,7 +34,6 @@ def parse_base_lang():
         ':', 1)[1].strip()) for line in text if ':' in line)
     return strings
 
-# this should be in utils
 def get_offsets(length, flipped=False):
     # offsets can also be over-ridden on a per-model basis by providing this property in the model class
     base_offsets = global_constants.default_spritesheet_offsets[str(length)]
