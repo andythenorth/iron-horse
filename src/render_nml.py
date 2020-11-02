@@ -10,6 +10,7 @@ from time import time
 import iron_horse
 import utils
 import global_constants
+from polar_fox import git_info
 
 # get args passed by makefile
 makefile_args = utils.get_makefile_args(sys)
@@ -40,7 +41,8 @@ def render_header_item_nml(header_item, consists):
                                                     haulage_bonus_engine_id_tree=iron_horse.get_haulage_bonus_engine_id_tree(),
                                                     pax_car_ids=iron_horse.get_pax_car_ids(),
                                                     livery_2_engine_ids=iron_horse.get_livery_2_engine_ids(),
-                                                    makefile_args=makefile_args))
+                                                    makefile_args=makefile_args,
+                                                    git_info=git_info))
 
 def render_consist_nml(consist):
     result = utils.unescape_chameleon_output(consist.render(templates))
