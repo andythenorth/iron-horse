@@ -16,6 +16,7 @@ from vehicles import brenner_cab
 from vehicles import brenner_middle
 from vehicles import bright_country
 from vehicles import buffalo
+from vehicles import captain_steel
 from vehicles import carrack
 #from vehicles import challenger # for NA roster
 from vehicles import cheddar_valley
@@ -239,6 +240,7 @@ def main(disabled=False):
                                buffalo,
                                saxon,
                                little_bear,
+                               captain_steel,
                                goliath,
                                # freight
                                hercules,
