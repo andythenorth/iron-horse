@@ -3,6 +3,16 @@ Changelog
 
 
 -------------
+2.10.1 Release
+-------------
+
+*Fixes*
+
+- remove experimental company colour handling for wagons, which was accidentally shipped in versions 2.8.0 thru 2.10.0
+    - this is a revert of https://github.com/andythenorth/iron-horse/commit/5b3b0b015ad2bbf48f4e148ce763ac564f5d617c
+
+
+-------------
 2.10.0 Release
 -------------
 
