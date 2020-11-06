@@ -13,15 +13,14 @@ def main(roster_id):
                             tractive_effort_coefficient=0.375,
                             random_reverse=True,
                             gen=4,
-                            intro_date_offset=-6,
-                            sprites_complete=False)
+                            sprites_complete=True)
 
     consist.add_unit(type=DieselEngineUnit,
                      weight=70,
                      vehicle_length=6,
                      spriterow_num=0)
 
-    consist.description = """"""
-    consist.foamer_facts = """Alco s1, EMD SW1200, Brush Bagnall,"""
+    consist.description = """Imported job. No fuss, no bother."""
+    consist.foamer_facts = """Alco S1, EMD switchers, Brush Bagnall steelworks locos"""
 
     return consist
