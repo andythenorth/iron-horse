@@ -3,16 +3,76 @@
 <!--! as of Dec 2019 this is not used with articulated vehicles,
       however if articulated vehicle support is need it will need alternatives checking FORWARD_SELF(n)
       these will have to be duplicates of these switches on a repeat, with named entry points -->
-random_switch (FEAT_TRAINS, SELF, switch_colour_mapping_flipped) {
-    1: return base_sprite_2cc + 16 * company_colour2 + company_colour1; <!--! apply regular 1CC and 2CC -->
+
+<!--! take colour from parameter, either the 1cc or 2cc result will be used, depending on vehicle, switching both is not supported -->
+switch (FEAT_TRAINS, SELF, switch_colour_mapping_1cc_result, param_wagon_random_colour, param_wagon_random_colour) {
+    0: return base_sprite_2cc + 16 * company_colour2 + company_colour1; <!--! apply regular 1CC and 2CC -->
     1: return base_sprite_2cc + 16 * company_colour1 + company_colour2; <!--! swap 1CC and 2CC -->
+    2: return palette_2cc(COLOUR_DARK_BLUE, company_colour2);
+    3: return palette_2cc(COLOUR_PALE_GREEN, company_colour2);
+    4: return palette_2cc(COLOUR_PINK, company_colour2);
+    5: return palette_2cc(COLOUR_YELLOW, company_colour2);
+    6: return palette_2cc(COLOUR_RED, company_colour2);
+    7: return palette_2cc(COLOUR_LIGHT_BLUE, company_colour2);
+    8: return palette_2cc(COLOUR_GREEN, company_colour2);
+    9: return palette_2cc(COLOUR_DARK_GREEN, company_colour2);
+    10: return palette_2cc(COLOUR_BLUE, company_colour2);
+    11: return palette_2cc(COLOUR_CREAM, company_colour2);
+    12: return palette_2cc(COLOUR_MAUVE, company_colour2);
+    13: return palette_2cc(COLOUR_PURPLE, company_colour2);
+    14: return palette_2cc(COLOUR_ORANGE, company_colour2);
+    15: return palette_2cc(COLOUR_BROWN, company_colour2);
+    16: return palette_2cc(COLOUR_GREY, company_colour2);
+    17: return palette_2cc(COLOUR_WHITE, company_colour2);
 }
-random_switch (FEAT_TRAINS, SELF, switch_colour_mapping_unflipped) {
+switch (FEAT_TRAINS, SELF, switch_colour_mapping_2cc_result, param_wagon_random_colour, param_wagon_random_colour) {
+    0: return base_sprite_2cc + 16 * company_colour2 + company_colour1; <!--! apply regular 1CC and 2CC -->
     1: return base_sprite_2cc + 16 * company_colour1 + company_colour2; <!--! swap 1CC and 2CC -->
-    1: return base_sprite_2cc + 16 * company_colour2 + company_colour1; <!--! apply regular 1CC and 2CC -->
+    2: return palette_2cc(company_colour1, COLOUR_DARK_BLUE);
+    3: return palette_2cc(company_colour1, COLOUR_PALE_GREEN);
+    4: return palette_2cc(company_colour1, COLOUR_PINK);
+    5: return palette_2cc(company_colour1, COLOUR_YELLOW);
+    6: return palette_2cc(company_colour1, COLOUR_RED);
+    7: return palette_2cc(company_colour1, COLOUR_LIGHT_BLUE);
+    8: return palette_2cc(company_colour1, COLOUR_GREEN);
+    9: return palette_2cc(company_colour1, COLOUR_DARK_GREEN);
+    10: return palette_2cc(company_colour1, COLOUR_BLUE);
+    11: return palette_2cc(company_colour1, COLOUR_CREAM);
+    12: return palette_2cc(company_colour1, COLOUR_MAUVE);
+    13: return palette_2cc(company_colour1, COLOUR_PURPLE);
+    14: return palette_2cc(company_colour1, COLOUR_ORANGE);
+    15: return palette_2cc(company_colour1, COLOUR_BROWN);
+    16: return palette_2cc(company_colour1, COLOUR_GREY);
+    17: return palette_2cc(company_colour1, COLOUR_WHITE);
 }
+
+random_switch (FEAT_TRAINS, SELF, switch_randomise_1cc) {
+    1: switch_colour_mapping_1cc_result(param_wagon_random_colour_4);
+    1: switch_colour_mapping_1cc_result(param_wagon_random_colour_3);
+    1: switch_colour_mapping_1cc_result(param_wagon_random_colour_2);
+    1: switch_colour_mapping_1cc_result(param_wagon_random_colour_1);
+}
+random_switch (FEAT_TRAINS, SELF, switch_randomise_2cc) {
+    1: switch_colour_mapping_2cc_result(param_wagon_random_colour_4);
+    1: switch_colour_mapping_2cc_result(param_wagon_random_colour_3);
+    1: switch_colour_mapping_2cc_result(param_wagon_random_colour_2);
+    1: switch_colour_mapping_2cc_result(param_wagon_random_colour_1);
+}
+
+<!--! is it 1cc or 2cc we're randomising (we don't support both because it's combinatorial silliness -->
+switch (FEAT_TRAINS, SELF, switch_colour_mapping_1cc_or_2cc, LOAD_TEMP(0)) {
+    1: return switch_randomise_1cc;
+    2: return switch_randomise_2cc;
+}
+
 <!--! handle user flipped state -->
-switch (FEAT_TRAINS, SELF, switch_colour_mapping, vehicle_is_flipped) {
-    1: return switch_colour_mapping_flipped;
-    return switch_colour_mapping_unflipped;
+switch (FEAT_TRAINS, SELF, switch_colour_mapping, company_colour_to_randomise, [STORE_TEMP(company_colour_to_randomise, 0), vehicle_is_flipped]) {
+    1: return base_sprite_2cc + 16 * company_colour2 + company_colour1; <!--! apply regular 1CC and 2CC -->
+    return switch_colour_mapping_1cc_or_2cc;
 }
+
+switch (FEAT_TRAINS, SELF, switch_colour_mapping_purchase, company_colour_to_randomise, company_colour_to_randomise) {
+    1: switch_colour_mapping_1cc_result(param_wagon_random_colour_1);
+    2: switch_colour_mapping_2cc_result(param_wagon_random_colour_2);
+}
+
