@@ -3,81 +3,6 @@
 <!--! as of Dec 2019 this is not used with articulated vehicles,
       however if articulated vehicle support is need it will need alternatives checking FORWARD_SELF(n)
       these will have to be duplicates of these switches on a repeat, with named entry points -->
-switch (FEAT_TRAINS, SELF, switch_colour_mapping_unflipped, 0) {
-    return base_sprite_2cc + 16 * company_colour2 + company_colour1; <!--! apply regular 1CC and 2CC -->
-}
-switch (FEAT_TRAINS, SELF, switch_colour_mapping_flipped, 0) {
-    return base_sprite_2cc + 16 * company_colour1 + company_colour2; <!--! swap 1CC and 2CC -->
-}
-
-random_switch (FEAT_TRAINS, SELF, switch_colour_mapping_random_flipped) {
-    1: return base_sprite_2cc + 16 * company_colour2 + company_colour1; <!--! apply regular 1CC and 2CC -->
-    1: return base_sprite_2cc + 16 * company_colour1 + company_colour2; <!--! swap 1CC and 2CC -->
-}
-random_switch (FEAT_TRAINS, SELF, switch_colour_mapping_random_unflipped) {
-    1: return base_sprite_2cc + 16 * company_colour1 + company_colour2; <!--! swap 1CC and 2CC -->
-    1: return base_sprite_2cc + 16 * company_colour2 + company_colour1; <!--! apply regular 1CC and 2CC -->
-}
-<!--! handle user flipped state - this is completely mad? -->
-
-
-<!--! var 61 eh, let's document this for once
-    [ store an offset to a vehicle in the same ID chain into register 0x10F; in this case the offset is to the *2nd* vehicle in the chain,
-     [check var 0x61, I never remember what the 0 is but it's usually 0, then a mask (byte in this case), then the var, which is C8 - vehicle is reversed (or not)]
-     ]
-     The return values are documented as FE or FF, but FE seems to be the actual one returned for a flipped vehicle
--->
-switch (FEAT_TRAINS, SELF, switch_check_vehicle_0_flip, [STORE_TEMP(-1 * position_in_vehid_chain, 0x10F), var[0x61, 0, 0x000000FF, 0xC8]]) {
-    254: return 1;
-    return 0;
-}
-<!--! abstract the self and vehicle 0 (in id chain) flipped states to return -1 if flipped or, 1 if not
-      this means we can multiply the results by each other
-      1 * 1 = 1 so recolour 1
-      -1 * 1 = -1 so recolour 2
-      1 * -1 = -1 so recolour 2
-      -1 * -1 = so recolour 1
--->
-switch (FEAT_TRAINS, SELF, switch_colour_mapping_non_random_not_vehicle_0, [switch_check_vehicle_0_flip() + vehicle_is_flipped]) {
-    1: return switch_colour_mapping_flipped;
-    return switch_colour_mapping_unflipped;
-}
-<!--! for vehicle 0, simply handle user flipped state -->
-switch (FEAT_TRAINS, SELF, switch_colour_mapping_non_random_vehicle_0, vehicle_is_flipped) {
-    1: return switch_colour_mapping_flipped;
-    return switch_colour_mapping_unflipped;
-}
-
-<!--! vehicles 0 and 1 in ID chain need special case handling -->
-switch (FEAT_TRAINS, SELF, switch_colour_mapping_non_random, position_in_vehid_chain) {
-    0: return switch_colour_mapping_non_random_vehicle_0;
-    return switch_colour_mapping_non_random_not_vehicle_0;
-}
-
-<!--! if vehicle in 2nd position of id chain is not flipped, simply use random CC1/CC2, toggled on flipped state of this vehicle -->
-switch (FEAT_TRAINS, SELF, switch_colour_mapping_use_self_flip_state, vehicle_is_flipped) {
-    1: return switch_colour_mapping_random_flipped;
-    return switch_colour_mapping_random_unflipped;
-}
-switch (FEAT_TRAINS, SELF, switch_colour_mapping_check_last, [STORE_TEMP(position_in_vehid_chain_from_end, 0x10F), var[0x61, 0, 0x000000FF, 0xC8]]) {
-    254..255: return switch_colour_mapping_use_self_flip_state;
-    return switch_colour_mapping_non_random;
-}
-<!--! for 1-vehicle id chains, can't be checking for both first and last as will be same vehicle, confusing -->
-switch (FEAT_TRAINS, SELF, switch_colour_mapping, position_in_vehid_chain) {
-    0: return switch_colour_mapping_non_random_vehicle_0;
-    return switch_colour_mapping_check_last;
-}
-
-
-
-/* OLD VERSION
-
-<!--! for random colour remapping  -->
-
-<!--! as of Dec 2019 this is not used with articulated vehicles,
-      however if articulated vehicle support is need it will need alternatives checking FORWARD_SELF(n)
-      these will have to be duplicates of these switches on a repeat, with named entry points -->
 random_switch (FEAT_TRAINS, SELF, switch_colour_mapping_flipped) {
     1: return base_sprite_2cc + 16 * company_colour2 + company_colour1; <!--! apply regular 1CC and 2CC -->
     1: return base_sprite_2cc + 16 * company_colour1 + company_colour2; <!--! swap 1CC and 2CC -->
@@ -91,5 +16,3 @@ switch (FEAT_TRAINS, SELF, switch_colour_mapping, vehicle_is_flipped) {
     1: return switch_colour_mapping_flipped;
     return switch_colour_mapping_unflipped;
 }
-
-*/
