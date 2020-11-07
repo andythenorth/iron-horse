@@ -1,6 +1,23 @@
 Changelog
 =========
 
+-------------
+2.11.0 Release
+-------------
+
+*Changes*
+
+- experimental 'Random Wagon Colour' parameters
+    - freight wagons will randomise to 1 of 4 colours when built
+    - players can use the parameters to control these colours
+    - options for specific colours, or company colours 1 and 2
+    - ctrl-click flip the vehicle in depot to always current company colours (non-random)
+    - example 1: set 4 different colours for more variety in trains
+    - example 2: turn off wagon colour randomisation by setting all 4 parameters to the same colour
+    - example 3: use as a workaround where OpenTTD group liveries don't support company colour choices for wagons
+- feature is experimental and may change
+- feature is compatible with Iron Horse 2.8.0+ savegames, but the new parameters may not be visible unless OpenTTD is restarted
+
 
 -------------
 2.10.1 Release
