@@ -72,7 +72,8 @@ switch (FEAT_TRAINS, SELF, switch_colour_scheme_2cc, param_wagon_colour_randomis
     0: switch_colour_scheme_random_blue_2cc_result;
     1: switch_colour_scheme_random_green_2cc_result;
     2: switch_colour_scheme_random_red_2cc_result;
-    3: switch_colour_scheme_random_grey_brown_2cc_result;
+    3: switch_colour_scheme_random_yellow_2cc_result;
+    4: switch_colour_scheme_random_grey_brown_2cc_result;
 }
 
 <!--! is it 1cc or 2cc we're randomising (we don't support both because it's combinatorial silliness -->
