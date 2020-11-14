@@ -60,6 +60,23 @@ random_switch (FEAT_TRAINS, SELF, switch_colour_scheme_random_grey_brown_2cc_res
     1: return base_sprite_2cc + 16 * company_colour1 + company_colour2; <!--! swap 1CC and 2CC -->
 </tal:legacy_code>
 
+<!--! case of totally random choices -->
+<!--! !!! should be using consist random bits, not vehicle??? -->
+random_switch (FEAT_TRAINS, SELF, switch_colour_scheme_totally_random_1cc) {
+    1: switch_colour_scheme_random_blue_1cc_result;
+    1: switch_colour_scheme_random_green_1cc_result;
+    1: switch_colour_scheme_random_red_1cc_result;
+    1: switch_colour_scheme_random_yellow_1cc_result;
+    1: switch_colour_scheme_random_grey_brown_1cc_result;
+}
+random_switch (FEAT_TRAINS, SELF, switch_colour_scheme_totally_random_2cc) {
+    1: switch_colour_scheme_random_blue_2cc_result;
+    1: switch_colour_scheme_random_green_2cc_result;
+    1: switch_colour_scheme_random_red_2cc_result;
+    1: switch_colour_scheme_random_yellow_2cc_result;
+    1: switch_colour_scheme_random_grey_brown_2cc_result;
+}
+
 <!--! take colour from parameter, either the 1cc or 2cc result will be used, depending on vehicle, switching both is not supported -->
 switch (FEAT_TRAINS, SELF, switch_colour_scheme_1cc, param_wagon_colour_randomisation_strategy) {
     0: switch_colour_scheme_random_blue_1cc_result;
@@ -67,6 +84,7 @@ switch (FEAT_TRAINS, SELF, switch_colour_scheme_1cc, param_wagon_colour_randomis
     2: switch_colour_scheme_random_red_1cc_result;
     3: switch_colour_scheme_random_yellow_1cc_result;
     4: switch_colour_scheme_random_grey_brown_1cc_result;
+    5: switch_colour_scheme_totally_random_1cc;
 }
 switch (FEAT_TRAINS, SELF, switch_colour_scheme_2cc, param_wagon_colour_randomisation_strategy) {
     0: switch_colour_scheme_random_blue_2cc_result;
@@ -74,6 +92,7 @@ switch (FEAT_TRAINS, SELF, switch_colour_scheme_2cc, param_wagon_colour_randomis
     2: switch_colour_scheme_random_red_2cc_result;
     3: switch_colour_scheme_random_yellow_2cc_result;
     4: switch_colour_scheme_random_grey_brown_2cc_result;
+    5: switch_colour_scheme_totally_random_2cc;
 }
 
 <!--! is it 1cc or 2cc we're randomising (we don't support both because it's combinatorial silliness -->

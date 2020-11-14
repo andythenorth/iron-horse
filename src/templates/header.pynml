@@ -49,10 +49,10 @@ grf {
 			desc: string(STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_DESC);
 			type: int;
 			min_value: 0;
-			max_value: 4;
+			max_value: 5;
             def_value: 0;
 			names: {
-			    <tal:options repeat="option range(5)">
+			    <tal:options repeat="option range(6)">
                     ${option}: string(STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_${option});
 			    </tal:options>
 			};

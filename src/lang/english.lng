@@ -21,6 +21,7 @@ STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_1          :Shades of green
 STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_2          :Shades of red
 STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_3          :Shades of yellow
 STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_4          :Shades of grey and brown
+STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_5          :Totally random
 
 # keep these alphabetised, easier
 STR_NAME_SUFFIX_DIESEL                                          :Diesel
