@@ -1191,7 +1191,7 @@ class CarConsist(Consist):
         # assume all wagons randomly swap CC, revert to False in wagon subclasses as needed
         self.use_colour_randomisation_strategies = True
         # set to 2 in subclass if 2cc should be randomised - can't randomise both, too fiddly
-        self.company_colour_to_randomise = 1
+        self.cc_num_to_randomise = 1
 
     @property
     def buy_cost(self):
@@ -1602,7 +1602,7 @@ class DumpCarHighSideConsist(DumpCarConsistBase):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos['dump_high_sides']
         self._joker = True
-        self.company_colour_to_randomise = 2
+        self.cc_num_to_randomise = 2
 
 
 class DumpCarScrapMetalConsist(DumpCarConsistBase):
@@ -1870,7 +1870,7 @@ class LivestockCarConsist(CarConsist):
         self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['freight_core']
         # allow flipping, used to flip company colour
         self.allow_flip = True
-        self.company_colour_to_randomise = 2
+        self.cc_num_to_randomise = 2
         # Graphics configuration
         self.roof_type = 'freight'
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(id_base='livestock_car',
@@ -2325,7 +2325,7 @@ class StakeCarConsist(CarConsist):
         self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['non_core_wagons']
         # allow flipping, used to flip company colour
         self.allow_flip = True
-        self.company_colour_to_randomise = 2
+        self.cc_num_to_randomise = 2
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(piece='stake')
 
@@ -2394,7 +2394,7 @@ class TarpaulinCarConsist(CarConsist):
         self._joker = True
         # allow flipping, used to flip company colour
         self.allow_flip = True
-        self.company_colour_to_randomise = 2
+        self.cc_num_to_randomise = 2
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(id_base='tarpaulin_car',
                                                                   recolour_maps=graphics_constants.tarpaulin_car_livery_recolour_maps)

@@ -85,12 +85,12 @@ switch (FEAT_TRAINS, SELF, switch_colour_scheme_2cc, param_wagon_colour_randomis
 }-->
 
 <!--! handle user flipped state -->
-switch (FEAT_TRAINS, SELF, switch_colour_mapping, company_colour_to_randomise, [STORE_TEMP(company_colour_to_randomise, 0), vehicle_is_flipped]) {
+switch (FEAT_TRAINS, SELF, switch_colour_mapping, cc_num_to_randomise, [STORE_TEMP(cc_num_to_randomise, 0), vehicle_is_flipped]) {
     1: return base_sprite_2cc + 16 * company_colour2 + company_colour1; <!--! apply regular 1CC and 2CC -->
     return switch_colour_scheme_1cc;
 }
 
-switch (FEAT_TRAINS, SELF, switch_colour_mapping_purchase, company_colour_to_randomise, company_colour_to_randomise) {
+switch (FEAT_TRAINS, SELF, switch_colour_mapping_purchase, cc_num_to_randomise, cc_num_to_randomise) {
     1: switch_colour_scheme_1cc;
     2: switch_colour_scheme_2cc;
 }
