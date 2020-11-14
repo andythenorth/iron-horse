@@ -44,61 +44,16 @@ grf {
 		}
 	}
 	param 3 {
-		param_wagon_random_colour_1 {
-			name: string(STR_PARAM_WAGON_RANDOM_COLOUR_1);
-			desc: string(STR_PARAM_WAGON_RANDOM_COLOUR_DESC);
+		param_wagon_colour_randomisation_strategy {
+			name: string(STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY);
+			desc: string(STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_DESC);
 			type: int;
 			min_value: 0;
-			max_value: 17;
+			max_value: 3;
             def_value: 0;
 			names: {
-			    <tal:options repeat="option range(18)">
-                    ${option}: string(STR_PARAM_WAGON_RANDOM_COLOUR_OPTION_${option});
-			    </tal:options>
-			};
-		}
-	}
-	param 4 {
-		param_wagon_random_colour_2 {
-			name: string(STR_PARAM_WAGON_RANDOM_COLOUR_2);
-			desc: string(STR_PARAM_WAGON_RANDOM_COLOUR_DESC);
-			type: int;
-			min_value: 0;
-			max_value: 17;
-            def_value: 1;
-			names: {
-			    <tal:options repeat="option range(18)">
-                    ${option}: string(STR_PARAM_WAGON_RANDOM_COLOUR_OPTION_${option});
-			    </tal:options>
-			};
-		}
-	}
-	param 5 {
-		param_wagon_random_colour_3 {
-			name: string(STR_PARAM_WAGON_RANDOM_COLOUR_3);
-			desc: string(STR_PARAM_WAGON_RANDOM_COLOUR_DESC);
-			type: int;
-			min_value: 0;
-			max_value: 17;
-            def_value: 0;
-			names: {
-			    <tal:options repeat="option range(18)">
-                    ${option}: string(STR_PARAM_WAGON_RANDOM_COLOUR_OPTION_${option});
-			    </tal:options>
-			};
-		}
-	}
-	param 6 {
-		param_wagon_random_colour_4 {
-			name: string(STR_PARAM_WAGON_RANDOM_COLOUR_4);
-			desc: string(STR_PARAM_WAGON_RANDOM_COLOUR_DESC);
-			type: int;
-			min_value: 0;
-			max_value: 17;
-            def_value: 1;
-			names: {
-			    <tal:options repeat="option range(18)">
-                    ${option}: string(STR_PARAM_WAGON_RANDOM_COLOUR_OPTION_${option});
+			    <tal:options repeat="option range(4)">
+                    ${option}: string(STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_${option});
 			    </tal:options>
 			};
 		}

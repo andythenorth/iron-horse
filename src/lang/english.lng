@@ -14,29 +14,12 @@ STR_PARAM_ROSTER_DESC                                           :Choose which se
 STR_PARAM_ROSTER_OPTION_0                                       :Iron Pony
 STR_PARAM_ROSTER_OPTION_1                                       :Iron Llama
 STR_PARAM_ROSTER_OPTION_2                                       :Iron Antelope
-STR_PARAM_WAGON_RANDOM_COLOUR_1                                 :Random Wagon Colour 1
-STR_PARAM_WAGON_RANDOM_COLOUR_2                                 :Random Wagon Colour 2
-STR_PARAM_WAGON_RANDOM_COLOUR_3                                 :Random Wagon Colour 3
-STR_PARAM_WAGON_RANDOM_COLOUR_4                                 :Random Wagon Colour 4
-STR_PARAM_WAGON_RANDOM_COLOUR_DESC                              :
-STR_PARAM_WAGON_RANDOM_COLOUR_OPTION_0                          :Company Colour 1
-STR_PARAM_WAGON_RANDOM_COLOUR_OPTION_1                          :Company Colour 2
-STR_PARAM_WAGON_RANDOM_COLOUR_OPTION_2                          :Dark Blue
-STR_PARAM_WAGON_RANDOM_COLOUR_OPTION_3                          :Pale Green
-STR_PARAM_WAGON_RANDOM_COLOUR_OPTION_4                          :Pink
-STR_PARAM_WAGON_RANDOM_COLOUR_OPTION_5                          :Yellow
-STR_PARAM_WAGON_RANDOM_COLOUR_OPTION_6                          :Red
-STR_PARAM_WAGON_RANDOM_COLOUR_OPTION_7                          :Light Blue
-STR_PARAM_WAGON_RANDOM_COLOUR_OPTION_8                          :Green
-STR_PARAM_WAGON_RANDOM_COLOUR_OPTION_9                          :Dark Green
-STR_PARAM_WAGON_RANDOM_COLOUR_OPTION_10                         :Blue
-STR_PARAM_WAGON_RANDOM_COLOUR_OPTION_11                         :Cream
-STR_PARAM_WAGON_RANDOM_COLOUR_OPTION_12                         :Mauve
-STR_PARAM_WAGON_RANDOM_COLOUR_OPTION_13                         :Purple
-STR_PARAM_WAGON_RANDOM_COLOUR_OPTION_14                         :Orange
-STR_PARAM_WAGON_RANDOM_COLOUR_OPTION_15                         :Brown
-STR_PARAM_WAGON_RANDOM_COLOUR_OPTION_16                         :Grey
-STR_PARAM_WAGON_RANDOM_COLOUR_OPTION_17                         :White
+STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY                   :Wagon Colour Randomisation Strategy
+STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_DESC              :CABBAGE
+STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_0          :Shades of blue
+STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_1          :Shades of green
+STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_2          :Shades of red
+STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_3          :Shades of yellow
 
 # keep these alphabetised, easier
 STR_NAME_SUFFIX_DIESEL                                          :Diesel
