@@ -101,8 +101,6 @@ class Consist(object):
         self.gestalt_graphics = GestaltGraphics()
         # option to provide automatic roof for all units in the consist, leave as None for no generation
         self.roof_type = None
-        # option to swap company colours (uses remap sprites in-game, rather than pixa)
-        self.random_company_colour_swap = False  # over-ride in subclasses as needed
         # role is e.g. Heavy Freight, Express etc, and is used to automatically set model life as well as in docs
         self.role = kwargs.get('role', None)
         # role child branch num places this vehicle on a specific child branch of the tech tree, where the role is the parent branch
@@ -1191,7 +1189,7 @@ class CarConsist(Consist):
         # default all to car consists to 'universal' offset, over-ride in subclasses as needed
         self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['universal']
         # assume all wagons randomly swap CC, revert to False in wagon subclasses as needed
-        self.random_company_colour_swap = True
+        self.use_colour_randomisation_strategies = True
         # set to 2 in subclass if 2cc should be randomised - can't randomise both, too fiddly
         self.company_colour_to_randomise = 1
 
@@ -1326,7 +1324,7 @@ class AlignmentCarConsist(CarConsist):
         self.label_refits_disallowed = []
         self.buy_cost_adjustment_factor = 0 # free
         # no random CC, no flip
-        self.random_company_colour_swap = False
+        self.use_colour_randomisation_strategies = False
         self.allow_flip = False
 
 
@@ -1387,7 +1385,7 @@ class CabooseCarConsist(CarConsist):
         self.label_refits_disallowed = []
         self.buy_cost_adjustment_factor = 0.75 # chop down caboose costs, they're just eye candy eh
         # liveries swap CC on user-flip, so no swapping CC randomly
-        self.random_company_colour_swap = False
+        self.use_colour_randomisation_strategies = False
         self.allow_flip = True
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsCaboose(num_generations=len(self.roster.intro_dates[self.base_track_type]),
@@ -1709,7 +1707,7 @@ class ExpressIntermodalCarConsist(CarConsist):
         # intermodal containers can't use random colour swaps on the wagons...
         # ...because the random bits are re-randomised when new cargo loads, to get new random containers, which would also cause new random wagon colour
         # player can still flip to the second livery
-        self.random_company_colour_swap = False
+        self.use_colour_randomisation_strategies = False
         self.allow_flip = True
         # Graphics configuration
         # !! note to future, if e.g. NA Horse needs longer express intermodal sets, set the consist_ruleset conditionally by checking roster
@@ -1837,7 +1835,7 @@ class IntermodalCarConsist(CarConsist):
         # intermodal containers can't use random colour swaps on the wagons...
         # ...because the random bits are re-randomised when new cargo loads, to get new random containers, which would also cause new random wagon colour
         # player can still flip to the second livery
-        self.random_company_colour_swap = False
+        self.use_colour_randomisation_strategies = False
         self.allow_flip = True
         # Graphics configuration
         # !! note to future, if a roster needs shorter intermodal sets, set the consist_ruleset conditionally by checking roster
@@ -1896,8 +1894,8 @@ class MailCarConsist(CarConsist):
         self.weight_factor = polar_fox.constants.mail_multiplier
         self.floating_run_cost_multiplier = 3
         self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['express_core']
+        self.use_colour_randomisation_strategies = False
         self.allow_flip = True
-        self.random_company_colour_swap = False
         # Graphics configuration
         if self.gen in [1]:
             self.roof_type = 'pax_mail_clerestory'
@@ -1956,7 +1954,7 @@ class PassengerCarConsistBase(CarConsist):
         self.label_refits_disallowed = []
         self.default_cargos = polar_fox.constants.default_cargos['pax']
         self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['express_core']
-        self.random_company_colour_swap = False
+        self.use_colour_randomisation_strategies = False
         self.allow_flip = True
         # roof configuration
         if self.gen in [1]:
@@ -2421,10 +2419,11 @@ class TorpedoCarConsist(CarConsist):
         self.weight_factor = 2 # double the default weight
         self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['freight_core']
         self._joker = True
+        # don't support colour randomisation currently as vehicle is articulated and needs to get the random bits from head of articulated portion, this can be supported at a later point
+        self.use_colour_randomisation_strategies = False
         # articulated so can't flip
         self.allow_flip = False
         # Graphics configuration
-        self.random_company_colour_swap = False # can't flip so no random CC
         # custom gestalt with dedicated template as these wagons are articulated which standard wagon templates don't support
         self.gestalt_graphics = GestaltGraphicsCustom('vehicle_torpedo_car.pynml')
 
@@ -2681,8 +2680,8 @@ class Train(object):
     @property
     def requires_colour_mapping_cb(self):
         # bit weird and janky, various conditions to consider eh
-        if self.consist.random_company_colour_swap:
-            return 'random_company_colour_swap'
+        if getattr(self.consist, 'use_colour_randomisation_strategies', False):
+            return 'use_colour_randomisation_strategies'
         elif getattr(self.consist.gestalt_graphics, 'colour_mapping_switch', None) is not None:
             return 'colour_mapping_switch'
         else:

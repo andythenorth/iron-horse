@@ -97,10 +97,10 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
             random_trigger:                 ${vehicle.id + vehicle.random_trigger_switch};
         </tal:conditional_random_trigger>
         <tal:colour_mapping_cb switch="vehicle.requires_colour_mapping_cb">
-            <tal:random_company_colour_swap case="'random_company_colour_swap'">
+            <tal:use_colour_randomisation_strategies case="'use_colour_randomisation_strategies'">
                 colour_mapping:                 switch_colour_mapping(${consist.company_colour_to_randomise});
                 purchase_colour_mapping:        switch_colour_mapping_purchase(${consist.company_colour_to_randomise});
-            </tal:random_company_colour_swap>
+            </tal:use_colour_randomisation_strategies>
             <tal:colour_mapping_switch case="'colour_mapping_switch'">
                 colour_mapping:                 ${vehicle.id + consist.gestalt_graphics.colour_mapping_switch};
             </tal:colour_mapping_switch
