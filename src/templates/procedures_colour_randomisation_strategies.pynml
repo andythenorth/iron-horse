@@ -66,20 +66,15 @@
 </tal:legacy_code>
 
 <!--! take colour from parameter, either the 1cc or 2cc result will be used, depending on vehicle, switching both is not supported -->
-switch (FEAT_TRAINS, SELF, switch_colour_scheme_1cc, param_wagon_colour_randomisation_strategy) {
-    0: switch_colour_scheme_random_blue_1cc_result;
-    1: switch_colour_scheme_random_green_1cc_result;
-    2: switch_colour_scheme_random_red_1cc_result;
-    3: switch_colour_scheme_random_yellow_1cc_result;
-    4: switch_colour_scheme_random_grey_brown_1cc_result;
-}
-switch (FEAT_TRAINS, SELF, switch_colour_scheme_2cc, param_wagon_colour_randomisation_strategy) {
-    0: switch_colour_scheme_random_blue_2cc_result;
-    1: switch_colour_scheme_random_green_2cc_result;
-    2: switch_colour_scheme_random_red_2cc_result;
-    3: switch_colour_scheme_random_yellow_2cc_result;
-    4: switch_colour_scheme_random_grey_brown_2cc_result;
-}
+<tal:randomisation_strategy_from_param repeat="cc ['1cc', '2cc']">
+    switch (FEAT_TRAINS, SELF, switch_randomisation_strategy_${cc}, param_wagon_colour_randomisation_strategy) {
+        0: switch_colour_scheme_random_blue_${cc}_result;
+        1: switch_colour_scheme_random_green_${cc}_result;
+        2: switch_colour_scheme_random_red_${cc}_result;
+        3: switch_colour_scheme_random_yellow_${cc}_result;
+        4: switch_colour_scheme_random_grey_brown_${cc}_result;
+    }
+</tal:randomisation_strategy_from_param>
 
 <!--! is it 1cc or 2cc we're randomising (we don't support both because it's combinatorial silliness -->
 <!--!switch (FEAT_TRAINS, SELF, switch_colour_mapping_1cc_or_2cc, LOAD_TEMP(0)) {
@@ -90,10 +85,10 @@ switch (FEAT_TRAINS, SELF, switch_colour_scheme_2cc, param_wagon_colour_randomis
 <!--! handle user flipped state -->
 switch (FEAT_TRAINS, SELF, switch_colour_mapping, cc_num_to_randomise, [STORE_TEMP(cc_num_to_randomise, 0), vehicle_is_flipped]) {
     1: return base_sprite_2cc + 16 * company_colour2 + company_colour1; <!--! apply regular 1CC and 2CC -->
-    return switch_colour_scheme_1cc;
+    return switch_randomisation_strategy_1cc;
 }
 
 switch (FEAT_TRAINS, SELF, switch_colour_mapping_purchase, cc_num_to_randomise, cc_num_to_randomise) {
-    1: switch_colour_scheme_1cc;
-    2: switch_colour_scheme_2cc;
+    1: switch_randomisation_strategy_1cc;
+    2: switch_randomisation_strategy_2cc;
 }
