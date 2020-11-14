@@ -32,7 +32,6 @@ STR_NAME_SUFFIX_LARGE                                           :Groot
 STR_NAME_SUFFIX_ALIGNMENT_CAR                                   :Lijnwagen
 STR_NAME_SUFFIX_BOX_CAR                                         :Gesloten wagon
 STR_NAME_SUFFIX_CABOOSE_CAR                                     :Remwagon
-STR_NAME_SUFFIX_COIL_CAR                                        :Spoelenwagen
 STR_NAME_SUFFIX_CRYO_TANK_CAR                                   :Cryotanker
 STR_NAME_SUFFIX_CURTAIN_SIDE_BOX_CAR                            :Voertuig met schuifdeuren
 STR_NAME_SUFFIX_DUMP_CAR                                        :Mineralenwagon
