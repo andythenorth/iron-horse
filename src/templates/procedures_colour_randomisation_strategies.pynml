@@ -102,23 +102,24 @@
 </tal:use_player_cc_with_randomised_shades>
 
 <tal:contrast_with_player_cc repeat="cc ['1cc', '2cc']">
+    <!--! these are not strict colour wheel contrasts, I just picked what looks right -->
     switch (FEAT_TRAINS, SELF, switch_colour_scheme_contrast_with_player_cc_${cc}, company_colour${cc[0]}) {
-        COLOUR_DARK_BLUE: switch_colour_scheme_random_yellow_${cc}_result;
-        COLOUR_PALE_GREEN: switch_colour_scheme_random_red_${cc}_result;
+        COLOUR_DARK_BLUE: switch_colour_scheme_random_red_${cc}_result;
+        COLOUR_PALE_GREEN: switch_colour_scheme_random_blue_${cc}_result;
         COLOUR_PINK: switch_colour_scheme_random_blue_${cc}_result;
         COLOUR_YELLOW: switch_colour_scheme_random_blue_${cc}_result;
-        COLOUR_RED: switch_colour_scheme_random_green_${cc}_result;
-        COLOUR_LIGHT_BLUE: switch_colour_scheme_random_yellow_${cc}_result;
-        COLOUR_GREEN: switch_colour_scheme_random_red_${cc}_result;
-        COLOUR_DARK_GREEN: switch_colour_scheme_random_red_${cc}_result;
-        COLOUR_BLUE: switch_colour_scheme_random_yellow_${cc}_result;
+        COLOUR_RED: switch_colour_scheme_random_blue_${cc}_result;
+        COLOUR_LIGHT_BLUE: switch_colour_scheme_random_red_${cc}_result;
+        COLOUR_GREEN: switch_colour_scheme_random_blue_${cc}_result;
+        COLOUR_DARK_GREEN: switch_colour_scheme_random_blue_${cc}_result;
+        COLOUR_BLUE: switch_colour_scheme_random_red_${cc}_result;
         COLOUR_CREAM: switch_colour_scheme_random_blue_${cc}_result;
         COLOUR_MAUVE: switch_colour_scheme_random_yellow_${cc}_result;
         COLOUR_PURPLE: switch_colour_scheme_random_yellow_${cc}_result;
-        COLOUR_ORANGE: switch_colour_scheme_random_blue_${cc}_result;
+        COLOUR_ORANGE: switch_colour_scheme_random_green_${cc}_result;
         COLOUR_BROWN: switch_colour_scheme_random_blue_${cc}_result;
         COLOUR_GREY: switch_colour_scheme_random_red_${cc}_result;
-        COLOUR_WHITE: switch_colour_scheme_random_mauve_${cc}_result;
+        COLOUR_WHITE: switch_colour_scheme_random_blue_${cc}_result;
     }
 </tal:contrast_with_player_cc>
 
