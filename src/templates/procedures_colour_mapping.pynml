@@ -4,78 +4,63 @@
       however if articulated vehicle support is need it will need alternatives checking FORWARD_SELF(n)
       these will have to be duplicates of these switches on a repeat, with named entry points -->
 
-random_switch (FEAT_TRAINS, SELF, switch_colour_scheme_random_blue_1cc_result) {
-    1: return palette_2cc(COLOUR_BLUE, company_colour2);
-    1: return palette_2cc(COLOUR_DARK_BLUE, company_colour2);
-    1: return palette_2cc(COLOUR_LIGHT_BLUE, company_colour2);
+
+<!--! note that there are 3 colours, but 4 random results, so switches weight to most pleasant colour in each case -->
+switch (FEAT_TRAINS, SELF, switch_colour_scheme_random_blue_1cc_result, getbits(random_bits, 0, 2)) {
+    0..1: return palette_2cc(COLOUR_BLUE, company_colour2);
+    2: return palette_2cc(COLOUR_DARK_BLUE, company_colour2);
+    3: return palette_2cc(COLOUR_LIGHT_BLUE, company_colour2);
 }
-random_switch (FEAT_TRAINS, SELF, switch_colour_scheme_random_blue_2cc_result) {
-    1: return palette_2cc(company_colour1, COLOUR_LIGHT_BLUE);
-    1: return palette_2cc(company_colour1, COLOUR_BLUE);
-    1: return palette_2cc(company_colour1, COLOUR_DARK_BLUE);
+switch (FEAT_TRAINS, SELF, switch_colour_scheme_random_blue_2cc_result, getbits(random_bits, 0, 2)) {
+    0: return palette_2cc(company_colour1, COLOUR_LIGHT_BLUE);
+    1..2: return palette_2cc(company_colour1, COLOUR_BLUE);
+    3: return palette_2cc(company_colour1, COLOUR_DARK_BLUE);
 }
-random_switch (FEAT_TRAINS, SELF, switch_colour_scheme_random_green_1cc_result) {
-    1: return palette_2cc(COLOUR_GREEN, company_colour2);
+switch (FEAT_TRAINS, SELF, switch_colour_scheme_random_green_1cc_result, getbits(random_bits, 0, 2)) {
+    0: return palette_2cc(COLOUR_GREEN, company_colour2);
     1: return palette_2cc(COLOUR_DARK_GREEN, company_colour2);
-    1: return palette_2cc(COLOUR_PALE_GREEN, company_colour2);
+    2..3: return palette_2cc(COLOUR_PALE_GREEN, company_colour2);
 }
-random_switch (FEAT_TRAINS, SELF, switch_colour_scheme_random_green_2cc_result) {
-    1: return palette_2cc(company_colour1, COLOUR_PALE_GREEN);
-    1: return palette_2cc(company_colour1, COLOUR_GREEN);
-    1: return palette_2cc(company_colour1, COLOUR_DARK_GREEN);
+switch (FEAT_TRAINS, SELF, switch_colour_scheme_random_green_2cc_result, getbits(random_bits, 0, 2)) {
+    0..1: return palette_2cc(company_colour1, COLOUR_PALE_GREEN);
+    2: return palette_2cc(company_colour1, COLOUR_GREEN);
+    3: return palette_2cc(company_colour1, COLOUR_DARK_GREEN);
 }
-random_switch (FEAT_TRAINS, SELF, switch_colour_scheme_random_red_1cc_result) {
-    1: return palette_2cc(COLOUR_RED, company_colour2);
-    1: return palette_2cc(COLOUR_PINK, company_colour2);
+switch (FEAT_TRAINS, SELF, switch_colour_scheme_random_red_1cc_result, getbits(random_bits, 0, 2)) {
+    0: return palette_2cc(COLOUR_RED, company_colour2);
     1: return palette_2cc(COLOUR_CREAM, company_colour2);
+    2..3: return palette_2cc(COLOUR_PINK, company_colour2);
 }
-random_switch (FEAT_TRAINS, SELF, switch_colour_scheme_random_red_2cc_result) {
-    1: return palette_2cc(company_colour1, COLOUR_PINK);
-    1: return palette_2cc(company_colour1, COLOUR_RED);
-    1: return palette_2cc(company_colour1, COLOUR_RED);
+switch (FEAT_TRAINS, SELF, switch_colour_scheme_random_red_2cc_result, getbits(random_bits, 0, 2)) {
+    0..1: return palette_2cc(company_colour1, COLOUR_PINK);
+    2: return palette_2cc(company_colour1, COLOUR_RED);
+    3: return palette_2cc(company_colour1, COLOUR_RED);
 }
-random_switch (FEAT_TRAINS, SELF, switch_colour_scheme_random_yellow_1cc_result) {
-    1: return palette_2cc(COLOUR_YELLOW, company_colour2);
-    1: return palette_2cc(COLOUR_ORANGE, company_colour2);
-    1: return palette_2cc(COLOUR_CREAM, company_colour2);
+switch (FEAT_TRAINS, SELF, switch_colour_scheme_random_yellow_1cc_result, getbits(random_bits, 0, 2)) {
+    0..1: return palette_2cc(COLOUR_YELLOW, company_colour2);
+    2: return palette_2cc(COLOUR_CREAM, company_colour2);
+    3: return palette_2cc(COLOUR_ORANGE, company_colour2);
 }
-random_switch (FEAT_TRAINS, SELF, switch_colour_scheme_random_yellow_2cc_result) {
-    1: return palette_2cc(company_colour1, COLOUR_CREAM);
-    1: return palette_2cc(company_colour1, COLOUR_YELLOW);
+switch (FEAT_TRAINS, SELF, switch_colour_scheme_random_yellow_2cc_result, getbits(random_bits, 0, 2)) {
+    0: return palette_2cc(company_colour1, COLOUR_CREAM);
     1: return palette_2cc(company_colour1, COLOUR_ORANGE);
+    2..3: return palette_2cc(company_colour1, COLOUR_YELLOW);
 }
-random_switch (FEAT_TRAINS, SELF, switch_colour_scheme_random_grey_brown_1cc_result) {
-    1: return palette_2cc(COLOUR_BROWN, company_colour2);
-    1: return palette_2cc(COLOUR_GREY, company_colour2);
-    1: return palette_2cc(COLOUR_CREAM, company_colour2);
+switch (FEAT_TRAINS, SELF, switch_colour_scheme_random_grey_brown_1cc_result, getbits(random_bits, 0, 2)) {
+    0..1: return palette_2cc(COLOUR_BROWN, company_colour2);
+    2: return palette_2cc(COLOUR_GREY, company_colour2);
+    3: return palette_2cc(COLOUR_CREAM, company_colour2);
 }
-random_switch (FEAT_TRAINS, SELF, switch_colour_scheme_random_grey_brown_2cc_result) {
-    1: return palette_2cc(company_colour1, COLOUR_GREY);
+switch (FEAT_TRAINS, SELF, switch_colour_scheme_random_grey_brown_2cc_result, getbits(random_bits, 0, 2)) {
+    0: return palette_2cc(company_colour1, COLOUR_GREY);
     1: return palette_2cc(company_colour1, COLOUR_CREAM);
-    1: return palette_2cc(company_colour1, COLOUR_BROWN);
+    2..3: return palette_2cc(company_colour1, COLOUR_BROWN);
 }
 
 <tal:legacy_code replace="nothing">
     0: return base_sprite_2cc + 16 * company_colour2 + company_colour1; <!--! apply regular 1CC and 2CC -->
     1: return base_sprite_2cc + 16 * company_colour1 + company_colour2; <!--! swap 1CC and 2CC -->
 </tal:legacy_code>
-
-<!--! case of totally random choices -->
-<!--! !!! should be using consist random bits, not vehicle??? -->
-switch (FEAT_TRAINS, SELF, switch_colour_scheme_totally_random_1cc, getbits(random_bits, 0, 3)) {
-    0: switch_colour_scheme_random_blue_1cc_result;
-    1: switch_colour_scheme_random_green_1cc_result;
-    2: switch_colour_scheme_random_red_1cc_result;
-    3: switch_colour_scheme_random_yellow_1cc_result;
-    switch_colour_scheme_random_grey_brown_1cc_result;
-}
-switch (FEAT_TRAINS, SELF, switch_colour_scheme_totally_random_2cc, getbits(random_bits, 0, 3)) {
-    0: switch_colour_scheme_random_blue_2cc_result;
-    1: switch_colour_scheme_random_green_2cc_result;
-    2: switch_colour_scheme_random_red_2cc_result;
-    3: switch_colour_scheme_random_yellow_2cc_result;
-    switch_colour_scheme_random_grey_brown_2cc_result;
-}
 
 <!--! take colour from parameter, either the 1cc or 2cc result will be used, depending on vehicle, switching both is not supported -->
 switch (FEAT_TRAINS, SELF, switch_colour_scheme_1cc, param_wagon_colour_randomisation_strategy) {
@@ -84,7 +69,6 @@ switch (FEAT_TRAINS, SELF, switch_colour_scheme_1cc, param_wagon_colour_randomis
     2: switch_colour_scheme_random_red_1cc_result;
     3: switch_colour_scheme_random_yellow_1cc_result;
     4: switch_colour_scheme_random_grey_brown_1cc_result;
-    5: switch_colour_scheme_totally_random_1cc;
 }
 switch (FEAT_TRAINS, SELF, switch_colour_scheme_2cc, param_wagon_colour_randomisation_strategy) {
     0: switch_colour_scheme_random_blue_2cc_result;
@@ -92,7 +76,6 @@ switch (FEAT_TRAINS, SELF, switch_colour_scheme_2cc, param_wagon_colour_randomis
     2: switch_colour_scheme_random_red_2cc_result;
     3: switch_colour_scheme_random_yellow_2cc_result;
     4: switch_colour_scheme_random_grey_brown_2cc_result;
-    5: switch_colour_scheme_totally_random_2cc;
 }
 
 <!--! is it 1cc or 2cc we're randomising (we don't support both because it's combinatorial silliness -->
