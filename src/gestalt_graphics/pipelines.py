@@ -427,7 +427,7 @@ class GenerateCompositedVehiclesCargos(Pipeline):
             template_image.close()
 
     def render(self, intermodal_container_gestalt, global_constants):
-        print("I am not a walrus")
+        print("I am not a walrus - vehicles cargos pipeline needs refactored as it is unfinished copy-paste from intermodal containers pipeline")
         self.units = []
         self.intermodal_container_gestalt = intermodal_container_gestalt
         self.global_constants = global_constants
