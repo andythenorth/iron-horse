@@ -44,6 +44,16 @@ random_switch (FEAT_TRAINS, SELF, switch_colour_scheme_random_yellow_2cc_result)
     1: return palette_2cc(company_colour1, COLOUR_YELLOW);
     1: return palette_2cc(company_colour1, COLOUR_ORANGE);
 }
+random_switch (FEAT_TRAINS, SELF, switch_colour_scheme_random_grey_brown_1cc_result) {
+    1: return palette_2cc(COLOUR_BROWN, company_colour2);
+    1: return palette_2cc(COLOUR_GREY, company_colour2);
+    1: return palette_2cc(COLOUR_CREAM, company_colour2);
+}
+random_switch (FEAT_TRAINS, SELF, switch_colour_scheme_random_grey_brown_2cc_result) {
+    1: return palette_2cc(company_colour1, COLOUR_GREY);
+    1: return palette_2cc(company_colour1, COLOUR_CREAM);
+    1: return palette_2cc(company_colour1, COLOUR_BROWN);
+}
 
 <tal:legacy_code replace="nothing">
     0: return base_sprite_2cc + 16 * company_colour2 + company_colour1; <!--! apply regular 1CC and 2CC -->
@@ -56,12 +66,13 @@ switch (FEAT_TRAINS, SELF, switch_colour_scheme_1cc, param_wagon_colour_randomis
     1: switch_colour_scheme_random_green_1cc_result;
     2: switch_colour_scheme_random_red_1cc_result;
     3: switch_colour_scheme_random_yellow_1cc_result;
+    4: switch_colour_scheme_random_grey_brown_1cc_result;
 }
 switch (FEAT_TRAINS, SELF, switch_colour_scheme_2cc, param_wagon_colour_randomisation_strategy) {
     0: switch_colour_scheme_random_blue_2cc_result;
     1: switch_colour_scheme_random_green_2cc_result;
     2: switch_colour_scheme_random_red_2cc_result;
-    3: switch_colour_scheme_random_yellow_2cc_result;
+    3: switch_colour_scheme_random_grey_brown_2cc_result;
 }
 
 <!--! is it 1cc or 2cc we're randomising (we don't support both because it's combinatorial silliness -->
