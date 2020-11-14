@@ -102,6 +102,7 @@ cargo_labels = ['PASS', # pax first
                 'GLAS',
                 'POWR',
                 'STSH',
+                'STWR',
                 #
                 'NULL']
 
@@ -129,7 +130,7 @@ allowed_refits_by_label = {'edible_liquids': ['MILK', 'WATR', 'BEER', 'FOOD', 'E
                            'cryo_gases': ['CHLO', 'O2__'],
                            'reefer': ['FOOD', 'FRUT', 'FISH'], # hax for intermodal container sprite selection - reefer car refits work just fine using CC_REFRIGERATED
                            'fruit_veg': ['FRUT', 'BEAN', 'CASS', 'JAVA', 'NUTS'],
-                           'cold_metal': ['STEL', 'METL', 'STCB', 'STAL', 'STST', 'COPR', 'STSH']}
+                           'cold_metal': ['STEL', 'METL', 'STCB', 'STAL', 'STST', 'COPR', 'STSH', 'STWR']}
 
 # rather than using disallowed classes (can cause breakage), specific labels are disallowed
 disallowed_refits_by_label = {'non_dump_bulk': ['WOOD', 'SGCN', 'FICR', 'BDMT', 'WDPR', 'GRAI', 'WHEA', 'CERE', 'MAIZ', 'FRUT', 'BEAN', 'CMNT',
@@ -203,11 +204,11 @@ cargo_spritesheet_bounding_boxes_base = ((10, 10, 18, 36), (22, 10, 44, 26), (48
 # 2. this permits fine-grained control, e.g. cargos that can only go in open vehicles, outsized cargo that needs flats etc
 # also supports multiple cargo sprite types to suit vehicle, e.g. piled fruit, fruit in crates etc
 # keep alphabetised for general quality-of-life
-piece_vehicle_type_to_sprites_maps = {'flat': ['barrels_silver', 'copper_coils', 'crates_1', 'logs',
-                                              'lumber_planks', 'paper_coils', 'steel_coils',
+piece_vehicle_type_to_sprites_maps = {'flat': ['barrels_silver', 'copper_coils_eye_to_sky', 'crates_1', 'logs',
+                                              'lumber_planks', 'paper_coils_eye_to_sky', 'steel_coils_eye_to_sky',
                                               'tarps_2cc_1', 'tarps_blue_1', 'tarps_gold_1', 'tarps_red_1'],
-                                      'open':['barrels_silver', 'coffee', 'copper_coils', 'crates_1', 'fruit', 'logs',
-                                              'lumber_planks', 'nuts', 'paper_coils', 'steel_coils',
+                                      'open':['barrels_silver', 'coffee', 'copper_coils_eye_to_sky', 'crates_1', 'fruit', 'logs',
+                                              'lumber_planks', 'nuts', 'paper_coils_eye_to_sky', 'steel_coils_eye_to_sky',
                                               'tarps_2cc_1', 'tarps_blue_1', 'tarps_gold_1', 'tarps_red_1'],
                                       'stake':['logs', 'lumber_planks', 'tarps_2cc_1'] # tarps_2cc_1 for DFLT
                                       }
@@ -217,14 +218,14 @@ piece_vehicle_type_to_sprites_maps = {'flat': ['barrels_silver', 'copper_coils',
 # DFLT label is a hack to support cargos with no specific sprites (including unknown cargos), and should not be added to cargo translation table
 piece_sprites_to_cargo_labels_maps = {'barrels_silver': ['BEER', 'DYES', 'EOIL', 'MILK', 'OIL_', 'PETR', 'RFPR', 'WATR'],
                                       'coffee': ['JAVA'],
-                                      'copper_coils': ['COPR'],
+                                      'copper_coils_eye_to_sky': ['COPR'],
                                       'crates_1': ['GOOD'],
                                       'fruit': ['FRUT'],
                                       'logs': ['WOOD'],
                                       'lumber_planks': ['WDPR'],
                                       'nuts': ['NUTS'],
-                                      'paper_coils': ['PAPR'],
-                                      'steel_coils': ['STEL', 'METL', 'STAL', 'STCB', 'STST'],
+                                      'paper_coils_eye_to_sky': ['PAPR'],
+                                      'steel_coils_eye_to_sky': ['STEL', 'METL', 'STAL', 'STCB', 'STST'],
                                       'tarps_blue_1': ['FMSP'],
                                       'tarps_gold_1': ['ENSP'],
                                       'tarps_red_1': ['BDMT'],
