@@ -1416,13 +1416,12 @@ class CarbonBlackHopperCarConsist(CarConsist):
         self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.carbon_black_hopper_car_livery_recolour_maps)
 
 
-class CoilCarConsist(CarConsist):
+class CoilCarConsistBase(CarConsist):
     """
-    Coil car - for finished metals (steel, copper etc)
+    Coil car - for finished metals (steel, copper etc).
     """
 
     def __init__(self, **kwargs):
-        self.base_id = 'coil_car'
         super().__init__(**kwargs)
         self.class_refit_groups = []
         self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label['cold_metal']
@@ -1432,9 +1431,29 @@ class CoilCarConsist(CarConsist):
         self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['non_core_wagons']
         # allow flipping, used to flip company colour
         self.allow_flip = True
+
+
+class CoilCarCoveredConsist(CoilCarConsistBase):
+    """
+    Covered coil car.  No visible cargo.
+    """
+    def __init__(self, **kwargs):
+        self.base_id = 'coil_car_covered'
+        super().__init__(**kwargs)
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(id_base='coil_car',
+        self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(id_base='coil_car_covered',
                                                                   recolour_maps=graphics_constants.coil_car_livery_recolour_maps)
+
+
+class CoilCarUncoveredConsist(CoilCarConsistBase):
+    """
+    Uncovered coil car.  Visible cargo.
+    """
+    def __init__(self, **kwargs):
+        self.base_id = 'coil_car_uncovered'
+        super().__init__(**kwargs)
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsVisibleCargo(piece='coil')
 
 
 class CoveredHopperCarConsistBase(CarConsist):
