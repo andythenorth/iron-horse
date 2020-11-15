@@ -434,12 +434,14 @@ class GestaltGraphicsVehicleTransporter(GestaltGraphics):
         return 'vehicle_vehicle_transporter.pynml'
 
 
-class GestaltGraphicsCargoSpecificLivery(GestaltGraphics):
+class GestaltGraphicsSimpleBodyColourRemaps(GestaltGraphics):
     """
-        Used to handle the specific case of cargos shown only by vehicle livery.
-        This can also be used with vehicles with just a *single* livery which isn't cargo-specific for
-            - adding automated chassis
-            - recolouring from false body colour (easier than using paint bucket on individual sprites)
+        Simple recolouring from false body colour to:
+        - a single default livery
+        - optional extra liveries for specific cargos
+
+        Recolouring from false body colour makes it easy to adjust liveries across all vehicles of the same type.
+        This gestalt can also be used as a shortcut simply for adding automated chassis.
     """
     def __init__(self, recolour_maps, **kwargs):
         super().__init__()
@@ -450,12 +452,12 @@ class GestaltGraphicsCargoSpecificLivery(GestaltGraphics):
 
     @property
     def generic_rows(self):
-        utils.echo_message ('generic_rows not implemented in GestaltGraphicsCargoSpecificLivery (by design)')
+        utils.echo_message ('generic_rows not implemented in GestaltGraphicsSimpleBodyColourRemaps (by design)')
         return None
 
     @property
     def nml_template(self):
-        return 'vehicle_with_cargo_specific_liveries.pynml'
+        return 'vehicle_with_simple_body_colour_remaps.pynml'
 
     def get_output_row_types(self):
         return ['livery_spriterows']

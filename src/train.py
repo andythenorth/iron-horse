@@ -14,7 +14,7 @@ import global_constants  # expose all constants for easy passing to templates
 import utils
 
 from gestalt_graphics.gestalt_graphics import (GestaltGraphics, GestaltGraphicsVisibleCargo, GestaltGraphicsBoxCarOpeningDoors, GestaltGraphicsEngine,
-                                               GestaltGraphicsCaboose, GestaltGraphicsCargoSpecificLivery, GestaltGraphicsOnlyAddPantographs,
+                                               GestaltGraphicsCaboose, GestaltGraphicsSimpleBodyColourRemaps, GestaltGraphicsOnlyAddPantographs,
                                                GestaltGraphicsConsistSpecificLivery, GestaltGraphicsIntermodal, GestaltGraphicsCustom, GestaltGraphicsVehicleTransporter)
 import gestalt_graphics.graphics_constants as graphics_constants
 
@@ -1411,7 +1411,7 @@ class CarbonBlackHopperCarConsist(CarConsist):
         # allow flipping, used to flip company colour
         self.allow_flip = True
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.carbon_black_hopper_car_livery_recolour_maps)
+        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(recolour_maps=graphics_constants.carbon_black_hopper_car_livery_recolour_maps)
 
 
 class CoilCarConsistBase(CarConsist):
@@ -1482,7 +1482,7 @@ class CoveredHopperCarConsist(CoveredHopperCarConsistBase):
         self.default_cargos = ['SALT', 'SAND', 'POTA'] # !! needs updated
         self._joker = True
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.covered_hopper_car_livery_recolour_maps)
+        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(recolour_maps=graphics_constants.covered_hopper_car_livery_recolour_maps)
 
 
 class CoveredHopperCarGrainConsist(CoveredHopperCarConsistBase):
@@ -1495,7 +1495,7 @@ class CoveredHopperCarGrainConsist(CoveredHopperCarConsistBase):
         super().__init__(**kwargs)
         self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label['covered_hoppers']
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.grain_hopper_car_livery_recolour_maps)
+        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(recolour_maps=graphics_constants.grain_hopper_car_livery_recolour_maps)
 
 
 class CoveredHopperCarPelletConsist(CoveredHopperCarConsistBase):
@@ -1509,7 +1509,7 @@ class CoveredHopperCarPelletConsist(CoveredHopperCarConsistBase):
         self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label['covered_hoppers']
         self._joker = True
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.pellet_hopper_car_livery_recolour_maps)
+        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(recolour_maps=graphics_constants.pellet_hopper_car_livery_recolour_maps)
 
 
 class CryoTankCarConsist(CarConsist):
@@ -1533,7 +1533,7 @@ class CryoTankCarConsist(CarConsist):
         # allow flipping, used to flip company colour
         self.allow_flip = True
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=polar_fox.constants.cryo_tanker_livery_recolour_maps)
+        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(recolour_maps=polar_fox.constants.cryo_tanker_livery_recolour_maps)
 
 
 class CurtainSideCarBoxConsist(CarConsist):
@@ -1655,7 +1655,7 @@ class EdiblesTankCarConsist(CarConsist):
         self.allow_flip = True
         # Graphics configuration
         # only one livery, but recolour gestalt used to automate adding chassis
-        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.edibles_tank_car_livery_recolour_maps)
+        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(recolour_maps=graphics_constants.edibles_tank_car_livery_recolour_maps)
 
 
 class ExpressCarConsist(CarConsist):
@@ -2242,7 +2242,7 @@ class SiloCarConsist(SiloCarConsistBase):
         self.base_id = 'silo_car'
         super().__init__(**kwargs)
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.silo_livery_recolour_maps)
+        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(recolour_maps=graphics_constants.silo_livery_recolour_maps)
 
 
 class SiloCarCementConsist(SiloCarConsistBase):
@@ -2255,7 +2255,7 @@ class SiloCarCementConsist(SiloCarConsistBase):
         super().__init__(**kwargs)
         self._joker = True
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.cement_silo_livery_recolour_maps)
+        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(recolour_maps=graphics_constants.cement_silo_livery_recolour_maps)
 
 
 class SlagLadleCarConsist(CarConsist):
@@ -2360,7 +2360,7 @@ class TankCarConsist(TankCarConsistBase):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos['tank']
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=polar_fox.constants.tanker_livery_recolour_maps)
+        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(recolour_maps=polar_fox.constants.tanker_livery_recolour_maps)
 
 
 class TankCarProductConsist(TankCarConsistBase):
@@ -2374,7 +2374,7 @@ class TankCarProductConsist(TankCarConsistBase):
         self.default_cargos = polar_fox.constants.default_cargos['product_tank']
         self._joker = True
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsCargoSpecificLivery(recolour_maps=graphics_constants.product_tank_car_livery_recolour_maps)
+        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(recolour_maps=graphics_constants.product_tank_car_livery_recolour_maps)
 
 
 class TarpaulinCarConsist(CarConsist):
