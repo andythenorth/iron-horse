@@ -7,14 +7,14 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY                               :Train capacity
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :Puny
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Marvellous
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Excessive
-STR_PARAM_SIMPLIFIED_GAMEPLAY                                   :Simplified Gameplay
+STR_PARAM_SIMPLIFIED_GAMEPLAY                                   :Simplified gameplay
 STR_PARAM_SIMPLIFIED_GAMEPLAY_DESC                              :Play with a simplified set of trains. There will be fewer types of engines and wagons available.  Eye-candy trains like snowploughs, driving cab cars and very slow locomotives will not be available.
 STR_PARAM_ROSTER                                                :Roster
 STR_PARAM_ROSTER_DESC                                           :Choose which set of trains to use.
 STR_PARAM_ROSTER_OPTION_0                                       :Iron Pony
 STR_PARAM_ROSTER_OPTION_1                                       :Iron Llama
 STR_PARAM_ROSTER_OPTION_2                                       :Iron Antelope
-STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY                   :Wagon Colour Randomisation Strategy
+STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY                   :Wagon colour randomisation strategy
 STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_DESC              :CABBAGE
 STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_0          :Shades of blue
 STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_1          :Shades of green
