@@ -1,12 +1,17 @@
-<!--! strategies for random colour remapping (of wagons)  -->
+<!--! strategies for random colour remapping (of wagons)
+    1. strategies apply rules to branch to colour sets, which apply a random choice from 3 colours (as of Nov 2020) - could also use a 4th colour if wanted
+    2. player parameter can choose certain strategies explicitly
+    3. if player parameter is 'automatic' a strategy will be selected for the vehicle, depending on multiple criteria set by wagon type
+    4. not all strategies can be directly selected by player parameter, some are highly specific to vehicle, roster etc
+-->
 
 <!--! as of Dec 2019 this is not used with articulated vehicles,
       however if articulated vehicle support is need it will need alternatives checking FORWARD_SELF(n)
       these will have to be duplicates of these switches on a repeat, with named entry points -->
 
-<tal:fixed_colour_scheme_results define="random_bits 'getbits(random_bits, 0, 2)'">
+<tal:colour_sets define="random_bits 'getbits(random_bits, 0, 2)'">
     <!--! uses 2 random bits from self, enough for up to 4 colour choices
-          note that there are 3 colours, but 4 random results, so switches weight to most pleasant colour in each case -->
+          note that there are 3 colours used currently, but 4 random results, so switches weight to most pleasant colour in each case -->
     switch (FEAT_TRAINS, SELF, switch_colour_scheme_random_blue_1cc_result, ${random_bits}) {
         0..1: return palette_2cc(COLOUR_BLUE, company_colour2);
         2: return palette_2cc(COLOUR_DARK_BLUE, company_colour2);
@@ -117,9 +122,9 @@
         1: return palette_2cc(company_colour1, COLOUR_BROWN);
         2..3: return palette_2cc(company_colour1, COLOUR_WHITE);
     }
-</tal:fixed_colour_scheme_results>
+</tal:colour_sets>
 
-<tal:use_player_cc_with_randomised_shades repeat="cc ['1cc', '2cc']">
+<tal:strategy_use_player_cc_with_randomised_shades repeat="cc ['1cc', '2cc']">
     switch (FEAT_TRAINS, SELF, switch_colour_scheme_use_player_cc_with_randomised_shades_${cc}, company_colour${cc[0]}) {
         COLOUR_DARK_BLUE: switch_colour_scheme_random_dark_blue_${cc}_result;
         COLOUR_PALE_GREEN: switch_colour_scheme_random_green_${cc}_result;
@@ -138,9 +143,9 @@
         COLOUR_GREY: switch_colour_scheme_random_grey_brown_${cc}_result;
         COLOUR_WHITE: switch_colour_scheme_random_white_grey_${cc}_result;
     }
-</tal:use_player_cc_with_randomised_shades>
+</tal:strategy_use_player_cc_with_randomised_shades>
 
-<tal:contrast_with_player_cc repeat="cc ['1cc', '2cc']">
+<tal:strategy_contrast_with_player_cc repeat="cc ['1cc', '2cc']">
     <!--! these are not strict colour wheel contrasts, I just picked what looks right -->
     switch (FEAT_TRAINS, SELF, switch_colour_scheme_contrast_with_player_cc_${cc}, company_colour${cc[0]}) {
         COLOUR_DARK_BLUE: switch_colour_scheme_random_pink_${cc}_result;
@@ -160,7 +165,7 @@
         COLOUR_GREY: switch_colour_scheme_random_red_${cc}_result;
         COLOUR_WHITE: switch_colour_scheme_random_dark_blue_${cc}_result;
     }
-</tal:contrast_with_player_cc>
+</tal:strategy_contrast_with_player_cc>
 
 <tal:legacy_code replace="nothing">
     0: return base_sprite_2cc + 16 * company_colour2 + company_colour1; <!--! apply regular 1CC and 2CC -->
@@ -168,7 +173,7 @@
 </tal:legacy_code>
 
 <!--! take colour from parameter, either the 1cc or 2cc result will be used, depending on vehicle, switching both is not supported -->
-<tal:randomisation_strategy_from_param repeat="cc ['1cc', '2cc']">
+<tal:select_strategy_from_param repeat="cc ['1cc', '2cc']">
     switch (FEAT_TRAINS, SELF, switch_randomisation_strategy_${cc}, param_wagon_colour_randomisation_strategy) {
         0: switch_colour_scheme_random_blue_${cc}_result;
         1: switch_colour_scheme_random_green_${cc}_result;
@@ -179,7 +184,7 @@
         6: switch_colour_scheme_use_player_cc_with_randomised_shades_${cc};
         7: switch_colour_scheme_contrast_with_player_cc_${cc};
     }
-</tal:randomisation_strategy_from_param>
+</tal:select_strategy_from_param>
 
 <!--! is it 1cc or 2cc we're randomising (we don't support both because it's combinatorial silliness -->
 <!--!switch (FEAT_TRAINS, SELF, switch_colour_mapping_1cc_or_2cc, LOAD_TEMP(0)) {
@@ -194,7 +199,7 @@ switch (FEAT_TRAINS, SELF, switch_cc_num_to_randomise, LOAD_TEMP(0)) {
 
 <!--! handle user flipped state -->
 switch (FEAT_TRAINS, SELF, switch_colour_mapping, cc_num_to_randomise, [STORE_TEMP(cc_num_to_randomise, 0), vehicle_is_flipped]) {
-    1: return base_sprite_2cc + 16 * company_colour2 + company_colour1; <!--! apply regular 1CC and 2CC -->
+    1: return base_sprite_2cc + 16 * company_colour2 + company_colour1; <!--! apply regular 1CC and 2CC -->  <!--! !! is this enough - does player need more choices?? -->
     return switch_cc_num_to_randomise;
 }
 
