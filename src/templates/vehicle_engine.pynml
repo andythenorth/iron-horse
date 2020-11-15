@@ -50,12 +50,12 @@
         </tal:pantographs>
 
         switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_layers_${reversed_variant}_${flipped}, getbits(extra_callback_info1, 8, 8)) {
-            0: return ${vehicle.id}_switch_graphics_livery_${reversed_variant}_${flipped};
             <tal:conditional_pantograph condition="consist.pantograph_type is not None">
                 <!--! if there are pantographs to draw we will handle that later in the graphics chain,
-                      but we need to reserve layer 1 for the pantographs as well as layer 0 for the vehicle  -->
+                      but we need to reserve layer 1 for the pantographs -->
                 1: return ${vehicle.id}_switch_graphics_pantographs_${reversed_variant}_${flipped};
             </tal:conditional_pantograph>
+            return ${vehicle.id}_switch_graphics_livery_${reversed_variant}_${flipped};
         }
     </tal:user_flipped>
 
