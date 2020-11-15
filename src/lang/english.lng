@@ -24,6 +24,7 @@ STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_4          :Shades of grey 
 STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_5          :Company colour, no randomisation
 STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_6          :Shades of company colour
 STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_7          :Shades contrasting with company colour
+STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_8          :Automatic
 
 # keep these alphabetised, easier
 STR_NAME_SUFFIX_DIESEL                                          :Diesel

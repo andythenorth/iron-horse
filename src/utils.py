@@ -62,9 +62,9 @@ def echo_message(message):
 
 def get_custom_recolour_sprite(map_name, cc_to_remap):
     # seems utils is the best place to keep this, but eh
-    remap_index = list(global_constants.custom_wagon_recolour_sprite_maps.keys()).index(map_name) + cc_to_remap - 1
+    remap_index = (2 * list(global_constants.custom_wagon_recolour_sprite_maps.keys()).index(map_name)) + cc_to_remap - 1
     # return an nml fragment in format "custom_wagon_recolour_sprites + 16 * 0 /* recolour set */ + company_colour1 /* or company_colour2 */"
-    return "custom_wagon_recolour_sprites + 16 * " + str(remap_index) + "+ company_colour" + str(cc_to_remap)
+    return "custom_wagon_recolour_sprites + 16 * " + str(remap_index) + " + company_colour" + str(cc_to_remap)
 
 def dos_palette_to_rgb():
     # the original of this was somewhat lolz, opening the palette image every time it was called

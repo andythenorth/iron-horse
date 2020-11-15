@@ -44,7 +44,7 @@ grf {
 		}
 	}
 	param 3 {
-	    <tal:num_options define="num_options 7">
+	    <tal:num_options define="num_options 8">
             param_wagon_colour_randomisation_strategy {
                 name: string(STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY);
                 desc: string(STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_DESC);

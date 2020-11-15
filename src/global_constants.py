@@ -121,7 +121,11 @@ intro_date_offsets_by_role_group = {'universal': 0,
 
 # custom remappings of cc1/cc2, used in recolour_sprites, not used in graphics generation, so not in graphics_constants
 # post python 3.7, we rely on dict order being stable here, so we can get keys by position when we need to
-custom_wagon_recolour_sprite_maps = {'test': (60, 61, 73, 62, 75, 76, 77, 78),}
+custom_wagon_recolour_sprite_maps = {'brown_1': (60, 61, 73, 62, 75, 76, 77, 78),
+                                     'dark_pink': (40, 41, 42, 43, 44, 45, 46, 47),
+                                     'light_pink': (43, 44, 45, 46, 47, 166, 167, 168),
+                                     'br_railfreight_red': (178, 179, 180, 181, 182, 164, 165, 166), # faded version of standard red
+                                     }
 
 # up to 127 temp storages are available, might as well allocate them exclusively within the graphics chain to avoid any collisions
 temp_storage_ids = dict(id_of_neighbouring_vehicle = 0, # used to avoid expensively reading var 61 multiple times, used in re-implementation of var 41 to check multiple IDs not a single ID
