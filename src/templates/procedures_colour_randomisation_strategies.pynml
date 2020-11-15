@@ -11,20 +11,20 @@ custom_wagon_recolour_sprites = reserve_sprites(16 * 2); <!--! 16 company colour
 
 replace(custom_wagon_recolour_sprites) {
     // recolour cc 1, use player setting for cc 2
-    <tal:company_colour_maps repeat="company_colour_map_name polar_fox.constants.company_colour_maps.keys()">
+    <tal:company_colour_maps repeat="company_colour_map_name global_constants.company_colour_maps.keys()">
         //${company_colour_map_name}
         recolour_sprite {
-        <tal:company_colour_map repeat="colour_index polar_fox.constants.company_colour_maps[company_colour_map_name]">
+        <tal:company_colour_map repeat="colour_index global_constants.company_colour_maps[company_colour_map_name]">
             ${hex(198 + repeat.colour_index.index)}: 0x0F;
             ${hex(80 + repeat.colour_index.index)}: ${hex(colour_index)};
         </tal:company_colour_map>
         }
     </tal:company_colour_maps>
     // recolour cc 2, use player setting for cc 1
-    <tal:company_colour_maps repeat="company_colour_map_name polar_fox.constants.company_colour_maps.keys()">
+    <tal:company_colour_maps repeat="company_colour_map_name global_constants.company_colour_maps.keys()">
         //${company_colour_map_name}
         recolour_sprite {
-        <tal:company_colour_map repeat="colour_index polar_fox.constants.company_colour_maps[company_colour_map_name]">
+        <tal:company_colour_map repeat="colour_index global_constants.company_colour_maps[company_colour_map_name]">
             ${hex(198 + repeat.colour_index.index)}: ${hex(colour_index)};
             ${hex(80 + repeat.colour_index.index)}: 0x0F;
         </tal:company_colour_map>

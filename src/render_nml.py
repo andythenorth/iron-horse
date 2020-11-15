@@ -10,7 +10,6 @@ from time import time
 import iron_horse
 import utils
 import global_constants
-import polar_fox
 from polar_fox import git_info
 
 # get args passed by makefile
@@ -34,7 +33,6 @@ def render_header_item_nml(header_item, consists):
     template = templates[header_item + '.pynml']
     return utils.unescape_chameleon_output(template(consists=consists,
                                                     global_constants=global_constants,
-                                                    polar_fox=polar_fox,
                                                     temp_storage_ids=global_constants.temp_storage_ids, # convenience measure
                                                     utils=utils,
                                                     active_rosters=iron_horse.get_active_rosters(),

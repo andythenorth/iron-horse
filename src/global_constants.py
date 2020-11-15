@@ -186,3 +186,4 @@ generated_files_dir = polar_fox.constants.generated_files_dir
 graphics_path = polar_fox.constants.graphics_path
 mail_multiplier = polar_fox.constants.mail_multiplier
 max_game_date = polar_fox.constants.max_game_date
+company_colour_maps = polar_fox.constants.company_colour_maps
