@@ -18,12 +18,42 @@
         1..2: return palette_2cc(company_colour1, COLOUR_BLUE);
         3: return palette_2cc(company_colour1, COLOUR_DARK_BLUE);
     }
+    switch (FEAT_TRAINS, SELF, switch_colour_scheme_random_dark_blue_1cc_result, ${random_bits}) {
+        0..1: return palette_2cc(COLOUR_DARK_BLUE, company_colour2);
+        2: return palette_2cc(COLOUR_BLUE, company_colour2);
+        3: return palette_2cc(COLOUR_LIGHT_BLUE, company_colour2);
+    }
+    switch (FEAT_TRAINS, SELF, switch_colour_scheme_random_dark_blue_2cc_result, ${random_bits}) {
+        0: return palette_2cc(company_colour1, COLOUR_LIGHT_BLUE);
+        1..2: return palette_2cc(company_colour1, COLOUR_DARK_BLUE);
+        3: return palette_2cc(company_colour1, COLOUR_BLUE);
+    }
+    switch (FEAT_TRAINS, SELF, switch_colour_scheme_random_light_blue_1cc_result, ${random_bits}) {
+        0..1: return palette_2cc(COLOUR_LIGHT_BLUE, company_colour2);
+        2: return palette_2cc(COLOUR_BLUE, company_colour2);
+        3: return palette_2cc(COLOUR_DARK_BLUE, company_colour2);
+    }
+    switch (FEAT_TRAINS, SELF, switch_colour_scheme_random_light_blue_2cc_result, ${random_bits}) {
+        0: return palette_2cc(company_colour1, COLOUR_DARK_BLUE);
+        1..2: return palette_2cc(company_colour1, COLOUR_LIGHT_BLUE);
+        3: return palette_2cc(company_colour1, COLOUR_BLUE);
+    }
     switch (FEAT_TRAINS, SELF, switch_colour_scheme_random_green_1cc_result, ${random_bits}) {
         0: return palette_2cc(COLOUR_GREEN, company_colour2);
         1: return palette_2cc(COLOUR_DARK_GREEN, company_colour2);
         2..3: return palette_2cc(COLOUR_PALE_GREEN, company_colour2);
     }
     switch (FEAT_TRAINS, SELF, switch_colour_scheme_random_green_2cc_result, ${random_bits}) {
+        0..1: return palette_2cc(company_colour1, COLOUR_PALE_GREEN);
+        2: return palette_2cc(company_colour1, COLOUR_GREEN);
+        3: return palette_2cc(company_colour1, COLOUR_DARK_GREEN);
+    }
+    switch (FEAT_TRAINS, SELF, switch_colour_scheme_random_dark_green_1cc_result, ${random_bits}) {
+        0..1: return palette_2cc(COLOUR_DARK_GREEN, company_colour2);
+        2: return palette_2cc(COLOUR_GREEN, company_colour2);
+        3: return palette_2cc(COLOUR_PALE_GREEN, company_colour2);
+    }
+    switch (FEAT_TRAINS, SELF, switch_colour_scheme_random_dark_green_2cc_result, ${random_bits}) {
         0..1: return palette_2cc(company_colour1, COLOUR_PALE_GREEN);
         2: return palette_2cc(company_colour1, COLOUR_GREEN);
         3: return palette_2cc(company_colour1, COLOUR_DARK_GREEN);
@@ -68,6 +98,16 @@
         1: return palette_2cc(company_colour1, COLOUR_GREY);
         2..3: return palette_2cc(company_colour1, COLOUR_MAUVE);
     }
+    switch (FEAT_TRAINS, SELF, switch_colour_scheme_random_pink_1cc_result, ${random_bits}) {
+        0..1: return palette_2cc(COLOUR_PINK, company_colour2);
+        2: return palette_2cc(COLOUR_CREAM, company_colour2);
+        3: return palette_2cc(COLOUR_RED, company_colour2);
+    }
+    switch (FEAT_TRAINS, SELF, switch_colour_scheme_random_pink_2cc_result, ${random_bits}) {
+        0: return palette_2cc(company_colour1, COLOUR_RED);
+        1..2: return palette_2cc(company_colour1, COLOUR_PINK);
+        3: return palette_2cc(company_colour1, COLOUR_CREAM);
+    }
     switch (FEAT_TRAINS, SELF, switch_colour_scheme_random_white_grey_1cc_result, ${random_bits}) {
         0..1: return palette_2cc(COLOUR_WHITE, company_colour2);
         2: return palette_2cc(COLOUR_GREY, company_colour2);
@@ -82,9 +122,9 @@
 
 <tal:use_player_cc_with_randomised_shades repeat="cc ['1cc', '2cc']">
     switch (FEAT_TRAINS, SELF, switch_colour_scheme_use_player_cc_with_randomised_shades_${cc}, company_colour${cc[0]}) {
-        COLOUR_DARK_BLUE: switch_colour_scheme_random_blue_${cc}_result;
+        COLOUR_DARK_BLUE: switch_colour_scheme_random_dark_blue_${cc}_result;
         COLOUR_PALE_GREEN: switch_colour_scheme_random_green_${cc}_result;
-        COLOUR_PINK: switch_colour_scheme_random_red_${cc}_result;
+        COLOUR_PINK: switch_colour_scheme_random_pink_${cc}_result;
         COLOUR_YELLOW: switch_colour_scheme_random_yellow_${cc}_result;
         COLOUR_RED: switch_colour_scheme_random_red_${cc}_result;
         COLOUR_LIGHT_BLUE: switch_colour_scheme_random_blue_${cc}_result;
@@ -104,22 +144,22 @@
 <tal:contrast_with_player_cc repeat="cc ['1cc', '2cc']">
     <!--! these are not strict colour wheel contrasts, I just picked what looks right -->
     switch (FEAT_TRAINS, SELF, switch_colour_scheme_contrast_with_player_cc_${cc}, company_colour${cc[0]}) {
-        COLOUR_DARK_BLUE: switch_colour_scheme_random_red_${cc}_result;
-        COLOUR_PALE_GREEN: switch_colour_scheme_random_blue_${cc}_result;
-        COLOUR_PINK: switch_colour_scheme_random_blue_${cc}_result;
+        COLOUR_DARK_BLUE: switch_colour_scheme_random_pink_${cc}_result;
+        COLOUR_PALE_GREEN: switch_colour_scheme_random_grey_brown_${cc}_result;
+        COLOUR_PINK: switch_colour_scheme_random_light_blue_${cc}_result;
         COLOUR_YELLOW: switch_colour_scheme_random_blue_${cc}_result;
         COLOUR_RED: switch_colour_scheme_random_blue_${cc}_result;
-        COLOUR_LIGHT_BLUE: switch_colour_scheme_random_red_${cc}_result;
-        COLOUR_GREEN: switch_colour_scheme_random_blue_${cc}_result;
-        COLOUR_DARK_GREEN: switch_colour_scheme_random_blue_${cc}_result;
+        COLOUR_LIGHT_BLUE: switch_colour_scheme_random_pink_${cc}_result;
+        COLOUR_GREEN: switch_colour_scheme_random_yellow_${cc}_result;
+        COLOUR_DARK_GREEN: switch_colour_scheme_random_light_blue_${cc}_result;
         COLOUR_BLUE: switch_colour_scheme_random_red_${cc}_result;
-        COLOUR_CREAM: switch_colour_scheme_random_blue_${cc}_result;
+        COLOUR_CREAM: switch_colour_scheme_random_light_blue_${cc}_result;
         COLOUR_MAUVE: switch_colour_scheme_random_yellow_${cc}_result;
         COLOUR_PURPLE: switch_colour_scheme_random_yellow_${cc}_result;
-        COLOUR_ORANGE: switch_colour_scheme_random_green_${cc}_result;
-        COLOUR_BROWN: switch_colour_scheme_random_blue_${cc}_result;
+        COLOUR_ORANGE: switch_colour_scheme_random_dark_green_${cc}_result;
+        COLOUR_BROWN: switch_colour_scheme_random_dark_blue_${cc}_result;
         COLOUR_GREY: switch_colour_scheme_random_red_${cc}_result;
-        COLOUR_WHITE: switch_colour_scheme_random_blue_${cc}_result;
+        COLOUR_WHITE: switch_colour_scheme_random_dark_blue_${cc}_result;
     }
 </tal:contrast_with_player_cc>
 
@@ -156,6 +196,10 @@ switch (FEAT_TRAINS, SELF, switch_cc_num_to_randomise, LOAD_TEMP(0)) {
 <!--! handle user flipped state -->
 switch (FEAT_TRAINS, SELF, switch_colour_mapping, cc_num_to_randomise, [STORE_TEMP(cc_num_to_randomise, 0), vehicle_is_flipped]) {
     1: return base_sprite_2cc + 16 * company_colour2 + company_colour1; <!--! apply regular 1CC and 2CC -->
+    return switch_cc_num_to_randomise;
+}
+
+switch (FEAT_TRAINS, SELF, switch_colour_mapping_purchase, cc_num_to_randomise, STORE_TEMP(cc_num_to_randomise, 0)) {
     return switch_cc_num_to_randomise;
 }
 
