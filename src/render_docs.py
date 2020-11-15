@@ -14,6 +14,7 @@ from collections import defaultdict
 import iron_horse
 import utils
 import global_constants
+import gestalt_graphics.graphics_constants
 from polar_fox import git_info
 
 # get the strings from base lang file so they can be used in docs
@@ -134,34 +135,7 @@ class DocHelper(object):
         return result
 
     def get_palette_index_for_company_colour(self, company_colour, offset):
-        # indexes into the DOS palette for a company colour name
-        # !! these may not be accurate for all colours, I had to guess, can't find where these are defined in openttd src
-        company_colours = {'COLOUR_DARK_BLUE': 198,
-                           'COLOUR_PALE_GREEN': 96,
-                           'COLOUR_PINK': 42,
-                           'COLOUR_YELLOW': 62,
-                           'COLOUR_RED': 179, # !! needs special case
-                           'COLOUR_LIGHT_BLUE': 154,
-                           # 'COLOUR_GREEN': 0, # special case handling for green
-                           'COLOUR_DARK_GREEN': 88,
-                           'COLOUR_BLUE': 146,
-                           'COLOUR_CREAM': 114,
-                           'COLOUR_MAUVE': 128,
-                           'COLOUR_PURPLE': 136,
-                           # 'COLOUR_ORANGE': 0 # special case handling for orange
-                           'COLOUR_BROWN': 32,
-                           'COLOUR_GREY': 4,
-                           'COLOUR_WHITE': 8,
-                           }
-        # special cases without sequential ranges
-        if company_colour == 'COLOUR_RED':
-            return (179, 180, 181, 182, 183, 164, 165, 166)[offset]
-        elif company_colour == 'COLOUR_GREEN':
-            return (82, 83, 84, 85, 206, 207, 208, 209)[offset]
-        elif company_colour == 'COLOUR_ORANGE':
-            return (62, 63, 192, 193, 194, 195, 196, 197)[offset]
-        else:
-            return company_colours[company_colour] + offset
+        return gestalt_graphics.graphics_constants.company_colours[company_colour][offset]
 
     def get_company_colour_as_rgb(self, company_colour, offset=0):
         return palette[self.get_palette_index_for_company_colour(company_colour, offset)]
