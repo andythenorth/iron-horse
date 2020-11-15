@@ -14,7 +14,7 @@ from collections import defaultdict
 import iron_horse
 import utils
 import global_constants
-import gestalt_graphics.graphics_constants
+import polar_fox.constants
 from polar_fox import git_info
 
 # get the strings from base lang file so they can be used in docs
@@ -135,7 +135,7 @@ class DocHelper(object):
         return result
 
     def get_palette_index_for_company_colour(self, company_colour, offset):
-        return gestalt_graphics.graphics_constants.company_colours[company_colour][offset]
+        return polar_fox.constants.company_colour_maps[company_colour][offset]
 
     def get_company_colour_as_rgb(self, company_colour, offset=0):
         return palette[self.get_palette_index_for_company_colour(company_colour, offset)]

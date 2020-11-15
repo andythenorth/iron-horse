@@ -1,22 +1,3 @@
-# indexes into the DOS palette for a company colour name
-# find these from https://github.com/frosch123/TTDViewer/blob/master/src/recolor.xml#L186
-company_colours = {'COLOUR_DARK_BLUE': (198, 199, 200, 201, 202, 203, 204, 205),
-                   'COLOUR_PALE_GREEN': (96, 97, 98, 99, 100, 101, 102, 103),
-                   'COLOUR_PINK': (42, 43, 44, 45, 46, 47, 48, 49),
-                   'COLOUR_YELLOW': (62, 63, 64, 65, 66, 67, 68, 69),
-                   'COLOUR_RED': (179, 180, 181, 182, 183, 164, 165, 166),
-                   'COLOUR_LIGHT_BLUE': (154, 155, 156, 157, 158, 159, 160, 161),
-                   'COLOUR_GREEN': (82, 83, 84, 85, 206, 207, 208, 209),
-                   'COLOUR_DARK_GREEN': (88, 89, 90, 91, 92, 93, 94, 95),
-                   'COLOUR_BLUE': (146, 147, 148, 149, 150, 151, 152, 153),
-                   'COLOUR_CREAM': (114, 115, 116, 117, 118, 119, 120, 121),
-                   'COLOUR_MAUVE': (128, 129, 130, 131, 132, 133, 134, 135),
-                   'COLOUR_PURPLE': (136, 137, 138, 139, 140, 141, 142, 143),
-                   'COLOUR_ORANGE': (40, 192, 193, 194, 195, 196, 197, 39),
-                   'COLOUR_BROWN': (32, 33, 34, 35, 36, 37, 38, 39),
-                   'COLOUR_GREY': (4, 5, 6, 7, 8, 9, 10, 11),
-                   'COLOUR_WHITE': (8, 9, 10, 11, 12, 13, 14, 15)}
-
 # colour defaults
 CC1 = 198
 CC2 = 80
