@@ -80,11 +80,11 @@
     switch (FEAT_TRAINS, SELF, switch_colour_scheme_random_grey_brown_1cc_result, ${random_bits}) {
         0..1: return palette_2cc(COLOUR_BROWN, company_colour2);
         2: return palette_2cc(COLOUR_GREY, company_colour2);
-        3: return custom_wagon_recolour_sprites + 16 * 0 /* recolour set */ + company_colour1;
+        3: return ${utils.get_custom_recolour_sprite('test', 1)};
     }
     switch (FEAT_TRAINS, SELF, switch_colour_scheme_random_grey_brown_2cc_result, ${random_bits}) {
         0: return palette_2cc(company_colour1, COLOUR_GREY);
-        1: return custom_wagon_recolour_sprites + 16 * 1 /* recolour set */ + company_colour2;
+        1: return ${utils.get_custom_recolour_sprite('test', 2)};
         2..3: return palette_2cc(company_colour1, COLOUR_BROWN);
     }
     switch (FEAT_TRAINS, SELF, switch_colour_scheme_random_mauve_1cc_result, ${random_bits}) {
