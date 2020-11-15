@@ -89,7 +89,7 @@ spriteset(${vehicle.id}_ss_vehicle_purchase, "${graphics_path}${consist.id}.png"
     spriteset_template_purchase_${vehicle.id}(10)
 }
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase, 0) {
-    0: return ${vehicle.id}_ss_vehicle_purchase;
+    return ${vehicle.id}_ss_vehicle_purchase;
 }
 
 <tal:include metal:use-macro="load: graphics_switches.pynml" />
