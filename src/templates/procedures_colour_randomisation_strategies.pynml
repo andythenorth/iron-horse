@@ -4,35 +4,6 @@
       however if articulated vehicle support is need it will need alternatives checking FORWARD_SELF(n)
       these will have to be duplicates of these switches on a repeat, with named entry points -->
 
-// use param[andy's favorite number as base sprite]. this will be used similar as base_sprite_2cc
-// only do this once per GRF. put all recolourings into the same block.
-
-custom_wagon_recolour_sprites = reserve_sprites(16 * 2); <!--! 16 company colours * number of custom recolourings -->
-
-replace(custom_wagon_recolour_sprites) {
-    // recolour cc 1, use player setting for cc 2
-    <tal:company_colour_maps repeat="company_colour_map_name global_constants.company_colour_maps.keys()">
-        //${company_colour_map_name}
-        recolour_sprite {
-        <tal:company_colour_map repeat="colour_index global_constants.company_colour_maps[company_colour_map_name]">
-            ${hex(198 + repeat.colour_index.index)}: 0x0F;
-            ${hex(80 + repeat.colour_index.index)}: ${hex(colour_index)};
-        </tal:company_colour_map>
-        }
-    </tal:company_colour_maps>
-    // recolour cc 2, use player setting for cc 1
-    <tal:company_colour_maps repeat="company_colour_map_name global_constants.company_colour_maps.keys()">
-        //${company_colour_map_name}
-        recolour_sprite {
-        <tal:company_colour_map repeat="colour_index global_constants.company_colour_maps[company_colour_map_name]">
-            ${hex(198 + repeat.colour_index.index)}: ${hex(colour_index)};
-            ${hex(80 + repeat.colour_index.index)}: 0x0F;
-        </tal:company_colour_map>
-        }
-    </tal:company_colour_maps>
-}
-
-
 <tal:fixed_colour_scheme_results define="random_bits 'getbits(random_bits, 0, 2)'">
     <!--! uses 2 random bits from self, enough for up to 4 colour choices
           note that there are 3 colours, but 4 random results, so switches weight to most pleasant colour in each case -->
@@ -109,11 +80,11 @@ replace(custom_wagon_recolour_sprites) {
     switch (FEAT_TRAINS, SELF, switch_colour_scheme_random_grey_brown_1cc_result, ${random_bits}) {
         0..1: return palette_2cc(COLOUR_BROWN, company_colour2);
         2: return palette_2cc(COLOUR_GREY, company_colour2);
-        3: return palette_2cc(COLOUR_CREAM, company_colour2);
+        3: return custom_wagon_recolour_sprites + 16 * 0 /* recolour set */ + company_colour1;
     }
     switch (FEAT_TRAINS, SELF, switch_colour_scheme_random_grey_brown_2cc_result, ${random_bits}) {
         0: return palette_2cc(company_colour1, COLOUR_GREY);
-        1: return palette_2cc(company_colour1, COLOUR_CREAM);
+        1: return custom_wagon_recolour_sprites + 16 * 1 /* recolour set */ + company_colour2;
         2..3: return palette_2cc(company_colour1, COLOUR_BROWN);
     }
     switch (FEAT_TRAINS, SELF, switch_colour_scheme_random_mauve_1cc_result, ${random_bits}) {
@@ -217,10 +188,8 @@ replace(custom_wagon_recolour_sprites) {
 }-->
 
 switch (FEAT_TRAINS, SELF, switch_cc_num_to_randomise, LOAD_TEMP(0)) {
-    //1: switch_randomisation_strategy_1cc;
-    //2: switch_randomisation_strategy_2cc;
-    1: return custom_wagon_recolour_sprites + 16 * 0 /* recolour set */ + company_colour1;
-    2: return custom_wagon_recolour_sprites + 16 * 1 /* recolour set */ + company_colour2;
+    1: switch_randomisation_strategy_1cc;
+    2: switch_randomisation_strategy_2cc;
 }
 
 <!--! handle user flipped state -->
@@ -232,4 +201,3 @@ switch (FEAT_TRAINS, SELF, switch_colour_mapping, cc_num_to_randomise, [STORE_TE
 switch (FEAT_TRAINS, SELF, switch_colour_mapping_purchase, cc_num_to_randomise, STORE_TEMP(cc_num_to_randomise, 0)) {
     return switch_cc_num_to_randomise;
 }
-

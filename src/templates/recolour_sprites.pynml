@@ -1,0 +1,30 @@
+// only do this once per GRF. put all recolourings into the same block.
+
+<!--! 16 company colours * both cc1 and cc2 * number of custom recolourings -->
+custom_wagon_recolour_sprites = reserve_sprites(16 * 2 * ${len(global_constants.custom_wagon_recolour_sprite_maps)});
+
+replace(custom_wagon_recolour_sprites) {
+    <tal:custom_wagon_recolour_sprite_maps repeat="custom_map_pair global_constants.custom_wagon_recolour_sprite_maps.items()">
+        // custom map for cc1: ${custom_map_pair[0]} - use player setting for cc2
+        <tal:company_colour_maps repeat="company_colour_map_pair global_constants.company_colour_maps.items()">
+            //${company_colour_map_pair[0]}
+            recolour_sprite {
+            <tal:company_colour_map repeat="colour_index company_colour_map_pair[1]">
+                ${hex(198 + repeat.colour_index.index)}: ${hex(custom_map_pair[1][repeat.colour_index.index])};
+                ${hex(80 + repeat.colour_index.index)}: ${hex(colour_index)};
+            </tal:company_colour_map>
+            }
+        </tal:company_colour_maps>
+        // custom map for cc2: ${custom_map_pair[0]} - use player setting for cc1
+        <tal:company_colour_maps repeat="company_colour_map_pair global_constants.company_colour_maps.items()">
+            //${company_colour_map_pair[0]}
+            recolour_sprite {
+            <tal:company_colour_map repeat="colour_index company_colour_map_pair[1]">
+                ${hex(198 + repeat.colour_index.index)}: ${hex(colour_index)};
+                ${hex(80 + repeat.colour_index.index)}: ${hex(custom_map_pair[1][repeat.colour_index.index])};
+            </tal:company_colour_map>
+            }
+        </tal:company_colour_maps>
+    </tal:custom_wagon_recolour_sprite_maps>
+}
+
