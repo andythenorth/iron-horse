@@ -91,4 +91,5 @@ silo_livery_recolour_maps = (("DFLT", {136: CC1, 137: CC1+1, 138: CC1+2, 139: CC
 sliding_wall_livery_recolour_maps = (("DFLT", {40: 4, 41: 5, 42: 6, 43: 7,
                                                44: 20, 45: 21, 46: 22, 47: 13}),)
 
-tarpaulin_car_livery_recolour_maps = (("DFLT", body_recolour_CC2),)
+tarpaulin_car_livery_recolour_maps = (("DFLT", {136: 5, 137: 7, 138: 8, 139: 9,
+                                                140: 10, 141: 12, 142: 13, 143: 15}),)

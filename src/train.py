@@ -2408,7 +2408,6 @@ class TarpaulinCarConsist(CarConsist):
         self._joker = True
         # allow flipping, used to flip company colour
         self.allow_flip = True
-        self.cc_num_to_randomise = 2
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(id_base='tarpaulin_car',
                                                                   recolour_maps=graphics_constants.tarpaulin_car_livery_recolour_maps)
