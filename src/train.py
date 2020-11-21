@@ -1442,6 +1442,7 @@ class CoilCarCoveredConsist(CoilCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = 'coil_car_covered'
         super().__init__(**kwargs)
+        self.cc_num_to_randomise = 2
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(id_base='coil_car_covered',
                                                                   recolour_maps=graphics_constants.coil_car_livery_recolour_maps)
