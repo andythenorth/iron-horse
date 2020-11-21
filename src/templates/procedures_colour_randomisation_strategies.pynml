@@ -1,14 +1,14 @@
 <!--! strategies for random colour remapping (of wagons)
     1. strategies apply rules to branch to colour sets, which apply a random choice from 2 shades of the chosen colour (as of Nov 2020)
     2. player parameter can choose certain strategies explicitly
-    3. if player parameter is 'automatic' a strategy will be selected for the vehicle, depending on multiple criteria set by wagon type
-    4. not all strategies can be directly selected by player parameter, some are highly specific to vehicle, roster etc
+    3. magic may or may not get added for engine-specific or cargo-specific colours
 -->
 
 <!--! as of Dec 2019 this is not used with articulated vehicles,
       however if articulated vehicle support is need it will need alternatives checking FORWARD_SELF(n)
       these will have to be duplicates of these switches on a repeat, with named entry points -->
 
+<!--! note that random bits need to be unique within the switch chain to prevent dependent results -->
 <tal:colour_sets define="random_bits 'getbits(random_bits, 0, 1)';
                          colour_sets {'dark_blue': ['COLOUR_DARK_BLUE', 'custom_dark_blue'],
                                       'pale_green': ['COLOUR_PALE_GREEN', 'custom_pale_green'],
@@ -42,8 +42,11 @@
 
 <tal:switch_by_company_colour repeat="cc [['1cc', '2cc'], ['1cc', '1cc'], ['2cc', '1cc'], ['2cc', '2cc']]">
     switch (FEAT_TRAINS, SELF, switch_by_company_colour_${cc[0]}_to_${cc[1]},
-                        <!--! faffy ternary, checks if grf parameter is 'use company colour' or supplies a specifc base colour to use -->
-                        param_wagon_base_colour_${cc[1][0]} == 0 ? company_colour${cc[1][0]} : param_wagon_base_colour_${cc[1][0]} - 1) {
+                        <!--! faffy stacked ternary, checks:
+                             if wagon use_wagon_base_colour_parameter is true, then
+                             if grf parameter is 'use company colour' or supplies a specifc base colour to use -->
+                        LOAD_TEMP(2) == 0 ? company_colour${cc[1][0]} :
+                            (param_wagon_base_colour_${cc[1][0]} == 0 ? company_colour${cc[1][0]} : param_wagon_base_colour_${cc[1][0]} - 1)) {
         COLOUR_DARK_BLUE: switch_colour_set_dark_blue_${cc[0]};
         COLOUR_PALE_GREEN: switch_colour_set_pale_green_${cc[0]};
         COLOUR_PINK: switch_colour_set_pink_${cc[0]};
@@ -85,7 +88,9 @@
 </tal:strategy_no_randomisation>
 
 <tal:select_strategy_from_param repeat="cc [['1cc', 'unflipped', '1cc'], ['1cc', 'flipped', '2cc'], ['2cc', 'unflipped', '2cc'], ['2cc', 'flipped', '1cc']]">
-    switch (FEAT_TRAINS, SELF, switch_select_randomisation_strategy_${cc[0]}_${cc[1]}, param_wagon_colour_randomisation_strategy) {
+    switch (FEAT_TRAINS, SELF, switch_select_randomisation_strategy_${cc[0]}_${cc[1]},
+                <!--! fiddly ternary check if the wagon type forces a strategy, where 0 = default to parameter setting, otherwise force strategy 1 or 2 (no way to force strategy 0 for a wagon type -->
+                LOAD_TEMP(1) == 0 ? param_wagon_colour_randomisation_strategy : LOAD_TEMP(1)) {
         1: switch_by_company_colour_${cc[0]}_to_${cc[2]};
         2: switch_strategy_no_randomisation_${cc[1]};
         switch_strategy_randomise_base_colour_${cc[0]}_${cc[1]};
@@ -102,14 +107,14 @@ switch (FEAT_TRAINS, SELF, switch_cc_num_to_randomise_flipped, LOAD_TEMP(0)) {
     2: switch_select_randomisation_strategy_2cc_flipped;
 }
 
-switch (FEAT_TRAINS, SELF, switch_colour_mapping, cc_num_to_randomise, auto_colour_randomisation_strategy_num,
-                                                    [STORE_TEMP(cc_num_to_randomise, 0), STORE_TEMP(auto_colour_randomisation_strategy_num, 1), vehicle_is_flipped]) {
+switch (FEAT_TRAINS, SELF, switch_colour_mapping, cc_num_to_randomise, auto_colour_randomisation_strategy_num, use_wagon_base_colour_parameter,
+                                                    [STORE_TEMP(cc_num_to_randomise, 0), STORE_TEMP(auto_colour_randomisation_strategy_num, 1), STORE_TEMP(use_wagon_base_colour_parameter, 2), vehicle_is_flipped]) {
     1: switch_cc_num_to_randomise_flipped;
     switch_cc_num_to_randomise;
 }
 
 <!--! purchase cb doesn't appear to support checking flipped var (didn't test this thoroughly, might be wrong), so provide dedicated purchase entry point switch -->
-switch (FEAT_TRAINS, SELF, switch_colour_mapping_purchase, cc_num_to_randomise, auto_colour_randomisation_strategy_num,
-                                                    [STORE_TEMP(cc_num_to_randomise, 0), STORE_TEMP(auto_colour_randomisation_strategy_num, 1)]) {
+switch (FEAT_TRAINS, SELF, switch_colour_mapping_purchase, cc_num_to_randomise, auto_colour_randomisation_strategy_num, use_wagon_base_colour_parameter,
+                                                    [STORE_TEMP(cc_num_to_randomise, 0), STORE_TEMP(auto_colour_randomisation_strategy_num, 1), STORE_TEMP(use_wagon_base_colour_parameter, 2)]) {
     return switch_cc_num_to_randomise;
 }

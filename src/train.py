@@ -1193,7 +1193,9 @@ class CarConsist(Consist):
         # set to 2 in subclass if 2cc should be randomised - can't randomise both, too fiddly
         self.cc_num_to_randomise = 1
         # over-ride in subclasses to select specific randomisation strategy for vehicle type
-        self.auto_colour_randomisation_strategy_num = 0
+        self.auto_colour_randomisation_strategy_num = 0 # 0 is default
+        # over-ride in subclasses to suppress base colour parameter (and always use company colours)
+        self.use_wagon_base_colour_parameter = True
 
     @property
     def buy_cost(self):
@@ -1496,8 +1498,6 @@ class CoveredHopperCarGrainConsist(CoveredHopperCarConsistBase):
         self.base_id = 'grain_hopper_car'
         super().__init__(**kwargs)
         self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label['covered_hoppers']
-        # type-specific wagon colour randomisation
-        self.auto_colour_randomisation_strategy_num = 2
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(recolour_maps=graphics_constants.grain_hopper_car_livery_recolour_maps)
 
@@ -1558,8 +1558,6 @@ class CurtainSideCarBoxConsist(CarConsist):
         self._joker = True
         # allow flipping, used to flip company colour
         self.allow_flip = True
-        # type-specific wagon colour randomisation
-        self.auto_colour_randomisation_strategy_num = 1
         # Graphics configuration
         self.roof_type = 'freight'
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(id_base='curtain_side_box_car',
@@ -1609,8 +1607,6 @@ class DumpCarHighSideConsist(DumpCarConsistBase):
         self.default_cargos = polar_fox.constants.default_cargos['dump_high_sides']
         self._joker = True
         self.cc_num_to_randomise = 2
-        # type-specific wagon colour randomisation
-        self.auto_colour_randomisation_strategy_num = 1
 
 
 class DumpCarScrapMetalConsist(DumpCarConsistBase):
@@ -1661,6 +1657,8 @@ class EdiblesTankCarConsist(CarConsist):
         self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['food_wagons']
         # CC is swapped randomly (player can't choose), but also swap base livery on flip (player can choose
         self.allow_flip = True
+        # type-specific wagon colour randomisation
+        self.auto_colour_randomisation_strategy_num = 1 # single base colour unless flipped
         # Graphics configuration
         # only one livery, but recolour gestalt used to automate adding chassis
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(recolour_maps=graphics_constants.edibles_tank_car_livery_recolour_maps)
@@ -1684,6 +1682,9 @@ class ExpressCarConsist(CarConsist):
         self.floating_run_cost_multiplier = 1.66
         self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['express_core']
         self.allow_flip = True
+        # type-specific wagon colour randomisation
+        self.auto_colour_randomisation_strategy_num = 1 # single base colour unless flipped
+        self.use_wagon_base_colour_parameter = False
         # Graphics configuration
         if self.gen in [1]:
             self.roof_type = 'pax_mail_clerestory'
@@ -2217,6 +2218,8 @@ class ReeferCarConsist(CarConsist):
         self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['food_wagons']
         # allow flipping, used to flip company colour
         self.allow_flip = True
+        # type-specific wagon colour randomisation
+        self.auto_colour_randomisation_strategy_num = 1 # single base colour unless flipped
         # Graphics configuration
         self.roof_type = 'freight'
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(id_base='box_car',
@@ -2311,7 +2314,7 @@ class SlidingWallCarConsist(CarConsist):
         # allow flipping, used to flip company colour
         self.allow_flip = True
         # type-specific wagon colour randomisation
-        self.auto_colour_randomisation_strategy_num = 1
+        self.auto_colour_randomisation_strategy_num = 1 # single base colour unless flipped
         # Graphics configuration
         self.roof_type = 'freight'
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(id_base='sliding_wall_car',
@@ -2405,8 +2408,6 @@ class TarpaulinCarConsist(CarConsist):
         # allow flipping, used to flip company colour
         self.allow_flip = True
         self.cc_num_to_randomise = 2
-        # type-specific wagon colour randomisation
-        self.auto_colour_randomisation_strategy_num = 1
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(id_base='tarpaulin_car',
                                                                   recolour_maps=graphics_constants.tarpaulin_car_livery_recolour_maps)
@@ -2458,7 +2459,7 @@ class VehiclePartsBoxCarConsist(CarConsist):
         # allow flipping, used to flip company colour
         self.allow_flip = True
         # type-specific wagon colour randomisation
-        self.auto_colour_randomisation_strategy_num = 1
+        self.auto_colour_randomisation_strategy_num = 1 # single base colour unless flipped
         # Graphics configuration
         self.roof_type = 'freight'
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(id_base='vehicle_parts_box_car',
