@@ -1496,6 +1496,8 @@ class CoveredHopperCarGrainConsist(CoveredHopperCarConsistBase):
         self.base_id = 'grain_hopper_car'
         super().__init__(**kwargs)
         self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label['covered_hoppers']
+        # type-specific wagon colour randomisation
+        self.auto_colour_randomisation_strategy_num = 2
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(recolour_maps=graphics_constants.grain_hopper_car_livery_recolour_maps)
 

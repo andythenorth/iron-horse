@@ -1,5 +1,5 @@
 <!--! strategies for random colour remapping (of wagons)
-    1. strategies apply rules to branch to colour sets, which apply a random choice from 3 colours (as of Nov 2020) - could also use a 4th colour if wanted
+    1. strategies apply rules to branch to colour sets, which apply a random choice from 2 shades of the chosen colour (as of Nov 2020)
     2. player parameter can choose certain strategies explicitly
     3. if player parameter is 'automatic' a strategy will be selected for the vehicle, depending on multiple criteria set by wagon type
     4. not all strategies can be directly selected by player parameter, some are highly specific to vehicle, roster etc
@@ -9,121 +9,57 @@
       however if articulated vehicle support is need it will need alternatives checking FORWARD_SELF(n)
       these will have to be duplicates of these switches on a repeat, with named entry points -->
 
-<tal:colour_sets define="random_bits 'getbits(random_bits, 0, 2)'">
-    <!--! uses 2 random bits from self, enough for up to 4 colour choices (but just using 3 looks better)
-          to make up 4/4 chance, switches give extra weight to most pleasant colour in each case -->
-    switch (FEAT_TRAINS, SELF, switch_colour_set_blue_1cc, ${random_bits}) {
-        0..1: return palette_2cc(COLOUR_BLUE, company_colour2);
-        2: return palette_2cc(COLOUR_DARK_BLUE, company_colour2);
-        3: return palette_2cc(COLOUR_LIGHT_BLUE, company_colour2);
-    }
-    switch (FEAT_TRAINS, SELF, switch_colour_set_blue_2cc, ${random_bits}) {
-        0: return palette_2cc(company_colour1, COLOUR_LIGHT_BLUE);
-        1..2: return palette_2cc(company_colour1, COLOUR_BLUE);
-        3: return palette_2cc(company_colour1, COLOUR_DARK_BLUE);
-    }
-    switch (FEAT_TRAINS, SELF, switch_colour_set_dark_blue_1cc, ${random_bits}) {
-        0..1: return palette_2cc(COLOUR_DARK_BLUE, company_colour2);
-        2: return palette_2cc(COLOUR_BLUE, company_colour2);
-        3: return palette_2cc(COLOUR_LIGHT_BLUE, company_colour2);
-    }
-    switch (FEAT_TRAINS, SELF, switch_colour_set_dark_blue_2cc, ${random_bits}) {
-        0: return palette_2cc(company_colour1, COLOUR_LIGHT_BLUE);
-        1..2: return palette_2cc(company_colour1, COLOUR_DARK_BLUE);
-        3: return palette_2cc(company_colour1, COLOUR_BLUE);
-    }
-    switch (FEAT_TRAINS, SELF, switch_colour_set_light_blue_1cc, ${random_bits}) {
-        0..1: return palette_2cc(COLOUR_LIGHT_BLUE, company_colour2);
-        2: return palette_2cc(COLOUR_BLUE, company_colour2);
-        3: return palette_2cc(COLOUR_DARK_BLUE, company_colour2);
-    }
-    switch (FEAT_TRAINS, SELF, switch_colour_set_light_blue_2cc, ${random_bits}) {
-        0: return palette_2cc(company_colour1, COLOUR_DARK_BLUE);
-        1..2: return palette_2cc(company_colour1, COLOUR_LIGHT_BLUE);
-        3: return palette_2cc(company_colour1, COLOUR_BLUE);
-    }
-    switch (FEAT_TRAINS, SELF, switch_colour_set_green_1cc, ${random_bits}) {
-        0: return palette_2cc(COLOUR_GREEN, company_colour2);
-        1: return palette_2cc(COLOUR_DARK_GREEN, company_colour2);
-        2..3: return palette_2cc(COLOUR_PALE_GREEN, company_colour2);
-    }
-    switch (FEAT_TRAINS, SELF, switch_colour_set_green_2cc, ${random_bits}) {
-        0..1: return palette_2cc(company_colour1, COLOUR_PALE_GREEN);
-        2: return palette_2cc(company_colour1, COLOUR_GREEN);
-        3: return palette_2cc(company_colour1, COLOUR_DARK_GREEN);
-    }
-    switch (FEAT_TRAINS, SELF, switch_colour_set_dark_green_1cc, ${random_bits}) {
-        0..1: return palette_2cc(COLOUR_DARK_GREEN, company_colour2);
-        2: return palette_2cc(COLOUR_GREEN, company_colour2);
-        3: return palette_2cc(COLOUR_PALE_GREEN, company_colour2);
-    }
-    switch (FEAT_TRAINS, SELF, switch_colour_set_dark_green_2cc, ${random_bits}) {
-        0..1: return palette_2cc(company_colour1, COLOUR_PALE_GREEN);
-        2: return palette_2cc(company_colour1, COLOUR_GREEN);
-        3: return palette_2cc(company_colour1, COLOUR_DARK_GREEN);
-    }
-    switch (FEAT_TRAINS, SELF, switch_colour_set_red_1cc, ${random_bits}) {
-        0: return palette_2cc(COLOUR_RED, company_colour2);
-        1: return palette_2cc(COLOUR_CREAM, company_colour2);
-        2..3: return palette_2cc(COLOUR_PINK, company_colour2);
-    }
-    switch (FEAT_TRAINS, SELF, switch_colour_set_red_2cc, ${random_bits}) {
-        0..1: return palette_2cc(company_colour1, COLOUR_PINK);
-        2: return palette_2cc(company_colour1, COLOUR_RED);
-        3: return palette_2cc(company_colour1, COLOUR_CREAM);
-    }
-    switch (FEAT_TRAINS, SELF, switch_colour_set_yellow_1cc, ${random_bits}) {
-        0..1: return palette_2cc(COLOUR_YELLOW, company_colour2);
-        2: return palette_2cc(COLOUR_CREAM, company_colour2);
-        3: return palette_2cc(COLOUR_ORANGE, company_colour2);
-    }
-    switch (FEAT_TRAINS, SELF, switch_colour_set_yellow_2cc, ${random_bits}) {
-        0: return palette_2cc(company_colour1, COLOUR_CREAM);
-        1: return palette_2cc(company_colour1, COLOUR_ORANGE);
-        2..3: return palette_2cc(company_colour1, COLOUR_YELLOW);
-    }
-    switch (FEAT_TRAINS, SELF, switch_colour_set_grey_brown_1cc, ${random_bits}) {
-        0..1: return palette_2cc(COLOUR_BROWN, company_colour2);
-        2: return palette_2cc(COLOUR_GREY, company_colour2);
-        3: return ${utils.get_custom_recolour_sprite('brown_1', 1)};
-    }
-    switch (FEAT_TRAINS, SELF, switch_colour_set_grey_brown_2cc, ${random_bits}) {
-        0: return palette_2cc(company_colour1, COLOUR_GREY);
-        1: return ${utils.get_custom_recolour_sprite('brown_1', 2)};
-        2..3: return palette_2cc(company_colour1, COLOUR_BROWN);
-    }
-    switch (FEAT_TRAINS, SELF, switch_colour_set_mauve_1cc, ${random_bits}) {
-        0..1: return palette_2cc(COLOUR_MAUVE, company_colour2);
-        2: return palette_2cc(COLOUR_PURPLE, company_colour2);
-        3: return palette_2cc(COLOUR_GREY, company_colour2);
-    }
-    switch (FEAT_TRAINS, SELF, switch_colour_set_mauve_2cc, ${random_bits}) {
-        0: return palette_2cc(company_colour1, COLOUR_PURPLE);
-        1: return palette_2cc(company_colour1, COLOUR_GREY);
-        2..3: return palette_2cc(company_colour1, COLOUR_MAUVE);
-    }
-    switch (FEAT_TRAINS, SELF, switch_colour_set_pink_1cc, ${random_bits}) {
-        0..1: return palette_2cc(COLOUR_PINK, company_colour2);
-        2: return palette_2cc(COLOUR_CREAM, company_colour2);
-        3: return palette_2cc(COLOUR_RED, company_colour2);
-    }
-    switch (FEAT_TRAINS, SELF, switch_colour_set_pink_2cc, ${random_bits}) {
-        0: return palette_2cc(company_colour1, COLOUR_RED);
-        1..2: return palette_2cc(company_colour1, COLOUR_PINK);
-        3: return palette_2cc(company_colour1, COLOUR_CREAM);
-    }
-    switch (FEAT_TRAINS, SELF, switch_colour_set_white_grey_1cc, ${random_bits}) {
-        0..1: return palette_2cc(COLOUR_WHITE, company_colour2);
-        2: return palette_2cc(COLOUR_GREY, company_colour2);
-        3: return palette_2cc(COLOUR_BROWN, company_colour2);
-    }
-    switch (FEAT_TRAINS, SELF, switch_colour_set_white_grey_2cc, ${random_bits}) {
-        0: return palette_2cc(company_colour1, COLOUR_GREY);
-        1: return palette_2cc(company_colour1, COLOUR_BROWN);
-        2..3: return palette_2cc(company_colour1, COLOUR_WHITE);
-    }
+<!--!
+'dark_blue':
+  'pale_green': DONE
+  'pink': DONE
+  'yellow': DONE
+  'red':
+  'light_blue':
+  'green':
+  'dark_green': DONE
+  'blue':
+  'cream':
+  'mauve': DONE
+  'purple': DONE
+  'orange': DONE
+  'brown':
+  'grey': DONE
+  'white': DONE
+-->
+
+<tal:colour_sets define="random_bits 'getbits(random_bits, 0, 1)';
+                         colour_sets {'dark_blue': ['COLOUR_DARK_BLUE', 'COLOUR_LIGHT_BLUE'],
+                                      'pale_green': ['COLOUR_PALE_GREEN', 'COLOUR_DARK_GREEN'],
+                                      'pink': ['COLOUR_PINK', 'custom_dark_pink'],
+                                      'yellow': ['COLOUR_YELLOW', 'custom_dark_yellow'],
+                                      'red': ['COLOUR_RED', 'COLOUR_CREAM'],
+                                      'light_blue': ['COLOUR_LIGHT_BLUE', 'COLOUR_BLUE'],
+                                      'green': ['COLOUR_GREEN', 'COLOUR_PALE_GREEN'],
+                                      'dark_green': ['COLOUR_DARK_GREEN', 'COLOUR_PALE_GREEN'],
+                                      'blue': ['COLOUR_BLUE', 'COLOUR_LIGHT_BLUE'],
+                                      'cream': ['COLOUR_CREAM', 'COLOUR_LIGHT_BLUE'],
+                                      'mauve': ['COLOUR_MAUVE', 'custom_light_mauve'],
+                                      'purple': ['COLOUR_PURPLE', 'custom_light_purple'],
+                                      'orange': ['COLOUR_ORANGE', 'custom_dark_orange'],
+                                      'brown': ['COLOUR_BROWN', 'custom_brown'],
+                                      'grey': ['COLOUR_GREY', 'custom_dark_grey'],
+                                      'white': ['COLOUR_WHITE', 'custom_dark_white'],
+                                       }">
+    <tal:colour_set repeat="colour_set colour_sets.items()">
+        <!--! uses 1 random bit from self, just 2 colour choices, more is overkill and often looks bad -->
+        switch (FEAT_TRAINS, SELF, switch_colour_set_${colour_set[0]}_1cc, ${random_bits}) {
+            0: return ${utils.unpack_colour(colour_set[1][0], 1)};
+            1: return ${utils.unpack_colour(colour_set[1][1], 1)};
+        }
+        switch (FEAT_TRAINS, SELF, switch_colour_set_${colour_set[0]}_2cc, ${random_bits}) {
+            0: return ${utils.unpack_colour(colour_set[1][0], 2)};
+            1: return ${utils.unpack_colour(colour_set[1][1], 2)};
+        }
+    </tal:colour_set>
+    <!--!
     switch (FEAT_TRAINS, SELF, switch_colour_set_pony_railfreight_red_1cc, ${random_bits}) {
-        0..1: return ${utils.get_custom_recolour_sprite('br_railfreight_red', 1)};
+        0..1: return ${utils.get_custom_recolour_sprite('br_g_red', 1)};
         2: return palette_2cc(COLOUR_PINK, company_colour2);
         3: return ${utils.get_custom_recolour_sprite('dark_pink', 1)};
     }
@@ -131,56 +67,57 @@
         0: return palette_2cc(company_colour1, COLOUR_PINK);
         1..2: return ${utils.get_custom_recolour_sprite('br_railfreight_red', 2)};
         3: return ${utils.get_custom_recolour_sprite('dark_pink', 2)};
-    }
+    }-->
 </tal:colour_sets>
 
-<tal:strategy_use_player_cc_with_randomised_shades repeat="cc ['1cc', '2cc']">
-    switch (FEAT_TRAINS, SELF, switch_strategy_use_player_cc_with_randomised_shades_${cc}, company_colour${cc[0]}) {
-        COLOUR_DARK_BLUE: switch_colour_set_dark_blue_${cc};
-        COLOUR_PALE_GREEN: switch_colour_set_green_${cc};
-        COLOUR_PINK: switch_colour_set_pink_${cc};
-        COLOUR_YELLOW: switch_colour_set_yellow_${cc};
-        COLOUR_RED: switch_colour_set_red_${cc};
-        COLOUR_LIGHT_BLUE: switch_colour_set_blue_${cc};
-        COLOUR_GREEN: switch_colour_set_green_${cc};
-        COLOUR_DARK_GREEN: switch_colour_set_green_${cc};
-        COLOUR_BLUE: switch_colour_set_blue_${cc};
-        COLOUR_CREAM: switch_colour_set_yellow_${cc};
-        COLOUR_MAUVE: switch_colour_set_mauve_${cc};
-        COLOUR_PURPLE: switch_colour_set_mauve_${cc};
-        COLOUR_ORANGE: switch_colour_set_yellow_${cc};
-        COLOUR_BROWN: switch_colour_set_grey_brown_${cc};
-        COLOUR_GREY: switch_colour_set_grey_brown_${cc};
-        COLOUR_WHITE: switch_colour_set_white_grey_${cc};
+<tal:strategy_use_player_cc_with_randomised_shades repeat="cc [['1cc', '2cc'], ['1cc', '1cc'], ['2cc', '1cc'], ['2cc', '2cc']]">
+    switch (FEAT_TRAINS, SELF, switch_strategy_use_player_cc_with_randomised_shades_${cc[0]}_to_${cc[1]}, company_colour${cc[1][0]}) {
+        COLOUR_DARK_BLUE: switch_colour_set_dark_blue_${cc[0]};
+        COLOUR_PALE_GREEN: switch_colour_set_pale_green_${cc[0]};
+        COLOUR_PINK: switch_colour_set_pink_${cc[0]};
+        COLOUR_YELLOW: switch_colour_set_yellow_${cc[0]};
+        COLOUR_RED: switch_colour_set_red_${cc[0]};
+        COLOUR_LIGHT_BLUE: switch_colour_set_light_blue_${cc[0]};
+        COLOUR_GREEN: switch_colour_set_green_${cc[0]};
+        COLOUR_DARK_GREEN: switch_colour_set_dark_green_${cc[0]};
+        COLOUR_BLUE: switch_colour_set_blue_${cc[0]};
+        COLOUR_CREAM: switch_colour_set_cream_${cc[0]};
+        COLOUR_MAUVE: switch_colour_set_mauve_${cc[0]};
+        COLOUR_PURPLE: switch_colour_set_purple_${cc[0]};
+        COLOUR_ORANGE: switch_colour_set_orange_${cc[0]};
+        COLOUR_BROWN: switch_colour_set_brown_${cc[0]};
+        COLOUR_GREY: switch_colour_set_grey_${cc[0]};
+        COLOUR_WHITE: switch_colour_set_white_${cc[0]};
     }
 </tal:strategy_use_player_cc_with_randomised_shades>
 
-<tal:strategy_contrast_with_player_cc repeat="cc ['1cc', '2cc']">
+<tal:strategy_contrast_with_player_cc repeat="cc [['1cc', '2cc'], ['1cc', '1cc'], ['2cc', '1cc'], ['2cc', '2cc']]">
     <!--! these are not strict colour wheel contrasts, I just picked what looks right -->
-    switch (FEAT_TRAINS, SELF, switch_strategy_contrast_with_player_cc_${cc}, company_colour${cc[0]}) {
-        COLOUR_DARK_BLUE: switch_colour_set_pink_${cc};
-        COLOUR_PALE_GREEN: switch_colour_set_grey_brown_${cc};
-        COLOUR_PINK: switch_colour_set_light_blue_${cc};
-        COLOUR_YELLOW: switch_colour_set_blue_${cc};
-        COLOUR_RED: switch_colour_set_blue_${cc};
-        COLOUR_LIGHT_BLUE: switch_colour_set_pink_${cc};
-        COLOUR_GREEN: switch_colour_set_yellow_${cc};
-        COLOUR_DARK_GREEN: switch_colour_set_light_blue_${cc};
-        COLOUR_BLUE: switch_colour_set_red_${cc};
-        COLOUR_CREAM: switch_colour_set_light_blue_${cc};
-        COLOUR_MAUVE: switch_colour_set_yellow_${cc};
-        COLOUR_PURPLE: switch_colour_set_yellow_${cc};
-        COLOUR_ORANGE: switch_colour_set_dark_green_${cc};
-        COLOUR_BROWN: switch_colour_set_dark_blue_${cc};
-        COLOUR_GREY: switch_colour_set_red_${cc};
-        COLOUR_WHITE: switch_colour_set_dark_blue_${cc};
+    switch (FEAT_TRAINS, SELF, switch_strategy_contrast_with_player_cc_${cc[0]}_to_${cc[1]}, company_colour${cc[1][0]}) {
+        COLOUR_DARK_BLUE: switch_colour_set_pink_${cc[0]};
+        COLOUR_PALE_GREEN: switch_colour_set_grey_${cc[0]};
+        COLOUR_PINK: switch_colour_set_light_blue_${cc[0]};
+        COLOUR_YELLOW: switch_colour_set_blue_${cc[0]};
+        COLOUR_RED: switch_colour_set_blue_${cc[0]};
+        COLOUR_LIGHT_BLUE: switch_colour_set_pink_${cc[0]};
+        COLOUR_GREEN: switch_colour_set_yellow_${cc[0]};
+        COLOUR_DARK_GREEN: switch_colour_set_light_blue_${cc[0]};
+        COLOUR_BLUE: switch_colour_set_red_${cc[0]};
+        COLOUR_CREAM: switch_colour_set_light_blue_${cc[0]};
+        COLOUR_MAUVE: switch_colour_set_yellow_${cc[0]};
+        COLOUR_PURPLE: switch_colour_set_yellow_${cc[0]};
+        COLOUR_ORANGE: switch_colour_set_dark_green_${cc[0]};
+        COLOUR_BROWN: switch_colour_set_dark_blue_${cc[0]};
+        COLOUR_GREY: switch_colour_set_red_${cc[0]};
+        COLOUR_WHITE: switch_colour_set_dark_blue_${cc[0]};
     }
 </tal:strategy_contrast_with_player_cc>
 
 <tal:automatic repeat="cc ['1cc', '2cc']">
     switch (FEAT_TRAINS, SELF, switch_automatic_${cc}, LOAD_TEMP(1)) {
+        2: switch_colour_set_green_${cc};
         1: switch_colour_set_dark_blue_${cc};
-        switch_colour_set_pony_railfreight_red_${cc};
+        <!--!switch_colour_set_pony_railfreight_red_${cc};-->
     }
 </tal:automatic>
 
@@ -190,38 +127,37 @@
 </tal:legacy_code>
 
 <!--! take colour from parameter, either the 1cc or 2cc result will be used, depending on vehicle, switching both is not supported -->
-<tal:select_strategy_from_param repeat="cc ['1cc', '2cc']">
-    switch (FEAT_TRAINS, SELF, switch_select_randomisation_strategy_${cc}, param_wagon_colour_randomisation_strategy) {
-        0: switch_colour_set_blue_${cc};
-        1: switch_colour_set_green_${cc};
-        2: switch_colour_set_red_${cc};
-        3: switch_colour_set_yellow_${cc};
-        4: switch_colour_set_grey_brown_${cc};
+<tal:select_strategy_from_param repeat="cc [['1cc', '2cc'], ['1cc', '1cc'], ['2cc', '1cc'], ['2cc', '2cc']]">
+    switch (FEAT_TRAINS, SELF, switch_select_randomisation_strategy_${cc[0]}_to_${cc[1]}, param_wagon_colour_randomisation_strategy) {
+        0: switch_colour_set_blue_${cc[0]};
+        1: switch_colour_set_green_${cc[0]};
+        2: switch_colour_set_red_${cc[0]};
+        3: switch_colour_set_yellow_${cc[0]};
+        4: switch_colour_set_grey_${cc[0]};
         5: return base_sprite_2cc + 16 * company_colour2 + company_colour1; <!--! apply regular 1CC and 2CC, no random -->
-        6: switch_strategy_use_player_cc_with_randomised_shades_${cc};
-        7: switch_strategy_contrast_with_player_cc_${cc};
-        8: switch_automatic_${cc};
+        6: switch_strategy_use_player_cc_with_randomised_shades_${cc[0]}_to_${cc[1]};
+        7: switch_strategy_contrast_with_player_cc_${cc[0]}_to_${cc[1]};
+        8: switch_automatic_${cc[0]};
     }
 </tal:select_strategy_from_param>
 
-<!--! is it 1cc or 2cc we're randomising (we don't support both because it's combinatorial silliness -->
-<!--!switch (FEAT_TRAINS, SELF, switch_colour_mapping_1cc_or_2cc, LOAD_TEMP(0)) {
-    1: return switch_randomise_1cc;
-    2: return switch_randomise_2cc;
-}-->
-
 switch (FEAT_TRAINS, SELF, switch_cc_num_to_randomise, LOAD_TEMP(0)) {
-    1: switch_select_randomisation_strategy_1cc;
-    2: switch_select_randomisation_strategy_2cc;
+    1: switch_select_randomisation_strategy_1cc_to_1cc;
+    2: switch_select_randomisation_strategy_2cc_to_2cc;
+}
+<!--! invert cc1 / cc2 choice if flipped -->
+switch (FEAT_TRAINS, SELF, switch_cc_num_to_randomise_flipped, LOAD_TEMP(0)) {
+    1: switch_strategy_use_player_cc_with_randomised_shades_1cc_to_2cc;
+    2: switch_strategy_use_player_cc_with_randomised_shades_2cc_to_1cc;
 }
 
-<!--! handle user flipped state -->
 switch (FEAT_TRAINS, SELF, switch_colour_mapping, cc_num_to_randomise, auto_colour_randomisation_strategy_num,
                                                     [STORE_TEMP(cc_num_to_randomise, 0), STORE_TEMP(auto_colour_randomisation_strategy_num, 1), vehicle_is_flipped]) {
-    1: return base_sprite_2cc + 16 * company_colour2 + company_colour1; <!--! apply regular 1CC and 2CC -->  <!--! !! is this enough - does player need more choices?? -->
-    return switch_cc_num_to_randomise;
+    1: switch_cc_num_to_randomise_flipped;
+    switch_cc_num_to_randomise;
 }
 
+<!--! purchase cb doesn't appear to support checking flipped var (didn't test this thoroughly, might be wrong), so provide dedicated purchase entry point switch -->
 switch (FEAT_TRAINS, SELF, switch_colour_mapping_purchase, cc_num_to_randomise, auto_colour_randomisation_strategy_num,
                                                     [STORE_TEMP(cc_num_to_randomise, 0), STORE_TEMP(auto_colour_randomisation_strategy_num, 1)]) {
     return switch_cc_num_to_randomise;
