@@ -10,39 +10,39 @@
       these will have to be duplicates of these switches on a repeat, with named entry points -->
 
 <!--!
-'dark_blue':
+  'dark_blue': DONE
   'pale_green': DONE
   'pink': DONE
   'yellow': DONE
-  'red':
-  'light_blue':
-  'green':
+  'red': DONE
+  'light_blue': DONE
+  'green': DONE
   'dark_green': DONE
-  'blue':
-  'cream':
+  'blue': DONE
+  'cream': DONE
   'mauve': DONE
   'purple': DONE
   'orange': DONE
-  'brown':
+  'brown': DONE
   'grey': DONE
   'white': DONE
 -->
 
 <tal:colour_sets define="random_bits 'getbits(random_bits, 0, 1)';
-                         colour_sets {'dark_blue': ['COLOUR_DARK_BLUE', 'COLOUR_LIGHT_BLUE'],
-                                      'pale_green': ['COLOUR_PALE_GREEN', 'COLOUR_DARK_GREEN'],
+                         colour_sets {'dark_blue': ['COLOUR_DARK_BLUE', 'custom_dark_blue'],
+                                      'pale_green': ['COLOUR_PALE_GREEN', 'custom_pale_green'],
                                       'pink': ['COLOUR_PINK', 'custom_dark_pink'],
                                       'yellow': ['COLOUR_YELLOW', 'custom_dark_yellow'],
-                                      'red': ['COLOUR_RED', 'COLOUR_CREAM'],
-                                      'light_blue': ['COLOUR_LIGHT_BLUE', 'COLOUR_BLUE'],
-                                      'green': ['COLOUR_GREEN', 'COLOUR_PALE_GREEN'],
-                                      'dark_green': ['COLOUR_DARK_GREEN', 'COLOUR_PALE_GREEN'],
-                                      'blue': ['COLOUR_BLUE', 'COLOUR_LIGHT_BLUE'],
-                                      'cream': ['COLOUR_CREAM', 'COLOUR_LIGHT_BLUE'],
+                                      'red': ['COLOUR_RED', 'custom_dark_red'],
+                                      'light_blue': ['COLOUR_LIGHT_BLUE', 'custom_light_blue'],
+                                      'green': ['COLOUR_GREEN', 'custom_green'],
+                                      'dark_green': ['COLOUR_DARK_GREEN', 'custom_dark_green'],
+                                      'blue': ['COLOUR_BLUE', 'custom_blue'],
+                                      'cream': ['COLOUR_CREAM', 'custom_dark_cream'],
                                       'mauve': ['COLOUR_MAUVE', 'custom_light_mauve'],
                                       'purple': ['COLOUR_PURPLE', 'custom_light_purple'],
                                       'orange': ['COLOUR_ORANGE', 'custom_dark_orange'],
-                                      'brown': ['COLOUR_BROWN', 'custom_brown'],
+                                      'brown': ['COLOUR_BROWN', 'custom_dark_brown'],
                                       'grey': ['COLOUR_GREY', 'custom_dark_grey'],
                                       'white': ['COLOUR_WHITE', 'custom_dark_white'],
                                        }">
