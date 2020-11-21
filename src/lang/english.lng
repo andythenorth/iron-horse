@@ -10,21 +10,35 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Excessive
 STR_PARAM_SIMPLIFIED_GAMEPLAY                                   :Simplified gameplay
 STR_PARAM_SIMPLIFIED_GAMEPLAY_DESC                              :Play with a simplified set of trains. There will be fewer types of engines and wagons available.  Eye-candy trains like snowploughs, driving cab cars and very slow locomotives will not be available.
 STR_PARAM_ROSTER                                                :Roster
-STR_PARAM_ROSTER_DESC                                           :Choose which set of trains to use.
+STR_PARAM_ROSTER_DESC                                           :Choose which set of trains to use. (Currently only one roster is available - Iron Pony).
 STR_PARAM_ROSTER_OPTION_0                                       :Iron Pony
 STR_PARAM_ROSTER_OPTION_1                                       :Iron Llama
 STR_PARAM_ROSTER_OPTION_2                                       :Iron Antelope
-STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY                   :Wagon colour randomisation strategy
-STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_DESC              :CABBAGE
-STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_0          :Shades of blue
-STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_1          :Shades of green
-STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_2          :Shades of red
-STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_3          :Shades of yellow
-STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_4          :Shades of grey and brown
-STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_5          :Company colour, no randomisation
-STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_6          :Shades of company colour
-STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_7          :Shades contrasting with company colour
-STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_8          :Automatic
+STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY                   :Wagon colour randomisation
+STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_DESC              :Random freight wagon colours add variety to trains.{}{}There are two base colours for freight wagons, which are set by OpenTTD company colours, or by Iron Horse parameters.  Iron Horse will randomise up to two shades of each base colour, depending on the parameter settings.{}{}Flip wagons in depot (using ctrl-click) to toggle the base colour used.
+STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_0          :Shades of both base colours (default)
+STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_1          :Shades of one base colour
+STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_2          :No randomisation
+STR_PARAM_WAGON_BASE_COLOUR_1                                   :Wagon base colour 1
+STR_PARAM_WAGON_BASE_COLOUR_2                                   :Wagon base colour 2
+STR_PARAM_WAGON_BASE_COLOUR_DESC                                :Specific colour schemes for vehicle groups are a great feature in OpenTTD.{}{}However, vehicle groups can't set the colour of wagons separately to engines.{}{}This parameter can optionally set wagons to specific colours, instead of company colour.{}{}This setting will apply to {WHITE}all {BLACK}grouped and ungrouped trains, it {WHITE}cannot be set per-group.
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_0                            :Use company colour settings (default)
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_1                            :Dark Blue
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_2                            :Pale Green
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_3                            :Pink
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_4                            :Yellow
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_5                            :Red
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_6                            :Light Blue
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_7                            :Green
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_8                            :Dark Green
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_9                            :Blue
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_10                           :Cream
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_11                           :Mauve
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_12                           :Purple
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_13                           :Orange
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_14                           :Brown
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_15                           :Grey
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_16                           :White
 
 # keep these alphabetised, easier
 STR_NAME_SUFFIX_DIESEL                                          :Diesel
