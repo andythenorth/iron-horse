@@ -133,7 +133,7 @@ custom_wagon_recolour_sprite_maps = {'custom_dark_brown': (105, 106, 33, 34, 35,
                                      'custom_dark_orange': (62, 63, 64, 193, 194, 195, 196, 197),
                                      'custom_dark_cream': (112, 113, 114, 116, 117, 118, 119, 120),
                                      'custom_green': (80, 82, 83, 84, 85, 86, 207, 209), # can't name it dark_green cos that conflates with DARK_GREEN
-                                     'custom_blue': (145, 146, 147, 148, 149, 150, 152, 153), # can't name it dark_blue cos that conflates with DARK_BLUE
+                                     'custom_blue': (147, 148, 149, 150, 151, 152, 153, 210), # can't name it dark_blue cos that conflates with DARK_BLUE
                                      'custom_light_blue': (155, 156, 157, 158, 159, 160, 161, 210), # can't name it dark_light_blue cos that would be silly
                                      'custom_dark_blue': (199, 200, 201, 202, 203, 204, 205, 152), # can't name it light_dark_blue cos that would be silly
                                      'custom_dark_red': (180, 181, 182, 183, 164, 165, 166, 167),
