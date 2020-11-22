@@ -33,7 +33,7 @@ switch (FEAT_TRAINS, SELF, switch_alternative_var_random_bits_result, getbits(va
 switch (FEAT_TRAINS, SELF, switch_alternative_var_random_bits, bits_offset, bits_count,
                     [STORE_TEMP(bits_offset, ${temp_storage_ids.random_bits_offset}),
                      STORE_TEMP(bits_count, ${temp_storage_ids.random_bits_count}),
-                     STORE_TEMP(0, 0x10F)]) {
+                     STORE_TEMP(-1 * position_in_articulated_veh, 0x10F)]) {
     return switch_alternative_var_random_bits_result;
 }
 
