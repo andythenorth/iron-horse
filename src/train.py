@@ -1456,7 +1456,7 @@ class CoilCarUncoveredConsist(CoilCarConsistBase):
         self.base_id = 'coil_car_uncovered'
         super().__init__(**kwargs)
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsVisibleCargo(piece='flat')
+        self.gestalt_graphics = GestaltGraphicsVisibleCargo(piece='coil')
 
 
 class CoveredHopperCarConsistBase(CarConsist):
