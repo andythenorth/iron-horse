@@ -2432,8 +2432,6 @@ class TorpedoCarConsist(CarConsist):
         self.weight_factor = 2 # double the default weight
         self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['freight_core']
         self._joker = True
-        # don't support colour randomisation currently as vehicle is articulated and needs to get the random bits from head of articulated portion, this can be supported at a later point
-        self.use_colour_randomisation_strategies = False
         # articulated so can't flip
         self.allow_flip = False
         # Graphics configuration
