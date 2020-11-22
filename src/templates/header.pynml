@@ -11,12 +11,13 @@ grf {
             type:    int;
             name:    string(STR_PARAM_ADJUST_VEHICLE_CAPACITY);
             min_value: 0;
-            max_value: 2;
+            max_value: 3;
             def_value: 1;
             names: {
                 0: string(STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0);
                 1: string(STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1);
                 2: string(STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2);
+                3: string(STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_3);
             };
         }
     }

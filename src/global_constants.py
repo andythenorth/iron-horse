@@ -51,7 +51,7 @@ buy_menu_sort_order_wagons = ['alignment_car',
                               ]
 
 # capacity multipliers for user-configurable capacity parameter
-capacity_multipliers = [0.67, 1, 1.33]
+capacity_multipliers = [0.67, 1, 1.33, 1.77]
 # identifier for user-configurable capacity parameter
 param_adjust_vehicle_capacity = 1
 
