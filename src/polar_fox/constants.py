@@ -204,14 +204,14 @@ cargo_spritesheet_bounding_boxes_base = ((10, 10, 18, 36), (22, 10, 44, 26), (48
 # 2. this permits fine-grained control, e.g. cargos that can only go in open vehicles, outsized cargo that needs flats etc
 # also supports multiple cargo sprite types to suit vehicle, e.g. piled fruit, fruit in crates etc
 # keep alphabetised for general quality-of-life
-piece_vehicle_type_to_sprites_maps = {'coil': ['copper_coils_eye_longitudinal', 'steel_coils_eye_longitudinal', 'tarps_2cc_1'], # tarps_2cc_1 for DFLT
+piece_vehicle_type_to_sprites_maps = {'coil': ['copper_coils_eye_longitudinal', 'steel_coils_eye_longitudinal', 'tarps_grey_1'], # tarps_grey_1 for DFLT
                                       'flat': ['barrels_silver', 'copper_coils_eye_to_sky', 'crates_1', 'logs',
                                               'lumber_planks', 'paper_coils_eye_to_sky', 'steel_coils_eye_to_sky',
-                                              'tarps_2cc_1', 'tarps_blue_1', 'tarps_gold_1', 'tarps_red_1'],
+                                              'tarps_grey_1', 'tarps_blue_1', 'tarps_gold_1', 'tarps_red_1'],
                                       'open':['barrels_silver', 'coffee', 'copper_coils_eye_to_sky', 'crates_1', 'fruit', 'logs',
                                               'lumber_planks', 'nuts', 'paper_coils_eye_to_sky', 'steel_coils_eye_to_sky',
-                                              'tarps_2cc_1', 'tarps_blue_1', 'tarps_gold_1', 'tarps_red_1'],
-                                      'stake':['logs', 'lumber_planks', 'tarps_2cc_1'] # tarps_2cc_1 for DFLT
+                                              'tarps_grey_1', 'tarps_blue_1', 'tarps_gold_1', 'tarps_red_1'],
+                                      'stake':['logs', 'lumber_planks', 'tarps_grey_1'] # tarps_grey_1 for DFLT
                                       }
 
 # cargo labels can be repeated for different sprites, they'll be used selectively by vehicle types and/or randomised as appropriate
@@ -232,7 +232,7 @@ piece_sprites_to_cargo_labels_maps = {'barrels_silver': ['BEER', 'DYES', 'EOIL',
                                       'tarps_blue_1': ['FMSP'],
                                       'tarps_gold_1': ['ENSP'],
                                       'tarps_red_1': ['BDMT'],
-                                      'tarps_2cc_1': ['DFLT']}  # see note on use of DFLT above
+                                      'tarps_grey_1': ['DFLT']}  # see note on use of DFLT above
 
 # Tanker recolour maps
 # DFLT label is a hack to support cargos with no specific sprites (including unknown cargos), and should not be added to cargo translation table
