@@ -5,7 +5,7 @@ grf {
 	desc: string(STR_GRF_DESCRIPTION);
 	url: string(STR_GRF_DOCS_URL);
 	version: ${git_info.get_revision()};
-	min_compatible_version: 4756;
+	min_compatible_version: 4839;
 	param 0 {
         param_adjust_vehicle_capacity {
             type: int;
