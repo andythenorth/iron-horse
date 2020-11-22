@@ -89,8 +89,10 @@
 
 <tal:select_strategy_from_param repeat="cc [['1cc', 'unflipped', '1cc'], ['1cc', 'flipped', '2cc'], ['2cc', 'unflipped', '2cc'], ['2cc', 'flipped', '1cc']]">
     switch (FEAT_TRAINS, SELF, switch_select_randomisation_strategy_${cc[0]}_${cc[1]},
-                <!--! fiddly ternary check if the wagon type forces a strategy, where 0 = default to parameter setting, otherwise force strategy 1 or 2 (no way to force strategy 0 for a wagon type -->
-                LOAD_TEMP(1) == 0 ? param_wagon_colour_randomisation_strategy : LOAD_TEMP(1)) {
+                <!--! fiddly ternary check if the wagon type forces a strategy that over-rides the parameter option
+                      wagon types can only be 'less random' than the parameter option, never 'more random'
+                      ternary assumes that the strategy number decreases in line with degree of randomness, with 0 as 'fully random' -->
+                LOAD_TEMP(1) <= param_wagon_colour_randomisation_strategy ? param_wagon_colour_randomisation_strategy : LOAD_TEMP(1)) {
         1: switch_by_company_colour_${cc[0]}_to_${cc[2]};
         2: switch_strategy_no_randomisation_${cc[1]};
         switch_strategy_randomise_base_colour_${cc[0]}_${cc[1]};
