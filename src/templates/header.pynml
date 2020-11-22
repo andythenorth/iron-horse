@@ -8,8 +8,9 @@ grf {
 	min_compatible_version: 4756;
 	param 0 {
         param_adjust_vehicle_capacity {
-            type:    int;
-            name:    string(STR_PARAM_ADJUST_VEHICLE_CAPACITY);
+            type: int;
+            name: string(STR_PARAM_ADJUST_VEHICLE_CAPACITY);
+            desc: string(STR_PARAM_ADJUST_VEHICLE_CAPACITY_DESC);
             min_value: 0;
             max_value: 3;
             def_value: 1;

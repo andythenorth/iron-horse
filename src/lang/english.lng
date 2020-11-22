@@ -4,6 +4,7 @@
 STR_GRF_DESCRIPTION                                             :License: {SILVER}GPL v2{}{BLACK}
 
 STR_PARAM_ADJUST_VEHICLE_CAPACITY                               :Train capacity
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_DESC                          :Adjust vehicle capacity for alternative gameplay styles.{}{}Puny: {GOLD}33% reduction{BLACK}{}Marvellous: {GOLD}default{BLACK}{}Excessive: {GOLD}33% increase{BLACK}{}Outrageous: {GOLD}77% increase{BLACK}
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :Puny
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Marvellous (default)
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Excessive
