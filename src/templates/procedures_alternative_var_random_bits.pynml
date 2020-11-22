@@ -9,10 +9,7 @@
 switch (FEAT_TRAINS, SELF, switch_alternative_var_random_bits, bits_offset, bits_count,
                                             [STORE_TEMP(-1 * position_in_articulated_veh, 0x10F),
                                              getbits(var[0x61, 8, 0x00FFFFFF, 0x5F], bits_offset, bits_count)]) {
-    <!--! we need to return the value of the bits, there's probably a better way but eh -->
-    <tal:silly_result repeat="result range(1, 256)">
-        ${result}: return ${result};
-    </tal:silly_result>
-    return 0;
+    <!--! return with nothing else will yield the computed value -->
+    return;
 }
 
