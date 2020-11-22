@@ -161,7 +161,12 @@ temp_storage_ids = dict(id_of_neighbouring_vehicle = 0, # used to avoid expensiv
                         id_to_match_16 = 16, # one of 16 temp storages which hold a list of IDs to match, used in re-implementation of var 41 to check multiple IDs not a single ID
                         num_vehs_in_vehid_chain_multiple_ids = 17, # alternative to num_vehs_in_vehid_chain (0x41), handling multiple IDs not one
                         position_in_vehid_chain_multiple_ids = 18, # alternative to num_vehs_in_vehid_chain (0x41), handling multiple IDs not one
-                        position_in_vehid_chain_from_end_multiple_ids = 19 # alternative to num_vehs_in_vehid_chain (0x41), handling multiple IDs not one
+                        position_in_vehid_chain_from_end_multiple_ids = 19, # alternative to num_vehs_in_vehid_chain (0x41), handling multiple IDs not one
+                        cc_num_to_randomise = 20, # used in procedures_colour_randomisation_strategies
+                        auto_colour_randomisation_strategy_num = 21, # used in procedures_colour_randomisation_strategies
+                        use_wagon_base_colour_parameter = 22, # used in procedures_colour_randomisation_strategies
+                        random_bits_offset = 23, # where to start slicing random bits from, used in switch_alternative_var_random_bits
+                        random_bits_count = 24, # where to start slicing random bits from, used in switch_alternative_var_random_bits
                     )
 
 # standard offsets for trains

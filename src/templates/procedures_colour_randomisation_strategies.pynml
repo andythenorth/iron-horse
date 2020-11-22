@@ -9,7 +9,7 @@
       these will have to be duplicates of these switches on a repeat, with named entry points -->
 
 <!--! note that random bits need to be unique within the switch chain to prevent dependent results -->
-<tal:colour_sets define="random_bits 'getbits(random_bits, 0, 1)';
+<tal:colour_sets define="random_bits 'switch_alternative_var_random_bits(0, 1)';
                          colour_sets {'dark_blue': ['COLOUR_DARK_BLUE', 'custom_dark_blue'],
                                       'pale_green': ['COLOUR_PALE_GREEN', 'custom_pale_green'],
                                       'pink': ['COLOUR_PINK', 'custom_dark_pink'],
@@ -45,8 +45,11 @@
                         <!--! faffy stacked ternary, checks:
                              if wagon use_wagon_base_colour_parameter is true, then
                              if grf parameter is 'use company colour' or supplies a specifc base colour to use -->
-                        LOAD_TEMP(2) == 0 ? company_colour${cc[1][0]} :
-                            (param_wagon_base_colour_${cc[1][0]} == 0 ? company_colour${cc[1][0]} : param_wagon_base_colour_${cc[1][0]} - 1)) {
+                        LOAD_TEMP(${temp_storage_ids.use_wagon_base_colour_parameter}) == 0
+                            ? company_colour${cc[1][0]}
+                            : (param_wagon_base_colour_${cc[1][0]} == 0
+                                ? company_colour${cc[1][0]}
+                                : param_wagon_base_colour_${cc[1][0]} - 1)) {
         COLOUR_DARK_BLUE: switch_colour_set_dark_blue_${cc[0]};
         COLOUR_PALE_GREEN: switch_colour_set_pale_green_${cc[0]};
         COLOUR_PINK: switch_colour_set_pink_${cc[0]};
@@ -68,11 +71,11 @@
 
 <tal:strategy_randomise_base_colour repeat="cc [['1cc', '2cc'], ['2cc', '1cc']]">
     <!--! note that random bits need to be unique within the switch chain to prevent dependent results -->
-    switch (FEAT_TRAINS, SELF, switch_strategy_randomise_base_colour_${cc[0]}_unflipped, getbits(random_bits, 1, 1)) {
+    switch (FEAT_TRAINS, SELF, switch_strategy_randomise_base_colour_${cc[0]}_unflipped, switch_alternative_var_random_bits(1, 1)) {
         1: switch_by_company_colour_${cc[0]}_to_${cc[1]};
         switch_by_company_colour_${cc[0]}_to_${cc[0]};
     }
-    switch (FEAT_TRAINS, SELF, switch_strategy_randomise_base_colour_${cc[0]}_flipped, getbits(random_bits, 1, 1)) {
+    switch (FEAT_TRAINS, SELF, switch_strategy_randomise_base_colour_${cc[0]}_flipped, switch_alternative_var_random_bits(1, 1)) {
         1: switch_by_company_colour_${cc[0]}_to_${cc[0]};
         switch_by_company_colour_${cc[0]}_to_${cc[1]};
     }
@@ -92,31 +95,38 @@
                 <!--! fiddly ternary check if the wagon type forces a strategy that over-rides the parameter option
                       wagon types can only be 'less random' than the parameter option, never 'more random'
                       ternary assumes that the strategy number decreases in line with degree of randomness, with 0 as 'fully random' -->
-                LOAD_TEMP(1) <= param_wagon_colour_randomisation_strategy ? param_wagon_colour_randomisation_strategy : LOAD_TEMP(1)) {
+                LOAD_TEMP(${temp_storage_ids.auto_colour_randomisation_strategy_num}) <= param_wagon_colour_randomisation_strategy
+                    ? param_wagon_colour_randomisation_strategy
+                    : LOAD_TEMP(${temp_storage_ids.auto_colour_randomisation_strategy_num})) {
         1: switch_by_company_colour_${cc[0]}_to_${cc[2]};
         2: switch_strategy_no_randomisation_${cc[1]};
         switch_strategy_randomise_base_colour_${cc[0]}_${cc[1]};
     }
 </tal:select_strategy_from_param>
 
-switch (FEAT_TRAINS, SELF, switch_cc_num_to_randomise, LOAD_TEMP(0)) {
+switch (FEAT_TRAINS, SELF, switch_cc_num_to_randomise, LOAD_TEMP(${temp_storage_ids.cc_num_to_randomise})) {
     1: switch_select_randomisation_strategy_1cc_unflipped;
     2: switch_select_randomisation_strategy_2cc_unflipped;
 }
 <!--! invert cc1 / cc2 choice if flipped -->
-switch (FEAT_TRAINS, SELF, switch_cc_num_to_randomise_flipped, LOAD_TEMP(0)) {
+switch (FEAT_TRAINS, SELF, switch_cc_num_to_randomise_flipped, LOAD_TEMP(${temp_storage_ids.cc_num_to_randomise})) {
     1: switch_select_randomisation_strategy_1cc_flipped;
     2: switch_select_randomisation_strategy_2cc_flipped;
 }
 
 switch (FEAT_TRAINS, SELF, switch_colour_mapping, cc_num_to_randomise, auto_colour_randomisation_strategy_num, use_wagon_base_colour_parameter,
-                                                    [STORE_TEMP(cc_num_to_randomise, 0), STORE_TEMP(auto_colour_randomisation_strategy_num, 1), STORE_TEMP(use_wagon_base_colour_parameter, 2), vehicle_is_flipped]) {
+                                                    [STORE_TEMP(cc_num_to_randomise, ${temp_storage_ids.cc_num_to_randomise}),
+                                                     STORE_TEMP(auto_colour_randomisation_strategy_num, ${temp_storage_ids.auto_colour_randomisation_strategy_num}),
+                                                     STORE_TEMP(use_wagon_base_colour_parameter, ${temp_storage_ids.use_wagon_base_colour_parameter}),
+                                                     vehicle_is_flipped]) {
     1: switch_cc_num_to_randomise_flipped;
     switch_cc_num_to_randomise;
 }
 
 <!--! purchase cb doesn't appear to support checking flipped var (didn't test this thoroughly, might be wrong), so provide dedicated purchase entry point switch -->
 switch (FEAT_TRAINS, SELF, switch_colour_mapping_purchase, cc_num_to_randomise, auto_colour_randomisation_strategy_num, use_wagon_base_colour_parameter,
-                                                    [STORE_TEMP(cc_num_to_randomise, 0), STORE_TEMP(auto_colour_randomisation_strategy_num, 1), STORE_TEMP(use_wagon_base_colour_parameter, 2)]) {
+                                                    [STORE_TEMP(cc_num_to_randomise, ${temp_storage_ids.cc_num_to_randomise}),
+                                                     STORE_TEMP(auto_colour_randomisation_strategy_num, ${temp_storage_ids.auto_colour_randomisation_strategy_num}),
+                                                     STORE_TEMP(use_wagon_base_colour_parameter, ${temp_storage_ids.use_wagon_base_colour_parameter})]) {
     return switch_cc_num_to_randomise;
 }
