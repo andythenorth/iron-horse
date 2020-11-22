@@ -20,7 +20,9 @@
         * LOAD_TEMP(${temp_storage_ids.num_vehs_in_vehid_chain_multiple_ids})
 -->
 
-switch (FEAT_TRAINS, SELF, switch_alternative_var_random_bits_result, getbits(random_bits, LOAD_TEMP(${temp_storage_ids.random_bits_offset}), LOAD_TEMP(${temp_storage_ids.random_bits_count}))) {
+switch (FEAT_TRAINS, SELF, switch_alternative_var_random_bits_result, getbits(var[0x61, 8, 0x00FFFFFF, 0x5F],
+                                                                              LOAD_TEMP(${temp_storage_ids.random_bits_offset}),
+                                                                              LOAD_TEMP(${temp_storage_ids.random_bits_count}))) {
     <!--! we need to return the value of the bits, there's probably a better way but eh -->
     <tal:silly_result repeat="result range(1, 256)">
         ${result}: return ${result};
@@ -30,7 +32,8 @@ switch (FEAT_TRAINS, SELF, switch_alternative_var_random_bits_result, getbits(ra
 
 switch (FEAT_TRAINS, SELF, switch_alternative_var_random_bits, bits_offset, bits_count,
                     [STORE_TEMP(bits_offset, ${temp_storage_ids.random_bits_offset}),
-                     STORE_TEMP(bits_count, ${temp_storage_ids.random_bits_count})]) {
+                     STORE_TEMP(bits_count, ${temp_storage_ids.random_bits_count}),
+                     STORE_TEMP(0, 0x10F)]) {
     return switch_alternative_var_random_bits_result;
 }
 
