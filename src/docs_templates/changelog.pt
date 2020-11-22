@@ -3,6 +3,31 @@ Changelog
 
 
 -------------
+2.12.0 Release
+-------------
+
+*Changes*
+
+- reworked parameters for freight wagon colours and randomisation
+    - added 2 'wagon base colour' parameters - optionally set freight wagons to use fixed colours instead of company colours, even in groups with colour schemes
+    - added 'wagon colour randomisation' parameter, offering 3 options for randomising the colours of freight wagons
+    - these apply to most freight wagons, with some exceptions, for example, brake vans, mail vans and passenger coaches
+- added a new 'Outrageous' option to 'train capacity' parameter, providing 77% increase of default vehicle capacity
+- added descriptions and '(default)' labels to parameters where needed
+- renamed Coil Carrier to Covered Coil Carrier
+- added a new uncovered Coil Carrier type with visible cargo
+- improved sprites for
+    - Covered Coil Carriers
+    - Tarpaulin Wagons
+
+
+*Codechanges*
+
+- fixed rendering of vehicles cargo pipeline when MP pool isn't used
+- refactored some switches so nml can automatically optimise them to constants when appropriate (glx)
+
+
+-------------
 2.11.1 Release
 -------------
 
