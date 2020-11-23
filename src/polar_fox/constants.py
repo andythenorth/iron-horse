@@ -206,12 +206,14 @@ cargo_spritesheet_bounding_boxes_base = ((10, 10, 18, 36), (22, 10, 44, 26), (48
 # keep alphabetised for general quality-of-life
 piece_vehicle_type_to_sprites_maps = {'coil': ['copper_coils_eye_longitudinal', 'steel_coils_eye_longitudinal', 'tarps_grey_1'], # tarps_grey_1 for DFLT
                                       'flat': ['barrels_silver', 'copper_coils_eye_to_sky', 'crates_1', 'logs',
-                                              'lumber_planks', 'paper_coils_eye_to_sky', 'pipes_1', 'steel_coils_eye_to_sky',
-                                              'tarps_grey_1', 'tarps_blue_1', 'tarps_gold_1', 'tarps_red_1'],
-                                      'open':['barrels_silver', 'coffee', 'copper_coils_eye_to_sky', 'crates_1', 'fruit', 'logs',
-                                              'lumber_planks', 'nuts', 'paper_coils_eye_to_sky', 'pipes_1', 'steel_coils_eye_to_sky',
-                                              'tarps_grey_1', 'tarps_blue_1', 'tarps_gold_1', 'tarps_red_1'],
-                                      'stake':['logs', 'lumber_planks', 'pipes_1', 'tarps_grey_1'] # tarps_grey_1 for DFLT
+                                               'lumber_planks', 'paper_coils_eye_to_sky', 'pipes_1',
+                                               'steel_coils_eye_to_sky', 'steel_wire_rod_1',
+                                               'tarps_grey_1', 'tarps_blue_1', 'tarps_gold_1', 'tarps_red_1'],
+                                      'open': ['barrels_silver', 'coffee', 'copper_coils_eye_to_sky', 'crates_1', 'fruit', 'logs',
+                                               'lumber_planks', 'nuts', 'paper_coils_eye_to_sky', 'pipes_1',
+                                               'steel_coils_eye_to_sky', 'steel_wire_rod_1',
+                                               'tarps_grey_1', 'tarps_blue_1', 'tarps_gold_1', 'tarps_red_1'],
+                                      'stake': ['logs', 'lumber_planks', 'pipes_1', 'tarps_grey_1'] # tarps_grey_1 for DFLT
                                       }
 
 # cargo labels can be repeated for different sprites, they'll be used selectively by vehicle types and/or randomised as appropriate
@@ -230,6 +232,7 @@ piece_sprites_to_cargo_labels_maps = {'barrels_silver': ['BEER', 'DYES', 'EOIL',
                                       'pipes_1': ['PIPE'],
                                       'steel_coils_eye_longitudinal': ['STEL', 'METL', 'STAL', 'STCB', 'STST'],
                                       'steel_coils_eye_to_sky': ['STEL', 'METL', 'STAL', 'STCB', 'STST'],
+                                      'steel_wire_rod_1': ['STWR'],
                                       'tarps_blue_1': ['FMSP'],
                                       'tarps_gold_1': ['ENSP'],
                                       'tarps_red_1': ['BDMT'],
