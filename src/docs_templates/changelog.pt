@@ -3,6 +3,29 @@ Changelog
 
 
 -------------
+2.13.0 Release
+-------------
+
+*Changes*
+
+- enable colour randomisation for Torpedo Cars
+- added cargo sprites for
+    - Steel Wire Rod (as used in FIRS v4 Steeltown)
+    - Pipe (as used in FIRS Steeltown)
+- reworked tarp-covered cargo sprites, used as sprites for unknown cargo on many wagon types
+
+
+*Fixes*
+
+- removed Coil Carrier and Uncovered Coil Carrier from simplified gameplay mode
+
+
+*Docs*
+
+- fix footer placement on changelog html page
+
+
+-------------
 2.12.0 Release
 -------------
 
