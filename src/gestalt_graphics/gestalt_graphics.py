@@ -309,7 +309,7 @@ class GestaltGraphicsIntermodal(GestaltGraphics):
         # second result is known cargo sprites / livery recolours, which will map explicitly
         container_cargo_maps = (('box', ([], [])), # box currently generic, and is fallback for all unknown cargos / classes
                                 ('bulk', ([], polar_fox.constants.bulk_cargo_recolour_maps)),
-                                #('flat', ([], [])), # flat currently unused
+                                ('stake_flatrack', (['ALUM'], [])),
                                 ('livestock', (['LVST'], [])), # one label only - extend if other livestock labels added in future
                                 ('tank', ([], polar_fox.constants.tanker_livery_recolour_maps)),
                                 ('reefer', (polar_fox.constants.allowed_refits_by_label['reefer'], [])), # reefer currently uses classes only

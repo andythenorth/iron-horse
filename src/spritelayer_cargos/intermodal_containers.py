@@ -204,29 +204,32 @@ class IntermodalEdiblesTank32px(IntermodalContainerGestalt):
                          ['edibles_tank_20_foot', 'edibles_tank_40_foot']]
 
 
-class IntermodalFlat16px(IntermodalContainerGestalt):
+class IntermodalStakeFlatrack16px(IntermodalContainerGestalt):
     def __init__(self, container_subtype):
         super().__init__(container_subtype)
         self.length = 16
         self.stack_type = 'single'
-        self.variants = [['box_30_foot_1CC'],
-                         ['box_30_foot_2CC']]
+        self.variants = [['stake_flatrack_30_foot'],
+                         ['stake_flatrack_30_foot']]
 
 
-class IntermodalFlat24px(IntermodalContainerGestalt):
+class IntermodalStakeFlatrack24px(IntermodalContainerGestalt):
     def __init__(self, container_subtype):
         super().__init__(container_subtype)
         self.length = 24
         self.stack_type = 'single'
-        self.variants = [['box_20_foot_red', 'empty_20_foot',]]
+        self.variants = [['stake_flatrack_20_foot', 'stake_flatrack_20_foot'],
+                         ['stake_flatrack_40_foot']]
 
 
-class IntermodalFlat32px(IntermodalContainerGestalt):
+class IntermodalStakeFlatrack32px(IntermodalContainerGestalt):
     def __init__(self, container_subtype):
         super().__init__(container_subtype)
         self.length = 32
         self.stack_type = 'single'
-        self.variants = [['box_20_foot_red', 'empty_20_foot', 'empty_20_foot']]
+        self.variants = [['stake_flatrack_20_foot', 'stake_flatrack_20_foot', 'stake_flatrack_20_foot'],
+                         ['stake_flatrack_20_foot', 'stake_flatrack_40_foot'],
+                         ['stake_flatrack_40_foot', 'stake_flatrack_20_foot']]
 
 
 class IntermodalLivestock16px(IntermodalContainerGestalt):
@@ -388,7 +391,7 @@ container_type_gestalt_mapping = {'box': [IntermodalBox16px, IntermodalBox24px, 
                                   'cryo_tank': [IntermodalCryoTank16px, IntermodalCryoTank24px, IntermodalCryoTank32px],
                                   'curtain_side': [IntermodalCurtainSide16px, IntermodalCurtainSide24px, IntermodalCurtainSide32px],
                                   'edibles_tank': [IntermodalEdiblesTank16px, IntermodalEdiblesTank24px, IntermodalEdiblesTank32px],
-                                  #'flat': [IntermodalFlat16px, IntermodalFlat24px, IntermodalFlat32px], # unused currently
+                                  'stake_flatrack': [IntermodalStakeFlatrack16px, IntermodalStakeFlatrack24px, IntermodalStakeFlatrack32px],
                                   'livestock': [IntermodalLivestock16px, IntermodalLivestock24px, IntermodalLivestock32px],
                                   'reefer': [IntermodalReefer16px, IntermodalReefer24px, IntermodalReefer32px],
                                   'tank': [IntermodalTank16px, IntermodalTank24px, IntermodalTank32px],
