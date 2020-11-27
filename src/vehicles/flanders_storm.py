@@ -7,7 +7,7 @@ def main(roster_id):
                             base_numeric_id=1740,
                             name='Flanders Storm',
                             role='heavy_freight',
-                            role_child_branch_num=4,
+                            role_child_branch_num=3,
                             power=5800, # big jump from previous, IRL matches class 89 not 92
                             # dibble for game balance, assume super-slip control
                             tractive_effort_coefficient=0.4,

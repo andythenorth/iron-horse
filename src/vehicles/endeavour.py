@@ -7,8 +7,8 @@ def main(roster_id):
                             base_numeric_id=4250,
                             name='Endeavour',
                             role='heavy_freight',
-                            role_child_branch_num=-1, # Joker eh, it's a 66
-                            power=3600,
+                            role_child_branch_num=2,
+                            power=4450, # 850hp steps Revolution -> Blackthorn -> Toaster
                             # dibble for game balance, assume super-slip control
                             tractive_effort_coefficient=0.4,
                             random_reverse=True,

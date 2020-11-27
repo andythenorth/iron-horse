@@ -7,8 +7,8 @@ def main(roster_id):
                             base_numeric_id=220,
                             name='Cheddar Valley',
                             role='heavy_freight',
-                            role_child_branch_num=3,
-                            power=4450, # 850hp steps Revolution -> Endeavor -> Toaster
+                            role_child_branch_num=2,
+                            power=4050, # 750hp steps Vanguard -> Grid -> Cheddar Valley
                             # dibble for game balance, assume super-slip control
                             tractive_effort_coefficient=0.4,
                             random_reverse=True,
