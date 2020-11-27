@@ -14,6 +14,7 @@ def main(roster_id):
                             random_reverse=True,
                             intro_date_offset=-1,  # let's be a little bit earlier for this one
                             gen=6,
+                            fixed_run_cost_points=220, # unrealism: run cost nerf for being so high-powered
                             alternative_cc_livery='FREIGHTLINER_GBRF',
                             default_livery_extra_docs_examples=[('COLOUR_BLUE', 'COLOUR_WHITE')],
                             sprites_complete=True)
