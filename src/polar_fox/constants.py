@@ -205,11 +205,11 @@ cargo_spritesheet_bounding_boxes_base = ((10, 10, 18, 36), (22, 10, 44, 26), (48
 # also supports multiple cargo sprite types to suit vehicle, e.g. piled fruit, fruit in crates etc
 # keep alphabetised for general quality-of-life
 piece_vehicle_type_to_sprites_maps = {'coil': ['copper_coils_eye_longitudinal', 'steel_coils_eye_longitudinal', 'tarps_grey_1'], # tarps_grey_1 for DFLT
-                                      'flat': ['barrels_silver', 'copper_coils_eye_to_sky', 'crates_1', 'logs',
+                                      'flat': ['barrels_silver', 'copper_coils_eye_to_sky', 'crates_1', 'ingots_1', 'logs',
                                                'lumber_planks', 'paper_coils_eye_to_sky', 'pipes_1',
                                                'steel_coils_eye_to_sky', 'steel_wire_rod_1',
                                                'tarps_grey_1', 'tarps_blue_1', 'tarps_gold_1', 'tarps_red_1'],
-                                      'open': ['barrels_silver', 'coffee', 'copper_coils_eye_to_sky', 'crates_1', 'fruit', 'logs',
+                                      'open': ['barrels_silver', 'coffee', 'copper_coils_eye_to_sky', 'crates_1', 'fruit', 'ingots_1', 'logs',
                                                'lumber_planks', 'nuts', 'paper_coils_eye_to_sky', 'pipes_1',
                                                'steel_coils_eye_to_sky', 'steel_wire_rod_1',
                                                'tarps_grey_1', 'tarps_blue_1', 'tarps_gold_1', 'tarps_red_1'],
@@ -225,6 +225,7 @@ piece_sprites_to_cargo_labels_maps = {'barrels_silver': ['BEER', 'DYES', 'EOIL',
                                       'copper_coils_eye_to_sky': ['COPR'],
                                       'crates_1': ['GOOD'],
                                       'fruit': ['FRUT'],
+                                      'ingots_1': ['ALUM', 'ZINC'],
                                       'logs': ['WOOD'],
                                       'lumber_planks': ['WDPR'],
                                       'nuts': ['NUTS'],
