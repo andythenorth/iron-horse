@@ -7,7 +7,7 @@ def main(roster_id):
                             base_numeric_id=1750,
                             name='Peasweep',
                             role='heavy_freight',
-                            role_child_branch_num=3,
+                            role_child_branch_num=4,
                             power=3700,
                             gen=4,
                             pantograph_type='diamond-double',

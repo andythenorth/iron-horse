@@ -7,7 +7,7 @@ def main(roster_id):
                             base_numeric_id=4050,
                             name='2-6-0+0-6-2 Esk',
                             role='heavy_freight',
-                            role_child_branch_num=-2,
+                            role_child_branch_num=-1,
                             replacement_consist_id='chinook', # this Joker ends with Chinook
                             power=2400,
                             tractive_effort_coefficient=0.4,
