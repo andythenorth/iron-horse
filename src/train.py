@@ -668,7 +668,7 @@ class EngineConsist(Consist):
         # add floating cost to the fixed (baseline) cost (which is arbitrary points, range 0-200-ish)
         # do an arbitrary calculation using gen to give the results I want (tried values in a spreadsheet until looked right)
         # the aim is to space costs widely across types within a generation, but only have slight increase (or flat) across generations of same type
-        gen_multiplier = 8.52 - math.pow(1.27, self.gen)
+        gen_multiplier = 8.52 - math.pow(1.22, self.gen)
         run_cost = gen_multiplier * (fixed_run_cost_points + floating_run_cost_points)
         # freight engines get a run cost bonus as they'll often be sat waiting for loads, so balance (also super realism!!)
         # doing this is preferable to doing variable run costs, which are weird and confusing (can't trust the costs showin in vehicle window)
