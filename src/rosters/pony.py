@@ -24,12 +24,13 @@ from vehicles import cheese_bug
 from vehicles import chinook
 from vehicles import chuggypig
 from vehicles import deasil
+from vehicles import defiant
 from vehicles import diablo
 from vehicles import dover
 from vehicles import dragon
 from vehicles import driving_cab_pony_gen_5
 from vehicles import driving_cab_pony_gen_6
-from vehicles import endeavour
+from vehicles import highlander
 from vehicles import esk
 from vehicles import evolution
 from vehicles import firebird
@@ -260,8 +261,9 @@ def main(disabled=False):
                                grid,
                                bone,
                                blackthorn,
+                               defiant,
                                cheddar_valley,
-                               endeavour,
+                               highlander,
                                toaster,
                                flindermouse,
                                peasweep,
