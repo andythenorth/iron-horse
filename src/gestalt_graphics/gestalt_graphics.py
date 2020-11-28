@@ -121,12 +121,12 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
 
     def get_output_row_types(self):
         result = []
-        # assume an empty state spriterow per livery
-        for i in range(self.num_visible_cargo_liveries):
-            result.append('empty')
         # for e.g. tarpaulin cars, covered coil cars, insert a specific spriterow to show the cover when 100% loaded or travelling
         if self.has_cover:
             result.append('has_cover')
+        # assume an empty state spriterow per livery
+        for i in range(self.num_visible_cargo_liveries):
+            result.append('empty')
         if self.has_bulk:
             result.append('bulk_cargo')
         if self.has_piece:
@@ -166,14 +166,14 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
         for flipped in ['unflipped', 'flipped']:
             start_y_cumulative = graphics_constants.spritesheet_top_margin
 
-            # add a row for empty sprite
-            result.append(['empty', flipped, start_y_cumulative])
-            start_y_cumulative += row_height
-
             if self.has_cover:
                 # add a row for covered sprite
                 result.append(['has_cover', flipped, start_y_cumulative])
                 start_y_cumulative += row_height
+
+            # add a row for empty sprite
+            result.append(['empty', flipped, start_y_cumulative])
+            start_y_cumulative += row_height
 
             # !! not sure unique_cargo_rows order will always reliably match to what's needed, but if it doesn't, explicitly sort it eh
             for row_num in unique_cargo_rows:

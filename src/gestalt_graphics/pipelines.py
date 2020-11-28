@@ -983,10 +983,13 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
         # sort them in y order, this causes sprites to overlap correctly when there are multiple loc points for an angle
         loc_points = sorted(loc_points, key=lambda x: x[1])
 
+        # this is dirty shorthand and relies on has_cover yielding 0 or 1 for an additional offset (empty row is second row if has_cover is True)
+        empty_row_yoffs = self.cur_vehicle_empty_row_yoffs + (graphics_constants.spriterow_height * self.consist.gestalt_graphics.has_cover)
+
         crop_box_vehicle_body = (0,
-                                 self.cur_vehicle_empty_row_yoffs,
+                                 empty_row_yoffs,
                                  self.sprites_max_x_extent,
-                                 self.cur_vehicle_empty_row_yoffs + graphics_constants.spriterow_height)
+                                 empty_row_yoffs + graphics_constants.spriterow_height)
         vehicle_base_image = self.comp_chassis_and_body(self.vehicle_source_image.copy().crop(crop_box_vehicle_body))
 
         crop_box_mask_source = (self.second_col_start_x,

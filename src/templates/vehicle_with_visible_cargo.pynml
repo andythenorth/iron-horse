@@ -44,12 +44,12 @@
     </tal:no_cover>
     <tal:has_cover case="True">
         switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, switch_graphics_visible_cargo_has_cover()) {
-            0: return ${vehicle.id}_ss_empty_unflipped;
-            1: return ${vehicle.id}_ss_has_cover_unflipped;
+            0: return ${vehicle.id}_ss_has_cover_unflipped;
+            1: return ${vehicle.id}_ss_empty_unflipped;
             2: return ${vehicle.id}_switch_cargo_loading_unflipped;
             3: return ${vehicle.id}_switch_cargo_loaded_unflipped;
-            4: return ${vehicle.id}_ss_empty_flipped;
-            5: return ${vehicle.id}_ss_has_cover_flipped;
+            4: return ${vehicle.id}_ss_has_cover_flipped;
+            5: return ${vehicle.id}_ss_empty_flipped;
             6: return ${vehicle.id}_switch_cargo_loading_flipped;
             7: return ${vehicle.id}_switch_cargo_loaded_flipped;
         }
