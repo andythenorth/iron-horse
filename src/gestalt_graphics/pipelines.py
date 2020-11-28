@@ -951,7 +951,6 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                                                 y_offset=  -1 * cargo_group_row_height))
 
     def add_piece_cargo_spriterows(self):
-        # !! this could possibly be optimised by slicing all the cargos once, globally, instead of per-unit
         cargo_group_output_row_height = 2 * graphics_constants.spriterow_height
 
         # Cargo spritesheets provide multiple lengths, using a specific format of rows
@@ -1033,6 +1032,9 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             # cargo sprites are assumed to be symmetrical, only 4 angles are needed
             # cargos with 8 angles (e.g. bulldozers) aren't supported, use a different gestalt & template for those (dedicated or custom)
             # loading states are first 4 sprites, loaded are second 4, all in one list, just pick them out as needed
+
+            # !! this could possibly be optimised by slicing all the cargos once, globally, instead of per-unit
+            # !! in testing, that would save about 1s on a single-threaded compile, and probably isn't worth the effort
             cargo_sprites_input_path = os.path.join(currentdir, 'src', 'polar_fox', 'graphics', 'piece_cargos', cargo_filename + '.png')
             cargo_sprites_input_image = Image.open(cargo_sprites_input_path)
             # n.b. Iron Horse assumes cargo length is always equivalent from vehicle length (probably fine)
