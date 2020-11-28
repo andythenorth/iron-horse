@@ -24,6 +24,7 @@ class Pipeline(object):
         pass
 
     def make_spritesheet_from_image(self, input_image):
+        # tried moving this to pixa, as it's same for all grfs, but it doesn't win much unless the palette is also consolidated (TMWFTLB)
         spritesheet = Spritesheet(width=input_image.size[0], height=input_image.size[1] , palette=DOS_PALETTE)
         spritesheet.sprites.paste(input_image)
         return spritesheet
@@ -130,6 +131,7 @@ class PassThroughPipeline(Pipeline):
         input_image = Image.open(self.vehicle_source_input_path)
         self.render_common(input_image, self.units)
         input_image.close()
+
 
 class GenerateCompositedIntermodalContainers(Pipeline):
     """
@@ -443,6 +445,7 @@ class CheckBuyMenuOnlyPipeline(Pipeline):
         self.render_common(input_image, self.units)
         input_image.close()
 
+
 class GeneratePantographsSpritesheetPipeline(Pipeline):
     """
     Adds additional spritesheets for pantographs (up and down), which are provided in the grf as sprite layers.
@@ -578,6 +581,7 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
         output_suffix = '_pantographs_' + self.pantograph_state
         self.render_common(input_image, self.units, output_suffix=output_suffix)
         input_image.close()
+
 
 class GeneratePantographsUpSpritesheetPipeline(GeneratePantographsSpritesheetPipeline):
     """ Sparse subclass, solely to set pan 'up' state (simplest way to implement this). """
