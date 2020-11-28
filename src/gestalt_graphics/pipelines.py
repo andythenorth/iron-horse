@@ -999,17 +999,8 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
 
         piece_cargo_sprites = PieceCargoSprites(polar_fox)
         for cargo_filename in polar_fox.constants.piece_vehicle_type_to_sprites_maps[self.consist.gestalt_graphics.piece_type]:
-            # get a list, with a two-tuple (cargo_sprite, mask) for each of 4 angles
-            # cargo sprites are assumed to be symmetrical, only 4 angles are needed
-            # cargos with 8 angles (e.g. bulldozers) aren't supported, use a different gestalt & template for those (dedicated or custom)
-            # loading states are first 4 sprites, loaded are second 4, all in one list, just pick them out as needed
-
-            # !! this could possibly be optimised by slicing all the cargos once, globally, instead of per-unit
-            # !! in testing, that would save about 1s on a single-threaded compile, and probably isn't worth the effort
-            cargo_sprites_input_path = os.path.join(currentdir, 'src', 'polar_fox', 'graphics', 'piece_cargos', cargo_filename + '.png')
-            cargo_sprites_input_image = Image.open(cargo_sprites_input_path)
             # n.b. Iron Horse assumes cargo length is always equivalent from vehicle length (probably fine)
-            cargo_sprites = pixa.get_arbitrary_angles(cargo_sprites_input_image, piece_cargo_sprites.cargo_spritesheet_bounding_boxes[self.vehicle_unit.vehicle_length])
+            cargo_sprites = piece_cargo_sprites.get_cargo_sprites_all_angles_for_length(cargo_filename, self.vehicle_unit.vehicle_length)
 
             vehicle_comped_image = piece_cargo_rows_image.copy()
 
@@ -1050,7 +1041,6 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             self.units.append(AddCargoLabel(label=cargo_filename,
                                             x_offset=self.sprites_max_x_extent + 5,
                                             y_offset= -1 * cargo_group_output_row_height))
-            cargo_sprites_input_image.close()
 
     def render(self, consist, global_constants):
         self.units = [] # graphics units not same as consist units ! confusing overlap of terminology :(
