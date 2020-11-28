@@ -49,21 +49,16 @@ class PieceCargoSprites:
         for cargo_filename in self.polar_fox.constants.piece_sprites_to_cargo_labels_maps.keys():
             cargo_sprites_input_path = os.path.join(currentdir, 'src', 'polar_fox', 'graphics', 'piece_cargos', cargo_filename + '.png')
             cargo_sprites_input_image = Image.open(cargo_sprites_input_path)
-            # provide a list, with a two-tuple (cargo_sprite, mask) for each of 4 angles
-            # cargo sprites are assumed to be symmetrical, only 4 angles are needed
-            # cargos with 8 angles (e.g. bulldozers) aren't supported, use a different gestalt & template for those (dedicated or custom)
-            # loading states are first 4 sprites, loaded are second 4, all in one list, just pick them out as needed
             self.sprites_by_filename[cargo_filename] = cargo_sprites_input_image.copy()
             # don't leave open files around, it can hit open file limits on macOs, maybe elsewhere; we've copied the Image object above to avoid needing the file handle
             cargo_sprites_input_image.close()
 
-            # get a list, with a two-tuple (cargo_sprite, mask) for each of 4 angles
+    def get_cargo_sprites_all_angles_for_length(self, cargo_filename, length):
+            # provide a list, with a two-tuple (cargo_sprite, mask) for each of 4 angles
             # cargo sprites are assumed to be symmetrical, only 4 angles are needed
             # cargos with 8 angles (e.g. bulldozers) aren't supported, use a different gestalt & template for those (dedicated or custom)
             # loading states are first 4 sprites, loaded are second 4, all in one list, just pick them out as needed
-
-    def get_cargo_sprites_all_angles_for_length(self, cargo_filename, length):
-        return get_arbitrary_angles(self.sprites_by_filename[cargo_filename], self.cargo_spritesheet_bounding_boxes[length])
+            return get_arbitrary_angles(self.sprites_by_filename[cargo_filename], self.cargo_spritesheet_bounding_boxes[length])
 
     @property
     def cargo_spritesheet_bounding_boxes(self):
