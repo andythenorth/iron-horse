@@ -1445,8 +1445,9 @@ class CoilCarCoveredConsist(CoilCarConsistBase):
         self.cc_num_to_randomise = 2
         self._joker = True
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(id_base='coil_car_covered',
-                                                                  recolour_maps=graphics_constants.coil_car_livery_recolour_maps)
+        self.gestalt_graphics = GestaltGraphicsVisibleCargo(body_recolour_map=graphics_constants.body_recolour_CC2,
+                                                            piece='coil',
+                                                            has_cover=True)
 
 
 class CoilCarUncoveredConsist(CoilCarConsistBase):

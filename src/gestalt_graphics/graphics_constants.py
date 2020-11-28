@@ -55,8 +55,6 @@ covered_hopper_car_livery_recolour_maps = (("DFLT", {136: 72, 137: 73, 138: 74, 
                                                      154: 72, 155: 73, 156: 74, 157: 75,
                                                      158: 76, 159: 77, 160: 78, 161: 79}),)
 
-coil_car_livery_recolour_maps = (("DFLT", body_recolour_CC2),)
-
 curtain_side_livery_recolour_maps = (("DFLT", body_recolour_CC1),)
 
 # pass through (recolour gestalt is used only to trigger automatic chassis drawing)
