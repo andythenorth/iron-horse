@@ -23,12 +23,6 @@ class Pipeline(object):
         # actually, there's nothing to do eh :P
         pass
 
-    def make_spritesheet_from_image(self, input_image):
-        # tried moving this to pixa, as it's same for all grfs, but it doesn't win much unless the palette is also consolidated (TMWFTLB)
-        spritesheet = Spritesheet(width=input_image.size[0], height=input_image.size[1] , palette=DOS_PALETTE)
-        spritesheet.sprites.paste(input_image)
-        return spritesheet
-
     @property
     def vehicle_source_input_path(self):
         # convenience method to get the vehicle template image
@@ -90,7 +84,7 @@ class Pipeline(object):
             output_base_name = self.consist.id
         output_path = os.path.join(currentdir, 'generated', 'graphics', output_base_name + output_suffix + '.png')
         output_path_tmp = os.path.join(currentdir, 'generated', 'graphics', output_base_name + output_suffix + '.new.png')
-        spritesheet = self.make_spritesheet_from_image(input_image)
+        spritesheet = pixa.make_spritesheet_from_image(input_image, DOS_PALETTE)
 
         for unit in units:
             spritesheet = unit.render(spritesheet)
@@ -256,7 +250,7 @@ class GenerateCompositedIntermodalContainers(Pipeline):
 
                 #if self.intermodal_container_gestalt.id == 'intermodal_box_32px':
                     #variant_output_image.show()
-                variant_spritesheet = self.make_spritesheet_from_image(variant_output_image)
+                variant_spritesheet = pixa.make_spritesheet_from_image(variant_output_image, DOS_PALETTE)
                 crop_box_dest = (0,
                                  0,
                                  self.global_constants.sprites_max_x_extent,
@@ -401,7 +395,7 @@ class GenerateCompositedVehiclesCargos(Pipeline):
 
                 #if self.intermodal_container_gestalt.id == 'intermodal_box_32px':
                     #variant_output_image.show()
-                variant_spritesheet = self.make_spritesheet_from_image(variant_output_image)
+                variant_spritesheet = pixa.make_spritesheet_from_image(variant_output_image, DOS_PALETTE)
                 crop_box_dest = (0,
                                  0,
                                  self.global_constants.sprites_max_x_extent,
@@ -556,7 +550,7 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
         pantograph_output_image.paste(pantograph_debug_image, (0, 10 + (num_pantograph_rows * graphics_constants.spriterow_height)), pantograph_debug_mask)
 
         # make spritesheet
-        pantograph_spritesheet = self.make_spritesheet_from_image(pantograph_output_image)
+        pantograph_spritesheet = pixa.make_spritesheet_from_image(pantograph_output_image, DOS_PALETTE)
         crop_box_dest = (0,
                          10,
                          self.global_constants.sprites_max_x_extent,
@@ -684,7 +678,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
         vehicle_generic_spriterow_input_image = self.comp_chassis_and_body(self.vehicle_source_image.copy().crop(crop_box_source))
 
         # vehicle_generic_spriterow_input_image.show() # comment in to see the image when debugging
-        vehicle_generic_spriterow_input_as_spritesheet = self.make_spritesheet_from_image(vehicle_generic_spriterow_input_image)
+        vehicle_generic_spriterow_input_as_spritesheet = pixa.make_spritesheet_from_image(vehicle_generic_spriterow_input_image, DOS_PALETTE)
 
         crop_box_dest = (0,
                          0,
@@ -706,7 +700,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                            self.base_yoffs + graphics_constants.spriterow_height)
 
         vehicle_livery_spriterow_input_image = self.comp_chassis_and_body(self.vehicle_source_image.copy().crop(crop_box_source))
-        vehicle_livery_spriterow_input_as_spritesheet = self.make_spritesheet_from_image(vehicle_livery_spriterow_input_image)
+        vehicle_livery_spriterow_input_as_spritesheet = pixa.make_spritesheet_from_image(vehicle_livery_spriterow_input_image, DOS_PALETTE)
 
         for label, recolour_map in self.consist.gestalt_graphics.recolour_maps:
             crop_box_dest = (0,
@@ -782,7 +776,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                              0,
                              self.sprites_max_x_extent,
                              2 * graphics_constants.spriterow_height)
-            pax_mail_car_image_as_spritesheet = self.make_spritesheet_from_image(pax_mail_car_image)
+            pax_mail_car_image_as_spritesheet = pixa.make_spritesheet_from_image(pax_mail_car_image, DOS_PALETTE)
             #if self.consist.id == 'luxury_passenger_car_pony_gen_6U':
                 #pax_mail_car_image_as_spritesheet.sprites.show()
             self.units.append(AppendToSpritesheet(pax_mail_car_image_as_spritesheet, crop_box_dest))
@@ -830,7 +824,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                          self.sprites_max_x_extent,
                          2 * graphics_constants.spriterow_height)
 
-        box_car_rows_image_as_spritesheet = self.make_spritesheet_from_image(box_car_rows_image)
+        box_car_rows_image_as_spritesheet = pixa.make_spritesheet_from_image(box_car_rows_image, DOS_PALETTE)
 
         self.units.append(AppendToSpritesheet(box_car_rows_image_as_spritesheet, crop_box_dest))
         self.units.append(SimpleRecolour(self.consist.gestalt_graphics.recolour_map))
@@ -862,7 +856,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                              self.sprites_max_x_extent,
                              graphics_constants.spriterow_height)
 
-            caboose_car_rows_image_as_spritesheet = self.make_spritesheet_from_image(caboose_car_rows_image)
+            caboose_car_rows_image_as_spritesheet = pixa.make_spritesheet_from_image(caboose_car_rows_image, DOS_PALETTE)
 
             self.units.append(AppendToSpritesheet(caboose_car_rows_image_as_spritesheet, crop_box_dest))
             self.units.append(SimpleRecolour(self.consist.gestalt_graphics.recolour_map_1))
@@ -927,7 +921,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                              0,
                              self.sprites_max_x_extent,
                              cargo_group_row_height)
-            bulk_cargo_rows_image_as_spritesheet = self.make_spritesheet_from_image(bulk_cargo_rows_image)
+            bulk_cargo_rows_image_as_spritesheet = pixa.make_spritesheet_from_image(bulk_cargo_rows_image, DOS_PALETTE)
 
             for label, cargo_recolour_map in polar_fox.constants.bulk_cargo_recolour_maps:
                 self.units.append(AppendToSpritesheet(bulk_cargo_rows_image_as_spritesheet, crop_box_dest))
@@ -1049,7 +1043,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             #if self.consist.id == "open_car_pony_gen_1A":
                 #vehicle_comped_image.show()
 
-            vehicle_comped_image_as_spritesheet = self.make_spritesheet_from_image(vehicle_comped_image)
+            vehicle_comped_image_as_spritesheet = pixa.make_spritesheet_from_image(vehicle_comped_image, DOS_PALETTE)
 
             self.units.append(AppendToSpritesheet(vehicle_comped_image_as_spritesheet, crop_box_dest))
             self.units.append(SimpleRecolour(self.consist.gestalt_graphics.body_recolour_map))

@@ -105,6 +105,12 @@ def make_cheatsheet(image, output_path, origin = None):
 
     result.save(output_path, optimize = True)
 
+def make_spritesheet_from_image(input_image, palette):
+    # convenience method to get a spritesheet from a passed PIL image
+    spritesheet = Spritesheet(width=input_image.size[0], height=input_image.size[1] , palette=palette)
+    spritesheet.sprites.paste(input_image)
+    return spritesheet
+
 def pixascan(image):
     """
     Optimisation method: scans an image from top left, rows first, and caches
