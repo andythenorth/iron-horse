@@ -41,13 +41,15 @@ class PieceCargoSprites:
     """
     Convenience class to hold sprites for piece cargos, sliced up by angle
     """
-    def __init__(self, polar_fox):
-        # note that polar_fox has to be passed, even though polar_fox is probably the parent package for pixa - I don't want to assume that though
-        # it may be undesirable for performance reasons to slice all the sprites on init, but I think we can chance it eh?
-        self.polar_fox = polar_fox
+    def __init__(self, polar_fox_constants, polar_fox_graphics_path):
+        # note that specific polar_fox attributes *must* be passed explicitly
+        # can't just pass polar_fox module as it's not always in scope
+        # similarly the path to polar fox graphics must be set explicitly as it varies by scope
+        self.polar_fox_constants = polar_fox_constants
         self.sprites_by_filename = {}
-        for cargo_filename in self.polar_fox.constants.piece_sprites_to_cargo_labels_maps.keys():
-            cargo_sprites_input_path = os.path.join(currentdir, 'src', 'polar_fox', 'graphics', 'piece_cargos', cargo_filename + '.png')
+        # it may be undesirable for performance reasons to slice all the sprites on init, but I think we can chance it eh?
+        for cargo_filename in self.polar_fox_constants.piece_sprites_to_cargo_labels_maps.keys():
+            cargo_sprites_input_path = os.path.join(currentdir, polar_fox_graphics_path, 'piece_cargos', cargo_filename + '.png')
             cargo_sprites_input_image = Image.open(cargo_sprites_input_path)
             self.sprites_by_filename[cargo_filename] = cargo_sprites_input_image.copy()
             # don't leave open files around, it can hit open file limits on macOs, maybe elsewhere; we've copied the Image object above to avoid needing the file handle
@@ -69,7 +71,7 @@ class PieceCargoSprites:
             bb_result = []
             for y_offset in [0, 30]:
                 bb_y_offset = (counter * 60) + y_offset
-                bb_result.extend(tuple([(i[0], i[1] + bb_y_offset, i[2], i[3] + bb_y_offset) for i in self.polar_fox.constants.cargo_spritesheet_bounding_boxes_base]))
+                bb_result.extend(tuple([(i[0], i[1] + bb_y_offset, i[2], i[3] + bb_y_offset) for i in self.polar_fox_constants.cargo_spritesheet_bounding_boxes_base]))
             cargo_spritesheet_bounding_boxes[length] = bb_result
         return cargo_spritesheet_bounding_boxes
 

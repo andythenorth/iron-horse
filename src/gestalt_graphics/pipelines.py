@@ -997,7 +997,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                          self.sprites_max_x_extent,
                          cargo_group_output_row_height)
 
-        piece_cargo_sprites = PieceCargoSprites(polar_fox)
+        piece_cargo_sprites = PieceCargoSprites(polar_fox_constants=polar_fox.constants, polar_fox_graphics_path=os.path.join('src', 'polar_fox', 'graphics'))
         for cargo_filename in polar_fox.constants.piece_vehicle_type_to_sprites_maps[self.consist.gestalt_graphics.piece_type]:
             # n.b. Iron Horse assumes cargo length is always equivalent from vehicle length (probably fine)
             cargo_sprites = piece_cargo_sprites.get_cargo_sprites_all_angles_for_length(cargo_filename, self.vehicle_unit.vehicle_length)

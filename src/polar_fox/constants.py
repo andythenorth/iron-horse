@@ -378,6 +378,7 @@ container_recolour_cargo_maps = (
 container_piece_cargo_maps = {
                               'ingots_1': piece_sprites_to_cargo_labels_maps['ingots_1'],
                               'logs_1': piece_sprites_to_cargo_labels_maps['logs_1'],
+                              'copper_coils_eye_to_sky_1': piece_sprites_to_cargo_labels_maps['copper_coils_eye_to_sky_1'],
                               'pipes_1': piece_sprites_to_cargo_labels_maps['pipes_1'],
                               }
 
