@@ -37,6 +37,29 @@ class Spritesheet:
         self.sprites.save(output_path, optimize=True)
 
 
+class PieceCargoSprites:
+    """
+    Convenience class to hold sprites for piece cargos, sliced up by angle
+    """
+    def __init__(self, polar_fox):
+        # note that polar_fox has to be passed, even though polar_fox is probably the parent package for pixa - I don't want to assume that though
+        # it may be undesirable for performance reasons to slice all the sprites on init, but I think we can chance it eh?
+        self.polar_fox = polar_fox
+
+    @property
+    def cargo_spritesheet_bounding_boxes(self):
+        # Cargo spritesheets provide multiple lengths, using a specific format of rows
+        # given a base set, find the bounding boxes for the rows per length
+        cargo_spritesheet_bounding_boxes = {}
+        for counter, length in enumerate([3, 4, 5, 6, 7, 8]):
+            bb_result = []
+            for y_offset in [0, 30]:
+                bb_y_offset = (counter * 60) + y_offset
+                bb_result.extend(tuple([(i[0], i[1] + bb_y_offset, i[2], i[3] + bb_y_offset) for i in self.polar_fox.constants.cargo_spritesheet_bounding_boxes_base]))
+            cargo_spritesheet_bounding_boxes[length] = bb_result
+        return cargo_spritesheet_bounding_boxes
+
+
 def make_cheatsheet(image, output_path, origin = None):
     block_size = 30
     palette = deepcopy(image.palette)

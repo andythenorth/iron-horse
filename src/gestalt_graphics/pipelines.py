@@ -6,7 +6,7 @@ from PIL import Image
 
 import polar_fox
 from polar_fox.graphics_units import SimpleRecolour, AppendToSpritesheet, AddCargoLabel, AddBuyMenuSprite, TransposeAsymmetricSprites
-from polar_fox.pixa import Spritesheet, pixascan
+from polar_fox.pixa import Spritesheet, PieceCargoSprites, pixascan
 from gestalt_graphics import graphics_constants
 
 DOS_PALETTE = Image.open('palette_key.png').palette
@@ -953,16 +953,6 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
     def add_piece_cargo_spriterows(self):
         cargo_group_output_row_height = 2 * graphics_constants.spriterow_height
 
-        # Cargo spritesheets provide multiple lengths, using a specific format of rows
-        # given a base set, find the bounding boxes for the rows per length
-        cargo_spritesheet_bounding_boxes = {}
-        for counter, length in enumerate([3, 4, 5, 6, 7, 8]):
-            bb_result = []
-            for y_offset in [0, 30]:
-                bb_y_offset = (counter * 60) + y_offset
-                bb_result.extend(tuple([(i[0], i[1] + bb_y_offset, i[2], i[3] + bb_y_offset) for i in polar_fox.constants.cargo_spritesheet_bounding_boxes_base]))
-            cargo_spritesheet_bounding_boxes[length] = bb_result
-
         # Overview
         # 2 spriterows for the vehicle loading / loaded states, with pink loc points for cargo
         # a mask row for the vehicle, with pink mask area, which is converted to black and white mask image
@@ -1027,6 +1017,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                          self.sprites_max_x_extent,
                          cargo_group_output_row_height)
 
+        piece_cargo_sprites = PieceCargoSprites(polar_fox)
         for cargo_filename in polar_fox.constants.piece_vehicle_type_to_sprites_maps[self.consist.gestalt_graphics.piece_type]:
             # get a list, with a two-tuple (cargo_sprite, mask) for each of 4 angles
             # cargo sprites are assumed to be symmetrical, only 4 angles are needed
@@ -1038,7 +1029,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             cargo_sprites_input_path = os.path.join(currentdir, 'src', 'polar_fox', 'graphics', 'piece_cargos', cargo_filename + '.png')
             cargo_sprites_input_image = Image.open(cargo_sprites_input_path)
             # n.b. Iron Horse assumes cargo length is always equivalent from vehicle length (probably fine)
-            cargo_sprites = self.get_arbitrary_angles(cargo_sprites_input_image, cargo_spritesheet_bounding_boxes[self.vehicle_unit.vehicle_length])
+            cargo_sprites = self.get_arbitrary_angles(cargo_sprites_input_image, piece_cargo_sprites.cargo_spritesheet_bounding_boxes[self.vehicle_unit.vehicle_length])
 
             vehicle_comped_image = piece_cargo_rows_image.copy()
 
