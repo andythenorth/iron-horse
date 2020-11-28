@@ -219,10 +219,9 @@ class IntermodalStakeFlatrack24px(IntermodalContainerGestalt):
         super().__init__(container_subtype)
         self.length = 24
         self.stack_type = 'single'
-        stake_flatrack_20_foot = container_subtype + '_20_foot'
+        #stake_flatrack_20_foot = container_subtype + '_20_foot' # 20 foot flatrack not currently provided due to lack of suitable length cargo sprites
         stake_flatrack_40_foot = container_subtype + '_40_foot'
-        self.variants = [[stake_flatrack_20_foot, stake_flatrack_20_foot],
-                         [stake_flatrack_40_foot]]
+        self.variants = [[stake_flatrack_40_foot]]
 
 
 class IntermodalStakeFlatrack32px(IntermodalContainerGestalt):
@@ -230,11 +229,10 @@ class IntermodalStakeFlatrack32px(IntermodalContainerGestalt):
         super().__init__(container_subtype)
         self.length = 32
         self.stack_type = 'single'
-        stake_flatrack_20_foot = container_subtype + '_20_foot'
-        stake_flatrack_40_foot = container_subtype + '_40_foot'
-        self.variants = [[stake_flatrack_20_foot, stake_flatrack_20_foot, stake_flatrack_20_foot],
-                         [stake_flatrack_20_foot, stake_flatrack_40_foot],
-                         [stake_flatrack_40_foot, stake_flatrack_20_foot]]
+        #stake_flatrack_20_foot = container_subtype + '_20_foot' # 20 foot flatrack not currently provided due to lack of suitable length cargo sprites
+        stake_flatrack_30_foot = container_subtype + '_30_foot'
+        #stake_flatrack_40_foot = container_subtype + '_40_foot' # not used due to lack of 20 foot
+        self.variants = [[stake_flatrack_30_foot, stake_flatrack_30_foot]]
 
 
 class IntermodalLivestock16px(IntermodalContainerGestalt):
