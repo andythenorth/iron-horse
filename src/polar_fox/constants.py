@@ -326,6 +326,7 @@ cryo_tanker_livery_recolour_maps_extended = (("DFLT", "1CC",
 
 cryo_tanker_livery_recolour_maps = [(i[0], i[2]) for i in cryo_tanker_livery_recolour_maps_extended]
 
+# only intended for intermodal containers, curtain side vehicles will be CC
 curtain_side_livery_recolour_maps_extended = (("DFLT", "1CC", {}),
                                               ("TYRE", "black", {}),
                                               ("VENG", "grey", {}),
