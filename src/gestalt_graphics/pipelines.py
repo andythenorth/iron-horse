@@ -690,7 +690,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
         #chassis_image.show()
         return chassis_image
 
-    def add_generic_spriterow(self):
+    def add_generic_spriterow(self, label=''):
         crop_box_source = (0,
                            self.base_yoffs,
                            self.sprites_max_x_extent,
@@ -705,7 +705,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                          self.sprites_max_x_extent,
                          graphics_constants.spriterow_height)
         self.units.append(AppendToSpritesheet(vehicle_generic_spriterow_input_as_spritesheet, crop_box_dest))
-        self.units.append(AddCargoLabel(label='EMPTY',
+        self.units.append(AddCargoLabel(label=label,
                                         x_offset=self.sprites_max_x_extent + 5,
                                         y_offset= -1 * graphics_constants.spriterow_height))
 
@@ -1070,6 +1070,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             vehicle_comped_image_as_spritesheet = self.make_spritesheet_from_image(vehicle_comped_image)
 
             self.units.append(AppendToSpritesheet(vehicle_comped_image_as_spritesheet, crop_box_dest))
+            self.units.append(SimpleRecolour(self.consist.gestalt_graphics.body_recolour_map))
             self.units.append(AddCargoLabel(label=cargo_filename,
                                             x_offset=self.sprites_max_x_extent + 5,
                                             y_offset= -1 * cargo_group_output_row_height))
@@ -1097,7 +1098,10 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                 self.base_yoffs = 10 + (graphics_constants.spriterow_height * cumulative_input_spriterow_count)
                 if spriterow_type == 'empty':
                     input_spriterow_count = 1
-                    self.add_generic_spriterow()
+                    self.add_generic_spriterow(label='EMPTY')
+                if spriterow_type == 'has_cover':
+                    input_spriterow_count = 1
+                    self.add_generic_spriterow(label='COVERED')
                 elif spriterow_type == 'livery_spriterows':
                     input_spriterow_count = 1
                     self.add_livery_spriterows()

@@ -96,6 +96,7 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
         # option for alternative livery, will be selected by player flip on depot, default to 1 if not set
         self.num_visible_cargo_liveries = 2 if kwargs.get('has_alt_livery', False) else 1
         # cargo flags
+        self.has_cover = kwargs.get('has_cover', False)
         self.has_bulk = kwargs.get('bulk', False)
         self.has_piece = kwargs.get('piece', None) is not None
         if self.has_piece:
@@ -123,7 +124,9 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
         # assume an empty state spriterow per livery
         for i in range(self.num_visible_cargo_liveries):
             result.append('empty')
-
+        # for e.g. tarpaulin cars, covered coil cars, insert a specific spriterow to show the cover when 100% loaded or travelling
+        if self.has_cover:
+            result.append('has_cover')
         if self.has_bulk:
             result.append('bulk_cargo')
         if self.has_piece:
@@ -159,34 +162,24 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
         unique_cargo_rows = set(row_nums_seen)
 
         row_height = graphics_constants.spriterow_height
-        start_y = graphics_constants.spritesheet_top_margin
-        empty_state_offset = 0
 
         for flipped in ['unflipped', 'flipped']:
-            # there are _always_ two liveries (flipped and unflipped)
-            # but some vehicles have custom realsprites for the second livery, not just a recolor
-            # so add another empty row and do some offset admin
-            if self.num_visible_cargo_liveries == 2:
-                if flipped == 'unflipped':
-                    # cargo rows need an offset for 2 empty rows
-                    cargo_rows_base_y_offset = start_y + (2 * row_height)
-                else:
-                    # empty state needs an offset to the flipped empty state
-                    empty_state_offset = row_height
-                    # cargo rows need an offset for 2 empty rows, plus the previous livery
-                    cargo_rows_base_y_offset = start_y + (2 * row_height) + (len(unique_cargo_rows) * 2 * row_height)
-            else:
-                # cargo rows need an offset for just 1 empty row
-                cargo_rows_base_y_offset = start_y + row_height
+            start_y_cumulative = graphics_constants.spritesheet_top_margin
 
             # add a row for empty sprite
-            result.append(['empty', flipped, start_y + empty_state_offset])
+            result.append(['empty', flipped, start_y_cumulative])
+            start_y_cumulative += row_height
+
+            if self.has_cover:
+                # add a row for covered sprite
+                result.append(['has_cover', flipped, start_y_cumulative])
+                start_y_cumulative += row_height
 
             # !! not sure unique_cargo_rows order will always reliably match to what's needed, but if it doesn't, explicitly sort it eh
             for row_num in unique_cargo_rows:
-                row_y_offset = cargo_rows_base_y_offset + (row_num * 2 * row_height)
-                result.append(['loading_' + str(row_num), flipped, row_y_offset])
-                result.append(['loaded_' + str(row_num), flipped, row_y_offset + 30])
+                result.append(['loading_' + str(row_num), flipped, start_y_cumulative])
+                result.append(['loaded_' + str(row_num), flipped, start_y_cumulative + 30])
+                start_y_cumulative += (2 * row_height)
         return result
 
 

@@ -866,9 +866,9 @@ class PassengerHSTCabEngineConsist(PassengerEngineConsist):
         self.buy_cost_adjustment_factor = 1.2
         # higher speed should only be effective over longer distances
         # ....run cost multiplier is adjusted up from pax base for high speed
-        self.floating_run_cost_multiplier = 22
-        # ...and high fixed (baseline) run costs on this subtype
-        self.fixed_run_cost_points = 180 # ! eh this was actually the default value last time I checked
+        self.floating_run_cost_multiplier = 16
+        # ...adjust fixed run costs on this subtype to look about right
+        self.fixed_run_cost_points = 160
         # non-standard cite
         self._cite = "Dr Constance Speed"
 
@@ -1027,9 +1027,9 @@ class PassengerVeryHighSpeedCabEngineConsist(PassengerEngineConsist):
         # high speed should only be effective over longer distances
         # ....run cost multiplier is adjusted up from pax base
         # but allow that every vehicle will have powered run costs, so not too high eh?
-        self.floating_run_cost_multiplier = 18
-        # ...and very high fixed (baseline) run costs on this subtype
-        self.fixed_run_cost_points = 256
+        self.floating_run_cost_multiplier = 17
+        # ...and high fixed (baseline) run costs on this subtype
+        self.fixed_run_cost_points = 200
         # train_flag_mu solely used for ottd livery (company colour) selection
         # !! commented out as of July 2019 because the middle engines won't pick this up, which causes inconsistency in the buy menu
         # self.train_flag_mu = True
@@ -2411,8 +2411,9 @@ class TarpaulinCarConsist(CarConsist):
         # allow flipping, used to flip company colour
         self.allow_flip = True
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(id_base='tarpaulin_car',
-                                                                  recolour_maps=graphics_constants.tarpaulin_car_livery_recolour_maps)
+        self.gestalt_graphics = GestaltGraphicsVisibleCargo(body_recolour_map=graphics_constants.tarpaulin_car_body_recolour_map,
+                                                            piece='flat',
+                                                            has_cover=True)
 
 
 class TorpedoCarConsist(CarConsist):

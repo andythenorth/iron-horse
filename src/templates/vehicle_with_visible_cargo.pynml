@@ -31,15 +31,30 @@
     </tal:flip_state>
 </tal:load_state>
 
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, switch_graphics_visible_cargo_flip_and_load()) {
-    0: return ${vehicle.id}_ss_empty_unflipped;
-    1: return ${vehicle.id}_switch_cargo_loading_unflipped;
-    2: return ${vehicle.id}_switch_cargo_loaded_unflipped;
-    3: return ${vehicle.id}_ss_empty_flipped;
-    4: return ${vehicle.id}_switch_cargo_loading_flipped;
-    5: return ${vehicle.id}_switch_cargo_loaded_flipped;
-}
-
+<tal:graphics_with_optional_cover switch="getattr(consist.gestalt_graphics, 'has_cover', False)">
+    <tal:no_cover case="False">
+        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, switch_graphics_visible_cargo_no_cover_flip_and_load()) {
+            0: return ${vehicle.id}_ss_empty_unflipped;
+            1: return ${vehicle.id}_switch_cargo_loading_unflipped;
+            2: return ${vehicle.id}_switch_cargo_loaded_unflipped;
+            3: return ${vehicle.id}_ss_empty_flipped;
+            4: return ${vehicle.id}_switch_cargo_loading_flipped;
+            5: return ${vehicle.id}_switch_cargo_loaded_flipped;
+        }
+    </tal:no_cover>
+    <tal:has_cover case="True">
+        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, switch_graphics_visible_cargo_has_cover()) {
+            0: return ${vehicle.id}_ss_empty_unflipped;
+            1: return ${vehicle.id}_ss_has_cover_unflipped;
+            2: return ${vehicle.id}_switch_cargo_loading_unflipped;
+            3: return ${vehicle.id}_switch_cargo_loaded_unflipped;
+            4: return ${vehicle.id}_ss_empty_flipped;
+            5: return ${vehicle.id}_ss_has_cover_flipped;
+            6: return ${vehicle.id}_switch_cargo_loading_flipped;
+            7: return ${vehicle.id}_switch_cargo_loaded_flipped;
+        }
+    </tal:has_cover>
+</tal:graphics_with_optional_cover>
 
 // buy menu graphics chain
 spriteset(${vehicle.id}_ss_purchase, "${graphics_path}${consist.id}.png") {

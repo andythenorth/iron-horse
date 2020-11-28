@@ -11,7 +11,12 @@ spritesheet_top_margin = 10
 # wider than sprites, allows room for custom buy menu sprites, also to print cargo labels to aid drawing / debugging generated cargos
 spritesheet_width = 425
 
-# --- Cargo Maps ---- #
+
+# --- Body Recolour Maps --- #
+
+tarpaulin_car_body_recolour_map = {136: 5, 137: 7, 138: 8, 139: 9, 140: 10, 141: 12, 142: 13, 143: 15}
+
+# --- Cargo Livery Recolour Maps --- #
 # label order matters, so tuples are used not dicts
 # could probably have used orderedict or named tuple, but...blah
 
@@ -90,6 +95,3 @@ silo_livery_recolour_maps = (("DFLT", {136: CC1, 137: CC1+1, 138: CC1+2, 139: CC
 
 sliding_wall_livery_recolour_maps = (("DFLT", {40: 4, 41: 5, 42: 6, 43: 7,
                                                44: 20, 45: 21, 46: 22, 47: 13}),)
-
-tarpaulin_car_livery_recolour_maps = (("DFLT", {136: 5, 137: 7, 138: 8, 139: 9,
-                                                140: 10, 141: 12, 142: 13, 143: 15}),)
