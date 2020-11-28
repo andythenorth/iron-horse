@@ -209,8 +209,9 @@ class IntermodalStakeFlatrack16px(IntermodalContainerGestalt):
         super().__init__(container_subtype)
         self.length = 16
         self.stack_type = 'single'
-        self.variants = [['stake_flatrack_30_foot'],
-                         ['stake_flatrack_30_foot']]
+        stake_flatrack_30_foot = container_subtype + '_30_foot'
+        self.variants = [[stake_flatrack_30_foot],
+                         [stake_flatrack_30_foot]]
 
 
 class IntermodalStakeFlatrack24px(IntermodalContainerGestalt):
@@ -218,8 +219,10 @@ class IntermodalStakeFlatrack24px(IntermodalContainerGestalt):
         super().__init__(container_subtype)
         self.length = 24
         self.stack_type = 'single'
-        self.variants = [['stake_flatrack_20_foot', 'stake_flatrack_20_foot'],
-                         ['stake_flatrack_40_foot']]
+        stake_flatrack_20_foot = container_subtype + '_20_foot'
+        stake_flatrack_40_foot = container_subtype + '_40_foot'
+        self.variants = [[stake_flatrack_20_foot, stake_flatrack_20_foot],
+                         [stake_flatrack_40_foot]]
 
 
 class IntermodalStakeFlatrack32px(IntermodalContainerGestalt):
@@ -227,9 +230,11 @@ class IntermodalStakeFlatrack32px(IntermodalContainerGestalt):
         super().__init__(container_subtype)
         self.length = 32
         self.stack_type = 'single'
-        self.variants = [['stake_flatrack_20_foot', 'stake_flatrack_20_foot', 'stake_flatrack_20_foot'],
-                         ['stake_flatrack_20_foot', 'stake_flatrack_40_foot'],
-                         ['stake_flatrack_40_foot', 'stake_flatrack_20_foot']]
+        stake_flatrack_20_foot = container_subtype + '_20_foot'
+        stake_flatrack_40_foot = container_subtype + '_40_foot'
+        self.variants = [[stake_flatrack_20_foot, stake_flatrack_20_foot, stake_flatrack_20_foot],
+                         [stake_flatrack_20_foot, stake_flatrack_40_foot],
+                         [stake_flatrack_40_foot, stake_flatrack_20_foot]]
 
 
 class IntermodalLivestock16px(IntermodalContainerGestalt):
@@ -408,7 +413,7 @@ def main():
 
     # first do the defaults, which will be named xxxxxx_DFLT
     for container_type in container_type_gestalt_mapping.keys():
-        if container_type not in ['bulk']: # exclude some types which have no meaningful default (and will fall back to box)
+        if container_type not in ['bulk', 'stake_flatrack']: # exclude some types which have no meaningful default (and will fall back to box)
             container_subtype = container_type + '_DFLT'
             register_container_gestalt(container_type, container_subtype)
 

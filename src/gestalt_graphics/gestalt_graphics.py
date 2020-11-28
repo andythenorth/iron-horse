@@ -298,27 +298,8 @@ class GestaltGraphicsIntermodal(GestaltGraphics):
 
     @property
     def cargo_label_mapping(self):
-        # !! these maps need moved to polar fox
-        # first result is known refits which will fallback to xxxxx_DFLT
-        # second result is known cargo sprites / livery recolours, which will map explicitly
-        container_cargo_maps = (('box', ([], [])), # box currently generic, and is fallback for all unknown cargos / classes
-                                ('bulk', ([], polar_fox.constants.bulk_cargo_recolour_maps)),
-                                ('stake_flatrack', (['ALUM'], [])),
-                                ('livestock', (['LVST'], [])), # one label only - extend if other livestock labels added in future
-                                ('tank', ([], polar_fox.constants.tanker_livery_recolour_maps)),
-                                ('reefer', (polar_fox.constants.allowed_refits_by_label['reefer'], [])), # reefer currently uses classes only
-                                ('edibles_tank', (polar_fox.constants.allowed_refits_by_label['edible_liquids'], [])),
-                                ('chemicals_tank', (polar_fox.constants.allowed_refits_by_label['chemicals'],
-                                                    polar_fox.constants.chemicals_tanker_livery_recolour_maps)),
-                                ('cryo_tank', (polar_fox.constants.allowed_refits_by_label['cryo_gases'],
-                                               polar_fox.constants.cryo_tanker_livery_recolour_maps)),
-                                ('curtain_side', (['VBOD'], # this single label is a dirty trick to stop warnings about unused DFLT spritesets
-                                                  polar_fox.constants.curtain_side_livery_recolour_maps)),
-                                ('wood', (['WOOD'], []))) # one label only - extend if other wood-type labels added in future
-
-
         result = {}
-        for container_type, cargo_maps in container_cargo_maps:
+        for container_type, cargo_maps in polar_fox.constants.container_recolour_cargo_maps:
             # first handle the cargos as explicitly refittable
             # lists of explicitly refittable cargos are by no means *all* the cargos refittable to for a type
             # nor does explicitly refittable cargos have 1:1 mapping with cargo-specific graphics
@@ -331,6 +312,11 @@ class GestaltGraphicsIntermodal(GestaltGraphics):
             for cargo_label, recolour_map in cargo_maps[1]:
                 if self.allow_adding_cargo_label(cargo_label, container_type, result):
                     result[cargo_label] = container_type + '_' + cargo_label
+        # special handling of flatracks with visible cargo sprites
+        for cargo_list in polar_fox.constants.container_piece_cargo_maps.values():
+            for cargo_label in cargo_list:
+                if self.allow_adding_cargo_label(cargo_label, 'stake_flatrack', result):
+                    result[cargo_label] = 'stake_flatrack' + '_' + cargo_label
         return result
 
     @property
@@ -369,7 +355,6 @@ class GestaltGraphicsVehicleTransporter(GestaltGraphics):
         return ['empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty', 'empty']
 
     def allow_adding_cargo_label(self, cargo_label, container_type, result):
-        print('is allow_adding_cargo_label actually needed for GestaltGraphicsVehicleTransporter?')
         # don't ship DFLT as actual cargo label, it's not a valid cargo and will cause nml to barf
         # the generation of the DFLT container sprites is handled separately without using cargo_label_mapping
         if cargo_label == 'DFLT':
