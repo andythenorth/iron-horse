@@ -298,6 +298,7 @@ class GestaltGraphicsIntermodal(GestaltGraphics):
 
     @property
     def cargo_label_mapping(self):
+        # !! these maps need moved to polar fox
         # first result is known refits which will fallback to xxxxx_DFLT
         # second result is known cargo sprites / livery recolours, which will map explicitly
         container_cargo_maps = (('box', ([], [])), # box currently generic, and is fallback for all unknown cargos / classes
