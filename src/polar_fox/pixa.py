@@ -60,6 +60,25 @@ class PieceCargoSprites:
         return cargo_spritesheet_bounding_boxes
 
 
+def get_arbitrary_angles(input_image, bounding_boxes):
+    # given an image and a list of arbitrary bounding boxes...
+    # ...return a list of two tuples with sprite and mask
+    # this can then be used for compositing
+    # note the arbitrary order of sprites which makes this very flexible
+    result = []
+    for bounding_box in bounding_boxes:
+        sprite = input_image.copy()
+        sprite = sprite.crop(bounding_box)
+        mask = sprite.copy()
+        # !! .point is noticeably slow although not signifcantly so with only 3 cargo types
+        # !! check this again if optimisation is a concern - can cargos be processed once and passed to the pipeline?
+        # !! as of Oct 2018, I tested commenting out *all* piece cargo processing, including calls to this method
+        # !! that cut only 1s from an 11s graphics processing run on single CPU
+        # !! so optimising this is TMWFTLB currently; instead simply using multiprocessing cuts graphics run to 2s
+        mask = mask.point(lambda i: 0 if i == 0 else 255).convert("1")
+        result.append((sprite, mask))
+    return result
+
 def make_cheatsheet(image, output_path, origin = None):
     block_size = 30
     palette = deepcopy(image.palette)
@@ -85,7 +104,6 @@ def make_cheatsheet(image, output_path, origin = None):
             draw.text((text_pos_x, text_pos_y), str(colour), fill = 1)
 
     result.save(output_path, optimize = True)
-
 
 def pixascan(image):
     """

@@ -6,7 +6,8 @@ from PIL import Image
 
 import polar_fox
 from polar_fox.graphics_units import SimpleRecolour, AppendToSpritesheet, AddCargoLabel, AddBuyMenuSprite, TransposeAsymmetricSprites
-from polar_fox.pixa import Spritesheet, PieceCargoSprites, pixascan
+import polar_fox.pixa as pixa
+from polar_fox.pixa import Spritesheet, PieceCargoSprites
 from gestalt_graphics import graphics_constants
 
 DOS_PALETTE = Image.open('palette_key.png').palette
@@ -42,25 +43,6 @@ class Pipeline(object):
     def roof_input_path(self):
         # convenience method to get the path for the roof image
         return os.path.join(currentdir, 'src', 'graphics', 'roofs', self.vehicle_unit.roof + '.png')
-
-    def get_arbitrary_angles(self, input_image, bounding_boxes):
-        # given an image and a list of arbitrary bounding boxes...
-        # ...return a list of two tuples with sprite and mask
-        # this can then be used for compositing
-        # note the arbitrary order of sprites which makes this very flexible
-        result = []
-        for bounding_box in bounding_boxes:
-            sprite = input_image.copy()
-            sprite = sprite.crop(bounding_box)
-            mask = sprite.copy()
-            # !! .point is noticeably slow although not signifcantly so with only 3 cargo types
-            # !! check this again if optimisation is a concern - can cargos be processed once and passed to the pipeline?
-            # !! as of Oct 2018, I tested commenting out *all* piece cargo processing, including calls to this method
-            # !! that cut only 1s from an 11s graphics processing run on single CPU
-            # !! so optimising this is TMWFTLB currently; instead simply using multiprocessing cuts graphics run to 2s
-            mask = mask.point(lambda i: 0 if i == 0 else 255).convert("1")
-            result.append((sprite, mask))
-        return result
 
     def process_buy_menu_sprite(self, spritesheet):
         # this function is passed (uncalled) into the pipeline, and then called at render time
@@ -173,7 +155,7 @@ class GenerateCompositedIntermodalContainers(Pipeline):
 
             # get the loc points and sort them for display
             # !! loc points might need extended to support double stack ??
-            loc_points = [(pixel[0], pixel[1] - 10, pixel[2]) for pixel in pixascan(template_image) if pixel[2] in [226, 240, 244]]
+            loc_points = [(pixel[0], pixel[1] - 10, pixel[2]) for pixel in pixa.pixascan(template_image) if pixel[2] in [226, 240, 244]]
             loc_points_grouped_and_sorted_for_display = {}
             for angle_index, bbox in enumerate(self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed):
                 pixels=[]
@@ -212,7 +194,7 @@ class GenerateCompositedIntermodalContainers(Pipeline):
                 for bbox in self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed:
                     bboxes.append([bbox[0], 10, bbox[0] + bbox[1], 10 + bbox[2]])
 
-                container_sprites = self.get_arbitrary_angles(container_image, bboxes)
+                container_sprites = pixa.get_arbitrary_angles(container_image, bboxes)
                 # containers are symmetric, angles 0-3 need to be copied from angles 4-7
                 for i in range(4):
                     container_sprites[i] = container_sprites[i + 4]
@@ -318,7 +300,7 @@ class GenerateCompositedVehiclesCargos(Pipeline):
 
             # get the loc points and sort them for display
             # !! loc points might need extended to support double stack ??
-            loc_points = [(pixel[0], pixel[1] - 10, pixel[2]) for pixel in pixascan(template_image) if pixel[2] in [226, 240, 244]]
+            loc_points = [(pixel[0], pixel[1] - 10, pixel[2]) for pixel in pixa.pixascan(template_image) if pixel[2] in [226, 240, 244]]
             loc_points_grouped_and_sorted_for_display = {}
             for angle_index, bbox in enumerate(self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed):
                 pixels=[]
@@ -357,7 +339,7 @@ class GenerateCompositedVehiclesCargos(Pipeline):
                 for bbox in self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed:
                     bboxes.append([bbox[0], 10, bbox[0] + bbox[1], 10 + bbox[2]])
 
-                container_sprites = self.get_arbitrary_angles(container_image, bboxes)
+                container_sprites = pixa.get_arbitrary_angles(container_image, bboxes)
                 # containers are symmetric, angles 0-3 need to be copied from angles 4-7
                 for i in range(4):
                     container_sprites[i] = container_sprites[i + 4]
@@ -497,7 +479,7 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
             for bbox in self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed:
                 bboxes.append([bbox[0], yoffset, bbox[0] + bbox[1], yoffset + bbox[2]])
 
-        pantograph_sprites = self.get_arbitrary_angles(pantograph_input_image, bboxes)
+        pantograph_sprites = pixa.get_arbitrary_angles(pantograph_input_image, bboxes)
         # needs to slice out A down, A up, B down, B up, depending on type
         # but B is probably just A reversed
         # so two spriterows is enough: down, up
@@ -520,7 +502,7 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
 
         vehicle_input_image = Image.open(self.vehicle_source_input_path)
         # get the loc points
-        loc_points = [(pixel[0], pixel[1], pixel[2]) for pixel in pixascan(vehicle_input_image) if pixel[2] == 226 or pixel[2] == 164]
+        loc_points = [(pixel[0], pixel[1], pixel[2]) for pixel in pixa.pixascan(vehicle_input_image) if pixel[2] == 226 or pixel[2] == 164]
         # loc points are in arbitrary row in source spritesheet but need to be moved up in output, so shift the y offset by the required amount
         loc_points = [(pixel[0], pixel[1] - (num_pantograph_rows * graphics_constants.spriterow_height), pixel[2]) for pixel in loc_points]
         # sort them in y order, this causes sprites to overlap correctly when there are multiple loc points for an angle
@@ -966,7 +948,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                                           self.base_yoffs + graphics_constants.spriterow_height)
         vehicle_cargo_loc_image = self.vehicle_source_image.copy().crop(crop_box_vehicle_cargo_loc_row)
         # get the loc points
-        loc_points = [(pixel[0] + self.second_col_start_x, pixel[1], pixel[2]) for pixel in pixascan(vehicle_cargo_loc_image) if pixel[2] == 226]
+        loc_points = [(pixel[0] + self.second_col_start_x, pixel[1], pixel[2]) for pixel in pixa.pixascan(vehicle_cargo_loc_image) if pixel[2] == 226]
         # two cargo rows needed, so extend the loc points list
         loc_points.extend([(pixel[0], pixel[1] + 30, pixel[2]) for pixel in loc_points])
         # sort them in y order, this causes sprites to overlap correctly when there are multiple loc points for an angle
@@ -1029,7 +1011,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             cargo_sprites_input_path = os.path.join(currentdir, 'src', 'polar_fox', 'graphics', 'piece_cargos', cargo_filename + '.png')
             cargo_sprites_input_image = Image.open(cargo_sprites_input_path)
             # n.b. Iron Horse assumes cargo length is always equivalent from vehicle length (probably fine)
-            cargo_sprites = self.get_arbitrary_angles(cargo_sprites_input_image, piece_cargo_sprites.cargo_spritesheet_bounding_boxes[self.vehicle_unit.vehicle_length])
+            cargo_sprites = pixa.get_arbitrary_angles(cargo_sprites_input_image, piece_cargo_sprites.cargo_spritesheet_bounding_boxes[self.vehicle_unit.vehicle_length])
 
             vehicle_comped_image = piece_cargo_rows_image.copy()
 
