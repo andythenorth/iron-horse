@@ -3,6 +3,32 @@ Changelog
 
 
 -------------
+2.14.0 Release
+-------------
+
+*Changes*
+
+- adjusted freight engine tech tree
+    - added Defiant, 3650hp, follows from Bone
+    - increased Blackthorn power to 3650hp
+    - reduced Cheddar Valley power to 4050hp
+    - renamed Endeavour to Highlander, power increased to 4450hp, follows from Cheddar Valley
+- reduced running costs of high speed and very high speed trains
+- reduced running costs of Onslaught and Relentless
+- adjusted automatic running cost algorithm so that gen 6 engines are not significantly cheaper to run than gen 5, with insignificant changes to all other engine running costs as a side effect
+- added cargo sprites for
+    - aluminium (ingots)
+    - zinc (ingots)
+- added cargo sprites for Tarpaulin Wagons and Covered Coil Carriers (shown when loading / unloading)
+- added flatrack intermodal container sprites for Container Wagons, for certain cargos
+    - aluminium (ingots)
+    - pipe
+    - zinc (ingots)
+- improved appearance of Plate Cars
+- improved placement of certain coil cargo sprites
+
+
+-------------
 2.13.0 Release
 -------------
 
@@ -10,8 +36,8 @@ Changelog
 
 - enable colour randomisation for Torpedo Cars
 - added cargo sprites for
-    - Steel Wire Rod (as used in FIRS v4 Steeltown)
-    - Pipe (as used in FIRS Steeltown)
+    - pipe (as used in FIRS Steeltown)
+    - steel wire rod (as used in FIRS v4 Steeltown)
 - reworked tarp-covered cargo sprites, used as sprites for unknown cargo on many wagon types
 
 
