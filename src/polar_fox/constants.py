@@ -370,14 +370,14 @@ container_recolour_cargo_maps = (
                                  ('livestock', (['LVST'], [])), # one label only - extend if other livestock labels added in future
                                  ('reefer', (allowed_refits_by_label['reefer'], [])),
                                  ('tank', ([], tanker_livery_recolour_maps)),
+                                 ('wood', (['WOOD'], [])), # one label only - note that wood container sprites are slightly different to stake flatrack
                                 )
 
-# these take selected entries from piece_sprites_to_cargo_labels_maps
-# for intermodal, we don't always use a flatrack with visible cargo, even if the sprites are available; in some cases a box, tank etc is better
+# intermodal flatracks use selected entries from piece_sprites_to_cargo_labels_maps
+# for intermodal, we don't always want to use a flatrack with visible cargo, even if the sprites are available; in some cases a box, tank etc is better
 # for simplicity of maintenance though, we do just use all the cargo labels for a specific type of cargo sprite
 container_piece_cargo_maps = {
                               'ingots_1': piece_sprites_to_cargo_labels_maps['ingots_1'],
-                              'logs_1': piece_sprites_to_cargo_labels_maps['logs_1'],
                               'copper_coils_eye_to_sky_1': piece_sprites_to_cargo_labels_maps['copper_coils_eye_to_sky_1'],
                               'pipes_1': piece_sprites_to_cargo_labels_maps['pipes_1'],
                               }
