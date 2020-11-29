@@ -1831,6 +1831,35 @@ class HopperCarRockConsist(HopperCarConsistBase):
         self._joker = True
 
 
+class IngotCarConsist(CarConsist):
+    """
+    Dedicated car for steel / iron ingots.  No other refits.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = 'ingot_car'
+        super().__init__(**kwargs)
+        self.class_refit_groups = [] # none needed
+        self.label_refits_allowed = ['SLAG']
+        self.label_refits_disallowed = [] # none needed
+        self.default_cargos = ['SLAG']
+        self.loading_speed_multiplier = 2
+        self.buy_cost_adjustment_factor = 1.2
+        self.weight_factor = 2 # double the default weight
+        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['freight_core']
+        self._joker = True
+        # CC is swapped randomly (player can't choose), but also swap base livery on flip (player can choose
+        self.allow_flip = True
+        self.suppress_animated_pixel_warnings = True
+        # Graphics configuration
+        # custom gestalt due to non-standard load sprites, which are hand coloured, not generated
+        self.gestalt_graphics = GestaltGraphicsCustom('vehicle_with_visible_cargo.pynml',
+                                                      cargo_row_map={'SLAG': [0]},
+                                                      generic_rows=[0],
+                                                      unique_spritesets=[['empty', 'flipped', 10], ['loading_0', 'flipped', 40], ['loaded_0', 'flipped', 70],
+                                                                         ['empty', 'unflipped', 10], ['loading_0', 'unflipped', 40], ['loaded_0', 'unflipped', 70]])
+
+
 class IntermodalCarConsist(CarConsist):
     """
     General cargo - refits everything except mail, pax.
@@ -3280,6 +3309,16 @@ class FreightCar(TrainCar):
         # magic to set freight car capacity subject to length
         base_capacity = self.consist.roster.freight_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
         self.capacity = (self.vehicle_length * base_capacity)
+
+
+class IngotCar(FreightCar):
+    """
+    Ingot car. This subclass only exists to set the capacity.
+    """
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # just double whatever is set by the init, what could go wrong? :)
+        self.capacity = 2 * self.capacity
 
 
 class IntermodalCar(FreightCar):

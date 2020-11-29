@@ -46,6 +46,7 @@ buy_menu_sort_order_wagons = ['alignment_car',
                               'carbon_black_hopper_car',
                               'vehicle_transporter_car',
                               'torpedo_car',
+                              'ingot_car',
                               'slag_ladle_car',
                               'caboose_car'
                               ]

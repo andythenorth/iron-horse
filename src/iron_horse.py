@@ -45,6 +45,7 @@ from vehicles import fruit_veg_cars
 from vehicles import grain_hopper_cars
 from vehicles import hopper_cars
 from vehicles import hst_passenger_cars
+from vehicles import ingot_cars
 from vehicles import intermodal_cars
 from vehicles import livestock_cars
 from vehicles import luxury_passenger_cars
@@ -187,6 +188,7 @@ def main():
     grain_hopper_cars.main()
     hopper_cars.main()
     hst_passenger_cars.main()
+    ingot_cars.main()
     intermodal_cars.main()
     livestock_cars.main()
     luxury_passenger_cars.main()
