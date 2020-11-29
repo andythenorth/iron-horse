@@ -142,6 +142,15 @@ switch (FEAT_TRAINS, SELF, switch_colour_mapping_purchase, cc_num_to_randomise, 
        3. I didn't check if the random bits used to choose colour set collide with any other uses
        4. this works for train wagons, wouldn't work for ships as individual containers can't be controlled
 -->
+
+<!--!! possibly it would be better better to
+     - generate box containers for all the CC variants directly in Polar Fox, including the alternative shade for every company colour
+     - then compose those into fixed container groups in Iron Horse (cc1_alt etc), so each group produces 16 colour variants
+     - then switch the final sprites on the company current colour
+     - seems like work, but it's what ships will probably need to do?
+     - would non-trivially complicate generating intermodal container spritesets etc
+     - also would remove randomisation from non-box containers
+     - so basically, unappealing-->
 <tal:switch_by_company_colour repeat="cc [['1cc', '2cc'], ['1cc', '1cc'], ['2cc', '1cc'], ['2cc', '2cc']]">
     switch (FEAT_TRAINS, SELF, switch_intermodal_by_company_colour_${cc[0]}_to_${cc[1]}, company_colour${cc[1][0]}) {
         COLOUR_DARK_BLUE: switch_colour_set_dark_blue_${cc[0]};
