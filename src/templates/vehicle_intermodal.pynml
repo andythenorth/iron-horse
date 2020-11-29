@@ -73,7 +73,7 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_containers_check_cargo,
     return ${vehicle.id}_switch_graphics_containers_check_cargo_label;
 }
 
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_containers, STORE_TEMP(base_sprite_2cc + 16 * company_colour2 + company_colour1, 0x100)) {
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_containers, STORE_TEMP(switch_intermodal_by_company_colour_1cc_to_1cc(), 0x100)) {
     return ${vehicle.id}_switch_graphics_containers_check_cargo;
 }
 

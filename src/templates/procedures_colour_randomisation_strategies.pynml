@@ -1,13 +1,6 @@
-<!--! strategies for random colour remapping (of wagons)
-    1. strategies apply rules to branch to colour sets, which apply a random choice from 2 shades of the chosen colour (as of Nov 2020)
-    2. player parameter can choose certain strategies explicitly
-    3. magic may or may not get added for engine-specific or cargo-specific colours
--->
+<!--! ** Various strategies for random recolouring of vehicles / intermodal containers ** -->
 
-<!--! as of Dec 2019 this is not used with articulated vehicles,
-      however if articulated vehicle support is need it will need alternatives checking FORWARD_SELF(n)
-      these will have to be duplicates of these switches on a repeat, with named entry points -->
-
+<!--! * Shared colour sets with variants of CC, may be used by multiple strategies -->
 <!--! note that random bits need to be unique within the switch chain to prevent dependent results -->
 <tal:colour_sets define="random_bits 'switch_alternative_var_random_bits(0, 1)';
                          colour_sets {'dark_blue': ['COLOUR_DARK_BLUE', 'custom_dark_blue'],
@@ -39,6 +32,16 @@
         }
     </tal:colour_set>
 </tal:colour_sets>
+
+<!--! * Strategies for random recolouring of wagons *
+    1. strategies apply rules to branch to colour sets, which apply a random choice from 2 shades of the chosen colour (as of Nov 2020)
+    2. player parameter can choose certain strategies explicitly
+    3. magic may or may not get added for engine-specific or cargo-specific colours
+-->
+
+<!--! as of Dec 2019 this is not used with articulated vehicles,
+      however if articulated vehicle support is need it will need alternatives checking FORWARD_SELF(n)
+      these will have to be duplicates of these switches on a repeat, with named entry points -->
 
 <tal:switch_by_company_colour repeat="cc [['1cc', '2cc'], ['1cc', '1cc'], ['2cc', '1cc'], ['2cc', '2cc']]">
     switch (FEAT_TRAINS, SELF, switch_by_company_colour_${cc[0]}_to_${cc[1]},
@@ -130,3 +133,34 @@ switch (FEAT_TRAINS, SELF, switch_colour_mapping_purchase, cc_num_to_randomise, 
                                                      STORE_TEMP(use_wagon_base_colour_parameter, ${temp_storage_ids.use_wagon_base_colour_parameter})]) {
     return switch_cc_num_to_randomise;
 }
+
+<!--! * Strategies for random recolouring of intermodal containers * -->
+
+<!--!  these are rudimentary in that
+       1. they won't recolour within the container group, only between wagons
+       2. only 1cc is recoloured due to combinatorial explosion if both 1cc and 2cc are randomised in recolour sprites (those sprites _could_ be generated though)
+       3. I didn't check if the random bits used to choose colour set collide with any other uses
+       4. this works for train wagons, wouldn't work for ships as individual containers can't be controlled
+-->
+<tal:switch_by_company_colour repeat="cc [['1cc', '2cc'], ['1cc', '1cc'], ['2cc', '1cc'], ['2cc', '2cc']]">
+    switch (FEAT_TRAINS, SELF, switch_intermodal_by_company_colour_${cc[0]}_to_${cc[1]}, company_colour${cc[1][0]}) {
+        COLOUR_DARK_BLUE: switch_colour_set_dark_blue_${cc[0]};
+        COLOUR_PALE_GREEN: switch_colour_set_pale_green_${cc[0]};
+        COLOUR_PINK: switch_colour_set_pink_${cc[0]};
+        COLOUR_YELLOW: switch_colour_set_yellow_${cc[0]};
+        COLOUR_RED: switch_colour_set_red_${cc[0]};
+        COLOUR_LIGHT_BLUE: switch_colour_set_light_blue_${cc[0]};
+        COLOUR_GREEN: switch_colour_set_green_${cc[0]};
+        COLOUR_DARK_GREEN: switch_colour_set_dark_green_${cc[0]};
+        COLOUR_BLUE: switch_colour_set_blue_${cc[0]};
+        COLOUR_CREAM: switch_colour_set_cream_${cc[0]};
+        COLOUR_MAUVE: switch_colour_set_mauve_${cc[0]};
+        COLOUR_PURPLE: switch_colour_set_purple_${cc[0]};
+        COLOUR_ORANGE: switch_colour_set_orange_${cc[0]};
+        COLOUR_BROWN: switch_colour_set_brown_${cc[0]};
+        COLOUR_GREY: switch_colour_set_grey_${cc[0]};
+        COLOUR_WHITE: switch_colour_set_white_${cc[0]};
+    }
+</tal:switch_by_company_colour>
+
+
