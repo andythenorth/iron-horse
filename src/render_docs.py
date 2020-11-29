@@ -373,11 +373,16 @@ class DocHelper(object):
         # list of pairs, need consistent order so can't use dict
         return [('RAIL', 'Standard Gauge'), ('NG', 'Narrow Gauge'), ('METRO', 'Metro')]
 
-def render_docs(doc_list, file_type, docs_output_path, iron_horse, consists, use_markdown=False):
+def render_docs(doc_list, file_type, docs_output_path, iron_horse, consists, use_markdown=False, source_is_repo_root=False):
+    if source_is_repo_root:
+        doc_path = os.path.join(currentdir)
+    else:
+        doc_path = docs_src
     # imports inside functions are generally avoided
     # but PageTemplateLoader is expensive to import and causes unnecessary overhead for Pool mapping when processing docs graphics
     from chameleon import PageTemplateLoader
-    docs_templates = PageTemplateLoader(docs_src, format='text')
+
+    docs_templates = PageTemplateLoader(doc_path, format='text')
 
     for doc_name in doc_list:
         # .pt is the conventional extension for chameleon page templates
@@ -386,7 +391,7 @@ def render_docs(doc_list, file_type, docs_output_path, iron_horse, consists, use
                        git_info=git_info, base_lang_strings=base_lang_strings, metadata=metadata, utils=utils, doc_helper=DocHelper(), doc_name=doc_name)
         if use_markdown:
             # the doc might be in markdown format, if so we need to render markdown to html, and wrap the result in some boilerplate html
-            markdown_wrapper = docs_templates['markdown_wrapper.pt']
+            markdown_wrapper = PageTemplateLoader(docs_src, format='text')['markdown_wrapper.pt']
             doc = markdown_wrapper(content=markdown.markdown(doc), consists=consists, global_constants=global_constants, makefile_args=makefile_args,
                                    git_info=git_info, metadata=metadata, utils=utils, doc_helper=DocHelper(), doc_name=doc_name)
         if file_type == 'html':
@@ -555,12 +560,14 @@ def main():
     html_docs = ['code_reference', 'get_started', 'translations',
                  'tech_tree_table_blue', 'tech_tree_table_red', 'tech_tree_table_blue_simplified', 'tech_tree_table_red_simplified',
                  'train_whack', 'trains']
-    txt_docs = ['license', 'readme']
+    txt_docs = ['readme']
+    license_docs = ['license']
     markdown_docs = ['changelog']
     graph_docs = ['tech_tree_linkgraph']
 
     render_docs(html_docs, 'html', docs_output_path, iron_horse, consists)
     render_docs(txt_docs, 'txt', docs_output_path, iron_horse, consists)
+    render_docs(license_docs, 'txt', docs_output_path, iron_horse, consists, source_is_repo_root=True)
     # just render the markdown docs twice to get txt and html versions, simples no?
     render_docs(markdown_docs, 'txt', docs_output_path, iron_horse, consists)
     render_docs(markdown_docs, 'html', docs_output_path, iron_horse, consists, use_markdown=True)
