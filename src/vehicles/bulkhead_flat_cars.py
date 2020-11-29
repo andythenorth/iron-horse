@@ -3,9 +3,9 @@ from train import BulkheadFlatCarConsist, FreightCar
 
 def main():
     #--------------- pony NG ----------------------------------------------------------------------
-    """
+
     consist = BulkheadFlatCarConsist(roster_id='pony',
-                             base_numeric_id=1170,
+                             base_numeric_id=5120,
                              gen=1,
                              subtype='U',
                              base_track_type='NG',
@@ -17,7 +17,7 @@ def main():
     # no gen 2 for NG, straight to gen 3
 
     consist = BulkheadFlatCarConsist(roster_id='pony',
-                             base_numeric_id=1130,
+                             base_numeric_id=5130,
                              gen=3,
                              subtype='U',
                              base_track_type='NG',
@@ -28,7 +28,7 @@ def main():
 
 
     consist = BulkheadFlatCarConsist(roster_id='pony',
-                             base_numeric_id=1370,
+                             base_numeric_id=5140,
                              gen=4,
                              subtype='U',
                              base_track_type='NG',
@@ -36,7 +36,7 @@ def main():
 
     consist.add_unit(type=FreightCar,
                      chassis='4_axle_ng_16px')
-    """
+
     #--------------- pony ----------------------------------------------------------------------
 
     consist = BulkheadFlatCarConsist(roster_id='pony',
