@@ -378,7 +378,6 @@ container_recolour_cargo_maps = (
 # for simplicity of maintenance though, we do just use all the cargo labels for a specific type of cargo sprite
 container_piece_cargo_maps = {
                               'ingots_1': piece_sprites_to_cargo_labels_maps['ingots_1'],
-                              'copper_coils_eye_to_sky_1': piece_sprites_to_cargo_labels_maps['copper_coils_eye_to_sky_1'],
                               'pipes_1': piece_sprites_to_cargo_labels_maps['pipes_1'],
                               }
 
