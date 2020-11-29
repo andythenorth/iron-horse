@@ -1,4 +1,4 @@
-from train import PassengerLuxuryRailcarTrailerCarConsist, PaxRailcarTrailerCar
+from train import PassengerLuxuryRailcarTrailerCarConsist, PaxLuxuryRailcarTrailerCar
 
 
 def main():
@@ -11,7 +11,7 @@ def main():
                                                       intro_date_offset=2,  # introduce later by design
                                                       sprites_complete=True)
 
-    consist.add_unit(type=PaxRailcarTrailerCar,
+    consist.add_unit(type=PaxLuxuryRailcarTrailerCar,
                      chassis='4_axle_solid_express_32px',
                      tail_light='railcar_32px_3')
 
@@ -23,7 +23,7 @@ def main():
                                                       intro_date_offset=1,  # introduce later by design
                                                       sprites_complete=True)
 
-    consist.add_unit(type=PaxRailcarTrailerCar,
+    consist.add_unit(type=PaxLuxuryRailcarTrailerCar,
                      chassis='4_axle_solid_express_32px',
                      tail_light='railcar_32px_3')
 
@@ -35,7 +35,7 @@ def main():
                                                       intro_date_offset=1,  # introduce later by design
                                                       sprites_complete=True)
 
-    consist.add_unit(type=PaxRailcarTrailerCar,
+    consist.add_unit(type=PaxLuxuryRailcarTrailerCar,
                      chassis='4_axle_solid_express_32px',
                      tail_light='railcar_32px_3')
 
@@ -47,6 +47,6 @@ def main():
                                                       intro_date_offset=1,  # introduce later by design
                                                       sprites_complete=True)
 
-    consist.add_unit(type=PaxRailcarTrailerCar,
+    consist.add_unit(type=PaxLuxuryRailcarTrailerCar,
                      chassis='4_axle_solid_express_32px',
                      tail_light='railcar_32px_3')
