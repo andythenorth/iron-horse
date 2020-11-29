@@ -1840,9 +1840,9 @@ class IngotCarConsist(CarConsist):
         self.base_id = 'ingot_car'
         super().__init__(**kwargs)
         self.class_refit_groups = [] # none needed
-        self.label_refits_allowed = ['SLAG']
+        self.label_refits_allowed = ['IRON', 'CSTI', 'STCB']
         self.label_refits_disallowed = [] # none needed
-        self.default_cargos = ['SLAG']
+        self.default_cargos = ['IRON']
         self.loading_speed_multiplier = 2
         self.buy_cost_adjustment_factor = 1.2
         self.weight_factor = 2 # double the default weight
@@ -1854,7 +1854,7 @@ class IngotCarConsist(CarConsist):
         # Graphics configuration
         # custom gestalt due to non-standard load sprites, which are hand coloured, not generated
         self.gestalt_graphics = GestaltGraphicsCustom('vehicle_with_visible_cargo.pynml',
-                                                      cargo_row_map={'SLAG': [0]},
+                                                      cargo_row_map={}, # leave blank, all default to same
                                                       generic_rows=[0],
                                                       unique_spritesets=[['empty', 'flipped', 10], ['loading_0', 'flipped', 40], ['loaded_0', 'flipped', 70],
                                                                          ['empty', 'unflipped', 10], ['loading_0', 'unflipped', 40], ['loaded_0', 'unflipped', 70]])
