@@ -8,7 +8,7 @@ def main():
                                                       base_numeric_id=4680,
                                                       gen=3,
                                                       subtype='U',
-                                                      intro_date_offset=-5,  # introduce early by design
+                                                      intro_date_offset=2,  # introduce later by design
                                                       sprites_complete=True)
 
     consist.add_unit(type=PaxRailcarTrailerCar,
@@ -20,7 +20,7 @@ def main():
                                                       base_numeric_id=4540,
                                                       gen=4,
                                                       subtype='U',
-                                                      intro_date_offset=-5,  # introduce early by design
+                                                      intro_date_offset=1,  # introduce later by design
                                                       sprites_complete=True)
 
     consist.add_unit(type=PaxRailcarTrailerCar,
@@ -32,7 +32,7 @@ def main():
                                                       base_numeric_id=4600,
                                                       gen=5,
                                                       subtype='U',
-                                                      intro_date_offset=-5,  # introduce early by design
+                                                      intro_date_offset=1,  # introduce later by design
                                                       sprites_complete=True)
 
     consist.add_unit(type=PaxRailcarTrailerCar,
@@ -44,7 +44,7 @@ def main():
                                                       base_numeric_id=4610,
                                                       gen=6,
                                                       subtype='U',
-                                                      intro_date_offset=-5,  # introduce early by design
+                                                      intro_date_offset=1,  # introduce later by design
                                                       sprites_complete=True)
 
     consist.add_unit(type=PaxRailcarTrailerCar,
