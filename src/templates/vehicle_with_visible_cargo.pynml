@@ -17,14 +17,16 @@
 <tal:load_state repeat="load_state ['loading', 'loaded']">
     <tal:flip_state repeat="flip_state ['unflipped', 'flipped']">
         switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_cargo_${load_state}_${flip_state}, cargo_type_in_veh) {
-            <tal:cargos repeat="mapping consist.gestalt_graphics.cargo_row_map.items()">
-                <tal:exclude_default_cargo condition="mapping[0] != 'DFLT'">
-                    <!--! cargo_row_map provides a list format to support multiple variants for same cargo label, but that is unused currently (June 2020) so just take first item
-                          the list could be used to provide random cargo sprites for selected labels, but support for that was unused, and was removed by design in 2020 to speed up compiling
-                        -->
-                    ${mapping[0]}: return ${vehicle.id}_ss_${load_state}_${mapping[1][0]}_${flip_state};
-                </tal:exclude_default_cargo>
-            </tal:cargos>
+            <tal:optimise_out_if_only_1_cargo condition="len(consist.gestalt_graphics.cargo_row_map.items()) > 1">
+                <tal:cargos repeat="mapping consist.gestalt_graphics.cargo_row_map.items()">
+                    <tal:exclude_default_cargo condition="mapping[0] != 'DFLT'">
+                        <!--! cargo_row_map provides a list format to support multiple variants for same cargo label, but that is unused currently (June 2020) so just take first item
+                              the list could be used to provide random cargo sprites for selected labels, but support for that was unused, and was removed by design in 2020 to speed up compiling
+                            -->
+                        ${mapping[0]}: return ${vehicle.id}_ss_${load_state}_${mapping[1][0]}_${flip_state};
+                    </tal:exclude_default_cargo>
+                </tal:cargos>
+            </tal:optimise_out_if_only_1_cargo>
             <!--! generic cargos -->
             return ${vehicle.id}_ss_${load_state}_${consist.gestalt_graphics.generic_rows[0]}_${flip_state};
         }
