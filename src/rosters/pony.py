@@ -123,8 +123,6 @@ from vehicles import zorro
 
 
 def main(disabled=False):
-    # migration note; see also render_docs as it may already have methods for getting the tech tree in generation order
-    print('roster engines list should be refactored to use order from role_group_mapping combined with engine generation')
     roster = Roster(id = 'pony',
                     numeric_id = 1,
                     # ELRL, ELNG is mapped to RAIL, NG etc
@@ -192,6 +190,7 @@ def main(disabled=False):
                                                  }
                                       },
 
+                    # this list is manually maintained deliberately, even though it could be mostly automated using tech tree
                     engines = [# branch express
                                # challenger, # for NA roster
                                lark,
