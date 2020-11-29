@@ -1803,7 +1803,7 @@ class HopperCarConsist(HopperCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = 'hopper_car'
         super().__init__(**kwargs)
-        self.default_cargos = polar_fox.constants.default_cargos['hopper'] # !! needs update
+        self.default_cargos = polar_fox.constants.default_cargos['hopper']
 
 
 class HopperCarOreConsist(HopperCarConsistBase):
@@ -1827,7 +1827,7 @@ class HopperCarRockConsist(HopperCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = 'rock_hopper_car'
         super().__init__(**kwargs)
-        self.default_cargos = polar_fox.constants.default_cargos['hopper'] # !! needs updated
+        self.default_cargos = polar_fox.constants.default_cargos['rock_hopper']
         self._joker = True
 
 
