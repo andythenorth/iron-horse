@@ -25,7 +25,7 @@ def main(roster_id):
                      effect_offsets=[(1, 0)],
                      spriterow_num=0)
 
-    consist.description = """"""
-    consist.foamer_facts = """"""
+    consist.description = """A bigger Cheddar Valley, what's not to like about it?"""
+    consist.foamer_facts = """modernised GMD / EMD Class 59, uprated GMD / EMD 710 series prime mover"""
 
     return consist
