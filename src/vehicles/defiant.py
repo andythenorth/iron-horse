@@ -15,15 +15,14 @@ def main(roster_id):
                             gen=6,
                             intro_date_offset=-4,  # let's be a little bit earlier for this one
                             fixed_run_cost_points=280, # run cost nerf as light weight throws the cost too cheap
-                            default_livery_extra_docs_examples=[('COLOUR_MAUVE', 'COLOUR_CREAM')],
-                            sprites_complete=False)
+                            sprites_complete=True)
 
     consist.add_unit(type=DieselEngineUnit,
                      weight=100, # notably low weight
                      vehicle_length=8,
                      spriterow_num=0)
 
-    consist.description = """"""
-    consist.foamer_facts = """"""
+    consist.description = """Amazing what they can do these days isn't it?"""
+    consist.foamer_facts = """Vossloh Eurolight (DRS Class 68)"""
 
     return consist
