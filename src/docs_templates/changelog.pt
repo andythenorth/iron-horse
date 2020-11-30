@@ -3,6 +3,48 @@ Changelog
 
 
 -------------
+2.15.0 Release
+-------------
+
+*Changes*
+
+- added narrow gauge Ingot Carriers
+    - inspired by steel mill ingot buggies, used for casting and transporting ingots
+    - refit to carbon steel, cast iron, pig iron
+    - articulated, can't be flipped
+    - relatively high capacity, slow speed
+- added narrow gauge Coil Buggies
+    - inspired by steel mill coil transport buggies
+    - same refits as Coil Carriers
+    - articulated, can't be flipped
+    - relatively high capacity, slow speed
+- added gen 6 short Container Wagon
+- added narrow gauge Scrap Wagons
+- added narrow gauge Bulkhead Flat Wagons
+- added ammonia to Cryo Tanker refittable cargos
+- set coal as default cargo for Hopper
+- intermodal containers will use random recolour of CC1 to alternate shade
+- added more variety to box container 1CC / 2CC / red combinations
+- improved appearance of gen 4 narrow gauge Tanker
+- improved appearance of cargo sprites for eye-longitudinal coils
+
+
+*Fixes*
+
+- luxury railcar trailers
+    - introduction dates were too early
+    - capacities were too high
+- one angle of roof sprites was too tall for 6/8 vehicles with automated roof sprites
+- fixed errors with gen 4C pax coach pixels
+
+
+*Docs*
+
+- add context to license.pt
+- move license.pt to repo root so it's more easily found
+
+
+-------------
 2.14.0 Release
 -------------
 
