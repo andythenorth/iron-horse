@@ -73,7 +73,7 @@ switch (FEAT_TRAINS, SELF, switch_graphics_tail_light, position_in_consist_from_
     return 2;
 }
 
-<tal:tail_lights repeat="tail_light ['empty', '12px', '16px', '24px', '32px', 'hst_32px_1', 'metro_32px_1', 'railcar_24px_1', 'railcar_32px_1', 'railcar_32px_2', 'railcar_32px_3', 'very_high_speed_32px_1', 'very_high_speed_32px_2']">
+<tal:tail_lights repeat="tail_light ['empty', '8px', '12px', '16px', '24px', '32px', 'hst_32px_1', 'metro_32px_1', 'railcar_24px_1', 'railcar_32px_1', 'railcar_32px_2', 'railcar_32px_3', 'very_high_speed_32px_1', 'very_high_speed_32px_2']">
     switch (FEAT_TRAINS, SELF, switch_graphics_layer_tail_light_${tail_light}, [STORE_TEMP(PALETTE_USE_DEFAULT, 0x100), switch_graphics_tail_light()]) {
         0: return ss_tail_light_${tail_light}_unflipped;
         1: return ss_tail_light_${tail_light}_flipped;

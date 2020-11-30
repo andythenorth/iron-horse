@@ -1833,7 +1833,7 @@ class HopperCarRockConsist(HopperCarConsistBase):
 
 class IngotCarConsist(CarConsist):
     """
-    Dedicated car for steel / iron ingots.  No other refits.
+    Dedicated car for steel / iron ingots. A steel mill ingot buggy, not a standard railcar. No other refits.
     """
 
     def __init__(self, **kwargs):
@@ -1848,8 +1848,8 @@ class IngotCarConsist(CarConsist):
         self.weight_factor = 2 # double the default weight
         self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['freight_core']
         self._joker = True
-        # CC is swapped randomly (player can't choose), but also swap base livery on flip (player can choose
-        self.allow_flip = True
+        # CC is swapped randomly (player can't choose), player can't flip as vehicle is articulated
+        self.allow_flip = False
         self.suppress_animated_pixel_warnings = True
         # Graphics configuration
         # custom gestalt due to non-standard load sprites, which are hand coloured, not generated
@@ -2607,9 +2607,10 @@ class Train(object):
             utils.echo_message(self.consist.id + ' has units with neither chassis nor length properties set')
 
         if self.chassis is not None:
-            # assume that chassis name format is 'foo_bar_ham_eggs_24px' or similar - true as of April 2019
+            # assume that chassis name format is 'foo_bar_ham_eggs_24px' or similar - true as of Nov 2020
             # if chassis name format changes / varies in future, just update the string slice accordingly, safe enough
-            result = (int(self.chassis[-4:-2]))
+            # splits on _, then takes last entry, then slices to remove 'px'
+            result = int(self.chassis.split('_')[-1][0:-2])
             return int(result / 4)
         else:
             return self._vehicle_length
