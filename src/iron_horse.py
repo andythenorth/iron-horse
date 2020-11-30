@@ -30,6 +30,7 @@ from vehicles import bulkhead_flat_cars
 from vehicles import caboose_cars
 from vehicles import carbon_black_hopper_cars
 from vehicles import cement_silo_cars
+from vehicles import coil_buggy_cars
 from vehicles import coil_cars_covered
 from vehicles import coil_cars_uncovered
 from vehicles import covered_hopper_cars
@@ -173,6 +174,7 @@ def main():
     caboose_cars.main()
     carbon_black_hopper_cars.main()
     cement_silo_cars.main()
+    coil_buggy_cars.main()
     coil_cars_covered.main()
     coil_cars_uncovered.main()
     covered_hopper_cars.main()

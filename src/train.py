@@ -1418,6 +1418,34 @@ class CarbonBlackHopperCarConsist(CarConsist):
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(recolour_maps=graphics_constants.carbon_black_hopper_car_livery_recolour_maps)
 
 
+class CoilBuggyCarConsist(CarConsist):
+    """
+    Dedicated (steel mill) buggy car for coils. Not a standard railcar. No other refits.
+    """
+    # note does NOT subclass CoilCarConsistBase - different type of consist
+    def __init__(self, **kwargs):
+        self.base_id = 'coil_buggy_car'
+        super().__init__(**kwargs)
+        self.class_refit_groups = [] # none needed
+        self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label['cold_metal']
+        self.label_refits_disallowed = [] # none needed
+        self.default_cargos = polar_fox.constants.default_cargos['metal']
+        self.loading_speed_multiplier = 2
+        self.buy_cost_adjustment_factor = 1.2
+        self.weight_factor = 2 # double the default weight
+        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['freight_core']
+        self._joker = True
+        # CC is swapped randomly (player can't choose), player can't flip as vehicle is articulated
+        self.allow_flip = False
+        # Graphics configuration
+        # custom gestalt due to non-standard load sprites, which are hand coloured, not generated
+        self.gestalt_graphics = GestaltGraphicsCustom('vehicle_with_visible_cargo.pynml',
+                                                      cargo_row_map={}, # leave blank, all default to same
+                                                      generic_rows=[0],
+                                                      unique_spritesets=[['empty', 'flipped', 10], ['loading_0', 'flipped', 40], ['loaded_0', 'flipped', 40],
+                                                                         ['empty', 'unflipped', 10], ['loading_0', 'unflipped', 40], ['loaded_0', 'unflipped', 40]])
+
+
 class CoilCarConsistBase(CarConsist):
     """
     Coil car - for finished metals (steel, copper etc).
@@ -3310,6 +3338,16 @@ class FreightCar(TrainCar):
         # magic to set freight car capacity subject to length
         base_capacity = self.consist.roster.freight_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
         self.capacity = (self.vehicle_length * base_capacity)
+
+
+class CoilBuggyCar(FreightCar):
+    """
+    Coil buggy car. This subclass only exists to set the capacity.
+    """
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # just double whatever is set by the init, what could go wrong? :)
+        self.capacity = 2 * self.capacity
 
 
 class IngotCar(FreightCar):
