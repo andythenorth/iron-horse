@@ -69,7 +69,7 @@ def main():
     consists = iron_horse.get_consists_in_buy_menu_order()
 
     header_items = ['header', 'cargo_table', 'railtype_table', 'spriteset_templates', 'tail_lights', 'recolour_sprites',
-                    'spritelayer_cargos_intermodal_cars', #'spritelayer_cargos_vehicle_transporter_cars',
+                    'spritelayer_cargos_intermodal_cars', 'spritelayer_cargos_vehicle_transporter_cars',
                     'procedures_alternative_var_41', 'procedures_alternative_var_random_bits',
                     'procedures_capacity', 'procedures_colour_randomisation_strategies',
                     'procedures_haulage_bonus', 'procedures_rulesets', 'procedures_box_car_with_opening_doors',

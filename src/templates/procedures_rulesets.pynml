@@ -1,4 +1,3 @@
-<tal:comment replace="nothing">
 <tal:ruleset define="default 0; first 1; last 2;">
     // vehicle transporter 2 unit position switches
     <!--! if 1 unit in sequence -->
@@ -22,7 +21,6 @@
         return switch_graphics_vehicle_transporter_ruleset_modulo_num_units_in_consist_2;
     }
 </tal:ruleset>
-</tal:comment>
 
 <tal:ruleset define="default 0; first 1; last 2;">
     // intermodal platform 2 unit position switches
