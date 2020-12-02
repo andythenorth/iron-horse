@@ -1,4 +1,4 @@
-from train import MailEngineRailcarConsist, ElectroDieselRailcarMailUnit
+from train import MailEngineRailcarConsist, ElectricRailcarMailUnit
 
 
 def main(roster_id):
@@ -9,7 +9,6 @@ def main(roster_id):
                                        role='mail_railcar',
                                        role_child_branch_num=2,
                                        power=820,
-                                       power_by_railtype={'RAIL': 450, 'ELRL': 820}, # bit nerfed on diesel, by design
                                        pantograph_type='z-shaped-single-with-base',
                                        easter_egg_haulage_speed_bonus=True,
                                        use_3_unit_sets=True,
@@ -17,12 +16,12 @@ def main(roster_id):
                                        sprites_complete=True,
                                        intro_date_offset=-3)  # introduce early by design
 
-    consist.add_unit(type=ElectroDieselRailcarMailUnit,
-                     weight=37, # higher weight than previous gen as bi-mode
+    consist.add_unit(type=ElectricRailcarMailUnit,
+                     weight=36,
                      chassis='railcar_32px',
                      tail_light='railcar_32px_2')
 
-    consist.description = """The ultimate in self-propelled mail-by-rail."""
-    consist.foamer_facts = """BR Class 325, Orion Class 769 <i>FLEX</i>"""
+    consist.description = """The last word in mail-by-rail."""
+    consist.foamer_facts = """BR Class 325""" # was ", Orion Class 769 <i>FLEX</i>" but no longer electro-diesel eh
 
     return consist
