@@ -8,6 +8,7 @@ def main(roster_id):
                                        name='Plastic Postbox',
                                        role='mail_railcar',
                                        role_child_branch_num=1,
+                                       replacement_consist_id='pylon', # consolidates to electro-diesel with Pylon
                                        power=560,
                                        gen=5,
                                        sprites_complete=True,

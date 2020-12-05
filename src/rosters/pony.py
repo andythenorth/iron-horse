@@ -62,7 +62,6 @@ from vehicles import lark
 from vehicles import lemon
 from vehicles import little_bear
 from vehicles import longwater
-from vehicles import mail_rail
 from vehicles import magnum_70
 from vehicles import merlion
 from vehicles import merrylegs
@@ -285,7 +284,6 @@ def main(disabled=False):
                                gowsty,
                                scooby,
                                plastic_postbox,
-                               mail_rail,
                                # electric railcars
                                athena,
                                geronimo,
