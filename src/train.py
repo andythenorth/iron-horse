@@ -3072,6 +3072,18 @@ class ElectroDieselRailcarPaxUnit(ElectroDieselRailcarBaseUnit):
         self.capacity = self.vehicle_length * base_capacity
 
 
+class ElectroDieselLuxuryRailcarPaxUnit(ElectroDieselRailcarBaseUnit):
+    """
+    Unit for a pax electro-diesel luxury railcar.  Just a sparse subclass to set capacity.
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # magic to set capacity subject to length
+        base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[self.consist.base_track_type][self.consist.gen - 1]
+        self.capacity = int(self.vehicle_length * base_capacity * 0.75)
+
+
 class ElectricRailcarBaseUnit(Train):
     """
     Unit for an electric railcar.  Capacity set in subclasses
