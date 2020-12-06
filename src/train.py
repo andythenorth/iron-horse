@@ -244,7 +244,7 @@ class Consist(object):
                                        'hst': {'hst': [1]},
                                        'jokers': {'gronk!': [-1, -2], 'express': [-1], 'heavy_express': [-1, -2, -3], 'freight': [-1, -2], 'branch_freight': [-1], 'heavy_freight': [-1, -2, -3], 'snoughplough!': [-1]},
                                        'metro': {'mail_metro': [1], 'pax_metro': [1]},
-                                       'railcar': {'mail_railcar': [1, 2], 'pax_railcar': [1, 2]},
+                                       'railcar': {'mail_railcar': [1, 2, -1, -2], 'pax_railcar': [1, 2]},
                                        'very_high_speed': {'very_high_speed': [1, 2]},
                                        'universal': {'universal': [1]}}
         if self.gen == 1:
@@ -759,6 +759,27 @@ class MailEngineCabbageDVTConsist(MailEngineConsist):
                                     'pax': {'default': 0, 'first': 0, 'last': 1, 'special': 0}}
         self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings,
                                                                      consist_ruleset='driving_cab_cars')
+
+
+class MailEngineCargoSprinterCabEngineConsist(MailEngineConsist):
+    """
+    Consist for a cab motor unit for Cargo Sprinter express freight unit.
+    This would usually be set as a dual-headed engine, no sprites for a single unit (containers get too complicated)
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # non-standard cite
+        self._cite = "Arabella Unit"
+        """
+        # !! this type needs new graphics processing and/or template rules if it is to handle masking containers around the cabs
+        # Graphics configuration
+        # 1 livery as can't be flipped, 1 spriterow may be left blank for compatibility with Gestalt (TBC)
+        # all position variants resolve to same spriterow
+        spriterow_group_mappings = {'pax': {'default': 0, 'first': 0, 'last': 0, 'special': 0}}
+        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings, consist_ruleset="pax_cars",
+                                                                     pantograph_type=self.pantograph_type)
+        """
 
 
 class MailEngineMetroConsist(MailEngineConsist):
