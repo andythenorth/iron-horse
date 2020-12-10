@@ -17,6 +17,7 @@ class GestaltGraphics(object):
         # specific alt livery for specific company colour choices
         # this is only used by engines as of July 2020, but we provide a default value here to avoid requiring getattr() in many places, which was masking errors
         self.alternative_cc_livery = None # over-ride as needed in subclasses
+        self.flag_switch_set_layers_register_more_sprites = False # over-ride as needed in subclasses
 
     @property
     def nml_template(self):
@@ -263,6 +264,7 @@ class GestaltGraphicsIntermodal(GestaltGraphics):
         self.pipelines = pipelines.get_pipelines(['extend_spriterows_for_composited_sprites_pipeline'])
         self.colour_mapping_switch = '_switch_colour_mapping'
         self.consist_ruleset = kwargs.get('consist_ruleset', None)
+        self.flag_switch_set_layers_register_more_sprites = True
         # intermodal cars are asymmetric, sprites are drawn in second col, first col needs populated, map is [col 1 dest]: [col 2 source]
         # two liveries
         self.asymmetric_row_map = {1: 1, 2: 2, # default: default
@@ -342,6 +344,7 @@ class GestaltGraphicsVehicleTransporter(GestaltGraphics):
         # we use the composited sprites pipeline so we can make use of chassis compositing
         self.pipelines = pipelines.get_pipelines(['extend_spriterows_for_composited_sprites_pipeline'])
         self.colour_mapping_switch = '_switch_colour_mapping'
+        self.flag_switch_set_layers_register_more_sprites = True
         # vehicle transporter cars are asymmetric, sprites are drawn in second col, first col needs populated, map is [col 1 dest]: [col 2 source]
         # two liveries
         self.asymmetric_row_map = {1: 1, 2: 2, # default: default
@@ -579,14 +582,16 @@ class GestaltGraphicsCustom(GestaltGraphics):
         - this could get support for body recolouring if needed
         - this should not get support for compositing custom rows, TMWFTLB, just draw them in the vehicle spritesheet
     """
-    def __init__(self, _nml_template, cargo_row_map=None, generic_rows=None, unique_spritesets=None):
+    def __init__(self, _nml_template, cargo_row_map=None, generic_rows=None, unique_spritesets=None, cargo_label_mapping=None, flag_switch_set_layers_register_more_sprites=False):
         super().__init__()
         self.pipelines = pipelines.get_pipelines(['pass_through_pipeline'])
         # options
+        self.flag_switch_set_layers_register_more_sprites = flag_switch_set_layers_register_more_sprites
         self._nml_template = _nml_template
         self._cargo_row_map = cargo_row_map
         self._generic_rows = generic_rows
         self._unique_spritesets = unique_spritesets
+        self._cargo_label_mapping = cargo_label_mapping
 
     @property
     def generic_rows(self):
@@ -607,3 +612,9 @@ class GestaltGraphicsCustom(GestaltGraphics):
     @property
     def unique_spritesets(self):
         return self._unique_spritesets
+
+    @property
+    def cargo_label_mapping(self):
+        return self._cargo_label_mapping
+
+

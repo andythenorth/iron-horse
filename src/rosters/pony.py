@@ -17,7 +17,7 @@ from vehicles import brenner_middle
 from vehicles import bright_country
 from vehicles import buffalo
 from vehicles import captain_steel
-from vehicles import cargo_sprinter_cab
+from vehicles import cargo_sprinter
 from vehicles import carrack
 #from vehicles import challenger # for NA roster
 from vehicles import cheddar_valley
@@ -275,6 +275,8 @@ def main(disabled=False):
                                chuggypig,
                                magnum_70,
                                snowplough_pony_gen_2,
+                               # cargo sprinter
+                               cargo_sprinter,
                                # auto-coach (only one as autoreplace can't handle mixed cargo articulated consists)
                                auto_coach_pony_gen_2,
                                # diesel railcars
@@ -299,8 +301,6 @@ def main(disabled=False):
                                sunshine_coast,
                                olympic,
                                bright_country,
-                               # cargo sprinter
-                               cargo_sprinter_cab,
                                # brit high speed pax
                                firebird,
                                blaze,

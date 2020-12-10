@@ -1,0 +1,76 @@
+<tal:include metal:use-macro="load: spriteset_templates_purchase.pynml" />
+
+<!--! 'reversed' is random reversal on construction, depending on vehicle random bits
+      'flipped' is user flipping vehicle in depot
+      don't conflate them :) -->
+
+// graphics chain for containers
+<!--! pseudo cargo checking code
+    1. check known labels -> named random switch
+    2. check known classes -> named random switch
+    3. fall back to random switch for box
+-->
+
+// check generic cargo classes
+// bulk class is explicitly not checked as there are no meaningful default bulk sprites
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_containers_check_cargo_class_liquid, cargo_classes & bitmask(CC_LIQUID)) {
+    0: switch_spritelayer_cargos_intermodal_cars_random_${consist.floor_height_type}_box_DFLT_${4 * vehicle.vehicle_length}px;
+    return switch_spritelayer_cargos_intermodal_cars_random_${consist.floor_height_type}_tank_DFLT_${4 * vehicle.vehicle_length}px;
+}
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_containers_check_cargo_class_refrigerated, cargo_classes & bitmask(CC_REFRIGERATED)) {
+    0: ${vehicle.id}_switch_graphics_containers_check_cargo_class_liquid;
+    return switch_spritelayer_cargos_intermodal_cars_random_${consist.floor_height_type}_reefer_DFLT_${4 * vehicle.vehicle_length}px;
+}
+
+// check explicit cargo labels
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_containers_check_cargo_label, cargo_type_in_veh) {
+    <tal:cargo_label_container_type_mapping repeat="cargo_label consist.gestalt_graphics.cargo_label_mapping.items()">
+        ${cargo_label[0]}: switch_spritelayer_cargos_intermodal_cars_random_${consist.floor_height_type}_${cargo_label[1]}_${4 * vehicle.vehicle_length}px;
+    </tal:cargo_label_container_type_mapping>
+    return ${vehicle.id}_switch_graphics_containers_check_cargo_class_refrigerated;
+}
+
+<!--! load state is assumed to be all or nothing - any cargo = full load of containers -->
+<!--! !! might want to handle intermediate load states when multiple containers are used ?? 50:50 -->
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_containers_check_cargo, cargo_count) {
+        0: return ss_spritelayer_cargos_intermodal_cars_empty;
+    return ${vehicle.id}_switch_graphics_containers_check_cargo_label;
+}
+
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_containers, STORE_TEMP(switch_intermodal_by_company_colour_1cc_to_1cc(), 0x100)) {
+    return ${vehicle.id}_switch_graphics_containers_check_cargo;
+}
+
+// base platform graphics chain
+spriteset(${vehicle.id}_ss_unflipped_unreversed, "${graphics_path}${consist.id}.png") {
+    ${vehicle.get_spriteset_template_name('unreversed', 'unflipped', 10)}
+}
+
+// switch layers: base platform / containers
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, getbits(extra_callback_info1, 8, 8)) {
+    0: return ${vehicle.id}_ss_unflipped_unreversed;
+    1: return ${vehicle.id}_switch_graphics_containers;
+}
+
+// buy menu graphics chain
+spriteset(${vehicle.id}_ss_vehicle_purchase, "${graphics_path}${consist.id}.png") {
+    spriteset_template_purchase_${vehicle.id}(10)
+}
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase, 0) {
+    return ${vehicle.id}_ss_vehicle_purchase;
+}
+
+<tal:include metal:use-macro="load: graphics_switches.pynml" />
+
+<!--! dedicated colour remapping of second livery, with user flip support but, no randomisation -->
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_colour_mapping, vehicle_is_flipped) {
+    1: return base_sprite_2cc + 16 * company_colour1 + company_colour2; <!--! swap 1CC and 2CC -->
+    return base_sprite_2cc + 16 * company_colour2 + company_colour1; <!--! apply regular 1CC and 2CC -->
+}
+
+<tal:optional_capacity_switches condition="vehicle.has_cargo_capacity">
+    <tal:include metal:use-macro="load: capacity_switches.pynml" />
+</tal:optional_capacity_switches>
+
+<tal:include metal:use-macro="load: properties.pynml" />
+

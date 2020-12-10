@@ -1,26 +1,29 @@
-from train import EngineConsist, CargoSprinter
+from train import MailEngineCargoSprinterEngineConsist, DieselRailcarMailUnit
 
+# implemented as dual headed, it really is just the nicer way to build these units (esp. when adding container wagons)
+
+# NOTE that cargo sprinter will NOT randomise containers on load as of Dec 2020 - there is a bug with rear unit running unwanted triggers and re-randomising in depots etc
 
 def main(roster_id):
-    # cargo_sprinter is full of special cases, lots of yak-shaving to get it done
-    consist = EngineConsist(roster_id=roster_id,
-                            id='cargo_sprinter',
-                            base_numeric_id=100,
-                            name='Cargo Sprinter',
-                            power=1000,
-                            # cargo sprinter is hard to balance stats for, it needs to be fast, cheap, powerful
-                            # after experiments, it's now balanced suited to express intermodal, reaching top speed quickly
-                            # it's not intended for very marginal routes to compete with RVs
-                            # top speed is limited to 100mph for realism, and to match other freights, but this might be worth reconsidering
-                            # it's also balanced to add capacity by adding more cargo sprinter units,
-                            # rather than adding capacity by adding trailing wagons
-                            # it doesn't make a good loco for unpowered consists, although one or two trailing wagons should be ok per unit
-                            intro_date=1999)  # explicit intro date by design
+    consist = MailEngineCargoSprinterEngineConsist(roster_id=roster_id,
+                                                   id='cargo_sprinter',
+                                                   base_numeric_id=3000,
+                                                   name='Cargo Sprinter',
+                                                   role='mail_railcar',  # abuse of existing railcar role for convenience
+                                                   role_child_branch_num=-1,
+                                                   dual_headed=True,
+                                                   power=1400,
+                                                   gen=6,
+                                                   intro_date_offset=-3,  # introduce earlier than gen epoch by design
+                                                   sprites_complete=True)
 
-    consist.add_unit(type=CargoSprinter,
-                     weight=46,
-                     vehicle_length=7,
-                     capacity=36,  # matched to 1.5x standard Road Hog and Squid containers
-                     repeat=2)
+    consist.add_unit(type=DieselRailcarMailUnit,
+                     weight=34,
+                     spriterow_num=0,
+                     chassis='4_axle_solid_express_32px',
+                     tail_light='railcar_32px_2')
+
+    consist.description = """"""
+    consist.foamer_facts = """"""
 
     return consist

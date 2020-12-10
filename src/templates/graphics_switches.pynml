@@ -6,7 +6,7 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_set_layers_register_more_sprites
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics, getbits(extra_callback_info1, 8, 8)) {
     0: return ${vehicle.id}_switch_set_layers_register_more_sprites;
     <!--! this condition is getting ugly and could be abstracted to the gestalt via some property like 'reserved_layers' or so -->
-    <tal:conditional_extra_layer condition="(consist.pantograph_type is not None) or (consist.gestalt_graphics.__class__.__name__ in ['GestaltGraphicsIntermodal', 'GestaltGraphicsVehicleTransporter'])">
+    <tal:conditional_extra_layer condition="(consist.pantograph_type is not None) or consist.gestalt_graphics.flag_switch_set_layers_register_more_sprites">
         <!--! if there are pantographs or containers to draw we will handle that later in the graphics chain,
               but we need to reserve layer 1 for the pantographs or containers as well as layer 0 for the vehicle
               note that this means pantographs and containers are mutually exclusive -->

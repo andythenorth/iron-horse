@@ -94,6 +94,7 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
         cost_factor:                    ${consist.buy_cost}; // CB used as it is capped to max 32k, prop is only 255
         running_cost_factor:            ${consist.running_cost}; // CB used as it is capped to max 32k, prop is only 255
         <tal:conditional_random_trigger condition="vehicle.random_trigger_switch is not None">
+            <!--! NOTE that dual headed units should avoid random triggers as of Dec 2020 - there is an undiagnosed with bug rear unit running unwanted triggers and re-randomising in depots etc -->
             random_trigger:                 ${vehicle.id + vehicle.random_trigger_switch};
         </tal:conditional_random_trigger>
         <tal:colour_mapping_cb switch="vehicle.requires_colour_mapping_cb">

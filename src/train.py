@@ -761,25 +761,35 @@ class MailEngineCabbageDVTConsist(MailEngineConsist):
                                                                      consist_ruleset='driving_cab_cars')
 
 
-class MailEngineCargoSprinterCabEngineConsist(MailEngineConsist):
+class MailEngineCargoSprinterEngineConsist(MailEngineConsist):
     """
     Consist for a cab motor unit for Cargo Sprinter express freight unit.
-    This would usually be set as a dual-headed engine, no sprites for a single unit (containers get too complicated)
     """
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # non-standard cite
         self._cite = "Arabella Unit"
-        """
+        """"
         # !! this type needs new graphics processing and/or template rules if it is to handle masking containers around the cabs
         # Graphics configuration
         # 1 livery as can't be flipped, 1 spriterow may be left blank for compatibility with Gestalt (TBC)
         # all position variants resolve to same spriterow
-        spriterow_group_mappings = {'pax': {'default': 0, 'first': 0, 'last': 0, 'special': 0}}
-        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings, consist_ruleset="pax_cars",
-                                                                     pantograph_type=self.pantograph_type)
+        spriterow_group_mappings = {'mail': {'default': 0, 'first': 1, 'last': 2, 'special': 3}}
+        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings,
+                                                                     consist_ruleset='railcars_3_unit_sets')
         """
+        # Graphics configuration
+        # NOTE that cargo sprinter will NOT randomise containers on load as of Dec 2020 - there is a bug with rear unit running unwanted triggers and re-randomising in depots etc
+        self.gestalt_graphics = GestaltGraphicsCustom('vehicle_cargo_sprinter.pynml',
+                                                      flag_switch_set_layers_register_more_sprites=True,
+                                                      cargo_label_mapping=GestaltGraphicsIntermodal().cargo_label_mapping)
+
+    @property
+    # account for variable floor height
+    def floor_height_type(self):
+        # !! cargo sprinters all default currently, extend as needed
+        return 'default'
 
 
 class MailEngineMetroConsist(MailEngineConsist):
@@ -846,7 +856,7 @@ class MailEngineRailcarConsist(MailEngineConsist):
     def equivalent_ids_alt_var_41(self):
         # where var 14 checks consecutive chain of a single ID, I provided an alternative checking a list of IDs
         # this is intended for pax railcars, but mail railcars share templating in some cases, so stub in this result to prevent unwanted behaviour
-        # there is no support for mail railcars combining with anything other than their own ID, this is just a compatibility stub
+        # mail railcars generally do not combine with anything other than their own ID, this is just a compatibility stub
         result = []
         result.append(self.base_numeric_id)
         # the list requires 16 entries as the nml check has 16 switches, fill out to empty list entries with '-1', which won't match any IDs
