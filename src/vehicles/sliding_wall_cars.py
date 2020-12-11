@@ -52,6 +52,23 @@ def main():
 
 
     consist = SlidingWallCarConsist(roster_id='pony',
+                            base_numeric_id=5190,
+                            gen=5,
+                            subtype='D',
+                            sprites_complete=False)
+
+    consist.add_unit(type=FreightCar,
+                     suppress_roof_sprite=True, # non-standard roof for this wagon
+                     chassis='2_axle_1cc_filled_20px',
+                     spriterow_num=0)
+
+    consist.add_unit(type=FreightCar,
+                     suppress_roof_sprite=True, # non-standard roof for this wagon
+                     chassis='2_axle_1cc_filled_20px',
+                     spriterow_num=2)
+
+
+    consist = SlidingWallCarConsist(roster_id='pony',
                             base_numeric_id=330,
                             gen=6,
                             subtype='B',

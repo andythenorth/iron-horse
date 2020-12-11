@@ -53,6 +53,7 @@ STR_NAME_SUFFIX_STEAM                                           :Steam
 STR_NAME_SUFFIX_SMALL                                           :Small
 STR_NAME_SUFFIX_MEDIUM                                          :Medium
 STR_NAME_SUFFIX_LARGE                                           :Large
+STR_NAME_SUFFIX_TWIN                                            :Twin
 
 # wagon class suffixes
 # as of Jan 2019 these are switched from en-us to en-gb

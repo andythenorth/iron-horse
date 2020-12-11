@@ -1324,6 +1324,8 @@ class CarConsist(Consist):
             subtype_str = 'STR_NAME_SUFFIX_MEDIUM'
         elif self.subtype == 'C':
             subtype_str = 'STR_NAME_SUFFIX_LARGE'
+        elif self.subtype == 'D':
+            subtype_str = 'STR_NAME_SUFFIX_TWIN'
         return subtype_str
 
     @property
