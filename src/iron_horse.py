@@ -63,6 +63,7 @@ from vehicles import railcar_passenger_trailer_cars
 from vehicles import reefer_cars
 from vehicles import rock_hopper_cars
 from vehicles import scrap_metal_cars
+from vehicles import sliding_roof_cars
 from vehicles import sliding_wall_cars
 from vehicles import stake_cars
 from vehicles import silo_cars
@@ -208,6 +209,7 @@ def main():
     silo_cars.main()
     scrap_metal_cars.main()
     slag_ladle_cars.main()
+    sliding_roof_cars.main()
     sliding_wall_cars.main()
     stake_cars.main()
     tank_cars.main()

@@ -2415,6 +2415,29 @@ class SlidingWallCarConsist(CarConsist):
                                                                   recolour_maps=graphics_constants.sliding_wall_livery_recolour_maps)
 
 
+class SlidingRoofCarConsist(CarConsist):
+    """
+    Sliding roof van - sfins2 holdall and similar - same refits as flat, not van (experimental)
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = 'sliding_roof_car'
+        super().__init__(**kwargs)
+        self.class_refit_groups = ['flatbed_freight']
+        self.label_refits_allowed = ['GOOD']
+        self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label['non_flatbed_freight']
+        self.default_cargos = polar_fox.constants.default_cargos['flat']
+        self.buy_cost_adjustment_factor = 1.2
+        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['non_core_wagons']
+        self._joker = True
+        # allow flipping, used to flip company colour
+        self.allow_flip = True
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsVisibleCargo(body_recolour_map=graphics_constants.sliding_roof_car_body_recolour_map,
+                                                            piece='flat',
+                                                            has_cover=True)
+
+
 class StakeCarConsist(CarConsist):
     """
     Specialist transporter for logs, pipes and similar

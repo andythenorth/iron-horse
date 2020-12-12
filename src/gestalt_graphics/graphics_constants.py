@@ -15,6 +15,7 @@ spritesheet_width = 425
 # --- Body Recolour Maps --- #
 
 tarpaulin_car_body_recolour_map = {136: 5, 137: 7, 138: 8, 139: 9, 140: 10, 141: 12, 142: 13, 143: 15}
+sliding_roof_car_body_recolour_map = {40: 4, 41: 5, 42: 6, 43: 7, 44: 20, 45: 21, 46: 22, 47: 13}
 
 # --- Cargo Livery Recolour Maps --- #
 # label order matters, so tuples are used not dicts
