@@ -175,7 +175,7 @@ default_cargos = {
                   'product_tank': ['ACID', 'RFPR', 'CHLO'],
                   'reefer': ['FOOD'],
                   'silo': ['CMNT', 'BDMT', 'RFPR', 'QLME', 'FMSP'],
-                  'stake': ['WOOD'],
+                  'stake_flat': ['WOOD'],
                   'supplies': ['ENSP'],
                   'tank': ['OIL_', 'CTAR', 'SULP', 'KAOL', 'RUBR'],
                   }
@@ -222,7 +222,6 @@ piece_vehicle_type_to_sprites_maps = {
                                                'lumber_planks_1', 'nuts_1', 'paper_coils_eye_to_sky_1', 'pipes_1',
                                                'steel_coils_eye_to_sky_1', 'steel_wire_rod_1',
                                                'tarps_grey_1', 'tarps_blue_1', 'tarps_gold_1', 'tarps_red_1'],
-                                      'stake': ['logs_1', 'lumber_planks_1', 'pipes_1', 'tarps_grey_1'], # tarps_grey_1 for DFLT
                                       'tree_length_logs': ['logs_2'],
                                      }
 

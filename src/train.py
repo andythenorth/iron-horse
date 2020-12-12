@@ -2460,6 +2460,26 @@ class SlidingWallCarConsist(CarConsist):
                                                                   recolour_maps=graphics_constants.sliding_wall_livery_recolour_maps)
 
 
+class StakeFlatCarConsist(CarConsist):
+    """
+    Variant of flat wagon with side stakes - refits same as flat wagon
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = 'stake_flat_car'
+        super().__init__(**kwargs)
+        self.class_refit_groups = ['flatbed_freight']
+        self.label_refits_allowed = ['GOOD']
+        self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label['non_flatbed_freight']
+        self.default_cargos = polar_fox.constants.default_cargos['stake_flat']
+        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['non_core_wagons']
+        self._joker = True
+        # allow flipping, used to flip company colour
+        self.allow_flip = True
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsVisibleCargo(piece='flat')
+
+
 class TankCarConsistBase(CarConsist):
     """
     All non-edible liquid cargos

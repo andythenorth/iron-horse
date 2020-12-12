@@ -64,10 +64,11 @@ from vehicles import railcar_passenger_trailer_cars
 from vehicles import reefer_cars
 from vehicles import rock_hopper_cars
 from vehicles import scrap_metal_cars
-from vehicles import sliding_roof_cars
-from vehicles import sliding_wall_cars
 from vehicles import silo_cars
 from vehicles import slag_ladle_cars
+from vehicles import sliding_roof_cars
+from vehicles import sliding_wall_cars
+from vehicles import stake_flat_cars
 from vehicles import tank_cars
 from vehicles import tarpaulin_cars
 from vehicles import vehicle_parts_box_cars
@@ -212,6 +213,7 @@ def main():
     slag_ladle_cars.main()
     sliding_roof_cars.main()
     sliding_wall_cars.main()
+    stake_flat_cars.main()
     tank_cars.main()
     tarpaulin_cars.main()
     torpedo_cars.main()
