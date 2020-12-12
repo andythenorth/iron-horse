@@ -1980,6 +1980,28 @@ class LivestockCarConsist(CarConsist):
                                                                   recolour_maps=graphics_constants.livestock_livery_recolour_maps)
 
 
+class LogCarConsist(CarConsist):
+    """
+    Specialist transporter for logs
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = 'log_car'
+        super().__init__(**kwargs)
+        self.class_refit_groups = [] # no classes, use explicit labels
+        # limited refits by design eh
+        self.label_refits_allowed = ['WOOD']
+        self.label_refits_disallowed = []
+        self.default_cargos = ['WOOD']
+        self.loading_speed_multiplier = 2
+        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['non_core_wagons']
+        # allow flipping, used to flip company colour
+        self.allow_flip = True
+        self.cc_num_to_randomise = 2
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsVisibleCargo(piece='tree_length_logs')
+
+
 class MailCarConsist(CarConsist):
     """
     Mail cars - also handle express freight, valuables.
@@ -2391,30 +2413,6 @@ class SlagLadleCarConsist(CarConsist):
                                                       unique_spritesets=[['empty', 'flipped', 10], ['loading_0', 'flipped', 40], ['loaded_0', 'flipped', 70],
                                                                          ['empty', 'unflipped', 10], ['loading_0', 'unflipped', 40], ['loaded_0', 'unflipped', 70]])
 
-class SlidingWallCarConsist(CarConsist):
-    """
-    Sliding wall van - (cargowagon, habfiss, thrall, pullman all-door car etc) - same refits as box car.
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = 'sliding_wall_car'
-        super().__init__(**kwargs)
-        self.class_refit_groups = ['packaged_freight']
-        self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label['box_freight']
-        self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label['non_freight_special_cases']
-        self.default_cargos = polar_fox.constants.default_cargos['box']
-        self.buy_cost_adjustment_factor = 1.2
-        self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['non_core_wagons']
-        # allow flipping, used to flip company colour
-        self.allow_flip = True
-        # type-specific wagon colour randomisation
-        self.auto_colour_randomisation_strategy_num = 1 # single base colour unless flipped
-        # Graphics configuration
-        self.roof_type = 'freight'
-        self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(id_base='sliding_wall_car',
-                                                                  recolour_maps=graphics_constants.sliding_wall_livery_recolour_maps)
-
-
 class SlidingRoofCarConsist(CarConsist):
     """
     Sliding roof van - sfins2 holdall and similar - same refits as flat, not van (experimental)
@@ -2438,26 +2436,28 @@ class SlidingRoofCarConsist(CarConsist):
                                                             has_cover=True)
 
 
-class LogCarConsist(CarConsist):
+class SlidingWallCarConsist(CarConsist):
     """
-    Specialist transporter for logs
+    Sliding wall van - (cargowagon, habfiss, thrall, pullman all-door car etc) - same refits as box car.
     """
 
     def __init__(self, **kwargs):
-        self.base_id = 'log_car'
+        self.base_id = 'sliding_wall_car'
         super().__init__(**kwargs)
-        self.class_refit_groups = [] # no classes, use explicit labels
-        # limited refits by design eh
-        self.label_refits_allowed = ['WOOD']
-        self.label_refits_disallowed = []
-        self.default_cargos = ['WOOD']
-        self.loading_speed_multiplier = 2
+        self.class_refit_groups = ['packaged_freight']
+        self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label['box_freight']
+        self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label['non_freight_special_cases']
+        self.default_cargos = polar_fox.constants.default_cargos['box']
+        self.buy_cost_adjustment_factor = 1.2
         self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['non_core_wagons']
         # allow flipping, used to flip company colour
         self.allow_flip = True
-        self.cc_num_to_randomise = 2
+        # type-specific wagon colour randomisation
+        self.auto_colour_randomisation_strategy_num = 1 # single base colour unless flipped
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsVisibleCargo(piece='tree_length_logs')
+        self.roof_type = 'freight'
+        self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(id_base='sliding_wall_car',
+                                                                  recolour_maps=graphics_constants.sliding_wall_livery_recolour_maps)
 
 
 class TankCarConsistBase(CarConsist):
