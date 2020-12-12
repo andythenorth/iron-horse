@@ -2438,19 +2438,19 @@ class SlidingRoofCarConsist(CarConsist):
                                                             has_cover=True)
 
 
-class StakeCarConsist(CarConsist):
+class LogCarConsist(CarConsist):
     """
-    Specialist transporter for logs, pipes and similar
+    Specialist transporter for logs
     """
 
     def __init__(self, **kwargs):
-        self.base_id = 'stake_car'
+        self.base_id = 'log_car'
         super().__init__(**kwargs)
         self.class_refit_groups = [] # no classes, use explicit labels
         # limited refits by design eh
-        self.label_refits_allowed = ['WOOD', 'WDPR', 'PIPE'] # move to Polar Fox (maybe??)
+        self.label_refits_allowed = ['WOOD']
         self.label_refits_disallowed = []
-        self.default_cargos = polar_fox.constants.default_cargos['stake']
+        self.default_cargos = ['WOOD']
         self.loading_speed_multiplier = 2
         self._intro_date_days_offset = global_constants.intro_date_offsets_by_role_group['non_core_wagons']
         # allow flipping, used to flip company colour

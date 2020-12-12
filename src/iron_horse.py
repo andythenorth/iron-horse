@@ -49,6 +49,7 @@ from vehicles import hst_passenger_cars
 from vehicles import ingot_cars
 from vehicles import intermodal_cars
 from vehicles import livestock_cars
+from vehicles import log_cars
 from vehicles import luxury_passenger_cars
 from vehicles import mail_cars
 from vehicles import torpedo_cars
@@ -65,7 +66,6 @@ from vehicles import rock_hopper_cars
 from vehicles import scrap_metal_cars
 from vehicles import sliding_roof_cars
 from vehicles import sliding_wall_cars
-from vehicles import stake_cars
 from vehicles import silo_cars
 from vehicles import slag_ladle_cars
 from vehicles import tank_cars
@@ -194,6 +194,7 @@ def main():
     ingot_cars.main()
     intermodal_cars.main()
     livestock_cars.main()
+    log_cars.main()
     luxury_passenger_cars.main()
     mail_cars.main()
     ore_hopper_cars.main()
@@ -211,7 +212,6 @@ def main():
     slag_ladle_cars.main()
     sliding_roof_cars.main()
     sliding_wall_cars.main()
-    stake_cars.main()
     tank_cars.main()
     tarpaulin_cars.main()
     torpedo_cars.main()

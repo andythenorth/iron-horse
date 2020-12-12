@@ -84,6 +84,7 @@ STR_NAME_SUFFIX_HST_PASSENGER_CAR                               :Passenger Coach
 STR_NAME_SUFFIX_INGOT_CAR                                       :Ingot Carriers
 STR_NAME_SUFFIX_INTERMODAL_CAR                                  :Container Wagon
 STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Livestock Wagon
+STR_NAME_SUFFIX_LOG_CAR                                         :Timber Wagon
 STR_NAME_SUFFIX_LUXURY_PASSENGER_CAR                            :Luxury Passenger Coach
 STR_NAME_SUFFIX_LUXURY_PASSENGER_RAILCAR_TRAILER_CAR            :Railcar Luxury Trailer
 STR_NAME_SUFFIX_MAIL_CAR                                        :Mail Van
@@ -101,7 +102,6 @@ STR_NAME_SUFFIX_SLAG_LADLE_CAR                                  :Slag Ladle Wago
 STR_NAME_SUFFIX_SLIDING_ROOF_CAR                                :Sliding Roof Van
 STR_NAME_SUFFIX_SLIDING_WALL_CAR                                :Sliding Wall Van
 STR_NAME_SUFFIX_SCRAP_METAL_CAR                                 :Scrap Wagon
-STR_NAME_SUFFIX_STAKE_CAR                                       :Stake Wagon
 STR_NAME_SUFFIX_TANK_CAR                                        :Tanker
 STR_NAME_SUFFIX_TARPAULIN_CAR                                   :Tarpaulin Wagon
 STR_NAME_SUFFIX_TORPEDO_CAR                                     :Torpedo Wagon
