@@ -222,7 +222,8 @@ piece_vehicle_type_to_sprites_maps = {
                                                'lumber_planks_1', 'nuts_1', 'paper_coils_eye_to_sky_1', 'pipes_1',
                                                'steel_coils_eye_to_sky_1', 'steel_wire_rod_1',
                                                'tarps_grey_1', 'tarps_blue_1', 'tarps_gold_1', 'tarps_red_1'],
-                                      'stake': ['logs_1', 'lumber_planks_1', 'pipes_1', 'tarps_grey_1'] # tarps_grey_1 for DFLT
+                                      'stake': ['logs_1', 'lumber_planks_1', 'pipes_1', 'tarps_grey_1'], # tarps_grey_1 for DFLT
+                                      'tree_length_logs': ['logs_2'],
                                      }
 
 # cargo labels can be repeated for different sprites, they'll be used selectively by vehicle types and/or randomised as appropriate
@@ -237,6 +238,7 @@ piece_sprites_to_cargo_labels_maps = {
                                       'fruit_1': ['FRUT'],
                                       'ingots_1': ['ALUM', 'ZINC'],
                                       'logs_1': ['WOOD'],
+                                      'logs_2': ['WOOD', 'DFLT'],
                                       'lumber_planks_1': ['WDPR'],
                                       'nuts_1': ['NUTS'],
                                       'paper_coils_eye_to_sky_1': ['PAPR'],

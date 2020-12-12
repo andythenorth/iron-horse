@@ -2457,7 +2457,7 @@ class LogCarConsist(CarConsist):
         self.allow_flip = True
         self.cc_num_to_randomise = 2
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsVisibleCargo(piece='stake')
+        self.gestalt_graphics = GestaltGraphicsVisibleCargo(piece='tree_length_logs')
 
 
 class TankCarConsistBase(CarConsist):
