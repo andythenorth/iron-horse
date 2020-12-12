@@ -41,7 +41,6 @@ STR_NAME_SUFFIX_OPEN_CAR                                        :offener Wagen
 STR_NAME_SUFFIX_PASSENGER_CAR                                   :Personenwagen
 STR_NAME_SUFFIX_REEFER_CAR                                      :Kühlwagen
 STR_NAME_SUFFIX_SILO_CAR                                        :Silowagen
-STR_NAME_SUFFIX_STAKE_CAR                                       :Rungenwagen
 STR_NAME_SUFFIX_TANK_CAR                                        :Kesselwagen
 STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Autotransportwagen
 

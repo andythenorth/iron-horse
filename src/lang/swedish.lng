@@ -43,7 +43,6 @@ STR_NAME_SUFFIX_OPEN_CAR                                        :Öppen Vagn
 STR_NAME_SUFFIX_PASSENGER_CAR                                   :Passagerarvagn
 STR_NAME_SUFFIX_REEFER_CAR                                      :Kylvagn
 STR_NAME_SUFFIX_SILO_CAR                                        :Cisternvagn
-STR_NAME_SUFFIX_STAKE_CAR                                       :Stolpflakvagn
 STR_NAME_SUFFIX_TANK_CAR                                        :Tankvagn
 STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Fordonsvagn
 
