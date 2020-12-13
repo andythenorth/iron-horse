@@ -135,7 +135,8 @@ allowed_refits_by_label = {
                            'cryo_gases': ['CHLO', 'O2__', 'NH3_'],
                            'edible_liquids': ['MILK', 'WATR', 'BEER', 'FOOD', 'EOIL'],
                            'fruit_veg': ['FRUT', 'BEAN', 'CASS', 'JAVA', 'NUTS'],
-                           'long_products': ['STEL', 'METL', 'STCB', 'STAL', 'STST', 'COPR', 'STSH', 'STSE', 'STWR', 'WOOD', 'WDPR', 'BDMT', 'ALUM', 'PIPE', 'ZINC'], # for bolster wagon
+                           'long_products': ['STEL', 'METL', 'STCB', 'STAL', 'STST', 'COPR', 'STSH', 'STSE',
+                                             'STWR', 'WOOD', 'WDPR', 'BDMT', 'ALUM', 'PIPE', 'ZINC', 'ENSP'], # for bolster wagon
                            'reefer': ['FOOD', 'FRUT', 'FISH'], # hax for intermodal container sprite selection - reefer car refits work just fine using CC_REFRIGERATED
                            }
 
@@ -220,6 +221,8 @@ piece_vehicle_type_to_sprites_maps = {
                                                'lumber_planks_1', 'paper_coils_eye_to_sky_1', 'pipes_1',
                                                'steel_coils_eye_to_sky_1', 'steel_wire_rod_1',
                                                'tarps_grey_1', 'tarps_blue_1', 'tarps_gold_1', 'tarps_red_1'],
+                                      'long_products': ['ingots_1', 'logs_1', 'lumber_planks_1', 'pipes_1',
+                                                        'steel_wire_rod_1', 'tarps_grey_1'], # tarps_grey_1 for DFLT
                                       'open': ['barrels_silver_1', 'coffee_1', 'copper_coils_eye_to_sky_1', 'crates_1', 'fruit_1', 'ingots_1', 'logs_1',
                                                'lumber_planks_1', 'nuts_1', 'paper_coils_eye_to_sky_1', 'pipes_1',
                                                'steel_coils_eye_to_sky_1', 'steel_wire_rod_1',

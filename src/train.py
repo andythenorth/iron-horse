@@ -1382,7 +1382,7 @@ class BolsterCarConsist(CarConsist):
         # allow flipping, used to flip company colour
         self.allow_flip = True
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsVisibleCargo(piece='flat')
+        self.gestalt_graphics = GestaltGraphicsVisibleCargo(piece='long_products')
 
 
 class BoxCarConsist(CarConsist):
