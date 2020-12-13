@@ -62,6 +62,7 @@ STR_NAME_SUFFIX_TWIN                                            :Twin
 STR_NAME_SUFFIX_ALIGNMENT_CAR                                   :Alignment Van
 STR_NAME_SUFFIX_BOX_CAR                                         :Box Van
 STR_NAME_SUFFIX_COIL_BUGGY_CAR                                  :Coil Buggies
+STR_NAME_SUFFIX_BOLSTER_CAR                                     :Bolster Wagon
 STR_NAME_SUFFIX_BULKHEAD_FLAT_CAR                               :Bulkhead Flat Wagon
 STR_NAME_SUFFIX_CABOOSE_CAR                                     :Brake Van
 STR_NAME_SUFFIX_CEMENT_SILO_CAR                                 :Cement Wagon
@@ -102,7 +103,6 @@ STR_NAME_SUFFIX_SLAG_LADLE_CAR                                  :Slag Ladle Wago
 STR_NAME_SUFFIX_SLIDING_ROOF_CAR                                :Sliding Roof Van
 STR_NAME_SUFFIX_SLIDING_WALL_CAR                                :Sliding Wall Van
 STR_NAME_SUFFIX_SCRAP_METAL_CAR                                 :Scrap Wagon
-STR_NAME_SUFFIX_STAKE_FLAT_CAR                                  :Stake Flat Wagon
 STR_NAME_SUFFIX_TANK_CAR                                        :Tanker
 STR_NAME_SUFFIX_TARPAULIN_CAR                                   :Tarpaulin Wagon
 STR_NAME_SUFFIX_TORPEDO_CAR                                     :Torpedo Wagon

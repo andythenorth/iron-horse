@@ -25,6 +25,7 @@ import spritelayer_cargos.vehicles_cargos
 
 # import wagons
 #from vehicles import alignment_cars
+from vehicles import bolster_cars
 from vehicles import box_cars
 from vehicles import bulkhead_flat_cars
 from vehicles import caboose_cars
@@ -68,7 +69,6 @@ from vehicles import silo_cars
 from vehicles import slag_ladle_cars
 from vehicles import sliding_roof_cars
 from vehicles import sliding_wall_cars
-from vehicles import stake_flat_cars
 from vehicles import tank_cars
 from vehicles import tarpaulin_cars
 from vehicles import vehicle_parts_box_cars
@@ -171,6 +171,7 @@ def main():
     # only comment in if needed for debugging
     alignment_cars.main()
     """
+    bolster_cars.main()
     box_cars.main()
     bulkhead_flat_cars.main()
     caboose_cars.main()
@@ -213,7 +214,6 @@ def main():
     slag_ladle_cars.main()
     sliding_roof_cars.main()
     sliding_wall_cars.main()
-    stake_flat_cars.main()
     tank_cars.main()
     tarpaulin_cars.main()
     torpedo_cars.main()

@@ -104,6 +104,7 @@ cargo_labels = ['PASS', # pax first
                 'STSH',
                 'STWR',
                 'NH3_',
+                'STSE',
                 #
                 'NULL']
 
@@ -134,6 +135,7 @@ allowed_refits_by_label = {
                            'cryo_gases': ['CHLO', 'O2__', 'NH3_'],
                            'edible_liquids': ['MILK', 'WATR', 'BEER', 'FOOD', 'EOIL'],
                            'fruit_veg': ['FRUT', 'BEAN', 'CASS', 'JAVA', 'NUTS'],
+                           'long_products': ['STEL', 'METL', 'STCB', 'STAL', 'STST', 'COPR', 'STSH', 'STSE', 'STWR', 'WOOD', 'WDPR', 'BDMT', 'ALUM', 'PIPE', 'ZINC'], # for bolster wagon
                            'reefer': ['FOOD', 'FRUT', 'FISH'], # hax for intermodal container sprite selection - reefer car refits work just fine using CC_REFRIGERATED
                            }
 
@@ -164,7 +166,7 @@ default_cargos = {
                   'flat': ['STEL', 'STCB', 'COPR', 'METL'],
                   'fruit_veg': ['FRUT', 'BEAN', 'CASS', 'JAVA', 'NUTS'],
                   'grain_hopper': ['GRAI', 'PLAS'],
-                  'rock_hopper': ['LIME', 'GRVL', 'SAND', 'PORE', 'SALT', 'IORE', 'CORE'],
+                  'long_products': ['STSE', 'WOOD', 'PIPE', 'STEL'],
                   # intermodal, uses box
                   'mail': ['MAIL'],
                   'metal': ['STEL', 'COPR'],
@@ -174,8 +176,8 @@ default_cargos = {
                   'plate': ['IRON', 'CSTI', 'ZINC', 'METL'],
                   'product_tank': ['ACID', 'RFPR', 'CHLO'],
                   'reefer': ['FOOD'],
+                  'rock_hopper': ['LIME', 'GRVL', 'SAND', 'PORE', 'SALT', 'IORE', 'CORE'],
                   'silo': ['CMNT', 'BDMT', 'RFPR', 'QLME', 'FMSP'],
-                  'stake_flat': ['WOOD'],
                   'supplies': ['ENSP'],
                   'tank': ['OIL_', 'CTAR', 'SULP', 'KAOL', 'RUBR'],
                   }
