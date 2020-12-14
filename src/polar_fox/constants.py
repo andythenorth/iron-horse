@@ -219,13 +219,13 @@ piece_vehicle_type_to_sprites_maps = {
                                       'coil': ['copper_coils_eye_longitudinal_1', 'steel_coils_eye_longitudinal_1', 'tarps_grey_1'], # tarps_grey_1 for DFLT
                                       'flat': ['barrels_silver_1', 'copper_coils_eye_to_sky_1', 'crates_1', 'ingots_1', 'logs_1',
                                                'lumber_planks_1', 'paper_coils_eye_to_sky_1', 'pipes_1',
-                                               'steel_coils_eye_to_sky_1', 'steel_wire_rod_1',
+                                               'steel_coils_eye_to_sky_1', 'steel_slab_1', 'steel_wire_rod_1',
                                                'tarps_grey_1', 'tarps_blue_1', 'tarps_gold_1', 'tarps_red_1'],
                                       'long_products': ['ingots_1', 'logs_1', 'lumber_planks_1', 'pipes_1',
-                                                        'steel_wire_rod_1', 'tarps_grey_1'], # tarps_grey_1 for DFLT
+                                                        'steel_slab_1', 'steel_wire_rod_1', 'tarps_grey_1'], # tarps_grey_1 for DFLT
                                       'open': ['barrels_silver_1', 'coffee_1', 'copper_coils_eye_to_sky_1', 'crates_1', 'fruit_1', 'ingots_1', 'logs_1',
                                                'lumber_planks_1', 'nuts_1', 'paper_coils_eye_to_sky_1', 'pipes_1',
-                                               'steel_coils_eye_to_sky_1', 'steel_wire_rod_1',
+                                               'steel_coils_eye_to_sky_1', 'steel_slab_1', 'steel_wire_rod_1',
                                                'tarps_grey_1', 'tarps_blue_1', 'tarps_gold_1', 'tarps_red_1'],
                                       'tree_length_logs': ['logs_2'],
                                      }
@@ -242,13 +242,14 @@ piece_sprites_to_cargo_labels_maps = {
                                       'fruit_1': ['FRUT'],
                                       'ingots_1': ['ALUM', 'ZINC'],
                                       'logs_1': ['WOOD'],
-                                      'logs_2': ['WOOD', 'DFLT'],
+                                      'logs_2': ['DFLT'], # logs_2 is intended for vehicles that *only* use the log sprite, so just provide DFLT to avoid duplicate warnings from nmlc
                                       'lumber_planks_1': ['WDPR'],
                                       'nuts_1': ['NUTS'],
                                       'paper_coils_eye_to_sky_1': ['PAPR'],
                                       'pipes_1': ['PIPE'],
                                       'steel_coils_eye_longitudinal_1': ['STEL', 'METL', 'STAL', 'STCB', 'STST', 'STSH'],
-                                      'steel_coils_eye_to_sky_1': ['STEL', 'METL', 'STAL', 'STCB', 'STST', 'STSH'],
+                                      'steel_coils_eye_to_sky_1': ['STEL', 'METL', 'STAL', 'STST', 'STSH'],
+                                      'steel_slab_1': ['STCB'],
                                       'steel_wire_rod_1': ['STWR'],
                                       'tarps_blue_1': ['FMSP'],
                                       'tarps_gold_1': ['ENSP'],
