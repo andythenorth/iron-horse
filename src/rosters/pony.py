@@ -31,13 +31,13 @@ from vehicles import dover
 from vehicles import dragon
 from vehicles import driving_cab_pony_gen_5
 from vehicles import driving_cab_pony_gen_6
-from vehicles import highlander
 from vehicles import esk
 from vehicles import evolution
 from vehicles import firebird
 from vehicles import fleet
 from vehicles import flanders_storm
 from vehicles import flindermouse
+from vehicles import formidable
 from vehicles import fury
 from vehicles import geronimo
 from vehicles import girt_licker
@@ -54,6 +54,7 @@ from vehicles import helm_wind_cab
 from vehicles import helm_wind_middle
 from vehicles import hercules
 from vehicles import high_flyer
+from vehicles import highlander
 from vehicles import hurly_burly
 from vehicles import intrepid
 from vehicles import jupiter
@@ -78,6 +79,7 @@ from vehicles import pinhorse
 from vehicles import plastic_postbox
 from vehicles import proper_job
 from vehicles import pylon
+from vehicles import quietus
 from vehicles import relentless
 from vehicles import reliance
 from vehicles import resilient
@@ -261,12 +263,14 @@ def main(disabled=False):
                                bone,
                                blackthorn,
                                defiant,
+                               formidable,
                                cheddar_valley,
                                highlander,
                                toaster,
                                flindermouse,
                                peasweep,
                                flanders_storm,
+                               quietus,
                                triton,
                                # joker engines / snowploughs
                                grub,

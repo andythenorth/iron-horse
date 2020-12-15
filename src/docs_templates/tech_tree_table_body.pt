@@ -139,7 +139,7 @@
                             <tbody>
                                 <tal:roles repeat="role roles">
                                     <tal:role_child_branch tal:repeat="role_child_branch doc_helper.get_role_child_branches_in_order(tech_tree[base_track_type_and_label][role_group][role].keys())">
-                                        <tr style="border-top: solid ${'2px #ccc' if role in ['branch_freight', 'heavy_freight', 'heavy_express', 'pax_railcar', 'hst', 'lolz'] else '1px #eee'};
+                                        <tr style="border-top: solid ${'2px #ccc' if role in ['branch_freight', 'heavy_freight', 'very_heavy_freight', 'heavy_express', 'pax_railcar', 'hst', 'lolz'] else '1px #eee'};
                                                    box-shadow: inset 0 -1px #fff;
                                                    background: linear-gradient(180deg, #fff 0%, #fafafa 100%);">
                                             <th style="text-align: right; width: 180px; padding-right: 20px;">
@@ -153,8 +153,11 @@
                                                 <span tal:condition="'railcar' in role">
                                                     Railcar
                                                 </span>
-                                                <span tal:condition="'heavy' in role">
+                                                <span tal:condition="'heavy' in role and not 'very_heavy' in role">
                                                     Heavy
+                                                </span>
+                                                <span tal:condition="'very_heavy' in role">
+                                                    Very Heavy
                                                 </span>
                                                 <span tal:condition="'mail_railcar' not in role and 'pax_railcar' not in role">
                                                     ${doc_helper.get_role_string_from_role(role)}

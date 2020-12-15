@@ -239,10 +239,10 @@ class Consist(object):
         role_to_role_groups_mapping = {'express_core': {'express': [1], 'heavy_express': [1]},
                                        'express_non_core': {'branch_express': [1, 2], 'express': [2], 'heavy_express': [2, 3, 4], 'luxury_pax_railcar': [-1]},
                                        'driving_cab': {'driving_cab_express': [-1]},
-                                       'freight_core': {'freight': [1], 'heavy_freight':[1]},
-                                       'freight_non_core': {'branch_freight': [1], 'freight': [2], 'heavy_freight': [2, 3, 4]},
+                                       'freight_core': {'freight': [1], 'heavy_freight':[1], 'very_heavy_freight':[1]},
+                                       'freight_non_core': {'branch_freight': [1], 'freight': [2], 'heavy_freight': [2], 'very_heavy_freight':[2]},
                                        'hst': {'hst': [1]},
-                                       'jokers': {'gronk!': [-1, -2], 'express': [-1], 'heavy_express': [-1, -2, -3], 'freight': [-1, -2], 'branch_freight': [-1], 'heavy_freight': [-1, -2, -3], 'snoughplough!': [-1]},
+                                       'jokers': {'gronk!': [-1, -2], 'express': [-1], 'heavy_express': [-1, -2, -3], 'freight': [-1, -2], 'branch_freight': [-1], 'heavy_freight': [-1, -2], 'very_heavy_freight':[-1, -2], 'snoughplough!': [-1]},
                                        'metro': {'mail_metro': [1], 'pax_metro': [1]},
                                        'railcar': {'mail_railcar': [1, 2, -1, -2], 'pax_railcar': [1, 2]},
                                        'very_high_speed': {'very_high_speed': [1, 2]},
@@ -672,7 +672,7 @@ class EngineConsist(Consist):
         run_cost = gen_multiplier * (fixed_run_cost_points + floating_run_cost_points)
         # freight engines get a run cost bonus as they'll often be sat waiting for loads, so balance (also super realism!!)
         # doing this is preferable to doing variable run costs, which are weird and confusing (can't trust the costs showin in vehicle window)
-        if self.role in ['heavy_freight']: # smaller bonus for heavy_freight
+        if self.role in ['heavy_freight', 'very_heavy_freight']: # smaller bonus for heavy_freight
             run_cost = 0.9 * run_cost
         elif self.role in ['branch_freight', 'freight']: # bigger bonus for other freight
             run_cost = 0.8 * run_cost

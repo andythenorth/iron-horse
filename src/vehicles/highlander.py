@@ -6,8 +6,8 @@ def main(roster_id):
                             id='highlander',
                             base_numeric_id=4250,
                             name='Highlander',
-                            role='heavy_freight',
-                            role_child_branch_num=2,
+                            role='very_heavy_freight',
+                            role_child_branch_num=1,
                             power=4550, # 900hp steps Revolution -> Blackthorn -> Toaster
                             # dibble for game balance, assume super-slip control
                             tractive_effort_coefficient=0.4,
