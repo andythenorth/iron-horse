@@ -6,14 +6,14 @@ def main(roster_id):
                             id='formidable',
                             base_numeric_id=5380,
                             name='Formidable',
-                            role='heavy_freight',
+                            role='heavy_express',
                             role_child_branch_num=-2, # in the diesel branch, not electric
-                            power=3500, # HP matched to equivalent gen pure diesels
-                            power_by_railtype={'RAIL': 3500, 'ELRL': 8200}, # based on the Stadler Eurodual, really quite high values eh, notably el-power is insane high
+                            power=4000, # HP matched to equivalent gen pure diesels
+                            power_by_railtype={'RAIL': 4000, 'ELRL': 6000}, # based on the CAF Bitrac high values for both diesel, reasonable el
                             random_reverse=True,
                             pantograph_type='z-shaped-double',
                             gen=6,
-                            intro_date_offset=10,  # introduce later than gen epoch by design
+                            intro_date_offset=8, # introduce later than gen epoch by design
                             sprites_complete=False)
 
     consist.add_unit(type=ElectroDieselEngineUnit,

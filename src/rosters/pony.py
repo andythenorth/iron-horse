@@ -56,6 +56,7 @@ from vehicles import hercules
 from vehicles import high_flyer
 from vehicles import highlander
 from vehicles import hurly_burly
+from vehicles import iep_thing
 from vehicles import intrepid
 from vehicles import jupiter
 from vehicles import kelpie
@@ -227,6 +228,7 @@ def main(disabled=False):
                                vulcan,
                                onslaught,
                                relentless,
+                               formidable,
                                hurly_burly,
                                moor_gallop,
                                roarer,
@@ -263,14 +265,13 @@ def main(disabled=False):
                                bone,
                                blackthorn,
                                defiant,
-                               formidable,
+                               quietus,
                                cheddar_valley,
                                highlander,
                                toaster,
                                flindermouse,
                                peasweep,
                                flanders_storm,
-                               quietus,
                                triton,
                                # joker engines / snowploughs
                                grub,
@@ -309,6 +310,7 @@ def main(disabled=False):
                                firebird,
                                blaze,
                                scorcher,
+                               #iep_thing,
                                helm_wind_cab,
                                helm_wind_middle,
                                brenner_cab,

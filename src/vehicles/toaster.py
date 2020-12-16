@@ -6,8 +6,8 @@ def main(roster_id):
                             id='toaster',
                             base_numeric_id=4800,
                             name='Toaster',
-                            role='very_heavy_freight',
-                            role_child_branch_num=-1, # Joker eh
+                            role='heavy_freight',
+                            role_child_branch_num=-3, # Joker eh
                             power=4550, # 900hp steps Revolution -> Blackthorn -> Toaster
                             # dibble for game balance, assume super-slip control
                             tractive_effort_coefficient=0.4,

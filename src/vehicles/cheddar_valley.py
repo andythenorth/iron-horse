@@ -6,8 +6,8 @@ def main(roster_id):
                             id='cheddar_valley',
                             base_numeric_id=220,
                             name='Cheddar Valley',
-                            role='very_heavy_freight',
-                            role_child_branch_num=1,
+                            role='heavy_freight',
+                            role_child_branch_num=3, # child branch 2 empty, for tech tree drawing reasons (blackthorn and quietus in branch -2)
                             power=4050, # 750hp steps Vanguard -> Grid -> Cheddar Valley
                             # dibble for game balance, assume super-slip control
                             tractive_effort_coefficient=0.4,

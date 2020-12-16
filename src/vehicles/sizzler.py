@@ -8,7 +8,7 @@ def main(roster_id):
                             name='Sizzler',
                             role='heavy_express',
                             role_child_branch_num=4,
-                            power=6600, # match to same gen HST
+                            power=7000, # roughly brackets Triton
                             random_reverse=True,
                             gen=6,
                             pantograph_type='z-shaped-double',

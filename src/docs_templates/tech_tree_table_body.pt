@@ -153,11 +153,8 @@
                                                 <span tal:condition="'railcar' in role">
                                                     Railcar
                                                 </span>
-                                                <span tal:condition="'heavy' in role and not 'very_heavy' in role">
+                                                <span tal:condition="'heavy' in role">
                                                     Heavy
-                                                </span>
-                                                <span tal:condition="'very_heavy' in role">
-                                                    Very Heavy
                                                 </span>
                                                 <span tal:condition="'mail_railcar' not in role and 'pax_railcar' not in role">
                                                     ${doc_helper.get_role_string_from_role(role)}
