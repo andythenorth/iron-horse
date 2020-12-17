@@ -7,7 +7,7 @@ def main(roster_id):
                             base_numeric_id=120,
                             name='Chinook',
                             role='heavy_freight',
-                            role_child_branch_num=1,
+                            role_child_branch_num=2, # child branch 1 empty, for tech tree drawing reasons (blackthorn and quietus in branch -1)
                             power=2900,
                             gen=4,
                             fixed_run_cost_points=118, # minor run cost bonus as default algorithm makes run cost too high

@@ -7,9 +7,9 @@ def main(roster_id):
                             base_numeric_id=5370,
                             name='Quietus',
                             role='heavy_freight',
-                            role_child_branch_num=-2, # in the diesel branch, not electric
-                            power=3500, # HP matched to equivalent gen pure diesels
-                            power_by_railtype={'RAIL': 3500, 'ELRL': 7000}, # based on the Stadler Eurodual, really quite high values for both diesel and el
+                            role_child_branch_num=-1, # child branch 1 empty, for tech tree drawing reasons (blackthorn and quietus in branch -1)
+                            power=3250, # HP matched to equivalent gen pure diesels
+                            power_by_railtype={'RAIL': 3250, 'ELRL': 6700}, # based on the Stadler Eurodual, really quite high values for both diesel and el
                             random_reverse=True,
                             pantograph_type='z-shaped-double',
                             gen=6,

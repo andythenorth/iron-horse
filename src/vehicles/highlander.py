@@ -7,7 +7,7 @@ def main(roster_id):
                             base_numeric_id=4250,
                             name='Highlander',
                             role='heavy_freight',
-                            role_child_branch_num=3, # child branch 2 empty, for tech tree drawing reasons (blackthorn and quietus in branch -2)
+                            role_child_branch_num=3,
                             power=4550, # 900hp steps Revolution -> Blackthorn -> Toaster
                             # dibble for game balance, assume super-slip control
                             tractive_effort_coefficient=0.4,

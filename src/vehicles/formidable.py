@@ -1,3 +1,5 @@
+#unused
+
 from train import EngineConsist, ElectroDieselEngineUnit
 
 
@@ -8,8 +10,8 @@ def main(roster_id):
                             name='Formidable',
                             role='heavy_express',
                             role_child_branch_num=-2, # in the diesel branch, not electric
-                            power=4000, # HP matched to equivalent gen pure diesels
-                            power_by_railtype={'RAIL': 4000, 'ELRL': 6000}, # based on the CAF Bitrac high values for both diesel, reasonable el
+                            power=3950, # HP matched to equivalent gen pure diesels
+                            power_by_railtype={'RAIL': 3950, 'ELRL': 6000}, # based on the CAF Bitrac high values for diesel, reasonable el
                             random_reverse=True,
                             pantograph_type='z-shaped-double',
                             gen=6,

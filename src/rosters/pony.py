@@ -37,7 +37,6 @@ from vehicles import firebird
 from vehicles import fleet
 from vehicles import flanders_storm
 from vehicles import flindermouse
-from vehicles import formidable
 from vehicles import fury
 from vehicles import geronimo
 from vehicles import girt_licker
@@ -228,7 +227,6 @@ def main(disabled=False):
                                vulcan,
                                onslaught,
                                relentless,
-                               formidable,
                                hurly_burly,
                                moor_gallop,
                                roarer,
