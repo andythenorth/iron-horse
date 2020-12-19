@@ -27,38 +27,49 @@ from vehicles import waterbuck
 # !! needs refactored to match Pony
 # speed for wagons in mph (some generations may optionally have no speed set)
 # format is [standard, speedy]
-speeds = dict(gen_1_wagon_speeds = [55, None], # no point setting an upper speed for SG in this roster, max engine is always 75mph
-              gen_2_wagon_speeds = [75, None],
-              ng_gen_1_wagon_speeds = [35, 55], # this roster is deliberately slow for NG freight
-              ng_gen_2_wagon_speeds = [45, 75],
-              ng_gen_3_wagon_speeds = [55, 95])
+speeds = dict(
+    gen_1_wagon_speeds=[
+        55,
+        None,
+    ],  # no point setting an upper speed for SG in this roster, max engine is always 75mph
+    gen_2_wagon_speeds=[75, None],
+    ng_gen_1_wagon_speeds=[35, 55],  # this roster is deliberately slow for NG freight
+    ng_gen_2_wagon_speeds=[45, 75],
+    ng_gen_3_wagon_speeds=[55, 95],
+)
 
-roster = Roster(id = 'antelope',
-                numeric_id = 3,
-                speeds = speeds, # hax
-                # capacity factor per generation, will be multiplied by vehicle length
-                freight_car_capacity_per_unit_length =  {'RAIL': [5, 5, 5, 5, 5, 5],
-                                                         'NG': [3, 3, 3, 3, 3, 3]},
-                engines = [kessler,
-                           pangolin,
-                           albertine,
-                           ndemi,
-                           milne,
-                           hyena,
-                           bush_elephant,
-                           oubangui,
-                           hofman,
-                           kwa_falls,
-                           drakensberg,
-                           okapi,
-                           bigfoot,
-                           gazelle,
-                           hippo,
-                           waterbuck,
-                           oribi,
-                           springburn,
-                           smokey_mountain,
-                           baby_boat,
-                           big_boat,
-                           antlion,
-                           savannah_slammer])
+roster = Roster(
+    id="antelope",
+    numeric_id=3,
+    speeds=speeds,  # hax
+    # capacity factor per generation, will be multiplied by vehicle length
+    freight_car_capacity_per_unit_length={
+        "RAIL": [5, 5, 5, 5, 5, 5],
+        "NG": [3, 3, 3, 3, 3, 3],
+    },
+    engines=[
+        kessler,
+        pangolin,
+        albertine,
+        ndemi,
+        milne,
+        hyena,
+        bush_elephant,
+        oubangui,
+        hofman,
+        kwa_falls,
+        drakensberg,
+        okapi,
+        bigfoot,
+        gazelle,
+        hippo,
+        waterbuck,
+        oribi,
+        springburn,
+        smokey_mountain,
+        baby_boat,
+        big_boat,
+        antlion,
+        savannah_slammer,
+    ],
+)

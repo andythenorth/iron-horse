@@ -2,7 +2,9 @@ from roster import Roster
 
 from vehicles import ares
 from vehicles import athena
-from vehicles import auto_coach_pony_gen_2 # no further generations as autoreplace can't handle mixed cargo articulated consists
+from vehicles import (
+    auto_coach_pony_gen_2,
+)  # no further generations as autoreplace can't handle mixed cargo articulated consists
 from vehicles import avenger
 from vehicles import bean_feast
 from vehicles import blackthorn
@@ -19,7 +21,8 @@ from vehicles import buffalo
 from vehicles import captain_steel
 from vehicles import cargo_sprinter
 from vehicles import carrack
-#from vehicles import challenger # for NA roster
+
+# from vehicles import challenger # for NA roster
 from vehicles import cheddar_valley
 from vehicles import cheese_bug
 from vehicles import chinook
@@ -125,210 +128,284 @@ from vehicles import zorro
 
 
 def main(disabled=False):
-    roster = Roster(id = 'pony',
-                    numeric_id = 1,
-                    # ELRL, ELNG is mapped to RAIL, NG etc
-                    # default intro dates per generation, can be over-ridden if needed by setting intro_date kw on consist
-                    intro_dates = {'RAIL': [1860, 1900, 1930, 1960, 1990, 2020],
-                                   'METRO': [1900, 1950, 2000],
-                                   'NG': [1860, 1905, 1950, 2000]
-                                   },
-                    # default speeds per generation, can be over-ridden if needed by setting speed kw arg on consist
-                    # speeds roughly same as RH trucks of same era + 5mph or so, and a bit higher at the top end (back and forth on this many times eh?),
-                    # NG is Corsican-style 1000mm, native brit NG is not a thing for gameplay
-                    speeds = {'RAIL': {'standard': [45, 45, 60, 75, 87, 87], # gen 5 and 6 held down by design, really fast freight is imbalanced
-                                       'railcar': [45, 45, 60, 75, 87, 99], # match standard, except gen 6
-                                       'express': [60, 75, 90, 105, 115, 125], # smaller steps in gen 5 and 6, balances against faster HSTs
-                                       'hst': [0, 0, 0, 112, 125, 140], # only gen 4, 5 and 6 HST provided
-                                       'very_high_speed': [0, 0, 0, 0, 140, 186]
-                                       },
-                              'METRO': {'standard': [45, 55, 65]
-                                        # no express for metro in Pony
-                                        },
-                              'NG': {'standard': [45, 45, 55, 65], # NG standard/railcar/express all same in Pony, balanced against trams, RVs
-                                     'railcar': [45, 45, 55, 65],
-                                     'express': [45, 45, 55, 65]}
-                                     },
-
-                    # capacity factor per generation, will be multiplied by vehicle length
-                    freight_car_capacity_per_unit_length =  {'RAIL': [4, 4, 5, 5.5, 6, 6.5],
-                                                             'NG': [3, 3, 4, 4]
-                                                             },
-                    pax_car_capacity_per_unit_length =  {'RAIL': [4, 5, 6, 7, 8, 8],
-                                                         'NG': [3, 4, 5, 6]
-                                                         },
-                    # freight car weight factor varies slightly by gen, reflecting modern cars with lighter weight
-                    train_car_weight_factors = [0.5, 0.5, 0.5, 0.48, 0.44, 0.40],
-
-                    # specify lists of cc1 and not_cc2 colours, and an option to remap all the cc1 to a specific other cc (allowing multiple input colours to map to one result)
-                    livery_presets = {'EWS': {'cc1': ['COLOUR_PINK'],
-                                              'not_cc2': [],
-                                              'remap_to_cc': None,
-                                              'docs_image_input_cc': [('COLOUR_PINK', 'COLOUR_YELLOW')]
-                                              },
-                                      'FREIGHTLINER_GBRF': {'cc1': ['COLOUR_PALE_GREEN', 'COLOUR_GREEN', 'COLOUR_DARK_GREEN', 'COLOUR_MAUVE'], # includes GBRF
-                                                       'not_cc2': [],
-                                                       'remap_to_cc': None,
-                                                       'docs_image_input_cc': [('COLOUR_PALE_GREEN', 'COLOUR_YELLOW'), ('COLOUR_DARK_GREEN', 'COLOUR_ORANGE'), ('COLOUR_GREEN', 'COLOUR_ORANGE'), ('COLOUR_MAUVE', 'COLOUR_CREAM')]
-                                                       },
-                                      # red stripe cc1 chosen to give nice wagon colour options
-                                      'RAILFREIGHT_RED_STRIPE': {'cc1': ['COLOUR_GREY', 'COLOUR_BROWN', 'COLOUR_YELLOW', 'COLOUR_ORANGE'], # not white, too limiting for other liveries
-                                                                 'not_cc2': ['COLOUR_GREY', 'COLOUR_BROWN', 'COLOUR_YELLOW', 'COLOUR_ORANGE', 'COLOUR_WHITE'], # do ban white though, looks bad as lower stripe
-                                                                 'remap_to_cc': 'COLOUR_GREY',
-                                                                 'docs_image_input_cc': [('COLOUR_GREY', 'COLOUR_RED'), ('COLOUR_BROWN', 'COLOUR_PINK')]
-                                                                 },
-                                       # triple grey cc1 chosen to give nice wagon colour options
-                                       # notcc2 chosen for (a) ensuring contrast of sector symbol (b) also happens to enable dutch yellow/grey livery
-                                       # note the remap to white, to provide lightest of the triple greys as cc1
-                                      'RAILFREIGHT_TRIPLE_GREY': {'cc1': ['COLOUR_GREY', 'COLOUR_BROWN', 'COLOUR_YELLOW', 'COLOUR_ORANGE'], # not white, too limiting for other liveries
-                                                                  'not_cc2': ['COLOUR_GREY', 'COLOUR_BROWN', 'COLOUR_YELLOW', 'COLOUR_ORANGE', 'COLOUR_WHITE'], # do ban white though, looks bad with sector logo
-                                                                  'remap_to_cc': 'COLOUR_WHITE',
-                                                                  'docs_image_input_cc': [('COLOUR_GREY', 'COLOUR_RED'), ('COLOUR_YELLOW', 'COLOUR_BLUE'), ('COLOUR_BROWN', 'COLOUR_DARK_BLUE')],
-                                                                  },
-                                      'YEOMAN': {'cc1': ['COLOUR_GREY', 'COLOUR_WHITE'],
-                                                 'not_cc2': [],
-                                                 'remap_to_cc': None,
-                                                 'docs_image_input_cc': [('COLOUR_GREY', 'COLOUR_BLUE'), ('COLOUR_WHITE', 'COLOUR_DARK_BLUE')]
-                                                 }
-                                      },
-
-                    # this list is manually maintained deliberately, even though it could be mostly automated using tech tree
-                    engines = [# branch express
-                               # challenger, # for NA roster
-                               lark,
-                               merrylegs,
-                               proper_job,
-                               stoat,
-                               pinhorse,
-                               shoebox,
-                               super_shoebox,
-                               ultra_shoebox,
-                               # express
-                               reliance,
-                               kelpie,
-                               griffon,
-                               spinner,
-                               carrack,
-                               tencendur,
-                               merlion,
-                               shredder,
-                               thunderer,
-                               swift,
-                               strongbow,
-                               streamer,
-                               wyvern,
-                               intrepid,
-                               vanguard,
-                               resilient,
-                               evolution, # out of normal order so that the names read 'Evolution', 'Revolution' (usually jokers come after the tech tree version not before)
-                               revolution,
-                               pegasus,
-                               dragon,
-                               vulcan,
-                               onslaught,
-                               relentless,
-                               hurly_burly,
-                               moor_gallop,
-                               roarer,
-                               fury,
-                               zebedee,
-                               screamer,
-                               avenger,
-                               sizzler,
-                               # driving cab cars
-                               driving_cab_pony_gen_5,
-                               driving_cab_pony_gen_6,
-                               # branch freight
-                               buffalo,
-                               saxon,
-                               little_bear,
-                               captain_steel,
-                               goliath,
-                               # freight
-                               hercules,
-                               braf,
-                               diablo,
-                               haar,
-                               viking,
-                               growler,
-                               slug,
-                               phoenix,
-                               vigilant,
-                               blind_smuir,
-                               girt_licker,
-                               lemon,
-                               esk,
-                               chinook,
-                               grid,
-                               bone,
-                               blackthorn,
-                               defiant,
-                               quietus,
-                               cheddar_valley,
-                               highlander,
-                               toaster,
-                               flindermouse,
-                               peasweep,
-                               flanders_storm,
-                               triton,
-                               # joker engines / snowploughs
-                               grub,
-                               lamia,
-                               gronk,
-                               chuggypig,
-                               magnum_70,
-                               snowplough_pony_gen_2,
-                               # cargo sprinter
-                               cargo_sprinter,
-                               # auto-coach (only one as autoreplace can't handle mixed cargo articulated consists)
-                               auto_coach_pony_gen_2,
-                               # diesel railcars
-                               deasil,
-                               slammer,
-                               tin_rocket,
-                               happy_train,
-                               gowsty,
-                               scooby,
-                               plastic_postbox,
-                               # electric railcars
-                               athena,
-                               geronimo,
-                               breeze,
-                               zeus,
-                               ares,
-                               dover,
-                               jupiter,
-                               pylon,
-                               # luxury electric railcars
-                               high_flyer,
-                               sunshine_coast,
-                               olympic,
-                               bright_country,
-                               # brit high speed pax
-                               firebird,
-                               blaze,
-                               scorcher,
-                               #iep_thing,
-                               helm_wind_cab,
-                               helm_wind_middle,
-                               brenner_cab,
-                               brenner_middle,
-                               # metro
-                               serpentine,
-                               westbourne,
-                               fleet,
-                               longwater,
-                               tyburn,
-                               tideway,
-                               # ng engines
-                               cheese_bug,
-                               bean_feast,
-                               pikel,
-                               boar_cat,
-                               # ng railcars
-                               mumble,
-                               snapper,
-                               workish,
-                               zorro
-                               ])
+    roster = Roster(
+        id="pony",
+        numeric_id=1,
+        # ELRL, ELNG is mapped to RAIL, NG etc
+        # default intro dates per generation, can be over-ridden if needed by setting intro_date kw on consist
+        intro_dates={
+            "RAIL": [1860, 1900, 1930, 1960, 1990, 2020],
+            "METRO": [1900, 1950, 2000],
+            "NG": [1860, 1905, 1950, 2000],
+        },
+        # default speeds per generation, can be over-ridden if needed by setting speed kw arg on consist
+        # speeds roughly same as RH trucks of same era + 5mph or so, and a bit higher at the top end (back and forth on this many times eh?),
+        # NG is Corsican-style 1000mm, native brit NG is not a thing for gameplay
+        speeds={
+            "RAIL": {
+                "standard": [
+                    45,
+                    45,
+                    60,
+                    75,
+                    87,
+                    87,
+                ],  # gen 5 and 6 held down by design, really fast freight is imbalanced
+                "railcar": [45, 45, 60, 75, 87, 99],  # match standard, except gen 6
+                "express": [
+                    60,
+                    75,
+                    90,
+                    105,
+                    115,
+                    125,
+                ],  # smaller steps in gen 5 and 6, balances against faster HSTs
+                "hst": [0, 0, 0, 112, 125, 140],  # only gen 4, 5 and 6 HST provided
+                "very_high_speed": [0, 0, 0, 0, 140, 186],
+            },
+            "METRO": {
+                "standard": [45, 55, 65]
+                # no express for metro in Pony
+            },
+            "NG": {
+                "standard": [
+                    45,
+                    45,
+                    55,
+                    65,
+                ],  # NG standard/railcar/express all same in Pony, balanced against trams, RVs
+                "railcar": [45, 45, 55, 65],
+                "express": [45, 45, 55, 65],
+            },
+        },
+        # capacity factor per generation, will be multiplied by vehicle length
+        freight_car_capacity_per_unit_length={
+            "RAIL": [4, 4, 5, 5.5, 6, 6.5],
+            "NG": [3, 3, 4, 4],
+        },
+        pax_car_capacity_per_unit_length={
+            "RAIL": [4, 5, 6, 7, 8, 8],
+            "NG": [3, 4, 5, 6],
+        },
+        # freight car weight factor varies slightly by gen, reflecting modern cars with lighter weight
+        train_car_weight_factors=[0.5, 0.5, 0.5, 0.48, 0.44, 0.40],
+        # specify lists of cc1 and not_cc2 colours, and an option to remap all the cc1 to a specific other cc (allowing multiple input colours to map to one result)
+        livery_presets={
+            "EWS": {
+                "cc1": ["COLOUR_PINK"],
+                "not_cc2": [],
+                "remap_to_cc": None,
+                "docs_image_input_cc": [("COLOUR_PINK", "COLOUR_YELLOW")],
+            },
+            "FREIGHTLINER_GBRF": {
+                "cc1": [
+                    "COLOUR_PALE_GREEN",
+                    "COLOUR_GREEN",
+                    "COLOUR_DARK_GREEN",
+                    "COLOUR_MAUVE",
+                ],  # includes GBRF
+                "not_cc2": [],
+                "remap_to_cc": None,
+                "docs_image_input_cc": [
+                    ("COLOUR_PALE_GREEN", "COLOUR_YELLOW"),
+                    ("COLOUR_DARK_GREEN", "COLOUR_ORANGE"),
+                    ("COLOUR_GREEN", "COLOUR_ORANGE"),
+                    ("COLOUR_MAUVE", "COLOUR_CREAM"),
+                ],
+            },
+            # red stripe cc1 chosen to give nice wagon colour options
+            "RAILFREIGHT_RED_STRIPE": {
+                "cc1": [
+                    "COLOUR_GREY",
+                    "COLOUR_BROWN",
+                    "COLOUR_YELLOW",
+                    "COLOUR_ORANGE",
+                ],  # not white, too limiting for other liveries
+                "not_cc2": [
+                    "COLOUR_GREY",
+                    "COLOUR_BROWN",
+                    "COLOUR_YELLOW",
+                    "COLOUR_ORANGE",
+                    "COLOUR_WHITE",
+                ],  # do ban white though, looks bad as lower stripe
+                "remap_to_cc": "COLOUR_GREY",
+                "docs_image_input_cc": [
+                    ("COLOUR_GREY", "COLOUR_RED"),
+                    ("COLOUR_BROWN", "COLOUR_PINK"),
+                ],
+            },
+            # triple grey cc1 chosen to give nice wagon colour options
+            # notcc2 chosen for (a) ensuring contrast of sector symbol (b) also happens to enable dutch yellow/grey livery
+            # note the remap to white, to provide lightest of the triple greys as cc1
+            "RAILFREIGHT_TRIPLE_GREY": {
+                "cc1": [
+                    "COLOUR_GREY",
+                    "COLOUR_BROWN",
+                    "COLOUR_YELLOW",
+                    "COLOUR_ORANGE",
+                ],  # not white, too limiting for other liveries
+                "not_cc2": [
+                    "COLOUR_GREY",
+                    "COLOUR_BROWN",
+                    "COLOUR_YELLOW",
+                    "COLOUR_ORANGE",
+                    "COLOUR_WHITE",
+                ],  # do ban white though, looks bad with sector logo
+                "remap_to_cc": "COLOUR_WHITE",
+                "docs_image_input_cc": [
+                    ("COLOUR_GREY", "COLOUR_RED"),
+                    ("COLOUR_YELLOW", "COLOUR_BLUE"),
+                    ("COLOUR_BROWN", "COLOUR_DARK_BLUE"),
+                ],
+            },
+            "YEOMAN": {
+                "cc1": ["COLOUR_GREY", "COLOUR_WHITE"],
+                "not_cc2": [],
+                "remap_to_cc": None,
+                "docs_image_input_cc": [
+                    ("COLOUR_GREY", "COLOUR_BLUE"),
+                    ("COLOUR_WHITE", "COLOUR_DARK_BLUE"),
+                ],
+            },
+        },
+        # this list is manually maintained deliberately, even though it could be mostly automated using tech tree
+        engines=[  # branch express
+            # challenger, # for NA roster
+            lark,
+            merrylegs,
+            proper_job,
+            stoat,
+            pinhorse,
+            shoebox,
+            super_shoebox,
+            ultra_shoebox,
+            # express
+            reliance,
+            kelpie,
+            griffon,
+            spinner,
+            carrack,
+            tencendur,
+            merlion,
+            shredder,
+            thunderer,
+            swift,
+            strongbow,
+            streamer,
+            wyvern,
+            intrepid,
+            vanguard,
+            resilient,
+            evolution,  # out of normal order so that the names read 'Evolution', 'Revolution' (usually jokers come after the tech tree version not before)
+            revolution,
+            pegasus,
+            dragon,
+            vulcan,
+            onslaught,
+            relentless,
+            hurly_burly,
+            moor_gallop,
+            roarer,
+            fury,
+            zebedee,
+            screamer,
+            avenger,
+            sizzler,
+            # driving cab cars
+            driving_cab_pony_gen_5,
+            driving_cab_pony_gen_6,
+            # branch freight
+            buffalo,
+            saxon,
+            little_bear,
+            captain_steel,
+            goliath,
+            # freight
+            hercules,
+            braf,
+            diablo,
+            haar,
+            viking,
+            growler,
+            slug,
+            phoenix,
+            vigilant,
+            blind_smuir,
+            girt_licker,
+            lemon,
+            esk,
+            chinook,
+            grid,
+            bone,
+            blackthorn,
+            defiant,
+            quietus,
+            cheddar_valley,
+            highlander,
+            toaster,
+            flindermouse,
+            peasweep,
+            flanders_storm,
+            triton,
+            # joker engines / snowploughs
+            grub,
+            lamia,
+            gronk,
+            chuggypig,
+            magnum_70,
+            snowplough_pony_gen_2,
+            # cargo sprinter
+            cargo_sprinter,
+            # auto-coach (only one as autoreplace can't handle mixed cargo articulated consists)
+            auto_coach_pony_gen_2,
+            # diesel railcars
+            deasil,
+            slammer,
+            tin_rocket,
+            happy_train,
+            gowsty,
+            scooby,
+            plastic_postbox,
+            # electric railcars
+            athena,
+            geronimo,
+            breeze,
+            zeus,
+            ares,
+            dover,
+            jupiter,
+            pylon,
+            # luxury electric railcars
+            high_flyer,
+            sunshine_coast,
+            olympic,
+            bright_country,
+            # brit high speed pax
+            firebird,
+            blaze,
+            scorcher,
+            # iep_thing,
+            helm_wind_cab,
+            helm_wind_middle,
+            brenner_cab,
+            brenner_middle,
+            # metro
+            serpentine,
+            westbourne,
+            fleet,
+            longwater,
+            tyburn,
+            tideway,
+            # ng engines
+            cheese_bug,
+            bean_feast,
+            pikel,
+            boar_cat,
+            # ng railcars
+            mumble,
+            snapper,
+            workish,
+            zorro,
+        ],
+    )
     roster.register(disabled=disabled)
