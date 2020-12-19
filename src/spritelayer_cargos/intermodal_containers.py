@@ -424,10 +424,8 @@ def main():
             container_type = container_subtype[0:-5]
             register_container_gestalt(container_type, container_subtype)
 
-    """
     # for knowing how many containers combinations we have in total
     total = 0
     for gestalt in registered_container_gestalts:
         total += len(gestalt.variants)
-    print('total variants', total)
-    """
+    #print('total variants', total)
