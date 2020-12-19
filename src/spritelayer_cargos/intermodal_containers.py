@@ -28,20 +28,19 @@ class IntermodalContainerGestalt(object):
         self.platform_type = kwargs.get("platform_type", None)
 
     @property
-    def platform_types_with_floor_heights(self):
-        # used to handle, e.g. low floor, narrow gauge etc by putting a yoffset in the generated container sprites
-        # extend to accomodate double stack later (only one floor height probably)?
-        # format is (label, yoffset for floor-height) - leave floor height as 0 for default floor heights
-        # it's easier for templating to have a list of 2 tuples than a dict
-        result = []
-        for platform_type in self.compatible_platform_types:
-            result.append((platform_type, self.floor_height_for_platform_type))
-        return result
+    def all_platform_types_with_floor_heights(self):
+        # extend this when adding more platform types
+        # y offset: positive = down in spritesheet (y origin at top)
+        return {"default": 0, "low_floor": 1}
+
+    @property
+    def all_platform_types(self):
+        return self.all_platform_types_with_floor_heights.keys()
 
     @property
     def floor_height_for_platform_type(self):
         # crude resolution of floor height for each platform type
-        return {"default": 0, "low_floor": 1}[self.platform_type]
+        return self.all_platform_types_with_floor_heights[self.platform_type]
 
     @property
     def id(self):
@@ -253,17 +252,22 @@ container_type_gestalt_mapping = {
     ],
 }
 
+
+# this is simply manually maintained, and is to prevent nml warnings about unused switches
+suppression_list = [('low_floor', 24), ('low_floor', 32)]
+
 registered_container_gestalts = []
 
 
 def register_container_gestalt(container_type, container_subtype):
-    for gestalt in container_type_gestalt_mapping[container_type]:
-        for platform_type in gestalt.compatible_platform_types:
-            registered_container_gestalts.append(
-                gestalt(
-                    container_subtype=container_subtype, platform_type=platform_type
-                )
-            )
+    for gestalt_type in container_type_gestalt_mapping[container_type]:
+        for platform_type in gestalt_type.compatible_platform_types:
+            gestalt = gestalt_type(
+                        container_subtype=container_subtype, platform_type=platform_type
+                    )
+            # suppression of unused gestalts to prevent nml warnings further down the chain
+            if (platform_type, gestalt.length) not in suppression_list:
+                registered_container_gestalts.append(gestalt)
 
 
 def main():

@@ -40,37 +40,10 @@
     }
 </tal:position_ruleset>
 
-// graphics chain for containers
-<!--! pseudo cargo checking code
-    1. check known labels -> named random switch
-    2. check known classes -> named random switch
-    3. fall back to random switch for box
--->
-
-// check generic cargo classes
-// bulk class is explicitly not checked as there are no meaningful default bulk sprites
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_containers_check_cargo_class_liquid, cargo_classes & bitmask(CC_LIQUID)) {
-    0: switch_spritelayer_cargos_intermodal_cars_random_${consist.platform_type}_box_DFLT_${4 * vehicle.vehicle_length}px;
-    return switch_spritelayer_cargos_intermodal_cars_random_${consist.platform_type}_tank_DFLT_${4 * vehicle.vehicle_length}px;
-}
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_containers_check_cargo_class_refrigerated, cargo_classes & bitmask(CC_REFRIGERATED)) {
-    0: ${vehicle.id}_switch_graphics_containers_check_cargo_class_liquid;
-    return switch_spritelayer_cargos_intermodal_cars_random_${consist.platform_type}_reefer_DFLT_${4 * vehicle.vehicle_length}px;
-}
-
-// check explicit cargo labels
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_containers_check_cargo_label, cargo_type_in_veh) {
-    <tal:cargo_label_container_type_mapping repeat="cargo_label consist.gestalt_graphics.cargo_label_mapping.items()">
-        ${cargo_label[0]}: switch_spritelayer_cargos_intermodal_cars_random_${consist.platform_type}_${cargo_label[1]}_${4 * vehicle.vehicle_length}px;
-    </tal:cargo_label_container_type_mapping>
-    return ${vehicle.id}_switch_graphics_containers_check_cargo_class_refrigerated;
-}
-
-<!--! load state is assumed to be all or nothing - any cargo = full load of containers -->
-<!--! !! might want to handle intermediate load states when multiple containers are used ?? 50:50 -->
+<!--! load state is assumed (for simplicity) to be all or nothing - any cargo = full load of containers -->
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_containers_check_cargo, cargo_count) {
         0: return ss_spritelayer_cargos_intermodal_cars_empty;
-    return ${vehicle.id}_switch_graphics_containers_check_cargo_label;
+    return switch_spritelayer_cargos_intermodal_cars_${consist.platform_type}_${4 * vehicle.vehicle_length}px;
 }
 
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_containers, STORE_TEMP(switch_intermodal_by_company_colour_1cc_to_1cc(), 0x100)) {

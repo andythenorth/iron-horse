@@ -5,28 +5,61 @@ spriteset(ss_spritelayer_cargos_intermodal_cars_empty, "src/graphics/spriterow_t
 }
 
 <tal:container_spritesets repeat="container_gestalt spritelayer_cargos.intermodal_containers.registered_container_gestalts">
-    <tal:variants repeat="variant container_gestalt.variants">
-        <!--! crude maintenance-intensive approach to suppress unused container spritesets and switches, to avoid nml warnings -->
-        <tal:not_suppressed condition="container_gestalt.platform_type + str(container_gestalt.length) not in ['low_floor24','low_floor32']">
-            spriteset(ss_spritelayer_cargos_intermodal_cars_${container_gestalt.platform_type}_${container_gestalt.container_subtype}_${container_gestalt.length}px_${repeat.variant.index}_unflipped, "${graphics_path}${container_gestalt.id}.png") {
+    <tal:block define="platform_type_and_length container_gestalt.platform_type + '_' + str(container_gestalt.length) + 'px'">
+        <tal:variants repeat="variant container_gestalt.variants">
+            spriteset(ss_spritelayer_cargos_intermodal_cars_${platform_type_and_length}_${container_gestalt.container_subtype}_${repeat.variant.index}_unflipped, "${graphics_path}${container_gestalt.id}.png") {
                 spriteset_template_asymmetric_unreversed_${int(container_gestalt.length / 4)}_8_unflipped(10 + ${repeat.variant.index * 30}, NOANIM)
             }
-            spriteset(ss_spritelayer_cargos_intermodal_cars_${container_gestalt.platform_type}_${container_gestalt.container_subtype}_${container_gestalt.length}px_${repeat.variant.index}_flipped, "${graphics_path}${container_gestalt.id}.png") {
+            spriteset(ss_spritelayer_cargos_intermodal_cars_${platform_type_and_length}_${container_gestalt.container_subtype}_${repeat.variant.index}_flipped, "${graphics_path}${container_gestalt.id}.png") {
                 spriteset_template_asymmetric_reversed_${int(container_gestalt.length / 4)}_8_flipped(10 + ${repeat.variant.index * 30}, NOANIM)
             }
             <!--! handle user flipped state -->
-            switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_cars_${container_gestalt.platform_type}_${container_gestalt.container_subtype}_${container_gestalt.length}px_${repeat.variant.index}, vehicle_is_flipped) {
-                1: return ss_spritelayer_cargos_intermodal_cars_${container_gestalt.platform_type}_${container_gestalt.container_subtype}_${container_gestalt.length}px_${repeat.variant.index}_flipped;
-                return ss_spritelayer_cargos_intermodal_cars_${container_gestalt.platform_type}_${container_gestalt.container_subtype}_${container_gestalt.length}px_${repeat.variant.index}_unflipped;
+            switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_cars_${platform_type_and_length}_${container_gestalt.container_subtype}_${repeat.variant.index}, vehicle_is_flipped) {
+                1: return ss_spritelayer_cargos_intermodal_cars_${platform_type_and_length}_${container_gestalt.container_subtype}_${repeat.variant.index}_flipped;
+                return ss_spritelayer_cargos_intermodal_cars_${platform_type_and_length}_${container_gestalt.container_subtype}_${repeat.variant.index}_unflipped;
             }
-        </tal:not_suppressed>
-    </tal:variants>
-    <tal:not_suppressed condition="container_gestalt.platform_type + str(container_gestalt.length) not in ['low_floor24','low_floor32']">
-        random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_cars_random_${container_gestalt.platform_type}_${container_gestalt.container_subtype}_${container_gestalt.length}px, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+        </tal:variants>
+        random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_cars_random_${platform_type_and_length}_${container_gestalt.container_subtype}, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
             <tal:container_types repeat="variant container_gestalt.variants">
-                    1: return switch_spritelayer_cargos_intermodal_cars_${container_gestalt.platform_type}_${container_gestalt.container_subtype}_${container_gestalt.length}px_${repeat.variant.index};
+                    1: return switch_spritelayer_cargos_intermodal_cars_${platform_type_and_length}_${container_gestalt.container_subtype}_${repeat.variant.index};
             </tal:container_types>
         }
-    </tal:not_suppressed>
-    <!--! note that spritesets are global for intermodal containers -->
+    </tal:block>
 </tal:container_spritesets>
+
+
+<!--! pseudo cargo checking code
+    1. check known labels -> named random switch
+    2. check known classes -> named random switch
+    3. fall back to random switch for box
+-->
+
+<tal:platform_types repeat="platform_type spritelayer_cargos.intermodal_containers.IntermodalContainerGestalt().all_platform_types">
+    <tal:platform_length repeat="platform_length [16, 24, 32]">
+        <!--! note that the suppression list check is to prevent nml complaining about unused switches -->
+        <tal:block condition="(platform_type, platform_length) not in spritelayer_cargos.intermodal_containers.suppression_list"
+                   define="platform_type_and_length platform_type + '_' + str(platform_length) + 'px'">
+            <!--! check generic cargo classes
+                  bulk class is explicitly not checked as there are no meaningful default bulk sprites
+            -->
+            switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_containers_check_cargo_class_liquid_${platform_type_and_length}, cargo_classes & bitmask(CC_LIQUID)) {
+                0: switch_spritelayer_cargos_intermodal_cars_random_${platform_type_and_length}_box_DFLT;
+                return switch_spritelayer_cargos_intermodal_cars_random_${platform_type_and_length}_tank_DFLT;
+            }
+            switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_containers_check_cargo_class_refrigerated_${platform_type_and_length}, cargo_classes & bitmask(CC_REFRIGERATED)) {
+                0: switch_spritelayer_cargos_containers_check_cargo_class_liquid_${platform_type_and_length};
+                return switch_spritelayer_cargos_intermodal_cars_random_${platform_type_and_length}_reefer_DFLT;
+            }
+
+            <!--! check explicit cargo labels -->
+            switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_cars_${platform_type_and_length}, cargo_type_in_veh) {
+                <tal:cargo_label_container_type_mapping repeat="cargo_label spritelayer_cargos.intermodal_containers.GestaltGraphicsIntermodal().cargo_label_mapping.items()">
+                    ${cargo_label[0]}: switch_spritelayer_cargos_intermodal_cars_random_${platform_type_and_length}_${cargo_label[1]};
+                </tal:cargo_label_container_type_mapping>
+                return switch_spritelayer_cargos_containers_check_cargo_class_refrigerated_${platform_type_and_length};
+            }
+        </tal:block>
+    </tal:platform_length>
+</tal:platform_types>
+
+
