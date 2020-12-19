@@ -50,18 +50,18 @@
 // check generic cargo classes
 // bulk class is explicitly not checked as there are no meaningful default bulk sprites
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_containers_check_cargo_class_liquid, cargo_classes & bitmask(CC_LIQUID)) {
-    0: switch_spritelayer_cargos_intermodal_cars_random_${consist.floor_height_type}_box_DFLT_${4 * vehicle.vehicle_length}px;
-    return switch_spritelayer_cargos_intermodal_cars_random_${consist.floor_height_type}_tank_DFLT_${4 * vehicle.vehicle_length}px;
+    0: switch_spritelayer_cargos_intermodal_cars_random_${consist.platform_type}_box_DFLT_${4 * vehicle.vehicle_length}px;
+    return switch_spritelayer_cargos_intermodal_cars_random_${consist.platform_type}_tank_DFLT_${4 * vehicle.vehicle_length}px;
 }
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_containers_check_cargo_class_refrigerated, cargo_classes & bitmask(CC_REFRIGERATED)) {
     0: ${vehicle.id}_switch_graphics_containers_check_cargo_class_liquid;
-    return switch_spritelayer_cargos_intermodal_cars_random_${consist.floor_height_type}_reefer_DFLT_${4 * vehicle.vehicle_length}px;
+    return switch_spritelayer_cargos_intermodal_cars_random_${consist.platform_type}_reefer_DFLT_${4 * vehicle.vehicle_length}px;
 }
 
 // check explicit cargo labels
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_containers_check_cargo_label, cargo_type_in_veh) {
     <tal:cargo_label_container_type_mapping repeat="cargo_label consist.gestalt_graphics.cargo_label_mapping.items()">
-        ${cargo_label[0]}: switch_spritelayer_cargos_intermodal_cars_random_${consist.floor_height_type}_${cargo_label[1]}_${4 * vehicle.vehicle_length}px;
+        ${cargo_label[0]}: switch_spritelayer_cargos_intermodal_cars_random_${consist.platform_type}_${cargo_label[1]}_${4 * vehicle.vehicle_length}px;
     </tal:cargo_label_container_type_mapping>
     return ${vehicle.id}_switch_graphics_containers_check_cargo_class_refrigerated;
 }

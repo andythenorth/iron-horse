@@ -786,8 +786,7 @@ class MailEngineCargoSprinterEngineConsist(MailEngineConsist):
                                                       cargo_label_mapping=GestaltGraphicsIntermodal().cargo_label_mapping)
 
     @property
-    # account for variable floor height
-    def floor_height_type(self):
+    def platform_type(self):
         # !! cargo sprinters all default currently, extend as needed
         return 'default'
 
@@ -1808,8 +1807,8 @@ class ExpressIntermodalCarConsist(CarConsist):
         self.gestalt_graphics = GestaltGraphicsIntermodal(consist_ruleset='2_unit_sets')
 
     @property
-    # account for variable floor height
-    def floor_height_type(self):
+    # account for variable floor heights, well cars, etc
+    def platform_type(self):
         # !! express intermodal all default currently, extend as needed
         return 'default'
 
@@ -1965,8 +1964,8 @@ class IntermodalCarConsist(CarConsist):
         self.gestalt_graphics = GestaltGraphicsIntermodal(consist_ruleset='4_unit_sets')
 
     @property
-    # account for variable floor height
-    def floor_height_type(self):
+    # account for variable floor height, well cars, etc
+    def platform_type(self):
         # currently we're only checking NG or not, this might need extended in future (might need prop directly on the consist?)
         if self.track_type == 'NG':
             return 'low_floor'
@@ -2621,8 +2620,8 @@ class VehicleTransporterCarConsist(CarConsist):
         self.gestalt_graphics = GestaltGraphicsVehicleTransporter()
 
     @property
-    # account for variable floor height (e.g. NG vs standard, or low-floor wagons etc)
-    def floor_height_type(self):
+    # account for e.g. low floor, double deck etc
+    def platform_type(self):
         # !! all default currently, extend as needed - see intermodal cars for example
         return 'default'
 
