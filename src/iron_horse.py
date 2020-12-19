@@ -51,6 +51,7 @@ from vehicles import ingot_cars
 from vehicles import intermodal_cars
 from vehicles import livestock_cars
 from vehicles import log_cars
+from vehicles import low_floor_intermodal_cars
 from vehicles import luxury_passenger_cars
 from vehicles import mail_cars
 from vehicles import torpedo_cars
@@ -197,6 +198,7 @@ def main():
     intermodal_cars.main()
     livestock_cars.main()
     log_cars.main()
+    low_floor_intermodal_cars.main()
     luxury_passenger_cars.main()
     mail_cars.main()
     ore_hopper_cars.main()

@@ -1940,13 +1940,12 @@ class IngotCarConsist(CarConsist):
                                                                          ['empty', 'unflipped', 10], ['loading_0', 'unflipped', 40], ['loaded_0', 'unflipped', 70]])
 
 
-class IntermodalCarConsist(CarConsist):
+class IntermodalCarConsistBase(CarConsist):
     """
     General cargo - refits everything except mail, pax.
     """
 
     def __init__(self, **kwargs):
-        self.base_id = 'intermodal_car'
         super().__init__(**kwargs)
         self.class_refit_groups = ['all_freight']
         self.label_refits_allowed = []  # no specific labels needed
@@ -1960,17 +1959,41 @@ class IntermodalCarConsist(CarConsist):
         self.use_colour_randomisation_strategies = False
         self.allow_flip = True
         # Graphics configuration
-        # !! note to future, if a roster needs shorter intermodal sets, set the consist_ruleset conditionally by checking roster
-        self.gestalt_graphics = GestaltGraphicsIntermodal(consist_ruleset='4_unit_sets')
+        # various rulesets are supported, per consist, (or could be extended to checks per roster)
+        if kwargs.get('consist_ruleset', None) is not None:
+            consist_ruleset = kwargs.get('consist_ruleset')
+        else:
+            consist_ruleset = '4_unit_sets'
+        self.gestalt_graphics = GestaltGraphicsIntermodal(consist_ruleset=consist_ruleset)
+
+
+class IntermodalCarConsist(IntermodalCarConsistBase):
+    """
+    Default intermodal car - simple flat platform at default height.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = 'intermodal_car'
+        super().__init__(**kwargs)
 
     @property
-    # account for variable floor height, well cars, etc
     def platform_type(self):
-        # currently we're only checking NG or not, this might need extended in future (might need prop directly on the consist?)
+        # the 'default' for NG is the same as for low_floor so just re-use that for now
         if self.track_type == 'NG':
             return 'low_floor'
         else:
             return 'default'
+
+
+class IntermodalLowFloorCarConsist(IntermodalCarConsistBase):
+    """
+    Low floor intermodal car - simple flat platform at height -1
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = 'low_floor_intermodal_car'
+        super().__init__(**kwargs)
+        self.platform_type = 'low_floor' # note that NG does not support low_floor, it already is low_floor
 
 
 class LivestockCarConsist(CarConsist):

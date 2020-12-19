@@ -86,6 +86,7 @@ STR_NAME_SUFFIX_INGOT_CAR                                       :Ingot Carriers
 STR_NAME_SUFFIX_INTERMODAL_CAR                                  :Container Wagon
 STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Livestock Wagon
 STR_NAME_SUFFIX_LOG_CAR                                         :Timber Wagon
+STR_NAME_SUFFIX_LOW_FLOOR_INTERMODAL_CAR                        :Low-floor Container Wagon
 STR_NAME_SUFFIX_LUXURY_PASSENGER_CAR                            :Luxury Passenger Coach
 STR_NAME_SUFFIX_LUXURY_PASSENGER_RAILCAR_TRAILER_CAR            :Railcar Luxury Trailer
 STR_NAME_SUFFIX_MAIL_CAR                                        :Mail Van

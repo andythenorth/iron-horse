@@ -51,7 +51,7 @@ class IntermodalContainerGestalt(object):
             + self.container_subtype
             + "_"
             + str(self.length)
-            + "px_"
+            + "px"
         )
 
 
@@ -254,7 +254,8 @@ container_type_gestalt_mapping = {
 
 
 # this is simply manually maintained, and is to prevent nml warnings about unused switches
-suppression_list = [('low_floor', 24), ('low_floor', 32)]
+#suppression_list = [("low_floor", 24)]  # example
+suppression_list = [] # none as of December 2020
 
 registered_container_gestalts = []
 
@@ -263,11 +264,23 @@ def register_container_gestalt(container_type, container_subtype):
     for gestalt_type in container_type_gestalt_mapping[container_type]:
         for platform_type in gestalt_type.compatible_platform_types:
             gestalt = gestalt_type(
-                        container_subtype=container_subtype, platform_type=platform_type
-                    )
+                container_subtype=container_subtype, platform_type=platform_type
+            )
             # suppression of unused gestalts to prevent nml warnings further down the chain
             if (platform_type, gestalt.length) not in suppression_list:
                 registered_container_gestalts.append(gestalt)
+
+
+def get_container_gestalts_matching_platform_type_and_length(
+    platform_type, platform_length
+):
+    result = []
+    for gestalt in registered_container_gestalts:
+        if (gestalt.platform_type == platform_type) and (
+            gestalt.length == platform_length
+        ):
+            result.append(gestalt)
+    return result
 
 
 def main():
