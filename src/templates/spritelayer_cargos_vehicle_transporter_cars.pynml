@@ -5,6 +5,7 @@ spriteset(ss_spritelayer_cargos_vehicle_transporter_cars_empty, "src/graphics/sp
 }
 
 <tal:container_spritesets repeat="container_gestalt spritelayer_cargos.vehicles_cargos.registered_container_gestalts">
+    <!--!             # !! this is refactored to use platform_types in intermodal pipeline -->
     <tal:platform_types repeat="platform_type container_gestalt.floor_height_variants">
         <tal:variants repeat="variant container_gestalt.variants">
             <!--! crude maintenance-intensive approach to suppress unused container spritesets and switches, to avoid nml warnings -->

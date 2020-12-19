@@ -22,63 +22,81 @@ class IntermodalContainerGestalt(object):
     # !!! containers are going to need 'base sets' to allow double stack, cropped for well cars etc
     # !!! the consist needs to encode the set type to fetch the right spritesets
     # !!! base sets will also have to be encoded in gestalts here, unless they're done by (sets * gestalts) combinatorially?
-    def __init__(self, container_subtype):
+    def __init__(self, **kwargs):
         self.pipeline = GenerateCompositedIntermodalContainers()
-        self.container_subtype = container_subtype
+        self.container_subtype = kwargs.get("container_subtype", None)
+        self.platform_type = kwargs.get("platform_type", None)
 
     @property
-    def floor_height_variants(self):
+    def platform_types_with_floor_heights(self):
         # used to handle, e.g. low floor, narrow gauge etc by putting a yoffset in the generated container sprites
         # extend to accomodate double stack later (only one floor height probably)?
         # format is (label, yoffset for floor-height) - leave floor height as 0 for default floor heights
-        if self.stack_type == "single":
-            return (("default", 0), ("low_floor", 1))
-        else:
-            # other values not implemented yet
-            raise ValueError()
+        # it's easier for templating to have a list of 2 tuples than a dict
+        result = []
+        for platform_type in self.compatible_platform_types:
+            result.append((platform_type, self.floor_height_for_platform_type))
+        return result
+
+    @property
+    def floor_height_for_platform_type(self):
+        # crude resolution of floor height for each platform type
+        return {"default": 0, "low_floor": 1}[self.platform_type]
 
     @property
     def id(self):
-        return "intermodal_" + self.container_subtype + "_" + str(self.length) + "px"
+        return (
+            "intermodal_"
+            + self.platform_type
+            + "_"
+            + self.container_subtype
+            + "_"
+            + str(self.length)
+            + "px_"
+        )
 
 
 class IntermodalFlatCar16pxStandard(IntermodalContainerGestalt):
-    def __init__(self, container_subtype):
-        super().__init__(container_subtype)
+    compatible_platform_types = ["default", "low_floor"]
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
         self.length = 16
-        self.stack_type = "single"
-        container_30_foot = container_subtype + "_30_foot"
+        container_30_foot = kwargs.get("container_subtype") + "_30_foot"
         self.variants = [[container_30_foot]]
 
 
 class IntermodalFlatCar24pxStandard(IntermodalContainerGestalt):
-    def __init__(self, container_subtype):
-        super().__init__(container_subtype)
+    compatible_platform_types = ["default", "low_floor"]
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
         self.length = 24
-        self.stack_type = "single"
-        container_20_foot = container_subtype + "_20_foot"
-        container_40_foot = container_subtype + "_40_foot"
+        container_20_foot = kwargs.get("container_subtype") + "_20_foot"
+        container_40_foot = kwargs.get("container_subtype") + "_40_foot"
         self.variants = [[container_20_foot, container_20_foot], [container_40_foot]]
 
 
 class IntermodalFlatCar24px40FootOnly(IntermodalContainerGestalt):
     # because some cargos / container types don't look right at 20 foot (too short)
-    def __init__(self, container_subtype):
-        super().__init__(container_subtype)
+    compatible_platform_types = ["default", "low_floor"]
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
         self.length = 24
-        self.stack_type = "single"
-        container_40_foot = container_subtype + "_40_foot"
+        container_40_foot = kwargs.get("container_subtype") + "_40_foot"
         self.variants = [[container_40_foot]]
 
 
 class IntermodalFlatCar32pxStandard(IntermodalContainerGestalt):
-    def __init__(self, container_subtype):
-        super().__init__(container_subtype)
+    compatible_platform_types = ["default", "low_floor"]
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
         self.length = 32
-        self.stack_type = "single"
-        container_20_foot = container_subtype + "_20_foot"
-        container_30_foot = container_subtype + "_30_foot"
-        container_40_foot = container_subtype + "_40_foot"
+        container_20_foot = kwargs.get("container_subtype") + "_20_foot"
+        container_30_foot = kwargs.get("container_subtype") + "_30_foot"
+        container_40_foot = kwargs.get("container_subtype") + "_40_foot"
         self.variants = [
             [container_20_foot, container_20_foot, container_20_foot],
             [container_30_foot, container_30_foot],
@@ -88,12 +106,13 @@ class IntermodalFlatCar32pxStandard(IntermodalContainerGestalt):
 
 
 class IntermodalFlatCar32pxNo40Foot(IntermodalContainerGestalt):
-    def __init__(self, container_subtype):
-        super().__init__(container_subtype)
+    compatible_platform_types = ["default", "low_floor"]
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
         self.length = 32
-        self.stack_type = "single"
-        container_20_foot = container_subtype + "_20_foot"
-        container_30_foot = container_subtype + "_30_foot"
+        container_20_foot = kwargs.get("container_subtype") + "_20_foot"
+        container_30_foot = kwargs.get("container_subtype") + "_30_foot"
         self.variants = [
             [container_20_foot, container_20_foot, container_20_foot],
             [container_30_foot, container_30_foot],
@@ -101,22 +120,24 @@ class IntermodalFlatCar32pxNo40Foot(IntermodalContainerGestalt):
 
 
 class IntermodalFlatCar32px30FootOnly(IntermodalContainerGestalt):
-    def __init__(self, container_subtype):
-        super().__init__(container_subtype)
+    compatible_platform_types = ["default", "low_floor"]
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
         self.length = 32
-        self.stack_type = "single"
-        container_20_foot = container_subtype + "_20_foot"
-        container_30_foot = container_subtype + "_30_foot"
+        container_20_foot = kwargs.get("container_subtype") + "_20_foot"
+        container_30_foot = kwargs.get("container_subtype") + "_30_foot"
         self.variants = [
             [container_30_foot, container_30_foot],
         ]
 
 
 class IntermodalFlatCar16pxBox(IntermodalContainerGestalt):
-    def __init__(self, container_subtype):
-        super().__init__(container_subtype)
+    compatible_platform_types = ["default", "low_floor"]
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
         self.length = 16
-        self.stack_type = "single"
         self.variants = [
             ["box_DFLT_30_foot_1CC"],
             ["box_DFLT_30_foot_2CC"],
@@ -125,10 +146,11 @@ class IntermodalFlatCar16pxBox(IntermodalContainerGestalt):
 
 
 class IntermodalFlatCar24pxBox(IntermodalContainerGestalt):
-    def __init__(self, container_subtype):
-        super().__init__(container_subtype)
+    compatible_platform_types = ["default", "low_floor"]
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
         self.length = 24
-        self.stack_type = "single"
         self.variants = [
             ["box_DFLT_20_foot_1CC", "box_DFLT_20_foot_1CC"],
             ["box_DFLT_20_foot_1CC", "box_DFLT_20_foot_red"],
@@ -142,10 +164,11 @@ class IntermodalFlatCar24pxBox(IntermodalContainerGestalt):
 
 
 class IntermodalFlatCar32pxBox(IntermodalContainerGestalt):
-    def __init__(self, container_subtype):
-        super().__init__(container_subtype)
+    compatible_platform_types = ["default", "low_floor"]
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
         self.length = 32
-        self.stack_type = "single"
         self.variants = [
             ["box_DFLT_20_foot_1CC", "box_DFLT_20_foot_1CC", "box_DFLT_20_foot_1CC"],
             ["box_DFLT_20_foot_1CC", "box_DFLT_20_foot_1CC", "box_DFLT_20_foot_red"],
@@ -172,10 +195,12 @@ def get_container_gestalts_by_length(vehicle_length):
     return result
 
 
-registered_container_gestalts = []
-
 container_type_gestalt_mapping = {
-    "box": [IntermodalFlatCar16pxBox, IntermodalFlatCar24pxBox, IntermodalFlatCar32pxBox],
+    "box": [
+        IntermodalFlatCar16pxBox,
+        IntermodalFlatCar24pxBox,
+        IntermodalFlatCar32pxBox,
+    ],
     "bulk": [
         IntermodalFlatCar16pxStandard,
         IntermodalFlatCar24pxStandard,
@@ -228,10 +253,17 @@ container_type_gestalt_mapping = {
     ],
 }
 
+registered_container_gestalts = []
+
 
 def register_container_gestalt(container_type, container_subtype):
     for gestalt in container_type_gestalt_mapping[container_type]:
-        registered_container_gestalts.append(gestalt(container_subtype))
+        for platform_type in gestalt.compatible_platform_types:
+            registered_container_gestalts.append(
+                gestalt(
+                    container_subtype=container_subtype, platform_type=platform_type
+                )
+            )
 
 
 def main():
@@ -240,7 +272,7 @@ def main():
     # - specific known classes (as default, or fallback where the class might still have further cargo specific sprites)
     # - all other cargos / classes not handled explicitly, which will fall back to box
     for container_type in container_type_gestalt_mapping.keys():
-      # exclude these types which don't have a meaningful 'default' as the graphics are ALWAYS cargo-specific
+        # exclude these types which don't have a meaningful 'default' as the graphics are ALWAYS cargo-specific
         if container_type not in [
             "bulk",
             "stake_flatrack",
@@ -253,9 +285,7 @@ def main():
         GestaltGraphicsIntermodal().cargo_label_mapping.values()
     ):
         # exclude DFLT, handled explicitly elsewhere
-        if (
-            "DFLT" not in container_subtype
-        ):
+        if "DFLT" not in container_subtype:
             container_type = container_subtype[0:-5]
             register_container_gestalt(container_type, container_subtype)
 

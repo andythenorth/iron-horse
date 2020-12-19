@@ -42,6 +42,8 @@ class VehiclesCargoGestalt(object):
 
     @property
     def floor_height_variants(self):
+            # !! this is refactored to use platform_types in intermodal pipeline
+
         # used to handle, e.g. low floor, narrow gauge etc by putting a yoffset in the generated container sprites
         # extend to accomodate double stack later (only one floor height probably)?
         # format is (label, yoffset for floor-height) - leave floor height as 0 for default floor heights
