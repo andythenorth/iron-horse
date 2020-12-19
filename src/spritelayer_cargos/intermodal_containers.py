@@ -254,8 +254,8 @@ container_type_gestalt_mapping = {
 
 
 # this is simply manually maintained, and is to prevent nml warnings about unused switches
-#suppression_list = [("low_floor", 24)]  # example
-suppression_list = [] # none as of December 2020
+# suppression_list = [("low_floor", 24)]  # example
+suppression_list = []  # none as of December 2020
 
 registered_container_gestalts = []
 
