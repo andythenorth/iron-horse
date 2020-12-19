@@ -214,8 +214,7 @@ class IntermodalStakeFlatrack16px(IntermodalContainerGestalt):
         self.length = 16
         self.stack_type = 'single'
         stake_flatrack_30_foot = container_subtype + '_30_foot'
-        self.variants = [[stake_flatrack_30_foot],
-                         [stake_flatrack_30_foot]]
+        self.variants = [[stake_flatrack_30_foot]]
 
 
 class IntermodalStakeFlatrack24px(IntermodalContainerGestalt):
