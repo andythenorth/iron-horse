@@ -397,12 +397,14 @@ class GestaltGraphicsIntermodal(GestaltGraphics):
     @property
     def position_variants(self):
         # used in spriteset templating
-        # 2 unit articulated sets only need 3 variants, > 2 units also need
-        return (
-            ["default", "first", "last"]
-            if self.consist_ruleset == "2_unit_sets"
-            else ["default", "first", "last", "middle"]
-        )
+        if self.consist_ruleset == "1_unit_sets":
+            # 1 unit articulated sets only need 1 variant
+            return ["default"]
+        elif self.consist_ruleset == "2_unit_sets":
+            # 2 unit articulated sets only need 3 variants
+            return ["default", "first", "last"]
+        else:
+            return ["default", "first", "last", "middle"]
 
     @property
     def nml_template(self):
