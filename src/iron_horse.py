@@ -1,15 +1,17 @@
 import os.path
+
 currentdir = os.curdir
 
 import sys
-sys.path.append(os.path.join('src'))  # add to the module search path
+
+sys.path.append(os.path.join("src"))  # add to the module search path
 
 import global_constants
 import utils
+
 makefile_args = utils.get_makefile_args(sys)
 
-generated_files_path = os.path.join(
-    currentdir, global_constants.generated_files_dir)
+generated_files_path = os.path.join(currentdir, global_constants.generated_files_dir)
 if not os.path.exists(generated_files_path):
     os.mkdir(generated_files_path)
 
@@ -24,7 +26,7 @@ import spritelayer_cargos.intermodal_containers
 import spritelayer_cargos.vehicles_cargos
 
 # import wagons
-#from vehicles import alignment_cars
+# from vehicles import alignment_cars
 from vehicles import bolster_cars
 from vehicles import box_cars
 from vehicles import bulkhead_flat_cars
@@ -75,14 +77,19 @@ from vehicles import tarpaulin_cars
 from vehicles import vehicle_parts_box_cars
 from vehicles import vehicle_transporter_cars
 
+
 def get_active_rosters():
     #  for a faster single-roster compiles when testing, optionally pass a roster id (lower case) as a makefile arg
-    if makefile_args.get('roster', 'ALL') == 'ALL':
+    if makefile_args.get("roster", "ALL") == "ALL":
         active_rosters = [
-            roster for roster in registered_rosters if not roster.disabled]
+            roster for roster in registered_rosters if not roster.disabled
+        ]
     else:
-        active_rosters = [roster for roster in registered_rosters if roster.id ==
-                          makefile_args['roster']]  # make sure it's iterable
+        active_rosters = [
+            roster
+            for roster in registered_rosters
+            if roster.id == makefile_args["roster"]
+        ]  # make sure it's iterable
     return active_rosters
 
 
@@ -99,11 +106,17 @@ def get_consists_in_buy_menu_order():
     consist_id_defender = set([consist.id for consist in consists])
     buy_menu_defender = set(buy_menu_sort_order)
     for id in buy_menu_defender.difference(consist_id_defender):
-        utils.echo_message("Warning: consist " + id +
-                           " in buy_menu_sort_order, but not found in registered_consists")
+        utils.echo_message(
+            "Warning: consist "
+            + id
+            + " in buy_menu_sort_order, but not found in registered_consists"
+        )
     for id in consist_id_defender.difference(buy_menu_defender):
-        utils.echo_message("Warning: consist " + id +
-                           " in consists, but not in buy_menu_sort_order - won't show in game")
+        utils.echo_message(
+            "Warning: consist "
+            + id
+            + " in consists, but not in buy_menu_sort_order - won't show in game"
+        )
     return consists
 
 
@@ -111,13 +124,20 @@ def vacant_numeric_ids_formatted():
     # when adding vehicles it's useful to know what the next free numeric ID is
     # tidy-mind problem, but do we have any vacant numeric ID slots in the currently used range?
     # 'print' eh? - but it's fine echo_message isn't intended for this kind of info, don't bother changing
-    max_id = max(numeric_id_defender) -  (max(numeric_id_defender) % 10)
+    max_id = max(numeric_id_defender) - (max(numeric_id_defender) % 10)
     id_gaps = []
-    for i in range(0, int(max_id/10)):
+    for i in range(0, int(max_id / 10)):
         id = i * 10
         if id not in numeric_id_defender:
             id_gaps.append(str(id))
-    return "Vacant numeric ID slots: " + ', '.join(id_gaps) + (" and from " if len(id_gaps) > 0 else '') + str(max_id + 10) + " onwards"
+    return (
+        "Vacant numeric ID slots: "
+        + ", ".join(id_gaps)
+        + (" and from " if len(id_gaps) > 0 else "")
+        + str(max_id + 10)
+        + " onwards"
+    )
+
 
 def get_haulage_bonus_engine_id_tree():
     # supports a BAD FEATURE easter egg, where some railcar speeds are increased when hauled by express engine, and can be used as fast MUs
@@ -125,11 +145,14 @@ def get_haulage_bonus_engine_id_tree():
     for roster in get_active_rosters():
         for consist in roster.engine_consists:
             # check for express-type roles, which are determined by multiple role groups
-            for role_group_mapping_key in ['express', 'driving_cab', 'luxury_railcar']:
-                group_roles = global_constants.role_group_mapping[role_group_mapping_key]
+            for role_group_mapping_key in ["express", "driving_cab", "luxury_railcar"]:
+                group_roles = global_constants.role_group_mapping[
+                    role_group_mapping_key
+                ]
                 if consist.role in group_roles:
                     express_engine_ids.append(consist.id)
     return [(count, id) for count, id in enumerate(express_engine_ids)]
+
 
 def get_livery_2_engine_ids():
     # for vehicles with consist-specific liveries
@@ -140,11 +163,21 @@ def get_livery_2_engine_ids():
             # second livery choice is deliberate, means 'as seen in buy menu' livery is built for common case of express 1, heavy_express 1
             # note that -2 is used for heavy_express, be careful which engines are in this joker branch
             # ! this (x,y) tuple format is weird and won't scale well, see train.py intro_date_days_offset() for a dict based solution to a similar problem
-            if (consist.role, consist.role_child_branch_num) in [('branch_express', 1), ('express', 2), ('heavy_express', 2), ('heavy_express', -2), ('pax_railcar', 2), ('mail_railcar', 2)]:
+            if (consist.role, consist.role_child_branch_num) in [
+                ("branch_express", 1),
+                ("express", 2),
+                ("heavy_express", 2),
+                ("heavy_express", -2),
+                ("pax_railcar", 2),
+                ("mail_railcar", 2),
+            ]:
                 result.append(consist.id)
     if len(result) > 255:
-        utils.echo_message("action 2 switch is limited to 255 values, get_livery_2_engine_ids exceeds this - needs split across multiple switches")
+        utils.echo_message(
+            "action 2 switch is limited to 255 values, get_livery_2_engine_ids exceeds this - needs split across multiple switches"
+        )
     return result
+
 
 def get_pax_car_ids():
     # for pax cars with consist-specific liveries
@@ -153,11 +186,18 @@ def get_pax_car_ids():
     for roster in get_active_rosters():
         for consists in roster.wagon_consists.values():
             for consist in consists:
-                if getattr(consist, 'report_as_pax_car_to_neighbouring_vehicle_in_rulesets', False):
+                if getattr(
+                    consist,
+                    "report_as_pax_car_to_neighbouring_vehicle_in_rulesets",
+                    False,
+                ):
                     result.append(consist.base_numeric_id)
     if len(result) > 255:
-        utils.echo_message("action 2 switch is limited to 255 values, get_pax_car_ids exceeds this - needs split across multiple switches")
+        utils.echo_message(
+            "action 2 switch is limited to 255 values, get_pax_car_ids exceeds this - needs split across multiple switches"
+        )
     return result
+
 
 def main():
     # rosters
