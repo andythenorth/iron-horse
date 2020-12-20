@@ -1,21 +1,29 @@
 import os.path
+
 currentdir = os.curdir
 
 import filecmp
 from PIL import Image
 
 import polar_fox
-from polar_fox.graphics_units import SimpleRecolour, AppendToSpritesheet, AddCargoLabel, AddBuyMenuSprite, TransposeAsymmetricSprites
+from polar_fox.graphics_units import (
+    SimpleRecolour,
+    AppendToSpritesheet,
+    AddCargoLabel,
+    AddBuyMenuSprite,
+    TransposeAsymmetricSprites,
+)
 import polar_fox.pixa as pixa
 from polar_fox.pixa import Spritesheet, PieceCargoSprites
 from gestalt_graphics import graphics_constants
 
-DOS_PALETTE = Image.open('palette_key.png').palette
+DOS_PALETTE = Image.open("palette_key.png").palette
 
 """
 Pipelines can be dedicated to a single task such as SimpleRecolourPipeline
 Or they can compose units for more complicated tasks, such as colouring and loading a specific vehicle type
 """
+
 
 class Pipeline(object):
     def __init__(self):
@@ -27,17 +35,27 @@ class Pipeline(object):
     def vehicle_source_input_path(self):
         # convenience method to get the vehicle template image
         # I considered having this return the Image, not just the path, but it's not saving much, and is less obvious what it does when used
-        return os.path.join(currentdir, 'src', 'graphics', self.consist.roster_id, self.consist.id + '.png')
+        return os.path.join(
+            currentdir,
+            "src",
+            "graphics",
+            self.consist.roster_id,
+            self.consist.id + ".png",
+        )
 
     @property
     def chassis_input_path(self):
         # convenience method to get the path for the chassis image
-        return os.path.join(currentdir, 'src', 'graphics', 'chassis', self.vehicle_unit.chassis + '.png')
+        return os.path.join(
+            currentdir, "src", "graphics", "chassis", self.vehicle_unit.chassis + ".png"
+        )
 
     @property
     def roof_input_path(self):
         # convenience method to get the path for the roof image
-        return os.path.join(currentdir, 'src', 'graphics', 'roofs', self.vehicle_unit.roof + '.png')
+        return os.path.join(
+            currentdir, "src", "graphics", "roofs", self.vehicle_unit.roof + ".png"
+        )
 
     def process_buy_menu_sprite(self, spritesheet):
         # this function is passed (uncalled) into the pipeline, and then called at render time
@@ -53,28 +71,47 @@ class Pipeline(object):
             # this is jank because some articulated consists with fancy rulesets need to flip some vehicles
             # this is probably pretty fragile, but eh, JFDI
             ruleset_offset_num_rows_jank = 0
-            if getattr(self.consist.gestalt_graphics, 'consist_ruleset', None) in ['metro']:
+            if getattr(self.consist.gestalt_graphics, "consist_ruleset", None) in [
+                "metro"
+            ]:
                 if unit_counter % 2 != 0:
-                    ruleset_offset_num_rows_jank = 4 # hard-coded to metro currently
-            if self.consist.gestalt_graphics.alternative_cc_livery is not None: # alternative_cc_livery jank for engines eh
+                    ruleset_offset_num_rows_jank = 4  # hard-coded to metro currently
+            if (
+                self.consist.gestalt_graphics.alternative_cc_livery is not None
+            ):  # alternative_cc_livery jank for engines eh
                 ruleset_offset_num_rows_jank = unit_counter
-            unit_spriterow_offset = (unit.spriterow_num + ruleset_offset_num_rows_jank) * graphics_constants.spriterow_height
-            for cc_livery_counter, cc_livery in enumerate(getattr(self.consist.gestalt_graphics, 'all_liveries', ['default'])):
-                crop_box_src = (224,
-                                10 + unit_spriterow_offset + (cc_livery_counter * 30),
-                                224 + unit_length_in_pixels + 1, # allow for 1px coupler / corrider overhang
-                                26 + unit_spriterow_offset + (cc_livery_counter * 30))
-                crop_box_dest = (360 + x_offset,
-                                 10 + (cc_livery_counter * 30),
-                                 360 + x_offset + unit_length_in_pixels + 1, # allow for 1px coupler / corrider overhang
-                                 26 + (cc_livery_counter * 30))
+            unit_spriterow_offset = (
+                unit.spriterow_num + ruleset_offset_num_rows_jank
+            ) * graphics_constants.spriterow_height
+            for cc_livery_counter, cc_livery in enumerate(
+                getattr(self.consist.gestalt_graphics, "all_liveries", ["default"])
+            ):
+                crop_box_src = (
+                    224,
+                    10 + unit_spriterow_offset + (cc_livery_counter * 30),
+                    224
+                    + unit_length_in_pixels
+                    + 1,  # allow for 1px coupler / corrider overhang
+                    26 + unit_spriterow_offset + (cc_livery_counter * 30),
+                )
+                crop_box_dest = (
+                    360 + x_offset,
+                    10 + (cc_livery_counter * 30),
+                    360
+                    + x_offset
+                    + unit_length_in_pixels
+                    + 1,  # allow for 1px coupler / corrider overhang
+                    26 + (cc_livery_counter * 30),
+                )
                 custom_buy_menu_sprite = spritesheet.sprites.copy().crop(crop_box_src)
                 spritesheet.sprites.paste(custom_buy_menu_sprite, crop_box_dest)
                 # increment x offset for pasting in next vehicle
             x_offset += unit_length_in_pixels
         return spritesheet
 
-    def render_common(self, input_image, units, output_base_name=None, output_suffix=''):
+    def render_common(
+        self, input_image, units, output_base_name=None, output_suffix=""
+    ):
         # expects to be passed a PIL Image object
         # units is a list of objects, with their config data already baked in (don't have to pass anything to units except the spritesheet)
         # each unit is then called in order, passing in and returning a pixa SpriteSheet
@@ -82,15 +119,25 @@ class Pipeline(object):
         if output_base_name is None:
             # default to consist name for file name, but can over-ride for e.g. containers by passing something in
             output_base_name = self.consist.id
-        output_path = os.path.join(currentdir, 'generated', 'graphics', output_base_name + output_suffix + '.png')
-        output_path_tmp = os.path.join(currentdir, 'generated', 'graphics', output_base_name + output_suffix + '.new.png')
+        output_path = os.path.join(
+            currentdir,
+            "generated",
+            "graphics",
+            output_base_name + output_suffix + ".png",
+        )
+        output_path_tmp = os.path.join(
+            currentdir,
+            "generated",
+            "graphics",
+            output_base_name + output_suffix + ".new.png",
+        )
         spritesheet = pixa.make_spritesheet_from_image(input_image, DOS_PALETTE)
 
         for unit in units:
             spritesheet = unit.render(spritesheet)
         # I don't normally leave commented-out code behind, but I'm bored of looking in the PIL docs for how to show the image during compile
-        #if self.consist.id == 'velaro_thing':
-            #spritesheet.sprites.show()
+        # if self.consist.id == 'velaro_thing':
+        # spritesheet.sprites.show()
 
         # save a tmp file first and compare to existing file (if any)
         # this prevents destroying the nmlc sprite cache with every graphics run by needlessly replacing the files
@@ -114,6 +161,7 @@ class PassThroughPipeline(Pipeline):
     """
     Solely opens the input image and saves it, this more of a theoretical case, there's no actual reason to use this.
     """
+
     def __init__(self):
         # this should be sparse, don't store any consist info in Pipelines, pass at render time
         super().__init__()
@@ -132,6 +180,7 @@ class GenerateCompositedIntermodalContainers(Pipeline):
     Creates a spritesheet with a set of composited intermodal containers.
     This works a little differently to vehicle pipelines, but close enough that it's worth using pipelines to share spritesheet save code etc.
     """
+
     def __init__(self):
         # this should be sparse, don't store any consist info in Pipelines, pass at render time
         super().__init__()
@@ -139,30 +188,52 @@ class GenerateCompositedIntermodalContainers(Pipeline):
     def resolve_template_name(self, variant):
         # figure out which template png to use based on gestalt length + container pattern
         # - e.g. 32px_40_20, 32px_20_20_20 etc?
-        result = [str(self.intermodal_container_gestalt.length) + 'px']
+        result = [str(self.intermodal_container_gestalt.length) + "px"]
         for container in variant:
-            result.append(container.split('_foot')[0][-2:])
-        return 'intermodal_template_' + '_'.join(result)
+            result.append(container.split("_foot")[0][-2:])
+        return "intermodal_template_" + "_".join(result)
 
     def add_container_spriterows(self):
         for variant in self.intermodal_container_gestalt.variants:
-            template_path = os.path.join(currentdir, 'src', 'graphics', 'cargo_templates', self.resolve_template_name(variant) + '.png')
+            template_path = os.path.join(
+                currentdir,
+                "src",
+                "graphics",
+                "cargo_templates",
+                self.resolve_template_name(variant) + ".png",
+            )
             template_image = Image.open(template_path)
 
             # get the loc points and sort them for display
             # !! loc points might need extended to support double stack ??
-            loc_points = [(pixel[0], pixel[1] - 10, pixel[2]) for pixel in pixa.pixascan(template_image) if pixel[2] in [226, 240, 244]]
+            loc_points = [
+                (pixel[0], pixel[1] - 10, pixel[2])
+                for pixel in pixa.pixascan(template_image)
+                if pixel[2] in [226, 240, 244]
+            ]
             loc_points_grouped_and_sorted_for_display = {}
-            for angle_index, bbox in enumerate(self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed):
-                pixels=[]
+            for angle_index, bbox in enumerate(
+                self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed
+            ):
+                pixels = []
                 for pixel in loc_points:
                     if pixel[0] >= bbox[0] and pixel[0] <= (bbox[0] + bbox[1]):
                         pixels.append(pixel)
                         # catch invalid pixels
                         if (1 + [226, 240, 244].index(pixel[2])) > len(variant):
                             message = template_path
-                            message += " contains pixel colour " + str(pixel[2]) + " which implies " + str(1 + [226, 240, 244].index(pixel[2])) + " containers"
-                            message += " but the variant only defines " + str(len(variant)) + " container sprite(s)"
+                            message += (
+                                " contains pixel colour "
+                                + str(pixel[2])
+                                + " which implies "
+                                + str(1 + [226, 240, 244].index(pixel[2]))
+                                + " containers"
+                            )
+                            message += (
+                                " but the variant only defines "
+                                + str(len(variant))
+                                + " container sprite(s)"
+                            )
                             raise ValueError(message)
                 # fake sprite sorter - containers nearer front need to overlap containers behind
                 # position pixel colour indexes (in the palette) must be in ascending order for left->right positions in <- view
@@ -179,15 +250,26 @@ class GenerateCompositedIntermodalContainers(Pipeline):
             # but so far that seems to have negligible performance cost, and caching all containers earlier in the loop would add unwanted complexity
             containers_for_this_variant = []
             for container in variant:
-                container_path = os.path.join(currentdir, 'src', 'polar_fox', 'graphics', 'intermodal_containers', container + '.png')
+                container_path = os.path.join(
+                    currentdir,
+                    "src",
+                    "polar_fox",
+                    "graphics",
+                    "intermodal_containers",
+                    container + ".png",
+                )
                 container_image = Image.open(container_path)
 
-                #if self.intermodal_container_gestalt.id == 'intermodal_box_32px':
-                    #container_image.show()
+                # if self.intermodal_container_gestalt.id == 'intermodal_box_32px':
+                # container_image.show()
                 bboxes = []
                 # only a 3 tuple in global constants bounding box definitions (no y position), we need a 4 tuple inc. y position
                 # also the format of bounding boxes needs converted to PIL crop box format
-                for bbox in self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed:
+                for (
+                    bbox
+                ) in (
+                    self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed
+                ):
                     bboxes.append([bbox[0], 10, bbox[0] + bbox[1], 10 + bbox[2]])
 
                 container_sprites = pixa.get_arbitrary_angles(container_image, bboxes)
@@ -195,65 +277,115 @@ class GenerateCompositedIntermodalContainers(Pipeline):
                 for i in range(4):
                     container_sprites[i] = container_sprites[i + 4]
 
-                #if self.intermodal_container_gestalt.id == 'intermodal_box_32px':
-                    #container_sprites[0][0].show()
+                # if self.intermodal_container_gestalt.id == 'intermodal_box_32px':
+                # container_sprites[0][0].show()
 
                 containers_for_this_variant.append((container, container_sprites))
 
-            variant_output_image = Image.open(os.path.join(currentdir, 'src', 'graphics', 'spriterow_template.png'))
-            variant_output_image = variant_output_image.crop((0, 10, graphics_constants.spritesheet_width, 10 + graphics_constants.spriterow_height))
-            floor_height_yoffset = self.intermodal_container_gestalt.floor_height_for_platform_type
+            variant_output_image = Image.open(
+                os.path.join(currentdir, "src", "graphics", "spriterow_template.png")
+            )
+            variant_output_image = variant_output_image.crop(
+                (
+                    0,
+                    10,
+                    graphics_constants.spritesheet_width,
+                    10 + graphics_constants.spriterow_height,
+                )
+            )
+            floor_height_yoffset = (
+                self.intermodal_container_gestalt.floor_height_for_platform_type
+            )
 
-            for angle_index, pixels in loc_points_grouped_and_sorted_for_display.items():
+            for (
+                angle_index,
+                pixels,
+            ) in loc_points_grouped_and_sorted_for_display.items():
                 for pixel in pixels:
                     # use the pixel colour to look up which container sprites to use, relies on hard-coded pixel colours
                     # print(self.intermodal_container_gestalt.id, variant, angle_index, pixels, container_sprites_for_this_variant)
-                    container_for_this_loc_point = containers_for_this_variant[[226, 240, 244].index(pixel[2])] # one line python stupidity
+                    container_for_this_loc_point = containers_for_this_variant[
+                        [226, 240, 244].index(pixel[2])
+                    ]  # one line python stupidity
                     container_sprites = container_for_this_loc_point[1]
                     container_width = container_sprites[angle_index][0].size[0]
                     container_height = container_sprites[angle_index][0].size[1]
                     # loc_point_y_transform then moves the loc point to the left-most corner of the container
                     # this makes it easier to place the loc point pixels in the templates
-                    loc_point_y_transforms = {'20': [1, 3, 1, 2, 1, 3, 1, 2],
-                                              '30': [1, 3, 1, 3, 1, 3, 1, 3],
-                                              '40': [1, 3, 1, 4, 1, 3, 1, 4]}
-                    container_foot_length = container_for_this_loc_point[0].split('_foot')[0][-2:] # extra special way to slice the length out of the name :P
-                    loc_point_y_transform = loc_point_y_transforms[container_foot_length][angle_index]
+                    loc_point_y_transforms = {
+                        "20": [1, 3, 1, 2, 1, 3, 1, 2],
+                        "30": [1, 3, 1, 3, 1, 3, 1, 3],
+                        "40": [1, 3, 1, 4, 1, 3, 1, 4],
+                    }
+                    container_foot_length = container_for_this_loc_point[0].split(
+                        "_foot"
+                    )[0][
+                        -2:
+                    ]  # extra special way to slice the length out of the name :P
+                    loc_point_y_transform = loc_point_y_transforms[
+                        container_foot_length
+                    ][angle_index]
                     # (needed beause loc points are left-bottom not left-top as per co-ordinate system, makes drawing loc points easier)
-                    container_bounding_box = (pixel[0],
-                                              pixel[1] - container_height + loc_point_y_transform + floor_height_yoffset,
-                                              pixel[0] + container_width,
-                                              pixel[1] + loc_point_y_transform + floor_height_yoffset)
+                    container_bounding_box = (
+                        pixel[0],
+                        pixel[1]
+                        - container_height
+                        + loc_point_y_transform
+                        + floor_height_yoffset,
+                        pixel[0] + container_width,
+                        pixel[1] + loc_point_y_transform + floor_height_yoffset,
+                    )
 
-                    variant_output_image.paste(container_sprites[angle_index][0], container_bounding_box, container_sprites[angle_index][1])
+                    variant_output_image.paste(
+                        container_sprites[angle_index][0],
+                        container_bounding_box,
+                        container_sprites[angle_index][1],
+                    )
 
             # create a mask to place black shadows between adjacent containers
-            combo_check = ['empty' if 'empty' in i else 'occupied' for i in variant]
+            combo_check = ["empty" if "empty" in i else "occupied" for i in variant]
             # *vehicles with 3 containers only (32px)*
             # don't allow combinations of only two adjacent 20 foot containers as it's TMWFTLB to provide the shadow for them
             # two 20 foot with a gap between are supported
             # solitary 20 foot containers of any length in any position are not prevented, but look bad (looks like loading didn't finish)
             if len(combo_check) == 3:
-                if combo_check in [['occupied', 'occupied', 'empty'], ['empty', 'occupied', 'occupied']]:
-                    raise ValueError(self.intermodal_container_gestalt.id +" - this pattern of (20 foot) containers isn't supported (can't composite shadows for it): " + str(combo_check))
+                if combo_check in [
+                    ["occupied", "occupied", "empty"],
+                    ["empty", "occupied", "occupied"],
+                ]:
+                    raise ValueError(
+                        self.intermodal_container_gestalt.id
+                        + " - this pattern of (20 foot) containers isn't supported (can't composite shadows for it): "
+                        + str(combo_check)
+                    )
 
             # don't draw shadows if there are empty slots
-            if combo_check.count('empty') == 0:
-                shadow_image = template_image.copy().crop((0,
-                                                           10 - floor_height_yoffset,
-                                                           self.global_constants.sprites_max_x_extent,
-                                                           10 + graphics_constants.spriterow_height - floor_height_yoffset))
+            if combo_check.count("empty") == 0:
+                shadow_image = template_image.copy().crop(
+                    (
+                        0,
+                        10 - floor_height_yoffset,
+                        self.global_constants.sprites_max_x_extent,
+                        10 + graphics_constants.spriterow_height - floor_height_yoffset,
+                    )
+                )
                 shadow_mask = shadow_image.copy()
-                shadow_mask = shadow_mask.point(lambda i: 255 if i == 1 else 0).convert("1") # assume shadow is always colour index 1 in the palette
+                shadow_mask = shadow_mask.point(lambda i: 255 if i == 1 else 0).convert(
+                    "1"
+                )  # assume shadow is always colour index 1 in the palette
                 variant_output_image.paste(shadow_image, mask=shadow_mask)
 
-            #if self.intermodal_container_gestalt.id == 'intermodal_box_32px':
-                #variant_output_image.show()
-            variant_spritesheet = pixa.make_spritesheet_from_image(variant_output_image, DOS_PALETTE)
-            crop_box_dest = (0,
-                             0,
-                             self.global_constants.sprites_max_x_extent,
-                             graphics_constants.spriterow_height)
+            # if self.intermodal_container_gestalt.id == 'intermodal_box_32px':
+            # variant_output_image.show()
+            variant_spritesheet = pixa.make_spritesheet_from_image(
+                variant_output_image, DOS_PALETTE
+            )
+            crop_box_dest = (
+                0,
+                0,
+                self.global_constants.sprites_max_x_extent,
+                graphics_constants.spriterow_height,
+            )
             self.units.append(AppendToSpritesheet(variant_spritesheet, crop_box_dest))
             variant_output_image.close()
             template_image.close()
@@ -268,7 +400,9 @@ class GenerateCompositedIntermodalContainers(Pipeline):
         # for this pipeline, input_image is just blank white 10px high image, to which the vehicle sprites are then appended
         input_image = Image.new("P", (graphics_constants.spritesheet_width, 10), 255)
         input_image.putpalette(DOS_PALETTE)
-        self.render_common(input_image, self.units, output_base_name=intermodal_container_gestalt.id)
+        self.render_common(
+            input_image, self.units, output_base_name=intermodal_container_gestalt.id
+        )
 
 
 class GenerateCompositedVehiclesCargos(Pipeline):
@@ -276,6 +410,7 @@ class GenerateCompositedVehiclesCargos(Pipeline):
     Creates a spritesheet with a set of composited vehicles cargos (trucks etc).
     This works a little differently to vehicle pipelines, but close enough that it's worth using pipelines to share spritesheet save code etc.
     """
+
     def __init__(self):
         # this should be sparse, don't store any consist info in Pipelines, pass at render time
         super().__init__()
@@ -283,30 +418,52 @@ class GenerateCompositedVehiclesCargos(Pipeline):
     def resolve_template_name(self, variant):
         # figure out which template png to use based on gestalt length + container pattern
         # - e.g. 32px_40_20, 32px_20_20_20 etc?
-        result = [str(self.intermodal_container_gestalt.length) + 'px']
+        result = [str(self.intermodal_container_gestalt.length) + "px"]
         for container in variant:
-            result.append(container.split('_foot')[0][-2:])
-        return 'intermodal_template_' + '_'.join(result)
+            result.append(container.split("_foot")[0][-2:])
+        return "intermodal_template_" + "_".join(result)
 
     def add_container_spriterows(self):
         for variant in self.intermodal_container_gestalt.variants:
-            template_path = os.path.join(currentdir, 'src', 'graphics', 'cargo_templates', self.resolve_template_name(variant) + '.png')
+            template_path = os.path.join(
+                currentdir,
+                "src",
+                "graphics",
+                "cargo_templates",
+                self.resolve_template_name(variant) + ".png",
+            )
             template_image = Image.open(template_path)
 
             # get the loc points and sort them for display
             # !! loc points might need extended to support double stack ??
-            loc_points = [(pixel[0], pixel[1] - 10, pixel[2]) for pixel in pixa.pixascan(template_image) if pixel[2] in [226, 240, 244]]
+            loc_points = [
+                (pixel[0], pixel[1] - 10, pixel[2])
+                for pixel in pixa.pixascan(template_image)
+                if pixel[2] in [226, 240, 244]
+            ]
             loc_points_grouped_and_sorted_for_display = {}
-            for angle_index, bbox in enumerate(self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed):
-                pixels=[]
+            for angle_index, bbox in enumerate(
+                self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed
+            ):
+                pixels = []
                 for pixel in loc_points:
                     if pixel[0] >= bbox[0] and pixel[0] <= (bbox[0] + bbox[1]):
                         pixels.append(pixel)
                         # catch invalid pixels
                         if (1 + [226, 240, 244].index(pixel[2])) > len(variant):
                             message = template_path
-                            message += " contains pixel colour " + str(pixel[2]) + " which implies " + str(1 + [226, 240, 244].index(pixel[2])) + " containers"
-                            message += " but the variant only defines " + str(len(variant)) + " container sprite(s)"
+                            message += (
+                                " contains pixel colour "
+                                + str(pixel[2])
+                                + " which implies "
+                                + str(1 + [226, 240, 244].index(pixel[2]))
+                                + " containers"
+                            )
+                            message += (
+                                " but the variant only defines "
+                                + str(len(variant))
+                                + " container sprite(s)"
+                            )
                             raise ValueError(message)
                 # fake sprite sorter - containers nearer front need to overlap containers behind
                 # position pixel colour indexes (in the palette) must be in ascending order for left->right positions in <- view
@@ -323,15 +480,26 @@ class GenerateCompositedVehiclesCargos(Pipeline):
             # but so far that seems to have negligible performance cost, and caching all containers earlier in the loop would add unwanted complexity
             containers_for_this_variant = []
             for container in variant:
-                container_path = os.path.join(currentdir, 'src', 'polar_fox', 'graphics', 'vehicles_cargos', container + '.png')
+                container_path = os.path.join(
+                    currentdir,
+                    "src",
+                    "polar_fox",
+                    "graphics",
+                    "vehicles_cargos",
+                    container + ".png",
+                )
                 container_image = Image.open(container_path)
 
-                #if self.intermodal_container_gestalt.id == 'intermodal_box_32px':
-                    #container_image.show()
+                # if self.intermodal_container_gestalt.id == 'intermodal_box_32px':
+                # container_image.show()
                 bboxes = []
                 # only a 3 tuple in global constants bounding box definitions (no y position), we need a 4 tuple inc. y position
                 # also the format of bounding boxes needs converted to PIL crop box format
-                for bbox in self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed:
+                for (
+                    bbox
+                ) in (
+                    self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed
+                ):
                     bboxes.append([bbox[0], 10, bbox[0] + bbox[1], 10 + bbox[2]])
 
                 container_sprites = pixa.get_arbitrary_angles(container_image, bboxes)
@@ -339,73 +507,133 @@ class GenerateCompositedVehiclesCargos(Pipeline):
                 for i in range(4):
                     container_sprites[i] = container_sprites[i + 4]
 
-                #if self.intermodal_container_gestalt.id == 'intermodal_box_32px':
-                    #container_sprites[0][0].show()
+                # if self.intermodal_container_gestalt.id == 'intermodal_box_32px':
+                # container_sprites[0][0].show()
 
                 containers_for_this_variant.append((container, container_sprites))
 
             # !! this is refactored to use platform_types in intermodal pipeline
-            for floor_height_variant in self.intermodal_container_gestalt.floor_height_variants:
-                variant_output_image = Image.open(os.path.join(currentdir, 'src', 'graphics', 'spriterow_template.png'))
-                variant_output_image = variant_output_image.crop((0, 10, graphics_constants.spritesheet_width, 10 + graphics_constants.spriterow_height))
+            for (
+                floor_height_variant
+            ) in self.intermodal_container_gestalt.floor_height_variants:
+                variant_output_image = Image.open(
+                    os.path.join(
+                        currentdir, "src", "graphics", "spriterow_template.png"
+                    )
+                )
+                variant_output_image = variant_output_image.crop(
+                    (
+                        0,
+                        10,
+                        graphics_constants.spritesheet_width,
+                        10 + graphics_constants.spriterow_height,
+                    )
+                )
                 floor_height_yoffset = floor_height_variant[1]
 
-                for angle_index, pixels in loc_points_grouped_and_sorted_for_display.items():
+                for (
+                    angle_index,
+                    pixels,
+                ) in loc_points_grouped_and_sorted_for_display.items():
                     for pixel in pixels:
                         # use the pixel colour to look up which container sprites to use, relies on hard-coded pixel colours
                         # print(self.intermodal_container_gestalt.id, variant, angle_index, pixels, container_sprites_for_this_variant)
-                        container_for_this_loc_point = containers_for_this_variant[[226, 240, 244].index(pixel[2])] # one line python stupidity
+                        container_for_this_loc_point = containers_for_this_variant[
+                            [226, 240, 244].index(pixel[2])
+                        ]  # one line python stupidity
                         container_sprites = container_for_this_loc_point[1]
                         container_width = container_sprites[angle_index][0].size[0]
                         container_height = container_sprites[angle_index][0].size[1]
                         # loc_point_y_transform then moves the loc point to the left-most corner of the container
                         # this makes it easier to place the loc point pixels in the templates
-                        loc_point_y_transforms = {'CC': [1, 3, 1, 2, 1, 3, 1, 2],
-                                                  '30': [1, 3, 1, 3, 1, 3, 1, 3],
-                                                  '40': [1, 3, 1, 4, 1, 3, 1, 4]}
-                        container_foot_length = container_for_this_loc_point[0].split('_foot')[0][-2:] # extra special way to slice the length out of the name :P
-                        loc_point_y_transform = loc_point_y_transforms[container_foot_length][angle_index]
+                        loc_point_y_transforms = {
+                            "CC": [1, 3, 1, 2, 1, 3, 1, 2],
+                            "30": [1, 3, 1, 3, 1, 3, 1, 3],
+                            "40": [1, 3, 1, 4, 1, 3, 1, 4],
+                        }
+                        container_foot_length = container_for_this_loc_point[0].split(
+                            "_foot"
+                        )[0][
+                            -2:
+                        ]  # extra special way to slice the length out of the name :P
+                        loc_point_y_transform = loc_point_y_transforms[
+                            container_foot_length
+                        ][angle_index]
                         # (needed beause loc points are left-bottom not left-top as per co-ordinate system, makes drawing loc points easier)
-                        container_bounding_box = (pixel[0],
-                                                  pixel[1] - container_height + loc_point_y_transform + floor_height_yoffset,
-                                                  pixel[0] + container_width,
-                                                  pixel[1] + loc_point_y_transform + floor_height_yoffset)
+                        container_bounding_box = (
+                            pixel[0],
+                            pixel[1]
+                            - container_height
+                            + loc_point_y_transform
+                            + floor_height_yoffset,
+                            pixel[0] + container_width,
+                            pixel[1] + loc_point_y_transform + floor_height_yoffset,
+                        )
 
-                        variant_output_image.paste(container_sprites[angle_index][0], container_bounding_box, container_sprites[angle_index][1])
+                        variant_output_image.paste(
+                            container_sprites[angle_index][0],
+                            container_bounding_box,
+                            container_sprites[angle_index][1],
+                        )
 
                 # create a mask to place black shadows between adjacent containers
-                combo_check = ['empty' if 'empty' in i else 'occupied' for i in variant]
+                combo_check = ["empty" if "empty" in i else "occupied" for i in variant]
                 # *vehicles with 3 containers only (32px)*
                 # don't allow combinations of only two adjacent 20 foot containers as it's TMWFTLB to provide the shadow for them
                 # two 20 foot with a gap between are supported
                 # solitary 20 foot containers of any length in any position are not prevented, but look bad (looks like loading didn't finish)
                 if len(combo_check) == 3:
-                    if combo_check in [['occupied', 'occupied', 'empty'], ['empty', 'occupied', 'occupied']]:
-                        raise ValueError(self.intermodal_container_gestalt.id +" - this pattern of (20 foot) containers isn't supported (can't composite shadows for it): " + str(combo_check))
+                    if combo_check in [
+                        ["occupied", "occupied", "empty"],
+                        ["empty", "occupied", "occupied"],
+                    ]:
+                        raise ValueError(
+                            self.intermodal_container_gestalt.id
+                            + " - this pattern of (20 foot) containers isn't supported (can't composite shadows for it): "
+                            + str(combo_check)
+                        )
 
                 # don't draw shadows if there are empty slots
-                if combo_check.count('empty') == 0:
-                    shadow_image = template_image.copy().crop((0,
-                                                               10 - floor_height_yoffset,
-                                                               self.global_constants.sprites_max_x_extent,
-                                                               10 + graphics_constants.spriterow_height - floor_height_yoffset))
+                if combo_check.count("empty") == 0:
+                    shadow_image = template_image.copy().crop(
+                        (
+                            0,
+                            10 - floor_height_yoffset,
+                            self.global_constants.sprites_max_x_extent,
+                            10
+                            + graphics_constants.spriterow_height
+                            - floor_height_yoffset,
+                        )
+                    )
                     shadow_mask = shadow_image.copy()
-                    shadow_mask = shadow_mask.point(lambda i: 255 if i == 1 else 0).convert("1") # assume shadow is always colour index 1 in the palette
+                    shadow_mask = shadow_mask.point(
+                        lambda i: 255 if i == 1 else 0
+                    ).convert(
+                        "1"
+                    )  # assume shadow is always colour index 1 in the palette
                     variant_output_image.paste(shadow_image, mask=shadow_mask)
 
-                #if self.intermodal_container_gestalt.id == 'intermodal_box_32px':
-                    #variant_output_image.show()
-                variant_spritesheet = pixa.make_spritesheet_from_image(variant_output_image, DOS_PALETTE)
-                crop_box_dest = (0,
-                                 0,
-                                 self.global_constants.sprites_max_x_extent,
-                                 graphics_constants.spriterow_height)
-                self.units.append(AppendToSpritesheet(variant_spritesheet, crop_box_dest))
+                # if self.intermodal_container_gestalt.id == 'intermodal_box_32px':
+                # variant_output_image.show()
+                variant_spritesheet = pixa.make_spritesheet_from_image(
+                    variant_output_image, DOS_PALETTE
+                )
+                crop_box_dest = (
+                    0,
+                    0,
+                    self.global_constants.sprites_max_x_extent,
+                    graphics_constants.spriterow_height,
+                )
+                self.units.append(
+                    AppendToSpritesheet(variant_spritesheet, crop_box_dest)
+                )
                 variant_output_image.close()
             template_image.close()
 
     def render(self, intermodal_container_gestalt, global_constants):
-        print("I am not a walrus - vehicles cargos pipeline needs refactored as it is unfinished copy-paste from intermodal containers pipeline")
+        print(
+            "I am not a walrus - vehicles cargos pipeline needs refactored as it is unfinished copy-paste from intermodal containers pipeline"
+        )
         self.units = []
         self.intermodal_container_gestalt = intermodal_container_gestalt
         self.global_constants = global_constants
@@ -415,13 +643,16 @@ class GenerateCompositedVehiclesCargos(Pipeline):
         # for this pipeline, input_image is just blank white 10px high image, to which the vehicle sprites are then appended
         input_image = Image.new("P", (graphics_constants.spritesheet_width, 10), 255)
         input_image.putpalette(DOS_PALETTE)
-        self.render_common(input_image, self.units, output_base_name=intermodal_container_gestalt.id)
+        self.render_common(
+            input_image, self.units, output_base_name=intermodal_container_gestalt.id
+        )
 
 
 class CheckBuyMenuOnlyPipeline(Pipeline):
     """
     Opens the input image, inserts a custom buy menu if required, then saves with no other changes.
     """
+
     def __init__(self):
         # this should be sparse, don't store any consist info in Pipelines, pass at render time
         super().__init__()
@@ -446,6 +677,7 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
     Whilst this is not a common use case, when it's needed, it's needed.
     Similar approach can be used for anything else provided in sprite layers.
     """
+
     def __init__(self):
         # this should be sparse, don't store any consist info in Pipelines, pass at render time
         super().__init__()
@@ -457,23 +689,37 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
 
         # the gestalt can optionally tell us how many spriterows are needed, but if it doesn't, fallback to the unique spriterows
         # we do it this way because the gestalt doesn't have easy access to the consist, so easier to do the fallback here
-        num_pantograph_rows = getattr(self.consist.gestalt_graphics, 'num_pantograph_rows', len(self.consist.unique_spriterow_nums))
+        num_pantograph_rows = getattr(
+            self.consist.gestalt_graphics,
+            "num_pantograph_rows",
+            len(self.consist.unique_spriterow_nums),
+        )
 
-        pantograph_input_images = {'diamond-single': 'diamond.png',
-                                   'diamond-double': 'diamond.png',
-                                   'diamond-single-with-base': 'diamond-with-base.png',
-                                   'z-shaped-single': 'z-shaped.png',
-                                   'z-shaped-double': 'z-shaped.png',
-                                   'z-shaped-single-reversed': 'z-shaped-reversed.png',
-                                   'z-shaped-single-with-base': 'z-shaped-with-base.png'}
-        pantograph_input_path = os.path.join(currentdir, 'src', 'graphics', 'pantographs', pantograph_input_images[self.consist.pantograph_type])
+        pantograph_input_images = {
+            "diamond-single": "diamond.png",
+            "diamond-double": "diamond.png",
+            "diamond-single-with-base": "diamond-with-base.png",
+            "z-shaped-single": "z-shaped.png",
+            "z-shaped-double": "z-shaped.png",
+            "z-shaped-single-reversed": "z-shaped-reversed.png",
+            "z-shaped-single-with-base": "z-shaped-with-base.png",
+        }
+        pantograph_input_path = os.path.join(
+            currentdir,
+            "src",
+            "graphics",
+            "pantographs",
+            pantograph_input_images[self.consist.pantograph_type],
+        )
         pantograph_input_image = Image.open(pantograph_input_path)
 
         bboxes = []
         # only a 3 tuple in global constants bounding box definitions (no y position), we need a 4 tuple inc. y position
         # also the format of bounding boxes needs converted to PIL crop box format
         for yoffset in (10, 40):
-            for bbox in self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed:
+            for (
+                bbox
+            ) in self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed:
                 bboxes.append([bbox[0], yoffset, bbox[0] + bbox[1], yoffset + bbox[2]])
 
         pantograph_sprites = pixa.get_arbitrary_angles(pantograph_input_image, bboxes)
@@ -481,44 +727,120 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
         # but B is probably just A reversed
         # so two spriterows is enough: down, up
         # two colours of loc pixel, for A and B positions
-        spriterow_pantograph_state_maps = {'diamond-single': {'down': ['a'], 'up': ['A']},
-                                           'diamond-double': {'down': ['a', 'a'], 'up': ['A', 'A']}, # A and B functionally identical here, so just use A
-                                           'diamond-single-with-base': {'down': ['a'], 'up': ['A']},
-                                           'z-shaped-single': {'down': ['a'], 'up': ['A']},
-                                           'z-shaped-single-reversed': {'down': ['a'], 'up': ['A']},
-                                           'z-shaped-double': {'down': ['a', 'b'], 'up': ['A', 'b']},  # aB was tried and removed, TMWFTLB, instead just use Ab and respect depot flip
-                                           'z-shaped-single-with-base': {'down': ['a'], 'up': ['A']}}
-        pantograph_state_sprite_map = {'a': [pantograph_sprites[0], pantograph_sprites[1], pantograph_sprites[2], pantograph_sprites[3],
-                                             pantograph_sprites[4], pantograph_sprites[5], pantograph_sprites[6], pantograph_sprites[7]],
-                                       'A': [pantograph_sprites[8], pantograph_sprites[9], pantograph_sprites[10], pantograph_sprites[11],
-                                             pantograph_sprites[12], pantograph_sprites[13], pantograph_sprites[14], pantograph_sprites[15]],
-                                       'b': [pantograph_sprites[4], pantograph_sprites[5], pantograph_sprites[6], pantograph_sprites[7],
-                                             pantograph_sprites[0], pantograph_sprites[1], pantograph_sprites[2], pantograph_sprites[3]],
-                                       'B': [pantograph_sprites[12], pantograph_sprites[13], pantograph_sprites[14], pantograph_sprites[15],
-                                             pantograph_sprites[8], pantograph_sprites[9], pantograph_sprites[10], pantograph_sprites[11]]}
+        spriterow_pantograph_state_maps = {
+            "diamond-single": {"down": ["a"], "up": ["A"]},
+            "diamond-double": {
+                "down": ["a", "a"],
+                "up": ["A", "A"],
+            },  # A and B functionally identical here, so just use A
+            "diamond-single-with-base": {"down": ["a"], "up": ["A"]},
+            "z-shaped-single": {"down": ["a"], "up": ["A"]},
+            "z-shaped-single-reversed": {"down": ["a"], "up": ["A"]},
+            "z-shaped-double": {
+                "down": ["a", "b"],
+                "up": ["A", "b"],
+            },  # aB was tried and removed, TMWFTLB, instead just use Ab and respect depot flip
+            "z-shaped-single-with-base": {"down": ["a"], "up": ["A"]},
+        }
+        pantograph_state_sprite_map = {
+            "a": [
+                pantograph_sprites[0],
+                pantograph_sprites[1],
+                pantograph_sprites[2],
+                pantograph_sprites[3],
+                pantograph_sprites[4],
+                pantograph_sprites[5],
+                pantograph_sprites[6],
+                pantograph_sprites[7],
+            ],
+            "A": [
+                pantograph_sprites[8],
+                pantograph_sprites[9],
+                pantograph_sprites[10],
+                pantograph_sprites[11],
+                pantograph_sprites[12],
+                pantograph_sprites[13],
+                pantograph_sprites[14],
+                pantograph_sprites[15],
+            ],
+            "b": [
+                pantograph_sprites[4],
+                pantograph_sprites[5],
+                pantograph_sprites[6],
+                pantograph_sprites[7],
+                pantograph_sprites[0],
+                pantograph_sprites[1],
+                pantograph_sprites[2],
+                pantograph_sprites[3],
+            ],
+            "B": [
+                pantograph_sprites[12],
+                pantograph_sprites[13],
+                pantograph_sprites[14],
+                pantograph_sprites[15],
+                pantograph_sprites[8],
+                pantograph_sprites[9],
+                pantograph_sprites[10],
+                pantograph_sprites[11],
+            ],
+        }
 
         vehicle_input_image = Image.open(self.vehicle_source_input_path)
         # get the loc points
-        loc_points = [(pixel[0], pixel[1], pixel[2]) for pixel in pixa.pixascan(vehicle_input_image) if pixel[2] == 226 or pixel[2] == 164]
+        loc_points = [
+            (pixel[0], pixel[1], pixel[2])
+            for pixel in pixa.pixascan(vehicle_input_image)
+            if pixel[2] == 226 or pixel[2] == 164
+        ]
         # loc points are in arbitrary row in source spritesheet but need to be moved up in output, so shift the y offset by the required amount
-        loc_points = [(pixel[0], pixel[1] - (num_pantograph_rows * graphics_constants.spriterow_height), pixel[2]) for pixel in loc_points]
+        loc_points = [
+            (
+                pixel[0],
+                pixel[1] - (num_pantograph_rows * graphics_constants.spriterow_height),
+                pixel[2],
+            )
+            for pixel in loc_points
+        ]
         # sort them in y order, this causes sprites to overlap correctly when there are multiple loc points for an angle
         loc_points = sorted(loc_points, key=lambda x: x[1])
 
-        empty_spriterow_image = Image.open(os.path.join(currentdir, 'src', 'graphics', 'spriterow_template.png'))
-        empty_spriterow_image = empty_spriterow_image.crop((0, 10, graphics_constants.spritesheet_width, 10 + graphics_constants.spriterow_height))
-        #empty_spriterow_image.show()
+        empty_spriterow_image = Image.open(
+            os.path.join(currentdir, "src", "graphics", "spriterow_template.png")
+        )
+        empty_spriterow_image = empty_spriterow_image.crop(
+            (
+                0,
+                10,
+                graphics_constants.spritesheet_width,
+                10 + graphics_constants.spriterow_height,
+            )
+        )
+        # empty_spriterow_image.show()
 
         # create the empty spritesheet to paste into; in some cases this creates redundant spriterows, but it's fine
-        pantograph_output_image = Image.new("P", (graphics_constants.spritesheet_width, (2 * num_pantograph_rows * graphics_constants.spriterow_height) + 10), 255)
+        pantograph_output_image = Image.new(
+            "P",
+            (
+                graphics_constants.spritesheet_width,
+                (2 * num_pantograph_rows * graphics_constants.spriterow_height) + 10,
+            ),
+            255,
+        )
         pantograph_output_image.putpalette(DOS_PALETTE)
         for i in range(num_pantograph_rows + 1):
-            pantograph_output_image.paste(empty_spriterow_image, (0, 10 + (i * graphics_constants.spriterow_height)))
+            pantograph_output_image.paste(
+                empty_spriterow_image,
+                (0, 10 + (i * graphics_constants.spriterow_height)),
+            )
 
-        state_map = spriterow_pantograph_state_maps[self.consist.pantograph_type][self.pantograph_state]
+        state_map = spriterow_pantograph_state_maps[self.consist.pantograph_type][
+            self.pantograph_state
+        ]
         for pixel in loc_points:
             angle_num = 0
-            for counter, bbox in enumerate(self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed):
+            for counter, bbox in enumerate(
+                self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed
+            ):
                 if pixel[0] >= bbox[0]:
                     angle_num = counter
             pantograph_sprite_num = angle_num
@@ -527,34 +849,71 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
             pantograph_height = pantograph_sprites[pantograph_sprite_num][0].size[1]
             # the +1s for height adjust the crop box to include the loc point
             # (needed beause loc points are left-bottom not left-top as per co-ordinate system, makes drawing loc points easier)
-            pantograph_bounding_box = (pixel[0],
-                                       pixel[1] - pantograph_height + 1,
-                                       pixel[0] + pantograph_width,
-                                       pixel[1] + 1)
+            pantograph_bounding_box = (
+                pixel[0],
+                pixel[1] - pantograph_height + 1,
+                pixel[0] + pantograph_width,
+                pixel[1] + 1,
+            )
             if pixel[2] == 164:
                 # it's b or B
                 state_sprites = pantograph_state_sprite_map[state_map[1]]
             else:
                 # it's a or A
                 state_sprites = pantograph_state_sprite_map[state_map[0]]
-            pantograph_output_image.paste(state_sprites[pantograph_sprite_num][0], pantograph_bounding_box, state_sprites[pantograph_sprite_num][1])
+            pantograph_output_image.paste(
+                state_sprites[pantograph_sprite_num][0],
+                pantograph_bounding_box,
+                state_sprites[pantograph_sprite_num][1],
+            )
 
         # add debug sprites with vehicle-pantograph comp for ease of checking
         # this very much assumes that the vehicle image has been generated, which holds currently due to the order pipelines are run in (and are in series)
-        vehicle_debug_image = Image.open(os.path.join(currentdir, 'generated', 'graphics', self.consist.id + '.png'))
-        vehicle_debug_image = vehicle_debug_image.copy().crop((0, 10, graphics_constants.spritesheet_width, 10 + graphics_constants.spriterow_height))
-        pantograph_output_image.paste(vehicle_debug_image, (0, 10 + (num_pantograph_rows * graphics_constants.spriterow_height)))
-        pantograph_debug_image = pantograph_output_image.copy().crop((0, 10, graphics_constants.spritesheet_width, 10 + graphics_constants.spriterow_height))
+        vehicle_debug_image = Image.open(
+            os.path.join(currentdir, "generated", "graphics", self.consist.id + ".png")
+        )
+        vehicle_debug_image = vehicle_debug_image.copy().crop(
+            (
+                0,
+                10,
+                graphics_constants.spritesheet_width,
+                10 + graphics_constants.spriterow_height,
+            )
+        )
+        pantograph_output_image.paste(
+            vehicle_debug_image,
+            (0, 10 + (num_pantograph_rows * graphics_constants.spriterow_height)),
+        )
+        pantograph_debug_image = pantograph_output_image.copy().crop(
+            (
+                0,
+                10,
+                graphics_constants.spritesheet_width,
+                10 + graphics_constants.spriterow_height,
+            )
+        )
         pantograph_debug_mask = pantograph_debug_image.copy()
-        pantograph_debug_mask = pantograph_debug_mask.point(lambda i: 0 if i == 255 or i == 0 else 255).convert("1") # the inversion here of blue and white looks a bit odd, but potato / potato
-        pantograph_output_image.paste(pantograph_debug_image, (0, 10 + (num_pantograph_rows * graphics_constants.spriterow_height)), pantograph_debug_mask)
+        pantograph_debug_mask = pantograph_debug_mask.point(
+            lambda i: 0 if i == 255 or i == 0 else 255
+        ).convert(
+            "1"
+        )  # the inversion here of blue and white looks a bit odd, but potato / potato
+        pantograph_output_image.paste(
+            pantograph_debug_image,
+            (0, 10 + (num_pantograph_rows * graphics_constants.spriterow_height)),
+            pantograph_debug_mask,
+        )
 
         # make spritesheet
-        pantograph_spritesheet = pixa.make_spritesheet_from_image(pantograph_output_image, DOS_PALETTE)
-        crop_box_dest = (0,
-                         10,
-                         self.global_constants.sprites_max_x_extent,
-                         10 + (2 * num_pantograph_rows * graphics_constants.spriterow_height))
+        pantograph_spritesheet = pixa.make_spritesheet_from_image(
+            pantograph_output_image, DOS_PALETTE
+        )
+        crop_box_dest = (
+            0,
+            10,
+            self.global_constants.sprites_max_x_extent,
+            10 + (2 * num_pantograph_rows * graphics_constants.spriterow_height),
+        )
         self.units.append(AppendToSpritesheet(pantograph_spritesheet, crop_box_dest))
         pantograph_input_image.close()
         vehicle_input_image.close()
@@ -571,61 +930,75 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
             self.units.append(AddBuyMenuSprite(self.process_buy_menu_sprite))
 
         # this will render a spritesheet with an additional suffix, separate from the vehicle spritesheet
-        input_image = Image.open(self.vehicle_source_input_path).crop((0, 0, graphics_constants.spritesheet_width, 10))
-        output_suffix = '_pantographs_' + self.pantograph_state
+        input_image = Image.open(self.vehicle_source_input_path).crop(
+            (0, 0, graphics_constants.spritesheet_width, 10)
+        )
+        output_suffix = "_pantographs_" + self.pantograph_state
         self.render_common(input_image, self.units, output_suffix=output_suffix)
         input_image.close()
 
 
 class GeneratePantographsUpSpritesheetPipeline(GeneratePantographsSpritesheetPipeline):
     """ Sparse subclass, solely to set pan 'up' state (simplest way to implement this). """
-    pantograph_state = 'up' # lol, actually valid class vars
+
+    pantograph_state = "up"  # lol, actually valid class vars
 
     def __init__(self):
         super().__init__()
 
 
-class GeneratePantographsDownSpritesheetPipeline(GeneratePantographsSpritesheetPipeline):
+class GeneratePantographsDownSpritesheetPipeline(
+    GeneratePantographsSpritesheetPipeline
+):
     """ Sparse subclass, solely to set pan 'down' state (simplest way to implement this). """
-    pantograph_state = 'down' # lol, actually valid class vars
+
+    pantograph_state = "down"  # lol, actually valid class vars
 
     def __init__(self):
         super().__init__()
 
 
 class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
-    """"
-        Extends a spritesheet with variations on vehicle graphics, liveries, cargos etc.
-        Copied from Road Hog where it became convoluted to handle many cases.
-        Not easy to simplify, generating graphics has many facets.
-        Individual methods handle specific compositing tasks.
-        == Commentary ==
-        Arguably there is some structural entity missing, between pipeline and unit.
-        The methods maybe do too much without being encapsulated.
-        Maybe a UnitConfig or something.
-        But it seems to work ok.
-        And I can read it.
-        Which matters.
-        So eh.
+    """ "
+    Extends a spritesheet with variations on vehicle graphics, liveries, cargos etc.
+    Copied from Road Hog where it became convoluted to handle many cases.
+    Not easy to simplify, generating graphics has many facets.
+    Individual methods handle specific compositing tasks.
+    == Commentary ==
+    Arguably there is some structural entity missing, between pipeline and unit.
+    The methods maybe do too much without being encapsulated.
+    Maybe a UnitConfig or something.
+    But it seems to work ok.
+    And I can read it.
+    Which matters.
+    So eh.
     """
+
     def __init__(self):
         # this should be sparse, don't store any consist info in Pipelines, pass at render time
         # initing things here is proven to have unexpected results, as the processor will be shared across multiple vehicles
         super().__init__()
 
     def comp_chassis_and_body(self, body_image):
-        crop_box_input_1 = (0,
-                            10,
-                            self.sprites_max_x_extent,
-                            10 + graphics_constants.spriterow_height)
+        crop_box_input_1 = (
+            0,
+            10,
+            self.sprites_max_x_extent,
+            10 + graphics_constants.spriterow_height,
+        )
         chassis_image = Image.open(self.chassis_input_path).crop(crop_box_input_1)
 
         # roof is composited (N.B. gangways are not, just draw them in vehicle sprite, handling asymmetric railcar cases would be one step too far on automation)
-        if self.vehicle_unit.roof is not None and not self.vehicle_unit.suppress_roof_sprite:
-            crop_box_roof_dest = (0,
-                                0,
-                                self.sprites_max_x_extent,
-                                graphics_constants.spriterow_height)
+        if (
+            self.vehicle_unit.roof is not None
+            and not self.vehicle_unit.suppress_roof_sprite
+        ):
+            crop_box_roof_dest = (
+                0,
+                0,
+                self.sprites_max_x_extent,
+                graphics_constants.spriterow_height,
+            )
             roof_image = Image.open(self.roof_input_path).crop(crop_box_input_1)
 
             # the roof image has false colour pixels to aid drawing; remove these by converting to white, also convert any blue to white
@@ -633,302 +1006,504 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
 
             # create a mask so that we paste only the roof pixels over the chassis (no blue pixels)
             roof_mask = roof_image.copy()
-            roof_mask = roof_mask.point(lambda i: 0 if i == 255 else 255).convert("1") # the inversion here of blue and white looks a bit odd, but potato / potato
+            roof_mask = roof_mask.point(lambda i: 0 if i == 255 else 255).convert(
+                "1"
+            )  # the inversion here of blue and white looks a bit odd, but potato / potato
             chassis_image.paste(roof_image, crop_box_roof_dest, roof_mask)
-        #if self.consist.id == 'box_car_pony_gen_1A':
-            #chassis_image.show()
+        # if self.consist.id == 'box_car_pony_gen_1A':
+        # chassis_image.show()
 
         # chassis and roofs are *always* symmetrical, with 4 angles drawn; for vehicles with asymmetric bodies, copy and paste to provide all 8 angles
-        if self.vehicle_unit.symmetry_type == 'asymmetric':
-            crop_box_input_2 = (self.global_constants.spritesheet_bounding_boxes_symmetric_unreversed[4][0],
-                                0,
-                                self.sprites_max_x_extent,
-                                0 + graphics_constants.spriterow_height)
+        if self.vehicle_unit.symmetry_type == "asymmetric":
+            crop_box_input_2 = (
+                self.global_constants.spritesheet_bounding_boxes_symmetric_unreversed[
+                    4
+                ][0],
+                0,
+                self.sprites_max_x_extent,
+                0 + graphics_constants.spriterow_height,
+            )
             chassis_image_2 = chassis_image.copy().crop(crop_box_input_2)
 
-            crop_box_input_2_dest = (self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed[0][0],
-                                     0,
-                                     self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed[0][0] + chassis_image_2.size[0],
-                                     0 + graphics_constants.spriterow_height)
+            crop_box_input_2_dest = (
+                self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed[
+                    0
+                ][0],
+                0,
+                self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed[
+                    0
+                ][0]
+                + chassis_image_2.size[0],
+                0 + graphics_constants.spriterow_height,
+            )
             chassis_image.paste(chassis_image_2, crop_box_input_2_dest)
 
         # the body image has false colour pixels for the chassis, to aid drawing; remove these by converting to white, also convert any blue to white
-        body_image = body_image.point(lambda i: 255 if (i in range(178, 192) or i == 0) else i)
-        #body_image.show()
+        body_image = body_image.point(
+            lambda i: 255 if (i in range(178, 192) or i == 0) else i
+        )
+        # body_image.show()
 
         # create a mask so that we paste only the vehicle pixels over the chassis (no blue pixels)
         body_mask = body_image.copy()
-        body_mask = body_mask.point(lambda i: 0 if i == 255 else 255).convert("1") # the inversion here of blue and white looks a bit odd, but potato / potato
+        body_mask = body_mask.point(lambda i: 0 if i == 255 else 255).convert(
+            "1"
+        )  # the inversion here of blue and white looks a bit odd, but potato / potato
 
-        #body_mask.show()
-        crop_box_chassis_body_comp = (0,
-                                 0,
-                                 self.sprites_max_x_extent,
-                                 0 + graphics_constants.spriterow_height)
+        # body_mask.show()
+        crop_box_chassis_body_comp = (
+            0,
+            0,
+            self.sprites_max_x_extent,
+            0 + graphics_constants.spriterow_height,
+        )
         chassis_image.paste(body_image, crop_box_chassis_body_comp, body_mask)
 
-        #chassis_image.show()
+        # chassis_image.show()
         return chassis_image
 
-    def add_generic_spriterow(self, label=''):
-        crop_box_source = (0,
-                           self.base_yoffs,
-                           self.sprites_max_x_extent,
-                           self.base_yoffs + graphics_constants.spriterow_height)
-        vehicle_generic_spriterow_input_image = self.comp_chassis_and_body(self.vehicle_source_image.copy().crop(crop_box_source))
+    def add_generic_spriterow(self, label=""):
+        crop_box_source = (
+            0,
+            self.base_yoffs,
+            self.sprites_max_x_extent,
+            self.base_yoffs + graphics_constants.spriterow_height,
+        )
+        vehicle_generic_spriterow_input_image = self.comp_chassis_and_body(
+            self.vehicle_source_image.copy().crop(crop_box_source)
+        )
 
         # vehicle_generic_spriterow_input_image.show() # comment in to see the image when debugging
-        vehicle_generic_spriterow_input_as_spritesheet = pixa.make_spritesheet_from_image(vehicle_generic_spriterow_input_image, DOS_PALETTE)
+        vehicle_generic_spriterow_input_as_spritesheet = (
+            pixa.make_spritesheet_from_image(
+                vehicle_generic_spriterow_input_image, DOS_PALETTE
+            )
+        )
 
-        crop_box_dest = (0,
-                         0,
-                         self.sprites_max_x_extent,
-                         graphics_constants.spriterow_height)
-        self.units.append(AppendToSpritesheet(vehicle_generic_spriterow_input_as_spritesheet, crop_box_dest))
-        self.units.append(AddCargoLabel(label=label,
-                                        x_offset=self.sprites_max_x_extent + 5,
-                                        y_offset= -1 * graphics_constants.spriterow_height))
+        crop_box_dest = (
+            0,
+            0,
+            self.sprites_max_x_extent,
+            graphics_constants.spriterow_height,
+        )
+        self.units.append(
+            AppendToSpritesheet(
+                vehicle_generic_spriterow_input_as_spritesheet, crop_box_dest
+            )
+        )
+        self.units.append(
+            AddCargoLabel(
+                label=label,
+                x_offset=self.sprites_max_x_extent + 5,
+                y_offset=-1 * graphics_constants.spriterow_height,
+            )
+        )
 
     def add_livery_spriterows(self):
         # no loading / loaded states, intended for tankers etc
         # provides cargo-specific recolourings, a default recolouring, and template alternates 1CC or 2CC livery on user flip
 
         # first add the CC alternative livery, as it's easier to add first than handle adding it after arbitrary cargo livery rows
-        crop_box_source = (0,
-                           self.base_yoffs,
-                           self.sprites_max_x_extent,
-                           self.base_yoffs + graphics_constants.spriterow_height)
+        crop_box_source = (
+            0,
+            self.base_yoffs,
+            self.sprites_max_x_extent,
+            self.base_yoffs + graphics_constants.spriterow_height,
+        )
 
-        vehicle_livery_spriterow_input_image = self.comp_chassis_and_body(self.vehicle_source_image.copy().crop(crop_box_source))
-        vehicle_livery_spriterow_input_as_spritesheet = pixa.make_spritesheet_from_image(vehicle_livery_spriterow_input_image, DOS_PALETTE)
+        vehicle_livery_spriterow_input_image = self.comp_chassis_and_body(
+            self.vehicle_source_image.copy().crop(crop_box_source)
+        )
+        vehicle_livery_spriterow_input_as_spritesheet = (
+            pixa.make_spritesheet_from_image(
+                vehicle_livery_spriterow_input_image, DOS_PALETTE
+            )
+        )
 
         for label, recolour_map in self.consist.gestalt_graphics.recolour_maps:
-            crop_box_dest = (0,
-                             0,
-                             self.sprites_max_x_extent,
-                             graphics_constants.spriterow_height)
+            crop_box_dest = (
+                0,
+                0,
+                self.sprites_max_x_extent,
+                graphics_constants.spriterow_height,
+            )
 
-            self.units.append(AppendToSpritesheet(vehicle_livery_spriterow_input_as_spritesheet, crop_box_dest))
+            self.units.append(
+                AppendToSpritesheet(
+                    vehicle_livery_spriterow_input_as_spritesheet, crop_box_dest
+                )
+            )
             self.units.append(SimpleRecolour(recolour_map))
-            self.units.append(AddCargoLabel(label=label,
-                                            x_offset=self.sprites_max_x_extent + 5,
-                                            y_offset= -1 * graphics_constants.spriterow_height))
+            self.units.append(
+                AddCargoLabel(
+                    label=label,
+                    x_offset=self.sprites_max_x_extent + 5,
+                    y_offset=-1 * graphics_constants.spriterow_height,
+                )
+            )
 
     def add_pax_mail_car_with_opening_doors_spriterows(self, row_count):
         # this loop builds the spriterow and comps doors etc
         for row_num in range(int(row_count / 2)):
 
             # get doors
-            doors_bboxes = self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed
-            crop_box_doors_source = (doors_bboxes[1][0],
-                                     self.base_yoffs + (row_num * graphics_constants.spriterow_height),
-                                     doors_bboxes[3][0] + doors_bboxes[3][1],
-                                     self.base_yoffs + (row_num * graphics_constants.spriterow_height) + graphics_constants.spriterow_height)
+            doors_bboxes = (
+                self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed
+            )
+            crop_box_doors_source = (
+                doors_bboxes[1][0],
+                self.base_yoffs + (row_num * graphics_constants.spriterow_height),
+                doors_bboxes[3][0] + doors_bboxes[3][1],
+                self.base_yoffs
+                + (row_num * graphics_constants.spriterow_height)
+                + graphics_constants.spriterow_height,
+            )
             doors_image = self.vehicle_source_image.copy().crop(crop_box_doors_source)
 
             # the doors image has false colour pixels for the body, to aid drawing; remove these by converting to white, also convert any blue to white
-            doors_image = doors_image.point(lambda i: 255 if (i in range(178, 192) or i == 0) else i)
-            #if self.consist.id == 'mail_car_pony_gen_4C':
-                #doors_image.show()
+            doors_image = doors_image.point(
+                lambda i: 255 if (i in range(178, 192) or i == 0) else i
+            )
+            # if self.consist.id == 'mail_car_pony_gen_4C':
+            # doors_image.show()
 
             # create a mask so that we paste only the door pixels over the body (no blue pixels)
             doors_mask = doors_image.copy()
-            doors_mask = doors_mask.point(lambda i: 0 if i == 255 else 255).convert("1") # the inversion here of blue and white looks a bit odd, but potato / potato
-            #doors_mask.show()
+            doors_mask = doors_mask.point(lambda i: 0 if i == 255 else 255).convert(
+                "1"
+            )  # the inversion here of blue and white looks a bit odd, but potato / potato
+            # doors_mask.show()
 
-            crop_box_source = (0,
-                               self.base_yoffs + (row_num * graphics_constants.spriterow_height),
-                               self.sprites_max_x_extent,
-                               self.base_yoffs + (row_num * graphics_constants.spriterow_height) + graphics_constants.spriterow_height)
-            pax_mail_car_spriterow_input_image = self.comp_chassis_and_body(self.vehicle_source_image.copy().crop(crop_box_source))
+            crop_box_source = (
+                0,
+                self.base_yoffs + (row_num * graphics_constants.spriterow_height),
+                self.sprites_max_x_extent,
+                self.base_yoffs
+                + (row_num * graphics_constants.spriterow_height)
+                + graphics_constants.spriterow_height,
+            )
+            pax_mail_car_spriterow_input_image = self.comp_chassis_and_body(
+                self.vehicle_source_image.copy().crop(crop_box_source)
+            )
 
-            crop_box_comped_body_and_chassis = (self.second_col_start_x,
-                                                0,
-                                                self.second_col_start_x + self.col_image_width,
-                                                graphics_constants.spriterow_height)
+            crop_box_comped_body_and_chassis = (
+                self.second_col_start_x,
+                0,
+                self.second_col_start_x + self.col_image_width,
+                graphics_constants.spriterow_height,
+            )
 
-            pax_mail_car_spriterow_input_image = pax_mail_car_spriterow_input_image.crop(crop_box_comped_body_and_chassis)
+            pax_mail_car_spriterow_input_image = (
+                pax_mail_car_spriterow_input_image.crop(
+                    crop_box_comped_body_and_chassis
+                )
+            )
 
-            #empty/loaded state and loading state will need pasting once each, so two crop boxes needed
-            crop_box_comp_dest_1 = (self.second_col_start_x,
-                                    0,
-                                    self.second_col_start_x + self.col_image_width,
-                                    graphics_constants.spriterow_height)
-            crop_box_comp_dest_2 = (self.second_col_start_x,
-                                    graphics_constants.spriterow_height,
-                                    self.second_col_start_x + self.col_image_width,
-                                    2 * graphics_constants.spriterow_height)
-            crop_box_comp_dest_doors = (self.second_col_start_x + doors_bboxes[1][0] - doors_bboxes[0][0],
-                                        graphics_constants.spriterow_height,
-                                        self.second_col_start_x + doors_bboxes[1][0] - doors_bboxes[0][0] + doors_image.size[0],
-                                        2 * graphics_constants.spriterow_height)
+            # empty/loaded state and loading state will need pasting once each, so two crop boxes needed
+            crop_box_comp_dest_1 = (
+                self.second_col_start_x,
+                0,
+                self.second_col_start_x + self.col_image_width,
+                graphics_constants.spriterow_height,
+            )
+            crop_box_comp_dest_2 = (
+                self.second_col_start_x,
+                graphics_constants.spriterow_height,
+                self.second_col_start_x + self.col_image_width,
+                2 * graphics_constants.spriterow_height,
+            )
+            crop_box_comp_dest_doors = (
+                self.second_col_start_x + doors_bboxes[1][0] - doors_bboxes[0][0],
+                graphics_constants.spriterow_height,
+                self.second_col_start_x
+                + doors_bboxes[1][0]
+                - doors_bboxes[0][0]
+                + doors_image.size[0],
+                2 * graphics_constants.spriterow_height,
+            )
 
-            pax_mail_car_image = Image.new("P", (graphics_constants.spritesheet_width, 2 * graphics_constants.spriterow_height), 255)
+            pax_mail_car_image = Image.new(
+                "P",
+                (
+                    graphics_constants.spritesheet_width,
+                    2 * graphics_constants.spriterow_height,
+                ),
+                255,
+            )
             pax_mail_car_image.putpalette(DOS_PALETTE)
-            pax_mail_car_image.paste(pax_mail_car_spriterow_input_image, crop_box_comp_dest_1)
-            pax_mail_car_image.paste(pax_mail_car_spriterow_input_image, crop_box_comp_dest_2)
+            pax_mail_car_image.paste(
+                pax_mail_car_spriterow_input_image, crop_box_comp_dest_1
+            )
+            pax_mail_car_image.paste(
+                pax_mail_car_spriterow_input_image, crop_box_comp_dest_2
+            )
             # add doors
             pax_mail_car_image.paste(doors_image, crop_box_comp_dest_doors, doors_mask)
-            #if self.consist.id == 'luxury_passenger_car_pony_gen_6U':
-                 #pax_mail_car_col_image.show()
+            # if self.consist.id == 'luxury_passenger_car_pony_gen_6U':
+            # pax_mail_car_col_image.show()
 
-            crop_box_dest = (0,
-                             0,
-                             self.sprites_max_x_extent,
-                             2 * graphics_constants.spriterow_height)
-            pax_mail_car_image_as_spritesheet = pixa.make_spritesheet_from_image(pax_mail_car_image, DOS_PALETTE)
-            #if self.consist.id == 'luxury_passenger_car_pony_gen_6U':
-                #pax_mail_car_image_as_spritesheet.sprites.show()
-            self.units.append(AppendToSpritesheet(pax_mail_car_image_as_spritesheet, crop_box_dest))
+            crop_box_dest = (
+                0,
+                0,
+                self.sprites_max_x_extent,
+                2 * graphics_constants.spriterow_height,
+            )
+            pax_mail_car_image_as_spritesheet = pixa.make_spritesheet_from_image(
+                pax_mail_car_image, DOS_PALETTE
+            )
+            # if self.consist.id == 'luxury_passenger_car_pony_gen_6U':
+            # pax_mail_car_image_as_spritesheet.sprites.show()
+            self.units.append(
+                AppendToSpritesheet(pax_mail_car_image_as_spritesheet, crop_box_dest)
+            )
 
     def add_box_car_with_opening_doors_spriterows(self):
         # all wagons using this gestalt repaint the relevant base sprite for the wagon's generation and subtype
         id_base = self.consist.gestalt_graphics.id_base
-        if self.consist.base_track_type == 'NG':
-            id_base = id_base + '_ng'
-        box_car_id = self.consist.get_wagon_id(id_base=id_base, roster_id=self.consist.roster_id, gen=self.consist.gen, subtype=self.consist.subtype + '.png')
-        box_car_input_path = os.path.join(currentdir, 'src', 'graphics', self.consist.roster_id, box_car_id)
+        if self.consist.base_track_type == "NG":
+            id_base = id_base + "_ng"
+        box_car_id = self.consist.get_wagon_id(
+            id_base=id_base,
+            roster_id=self.consist.roster_id,
+            gen=self.consist.gen,
+            subtype=self.consist.subtype + ".png",
+        )
+        box_car_input_path = os.path.join(
+            currentdir, "src", "graphics", self.consist.roster_id, box_car_id
+        )
 
         # two spriterows, closed doors and open doors
-        crop_box_source_1 = (0,
-                             self.base_yoffs,
-                             self.sprites_max_x_extent,
-                             self.base_yoffs + graphics_constants.spriterow_height)
-        crop_box_source_2 = (0,
-                             self.base_yoffs + graphics_constants.spriterow_height,
-                             self.sprites_max_x_extent,
-                             self.base_yoffs + 2 * graphics_constants.spriterow_height)
-        box_car_input_image_1 = self.comp_chassis_and_body(Image.open(box_car_input_path).crop(crop_box_source_1))
-        box_car_input_image_2 = self.comp_chassis_and_body(Image.open(box_car_input_path).crop(crop_box_source_2))
-        #if self.consist.id == 'box_car_pony_gen_1A':
-            #box_car_input_image_1.show() # comment in to see the image when debugging
+        crop_box_source_1 = (
+            0,
+            self.base_yoffs,
+            self.sprites_max_x_extent,
+            self.base_yoffs + graphics_constants.spriterow_height,
+        )
+        crop_box_source_2 = (
+            0,
+            self.base_yoffs + graphics_constants.spriterow_height,
+            self.sprites_max_x_extent,
+            self.base_yoffs + 2 * graphics_constants.spriterow_height,
+        )
+        box_car_input_image_1 = self.comp_chassis_and_body(
+            Image.open(box_car_input_path).crop(crop_box_source_1)
+        )
+        box_car_input_image_2 = self.comp_chassis_and_body(
+            Image.open(box_car_input_path).crop(crop_box_source_2)
+        )
+        # if self.consist.id == 'box_car_pony_gen_1A':
+        # box_car_input_image_1.show() # comment in to see the image when debugging
 
         # empty/loaded state and loading state will need pasting once each, so two crop boxes needed
         # open doors are shown, but no cargo, TMWFTLB, see notes in GestaltGraphicsBoxCarOpeningDoors
-        crop_box_comp_dest_1 = (0,
-                                0,
-                                self.sprites_max_x_extent,
-                                graphics_constants.spriterow_height)
-        crop_box_comp_dest_2 = (0,
-                                graphics_constants.spriterow_height,
-                                self.sprites_max_x_extent,
-                                2 * graphics_constants.spriterow_height)
-        box_car_rows_image = Image.new("P", (graphics_constants.spritesheet_width, 2 * graphics_constants.spriterow_height))
+        crop_box_comp_dest_1 = (
+            0,
+            0,
+            self.sprites_max_x_extent,
+            graphics_constants.spriterow_height,
+        )
+        crop_box_comp_dest_2 = (
+            0,
+            graphics_constants.spriterow_height,
+            self.sprites_max_x_extent,
+            2 * graphics_constants.spriterow_height,
+        )
+        box_car_rows_image = Image.new(
+            "P",
+            (
+                graphics_constants.spritesheet_width,
+                2 * graphics_constants.spriterow_height,
+            ),
+        )
         box_car_rows_image.putpalette(DOS_PALETTE)
 
         box_car_rows_image.paste(box_car_input_image_1, crop_box_comp_dest_1)
         box_car_rows_image.paste(box_car_input_image_2, crop_box_comp_dest_2)
 
-        crop_box_dest = (0,
-                         0,
-                         self.sprites_max_x_extent,
-                         2 * graphics_constants.spriterow_height)
+        crop_box_dest = (
+            0,
+            0,
+            self.sprites_max_x_extent,
+            2 * graphics_constants.spriterow_height,
+        )
 
-        box_car_rows_image_as_spritesheet = pixa.make_spritesheet_from_image(box_car_rows_image, DOS_PALETTE)
+        box_car_rows_image_as_spritesheet = pixa.make_spritesheet_from_image(
+            box_car_rows_image, DOS_PALETTE
+        )
 
-        self.units.append(AppendToSpritesheet(box_car_rows_image_as_spritesheet, crop_box_dest))
+        self.units.append(
+            AppendToSpritesheet(box_car_rows_image_as_spritesheet, crop_box_dest)
+        )
         self.units.append(SimpleRecolour(self.consist.gestalt_graphics.recolour_map))
         box_car_input_image_1.close()
         box_car_input_image_1.close()
 
     def add_caboose_spriterows(self, row_count):
-        for row_num in range(int(row_count/2)):
+        for row_num in range(int(row_count / 2)):
             row_offset = row_num * graphics_constants.spriterow_height
 
-            crop_box_source = (0,
-                               self.base_yoffs + row_offset,
-                               self.sprites_max_x_extent,
-                               self.base_yoffs + row_offset + graphics_constants.spriterow_height)
-            caboose_car_spriterow_input_image = self.comp_chassis_and_body(self.vehicle_source_image.copy().crop(crop_box_source))
+            crop_box_source = (
+                0,
+                self.base_yoffs + row_offset,
+                self.sprites_max_x_extent,
+                self.base_yoffs + row_offset + graphics_constants.spriterow_height,
+            )
+            caboose_car_spriterow_input_image = self.comp_chassis_and_body(
+                self.vehicle_source_image.copy().crop(crop_box_source)
+            )
 
-            crop_box_comp_dest = (0,
-                                  0,
-                                  self.sprites_max_x_extent,
-                                  graphics_constants.spriterow_height)
-            caboose_car_rows_image = Image.new("P", (graphics_constants.spritesheet_width, graphics_constants.spriterow_height))
+            crop_box_comp_dest = (
+                0,
+                0,
+                self.sprites_max_x_extent,
+                graphics_constants.spriterow_height,
+            )
+            caboose_car_rows_image = Image.new(
+                "P",
+                (
+                    graphics_constants.spritesheet_width,
+                    graphics_constants.spriterow_height,
+                ),
+            )
             caboose_car_rows_image.putpalette(DOS_PALETTE)
 
-            caboose_car_rows_image.paste(caboose_car_spriterow_input_image, crop_box_comp_dest)
-            #caboose_car_rows_image.show()
+            caboose_car_rows_image.paste(
+                caboose_car_spriterow_input_image, crop_box_comp_dest
+            )
+            # caboose_car_rows_image.show()
 
-            crop_box_dest = (0,
-                             0,
-                             self.sprites_max_x_extent,
-                             graphics_constants.spriterow_height)
+            crop_box_dest = (
+                0,
+                0,
+                self.sprites_max_x_extent,
+                graphics_constants.spriterow_height,
+            )
 
-            caboose_car_rows_image_as_spritesheet = pixa.make_spritesheet_from_image(caboose_car_rows_image, DOS_PALETTE)
+            caboose_car_rows_image_as_spritesheet = pixa.make_spritesheet_from_image(
+                caboose_car_rows_image, DOS_PALETTE
+            )
 
-            self.units.append(AppendToSpritesheet(caboose_car_rows_image_as_spritesheet, crop_box_dest))
-            self.units.append(SimpleRecolour(self.consist.gestalt_graphics.recolour_map_1))
-            self.units.append(AppendToSpritesheet(caboose_car_rows_image_as_spritesheet, crop_box_dest))
-            self.units.append(SimpleRecolour(self.consist.gestalt_graphics.recolour_map_2))
+            self.units.append(
+                AppendToSpritesheet(
+                    caboose_car_rows_image_as_spritesheet, crop_box_dest
+                )
+            )
+            self.units.append(
+                SimpleRecolour(self.consist.gestalt_graphics.recolour_map_1)
+            )
+            self.units.append(
+                AppendToSpritesheet(
+                    caboose_car_rows_image_as_spritesheet, crop_box_dest
+                )
+            )
+            self.units.append(
+                SimpleRecolour(self.consist.gestalt_graphics.recolour_map_2)
+            )
 
     def add_bulk_cargo_spriterows(self):
         cargo_group_row_height = 2 * graphics_constants.spriterow_height
 
-        crop_box_cargo = (self.second_col_start_x,
-                          self.base_yoffs,
-                          self.second_col_start_x + self.col_image_width,
-                          self.base_yoffs + (2 * graphics_constants.spriterow_height))
+        crop_box_cargo = (
+            self.second_col_start_x,
+            self.base_yoffs,
+            self.second_col_start_x + self.col_image_width,
+            self.base_yoffs + (2 * graphics_constants.spriterow_height),
+        )
         cargo_base_image = self.vehicle_source_image.copy().crop(crop_box_cargo)
         # the loading/loaded image has false colour pixels for the cargo; keep only these, removing everything else
-        cargo_base_image = cargo_base_image.point(lambda i: 255 if (i not in range(170, 177)) else i)
-        #if self.consist.id == "dump_car_pony_gen_3A":
-            #cargo_base_image.show()
+        cargo_base_image = cargo_base_image.point(
+            lambda i: 255 if (i not in range(170, 177)) else i
+        )
+        # if self.consist.id == "dump_car_pony_gen_3A":
+        # cargo_base_image.show()
 
         # create a mask so that we paste only the cargo pixels over the body (no blue pixels)
         cargo_base_mask = cargo_base_image.copy()
-        cargo_base_mask = cargo_base_mask.point(lambda i: 0 if i == 255 else 255).convert("1") # the inversion here of blue and white looks a bit odd, but potato / potato
-        #if self.consist.id == "dump_car_pony_gen_3A":
-            #cargo_base_mask.show()
+        cargo_base_mask = cargo_base_mask.point(
+            lambda i: 0 if i == 255 else 255
+        ).convert(
+            "1"
+        )  # the inversion here of blue and white looks a bit odd, but potato / potato
+        # if self.consist.id == "dump_car_pony_gen_3A":
+        # cargo_base_mask.show()
 
-        #loading and loaded state will need pasting once each, so two crop boxes needed
-        crop_box_comp_dest_1 = (0,
-                                0,
-                                self.sprites_max_x_extent,
-                                graphics_constants.spriterow_height)
-        crop_box_comp_dest_2 = (0,
-                                graphics_constants.spriterow_height,
-                                self.sprites_max_x_extent,
-                                2 * graphics_constants.spriterow_height)
-        crop_box_comp_dest_3 = (self.second_col_start_x,
-                                0,
-                                self.second_col_start_x + self.col_image_width,
-                                2 * graphics_constants.spriterow_height)
+        # loading and loaded state will need pasting once each, so two crop boxes needed
+        crop_box_comp_dest_1 = (
+            0,
+            0,
+            self.sprites_max_x_extent,
+            graphics_constants.spriterow_height,
+        )
+        crop_box_comp_dest_2 = (
+            0,
+            graphics_constants.spriterow_height,
+            self.sprites_max_x_extent,
+            2 * graphics_constants.spriterow_height,
+        )
+        crop_box_comp_dest_3 = (
+            self.second_col_start_x,
+            0,
+            self.second_col_start_x + self.col_image_width,
+            2 * graphics_constants.spriterow_height,
+        )
 
         # 2 sets of rows iff there's a second livery, otherwise 1
-        for livery_counter in range(self.consist.gestalt_graphics.num_visible_cargo_liveries):
-            empty_row_livery_offset = livery_counter * graphics_constants.spriterow_height
-            crop_box_vehicle_body = (0,
-                                     self.cur_vehicle_empty_row_yoffs + empty_row_livery_offset,
-                                     self.sprites_max_x_extent,
-                                     self.cur_vehicle_empty_row_yoffs + empty_row_livery_offset + graphics_constants.spriterow_height)
+        for livery_counter in range(
+            self.consist.gestalt_graphics.num_visible_cargo_liveries
+        ):
+            empty_row_livery_offset = (
+                livery_counter * graphics_constants.spriterow_height
+            )
+            crop_box_vehicle_body = (
+                0,
+                self.cur_vehicle_empty_row_yoffs + empty_row_livery_offset,
+                self.sprites_max_x_extent,
+                self.cur_vehicle_empty_row_yoffs
+                + empty_row_livery_offset
+                + graphics_constants.spriterow_height,
+            )
 
-            vehicle_base_image = self.comp_chassis_and_body(self.vehicle_source_image.copy().crop(crop_box_vehicle_body))
-            #vehicle_base_image.show()
+            vehicle_base_image = self.comp_chassis_and_body(
+                self.vehicle_source_image.copy().crop(crop_box_vehicle_body)
+            )
+            # vehicle_base_image.show()
 
-            bulk_cargo_rows_image = Image.new("P", (graphics_constants.spritesheet_width, cargo_group_row_height), 255)
+            bulk_cargo_rows_image = Image.new(
+                "P", (graphics_constants.spritesheet_width, cargo_group_row_height), 255
+            )
             bulk_cargo_rows_image.putpalette(DOS_PALETTE)
 
             # paste the empty state into two rows, then paste the cargo over those rows
             bulk_cargo_rows_image.paste(vehicle_base_image, crop_box_comp_dest_1)
             bulk_cargo_rows_image.paste(vehicle_base_image, crop_box_comp_dest_2)
-            bulk_cargo_rows_image.paste(cargo_base_image, crop_box_comp_dest_3, cargo_base_mask)
-            #if self.consist.id == "dump_car_pony_gen_3A":
-                #bulk_cargo_rows_image.show()
+            bulk_cargo_rows_image.paste(
+                cargo_base_image, crop_box_comp_dest_3, cargo_base_mask
+            )
+            # if self.consist.id == "dump_car_pony_gen_3A":
+            # bulk_cargo_rows_image.show()
 
-            crop_box_dest = (0,
-                             0,
-                             self.sprites_max_x_extent,
-                             cargo_group_row_height)
-            bulk_cargo_rows_image_as_spritesheet = pixa.make_spritesheet_from_image(bulk_cargo_rows_image, DOS_PALETTE)
+            crop_box_dest = (0, 0, self.sprites_max_x_extent, cargo_group_row_height)
+            bulk_cargo_rows_image_as_spritesheet = pixa.make_spritesheet_from_image(
+                bulk_cargo_rows_image, DOS_PALETTE
+            )
 
-            for label, cargo_recolour_map in polar_fox.constants.bulk_cargo_recolour_maps:
-                self.units.append(AppendToSpritesheet(bulk_cargo_rows_image_as_spritesheet, crop_box_dest))
+            for (
+                label,
+                cargo_recolour_map,
+            ) in polar_fox.constants.bulk_cargo_recolour_maps:
+                self.units.append(
+                    AppendToSpritesheet(
+                        bulk_cargo_rows_image_as_spritesheet, crop_box_dest
+                    )
+                )
                 self.units.append(SimpleRecolour(cargo_recolour_map))
-                self.units.append(AddCargoLabel(label=label,
-                                                x_offset=self.sprites_max_x_extent + 5,
-                                                y_offset=  -1 * cargo_group_row_height))
+                self.units.append(
+                    AddCargoLabel(
+                        label=label,
+                        x_offset=self.sprites_max_x_extent + 5,
+                        y_offset=-1 * cargo_group_row_height,
+                    )
+                )
 
     def add_piece_cargo_spriterows(self):
         cargo_group_output_row_height = 2 * graphics_constants.spriterow_height
@@ -940,73 +1515,111 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
         # - there is a case not handled, where long cargo sprites will overlap cabbed vehicles in / direction with cab at N end, hard to solve
         # - this has no awareness of vehicle symmetry_type property, so will needlessly scan too many pixels for symmetric vehicles
         #   that's TMWFTLB to fix right now, as it will require relative offsets of all the loc points for probably very little performance gain
-        crop_box_vehicle_cargo_loc_row = (self.second_col_start_x,
-                                          self.base_yoffs,
-                                          self.second_col_start_x + self.col_image_width,
-                                          self.base_yoffs + graphics_constants.spriterow_height)
-        vehicle_cargo_loc_image = self.vehicle_source_image.copy().crop(crop_box_vehicle_cargo_loc_row)
+        crop_box_vehicle_cargo_loc_row = (
+            self.second_col_start_x,
+            self.base_yoffs,
+            self.second_col_start_x + self.col_image_width,
+            self.base_yoffs + graphics_constants.spriterow_height,
+        )
+        vehicle_cargo_loc_image = self.vehicle_source_image.copy().crop(
+            crop_box_vehicle_cargo_loc_row
+        )
         # get the loc points
-        loc_points = [(pixel[0] + self.second_col_start_x, pixel[1], pixel[2]) for pixel in pixa.pixascan(vehicle_cargo_loc_image) if pixel[2] == 226]
+        loc_points = [
+            (pixel[0] + self.second_col_start_x, pixel[1], pixel[2])
+            for pixel in pixa.pixascan(vehicle_cargo_loc_image)
+            if pixel[2] == 226
+        ]
         # two cargo rows needed, so extend the loc points list
         loc_points.extend([(pixel[0], pixel[1] + 30, pixel[2]) for pixel in loc_points])
         # sort them in y order, this causes sprites to overlap correctly when there are multiple loc points for an angle
         loc_points = sorted(loc_points, key=lambda x: x[1])
 
         # this is dirty shorthand and relies on has_cover yielding 0 or 1 for an additional offset (empty row is second row if has_cover is True)
-        empty_row_yoffs = self.cur_vehicle_empty_row_yoffs + (graphics_constants.spriterow_height * self.consist.gestalt_graphics.has_cover)
+        empty_row_yoffs = self.cur_vehicle_empty_row_yoffs + (
+            graphics_constants.spriterow_height
+            * self.consist.gestalt_graphics.has_cover
+        )
 
-        crop_box_vehicle_body = (0,
-                                 empty_row_yoffs,
-                                 self.sprites_max_x_extent,
-                                 empty_row_yoffs + graphics_constants.spriterow_height)
-        vehicle_base_image = self.comp_chassis_and_body(self.vehicle_source_image.copy().crop(crop_box_vehicle_body))
+        crop_box_vehicle_body = (
+            0,
+            empty_row_yoffs,
+            self.sprites_max_x_extent,
+            empty_row_yoffs + graphics_constants.spriterow_height,
+        )
+        vehicle_base_image = self.comp_chassis_and_body(
+            self.vehicle_source_image.copy().crop(crop_box_vehicle_body)
+        )
 
-        crop_box_mask_source = (self.second_col_start_x,
-                                self.base_yoffs + graphics_constants.spriterow_height,
-                                self.second_col_start_x + self.col_image_width,
-                                self.base_yoffs + (2 * graphics_constants.spriterow_height))
-        crop_box_mask_dest = (self.second_col_start_x,
-                              0,
-                              self.second_col_start_x + self.col_image_width,
-                              graphics_constants.spriterow_height)
-        vehicle_mask_source = self.vehicle_source_image.copy().crop(crop_box_mask_source).point(lambda i: 255 if i == 226 else 0).convert("1")
-        vehicle_mask = Image.new("1", (self.sprites_max_x_extent, graphics_constants.spriterow_height), 0)
+        crop_box_mask_source = (
+            self.second_col_start_x,
+            self.base_yoffs + graphics_constants.spriterow_height,
+            self.second_col_start_x + self.col_image_width,
+            self.base_yoffs + (2 * graphics_constants.spriterow_height),
+        )
+        crop_box_mask_dest = (
+            self.second_col_start_x,
+            0,
+            self.second_col_start_x + self.col_image_width,
+            graphics_constants.spriterow_height,
+        )
+        vehicle_mask_source = (
+            self.vehicle_source_image.copy()
+            .crop(crop_box_mask_source)
+            .point(lambda i: 255 if i == 226 else 0)
+            .convert("1")
+        )
+        vehicle_mask = Image.new(
+            "1", (self.sprites_max_x_extent, graphics_constants.spriterow_height), 0
+        )
         vehicle_mask.paste(vehicle_mask_source, crop_box_mask_dest)
-        #if self.consist.id == "open_car_pony_gen_1A":
-            #vehicle_mask.show()
+        # if self.consist.id == "open_car_pony_gen_1A":
+        # vehicle_mask.show()
 
-        #mask and empty state will need pasting once for each of two cargo rows, so two crop boxes needed
-        crop_box_comp_dest_1 = (0,
-                                0,
-                                self.sprites_max_x_extent,
-                                graphics_constants.spriterow_height)
-        crop_box_comp_dest_2 = (0,
-                                graphics_constants.spriterow_height,
-                                self.sprites_max_x_extent,
-                                2 * graphics_constants.spriterow_height)
+        # mask and empty state will need pasting once for each of two cargo rows, so two crop boxes needed
+        crop_box_comp_dest_1 = (
+            0,
+            0,
+            self.sprites_max_x_extent,
+            graphics_constants.spriterow_height,
+        )
+        crop_box_comp_dest_2 = (
+            0,
+            graphics_constants.spriterow_height,
+            self.sprites_max_x_extent,
+            2 * graphics_constants.spriterow_height,
+        )
 
-        piece_cargo_rows_image = Image.new("P", (graphics_constants.spritesheet_width, cargo_group_output_row_height))
+        piece_cargo_rows_image = Image.new(
+            "P", (graphics_constants.spritesheet_width, cargo_group_output_row_height)
+        )
         piece_cargo_rows_image.putpalette(DOS_PALETTE)
         # paste empty states in for the cargo rows (base image = empty state)
         piece_cargo_rows_image.paste(vehicle_base_image, crop_box_comp_dest_1)
         piece_cargo_rows_image.paste(vehicle_base_image, crop_box_comp_dest_2)
-        #if self.consist.id == "open_car_pony_gen_1A":
-            #piece_cargo_rows_image.show()
-        crop_box_dest = (0,
-                         0,
-                         self.sprites_max_x_extent,
-                         cargo_group_output_row_height)
+        # if self.consist.id == "open_car_pony_gen_1A":
+        # piece_cargo_rows_image.show()
+        crop_box_dest = (0, 0, self.sprites_max_x_extent, cargo_group_output_row_height)
 
-        piece_cargo_sprites = PieceCargoSprites(polar_fox_constants=polar_fox.constants, polar_fox_graphics_path=os.path.join('src', 'polar_fox', 'graphics'))
-        for cargo_filename in polar_fox.constants.piece_vehicle_type_to_sprites_maps[self.consist.gestalt_graphics.piece_type]:
+        piece_cargo_sprites = PieceCargoSprites(
+            polar_fox_constants=polar_fox.constants,
+            polar_fox_graphics_path=os.path.join("src", "polar_fox", "graphics"),
+        )
+        for cargo_filename in polar_fox.constants.piece_vehicle_type_to_sprites_maps[
+            self.consist.gestalt_graphics.piece_type
+        ]:
             # n.b. Iron Horse assumes cargo length is always equivalent from vehicle length (probably fine)
-            cargo_sprites = piece_cargo_sprites.get_cargo_sprites_all_angles_for_length(cargo_filename, self.vehicle_unit.vehicle_length)
+            cargo_sprites = piece_cargo_sprites.get_cargo_sprites_all_angles_for_length(
+                cargo_filename, self.vehicle_unit.vehicle_length
+            )
 
             vehicle_comped_image = piece_cargo_rows_image.copy()
 
             for pixel in loc_points:
                 angle_num = 0
-                for counter, bbox in enumerate(self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed):
+                for counter, bbox in enumerate(
+                    self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed
+                ):
                     if pixel[0] >= bbox[0]:
                         angle_num = counter
                 # clamp angle_num to 4, cargo sprites are symmetrical, only 4 angles provided
@@ -1022,33 +1635,59 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                 cargo_height = cargo_sprites[cargo_sprite_num][0].size[1]
                 # the +1s for height adjust the crop box to include the loc point
                 # (needed beause loc points are left-bottom not left-top as per co-ordinate system, makes drawing loc points easier)
-                cargo_bounding_box = (pixel[0],
-                                      pixel[1] - cargo_height + 1,
-                                      pixel[0] + cargo_width,
-                                      pixel[1] + 1)
-                vehicle_comped_image.paste(cargo_sprites[cargo_sprite_num][0], cargo_bounding_box, cargo_sprites[cargo_sprite_num][1])
+                cargo_bounding_box = (
+                    pixel[0],
+                    pixel[1] - cargo_height + 1,
+                    pixel[0] + cargo_width,
+                    pixel[1] + 1,
+                )
+                vehicle_comped_image.paste(
+                    cargo_sprites[cargo_sprite_num][0],
+                    cargo_bounding_box,
+                    cargo_sprites[cargo_sprite_num][1],
+                )
 
             # vehicle overlay with mask - overlays any areas where cargo shouldn't show
-            vehicle_comped_image.paste(vehicle_base_image, crop_box_comp_dest_1, vehicle_mask)
-            vehicle_comped_image.paste(vehicle_base_image, crop_box_comp_dest_2, vehicle_mask)
-            #if self.consist.id == "open_car_pony_gen_1A":
-                #vehicle_comped_image.show()
+            vehicle_comped_image.paste(
+                vehicle_base_image, crop_box_comp_dest_1, vehicle_mask
+            )
+            vehicle_comped_image.paste(
+                vehicle_base_image, crop_box_comp_dest_2, vehicle_mask
+            )
+            # if self.consist.id == "open_car_pony_gen_1A":
+            # vehicle_comped_image.show()
 
-            vehicle_comped_image_as_spritesheet = pixa.make_spritesheet_from_image(vehicle_comped_image, DOS_PALETTE)
+            vehicle_comped_image_as_spritesheet = pixa.make_spritesheet_from_image(
+                vehicle_comped_image, DOS_PALETTE
+            )
 
-            self.units.append(AppendToSpritesheet(vehicle_comped_image_as_spritesheet, crop_box_dest))
-            self.units.append(SimpleRecolour(self.consist.gestalt_graphics.body_recolour_map))
-            self.units.append(AddCargoLabel(label=cargo_filename,
-                                            x_offset=self.sprites_max_x_extent + 5,
-                                            y_offset= -1 * cargo_group_output_row_height))
+            self.units.append(
+                AppendToSpritesheet(vehicle_comped_image_as_spritesheet, crop_box_dest)
+            )
+            self.units.append(
+                SimpleRecolour(self.consist.gestalt_graphics.body_recolour_map)
+            )
+            self.units.append(
+                AddCargoLabel(
+                    label=cargo_filename,
+                    x_offset=self.sprites_max_x_extent + 5,
+                    y_offset=-1 * cargo_group_output_row_height,
+                )
+            )
 
     def render(self, consist, global_constants):
-        self.units = [] # graphics units not same as consist units ! confusing overlap of terminology :(
+        self.units = (
+            []
+        )  # graphics units not same as consist units ! confusing overlap of terminology :(
         self.consist = consist
         self.global_constants = global_constants
         self.sprites_max_x_extent = self.global_constants.sprites_max_x_extent
-        self.first_col_start_x = self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed[0][0]
-        self.second_col_start_x = self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed[4][0]
+        self.first_col_start_x = (
+            self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed[0][0]
+        )
+        self.second_col_start_x = (
+            self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed[4][0]
+        )
         self.col_image_width = self.sprites_max_x_extent - self.second_col_start_x
 
         self.vehicle_source_image = Image.open(self.vehicle_source_input_path)
@@ -1056,45 +1695,67 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
         # the cumulative_input_spriterow_count updates per processed group of spriterows, and is key to making this work
         # !! input_spriterow_count looks a bit weird though; I tried moving it to gestalts, but didn't really work
         cumulative_input_spriterow_count = 0
-        for vehicle_counter, vehicle_rows in enumerate(self.consist.get_spriterows_for_consist_or_subpart(self.consist.unique_units)):
+        for vehicle_counter, vehicle_rows in enumerate(
+            self.consist.get_spriterows_for_consist_or_subpart(
+                self.consist.unique_units
+            )
+        ):
             # 'vehicle_unit' not 'unit' to avoid conflating with graphics processor 'unit'
-            self.vehicle_unit = self.consist.unique_units[vehicle_counter] # !!  this is ugly hax, I didn't want to refactor the iterator above to contain the vehicle
-            self.cur_vehicle_empty_row_yoffs = 10 + cumulative_input_spriterow_count * graphics_constants.spriterow_height
+            self.vehicle_unit = self.consist.unique_units[
+                vehicle_counter
+            ]  # !!  this is ugly hax, I didn't want to refactor the iterator above to contain the vehicle
+            self.cur_vehicle_empty_row_yoffs = (
+                10
+                + cumulative_input_spriterow_count * graphics_constants.spriterow_height
+            )
             for spriterow_type in vehicle_rows:
-                self.base_yoffs = 10 + (graphics_constants.spriterow_height * cumulative_input_spriterow_count)
-                if spriterow_type == 'empty':
+                self.base_yoffs = 10 + (
+                    graphics_constants.spriterow_height
+                    * cumulative_input_spriterow_count
+                )
+                if spriterow_type == "empty":
                     input_spriterow_count = 1
-                    self.add_generic_spriterow(label='EMPTY')
-                if spriterow_type == 'has_cover':
+                    self.add_generic_spriterow(label="EMPTY")
+                if spriterow_type == "has_cover":
                     input_spriterow_count = 1
-                    self.add_generic_spriterow(label='COVERED')
-                elif spriterow_type == 'livery_spriterows':
+                    self.add_generic_spriterow(label="COVERED")
+                elif spriterow_type == "livery_spriterows":
                     input_spriterow_count = 1
                     self.add_livery_spriterows()
-                elif spriterow_type == 'box_car_with_opening_doors_spriterows':
+                elif spriterow_type == "box_car_with_opening_doors_spriterows":
                     input_spriterow_count = 2
                     self.add_box_car_with_opening_doors_spriterows()
-                elif spriterow_type == 'caboose_spriterows':
-                    input_spriterow_count = 2 * self.consist.gestalt_graphics.num_generations
+                elif spriterow_type == "caboose_spriterows":
+                    input_spriterow_count = (
+                        2 * self.consist.gestalt_graphics.num_generations
+                    )
                     self.add_caboose_spriterows(input_spriterow_count)
-                elif spriterow_type == 'pax_mail_cars_with_doors':
+                elif spriterow_type == "pax_mail_cars_with_doors":
                     # 2 liveries with 2 rows each: empty & loaded (doors closed), loading (doors open)
-                    input_spriterow_count = 4 * self.consist.gestalt_graphics.num_cargo_sprite_variants
-                    self.add_pax_mail_car_with_opening_doors_spriterows(input_spriterow_count)
-                elif spriterow_type == 'bulk_cargo':
+                    input_spriterow_count = (
+                        4 * self.consist.gestalt_graphics.num_cargo_sprite_variants
+                    )
+                    self.add_pax_mail_car_with_opening_doors_spriterows(
+                        input_spriterow_count
+                    )
+                elif spriterow_type == "bulk_cargo":
                     input_spriterow_count = 2
                     self.add_bulk_cargo_spriterows()
-                elif spriterow_type == 'piece_cargo':
+                elif spriterow_type == "piece_cargo":
                     input_spriterow_count = 2
                     self.add_piece_cargo_spriterows()
                 cumulative_input_spriterow_count += input_spriterow_count
             # self.vehicle_unit is hax, and is only valid inside this loop, so clear it to prevent incorrectly relying on it outside the loop in future :P
             self.vehicle_unit = None
 
-        if hasattr(self.consist.gestalt_graphics, 'asymmetric_row_map'):
-            self.units.append(TransposeAsymmetricSprites(graphics_constants.spriterow_height,
-                                                         global_constants.spritesheet_bounding_boxes_asymmetric_unreversed,
-                                                         self.consist.gestalt_graphics.asymmetric_row_map))
+        if hasattr(self.consist.gestalt_graphics, "asymmetric_row_map"):
+            self.units.append(
+                TransposeAsymmetricSprites(
+                    graphics_constants.spriterow_height,
+                    global_constants.spritesheet_bounding_boxes_asymmetric_unreversed,
+                    self.consist.gestalt_graphics.asymmetric_row_map,
+                )
+            )
 
         if self.consist.buy_menu_x_loc == 360:
             self.units.append(AddBuyMenuSprite(self.process_buy_menu_sprite))
@@ -1105,20 +1766,25 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
         self.render_common(input_image, self.units)
         self.vehicle_source_image.close()
 
+
 def get_pipelines(pipeline_names):
     # return a pipeline by name;
     # add pipelines here when creating new ones
     # this is a bit hokey, there's probably a simpler way to do this but eh
     # looks like it could be replaced by a simple dict lookup directly from gestalt_graphics, but eh, I tried, it's faff
-    pipelines = {"pass_through_pipeline": PassThroughPipeline,
-                 "check_buy_menu_only": CheckBuyMenuOnlyPipeline,
-                 "extend_spriterows_for_composited_sprites_pipeline": ExtendSpriterowsForCompositedSpritesPipeline,
-                 "generate_pantographs_up_spritesheet": GeneratePantographsUpSpritesheetPipeline,
-                 "generate_pantographs_down_spritesheet": GeneratePantographsDownSpritesheetPipeline}
+    pipelines = {
+        "pass_through_pipeline": PassThroughPipeline,
+        "check_buy_menu_only": CheckBuyMenuOnlyPipeline,
+        "extend_spriterows_for_composited_sprites_pipeline": ExtendSpriterowsForCompositedSpritesPipeline,
+        "generate_pantographs_up_spritesheet": GeneratePantographsUpSpritesheetPipeline,
+        "generate_pantographs_down_spritesheet": GeneratePantographsDownSpritesheetPipeline,
+    }
     return [pipelines[pipeline_name]() for pipeline_name in pipeline_names]
+
 
 def main():
     print("yeah, pipelines.main() does nothing")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()
