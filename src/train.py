@@ -950,6 +950,7 @@ class MailEngineCargoSprinterEngineConsist(MailEngineConsist):
         self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings,
                                                                      consist_ruleset='railcars_3_unit_sets')
         """
+        self.platform_type = "cargo_sprinter"
         # Graphics configuration
         # NOTE that cargo sprinter will NOT randomise containers on load as of Dec 2020 - there is a bug with rear unit running unwanted triggers and re-randomising in depots etc
         self.gestalt_graphics = GestaltGraphicsCustom(
@@ -957,11 +958,6 @@ class MailEngineCargoSprinterEngineConsist(MailEngineConsist):
             flag_switch_set_layers_register_more_sprites=True,
             cargo_label_mapping=GestaltGraphicsIntermodal().cargo_label_mapping,
         )
-
-    @property
-    def platform_type(self):
-        # !! cargo sprinters all default currently, extend as needed
-        return "default"
 
 
 class MailEngineMetroConsist(MailEngineConsist):
