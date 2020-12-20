@@ -24,11 +24,14 @@ spriteset(ss_spritelayer_cargos_intermodal_cars_empty, "src/graphics/spriterow_t
                         return ss_spritelayer_cargos_intermodal_cars_${platform_type_and_length}_${container_gestalt.container_subtype}_${repeat.variant.index}_unflipped;
                     }
                 </tal:variants>
-                random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_cars_random_${platform_type_and_length}_${container_gestalt.container_subtype}, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
-                    <tal:container_types repeat="variant container_gestalt.variants">
-                            1: return switch_spritelayer_cargos_intermodal_cars_${platform_type_and_length}_${container_gestalt.container_subtype}_${repeat.variant.index};
-                    </tal:container_types>
-                }
+                <!--! random switches will only be generated where needed, nml would optimise these out, but it's preferable to not provide them -->
+                <tal:optional_random condition="spritelayer_cargos.intermodal_containers.gestalt_has_random_variants_for_cargo_label(platform_type, platform_length, container_gestalt.container_subtype)">
+                    random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_cars_random_${platform_type_and_length}_${container_gestalt.container_subtype}, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
+                        <tal:container_types repeat="variant container_gestalt.variants">
+                                1: return switch_spritelayer_cargos_intermodal_cars_${platform_type_and_length}_${container_gestalt.container_subtype}_${repeat.variant.index};
+                        </tal:container_types>
+                    }
+                </tal:optional_random>
             </tal:container_spritesets>
             <!--! pseudo cargo checking code
                 1. check known labels -> named random switch
@@ -39,18 +42,17 @@ spriteset(ss_spritelayer_cargos_intermodal_cars_empty, "src/graphics/spriterow_t
                   bulk class is explicitly not checked as there are no meaningful default bulk sprites
             -->
             switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_containers_check_cargo_class_liquid_${platform_type_and_length}, cargo_classes & bitmask(CC_LIQUID)) {
-                0: switch_spritelayer_cargos_intermodal_cars_random_${platform_type_and_length}_box_DFLT;
-                return switch_spritelayer_cargos_intermodal_cars_random_${platform_type_and_length}_tank_DFLT;
+                0: return ${spritelayer_cargos.intermodal_containers.get_next_cargo_switch(platform_type, platform_length, 'box_DFLT')};
+                return ${spritelayer_cargos.intermodal_containers.get_next_cargo_switch(platform_type, platform_length, 'tank_DFLT')};
             }
             switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_containers_check_cargo_class_refrigerated_${platform_type_and_length}, cargo_classes & bitmask(CC_REFRIGERATED)) {
                 0: switch_spritelayer_cargos_containers_check_cargo_class_liquid_${platform_type_and_length};
-                return switch_spritelayer_cargos_intermodal_cars_random_${platform_type_and_length}_reefer_DFLT;
+                return ${spritelayer_cargos.intermodal_containers.get_next_cargo_switch(platform_type, platform_length, 'reefer_DFLT')};
             }
-
             <!--! check explicit cargo labels -->
             switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_cars_${platform_type_and_length}, cargo_type_in_veh) {
-                <tal:cargo_label_container_type_mapping repeat="cargo_label spritelayer_cargos.intermodal_containers.GestaltGraphicsIntermodal().cargo_label_mapping.items()">
-                    ${cargo_label[0]}: switch_spritelayer_cargos_intermodal_cars_random_${platform_type_and_length}_${cargo_label[1]};
+                <tal:cargo_label_container_type_mapping repeat="cargo_map spritelayer_cargos.intermodal_containers.GestaltGraphicsIntermodal().cargo_label_mapping.items()">
+                    ${cargo_map[0]}: ${spritelayer_cargos.intermodal_containers.get_next_cargo_switch(platform_type, platform_length, cargo_map[1])};
                 </tal:cargo_label_container_type_mapping>
                 return switch_spritelayer_cargos_containers_check_cargo_class_refrigerated_${platform_type_and_length};
             }

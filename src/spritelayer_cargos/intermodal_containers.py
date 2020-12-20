@@ -237,61 +237,61 @@ container_type_gestalt_mapping = {
         IntermodalFlatCar16pxStandard,
         IntermodalFlatCar24pxStandard,
         IntermodalFlatCar32pxNo40Foot,  # note special case for 32px
-        IntermodalCargoSprinter32pxBox, # !!! should be standard?
+        IntermodalCargoSprinter32pxBox,  # !!! should be standard?
     ],
     "chemicals_tank": [
         IntermodalFlatCar16pxStandard,
         IntermodalFlatCar24pxStandard,
         IntermodalFlatCar32pxStandard,
-        IntermodalCargoSprinter32pxBox, # !!! should be standard?
+        IntermodalCargoSprinter32pxBox,  # !!! should be standard?
     ],
     "cryo_tank": [
         IntermodalFlatCar16pxStandard,
         IntermodalFlatCar24pxStandard,
         IntermodalFlatCar32pxStandard,
-        IntermodalCargoSprinter32pxBox, # !!! should be standard?
+        IntermodalCargoSprinter32pxBox,  # !!! should be standard?
     ],
     "curtain_side": [
         IntermodalFlatCar16pxStandard,
         IntermodalFlatCar24px40FootOnly,  # note special case for 24px
         IntermodalFlatCar32px30FootOnly,  # note special case for 24px
-        IntermodalCargoSprinter32pxBox, # !!! should be standard?
+        IntermodalCargoSprinter32pxBox,  # !!! should be standard?
     ],
     "edibles_tank": [
         IntermodalFlatCar16pxStandard,
         IntermodalFlatCar24pxStandard,
         IntermodalFlatCar32pxStandard,
-        IntermodalCargoSprinter32pxBox, # !!! should be standard?
+        IntermodalCargoSprinter32pxBox,  # !!! should be standard?
     ],
     "stake_flatrack": [
         IntermodalFlatCar16pxStandard,
         IntermodalFlatCar24px40FootOnly,  # note special case for 24px
         IntermodalFlatCar32px30FootOnly,  # note special case for 24px
-        IntermodalCargoSprinter32pxBox, # !!! should be standard?
+        IntermodalCargoSprinter32pxBox,  # !!! should be standard?
     ],
     "livestock": [
         IntermodalFlatCar16pxStandard,
         IntermodalFlatCar24pxStandard,
         IntermodalFlatCar32pxStandard,
-        IntermodalCargoSprinter32pxBox, # !!! should be standard?
+        IntermodalCargoSprinter32pxBox,  # !!! should be standard?
     ],
     "reefer": [
         IntermodalFlatCar16pxStandard,
         IntermodalFlatCar24pxStandard,
         IntermodalFlatCar32pxStandard,
-        IntermodalCargoSprinter32pxBox, # !!! should be standard?
+        IntermodalCargoSprinter32pxBox,  # !!! should be standard?
     ],
     "tank": [
         IntermodalFlatCar16pxStandard,
         IntermodalFlatCar24pxStandard,
         IntermodalFlatCar32pxStandard,
-        IntermodalCargoSprinter32pxBox, # !!! should be standard?
+        IntermodalCargoSprinter32pxBox,  # !!! should be standard?
     ],
     "wood": [
         IntermodalFlatCar16pxStandard,
         IntermodalFlatCar24px40FootOnly,  # note special case for 24px
         IntermodalFlatCar32px30FootOnly,  # note special case for 24px
-        IntermodalCargoSprinter32pxBox, # !!! should be standard?
+        IntermodalCargoSprinter32pxBox,  # !!! should be standard?
     ],
 }
 
@@ -306,7 +306,8 @@ def register_container_gestalt(container_type, container_subtype):
     for gestalt_type in container_type_gestalt_mapping[container_type]:
         for platform_type in gestalt_type.compatible_platform_types:
             gestalt = gestalt_type(
-                container_subtype=container_subtype, platform_type=platform_type
+                container_subtype=container_subtype,
+                platform_type=platform_type,
             )
             # suppression of unused gestalts to prevent nml warnings further down the chain
             if (platform_type, gestalt.length) not in suppression_list:
@@ -323,6 +324,44 @@ def get_container_gestalts_matching_platform_type_and_length(
         ):
             result.append(gestalt)
     return result
+
+
+def gestalt_has_random_variants_for_cargo_label(
+    platform_type, platform_length, container_subtype
+):
+    result = False
+    for gestalt in get_container_gestalts_matching_platform_type_and_length(
+        platform_type, platform_length
+    ):
+        if gestalt.container_subtype == container_subtype:
+            if len(gestalt.variants) > 1:
+                result = True
+    return result
+
+
+def get_next_cargo_switch(platform_type, platform_length, container_subtype):
+    # this is solely to optimise out pointless random switches, which nml could do for us but eh, why not shave the yak :P
+    if gestalt_has_random_variants_for_cargo_label(
+        platform_type, platform_length, container_subtype
+    ):
+        return (
+            "switch_spritelayer_cargos_intermodal_cars_random_"
+            + platform_type
+            + "_"
+            + str(platform_length)
+            + "px_"
+            + container_subtype
+        )
+    else:
+        return (
+            "switch_spritelayer_cargos_intermodal_cars_"
+            + platform_type
+            + "_"
+            + str(platform_length)
+            + "px_"
+            + container_subtype
+            + "_0"
+        )
 
 
 def main():
