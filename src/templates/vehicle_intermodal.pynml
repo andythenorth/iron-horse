@@ -82,9 +82,8 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase, 0) {
 <tal:include metal:use-macro="load: graphics_switches.pynml" />
 
 <!--! dedicated colour remapping of second livery, with user flip support but, no randomisation -->
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_colour_mapping, vehicle_is_flipped) {
-    1: return base_sprite_2cc + 16 * company_colour1 + company_colour2; <!--! swap 1CC and 2CC -->
-    return base_sprite_2cc + 16 * company_colour2 + company_colour1; <!--! apply regular 1CC and 2CC -->
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_colour_mapping, 0) {
+    return intermodal_car_switch_colour_mapping_force_if_cargo_sprinter;
 }
 
 <tal:optional_capacity_switches condition="vehicle.has_cargo_capacity">
