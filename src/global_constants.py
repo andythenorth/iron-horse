@@ -170,6 +170,7 @@ temp_storage_ids = dict(id_of_neighbouring_vehicle = 0, # used to avoid expensiv
                         cc_num_to_randomise = 20, # used in procedures_colour_randomisation_strategies
                         auto_colour_randomisation_strategy_num = 21, # used in procedures_colour_randomisation_strategies
                         use_wagon_base_colour_parameter = 22, # used in procedures_colour_randomisation_strategies
+                        unreversible_containers = 23, # used to handle esoteric cases where intermodal containers need to reverse
                     )
 
 # standard offsets for trains

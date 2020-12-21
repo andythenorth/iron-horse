@@ -18,8 +18,12 @@ spriteset(ss_spritelayer_cargos_intermodal_cars_empty, "src/graphics/spriterow_t
                     spriteset(ss_spritelayer_cargos_intermodal_cars_${platform_type_and_length}_${container_gestalt.container_subtype}_${repeat.variant.index}_flipped, "${graphics_path}${container_gestalt.id}.png") {
                         spriteset_template_asymmetric_reversed_${int(container_gestalt.length / 4)}_8_flipped(10 + ${repeat.variant.index * 30}, NOANIM)
                     }
-                    <!--! handle user flipped state -->
-                    switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_cars_${platform_type_and_length}_${container_gestalt.container_subtype}_${repeat.variant.index}, vehicle_is_flipped) {
+                    <!--! handle user flipped state
+                        generally containers do not flip, even when base platform is flipped
+                        but there is a flag that permits them to flip to handle cases like rear unit of cargo sprinter which requires reversed containers due to asymmetry
+                    -->
+                    switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_intermodal_cars_${platform_type_and_length}_${container_gestalt.container_subtype}_${repeat.variant.index},
+                                        [vehicle_is_flipped && LOAD_TEMP(${temp_storage_ids.unreversible_containers})]) {
                         1: return ss_spritelayer_cargos_intermodal_cars_${platform_type_and_length}_${container_gestalt.container_subtype}_${repeat.variant.index}_flipped;
                         return ss_spritelayer_cargos_intermodal_cars_${platform_type_and_length}_${container_gestalt.container_subtype}_${repeat.variant.index}_unflipped;
                     }

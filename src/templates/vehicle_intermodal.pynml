@@ -52,7 +52,10 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_containers_check_cargo,
     return switch_spritelayer_cargos_intermodal_cars_${consist.platform_type}_${4 * vehicle.vehicle_length}px;
 }
 
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_containers, STORE_TEMP(switch_intermodal_by_company_colour_1cc_to_1cc(), 0x100)) {
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_containers, [
+                     STORE_TEMP(switch_intermodal_by_company_colour_1cc_to_1cc(), 0x100),
+                     STORE_TEMP(1, ${temp_storage_ids.unreversible_containers})
+                    ]) {
     return ${vehicle.id}_switch_graphics_containers_check_cargo;
 }
 
