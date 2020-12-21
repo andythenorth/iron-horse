@@ -7,7 +7,7 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_containers_check_cargo,
 }
 
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_containers, [
-                     STORE_TEMP(switch_intermodal_by_company_colour_1cc_to_1cc(), 0x100),
+                     STORE_TEMP(CB_FLAG_MORE_SPRITES | switch_intermodal_by_company_colour_1cc_to_1cc(), 0x100), <!--! note requirement to pass along 'more sprites' flag here otherwise sprite layers fail -->
                      STORE_TEMP(0, ${temp_storage_ids.unreversible_containers}) <!--! allow containers to reverse, to handle case (automatically reversed) rear unit -->
                     ]) {
     return ${vehicle.id}_switch_graphics_containers_check_cargo;
@@ -21,11 +21,15 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_containers, [
 spriteset(${vehicle.id}_ss_unflipped_unreversed, "${graphics_path}${consist.id}.png") {
     ${vehicle.get_spriteset_template_name('unreversed', 'unflipped', 10)}
 }
+spriteset(${vehicle.id}_ss_masked_overlay_unflipped_unreversed, "${graphics_path}${consist.id}.png") {
+    ${vehicle.get_spriteset_template_name('unreversed', 'unflipped', 40)}
+}
 
 // switch layers: base platform / containers
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, getbits(extra_callback_info1, 8, 8)) {
     0: return ${vehicle.id}_ss_unflipped_unreversed;
     1: return ${vehicle.id}_switch_graphics_containers;
+    2: return ${vehicle.id}_ss_masked_overlay_unflipped_unreversed;
 }
 
 // buy menu graphics chain

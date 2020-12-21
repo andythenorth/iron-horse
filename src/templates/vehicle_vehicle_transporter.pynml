@@ -42,7 +42,9 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_containers_check_cargo,
     return ${vehicle.id}_switch_graphics_containers_check_cargo_label;
 }
 
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_containers, STORE_TEMP(base_sprite_2cc + 16 * company_colour2 + company_colour1, 0x100)) {
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_containers,
+            STORE_TEMP(CB_FLAG_MORE_SPRITES | base_sprite_2cc + 16 * company_colour2 + company_colour1, 0x100) <!--! note requirement to pass along 'more sprites' flag here -->
+        ) {
     return ${vehicle.id}_switch_graphics_containers_check_cargo;
 }
 

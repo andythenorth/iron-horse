@@ -19,9 +19,8 @@ class GestaltGraphics(object):
         # specific alt livery for specific company colour choices
         # this is only used by engines as of July 2020, but we provide a default value here to avoid requiring getattr() in many places, which was masking errors
         self.alternative_cc_livery = None  # over-ride as needed in subclasses
-        self.flag_switch_set_layers_register_more_sprites = (
-            False  # over-ride as needed in subclasses
-        )
+        # over-ride layers flag as needed in subclasses
+        self.flag_switch_set_layers_register_more_sprites = False
 
     @property
     def nml_template(self):

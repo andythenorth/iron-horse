@@ -6,6 +6,11 @@
 
 // graphics chain for vehicle platform
 // position variants are 'default', 'first', 'last', 'middle', etc, and are dependent on consist_ruleset
+<!--! note that this does not yet account for (masked) overlays which will be needed for well cars
+      the sprites for those are provided manually in the cargo sprinter as it's a single case
+      but if they are added here, the pipeline should generate the mask automatically using a pink mask sprite
+      will need the spritesheet format figuring out - intermodal cars are asymmetric, so probably interleave the masks with each row, like opening doors on pax cars
+-->
 <tal:position_variants repeat="position_variant consist.gestalt_graphics.position_variants">
     spriteset(${vehicle.id}_ss_${position_variant}_unflipped, "${graphics_path}${consist.id}.png") {
         ${vehicle.get_spriteset_template_name('unreversed', 'unflipped', 10 + (repeat.position_variant.index * 60))}
@@ -53,7 +58,7 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_containers_check_cargo,
 }
 
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_containers, [
-                     STORE_TEMP(switch_intermodal_by_company_colour_1cc_to_1cc(), 0x100),
+                     STORE_TEMP(CB_FLAG_MORE_SPRITES | switch_intermodal_by_company_colour_1cc_to_1cc(), 0x100),
                      STORE_TEMP(1, ${temp_storage_ids.unreversible_containers})
                     ]) {
     return ${vehicle.id}_switch_graphics_containers_check_cargo;
