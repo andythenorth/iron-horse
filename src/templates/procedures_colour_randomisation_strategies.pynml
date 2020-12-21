@@ -183,7 +183,7 @@ switch (FEAT_TRAINS, SELF, intermodal_car_switch_colour_mapping_not_a_cargo_spri
 <!--! check parent engine ID to see if company colour should be forced to match -->
 switch (FEAT_TRAINS, PARENT, intermodal_car_switch_colour_mapping_force_if_cargo_sprinter, vehicle_type_id) {
     <!--! this doesn't check grfid currently - add later if needed -->
-    <tal:livery_2_engine_ids repeat="engine_id [3000]">
+    <tal:livery_2_engine_ids repeat="engine_id cargo_sprinter_ids">
         <!--! apply regular 1CC and 2CC - note that this _should_ take the PARENT scope for those values -->
         ${engine_id}: base_sprite_2cc + 16 * company_colour2 + company_colour1;
     </tal:livery_2_engine_ids>

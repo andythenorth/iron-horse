@@ -179,6 +179,22 @@ def get_livery_2_engine_ids():
     return result
 
 
+def get_cargo_sprinter_ids():
+    # find cargo_sprinters
+    # used to switch wagon company colours
+    result = []
+    for roster in get_active_rosters():
+        for consist in roster.engine_consists:
+            # abuse the platform_type property here, this might be fragile, but eh
+            if getattr(consist, 'platform_type', None) == "cargo_sprinter":
+                result.append(consist.id)
+    if len(result) > 255:
+        utils.echo_message(
+            "action 2 switch is limited to 255 values, get_livery_2_engine_ids exceeds this - needs split across multiple switches"
+        )
+    return result
+
+
 def get_pax_car_ids():
     # for pax cars with consist-specific liveries
     # will check for other neighbouring pax cars before showing brake car
