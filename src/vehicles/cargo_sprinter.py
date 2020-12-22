@@ -22,13 +22,13 @@ def main(roster_id):
 
     consist.add_unit(
         type=DieselRailcarMailUnit,
-        weight=34,
+        weight=32,
         spriterow_num=0,
         chassis="4_axle_solid_express_32px",
         tail_light="railcar_32px_4",
     )
 
-    consist.description = """"""
-    consist.foamer_facts = """"""
+    consist.description = """Runs like the wind."""
+    consist.foamer_facts = """Windhoff MPV"""
 
     return consist

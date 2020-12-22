@@ -941,17 +941,11 @@ class MailEngineCargoSprinterEngineConsist(MailEngineConsist):
         super().__init__(**kwargs)
         # non-standard cite
         self._cite = "Arabella Unit"
-        """"
-        # !! this type needs new graphics processing and/or template rules if it is to handle masking containers around the cabs
-        # Graphics configuration
-        # 1 livery as can't be flipped, 1 spriterow may be left blank for compatibility with Gestalt (TBC)
-        # all position variants resolve to same spriterow
-        spriterow_group_mappings = {'mail': {'default': 0, 'first': 1, 'last': 2, 'special': 3}}
-        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings,
-                                                                     consist_ruleset='railcars_3_unit_sets')
-        """
         self.platform_type = "cargo_sprinter"
+        # run cost algorithm doesn't account for dual-head / high power MUs reliably, so just fix it here, using assumption that there are very few cargo sprinters and this will be fine
+        self.fixed_run_cost_points = 240
         # Graphics configuration
+        # !! there is no automatic masking of the cab overlays as of Dec 2020, currently manual - automation might be needed for well cars in future, deal with it then if that's the case
         # NOTE that cargo sprinter will NOT randomise containers on load as of Dec 2020 - there is a bug with rear unit running unwanted triggers and re-randomising in depots etc
         self.gestalt_graphics = GestaltGraphicsCustom(
             "vehicle_cargo_sprinter.pynml",
