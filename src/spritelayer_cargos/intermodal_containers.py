@@ -191,8 +191,30 @@ class IntermodalCargoSprinter32pxStandard(IntermodalBaseCargoSprinter):
         super().__init__(**kwargs)
         self.length = 32
         container_20_foot = kwargs.get("container_subtype") + "_20_foot"
+        container_40_foot = kwargs.get("container_subtype") + "_40_foot"
         self.variants = [
             [container_20_foot, container_20_foot],
+            [container_40_foot],
+        ]
+
+
+class IntermodalCargoSprinter32px20FootOnly(IntermodalBaseCargoSprinter):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.length = 32
+        container_20_foot = kwargs.get("container_subtype") + "_20_foot"
+        self.variants = [
+            [container_20_foot, container_20_foot],
+        ]
+
+
+class IntermodalCargoSprinter32px40FootOnly(IntermodalBaseCargoSprinter):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.length = 32
+        container_40_foot = kwargs.get("container_subtype") + "_40_foot"
+        self.variants = [
+            [container_40_foot],
         ]
 
 
@@ -202,19 +224,11 @@ class IntermodalCargoSprinter32pxBox(IntermodalBaseCargoSprinter):
         self.length = 32
         self.variants = [
             ["box_DFLT_20_foot_1CC", "box_DFLT_20_foot_1CC"],
-            # ["box_DFLT_20_foot_1CC", "box_DFLT_20_foot_1CC", "box_DFLT_20_foot_red"],
-            # ["box_DFLT_20_foot_red", "box_DFLT_20_foot_red", "box_DFLT_20_foot_red"],
-            # ["box_DFLT_20_foot_2CC", "box_DFLT_20_foot_2CC", "box_DFLT_20_foot_2CC"],
-            # ["box_DFLT_20_foot_1CC", "box_DFLT_20_foot_1CC", "box_DFLT_20_foot_1CC"],
-            # ["box_DFLT_20_foot_2CC", "box_DFLT_20_foot_1CC", "box_DFLT_20_foot_1CC"],
-            # ["box_DFLT_20_foot_1CC", "box_DFLT_20_foot_2CC", "box_DFLT_20_foot_red"],
-            # ["box_DFLT_20_foot_1CC", "box_DFLT_40_foot_1CC"],
-            # ["box_DFLT_20_foot_2CC", "box_DFLT_40_foot_1CC"],
-            # ["box_DFLT_20_foot_red", "box_DFLT_40_foot_red"],
-            # ["box_DFLT_40_foot_1CC", "box_DFLT_20_foot_1CC"],
-            # ["box_DFLT_40_foot_2CC", "box_DFLT_20_foot_2CC"],
-            # ["box_DFLT_40_foot_2CC", "box_DFLT_20_foot_1CC"],
-            # ["box_DFLT_30_foot_1CC", "box_DFLT_30_foot_1CC"],
+            ["box_DFLT_20_foot_1CC", "box_DFLT_20_foot_2CC"],
+            ["box_DFLT_20_foot_1CC", "box_DFLT_20_foot_red"],
+            ["box_DFLT_20_foot_red", "box_DFLT_20_foot_1CC"],
+            ["box_DFLT_40_foot_1CC"],
+            ["box_DFLT_40_foot_red"],
         ]
 
 
@@ -237,61 +251,61 @@ container_type_gestalt_mapping = {
         IntermodalFlatCar16pxStandard,
         IntermodalFlatCar24pxStandard,
         IntermodalFlatCar32pxNo40Foot,  # note special case for 32px
-        IntermodalCargoSprinter32pxBox,  # !!! should be standard?
+        IntermodalCargoSprinter32px20FootOnly,
     ],
     "chemicals_tank": [
         IntermodalFlatCar16pxStandard,
         IntermodalFlatCar24pxStandard,
         IntermodalFlatCar32pxStandard,
-        IntermodalCargoSprinter32pxBox,  # !!! should be standard?
+        IntermodalCargoSprinter32pxStandard,
     ],
     "cryo_tank": [
         IntermodalFlatCar16pxStandard,
         IntermodalFlatCar24pxStandard,
         IntermodalFlatCar32pxStandard,
-        IntermodalCargoSprinter32pxBox,  # !!! should be standard?
+        IntermodalCargoSprinter32pxStandard,
     ],
     "curtain_side": [
         IntermodalFlatCar16pxStandard,
         IntermodalFlatCar24px40FootOnly,  # note special case for 24px
         IntermodalFlatCar32px30FootOnly,  # note special case for 24px
-        IntermodalCargoSprinter32pxBox,  # !!! should be standard?
+        IntermodalCargoSprinter32px40FootOnly,
     ],
     "edibles_tank": [
         IntermodalFlatCar16pxStandard,
         IntermodalFlatCar24pxStandard,
         IntermodalFlatCar32pxStandard,
-        IntermodalCargoSprinter32pxBox,  # !!! should be standard?
+        IntermodalCargoSprinter32pxStandard,
     ],
     "stake_flatrack": [
         IntermodalFlatCar16pxStandard,
         IntermodalFlatCar24px40FootOnly,  # note special case for 24px
         IntermodalFlatCar32px30FootOnly,  # note special case for 24px
-        IntermodalCargoSprinter32pxBox,  # !!! should be standard?
+        IntermodalCargoSprinter32px40FootOnly,
     ],
     "livestock": [
         IntermodalFlatCar16pxStandard,
         IntermodalFlatCar24pxStandard,
         IntermodalFlatCar32pxStandard,
-        IntermodalCargoSprinter32pxBox,  # !!! should be standard?
+        IntermodalCargoSprinter32pxStandard,
     ],
     "reefer": [
         IntermodalFlatCar16pxStandard,
         IntermodalFlatCar24pxStandard,
         IntermodalFlatCar32pxStandard,
-        IntermodalCargoSprinter32pxBox,  # !!! should be standard?
+        IntermodalCargoSprinter32pxStandard,
     ],
     "tank": [
         IntermodalFlatCar16pxStandard,
         IntermodalFlatCar24pxStandard,
         IntermodalFlatCar32pxStandard,
-        IntermodalCargoSprinter32pxBox,  # !!! should be standard?
+        IntermodalCargoSprinter32pxStandard,
     ],
     "wood": [
         IntermodalFlatCar16pxStandard,
         IntermodalFlatCar24px40FootOnly,  # note special case for 24px
         IntermodalFlatCar32px30FootOnly,  # note special case for 24px
-        IntermodalCargoSprinter32pxBox,  # !!! should be standard?
+        IntermodalCargoSprinter32px40FootOnly,
     ],
 }
 

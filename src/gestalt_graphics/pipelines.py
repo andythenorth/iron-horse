@@ -577,11 +577,14 @@ class GenerateCompositedVehiclesCargos(Pipeline):
                         )
 
                 # create a mask to place black shadows between adjacent containers
-                combo_check = ["empty" if "empty" in i else "occupied" for i in variant]
+                combo_check = ["empty" if "empty" in container else "occupied" for container in variant]
                 # *vehicles with 3 containers only (32px)*
                 # don't allow combinations of only two adjacent 20 foot containers as it's TMWFTLB to provide the shadow for them
                 # two 20 foot with a gap between are supported
                 # solitary 20 foot containers of any length in any position are not prevented, but look bad (looks like loading didn't finish)
+                # ---
+                # NOTE that the actual shadows are drawn as black pixels in the template
+                # so it's possible to hack them directly in the pixels for specific cases (e.g. cargo sprinter)
                 if len(combo_check) == 3:
                     if combo_check in [
                         ["occupied", "occupied", "empty"],

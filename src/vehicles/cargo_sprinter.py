@@ -25,7 +25,7 @@ def main(roster_id):
         weight=34,
         spriterow_num=0,
         chassis="4_axle_solid_express_32px",
-        tail_light="railcar_32px_2",
+        tail_light="railcar_32px_4",
     )
 
     consist.description = """"""
