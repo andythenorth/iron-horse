@@ -3559,7 +3559,7 @@ class AutoCoachCombineUnitMail(Train):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.engine_class = "ENGINE_CLASS_DIESEL"  # !! needs changing??
+        self.engine_class = "ENGINE_CLASS_STEAM"
         self.effects = {}
         self.consist.str_name_suffix = None
         self._symmetry_type = "asymmetric"
