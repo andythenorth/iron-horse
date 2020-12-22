@@ -276,4 +276,4 @@ def main():
     tarpaulin_cars.main()
     torpedo_cars.main()
     vehicle_parts_box_cars.main()
-    vehicle_transporter_cars.main()
+    #vehicle_transporter_cars.main()
