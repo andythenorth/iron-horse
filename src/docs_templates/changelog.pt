@@ -11,6 +11,7 @@ Changelog
 - adjusted freight engine tech tree
     - added Quietus electro-diesel, 3250hp diesel power, 6700hp electric power
     - increased Triton power to 7200hp
+- increased Revolution run cost, to account for high power in electric mode
 - adjusted railcar tech tree
     - Zeus changed to elecric power, not electro-diesel, hyrid power has limited gameplay benefit for the general-purpose passenger railcars
     - removed Mail Rail, overlapped too much with Pylon on both stats and appearance, not worth the candle
