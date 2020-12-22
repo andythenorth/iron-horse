@@ -1600,9 +1600,7 @@ class BolsterCarConsist(CarConsist):
         self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
             "long_products"
         ]
-        self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label[
-            "non_flatbed_freight"
-        ]
+        self.label_refits_disallowed = []  # none needed
         self.default_cargos = polar_fox.constants.default_cargos["long_products"]
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
