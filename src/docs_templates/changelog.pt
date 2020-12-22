@@ -3,6 +3,66 @@ Changelog
 
 
 -------------
+2.16.0 Release
+-------------
+
+*Changes*
+
+- adjusted freight engine tech tree
+    - added Quietus electro-diesel, 3250hp diesel power, 6700hp electric power
+    - increased Triton power to 7200hp
+- adjusted railcar tech tree
+    - Zeus changed to elecric power, not electro-diesel, hyrid power has limited gameplay benefit for the general-purpose passenger railcars
+    - removed Mail Rail, overlapped too much with Pylon on both stats and appearance, not worth the candle
+    - increased Pylon diesel power to 700hp
+    - added Cargo Sprinter diesel freight railcar
+        - 99mph, 1650hp
+        - express cargo refits (mail, food, engineering supplies etc)
+        - for increased capacity add Express Container Wagons, these match Cargo Sprinter speed, and will also match appearance
+        - other wagon types can be added, but might not match appearance or speed
+    - Bright Country luxury railcar adjusted to electro-diesel
+        - 620hp of diesel power
+        - experimental idea, this may be of limited gameplay benefit
+        - intended use is long routes that are partially electrified, with lightly-trafficked non-electrified sections, but eh, try it out
+- increased capacity for standard Passenger Coaches
+    - significant bump to these, e.g. 12 pax -> 16 pax in early game, 48 pax -> 64 pax in late game
+    - similar increases also applied to railcars, railcar trailers and hst coaches
+    - should aid gameplay with highly-connected cdist networks which tend to require high passenger capacities
+    - Luxury Passenger Coaches unchanged, these match closely to original TTD capacities
+- added Bolster Wagons,
+    - looks like a flat wagon with side stakes
+    - refit to 'long products' and metals industry cargos, e.g. steel, copper, aluminium, pipe, wood etc
+- changed Stake Wagon to Timber Wagon
+    - removed pipe refit, now wood only
+- added Sliding Roof wagons
+    - same refits as Tarpaulin Wagons
+    - cargo visible during loading
+- repainted Tarpaulin Car (again) to use company colour tarpaulin, the previous white/grey version just looked odd
+- added Twin variant of Sliding Wall Vans
+    - these are non-standard 10/8 length
+    - articulated so can't be flipped to change livery
+    - bit of realism eh? :)
+- improved appearance of cargo sprites for logs
+- added slab cargo sprites for carbon steel
+
+
+*Fixes*
+
+- container wagons weren't showing tail lights
+
+
+*Docs*
+
+- freight engine tech tree now shows branches roughly in order of power, instead of Blind Smuir branch being shown after branches containing higher powered engines
+
+
+*Codechanges*
+
+- blacken python code (auto-format)
+- refactored intermodal cargo sprites code to be both simpler and more flexible
+
+
+-------------
 2.15.0 Release
 -------------
 
