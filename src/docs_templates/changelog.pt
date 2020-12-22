@@ -49,6 +49,7 @@ Changelog
 *Fixes*
 
 - container wagons weren't showing tail lights
+- autocoach was using diesel engine sound effect and colour scheme, now uses steam engine sound effect and colour scheme
 
 
 *Docs*
