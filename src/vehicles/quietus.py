@@ -13,19 +13,19 @@ def main(roster_id):
         power_by_railtype={
             "RAIL": 3250,
             "ELRL": 6700,
-        },  # based on the Stadler Eurodual, really quite high values for both diesel and el
+        },  # based on the Stadler Eurodual, really quite high values for both diesel and el (also matches Newag Dragon, which the shape is taken from)
         random_reverse=True,
         pantograph_type="z-shaped-double",
         gen=6,
         intro_date_offset=8,  # introduce later than gen epoch by design
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(
         type=ElectroDieselEngineUnit, weight=136, vehicle_length=8, spriterow_num=0
     )
 
-    consist.description = """"""
-    consist.foamer_facts = """"""
+    consist.description = """It'll get there and back again, in any weather."""
+    consist.foamer_facts = """Stadler Eurodual, Newag Dragon, CAF Bitrac"""
 
     return consist
