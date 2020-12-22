@@ -14,7 +14,7 @@ def main(roster_id):
         role="mail_railcar",  # abuse of existing railcar role for convenience
         role_child_branch_num=-1,
         dual_headed=True,
-        power=1650, # matched to Griffon, Ultra Shoebox
+        power=1650,  # matched to Griffon, Ultra Shoebox
         gen=6,
         intro_date_offset=-3,  # introduce earlier than gen epoch by design
         sprites_complete=True,
