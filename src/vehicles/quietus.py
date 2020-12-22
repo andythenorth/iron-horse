@@ -14,9 +14,11 @@ def main(roster_id):
             "RAIL": 3250,
             "ELRL": 6700,
         },  # based on the Stadler Eurodual, really quite high values for both diesel and el (also matches Newag Dragon, which the shape is taken from)
+        tractive_effort_coefficient=0.375, # assume slip control magic
         random_reverse=True,
         pantograph_type="z-shaped-double",
         gen=6,
+        fixed_run_cost_points=500,  # run cost nerf for high power + dual mode
         intro_date_offset=8,  # introduce later than gen epoch by design
         sprites_complete=True,
     )
