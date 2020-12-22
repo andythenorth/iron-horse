@@ -17,6 +17,7 @@ def main(roster_id):
         random_reverse=True,
         pantograph_type="z-shaped-single",
         gen=6,
+        fixed_run_cost_points=280,  # run cost nerf for bi-mode flexibility + high el-power
         intro_date_offset=-2,  # introduce earlier than gen epoch by design
         sprites_complete=True,
     )
