@@ -173,6 +173,7 @@ allowed_refits_by_label = {
         "FERT",
         "SALT",
         "PLAS",
+        "PHOS",
     ],  # not CBLK, gets dedicated vehicles or box
     "cryo_gases": ["CHLO", "O2__", "NH3_"],
     "edible_liquids": ["MILK", "WATR", "BEER", "FOOD", "EOIL"],
@@ -269,7 +270,7 @@ default_cargos = {
     "coil": ["STST", "STAL", "STEL"],
     "coil_covered": ["STSH", "STEL"],
     "covered_ag": ["GRAI", "MAIZ", "BEAN", "NUTS", "FERT", "QLME"],
-    "covered_mineral": ["SALT", "POTA", "SAND", "KAOL"],
+    "covered_mineral": ["SALT", "PHOS", "POTA", "SAND", "KAOL"],
     "covered_pellet": ["PLAS", "RUBR", "KAOL", "FERT", "SAND", "SASH"],
     "cryo_gases": ["O2__", "CHLO"],
     "dump": ["MNO2", "FECR", "NITR", "PHOS", "SAND", "GRVL"],
