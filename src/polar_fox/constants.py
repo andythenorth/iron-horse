@@ -265,13 +265,13 @@ default_cargos = {
     "box_intermodal": ["POWR", "GOOD", "PAPR"],
     "box_curtain_side": ["VBOD", "BDMT", "FRUT", "FERT", "WDPR", "GOOD"],
     "box_sliding_wall": ["VENG", "BOOM", "PAPR", "JAVA", "GOOD"],
-    "box_vehicle_parts": ["VPTS", "PAPR", "RUBR", "STEL", "GOOD"],
-    "bulkhead": ["STCB", "PIPE", "WDPR", "ALUM", "ZINC", "STEL"],
+    "box_vehicle_parts": ["VPTS", "PAPR", "RUBR", "STEL", "WOOL", "GOOD"],
+    "bulkhead": ["STCB", "PIPE", "WDPR", "ALUM", "ZINC", "STEL", "COPR"],
     "coil": ["STST", "STAL", "STEL"],
     "coil_covered": ["STSH", "STEL"],
     "covered_ag": ["GRAI", "MAIZ", "BEAN", "NUTS", "FERT", "QLME"],
-    "covered_mineral": ["SALT", "PHOS", "POTA", "SAND", "KAOL"],
-    "covered_pellet": ["PLAS", "RUBR", "KAOL", "FERT", "SAND", "SASH"],
+    "covered_mineral": ["SALT", "PHOS", "POTA", "SAND", "KAOL", "NITR"],
+    "covered_pellet": ["PLAS", "RUBR", "KAOL", "FERT", "SAND", "SASH", "BEAN"],
     "cryo_gases": ["O2__", "CHLO"],
     "dump": ["MNO2", "FECR", "NITR", "PHOS", "SAND", "GRVL"],
     "dump_high_sides": ["COKE", "PEAT", "COAL"],
@@ -285,8 +285,8 @@ default_cargos = {
         "FOOD",
     ],  # ENSP was tried as default, but confusing when attached express cars for mail to pax trains
     "flat": ["ALUM", "WDPR", "STEL", "COPR", "METL"],
-    "flat_sliding_roof": ["ZINC", "ALUM", "BDMT"], # possibly sliding roof shouldn't be flat at all?
-    "flat_tarpaulin_roof": ["STAL", "PAPR", "FERT", "FMSP", "WDPR"],  # possibly tarpaulin roof shouldn't be flat at all?
+    "flat_sliding_roof": ["ZINC", "ALUM", "WOOL", "BDMT"], # possibly sliding roof shouldn't be flat at all?
+    "flat_tarpaulin_roof": ["STAL", "PAPR", "FERT", "WOOL", "FMSP", "WDPR"],  # possibly tarpaulin roof shouldn't be flat at all?
     "fruit_veg": ["FRUT", "BEAN", "CASS", "JAVA", "NUTS"],
     "hopper_coal": ["COAL", "COKE", "NITR", "POTA"],
     "hopper_ore": ["IORE", "CORE", "PORE", "PHOS", "COKE"],
