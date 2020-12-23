@@ -258,11 +258,20 @@ disallowed_refits_by_label = {
 # avoids an issue where default cargo was weird for, e.g. some FIRS economies
 # don't conflate this with general refittability, they're different concerns ;)
 # vehicle classes can also just provide their own list locally, using this is convenient, not obligatory
+# !! the names of these deliberately don't match to the names of the vehicle types in a specific grf, as each grf will use these differently to suit vehicle types
 default_cargos = {
-    "box": ["GOOD", "VPTS", "FOOD"],
-    "hopper": ["COAL", "COKE", "NITR", "POTA"],
+    "box": ["GOOD", "GLAS", "VPTS", "BOOM"],
+    "box_intermodal": ["POWR", "GOOD", "PAPR"],
+    "box_curtain_side": ["VBOD", "BDMT", "FRUT", "FERT", "WDPR", "GOOD"],
+    "box_sliding_wall": ["VENG", "BOOM", "PAPR", "JAVA", "GOOD"],
+    "box_vehicle_parts": ["VPTS", "PAPR", "RUBR", "STEL", "GOOD"],
+    "bulkhead": ["STCB", "PIPE", "WDPR", "ALUM", "ZINC", "STEL"],
+    "coil": ["STST", "STAL", "STEL"],
+    "coil_covered": ["STSH", "STEL"],
+    "covered_ag": ["GRAI", "MAIZ", "BEAN", "NUTS", "FERT", "QLME"],
+    "covered_mineral": ["SALT", "POTA", "SAND", "KAOL"],
+    "covered_pellet": ["PLAS", "RUBR", "KAOL", "FERT", "SAND", "SASH"],
     "cryo_gases": ["O2__", "CHLO"],
-    "covered_hopper": ["SAND", "KAOL", "PLAS"],
     "dump": ["MNO2", "FECR", "NITR", "PHOS", "SAND", "GRVL"],
     "dump_high_sides": ["COKE", "PEAT", "COAL"],
     "dump_scrap": ["SCMT", "COAL"],
@@ -274,21 +283,23 @@ default_cargos = {
         "GOOD",
         "FOOD",
     ],  # ENSP was tried as default, but confusing when attached express cars for mail to pax trains
-    "flat": ["STEL", "STCB", "COPR", "METL"],
+    "flat": ["ALUM", "WDPR", "STEL", "COPR", "METL"],
+    "flat_sliding_roof": ["ZINC", "ALUM", "BDMT"], # possibly sliding roof shouldn't be flat at all?
+    "flat_tarpaulin_roof": ["STAL", "PAPR", "FERT", "FMSP", "WDPR"],  # possibly tarpaulin roof shouldn't be flat at all?
     "fruit_veg": ["FRUT", "BEAN", "CASS", "JAVA", "NUTS"],
-    "grain_hopper": ["GRAI", "PLAS"],
+    "hopper_coal": ["COAL", "COKE", "NITR", "POTA"],
+    "hopper_ore": ["IORE", "CORE", "PORE", "PHOS", "COKE"],
+    "hopper_rock": ["LIME", "GRVL", "SAND", "PORE", "SALT", "IORE", "CORE"],
     "long_products": ["STSE", "WOOD", "PIPE", "STEL"],
-    # intermodal, uses box
     "mail": ["MAIL"],
     "metal": ["STEL", "COPR"],
-    "open": ["GOOD"],
-    "ore_hopper": ["IORE", "CORE", "PORE", "PHOS", "COKE"],
+    "open": ["GOOD", "STWR", "WDPR"],
     "pax": ["PASS"],
-    "plate": ["IRON", "CSTI", "ZINC", "METL"],
+    "plate": ["CSTI", "IRON", "ZINC", "METL", "STEL", "COPR", "WDPR"],
     "product_tank": ["ACID", "RFPR", "CHLO"],
     "reefer": ["FOOD"],
-    "rock_hopper": ["LIME", "GRVL", "SAND", "PORE", "SALT", "IORE", "CORE"],
-    "silo": ["CMNT", "BDMT", "RFPR", "QLME", "FMSP"],
+    "silo_cement": ["CMNT", "BDMT", "QLME"],
+    "silo_chemical": ["SASH", "RFPR", "QLME", "SAND", "FMSP"],
     "supplies": ["ENSP"],
     "tank": ["OIL_", "CTAR", "SULP", "KAOL", "RUBR"],
 }

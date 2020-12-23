@@ -1654,7 +1654,7 @@ class BulkheadFlatCarConsist(CarConsist):
         self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label[
             "non_flatbed_freight"
         ]
-        self.default_cargos = polar_fox.constants.default_cargos["plate"]
+        self.default_cargos = polar_fox.constants.default_cargos["bulkhead"]
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
         )
@@ -1731,7 +1731,7 @@ class CoilBuggyCarConsist(CarConsist):
             "cold_metal"
         ]
         self.label_refits_disallowed = []  # none needed
-        self.default_cargos = polar_fox.constants.default_cargos["metal"]
+        self.default_cargos = polar_fox.constants.default_cargos["coil"]
         self.loading_speed_multiplier = 2
         self.buy_cost_adjustment_factor = 1.2
         self.weight_factor = 2  # double the default weight
@@ -1770,7 +1770,6 @@ class CoilCarConsistBase(CarConsist):
             "cold_metal"
         ]
         self.label_refits_disallowed = []
-        self.default_cargos = polar_fox.constants.default_cargos["metal"]
         self.buy_cost_adjustment_factor = 1.1
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
@@ -1787,6 +1786,7 @@ class CoilCarCoveredConsist(CoilCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "coil_car_covered"
         super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos["coil_covered"]
         self.cc_num_to_randomise = 2
         self._joker = True
         # Graphics configuration
@@ -1805,6 +1805,7 @@ class CoilCarUncoveredConsist(CoilCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "coil_car_uncovered"
         super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos["coil"]
         self._joker = True
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(piece="coil")
@@ -1839,7 +1840,7 @@ class CoveredHopperCarConsist(CoveredHopperCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "covered_hopper_car"
         super().__init__(**kwargs)
-        self.default_cargos = ["SALT", "SAND", "POTA"]  # !! needs updated
+        self.default_cargos = polar_fox.constants.default_cargos["covered_mineral"]
         self._joker = True
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
@@ -1858,6 +1859,7 @@ class CoveredHopperCarGrainConsist(CoveredHopperCarConsistBase):
         self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
             "covered_hoppers"
         ]
+        self.default_cargos = polar_fox.constants.default_cargos["covered_ag"]
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             recolour_maps=graphics_constants.grain_hopper_car_livery_recolour_maps
@@ -1875,6 +1877,7 @@ class CoveredHopperCarPelletConsist(CoveredHopperCarConsistBase):
         self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
             "covered_hoppers"
         ]
+        self.default_cargos = polar_fox.constants.default_cargos["covered_pellet"]
         self._joker = True
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
@@ -1928,7 +1931,7 @@ class CurtainSideCarBoxConsist(CarConsist):
         self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label[
             "non_freight_special_cases"
         ]
-        self.default_cargos = polar_fox.constants.default_cargos["box"]
+        self.default_cargos = polar_fox.constants.default_cargos["box_curtain_side"]
         self.buy_cost_adjustment_factor = 1.2
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
@@ -2220,7 +2223,7 @@ class HopperCarConsist(HopperCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "hopper_car"
         super().__init__(**kwargs)
-        self.default_cargos = polar_fox.constants.default_cargos["hopper"]
+        self.default_cargos = polar_fox.constants.default_cargos["hopper_coal"]
 
 
 class HopperCarOreConsist(HopperCarConsistBase):
@@ -2233,8 +2236,8 @@ class HopperCarOreConsist(HopperCarConsistBase):
         self.base_id = "ore_hopper_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos[
-            "ore_hopper"
-        ]  # !! needs updated
+            "hopper_ore"
+        ]
 
 
 class HopperCarRockConsist(HopperCarConsistBase):
@@ -2246,7 +2249,7 @@ class HopperCarRockConsist(HopperCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "rock_hopper_car"
         super().__init__(**kwargs)
-        self.default_cargos = polar_fox.constants.default_cargos["rock_hopper"]
+        self.default_cargos = polar_fox.constants.default_cargos["hopper_rock"]
         self._joker = True
 
 
@@ -2301,7 +2304,7 @@ class IntermodalCarConsistBase(CarConsist):
         self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label[
             "non_freight_special_cases"
         ]
-        self.default_cargos = polar_fox.constants.default_cargos["box"]
+        self.default_cargos = polar_fox.constants.default_cargos["box_intermodal"]
         self.loading_speed_multiplier = 2
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["freight_core"]
@@ -2830,7 +2833,6 @@ class SiloCarConsistBase(CarConsist):
             "SAND",
         ]  # move to Polar Fox (maybe??)
         self.label_refits_disallowed = []
-        self.default_cargos = polar_fox.constants.default_cargos["silo"]
         self.loading_speed_multiplier = 2
         self.buy_cost_adjustment_factor = 1.2
         self._intro_date_days_offset = (
@@ -2848,6 +2850,7 @@ class SiloCarConsist(SiloCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "silo_car"
         super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos["silo_chemical"]
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             recolour_maps=graphics_constants.silo_livery_recolour_maps
@@ -2862,6 +2865,7 @@ class SiloCarCementConsist(SiloCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "cement_silo_car"
         super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos["silo_cement"]
         self._joker = True
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
@@ -2921,7 +2925,7 @@ class SlidingRoofCarConsist(CarConsist):
         self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label[
             "non_flatbed_freight"
         ]
-        self.default_cargos = polar_fox.constants.default_cargos["flat"]
+        self.default_cargos = polar_fox.constants.default_cargos["flat_sliding_roof"]
         self.buy_cost_adjustment_factor = 1.2
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
@@ -2952,7 +2956,7 @@ class SlidingWallCarConsist(CarConsist):
         self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label[
             "non_freight_special_cases"
         ]
-        self.default_cargos = polar_fox.constants.default_cargos["box"]
+        self.default_cargos = polar_fox.constants.default_cargos["box_sliding_wall"]
         self.buy_cost_adjustment_factor = 1.2
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
@@ -3039,7 +3043,7 @@ class TarpaulinCarConsist(CarConsist):
         self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label[
             "non_flatbed_freight"
         ]
-        self.default_cargos = polar_fox.constants.default_cargos["flat"]
+        self.default_cargos = polar_fox.constants.default_cargos["flat_tarpaulin_roof"]
         self.buy_cost_adjustment_factor = 1.1
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
@@ -3098,7 +3102,7 @@ class VehiclePartsBoxCarConsist(CarConsist):
         self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label[
             "non_freight_special_cases"
         ]
-        self.default_cargos = polar_fox.constants.default_cargos["box"]
+        self.default_cargos = polar_fox.constants.default_cargos["box_vehicle_parts"]
         self.buy_cost_adjustment_factor = 1.2
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
