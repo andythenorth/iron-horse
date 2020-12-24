@@ -146,5 +146,3 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
     }
 </tal:rosters>
 
-// -- end ${vehicle.numeric_id} -- <!--! another comment to aid reading the final nml  -->
-
