@@ -83,4 +83,3 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="4_axle_filled_greebled_32px")
 
-    # --------------- llama ----------------------------------------------------------------------

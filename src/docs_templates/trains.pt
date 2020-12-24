@@ -15,9 +15,8 @@
                             ${len(roster.engine_consists)} engines and
                             ${sum([len(roster.wagon_consists[wagon_class]) for wagon_class in roster.wagon_consists])} wagons
                             inspired by
-                            <span tal:condition="roster.id == 'antelope'">Central and Western Africa</span>
-                            <span tal:condition="roster.id == 'llama'">Argentina, Chile and Peru</span>
-                            <span tal:condition="roster.id == 'pony'">British</span>
+                            <span tal:condition="roster.id == 'zebra'">Southern and Western Africa</span>
+                            <span tal:condition="roster.id == 'pony'">UK</span>
                             trains
                         </p>
                         <ul class="inline">

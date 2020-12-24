@@ -10,8 +10,6 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :phänomenal
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :übermäßig
 STR_PARAM_ROSTER_DESC                                           :Wähle ein Zug-Set aus
 STR_PARAM_ROSTER_OPTION_0                                       :Eisernes Pony
-STR_PARAM_ROSTER_OPTION_1                                       :Eisernes Llama
-STR_PARAM_ROSTER_OPTION_2                                       :Eiserne Antilope
 
 # keep these alphabetised, easier
 STR_NAME_SUFFIX_DIESEL                                          :Diesel

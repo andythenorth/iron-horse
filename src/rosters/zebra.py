@@ -39,7 +39,7 @@ speeds = dict(
 )
 
 roster = Roster(
-    id="antelope",
+    id="zebra",
     numeric_id=3,
     speeds=speeds,  # hax
     # capacity factor per generation, will be multiplied by vehicle length

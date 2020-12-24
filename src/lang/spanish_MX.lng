@@ -11,8 +11,6 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Excesiva
 STR_PARAM_ROSTER                                                :Lista de vehículos
 STR_PARAM_ROSTER_DESC                                           :Elegir los trenes a utilizar.
 STR_PARAM_ROSTER_OPTION_0                                       :Pony de hierro
-STR_PARAM_ROSTER_OPTION_1                                       :Llama de hierro
-STR_PARAM_ROSTER_OPTION_2                                       :Antílope de hierro
 
 # keep these alphabetised, easier
 STR_NAME_SUFFIX_DIESEL                                          :(diésel)
