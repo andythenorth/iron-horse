@@ -87,7 +87,7 @@ def main():
         "tail_lights",
         "recolour_sprites",
         "spritelayer_cargos_intermodal_cars",
-        "spritelayer_cargos_vehicle_transporter_cars",
+        #"spritelayer_cargos_vehicle_transporter_cars",
         "procedures_alternative_var_41",
         "procedures_alternative_var_random_bits",
         "procedures_capacity",
