@@ -1,37 +1,48 @@
-<!--! this is the template for snowploughs -->
+<!--! this is the template for autocoach sets -->
 
-<!--! 'random_reverse' property is not supported in this template
-      'flipped' is user flipping vehicle in depot and *is* supported here
-      don't conflate them :) -->
+<!--! 'random_reverse' property is not supported by this vehicle type
+      user flipping vehicle in depot is not supported by this vehicle tpye
+-->
 // default graphics chain
-spriteset(${vehicle.id}_ss_unflipped_unreversed_0, "${graphics_path}${consist.id}.png") {
-    ${vehicle.get_spriteset_template_name('unreversed', 'unflipped', 10)}
-}
-spriteset(${vehicle.id}_ss_unflipped_reversed_0, "${graphics_path}${consist.id}.png") {
-    ${vehicle.get_spriteset_template_name('reversed', 'unflipped', 10)}
-}
-spriteset(${vehicle.id}_ss_unflipped_unreversed_1, "${graphics_path}${consist.id}.png") {
-    ${vehicle.get_spriteset_template_name('unreversed', 'unflipped', 70)}
-}
-spriteset(${vehicle.id}_ss_unflipped_reversed_1, "${graphics_path}${consist.id}.png") {
-    ${vehicle.get_spriteset_template_name('reversed', 'unflipped', 70)}
-}
+<tal:reversed repeat="reversed ['unreversed', 'reversed']">
+    spriteset(${vehicle.id}_ss_doors_closed_${reversed}_0, "${graphics_path}${consist.id}.png") {
+        ${vehicle.get_spriteset_template_name(reversed, 'unflipped', 10)}
+    }
+    spriteset(${vehicle.id}_ss_doors_open_${reversed}_0, "${graphics_path}${consist.id}.png") {
+        ${vehicle.get_spriteset_template_name(reversed, 'unflipped', 40)}
+    }
+    spriteset(${vehicle.id}_ss_doors_closed_${reversed}_1, "${graphics_path}${consist.id}.png") {
+        ${vehicle.get_spriteset_template_name(reversed, 'unflipped', 70)}
+    }
+    spriteset(${vehicle.id}_ss_doors_open_${reversed}_1, "${graphics_path}${consist.id}.png") {
+        ${vehicle.get_spriteset_template_name(reversed, 'unflipped', 100)}
+    }
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_check_doors_${reversed}_0, switch_graphics_opening_doors()) {
+        0: return ${vehicle.id}_ss_doors_closed_${reversed}_0;
+        1: return ${vehicle.id}_ss_doors_open_${reversed}_0;
+    }
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_check_doors_${reversed}_1, switch_graphics_opening_doors()) {
+        0: return ${vehicle.id}_ss_doors_closed_${reversed}_1;
+        1: return ${vehicle.id}_ss_doors_open_${reversed}_1;
+    }
+
+</tal:reversed>
 
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_unit_0_check_last, position_in_consist_from_end) {
-    1: ${vehicle.id}_ss_unflipped_reversed_1;
-    return ${vehicle.id}_ss_unflipped_unreversed_0;
+    1: ${vehicle.id}_switch_graphics_check_doors_reversed_1;
+    return ${vehicle.id}_switch_graphics_check_doors_unreversed_0;
 }
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_unit_0, num_vehs_in_consist) {
-    1..2: ${vehicle.id}_ss_unflipped_unreversed_0;
+    1..2: ${vehicle.id}_switch_graphics_check_doors_unreversed_0;
     return ${vehicle.id}_switch_graphics_unit_0_check_last;
 }
 
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_unit_1_check_last, position_in_consist_from_end) {
-    0: ${vehicle.id}_ss_unflipped_reversed_0;
-    return ${vehicle.id}_ss_unflipped_unreversed_1;
+    0: ${vehicle.id}_switch_graphics_check_doors_reversed_0;
+    return ${vehicle.id}_switch_graphics_check_doors_unreversed_1;
 }
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_unit_1, num_vehs_in_consist) {
-    1..2: ${vehicle.id}_ss_unflipped_unreversed_1;
+    1..2: ${vehicle.id}_switch_graphics_check_doors_unreversed_1;
     return ${vehicle.id}_switch_graphics_unit_1_check_last;
 }
 
