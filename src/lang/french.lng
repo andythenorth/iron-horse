@@ -13,8 +13,6 @@ STR_PARAM_SIMPLIFIED_GAMEPLAY_DESC                              :Jouer avec une 
 STR_PARAM_ROSTER                                                :Assortiment
 STR_PARAM_ROSTER_DESC                                           :Choisir avec quelle série de trains jouer.
 STR_PARAM_ROSTER_OPTION_0                                       :Le poney de fer
-STR_PARAM_ROSTER_OPTION_1                                       :Le lama de fer
-STR_PARAM_ROSTER_OPTION_2                                       :l'antilope de fer
 
 # keep these alphabetised, easier
 STR_NAME_SUFFIX_DIESEL                                          :Diesel

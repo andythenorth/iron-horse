@@ -10,8 +10,6 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Kohtuuton
 STR_PARAM_ROSTER                                                :Valikoima
 STR_PARAM_ROSTER_DESC                                           :Valitse käytettävä junavalikoima.
 STR_PARAM_ROSTER_OPTION_0                                       :Rautaponi
-STR_PARAM_ROSTER_OPTION_1                                       :Rautalaama
-STR_PARAM_ROSTER_OPTION_2                                       :Rauta-antilooppi
 
 # keep these alphabetised, easier
 STR_NAME_SUFFIX_DIESEL                                          :Diesel

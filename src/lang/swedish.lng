@@ -10,8 +10,6 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Överdriven
 STR_PARAM_ROSTER                                                :Lista
 STR_PARAM_ROSTER_DESC                                           :Välj vilket set av tåg som skall användas.
 STR_PARAM_ROSTER_OPTION_0                                       :Järnponnyn
-STR_PARAM_ROSTER_OPTION_1                                       :Järnlaman
-STR_PARAM_ROSTER_OPTION_2                                       :Järnantilopen
 
 # keep these alphabetised, easier
 STR_NAME_SUFFIX_DIESEL                                          :Diesel

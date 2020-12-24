@@ -12,8 +12,6 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Nadměrná
 STR_PARAM_ROSTER                                                :Seznam
 STR_PARAM_ROSTER_DESC                                           :Vyber použitý set vlaků.
 STR_PARAM_ROSTER_OPTION_0                                       :Železný poník
-STR_PARAM_ROSTER_OPTION_1                                       :Železná lama
-STR_PARAM_ROSTER_OPTION_2                                       :Železná antilopa
 
 # keep these alphabetised, easier
 STR_NAME_SUFFIX_DIESEL                                          :Dieselová

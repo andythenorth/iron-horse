@@ -10,8 +10,6 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Extravagant
 STR_PARAM_ROSTER                                                :Rooster
 STR_PARAM_ROSTER_DESC                                           :Kies welke verzameling treinen gebruikt wordt.
 STR_PARAM_ROSTER_OPTION_0                                       :Ijzeren pony
-STR_PARAM_ROSTER_OPTION_1                                       :Ijzeren lama
-STR_PARAM_ROSTER_OPTION_2                                       :Ijzeren antilope
 
 # keep these alphabetised, easier
 STR_NAME_SUFFIX_DIESEL                                          :Diesel
