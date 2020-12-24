@@ -33,6 +33,7 @@
     </tal:colour_set>
 </tal:colour_sets>
 
+
 <!--! * Strategies for random recolouring of wagons *
     1. strategies apply rules to branch to colour sets, which apply a random choice from 2 shades of the chosen colour (as of Nov 2020)
     2. player parameter can choose certain strategies explicitly
@@ -134,6 +135,7 @@ switch (FEAT_TRAINS, SELF, switch_colour_mapping_purchase, cc_num_to_randomise, 
     return switch_cc_num_to_randomise;
 }
 
+
 <!--! * Strategies for random recolouring of intermodal containers * -->
 
 <!--!  these are rudimentary in that
@@ -151,7 +153,8 @@ switch (FEAT_TRAINS, SELF, switch_colour_mapping_purchase, cc_num_to_randomise, 
      - would non-trivially complicate generating intermodal container spritesets etc
      - also would remove randomisation from non-box containers
      - so basically, unappealing-->
-<tal:switch_by_company_colour repeat="cc [['1cc', '2cc'], ['1cc', '1cc'], ['2cc', '1cc'], ['2cc', '2cc']]">
+<!--!<tal:switch_by_company_colour repeat="cc [['1cc', '2cc'], ['1cc', '1cc'], ['2cc', '1cc'], ['2cc', '2cc']]">-->
+<tal:switch_by_company_colour repeat="cc [['1cc', '1cc']]">
     switch (FEAT_TRAINS, SELF, switch_intermodal_by_company_colour_${cc[0]}_to_${cc[1]}, company_colour${cc[1][0]}) {
         COLOUR_DARK_BLUE: switch_colour_set_dark_blue_${cc[0]};
         COLOUR_PALE_GREEN: switch_colour_set_pale_green_${cc[0]};
@@ -171,6 +174,7 @@ switch (FEAT_TRAINS, SELF, switch_colour_mapping_purchase, cc_num_to_randomise, 
         COLOUR_WHITE: switch_colour_set_white_${cc[0]};
     }
 </tal:switch_by_company_colour>
+
 
 <!--! * Strategy for forcing express intermodal to match cargo sprinter * -->
 
