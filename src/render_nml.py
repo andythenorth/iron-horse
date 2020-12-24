@@ -93,6 +93,7 @@ def main():
         "procedures_capacity",
         "procedures_colour_randomisation_strategies",
         "procedures_haulage_bonus",
+        "procedures_opening_doors",
         "procedures_rulesets",
         "procedures_box_car_with_opening_doors",
         "procedures_consist_specific_liveries",

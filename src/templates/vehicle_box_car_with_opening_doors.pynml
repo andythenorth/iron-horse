@@ -14,7 +14,7 @@
 </tal:user_flipped>
 
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle,
-        [switch_graphics_box_car_with_opening_doors_check_flip() + switch_graphics_box_car_with_opening_doors_doors_open()]) {
+        [switch_graphics_box_car_with_opening_doors_check_flip() + switch_graphics_opening_doors()]) {
     <!--! stupid integer stuffing scheme to detect flip / doors states, see the procedures for the schema -->
     0: return ${vehicle.id}_ss_doors_closed_unflipped;
     1: return ${vehicle.id}_ss_doors_open_unflipped;

@@ -52,7 +52,7 @@
     </tal:user_flipped>
     <!--! stupid integer stuffing scheme to detect livery / flip / doors states, see the procedures for the schema -->
     switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_engine_id_${variant_num},
-            [switch_graphics_consist_specific_livery_check_engine_id() + switch_graphics_consist_specific_livery_doors_open()]) {
+            [switch_graphics_consist_specific_livery_check_engine_id() + switch_graphics_opening_doors()]) {
         100: return ${vehicle.id}_ss_doors_closed_livery_1_${variant_num}_unflipped;
         101: return ${vehicle.id}_ss_doors_open_livery_1_${variant_num}_unflipped;
         110: return ${vehicle.id}_ss_doors_closed_livery_1_${variant_num}_flipped;
