@@ -12,8 +12,6 @@
     - see also notes in
  -->
 
-<tal:include metal:use-macro="load: spriteset_templates_purchase.pynml" />
-
 <!--! 'random_reverse' property is not supported in this template, vehicles using this template are all symmetrical, reversing would do nothing
       'flipped' is user flipping vehicle in depot and *is* supported here (used for livery selection tricks)
       don't conflate them :) -->
@@ -174,13 +172,13 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle,
 
 // buy menu graphics chain
 spriteset(${vehicle.id}_ss_vehicle_purchase, "${graphics_path}${consist.id}.png") {
-    spriteset_template_purchase_${vehicle.id}(10 + ${vehicle.buy_menu_spriterow_num * 30})
+    ${consist.get_nml_for_spriteset_template(y_offset=vehicle.buy_menu_spriterow_num * 30)}
 }
 <tal:conditional_pantographs switch="consist.pantograph_type is not None">
     <tal:has_pantographs case="True">
         <!--! purchase sprites for case where pantograph layer is needed -->
         spriteset(${vehicle.id}_ss_pantograph_purchase, "${graphics_path}${consist.id}_pantographs_down.png") {
-            spriteset_template_purchase_${vehicle.id}(10)
+            ${consist.get_nml_for_spriteset_template(y_offset=0)}
         }
         switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_set_layers_register_more_sprites_purchase, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
             return ${vehicle.id}_ss_vehicle_purchase;

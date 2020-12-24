@@ -585,6 +585,22 @@ class Consist(object):
         else:
             return 64
 
+    def get_nml_for_spriteset_template(self, y_offset):
+        template_subtype = "dual_headed" if self.dual_headed else "default"
+        args = []
+        args.append(self.buy_menu_x_loc)
+        args.append(10 + y_offset)
+        args.append(1 + self.buy_menu_width)  # add 1 to account for buffers / couplers
+        args.append(-1 * int(self.buy_menu_width / 2))  # x_offset
+        args.append("ANIM" if self.suppress_animated_pixel_warnings else "NOANIM")
+        return (
+            "spriteset_template_purchase_"
+            + template_subtype
+            + "("
+            + ",".join([str(arg) for arg in args])
+            + ")"
+        )
+
     def get_buy_menu_format(self, vehicle):
         # keep the template logic simple, present strings for a switch/case tree
         # variable_power and wagons_add_power are mutually exclusive (asserted by engine_varies_power_by_railtype as of August 2019)
@@ -2235,9 +2251,7 @@ class HopperCarOreConsist(HopperCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "ore_hopper_car"
         super().__init__(**kwargs)
-        self.default_cargos = polar_fox.constants.default_cargos[
-            "hopper_ore"
-        ]
+        self.default_cargos = polar_fox.constants.default_cargos["hopper_ore"]
 
 
 class HopperCarRockConsist(HopperCarConsistBase):

@@ -1,5 +1,3 @@
-<tal:include metal:use-macro="load: spriteset_templates_purchase.pynml" />
-
 <!--! 'random_reverse' property is not supported in this template, vehicles using this template are all symmetrical, reversing would do nothing
       'flipped' is user flipping vehicle in depot and *is* supported here (used for livery selection tricks)
       don't conflate them :) -->
@@ -60,7 +58,7 @@
 
 // buy menu graphics chain
 spriteset(${vehicle.id}_ss_purchase, "${graphics_path}${consist.id}.png") {
-    spriteset_template_purchase_${vehicle.id}(10)
+    ${consist.get_nml_for_spriteset_template(y_offset=0)}
 }
 <!--! purchase sprites always go through a switch in case the template does anything specific for purchase graphics
       when there is nothing specific, then this is just a null switch -->

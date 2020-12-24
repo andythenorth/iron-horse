@@ -1,5 +1,3 @@
-<tal:include metal:use-macro="load: spriteset_templates_purchase.pynml" />
-
 <!--! 'reversed' is random reversal on construction, depending on vehicle random bits
       'flipped' is user flipping vehicle in depot
       don't conflate them :) -->
@@ -57,7 +55,7 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, getbits(extra_
 
 // buy menu graphics chain
 spriteset(${vehicle.id}_ss_vehicle_purchase, "${graphics_path}${consist.id}.png") {
-    spriteset_template_purchase_${vehicle.id}(10)
+    ${consist.get_nml_for_spriteset_template(y_offset=0)}
 }
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase, 0) {
     0: return ${vehicle.id}_ss_vehicle_purchase;
