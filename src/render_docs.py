@@ -20,9 +20,7 @@ from polar_fox import git_info
 # get the strings from base lang file so they can be used in docs
 base_lang_strings = utils.parse_base_lang()
 metadata = {}
-metadata["dev_thread_url"] = "https://www.tt-forums.net/viewtopic.php?f=67&t=71219"
-metadata["repo_url"] = "https://github.com/andythenorth/iron-horse"
-metadata["issue_tracker"] = "http://dev.openttdcoop.org/projects/iron-horse/issues"
+metadata.update(global_constants.metadata)
 
 # get args passed by makefile
 makefile_args = utils.get_makefile_args(sys)

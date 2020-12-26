@@ -186,7 +186,7 @@ def get_cargo_sprinter_ids():
     for roster in get_active_rosters():
         for consist in roster.engine_consists:
             # abuse the platform_type property here, this might be fragile, but eh
-            if getattr(consist, 'platform_type', None) == "cargo_sprinter":
+            if getattr(consist, "platform_type", None) == "cargo_sprinter":
                 result.append(consist.id)
     if len(result) > 255:
         utils.echo_message(
@@ -276,4 +276,4 @@ def main():
     tarpaulin_cars.main()
     torpedo_cars.main()
     vehicle_parts_box_cars.main()
-    #vehicle_transporter_cars.main()
+    # vehicle_transporter_cars.main()

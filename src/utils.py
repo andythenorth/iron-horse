@@ -22,7 +22,7 @@ def get_docs_url():
     # not convinced this belongs in utils, but I can't find anywhere better to put it
     # could be in polar fox - method will be common to all grfs? - pass the project name as a var?
     # not convinced it's big enough to bother centralising TBH, too much close coupling has costs
-    result = ["https://grf.farm/iron-horse"]
+    result = [global_constants.metadata["docs_url"]]
     if git_info.get_tag_exact_match() != "undefined":
         result.append(git_info.get_tag_exact_match())
     result.append("index.html")
