@@ -66,7 +66,6 @@ grfid = r"CA\12\1F"
 metadata = {
     "dev_thread_url": "https://www.tt-forums.net/viewtopic.php?f=67&t=71219",
     "repo_url": "https://github.com/andythenorth/iron-horse",
-    "issue_tracker": "http://dev.openttdcoop.org/projects/iron-horse/issues",
     "docs_url": "https://grf.farm/iron-horse",
 }
 
