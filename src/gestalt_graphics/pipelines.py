@@ -191,7 +191,12 @@ class GenerateCompositedIntermodalContainers(Pipeline):
         result = [str(self.intermodal_container_gestalt.length) + "px"]
         for container in variant:
             result.append(container.split("_foot")[0][-2:])
-        return "intermodal_template_" + self.intermodal_container_gestalt.template_type_name + "_" + "_".join(result)
+        return (
+            "intermodal_template_"
+            + self.intermodal_container_gestalt.template_type_name
+            + "_"
+            + "_".join(result)
+        )
 
     def add_container_spriterows(self):
         for variant in self.intermodal_container_gestalt.variants:
@@ -577,7 +582,10 @@ class GenerateCompositedVehiclesCargos(Pipeline):
                         )
 
                 # create a mask to place black shadows between adjacent containers
-                combo_check = ["empty" if "empty" in container else "occupied" for container in variant]
+                combo_check = [
+                    "empty" if "empty" in container else "occupied"
+                    for container in variant
+                ]
                 # *vehicles with 3 containers only (32px)*
                 # don't allow combinations of only two adjacent 20 foot containers as it's TMWFTLB to provide the shadow for them
                 # two 20 foot with a gap between are supported

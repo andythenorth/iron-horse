@@ -99,4 +99,3 @@ def main():
     )
 
     consist.add_unit(type=FreightCar, chassis="4_axle_2cc_filled_32px")
-

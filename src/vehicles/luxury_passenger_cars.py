@@ -100,4 +100,3 @@ def main():
     )
 
     consist.add_unit(type=LuxuryPaxCar, chassis="4_axle_solid_express_32px")
-

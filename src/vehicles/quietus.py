@@ -14,7 +14,7 @@ def main(roster_id):
             "RAIL": 3250,
             "ELRL": 6700,
         },  # based on the Stadler Eurodual, really quite high values for both diesel and el (also matches Newag Dragon, which the shape is taken from)
-        tractive_effort_coefficient=0.375, # assume slip control magic
+        tractive_effort_coefficient=0.375,  # assume slip control magic
         random_reverse=True,
         pantograph_type="z-shaped-double",
         gen=6,
