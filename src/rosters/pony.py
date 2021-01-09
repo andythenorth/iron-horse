@@ -213,6 +213,33 @@ def main(disabled=False):
                     ("COLOUR_MAUVE", "COLOUR_CREAM"),
                 ],
             },
+            # stupid hax to get a 47 with default intercity that can also be plain solid colour
+            "PLAIN_NOT_INTERCITY": {
+                "cc1": [
+                    "COLOUR_DARK_BLUE",
+                    "COLOUR_PALE_GREEN",
+                    "COLOUR_PINK",
+                    "COLOUR_YELLOW",
+                    "COLOUR_RED",
+                    "COLOUR_LIGHT_BLUE",
+                    "COLOUR_GREEN",
+                    "COLOUR_DARK_GREEN",
+                    "COLOUR_BLUE",
+                    "COLOUR_CREAM",
+                    "COLOUR_MAUVE",
+                    "COLOUR_PURPLE",
+                    "COLOUR_ORANGE",
+                    "COLOUR_BROWN",
+                    "COLOUR_GREY",
+                    "COLOUR_WHITE",
+                ],
+                "not_cc2": ["COLOUR_WHITE"],
+                "remap_to_cc": None,
+                "docs_image_input_cc": [
+                    ("COLOUR_GREY", "COLOUR_GREY"),
+                    ("COLOUR_DARK_BLUE", "COLOUR_DARK_BLUE"),
+                ],
+            },
             # red stripe cc1 chosen to give nice wagon colour options
             "RAILFREIGHT_RED_STRIPE": {
                 "cc1": [
