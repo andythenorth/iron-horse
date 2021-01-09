@@ -1339,7 +1339,6 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
         )
         self.units.append(SimpleRecolour(self.consist.gestalt_graphics.recolour_map))
         box_car_input_image_1.close()
-        box_car_input_image_1.close()
 
     def add_caboose_spriterows(self, row_count):
         for row_num in range(int(row_count / 2)):
