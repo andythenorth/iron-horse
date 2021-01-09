@@ -79,6 +79,9 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
     property {
         name:                           ${consist.name};
         climates_available:             NO_CLIMATE; // nml constant
+        <tal:variant_group condition="consist.variant_group is not None">
+            variant_group:                  ${consist.variant_group};
+        </tal:variant_group>
         <tal:lead_unit_of_consist_only condition="vehicle.is_lead_unit_of_consist">
             <!--! some properties should not be set for trailing parts of articulated consists -->
             engine_class:                   ${vehicle.engine_class};

@@ -47,6 +47,7 @@ class Consist(object):
         # private var, used to store a name substr for engines, composed into name with other strings as needed
         self._name = kwargs.get("name", None)
         self.base_numeric_id = kwargs.get("base_numeric_id", None)
+        self.variant_group = kwargs.get("variant_group", None)
         # roster is set when the vehicle is registered to a roster, only one roster per vehicle
         # persist roster id for lookups, not roster obj directly, because of multiprocessing problems with object references
         self.roster_id = kwargs.get("roster_id")  # just fail if there's no roster
