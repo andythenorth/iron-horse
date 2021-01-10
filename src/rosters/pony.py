@@ -237,6 +237,7 @@ def main(disabled=False):
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
                     ("COLOUR_GREY", "COLOUR_GREY"),
+                    ("COLOUR_RED", "COLOUR_RED"),
                     ("COLOUR_DARK_BLUE", "COLOUR_DARK_BLUE"),
                 ],
             },
