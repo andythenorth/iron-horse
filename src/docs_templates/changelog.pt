@@ -3,6 +3,18 @@ Changelog
 
 
 -------------
+2.17.0 Release
+-------------
+
+*Changes*
+
+- added alternative intercity-ish livery for Resilient, shown if second company colour is white
+- provided Autocoach with sprites showing open doors when loading/unloading
+- added phosphate to refittable cargos for Covered Hoppers, Grain Hoppers and Pellet Hoppers
+- improved the choice of default cargo for some wagon types, to better support different FIRS economies
+
+
+-------------
 2.16.0 Release
 -------------
 
