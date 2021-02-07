@@ -1084,7 +1084,7 @@ class PassengerHSTCabEngineConsist(PassengerEngineConsist):
         self.buy_cost_adjustment_factor = 1.2
         # higher speed should only be effective over longer distances
         # ....run cost multiplier is adjusted up from pax base for high speed
-        self.floating_run_cost_multiplier = 16
+        self.floating_run_cost_multiplier = 11
         # ...adjust fixed run costs on this subtype to look about right
         self.fixed_run_cost_points = 160
         # non-standard cite
@@ -1271,7 +1271,7 @@ class PassengerVeryHighSpeedCabEngineConsist(PassengerEngineConsist):
         # high speed should only be effective over longer distances
         # ....run cost multiplier is adjusted up from pax base
         # but allow that every vehicle will have powered run costs, so not too high eh?
-        self.floating_run_cost_multiplier = 17
+        self.floating_run_cost_multiplier = 11
         # ...and high fixed (baseline) run costs on this subtype
         self.fixed_run_cost_points = 200
         # train_flag_mu solely used for ottd livery (company colour) selection
