@@ -1271,7 +1271,7 @@ class PassengerVeryHighSpeedCabEngineConsist(PassengerEngineConsist):
         # high speed should only be effective over longer distances
         # ....run cost multiplier is adjusted up from pax base
         # but allow that every vehicle will have powered run costs, so not too high eh?
-        self.floating_run_cost_multiplier = 11
+        self.floating_run_cost_multiplier = 18
         # ...and high fixed (baseline) run costs on this subtype
         self.fixed_run_cost_points = 200
         # train_flag_mu solely used for ottd livery (company colour) selection
@@ -1369,8 +1369,9 @@ class PassengerVeryHighSpeedMiddleEngineConsist(PassengerEngineConsist):
 
     @property
     def running_cost(self):
-        # match middle engine running cost to cab engine running cost
-        return self.cab_consist.running_cost
+        # take 49% of cab engine running cost as running cost
+        # this is to prevent horrible scaling up of costs with each unit added, but could assume the cab has more cost due to driver, equipment etc
+        return int(0.49 * self.cab_consist.running_cost)
 
     @property
     def buy_menu_distributed_power_substring(self):
