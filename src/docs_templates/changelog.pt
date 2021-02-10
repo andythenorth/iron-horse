@@ -3,6 +3,21 @@ Changelog
 
 
 -------------
+2.18.0 Release
+-------------
+
+*Changes*
+
+- adjust running costs down (again) for high speed and very high speed trains to try and make them competitive with other trains whilst not being over-powered
+- added cement to refittable cargos for Box Vans, Curtain Side Vans, Sliding Wall Vans and Vehicle Parts Vans
+- use slab cargo sprites for alloy steel and stainless steel
+
+*Fixes*
+
+- cargo sprites were incomplete for gen 6A and 6B Rock Hoppers
+
+
+-------------
 2.17.0 Release
 -------------
 
