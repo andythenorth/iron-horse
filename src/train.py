@@ -1069,6 +1069,40 @@ class PassengerEngineConsist(EngineConsist):
         self.fixed_run_cost_points = 84
 
 
+class PassengerEngineCabControlCarConsist(PassengerEngineConsist):
+    """
+    Consist for a passenger cab control car / driving trailer.  Implemented as Engine so it can lead a consist in-game.
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.role = "driving_cab_express"
+        self.role_child_branch_num = -1  # driving cab cars are probably jokers?
+        self.buy_menu_hint_driving_cab = True
+        self.allow_flip = True
+        # confer a small power value for 'operational efficiency' (HEP load removed from engine eh?) :)
+        self.power = 50
+        # nerf TE down to minimal value
+        self.tractive_effort_coefficient = 0.1
+        # ....buy costs reduced from base to make it close to mail cars
+        self.fixed_buy_cost_points = 1  # to reduce it from engine factor
+        self.buy_cost_adjustment_factor = 1
+        # ....run costs reduced from base to make it close to mail cars
+        self.fixed_run_cost_points = 68
+        # Graphics configuration
+        # driving cab cars have consist cargo mappings for pax, mail (freight uses mail)
+        # * pax matches pax liveries for generation
+        # * mail gets a TPO/RPO striped livery, and a 1CC/2CC duotone livery
+        # position based variants
+        spriterow_group_mappings = {
+            "mail": {"default": 0, "first": 0, "last": 1, "special": 0},
+            "pax": {"default": 0, "first": 0, "last": 1, "special": 0},
+        }
+        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(
+            spriterow_group_mappings, consist_ruleset="driving_cab_cars"
+        )
+
+
 class PassengerHSTCabEngineConsist(PassengerEngineConsist):
     """
     Consist for a dual-headed HST (high speed train).
@@ -3635,6 +3669,24 @@ class CabbageDVTUnit(Train):
         self.capacity = (
             self.vehicle_length * base_capacity
         ) / polar_fox.constants.mail_multiplier
+
+
+class CabControlPaxCarUnit(Train):
+    """
+    Unit for a cab control car (driving cab with pax capacity)
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.engine_class = "ENGINE_CLASS_DIESEL"  # probably fine?
+        self.effects = {}
+        self.consist.str_name_suffix = None
+        self._symmetry_type = "asymmetric"
+        # magic to set capacity subject to length
+        base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[
+            self.consist.base_track_type
+        ][self.consist.gen - 1]
+        self.capacity = int(self.vehicle_length * base_capacity * 0.75)
 
 
 class DieselEngineUnit(Train):
