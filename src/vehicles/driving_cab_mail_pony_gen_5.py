@@ -4,7 +4,7 @@ from train import MailEngineCabbageDVTConsist, CabbageDVTUnit
 def main(roster_id):
     consist = MailEngineCabbageDVTConsist(
         roster_id=roster_id,
-        id="driving_cab_pony_gen_5",
+        id="driving_cab_mail_pony_gen_5",
         base_numeric_id=3980,
         name="Driving Van Trailer",
         gen=5,

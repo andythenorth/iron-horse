@@ -32,8 +32,8 @@ from vehicles import defiant
 from vehicles import diablo
 from vehicles import dover
 from vehicles import dragon
-from vehicles import driving_cab_pony_gen_5
-from vehicles import driving_cab_pony_gen_6
+from vehicles import driving_cab_mail_pony_gen_5
+from vehicles import driving_cab_mail_pony_gen_6
 from vehicles import esk
 from vehicles import evolution
 from vehicles import firebird
@@ -340,8 +340,8 @@ def main(disabled=False):
             avenger,
             sizzler,
             # driving cab cars
-            driving_cab_pony_gen_5,
-            driving_cab_pony_gen_6,
+            driving_cab_mail_pony_gen_5,
+            driving_cab_mail_pony_gen_6,
             # branch freight
             buffalo,
             saxon,
