@@ -8,7 +8,7 @@ def main(roster_id):
         base_numeric_id=5170,
         name="Driving Trailer",
         gen=5,
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=CabControlPaxCarUnit, weight=32, chassis="railcar_32px")
