@@ -208,6 +208,9 @@ def get_pax_car_ids():
                     False,
                 ):
                     result.append(consist.base_numeric_id)
+        for consist in roster.engine_consists:
+            if getattr(consist, "treat_as_pax_car_for_var_41", False):
+                result.append(consist.id)
     if len(result) > 255:
         utils.echo_message(
             "action 2 switch is limited to 255 values, get_pax_car_ids exceeds this - needs split across multiple switches"

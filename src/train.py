@@ -1080,6 +1080,8 @@ class PassengerEngineCabControlCarConsist(PassengerEngineConsist):
         self.role_child_branch_num = -1  # driving cab cars are probably jokers?
         self.buy_menu_hint_driving_cab = True
         self.allow_flip = True
+        # special purpose attr for use with alt var 41 and pax_car_ids
+        self.treat_as_pax_car_for_var_41 = True
         # confer a small power value for 'operational efficiency' (HEP load removed from engine eh?) :)
         self.power = 50
         # nerf TE down to minimal value
