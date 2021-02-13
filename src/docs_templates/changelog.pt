@@ -3,6 +3,23 @@ Changelog
 
 
 -------------
+2.19.0 Release
+-------------
+
+*Changes*
+
+- added 3 Driving Trailers (driving cab cars)
+    - passengers only, as an alternative to the existing Driving Van Trailers which are mail and express freight
+    - attach to front or rear of a train with at least one other engine
+    - for OpenTTD reasons, vehicles must have power to lead a train, so these vehicles include a small amount of power
+    - first available around 1975
+    - multiple liveries, livery shown depends on consist cargo and user choice (depot flip the vehicle)
+    - automatically flips if last vehicle in train
+-
+-
+
+
+-------------
 2.18.0 Release
 -------------
 
