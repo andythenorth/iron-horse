@@ -12,11 +12,11 @@ Changelog
     - passengers only, as an alternative to the existing Driving Van Trailers which are mail and express freight
     - attach to front or rear of a train with at least one other engine
     - for OpenTTD reasons, vehicles must have power to lead a train, so these vehicles include a small amount of power
-    - first available around 1975
+    - first available around 1976
     - multiple liveries, livery shown depends on consist cargo and user choice (depot flip the vehicle)
     - automatically flips if last vehicle in train
--
--
+- added Stentor heavy freight engine, 4050hp, available around 1993
+- improved appearance of Flanders Storm engine
 
 
 -------------
