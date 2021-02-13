@@ -17,7 +17,7 @@ def main(roster_id):
         gen=5,
         fixed_run_cost_points=210,  # unrealism: run cost nerf for being so high-powered
         alternative_cc_livery="RAILFREIGHT_TRIPLE_GREY",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(
@@ -28,7 +28,7 @@ def main(roster_id):
         spriterow_num=0,
     )
 
-    consist.description = """"""
-    consist.foamer_facts = """"""
+    consist.description = """This one is loud, and packed with technology."""
+    consist.foamer_facts = """BR Class 60 design mockups"""
 
     return consist
