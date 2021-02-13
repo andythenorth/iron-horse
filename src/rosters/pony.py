@@ -34,6 +34,7 @@ from vehicles import dover
 from vehicles import dragon
 from vehicles import driving_cab_mail_pony_gen_5
 from vehicles import driving_cab_mail_pony_gen_6
+from vehicles import driving_cab_passenger_pony_gen_4
 from vehicles import driving_cab_passenger_pony_gen_5
 from vehicles import driving_cab_passenger_pony_gen_6
 from vehicles import esk
@@ -343,6 +344,7 @@ def main(disabled=False):
             avenger,
             sizzler,
             # driving cab cars
+            driving_cab_passenger_pony_gen_4,
             driving_cab_passenger_pony_gen_5,
             driving_cab_passenger_pony_gen_6,
             driving_cab_mail_pony_gen_5,
