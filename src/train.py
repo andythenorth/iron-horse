@@ -298,7 +298,7 @@ class Consist(object):
                 "heavy_express": [2, 3, 4],
                 "luxury_pax_railcar": [-1],
             },
-            "driving_cab": {"driving_cab_express": [-1]},
+            "driving_cab": {"driving_cab_express_pax": [-1], "driving_cab_express_mail": [-1], "driving_cab_express_mixed": [-1]},
             "freight_core": {"freight": [1], "heavy_freight": [1]},
             "freight_non_core": {
                 "branch_freight": [1],
@@ -881,7 +881,7 @@ class AutoCoachCombineConsist(EngineConsist):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.role = "driving_cab_express"
+        self.role = "driving_cab_express_mixed"
         self.role_child_branch_num = -1  # driving cab cars are probably jokers?
         self.buy_menu_hint_driving_cab = True
         self.allow_flip = False  # articulated innit (even needed?)
@@ -921,7 +921,7 @@ class MailEngineCabbageDVTConsist(MailEngineConsist):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.role = "driving_cab_express"
+        self.role = "driving_cab_express_mail"
         self.role_child_branch_num = -1  # driving cab cars are probably jokers?
         self.buy_menu_hint_driving_cab = True
         self.allow_flip = True
@@ -1076,7 +1076,7 @@ class PassengerEngineCabControlCarConsist(PassengerEngineConsist):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.role = "driving_cab_express"
+        self.role = "driving_cab_express_pax"
         self.role_child_branch_num = -1  # driving cab cars are probably jokers?
         self.buy_menu_hint_driving_cab = True
         self.allow_flip = True

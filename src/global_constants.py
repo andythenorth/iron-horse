@@ -92,7 +92,7 @@ PR_RUNNING_TRAIN_DIESEL = -4
 role_group_mapping = OrderedDict(
     [
         ("express", ["branch_express", "express", "heavy_express"]),
-        ("driving_cab", ["driving_cab_express"]),
+        ("driving_cab", ["driving_cab_express_pax", "driving_cab_express_mail", "driving_cab_express_mixed"]),
         ("freight", ["branch_freight", "freight", "heavy_freight"]),
         (
             "universal",
