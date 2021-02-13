@@ -4,11 +4,11 @@ from train import EngineConsist, DieselEngineUnit
 def main(roster_id):
     consist = EngineConsist(
         roster_id=roster_id,
-        id="tug",
-        base_numeric_id=5070,
-        name="Tug",
+        id="stentor",
+        base_numeric_id=5380,
+        name="Stentor",
         role="heavy_freight",
-        role_child_branch_num=-2,  # Joker eh
+        role_child_branch_num=-3,  # Joker eh
         power=4050,  # 750hp steps Vanguard -> Grid -> Cheddar Valley
         # dibble for game balance, assume super-slip control
         tractive_effort_coefficient=0.4,
@@ -22,7 +22,7 @@ def main(roster_id):
 
     consist.add_unit(
         type=DieselEngineUnit,
-        weight=125,
+        weight=128,
         vehicle_length=8,
         effect_offsets=[(1, 0)],
         spriterow_num=0,

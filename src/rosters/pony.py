@@ -103,6 +103,7 @@ from vehicles import slug
 from vehicles import snapper
 from vehicles import snowplough_pony_gen_2
 from vehicles import spinner
+from vehicles import stentor
 from vehicles import stoat
 from vehicles import streamer
 from vehicles import strongbow
@@ -373,6 +374,7 @@ def main(disabled=False):
             defiant,
             quietus,
             cheddar_valley,
+            stentor,
             highlander,
             toaster,
             flindermouse,
