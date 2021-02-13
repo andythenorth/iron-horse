@@ -1083,7 +1083,7 @@ class PassengerEngineCabControlCarConsist(PassengerEngineConsist):
         # special purpose attr for use with alt var 41 and pax_car_ids
         self.treat_as_pax_car_for_var_41 = True
         # confer a small power value for 'operational efficiency' (HEP load removed from engine eh?) :)
-        self.power = 50
+        self.power = 300
         # nerf TE down to minimal value
         self.tractive_effort_coefficient = 0.1
         # ....buy costs reduced from base to make it close to mail cars
