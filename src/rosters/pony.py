@@ -35,6 +35,7 @@ from vehicles import dragon
 from vehicles import driving_cab_mail_pony_gen_5
 from vehicles import driving_cab_mail_pony_gen_6
 from vehicles import driving_cab_passenger_pony_gen_5
+from vehicles import driving_cab_passenger_pony_gen_6
 from vehicles import esk
 from vehicles import evolution
 from vehicles import firebird
@@ -342,6 +343,7 @@ def main(disabled=False):
             sizzler,
             # driving cab cars
             driving_cab_passenger_pony_gen_5,
+            driving_cab_passenger_pony_gen_6,
             driving_cab_mail_pony_gen_5,
             driving_cab_mail_pony_gen_6,
             # branch freight
