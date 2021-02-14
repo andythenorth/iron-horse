@@ -5,10 +5,3 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_cargo_capacity,
         [STORE_TEMP(${vehicle.capacities[0]}, 0), STORE_TEMP(${vehicle.capacities[1]}, 1), STORE_TEMP(${vehicle.capacities[2]}, 2), STORE_TEMP(${vehicle.capacities[3]}, 3)]) {
     return switch_cargo_capacity();
 }
-
-<!--! loading speed also determined by capacity -->
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_loading_speed,
-        [STORE_TEMP(${vehicle.get_loading_speed(0)}, 0), STORE_TEMP(${vehicle.get_loading_speed(1)}, 1), STORE_TEMP(${vehicle.get_loading_speed(2)}, 2), STORE_TEMP(${vehicle.get_loading_speed(3)}, 3)]) {
-    return switch_loading_speed();
-}
-

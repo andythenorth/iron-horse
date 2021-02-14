@@ -298,7 +298,11 @@ class Consist(object):
                 "heavy_express": [2, 3, 4],
                 "luxury_pax_railcar": [-1],
             },
-            "driving_cab": {"driving_cab_express_pax": [-1], "driving_cab_express_mail": [-1], "driving_cab_express_mixed": [-1]},
+            "driving_cab": {
+                "driving_cab_express_pax": [-1],
+                "driving_cab_express_mail": [-1],
+                "driving_cab_express_mixed": [-1],
+            },
             "freight_core": {"freight": [1], "heavy_freight": [1]},
             "freight_non_core": {
                 "branch_freight": [1],
@@ -885,6 +889,8 @@ class AutoCoachCombineConsist(EngineConsist):
         self.role_child_branch_num = -1  # driving cab cars are probably jokers?
         self.buy_menu_hint_driving_cab = True
         self.allow_flip = False  # articulated innit (even needed?)
+        # boost loading speed to match default pax coaches (this gives an incidental boost to mail compared to other mail vehicles, but eh)
+        self.loading_speed_multiplier = 1.75
         # confer tiny power value to make this one an engine so it can lead.
         self.power = 10  # use 10 not 1, because 1 looks weird when added to engine HP
         # nerf TE down to minimal value
@@ -960,6 +966,7 @@ class MailEngineCargoSprinterEngineConsist(MailEngineConsist):
         self.platform_type = "cargo_sprinter"
         # run cost algorithm doesn't account for dual-head / high power MUs reliably, so just fix it here, using assumption that there are very few cargo sprinters and this will be fine
         self.fixed_run_cost_points = 240
+        self.loading_speed_multiplier = 2
         # Graphics configuration
         # !! there is no automatic masking of the cab overlays as of Dec 2020, currently manual - automation might be needed for well cars in future, deal with it then if that's the case
         # NOTE that cargo sprinter will NOT randomise containers on load as of Dec 2020 - there is a bug with rear unit running unwanted triggers and re-randomising in depots etc
@@ -977,6 +984,8 @@ class MailEngineMetroConsist(MailEngineConsist):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        # OP bonus to mail metro loading speed
+        self.loading_speed_multiplier = 4
         # this will knock standard age period down, so this train is only profitable over short routes
         self.cargo_age_period = global_constants.CARGO_AGE_PERIOD_METRO_MALUS
         # buy costs increased above baseline, account for 2 units + underground nonsense
@@ -1201,6 +1210,8 @@ class PassengerEngineMetroConsist(PassengerEngineConsist):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        # super super OP bonus to pax metro loading speed
+        self.loading_speed_multiplier = 8
         # this will knock standard age period down, so this train is only profitable over short routes
         self.cargo_age_period = global_constants.CARGO_AGE_PERIOD_METRO_MALUS
         # buy costs increased above baseline, account for 2 units + underground nonsense
@@ -1230,13 +1241,15 @@ class PassengerEngineRailcarConsist(PassengerEngineConsist):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.allow_flip = True
+        # boost loading speed to match default pax cars
+        self.loading_speed_multiplier = 1.75
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
         # this will knock standard age period down, so this train is less profitable over ~128 tiles than a similar luxury train
         self.cargo_age_period = global_constants.CARGO_AGE_PERIOD_STANDARD_PAX_MALUS
         # non-standard cite
         self._cite = "Arabella Unit"
+        self.allow_flip = True
         # Graphics configuration
         if self.gen in [2, 3]:
             self.roof_type = "pax_mail_ridged"
@@ -1756,7 +1769,7 @@ class CarbonBlackHopperCarConsist(CarConsist):
         self.label_refits_allowed = ["CBLK"]
         self.label_refits_disallowed = []
         self.default_cargos = []
-        self.loading_speed_multiplier = 2
+        self.loading_speed_multiplier = 1.5
         self.buy_cost_adjustment_factor = 1.2
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
@@ -1785,7 +1798,7 @@ class CoilBuggyCarConsist(CarConsist):
         ]
         self.label_refits_disallowed = []  # none needed
         self.default_cargos = polar_fox.constants.default_cargos["coil"]
-        self.loading_speed_multiplier = 2
+        self.loading_speed_multiplier = 1.5
         self.buy_cost_adjustment_factor = 1.2
         self.weight_factor = 2  # double the default weight
         self._intro_date_days_offset = (
@@ -1823,6 +1836,7 @@ class CoilCarConsistBase(CarConsist):
             "cold_metal"
         ]
         self.label_refits_disallowed = []
+        self.loading_speed_multiplier = 1.5
         self.buy_cost_adjustment_factor = 1.1
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
@@ -1876,7 +1890,7 @@ class CoveredHopperCarConsistBase(CarConsist):
             "covered_hoppers"
         ]
         self.label_refits_disallowed = []
-        self.loading_speed_multiplier = 2
+        self.loading_speed_multiplier = 1.5
         self.buy_cost_adjustment_factor = 1.2
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["freight_core"]
@@ -1954,7 +1968,7 @@ class CryoTankCarConsist(CarConsist):
         ]
         self.default_cargos = polar_fox.constants.default_cargos["cryo_gases"]
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
-        self.loading_speed_multiplier = 2
+        self.loading_speed_multiplier = 1.5
         self.buy_cost_adjustment_factor = 1.33
         self.floating_run_cost_multiplier = 1.5
         self._intro_date_days_offset = (
@@ -2093,7 +2107,7 @@ class EdiblesTankCarConsist(CarConsist):
         self.label_refits_disallowed = []
         self.default_cargos = polar_fox.constants.default_cargos["edibles_tank"]
         self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
-        self.loading_speed_multiplier = 2
+        self.loading_speed_multiplier = 1.5
         self.buy_cost_adjustment_factor = 1.33
         self.floating_run_cost_multiplier = 1.5
         self._intro_date_days_offset = (
@@ -2167,6 +2181,7 @@ class ExpressIntermodalCarConsist(CarConsist):
             "non_freight_special_cases"
         ]
         self.default_cargos = polar_fox.constants.default_cargos["express"]
+        self.loading_speed_multiplier = 2
         # adjust weight factor because express intermodal car freight capacity is 1/2 of other wagons, but weight should be same
         self.weight_factor = polar_fox.constants.mail_multiplier
         self.floating_run_cost_multiplier = (
@@ -2316,7 +2331,7 @@ class IngotCarConsist(CarConsist):
         self.label_refits_allowed = ["IRON", "CSTI", "STCB"]
         self.label_refits_disallowed = []  # none needed
         self.default_cargos = ["IRON"]
-        self.loading_speed_multiplier = 2
+        self.loading_speed_multiplier = 1.5
         self.buy_cost_adjustment_factor = 1.2
         self.weight_factor = 2  # double the default weight
         self._intro_date_days_offset = (
@@ -2448,7 +2463,6 @@ class LogCarConsist(CarConsist):
         self.label_refits_allowed = ["WOOD"]
         self.label_refits_disallowed = []
         self.default_cargos = ["WOOD"]
-        self.loading_speed_multiplier = 2
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
         )
@@ -2578,6 +2592,8 @@ class PassengerCarConsist(PassengerCarConsistBase):
         self.cargo_age_period = global_constants.CARGO_AGE_PERIOD_STANDARD_PAX_MALUS
         self.buy_cost_adjustment_factor = 1.3
         self.floating_run_cost_multiplier = 4
+        # boost loading speed of default pax cars
+        self.loading_speed_multiplier = 1.75
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 0.66 if self.base_track_type == "NG" else 1.5
         # Graphics configuration
@@ -2696,6 +2712,8 @@ class PassengerRailcarTrailerCarConsist(PassengerCarConsistBase):
         self.cargo_age_period = global_constants.CARGO_AGE_PERIOD_STANDARD_PAX_MALUS
         self.buy_cost_adjustment_factor = 1.3
         self.floating_run_cost_multiplier = 4.75
+        # boost loading speed to match default pax cars
+        self.loading_speed_multiplier = 1.75
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["railcar"]
         )
@@ -2884,7 +2902,7 @@ class SiloCarConsistBase(CarConsist):
             "SAND",
         ]  # move to Polar Fox (maybe??)
         self.label_refits_disallowed = []
-        self.loading_speed_multiplier = 2
+        self.loading_speed_multiplier = 1.5
         self.buy_cost_adjustment_factor = 1.2
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
@@ -3041,7 +3059,7 @@ class TankCarConsistBase(CarConsist):
         self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label[
             "non_generic_liquids"
         ]
-        self.loading_speed_multiplier = 3
+        self.loading_speed_multiplier = 1.5
         self.buy_cost_adjustment_factor = 1.2
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["freight_core"]
@@ -3123,7 +3141,7 @@ class TorpedoCarConsist(CarConsist):
         self.label_refits_allowed = ["IRON"]
         self.label_refits_disallowed = []
         self.default_cargos = ["IRON"]
-        self.loading_speed_multiplier = 2
+        self.loading_speed_multiplier = 1.5
         self.buy_cost_adjustment_factor = 1.2
         self.floating_run_cost_multiplier = 1.33
         self.weight_factor = 2  # double the default weight
@@ -3364,16 +3382,12 @@ class Train(object):
             ]
         return ",".join(set(cargo_classes))  # use set() here to dedupe
 
-    def get_loading_speed(self, capacity_param):
-        # ottd vehicles load at different rates depending on type,
-        # normalise default loading time for this set to 240 ticks, regardless of capacity
-        # openttd loading rates vary by transport type, look them up in wiki to find value to use here to normalise loading time to 240 ticks
-        # this is (240 / loading frequency in ticks for transport type) from wiki
-        transport_type_rate = 6
-        return int(
-            self.loading_speed_multiplier
-            * math.ceil(self.capacities[capacity_param] / transport_type_rate)
-        )
+    @property
+    def loading_speed(self):
+        # ottd vehicles load at different rates depending on type, train default is 5
+        # Iron Horse uses 5 as default, with some vehicle types adjusting that up or down
+        # loading_speed_multiplier can be defined per unit, or on the consist
+        return int(5 * getattr(self.consist, "loading_speed_multiplier", self.loading_speed_multiplier))
 
     @property
     def running_cost_base(self):
@@ -3957,7 +3971,6 @@ class MetroUnit(Train):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         kwargs["consist"].base_track_type = "METRO"
-        self.loading_speed_multiplier = 2
         self.engine_class = "ENGINE_CLASS_ELECTRIC"
         self.effects = {
             "default": ["EFFECT_SPAWN_MODEL_ELECTRIC", "EFFECT_SPRITE_ELECTRIC"]
@@ -4035,8 +4048,6 @@ class TrainCar(Train):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.consist = kwargs["consist"]
-        if hasattr(self.consist, "loading_speed_multiplier"):
-            self.loading_speed_multiplier = self.consist.loading_speed_multiplier
         # most wagons are symmetric, over-ride per vehicle or subclass as needed
         self._symmetry_type = kwargs.get("symmetry_type", "symmetric")
         # all wagons use auto tail-lights based on length
