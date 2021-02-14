@@ -992,7 +992,7 @@ class MailEngineMetroConsist(MailEngineConsist):
         self.buy_cost_adjustment_factor = 2
         # metro should only be effective over short distances
         # ....run cost multiplier is adjusted up from pax base for underground nonsense, also account for 2 units
-        self.floating_run_cost_multiplier = 26
+        self.floating_run_cost_multiplier = 18
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
         # Graphics configuration
@@ -1218,7 +1218,7 @@ class PassengerEngineMetroConsist(PassengerEngineConsist):
         self.buy_cost_adjustment_factor = 2
         # metro should only be effective over short distances
         # ....run cost multiplier is adjusted up from pax base for underground nonsense, also account for 2 units
-        self.floating_run_cost_multiplier = 26
+        self.floating_run_cost_multiplier = 18
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
         # Graphics configuration
