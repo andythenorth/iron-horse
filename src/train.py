@@ -293,7 +293,7 @@ class Consist(object):
         role_to_role_groups_mapping = {
             "express_core": {"express": [1], "heavy_express": [1]},
             "express_non_core": {
-                "branch_express": [1, 2],
+                "branch_express": [1, 2, -2],
                 "express": [2],
                 "heavy_express": [2, 3, 4],
                 "luxury_pax_railcar": [-1],
@@ -305,7 +305,7 @@ class Consist(object):
             },
             "freight_core": {"freight": [1], "heavy_freight": [1]},
             "freight_non_core": {
-                "branch_freight": [1],
+                "branch_freight": [1, 2],
                 "freight": [2],
                 "heavy_freight": [2, 3, 4],
             },

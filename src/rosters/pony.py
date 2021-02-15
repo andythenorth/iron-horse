@@ -5,6 +5,7 @@ from vehicles import athena
 from vehicles import (
     auto_coach_pony_gen_2,
 )  # no further generations as autoreplace can't handle mixed cargo articulated consists
+from vehicles import argus
 from vehicles import avenger
 from vehicles import bean_feast
 from vehicles import blackthorn
@@ -106,6 +107,7 @@ from vehicles import snowplough_pony_gen_2
 from vehicles import spinner
 from vehicles import stentor
 from vehicles import stoat
+from vehicles import stoat2
 from vehicles import streamer
 from vehicles import strongbow
 from vehicles import sunshine_coast
@@ -306,15 +308,15 @@ def main(disabled=False):
             lark,
             merrylegs,
             proper_job,
-            stoat,
-            pinhorse,
+            kelpie,
+            griffon,
             shoebox,
             super_shoebox,
             ultra_shoebox,
+            pinhorse,
+            argus,
             # express
             reliance,
-            kelpie,
-            griffon,
             spinner,
             carrack,
             tencendur,
@@ -355,6 +357,8 @@ def main(disabled=False):
             little_bear,
             captain_steel,
             goliath,
+            stoat,
+            stoat2,
             # freight
             hercules,
             braf,

@@ -7,23 +7,24 @@ def main(roster_id):
         id="shoebox",
         base_numeric_id=280,
         name="Shoebox",
-        role="branch_express",
-        role_child_branch_num=1,
-        power=950,
-        power_by_railtype={"RAIL": 950, "ELRL": 1800},
+        role="express",
+        role_child_branch_num=-1,
+        power=950, # yes it's quite low power initially eh
+        power_by_railtype={"RAIL": 950, "ELRL": 2300},
         random_reverse=True,
         pantograph_type="z-shaped-single",
         gen=4,
-        sprites_complete=True,
+        intro_date_offset=5,  # introduce later than gen epoch by design
+        sprites_complete=False,
     )
 
     consist.add_unit(
-        type=ElectroDieselEngineUnit, weight=67, vehicle_length=6, spriterow_num=0
+        type=ElectroDieselEngineUnit, weight=67, vehicle_length=8, spriterow_num=0
     )
 
     consist.description = (
         """This one can go on electric or diesel. Madder than a box of frogs."""
     )
-    consist.foamer_facts = """BR Class 71/74, Class 73"""
+    consist.foamer_facts = """BR Class 70, Class 73"""
 
     return consist

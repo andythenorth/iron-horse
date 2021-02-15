@@ -7,8 +7,8 @@ def main(roster_id):
         id="griffon",
         base_numeric_id=2840,
         name="Griffon",  # Griffon and Shredder names are wrong way round, but seems to suit the shapes so eh, leave it :)
-        role="express",
-        role_child_branch_num=-1,
+        role="branch_express",
+        role_child_branch_num=1,
         power=1650,
         random_reverse=True,
         fixed_run_cost_points=100,  # give a bonus so this can be a genuine mixed-traffic engine

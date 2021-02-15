@@ -8,11 +8,11 @@ def main(roster_id):
         base_numeric_id=3250,
         name="Pinhorse",
         role="branch_express",
-        role_child_branch_num=2,
-        power=1100,
+        role_child_branch_num=-2,
+        power=800,
         random_reverse=True,
         pantograph_type="diamond-single",
-        gen=3,
+        gen=2,
         replacement_consist_id="shoebox",  # this line ends with Shoebox and is merged with branch_express 2
         intro_date_offset=5,  # introduce later than gen epoch by design
         sprites_complete=True,
