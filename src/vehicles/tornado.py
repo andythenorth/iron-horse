@@ -15,11 +15,11 @@ def main(roster_id):
         pantograph_type="z-shaped-single",
         gen=5,
         intro_date_offset=12, # introduce later than gen epoch by design
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(
-        type=ElectroDieselEngineUnit, weight=67, vehicle_length=6, spriterow_num=0
+        type=ElectroDieselEngineUnit, weight=70, vehicle_length=6, spriterow_num=0
     )
 
     consist.description = (
