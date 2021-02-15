@@ -14,7 +14,7 @@ def main(roster_id):
         random_reverse=True,
         pantograph_type="z-shaped-single",
         gen=4,
-        intro_date_offset=5,  # introduce later than gen epoch by design
+        intro_date_offset=3,  # introduce later than gen epoch by design
         sprites_complete=False,
     )
 
@@ -25,6 +25,6 @@ def main(roster_id):
     consist.description = (
         """This one can go on electric or diesel. Madder than a box of frogs."""
     )
-    consist.foamer_facts = """BR Class 70, Class 73"""
+    consist.foamer_facts = """BR Class 71/74, Class 73, proposed Class 75"""
 
     return consist

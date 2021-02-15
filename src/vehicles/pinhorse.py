@@ -9,12 +9,12 @@ def main(roster_id):
         name="Pinhorse",
         role="branch_express",
         role_child_branch_num=-2,
-        power=800,
+        power=900,
         random_reverse=True,
         pantograph_type="diamond-single",
         gen=2,
         replacement_consist_id="shoebox",  # this line ends with Shoebox and is merged with branch_express 2
-        intro_date_offset=5,  # introduce later than gen epoch by design
+        intro_date_offset=3,  # introduce later than gen epoch by design
         sprites_complete=True,
     )
 
@@ -23,6 +23,6 @@ def main(roster_id):
     )
 
     consist.description = """Mr. Bulleid and Mr. Raworth drew these up for me. For small jobs, you won't go far wrong with em."""
-    consist.foamer_facts = """SR CC1/CC2"""
+    consist.foamer_facts = """Metropolitan Railway electric locos, SR CC1/CC2"""
 
     return consist

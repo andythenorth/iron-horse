@@ -9,12 +9,12 @@ def main(roster_id):
         name="Stoat",
         role="branch_freight",
         role_child_branch_num=2,
-        power=1200,
+        power=1050,
         speed=60, # continues a long way into gen 3, so go faster
         random_reverse=True,
         pantograph_type="diamond-single",
         gen=2,
-        intro_date_offset=6,  # introduce later than gen epoch by design
+        intro_date_offset=3,  # introduce later than gen epoch by design
         fixed_run_cost_points=105,  # substantial cost bonus so it can make money
         sprites_complete=True,
     )

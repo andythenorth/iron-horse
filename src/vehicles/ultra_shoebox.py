@@ -22,6 +22,6 @@ def main(roster_id):
     )
 
     consist.description = """Top to bottom, it's a old Shoebox made new. Right powerful small engines we have thse days."""
-    consist.foamer_facts = """Network Rail / GBRF Class 73/9 (re-engineered)"""
+    consist.foamer_facts = """BR class 74, Network Rail / GBRF Class 73/9 (re-engineered)"""
 
     return consist

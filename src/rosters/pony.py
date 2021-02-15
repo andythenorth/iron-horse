@@ -13,6 +13,7 @@ from vehicles import blaze
 from vehicles import blind_smuir
 from vehicles import boar_cat
 from vehicles import bone
+from vehicles import booster
 from vehicles import braf
 from vehicles import breeze
 from vehicles import brenner_cab
@@ -118,6 +119,7 @@ from vehicles import thunderer
 from vehicles import tideway
 from vehicles import tin_rocket
 from vehicles import toaster
+from vehicles import tornado
 from vehicles import triton
 from vehicles import tyburn
 from vehicles import ultra_shoebox
@@ -303,18 +305,22 @@ def main(disabled=False):
             },
         },
         # this list is manually maintained deliberately, even though it could be mostly automated using tech tree
-        engines=[  # branch express
+        engines=[
             # challenger, # for NA roster
+            # branch express
             lark,
             merrylegs,
             proper_job,
             kelpie,
             griffon,
+            pinhorse,
+            argus,
+            booster,
+            tornado,
+            # express (electro-diesels with non-standard position in power/length tree)
             shoebox,
             super_shoebox,
             ultra_shoebox,
-            pinhorse,
-            argus,
             # express
             reliance,
             spinner,
