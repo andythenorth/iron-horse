@@ -98,9 +98,8 @@ class Consist(object):
         # random_reverse means (1) randomised reversing of sprites when vehicle is built (2) player can also flip vehicle
         # random_reverse is not supported in some templates
         self.random_reverse = kwargs.get("random_reverse", False)
-        self.allow_flip = (
-            self.random_reverse
-        )  # random_reverse vehicles can always be flipped, but flip can also be set in other cases (by subclass)
+        # random_reverse vehicles can always be flipped, but flip can also be set in other cases (by subclass)
+        self.allow_flip = self.random_reverse
         # just a simple buy cost tweak, only use when needed
         self.electro_diesel_buy_cost_malus = None
         # arbitrary multiplier to the calculated buy cost, e.g. 1.1, 0.9 etc
@@ -3387,7 +3386,12 @@ class Train(object):
         # ottd vehicles load at different rates depending on type, train default is 5
         # Iron Horse uses 5 as default, with some vehicle types adjusting that up or down
         # loading_speed_multiplier can be defined per unit, or on the consist
-        return int(5 * getattr(self.consist, "loading_speed_multiplier", self.loading_speed_multiplier))
+        return int(
+            5
+            * getattr(
+                self.consist, "loading_speed_multiplier", self.loading_speed_multiplier
+            )
+        )
 
     @property
     def running_cost_base(self):
