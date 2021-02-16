@@ -12,8 +12,8 @@ def main(roster_id):
         power=2750,  # HP capped down, solely for game balance against Resilient
         power_by_railtype={
             "RAIL": 2750,
-            "ELRL": 4200,
-        },  # compared to IRL, there is more diesel power and less electric, follows Fury line 600hp progresion steps
+            "ELRL": 4800,
+        },  # el power tries to bracket between replacing Fury and replacing Screamer - does this work?
         random_reverse=True,
         pantograph_type="z-shaped-single",
         gen=6,
