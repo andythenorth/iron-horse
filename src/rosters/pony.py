@@ -108,7 +108,6 @@ from vehicles import snowplough_pony_gen_2
 from vehicles import spinner
 from vehicles import stentor
 from vehicles import stoat
-from vehicles import stoat2
 from vehicles import streamer
 from vehicles import strongbow
 from vehicles import sunshine_coast
@@ -131,6 +130,7 @@ from vehicles import westbourne
 from vehicles import workish
 from vehicles import wyvern
 from vehicles import zebedee
+from vehicles import zest
 from vehicles import zeus
 from vehicles import zorro
 
@@ -364,7 +364,7 @@ def main(disabled=False):
             captain_steel,
             goliath,
             stoat,
-            stoat2,
+            zest,
             # freight
             hercules,
             braf,

@@ -4,9 +4,9 @@ from train import EngineConsist, ElectricEngineUnit
 def main(roster_id):
     consist = EngineConsist(
         roster_id=roster_id,
-        id="stoat2",
+        id="zest",
         base_numeric_id=5470,
-        name="Stoat 2",
+        name="Zest",
         role="branch_freight",
         role_child_branch_num=2,
         power=1600,
