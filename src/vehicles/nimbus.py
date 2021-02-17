@@ -4,16 +4,16 @@ from train import EngineConsist, ElectricEngineUnit
 def main(roster_id):
     consist = EngineConsist(
         roster_id=roster_id,
-        id="screamer",
-        base_numeric_id=450,
-        name="Screamer",
+        id="nimbus",
+        base_numeric_id=5500,
+        name="Nimbus",
         role="heavy_express",
         role_child_branch_num=-3,
-        power=4800,
+        power=5400, # needs a bump from Screamer
         random_reverse=True,
-        gen=5,
+        gen=6,
         pantograph_type="z-shaped-double",
-        intro_date_offset=2,  # introduce later than gen epoch by design
+        intro_date_offset=3,  # introduce later than gen epoch by design
         alternative_cc_livery="FREIGHTLINER_GBRF",
         default_livery_extra_docs_examples=[
             ("COLOUR_WHITE", "COLOUR_BLUE"),
@@ -21,14 +21,14 @@ def main(roster_id):
             ("COLOUR_PINK", "COLOUR_DARK_BLUE"),
             ("COLOUR_WHITE", "COLOUR_RED"),
         ],
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     consist.add_unit(
         type=ElectricEngineUnit, weight=85, vehicle_length=8, spriterow_num=0
     )
 
-    consist.description = """We're knocking these out cheap enough. Look after them, they might last longer."""
-    consist.foamer_facts = """BR Class 90"""
+    consist.description = """I've done a faster Screamer, proven design, no fuss no bother."""
+    consist.foamer_facts = """Europhoenix Class 91"""
 
     return consist
