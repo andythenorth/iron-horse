@@ -2,9 +2,9 @@ from roster import Roster
 
 from vehicles import ares
 from vehicles import athena
-from vehicles import (
-    auto_coach_pony_gen_2,
-)  # no further generations as autoreplace can't handle mixed cargo articulated consists
+
+# one auto coach only as autoreplace can't handle mixed cargo articulated consists
+from vehicles import auto_coach_pony_gen_2
 from vehicles import argus
 from vehicles import avenger
 from vehicles import bean_feast
