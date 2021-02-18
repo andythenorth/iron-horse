@@ -57,6 +57,7 @@ from vehicles import growler
 from vehicles import grub
 from vehicles import haar
 from vehicles import happy_train
+from vehicles import hector
 from vehicles import helm_wind_cab
 from vehicles import helm_wind_middle
 from vehicles import hercules
@@ -348,6 +349,7 @@ def main(disabled=False):
             moor_gallop,
             roarer,
             fury,
+            hector,
             zebedee,
             screamer,
             nimbus,
