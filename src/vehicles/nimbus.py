@@ -21,7 +21,7 @@ def main(roster_id):
             ("COLOUR_PINK", "COLOUR_DARK_BLUE"),
             ("COLOUR_WHITE", "COLOUR_RED"),
         ],
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(
@@ -29,6 +29,6 @@ def main(roster_id):
     )
 
     consist.description = """I've done a faster Screamer, proven design, no fuss no bother."""
-    consist.foamer_facts = """Europhoenix Class 91"""
+    consist.foamer_facts = """BR Class 90"""
 
     return consist
