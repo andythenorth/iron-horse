@@ -11,13 +11,14 @@ def main(roster_id):
         role_child_branch_num=3,
         power=3600,
         random_reverse=True,
-        gen=5,  # not replaced, keep around for freight etc
+        gen=5,
         pantograph_type="z-shaped-double",
         intro_date_offset=1,  # introduce later than gen epoch by design
         # alternative_cc_livery='RAILFREIGHT_TRIPLE_GREY', # unfinished
         default_livery_extra_docs_examples=[
             ("COLOUR_GREEN", "COLOUR_YELLOW"),
             ("COLOUR_PALE_GREEN", "COLOUR_PALE_GREEN"),
+            ("COLOUR_PALE_GREEN", "COLOUR_YELLOW"),
             ("COLOUR_LIGHT_BLUE", "COLOUR_WHITE"),
         ],
         sprites_complete=True,
@@ -27,7 +28,7 @@ def main(roster_id):
         type=ElectricEngineUnit, weight=82, vehicle_length=8, spriterow_num=0
     )
 
-    consist.description = """Refurbished the Roarers. Very sound these are, last a long time they will."""
+    consist.description = """Rebuilt the Roarers. Very sound these are, last a long time they will."""
     consist.foamer_facts = """BR Class 86"""
 
     return consist
