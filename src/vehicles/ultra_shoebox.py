@@ -21,7 +21,7 @@ def main(roster_id):
         type=ElectroDieselEngineUnit, weight=78, vehicle_length=8, spriterow_num=0
     )
 
-    consist.description = """Top to bottom, it's a old Shoebox made new. Right powerful small engines we have thse days."""
+    consist.description = """Top to bottom, it's an old Shoebox made new. Right powerful small engines."""
     consist.foamer_facts = """BR class 74, Network Rail / GBRF Class 73/9 (re-engineered)"""
 
     return consist
