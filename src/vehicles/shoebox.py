@@ -9,7 +9,7 @@ def main(roster_id):
         name="Shoebox",
         role="express",
         role_child_branch_num=-1,
-        power=950, # yes it's quite low power initially eh
+        power=950,  # yes it's quite low power initially eh
         power_by_railtype={"RAIL": 950, "ELRL": 2300},
         random_reverse=True,
         pantograph_type="z-shaped-single",
@@ -19,7 +19,11 @@ def main(roster_id):
     )
 
     consist.add_unit(
-        type=ElectroDieselEngineUnit, weight=67, vehicle_length=8, spriterow_num=0
+        type=ElectroDieselEngineUnit,
+        weight=67,
+        vehicle_length=8,
+        effect_offsets=[(2, 0)],
+        spriterow_num=0,
     )
 
     consist.description = (
