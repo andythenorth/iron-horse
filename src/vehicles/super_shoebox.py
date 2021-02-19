@@ -14,7 +14,7 @@ def main(roster_id):
         random_reverse=True,
         pantograph_type="z-shaped-single",
         gen=5,
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(
