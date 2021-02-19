@@ -15,6 +15,13 @@ def main(roster_id):
         pantograph_type="z-shaped-single",
         gen=4,
         intro_date_offset=3,  # introduce later than gen epoch by design
+        default_livery_extra_docs_examples=[
+            ("COLOUR_PALE_GREEN", "COLOUR_WHITE"),
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
+            ("COLOUR_PINK", "COLOUR_WHITE"),
+            ("COLOUR_LIGHT_BLUE", "COLOUR_WHITE"),
+            ("COLOUR_CREAM", "COLOUR_WHITE"),
+        ],
         sprites_complete=True,
     )
 
@@ -29,6 +36,6 @@ def main(roster_id):
     consist.description = (
         """This one can go on electric or diesel. Madder than a box of frogs."""
     )
-    consist.foamer_facts = """BR Class 71/74, Class 73, proposed Class 75"""
+    consist.foamer_facts = """BR Class 73, Class 71/74, proposed Class 75"""
 
     return consist

@@ -15,6 +15,12 @@ def main(roster_id):
         pantograph_type="z-shaped-single",
         gen=5,
         sprites_complete=True,
+        default_livery_extra_docs_examples=[
+            ("COLOUR_PINK", "COLOUR_WHITE"),
+            ("COLOUR_LIGHT_BLUE", "COLOUR_WHITE"),
+            ("COLOUR_CREAM", "COLOUR_GREY"),
+            ("COLOUR_ORANGE", "COLOUR_BROWN"),
+        ],
     )
 
     consist.add_unit(
@@ -25,7 +31,7 @@ def main(roster_id):
         spriterow_num=0,
     )
 
-    consist.description = """It's a bigger Shoebox. Well not bigger. But we've got more power in it. Right nice new paint too."""
-    consist.foamer_facts = """BR Class 71/74, Class 73, proposed Class 75"""
+    consist.description = """It's a bigger Shoebox. Well not bigger. But more power in it. Right new paint too."""
+    consist.foamer_facts = """BR Class 73, Class 71/74, proposed Class 75"""
 
     return consist
