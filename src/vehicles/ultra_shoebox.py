@@ -14,14 +14,22 @@ def main(roster_id):
         random_reverse=True,
         pantograph_type="z-shaped-single",
         gen=6,
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(
-        type=ElectroDieselEngineUnit, weight=78, vehicle_length=8, spriterow_num=0
+        type=ElectroDieselEngineUnit,
+        weight=78,
+        vehicle_length=8,
+        effect_offsets=[(2, 0)],
+        spriterow_num=0,
     )
 
-    consist.description = """Top to bottom, it's an old Shoebox made new. Right powerful small engines."""
-    consist.foamer_facts = """BR class 74, Network Rail / GBRF Class 73/9 (re-engineered)"""
+    consist.description = (
+        """Top to bottom, it's an old Shoebox made new. Right powerful small engines."""
+    )
+    consist.foamer_facts = (
+        """BR class 74, Network Rail / GBRF Class 73/9 (re-engineered)"""
+    )
 
     return consist
