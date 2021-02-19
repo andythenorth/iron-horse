@@ -13,7 +13,6 @@ def main(roster_id):
         random_reverse=True,
         pantograph_type="diamond-single",
         gen=2,
-        replacement_consist_id="shoebox",  # this line ends with Shoebox and is merged with branch_express 2
         intro_date_offset=3,  # introduce later than gen epoch by design
         sprites_complete=True,
     )
