@@ -3,6 +3,34 @@ Changelog
 
 
 -------------
+2.20.0 Release
+-------------
+
+*Changes*
+
+- adjusted electric engine tech tree
+    - moved Stoat to electric freight engine, 1050hp, available around 1903
+    - added Zest electric freight engine, 1600hp, available around 1966
+    - moved Pinhorse to earlier generation, 900hp, available around 1903
+    - added Argus electric general purpose engine, 1250hp, available around 1936
+    - added Booster electro-diesel general purpose engine, 600hp diesel power, 1600hp electric power, available around 1969
+    - added Tornado electro-diesel general purpose engine, 750hp diesel power, 1900hp electric power, available around 2002
+    - changed Shoebox to 8/8 length, 950hp diesel power, 2300hp electric power, available around 1963
+    - changed Super Shoebox to 8/8 length, 1250hp diesel power, 2600hp electric power, available around 1990
+    - changed Ultra Shoebox to 8/8 length, 1650hp diesel power, 2800hp electric power, available around 2020
+    - added Hector electric general purpose engine, 4040hp, available around 2021
+    - added Nimbus electric general purpose engine, 5400hp, available around 2023
+    - adjusted Screamer power to 4800hp
+- fixed loading speeds for all vehicles, some were too fast, some were too slow
+- reduced run cost of metro units
+
+
+*Docs*
+
+- added more livery examples for some engines
+
+
+-------------
 2.19.0 Release
 -------------
 
