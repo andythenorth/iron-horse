@@ -425,7 +425,7 @@ def main(disabled=False):
             dover,
             jupiter,
             pylon,
-            # luxury electric railcars
+            # express electric railcars
             high_flyer,
             sunshine_coast,
             olympic,

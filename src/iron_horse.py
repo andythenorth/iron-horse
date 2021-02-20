@@ -145,7 +145,7 @@ def get_haulage_bonus_engine_id_tree():
     for roster in get_active_rosters():
         for consist in roster.engine_consists:
             # check for express-type roles, which are determined by multiple role groups
-            for role_group_mapping_key in ["express", "driving_cab", "luxury_railcar"]:
+            for role_group_mapping_key in ["express", "driving_cab", "express_railcar"]:
                 group_roles = global_constants.role_group_mapping[
                     role_group_mapping_key
                 ]

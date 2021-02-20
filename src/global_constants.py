@@ -105,7 +105,7 @@ role_group_mapping = OrderedDict(
             "universal",
             ["universal", "pax_railcar", "mail_railcar"],
         ),  # note pax before mail
-        ("luxury_railcar", ["luxury_pax_railcar"]),
+        ("express_railcar", ["express_pax_railcar"]),
         ("hst", ["hst"]),
         ("very_high_speed", ["very_high_speed"]),
         (
@@ -123,7 +123,7 @@ role_string_mapping = {
     "freight": "STR_ROLE_FREIGHT",
     "hst": "STR_ROLE_HST",
     "lolz": "STR_ROLE_LOLZ",
-    "luxury_railcar": "STR_ROLE_GENERAL_PURPOSE_EXPRESS",
+    "express_railcar": "STR_ROLE_GENERAL_PURPOSE_EXPRESS",
     "metro": "STR_ROLE_METRO",
     "very_high_speed": "STR_ROLE_VERY_HIGH_SPEED",
     "universal": "STR_ROLE_GENERAL_PURPOSE",

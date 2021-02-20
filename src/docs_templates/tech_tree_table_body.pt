@@ -58,11 +58,11 @@
                                         <li>Railcars can be combined as needed</li>
                                     </ul>
                                 </div>
-                                <div tal:case="'luxury_railcar'">
-                                    <h4>Luxury Railcars / Multiple-Unit Trains</h4>
+                                <div tal:case="'express_railcar'">
+                                    <h4>Express Railcars / Multiple-Unit Trains</h4>
                                     <ul>
                                         <li>These run at express train speeds, and have more power but lower capacity than standard railcars</li>
-                                        <li>Luxury railcars can be combined as needed</li>
+                                        <li>Express railcars can be combined as needed</li>
                                     </ul>
                                 </div>
                                 <div tal:case="'hst'">

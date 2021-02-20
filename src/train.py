@@ -295,7 +295,7 @@ class Consist(object):
                 "branch_express": [1, 2, -2],
                 "express": [2],
                 "heavy_express": [2, 3, 4],
-                "luxury_pax_railcar": [-1],
+                "express_pax_railcar": [-1],
             },
             "driving_cab": {
                 "driving_cab_express_pax": [-1],
@@ -501,7 +501,7 @@ class Consist(object):
             return self.get_speed_by_class(self.speed_class)
         elif self.role:
             # first check for express roles, which are determined by multiple role groups
-            for role_group_mapping_key in ["express", "driving_cab", "luxury_railcar"]:
+            for role_group_mapping_key in ["express", "driving_cab", "express_railcar"]:
                 group_roles = global_constants.role_group_mapping[
                     role_group_mapping_key
                 ]
@@ -1135,9 +1135,9 @@ class PassengerHSTCabEngineConsist(PassengerEngineConsist):
         self._cite = "Dr Constance Speed"
 
 
-class PassengerEngineLuxuryRailcarConsist(PassengerEngineConsist):
+class PassengerEngineExpressRailcarConsist(PassengerEngineConsist):
     """
-    Consist for a luxury pax railcar (single unit, combinable).
+    Consist for an express pax railcar (single unit, combinable).
     Intended for express-speed, high-power long-distance EMUs, use railcars for short / slow / commuter routes.
     """
 
@@ -1178,7 +1178,7 @@ class PassengerEngineLuxuryRailcarConsist(PassengerEngineConsist):
     def equivalent_ids_alt_var_41(self):
         # where var 14 checks consecutive chain of a single ID, I provided an alternative checking a list of IDs
         # may or may not handle articulated vehicles correctly (probably not, no actual use cases for that)
-        # this redefinition specific to luxury pax railcars and will be fragile if railcars or trailers are changed/extended
+        # this redefinition specific to express pax railcars and will be fragile if railcars or trailers are changed/extended
         # also relies on same ruleset being used for all of express_railcar_passenger_trailer_car trailers
         result = []
         # this will catch self also
@@ -1186,7 +1186,7 @@ class PassengerEngineLuxuryRailcarConsist(PassengerEngineConsist):
             if (
                 (consist.gen == self.gen)
                 and (consist.base_track_type == self.base_track_type)
-                and (consist.role in ["luxury_pax_railcar"])
+                and (consist.role in ["express_pax_railcar"])
             ):
                 result.append(consist.base_numeric_id)
         for consist in self.roster.wagon_consists[
@@ -2815,7 +2815,7 @@ class PassengerExpressRailcarTrailerCarConsist(PassengerCarConsistBase):
             if (
                 (consist.gen == self.gen)
                 and (consist.base_track_type == self.base_track_type)
-                and (consist.role in ["luxury_pax_railcar"])
+                and (consist.role in ["express_pax_railcar"])
             ):
                 result.append(consist.base_numeric_id)
         # the list requires 16 entries as the nml check has 16 switches, fill out to empty list entries with '-1', which won't match any IDs
@@ -3882,9 +3882,9 @@ class ElectroDieselRailcarPaxUnit(ElectroDieselRailcarBaseUnit):
         self.capacity = self.vehicle_length * base_capacity
 
 
-class ElectroDieselLuxuryRailcarPaxUnit(ElectroDieselRailcarBaseUnit):
+class ElectroDieselExpressRailcarPaxUnit(ElectroDieselRailcarBaseUnit):
     """
-    Unit for a pax electro-diesel luxury railcar.  Just a sparse subclass to set capacity.
+    Unit for a pax electro-diesel express railcar.  Just a sparse subclass to set capacity.
     """
 
     def __init__(self, **kwargs):
@@ -3913,9 +3913,9 @@ class ElectricRailcarBaseUnit(Train):
         self._symmetry_type = "asymmetric"
 
 
-class ElectricLuxuryRailcarPaxUnit(ElectricRailcarBaseUnit):
+class ElectricExpressRailcarPaxUnit(ElectricRailcarBaseUnit):
     """
-    Unit for a luxury pax electric railcar.  Just a sparse subclass to set capacity.
+    Unit for a express pax electric railcar.  Just a sparse subclass to set capacity.
     """
 
     def __init__(self, **kwargs):

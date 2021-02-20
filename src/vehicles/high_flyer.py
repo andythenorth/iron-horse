@@ -1,13 +1,13 @@
-from train import PassengerEngineLuxuryRailcarConsist, ElectricLuxuryRailcarPaxUnit
+from train import PassengerEngineExpressRailcarConsist, ElectricExpressRailcarPaxUnit
 
 
 def main(roster_id):
-    consist = PassengerEngineLuxuryRailcarConsist(
+    consist = PassengerEngineExpressRailcarConsist(
         roster_id=roster_id,
         id="high_flyer",
         base_numeric_id=4220,
         name="High Flyer",
-        role="luxury_pax_railcar",
+        role="express_pax_railcar",
         role_child_branch_num=-1,  # joker to hide them from simplified mode
         power=840,
         pantograph_type="diamond-single-with-base",
@@ -17,7 +17,7 @@ def main(roster_id):
     )
 
     consist.add_unit(
-        type=ElectricLuxuryRailcarPaxUnit,
+        type=ElectricExpressRailcarPaxUnit,
         weight=48,
         chassis="railcar_32px",
         tail_light="railcar_32px_3",
