@@ -44,6 +44,7 @@ STR_NAME_SUFFIX_DUMP_CAR_HIGH_SIDE                              :Wagon haut à m
 STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Citerne alimentaire
 STR_NAME_SUFFIX_EXPRESS_CAR                                     :Fourgon express
 STR_NAME_SUFFIX_EXPRESS_INTERMODAL_CAR                          :Wagon porte-container express
+STR_NAME_SUFFIX_EXPRESS_RAILCAR_PASSENGER_TRAILER_CAR           :Remorque autorail de luxe
 STR_NAME_SUFFIX_FLAT_CAR                                        :Wagon plat
 STR_NAME_SUFFIX_FRUIT_VEG_CAR                                   :Fourgon à fruits et légumes
 STR_NAME_SUFFIX_GRAIN_HOPPER_CAR                                :Wagon céréalier
@@ -52,15 +53,14 @@ STR_NAME_SUFFIX_HST_PASSENGER_CAR                               :Voiture
 STR_NAME_SUFFIX_INTERMODAL_CAR                                  :Wagon porte-container
 STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Wagon à bétail
 STR_NAME_SUFFIX_LUXURY_PASSENGER_CAR                            :Voiture de luxe
-STR_NAME_SUFFIX_LUXURY_PASSENGER_RAILCAR_TRAILER_CAR            :Remorque autorail de luxe
 STR_NAME_SUFFIX_MAIL_CAR                                        :Fourgon postal
 STR_NAME_SUFFIX_OPEN_CAR                                        :Wagon-tombereau
 STR_NAME_SUFFIX_ORE_HOPPER_CAR                                  :Trémie à minerai
 STR_NAME_SUFFIX_PASSENGER_CAR                                   :Voiture
-STR_NAME_SUFFIX_PASSENGER_RAILCAR_TRAILER_CAR                   :Remorque autorail
 STR_NAME_SUFFIX_PELLET_HOPPER_CAR                               :Trémie à granulés
 STR_NAME_SUFFIX_PLATE_CAR                                       :Wagon porte-tôles
 STR_NAME_SUFFIX_PRODUCT_TANK_CAR                                :Citerne à produits
+STR_NAME_SUFFIX_RAILCAR_PASSENGER_TRAILER_CAR                   :Remorque autorail
 STR_NAME_SUFFIX_REEFER_CAR                                      :Wagon frigorifique
 STR_NAME_SUFFIX_ROCK_HOPPER_CAR                                 :Trémie à pierres
 STR_NAME_SUFFIX_SILO_CAR                                        :Wagon-silo

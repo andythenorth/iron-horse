@@ -44,6 +44,7 @@ from vehicles import dump_cars_high_side
 from vehicles import edibles_tank_cars
 from vehicles import express_cars
 from vehicles import express_intermodal_cars
+from vehicles import express_railcar_passenger_trailer_cars
 from vehicles import flat_cars
 from vehicles import fruit_veg_cars
 from vehicles import grain_hopper_cars
@@ -63,7 +64,6 @@ from vehicles import passenger_cars
 from vehicles import pellet_hopper_cars
 from vehicles import plate_cars
 from vehicles import product_tank_cars
-from vehicles import railcar_luxury_passenger_trailer_cars
 from vehicles import railcar_passenger_trailer_cars
 from vehicles import reefer_cars
 from vehicles import rock_hopper_cars
@@ -248,6 +248,7 @@ def main():
     edibles_tank_cars.main()
     express_cars.main()
     express_intermodal_cars.main()
+    express_railcar_passenger_trailer_cars.main()
     flat_cars.main()
     fruit_veg_cars.main()
     grain_hopper_cars.main()
@@ -267,7 +268,6 @@ def main():
     plate_cars.main()
     product_tank_cars.main()
     reefer_cars.main()
-    railcar_luxury_passenger_trailer_cars.main()
     railcar_passenger_trailer_cars.main()
     rock_hopper_cars.main()
     silo_cars.main()

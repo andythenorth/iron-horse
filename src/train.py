@@ -1179,7 +1179,7 @@ class PassengerEngineLuxuryRailcarConsist(PassengerEngineConsist):
         # where var 14 checks consecutive chain of a single ID, I provided an alternative checking a list of IDs
         # may or may not handle articulated vehicles correctly (probably not, no actual use cases for that)
         # this redefinition specific to luxury pax railcars and will be fragile if railcars or trailers are changed/extended
-        # also relies on same ruleset being used for all of luxury_passenger_railcar_trailer_car trailers
+        # also relies on same ruleset being used for all of express_railcar_passenger_trailer_car trailers
         result = []
         # this will catch self also
         for consist in self.roster.engine_consists:
@@ -1190,7 +1190,7 @@ class PassengerEngineLuxuryRailcarConsist(PassengerEngineConsist):
             ):
                 result.append(consist.base_numeric_id)
         for consist in self.roster.wagon_consists[
-            "luxury_passenger_railcar_trailer_car"
+            "express_railcar_passenger_trailer_car"
         ]:
             if (consist.gen == self.gen) and (
                 consist.base_track_type == self.base_track_type
@@ -1287,7 +1287,7 @@ class PassengerEngineRailcarConsist(PassengerEngineConsist):
                 and (consist.role in ["pax_railcar"])
             ):
                 result.append(consist.base_numeric_id)
-        for consist in self.roster.wagon_consists["passenger_railcar_trailer_car"]:
+        for consist in self.roster.wagon_consists["railcar_passenger_trailer_car"]:
             if (consist.gen == self.gen) and (
                 consist.base_track_type == self.base_track_type
             ):
@@ -2701,7 +2701,7 @@ class PassengerRailcarTrailerCarConsist(PassengerCarConsistBase):
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "passenger_railcar_trailer_car"
+        self.base_id = "railcar_passenger_trailer_car"
         super().__init__(**kwargs)
         # PassengerCarConsistBase sets 'express', but railcar trailers should over-ride this back to 'standard'
         self.speed_class = "railcar"
@@ -2761,14 +2761,14 @@ class PassengerRailcarTrailerCarConsist(PassengerCarConsistBase):
         return result
 
 
-class PassengerLuxuryRailcarTrailerCarConsist(PassengerCarConsistBase):
+class PassengerExpressRailcarTrailerCarConsist(PassengerCarConsistBase):
     """
-    Unpowered passenger trailer car for luxury railcars.
+    Unpowered passenger trailer car for express railcars.
     Position-dependent sprites for cabs etc.
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "luxury_passenger_railcar_trailer_car"
+        self.base_id = "express_railcar_passenger_trailer_car"
         super().__init__(**kwargs)
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
@@ -4266,9 +4266,9 @@ class PaxRailcarTrailerCar(TrainCar):
         self.capacity = self.vehicle_length * base_capacity
 
 
-class PaxLuxuryRailcarTrailerCar(TrainCar):
+class PaxExpressRailcarTrailerCar(TrainCar):
     """
-    Luxury railcar unpowered pax trailer. This subclass only exists to set capacity and symmetry_type.
+    Express railcar unpowered pax trailer. This subclass only exists to set capacity and symmetry_type.
     """
 
     def __init__(self, **kwargs):

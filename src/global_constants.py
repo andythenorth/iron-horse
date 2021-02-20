@@ -5,8 +5,8 @@ from collections import OrderedDict
 buy_menu_sort_order_wagons = [
     "alignment_car",
     "hst_passenger_car",
-    "passenger_railcar_trailer_car",
-    "luxury_passenger_railcar_trailer_car",
+    "railcar_passenger_trailer_car",
+    "express_railcar_passenger_trailer_car",
     "passenger_car",
     "luxury_passenger_car",
     "mail_car",
@@ -92,7 +92,14 @@ PR_RUNNING_TRAIN_DIESEL = -4
 role_group_mapping = OrderedDict(
     [
         ("express", ["branch_express", "express", "heavy_express"]),
-        ("driving_cab", ["driving_cab_express_pax", "driving_cab_express_mail", "driving_cab_express_mixed"]),
+        (
+            "driving_cab",
+            [
+                "driving_cab_express_pax",
+                "driving_cab_express_mail",
+                "driving_cab_express_mixed",
+            ],
+        ),
         ("freight", ["branch_freight", "freight", "heavy_freight"]),
         (
             "universal",

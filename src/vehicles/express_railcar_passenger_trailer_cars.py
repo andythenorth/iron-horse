@@ -1,10 +1,10 @@
-from train import PassengerLuxuryRailcarTrailerCarConsist, PaxLuxuryRailcarTrailerCar
+from train import PassengerExpressRailcarTrailerCarConsist, PaxExpressRailcarTrailerCar
 
 
 def main():
     # --------------- pony ----------------------------------------------------------------------
 
-    consist = PassengerLuxuryRailcarTrailerCarConsist(
+    consist = PassengerExpressRailcarTrailerCarConsist(
         roster_id="pony",
         base_numeric_id=4680,
         gen=3,
@@ -14,12 +14,12 @@ def main():
     )
 
     consist.add_unit(
-        type=PaxLuxuryRailcarTrailerCar,
+        type=PaxExpressRailcarTrailerCar,
         chassis="4_axle_solid_express_32px",
         tail_light="railcar_32px_3",
     )
 
-    consist = PassengerLuxuryRailcarTrailerCarConsist(
+    consist = PassengerExpressRailcarTrailerCarConsist(
         roster_id="pony",
         base_numeric_id=4540,
         gen=4,
@@ -29,12 +29,12 @@ def main():
     )
 
     consist.add_unit(
-        type=PaxLuxuryRailcarTrailerCar,
+        type=PaxExpressRailcarTrailerCar,
         chassis="4_axle_solid_express_32px",
         tail_light="railcar_32px_3",
     )
 
-    consist = PassengerLuxuryRailcarTrailerCarConsist(
+    consist = PassengerExpressRailcarTrailerCarConsist(
         roster_id="pony",
         base_numeric_id=4600,
         gen=5,
@@ -44,12 +44,12 @@ def main():
     )
 
     consist.add_unit(
-        type=PaxLuxuryRailcarTrailerCar,
+        type=PaxExpressRailcarTrailerCar,
         chassis="4_axle_solid_express_32px",
         tail_light="railcar_32px_3",
     )
 
-    consist = PassengerLuxuryRailcarTrailerCarConsist(
+    consist = PassengerExpressRailcarTrailerCarConsist(
         roster_id="pony",
         base_numeric_id=4610,
         gen=6,
@@ -59,7 +59,7 @@ def main():
     )
 
     consist.add_unit(
-        type=PaxLuxuryRailcarTrailerCar,
+        type=PaxExpressRailcarTrailerCar,
         chassis="4_axle_solid_express_32px",
         tail_light="railcar_32px_3",
     )
