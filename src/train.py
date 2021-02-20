@@ -1146,8 +1146,6 @@ class PassengerEngineExpressRailcarConsist(PassengerEngineConsist):
         self.allow_flip = True
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
-        # this won't make much difference except over *very* long routes, but set it anyway
-        self.cargo_age_period = 8 * global_constants.CARGO_AGE_PERIOD
         self.buy_cost_adjustment_factor = 1.3
         # to avoid these railcars being super-bargain cheap, add a cost malus compared to standard railcars (still less than standard engines)
         self.fixed_run_cost_points = 140
@@ -2772,8 +2770,6 @@ class PassengerExpressRailcarTrailerCarConsist(PassengerCarConsistBase):
         super().__init__(**kwargs)
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
-        # this won't make much difference except over *very* long routes, but set it anyway
-        self.cargo_age_period = 8 * global_constants.CARGO_AGE_PERIOD
         self.buy_cost_adjustment_factor = 1.3
         self.floating_run_cost_multiplier = 5
         self._intro_date_days_offset = (
