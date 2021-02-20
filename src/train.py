@@ -890,6 +890,8 @@ class AutoCoachCombineConsist(EngineConsist):
         self.allow_flip = False  # articulated innit (even needed?)
         # boost loading speed to match default pax coaches (this gives an incidental boost to mail compared to other mail vehicles, but eh)
         self.loading_speed_multiplier = 1.75
+        # this will knock standard age period down, so this train is less profitable over ~128 tiles (depends on vehicle speed) than a similar luxury pax car
+        self.cargo_age_period = global_constants.CARGO_AGE_PERIOD_PAX_HIGHER_CAPACITY_MALUS
         # confer tiny power value to make this one an engine so it can lead.
         self.power = 10  # use 10 not 1, because 1 looks weird when added to engine HP
         # nerf TE down to minimal value
@@ -1123,8 +1125,6 @@ class PassengerHSTCabEngineConsist(PassengerEngineConsist):
         super().__init__(**kwargs)
         # always dual-head
         self.dual_headed = True
-        # moderate cargo age bonus
-        self.cargo_age_period = 4 * global_constants.CARGO_AGE_PERIOD
         self.buy_cost_adjustment_factor = 1.2
         # higher speed should only be effective over longer distances
         # ....run cost multiplier is adjusted up from pax base for high speed
@@ -1242,8 +1242,8 @@ class PassengerEngineRailcarConsist(PassengerEngineConsist):
         self.loading_speed_multiplier = 1.75
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
-        # this will knock standard age period down, so this train is less profitable over ~128 tiles than a similar luxury train
-        self.cargo_age_period = global_constants.CARGO_AGE_PERIOD_STANDARD_PAX_MALUS
+        # this will knock standard age period down, so this train is less profitable over ~128 tiles (depends on vehicle speed) than a similar luxury pax car
+        self.cargo_age_period = global_constants.CARGO_AGE_PERIOD_PAX_HIGHER_CAPACITY_MALUS
         # non-standard cite
         self._cite = "Arabella Unit"
         self.allow_flip = True
@@ -1310,8 +1310,6 @@ class PassengerVeryHighSpeedCabEngineConsist(PassengerEngineConsist):
         self.middle_id = self.id.split("_cab")[0] + "_middle"
         self.buy_menu_hint_wagons_add_power = True
         self.tilt_bonus = True
-        # moderate cargo age bonus
-        self.cargo_age_period = 1.33 * global_constants.CARGO_AGE_PERIOD
         # note that buy costs are actually adjusted down from pax base, to account for distributed traction etc
         self.buy_cost_adjustment_factor = 0.95
         # high speed should only be effective over longer distances
@@ -1365,8 +1363,6 @@ class PassengerVeryHighSpeedMiddleEngineConsist(PassengerEngineConsist):
         self.wagons_add_power = True
         self.buy_menu_hint_wagons_add_power = True
         self.tilt_bonus = True
-        # moderate cargo age bonus
-        self.cargo_age_period = 1.33 * global_constants.CARGO_AGE_PERIOD
         # train_flag_mu solely used for ottd livery (company colour) selection
         # eh as of Feb 2019, OpenTTD won't actually use this for middle cars, as not engines
         # this means the buy menu won't match, but wagons will match anyway when attached to cab
@@ -2585,8 +2581,8 @@ class PassengerCarConsist(PassengerCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "passenger_car"
         super().__init__(**kwargs)
-        # this will knock standard age period down, so this train is less profitable over ~128 tiles than a similar luxuryy train
-        self.cargo_age_period = global_constants.CARGO_AGE_PERIOD_STANDARD_PAX_MALUS
+        # this will knock standard age period down, so this train is less profitable over ~128 tiles (depends on vehicle speed) than a similar luxury pax car
+        self.cargo_age_period = global_constants.CARGO_AGE_PERIOD_PAX_HIGHER_CAPACITY_MALUS
         self.buy_cost_adjustment_factor = 1.3
         self.floating_run_cost_multiplier = 4
         # boost loading speed of default pax cars
@@ -2624,8 +2620,6 @@ class PassengerHSTCarConsist(PassengerCarConsistBase):
             "cab_id"
         ]  # cab_id must be passed, do not mask errors with .get()
         # this won't make much difference except over *very* long routes, but set it anyway
-        # moderate cargo age bonus
-        self.cargo_age_period = 4 * global_constants.CARGO_AGE_PERIOD
         self.buy_cost_adjustment_factor = 1.66
         self.floating_run_cost_multiplier = 4.75
         self._intro_date_days_offset = (
@@ -2671,8 +2665,6 @@ class PassengerLuxuryCarConsist(PassengerCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "luxury_passenger_car"
         super().__init__(**kwargs)
-        # this won't make much difference except over *very* long routes, but set it anyway
-        self.cargo_age_period = 8 * global_constants.CARGO_AGE_PERIOD
         self.buy_cost_adjustment_factor = 1.6
         self.floating_run_cost_multiplier = 5
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
@@ -2705,8 +2697,8 @@ class PassengerRailcarTrailerCarConsist(PassengerCarConsistBase):
         self.speed_class = "railcar"
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
-        # this will knock standard age period down, so this train is less profitable over ~128 tiles than a similar luxuryy train
-        self.cargo_age_period = global_constants.CARGO_AGE_PERIOD_STANDARD_PAX_MALUS
+        # this will knock standard age period down, so this train is less profitable over ~128 tiles (depends on vehicle speed) than a similar luxury pax car
+        self.cargo_age_period = global_constants.CARGO_AGE_PERIOD_PAX_HIGHER_CAPACITY_MALUS
         self.buy_cost_adjustment_factor = 1.3
         self.floating_run_cost_multiplier = 4.75
         # boost loading speed to match default pax cars
