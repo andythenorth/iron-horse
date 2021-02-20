@@ -6,10 +6,10 @@ def main(roster_id):
         roster_id=roster_id,
         id="hector",
         base_numeric_id=5510,
-        name="Hector", # the name is because BR 86 222 and 86 223 reasons
+        name="Hector",  # the name is because BR 86 222 and 86 223 reasons
         role="heavy_express",
         role_child_branch_num=3,
-        power=4040, # such realism, per wikipedia-is-definitely-true
+        power=4040,  # such realism, per wikipedia-is-definitely-true
         random_reverse=True,
         gen=6,
         pantograph_type="z-shaped-double",

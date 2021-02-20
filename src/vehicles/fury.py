@@ -28,7 +28,9 @@ def main(roster_id):
         type=ElectricEngineUnit, weight=82, vehicle_length=8, spriterow_num=0
     )
 
-    consist.description = """Rebuilt the Roarers. Very sound these are, last a long time they will."""
+    consist.description = (
+        """Rebuilt the Roarers. Very sound these are, last a long time they will."""
+    )
     consist.foamer_facts = """BR Class 86"""
 
     return consist

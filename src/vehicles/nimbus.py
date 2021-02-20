@@ -9,7 +9,7 @@ def main(roster_id):
         name="Nimbus",
         role="heavy_express",
         role_child_branch_num=-3,
-        power=5400, # needs a bump from Screamer
+        power=5400,  # needs a bump from Screamer
         random_reverse=True,
         gen=6,
         pantograph_type="z-shaped-double",
@@ -28,7 +28,9 @@ def main(roster_id):
         type=ElectricEngineUnit, weight=85, vehicle_length=8, spriterow_num=0
     )
 
-    consist.description = """I've done a faster Screamer, proven design, no fuss no bother."""
+    consist.description = (
+        """I've done a faster Screamer, proven design, no fuss no bother."""
+    )
     consist.foamer_facts = """BR Class 90"""
 
     return consist

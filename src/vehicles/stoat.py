@@ -10,7 +10,7 @@ def main(roster_id):
         role="branch_freight",
         role_child_branch_num=2,
         power=1050,
-        speed=60, # continues a long way into gen 3, so go faster
+        speed=60,  # continues a long way into gen 3, so go faster
         random_reverse=True,
         pantograph_type="diamond-single",
         gen=2,

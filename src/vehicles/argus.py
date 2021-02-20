@@ -13,7 +13,7 @@ def main(roster_id):
         random_reverse=True,
         pantograph_type="diamond-single",
         gen=3,
-        intro_date_offset=6, # introduce later than gen epoch by design
+        intro_date_offset=6,  # introduce later than gen epoch by design
         sprites_complete=True,
     )
 
@@ -21,9 +21,7 @@ def main(roster_id):
         type=ElectricEngineUnit, weight=67, vehicle_length=6, spriterow_num=0
     )
 
-    consist.description = (
-        """Zoooom."""
-    )
+    consist.description = """Zoooom."""
     consist.foamer_facts = """SR CC1/CC2, BR Class 71"""
 
     return consist

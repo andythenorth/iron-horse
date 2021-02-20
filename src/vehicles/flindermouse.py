@@ -10,7 +10,7 @@ def main(roster_id):
         role="heavy_freight",
         role_child_branch_num=4,
         power=2500,
-        speed=60, # continues a long way into gen 3, so go faster
+        speed=60,  # continues a long way into gen 3, so go faster
         gen=2,
         pantograph_type="diamond-double",
         intro_date_offset=7,  # introduce later than gen epoch by design

@@ -14,7 +14,7 @@ def main(roster_id):
         random_reverse=True,
         pantograph_type="z-shaped-single",
         gen=4,
-        intro_date_offset=9, # introduce later than gen epoch by design
+        intro_date_offset=9,  # introduce later than gen epoch by design
         sprites_complete=True,
     )
 
@@ -22,9 +22,7 @@ def main(roster_id):
         type=ElectroDieselEngineUnit, weight=70, vehicle_length=6, spriterow_num=0
     )
 
-    consist.description = (
-        """I've rebuilt some of the Argus fleet to be more handy. Now we're sucking diesel."""
-    )
+    consist.description = """I've rebuilt some of the Argus fleet to be more handy. Now we're sucking diesel."""
     consist.foamer_facts = """BR Class 71/74, Class 73"""
 
     return consist
