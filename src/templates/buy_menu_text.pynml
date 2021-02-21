@@ -23,7 +23,13 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_buy_menu_text_result, 1) {
         switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_buy_menu_text, 1) {
             return ${vehicle.id}_switch_buy_menu_text_result;
         }
-    </tal:driving_cab
+    </tal:driving_cab>
+    <tal:restaurant_car case="'restaurant_car'">
+        <!--! just an explicit passthrough -->
+        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_buy_menu_text, 1) {
+            return ${vehicle.id}_switch_buy_menu_text_result;
+        }
+    </tal:restaurant_car>
     <tal:default case="'default'">
         switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_buy_menu_text, 1) {
             return ${vehicle.id}_switch_buy_menu_text_result;

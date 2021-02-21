@@ -96,6 +96,8 @@ class Consist(object):
         )
         # simple buy menu hint flag for driving cabs
         self.buy_menu_hint_driving_cab = False
+        # simple buy menu hint flag for restaurant cars
+        self.buy_menu_hint_restaurant_car = False
         # random_reverse means (1) randomised reversing of sprites when vehicle is built (2) player can also flip vehicle
         # random_reverse is not supported in some templates
         self.random_reverse = kwargs.get("random_reverse", False)
@@ -614,6 +616,8 @@ class Consist(object):
             return "wagons_add_power"
         elif self.buy_menu_hint_driving_cab:
             return "driving_cab"
+        elif self.buy_menu_hint_restaurant_car:
+            return "restaurant_car"
         else:
             return "default"
 
@@ -627,11 +631,19 @@ class Consist(object):
             result.append(self.buy_menu_distributed_power_substring)
 
         # engines will always show a role string
-        result.append(self.buy_menu_role_string)
+        # !! this try/except is all wrong, thereI just want to JFDI to add buy menu strings to wagons which previously didn't support them, and can do regret later
+        try:
+            result.append(self.buy_menu_role_string)
+        except:
+            pass
 
         # driving cab hint comes after role string
         if self.buy_menu_hint_driving_cab:
             result.append("STR_BUY_MENU_HINT_DRIVING_CAB")
+
+        # driving cab hint comes after role string
+        if self.buy_menu_hint_restaurant_car:
+            result.append("STR_BUY_MENU_HINT_RESTAURANT_CAR")
 
         if len(result) == 1:
             return "STR_BUY_MENU_WRAPPER_ONE_SUBSTR, string(" + result[0] + ")"
@@ -2841,6 +2853,7 @@ class PassengerRestaurantCarConsist(PassengerCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "restaurant_car"
         super().__init__(**kwargs)
+        self.buy_menu_hint_restaurant_car = True
         self.buy_cost_adjustment_factor = 2.5
         # double the luxury pax car amount; balance between the bonus amount (which scales with num. pax coaches) and the run cost of running this booster
         self.floating_run_cost_multiplier = 12
@@ -4213,6 +4226,11 @@ class RestaurantPaxCar(TrainCar):
             self.consist.base_track_type
         ][self.consist.gen - 1]
         self.capacity = int(self.vehicle_length * base_capacity * 0.3)
+
+    @property
+    def weight(self):
+        # special handling of weight - let's just use 37 + gen for Pony, split that later for other rosters if needed
+        return 37 + self.consist.gen
 
 
 class ExpressCar(TrainCar):
