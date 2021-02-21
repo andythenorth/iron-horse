@@ -55,6 +55,12 @@
 <tal:running_cost_factor switch="getattr(consist, 'affected_by_restaurant_car_in_consist', False)">
     <tal:block case="True">
         switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_running_cost_factor, switch_is_restaurant_car_in_consist_0()) {
+            <!--! 70% reduction in run costs if 1 restaurant car is present (more than 1 has no additional effect)
+                 tuned via a multi-generation test game over a route of about 120 tiles
+                 gives a rough balance
+                 value of restaurant car varies by number of pax cars in consist and train speed, but is generally net positive above about 4 coaches or so
+                 adding restaurant car to pax coaches has substantial boost for most generations
+                 adding restaurant car to luxury coaches has boost when train speeds are lower, not for late-gen fast trains  -->
             1: return ${int(0.3 * consist.running_cost)};
             0: return ${consist.running_cost};
         }
@@ -70,7 +76,13 @@
       this will need generalised if other similar vehicles are added, e.g. motorail, observation car etc -->
 <tal:variable_cargo_age_period condition="getattr(consist, 'affected_by_restaurant_car_in_consist', False)">
     switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_cargo_age_period, switch_is_restaurant_car_in_consist_0()) {
-        1: return ${int(1.4 * consist.cargo_age_period)};
+        <!--! 30% increase in cargo aging period if 1 restaurant car is present (more than 1 has no additional effect)
+             tuned via a multi-generation test game over a route of about 120 tiles
+             gives a rough balance
+             value of restaurant car varies by number of pax cars in consist and train speed, but is generally net positive above about 4 coaches or so
+             adding restaurant car to pax coaches has substantial boost for most generations
+             adding restaurant car to luxury coaches has boost when train speeds are lower, not for late-gen fast trains  -->
+        1: return ${int(1.3 * consist.cargo_age_period)};
         0: return ${consist.cargo_age_period};
     }
 </tal:variable_cargo_age_period>

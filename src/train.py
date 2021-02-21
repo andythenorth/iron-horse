@@ -4211,7 +4211,7 @@ class RestaurantPaxCar(TrainCar):
         base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[
             self.consist.base_track_type
         ][self.consist.gen - 1]
-        self.capacity = int(self.vehicle_length * base_capacity * 0.25)
+        self.capacity = int(self.vehicle_length * base_capacity * 0.3)
 
 
 class ExpressCar(TrainCar):
