@@ -55,7 +55,7 @@
 <tal:running_cost_factor switch="getattr(consist, 'affected_by_restaurant_car_in_consist', False)">
     <tal:block case="True">
         switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_running_cost_factor, switch_is_restaurant_car_in_consist_0()) {
-            1: return ${int(0.4 * consist.running_cost)};
+            1: return ${int(0.3 * consist.running_cost)};
             0: return ${consist.running_cost};
         }
     </tal:block
@@ -66,6 +66,14 @@
     </tal:block>
 </tal:running_cost_factor>
 
+<!--! some vehicles vary cargo age period if restaurant car is in consist
+      this will need generalised if other similar vehicles are added, e.g. motorail, observation car etc -->
+<tal:variable_cargo_age_period condition="getattr(consist, 'affected_by_restaurant_car_in_consist', False)">
+    switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_cargo_age_period, switch_is_restaurant_car_in_consist_0()) {
+        1: return ${int(1.4 * consist.cargo_age_period)};
+        0: return ${consist.cargo_age_period};
+    }
+</tal:variable_cargo_age_period>
 
 item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
     property {
@@ -129,6 +137,10 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
             purchase_cargo_capacity:        ${vehicle.id + '_switch_cargo_capacity'};
             loading_speed:                  ${vehicle.loading_speed};
         </tal:optional_capacity_switches>
+        <tal:variable_cargo_age_period condition="getattr(consist, 'affected_by_restaurant_car_in_consist', False)">
+            <!--! !! currently specific to pax coaches affected by restaurant cars, refactor if motorail, observation cars etc are added later -->
+            cargo_age_period:               ${vehicle.id + '_switch_cargo_age_period'};
+        </tal:variable_cargo_age_period>
         <!--! no buy menu extra text in this grf by design; extra text is associated with BAD FEATURES -->
         <tal:variable_power condition="consist.engine_varies_power_by_railtype(vehicle) or consist.wagons_add_power">
             power:                          ${vehicle.id}_switch_power;

@@ -2595,8 +2595,9 @@ class PassengerCarConsist(PassengerCarConsistBase):
         self.cargo_age_period = (
             global_constants.CARGO_AGE_PERIOD_PAX_HIGHER_CAPACITY_MALUS
         )
-        self.buy_cost_adjustment_factor = 1.3
-        self.floating_run_cost_multiplier = 5
+        # buy costs and run costs are levelled for standard and lux pax cars, not an interesting factor for variation
+        self.buy_cost_adjustment_factor = 1.4
+        self.floating_run_cost_multiplier = 10
         # boost loading speed of default pax cars
         self.loading_speed_multiplier = 1.75
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
@@ -2743,8 +2744,9 @@ class PassengerLuxuryCarConsist(PassengerCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "luxury_passenger_car"
         super().__init__(**kwargs)
-        self.buy_cost_adjustment_factor = 1.5
-        self.floating_run_cost_multiplier = 6
+        # buy costs and run costs are levelled for standard and lux pax cars, not an interesting factor for variation
+        self.buy_cost_adjustment_factor = 1.4
+        self.floating_run_cost_multiplier = 10
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 1 if self.base_track_type == "NG" else 2
         # Graphics configuration
@@ -4209,7 +4211,7 @@ class RestaurantPaxCar(TrainCar):
         base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[
             self.consist.base_track_type
         ][self.consist.gen - 1]
-        self.capacity = int(self.vehicle_length * base_capacity * 0.5)
+        self.capacity = int(self.vehicle_length * base_capacity * 0.25)
 
 
 class ExpressCar(TrainCar):
