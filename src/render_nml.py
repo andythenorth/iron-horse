@@ -91,14 +91,14 @@ def main():
         # "spritelayer_cargos_vehicle_transporter_cars",
         "procedures_alternative_var_41",
         "procedures_alternative_var_random_bits",
+        "procedures_box_car_with_opening_doors",
         "procedures_capacity",
         "procedures_colour_randomisation_strategies",
+        "procedures_consist_specific_liveries",
         "procedures_haulage_bonus",
         "procedures_opening_doors",
         "procedures_restaurant_cars",
         "procedures_rulesets",
-        "procedures_box_car_with_opening_doors",
-        "procedures_consist_specific_liveries",
         "procedures_visible_cargo",
     ]
     for header_item in header_items:
