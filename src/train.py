@@ -2846,6 +2846,7 @@ class PassengerRestaurantCarConsist(PassengerCarConsistBase):
         self.floating_run_cost_multiplier = 12
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 1 if self.base_track_type == "NG" else 2
+        self._joker = True
         # Graphics configuration
         # position based variants are not used for restaurant cars, but they use the pax ruleset and sprite compositor for convenience
         spriterow_group_mappings = {
