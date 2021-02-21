@@ -3,6 +3,30 @@ Changelog
 
 
 -------------
+2.21.0 Release
+-------------
+
+*Changes*
+
+- added Restaurant Cars
+    - adding a Restaurant Car to a train will provide a bonus: improved run costs and payment rates for all Passenger Coaches and Luxury Passenger Coaches in the train
+    - the bonus reduces run costs for those coaches by 70%
+    - the bonus increases cargo aging rate for those coaches by 30%
+    - the bonus is applied once only per train, adding more than one Restaurant Car will have no additional effect
+    - the bonus applies only to Passenger Coaches and Luxury Passenger Coaches, not railcars, high-speed trains, mail vans etc
+    - the bonus can significantly improve profits on some routes, but Restaurant Cars are expensive to buy and run...it's up to you to decide if they're worth it ;)
+- rebalanced Passenger Coach and Luxury Passenger Coach purchase and run costs
+- simplified cargo aging for passenger vehicles
+    - Passenger Coaches are unchanged, with faster carging (roughly every 0.75 days)
+    - Metro trains are unchanged, with very fast cargo aging (roughly every 0.47 days)
+    - all other passenger vehicles now use the same standard value for cargo aging (every 2.5 days), where some previously had slower aging rates
+    - this change simplifies balancing between passenger vehicles (and makes maintenance of the grf easier)
+    - gameplay effect of this change should be negligible in most games
+- renamed Luxury Railcars to Express Railcars
+- minor tweaks to purchase costs of Express Railcars, Express Railcar Trailers and Railcar Trailers
+- improved appearance of Blackthorn and Stentor engines
+
+-------------
 2.20.0 Release
 -------------
 
