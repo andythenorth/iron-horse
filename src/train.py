@@ -1149,7 +1149,7 @@ class PassengerEngineExpressRailcarConsist(PassengerEngineConsist):
         self.allow_flip = True
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
-        self.buy_cost_adjustment_factor = 1.3
+        self.buy_cost_adjustment_factor = 0.85
         # to avoid these railcars being super-bargain cheap, add a cost malus compared to standard railcars (still less than standard engines)
         self.fixed_run_cost_points = 140
         # non-standard cite
@@ -2628,7 +2628,7 @@ class PassengerExpressRailcarTrailerCarConsist(PassengerCarConsistBase):
         super().__init__(**kwargs)
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
-        self.buy_cost_adjustment_factor = 1.3
+        self.buy_cost_adjustment_factor = 2.1
         self.floating_run_cost_multiplier = 5
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["express_non_core"]
@@ -2781,7 +2781,7 @@ class PassengerRailcarTrailerCarConsist(PassengerCarConsistBase):
         self.cargo_age_period = (
             global_constants.CARGO_AGE_PERIOD_PAX_HIGHER_CAPACITY_MALUS
         )
-        self.buy_cost_adjustment_factor = 1.3
+        self.buy_cost_adjustment_factor = 2.1
         self.floating_run_cost_multiplier = 4.75
         # boost loading speed to match default pax cars
         self.loading_speed_multiplier = 1.75
