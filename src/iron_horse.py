@@ -66,6 +66,7 @@ from vehicles import plate_cars
 from vehicles import product_tank_cars
 from vehicles import railcar_passenger_trailer_cars
 from vehicles import reefer_cars
+from vehicles import restaurant_cars
 from vehicles import rock_hopper_cars
 from vehicles import scrap_metal_cars
 from vehicles import silo_cars
@@ -218,6 +219,22 @@ def get_pax_car_ids():
     return result
 
 
+def get_restaurant_car_ids():
+    # for pax cars with consist-specific liveries
+    # will check for other neighbouring pax cars before showing brake car
+    result = []
+    for roster in get_active_rosters():
+        for consists in roster.wagon_consists.values():
+            for consist in consists:
+                if consist.__class__.__name__ == "PassengerRestaurantCarConsist":
+                    result.append(consist.base_numeric_id)
+    if len(result) > 255:
+        utils.echo_message(
+            "action 2 switch is limited to 255 values, get_restaurant_car_ids exceeds this - needs split across multiple switches"
+        )
+    return result
+
+
 def main():
     # rosters
     pony.main(disabled=False)
@@ -268,6 +285,7 @@ def main():
     plate_cars.main()
     product_tank_cars.main()
     reefer_cars.main()
+    restaurant_cars.main()
     railcar_passenger_trailer_cars.main()
     rock_hopper_cars.main()
     silo_cars.main()
