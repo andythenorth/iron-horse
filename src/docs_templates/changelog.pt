@@ -3,6 +3,15 @@ Changelog
 
 
 -------------
+2.21.1 Release
+-------------
+
+*Fixes*
+
+- use correct sprites for gen 5 Low-floor Container Wagon (Small)
+
+
+-------------
 2.21.0 Release
 -------------
 
@@ -25,6 +34,7 @@ Changelog
 - renamed Luxury Railcars to Express Railcars
 - minor tweaks to purchase costs of Express Railcars, Express Railcar Trailers and Railcar Trailers
 - improved appearance of Blackthorn and Stentor engines
+
 
 -------------
 2.20.0 Release
