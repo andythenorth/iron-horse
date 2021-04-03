@@ -1977,10 +1977,8 @@ class CryoTankCarConsist(CarConsist):
             "cryo_gases"
         ]
         self.default_cargos = polar_fox.constants.default_cargos["cryo_gases"]
-        self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
         self.loading_speed_multiplier = 1.5
         self.buy_cost_adjustment_factor = 1.33
-        self.floating_run_cost_multiplier = 1.5
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
         )
@@ -2116,7 +2114,6 @@ class EdiblesTankCarConsist(CarConsist):
         ]
         self.label_refits_disallowed = []
         self.default_cargos = polar_fox.constants.default_cargos["edibles_tank"]
-        self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
         self.loading_speed_multiplier = 1.5
         self.buy_cost_adjustment_factor = 1.33
         self.floating_run_cost_multiplier = 1.5
@@ -2254,7 +2251,6 @@ class FruitVegCarConsist(CarConsist):
         ]
         self.label_refits_disallowed = []
         self.default_cargos = polar_fox.constants.default_cargos["fruit_veg"]
-        self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
         self.buy_cost_adjustment_factor = 1.2
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
@@ -2443,9 +2439,8 @@ class LivestockCarConsist(CarConsist):
         self.label_refits_disallowed = []
         # no point using polar fox default_cargos for a vehicle with single refit
         self.default_cargos = ["LVST"]
-        self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
         self.buy_cost_adjustment_factor = 1.2
-        self.floating_run_cost_multiplier = 1.33
+        self.floating_run_cost_multiplier = 1.1
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["freight_core"]
         )
@@ -2907,9 +2902,8 @@ class ReeferCarConsist(CarConsist):
         self.label_refits_allowed = []  # no specific labels needed
         self.label_refits_disallowed = []
         self.default_cargos = polar_fox.constants.default_cargos["reefer"]
-        self.cargo_age_period = 2 * global_constants.CARGO_AGE_PERIOD
         self.buy_cost_adjustment_factor = 1.33
-        self.floating_run_cost_multiplier = 1.66
+        self.floating_run_cost_multiplier = 1.5
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["food_wagons"]
         )
