@@ -1,6 +1,22 @@
 Changelog
 =========
 
+-------------
+2.22.0 Release
+-------------
+
+*Changes*
+
+- deleted Restaurant Cars
+- deleted Luxury Passenger Coaches
+- removed cargo aging bonus from some wagon types that were using it
+- removed cargo aging malus from Passenger Coaches
+- removed cargo aging malus from Metro trains
+
+*Fixes*
+
+- door sprites out of place by 1 pixel for gen 6C Driving Van Trailer
+
 
 -------------
 2.21.1 Release
