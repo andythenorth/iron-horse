@@ -55,7 +55,7 @@ from vehicles import intermodal_cars
 from vehicles import livestock_cars
 from vehicles import log_cars
 from vehicles import low_floor_intermodal_cars
-from vehicles import luxury_passenger_cars
+#from vehicles import luxury_passenger_cars
 from vehicles import mail_cars
 from vehicles import torpedo_cars
 from vehicles import open_cars
@@ -66,7 +66,7 @@ from vehicles import plate_cars
 from vehicles import product_tank_cars
 from vehicles import railcar_passenger_trailer_cars
 from vehicles import reefer_cars
-from vehicles import restaurant_cars
+#from vehicles import restaurant_cars
 from vehicles import rock_hopper_cars
 from vehicles import scrap_metal_cars
 from vehicles import silo_cars
@@ -276,7 +276,7 @@ def main():
     livestock_cars.main()
     log_cars.main()
     low_floor_intermodal_cars.main()
-    luxury_passenger_cars.main()
+    #luxury_passenger_cars.main()
     mail_cars.main()
     ore_hopper_cars.main()
     open_cars.main()
@@ -285,7 +285,7 @@ def main():
     plate_cars.main()
     product_tank_cars.main()
     reefer_cars.main()
-    restaurant_cars.main()
+    #restaurant_cars.main()
     railcar_passenger_trailer_cars.main()
     rock_hopper_cars.main()
     silo_cars.main()

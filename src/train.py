@@ -903,10 +903,12 @@ class AutoCoachCombineConsist(EngineConsist):
         self.allow_flip = False  # articulated innit (even needed?)
         # boost loading speed to match default pax coaches (this gives an incidental boost to mail compared to other mail vehicles, but eh)
         self.loading_speed_multiplier = 1.75
+        """
         # this will knock standard age period down, so this train is less profitable over ~128 tiles (depends on vehicle speed) than a similar luxury pax car
         self.cargo_age_period = (
             global_constants.CARGO_AGE_PERIOD_PAX_HIGHER_CAPACITY_MALUS
         )
+        """
         # confer tiny power value to make this one an engine so it can lead.
         self.power = 10  # use 10 not 1, because 1 looks weird when added to engine HP
         # nerf TE down to minimal value
@@ -1257,10 +1259,12 @@ class PassengerEngineRailcarConsist(PassengerEngineConsist):
         self.loading_speed_multiplier = 1.75
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
+        """
         # this will knock standard age period down, so this train is less profitable over ~128 tiles (depends on vehicle speed) than a similar luxury pax car
         self.cargo_age_period = (
             global_constants.CARGO_AGE_PERIOD_PAX_HIGHER_CAPACITY_MALUS
         )
+        """
         # non-standard cite
         self._cite = "Arabella Unit"
         self.allow_flip = True
@@ -2593,15 +2597,19 @@ class PassengerCarConsist(PassengerCarConsistBase):
     # very specific flag used for variable run costs and cargo aging factor with restaurant cars
     # !! this will need made more general if e.g. motorail or observation cars are added
     # not sure why I did this as a class property, but eh
+    """
     affected_by_restaurant_car_in_consist = True
+    """
 
     def __init__(self, **kwargs):
         self.base_id = "passenger_car"
         super().__init__(**kwargs)
+        """
         # this will knock standard age period down, so this train is less profitable over ~128 tiles (depends on vehicle speed) than a similar luxury pax car
         self.cargo_age_period = (
             global_constants.CARGO_AGE_PERIOD_PAX_HIGHER_CAPACITY_MALUS
         )
+        """
         # buy costs and run costs are levelled for standard and lux pax cars, not an interesting factor for variation
         self.buy_cost_adjustment_factor = 1.4
         self.floating_run_cost_multiplier = 10
@@ -2746,7 +2754,9 @@ class PassengerLuxuryCarConsist(PassengerCarConsistBase):
     # very specific flag used for variable run costs and cargo aging factor with restaurant cars
     # !! this will need made more general if e.g. motorail or observation cars are added
     # not sure why I did this as a class property, but eh
+    """
     affected_by_restaurant_car_in_consist = True
+    """
 
     def __init__(self, **kwargs):
         self.base_id = "luxury_passenger_car"
@@ -2784,10 +2794,12 @@ class PassengerRailcarTrailerCarConsist(PassengerCarConsistBase):
         self.speed_class = "railcar"
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
+        """
         # this will knock standard age period down, so this train is less profitable over ~128 tiles (depends on vehicle speed) than a similar luxury pax car
         self.cargo_age_period = (
             global_constants.CARGO_AGE_PERIOD_PAX_HIGHER_CAPACITY_MALUS
         )
+        """
         self.buy_cost_adjustment_factor = 2.1
         self.floating_run_cost_multiplier = 4.75
         # boost loading speed to match default pax cars
