@@ -1004,8 +1004,10 @@ class MailEngineMetroConsist(MailEngineConsist):
         super().__init__(**kwargs)
         # OP bonus to mail metro loading speed
         self.loading_speed_multiplier = 4
+        """
         # this will knock standard age period down, so this train is only profitable over short routes
         self.cargo_age_period = global_constants.CARGO_AGE_PERIOD_METRO_MALUS
+        """
         # buy costs increased above baseline, account for 2 units + underground nonsense
         self.buy_cost_adjustment_factor = 2
         # metro should only be effective over short distances
@@ -1226,8 +1228,10 @@ class PassengerEngineMetroConsist(PassengerEngineConsist):
         super().__init__(**kwargs)
         # super super OP bonus to pax metro loading speed
         self.loading_speed_multiplier = 8
+        """
         # this will knock standard age period down, so this train is only profitable over short routes
         self.cargo_age_period = global_constants.CARGO_AGE_PERIOD_METRO_MALUS
+        """
         # buy costs increased above baseline, account for 2 units + underground nonsense
         self.buy_cost_adjustment_factor = 2
         # metro should only be effective over short distances
