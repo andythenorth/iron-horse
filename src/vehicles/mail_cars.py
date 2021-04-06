@@ -1,4 +1,4 @@
-from train import MailCarConsist, MailCar
+from train import MailCarConsist, ExpressMailCar
 
 
 def main():
@@ -12,7 +12,7 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=MailCar, chassis="4_axle_ng_16px")
+    consist.add_unit(type=ExpressMailCar, chassis="4_axle_ng_16px")
 
     # no gen 2 for NG, straight to gen 3
 
@@ -25,7 +25,7 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=MailCar, chassis="4_axle_ng_16px")
+    consist.add_unit(type=ExpressMailCar, chassis="4_axle_ng_16px")
 
     consist = MailCarConsist(
         roster_id="pony",
@@ -36,7 +36,7 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=MailCar, chassis="4_axle_ng_16px")
+    consist.add_unit(type=ExpressMailCar, chassis="4_axle_ng_16px")
 
     # --------------- pony ----------------------------------------------------------------------
 
@@ -48,7 +48,7 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=MailCar, chassis="3_axle_solid_express_16px")
+    consist.add_unit(type=ExpressMailCar, chassis="3_axle_solid_express_16px")
 
     consist = MailCarConsist(
         roster_id="pony",
@@ -58,7 +58,7 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=MailCar, chassis="4_axle_solid_express_24px")
+    consist.add_unit(type=ExpressMailCar, chassis="4_axle_solid_express_24px")
 
     consist = MailCarConsist(
         roster_id="pony",
@@ -68,13 +68,13 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=MailCar, chassis="3_axle_solid_express_16px")
+    consist.add_unit(type=ExpressMailCar, chassis="3_axle_solid_express_16px")
 
     consist = MailCarConsist(
         roster_id="pony", base_numeric_id=920, gen=2, subtype="B", sprites_complete=True
     )
 
-    consist.add_unit(type=MailCar, chassis="4_axle_solid_express_24px")
+    consist.add_unit(type=ExpressMailCar, chassis="4_axle_solid_express_24px")
 
     consist = MailCarConsist(
         roster_id="pony",
@@ -84,7 +84,7 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=MailCar, chassis="3_axle_solid_express_16px")
+    consist.add_unit(type=ExpressMailCar, chassis="3_axle_solid_express_16px")
 
     consist = MailCarConsist(
         roster_id="pony",
@@ -94,13 +94,13 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=MailCar, chassis="4_axle_solid_express_24px")
+    consist.add_unit(type=ExpressMailCar, chassis="4_axle_solid_express_24px")
 
     consist = MailCarConsist(
         roster_id="pony", base_numeric_id=940, gen=3, subtype="C", sprites_complete=True
     )
 
-    consist.add_unit(type=MailCar, chassis="4_axle_solid_express_32px")
+    consist.add_unit(type=ExpressMailCar, chassis="4_axle_solid_express_32px")
 
     consist = MailCarConsist(
         roster_id="pony",
@@ -110,7 +110,7 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=MailCar, chassis="2_axle_solid_express_16px")
+    consist.add_unit(type=ExpressMailCar, chassis="2_axle_solid_express_16px")
 
     consist = MailCarConsist(
         roster_id="pony",
@@ -120,7 +120,7 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=MailCar, chassis="4_axle_solid_express_24px")
+    consist.add_unit(type=ExpressMailCar, chassis="4_axle_solid_express_24px")
 
     consist = MailCarConsist(
         roster_id="pony",
@@ -130,19 +130,19 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=MailCar, chassis="4_axle_solid_express_32px")
+    consist.add_unit(type=ExpressMailCar, chassis="4_axle_solid_express_32px")
 
     consist = MailCarConsist(
         roster_id="pony", base_numeric_id=520, gen=5, subtype="A", sprites_complete=True
     )
 
-    consist.add_unit(type=MailCar, chassis="2_axle_solid_express_16px")
+    consist.add_unit(type=ExpressMailCar, chassis="2_axle_solid_express_16px")
 
     consist = MailCarConsist(
         roster_id="pony", base_numeric_id=970, gen=5, subtype="B", sprites_complete=True
     )
 
-    consist.add_unit(type=MailCar, chassis="4_axle_solid_express_24px")
+    consist.add_unit(type=ExpressMailCar, chassis="4_axle_solid_express_24px")
 
     consist = MailCarConsist(
         roster_id="pony",
@@ -152,7 +152,7 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=MailCar, chassis="4_axle_solid_express_32px")
+    consist.add_unit(type=ExpressMailCar, chassis="4_axle_solid_express_32px")
 
     # gen 6 broadly same as gen 5, but new liveries (any other difference?)
 
@@ -160,7 +160,7 @@ def main():
         roster_id="pony", base_numeric_id=870, gen=6, subtype="A", sprites_complete=True
     )
 
-    consist.add_unit(type=MailCar, chassis="2_axle_solid_express_16px")
+    consist.add_unit(type=ExpressMailCar, chassis="2_axle_solid_express_16px")
 
     consist = MailCarConsist(
         roster_id="pony",
@@ -170,10 +170,10 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=MailCar, chassis="4_axle_solid_express_24px")
+    consist.add_unit(type=ExpressMailCar, chassis="4_axle_solid_express_24px")
 
     consist = MailCarConsist(
         roster_id="pony", base_numeric_id=10, gen=6, subtype="C", sprites_complete=True
     )
 
-    consist.add_unit(type=MailCar, chassis="4_axle_solid_express_32px")
+    consist.add_unit(type=ExpressMailCar, chassis="4_axle_solid_express_32px")

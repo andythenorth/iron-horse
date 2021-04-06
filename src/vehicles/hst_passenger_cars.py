@@ -1,4 +1,4 @@
-from train import PassengerHSTCarConsist, HSTPaxCar
+from train import PassengerHSTCarConsist, PaxHSTCar
 
 
 def main():
@@ -13,7 +13,7 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=HSTPaxCar, chassis="4_axle_solid_express_32px")
+    consist.add_unit(type=PaxHSTCar, chassis="4_axle_solid_express_32px")
 
     consist = PassengerHSTCarConsist(
         roster_id="pony",
@@ -25,7 +25,7 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=HSTPaxCar, chassis="4_axle_solid_express_32px")
+    consist.add_unit(type=PaxHSTCar, chassis="4_axle_solid_express_32px")
 
     consist = PassengerHSTCarConsist(
         roster_id="pony",
@@ -37,4 +37,4 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=HSTPaxCar, chassis="4_axle_solid_express_32px")
+    consist.add_unit(type=PaxHSTCar, chassis="4_axle_solid_express_32px")

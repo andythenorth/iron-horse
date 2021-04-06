@@ -1,4 +1,4 @@
-from train import PassengerSuburbanCarConsist, SuburbanPaxCar
+from train import PassengerSuburbanCarConsist, PaxSuburbanCar
 
 
 def main():
@@ -12,7 +12,7 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=SuburbanPaxCar, chassis="4_axle_ng_16px")
+    consist.add_unit(type=PaxSuburbanCar, chassis="4_axle_ng_16px")
 
     # no gen 2 for NG, straight to gen 3
 
@@ -25,7 +25,7 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=SuburbanPaxCar, chassis="4_axle_ng_16px")
+    consist.add_unit(type=PaxSuburbanCar, chassis="4_axle_ng_16px")
 
     consist = PassengerSuburbanCarConsist(
         roster_id="pony",
@@ -36,7 +36,7 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=SuburbanPaxCar, chassis="4_axle_ng_16px")
+    consist.add_unit(type=PaxSuburbanCar, chassis="4_axle_ng_16px")
 
     # --------------- pony ----------------------------------------------------------------------
 
@@ -48,13 +48,13 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=SuburbanPaxCar, chassis="3_axle_solid_express_16px")
+    consist.add_unit(type=PaxSuburbanCar, chassis="3_axle_solid_express_16px")
 
     consist = PassengerSuburbanCarConsist(
         roster_id="pony", base_numeric_id=740, gen=1, subtype="B", sprites_complete=True
     )
 
-    consist.add_unit(type=SuburbanPaxCar, chassis="4_axle_solid_express_24px")
+    consist.add_unit(type=PaxSuburbanCar, chassis="4_axle_solid_express_24px")
 
     consist = PassengerSuburbanCarConsist(
         roster_id="pony",
@@ -64,13 +64,13 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=SuburbanPaxCar, chassis="3_axle_solid_express_16px")
+    consist.add_unit(type=PaxSuburbanCar, chassis="3_axle_solid_express_16px")
 
     consist = PassengerSuburbanCarConsist(
         roster_id="pony", base_numeric_id=750, gen=2, subtype="B", sprites_complete=True
     )
 
-    consist.add_unit(type=SuburbanPaxCar, chassis="4_axle_solid_express_24px")
+    consist.add_unit(type=PaxSuburbanCar, chassis="4_axle_solid_express_24px")
 
     consist = PassengerSuburbanCarConsist(
         roster_id="pony",
@@ -80,13 +80,13 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=SuburbanPaxCar, chassis="3_axle_solid_express_16px")
+    consist.add_unit(type=PaxSuburbanCar, chassis="3_axle_solid_express_16px")
 
     consist = PassengerSuburbanCarConsist(
         roster_id="pony", base_numeric_id=760, gen=3, subtype="B", sprites_complete=True
     )
 
-    consist.add_unit(type=SuburbanPaxCar, chassis="4_axle_solid_express_24px")
+    consist.add_unit(type=PaxSuburbanCar, chassis="4_axle_solid_express_24px")
 
     consist = PassengerSuburbanCarConsist(
         roster_id="pony",
@@ -96,7 +96,7 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=SuburbanPaxCar, chassis="4_axle_solid_express_32px")
+    consist.add_unit(type=PaxSuburbanCar, chassis="4_axle_solid_express_32px")
 
     consist = PassengerSuburbanCarConsist(
         roster_id="pony",
@@ -106,7 +106,7 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=SuburbanPaxCar, chassis="4_axle_solid_express_24px")
+    consist.add_unit(type=PaxSuburbanCar, chassis="4_axle_solid_express_24px")
 
     consist = PassengerSuburbanCarConsist(
         roster_id="pony",
@@ -116,7 +116,7 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=SuburbanPaxCar, chassis="4_axle_solid_express_32px")
+    consist.add_unit(type=PaxSuburbanCar, chassis="4_axle_solid_express_32px")
 
     consist = PassengerSuburbanCarConsist(
         roster_id="pony",
@@ -126,7 +126,7 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=SuburbanPaxCar, chassis="4_axle_solid_express_24px")
+    consist.add_unit(type=PaxSuburbanCar, chassis="4_axle_solid_express_24px")
 
     consist = PassengerSuburbanCarConsist(
         roster_id="pony",
@@ -136,7 +136,7 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=SuburbanPaxCar, chassis="4_axle_solid_express_32px")
+    consist.add_unit(type=PaxSuburbanCar, chassis="4_axle_solid_express_32px")
 
     # gen 6 broadly same as gen 5, but new liveries (any other difference?)
 
@@ -148,7 +148,7 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=SuburbanPaxCar, chassis="4_axle_solid_express_24px")
+    consist.add_unit(type=PaxSuburbanCar, chassis="4_axle_solid_express_24px")
 
     consist = PassengerSuburbanCarConsist(
         roster_id="pony",
@@ -158,4 +158,4 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=SuburbanPaxCar, chassis="4_axle_solid_express_32px")
+    consist.add_unit(type=PaxSuburbanCar, chassis="4_axle_solid_express_32px")

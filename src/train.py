@@ -4158,40 +4158,6 @@ class CabooseCar(TrainCar):
         return weight_factor * self.vehicle_length
 
 
-class MailCar(TrainCar):
-    """
-    Mail wagon.
-    """
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        # mail wagons may be asymmetric, there is magic in the graphics processing to make symmetric pax/mail sprites also work with this
-        self._symmetry_type = "asymmetric"
-        # magic to set capacity subject to length
-        base_capacity = self.consist.roster.freight_car_capacity_per_unit_length[
-            self.consist.base_track_type
-        ][self.consist.gen - 1]
-        self.capacity = (
-            self.vehicle_length * base_capacity
-        ) / polar_fox.constants.mail_multiplier
-
-
-class HSTPaxCar(TrainCar):
-    """
-    Pax wagon for HST-type trains. This subclass only exists to set capacity and symmetry_type.
-    """
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        # pax wagons may be asymmetric, there is magic in the graphics processing to make symmetric pax/mail sprites also work with this
-        self._symmetry_type = "asymmetric"
-        # magic to set dedicated pax car capacity subject to length
-        base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[
-            self.consist.base_track_type
-        ][self.consist.gen - 1]
-        self.capacity = int(self.vehicle_length * base_capacity * 0.875)
-
-
 class PaxCar(TrainCar):
     """
     Standard pax wagon. This subclass only exists to set capacity and symmetry_type.
@@ -4208,7 +4174,59 @@ class PaxCar(TrainCar):
         self.capacity = int(self.vehicle_length * base_capacity * 0.75)
 
 
-class RestaurantPaxCar(TrainCar):
+class PaxExpressRailcarTrailerCar(TrainCar):
+    """
+    Express railcar unpowered pax trailer. This subclass only exists to set capacity and symmetry_type.
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # TrainCar sets auto tail light, over-ride it
+        self.tail_light = kwargs["tail_light"]  # fail if not passed, required arg
+        # pax wagons may be asymmetric, there is magic in the graphics processing to make this work
+        self._symmetry_type = "asymmetric"
+        # magic to set pax car capacity subject to length
+        base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[
+            self.consist.base_track_type
+        ][self.consist.gen - 1]
+        self.capacity = int(self.vehicle_length * base_capacity * 0.75)
+
+
+class PaxHSTCar(TrainCar):
+    """
+    Pax wagon for HST-type trains. This subclass only exists to set capacity and symmetry_type.
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # pax wagons may be asymmetric, there is magic in the graphics processing to make symmetric pax/mail sprites also work with this
+        self._symmetry_type = "asymmetric"
+        # magic to set dedicated pax car capacity subject to length
+        base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[
+            self.consist.base_track_type
+        ][self.consist.gen - 1]
+        self.capacity = int(self.vehicle_length * base_capacity * 0.875)
+
+
+class PaxRailcarTrailerCar(TrainCar):
+    """
+    Railcar unpowered pax trailer. This subclass only exists to set capacity and symmetry_type.
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # TrainCar sets auto tail light, over-ride it
+        self.tail_light = kwargs["tail_light"]  # fail if not passed, required arg
+        # pax wagons may be asymmetric, there is magic in the graphics processing to make this work
+        self._symmetry_type = "asymmetric"
+        # magic to set pax car capacity subject to length
+        base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[
+            self.consist.base_track_type
+        ][self.consist.gen - 1]
+        self.capacity = self.vehicle_length * base_capacity
+
+
+class PaxRestaurantCar(TrainCar):
     """
     Restaurant (special) pax wagon. This subclass only exists to set capacity and symmetry_type.
     """
@@ -4229,7 +4247,7 @@ class RestaurantPaxCar(TrainCar):
         return 37 + self.consist.gen
 
 
-class SuburbanPaxCar(TrainCar):
+class PaxSuburbanCar(TrainCar):
     """
     High-capacity pax wagon. This subclass only exists to set capacity and symmetry_type.
     """
@@ -4256,7 +4274,6 @@ class ExpressCar(TrainCar):
         base_capacity = self.consist.roster.freight_car_capacity_per_unit_length[
             self.consist.base_track_type
         ][self.consist.gen - 1]
-        # we nerf down express car capacity to same as mail cars, to account for them being faster
         self.capacity = (
             self.vehicle_length * base_capacity
         ) / polar_fox.constants.mail_multiplier
@@ -4272,6 +4289,17 @@ class ExpressIntermodalCar(ExpressCar):
         # express intermodal cars may be asymmetric, there is magic in the graphics processing to make this work
         self._symmetry_type = "asymmetric"
         self.random_trigger_switch = "_switch_graphics_containers"
+
+
+class ExpressMailCar(ExpressCar):
+    """
+    Mail wagon, subclassed from express car.  Only exists to set symmetry_type.
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # mail wagons may be asymmetric, there is magic in the graphics processing to make symmetric pax/mail sprites also work with this
+        self._symmetry_type = "asymmetric"
 
 
 class FreightCar(TrainCar):
@@ -4326,42 +4354,6 @@ class IntermodalCar(FreightCar):
         # intermodal cars may be asymmetric, there is magic in the graphics processing to make this work
         self._symmetry_type = "asymmetric"
         self.random_trigger_switch = "_switch_graphics_containers"
-
-
-class PaxRailcarTrailerCar(TrainCar):
-    """
-    Railcar unpowered pax trailer. This subclass only exists to set capacity and symmetry_type.
-    """
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        # TrainCar sets auto tail light, over-ride it
-        self.tail_light = kwargs["tail_light"]  # fail if not passed, required arg
-        # pax wagons may be asymmetric, there is magic in the graphics processing to make this work
-        self._symmetry_type = "asymmetric"
-        # magic to set pax car capacity subject to length
-        base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[
-            self.consist.base_track_type
-        ][self.consist.gen - 1]
-        self.capacity = self.vehicle_length * base_capacity
-
-
-class PaxExpressRailcarTrailerCar(TrainCar):
-    """
-    Express railcar unpowered pax trailer. This subclass only exists to set capacity and symmetry_type.
-    """
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        # TrainCar sets auto tail light, over-ride it
-        self.tail_light = kwargs["tail_light"]  # fail if not passed, required arg
-        # pax wagons may be asymmetric, there is magic in the graphics processing to make this work
-        self._symmetry_type = "asymmetric"
-        # magic to set pax car capacity subject to length
-        base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[
-            self.consist.base_track_type
-        ][self.consist.gen - 1]
-        self.capacity = int(self.vehicle_length * base_capacity * 0.75)
 
 
 class SlagLadleCar(FreightCar):

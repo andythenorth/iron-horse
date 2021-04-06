@@ -1,4 +1,4 @@
-from train import PassengerRestaurantCarConsist, RestaurantPaxCar
+from train import PassengerRestaurantCarConsist, PaxRestaurantCar
 
 
 def main():
@@ -12,7 +12,7 @@ def main():
         sprites_complete=False,
     )
 
-    consist.add_unit(type=RestaurantPaxCar, chassis="6_axle_solid_express_32px")
+    consist.add_unit(type=PaxRestaurantCar, chassis="6_axle_solid_express_32px")
 
     consist = PassengerRestaurantCarConsist(
         roster_id="pony",
@@ -22,7 +22,7 @@ def main():
         sprites_complete=False,
     )
 
-    consist.add_unit(type=RestaurantPaxCar, chassis="6_axle_solid_express_32px")
+    consist.add_unit(type=PaxRestaurantCar, chassis="6_axle_solid_express_32px")
 
     consist = PassengerRestaurantCarConsist(
         roster_id="pony",
@@ -32,7 +32,7 @@ def main():
         sprites_complete=False,
     )
 
-    consist.add_unit(type=RestaurantPaxCar, chassis="6_axle_solid_express_32px")
+    consist.add_unit(type=PaxRestaurantCar, chassis="6_axle_solid_express_32px")
 
     consist = PassengerRestaurantCarConsist(
         roster_id="pony",
@@ -42,7 +42,7 @@ def main():
         sprites_complete=False,
     )
 
-    consist.add_unit(type=RestaurantPaxCar, chassis="4_axle_solid_express_32px")
+    consist.add_unit(type=PaxRestaurantCar, chassis="4_axle_solid_express_32px")
 
     consist = PassengerRestaurantCarConsist(
         roster_id="pony",
@@ -52,7 +52,7 @@ def main():
         sprites_complete=False,
     )
 
-    consist.add_unit(type=RestaurantPaxCar, chassis="4_axle_solid_express_32px")
+    consist.add_unit(type=PaxRestaurantCar, chassis="4_axle_solid_express_32px")
 
     # gen 6 broadly same as gen 5, but new liveries (any other difference?)
 
@@ -64,4 +64,4 @@ def main():
         sprites_complete=False,
     )
 
-    consist.add_unit(type=RestaurantPaxCar, chassis="4_axle_solid_express_32px")
+    consist.add_unit(type=PaxRestaurantCar, chassis="4_axle_solid_express_32px")
