@@ -903,12 +903,10 @@ class AutoCoachCombineConsist(EngineConsist):
         self.allow_flip = False  # articulated innit (even needed?)
         # boost loading speed to match default pax coaches (this gives an incidental boost to mail compared to other mail vehicles, but eh)
         self.loading_speed_multiplier = 1.75
-        """
-        # this will knock standard age period down, so this train is less profitable over ~128 tiles (depends on vehicle speed) than a similar luxury pax car
+        # this will knock standard age period down, so this train is less profitable over ~128 tiles (depends on vehicle speed) than a similar standard pax car
         self.cargo_age_period = (
             global_constants.CARGO_AGE_PERIOD_PAX_HIGHER_CAPACITY_MALUS
         )
-        """
         # confer tiny power value to make this one an engine so it can lead.
         self.power = 10  # use 10 not 1, because 1 looks weird when added to engine HP
         # nerf TE down to minimal value
@@ -1263,12 +1261,10 @@ class PassengerEngineRailcarConsist(PassengerEngineConsist):
         self.loading_speed_multiplier = 1.75
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
-        """
-        # this will knock standard age period down, so this train is less profitable over ~128 tiles (depends on vehicle speed) than a similar luxury pax car
+        # this will knock standard age period down, so this train is less profitable over ~128 tiles (depends on vehicle speed) than a similar standard pax car
         self.cargo_age_period = (
             global_constants.CARGO_AGE_PERIOD_PAX_HIGHER_CAPACITY_MALUS
         )
-        """
         # non-standard cite
         self._cite = "Arabella Unit"
         self.allow_flip = True
@@ -2755,12 +2751,10 @@ class PassengerRailcarTrailerCarConsist(PassengerCarConsistBase):
         self.speed_class = "railcar"
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
-        """
-        # this will knock standard age period down, so this train is less profitable over ~128 tiles (depends on vehicle speed) than a similar luxury pax car
+        # this will knock standard age period down, so this train is less profitable over ~128 tiles (depends on vehicle speed) than a similar standard pax car
         self.cargo_age_period = (
             global_constants.CARGO_AGE_PERIOD_PAX_HIGHER_CAPACITY_MALUS
         )
-        """
         self.buy_cost_adjustment_factor = 2.1
         self.floating_run_cost_multiplier = 4.75
         # boost loading speed to match default pax cars
@@ -2855,12 +2849,10 @@ class PassengerSuburbanCarConsist(PassengerCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "suburban_passenger_car"
         super().__init__(**kwargs)
-        """
-        # this will knock standard age period down, so this train is less profitable over ~128 tiles (depends on vehicle speed) than a similar luxury pax car
+        # this will knock standard age period down, so this train is less profitable over ~128 tiles (depends on vehicle speed) than a similar standard pax car
         self.cargo_age_period = (
             global_constants.CARGO_AGE_PERIOD_PAX_HIGHER_CAPACITY_MALUS
         )
-        """
         # buy costs and run costs are levelled for standard and lux pax cars, not an interesting factor for variation
         self.buy_cost_adjustment_factor = 1.4
         self.floating_run_cost_multiplier = 10
@@ -3703,7 +3695,7 @@ class AutoCoachCombineUnitMail(Train):
         base_capacity = self.consist.roster.freight_car_capacity_per_unit_length[
             self.consist.base_track_type
         ][self.consist.gen - 1]
-        # account for pax capacity 'on' this unit (implemented on adjacent pax unit)
+        # also account for some pax capacity 'on' this unit (implemented on adjacent pax unit)
         self.capacity = (
             0.75 * self.vehicle_length * base_capacity
         ) / polar_fox.constants.mail_multiplier
@@ -3726,8 +3718,8 @@ class AutoCoachCombineUnitPax(Train):
         base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[
             self.consist.base_track_type
         ][self.consist.gen - 1]
-        # account for pax 'on' the adjacent mail unit (this is roughly matched to equivalent gen railcars)
-        self.capacity = 2 * self.vehicle_length * base_capacity
+        # also account for some pax 'on' the adjacent mail unit (this is roughly matched to equivalent gen railcars)
+        self.capacity = int(self.vehicle_length * base_capacity * 2.7)
 
 
 class CabbageDVTUnit(Train):
@@ -3765,7 +3757,7 @@ class CabControlPaxCarUnit(Train):
         base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[
             self.consist.base_track_type
         ][self.consist.gen - 1]
-        self.capacity = int(self.vehicle_length * base_capacity * 0.75)
+        self.capacity = int(self.vehicle_length * base_capacity)
 
 
 class DieselEngineUnit(Train):
@@ -3823,7 +3815,7 @@ class DieselRailcarPaxUnit(DieselRailcarBaseUnit):
         base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[
             self.consist.base_track_type
         ][self.consist.gen - 1]
-        self.capacity = self.vehicle_length * base_capacity
+        self.capacity = int(self.vehicle_length * base_capacity * 1.75)
 
 
 class ElectricEngineUnit(Train):
@@ -3867,7 +3859,7 @@ class ElectricHighSpeedPaxUnit(Train):
             base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[
                 self.consist.base_track_type
             ][self.consist.gen - 1]
-            self.capacity = int(self.vehicle_length * base_capacity * 0.875)
+            self.capacity = int(self.vehicle_length * base_capacity)
 
 
 class ElectroDieselEngineUnit(Train):
@@ -3938,7 +3930,7 @@ class ElectroDieselRailcarPaxUnit(ElectroDieselRailcarBaseUnit):
         base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[
             self.consist.base_track_type
         ][self.consist.gen - 1]
-        self.capacity = self.vehicle_length * base_capacity
+        self.capacity = int(self.vehicle_length * base_capacity * 1.75)
 
 
 class ElectroDieselExpressRailcarPaxUnit(ElectroDieselRailcarBaseUnit):
@@ -3952,7 +3944,7 @@ class ElectroDieselExpressRailcarPaxUnit(ElectroDieselRailcarBaseUnit):
         base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[
             self.consist.base_track_type
         ][self.consist.gen - 1]
-        self.capacity = int(self.vehicle_length * base_capacity * 0.75)
+        self.capacity = int(self.vehicle_length * base_capacity)
 
 
 class ElectricRailcarBaseUnit(Train):
@@ -3983,7 +3975,7 @@ class ElectricExpressRailcarPaxUnit(ElectricRailcarBaseUnit):
         base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[
             self.consist.base_track_type
         ][self.consist.gen - 1]
-        self.capacity = int(self.vehicle_length * base_capacity * 0.75)
+        self.capacity = int(self.vehicle_length * base_capacity)
 
 
 class ElectricRailcarMailUnit(ElectricRailcarBaseUnit):
@@ -4018,7 +4010,7 @@ class ElectricRailcarPaxUnit(ElectricRailcarBaseUnit):
         base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[
             self.consist.base_track_type
         ][self.consist.gen - 1]
-        self.capacity = self.vehicle_length * base_capacity
+        self.capacity = int(self.vehicle_length * base_capacity * 1.75)
         # offset to second livery, to differentiate from diesel equivalent which will use first
         self.buy_menu_spriterow_num = 2  # note that it's 2 because opening doors are in row 1, livery 2 starts at 2, zero-indexed
         self.consist.docs_image_spriterow = (
@@ -4171,7 +4163,7 @@ class PaxCar(TrainCar):
         base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[
             self.consist.base_track_type
         ][self.consist.gen - 1]
-        self.capacity = int(self.vehicle_length * base_capacity * 0.75)
+        self.capacity = int(self.vehicle_length * base_capacity)
 
 
 class PaxExpressRailcarTrailerCar(TrainCar):
@@ -4189,7 +4181,7 @@ class PaxExpressRailcarTrailerCar(TrainCar):
         base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[
             self.consist.base_track_type
         ][self.consist.gen - 1]
-        self.capacity = int(self.vehicle_length * base_capacity * 0.75)
+        self.capacity = int(self.vehicle_length * base_capacity)
 
 
 class PaxHSTCar(TrainCar):
@@ -4205,7 +4197,7 @@ class PaxHSTCar(TrainCar):
         base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[
             self.consist.base_track_type
         ][self.consist.gen - 1]
-        self.capacity = int(self.vehicle_length * base_capacity * 0.875)
+        self.capacity = int(self.vehicle_length * base_capacity)
 
 
 class PaxRailcarTrailerCar(TrainCar):
@@ -4223,7 +4215,7 @@ class PaxRailcarTrailerCar(TrainCar):
         base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[
             self.consist.base_track_type
         ][self.consist.gen - 1]
-        self.capacity = self.vehicle_length * base_capacity
+        self.capacity = int(self.vehicle_length * base_capacity * 1.75)
 
 
 class PaxRestaurantCar(TrainCar):
@@ -4239,7 +4231,7 @@ class PaxRestaurantCar(TrainCar):
         base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[
             self.consist.base_track_type
         ][self.consist.gen - 1]
-        self.capacity = int(self.vehicle_length * base_capacity * 0.3)
+        self.capacity = int(self.vehicle_length * base_capacity * 0.45)
 
     @property
     def weight(self):
@@ -4260,7 +4252,7 @@ class PaxSuburbanCar(TrainCar):
         base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[
             self.consist.base_track_type
         ][self.consist.gen - 1]
-        self.capacity = self.vehicle_length * base_capacity
+        self.capacity = int(self.vehicle_length * base_capacity * 1.75)
 
 
 class ExpressCar(TrainCar):

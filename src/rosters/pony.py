@@ -194,8 +194,8 @@ def main(disabled=False):
             "NG": [3, 3, 4, 4],
         },
         pax_car_capacity_per_unit_length={
-            "RAIL": [4, 5, 6, 7, 8, 8],
-            "NG": [3, 4, 5, 6],
+            "RAIL": [3, 3.75, 4.5, 5.25, 6, 6],
+            "NG": [2.25, 3, 3.75, 4.5],
         },
         # freight car weight factor varies slightly by gen, reflecting modern cars with lighter weight
         train_car_weight_factors=[0.5, 0.5, 0.5, 0.48, 0.44, 0.40],
