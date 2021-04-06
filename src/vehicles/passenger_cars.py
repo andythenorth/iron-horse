@@ -2,97 +2,78 @@ from train import PassengerCarConsist, PaxCar
 
 
 def main():
-    # --------------- pony NG----------------------------------------------------------------------
+    # --------------- pony NG ----------------------------------------------------------------------
     consist = PassengerCarConsist(
         roster_id="pony",
-        base_numeric_id=770,
+        base_numeric_id=1530,
         gen=1,
         subtype="U",
         base_track_type="NG",
         sprites_complete=True,
     )
 
-    consist.add_unit(type=PaxCar, chassis="4_axle_ng_16px")
+    consist.add_unit(type=PaxCar, chassis="4_axle_ng_24px")
 
     # no gen 2 for NG, straight to gen 3
 
     consist = PassengerCarConsist(
         roster_id="pony",
-        base_numeric_id=800,
+        base_numeric_id=600,
         gen=3,
         subtype="U",
         base_track_type="NG",
         sprites_complete=True,
     )
 
-    consist.add_unit(type=PaxCar, chassis="4_axle_ng_16px")
+    consist.add_unit(type=PaxCar, chassis="4_axle_ng_24px")
 
     consist = PassengerCarConsist(
         roster_id="pony",
-        base_numeric_id=860,
+        base_numeric_id=660,
         gen=4,
         subtype="U",
         base_track_type="NG",
         sprites_complete=True,
     )
 
-    consist.add_unit(type=PaxCar, chassis="4_axle_ng_16px")
+    consist.add_unit(type=PaxCar, chassis="4_axle_ng_24px")
 
     # --------------- pony ----------------------------------------------------------------------
-
     consist = PassengerCarConsist(
         roster_id="pony",
-        base_numeric_id=3300,
+        base_numeric_id=2250,
         gen=1,
-        subtype="A",
+        subtype="U",
         sprites_complete=True,
     )
 
-    consist.add_unit(type=PaxCar, chassis="3_axle_solid_express_16px")
-
-    consist = PassengerCarConsist(
-        roster_id="pony", base_numeric_id=740, gen=1, subtype="B", sprites_complete=True
-    )
-
-    consist.add_unit(type=PaxCar, chassis="4_axle_solid_express_24px")
+    consist.add_unit(type=PaxCar, chassis="6_axle_solid_express_32px")
 
     consist = PassengerCarConsist(
         roster_id="pony",
-        base_numeric_id=3310,
+        base_numeric_id=2260,
         gen=2,
-        subtype="A",
+        subtype="U",
         sprites_complete=True,
     )
 
-    consist.add_unit(type=PaxCar, chassis="3_axle_solid_express_16px")
-
-    consist = PassengerCarConsist(
-        roster_id="pony", base_numeric_id=750, gen=2, subtype="B", sprites_complete=True
-    )
-
-    consist.add_unit(type=PaxCar, chassis="4_axle_solid_express_24px")
+    consist.add_unit(type=PaxCar, chassis="6_axle_solid_express_32px")
 
     consist = PassengerCarConsist(
         roster_id="pony",
-        base_numeric_id=3290,
+        base_numeric_id=2270,
         gen=3,
-        subtype="A",
+        subtype="U",
         sprites_complete=True,
     )
 
-    consist.add_unit(type=PaxCar, chassis="3_axle_solid_express_16px")
-
-    consist = PassengerCarConsist(
-        roster_id="pony", base_numeric_id=760, gen=3, subtype="B", sprites_complete=True
-    )
-
-    consist.add_unit(type=PaxCar, chassis="4_axle_solid_express_24px")
+    consist.add_unit(type=PaxCar, chassis="6_axle_solid_express_32px")
 
     consist = PassengerCarConsist(
         roster_id="pony",
-        base_numeric_id=4570,
-        gen=3,
-        subtype="C",
+        base_numeric_id=3120,
+        gen=4,
+        subtype="U",
         sprites_complete=True,
     )
 
@@ -100,39 +81,9 @@ def main():
 
     consist = PassengerCarConsist(
         roster_id="pony",
-        base_numeric_id=3110,
-        gen=4,
-        subtype="B",
-        sprites_complete=True,
-    )
-
-    consist.add_unit(type=PaxCar, chassis="4_axle_solid_express_24px")
-
-    consist = PassengerCarConsist(
-        roster_id="pony",
-        base_numeric_id=3260,
-        gen=4,
-        subtype="C",
-        sprites_complete=True,
-    )
-
-    consist.add_unit(type=PaxCar, chassis="4_axle_solid_express_32px")
-
-    consist = PassengerCarConsist(
-        roster_id="pony",
-        base_numeric_id=3100,
+        base_numeric_id=3130,
         gen=5,
-        subtype="B",
-        sprites_complete=True,
-    )
-
-    consist.add_unit(type=PaxCar, chassis="4_axle_solid_express_24px")
-
-    consist = PassengerCarConsist(
-        roster_id="pony",
-        base_numeric_id=3280,
-        gen=5,
-        subtype="C",
+        subtype="U",
         sprites_complete=True,
     )
 
@@ -142,19 +93,9 @@ def main():
 
     consist = PassengerCarConsist(
         roster_id="pony",
-        base_numeric_id=1580,
+        base_numeric_id=1860,
         gen=6,
-        subtype="B",
-        sprites_complete=True,
-    )
-
-    consist.add_unit(type=PaxCar, chassis="4_axle_solid_express_24px")
-
-    consist = PassengerCarConsist(
-        roster_id="pony",
-        base_numeric_id=3270,
-        gen=6,
-        subtype="C",
+        subtype="U",
         sprites_complete=True,
     )
 

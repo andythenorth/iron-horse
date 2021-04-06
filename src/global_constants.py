@@ -8,7 +8,7 @@ buy_menu_sort_order_wagons = [
     "railcar_passenger_trailer_car",
     "express_railcar_passenger_trailer_car",
     "passenger_car",
-    #"luxury_passenger_car",
+    "suburban_passenger_car",
     "restaurant_car",
     "mail_car",
     "express_car",

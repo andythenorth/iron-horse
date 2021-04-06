@@ -2594,7 +2594,8 @@ class PassengerCarConsistBase(CarConsist):
 
 class PassengerCarConsist(PassengerCarConsistBase):
     """
-    Standard pax car.
+    Standard passenger car.
+    Default decay rate, capacities within reasonable distance of original base set pax coaches.
     Position-dependent sprites for brake car etc.
     """
 
@@ -2608,26 +2609,18 @@ class PassengerCarConsist(PassengerCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "passenger_car"
         super().__init__(**kwargs)
-        """
-        # this will knock standard age period down, so this train is less profitable over ~128 tiles (depends on vehicle speed) than a similar luxury pax car
-        self.cargo_age_period = (
-            global_constants.CARGO_AGE_PERIOD_PAX_HIGHER_CAPACITY_MALUS
-        )
-        """
         # buy costs and run costs are levelled for standard and lux pax cars, not an interesting factor for variation
         self.buy_cost_adjustment_factor = 1.4
         self.floating_run_cost_multiplier = 10
-        # boost loading speed of default pax cars
-        self.loading_speed_multiplier = 1.75
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
-        self.weight_factor = 0.66 if self.base_track_type == "NG" else 1.5
+        self.weight_factor = 1 if self.base_track_type == "NG" else 2
         # Graphics configuration
         # pax cars only have one consist cargo mapping, which they always default to, whatever the consist cargo is
         # position based variants:
         #   * standard coach
         #   * brake coach front
         #   * brake coach rear
-        #   * I removed special coaches from PassengerCarConsistBase Dec 2018, overkill
+        #   * I removed special coaches from PassengerLuxuryCarConsist Feb 2021, as Restaurant cars were added
         spriterow_group_mappings = {
             "pax": {"default": 0, "first": 1, "last": 2, "special": 0}
         }
@@ -2749,42 +2742,6 @@ class PassengerHSTCarConsist(PassengerCarConsistBase):
         )
 
 
-class PassengerLuxuryCarConsist(PassengerCarConsistBase):
-    """
-    Improved decay rate and lower capacity per unit length compared to standard pax car.
-    Position-dependent sprites for brake car etc.
-    """
-
-    # very specific flag used for variable run costs and cargo aging factor with restaurant cars
-    # !! this will need made more general if e.g. motorail or observation cars are added
-    # not sure why I did this as a class property, but eh
-    """
-    affected_by_restaurant_car_in_consist = True
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = "luxury_passenger_car"
-        super().__init__(**kwargs)
-        # buy costs and run costs are levelled for standard and lux pax cars, not an interesting factor for variation
-        self.buy_cost_adjustment_factor = 1.4
-        self.floating_run_cost_multiplier = 10
-        # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
-        self.weight_factor = 1 if self.base_track_type == "NG" else 2
-        # Graphics configuration
-        # pax cars only have one consist cargo mapping, which they always default to, whatever the consist cargo is
-        # position based variants:
-        #   * standard coach
-        #   * brake coach front
-        #   * brake coach rear
-        #   * I removed special coaches from PassengerLuxuryCarConsist Feb 2021, as Restaurant cars were added
-        spriterow_group_mappings = {
-            "pax": {"default": 0, "first": 1, "last": 2, "special": 0}
-        }
-        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(
-            spriterow_group_mappings, consist_ruleset="pax_cars"
-        )
-
-
 class PassengerRailcarTrailerCarConsist(PassengerCarConsistBase):
     """
     Unpowered passenger trailer car for railcars.
@@ -2875,6 +2832,51 @@ class PassengerRestaurantCarConsist(PassengerCarConsistBase):
         # position based variants are not used for restaurant cars, but they use the pax ruleset and sprite compositor for convenience
         spriterow_group_mappings = {
             "pax": {"default": 0, "first": 0, "last": 0, "special": 0}
+        }
+        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(
+            spriterow_group_mappings, consist_ruleset="pax_cars"
+        )
+
+
+class PassengerSuburbanCarConsist(PassengerCarConsistBase):
+    """
+    Suburban pax car.
+    Aggressive decay rate due to high capacity. Improved loading speed, lots of door space.
+    Position-dependent sprites for brake car etc.
+    """
+
+    # very specific flag used for variable run costs and cargo aging factor with restaurant cars
+    # !! this will need made more general if e.g. motorail or observation cars are added
+    # not sure why I did this as a class property, but eh
+    """
+    affected_by_restaurant_car_in_consist = True
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "suburban_passenger_car"
+        super().__init__(**kwargs)
+        """
+        # this will knock standard age period down, so this train is less profitable over ~128 tiles (depends on vehicle speed) than a similar luxury pax car
+        self.cargo_age_period = (
+            global_constants.CARGO_AGE_PERIOD_PAX_HIGHER_CAPACITY_MALUS
+        )
+        """
+        # buy costs and run costs are levelled for standard and lux pax cars, not an interesting factor for variation
+        self.buy_cost_adjustment_factor = 1.4
+        self.floating_run_cost_multiplier = 10
+        # boost loading speed of suburban pax cars
+        self.loading_speed_multiplier = 1.75
+        # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
+        self.weight_factor = 0.66 if self.base_track_type == "NG" else 1.5
+        # Graphics configuration
+        # pax cars only have one consist cargo mapping, which they always default to, whatever the consist cargo is
+        # position based variants:
+        #   * standard coach
+        #   * brake coach front
+        #   * brake coach rear
+        #   * I removed special coaches from PassengerCarConsistBase Dec 2018, overkill
+        spriterow_group_mappings = {
+            "pax": {"default": 0, "first": 1, "last": 2, "special": 0}
         }
         self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(
             spriterow_group_mappings, consist_ruleset="pax_cars"
@@ -4174,22 +4176,6 @@ class MailCar(TrainCar):
         ) / polar_fox.constants.mail_multiplier
 
 
-class PaxCar(TrainCar):
-    """
-    Pax wagon. This subclass only exists to set capacity and symmetry_type.
-    """
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        # pax wagons may be asymmetric, there is magic in the graphics processing to make symmetric pax/mail sprites also work with this
-        self._symmetry_type = "asymmetric"
-        # magic to set pax car capacity subject to length
-        base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[
-            self.consist.base_track_type
-        ][self.consist.gen - 1]
-        self.capacity = self.vehicle_length * base_capacity
-
-
 class HSTPaxCar(TrainCar):
     """
     Pax wagon for HST-type trains. This subclass only exists to set capacity and symmetry_type.
@@ -4206,9 +4192,9 @@ class HSTPaxCar(TrainCar):
         self.capacity = int(self.vehicle_length * base_capacity * 0.875)
 
 
-class LuxuryPaxCar(TrainCar):
+class PaxCar(TrainCar):
     """
-    Luxury pax wagon. This subclass only exists to set capacity and symmetry_type.
+    Standard pax wagon. This subclass only exists to set capacity and symmetry_type.
     """
 
     def __init__(self, **kwargs):
@@ -4241,6 +4227,22 @@ class RestaurantPaxCar(TrainCar):
     def weight(self):
         # special handling of weight - let's just use 37 + gen for Pony, split that later for other rosters if needed
         return 37 + self.consist.gen
+
+
+class SuburbanPaxCar(TrainCar):
+    """
+    High-capacity pax wagon. This subclass only exists to set capacity and symmetry_type.
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # pax wagons may be asymmetric, there is magic in the graphics processing to make symmetric pax/mail sprites also work with this
+        self._symmetry_type = "asymmetric"
+        # magic to set pax car capacity subject to length
+        base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[
+            self.consist.base_track_type
+        ][self.consist.gen - 1]
+        self.capacity = self.vehicle_length * base_capacity
 
 
 class ExpressCar(TrainCar):
