@@ -1,31 +1,140 @@
 ##grflangid 0x5a
 ##plural 1
-# this is the default translation and is en-gb
+# this is indonesian translation
 STR_GRF_DESCRIPTION                                             :Lisensi: {SILVER}GPL v2{}{BLACK}
 
-STR_PARAM_ADJUST_VEHICLE_CAPACITY                               :Kapasitas kereta
-STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :Kecil
-STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Hebat
-STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Terlalu banyak
+STR_PARAM_ADJUST_VEHICLE_CAPACITY                               :Kapapitas Kereta
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_DESC                          :Atur Kapapitas Kereta Untuk Kesulitan Permainan.{}{}Puny: {GOLD}33% Lebih Sedikit{BLACK}{}Marvellous: {GOLD}default{BLACK}{}Excessive: {GOLD}33% Lebih Banyak{BLACK}{}Outrageous: {GOLD}77% Lebih Banyak{BLACK}
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :Puny
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Marvellous (default)
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Excessive
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_3                      :Outrageous
+STR_PARAM_SIMPLIFIED_GAMEPLAY                                   :Gameplay Simple
+STR_PARAM_SIMPLIFIED_GAMEPLAY_DESC                              :Bermain Dengan Opsi Kereta Lebih Simple. Ini Akan Mengurangi Jumlah Kereta. Kereta Eye-candy Seperti snowploughs(Pembersih Salju), driving cab cars (Gerbong Dengan Kabin Kemudi) Dan Lokomotiv yang sangat lamban tidak akan tersedia.
+STR_PARAM_ROSTER                                                :Roster
+STR_PARAM_ROSTER_DESC                                           :Pilih Set Kereta Yang Akan Digunakan (Untuk Sementara Hanya Ada Satu Set Kereta,Ya itu - Pony).
+STR_PARAM_ROSTER_OPTION_0                                       :Pony - Ter Ispirasi Dari Kereta Inggris
+STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY                   :Warna Gerbong Acak
+STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_DESC              :Warna Acak Untuk Gerbong Barang.{}{}Ada Dua Opsi, Salah Satunya Warna Perusahaan Openttd, Atau parameter Iron Horse.  Iron Horse akan Mengacak 2 nuansa, Tergantung Pengaturan parameter.{}{}Ganti Warna Gerbong di Depo (Menggunakan ctrl-click) untuk Mengurangi warna dasar.{}{}Beberapa Gerbong Memiliki Warna Sendiri yang tidak bisa di acak; Seperti, brake vans(Gerbong rem), Gerbong Express Dan Gerbong Penumpang.
+STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_0          :2 nuansa akan terpilih (default)
+STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_1          :1 nuansa akan terpilih
+STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_2          :tidak di acak!
+STR_PARAM_WAGON_BASE_COLOUR_1                                   :Warna Dasar Gerbong 1
+STR_PARAM_WAGON_BASE_COLOUR_2                                   :Warna Dasar Gerbong 2
+STR_PARAM_WAGON_BASE_COLOUR_DESC                                :Skema warna khusus untuk kelompok kendaraan adalah fitur hebat dalam OpenTTD. {}{}Namun, kelompok kendaraan tidak dapat menyetel warna gerbong secara terpisah ke mesin.{}{}Parameter ini secara opsional dapat mengatur warna tertentu untuk gerbong barang, bukan warna perusahaan.{}{}Pengaturan ini akan diterapkan ke {WHITE}Semua {BLACK}kereta yang dikelompokkan dan tidak dikelompokkan, itu {WHITE}tidak dapat disetel per grup.{BLACK}{}{}Pengaturan ini tidak berlaku untuk beberapa jenis gerbong, misalnya van rem, van surat dan gerbong penumpang
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_0                            :Menggunakan warna Perusahaan (default)
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_1                            :Biru Tua
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_2                            :Hijau muda
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_3                            :Pink
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_4                            :Kuning
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_5                            :Merah
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_6                            :Biru Muda
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_7                            :Hijau
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_8                            :Hijau Tua
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_9                            :Biru
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_10                           :Krim
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_11                           :Mauve
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_12                           :Ungu
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_13                           :Oranye
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_14                           :Coklat
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_15                           :Abu-abu
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_16                           :Putih
 
 # keep these alphabetised, easier
-STR_NAME_SUFFIX_DIESEL                                          :(Diesel)
-STR_NAME_SUFFIX_ELECTRIC                                        :(Listrik)
-STR_NAME_SUFFIX_STEAM                                           :(Uap)
+STR_NAME_SUFFIX_DIESEL                                          :Diesel
+STR_NAME_SUFFIX_ELECTRIC                                        :Listrik
+STR_NAME_SUFFIX_ELECTRODIESEL                                   :Elektro-Diesel
+STR_NAME_SUFFIX_METRO                                           :Metro
+STR_NAME_SUFFIX_STEAM                                           :Uap
 
 # size suffixes
+STR_NAME_SUFFIX_SMALL                                           :Kecil
+STR_NAME_SUFFIX_MEDIUM                                          :Medium
+STR_NAME_SUFFIX_LARGE                                           :Besar
+STR_NAME_SUFFIX_TWIN                                            :Ganda
 
 # wagon class suffixes
 # as of Jan 2019 these are switched from en-us to en-gb
 # the en-us translation should be updated appropriately when making changes here
 # !! consider splitting strings per roster?? A US caboose is still a 'caboose' in en-gb, not a brake van
+STR_NAME_SUFFIX_ALIGNMENT_CAR                                   :Gerbong Penjajarah
+STR_NAME_SUFFIX_BOX_CAR                                         :Gerbong Box
+STR_NAME_SUFFIX_COIL_BUGGY_CAR                                  :Gerbong Koil
+STR_NAME_SUFFIX_BOLSTER_CAR                                     :Gerbong Datar
+STR_NAME_SUFFIX_BULKHEAD_FLAT_CAR                               :Gerbong Datar Bulkhead
+STR_NAME_SUFFIX_CABOOSE_CAR                                     :Gerbong Rem
+STR_NAME_SUFFIX_CEMENT_SILO_CAR                                 :Gerbong Semen
+STR_NAME_SUFFIX_CARBON_BLACK_HOPPER_CAR                         :Hopper Hitam Karbon
+STR_NAME_SUFFIX_COIL_CAR_COVERED                                :Gerbong Koil Tertutup
+STR_NAME_SUFFIX_COIL_CAR_UNCOVERED                              :Pengantar Koil
+STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Hopper Tertutup
+STR_NAME_SUFFIX_CRYO_TANK_CAR                                   :Tanker Cryo
+STR_NAME_SUFFIX_CURTAIN_SIDE_BOX_CAR                            :Gerbong Tepi Tirai
+STR_NAME_SUFFIX_DUMP_CAR                                        :Gerbong Mineral
+STR_NAME_SUFFIX_DUMP_CAR_HIGH_SIDE                              :Gerbong Mineral Tinggi
+STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Tanker Makkanan
+STR_NAME_SUFFIX_EXPRESS_CAR                                     :Gerbong Express
+STR_NAME_SUFFIX_EXPRESS_INTERMODAL_CAR                          :Gerbong Kontainer Express
+STR_NAME_SUFFIX_EXPRESS_RAILCAR_PASSENGER_TRAILER_CAR           :Gerbong Kereta Rangkaian Express
+STR_NAME_SUFFIX_FLAT_CAR                                        :Gerbong Data
+STR_NAME_SUFFIX_FRUIT_VEG_CAR                                   :Gerbong Buah & Sayur-Mayur
+STR_NAME_SUFFIX_GRAIN_HOPPER_CAR                                :Gerbong Gandum
+STR_NAME_SUFFIX_HOPPER_CAR                                      :Hopper
+STR_NAME_SUFFIX_HST_PASSENGER_CAR                               :Gerbong Penumpang
+STR_NAME_SUFFIX_INGOT_CAR                                       :Pengankut Logam Batangan
+STR_NAME_SUFFIX_INTERMODAL_CAR                                  :Gerbong Kontainer
+STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Gerbong Ternak
+STR_NAME_SUFFIX_LOG_CAR                                         :Gerbong Kayu Glondongan
+STR_NAME_SUFFIX_LOW_FLOOR_INTERMODAL_CAR                        :Gerbong Kontainer Berlantai Rendah
+STR_NAME_SUFFIX_LUXURY_PASSENGER_CAR                            :Gerbong Penumpang Mewah
+STR_NAME_SUFFIX_MAIL_CAR                                        :Gerbong Parcel/Surat
+STR_NAME_SUFFIX_OPEN_CAR                                        :Gerbong Bak Terbuka
+STR_NAME_SUFFIX_ORE_HOPPER_CAR                                  :Hopper Bijih Logam
+STR_NAME_SUFFIX_PASSENGER_CAR                                   :Gerbong Penumpang
+STR_NAME_SUFFIX_PELLET_HOPPER_CAR                               :Gerbong Pellet
+STR_NAME_SUFFIX_PLATE_CAR                                       :Gerbong Plat
+STR_NAME_SUFFIX_PRODUCT_TANK_CAR                                :Tanker Produk
+STR_NAME_SUFFIX_RAILCAR_PASSENGER_TRAILER_CAR                   :Gerbong Penumpang Kereta Rangkaian
+STR_NAME_SUFFIX_REEFER_CAR                                      :Gerbong Pendingin
+STR_NAME_SUFFIX_RESTAURANT_CAR                                  :Gerbong Restoran
+STR_NAME_SUFFIX_ROCK_HOPPER_CAR                                 :Gerbong Terbuka Batu
+STR_NAME_SUFFIX_SILO_CAR                                        :Gerbong Silo
+STR_NAME_SUFFIX_SLAG_LADLE_CAR                                  :Gerbong Logam Cair
+STR_NAME_SUFFIX_SLIDING_ROOF_CAR                                :Gerbong Atap Geser
+STR_NAME_SUFFIX_SLIDING_WALL_CAR                                :Gerbong Pintu Geser
+STR_NAME_SUFFIX_SCRAP_METAL_CAR                                 :Gerbong Rongsokan
+STR_NAME_SUFFIX_TANK_CAR                                        :Tanker
+STR_NAME_SUFFIX_TARPAULIN_CAR                                   :Gerbong Terpal
+STR_NAME_SUFFIX_TORPEDO_CAR                                     :Gerbong Torpedo
+STR_NAME_SUFFIX_VEHICLE_PARTS_BOX_CAR                           :Gerbong Bagian kendaraan
+STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Gerbong Angkuta  Mobil
 
 # buy menu wrappers
+STR_BUY_MENU_WRAPPER_ONE_SUBSTR                                 :{STRING}
+STR_BUY_MENU_WRAPPER_TWO_SUBSTR                                 :{STRING}{}{STRING}
 
 # role information for buy menu
+STR_ROLE                                                        :{BLACK}Role: {GOLD}{STRING}
+STR_ROLE_DRIVING_CAB                                            :Kabin Kemudi
+STR_ROLE_FREIGHT                                                :Barang
+STR_ROLE_GENERAL_PURPOSE                                        :Tujuan Umum
+STR_ROLE_GENERAL_PURPOSE_EXPRESS                                :Tujuan Umum Express
+STR_ROLE_HST                                                    :Kecepatan Tinggi
+STR_ROLE_LOLZ                                                   :Tujuan Umum Ringan
+STR_ROLE_METRO                                                  :Urban
+STR_ROLE_VERY_HIGH_SPEED                                        :Kecepatan sangat Tinggi
 
 # assumes only diesel and electric currently
+STR_POWER_BY_RAILTYPE                                           :{BLACK}Tenaga Diesel: {GOLD}{POWER} {}{BLACK}Tenaga Listrik: {GOLD}{POWER}
 
 # distributed power (dedicated wagons add power)
+STR_WAGONS_ADD_POWER_CAB                                        :Tenaga (Didistribusikan): {GOLD}{POWER} per {STRING} unit tersambung
+STR_WAGONS_ADD_POWER_MIDDLE                                     :Tenaga (Didistribusikan): {GOLD}{POWER} Ketika Di Sambung Dengan {STRING}
+
+# other buy menu hints
+STR_BUY_MENU_HINT_DRIVING_CAB                                   :{BLACK}Pasang Di Depan Atau Di Belakang Dari Kereta, Dengan Setidaknya satu lomomotiv Lainya
+STR_BUY_MENU_HINT_RESTAURANT_CAR                                :{}{BLACK}Bonus: {GOLD}Meningkatkan biaya operasional dan tarif pembayaran untuk {WHITE}Gerbong Penumpang {GOLD}Dan {WHITE}Gerbong Penumpang Mewah {}{}{BLACK}Bonua Ini Akan Berdampak satu kali per satu kereta
 
 # project management
+STR_SPRITES_COMPLETE                                            :{}Sprite Terselesaikan: {GOLD}Ya
+STR_SPRITES_INCOMPLETE                                          :{}Sprites Terselesaikan: {GOLD}Tidak
