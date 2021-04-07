@@ -2598,16 +2598,14 @@ class PassengerCarConsist(PassengerCarConsistBase):
     # very specific flag used for variable run costs and cargo aging factor with restaurant cars
     # !! this will need made more general if e.g. motorail or observation cars are added
     # not sure why I did this as a class property, but eh
-    """
     affected_by_restaurant_car_in_consist = True
-    """
 
     def __init__(self, **kwargs):
         self.base_id = "passenger_car"
         super().__init__(**kwargs)
         # buy costs and run costs are levelled for standard and lux pax cars, not an interesting factor for variation
         self.buy_cost_adjustment_factor = 1.4
-        self.floating_run_cost_multiplier = 10
+        self.floating_run_cost_multiplier = 3.33
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 1 if self.base_track_type == "NG" else 2
         # Graphics configuration
@@ -2839,13 +2837,6 @@ class PassengerSuburbanCarConsist(PassengerCarConsistBase):
     Position-dependent sprites for brake car etc.
     """
 
-    # very specific flag used for variable run costs and cargo aging factor with restaurant cars
-    # !! this will need made more general if e.g. motorail or observation cars are added
-    # not sure why I did this as a class property, but eh
-    """
-    affected_by_restaurant_car_in_consist = True
-    """
-
     def __init__(self, **kwargs):
         self.base_id = "suburban_passenger_car"
         super().__init__(**kwargs)
@@ -2855,7 +2846,7 @@ class PassengerSuburbanCarConsist(PassengerCarConsistBase):
         )
         # buy costs and run costs are levelled for standard and lux pax cars, not an interesting factor for variation
         self.buy_cost_adjustment_factor = 1.4
-        self.floating_run_cost_multiplier = 10
+        self.floating_run_cost_multiplier = 3.33
         # boost loading speed of suburban pax cars
         self.loading_speed_multiplier = 1.75
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value

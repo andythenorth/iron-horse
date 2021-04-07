@@ -133,7 +133,7 @@ STR_WAGONS_ADD_POWER_MIDDLE                                     :Power (Distribu
 
 # other buy menu hints
 STR_BUY_MENU_HINT_DRIVING_CAB                                   :{BLACK}Attach to front or rear of train, with at least one other engine
-STR_BUY_MENU_HINT_RESTAURANT_CAR                                :{}{BLACK}Bonus: {GOLD}Improves running costs and payment rates for {WHITE}Passenger Coaches {GOLD}and {WHITE}Luxury Passenger Coaches {}{}{BLACK}This bonus applies only once per train
+STR_BUY_MENU_HINT_RESTAURANT_CAR                                :{}{BLACK}Bonus: {GOLD}Eliminates running costs for all Passenger Coaches in the train
 
 # project management
 STR_SPRITES_COMPLETE                                            :{}Sprites Complete: {GOLD}Yup

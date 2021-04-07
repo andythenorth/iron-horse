@@ -55,13 +55,11 @@
 <tal:running_cost_factor switch="getattr(consist, 'affected_by_restaurant_car_in_consist', False)">
     <tal:block case="True">
         switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_running_cost_factor, switch_is_restaurant_car_in_consist_0()) {
-            <!--! 70% reduction in run costs if 1 restaurant car is present (more than 1 has no additional effect)
-                 tuned via a multi-generation test game over a route of about 120 tiles
-                 gives a rough balance
+            <!--! eliminate run costs if 1 restaurant car is present (more than 1 has no additional effect)
+                not particularly tested for balance as of April 2021, 'rough is good enough'
                  value of restaurant car varies by number of pax cars in consist and train speed, but is generally net positive above about 4 coaches or so
-                 adding restaurant car to pax coaches has substantial boost for most generations
-                 adding restaurant car to luxury coaches has boost when train speeds are lower, not for late-gen fast trains  -->
-            1: return ${int(0.3 * consist.running_cost)};
+            -->
+            1: return 0;
             0: return ${consist.running_cost};
         }
     </tal:block
@@ -71,21 +69,6 @@
         }
     </tal:block>
 </tal:running_cost_factor>
-
-<!--! some vehicles vary cargo age period if restaurant car is in consist
-      this will need generalised if other similar vehicles are added, e.g. motorail, observation car etc -->
-<tal:variable_cargo_age_period condition="getattr(consist, 'affected_by_restaurant_car_in_consist', False)">
-    switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_cargo_age_period, switch_is_restaurant_car_in_consist_0()) {
-        <!--! 30% increase in cargo aging period if 1 restaurant car is present (more than 1 has no additional effect)
-             tuned via a multi-generation test game over a route of about 120 tiles
-             gives a rough balance
-             value of restaurant car varies by number of pax cars in consist and train speed, but is generally net positive above about 4 coaches or so
-             adding restaurant car to pax coaches has substantial boost for most generations
-             adding restaurant car to luxury coaches has boost when train speeds are lower, not for late-gen fast trains  -->
-        1: return ${int(1.3 * consist.cargo_age_period)};
-        0: return ${consist.cargo_age_period};
-    }
-</tal:variable_cargo_age_period>
 
 item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
     property {
@@ -130,6 +113,7 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
         purchase:                       ${vehicle.id}_switch_graphics_purchase;
         cost_factor:                    ${consist.buy_cost}; // CB used as it is capped to max 32k, prop is only 255
         running_cost_factor:            ${vehicle.id}_switch_running_cost_factor; // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+        purchase_running_cost_factor:   ${consist.running_cost}; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
         <tal:conditional_random_trigger condition="vehicle.random_trigger_switch is not None">
             <!--! NOTE that dual headed units should avoid random triggers as of Dec 2020 - there is an undiagnosed with bug rear unit running unwanted triggers and re-randomising in depots etc -->
             random_trigger:                 ${vehicle.id + vehicle.random_trigger_switch};
@@ -149,10 +133,6 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
             purchase_cargo_capacity:        ${vehicle.id + '_switch_cargo_capacity'};
             loading_speed:                  ${vehicle.loading_speed};
         </tal:optional_capacity_switches>
-        <tal:variable_cargo_age_period condition="getattr(consist, 'affected_by_restaurant_car_in_consist', False)">
-            <!--! !! currently specific to pax coaches affected by restaurant cars, refactor if motorail, observation cars etc are added later -->
-            cargo_age_period:               ${vehicle.id + '_switch_cargo_age_period'};
-        </tal:variable_cargo_age_period>
         <!--! no buy menu extra text in this grf by design; extra text is associated with BAD FEATURES -->
         <tal:variable_power condition="consist.engine_varies_power_by_railtype(vehicle) or consist.wagons_add_power">
             power:                          ${vehicle.id}_switch_power;
