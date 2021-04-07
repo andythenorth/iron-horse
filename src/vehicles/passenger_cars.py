@@ -5,9 +5,20 @@ def main():
     # --------------- pony NG ----------------------------------------------------------------------
     consist = PassengerCarConsist(
         roster_id="pony",
+        base_numeric_id=770,
+        gen=1,
+        subtype="A",
+        base_track_type="NG",
+        sprites_complete=False,
+    )
+
+    consist.add_unit(type=PaxCar, chassis="4_axle_ng_16px")
+
+    consist = PassengerCarConsist(
+        roster_id="pony",
         base_numeric_id=1530,
         gen=1,
-        subtype="U",
+        subtype="B",
         base_track_type="NG",
         sprites_complete=False,
     )
@@ -18,9 +29,20 @@ def main():
 
     consist = PassengerCarConsist(
         roster_id="pony",
+        base_numeric_id=800,
+        gen=3,
+        subtype="A",
+        base_track_type="NG",
+        sprites_complete=False,
+    )
+
+    consist.add_unit(type=PaxCar, chassis="4_axle_ng_16px")
+
+    consist = PassengerCarConsist(
+        roster_id="pony",
         base_numeric_id=600,
         gen=3,
-        subtype="U",
+        subtype="B",
         base_track_type="NG",
         sprites_complete=False,
     )
@@ -29,9 +51,20 @@ def main():
 
     consist = PassengerCarConsist(
         roster_id="pony",
+        base_numeric_id=860,
+        gen=4,
+        subtype="A",
+        base_track_type="NG",
+        sprites_complete=False,
+    )
+
+    consist.add_unit(type=PaxCar, chassis="4_axle_ng_16px")
+
+    consist = PassengerCarConsist(
+        roster_id="pony",
         base_numeric_id=660,
         gen=4,
-        subtype="U",
+        subtype="B",
         base_track_type="NG",
         sprites_complete=False,
     )
@@ -126,7 +159,7 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=PaxCar, chassis="6_axle_solid_express_32px")
+    consist.add_unit(type=PaxCar, chassis="4_axle_solid_express_32px")
 
     consist = PassengerCarConsist(
         roster_id="pony",
