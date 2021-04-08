@@ -1,13 +1,13 @@
-from train import PassengerEngineRailcarConsist, DieselRailcarPaxUnit
+from train import PassengerEngineRailbusConsist, DieselRailcarPaxUnit
 
 
 def main(roster_id):
-    consist = PassengerEngineRailcarConsist(
+    consist = PassengerEngineRailbusConsist(
         roster_id=roster_id,
         id="snapper",
         base_numeric_id=590,
         name="Snapper",
-        role="pax_railcar",
+        role="pax_railbus",
         role_child_branch_num=1,
         base_track_type="NG",
         power=350,

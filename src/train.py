@@ -320,7 +320,11 @@ class Consist(object):
                 "snoughplough!": [-1],
             },
             "metro": {"mail_metro": [1], "pax_metro": [1]},
-            "railcar": {"mail_railcar": [1, 2, -1, -2], "pax_railcar": [1, 2]},
+            "railcar": {
+                "mail_railcar": [1, 2, -1, -2],
+                "pax_railbus": [1],
+                "pax_railcar": [1, 2],
+            },
             "very_high_speed": {"very_high_speed": [1, 2]},
             "universal": {"universal": [1]},
         }
@@ -1170,7 +1174,7 @@ class PassengerHSTCabEngineConsist(PassengerEngineConsist):
 class PassengerEngineExpressRailcarConsist(PassengerEngineConsist):
     """
     Consist for an express pax railcar (single unit, combinable).
-    Intended for express-speed, high-power long-distance EMUs, use railcars for short / slow / commuter routes.
+    Intended for express-speed, high-power long-distance EMUs, use railbus or railcars for short / slow / commuter routes.
     """
 
     def __init__(self, **kwargs):
@@ -1264,6 +1268,62 @@ class PassengerEngineMetroConsist(PassengerEngineConsist):
     def cargo_age_period(self):
         # this will knock standard age period down, so this train is only profitable over short routes
         return global_constants.CARGO_AGE_PERIOD_METRO_MALUS
+
+
+class PassengerEngineRailbusConsist(PassengerEngineConsist):
+    """
+    Consist for a lightweight railbus (single unit, combinable).
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.allow_flip = True
+        # train_flag_mu solely used for ottd livery (company colour) selection
+        self.train_flag_mu = True
+        # non-standard cite
+        self._cite = "Arabella Unit"
+        # Graphics configuration
+        self.roof_type = "pax_mail_smooth"
+        # 2 liveries, don't need to match anything else, railbus isn't intended to combine well with other vehicle types
+        # position variants
+        # * unit with driving cab front end
+        # * unit with driving cab rear end
+        # ruleset will combine these to make multiple-units 1, 2 vehicles long, then repeating the pattern
+        spriterow_group_mappings = {
+            "mail": {"default": 0, "first": 1, "last": 2, "special": 0}
+        }
+        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(
+            spriterow_group_mappings,
+            consist_ruleset="railcars_2_unit_sets",
+            pantograph_type=self.pantograph_type,
+        )
+
+    @property
+    def equivalent_ids_alt_var_41(self):
+        # where var 14 checks consecutive chain of a single ID, I provided an alternative checking a list of IDs
+        # may or may not handle articulated vehicles correctly (probably not, no actual use cases for that)
+        # this redefinition specific to railbus and will be fragile if railbus or trailers are changed/extended
+        result = []
+        # this will catch self also
+        for consist in self.roster.engine_consists:
+            if (
+                (consist.gen == self.gen)
+                and (consist.base_track_type == self.base_track_type)
+                and (consist.role in ["pax_railbus"])
+            ):
+                result.append(consist.base_numeric_id)
+        # commented out support for trailers temporarily
+        for consist in self.roster.wagon_consists[
+            "railbus_passenger_trailer_car"
+        ]:
+            if (consist.gen == self.gen) and (
+                consist.base_track_type == self.base_track_type
+            ):
+                result.append(consist.base_numeric_id)
+        # the list requires 16 entries as the nml check has 16 switches, fill out to empty list entries with '-1', which won't match any IDs
+        for i in range(len(result), 16):
+            result.append(-1)
+        return result
 
 
 class PassengerEngineRailcarConsist(PassengerEngineConsist):
@@ -2755,9 +2815,69 @@ class PassengerHSTCarConsist(PassengerCarConsistBase):
         )
 
 
+class PassengerRailbusTrailerCarConsist(PassengerCarConsistBase):
+    """
+    Unpowered passenger trailer car for railbus (not railcar).
+    Position-dependent sprites for cabs etc.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "railbus_passenger_trailer_car"
+        super().__init__(**kwargs)
+        # PassengerCarConsistBase sets 'express', but railcar trailers should over-ride this back to 'standard'
+        self.speed_class = "railcar"
+        # train_flag_mu solely used for ottd livery (company colour) selection
+        self.train_flag_mu = True
+        self.buy_cost_adjustment_factor = 2.1
+        self.floating_run_cost_multiplier = 4.75
+        # boost loading speed to match default pax cars
+        self.loading_speed_multiplier = 1.75
+        self._intro_date_days_offset = (
+            global_constants.intro_date_offsets_by_role_group["railcar"]
+        )
+        self._joker = True
+        # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
+        # for railbus trailers, the capacity is doubled, so halve the weight factor, this could have been automated with some constants etc but eh, TMWFTLB
+        self.weight_factor = 0.33 if self.base_track_type == "NG" else 1
+        # Graphics configuration
+        self.roof_type = "pax_mail_smooth"
+        # 2 liveries, don't need to match anything else, railbus isn't intended to combine well with other vehicle types
+        # position variants
+        # * unit with driving cab front end
+        # * unit with driving cab rear end
+        # ruleset will combine these to make multiple-units 1, 2 vehicles long, then repeating the pattern
+        spriterow_group_mappings = {
+            "mail": {"default": 0, "first": 1, "last": 2, "special": 0}
+        }
+        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(
+            spriterow_group_mappings,
+            consist_ruleset="railcars_2_unit_sets",
+            pantograph_type=self.pantograph_type,
+        )
+
+    @property
+    def equivalent_ids_alt_var_41(self):
+        # where var 14 checks consecutive chain of a single ID, I provided an alternative checking a list of IDs
+        # may or may not handle articulated vehicles correctly (probably not, no actual use cases for that)
+        # this redefinition specific to pax railbus trailers and will be fragile if railbus or trailers are changed/extended
+        result = []
+        result.append(self.base_numeric_id)
+        for consist in self.roster.engine_consists:
+            if (
+                (consist.gen == self.gen)
+                and (consist.base_track_type == self.base_track_type)
+                and (consist.role in ["pax_railbus"])
+            ):
+                result.append(consist.base_numeric_id)
+        # the list requires 16 entries as the nml check has 16 switches, fill out to empty list entries with '-1', which won't match any IDs
+        for i in range(len(result), 16):
+            result.append(-1)
+        return result
+
+
 class PassengerRailcarTrailerCarConsist(PassengerCarConsistBase):
     """
-    Unpowered passenger trailer car for railcars.
+    Unpowered passenger trailer car for railcars (not railbus).
     Position-dependent sprites for cabs etc.
     """
 
@@ -4150,7 +4270,7 @@ class PaxCar(TrainCar):
 
 class PaxRailcarTrailerCar(PaxCar):
     """
-    Railcar unpowered pax trailer. This subclass only exists to set tail light
+    Railcar (or railbus) unpowered pax trailer. This subclass only exists to set tail light
     """
 
     def __init__(self, **kwargs):

@@ -5,6 +5,7 @@ from collections import OrderedDict
 buy_menu_sort_order_wagons = [
     "alignment_car",
     "hst_passenger_car",
+    "railbus_passenger_trailer_car",
     "railcar_passenger_trailer_car",
     "express_railcar_passenger_trailer_car",
     "passenger_car",
@@ -104,8 +105,10 @@ role_group_mapping = OrderedDict(
         ("freight", ["branch_freight", "freight", "heavy_freight"]),
         (
             "universal",
-            ["universal", "pax_railcar", "mail_railcar"],
-        ),  # note pax before mail
+            ["universal", "pax_railbus", "mail_railcar"],
+        ),
+        # railcars get their own special case due to high capacity, bit janky but eh
+        ("suburban", ["pax_railcar"],),
         ("express_railcar", ["express_pax_railcar"]),
         ("hst", ["hst"]),
         ("very_high_speed", ["very_high_speed"]),
@@ -126,6 +129,7 @@ role_string_mapping = {
     "lolz": "STR_ROLE_LOLZ",
     "express_railcar": "STR_ROLE_GENERAL_PURPOSE_EXPRESS",
     "metro": "STR_ROLE_METRO",
+    "suburban": "STR_ROLE_SUBURBAN",
     "very_high_speed": "STR_ROLE_VERY_HIGH_SPEED",
     "universal": "STR_ROLE_GENERAL_PURPOSE",
 }
