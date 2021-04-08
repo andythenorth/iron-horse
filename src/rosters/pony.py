@@ -205,7 +205,7 @@ def main(disabled=False):
                 "cargo_age_period": global_constants.CARGO_AGE_PERIOD_DEFAULT,
             },
             "high_capacity": {
-                "multiplier": 1.75,
+                "multiplier": 1.66,
                 "cargo_age_period": global_constants.CARGO_AGE_PERIOD_PAX_HIGHER_CAPACITY_MALUS,
             },
             # very specifically tuned multiplier against a single pony vehicle
