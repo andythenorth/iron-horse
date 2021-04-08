@@ -108,7 +108,10 @@ role_group_mapping = OrderedDict(
             ["universal", "pax_railbus", "mail_railcar"],
         ),
         # railcars get their own special case due to high capacity, bit janky but eh
-        ("suburban", ["pax_railcar"],),
+        (
+            "suburban",
+            ["pax_railcar"],
+        ),
         ("express_railcar", ["express_pax_railcar"]),
         ("hst", ["hst"]),
         ("very_high_speed", ["very_high_speed"]),

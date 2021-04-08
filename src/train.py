@@ -64,6 +64,8 @@ class Consist(object):
         #  most consists are automatically replaced by the next consist in the role tree
         # ocasionally we need to merge two branches of the role, in this case set replacement consist id
         self._replacement_consist_id = kwargs.get("replacement_consist_id", None)
+        # default loading speed multiplier, over-ride in subclasses as needed
+        self._loading_speed_multiplier = 1
         self.power = kwargs.get("power", 0)
         self.base_track_type = kwargs.get("base_track_type", "RAIL")
         # modify base_track_type for electric engines when writing out the actual rail type
@@ -550,6 +552,11 @@ class Consist(object):
         return global_constants.CARGO_AGE_PERIOD_DEFAULT
 
     @property
+    def loading_speed_multiplier(self):
+        # over-ride in subclass as needed
+        return self._loading_speed_multiplier
+
+    @property
     def roster(self):
         for roster in registered_rosters:
             if roster.id == self.roster_id:
@@ -910,8 +917,6 @@ class AutoCoachCombineConsist(EngineConsist):
         self.pax_car_capacity_type = self.roster.pax_car_capacity_types[
             "autocoach_combine"
         ]
-        # boost loading speed to match default pax coaches (this gives an incidental boost to mail compared to other mail vehicles, but eh)
-        self.loading_speed_multiplier = 1.75
         # this will knock standard age period down, so this train is less profitable over ~128 tiles (depends on vehicle speed) than a similar standard pax car
         # confer tiny power value to make this one an engine so it can lead.
         self.power = 10  # use 10 not 1, because 1 looks weird when added to engine HP
@@ -929,6 +934,10 @@ class AutoCoachCombineConsist(EngineConsist):
     @property
     def cargo_age_period(self):
         return self.pax_car_capacity_type["cargo_age_period"]
+
+    @property
+    def loading_speed_multiplier(self):
+        return self.pax_car_capacity_type["loading_speed_multiplier"]
 
 
 class MailEngineConsist(EngineConsist):
@@ -994,7 +1003,7 @@ class MailEngineCargoSprinterEngineConsist(MailEngineConsist):
         self.platform_type = "cargo_sprinter"
         # run cost algorithm doesn't account for dual-head / high power MUs reliably, so just fix it here, using assumption that there are very few cargo sprinters and this will be fine
         self.fixed_run_cost_points = 240
-        self.loading_speed_multiplier = 2
+        self._loading_speed_multiplier = 2
         # Graphics configuration
         # !! there is no automatic masking of the cab overlays as of Dec 2020, currently manual - automation might be needed for well cars in future, deal with it then if that's the case
         # NOTE that cargo sprinter will NOT randomise containers on load as of Dec 2020 - there is a bug with rear unit running unwanted triggers and re-randomising in depots etc
@@ -1012,8 +1021,6 @@ class MailEngineMetroConsist(MailEngineConsist):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # OP bonus to mail metro loading speed
-        self.loading_speed_multiplier = 4
         # buy costs increased above baseline, account for 2 units + underground nonsense
         self.buy_cost_adjustment_factor = 2
         # metro should only be effective over short distances
@@ -1037,6 +1044,11 @@ class MailEngineMetroConsist(MailEngineConsist):
     def cargo_age_period(self):
         # this will knock standard age period down, so this train is only profitable over short routes
         return global_constants.CARGO_AGE_PERIOD_METRO_MALUS
+
+    @property
+    def loading_speed_multiplier(self):
+        # OP bonus to mail metro loading speed
+        return 4
 
 
 class MailEngineRailcarConsist(MailEngineConsist):
@@ -1113,6 +1125,10 @@ class PassengerEngineConsist(EngineConsist):
     @property
     def cargo_age_period(self):
         return self.pax_car_capacity_type["cargo_age_period"]
+
+    @property
+    def loading_speed_multiplier(self):
+        return self.pax_car_capacity_type["loading_speed_multiplier"]
 
 
 class PassengerEngineCabControlCarConsist(PassengerEngineConsist):
@@ -1243,8 +1259,6 @@ class PassengerEngineMetroConsist(PassengerEngineConsist):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # super super OP bonus to pax metro loading speed
-        self.loading_speed_multiplier = 8
         # buy costs increased above baseline, account for 2 units + underground nonsense
         self.buy_cost_adjustment_factor = 2
         # metro should only be effective over short distances
@@ -1268,6 +1282,11 @@ class PassengerEngineMetroConsist(PassengerEngineConsist):
     def cargo_age_period(self):
         # this will knock standard age period down, so this train is only profitable over short routes
         return global_constants.CARGO_AGE_PERIOD_METRO_MALUS
+
+    @property
+    def loading_speed_multiplier(self):
+        # super super OP bonus to pax metro loading speed
+        return 8
 
 
 class PassengerEngineRailbusConsist(PassengerEngineConsist):
@@ -1313,9 +1332,7 @@ class PassengerEngineRailbusConsist(PassengerEngineConsist):
             ):
                 result.append(consist.base_numeric_id)
         # commented out support for trailers temporarily
-        for consist in self.roster.wagon_consists[
-            "railbus_passenger_trailer_car"
-        ]:
+        for consist in self.roster.wagon_consists["railbus_passenger_trailer_car"]:
             if (consist.gen == self.gen) and (
                 consist.base_track_type == self.base_track_type
             ):
@@ -1336,8 +1353,6 @@ class PassengerEngineRailcarConsist(PassengerEngineConsist):
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
         self.pax_car_capacity_type = self.roster.pax_car_capacity_types["high_capacity"]
-        # boost loading speed to reflect high capacity
-        self.loading_speed_multiplier = 1.75
         # non-standard cite
         self._cite = "Arabella Unit"
         self.allow_flip = True
@@ -1570,7 +1585,6 @@ class CarConsist(Consist):
         # Weight factor: over-ride in sub-class as needed
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 0.8 if self.base_track_type == "NG" else 1
-        self.loading_speed_multiplier = kwargs.get("loading_speed_multiplier", 1)
         # used to synchronise / desynchronise groups of vehicles, see https://github.com/OpenTTD/OpenTTD/pull/7147 for explanation
         # default all to car consists to 'universal' offset, over-ride in subclasses as needed
         self._intro_date_days_offset = (
@@ -1856,7 +1870,7 @@ class CarbonBlackHopperCarConsist(CarConsist):
         self.label_refits_allowed = ["CBLK"]
         self.label_refits_disallowed = []
         self.default_cargos = []
-        self.loading_speed_multiplier = 1.5
+        self._loading_speed_multiplier = 1.5
         self.buy_cost_adjustment_factor = 1.2
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
@@ -1885,7 +1899,7 @@ class CoilBuggyCarConsist(CarConsist):
         ]
         self.label_refits_disallowed = []  # none needed
         self.default_cargos = polar_fox.constants.default_cargos["coil"]
-        self.loading_speed_multiplier = 1.5
+        self._loading_speed_multiplier = 1.5
         self.buy_cost_adjustment_factor = 1.2
         self.weight_factor = 2  # double the default weight
         self._intro_date_days_offset = (
@@ -1923,7 +1937,7 @@ class CoilCarConsistBase(CarConsist):
             "cold_metal"
         ]
         self.label_refits_disallowed = []
-        self.loading_speed_multiplier = 1.5
+        self._loading_speed_multiplier = 1.5
         self.buy_cost_adjustment_factor = 1.1
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
@@ -1977,7 +1991,7 @@ class CoveredHopperCarConsistBase(CarConsist):
             "covered_hoppers"
         ]
         self.label_refits_disallowed = []
-        self.loading_speed_multiplier = 1.5
+        self._loading_speed_multiplier = 1.5
         self.buy_cost_adjustment_factor = 1.2
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["freight_core"]
@@ -2054,7 +2068,7 @@ class CryoTankCarConsist(CarConsist):
             "cryo_gases"
         ]
         self.default_cargos = polar_fox.constants.default_cargos["cryo_gases"]
-        self.loading_speed_multiplier = 1.5
+        self._loading_speed_multiplier = 1.5
         self.buy_cost_adjustment_factor = 1.33
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
@@ -2113,7 +2127,7 @@ class DumpCarConsistBase(CarConsist):
             "non_dump_bulk"
         ]
         self.default_cargos = polar_fox.constants.default_cargos["dump"]
-        self.loading_speed_multiplier = 1.5
+        self._loading_speed_multiplier = 1.5
         self.buy_cost_adjustment_factor = 1.1
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["freight_core"]
@@ -2191,7 +2205,7 @@ class EdiblesTankCarConsist(CarConsist):
         ]
         self.label_refits_disallowed = []
         self.default_cargos = polar_fox.constants.default_cargos["edibles_tank"]
-        self.loading_speed_multiplier = 1.5
+        self._loading_speed_multiplier = 1.5
         self.buy_cost_adjustment_factor = 1.33
         self.floating_run_cost_multiplier = 1.5
         self._intro_date_days_offset = (
@@ -2265,7 +2279,7 @@ class ExpressIntermodalCarConsist(CarConsist):
             "non_freight_special_cases"
         ]
         self.default_cargos = polar_fox.constants.default_cargos["express"]
-        self.loading_speed_multiplier = 2
+        self._loading_speed_multiplier = 2
         # adjust weight factor because express intermodal car freight capacity is 1/2 of other wagons, but weight should be same
         self.weight_factor = polar_fox.constants.mail_multiplier
         self.floating_run_cost_multiplier = (
@@ -2355,7 +2369,7 @@ class HopperCarConsistBase(CarConsist):
         self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label[
             "non_dump_bulk"
         ]
-        self.loading_speed_multiplier = 2
+        self._loading_speed_multiplier = 2
         self.buy_cost_adjustment_factor = 1.2
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["freight_core"]
@@ -2414,7 +2428,7 @@ class IngotCarConsist(CarConsist):
         self.label_refits_allowed = ["IRON", "CSTI", "STCB"]
         self.label_refits_disallowed = []  # none needed
         self.default_cargos = ["IRON"]
-        self.loading_speed_multiplier = 1.5
+        self._loading_speed_multiplier = 1.5
         self.buy_cost_adjustment_factor = 1.2
         self.weight_factor = 2  # double the default weight
         self._intro_date_days_offset = (
@@ -2454,7 +2468,7 @@ class IntermodalCarConsistBase(CarConsist):
             "non_freight_special_cases"
         ]
         self.default_cargos = polar_fox.constants.default_cargos["box_intermodal"]
-        self.loading_speed_multiplier = 2
+        self._loading_speed_multiplier = 2
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["freight_core"]
         )
@@ -2665,6 +2679,10 @@ class PassengerCarConsistBase(CarConsist):
     @property
     def cargo_age_period(self):
         return self.pax_car_capacity_type["cargo_age_period"]
+
+    @property
+    def loading_speed_multiplier(self):
+        return self.pax_car_capacity_type["loading_speed_multiplier"]
 
 
 class PassengerCarConsist(PassengerCarConsistBase):
@@ -2889,8 +2907,6 @@ class PassengerRailcarTrailerCarConsist(PassengerCarConsistBase):
         self.pax_car_capacity_type = self.roster.pax_car_capacity_types["high_capacity"]
         self.buy_cost_adjustment_factor = 2.1
         self.floating_run_cost_multiplier = 4.75
-        # boost loading speed to reflect high capacity
-        self.loading_speed_multiplier = 1.75
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["railcar"]
         )
@@ -2980,8 +2996,6 @@ class PassengerSuburbanCarConsist(PassengerCarConsistBase):
         # buy costs and run costs are levelled for standard and lux pax cars, not an interesting factor for variation
         self.buy_cost_adjustment_factor = 1.4
         self.floating_run_cost_multiplier = 3.33
-        # boost loading speed of suburban pax cars to reflect high capacity
-        self.loading_speed_multiplier = 1.75
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         # for suburban cars, the capacity is doubled, so halve the weight factor, this could have been automated with some constants etc but eh, TMWFTLB
         self.weight_factor = 0.33 if self.base_track_type == "NG" else 1
@@ -3077,7 +3091,7 @@ class SiloCarConsistBase(CarConsist):
             "SAND",
         ]  # move to Polar Fox (maybe??)
         self.label_refits_disallowed = []
-        self.loading_speed_multiplier = 1.5
+        self._loading_speed_multiplier = 1.5
         self.buy_cost_adjustment_factor = 1.2
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
@@ -3129,7 +3143,7 @@ class SlagLadleCarConsist(CarConsist):
         self.label_refits_allowed = ["SLAG"]
         self.label_refits_disallowed = []  # none needed
         self.default_cargos = ["SLAG"]
-        self.loading_speed_multiplier = 2
+        self._loading_speed_multiplier = 2
         self.buy_cost_adjustment_factor = 1.2
         self.weight_factor = 2  # double the default weight
         self._intro_date_days_offset = (
@@ -3234,7 +3248,7 @@ class TankCarConsistBase(CarConsist):
         self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label[
             "non_generic_liquids"
         ]
-        self.loading_speed_multiplier = 1.5
+        self._loading_speed_multiplier = 1.5
         self.buy_cost_adjustment_factor = 1.2
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["freight_core"]
@@ -3316,7 +3330,7 @@ class TorpedoCarConsist(CarConsist):
         self.label_refits_allowed = ["IRON"]
         self.label_refits_disallowed = []
         self.default_cargos = ["IRON"]
-        self.loading_speed_multiplier = 1.5
+        self._loading_speed_multiplier = 1.5
         self.buy_cost_adjustment_factor = 1.2
         self.floating_run_cost_multiplier = 1.33
         self.weight_factor = 2  # double the default weight
@@ -3410,7 +3424,6 @@ class Train(object):
         self._vehicle_length = kwargs.get("vehicle_length", None)
         self._weight = kwargs.get("weight", None)
         self.capacity = kwargs.get("capacity", 0)
-        self.loading_speed_multiplier = kwargs.get("loading_speed_multiplier", 1)
         # spriterow_num allows assigning sprites for multi-part vehicles, and is not supported in all vehicle templates (by design - TMWFTLB to support)
         self.spriterow_num = kwargs.get("spriterow_num", 0)  # first row = 0;
         # sometimes we want to offset the buy menu spriterow (!! this is incomplete hax, not supported by generated buy menu sprites etc)
@@ -3573,13 +3586,7 @@ class Train(object):
     def loading_speed(self):
         # ottd vehicles load at different rates depending on type, train default is 5
         # Iron Horse uses 5 as default, with some vehicle types adjusting that up or down
-        # loading_speed_multiplier can be defined per unit, or on the consist
-        return int(
-            5
-            * getattr(
-                self.consist, "loading_speed_multiplier", self.loading_speed_multiplier
-            )
-        )
+        return int(5 * self.consist.loading_speed_multiplier)
 
     @property
     def running_cost_base(self):
