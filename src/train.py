@@ -2867,6 +2867,7 @@ class PassengerSuburbanCarConsist(PassengerCarConsistBase):
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         # for suburban cars, the capacity is doubled, so halve the weight factor, this could have been automated with some constants etc but eh, TMWFTLB
         self.weight_factor = 0.33 if self.base_track_type == "NG" else 1
+        self._joker = True
         # Graphics configuration
         # pax cars only have one consist cargo mapping, which they always default to, whatever the consist cargo is
         # position based variants:
