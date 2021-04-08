@@ -1336,7 +1336,7 @@ class PassengerEngineRailcarConsist(PassengerEngineConsist):
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
         self.pax_car_capacity_type = self.roster.pax_car_capacity_types["high_capacity"]
-        # boost loading speed to match default pax cars
+        # boost loading speed to reflect high capacity
         self.loading_speed_multiplier = 1.75
         # non-standard cite
         self._cite = "Arabella Unit"
@@ -2830,8 +2830,6 @@ class PassengerRailbusTrailerCarConsist(PassengerCarConsistBase):
         self.train_flag_mu = True
         self.buy_cost_adjustment_factor = 2.1
         self.floating_run_cost_multiplier = 4.75
-        # boost loading speed to match default pax cars
-        self.loading_speed_multiplier = 1.75
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["railcar"]
         )
@@ -2891,7 +2889,7 @@ class PassengerRailcarTrailerCarConsist(PassengerCarConsistBase):
         self.pax_car_capacity_type = self.roster.pax_car_capacity_types["high_capacity"]
         self.buy_cost_adjustment_factor = 2.1
         self.floating_run_cost_multiplier = 4.75
-        # boost loading speed to match default pax cars
+        # boost loading speed to reflect high capacity
         self.loading_speed_multiplier = 1.75
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["railcar"]
@@ -2982,7 +2980,7 @@ class PassengerSuburbanCarConsist(PassengerCarConsistBase):
         # buy costs and run costs are levelled for standard and lux pax cars, not an interesting factor for variation
         self.buy_cost_adjustment_factor = 1.4
         self.floating_run_cost_multiplier = 3.33
-        # boost loading speed of suburban pax cars
+        # boost loading speed of suburban pax cars to reflect high capacity
         self.loading_speed_multiplier = 1.75
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         # for suburban cars, the capacity is doubled, so halve the weight factor, this could have been automated with some constants etc but eh, TMWFTLB
