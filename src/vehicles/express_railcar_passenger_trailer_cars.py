@@ -1,4 +1,4 @@
-from train import PassengerExpressRailcarTrailerCarConsist, PaxExpressRailcarTrailerCar
+from train import PassengerExpressRailcarTrailerCarConsist, PaxRailcarTrailerCar
 
 
 def main():
@@ -14,7 +14,7 @@ def main():
     )
 
     consist.add_unit(
-        type=PaxExpressRailcarTrailerCar,
+        type=PaxRailcarTrailerCar,
         chassis="4_axle_solid_express_32px",
         tail_light="railcar_32px_3",
     )
@@ -29,7 +29,7 @@ def main():
     )
 
     consist.add_unit(
-        type=PaxExpressRailcarTrailerCar,
+        type=PaxRailcarTrailerCar,
         chassis="4_axle_solid_express_32px",
         tail_light="railcar_32px_3",
     )
@@ -44,7 +44,7 @@ def main():
     )
 
     consist.add_unit(
-        type=PaxExpressRailcarTrailerCar,
+        type=PaxRailcarTrailerCar,
         chassis="4_axle_solid_express_32px",
         tail_light="railcar_32px_3",
     )
@@ -59,7 +59,7 @@ def main():
     )
 
     consist.add_unit(
-        type=PaxExpressRailcarTrailerCar,
+        type=PaxRailcarTrailerCar,
         chassis="4_axle_solid_express_32px",
         tail_light="railcar_32px_3",
     )

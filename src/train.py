@@ -77,8 +77,6 @@ class Consist(object):
         )  # 0.3 is recommended default value
         # private var, can be used to over-rides default (per generation, per class) speed
         self._speed = kwargs.get("speed", None)
-        # default cargo age period, over-ride in subclass as needed
-        self.cargo_age_period = global_constants.CARGO_AGE_PERIOD
         # used by multi-mode engines such as electro-diesel, otherwise ignored
         self.power_by_railtype = kwargs.get("power_by_railtype", None)
         # some engines require pantograph sprites composited, don't bother setting this unless required
@@ -543,6 +541,11 @@ class Consist(object):
         return sum([unit.vehicle_length for unit in self.units])
 
     @property
+    def cargo_age_period(self):
+        # default cargo age period, over-ride in subclass as needed
+        return global_constants.CARGO_AGE_PERIOD_DEFAULT
+
+    @property
     def roster(self):
         for roster in registered_rosters:
             if roster.id == self.roster_id:
@@ -900,13 +903,12 @@ class AutoCoachCombineConsist(EngineConsist):
         self.role = "driving_cab_express_mixed"
         self.role_child_branch_num = -1  # driving cab cars are probably jokers?
         self.buy_menu_hint_driving_cab = True
-        self.allow_flip = False  # articulated innit (even needed?)
+        self.pax_car_capacity_type = self.roster.pax_car_capacity_types[
+            "autocoach_combine"
+        ]
         # boost loading speed to match default pax coaches (this gives an incidental boost to mail compared to other mail vehicles, but eh)
         self.loading_speed_multiplier = 1.75
         # this will knock standard age period down, so this train is less profitable over ~128 tiles (depends on vehicle speed) than a similar standard pax car
-        self.cargo_age_period = (
-            global_constants.CARGO_AGE_PERIOD_PAX_HIGHER_CAPACITY_MALUS
-        )
         # confer tiny power value to make this one an engine so it can lead.
         self.power = 10  # use 10 not 1, because 1 looks weird when added to engine HP
         # nerf TE down to minimal value
@@ -915,8 +917,14 @@ class AutoCoachCombineConsist(EngineConsist):
         self.fixed_buy_cost_points = 6  # to reduce it from engine factor
         # ....run costs nerfed down to match equivalent gen 2 + 3 pax / mail cars
         self.fixed_run_cost_points = 43
+        # no flip as articulated innit (even needed?)
+        self.allow_flip = False
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsCustom("vehicle_autocoach.pynml")
+
+    @property
+    def cargo_age_period(self):
+        return self.pax_car_capacity_type["cargo_age_period"]
 
 
 class MailEngineConsist(EngineConsist):
@@ -1002,10 +1010,6 @@ class MailEngineMetroConsist(MailEngineConsist):
         super().__init__(**kwargs)
         # OP bonus to mail metro loading speed
         self.loading_speed_multiplier = 4
-        """
-        # this will knock standard age period down, so this train is only profitable over short routes
-        self.cargo_age_period = global_constants.CARGO_AGE_PERIOD_METRO_MALUS
-        """
         # buy costs increased above baseline, account for 2 units + underground nonsense
         self.buy_cost_adjustment_factor = 2
         # metro should only be effective over short distances
@@ -1024,6 +1028,11 @@ class MailEngineMetroConsist(MailEngineConsist):
         self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(
             spriterow_group_mappings, consist_ruleset="metro"
         )
+
+    @property
+    def cargo_age_period(self):
+        # this will knock standard age period down, so this train is only profitable over short routes
+        return global_constants.CARGO_AGE_PERIOD_METRO_MALUS
 
 
 class MailEngineRailcarConsist(MailEngineConsist):
@@ -1094,6 +1103,12 @@ class PassengerEngineConsist(EngineConsist):
         self.buy_cost_adjustment_factor = 1.8
         # ...but reduce fixed (baseline) run costs on this subtype, purely for balancing reasons
         self.fixed_run_cost_points = 84
+        # specific structure for capacity multiplier and cargo age rate, over-ride in subclasses as needed
+        self.pax_car_capacity_type = self.roster.pax_car_capacity_types["default"]
+
+    @property
+    def cargo_age_period(self):
+        return self.pax_car_capacity_type["cargo_age_period"]
 
 
 class PassengerEngineCabControlCarConsist(PassengerEngineConsist):
@@ -1226,10 +1241,6 @@ class PassengerEngineMetroConsist(PassengerEngineConsist):
         super().__init__(**kwargs)
         # super super OP bonus to pax metro loading speed
         self.loading_speed_multiplier = 8
-        """
-        # this will knock standard age period down, so this train is only profitable over short routes
-        self.cargo_age_period = global_constants.CARGO_AGE_PERIOD_METRO_MALUS
-        """
         # buy costs increased above baseline, account for 2 units + underground nonsense
         self.buy_cost_adjustment_factor = 2
         # metro should only be effective over short distances
@@ -1249,22 +1260,24 @@ class PassengerEngineMetroConsist(PassengerEngineConsist):
             spriterow_group_mappings, consist_ruleset="metro"
         )
 
+    @property
+    def cargo_age_period(self):
+        # this will knock standard age period down, so this train is only profitable over short routes
+        return global_constants.CARGO_AGE_PERIOD_METRO_MALUS
+
 
 class PassengerEngineRailcarConsist(PassengerEngineConsist):
     """
-    Consist for a pax railcar (single unit, combinable).
+    Consist for a high-capacity pax railcar (single unit, combinable).
     """
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # boost loading speed to match default pax cars
-        self.loading_speed_multiplier = 1.75
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
-        # this will knock standard age period down, so this train is less profitable over ~128 tiles (depends on vehicle speed) than a similar standard pax car
-        self.cargo_age_period = (
-            global_constants.CARGO_AGE_PERIOD_PAX_HIGHER_CAPACITY_MALUS
-        )
+        self.pax_car_capacity_type = self.roster.pax_car_capacity_types["high_capacity"]
+        # boost loading speed to match default pax cars
+        self.loading_speed_multiplier = 1.75
         # non-standard cite
         self._cite = "Arabella Unit"
         self.allow_flip = True
@@ -2574,6 +2587,8 @@ class PassengerCarConsistBase(CarConsist):
         self.label_refits_allowed = []
         self.label_refits_disallowed = []
         self.default_cargos = polar_fox.constants.default_cargos["pax"]
+        # specific structure for capacity multiplier and cargo age rate, over-ride in subclasses as needed
+        self.pax_car_capacity_type = self.roster.pax_car_capacity_types["default"]
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["express_core"]
         )
@@ -2586,6 +2601,10 @@ class PassengerCarConsistBase(CarConsist):
             self.roof_type = "pax_mail_ridged"
         else:
             self.roof_type = "pax_mail_smooth"
+
+    @property
+    def cargo_age_period(self):
+        return self.pax_car_capacity_type["cargo_age_period"]
 
 
 class PassengerCarConsist(PassengerCarConsistBase):
@@ -2749,10 +2768,7 @@ class PassengerRailcarTrailerCarConsist(PassengerCarConsistBase):
         self.speed_class = "railcar"
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
-        # this will knock standard age period down, so this train is less profitable over ~128 tiles (depends on vehicle speed) than a similar standard pax car
-        self.cargo_age_period = (
-            global_constants.CARGO_AGE_PERIOD_PAX_HIGHER_CAPACITY_MALUS
-        )
+        self.pax_car_capacity_type = self.roster.pax_car_capacity_types["high_capacity"]
         self.buy_cost_adjustment_factor = 2.1
         self.floating_run_cost_multiplier = 4.75
         # boost loading speed to match default pax cars
@@ -2815,6 +2831,7 @@ class PassengerRestaurantCarConsist(PassengerCarConsistBase):
         self.base_id = "restaurant_car"
         super().__init__(**kwargs)
         self.buy_menu_hint_restaurant_car = True
+        self.pax_car_capacity_type = self.roster.pax_car_capacity_types["restaurant"]
         self.buy_cost_adjustment_factor = 2.5
         # double the luxury pax car amount; balance between the bonus amount (which scales with num. pax coaches) and the run cost of running this booster
         self.floating_run_cost_multiplier = 12
@@ -2841,10 +2858,7 @@ class PassengerSuburbanCarConsist(PassengerCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "suburban_passenger_car"
         super().__init__(**kwargs)
-        # this will knock standard age period down, so this train is less profitable over ~128 tiles (depends on vehicle speed) than a similar standard pax car
-        self.cargo_age_period = (
-            global_constants.CARGO_AGE_PERIOD_PAX_HIGHER_CAPACITY_MALUS
-        )
+        self.pax_car_capacity_type = self.roster.pax_car_capacity_types["high_capacity"]
         # buy costs and run costs are levelled for standard and lux pax cars, not an interesting factor for variation
         self.buy_cost_adjustment_factor = 1.4
         self.floating_run_cost_multiplier = 3.33
@@ -3338,6 +3352,18 @@ class Train(object):
         else:
             return False
 
+    def get_pax_car_capacity(self):
+        # magic to set capacity subject to length
+        base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[
+            self.consist.base_track_type
+        ][self.consist.gen - 1]
+        result = int(
+            self.vehicle_length
+            * base_capacity
+            * self.consist.pax_car_capacity_type["multiplier"]
+        )
+        return result
+
     @property
     def weight(self):
         # weight can be set explicitly or by methods on subclasses
@@ -3707,12 +3733,8 @@ class AutoCoachCombineUnitPax(Train):
         self._symmetry_type = "asymmetric"
         # usually refit classes come from consist, but we special case to the unit for this combine coach
         self.articulated_unit_different_class_refit_groups = ["pax"]
-        # magic to set capacity subject to length
-        base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[
-            self.consist.base_track_type
-        ][self.consist.gen - 1]
-        # also account for some pax 'on' the adjacent mail unit (this is roughly matched to equivalent gen railcars)
-        self.capacity = int(self.vehicle_length * base_capacity * 2.7)
+        # magic to set capacity subject to length and vehicle capacity type
+        self.capacity = self.get_pax_car_capacity()
 
 
 class CabbageDVTUnit(Train):
@@ -3746,11 +3768,8 @@ class CabControlPaxCarUnit(Train):
         self.effects = {}
         self.consist.str_name_suffix = None
         self._symmetry_type = "asymmetric"
-        # magic to set capacity subject to length
-        base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[
-            self.consist.base_track_type
-        ][self.consist.gen - 1]
-        self.capacity = int(self.vehicle_length * base_capacity)
+        # magic to set capacity subject to length and vehicle capacity type
+        self.capacity = self.get_pax_car_capacity()
 
 
 class DieselEngineUnit(Train):
@@ -3804,11 +3823,8 @@ class DieselRailcarPaxUnit(DieselRailcarBaseUnit):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # magic to set capacity subject to length
-        base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[
-            self.consist.base_track_type
-        ][self.consist.gen - 1]
-        self.capacity = int(self.vehicle_length * base_capacity * 1.75)
+        # magic to set capacity subject to length and vehicle capacity type
+        self.capacity = self.get_pax_car_capacity()
 
 
 class ElectricEngineUnit(Train):
@@ -3849,10 +3865,8 @@ class ElectricHighSpeedPaxUnit(Train):
         if kwargs.get("capacity", None) is not None:
             self.capacity = kwargs["capacity"]
         else:
-            base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[
-                self.consist.base_track_type
-            ][self.consist.gen - 1]
-            self.capacity = int(self.vehicle_length * base_capacity)
+            # magic to set capacity subject to length and vehicle capacity type
+            self.capacity = self.get_pax_car_capacity()
 
 
 class ElectroDieselEngineUnit(Train):
@@ -3912,20 +3926,6 @@ class ElectroDieselRailcarMailUnit(ElectroDieselRailcarBaseUnit):
         ) / polar_fox.constants.mail_multiplier
 
 
-class ElectroDieselRailcarPaxUnit(ElectroDieselRailcarBaseUnit):
-    """
-    Unit for a pax electro-diesel railcar.  Just a sparse subclass to set capacity.
-    """
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        # magic to set capacity subject to length
-        base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[
-            self.consist.base_track_type
-        ][self.consist.gen - 1]
-        self.capacity = int(self.vehicle_length * base_capacity * 1.75)
-
-
 class ElectroDieselExpressRailcarPaxUnit(ElectroDieselRailcarBaseUnit):
     """
     Unit for a pax electro-diesel express railcar.  Just a sparse subclass to set capacity.
@@ -3933,11 +3933,8 @@ class ElectroDieselExpressRailcarPaxUnit(ElectroDieselRailcarBaseUnit):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # magic to set capacity subject to length
-        base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[
-            self.consist.base_track_type
-        ][self.consist.gen - 1]
-        self.capacity = int(self.vehicle_length * base_capacity)
+        # magic to set capacity subject to length and vehicle capacity type
+        self.capacity = self.get_pax_car_capacity()
 
 
 class ElectricRailcarBaseUnit(Train):
@@ -3964,11 +3961,8 @@ class ElectricExpressRailcarPaxUnit(ElectricRailcarBaseUnit):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # magic to set capacity subject to length
-        base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[
-            self.consist.base_track_type
-        ][self.consist.gen - 1]
-        self.capacity = int(self.vehicle_length * base_capacity)
+        # magic to set capacity subject to length and vehicle capacity type
+        self.capacity = self.get_pax_car_capacity()
 
 
 class ElectricRailcarMailUnit(ElectricRailcarBaseUnit):
@@ -3994,16 +3988,13 @@ class ElectricRailcarMailUnit(ElectricRailcarBaseUnit):
 
 class ElectricRailcarPaxUnit(ElectricRailcarBaseUnit):
     """
-    Unit for a pax electric railcar.  Just a sparse subclass to set capacity.
+    Unit for a pax electric railcar.  Just a sparse subclass to set capacity and force the second livery to be used via dubious means.
     """
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # magic to set capacity subject to length
-        base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[
-            self.consist.base_track_type
-        ][self.consist.gen - 1]
-        self.capacity = int(self.vehicle_length * base_capacity * 1.75)
+        # magic to set capacity subject to length and vehicle capacity type
+        self.capacity = self.get_pax_car_capacity()
         # offset to second livery, to differentiate from diesel equivalent which will use first
         self.buy_menu_spriterow_num = 2  # note that it's 2 because opening doors are in row 1, livery 2 starts at 2, zero-indexed
         self.consist.docs_image_spriterow = (
@@ -4145,107 +4136,40 @@ class CabooseCar(TrainCar):
 
 class PaxCar(TrainCar):
     """
-    Standard pax wagon. This subclass only exists to set capacity and symmetry_type.
+    Pax wagon. This subclass only exists to set capacity and symmetry_type.
     """
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # pax wagons may be asymmetric, there is magic in the graphics processing to make symmetric pax/mail sprites also work with this
+        # pax wagons may be asymmetric, there is magic in the graphics processing to make this work
         self._symmetry_type = "asymmetric"
-        # magic to set luxury pax car capacity subject to length
-        base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[
-            self.consist.base_track_type
-        ][self.consist.gen - 1]
-        self.capacity = int(self.vehicle_length * base_capacity)
+        # magic to set capacity subject to length and vehicle capacity type
+        self.capacity = self.get_pax_car_capacity()
 
 
-class PaxExpressRailcarTrailerCar(TrainCar):
+class PaxRailcarTrailerCar(PaxCar):
     """
-    Express railcar unpowered pax trailer. This subclass only exists to set capacity and symmetry_type.
+    Railcar unpowered pax trailer. This subclass only exists to set tail light
     """
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # TrainCar sets auto tail light, over-ride it
         self.tail_light = kwargs["tail_light"]  # fail if not passed, required arg
-        # pax wagons may be asymmetric, there is magic in the graphics processing to make this work
-        self._symmetry_type = "asymmetric"
-        # magic to set pax car capacity subject to length
-        base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[
-            self.consist.base_track_type
-        ][self.consist.gen - 1]
-        self.capacity = int(self.vehicle_length * base_capacity)
 
 
-class PaxHSTCar(TrainCar):
+class PaxRestaurantCar(PaxCar):
     """
-    Pax wagon for HST-type trains. This subclass only exists to set capacity and symmetry_type.
+    Restaurant (special) pax wagon. This subclass only exists to set special weight handling
     """
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # pax wagons may be asymmetric, there is magic in the graphics processing to make symmetric pax/mail sprites also work with this
-        self._symmetry_type = "asymmetric"
-        # magic to set dedicated pax car capacity subject to length
-        base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[
-            self.consist.base_track_type
-        ][self.consist.gen - 1]
-        self.capacity = int(self.vehicle_length * base_capacity)
-
-
-class PaxRailcarTrailerCar(TrainCar):
-    """
-    Railcar unpowered pax trailer. This subclass only exists to set capacity and symmetry_type.
-    """
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        # TrainCar sets auto tail light, over-ride it
-        self.tail_light = kwargs["tail_light"]  # fail if not passed, required arg
-        # pax wagons may be asymmetric, there is magic in the graphics processing to make this work
-        self._symmetry_type = "asymmetric"
-        # magic to set pax car capacity subject to length
-        base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[
-            self.consist.base_track_type
-        ][self.consist.gen - 1]
-        self.capacity = int(self.vehicle_length * base_capacity * 1.75)
-
-
-class PaxRestaurantCar(TrainCar):
-    """
-    Restaurant (special) pax wagon. This subclass only exists to set capacity and symmetry_type.
-    """
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        # pax wagons may be asymmetric, there is magic in the graphics processing to make symmetric pax/mail sprites also work with this
-        self._symmetry_type = "asymmetric"
-        # magic to set luxury pax car capacity subject to length
-        base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[
-            self.consist.base_track_type
-        ][self.consist.gen - 1]
-        self.capacity = int(self.vehicle_length * base_capacity * 0.45)
 
     @property
     def weight(self):
         # special handling of weight - let's just use 37 + gen for Pony, split that later for other rosters if needed
         return 37 + self.consist.gen
-
-
-class PaxSuburbanCar(TrainCar):
-    """
-    High-capacity pax wagon. This subclass only exists to set capacity and symmetry_type.
-    """
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        # pax wagons may be asymmetric, there is magic in the graphics processing to make symmetric pax/mail sprites also work with this
-        self._symmetry_type = "asymmetric"
-        # magic to set pax car capacity subject to length
-        base_capacity = self.consist.roster.pax_car_capacity_per_unit_length[
-            self.consist.base_track_type
-        ][self.consist.gen - 1]
-        self.capacity = int(self.vehicle_length * base_capacity * 1.75)
 
 
 class ExpressCar(TrainCar):

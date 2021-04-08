@@ -1,4 +1,9 @@
-from train import PassengerRailcarTrailerCarConsist, PaxRailcarTrailerCar
+from train import (
+    PassengerRailcarTrailerCarConsist,
+    PaxRailcarTrailerCar,
+)
+
+# note that both capacity types are currently handled here, this might need refactored some time eh?
 
 
 def main():

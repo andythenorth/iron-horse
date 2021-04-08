@@ -1,3 +1,5 @@
+import global_constants
+
 from roster import Roster
 
 from vehicles import ares
@@ -196,6 +198,25 @@ def main(disabled=False):
         pax_car_capacity_per_unit_length={
             "RAIL": [3, 3.75, 4.5, 5.25, 6, 6],
             "NG": [2.25, 3, 3.75, 4.5],
+        },
+        pax_car_capacity_types={
+            "default": {
+                "multiplier": 1,
+                "cargo_age_period": global_constants.CARGO_AGE_PERIOD_DEFAULT,
+            },
+            "high_capacity": {
+                "multiplier": 1.75,
+                "cargo_age_period": global_constants.CARGO_AGE_PERIOD_PAX_HIGHER_CAPACITY_MALUS,
+            },
+            # very specifically tuned multiplier against a single pony vehicle
+            "autocoach_combine": {
+                "multiplier": 2.7,
+                "cargo_age_period": global_constants.CARGO_AGE_PERIOD_PAX_HIGHER_CAPACITY_MALUS,
+            },
+            "restaurant": {
+                "multiplier": 0.45,
+                "cargo_age_period": global_constants.CARGO_AGE_PERIOD_DEFAULT,
+            },
         },
         # freight car weight factor varies slightly by gen, reflecting modern cars with lighter weight
         train_car_weight_factors=[0.5, 0.5, 0.5, 0.48, 0.44, 0.40],

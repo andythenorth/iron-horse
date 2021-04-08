@@ -22,6 +22,7 @@ class Roster(object):
         self.pax_car_capacity_per_unit_length = kwargs.get(
             "pax_car_capacity_per_unit_length"
         )
+        self.pax_car_capacity_types = kwargs.get("pax_car_capacity_types")
         self.train_car_weight_factors = kwargs.get("train_car_weight_factors")
         self.livery_presets = kwargs.get("livery_presets", [])
         self.disabled = False
