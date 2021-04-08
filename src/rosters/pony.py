@@ -197,7 +197,7 @@ def main(disabled=False):
         },
         pax_car_capacity_per_unit_length={
             "RAIL": [3, 3.75, 4.5, 5.25, 6, 6],
-            "NG": [2.25, 3, 3.75, 4.5],
+            "NG": [3, 5, 5, 6],
         },
         pax_car_capacity_types={
             "default": {
