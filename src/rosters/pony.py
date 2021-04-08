@@ -155,6 +155,7 @@ def main(disabled=False):
         # NG is Corsican-style 1000mm, native brit NG is not a thing for gameplay
         speeds={
             "RAIL": {
+                # gen 5 and 6 held down by design, really fast freight is imbalanced
                 "standard": [
                     45,
                     45,
@@ -162,8 +163,10 @@ def main(disabled=False):
                     75,
                     87,
                     87,
-                ],  # gen 5 and 6 held down by design, really fast freight is imbalanced
-                "railcar": [45, 45, 60, 75, 87, 99],  # match standard, except gen 6
+                ],
+                # match standard, except gen 6
+                "railcar": [45, 45, 60, 75, 87, 99],
+                # smaller steps in gen 5 and 6, balances against faster HSTs
                 "express": [
                     60,
                     75,
@@ -171,13 +174,13 @@ def main(disabled=False):
                     105,
                     115,
                     125,
-                ],  # smaller steps in gen 5 and 6, balances against faster HSTs
+                ],
                 "hst": [0, 0, 0, 112, 125, 140],  # only gen 4, 5 and 6 HST provided
                 "very_high_speed": [0, 0, 0, 0, 140, 186],
             },
             "METRO": {
                 "standard": [45, 55, 65]
-                # no express for metro in Pony
+                # only standard for metro in Pony
             },
             "NG": {
                 "standard": [
@@ -185,7 +188,8 @@ def main(disabled=False):
                     45,
                     55,
                     65,
-                ],  # NG standard/railcar/express all same in Pony, balanced against trams, RVs
+                ],
+                # NG standard/railcar/express all same in Pony, balanced against trams, RVs
                 "railcar": [45, 45, 55, 65],
                 "express": [45, 45, 55, 65],
             },
