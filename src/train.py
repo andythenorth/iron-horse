@@ -94,6 +94,8 @@ class Consist(object):
         self.easter_egg_haulage_speed_bonus = kwargs.get(
             "easter_egg_haulage_speed_bonus", False
         )
+        # engines will automatically detemine role string, but to force it on certain coach/wagon types use _buy_menu_role_string
+        self._buy_menu_role_string = None
         # simple buy menu hint flag for driving cabs
         self.buy_menu_hint_driving_cab = False
         # simple buy menu hint flag for restaurant cars
@@ -645,11 +647,16 @@ class Consist(object):
             result.append(self.buy_menu_distributed_power_substring)
 
         # engines will always show a role string
-        # !! this try/except is all wrong, thereI just want to JFDI to add buy menu strings to wagons which previously didn't support them, and can do regret later
+        # !! this try/except is all wrong, I just want to JFDI to add buy menu strings to wagons which previously didn't support them, and can do regret later
+        # !! this may not be used / or required as of April 2021 - _buy_menu_role_string is available instead
         try:
             result.append(self.buy_menu_role_string)
         except:
             pass
+
+        # some wagons (mostly railcar trailers and pax coaches) might want to show an optional role string
+        if self._buy_menu_role_string is not None:
+            result.append("STR_ROLE, string(" + self._buy_menu_role_string + ")")
 
         # driving cab hint comes after role string
         if self.buy_menu_hint_driving_cab:
@@ -2705,6 +2712,11 @@ class PassengerCarConsist(PassengerCarConsistBase):
         self.floating_run_cost_multiplier = 3.33
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 1 if self.base_track_type == "NG" else 2
+        # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
+        if self.base_track_type == "NG":
+            self._buy_menu_role_string = "STR_ROLE_GENERAL_PURPOSE"
+        else:
+            self._buy_menu_role_string = "STR_ROLE_GENERAL_PURPOSE_EXPRESS"
         # Graphics configuration
         # pax cars only have one consist cargo mapping, which they always default to, whatever the consist cargo is
         # position based variants:
@@ -2737,6 +2749,8 @@ class PassengerExpressRailcarTrailerCarConsist(PassengerCarConsistBase):
             global_constants.intro_date_offsets_by_role_group["express_non_core"]
         )
         self._joker = True
+        # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
+        self._buy_menu_role_string = "STR_ROLE_GENERAL_PURPOSE_EXPRESS"
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 0.66 if self.base_track_type == "NG" else 1.5
         # Graphics configuration
@@ -2806,6 +2820,8 @@ class PassengerHSTCarConsist(PassengerCarConsistBase):
         self.weight_factor = 0.8 if self.base_track_type == "NG" else 1.6
         # non-standard cite
         self._cite = "Dr Constance Speed"
+        # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
+        self._buy_menu_role_string = "STR_ROLE_HST"
         # Graphics configuration
         # pax cars only have one consist cargo mapping, which they always default to, whatever the consist cargo is
         # position based variants:
@@ -2852,6 +2868,8 @@ class PassengerRailbusTrailerCarConsist(PassengerCarConsistBase):
             global_constants.intro_date_offsets_by_role_group["railcar"]
         )
         self._joker = True
+        # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
+        self._buy_menu_role_string = "STR_ROLE_GENERAL_PURPOSE"
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         # for railbus trailers, the capacity is doubled, so halve the weight factor, this could have been automated with some constants etc but eh, TMWFTLB
         self.weight_factor = 0.33 if self.base_track_type == "NG" else 1
@@ -2893,7 +2911,7 @@ class PassengerRailbusTrailerCarConsist(PassengerCarConsistBase):
 
 class PassengerRailcarTrailerCarConsist(PassengerCarConsistBase):
     """
-    Unpowered passenger trailer car for railcars (not railbus).
+    Unpowered high-capacity passenger trailer car for railcars (not railbus).
     Position-dependent sprites for cabs etc.
     """
 
@@ -2911,6 +2929,8 @@ class PassengerRailcarTrailerCarConsist(PassengerCarConsistBase):
             global_constants.intro_date_offsets_by_role_group["railcar"]
         )
         self._joker = True
+        # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
+        self._buy_menu_role_string = "STR_ROLE_SUBURBAN"
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         # for railcar trailers, the capacity is doubled, so halve the weight factor, this could have been automated with some constants etc but eh, TMWFTLB
         self.weight_factor = 0.33 if self.base_track_type == "NG" else 1
@@ -2964,7 +2984,6 @@ class PassengerRestaurantCarConsist(PassengerCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "restaurant_car"
         super().__init__(**kwargs)
-        self.buy_menu_hint_restaurant_car = True
         self.pax_car_capacity_type = self.roster.pax_car_capacity_types["restaurant"]
         self.buy_cost_adjustment_factor = 2.5
         # double the luxury pax car amount; balance between the bonus amount (which scales with num. pax coaches) and the run cost of running this booster
@@ -2972,6 +2991,8 @@ class PassengerRestaurantCarConsist(PassengerCarConsistBase):
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         self.weight_factor = 1 if self.base_track_type == "NG" else 2
         self._joker = True
+        self._buy_menu_role_string = "STR_ROLE_GENERAL_PURPOSE_EXPRESS"
+        self.buy_menu_hint_restaurant_car = True
         # Graphics configuration
         # position based variants are not used for restaurant cars, but they use the pax ruleset and sprite compositor for convenience
         spriterow_group_mappings = {
@@ -3000,6 +3021,8 @@ class PassengerSuburbanCarConsist(PassengerCarConsistBase):
         # for suburban cars, the capacity is doubled, so halve the weight factor, this could have been automated with some constants etc but eh, TMWFTLB
         self.weight_factor = 0.33 if self.base_track_type == "NG" else 1
         self._joker = True
+        # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
+        self._buy_menu_role_string = "STR_ROLE_SUBURBAN"
         # Graphics configuration
         # pax cars only have one consist cargo mapping, which they always default to, whatever the consist cargo is
         # position based variants:
