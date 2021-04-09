@@ -3027,9 +3027,10 @@ class PassengerSuburbanCarConsist(PassengerCarConsistBase):
         # note that setting the speed lower doesn't actually balance profitability vs. standard pax coaches, but it gives a possibly comforting delusion about roles of each type
         self.speed_class = "suburban"
         self.pax_car_capacity_type = self.roster.pax_car_capacity_types["high_capacity"]
-        # buy costs and run costs are levelled for standard and lux pax cars, not an interesting factor for variation
+        # buy costs are levelled for standard and lux pax cars, not an interesting factor for variation
         self.buy_cost_adjustment_factor = 1.4
-        self.floating_run_cost_multiplier = 3.33
+        # give it a run cost nerf due to the very high capacity
+        self.floating_run_cost_multiplier = 4.5
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         # for suburban cars, the capacity is doubled, so halve the weight factor, this could have been automated with some constants etc but eh, TMWFTLB
         self.weight_factor = 0.33 if self.base_track_type == "NG" else 1

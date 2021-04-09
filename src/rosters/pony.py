@@ -212,7 +212,7 @@ def main(disabled=False):
                 "loading_speed_multiplier": 1,
             },
             "high_capacity": {
-                "multiplier": 1.66,
+                "multiplier": 1.5,
                 "cargo_age_period": global_constants.CARGO_AGE_PERIOD_PAX_HIGHER_CAPACITY_MALUS,
                 "loading_speed_multiplier": 1.75,
             },
