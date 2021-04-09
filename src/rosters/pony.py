@@ -165,7 +165,7 @@ def main(disabled=False):
                     87,
                 ],
                 # match standard, except gen 6
-                "railcar": [45, 45, 60, 75, 87, 99],
+                "suburban": [45, 45, 60, 75, 87, 99],
                 # smaller steps in gen 5 and 6, balances against faster HSTs
                 "express": [
                     60,
@@ -189,8 +189,10 @@ def main(disabled=False):
                     55,
                     65,
                 ],
-                # NG standard/railcar/express all same in Pony, balanced against trams, RVs
-                "railcar": [45, 45, 55, 65],
+                # NG standard/suburban/express same in Pony, balanced against trams, RVs
+                # suburban has to be provided as the mail railcar expects it, just copying it in is easiest solution
+                "suburban": [45, 45, 55, 65],
+                # suburban has to be provided as the coaches/mail vans etc expect it, just copying it in is easiest solution
                 "express": [45, 45, 55, 65],
             },
         },

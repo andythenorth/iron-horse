@@ -518,7 +518,7 @@ class Consist(object):
                     return self.get_speed_by_class("express")
             # then check other specific roles
             if self.role in ["mail_railcar", "pax_railcar"]:
-                return self.get_speed_by_class("railcar")
+                return self.get_speed_by_class("suburban")
             elif self.role in ["hst"]:
                 return self.get_speed_by_class("hst")
             elif self.role in ["very_high_speed"]:
@@ -2869,7 +2869,7 @@ class PassengerRailbusTrailerCarConsist(PassengerCarConsistBase):
         self.base_id = "railbus_passenger_trailer_car"
         super().__init__(**kwargs)
         # PassengerCarConsistBase sets 'express' speed, but railbus trailers should over-ride this
-        self.speed_class = "railcar"
+        self.speed_class = "standard"
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
         self.buy_cost_adjustment_factor = 2.1
@@ -2928,6 +2928,8 @@ class PassengerRailcarTrailerCarConsist(PassengerCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "railcar_passenger_trailer_car"
         super().__init__(**kwargs)
+        # PassengerCarConsistBase sets 'express' speed, but railcar trailers should over-ride this
+        self.speed_class = "suburban"
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
         self.pax_car_capacity_type = self.roster.pax_car_capacity_types["high_capacity"]
@@ -3022,7 +3024,8 @@ class PassengerSuburbanCarConsist(PassengerCarConsistBase):
         self.base_id = "suburban_passenger_car"
         super().__init__(**kwargs)
         # PassengerCarConsistBase sets 'express' speed, but suburban coaches should over-ride this
-        self.speed_class = "railcar"
+        # note that setting the speed lower doesn't actually balance profitability vs. standard pax coaches, but it gives a possibly comforting delusion about roles of each type
+        self.speed_class = "suburban"
         self.pax_car_capacity_type = self.roster.pax_car_capacity_types["high_capacity"]
         # buy costs and run costs are levelled for standard and lux pax cars, not an interesting factor for variation
         self.buy_cost_adjustment_factor = 1.4
