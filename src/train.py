@@ -553,6 +553,16 @@ class Consist(object):
         # default cargo age period, over-ride in subclass as needed
         return global_constants.CARGO_AGE_PERIOD_DEFAULT
 
+    def get_pax_car_cargo_age_period(self):
+        cargo_age_period = self.pax_car_capacity_type["cargo_age_period"]
+        if cargo_age_period == global_constants.CARGO_AGE_PERIOD_PAX_HIGHER_CAPACITY_MALUS:
+            # tedious manual tuning
+            # make an adjustment to try and account for vehicle speeds, this was manually tested and seems about right
+            # assuming malus is set to 64, this will set gen 6 to about 54, which is ok in testing
+            # this almost certainly won't be reliable for all vehicles or all maps etc, but eh, them's the breaks
+            cargo_age_period = cargo_age_period - (2 * (self.gen - 1))
+        return cargo_age_period
+
     @property
     def loading_speed_multiplier(self):
         # over-ride in subclass as needed
@@ -940,7 +950,7 @@ class AutoCoachCombineConsist(EngineConsist):
 
     @property
     def cargo_age_period(self):
-        return self.pax_car_capacity_type["cargo_age_period"]
+        return self.get_pax_car_cargo_age_period()
 
     @property
     def loading_speed_multiplier(self):
@@ -1131,7 +1141,7 @@ class PassengerEngineConsist(EngineConsist):
 
     @property
     def cargo_age_period(self):
-        return self.pax_car_capacity_type["cargo_age_period"]
+        return self.get_pax_car_cargo_age_period()
 
     @property
     def loading_speed_multiplier(self):
@@ -2685,7 +2695,7 @@ class PassengerCarConsistBase(CarConsist):
 
     @property
     def cargo_age_period(self):
-        return self.pax_car_capacity_type["cargo_age_period"]
+        return self.get_pax_car_cargo_age_period()
 
     @property
     def loading_speed_multiplier(self):
@@ -2858,7 +2868,7 @@ class PassengerRailbusTrailerCarConsist(PassengerCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "railbus_passenger_trailer_car"
         super().__init__(**kwargs)
-        # PassengerCarConsistBase sets 'express', but railcar trailers should over-ride this back to 'standard'
+        # PassengerCarConsistBase sets 'express' speed, but railbus trailers should over-ride this
         self.speed_class = "railcar"
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
@@ -2918,8 +2928,6 @@ class PassengerRailcarTrailerCarConsist(PassengerCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "railcar_passenger_trailer_car"
         super().__init__(**kwargs)
-        # PassengerCarConsistBase sets 'express', but railcar trailers should over-ride this back to 'standard'
-        self.speed_class = "railcar"
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
         self.pax_car_capacity_type = self.roster.pax_car_capacity_types["high_capacity"]
@@ -3013,6 +3021,8 @@ class PassengerSuburbanCarConsist(PassengerCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "suburban_passenger_car"
         super().__init__(**kwargs)
+        # PassengerCarConsistBase sets 'express' speed, but suburban coaches should over-ride this
+        self.speed_class = "railcar"
         self.pax_car_capacity_type = self.roster.pax_car_capacity_types["high_capacity"]
         # buy costs and run costs are levelled for standard and lux pax cars, not an interesting factor for variation
         self.buy_cost_adjustment_factor = 1.4
