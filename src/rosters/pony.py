@@ -31,6 +31,7 @@ from vehicles import cheddar_valley
 from vehicles import cheese_bug
 from vehicles import chinook
 from vehicles import chuggypig
+from vehicles import d_train
 from vehicles import deasil
 from vehicles import defiant
 from vehicles import diablo
@@ -83,11 +84,13 @@ from vehicles import mumble
 from vehicles import nimbus
 from vehicles import olympic
 from vehicles import onslaught
+from vehicles import pacer
 from vehicles import peasweep
 from vehicles import pegasus
 from vehicles import phoenix
 from vehicles import pikel
 from vehicles import pinhorse
+from vehicles import pinto
 from vehicles import plastic_postbox
 from vehicles import proper_job
 from vehicles import pylon
@@ -435,6 +438,10 @@ def main(disabled=False):
             cargo_sprinter,
             # auto-coach (only one as autoreplace can't handle mixed cargo articulated consists)
             auto_coach_pony_gen_2,
+            # railbuses
+            pinto,
+            pacer,
+            d_train,
             # diesel railcars
             deasil,
             slammer,
