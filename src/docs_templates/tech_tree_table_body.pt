@@ -149,13 +149,16 @@
                                                 <span tal:condition="'mail' in role">
                                                     Mail
                                                 </span>
+                                                <span tal:condition="'railbus' in role">
+                                                    Railbus
+                                                </span>
                                                 <span tal:condition="'railcar' in role">
                                                     Railcar
                                                 </span>
                                                 <span tal:condition="'heavy' in role">
                                                     Heavy
                                                 </span>
-                                                <span tal:condition="'mail_railcar' not in role and 'pax_railcar' not in role">
+                                                <span tal:condition="'mail_railcar' not in role and 'pax_railcar' and 'pax_railbus' not in role">
                                                     ${doc_helper.get_role_string_from_role(role)}
                                                 </span>
                                                 <span tal:condition="role_child_branch < 0 and role not in ['gronk!', 'snoughplough!']">

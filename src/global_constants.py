@@ -97,7 +97,8 @@ role_group_mapping = OrderedDict(
         ("freight", ["branch_freight", "freight", "heavy_freight"]),
         (
             "universal",
-            ["universal", "pax_railbus", "mail_railcar"],
+            # order of mailrailcar and pax_railbus is significant as of April 2021, for unfortunate tech-tree ordering reasons
+            ["universal", "mail_railcar", "pax_railbus"],
         ),
         # railcars get their own special case due to high capacity, bit janky but eh
         (
