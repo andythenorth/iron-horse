@@ -1,6 +1,38 @@
 Changelog
 =========
 
+
+-------------
+2.23.0 Release
+-------------
+
+*Changes*
+
+- rebalanced Passenger Coaches to have lower capacity
+- added Suburban Coaches with high capacity
+    - speeds match railcars
+    - Suburban Coaches use the alternative coach livery to make them visually distinct from Passenger Coaches
+    - the livery can be toggled to match standard Passenger Coaches by depot flip (ctrl-click on the vehicle in depot)
+    -  Suburban Coaches will be hidden in simplified gameplay mode
+- the following railcars now have 'Suburban High Capacity' as role, and have increased capacity
+    - Deasil, Slammer, Tin Rocket, Happy Train
+    - Athena, Geronimo, Breeze, Zeus
+- minor tweaks to narrow gauge passenger vehicle capacities
+- reintroduced Restaurant Cars
+    - adding a Restaurant Car to a train will provide a bonus: eliminates the running cost for all Passenger Coaches in the train
+- reduced running costs of some higher speed passenger vehicles for game balance
+- show the role in buy menu for all types of passenger vehicle
+
+*Codechanges*
+
+- removed all code relating to cargo age period, this is now at the default 185 value for all Iron Horse vehicles
+- unified some methods relating to passenger car capacity and loading speed
+- split railbus classes out from railcar classes
+
+*Translations*
+- translation updates (thanks translators)
+
+
 -------------
 2.22.0 Release
 -------------
