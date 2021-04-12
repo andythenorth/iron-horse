@@ -549,21 +549,6 @@ class Consist(object):
         return sum([unit.vehicle_length for unit in self.units])
 
     @property
-    def cargo_age_period(self):
-        # default cargo age period, over-ride in subclass as needed
-        return global_constants.CARGO_AGE_PERIOD_DEFAULT
-
-    def get_pax_car_cargo_age_period(self):
-        cargo_age_period = self.pax_car_capacity_type["cargo_age_period"]
-        if cargo_age_period == global_constants.CARGO_AGE_PERIOD_PAX_HIGHER_CAPACITY_MALUS:
-            # tedious manual tuning
-            # make an adjustment to try and account for vehicle speeds, this was manually tested and seems about right
-            # assuming malus is set to 64, this will set gen 6 to about 54, which is ok in testing
-            # this almost certainly won't be reliable for all vehicles or all maps etc, but eh, them's the breaks
-            cargo_age_period = cargo_age_period - (2 * (self.gen - 1))
-        return cargo_age_period
-
-    @property
     def loading_speed_multiplier(self):
         # over-ride in subclass as needed
         return self._loading_speed_multiplier
@@ -934,7 +919,6 @@ class AutoCoachCombineConsist(EngineConsist):
         self.pax_car_capacity_type = self.roster.pax_car_capacity_types[
             "autocoach_combine"
         ]
-        # this will knock standard age period down, so this train is less profitable over ~128 tiles (depends on vehicle speed) than a similar standard pax car
         # confer tiny power value to make this one an engine so it can lead.
         self.power = 10  # use 10 not 1, because 1 looks weird when added to engine HP
         # nerf TE down to minimal value
@@ -947,10 +931,6 @@ class AutoCoachCombineConsist(EngineConsist):
         self.allow_flip = False
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsCustom("vehicle_autocoach.pynml")
-
-    @property
-    def cargo_age_period(self):
-        return self.get_pax_car_cargo_age_period()
 
     @property
     def loading_speed_multiplier(self):
@@ -1058,11 +1038,6 @@ class MailEngineMetroConsist(MailEngineConsist):
         )
 
     @property
-    def cargo_age_period(self):
-        # this will knock standard age period down, so this train is only profitable over short routes
-        return global_constants.CARGO_AGE_PERIOD_METRO_MALUS
-
-    @property
     def loading_speed_multiplier(self):
         # OP bonus to mail metro loading speed
         return 4
@@ -1136,12 +1111,8 @@ class PassengerEngineConsist(EngineConsist):
         self.buy_cost_adjustment_factor = 1.8
         # ...but reduce fixed (baseline) run costs on this subtype, purely for balancing reasons
         self.fixed_run_cost_points = 84
-        # specific structure for capacity multiplier and cargo age rate, over-ride in subclasses as needed
+        # specific structure for capacity multiplier and loading speed, over-ride in subclasses as needed
         self.pax_car_capacity_type = self.roster.pax_car_capacity_types["default"]
-
-    @property
-    def cargo_age_period(self):
-        return self.get_pax_car_cargo_age_period()
 
     @property
     def loading_speed_multiplier(self):
@@ -1294,11 +1265,6 @@ class PassengerEngineMetroConsist(PassengerEngineConsist):
         self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(
             spriterow_group_mappings, consist_ruleset="metro"
         )
-
-    @property
-    def cargo_age_period(self):
-        # this will knock standard age period down, so this train is only profitable over short routes
-        return global_constants.CARGO_AGE_PERIOD_METRO_MALUS
 
     @property
     def loading_speed_multiplier(self):
@@ -2678,7 +2644,7 @@ class PassengerCarConsistBase(CarConsist):
         self.label_refits_allowed = []
         self.label_refits_disallowed = []
         self.default_cargos = polar_fox.constants.default_cargos["pax"]
-        # specific structure for capacity multiplier and cargo age rate, over-ride in subclasses as needed
+        # specific structure for capacity multiplier and loading speed, over-ride in subclasses as needed
         self.pax_car_capacity_type = self.roster.pax_car_capacity_types["default"]
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["express_core"]
@@ -2692,10 +2658,6 @@ class PassengerCarConsistBase(CarConsist):
             self.roof_type = "pax_mail_ridged"
         else:
             self.roof_type = "pax_mail_smooth"
-
-    @property
-    def cargo_age_period(self):
-        return self.get_pax_car_cargo_age_period()
 
     @property
     def loading_speed_multiplier(self):

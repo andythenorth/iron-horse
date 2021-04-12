@@ -71,20 +71,6 @@ metadata = {
     "docs_url": "https://grf.farm/iron-horse",
 }
 
-# cargo aging constant - OTTD default is 185
-CARGO_AGE_PERIOD_DEFAULT = 185
-# setting bonuses has limited effect on pax payment over 0-256 tile routes (might show up on longer routes)
-# so instead set a malus, this nerfs higher capacity pax so they are relatively less profitable above somewhere around 64-128 tiles (depends on vehicle speed)
-# it's not possible to tune this for both cdist/transfer networks (64 is better) or point-to-point (32 is better)
-# 64 is the safer value, that means in some cases some high-capacity vehicles will be OP, but eh :D
-# this has been tested to death, and it's pretty much *impossible* to provide a value which will meet 'vehicle role' expectations on different routes
-# with transfer payments the amount of decay incured on one leg can give rise to counter-intuitive effects on other legs, so eh, this is what it is
-CARGO_AGE_PERIOD_PAX_HIGHER_CAPACITY_MALUS = 64
-# tempting as it is to give metro mail and pax a total distance nerf...
-# it appears to cause problems with excessively aged cargo entering mainline routes (this may or may not be a myth)
-# anyway don't make this too high
-CARGO_AGE_PERIOD_METRO_MALUS = 56
-
 # buy and run cost base factors
 PR_BUILD_VEHICLE_TRAIN = -2
 PR_BUILD_VEHICLE_WAGON = 1

@@ -208,23 +208,19 @@ def main(disabled=False):
         pax_car_capacity_types={
             "default": {
                 "multiplier": 1,
-                "cargo_age_period": global_constants.CARGO_AGE_PERIOD_DEFAULT,
                 "loading_speed_multiplier": 1,
             },
             "high_capacity": {
                 "multiplier": 1.5,
-                "cargo_age_period": global_constants.CARGO_AGE_PERIOD_PAX_HIGHER_CAPACITY_MALUS,
                 "loading_speed_multiplier": 1.75,
             },
             # very specifically tuned multiplier against a single pony vehicle
             "autocoach_combine": {
                 "multiplier": 2.7,
-                "cargo_age_period": global_constants.CARGO_AGE_PERIOD_PAX_HIGHER_CAPACITY_MALUS,
                 "loading_speed_multiplier": 1.75,
             },
             "restaurant": {
                 "multiplier": 0.45,
-                "cargo_age_period": global_constants.CARGO_AGE_PERIOD_DEFAULT,
                 "loading_speed_multiplier": 1,
             },
         },
