@@ -1168,9 +1168,7 @@ class PassengerHSTCabEngineConsist(PassengerEngineConsist):
         self.buy_cost_adjustment_factor = 1.2
         # higher speed should only be effective over longer distances
         # ....run cost multiplier is adjusted up from pax base for high speed
-        self.floating_run_cost_multiplier = 11
-        # ...adjust fixed run costs on this subtype to look about right
-        self.fixed_run_cost_points = 160
+        self.floating_run_cost_multiplier = 10
         # non-standard cite
         self._cite = "Dr Constance Speed"
 
@@ -1404,12 +1402,9 @@ class PassengerVeryHighSpeedCabEngineConsist(PassengerEngineConsist):
         self.tilt_bonus = True
         # note that buy costs are actually adjusted down from pax base, to account for distributed traction etc
         self.buy_cost_adjustment_factor = 0.95
-        # high speed should only be effective over longer distances
-        # ....run cost multiplier is adjusted up from pax base
+        # ....run cost multiplier is adjusted up from pax base because regrettable realism
         # but allow that every vehicle will have powered run costs, so not too high eh?
-        self.floating_run_cost_multiplier = 18
-        # ...and high fixed (baseline) run costs on this subtype
-        self.fixed_run_cost_points = 200
+        self.floating_run_cost_multiplier = 16
         # train_flag_mu solely used for ottd livery (company colour) selection
         # !! commented out as of July 2019 because the middle engines won't pick this up, which causes inconsistency in the buy menu
         # self.train_flag_mu = True
@@ -2716,7 +2711,7 @@ class PassengerExpressRailcarTrailerCarConsist(PassengerCarConsistBase):
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
         self.buy_cost_adjustment_factor = 2.1
-        self.floating_run_cost_multiplier = 5
+        self.floating_run_cost_multiplier = 4.75
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["express_non_core"]
         )
@@ -2782,9 +2777,9 @@ class PassengerHSTCarConsist(PassengerCarConsistBase):
         self.cab_id = kwargs[
             "cab_id"
         ]  # cab_id must be passed, do not mask errors with .get()
-        # this won't make much difference except over *very* long routes, but set it anyway
         self.buy_cost_adjustment_factor = 1.66
-        self.floating_run_cost_multiplier = 4.75
+        # run cost multiplier matches standard pax coach costs; higher speed is accounted for automatically already
+        self.floating_run_cost_multiplier = 3.33
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["hst"]
         )
@@ -2992,7 +2987,7 @@ class PassengerSuburbanCarConsist(PassengerCarConsistBase):
         # buy costs are levelled for standard and lux pax cars, not an interesting factor for variation
         self.buy_cost_adjustment_factor = 1.4
         # give it a run cost nerf due to the very high capacity
-        self.floating_run_cost_multiplier = 4.5
+        self.floating_run_cost_multiplier = 4.75
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
         # for suburban cars, the capacity is doubled, so halve the weight factor, this could have been automated with some constants etc but eh, TMWFTLB
         self.weight_factor = 0.33 if self.base_track_type == "NG" else 1
