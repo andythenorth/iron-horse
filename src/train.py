@@ -1013,7 +1013,7 @@ class MailEngineCargoSprinterEngineConsist(MailEngineConsist):
 
 class MailEngineMetroConsist(MailEngineConsist):
     """
-    Consist for a mail metro train.  Just a sparse subclass to force the gestalt_graphics
+    Consist for a mail metro train.
     """
 
     def __init__(self, **kwargs):
@@ -1045,7 +1045,7 @@ class MailEngineMetroConsist(MailEngineConsist):
 
 class MailEngineRailcarConsist(MailEngineConsist):
     """
-    Consist for a mail railcar.  Just a sparse subclass to force the gestalt_graphics and allow_flip.
+    Consist for a mail railcar.
     """
 
     def __init__(self, **kwargs):
@@ -1054,6 +1054,10 @@ class MailEngineRailcarConsist(MailEngineConsist):
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
         # non-standard cite
+        if self.base_track_type == "NG":
+            # give NHGa bonus to align run cost with NG railbus
+            self.fixed_run_cost_points = 52
+
         self._cite = "Arabella Unit"
         # Graphics configuration
         if self.gen in [2, 3]:
@@ -1186,7 +1190,7 @@ class PassengerEngineExpressRailcarConsist(PassengerEngineConsist):
         self.train_flag_mu = True
         self.buy_cost_adjustment_factor = 0.85
         # to avoid these railcars being super-bargain cheap, add a cost malus compared to standard railcars (still less than standard engines)
-        self.fixed_run_cost_points = 140
+        self.fixed_run_cost_points = 155
         # non-standard cite
         self._cite = "Dr Constance Speed"
         # Graphics configuration
@@ -1280,6 +1284,8 @@ class PassengerEngineRailbusConsist(PassengerEngineConsist):
         self.allow_flip = True
         # train_flag_mu solely used for ottd livery (company colour) selection
         self.train_flag_mu = True
+        # big cost bonus for railbus
+        self.fixed_run_cost_points = 48
         # non-standard cite
         self._cite = "Arabella Unit"
         # Graphics configuration
