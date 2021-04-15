@@ -11,6 +11,8 @@ def main(roster_id):
         role_child_branch_num=1,
         power=280,
         gen=6,
+        # introduce early by design
+        intro_date_offset=-4,
         sprites_complete=True,
     )
 

@@ -11,6 +11,8 @@ def main(roster_id):
         role_child_branch_num=1,
         power=180,
         gen=4,
+        # introduce early by design
+        intro_date_offset=-4,
         sprites_complete=True,
     )
 
@@ -21,7 +23,9 @@ def main(roster_id):
         tail_light="railcar_24px_1",
     )
 
-    consist.description = """The horses of hope gallop, but the donkeys of experience go slowly."""
+    consist.description = (
+        """The horses of hope gallop, but the donkeys of experience go slowly."""
+    )
     consist.foamer_facts = """BR 1st generation AC Cars/Wickham/Waggon-und Maschinenbau and similar railbuses"""
 
     return consist
