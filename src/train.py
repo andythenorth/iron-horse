@@ -326,7 +326,7 @@ class Consist(object):
             "metro": {"mail_metro": [1], "pax_metro": [1]},
             "railcar": {
                 "mail_railcar": [1, 2, -1, -2],
-                "pax_railbus": [1],
+                "pax_railbus": [1, -1],
                 "pax_railcar": [1, 2],
             },
             "very_high_speed": {"very_high_speed": [1, 2]},
