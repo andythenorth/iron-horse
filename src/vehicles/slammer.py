@@ -11,9 +11,10 @@ def main(roster_id):
         role_child_branch_num=1,
         power=300,
         gen=4,
-        sprites_complete=True,
+        # introduce early by design
         intro_date_offset=-5,
-    )  # introduce early by design
+        sprites_complete=True,
+    )
 
     consist.add_unit(
         type=DieselRailcarPaxUnit,
