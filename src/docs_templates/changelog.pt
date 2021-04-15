@@ -1,8 +1,21 @@
 Changelog
 =========
 
-2.24.0
-- Take a quote from https://proverbicals.com/donkeys
+-------------
+2.24.0 Release
+-------------
+
+"The world would not make a racehorse of a donkey." - proverb
+
+*Changes*
+- added 3 railbuses
+    - Clipper, 180hp, 31 passengers, available around 1956
+    - Skipper, 225hp, 36 passengers, available around 1986
+    - Zipper, 280hp, 36 passengers, available around 2016
+- minor run-cost tweaks to railcars to balance against railbuses
+
+*Translations*
+- translation updates (thanks translators)
 
 
 -------------
