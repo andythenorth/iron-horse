@@ -2,6 +2,20 @@ Changelog
 =========
 
 -------------
+2.25.0 Release
+-------------
+
+*Changes*
+- provide earlier (available 1860) versions for some wagons
+    - Mineral Wagon
+    - Hopper
+    - Ore Hopper
+
+*Fixes*
+- railbuses should not be available in simplified gameplay
+
+
+-------------
 2.24.0 Release
 -------------
 
