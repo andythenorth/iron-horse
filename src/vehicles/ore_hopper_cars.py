@@ -4,8 +4,17 @@ from train import HopperCarOreConsist, FreightCar
 def main():
     # --------------- pony ----------------------------------------------------------------------
 
-    # no gen 1 hoppers in Pony eh
-    # also just type A for gen 2 and 3
+    # also just type A for gen 1, 2 and 3
+
+    consist = HopperCarOreConsist(
+        roster_id="pony",
+        base_numeric_id=5700,
+        gen=1,
+        subtype="A",
+        sprites_complete=True,
+    )
+
+    consist.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
 
     consist = HopperCarOreConsist(
         roster_id="pony",
