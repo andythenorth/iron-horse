@@ -3,11 +3,11 @@ from train import DumpCarConsist, FreightCar
 
 def main():
     # --------------- pony NG ----------------------------------------------------------------------
-    # gen 2 start for dump cars eh?
+
     consist = DumpCarConsist(
         roster_id="pony",
         base_numeric_id=4020,
-        gen=2,
+        gen=1,
         subtype="U",
         base_track_type="NG",
         sprites_complete=True,
