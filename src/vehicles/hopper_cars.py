@@ -39,16 +39,23 @@ def main():
 
     # --------------- pony ----------------------------------------------------------------------
 
-    # no gen 1 hoppers in Pony eh
-    # but gen 2 arrives early
-    # also just type A for gen 2 and 3
+    # just type A for gen 1, 2 and 3
+
+    consist = HopperCarConsist(
+        roster_id="pony",
+        base_numeric_id=5680,
+        gen=1,
+        subtype="A",
+        sprites_complete=False,
+    )
+
+    consist.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
 
     consist = HopperCarConsist(
         roster_id="pony",
         base_numeric_id=2030,
         gen=2,
         subtype="A",
-        intro_date_offset=-10,  # let's be earlier for this one
         sprites_complete=True,
     )
 
