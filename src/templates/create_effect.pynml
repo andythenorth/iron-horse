@@ -1,18 +1,21 @@
 <!--! set spawn model -->
-<!--! it's important to explicitly check known railtypes and otherwise return a general default, as not all types will be known for the default value -->
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_id_for_effect_spawn_model_and_powered, current_railtype) {
-    <tal:railtypes repeat="railtype vehicle.effects">
-        <tal:not_default condition="railtype != 'default'">
-            ${railtype}: return ${vehicle.effects[railtype][0]};
-        </tal:not_default>
-    </tal:railtypes>
-    return ${vehicle.effects['default'][0]};
-}
-
+<!--! assumes RAIL / ELRL, deal with that later if it's a problem later -->
+<tal:spawn_model_varies_by_railtype switch="consist.engine_varies_power_by_railtype(vehicle)">
+    <tal:check_elrl case="True">
+        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_effect_spawn_model_and_powered, tile_powers_railtype("ELRL")) {
+                1: return ${vehicle.effects['ELRL'][0]};
+            return ${vehicle.effects['default'][0]};
+        }
+    </tal:check_elrl>
+    <tal:default case="False">
+        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_effect_spawn_model_and_powered, 1) {
+            return ${vehicle.effects['default'][0]};
+        }
+    </tal:default
+</tal:spawn_model_varies_by_railtype>
 
 <!--! create effect -->
 <!--! complicated due to support for railtype changes AND randomly reversed variants -->
-<!--! it's important to explicitly check known railtypes and otherwise return a general default, as not all types will be known for the default value -->
 <tal:random_reverse_variants repeat="reversed_variant consist.reversed_variants">
     <tal:railtypes repeat="railtype vehicle.effects">
         <tal:effect define="effects vehicle.get_nml_expression_for_effects(reversed_variant, railtype)">
@@ -22,12 +25,11 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_id_for_effect_spawn_model_and_po
         </tal:effect>
     </tal:railtypes>
 
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_create_effect_check_railtype_${reversed_variant}, current_railtype) {
-        <tal:railtypes repeat="railtype vehicle.effects">
-            <tal:not_default condition="railtype != 'default'">
-                ${railtype}: return ${vehicle.id}_switch_create_effect_${railtype}_${reversed_variant};
-            </tal:not_default>
-        </tal:railtypes>
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_create_effect_check_railtype_${reversed_variant}, tile_powers_railtype("ELRL")) {
+        <!--! variable effect assumes RAIL / ELRL, deal with that later if it's a problem later -->
+        <tal:effect_varies_by_railtype condition="consist.engine_varies_power_by_railtype(vehicle)">
+            1: return ${vehicle.id}_switch_create_effect_ELRL_${reversed_variant};
+        </tal:effect_varies_by_railtype>
         return ${vehicle.id}_switch_create_effect_default_${reversed_variant};
     }
 </tal:random_reverse_variants>

@@ -42,9 +42,9 @@
                     ${vehicle.get_spriteset_template_name('reversed' if flipped == 'flipped' else 'unreversed', flipped, 10 + (variant_num * 60))}
                 }
             </tal:pantographs>
-            <!--! this is crude and won't work, for e.g. ELNG, or for 3rd-party electrified railtypes which aren't ELRL -->
-            switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_pantographs_${variant_num}_${flipped}, current_railtype) {
-                ELRL: return ${vehicle.id}_ss_pantographs_up_${variant_num}_${flipped};
+            <!--! assumes RAIL / ELRL, deal with that later if it's a problem later -->
+            switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_pantographs_${variant_num}_${flipped}, tile_powers_railtype("ELRL")) {
+                1: return ${vehicle.id}_ss_pantographs_up_${variant_num}_${flipped};
                 return ${vehicle.id}_ss_pantographs_down_${variant_num}_${flipped};
             }
         </tal:pantographs>
