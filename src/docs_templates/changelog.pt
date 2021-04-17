@@ -2,6 +2,21 @@ Changelog
 =========
 
 -------------
+2.26.0 Release
+-------------
+
+*Changes*
+- better electrified railtype compatibility for electro-diesel (bi-mode) vehicles
+    - these vehicles should now use 'electrified' power and visual effects on a wider range of electrified railtypes
+    - previously they only worked correctly for railtypes with 'ELRL' label
+    - requires OpenTTD 1.11.0 or newer
+    - tested as working with NuTracks 2
+
+*Fixes*
+- electro-diesel (bi-mode) railcars now show power on diesel in buy menu, not power on electric, consistent with other bi-mode vehicles
+
+
+-------------
 2.25.0 Release
 -------------
 
