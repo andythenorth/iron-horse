@@ -58,7 +58,7 @@ STR_NAME_SUFFIX_TWIN                                            :Twin
 # the en-us translation should be updated appropriately when making changes here
 # !! consider splitting strings per roster?? A US caboose is still a 'caboose' in en-gb, not a brake van
 STR_NAME_SUFFIX_ALIGNMENT_CAR                                   :Alignment Van
-STR_NAME_SUFFIX_AUTOMOBILE_FLAT_CAR                             :Motorail Flat
+STR_NAME_SUFFIX_AUTOMOBILE_CAR                                  :Motorail Flat
 STR_NAME_SUFFIX_BOX_CAR                                         :Box Van
 STR_NAME_SUFFIX_COIL_BUGGY_CAR                                  :Coil Buggies
 STR_NAME_SUFFIX_BOLSTER_CAR                                     :Bolster Wagon
@@ -71,6 +71,7 @@ STR_NAME_SUFFIX_COIL_CAR_UNCOVERED                              :Coil Carrier
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Covered Hopper
 STR_NAME_SUFFIX_CRYO_TANK_CAR                                   :Cryo Tanker
 STR_NAME_SUFFIX_CURTAIN_SIDE_BOX_CAR                            :Curtain Side Van
+STR_NAME_SUFFIX_DOUBLE_DECK_AUTOMOBILE_CAR                      :Car Transporter
 STR_NAME_SUFFIX_DUMP_CAR                                        :Mineral Wagon
 STR_NAME_SUFFIX_DUMP_CAR_HIGH_SIDE                              :High Side Mineral Wagon
 STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Edibles Tanker
@@ -86,6 +87,7 @@ STR_NAME_SUFFIX_INGOT_CAR                                       :Ingot Carriers
 STR_NAME_SUFFIX_INTERMODAL_CAR                                  :Container Wagon
 STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Livestock Wagon
 STR_NAME_SUFFIX_LOG_CAR                                         :Timber Wagon
+STR_NAME_SUFFIX_LOW_FLOOR_AUTOMOBILE_CAR                        :Vehicle Transporter
 STR_NAME_SUFFIX_LOW_FLOOR_INTERMODAL_CAR                        :Low-floor Container Wagon
 STR_NAME_SUFFIX_MAIL_CAR                                        :Mail Van
 STR_NAME_SUFFIX_OPEN_CAR                                        :Open Wagon

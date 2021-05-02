@@ -1765,14 +1765,54 @@ class AutomobileCarConsistBase(CarConsist):
         self.gestalt_graphics = GestaltGraphicsAutomobileTransporter()
 
 
-class AutomobileFlatCarConsist(AutomobileCarConsistBase):
+class AutomobileDoubleDeckCarConsist(AutomobileCarConsistBase):
     """
-    Transports automobiles (cars, trucks, tractors etc).
-    'Automobile' is used as name to avoid confusion with 'Vehicles' or 'Car'.
+    Automobile transporter with double deck, cars only.
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "automobile_flat_car"
+        self.base_id = "double_deck_automobile_car"
+        super().__init__(**kwargs)
+        # blah blah, more restrictive refits for double deck, cars only
+        self.label_refits_allowed = ["PASS", "VEHI"]
+        self.use_cargo_subytpes_VEHI = False
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsAutomobileTransporter()
+
+    @property
+    # account for e.g. low floor, double deck etc
+    def platform_type(self):
+        # !! all default currently, extend as needed - see intermodal cars for example
+        return "default"
+
+
+class AutomobileCarConsist(AutomobileCarConsistBase):
+    """
+    Automobile transporter with single flat deck at conventional height.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "automobile_car"
+        super().__init__(**kwargs)
+        # special flag to turn on cargo subtypes specific to cars / trucks / tractors etc, can be made more generic if subtypes need to be extensible in future
+        self.use_cargo_subytpes_VEHI = True
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsAutomobileTransporter()
+
+    @property
+    # account for e.g. low floor, double deck etc
+    def platform_type(self):
+        # !! all default currently, extend as needed - see intermodal cars for example
+        return "default"
+
+
+class AutomobileLowFloorCarConsist(AutomobileCarConsistBase):
+    """
+    Automobile transporter with single deck at lowered height.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "low_floor_automobile_car"
         super().__init__(**kwargs)
         # special flag to turn on cargo subtypes specific to cars / trucks / tractors etc, can be made more generic if subtypes need to be extensible in future
         self.use_cargo_subytpes_VEHI = True
