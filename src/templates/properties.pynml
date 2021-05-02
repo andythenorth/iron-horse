@@ -1,3 +1,4 @@
+<!--! some switches are common to all vehicles so included with properties -->
 
 <tal:create_effect condition="len(vehicle.effects) > 0">
     <tal:include metal:use-macro="load: create_effect.pynml" />
@@ -6,8 +7,6 @@
 <tal:buy_menu_text condition="vehicle.is_lead_unit_of_consist and (consist.power > 0 or consist.buy_menu_hint_wagons_add_power) or consist._buy_menu_role_string is not None">
     <tal:include metal:use-macro="load: buy_menu_text.pynml" />
 </tal:buy_menu_text>
-
-<!--! some switches are common to all vehicles so included with properties -->
 
 <tal:railtype_varies_power condition="consist.engine_varies_power_by_railtype(vehicle)">
     // -- power varies by railtype -- //
@@ -118,6 +117,10 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
             purchase_cargo_capacity:        ${vehicle.id + '_switch_cargo_capacity'};
             loading_speed:                  ${vehicle.loading_speed};
         </tal:optional_capacity_switches>
+        <!--! as of May 2021 cargo subtype use is specific to vehicles transporters, extend in future if needed -->
+        <tal:optional_cargo_subtype condition="getattr(consist, 'use_cargo_subytpes_VEHI', False)">
+            cargo_subtype_text: switch_cargo_subtype_text();
+        </tal:optional_cargo_subtype>
         <!--! no buy menu extra text in this grf by design; extra text is associated with BAD FEATURES -->
         <tal:variable_power condition="consist.engine_varies_power_by_railtype(vehicle) or consist.wagons_add_power">
             power:                          ${vehicle.id}_switch_power;
