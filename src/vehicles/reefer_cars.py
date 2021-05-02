@@ -1,4 +1,4 @@
-from train import ReeferCarConsist, FreightCar
+from train import ReeferCarConsist, ExpressCar
 
 
 def main():
@@ -9,13 +9,13 @@ def main():
         roster_id="pony", base_numeric_id=730, gen=2, subtype="A", sprites_complete=True
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
+    consist.add_unit(type=ExpressCar, chassis="2_axle_filled_16px")
 
     consist = ReeferCarConsist(
         roster_id="pony", base_numeric_id=720, gen=3, subtype="A", sprites_complete=True
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
+    consist.add_unit(type=ExpressCar, chassis="2_axle_filled_16px")
 
     consist = ReeferCarConsist(
         roster_id="pony",
@@ -25,7 +25,7 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
+    consist.add_unit(type=ExpressCar, chassis="2_axle_filled_16px")
 
     consist = ReeferCarConsist(
         roster_id="pony",
@@ -35,7 +35,7 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_filled_24px")
+    consist.add_unit(type=ExpressCar, chassis="2_axle_filled_24px")
 
     consist = ReeferCarConsist(
         roster_id="pony",
@@ -46,7 +46,7 @@ def main():
     )
 
     consist.add_unit(
-        type=FreightCar,
+        type=ExpressCar,
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="4_axle_1cc_filled_32px",
     )
@@ -59,7 +59,7 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_filled_greebled_24px")
+    consist.add_unit(type=ExpressCar, chassis="2_axle_filled_greebled_24px")
 
     consist = ReeferCarConsist(
         roster_id="pony",
@@ -69,7 +69,7 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_1cc_filled_32px")
+    consist.add_unit(type=ExpressCar, chassis="4_axle_1cc_filled_32px")
 
     consist = ReeferCarConsist(
         roster_id="pony",
@@ -79,7 +79,7 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_filled_greebled_24px")
+    consist.add_unit(type=ExpressCar, chassis="2_axle_filled_greebled_24px")
 
     consist = ReeferCarConsist(
         roster_id="pony",
@@ -89,4 +89,4 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_1cc_filled_32px")
+    consist.add_unit(type=ExpressCar, chassis="4_axle_1cc_filled_32px")

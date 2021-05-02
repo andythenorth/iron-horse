@@ -2208,6 +2208,7 @@ class DumpCarScrapMetalHighSideConsist(DumpCarConsistBase):
 class EdiblesTankCarConsist(CarConsist):
     """
     Wine, milk, water etc.
+    No actual cargo aging change - doesn't really work - so trade higher speed against lower capacity instead.
     """
 
     def __init__(self, **kwargs):
@@ -3074,7 +3075,8 @@ class PlateCarConsist(CarConsist):
 
 class ReeferCarConsist(CarConsist):
     """
-    Refrigerated cargos, with improved decay rate
+    Refrigerated cargos.
+    No actual cargo aging change - doesn't really work - so trade higher speed against lower capacity instead.
     """
 
     def __init__(self, **kwargs):
