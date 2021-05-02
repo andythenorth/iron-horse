@@ -27,7 +27,7 @@ from gestalt_graphics.gestalt_graphics import (
     GestaltGraphicsConsistSpecificLivery,
     GestaltGraphicsIntermodal,
     GestaltGraphicsCustom,
-    GestaltGraphicsVehicleTransporter,
+    GestaltGraphicsAutomobileTransporter,
 )
 import gestalt_graphics.graphics_constants as graphics_constants
 
@@ -1739,6 +1739,39 @@ class AlignmentCarConsist(CarConsist):
         self.allow_flip = False
 
 
+class AutomobileCarConsist(CarConsist):
+    """
+    Transports automobiles (cars, trucks, tractors etc).
+    'Automobile' is used as name to avoid confusion with 'Vehicles' or 'Car'.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "vehicle_transporter_car"
+        super().__init__(**kwargs)
+        self.speed_class = "express"
+        self.class_refit_groups = []  # no classes, use explicit labels
+        self.label_refits_allowed = ["PASS", "VEHI", "ENSP", "FMSP"]
+        self.label_refits_disallowed = []
+        self.default_cargos = ["VEHI"]
+        # special flag to turn on cargo subtypes specific to vehicles, can be made more generic if subtypes need to be extensible in future
+        self.use_cargo_subytpes_VEHI = True
+        self._intro_date_days_offset = (
+            global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
+        )
+        # !! flipping not currently allowed as don't know if asymmetric sprites support is working (might be fine?) (works for containers ok)
+        self.allow_flip = (
+            True  # hax test because template failing to return correct cargo sprites
+        )
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsAutomobileTransporter()
+
+    @property
+    # account for e.g. low floor, double deck etc
+    def platform_type(self):
+        # !! all default currently, extend as needed - see intermodal cars for example
+        return "default"
+
+
 class BolsterCarConsist(CarConsist):
     """
     Specialist wagon with side stakes and bolsters for long products, limited refits.
@@ -3380,38 +3413,6 @@ class VehiclePartsBoxCarConsist(CarConsist):
         )
 
 
-class VehicleTransporterCarConsist(CarConsist):
-    """
-    Transports vehicles cargo
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = "vehicle_transporter_car"
-        super().__init__(**kwargs)
-        self.speed_class = "express"
-        self.class_refit_groups = []  # no classes, use explicit labels
-        self.label_refits_allowed = ["PASS", "VEHI", "ENSP", "FMSP"]
-        self.label_refits_disallowed = []
-        self.default_cargos = ["VEHI"]
-        # special flag to turn on cargo subtypes specific to vehicles, can be made more generic if subtypes need to be extensible in future
-        self.use_cargo_subytpes_VEHI = True
-        self._intro_date_days_offset = (
-            global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
-        )
-        # !! flipping not currently allowed as don't know if asymmetric sprites support is working (might be fine?) (works for containers ok)
-        self.allow_flip = (
-            True  # hax test because template failing to return correct cargo sprites
-        )
-        # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsVehicleTransporter()
-
-    @property
-    # account for e.g. low floor, double deck etc
-    def platform_type(self):
-        # !! all default currently, extend as needed - see intermodal cars for example
-        return "default"
-
-
 class Train(object):
     """
     Base class for all types of trains
@@ -4359,6 +4360,19 @@ class FreightCar(TrainCar):
         self.capacity = self.vehicle_length * base_capacity
 
 
+class AutomobileCar(FreightCar):
+    """
+    Automobile (cars, trucks, tractors) transporter car.  This subclass only exists to symmetry_type, random trigger and colour mapping switches.
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # vehicle transporter cars may be asymmetric, there is magic in the graphics processing to make this work
+        self._symmetry_type = "asymmetric"
+        utils.echo_message("AutomobileCar random_trigger_switch is using _switch_graphics_containers")
+        self.random_trigger_switch = "_switch_graphics_containers"
+
+
 class CoilBuggyCar(FreightCar):
     """
     Coil buggy car. This subclass only exists to set the capacity.
@@ -4415,15 +4429,3 @@ class TorpedoCar(FreightCar):
         self._symmetry_type = "asymmetric"
         # capacity bonus is solely to support using small stations in Steeltown where space between industries is constrained
         self.capacity = 1.5 * self.capacity
-
-
-class VehicleTransporterCar(FreightCar):
-    """
-    Vehicle transporter car.  This subclass only exists to symmetry_type, random trigger and colour mapping switches.
-    """
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        # vehicle transporter cars may be asymmetric, there is magic in the graphics processing to make this work
-        self._symmetry_type = "asymmetric"
-        self.random_trigger_switch = "_switch_graphics_containers"

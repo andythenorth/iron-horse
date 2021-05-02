@@ -33,9 +33,9 @@ def run_intermodal_container_pipeline(intermodal_container_gestalt):
     )
 
 
-def run_vehicles_cargos_pipeline(vehicles_cargos_gestalt):
+def run_automobile_cargos_pipeline(automobile_cargos_gestalt):
     # note that vehicles cargos only support one pipeline at time of writing, whereas consists support n pipelines
-    vehicles_cargos_gestalt.pipeline.render(vehicles_cargos_gestalt, global_constants)
+    automobile_cargos_gestalt.pipeline.render(automobile_cargos_gestalt, global_constants)
 
 
 def report_sprites_complete(consists):
@@ -98,8 +98,8 @@ def main():
     intermodal_container_gestalts = (
         iron_horse.spritelayer_cargos.intermodal_containers.registered_container_gestalts
     )
-    vehicles_cargos_gestalts = (
-        iron_horse.spritelayer_cargos.vehicles_cargos.registered_container_gestalts
+    automobile_cargos_gestalts = (
+        iron_horse.spritelayer_cargos.automobile_cargos.registered_container_gestalts
     )
 
     if use_multiprocessing == False:
@@ -107,15 +107,15 @@ def main():
             run_consist_pipelines(consist)
         for intermodal_container_gestalt in intermodal_container_gestalts:
             run_intermodal_container_pipeline(intermodal_container_gestalt)
-        for vehicles_cargos_gestalt in vehicles_cargos_gestalts:
-            run_vehicles_cargos_pipeline(vehicles_cargos_gestalt)
+        for automobile_cargos_gestalt in automobile_cargos_gestalts:
+            run_automobile_cargos_pipeline(automobile_cargos_gestalt)
     else:
         # Would this go faster if the pipelines from each consist were placed in MP pool, not just the consist?
         # probably potato / potato tbh
         pool = Pool(processes=num_pool_workers)
         pool.map(run_consist_pipelines, consists)
         pool.map(run_intermodal_container_pipeline, intermodal_container_gestalts)
-        pool.map(run_vehicles_cargos_pipeline, vehicles_cargos_gestalts)
+        pool.map(run_automobile_cargos_pipeline, automobile_cargos_gestalts)
         pool.close()
         pool.join()
 

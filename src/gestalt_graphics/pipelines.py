@@ -490,7 +490,7 @@ class GenerateCompositedVehiclesCargos(Pipeline):
                     "src",
                     "polar_fox",
                     "graphics",
-                    "vehicles_cargos",
+                    "automobile_cargos",
                     container + ".png",
                 )
                 container_image = Image.open(container_path)

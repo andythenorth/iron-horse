@@ -6,7 +6,7 @@ from gestalt_graphics.pipelines import GenerateCompositedVehiclesCargos
 from gestalt_graphics.gestalt_graphics import GestaltGraphicsIntermodal
 
 
-class VehiclesCargoGestalt(object):
+class AutomobileCargoGestalt(object):
     """ Sparse class to hold vehicles cargos gestalts """
 
     # a gestalt is a set of vehicles cargos (trucks etc.) of specific length and appearance
@@ -36,9 +36,9 @@ class VehiclesCargoGestalt(object):
     # !!! containers are going to need 'base sets' to allow double stack, cropped for well cars etc
     # !!! the consist needs to encode the set type to fetch the right spritesets
     # !!! base sets will also have to be encoded in gestalts here, unless they're done by (sets * gestalts) combinatorially?
-    def __init__(self, vehicles_cargo_subtype):
+    def __init__(self, automobile_cargo_subtype):
         self.pipeline = GenerateCompositedVehiclesCargos()
-        self.vehicles_cargo_subtype = vehicles_cargo_subtype
+        self.automobile_cargo_subtype = automobile_cargo_subtype
 
     @property
     def floor_height_variants(self):
@@ -52,31 +52,31 @@ class VehiclesCargoGestalt(object):
     @property
     def id(self):
         return (
-            "vehicles_cargo_"
-            + self.vehicles_cargo_subtype
+            "automobile_cargo_"
+            + self.automobile_cargo_subtype
             + "_"
             + str(self.length)
             + "px"
         )
 
 
-class Trucks16px(VehiclesCargoGestalt):
-    def __init__(self, vehicles_cargo_subtype):
-        super().__init__(vehicles_cargo_subtype)
+class Trucks16px(AutomobileCargoGestalt):
+    def __init__(self, automobile_cargo_subtype):
+        super().__init__(automobile_cargo_subtype)
         self.length = 16
         self.variants = [["trucks_1_1CC"], ["trucks_1_1CC"], ["trucks_1_1CC"]]
 
 
-class Trucks24px(VehiclesCargoGestalt):
-    def __init__(self, vehicles_cargo_subtype):
-        super().__init__(vehicles_cargo_subtype)
+class Trucks24px(AutomobileCargoGestalt):
+    def __init__(self, automobile_cargo_subtype):
+        super().__init__(automobile_cargo_subtype)
         self.length = 24
         self.variants = [["trucks_1_1CC", "trucks_1_1CC"], ["trucks_1_1CC"]]
 
 
-class Trucks32px(VehiclesCargoGestalt):
-    def __init__(self, vehicles_cargo_subtype):
-        super().__init__(vehicles_cargo_subtype)
+class Trucks32px(AutomobileCargoGestalt):
+    def __init__(self, automobile_cargo_subtype):
+        super().__init__(automobile_cargo_subtype)
         self.length = 32
         self.variants = [
             ["trucks_1_1CC", "trucks_1_1CC", "trucks_1_1CC"],
@@ -94,12 +94,12 @@ def get_container_gestalts_by_length(vehicle_length):
 
 registered_container_gestalts = []
 
-vehicles_cargo_type_gestalt_mapping = {"box": [Trucks16px, Trucks24px, Trucks32px]}
+automobile_cargo_type_gestalt_mapping = {"box": [Trucks16px, Trucks24px, Trucks32px]}
 
 
-def register_container_gestalt(vehicles_cargo_type, vehicles_cargo_subtype):
-    for gestalt in vehicles_cargo_type_gestalt_mapping[vehicles_cargo_type]:
-        registered_container_gestalts.append(gestalt(vehicles_cargo_subtype))
+def register_container_gestalt(automobile_cargo_type, automobile_cargo_subtype):
+    for gestalt in automobile_cargo_type_gestalt_mapping[automobile_cargo_type]:
+        registered_container_gestalts.append(gestalt(automobile_cargo_subtype))
 
 
 def main():
@@ -108,14 +108,14 @@ def main():
     # and semi-generic fallback sprites, with specific type of container - tank, box, etc (and generic cargo and/or default recolour)
     # first do the defaults, which will be named xxxxxx_DFLT
 
-    # !! not clear that we need the subtypes in this way, there's no cargo-specific variation once we're into the vehicles_cargo_type
+    # !! not clear that we need the subtypes in this way, there's no cargo-specific variation once we're into the automobile_cargo_type
 
-    for vehicles_cargo_type in vehicles_cargo_type_gestalt_mapping.keys():
-        if vehicles_cargo_type not in [
+    for automobile_cargo_type in automobile_cargo_type_gestalt_mapping.keys():
+        if automobile_cargo_type not in [
             "bulk"
         ]:  # exclude some types which have no meaningful default (and will fall back to box)
-            vehicles_cargo_subtype = vehicles_cargo_type + "_DFLT"
-            register_container_gestalt(vehicles_cargo_type, vehicles_cargo_subtype)
+            automobile_cargo_subtype = automobile_cargo_type + "_DFLT"
+            register_container_gestalt(automobile_cargo_type, automobile_cargo_subtype)
 
     """
     commented by design, this is just for debugging / project management

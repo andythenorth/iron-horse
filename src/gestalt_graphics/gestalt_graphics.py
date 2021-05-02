@@ -411,9 +411,9 @@ class GestaltGraphicsIntermodal(GestaltGraphics):
         return "vehicle_intermodal.pynml"
 
 
-class GestaltGraphicsVehicleTransporter(GestaltGraphics):
+class GestaltGraphicsAutomobileTransporter(GestaltGraphics):
     """
-    Used to handle specific rules for vehicle transporters
+    Used to handle specific rules for autombile (car, truck, tractor) transporters
     - specific template to handle vehicles which are in separate layer
     """
 
@@ -475,7 +475,7 @@ class GestaltGraphicsVehicleTransporter(GestaltGraphics):
     @property
     def cargo_label_mapping(self):
         print(
-            "cargo_label_mapping needs refactoring for GestaltGraphicsVehicleTransporter?"
+            "cargo_label_mapping needs refactoring for GestaltGraphicsAutomobileTransporter?"
         )
         # first result is known refits which will fallback to xxxxx_DFLT
         # second result is known cargo sprites / livery recolours, which will map explicitly
@@ -508,7 +508,7 @@ class GestaltGraphicsVehicleTransporter(GestaltGraphics):
     def position_variants(self):
         # just a remnant from copying intermodal car approach
         print(
-            "position_variants is vestigal in GestaltGraphicsVehicleTransporter and can be refactored out"
+            "position_variants is vestigal in GestaltGraphicsAutomobileTransporter and can be refactored out"
         )
         # used in spriteset templating
         return ["default", "first", "last"]
@@ -516,7 +516,7 @@ class GestaltGraphicsVehicleTransporter(GestaltGraphics):
     @property
     def nml_template(self):
         # over-ride in sub-classes as needed
-        return "vehicle_vehicle_transporter.pynml"
+        return "vehicle_automobile_car.pynml"
 
 
 class GestaltGraphicsSimpleBodyColourRemaps(GestaltGraphics):
