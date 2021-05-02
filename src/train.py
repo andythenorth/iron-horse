@@ -1739,14 +1739,13 @@ class AlignmentCarConsist(CarConsist):
         self.allow_flip = False
 
 
-class AutomobileCarConsist(CarConsist):
+class AutomobileCarConsistBase(CarConsist):
     """
     Transports automobiles (cars, trucks, tractors etc).
     'Automobile' is used as name to avoid confusion with 'Vehicles' or 'Car'.
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "automobile_flat_car"
         super().__init__(**kwargs)
         self.speed_class = "express"
         self.class_refit_groups = []  # no classes, use explicit labels
@@ -1762,6 +1761,21 @@ class AutomobileCarConsist(CarConsist):
         self.allow_flip = (
             True  # hax test because template failing to return correct cargo sprites
         )
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsAutomobileTransporter()
+
+
+class AutomobileFlatCarConsist(AutomobileCarConsistBase):
+    """
+    Transports automobiles (cars, trucks, tractors etc).
+    'Automobile' is used as name to avoid confusion with 'Vehicles' or 'Car'.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "automobile_flat_car"
+        super().__init__(**kwargs)
+        # special flag to turn on cargo subtypes specific to cars / trucks / tractors etc, can be made more generic if subtypes need to be extensible in future
+        self.use_cargo_subytpes_VEHI = True
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsAutomobileTransporter()
 
@@ -4321,7 +4335,7 @@ class ExpressCar(TrainCar):
 
 class ExpressIntermodalCar(ExpressCar):
     """
-    Express container car, subclassed from express car.  This subclass only exists to symmetry_type, random trigger and colour mapping switches.
+    Express container car, subclassed from express car.  This subclass only exists to symmetry_type and random trigger.
     """
 
     def __init__(self, **kwargs):
@@ -4342,6 +4356,22 @@ class ExpressMailCar(ExpressCar):
         self._symmetry_type = "asymmetric"
 
 
+class AutomobileCar(ExpressCar):
+    """
+    Automobile (cars, trucks, tractors) transporter car, subclassed from express car.
+    This subclass exists to symmetry_type and random trigger.
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # vehicle transporter cars may be asymmetric, there is magic in the graphics processing to make this work
+        self._symmetry_type = "asymmetric"
+        utils.echo_message(
+            "AutomobileCar random_trigger_switch is using _switch_graphics_containers"
+        )
+        self.random_trigger_switch = "_switch_graphics_containers"
+
+
 class FreightCar(TrainCar):
     """
     Freight wagon.
@@ -4360,19 +4390,6 @@ class FreightCar(TrainCar):
             self.consist.base_track_type
         ][self.consist.gen - 1]
         self.capacity = self.vehicle_length * base_capacity
-
-
-class AutomobileCar(FreightCar):
-    """
-    Automobile (cars, trucks, tractors) transporter car.  This subclass only exists to symmetry_type, random trigger and colour mapping switches.
-    """
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        # vehicle transporter cars may be asymmetric, there is magic in the graphics processing to make this work
-        self._symmetry_type = "asymmetric"
-        utils.echo_message("AutomobileCar random_trigger_switch is using _switch_graphics_containers")
-        self.random_trigger_switch = "_switch_graphics_containers"
 
 
 class CoilBuggyCar(FreightCar):

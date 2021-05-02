@@ -35,7 +35,9 @@ def run_intermodal_container_pipeline(intermodal_container_gestalt):
 
 def run_automobile_cargos_pipeline(automobile_cargos_gestalt):
     # note that vehicles cargos only support one pipeline at time of writing, whereas consists support n pipelines
-    automobile_cargos_gestalt.pipeline.render(automobile_cargos_gestalt, global_constants)
+    automobile_cargos_gestalt.pipeline.render(
+        automobile_cargos_gestalt, global_constants
+    )
 
 
 def report_sprites_complete(consists):
