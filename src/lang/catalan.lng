@@ -106,7 +106,6 @@ STR_NAME_SUFFIX_TANK_CAR                                        :Cotxe cisterna
 STR_NAME_SUFFIX_TARPAULIN_CAR                                   :Cotxe de lona
 STR_NAME_SUFFIX_TORPEDO_CAR                                     :Cotxe torpedo
 STR_NAME_SUFFIX_VEHICLE_PARTS_BOX_CAR                           :Cotxe transportador de piezas
-STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Cotxe transportador de vehicles
 
 # buy menu wrappers
 STR_BUY_MENU_WRAPPER_ONE_SUBSTR                                 :{STRING}

@@ -106,7 +106,6 @@ STR_NAME_SUFFIX_TANK_CAR                                        :Vagón cisterna
 STR_NAME_SUFFIX_TARPAULIN_CAR                                   :Vagón lona tarp
 STR_NAME_SUFFIX_TORPEDO_CAR                                     :Vagón torpedo
 STR_NAME_SUFFIX_VEHICLE_PARTS_BOX_CAR                           :Vagón transportador de piezas
-STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Vagón transportador de vehículos
 
 # buy menu wrappers
 STR_BUY_MENU_WRAPPER_ONE_SUBSTR                                 :{STRING}

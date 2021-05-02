@@ -49,7 +49,6 @@ STR_NAME_SUFFIX_SLIDING_WALL_CAR                                :Siirtokatevaunu
 STR_NAME_SUFFIX_TANK_CAR                                        :Säiliövaunu
 STR_NAME_SUFFIX_TARPAULIN_CAR                                   :Peitekangasvaunu
 STR_NAME_SUFFIX_TORPEDO_CAR                                     :Torpedovaunu
-STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Ajoneuvonkuljetusvaunu
 
 # buy menu wrappers
 

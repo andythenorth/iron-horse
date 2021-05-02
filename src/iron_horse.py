@@ -27,6 +27,7 @@ import spritelayer_cargos.automobile_cargos
 
 # import wagons
 # from vehicles import alignment_cars
+from vehicles import automobile_flat_cars
 from vehicles import bolster_cars
 from vehicles import box_cars
 from vehicles import bulkhead_flat_cars
@@ -77,7 +78,6 @@ from vehicles import suburban_passenger_cars
 from vehicles import tank_cars
 from vehicles import tarpaulin_cars
 from vehicles import vehicle_parts_box_cars
-from vehicles import vehicle_transporter_cars
 
 
 def get_active_rosters():
@@ -249,6 +249,7 @@ def main():
     # only comment in if needed for debugging
     alignment_cars.main()
     """
+    automobile_flat_cars.main()
     bolster_cars.main()
     box_cars.main()
     bulkhead_flat_cars.main()
@@ -299,4 +300,3 @@ def main():
     tarpaulin_cars.main()
     torpedo_cars.main()
     vehicle_parts_box_cars.main()
-    vehicle_transporter_cars.main()

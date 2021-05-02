@@ -1746,7 +1746,7 @@ class AutomobileCarConsist(CarConsist):
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "vehicle_transporter_car"
+        self.base_id = "automobile_flat_car"
         super().__init__(**kwargs)
         self.speed_class = "express"
         self.class_refit_groups = []  # no classes, use explicit labels

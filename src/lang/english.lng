@@ -3,9 +3,6 @@
 # this is the default translation and is en-gb
 STR_GRF_DESCRIPTION                                             :License: {SILVER}GPL v2{}{BLACK}
 
-STR_FOO                                                         : (Foo)
-STR_BAR                                                         : (Bar)
-
 STR_PARAM_ADJUST_VEHICLE_CAPACITY                               :Train capacity
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_DESC                          :Adjust vehicle capacity for alternative gameplay styles.{}{}Puny: {GOLD}33% reduction{BLACK}{}Marvellous: {GOLD}default{BLACK}{}Excessive: {GOLD}33% increase{BLACK}{}Outrageous: {GOLD}77% increase{BLACK}
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :Puny
@@ -61,6 +58,7 @@ STR_NAME_SUFFIX_TWIN                                            :Twin
 # the en-us translation should be updated appropriately when making changes here
 # !! consider splitting strings per roster?? A US caboose is still a 'caboose' in en-gb, not a brake van
 STR_NAME_SUFFIX_ALIGNMENT_CAR                                   :Alignment Van
+STR_NAME_SUFFIX_AUTOMOBILE_FLAT_CAR                             :Motorail Flat
 STR_NAME_SUFFIX_BOX_CAR                                         :Box Van
 STR_NAME_SUFFIX_COIL_BUGGY_CAR                                  :Coil Buggies
 STR_NAME_SUFFIX_BOLSTER_CAR                                     :Bolster Wagon
@@ -111,7 +109,11 @@ STR_NAME_SUFFIX_TANK_CAR                                        :Tanker
 STR_NAME_SUFFIX_TARPAULIN_CAR                                   :Tarpaulin Wagon
 STR_NAME_SUFFIX_TORPEDO_CAR                                     :Torpedo Wagon
 STR_NAME_SUFFIX_VEHICLE_PARTS_BOX_CAR                           :Vehicle Parts Van
-STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Motorail Flat
+
+# cargo subtypes
+# only used for automobile cars (specifically vehicles cargo) as of May 2021
+STR_CARGO_SUBTYPE_VEHI_0                                        : (Cars)
+STR_CARGO_SUBTYPE_VEHI_1                                        : (Trucks)
 
 # buy menu wrappers
 STR_BUY_MENU_WRAPPER_ONE_SUBSTR                                 :{STRING}

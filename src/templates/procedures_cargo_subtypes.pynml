@@ -1,8 +1,8 @@
 <!--! this is hard-coded  to vehicles (VEHI) cargo as of May 2021
       if it needs to be extensible, make it loop over a list of per-cargo subtype strings -->
 switch (FEAT_TRAINS, SELF, switch_cargo_subtype_text_VEHI, cargo_subtype) {
-    0: return string(STR_FOO);
-    1: return string(STR_BAR);
+    0: return string(STR_CARGO_SUBTYPE_VEHI_0);
+    1: return string(STR_CARGO_SUBTYPE_VEHI_1);
     return CB_RESULT_NO_TEXT;
 }
 

@@ -70,7 +70,6 @@ STR_NAME_SUFFIX_TANK_CAR                                        :Wagon-citerne
 STR_NAME_SUFFIX_TARPAULIN_CAR                                   :Wagon bâché
 STR_NAME_SUFFIX_TORPEDO_CAR                                     :Wagon-torpille
 STR_NAME_SUFFIX_VEHICLE_PARTS_BOX_CAR                           :Wagon à carrosseries
-STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Wagon porte-véhicule
 
 # buy menu wrappers
 STR_BUY_MENU_WRAPPER_ONE_SUBSTR                                 :{STRING}

@@ -110,7 +110,6 @@ STR_NAME_SUFFIX_TANK_CAR                                        :Tanker
 STR_NAME_SUFFIX_TARPAULIN_CAR                                   :Gerbong Terpal
 STR_NAME_SUFFIX_TORPEDO_CAR                                     :Gerbong Torpedo
 STR_NAME_SUFFIX_VEHICLE_PARTS_BOX_CAR                           :Gerbong Suku Cadang
-STR_NAME_SUFFIX_VEHICLE_TRANSPORTER_CAR                         :Gerbong Mobil
 
 # buy menu wrappers
 STR_BUY_MENU_WRAPPER_ONE_SUBSTR                                 :{STRING}

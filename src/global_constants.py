@@ -13,7 +13,7 @@ buy_menu_sort_order_wagons = [
     "suburban_passenger_car",
     "mail_car",
     "express_car",
-    "vehicle_transporter_car",
+    "automobile_flat_car",
     "express_intermodal_car",
     "intermodal_car",
     "low_floor_intermodal_car",
