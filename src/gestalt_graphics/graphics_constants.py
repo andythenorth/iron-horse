@@ -32,16 +32,8 @@ spritesheet_width = 425
 
 # --- Body Recolour Maps --- #
 
-tarpaulin_car_body_recolour_map = {
-    136: CC1,
-    137: CC1 + 1,
-    138: CC1 + 2,
-    139: CC1 + 3,
-    140: CC1 + 4,
-    141: CC1 + 5,
-    142: CC1 + 6,
-    143: CC1 + 7,
-}
+tarpaulin_car_body_recolour_map = body_recolour_CC1
+
 sliding_roof_car_body_recolour_map = {
     40: 4,
     41: 5,
