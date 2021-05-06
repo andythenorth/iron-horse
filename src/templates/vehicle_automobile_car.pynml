@@ -18,25 +18,26 @@
     }
 </tal:position_variants>
 
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_platform_position_in_consist_entry_point, switch_graphics_vehicle_transporter_ruleset()) {
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_platform_position_in_consist_entry_point, switch_graphics_automobile_transporter_ruleset_4_unit_sets()) {
     0: return ${vehicle.id}_switch_graphics_platform_default;
     1: return ${vehicle.id}_switch_graphics_platform_first;
     2: return ${vehicle.id}_switch_graphics_platform_last;
+    3: return ${vehicle.id}_switch_graphics_platform_middle;
     return ${vehicle.id}_switch_graphics_platform_default;
 }
 
 <!--! check explicit cargo labels, fallback to random if unknown -->
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_containers_check_cargo_label, cargo_type_in_veh) {
     <!--!<tal:cargo_label_container_type_mapping repeat="cargo_label consist.gestalt_graphics.cargo_label_mapping.items()">
-        ${cargo_label[0]}: switch_spritelayer_cargos_vehicle_transporter_cargos_random_${consist.platform_type}_${cargo_label[1]}_${4 * vehicle.vehicle_length}px;
+        ${cargo_label[0]}: switch_spritelayer_cargos_automobile_transporter_cargos_random_${consist.platform_type}_${cargo_label[1]}_${4 * vehicle.vehicle_length}px;
     </tal:cargo_label_container_type_mapping>-->
-    return switch_spritelayer_cargos_vehicle_transporter_cargos_random_${consist.platform_type}_box_DFLT_${4 * vehicle.vehicle_length}px;
+    return switch_spritelayer_cargos_automobile_transporter_cargos_random_${consist.platform_type}_box_DFLT_${4 * vehicle.vehicle_length}px;
 }
 
 <!--! load state is assumed to be all or nothing - any cargo = full load of containers -->
 <!--! !! might want to handle intermediate load states when multiple containers are used ?? 50:50 -->
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_containers_check_cargo, cargo_count) {
-        0: return ss_spritelayer_cargos_vehicle_transporter_cars_empty;
+        0: return ss_spritelayer_cargos_automobile_transporter_cars_empty;
     return ${vehicle.id}_switch_graphics_containers_check_cargo_label;
 }
 

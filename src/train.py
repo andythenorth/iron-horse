@@ -1762,6 +1762,10 @@ class AutomobileCarConsistBase(CarConsist):
             True  # hax test because template failing to return correct cargo sprites
         )
         # Graphics configuration
+        # intermodal containers can't use random colour swaps on the wagons...
+        # ...because the random bits are re-randomised when new cargo loads, to get new random containers, which would also cause new random wagon colour
+        # player can still flip to the second livery
+        self.use_colour_randomisation_strategies = False
         self.gestalt_graphics = GestaltGraphicsAutomobileTransporter()
 
 
@@ -1776,8 +1780,6 @@ class AutomobileDoubleDeckCarConsist(AutomobileCarConsistBase):
         # blah blah, more restrictive refits for double deck, cars only
         self.label_refits_allowed = ["PASS", "VEHI"]
         self.use_cargo_subytpes_VEHI = False
-        # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsAutomobileTransporter()
 
     @property
     # account for e.g. low floor, double deck etc
@@ -1794,10 +1796,6 @@ class AutomobileCarConsist(AutomobileCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "automobile_car"
         super().__init__(**kwargs)
-        # special flag to turn on cargo subtypes specific to cars / trucks / tractors etc, can be made more generic if subtypes need to be extensible in future
-        self.use_cargo_subytpes_VEHI = True
-        # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsAutomobileTransporter()
 
     @property
     # account for e.g. low floor, double deck etc
@@ -1814,10 +1812,6 @@ class AutomobileLowFloorCarConsist(AutomobileCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "low_floor_automobile_car"
         super().__init__(**kwargs)
-        # special flag to turn on cargo subtypes specific to cars / trucks / tractors etc, can be made more generic if subtypes need to be extensible in future
-        self.use_cargo_subytpes_VEHI = True
-        # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsAutomobileTransporter()
 
     @property
     # account for e.g. low floor, double deck etc

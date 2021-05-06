@@ -101,7 +101,7 @@ def main():
         iron_horse.spritelayer_cargos.intermodal_containers.registered_container_gestalts
     )
     automobile_cargos_gestalts = (
-        iron_horse.spritelayer_cargos.automobile_cargos.registered_container_gestalts
+        iron_horse.spritelayer_cargos.automobile_cargos.registered_automobile_cargo_gestalts
     )
 
     if use_multiprocessing == False:

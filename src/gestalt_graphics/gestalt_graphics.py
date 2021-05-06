@@ -463,7 +463,7 @@ class GestaltGraphicsAutomobileTransporter(GestaltGraphics):
         # print a note if an unhandled contested cargo is found, so the contested cargos can be updated to handle the cargo label
         if cargo_label in result:
             print(
-                "GestaltGraphicsIntermodal.cargo_label_mapping: cargo_label",
+                "GestaltGraphicsAutomobileTransporter.cargo_label_mapping: cargo_label",
                 cargo_label,
                 "already exists, being over-written by",
                 container_type,
@@ -506,12 +506,9 @@ class GestaltGraphicsAutomobileTransporter(GestaltGraphics):
 
     @property
     def position_variants(self):
-        # just a remnant from copying intermodal car approach
-        print(
-            "position_variants is vestigal in GestaltGraphicsAutomobileTransporter and can be refactored out"
-        )
         # used in spriteset templating
-        return ["default", "first", "last"]
+        # !! see intermodal cars for handling of sets with different numbers of units
+        return ["default", "first", "last", "middle"]
 
     @property
     def nml_template(self):
