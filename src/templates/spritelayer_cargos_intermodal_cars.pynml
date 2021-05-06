@@ -5,7 +5,7 @@ spriteset(ss_spritelayer_cargos_intermodal_cars_empty, "src/graphics/spriterow_t
 }
 
 <!--! the spritesets are interleaved with the switches by design; doing a block of contiguous spritesets causes the nml spritegroups limit to be hit (probably ran out of real action 2 IDs -->
-<tal:platform_types repeat="platform_type spritelayer_cargos.intermodal_containers.IntermodalContainerGestalt().all_platform_types">
+<tal:platform_types repeat="platform_type spritelayer_cargos.intermodal_containers.IntermodalContainerSpritelayerCargo().all_platform_types">
     <tal:platform_length repeat="platform_length [16, 24, 32]">
         <!--! note that the suppression list check is to prevent nml complaining about unused switches -->
         <tal:block condition="(platform_type, platform_length) not in spritelayer_cargos.intermodal_containers.suppression_list"
