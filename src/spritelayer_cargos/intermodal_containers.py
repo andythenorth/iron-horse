@@ -1,6 +1,6 @@
-# spritelayer cargos are sandboxed into their own module to avoid them spawning tentacles into gestalt graphics, global constants, train.py etc
+# spritelayer cargos are sandboxed into their own module to avoid them spawning tentacles into train.py etc
 
-from gestalt_graphics.pipelines import GenerateCompositedIntermodalContainers
+from gestalt_graphics.pipelines import GenerateSpritelayerCargos
 from gestalt_graphics.gestalt_graphics import GestaltGraphicsIntermodal
 
 
@@ -23,7 +23,7 @@ class IntermodalContainerGestalt(object):
     # !!! the consist needs to encode the set type to fetch the right spritesets
     # !!! base sets will also have to be encoded in gestalts here, unless they're done by (sets * gestalts) combinatorially?
     def __init__(self, **kwargs):
-        self.pipeline = GenerateCompositedIntermodalContainers()
+        self.pipeline = GenerateSpritelayerCargos()
         self.container_subtype = kwargs.get("container_subtype", None)
         self.platform_type = kwargs.get("platform_type", None)
 
