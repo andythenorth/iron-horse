@@ -4,14 +4,14 @@ spriteset(ss_spritelayer_cargos_empty, "src/graphics/spriterow_template.png") {
     spriteset_template_asymmetric_unreversed_8_8_unflipped(10, NOANIM)
 }
 
-<tal:spritelayer_cargo define="spritelayer_cargo spritelayer_cargos.intermodal_containers.IntermodalCargo()">
+<tal:spritelayer_cargo_base_type define="spritelayer_cargo spritelayer_cargos.intermodal_containers.IntermodalCargo()">
     <tal:platform_types repeat="platform_type spritelayer_cargo.cargos_by_platform_type_and_length.keys()">
         <tal:platform_length repeat="platform_length spritelayer_cargo.cargos_by_platform_type_and_length[platform_type].keys()">
 
             <!--! Spritesets
                   the spritesets are interleaved with the switches by design;
                   doing a block of contiguous spritesets causes the nml spritegroups limit to be hit (probably ran out of real action 2 IDs) -->
-            <tal:cargo_spritesets repeat="cargo spritelayer_cargo.cargos_by_platform_type_and_length[platform_type][platform_length]">
+            <tal:cargo repeat="cargo spritelayer_cargo.cargos_by_platform_type_and_length[platform_type][platform_length]">
                 <tal:variants repeat="variant cargo.variants">
                     spriteset(ss_spritelayer_cargos_${spritelayer_cargo.base_id}_${platform_type}_${platform_length}px_${cargo.subtype}_${repeat.variant.index}_unflipped, "${graphics_path}${cargo.id}.png") {
                         spriteset_template_asymmetric_unreversed_${int(cargo.length / 4)}_8_unflipped(10 + ${repeat.variant.index * 30}, NOANIM)
@@ -37,7 +37,7 @@ spriteset(ss_spritelayer_cargos_empty, "src/graphics/spriterow_template.png") {
                         </tal:cargo_variants>
                     }
                 </tal:optional_random>
-            </tal:cargo_spritesets>
+            </tal:cargo>
 
             <!--! Cargo switches
                 pseudo cargo checking code
@@ -72,4 +72,4 @@ spriteset(ss_spritelayer_cargos_empty, "src/graphics/spriterow_template.png") {
             }
         </tal:platform_length>
     </tal:platform_types>
-</tal:spritelayer_cargo>
+</tal:spritelayer_cargo_base_type>

@@ -49,8 +49,33 @@ class IntermodalCargo(CargoBase):
         return result
 
     def get_next_cargo_switch(self, platform_type, platform_length, subtype):
-        # !! this is a shim to a module method for legacy reasons, needs refactored to a class method
-        return get_next_cargo_switch(platform_type, platform_length, subtype)
+        # this is stupid, exists solely to optimise out pointless random switches, which nml could do for us, but I dislike seeing the warnings; seriously TMWFTLB
+        if self.cargo_has_random_variants_for_cargo_label(
+            platform_type, platform_length, subtype
+        ):
+            return (
+                "switch_spritelayer_cargos_"
+                + self.base_id
+                + "_random_"
+                + platform_type
+                + "_"
+                + str(platform_length)
+                + "px_"
+                + subtype
+            )
+        else:
+            return (
+                "switch_spritelayer_cargos_"
+                + self.base_id
+                + "_"
+                + platform_type
+                + "_"
+                + str(platform_length)
+                + "px_"
+                + subtype
+                + "_0"
+            )
+
 
     def cargo_has_random_variants_for_cargo_label(
         self, platform_type, platform_length, subtype
@@ -72,6 +97,10 @@ class IntermodalCargo(CargoBase):
             + str(self.length)
             + "px"
         )
+
+
+# this is simply manually maintained, and is to prevent nml warnings about unused switches
+suppression_list = [("cargo_sprinter", 16), ("cargo_sprinter", 24)]
 
 
 class IntermodalDefaultAndLowFloorCargoBase(IntermodalCargo):
@@ -321,9 +350,6 @@ container_type_cargo_mapping = {
 }
 
 
-# this is simply manually maintained, and is to prevent nml warnings about unused switches
-suppression_list = [("cargo_sprinter", 16), ("cargo_sprinter", 24)]
-
 registered_container_cargos = []
 
 
@@ -356,31 +382,6 @@ def cargo_has_random_variants_for_cargo_label(platform_type, platform_length, su
             if len(cargo.variants) > 1:
                 result = True
     return result
-
-
-def get_next_cargo_switch(platform_type, platform_length, subtype):
-    # this is solely to optimise out pointless random switches, which nml could do for us but eh, why not shave the yak :P
-    if cargo_has_random_variants_for_cargo_label(
-        platform_type, platform_length, subtype
-    ):
-        return (
-            "switch_spritelayer_cargos_intermodal_containers_random_"
-            + platform_type
-            + "_"
-            + str(platform_length)
-            + "px_"
-            + subtype
-        )
-    else:
-        return (
-            "switch_spritelayer_cargos_intermodal_containers_"
-            + platform_type
-            + "_"
-            + str(platform_length)
-            + "px_"
-            + subtype
-            + "_0"
-        )
 
 
 def main():
