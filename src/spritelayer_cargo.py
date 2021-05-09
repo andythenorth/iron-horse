@@ -1,5 +1,7 @@
 from spritelayer_cargos import registered_spritelayer_cargos
 
+# this is simply manually maintained, and is to prevent nml warnings about unused switches
+suppression_list = [("cargo_sprinter", 16), ("cargo_sprinter", 24)]
 
 class CargoBase(object):
     """ Base class for (spritelayer) cargos """
@@ -13,26 +15,107 @@ class CargoBase(object):
     # - combinations of cargo lengths
     # - combinations of cargo types
     # - cargo colours
-    # !!! cargos are going to need 'base sets' to allow double stack, cropped  for well cars etc
-    # !!! the consist needs to encode the set type to fetch the right spritesets
-    # !!! base sets will also have to be encoded in gestalts here, unless they're done by (sets * gestalts) combinatorially?
     def __init__(self, **kwargs):
         self.platform_type = kwargs.get("platform_type", None)
+        # set all_platform_types_with_floor_heights per subclass
+        self.all_platform_types_with_floor_heights = {}
         # configure gestalt_graphics in the subclass
         self.gestalt_graphics = None
 
     @property
-    def all_platform_types_with_floor_heights(self):
-        return "implement in subclass"
-
-    @property
     def all_platform_types(self):
-        return "implement in subclass"
+        return self.all_platform_types_with_floor_heights.keys()
 
     @property
     def floor_height_for_platform_type(self):
-        return "implement in subclass"
+        # crude resolution of floor height for each platform type
+        return self.all_platform_types_with_floor_heights[self.platform_type]
 
     @property
     def id(self):
-        return "implement in subclass"
+        return (
+            self.base_id
+            + "_"
+            + self.platform_type
+            + "_"
+            + self.subtype
+            + "_"
+            + str(self.length)
+            + "px"
+        )
+
+    @property
+    def cargos_by_platform_type_and_length(self):
+        # structure optimised for rendering into nml switch stack
+        # just walking over all the cargos into a flat set of spritesets triggers the nfo / nml 255 limit for switch results, so the switches are interleaved in a specific way to avoid that
+        result = {}
+        for platform_type in self.all_platform_types:
+            result[platform_type] = {}
+            platform_lengths = [16, 24, 32]
+            for platform_length in platform_lengths:
+                if (platform_type, platform_length) not in suppression_list:
+                    result[platform_type][
+                        platform_length
+                    ] = get_cargos_matching_platform_type_and_length(
+                        platform_type, platform_length
+                    )
+        return result
+
+    def cargo_has_random_variants_for_cargo_label(
+        self, platform_type, platform_length, subtype
+    ):
+        # !! this is a shim to a module method for legacy reasons, needs refactored to a class method
+        return cargo_has_random_variants_for_cargo_label(
+            platform_type, platform_length, subtype
+        )
+
+    def get_next_cargo_switch(self, platform_type, platform_length, subtype):
+        # this is stupid, exists solely to optimise out random switches with only 1 item, which nml could do for us, but I dislike seeing the nml warnings
+        # seriously TMWFTLB
+        if self.cargo_has_random_variants_for_cargo_label(
+            platform_type, platform_length, subtype
+        ):
+            return (
+                "switch_spritelayer_cargos_"
+                + self.base_id
+                + "_random_"
+                + platform_type
+                + "_"
+                + str(platform_length)
+                + "px_"
+                + subtype
+            )
+        else:
+            return (
+                "switch_spritelayer_cargos_"
+                + self.base_id
+                + "_"
+                + platform_type
+                + "_"
+                + str(platform_length)
+                + "px_"
+                + subtype
+                + "_0"
+            )
+
+# module root method, because $reasons (some of the calls are in template where a CargoBase object isn't in scope, so it can't be a class method as it looks like it should be)
+def cargo_has_random_variants_for_cargo_label(platform_type, platform_length, subtype):
+    result = False
+    for cargo in get_cargos_matching_platform_type_and_length(
+        platform_type, platform_length
+    ):
+        if cargo.subtype == subtype:
+            if len(cargo.variants) > 1:
+                result = True
+    return result
+
+def get_cargos_matching_platform_type_and_length(platform_type, platform_length):
+    result = []
+    for cargo in registered_spritelayer_cargos:
+        if (cargo.platform_type == platform_type) and (cargo.length == platform_length):
+            result.append(cargo)
+    return result
+
+
+
+
