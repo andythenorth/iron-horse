@@ -16,8 +16,6 @@ class IntermodalCargo(CargoBase):
     def __init__(self, **kwargs):
         self.base_id = "intermodal_containers"
         super().__init__(**kwargs)
-        self.subtype = kwargs.get("subtype", None)
-        self.label = kwargs.get("label", None)
         self.gestalt_graphics = GestaltGraphicsIntermodal()
         # extend this when adding more platform types
         # y offset: positive = down in spritesheet (y origin at top)
