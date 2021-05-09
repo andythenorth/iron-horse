@@ -14,6 +14,7 @@ class IntermodalCargo(CargoBase):
         self.base_id = "intermodal_containers"
         super().__init__(**kwargs)
         self.subtype = kwargs.get("subtype", None)
+        self.gestalt_graphics = GestaltGraphicsIntermodal()
 
     @property
     def all_platform_types_with_floor_heights(self):
@@ -58,12 +59,6 @@ class IntermodalCargo(CargoBase):
         return cargo_has_random_variants_for_cargo_label(
             platform_type, platform_length, subtype
         )
-
-    @property
-    def cargo_map(self):
-        # !! this is a shim to the cargo gestalt, whether this is wise remains to be seen; seems to work, but quite a lot of abstraction going on here
-        # would it be better to have a self.gestalt_graphics property, like consists have, and access that directly where needed?
-        return GestaltGraphicsIntermodal().cargo_label_mapping.items()
 
     @property
     def id(self):

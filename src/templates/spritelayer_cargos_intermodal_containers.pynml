@@ -65,7 +65,7 @@ spriteset(ss_spritelayer_cargos_empty, "src/graphics/spriterow_template.png") {
             </tal:generic_by_class>
             <!--! check explicit cargo labels -->
             switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_${spritelayer_cargo.base_id}_${platform_type}_${platform_length}px, cargo_type_in_veh) {
-                <tal:cargo_mapping_by_label repeat="cargo_map spritelayer_cargo.cargo_map">
+                <tal:cargo_mapping_by_label repeat="cargo_map spritelayer_cargo.gestalt_graphics.cargo_label_mapping.items()">
                     ${cargo_map[0]}: ${spritelayer_cargo.get_next_cargo_switch(platform_type, platform_length, cargo_map[1])};
                 </tal:cargo_mapping_by_label>
                 return switch_spritelayer_cargos_generic_by_class_entry_point_${platform_type}_${platform_length}px;
