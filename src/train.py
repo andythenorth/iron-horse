@@ -3870,6 +3870,7 @@ class Train(object):
             temp_storage_ids=global_constants.temp_storage_ids,  # convenience measure
             graphics_path=global_constants.graphics_path,
             pax_car_ids=iron_horse.get_pax_car_ids(),
+            spritelayer_cargos=iron_horse.spritelayer_cargos,
         )
         return nml_result
 
