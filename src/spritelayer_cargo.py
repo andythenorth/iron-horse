@@ -109,7 +109,9 @@ class CargoBase(object):
 
 
 # module root method, because $reasons (some of the calls are in template where a CargoBase object isn't in scope, so it can't be a class method as it looks like it should be)
-def cargo_has_random_variants_for_subtype_and_label(platform_type, platform_length, subtype, label):
+def cargo_has_random_variants_for_subtype_and_label(
+    platform_type, platform_length, subtype, label
+):
     result = False
     for cargo in get_cargos_matching_platform_type_and_length(
         platform_type, platform_length
@@ -128,13 +130,15 @@ def get_cargos_matching_platform_type_and_length(platform_type, platform_length)
     return result
 
 
-def register_cargo(cargo_subtype_to_subclass_mapping, subtype, container_type_with_cargo_label):
+def register_cargo(
+    cargo_subtype_to_subclass_mapping, subtype, label
+):
     for cargo_type in cargo_subtype_to_subclass_mapping[subtype]:
         for platform_type in cargo_type.compatible_platform_types:
             cargo = cargo_type(
                 platform_type=platform_type,
-                subtype=container_type_with_cargo_label[0:-5],
-                label=container_type_with_cargo_label[-4:]
+                subtype=subtype,
+                label=label,
             )
             # suppression of unused cargos to prevent nml warnings further down the chain
             if (platform_type, cargo.length) not in suppression_list:
