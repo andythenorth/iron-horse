@@ -126,8 +126,8 @@ def get_cargos_matching_platform_type_and_length(platform_type, platform_length)
     return result
 
 
-def register_cargo(container_type_cargo_mapping, container_type, container_type_with_cargo_label):
-    for cargo_type in container_type_cargo_mapping[container_type]:
+def register_cargo(cargo_subtype_to_subclass_mapping, subtype, container_type_with_cargo_label):
+    for cargo_type in cargo_subtype_to_subclass_mapping[subtype]:
         for platform_type in cargo_type.compatible_platform_types:
             cargo = cargo_type(
                 platform_type=platform_type,

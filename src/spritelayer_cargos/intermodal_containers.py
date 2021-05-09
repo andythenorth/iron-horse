@@ -18,8 +18,6 @@ class IntermodalCargo(CargoBase):
         super().__init__(**kwargs)
         self.subtype = kwargs.get("subtype", None)
         self.label = kwargs.get("label", None)
-        print(self.subtype)
-        print(self.label)
         self.gestalt_graphics = GestaltGraphicsIntermodal()
         # extend this when adding more platform types
         # y offset: positive = down in spritesheet (y origin at top)
@@ -207,7 +205,7 @@ class IntermodalCargoSprinter32pxBoxCargo(IntermodalCargoSprinterCargoBase):
         ]
 
 
-container_type_cargo_mapping = {
+cargo_subtype_to_subclass_mapping = {
     "box": [
         IntermodalFlatCar16pxBoxCargo,
         IntermodalFlatCar24pxBoxCargo,
@@ -282,7 +280,7 @@ def main():
     # - for known cargos with only one visual variant
     # - specific known classes (as default, or fallback where the class might still have further cargo specific sprites)
     # - all other cargos / classes not handled explicitly, which will fall back to box
-    for container_type in container_type_cargo_mapping.keys():
+    for container_type in cargo_subtype_to_subclass_mapping.keys():
         # exclude these types which don't have a meaningful 'default' as the graphics are ALWAYS cargo-specific
         if container_type not in [
             "bulk",
@@ -290,7 +288,7 @@ def main():
         ]:
             container_type_with_cargo_label = container_type + "_DFLT"
             spritelayer_cargo.register_cargo(
-                container_type_cargo_mapping, container_type, container_type_with_cargo_label
+                cargo_subtype_to_subclass_mapping, container_type, container_type_with_cargo_label
             )
 
     # then register containers with cargo labels in their filename e.g. bulk_COAL, tank_PETR etc
@@ -299,7 +297,7 @@ def main():
         if "DFLT" not in container_type_with_cargo_label:
             subtype = container_type_with_cargo_label[0:-5]
             spritelayer_cargo.register_cargo(
-                container_type_cargo_mapping, subtype, container_type_with_cargo_label
+                cargo_subtype_to_subclass_mapping, subtype, container_type_with_cargo_label
             )
 
     """
