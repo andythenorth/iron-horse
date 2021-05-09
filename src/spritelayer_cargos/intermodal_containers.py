@@ -40,8 +40,16 @@ class IntermodalCargo(CargoBase):
             platform_lengths = [16, 24, 32]
             for platform_length in platform_lengths:
                 if (platform_type, platform_length) not in suppression_list:
-                    result[platform_type][platform_length] = get_cargos_matching_platform_type_and_length(platform_type, platform_length)
+                    result[platform_type][
+                        platform_length
+                    ] = get_cargos_matching_platform_type_and_length(
+                        platform_type, platform_length
+                    )
         return result
+
+    def get_next_cargo_switch(self, platform_type, platform_length, subtype):
+        # !! this is a shim to a module method for legacy reasons, needs refactored to a class method
+        return get_next_cargo_switch(platform_type, platform_length, subtype)
 
     @property
     def id(self):
@@ -322,21 +330,15 @@ def register_container_cargo(container_type, subtype):
                 registered_container_cargos.append(cargo)
 
 
-def get_cargos_matching_platform_type_and_length(
-    platform_type, platform_length
-):
+def get_cargos_matching_platform_type_and_length(platform_type, platform_length):
     result = []
     for cargo in registered_container_cargos:
-        if (cargo.platform_type == platform_type) and (
-            cargo.length == platform_length
-        ):
+        if (cargo.platform_type == platform_type) and (cargo.length == platform_length):
             result.append(cargo)
     return result
 
 
-def cargo_has_random_variants_for_cargo_label(
-    platform_type, platform_length, subtype
-):
+def cargo_has_random_variants_for_cargo_label(platform_type, platform_length, subtype):
     result = False
     for cargo in get_cargos_matching_platform_type_and_length(
         platform_type, platform_length
@@ -387,9 +389,7 @@ def main():
             register_container_cargo(container_type, subtype)
 
     # then register containers with cargo labels in their filename e.g. bulk_COAL, tank_PETR etc
-    for subtype in set(
-        GestaltGraphicsIntermodal().cargo_label_mapping.values()
-    ):
+    for subtype in set(GestaltGraphicsIntermodal().cargo_label_mapping.values()):
         # exclude DFLT, handled explicitly elsewhere
         if "DFLT" not in subtype:
             container_type = subtype[0:-5]
