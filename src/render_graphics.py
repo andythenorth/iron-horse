@@ -26,18 +26,9 @@ def run_consist_pipelines(consist):
             pipeline.render(consist, global_constants)
 
 
-def run_intermodal_container_pipeline(intermodal_container_gestalt):
-    # note that intermodal containers only support one pipeline at time of writing, whereas consists support n pipelines
-    intermodal_container_gestalt.pipeline.render(
-        intermodal_container_gestalt, global_constants
-    )
-
-
-def run_automobile_cargos_pipeline(automobile_cargos_gestalt):
-    # note that vehicles cargos only support one pipeline at time of writing, whereas consists support n pipelines
-    automobile_cargos_gestalt.pipeline.render(
-        automobile_cargos_gestalt, global_constants
-    )
+def run_spritelayer_cargo_pipelines(intermodal_container_gestalt):
+    for pipeline in intermodal_container_gestalt.gestalt_graphics.spritelayer_cargo_pipelines:
+        pipeline.render(intermodal_container_gestalt, global_constants)
 
 
 def report_sprites_complete(consists):
@@ -108,16 +99,16 @@ def main():
         for consist in consists:
             run_consist_pipelines(consist)
         for intermodal_container_gestalt in intermodal_container_gestalts:
-            run_intermodal_container_pipeline(intermodal_container_gestalt)
+            run_spritelayer_cargo_pipelines(intermodal_container_gestalt)
         for automobile_cargos_gestalt in automobile_cargos_gestalts:
-            run_automobile_cargos_pipeline(automobile_cargos_gestalt)
+            run_spritelayer_cargo_pipelines(automobile_cargos_gestalt)
     else:
         # Would this go faster if the pipelines from each consist were placed in MP pool, not just the consist?
         # probably potato / potato tbh
         pool = Pool(processes=num_pool_workers)
         pool.map(run_consist_pipelines, consists)
-        pool.map(run_intermodal_container_pipeline, intermodal_container_gestalts)
-        pool.map(run_automobile_cargos_pipeline, automobile_cargos_gestalts)
+        pool.map(run_spritelayer_cargo_pipelines, intermodal_container_gestalts)
+        pool.map(run_spritelayer_cargo_pipelines, automobile_cargos_gestalts)
         pool.close()
         pool.join()
 

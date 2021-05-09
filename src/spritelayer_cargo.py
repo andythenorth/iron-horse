@@ -1,5 +1,3 @@
-from gestalt_graphics.pipelines import GenerateSpritelayerCargos
-
 from spritelayer_cargos import registered_spritelayer_cargos
 
 
@@ -20,7 +18,6 @@ class CargoBase(object):
     # !!! base sets will also have to be encoded in gestalts here, unless they're done by (sets * gestalts) combinatorially?
     def __init__(self, **kwargs):
         self.platform_type = kwargs.get("platform_type", None)
-        self.pipeline = GenerateSpritelayerCargos()
         # configure gestalt_graphics in the subclass
         self.gestalt_graphics = None
 

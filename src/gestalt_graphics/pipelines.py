@@ -1536,6 +1536,7 @@ def get_pipelines(pipeline_names):
         "extend_spriterows_for_composited_sprites_pipeline": ExtendSpriterowsForCompositedSpritesPipeline,
         "generate_pantographs_up_spritesheet": GeneratePantographsUpSpritesheetPipeline,
         "generate_pantographs_down_spritesheet": GeneratePantographsDownSpritesheetPipeline,
+        "generate_spritelayer_cargos": GenerateSpritelayerCargos,
     }
     return [pipelines[pipeline_name]() for pipeline_name in pipeline_names]
 

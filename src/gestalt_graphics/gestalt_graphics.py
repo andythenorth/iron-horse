@@ -317,6 +317,10 @@ class GestaltGraphicsIntermodal(GestaltGraphics):
         self.pipelines = pipelines.get_pipelines(
             ["extend_spriterows_for_composited_sprites_pipeline"]
         )
+        # we need to run the spritelayer cargo pipelines separately from the vehicle pipelines, but we still use this gestalt as the entry point
+        self.spritelayer_cargo_pipelines = pipelines.get_pipelines(
+            ["generate_spritelayer_cargos"]
+        )
         self.colour_mapping_switch = "_switch_colour_mapping"
         self.consist_ruleset = kwargs.get("consist_ruleset", None)
         self.flag_switch_set_layers_register_more_sprites = True
