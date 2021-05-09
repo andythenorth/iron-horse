@@ -51,6 +51,14 @@ class IntermodalCargo(CargoBase):
         # !! this is a shim to a module method for legacy reasons, needs refactored to a class method
         return get_next_cargo_switch(platform_type, platform_length, subtype)
 
+    def cargo_has_random_variants_for_cargo_label(
+        self, platform_type, platform_length, subtype
+    ):
+        # !! this is a shim to a module method for legacy reasons, needs refactored to a class method
+        return cargo_has_random_variants_for_cargo_label(
+            platform_type, platform_length, subtype
+        )
+
     @property
     def id(self):
         return (
