@@ -220,7 +220,7 @@ class IntermodalCargoSprinter32pxBoxCargo(IntermodalCargoSprinterCargoBase):
         ]
 
 
-container_type_gestalt_mapping = {
+container_type_cargo_mapping = {
     "box": [
         IntermodalFlatCar16pxBoxCargo,
         IntermodalFlatCar24pxBoxCargo,
@@ -293,49 +293,49 @@ container_type_gestalt_mapping = {
 # this is simply manually maintained, and is to prevent nml warnings about unused switches
 suppression_list = [("cargo_sprinter", 16), ("cargo_sprinter", 24)]
 
-registered_container_gestalts = []
+registered_container_cargos = []
 
 
-def register_container_gestalt(container_type, container_subtype):
-    for gestalt_type in container_type_gestalt_mapping[container_type]:
-        for platform_type in gestalt_type.compatible_platform_types:
-            gestalt = gestalt_type(
+def register_container_cargo(container_type, container_subtype):
+    for cargo_type in container_type_cargo_mapping[container_type]:
+        for platform_type in cargo_type.compatible_platform_types:
+            cargo = cargo_type(
                 container_subtype=container_subtype,
                 platform_type=platform_type,
             )
-            # suppression of unused gestalts to prevent nml warnings further down the chain
-            if (platform_type, gestalt.length) not in suppression_list:
-                registered_container_gestalts.append(gestalt)
+            # suppression of unused cargos to prevent nml warnings further down the chain
+            if (platform_type, cargo.length) not in suppression_list:
+                registered_container_cargos.append(cargo)
 
 
-def get_container_gestalts_matching_platform_type_and_length(
+def get_cargos_matching_platform_type_and_length(
     platform_type, platform_length
 ):
     result = []
-    for gestalt in registered_container_gestalts:
-        if (gestalt.platform_type == platform_type) and (
-            gestalt.length == platform_length
+    for cargo in registered_container_cargos:
+        if (cargo.platform_type == platform_type) and (
+            cargo.length == platform_length
         ):
-            result.append(gestalt)
+            result.append(cargo)
     return result
 
 
-def gestalt_has_random_variants_for_cargo_label(
+def cargo_has_random_variants_for_cargo_label(
     platform_type, platform_length, container_subtype
 ):
     result = False
-    for gestalt in get_container_gestalts_matching_platform_type_and_length(
+    for cargo in get_cargos_matching_platform_type_and_length(
         platform_type, platform_length
     ):
-        if gestalt.container_subtype == container_subtype:
-            if len(gestalt.variants) > 1:
+        if cargo.container_subtype == container_subtype:
+            if len(cargo.variants) > 1:
                 result = True
     return result
 
 
 def get_next_cargo_switch(platform_type, platform_length, container_subtype):
     # this is solely to optimise out pointless random switches, which nml could do for us but eh, why not shave the yak :P
-    if gestalt_has_random_variants_for_cargo_label(
+    if cargo_has_random_variants_for_cargo_label(
         platform_type, platform_length, container_subtype
     ):
         return (
@@ -363,14 +363,14 @@ def main():
     # - for known cargos with only one visual variant
     # - specific known classes (as default, or fallback where the class might still have further cargo specific sprites)
     # - all other cargos / classes not handled explicitly, which will fall back to box
-    for container_type in container_type_gestalt_mapping.keys():
+    for container_type in container_type_cargo_mapping.keys():
         # exclude these types which don't have a meaningful 'default' as the graphics are ALWAYS cargo-specific
         if container_type not in [
             "bulk",
             "stake_flatrack",
         ]:
             container_subtype = container_type + "_DFLT"
-            register_container_gestalt(container_type, container_subtype)
+            register_container_cargo(container_type, container_subtype)
 
     # then register containers with cargo labels in their filename e.g. bulk_COAL, tank_PETR etc
     for container_subtype in set(
@@ -379,12 +379,12 @@ def main():
         # exclude DFLT, handled explicitly elsewhere
         if "DFLT" not in container_subtype:
             container_type = container_subtype[0:-5]
-            register_container_gestalt(container_type, container_subtype)
+            register_container_cargo(container_type, container_subtype)
 
     """
     # for knowing how many containers combinations we have in total
     total = 0
-    for gestalt in registered_container_gestalts:
-        total += len(gestalt.variants)
+    for cargo in registered_container_cargos:
+        total += len(cargo.variants)
     print('total variants', total)
     """

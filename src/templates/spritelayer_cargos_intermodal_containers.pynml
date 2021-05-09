@@ -10,7 +10,7 @@ spriteset(ss_spritelayer_cargos_empty, "src/graphics/spriterow_template.png") {
         <!--! note that the suppression list check is to prevent nml complaining about unused switches -->
         <tal:block condition="(platform_type, platform_length) not in spritelayer_cargos.intermodal_containers.suppression_list"
                    define="platform_type_and_length platform_type + '_' + str(platform_length) + 'px'">
-            <tal:container_spritesets repeat="cargo spritelayer_cargos.intermodal_containers.get_container_gestalts_matching_platform_type_and_length(platform_type, platform_length)">
+            <tal:container_spritesets repeat="cargo spritelayer_cargos.intermodal_containers.get_cargos_matching_platform_type_and_length(platform_type, platform_length)">
                 <tal:variants repeat="variant cargo.variants">
                     spriteset(ss_spritelayer_cargos_${spritelayer_cargos.intermodal_containers.IntermodalCargo().base_id}_${platform_type_and_length}_${cargo.container_subtype}_${repeat.variant.index}_unflipped, "${graphics_path}${cargo.id}.png") {
                         spriteset_template_asymmetric_unreversed_${int(cargo.length / 4)}_8_unflipped(10 + ${repeat.variant.index * 30}, NOANIM)
@@ -29,7 +29,7 @@ spriteset(ss_spritelayer_cargos_empty, "src/graphics/spriterow_template.png") {
                     }
                 </tal:variants>
                 <!--! random switches will only be generated where needed, nml would optimise these out, but it's preferable to not provide them -->
-                <tal:optional_random condition="spritelayer_cargos.intermodal_containers.gestalt_has_random_variants_for_cargo_label(platform_type, platform_length, cargo.container_subtype)">
+                <tal:optional_random condition="spritelayer_cargos.intermodal_containers.cargo_has_random_variants_for_cargo_label(platform_type, platform_length, cargo.container_subtype)">
                     random_switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_${spritelayer_cargos.intermodal_containers.IntermodalCargo().base_id}_random_${platform_type_and_length}_${cargo.container_subtype}, bitmask(TRIGGER_VEHICLE_NEW_LOAD)) {
                         <tal:container_types repeat="variant cargo.variants">
                                 1: return switch_spritelayer_cargos_${spritelayer_cargos.intermodal_containers.IntermodalCargo().base_id}_${platform_type_and_length}_${cargo.container_subtype}_${repeat.variant.index};

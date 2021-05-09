@@ -98,7 +98,7 @@ def main():
 
     consists = iron_horse.get_consists_in_buy_menu_order()
     intermodal_container_gestalts = (
-        iron_horse.spritelayer_cargos.intermodal_containers.registered_container_gestalts
+        iron_horse.spritelayer_cargos.intermodal_containers.registered_container_cargos
     )
     automobile_cargos_gestalts = (
         iron_horse.spritelayer_cargos.automobile_cargos.registered_automobile_cargo_gestalts
