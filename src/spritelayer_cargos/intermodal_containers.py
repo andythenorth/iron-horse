@@ -60,6 +60,12 @@ class IntermodalCargo(CargoBase):
         )
 
     @property
+    def cargo_map(self):
+        # !! this is a shim to the cargo gestalt, whether this is wise remains to be seen; seems to work, but quite a lot of abstraction going on here
+        # would it be better to have a self.gestalt_graphics property, like consists have, and access that directly where needed?
+        return GestaltGraphicsIntermodal().cargo_label_mapping.items()
+
+    @property
     def id(self):
         return (
             self.base_id
