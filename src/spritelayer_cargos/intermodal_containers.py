@@ -39,7 +39,8 @@ class IntermodalCargo(CargoBase):
             result[platform_type] = {}
             platform_lengths = [16, 24, 32]
             for platform_length in platform_lengths:
-                result[platform_type][platform_length] = get_cargos_matching_platform_type_and_length(platform_type, platform_length)
+                if (platform_type, platform_length) not in suppression_list:
+                    result[platform_type][platform_length] = get_cargos_matching_platform_type_and_length(platform_type, platform_length)
         return result
 
     @property
