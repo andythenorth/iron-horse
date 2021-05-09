@@ -21,7 +21,7 @@ spriteset(ss_spritelayer_cargos_automobile_transporter_cars_empty, "src/graphics
                         but there is a flag that permits them to flip to handle obscure cases (copied from intermodal - see rear unit of cargo sprinter which requires reversed containers due to asymmetry)
                     -->
                     switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_automobile_transporter_cars_${platform_type_and_length}_${automobile_gestalt.automobile_cargo_subtype}_${repeat.variant.index},
-                                        [vehicle_is_flipped && LOAD_TEMP(${temp_storage_ids.unreversible_containers})]) {
+                                        [vehicle_is_flipped && LOAD_TEMP(${temp_storage_ids.unreversible_spritelayer_cargos})]) {
                         1: return ss_spritelayer_cargos_automobile_transporter_cars_${platform_type_and_length}_${automobile_gestalt.automobile_cargo_subtype}_${repeat.variant.index}_flipped;
                         return ss_spritelayer_cargos_automobile_transporter_cars_${platform_type_and_length}_${automobile_gestalt.automobile_cargo_subtype}_${repeat.variant.index}_unflipped;
                     }
