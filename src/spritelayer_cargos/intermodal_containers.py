@@ -17,6 +17,9 @@ class IntermodalCargo(CargoBase):
         self.base_id = "intermodal_containers"
         super().__init__(**kwargs)
         self.subtype = kwargs.get("subtype", None)
+        self.label = kwargs.get("label", None)
+        print(self.subtype)
+        print(self.label)
         self.gestalt_graphics = GestaltGraphicsIntermodal()
         # extend this when adding more platform types
         # y offset: positive = down in spritesheet (y origin at top)
@@ -47,7 +50,7 @@ class IntermodalFlatCar16pxStandardCargo(IntermodalDefaultAndLowFloorCargoBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.length = 16
-        container_30_foot = kwargs.get("subtype") + "_30_foot"
+        container_30_foot = kwargs.get("subtype") + "_" + kwargs.get("label") + "_30_foot"
         self.variants = [[container_30_foot]]
 
 
@@ -55,8 +58,8 @@ class IntermodalFlatCar24pxStandardCargo(IntermodalDefaultAndLowFloorCargoBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.length = 24
-        container_20_foot = kwargs.get("subtype") + "_20_foot"
-        container_40_foot = kwargs.get("subtype") + "_40_foot"
+        container_20_foot = kwargs.get("subtype") + "_" + kwargs.get("label") + "_20_foot"
+        container_40_foot = kwargs.get("subtype") + "_" + kwargs.get("label") + "_40_foot"
         self.variants = [[container_20_foot, container_20_foot], [container_40_foot]]
 
 
@@ -66,7 +69,7 @@ class IntermodalFlatCar24px40FootOnlyCargo(IntermodalDefaultAndLowFloorCargoBase
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.length = 24
-        container_40_foot = kwargs.get("subtype") + "_40_foot"
+        container_40_foot = kwargs.get("subtype") + "_" + kwargs.get("label") + "_40_foot"
         self.variants = [[container_40_foot]]
 
 
@@ -74,9 +77,9 @@ class IntermodalFlatCar32pxStandardCargo(IntermodalDefaultAndLowFloorCargoBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.length = 32
-        container_20_foot = kwargs.get("subtype") + "_20_foot"
-        container_30_foot = kwargs.get("subtype") + "_30_foot"
-        container_40_foot = kwargs.get("subtype") + "_40_foot"
+        container_20_foot = kwargs.get("subtype") + "_" + kwargs.get("label") + "_20_foot"
+        container_30_foot = kwargs.get("subtype") + "_" + kwargs.get("label") + "_30_foot"
+        container_40_foot = kwargs.get("subtype") + "_" + kwargs.get("label") + "_40_foot"
         self.variants = [
             [container_20_foot, container_20_foot, container_20_foot],
             [container_30_foot, container_30_foot],
@@ -89,8 +92,8 @@ class IntermodalFlatCar32pxNo40FootCargo(IntermodalDefaultAndLowFloorCargoBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.length = 32
-        container_20_foot = kwargs.get("subtype") + "_20_foot"
-        container_30_foot = kwargs.get("subtype") + "_30_foot"
+        container_20_foot = kwargs.get("subtype") + "_" + kwargs.get("label") + "_20_foot"
+        container_30_foot = kwargs.get("subtype") + "_" + kwargs.get("label") + "_30_foot"
         self.variants = [
             [container_20_foot, container_20_foot, container_20_foot],
             [container_30_foot, container_30_foot],
@@ -101,7 +104,7 @@ class IntermodalFlatCar32px30FootOnlyCargo(IntermodalDefaultAndLowFloorCargoBase
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.length = 32
-        container_30_foot = kwargs.get("subtype") + "_30_foot"
+        container_30_foot = kwargs.get("subtype") + "_" + kwargs.get("label") + "_30_foot"
         self.variants = [
             [container_30_foot, container_30_foot],
         ]
@@ -162,8 +165,8 @@ class IntermodalCargoSprinter32pxStandardCargo(IntermodalCargoSprinterCargoBase)
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.length = 32
-        container_20_foot = kwargs.get("subtype") + "_20_foot"
-        container_40_foot = kwargs.get("subtype") + "_40_foot"
+        container_20_foot = kwargs.get("subtype") + "_" + kwargs.get("label") + "_20_foot"
+        container_40_foot = kwargs.get("subtype") + "_" + kwargs.get("label") + "_40_foot"
         self.variants = [
             [container_20_foot, container_20_foot],
             [container_40_foot],
@@ -174,7 +177,7 @@ class IntermodalCargoSprinter32px20FootOnlyCargo(IntermodalCargoSprinterCargoBas
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.length = 32
-        container_20_foot = kwargs.get("subtype") + "_20_foot"
+        container_20_foot = kwargs.get("subtype") + "_" + kwargs.get("label") + "_20_foot"
         self.variants = [
             [container_20_foot, container_20_foot],
         ]
@@ -184,7 +187,7 @@ class IntermodalCargoSprinter32px40FootOnlyCargo(IntermodalCargoSprinterCargoBas
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.length = 32
-        container_40_foot = kwargs.get("subtype") + "_40_foot"
+        container_40_foot = kwargs.get("subtype") + "_" + kwargs.get("label") + "_40_foot"
         self.variants = [
             [container_40_foot],
         ]
@@ -285,18 +288,18 @@ def main():
             "bulk",
             "stake_flatrack",
         ]:
-            subtype = container_type + "_DFLT"
+            container_type_with_cargo_label = container_type + "_DFLT"
             spritelayer_cargo.register_cargo(
-                container_type_cargo_mapping, container_type, subtype
+                container_type_cargo_mapping, container_type, container_type_with_cargo_label
             )
 
     # then register containers with cargo labels in their filename e.g. bulk_COAL, tank_PETR etc
-    for subtype in set(GestaltGraphicsIntermodal().cargo_label_mapping.values()):
+    for container_type_with_cargo_label in set(GestaltGraphicsIntermodal().cargo_label_mapping.values()):
         # exclude DFLT, handled explicitly elsewhere
-        if "DFLT" not in subtype:
-            container_type = subtype[0:-5]
+        if "DFLT" not in container_type_with_cargo_label:
+            subtype = container_type_with_cargo_label[0:-5]
             spritelayer_cargo.register_cargo(
-                container_type_cargo_mapping, container_type, subtype
+                container_type_cargo_mapping, subtype, container_type_with_cargo_label
             )
 
     """

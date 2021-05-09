@@ -41,6 +41,8 @@ class CargoBase(object):
             + "_"
             + self.subtype
             + "_"
+            + self.label
+            + "_"
             + str(self.length)
             + "px"
         )
@@ -62,19 +64,19 @@ class CargoBase(object):
                     )
         return result
 
-    def cargo_has_random_variants_for_cargo_label(
-        self, platform_type, platform_length, subtype
+    def cargo_has_random_variants_for_subtype_and_label(
+        self, platform_type, platform_length, subtype, label
     ):
         # !! this is a shim to a module method for legacy reasons, needs refactored to a class method
-        return cargo_has_random_variants_for_cargo_label(
-            platform_type, platform_length, subtype
+        return cargo_has_random_variants_for_subtype_and_label(
+            platform_type, platform_length, subtype, label
         )
 
-    def get_next_cargo_switch(self, platform_type, platform_length, subtype):
+    def get_next_cargo_switch(self, platform_type, platform_length, subtype, label):
         # this is stupid, exists solely to optimise out random switches with only 1 item, which nml could do for us, but I dislike seeing the nml warnings
         # seriously TMWFTLB
-        if self.cargo_has_random_variants_for_cargo_label(
-            platform_type, platform_length, subtype
+        if self.cargo_has_random_variants_for_subtype_and_label(
+            platform_type, platform_length, subtype, label
         ):
             return (
                 "switch_spritelayer_cargos_"
@@ -85,6 +87,8 @@ class CargoBase(object):
                 + str(platform_length)
                 + "px_"
                 + subtype
+                + "_"
+                + label
             )
         else:
             return (
@@ -96,17 +100,19 @@ class CargoBase(object):
                 + str(platform_length)
                 + "px_"
                 + subtype
+                + "_"
+                + label
                 + "_0"
             )
 
 
 # module root method, because $reasons (some of the calls are in template where a CargoBase object isn't in scope, so it can't be a class method as it looks like it should be)
-def cargo_has_random_variants_for_cargo_label(platform_type, platform_length, subtype):
+def cargo_has_random_variants_for_subtype_and_label(platform_type, platform_length, subtype, label):
     result = False
     for cargo in get_cargos_matching_platform_type_and_length(
         platform_type, platform_length
     ):
-        if cargo.subtype == subtype:
+        if (cargo.subtype == subtype) and (cargo.label == label):
             if len(cargo.variants) > 1:
                 result = True
     return result
@@ -120,12 +126,13 @@ def get_cargos_matching_platform_type_and_length(platform_type, platform_length)
     return result
 
 
-def register_cargo(container_type_cargo_mapping, container_type, subtype):
+def register_cargo(container_type_cargo_mapping, container_type, container_type_with_cargo_label):
     for cargo_type in container_type_cargo_mapping[container_type]:
         for platform_type in cargo_type.compatible_platform_types:
             cargo = cargo_type(
-                subtype=subtype,
                 platform_type=platform_type,
+                subtype=container_type_with_cargo_label[0:-5],
+                label=container_type_with_cargo_label[-4:]
             )
             # suppression of unused cargos to prevent nml warnings further down the chain
             if (platform_type, cargo.length) not in suppression_list:
