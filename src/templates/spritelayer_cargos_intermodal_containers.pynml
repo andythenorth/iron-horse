@@ -4,10 +4,13 @@ spriteset(ss_spritelayer_cargos_empty, "src/graphics/spriterow_template.png") {
     spriteset_template_asymmetric_unreversed_8_8_unflipped(10, NOANIM)
 }
 
-<!--! the spritesets are interleaved with the switches by design; doing a block of contiguous spritesets causes the nml spritegroups limit to be hit (probably ran out of real action 2 IDs) -->
 <tal:spritelayer_cargo define="spritelayer_cargo spritelayer_cargos.intermodal_containers.IntermodalCargo()">
     <tal:platform_types repeat="platform_type spritelayer_cargo.cargos_by_platform_type_and_length.keys()">
         <tal:platform_length repeat="platform_length spritelayer_cargo.cargos_by_platform_type_and_length[platform_type].keys()">
+
+            <!--! Spritesets
+                  the spritesets are interleaved with the switches by design;
+                  doing a block of contiguous spritesets causes the nml spritegroups limit to be hit (probably ran out of real action 2 IDs) -->
             <tal:cargo_spritesets repeat="cargo spritelayer_cargo.cargos_by_platform_type_and_length[platform_type][platform_length]">
                 <tal:variants repeat="variant cargo.variants">
                     spriteset(ss_spritelayer_cargos_${spritelayer_cargo.base_id}_${platform_type}_${platform_length}px_${cargo.subtype}_${repeat.variant.index}_unflipped, "${graphics_path}${cargo.id}.png") {
@@ -18,7 +21,7 @@ spriteset(ss_spritelayer_cargos_empty, "src/graphics/spriterow_template.png") {
                     }
                     <!--! handle user flipped state
                         generally cargos do not flip, even when base platform is flipped
-                        but there is a flag that permits them to flip to handle cases like rear unit of cargo sprinter which requires reversed containers due to asymmetry
+                        but there is a flag that permits them to flip to handle cases like rear unit of cargo sprinter which requires reversed cargos due to asymmetry
                     -->
                     switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_${spritelayer_cargo.base_id}_${platform_type}_${platform_length}px_${cargo.subtype}_${repeat.variant.index},
                                         [vehicle_is_flipped && LOAD_TEMP(${temp_storage_ids.unreversible_spritelayer_cargos})]) {
@@ -35,28 +38,37 @@ spriteset(ss_spritelayer_cargos_empty, "src/graphics/spriterow_template.png") {
                     }
                 </tal:optional_random>
             </tal:cargo_spritesets>
-            <!--! pseudo cargo checking code
+
+            <!--! Cargo switches
+                pseudo cargo checking code
                 1. check known labels -> named random switch
                 2. check known classes -> named random switch
-                3. fall back to random switch for box
+                3. fall back to random switch for generic (box in case of containers, ?? in case of automobiles)
             -->
-           <!--! check generic cargo classes
-                  bulk class is explicitly not checked as there are no meaningful default bulk sprites
-            -->
-            switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_containers_check_cargo_class_liquid_${platform_type}_${platform_length}px, cargo_classes & bitmask(CC_LIQUID)) {
-                0: return ${spritelayer_cargos.intermodal_containers.get_next_cargo_switch(platform_type, platform_length, 'box_DFLT')};
-                return ${spritelayer_cargos.intermodal_containers.get_next_cargo_switch(platform_type, platform_length, 'tank_DFLT')};
-            }
-            switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_containers_check_cargo_class_refrigerated_${platform_type}_${platform_length}px, cargo_classes & bitmask(CC_REFRIGERATED)) {
-                0: switch_spritelayer_cargos_containers_check_cargo_class_liquid_${platform_type}_${platform_length}px;
-                return ${spritelayer_cargos.intermodal_containers.get_next_cargo_switch(platform_type, platform_length, 'reefer_DFLT')};
-            }
+            <tal:generic_by_class switch="spritelayer_cargo.base_id">
+                <tal:intermodal_containers case="'intermodal_containers'">
+                   <!--! check generic cargo classes
+                          bulk class is explicitly not checked as there are no meaningful default bulk sprites
+                    -->
+                    switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_generic_by_class_liquid_${platform_type}_${platform_length}px, cargo_classes & bitmask(CC_LIQUID)) {
+                        0: return ${spritelayer_cargos.intermodal_containers.get_next_cargo_switch(platform_type, platform_length, 'box_DFLT')};
+                        return ${spritelayer_cargos.intermodal_containers.get_next_cargo_switch(platform_type, platform_length, 'tank_DFLT')};
+                    }
+                    switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_generic_by_class_entry_point_${platform_type}_${platform_length}px, cargo_classes & bitmask(CC_REFRIGERATED)) {
+                        0: switch_spritelayer_cargos_generic_by_class_liquid_${platform_type}_${platform_length}px;
+                        return ${spritelayer_cargos.intermodal_containers.get_next_cargo_switch(platform_type, platform_length, 'reefer_DFLT')};
+                    }
+                </tal:intermodal_containers>
+                <tal:automobiles case="'automobiles'">
+                    <!--! ?????? -->
+                </tal:automobiles>
+            </tal:generic_by_class>
             <!--! check explicit cargo labels -->
             switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_${spritelayer_cargo.base_id}_${platform_type}_${platform_length}px, cargo_type_in_veh) {
                 <tal:cargo_label_container_type_mapping repeat="cargo_map spritelayer_cargos.intermodal_containers.GestaltGraphicsIntermodal().cargo_label_mapping.items()">
                     ${cargo_map[0]}: ${spritelayer_cargos.intermodal_containers.get_next_cargo_switch(platform_type, platform_length, cargo_map[1])};
                 </tal:cargo_label_container_type_mapping>
-                return switch_spritelayer_cargos_containers_check_cargo_class_refrigerated_${platform_type}_${platform_length}px;
+                return switch_spritelayer_cargos_generic_by_class_entry_point_${platform_type}_${platform_length}px;
             }
         </tal:platform_length>
     </tal:platform_types>
