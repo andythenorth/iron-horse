@@ -46,7 +46,8 @@ class IntermodalCargo(CargoBase):
     @property
     def id(self):
         return (
-            "intermodal_"
+            self.base_id
+            + "_"
             + self.platform_type
             + "_"
             + self.subtype
