@@ -7,6 +7,7 @@ from spritelayer_cargo import CargoBase
 
 from spritelayer_cargos import registered_spritelayer_cargos
 
+
 class IntermodalCargo(CargoBase):
     """ Base class for container cargos """
 
@@ -273,18 +274,6 @@ container_type_cargo_mapping = {
 }
 
 
-def register_container_cargo(container_type, subtype):
-    for cargo_type in container_type_cargo_mapping[container_type]:
-        for platform_type in cargo_type.compatible_platform_types:
-            cargo = cargo_type(
-                subtype=subtype,
-                platform_type=platform_type,
-            )
-            # suppression of unused cargos to prevent nml warnings further down the chain
-            if (platform_type, cargo.length) not in spritelayer_cargo.suppression_list:
-                registered_spritelayer_cargos.append(cargo)
-
-
 def main():
     # first register containers with DFLT in their filename, which will be used for:
     # - for known cargos with only one visual variant
@@ -297,14 +286,18 @@ def main():
             "stake_flatrack",
         ]:
             subtype = container_type + "_DFLT"
-            register_container_cargo(container_type, subtype)
+            spritelayer_cargo.register_cargo(
+                container_type_cargo_mapping, container_type, subtype
+            )
 
     # then register containers with cargo labels in their filename e.g. bulk_COAL, tank_PETR etc
     for subtype in set(GestaltGraphicsIntermodal().cargo_label_mapping.values()):
         # exclude DFLT, handled explicitly elsewhere
         if "DFLT" not in subtype:
             container_type = subtype[0:-5]
-            register_container_cargo(container_type, subtype)
+            spritelayer_cargo.register_cargo(
+                container_type_cargo_mapping, container_type, subtype
+            )
 
     """
     # for knowing how many containers combinations we have in total

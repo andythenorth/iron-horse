@@ -90,9 +90,7 @@ def main():
     hint_file.close()
 
     consists = iron_horse.get_consists_in_buy_menu_order()
-    spritelayer_cargos = (
-        iron_horse.spritelayer_cargos.registered_spritelayer_cargos
-    )
+    spritelayer_cargos = iron_horse.spritelayer_cargos.registered_spritelayer_cargos
 
     if use_multiprocessing == False:
         for consist in consists:
