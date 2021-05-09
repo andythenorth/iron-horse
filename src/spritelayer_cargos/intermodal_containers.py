@@ -31,6 +31,18 @@ class IntermodalCargo(CargoBase):
         return self.all_platform_types_with_floor_heights[self.platform_type]
 
     @property
+    def cargos_by_platform_type_and_length(self):
+        # structure optimised for rendering into nml switch stack
+        # just walking over all the cargos into a flat set of spritesets triggers the nfo / nml 255 limit for switch results, so the switches are interleaved in a specific way to avoid that
+        result = {}
+        for platform_type in self.all_platform_types:
+            result[platform_type] = {}
+            platform_lengths = [16, 24, 32]
+            for platform_length in platform_lengths:
+                result[platform_type][platform_length] = get_cargos_matching_platform_type_and_length(platform_type, platform_length)
+        return result
+
+    @property
     def id(self):
         return (
             "intermodal_"

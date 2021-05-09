@@ -1,5 +1,6 @@
 from gestalt_graphics.pipelines import GenerateSpritelayerCargos
 
+from spritelayer_cargos import registered_spritelayer_cargos
 
 class CargoBase(object):
     """ Base class for (spritelayer) cargos """
