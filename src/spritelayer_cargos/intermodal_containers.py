@@ -299,11 +299,3 @@ def main():
             spritelayer_cargo.register_cargo(
                 cargo_subtype_to_subclass_mapping, subtype, subtype_suffix
             )
-
-    """
-    # for knowing how many containers combinations we have in total
-    total = 0
-    for cargo in registered_spritelayer_cargos:
-        total += len(cargo.variants)
-    print('total variants', total)
-    """
