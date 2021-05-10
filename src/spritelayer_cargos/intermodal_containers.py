@@ -290,13 +290,12 @@ def main():
             )
 
     # then register containers with cargo labels in their filename e.g. bulk_COAL, tank_PETR etc
-    for container_type_with_cargo_label in set(
+    # cargo label mapping returns "cargo_label: (subtype, subtype_suffix)"
+    for subtype, subtype_suffix in set(
         GestaltGraphicsIntermodal().cargo_label_mapping.values()
     ):
         # exclude DFLT, handled explicitly elsewhere
-        if "DFLT" not in container_type_with_cargo_label[1]:
-            subtype = container_type_with_cargo_label[0]
-            subtype_suffix = container_type_with_cargo_label[1]
+        if subtype_suffix != "DFLT":
             spritelayer_cargo.register_cargo(
                 cargo_subtype_to_subclass_mapping, subtype, subtype_suffix
             )
