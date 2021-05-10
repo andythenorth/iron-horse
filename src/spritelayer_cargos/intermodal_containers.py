@@ -46,9 +46,7 @@ class IntermodalFlatCar16pxStandardCargo(IntermodalDefaultAndLowFloorCargoBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.length = 16
-        container_30_foot = (
-            self.subtype + "_" + self.subtype_suffix + "_30_foot"
-        )
+        container_30_foot = self.subtype + "_" + self.subtype_suffix + "_30_foot"
         self.variants = [[container_30_foot]]
 
 
@@ -56,12 +54,8 @@ class IntermodalFlatCar24pxStandardCargo(IntermodalDefaultAndLowFloorCargoBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.length = 24
-        container_20_foot = (
-            self.subtype + "_" + self.subtype_suffix + "_20_foot"
-        )
-        container_40_foot = (
-            self.subtype + "_" + self.subtype_suffix + "_40_foot"
-        )
+        container_20_foot = self.subtype + "_" + self.subtype_suffix + "_20_foot"
+        container_40_foot = self.subtype + "_" + self.subtype_suffix + "_40_foot"
         self.variants = [[container_20_foot, container_20_foot], [container_40_foot]]
 
 
@@ -71,9 +65,7 @@ class IntermodalFlatCar24px40FootOnlyCargo(IntermodalDefaultAndLowFloorCargoBase
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.length = 24
-        container_40_foot = (
-            self.subtype + "_" + self.subtype_suffix + "_40_foot"
-        )
+        container_40_foot = self.subtype + "_" + self.subtype_suffix + "_40_foot"
         self.variants = [[container_40_foot]]
 
 
@@ -81,15 +73,9 @@ class IntermodalFlatCar32pxStandardCargo(IntermodalDefaultAndLowFloorCargoBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.length = 32
-        container_20_foot = (
-            self.subtype + "_" + self.subtype_suffix + "_20_foot"
-        )
-        container_30_foot = (
-            self.subtype + "_" + self.subtype_suffix + "_30_foot"
-        )
-        container_40_foot = (
-            self.subtype + "_" + self.subtype_suffix + "_40_foot"
-        )
+        container_20_foot = self.subtype + "_" + self.subtype_suffix + "_20_foot"
+        container_30_foot = self.subtype + "_" + self.subtype_suffix + "_30_foot"
+        container_40_foot = self.subtype + "_" + self.subtype_suffix + "_40_foot"
         self.variants = [
             [container_20_foot, container_20_foot, container_20_foot],
             [container_30_foot, container_30_foot],
@@ -102,12 +88,8 @@ class IntermodalFlatCar32pxNo40FootCargo(IntermodalDefaultAndLowFloorCargoBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.length = 32
-        container_20_foot = (
-            self.subtype + "_" + self.subtype_suffix + "_20_foot"
-        )
-        container_30_foot = (
-            self.subtype + "_" + self.subtype_suffix + "_30_foot"
-        )
+        container_20_foot = self.subtype + "_" + self.subtype_suffix + "_20_foot"
+        container_30_foot = self.subtype + "_" + self.subtype_suffix + "_30_foot"
         self.variants = [
             [container_20_foot, container_20_foot, container_20_foot],
             [container_30_foot, container_30_foot],
@@ -118,9 +100,7 @@ class IntermodalFlatCar32px30FootOnlyCargo(IntermodalDefaultAndLowFloorCargoBase
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.length = 32
-        container_30_foot = (
-            self.subtype + "_" + self.subtype_suffix + "_30_foot"
-        )
+        container_30_foot = self.subtype + "_" + self.subtype_suffix + "_30_foot"
         self.variants = [
             [container_30_foot, container_30_foot],
         ]
@@ -181,12 +161,8 @@ class IntermodalCargoSprinter32pxStandardCargo(IntermodalCargoSprinterCargoBase)
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.length = 32
-        container_20_foot = (
-            self.subtype + "_" + self.subtype_suffix + "_20_foot"
-        )
-        container_40_foot = (
-            self.subtype + "_" + self.subtype_suffix + "_40_foot"
-        )
+        container_20_foot = self.subtype + "_" + self.subtype_suffix + "_20_foot"
+        container_40_foot = self.subtype + "_" + self.subtype_suffix + "_40_foot"
         self.variants = [
             [container_20_foot, container_20_foot],
             [container_40_foot],
@@ -197,9 +173,7 @@ class IntermodalCargoSprinter32px20FootOnlyCargo(IntermodalCargoSprinterCargoBas
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.length = 32
-        container_20_foot = (
-            self.subtype + "_" + self.subtype_suffix + "_20_foot"
-        )
+        container_20_foot = self.subtype + "_" + self.subtype_suffix + "_20_foot"
         self.variants = [
             [container_20_foot, container_20_foot],
         ]
@@ -209,9 +183,7 @@ class IntermodalCargoSprinter32px40FootOnlyCargo(IntermodalCargoSprinterCargoBas
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.length = 32
-        container_40_foot = (
-            self.subtype + "_" + self.subtype_suffix + "_40_foot"
-        )
+        container_40_foot = self.subtype + "_" + self.subtype_suffix + "_40_foot"
         self.variants = [
             [container_40_foot],
         ]

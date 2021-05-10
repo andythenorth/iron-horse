@@ -67,61 +67,6 @@ class CargoBase(object):
                     )
         return result
 
-    def cargo_has_random_variants_for_subtype_and_subtype_suffix(
-        self, platform_type, platform_length, subtype, subtype_suffix
-    ):
-        # !! this is a shim to a module method for legacy reasons, needs refactored to a class method
-        return cargo_has_random_variants_for_subtype_and_subtype_suffix(
-            platform_type, platform_length, subtype, subtype_suffix
-        )
-
-    def get_next_cargo_switch(self, platform_type, platform_length, subtype, subtype_suffix):
-        # this is stupid, exists solely to optimise out random switches with only 1 item, which nml could do for us, but I dislike seeing the nml warnings
-        # seriously TMWFTLB
-        if self.cargo_has_random_variants_for_subtype_and_subtype_suffix(
-            platform_type, platform_length, subtype, subtype_suffix
-        ):
-            return (
-                "switch_spritelayer_cargos_"
-                + self.base_id
-                + "_random_"
-                + platform_type
-                + "_"
-                + str(platform_length)
-                + "px_"
-                + subtype
-                + "_"
-                + subtype_suffix
-            )
-        else:
-            return (
-                "switch_spritelayer_cargos_"
-                + self.base_id
-                + "_"
-                + platform_type
-                + "_"
-                + str(platform_length)
-                + "px_"
-                + subtype
-                + "_"
-                + subtype_suffix
-                + "_0"
-            )
-
-
-# module root method, because $reasons (some of the calls are in template where a CargoBase object isn't in scope, so it can't be a class method as it looks like it should be)
-def cargo_has_random_variants_for_subtype_and_subtype_suffix(
-    platform_type, platform_length, subtype, subtype_suffix
-):
-    result = False
-    for cargo in get_cargos_matching_platform_type_and_length(
-        platform_type, platform_length
-    ):
-        if (cargo.subtype == subtype) and (cargo.subtype_suffix == subtype_suffix):
-            if len(cargo.variants) > 1:
-                result = True
-    return result
-
 
 def get_cargos_matching_platform_type_and_length(platform_type, platform_length):
     result = []
@@ -131,9 +76,7 @@ def get_cargos_matching_platform_type_and_length(platform_type, platform_length)
     return result
 
 
-def register_cargo(
-    cargo_subtype_to_subclass_mapping, subtype, subtype_suffix
-):
+def register_cargo(cargo_subtype_to_subclass_mapping, subtype, subtype_suffix):
     for cargo_type in cargo_subtype_to_subclass_mapping[subtype]:
         for platform_type in cargo_type.compatible_platform_types:
             cargo = cargo_type(
