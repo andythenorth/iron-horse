@@ -322,9 +322,9 @@ def main():
         GestaltGraphicsIntermodal().cargo_label_mapping.values()
     ):
         # exclude DFLT, handled explicitly elsewhere
-        if "DFLT" not in container_type_with_cargo_label:
-            subtype = container_type_with_cargo_label[0:-5]
-            subtype_suffix = container_type_with_cargo_label[-4:]
+        if "DFLT" not in container_type_with_cargo_label[1]:
+            subtype = container_type_with_cargo_label[0]
+            subtype_suffix = container_type_with_cargo_label[1]
             spritelayer_cargo.register_cargo(
                 cargo_subtype_to_subclass_mapping, subtype, subtype_suffix
             )

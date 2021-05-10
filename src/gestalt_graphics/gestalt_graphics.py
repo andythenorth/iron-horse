@@ -381,20 +381,21 @@ class GestaltGraphicsIntermodal(GestaltGraphics):
             # first handle the cargos as explicitly refittable
             # lists of explicitly refittable cargos are by no means *all* the cargos refittable to for a type
             # nor does explicitly refittable cargos have 1:1 mapping with cargo-specific graphics
-            # these will all map cargo_label: container_type_DFLT
+            # the mapping expected by spritelayer cargos is cargo_label: (subtype, subtype_suffix)
+            # these will all map cargo_label: (container_type, DFLT)
             for cargo_label in cargo_maps[0]:
                 if self.allow_adding_cargo_label(cargo_label, container_type, result):
-                    result[cargo_label] = container_type + "_DFLT"
+                    result[cargo_label] = (container_type, "DFLT")
 
-            # then insert or over-ride entries with cargo_label: container_type_[CARGO_LABEL] where there are explicit graphics for a cargo
+            # then insert or over-ride entries with cargo_label: (container_type, [CARGO_LABEL]) where there are explicit graphics for a cargo
             for cargo_label, recolour_map in cargo_maps[1]:
                 if self.allow_adding_cargo_label(cargo_label, container_type, result):
-                    result[cargo_label] = container_type + "_" + cargo_label
+                    result[cargo_label] = (container_type, cargo_label)
         # special handling of flatracks with visible cargo sprites
         for cargo_list in polar_fox.constants.container_piece_cargo_maps.values():
             for cargo_label in cargo_list:
                 if self.allow_adding_cargo_label(cargo_label, "stake_flatrack", result):
-                    result[cargo_label] = "stake_flatrack" + "_" + cargo_label
+                    result[cargo_label] = ("stake_flatrack", cargo_label)
         return result
 
     @property
