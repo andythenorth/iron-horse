@@ -17,9 +17,9 @@ class CargoBase(object):
     # - combinations of cargo types
     # - cargo colours
     def __init__(self, **kwargs):
-        self.platform_type = kwargs.get("platform_type", None)
-        self.subtype = kwargs.get("subtype", None)
-        self.label = kwargs.get("label", None)
+        self.platform_type = kwargs.get("platform_type")
+        self.subtype = kwargs.get("subtype")
+        self.label = kwargs.get("label")
         # set all_platform_types_with_floor_heights per subclass
         self.all_platform_types_with_floor_heights = {}
         # configure gestalt_graphics in the subclass
