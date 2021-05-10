@@ -19,7 +19,8 @@ class CargoBase(object):
     def __init__(self, **kwargs):
         self.platform_type = kwargs.get("platform_type")
         self.subtype = kwargs.get("subtype")
-        self.label = kwargs.get("label")
+        # subtype_suffix is either a 4 character OpenTTD cargo label, or 'DFLT'
+        self.subtype_suffix = kwargs.get("subtype_suffix")
         # set all_platform_types_with_floor_heights per subclass
         self.all_platform_types_with_floor_heights = {}
         # configure gestalt_graphics in the subclass
@@ -43,7 +44,7 @@ class CargoBase(object):
             + "_"
             + self.subtype
             + "_"
-            + self.label
+            + self.subtype_suffix
             + "_"
             + str(self.length)
             + "px"
@@ -66,19 +67,19 @@ class CargoBase(object):
                     )
         return result
 
-    def cargo_has_random_variants_for_subtype_and_label(
-        self, platform_type, platform_length, subtype, label
+    def cargo_has_random_variants_for_subtype_and_subtype_suffix(
+        self, platform_type, platform_length, subtype, subtype_suffix
     ):
         # !! this is a shim to a module method for legacy reasons, needs refactored to a class method
-        return cargo_has_random_variants_for_subtype_and_label(
-            platform_type, platform_length, subtype, label
+        return cargo_has_random_variants_for_subtype_and_subtype_suffix(
+            platform_type, platform_length, subtype, subtype_suffix
         )
 
-    def get_next_cargo_switch(self, platform_type, platform_length, subtype, label):
+    def get_next_cargo_switch(self, platform_type, platform_length, subtype, subtype_suffix):
         # this is stupid, exists solely to optimise out random switches with only 1 item, which nml could do for us, but I dislike seeing the nml warnings
         # seriously TMWFTLB
-        if self.cargo_has_random_variants_for_subtype_and_label(
-            platform_type, platform_length, subtype, label
+        if self.cargo_has_random_variants_for_subtype_and_subtype_suffix(
+            platform_type, platform_length, subtype, subtype_suffix
         ):
             return (
                 "switch_spritelayer_cargos_"
@@ -90,7 +91,7 @@ class CargoBase(object):
                 + "px_"
                 + subtype
                 + "_"
-                + label
+                + subtype_suffix
             )
         else:
             return (
@@ -103,20 +104,20 @@ class CargoBase(object):
                 + "px_"
                 + subtype
                 + "_"
-                + label
+                + subtype_suffix
                 + "_0"
             )
 
 
 # module root method, because $reasons (some of the calls are in template where a CargoBase object isn't in scope, so it can't be a class method as it looks like it should be)
-def cargo_has_random_variants_for_subtype_and_label(
-    platform_type, platform_length, subtype, label
+def cargo_has_random_variants_for_subtype_and_subtype_suffix(
+    platform_type, platform_length, subtype, subtype_suffix
 ):
     result = False
     for cargo in get_cargos_matching_platform_type_and_length(
         platform_type, platform_length
     ):
-        if (cargo.subtype == subtype) and (cargo.label == label):
+        if (cargo.subtype == subtype) and (cargo.subtype_suffix == subtype_suffix):
             if len(cargo.variants) > 1:
                 result = True
     return result
@@ -131,14 +132,14 @@ def get_cargos_matching_platform_type_and_length(platform_type, platform_length)
 
 
 def register_cargo(
-    cargo_subtype_to_subclass_mapping, subtype, label
+    cargo_subtype_to_subclass_mapping, subtype, subtype_suffix
 ):
     for cargo_type in cargo_subtype_to_subclass_mapping[subtype]:
         for platform_type in cargo_type.compatible_platform_types:
             cargo = cargo_type(
                 platform_type=platform_type,
                 subtype=subtype,
-                label=label,
+                subtype_suffix=subtype_suffix,
             )
             # suppression of unused cargos to prevent nml warnings further down the chain
             if (platform_type, cargo.length) not in suppression_list:
