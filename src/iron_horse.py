@@ -23,7 +23,7 @@ from vehicles import numeric_id_defender
 
 # this format of import is weird, but I don't want the imported modules directly in the iron horse namespace, I want to nest in spritelayer_cargos
 import spritelayer_cargos.intermodal_containers
-import spritelayer_cargos.automobile_cargos
+#import spritelayer_cargos.automobiles
 
 # import wagons
 # from vehicles import alignment_cars
@@ -244,7 +244,7 @@ def main():
 
     # cargos that use spritelayers (most dont')
     spritelayer_cargos.intermodal_containers.main()
-    # spritelayer_cargos.automobile_cargos.main()
+    #spritelayer_cargos.automobiles.main()
 
     # wagons
     """

@@ -185,19 +185,20 @@ class GenerateSpritelayerCargos(Pipeline):
         super().__init__()
 
     def resolve_template_name(self, variant):
-        # figure out which template png to use based on gestalt length + container pattern
+        # figure out which template png to use based on gestalt length + cargo pattern
         # - e.g. 32px_40_20, 32px_20_20_20 etc?
         result = [str(self.spritelayer_cargo.length) + "px"]
         for container in variant:
             result.append(container.split("_foot")[0][-2:])
         return (
-            "intermodal_template_"
-            + self.spritelayer_cargo.template_type_name
+            self.spritelayer_cargo.base_id
+            + "_template_"
+            + self.spritelayer_cargo.template_subtype_name
             + "_"
             + "_".join(result)
         )
 
-    def add_container_spriterows(self):
+    def add_cargo_spriterows(self):
         for variant in self.spritelayer_cargo.variants:
             template_path = os.path.join(
                 currentdir,
@@ -231,15 +232,15 @@ class GenerateSpritelayerCargos(Pipeline):
                                 + str(pixel[2])
                                 + " which implies "
                                 + str(1 + [226, 240, 244].index(pixel[2]))
-                                + " containers"
+                                + " cargo sprites"
                             )
                             message += (
                                 " but the variant only defines "
                                 + str(len(variant))
-                                + " container sprite(s)"
+                                + " cargo sprite(s)"
                             )
                             raise ValueError(message)
-                # fake sprite sorter - containers nearer front need to overlap containers behind
+                # fake sprite sorter - cargo sprites nearer front need to overlap cargo sprites behind
                 # position pixel colour indexes (in the palette) must be in ascending order for left->right positions in <- view
                 # required index colours are 226, 240, 244
                 # the fake sprite sorter then just sorts ascending or descending as required for each angle
@@ -249,17 +250,17 @@ class GenerateSpritelayerCargos(Pipeline):
                     pixels.reverse()
                 loc_points_grouped_and_sorted_for_display[angle_index] = pixels
 
-            # get the sprites for all containers for this variant, and put them in a single structure
-            # n.b the implementation of this is likely inefficient as it will repetively open the same containers from the filesystem,
-            # but so far that seems to have negligible performance cost, and caching all containers earlier in the loop would add unwanted complexity
-            containers_for_this_variant = []
+            # get all cargo sprites for this variant, and put them in a single structure
+            # n.b the implementation of this is likely inefficient as it will repetively open the same cargo sprites from the filesystem,
+            # but so far that seems to have negligible performance cost, and caching all cargo sprites earlier in the loop would add unwanted complexity
+            cargos_for_this_variant = []
             for container in variant:
                 container_path = os.path.join(
                     currentdir,
                     "src",
                     "polar_fox",
                     "graphics",
-                    "intermodal_containers",
+                    self.spritelayer_cargo.base_id,
                     container + ".png",
                 )
                 container_image = Image.open(container_path)
@@ -276,15 +277,15 @@ class GenerateSpritelayerCargos(Pipeline):
                 ):
                     bboxes.append([bbox[0], 10, bbox[0] + bbox[1], 10 + bbox[2]])
 
-                container_sprites = pixa.get_arbitrary_angles(container_image, bboxes)
+                cargo_sprites = pixa.get_arbitrary_angles(container_image, bboxes)
                 # containers are symmetric, angles 0-3 need to be copied from angles 4-7
                 for i in range(4):
-                    container_sprites[i] = container_sprites[i + 4]
+                    cargo_sprites[i] = cargo_sprites[i + 4]
 
                 # if self.spritelayer_cargo.id == 'intermodal_box_32px':
-                # container_sprites[0][0].show()
+                # cargo_sprites[0][0].show()
 
-                containers_for_this_variant.append((container, container_sprites))
+                cargos_for_this_variant.append((container, cargo_sprites))
 
             variant_output_image = Image.open(
                 os.path.join(currentdir, "src", "graphics", "spriterow_template.png")
@@ -306,13 +307,13 @@ class GenerateSpritelayerCargos(Pipeline):
                 for pixel in pixels:
                     # use the pixel colour to look up which container sprites to use, relies on hard-coded pixel colours
                     # print(self.spritelayer_cargo.id, variant, angle_index, pixels, container_sprites_for_this_variant)
-                    container_for_this_loc_point = containers_for_this_variant[
+                    container_for_this_loc_point = cargos_for_this_variant[
                         [226, 240, 244].index(pixel[2])
                     ]  # one line python stupidity
-                    container_sprites = container_for_this_loc_point[1]
-                    container_width = container_sprites[angle_index][0].size[0]
-                    container_height = container_sprites[angle_index][0].size[1]
-                    # loc_point_y_transform then moves the loc point to the left-most corner of the container
+                    cargo_sprites = container_for_this_loc_point[1]
+                    container_width = cargo_sprites[angle_index][0].size[0]
+                    container_height = cargo_sprites[angle_index][0].size[1]
+                    # loc_point_y_transform then moves the loc point to the left-most corner of the cargo sprite
                     # this makes it easier to place the loc point pixels in the templates
                     loc_point_y_transforms = {
                         "20": [1, 3, 1, 2, 1, 3, 1, 2],
@@ -339,9 +340,9 @@ class GenerateSpritelayerCargos(Pipeline):
                     )
 
                     variant_output_image.paste(
-                        container_sprites[angle_index][0],
+                        cargo_sprites[angle_index][0],
                         container_bounding_box,
-                        container_sprites[angle_index][1],
+                        cargo_sprites[angle_index][1],
                     )
 
             # create a mask to place black shadows between adjacent containers
@@ -397,7 +398,7 @@ class GenerateSpritelayerCargos(Pipeline):
         self.spritelayer_cargo = spritelayer_cargo
         self.global_constants = global_constants
 
-        self.add_container_spriterows()
+        self.add_cargo_spriterows()
 
         # for this pipeline, input_image is just blank white 10px high image, to which the vehicle sprites are then appended
         input_image = Image.new("P", (graphics_constants.spritesheet_width, 10), 255)

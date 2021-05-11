@@ -9,7 +9,7 @@ from spritelayer_cargos import registered_spritelayer_cargos
 
 
 class AutomobileCargo(CargoBase):
-    """Base class for automobile cargos """
+    """Base class for automobile cargos - cars, trucks, tractors etc."""
 
     # - multiple vehicle types exist, e.g. cars, trucks, tractors etc
     # - unknown and generic cargos default to ????
@@ -25,28 +25,36 @@ class AutomobileCargo(CargoBase):
         }
 
 
-class Trucks16px(AutomobileCargo):
+class AutomobileDefaultAndLowFloorCargoBase(AutomobileCargo):
+    """ Sparse base class to set compatible platform types and sprite placement template """
+
+    # class properties, we want them available without __init__ for...reasons
+    compatible_platform_types = ["default", "low_floor"]
+    template_subtype_name = "default"
+
+
+class Trucks16px(AutomobileDefaultAndLowFloorCargoBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.length = 16
         self.variants = [["trucks_1_1CC"], ["trucks_1_1CC"], ["trucks_1_1CC"]]
 
 
-class Trucks20px(AutomobileCargo):
+class Trucks20px(AutomobileDefaultAndLowFloorCargoBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.length = 20
         self.variants = [["trucks_1_1CC"], ["trucks_1_1CC"], ["trucks_1_1CC"]]
 
 
-class Trucks24px(AutomobileCargo):
+class Trucks24px(AutomobileDefaultAndLowFloorCargoBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.length = 24
         self.variants = [["trucks_1_1CC", "trucks_1_1CC"], ["trucks_1_1CC"]]
 
 
-class Trucks32px(AutomobileCargo):
+class Trucks32px(AutomobileDefaultAndLowFloorCargoBase):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.length = 32
@@ -122,7 +130,7 @@ cargo_subtype_to_subclass_mapping = {"box": [Trucks16px, Trucks24px, Trucks32px]
 
 
 def main():
-    # first register containers with DFLT in their filename, which will be used for:
+    # first register automobiles with DFLT in their filename, which will be used for:
     # - for known cargos with only one visual variant
     # - specific known classes (as default, or fallback where the class might still have further cargo specific sprites)
     # - all other cargos / classes not handled explicitly, which will fall back to box
@@ -136,7 +144,7 @@ def main():
                 cargo_subtype_to_subclass_mapping, subtype, subtype_suffix
             )
 
-    # then register containers with cargo labels in their filename e.g. bulk_COAL, tank_PETR etc
+    # then register automobiles with cargo labels in their filename e.g. bulk_COAL, tank_PETR etc
     # cargo label mapping returns "cargo_label: (subtype, subtype_suffix)"
     for subtype, subtype_suffix in set(
         GestaltGraphicsAutomobileTransporter().cargo_label_mapping.values()
@@ -146,11 +154,3 @@ def main():
             spritelayer_cargo.register_cargo(
                 cargo_subtype_to_subclass_mapping, subtype, subtype_suffix
             )
-
-    """
-    # for knowing how many containers combinations we have in total
-    total = 0
-    for cargo in registered_spritelayer_cargos:
-        total += len(cargo.variants)
-    print('total variants', total)
-    """

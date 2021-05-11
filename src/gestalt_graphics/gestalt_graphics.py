@@ -428,9 +428,14 @@ class GestaltGraphicsAutomobileTransporter(GestaltGraphics):
         self.pipelines = pipelines.get_pipelines(
             ["extend_spriterows_for_composited_sprites_pipeline"]
         )
+        # we need to run the spritelayer cargo pipelines separately from the vehicle pipelines, but we still use this gestalt as the entry point
+        self.spritelayer_cargo_pipelines = pipelines.get_pipelines(
+            ["generate_spritelayer_cargos"]
+        )
         self.colour_mapping_switch = "_switch_colour_mapping"
+        self.consist_ruleset = kwargs.get("consist_ruleset", None)
         self.flag_switch_set_layers_register_more_sprites = True
-        # vehicle transporter cars are asymmetric, sprites are drawn in second col, first col needs populated, map is [col 1 dest]: [col 2 source]
+        # intermodal cars are asymmetric, sprites are drawn in second col, first col needs populated, map is [col 1 dest]: [col 2 source]
         # two liveries
         self.asymmetric_row_map = {
             1: 1,
@@ -479,9 +484,7 @@ class GestaltGraphicsAutomobileTransporter(GestaltGraphics):
 
     @property
     def cargo_label_mapping(self):
-        print(
-            "cargo_label_mapping needs refactoring for GestaltGraphicsAutomobileTransporter?"
-        )
+        result = {}
         # first result is known refits which will fallback to xxxxx_DFLT
         # second result is known cargo sprites / livery recolours, which will map explicitly
         container_cargo_maps = (
@@ -489,8 +492,8 @@ class GestaltGraphicsAutomobileTransporter(GestaltGraphics):
                 "box",
                 ([], []),
             ),  # box currently generic, and is fallback for all unknown cargos / classes
-            ("bulk", ([], polar_fox.constants.bulk_cargo_recolour_maps)),
-            ("wood", (["WOOD"], [])),
+            # ("bulk", ([], polar_fox.constants.bulk_cargo_recolour_maps)),
+            # ("wood", (["WOOD"], [])),
         )  # one label only - extend if other wood-type labels added in future
 
         result = {}
@@ -501,19 +504,25 @@ class GestaltGraphicsAutomobileTransporter(GestaltGraphics):
             # these will all map cargo_label: container_type_DFLT
             for cargo_label in cargo_maps[0]:
                 if self.allow_adding_cargo_label(cargo_label, container_type, result):
-                    result[cargo_label] = container_type + "_DFLT"
+                    result[cargo_label] = (container_type, "DFLT")
 
             # then insert or over-ride entries with cargo_label: container_type_[CARGO_LABEL] where there are explicit graphics for a cargo
             for cargo_label, recolour_map in cargo_maps[1]:
                 if self.allow_adding_cargo_label(cargo_label, container_type, result):
-                    result[cargo_label] = container_type + "_" + cargo_label
+                    result[cargo_label] = (container_type, cargo_label)
         return result
 
     @property
     def position_variants(self):
         # used in spriteset templating
-        # !! see intermodal cars for handling of sets with different numbers of units
-        return ["default", "first", "last", "middle"]
+        if self.consist_ruleset == "1_unit_sets":
+            # 1 unit articulated sets only need 1 variant
+            return ["default"]
+        elif self.consist_ruleset == "2_unit_sets":
+            # 2 unit articulated sets only need 3 variants
+            return ["default", "first", "last"]
+        else:
+            return ["default", "first", "last", "middle"]
 
     @property
     def nml_template(self):

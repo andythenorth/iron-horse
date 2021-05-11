@@ -31,7 +31,7 @@ class IntermodalDefaultAndLowFloorCargoBase(IntermodalCargo):
 
     # class properties, we want them available without __init__ for...reasons
     compatible_platform_types = ["default", "low_floor"]
-    template_type_name = "default"
+    template_subtype_name = "default"
 
 
 class IntermodalCargoSprinterCargoBase(IntermodalCargo):
@@ -39,7 +39,7 @@ class IntermodalCargoSprinterCargoBase(IntermodalCargo):
 
     # class properties, we want them available without __init__ for...reasons
     compatible_platform_types = ["cargo_sprinter"]
-    template_type_name = "cargo_sprinter"
+    template_subtype_name = "cargo_sprinter"
 
 
 class IntermodalFlatCar16pxStandardCargo(IntermodalDefaultAndLowFloorCargoBase):
