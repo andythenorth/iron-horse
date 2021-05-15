@@ -38,7 +38,7 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_spritelayer_cargos,
     return ${vehicle.id}_switch_graphics_spritelayer_cargos_check_cargo_count;
 }
 
-// switch layers: base platform / containers
+// switch layers: base platform / spritelayer cargo
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, getbits(extra_callback_info1, 8, 8)) {
     0: return ${vehicle.id}_switch_graphics_platform_position_in_consist_entry_point;
     1: return ${vehicle.id}_switch_graphics_spritelayer_cargos;
