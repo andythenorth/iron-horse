@@ -8,19 +8,20 @@ from spritelayer_cargo import SpritelayerCargo, CargoSetBase
 class IntermodalSpritelayerCargo(SpritelayerCargo):
     """ Base class for the containers spritelayer cargo """
 
-    # not sure why this is class property eh
-    all_platform_types_with_floor_heights = {
-        "default": 0,
-        "low_floor": 1,
-        "cargo_sprinter": 0,
-    }
-
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.base_id = "intermodal_containers"
         self.gestalt_graphics = GestaltGraphicsIntermodal()
+
+    @property
+    def all_platform_types_with_floor_heights(self):
         # extend this when adding more platform types
         # y offset: positive = down in spritesheet (y origin at top)
+        return {
+            "default": 0,
+            "low_floor": 1,
+            "cargo_sprinter": 0,
+        }
 
 
 class IntermodalCargoSet(CargoSetBase):
@@ -214,7 +215,7 @@ class IntermodalCargoSprinter32pxBoxCargoSet(IntermodalCargoSprinterCargoSetBase
         ]
 
 
-subtype_to_cargo_mapping = {
+subtype_to_cargo_set_mapping = {
     "box": [
         IntermodalFlatCar16pxBoxCargoSet,
         IntermodalFlatCar24pxBoxCargoSet,
@@ -289,14 +290,14 @@ def main():
     # - for known cargos with only one visual variant
     # - specific known classes (as default, or fallback where the class might still have further cargo specific sprites)
     # - all other cargos / classes not handled explicitly, which will fall back to box
-    for subtype in subtype_to_cargo_mapping.keys():
+    for subtype in subtype_to_cargo_set_mapping.keys():
         # exclude these types which don't have a meaningful 'default' as the graphics are ALWAYS cargo-specific
         if subtype not in [
             "bulk",
             "stake_flatrack",
         ]:
             subtype_suffix = "DFLT"
-            for spritelayer_cargo_set_type in subtype_to_cargo_mapping[subtype]:
+            for spritelayer_cargo_set_type in subtype_to_cargo_set_mapping[subtype]:
                 spritelayer_cargo_set_type(
                     subtype=subtype,
                     subtype_suffix=subtype_suffix,
@@ -309,7 +310,7 @@ def main():
     ):
         # exclude DFLT, handled explicitly elsewhere
         if subtype_suffix != "DFLT":
-            for spritelayer_cargo_set_type in subtype_to_cargo_mapping[subtype]:
+            for spritelayer_cargo_set_type in subtype_to_cargo_set_mapping[subtype]:
                 spritelayer_cargo_set_type(
                     subtype=subtype,
                     subtype_suffix=subtype_suffix,

@@ -18,8 +18,7 @@ if not os.path.exists(generated_files_path):
 # this format of import is weird, but I don't want the imported modules directly in the iron horse namespace, I want to nest in spritelayer_cargos
 from spritelayer_cargos import registered_spritelayer_cargos
 from spritelayer_cargos import intermodal_containers
-
-# from spritelayer_cargos import automobiles
+from spritelayer_cargos import automobiles
 
 # import rosters
 from rosters import registered_rosters
@@ -259,9 +258,9 @@ def main():
     # rosters
     pony.main(disabled=False)
 
-    # cargos that use spritelayers (most dont')
+    # spritelayer cargos
     intermodal_containers.main()
-    # automobiles.main()
+    automobiles.main()
 
     # wagons
     """

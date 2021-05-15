@@ -15,10 +15,6 @@ class SpritelayerCargo(object):
         self.gestalt_graphics = None
 
     @property
-    def all_platform_types(self):
-        return self.all_platform_types_with_floor_heights.keys()
-
-    @property
     def floor_height_for_platform_type(self):
         # crude resolution of floor height for each platform type
         return self.all_platform_types_with_floor_heights[self.platform_type]
