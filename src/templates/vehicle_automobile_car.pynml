@@ -29,7 +29,7 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_platform_position_in_co
 <!--! load state is assumed (for simplicity) to be all or nothing - any cargo = full load of automobile cargos -->
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_spritelayer_cargos_check_cargo_count, cargo_count) {
         0: return ss_spritelayer_cargo_empty;
-    return switch_spritelayer_cargos_${spritelayer_cargos.automobiles.AutomobileSpritelayerCargo().base_id}_${consist.platform_type}_${4 * vehicle.vehicle_length}px;
+    return switch_spritelayer_cargos_${spritelayer_cargos.automobiles.AutomobilesSpritelayerCargo().base_id}_${consist.platform_type}_${4 * vehicle.vehicle_length}px;
 }
 
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_spritelayer_cargos,

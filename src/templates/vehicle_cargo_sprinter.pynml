@@ -2,7 +2,7 @@
 
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_containers_check_cargo, cargo_count) {
         0: return ss_spritelayer_cargo_empty;
-    return switch_spritelayer_cargos_${spritelayer_cargos.intermodal_containers.IntermodalSpritelayerCargo().base_id}_${consist.platform_type}_${4 * vehicle.vehicle_length}px;
+    return switch_spritelayer_cargos_${spritelayer_cargos.intermodal_containers.IntermodalContainersSpritelayerCargo().base_id}_${consist.platform_type}_${4 * vehicle.vehicle_length}px;
 }
 
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_containers, [

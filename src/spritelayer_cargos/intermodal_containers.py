@@ -1,17 +1,17 @@
 # spritelayer cargos are sandboxed into their own module to avoid them spawning tentacles into train.py etc
 
-from gestalt_graphics.gestalt_graphics import GestaltGraphicsIntermodal
+from gestalt_graphics.gestalt_graphics import GestaltGraphicsIntermodalContainerTransporters
 
 from spritelayer_cargo import SpritelayerCargo, CargoSetBase
 
 
-class IntermodalSpritelayerCargo(SpritelayerCargo):
+class IntermodalContainersSpritelayerCargo(SpritelayerCargo):
     """ Base class for the containers spritelayer cargo """
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.base_id = "intermodal_containers"
-        self.gestalt_graphics = GestaltGraphicsIntermodal()
+        self.gestalt_graphics = GestaltGraphicsIntermodalContainerTransporters()
 
     @property
     def all_platform_types_with_floor_heights(self):
@@ -24,7 +24,7 @@ class IntermodalSpritelayerCargo(SpritelayerCargo):
         }
 
 
-class IntermodalDefaultAndLowFloorCargoSetBase(CargoSetBase):
+class DefaultAndLowFloorIntermodalContainersCargoSetBase(CargoSetBase):
     """ Sparse base class to set compatible platform types and sprite placement template """
 
     def __init__(self, **kwargs):
@@ -33,7 +33,7 @@ class IntermodalDefaultAndLowFloorCargoSetBase(CargoSetBase):
         self.graphics_template_subtype_name = "default"
 
 
-class IntermodalCargoSprinterCargoSetBase(CargoSetBase):
+class CargoSprinterIntermodalContainersCargoSetBase(CargoSetBase):
     """ Sparse base class to set compatible platform types and sprite placement template """
 
     def __init__(self, **kwargs):
@@ -42,7 +42,7 @@ class IntermodalCargoSprinterCargoSetBase(CargoSetBase):
         self.graphics_template_subtype_name = "cargo_sprinter"
 
 
-class IntermodalFlatCar16pxStandardCargoSet(IntermodalDefaultAndLowFloorCargoSetBase):
+class FlatCar16pxStandardIntermodalContainersCargoSet(DefaultAndLowFloorIntermodalContainersCargoSetBase):
     def __init__(self, **kwargs):
         self.length = 16
         super().__init__(**kwargs)
@@ -50,7 +50,7 @@ class IntermodalFlatCar16pxStandardCargoSet(IntermodalDefaultAndLowFloorCargoSet
         self.variants = [[container_30_foot]]
 
 
-class IntermodalFlatCar24pxStandardCargoSet(IntermodalDefaultAndLowFloorCargoSetBase):
+class FlatCar24pxStandardIntermodalContainersCargoSet(DefaultAndLowFloorIntermodalContainersCargoSetBase):
     def __init__(self, **kwargs):
         self.length = 24
         super().__init__(**kwargs)
@@ -59,7 +59,7 @@ class IntermodalFlatCar24pxStandardCargoSet(IntermodalDefaultAndLowFloorCargoSet
         self.variants = [[container_20_foot, container_20_foot], [container_40_foot]]
 
 
-class IntermodalFlatCar24px40FootOnlyCargoSet(IntermodalDefaultAndLowFloorCargoSetBase):
+class FlatCar24px40FootOnlyIntermodalContainersCargoSet(DefaultAndLowFloorIntermodalContainersCargoSetBase):
     # because some cargos / container types don't look right at 20 foot (too short)
 
     def __init__(self, **kwargs):
@@ -69,7 +69,7 @@ class IntermodalFlatCar24px40FootOnlyCargoSet(IntermodalDefaultAndLowFloorCargoS
         self.variants = [[container_40_foot]]
 
 
-class IntermodalFlatCar32pxStandardCargoSet(IntermodalDefaultAndLowFloorCargoSetBase):
+class FlatCar32pxStandardIntermodalContainersCargoSet(DefaultAndLowFloorIntermodalContainersCargoSetBase):
     def __init__(self, **kwargs):
         self.length = 32
         super().__init__(**kwargs)
@@ -84,7 +84,7 @@ class IntermodalFlatCar32pxStandardCargoSet(IntermodalDefaultAndLowFloorCargoSet
         ]
 
 
-class IntermodalFlatCar32pxNo40FootCargoSet(IntermodalDefaultAndLowFloorCargoSetBase):
+class FlatCar32pxNo40FootIntermodalContainersCargoSet(DefaultAndLowFloorIntermodalContainersCargoSetBase):
     def __init__(self, **kwargs):
         self.length = 32
         super().__init__(**kwargs)
@@ -96,7 +96,7 @@ class IntermodalFlatCar32pxNo40FootCargoSet(IntermodalDefaultAndLowFloorCargoSet
         ]
 
 
-class IntermodalFlatCar32px30FootOnlyCargoSet(IntermodalDefaultAndLowFloorCargoSetBase):
+class FlatCar32px30FootOnlyIntermodalContainersCargoSet(DefaultAndLowFloorIntermodalContainersCargoSetBase):
     def __init__(self, **kwargs):
         self.length = 32
         super().__init__(**kwargs)
@@ -106,7 +106,7 @@ class IntermodalFlatCar32px30FootOnlyCargoSet(IntermodalDefaultAndLowFloorCargoS
         ]
 
 
-class IntermodalFlatCar16pxBoxCargoSet(IntermodalDefaultAndLowFloorCargoSetBase):
+class FlatCar16pxBoxIntermodalContainersCargoSet(DefaultAndLowFloorIntermodalContainersCargoSetBase):
     def __init__(self, **kwargs):
         self.length = 16
         super().__init__(**kwargs)
@@ -117,7 +117,7 @@ class IntermodalFlatCar16pxBoxCargoSet(IntermodalDefaultAndLowFloorCargoSetBase)
         ]
 
 
-class IntermodalFlatCar24pxBoxCargoSet(IntermodalDefaultAndLowFloorCargoSetBase):
+class FlatCar24pxBoxIntermodalContainersCargoSet(DefaultAndLowFloorIntermodalContainersCargoSetBase):
     def __init__(self, **kwargs):
         self.length = 24
         super().__init__(**kwargs)
@@ -133,7 +133,7 @@ class IntermodalFlatCar24pxBoxCargoSet(IntermodalDefaultAndLowFloorCargoSetBase)
         ]
 
 
-class IntermodalFlatCar32pxBoxCargoSet(IntermodalDefaultAndLowFloorCargoSetBase):
+class FlatCar32pxBoxIntermodalContainersCargoSet(DefaultAndLowFloorIntermodalContainersCargoSetBase):
     def __init__(self, **kwargs):
         self.length = 32
         super().__init__(**kwargs)
@@ -155,7 +155,7 @@ class IntermodalFlatCar32pxBoxCargoSet(IntermodalDefaultAndLowFloorCargoSetBase)
         ]
 
 
-class IntermodalCargoSprinter32pxStandardCargoSet(IntermodalCargoSprinterCargoSetBase):
+class CargoSprinter32pxStandardIntermodalContainersCargoSet(CargoSprinterIntermodalContainersCargoSetBase):
     def __init__(self, **kwargs):
         self.length = 32
         super().__init__(**kwargs)
@@ -167,8 +167,8 @@ class IntermodalCargoSprinter32pxStandardCargoSet(IntermodalCargoSprinterCargoSe
         ]
 
 
-class IntermodalCargoSprinter32px20FootOnlyCargoSet(
-    IntermodalCargoSprinterCargoSetBase
+class CargoSprinter32px20FootOnlyIntermodalContainersCargoSet(
+    CargoSprinterIntermodalContainersCargoSetBase
 ):
     def __init__(self, **kwargs):
         self.length = 32
@@ -179,8 +179,8 @@ class IntermodalCargoSprinter32px20FootOnlyCargoSet(
         ]
 
 
-class IntermodalCargoSprinter32px40FootOnlyCargoSet(
-    IntermodalCargoSprinterCargoSetBase
+class CargoSprinter32px40FootOnlyIntermodalContainersCargoSet(
+    CargoSprinterIntermodalContainersCargoSetBase
 ):
     def __init__(self, **kwargs):
         self.length = 32
@@ -191,7 +191,7 @@ class IntermodalCargoSprinter32px40FootOnlyCargoSet(
         ]
 
 
-class IntermodalCargoSprinter32pxBoxCargoSet(IntermodalCargoSprinterCargoSetBase):
+class CargoSprinter32pxBoxIntermodalContainersCargoSet(CargoSprinterIntermodalContainersCargoSetBase):
     def __init__(self, **kwargs):
         self.length = 32
         super().__init__(**kwargs)
@@ -207,70 +207,70 @@ class IntermodalCargoSprinter32pxBoxCargoSet(IntermodalCargoSprinterCargoSetBase
 
 subtype_to_cargo_set_mapping = {
     "box": [
-        IntermodalFlatCar16pxBoxCargoSet,
-        IntermodalFlatCar24pxBoxCargoSet,
-        IntermodalFlatCar32pxBoxCargoSet,
-        IntermodalCargoSprinter32pxBoxCargoSet,
+        FlatCar16pxBoxIntermodalContainersCargoSet,
+        FlatCar24pxBoxIntermodalContainersCargoSet,
+        FlatCar32pxBoxIntermodalContainersCargoSet,
+        CargoSprinter32pxBoxIntermodalContainersCargoSet,
     ],
     "bulk": [
-        IntermodalFlatCar16pxStandardCargoSet,
-        IntermodalFlatCar24pxStandardCargoSet,
-        IntermodalFlatCar32pxNo40FootCargoSet,  # note special case for 32px
-        IntermodalCargoSprinter32px20FootOnlyCargoSet,  # special case
+        FlatCar16pxStandardIntermodalContainersCargoSet,
+        FlatCar24pxStandardIntermodalContainersCargoSet,
+        FlatCar32pxNo40FootIntermodalContainersCargoSet,  # note special case for 32px
+        CargoSprinter32px20FootOnlyIntermodalContainersCargoSet,  # special case
     ],
     "chemicals_tank": [
-        IntermodalFlatCar16pxStandardCargoSet,
-        IntermodalFlatCar24pxStandardCargoSet,
-        IntermodalFlatCar32pxStandardCargoSet,
-        IntermodalCargoSprinter32pxStandardCargoSet,
+        FlatCar16pxStandardIntermodalContainersCargoSet,
+        FlatCar24pxStandardIntermodalContainersCargoSet,
+        FlatCar32pxStandardIntermodalContainersCargoSet,
+        CargoSprinter32pxStandardIntermodalContainersCargoSet,
     ],
     "cryo_tank": [
-        IntermodalFlatCar16pxStandardCargoSet,
-        IntermodalFlatCar24pxStandardCargoSet,
-        IntermodalFlatCar32pxStandardCargoSet,
-        IntermodalCargoSprinter32pxStandardCargoSet,
+        FlatCar16pxStandardIntermodalContainersCargoSet,
+        FlatCar24pxStandardIntermodalContainersCargoSet,
+        FlatCar32pxStandardIntermodalContainersCargoSet,
+        CargoSprinter32pxStandardIntermodalContainersCargoSet,
     ],
     "curtain_side": [
-        IntermodalFlatCar16pxStandardCargoSet,
-        IntermodalFlatCar24px40FootOnlyCargoSet,  # special case
-        IntermodalFlatCar32px30FootOnlyCargoSet,  # special case
-        IntermodalCargoSprinter32px40FootOnlyCargoSet,  # special case
+        FlatCar16pxStandardIntermodalContainersCargoSet,
+        FlatCar24px40FootOnlyIntermodalContainersCargoSet,  # special case
+        FlatCar32px30FootOnlyIntermodalContainersCargoSet,  # special case
+        CargoSprinter32px40FootOnlyIntermodalContainersCargoSet,  # special case
     ],
     "edibles_tank": [
-        IntermodalFlatCar16pxStandardCargoSet,
-        IntermodalFlatCar24pxStandardCargoSet,
-        IntermodalFlatCar32pxStandardCargoSet,
-        IntermodalCargoSprinter32pxStandardCargoSet,
+        FlatCar16pxStandardIntermodalContainersCargoSet,
+        FlatCar24pxStandardIntermodalContainersCargoSet,
+        FlatCar32pxStandardIntermodalContainersCargoSet,
+        CargoSprinter32pxStandardIntermodalContainersCargoSet,
     ],
     "stake_flatrack": [
-        IntermodalFlatCar16pxStandardCargoSet,
-        IntermodalFlatCar24px40FootOnlyCargoSet,  # special case
-        IntermodalFlatCar32px30FootOnlyCargoSet,  # special case
-        IntermodalCargoSprinter32px40FootOnlyCargoSet,  # special case
+        FlatCar16pxStandardIntermodalContainersCargoSet,
+        FlatCar24px40FootOnlyIntermodalContainersCargoSet,  # special case
+        FlatCar32px30FootOnlyIntermodalContainersCargoSet,  # special case
+        CargoSprinter32px40FootOnlyIntermodalContainersCargoSet,  # special case
     ],
     "livestock": [
-        IntermodalFlatCar16pxStandardCargoSet,
-        IntermodalFlatCar24pxStandardCargoSet,
-        IntermodalFlatCar32pxStandardCargoSet,
-        IntermodalCargoSprinter32pxStandardCargoSet,
+        FlatCar16pxStandardIntermodalContainersCargoSet,
+        FlatCar24pxStandardIntermodalContainersCargoSet,
+        FlatCar32pxStandardIntermodalContainersCargoSet,
+        CargoSprinter32pxStandardIntermodalContainersCargoSet,
     ],
     "reefer": [
-        IntermodalFlatCar16pxStandardCargoSet,
-        IntermodalFlatCar24pxStandardCargoSet,
-        IntermodalFlatCar32pxStandardCargoSet,
-        IntermodalCargoSprinter32pxStandardCargoSet,
+        FlatCar16pxStandardIntermodalContainersCargoSet,
+        FlatCar24pxStandardIntermodalContainersCargoSet,
+        FlatCar32pxStandardIntermodalContainersCargoSet,
+        CargoSprinter32pxStandardIntermodalContainersCargoSet,
     ],
     "tank": [
-        IntermodalFlatCar16pxStandardCargoSet,
-        IntermodalFlatCar24pxStandardCargoSet,
-        IntermodalFlatCar32pxStandardCargoSet,
-        IntermodalCargoSprinter32pxStandardCargoSet,
+        FlatCar16pxStandardIntermodalContainersCargoSet,
+        FlatCar24pxStandardIntermodalContainersCargoSet,
+        FlatCar32pxStandardIntermodalContainersCargoSet,
+        CargoSprinter32pxStandardIntermodalContainersCargoSet,
     ],
     "wood": [
-        IntermodalFlatCar16pxStandardCargoSet,
-        IntermodalFlatCar24px40FootOnlyCargoSet,  # special case
-        IntermodalFlatCar32px30FootOnlyCargoSet,  # special case
-        IntermodalCargoSprinter32px40FootOnlyCargoSet,  # special case
+        FlatCar16pxStandardIntermodalContainersCargoSet,
+        FlatCar24px40FootOnlyIntermodalContainersCargoSet,  # special case
+        FlatCar32px30FootOnlyIntermodalContainersCargoSet,  # special case
+        CargoSprinter32px40FootOnlyIntermodalContainersCargoSet,  # special case
     ],
 }
 
@@ -291,12 +291,12 @@ def main():
                 spritelayer_cargo_set_type(
                     subtype=subtype,
                     subtype_suffix=subtype_suffix,
-                    spritelayer_cargo_type=IntermodalSpritelayerCargo,
+                    spritelayer_cargo_type=IntermodalContainersSpritelayerCargo,
                 )
     # then register containers with cargo labels in their filename e.g. bulk_COAL, tank_PETR etc
     # cargo label mapping returns "cargo_label: (subtype, subtype_suffix)"
     for subtype, subtype_suffix in set(
-        GestaltGraphicsIntermodal().cargo_label_mapping.values()
+        GestaltGraphicsIntermodalContainerTransporters().cargo_label_mapping.values()
     ):
         # exclude DFLT, handled explicitly elsewhere
         if subtype_suffix != "DFLT":
@@ -304,5 +304,5 @@ def main():
                 spritelayer_cargo_set_type(
                     subtype=subtype,
                     subtype_suffix=subtype_suffix,
-                    spritelayer_cargo_type=IntermodalSpritelayerCargo,
+                    spritelayer_cargo_type=IntermodalContainersSpritelayerCargo,
                 )

@@ -5,7 +5,7 @@ from gestalt_graphics.gestalt_graphics import GestaltGraphicsAutomobileTransport
 from spritelayer_cargo import SpritelayerCargo, CargoSetBase
 
 
-class AutomobileSpritelayerCargo(SpritelayerCargo):
+class AutomobilesSpritelayerCargo(SpritelayerCargo):
     """Base class for automobile spritelayer cargo - cars, trucks, tractors etc."""
 
     def __init__(self, **kwargs):
@@ -23,7 +23,7 @@ class AutomobileSpritelayerCargo(SpritelayerCargo):
         }
 
 
-class AutomobileDefaultAndLowFloorCargoSetBase(CargoSetBase):
+class DefaultAndLowFloorAutomobilesCargoSetBase(CargoSetBase):
     """ Sparse base class to set compatible platform types and sprite placement template """
 
     def __init__(self, **kwargs):
@@ -32,28 +32,28 @@ class AutomobileDefaultAndLowFloorCargoSetBase(CargoSetBase):
         self.graphics_template_subtype_name = "default"
 
 
-class Trucks16pxCargoSet(AutomobileDefaultAndLowFloorCargoSetBase):
+class Trucks16pxCargoSet(DefaultAndLowFloorAutomobilesCargoSetBase):
     def __init__(self, **kwargs):
         self.length = 16
         super().__init__(**kwargs)
         self.variants = [["trucks_1_1CC"], ["trucks_1_1CC"], ["trucks_1_1CC"]]
 
 
-class Trucks20pxCargoSet(AutomobileDefaultAndLowFloorCargoSetBase):
+class Trucks20pxCargoSet(DefaultAndLowFloorAutomobilesCargoSetBase):
     def __init__(self, **kwargs):
         self.length = 20
         super().__init__(**kwargs)
         self.variants = [["trucks_1_1CC"], ["trucks_1_1CC"], ["trucks_1_1CC"]]
 
 
-class Trucks24pxCargoSet(AutomobileDefaultAndLowFloorCargoSetBase):
+class Trucks24pxCargoSet(DefaultAndLowFloorAutomobilesCargoSetBase):
     def __init__(self, **kwargs):
         self.length = 24
         super().__init__(**kwargs)
         self.variants = [["trucks_1_1CC", "trucks_1_1CC"], ["trucks_1_1CC"]]
 
 
-class Trucks32pxCargoSet(AutomobileDefaultAndLowFloorCargoSetBase):
+class Trucks32pxCargoSet(DefaultAndLowFloorAutomobilesCargoSetBase):
     def __init__(self, **kwargs):
         self.length = 32
         super().__init__(**kwargs)
@@ -145,7 +145,7 @@ def main():
                 spritelayer_cargo_set_type(
                     subtype=subtype,
                     subtype_suffix=subtype_suffix,
-                    spritelayer_cargo_type=AutomobileSpritelayerCargo,
+                    spritelayer_cargo_type=AutomobilesSpritelayerCargo,
                 )
 
     # then register automobiles with cargo labels in their filename e.g. bulk_COAL, tank_PETR etc
@@ -159,5 +159,5 @@ def main():
                 spritelayer_cargo_set_type(
                     subtype=subtype,
                     subtype_suffix=subtype_suffix,
-                    spritelayer_cargo_type=AutomobileSpritelayerCargo,
+                    spritelayer_cargo_type=AutomobilesSpritelayerCargo,
                 )

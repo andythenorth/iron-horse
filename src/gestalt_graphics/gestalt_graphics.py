@@ -305,9 +305,9 @@ class GestaltGraphicsCaboose(GestaltGraphics):
         return None
 
 
-class GestaltGraphicsIntermodal(GestaltGraphics):
+class GestaltGraphicsIntermodalContainerTransporters(GestaltGraphics):
     """
-    Used to handle specific rules for intermodal cars
+    Used to handle specific rules for intermodal container tansporters
     - specific template to handle containers which are in separate layer
     """
 
@@ -362,7 +362,7 @@ class GestaltGraphicsIntermodal(GestaltGraphics):
         # print a note if an unhandled contested cargo is found, so the contested cargos can be updated to handle the cargo label
         if cargo_label in result:
             print(
-                "GestaltGraphicsIntermodal.cargo_label_mapping: cargo_label",
+                "GestaltGraphicsIntermodalContainerTransporters.cargo_label_mapping: cargo_label",
                 cargo_label,
                 "already exists, being over-written by",
                 container_type,

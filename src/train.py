@@ -25,9 +25,9 @@ from gestalt_graphics.gestalt_graphics import (
     GestaltGraphicsSimpleBodyColourRemaps,
     GestaltGraphicsOnlyAddPantographs,
     GestaltGraphicsConsistSpecificLivery,
-    GestaltGraphicsIntermodal,
-    GestaltGraphicsCustom,
+    GestaltGraphicsIntermodalContainerTransporters,
     GestaltGraphicsAutomobileTransporter,
+    GestaltGraphicsCustom,
 )
 import gestalt_graphics.graphics_constants as graphics_constants
 
@@ -1008,7 +1008,7 @@ class MailEngineCargoSprinterEngineConsist(MailEngineConsist):
         self.gestalt_graphics = GestaltGraphicsCustom(
             "vehicle_cargo_sprinter.pynml",
             flag_switch_set_layers_register_more_sprites=True,
-            cargo_label_mapping=GestaltGraphicsIntermodal().cargo_label_mapping,
+            cargo_label_mapping=GestaltGraphicsIntermodalContainerTransporters().cargo_label_mapping,
         )
 
 
@@ -2363,7 +2363,7 @@ class ExpressIntermodalCarConsist(CarConsist):
         self.allow_flip = True
         # Graphics configuration
         # !! note to future, if e.g. NA Horse needs longer express intermodal sets, set the consist_ruleset conditionally by checking roster
-        self.gestalt_graphics = GestaltGraphicsIntermodal(consist_ruleset="2_unit_sets")
+        self.gestalt_graphics = GestaltGraphicsIntermodalContainerTransporters(consist_ruleset="2_unit_sets")
 
     @property
     # account for variable floor heights, well cars, etc
@@ -2550,7 +2550,7 @@ class IntermodalCarConsistBase(CarConsist):
             consist_ruleset = kwargs.get("consist_ruleset")
         else:
             consist_ruleset = "4_unit_sets"
-        self.gestalt_graphics = GestaltGraphicsIntermodal(
+        self.gestalt_graphics = GestaltGraphicsIntermodalContainerTransporters(
             consist_ruleset=consist_ruleset
         )
 
