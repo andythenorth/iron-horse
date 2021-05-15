@@ -23,17 +23,7 @@ class AutomobileSpritelayerCargo(SpritelayerCargo):
         }
 
 
-class AutomobileCargoSet(CargoSetBase):
-    """ Base class for container cargo sets """
-
-    # - multiple container types exist, e.g. box, tank, flat, bulk etc
-    # - unknown and generic cargos default to box containers)
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.gestalt_graphics = GestaltGraphicsAutomobileTransporter()
-
-
-class AutomobileDefaultAndLowFloorCargoSetBase(AutomobileCargoSet):
+class AutomobileDefaultAndLowFloorCargoSetBase(CargoSetBase):
     """ Sparse base class to set compatible platform types and sprite placement template """
 
     def __init__(self, **kwargs):

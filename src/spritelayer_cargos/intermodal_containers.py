@@ -24,17 +24,7 @@ class IntermodalSpritelayerCargo(SpritelayerCargo):
         }
 
 
-class IntermodalCargoSet(CargoSetBase):
-    """ Base class for container cargo sets """
-
-    # - multiple container types exist, e.g. box, tank, flat, bulk etc
-    # - unknown and generic cargos default to box containers)
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.gestalt_graphics = GestaltGraphicsIntermodal()
-
-
-class IntermodalDefaultAndLowFloorCargoSetBase(IntermodalCargoSet):
+class IntermodalDefaultAndLowFloorCargoSetBase(CargoSetBase):
     """ Sparse base class to set compatible platform types and sprite placement template """
 
     def __init__(self, **kwargs):
@@ -43,7 +33,7 @@ class IntermodalDefaultAndLowFloorCargoSetBase(IntermodalCargoSet):
         self.graphics_template_subtype_name = "default"
 
 
-class IntermodalCargoSprinterCargoSetBase(IntermodalCargoSet):
+class IntermodalCargoSprinterCargoSetBase(CargoSetBase):
     """ Sparse base class to set compatible platform types and sprite placement template """
 
     def __init__(self, **kwargs):
