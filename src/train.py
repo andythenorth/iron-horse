@@ -26,7 +26,7 @@ from gestalt_graphics.gestalt_graphics import (
     GestaltGraphicsOnlyAddPantographs,
     GestaltGraphicsConsistSpecificLivery,
     GestaltGraphicsIntermodalContainerTransporters,
-    GestaltGraphicsAutomobileTransporter,
+    GestaltGraphicsAutomobilesTransporter,
     GestaltGraphicsCustom,
 )
 import gestalt_graphics.graphics_constants as graphics_constants
@@ -1767,7 +1767,13 @@ class AutomobileCarConsistBase(CarConsist):
         # ...because the random bits are re-randomised when new cargo loads, to get new random containers, which would also cause new random wagon colour
         # player can still flip to the second livery
         self.use_colour_randomisation_strategies = False
-        self.gestalt_graphics = GestaltGraphicsAutomobileTransporter()
+        if self.subtype == "C":
+            consist_ruleset = "4_unit_sets"
+        else:
+            consist_ruleset = "2_unit_sets"
+        self.gestalt_graphics = GestaltGraphicsAutomobilesTransporter(
+            consist_ruleset=consist_ruleset
+        )
 
 
 class AutomobileDoubleDeckCarConsist(AutomobileCarConsistBase):
@@ -2363,7 +2369,9 @@ class ExpressIntermodalCarConsist(CarConsist):
         self.allow_flip = True
         # Graphics configuration
         # !! note to future, if e.g. NA Horse needs longer express intermodal sets, set the consist_ruleset conditionally by checking roster
-        self.gestalt_graphics = GestaltGraphicsIntermodalContainerTransporters(consist_ruleset="2_unit_sets")
+        self.gestalt_graphics = GestaltGraphicsIntermodalContainerTransporters(
+            consist_ruleset="2_unit_sets"
+        )
 
     @property
     # account for variable floor heights, well cars, etc

@@ -51,5 +51,5 @@ def main():
     consist.add_unit(
         type=AutomobileCar,
         chassis="2_axle_1cc_filled_20px",
-        spriterow_num=2,
+        spriterow_num=1,
     )

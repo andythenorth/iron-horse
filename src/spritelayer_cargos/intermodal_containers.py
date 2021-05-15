@@ -1,6 +1,8 @@
 # spritelayer cargos are sandboxed into their own module to avoid them spawning tentacles into train.py etc
 
-from gestalt_graphics.gestalt_graphics import GestaltGraphicsIntermodalContainerTransporters
+from gestalt_graphics.gestalt_graphics import (
+    GestaltGraphicsIntermodalContainerTransporters,
+)
 
 from spritelayer_cargo import SpritelayerCargo, CargoSetBase
 
@@ -42,7 +44,9 @@ class CargoSprinterIntermodalContainersCargoSetBase(CargoSetBase):
         self.graphics_template_subtype_name = "cargo_sprinter"
 
 
-class FlatCar16pxStandardIntermodalContainersCargoSet(DefaultAndLowFloorIntermodalContainersCargoSetBase):
+class FlatCar16pxStandardIntermodalContainersCargoSet(
+    DefaultAndLowFloorIntermodalContainersCargoSetBase
+):
     def __init__(self, **kwargs):
         self.length = 16
         super().__init__(**kwargs)
@@ -50,7 +54,9 @@ class FlatCar16pxStandardIntermodalContainersCargoSet(DefaultAndLowFloorIntermod
         self.variants = [[container_30_foot]]
 
 
-class FlatCar24pxStandardIntermodalContainersCargoSet(DefaultAndLowFloorIntermodalContainersCargoSetBase):
+class FlatCar24pxStandardIntermodalContainersCargoSet(
+    DefaultAndLowFloorIntermodalContainersCargoSetBase
+):
     def __init__(self, **kwargs):
         self.length = 24
         super().__init__(**kwargs)
@@ -59,7 +65,9 @@ class FlatCar24pxStandardIntermodalContainersCargoSet(DefaultAndLowFloorIntermod
         self.variants = [[container_20_foot, container_20_foot], [container_40_foot]]
 
 
-class FlatCar24px40FootOnlyIntermodalContainersCargoSet(DefaultAndLowFloorIntermodalContainersCargoSetBase):
+class FlatCar24px40FootOnlyIntermodalContainersCargoSet(
+    DefaultAndLowFloorIntermodalContainersCargoSetBase
+):
     # because some cargos / container types don't look right at 20 foot (too short)
 
     def __init__(self, **kwargs):
@@ -69,7 +77,9 @@ class FlatCar24px40FootOnlyIntermodalContainersCargoSet(DefaultAndLowFloorInterm
         self.variants = [[container_40_foot]]
 
 
-class FlatCar32pxStandardIntermodalContainersCargoSet(DefaultAndLowFloorIntermodalContainersCargoSetBase):
+class FlatCar32pxStandardIntermodalContainersCargoSet(
+    DefaultAndLowFloorIntermodalContainersCargoSetBase
+):
     def __init__(self, **kwargs):
         self.length = 32
         super().__init__(**kwargs)
@@ -84,7 +94,9 @@ class FlatCar32pxStandardIntermodalContainersCargoSet(DefaultAndLowFloorIntermod
         ]
 
 
-class FlatCar32pxNo40FootIntermodalContainersCargoSet(DefaultAndLowFloorIntermodalContainersCargoSetBase):
+class FlatCar32pxNo40FootIntermodalContainersCargoSet(
+    DefaultAndLowFloorIntermodalContainersCargoSetBase
+):
     def __init__(self, **kwargs):
         self.length = 32
         super().__init__(**kwargs)
@@ -96,7 +108,9 @@ class FlatCar32pxNo40FootIntermodalContainersCargoSet(DefaultAndLowFloorIntermod
         ]
 
 
-class FlatCar32px30FootOnlyIntermodalContainersCargoSet(DefaultAndLowFloorIntermodalContainersCargoSetBase):
+class FlatCar32px30FootOnlyIntermodalContainersCargoSet(
+    DefaultAndLowFloorIntermodalContainersCargoSetBase
+):
     def __init__(self, **kwargs):
         self.length = 32
         super().__init__(**kwargs)
@@ -106,7 +120,9 @@ class FlatCar32px30FootOnlyIntermodalContainersCargoSet(DefaultAndLowFloorInterm
         ]
 
 
-class FlatCar16pxBoxIntermodalContainersCargoSet(DefaultAndLowFloorIntermodalContainersCargoSetBase):
+class FlatCar16pxBoxIntermodalContainersCargoSet(
+    DefaultAndLowFloorIntermodalContainersCargoSetBase
+):
     def __init__(self, **kwargs):
         self.length = 16
         super().__init__(**kwargs)
@@ -117,7 +133,9 @@ class FlatCar16pxBoxIntermodalContainersCargoSet(DefaultAndLowFloorIntermodalCon
         ]
 
 
-class FlatCar24pxBoxIntermodalContainersCargoSet(DefaultAndLowFloorIntermodalContainersCargoSetBase):
+class FlatCar24pxBoxIntermodalContainersCargoSet(
+    DefaultAndLowFloorIntermodalContainersCargoSetBase
+):
     def __init__(self, **kwargs):
         self.length = 24
         super().__init__(**kwargs)
@@ -133,7 +151,9 @@ class FlatCar24pxBoxIntermodalContainersCargoSet(DefaultAndLowFloorIntermodalCon
         ]
 
 
-class FlatCar32pxBoxIntermodalContainersCargoSet(DefaultAndLowFloorIntermodalContainersCargoSetBase):
+class FlatCar32pxBoxIntermodalContainersCargoSet(
+    DefaultAndLowFloorIntermodalContainersCargoSetBase
+):
     def __init__(self, **kwargs):
         self.length = 32
         super().__init__(**kwargs)
@@ -155,7 +175,9 @@ class FlatCar32pxBoxIntermodalContainersCargoSet(DefaultAndLowFloorIntermodalCon
         ]
 
 
-class CargoSprinter32pxStandardIntermodalContainersCargoSet(CargoSprinterIntermodalContainersCargoSetBase):
+class CargoSprinter32pxStandardIntermodalContainersCargoSet(
+    CargoSprinterIntermodalContainersCargoSetBase
+):
     def __init__(self, **kwargs):
         self.length = 32
         super().__init__(**kwargs)
@@ -191,7 +213,9 @@ class CargoSprinter32px40FootOnlyIntermodalContainersCargoSet(
         ]
 
 
-class CargoSprinter32pxBoxIntermodalContainersCargoSet(CargoSprinterIntermodalContainersCargoSetBase):
+class CargoSprinter32pxBoxIntermodalContainersCargoSet(
+    CargoSprinterIntermodalContainersCargoSetBase
+):
     def __init__(self, **kwargs):
         self.length = 32
         super().__init__(**kwargs)

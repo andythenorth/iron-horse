@@ -307,8 +307,10 @@ class GestaltGraphicsCaboose(GestaltGraphics):
 
 class GestaltGraphicsIntermodalContainerTransporters(GestaltGraphics):
     """
-    Used to handle specific rules for intermodal container tansporters
-    - specific template to handle containers which are in separate layer
+    Dedicated gestalt for intermodal container transporter
+    Gestalt handles both
+    - the consist sprites
+    - the spritelayer cargos which are in separate layer
     """
 
     def __init__(self, **kwargs):
@@ -416,18 +418,17 @@ class GestaltGraphicsIntermodalContainerTransporters(GestaltGraphics):
         return "vehicle_intermodal.pynml"
 
 
-class GestaltGraphicsAutomobileTransporter(GestaltGraphics):
+class GestaltGraphicsAutomobilesTransporter(GestaltGraphics):
     """
-    Used to handle specific rules for autombile (car, truck, tractor) transporters
-    - specific template to handle vehicles which are in separate layer
+    Dedicated automobiles (car, truck, tractor) transporter
+    Gestalt handles both
+    - the consist sprites
+    - the spritelayer cargos which are in separate layer
     """
 
     def __init__(self, **kwargs):
         super().__init__()
-        # we use the composited sprites pipeline so we can make use of chassis compositing
-        self.pipelines = pipelines.get_pipelines(
-            ["extend_spriterows_for_composited_sprites_pipeline"]
-        )
+        self.pipelines = pipelines.get_pipelines(["check_buy_menu_only"])
         # we need to run the spritelayer cargo pipelines separately from the vehicle pipelines, but we still use this gestalt as the entry point
         self.spritelayer_cargo_pipelines = pipelines.get_pipelines(
             ["generate_spritelayer_cargo_sets"]
@@ -435,23 +436,6 @@ class GestaltGraphicsAutomobileTransporter(GestaltGraphics):
         self.colour_mapping_switch = "_switch_colour_mapping"
         self.consist_ruleset = kwargs.get("consist_ruleset", None)
         self.flag_switch_set_layers_register_more_sprites = True
-        # intermodal cars are asymmetric, sprites are drawn in second col, first col needs populated, map is [col 1 dest]: [col 2 source]
-        # two liveries
-        self.asymmetric_row_map = {
-            1: 1,
-            2: 2,  # default: default
-            3: 5,
-            4: 6,  # first: last
-            5: 3,
-            6: 4,  # last: first
-            7: 7,
-            8: 8,
-        }  # middle: middle
-
-    def get_output_row_types(self):
-        # 2 liveries * 4 variants so 8 empty rows, we're only using the composited sprites pipeline for chassis compositing, containers are provided on separate layer
-        # note to self, remarkably adding multiple empty rows appears to just work here :o
-        return ["empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty"]
 
     def allow_adding_cargo_label(self, cargo_label, container_type, result):
         # don't ship DFLT as actual cargo label, it's not a valid cargo and will cause nml to barf
@@ -473,7 +457,7 @@ class GestaltGraphicsAutomobileTransporter(GestaltGraphics):
         # print a note if an unhandled contested cargo is found, so the contested cargos can be updated to handle the cargo label
         if cargo_label in result:
             print(
-                "GestaltGraphicsAutomobileTransporter.cargo_label_mapping: cargo_label",
+                "GestaltGraphicsAutomobilesTransporter.cargo_label_mapping: cargo_label",
                 cargo_label,
                 "already exists, being over-written by",
                 container_type,

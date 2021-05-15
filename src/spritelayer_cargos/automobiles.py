@@ -1,6 +1,6 @@
 # spritelayer cargos are sandboxed into their own module to avoid them spawning tentacles into train.py etc
 
-from gestalt_graphics.gestalt_graphics import GestaltGraphicsAutomobileTransporter
+from gestalt_graphics.gestalt_graphics import GestaltGraphicsAutomobilesTransporter
 
 from spritelayer_cargo import SpritelayerCargo, CargoSetBase
 
@@ -11,7 +11,7 @@ class AutomobilesSpritelayerCargo(SpritelayerCargo):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.base_id = "automobiles"
-        self.gestalt_graphics = GestaltGraphicsAutomobileTransporter()
+        self.gestalt_graphics = GestaltGraphicsAutomobilesTransporter()
 
     @property
     def all_platform_types_with_floor_heights(self):
@@ -64,7 +64,12 @@ class Trucks32pxCargoSet(DefaultAndLowFloorAutomobilesCargoSetBase):
 
 
 subtype_to_cargo_set_mapping = {
-    "box": [Trucks16pxCargoSet, Trucks20pxCargoSet, Trucks24pxCargoSet, Trucks32pxCargoSet]
+    "box": [
+        Trucks16pxCargoSet,
+        Trucks20pxCargoSet,
+        Trucks24pxCargoSet,
+        Trucks32pxCargoSet,
+    ]
 }
 """
     "bulk": [
@@ -151,7 +156,7 @@ def main():
     # then register automobiles with cargo labels in their filename e.g. bulk_COAL, tank_PETR etc
     # cargo label mapping returns "cargo_label: (subtype, subtype_suffix)"
     for subtype, subtype_suffix in set(
-        GestaltGraphicsAutomobileTransporter().cargo_label_mapping.values()
+        GestaltGraphicsAutomobilesTransporter().cargo_label_mapping.values()
     ):
         # exclude DFLT, handled explicitly elsewhere
         if subtype_suffix != "DFLT":

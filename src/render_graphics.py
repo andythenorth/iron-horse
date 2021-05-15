@@ -27,7 +27,11 @@ def run_consist_pipelines(consist):
 
 
 def run_spritelayer_cargo_set_pipelines(spritelayer_cargo_set):
-    for pipeline in spritelayer_cargo_set.spritelayer_cargo.gestalt_graphics.spritelayer_cargo_pipelines:
+    for (
+        pipeline
+    ) in (
+        spritelayer_cargo_set.spritelayer_cargo.gestalt_graphics.spritelayer_cargo_pipelines
+    ):
         pipeline.render(spritelayer_cargo_set, global_constants)
 
 
