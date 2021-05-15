@@ -26,31 +26,22 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_platform_position_in_co
     return ${vehicle.id}_switch_graphics_platform_default;
 }
 
-<!--! check explicit cargo labels, fallback to random if unknown -->
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_containers_check_cargo_label, cargo_type_in_veh) {
-    <!--!<tal:cargo_label_container_type_mapping repeat="cargo_label consist.gestalt_graphics.cargo_label_mapping.items()">
-        ${cargo_label[0]}: switch_spritelayer_cargos_automobile_transporter_cargos_random_${consist.platform_type}_${cargo_label[1]}_${4 * vehicle.vehicle_length}px;
-    </tal:cargo_label_container_type_mapping>-->
-    return switch_spritelayer_cargos_automobile_transporter_cargos_random_${consist.platform_type}_box_DFLT_${4 * vehicle.vehicle_length}px;
+<!--! load state is assumed (for simplicity) to be all or nothing - any cargo = full load of automobile cargos -->
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_spritelayer_cargos_check_cargo_count, cargo_count) {
+        0: return ss_spritelayer_cargo_empty;
+    return switch_spritelayer_cargos_${spritelayer_cargos.automobiles.AutomobileSpritelayerCargo().base_id}_${consist.platform_type}_${4 * vehicle.vehicle_length}px;
 }
 
-<!--! load state is assumed to be all or nothing - any cargo = full load of containers -->
-<!--! !! might want to handle intermediate load states when multiple containers are used ?? 50:50 -->
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_containers_check_cargo, cargo_count) {
-        0: return ss_spritelayer_cargos_automobile_transporter_cars_empty;
-    return ${vehicle.id}_switch_graphics_containers_check_cargo_label;
-}
-
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_containers,
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_spritelayer_cargos,
             STORE_TEMP(CB_FLAG_MORE_SPRITES | base_sprite_2cc + 16 * company_colour2 + company_colour1, 0x100) <!--! note requirement to pass along 'more sprites' flag here -->
         ) {
-    return ${vehicle.id}_switch_graphics_containers_check_cargo;
+    return ${vehicle.id}_switch_graphics_spritelayer_cargos_check_cargo_count;
 }
 
 // switch layers: base platform / containers
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, getbits(extra_callback_info1, 8, 8)) {
     0: return ${vehicle.id}_switch_graphics_platform_position_in_consist_entry_point;
-    1: return ${vehicle.id}_switch_graphics_containers;
+    1: return ${vehicle.id}_switch_graphics_spritelayer_cargos;
 }
 
 

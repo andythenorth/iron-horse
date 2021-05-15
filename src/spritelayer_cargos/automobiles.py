@@ -64,7 +64,7 @@ class Trucks32pxCargoSet(AutomobileDefaultAndLowFloorCargoSetBase):
 
 
 subtype_to_cargo_set_mapping = {
-    "box": [Trucks16pxCargoSet, Trucks24pxCargoSet, Trucks32pxCargoSet]
+    "box": [Trucks16pxCargoSet, Trucks20pxCargoSet, Trucks24pxCargoSet, Trucks32pxCargoSet]
 }
 """
     "bulk": [

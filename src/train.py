@@ -4378,7 +4378,7 @@ class ExpressIntermodalCar(ExpressCar):
         super().__init__(**kwargs)
         # express intermodal cars may be asymmetric, there is magic in the graphics processing to make this work
         self._symmetry_type = "asymmetric"
-        self.random_trigger_switch = "_switch_graphics_containers"
+        self.random_trigger_switch = "_switch_graphics_spritelayer_cargos"
 
 
 class ExpressMailCar(ExpressCar):
@@ -4403,9 +4403,9 @@ class AutomobileCar(ExpressCar):
         # vehicle transporter cars may be asymmetric, there is magic in the graphics processing to make this work
         self._symmetry_type = "asymmetric"
         utils.echo_message(
-            "AutomobileCar random_trigger_switch is using _switch_graphics_containers"
+            "AutomobileCar random_trigger_switch is using _switch_graphics_spritelayer_cargos"
         )
-        self.random_trigger_switch = "_switch_graphics_containers"
+        self.random_trigger_switch = "_switch_graphics_spritelayer_cargos"
 
 
 class FreightCar(TrainCar):
@@ -4459,7 +4459,7 @@ class IntermodalCar(FreightCar):
         super().__init__(**kwargs)
         # intermodal cars may be asymmetric, there is magic in the graphics processing to make this work
         self._symmetry_type = "asymmetric"
-        self.random_trigger_switch = "_switch_graphics_containers"
+        self.random_trigger_switch = "_switch_graphics_spritelayer_cargos"
 
 
 class SlagLadleCar(FreightCar):
