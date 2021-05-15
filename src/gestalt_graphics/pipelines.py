@@ -175,7 +175,7 @@ class PassThroughPipeline(Pipeline):
         input_image.close()
 
 
-class GenerateSpritelayerCargos(Pipeline):
+class GenerateSpritelayerCargoSets(Pipeline):
     """
     Creates a spritesheet with a set of composited cargos for use on a dedicated spritelayer.
     """
@@ -193,13 +193,13 @@ class GenerateSpritelayerCargos(Pipeline):
         return (
             self.spritelayer_cargo.base_id
             + "_template_"
-            + self.spritelayer_cargo.template_subtype_name
+            + self.spritelayer_cargo_set.graphics_template_subtype_name
             + "_"
             + "_".join(result)
         )
 
     def add_cargo_spriterows(self):
-        for variant in self.spritelayer_cargo.variants:
+        for variant in self.spritelayer_cargo_set.variants:
             template_path = os.path.join(
                 currentdir,
                 "src",
@@ -319,6 +319,7 @@ class GenerateSpritelayerCargos(Pipeline):
                         "20": [1, 3, 1, 2, 1, 3, 1, 2],
                         "30": [1, 3, 1, 3, 1, 3, 1, 3],
                         "40": [1, 3, 1, 4, 1, 3, 1, 4],
+                        "CC": [1, 3, 1, 2, 1, 3, 1, 2],  # hax
                     }
                     container_foot_length = container_for_this_loc_point[0].split(
                         "_foot"
@@ -357,7 +358,7 @@ class GenerateSpritelayerCargos(Pipeline):
                     ["empty", "occupied", "occupied"],
                 ]:
                     raise ValueError(
-                        self.spritelayer_cargo.id
+                        self.spritelayer_cargo_set.id
                         + " - this pattern of (20 foot) containers isn't supported (can't composite shadows for it): "
                         + str(combo_check)
                     )
@@ -393,9 +394,11 @@ class GenerateSpritelayerCargos(Pipeline):
             variant_output_image.close()
             template_image.close()
 
-    def render(self, spritelayer_cargo, global_constants):
+    def render(self, spritelayer_cargo_set, global_constants):
         self.units = []
-        self.spritelayer_cargo = spritelayer_cargo
+        self.spritelayer_cargo_set = spritelayer_cargo_set
+        # store the spritelayer_cargo_set for convenience of access
+        self.spritelayer_cargo = spritelayer_cargo_set.spritelayer_cargo
         self.global_constants = global_constants
 
         self.add_cargo_spriterows()
@@ -404,7 +407,7 @@ class GenerateSpritelayerCargos(Pipeline):
         input_image = Image.new("P", (graphics_constants.spritesheet_width, 10), 255)
         input_image.putpalette(DOS_PALETTE)
         self.render_common(
-            input_image, self.units, output_base_name=spritelayer_cargo.id
+            input_image, self.units, output_base_name=spritelayer_cargo_set.id
         )
 
 
@@ -1537,7 +1540,7 @@ def get_pipelines(pipeline_names):
         "extend_spriterows_for_composited_sprites_pipeline": ExtendSpriterowsForCompositedSpritesPipeline,
         "generate_pantographs_up_spritesheet": GeneratePantographsUpSpritesheetPipeline,
         "generate_pantographs_down_spritesheet": GeneratePantographsDownSpritesheetPipeline,
-        "generate_spritelayer_cargos": GenerateSpritelayerCargos,
+        "generate_spritelayer_cargo_sets": GenerateSpritelayerCargoSets,
     }
     return [pipelines[pipeline_name]() for pipeline_name in pipeline_names]
 

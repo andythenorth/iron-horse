@@ -15,19 +15,21 @@ generated_files_path = os.path.join(currentdir, global_constants.generated_files
 if not os.path.exists(generated_files_path):
     os.mkdir(generated_files_path)
 
+# this format of import is weird, but I don't want the imported modules directly in the iron horse namespace, I want to nest in spritelayer_cargos
+from spritelayer_cargos import registered_spritelayer_cargos
+from spritelayer_cargos import intermodal_containers
+
+# from spritelayer_cargos import automobiles
+
 # import rosters
 from rosters import registered_rosters
 from rosters import pony
 
 from vehicles import numeric_id_defender
 
-# this format of import is weird, but I don't want the imported modules directly in the iron horse namespace, I want to nest in spritelayer_cargos
-import spritelayer_cargos.intermodal_containers
-#import spritelayer_cargos.automobiles
-
 # import wagons
 # from vehicles import alignment_cars
-# from vehicles import automobile_cars
+from vehicles import automobile_cars
 from vehicles import bolster_cars
 from vehicles import box_cars
 from vehicles import bulkhead_flat_cars
@@ -95,6 +97,21 @@ def get_active_rosters():
             if roster.id == makefile_args["roster"]
         ]  # make sure it's iterable
     return active_rosters
+
+
+def get_spritelayer_cargos():
+    # just a silly method for naming consistency, probably a bad pattern
+    return registered_spritelayer_cargos
+
+
+def get_spritelayer_cargo_sets():
+    # get a flattened list of the spritelayer cargo sets, which are usually nested inside spritelayer cargos
+    # this is primarily just for convenience when calling a graphics multiprocessing pool
+    result = []
+    for spritelayer_cargo in registered_spritelayer_cargos:
+        for cargo_set in spritelayer_cargo.cargo_sets:
+            result.append(cargo_set)
+    return result
 
 
 def get_consists_in_buy_menu_order():
@@ -243,8 +260,8 @@ def main():
     pony.main(disabled=False)
 
     # cargos that use spritelayers (most dont')
-    spritelayer_cargos.intermodal_containers.main()
-    #spritelayer_cargos.automobiles.main()
+    intermodal_containers.main()
+    # automobiles.main()
 
     # wagons
     """

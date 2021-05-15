@@ -319,7 +319,7 @@ class GestaltGraphicsIntermodal(GestaltGraphics):
         )
         # we need to run the spritelayer cargo pipelines separately from the vehicle pipelines, but we still use this gestalt as the entry point
         self.spritelayer_cargo_pipelines = pipelines.get_pipelines(
-            ["generate_spritelayer_cargos"]
+            ["generate_spritelayer_cargo_sets"]
         )
         self.colour_mapping_switch = "_switch_colour_mapping"
         self.consist_ruleset = kwargs.get("consist_ruleset", None)
@@ -430,7 +430,7 @@ class GestaltGraphicsAutomobileTransporter(GestaltGraphics):
         )
         # we need to run the spritelayer cargo pipelines separately from the vehicle pipelines, but we still use this gestalt as the entry point
         self.spritelayer_cargo_pipelines = pipelines.get_pipelines(
-            ["generate_spritelayer_cargos"]
+            ["generate_spritelayer_cargo_sets"]
         )
         self.colour_mapping_switch = "_switch_colour_mapping"
         self.consist_ruleset = kwargs.get("consist_ruleset", None)

@@ -41,7 +41,6 @@ def render_header_item_nml(header_item, consists):
             utils=utils,
             active_rosters=iron_horse.get_active_rosters(),
             graphics_path=global_constants.graphics_path,
-            spritelayer_cargos=iron_horse.spritelayer_cargos,
             haulage_bonus_engine_id_tree=iron_horse.get_haulage_bonus_engine_id_tree(),
             pax_car_ids=iron_horse.get_pax_car_ids(),
             restaurant_car_ids=iron_horse.get_restaurant_car_ids(),
@@ -53,14 +52,14 @@ def render_header_item_nml(header_item, consists):
     )
 
 
-def render_consist_nml(consist):
-    result = utils.unescape_chameleon_output(consist.render(templates))
-    # write the nml per vehicle to disk, it aids debugging
-    consist_nml = codecs.open(
-        os.path.join(generated_files_path, "nml", consist.id + ".nml"), "w", "utf8"
+def render_item_nml(item):
+    result = utils.unescape_chameleon_output(item.render(templates))
+    # write the nml per item to disk, it aids debugging
+    item_nml = codecs.open(
+        os.path.join(generated_files_path, "nml", item.id + ".nml"), "w", "utf8"
     )
-    consist_nml.write(result)
-    consist_nml.close()
+    item_nml.write(result)
+    item_nml.close()
     # also return the nml directly for writing to the concatenated nml, don't faff around opening the generated nml files from disk
     return result
 
@@ -78,6 +77,7 @@ def main():
         os.path.join(generated_files_path, "iron-horse.nml"), "w", "utf8"
     )
 
+    spritelayer_cargos = iron_horse.get_spritelayer_cargos()
     consists = iron_horse.get_consists_in_buy_menu_order()
 
     header_items = [
@@ -85,9 +85,9 @@ def main():
         "cargo_table",
         "railtype_table",
         "spriteset_templates",
+        "spritelayer_cargo_empty_ss",
         "tail_lights",
         "recolour_sprites",
-        "spritelayer_cargos",
         "procedures_alternative_var_41",
         "procedures_alternative_var_random_bits",
         "procedures_box_car_with_opening_doors",
@@ -105,8 +105,10 @@ def main():
         grf_nml.write(render_header_item_nml(header_item, consists))
 
     # multiprocessing was tried here and removed as it was empirically slower in testing (due to overhead of starting extra pythons probably)
+    for spritelayercargo in spritelayer_cargos:
+        grf_nml.write(render_item_nml(spritelayercargo))
     for consist in consists:
-        grf_nml.write(render_consist_nml(consist))
+        grf_nml.write(render_item_nml(consist))
 
     grf_nml.close()
 
