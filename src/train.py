@@ -1767,7 +1767,9 @@ class AutomobileCarConsistBase(CarConsist):
         # ...because the random bits are re-randomised when new cargo loads, to get new random containers, which would also cause new random wagon colour
         # player can still flip to the second livery
         self.use_colour_randomisation_strategies = False
-        if self.subtype == "C":
+        if self.subtype == "D":
+            consist_ruleset = "articulated_permanent_twin_sets"
+        elif self.subtype == "C":
             consist_ruleset = "4_unit_sets"
         else:
             consist_ruleset = "2_unit_sets"

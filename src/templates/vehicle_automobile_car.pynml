@@ -18,8 +18,15 @@
     }
 </tal:position_variants>
 
+<tal:position_ruleset condition="consist.gestalt_graphics.consist_ruleset == 'articulated_permanent_twin_sets'">
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_platform_position_in_consist_entry_point, switch_graphics_automobile_transporter_ruleset_articulated_permanent_twin_sets()) {
+        1: return ${vehicle.id}_switch_graphics_platform_last;
+        return ${vehicle.id}_switch_graphics_platform_first;
+    }
+</tal:position_ruleset>
+
 <tal:position_ruleset condition="consist.gestalt_graphics.consist_ruleset == '2_unit_sets'">
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_platform_position_in_consist_entry_point, switch_graphics_intermodal_platform_ruleset_2_unit_sets()) {
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_platform_position_in_consist_entry_point, switch_graphics_automobile_transporter_ruleset_2_unit_sets()) {
         0: return ${vehicle.id}_switch_graphics_platform_default;
         1: return ${vehicle.id}_switch_graphics_platform_first;
         2: return ${vehicle.id}_switch_graphics_platform_last;
@@ -28,7 +35,7 @@
 </tal:position_ruleset>
 
 <tal:position_ruleset condition="consist.gestalt_graphics.consist_ruleset == '4_unit_sets'">
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_platform_position_in_consist_entry_point, switch_graphics_intermodal_platform_ruleset_4_unit_sets()) {
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_platform_position_in_consist_entry_point, switch_graphics_automobile_transporter_ruleset_4_unit_sets()) {
         0: ${vehicle.id}_switch_graphics_platform_default;
         1: return ${vehicle.id}_switch_graphics_platform_first;
         2: return ${vehicle.id}_switch_graphics_platform_last;

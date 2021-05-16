@@ -499,7 +499,10 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphics):
     @property
     def position_variants(self):
         # used in spriteset templating
-        if self.consist_ruleset == "1_unit_sets":
+        if self.consist_ruleset == "articulated_permanent_twin_sets":
+            # permanent articulated twin sets only need 2 variants
+            return ["first", "last"]
+        elif self.consist_ruleset == "1_unit_sets":
             # 1 unit articulated sets only need 1 variant
             return ["default"]
         elif self.consist_ruleset == "2_unit_sets":
