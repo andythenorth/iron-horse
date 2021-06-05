@@ -86,7 +86,8 @@ STR_NAME_SUFFIX_HST_PASSENGER_CAR                               :Passenger Coach
 STR_NAME_SUFFIX_INGOT_CAR                                       :Ingot Carriers
 STR_NAME_SUFFIX_INTERMODAL_CAR                                  :Container Wagon
 STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Livestock Wagon
-STR_NAME_SUFFIX_LOG_CAR                                         :Timber Wagon
+# Timber Wagon was tried as name, but is confusing as it carries logs but NOT timber
+STR_NAME_SUFFIX_LOG_CAR                                         :Log Carrier
 STR_NAME_SUFFIX_LOW_FLOOR_AUTOMOBILE_CAR                        :Low-floor Vehicle Transporter
 STR_NAME_SUFFIX_LOW_FLOOR_INTERMODAL_CAR                        :Low-floor Container Wagon
 STR_NAME_SUFFIX_MAIL_CAR                                        :Mail Van
