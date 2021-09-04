@@ -123,6 +123,7 @@ from vehicles import tencendur
 from vehicles import thunderer
 from vehicles import tideway
 from vehicles import tin_rocket
+from vehicles import tiny_wonder
 from vehicles import toaster
 from vehicles import tornado
 from vehicles import triton
@@ -483,6 +484,7 @@ def main(disabled=False):
             # ng engines
             cheese_bug,
             bean_feast,
+            tiny_wonder,
             pikel,
             boar_cat,
             # ng railcars

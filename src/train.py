@@ -331,7 +331,7 @@ class Consist(object):
                 "pax_railcar": [1, 2],
             },
             "very_high_speed": {"very_high_speed": [1, 2]},
-            "universal": {"universal": [1]},
+            "universal": {"universal": [1, 2]},
         }
         if self.gen == 1:
             # to ensure a fully playable roster is available for gen 1, force the days offset to 0
