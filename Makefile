@@ -59,6 +59,7 @@ default: html_docs grf
 # bundle needs to clean first to ensure we don't use outdated/cached version info
 bundle_tar: clean tar
 bundle_zip: $(ZIP_FILE)
+release: bundle_tar copy_docs_to_grf_farm
 graphics: $(GRAPHICS_TARGET)
 lang: $(LANG_TARGET)
 nml: $(NML_FILE)
@@ -129,6 +130,10 @@ bundle_src: $(MD5_FILE)
 	$(SED) -i -e 's/^EXPORTED = no/EXPORTED = yes/' $(BUNDLE_DIR)/src/Makefile
 	$(MK_ARCHIVE) --tar --output=$(SOURCE_NAME).tar --base=$(SOURCE_NAME) \
 		`$(FIND_FILES) $(BUNDLE_DIR)/src` $(MD5_FILE)
+
+# this expects to find a '../../grf.farm' path relative to the project, and will fail otherwise
+copy_docs_to_grf_farm:
+	$(_V) $(PYTHON3) src/polar_fox/grf_farm.py $(PROJECT_NAME)
 
 # this is a macOS-specifc install location; the pre-2017 Makefile handled multiple platforms, that could be restored if needed
 # remove first, OpenTTD does not like having the _contents_ of the current file change under it, but will handle a removed-and-replaced file correctly
