@@ -10,7 +10,7 @@ def main(roster_id):
         role="universal",
         role_child_branch_num=1,
         base_track_type="NG",
-        power=500,
+        power=400,
         tractive_effort_coefficient=0.2,
         gen=2,
         random_reverse=True,

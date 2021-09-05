@@ -4,15 +4,16 @@ from train import EngineConsist, DieselEngineUnit
 def main(roster_id):
     consist = EngineConsist(
         roster_id=roster_id,
-        id="locotracteur",
-        base_numeric_id=2960,
-        name="Locotracteur",
+        id="maximillian",
+        base_numeric_id=5910,
+        name="Maximillian",
         role="universal",
         role_child_branch_num=2,
-        power=800,
+        power=900,
         random_reverse=True,
         base_track_type="NG",
-        gen=3,
+        gen=4,
+        intro_date_offset=10,
         sprites_complete=False,
     )
 
