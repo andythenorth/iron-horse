@@ -9,7 +9,7 @@ def main():
         gen=1,
         subtype="A",
         base_track_type="NG",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=CabooseCar, chassis="2_axle_ng_8px")
