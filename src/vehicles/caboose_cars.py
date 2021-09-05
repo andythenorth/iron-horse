@@ -5,9 +5,20 @@ def main():
     # --------------- pony NG ----------------------------------------------------------------------
     consist = CabooseCarConsist(
         roster_id="pony",
+        base_numeric_id=4100,
+        gen=1,
+        subtype="A",
+        base_track_type="NG",
+        sprites_complete=False,
+    )
+
+    consist.add_unit(type=CabooseCar, chassis="2_axle_ng_8px")
+
+    consist = CabooseCarConsist(
+        roster_id="pony",
         base_numeric_id=1290,
         gen=1,
-        subtype="U",
+        subtype="B",
         base_track_type="NG",
         sprites_complete=True,
     )
