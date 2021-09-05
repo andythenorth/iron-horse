@@ -75,6 +75,7 @@ from vehicles import lamia
 from vehicles import lark
 from vehicles import lemon
 from vehicles import little_bear
+from vehicles import locotracteur
 from vehicles import longwater
 from vehicles import magnum_70
 from vehicles import merlion
@@ -487,6 +488,7 @@ def main(disabled=False):
             tiny_wonder,
             pikel,
             boar_cat,
+            locotracteur,
             # ng railcars
             mumble,
             snapper,
