@@ -104,6 +104,10 @@ def main():
         # probably potato / potato tbh
         pool = Pool(processes=num_pool_workers)
         pool.map(run_consist_pipelines, consists)
+        pool.close()
+        pool.join()
+        # wait for first pool job to finish before starting
+        pool = Pool(processes=num_pool_workers)
         pool.map(run_spritelayer_cargo_set_pipelines, spritelayer_cargo_sets)
         pool.close()
         pool.join()
