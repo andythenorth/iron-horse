@@ -2,6 +2,41 @@ from train import BolsterCarConsist, FreightCar
 
 
 def main():
+    # --------------- pony NG ----------------------------------------------------------------------
+
+    consist = BolsterCarConsist(
+        roster_id="pony",
+        base_numeric_id=5950,
+        gen=1,
+        subtype="U",
+        base_track_type="NG",
+        sprites_complete=True,
+    )
+
+    consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
+
+    consist = BolsterCarConsist(
+        roster_id="pony",
+        base_numeric_id=5960,
+        gen=3,
+        subtype="U",
+        base_track_type="NG",
+        sprites_complete=True,
+    )
+
+    consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
+
+    consist = BolsterCarConsist(
+        roster_id="pony",
+        base_numeric_id=5970,
+        gen=4,
+        subtype="U",
+        base_track_type="NG",
+        sprites_complete=True,
+    )
+
+    consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
+
     # --------------- pony ----------------------------------------------------------------------
 
     consist = BolsterCarConsist(
