@@ -14,7 +14,7 @@ def main(roster_id):
         base_track_type="NG",
         gen=3,
         intro_date_offset=15,
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(
