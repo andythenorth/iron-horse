@@ -18,7 +18,7 @@ if not os.path.exists(generated_files_path):
 # this format of import is weird, but I don't want the imported modules directly in the iron horse namespace, I want to nest in spritelayer_cargos
 from spritelayer_cargos import registered_spritelayer_cargos
 from spritelayer_cargos import intermodal_containers
-from spritelayer_cargos import automobiles
+# from spritelayer_cargos import automobiles
 
 # import rosters
 from rosters import registered_rosters
@@ -28,7 +28,7 @@ from vehicles import numeric_id_defender
 
 # import wagons
 # from vehicles import alignment_cars
-from vehicles import automobile_cars
+# from vehicles import automobile_cars
 from vehicles import bolster_cars
 from vehicles import box_cars
 from vehicles import bulkhead_flat_cars
@@ -41,7 +41,7 @@ from vehicles import coil_cars_uncovered
 from vehicles import covered_hopper_cars
 from vehicles import cryo_tank_cars
 from vehicles import curtain_side_box_cars
-from vehicles import double_deck_automobile_cars
+# from vehicles import double_deck_automobile_cars
 from vehicles import dump_cars
 from vehicles import dump_cars_high_side
 from vehicles import edibles_tank_cars
@@ -57,7 +57,7 @@ from vehicles import ingot_cars
 from vehicles import intermodal_cars
 from vehicles import livestock_cars
 from vehicles import log_cars
-from vehicles import low_floor_automobile_cars
+# from vehicles import low_floor_automobile_cars
 from vehicles import low_floor_intermodal_cars
 from vehicles import mail_cars
 from vehicles import torpedo_cars
@@ -260,14 +260,14 @@ def main():
 
     # spritelayer cargos
     intermodal_containers.main()
-    automobiles.main()
+    # automobiles.main()
 
     # wagons
     """
     # only comment in if needed for debugging
     alignment_cars.main()
     """
-    automobile_cars.main()
+    # automobile_cars.main()
     bolster_cars.main()
     box_cars.main()
     bulkhead_flat_cars.main()
@@ -280,7 +280,7 @@ def main():
     covered_hopper_cars.main()
     cryo_tank_cars.main()
     curtain_side_box_cars.main()
-    double_deck_automobile_cars.main()
+    # double_deck_automobile_cars.main()
     dump_cars.main()
     dump_cars_high_side.main()
     edibles_tank_cars.main()
@@ -296,7 +296,7 @@ def main():
     intermodal_cars.main()
     livestock_cars.main()
     log_cars.main()
-    low_floor_automobile_cars.main()
+    # low_floor_automobile_cars.main()
     low_floor_intermodal_cars.main()
     mail_cars.main()
     ore_hopper_cars.main()

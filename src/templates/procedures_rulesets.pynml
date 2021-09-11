@@ -1,3 +1,4 @@
+<tal:hide_automobiles replace="nothing">
 <tal:ruleset define="first 0; last 1;">
     // automobile transporter articulated permanent twin set (no default single unit required)
     <!--! first / last; NOTE use of position_in_articulated_veh not position_in_vehid_chain -->
@@ -74,6 +75,7 @@
         return switch_graphics_automobile_transporter_ruleset_4_unit_sets_modulo_num_units_in_consist_4;
     }
 </tal:ruleset>
+</tal:hide_automobiles>
 
 <tal:ruleset define="default 0; first 1; last 2;">
     // intermodal platform 2 unit position switches

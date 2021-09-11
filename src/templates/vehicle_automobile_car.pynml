@@ -85,3 +85,4 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_colour_mapping, vehicle_is_flipp
 
 <tal:include metal:use-macro="load: properties.pynml" />
 
+

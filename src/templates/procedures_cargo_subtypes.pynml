@@ -1,5 +1,6 @@
 <!--! this is hard-coded  to vehicles (VEHI) cargo as of May 2021
       if it needs to be extensible, make it loop over a list of per-cargo subtype strings -->
+<tal:hide_cargo_subtype_vehi replace="nothing">
 switch (FEAT_TRAINS, SELF, switch_cargo_subtype_text_VEHI, cargo_subtype) {
     0: return string(STR_CARGO_SUBTYPE_VEHI_0);
     1: return string(STR_CARGO_SUBTYPE_VEHI_1);
@@ -10,3 +11,4 @@ switch (FEAT_TRAINS, SELF, switch_cargo_subtype_text, cargo_type_in_veh) {
     VEHI: switch_cargo_subtype_text_VEHI;
     return CB_RESULT_NO_TEXT;
 }
+</tal:hide_cargo_subtype_vehi>
