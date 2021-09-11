@@ -28,8 +28,8 @@ def main(roster_id):
     )
 
     consist.description = (
-        """ """
+        """You could say it's twice the train. A god amongst engines."""
     )
-    consist.foamer_facts = """ """
+    consist.foamer_facts = """Fairlie locomotives"""
 
     return consist
