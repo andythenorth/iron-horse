@@ -2,10 +2,43 @@ Changelog
 =========
 
 -------------
+2.27.0 Release
+-------------
+
+*Changes*
+
+- adjusted narrow gauge engine roster
+    - added Thor, Gargouille and Maximillian as larger narrow gauge engines, with a little more power than the smaller engines
+    - adjusted stats of Cheese Bug, Bean Feast, Pikel and Boar Cat to differentiate from the larger engines
+- added wagons
+    - Potash Hoppers (refit potash only)
+    - narrow gauge Bolster Wagons
+    - narrow gauge Covered Hoppers
+    - narrow gauge Cryo Tankers
+    - narrow cauge Ore Hoppers
+    - narrow gauge small Brake Van
+- renamed Timber Wagon to Log Carrier as the cargo it carries is 'logs in FIRS', 'timber' being a different cargo
+- reduced capacity of Edibles Tanker and Refrigerated Van to reflect higher speeds (now matches Expess Vans)
+- sprite support for sugarcane cargo (2TallTyler)
+
+*Fixes*
+
+- door sprites were wrong in | view for gen 5D and 6D sliding wall vans
+- pixels were missing for Snapper, Mumble, and narrow gauge railcar trailers
+- gen 2 mineral wagons, hoppers and ore hoppers weren't supposed to be included, as gen 1 and 2 stats overlap for these wagons
+-
+
+*Docs*
+
+- (fix) sprites were misaligned in Train Whack mini-game
+
+
+-------------
 2.26.0 Release
 -------------
 
 *Changes*
+
 - better electrified railtype compatibility for electro-diesel (bi-mode) vehicles
     - these vehicles should now use 'electrified' power and visual effects on a wider range of electrified railtypes
     - previously they only worked correctly for railtypes with 'ELRL' label
@@ -13,6 +46,7 @@ Changelog
     - tested as working with NuTracks 2
 
 *Fixes*
+
 - electro-diesel (bi-mode) railcars now show power on diesel in buy menu, not power on electric, consistent with other bi-mode vehicles
 
 
@@ -21,12 +55,14 @@ Changelog
 -------------
 
 *Changes*
+
 - provide earlier (available 1860) versions for some wagons
     - Mineral Wagon
     - Hopper
     - Ore Hopper
 
 *Fixes*
+
 - railbuses should not be available in simplified gameplay
 
 
@@ -37,6 +73,7 @@ Changelog
 "The world would not make a racehorse of a donkey." - proverb
 
 *Changes*
+
 - added 3 railbuses
     - Clipper, 180hp, 31 passengers, available around 1956
     - Skipper, 225hp, 36 passengers, available around 1986
@@ -44,6 +81,7 @@ Changelog
 - minor run-cost tweaks to railcars to balance against railbuses
 
 *Translations*
+
 - translation updates (thanks translators)
 
 
