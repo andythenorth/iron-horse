@@ -2493,6 +2493,19 @@ class HopperCarRockConsist(HopperCarConsistBase):
         self._joker = True
 
 
+class HopperCarSkipConsist(HopperCarConsistBase):
+    """
+    Dedicated (narrow gauge) skip variant of hoppers
+    Defaults to rock/stone-type cargos.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "skip_car"
+        super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos["hopper_rock"]
+        self._joker = True
+
+
 class IngotCarConsist(CarConsist):
     """
     Dedicated car for steel / iron ingots. A steel mill ingot buggy, not a standard railcar. No other refits.
@@ -3105,6 +3118,32 @@ class PassengerSuburbanCarConsist(PassengerCarConsistBase):
         }
         self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(
             spriterow_group_mappings, consist_ruleset="pax_cars"
+        )
+
+
+class PeatCarConsist(CarConsist):
+    """
+    Specialist transporter (narrow gauge bin) for peat
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "peat_car"
+        super().__init__(**kwargs)
+        self.class_refit_groups = []  # no classes, use explicit labels
+        # limited refits by design eh
+        self.label_refits_allowed = ["PEAT"]
+        self.label_refits_disallowed = []
+        self.default_cargos = ["PEAT"]
+        self._intro_date_days_offset = (
+            global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
+        )
+        # allow flipping, used to flip company colour
+        self.allow_flip = True
+        self.cc_num_to_randomise = 2
+        # Graphics configuration
+        #self.gestalt_graphics = GestaltGraphicsVisibleCargo(piece="tree_length_logs")
+        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
+            recolour_maps=graphics_constants.potash_hopper_car_livery_recolour_maps
         )
 
 

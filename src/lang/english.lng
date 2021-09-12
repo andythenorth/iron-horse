@@ -94,6 +94,7 @@ STR_NAME_SUFFIX_MAIL_CAR                                        :Mail Van
 STR_NAME_SUFFIX_OPEN_CAR                                        :Open Wagon
 STR_NAME_SUFFIX_ORE_HOPPER_CAR                                  :Ore Hopper
 STR_NAME_SUFFIX_PASSENGER_CAR                                   :Passenger Coach
+STR_NAME_SUFFIX_PEAT_CAR                                        :Peat Wagons
 STR_NAME_SUFFIX_PELLET_HOPPER_CAR                               :Pellet Hopper
 STR_NAME_SUFFIX_PLATE_CAR                                       :Plate Wagon
 STR_NAME_SUFFIX_POTASH_HOPPER_CAR                               :Potash Hopper
@@ -104,6 +105,7 @@ STR_NAME_SUFFIX_REEFER_CAR                                      :Refrigerated Va
 STR_NAME_SUFFIX_RESTAURANT_CAR                                  :Restaurant Car
 STR_NAME_SUFFIX_ROCK_HOPPER_CAR                                 :Rock Hopper
 STR_NAME_SUFFIX_SILO_CAR                                        :Silo Wagon
+STR_NAME_SUFFIX_SKIP_CAR                                        :Skips
 STR_NAME_SUFFIX_SLAG_LADLE_CAR                                  :Slag Ladle Wagon
 STR_NAME_SUFFIX_SLIDING_ROOF_CAR                                :Sliding Roof Van
 STR_NAME_SUFFIX_SLIDING_WALL_CAR                                :Sliding Wall Van
