@@ -14,6 +14,6 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=CoilBuggyCar, chassis="buffers_only_ng_8px")
+    consist.add_unit(type=CoilBuggyCar, chassis="empty_8px")
 
-    consist.add_unit(type=CoilBuggyCar, chassis="buffers_only_ng_8px")
+    consist.add_unit(type=CoilBuggyCar, chassis="empty_8px")
