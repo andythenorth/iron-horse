@@ -3132,6 +3132,32 @@ class PlateCarConsist(CarConsist):
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(piece="flat")
 
 
+class PotashHopperCarConsist(CarConsist):
+    """
+    Dedicated covered hopper car for potash.  No other cargos.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "potash_hopper_car"
+        super().__init__(**kwargs)
+        self.class_refit_groups = []  # no classes, use explicit labels
+        self.label_refits_allowed = ["POTA"]
+        self.label_refits_disallowed = []
+        self.default_cargos = []
+        self._loading_speed_multiplier = 1.5
+        self.buy_cost_adjustment_factor = 1.2
+        self._intro_date_days_offset = (
+            global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
+        )
+        self._joker = True
+        # allow flipping, used to flip company colour
+        self.allow_flip = True
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
+            recolour_maps=graphics_constants.potash_hopper_car_livery_recolour_maps
+        )
+
+
 class ReeferCarConsist(CarConsist):
     """
     Refrigerated cargos.

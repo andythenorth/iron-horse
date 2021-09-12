@@ -238,6 +238,30 @@ pellet_hopper_car_livery_recolour_maps = (
     ("DFLT", {136: 16, 137: 17, 138: 18, 139: 19, 140: 20, 141: 21, 142: 22, 143: 23}),
 )
 
+potash_hopper_car_livery_recolour_maps = (  # only one livery provided here, black
+    (
+        "DFLT",
+        {
+            136: 24,
+            137: 25,
+            138: 98,
+            139: 28,
+            140: 100,
+            141: 101,
+            142: 94,
+            143: 95,
+            154: 24,
+            155: 25,
+            156: 98,
+            157: 28,
+            158: 100,
+            159: 101,
+            160: 94,
+            161: 95,
+        },
+    ),
+)
+
 product_tank_car_livery_recolour_maps = (
     ("DFLT", {136: 16, 137: 18, 138: 19, 139: 20, 140: 21, 141: 22, 142: 23, 143: 14}),
 )

@@ -52,6 +52,7 @@ buy_menu_sort_order_wagons = [
     "double_deck_automobile_car",
     "log_car",
     "carbon_black_hopper_car",
+    "potash_hopper_car",
     #'well_car',
     "torpedo_car",
     "coil_buggy_car",
