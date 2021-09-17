@@ -2149,6 +2149,10 @@ class CryoTankCarConsist(CarConsist):
         )
         # allow flipping, used to flip company colour
         self.allow_flip = True
+        # type-specific wagon colour randomisation
+        self.auto_colour_randomisation_strategy_num = (
+            1  # single base colour unless flipped
+        )
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             recolour_maps=polar_fox.constants.cryo_tanker_livery_recolour_maps
