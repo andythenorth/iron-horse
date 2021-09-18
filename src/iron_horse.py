@@ -102,11 +102,6 @@ def get_active_rosters():
     return active_rosters
 
 
-def get_spritelayer_cargos():
-    # just a silly method for naming consistency, probably a bad pattern
-    return registered_spritelayer_cargos
-
-
 def get_spritelayer_cargos_flattened_by_set():
     # get a flattened list of the spritelayer cargo sets, which are usually nested inside spritelayer cargos
     # this is primarily just for convenience when calling a graphics multiprocessing pool

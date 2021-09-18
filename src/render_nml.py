@@ -77,7 +77,7 @@ def main():
         os.path.join(generated_files_path, "iron-horse.nml"), "w", "utf8"
     )
 
-    spritelayer_cargos = iron_horse.get_spritelayer_cargos()
+    spritelayer_cargos = iron_horse.registered_spritelayer_cargos
     consists = iron_horse.get_consists_in_buy_menu_order()
 
     header_items = [
