@@ -141,25 +141,20 @@ class Pipeline(object):
 
         # save a tmp file first and compare to existing file (if any)
         # this prevents destroying the nmlc sprite cache with every graphics run by needlessly replacing the files
-        # !! this should arguably be moved into pixa
+        # !! maybe this should be moved into pixa?
+        if os.path.exists(output_path_tmp):
+            # tmp path should not exist, if it does we either have
+            # - the same filename being written more than once, in multiprocessing pool, which suggests duplicates in some list of items to be rendered
+            # - artefacts from a previous failed compile
+            # either way, raise, because this was a previous source of intermittent compile failures
+            # (problem was tmp file being deleted by one pool worker whilst another pool worker was still trying to work with it)
+            raise(BaseException("Exists:", output_path_tmp))
         if os.path.exists(output_path):
             # save tmp file
-            try:
-                spritesheet.save(output_path_tmp)
-                if 'low_floor' in output_path_tmp:
-                    print("saving", output_path_tmp)
-            except:
-                # puzzling failures here, add some exception handling to try and resolve
-                raise(BaseException("Failed saving", output_path_tmp))
-            # only save final output file if an existing file doesn't match tmp
-            try:
-                if not filecmp.cmp(output_path, output_path_tmp):
-                    print("replacing", output_path)
-                    spritesheet.save(output_path)
-            except:
-                # puzzling failures here, add some exception handling to try and resolve
-                input_image.show()
-                raise(BaseException("Failed comparing", output_path_tmp))
+            spritesheet.save(output_path_tmp)
+            if not filecmp.cmp(output_path, output_path_tmp):
+                print("replacing", output_path)
+                spritesheet.save(output_path)
             os.remove(output_path_tmp)
         else:
             spritesheet.save(output_path)
