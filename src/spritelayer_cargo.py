@@ -57,15 +57,19 @@ class CargoSetBase(object):
                 platform_type=platform_type,
                 length=self.length,
             )
-            registered = False
+            # the spritelayer_cargo may already be registered, this is a valid side effect of the implementation
+            # but we don't want to register the same spritelayer_cargo multiple times (waste of compile time and can cause bugs with multiprocessing)
+            already_registered = False
             for registered_spritelayer_cargo in registered_spritelayer_cargos:
                 if registered_spritelayer_cargo.id == spritelayer_cargo.id:
+                    already_registered = True
                     spritelayer_cargo = registered_spritelayer_cargo
-                    registered = True
-            if registered == False:
+                    break
+            if already_registered == False:
+                #print("register_cargo_set", platform_type, spritelayer_cargo.id, spritelayer_cargo.__class__.__name__)
                 registered_spritelayer_cargos.append(spritelayer_cargo)
             spritelayer_cargo.cargo_sets.append(self)
-            # keep a reference around to the spritelayer cargo for convenience
+            # keep an updated reference around to the spritelayer cargo for convenience
             self.spritelayer_cargo = spritelayer_cargo
 
     @property
