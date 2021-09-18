@@ -102,22 +102,6 @@ def get_active_rosters():
     return active_rosters
 
 
-def get_spritelayer_cargos_flattened_by_set():
-    # get a flattened list of the spritelayer cargo sets, which are usually nested inside spritelayer cargos
-    # this is primarily just for convenience when calling a graphics multiprocessing pool
-    # !! CONVERT THIS TO RETURN A LIST OF 2-TUPLES (cargo_set, spritelayer_cargo)
-    # !! THIS IS BECAUSE cargo_sets are not reused across spritelayer_cargos, and rely on the spritelayer_cargo for configuration items like platform height
-    # !! which are inherent to the spritelayer_cargo object, but affect the contextual rendering of the cargo_set
-    # !! unpack the 2-tuples in the pipeline
-    # !! this should just be in render_graphics, it's only used once; also consider moving get_spritelayer_cargos somewhere else
-    result = []
-    for spritelayer_cargo in registered_spritelayer_cargos:
-        for cargo_set in spritelayer_cargo.cargo_sets:
-            result.append((spritelayer_cargo, cargo_set))
-            #print(cargo_set.spritelayer_cargo.id, cargo_set.spritelayer_cargo.platform_type)
-    return result
-
-
 def get_consists_in_buy_menu_order():
     consists = []
     # first compose the buy menu order list

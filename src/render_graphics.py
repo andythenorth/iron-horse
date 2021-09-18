@@ -92,7 +92,15 @@ def main():
     hint_file.close()
 
     consists = iron_horse.get_consists_in_buy_menu_order()
-    spritelayer_cargo_set_pairs = iron_horse.get_spritelayer_cargos_flattened_by_set()
+
+    # get a list of 2-tuple pairs for spritelayer cargos + cargo sets
+    # a list format is wanted for convenience with graphics multiprocessing pool
+    # the parent spritelayer_cargo object must be passed with the cargo set as cargo sets have render-time properties which change according to context
+    # but cargo_sets are global and reused across spritelayer_cargos, so they can't just store a single reference to their spritelayer_cargo parent
+    spritelayer_cargo_set_pairs = []
+    for spritelayer_cargo in iron_horse.registered_spritelayer_cargos:
+        for cargo_set in spritelayer_cargo.cargo_sets:
+            spritelayer_cargo_set_pairs.append((spritelayer_cargo, cargo_set))
 
     if use_multiprocessing == False:
         for spritelayer_cargo_set_pair in spritelayer_cargo_set_pairs:
