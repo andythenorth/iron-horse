@@ -38,6 +38,7 @@ buy_menu_sort_order_wagons = [
     "skip_car",
     "tank_car",
     "product_tank_car",
+    "pressure_tank_car",
     "cryo_tank_car",
     "covered_hopper_car",
     "grain_hopper_car",

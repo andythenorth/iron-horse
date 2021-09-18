@@ -1,0 +1,282 @@
+// add the units to articulated consist
+switch (FEAT_TRAINS, SELF, torpedo_car_pony_gen_4U_articulated_cb_switch, extra_callback_info1) {
+        0: return torpedo_car_pony_gen_4U;
+        1: return torpedo_car_pony_gen_4U_1;
+        2: return torpedo_car_pony_gen_4U_2;
+  return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+spriteset(torpedo_car_pony_gen_4U_ss_first_unit, "generated/graphics/torpedo_car_pony_gen_4U.png") {
+    spriteset_template_asymmetric_unreversed_3_8_unflipped(10,NOANIM)
+}
+spriteset(torpedo_car_pony_gen_4U_ss_last_unit, "generated/graphics/torpedo_car_pony_gen_4U.png") {
+    spriteset_template_asymmetric_reversed_3_8_unflipped(10,NOANIM)
+}
+spriteset(torpedo_car_pony_gen_4U_ss_middle_unit_empty, "generated/graphics/torpedo_car_pony_gen_4U.png") {
+    spriteset_template_asymmetric_unreversed_3_8_unflipped(40,NOANIM)
+}
+spriteset(torpedo_car_pony_gen_4U_ss_middle_unit_loading, "generated/graphics/torpedo_car_pony_gen_4U.png") {
+    spriteset_template_asymmetric_unreversed_3_8_unflipped(70,NOANIM)
+}
+spriteset(torpedo_car_pony_gen_4U_ss_middle_unit_loaded, "generated/graphics/torpedo_car_pony_gen_4U.png") {
+    spriteset_template_asymmetric_unreversed_3_8_unflipped(100,NOANIM)
+}
+switch (FEAT_TRAINS, SELF, torpedo_car_pony_gen_4U_switch_graphics_percent_loaded, cargo_count*100/cargo_capacity) {
+        0: return torpedo_car_pony_gen_4U_ss_middle_unit_empty;
+        1..99: return torpedo_car_pony_gen_4U_ss_middle_unit_loading;
+    return torpedo_car_pony_gen_4U_ss_middle_unit_loaded;
+}
+switch (FEAT_TRAINS, SELF, torpedo_car_pony_gen_4U_switch_graphics_vehicle, position_in_articulated_veh) {
+    0: return torpedo_car_pony_gen_4U_ss_first_unit;
+    1: return torpedo_car_pony_gen_4U_switch_graphics_percent_loaded;
+    2: return torpedo_car_pony_gen_4U_ss_last_unit;
+}
+// buy menu graphics chain
+spriteset(torpedo_car_pony_gen_4U_ss_purchase, "generated/graphics/torpedo_car_pony_gen_4U.png") {
+    spriteset_template_purchase_default(360,10,49,-24,NOANIM)
+}
+switch (FEAT_TRAINS, SELF, torpedo_car_pony_gen_4U_switch_graphics_purchase, 0) {
+    return torpedo_car_pony_gen_4U_ss_purchase;
+}
+switch (FEAT_TRAINS, SELF, torpedo_car_pony_gen_4U_switch_set_layers_register_more_sprites, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
+    return torpedo_car_pony_gen_4U_switch_graphics_vehicle;
+}
+switch (FEAT_TRAINS, SELF, torpedo_car_pony_gen_4U_switch_graphics, getbits(extra_callback_info1, 8, 8)) {
+    0: return torpedo_car_pony_gen_4U_switch_set_layers_register_more_sprites;
+    return switch_graphics_layer_tail_light_12px;
+}
+switch (FEAT_TRAINS, SELF, torpedo_car_pony_gen_4U_switch_cargo_capacity,
+        [STORE_TEMP(17, 0), STORE_TEMP(25, 1), STORE_TEMP(33, 2), STORE_TEMP(44, 3)]) {
+    return switch_cargo_capacity();
+}
+        switch (FEAT_TRAINS, PARENT, torpedo_car_pony_gen_4U_switch_running_cost_factor, 1) {
+            return 613;
+        }
+item(FEAT_TRAINS, torpedo_car_pony_gen_4U, 4080) {
+    property {
+        name:                           string(STR_NAME_CONSIST_PLAIN, string(STR_NAME_SUFFIX_TORPEDO_CAR));
+        climates_available:             NO_CLIMATE; // nml constant
+        engine_class:                   ENGINE_CLASS_STEAM;
+        introduction_date:              date(1960, 5, 1);
+        cargo_capacity:                 25;
+        sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+        power:                          0hp;
+            speed:                          75mph;
+        weight:                         96ton;
+        tractive_effort_coefficient:    0.3;
+        cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+        running_cost_base:              RUNNING_COST_DIESEL;
+        running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+        refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+        refittable_cargo_classes:       bitmask();
+        non_refittable_cargo_classes:   bitmask(); // don't set non-refittable classes, increases likelihood of breaking cargo support
+        cargo_allow_refit:              [IRON];
+        cargo_disallow_refit:           [];
+            default_cargo_type:             IRON;
+        misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT); // nml constants
+        model_life:                     30;
+        retire_early:                   -10;
+        reliability_decay:              20; // default value
+        vehicle_life:                   40;
+        length:                         3;
+        track_type:                     RAIL;
+        effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+    }
+    graphics {
+        default:                        torpedo_car_pony_gen_4U_switch_graphics;
+        purchase:                       torpedo_car_pony_gen_4U_switch_graphics_purchase;
+        cost_factor:                    224; // CB used as it is capped to max 32k, prop is only 255
+        running_cost_factor:            torpedo_car_pony_gen_4U_switch_running_cost_factor; // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+        purchase_running_cost_factor:   613; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                colour_mapping:                 switch_colour_mapping(1, 0, 1);
+                purchase_colour_mapping:        switch_colour_mapping_purchase(1, 0, 1);
+            cargo_capacity:                 torpedo_car_pony_gen_4U_switch_cargo_capacity;
+            purchase_cargo_capacity:        torpedo_car_pony_gen_4U_switch_cargo_capacity;
+            loading_speed:                  7;
+            articulated_part: torpedo_car_pony_gen_4U_articulated_cb_switch;
+    }
+}
+    if (param[1]==0 && param_simplified_gameplay==0) {
+        item(FEAT_TRAINS, torpedo_car_pony_gen_4U, 4080) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+    }
+spriteset(torpedo_car_pony_gen_4U_1_ss_first_unit, "generated/graphics/torpedo_car_pony_gen_4U.png") {
+    spriteset_template_asymmetric_unreversed_6_8_unflipped(10,NOANIM)
+}
+spriteset(torpedo_car_pony_gen_4U_1_ss_last_unit, "generated/graphics/torpedo_car_pony_gen_4U.png") {
+    spriteset_template_asymmetric_reversed_6_8_unflipped(10,NOANIM)
+}
+spriteset(torpedo_car_pony_gen_4U_1_ss_middle_unit_empty, "generated/graphics/torpedo_car_pony_gen_4U.png") {
+    spriteset_template_asymmetric_unreversed_6_8_unflipped(40,NOANIM)
+}
+spriteset(torpedo_car_pony_gen_4U_1_ss_middle_unit_loading, "generated/graphics/torpedo_car_pony_gen_4U.png") {
+    spriteset_template_asymmetric_unreversed_6_8_unflipped(70,NOANIM)
+}
+spriteset(torpedo_car_pony_gen_4U_1_ss_middle_unit_loaded, "generated/graphics/torpedo_car_pony_gen_4U.png") {
+    spriteset_template_asymmetric_unreversed_6_8_unflipped(100,NOANIM)
+}
+switch (FEAT_TRAINS, SELF, torpedo_car_pony_gen_4U_1_switch_graphics_percent_loaded, cargo_count*100/cargo_capacity) {
+        0: return torpedo_car_pony_gen_4U_1_ss_middle_unit_empty;
+        1..99: return torpedo_car_pony_gen_4U_1_ss_middle_unit_loading;
+    return torpedo_car_pony_gen_4U_1_ss_middle_unit_loaded;
+}
+switch (FEAT_TRAINS, SELF, torpedo_car_pony_gen_4U_1_switch_graphics_vehicle, position_in_articulated_veh) {
+    0: return torpedo_car_pony_gen_4U_1_ss_first_unit;
+    1: return torpedo_car_pony_gen_4U_1_switch_graphics_percent_loaded;
+    2: return torpedo_car_pony_gen_4U_1_ss_last_unit;
+}
+// buy menu graphics chain
+spriteset(torpedo_car_pony_gen_4U_1_ss_purchase, "generated/graphics/torpedo_car_pony_gen_4U.png") {
+    spriteset_template_purchase_default(360,10,49,-24,NOANIM)
+}
+switch (FEAT_TRAINS, SELF, torpedo_car_pony_gen_4U_1_switch_graphics_purchase, 0) {
+    return torpedo_car_pony_gen_4U_1_ss_purchase;
+}
+switch (FEAT_TRAINS, SELF, torpedo_car_pony_gen_4U_1_switch_set_layers_register_more_sprites, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
+    return torpedo_car_pony_gen_4U_1_switch_graphics_vehicle;
+}
+switch (FEAT_TRAINS, SELF, torpedo_car_pony_gen_4U_1_switch_graphics, getbits(extra_callback_info1, 8, 8)) {
+    0: return torpedo_car_pony_gen_4U_1_switch_set_layers_register_more_sprites;
+    return switch_graphics_layer_tail_light_24px;
+}
+switch (FEAT_TRAINS, SELF, torpedo_car_pony_gen_4U_1_switch_cargo_capacity,
+        [STORE_TEMP(34, 0), STORE_TEMP(50, 1), STORE_TEMP(66, 2), STORE_TEMP(88, 3)]) {
+    return switch_cargo_capacity();
+}
+        switch (FEAT_TRAINS, PARENT, torpedo_car_pony_gen_4U_1_switch_running_cost_factor, 1) {
+            return 613;
+        }
+item(FEAT_TRAINS, torpedo_car_pony_gen_4U_1, 4081) {
+    property {
+        name:                           string(STR_NAME_CONSIST_PLAIN, string(STR_NAME_SUFFIX_TORPEDO_CAR));
+        climates_available:             NO_CLIMATE; // nml constant
+        engine_class:                   ENGINE_CLASS_STEAM;
+        introduction_date:              date(1960, 5, 1);
+        cargo_capacity:                 50;
+        sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+        power:                          0hp;
+            speed:                          75mph;
+        weight:                         96ton;
+        tractive_effort_coefficient:    0.3;
+        cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+        running_cost_base:              RUNNING_COST_DIESEL;
+        running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+        refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+        refittable_cargo_classes:       bitmask();
+        non_refittable_cargo_classes:   bitmask(); // don't set non-refittable classes, increases likelihood of breaking cargo support
+        cargo_allow_refit:              [IRON];
+        cargo_disallow_refit:           [];
+            default_cargo_type:             IRON;
+        misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT); // nml constants
+        model_life:                     30;
+        retire_early:                   -10;
+        reliability_decay:              20; // default value
+        vehicle_life:                   40;
+        length:                         6;
+        track_type:                     RAIL;
+        effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+    }
+    graphics {
+        default:                        torpedo_car_pony_gen_4U_1_switch_graphics;
+        purchase:                       torpedo_car_pony_gen_4U_1_switch_graphics_purchase;
+        cost_factor:                    224; // CB used as it is capped to max 32k, prop is only 255
+        running_cost_factor:            torpedo_car_pony_gen_4U_1_switch_running_cost_factor; // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+        purchase_running_cost_factor:   613; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                colour_mapping:                 switch_colour_mapping(1, 0, 1);
+                purchase_colour_mapping:        switch_colour_mapping_purchase(1, 0, 1);
+            cargo_capacity:                 torpedo_car_pony_gen_4U_1_switch_cargo_capacity;
+            purchase_cargo_capacity:        torpedo_car_pony_gen_4U_1_switch_cargo_capacity;
+            loading_speed:                  7;
+    }
+}
+spriteset(torpedo_car_pony_gen_4U_2_ss_first_unit, "generated/graphics/torpedo_car_pony_gen_4U.png") {
+    spriteset_template_asymmetric_unreversed_3_8_unflipped(10,NOANIM)
+}
+spriteset(torpedo_car_pony_gen_4U_2_ss_last_unit, "generated/graphics/torpedo_car_pony_gen_4U.png") {
+    spriteset_template_asymmetric_reversed_3_8_unflipped(10,NOANIM)
+}
+spriteset(torpedo_car_pony_gen_4U_2_ss_middle_unit_empty, "generated/graphics/torpedo_car_pony_gen_4U.png") {
+    spriteset_template_asymmetric_unreversed_3_8_unflipped(40,NOANIM)
+}
+spriteset(torpedo_car_pony_gen_4U_2_ss_middle_unit_loading, "generated/graphics/torpedo_car_pony_gen_4U.png") {
+    spriteset_template_asymmetric_unreversed_3_8_unflipped(70,NOANIM)
+}
+spriteset(torpedo_car_pony_gen_4U_2_ss_middle_unit_loaded, "generated/graphics/torpedo_car_pony_gen_4U.png") {
+    spriteset_template_asymmetric_unreversed_3_8_unflipped(100,NOANIM)
+}
+switch (FEAT_TRAINS, SELF, torpedo_car_pony_gen_4U_2_switch_graphics_percent_loaded, cargo_count*100/cargo_capacity) {
+        0: return torpedo_car_pony_gen_4U_2_ss_middle_unit_empty;
+        1..99: return torpedo_car_pony_gen_4U_2_ss_middle_unit_loading;
+    return torpedo_car_pony_gen_4U_2_ss_middle_unit_loaded;
+}
+switch (FEAT_TRAINS, SELF, torpedo_car_pony_gen_4U_2_switch_graphics_vehicle, position_in_articulated_veh) {
+    0: return torpedo_car_pony_gen_4U_2_ss_first_unit;
+    1: return torpedo_car_pony_gen_4U_2_switch_graphics_percent_loaded;
+    2: return torpedo_car_pony_gen_4U_2_ss_last_unit;
+}
+// buy menu graphics chain
+spriteset(torpedo_car_pony_gen_4U_2_ss_purchase, "generated/graphics/torpedo_car_pony_gen_4U.png") {
+    spriteset_template_purchase_default(360,10,49,-24,NOANIM)
+}
+switch (FEAT_TRAINS, SELF, torpedo_car_pony_gen_4U_2_switch_graphics_purchase, 0) {
+    return torpedo_car_pony_gen_4U_2_ss_purchase;
+}
+switch (FEAT_TRAINS, SELF, torpedo_car_pony_gen_4U_2_switch_set_layers_register_more_sprites, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
+    return torpedo_car_pony_gen_4U_2_switch_graphics_vehicle;
+}
+switch (FEAT_TRAINS, SELF, torpedo_car_pony_gen_4U_2_switch_graphics, getbits(extra_callback_info1, 8, 8)) {
+    0: return torpedo_car_pony_gen_4U_2_switch_set_layers_register_more_sprites;
+    return switch_graphics_layer_tail_light_12px;
+}
+switch (FEAT_TRAINS, SELF, torpedo_car_pony_gen_4U_2_switch_cargo_capacity,
+        [STORE_TEMP(17, 0), STORE_TEMP(25, 1), STORE_TEMP(33, 2), STORE_TEMP(44, 3)]) {
+    return switch_cargo_capacity();
+}
+        switch (FEAT_TRAINS, PARENT, torpedo_car_pony_gen_4U_2_switch_running_cost_factor, 1) {
+            return 613;
+        }
+item(FEAT_TRAINS, torpedo_car_pony_gen_4U_2, 4082) {
+    property {
+        name:                           string(STR_NAME_CONSIST_PLAIN, string(STR_NAME_SUFFIX_TORPEDO_CAR));
+        climates_available:             NO_CLIMATE; // nml constant
+        engine_class:                   ENGINE_CLASS_STEAM;
+        introduction_date:              date(1960, 5, 1);
+        cargo_capacity:                 25;
+        sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+        power:                          0hp;
+            speed:                          75mph;
+        weight:                         96ton;
+        tractive_effort_coefficient:    0.3;
+        cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+        running_cost_base:              RUNNING_COST_DIESEL;
+        running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+        refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+        refittable_cargo_classes:       bitmask();
+        non_refittable_cargo_classes:   bitmask(); // don't set non-refittable classes, increases likelihood of breaking cargo support
+        cargo_allow_refit:              [IRON];
+        cargo_disallow_refit:           [];
+            default_cargo_type:             IRON;
+        misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT); // nml constants
+        model_life:                     30;
+        retire_early:                   -10;
+        reliability_decay:              20; // default value
+        vehicle_life:                   40;
+        length:                         3;
+        track_type:                     RAIL;
+        effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+    }
+    graphics {
+        default:                        torpedo_car_pony_gen_4U_2_switch_graphics;
+        purchase:                       torpedo_car_pony_gen_4U_2_switch_graphics_purchase;
+        cost_factor:                    224; // CB used as it is capped to max 32k, prop is only 255
+        running_cost_factor:            torpedo_car_pony_gen_4U_2_switch_running_cost_factor; // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+        purchase_running_cost_factor:   613; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                colour_mapping:                 switch_colour_mapping(1, 0, 1);
+                purchase_colour_mapping:        switch_colour_mapping_purchase(1, 0, 1);
+            cargo_capacity:                 torpedo_car_pony_gen_4U_2_switch_cargo_capacity;
+            purchase_cargo_capacity:        torpedo_car_pony_gen_4U_2_switch_cargo_capacity;
+            loading_speed:                  7;
+    }
+}

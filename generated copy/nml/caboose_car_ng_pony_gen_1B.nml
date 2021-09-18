@@ -1,0 +1,128 @@
+// default graphics chain
+    spriteset(caboose_car_ng_pony_gen_1B_ss_0_unflipped, "generated/graphics/caboose_car_ng_pony_gen_1B.png") {
+        spriteset_template_symmetric_unreversed_4_8_unflipped(10,NOANIM)
+    }
+    spriteset(caboose_car_ng_pony_gen_1B_ss_0_flipped, "generated/graphics/caboose_car_ng_pony_gen_1B.png") {
+        spriteset_template_symmetric_unreversed_4_8_flipped(40,NOANIM)
+    }
+    switch (FEAT_TRAINS, SELF, caboose_car_ng_pony_gen_1B_switch_graphics_livery_0, vehicle_is_flipped) {
+        1: return caboose_car_ng_pony_gen_1B_ss_0_flipped;
+        return caboose_car_ng_pony_gen_1B_ss_0_unflipped;
+    }
+    spriteset(caboose_car_ng_pony_gen_1B_ss_1_unflipped, "generated/graphics/caboose_car_ng_pony_gen_1B.png") {
+        spriteset_template_symmetric_unreversed_4_8_unflipped(70,NOANIM)
+    }
+    spriteset(caboose_car_ng_pony_gen_1B_ss_1_flipped, "generated/graphics/caboose_car_ng_pony_gen_1B.png") {
+        spriteset_template_symmetric_unreversed_4_8_flipped(100,NOANIM)
+    }
+    switch (FEAT_TRAINS, SELF, caboose_car_ng_pony_gen_1B_switch_graphics_livery_1, vehicle_is_flipped) {
+        1: return caboose_car_ng_pony_gen_1B_ss_1_flipped;
+        return caboose_car_ng_pony_gen_1B_ss_1_unflipped;
+    }
+    spriteset(caboose_car_ng_pony_gen_1B_ss_2_unflipped, "generated/graphics/caboose_car_ng_pony_gen_1B.png") {
+        spriteset_template_symmetric_unreversed_4_8_unflipped(130,NOANIM)
+    }
+    spriteset(caboose_car_ng_pony_gen_1B_ss_2_flipped, "generated/graphics/caboose_car_ng_pony_gen_1B.png") {
+        spriteset_template_symmetric_unreversed_4_8_flipped(160,NOANIM)
+    }
+    switch (FEAT_TRAINS, SELF, caboose_car_ng_pony_gen_1B_switch_graphics_livery_2, vehicle_is_flipped) {
+        1: return caboose_car_ng_pony_gen_1B_ss_2_flipped;
+        return caboose_car_ng_pony_gen_1B_ss_2_unflipped;
+    }
+    spriteset(caboose_car_ng_pony_gen_1B_ss_3_unflipped, "generated/graphics/caboose_car_ng_pony_gen_1B.png") {
+        spriteset_template_symmetric_unreversed_4_8_unflipped(190,NOANIM)
+    }
+    spriteset(caboose_car_ng_pony_gen_1B_ss_3_flipped, "generated/graphics/caboose_car_ng_pony_gen_1B.png") {
+        spriteset_template_symmetric_unreversed_4_8_flipped(220,NOANIM)
+    }
+    switch (FEAT_TRAINS, SELF, caboose_car_ng_pony_gen_1B_switch_graphics_livery_3, vehicle_is_flipped) {
+        1: return caboose_car_ng_pony_gen_1B_ss_3_flipped;
+        return caboose_car_ng_pony_gen_1B_ss_3_unflipped;
+    }
+switch (FEAT_TRAINS, PARENT, caboose_car_ng_pony_gen_1B_switch_graphics_vehicle, vehicle_type_id) {
+        cheese_bug: return caboose_car_ng_pony_gen_1B_switch_graphics_livery_0;
+        bean_feast: return caboose_car_ng_pony_gen_1B_switch_graphics_livery_1;
+        thor: return caboose_car_ng_pony_gen_1B_switch_graphics_livery_0;
+        pikel: return caboose_car_ng_pony_gen_1B_switch_graphics_livery_2;
+        boar_cat: return caboose_car_ng_pony_gen_1B_switch_graphics_livery_3;
+        gargouille: return caboose_car_ng_pony_gen_1B_switch_graphics_livery_2;
+        maximillian: return caboose_car_ng_pony_gen_1B_switch_graphics_livery_3;
+        mumble: return caboose_car_ng_pony_gen_1B_switch_graphics_livery_2;
+        snapper: return caboose_car_ng_pony_gen_1B_switch_graphics_livery_3;
+        workish: return caboose_car_ng_pony_gen_1B_switch_graphics_livery_2;
+        zorro: return caboose_car_ng_pony_gen_1B_switch_graphics_livery_3;
+    return caboose_car_ng_pony_gen_1B_switch_graphics_livery_0;
+}
+// buy menu graphics chain
+    spriteset(caboose_car_ng_pony_gen_1B_ss_purchase_0, "generated/graphics/caboose_car_ng_pony_gen_1B.png") {
+        spriteset_template_purchase_default(224,10,17,-8,NOANIM)
+    }
+    spriteset(caboose_car_ng_pony_gen_1B_ss_purchase_1, "generated/graphics/caboose_car_ng_pony_gen_1B.png") {
+        spriteset_template_purchase_default(224,70,17,-8,NOANIM)
+    }
+    spriteset(caboose_car_ng_pony_gen_1B_ss_purchase_2, "generated/graphics/caboose_car_ng_pony_gen_1B.png") {
+        spriteset_template_purchase_default(224,130,17,-8,NOANIM)
+    }
+    spriteset(caboose_car_ng_pony_gen_1B_ss_purchase_3, "generated/graphics/caboose_car_ng_pony_gen_1B.png") {
+        spriteset_template_purchase_default(224,190,17,-8,NOANIM)
+    }
+switch (FEAT_TRAINS, SELF, caboose_car_ng_pony_gen_1B_switch_graphics_purchase, current_year) {
+        1860..1904: return caboose_car_ng_pony_gen_1B_ss_purchase_0;
+        1905..1949: return caboose_car_ng_pony_gen_1B_ss_purchase_1;
+        1950..1999: return caboose_car_ng_pony_gen_1B_ss_purchase_2;
+        2000..5000001: return caboose_car_ng_pony_gen_1B_ss_purchase_3;
+    return caboose_car_ng_pony_gen_1B_ss_purchase_0;
+}
+switch (FEAT_TRAINS, SELF, caboose_car_ng_pony_gen_1B_switch_set_layers_register_more_sprites, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
+    return caboose_car_ng_pony_gen_1B_switch_graphics_vehicle;
+}
+switch (FEAT_TRAINS, SELF, caboose_car_ng_pony_gen_1B_switch_graphics, getbits(extra_callback_info1, 8, 8)) {
+    0: return caboose_car_ng_pony_gen_1B_switch_set_layers_register_more_sprites;
+    return switch_graphics_layer_tail_light_16px;
+}
+        switch (FEAT_TRAINS, PARENT, caboose_car_ng_pony_gen_1B_switch_running_cost_factor, 1) {
+            return 34;
+        }
+item(FEAT_TRAINS, caboose_car_ng_pony_gen_1B, 1290) {
+    property {
+        name:                           string(STR_NAME_CONSIST_PARENTHESES, string(STR_NAME_SUFFIX_CABOOSE_CAR), string(STR_NAME_SUFFIX_MEDIUM));
+        climates_available:             NO_CLIMATE; // nml constant
+        engine_class:                   ENGINE_CLASS_STEAM;
+        introduction_date:              date(1860, 1, 1);
+        cargo_capacity:                 0;
+        sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+        power:                          0hp;
+        weight:                         12ton;
+        tractive_effort_coefficient:    0.3;
+        cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+        running_cost_base:              RUNNING_COST_DIESEL;
+        running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+        refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+        refittable_cargo_classes:       bitmask();
+        non_refittable_cargo_classes:   bitmask(); // don't set non-refittable classes, increases likelihood of breaking cargo support
+        cargo_allow_refit:              [];
+        cargo_disallow_refit:           [];
+        misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_FLIP,TRAIN_FLAG_AUTOREFIT); // nml constants
+        model_life:                     VEHICLE_NEVER_EXPIRES;
+        retire_early:                   -10;
+        reliability_decay:              20; // default value
+        vehicle_life:                   40;
+        length:                         4;
+        track_type:                     NG;
+        effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+    }
+    graphics {
+        default:                        caboose_car_ng_pony_gen_1B_switch_graphics;
+        purchase:                       caboose_car_ng_pony_gen_1B_switch_graphics_purchase;
+        cost_factor:                    99; // CB used as it is capped to max 32k, prop is only 255
+        running_cost_factor:            caboose_car_ng_pony_gen_1B_switch_running_cost_factor; // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+        purchase_running_cost_factor:   34; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+    }
+}
+    if (param[1]==0 && param_simplified_gameplay==0) {
+        item(FEAT_TRAINS, caboose_car_ng_pony_gen_1B, 1290) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+    }

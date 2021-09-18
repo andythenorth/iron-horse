@@ -1,0 +1,369 @@
+// default graphics chain
+            spriteset(olympic_ss_doors_closed_livery_1_0_unflipped, "generated/graphics/olympic.png") {
+                spriteset_template_asymmetric_unreversed_8_8_unflipped(10,NOANIM)
+            }
+            spriteset(olympic_ss_doors_open_livery_1_0_unflipped, "generated/graphics/olympic.png") {
+                spriteset_template_asymmetric_unreversed_8_8_unflipped(40,NOANIM)
+            }
+            spriteset(olympic_ss_doors_closed_livery_2_0_unflipped, "generated/graphics/olympic.png") {
+                spriteset_template_asymmetric_unreversed_8_8_unflipped(70,NOANIM)
+            }
+            spriteset(olympic_ss_doors_open_livery_2_0_unflipped, "generated/graphics/olympic.png") {
+                spriteset_template_asymmetric_unreversed_8_8_unflipped(100,NOANIM)
+            }
+                spriteset(olympic_ss_pantographs_down_0_unflipped, "generated/graphics/olympic_pantographs_down.png") {
+                    spriteset_template_asymmetric_unreversed_8_8_unflipped(10,NOANIM)
+                }
+                spriteset(olympic_ss_pantographs_up_0_unflipped, "generated/graphics/olympic_pantographs_up.png") {
+                    spriteset_template_asymmetric_unreversed_8_8_unflipped(10,NOANIM)
+                }
+            switch (FEAT_TRAINS, SELF, olympic_switch_graphics_pantographs_0_unflipped, tile_powers_railtype("ELRL")) {
+                1: return olympic_ss_pantographs_up_0_unflipped;
+                return olympic_ss_pantographs_down_0_unflipped;
+            }
+            spriteset(olympic_ss_doors_closed_livery_1_0_flipped, "generated/graphics/olympic.png") {
+                spriteset_template_asymmetric_reversed_8_8_flipped(10,NOANIM)
+            }
+            spriteset(olympic_ss_doors_open_livery_1_0_flipped, "generated/graphics/olympic.png") {
+                spriteset_template_asymmetric_reversed_8_8_flipped(40,NOANIM)
+            }
+            spriteset(olympic_ss_doors_closed_livery_2_0_flipped, "generated/graphics/olympic.png") {
+                spriteset_template_asymmetric_reversed_8_8_flipped(70,NOANIM)
+            }
+            spriteset(olympic_ss_doors_open_livery_2_0_flipped, "generated/graphics/olympic.png") {
+                spriteset_template_asymmetric_reversed_8_8_flipped(100,NOANIM)
+            }
+                spriteset(olympic_ss_pantographs_down_0_flipped, "generated/graphics/olympic_pantographs_down.png") {
+                    spriteset_template_asymmetric_reversed_8_8_flipped(10,NOANIM)
+                }
+                spriteset(olympic_ss_pantographs_up_0_flipped, "generated/graphics/olympic_pantographs_up.png") {
+                    spriteset_template_asymmetric_reversed_8_8_flipped(10,NOANIM)
+                }
+            switch (FEAT_TRAINS, SELF, olympic_switch_graphics_pantographs_0_flipped, tile_powers_railtype("ELRL")) {
+                1: return olympic_ss_pantographs_up_0_flipped;
+                return olympic_ss_pantographs_down_0_flipped;
+            }
+    switch (FEAT_TRAINS, SELF, olympic_switch_graphics_engine_id_0,
+            [switch_graphics_consist_specific_livery_check_engine_id() + switch_graphics_opening_doors()]) {
+        100: return olympic_ss_doors_closed_livery_1_0_unflipped;
+        101: return olympic_ss_doors_open_livery_1_0_unflipped;
+        110: return olympic_ss_doors_closed_livery_1_0_flipped;
+        111: return olympic_ss_doors_open_livery_1_0_flipped;
+        200: return olympic_ss_doors_closed_livery_2_0_unflipped;
+        201: return olympic_ss_doors_open_livery_2_0_unflipped;
+        210: return olympic_ss_doors_closed_livery_2_0_flipped;
+        211: return olympic_ss_doors_open_livery_2_0_flipped;
+    }
+        switch (FEAT_TRAINS, SELF, olympic_switch_graphics_pantographs_0, vehicle_is_flipped) {
+            1: return olympic_switch_graphics_pantographs_0_flipped;
+            return olympic_switch_graphics_pantographs_0_unflipped;
+        }
+    switch (FEAT_TRAINS, SELF, olympic_switch_graphics_vehicle_layers_0, getbits(extra_callback_info1, 8, 8)) {
+        0: return olympic_switch_graphics_engine_id_0;
+            1: return olympic_switch_graphics_pantographs_0;
+    }
+            spriteset(olympic_ss_doors_closed_livery_1_1_unflipped, "generated/graphics/olympic.png") {
+                spriteset_template_asymmetric_unreversed_8_8_unflipped(130,NOANIM)
+            }
+            spriteset(olympic_ss_doors_open_livery_1_1_unflipped, "generated/graphics/olympic.png") {
+                spriteset_template_asymmetric_unreversed_8_8_unflipped(160,NOANIM)
+            }
+            spriteset(olympic_ss_doors_closed_livery_2_1_unflipped, "generated/graphics/olympic.png") {
+                spriteset_template_asymmetric_unreversed_8_8_unflipped(190,NOANIM)
+            }
+            spriteset(olympic_ss_doors_open_livery_2_1_unflipped, "generated/graphics/olympic.png") {
+                spriteset_template_asymmetric_unreversed_8_8_unflipped(220,NOANIM)
+            }
+                spriteset(olympic_ss_pantographs_down_1_unflipped, "generated/graphics/olympic_pantographs_down.png") {
+                    spriteset_template_asymmetric_unreversed_8_8_unflipped(70,NOANIM)
+                }
+                spriteset(olympic_ss_pantographs_up_1_unflipped, "generated/graphics/olympic_pantographs_up.png") {
+                    spriteset_template_asymmetric_unreversed_8_8_unflipped(70,NOANIM)
+                }
+            switch (FEAT_TRAINS, SELF, olympic_switch_graphics_pantographs_1_unflipped, tile_powers_railtype("ELRL")) {
+                1: return olympic_ss_pantographs_up_1_unflipped;
+                return olympic_ss_pantographs_down_1_unflipped;
+            }
+            spriteset(olympic_ss_doors_closed_livery_1_1_flipped, "generated/graphics/olympic.png") {
+                spriteset_template_asymmetric_reversed_8_8_flipped(130,NOANIM)
+            }
+            spriteset(olympic_ss_doors_open_livery_1_1_flipped, "generated/graphics/olympic.png") {
+                spriteset_template_asymmetric_reversed_8_8_flipped(160,NOANIM)
+            }
+            spriteset(olympic_ss_doors_closed_livery_2_1_flipped, "generated/graphics/olympic.png") {
+                spriteset_template_asymmetric_reversed_8_8_flipped(190,NOANIM)
+            }
+            spriteset(olympic_ss_doors_open_livery_2_1_flipped, "generated/graphics/olympic.png") {
+                spriteset_template_asymmetric_reversed_8_8_flipped(220,NOANIM)
+            }
+                spriteset(olympic_ss_pantographs_down_1_flipped, "generated/graphics/olympic_pantographs_down.png") {
+                    spriteset_template_asymmetric_reversed_8_8_flipped(70,NOANIM)
+                }
+                spriteset(olympic_ss_pantographs_up_1_flipped, "generated/graphics/olympic_pantographs_up.png") {
+                    spriteset_template_asymmetric_reversed_8_8_flipped(70,NOANIM)
+                }
+            switch (FEAT_TRAINS, SELF, olympic_switch_graphics_pantographs_1_flipped, tile_powers_railtype("ELRL")) {
+                1: return olympic_ss_pantographs_up_1_flipped;
+                return olympic_ss_pantographs_down_1_flipped;
+            }
+    switch (FEAT_TRAINS, SELF, olympic_switch_graphics_engine_id_1,
+            [switch_graphics_consist_specific_livery_check_engine_id() + switch_graphics_opening_doors()]) {
+        100: return olympic_ss_doors_closed_livery_1_1_unflipped;
+        101: return olympic_ss_doors_open_livery_1_1_unflipped;
+        110: return olympic_ss_doors_closed_livery_1_1_flipped;
+        111: return olympic_ss_doors_open_livery_1_1_flipped;
+        200: return olympic_ss_doors_closed_livery_2_1_unflipped;
+        201: return olympic_ss_doors_open_livery_2_1_unflipped;
+        210: return olympic_ss_doors_closed_livery_2_1_flipped;
+        211: return olympic_ss_doors_open_livery_2_1_flipped;
+    }
+        switch (FEAT_TRAINS, SELF, olympic_switch_graphics_pantographs_1, vehicle_is_flipped) {
+            1: return olympic_switch_graphics_pantographs_1_flipped;
+            return olympic_switch_graphics_pantographs_1_unflipped;
+        }
+    switch (FEAT_TRAINS, SELF, olympic_switch_graphics_vehicle_layers_1, getbits(extra_callback_info1, 8, 8)) {
+        0: return olympic_switch_graphics_engine_id_1;
+            1: return olympic_switch_graphics_pantographs_1;
+    }
+            spriteset(olympic_ss_doors_closed_livery_1_2_unflipped, "generated/graphics/olympic.png") {
+                spriteset_template_asymmetric_unreversed_8_8_unflipped(250,NOANIM)
+            }
+            spriteset(olympic_ss_doors_open_livery_1_2_unflipped, "generated/graphics/olympic.png") {
+                spriteset_template_asymmetric_unreversed_8_8_unflipped(280,NOANIM)
+            }
+            spriteset(olympic_ss_doors_closed_livery_2_2_unflipped, "generated/graphics/olympic.png") {
+                spriteset_template_asymmetric_unreversed_8_8_unflipped(310,NOANIM)
+            }
+            spriteset(olympic_ss_doors_open_livery_2_2_unflipped, "generated/graphics/olympic.png") {
+                spriteset_template_asymmetric_unreversed_8_8_unflipped(340,NOANIM)
+            }
+                spriteset(olympic_ss_pantographs_down_2_unflipped, "generated/graphics/olympic_pantographs_down.png") {
+                    spriteset_template_asymmetric_unreversed_8_8_unflipped(130,NOANIM)
+                }
+                spriteset(olympic_ss_pantographs_up_2_unflipped, "generated/graphics/olympic_pantographs_up.png") {
+                    spriteset_template_asymmetric_unreversed_8_8_unflipped(130,NOANIM)
+                }
+            switch (FEAT_TRAINS, SELF, olympic_switch_graphics_pantographs_2_unflipped, tile_powers_railtype("ELRL")) {
+                1: return olympic_ss_pantographs_up_2_unflipped;
+                return olympic_ss_pantographs_down_2_unflipped;
+            }
+            spriteset(olympic_ss_doors_closed_livery_1_2_flipped, "generated/graphics/olympic.png") {
+                spriteset_template_asymmetric_reversed_8_8_flipped(250,NOANIM)
+            }
+            spriteset(olympic_ss_doors_open_livery_1_2_flipped, "generated/graphics/olympic.png") {
+                spriteset_template_asymmetric_reversed_8_8_flipped(280,NOANIM)
+            }
+            spriteset(olympic_ss_doors_closed_livery_2_2_flipped, "generated/graphics/olympic.png") {
+                spriteset_template_asymmetric_reversed_8_8_flipped(310,NOANIM)
+            }
+            spriteset(olympic_ss_doors_open_livery_2_2_flipped, "generated/graphics/olympic.png") {
+                spriteset_template_asymmetric_reversed_8_8_flipped(340,NOANIM)
+            }
+                spriteset(olympic_ss_pantographs_down_2_flipped, "generated/graphics/olympic_pantographs_down.png") {
+                    spriteset_template_asymmetric_reversed_8_8_flipped(130,NOANIM)
+                }
+                spriteset(olympic_ss_pantographs_up_2_flipped, "generated/graphics/olympic_pantographs_up.png") {
+                    spriteset_template_asymmetric_reversed_8_8_flipped(130,NOANIM)
+                }
+            switch (FEAT_TRAINS, SELF, olympic_switch_graphics_pantographs_2_flipped, tile_powers_railtype("ELRL")) {
+                1: return olympic_ss_pantographs_up_2_flipped;
+                return olympic_ss_pantographs_down_2_flipped;
+            }
+    switch (FEAT_TRAINS, SELF, olympic_switch_graphics_engine_id_2,
+            [switch_graphics_consist_specific_livery_check_engine_id() + switch_graphics_opening_doors()]) {
+        100: return olympic_ss_doors_closed_livery_1_2_unflipped;
+        101: return olympic_ss_doors_open_livery_1_2_unflipped;
+        110: return olympic_ss_doors_closed_livery_1_2_flipped;
+        111: return olympic_ss_doors_open_livery_1_2_flipped;
+        200: return olympic_ss_doors_closed_livery_2_2_unflipped;
+        201: return olympic_ss_doors_open_livery_2_2_unflipped;
+        210: return olympic_ss_doors_closed_livery_2_2_flipped;
+        211: return olympic_ss_doors_open_livery_2_2_flipped;
+    }
+        switch (FEAT_TRAINS, SELF, olympic_switch_graphics_pantographs_2, vehicle_is_flipped) {
+            1: return olympic_switch_graphics_pantographs_2_flipped;
+            return olympic_switch_graphics_pantographs_2_unflipped;
+        }
+    switch (FEAT_TRAINS, SELF, olympic_switch_graphics_vehicle_layers_2, getbits(extra_callback_info1, 8, 8)) {
+        0: return olympic_switch_graphics_engine_id_2;
+            1: return olympic_switch_graphics_pantographs_2;
+    }
+            spriteset(olympic_ss_doors_closed_livery_1_3_unflipped, "generated/graphics/olympic.png") {
+                spriteset_template_asymmetric_unreversed_8_8_unflipped(370,NOANIM)
+            }
+            spriteset(olympic_ss_doors_open_livery_1_3_unflipped, "generated/graphics/olympic.png") {
+                spriteset_template_asymmetric_unreversed_8_8_unflipped(400,NOANIM)
+            }
+            spriteset(olympic_ss_doors_closed_livery_2_3_unflipped, "generated/graphics/olympic.png") {
+                spriteset_template_asymmetric_unreversed_8_8_unflipped(430,NOANIM)
+            }
+            spriteset(olympic_ss_doors_open_livery_2_3_unflipped, "generated/graphics/olympic.png") {
+                spriteset_template_asymmetric_unreversed_8_8_unflipped(460,NOANIM)
+            }
+                spriteset(olympic_ss_pantographs_down_3_unflipped, "generated/graphics/olympic_pantographs_down.png") {
+                    spriteset_template_asymmetric_unreversed_8_8_unflipped(190,NOANIM)
+                }
+                spriteset(olympic_ss_pantographs_up_3_unflipped, "generated/graphics/olympic_pantographs_up.png") {
+                    spriteset_template_asymmetric_unreversed_8_8_unflipped(190,NOANIM)
+                }
+            switch (FEAT_TRAINS, SELF, olympic_switch_graphics_pantographs_3_unflipped, tile_powers_railtype("ELRL")) {
+                1: return olympic_ss_pantographs_up_3_unflipped;
+                return olympic_ss_pantographs_down_3_unflipped;
+            }
+            spriteset(olympic_ss_doors_closed_livery_1_3_flipped, "generated/graphics/olympic.png") {
+                spriteset_template_asymmetric_reversed_8_8_flipped(370,NOANIM)
+            }
+            spriteset(olympic_ss_doors_open_livery_1_3_flipped, "generated/graphics/olympic.png") {
+                spriteset_template_asymmetric_reversed_8_8_flipped(400,NOANIM)
+            }
+            spriteset(olympic_ss_doors_closed_livery_2_3_flipped, "generated/graphics/olympic.png") {
+                spriteset_template_asymmetric_reversed_8_8_flipped(430,NOANIM)
+            }
+            spriteset(olympic_ss_doors_open_livery_2_3_flipped, "generated/graphics/olympic.png") {
+                spriteset_template_asymmetric_reversed_8_8_flipped(460,NOANIM)
+            }
+                spriteset(olympic_ss_pantographs_down_3_flipped, "generated/graphics/olympic_pantographs_down.png") {
+                    spriteset_template_asymmetric_reversed_8_8_flipped(190,NOANIM)
+                }
+                spriteset(olympic_ss_pantographs_up_3_flipped, "generated/graphics/olympic_pantographs_up.png") {
+                    spriteset_template_asymmetric_reversed_8_8_flipped(190,NOANIM)
+                }
+            switch (FEAT_TRAINS, SELF, olympic_switch_graphics_pantographs_3_flipped, tile_powers_railtype("ELRL")) {
+                1: return olympic_ss_pantographs_up_3_flipped;
+                return olympic_ss_pantographs_down_3_flipped;
+            }
+    switch (FEAT_TRAINS, SELF, olympic_switch_graphics_engine_id_3,
+            [switch_graphics_consist_specific_livery_check_engine_id() + switch_graphics_opening_doors()]) {
+        100: return olympic_ss_doors_closed_livery_1_3_unflipped;
+        101: return olympic_ss_doors_open_livery_1_3_unflipped;
+        110: return olympic_ss_doors_closed_livery_1_3_flipped;
+        111: return olympic_ss_doors_open_livery_1_3_flipped;
+        200: return olympic_ss_doors_closed_livery_2_3_unflipped;
+        201: return olympic_ss_doors_open_livery_2_3_unflipped;
+        210: return olympic_ss_doors_closed_livery_2_3_flipped;
+        211: return olympic_ss_doors_open_livery_2_3_flipped;
+    }
+        switch (FEAT_TRAINS, SELF, olympic_switch_graphics_pantographs_3, vehicle_is_flipped) {
+            1: return olympic_switch_graphics_pantographs_3_flipped;
+            return olympic_switch_graphics_pantographs_3_unflipped;
+        }
+    switch (FEAT_TRAINS, SELF, olympic_switch_graphics_vehicle_layers_3, getbits(extra_callback_info1, 8, 8)) {
+        0: return olympic_switch_graphics_engine_id_3;
+            1: return olympic_switch_graphics_pantographs_3;
+    }
+            switch (FEAT_TRAINS, SELF, olympic_switch_graphics_position_in_consist_entry_point_PASS, switch_graphics_railcar_ruleset_4_unit_sets()) {
+                0: return olympic_switch_graphics_vehicle_layers_0;
+                1: return olympic_switch_graphics_vehicle_layers_1;
+                2: return olympic_switch_graphics_vehicle_layers_2;
+                3: return olympic_switch_graphics_vehicle_layers_3;
+            }
+            switch (FEAT_TRAINS, SELF, olympic_switch_graphics_position_in_consist_entry_point_DFLT, switch_graphics_railcar_ruleset_4_unit_sets()) {
+                0: return olympic_switch_graphics_vehicle_layers_0;
+                1: return olympic_switch_graphics_vehicle_layers_1;
+                2: return olympic_switch_graphics_vehicle_layers_2;
+                3: return olympic_switch_graphics_vehicle_layers_3;
+            }
+switch (FEAT_TRAINS, PARENT, olympic_switch_graphics_vehicle_cargo, most_common_cargo_type) {
+            PASS: return olympic_switch_graphics_position_in_consist_entry_point_PASS;
+    return olympic_switch_graphics_position_in_consist_entry_point_DFLT;
+}
+switch (FEAT_TRAINS, SELF, olympic_switch_graphics_vehicle,
+    switch_initialise_alt_var_41(3770,4600,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1)
+    ) {
+    return olympic_switch_graphics_vehicle_cargo;
+}
+// buy menu graphics chain
+spriteset(olympic_ss_vehicle_purchase, "generated/graphics/olympic.png") {
+    spriteset_template_purchase_default(224,10,33,-16,NOANIM)
+}
+        spriteset(olympic_ss_pantograph_purchase, "generated/graphics/olympic_pantographs_down.png") {
+            spriteset_template_purchase_default(224,10,33,-16,NOANIM)
+        }
+        switch (FEAT_TRAINS, SELF, olympic_switch_set_layers_register_more_sprites_purchase, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
+            return olympic_ss_vehicle_purchase;
+        }
+        switch (FEAT_TRAINS, SELF, olympic_switch_graphics_purchase, getbits(extra_callback_info1, 8, 8)) {
+            0: return olympic_switch_set_layers_register_more_sprites_purchase;
+            1: return olympic_ss_pantograph_purchase;
+        }
+switch (FEAT_TRAINS, SELF, olympic_switch_set_layers_register_more_sprites, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
+    return olympic_switch_graphics_vehicle;
+}
+switch (FEAT_TRAINS, SELF, olympic_switch_graphics, getbits(extra_callback_info1, 8, 8)) {
+    0: return olympic_switch_set_layers_register_more_sprites;
+        1: return olympic_switch_set_layers_register_more_sprites;
+    return switch_graphics_layer_tail_light_railcar_32px_3;
+}
+switch (FEAT_TRAINS, SELF, olympic_switch_cargo_capacity,
+        [STORE_TEMP(33, 0), STORE_TEMP(48, 1), STORE_TEMP(64, 2), STORE_TEMP(85, 3)]) {
+    return switch_cargo_capacity();
+}
+        switch (FEAT_TRAINS, SELF, olympic_switch_effect_spawn_model_and_powered, 1) {
+            return EFFECT_SPAWN_MODEL_ELECTRIC;
+        }
+            switch (FEAT_TRAINS, SELF, olympic_switch_create_effect_default_unreversed, [STORE_TEMP(create_effect(EFFECT_SPRITE_ELECTRIC,0,0,12), 0x100)]) {
+                return 1 + CB_RESULT_CREATE_EFFECT_CENTER;
+            }
+    switch (FEAT_TRAINS, SELF, olympic_switch_create_effect_check_railtype_unreversed, tile_powers_railtype("ELRL")) {
+        return olympic_switch_create_effect_default_unreversed;
+    }
+    switch (FEAT_TRAINS, SELF, olympic_switch_buy_menu_text_result, 1) {
+    return string(STR_BUY_MENU_WRAPPER_ONE_SUBSTR, string(STR_ROLE, string(STR_ROLE_GENERAL_PURPOSE_EXPRESS)));
+}
+        switch (FEAT_TRAINS, SELF, olympic_switch_buy_menu_text, 1) {
+            return olympic_switch_buy_menu_text_result;
+        }
+        switch (FEAT_TRAINS, PARENT, olympic_switch_running_cost_factor, 1) {
+            return 1075;
+        }
+item(FEAT_TRAINS, olympic, 3770) {
+    property {
+        name:                           string(STR_NAME_CONSIST_PARENTHESES, string(STR_NAME_olympic), string(STR_NAME_SUFFIX_ELECTRIC));
+        climates_available:             NO_CLIMATE; // nml constant
+        engine_class:                   ENGINE_CLASS_ELECTRIC;
+        introduction_date:              date(1991, 3, 1);
+        cargo_capacity:                 48;
+        sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+        power:                          1120hp;
+            speed:                          115mph;
+        weight:                         46ton;
+        tractive_effort_coefficient:    0.3;
+        cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+        running_cost_base:              RUNNING_COST_STEAM;
+        running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+        refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+        refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes:   bitmask(); // don't set non-refittable classes, increases likelihood of breaking cargo support
+        cargo_allow_refit:              [];
+        cargo_disallow_refit:           [];
+            default_cargo_type:             PASS;
+        misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_FLIP,TRAIN_FLAG_AUTOREFIT,TRAIN_FLAG_MU); // nml constants
+        model_life:                     30;
+        retire_early:                   -10;
+        reliability_decay:              20; // default value
+        vehicle_life:                   40;
+        length:                         8;
+        track_type:                     ELRL;
+        effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+    }
+    graphics {
+        default:                        olympic_switch_graphics;
+        purchase:                       olympic_switch_graphics_purchase;
+        cost_factor:                    49; // CB used as it is capped to max 32k, prop is only 255
+        running_cost_factor:            olympic_switch_running_cost_factor; // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+        purchase_running_cost_factor:   1075; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+            cargo_capacity:                 olympic_switch_cargo_capacity;
+            purchase_cargo_capacity:        olympic_switch_cargo_capacity;
+            loading_speed:                  5;
+            effect_spawn_model_and_powered: olympic_switch_effect_spawn_model_and_powered;
+            create_effect:      olympic_switch_create_effect_check_railtype_unreversed;
+            additional_text:                olympic_switch_buy_menu_text;
+    }
+}
+    if (param[1]==0 && param_simplified_gameplay==0) {
+        item(FEAT_TRAINS, olympic, 3770) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+    }

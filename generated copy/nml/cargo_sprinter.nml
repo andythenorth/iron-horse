@@ -1,0 +1,113 @@
+switch (FEAT_TRAINS, SELF, cargo_sprinter_switch_graphics_containers_check_cargo, cargo_count) {
+        0: return ss_spritelayer_cargo_empty;
+    return switch_spritelayer_cargos_intermodal_containers_cargo_sprinter_32px;
+}
+switch (FEAT_TRAINS, SELF, cargo_sprinter_switch_graphics_containers, [
+                     STORE_TEMP(CB_FLAG_MORE_SPRITES | switch_intermodal_by_company_colour_1cc_to_1cc(), 0x100), 
+                     STORE_TEMP(0, 23) 
+                    ]) {
+    return cargo_sprinter_switch_graphics_containers_check_cargo;
+}
+// base platform graphics chain
+spriteset(cargo_sprinter_ss_unflipped_unreversed, "generated/graphics/cargo_sprinter.png") {
+    spriteset_template_asymmetric_unreversed_8_8_unflipped(10,NOANIM)
+}
+spriteset(cargo_sprinter_ss_masked_overlay_unflipped_unreversed, "generated/graphics/cargo_sprinter.png") {
+    spriteset_template_asymmetric_unreversed_8_8_unflipped(40,NOANIM)
+}
+// switch layers: base platform / containers
+switch (FEAT_TRAINS, SELF, cargo_sprinter_switch_graphics_vehicle, getbits(extra_callback_info1, 8, 8)) {
+    0: return cargo_sprinter_ss_unflipped_unreversed;
+    1: return cargo_sprinter_switch_graphics_containers;
+    2: return cargo_sprinter_ss_masked_overlay_unflipped_unreversed;
+}
+// buy menu graphics chain
+spriteset(cargo_sprinter_ss_vehicle_purchase, "generated/graphics/cargo_sprinter.png") {
+    spriteset_template_purchase_dual_headed(224,10,33,-16,NOANIM)
+}
+switch (FEAT_TRAINS, SELF, cargo_sprinter_switch_graphics_purchase, 0) {
+    return cargo_sprinter_ss_vehicle_purchase;
+}
+switch (FEAT_TRAINS, SELF, cargo_sprinter_switch_set_layers_register_more_sprites, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
+    return cargo_sprinter_switch_graphics_vehicle;
+}
+switch (FEAT_TRAINS, SELF, cargo_sprinter_switch_graphics, getbits(extra_callback_info1, 8, 8)) {
+    0: return cargo_sprinter_switch_set_layers_register_more_sprites;
+        1: return cargo_sprinter_switch_set_layers_register_more_sprites;
+        2: return cargo_sprinter_switch_set_layers_register_more_sprites;
+    return switch_graphics_layer_tail_light_railcar_32px_4;
+}
+switch (FEAT_TRAINS, SELF, cargo_sprinter_switch_cargo_capacity,
+        [STORE_TEMP(18, 0), STORE_TEMP(26, 1), STORE_TEMP(35, 2), STORE_TEMP(47, 3)]) {
+    return switch_cargo_capacity();
+}
+        switch (FEAT_TRAINS, SELF, cargo_sprinter_switch_effect_spawn_model_and_powered, 1) {
+            return EFFECT_SPAWN_MODEL_DIESEL;
+        }
+            switch (FEAT_TRAINS, SELF, cargo_sprinter_switch_create_effect_default_unreversed, [STORE_TEMP(create_effect(EFFECT_SPRITE_DIESEL,0,0,12), 0x100)]) {
+                return 1 + CB_RESULT_CREATE_EFFECT_CENTER;
+            }
+    switch (FEAT_TRAINS, SELF, cargo_sprinter_switch_create_effect_check_railtype_unreversed, tile_powers_railtype("ELRL")) {
+        return cargo_sprinter_switch_create_effect_default_unreversed;
+    }
+    switch (FEAT_TRAINS, SELF, cargo_sprinter_switch_buy_menu_text_result, 1) {
+    return string(STR_BUY_MENU_WRAPPER_ONE_SUBSTR, string(STR_ROLE, string(STR_ROLE_GENERAL_PURPOSE)));
+}
+        switch (FEAT_TRAINS, SELF, cargo_sprinter_switch_buy_menu_text, 1) {
+            return cargo_sprinter_switch_buy_menu_text_result;
+        }
+        switch (FEAT_TRAINS, PARENT, cargo_sprinter_switch_running_cost_factor, 1) {
+            return 1671;
+        }
+item(FEAT_TRAINS, cargo_sprinter, 3000) {
+    property {
+        name:                           string(STR_NAME_CONSIST_PARENTHESES, string(STR_NAME_cargo_sprinter), string(STR_NAME_SUFFIX_DIESEL));
+        climates_available:             NO_CLIMATE; // nml constant
+        engine_class:                   ENGINE_CLASS_DIESEL;
+        introduction_date:              date(2017, 7, 1);
+        cargo_capacity:                 26;
+        sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+        power:                          1650hp;
+            speed:                          99mph;
+        weight:                         32ton;
+        tractive_effort_coefficient:    0.3;
+        cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+        running_cost_base:              RUNNING_COST_STEAM;
+        running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+        refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+        refittable_cargo_classes:       bitmask(CC_ARMOURED,CC_MAIL,CC_EXPRESS);
+        non_refittable_cargo_classes:   bitmask(); // don't set non-refittable classes, increases likelihood of breaking cargo support
+        cargo_allow_refit:              [];
+        cargo_disallow_refit:           [TOUR];
+            default_cargo_type:             MAIL;
+        misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT); // nml constants
+            dual_headed:                    1;
+        model_life:                     VEHICLE_NEVER_EXPIRES;
+        retire_early:                   -10;
+        reliability_decay:              20; // default value
+        vehicle_life:                   40;
+        length:                         8;
+        track_type:                     RAIL;
+        effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+    }
+    graphics {
+        default:                        cargo_sprinter_switch_graphics;
+        purchase:                       cargo_sprinter_switch_graphics_purchase;
+        cost_factor:                    73; // CB used as it is capped to max 32k, prop is only 255
+        running_cost_factor:            cargo_sprinter_switch_running_cost_factor; // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+        purchase_running_cost_factor:   1671; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+            cargo_capacity:                 cargo_sprinter_switch_cargo_capacity;
+            purchase_cargo_capacity:        cargo_sprinter_switch_cargo_capacity;
+            loading_speed:                  10;
+            effect_spawn_model_and_powered: cargo_sprinter_switch_effect_spawn_model_and_powered;
+            create_effect:      cargo_sprinter_switch_create_effect_check_railtype_unreversed;
+            additional_text:                cargo_sprinter_switch_buy_menu_text;
+    }
+}
+    if (param[1]==0 && param_simplified_gameplay==0) {
+        item(FEAT_TRAINS, cargo_sprinter, 3000) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+    }

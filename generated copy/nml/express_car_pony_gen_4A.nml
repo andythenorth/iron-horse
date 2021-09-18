@@ -1,0 +1,92 @@
+    // default graphics chain
+    spriteset(express_car_pony_gen_4A_ss_doors_closed_unflipped, "generated/graphics/express_car_pony_gen_4A.png") {
+        spriteset_template_symmetric_unreversed_4_8_unflipped(10,NOANIM)
+    }
+    spriteset(express_car_pony_gen_4A_ss_doors_open_unflipped, "generated/graphics/express_car_pony_gen_4A.png") {
+        spriteset_template_symmetric_unreversed_4_8_unflipped(40,NOANIM)
+    }
+    // default graphics chain
+    spriteset(express_car_pony_gen_4A_ss_doors_closed_flipped, "generated/graphics/express_car_pony_gen_4A.png") {
+        spriteset_template_symmetric_unreversed_4_8_flipped(10,NOANIM)
+    }
+    spriteset(express_car_pony_gen_4A_ss_doors_open_flipped, "generated/graphics/express_car_pony_gen_4A.png") {
+        spriteset_template_symmetric_unreversed_4_8_flipped(40,NOANIM)
+    }
+switch (FEAT_TRAINS, SELF, express_car_pony_gen_4A_switch_graphics_vehicle,
+        [switch_graphics_box_car_with_opening_doors_check_flip() + switch_graphics_opening_doors()]) {
+    0: return express_car_pony_gen_4A_ss_doors_closed_unflipped;
+    1: return express_car_pony_gen_4A_ss_doors_open_unflipped;
+    10: return express_car_pony_gen_4A_ss_doors_closed_flipped;
+    11: return express_car_pony_gen_4A_ss_doors_open_flipped;
+}
+switch (FEAT_TRAINS, SELF, express_car_pony_gen_4A_switch_set_layers_register_more_sprites, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
+    return express_car_pony_gen_4A_switch_graphics_vehicle;
+}
+switch (FEAT_TRAINS, SELF, express_car_pony_gen_4A_switch_graphics, getbits(extra_callback_info1, 8, 8)) {
+    0: return express_car_pony_gen_4A_switch_set_layers_register_more_sprites;
+    return switch_graphics_layer_tail_light_16px;
+}
+// buy menu graphics chain
+spriteset(express_car_pony_gen_4A_ss_purchase, "generated/graphics/express_car_pony_gen_4A.png") {
+    spriteset_template_purchase_default(224,10,17,-8,NOANIM)
+}
+switch (FEAT_TRAINS, SELF, express_car_pony_gen_4A_switch_graphics_purchase, 0) {
+    return express_car_pony_gen_4A_ss_purchase;
+}
+switch (FEAT_TRAINS, SELF, express_car_pony_gen_4A_switch_cargo_capacity,
+        [STORE_TEMP(8, 0), STORE_TEMP(11, 1), STORE_TEMP(15, 2), STORE_TEMP(20, 3)]) {
+    return switch_cargo_capacity();
+}
+        switch (FEAT_TRAINS, PARENT, express_car_pony_gen_4A_switch_running_cost_factor, 1) {
+            return 298;
+        }
+item(FEAT_TRAINS, express_car_pony_gen_4A, 1390) {
+    property {
+        name:                           string(STR_NAME_CONSIST_PARENTHESES, string(STR_NAME_SUFFIX_EXPRESS_CAR), string(STR_NAME_SUFFIX_SMALL));
+        climates_available:             NO_CLIMATE; // nml constant
+        engine_class:                   ENGINE_CLASS_STEAM;
+        introduction_date:              date(1960, 2, 1);
+        cargo_capacity:                 11;
+        sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+        power:                          0hp;
+            speed:                          105mph;
+        weight:                         10ton;
+        tractive_effort_coefficient:    0.3;
+        cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+        running_cost_base:              RUNNING_COST_DIESEL;
+        running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+        refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+        refittable_cargo_classes:       bitmask(CC_ARMOURED,CC_MAIL,CC_EXPRESS);
+        non_refittable_cargo_classes:   bitmask(); // don't set non-refittable classes, increases likelihood of breaking cargo support
+        cargo_allow_refit:              [];
+        cargo_disallow_refit:           [TOUR];
+            default_cargo_type:             cargotype_available("MAIL")?MAIL:cargotype_available("ENSP")?ENSP:cargotype_available("FMSP")?FMSP:cargotype_available("GOOD")?GOOD:FOOD;
+        misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_FLIP,TRAIN_FLAG_AUTOREFIT); // nml constants
+        model_life:                     30;
+        retire_early:                   -10;
+        reliability_decay:              20; // default value
+        vehicle_life:                   40;
+        length:                         4;
+        track_type:                     RAIL;
+        effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+    }
+    graphics {
+        default:                        express_car_pony_gen_4A_switch_graphics;
+        purchase:                       express_car_pony_gen_4A_switch_graphics_purchase;
+        cost_factor:                    87; // CB used as it is capped to max 32k, prop is only 255
+        running_cost_factor:            express_car_pony_gen_4A_switch_running_cost_factor; // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+        purchase_running_cost_factor:   298; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                colour_mapping:                 switch_colour_mapping(1, 1, 0);
+                purchase_colour_mapping:        switch_colour_mapping_purchase(1, 1, 0);
+            cargo_capacity:                 express_car_pony_gen_4A_switch_cargo_capacity;
+            purchase_cargo_capacity:        express_car_pony_gen_4A_switch_cargo_capacity;
+            loading_speed:                  5;
+    }
+}
+    if (param[1]==0) {
+        item(FEAT_TRAINS, express_car_pony_gen_4A, 1390) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+    }

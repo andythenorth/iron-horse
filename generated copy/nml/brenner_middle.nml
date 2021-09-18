@@ -1,0 +1,385 @@
+// add the units to articulated consist
+switch (FEAT_TRAINS, SELF, brenner_middle_articulated_cb_switch, extra_callback_info1) {
+        0: return brenner_middle;
+        1: return brenner_middle;
+  return CB_RESULT_NO_MORE_ARTICULATED_PARTS;
+}
+// default graphics chain
+            spriteset(brenner_middle_ss_doors_closed_livery_1_0_unflipped, "generated/graphics/brenner_middle.png") {
+                spriteset_template_asymmetric_unreversed_8_8_unflipped(10,NOANIM)
+            }
+            spriteset(brenner_middle_ss_doors_open_livery_1_0_unflipped, "generated/graphics/brenner_middle.png") {
+                spriteset_template_asymmetric_unreversed_8_8_unflipped(40,NOANIM)
+            }
+            spriteset(brenner_middle_ss_doors_closed_livery_2_0_unflipped, "generated/graphics/brenner_middle.png") {
+                spriteset_template_asymmetric_unreversed_8_8_unflipped(70,NOANIM)
+            }
+            spriteset(brenner_middle_ss_doors_open_livery_2_0_unflipped, "generated/graphics/brenner_middle.png") {
+                spriteset_template_asymmetric_unreversed_8_8_unflipped(100,NOANIM)
+            }
+                spriteset(brenner_middle_ss_pantographs_down_0_unflipped, "generated/graphics/brenner_middle_pantographs_down.png") {
+                    spriteset_template_asymmetric_unreversed_8_8_unflipped(10,NOANIM)
+                }
+                spriteset(brenner_middle_ss_pantographs_up_0_unflipped, "generated/graphics/brenner_middle_pantographs_up.png") {
+                    spriteset_template_asymmetric_unreversed_8_8_unflipped(10,NOANIM)
+                }
+            switch (FEAT_TRAINS, SELF, brenner_middle_switch_graphics_pantographs_0_unflipped, tile_powers_railtype("ELRL")) {
+                1: return brenner_middle_ss_pantographs_up_0_unflipped;
+                return brenner_middle_ss_pantographs_down_0_unflipped;
+            }
+            spriteset(brenner_middle_ss_doors_closed_livery_1_0_flipped, "generated/graphics/brenner_middle.png") {
+                spriteset_template_asymmetric_reversed_8_8_flipped(10,NOANIM)
+            }
+            spriteset(brenner_middle_ss_doors_open_livery_1_0_flipped, "generated/graphics/brenner_middle.png") {
+                spriteset_template_asymmetric_reversed_8_8_flipped(40,NOANIM)
+            }
+            spriteset(brenner_middle_ss_doors_closed_livery_2_0_flipped, "generated/graphics/brenner_middle.png") {
+                spriteset_template_asymmetric_reversed_8_8_flipped(70,NOANIM)
+            }
+            spriteset(brenner_middle_ss_doors_open_livery_2_0_flipped, "generated/graphics/brenner_middle.png") {
+                spriteset_template_asymmetric_reversed_8_8_flipped(100,NOANIM)
+            }
+                spriteset(brenner_middle_ss_pantographs_down_0_flipped, "generated/graphics/brenner_middle_pantographs_down.png") {
+                    spriteset_template_asymmetric_reversed_8_8_flipped(10,NOANIM)
+                }
+                spriteset(brenner_middle_ss_pantographs_up_0_flipped, "generated/graphics/brenner_middle_pantographs_up.png") {
+                    spriteset_template_asymmetric_reversed_8_8_flipped(10,NOANIM)
+                }
+            switch (FEAT_TRAINS, SELF, brenner_middle_switch_graphics_pantographs_0_flipped, tile_powers_railtype("ELRL")) {
+                1: return brenner_middle_ss_pantographs_up_0_flipped;
+                return brenner_middle_ss_pantographs_down_0_flipped;
+            }
+    switch (FEAT_TRAINS, SELF, brenner_middle_switch_graphics_engine_id_0,
+            [switch_graphics_consist_specific_livery_check_engine_id() + switch_graphics_opening_doors()]) {
+        100: return brenner_middle_ss_doors_closed_livery_1_0_unflipped;
+        101: return brenner_middle_ss_doors_open_livery_1_0_unflipped;
+        110: return brenner_middle_ss_doors_closed_livery_1_0_flipped;
+        111: return brenner_middle_ss_doors_open_livery_1_0_flipped;
+        200: return brenner_middle_ss_doors_closed_livery_2_0_unflipped;
+        201: return brenner_middle_ss_doors_open_livery_2_0_unflipped;
+        210: return brenner_middle_ss_doors_closed_livery_2_0_flipped;
+        211: return brenner_middle_ss_doors_open_livery_2_0_flipped;
+    }
+        switch (FEAT_TRAINS, SELF, brenner_middle_switch_graphics_pantographs_0, vehicle_is_flipped) {
+            1: return brenner_middle_switch_graphics_pantographs_0_flipped;
+            return brenner_middle_switch_graphics_pantographs_0_unflipped;
+        }
+    switch (FEAT_TRAINS, SELF, brenner_middle_switch_graphics_vehicle_layers_0, getbits(extra_callback_info1, 8, 8)) {
+        0: return brenner_middle_switch_graphics_engine_id_0;
+            1: return brenner_middle_switch_graphics_pantographs_0;
+    }
+            spriteset(brenner_middle_ss_doors_closed_livery_1_1_unflipped, "generated/graphics/brenner_middle.png") {
+                spriteset_template_asymmetric_unreversed_8_8_unflipped(130,NOANIM)
+            }
+            spriteset(brenner_middle_ss_doors_open_livery_1_1_unflipped, "generated/graphics/brenner_middle.png") {
+                spriteset_template_asymmetric_unreversed_8_8_unflipped(160,NOANIM)
+            }
+            spriteset(brenner_middle_ss_doors_closed_livery_2_1_unflipped, "generated/graphics/brenner_middle.png") {
+                spriteset_template_asymmetric_unreversed_8_8_unflipped(190,NOANIM)
+            }
+            spriteset(brenner_middle_ss_doors_open_livery_2_1_unflipped, "generated/graphics/brenner_middle.png") {
+                spriteset_template_asymmetric_unreversed_8_8_unflipped(220,NOANIM)
+            }
+                spriteset(brenner_middle_ss_pantographs_down_1_unflipped, "generated/graphics/brenner_middle_pantographs_down.png") {
+                    spriteset_template_asymmetric_unreversed_8_8_unflipped(70,NOANIM)
+                }
+                spriteset(brenner_middle_ss_pantographs_up_1_unflipped, "generated/graphics/brenner_middle_pantographs_up.png") {
+                    spriteset_template_asymmetric_unreversed_8_8_unflipped(70,NOANIM)
+                }
+            switch (FEAT_TRAINS, SELF, brenner_middle_switch_graphics_pantographs_1_unflipped, tile_powers_railtype("ELRL")) {
+                1: return brenner_middle_ss_pantographs_up_1_unflipped;
+                return brenner_middle_ss_pantographs_down_1_unflipped;
+            }
+            spriteset(brenner_middle_ss_doors_closed_livery_1_1_flipped, "generated/graphics/brenner_middle.png") {
+                spriteset_template_asymmetric_reversed_8_8_flipped(130,NOANIM)
+            }
+            spriteset(brenner_middle_ss_doors_open_livery_1_1_flipped, "generated/graphics/brenner_middle.png") {
+                spriteset_template_asymmetric_reversed_8_8_flipped(160,NOANIM)
+            }
+            spriteset(brenner_middle_ss_doors_closed_livery_2_1_flipped, "generated/graphics/brenner_middle.png") {
+                spriteset_template_asymmetric_reversed_8_8_flipped(190,NOANIM)
+            }
+            spriteset(brenner_middle_ss_doors_open_livery_2_1_flipped, "generated/graphics/brenner_middle.png") {
+                spriteset_template_asymmetric_reversed_8_8_flipped(220,NOANIM)
+            }
+                spriteset(brenner_middle_ss_pantographs_down_1_flipped, "generated/graphics/brenner_middle_pantographs_down.png") {
+                    spriteset_template_asymmetric_reversed_8_8_flipped(70,NOANIM)
+                }
+                spriteset(brenner_middle_ss_pantographs_up_1_flipped, "generated/graphics/brenner_middle_pantographs_up.png") {
+                    spriteset_template_asymmetric_reversed_8_8_flipped(70,NOANIM)
+                }
+            switch (FEAT_TRAINS, SELF, brenner_middle_switch_graphics_pantographs_1_flipped, tile_powers_railtype("ELRL")) {
+                1: return brenner_middle_ss_pantographs_up_1_flipped;
+                return brenner_middle_ss_pantographs_down_1_flipped;
+            }
+    switch (FEAT_TRAINS, SELF, brenner_middle_switch_graphics_engine_id_1,
+            [switch_graphics_consist_specific_livery_check_engine_id() + switch_graphics_opening_doors()]) {
+        100: return brenner_middle_ss_doors_closed_livery_1_1_unflipped;
+        101: return brenner_middle_ss_doors_open_livery_1_1_unflipped;
+        110: return brenner_middle_ss_doors_closed_livery_1_1_flipped;
+        111: return brenner_middle_ss_doors_open_livery_1_1_flipped;
+        200: return brenner_middle_ss_doors_closed_livery_2_1_unflipped;
+        201: return brenner_middle_ss_doors_open_livery_2_1_unflipped;
+        210: return brenner_middle_ss_doors_closed_livery_2_1_flipped;
+        211: return brenner_middle_ss_doors_open_livery_2_1_flipped;
+    }
+        switch (FEAT_TRAINS, SELF, brenner_middle_switch_graphics_pantographs_1, vehicle_is_flipped) {
+            1: return brenner_middle_switch_graphics_pantographs_1_flipped;
+            return brenner_middle_switch_graphics_pantographs_1_unflipped;
+        }
+    switch (FEAT_TRAINS, SELF, brenner_middle_switch_graphics_vehicle_layers_1, getbits(extra_callback_info1, 8, 8)) {
+        0: return brenner_middle_switch_graphics_engine_id_1;
+            1: return brenner_middle_switch_graphics_pantographs_1;
+    }
+            spriteset(brenner_middle_ss_doors_closed_livery_1_2_unflipped, "generated/graphics/brenner_middle.png") {
+                spriteset_template_asymmetric_unreversed_8_8_unflipped(250,NOANIM)
+            }
+            spriteset(brenner_middle_ss_doors_open_livery_1_2_unflipped, "generated/graphics/brenner_middle.png") {
+                spriteset_template_asymmetric_unreversed_8_8_unflipped(280,NOANIM)
+            }
+            spriteset(brenner_middle_ss_doors_closed_livery_2_2_unflipped, "generated/graphics/brenner_middle.png") {
+                spriteset_template_asymmetric_unreversed_8_8_unflipped(310,NOANIM)
+            }
+            spriteset(brenner_middle_ss_doors_open_livery_2_2_unflipped, "generated/graphics/brenner_middle.png") {
+                spriteset_template_asymmetric_unreversed_8_8_unflipped(340,NOANIM)
+            }
+                spriteset(brenner_middle_ss_pantographs_down_2_unflipped, "generated/graphics/brenner_middle_pantographs_down.png") {
+                    spriteset_template_asymmetric_unreversed_8_8_unflipped(130,NOANIM)
+                }
+                spriteset(brenner_middle_ss_pantographs_up_2_unflipped, "generated/graphics/brenner_middle_pantographs_up.png") {
+                    spriteset_template_asymmetric_unreversed_8_8_unflipped(130,NOANIM)
+                }
+            switch (FEAT_TRAINS, SELF, brenner_middle_switch_graphics_pantographs_2_unflipped, tile_powers_railtype("ELRL")) {
+                1: return brenner_middle_ss_pantographs_up_2_unflipped;
+                return brenner_middle_ss_pantographs_down_2_unflipped;
+            }
+            spriteset(brenner_middle_ss_doors_closed_livery_1_2_flipped, "generated/graphics/brenner_middle.png") {
+                spriteset_template_asymmetric_reversed_8_8_flipped(250,NOANIM)
+            }
+            spriteset(brenner_middle_ss_doors_open_livery_1_2_flipped, "generated/graphics/brenner_middle.png") {
+                spriteset_template_asymmetric_reversed_8_8_flipped(280,NOANIM)
+            }
+            spriteset(brenner_middle_ss_doors_closed_livery_2_2_flipped, "generated/graphics/brenner_middle.png") {
+                spriteset_template_asymmetric_reversed_8_8_flipped(310,NOANIM)
+            }
+            spriteset(brenner_middle_ss_doors_open_livery_2_2_flipped, "generated/graphics/brenner_middle.png") {
+                spriteset_template_asymmetric_reversed_8_8_flipped(340,NOANIM)
+            }
+                spriteset(brenner_middle_ss_pantographs_down_2_flipped, "generated/graphics/brenner_middle_pantographs_down.png") {
+                    spriteset_template_asymmetric_reversed_8_8_flipped(130,NOANIM)
+                }
+                spriteset(brenner_middle_ss_pantographs_up_2_flipped, "generated/graphics/brenner_middle_pantographs_up.png") {
+                    spriteset_template_asymmetric_reversed_8_8_flipped(130,NOANIM)
+                }
+            switch (FEAT_TRAINS, SELF, brenner_middle_switch_graphics_pantographs_2_flipped, tile_powers_railtype("ELRL")) {
+                1: return brenner_middle_ss_pantographs_up_2_flipped;
+                return brenner_middle_ss_pantographs_down_2_flipped;
+            }
+    switch (FEAT_TRAINS, SELF, brenner_middle_switch_graphics_engine_id_2,
+            [switch_graphics_consist_specific_livery_check_engine_id() + switch_graphics_opening_doors()]) {
+        100: return brenner_middle_ss_doors_closed_livery_1_2_unflipped;
+        101: return brenner_middle_ss_doors_open_livery_1_2_unflipped;
+        110: return brenner_middle_ss_doors_closed_livery_1_2_flipped;
+        111: return brenner_middle_ss_doors_open_livery_1_2_flipped;
+        200: return brenner_middle_ss_doors_closed_livery_2_2_unflipped;
+        201: return brenner_middle_ss_doors_open_livery_2_2_unflipped;
+        210: return brenner_middle_ss_doors_closed_livery_2_2_flipped;
+        211: return brenner_middle_ss_doors_open_livery_2_2_flipped;
+    }
+        switch (FEAT_TRAINS, SELF, brenner_middle_switch_graphics_pantographs_2, vehicle_is_flipped) {
+            1: return brenner_middle_switch_graphics_pantographs_2_flipped;
+            return brenner_middle_switch_graphics_pantographs_2_unflipped;
+        }
+    switch (FEAT_TRAINS, SELF, brenner_middle_switch_graphics_vehicle_layers_2, getbits(extra_callback_info1, 8, 8)) {
+        0: return brenner_middle_switch_graphics_engine_id_2;
+            1: return brenner_middle_switch_graphics_pantographs_2;
+    }
+            spriteset(brenner_middle_ss_doors_closed_livery_1_3_unflipped, "generated/graphics/brenner_middle.png") {
+                spriteset_template_asymmetric_unreversed_8_8_unflipped(370,NOANIM)
+            }
+            spriteset(brenner_middle_ss_doors_open_livery_1_3_unflipped, "generated/graphics/brenner_middle.png") {
+                spriteset_template_asymmetric_unreversed_8_8_unflipped(400,NOANIM)
+            }
+            spriteset(brenner_middle_ss_doors_closed_livery_2_3_unflipped, "generated/graphics/brenner_middle.png") {
+                spriteset_template_asymmetric_unreversed_8_8_unflipped(430,NOANIM)
+            }
+            spriteset(brenner_middle_ss_doors_open_livery_2_3_unflipped, "generated/graphics/brenner_middle.png") {
+                spriteset_template_asymmetric_unreversed_8_8_unflipped(460,NOANIM)
+            }
+                spriteset(brenner_middle_ss_pantographs_down_3_unflipped, "generated/graphics/brenner_middle_pantographs_down.png") {
+                    spriteset_template_asymmetric_unreversed_8_8_unflipped(190,NOANIM)
+                }
+                spriteset(brenner_middle_ss_pantographs_up_3_unflipped, "generated/graphics/brenner_middle_pantographs_up.png") {
+                    spriteset_template_asymmetric_unreversed_8_8_unflipped(190,NOANIM)
+                }
+            switch (FEAT_TRAINS, SELF, brenner_middle_switch_graphics_pantographs_3_unflipped, tile_powers_railtype("ELRL")) {
+                1: return brenner_middle_ss_pantographs_up_3_unflipped;
+                return brenner_middle_ss_pantographs_down_3_unflipped;
+            }
+            spriteset(brenner_middle_ss_doors_closed_livery_1_3_flipped, "generated/graphics/brenner_middle.png") {
+                spriteset_template_asymmetric_reversed_8_8_flipped(370,NOANIM)
+            }
+            spriteset(brenner_middle_ss_doors_open_livery_1_3_flipped, "generated/graphics/brenner_middle.png") {
+                spriteset_template_asymmetric_reversed_8_8_flipped(400,NOANIM)
+            }
+            spriteset(brenner_middle_ss_doors_closed_livery_2_3_flipped, "generated/graphics/brenner_middle.png") {
+                spriteset_template_asymmetric_reversed_8_8_flipped(430,NOANIM)
+            }
+            spriteset(brenner_middle_ss_doors_open_livery_2_3_flipped, "generated/graphics/brenner_middle.png") {
+                spriteset_template_asymmetric_reversed_8_8_flipped(460,NOANIM)
+            }
+                spriteset(brenner_middle_ss_pantographs_down_3_flipped, "generated/graphics/brenner_middle_pantographs_down.png") {
+                    spriteset_template_asymmetric_reversed_8_8_flipped(190,NOANIM)
+                }
+                spriteset(brenner_middle_ss_pantographs_up_3_flipped, "generated/graphics/brenner_middle_pantographs_up.png") {
+                    spriteset_template_asymmetric_reversed_8_8_flipped(190,NOANIM)
+                }
+            switch (FEAT_TRAINS, SELF, brenner_middle_switch_graphics_pantographs_3_flipped, tile_powers_railtype("ELRL")) {
+                1: return brenner_middle_ss_pantographs_up_3_flipped;
+                return brenner_middle_ss_pantographs_down_3_flipped;
+            }
+    switch (FEAT_TRAINS, SELF, brenner_middle_switch_graphics_engine_id_3,
+            [switch_graphics_consist_specific_livery_check_engine_id() + switch_graphics_opening_doors()]) {
+        100: return brenner_middle_ss_doors_closed_livery_1_3_unflipped;
+        101: return brenner_middle_ss_doors_open_livery_1_3_unflipped;
+        110: return brenner_middle_ss_doors_closed_livery_1_3_flipped;
+        111: return brenner_middle_ss_doors_open_livery_1_3_flipped;
+        200: return brenner_middle_ss_doors_closed_livery_2_3_unflipped;
+        201: return brenner_middle_ss_doors_open_livery_2_3_unflipped;
+        210: return brenner_middle_ss_doors_closed_livery_2_3_flipped;
+        211: return brenner_middle_ss_doors_open_livery_2_3_flipped;
+    }
+        switch (FEAT_TRAINS, SELF, brenner_middle_switch_graphics_pantographs_3, vehicle_is_flipped) {
+            1: return brenner_middle_switch_graphics_pantographs_3_flipped;
+            return brenner_middle_switch_graphics_pantographs_3_unflipped;
+        }
+    switch (FEAT_TRAINS, SELF, brenner_middle_switch_graphics_vehicle_layers_3, getbits(extra_callback_info1, 8, 8)) {
+        0: return brenner_middle_switch_graphics_engine_id_3;
+            1: return brenner_middle_switch_graphics_pantographs_3;
+    }
+            switch (FEAT_TRAINS, SELF, brenner_middle_switch_graphics_position_in_consist_entry_point_PASS, switch_graphics_pax_car_ruleset()) {
+                0: return brenner_middle_switch_graphics_vehicle_layers_0;
+                1: return brenner_middle_switch_graphics_vehicle_layers_1;
+                2: return brenner_middle_switch_graphics_vehicle_layers_2;
+                3: return brenner_middle_switch_graphics_vehicle_layers_3;
+            }
+            switch (FEAT_TRAINS, SELF, brenner_middle_switch_graphics_position_in_consist_entry_point_DFLT, switch_graphics_pax_car_ruleset()) {
+                0: return brenner_middle_switch_graphics_vehicle_layers_0;
+                1: return brenner_middle_switch_graphics_vehicle_layers_1;
+                2: return brenner_middle_switch_graphics_vehicle_layers_2;
+                3: return brenner_middle_switch_graphics_vehicle_layers_3;
+            }
+switch (FEAT_TRAINS, PARENT, brenner_middle_switch_graphics_vehicle_cargo, most_common_cargo_type) {
+            PASS: return brenner_middle_switch_graphics_position_in_consist_entry_point_PASS;
+    return brenner_middle_switch_graphics_position_in_consist_entry_point_DFLT;
+}
+switch (FEAT_TRAINS, SELF, brenner_middle_switch_graphics_vehicle,
+    1
+    ) {
+    return brenner_middle_switch_graphics_vehicle_cargo;
+}
+// buy menu graphics chain
+spriteset(brenner_middle_ss_vehicle_purchase, "generated/graphics/brenner_middle.png") {
+    spriteset_template_purchase_default(360,10,65,-32,NOANIM)
+}
+        spriteset(brenner_middle_ss_pantograph_purchase, "generated/graphics/brenner_middle_pantographs_down.png") {
+            spriteset_template_purchase_default(360,10,65,-32,NOANIM)
+        }
+        switch (FEAT_TRAINS, SELF, brenner_middle_switch_set_layers_register_more_sprites_purchase, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
+            return brenner_middle_ss_vehicle_purchase;
+        }
+        switch (FEAT_TRAINS, SELF, brenner_middle_switch_graphics_purchase, getbits(extra_callback_info1, 8, 8)) {
+            0: return brenner_middle_switch_set_layers_register_more_sprites_purchase;
+            1: return brenner_middle_ss_pantograph_purchase;
+        }
+switch (FEAT_TRAINS, SELF, brenner_middle_switch_set_layers_register_more_sprites, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
+    return brenner_middle_switch_graphics_vehicle;
+}
+switch (FEAT_TRAINS, SELF, brenner_middle_switch_graphics, getbits(extra_callback_info1, 8, 8)) {
+    0: return brenner_middle_switch_set_layers_register_more_sprites;
+        1: return brenner_middle_switch_set_layers_register_more_sprites;
+    return switch_graphics_layer_tail_light_empty;
+}
+switch (FEAT_TRAINS, SELF, brenner_middle_switch_cargo_capacity,
+        [STORE_TEMP(33, 0), STORE_TEMP(48, 1), STORE_TEMP(64, 2), STORE_TEMP(85, 3)]) {
+    return switch_cargo_capacity();
+}
+        switch (FEAT_TRAINS, SELF, brenner_middle_switch_effect_spawn_model_and_powered, 1) {
+            return EFFECT_SPAWN_MODEL_ELECTRIC;
+        }
+            switch (FEAT_TRAINS, SELF, brenner_middle_switch_create_effect_default_unreversed, [STORE_TEMP(create_effect(EFFECT_SPRITE_ELECTRIC,0,0,12), 0x100)]) {
+                return 1 + CB_RESULT_CREATE_EFFECT_CENTER;
+            }
+    switch (FEAT_TRAINS, SELF, brenner_middle_switch_create_effect_check_railtype_unreversed, tile_powers_railtype("ELRL")) {
+        return brenner_middle_switch_create_effect_default_unreversed;
+    }
+    switch (FEAT_TRAINS, SELF, brenner_middle_switch_buy_menu_text_result, 1) {
+    return string(STR_BUY_MENU_WRAPPER_TWO_SUBSTR, string(STR_WAGONS_ADD_POWER_MIDDLE), string(STR_ROLE, string(STR_ROLE_VERY_HIGH_SPEED)));
+}
+        switch (FEAT_TRAINS, SELF, brenner_middle_switch_buy_menu_text, [
+            STORE_TEMP((3000 | string(STR_NAME_brenner_cab) << 16), 0x100)
+        ]) {
+            return brenner_middle_switch_buy_menu_text_result;
+        }
+    // -- power varies if specific engines are present in the consist -- //
+    switch (FEAT_TRAINS, PARENT, brenner_middle_switch_power, [count_veh_id(brenner_cab) > 0]) {
+        1: return 3000;
+        return 0;
+    }
+        switch (FEAT_TRAINS, PARENT, brenner_middle_switch_running_cost_factor, 1) {
+            return 1820;
+        }
+item(FEAT_TRAINS, brenner_middle, 2880) {
+    property {
+        name:                           string(STR_NAME_CONSIST_PARENTHESES, string(STR_NAME_brenner_middle), string(STR_NAME_SUFFIX_ELECTRIC));
+        climates_available:             NO_CLIMATE; // nml constant
+        engine_class:                   ENGINE_CLASS_ELECTRIC;
+        introduction_date:              date(2017, 9, 1);
+        cargo_capacity:                 48;
+        sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+        power:                          0hp;
+            speed:                          186mph;
+        weight:                         104ton;
+        tractive_effort_coefficient:    0.3;
+        cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+        running_cost_base:              RUNNING_COST_STEAM;
+        running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+        refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+        refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes:   bitmask(); // don't set non-refittable classes, increases likelihood of breaking cargo support
+        cargo_allow_refit:              [];
+        cargo_disallow_refit:           [];
+            default_cargo_type:             PASS;
+        misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_AUTOREFIT,TRAIN_FLAG_TILT); // nml constants
+        model_life:                     VEHICLE_NEVER_EXPIRES;
+        retire_early:                   -10;
+        reliability_decay:              20; // default value
+        vehicle_life:                   40;
+        length:                         8;
+        track_type:                     ELRL;
+        effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+    }
+    graphics {
+        default:                        brenner_middle_switch_graphics;
+        purchase:                       brenner_middle_switch_graphics_purchase;
+        cost_factor:                    4525; // CB used as it is capped to max 32k, prop is only 255
+        running_cost_factor:            brenner_middle_switch_running_cost_factor; // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+        purchase_running_cost_factor:   1820; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+            cargo_capacity:                 brenner_middle_switch_cargo_capacity;
+            purchase_cargo_capacity:        brenner_middle_switch_cargo_capacity;
+            loading_speed:                  5;
+            power:                          brenner_middle_switch_power;
+            purchase_power:                 0;
+            effect_spawn_model_and_powered: brenner_middle_switch_effect_spawn_model_and_powered;
+            create_effect:      brenner_middle_switch_create_effect_check_railtype_unreversed;
+            articulated_part: brenner_middle_articulated_cb_switch;
+            additional_text:                brenner_middle_switch_buy_menu_text;
+    }
+}
+    if (param[1]==0) {
+        item(FEAT_TRAINS, brenner_middle, 2880) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+    }

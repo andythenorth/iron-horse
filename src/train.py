@@ -2127,15 +2127,14 @@ class CoveredHopperCarPelletConsist(CoveredHopperCarConsistBase):
         )
 
 
-class CryoTankCarConsist(CarConsist):
+class GasTankCarConsistBase(CarConsist):
     """
-    Specialist tank cars for gases, e.g. Oxygen, Chlorine etc.
+    Specialist tank cars for gases, e.g. Oxygen, Chlorine, Ammonia, Propylene etc.
     """
 
     def __init__(self, **kwargs):
         # tank cars are unrealistically autorefittable, and at no cost
         # Pikka: if people complain that it's unrealistic, tell them "don't do it then"
-        self.base_id = "cryo_tank_car"
         super().__init__(**kwargs)
         self.class_refit_groups = []  # no classes, use explicit labels
         self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
@@ -2157,6 +2156,30 @@ class CryoTankCarConsist(CarConsist):
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             recolour_maps=polar_fox.constants.cryo_tanker_livery_recolour_maps
         )
+
+
+class GasTankCarPressureConsist(GasTankCarConsistBase):
+    """
+    Pressure tank cars for gases under pressure at low temperatue, e.g. Chlorine etc.
+    """
+
+    def __init__(self, **kwargs):
+        # tank cars are unrealistically autorefittable, and at no cost
+        # Pikka: if people complain that it's unrealistic, tell them "don't do it then"
+        self.base_id = "pressure_tank_car"
+        super().__init__(**kwargs)
+
+
+class GasTankCarCryoConsist(GasTankCarConsistBase):
+    """
+    Specialist insulated and pressurised tank cars for gases under pressure at low temperatue, e.g. Oxygen etc.
+    """
+
+    def __init__(self, **kwargs):
+        # tank cars are unrealistically autorefittable, and at no cost
+        # Pikka: if people complain that it's unrealistic, tell them "don't do it then"
+        self.base_id = "cryo_tank_car"
+        super().__init__(**kwargs)
 
 
 class CurtainSideCarBoxConsist(CarConsist):

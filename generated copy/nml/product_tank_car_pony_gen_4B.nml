@@ -1,0 +1,88 @@
+        spriteset(product_tank_car_pony_gen_4B_ss_0_unflipped, "generated/graphics/product_tank_car_pony_gen_4B.png") {
+            spriteset_template_symmetric_unreversed_6_8_unflipped(10,NOANIM)
+        }
+    switch (FEAT_TRAINS, SELF, product_tank_car_pony_gen_4B_switch_graphics_cargo_type_unflipped, cargo_type_in_veh) {
+                return  product_tank_car_pony_gen_4B_ss_0_unflipped;
+    }
+        spriteset(product_tank_car_pony_gen_4B_ss_0_flipped, "generated/graphics/product_tank_car_pony_gen_4B.png") {
+            spriteset_template_symmetric_unreversed_6_8_flipped(10,NOANIM)
+        }
+    switch (FEAT_TRAINS, SELF, product_tank_car_pony_gen_4B_switch_graphics_cargo_type_flipped, cargo_type_in_veh) {
+                return  product_tank_car_pony_gen_4B_ss_0_flipped;
+    }
+// handle user flipped state
+switch (FEAT_TRAINS, SELF, product_tank_car_pony_gen_4B_switch_graphics_vehicle, vehicle_is_flipped) {
+    1: return product_tank_car_pony_gen_4B_switch_graphics_cargo_type_flipped;
+    return product_tank_car_pony_gen_4B_switch_graphics_cargo_type_unflipped;
+}
+// buy menu graphics chain
+    spriteset(product_tank_car_pony_gen_4B_ss_purchase_0, "generated/graphics/product_tank_car_pony_gen_4B.png") {
+        spriteset_template_purchase_default(224,10,25,-12,NOANIM)
+    }
+switch (FEAT_TRAINS, SELF, product_tank_car_pony_gen_4B_switch_set_layers_register_more_sprites, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
+    return product_tank_car_pony_gen_4B_switch_graphics_vehicle;
+}
+switch (FEAT_TRAINS, SELF, product_tank_car_pony_gen_4B_switch_graphics, getbits(extra_callback_info1, 8, 8)) {
+    0: return product_tank_car_pony_gen_4B_switch_set_layers_register_more_sprites;
+    return switch_graphics_layer_tail_light_24px;
+}
+switch (FEAT_TRAINS, SELF, product_tank_car_pony_gen_4B_switch_graphics_purchase, cargo_type_in_veh) {
+            return product_tank_car_pony_gen_4B_ss_purchase_0;
+}
+switch (FEAT_TRAINS, SELF, product_tank_car_pony_gen_4B_switch_cargo_capacity,
+        [STORE_TEMP(23, 0), STORE_TEMP(33, 1), STORE_TEMP(44, 2), STORE_TEMP(59, 3)]) {
+    return switch_cargo_capacity();
+}
+        switch (FEAT_TRAINS, PARENT, product_tank_car_pony_gen_4B_switch_running_cost_factor, 1) {
+            return 230;
+        }
+item(FEAT_TRAINS, product_tank_car_pony_gen_4B, 3390) {
+    property {
+        name:                           string(STR_NAME_CONSIST_PARENTHESES, string(STR_NAME_SUFFIX_PRODUCT_TANK_CAR), string(STR_NAME_SUFFIX_MEDIUM));
+        climates_available:             NO_CLIMATE; // nml constant
+        engine_class:                   ENGINE_CLASS_STEAM;
+        introduction_date:              date(1960, 5, 1);
+        cargo_capacity:                 33;
+        sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+        power:                          0hp;
+            speed:                          75mph;
+        weight:                         15ton;
+        tractive_effort_coefficient:    0.3;
+        cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+        running_cost_base:              RUNNING_COST_DIESEL;
+        running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+        refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+        refittable_cargo_classes:       bitmask(CC_LIQUID);
+        non_refittable_cargo_classes:   bitmask(); // don't set non-refittable classes, increases likelihood of breaking cargo support
+        cargo_allow_refit:              [];
+        cargo_disallow_refit:           [MILK,WATR,BEER,FOOD,EOIL,O2__,CHLO];
+            default_cargo_type:             cargotype_available("ACID")?ACID:cargotype_available("RFPR")?RFPR:CHLO;
+        misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_FLIP,TRAIN_FLAG_AUTOREFIT); // nml constants
+        model_life:                     30;
+        retire_early:                   -10;
+        reliability_decay:              20; // default value
+        vehicle_life:                   40;
+        length:                         6;
+        track_type:                     RAIL;
+        effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+    }
+    graphics {
+        default:                        product_tank_car_pony_gen_4B_switch_graphics;
+        purchase:                       product_tank_car_pony_gen_4B_switch_graphics_purchase;
+        cost_factor:                    112; // CB used as it is capped to max 32k, prop is only 255
+        running_cost_factor:            product_tank_car_pony_gen_4B_switch_running_cost_factor; // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+        purchase_running_cost_factor:   230; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                colour_mapping:                 switch_colour_mapping(1, 0, 1);
+                purchase_colour_mapping:        switch_colour_mapping_purchase(1, 0, 1);
+            cargo_capacity:                 product_tank_car_pony_gen_4B_switch_cargo_capacity;
+            purchase_cargo_capacity:        product_tank_car_pony_gen_4B_switch_cargo_capacity;
+            loading_speed:                  7;
+    }
+}
+    if (param[1]==0 && param_simplified_gameplay==0) {
+        item(FEAT_TRAINS, product_tank_car_pony_gen_4B, 3390) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+    }

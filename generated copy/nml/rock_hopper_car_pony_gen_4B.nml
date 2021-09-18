@@ -1,0 +1,465 @@
+    spriteset(rock_hopper_car_pony_gen_4B_ss_empty_unflipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(10,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loading_0_unflipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(40,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loaded_0_unflipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(70,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loading_1_unflipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(100,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loaded_1_unflipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(130,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loading_2_unflipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(160,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loaded_2_unflipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(190,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loading_3_unflipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(220,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loaded_3_unflipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(250,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loading_4_unflipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(280,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loaded_4_unflipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(310,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loading_5_unflipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(340,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loaded_5_unflipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(370,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loading_6_unflipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(400,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loaded_6_unflipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(430,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loading_7_unflipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(460,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loaded_7_unflipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(490,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loading_8_unflipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(520,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loaded_8_unflipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(550,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loading_9_unflipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(580,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loaded_9_unflipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(610,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loading_10_unflipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(640,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loaded_10_unflipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(670,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loading_11_unflipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(700,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loaded_11_unflipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(730,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loading_12_unflipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(760,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loaded_12_unflipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(790,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loading_13_unflipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(820,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loaded_13_unflipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(850,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loading_14_unflipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(880,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loaded_14_unflipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(910,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loading_15_unflipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(940,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loaded_15_unflipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(970,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loading_16_unflipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(1000,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loaded_16_unflipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(1030,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loading_17_unflipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(1060,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loaded_17_unflipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(1090,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loading_18_unflipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(1120,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loaded_18_unflipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(1150,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loading_19_unflipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(1180,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loaded_19_unflipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(1210,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loading_20_unflipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(1240,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loaded_20_unflipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(1270,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loading_21_unflipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(1300,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loaded_21_unflipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(1330,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loading_22_unflipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(1360,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loaded_22_unflipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(1390,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_empty_flipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(10,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loading_0_flipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(40,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loaded_0_flipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(70,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loading_1_flipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(100,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loaded_1_flipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(130,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loading_2_flipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(160,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loaded_2_flipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(190,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loading_3_flipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(220,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loaded_3_flipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(250,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loading_4_flipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(280,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loaded_4_flipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(310,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loading_5_flipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(340,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loaded_5_flipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(370,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loading_6_flipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(400,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loaded_6_flipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(430,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loading_7_flipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(460,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loaded_7_flipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(490,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loading_8_flipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(520,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loaded_8_flipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(550,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loading_9_flipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(580,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loaded_9_flipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(610,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loading_10_flipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(640,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loaded_10_flipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(670,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loading_11_flipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(700,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loaded_11_flipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(730,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loading_12_flipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(760,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loaded_12_flipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(790,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loading_13_flipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(820,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loaded_13_flipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(850,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loading_14_flipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(880,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loaded_14_flipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(910,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loading_15_flipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(940,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loaded_15_flipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(970,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loading_16_flipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(1000,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loaded_16_flipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(1030,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loading_17_flipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(1060,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loaded_17_flipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(1090,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loading_18_flipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(1120,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loaded_18_flipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(1150,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loading_19_flipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(1180,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loaded_19_flipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(1210,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loading_20_flipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(1240,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loaded_20_flipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(1270,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loading_21_flipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(1300,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loaded_21_flipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(1330,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loading_22_flipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(1360,NOANIM)
+    }
+    spriteset(rock_hopper_car_pony_gen_4B_ss_loaded_22_flipped, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(1390,NOANIM)
+    }
+        switch (FEAT_TRAINS, SELF, rock_hopper_car_pony_gen_4B_switch_cargo_loading_unflipped, cargo_type_in_veh) {
+                        AORE: return rock_hopper_car_pony_gen_4B_ss_loading_0_unflipped;
+                        CASS: return rock_hopper_car_pony_gen_4B_ss_loading_1_unflipped;
+                        CLAY: return rock_hopper_car_pony_gen_4B_ss_loading_2_unflipped;
+                        COAL: return rock_hopper_car_pony_gen_4B_ss_loading_3_unflipped;
+                        COKE: return rock_hopper_car_pony_gen_4B_ss_loading_4_unflipped;
+                        CORE: return rock_hopper_car_pony_gen_4B_ss_loading_5_unflipped;
+                        GRVL: return rock_hopper_car_pony_gen_4B_ss_loading_6_unflipped;
+                        IORE: return rock_hopper_car_pony_gen_4B_ss_loading_7_unflipped;
+                        LIME: return rock_hopper_car_pony_gen_4B_ss_loading_8_unflipped;
+                        KAOL: return rock_hopper_car_pony_gen_4B_ss_loading_9_unflipped;
+                        MNO2: return rock_hopper_car_pony_gen_4B_ss_loading_10_unflipped;
+                        NITR: return rock_hopper_car_pony_gen_4B_ss_loading_11_unflipped;
+                        PEAT: return rock_hopper_car_pony_gen_4B_ss_loading_12_unflipped;
+                        PHOS: return rock_hopper_car_pony_gen_4B_ss_loading_13_unflipped;
+                        PORE: return rock_hopper_car_pony_gen_4B_ss_loading_14_unflipped;
+                        POTA: return rock_hopper_car_pony_gen_4B_ss_loading_15_unflipped;
+                        SALT: return rock_hopper_car_pony_gen_4B_ss_loading_16_unflipped;
+                        SAND: return rock_hopper_car_pony_gen_4B_ss_loading_17_unflipped;
+                        SASH: return rock_hopper_car_pony_gen_4B_ss_loading_18_unflipped;
+                        SCMT: return rock_hopper_car_pony_gen_4B_ss_loading_19_unflipped;
+                        SGBT: return rock_hopper_car_pony_gen_4B_ss_loading_20_unflipped;
+                        SLAG: return rock_hopper_car_pony_gen_4B_ss_loading_21_unflipped;
+                        SULP: return rock_hopper_car_pony_gen_4B_ss_loading_22_unflipped;
+            return rock_hopper_car_pony_gen_4B_ss_loading_6_unflipped;
+        }
+        switch (FEAT_TRAINS, SELF, rock_hopper_car_pony_gen_4B_switch_cargo_loading_flipped, cargo_type_in_veh) {
+                        AORE: return rock_hopper_car_pony_gen_4B_ss_loading_0_flipped;
+                        CASS: return rock_hopper_car_pony_gen_4B_ss_loading_1_flipped;
+                        CLAY: return rock_hopper_car_pony_gen_4B_ss_loading_2_flipped;
+                        COAL: return rock_hopper_car_pony_gen_4B_ss_loading_3_flipped;
+                        COKE: return rock_hopper_car_pony_gen_4B_ss_loading_4_flipped;
+                        CORE: return rock_hopper_car_pony_gen_4B_ss_loading_5_flipped;
+                        GRVL: return rock_hopper_car_pony_gen_4B_ss_loading_6_flipped;
+                        IORE: return rock_hopper_car_pony_gen_4B_ss_loading_7_flipped;
+                        LIME: return rock_hopper_car_pony_gen_4B_ss_loading_8_flipped;
+                        KAOL: return rock_hopper_car_pony_gen_4B_ss_loading_9_flipped;
+                        MNO2: return rock_hopper_car_pony_gen_4B_ss_loading_10_flipped;
+                        NITR: return rock_hopper_car_pony_gen_4B_ss_loading_11_flipped;
+                        PEAT: return rock_hopper_car_pony_gen_4B_ss_loading_12_flipped;
+                        PHOS: return rock_hopper_car_pony_gen_4B_ss_loading_13_flipped;
+                        PORE: return rock_hopper_car_pony_gen_4B_ss_loading_14_flipped;
+                        POTA: return rock_hopper_car_pony_gen_4B_ss_loading_15_flipped;
+                        SALT: return rock_hopper_car_pony_gen_4B_ss_loading_16_flipped;
+                        SAND: return rock_hopper_car_pony_gen_4B_ss_loading_17_flipped;
+                        SASH: return rock_hopper_car_pony_gen_4B_ss_loading_18_flipped;
+                        SCMT: return rock_hopper_car_pony_gen_4B_ss_loading_19_flipped;
+                        SGBT: return rock_hopper_car_pony_gen_4B_ss_loading_20_flipped;
+                        SLAG: return rock_hopper_car_pony_gen_4B_ss_loading_21_flipped;
+                        SULP: return rock_hopper_car_pony_gen_4B_ss_loading_22_flipped;
+            return rock_hopper_car_pony_gen_4B_ss_loading_6_flipped;
+        }
+        switch (FEAT_TRAINS, SELF, rock_hopper_car_pony_gen_4B_switch_cargo_loaded_unflipped, cargo_type_in_veh) {
+                        AORE: return rock_hopper_car_pony_gen_4B_ss_loaded_0_unflipped;
+                        CASS: return rock_hopper_car_pony_gen_4B_ss_loaded_1_unflipped;
+                        CLAY: return rock_hopper_car_pony_gen_4B_ss_loaded_2_unflipped;
+                        COAL: return rock_hopper_car_pony_gen_4B_ss_loaded_3_unflipped;
+                        COKE: return rock_hopper_car_pony_gen_4B_ss_loaded_4_unflipped;
+                        CORE: return rock_hopper_car_pony_gen_4B_ss_loaded_5_unflipped;
+                        GRVL: return rock_hopper_car_pony_gen_4B_ss_loaded_6_unflipped;
+                        IORE: return rock_hopper_car_pony_gen_4B_ss_loaded_7_unflipped;
+                        LIME: return rock_hopper_car_pony_gen_4B_ss_loaded_8_unflipped;
+                        KAOL: return rock_hopper_car_pony_gen_4B_ss_loaded_9_unflipped;
+                        MNO2: return rock_hopper_car_pony_gen_4B_ss_loaded_10_unflipped;
+                        NITR: return rock_hopper_car_pony_gen_4B_ss_loaded_11_unflipped;
+                        PEAT: return rock_hopper_car_pony_gen_4B_ss_loaded_12_unflipped;
+                        PHOS: return rock_hopper_car_pony_gen_4B_ss_loaded_13_unflipped;
+                        PORE: return rock_hopper_car_pony_gen_4B_ss_loaded_14_unflipped;
+                        POTA: return rock_hopper_car_pony_gen_4B_ss_loaded_15_unflipped;
+                        SALT: return rock_hopper_car_pony_gen_4B_ss_loaded_16_unflipped;
+                        SAND: return rock_hopper_car_pony_gen_4B_ss_loaded_17_unflipped;
+                        SASH: return rock_hopper_car_pony_gen_4B_ss_loaded_18_unflipped;
+                        SCMT: return rock_hopper_car_pony_gen_4B_ss_loaded_19_unflipped;
+                        SGBT: return rock_hopper_car_pony_gen_4B_ss_loaded_20_unflipped;
+                        SLAG: return rock_hopper_car_pony_gen_4B_ss_loaded_21_unflipped;
+                        SULP: return rock_hopper_car_pony_gen_4B_ss_loaded_22_unflipped;
+            return rock_hopper_car_pony_gen_4B_ss_loaded_6_unflipped;
+        }
+        switch (FEAT_TRAINS, SELF, rock_hopper_car_pony_gen_4B_switch_cargo_loaded_flipped, cargo_type_in_veh) {
+                        AORE: return rock_hopper_car_pony_gen_4B_ss_loaded_0_flipped;
+                        CASS: return rock_hopper_car_pony_gen_4B_ss_loaded_1_flipped;
+                        CLAY: return rock_hopper_car_pony_gen_4B_ss_loaded_2_flipped;
+                        COAL: return rock_hopper_car_pony_gen_4B_ss_loaded_3_flipped;
+                        COKE: return rock_hopper_car_pony_gen_4B_ss_loaded_4_flipped;
+                        CORE: return rock_hopper_car_pony_gen_4B_ss_loaded_5_flipped;
+                        GRVL: return rock_hopper_car_pony_gen_4B_ss_loaded_6_flipped;
+                        IORE: return rock_hopper_car_pony_gen_4B_ss_loaded_7_flipped;
+                        LIME: return rock_hopper_car_pony_gen_4B_ss_loaded_8_flipped;
+                        KAOL: return rock_hopper_car_pony_gen_4B_ss_loaded_9_flipped;
+                        MNO2: return rock_hopper_car_pony_gen_4B_ss_loaded_10_flipped;
+                        NITR: return rock_hopper_car_pony_gen_4B_ss_loaded_11_flipped;
+                        PEAT: return rock_hopper_car_pony_gen_4B_ss_loaded_12_flipped;
+                        PHOS: return rock_hopper_car_pony_gen_4B_ss_loaded_13_flipped;
+                        PORE: return rock_hopper_car_pony_gen_4B_ss_loaded_14_flipped;
+                        POTA: return rock_hopper_car_pony_gen_4B_ss_loaded_15_flipped;
+                        SALT: return rock_hopper_car_pony_gen_4B_ss_loaded_16_flipped;
+                        SAND: return rock_hopper_car_pony_gen_4B_ss_loaded_17_flipped;
+                        SASH: return rock_hopper_car_pony_gen_4B_ss_loaded_18_flipped;
+                        SCMT: return rock_hopper_car_pony_gen_4B_ss_loaded_19_flipped;
+                        SGBT: return rock_hopper_car_pony_gen_4B_ss_loaded_20_flipped;
+                        SLAG: return rock_hopper_car_pony_gen_4B_ss_loaded_21_flipped;
+                        SULP: return rock_hopper_car_pony_gen_4B_ss_loaded_22_flipped;
+            return rock_hopper_car_pony_gen_4B_ss_loaded_6_flipped;
+        }
+        switch (FEAT_TRAINS, SELF, rock_hopper_car_pony_gen_4B_switch_graphics_vehicle, switch_graphics_visible_cargo_no_cover_flip_and_load()) {
+            0: return rock_hopper_car_pony_gen_4B_ss_empty_unflipped;
+            1: return rock_hopper_car_pony_gen_4B_switch_cargo_loading_unflipped;
+            2: return rock_hopper_car_pony_gen_4B_switch_cargo_loaded_unflipped;
+            3: return rock_hopper_car_pony_gen_4B_ss_empty_flipped;
+            4: return rock_hopper_car_pony_gen_4B_switch_cargo_loading_flipped;
+            5: return rock_hopper_car_pony_gen_4B_switch_cargo_loaded_flipped;
+        }
+// buy menu graphics chain
+spriteset(rock_hopper_car_pony_gen_4B_ss_purchase, "generated/graphics/rock_hopper_car_pony_gen_4B.png") {
+    spriteset_template_purchase_default(224,10,25,-12,NOANIM)
+}
+switch (FEAT_TRAINS, SELF, rock_hopper_car_pony_gen_4B_switch_graphics_purchase, 0) {
+    return rock_hopper_car_pony_gen_4B_ss_purchase;
+}
+switch (FEAT_TRAINS, SELF, rock_hopper_car_pony_gen_4B_switch_set_layers_register_more_sprites, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
+    return rock_hopper_car_pony_gen_4B_switch_graphics_vehicle;
+}
+switch (FEAT_TRAINS, SELF, rock_hopper_car_pony_gen_4B_switch_graphics, getbits(extra_callback_info1, 8, 8)) {
+    0: return rock_hopper_car_pony_gen_4B_switch_set_layers_register_more_sprites;
+    return switch_graphics_layer_tail_light_24px;
+}
+switch (FEAT_TRAINS, SELF, rock_hopper_car_pony_gen_4B_switch_cargo_capacity,
+        [STORE_TEMP(23, 0), STORE_TEMP(33, 1), STORE_TEMP(44, 2), STORE_TEMP(59, 3)]) {
+    return switch_cargo_capacity();
+}
+        switch (FEAT_TRAINS, PARENT, rock_hopper_car_pony_gen_4B_switch_running_cost_factor, 1) {
+            return 230;
+        }
+item(FEAT_TRAINS, rock_hopper_car_pony_gen_4B, 2000) {
+    property {
+        name:                           string(STR_NAME_CONSIST_PARENTHESES, string(STR_NAME_SUFFIX_ROCK_HOPPER_CAR), string(STR_NAME_SUFFIX_MEDIUM));
+        climates_available:             NO_CLIMATE; // nml constant
+        engine_class:                   ENGINE_CLASS_STEAM;
+        introduction_date:              date(1960, 5, 1);
+        cargo_capacity:                 33;
+        sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+        power:                          0hp;
+            speed:                          75mph;
+        weight:                         15ton;
+        tractive_effort_coefficient:    0.3;
+        cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+        running_cost_base:              RUNNING_COST_DIESEL;
+        running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+        refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+        refittable_cargo_classes:       bitmask(CC_BULK);
+        non_refittable_cargo_classes:   bitmask(); // don't set non-refittable classes, increases likelihood of breaking cargo support
+        cargo_allow_refit:              [];
+        cargo_disallow_refit:           [WOOD,SGCN,FICR,BDMT,WDPR,GRAI,WHEA,CERE,MAIZ,FRUT,BEAN,CMNT,CTCD,FERT,OLSD,SUGR,TOFF,URAN,CBLK,PLAS];
+            default_cargo_type:             cargotype_available("LIME")?LIME:cargotype_available("GRVL")?GRVL:cargotype_available("SAND")?SAND:cargotype_available("PORE")?PORE:cargotype_available("SALT")?SALT:cargotype_available("IORE")?IORE:CORE;
+        misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_FLIP,TRAIN_FLAG_AUTOREFIT); // nml constants
+        model_life:                     30;
+        retire_early:                   -10;
+        reliability_decay:              20; // default value
+        vehicle_life:                   40;
+        length:                         6;
+        track_type:                     RAIL;
+        effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+    }
+    graphics {
+        default:                        rock_hopper_car_pony_gen_4B_switch_graphics;
+        purchase:                       rock_hopper_car_pony_gen_4B_switch_graphics_purchase;
+        cost_factor:                    112; // CB used as it is capped to max 32k, prop is only 255
+        running_cost_factor:            rock_hopper_car_pony_gen_4B_switch_running_cost_factor; // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+        purchase_running_cost_factor:   230; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                colour_mapping:                 switch_colour_mapping(1, 0, 1);
+                purchase_colour_mapping:        switch_colour_mapping_purchase(1, 0, 1);
+            cargo_capacity:                 rock_hopper_car_pony_gen_4B_switch_cargo_capacity;
+            purchase_cargo_capacity:        rock_hopper_car_pony_gen_4B_switch_cargo_capacity;
+            loading_speed:                  10;
+    }
+}
+    if (param[1]==0 && param_simplified_gameplay==0) {
+        item(FEAT_TRAINS, rock_hopper_car_pony_gen_4B, 2000) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+    }

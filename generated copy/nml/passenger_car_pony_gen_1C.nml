@@ -1,0 +1,213 @@
+// default graphics chain
+            spriteset(passenger_car_pony_gen_1C_ss_doors_closed_livery_1_0_unflipped, "generated/graphics/passenger_car_pony_gen_1C.png") {
+                spriteset_template_asymmetric_unreversed_8_8_unflipped(10,NOANIM)
+            }
+            spriteset(passenger_car_pony_gen_1C_ss_doors_open_livery_1_0_unflipped, "generated/graphics/passenger_car_pony_gen_1C.png") {
+                spriteset_template_asymmetric_unreversed_8_8_unflipped(40,NOANIM)
+            }
+            spriteset(passenger_car_pony_gen_1C_ss_doors_closed_livery_2_0_unflipped, "generated/graphics/passenger_car_pony_gen_1C.png") {
+                spriteset_template_asymmetric_unreversed_8_8_unflipped(70,NOANIM)
+            }
+            spriteset(passenger_car_pony_gen_1C_ss_doors_open_livery_2_0_unflipped, "generated/graphics/passenger_car_pony_gen_1C.png") {
+                spriteset_template_asymmetric_unreversed_8_8_unflipped(100,NOANIM)
+            }
+            spriteset(passenger_car_pony_gen_1C_ss_doors_closed_livery_1_0_flipped, "generated/graphics/passenger_car_pony_gen_1C.png") {
+                spriteset_template_asymmetric_reversed_8_8_flipped(10,NOANIM)
+            }
+            spriteset(passenger_car_pony_gen_1C_ss_doors_open_livery_1_0_flipped, "generated/graphics/passenger_car_pony_gen_1C.png") {
+                spriteset_template_asymmetric_reversed_8_8_flipped(40,NOANIM)
+            }
+            spriteset(passenger_car_pony_gen_1C_ss_doors_closed_livery_2_0_flipped, "generated/graphics/passenger_car_pony_gen_1C.png") {
+                spriteset_template_asymmetric_reversed_8_8_flipped(70,NOANIM)
+            }
+            spriteset(passenger_car_pony_gen_1C_ss_doors_open_livery_2_0_flipped, "generated/graphics/passenger_car_pony_gen_1C.png") {
+                spriteset_template_asymmetric_reversed_8_8_flipped(100,NOANIM)
+            }
+    switch (FEAT_TRAINS, SELF, passenger_car_pony_gen_1C_switch_graphics_engine_id_0,
+            [switch_graphics_consist_specific_livery_check_engine_id() + switch_graphics_opening_doors()]) {
+        100: return passenger_car_pony_gen_1C_ss_doors_closed_livery_1_0_unflipped;
+        101: return passenger_car_pony_gen_1C_ss_doors_open_livery_1_0_unflipped;
+        110: return passenger_car_pony_gen_1C_ss_doors_closed_livery_1_0_flipped;
+        111: return passenger_car_pony_gen_1C_ss_doors_open_livery_1_0_flipped;
+        200: return passenger_car_pony_gen_1C_ss_doors_closed_livery_2_0_unflipped;
+        201: return passenger_car_pony_gen_1C_ss_doors_open_livery_2_0_unflipped;
+        210: return passenger_car_pony_gen_1C_ss_doors_closed_livery_2_0_flipped;
+        211: return passenger_car_pony_gen_1C_ss_doors_open_livery_2_0_flipped;
+    }
+    switch (FEAT_TRAINS, SELF, passenger_car_pony_gen_1C_switch_graphics_vehicle_layers_0, getbits(extra_callback_info1, 8, 8)) {
+        0: return passenger_car_pony_gen_1C_switch_graphics_engine_id_0;
+    }
+            spriteset(passenger_car_pony_gen_1C_ss_doors_closed_livery_1_1_unflipped, "generated/graphics/passenger_car_pony_gen_1C.png") {
+                spriteset_template_asymmetric_unreversed_8_8_unflipped(130,NOANIM)
+            }
+            spriteset(passenger_car_pony_gen_1C_ss_doors_open_livery_1_1_unflipped, "generated/graphics/passenger_car_pony_gen_1C.png") {
+                spriteset_template_asymmetric_unreversed_8_8_unflipped(160,NOANIM)
+            }
+            spriteset(passenger_car_pony_gen_1C_ss_doors_closed_livery_2_1_unflipped, "generated/graphics/passenger_car_pony_gen_1C.png") {
+                spriteset_template_asymmetric_unreversed_8_8_unflipped(190,NOANIM)
+            }
+            spriteset(passenger_car_pony_gen_1C_ss_doors_open_livery_2_1_unflipped, "generated/graphics/passenger_car_pony_gen_1C.png") {
+                spriteset_template_asymmetric_unreversed_8_8_unflipped(220,NOANIM)
+            }
+            spriteset(passenger_car_pony_gen_1C_ss_doors_closed_livery_1_1_flipped, "generated/graphics/passenger_car_pony_gen_1C.png") {
+                spriteset_template_asymmetric_reversed_8_8_flipped(130,NOANIM)
+            }
+            spriteset(passenger_car_pony_gen_1C_ss_doors_open_livery_1_1_flipped, "generated/graphics/passenger_car_pony_gen_1C.png") {
+                spriteset_template_asymmetric_reversed_8_8_flipped(160,NOANIM)
+            }
+            spriteset(passenger_car_pony_gen_1C_ss_doors_closed_livery_2_1_flipped, "generated/graphics/passenger_car_pony_gen_1C.png") {
+                spriteset_template_asymmetric_reversed_8_8_flipped(190,NOANIM)
+            }
+            spriteset(passenger_car_pony_gen_1C_ss_doors_open_livery_2_1_flipped, "generated/graphics/passenger_car_pony_gen_1C.png") {
+                spriteset_template_asymmetric_reversed_8_8_flipped(220,NOANIM)
+            }
+    switch (FEAT_TRAINS, SELF, passenger_car_pony_gen_1C_switch_graphics_engine_id_1,
+            [switch_graphics_consist_specific_livery_check_engine_id() + switch_graphics_opening_doors()]) {
+        100: return passenger_car_pony_gen_1C_ss_doors_closed_livery_1_1_unflipped;
+        101: return passenger_car_pony_gen_1C_ss_doors_open_livery_1_1_unflipped;
+        110: return passenger_car_pony_gen_1C_ss_doors_closed_livery_1_1_flipped;
+        111: return passenger_car_pony_gen_1C_ss_doors_open_livery_1_1_flipped;
+        200: return passenger_car_pony_gen_1C_ss_doors_closed_livery_2_1_unflipped;
+        201: return passenger_car_pony_gen_1C_ss_doors_open_livery_2_1_unflipped;
+        210: return passenger_car_pony_gen_1C_ss_doors_closed_livery_2_1_flipped;
+        211: return passenger_car_pony_gen_1C_ss_doors_open_livery_2_1_flipped;
+    }
+    switch (FEAT_TRAINS, SELF, passenger_car_pony_gen_1C_switch_graphics_vehicle_layers_1, getbits(extra_callback_info1, 8, 8)) {
+        0: return passenger_car_pony_gen_1C_switch_graphics_engine_id_1;
+    }
+            spriteset(passenger_car_pony_gen_1C_ss_doors_closed_livery_1_2_unflipped, "generated/graphics/passenger_car_pony_gen_1C.png") {
+                spriteset_template_asymmetric_unreversed_8_8_unflipped(250,NOANIM)
+            }
+            spriteset(passenger_car_pony_gen_1C_ss_doors_open_livery_1_2_unflipped, "generated/graphics/passenger_car_pony_gen_1C.png") {
+                spriteset_template_asymmetric_unreversed_8_8_unflipped(280,NOANIM)
+            }
+            spriteset(passenger_car_pony_gen_1C_ss_doors_closed_livery_2_2_unflipped, "generated/graphics/passenger_car_pony_gen_1C.png") {
+                spriteset_template_asymmetric_unreversed_8_8_unflipped(310,NOANIM)
+            }
+            spriteset(passenger_car_pony_gen_1C_ss_doors_open_livery_2_2_unflipped, "generated/graphics/passenger_car_pony_gen_1C.png") {
+                spriteset_template_asymmetric_unreversed_8_8_unflipped(340,NOANIM)
+            }
+            spriteset(passenger_car_pony_gen_1C_ss_doors_closed_livery_1_2_flipped, "generated/graphics/passenger_car_pony_gen_1C.png") {
+                spriteset_template_asymmetric_reversed_8_8_flipped(250,NOANIM)
+            }
+            spriteset(passenger_car_pony_gen_1C_ss_doors_open_livery_1_2_flipped, "generated/graphics/passenger_car_pony_gen_1C.png") {
+                spriteset_template_asymmetric_reversed_8_8_flipped(280,NOANIM)
+            }
+            spriteset(passenger_car_pony_gen_1C_ss_doors_closed_livery_2_2_flipped, "generated/graphics/passenger_car_pony_gen_1C.png") {
+                spriteset_template_asymmetric_reversed_8_8_flipped(310,NOANIM)
+            }
+            spriteset(passenger_car_pony_gen_1C_ss_doors_open_livery_2_2_flipped, "generated/graphics/passenger_car_pony_gen_1C.png") {
+                spriteset_template_asymmetric_reversed_8_8_flipped(340,NOANIM)
+            }
+    switch (FEAT_TRAINS, SELF, passenger_car_pony_gen_1C_switch_graphics_engine_id_2,
+            [switch_graphics_consist_specific_livery_check_engine_id() + switch_graphics_opening_doors()]) {
+        100: return passenger_car_pony_gen_1C_ss_doors_closed_livery_1_2_unflipped;
+        101: return passenger_car_pony_gen_1C_ss_doors_open_livery_1_2_unflipped;
+        110: return passenger_car_pony_gen_1C_ss_doors_closed_livery_1_2_flipped;
+        111: return passenger_car_pony_gen_1C_ss_doors_open_livery_1_2_flipped;
+        200: return passenger_car_pony_gen_1C_ss_doors_closed_livery_2_2_unflipped;
+        201: return passenger_car_pony_gen_1C_ss_doors_open_livery_2_2_unflipped;
+        210: return passenger_car_pony_gen_1C_ss_doors_closed_livery_2_2_flipped;
+        211: return passenger_car_pony_gen_1C_ss_doors_open_livery_2_2_flipped;
+    }
+    switch (FEAT_TRAINS, SELF, passenger_car_pony_gen_1C_switch_graphics_vehicle_layers_2, getbits(extra_callback_info1, 8, 8)) {
+        0: return passenger_car_pony_gen_1C_switch_graphics_engine_id_2;
+    }
+            switch (FEAT_TRAINS, SELF, passenger_car_pony_gen_1C_switch_graphics_position_in_consist_entry_point_PASS, switch_graphics_pax_car_ruleset()) {
+                0: return passenger_car_pony_gen_1C_switch_graphics_vehicle_layers_0;
+                1: return passenger_car_pony_gen_1C_switch_graphics_vehicle_layers_1;
+                2: return passenger_car_pony_gen_1C_switch_graphics_vehicle_layers_2;
+                3: return passenger_car_pony_gen_1C_switch_graphics_vehicle_layers_0;
+            }
+            switch (FEAT_TRAINS, SELF, passenger_car_pony_gen_1C_switch_graphics_position_in_consist_entry_point_DFLT, switch_graphics_pax_car_ruleset()) {
+                0: return passenger_car_pony_gen_1C_switch_graphics_vehicle_layers_0;
+                1: return passenger_car_pony_gen_1C_switch_graphics_vehicle_layers_1;
+                2: return passenger_car_pony_gen_1C_switch_graphics_vehicle_layers_2;
+                3: return passenger_car_pony_gen_1C_switch_graphics_vehicle_layers_0;
+            }
+switch (FEAT_TRAINS, PARENT, passenger_car_pony_gen_1C_switch_graphics_vehicle_cargo, most_common_cargo_type) {
+            PASS: return passenger_car_pony_gen_1C_switch_graphics_position_in_consist_entry_point_PASS;
+    return passenger_car_pony_gen_1C_switch_graphics_position_in_consist_entry_point_DFLT;
+}
+switch (FEAT_TRAINS, SELF, passenger_car_pony_gen_1C_switch_graphics_vehicle,
+    1
+    ) {
+    return passenger_car_pony_gen_1C_switch_graphics_vehicle_cargo;
+}
+// buy menu graphics chain
+spriteset(passenger_car_pony_gen_1C_ss_vehicle_purchase, "generated/graphics/passenger_car_pony_gen_1C.png") {
+    spriteset_template_purchase_default(224,10,33,-16,NOANIM)
+}
+        switch (FEAT_TRAINS, SELF, passenger_car_pony_gen_1C_switch_graphics_purchase, 0) {
+            0: return passenger_car_pony_gen_1C_ss_vehicle_purchase;
+        }
+switch (FEAT_TRAINS, SELF, passenger_car_pony_gen_1C_switch_set_layers_register_more_sprites, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
+    return passenger_car_pony_gen_1C_switch_graphics_vehicle;
+}
+switch (FEAT_TRAINS, SELF, passenger_car_pony_gen_1C_switch_graphics, getbits(extra_callback_info1, 8, 8)) {
+    0: return passenger_car_pony_gen_1C_switch_set_layers_register_more_sprites;
+    return switch_graphics_layer_tail_light_32px;
+}
+switch (FEAT_TRAINS, SELF, passenger_car_pony_gen_1C_switch_cargo_capacity,
+        [STORE_TEMP(17, 0), STORE_TEMP(24, 1), STORE_TEMP(32, 2), STORE_TEMP(43, 3)]) {
+    return switch_cargo_capacity();
+}
+    switch (FEAT_TRAINS, SELF, passenger_car_pony_gen_1C_switch_buy_menu_text_result, 1) {
+    return string(STR_BUY_MENU_WRAPPER_ONE_SUBSTR, string(STR_ROLE, string(STR_ROLE_GENERAL_PURPOSE_EXPRESS)));
+}
+        switch (FEAT_TRAINS, SELF, passenger_car_pony_gen_1C_switch_buy_menu_text, 1) {
+            return passenger_car_pony_gen_1C_switch_buy_menu_text_result;
+        }
+        switch (FEAT_TRAINS, PARENT, passenger_car_pony_gen_1C_switch_running_cost_factor, switch_is_restaurant_car_in_consist_0()) {
+            1: return 0;
+            0: return 703;
+        }
+item(FEAT_TRAINS, passenger_car_pony_gen_1C, 2250) {
+    property {
+        name:                           string(STR_NAME_CONSIST_PARENTHESES, string(STR_NAME_SUFFIX_PASSENGER_CAR), string(STR_NAME_SUFFIX_LARGE));
+        climates_available:             NO_CLIMATE; // nml constant
+        engine_class:                   ENGINE_CLASS_STEAM;
+        introduction_date:              date(1860, 1, 1);
+        cargo_capacity:                 24;
+        sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+        power:                          0hp;
+            speed:                          60mph;
+        weight:                         24ton;
+        tractive_effort_coefficient:    0.3;
+        cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+        running_cost_base:              RUNNING_COST_DIESEL;
+        running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+        refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+        refittable_cargo_classes:       bitmask(CC_PASSENGERS);
+        non_refittable_cargo_classes:   bitmask(); // don't set non-refittable classes, increases likelihood of breaking cargo support
+        cargo_allow_refit:              [];
+        cargo_disallow_refit:           [];
+            default_cargo_type:             PASS;
+        misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_FLIP,TRAIN_FLAG_AUTOREFIT); // nml constants
+        model_life:                     40;
+        retire_early:                   -10;
+        reliability_decay:              20; // default value
+        vehicle_life:                   40;
+        length:                         8;
+        track_type:                     RAIL;
+        effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+    }
+    graphics {
+        default:                        passenger_car_pony_gen_1C_switch_graphics;
+        purchase:                       passenger_car_pony_gen_1C_switch_graphics_purchase;
+        cost_factor:                    139; // CB used as it is capped to max 32k, prop is only 255
+        running_cost_factor:            passenger_car_pony_gen_1C_switch_running_cost_factor; // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+        purchase_running_cost_factor:   703; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+            cargo_capacity:                 passenger_car_pony_gen_1C_switch_cargo_capacity;
+            purchase_cargo_capacity:        passenger_car_pony_gen_1C_switch_cargo_capacity;
+            loading_speed:                  5;
+            additional_text:                passenger_car_pony_gen_1C_switch_buy_menu_text;
+    }
+}
+    if (param[1]==0) {
+        item(FEAT_TRAINS, passenger_car_pony_gen_1C, 2250) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+    }

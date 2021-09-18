@@ -1,0 +1,264 @@
+// default graphics chain
+    spriteset(caboose_car_pony_gen_1B_ss_0_unflipped, "generated/graphics/caboose_car_pony_gen_1B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(10,NOANIM)
+    }
+    spriteset(caboose_car_pony_gen_1B_ss_0_flipped, "generated/graphics/caboose_car_pony_gen_1B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(40,NOANIM)
+    }
+    switch (FEAT_TRAINS, SELF, caboose_car_pony_gen_1B_switch_graphics_livery_0, vehicle_is_flipped) {
+        1: return caboose_car_pony_gen_1B_ss_0_flipped;
+        return caboose_car_pony_gen_1B_ss_0_unflipped;
+    }
+    spriteset(caboose_car_pony_gen_1B_ss_1_unflipped, "generated/graphics/caboose_car_pony_gen_1B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(70,NOANIM)
+    }
+    spriteset(caboose_car_pony_gen_1B_ss_1_flipped, "generated/graphics/caboose_car_pony_gen_1B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(100,NOANIM)
+    }
+    switch (FEAT_TRAINS, SELF, caboose_car_pony_gen_1B_switch_graphics_livery_1, vehicle_is_flipped) {
+        1: return caboose_car_pony_gen_1B_ss_1_flipped;
+        return caboose_car_pony_gen_1B_ss_1_unflipped;
+    }
+    spriteset(caboose_car_pony_gen_1B_ss_2_unflipped, "generated/graphics/caboose_car_pony_gen_1B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(130,NOANIM)
+    }
+    spriteset(caboose_car_pony_gen_1B_ss_2_flipped, "generated/graphics/caboose_car_pony_gen_1B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(160,NOANIM)
+    }
+    switch (FEAT_TRAINS, SELF, caboose_car_pony_gen_1B_switch_graphics_livery_2, vehicle_is_flipped) {
+        1: return caboose_car_pony_gen_1B_ss_2_flipped;
+        return caboose_car_pony_gen_1B_ss_2_unflipped;
+    }
+    spriteset(caboose_car_pony_gen_1B_ss_3_unflipped, "generated/graphics/caboose_car_pony_gen_1B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(190,NOANIM)
+    }
+    spriteset(caboose_car_pony_gen_1B_ss_3_flipped, "generated/graphics/caboose_car_pony_gen_1B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(220,NOANIM)
+    }
+    switch (FEAT_TRAINS, SELF, caboose_car_pony_gen_1B_switch_graphics_livery_3, vehicle_is_flipped) {
+        1: return caboose_car_pony_gen_1B_ss_3_flipped;
+        return caboose_car_pony_gen_1B_ss_3_unflipped;
+    }
+    spriteset(caboose_car_pony_gen_1B_ss_4_unflipped, "generated/graphics/caboose_car_pony_gen_1B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(250,NOANIM)
+    }
+    spriteset(caboose_car_pony_gen_1B_ss_4_flipped, "generated/graphics/caboose_car_pony_gen_1B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(280,NOANIM)
+    }
+    switch (FEAT_TRAINS, SELF, caboose_car_pony_gen_1B_switch_graphics_livery_4, vehicle_is_flipped) {
+        1: return caboose_car_pony_gen_1B_ss_4_flipped;
+        return caboose_car_pony_gen_1B_ss_4_unflipped;
+    }
+    spriteset(caboose_car_pony_gen_1B_ss_5_unflipped, "generated/graphics/caboose_car_pony_gen_1B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(310,NOANIM)
+    }
+    spriteset(caboose_car_pony_gen_1B_ss_5_flipped, "generated/graphics/caboose_car_pony_gen_1B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(340,NOANIM)
+    }
+    switch (FEAT_TRAINS, SELF, caboose_car_pony_gen_1B_switch_graphics_livery_5, vehicle_is_flipped) {
+        1: return caboose_car_pony_gen_1B_ss_5_flipped;
+        return caboose_car_pony_gen_1B_ss_5_unflipped;
+    }
+switch (FEAT_TRAINS, PARENT, caboose_car_pony_gen_1B_switch_graphics_vehicle, vehicle_type_id) {
+        lark: return caboose_car_pony_gen_1B_switch_graphics_livery_0;
+        merrylegs: return caboose_car_pony_gen_1B_switch_graphics_livery_1;
+        proper_job: return caboose_car_pony_gen_1B_switch_graphics_livery_2;
+        kelpie: return caboose_car_pony_gen_1B_switch_graphics_livery_3;
+        griffon: return caboose_car_pony_gen_1B_switch_graphics_livery_4;
+        pinhorse: return caboose_car_pony_gen_1B_switch_graphics_livery_1;
+        argus: return caboose_car_pony_gen_1B_switch_graphics_livery_2;
+        booster: return caboose_car_pony_gen_1B_switch_graphics_livery_3;
+        tornado: return caboose_car_pony_gen_1B_switch_graphics_livery_4;
+        shoebox: return caboose_car_pony_gen_1B_switch_graphics_livery_3;
+        super_shoebox: return caboose_car_pony_gen_1B_switch_graphics_livery_4;
+        ultra_shoebox: return caboose_car_pony_gen_1B_switch_graphics_livery_5;
+        reliance: return caboose_car_pony_gen_1B_switch_graphics_livery_0;
+        spinner: return caboose_car_pony_gen_1B_switch_graphics_livery_0;
+        carrack: return caboose_car_pony_gen_1B_switch_graphics_livery_1;
+        tencendur: return caboose_car_pony_gen_1B_switch_graphics_livery_2;
+        merlion: return caboose_car_pony_gen_1B_switch_graphics_livery_3;
+        shredder: return caboose_car_pony_gen_1B_switch_graphics_livery_4;
+        thunderer: return caboose_car_pony_gen_1B_switch_graphics_livery_1;
+        swift: return caboose_car_pony_gen_1B_switch_graphics_livery_1;
+        strongbow: return caboose_car_pony_gen_1B_switch_graphics_livery_2;
+        streamer: return caboose_car_pony_gen_1B_switch_graphics_livery_2;
+        wyvern: return caboose_car_pony_gen_1B_switch_graphics_livery_3;
+        intrepid: return caboose_car_pony_gen_1B_switch_graphics_livery_3;
+        vanguard: return caboose_car_pony_gen_1B_switch_graphics_livery_4;
+        resilient: return caboose_car_pony_gen_1B_switch_graphics_livery_4;
+        evolution: return caboose_car_pony_gen_1B_switch_graphics_livery_5;
+        revolution: return caboose_car_pony_gen_1B_switch_graphics_livery_5;
+        pegasus: return caboose_car_pony_gen_1B_switch_graphics_livery_2;
+        dragon: return caboose_car_pony_gen_1B_switch_graphics_livery_3;
+        vulcan: return caboose_car_pony_gen_1B_switch_graphics_livery_3;
+        onslaught: return caboose_car_pony_gen_1B_switch_graphics_livery_4;
+        relentless: return caboose_car_pony_gen_1B_switch_graphics_livery_5;
+        hurly_burly: return caboose_car_pony_gen_1B_switch_graphics_livery_1;
+        moor_gallop: return caboose_car_pony_gen_1B_switch_graphics_livery_2;
+        roarer: return caboose_car_pony_gen_1B_switch_graphics_livery_3;
+        fury: return caboose_car_pony_gen_1B_switch_graphics_livery_4;
+        hector: return caboose_car_pony_gen_1B_switch_graphics_livery_5;
+        zebedee: return caboose_car_pony_gen_1B_switch_graphics_livery_3;
+        screamer: return caboose_car_pony_gen_1B_switch_graphics_livery_4;
+        nimbus: return caboose_car_pony_gen_1B_switch_graphics_livery_5;
+        avenger: return caboose_car_pony_gen_1B_switch_graphics_livery_4;
+        sizzler: return caboose_car_pony_gen_1B_switch_graphics_livery_5;
+        driving_cab_passenger_pony_gen_4: return caboose_car_pony_gen_1B_switch_graphics_livery_3;
+        driving_cab_passenger_pony_gen_5: return caboose_car_pony_gen_1B_switch_graphics_livery_4;
+        driving_cab_passenger_pony_gen_6: return caboose_car_pony_gen_1B_switch_graphics_livery_5;
+        driving_cab_mail_pony_gen_5: return caboose_car_pony_gen_1B_switch_graphics_livery_4;
+        driving_cab_mail_pony_gen_6: return caboose_car_pony_gen_1B_switch_graphics_livery_5;
+        buffalo: return caboose_car_pony_gen_1B_switch_graphics_livery_0;
+        saxon: return caboose_car_pony_gen_1B_switch_graphics_livery_2;
+        little_bear: return caboose_car_pony_gen_1B_switch_graphics_livery_3;
+        captain_steel: return caboose_car_pony_gen_1B_switch_graphics_livery_3;
+        goliath: return caboose_car_pony_gen_1B_switch_graphics_livery_4;
+        stoat: return caboose_car_pony_gen_1B_switch_graphics_livery_1;
+        zest: return caboose_car_pony_gen_1B_switch_graphics_livery_3;
+        hercules: return caboose_car_pony_gen_1B_switch_graphics_livery_0;
+        braf: return caboose_car_pony_gen_1B_switch_graphics_livery_1;
+        diablo: return caboose_car_pony_gen_1B_switch_graphics_livery_2;
+        haar: return caboose_car_pony_gen_1B_switch_graphics_livery_2;
+        viking: return caboose_car_pony_gen_1B_switch_graphics_livery_4;
+        growler: return caboose_car_pony_gen_1B_switch_graphics_livery_3;
+        slug: return caboose_car_pony_gen_1B_switch_graphics_livery_4;
+        phoenix: return caboose_car_pony_gen_1B_switch_graphics_livery_5;
+        vigilant: return caboose_car_pony_gen_1B_switch_graphics_livery_1;
+        blind_smuir: return caboose_car_pony_gen_1B_switch_graphics_livery_2;
+        girt_licker: return caboose_car_pony_gen_1B_switch_graphics_livery_1;
+        lemon: return caboose_car_pony_gen_1B_switch_graphics_livery_2;
+        esk: return caboose_car_pony_gen_1B_switch_graphics_livery_2;
+        chinook: return caboose_car_pony_gen_1B_switch_graphics_livery_3;
+        grid: return caboose_car_pony_gen_1B_switch_graphics_livery_4;
+        bone: return caboose_car_pony_gen_1B_switch_graphics_livery_4;
+        blackthorn: return caboose_car_pony_gen_1B_switch_graphics_livery_5;
+        defiant: return caboose_car_pony_gen_1B_switch_graphics_livery_5;
+        quietus: return caboose_car_pony_gen_1B_switch_graphics_livery_5;
+        cheddar_valley: return caboose_car_pony_gen_1B_switch_graphics_livery_4;
+        stentor: return caboose_car_pony_gen_1B_switch_graphics_livery_4;
+        highlander: return caboose_car_pony_gen_1B_switch_graphics_livery_5;
+        toaster: return caboose_car_pony_gen_1B_switch_graphics_livery_5;
+        flindermouse: return caboose_car_pony_gen_1B_switch_graphics_livery_1;
+        peasweep: return caboose_car_pony_gen_1B_switch_graphics_livery_3;
+        flanders_storm: return caboose_car_pony_gen_1B_switch_graphics_livery_4;
+        triton: return caboose_car_pony_gen_1B_switch_graphics_livery_5;
+        grub: return caboose_car_pony_gen_1B_switch_graphics_livery_0;
+        lamia: return caboose_car_pony_gen_1B_switch_graphics_livery_0;
+        gronk: return caboose_car_pony_gen_1B_switch_graphics_livery_3;
+        chuggypig: return caboose_car_pony_gen_1B_switch_graphics_livery_3;
+        magnum_70: return caboose_car_pony_gen_1B_switch_graphics_livery_5;
+        snowplough_pony_gen_2: return caboose_car_pony_gen_1B_switch_graphics_livery_1;
+        cargo_sprinter: return caboose_car_pony_gen_1B_switch_graphics_livery_5;
+        auto_coach_pony_gen_2: return caboose_car_pony_gen_1B_switch_graphics_livery_1;
+        clipper: return caboose_car_pony_gen_1B_switch_graphics_livery_3;
+        skipper: return caboose_car_pony_gen_1B_switch_graphics_livery_4;
+        zipper: return caboose_car_pony_gen_1B_switch_graphics_livery_5;
+        deasil: return caboose_car_pony_gen_1B_switch_graphics_livery_2;
+        slammer: return caboose_car_pony_gen_1B_switch_graphics_livery_3;
+        tin_rocket: return caboose_car_pony_gen_1B_switch_graphics_livery_4;
+        happy_train: return caboose_car_pony_gen_1B_switch_graphics_livery_5;
+        gowsty: return caboose_car_pony_gen_1B_switch_graphics_livery_2;
+        scooby: return caboose_car_pony_gen_1B_switch_graphics_livery_3;
+        plastic_postbox: return caboose_car_pony_gen_1B_switch_graphics_livery_4;
+        athena: return caboose_car_pony_gen_1B_switch_graphics_livery_2;
+        geronimo: return caboose_car_pony_gen_1B_switch_graphics_livery_3;
+        breeze: return caboose_car_pony_gen_1B_switch_graphics_livery_4;
+        zeus: return caboose_car_pony_gen_1B_switch_graphics_livery_5;
+        ares: return caboose_car_pony_gen_1B_switch_graphics_livery_2;
+        dover: return caboose_car_pony_gen_1B_switch_graphics_livery_3;
+        jupiter: return caboose_car_pony_gen_1B_switch_graphics_livery_4;
+        pylon: return caboose_car_pony_gen_1B_switch_graphics_livery_5;
+        high_flyer: return caboose_car_pony_gen_1B_switch_graphics_livery_2;
+        sunshine_coast: return caboose_car_pony_gen_1B_switch_graphics_livery_3;
+        olympic: return caboose_car_pony_gen_1B_switch_graphics_livery_4;
+        bright_country: return caboose_car_pony_gen_1B_switch_graphics_livery_5;
+        firebird: return caboose_car_pony_gen_1B_switch_graphics_livery_3;
+        blaze: return caboose_car_pony_gen_1B_switch_graphics_livery_4;
+        scorcher: return caboose_car_pony_gen_1B_switch_graphics_livery_5;
+        helm_wind_cab: return caboose_car_pony_gen_1B_switch_graphics_livery_4;
+        helm_wind_middle: return caboose_car_pony_gen_1B_switch_graphics_livery_4;
+        brenner_cab: return caboose_car_pony_gen_1B_switch_graphics_livery_5;
+        brenner_middle: return caboose_car_pony_gen_1B_switch_graphics_livery_5;
+    return caboose_car_pony_gen_1B_switch_graphics_livery_0;
+}
+// buy menu graphics chain
+    spriteset(caboose_car_pony_gen_1B_ss_purchase_0, "generated/graphics/caboose_car_pony_gen_1B.png") {
+        spriteset_template_purchase_default(224,10,25,-12,NOANIM)
+    }
+    spriteset(caboose_car_pony_gen_1B_ss_purchase_1, "generated/graphics/caboose_car_pony_gen_1B.png") {
+        spriteset_template_purchase_default(224,70,25,-12,NOANIM)
+    }
+    spriteset(caboose_car_pony_gen_1B_ss_purchase_2, "generated/graphics/caboose_car_pony_gen_1B.png") {
+        spriteset_template_purchase_default(224,130,25,-12,NOANIM)
+    }
+    spriteset(caboose_car_pony_gen_1B_ss_purchase_3, "generated/graphics/caboose_car_pony_gen_1B.png") {
+        spriteset_template_purchase_default(224,190,25,-12,NOANIM)
+    }
+    spriteset(caboose_car_pony_gen_1B_ss_purchase_4, "generated/graphics/caboose_car_pony_gen_1B.png") {
+        spriteset_template_purchase_default(224,250,25,-12,NOANIM)
+    }
+    spriteset(caboose_car_pony_gen_1B_ss_purchase_5, "generated/graphics/caboose_car_pony_gen_1B.png") {
+        spriteset_template_purchase_default(224,310,25,-12,NOANIM)
+    }
+switch (FEAT_TRAINS, SELF, caboose_car_pony_gen_1B_switch_graphics_purchase, current_year) {
+        1860..1899: return caboose_car_pony_gen_1B_ss_purchase_0;
+        1900..1929: return caboose_car_pony_gen_1B_ss_purchase_1;
+        1930..1959: return caboose_car_pony_gen_1B_ss_purchase_2;
+        1960..1989: return caboose_car_pony_gen_1B_ss_purchase_3;
+        1990..2019: return caboose_car_pony_gen_1B_ss_purchase_4;
+        2020..5000001: return caboose_car_pony_gen_1B_ss_purchase_5;
+    return caboose_car_pony_gen_1B_ss_purchase_0;
+}
+switch (FEAT_TRAINS, SELF, caboose_car_pony_gen_1B_switch_set_layers_register_more_sprites, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
+    return caboose_car_pony_gen_1B_switch_graphics_vehicle;
+}
+switch (FEAT_TRAINS, SELF, caboose_car_pony_gen_1B_switch_graphics, getbits(extra_callback_info1, 8, 8)) {
+    0: return caboose_car_pony_gen_1B_switch_set_layers_register_more_sprites;
+    return switch_graphics_layer_tail_light_24px;
+}
+        switch (FEAT_TRAINS, PARENT, caboose_car_pony_gen_1B_switch_running_cost_factor, 1) {
+            return 257;
+        }
+item(FEAT_TRAINS, caboose_car_pony_gen_1B, 2210) {
+    property {
+        name:                           string(STR_NAME_CONSIST_PARENTHESES, string(STR_NAME_SUFFIX_CABOOSE_CAR), string(STR_NAME_SUFFIX_MEDIUM));
+        climates_available:             NO_CLIMATE; // nml constant
+        engine_class:                   ENGINE_CLASS_STEAM;
+        introduction_date:              date(1860, 1, 1);
+        cargo_capacity:                 0;
+        sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+        power:                          0hp;
+        weight:                         30ton;
+        tractive_effort_coefficient:    0.3;
+        cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+        running_cost_base:              RUNNING_COST_DIESEL;
+        running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+        refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+        refittable_cargo_classes:       bitmask();
+        non_refittable_cargo_classes:   bitmask(); // don't set non-refittable classes, increases likelihood of breaking cargo support
+        cargo_allow_refit:              [];
+        cargo_disallow_refit:           [];
+        misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_FLIP,TRAIN_FLAG_AUTOREFIT); // nml constants
+        model_life:                     VEHICLE_NEVER_EXPIRES;
+        retire_early:                   -10;
+        reliability_decay:              20; // default value
+        vehicle_life:                   40;
+        length:                         6;
+        track_type:                     RAIL;
+        effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+    }
+    graphics {
+        default:                        caboose_car_pony_gen_1B_switch_graphics;
+        purchase:                       caboose_car_pony_gen_1B_switch_graphics_purchase;
+        cost_factor:                    149; // CB used as it is capped to max 32k, prop is only 255
+        running_cost_factor:            caboose_car_pony_gen_1B_switch_running_cost_factor; // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+        purchase_running_cost_factor:   257; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+    }
+}
+    if (param[1]==0 && param_simplified_gameplay==0) {
+        item(FEAT_TRAINS, caboose_car_pony_gen_1B, 2210) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+    }

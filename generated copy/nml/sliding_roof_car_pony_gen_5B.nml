@@ -1,0 +1,389 @@
+    spriteset(sliding_roof_car_pony_gen_5B_ss_has_cover_unflipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(10,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_empty_unflipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(40,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_loading_0_unflipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(70,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_loaded_0_unflipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(100,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_loading_1_unflipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(130,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_loaded_1_unflipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(160,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_loading_2_unflipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(190,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_loaded_2_unflipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(220,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_loading_3_unflipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(250,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_loaded_3_unflipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(280,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_loading_4_unflipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(310,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_loaded_4_unflipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(340,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_loading_5_unflipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(370,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_loaded_5_unflipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(400,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_loading_6_unflipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(430,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_loaded_6_unflipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(460,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_loading_7_unflipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(490,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_loaded_7_unflipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(520,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_loading_8_unflipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(550,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_loaded_8_unflipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(580,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_loading_9_unflipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(610,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_loaded_9_unflipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(640,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_loading_10_unflipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(670,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_loaded_10_unflipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(700,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_loading_11_unflipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(730,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_loaded_11_unflipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(760,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_loading_12_unflipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(790,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_loaded_12_unflipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(820,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_loading_13_unflipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(850,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_loaded_13_unflipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(880,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_loading_14_unflipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(910,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_loaded_14_unflipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_unflipped(940,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_has_cover_flipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(10,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_empty_flipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(40,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_loading_0_flipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(70,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_loaded_0_flipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(100,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_loading_1_flipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(130,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_loaded_1_flipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(160,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_loading_2_flipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(190,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_loaded_2_flipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(220,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_loading_3_flipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(250,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_loaded_3_flipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(280,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_loading_4_flipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(310,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_loaded_4_flipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(340,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_loading_5_flipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(370,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_loaded_5_flipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(400,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_loading_6_flipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(430,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_loaded_6_flipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(460,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_loading_7_flipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(490,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_loaded_7_flipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(520,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_loading_8_flipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(550,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_loaded_8_flipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(580,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_loading_9_flipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(610,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_loaded_9_flipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(640,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_loading_10_flipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(670,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_loaded_10_flipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(700,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_loading_11_flipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(730,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_loaded_11_flipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(760,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_loading_12_flipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(790,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_loaded_12_flipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(820,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_loading_13_flipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(850,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_loaded_13_flipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(880,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_loading_14_flipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(910,NOANIM)
+    }
+    spriteset(sliding_roof_car_pony_gen_5B_ss_loaded_14_flipped, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+        spriteset_template_symmetric_unreversed_6_8_flipped(940,NOANIM)
+    }
+        switch (FEAT_TRAINS, SELF, sliding_roof_car_pony_gen_5B_switch_cargo_loading_unflipped, cargo_type_in_veh) {
+                        BEER: return sliding_roof_car_pony_gen_5B_ss_loading_0_unflipped;
+                        DYES: return sliding_roof_car_pony_gen_5B_ss_loading_0_unflipped;
+                        EOIL: return sliding_roof_car_pony_gen_5B_ss_loading_0_unflipped;
+                        MILK: return sliding_roof_car_pony_gen_5B_ss_loading_0_unflipped;
+                        OIL_: return sliding_roof_car_pony_gen_5B_ss_loading_0_unflipped;
+                        PETR: return sliding_roof_car_pony_gen_5B_ss_loading_0_unflipped;
+                        RFPR: return sliding_roof_car_pony_gen_5B_ss_loading_0_unflipped;
+                        WATR: return sliding_roof_car_pony_gen_5B_ss_loading_0_unflipped;
+                        COPR: return sliding_roof_car_pony_gen_5B_ss_loading_1_unflipped;
+                        GOOD: return sliding_roof_car_pony_gen_5B_ss_loading_2_unflipped;
+                        ALUM: return sliding_roof_car_pony_gen_5B_ss_loading_3_unflipped;
+                        ZINC: return sliding_roof_car_pony_gen_5B_ss_loading_3_unflipped;
+                        WOOD: return sliding_roof_car_pony_gen_5B_ss_loading_4_unflipped;
+                        WDPR: return sliding_roof_car_pony_gen_5B_ss_loading_5_unflipped;
+                        PAPR: return sliding_roof_car_pony_gen_5B_ss_loading_6_unflipped;
+                        PIPE: return sliding_roof_car_pony_gen_5B_ss_loading_7_unflipped;
+                        STEL: return sliding_roof_car_pony_gen_5B_ss_loading_8_unflipped;
+                        METL: return sliding_roof_car_pony_gen_5B_ss_loading_8_unflipped;
+                        STSH: return sliding_roof_car_pony_gen_5B_ss_loading_8_unflipped;
+                        STAL: return sliding_roof_car_pony_gen_5B_ss_loading_9_unflipped;
+                        STCB: return sliding_roof_car_pony_gen_5B_ss_loading_9_unflipped;
+                        STST: return sliding_roof_car_pony_gen_5B_ss_loading_9_unflipped;
+                        STWR: return sliding_roof_car_pony_gen_5B_ss_loading_10_unflipped;
+                        FMSP: return sliding_roof_car_pony_gen_5B_ss_loading_12_unflipped;
+                        ENSP: return sliding_roof_car_pony_gen_5B_ss_loading_13_unflipped;
+                        BDMT: return sliding_roof_car_pony_gen_5B_ss_loading_14_unflipped;
+            return sliding_roof_car_pony_gen_5B_ss_loading_11_unflipped;
+        }
+        switch (FEAT_TRAINS, SELF, sliding_roof_car_pony_gen_5B_switch_cargo_loading_flipped, cargo_type_in_veh) {
+                        BEER: return sliding_roof_car_pony_gen_5B_ss_loading_0_flipped;
+                        DYES: return sliding_roof_car_pony_gen_5B_ss_loading_0_flipped;
+                        EOIL: return sliding_roof_car_pony_gen_5B_ss_loading_0_flipped;
+                        MILK: return sliding_roof_car_pony_gen_5B_ss_loading_0_flipped;
+                        OIL_: return sliding_roof_car_pony_gen_5B_ss_loading_0_flipped;
+                        PETR: return sliding_roof_car_pony_gen_5B_ss_loading_0_flipped;
+                        RFPR: return sliding_roof_car_pony_gen_5B_ss_loading_0_flipped;
+                        WATR: return sliding_roof_car_pony_gen_5B_ss_loading_0_flipped;
+                        COPR: return sliding_roof_car_pony_gen_5B_ss_loading_1_flipped;
+                        GOOD: return sliding_roof_car_pony_gen_5B_ss_loading_2_flipped;
+                        ALUM: return sliding_roof_car_pony_gen_5B_ss_loading_3_flipped;
+                        ZINC: return sliding_roof_car_pony_gen_5B_ss_loading_3_flipped;
+                        WOOD: return sliding_roof_car_pony_gen_5B_ss_loading_4_flipped;
+                        WDPR: return sliding_roof_car_pony_gen_5B_ss_loading_5_flipped;
+                        PAPR: return sliding_roof_car_pony_gen_5B_ss_loading_6_flipped;
+                        PIPE: return sliding_roof_car_pony_gen_5B_ss_loading_7_flipped;
+                        STEL: return sliding_roof_car_pony_gen_5B_ss_loading_8_flipped;
+                        METL: return sliding_roof_car_pony_gen_5B_ss_loading_8_flipped;
+                        STSH: return sliding_roof_car_pony_gen_5B_ss_loading_8_flipped;
+                        STAL: return sliding_roof_car_pony_gen_5B_ss_loading_9_flipped;
+                        STCB: return sliding_roof_car_pony_gen_5B_ss_loading_9_flipped;
+                        STST: return sliding_roof_car_pony_gen_5B_ss_loading_9_flipped;
+                        STWR: return sliding_roof_car_pony_gen_5B_ss_loading_10_flipped;
+                        FMSP: return sliding_roof_car_pony_gen_5B_ss_loading_12_flipped;
+                        ENSP: return sliding_roof_car_pony_gen_5B_ss_loading_13_flipped;
+                        BDMT: return sliding_roof_car_pony_gen_5B_ss_loading_14_flipped;
+            return sliding_roof_car_pony_gen_5B_ss_loading_11_flipped;
+        }
+        switch (FEAT_TRAINS, SELF, sliding_roof_car_pony_gen_5B_switch_cargo_loaded_unflipped, cargo_type_in_veh) {
+                        BEER: return sliding_roof_car_pony_gen_5B_ss_loaded_0_unflipped;
+                        DYES: return sliding_roof_car_pony_gen_5B_ss_loaded_0_unflipped;
+                        EOIL: return sliding_roof_car_pony_gen_5B_ss_loaded_0_unflipped;
+                        MILK: return sliding_roof_car_pony_gen_5B_ss_loaded_0_unflipped;
+                        OIL_: return sliding_roof_car_pony_gen_5B_ss_loaded_0_unflipped;
+                        PETR: return sliding_roof_car_pony_gen_5B_ss_loaded_0_unflipped;
+                        RFPR: return sliding_roof_car_pony_gen_5B_ss_loaded_0_unflipped;
+                        WATR: return sliding_roof_car_pony_gen_5B_ss_loaded_0_unflipped;
+                        COPR: return sliding_roof_car_pony_gen_5B_ss_loaded_1_unflipped;
+                        GOOD: return sliding_roof_car_pony_gen_5B_ss_loaded_2_unflipped;
+                        ALUM: return sliding_roof_car_pony_gen_5B_ss_loaded_3_unflipped;
+                        ZINC: return sliding_roof_car_pony_gen_5B_ss_loaded_3_unflipped;
+                        WOOD: return sliding_roof_car_pony_gen_5B_ss_loaded_4_unflipped;
+                        WDPR: return sliding_roof_car_pony_gen_5B_ss_loaded_5_unflipped;
+                        PAPR: return sliding_roof_car_pony_gen_5B_ss_loaded_6_unflipped;
+                        PIPE: return sliding_roof_car_pony_gen_5B_ss_loaded_7_unflipped;
+                        STEL: return sliding_roof_car_pony_gen_5B_ss_loaded_8_unflipped;
+                        METL: return sliding_roof_car_pony_gen_5B_ss_loaded_8_unflipped;
+                        STSH: return sliding_roof_car_pony_gen_5B_ss_loaded_8_unflipped;
+                        STAL: return sliding_roof_car_pony_gen_5B_ss_loaded_9_unflipped;
+                        STCB: return sliding_roof_car_pony_gen_5B_ss_loaded_9_unflipped;
+                        STST: return sliding_roof_car_pony_gen_5B_ss_loaded_9_unflipped;
+                        STWR: return sliding_roof_car_pony_gen_5B_ss_loaded_10_unflipped;
+                        FMSP: return sliding_roof_car_pony_gen_5B_ss_loaded_12_unflipped;
+                        ENSP: return sliding_roof_car_pony_gen_5B_ss_loaded_13_unflipped;
+                        BDMT: return sliding_roof_car_pony_gen_5B_ss_loaded_14_unflipped;
+            return sliding_roof_car_pony_gen_5B_ss_loaded_11_unflipped;
+        }
+        switch (FEAT_TRAINS, SELF, sliding_roof_car_pony_gen_5B_switch_cargo_loaded_flipped, cargo_type_in_veh) {
+                        BEER: return sliding_roof_car_pony_gen_5B_ss_loaded_0_flipped;
+                        DYES: return sliding_roof_car_pony_gen_5B_ss_loaded_0_flipped;
+                        EOIL: return sliding_roof_car_pony_gen_5B_ss_loaded_0_flipped;
+                        MILK: return sliding_roof_car_pony_gen_5B_ss_loaded_0_flipped;
+                        OIL_: return sliding_roof_car_pony_gen_5B_ss_loaded_0_flipped;
+                        PETR: return sliding_roof_car_pony_gen_5B_ss_loaded_0_flipped;
+                        RFPR: return sliding_roof_car_pony_gen_5B_ss_loaded_0_flipped;
+                        WATR: return sliding_roof_car_pony_gen_5B_ss_loaded_0_flipped;
+                        COPR: return sliding_roof_car_pony_gen_5B_ss_loaded_1_flipped;
+                        GOOD: return sliding_roof_car_pony_gen_5B_ss_loaded_2_flipped;
+                        ALUM: return sliding_roof_car_pony_gen_5B_ss_loaded_3_flipped;
+                        ZINC: return sliding_roof_car_pony_gen_5B_ss_loaded_3_flipped;
+                        WOOD: return sliding_roof_car_pony_gen_5B_ss_loaded_4_flipped;
+                        WDPR: return sliding_roof_car_pony_gen_5B_ss_loaded_5_flipped;
+                        PAPR: return sliding_roof_car_pony_gen_5B_ss_loaded_6_flipped;
+                        PIPE: return sliding_roof_car_pony_gen_5B_ss_loaded_7_flipped;
+                        STEL: return sliding_roof_car_pony_gen_5B_ss_loaded_8_flipped;
+                        METL: return sliding_roof_car_pony_gen_5B_ss_loaded_8_flipped;
+                        STSH: return sliding_roof_car_pony_gen_5B_ss_loaded_8_flipped;
+                        STAL: return sliding_roof_car_pony_gen_5B_ss_loaded_9_flipped;
+                        STCB: return sliding_roof_car_pony_gen_5B_ss_loaded_9_flipped;
+                        STST: return sliding_roof_car_pony_gen_5B_ss_loaded_9_flipped;
+                        STWR: return sliding_roof_car_pony_gen_5B_ss_loaded_10_flipped;
+                        FMSP: return sliding_roof_car_pony_gen_5B_ss_loaded_12_flipped;
+                        ENSP: return sliding_roof_car_pony_gen_5B_ss_loaded_13_flipped;
+                        BDMT: return sliding_roof_car_pony_gen_5B_ss_loaded_14_flipped;
+            return sliding_roof_car_pony_gen_5B_ss_loaded_11_flipped;
+        }
+        switch (FEAT_TRAINS, SELF, sliding_roof_car_pony_gen_5B_switch_graphics_vehicle, switch_graphics_visible_cargo_has_cover()) {
+            0: return sliding_roof_car_pony_gen_5B_ss_has_cover_unflipped;
+            1: return sliding_roof_car_pony_gen_5B_ss_empty_unflipped;
+            2: return sliding_roof_car_pony_gen_5B_switch_cargo_loading_unflipped;
+            3: return sliding_roof_car_pony_gen_5B_switch_cargo_loaded_unflipped;
+            4: return sliding_roof_car_pony_gen_5B_ss_has_cover_flipped;
+            5: return sliding_roof_car_pony_gen_5B_ss_empty_flipped;
+            6: return sliding_roof_car_pony_gen_5B_switch_cargo_loading_flipped;
+            7: return sliding_roof_car_pony_gen_5B_switch_cargo_loaded_flipped;
+        }
+// buy menu graphics chain
+spriteset(sliding_roof_car_pony_gen_5B_ss_purchase, "generated/graphics/sliding_roof_car_pony_gen_5B.png") {
+    spriteset_template_purchase_default(224,10,25,-12,NOANIM)
+}
+switch (FEAT_TRAINS, SELF, sliding_roof_car_pony_gen_5B_switch_graphics_purchase, 0) {
+    return sliding_roof_car_pony_gen_5B_ss_purchase;
+}
+switch (FEAT_TRAINS, SELF, sliding_roof_car_pony_gen_5B_switch_set_layers_register_more_sprites, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
+    return sliding_roof_car_pony_gen_5B_switch_graphics_vehicle;
+}
+switch (FEAT_TRAINS, SELF, sliding_roof_car_pony_gen_5B_switch_graphics, getbits(extra_callback_info1, 8, 8)) {
+    0: return sliding_roof_car_pony_gen_5B_switch_set_layers_register_more_sprites;
+    return switch_graphics_layer_tail_light_24px;
+}
+switch (FEAT_TRAINS, SELF, sliding_roof_car_pony_gen_5B_switch_cargo_capacity,
+        [STORE_TEMP(25, 0), STORE_TEMP(36, 1), STORE_TEMP(48, 2), STORE_TEMP(64, 3)]) {
+    return switch_cargo_capacity();
+}
+        switch (FEAT_TRAINS, PARENT, sliding_roof_car_pony_gen_5B_switch_running_cost_factor, 1) {
+            return 271;
+        }
+item(FEAT_TRAINS, sliding_roof_car_pony_gen_5B, 5230) {
+    property {
+        name:                           string(STR_NAME_CONSIST_PARENTHESES, string(STR_NAME_SUFFIX_SLIDING_ROOF_CAR), string(STR_NAME_SUFFIX_MEDIUM));
+        climates_available:             NO_CLIMATE; // nml constant
+        engine_class:                   ENGINE_CLASS_STEAM;
+        introduction_date:              date(1990, 11, 1);
+        cargo_capacity:                 36;
+        sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+        power:                          0hp;
+            speed:                          87mph;
+        weight:                         15ton;
+        tractive_effort_coefficient:    0.3;
+        cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+        running_cost_base:              RUNNING_COST_DIESEL;
+        running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+        refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+        refittable_cargo_classes:       bitmask(CC_PIECE_GOODS);
+        non_refittable_cargo_classes:   bitmask(); // don't set non-refittable classes, increases likelihood of breaking cargo support
+        cargo_allow_refit:              [GOOD];
+        cargo_disallow_refit:           [FOOD,FISH,LVST,FRUT,BEER,MILK,JAVA,SUGR,NUTS,EOIL,BOOM,FERT,PLAS,CBLK];
+            default_cargo_type:             cargotype_available("ZINC")?ZINC:cargotype_available("ALUM")?ALUM:cargotype_available("WOOL")?WOOL:BDMT;
+        misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_FLIP,TRAIN_FLAG_AUTOREFIT); // nml constants
+        model_life:                     30;
+        retire_early:                   -10;
+        reliability_decay:              20; // default value
+        vehicle_life:                   40;
+        length:                         6;
+        track_type:                     RAIL;
+        effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+    }
+    graphics {
+        default:                        sliding_roof_car_pony_gen_5B_switch_graphics;
+        purchase:                       sliding_roof_car_pony_gen_5B_switch_graphics_purchase;
+        cost_factor:                    129; // CB used as it is capped to max 32k, prop is only 255
+        running_cost_factor:            sliding_roof_car_pony_gen_5B_switch_running_cost_factor; // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+        purchase_running_cost_factor:   271; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                colour_mapping:                 switch_colour_mapping(1, 0, 1);
+                purchase_colour_mapping:        switch_colour_mapping_purchase(1, 0, 1);
+            cargo_capacity:                 sliding_roof_car_pony_gen_5B_switch_cargo_capacity;
+            purchase_cargo_capacity:        sliding_roof_car_pony_gen_5B_switch_cargo_capacity;
+            loading_speed:                  5;
+    }
+}
+    if (param[1]==0 && param_simplified_gameplay==0) {
+        item(FEAT_TRAINS, sliding_roof_car_pony_gen_5B, 5230) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+    }

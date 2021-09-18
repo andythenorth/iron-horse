@@ -1,0 +1,88 @@
+        spriteset(cement_silo_car_pony_gen_4C_ss_0_unflipped, "generated/graphics/cement_silo_car_pony_gen_4C.png") {
+            spriteset_template_symmetric_unreversed_8_8_unflipped(10,NOANIM)
+        }
+    switch (FEAT_TRAINS, SELF, cement_silo_car_pony_gen_4C_switch_graphics_cargo_type_unflipped, cargo_type_in_veh) {
+                return  cement_silo_car_pony_gen_4C_ss_0_unflipped;
+    }
+        spriteset(cement_silo_car_pony_gen_4C_ss_0_flipped, "generated/graphics/cement_silo_car_pony_gen_4C.png") {
+            spriteset_template_symmetric_unreversed_8_8_flipped(10,NOANIM)
+        }
+    switch (FEAT_TRAINS, SELF, cement_silo_car_pony_gen_4C_switch_graphics_cargo_type_flipped, cargo_type_in_veh) {
+                return  cement_silo_car_pony_gen_4C_ss_0_flipped;
+    }
+// handle user flipped state
+switch (FEAT_TRAINS, SELF, cement_silo_car_pony_gen_4C_switch_graphics_vehicle, vehicle_is_flipped) {
+    1: return cement_silo_car_pony_gen_4C_switch_graphics_cargo_type_flipped;
+    return cement_silo_car_pony_gen_4C_switch_graphics_cargo_type_unflipped;
+}
+// buy menu graphics chain
+    spriteset(cement_silo_car_pony_gen_4C_ss_purchase_0, "generated/graphics/cement_silo_car_pony_gen_4C.png") {
+        spriteset_template_purchase_default(224,10,33,-16,NOANIM)
+    }
+switch (FEAT_TRAINS, SELF, cement_silo_car_pony_gen_4C_switch_set_layers_register_more_sprites, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
+    return cement_silo_car_pony_gen_4C_switch_graphics_vehicle;
+}
+switch (FEAT_TRAINS, SELF, cement_silo_car_pony_gen_4C_switch_graphics, getbits(extra_callback_info1, 8, 8)) {
+    0: return cement_silo_car_pony_gen_4C_switch_set_layers_register_more_sprites;
+    return switch_graphics_layer_tail_light_32px;
+}
+switch (FEAT_TRAINS, SELF, cement_silo_car_pony_gen_4C_switch_graphics_purchase, cargo_type_in_veh) {
+            return cement_silo_car_pony_gen_4C_ss_purchase_0;
+}
+switch (FEAT_TRAINS, SELF, cement_silo_car_pony_gen_4C_switch_cargo_capacity,
+        [STORE_TEMP(30, 0), STORE_TEMP(44, 1), STORE_TEMP(59, 2), STORE_TEMP(78, 3)]) {
+    return switch_cargo_capacity();
+}
+        switch (FEAT_TRAINS, PARENT, cement_silo_car_pony_gen_4C_switch_running_cost_factor, 1) {
+            return 307;
+        }
+item(FEAT_TRAINS, cement_silo_car_pony_gen_4C, 1260) {
+    property {
+        name:                           string(STR_NAME_CONSIST_PARENTHESES, string(STR_NAME_SUFFIX_CEMENT_SILO_CAR), string(STR_NAME_SUFFIX_LARGE));
+        climates_available:             NO_CLIMATE; // nml constant
+        engine_class:                   ENGINE_CLASS_STEAM;
+        introduction_date:              date(1960, 11, 1);
+        cargo_capacity:                 44;
+        sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+        power:                          0hp;
+            speed:                          75mph;
+        weight:                         21ton;
+        tractive_effort_coefficient:    0.3;
+        cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+        running_cost_base:              RUNNING_COST_DIESEL;
+        running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+        refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+        refittable_cargo_classes:       bitmask();
+        non_refittable_cargo_classes:   bitmask(); // don't set non-refittable classes, increases likelihood of breaking cargo support
+        cargo_allow_refit:              [SUGR,FMSP,RFPR,BDMT,QLME,SASH,CMNT,CBLK,SAND];
+        cargo_disallow_refit:           [];
+            default_cargo_type:             cargotype_available("CMNT")?CMNT:cargotype_available("BDMT")?BDMT:QLME;
+        misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_FLIP,TRAIN_FLAG_AUTOREFIT); // nml constants
+        model_life:                     30;
+        retire_early:                   -10;
+        reliability_decay:              20; // default value
+        vehicle_life:                   40;
+        length:                         8;
+        track_type:                     RAIL;
+        effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+    }
+    graphics {
+        default:                        cement_silo_car_pony_gen_4C_switch_graphics;
+        purchase:                       cement_silo_car_pony_gen_4C_switch_graphics_purchase;
+        cost_factor:                    149; // CB used as it is capped to max 32k, prop is only 255
+        running_cost_factor:            cement_silo_car_pony_gen_4C_switch_running_cost_factor; // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+        purchase_running_cost_factor:   307; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                colour_mapping:                 switch_colour_mapping(1, 0, 1);
+                purchase_colour_mapping:        switch_colour_mapping_purchase(1, 0, 1);
+            cargo_capacity:                 cement_silo_car_pony_gen_4C_switch_cargo_capacity;
+            purchase_cargo_capacity:        cement_silo_car_pony_gen_4C_switch_cargo_capacity;
+            loading_speed:                  7;
+    }
+}
+    if (param[1]==0 && param_simplified_gameplay==0) {
+        item(FEAT_TRAINS, cement_silo_car_pony_gen_4C, 1260) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+    }

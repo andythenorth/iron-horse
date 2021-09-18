@@ -95,20 +95,20 @@ def main():
     spritelayer_cargo_sets = iron_horse.get_spritelayer_cargo_sets()
 
     if use_multiprocessing == False:
-        for consist in consists:
-            run_consist_pipelines(consist)
         for spritelayer_cargo_set in spritelayer_cargo_sets:
             run_spritelayer_cargo_set_pipelines(spritelayer_cargo_set)
+        for consist in consists:
+            run_consist_pipelines(consist)
     else:
         # Would this go faster if the pipelines from each consist were placed in MP pool, not just the consist?
         # probably potato / potato tbh
         pool = Pool(processes=num_pool_workers)
-        pool.map(run_consist_pipelines, consists)
+        pool.map(run_spritelayer_cargo_set_pipelines, spritelayer_cargo_sets)
         pool.close()
         pool.join()
         # wait for first pool job to finish before starting
         pool = Pool(processes=num_pool_workers)
-        pool.map(run_spritelayer_cargo_set_pipelines, spritelayer_cargo_sets)
+        pool.map(run_consist_pipelines, consists)
         pool.close()
         pool.join()
 

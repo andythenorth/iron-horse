@@ -1,0 +1,138 @@
+##grflangid 0x04
+##plural 0
+##gender m f
+STR_GRF_DESCRIPTION                                             :Licencia: {SILVER}GPL v2{}{BLACK}
+
+STR_PARAM_ADJUST_VEHICLE_CAPACITY                               :Capacidad del tren
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_DESC                          :Ajusta la capacidad del tren para estilos de juego alternativos.{}{}Puny: {GOLD}Reducción del 33%{BLACK}{}Marvellous: {GOLD}por defecto{BLACK}{}Excesivo: {GOLD}Incremento del 33%{BLACK}{}Desmesurado: {GOLD}Incremento del 77%{BLACK}
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :Insignificante
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Maravillosa
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Excesiva
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_3                      :Desmesurado
+STR_PARAM_SIMPLIFIED_GAMEPLAY                                   :Juego simplificado
+STR_PARAM_SIMPLIFIED_GAMEPLAY_DESC                              :Jugar con un conjunto simplificado de trenes. Habrá menos tipos de trenes y vagones disponibles.  Trenes atractivos como quitanieves, cabinas de conducción y locomotoras muy lentas no están disponibles.
+STR_PARAM_ROSTER                                                :Lista a usar
+STR_PARAM_ROSTER_DESC                                           :Elige el set de trenes que usará el juego.
+STR_PARAM_ROSTER_OPTION_0                                       :Poni de Hierro
+STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY                   :Selección de color de vagón aleatorio
+STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_DESC              :Colores aleatorios en vagones de carga aportan variedad a los trenes.{}{}Hay dos colores base para vagones de carga, según los colores de la compañía, or según parámetros de Iron Horse.  Iron Horse escogerá no más de dos texturas aleatorias de cada color base, dependiendo de la configuración.{}{}Intercambiar vagones en el depósito (usando ctrl-click) para cambiar el color base.{}{}Algunos tipos de vagón tienen sus propias normas y sus colores no pueden asignarse aleatoriamente; por ejemplo, vagones de frenado, vagones express, o vagones de pasajeros.
+STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_0          :Texturas de dos colores base (por defecto)
+STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_1          :Texturas de un solo color base
+STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_2          :Sin selección aleatoria
+STR_PARAM_WAGON_BASE_COLOUR_1                                   :Color 1 de vagón base
+STR_PARAM_WAGON_BASE_COLOUR_2                                   :Color 2 de vagón base
+STR_PARAM_WAGON_BASE_COLOUR_DESC                                :Poder elegir esquemas de color para grupos de vehículos es una característica genial de OpenTTD.{}{}Sin embargo, grupos de vehículos no pueden determinar el color de los vagones y las locomotoras por separado.{}{}Este parámetro puede opcionalmente establecer colores específicos para vagones de carga, en lugar de los colores de la compañía.{}{}Esta configuración se aplicará a {WHITE}todos {BLACK}los trenes agrupados o no.{BLACK}{}{}Esta configuración no se aplica a algunos tipos de vagones, por ejemplo vagones de frenado, de correo o de pasajeros.
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_0                            :Utilizar los colores de la compañía (default)
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_1                            :Azul oscuro
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_2                            :Verde claro
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_3                            :Rosa
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_4                            :Amarillo
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_5                            :Rojo
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_6                            :Azul claro
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_7                            :Verde
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_8                            :Verde oscuro
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_9                            :Azul
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_10                           :Crema
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_11                           :Malva
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_12                           :Púrpura
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_13                           :Naranja
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_14                           :Marrón
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_15                           :Gris
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_16                           :Blanco
+
+# keep these alphabetised, easier
+STR_NAME_SUFFIX_DIESEL                                          :Diésel
+STR_NAME_SUFFIX_ELECTRIC                                        :Eléctrico
+STR_NAME_SUFFIX_ELECTRODIESEL                                   :Electro-Diésel
+STR_NAME_SUFFIX_METRO                                           :Metro
+STR_NAME_SUFFIX_STEAM                                           :Vapor
+
+# size suffixes
+STR_NAME_SUFFIX_SMALL                                           :Pequeño
+STR_NAME_SUFFIX_MEDIUM                                          :Medio
+STR_NAME_SUFFIX_LARGE                                           :Grande
+STR_NAME_SUFFIX_TWIN                                            :Doble
+
+# wagon class suffixes
+# as of Jan 2019 these are switched from en-us to en-gb
+# the en-us translation should be updated appropriately when making changes here
+# !! consider splitting strings per roster?? A US caboose is still a 'caboose' in en-gb, not a brake van
+STR_NAME_SUFFIX_ALIGNMENT_CAR                                   :Vagón de alineamiento
+STR_NAME_SUFFIX_BOX_CAR                                         :Vagón cerrado
+STR_NAME_SUFFIX_COIL_BUGGY_CAR                                  :Vagón de bobinado
+STR_NAME_SUFFIX_BOLSTER_CAR                                     :Vagón de carga plana
+STR_NAME_SUFFIX_BULKHEAD_FLAT_CAR                               :Vagón plataforma
+STR_NAME_SUFFIX_CABOOSE_CAR                                     :Vagón de cola
+STR_NAME_SUFFIX_CEMENT_SILO_CAR                                 :Vagón cementero
+STR_NAME_SUFFIX_CARBON_BLACK_HOPPER_CAR                         :Vagón carbonero
+STR_NAME_SUFFIX_COIL_CAR_COVERED                                :Vagón de bobinado cubierto
+STR_NAME_SUFFIX_COIL_CAR_UNCOVERED                              :Vagón de bobinado abierto
+STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Vagón tolva cubierto
+STR_NAME_SUFFIX_CRYO_TANK_CAR                                   :Vagón tanque de hidrógeno líquido
+STR_NAME_SUFFIX_CURTAIN_SIDE_BOX_CAR                            :Vagón de cortina lateral
+STR_NAME_SUFFIX_DUMP_CAR                                        :Vagón de minerales
+STR_NAME_SUFFIX_DUMP_CAR_HIGH_SIDE                              :Vagón de minerales de lado alto
+STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Vagón cisterna de alimentos
+STR_NAME_SUFFIX_EXPRESS_CAR                                     :Vagón express
+STR_NAME_SUFFIX_EXPRESS_INTERMODAL_CAR                          :Vagón contenedor express
+STR_NAME_SUFFIX_EXPRESS_RAILCAR_PASSENGER_TRAILER_CAR           :Vagón trailer de pasaje
+STR_NAME_SUFFIX_FLAT_CAR                                        :Vagón plano
+STR_NAME_SUFFIX_FRUIT_VEG_CAR                                   :Vagón de frutas y verduras
+STR_NAME_SUFFIX_GRAIN_HOPPER_CAR                                :Vagón granero
+STR_NAME_SUFFIX_HOPPER_CAR                                      :Vagón tolva
+STR_NAME_SUFFIX_HST_PASSENGER_CAR                               :Vagón de pasaje de alta velocidad
+STR_NAME_SUFFIX_INGOT_CAR                                       :Vagón metalero
+STR_NAME_SUFFIX_INTERMODAL_CAR                                  :Vagón contenedor
+STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Vagón de ganado
+STR_NAME_SUFFIX_LOG_CAR                                         :Vagón de madera
+STR_NAME_SUFFIX_LOW_FLOOR_INTERMODAL_CAR                        :Vagón contenedor bajo
+STR_NAME_SUFFIX_MAIL_CAR                                        :Vagón de correo
+STR_NAME_SUFFIX_OPEN_CAR                                        :Vagón abierto
+STR_NAME_SUFFIX_ORE_HOPPER_CAR                                  :Vagón de minerales
+STR_NAME_SUFFIX_PASSENGER_CAR                                   :Vagón de pasaje
+STR_NAME_SUFFIX_PELLET_HOPPER_CAR                               :Vagón de gránulos
+STR_NAME_SUFFIX_PLATE_CAR                                       :Vagón platero
+STR_NAME_SUFFIX_PRODUCT_TANK_CAR                                :Vagón tanque
+STR_NAME_SUFFIX_RAILCAR_PASSENGER_TRAILER_CAR                   :Vagón de pasaje de alta densidad
+STR_NAME_SUFFIX_REEFER_CAR                                      :Vagón refrigerado
+STR_NAME_SUFFIX_RESTAURANT_CAR                                  :Vagón restaurante
+STR_NAME_SUFFIX_ROCK_HOPPER_CAR                                 :Vagón de minerales
+STR_NAME_SUFFIX_SILO_CAR                                        :Vagón silo
+STR_NAME_SUFFIX_SLAG_LADLE_CAR                                  :Vagón de escoria metalúrgica
+STR_NAME_SUFFIX_SLIDING_ROOF_CAR                                :Vagón de techo deslizante
+STR_NAME_SUFFIX_SLIDING_WALL_CAR                                :Vagón de portón deslizante
+STR_NAME_SUFFIX_SCRAP_METAL_CAR                                 :Vagón de chatarra
+STR_NAME_SUFFIX_TANK_CAR                                        :Vagón cisterna
+STR_NAME_SUFFIX_TARPAULIN_CAR                                   :Vagón lona tarp
+STR_NAME_SUFFIX_TORPEDO_CAR                                     :Vagón torpedo
+STR_NAME_SUFFIX_VEHICLE_PARTS_BOX_CAR                           :Vagón transportador de piezas
+
+# buy menu wrappers
+STR_BUY_MENU_WRAPPER_ONE_SUBSTR                                 :{STRING}
+STR_BUY_MENU_WRAPPER_TWO_SUBSTR                                 :{STRING}{}{STRING}
+
+# role information for buy menu
+STR_ROLE                                                        :{BLACK}Rol: {GOLD}{STRING}
+STR_ROLE_DRIVING_CAB                                            :Cabina de Conducción
+STR_ROLE_FREIGHT                                                :Carga
+STR_ROLE_GENERAL_PURPOSE                                        :Propósito General
+STR_ROLE_GENERAL_PURPOSE_EXPRESS                                :Propósito General / Express
+STR_ROLE_HST                                                    :Alta Velocidad
+STR_ROLE_LOLZ                                                   :Joker
+STR_ROLE_METRO                                                  :Urbano de Alta Capacidad
+STR_ROLE_VERY_HIGH_SPEED                                        :Muy Alta Velocidad
+
+# assumes only diesel and electric currently
+STR_POWER_BY_RAILTYPE                                           :{BLACK}Potencia on Diesel: {GOLD}{POWER} {}{BLACK}Potencia on Eléctrico: {GOLD}{POWER}
+
+# distributed power (dedicated wagons add power)
+STR_WAGONS_ADD_POWER_CAB                                        :Potencia (Distribuída): {GOLD}{POWER} por cada {STRING} unidad adjuntada
+STR_WAGONS_ADD_POWER_MIDDLE                                     :Potencia (Distribuída): {GOLD}{POWER} al adjuntar {STRING} unidad
+
+# other buy menu hints
+STR_BUY_MENU_HINT_DRIVING_CAB                                   :{BLACK}Attach to front or rear of train, with at least one other engine
+STR_BUY_MENU_HINT_RESTAURANT_CAR                                :{}{BLACK}Bonus: {GOLD}Improves running costs and payment rates for {WHITE}Passenger Coaches {GOLD}and {WHITE}Luxury Passenger Coaches {}{}{BLACK}This bonus applies only once per train
+
+# project management
+STR_SPRITES_COMPLETE                                            :{}Sprites Completados: {GOLD}Sip
+STR_SPRITES_INCOMPLETE                                          :{}Sprites Completados: {GOLD}Nop

@@ -1,0 +1,140 @@
+// graphics chain for vehicle platform
+// position variants are 'default', 'first', 'last', 'middle', etc, and are dependent on consist_ruleset
+    spriteset(intermodal_car_pony_gen_5C_ss_default_unflipped, "generated/graphics/intermodal_car_pony_gen_5C.png") {
+        spriteset_template_asymmetric_unreversed_8_8_unflipped(10,NOANIM)
+    }
+    spriteset(intermodal_car_pony_gen_5C_ss_default_flipped, "generated/graphics/intermodal_car_pony_gen_5C.png") {
+        spriteset_template_asymmetric_reversed_8_8_flipped(40,NOANIM)
+    }
+    switch (FEAT_TRAINS, SELF, intermodal_car_pony_gen_5C_switch_graphics_platform_default, vehicle_is_flipped) {
+        1: return intermodal_car_pony_gen_5C_ss_default_flipped;
+        return intermodal_car_pony_gen_5C_ss_default_unflipped;
+    }
+    spriteset(intermodal_car_pony_gen_5C_ss_first_unflipped, "generated/graphics/intermodal_car_pony_gen_5C.png") {
+        spriteset_template_asymmetric_unreversed_8_8_unflipped(70,NOANIM)
+    }
+    spriteset(intermodal_car_pony_gen_5C_ss_first_flipped, "generated/graphics/intermodal_car_pony_gen_5C.png") {
+        spriteset_template_asymmetric_reversed_8_8_flipped(100,NOANIM)
+    }
+    switch (FEAT_TRAINS, SELF, intermodal_car_pony_gen_5C_switch_graphics_platform_first, vehicle_is_flipped) {
+        1: return intermodal_car_pony_gen_5C_ss_first_flipped;
+        return intermodal_car_pony_gen_5C_ss_first_unflipped;
+    }
+    spriteset(intermodal_car_pony_gen_5C_ss_last_unflipped, "generated/graphics/intermodal_car_pony_gen_5C.png") {
+        spriteset_template_asymmetric_unreversed_8_8_unflipped(130,NOANIM)
+    }
+    spriteset(intermodal_car_pony_gen_5C_ss_last_flipped, "generated/graphics/intermodal_car_pony_gen_5C.png") {
+        spriteset_template_asymmetric_reversed_8_8_flipped(160,NOANIM)
+    }
+    switch (FEAT_TRAINS, SELF, intermodal_car_pony_gen_5C_switch_graphics_platform_last, vehicle_is_flipped) {
+        1: return intermodal_car_pony_gen_5C_ss_last_flipped;
+        return intermodal_car_pony_gen_5C_ss_last_unflipped;
+    }
+    spriteset(intermodal_car_pony_gen_5C_ss_middle_unflipped, "generated/graphics/intermodal_car_pony_gen_5C.png") {
+        spriteset_template_asymmetric_unreversed_8_8_unflipped(190,NOANIM)
+    }
+    spriteset(intermodal_car_pony_gen_5C_ss_middle_flipped, "generated/graphics/intermodal_car_pony_gen_5C.png") {
+        spriteset_template_asymmetric_reversed_8_8_flipped(220,NOANIM)
+    }
+    switch (FEAT_TRAINS, SELF, intermodal_car_pony_gen_5C_switch_graphics_platform_middle, vehicle_is_flipped) {
+        1: return intermodal_car_pony_gen_5C_ss_middle_flipped;
+        return intermodal_car_pony_gen_5C_ss_middle_unflipped;
+    }
+    switch (FEAT_TRAINS, SELF, intermodal_car_pony_gen_5C_switch_graphics_platform_position_in_consist_entry_point, switch_graphics_intermodal_platform_ruleset_4_unit_sets()) {
+        0: intermodal_car_pony_gen_5C_switch_graphics_platform_default;
+        1: return intermodal_car_pony_gen_5C_switch_graphics_platform_first;
+        2: return intermodal_car_pony_gen_5C_switch_graphics_platform_last;
+        3: return intermodal_car_pony_gen_5C_switch_graphics_platform_middle;
+        return intermodal_car_pony_gen_5C_switch_graphics_platform_default;
+    }
+switch (FEAT_TRAINS, SELF, intermodal_car_pony_gen_5C_switch_graphics_spritelayer_cargos_check_cargo_count, cargo_count) {
+        0: return ss_spritelayer_cargo_empty;
+    return switch_spritelayer_cargos_intermodal_containers_default_32px;
+}
+switch (FEAT_TRAINS, SELF, intermodal_car_pony_gen_5C_switch_graphics_spritelayer_cargos, [
+                     STORE_TEMP(CB_FLAG_MORE_SPRITES | switch_intermodal_by_company_colour_1cc_to_1cc(), 0x100),
+                     STORE_TEMP(1, 23)
+                    ]) {
+    return intermodal_car_pony_gen_5C_switch_graphics_spritelayer_cargos_check_cargo_count;
+}
+// switch layers: base platform / spritelayer cargo
+switch (FEAT_TRAINS, SELF, intermodal_car_pony_gen_5C_switch_graphics_vehicle, getbits(extra_callback_info1, 8, 8)) {
+    0: return intermodal_car_pony_gen_5C_switch_graphics_platform_position_in_consist_entry_point;
+    1: return intermodal_car_pony_gen_5C_switch_graphics_spritelayer_cargos;
+}
+// buy menu graphics chain
+spriteset(intermodal_car_pony_gen_5C_ss_vehicle_purchase, "generated/graphics/intermodal_car_pony_gen_5C.png") {
+    spriteset_template_purchase_default(224,10,33,-16,NOANIM)
+}
+switch (FEAT_TRAINS, SELF, intermodal_car_pony_gen_5C_switch_graphics_purchase, 0) {
+    return intermodal_car_pony_gen_5C_ss_vehicle_purchase;
+}
+switch (FEAT_TRAINS, SELF, intermodal_car_pony_gen_5C_switch_set_layers_register_more_sprites, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
+    return intermodal_car_pony_gen_5C_switch_graphics_vehicle;
+}
+switch (FEAT_TRAINS, SELF, intermodal_car_pony_gen_5C_switch_graphics, getbits(extra_callback_info1, 8, 8)) {
+    0: return intermodal_car_pony_gen_5C_switch_set_layers_register_more_sprites;
+        1: return intermodal_car_pony_gen_5C_switch_set_layers_register_more_sprites;
+        2: return intermodal_car_pony_gen_5C_switch_set_layers_register_more_sprites;
+    return switch_graphics_layer_tail_light_32px;
+}
+switch (FEAT_TRAINS, SELF, intermodal_car_pony_gen_5C_switch_colour_mapping, 0) {
+    return intermodal_car_switch_colour_mapping_force_if_cargo_sprinter;
+}
+switch (FEAT_TRAINS, SELF, intermodal_car_pony_gen_5C_switch_cargo_capacity,
+        [STORE_TEMP(33, 0), STORE_TEMP(48, 1), STORE_TEMP(64, 2), STORE_TEMP(85, 3)]) {
+    return switch_cargo_capacity();
+}
+        switch (FEAT_TRAINS, PARENT, intermodal_car_pony_gen_5C_switch_running_cost_factor, 1) {
+            return 361;
+        }
+item(FEAT_TRAINS, intermodal_car_pony_gen_5C, 3740) {
+    property {
+        name:                           string(STR_NAME_CONSIST_PARENTHESES, string(STR_NAME_SUFFIX_INTERMODAL_CAR), string(STR_NAME_SUFFIX_LARGE));
+        climates_available:             NO_CLIMATE; // nml constant
+        engine_class:                   ENGINE_CLASS_STEAM;
+        introduction_date:              date(1990, 5, 1);
+        cargo_capacity:                 48;
+        sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+        power:                          0hp;
+            speed:                          87mph;
+        weight:                         21ton;
+        tractive_effort_coefficient:    0.3;
+        cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+        running_cost_base:              RUNNING_COST_DIESEL;
+        running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+        refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+        refittable_cargo_classes:       bitmask(CC_COVERED,CC_LIQUID,CC_BULK,CC_ARMOURED,CC_EXPRESS,CC_REFRIGERATED,CC_PIECE_GOODS,CC_NON_POURABLE);
+        non_refittable_cargo_classes:   bitmask(); // don't set non-refittable classes, increases likelihood of breaking cargo support
+        cargo_allow_refit:              [];
+        cargo_disallow_refit:           [TOUR];
+            default_cargo_type:             cargotype_available("POWR")?POWR:cargotype_available("GOOD")?GOOD:PAPR;
+        misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_FLIP,TRAIN_FLAG_AUTOREFIT); // nml constants
+        model_life:                     30;
+        retire_early:                   -10;
+        reliability_decay:              20; // default value
+        vehicle_life:                   40;
+        length:                         8;
+        track_type:                     RAIL;
+        effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+    }
+    graphics {
+        default:                        intermodal_car_pony_gen_5C_switch_graphics;
+        purchase:                       intermodal_car_pony_gen_5C_switch_graphics_purchase;
+        cost_factor:                    144; // CB used as it is capped to max 32k, prop is only 255
+        running_cost_factor:            intermodal_car_pony_gen_5C_switch_running_cost_factor; // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+        purchase_running_cost_factor:   361; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+            random_trigger:                 intermodal_car_pony_gen_5C_switch_graphics_spritelayer_cargos;
+                colour_mapping:                 intermodal_car_pony_gen_5C_switch_colour_mapping;
+            cargo_capacity:                 intermodal_car_pony_gen_5C_switch_cargo_capacity;
+            purchase_cargo_capacity:        intermodal_car_pony_gen_5C_switch_cargo_capacity;
+            loading_speed:                  10;
+    }
+}
+    if (param[1]==0) {
+        item(FEAT_TRAINS, intermodal_car_pony_gen_5C, 3740) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+    }

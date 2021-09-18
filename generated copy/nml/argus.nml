@@ -1,0 +1,197 @@
+            spriteset(argus_ss_unreversed_unflipped_0, "generated/graphics/argus.png") {
+                spriteset_template_asymmetric_unreversed_6_8_unflipped(10,NOANIM)
+            }
+        switch (FEAT_TRAINS, SELF, argus_switch_graphics_livery_unreversed_unflipped, company_colour1) {
+            return argus_ss_unreversed_unflipped_0;
+        }
+                spriteset(argus_ss_pantographs_down_unreversed_unflipped, "generated/graphics/argus_pantographs_down.png") {
+                    spriteset_template_asymmetric_unreversed_6_8_unflipped(10,NOANIM)
+                }
+                spriteset(argus_ss_pantographs_up_unreversed_unflipped, "generated/graphics/argus_pantographs_up.png") {
+                    spriteset_template_asymmetric_unreversed_6_8_unflipped(10,NOANIM)
+                }
+            switch (FEAT_TRAINS, SELF, argus_switch_graphics_pantographs_unreversed_unflipped, tile_powers_railtype("ELRL")) {
+                1: return argus_ss_pantographs_up_unreversed_unflipped;
+                return argus_ss_pantographs_down_unreversed_unflipped;
+            }
+        switch (FEAT_TRAINS, SELF, argus_switch_graphics_vehicle_layers_unreversed_unflipped, getbits(extra_callback_info1, 8, 8)) {
+                1: return argus_switch_graphics_pantographs_unreversed_unflipped;
+            return argus_switch_graphics_livery_unreversed_unflipped;
+        }
+            spriteset(argus_ss_unreversed_flipped_0, "generated/graphics/argus.png") {
+                spriteset_template_asymmetric_unreversed_6_8_flipped(10,NOANIM)
+            }
+        switch (FEAT_TRAINS, SELF, argus_switch_graphics_livery_unreversed_flipped, company_colour1) {
+            return argus_ss_unreversed_flipped_0;
+        }
+                spriteset(argus_ss_pantographs_down_unreversed_flipped, "generated/graphics/argus_pantographs_down.png") {
+                    spriteset_template_asymmetric_unreversed_6_8_flipped(10,NOANIM)
+                }
+                spriteset(argus_ss_pantographs_up_unreversed_flipped, "generated/graphics/argus_pantographs_up.png") {
+                    spriteset_template_asymmetric_unreversed_6_8_flipped(10,NOANIM)
+                }
+            switch (FEAT_TRAINS, SELF, argus_switch_graphics_pantographs_unreversed_flipped, tile_powers_railtype("ELRL")) {
+                1: return argus_ss_pantographs_up_unreversed_flipped;
+                return argus_ss_pantographs_down_unreversed_flipped;
+            }
+        switch (FEAT_TRAINS, SELF, argus_switch_graphics_vehicle_layers_unreversed_flipped, getbits(extra_callback_info1, 8, 8)) {
+                1: return argus_switch_graphics_pantographs_unreversed_flipped;
+            return argus_switch_graphics_livery_unreversed_flipped;
+        }
+    switch (FEAT_TRAINS, SELF, argus_switch_graphics_unreversed, vehicle_is_flipped) {
+        1: return argus_switch_graphics_vehicle_layers_unreversed_flipped;
+        return argus_switch_graphics_vehicle_layers_unreversed_unflipped;
+    }
+            spriteset(argus_ss_reversed_unflipped_0, "generated/graphics/argus.png") {
+                spriteset_template_asymmetric_reversed_6_8_unflipped(10,NOANIM)
+            }
+        switch (FEAT_TRAINS, SELF, argus_switch_graphics_livery_reversed_unflipped, company_colour1) {
+            return argus_ss_reversed_unflipped_0;
+        }
+                spriteset(argus_ss_pantographs_down_reversed_unflipped, "generated/graphics/argus_pantographs_down.png") {
+                    spriteset_template_asymmetric_reversed_6_8_unflipped(10,NOANIM)
+                }
+                spriteset(argus_ss_pantographs_up_reversed_unflipped, "generated/graphics/argus_pantographs_up.png") {
+                    spriteset_template_asymmetric_reversed_6_8_unflipped(10,NOANIM)
+                }
+            switch (FEAT_TRAINS, SELF, argus_switch_graphics_pantographs_reversed_unflipped, tile_powers_railtype("ELRL")) {
+                1: return argus_ss_pantographs_up_reversed_unflipped;
+                return argus_ss_pantographs_down_reversed_unflipped;
+            }
+        switch (FEAT_TRAINS, SELF, argus_switch_graphics_vehicle_layers_reversed_unflipped, getbits(extra_callback_info1, 8, 8)) {
+                1: return argus_switch_graphics_pantographs_reversed_unflipped;
+            return argus_switch_graphics_livery_reversed_unflipped;
+        }
+            spriteset(argus_ss_reversed_flipped_0, "generated/graphics/argus.png") {
+                spriteset_template_asymmetric_reversed_6_8_flipped(10,NOANIM)
+            }
+        switch (FEAT_TRAINS, SELF, argus_switch_graphics_livery_reversed_flipped, company_colour1) {
+            return argus_ss_reversed_flipped_0;
+        }
+                spriteset(argus_ss_pantographs_down_reversed_flipped, "generated/graphics/argus_pantographs_down.png") {
+                    spriteset_template_asymmetric_reversed_6_8_flipped(10,NOANIM)
+                }
+                spriteset(argus_ss_pantographs_up_reversed_flipped, "generated/graphics/argus_pantographs_up.png") {
+                    spriteset_template_asymmetric_reversed_6_8_flipped(10,NOANIM)
+                }
+            switch (FEAT_TRAINS, SELF, argus_switch_graphics_pantographs_reversed_flipped, tile_powers_railtype("ELRL")) {
+                1: return argus_ss_pantographs_up_reversed_flipped;
+                return argus_ss_pantographs_down_reversed_flipped;
+            }
+        switch (FEAT_TRAINS, SELF, argus_switch_graphics_vehicle_layers_reversed_flipped, getbits(extra_callback_info1, 8, 8)) {
+                1: return argus_switch_graphics_pantographs_reversed_flipped;
+            return argus_switch_graphics_livery_reversed_flipped;
+        }
+    switch (FEAT_TRAINS, SELF, argus_switch_graphics_reversed, vehicle_is_flipped) {
+        1: return argus_switch_graphics_vehicle_layers_reversed_flipped;
+        return argus_switch_graphics_vehicle_layers_reversed_unflipped;
+    }
+random_switch (FEAT_TRAINS, SELF, argus_switch_graphics_vehicle) {
+        1: return argus_switch_graphics_unreversed;
+        1: return argus_switch_graphics_reversed;
+}
+// buy menu graphics chain
+spriteset(argus_ss_vehicle_purchase_0, "generated/graphics/argus.png") {
+    spriteset_template_purchase_default(224,10,25,-12,NOANIM)
+}
+switch (FEAT_TRAINS, SELF, argus_switch_graphics_purchase_livery, company_colour1) {
+    return argus_ss_vehicle_purchase_0;
+}
+        spriteset(argus_ss_pantograph_purchase, "generated/graphics/argus_pantographs_down.png") {
+            spriteset_template_purchase_default(224,10,25,-12,NOANIM)
+        }
+        switch (FEAT_TRAINS, SELF, argus_switch_set_layers_register_more_sprites_purchase, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
+            return argus_switch_graphics_purchase_livery;
+        }
+        switch (FEAT_TRAINS, SELF, argus_switch_graphics_purchase, getbits(extra_callback_info1, 8, 8)) {
+            0: return argus_switch_set_layers_register_more_sprites_purchase;
+            1: return argus_ss_pantograph_purchase;
+        }
+switch (FEAT_TRAINS, SELF, argus_switch_set_layers_register_more_sprites, STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100)) {
+    return argus_switch_graphics_vehicle;
+}
+switch (FEAT_TRAINS, SELF, argus_switch_graphics, getbits(extra_callback_info1, 8, 8)) {
+    0: return argus_switch_set_layers_register_more_sprites;
+        1: return argus_switch_set_layers_register_more_sprites;
+    return switch_graphics_layer_tail_light_empty;
+}
+switch (FEAT_TRAINS, SELF, argus_switch_colour_mapping, company_colour1) {
+    return base_sprite_2cc + 16 * company_colour2 + company_colour1; 
+}
+        switch (FEAT_TRAINS, SELF, argus_switch_effect_spawn_model_and_powered, 1) {
+            return EFFECT_SPAWN_MODEL_ELECTRIC;
+        }
+            switch (FEAT_TRAINS, SELF, argus_switch_create_effect_default_unreversed, [STORE_TEMP(create_effect(EFFECT_SPRITE_ELECTRIC,0,0,12), 0x100)]) {
+                return 1 + CB_RESULT_CREATE_EFFECT_CENTER;
+            }
+    switch (FEAT_TRAINS, SELF, argus_switch_create_effect_check_railtype_unreversed, tile_powers_railtype("ELRL")) {
+        return argus_switch_create_effect_default_unreversed;
+    }
+            switch (FEAT_TRAINS, SELF, argus_switch_create_effect_default_reversed, [STORE_TEMP(create_effect(EFFECT_SPRITE_ELECTRIC,0,0,12), 0x100)]) {
+                return 1 + CB_RESULT_CREATE_EFFECT_CENTER;
+            }
+    switch (FEAT_TRAINS, SELF, argus_switch_create_effect_check_railtype_reversed, tile_powers_railtype("ELRL")) {
+        return argus_switch_create_effect_default_reversed;
+    }
+    random_switch (FEAT_TRAINS, SELF, argus_switch_create_effect_reversed_variants) {
+        dependent: argus_switch_graphics_vehicle;
+            1: argus_switch_create_effect_check_railtype_unreversed;
+            1: argus_switch_create_effect_check_railtype_reversed;
+    }
+    switch (FEAT_TRAINS, SELF, argus_switch_buy_menu_text_result, 1) {
+    return string(STR_BUY_MENU_WRAPPER_ONE_SUBSTR, string(STR_ROLE, string(STR_ROLE_GENERAL_PURPOSE_EXPRESS)));
+}
+        switch (FEAT_TRAINS, SELF, argus_switch_buy_menu_text, 1) {
+            return argus_switch_buy_menu_text_result;
+        }
+        switch (FEAT_TRAINS, PARENT, argus_switch_running_cost_factor, 1) {
+            return 1787;
+        }
+item(FEAT_TRAINS, argus, 5400) {
+    property {
+        name:                           string(STR_NAME_CONSIST_PARENTHESES, string(STR_NAME_argus), string(STR_NAME_SUFFIX_ELECTRIC));
+        climates_available:             NO_CLIMATE; // nml constant
+        engine_class:                   ENGINE_CLASS_ELECTRIC;
+        introduction_date:              date(1936, 3, 1);
+        cargo_capacity:                 0;
+        sprite_id:                      SPRITE_ID_NEW_TRAIN; //enable new graphics - nml constant
+        power:                          1250hp;
+            speed:                          90mph;
+        weight:                         67ton;
+        tractive_effort_coefficient:    0.3;
+        cost_factor:                    0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+        running_cost_base:              RUNNING_COST_STEAM;
+        running_cost_factor:            0; // use the CB to set this, the prop is capped to max 255, cb is 32k
+        refit_cost:                     0; // btw this needs to be 0 if we want autorefit without using cb
+        refittable_cargo_classes:       bitmask();
+        non_refittable_cargo_classes:   bitmask(); // don't set non-refittable classes, increases likelihood of breaking cargo support
+        cargo_allow_refit:              [];
+        cargo_disallow_refit:           [];
+        misc_flags:                     bitmask(TRAIN_FLAG_2CC,TRAIN_FLAG_SPRITE_STACK,TRAIN_FLAG_FLIP,TRAIN_FLAG_AUTOREFIT); // nml constants
+        model_life:                     33;
+        retire_early:                   -10;
+        reliability_decay:              20; // default value
+        vehicle_life:                   40;
+        length:                         6;
+        track_type:                     ELRL;
+        effect_spawn_model_and_powered: EFFECT_SPAWN_MODEL_NONE; // default to none to suppress effects, set in cb as needed
+    }
+    graphics {
+        default:                        argus_switch_graphics;
+        purchase:                       argus_switch_graphics_purchase;
+        cost_factor:                    48; // CB used as it is capped to max 32k, prop is only 255
+        running_cost_factor:            argus_switch_running_cost_factor; // CB should be used even for static running costs as it is capped to max 32k, prop is only 255
+        purchase_running_cost_factor:   1787; // purchase set separately to prevent unreliable results from trying to access non-available vars for variable run costs
+                colour_mapping:                 argus_switch_colour_mapping;
+            effect_spawn_model_and_powered: argus_switch_effect_spawn_model_and_powered;
+            create_effect:      argus_switch_create_effect_reversed_variants;
+            additional_text:                argus_switch_buy_menu_text;
+    }
+}
+    if (param[1]==0 && param_simplified_gameplay==0) {
+        item(FEAT_TRAINS, argus, 5400) {
+            property {
+                climates_available:             ALL_CLIMATES;
+            }
+        }
+    }
