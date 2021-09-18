@@ -144,11 +144,22 @@ class Pipeline(object):
         # !! this should arguably be moved into pixa
         if os.path.exists(output_path):
             # save tmp file
-            spritesheet.save(output_path_tmp)
+            try:
+                spritesheet.save(output_path_tmp)
+                if 'low_floor' in output_path_tmp:
+                    print("saving", output_path_tmp)
+            except:
+                # puzzling failures here, add some exception handling to try and resolve
+                raise(BaseException("Failed saving", output_path_tmp))
             # only save final output file if an existing file doesn't match tmp
-            if not filecmp.cmp(output_path, output_path_tmp):
-                print("replacing", output_path)
-                spritesheet.save(output_path)
+            try:
+                if not filecmp.cmp(output_path, output_path_tmp):
+                    print("replacing", output_path)
+                    spritesheet.save(output_path)
+            except:
+                # puzzling failures here, add some exception handling to try and resolve
+                input_image.show()
+                raise(BaseException("Failed comparing", output_path_tmp))
             os.remove(output_path_tmp)
         else:
             spritesheet.save(output_path)
@@ -290,7 +301,7 @@ class GenerateSpritelayerCargoSets(Pipeline):
             variant_output_image = Image.open(
                 os.path.join(currentdir, "src", "graphics", "spriterow_template.png")
             )
-            variant_output_image = variant_output_image.crop(
+            variant_output_image = variant_output_image.copy().crop(
                 (
                     0,
                     10,
