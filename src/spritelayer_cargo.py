@@ -1,3 +1,5 @@
+from copy import deepcopy
+
 import global_constants  # expose all constants for easy passing to templates
 
 from spritelayer_cargos import registered_spritelayer_cargos
@@ -66,23 +68,20 @@ class CargoSetBase(object):
                     spritelayer_cargo = registered_spritelayer_cargo
                     break
             if already_registered == False:
-                #print("register_cargo_set", platform_type, spritelayer_cargo.id, spritelayer_cargo.__class__.__name__)
                 registered_spritelayer_cargos.append(spritelayer_cargo)
+            #print("registering", spritelayer_cargo.id, spritelayer_cargo.platform_type, self.subtype, self.subtype_suffix)
             spritelayer_cargo.cargo_sets.append(self)
-            # keep an updated reference around to the spritelayer cargo for convenience
-            self.spritelayer_cargo = spritelayer_cargo
 
-    @property
-    def id(self):
+    def id(self, spritelayer_cargo):
         return (
-            self.spritelayer_cargo.base_id
+            spritelayer_cargo.base_id
             + "_"
-            + self.spritelayer_cargo.platform_type
+            + spritelayer_cargo.platform_type
             + "_"
             + self.subtype
             + "_"
             + self.subtype_suffix
             + "_"
-            + str(self.spritelayer_cargo.length)
+            + str(spritelayer_cargo.length)
             + "px"
         )

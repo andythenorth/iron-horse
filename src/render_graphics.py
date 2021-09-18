@@ -26,13 +26,13 @@ def run_consist_pipelines(consist):
             pipeline.render(consist, global_constants)
 
 
-def run_spritelayer_cargo_set_pipelines(spritelayer_cargo_set):
+def run_spritelayer_cargo_set_pipelines(spritelayer_cargo_set_pair):
     for (
         pipeline
     ) in (
-        spritelayer_cargo_set.spritelayer_cargo.gestalt_graphics.spritelayer_cargo_pipelines
+        spritelayer_cargo_set_pair[0].gestalt_graphics.spritelayer_cargo_pipelines
     ):
-        pipeline.render(spritelayer_cargo_set, global_constants)
+        pipeline.render(spritelayer_cargo_set_pair, global_constants)
 
 
 def report_sprites_complete(consists):
@@ -92,18 +92,18 @@ def main():
     hint_file.close()
 
     consists = iron_horse.get_consists_in_buy_menu_order()
-    spritelayer_cargo_sets = iron_horse.get_spritelayer_cargo_sets()
+    spritelayer_cargo_set_pairs = iron_horse.get_spritelayer_cargos_flattened_by_set()
 
     if use_multiprocessing == False:
-        for spritelayer_cargo_set in spritelayer_cargo_sets:
-            run_spritelayer_cargo_set_pipelines(spritelayer_cargo_set)
+        for spritelayer_cargo_set_pair in spritelayer_cargo_set_pairs:
+            run_spritelayer_cargo_set_pipelines(spritelayer_cargo_set_pair)
         for consist in consists:
             run_consist_pipelines(consist)
     else:
         # Would this go faster if the pipelines from each consist were placed in MP pool, not just the consist?
         # probably potato / potato tbh
         pool = Pool(processes=num_pool_workers)
-        pool.map(run_spritelayer_cargo_set_pipelines, spritelayer_cargo_sets)
+        pool.map(run_spritelayer_cargo_set_pipelines, spritelayer_cargo_set_pairs)
         pool.close()
         pool.join()
         # wait for first pool job to finish before starting

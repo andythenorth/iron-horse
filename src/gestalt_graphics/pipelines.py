@@ -400,11 +400,10 @@ class GenerateSpritelayerCargoSets(Pipeline):
             variant_output_image.close()
             template_image.close()
 
-    def render(self, spritelayer_cargo_set, global_constants):
+    def render(self, spritelayer_cargo_set_pair, global_constants):
         self.units = []
-        self.spritelayer_cargo_set = spritelayer_cargo_set
-        # store the spritelayer_cargo_set for convenience of access
-        self.spritelayer_cargo = spritelayer_cargo_set.spritelayer_cargo
+        self.spritelayer_cargo = spritelayer_cargo_set_pair[0]
+        self.spritelayer_cargo_set = spritelayer_cargo_set_pair[1]
         self.global_constants = global_constants
 
         self.add_cargo_spriterows()
@@ -413,7 +412,7 @@ class GenerateSpritelayerCargoSets(Pipeline):
         input_image = Image.new("P", (graphics_constants.spritesheet_width, 10), 255)
         input_image.putpalette(DOS_PALETTE)
         self.render_common(
-            input_image, self.units, output_base_name=spritelayer_cargo_set.id
+            input_image, self.units, output_base_name=self.spritelayer_cargo_set.id(self.spritelayer_cargo)
         )
 
 
