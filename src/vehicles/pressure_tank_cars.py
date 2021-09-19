@@ -46,7 +46,7 @@ def main():
         sprites_complete=False,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_sparse_16px")
+    consist.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
 
     consist = GasTankCarPressureConsist(
         roster_id="pony",
@@ -56,7 +56,7 @@ def main():
         sprites_complete=False,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_sparse_16px")
+    consist.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
 
     consist = GasTankCarPressureConsist(
         roster_id="pony",
@@ -66,7 +66,7 @@ def main():
         sprites_complete=False,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_sparse_24px")
+    consist.add_unit(type=FreightCar, chassis="4_axle_gapped_24px")
 
     consist = GasTankCarPressureConsist(
         roster_id="pony",
@@ -76,17 +76,17 @@ def main():
         sprites_complete=False,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_sparse_16px")
+    consist.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
 
     consist = GasTankCarPressureConsist(
         roster_id="pony",
         base_numeric_id=6200,
         gen=4,
         subtype="B",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_sparse_24px")
+    consist.add_unit(type=FreightCar, chassis="4_axle_gapped_24px")
 
     consist = GasTankCarPressureConsist(
         roster_id="pony",
@@ -96,64 +96,64 @@ def main():
         sprites_complete=False,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_sparse_32px")
+    consist.add_unit(type=FreightCar, chassis="4_axle_gapped_32px")
 
     consist = GasTankCarPressureConsist(
         roster_id="pony",
         base_numeric_id=6280,
         gen=5,
         subtype="A",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_sparse_16px")
+    consist.add_unit(type=FreightCar, chassis="2_axle_gapped_greebled_alt_16px")
 
     consist = GasTankCarPressureConsist(
         roster_id="pony",
         base_numeric_id=6220,
         gen=5,
         subtype="B",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_sparse_24px")
+    consist.add_unit(type=FreightCar, chassis="4_axle_gapped_greebled_alt_24px")
 
     consist = GasTankCarPressureConsist(
         roster_id="pony",
         base_numeric_id=6230,
         gen=5,
         subtype="C",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_sparse_32px")
+    consist.add_unit(type=FreightCar, chassis="4_axle_gapped_greebled_alt_32px")
 
     consist = GasTankCarPressureConsist(
         roster_id="pony",
         base_numeric_id=6290,
         gen=6,
         subtype="A",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_sparse_16px")
+    consist.add_unit(type=FreightCar, chassis="2_axle_gapped_greebled_alt_16px")
 
     consist = GasTankCarPressureConsist(
         roster_id="pony",
         base_numeric_id=6240,
         gen=6,
         subtype="B",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_sparse_24px")
+    consist.add_unit(type=FreightCar, chassis="4_axle_gapped_greebled_alt_24px")
 
     consist = GasTankCarPressureConsist(
         roster_id="pony",
         base_numeric_id=6250,
         gen=6,
         subtype="C",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_sparse_32px")
+    consist.add_unit(type=FreightCar, chassis="4_axle_gapped_greebled_alt_32px")
