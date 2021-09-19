@@ -10,7 +10,7 @@ def main():
         gen=2,
         subtype="U",
         base_track_type="NG",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
@@ -21,7 +21,7 @@ def main():
         gen=3,
         subtype="U",
         base_track_type="NG",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
@@ -32,7 +32,7 @@ def main():
         gen=4,
         subtype="U",
         base_track_type="NG",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
@@ -40,7 +40,7 @@ def main():
     # --------------- pony ----------------------------------------------------------------------
     consist = GasTankCarPressureConsist(
         roster_id="pony",
-        base_numeric_id=6160,
+        base_numeric_id=80,
         gen=2,
         subtype="A",
         sprites_complete=False,
@@ -50,7 +50,7 @@ def main():
 
     consist = GasTankCarPressureConsist(
         roster_id="pony",
-        base_numeric_id=6170,
+        base_numeric_id=180,
         gen=3,
         subtype="A",
         sprites_complete=False,
@@ -60,7 +60,7 @@ def main():
 
     consist = GasTankCarPressureConsist(
         roster_id="pony",
-        base_numeric_id=6180,
+        base_numeric_id=250,
         gen=3,
         subtype="B",
         sprites_complete=False,
