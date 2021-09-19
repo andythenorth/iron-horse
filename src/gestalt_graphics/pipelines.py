@@ -148,7 +148,7 @@ class Pipeline(object):
             # - artefacts from a previous failed compile
             # either way, raise, because this was a previous source of intermittent compile failures
             # (problem was tmp file being deleted by one pool worker whilst another pool worker was still trying to work with it)
-            raise(BaseException("Exists:", output_path_tmp))
+            raise (BaseException("Exists:", output_path_tmp))
         if os.path.exists(output_path):
             # save tmp file
             spritesheet.save(output_path_tmp)
@@ -412,7 +412,9 @@ class GenerateSpritelayerCargoSets(Pipeline):
         input_image = Image.new("P", (graphics_constants.spritesheet_width, 10), 255)
         input_image.putpalette(DOS_PALETTE)
         self.render_common(
-            input_image, self.units, output_base_name=self.spritelayer_cargo_set.id(self.spritelayer_cargo)
+            input_image,
+            self.units,
+            output_base_name=self.spritelayer_cargo_set.id(self.spritelayer_cargo),
         )
 
 

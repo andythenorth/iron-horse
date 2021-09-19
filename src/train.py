@@ -3168,7 +3168,7 @@ class PeatCarConsist(CarConsist):
         self.allow_flip = True
         self.cc_num_to_randomise = 2
         # Graphics configuration
-        #self.gestalt_graphics = GestaltGraphicsVisibleCargo(piece="tree_length_logs")
+        # self.gestalt_graphics = GestaltGraphicsVisibleCargo(piece="tree_length_logs")
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             recolour_maps=graphics_constants.potash_hopper_car_livery_recolour_maps
         )

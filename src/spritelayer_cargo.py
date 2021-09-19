@@ -69,7 +69,7 @@ class CargoSetBase(object):
                     break
             if already_registered == False:
                 registered_spritelayer_cargos.append(spritelayer_cargo)
-            #print("registering", spritelayer_cargo.id, spritelayer_cargo.platform_type, self.subtype, self.subtype_suffix)
+            # print("registering", spritelayer_cargo.id, spritelayer_cargo.platform_type, self.subtype, self.subtype_suffix)
             spritelayer_cargo.cargo_sets.append(self)
 
     def id(self, spritelayer_cargo):

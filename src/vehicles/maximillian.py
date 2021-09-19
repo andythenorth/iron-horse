@@ -26,6 +26,8 @@ def main(roster_id):
     )
 
     consist.description = """The ultimate narrow gauge diesel."""
-    consist.foamer_facts = """CFD Locotracteur BB-400, South African 'Funkey' diesels, FAUR L45H B-B"""
+    consist.foamer_facts = (
+        """CFD Locotracteur BB-400, South African 'Funkey' diesels, FAUR L45H B-B"""
+    )
 
     return consist

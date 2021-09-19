@@ -1,5 +1,6 @@
 from train import AutomobileDoubleDeckCarConsist, AutomobileCar
 
+
 def main():
     # --------------- pony ----------------------------------------------------------------------
     # intro gen 4

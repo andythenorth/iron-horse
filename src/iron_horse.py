@@ -18,6 +18,7 @@ if not os.path.exists(generated_files_path):
 # this format of import is weird, but I don't want the imported modules directly in the iron horse namespace, I want to nest in spritelayer_cargos
 from spritelayer_cargos import registered_spritelayer_cargos
 from spritelayer_cargos import intermodal_containers
+
 # from spritelayer_cargos import automobiles
 
 # import rosters
@@ -41,6 +42,7 @@ from vehicles import coil_cars_uncovered
 from vehicles import covered_hopper_cars
 from vehicles import cryo_tank_cars
 from vehicles import curtain_side_box_cars
+
 # from vehicles import double_deck_automobile_cars
 from vehicles import dump_cars
 from vehicles import dump_cars_high_side
@@ -57,6 +59,7 @@ from vehicles import ingot_cars
 from vehicles import intermodal_cars
 from vehicles import livestock_cars
 from vehicles import log_cars
+
 # from vehicles import low_floor_automobile_cars
 from vehicles import low_floor_intermodal_cars
 from vehicles import mail_cars
