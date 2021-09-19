@@ -3458,6 +3458,22 @@ class TankCarConsist(TankCarConsistBase):
         )
 
 
+class TankCarAcidConsist(TankCarConsistBase):
+    """
+    Shinier version of the standard tank car, same refits, different defaults
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "acid_tank_car"
+        super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos["product_tank"]
+        self._joker = True
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
+            recolour_maps=graphics_constants.acid_tank_car_livery_recolour_maps
+        )
+
+
 class TankCarProductConsist(TankCarConsistBase):
     """
     Shinier version of the standard tank car, same refits, different defaults

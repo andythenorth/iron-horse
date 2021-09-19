@@ -50,6 +50,50 @@ sliding_roof_car_body_recolour_map = {
 # could probably have used orderedict or named tuple, but...blah
 
 # DFLT label is a hack to support cargos with no specific sprites (including unknown cargos), and should not be added to cargo translation table
+acid_tank_car_livery_recolour_maps = (
+    (
+        "DFLT",
+        {
+            136: CC1,
+            137: CC1 + 1,
+            138: CC1 + 2,
+            139: CC1 + 3,
+            140: CC1 + 4,
+            141: CC1 + 5,
+            142: CC1 + 6,
+            143: CC1 + 7,
+            154: CC1,
+            155: CC1 + 1,
+            156: CC1 + 2,
+            157: CC1 + 3,
+            158: CC1 + 4,
+            159: CC1 + 5,
+            160: CC1 + 6,
+            161: CC1 + 7,
+        },
+    ),
+    (
+        "SULP",
+        {
+            136: 62,
+            137: 62 + 1,
+            138: 62 + 2,
+            139: 62 + 3,
+            140: 62 + 4,
+            141: 62 + 5,
+            142: 62 + 6,
+            143: 62 + 7,
+            154: 62,
+            155: 62 + 1,
+            156: 62 + 2,
+            157: 62 + 3,
+            158: 62 + 4,
+            159: 62 + 5,
+            160: 62 + 6,
+            161: 62 + 7,
+        },
+    ),
+)
 
 box_livery_recolour_maps = (
     (
