@@ -77,6 +77,7 @@ from vehicles import lark
 from vehicles import lemon
 from vehicles import little_bear
 from vehicles import longwater
+from vehicles import mainstay
 from vehicles import maximillian
 from vehicles import magnum_70
 from vehicles import merlion
@@ -413,6 +414,7 @@ def main(disabled=False):
             phoenix,
             vigilant,
             blind_smuir,
+            mainstay,
             girt_licker,
             lemon,
             esk,
