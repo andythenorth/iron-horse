@@ -22,6 +22,7 @@ from vehicles import brenner_cab
 from vehicles import brenner_middle
 from vehicles import bright_country
 from vehicles import buffalo
+from vehicles import cairies
 from vehicles import captain_steel
 from vehicles import cargo_sprinter
 from vehicles import carrack
@@ -415,6 +416,7 @@ def main(disabled=False):
             vigilant,
             blind_smuir,
             mainstay,
+            cairies,
             girt_licker,
             lemon,
             esk,
