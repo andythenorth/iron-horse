@@ -22,7 +22,6 @@ from vehicles import brenner_cab
 from vehicles import brenner_middle
 from vehicles import bright_country
 from vehicles import buffalo
-from vehicles import cairies
 from vehicles import captain_steel
 from vehicles import cargo_sprinter
 from vehicles import carrack
@@ -140,6 +139,7 @@ from vehicles import vulcan
 from vehicles import westbourne
 from vehicles import workish
 from vehicles import wyvern
+from vehicles import yillen
 from vehicles import zebedee
 from vehicles import zest
 from vehicles import zeus
@@ -416,7 +416,7 @@ def main(disabled=False):
             vigilant,
             blind_smuir,
             mainstay,
-            cairies,
+            yillen,
             girt_licker,
             lemon,
             esk,
