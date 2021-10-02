@@ -15,7 +15,7 @@ def main(roster_id):
         tractive_effort_coefficient=0.23,
         gen=3,
         intro_date_offset=2,  # let's be a little bit later for this one
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=SteamEngineUnit, weight=96, vehicle_length=6, spriterow_num=0)
@@ -24,7 +24,7 @@ def main(roster_id):
         type=SteamEngineTenderUnit, weight=50, vehicle_length=4, spriterow_num=1
     )
 
-    consist.description = """CABBASGE"""
-    consist.foamer_facts = """CABBAGE"""
+    consist.description = """Bombproof."""
+    consist.foamer_facts = """WD Austerity 2-8-0, USRA S160 Class 2-8-0"""
 
     return consist
