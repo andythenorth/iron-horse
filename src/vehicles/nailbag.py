@@ -4,11 +4,11 @@ from train import EngineConsist, DieselEngineUnit
 def main(roster_id):
     consist = EngineConsist(
         roster_id=roster_id,
-        id="merlion",
-        base_numeric_id=4920,
-        name="Merlion",
-        role="express",
-        role_child_branch_num=1,
+        id="nailbag",
+        base_numeric_id=6380,
+        name="Nailbag",
+        role="freight",
+        role_child_branch_num=-1,
         # replacement_consist_id='slug', # this Joker ends with Slug
         power=1750,
         tractive_effort_coefficient=0.26,
