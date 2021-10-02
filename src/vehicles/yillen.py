@@ -12,11 +12,12 @@ def main(roster_id):
         replacement_consist_id="vanguard",  # this line is a strange 10/8 infill, and ends here
         power=2200,
         gen=4,
+        intro_date_offset=-2,  # let's be a little earlier for this one
         default_livery_extra_docs_examples=[
             ("COLOUR_PALE_GREEN", "COLOUR_GREY"),
             ("COLOUR_PINK", "COLOUR_WHITE"),
         ],
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(
@@ -27,7 +28,7 @@ def main(roster_id):
         type=DieselEngineUnit, weight=80, vehicle_length=5, spriterow_num=1
     )
 
-    consist.description = """CABBAGE."""
+    consist.description = """The universe is asymmetric. And so are these."""
     consist.foamer_facts = """BR Class 15, BR Class 16"""
 
     return consist
