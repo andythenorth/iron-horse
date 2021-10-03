@@ -8,8 +8,8 @@ Changelog
 *Changes*
 
 - added freight engines
-    - Mainstay steam heavy freight engine, 1850hp, available around 1930
-    - Yillen diesel heavy freight engine, 2200hp, available around 1958
+    - Mainstay steam heavy freight engine, 1850 hp, available around 1930
+    - Yillen diesel heavy freight engine, 2200 hp, available around 1958
 - added wagons
     - narrow gauge Skips (low speed side-tipping wagons)
     - Acid Tankers (general liquids)
@@ -104,9 +104,9 @@ Changelog
 *Changes*
 
 - added 3 railbuses
-    - Clipper, 180hp, 31 passengers, available around 1956
-    - Skipper, 225hp, 36 passengers, available around 1986
-    - Zipper, 280hp, 36 passengers, available around 2016
+    - Clipper, 180 hp, 31 passengers, available around 1956
+    - Skipper, 225 hp, 36 passengers, available around 1986
+    - Zipper, 280 hp, 36 passengers, available around 2016
 - minor run-cost tweaks to railcars to balance against railbuses
 
 *Translations*
@@ -204,18 +204,18 @@ Changelog
 *Changes*
 
 - adjusted electric engine tech tree
-    - moved Stoat to electric freight engine, 1050hp, available around 1903
-    - added Zest electric freight engine, 1600hp, available around 1966
-    - moved Pinhorse to earlier generation, 900hp, available around 1903
-    - added Argus electric general purpose engine, 1250hp, available around 1936
-    - added Booster electro-diesel general purpose engine, 600hp diesel power, 1600hp electric power, available around 1969
-    - added Tornado electro-diesel general purpose engine, 750hp diesel power, 1900hp electric power, available around 2002
-    - changed Shoebox to 8/8 length, 950hp diesel power, 2300hp electric power, available around 1963
-    - changed Super Shoebox to 8/8 length, 1250hp diesel power, 2600hp electric power, available around 1990
-    - changed Ultra Shoebox to 8/8 length, 1650hp diesel power, 2800hp electric power, available around 2020
-    - added Hector electric general purpose engine, 4040hp, available around 2021
-    - added Nimbus electric general purpose engine, 5400hp, available around 2023
-    - adjusted Screamer power to 4800hp
+    - moved Stoat to electric freight engine, 1050 hp, available around 1903
+    - added Zest electric freight engine, 1600 hp, available around 1966
+    - moved Pinhorse to earlier generation, 900 hp, available around 1903
+    - added Argus electric general purpose engine, 1250 hp, available around 1936
+    - added Booster electro-diesel general purpose engine, 600 hp diesel power, 1600 hp electric power, available around 1969
+    - added Tornado electro-diesel general purpose engine, 750 hp diesel power, 1900 hp electric power, available around 2002
+    - changed Shoebox to 8/8 length, 950 hp diesel power, 2300 hp electric power, available around 1963
+    - changed Super Shoebox to 8/8 length, 1250 hp diesel power, 2600 hp electric power, available around 1990
+    - changed Ultra Shoebox to 8/8 length, 1650 hp diesel power, 2800 hp electric power, available around 2020
+    - added Hector electric general purpose engine, 4040 hp, available around 2021
+    - added Nimbus electric general purpose engine, 5400 hp, available around 2023
+    - adjusted Screamer power to 4800 hp
 - fixed loading speeds for all vehicles, some were too fast, some were too slow
 - reduced run cost of metro units
 
@@ -238,7 +238,7 @@ Changelog
     - first available around 1976
     - multiple liveries, livery shown depends on consist cargo and user choice (depot flip the vehicle)
     - automatically flips if last vehicle in train
-- added Stentor heavy freight engine, 4050hp, available around 1993
+- added Stentor heavy freight engine, 4050 hp, available around 1993
 - improved appearance of Flanders Storm engine
 
 
@@ -276,20 +276,20 @@ Changelog
 *Changes*
 
 - adjusted freight engine tech tree
-    - added Quietus electro-diesel, 3250hp diesel power, 6700hp electric power
-    - increased Triton power to 7200hp
+    - added Quietus electro-diesel, 3250 hp diesel power, 6700 hp electric power
+    - increased Triton power to 7200 hp
 - increased Revolution run cost, to account for high power in electric mode
 - adjusted railcar tech tree
     - Zeus changed to elecric power, not electro-diesel, hyrid power has limited gameplay benefit for the general-purpose passenger railcars
     - removed Mail Rail, overlapped too much with Pylon on both stats and appearance, not worth the candle
-    - increased Pylon diesel power to 700hp
+    - increased Pylon diesel power to 700 hp
     - added Cargo Sprinter diesel freight railcar
-        - 99mph, 1650hp
+        - 99 mph, 1650 hp
         - express cargo refits (mail, food, engineering supplies etc)
         - for increased capacity add Express Container Wagons, these match Cargo Sprinter speed, and will also match appearance
         - other wagon types can be added, but might not match appearance or speed
     - Bright Country luxury railcar adjusted to electro-diesel
-        - 620hp of diesel power
+        - 620 hp of diesel power
         - experimental idea, this may be of limited gameplay benefit
         - intended use is long routes that are partially electrified, with lightly-trafficked non-electrified sections, but eh, try it out
 - increased capacity for standard Passenger Coaches
@@ -381,10 +381,10 @@ Changelog
 *Changes*
 
 - adjusted freight engine tech tree
-    - added Defiant, 3650hp, follows from Bone
-    - increased Blackthorn power to 3650hp
-    - reduced Cheddar Valley power to 4050hp
-    - renamed Endeavour to Highlander, power increased to 4450hp, follows from Cheddar Valley
+    - added Defiant, 3650 hp, follows from Bone
+    - increased Blackthorn power to 3650 hp
+    - reduced Cheddar Valley power to 4050 hp
+    - renamed Endeavour to Highlander, power increased to 4450 hp, follows from Cheddar Valley
 - reduced running costs of high speed and very high speed trains
 - reduced running costs of Onslaught and Relentless
 - adjusted automatic running cost algorithm so that gen 6 engines are not significantly cheaper to run than gen 5, with insignificant changes to all other engine running costs as a side effect
@@ -493,7 +493,7 @@ Changelog
 
 - added Captain Steel branch freight engine, alternative to Little Bear
     - available around 1960
-    - 75mph / 1150hp
+    - 75 mph / 1150 hp
     - inspired by Alco S1, EMD switchers, Brush Bagnall steelworks locos
 
 
@@ -514,15 +514,15 @@ Changelog
 
 - added Chuggypig joker engine, as alternative to Gronk
     - available around 1960
-    - 35mph / 400hp
+    - 35 mph / 400 hp
     - inspired by Thomas Hill Steelman, BR Class 07, miscellaneous industrial diesel shunters
 - added Autocoach Set
     - available around 1915
     - attach to front or rear of a train with at least one other engine
     - for OpenTTD reasons, vehicles must have power to lead a train, so these vehicles include a small amount of power
-    - 75mph, combined pax and mail capacity (not refittable)
+    - 75 mph, combined pax and mail capacity (not refittable)
     - inspired by SR and LMS auto-coach sets, LNER articulated coach sets
-- increase Lemon speed to 75mph, so it can stick around for longer in steam-diesel transition period, similar to Diablo and Blind Smuir
+- increase Lemon speed to 75 mph, so it can stick around for longer in steam-diesel transition period, similar to Diablo and Blind Smuir
 - link to grf.farm docs from in-game
 
 
@@ -789,7 +789,7 @@ Not savegame compatible with previous Iron Horse releases.
 - added 3 Slag Ladle Wagons
     - 2 standard gauge, 1 narrow gauge
     - dedicated to slag cargo (found in FIRS v4 Steeltown economy)
-    - limited to 35mph due to carrying red-hot molten slag in open top ladles
+    - limited to 35 mph due to carrying red-hot molten slag in open top ladles
 - adjusted some wagon types that had an alternative hand-drawn livery using ctrl-click in depot
     - for most wagon types ctrl-click in depot now only toggles 1st / 2nd company colour
     - some wagon types have been split or combined
@@ -825,8 +825,8 @@ Not savegame compatible with previous Iron Horse releases.
     - should generally aid profitability, too little profit is a bigger gameplay evil than too much profit
     - notably routes involving transfers should be more profitable
 - minor reduction of speeds of railcars / freight vehicles in later game
-    - 84mph for generation 5 (around 1990), previously 87mph
-    - 93mph generation 6 (around 2020), previously 96mph
+    - 84 mph for generation 5 (around 1990), previously 87 mph
+    - 93 mph generation 6 (around 2020), previously 96 mph
 - increased spacing of buffer pixels in - views
 - added description text for Jokers parameter
 - use 3-unit sets for some electric mail railcars (previously 2-unit sets)
@@ -906,8 +906,8 @@ The wrong version of 2.2.0 was released to bananas, so 2.2.1 replaces that.
     - multiple liveries, livery shown depends on consist cargo and user choice (depot flip the vehicle)
     - automatically flips if last vehicle in train
 - added 3 Joker vehicles with limited gameplay benefit
-    - Grub small steam engine (1860), 35mph, 250hp
-    - Gronk small diesel engine (1951), 35mph, 400hp
+    - Grub small steam engine (1860), 35 mph, 250 hp
+    - Gronk small diesel engine (1951), 35 mph, 400 hp
     - Snowplough (1900)
         - has a small amount of power set so it can lead a train
         - can transport a small amount of mail or express freight cargos
@@ -1077,8 +1077,8 @@ Dive in and play.
 *High Speed / Very High Speed Trains*
 
 - added dedicated high speed and very high speed trains
-- fastest train in Iron Horse 2 is 186mph (Brenner, available around 2018)
-    - 155mph Screamer from Iron Horse 1 is removed, these trains replace it
+- fastest train in Iron Horse 2 is 186 mph (Brenner, available around 2018)
+    - 155 mph Screamer from Iron Horse 1 is removed, these trains replace it
 - maximum speed will only be available with dedicated passenger coaches
 - first high speed train available around 1980
 - first very high speed train available around 1987
