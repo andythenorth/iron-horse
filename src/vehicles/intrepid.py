@@ -13,9 +13,9 @@ def main(roster_id):
         random_reverse=True,
         gen=4,
         fixed_run_cost_points=40,  # give a bonus so this can be a genuine mixed-traffic engine
-        intro_date_offset=2,  # let's be a tiny bit later for this one
+        intro_date_offset=6,  # let's be later for this one
         default_livery_extra_docs_examples=[("COLOUR_GREEN", "COLOUR_WHITE")],
-        sprites_complete=True,
+        sprites_complete=False,
     )
 
     consist.add_unit(
@@ -25,7 +25,7 @@ def main(roster_id):
         spriterow_num=0,
     )
 
-    consist.description = """They've put a non-standard hydraulic transmission in these, but they're a bit lighter than a Wyvern so we'll give em a go."""
-    consist.foamer_facts = """BR Class 35 <i>Hymek</i>, Brush <i>Falcon</i> prototype and BRCW <i>Lion</i> prototype"""
+    consist.description = """These are a bit duff, but they're a bit lighter than a Wyvern so we'll give em a go."""
+    consist.foamer_facts = """BR Class 47, prime mover downrated for reliability"""
 
     return consist

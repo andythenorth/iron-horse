@@ -14,8 +14,7 @@ def main(roster_id):
         gen=5,
         intro_date_offset=-4,  # let's not have everything turn up in 1990
         fixed_run_cost_points=65,  # give a bonus so this can be a genuine mixed-traffic engine
-        alternative_cc_livery="PLAIN_NOT_INTERCITY",
-        default_livery_extra_docs_examples=[("COLOUR_BLUE", "COLOUR_WHITE")],
+        default_livery_extra_docs_examples=[("COLOUR_BLUE", "COLOUR_WHITE"), ("COLOUR_GREY", "COLOUR_GREY"), ("COLOUR_RED", "COLOUR_RED")],
         sprites_complete=True,
     )
 
