@@ -2,6 +2,35 @@ Changelog
 =========
 
 -------------
+2.28.0 Release
+-------------
+
+*Changes*
+
+- added freight engines
+    - Mainstay steam heavy freight engine, 1850hp, available around 1930
+    - Yillen diesel heavy freight engine, 2200hp, available around 1958
+- added wagons
+    - narrow gauge Skips (low speed side-tipping wagons)
+    - Acid Tankers (general liquids)
+    - Pressure Tankers (gas cargos)
+- adjusted Cryo Tankers
+    - reworked sprites to be fatter appearance
+    - gen 3 and narrow gauge Cryo Tankers replaced by equivalent Pressure Tankers
+- sprite support for peat cargo
+
+*Fixes*
+
+- many intermodal wagons may have had incorrect sprites for platform height (most default wagons were probably using incorrect low_floor variant)
+- remove extraneous pixels from \ view of Blind Smuir
+
+*Codechanges*
+
+- prevent rendered spritesheets being created more than once, avoiding problems where pool workers are deleting files in use by another pool worker
+- coil buggies and ingot cars referenced a non-existent chassis sprite (didn't error as chassis sprite isn't used, but should still be defined)
+
+
+-------------
 2.27.0 Release
 -------------
 
