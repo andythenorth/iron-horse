@@ -1,0 +1,31 @@
+from train import EngineConsist, DieselEngineUnit
+
+
+def main(roster_id):
+    consist = EngineConsist(
+        roster_id=roster_id,
+        id="withershins",
+        base_numeric_id=6390,
+        name="Withershins",
+        role="heavy_freight",
+        role_child_branch_num=-2,
+        power=2900,
+        random_reverse=True,
+        gen=4,
+        fixed_run_cost_points=118,  # minor run cost bonus as default algorithm makes run cost too high
+        #alternative_cc_livery="RAILFREIGHT_RED_STRIPE",
+        default_livery_extra_docs_examples=[
+            ("COLOUR_PALE_GREEN", "COLOUR_GREY"),
+            ("COLOUR_BLUE", "COLOUR_GREY"),
+        ],
+        sprites_complete=False,
+    )
+
+    consist.add_unit(
+        type=DieselEngineUnit, weight=85, vehicle_length=6, spriterow_num=0, repeat=2
+    )
+
+    consist.description = """."""
+    consist.foamer_facts = """BR Class 24, BR Class 25"""
+
+    return consist

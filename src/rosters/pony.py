@@ -138,6 +138,7 @@ from vehicles import vigilant
 from vehicles import viking
 from vehicles import vulcan
 from vehicles import westbourne
+from vehicles import withershins
 from vehicles import workish
 from vehicles import wyvern
 from vehicles import yillen
@@ -395,6 +396,7 @@ def main(disabled=False):
             lemon,
             esk,
             chinook,
+            withershins,
             grid,
             bone,
             blackthorn,
