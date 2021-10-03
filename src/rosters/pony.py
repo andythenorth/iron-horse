@@ -84,6 +84,7 @@ from vehicles import merlion
 from vehicles import merrylegs
 from vehicles import moor_gallop
 from vehicles import mumble
+from vehicles import nailbag
 from vehicles import nimbus
 from vehicles import olympic
 from vehicles import onslaught
@@ -409,9 +410,10 @@ def main(disabled=False):
             braf,
             diablo,
             haar,
-            viking,
             growler,
+            nailbag,
             slug,
+            viking,
             phoenix,
             vigilant,
             blind_smuir,
