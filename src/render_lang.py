@@ -45,9 +45,9 @@ def main():
     iron_horse.main()
     consists = iron_horse.get_consists_in_buy_menu_order()
 
-    languages_with_generation = ("english",)
+    languages_with_generation = ("english", "russian")
     for i in languages_with_generation:
-        # compile strings to single lang file - english
+        # compile strings to single lang file - english, russian, etc.
         lang_template = templates[i + ".pylng"]
 
         src_file = codecs.open(os.path.join(lang_src, i + ".lng"), "r", "utf8")
