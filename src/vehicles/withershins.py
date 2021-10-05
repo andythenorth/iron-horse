@@ -18,14 +18,14 @@ def main(roster_id):
             ("COLOUR_PALE_GREEN", "COLOUR_GREY"),
             ("COLOUR_BLUE", "COLOUR_GREY"),
         ],
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(
-        type=DieselEngineUnit, weight=85, vehicle_length=6, spriterow_num=0, repeat=2
+        type=DieselEngineUnit, weight=82, vehicle_length=6, spriterow_num=0, repeat=2
     )
 
-    consist.description = """."""
+    consist.description = """It's a rat pack. What more do you want?"""
     consist.foamer_facts = """BR Class 24, BR Class 25"""
 
     return consist
