@@ -28,7 +28,7 @@ def main(roster_id):
     )
 
     consist.description = (
-        """."""
+        """Fast and light, right good."""
     )
     consist.foamer_facts = """BR Class 35 <i>Hymek</i>"""
 
