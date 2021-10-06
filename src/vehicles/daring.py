@@ -10,8 +10,7 @@ def main(roster_id):
         role="express",
         role_child_branch_num=1,
         power=1750,
-        tractive_effort_coefficient=0.26,
-        fixed_run_cost_points=42,  # give a bonus so this can be a genuine mixed-traffic engine
+        fixed_run_cost_points=60,  # give a bonus so this can be a genuine mixed-traffic engine
         random_reverse=True,
         gen=4,
         intro_date_offset=1,  # let's be a littler later for this one
