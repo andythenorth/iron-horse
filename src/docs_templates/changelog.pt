@@ -2,6 +2,31 @@ Changelog
 =========
 
 -------------
+2.29.0 Release
+-------------
+
+Iron Horse 2.29.0 *is* savegame compatible with previous Iron Horse versions, but any existing Merlion engines in savegames will change name and appearance.
+
+*Changes*
+
+- reshuffled some gen 4 diesel engines
+    - Merlion is now a freight engine, equivalent and alternative to the Growler, 1750hp, available around 1958
+    - added Daring general purpose / express engine, same role as Merlion previously filled, 1750hp, available around 1961
+    - added Withershins heavy freight engine, equivalent and alternative to the Chinook, 2900hp, available around 1960
+- improved chassis pixels for Kelpie and Griffon
+
+
+*Fixes
+
+- set correct weight for all Shoeboxes
+
+
+*Docs*
+
+- added space between value and unit for 'hp' and 'mph' values
+
+
+-------------
 2.28.0 Release
 -------------
 
