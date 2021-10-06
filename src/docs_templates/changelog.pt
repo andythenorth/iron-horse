@@ -19,10 +19,12 @@ Changelog
     - gen 3 and narrow gauge Cryo Tankers replaced by equivalent Pressure Tankers
 - sprite support for peat cargo
 
+
 *Fixes*
 
 - many intermodal wagons may have had incorrect sprites for platform height (most default wagons were probably using incorrect low_floor variant)
 - remove extraneous pixels from \ view of Blind Smuir
+
 
 *Codechanges*
 
@@ -50,12 +52,13 @@ Changelog
 - reduced capacity of Edibles Tanker and Refrigerated Van to reflect higher speeds (now matches Expess Vans)
 - sprite support for sugarcane cargo (2TallTyler)
 
+
 *Fixes*
 
 - door sprites were wrong in | view for gen 5D and 6D sliding wall vans
 - pixels were missing for Snapper, Mumble, and narrow gauge railcar trailers
 - gen 2 mineral wagons, hoppers and ore hoppers weren't supposed to be included, as gen 1 and 2 stats overlap for these wagons
--
+
 
 *Docs*
 
@@ -74,6 +77,7 @@ Changelog
     - requires OpenTTD 1.11.0 or newer
     - tested as working with NuTracks 2
 
+
 *Fixes*
 
 - electro-diesel (bi-mode) railcars now show power on diesel in buy menu, not power on electric, consistent with other bi-mode vehicles
@@ -89,6 +93,7 @@ Changelog
     - Mineral Wagon
     - Hopper
     - Ore Hopper
+
 
 *Fixes*
 
@@ -108,6 +113,7 @@ Changelog
     - Skipper, 225 hp, 36 passengers, available around 1986
     - Zipper, 280 hp, 36 passengers, available around 2016
 - minor run-cost tweaks to railcars to balance against railbuses
+
 
 *Translations*
 
@@ -135,11 +141,13 @@ Changelog
 - reduced running costs of some higher speed passenger vehicles for game balance
 - show the role in buy menu for all types of passenger vehicle
 
+
 *Codechanges*
 
 - removed all code relating to cargo age period, this is now at the default 185 value for all Iron Horse vehicles
 - unified some methods relating to passenger car capacity and loading speed
 - split railbus classes out from railcar classes
+
 
 *Translations*
 - translation updates (thanks translators)
@@ -156,6 +164,7 @@ Changelog
 - removed cargo aging bonus from some wagon types that were using it
 - removed cargo aging malus from Passenger Coaches
 - removed cargo aging malus from Metro trains
+
 
 *Fixes*
 
@@ -251,6 +260,7 @@ Changelog
 - adjust running costs down (again) for high speed and very high speed trains to try and make them competitive with other trains whilst not being over-powered
 - added cement to refittable cargos for Box Vans, Curtain Side Vans, Sliding Wall Vans and Vehicle Parts Vans
 - use slab cargo sprites for alloy steel and stainless steel
+
 
 *Fixes*
 
