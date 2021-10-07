@@ -8,7 +8,7 @@ def main(roster_id):
         base_numeric_id=450,
         name="Screamer",
         role="heavy_express",
-        role_child_branch_num=-3,
+        role_child_branch_num=-4,
         power=4800,
         random_reverse=True,
         gen=5,

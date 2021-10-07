@@ -8,7 +8,7 @@ def main(roster_id):
         base_numeric_id=3150,
         name="Sizzler",
         role="heavy_express",
-        role_child_branch_num=4,
+        role_child_branch_num=5,
         power=6600,  # roughly brackets Quietus
         random_reverse=True,
         gen=6,

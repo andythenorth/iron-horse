@@ -300,7 +300,7 @@ class Consist(object):
             "express_non_core": {
                 "branch_express": [1, 2, -2],
                 "express": [2],
-                "heavy_express": [2, 3, 4],
+                "heavy_express": [2, 3, 4, 5],
                 "express_pax_railcar": [-1],
             },
             "driving_cab": {
@@ -318,7 +318,7 @@ class Consist(object):
             "jokers": {
                 "gronk!": [-1, -2],
                 "express": [-1],
-                "heavy_express": [-1, -2, -3],
+                "heavy_express": [-1, -2, -3, -4],
                 "freight": [-1, -2],
                 "branch_freight": [-1],
                 "heavy_freight": [-1, -2, -3, -4],
