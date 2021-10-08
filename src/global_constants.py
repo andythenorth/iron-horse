@@ -101,7 +101,7 @@ role_group_mapping = OrderedDict(
                 "driving_cab_express_mixed",
             ],
         ),
-        ("freight", ["branch_freight", "freight", "heavy_freight"]),
+        ("freight", ["branch_freight", "freight", "heavy_freight", "super_heavy_freight"]),
         (
             "universal",
             # order of mailrailcar and pax_railbus is significant as of April 2021, for unfortunate tech-tree ordering reasons
@@ -117,7 +117,7 @@ role_group_mapping = OrderedDict(
         ("very_high_speed", ["very_high_speed"]),
         (
             "lolz",
-            ["joker_heavy_express", "joker_heavy_freight", "gronk!", "snoughplough!"],
+            ["joker_heavy_express", "joker_heavy_freight", "joker_super_heavy_freight", "gronk!", "snoughplough!"],
         ),
         ("metro", ["pax_metro", "mail_metro"]),  # note pax before mail
     ]
