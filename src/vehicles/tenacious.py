@@ -1,0 +1,31 @@
+from train import EngineConsist, DieselEngineUnit
+
+
+def main(roster_id):
+    consist = EngineConsist(
+        roster_id=roster_id,
+        id="tenacious",
+        base_numeric_id=6400,
+        name="Tenacious",
+        role="heavy_express",
+        role_child_branch_num=-1,  # -ve because Joker
+        replacement_consist_id="resilient",  # this Joker ends with Resilient
+        power=2150,
+        random_reverse=True,
+        gen=4,
+        fixed_run_cost_points=150,  # give a small bonus so this can be a genuine mixed-traffic engine
+        default_livery_extra_docs_examples=[("COLOUR_GREEN", "COLOUR_WHITE")],
+        sprites_complete=False,
+    )
+
+    consist.add_unit(
+        type=DieselEngineUnit,
+        weight=80, # significant bonus over other of same power band
+        vehicle_length=8,
+        spriterow_num=0,
+    )
+
+    consist.description = """."""
+    consist.foamer_facts = """BR Class 42, BR Class 43"""
+
+    return consist

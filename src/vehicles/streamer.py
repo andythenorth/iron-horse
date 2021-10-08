@@ -9,7 +9,6 @@ def main(roster_id):
         name="2-6-2 Streamer",
         role="heavy_express",
         role_child_branch_num=-2,  # -ve because Joker
-        replacement_consist_id="dragon",  # this Joker ends with Dragon
         power=1850,  # slightly less than Strongbow (and lighter engine)
         tractive_effort_coefficient=0.18,
         gen=3,

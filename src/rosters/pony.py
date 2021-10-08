@@ -22,6 +22,7 @@ from vehicles import brenner_cab
 from vehicles import brenner_middle
 from vehicles import bright_country
 from vehicles import buffalo
+from vehicles import bulleid
 from vehicles import captain_steel
 from vehicles import cargo_sprinter
 from vehicles import carrack
@@ -123,6 +124,7 @@ from vehicles import strongbow
 from vehicles import sunshine_coast
 from vehicles import super_shoebox
 from vehicles import swift
+from vehicles import tenacious
 from vehicles import tencendur
 from vehicles import thor
 from vehicles import thunderer
@@ -344,12 +346,14 @@ def main(disabled=False):
             strongbow,
             streamer,
             wyvern,
+            tenacious,
             intrepid,
             vanguard,
             resilient,
             evolution,  # out of normal order so that the names read 'Evolution', 'Revolution' (usually jokers come after the tech tree version not before)
             revolution,
             pegasus,
+            bulleid,
             dragon,
             vulcan,
             onslaught,

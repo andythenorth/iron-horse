@@ -8,7 +8,7 @@ def main(roster_id):
         base_numeric_id=4940,
         name="Resilient",
         role="heavy_express",
-        role_child_branch_num=-1,
+        role_child_branch_num=-2,
         power=2550,
         random_reverse=True,
         gen=5,
