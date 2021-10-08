@@ -296,11 +296,12 @@ class Consist(object):
         # this does *not* use the role group mapping in global constants, as it's more fragmented to avoid too many new vehicle messages at once
         # JOKERS: note that not all jokers have to be in the jokers group here, they can be in other groups if intro dates need to sync
         role_to_role_groups_mapping = {
-            "express_core": {"express": [1], "heavy_express": [1]},
+            "express_core": {"express": [1], "heavy_express": [1], "super_heavy_express": [1]},
             "express_non_core": {
                 "branch_express": [1, 2, -2],
                 "express": [2],
                 "heavy_express": [2, 3, 4, 5],
+                "super_heavy_express": [2, 3],
                 "express_pax_railcar": [-1],
             },
             "driving_cab": {
@@ -320,6 +321,7 @@ class Consist(object):
                 "gronk!": [-1, -2],
                 "express": [-1],
                 "heavy_express": [-1, -2, -3, -4],
+                "super_heavy_express": [-1, -2, -3],
                 "freight": [-1, -2],
                 "branch_freight": [-1],
                 "heavy_freight": [-1, -2, -3, -4],

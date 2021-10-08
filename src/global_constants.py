@@ -92,7 +92,7 @@ PR_RUNNING_TRAIN_DIESEL = -4
 # order is significant, so OrderedDict is used (this wouldn't be necessary for python >= 3.7, but at time of writing compile uses python 3.5)
 role_group_mapping = OrderedDict(
     [
-        ("express", ["branch_express", "express", "heavy_express"]),
+        ("express", ["branch_express", "express", "heavy_express", "super_heavy_express"]),
         (
             "driving_cab",
             [
@@ -117,7 +117,7 @@ role_group_mapping = OrderedDict(
         ("very_high_speed", ["very_high_speed"]),
         (
             "lolz",
-            ["joker_heavy_express", "joker_heavy_freight", "joker_super_heavy_freight", "gronk!", "snoughplough!"],
+            ["joker_heavy_express", "joker_super_heavy_express", "joker_heavy_freight", "joker_super_heavy_freight", "gronk!", "snoughplough!"],
         ),
         ("metro", ["pax_metro", "mail_metro"]),  # note pax before mail
     ]

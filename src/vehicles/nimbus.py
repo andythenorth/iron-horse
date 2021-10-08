@@ -7,8 +7,8 @@ def main(roster_id):
         id="nimbus",
         base_numeric_id=5500,
         name="Nimbus",
-        role="heavy_express",
-        role_child_branch_num=-4,
+        role="super_heavy_express",
+        role_child_branch_num=-1,
         power=5400,  # needs a bump from Screamer
         random_reverse=True,
         gen=6,
