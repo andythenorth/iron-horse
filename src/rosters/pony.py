@@ -8,6 +8,7 @@ from vehicles import athena
 # one auto coach only as autoreplace can't handle mixed cargo articulated consists
 from vehicles import auto_coach_pony_gen_2
 from vehicles import argus
+from vehicles import arrow
 from vehicles import avenger
 from vehicles import bean_feast
 from vehicles import blackthorn
@@ -46,6 +47,7 @@ from vehicles import driving_cab_passenger_pony_gen_5
 from vehicles import driving_cab_passenger_pony_gen_6
 from vehicles import esk
 from vehicles import evolution
+from vehicles import falcon
 from vehicles import firebird
 from vehicles import fleet
 from vehicles import flanders_storm
@@ -344,7 +346,7 @@ def main(disabled=False):
             thunderer,
             swift,
             strongbow,
-            streamer,
+            arrow,
             wyvern,
             tenacious,
             intrepid,
@@ -353,9 +355,11 @@ def main(disabled=False):
             evolution,  # out of normal order so that the names read 'Evolution', 'Revolution' (usually jokers come after the tech tree version not before)
             revolution,
             pegasus,
+            streamer,
             bulleid,
             dragon,
             vulcan,
+            falcon,
             onslaught,
             relentless,
             hurly_burly,
