@@ -9,7 +9,7 @@ def main(roster_id):
         name="0-6-0 Lamia",  # the name is the Basque mythical creature, not the Greek https://en.wikipedia.org/wiki/Lamia_(Basque_mythology)
         role="gronk!",
         role_child_branch_num=-2,
-        replacement_consist_id="gronk",  # this Joker ends with Gronk
+        replacement_consist_id="chuggypig",  # this Joker ends with Gronk
         power=350,
         speed=35,
         # dibble TE up for game balance, assume low gearing or something
