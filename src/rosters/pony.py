@@ -52,6 +52,7 @@ from vehicles import firebird
 from vehicles import fleet
 from vehicles import flanders_storm
 from vehicles import flindermouse
+from vehicles import foxhound
 from vehicles import fury
 from vehicles import gargouille
 from vehicles import geronimo
@@ -327,6 +328,7 @@ def main(disabled=False):
             merrylegs,
             proper_job,
             kelpie,
+            foxhound,
             griffon,
             pinhorse,
             argus,

@@ -319,6 +319,7 @@ class Consist(object):
             "hst": {"hst": [1, 2]},
             "jokers": {
                 "gronk!": [-1, -2],
+                "branch_express": [-1],
                 "express": [-1],
                 "heavy_express": [-1, -2, -3, -4],
                 "super_heavy_express": [-1, -2, -3],
