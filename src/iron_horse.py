@@ -64,6 +64,7 @@ from vehicles import log_cars
 # from vehicles import low_floor_automobile_cars
 from vehicles import low_floor_intermodal_cars
 from vehicles import mail_cars
+from vehicles import mgr_hopper_cars
 from vehicles import open_cars
 from vehicles import ore_hopper_cars
 from vehicles import passenger_cars
@@ -294,6 +295,7 @@ def main():
     # low_floor_automobile_cars.main()
     low_floor_intermodal_cars.main()
     mail_cars.main()
+    mgr_hopper_cars.main()
     ore_hopper_cars.main()
     open_cars.main()
     passenger_cars.main()

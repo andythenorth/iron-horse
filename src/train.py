@@ -2500,6 +2500,18 @@ class HopperCarConsist(HopperCarConsistBase):
         self.default_cargos = polar_fox.constants.default_cargos["hopper_coal"]
 
 
+class HopperCarMGRConsist(HopperCarConsistBase):
+    """
+    Defaults to coal.  UK-specific lolz.
+    The classname breaks convention (would usually be OreHopper), this is to keep all hopper subclasses togther).
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "mgr_hopper_car"
+        super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos["hopper_coal"]
+
+
 class HopperCarOreConsist(HopperCarConsistBase):
     """
     Defaults to iron ore.
