@@ -9,7 +9,7 @@ def main(roster_id):
         name="Yillen",
         role="heavy_freight",
         role_child_branch_num=1,
-        replacement_consist_id="vanguard",  # this line is a strange 10/8 infill, and ends here
+        # no replacement by design - continues to game end as unique 10/8, especially for industrial use etc
         power=2200,
         gen=4,
         intro_date_offset=-2,  # let's be a little earlier for this one
