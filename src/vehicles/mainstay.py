@@ -9,7 +9,7 @@ def main(roster_id):
         name="2-8-0 Mainstay",
         role="heavy_freight",
         role_child_branch_num=1,
-        power=1850,  # slightly less than the Strongbow eh
+        power=1850,
         speed=60,
         tractive_effort_coefficient=0.23,
         gen=3,

@@ -9,7 +9,7 @@ def main(roster_id):
         name="2-6-2 Arrow",
         role="heavy_express",
         role_child_branch_num=-2,  # -ve because Joker
-        power=1850,  # slightly less than Strongbow (and lighter engine)
+        power=1850,
         tractive_effort_coefficient=0.18,
         gen=3,
         intro_date_offset=4,  # introduce later than gen epoch by design
@@ -23,7 +23,7 @@ def main(roster_id):
 
     consist.add_unit(
         type=SteamEngineUnit,
-        weight=85,
+        weight=94,
         vehicle_length=7,
         effect_offsets=[(-3, 0), (-2, 0)],  # double the smoke eh?
         spriterow_num=0,
