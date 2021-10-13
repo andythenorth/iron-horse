@@ -8,7 +8,7 @@ def main(roster_id):
         base_numeric_id=4930,
         name="Vulcan",
         role="heavy_express",
-        role_child_branch_num=-2,
+        role_child_branch_num=-3,
         replacement_consist_id="onslaught",  # this Joker ends with Onslaught
         power=2750,
         random_reverse=True,

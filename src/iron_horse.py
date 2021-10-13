@@ -64,6 +64,7 @@ from vehicles import log_cars
 # from vehicles import low_floor_automobile_cars
 from vehicles import low_floor_intermodal_cars
 from vehicles import mail_cars
+from vehicles import mgr_hopper_cars
 from vehicles import open_cars
 from vehicles import ore_hopper_cars
 from vehicles import passenger_cars
@@ -173,14 +174,15 @@ def get_livery_2_engine_ids():
     result = []
     for roster in get_active_rosters():
         for consist in roster.engine_consists:
-            # second livery choice is deliberate, means 'as seen in buy menu' livery is built for common case of express 1, heavy_express 1
-            # note that -2 is used for heavy_express, be careful which engines are in this joker branch
+            # second livery choice is deliberate, means 'as seen in buy menu' livery is built for common case of express 1, heavy_express 1, super_heavy_express_1
             # ! this (x,y) tuple format is weird and won't scale well, see train.py intro_date_days_offset() for a dict based solution to a similar problem
             if (consist.role, consist.role_child_branch_num) in [
                 ("branch_express", 1),
                 ("express", 2),
                 ("heavy_express", 2),
                 ("heavy_express", -2),
+                ("super_heavy_express", 2),
+                ("super_heavy_express", -2),
                 ("pax_railcar", 2),
                 ("mail_railcar", 2),
             ]:
@@ -293,6 +295,7 @@ def main():
     # low_floor_automobile_cars.main()
     low_floor_intermodal_cars.main()
     mail_cars.main()
+    mgr_hopper_cars.main()
     ore_hopper_cars.main()
     open_cars.main()
     passenger_cars.main()

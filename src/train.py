@@ -296,11 +296,12 @@ class Consist(object):
         # this does *not* use the role group mapping in global constants, as it's more fragmented to avoid too many new vehicle messages at once
         # JOKERS: note that not all jokers have to be in the jokers group here, they can be in other groups if intro dates need to sync
         role_to_role_groups_mapping = {
-            "express_core": {"express": [1], "heavy_express": [1]},
+            "express_core": {"express": [1], "heavy_express": [1], "super_heavy_express": [1]},
             "express_non_core": {
                 "branch_express": [1, 2, -2],
                 "express": [2],
-                "heavy_express": [2, 3, 4],
+                "heavy_express": [2, 3, 4, 5],
+                "super_heavy_express": [2, 3],
                 "express_pax_railcar": [-1],
             },
             "driving_cab": {
@@ -308,20 +309,24 @@ class Consist(object):
                 "driving_cab_express_mail": [-1],
                 "driving_cab_express_mixed": [-1],
             },
-            "freight_core": {"freight": [1], "heavy_freight": [1]},
+            "freight_core": {"freight": [1], "heavy_freight": [1], "super_heavy_freight": [1]},
             "freight_non_core": {
                 "branch_freight": [1, 2],
                 "freight": [2],
                 "heavy_freight": [2, 3, 4],
+                "super_heavy_freight": [2]
             },
             "hst": {"hst": [1, 2]},
             "jokers": {
                 "gronk!": [-1, -2],
+                "branch_express": [-1],
                 "express": [-1],
-                "heavy_express": [-1, -2, -3],
+                "heavy_express": [-1, -2, -3, -4],
+                "super_heavy_express": [-1, -2, -3],
                 "freight": [-1, -2],
                 "branch_freight": [-1],
                 "heavy_freight": [-1, -2, -3, -4],
+                "super_heavy_freight": [-1, -2],
                 "snoughplough!": [-1],
             },
             "metro": {"mail_metro": [1], "pax_metro": [1]},
@@ -886,7 +891,7 @@ class EngineConsist(Consist):
         run_cost = gen_multiplier * (fixed_run_cost_points + floating_run_cost_points)
         # freight engines get a run cost bonus as they'll often be sat waiting for loads, so balance (also super realism!!)
         # doing this is preferable to doing variable run costs, which are weird and confusing (can't trust the costs showin in vehicle window)
-        if self.role in ["heavy_freight"]:  # smaller bonus for heavy_freight
+        if self.role in ["heavy_freight", "super_heavy_freight"]:  # smaller bonus for heavy_freight
             run_cost = 0.9 * run_cost
         elif self.role in [
             "branch_freight",
@@ -2491,6 +2496,18 @@ class HopperCarConsist(HopperCarConsistBase):
 
     def __init__(self, **kwargs):
         self.base_id = "hopper_car"
+        super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos["hopper_coal"]
+
+
+class HopperCarMGRConsist(HopperCarConsistBase):
+    """
+    Defaults to coal.  UK-specific lolz.
+    The classname breaks convention (would usually be OreHopper), this is to keep all hopper subclasses togther).
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "mgr_hopper_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["hopper_coal"]
 

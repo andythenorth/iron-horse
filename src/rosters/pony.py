@@ -8,6 +8,7 @@ from vehicles import athena
 # one auto coach only as autoreplace can't handle mixed cargo articulated consists
 from vehicles import auto_coach_pony_gen_2
 from vehicles import argus
+from vehicles import arrow
 from vehicles import avenger
 from vehicles import bean_feast
 from vehicles import blackthorn
@@ -22,6 +23,7 @@ from vehicles import brenner_cab
 from vehicles import brenner_middle
 from vehicles import bright_country
 from vehicles import buffalo
+from vehicles import bulleid
 from vehicles import captain_steel
 from vehicles import cargo_sprinter
 from vehicles import carrack
@@ -45,10 +47,12 @@ from vehicles import driving_cab_passenger_pony_gen_5
 from vehicles import driving_cab_passenger_pony_gen_6
 from vehicles import esk
 from vehicles import evolution
+from vehicles import falcon
 from vehicles import firebird
 from vehicles import fleet
 from vehicles import flanders_storm
 from vehicles import flindermouse
+from vehicles import foxhound
 from vehicles import fury
 from vehicles import gargouille
 from vehicles import geronimo
@@ -123,6 +127,7 @@ from vehicles import strongbow
 from vehicles import sunshine_coast
 from vehicles import super_shoebox
 from vehicles import swift
+from vehicles import tenacious
 from vehicles import tencendur
 from vehicles import thor
 from vehicles import thunderer
@@ -323,6 +328,7 @@ def main(disabled=False):
             merrylegs,
             proper_job,
             kelpie,
+            foxhound,
             griffon,
             pinhorse,
             argus,
@@ -342,16 +348,20 @@ def main(disabled=False):
             thunderer,
             swift,
             strongbow,
-            streamer,
+            arrow,
             wyvern,
+            tenacious,
             intrepid,
             vanguard,
             resilient,
             evolution,  # out of normal order so that the names read 'Evolution', 'Revolution' (usually jokers come after the tech tree version not before)
             revolution,
             pegasus,
+            streamer,
+            bulleid,
             dragon,
             vulcan,
+            falcon,
             onslaught,
             relentless,
             hurly_burly,

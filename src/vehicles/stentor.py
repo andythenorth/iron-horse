@@ -7,8 +7,8 @@ def main(roster_id):
         id="stentor",
         base_numeric_id=5380,
         name="Stentor",
-        role="heavy_freight",
-        role_child_branch_num=-3,  # Joker eh
+        role="super_heavy_freight",
+        role_child_branch_num=-1,  # Joker eh
         power=4050,  # 750hp steps Vanguard -> Grid -> Cheddar Valley
         # dibble for game balance, assume super-slip control
         tractive_effort_coefficient=0.4,

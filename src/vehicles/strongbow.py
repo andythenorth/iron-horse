@@ -9,7 +9,7 @@ def main(roster_id):
         name="4-6-0 Strongbow",
         role="heavy_express",
         role_child_branch_num=1,
-        power=1900,  # not an exact linear progression in this tree
+        power=1850,  # not an exact linear progression in this tree
         tractive_effort_coefficient=0.18,
         gen=3,
         fixed_run_cost_points=140,  # give a bonus so this can be a genuine mixed-traffic engine
