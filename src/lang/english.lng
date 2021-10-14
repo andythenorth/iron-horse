@@ -58,6 +58,7 @@ STR_NAME_SUFFIX_TWIN                                            :Twin
 # the en-us translation should be updated appropriately when making changes here
 # !! consider splitting strings per roster?? A US caboose is still a 'caboose' in en-gb, not a brake van
 STR_NAME_SUFFIX_ACID_TANK_CAR                                   :Acid Tanker
+STR_NAME_SUFFIX_AGGREGATES_CAR                                  :Aggregates Wagon
 STR_NAME_SUFFIX_ALIGNMENT_CAR                                   :Alignment Van
 STR_NAME_SUFFIX_AUTOMOBILE_CAR                                  :Vehicle Transporter
 STR_NAME_SUFFIX_BOX_CAR                                         :Box Van
@@ -94,6 +95,7 @@ STR_NAME_SUFFIX_LOW_FLOOR_INTERMODAL_CAR                        :Low-floor Conta
 STR_NAME_SUFFIX_MAIL_CAR                                        :Mail Van
 STR_NAME_SUFFIX_MGR_HOPPER_CAR                                  :MGR Hopper
 STR_NAME_SUFFIX_OPEN_CAR                                        :Open Wagon
+STR_NAME_SUFFIX_ORE_DUMP_CAR                                    :Ore Dump Wagon
 STR_NAME_SUFFIX_ORE_HOPPER_CAR                                  :Ore Hopper
 STR_NAME_SUFFIX_PASSENGER_CAR                                   :Passenger Coach
 STR_NAME_SUFFIX_PEAT_CAR                                        :Peat Wagons

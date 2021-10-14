@@ -35,6 +35,8 @@ buy_menu_sort_order_wagons = [
     "ore_hopper_car",
     "dump_car",
     "dump_car_high_side",
+    "aggregates_car",
+    "ore_dump_car",
     "scrap_metal_car",
     "skip_car",
     "tank_car",
