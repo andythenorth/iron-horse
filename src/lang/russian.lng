@@ -89,6 +89,7 @@ STR_NAME_SUFFIX_LOG_CAR                                         :Вагон-ле
 STR_NAME_SUFFIX_LOW_FLOOR_AUTOMOBILE_CAR                        :Низкопольная платформа-автомобилевоз
 STR_NAME_SUFFIX_LOW_FLOOR_INTERMODAL_CAR                        :Низкопольная фитинговая платформа
 STR_NAME_SUFFIX_MAIL_CAR                                        :Почтовый вагон
+STR_NAME_SUFFIX_MGR_HOPPER_CAR                                  :Хоппер типа «MGR»
 STR_NAME_SUFFIX_OPEN_CAR                                        :Полувагон
 STR_NAME_SUFFIX_ORE_HOPPER_CAR                                  :Хоппер для руды
 STR_NAME_SUFFIX_PASSENGER_CAR                                   :Пассажирский вагон
