@@ -8,7 +8,7 @@ def main():
         base_numeric_id=5690,
         gen=1,
         subtype="A",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
@@ -33,7 +33,7 @@ def main():
         sprites_complete=False,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_sparse_24px")
+    consist.add_unit(type=FreightCar, chassis="4_axle_gapped_24px")
 
     consist = DumpCarAggregatesConsist(
         roster_id="pony",
