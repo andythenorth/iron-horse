@@ -4613,6 +4613,16 @@ class IntermodalCar(FreightCar):
         self.random_trigger_switch = "_switch_graphics_spritelayer_cargos"
 
 
+class OreDumpCar(FreightCar):
+    """
+    Ore dump car. This subclass sets the symmetry_type to asymmetric.
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self._symmetry_type = "asymmetric"
+
+
 class SlagLadleCar(FreightCar):
     """
     Slag ladle car. This subclass only exists to set the capacity.

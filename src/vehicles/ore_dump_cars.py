@@ -1,4 +1,4 @@
-from train import DumpCarOreConsist, FreightCar
+from train import DumpCarOreConsist, OreDumpCar
 
 
 def main():
@@ -13,7 +13,7 @@ def main():
         sprites_complete=False,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
+    consist.add_unit(type=OreDumpCar, chassis="4_axle_ng_16px")
 
     consist = DumpCarOreConsist(
         roster_id="pony",
@@ -24,7 +24,7 @@ def main():
         sprites_complete=False,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
+    consist.add_unit(type=OreDumpCar, chassis="4_axle_ng_16px")
 
     consist = DumpCarOreConsist(
         roster_id="pony",
@@ -35,7 +35,7 @@ def main():
         sprites_complete=False,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
+    consist.add_unit(type=OreDumpCar, chassis="4_axle_ng_16px")
     """
     # --------------- pony ----------------------------------------------------------------------
     consist = DumpCarOreConsist(
@@ -46,7 +46,7 @@ def main():
         sprites_complete=False,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
+    consist.add_unit(type=OreDumpCar, chassis="2_axle_gapped_16px")
 
     consist = DumpCarOreConsist(
         roster_id="pony",
@@ -56,7 +56,7 @@ def main():
         sprites_complete=False,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_gapped_24px")
+    consist.add_unit(type=OreDumpCar, chassis="4_axle_gapped_24px")
 
     consist = DumpCarOreConsist(
         roster_id="pony",
@@ -66,7 +66,7 @@ def main():
         sprites_complete=False,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
+    consist.add_unit(type=OreDumpCar, chassis="2_axle_gapped_16px")
 
     consist = DumpCarOreConsist(
         roster_id="pony",
@@ -76,7 +76,7 @@ def main():
         sprites_complete=False,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_sparse_24px")
+    consist.add_unit(type=OreDumpCar, chassis="4_axle_sparse_24px")
 
     # no gen 5A or 6A
 
@@ -88,7 +88,7 @@ def main():
         sprites_complete=False,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_sparse_24px")
+    consist.add_unit(type=OreDumpCar, chassis="4_axle_sparse_24px")
 
     consist = DumpCarOreConsist(
         roster_id="pony",
@@ -98,7 +98,7 @@ def main():
         sprites_complete=False,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_sparse_32px")
+    consist.add_unit(type=OreDumpCar, chassis="4_axle_sparse_32px")
 
     consist = DumpCarOreConsist(
         roster_id="pony",
@@ -108,7 +108,7 @@ def main():
         sprites_complete=False,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_sparse_greebled_24px")
+    consist.add_unit(type=OreDumpCar, chassis="4_axle_sparse_greebled_24px")
 
     consist = DumpCarOreConsist(
         roster_id="pony",
@@ -118,4 +118,4 @@ def main():
         sprites_complete=False,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_sparse_greebled_32px")
+    consist.add_unit(type=OreDumpCar, chassis="4_axle_sparse_greebled_32px")
