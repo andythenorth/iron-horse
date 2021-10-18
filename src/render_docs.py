@@ -817,6 +817,7 @@ def main():
     markdown_docs = ["changelog"]
     graph_docs = ["tech_tree_linkgraph"]
 
+    render_docs_start = time()
     render_docs(html_docs, "html", docs_output_path, iron_horse, consists)
     render_docs(txt_docs, "txt", docs_output_path, iron_horse, consists)
     render_docs(
@@ -833,12 +834,16 @@ def main():
         markdown_docs, "html", docs_output_path, iron_horse, consists, use_markdown=True
     )
     render_docs(graph_docs, "dotall", docs_output_path, iron_horse, consists)
+    print("render_docs", time() - render_docs_start)
 
     # render vehicle details
+    # this is slow and _might_ go faster in an MP pool, but eh overhead...
+    render_vehicle_details_start = time()
     for roster in iron_horse.registered_rosters:
         for consist in roster.engine_consists:
             consist.assert_description_foamer_facts()
             render_docs_vehicle_details(consist, docs_output_path, consists)
+    print("render_docs_vehicle_details", time() - render_vehicle_details_start)
 
     # process images for use in docs
     # yes, I really did bother using a pool to save at best a couple of seconds, because FML :)
