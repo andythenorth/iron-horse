@@ -1172,10 +1172,11 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
     def add_bulk_cargo_spriterows(self):
         cargo_group_row_height = 2 * graphics_constants.spriterow_height
 
+        # note that bulk cargo *can* support asymmetric spritesheets (piece cannot) - see ore dump cars for example
         crop_box_cargo = (
-            self.second_col_start_x,
+            0,
             self.base_yoffs,
-            self.second_col_start_x + self.col_image_width,
+            self.sprites_max_x_extent,
             self.base_yoffs + (2 * graphics_constants.spriterow_height),
         )
         cargo_base_image = self.vehicle_source_image.copy().crop(crop_box_cargo)
@@ -1210,9 +1211,9 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             2 * graphics_constants.spriterow_height,
         )
         crop_box_comp_dest_3 = (
-            self.second_col_start_x,
             0,
-            self.second_col_start_x + self.col_image_width,
+            0,
+            self.sprites_max_x_extent,
             2 * graphics_constants.spriterow_height,
         )
 
@@ -1284,6 +1285,9 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
         # - there is a case not handled, where long cargo sprites will overlap cabbed vehicles in / direction with cab at N end, hard to solve
         # - this has no awareness of vehicle symmetry_type property, so will needlessly scan too many pixels for symmetric vehicles
         #   that's TMWFTLB to fix right now, as it will require relative offsets of all the loc points for probably very little performance gain
+        # note that piece *cannot* support asymmetric spritesheets (bulk can), TMWFTLB to support currently
+        # - asymmetric vehicle support might be possible if really needed, but cargo sprites will be symmetric
+        # - for asymmetric cargo sprites, use spritelayer cargos instead (see automobile or intermodal cargos)
         crop_box_vehicle_cargo_loc_row = (
             self.second_col_start_x,
             self.base_yoffs,
