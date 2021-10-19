@@ -18,7 +18,7 @@ def main(roster_id):
             ("COLOUR_GREY", "COLOUR_WHITE"),
             ("COLOUR_WHITE", "COLOUR_BLUE"),
         ],
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(
