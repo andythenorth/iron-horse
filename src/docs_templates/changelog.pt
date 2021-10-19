@@ -316,7 +316,7 @@ Iron Horse 2.29.0 *is* savegame compatible with previous Iron Horse versions, bu
     - increased Triton power to 7200 hp
 - increased Revolution run cost, to account for high power in electric mode
 - adjusted railcar tech tree
-    - Zeus changed to elecric power, not electro-diesel, hyrid power has limited gameplay benefit for the general-purpose passenger railcars
+    - Zeus changed to electric power, not electro-diesel, hyrid power has limited gameplay benefit for the general-purpose passenger railcars
     - removed Mail Rail, overlapped too much with Pylon on both stats and appearance, not worth the candle
     - increased Pylon diesel power to 700 hp
     - added Cargo Sprinter diesel freight railcar
