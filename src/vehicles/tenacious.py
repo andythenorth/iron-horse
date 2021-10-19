@@ -15,7 +15,7 @@ def main(roster_id):
         gen=4,
         fixed_run_cost_points=150,  # give a small bonus so this can be a genuine mixed-traffic engine
         default_livery_extra_docs_examples=[("COLOUR_GREEN", "COLOUR_WHITE"), ("COLOUR_PINK", "COLOUR_WHITE")],
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(
@@ -25,7 +25,7 @@ def main(roster_id):
         spriterow_num=0,
     )
 
-    consist.description = """."""
-    consist.foamer_facts = """BR Class 42, BR Class 43"""
+    consist.description = """It's rapid, sprightly, and formidable all at once."""
+    consist.foamer_facts = """BR Class 42/43 <i>Warship</i>"""
 
     return consist
