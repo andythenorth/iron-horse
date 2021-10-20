@@ -20,7 +20,7 @@ def main(roster_id):
             ("COLOUR_PALE_GREEN", "COLOUR_WHITE"),
             ("COLOUR_CREAM", "COLOUR_YELLOW"),
         ],
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(
@@ -33,7 +33,7 @@ def main(roster_id):
 
     consist.description = """A right big fast diesel hydraulic this one is."""
     consist.foamer_facts = (
-        """BR Class 52 <i>Western</i>, BR Class 42/43 <i>Warship</i>"""
+        """BR Class 52 <i>Western</i>"""
     )
 
     return consist

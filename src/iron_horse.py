@@ -29,6 +29,7 @@ from vehicles import numeric_id_defender
 
 # import wagons
 from vehicles import acid_tank_cars
+from vehicles import aggregates_cars
 # from vehicles import alignment_cars
 # from vehicles import automobile_cars
 from vehicles import bolster_cars
@@ -66,6 +67,7 @@ from vehicles import low_floor_intermodal_cars
 from vehicles import mail_cars
 from vehicles import mgr_hopper_cars
 from vehicles import open_cars
+from vehicles import ore_dump_cars
 from vehicles import ore_hopper_cars
 from vehicles import passenger_cars
 from vehicles import peat_cars
@@ -259,6 +261,7 @@ def main():
 
     # wagons
     acid_tank_cars.main()
+    aggregates_cars.main()
     """
     # only comment in if needed for debugging
     alignment_cars.main()
@@ -296,6 +299,7 @@ def main():
     low_floor_intermodal_cars.main()
     mail_cars.main()
     mgr_hopper_cars.main()
+    ore_dump_cars.main()
     ore_hopper_cars.main()
     open_cars.main()
     passenger_cars.main()

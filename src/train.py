@@ -2246,12 +2246,25 @@ class DumpCarConsistBase(CarConsist):
 
 class DumpCarConsist(DumpCarConsistBase):
     """
-    Standard (Low Side) Dump Car.
+    Standard Dump Car.
     """
 
     def __init__(self, **kwargs):
         self.base_id = "dump_car"
         super().__init__(**kwargs)
+
+
+class DumpCarAggregatesConsist(DumpCarConsistBase):
+    """
+    Aggregates Car.
+    Same as standard dump car, but different appearance and default cargos.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "aggregates_car"
+        super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos["dump_high_sides"]
+        self._joker = True
 
 
 class DumpCarHighSideConsist(DumpCarConsistBase):
@@ -2265,7 +2278,23 @@ class DumpCarHighSideConsist(DumpCarConsistBase):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["dump_high_sides"]
         self._joker = True
-        self.cc_num_to_randomise = 2
+
+
+class DumpCarOreConsist(DumpCarConsistBase):
+    """
+    Ore Dump Car.
+    Same as standard dump car, but different appearance and default cargos.
+    The classname breaks convention (would usually be OreCar), this is to keep all dump car subclasses togther).
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "ore_dump_car"
+        super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos["dump_high_sides"]
+        # type-specific wagon colour randomisation
+        self.auto_colour_randomisation_strategy_num = (
+            2  # no randomisation, but reverse on flip
+        )
 
 
 class DumpCarScrapMetalConsist(DumpCarConsistBase):
@@ -2277,19 +2306,6 @@ class DumpCarScrapMetalConsist(DumpCarConsistBase):
 
     def __init__(self, **kwargs):
         self.base_id = "scrap_metal_car"
-        super().__init__(**kwargs)
-        self.default_cargos = polar_fox.constants.default_cargos["dump_scrap"]
-
-
-class DumpCarScrapMetalHighSideConsist(DumpCarConsistBase):
-    """
-    High Side Scrap Metal Car
-    Same as standard dump car, but different appearance and default cargos.
-    The classname breaks convention (would usually be ScrapMetalCar), this is to keep all dump car subclasses togther).
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = "scrap_metal_car_high_side"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["dump_scrap"]
 
@@ -4595,6 +4611,16 @@ class IntermodalCar(FreightCar):
         # intermodal cars may be asymmetric, there is magic in the graphics processing to make this work
         self._symmetry_type = "asymmetric"
         self.random_trigger_switch = "_switch_graphics_spritelayer_cargos"
+
+
+class OreDumpCar(FreightCar):
+    """
+    Ore dump car. This subclass sets the symmetry_type to asymmetric.
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self._symmetry_type = "asymmetric"
 
 
 class SlagLadleCar(FreightCar):

@@ -1,4 +1,4 @@
-<!--! 'random_reverse' property is not supported in this template, vehicles using this template are all symmetrical, reversing would do nothing
+<!--! 'random_reverse' property is not supported in this template, vehicles using this template are almost all symmetrical, reversing would do nothing
       'flipped' is user flipping vehicle in depot and *is* supported here (used for livery selection tricks)
       don't conflate them :) -->
 
