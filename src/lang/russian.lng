@@ -56,6 +56,7 @@ STR_NAME_SUFFIX_TWIN                                            :сдвоенн�
 
 # wagon class suffixes
 STR_NAME_SUFFIX_ACID_TANK_CAR                                   :Цистерна для кислот
+STR_NAME_SUFFIX_AGGREGATES_CAR                                  :Думпкар
 STR_NAME_SUFFIX_ALIGNMENT_CAR                                   :Вагон для тестирования спрайтов
 STR_NAME_SUFFIX_AUTOMOBILE_CAR                                  :Платформа-автомобилевоз
 STR_NAME_SUFFIX_BOX_CAR                                         :Крытый грузовой вагон
@@ -91,6 +92,7 @@ STR_NAME_SUFFIX_LOW_FLOOR_INTERMODAL_CAR                        :Низкопо�
 STR_NAME_SUFFIX_MAIL_CAR                                        :Почтовый вагон
 STR_NAME_SUFFIX_MGR_HOPPER_CAR                                  :Хоппер типа «MGR»
 STR_NAME_SUFFIX_OPEN_CAR                                        :Полувагон
+STR_NAME_SUFFIX_ORE_DUMP_CAR                                    :Думпкар для руды
 STR_NAME_SUFFIX_ORE_HOPPER_CAR                                  :Хоппер для руды
 STR_NAME_SUFFIX_PASSENGER_CAR                                   :Пассажирский вагон
 STR_NAME_SUFFIX_PEAT_CAR                                        :Полувагон для торфа
