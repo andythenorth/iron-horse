@@ -2,6 +2,40 @@ Changelog
 =========
 
 -------------
+2.30.0 Release
+-------------
+
+Iron Horse 2.30.0 is *possibly* savegame compatible with previous Iron Horse versions, but some existing mineral wagons _might_ change name and appearance. YOLO.
+
+*Changes*
+
+- reshuffled some general purpose / express engines
+    - 4-6-4 Streamer is now super-heavy class, equivalent and alternative to 2-8-2 Pegasus, 2200 hp, available around 1934
+    - add 2-6-2 Arrow general purpose / express engine, equivalent and alternative to 4-6-0 Strongbow, 1900 hp, available around 1934
+    - added Tenacious general purpose / express engine, equivalent and alternative to the Wyvern / Intrepid, 2150 hp, available around 1960
+    - tweaked Dragon sprites to ensure they're distinct from Tenacious
+    - switched Resilient alternative livery to one inspired by Freightliner/GBRF
+- removed expiry from Yillen, it's a useful size and looks nice for slower industrial lines (e.g. steelworks) even when obsolete for other uses
+- adjusted mineral (bulk cargo) wagons
+    - added Ore Dump Wagons, mostly based on rotary tipplers
+    - added Aggregates Wagons
+    - added MGR Hoppers (available gen 4 and 5 only)
+    - adjusted sprites for Hoppers, to differentiate from MGR Hoppers
+    - improved sprites for High Side Mineral Wagons
+
+
+*Docs*
+
+- split freight and express 'heavy' roles into 'heavy' and 'super-heavy'
+- (fix) Chuggypig replaces Lamia, not Gronk in tech tree view
+
+
+*Translations*
+
+- translation updates (thanks translators)
+
+
+-------------
 2.29.0 Release
 -------------
 
@@ -10,9 +44,9 @@ Iron Horse 2.29.0 *is* savegame compatible with previous Iron Horse versions, bu
 *Changes*
 
 - reshuffled some gen 4 diesel engines
-    - Merlion is now a freight engine, equivalent and alternative to the Growler, 1750hp, available around 1958
-    - added Daring general purpose / express engine, same role as Merlion previously filled, 1750hp, available around 1961
-    - added Withershins heavy freight engine, equivalent and alternative to the Chinook, 2900hp, available around 1960
+    - Merlion is now a freight engine, equivalent and alternative to the Growler, 1750 hp, available around 1958
+    - added Daring general purpose / express engine, same role as Merlion previously filled, 1750 hp, available around 1961
+    - added Withershins heavy freight engine, equivalent and alternative to the Chinook, 2900 hp, available around 1960
     - Intrepid sprites now inspired by 'banger blue' BR class 47
 - improved chassis pixels for Kelpie and Griffon
 
