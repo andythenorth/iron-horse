@@ -13,6 +13,7 @@ def main(roster_id):
         tractive_effort_coefficient=0.18,
         gen=3,
         intro_date_offset=4,  # introduce later than gen epoch by design
+        force_default_pax_mail_livery=2, # invert the automatic livery 2 choice
         default_livery_extra_docs_examples=[
             ("COLOUR_DARK_GREEN", "COLOUR_DARK_GREEN"),
             ("COLOUR_GREY", "COLOUR_WHITE"),

@@ -30,6 +30,7 @@ from vehicles import numeric_id_defender
 # import wagons
 from vehicles import acid_tank_cars
 from vehicles import aggregates_cars
+
 # from vehicles import alignment_cars
 # from vehicles import automobile_cars
 from vehicles import bolster_cars
@@ -178,7 +179,10 @@ def get_livery_2_engine_ids():
         for consist in roster.engine_consists:
             # second livery choice is deliberate, means 'as seen in buy menu' livery is built for common case of express 1, heavy_express 1, super_heavy_express_1
             # ! this (x,y) tuple format is weird and won't scale well, see train.py intro_date_days_offset() for a dict based solution to a similar problem
-            if (consist.role, consist.role_child_branch_num) in [
+            if (consist.force_default_pax_mail_livery == 2) or (
+                consist.role,
+                consist.role_child_branch_num,
+            ) in [
                 ("branch_express", 1),
                 ("express", 2),
                 ("heavy_express", 2),
@@ -188,7 +192,8 @@ def get_livery_2_engine_ids():
                 ("pax_railcar", 2),
                 ("mail_railcar", 2),
             ]:
-                result.append(consist.id)
+                if consist.force_default_pax_mail_livery != 1:
+                    result.append(consist.id)
     if len(result) > 255:
         utils.echo_message(
             "action 2 switch is limited to 255 values, get_livery_2_engine_ids exceeds this - needs split across multiple switches"
