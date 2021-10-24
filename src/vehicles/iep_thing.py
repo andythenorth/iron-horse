@@ -5,7 +5,7 @@ def main(roster_id):
     consist = PassengerHSTCabEngineConsist(
         roster_id=roster_id,
         id="iep_thing",
-        base_numeric_id=5390,
+        base_numeric_id=6740,
         name="Double Tide IEP",
         role="hst",  # quite a specific role, may or may not scale to other rosters
         role_child_branch_num=2,

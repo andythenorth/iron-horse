@@ -10,6 +10,7 @@ from vehicles import auto_coach_pony_gen_2
 from vehicles import argus
 from vehicles import arrow
 from vehicles import avenger
+from vehicles import baddesley
 from vehicles import bean_feast
 from vehicles import blackthorn
 from vehicles import blaze
@@ -83,6 +84,7 @@ from vehicles import lemon
 from vehicles import little_bear
 from vehicles import longwater
 from vehicles import mainstay
+from vehicles import marconi
 from vehicles import maximillian
 from vehicles import magnum_70
 from vehicles import merlion
@@ -120,6 +122,7 @@ from vehicles import slug
 from vehicles import snapper
 from vehicles import snowplough_pony_gen_2
 from vehicles import spinner
+from vehicles import stag
 from vehicles import stentor
 from vehicles import stoat
 from vehicles import streamer
@@ -327,9 +330,11 @@ def main(disabled=False):
             lark,
             merrylegs,
             proper_job,
+            stag,
             kelpie,
-            #foxhound,
+            foxhound,
             griffon,
+            marconi,
             pinhorse,
             argus,
             booster,
@@ -358,10 +363,10 @@ def main(disabled=False):
             revolution,
             pegasus,
             streamer,
-            #bulleid,
+            bulleid,
             dragon,
             vulcan,
-            #falcon,
+            falcon,
             onslaught,
             relentless,
             hurly_burly,
@@ -383,6 +388,7 @@ def main(disabled=False):
             # branch freight
             buffalo,
             saxon,
+            baddesley,
             little_bear,
             captain_steel,
             goliath,
@@ -461,7 +467,7 @@ def main(disabled=False):
             firebird,
             blaze,
             scorcher,
-            # iep_thing,
+            iep_thing,
             helm_wind_cab,
             helm_wind_middle,
             brenner_cab,
