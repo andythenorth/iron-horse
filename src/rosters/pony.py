@@ -10,7 +10,6 @@ from vehicles import auto_coach_pony_gen_2
 from vehicles import argus
 from vehicles import arrow
 from vehicles import avenger
-from vehicles import baddesley
 from vehicles import bean_feast
 from vehicles import blackthorn
 from vehicles import blaze
@@ -37,6 +36,7 @@ from vehicles import chuggypig
 from vehicles import clipper
 from vehicles import daring
 from vehicles import deasil
+from vehicles import decapod
 from vehicles import defiant
 from vehicles import diablo
 from vehicles import dover
@@ -149,6 +149,7 @@ from vehicles import westbourne
 from vehicles import withershins
 from vehicles import workish
 from vehicles import wyvern
+from vehicles import xerxes
 from vehicles import yillen
 from vehicles import zebedee
 from vehicles import zest
@@ -329,6 +330,7 @@ def main(disabled=False):
             # branch express
             lark,
             merrylegs,
+            decapod,
             proper_job,
             stag,
             kelpie,
@@ -388,7 +390,6 @@ def main(disabled=False):
             # branch freight
             buffalo,
             saxon,
-            baddesley,
             little_bear,
             captain_steel,
             goliath,
@@ -406,6 +407,7 @@ def main(disabled=False):
             phoenix,
             vigilant,
             blind_smuir,
+            xerxes,
             mainstay,
             yillen,
             girt_licker,
