@@ -11,7 +11,7 @@ def main(roster_id):
         role_child_branch_num=1,
         power=1450,
         gen=1,
-        intro_date_offset=-10,  # introduce earlier than gen epoch by design
+        intro_date_offset=20,  # introduce much later than gen epoch by design
         fixed_run_cost_points=140,  # minor run cost bonus as default algorithm makes run cost too high
         sprites_complete=False,
     )
