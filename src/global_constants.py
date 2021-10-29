@@ -33,6 +33,7 @@ buy_menu_sort_order_wagons = [
     "mgr_hopper_car",
     "rock_hopper_car",
     "ore_hopper_car",
+    "salt_hopper_car",
     "dump_car",
     "dump_car_high_side",
     "aggregates_car",

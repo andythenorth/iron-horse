@@ -2543,7 +2543,6 @@ class HopperCarMGRConsist(HopperCarConsistBase):
 class HopperCarOreConsist(HopperCarConsistBase):
     """
     Defaults to iron ore.
-    The classname breaks convention (would usually be OreHopper), this is to keep all hopper subclasses togther).
     """
 
     def __init__(self, **kwargs):
@@ -2555,12 +2554,24 @@ class HopperCarOreConsist(HopperCarConsistBase):
 class HopperCarRockConsist(HopperCarConsistBase):
     """
     Defaults to rock/stone-type cargos.
-    The classname breaks convention (would usually be OreHopper), this is to keep all hopper subclasses togther).
     """
 
     def __init__(self, **kwargs):
         self.base_id = "rock_hopper_car"
         super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos["hopper_rock"]
+        self._joker = True
+
+
+class HopperCarSaltConsist(HopperCarConsistBase):
+    """
+    Defaults to salt-type cargos.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "salt_hopper_car"
+        super().__init__(**kwargs)
+        print("salt hoppers need default refits set")
         self.default_cargos = polar_fox.constants.default_cargos["hopper_rock"]
         self._joker = True
 
