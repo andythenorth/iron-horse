@@ -36,6 +36,7 @@ from vehicles import chuggypig
 from vehicles import clipper
 from vehicles import daring
 from vehicles import deasil
+from vehicles import decapod
 from vehicles import defiant
 from vehicles import diablo
 from vehicles import dover
@@ -83,6 +84,7 @@ from vehicles import lemon
 from vehicles import little_bear
 from vehicles import longwater
 from vehicles import mainstay
+from vehicles import marconi
 from vehicles import maximillian
 from vehicles import magnum_70
 from vehicles import merlion
@@ -120,6 +122,7 @@ from vehicles import slug
 from vehicles import snapper
 from vehicles import snowplough_pony_gen_2
 from vehicles import spinner
+from vehicles import stag
 from vehicles import stentor
 from vehicles import stoat
 from vehicles import streamer
@@ -146,6 +149,7 @@ from vehicles import westbourne
 from vehicles import withershins
 from vehicles import workish
 from vehicles import wyvern
+from vehicles import xerxes
 from vehicles import yillen
 from vehicles import zebedee
 from vehicles import zest
@@ -326,10 +330,13 @@ def main(disabled=False):
             # branch express
             lark,
             merrylegs,
+            decapod,
             proper_job,
+            stag,
             kelpie,
-            #foxhound,
+            foxhound,
             griffon,
+            marconi,
             pinhorse,
             argus,
             booster,
@@ -358,10 +365,10 @@ def main(disabled=False):
             revolution,
             pegasus,
             streamer,
-            #bulleid,
+            bulleid,
             dragon,
             vulcan,
-            #falcon,
+            falcon,
             onslaught,
             relentless,
             hurly_burly,
@@ -400,6 +407,7 @@ def main(disabled=False):
             phoenix,
             vigilant,
             blind_smuir,
+            xerxes,
             mainstay,
             yillen,
             girt_licker,
@@ -461,7 +469,7 @@ def main(disabled=False):
             firebird,
             blaze,
             scorcher,
-            # iep_thing,
+            iep_thing,
             helm_wind_cab,
             helm_wind_middle,
             brenner_cab,
