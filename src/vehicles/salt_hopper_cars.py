@@ -7,7 +7,7 @@ def main():
     consist = HopperCarSaltConsist(
         roster_id="pony",
         base_numeric_id=6780,
-        gen=2,
+        gen=1,
         subtype="A",
         sprites_complete=False,
     )
