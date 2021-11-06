@@ -13,7 +13,7 @@ def main(roster_id):
         gen=1,
         intro_date_offset=20,  # introduce much later than gen epoch by design
         fixed_run_cost_points=140,  # minor run cost bonus as default algorithm makes run cost too high
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(
