@@ -4,9 +4,9 @@ from train import EngineConsist, DieselEngineUnit
 def main(roster_id):
     consist = EngineConsist(
         roster_id=roster_id,
-        id="marconi",
+        id="lynx",
         base_numeric_id=6730,
-        name="Marconi",
+        name="Lynx",
         role="branch_express",
         role_child_branch_num=-1,
         power=1650,
