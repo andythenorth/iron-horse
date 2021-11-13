@@ -16,7 +16,7 @@ def main(roster_id):
         intro_date_offset=6,  # let's be later for this one
         default_livery_extra_docs_examples=[("COLOUR_GREEN", "COLOUR_WHITE")],
         alternative_cc_livery="RAILFREIGHT_RED_STRIPE",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(
