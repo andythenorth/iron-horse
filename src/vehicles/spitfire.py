@@ -4,9 +4,9 @@ from train import EngineConsist, SteamEngineUnit, SteamEngineTenderUnit
 def main(roster_id):
     consist = EngineConsist(
         roster_id=roster_id,
-        id="bulleid",
+        id="spitfire",
         base_numeric_id=6410,
-        name="4-8-2 [bulleid]",
+        name="4-8-2 Spitfire",
         role="heavy_express",
         role_child_branch_num=-4,
         power=2250,
@@ -28,8 +28,8 @@ def main(roster_id):
     )
 
     consist.description = (
-        """A right big'un from Mr. Gresley. Put these in your pipe and smoke it."""
+        """."""
     )
-    consist.foamer_facts = """LNER P2"""
+    consist.foamer_facts = """SR Merchant Navy / West Country / Battle of Britain classes"""
 
     return consist

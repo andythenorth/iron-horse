@@ -23,7 +23,6 @@ from vehicles import brenner_cab
 from vehicles import brenner_middle
 from vehicles import bright_country
 from vehicles import buffalo
-from vehicles import bulleid
 from vehicles import captain_steel
 from vehicles import cargo_sprinter
 from vehicles import carrack
@@ -122,6 +121,7 @@ from vehicles import slug
 from vehicles import snapper
 from vehicles import snowplough_pony_gen_2
 from vehicles import spinner
+from vehicles import spitfire
 from vehicles import stag
 from vehicles import stentor
 from vehicles import stoat
@@ -365,7 +365,7 @@ def main(disabled=False):
             revolution,
             pegasus,
             streamer,
-            bulleid,
+            spitfire,
             dragon,
             vulcan,
             falcon,
