@@ -13,7 +13,8 @@ def main(roster_id):
         random_reverse=True,
         fixed_run_cost_points=100,  # give a bonus so this can be a genuine mixed-traffic engine
         gen=5,  # not replaced by anything (?)
-        sprites_complete=False,
+        intro_date_offset=7,  # introduce later than gen epoch by design
+        sprites_complete=True,
     )
 
     consist.add_unit(
