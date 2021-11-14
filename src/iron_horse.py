@@ -320,7 +320,7 @@ def main():
     railbus_passenger_trailer_cars.main()
     railcar_passenger_trailer_cars.main()
     rock_hopper_cars.main()
-    #salt_hopper_cars.main()
+    salt_hopper_cars.main()
     silo_cars.main()
     scrap_metal_cars.main()
     skip_cars.main()
