@@ -7,7 +7,7 @@ def main():
     consist = HopperCarSaltConsist(
         roster_id="pony",
         base_numeric_id=6780,
-        gen=2,
+        gen=1,
         subtype="A",
         sprites_complete=False,
     )
@@ -102,7 +102,7 @@ def main():
         sprites_complete=False,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_filled_greebled_24px")
+    consist.add_unit(type=FreightCar, chassis="2_axle_filled_greebled_24px")
 
     consist = HopperCarSaltConsist(
         roster_id="pony",

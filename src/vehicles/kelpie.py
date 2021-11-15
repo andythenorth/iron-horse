@@ -14,6 +14,7 @@ def main(roster_id):
         fixed_run_cost_points=140,  # substantial cost bonus as a mixed traffic engine
         intro_date_offset=-2,  # let's not have everything turn up in 1960
         gen=4,
+        alternative_cc_livery="RAILFREIGHT_RED_STRIPE",
         sprites_complete=True,
     )
 

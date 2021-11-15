@@ -2,6 +2,30 @@ Changelog
 =========
 
 -------------
+2.31.0 Release
+-------------
+
+*Changes*
+
+- added engines
+    - Lynx general purpose / express engine, 1650 hp, available around 1997
+    - Xerxes steam heavy freight engine, 1450 hp, available around 1880
+- alternative liveries (via company colour combos) for
+    - Griffon
+    - Intrepid
+    - Kelpie
+    - more information in html docs https://grf.farm/
+- improved Griffon sprite
+- let Potash Hoppers refit as standard covered hoppers
+- covered hoppers now load at same speed as open hoppers
+
+
+*Fixes*
+
+- incorrect buffer placement on gen 6 Ore Hopper
+
+
+-------------
 2.30.0 Release
 -------------
 

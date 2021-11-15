@@ -270,7 +270,7 @@ fruit_veg_livery_recolour_maps = (
 )
 
 # minimalist for grain hoppers, just body colour (others were tried but found to be blah blah)
-grain_hopper_car_livery_recolour_maps = (("DFLT", body_recolour_CC1),)
+grain_hopper_car_livery_recolour_maps = (("DFLT", {136: 96, 137: 97, 138: 98, 139: 99, 140: 100, 141: 101, 142: 102, 143: 103}),)
 
 livestock_livery_recolour_maps = (("DFLT", body_recolour_CC2),)
 
@@ -286,22 +286,14 @@ potash_hopper_car_livery_recolour_maps = (  # only one livery provided here, bla
     (
         "DFLT",
         {
-            136: 24,
-            137: 25,
+            136: 53,
+            137: 54,
             138: 98,
-            139: 28,
-            140: 100,
-            141: 101,
-            142: 94,
-            143: 95,
-            154: 24,
-            155: 25,
-            156: 98,
-            157: 28,
-            158: 100,
-            159: 101,
-            160: 94,
-            161: 95,
+            139: 56,
+            140: 57,
+            141: 58,
+            142: 30,
+            143: 196,
         },
     ),
 )

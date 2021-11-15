@@ -1952,7 +1952,7 @@ class CarbonBlackHopperCarConsist(CarConsist):
         self.label_refits_allowed = ["CBLK"]
         self.label_refits_disallowed = []
         self.default_cargos = []
-        self._loading_speed_multiplier = 1.5
+        self._loading_speed_multiplier = 2
         self.buy_cost_adjustment_factor = 1.2
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
@@ -2073,7 +2073,7 @@ class CoveredHopperCarConsistBase(CarConsist):
             "covered_hoppers"
         ]
         self.label_refits_disallowed = []
-        self._loading_speed_multiplier = 1.5
+        self._loading_speed_multiplier = 2
         self.buy_cost_adjustment_factor = 1.2
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["freight_core"]

@@ -18,7 +18,7 @@ def main(roster_id):
         sprites_complete=False,
     )
 
-    consist.add_unit(type=SteamEngineUnit, weight=58, vehicle_length=6, spriterow_num=0)
+    consist.add_unit(type=SteamEngineUnit, weight=60, vehicle_length=6, spriterow_num=0)
 
     consist.description = (
         """."""

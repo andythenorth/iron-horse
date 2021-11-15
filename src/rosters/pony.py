@@ -23,7 +23,6 @@ from vehicles import brenner_cab
 from vehicles import brenner_middle
 from vehicles import bright_country
 from vehicles import buffalo
-from vehicles import bulleid
 from vehicles import captain_steel
 from vehicles import cargo_sprinter
 from vehicles import carrack
@@ -83,8 +82,8 @@ from vehicles import lark
 from vehicles import lemon
 from vehicles import little_bear
 from vehicles import longwater
+from vehicles import lynx
 from vehicles import mainstay
-from vehicles import marconi
 from vehicles import maximillian
 from vehicles import magnum_70
 from vehicles import merlion
@@ -122,6 +121,7 @@ from vehicles import slug
 from vehicles import snapper
 from vehicles import snowplough_pony_gen_2
 from vehicles import spinner
+from vehicles import spitfire
 from vehicles import stag
 from vehicles import stentor
 from vehicles import stoat
@@ -336,7 +336,7 @@ def main(disabled=False):
             kelpie,
             foxhound,
             griffon,
-            marconi,
+            lynx,
             pinhorse,
             argus,
             booster,
@@ -365,7 +365,7 @@ def main(disabled=False):
             revolution,
             pegasus,
             streamer,
-            bulleid,
+            spitfire,
             dragon,
             vulcan,
             falcon,
@@ -469,7 +469,7 @@ def main(disabled=False):
             firebird,
             blaze,
             scorcher,
-            iep_thing,
+            #iep_thing,
             helm_wind_cab,
             helm_wind_middle,
             brenner_cab,
