@@ -68,6 +68,7 @@ STR_NAME_SUFFIX_BULKHEAD_FLAT_CAR                               :Bulkhead Flat W
 STR_NAME_SUFFIX_CABOOSE_CAR                                     :Brake Van
 STR_NAME_SUFFIX_CEMENT_SILO_CAR                                 :Cement Wagon
 STR_NAME_SUFFIX_CARBON_BLACK_HOPPER_CAR                         :Carbon Black Hopper
+STR_NAME_SUFFIX_CLAY_HOPPER_CAR                                 :Clay Hopper
 STR_NAME_SUFFIX_COIL_CAR_COVERED                                :Covered Coil Carrier
 STR_NAME_SUFFIX_COIL_CAR_UNCOVERED                              :Coil Carrier
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Covered Hopper
@@ -82,7 +83,7 @@ STR_NAME_SUFFIX_EXPRESS_INTERMODAL_CAR                          :Express Contain
 STR_NAME_SUFFIX_EXPRESS_RAILCAR_PASSENGER_TRAILER_CAR           :Express Railcar Trailer
 STR_NAME_SUFFIX_FLAT_CAR                                        :Flat Wagon
 STR_NAME_SUFFIX_FRUIT_VEG_CAR                                   :Fruit & Vegetables Van
-STR_NAME_SUFFIX_GRAIN_HOPPER_CAR                                :Grain Hopper
+STR_NAME_SUFFIX_GRAIN_HOPPER_CAR                                :Granule Hopper
 STR_NAME_SUFFIX_HOPPER_CAR                                      :Hopper
 STR_NAME_SUFFIX_HST_PASSENGER_CAR                               :Passenger Coach
 STR_NAME_SUFFIX_INGOT_CAR                                       :Ingot Carriers
@@ -109,6 +110,7 @@ STR_NAME_SUFFIX_RAILCAR_PASSENGER_TRAILER_CAR                   :Railcar Trailer
 STR_NAME_SUFFIX_REEFER_CAR                                      :Refrigerated Van
 STR_NAME_SUFFIX_RESTAURANT_CAR                                  :Restaurant Car
 STR_NAME_SUFFIX_ROCK_HOPPER_CAR                                 :Rock Hopper
+STR_NAME_SUFFIX_ROLLER_ROOF_HOPPER_CAR                          :Roller Roof Hopper
 STR_NAME_SUFFIX_SALT_HOPPER_CAR                                 :Salt Hopper
 STR_NAME_SUFFIX_SILO_CAR                                        :Silo Wagon
 STR_NAME_SUFFIX_SKIP_CAR                                        :Skips

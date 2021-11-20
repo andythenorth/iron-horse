@@ -39,6 +39,7 @@ from vehicles import bulkhead_flat_cars
 from vehicles import caboose_cars
 from vehicles import carbon_black_hopper_cars
 from vehicles import cement_silo_cars
+from vehicles import clay_hopper_cars
 from vehicles import coil_buggy_cars
 from vehicles import coil_cars_covered
 from vehicles import coil_cars_uncovered
@@ -82,6 +83,7 @@ from vehicles import railcar_passenger_trailer_cars
 from vehicles import reefer_cars
 from vehicles import restaurant_cars
 from vehicles import rock_hopper_cars
+from vehicles import roller_roof_hopper_cars
 from vehicles import salt_hopper_cars
 from vehicles import scrap_metal_cars
 from vehicles import silo_cars
@@ -279,6 +281,7 @@ def main():
     caboose_cars.main()
     carbon_black_hopper_cars.main()
     cement_silo_cars.main()
+    clay_hopper_cars.main()
     coil_buggy_cars.main()
     coil_cars_covered.main()
     coil_cars_uncovered.main()
@@ -320,6 +323,7 @@ def main():
     railbus_passenger_trailer_cars.main()
     railcar_passenger_trailer_cars.main()
     rock_hopper_cars.main()
+    roller_roof_hopper_cars.main()
     salt_hopper_cars.main()
     silo_cars.main()
     scrap_metal_cars.main()
