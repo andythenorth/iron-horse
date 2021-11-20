@@ -2561,6 +2561,19 @@ class HopperCarConsist(HopperCarConsistBase):
         self.default_cargos = polar_fox.constants.default_cargos["hopper_coal"]
 
 
+class HopperCarMineralConsist(HopperCarConsistBase):
+    """
+    Defaults to salt-type cargos.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "mineral_hopper_car"
+        super().__init__(**kwargs)
+        print("mineral hoppers need default refits set")
+        self.default_cargos = polar_fox.constants.default_cargos["hopper_rock"]
+        self._joker = True
+
+
 class HopperCarMGRConsist(HopperCarConsistBase):
     """
     Defaults to coal.  UK-specific lolz.
@@ -2592,19 +2605,6 @@ class HopperCarRockConsist(HopperCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "rock_hopper_car"
         super().__init__(**kwargs)
-        self.default_cargos = polar_fox.constants.default_cargos["hopper_rock"]
-        self._joker = True
-
-
-class HopperCarSaltConsist(HopperCarConsistBase):
-    """
-    Defaults to salt-type cargos.
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = "salt_hopper_car"
-        super().__init__(**kwargs)
-        print("salt hoppers need default refits set")
         self.default_cargos = polar_fox.constants.default_cargos["hopper_rock"]
         self._joker = True
 

@@ -67,6 +67,7 @@ from vehicles import log_cars
 # from vehicles import low_floor_automobile_cars
 from vehicles import low_floor_intermodal_cars
 from vehicles import mail_cars
+from vehicles import mineral_hopper_cars
 from vehicles import mgr_hopper_cars
 from vehicles import open_cars
 from vehicles import ore_dump_cars
@@ -84,7 +85,6 @@ from vehicles import reefer_cars
 from vehicles import restaurant_cars
 from vehicles import rock_hopper_cars
 from vehicles import roller_roof_hopper_cars
-from vehicles import salt_hopper_cars
 from vehicles import scrap_metal_cars
 from vehicles import silo_cars
 from vehicles import skip_cars
@@ -307,6 +307,7 @@ def main():
     # low_floor_automobile_cars.main()
     low_floor_intermodal_cars.main()
     mail_cars.main()
+    mineral_hopper_cars.main()
     mgr_hopper_cars.main()
     ore_dump_cars.main()
     ore_hopper_cars.main()
@@ -324,7 +325,6 @@ def main():
     railcar_passenger_trailer_cars.main()
     rock_hopper_cars.main()
     roller_roof_hopper_cars.main()
-    salt_hopper_cars.main()
     silo_cars.main()
     scrap_metal_cars.main()
     skip_cars.main()

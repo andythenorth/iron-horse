@@ -94,6 +94,7 @@ STR_NAME_SUFFIX_LOG_CAR                                         :Log Carrier
 STR_NAME_SUFFIX_LOW_FLOOR_AUTOMOBILE_CAR                        :Low-floor Vehicle Transporter
 STR_NAME_SUFFIX_LOW_FLOOR_INTERMODAL_CAR                        :Low-floor Container Wagon
 STR_NAME_SUFFIX_MAIL_CAR                                        :Mail Van
+STR_NAME_SUFFIX_MINERAL_HOPPER_CAR                              :Mineral Hopper
 STR_NAME_SUFFIX_MGR_HOPPER_CAR                                  :MGR Hopper
 STR_NAME_SUFFIX_OPEN_CAR                                        :Open Wagon
 STR_NAME_SUFFIX_ORE_DUMP_CAR                                    :Ore Dump Wagon
@@ -111,7 +112,6 @@ STR_NAME_SUFFIX_REEFER_CAR                                      :Refrigerated Va
 STR_NAME_SUFFIX_RESTAURANT_CAR                                  :Restaurant Car
 STR_NAME_SUFFIX_ROCK_HOPPER_CAR                                 :Rock Hopper
 STR_NAME_SUFFIX_ROLLER_ROOF_HOPPER_CAR                          :Roller Roof Hopper
-STR_NAME_SUFFIX_SALT_HOPPER_CAR                                 :Salt Hopper
 STR_NAME_SUFFIX_SILO_CAR                                        :Silo Wagon
 STR_NAME_SUFFIX_SKIP_CAR                                        :Skips
 STR_NAME_SUFFIX_SLAG_LADLE_CAR                                  :Slag Ladle Wagon
