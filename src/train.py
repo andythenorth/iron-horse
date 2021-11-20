@@ -2145,13 +2145,13 @@ class CoveredHopperCarPelletConsist(CoveredHopperCarConsistBase):
         )
 
 
-class CoveredHopperCarPotashConsist(CoveredHopperCarConsistBase):
+class CoveredHopperCarMineralConsist(CoveredHopperCarConsistBase):
     """
     Defaults to potash.
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "potash_hopper_car"
+        self.base_id = "covered_mineral_hopper_car"
         super().__init__(**kwargs)
         self.default_cargos = ["POTA", "PHOS", "SALT", "SAND"]
         self._joker = True

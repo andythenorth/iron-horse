@@ -50,7 +50,7 @@ buy_menu_sort_order_wagons = [
     "pellet_hopper_car",
     "roller_roof_hopper_car",
     "clay_hopper_car",
-    "potash_hopper_car",
+    "covered_mineral_hopper_car",
     "silo_car",
     "cement_silo_car",
     "livestock_car",
