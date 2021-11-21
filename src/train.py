@@ -2146,21 +2146,6 @@ class CoveredHopperCarChemicalConsist(CoveredHopperCarConsistBase):
         )
 
 
-class CoveredHopperCarFarmProductsConsist(CoveredHopperCarConsistBase):
-    """
-    Defaults to grain/farm type cargos.
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = "farm_products_hopper_car"
-        super().__init__(**kwargs)
-        self.default_cargos = polar_fox.constants.default_cargos["covered_ag"]
-        # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
-            recolour_maps=graphics_constants.grain_hopper_car_livery_recolour_maps
-        )
-
-
 class CoveredHopperCarRollerRoofConsist(CoveredHopperCarConsistBase):
     """
     Defaults to grain/farm type cargos.
@@ -2175,61 +2160,6 @@ class CoveredHopperCarRollerRoofConsist(CoveredHopperCarConsistBase):
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             recolour_maps=graphics_constants.pellet_hopper_car_livery_recolour_maps
         )
-
-
-class GasTankCarConsistBase(CarConsist):
-    """
-    Specialist tank cars for gases, e.g. Oxygen, Chlorine, Ammonia, Propylene etc.
-    """
-
-    def __init__(self, **kwargs):
-        # tank cars are unrealistically autorefittable, and at no cost
-        # Pikka: if people complain that it's unrealistic, tell them "don't do it then"
-        super().__init__(**kwargs)
-        self.class_refit_groups = []  # no classes, use explicit labels
-        self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
-            "cryo_gases"
-        ]
-        self.default_cargos = polar_fox.constants.default_cargos["cryo_gases"]
-        self._loading_speed_multiplier = 1.5
-        self.buy_cost_adjustment_factor = 1.33
-        self._intro_date_days_offset = (
-            global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
-        )
-        # allow flipping, used to flip company colour
-        self.allow_flip = True
-        # type-specific wagon colour randomisation
-        self.auto_colour_randomisation_strategy_num = (
-            1  # single base colour unless flipped
-        )
-        # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
-            recolour_maps=polar_fox.constants.cryo_tanker_livery_recolour_maps
-        )
-
-
-class GasTankCarPressureConsist(GasTankCarConsistBase):
-    """
-    Pressure tank cars for gases under pressure at low temperatue, e.g. Chlorine etc.
-    """
-
-    def __init__(self, **kwargs):
-        # tank cars are unrealistically autorefittable, and at no cost
-        # Pikka: if people complain that it's unrealistic, tell them "don't do it then"
-        self.base_id = "pressure_tank_car"
-        super().__init__(**kwargs)
-
-
-class GasTankCarCryoConsist(GasTankCarConsistBase):
-    """
-    Specialist insulated and pressurised tank cars for gases under pressure at low temperatue, e.g. Oxygen etc.
-    """
-
-    def __init__(self, **kwargs):
-        # tank cars are unrealistically autorefittable, and at no cost
-        # Pikka: if people complain that it's unrealistic, tell them "don't do it then"
-        self.base_id = "cryo_tank_car"
-        super().__init__(**kwargs)
 
 
 class CurtainSideCarBoxConsist(CarConsist):
@@ -2475,6 +2405,31 @@ class ExpressIntermodalCarConsist(CarConsist):
         return "default"
 
 
+class FarmProductsHopperCarConsist(CarConsist):
+    """
+    Dedicated to grain/farm type cargos.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "farm_products_hopper_car"
+        super().__init__(**kwargs)
+        self.class_refit_groups = []  # no classes, use explicit labels
+        self.label_refits_allowed = ["GRAI", "BEAN", "CASS", "FMSP", "FERT", "MAIZ", "WHEA", "CERE", "OLSD", "NUTS", "SEED", "SGBT", "TATO"]
+        self.label_refits_disallowed = []
+        self.default_cargos = []
+        self._loading_speed_multiplier = 2
+        self.buy_cost_adjustment_factor = 1.2
+        self._intro_date_days_offset = (
+            global_constants.intro_date_offsets_by_role_group["freight_core"]
+        )
+        # allow flipping, used to flip company colour
+        self.allow_flip = True
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
+            recolour_maps=graphics_constants.farm_products_hopper_car_livery_recolour_maps
+        )
+
+
 class FlatCarConsist(CarConsist):
     """
     Flatbed - refits wide range of cargos, but not bulk.
@@ -2524,6 +2479,61 @@ class FruitVegCarConsist(CarConsist):
             id_base="box_car",
             recolour_maps=graphics_constants.fruit_veg_livery_recolour_maps,
         )
+
+
+class GasTankCarConsistBase(CarConsist):
+    """
+    Specialist tank cars for gases, e.g. Oxygen, Chlorine, Ammonia, Propylene etc.
+    """
+
+    def __init__(self, **kwargs):
+        # tank cars are unrealistically autorefittable, and at no cost
+        # Pikka: if people complain that it's unrealistic, tell them "don't do it then"
+        super().__init__(**kwargs)
+        self.class_refit_groups = []  # no classes, use explicit labels
+        self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
+            "cryo_gases"
+        ]
+        self.default_cargos = polar_fox.constants.default_cargos["cryo_gases"]
+        self._loading_speed_multiplier = 1.5
+        self.buy_cost_adjustment_factor = 1.33
+        self._intro_date_days_offset = (
+            global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
+        )
+        # allow flipping, used to flip company colour
+        self.allow_flip = True
+        # type-specific wagon colour randomisation
+        self.auto_colour_randomisation_strategy_num = (
+            1  # single base colour unless flipped
+        )
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
+            recolour_maps=polar_fox.constants.cryo_tanker_livery_recolour_maps
+        )
+
+
+class GasTankCarPressureConsist(GasTankCarConsistBase):
+    """
+    Pressure tank cars for gases under pressure at low temperatue, e.g. Chlorine etc.
+    """
+
+    def __init__(self, **kwargs):
+        # tank cars are unrealistically autorefittable, and at no cost
+        # Pikka: if people complain that it's unrealistic, tell them "don't do it then"
+        self.base_id = "pressure_tank_car"
+        super().__init__(**kwargs)
+
+
+class GasTankCarCryoConsist(GasTankCarConsistBase):
+    """
+    Specialist insulated and pressurised tank cars for gases under pressure at low temperatue, e.g. Oxygen etc.
+    """
+
+    def __init__(self, **kwargs):
+        # tank cars are unrealistically autorefittable, and at no cost
+        # Pikka: if people complain that it's unrealistic, tell them "don't do it then"
+        self.base_id = "cryo_tank_car"
+        super().__init__(**kwargs)
 
 
 class HopperCarConsistBase(CarConsist):
