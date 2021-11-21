@@ -2299,14 +2299,14 @@ class DumpCarConsist(DumpCarConsistBase):
         super().__init__(**kwargs)
 
 
-class DumpCarAggregatesConsist(DumpCarConsistBase):
+class DumpCarAggregateConsist(DumpCarConsistBase):
     """
-    Aggregates Car.
+    Aggregate Car.
     Same as standard dump car, but different appearance and default cargos.
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "aggregates_car"
+        self.base_id = "aggregate_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["dump_high_sides"]
         self._joker = True

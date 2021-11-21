@@ -29,7 +29,7 @@ from vehicles import numeric_id_defender
 
 # import wagons
 from vehicles import acid_tank_cars
-from vehicles import aggregates_cars
+from vehicles import aggregate_cars
 
 # from vehicles import alignment_cars
 # from vehicles import automobile_cars
@@ -269,7 +269,7 @@ def main():
 
     # wagons
     acid_tank_cars.main()
-    aggregates_cars.main()
+    aggregate_cars.main()
     """
     # only comment in if needed for debugging
     alignment_cars.main()
