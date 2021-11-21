@@ -2114,22 +2114,6 @@ class CoveredHopperCarPowderConsist(CoveredHopperCarConsistBase):
         )
 
 
-class CoveredHopperCarClayConsist(CoveredHopperCarConsistBase):
-    """
-    Defaults to kaolin.
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = "clay_hopper_car"
-        super().__init__(**kwargs)
-        self.default_cargos = ["KAOL", "CLAY", "QLME", "SASH"]
-        self._joker = True
-        # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
-            recolour_maps=graphics_constants.covered_hopper_car_livery_recolour_maps
-        )
-
-
 class CoveredHopperCarChemicalConsist(CoveredHopperCarConsistBase):
     """
     Defaults to potash.
@@ -2731,6 +2715,34 @@ class IntermodalLowFloorCarConsist(IntermodalCarConsistBase):
         self.base_id = "low_floor_intermodal_car"
         super().__init__(**kwargs)
         self.platform_type = "low_floor"  # note that NG does not support low_floor, it already is low_floor
+
+
+class KaolinHopperCarConsist(CarConsist):
+    """
+    Dedicated to kaolin (china clay).
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "kaolin_hopper_car"
+        super().__init__(**kwargs)
+        self.class_refit_groups = []  # no classes, use explicit labels
+        self.label_refits_allowed = ["KAOL"]
+        self.label_refits_disallowed = []
+        # no point using polar fox default_cargos for a vehicle with single refit
+        self.default_cargos = []
+        self._loading_speed_multiplier = 2
+        self.buy_cost_adjustment_factor = 1.2
+        self._intro_date_days_offset = (
+            global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
+        )
+        self._joker = True
+        # allow flipping, used to flip company colour
+        self.allow_flip = True
+        self.cc_num_to_randomise = 2
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
+            recolour_maps=graphics_constants.covered_hopper_car_livery_recolour_maps
+        )
 
 
 class LivestockCarConsist(CarConsist):

@@ -40,7 +40,6 @@ from vehicles import caboose_cars
 from vehicles import carbon_black_hopper_cars
 from vehicles import cement_silo_cars
 from vehicles import chemical_covered_hopper_cars
-from vehicles import clay_hopper_cars
 from vehicles import coil_buggy_cars
 from vehicles import coil_cars_covered
 from vehicles import coil_cars_uncovered
@@ -62,6 +61,7 @@ from vehicles import hopper_cars
 from vehicles import hst_passenger_cars
 from vehicles import ingot_cars
 from vehicles import intermodal_cars
+from vehicles import kaolin_hopper_cars
 from vehicles import livestock_cars
 from vehicles import log_cars
 
@@ -282,7 +282,6 @@ def main():
     carbon_black_hopper_cars.main()
     cement_silo_cars.main()
     chemical_covered_hopper_cars.main()
-    clay_hopper_cars.main()
     coil_buggy_cars.main()
     coil_cars_covered.main()
     coil_cars_uncovered.main()
@@ -303,6 +302,7 @@ def main():
     hst_passenger_cars.main()
     ingot_cars.main()
     intermodal_cars.main()
+    kaolin_hopper_cars.main()
     livestock_cars.main()
     log_cars.main()
     # low_floor_automobile_cars.main()

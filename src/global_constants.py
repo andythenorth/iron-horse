@@ -60,7 +60,7 @@ buy_menu_sort_order_wagons = [
     "low_floor_automobile_car",
     "double_deck_automobile_car",
     "log_car",
-    "clay_hopper_car",
+    "kaolin_hopper_car",
     "carbon_black_hopper_car",
     "peat_car",
     #'well_car',
