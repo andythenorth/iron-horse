@@ -2,45 +2,10 @@ from train import CoveredHopperCarConsist, FreightCar
 
 
 def main():
-    # --------------- pony NG ----------------------------------------------------------------------
-
-    consist = CoveredHopperCarConsist(
-        roster_id="pony",
-        base_numeric_id=5980,
-        gen=1,
-        subtype="U",
-        base_track_type="NG",
-        sprites_complete=True,
-    )
-
-    consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
-
-    consist = CoveredHopperCarConsist(
-        roster_id="pony",
-        base_numeric_id=5990,
-        gen=3,
-        subtype="U",
-        base_track_type="NG",
-        sprites_complete=True,
-    )
-
-    consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
-
-    consist = CoveredHopperCarConsist(
-        roster_id="pony",
-        base_numeric_id=6000,
-        gen=4,
-        subtype="U",
-        base_track_type="NG",
-        sprites_complete=True,
-    )
-
-    consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
-
     # --------------- pony ----------------------------------------------------------------------
     consist = CoveredHopperCarConsist(
         roster_id="pony",
-        base_numeric_id=4500,
+        base_numeric_id=4280,
         gen=2,
         subtype="A",
         sprites_complete=True,
@@ -50,7 +15,7 @@ def main():
 
     consist = CoveredHopperCarConsist(
         roster_id="pony",
-        base_numeric_id=4510,
+        base_numeric_id=4300,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -60,17 +25,17 @@ def main():
 
     consist = CoveredHopperCarConsist(
         roster_id="pony",
-        base_numeric_id=4520,
+        base_numeric_id=4310,
         gen=4,
         subtype="A",
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_sparse_16px")
+    consist.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
 
     consist = CoveredHopperCarConsist(
         roster_id="pony",
-        base_numeric_id=4530,
+        base_numeric_id=4330,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -78,11 +43,9 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_24px")
 
-    # no gen 5A or 6A
-
     consist = CoveredHopperCarConsist(
         roster_id="pony",
-        base_numeric_id=4550,
+        base_numeric_id=4340,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -92,7 +55,7 @@ def main():
 
     consist = CoveredHopperCarConsist(
         roster_id="pony",
-        base_numeric_id=4560,
+        base_numeric_id=4350,
         gen=5,
         subtype="C",
         sprites_complete=True,
@@ -102,7 +65,7 @@ def main():
 
     consist = CoveredHopperCarConsist(
         roster_id="pony",
-        base_numeric_id=4580,
+        base_numeric_id=4360,
         gen=6,
         subtype="B",
         sprites_complete=True,
@@ -112,7 +75,7 @@ def main():
 
     consist = CoveredHopperCarConsist(
         roster_id="pony",
-        base_numeric_id=4590,
+        base_numeric_id=4370,
         gen=6,
         subtype="C",
         sprites_complete=True,

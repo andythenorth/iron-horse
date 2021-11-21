@@ -58,7 +58,7 @@ STR_NAME_SUFFIX_TWIN                                            :Twin
 # the en-us translation should be updated appropriately when making changes here
 # !! consider splitting strings per roster?? A US caboose is still a 'caboose' in en-gb, not a brake van
 STR_NAME_SUFFIX_ACID_TANK_CAR                                   :Acid Tanker
-STR_NAME_SUFFIX_AGGREGATES_CAR                                  :Aggregates Wagon
+STR_NAME_SUFFIX_AGGREGATE_CAR                                   :Aggregate Wagon
 STR_NAME_SUFFIX_ALIGNMENT_CAR                                   :Alignment Van
 STR_NAME_SUFFIX_AUTOMOBILE_CAR                                  :Vehicle Transporter
 STR_NAME_SUFFIX_BOX_CAR                                         :Box Van
@@ -66,8 +66,10 @@ STR_NAME_SUFFIX_COIL_BUGGY_CAR                                  :Coil Buggies
 STR_NAME_SUFFIX_BOLSTER_CAR                                     :Bolster Wagon
 STR_NAME_SUFFIX_BULKHEAD_FLAT_CAR                               :Bulkhead Flat Wagon
 STR_NAME_SUFFIX_CABOOSE_CAR                                     :Brake Van
-STR_NAME_SUFFIX_CEMENT_SILO_CAR                                 :Cement Wagon
 STR_NAME_SUFFIX_CARBON_BLACK_HOPPER_CAR                         :Carbon Black Hopper
+STR_NAME_SUFFIX_CEMENT_SILO_CAR                                 :Cement Wagon
+STR_NAME_SUFFIX_CHEMICAL_COVERED_HOPPER_CAR                     :Chemical Covered Hopper
+STR_NAME_SUFFIX_CLAY_HOPPER_CAR                                 :China Clay Hopper
 STR_NAME_SUFFIX_COIL_CAR_COVERED                                :Covered Coil Carrier
 STR_NAME_SUFFIX_COIL_CAR_UNCOVERED                              :Coil Carrier
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Covered Hopper
@@ -80,9 +82,9 @@ STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Edibles Tanker
 STR_NAME_SUFFIX_EXPRESS_CAR                                     :Express Van
 STR_NAME_SUFFIX_EXPRESS_INTERMODAL_CAR                          :Express Container Wagon
 STR_NAME_SUFFIX_EXPRESS_RAILCAR_PASSENGER_TRAILER_CAR           :Express Railcar Trailer
+STR_NAME_SUFFIX_FARM_PRODUCTS_HOPPER_CAR                        :Farm Products Hopper
 STR_NAME_SUFFIX_FLAT_CAR                                        :Flat Wagon
 STR_NAME_SUFFIX_FRUIT_VEG_CAR                                   :Fruit & Vegetables Van
-STR_NAME_SUFFIX_GRAIN_HOPPER_CAR                                :Grain Hopper
 STR_NAME_SUFFIX_HOPPER_CAR                                      :Hopper
 STR_NAME_SUFFIX_HST_PASSENGER_CAR                               :Passenger Coach
 STR_NAME_SUFFIX_INGOT_CAR                                       :Ingot Carriers
@@ -93,15 +95,16 @@ STR_NAME_SUFFIX_LOG_CAR                                         :Log Carrier
 STR_NAME_SUFFIX_LOW_FLOOR_AUTOMOBILE_CAR                        :Low-floor Vehicle Transporter
 STR_NAME_SUFFIX_LOW_FLOOR_INTERMODAL_CAR                        :Low-floor Container Wagon
 STR_NAME_SUFFIX_MAIL_CAR                                        :Mail Van
+STR_NAME_SUFFIX_MINERAL_COVERED_HOPPER_CAR                      :Mineral Covered Hopper
+STR_NAME_SUFFIX_MINERAL_HOPPER_CAR                              :Mineral Hopper
 STR_NAME_SUFFIX_MGR_HOPPER_CAR                                  :MGR Hopper
 STR_NAME_SUFFIX_OPEN_CAR                                        :Open Wagon
 STR_NAME_SUFFIX_ORE_DUMP_CAR                                    :Ore Dump Wagon
 STR_NAME_SUFFIX_ORE_HOPPER_CAR                                  :Ore Hopper
 STR_NAME_SUFFIX_PASSENGER_CAR                                   :Passenger Coach
 STR_NAME_SUFFIX_PEAT_CAR                                        :Peat Wagons
-STR_NAME_SUFFIX_PELLET_HOPPER_CAR                               :Pellet Hopper
 STR_NAME_SUFFIX_PLATE_CAR                                       :Plate Wagon
-STR_NAME_SUFFIX_POTASH_HOPPER_CAR                               :Potash Hopper
+STR_NAME_SUFFIX_POWDER_HOPPER_CAR                               :Dry Powder Hopper
 STR_NAME_SUFFIX_PRESSURE_TANK_CAR                               :Pressure Tanker
 STR_NAME_SUFFIX_PRODUCT_TANK_CAR                                :Product Tanker
 STR_NAME_SUFFIX_RAILBUS_PASSENGER_TRAILER_CAR                   :Railbus Trailer
@@ -109,7 +112,7 @@ STR_NAME_SUFFIX_RAILCAR_PASSENGER_TRAILER_CAR                   :Railcar Trailer
 STR_NAME_SUFFIX_REEFER_CAR                                      :Refrigerated Van
 STR_NAME_SUFFIX_RESTAURANT_CAR                                  :Restaurant Car
 STR_NAME_SUFFIX_ROCK_HOPPER_CAR                                 :Rock Hopper
-STR_NAME_SUFFIX_SALT_HOPPER_CAR                                 :Salt Hopper
+STR_NAME_SUFFIX_ROLLER_ROOF_HOPPER_CAR                          :Roller Roof Hopper
 STR_NAME_SUFFIX_SILO_CAR                                        :Silo Wagon
 STR_NAME_SUFFIX_SKIP_CAR                                        :Skips
 STR_NAME_SUFFIX_SLAG_LADLE_CAR                                  :Slag Ladle Wagon

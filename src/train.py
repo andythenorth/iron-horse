@@ -2084,42 +2084,11 @@ class CoveredHopperCarConsistBase(CarConsist):
 
 class CoveredHopperCarConsist(CoveredHopperCarConsistBase):
     """
-    Defaults to salt/potash type cargos.
+    Default covered hopper (but NOT base class).
     """
 
     def __init__(self, **kwargs):
         self.base_id = "covered_hopper_car"
-        super().__init__(**kwargs)
-        self.default_cargos = polar_fox.constants.default_cargos["covered_mineral"]
-        self._joker = True
-        # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
-            recolour_maps=graphics_constants.covered_hopper_car_livery_recolour_maps
-        )
-
-
-class CoveredHopperCarGrainConsist(CoveredHopperCarConsistBase):
-    """
-    Defaults to grain/farm type cargos.
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = "grain_hopper_car"
-        super().__init__(**kwargs)
-        self.default_cargos = polar_fox.constants.default_cargos["covered_ag"]
-        # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
-            recolour_maps=graphics_constants.grain_hopper_car_livery_recolour_maps
-        )
-
-
-class CoveredHopperCarPelletConsist(CoveredHopperCarConsistBase):
-    """
-    Defaults to grain/farm type cargos.
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = "pellet_hopper_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["covered_pellet"]
         self._joker = True
@@ -2129,18 +2098,82 @@ class CoveredHopperCarPelletConsist(CoveredHopperCarConsistBase):
         )
 
 
-class CoveredHopperCarPotashConsist(CoveredHopperCarConsistBase):
+class CoveredHopperCarPowderConsist(CoveredHopperCarConsistBase):
     """
-    Dedicated to potash.
+    Defaults to salt/potash type cargos.
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "potash_hopper_car"
+        self.base_id = "powder_hopper_car"
         super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos["covered_mineral"]
+        self._joker = True
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
+            recolour_maps=graphics_constants.covered_hopper_car_livery_recolour_maps
+        )
+
+
+class CoveredHopperCarClayConsist(CoveredHopperCarConsistBase):
+    """
+    Defaults to kaolin.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "clay_hopper_car"
+        super().__init__(**kwargs)
+        self.default_cargos = ["KAOL", "CLAY", "QLME", "SASH"]
+        self._joker = True
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
+            recolour_maps=graphics_constants.covered_hopper_car_livery_recolour_maps
+        )
+
+
+class CoveredHopperCarChemicalConsist(CoveredHopperCarConsistBase):
+    """
+    Defaults to potash.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "chemical_covered_hopper_car"
+        super().__init__(**kwargs)
+        self.default_cargos = ["POTA", "PHOS", "SALT", "SAND"]
         self._joker = True
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             recolour_maps=graphics_constants.potash_hopper_car_livery_recolour_maps
+        )
+
+
+class CoveredHopperCarFarmProductsConsist(CoveredHopperCarConsistBase):
+    """
+    Defaults to grain/farm type cargos.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "farm_products_hopper_car"
+        super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos["covered_ag"]
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
+            recolour_maps=graphics_constants.grain_hopper_car_livery_recolour_maps
+        )
+
+
+class CoveredHopperCarRollerRoofConsist(CoveredHopperCarConsistBase):
+    """
+    Defaults to grain/farm type cargos.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "roller_roof_hopper_car"
+        super().__init__(**kwargs)
+        self._joker = True
+        self.default_cargos = polar_fox.constants.default_cargos["covered_pellet"]
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
+            recolour_maps=graphics_constants.pellet_hopper_car_livery_recolour_maps
         )
 
 
@@ -2266,14 +2299,14 @@ class DumpCarConsist(DumpCarConsistBase):
         super().__init__(**kwargs)
 
 
-class DumpCarAggregatesConsist(DumpCarConsistBase):
+class DumpCarAggregateConsist(DumpCarConsistBase):
     """
-    Aggregates Car.
+    Aggregate Car.
     Same as standard dump car, but different appearance and default cargos.
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "aggregates_car"
+        self.base_id = "aggregate_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["dump_high_sides"]
         self._joker = True
@@ -2528,6 +2561,19 @@ class HopperCarConsist(HopperCarConsistBase):
         self.default_cargos = polar_fox.constants.default_cargos["hopper_coal"]
 
 
+class HopperCarMineralConsist(HopperCarConsistBase):
+    """
+    Defaults to salt-type cargos.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "mineral_hopper_car"
+        super().__init__(**kwargs)
+        print("mineral hoppers need default refits set")
+        self.default_cargos = polar_fox.constants.default_cargos["hopper_rock"]
+        self._joker = True
+
+
 class HopperCarMGRConsist(HopperCarConsistBase):
     """
     Defaults to coal.  UK-specific lolz.
@@ -2559,19 +2605,6 @@ class HopperCarRockConsist(HopperCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "rock_hopper_car"
         super().__init__(**kwargs)
-        self.default_cargos = polar_fox.constants.default_cargos["hopper_rock"]
-        self._joker = True
-
-
-class HopperCarSaltConsist(HopperCarConsistBase):
-    """
-    Defaults to salt-type cargos.
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = "salt_hopper_car"
-        super().__init__(**kwargs)
-        print("salt hoppers need default refits set")
         self.default_cargos = polar_fox.constants.default_cargos["hopper_rock"]
         self._joker = True
 

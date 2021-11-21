@@ -29,7 +29,7 @@ from vehicles import numeric_id_defender
 
 # import wagons
 from vehicles import acid_tank_cars
-from vehicles import aggregates_cars
+from vehicles import aggregate_cars
 
 # from vehicles import alignment_cars
 # from vehicles import automobile_cars
@@ -39,6 +39,8 @@ from vehicles import bulkhead_flat_cars
 from vehicles import caboose_cars
 from vehicles import carbon_black_hopper_cars
 from vehicles import cement_silo_cars
+from vehicles import chemical_covered_hopper_cars
+from vehicles import clay_hopper_cars
 from vehicles import coil_buggy_cars
 from vehicles import coil_cars_covered
 from vehicles import coil_cars_uncovered
@@ -53,9 +55,9 @@ from vehicles import edibles_tank_cars
 from vehicles import express_cars
 from vehicles import express_intermodal_cars
 from vehicles import express_railcar_passenger_trailer_cars
+from vehicles import farm_products_hopper_cars
 from vehicles import flat_cars
 from vehicles import fruit_veg_cars
-from vehicles import grain_hopper_cars
 from vehicles import hopper_cars
 from vehicles import hst_passenger_cars
 from vehicles import ingot_cars
@@ -66,15 +68,15 @@ from vehicles import log_cars
 # from vehicles import low_floor_automobile_cars
 from vehicles import low_floor_intermodal_cars
 from vehicles import mail_cars
+from vehicles import mineral_hopper_cars
 from vehicles import mgr_hopper_cars
 from vehicles import open_cars
 from vehicles import ore_dump_cars
 from vehicles import ore_hopper_cars
 from vehicles import passenger_cars
 from vehicles import peat_cars
-from vehicles import pellet_hopper_cars
 from vehicles import plate_cars
-from vehicles import potash_hopper_cars
+from vehicles import powder_hopper_cars
 from vehicles import pressure_tank_cars
 from vehicles import product_tank_cars
 from vehicles import railbus_passenger_trailer_cars
@@ -82,7 +84,7 @@ from vehicles import railcar_passenger_trailer_cars
 from vehicles import reefer_cars
 from vehicles import restaurant_cars
 from vehicles import rock_hopper_cars
-from vehicles import salt_hopper_cars
+from vehicles import roller_roof_hopper_cars
 from vehicles import scrap_metal_cars
 from vehicles import silo_cars
 from vehicles import skip_cars
@@ -267,7 +269,7 @@ def main():
 
     # wagons
     acid_tank_cars.main()
-    aggregates_cars.main()
+    aggregate_cars.main()
     """
     # only comment in if needed for debugging
     alignment_cars.main()
@@ -279,6 +281,8 @@ def main():
     caboose_cars.main()
     carbon_black_hopper_cars.main()
     cement_silo_cars.main()
+    chemical_covered_hopper_cars.main()
+    clay_hopper_cars.main()
     coil_buggy_cars.main()
     coil_cars_covered.main()
     coil_cars_uncovered.main()
@@ -292,9 +296,9 @@ def main():
     express_cars.main()
     express_intermodal_cars.main()
     express_railcar_passenger_trailer_cars.main()
+    farm_products_hopper_cars.main()
     flat_cars.main()
     fruit_veg_cars.main()
-    grain_hopper_cars.main()
     hopper_cars.main()
     hst_passenger_cars.main()
     ingot_cars.main()
@@ -304,15 +308,15 @@ def main():
     # low_floor_automobile_cars.main()
     low_floor_intermodal_cars.main()
     mail_cars.main()
+    mineral_hopper_cars.main()
     mgr_hopper_cars.main()
     ore_dump_cars.main()
     ore_hopper_cars.main()
     open_cars.main()
     passenger_cars.main()
     peat_cars.main()
-    pellet_hopper_cars.main()
     plate_cars.main()
-    potash_hopper_cars.main()
+    powder_hopper_cars.main()
     pressure_tank_cars.main()
     product_tank_cars.main()
     reefer_cars.main()
@@ -320,7 +324,7 @@ def main():
     railbus_passenger_trailer_cars.main()
     railcar_passenger_trailer_cars.main()
     rock_hopper_cars.main()
-    salt_hopper_cars.main()
+    roller_roof_hopper_cars.main()
     silo_cars.main()
     scrap_metal_cars.main()
     skip_cars.main()
