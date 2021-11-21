@@ -2146,21 +2146,6 @@ class CoveredHopperCarChemicalConsist(CoveredHopperCarConsistBase):
         )
 
 
-class CoveredHopperCarFarmProductsConsist(CoveredHopperCarConsistBase):
-    """
-    Defaults to grain/farm type cargos.
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = "farm_products_hopper_car"
-        super().__init__(**kwargs)
-        self.default_cargos = polar_fox.constants.default_cargos["covered_ag"]
-        # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
-            recolour_maps=graphics_constants.grain_hopper_car_livery_recolour_maps
-        )
-
-
 class CoveredHopperCarRollerRoofConsist(CoveredHopperCarConsistBase):
     """
     Defaults to grain/farm type cargos.
@@ -2473,6 +2458,31 @@ class ExpressIntermodalCarConsist(CarConsist):
     def platform_type(self):
         # !! express intermodal all default currently, extend as needed
         return "default"
+
+
+class FarmProductsHopperCarConsist(CarConsist):
+    """
+    Dedicated to grain/farm type cargos.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "farm_products_hopper_car"
+        super().__init__(**kwargs)
+        self.class_refit_groups = []  # no classes, use explicit labels
+        self.label_refits_allowed = ["GRAI", "BEAN", "CASS", "FMSP", "FERT", "MAIZ", "WHEA", "CERE", "OLSD", "NUTS", "SEED", "SGBT", "TATO"]
+        self.label_refits_disallowed = []
+        self.default_cargos = []
+        self._loading_speed_multiplier = 2
+        self.buy_cost_adjustment_factor = 1.2
+        self._intro_date_days_offset = (
+            global_constants.intro_date_offsets_by_role_group["freight_core"]
+        )
+        # allow flipping, used to flip company colour
+        self.allow_flip = True
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
+            recolour_maps=graphics_constants.farm_products_hopper_car_livery_recolour_maps
+        )
 
 
 class FlatCarConsist(CarConsist):
