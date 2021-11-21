@@ -2146,13 +2146,13 @@ class CoveredHopperCarChemicalConsist(CoveredHopperCarConsistBase):
         )
 
 
-class CoveredHopperCarGrainConsist(CoveredHopperCarConsistBase):
+class CoveredHopperCarFarmProductsConsist(CoveredHopperCarConsistBase):
     """
     Defaults to grain/farm type cargos.
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "grain_hopper_car"
+        self.base_id = "farm_products_hopper_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["covered_ag"]
         # Graphics configuration

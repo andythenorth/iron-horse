@@ -55,7 +55,7 @@ buy_menu_sort_order_wagons = [
     "fruit_veg_car",
     "edibles_tank_car",
     "reefer_car",
-    "grain_hopper_car",
+    "farm_products_hopper_car",
     "automobile_car",
     "low_floor_automobile_car",
     "double_deck_automobile_car",
