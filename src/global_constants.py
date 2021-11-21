@@ -45,7 +45,7 @@ buy_menu_sort_order_wagons = [
     "acid_tank_car",
     "pressure_tank_car",
     "cryo_tank_car",
-    "pellet_hopper_car",
+    "covered_hopper_car",
     "roller_roof_hopper_car",
     "powder_hopper_car",
     "chemical_covered_hopper_car",

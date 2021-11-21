@@ -72,6 +72,7 @@ STR_NAME_SUFFIX_CHEMICAL_COVERED_HOPPER_CAR                     :Chemical Covere
 STR_NAME_SUFFIX_CLAY_HOPPER_CAR                                 :China Clay Hopper
 STR_NAME_SUFFIX_COIL_CAR_COVERED                                :Covered Coil Carrier
 STR_NAME_SUFFIX_COIL_CAR_UNCOVERED                              :Coil Carrier
+STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Covered Hopper
 STR_NAME_SUFFIX_CRYO_TANK_CAR                                   :Cryo Tanker
 STR_NAME_SUFFIX_CURTAIN_SIDE_BOX_CAR                            :Curtain Side Van
 STR_NAME_SUFFIX_DOUBLE_DECK_AUTOMOBILE_CAR                      :Car Transporter
@@ -101,7 +102,6 @@ STR_NAME_SUFFIX_ORE_DUMP_CAR                                    :Ore Dump Wagon
 STR_NAME_SUFFIX_ORE_HOPPER_CAR                                  :Ore Hopper
 STR_NAME_SUFFIX_PASSENGER_CAR                                   :Passenger Coach
 STR_NAME_SUFFIX_PEAT_CAR                                        :Peat Wagons
-STR_NAME_SUFFIX_PELLET_HOPPER_CAR                               :Covered Hopper
 STR_NAME_SUFFIX_PLATE_CAR                                       :Plate Wagon
 STR_NAME_SUFFIX_POWDER_HOPPER_CAR                               :Dry Powder Hopper
 STR_NAME_SUFFIX_PRESSURE_TANK_CAR                               :Pressure Tanker

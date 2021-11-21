@@ -44,6 +44,7 @@ from vehicles import clay_hopper_cars
 from vehicles import coil_buggy_cars
 from vehicles import coil_cars_covered
 from vehicles import coil_cars_uncovered
+from vehicles import covered_hopper_cars
 from vehicles import cryo_tank_cars
 from vehicles import curtain_side_box_cars
 
@@ -74,7 +75,6 @@ from vehicles import ore_dump_cars
 from vehicles import ore_hopper_cars
 from vehicles import passenger_cars
 from vehicles import peat_cars
-from vehicles import pellet_hopper_cars
 from vehicles import plate_cars
 from vehicles import powder_hopper_cars
 from vehicles import pressure_tank_cars
@@ -286,6 +286,7 @@ def main():
     coil_buggy_cars.main()
     coil_cars_covered.main()
     coil_cars_uncovered.main()
+    covered_hopper_cars.main()
     cryo_tank_cars.main()
     curtain_side_box_cars.main()
     # double_deck_automobile_cars.main()
@@ -314,7 +315,6 @@ def main():
     open_cars.main()
     passenger_cars.main()
     peat_cars.main()
-    pellet_hopper_cars.main()
     plate_cars.main()
     powder_hopper_cars.main()
     pressure_tank_cars.main()

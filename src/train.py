@@ -2082,6 +2082,22 @@ class CoveredHopperCarConsistBase(CarConsist):
         self.allow_flip = True
 
 
+class CoveredHopperCarConsist(CoveredHopperCarConsistBase):
+    """
+    Default covered hopper (but NOT base class).
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "covered_hopper_car"
+        super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos["covered_pellet"]
+        self._joker = True
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
+            recolour_maps=graphics_constants.pellet_hopper_car_livery_recolour_maps
+        )
+
+
 class CoveredHopperCarPowderConsist(CoveredHopperCarConsistBase):
     """
     Defaults to salt/potash type cargos.
@@ -2142,22 +2158,6 @@ class CoveredHopperCarGrainConsist(CoveredHopperCarConsistBase):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             recolour_maps=graphics_constants.grain_hopper_car_livery_recolour_maps
-        )
-
-
-class CoveredHopperCarPelletConsist(CoveredHopperCarConsistBase):
-    """
-    Defaults to grain/farm type cargos.
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = "pellet_hopper_car"
-        super().__init__(**kwargs)
-        self.default_cargos = polar_fox.constants.default_cargos["covered_pellet"]
-        self._joker = True
-        # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
-            recolour_maps=graphics_constants.pellet_hopper_car_livery_recolour_maps
         )
 
 
