@@ -1,10 +1,10 @@
-from train import CoveredHopperCarConsist, FreightCar
+from train import CoveredHopperCarPowderConsist, FreightCar
 
 
 def main():
     # --------------- pony NG ----------------------------------------------------------------------
 
-    consist = CoveredHopperCarConsist(
+    consist = CoveredHopperCarPowderConsist(
         roster_id="pony",
         base_numeric_id=5980,
         gen=1,
@@ -15,7 +15,7 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
 
-    consist = CoveredHopperCarConsist(
+    consist = CoveredHopperCarPowderConsist(
         roster_id="pony",
         base_numeric_id=5990,
         gen=3,
@@ -26,7 +26,7 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
 
-    consist = CoveredHopperCarConsist(
+    consist = CoveredHopperCarPowderConsist(
         roster_id="pony",
         base_numeric_id=6000,
         gen=4,
@@ -38,7 +38,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
 
     # --------------- pony ----------------------------------------------------------------------
-    consist = CoveredHopperCarConsist(
+    consist = CoveredHopperCarPowderConsist(
         roster_id="pony",
         base_numeric_id=4500,
         gen=2,
@@ -48,7 +48,7 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
 
-    consist = CoveredHopperCarConsist(
+    consist = CoveredHopperCarPowderConsist(
         roster_id="pony",
         base_numeric_id=4510,
         gen=3,
@@ -58,7 +58,7 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
 
-    consist = CoveredHopperCarConsist(
+    consist = CoveredHopperCarPowderConsist(
         roster_id="pony",
         base_numeric_id=4520,
         gen=4,
@@ -68,7 +68,7 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="2_axle_sparse_16px")
 
-    consist = CoveredHopperCarConsist(
+    consist = CoveredHopperCarPowderConsist(
         roster_id="pony",
         base_numeric_id=4530,
         gen=4,
@@ -80,7 +80,7 @@ def main():
 
     # no gen 5A or 6A
 
-    consist = CoveredHopperCarConsist(
+    consist = CoveredHopperCarPowderConsist(
         roster_id="pony",
         base_numeric_id=4550,
         gen=5,
@@ -90,7 +90,7 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_greebled_24px")
 
-    consist = CoveredHopperCarConsist(
+    consist = CoveredHopperCarPowderConsist(
         roster_id="pony",
         base_numeric_id=4560,
         gen=5,
@@ -100,7 +100,7 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="4_axle_filled_greebled_32px")
 
-    consist = CoveredHopperCarConsist(
+    consist = CoveredHopperCarPowderConsist(
         roster_id="pony",
         base_numeric_id=4580,
         gen=6,
@@ -110,7 +110,7 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_greebled_24px")
 
-    consist = CoveredHopperCarConsist(
+    consist = CoveredHopperCarPowderConsist(
         roster_id="pony",
         base_numeric_id=4590,
         gen=6,
@@ -118,4 +118,4 @@ def main():
         sprites_complete=False,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_gapped_greebled_32px")
+    consist.add_unit(type=FreightCar, chassis="4_axle_filled_greebled_32px")

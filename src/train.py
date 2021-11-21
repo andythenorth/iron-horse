@@ -2082,13 +2082,13 @@ class CoveredHopperCarConsistBase(CarConsist):
         self.allow_flip = True
 
 
-class CoveredHopperCarConsist(CoveredHopperCarConsistBase):
+class CoveredHopperCarPowderConsist(CoveredHopperCarConsistBase):
     """
     Defaults to salt/potash type cargos.
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "covered_hopper_car"
+        self.base_id = "powder_hopper_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["covered_mineral"]
         self._joker = True
