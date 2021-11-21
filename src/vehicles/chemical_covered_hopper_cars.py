@@ -1,10 +1,10 @@
-from train import CoveredHopperCarMineralConsist, FreightCar
+from train import CoveredHopperCarChemicalConsist, FreightCar
 
 
 def main():
     # --------------- pony ----------------------------------------------------------------------
 
-    consist = CoveredHopperCarMineralConsist(
+    consist = CoveredHopperCarChemicalConsist(
         roster_id="pony",
         base_numeric_id=6110,
         gen=2,
@@ -14,7 +14,7 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
 
-    consist = CoveredHopperCarMineralConsist(
+    consist = CoveredHopperCarChemicalConsist(
         roster_id="pony",
         base_numeric_id=6040,
         gen=3,
@@ -24,7 +24,7 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_16px")
 
-    consist = CoveredHopperCarMineralConsist(
+    consist = CoveredHopperCarChemicalConsist(
         roster_id="pony",
         base_numeric_id=6050,
         gen=4,
@@ -34,7 +34,7 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="2_axle_sparse_16px")
 
-    consist = CoveredHopperCarMineralConsist(
+    consist = CoveredHopperCarChemicalConsist(
         roster_id="pony",
         base_numeric_id=6060,
         gen=4,
@@ -44,7 +44,7 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_24px")
 
-    consist = CoveredHopperCarMineralConsist(
+    consist = CoveredHopperCarChemicalConsist(
         roster_id="pony",
         base_numeric_id=6070,
         gen=5,
@@ -54,7 +54,7 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_greebled_24px")
 
-    consist = CoveredHopperCarMineralConsist(
+    consist = CoveredHopperCarChemicalConsist(
         roster_id="pony",
         base_numeric_id=6080,
         gen=5,
@@ -64,7 +64,7 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="4_axle_gapped_greebled_32px")
 
-    consist = CoveredHopperCarMineralConsist(
+    consist = CoveredHopperCarChemicalConsist(
         roster_id="pony",
         base_numeric_id=6090,
         gen=6,
@@ -74,7 +74,7 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_greebled_24px")
 
-    consist = CoveredHopperCarMineralConsist(
+    consist = CoveredHopperCarChemicalConsist(
         roster_id="pony",
         base_numeric_id=6100,
         gen=6,
