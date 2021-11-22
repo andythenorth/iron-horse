@@ -78,7 +78,6 @@ STR_NAME_SUFFIX_EXPRESS_INTERMODAL_CAR                          :Vagón contened
 STR_NAME_SUFFIX_EXPRESS_RAILCAR_PASSENGER_TRAILER_CAR           :Vagón trailer de pasaje
 STR_NAME_SUFFIX_FLAT_CAR                                        :Vagón plano
 STR_NAME_SUFFIX_FRUIT_VEG_CAR                                   :Vagón de frutas y verduras
-STR_NAME_SUFFIX_GRAIN_HOPPER_CAR                                :Vagón granero
 STR_NAME_SUFFIX_HOPPER_CAR                                      :Vagón tolva
 STR_NAME_SUFFIX_HST_PASSENGER_CAR                               :Vagón de pasaje de alta velocidad
 STR_NAME_SUFFIX_INGOT_CAR                                       :Vagón metalero
@@ -90,7 +89,6 @@ STR_NAME_SUFFIX_MAIL_CAR                                        :Vagón de corre
 STR_NAME_SUFFIX_OPEN_CAR                                        :Vagón abierto
 STR_NAME_SUFFIX_ORE_HOPPER_CAR                                  :Vagón de minerales
 STR_NAME_SUFFIX_PASSENGER_CAR                                   :Vagón de pasaje
-STR_NAME_SUFFIX_PELLET_HOPPER_CAR                               :Vagón de gránulos
 STR_NAME_SUFFIX_PLATE_CAR                                       :Vagón platero
 STR_NAME_SUFFIX_PRODUCT_TANK_CAR                                :Vagón tanque
 STR_NAME_SUFFIX_RAILCAR_PASSENGER_TRAILER_CAR                   :Vagón de pasaje de alta densidad

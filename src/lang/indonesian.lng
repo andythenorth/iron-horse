@@ -80,7 +80,6 @@ STR_NAME_SUFFIX_EXPRESS_INTERMODAL_CAR                          :Gerbong Kontain
 STR_NAME_SUFFIX_EXPRESS_RAILCAR_PASSENGER_TRAILER_CAR           :Gerbong KRL Express
 STR_NAME_SUFFIX_FLAT_CAR                                        :Gerbong Datar
 STR_NAME_SUFFIX_FRUIT_VEG_CAR                                   :Gerbong Buah & Sayur
-STR_NAME_SUFFIX_GRAIN_HOPPER_CAR                                :Gerbong Gandum
 STR_NAME_SUFFIX_HOPPER_CAR                                      :Hopper
 STR_NAME_SUFFIX_HST_PASSENGER_CAR                               :Gerbong Penumpang
 STR_NAME_SUFFIX_INGOT_CAR                                       :Gerbong Penggangkut Logam
@@ -92,7 +91,6 @@ STR_NAME_SUFFIX_MAIL_CAR                                        :Gerbong Surat/P
 STR_NAME_SUFFIX_OPEN_CAR                                        :Gerbong Terbuka
 STR_NAME_SUFFIX_ORE_HOPPER_CAR                                  :Gerbong Bijih Logam
 STR_NAME_SUFFIX_PASSENGER_CAR                                   :Gerbong Penumpang
-STR_NAME_SUFFIX_PELLET_HOPPER_CAR                               :Hopper Pallet
 STR_NAME_SUFFIX_PLATE_CAR                                       :Gerbong Piring
 STR_NAME_SUFFIX_PRODUCT_TANK_CAR                                :Tanker Produk
 STR_NAME_SUFFIX_RAILBUS_PASSENGER_TRAILER_CAR                   :Gerbong Kereta Rangakaian
