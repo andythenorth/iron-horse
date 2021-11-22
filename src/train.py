@@ -2740,6 +2740,7 @@ class KaolinHopperCarConsist(CarConsist):
         self.allow_flip = True
         self.cc_num_to_randomise = 2
         # Graphics configuration
+        utils.echo_message("Kaolin hopper using covered hopper body colour remaps")
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             recolour_maps=graphics_constants.covered_hopper_car_livery_recolour_maps
         )
@@ -3280,6 +3281,7 @@ class PeatCarConsist(CarConsist):
         self.cc_num_to_randomise = 2
         # Graphics configuration
         # self.gestalt_graphics = GestaltGraphicsVisibleCargo(piece="tree_length_logs")
+        utils.echo_message("Peat car using potash hopper body colour remaps")
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             recolour_maps=graphics_constants.potash_hopper_car_livery_recolour_maps
         )
