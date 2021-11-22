@@ -82,7 +82,6 @@ STR_NAME_SUFFIX_EXPRESS_INTERMODAL_CAR                          :Wagon porte-con
 STR_NAME_SUFFIX_EXPRESS_RAILCAR_PASSENGER_TRAILER_CAR           :Remorque autorail express
 STR_NAME_SUFFIX_FLAT_CAR                                        :Wagon plat
 STR_NAME_SUFFIX_FRUIT_VEG_CAR                                   :Fourgon à fruits et légumes
-STR_NAME_SUFFIX_GRAIN_HOPPER_CAR                                :Wagon céréalier
 STR_NAME_SUFFIX_HOPPER_CAR                                      :Wagon-trémie
 STR_NAME_SUFFIX_HST_PASSENGER_CAR                               :Voiture
 STR_NAME_SUFFIX_INGOT_CAR                                       :Wagon porte-lingots
@@ -97,9 +96,7 @@ STR_NAME_SUFFIX_OPEN_CAR                                        :Wagon-tombereau
 STR_NAME_SUFFIX_ORE_HOPPER_CAR                                  :Trémie à minerai
 STR_NAME_SUFFIX_PASSENGER_CAR                                   :Voiture
 STR_NAME_SUFFIX_PEAT_CAR                                        :Wagon à tourbe
-STR_NAME_SUFFIX_PELLET_HOPPER_CAR                               :Trémie à granulés
 STR_NAME_SUFFIX_PLATE_CAR                                       :Wagon porte-tôles
-STR_NAME_SUFFIX_POTASH_HOPPER_CAR                               :Tombereau à potasse
 STR_NAME_SUFFIX_PRESSURE_TANK_CAR                               :Citerne pressursée
 STR_NAME_SUFFIX_PRODUCT_TANK_CAR                                :Citerne à produits
 STR_NAME_SUFFIX_RAILBUS_PASSENGER_TRAILER_CAR                   :Remorque autorail léger

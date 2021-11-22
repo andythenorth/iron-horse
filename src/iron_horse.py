@@ -40,7 +40,6 @@ from vehicles import caboose_cars
 from vehicles import carbon_black_hopper_cars
 from vehicles import cement_silo_cars
 from vehicles import chemical_covered_hopper_cars
-from vehicles import clay_hopper_cars
 from vehicles import coil_buggy_cars
 from vehicles import coil_cars_covered
 from vehicles import coil_cars_uncovered
@@ -49,6 +48,7 @@ from vehicles import cryo_tank_cars
 from vehicles import curtain_side_box_cars
 
 # from vehicles import double_deck_automobile_cars
+from vehicles import dry_powder_hopper_cars
 from vehicles import dump_cars
 from vehicles import dump_cars_high_side
 from vehicles import edibles_tank_cars
@@ -62,6 +62,7 @@ from vehicles import hopper_cars
 from vehicles import hst_passenger_cars
 from vehicles import ingot_cars
 from vehicles import intermodal_cars
+from vehicles import kaolin_hopper_cars
 from vehicles import livestock_cars
 from vehicles import log_cars
 
@@ -76,7 +77,6 @@ from vehicles import ore_hopper_cars
 from vehicles import passenger_cars
 from vehicles import peat_cars
 from vehicles import plate_cars
-from vehicles import powder_hopper_cars
 from vehicles import pressure_tank_cars
 from vehicles import product_tank_cars
 from vehicles import railbus_passenger_trailer_cars
@@ -282,7 +282,6 @@ def main():
     carbon_black_hopper_cars.main()
     cement_silo_cars.main()
     chemical_covered_hopper_cars.main()
-    clay_hopper_cars.main()
     coil_buggy_cars.main()
     coil_cars_covered.main()
     coil_cars_uncovered.main()
@@ -290,6 +289,7 @@ def main():
     cryo_tank_cars.main()
     curtain_side_box_cars.main()
     # double_deck_automobile_cars.main()
+    dry_powder_hopper_cars.main()
     dump_cars.main()
     dump_cars_high_side.main()
     edibles_tank_cars.main()
@@ -303,6 +303,7 @@ def main():
     hst_passenger_cars.main()
     ingot_cars.main()
     intermodal_cars.main()
+    kaolin_hopper_cars.main()
     livestock_cars.main()
     log_cars.main()
     # low_floor_automobile_cars.main()
@@ -316,7 +317,6 @@ def main():
     passenger_cars.main()
     peat_cars.main()
     plate_cars.main()
-    powder_hopper_cars.main()
     pressure_tank_cars.main()
     product_tank_cars.main()
     reefer_cars.main()

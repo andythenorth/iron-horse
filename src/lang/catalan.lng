@@ -78,7 +78,6 @@ STR_NAME_SUFFIX_EXPRESS_INTERMODAL_CAR                          :Vagó contenido
 STR_NAME_SUFFIX_EXPRESS_RAILCAR_PASSENGER_TRAILER_CAR           :Vagó tràiler de passatgers
 STR_NAME_SUFFIX_FLAT_CAR                                        :Vagó pla
 STR_NAME_SUFFIX_FRUIT_VEG_CAR                                   :Vagó de fruites i verdures
-STR_NAME_SUFFIX_GRAIN_HOPPER_CAR                                :Vagó de gra
 STR_NAME_SUFFIX_HOPPER_CAR                                      :Vagó tolva
 STR_NAME_SUFFIX_HST_PASSENGER_CAR                               :Vagó de passatge d'alta velocitat
 STR_NAME_SUFFIX_INGOT_CAR                                       :Vagó metall
@@ -90,7 +89,6 @@ STR_NAME_SUFFIX_MAIL_CAR                                        :Cotxe de correu
 STR_NAME_SUFFIX_OPEN_CAR                                        :Cotxe obert
 STR_NAME_SUFFIX_ORE_HOPPER_CAR                                  :Cotxe de minerals
 STR_NAME_SUFFIX_PASSENGER_CAR                                   :Cotxe de passatge
-STR_NAME_SUFFIX_PELLET_HOPPER_CAR                               :Cotxe de grànols
 STR_NAME_SUFFIX_PLATE_CAR                                       :Cotxe plater
 STR_NAME_SUFFIX_PRODUCT_TANK_CAR                                :Cotxe tanc
 STR_NAME_SUFFIX_RAILCAR_PASSENGER_TRAILER_CAR                   :Cotxe de passatge d'alta densidad

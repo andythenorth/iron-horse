@@ -69,13 +69,13 @@ STR_NAME_SUFFIX_CABOOSE_CAR                                     :Brake Van
 STR_NAME_SUFFIX_CARBON_BLACK_HOPPER_CAR                         :Carbon Black Hopper
 STR_NAME_SUFFIX_CEMENT_SILO_CAR                                 :Cement Wagon
 STR_NAME_SUFFIX_CHEMICAL_COVERED_HOPPER_CAR                     :Chemical Covered Hopper
-STR_NAME_SUFFIX_CLAY_HOPPER_CAR                                 :China Clay Hopper
 STR_NAME_SUFFIX_COIL_CAR_COVERED                                :Covered Coil Carrier
 STR_NAME_SUFFIX_COIL_CAR_UNCOVERED                              :Coil Carrier
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Covered Hopper
 STR_NAME_SUFFIX_CRYO_TANK_CAR                                   :Cryo Tanker
 STR_NAME_SUFFIX_CURTAIN_SIDE_BOX_CAR                            :Curtain Side Van
 STR_NAME_SUFFIX_DOUBLE_DECK_AUTOMOBILE_CAR                      :Car Transporter
+STR_NAME_SUFFIX_DRY_POWDER_HOPPER_CAR                            :Dry Powder Hopper
 STR_NAME_SUFFIX_DUMP_CAR                                        :Mineral Wagon
 STR_NAME_SUFFIX_DUMP_CAR_HIGH_SIDE                              :High Side Mineral Wagon
 STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Edibles Tanker
@@ -89,6 +89,7 @@ STR_NAME_SUFFIX_HOPPER_CAR                                      :Hopper
 STR_NAME_SUFFIX_HST_PASSENGER_CAR                               :Passenger Coach
 STR_NAME_SUFFIX_INGOT_CAR                                       :Ingot Carriers
 STR_NAME_SUFFIX_INTERMODAL_CAR                                  :Container Wagon
+STR_NAME_SUFFIX_KAOLIN_HOPPER_CAR                               :China Clay Hopper
 STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Livestock Wagon
 # Timber Wagon was tried as name, but is confusing as it carries logs but NOT timber
 STR_NAME_SUFFIX_LOG_CAR                                         :Log Carrier
@@ -104,7 +105,6 @@ STR_NAME_SUFFIX_ORE_HOPPER_CAR                                  :Ore Hopper
 STR_NAME_SUFFIX_PASSENGER_CAR                                   :Passenger Coach
 STR_NAME_SUFFIX_PEAT_CAR                                        :Peat Wagons
 STR_NAME_SUFFIX_PLATE_CAR                                       :Plate Wagon
-STR_NAME_SUFFIX_POWDER_HOPPER_CAR                               :Dry Powder Hopper
 STR_NAME_SUFFIX_PRESSURE_TANK_CAR                               :Pressure Tanker
 STR_NAME_SUFFIX_PRODUCT_TANK_CAR                                :Product Tanker
 STR_NAME_SUFFIX_RAILBUS_PASSENGER_TRAILER_CAR                   :Railbus Trailer
