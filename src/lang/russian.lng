@@ -56,7 +56,7 @@ STR_NAME_SUFFIX_TWIN                                            :сдвоенн�
 
 # wagon class suffixes
 STR_NAME_SUFFIX_ACID_TANK_CAR                                   :Цистерна для кислот
-STR_NAME_SUFFIX_AGGREGATES_CAR                                  :Думпкар
+STR_NAME_SUFFIX_AGGREGATE_CAR                                   :Думпкар
 STR_NAME_SUFFIX_ALIGNMENT_CAR                                   :Вагон для тестирования спрайтов
 STR_NAME_SUFFIX_AUTOMOBILE_CAR                                  :Платформа-автомобилевоз
 STR_NAME_SUFFIX_BOX_CAR                                         :Крытый грузовой вагон
@@ -64,23 +64,25 @@ STR_NAME_SUFFIX_COIL_BUGGY_CAR                                  :Тележка 
 STR_NAME_SUFFIX_BOLSTER_CAR                                     :Платформа со стойками
 STR_NAME_SUFFIX_BULKHEAD_FLAT_CAR                               :Платформа со стойками и торцевыми бортами
 STR_NAME_SUFFIX_CABOOSE_CAR                                     :Кабуз
-STR_NAME_SUFFIX_CEMENT_SILO_CAR                                 :Вагон-цементовоз
 STR_NAME_SUFFIX_CARBON_BLACK_HOPPER_CAR                         :Хоппер для технического углерода
+STR_NAME_SUFFIX_CEMENT_SILO_CAR                                 :Вагон-цементовоз
+STR_NAME_SUFFIX_CHEMICAL_COVERED_HOPPER_CAR                     :Крытый хоппер для химикатов
 STR_NAME_SUFFIX_COIL_CAR_COVERED                                :Крытая платформа для рулонов стали
 STR_NAME_SUFFIX_COIL_CAR_UNCOVERED                              :Платформа для рулонов стали
 STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Крытый хоппер
 STR_NAME_SUFFIX_CRYO_TANK_CAR                                   :Цистерна для сжиженного природного газа
 STR_NAME_SUFFIX_CURTAIN_SIDE_BOX_CAR                            :Грузовой вагон с бортом-тентом
 STR_NAME_SUFFIX_DOUBLE_DECK_AUTOMOBILE_CAR                      :Двухярусная платформа-автомобилевоз
+STR_NAME_SUFFIX_DRY_POWDER_HOPPER_CAR                           :Хоппер для порошкообразных смесей
 STR_NAME_SUFFIX_DUMP_CAR                                        :Думпкар
 STR_NAME_SUFFIX_DUMP_CAR_HIGH_SIDE                              :Думпкар с высоким бортом
 STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Цистерна для пищевых продуктов
 STR_NAME_SUFFIX_EXPRESS_CAR                                     :Скоростной грузовой вагон
 STR_NAME_SUFFIX_EXPRESS_INTERMODAL_CAR                          :Скоростная фитинговая платформа
 STR_NAME_SUFFIX_EXPRESS_RAILCAR_PASSENGER_TRAILER_CAR           :Скоростной пассаж. вагон пригородного поезда
+STR_NAME_SUFFIX_FARM_PRODUCTS_HOPPER_CAR                        :Хоппер для сельхозпродукции
 STR_NAME_SUFFIX_FLAT_CAR                                        :Платформа
 STR_NAME_SUFFIX_FRUIT_VEG_CAR                                   :Грузовой вагон для фруктов и овощей
-STR_NAME_SUFFIX_GRAIN_HOPPER_CAR                                :Хоппер для зерна
 STR_NAME_SUFFIX_HOPPER_CAR                                      :Хоппер
 STR_NAME_SUFFIX_HST_PASSENGER_CAR                               :Пассажирский вагон
 STR_NAME_SUFFIX_INGOT_CAR                                       :Тележка для изложниц
@@ -90,15 +92,15 @@ STR_NAME_SUFFIX_LOG_CAR                                         :Вагон-ле
 STR_NAME_SUFFIX_LOW_FLOOR_AUTOMOBILE_CAR                        :Низкопольная платформа-автомобилевоз
 STR_NAME_SUFFIX_LOW_FLOOR_INTERMODAL_CAR                        :Низкопольная фитинговая платформа
 STR_NAME_SUFFIX_MAIL_CAR                                        :Почтовый вагон
+STR_NAME_SUFFIX_MINERAL_COVERED_HOPPER_CAR                      :Крытый хоппер для минералов
+STR_NAME_SUFFIX_MINERAL_HOPPER_CAR                              :Хоппер для минералов
 STR_NAME_SUFFIX_MGR_HOPPER_CAR                                  :Хоппер типа «MGR»
 STR_NAME_SUFFIX_OPEN_CAR                                        :Полувагон
 STR_NAME_SUFFIX_ORE_DUMP_CAR                                    :Думпкар для руды
 STR_NAME_SUFFIX_ORE_HOPPER_CAR                                  :Хоппер для руды
 STR_NAME_SUFFIX_PASSENGER_CAR                                   :Пассажирский вагон
 STR_NAME_SUFFIX_PEAT_CAR                                        :Полувагон для торфа
-STR_NAME_SUFFIX_PELLET_HOPPER_CAR                               :Хоппер для пеллет
 STR_NAME_SUFFIX_PLATE_CAR                                       :Платформа с низким бортом
-STR_NAME_SUFFIX_POTASH_HOPPER_CAR                               :Хоппер для поташа
 STR_NAME_SUFFIX_PRESSURE_TANK_CAR                               :Цистерна высокого давления 
 STR_NAME_SUFFIX_PRODUCT_TANK_CAR                                :Цистерна белая
 STR_NAME_SUFFIX_RAILBUS_PASSENGER_TRAILER_CAR                   :Пассажирский вагон автомотрисы
@@ -106,7 +108,7 @@ STR_NAME_SUFFIX_RAILCAR_PASSENGER_TRAILER_CAR                   :Пассажи�
 STR_NAME_SUFFIX_REEFER_CAR                                      :Вагон-рефрижератор
 STR_NAME_SUFFIX_RESTAURANT_CAR                                  :Вагон-ресторан
 STR_NAME_SUFFIX_ROCK_HOPPER_CAR                                 :Хоппер для камня
-STR_NAME_SUFFIX_SALT_HOPPER_CAR                                 :Хоппер для соли
+STR_NAME_SUFFIX_ROLLER_ROOF_HOPPER_CAR                          :Хоппер с роликовой крышей
 STR_NAME_SUFFIX_SILO_CAR                                        :Вагон-силос
 STR_NAME_SUFFIX_SKIP_CAR                                        :Тележка-самосвал
 STR_NAME_SUFFIX_SLAG_LADLE_CAR                                  :Вагон-шлаковоз
