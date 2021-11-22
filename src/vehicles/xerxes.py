@@ -20,7 +20,7 @@ def main(roster_id):
         type=SteamEngineUnit, weight=49, vehicle_length=5, spriterow_num=0, repeat=2,
     )
 
-    consist.description = """."""
+    consist.description = """Not much to say about these two."""
     consist.foamer_facts = """GWR pannier tanks, original TTD Kirby 'Paul'"""
 
     return consist
