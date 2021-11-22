@@ -48,6 +48,7 @@ from vehicles import cryo_tank_cars
 from vehicles import curtain_side_box_cars
 
 # from vehicles import double_deck_automobile_cars
+from vehicles import dry_powder_hopper_cars
 from vehicles import dump_cars
 from vehicles import dump_cars_high_side
 from vehicles import edibles_tank_cars
@@ -76,7 +77,6 @@ from vehicles import ore_hopper_cars
 from vehicles import passenger_cars
 from vehicles import peat_cars
 from vehicles import plate_cars
-from vehicles import powder_hopper_cars
 from vehicles import pressure_tank_cars
 from vehicles import product_tank_cars
 from vehicles import railbus_passenger_trailer_cars
@@ -289,6 +289,7 @@ def main():
     cryo_tank_cars.main()
     curtain_side_box_cars.main()
     # double_deck_automobile_cars.main()
+    dry_powder_hopper_cars.main()
     dump_cars.main()
     dump_cars_high_side.main()
     edibles_tank_cars.main()
@@ -316,7 +317,6 @@ def main():
     passenger_cars.main()
     peat_cars.main()
     plate_cars.main()
-    powder_hopper_cars.main()
     pressure_tank_cars.main()
     product_tank_cars.main()
     reefer_cars.main()

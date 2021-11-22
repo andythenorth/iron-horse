@@ -75,6 +75,7 @@ STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Covered Hopper
 STR_NAME_SUFFIX_CRYO_TANK_CAR                                   :Cryo Tanker
 STR_NAME_SUFFIX_CURTAIN_SIDE_BOX_CAR                            :Curtain Side Van
 STR_NAME_SUFFIX_DOUBLE_DECK_AUTOMOBILE_CAR                      :Car Transporter
+STR_NAME_SUFFIX_DRY_POWDER_HOPPER_CAR                            :Dry Powder Hopper
 STR_NAME_SUFFIX_DUMP_CAR                                        :Mineral Wagon
 STR_NAME_SUFFIX_DUMP_CAR_HIGH_SIDE                              :High Side Mineral Wagon
 STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Edibles Tanker
@@ -104,7 +105,6 @@ STR_NAME_SUFFIX_ORE_HOPPER_CAR                                  :Ore Hopper
 STR_NAME_SUFFIX_PASSENGER_CAR                                   :Passenger Coach
 STR_NAME_SUFFIX_PEAT_CAR                                        :Peat Wagons
 STR_NAME_SUFFIX_PLATE_CAR                                       :Plate Wagon
-STR_NAME_SUFFIX_POWDER_HOPPER_CAR                               :Dry Powder Hopper
 STR_NAME_SUFFIX_PRESSURE_TANK_CAR                               :Pressure Tanker
 STR_NAME_SUFFIX_PRODUCT_TANK_CAR                                :Product Tanker
 STR_NAME_SUFFIX_RAILBUS_PASSENGER_TRAILER_CAR                   :Railbus Trailer

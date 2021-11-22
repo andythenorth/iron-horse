@@ -2098,13 +2098,13 @@ class CoveredHopperCarConsist(CoveredHopperCarConsistBase):
         )
 
 
-class CoveredHopperCarPowderConsist(CoveredHopperCarConsistBase):
+class CoveredHopperCarDryPowderConsist(CoveredHopperCarConsistBase):
     """
-    Defaults to salt/potash type cargos.
+    Defaults to ?????
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "powder_hopper_car"
+        self.base_id = "dry_powder_hopper_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["covered_mineral"]
         self._joker = True
@@ -2116,7 +2116,7 @@ class CoveredHopperCarPowderConsist(CoveredHopperCarConsistBase):
 
 class CoveredHopperCarChemicalConsist(CoveredHopperCarConsistBase):
     """
-    Defaults to potash.
+    Defaults to salt/potash type cargos.
     """
 
     def __init__(self, **kwargs):
@@ -2132,7 +2132,7 @@ class CoveredHopperCarChemicalConsist(CoveredHopperCarConsistBase):
 
 class CoveredHopperCarRollerRoofConsist(CoveredHopperCarConsistBase):
     """
-    Defaults to grain/farm type cargos.
+    Defaults to ?????
     """
 
     def __init__(self, **kwargs):
