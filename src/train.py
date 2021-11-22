@@ -2126,7 +2126,7 @@ class CoveredHopperCarChemicalConsist(CoveredHopperCarConsistBase):
         self._joker = True
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
-            recolour_maps=graphics_constants.potash_hopper_car_livery_recolour_maps
+            recolour_maps=graphics_constants.chemical_covered_hopper_car_livery_recolour_maps
         )
 
 

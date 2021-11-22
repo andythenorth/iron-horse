@@ -200,6 +200,22 @@ cement_silo_livery_recolour_maps = (
     ("DFLT", {136: 53, 137: 54, 138: 6, 139: 57, 140: 30, 141: 38, 142: 13, 143: 15}),
 )
 
+chemical_covered_hopper_car_livery_recolour_maps = (
+    (
+        "DFLT",
+        {
+            136: 53,
+            137: 54,
+            138: 98,
+            139: 56,
+            140: 57,
+            141: 58,
+            142: 30,
+            143: 196,
+        },
+    ),
+)
+
 covered_hopper_car_livery_recolour_maps = (
     (
         "DFLT",
@@ -264,22 +280,6 @@ oil_tank_car_livery_recolour_maps = (
 
 pellet_hopper_car_livery_recolour_maps = (
     ("DFLT", {136: 16, 137: 17, 138: 18, 139: 19, 140: 20, 141: 21, 142: 22, 143: 23}),
-)
-
-potash_hopper_car_livery_recolour_maps = (  # only one livery provided here, black
-    (
-        "DFLT",
-        {
-            136: 53,
-            137: 54,
-            138: 98,
-            139: 56,
-            140: 57,
-            141: 58,
-            142: 30,
-            143: 196,
-        },
-    ),
 )
 
 product_tank_car_livery_recolour_maps = (
