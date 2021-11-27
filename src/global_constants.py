@@ -47,6 +47,7 @@ buy_menu_sort_order_wagons = [
     "cryo_tank_car",
     "covered_hopper_car",
     "roller_roof_hopper_car",
+    "mineral_covered_hopper_car",
     "dry_powder_hopper_car",
     "chemical_covered_hopper_car",
     "silo_car",
