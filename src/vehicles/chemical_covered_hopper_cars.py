@@ -62,7 +62,7 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_sparse_greebled_32px") # extra pixels drawn in manually on wagon sprite for appearance
+    consist.add_unit(type=FreightCar, chassis="4_axle_half_filled_greebled_32px")
 
     consist = CoveredHopperCarChemicalConsist(
         roster_id="pony",
