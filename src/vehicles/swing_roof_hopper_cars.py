@@ -12,7 +12,7 @@ def main():
         sprites_complete=False,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_gapped_greebled_24px")
+    consist.add_unit(type=FreightCar, chassis="2_axle_1cc_filled_hoppers_24px")
 
     consist = CoveredHopperCarSwingRoofConsist(
         roster_id="pony",
@@ -22,7 +22,7 @@ def main():
         sprites_complete=False,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_gapped_greebled_32px")
+    consist.add_unit(type=FreightCar, chassis="4_axle_1cc_filled_hoppers_32px")
 
     consist = CoveredHopperCarSwingRoofConsist(
         roster_id="pony",
