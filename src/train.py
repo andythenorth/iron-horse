@@ -2162,6 +2162,22 @@ class CoveredHopperCarRollerRoofConsist(CoveredHopperCarConsistBase):
         )
 
 
+class CoveredHopperCarSwingRoofConsist(CoveredHopperCarConsistBase):
+    """
+    Defaults to ?????
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "swing_roof_hopper_car"
+        super().__init__(**kwargs)
+        self._joker = True
+        self.default_cargos = polar_fox.constants.default_cargos["covered_pellet"]
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
+            recolour_maps=graphics_constants.covered_hopper_car_livery_recolour_maps
+        )
+
+
 class CurtainSideCarBoxConsist(CarConsist):
     """
     Curtain side box car - same refits as box car.

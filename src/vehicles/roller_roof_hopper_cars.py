@@ -4,11 +4,10 @@ from train import CoveredHopperCarRollerRoofConsist, FreightCar
 def main():
     # --------------- pony NG ----------------------------------------------------------------------
 
-    """
     consist = CoveredHopperCarRollerRoofConsist(
         roster_id="pony",
-        base_numeric_id=6890,
-        gen=5,
+        base_numeric_id=7100,
+        gen=4,
         subtype="A",
         sprites_complete=False,
     )
@@ -17,8 +16,8 @@ def main():
 
     consist = CoveredHopperCarRollerRoofConsist(
         roster_id="pony",
-        base_numeric_id=6900,
-        gen=5,
+        base_numeric_id=7090,
+        gen=4,
         subtype="B",
         sprites_complete=False,
     )
@@ -27,18 +26,18 @@ def main():
 
     consist = CoveredHopperCarRollerRoofConsist(
         roster_id="pony",
-        base_numeric_id=6910,
-        gen=6,
+        base_numeric_id=7080,
+        gen=5,
         subtype="A",
         sprites_complete=False,
     )
 
     consist.add_unit(type=FreightCar, chassis="2_axle_gapped_greebled_16px")
-    """
+
     consist = CoveredHopperCarRollerRoofConsist(
         roster_id="pony",
         base_numeric_id=6920,
-        gen=6,
+        gen=5,
         subtype="B",
         sprites_complete=False,
     )

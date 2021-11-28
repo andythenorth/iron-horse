@@ -93,6 +93,7 @@ from vehicles import slag_ladle_cars
 from vehicles import sliding_roof_cars
 from vehicles import sliding_wall_cars
 from vehicles import suburban_passenger_cars
+from vehicles import swing_roof_hopper_cars
 from vehicles import tank_cars
 from vehicles import tarpaulin_cars
 from vehicles import torpedo_cars
@@ -334,6 +335,7 @@ def main():
     sliding_roof_cars.main()
     sliding_wall_cars.main()
     suburban_passenger_cars.main()
+    swing_roof_hopper_cars.main()
     tank_cars.main()
     tarpaulin_cars.main()
     torpedo_cars.main()

@@ -72,7 +72,7 @@ def main():
         sprites_complete=False,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_gapped_greebled_32px")
+    consist.add_unit(type=FreightCar, chassis="4_axle_sparse_greebled_32px") # extra pixels drawn in manually on wagon sprite for appearance
 
     consist = CoveredHopperCarMineralConsist(
         roster_id="pony",
@@ -92,4 +92,4 @@ def main():
         sprites_complete=False,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_gapped_greebled_32px")
+    consist.add_unit(type=FreightCar, chassis="4_axle_sparse_greebled_32px") # extra pixels drawn in manually on wagon sprite for appearance
