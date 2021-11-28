@@ -2770,7 +2770,10 @@ class KaolinHopperCarConsist(CarConsist):
         self._joker = True
         # allow flipping, used to flip company colour
         self.allow_flip = True
-        self.cc_num_to_randomise = 2
+        # type-specific wagon colour randomisation
+        self.auto_colour_randomisation_strategy_num = (
+            1  # single base colour unless flipped
+        )
         # Graphics configuration
         utils.echo_message("Kaolin hopper using covered hopper body colour remaps")
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
