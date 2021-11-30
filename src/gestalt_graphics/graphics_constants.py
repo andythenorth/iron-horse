@@ -204,14 +204,14 @@ chemical_covered_hopper_car_livery_recolour_maps = (
     (
         "DFLT",
         {
-            136: 53,
+            136: 96,
             137: 54,
             138: 98,
             139: 56,
             140: 57,
             141: 58,
             142: 30,
-            143: 196,
+            143: 197,
         },
     ),
 )
@@ -273,6 +273,22 @@ fruit_veg_livery_recolour_maps = (
 )
 
 livestock_livery_recolour_maps = (("DFLT", body_recolour_CC2),)
+
+mineral_covered_hopper_car_livery_recolour_maps = (
+    (
+        "DFLT",
+        {
+            136: 115,
+            137: 35,
+            138: 36,
+            139: 117,
+            140: 38,
+            141: 39,
+            142: 13,
+            143: 15,
+        },
+    ),
+)
 
 oil_tank_car_livery_recolour_maps = (
     ("DFLT", {136: 1, 137: 2, 138: 3, 139: 4, 140: 5, 141: 6, 142: 7, 143: 8}),

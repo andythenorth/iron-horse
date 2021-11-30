@@ -69,6 +69,7 @@ from vehicles import log_cars
 # from vehicles import low_floor_automobile_cars
 from vehicles import low_floor_intermodal_cars
 from vehicles import mail_cars
+from vehicles import mineral_covered_hopper_cars
 from vehicles import mineral_hopper_cars
 from vehicles import mgr_hopper_cars
 from vehicles import open_cars
@@ -92,6 +93,7 @@ from vehicles import slag_ladle_cars
 from vehicles import sliding_roof_cars
 from vehicles import sliding_wall_cars
 from vehicles import suburban_passenger_cars
+from vehicles import swing_roof_hopper_cars
 from vehicles import tank_cars
 from vehicles import tarpaulin_cars
 from vehicles import torpedo_cars
@@ -303,13 +305,14 @@ def main():
     hst_passenger_cars.main()
     ingot_cars.main()
     intermodal_cars.main()
-    kaolin_hopper_cars.main()
+    #kaolin_hopper_cars.main()
     livestock_cars.main()
     log_cars.main()
     # low_floor_automobile_cars.main()
     low_floor_intermodal_cars.main()
     mail_cars.main()
-    mineral_hopper_cars.main()
+    #mineral_covered_hopper_cars.main()
+    #mineral_hopper_cars.main()
     mgr_hopper_cars.main()
     ore_dump_cars.main()
     ore_hopper_cars.main()
@@ -332,6 +335,7 @@ def main():
     sliding_roof_cars.main()
     sliding_wall_cars.main()
     suburban_passenger_cars.main()
+    swing_roof_hopper_cars.main()
     tank_cars.main()
     tarpaulin_cars.main()
     torpedo_cars.main()

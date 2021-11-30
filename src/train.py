@@ -2098,22 +2098,6 @@ class CoveredHopperCarConsist(CoveredHopperCarConsistBase):
         )
 
 
-class CoveredHopperCarDryPowderConsist(CoveredHopperCarConsistBase):
-    """
-    Defaults to ?????
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = "dry_powder_hopper_car"
-        super().__init__(**kwargs)
-        self.default_cargos = polar_fox.constants.default_cargos["covered_mineral"]
-        self._joker = True
-        # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
-            recolour_maps=graphics_constants.covered_hopper_car_livery_recolour_maps
-        )
-
-
 class CoveredHopperCarChemicalConsist(CoveredHopperCarConsistBase):
     """
     Defaults to salt/potash type cargos.
@@ -2130,6 +2114,38 @@ class CoveredHopperCarChemicalConsist(CoveredHopperCarConsistBase):
         )
 
 
+class CoveredHopperCarDryPowderConsist(CoveredHopperCarConsistBase):
+    """
+    Defaults to ?????
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "dry_powder_hopper_car"
+        super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos["covered_mineral"]
+        self._joker = True
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
+            recolour_maps=graphics_constants.covered_hopper_car_livery_recolour_maps
+        )
+
+
+class CoveredHopperCarMineralConsist(CoveredHopperCarConsistBase):
+    """
+    Defaults to ?????
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "mineral_covered_hopper_car"
+        super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos["covered_mineral"]
+        self._joker = True
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
+            recolour_maps=graphics_constants.mineral_covered_hopper_car_livery_recolour_maps
+        )
+
+
 class CoveredHopperCarRollerRoofConsist(CoveredHopperCarConsistBase):
     """
     Defaults to ?????
@@ -2143,6 +2159,22 @@ class CoveredHopperCarRollerRoofConsist(CoveredHopperCarConsistBase):
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             recolour_maps=graphics_constants.pellet_hopper_car_livery_recolour_maps
+        )
+
+
+class CoveredHopperCarSwingRoofConsist(CoveredHopperCarConsistBase):
+    """
+    Defaults to ?????
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "swing_roof_hopper_car"
+        super().__init__(**kwargs)
+        self._joker = True
+        self.default_cargos = polar_fox.constants.default_cargos["covered_pellet"]
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
+            recolour_maps=graphics_constants.covered_hopper_car_livery_recolour_maps
         )
 
 
@@ -2738,7 +2770,10 @@ class KaolinHopperCarConsist(CarConsist):
         self._joker = True
         # allow flipping, used to flip company colour
         self.allow_flip = True
-        self.cc_num_to_randomise = 2
+        # type-specific wagon colour randomisation
+        self.auto_colour_randomisation_strategy_num = (
+            1  # single base colour unless flipped
+        )
         # Graphics configuration
         utils.echo_message("Kaolin hopper using covered hopper body colour remaps")
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
