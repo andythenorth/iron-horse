@@ -87,6 +87,7 @@ STR_NAME_SUFFIX_HOPPER_CAR                                      :Хоппер
 STR_NAME_SUFFIX_HST_PASSENGER_CAR                               :Пассажирский вагон
 STR_NAME_SUFFIX_INGOT_CAR                                       :Тележка для изложниц
 STR_NAME_SUFFIX_INTERMODAL_CAR                                  :Фитинговая платформа
+STR_NAME_SUFFIX_KAOLIN_HOPPER_CAR                               :Хоппер для белой глины
 STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Вагон для скота
 STR_NAME_SUFFIX_LOG_CAR                                         :Вагон-лесовоз
 STR_NAME_SUFFIX_LOW_FLOOR_AUTOMOBILE_CAR                        :Низкопольная платформа-автомобилевоз
@@ -116,6 +117,7 @@ STR_NAME_SUFFIX_SLIDING_ROOF_CAR                                :Грузово�
 STR_NAME_SUFFIX_SLIDING_WALL_CAR                                :Грузовой вагон с раздвижными стенками
 STR_NAME_SUFFIX_SCRAP_METAL_CAR                                 :Думпкар для металлолома
 STR_NAME_SUFFIX_SUBURBAN_PASSENGER_CAR                          :Пригородный пассажирский вагон
+STR_NAME_SUFFIX_SWING_ROOF_HOPPER_CAR                           :Хоппер с раскрывающейся крышей
 STR_NAME_SUFFIX_TANK_CAR                                        :Цистерна черная
 STR_NAME_SUFFIX_TARPAULIN_CAR                                   :Вагон-платформа с тентом
 STR_NAME_SUFFIX_TORPEDO_CAR                                     :Вагон для расплавленного чугуна
