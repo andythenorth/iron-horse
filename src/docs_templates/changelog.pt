@@ -2,6 +2,30 @@ Changelog
 =========
 
 -------------
+2.32.0 Release
+-------------
+
+Not savegame compatible with previous Iron Horse releases.
+
+*Changes*
+
+- adjusted covered hopper (sheltered bulk cargo) wagons
+    - Potash Hoppers are replaced by Chemical Covered Hoppers, sprites painted to suit potash, phosphate and similar cargos
+    - brown Covered Hopper sprites are replaced by silver / grey sprites
+    - added Dry Powder Hoppers
+    - added Roller Roof Hoppers (available gen 5 and 6 only)
+    - added Swing Roof Hoppers (available gen 5 and 6 only)
+    - Grain Hoppers are replaced by dedicated Farm Products Hoppers, which refit to cereals and other crops, and also farm supplies
+
+
+*Fixes*
+
+- 'Aggregate Wagon' not 'Aggregates Wagon' (consistency)
+- add missing quote for Xerxes (Fairyfloss)
+- remove extraneous buffer pixels from 8/8 livestock cars
+
+
+-------------
 2.31.0 Release
 -------------
 
