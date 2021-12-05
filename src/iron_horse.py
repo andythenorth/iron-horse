@@ -305,7 +305,7 @@ def main():
     hst_passenger_cars.main()
     ingot_cars.main()
     intermodal_cars.main()
-    #kaolin_hopper_cars.main()
+    kaolin_hopper_cars.main()
     livestock_cars.main()
     log_cars.main()
     # low_floor_automobile_cars.main()
