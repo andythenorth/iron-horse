@@ -2106,7 +2106,7 @@ class CoveredHopperCarChemicalConsist(CoveredHopperCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "chemical_covered_hopper_car"
         super().__init__(**kwargs)
-        self.default_cargos = ["POTA", "PHOS", "SALT", "SAND"]
+        self.default_cargos = ["RFPR", "POTA", "PHOS", "SALT", "SAND"]
         self._joker = True
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
