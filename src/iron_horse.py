@@ -312,7 +312,7 @@ def main():
     low_floor_intermodal_cars.main()
     mail_cars.main()
     mineral_covered_hopper_cars.main()
-    #mineral_hopper_cars.main()
+    mineral_hopper_cars.main()
     mgr_hopper_cars.main()
     ore_dump_cars.main()
     ore_hopper_cars.main()
