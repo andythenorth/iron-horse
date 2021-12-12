@@ -21,8 +21,8 @@ def main(roster_id):
     consist.add_unit(type=SteamEngineUnit, weight=60, vehicle_length=6, spriterow_num=0)
 
     consist.description = (
-        """."""
+        """Not the biggest, but quite a beast all the same."""
     )
-    consist.foamer_facts = """ big tanks"""
+    consist.foamer_facts = """Metropolitan Railway G Class (LNER M2), GCR Class D (LNER M1)"""
 
     return consist
