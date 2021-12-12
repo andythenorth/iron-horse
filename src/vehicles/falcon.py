@@ -21,7 +21,7 @@ def main(roster_id):
             ("COLOUR_PALE_GREEN", "COLOUR_WHITE"),
             ("COLOUR_CREAM", "COLOUR_YELLOW"),
         ],
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(
@@ -32,9 +32,9 @@ def main(roster_id):
         spriterow_num=0,
     )
 
-    consist.description = """."""
+    consist.description = """The big bird. Twin engines. Takes on anything."""
     consist.foamer_facts = (
-        """ """
+        """Brush / BR Class 53 <i>Falcon</i> prototype"""
     )
 
     return consist
