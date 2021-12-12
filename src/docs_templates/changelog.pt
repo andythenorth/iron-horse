@@ -2,6 +2,18 @@ Changelog
 =========
 
 -------------
+2.35.0 Release
+-------------
+
+Not savegame compatible with Iron Horse releases before 2.32.0.
+
+*Changes*
+
+- added Foxhound general purpose / express engine, 1450 hp, available around 1958
+- added Falcon general purpose / express engine, 2800 hp, available around 1965
+
+
+-------------
 2.34.0 Release
 -------------
 
