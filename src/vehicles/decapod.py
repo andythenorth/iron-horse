@@ -22,8 +22,8 @@ def main(roster_id):
     consist.add_unit(type=SteamEngineUnit, weight=54, vehicle_length=6, spriterow_num=0)
 
     consist.description = (
-        """."""
+        """Don't know what they were thinking, but they asked me to build it. Well, it's done."""
     )
-    consist.foamer_facts = """ big tanks"""
+    consist.foamer_facts = """GER Class A55 <i>Decapod</i>"""
 
     return consist
