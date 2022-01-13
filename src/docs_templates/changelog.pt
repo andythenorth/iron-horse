@@ -2,6 +2,21 @@ Changelog
 =========
 
 -------------
+2.36.0 Release
+-------------
+
+Not savegame compatible with Iron Horse releases before 2.32.0.
+
+*Changes*
+
+- added HST Mail Vans for use with Firebird, Blaze and Scorcher HSTs
+
+*Fixes*
+
+- set correct buy menu order for Xerxes
+
+
+-------------
 2.35.0 Release
 -------------
 
