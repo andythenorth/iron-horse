@@ -84,6 +84,7 @@ STR_NAME_SUFFIX_FARM_PRODUCTS_HOPPER_CAR                        :Хоппер д
 STR_NAME_SUFFIX_FLAT_CAR                                        :Платформа
 STR_NAME_SUFFIX_FRUIT_VEG_CAR                                   :Грузовой вагон для фруктов и овощей
 STR_NAME_SUFFIX_HOPPER_CAR                                      :Хоппер
+STR_NAME_SUFFIX_HST_MAIL_CAR                                    :Почтовый вагон
 STR_NAME_SUFFIX_HST_PASSENGER_CAR                               :Пассажирский вагон
 STR_NAME_SUFFIX_INGOT_CAR                                       :Тележка для изложниц
 STR_NAME_SUFFIX_INTERMODAL_CAR                                  :Фитинговая платформа
