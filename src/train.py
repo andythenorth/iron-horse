@@ -2833,7 +2833,46 @@ class LogCarConsist(CarConsist):
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(piece="tree_length_logs")
 
 
-class MailCarConsist(CarConsist):
+
+class MailCarConsistBase(CarConsist):
+    """
+    Common base class for passenger cars.
+    """
+
+    # very specific flag used by graphics chain to detect other pax cars (could have used prop 25 userbits, but eh, screw that :)
+    report_as_pax_car_to_neighbouring_vehicle_in_rulesets = True
+
+    def __init__(self, **kwargs):
+        # don't set base_id here, let subclasses do it
+        super().__init__(**kwargs)
+        self.class_refit_groups = ["mail", "express_freight"]
+        self.label_refits_allowed = []  # no specific labels needed
+        self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label[
+            "non_freight_special_cases"
+        ]
+        self.default_cargos = polar_fox.constants.default_cargos["mail"]
+        # specific structure for capacity multiplier and loading speed, over-ride in subclasses as needed
+        self.pax_car_capacity_type = self.roster.pax_car_capacity_types["default"]
+        self._intro_date_days_offset = (
+            global_constants.intro_date_offsets_by_role_group["express_core"]
+        )
+        self.use_colour_randomisation_strategies = False
+        self.allow_flip = True
+        # roof configuration
+        if self.gen in [1]:
+            self.roof_type = "pax_mail_clerestory"
+        elif self.gen in [2, 3]:
+            self.roof_type = "pax_mail_ridged"
+        else:
+            self.roof_type = "pax_mail_smooth"
+
+    @property
+    def loading_speed_multiplier(self):
+        return self.pax_car_capacity_type["loading_speed_multiplier"]
+
+
+
+class MailCarConsist(MailCarConsistBase):
     """
     Mail cars - also handle express freight, valuables.
     """
@@ -2841,28 +2880,12 @@ class MailCarConsist(CarConsist):
     def __init__(self, **kwargs):
         self.base_id = "mail_car"
         super().__init__(**kwargs)
-        self.speed_class = "express"
-        self.class_refit_groups = ["mail", "express_freight"]
-        self.label_refits_allowed = []  # no specific labels needed
-        self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label[
-            "non_freight_special_cases"
-        ]
-        self.default_cargos = polar_fox.constants.default_cargos["mail"]
         # adjust weight factor because mail car freight capacity is 1/2 of other wagons, but weight should be same
         self.weight_factor = polar_fox.constants.mail_multiplier
         self.floating_run_cost_multiplier = 3
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["express_core"]
         )
-        self.use_colour_randomisation_strategies = False
-        self.allow_flip = True
-        # Graphics configuration
-        if self.gen in [1]:
-            self.roof_type = "pax_mail_clerestory"
-        elif self.gen in [2, 3]:
-            self.roof_type = "pax_mail_ridged"
-        else:
-            self.roof_type = "pax_mail_smooth"
         # mail cars have consist cargo mappings for pax, mail (freight uses mail)
         # * pax matches pax liveries for generation
         # * mail gets a TPO/RPO striped livery, and a 1CC/2CC duotone livery
@@ -2883,6 +2906,56 @@ class MailCarConsist(CarConsist):
         }
         self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(
             spriterow_group_mappings, consist_ruleset="mail_cars"
+        )
+
+
+class MailHSTCarConsist(MailCarConsistBase):
+    """
+    Trailer dedicated for Mail on HST-type trains (no wagon attach, but matching stats and livery).
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "hst_mail_car"
+        super().__init__(**kwargs)
+        self.speed_class = "hst"
+        # used to get insert the name of the parent into vehicle name
+        self.cab_id = kwargs[
+            "cab_id"
+        ]  # cab_id must be passed, do not mask errors with .get()
+        self.buy_cost_adjustment_factor = 1.66
+        # run cost multiplier matches standard pax coach costs; higher speed is accounted for automatically already
+        self.floating_run_cost_multiplier = 3.33
+        self._intro_date_days_offset = (
+            global_constants.intro_date_offsets_by_role_group["hst"]
+        )
+        # non-standard cite
+        self._cite = "Dr Constance Speed"
+        # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
+        self._buy_menu_role_string = "STR_ROLE_HST"
+        # Graphics configuration
+        # pax cars only have one consist cargo mapping, which they always default to, whatever the consist cargo is
+        # position based variants:
+        #   * standard coach
+        #   * brake coach front
+        #   * brake coach rear
+        #   * special (buffet) coach
+        spriterow_group_mappings = {
+            "pax": {"default": 0, "first": 1, "last": 2, "special": 0}
+        }
+        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(
+            spriterow_group_mappings, consist_ruleset="mail_cars"
+        )
+
+    @property
+    def name(self):
+        # special name handling to use the cab name
+        # !! this doesn't work in the docs,
+        # !! really for this kind of stuff, there needs to be a python tree/list of strings, then render to nml, html etc later
+        # !! buy menu text kinda does that, but would need to convert all names to do this
+        return (
+            "string(STR_NAME_CONSIST_COMPOUND, string(STR_NAME_"
+            + self.cab_id
+            + "), string(STR_NAME_SUFFIX_HST_MAIL_CAR))"
         )
 
 
