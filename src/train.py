@@ -2880,6 +2880,7 @@ class MailCarConsist(MailCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "mail_car"
         super().__init__(**kwargs)
+        self.speed_class = "express"
         # adjust weight factor because mail car freight capacity is 1/2 of other wagons, but weight should be same
         self.weight_factor = polar_fox.constants.mail_multiplier
         self.floating_run_cost_multiplier = 3

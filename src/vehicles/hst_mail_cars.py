@@ -10,7 +10,7 @@ def main():
         subtype="U",
         intro_date_offset=0,  # match to Firebird
         cab_id="firebird",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=ExpressMailCar, chassis="4_axle_solid_express_32px")
@@ -22,7 +22,7 @@ def main():
         subtype="U",
         intro_date_offset=-10,  # match to Blaze HST
         cab_id="blaze",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=ExpressMailCar, chassis="4_axle_solid_express_32px")
@@ -34,7 +34,7 @@ def main():
         subtype="U",
         intro_date_offset=-10,  # match to Scorcher HST
         cab_id="scorcher",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=ExpressMailCar, chassis="4_axle_solid_express_32px")
