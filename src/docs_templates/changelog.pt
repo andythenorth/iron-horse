@@ -2,6 +2,24 @@ Changelog
 =========
 
 -------------
+2.37.0 Release
+-------------
+
+*Changes*
+
+- added Twin variant of Livestock Wagon (available gen 5 and 6 only)
+    - these are non-standard 10/8 length
+    - articulated so can't be flipped to change livery
+
+
+*Fixes*
+
+- 24px freight roof sprite too tall in | view
+- incorrect sprites for gen 5B low floor intermodal car
+- Daring run cost was too low relative to similar engines
+
+
+-------------
 2.36.1 Release
 -------------
 
@@ -19,6 +37,7 @@ Not savegame compatible with Iron Horse releases before 2.32.0.
 *Changes*
 
 - added HST Mail Vans for use with Firebird, Blaze and Scorcher HSTs
+
 
 *Fixes*
 
