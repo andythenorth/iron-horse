@@ -1,0 +1,82 @@
+/*
+ *  Copyright (C) 2015 Jasper Vries
+ *  This file is part of termite
+ *  Modified from Metro Track Set
+ *  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+ *  This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+ *  You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+*/
+
+/*
+Use graphics from narrowgauge.pnml. Make sure that is defined before this.
+*/
+
+if (railtype_available("NAAE") || (loading_stage == LOADING_STAGE_RESERVE)) {
+	//count number of activated railtypes
+	param_railtype_activated = param_railtype_activated + 1;
+	item (FEAT_RAILTYPES, item_narrowgaugeelectrified) {
+		property {
+			label:                          "NAAE";
+			name:                           string(str_narrowgaugeelectrified_name);
+			menu_text:                      string(str_narrowgaugeelectrified_menu_text);
+			build_window_caption:           string(str_narrowgaugeelectrified_build_window_caption);
+			autoreplace_text:               string(str_narrowgaugeelectrified_autoreplace_text);
+			new_engine_text:                string(str_narrowgaugeelectrified_new_engine_text);
+			railtype_flags:                 bitmask(RAILTYPE_FLAG_CATENARY);
+			curve_speed_multiplier:         1;
+			station_graphics:               RAILTYPE_STATION_NORMAL;
+			speed_limit:                    0;
+			acceleration_model:             ACC_MODEL_RAIL;
+			//set compatible and powered
+			compatible_railtype_list:       ["NAAN", "NABN", "NACN", "NADN", "NAEN",
+                                             "NABE", "NACE", "NADE", "NAEE"];
+			powered_railtype_list:          ["NABE", "NACE", "NADE", "NAEE"];
+		}
+
+		//OpenTTD 1.1 19307
+		property {
+			construction_cost:          11;
+			map_colour:                 0x25;
+		}
+
+		//OpenTTD 1.1 21866
+		/*
+		property {
+			//introduction_date:
+			//requires_railtype_list:
+			//sort_order:
+			//introduces_railtype_list:
+		}
+		*/
+
+		//OpenTTD 1.2 23758
+		property {
+			toolbar_caption:            string(str_narrowgaugeelectrified_toolbar_caption);
+			maintenance_cost:           11;
+			alternative_railtype_list:  ["NABE", "NACE", "NADE", "NAEE"];
+		}
+
+		/*
+		*  GRAPHICS
+		*/
+
+		graphics {
+			gui:                        switch_narrowgauge_gui;
+			track_overlay:              spriteset_narrowgauge_track_overlay_opengfx;
+			underlay:                   spriteset_narrowgauge_underlay_opengfx;
+			tunnels:                    spriteset_narrowgauge_tunnels_opengfx;
+			//catenary_wire:
+			//catenary_pylons
+			bridge_surfaces:            spriteset_narrowgauge_bridge_surfaces_opengfx;
+			level_crossings:            switch_narrowgauge_level_crossings_opengfx;
+			depots:						spriteset_narrowgauge_depot;
+			//fences:
+			//tunnel_overlay:
+			//signals:
+		}
+	}
+}
+else {
+	//count number of disabled railtypes
+	param_railtype_disabled = param_railtype_disabled + 1;
+}

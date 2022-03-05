@@ -1,0 +1,149 @@
+/*
+ *  Copyright (C) 2012 Jasper Vries
+ *  This file is part of Metro Track Set
+ *  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+ *  This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+ *  You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+*/
+
+//allow other vehicle types on metro track types
+
+//allow unelectrified rail on metro track types
+if (hasbit(param_otherengines,0)) {
+    if (railtype_available("RAIL")) {
+        item (FEAT_RAILTYPES, item_RAIL) {
+            property {
+                label:                          "RAIL";
+                compatible_railtype_list:       ["SAA3", "SAAZ", "SSAZ", "SUAZ"];
+                powered_railtype_list:          ["SAA3", "SAAZ", "SSAZ", "SUAZ"];
+            }
+            //if moved to mono or maglev
+            if (param_metro == 2) {
+                property {
+                    compatible_railtype_list:       ["MONO"];
+                    powered_railtype_list:          ["MONO"];
+                }
+            }
+            if (param_metro == 3) {
+                property {
+                    compatible_railtype_list:       ["MGLV"];
+                    powered_railtype_list:          ["MGLV"];
+                }
+            }
+            if (param_metrowithcatenary == 2) {
+                property {
+                    compatible_railtype_list:       ["MONO"];
+                    powered_railtype_list:          ["MONO"];
+                }
+            }
+            if (param_metrowithcatenary == 3) {
+                property {
+                    compatible_railtype_list:       ["MGLV"];
+                    powered_railtype_list:          ["MGLV"];
+                }
+            }
+        }
+    }
+    /* modifying all possible combinations of the standardized railtype scheme will not work
+       this will result in an attempt to define separate railtypes for all these labels.
+    */
+}
+
+//allow electrified rail on metro track types
+if (hasbit(param_otherengines,1)) {
+    if (railtype_available("ELRL")) {
+        item (FEAT_RAILTYPES, item_ELRL) {
+            property {
+                label:                          "ELRL";
+                compatible_railtype_list:       ["SAA3", "SAAZ", "SSAZ", "SUAZ"];
+                powered_railtype_list:          ["SAAZ", "SSAZ", "SUAZ"];
+            }
+            //if moved to mono or maglev
+            if (param_metro == 2) {
+                property {
+                    compatible_railtype_list:       ["MONO"];
+                }
+            }
+            if (param_metro == 3) {
+                property {
+                    compatible_railtype_list:       ["MGLV"];
+                }
+            }
+            if (param_metrowithcatenary == 2) {
+                property {
+                    compatible_railtype_list:       ["MONO"];
+                    powered_railtype_list:          ["MONO"];
+                }
+            }
+            if (param_metrowithcatenary == 3) {
+                property {
+                    compatible_railtype_list:       ["MGLV"];
+                    powered_railtype_list:          ["MGLV"];
+                }
+            }
+        }
+    }
+    //for the Dutch Trackset
+    if (grf_current_status("\FB\FB\07\01") || grf_future_status("\FB\FB\07\01")) {
+        item (FEAT_RAILTYPES, item_SAEA) {
+            property {
+                label:                          "SAEA";
+                compatible_railtype_list:       ["SAA3", "SAAZ", "SSAZ", "SUAZ"];
+                powered_railtype_list:          ["SAAZ", "SSAZ", "SUAZ"];
+            }
+            //if moved to mono or maglev
+            if (param_metro == 2) {
+                property {
+                    compatible_railtype_list:       ["MONO"];
+                }
+            }
+            if (param_metro == 3) {
+                property {
+                    compatible_railtype_list:       ["MGLV"];
+                }
+            }
+            if (param_metrowithcatenary == 2) {
+                property {
+                    compatible_railtype_list:       ["MONO"];
+                    powered_railtype_list:          ["MONO"];
+                }
+            }
+            if (param_metrowithcatenary == 3) {
+                property {
+                    compatible_railtype_list:       ["MGLV"];
+                    powered_railtype_list:          ["MGLV"];
+                }
+            }
+        }
+        item (FEAT_RAILTYPES, item_SADD) {
+            property {
+                label:                          "SADD";
+                compatible_railtype_list:       ["SAA3", "SAAZ", "SSAZ", "SUAZ"];
+                powered_railtype_list:          ["SAAZ", "SSAZ", "SUAZ"];
+            }
+            //if moved to mono or maglev
+            if (param_metro == 2) {
+                property {
+                    compatible_railtype_list:       ["MONO"];
+                }
+            }
+            if (param_metro == 3) {
+                property {
+                    compatible_railtype_list:       ["MGLV"];
+                }
+            }
+            if (param_metrowithcatenary == 2) {
+                property {
+                    compatible_railtype_list:       ["MONO"];
+                    powered_railtype_list:          ["MONO"];
+                }
+            }
+            if (param_metrowithcatenary == 3) {
+                property {
+                    compatible_railtype_list:       ["MGLV"];
+                    powered_railtype_list:          ["MGLV"];
+                }
+            }
+        }
+    }
+}

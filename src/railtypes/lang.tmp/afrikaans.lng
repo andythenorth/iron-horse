@@ -1,0 +1,49 @@
+##grflangid 0x1b
+##plural 0
+##gender male
+
+#Main grf title and description
+STR_GRF_NAME                    :{TITLE}
+STR_GRF_DESCRIPTION             :{SILVER}termite{}{}{BLACK}Eet jou treinspore van die begin 2014.
+STR_GRF_URL             :http://dev.openttdcoop.org/projects/termite
+
+str_low_version         :Jou Openttd is verouderd. Laai 'n nuwe weergawe af om al die funksies van die NewGRF te kry.
+#str_no_railtypes_enabled:All railtypes disabled. It doesn't make sense to load this set if you disable all its railtypes. Review the parameter settings or remove termite from the NewGRF configuration.
+str_no_free_slots       :Geen gratis spoortipe openinge. Jy het een of meer ander spoor stelle gelaai wat al die spoortipes gebruik. Oorweeg die verwydering van die ander spoor stel, of verwyder termite
+str_some_disabled       :Geen gratis spoortipe openinge. Jy het een of meer ander spoor stelle gelaai wat al die spoortipes gebruik, en los nie genoeg spasie vir termite nie. Een of meer van die spoor tipes is nie beskikbaar nie. Oorweeg die verwydering van die ander spoor stel, of verwyder termite
+
+str_param_gui_name              :Koppelvlak styl
+str_param_gui_desc              :Kies die styl van die knoppies en wysers wat deur hierdie stel aangebied word.
+str_param_opengfx               :OpenGFX
+str_param_ttd                   :TTD
+
+str_param_levelcrossings_name   :Metro spooroorgange
+str_param_levelcrossings_desc   :Laat die konstruksie van spooroorgange met metro spoor toe of weier (verstek) dit
+
+str_param_customsignals_name    :Verpersoonlike metro seine
+str_param_customsignals_desc    :Aktiveer (verstek) of deaktiveer persoonlike seine vir die metro spoor tipes.
+
+str_param_otherengines_name     :Laat ander treine op metro spore toe
+str_param_otherengines_desc     :Kies watter ander trein tipes (deur spoortipe) toe te laat op metro spore. Treine sal slegs aangedryf word indien 'n versoenbaar kragbron is beskikbaar is, op die metro spoor van keuse. Hierdie funksie werk slegs vir verstek en ondersteun spoor stelle. Tans ondersteunde: Dutch Tracks.
+str_param_otherengines_off      :Af
+str_param_otherengines_RAIL     :Ongeëlektrifiseerde spoor alleenlik
+str_param_otherengines_ELRL     :Geëlektrifiseerde spoor alleenlik
+str_param_otherengines_RAILELRL :Beide (on)geëlektrifiseerde spoor (verstek)
+
+#metro track strings
+str_metrotrack_name                             :Metro Spoor
+str_metrotrack_toolbar_caption                  :Metro Spoor Konstruksie
+str_metrotrack_menu_text                        :Metro Spoor Konstruksie
+str_metrotrack_build_window_caption             :Nuwe Metro Voertuie
+str_metrotrack_autoreplace_text                 :Metro Voertuie
+str_metrotrack_new_engine_text                  :metro
+
+#narrowgauge track strings
+str_narrowgauge_name                            :Smalspoor
+str_narrowgauge_toolbar_caption                 :Smalspoor Konstruksie
+str_narrowgauge_menu_text                       :Smalspoor Konstruksie
+str_narrowgauge_build_window_caption            :Nuwe Smalspoor Voertuie
+str_narrowgauge_autoreplace_text                :Smalspoor Voertuie
+str_narrowgauge_new_engine_text                 :Smalspoor
+
+#narrowgauge electrified track strings

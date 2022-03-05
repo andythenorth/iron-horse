@@ -83,7 +83,7 @@ def main():
     header_items = [
         "header",
         "cargo_table",
-        "railtype_table",
+        "railtypes",
         "spriteset_templates",
         "spritelayer_cargo_empty_ss",
         "tail_lights",

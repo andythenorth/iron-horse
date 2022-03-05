@@ -1,0 +1,56 @@
+##grflangid 0x38
+##plural 6
+##gender male female middle
+##case aku dat gen ins lok nom vok
+
+#Main grf title and description
+STR_GRF_NAME                    :{TITLE}
+STR_GRF_DESCRIPTION             :{SILVER}termit{}{}{BLACK}Jedemo vaše pruge od 2014.
+STR_GRF_URL             :http://dev.openttdcoop.org/projects/termite
+
+str_low_version         :Vaš OpenTTD je prestar. Nadogradite ga da bi uživali u svim svojstvima ovog NewGRF-a.
+#str_no_railtypes_enabled:All railtypes disabled. It doesn't make sense to load this set if you disable all its railtypes. Review the parameter settings or remove termite from the NewGRF configuration.
+str_no_free_slots       :Nema slobodnog prostora za vrste pruga. Učitali ste jedan ili više drugih setova pruga koji koriste sve prostore za vrste pruga. Razmislite o micanju drugih setova pruga ili maknite termita.
+str_some_disabled       :Nema dovoljno prostora za vrste pruga. Učitali ste jedan ili više drugih setova pruga koji termitu ne ostavljaju dovoljno prostora za vrste pruga. Jedna ili više vrsta pruga ovog seta nije dostupna. Razmislite o micanju drugih setova pruga ili maknite termita.
+
+str_param_gui_name              :Stil sučelja
+str_param_gui_desc              :Odaberite stil dugmadi i pokazivača koje daje ovaj set.
+str_param_opengfx               :OpenGFX
+str_param_ttd                   :TTD
+
+str_param_levelcrossings_name   :Metro pružni prijelazi
+str_param_levelcrossings_desc   :Omogućite ili onemogućite (osnovna postavka) izgradnju pružnih prijelaza sa metro prugama.
+
+str_param_customsignals_name    :Prilagođeni metro signali
+str_param_customsignals_desc    :Uključuje (osnovna postavka) ili isključuje signale za metro vrste pruga.
+
+str_param_otherengines_name     :Dozvoli druge vlakove na metro prugama
+str_param_otherengines_desc     :Odaberite koje druge vlakove (po vrsti) dozvoljavate na metro prugama. Vlakovi će biti pogonjeni samo ako postoji kompatibilno napajanje na odabranoj metro pruzi. Ovo radi točno samo za osnovne i podržane setove pruga. Trenutno podržano: Nizozemske pruge.
+str_param_otherengines_off      :Isključeno
+str_param_otherengines_RAIL     :Samo neelektrificirane pruge
+str_param_otherengines_ELRL     :Samo elektrificirane pruge
+str_param_otherengines_RAILELRL :Sve (ne)elektrificirane pruge (osnovna postavka)
+
+#metro track strings
+str_metrotrack_name                             :Metro pruga
+str_metrotrack_toolbar_caption                  :Izgradnja metro pruge
+str_metrotrack_menu_text                        :Izgradnja metro pruge
+str_metrotrack_build_window_caption             :Nova metro vozila
+str_metrotrack_autoreplace_text                 :Metro vozila
+str_metrotrack_new_engine_text                  :metro
+
+#narrowgauge track strings
+str_narrowgauge_name                            :Uskotračna pruga
+str_narrowgauge_toolbar_caption                 :Izgradnja uskotračne pruge
+str_narrowgauge_menu_text                       :Izgradnja uskotračne pruge
+str_narrowgauge_build_window_caption            :Nova uskotračna vozila
+str_narrowgauge_autoreplace_text                :Uskotračna vozila
+str_narrowgauge_new_engine_text                 :uski kolosijek
+
+#narrowgauge electrified track strings
+str_narrowgaugeelectrified_name                 :Elektrificirana uskotračna pruga
+str_narrowgaugeelectrified_toolbar_caption      :Izgradnja elektrificirane uskotračne pruge
+str_narrowgaugeelectrified_menu_text            :Izgradnja elektrificirane uskotračne pruge
+str_narrowgaugeelectrified_build_window_caption :Nova elektrificirana uskotračna vozila
+str_narrowgaugeelectrified_autoreplace_text     :Elektrificirana uskotračna vozila
+str_narrowgaugeelectrified_new_engine_text      :elektrificirana uskotračna pruga

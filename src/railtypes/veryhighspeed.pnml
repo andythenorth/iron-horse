@@ -1,0 +1,39 @@
+/*
+ *  Copyright (C) 2014 Jasper Vries
+ *  This file is part of termite
+ *  Modified from Metro Track Set
+ *  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+ *  This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+ *  You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+*/
+
+item (FEAT_RAILTYPES, elrl, 14) {
+    property{
+        label: "ELRL";
+        compatible_railtype_list: ["UNIV", "RAIL"];
+        powered_railtype_list: ["UNIV"];
+    }
+}
+
+
+item (FEAT_RAILTYPES, universalrail, 15) {
+    property{
+        label: "UNIV";
+        introduction_date: date(1958,01,01);
+        name: string(STR_UNIV);
+        toolbar_caption: string(STR_UNIV);
+        menu_text: string(STR_UNIV);
+        build_window_caption: string(STR_UNIV);
+        autoreplace_text: string(STR_UNIV);
+        new_engine_text: string(STR_UNIV);
+        compatible_railtype_list: ["UNIV", "RAIL", "ELRL", "MONO", "MGLV"];
+        powered_railtype_list: ["UNIV", "RAIL", "ELRL", "MONO", "MGLV"];
+        curve_speed_multiplier: 16;
+        station_graphics: RAILTYPE_STATION_NORMAL;
+        construction_cost: 320;
+        /*speed_limit:					0km/h;
+        acceleration_model:				ACC_MODEL_RAIL;
+        introduces_railtype_list:		["UNIV", "RAIL", "ELRL", "MONO", "MGLV"];*/
+    }
+}
+

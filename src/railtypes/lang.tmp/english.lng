@@ -1,0 +1,55 @@
+﻿##grflangid 0x01
+
+#Main grf title and description
+STR_GRF_NAME			:{TITLE}
+STR_GRF_DESCRIPTION		:{SILVER}termite {}{}{BLACK}Eating your tracks since 2014.
+STR_GRF_URL             :http://dev.openttdcoop.org/projects/termite
+
+str_low_version         :Your OpenTTD is outdated. Upgrade it to enjoy all features of this NewGRF.
+#str_no_railtypes_enabled:All railtypes disabled. It doesn't make sense to load this set if you disable all its railtypes. Review the parameter settings or remove termite from the NewGRF configuration.
+str_no_free_slots       :No free railtype slots. You've loaded one or more other track sets that use all railtype slots. Consider removing other track sets, or remove termite.
+str_some_disabled       :Not enough railtype slots. You've loaded one or more other track sets that don't leave enough railtype slots for termite. One or more railtypes of this set are not available. Consider removing other track sets, or remove termite.
+
+str_param_gui_name              :Interface style
+str_param_gui_desc              :Select style of the buttons and cursors provided by this set.
+str_param_opengfx               :OpenGFX
+str_param_ttd                   :TTD
+
+str_param_levelcrossings_name   :Metro level crossings
+str_param_levelcrossings_desc   :Allow or disallow (default) construction of level crossings with metro track.
+
+str_param_customsignals_name    :Custom metro signals
+str_param_customsignals_desc    :Enable (default) or disable custom signals for metro track types.
+
+str_param_otherengines_name     :Allow other trains on metro tracks
+str_param_otherengines_desc     :Select what other train types (by railtype) to allow on metro tracks. Trains will only be powered if a compatible power source is available on the metro track of choice. This feature only works correctly for default and supported track sets. Currently supported: Dutch Tracks.
+str_param_otherengines_off      :Off
+str_param_otherengines_RAIL     :Unelectrified rail only
+str_param_otherengines_ELRL     :Electrified rail only
+str_param_otherengines_RAILELRL :Both (un)electrified rail (default)
+
+#metro track strings
+str_metrotrack_name                             :Metro Track
+str_metrotrack_toolbar_caption                  :Metro Track Construction
+str_metrotrack_menu_text                        :Metro track construction
+str_metrotrack_build_window_caption             :New Metro Vehicles
+str_metrotrack_autoreplace_text                 :Metro Vehicles
+str_metrotrack_new_engine_text                  :metro
+
+#narrowgauge track strings
+str_narrowgauge_name                            :Narrow Gauge Track
+str_narrowgauge_toolbar_caption                 :Narrow Gauge Track Construction
+str_narrowgauge_menu_text                       :Narrow Gauge track construction
+str_narrowgauge_build_window_caption            :New Narrow Gauge Vehicles
+str_narrowgauge_autoreplace_text                :Narrow Gauge Vehicles
+str_narrowgauge_new_engine_text                 :narrow gauge
+
+#narrowgauge electrified track strings
+str_narrowgaugeelectrified_name                 :Electrified Narrow Gauge Track
+str_narrowgaugeelectrified_toolbar_caption      :Electrified Narrow Gauge Track Construction
+str_narrowgaugeelectrified_menu_text            :Electrified Narrow Gauge track construction
+str_narrowgaugeelectrified_build_window_caption :New Electrified Narrow Gauge Vehicles
+str_narrowgaugeelectrified_autoreplace_text     :Electrified Narrow Gauge Vehicles
+str_narrowgaugeelectrified_new_engine_text      :electrified narrow gauge
+
+STR_UNIV                                        :TEST

@@ -1,0 +1,18 @@
+##grflangid 0x07
+##plural 6
+##gender p n m f
+##case acc nom pre f abl m n dat p gen
+
+#Main grf title and description
+
+#str_no_railtypes_enabled:All railtypes disabled. It doesn't make sense to load this set if you disable all its railtypes. Review the parameter settings or remove termite from the NewGRF configuration.
+
+
+
+
+
+#metro track strings
+
+#narrowgauge track strings
+
+#narrowgauge electrified track strings

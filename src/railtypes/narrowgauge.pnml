@@ -1,0 +1,167 @@
+/*
+ *  Copyright (C) 2014 Jasper Vries
+ *  This file is part of termite
+ *  Modified from Metro Track Set
+ *  This program is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation; either version 2 of the License, or (at your option) any later version.
+ *  This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
+ *  You should have received a copy of the GNU General Public License along with this program; if not, write to the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+*/
+
+spriteset (spriteset_narrowgauge_gui_opengfx, "gfx/ngrail_opengfx.png") {
+    template_gui(10,760)
+}
+spriteset (spriteset_narrowgauge_gui_ttd, "gfx/ngrail_ttd.png") {
+    template_gui_ttd(10,760)
+}
+switch (FEAT_RAILTYPES, SELF, switch_narrowgauge_gui, param_gui) {
+    1: spriteset_narrowgauge_gui_ttd;
+    spriteset_narrowgauge_gui_opengfx;
+}
+
+spriteset (spriteset_narrowgauge_track_overlay_opengfx, "gfx/ngrail_opengfx.png") {
+    template_track_overlay(10,20)
+}
+/* spriteset (spriteset_narrowgauge_track_overlay_ttd, "gfx/ngrail_ttd.png") {
+    template_track_overlay(10,20)
+}
+switch (FEAT_RAILTYPES, SELF, switch_narrowgauge_track_overlay_param_gui, param_gui) {
+    1                       :spriteset_narrowgauge_track_overlay_ttd;
+    spriteset_narrowgauge_track_overlay_opengfx;
+} */
+
+spriteset (spriteset_narrowgauge_underlay_opengfx, "gfx/ngrail_opengfx.png") {
+    template_underlay(10,60)
+}
+/* spriteset (spriteset_narrowgauge_underlay_ttd, "gfx/ngrail_ttd.png") {
+    template_underlay(10,60)
+}
+switch (FEAT_RAILTYPES, SELF, switch_narrowgauge_underlay_param_gui, param_gui) {
+    1                       :spriteset_narrowgauge_underlay_ttd;
+    spriteset_narrowgauge_underlay_opengfx;
+} */
+
+spriteset (spriteset_narrowgauge_tunnels_opengfx, "gfx/ngrail_opengfx.png") {
+    template_tunnels(330,460)
+}
+/* spriteset (spriteset_narrowgauge_tunnels_ttd, "gfx/ngrail_ttd.png") {
+    template_tunnels(330,460)
+}
+switch (FEAT_RAILTYPES, SELF, switch_narrowgauge_tunnels_param_gui, param_gui) {
+    1                       :spriteset_narrowgauge_tunnels_ttd;
+    spriteset_narrowgauge_tunnels_opengfx;
+} */
+
+spriteset (spriteset_narrowgauge_bridge_surfaces_opengfx, "gfx/ngrail_opengfx.png") {
+    template_bridge_surfaces(10,300)
+}
+/* spriteset (spriteset_narrowgauge_bridge_surfaces_ttd, "gfx/ngrail_ttd.png") {
+    template_bridge_surfaces(10,300)
+}
+switch (FEAT_RAILTYPES, SELF, switch_narrowgauge_bridge_surfaces_param_gui, param_gui) {
+    1                       :spriteset_narrowgauge_bridge_surfaces_ttd;
+    spriteset_narrowgauge_bridge_surfaces_opengfx;
+} */
+
+spriteset (spriteset_narrowgauge_level_crossings_opengfx_open, "gfx/ngrail_opengfx.png") {
+    template_bridge_level_crossings_track(10,630)
+    template_bridge_level_crossings_light(10,430)
+}
+spriteset (spriteset_narrowgauge_level_crossings_opengfx_closed, "gfx/ngrail_opengfx.png") {
+    template_bridge_level_crossings_track(10,630)
+    template_bridge_level_crossings_light(170,430)
+}
+switch (FEAT_RAILTYPES, SELF, switch_narrowgauge_level_crossings_opengfx, level_crossing_status) {
+    LEVEL_CROSSING_CLOSED: spriteset_narrowgauge_level_crossings_opengfx_closed;
+    spriteset_narrowgauge_level_crossings_opengfx_open;
+}
+/* spriteset (spriteset_narrowgauge_level_crossings_ttd_open, "gfx/ngrail_ttd.png") {
+    template_bridge_level_crossings_track(10,630)
+    template_bridge_level_crossings_light(10,430)
+}
+spriteset (spriteset_narrowgauge_level_crossings_ttd_closed, "gfx/ngrail_ttd.png") {
+    template_bridge_level_crossings_track(10,630)
+    template_bridge_level_crossings_light(170,430)
+}
+switch (FEAT_RAILTYPES, SELF, switch_narrowgauge_level_crossings_ttd, level_crossing_status) {
+    LEVEL_CROSSING_CLOSED: spriteset_narrowgauge_level_crossings_ttd_closed;
+    spriteset_narrowgauge_level_crossings_ttd_open;
+}
+switch (FEAT_RAILTYPES, SELF, switch_narrowgauge_level_crossings_param_gui, param_gui) {
+    1                       :switch_narrowgauge_level_crossings_ttd;
+    switch_narrowgauge_level_crossings_opengfx;
+} */
+
+spriteset (spriteset_narrowgauge_depot, "gfx/ngrail_opengfx.png") {
+    template_depots(10,890)
+}
+
+if (railtype_available("NAAN") || (loading_stage == LOADING_STAGE_RESERVE)) {
+	//count number of activated railtypes
+	param_railtype_activated = param_railtype_activated + 1;
+	item (FEAT_RAILTYPES, item_narrowgauge) {
+		property {
+			label:                          "NAAN";
+			name:                           string(str_narrowgauge_name);
+			menu_text:                      string(str_narrowgauge_menu_text);
+			build_window_caption:           string(str_narrowgauge_build_window_caption);
+			autoreplace_text:               string(str_narrowgauge_autoreplace_text);
+			new_engine_text:                string(str_narrowgauge_new_engine_text);
+			//railtype_flags:               bitmask();
+			curve_speed_multiplier:         1;
+			station_graphics:               RAILTYPE_STATION_NORMAL;
+			speed_limit:                    0;
+			acceleration_model:             ACC_MODEL_RAIL;
+			//set compatible and powered
+			compatible_railtype_list:       ["NABN", "NACN", "NADN", "NAEN",
+                                             "NAAE", "NABE", "NACE", "NADE", "NAEE"];
+			powered_railtype_list:          ["NABN", "NACN", "NADN", "NAEN",
+                                             "NAAE", "NABE", "NACE", "NADE", "NAEE"];
+		}
+
+		//OpenTTD 1.1 19307
+		property {
+			construction_cost:          5;
+			map_colour:                 0x25;
+		}
+
+		//OpenTTD 1.1 21866
+		/*
+		property {
+			//introduction_date:
+			//requires_railtype_list:
+			//sort_order:
+			//introduces_railtype_list:
+		}
+		*/
+
+		//OpenTTD 1.2 23758
+		property {
+			toolbar_caption:            string(str_narrowgauge_toolbar_caption);
+			maintenance_cost:           7;
+			alternative_railtype_list:  ["NABN", "NACN", "NADN", "NAEN"];
+		}
+
+		/*
+		*  GRAPHICS
+		*/
+
+		graphics {
+			gui:                        switch_narrowgauge_gui;
+			track_overlay:              spriteset_narrowgauge_track_overlay_opengfx;
+			underlay:                   spriteset_narrowgauge_underlay_opengfx;
+			tunnels:                    spriteset_narrowgauge_tunnels_opengfx;
+			//catenary_wire:
+			//catenary_pylons
+			bridge_surfaces:            spriteset_narrowgauge_bridge_surfaces_opengfx;
+			level_crossings:            switch_narrowgauge_level_crossings_opengfx;
+			depots:						spriteset_narrowgauge_depot;
+			//fences:
+			//tunnel_overlay:
+			//signals:
+		}
+	}
+}
+else {
+	//count number of disabled railtypes
+	param_railtype_disabled = param_railtype_disabled + 1;
+}

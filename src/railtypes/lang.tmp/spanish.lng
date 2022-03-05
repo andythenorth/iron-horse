@@ -1,0 +1,55 @@
+##grflangid 0x04
+##plural 0
+##gender m f
+
+#Main grf title and description
+STR_GRF_NAME                    :{TITLE}
+STR_GRF_DESCRIPTION             :{SILVER}Termite{}{}{BLACK}Devorando tus vías desde 2014.
+STR_GRF_URL             :http://dev.openttdcoop.org/projects/termite
+
+str_low_version         :Estas usando una versión antigua de OpenTTD. Actualízate (a ser posible a la 1.4 ó posteriores) para poder disfrutar de todas las características de este NewGRF.
+#str_no_railtypes_enabled:All railtypes disabled. It doesn't make sense to load this set if you disable all its railtypes. Review the parameter settings or remove termite from the NewGRF configuration.
+str_no_free_slots       :No hay slots de ferrocarril libres. Has cargado uno o más sets ferroviarios que utilizan todos los slots de ferrocarril disponibles. Considera el quitar otro/s set/s ferroviario/s, o elimina Termite.
+str_some_disabled       :No hay suficientes slots de ferrocarril. Has cargado uno o más sets ferroviarios que no dejan slots de ferrocarril suficientes para el NewGRF Termite. Por todo lo anterior, uno o más tipos de rail de este set no están disponibles. Considera quitar otros sets ferroviarios o eliminar Termite para solventar el problema.
+
+str_param_gui_name              :Estilo de la interfaz
+str_param_gui_desc              :Selecciona el estilo de los botones y cursores de entre los ofrecidos por este set.
+str_param_opengfx               :OpenGFX
+str_param_ttd                   :TTD
+
+str_param_levelcrossings_name   :Paso/s a nivel de Metro
+str_param_levelcrossings_desc   :Permite o deshabilita (por defecto) la construcción de pasos a nivel con vías de metro.
+
+str_param_customsignals_name    :Señales de metro a medida
+str_param_customsignals_desc    :Activa (por defecto) o desactiva las señales personalizadas para las vías de metro.
+
+str_param_otherengines_name     :Permite otros trenes en las vías del metro
+str_param_otherengines_desc     :Selecciona que otros tipos de trenes (por tipo de vía) podran usarse en las vías del metro. Los trenes solo obtendran energia si una fuente de alimentación compatible está disponible en la vía de metro elegida. Esta característica solo funciona correctamente por defecto y en los sets de vías soportados. Tipos soportados actualmente: Vías Holandesas (Dutch Tracks).
+str_param_otherengines_off      :Apagado
+str_param_otherengines_RAIL     :Solo el ferrocarril sin electrificar
+str_param_otherengines_ELRL     :Solo el ferrocarril electrificado
+str_param_otherengines_RAILELRL :Ambos ferrocarriles, con y sin electricidad (por defecto)
+
+#metro track strings
+str_metrotrack_name                             :Vía/s de Metro
+str_metrotrack_toolbar_caption                  :Construcción de vías de metro
+str_metrotrack_menu_text                        :Construcción de vías de metro
+str_metrotrack_build_window_caption             :Nuevos Vehículos de Metro
+str_metrotrack_autoreplace_text                 :Vehículos de Metro
+str_metrotrack_new_engine_text                  :metro
+
+#narrowgauge track strings
+str_narrowgauge_name                            :Vía/s Estrecha/s
+str_narrowgauge_toolbar_caption                 :Construcción de Vías Estrechas
+str_narrowgauge_menu_text                       :Construcción de Vías Estrechas
+str_narrowgauge_build_window_caption            :Nuevos Vehículos de Vía Estrecha
+str_narrowgauge_autoreplace_text                :Vehículos de Vía Estrecha
+str_narrowgauge_new_engine_text                 :vía estrecha
+
+#narrowgauge electrified track strings
+str_narrowgaugeelectrified_name                 :Vías Estrechas Electrificadas
+str_narrowgaugeelectrified_toolbar_caption      :Construcción de Vías Estrechas Electrificadas
+str_narrowgaugeelectrified_menu_text            :Construcción de Vías Estrechas Electrificadas
+str_narrowgaugeelectrified_build_window_caption :Nuevos Vehículos de Vía Estrecha Electrificada
+str_narrowgaugeelectrified_autoreplace_text     :Vehículos de Vía Estrecha Electrificada
+str_narrowgaugeelectrified_new_engine_text      :Vías Estrechas Electrificadas

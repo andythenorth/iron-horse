@@ -1,0 +1,56 @@
+##grflangid 0x27
+##plural 0
+##gender m ma f
+##case fp fs mp ms
+
+#Main grf title and description
+STR_GRF_NAME                    :{TITLE}
+STR_GRF_DESCRIPTION             :{SILVER}termite{}{}{BLACK}Mangia i vostri binari dal 2014.
+STR_GRF_URL             :http://dev.openttdcoop.org/projects/termite
+
+str_low_version         :Il vostro OpenTTD è troppo vecchio. Si consiglia di aggiornarlo per apprezzare tutte le caratteristiche di questo set.
+#str_no_railtypes_enabled:All railtypes disabled. It doesn't make sense to load this set if you disable all its railtypes. Review the parameter settings or remove termite from the NewGRF configuration.
+str_no_free_slots       :Non c'è più spazio per ulteriori tipi di ferrovie. Sono stati caricati altri set di linee ferroviarie che occupano tutti gli spazi disponibili. Si consiglia di rimuovere gli altri set di binari o di disabilitare questo set.
+str_some_disabled       :Non c'è più spazio per ulteriori tipi di ferrovie. Sono stati caricati altri set di linee ferroviarie che occupano tutti gli spazi disponibili. Uno o più tipi di linee ferroviarie di questo set non possono essere usati. Si consiglia di rimuovere gli altri set di binari, oppure di disabilitare questo set.
+
+str_param_gui_name              :Stile dell'interfaccia
+str_param_gui_desc              :Selezionate il stile dei pulsanti e cursori.
+str_param_opengfx               :OpenGFX
+str_param_ttd                   :TTD
+
+str_param_levelcrossings_name   :Passaggi a livello su linee suburbane
+str_param_levelcrossings_desc   :Permette o vieta (predefinito) i passaggi a livello sulle linee suburbane.
+
+str_param_customsignals_name    :Segnali specifici per linee suburbane
+str_param_customsignals_desc    :Attivare (predefinito) o disattivare i segnali specifici per le linee suburbane.
+
+str_param_otherengines_name     :Compatibilità con altri treni
+str_param_otherengines_desc     :Sceglie quali altri tipi di treni (identificati dal tipo di linea) possono circolare sulle ferrovie suburbane. I treni avranno bisogno di una fonte di alimentazione compatibile. Quest'opzione funziona correttamente solo per i binari standard di OTTD e per i tipi di binari supportati. Attualmente, sono supportati i "Binari olandesi".
+str_param_otherengines_off      :Disattivato
+str_param_otherengines_RAIL     :Solo linee non elettrificate
+str_param_otherengines_ELRL     :Solo linee elettrificate
+str_param_otherengines_RAILELRL :Entrambi i tipi di linee (predefinito)
+
+#metro track strings
+str_metrotrack_name                             :Linee ferroviarie suburbane
+str_metrotrack_toolbar_caption                  :Costruzione di linee suburbane
+str_metrotrack_menu_text                        :Costruzione di linee ferroviarie suburbane
+str_metrotrack_build_window_caption             :Nuovi veicoli della ferrovia suburbana
+str_metrotrack_autoreplace_text                 :Veicoli della ferrovia suburbana
+str_metrotrack_new_engine_text                  :ferrovia suburbana
+
+#narrowgauge track strings
+str_narrowgauge_name                            :Linee a scartamento ridotto
+str_narrowgauge_toolbar_caption                 :Costruzione di linee a scartamento ridotto
+str_narrowgauge_menu_text                       :Costruzione di linee a scartamento ridotto
+str_narrowgauge_build_window_caption            :Nuovi veicoli a scartamento ridotto
+str_narrowgauge_autoreplace_text                :Veicoli a scartamento ridotto
+str_narrowgauge_new_engine_text                 :scartamento ridotto
+
+#narrowgauge electrified track strings
+str_narrowgaugeelectrified_name                 :Linea elettrificata a scartamento ridotto
+str_narrowgaugeelectrified_toolbar_caption      :Costruzione di linee elettrificate a scartamento ridotto
+str_narrowgaugeelectrified_menu_text            :Costruzione di linee elettrificate a scartamento ridotto
+str_narrowgaugeelectrified_build_window_caption :Nuovi veicoli elettrici a scartamento ridotto
+str_narrowgaugeelectrified_autoreplace_text     :Veicoli elettrici a scartamento ridotto
+str_narrowgaugeelectrified_new_engine_text      :linea elettrificata a scartamento ridotto
