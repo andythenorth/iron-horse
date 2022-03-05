@@ -2,6 +2,22 @@ Changelog
 =========
 
 -------------
+2.38.0 Release
+-------------
+
+*Changes*
+
+- added engines
+    - Decapod steam general purpose engine, 650 hp, available around 1907
+    - Stag steam general purpose engine, 800 hp, available around 1930
+
+
+*Fixes*
+
+- Proper Job sprites off by 1px in \ view
+
+
+-------------
 2.37.0 Release
 -------------
 
