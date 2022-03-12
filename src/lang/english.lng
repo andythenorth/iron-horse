@@ -16,8 +16,8 @@ STR_PARAM_ROSTER_DESC                                           :Choose which se
 STR_PARAM_ROSTER_OPTION_0                                       :Pony - inspired by UK trains
 STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY                   :Wagon colour randomisation
 STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_DESC              :Random freight wagon colours add variety to trains.{}{}There are two base colours for freight wagons, which are set by OpenTTD company colours, or by Iron Horse parameters.  Iron Horse will randomise up to two shades of each base colour, depending on the parameter settings.{}{}Flip wagons in depot (using ctrl-click) to toggle the base colour used.{}{}Some wagon types have their own colour rules and will not use the randomisation setting; for example, brake vans, express-type wagons and passenger coaches.
-STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_0          :Shades of both base colours (default)
-STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_1          :Shades of one base colour
+STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_0          :Random choice using base colour 1 or 2 (default)
+STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_1          :Random choice using base colour 1 only
 STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_2          :No randomisation
 STR_PARAM_WAGON_BASE_COLOUR_1                                   :Wagon base colour 1
 STR_PARAM_WAGON_BASE_COLOUR_2                                   :Wagon base colour 2
