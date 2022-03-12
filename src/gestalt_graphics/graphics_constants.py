@@ -199,6 +199,9 @@ carbon_black_hopper_car_livery_recolour_maps = (  # only one livery provided her
 cement_silo_livery_recolour_maps = (
     ("DFLT", {136: 53, 137: 54, 138: 6, 139: 57, 140: 30, 141: 38, 142: 13, 143: 15}),
 )
+cement_silo_livery_recolour_maps_weathered = (
+    ("DFLT", {136: 53, 137: 4, 138: 35, 139: 36, 140: 10, 141: 59, 142: 13, 143: 15}),
+)
 
 chemical_covered_hopper_car_livery_recolour_maps = (
     (
