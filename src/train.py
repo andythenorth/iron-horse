@@ -2494,7 +2494,7 @@ class FarmProductsHopperCarConsist(CarConsist):
         # Graphics configuration
         weathered_variants = {
             "unweathered": graphics_constants.farm_products_hopper_car_livery_recolour_maps,
-            "weathered": graphics_constants.farm_products_hopper_car_livery_recolour_maps,
+            "weathered": graphics_constants.farm_products_hopper_car_livery_recolour_maps_weathered,
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants
