@@ -22,15 +22,14 @@
                         <li><i class="icon-ok-circle"></i> Supports 2 company colours</li>
                         <li><i class="icon-ok-circle"></i> Autorefit support</li>
                         <li><i class="icon-ok-circle"></i> Parameter for train capacity</li>
-                        <li><i class="icon-ok-circle"></i> GPL v2 license</li>
                     </ul>
                 </div>
                 <div id="download-iron-horse">
                     <h2>1. Download Iron Horse</h2>
                     <p class="lead">
-                        Iron Horse is available from the online content service ('Bananas') in OpenTTD.
+                        Iron Horse is available from the OpenTTD online content service ('Bananas').
                     </p>
-                    <a class="btn btn-primary" href="https://wiki.openttd.org/en/Manual/Online%20content">Instructions</a>
+                    <p>If you are new to using the OpenTTD online content service, <a href="https://wiki.openttd.org/en/Manual/Online%20content">check out this guide (OpenTTD wiki).</a></p>
                 </div>
                 <br />
                 <hr />
@@ -97,8 +96,13 @@
                     <h3>Cargo support</h3>
                     <p>Iron Horse provides vehicles for a wide range of cargos, and should be compatible with all industry and cargo grfs.</p>
                     <p>Many wagons show cargo when loaded, and again a wide range of cargos are supported.</p>
-                    <h3>Secret features</h3>
-                    <p>Haulage bonus: some electric railcars are allowed to increase their maximum speed when hauled by another engine that has a higher speed (or a faster express railcar).</p>
+                    <p>Autorefit (refit-at-stations) is supported for almost all vehicles.</p>
+                    <h3>Secret features and other details</h3>
+                    <p><em>Haulage bonus:</em> some electric railcars are allowed to increase their maximum speed when hauled by another engine that has a higher speed (or a faster express railcar).</p>
+                    <p><em>Tail lights:</em> trains will show a rear light.</p>
+                    <p><em>Magic appearance:</em> some vehicles will adapt their appearance depending on their position in the train, including passenger coaches, mail vans and intermodal wagons.</p>
+                    <p><em>Integer length trains:</em> Iron Horse vehicles have consistent length and it's very easy to make integer length trains (length will show in depot as 4.0, 6.0, 8.0 etc). This has minimal gameplay effect, but is good for people who have tidy-mind problems.</p>
+                    <p><em>Bi-mode trains:</em> electro-diesel or similar engines will work with or without electricity.  Power is generally increased on electrified rails, and smoke or sparks will be show appropriately for current power type.</p>
                 </div>
                 <hr />
                 <br />
@@ -111,9 +115,11 @@
                 <br />
                 <div id="source-code">
                     <h2>6. Source code / modifying Iron Horse</h2>
-                    <p>Checkout source code and <a href="code_reference.html">compile your own Iron Horse</a> (requires git and various python dependencies).</p>
-                    <a class="btn" href="${metadata['repo_url']}">Iron Horse Source Repo</a>
+                    <p>Checkout source code on <a href="${metadata['repo_url']}">GitHub</a> and <a href="code_reference.html">compile your own Iron Horse</a> (requires git and various python dependencies).</p>
+                    <p>Iron Horse is licensed under the GPL v2.</p>
                 </div>
+                <br />
+                <br />
             </div>
         </div>
     </div>
