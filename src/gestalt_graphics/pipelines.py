@@ -890,27 +890,31 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             )
         )
 
-        for label, recolour_map in self.consist.gestalt_graphics.recolour_maps:
-            crop_box_dest = (
-                0,
-                0,
-                self.sprites_max_x_extent,
-                graphics_constants.spriterow_height,
-            )
+        for (
+            weathered_variant,
+            recolour_maps,
+        ) in self.consist.gestalt_graphics.weathered_variants.items():
+            for label, recolour_map in recolour_maps:
+                crop_box_dest = (
+                    0,
+                    0,
+                    self.sprites_max_x_extent,
+                    graphics_constants.spriterow_height,
+                )
 
-            self.units.append(
-                AppendToSpritesheet(
-                    vehicle_livery_spriterow_input_as_spritesheet, crop_box_dest
+                self.units.append(
+                    AppendToSpritesheet(
+                        vehicle_livery_spriterow_input_as_spritesheet, crop_box_dest
+                    )
                 )
-            )
-            self.units.append(SimpleRecolour(recolour_map))
-            self.units.append(
-                AddCargoLabel(
-                    label=label,
-                    x_offset=self.sprites_max_x_extent + 5,
-                    y_offset=-1 * graphics_constants.spriterow_height,
+                self.units.append(SimpleRecolour(recolour_map))
+                self.units.append(
+                    AddCargoLabel(
+                        label=label,
+                        x_offset=self.sprites_max_x_extent + 5,
+                        y_offset=-1 * graphics_constants.spriterow_height,
+                    )
                 )
-            )
 
     def add_pax_mail_car_with_opening_doors_spriterows(self, row_count):
         # this loop builds the spriterow and comps doors etc

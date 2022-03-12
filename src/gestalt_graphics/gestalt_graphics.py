@@ -527,20 +527,20 @@ class GestaltGraphicsSimpleBodyColourRemaps(GestaltGraphics):
     This gestalt can also be used as a shortcut simply for adding automated chassis.
     """
 
-    def __init__(self, recolour_maps, **kwargs):
+    def __init__(self, weathered_variants, **kwargs):
         super().__init__()
         # as of Jan 2018 only one pipeline is used, but support is in place for alternative pipelines
         self.pipelines = pipelines.get_pipelines(
             ["extend_spriterows_for_composited_sprites_pipeline"]
         )
         # recolour_maps map cargo labels to liveries, use 'DFLT' as the labe in the case of just one livery
-        self.recolour_maps = recolour_maps
-        # a default 'unweathered' variant is provided, additional 'weathered' sprites can be provided for randomly chosen variety
+        # a default 'unweathered' variant must be provided
+        # additional sets of recolour maps can be provided to generate 'weathered' sprites
+        # if cargo recolours are provided weathered and unweathered MUST provide the same cargo support
+        # these will be randomly selected in-game for visual variety
         # this is separate and complementary to the minor variations to vehicle company colours using in-game recolour sprites
-        # intended use of this one is when the sprite features minimal or no company colour
-        # as of March 2022, the graphics pipeline expects to provide any weathered variants automatically using compile-time recolour maps of the basic body colour
-        # support could also be added for hand-drawn pixels in a separate spriterow if needed
-        self.weathered_variants = ["unweathered"]
+        # there is no support here for weathered variants that depend on hand-drawn pixels, it's all recolour maps as of March 2022 - could change if needed
+        self.weathered_variants = weathered_variants
 
     @property
     def generic_rows(self):
@@ -560,7 +560,8 @@ class GestaltGraphicsSimpleBodyColourRemaps(GestaltGraphics):
     def cargo_row_map(self):
         result = {}
         counter = 0
-        for cargo_map in self.recolour_maps:
+        # take the cargo recolour maps for 'unweathered' as the default
+        for cargo_map in self.weathered_variants["unweathered"]:
             result[cargo_map[0]] = [
                 counter
             ]  # list with a single value, as cargo labels can map to multiple rows, but no plan to use that for this gestalt (June 2020)

@@ -12,7 +12,7 @@
     <tal:flipped repeat="flipped ['unflipped', 'flipped']">
         <tal:cargo_variants repeat="cargo_variant_num python:range(consist.gestalt_graphics.num_cargo_sprite_variants)">
             spriteset(${vehicle.id}_ss_${weathered_variant}_${cargo_variant_num}_${flipped}, "${graphics_path}${consist.id}.png") {
-                ${vehicle.get_spriteset_template_name('unreversed', flipped, 10 + (cargo_variant_num * 30))}
+                ${vehicle.get_spriteset_template_name('unreversed', flipped, 10 + (cargo_variant_num * 30) + (consist.gestalt_graphics.num_cargo_sprite_variants * repeat.weathered_variant.index * 30))}
             }
         </tal:cargo_variants>
 
@@ -38,9 +38,12 @@
     }
 </tal:weathered_variants>
 
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, 1) {
-    1: return ${vehicle.id}_switch_graphics_vehicle_unweathered;
-    return ${vehicle.id}_switch_graphics_vehicle_unweathered;
+<!--! ! note that support here is for either ['unweathered'] or ['unweathered', 'weathered'] as only 1 random bit is picked, use more bits if that needs extended in future -->
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, switch_alternative_var_random_bits(0, 1)) {
+    <tal:weathered_variants repeat="weathered_variant consist.gestalt_graphics.weathered_variants">
+        ${repeat.weathered_variant.index}: return ${vehicle.id}_switch_graphics_vehicle_${weathered_variant};
+    </tal:weathered_variants>
+    return ${vehicle.id}_switch_graphics_vehicle_unweathered; <!--! this default should not be reached in this case, but eh -->
 }
 
 // buy menu graphics chain
