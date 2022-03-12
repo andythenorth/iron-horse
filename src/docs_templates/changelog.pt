@@ -2,6 +2,44 @@ Changelog
 =========
 
 -------------
+2.40.0 Release
+-------------
+
+*Changes*
+
+- the following wagon types will now show randomly selected colour variations (paint fading etc) when purchased
+    - Carbon Black Hoppers
+    - Cement Wagons
+    - Chemical Covered Hoppers
+    - China Clay Hoppers
+    - Covered Hoppers
+    - Cryo Tankers
+    - Farm Products Hoppers
+    - Mineral Covered Hoppers
+    - Pressure Tankers
+    - Product Tankers
+    - Tankers
+
+
+*Fixes*
+
+- parameters for wagon base colour 1 and 2 were ignored if wagon colour randomisation was turned off (via parameter)
+
+
+*Docs*
+
+- improved 'Get started' page
+    - added hints, tips etc
+    - removed outdated items
+- improved 'Code reference' page
+    - added compiling instructions
+- improved navigation
+    - removed 'Translate...' link as translation no longer uses the web translator
+    - added 'Changelog' link
+    - moved 'Code reference' link to be less prominent
+
+
+-------------
 2.39.0 Release
 -------------
 
