@@ -87,10 +87,10 @@
 
 <tal:strategy_no_randomisation>
     switch (FEAT_TRAINS, SELF, switch_strategy_no_randomisation_unflipped, 0) {
-        return base_sprite_2cc + 16 * company_colour2 + company_colour1; <!--! apply regular 1CC and 2CC, no random -->
+        return base_sprite_2cc + 16 * (param_wagon_base_colour_2 - 1) + (param_wagon_base_colour_1 - 1); <!--! apply regular 1CC and 2CC, no random -->
     }
     switch (FEAT_TRAINS, SELF, switch_strategy_no_randomisation_flipped, 0) {
-        return base_sprite_2cc + 16 * company_colour1 + company_colour2; <!--! apply swapped 2CC and 1CC, no random -->
+        return base_sprite_2cc + 16 * (param_wagon_base_colour_1 - 1) + (param_wagon_base_colour_2 - 1); <!--! apply swapped 2CC and 1CC, no random -->
     }
 </tal:strategy_no_randomisation>
 
