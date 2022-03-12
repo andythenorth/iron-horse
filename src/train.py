@@ -2838,7 +2838,6 @@ class KaolinHopperCarConsist(CarConsist):
             1  # single base colour unless flipped
         )
         # Graphics configuration
-        utils.echo_message("Kaolin hopper using covered hopper body colour remaps")
         weathered_variants = {
             "unweathered": graphics_constants.kaolin_hopper_car_livery_recolour_maps,
             "weathered": graphics_constants.kaolin_hopper_car_livery_recolour_maps_weathered,
