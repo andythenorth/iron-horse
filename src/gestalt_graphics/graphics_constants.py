@@ -300,6 +300,38 @@ fruit_veg_livery_recolour_maps = (
     ),
 )
 
+kaolin_hopper_car_livery_recolour_maps = (
+    (
+        "DFLT",
+        {
+            # note that this very specifically recolours hand-drawn pixels to magic purple
+            # this is to prevent these spriterows being incorrectly recoloured to 'weathered' due to the way the graphics pipeline works
+            # these purple pixels are then reset to original when the weathered recolour map is applied
+            17: 136,
+            8: 139,
+            12: 141,
+            14: 142,
+        },
+    ),
+)
+kaolin_hopper_car_livery_recolour_maps_weathered = (
+    (
+        "DFLT",
+        {
+            17: 114,
+            8: 36,
+            12: 38,
+            14: 39,
+            # these are resets of magic purple applied by 'unweathered' map, back to original hand-drawn colours
+            # order is significant, these must be applied after the 'weathered' remapping
+            136: 17,
+            139: 8,
+            141: 12,
+            142: 14,
+        },
+    ),
+)
+
 livestock_livery_recolour_maps = (("DFLT", body_recolour_CC2),)
 
 mineral_covered_hopper_car_livery_recolour_maps = (

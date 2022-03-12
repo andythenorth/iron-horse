@@ -2837,7 +2837,8 @@ class KaolinHopperCarConsist(CarConsist):
         # Graphics configuration
         utils.echo_message("Kaolin hopper using covered hopper body colour remaps")
         weathered_variants = {
-            "unweathered": graphics_constants.covered_hopper_car_livery_recolour_maps
+            "unweathered": graphics_constants.kaolin_hopper_car_livery_recolour_maps,
+            "weathered": graphics_constants.kaolin_hopper_car_livery_recolour_maps_weathered,
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants
@@ -3577,7 +3578,7 @@ class SiloCarCementConsist(SiloCarConsistBase):
         # Graphics configuration
         weathered_variants = {
             "unweathered": graphics_constants.cement_silo_livery_recolour_maps,
-            "weathered": graphics_constants.cement_silo_livery_recolour_maps_weathered
+            "weathered": graphics_constants.cement_silo_livery_recolour_maps_weathered,
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants
