@@ -303,14 +303,27 @@ mineral_covered_hopper_car_livery_recolour_maps = (
     (
         "DFLT",
         {
-            136: 115,
-            137: 35,
-            138: 36,
-            139: 117,
-            140: 38,
-            141: 39,
-            142: 13,
-            143: 15,
+            # note that this very specifically recolours hand-drawn pixels to magic purple
+            # this is to prevent these spriterows being incorrectly recoloured to 'weathered' due to the way the graphics pipeline works
+            # these purple pixels are then reset to original when the weathered recolour map is applied
+            18: 138,
+            19: 139,
+            22: 142,
+        },
+    ),
+)
+mineral_covered_hopper_car_livery_recolour_maps_weathered = (
+    (
+        "DFLT",
+        {
+            18: 115,
+            19: 116,
+            22: 120,
+            # these are resets of magic purple applied by 'unweathered' map, back to original hand-drawn colours
+            # order is significant, these must be applied after the 'weathered' remapping
+            138: 18,
+            139: 19,
+            142: 22,
         },
     ),
 )
