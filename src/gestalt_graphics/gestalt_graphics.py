@@ -535,6 +535,12 @@ class GestaltGraphicsSimpleBodyColourRemaps(GestaltGraphics):
         )
         # recolour_maps map cargo labels to liveries, use 'DFLT' as the labe in the case of just one livery
         self.recolour_maps = recolour_maps
+        # a default 'unweathered' variant is provided, additional 'weathered' sprites can be provided for randomly chosen variety
+        # this is separate and complementary to the minor variations to vehicle company colours using in-game recolour sprites
+        # intended use of this one is when the sprite features minimal or no company colour
+        # as of March 2022, the graphics pipeline expects to provide any weathered variants automatically using compile-time recolour maps of the basic body colour
+        # support could also be added for hand-drawn pixels in a separate spriterow if needed
+        self.weathered_variants = ['unweathered']
 
     @property
     def generic_rows(self):
