@@ -4,6 +4,12 @@ Don't make changes here, make them in the Polar Fox project and redistribute.
 Any changes made here are liable to be over-written.
 """
 
+"""
+This file is generated from the Polar Fox project.
+Don't make changes here, make them in the Polar Fox project and redistribute.
+Any changes made here are liable to be over-written.
+"""
+
 # used to construct the cargo table automatically
 # ! order is significant ! - openttd will cascade through default cargos in the order specified by the cargo table
 cargo_labels = [
@@ -536,7 +542,10 @@ tanker_livery_recolour_maps = [
 tanker_livery_recolour_maps_weathered = [
     (i[0], i[3]) for i in tanker_livery_recolour_maps_extended
 ]
-
+# drop the weathered variant for containers, the container handling expects a 3-tuple only (oof)
+tanker_livery_recolour_maps_containers = [
+    (i[0], i[1], i[2]) for i in tanker_livery_recolour_maps_extended
+]
 # Bulk
 # keep cargos in alphabetical order for ease of reading
 # the extended format includes information for intermodal that isn't needed in common cases
