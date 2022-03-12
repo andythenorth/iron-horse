@@ -24,7 +24,7 @@ class AutomobilesSpritelayerCargo(SpritelayerCargo):
 
 
 class DefaultAndLowFloorAutomobilesCargoSetBase(CargoSetBase):
-    """ Sparse base class to set compatible platform types and sprite placement template """
+    """Sparse base class to set compatible platform types and sprite placement template"""
 
     def __init__(self, **kwargs):
         self.compatible_platform_types = ["default", "low_floor"]

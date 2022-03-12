@@ -26,9 +26,7 @@ def main(roster_id):
         spriterow_num=0,
     )
 
-    consist.description = (
-        """Fast and light, right good."""
-    )
+    consist.description = """Fast and light, right good."""
     consist.foamer_facts = """BR Class 35 <i>Hymek</i>"""
 
     return consist

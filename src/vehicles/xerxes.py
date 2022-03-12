@@ -17,7 +17,11 @@ def main(roster_id):
     )
 
     consist.add_unit(
-        type=SteamEngineUnit, weight=49, vehicle_length=5, spriterow_num=0, repeat=2,
+        type=SteamEngineUnit,
+        weight=49,
+        vehicle_length=5,
+        spriterow_num=0,
+        repeat=2,
     )
 
     consist.description = """Not much to say about these two."""

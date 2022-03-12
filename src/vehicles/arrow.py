@@ -9,12 +9,12 @@ def main(roster_id):
         name="2-6-2 Arrow",
         role="heavy_express",
         role_child_branch_num=-2,  # -ve because Joker
-        power=1900, # slightly higher power, offset by higher weight
+        power=1900,  # slightly higher power, offset by higher weight
         tractive_effort_coefficient=0.18,
         gen=3,
         intro_date_offset=4,  # introduce later than gen epoch by design
         fixed_run_cost_points=150,  # give a small bonus to bring closer to Strongbow cost
-        force_default_pax_mail_livery=1, # invert the automatic livery 2 choice
+        force_default_pax_mail_livery=1,  # invert the automatic livery 2 choice
         default_livery_extra_docs_examples=[
             ("COLOUR_DARK_GREEN", "COLOUR_DARK_GREEN"),
             ("COLOUR_GREY", "COLOUR_WHITE"),
@@ -35,9 +35,7 @@ def main(roster_id):
         type=SteamEngineTenderUnit, weight=44, vehicle_length=3, spriterow_num=1
     )
 
-    consist.description = (
-        """Passengers, mail, fish, coal, steel, grain, this one'll haul anything and do it well."""
-    )
+    consist.description = """Passengers, mail, fish, coal, steel, grain, this one'll haul anything and do it well."""
     consist.foamer_facts = """LNER V2"""
 
     return consist

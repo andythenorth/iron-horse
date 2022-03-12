@@ -32,8 +32,6 @@ def main(roster_id):
     )
 
     consist.description = """A right big fast diesel hydraulic this one is."""
-    consist.foamer_facts = (
-        """BR Class 52 <i>Western</i>"""
-    )
+    consist.foamer_facts = """BR Class 52 <i>Western</i>"""
 
     return consist

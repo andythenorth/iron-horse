@@ -8,7 +8,7 @@ from spritelayer_cargo import SpritelayerCargo, CargoSetBase
 
 
 class IntermodalContainersSpritelayerCargo(SpritelayerCargo):
-    """ Base class for the containers spritelayer cargo """
+    """Base class for the containers spritelayer cargo"""
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -27,7 +27,7 @@ class IntermodalContainersSpritelayerCargo(SpritelayerCargo):
 
 
 class DefaultAndLowFloorIntermodalContainersCargoSetBase(CargoSetBase):
-    """ Sparse base class to set compatible platform types and sprite placement template """
+    """Sparse base class to set compatible platform types and sprite placement template"""
 
     def __init__(self, **kwargs):
         self.compatible_platform_types = ["default", "low_floor"]
@@ -36,7 +36,7 @@ class DefaultAndLowFloorIntermodalContainersCargoSetBase(CargoSetBase):
 
 
 class CargoSprinterIntermodalContainersCargoSetBase(CargoSetBase):
-    """ Sparse base class to set compatible platform types and sprite placement template """
+    """Sparse base class to set compatible platform types and sprite placement template"""
 
     def __init__(self, **kwargs):
         self.compatible_platform_types = ["cargo_sprinter"]

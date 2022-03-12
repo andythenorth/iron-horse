@@ -238,7 +238,12 @@ curtain_side_livery_recolour_maps = (("DFLT", body_recolour_CC1),)
 edibles_tank_car_livery_recolour_maps = (("DFLT", {}),)
 
 # ideally this would also randomise to 88-95, not sure how to do that as of Nov 2021
-farm_products_hopper_car_livery_recolour_maps = (("DFLT", {136: 96, 137: 97, 138: 98, 139: 99, 140: 100, 141: 101, 142: 102, 143: 103}),)
+farm_products_hopper_car_livery_recolour_maps = (
+    (
+        "DFLT",
+        {136: 96, 137: 97, 138: 98, 139: 99, 140: 100, 141: 101, 142: 102, 143: 103},
+    ),
+)
 
 fruit_veg_livery_recolour_maps = (
     (

@@ -709,7 +709,7 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
 
 
 class GeneratePantographsUpSpritesheetPipeline(GeneratePantographsSpritesheetPipeline):
-    """ Sparse subclass, solely to set pan 'up' state (simplest way to implement this). """
+    """Sparse subclass, solely to set pan 'up' state (simplest way to implement this)."""
 
     pantograph_state = "up"  # lol, actually valid class vars
 
@@ -720,7 +720,7 @@ class GeneratePantographsUpSpritesheetPipeline(GeneratePantographsSpritesheetPip
 class GeneratePantographsDownSpritesheetPipeline(
     GeneratePantographsSpritesheetPipeline
 ):
-    """ Sparse subclass, solely to set pan 'down' state (simplest way to implement this). """
+    """Sparse subclass, solely to set pan 'down' state (simplest way to implement this)."""
 
     pantograph_state = "down"  # lol, actually valid class vars
 

@@ -13,7 +13,7 @@ def main(roster_id):
         power=2800,
         random_reverse=True,
         gen=4,
-        intro_date_offset=5, # introduce later than gen epoch by design
+        intro_date_offset=5,  # introduce later than gen epoch by design
         fixed_run_cost_points=230,  # give a serious malus to this one (balancing eh?)
         default_livery_extra_docs_examples=[
             ("COLOUR_BLUE", "COLOUR_WHITE"),
@@ -33,8 +33,6 @@ def main(roster_id):
     )
 
     consist.description = """The big bird. Twin engines. Takes on anything."""
-    consist.foamer_facts = (
-        """Brush / BR Class 53 <i>Falcon</i> prototype"""
-    )
+    consist.foamer_facts = """Brush / BR Class 53 <i>Falcon</i> prototype"""
 
     return consist

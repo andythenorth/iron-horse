@@ -540,7 +540,7 @@ class GestaltGraphicsSimpleBodyColourRemaps(GestaltGraphics):
         # intended use of this one is when the sprite features minimal or no company colour
         # as of March 2022, the graphics pipeline expects to provide any weathered variants automatically using compile-time recolour maps of the basic body colour
         # support could also be added for hand-drawn pixels in a separate spriterow if needed
-        self.weathered_variants = ['unweathered']
+        self.weathered_variants = ["unweathered"]
 
     @property
     def generic_rows(self):

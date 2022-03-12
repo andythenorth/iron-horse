@@ -27,9 +27,9 @@ def main(roster_id):
         type=SteamEngineTenderUnit, weight=32, vehicle_length=4, spriterow_num=1
     )
 
-    consist.description = (
-        """."""
+    consist.description = """."""
+    consist.foamer_facts = (
+        """SR Merchant Navy / West Country / Battle of Britain classes"""
     )
-    consist.foamer_facts = """SR Merchant Navy / West Country / Battle of Britain classes"""
 
     return consist
