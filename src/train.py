@@ -1976,7 +1976,7 @@ class CarbonBlackHopperCarConsist(CarConsist):
         # Graphics configuration
         weathered_variants = {
             "unweathered": graphics_constants.carbon_black_hopper_car_livery_recolour_maps,
-            "weathered": graphics_constants.carbon_black_hopper_car_livery_recolour_maps_weathered
+            "weathered": graphics_constants.carbon_black_hopper_car_livery_recolour_maps_weathered,
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants
@@ -3765,7 +3765,8 @@ class TankCarProductConsist(TankCarConsistBase):
         self._joker = True
         # Graphics configuration
         weathered_variants = {
-            "unweathered": graphics_constants.product_tank_car_livery_recolour_maps
+            "unweathered": graphics_constants.product_tank_car_livery_recolour_maps,
+            "weathered": graphics_constants.product_tank_car_livery_recolour_maps_weathered,
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants

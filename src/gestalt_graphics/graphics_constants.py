@@ -445,6 +445,9 @@ pellet_hopper_car_livery_recolour_maps_weathered = (
 product_tank_car_livery_recolour_maps = (
     ("DFLT", {136: 16, 137: 18, 138: 19, 139: 20, 140: 21, 141: 22, 142: 23, 143: 14}),
 )
+product_tank_car_livery_recolour_maps_weathered = (
+    ("DFLT", {136: 16, 137: 5, 138: 7, 139: 9, 140: 10, 141: 22, 142: 23, 143: 14}),
+)
 
 refrigerated_livery_recolour_maps = (
     (
