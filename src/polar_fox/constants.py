@@ -621,10 +621,23 @@ cryo_tanker_livery_recolour_maps_extended = (
         "DFLT",
         "1CC",
         {136: 5, 137: 7, 138: 9, 139: 11, 140: 12, 141: 13, 142: 14, 143: 15},
+        # weathered
+        {136: 34, 137: 7, 138: 9, 139: 11, 140: 12, 141: 38, 142: 14, 143: 15},
     ),
     (
         "CHLO",
         "1CC",
+        {
+            136: 154,
+            137: 155,
+            138: 157,
+            139: 158,
+            140: 159,
+            141: 159,
+            142: 160,
+            143: 161,
+        },
+        # weathered
         {
             136: 154,
             137: 155,
@@ -640,6 +653,12 @@ cryo_tanker_livery_recolour_maps_extended = (
 
 cryo_tanker_livery_recolour_maps = [
     (i[0], i[2]) for i in cryo_tanker_livery_recolour_maps_extended
+]
+cryo_tanker_livery_recolour_maps_weathered = [
+    (i[0], i[3]) for i in cryo_tanker_livery_recolour_maps_extended
+]
+cryo_tanker_livery_recolour_maps_containers = [
+    (i[0], i[1], i[2]) for i in cryo_tanker_livery_recolour_maps_extended
 ]
 
 # only intended for intermodal containers, curtain side vehicles will be CC
