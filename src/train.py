@@ -2129,7 +2129,8 @@ class CoveredHopperCarChemicalConsist(CoveredHopperCarConsistBase):
         self._joker = True
         # Graphics configuration
         weathered_variants = {
-            "unweathered": graphics_constants.chemical_covered_hopper_car_livery_recolour_maps
+            "unweathered": graphics_constants.chemical_covered_hopper_car_livery_recolour_maps,
+            "weathered": graphics_constants.chemical_covered_hopper_car_livery_recolour_maps_weathered,
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants

@@ -215,6 +215,21 @@ chemical_covered_hopper_car_livery_recolour_maps = (
         },
     ),
 )
+chemical_covered_hopper_car_livery_recolour_maps_weathered = (
+    (
+        "DFLT",
+        {
+            136: 106,
+            137: 33,
+            138: 27,
+            139: 35,
+            140: 36,
+            141: 37,
+            142: 30,
+            143: 168,
+        },
+    ),
+)
 
 covered_hopper_car_livery_recolour_maps = (
     (
