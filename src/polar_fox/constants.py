@@ -276,7 +276,7 @@ default_cargos = {
     "covered_chemical": ["RFPR", "POTA", "PHOS", "SALT", "SAND"],
     "covered_mineral": ["QLME", "SALT", "PHOS", "POTA", "SAND", "KAOL", "NITR"],
     "covered_pellet": ["PLAS", "RUBR", "KAOL", "FERT", "SAND", "SASH", "BEAN"],
-    "covered_roller_roof": [ "KAOL", "QLME", "SALT"],
+    "covered_roller_roof": ["KAOL", "QLME", "SALT"],
     "cryo_gases": ["O2__", "CHLO"],
     "dump": ["MNO2", "FECR", "NITR", "PHOS", "SAND", "GRVL"],
     "dump_high_sides": ["COKE", "PEAT", "COAL"],
@@ -463,12 +463,31 @@ tanker_livery_recolour_maps_extended = (
         "OIL_",
         "1CC",  # second value is body recolour map for intermodal bulk containers
         {136: 1, 137: 2, 138: 3, 139: 4, 140: 5, 141: 6, 142: 7, 143: 8},
+        # weathered variant
+        {136: 104, 137: 1, 138: 2, 139: 3, 140: 4, 141: 5, 142: 6, 143: 7},
     ),
-    ("CTAR", "1CC", {136: 1, 137: 2, 138: 3, 139: 4, 140: 5, 141: 6, 142: 7, 143: 8}),
+    (
+        "CTAR",
+        "1CC",
+        {136: 104, 137: 1, 138: 2, 139: 3, 140: 4, 141: 5, 142: 6, 143: 7},
+        # weathered variant
+        {136: 70, 137: 104, 138: 1, 139: 2, 140: 3, 141: 4, 142: 5, 143: 6},
+    ),
     # see note on DFLT above
     (
         "DFLT",
         "2CC",
+        {
+            136: 198,
+            137: 199,
+            138: 200,
+            139: 201,
+            140: 202,
+            141: 203,
+            142: 204,
+            143: 205,
+        },
+        # weathered variant
         {
             136: 198,
             137: 199,
@@ -484,27 +503,38 @@ tanker_livery_recolour_maps_extended = (
         "SULP",
         "1CC",
         {136: 62, 137: 63, 138: 64, 139: 65, 140: 66, 141: 67, 142: 68, 143: 69},
+        # weathered variant
+        {136: 62, 137: 63, 138: 64, 139: 193, 140: 194, 141: 50, 142: 51, 143: 52},
     ),
     # RFPR deliberately 2CC to allow combining with 1CC livery details
     (
         "RFPR",
         "1CC",
         {136: 80, 137: 81, 138: 82, 139: 83, 140: 84, 141: 85, 142: 86, 143: 87},
+        # weathered variant
+        {136: 80, 137: 81, 138: 82, 139: 83, 140: 84, 141: 85, 142: 86, 143: 87},
     ),
     (
         "RUBR",
         "1CC",
         {136: 40, 137: 41, 138: 42, 139: 43, 140: 44, 141: 45, 142: 46, 143: 47},
+        # weathered variant
+        {136: 71, 137: 72, 138: 73, 139: 43, 140: 44, 141: 76, 142: 77, 143: 47},
     ),
     (
         "PETR",
         "1CC",
         {136: 16, 137: 17, 138: 18, 139: 19, 140: 20, 141: 21, 142: 22, 143: 23},
+        # weathered variant
+        {136: 16, 137: 5, 138: 6, 139: 8, 140: 9, 141: 21, 142: 22, 143: 23},
     ),
 )
 
 tanker_livery_recolour_maps = [
     (i[0], i[2]) for i in tanker_livery_recolour_maps_extended
+]
+tanker_livery_recolour_maps_weathered = [
+    (i[0], i[3]) for i in tanker_livery_recolour_maps_extended
 ]
 
 # Bulk
@@ -533,7 +563,11 @@ bulk_cargo_recolour_maps_extended = (
     ("KAOL", "1CC", {170: 11, 171: 12, 172: 13, 173: 14, 174: 14, 175: 15, 176: 15}),
     ("MNO2", "1CC", {170: 1, 171: 16, 172: 3, 173: 17, 174: 18, 175: 19, 176: 20}),
     ("NITR", "1CC", {170: 37, 171: 38, 172: 38, 173: 39, 174: 39, 175: 69, 176: 69}),
-    ("PEAT", "1CC", {170: 104, 171: 105, 172: 106, 173: 107, 174: 108, 175: 24, 176: 25}),
+    (
+        "PEAT",
+        "1CC",
+        {170: 104, 171: 105, 172: 106, 173: 107, 174: 108, 175: 24, 176: 25},
+    ),
     ("PHOS", "1CC", {170: 63, 171: 64, 172: 192, 173: 65, 174: 193, 175: 64, 176: 194}),
     ("PORE", "1CC", {170: 40, 171: 72, 172: 73, 173: 33, 174: 33, 175: 63, 176: 63}),
     ("POTA", "1CC", {170: 63, 171: 64, 172: 192, 173: 65, 174: 193, 175: 64, 176: 194}),

@@ -3724,7 +3724,8 @@ class TankCarConsist(TankCarConsistBase):
         self.default_cargos = polar_fox.constants.default_cargos["tank"]
         # Graphics configuration
         weathered_variants = {
-            "unweathered": polar_fox.constants.tanker_livery_recolour_maps
+            "unweathered": polar_fox.constants.tanker_livery_recolour_maps,
+            "weathered": polar_fox.constants.tanker_livery_recolour_maps_weathered,
         }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants
