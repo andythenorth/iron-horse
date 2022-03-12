@@ -195,6 +195,29 @@ carbon_black_hopper_car_livery_recolour_maps = (  # only one livery provided her
         },
     ),
 )
+carbon_black_hopper_car_livery_recolour_maps_weathered = (  # only one livery provided here, black
+    (
+        "DFLT",
+        {
+            136: 70,
+            137: 1,
+            138: 2,
+            139: 3,
+            140: 4,
+            141: 5,
+            142: 6,
+            143: 19,
+            154: 70,
+            155: 1,
+            156: 2,
+            157: 3,
+            158: 4,
+            159: 5,
+            160: 6,
+            161: 19,
+        },
+    ),
+)
 
 cement_silo_livery_recolour_maps = (
     ("DFLT", {136: 53, 137: 54, 138: 6, 139: 57, 140: 30, 141: 38, 142: 13, 143: 15}),
