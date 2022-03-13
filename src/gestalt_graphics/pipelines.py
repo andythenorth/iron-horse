@@ -1225,63 +1225,52 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             2 * graphics_constants.spriterow_height,
         )
 
-        # 2 sets of rows iff there's a second livery, otherwise 1
-        for livery_counter in range(
-            self.consist.gestalt_graphics.num_visible_cargo_liveries
-        ):
-            empty_row_livery_offset = (
-                livery_counter * graphics_constants.spriterow_height
-            )
-            crop_box_vehicle_body = (
-                0,
-                self.cur_vehicle_empty_row_yoffs + empty_row_livery_offset,
-                self.sprites_max_x_extent,
-                self.cur_vehicle_empty_row_yoffs
-                + empty_row_livery_offset
-                + graphics_constants.spriterow_height,
-            )
+        crop_box_vehicle_body = (
+            0,
+            self.cur_vehicle_empty_row_yoffs,
+            self.sprites_max_x_extent,
+            self.cur_vehicle_empty_row_yoffs + graphics_constants.spriterow_height,
+        )
 
-            vehicle_base_image = self.comp_chassis_and_body(
-                self.vehicle_source_image.copy().crop(crop_box_vehicle_body)
-            )
-            # vehicle_base_image.show()
+        vehicle_base_image = self.comp_chassis_and_body(
+            self.vehicle_source_image.copy().crop(crop_box_vehicle_body)
+        )
+        # vehicle_base_image.show()
 
-            bulk_cargo_rows_image = Image.new(
-                "P", (graphics_constants.spritesheet_width, cargo_group_row_height), 255
-            )
-            bulk_cargo_rows_image.putpalette(DOS_PALETTE)
+        bulk_cargo_rows_image = Image.new(
+            "P", (graphics_constants.spritesheet_width, cargo_group_row_height), 255
+        )
+        bulk_cargo_rows_image.putpalette(DOS_PALETTE)
 
-            # paste the empty state into two rows, then paste the cargo over those rows
-            bulk_cargo_rows_image.paste(vehicle_base_image, crop_box_comp_dest_1)
-            bulk_cargo_rows_image.paste(vehicle_base_image, crop_box_comp_dest_2)
-            bulk_cargo_rows_image.paste(
-                cargo_base_image, crop_box_comp_dest_3, cargo_base_mask
-            )
-            # if self.consist.id == "dump_car_pony_gen_3A":
-            # bulk_cargo_rows_image.show()
+        # paste the empty state into two rows, then paste the cargo over those rows
+        bulk_cargo_rows_image.paste(vehicle_base_image, crop_box_comp_dest_1)
+        bulk_cargo_rows_image.paste(vehicle_base_image, crop_box_comp_dest_2)
+        bulk_cargo_rows_image.paste(
+            cargo_base_image, crop_box_comp_dest_3, cargo_base_mask
+        )
+        # if self.consist.id == "dump_car_pony_gen_3A":
+        # bulk_cargo_rows_image.show()
 
-            crop_box_dest = (0, 0, self.sprites_max_x_extent, cargo_group_row_height)
-            bulk_cargo_rows_image_as_spritesheet = pixa.make_spritesheet_from_image(
-                bulk_cargo_rows_image, DOS_PALETTE
-            )
+        crop_box_dest = (0, 0, self.sprites_max_x_extent, cargo_group_row_height)
+        bulk_cargo_rows_image_as_spritesheet = pixa.make_spritesheet_from_image(
+            bulk_cargo_rows_image, DOS_PALETTE
+        )
 
-            for (
-                label,
-                cargo_recolour_map,
-            ) in polar_fox.constants.bulk_cargo_recolour_maps:
-                self.units.append(
-                    AppendToSpritesheet(
-                        bulk_cargo_rows_image_as_spritesheet, crop_box_dest
-                    )
+        for (
+            label,
+            cargo_recolour_map,
+        ) in polar_fox.constants.bulk_cargo_recolour_maps:
+            self.units.append(
+                AppendToSpritesheet(bulk_cargo_rows_image_as_spritesheet, crop_box_dest)
+            )
+            self.units.append(SimpleRecolour(cargo_recolour_map))
+            self.units.append(
+                AddCargoLabel(
+                    label=label,
+                    x_offset=self.sprites_max_x_extent + 5,
+                    y_offset=-1 * cargo_group_row_height,
                 )
-                self.units.append(SimpleRecolour(cargo_recolour_map))
-                self.units.append(
-                    AddCargoLabel(
-                        label=label,
-                        x_offset=self.sprites_max_x_extent + 5,
-                        y_offset=-1 * cargo_group_row_height,
-                    )
-                )
+            )
 
     def add_piece_cargo_spriterows(self):
         cargo_group_output_row_height = 2 * graphics_constants.spriterow_height

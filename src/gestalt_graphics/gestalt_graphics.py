@@ -119,10 +119,6 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
         self.body_recolour_map = kwargs.get(
             "body_recolour_map", graphics_constants.body_recolour_CC1
         )
-        # option for alternative livery, will be selected by player flip on depot, default to 1 if not set
-        self.num_visible_cargo_liveries = (
-            2 if kwargs.get("has_alt_livery", False) else 1
-        )
         # cargo flags
         self.has_cover = kwargs.get("has_cover", False)
         self.has_bulk = kwargs.get("bulk", False)
@@ -152,9 +148,8 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
         # for e.g. tarpaulin cars, covered coil cars, insert a specific spriterow to show the cover when 100% loaded or travelling
         if self.has_cover:
             result.append("has_cover")
-        # assume an empty state spriterow per livery
-        for i in range(self.num_visible_cargo_liveries):
-            result.append("empty")
+        # 1 empty spriterow
+        result.append("empty")
         if self.has_bulk:
             result.append("bulk_cargo")
         if self.has_piece:
