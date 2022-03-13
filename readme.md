@@ -1,1 +1,1 @@
-Please see [COMPILING.md](./src/docs_templates/readme.pt).
+Please see (./src/docs_templates/readme.pt).
