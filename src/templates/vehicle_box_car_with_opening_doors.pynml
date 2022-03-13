@@ -3,23 +3,40 @@
 <!--! 'random_reverse' property is not supported in this template, vehicles using this template are all symmetrical, reversing would do nothing
       'flipped' is user flipping vehicle in depot and *is* supported here (used for livery selection tricks)
       don't conflate them :) -->
-<tal:user_flipped repeat="flipped ['unflipped', 'flipped']">
-    // default graphics chain
-    spriteset(${vehicle.id}_ss_doors_closed_${flipped}, "${graphics_path}${consist.id}.png") {
-        ${vehicle.get_spriteset_template_name('unreversed', flipped, 10 + (vehicle.spriterow_num * 30))}
-    }
-    spriteset(${vehicle.id}_ss_doors_open_${flipped}, "${graphics_path}${consist.id}.png") {
-        ${vehicle.get_spriteset_template_name('unreversed', flipped, 10 + (vehicle.spriterow_num * 30) + 30)}
-    }
-</tal:user_flipped>
 
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle,
-        [switch_graphics_box_car_with_opening_doors_check_flip() + switch_graphics_opening_doors()]) {
-    <!--! stupid integer stuffing scheme to detect flip / doors states, see the procedures for the schema -->
-    0: return ${vehicle.id}_ss_doors_closed_unflipped;
-    1: return ${vehicle.id}_ss_doors_open_unflipped;
-    10: return ${vehicle.id}_ss_doors_closed_flipped;
-    11: return ${vehicle.id}_ss_doors_open_flipped;
+<tal:weathered_variants repeat="weathered_variant consist.gestalt_graphics.weathered_variants">
+    <tal:user_flipped repeat="flipped ['unflipped', 'flipped']">
+        // default graphics chain
+        spriteset(${vehicle.id}_ss_${weathered_variant}_doors_closed_${flipped}, "${graphics_path}${consist.id}.png") {
+            ${vehicle.get_spriteset_template_name('unreversed', flipped, 10 + (vehicle.spriterow_num * 30) + (repeat.weathered_variant.index * 60))}
+        }
+        spriteset(${vehicle.id}_ss_${weathered_variant}_doors_open_${flipped}, "${graphics_path}${consist.id}.png") {
+            ${vehicle.get_spriteset_template_name('unreversed', flipped, 10 + (vehicle.spriterow_num * 30) + (repeat.weathered_variant.index * 60) + 30)}
+        }
+    </tal:user_flipped>
+
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_${weathered_variant},
+            [switch_graphics_box_car_with_opening_doors_check_flip() + switch_graphics_opening_doors()]) {
+        <!--! stupid integer stuffing scheme to detect flip / doors states, see the procedures for the schema -->
+        0: return ${vehicle.id}_ss_${weathered_variant}_doors_closed_unflipped;
+        1: return ${vehicle.id}_ss_${weathered_variant}_doors_open_unflipped;
+        10: return ${vehicle.id}_ss_${weathered_variant}_doors_closed_flipped;
+        11: return ${vehicle.id}_ss_${weathered_variant}_doors_open_flipped;
+    }
+</tal:weathered_variants>
+
+<!--! ! note that support here is for either ['unweathered'] or ['unweathered', 'weathered'] as only 1 random bit is picked, use more bits if that needs extended in future -->
+<!--! this could be parameterised procedure, as it's used for other gestalts also -->
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_choose_weathered_variant, switch_alternative_var_random_bits(0, 1)) {
+    <tal:weathered_variants repeat="weathered_variant consist.gestalt_graphics.weathered_variants">
+        ${repeat.weathered_variant.index}: return ${vehicle.id}_switch_graphics_vehicle_${weathered_variant};
+    </tal:weathered_variants>
+    return ${vehicle.id}_switch_graphics_vehicle_unweathered; <!--! this default should not be reached in this case, but eh -->
+}
+
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, param_wagon_colour_randomisation_strategy) {
+    2: ${vehicle.id}_switch_graphics_vehicle_unweathered; <!--! no randomisation -->
+    ${vehicle.id}_switch_graphics_vehicle_choose_weathered_variant;
 }
 
 <tal:include metal:use-macro="load: graphics_switches.pynml" />

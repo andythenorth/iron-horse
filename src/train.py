@@ -1898,8 +1898,12 @@ class BoxCarConsist(CarConsist):
         self.allow_flip = True
         # Graphics configuration
         self.roof_type = "freight"
+        weathered_variants = {
+            "unweathered": graphics_constants.box_livery_recolour_maps,
+        }
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
-            id_base="box_car", recolour_maps=graphics_constants.box_livery_recolour_maps
+            id_base="box_car",
+            weathered_variants=weathered_variants,
         )
 
 
@@ -2242,9 +2246,12 @@ class CurtainSideCarBoxConsist(CarConsist):
         self.allow_flip = True
         # Graphics configuration
         self.roof_type = "freight"
+        weathered_variants = {
+            "unweathered": graphics_constants.curtain_side_livery_recolour_maps,
+        }
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             id_base="curtain_side_box_car",
-            recolour_maps=graphics_constants.curtain_side_livery_recolour_maps,
+            weathered_variants=weathered_variants,
         )
 
 
@@ -2413,9 +2420,12 @@ class ExpressCarConsist(CarConsist):
             self.roof_type = "pax_mail_ridged"
         else:
             self.roof_type = "pax_mail_smooth"
+        weathered_variants = {
+            "unweathered": graphics_constants.box_livery_recolour_maps,
+        }
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             id_base="express_car",
-            recolour_maps=graphics_constants.box_livery_recolour_maps,
+            weathered_variants=weathered_variants,
         )
 
 
@@ -2550,9 +2560,12 @@ class FruitVegCarConsist(CarConsist):
         self.allow_flip = True
         # Graphics configuration
         self.roof_type = "freight"
+        weathered_variants = {
+            "unweathered": graphics_constants.fruit_veg_livery_recolour_maps,
+        }
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             id_base="box_car",
-            recolour_maps=graphics_constants.fruit_veg_livery_recolour_maps,
+            weathered_variants=weathered_variants,
         )
 
 
@@ -2870,9 +2883,12 @@ class LivestockCarConsist(CarConsist):
         self.cc_num_to_randomise = 2
         # Graphics configuration
         self.roof_type = "freight"
+        weathered_variants = {
+            "unweathered": graphics_constants.livestock_livery_recolour_maps,
+        }
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             id_base="livestock_car",
-            recolour_maps=graphics_constants.livestock_livery_recolour_maps,
+            weathered_variants=weathered_variants,
         )
 
 
@@ -3514,9 +3530,12 @@ class ReeferCarConsist(CarConsist):
         )
         # Graphics configuration
         self.roof_type = "freight"
+        weathered_variants = {
+            "unweathered": graphics_constants.refrigerated_livery_recolour_maps,
+        }
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             id_base="box_car",
-            recolour_maps=graphics_constants.refrigerated_livery_recolour_maps,
+            weathered_variants=weathered_variants,
         )
 
 
@@ -3683,9 +3702,13 @@ class SlidingWallCarConsist(CarConsist):
         )
         # Graphics configuration
         self.roof_type = "freight"
+        weathered_variants = {
+            "unweathered": graphics_constants.sliding_wall_livery_recolour_maps,
+            "weathered": graphics_constants.sliding_wall_livery_recolour_maps_weathered,
+        }
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             id_base="sliding_wall_car",
-            recolour_maps=graphics_constants.sliding_wall_livery_recolour_maps,
+            weathered_variants=weathered_variants,
         )
 
 
@@ -3858,9 +3881,12 @@ class VehiclePartsBoxCarConsist(CarConsist):
         )
         # Graphics configuration
         self.roof_type = "freight"
+        weathered_variants = {
+            "unweathered": graphics_constants.box_livery_recolour_maps,
+        }
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             id_base="vehicle_parts_box_car",
-            recolour_maps=graphics_constants.box_livery_recolour_maps,
+            weathered_variants=weathered_variants,
         )
 
 

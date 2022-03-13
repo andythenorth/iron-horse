@@ -1105,11 +1105,15 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             box_car_rows_image, DOS_PALETTE
         )
 
-        self.units.append(
-            AppendToSpritesheet(box_car_rows_image_as_spritesheet, crop_box_dest)
-        )
-        self.units.append(SimpleRecolour(self.consist.gestalt_graphics.recolour_map))
-        box_car_input_image_1.close()
+        for (
+            weathered_variant,
+            recolour_maps,
+        ) in self.consist.gestalt_graphics.weathered_variants.items():
+            self.units.append(
+                AppendToSpritesheet(box_car_rows_image_as_spritesheet, crop_box_dest)
+            )
+            self.units.append(SimpleRecolour(recolour_maps[0][1]))
+            box_car_input_image_1.close()
 
     def add_caboose_spriterows(self, row_count):
         for row_num in range(int(row_count / 2)):

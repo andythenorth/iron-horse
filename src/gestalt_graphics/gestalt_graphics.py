@@ -231,16 +231,20 @@ class GestaltGraphicsBoxCarOpeningDoors(GestaltGraphics):
     - no cargo is shown by design (TMWFTLB: piece sprites could be generated in, but setting up masks etc for all vehicles is unwanted complexity)
     """
 
-    def __init__(self, recolour_maps, **kwargs):
+    def __init__(self, weathered_variants, **kwargs):
         super().__init__()
         # as of Jan 2018 only one pipeline is used, but support is in place for alternative pipelines
         self.pipelines = pipelines.get_pipelines(
             ["extend_spriterows_for_composited_sprites_pipeline"]
         )
-        # common format for recolour_maps provides multiple remaps
-        # but just one livery remap is supported for this gestalt, and should be the first in the remap list
-        self.recolour_map = recolour_maps[0][1]
         self.id_base = kwargs.get("id_base")
+        # a default 'unweathered' variant must be provided
+        # additional sets of recolour maps can be provided to generate 'weathered' sprites
+        # these will be randomly selected in-game for visual variety
+        # this is separate and complementary to the minor variations to vehicle company colours using in-game recolour sprites
+        # there is no support here for weathered variants that depend on hand-drawn pixels, it's all recolour maps as of March 2022 - could change if needed
+        # note also that box cars have only one recolour map for *cargo*, which should be on 'DFLT',
+        self.weathered_variants = weathered_variants
 
     @property
     def generic_rows(self):

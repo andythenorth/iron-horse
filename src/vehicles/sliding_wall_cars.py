@@ -73,7 +73,7 @@ def main():
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="2_axle_1cc_filled_20px",
         symmetry_type="asymmetric",
-        spriterow_num=2,
+        spriterow_num=4,
     )
 
     consist = SlidingWallCarConsist(
@@ -117,5 +117,5 @@ def main():
         suppress_roof_sprite=True,  # non-standard roof for this wagon
         chassis="2_axle_1cc_filled_20px",
         symmetry_type="asymmetric",
-        spriterow_num=2,
+        spriterow_num=4,
     )

@@ -500,3 +500,6 @@ silo_livery_recolour_maps = (
 sliding_wall_livery_recolour_maps = (
     ("DFLT", {40: 4, 41: 5, 42: 6, 43: 7, 44: 20, 45: 21, 46: 22, 47: 13}),
 )
+sliding_wall_livery_recolour_maps_weathered = (
+    ("DFLT", {40: 33, 41: 34, 42: 6, 43: 36, 44: 20, 45: 21, 46: 22, 47: 39}),
+)
