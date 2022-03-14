@@ -47,12 +47,12 @@ sliding_roof_car_body_recolour_map = {
 sliding_roof_car_body_recolour_map_weathered = {
     40: 33,
     41: 34,
-    42: 35,
-    43: 7,
+    42: 6,
+    43: 36,
     44: 20,
     45: 21,
     46: 22,
-    47: 13,
+    47: 39,
 }
 
 # --- Cargo Livery Recolour Maps --- #
