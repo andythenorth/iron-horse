@@ -44,6 +44,16 @@ sliding_roof_car_body_recolour_map = {
     46: 22,
     47: 13,
 }
+sliding_roof_car_body_recolour_map_weathered = {
+    40: 33,
+    41: 34,
+    42: 35,
+    43: 7,
+    44: 20,
+    45: 21,
+    46: 22,
+    47: 13,
+}
 
 # --- Cargo Livery Recolour Maps --- #
 # label order matters, so tuples are used not dicts

@@ -856,18 +856,26 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             self.sprites_max_x_extent,
             graphics_constants.spriterow_height,
         )
-        self.units.append(
-            AppendToSpritesheet(
-                vehicle_generic_spriterow_input_as_spritesheet, crop_box_dest
-            )
+
+        # !! oof shim hax, not all gestalts have weathered_variants defined
+        variants = getattr(
+            self.consist.gestalt_graphics, "weathered_variants", {"cabbage": None}
         )
-        self.units.append(
-            AddCargoLabel(
-                label=label,
-                x_offset=self.sprites_max_x_extent + 5,
-                y_offset=-1 * graphics_constants.spriterow_height,
+        for variant, body_recolour_map in variants.items():
+            self.units.append(
+                AppendToSpritesheet(
+                    vehicle_generic_spriterow_input_as_spritesheet, crop_box_dest
+                )
             )
-        )
+            if body_recolour_map is not None:
+                self.units.append(SimpleRecolour(body_recolour_map))
+            self.units.append(
+                AddCargoLabel(
+                    label=label,
+                    x_offset=self.sprites_max_x_extent + 5,
+                    y_offset=-1 * graphics_constants.spriterow_height,
+                )
+            )
 
     def add_livery_spriterows(self):
         # no loading / loaded states, intended for tankers etc
@@ -1256,21 +1264,32 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             bulk_cargo_rows_image, DOS_PALETTE
         )
 
+        # !! note that body_recolour_map is unused and unsupported as of March 2022
+        # at March 2022 all wagons with bulk cargo are drawn using actual colours
+        # the purple range used for cargo recolouring would clash with the typical body recolouring (and the default body recolour map on this gestalt)
+        # this could be worked around by using the dark red option, but work would be needed to eliminate the clash
+        # !! we still have to duplicate the entire set of bulk spriterows per weathered variant, as the nml templating expects this (would be unwise to snowflake it)
         for (
-            label,
-            cargo_recolour_map,
-        ) in polar_fox.constants.bulk_cargo_recolour_maps:
-            self.units.append(
-                AppendToSpritesheet(bulk_cargo_rows_image_as_spritesheet, crop_box_dest)
-            )
-            self.units.append(SimpleRecolour(cargo_recolour_map))
-            self.units.append(
-                AddCargoLabel(
-                    label=label,
-                    x_offset=self.sprites_max_x_extent + 5,
-                    y_offset=-1 * cargo_group_row_height,
+            weathered_variant,
+            body_recolour_map,
+        ) in self.consist.gestalt_graphics.weathered_variants.items():
+            for (
+                label,
+                cargo_recolour_map,
+            ) in polar_fox.constants.bulk_cargo_recolour_maps:
+                self.units.append(
+                    AppendToSpritesheet(
+                        bulk_cargo_rows_image_as_spritesheet, crop_box_dest
+                    )
                 )
-            )
+                self.units.append(SimpleRecolour(cargo_recolour_map))
+                self.units.append(
+                    AddCargoLabel(
+                        label=label,
+                        x_offset=self.sprites_max_x_extent + 5,
+                        y_offset=-1 * cargo_group_row_height,
+                    )
+                )
 
     def add_piece_cargo_spriterows(self):
         cargo_group_output_row_height = 2 * graphics_constants.spriterow_height
@@ -1431,19 +1450,23 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                 vehicle_comped_image, DOS_PALETTE
             )
 
-            self.units.append(
-                AppendToSpritesheet(vehicle_comped_image_as_spritesheet, crop_box_dest)
-            )
-            self.units.append(
-                SimpleRecolour(self.consist.gestalt_graphics.body_recolour_map)
-            )
-            self.units.append(
-                AddCargoLabel(
-                    label=cargo_filename,
-                    x_offset=self.sprites_max_x_extent + 5,
-                    y_offset=-1 * cargo_group_output_row_height,
+            for (
+                weathered_variant,
+                body_recolour_map,
+            ) in self.consist.gestalt_graphics.weathered_variants.items():
+                self.units.append(
+                    AppendToSpritesheet(
+                        vehicle_comped_image_as_spritesheet, crop_box_dest
+                    )
                 )
-            )
+                self.units.append(SimpleRecolour(body_recolour_map))
+                self.units.append(
+                    AddCargoLabel(
+                        label=cargo_filename,
+                        x_offset=self.sprites_max_x_extent + 5,
+                        y_offset=-1 * cargo_group_output_row_height,
+                    )
+                )
 
     def render(self, consist, global_constants):
         self.units = (

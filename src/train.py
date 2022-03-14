@@ -2018,12 +2018,12 @@ class CoilBuggyCarConsist(CarConsist):
             cargo_row_map={},  # leave blank, all default to same
             generic_rows=[0],
             unique_spritesets=[
-                ["empty", "flipped", 10],
-                ["loading_0", "flipped", 40],
-                ["loaded_0", "flipped", 40],
-                ["empty", "unflipped", 10],
-                ["loading_0", "unflipped", 40],
-                ["loaded_0", "unflipped", 40],
+                ["unweathered", "empty", "flipped", 10],
+                ["unweathered", "loading_0", "flipped", 40],
+                ["unweathered", "loaded_0", "flipped", 40],
+                ["unweathered", "empty", "unflipped", 10],
+                ["unweathered", "loading_0", "unflipped", 40],
+                ["unweathered", "loaded_0", "unflipped", 40],
             ],
         )
 
@@ -2061,8 +2061,9 @@ class CoilCarCoveredConsist(CoilCarConsistBase):
         self.cc_num_to_randomise = 2
         self._joker = True
         # Graphics configuration
+        weathered_variants = {"unweathered": graphics_constants.body_recolour_CC2}
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
-            body_recolour_map=graphics_constants.body_recolour_CC2,
+            weathered_variants=weathered_variants,
             piece="coil",
             has_cover=True,
         )
@@ -2753,12 +2754,12 @@ class IngotCarConsist(CarConsist):
             cargo_row_map={},  # leave blank, all default to same
             generic_rows=[0],
             unique_spritesets=[
-                ["empty", "flipped", 10],
-                ["loading_0", "flipped", 40],
-                ["loaded_0", "flipped", 70],
-                ["empty", "unflipped", 10],
-                ["loading_0", "unflipped", 40],
-                ["loaded_0", "unflipped", 70],
+                ["unweathered", "empty", "flipped", 10],
+                ["unweathered", "loading_0", "flipped", 40],
+                ["unweathered", "loaded_0", "flipped", 70],
+                ["unweathered", "empty", "unflipped", 10],
+                ["unweathered", "loading_0", "unflipped", 40],
+                ["unweathered", "loaded_0", "unflipped", 70],
             ],
         )
 
@@ -3635,12 +3636,12 @@ class SlagLadleCarConsist(CarConsist):
             cargo_row_map={"SLAG": [0]},
             generic_rows=[0],
             unique_spritesets=[
-                ["empty", "flipped", 10],
-                ["loading_0", "flipped", 40],
-                ["loaded_0", "flipped", 70],
-                ["empty", "unflipped", 10],
-                ["loading_0", "unflipped", 40],
-                ["loaded_0", "unflipped", 70],
+                ["unweathered", "empty", "flipped", 10],
+                ["unweathered", "loading_0", "flipped", 40],
+                ["unweathered", "loaded_0", "flipped", 70],
+                ["unweathered", "empty", "unflipped", 10],
+                ["unweathered", "loading_0", "unflipped", 40],
+                ["unweathered", "loaded_0", "unflipped", 70],
             ],
         )
 
@@ -3667,8 +3668,12 @@ class SlidingRoofCarConsist(CarConsist):
         # allow flipping, used to flip company colour
         self.allow_flip = True
         # Graphics configuration
+        weathered_variants = {
+            "unweathered": graphics_constants.sliding_roof_car_body_recolour_map,
+            "weathered": graphics_constants.sliding_roof_car_body_recolour_map_weathered,
+        }
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
-            body_recolour_map=graphics_constants.sliding_roof_car_body_recolour_map,
+            weathered_variants=weathered_variants,
             piece="flat",
             has_cover=True,
         )
@@ -3817,8 +3822,11 @@ class TarpaulinCarConsist(CarConsist):
         # allow flipping, used to flip company colour
         self.allow_flip = True
         # Graphics configuration
+        weathered_variants = {
+            "unweathered": graphics_constants.tarpaulin_car_body_recolour_map
+        }
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
-            body_recolour_map=graphics_constants.tarpaulin_car_body_recolour_map,
+            weathered_variants=weathered_variants,
             piece="flat",
             has_cover=True,
         )

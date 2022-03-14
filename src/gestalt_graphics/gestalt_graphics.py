@@ -115,9 +115,11 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
         self.pipelines = pipelines.get_pipelines(
             ["extend_spriterows_for_composited_sprites_pipeline"]
         )
-        # default body recolour to CC1, pass param to over-ride as needed
-        self.body_recolour_map = kwargs.get(
-            "body_recolour_map", graphics_constants.body_recolour_CC1
+        # default unweathered body recolour to CC1, pass param to over-ride as needed
+        # can optionally extend with "weathered" variant and an appropriate recolour map
+        # (weathered variant only used for non-CC body recolouring; CC will provide variants via recolour sprites automatically)
+        self.weathered_variants = kwargs.get(
+            "weathered_variants", {"unweathered": graphics_constants.body_recolour_CC1}
         )
         # cargo flags
         self.has_cover = kwargs.get("has_cover", False)
@@ -200,21 +202,24 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
             start_y_cumulative = graphics_constants.spritesheet_top_margin
 
             if self.has_cover:
-                # add a row for covered sprite
-                result.append(["has_cover", flipped, start_y_cumulative])
-                start_y_cumulative += row_height
+                # add rows for covered sprite
+                for weathered_variant in self.weathered_variants.keys():
+                    result.append([weathered_variant, "has_cover", flipped, start_y_cumulative])
+                    start_y_cumulative += row_height
 
-            # add a row for empty sprite
-            result.append(["empty", flipped, start_y_cumulative])
-            start_y_cumulative += row_height
+            # add rows for empty sprite
+            for weathered_variant in self.weathered_variants.keys():
+                result.append([weathered_variant, "empty", flipped, start_y_cumulative])
+                start_y_cumulative += row_height
 
             # !! not sure unique_cargo_rows order will always reliably match to what's needed, but if it doesn't, explicitly sort it eh
             for row_num in unique_cargo_rows:
-                result.append(["loading_" + str(row_num), flipped, start_y_cumulative])
-                result.append(
-                    ["loaded_" + str(row_num), flipped, start_y_cumulative + 30]
-                )
-                start_y_cumulative += 2 * row_height
+                for weathered_variant in self.weathered_variants.keys():
+                    result.append([weathered_variant, "loading_" + str(row_num), flipped, start_y_cumulative])
+                    result.append(
+                        [weathered_variant, "loaded_" + str(row_num), flipped, start_y_cumulative + 30]
+                    )
+                    start_y_cumulative += 2 * row_height
         return result
 
 
@@ -724,6 +729,7 @@ class GestaltGraphicsCustom(GestaltGraphics):
         unique_spritesets=None,
         cargo_label_mapping=None,
         flag_switch_set_layers_register_more_sprites=False,
+        weathered_variants=None,
     ):
         super().__init__()
         self.pipelines = pipelines.get_pipelines(["pass_through_pipeline"])
@@ -736,6 +742,7 @@ class GestaltGraphicsCustom(GestaltGraphics):
         self._generic_rows = generic_rows
         self._unique_spritesets = unique_spritesets
         self._cargo_label_mapping = cargo_label_mapping
+        self._weathered_variants = weathered_variants
 
     @property
     def generic_rows(self):
@@ -760,3 +767,11 @@ class GestaltGraphicsCustom(GestaltGraphics):
     @property
     def cargo_label_mapping(self):
         return self._cargo_label_mapping
+
+    @property
+    def weathered_variants(self):
+        if self._weathered_variants == None:
+            # provide a default weathered_variant to spriteset templating, iff the template wants this attribute
+            return {"unweathered": {}}
+        else:
+            return self._weathered_variants
