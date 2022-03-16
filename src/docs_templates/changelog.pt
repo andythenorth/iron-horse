@@ -2,6 +2,28 @@ Changelog
 =========
 
 -------------
+2.41.0 Release
+-------------
+
+*Changes*
+
+- Sliding Roof Vans will now show randomly selected colour variations (paint fading etc) when purchased
+- Brake Vans now show appropriate sprite for current era when in depot and not attached to an engine
+
+
+*Fix*
+
+- parameters for wagon base colour 1 and 2 were ignored if wagon colour randomisation was turned off (via parameter)
+    - second fix of this one, previous fix was flawed and didn't solve the issue
+    - previous fix introduced another bug with Ore Dump Wagons not using company colour
+
+
+*Docs*
+
+- further improved 'Get started' page
+
+
+-------------
 2.40.0 Release
 -------------
 
