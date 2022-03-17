@@ -3041,13 +3041,12 @@ class MailHSTCarConsist(MailCarConsistBase):
         )
 
 
-class OpenCarConsist(CarConsist):
+class OpenCarConsistBase(CarConsist):
     """
     General cargo - refits everything except mail, pax.
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "open_car"
         super().__init__(**kwargs)
         self.class_refit_groups = ["all_freight"]
         self.label_refits_allowed = []  # no specific labels needed
@@ -3060,6 +3059,17 @@ class OpenCarConsist(CarConsist):
         )
         # allow flipping, used to flip company colour
         self.allow_flip = True
+
+
+class OpenCarConsist(OpenCarConsistBase):
+    """
+    Standard open car
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "open_car"
+        super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos["open"]
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(bulk=True, piece="open")
 
