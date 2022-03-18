@@ -1,4 +1,4 @@
-from train import SlidingWallCarConsist, FreightCar
+from train import BoxCarSlidingWallConsist, FreightCar
 
 
 def main():
@@ -6,7 +6,7 @@ def main():
 
     # starts gen 4, B and C only
 
-    consist = SlidingWallCarConsist(
+    consist = BoxCarSlidingWallConsist(
         roster_id="pony",
         base_numeric_id=1570,
         gen=4,
@@ -17,7 +17,7 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="2_axle_1cc_filled_24px")
 
-    consist = SlidingWallCarConsist(
+    consist = BoxCarSlidingWallConsist(
         roster_id="pony",
         base_numeric_id=1790,
         gen=4,
@@ -32,7 +32,7 @@ def main():
         chassis="4_axle_1cc_filled_32px",
     )
 
-    consist = SlidingWallCarConsist(
+    consist = BoxCarSlidingWallConsist(
         roster_id="pony", base_numeric_id=410, gen=5, subtype="B", sprites_complete=True
     )
 
@@ -42,7 +42,7 @@ def main():
         chassis="2_axle_1cc_filled_24px",
     )
 
-    consist = SlidingWallCarConsist(
+    consist = BoxCarSlidingWallConsist(
         roster_id="pony", base_numeric_id=440, gen=5, subtype="C", sprites_complete=True
     )
 
@@ -52,7 +52,7 @@ def main():
         chassis="4_axle_1cc_filled_32px",
     )
 
-    consist = SlidingWallCarConsist(
+    consist = BoxCarSlidingWallConsist(
         roster_id="pony",
         base_numeric_id=5190,
         gen=5,
@@ -76,7 +76,7 @@ def main():
         spriterow_num=4,
     )
 
-    consist = SlidingWallCarConsist(
+    consist = BoxCarSlidingWallConsist(
         roster_id="pony", base_numeric_id=330, gen=6, subtype="B", sprites_complete=True
     )
 
@@ -86,7 +86,7 @@ def main():
         chassis="2_axle_1cc_filled_24px",
     )
 
-    consist = SlidingWallCarConsist(
+    consist = BoxCarSlidingWallConsist(
         roster_id="pony", base_numeric_id=320, gen=6, subtype="C", sprites_complete=True
     )
 
@@ -96,7 +96,7 @@ def main():
         chassis="4_axle_1cc_filled_32px",
     )
 
-    consist = SlidingWallCarConsist(
+    consist = BoxCarSlidingWallConsist(
         roster_id="pony",
         base_numeric_id=5200,
         gen=6,

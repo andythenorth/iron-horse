@@ -1,4 +1,4 @@
-from train import VehiclePartsBoxCarConsist, FreightCar
+from train import BoxCarVehiclePartsConsist, FreightCar
 
 
 def main():
@@ -6,7 +6,7 @@ def main():
 
     # starts gen 4, B and C only
 
-    consist = VehiclePartsBoxCarConsist(
+    consist = BoxCarVehiclePartsConsist(
         roster_id="pony",
         base_numeric_id=4620,
         gen=4,
@@ -17,7 +17,7 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="2_axle_1cc_filled_24px")
 
-    consist = VehiclePartsBoxCarConsist(
+    consist = BoxCarVehiclePartsConsist(
         roster_id="pony",
         base_numeric_id=4630,
         gen=4,
@@ -32,7 +32,7 @@ def main():
         chassis="4_axle_1cc_filled_32px",
     )
 
-    consist = VehiclePartsBoxCarConsist(
+    consist = BoxCarVehiclePartsConsist(
         roster_id="pony",
         base_numeric_id=4640,
         gen=5,
@@ -46,7 +46,7 @@ def main():
         chassis="2_axle_1cc_filled_24px",
     )
 
-    consist = VehiclePartsBoxCarConsist(
+    consist = BoxCarVehiclePartsConsist(
         roster_id="pony",
         base_numeric_id=4650,
         gen=5,
@@ -60,7 +60,7 @@ def main():
         chassis="4_axle_1cc_filled_32px",
     )
 
-    consist = VehiclePartsBoxCarConsist(
+    consist = BoxCarVehiclePartsConsist(
         roster_id="pony",
         base_numeric_id=4660,
         gen=6,
@@ -74,7 +74,7 @@ def main():
         chassis="2_axle_1cc_filled_24px",
     )
 
-    consist = VehiclePartsBoxCarConsist(
+    consist = BoxCarVehiclePartsConsist(
         roster_id="pony",
         base_numeric_id=4670,
         gen=6,
