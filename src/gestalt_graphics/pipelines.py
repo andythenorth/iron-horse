@@ -1282,6 +1282,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                         bulk_cargo_rows_image_as_spritesheet, crop_box_dest
                     )
                 )
+                self.units.append(SimpleRecolour(body_recolour_map))
                 self.units.append(SimpleRecolour(cargo_recolour_map))
                 self.units.append(
                     AddCargoLabel(

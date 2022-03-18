@@ -3074,6 +3074,25 @@ class OpenCarConsist(OpenCarConsistBase):
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(bulk=True, piece="open")
 
 
+class OpenCarMerchandiseConsist(OpenCarConsistBase):
+    """
+    Open car with alternative livery
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "merchandise_open_car"
+        super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos["open"]
+        # Graphics configuration
+        weathered_variants = {
+            "unweathered": graphics_constants.sliding_roof_car_body_recolour_map,
+            "weathered": graphics_constants.sliding_roof_car_body_recolour_map_weathered,
+        }
+        self.gestalt_graphics = GestaltGraphicsVisibleCargo(
+            bulk=True, piece="open", weathered_variants=weathered_variants
+        )
+
+
 class PassengerCarConsistBase(CarConsist):
     """
     Common base class for passenger cars.

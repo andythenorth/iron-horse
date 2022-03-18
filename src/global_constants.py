@@ -18,6 +18,7 @@ buy_menu_sort_order_wagons = [
     "intermodal_car",
     "low_floor_intermodal_car",
     "open_car",
+    "merchandise_open_car",
     "box_car",
     "curtain_side_box_car",
     "sliding_wall_car",
