@@ -1941,6 +1941,26 @@ class BoxCarCurtainSideConsist(BoxCarConsistBase):
         )
 
 
+class BoxCarMerchandiseConsist(BoxCarConsistBase):
+    """
+    Alternative livery for standard box car / van
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "merchandise_box_car"
+        super().__init__(**kwargs)
+        # Graphics configuration
+        self.roof_type = "freight"
+        weathered_variants = {
+            "unweathered": (("DFLT", graphics_constants.merchandise_car_body_recolour_map),),
+            "weathered": (("DFLT", graphics_constants.merchandise_car_body_recolour_map_weathered),),
+        }
+        self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
+            id_base="merchandise_box_car",
+            weathered_variants=weathered_variants,
+        )
+
+
 class BoxCarSlidingWallConsist(BoxCarConsistBase):
     """
     Sliding wall van - (cargowagon, habfiss, thrall, pullman all-door car etc) - same refits as box car.
@@ -3140,8 +3160,8 @@ class OpenCarMerchandiseConsist(OpenCarConsistBase):
         self.default_cargos = polar_fox.constants.default_cargos["open"]
         # Graphics configuration
         weathered_variants = {
-            "unweathered": graphics_constants.sliding_roof_car_body_recolour_map,
-            "weathered": graphics_constants.sliding_roof_car_body_recolour_map_weathered,
+            "unweathered": graphics_constants.merchandise_car_body_recolour_map,
+            "weathered": graphics_constants.merchandise_car_body_recolour_map_weathered,
         }
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             bulk=True, piece="open", weathered_variants=weathered_variants

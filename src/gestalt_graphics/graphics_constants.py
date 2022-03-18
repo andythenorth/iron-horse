@@ -34,6 +34,27 @@ spritesheet_width = 425
 
 tarpaulin_car_body_recolour_map = body_recolour_CC1
 
+merchandise_car_body_recolour_map = {
+    40: 4,
+    41: 5,
+    42: 6,
+    43: 7,
+    44: 20,
+    45: 21,
+    46: 22,
+    47: 13,
+}
+merchandise_car_body_recolour_map_weathered = {
+    40: 33,
+    41: 34,
+    42: 6,
+    43: 36,
+    44: 20,
+    45: 21,
+    46: 22,
+    47: 39,
+}
+
 sliding_roof_car_body_recolour_map = {
     40: 4,
     41: 5,

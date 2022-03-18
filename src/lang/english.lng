@@ -75,7 +75,7 @@ STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Covered Hopper
 STR_NAME_SUFFIX_CRYO_TANK_CAR                                   :Cryo Tanker
 STR_NAME_SUFFIX_CURTAIN_SIDE_BOX_CAR                            :Curtain Side Van
 STR_NAME_SUFFIX_DOUBLE_DECK_AUTOMOBILE_CAR                      :Car Transporter
-STR_NAME_SUFFIX_DRY_POWDER_HOPPER_CAR                            :Dry Powder Hopper
+STR_NAME_SUFFIX_DRY_POWDER_HOPPER_CAR                           :Dry Powder Hopper
 STR_NAME_SUFFIX_DUMP_CAR                                        :Mineral Wagon
 STR_NAME_SUFFIX_DUMP_CAR_HIGH_SIDE                              :High Side Mineral Wagon
 STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Edibles Tanker
@@ -97,6 +97,7 @@ STR_NAME_SUFFIX_LOG_CAR                                         :Log Carrier
 STR_NAME_SUFFIX_LOW_FLOOR_AUTOMOBILE_CAR                        :Low-floor Vehicle Transporter
 STR_NAME_SUFFIX_LOW_FLOOR_INTERMODAL_CAR                        :Low-floor Container Wagon
 STR_NAME_SUFFIX_MAIL_CAR                                        :Mail Van
+STR_NAME_SUFFIX_MERCHANDISE_BOX_CAR                             :Merchandise Van
 STR_NAME_SUFFIX_MERCHANDISE_OPEN_CAR                            :Merchandise Open Wagon
 STR_NAME_SUFFIX_MINERAL_COVERED_HOPPER_CAR                      :Mineral Covered Hopper
 STR_NAME_SUFFIX_MINERAL_HOPPER_CAR                              :Mineral Hopper
