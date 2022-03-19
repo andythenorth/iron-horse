@@ -96,7 +96,7 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_1cc_filled_32px")
+    consist.add_unit(type=FreightCar, chassis="4_axle_filled_greebled_32px")
     # no gen 6 as of March 2022, keep gen 5 around for appearance reasons
     """
     consist = OpenCarMerchandiseConsist(
