@@ -2,6 +2,22 @@ Changelog
 =========
 
 -------------
+2.42.0 Release
+-------------
+
+
+*Changes*
+
+- added wagons
+    - Merchandise Open Wagons
+    - Merchandise Vans
+    - Farm Products Vans
+- removed Fruit & Vegetables Vans
+- adjusted default refits for Farm Products Hoppers
+- improved appearance of Open Wagons
+
+
+-------------
 2.41.0 Release
 -------------
 
