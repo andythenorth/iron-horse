@@ -2556,6 +2556,7 @@ class FarmProductsBoxCarConsist(CarConsist):
     def __init__(self, **kwargs):
         self.base_id = "farm_products_box_car"
         super().__init__(**kwargs)
+        # note this is not derived from BoxCarBase, it's a standalone type
         self.class_refit_groups = []  # no classes, use explicit labels
         self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
             "fruit_veg"
