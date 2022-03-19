@@ -2550,7 +2550,7 @@ class ExpressIntermodalCarConsist(CarConsist):
 
 class FarmProductsBoxCarConsist(CarConsist):
     """
-    Fruit and vegetables, with improved decay rate
+    Farm type cargos - box cars / vans.
     """
 
     def __init__(self, **kwargs):
@@ -2581,7 +2581,7 @@ class FarmProductsBoxCarConsist(CarConsist):
 
 class FarmProductsHopperCarConsist(CarConsist):
     """
-    Dedicated to grain/farm type cargos.
+    Farm type cargos - covered hoppers.
     """
 
     def __init__(self, **kwargs):
