@@ -107,6 +107,7 @@ def main():
         chassis="4_axle_1cc_filled_32px",
     )
     """
+    """
     consist = BoxCarMerchandiseConsist(
         roster_id="pony",
         base_numeric_id=9000,
@@ -116,6 +117,7 @@ def main():
     )
 
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_greebled_24px")
+    """
     """
     consist = BoxCarMerchandiseConsist(
         roster_id="pony",
