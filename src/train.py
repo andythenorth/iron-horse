@@ -1956,7 +1956,7 @@ class BoxCarMerchandiseConsist(BoxCarConsistBase):
             "weathered": (("DFLT", graphics_constants.merchandise_car_body_recolour_map_weathered),),
         }
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
-            id_base="merchandise_box_car",
+            id_base="box_car",
             weathered_variants=weathered_variants,
         )
 
