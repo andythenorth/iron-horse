@@ -2573,6 +2573,7 @@ class FarmProductsBoxCarConsist(CarConsist):
         self.roof_type = "freight"
         weathered_variants = {
             "unweathered": graphics_constants.farm_products_box_car_livery_recolour_maps,
+            "weathered": graphics_constants.farm_products_box_car_livery_recolour_maps_weathered
         }
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             id_base="farm_products_box_car",

@@ -131,7 +131,11 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_filled_greebled_24px")
+    consist.add_unit(
+        type=FreightCar,
+        suppress_roof_sprite=True,  # non-standard roof for this wagon
+        chassis="2_axle_filled_greebled_24px",
+    )
 
     consist = FarmProductsBoxCarConsist(
         roster_id="pony",
@@ -141,4 +145,8 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_2cc_filled_32px")
+    consist.add_unit(
+        type=FreightCar,
+        suppress_roof_sprite=True,  # non-standard roof for this wagon
+        chassis="4_axle_filled_greebled_32px",
+    )
