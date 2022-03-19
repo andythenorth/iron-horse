@@ -2548,6 +2548,37 @@ class ExpressIntermodalCarConsist(CarConsist):
         return "default"
 
 
+class FarmProductsBoxCarConsist(CarConsist):
+    """
+    Fruit and vegetables, with improved decay rate
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "farm_products_box_car"
+        super().__init__(**kwargs)
+        self.class_refit_groups = []  # no classes, use explicit labels
+        self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
+            "fruit_veg"
+        ]
+        self.label_refits_disallowed = []
+        self.default_cargos = polar_fox.constants.default_cargos["fruit_veg"]
+        self.buy_cost_adjustment_factor = 1.2
+        self._intro_date_days_offset = (
+            global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
+        )
+        # allow flipping, used to flip company colour
+        self.allow_flip = True
+        # Graphics configuration
+        self.roof_type = "freight"
+        weathered_variants = {
+            "unweathered": graphics_constants.farm_products_box_car_livery_recolour_maps,
+        }
+        self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
+            id_base="farm_products_box_car",
+            weathered_variants=weathered_variants,
+        )
+
+
 class FarmProductsHopperCarConsist(CarConsist):
     """
     Dedicated to grain/farm type cargos.
@@ -2612,37 +2643,6 @@ class FlatCarConsist(CarConsist):
         self.allow_flip = True
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(piece="flat")
-
-
-class FruitVegCarConsist(CarConsist):
-    """
-    Fruit and vegetables, with improved decay rate
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = "fruit_veg_car"
-        super().__init__(**kwargs)
-        self.class_refit_groups = []  # no classes, use explicit labels
-        self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
-            "fruit_veg"
-        ]
-        self.label_refits_disallowed = []
-        self.default_cargos = polar_fox.constants.default_cargos["fruit_veg"]
-        self.buy_cost_adjustment_factor = 1.2
-        self._intro_date_days_offset = (
-            global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
-        )
-        # allow flipping, used to flip company colour
-        self.allow_flip = True
-        # Graphics configuration
-        self.roof_type = "freight"
-        weathered_variants = {
-            "unweathered": graphics_constants.fruit_veg_livery_recolour_maps,
-        }
-        self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
-            id_base="fruit_veg_car",
-            weathered_variants=weathered_variants,
-        )
 
 
 class GasTankCarConsistBase(CarConsist):

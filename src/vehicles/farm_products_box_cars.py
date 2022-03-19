@@ -1,9 +1,9 @@
-from train import FruitVegCarConsist, FreightCar
+from train import FarmProductsBoxCarConsist, FreightCar
 
 
 def main():
     # --------------- pony NG ----------------------------------------------------------------------
-    consist = FruitVegCarConsist(
+    consist = FarmProductsBoxCarConsist(
         roster_id="pony",
         base_numeric_id=1310,
         gen=1,
@@ -16,7 +16,7 @@ def main():
 
     # no gen 2 for NG, straight to gen 3
 
-    consist = FruitVegCarConsist(
+    consist = FarmProductsBoxCarConsist(
         roster_id="pony",
         base_numeric_id=1360,
         gen=3,
@@ -27,7 +27,7 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
 
-    consist = FruitVegCarConsist(
+    consist = FarmProductsBoxCarConsist(
         roster_id="pony",
         base_numeric_id=1520,
         gen=4,
@@ -39,7 +39,7 @@ def main():
     consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
 
     # --------------- pony --------------------------------------------------------------------------
-    consist = FruitVegCarConsist(
+    consist = FarmProductsBoxCarConsist(
         roster_id="pony",
         base_numeric_id=2640,
         gen=2,
@@ -49,7 +49,7 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
 
-    consist = FruitVegCarConsist(
+    consist = FarmProductsBoxCarConsist(
         roster_id="pony",
         base_numeric_id=2630,
         gen=3,
@@ -59,7 +59,7 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
 
-    consist = FruitVegCarConsist(
+    consist = FarmProductsBoxCarConsist(
         roster_id="pony",
         base_numeric_id=2620,
         gen=3,
@@ -69,7 +69,7 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="4_axle_filled_24px")
 
-    consist = FruitVegCarConsist(
+    consist = FarmProductsBoxCarConsist(
         roster_id="pony",
         base_numeric_id=2600,
         gen=4,
@@ -79,7 +79,7 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
 
-    consist = FruitVegCarConsist(
+    consist = FarmProductsBoxCarConsist(
         roster_id="pony",
         base_numeric_id=2610,
         gen=4,
@@ -89,7 +89,7 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_24px")
 
-    consist = FruitVegCarConsist(
+    consist = FarmProductsBoxCarConsist(
         roster_id="pony",
         base_numeric_id=3570,
         gen=4,
@@ -103,7 +103,7 @@ def main():
         chassis="4_axle_1cc_filled_32px",
     )
 
-    consist = FruitVegCarConsist(
+    consist = FarmProductsBoxCarConsist(
         roster_id="pony",
         base_numeric_id=2650,
         gen=5,
@@ -113,7 +113,7 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_greebled_24px")
 
-    consist = FruitVegCarConsist(
+    consist = FarmProductsBoxCarConsist(
         roster_id="pony",
         base_numeric_id=2660,
         gen=5,
@@ -123,7 +123,7 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="4_axle_filled_greebled_32px")
 
-    consist = FruitVegCarConsist(
+    consist = FarmProductsBoxCarConsist(
         roster_id="pony",
         base_numeric_id=1890,
         gen=6,
@@ -133,7 +133,7 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_greebled_24px")
 
-    consist = FruitVegCarConsist(
+    consist = FarmProductsBoxCarConsist(
         roster_id="pony",
         base_numeric_id=1900,
         gen=6,
