@@ -2559,10 +2559,10 @@ class FarmProductsBoxCarConsist(CarConsist):
         # note this is not derived from BoxCarBase, it's a standalone type
         self.class_refit_groups = []  # no classes, use explicit labels
         self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
-            "fruit_veg"
+            "farm_products"
         ]
         self.label_refits_disallowed = []
-        self.default_cargos = polar_fox.constants.default_cargos["fruit_veg"]
+        self.default_cargos = polar_fox.constants.default_cargos["farm_products_box"]
         self.buy_cost_adjustment_factor = 1.2
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
@@ -2589,23 +2589,11 @@ class FarmProductsHopperCarConsist(CarConsist):
         self.base_id = "farm_products_hopper_car"
         super().__init__(**kwargs)
         self.class_refit_groups = []  # no classes, use explicit labels
-        self.label_refits_allowed = [
-            "GRAI",
-            "BEAN",
-            "CASS",
-            "FMSP",
-            "FERT",
-            "MAIZ",
-            "WHEA",
-            "CERE",
-            "OLSD",
-            "NUTS",
-            "SEED",
-            "SGBT",
-            "TATO",
+        self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
+            "farm_products"
         ]
         self.label_refits_disallowed = []
-        self.default_cargos = []
+        self.default_cargos = polar_fox.constants.default_cargos["farm_products_hopper"]
         self._loading_speed_multiplier = 2
         self.buy_cost_adjustment_factor = 1.2
         self._intro_date_days_offset = (

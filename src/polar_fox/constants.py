@@ -186,6 +186,24 @@ allowed_refits_by_label = {
     ],  # not CBLK, gets dedicated vehicles or box
     "cryo_gases": ["CHLO", "O2__", "NH3_"],
     "edible_liquids": ["MILK", "WATR", "BEER", "FOOD", "EOIL"],
+    "farm_products": [
+        "BEAN",
+        "CASS",
+        "CERE",
+        "FERT",
+        "FMSP",
+        "FRUT",
+        "GRAI",
+        "JAVA",
+        "MAIZ",
+        "NUTS",
+        "OLSD",
+        "SEED",
+        "SGBT",
+        "TATO",
+        "WHEA",
+    ],
+    # fruit_veg deprecated, should be switched to farm_products instead
     "fruit_veg": ["FRUT", "BEAN", "CASS", "JAVA", "NUTS"],
     "long_products": [
         "STEL",
@@ -295,6 +313,8 @@ default_cargos = {
         "GOOD",
         "FOOD",
     ],  # ENSP was tried as default, but confusing when attached express cars for mail to pax trains
+    "farm_products_box": ["FRUT", "BEAN", "CASS", "JAVA", "NUTS"],
+    "farm_products_hopper": ["MAIZ", "GRAI", "WHEA", "CERE", "SGBT", "OLSD", "CASS", "NUTS"],
     "flat": ["ALUM", "WDPR", "STEL", "COPR", "METL"],
     "flat_sliding_roof": [
         "ZINC",
@@ -310,6 +330,7 @@ default_cargos = {
         "FMSP",
         "WDPR",
     ],  # possibly tarpaulin roof shouldn't be flat at all?
+    # fruit_veg should be deprecated
     "fruit_veg": ["FRUT", "BEAN", "CASS", "JAVA", "NUTS"],
     "hopper_coal": ["COAL", "COKE", "NITR", "POTA"],
     "hopper_ore": ["IORE", "CORE", "PORE", "PHOS", "COKE"],
