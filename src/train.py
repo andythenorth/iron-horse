@@ -3639,7 +3639,7 @@ class ReeferCarConsist(CarConsist):
             "unweathered": graphics_constants.refrigerated_livery_recolour_maps,
         }
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
-            id_base="box_car",
+            id_base="reefer_car",
             weathered_variants=weathered_variants,
         )
 
