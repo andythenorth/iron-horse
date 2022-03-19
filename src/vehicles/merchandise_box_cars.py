@@ -109,7 +109,7 @@ def main():
     """
     consist = BoxCarMerchandiseConsist(
         roster_id="pony",
-        base_numeric_id=7230,
+        base_numeric_id=9000,
         gen=5,
         subtype="B",
         sprites_complete=False,
