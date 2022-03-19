@@ -60,6 +60,16 @@ def main():
         roster_id="pony",
         base_numeric_id=7270,
         gen=5,
+        subtype="A",
+        sprites_complete=False,
+    )
+
+    consist.add_unit(type=FreightCar, chassis="2_axle_filled_greebled_16px")
+
+    consist = OpenCarMerchandiseConsist(
+        roster_id="pony",
+        base_numeric_id=7280,
+        gen=5,
         subtype="B",
         sprites_complete=False,
     )
@@ -68,17 +78,18 @@ def main():
 
     consist = OpenCarMerchandiseConsist(
         roster_id="pony",
-        base_numeric_id=7280,
+        base_numeric_id=7290,
         gen=5,
         subtype="C",
         sprites_complete=False,
     )
 
     consist.add_unit(type=FreightCar, chassis="4_axle_1cc_filled_32px")
-
+    # no gen 6 as of March 2022, keep gen 5 around for appearance reasons
+    """
     consist = OpenCarMerchandiseConsist(
         roster_id="pony",
-        base_numeric_id=7290,
+        base_numeric_id=7300,
         gen=6,
         subtype="B",
         sprites_complete=False,
@@ -88,10 +99,11 @@ def main():
 
     consist = OpenCarMerchandiseConsist(
         roster_id="pony",
-        base_numeric_id=7300,
+        base_numeric_id=7310,
         gen=6,
         subtype="C",
         sprites_complete=False,
     )
 
     consist.add_unit(type=FreightCar, chassis="4_axle_1cc_filled_32px")
+    """
