@@ -2640,7 +2640,7 @@ class FruitVegCarConsist(CarConsist):
             "unweathered": graphics_constants.fruit_veg_livery_recolour_maps,
         }
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
-            id_base="box_car",
+            id_base="fruit_veg_car",
             weathered_variants=weathered_variants,
         )
 
