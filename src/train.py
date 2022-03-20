@@ -1952,8 +1952,15 @@ class BoxCarMerchandiseConsist(BoxCarConsistBase):
         # Graphics configuration
         self.roof_type = "freight"
         weathered_variants = {
-            "unweathered": (("DFLT", graphics_constants.merchandise_car_body_recolour_map),),
-            "weathered": (("DFLT", graphics_constants.merchandise_car_body_recolour_map_weathered),),
+            "unweathered": (
+                ("DFLT", graphics_constants.merchandise_car_body_recolour_map),
+            ),
+            "weathered": (
+                (
+                    "DFLT",
+                    graphics_constants.merchandise_car_body_recolour_map_weathered,
+                ),
+            ),
         }
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             id_base="box_car",
@@ -2573,7 +2580,7 @@ class FarmProductsBoxCarConsist(CarConsist):
         self.roof_type = "freight"
         weathered_variants = {
             "unweathered": graphics_constants.farm_products_box_car_livery_recolour_maps,
-            "weathered": graphics_constants.farm_products_box_car_livery_recolour_maps_weathered
+            "weathered": graphics_constants.farm_products_box_car_livery_recolour_maps_weathered,
         }
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             id_base="farm_products_box_car",
@@ -3627,6 +3634,7 @@ class ReeferCarConsist(CarConsist):
         self.roof_type = "freight"
         weathered_variants = {
             "unweathered": graphics_constants.refrigerated_livery_recolour_maps,
+            "weathered": graphics_constants.refrigerated_livery_recolour_maps_weathered,
         }
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             id_base="reefer_car",

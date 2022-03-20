@@ -89,7 +89,11 @@ def main():
         sprites_complete=False,
     )
 
-    consist.add_unit(type=ExpressCar, chassis="2_axle_filled_greebled_24px")
+    consist.add_unit(
+        type=ExpressCar,
+        suppress_roof_sprite=True,  # non-standard roof for this wagon
+        chassis="2_axle_filled_greebled_24px",
+    )
 
     consist = ReeferCarConsist(
         roster_id="pony",
@@ -99,7 +103,11 @@ def main():
         sprites_complete=False,
     )
 
-    consist.add_unit(type=ExpressCar, chassis="4_axle_1cc_filled_32px")
+    consist.add_unit(
+        type=ExpressCar,
+        suppress_roof_sprite=True,  # non-standard roof for this wagon
+        chassis="4_axle_filled_greebled_32px",
+    )
 
     consist = ReeferCarConsist(
         roster_id="pony",
@@ -109,7 +117,11 @@ def main():
         sprites_complete=False,
     )
 
-    consist.add_unit(type=ExpressCar, chassis="2_axle_filled_greebled_24px")
+    consist.add_unit(
+        type=ExpressCar,
+        suppress_roof_sprite=True,  # non-standard roof for this wagon
+        chassis="2_axle_1cc_filled_24px",
+    )
 
     consist = ReeferCarConsist(
         roster_id="pony",
@@ -119,4 +131,8 @@ def main():
         sprites_complete=False,
     )
 
-    consist.add_unit(type=ExpressCar, chassis="4_axle_1cc_filled_32px")
+    consist.add_unit(
+        type=ExpressCar,
+        suppress_roof_sprite=True,  # non-standard roof for this wagon
+        chassis="4_axle_1cc_filled_32px",
+    )

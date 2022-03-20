@@ -518,6 +518,21 @@ refrigerated_livery_recolour_maps = (
         },
     ),
 )
+refrigerated_livery_recolour_maps_weathered = (
+    (
+        "DFLT",
+        {
+            136: 17,
+            137: 18,
+            138: 19,
+            139: 20,
+            140: 21,
+            141: 12,
+            142: 13,
+            143: 15,
+        },
+    ),
+)
 
 silo_livery_recolour_maps = (
     (
