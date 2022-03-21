@@ -1941,6 +1941,26 @@ class BoxCarCurtainSideConsist(BoxCarConsistBase):
         )
 
 
+class BoxCarGoodsConsist(BoxCarConsistBase):
+    """
+    Alternative livery for standard box car / van
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "goods_box_car"
+        super().__init__(**kwargs)
+        # Graphics configuration
+        self.roof_type = "freight_brown"
+        weathered_variants = {
+            "unweathered": graphics_constants.goods_box_car_body_recolour_maps,
+            "weathered": graphics_constants.goods_box_car_body_recolour_maps_weathered,
+        }
+        self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
+            id_base="goods_box_car",
+            weathered_variants=weathered_variants,
+        )
+
+
 class BoxCarMerchandiseConsist(BoxCarConsistBase):
     """
     Alternative livery for standard box car / van

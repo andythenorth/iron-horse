@@ -21,6 +21,7 @@ buy_menu_sort_order_wagons = [
     "merchandise_open_car",
     "box_car",
     "merchandise_box_car",
+    "goods_box_car",
     "curtain_side_box_car",
     "sliding_wall_car",
     "vehicle_parts_box_car",

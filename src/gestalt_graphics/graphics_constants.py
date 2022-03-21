@@ -43,7 +43,7 @@ merchandise_car_body_recolour_map = {
     40 + 5: 21,
     40 + 6: 22,
     40 + 7: 13,
-    136 : 4,
+    136: 4,
     136 + 1: 5,
     136 + 2: 6,
     136 + 3: 7,
@@ -418,6 +418,37 @@ farm_products_box_car_livery_recolour_maps_weathered = (
             CC1 + 5: 61 + 5,
             CC1 + 6: 61 + 6,
             CC1 + 7: 61 + 7,
+        },
+    ),
+)
+
+goods_box_car_body_recolour_maps = (
+    (
+        "DFLT",
+        {
+            136: 71,
+            136 + 1: 72,
+            136 + 2: 73,
+            136 + 3: 74,
+            136 + 4: 75,
+            136 + 5: 76,
+            136 + 6: 77,
+            136 + 7: 119,
+        },
+    ),
+)
+goods_box_car_body_recolour_maps_weathered = (
+    (
+        "DFLT",
+        {
+            136: 70,
+            136 + 1: 71,
+            136 + 2: 72,
+            136 + 3: 73,
+            136 + 4: 74,
+            136 + 5: 75,
+            136 + 6: 76,
+            136 + 7: 118,
         },
     ),
 )

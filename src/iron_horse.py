@@ -58,6 +58,7 @@ from vehicles import express_railcar_passenger_trailer_cars
 from vehicles import farm_products_box_cars
 from vehicles import farm_products_hopper_cars
 from vehicles import flat_cars
+from vehicles import goods_box_cars
 from vehicles import hopper_cars
 from vehicles import hst_mail_cars
 from vehicles import hst_passenger_cars
@@ -304,6 +305,7 @@ def main():
     farm_products_box_cars.main()
     farm_products_hopper_cars.main()
     flat_cars.main()
+    goods_box_cars.main()
     hopper_cars.main()
     hst_mail_cars.main()
     hst_passenger_cars.main()
