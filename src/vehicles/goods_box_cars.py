@@ -27,10 +27,10 @@ def main():
     )
 
     consist.add_unit(type=FreightCar, chassis="4_axle_gapped_24px")
-
+    """
     consist = BoxCarGoodsConsist(
         roster_id="pony",
-        base_numeric_id=7320,
+        base_numeric_id=7440,
         gen=3,
         subtype="A",
         sprites_complete=False,
@@ -40,7 +40,7 @@ def main():
 
     consist = BoxCarGoodsConsist(
         roster_id="pony",
-        base_numeric_id=7330,
+        base_numeric_id=7450,
         gen=3,
         subtype="B",
         sprites_complete=False,
@@ -50,14 +50,14 @@ def main():
 
     consist = BoxCarGoodsConsist(
         roster_id="pony",
-        base_numeric_id=7340,
+        base_numeric_id=7460,
         gen=4,
         subtype="A",
         sprites_complete=False,
     )
 
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
-    """
+
     consist = BoxCarGoodsConsist(
         roster_id="pony",
         base_numeric_id=7400,
@@ -78,7 +78,6 @@ def main():
 
     consist.add_unit(
         type=FreightCar,
-
         chassis="4_axle_filled_32px",
     )
 
@@ -93,7 +92,7 @@ def main():
     consist.add_unit(
         type=FreightCar,
 
-        chassis="2_axle_filled_24px",
+        chassis="2_axle_1cc_filled_24px",
     )
 
     consist = BoxCarGoodsConsist(
@@ -106,6 +105,33 @@ def main():
 
     consist.add_unit(
         type=FreightCar,
-
-        chassis="4_axle_filled_32px",
+        chassis="4_axle_1cc_filled_32px",
     )
+    """
+    consist = BoxCarGoodsConsist(
+        roster_id="pony",
+        base_numeric_id=7420,
+        gen=6,
+        subtype="B",
+        sprites_complete=False,
+    )
+
+    consist.add_unit(
+        type=FreightCar,
+
+        chassis="2_axle_1cc_filled_24px",
+    )
+
+    consist = BoxCarGoodsConsist(
+        roster_id="pony",
+        base_numeric_id=7430,
+        gen=6,
+        subtype="C",
+        sprites_complete=False,
+    )
+
+    consist.add_unit(
+        type=FreightCar,
+        chassis="4_axle_1cc_filled_32px",
+    )
+    """
