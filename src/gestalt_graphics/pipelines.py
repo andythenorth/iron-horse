@@ -1270,13 +1270,13 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
         # this could be worked around by using the dark red option, but work would be needed to eliminate the clash
         # !! we still have to duplicate the entire set of bulk spriterows per weathered variant, as the nml templating expects this (would be unwise to snowflake it)
         for (
-            weathered_variant,
-            body_recolour_map,
-        ) in self.consist.gestalt_graphics.weathered_variants.items():
+            label,
+            cargo_recolour_map,
+        ) in polar_fox.constants.bulk_cargo_recolour_maps:
             for (
-                label,
-                cargo_recolour_map,
-            ) in polar_fox.constants.bulk_cargo_recolour_maps:
+                weathered_variant,
+                body_recolour_map,
+            ) in self.consist.gestalt_graphics.weathered_variants.items():
                 self.units.append(
                     AppendToSpritesheet(
                         bulk_cargo_rows_image_as_spritesheet, crop_box_dest
