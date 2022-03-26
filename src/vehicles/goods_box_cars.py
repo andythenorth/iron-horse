@@ -48,7 +48,7 @@ def main():
         base_numeric_id=7410,
         gen=4,
         subtype="C",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(
@@ -61,7 +61,7 @@ def main():
         base_numeric_id=7420,
         gen=5,
         subtype="B",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(
@@ -75,7 +75,7 @@ def main():
         base_numeric_id=7430,
         gen=5,
         subtype="C",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(
