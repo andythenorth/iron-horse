@@ -3,37 +3,12 @@ from train import BoxCarGoodsConsist, FreightCar
 
 def main():
     # --------------- pony ----------------------------------------------------------------------
-    """
-    # only type A for gen 1
-
-    consist = BoxCarGoodsConsist(
-        roster_id="pony",
-        base_numeric_id=7300,
-        gen=1,
-        subtype="A",
-        sprites_complete=False,
-    )
-
-    consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
-
-    # no new type A for gen 2, gen 1 type A continues
-
-    consist = BoxCarGoodsConsist(
-        roster_id="pony",
-        base_numeric_id=7310,
-        gen=2,
-        subtype="B",
-        sprites_complete=False,
-    )
-
-    consist.add_unit(type=FreightCar, chassis="4_axle_gapped_24px")
-    """
     consist = BoxCarGoodsConsist(
         roster_id="pony",
         base_numeric_id=7440,
         gen=3,
         subtype="A",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
@@ -43,7 +18,7 @@ def main():
         base_numeric_id=7450,
         gen=3,
         subtype="B",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=FreightCar, chassis="4_axle_filled_24px")
@@ -53,7 +28,7 @@ def main():
         base_numeric_id=7460,
         gen=4,
         subtype="A",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
@@ -63,7 +38,7 @@ def main():
         base_numeric_id=7400,
         gen=4,
         subtype="B",
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_24px")
