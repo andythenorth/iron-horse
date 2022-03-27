@@ -2,6 +2,22 @@ Changelog
 =========
 
 -------------
+2.43.0 Release
+-------------
+
+
+*Changes*
+
+- added Goods Vans
+- improved appearance of Refrigerated Vans
+
+
+*Fixes*
+
+- merchandise open wagons were showing wrong bulk cargo sprites
+
+
+-------------
 2.42.0 Release
 -------------
 
@@ -27,7 +43,7 @@ Changelog
 - Brake Vans now show appropriate sprite for current era when in depot and not attached to an engine
 
 
-*Fix*
+*Fixes*
 
 - parameters for wagon base colour 1 and 2 were ignored if wagon colour randomisation was turned off (via parameter)
     - second fix of this one, previous fix was flawed and didn't solve the issue
