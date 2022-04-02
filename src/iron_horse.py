@@ -191,15 +191,8 @@ def get_livery_2_engine_ids():
             if consist.force_default_pax_mail_livery == 2:
                 result.append(consist.id)
                 continue
-            # second livery choice is deliberate, means 'as seen in buy menu' livery is built for common case of express 1, heavy_express 1, super_heavy_express_1
-            # ! this (x,y) tuple format is weird and won't scale well, see train.py intro_date_days_offset() for a dict based solution to a similar problem
+            # generally it's better to force the livery per engine as wanted, but some railcars automatically switch by role
             if (consist.role, consist.role_child_branch_num) in [
-                ("branch_express", 1),
-                ("express", 2),
-                ("heavy_express", 2),
-                ("heavy_express", -2),
-                ("super_heavy_express", 2),
-                ("super_heavy_express", -2),
                 ("pax_railcar", 2),
                 ("mail_railcar", 2),
             ]:
