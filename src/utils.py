@@ -100,7 +100,7 @@ def unpack_colour(colour_name, cc_to_remap):
             "custom_wagon_recolour_sprites + 16 * "
             + str(remap_index)
             + " + company_colour"
-            + str(cc_to_remap)
+            + str(1 if cc_to_remap == 2 else 2)
         )
 
 
