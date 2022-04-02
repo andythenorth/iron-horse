@@ -7,7 +7,7 @@ def main():
     consist = CoveredHopperCarDryPowderConsist(
         roster_id="pony",
         base_numeric_id=5980,
-        gen=1,
+        gen=2,
         subtype="U",
         base_track_type="NG",
         sprites_complete=True,
