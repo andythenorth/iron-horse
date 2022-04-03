@@ -9,7 +9,7 @@ def main(roster_id):
         name="4-8-2 Spitfire",
         role="heavy_express",
         role_child_branch_num=-4,
-        power=2250,
+        power=2350,
         tractive_effort_coefficient=0.25,
         gen=3,
         sprites_complete=False,
@@ -17,7 +17,7 @@ def main(roster_id):
 
     consist.add_unit(
         type=SteamEngineUnit,
-        weight=120,
+        weight=124,
         vehicle_length=8,
         effect_offsets=[(-3, 0), (-2, 0)],  # double the smoke eh?
         spriterow_num=0,

@@ -9,7 +9,7 @@ def main(roster_id):
         name="2-8-2 Pegasus",
         role="heavy_express",
         role_child_branch_num=3,
-        power=2200,
+        power=2300,
         tractive_effort_coefficient=0.25,
         gen=3,
         sprites_complete=True,

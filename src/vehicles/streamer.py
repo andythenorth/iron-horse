@@ -9,7 +9,7 @@ def main(roster_id):
         name="4-6-4 Streamer",
         role="heavy_express",
         role_child_branch_num=-3,  # -ve because Joker
-        power=2200,  # slightly less than Strongbow (and lighter engine)
+        power=2300,
         tractive_effort_coefficient=0.18,
         gen=3,
         intro_date_offset=4,  # introduce later than gen epoch by design
