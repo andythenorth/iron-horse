@@ -366,7 +366,7 @@ def main(disabled=False):
             revolution,
             pegasus,
             streamer,
-            # spitfire,
+            spitfire,
             dragon,
             vulcan,
             falcon,
