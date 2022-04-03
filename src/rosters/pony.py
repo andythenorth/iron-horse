@@ -40,6 +40,7 @@ from vehicles import defiant
 from vehicles import diablo
 from vehicles import dover
 from vehicles import dragon
+from vehicles import dreadnought
 from vehicles import driving_cab_mail_pony_gen_5
 from vehicles import driving_cab_mail_pony_gen_6
 from vehicles import driving_cab_passenger_pony_gen_4
@@ -370,6 +371,7 @@ def main(disabled=False):
             vulcan,
             falcon,
             onslaught,
+            dreadnought,
             relentless,
             hurly_burly,
             moor_gallop,
