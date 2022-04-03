@@ -67,6 +67,7 @@ from vehicles import growler
 from vehicles import grub
 from vehicles import haar
 from vehicles import happy_train
+from vehicles import hawkinge
 from vehicles import hector
 from vehicles import helm_wind_cab
 from vehicles import helm_wind_middle
@@ -74,7 +75,6 @@ from vehicles import hercules
 from vehicles import high_flyer
 from vehicles import highlander
 from vehicles import hurly_burly
-from vehicles import iep_thing
 from vehicles import intrepid
 from vehicles import jupiter
 from vehicles import kelpie
@@ -122,7 +122,6 @@ from vehicles import slug
 from vehicles import snapper
 from vehicles import snowplough_pony_gen_2
 from vehicles import spinner
-from vehicles import spitfire
 from vehicles import stag
 from vehicles import stentor
 from vehicles import stoat
@@ -366,7 +365,7 @@ def main(disabled=False):
             revolution,
             pegasus,
             streamer,
-            spitfire,
+            hawkinge,
             dragon,
             vulcan,
             falcon,
@@ -471,7 +470,6 @@ def main(disabled=False):
             firebird,
             blaze,
             scorcher,
-            # iep_thing,
             helm_wind_cab,
             helm_wind_middle,
             brenner_cab,

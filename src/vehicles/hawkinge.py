@@ -4,9 +4,9 @@ from train import EngineConsist, SteamEngineUnit, SteamEngineTenderUnit
 def main(roster_id):
     consist = EngineConsist(
         roster_id=roster_id,
-        id="spitfire",
+        id="hawkinge",
         base_numeric_id=6410,
-        name="4-8-2 Spitfire",
+        name="4-8-2 Hawkinge",
         role="heavy_express",
         role_child_branch_num=-4,
         power=2350,
