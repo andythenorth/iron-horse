@@ -12,7 +12,8 @@ def main(roster_id):
         power=2350,
         tractive_effort_coefficient=0.25,
         gen=3,
-        sprites_complete=False,
+        intro_date_offset=5,  # introduce later than gen epoch by design
+        sprites_complete=True,
     )
 
     consist.add_unit(
@@ -27,7 +28,7 @@ def main(roster_id):
         type=SteamEngineTenderUnit, weight=32, vehicle_length=4, spriterow_num=1
     )
 
-    consist.description = """."""
+    consist.description = """Mr. Bulleid designed these. Do you like 'em?"""
     consist.foamer_facts = (
         """SR Merchant Navy / West Country / Battle of Britain classes"""
     )
