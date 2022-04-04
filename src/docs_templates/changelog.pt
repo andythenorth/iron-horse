@@ -2,6 +2,31 @@ Changelog
 =========
 
 -------------
+2.44.0 Release
+-------------
+
+*Changes*
+
+- added engines
+    - Hawkinge steam general purpose engine, 2350 hp, available around 1935
+    - Dreadnought diesel general purpose engine, 3300 hp, available around 1990
+- increased power of Pegasus and Streamer from 2200 hp to 2300 hp for balancing reasons
+- adjusted intro dates for narrow gauge Bulkhead Flat Wagons and Dry Powder Hoppers to better match standard gauge equivalents
+- adjusted how passenger and mail coaches choose livery based on lead engine
+    - passenger and mail coaches have alternate liveries, which the player can always select by ctrl-clicking the coach in depot
+    - for some engines, the alternate livery will also be used automatically when the coach is attached to the engine
+    - this is not a new feature, but was broken in recent releases and is now fixed
+    - the list of engines that trigger the alternate livery has been reviewed and reset
+
+
+*Codechanges*
+
+- set correct 2cc shade when a palette shade variant is returned
+    - copied from Unsinkable Sam where the behaviour was correct
+    - no-op in Iron Horse currently as 2cc isn't actually used in this way
+
+
+-------------
 2.43.0 Release
 -------------
 
