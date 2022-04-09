@@ -292,9 +292,10 @@ disallowed_refits_by_label = {
 # vehicle classes can also just provide their own list locally, using this is convenient, not obligatory
 # !! the names of these deliberately don't match to the names of the vehicle types in a specific grf, as each grf will use these differently to suit vehicle types
 default_cargos = {
-    "box": ["GOOD", "GLAS", "VPTS", "BOOM"],
-    "box_intermodal": ["POWR", "GOOD", "PAPR"],
+    "box": ["GOOD", "TYRE", "GLAS", "VPTS", "BOOM"],
     "box_curtain_side": ["VBOD", "BDMT", "FRUT", "FERT", "WDPR", "GOOD"],
+    "box_goods": ["GOOD", "GLAS", "FRUT", "BOOM"],
+    "box_intermodal": ["POWR", "GOOD", "PAPR"],
     "box_sliding_wall": ["VENG", "BOOM", "PAPR", "JAVA", "GOOD"],
     "box_vehicle_parts": ["VPTS", "PAPR", "RUBR", "STEL", "WOOL", "GOOD"],
     "bulkhead": ["STCB", "PIPE", "WDPR", "ALUM", "ZINC", "STEL", "COPR"],

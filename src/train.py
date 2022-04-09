@@ -1949,6 +1949,7 @@ class BoxCarGoodsConsist(BoxCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "goods_box_car"
         super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos["box_goods"]
         # Graphics configuration
         self.roof_type = "freight_brown"
         weathered_variants = {
