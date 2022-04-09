@@ -430,43 +430,19 @@ if (railtype_available("SAA3") || (loading_stage == LOADING_STAGE_RESERVE)) {
 												 "SAAa", "SABa", "SACa", "SADa", "SAEa",
 												 "SAAZ", "SSAZ", "SUAZ"];
 			powered_railtype_list:          ["SAAZ", "SSAZ", "SUAZ"];
-		}
-
-		//OpenTTD 1.1 19307
-		property {
 			construction_cost:          10;
 			map_colour:                 0x25;
-		}
-
-		//OpenTTD 1.1 21866
-		/*
-		property {
-			//introduction_date:
-			//requires_railtype_list:
-			//sort_order:
-			//introduces_railtype_list:["SAAZ", "SSAZ", "SUAZ"];
-		}
-		*/
-
-		//OpenTTD 1.2 23758
-		property {
 			toolbar_caption:            string(str_metrotrack_toolbar_caption);
 			maintenance_cost:           10;
 			alternative_railtype_list:  ["3RDR", "MTRO",
 										 "SAA3", "SAB3", "SAC3", "SAD3", "SAE3"];
 		}
-
 		//disallow level crossings
 		if (param_levelcrossings == 0) {
 			property {
 				railtype_flags:             bitmask(RAILTYPE_FLAG_NO_LEVEL_CROSSING);
 			}
 		}
-
-		/*
-		*  GRAPHICS
-		*/
-
 		graphics {
 			gui:                        switch_metro_gui;
 			track_overlay:              spriteset_metro_track_overlay_opengfx;
@@ -600,35 +576,12 @@ if (railtype_available("NAAN") || (loading_stage == LOADING_STAGE_RESERVE)) {
                                              "NAAE", "NABE", "NACE", "NADE", "NAEE"];
 			powered_railtype_list:          ["NABN", "NACN", "NADN", "NAEN",
                                              "NAAE", "NABE", "NACE", "NADE", "NAEE"];
-		}
-
-		//OpenTTD 1.1 19307
-		property {
 			construction_cost:          5;
 			map_colour:                 0x25;
-		}
-
-		//OpenTTD 1.1 21866
-		/*
-		property {
-			//introduction_date:
-			//requires_railtype_list:
-			//sort_order:
-			//introduces_railtype_list:
-		}
-		*/
-
-		//OpenTTD 1.2 23758
-		property {
 			toolbar_caption:            string(str_narrowgauge_toolbar_caption);
 			maintenance_cost:           7;
 			alternative_railtype_list:  ["NABN", "NACN", "NADN", "NAEN"];
 		}
-
-		/*
-		*  GRAPHICS
-		*/
-
 		graphics {
 			gui:                        switch_narrowgauge_gui;
 			track_overlay:              spriteset_narrowgauge_track_overlay_opengfx;
