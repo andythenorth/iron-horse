@@ -4433,6 +4433,22 @@ class CabControlPaxCarUnit(Train):
         self.capacity = self.get_pax_car_capacity()
 
 
+class BatteryHybridEngineUnit(Train):
+    """
+    Unit for a battery hybrid engine.
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.engine_class = "ENGINE_CLASS_DIESEL"
+        self.effects = {
+            "default": ["EFFECT_SPAWN_MODEL_DIESEL", "EFFECT_SPRITE_STEAM"]
+        }
+        self.consist.str_name_suffix = "STR_NAME_SUFFIX_BATTERY_HYBRID"
+        # most battery hybrid engines are asymmetric, over-ride per vehicle as needed
+        self._symmetry_type = kwargs.get("symmetry_type", "asymmetric")
+
+
 class DieselEngineUnit(Train):
     """
     Unit for a diesel engine.

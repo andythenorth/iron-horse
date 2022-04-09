@@ -1,4 +1,4 @@
-from train import EngineConsist, DieselEngineUnit
+from train import EngineConsist, BatteryHybridEngineUnit
 
 
 def main(roster_id):
@@ -22,7 +22,7 @@ def main(roster_id):
     )
 
     consist.add_unit(
-        type=DieselEngineUnit, weight=70, vehicle_length=4, spriterow_num=0
+        type=BatteryHybridEngineUnit, weight=70, vehicle_length=4, spriterow_num=0
     )
 
     consist.description = """Even Gronks don't last forever."""
