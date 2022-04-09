@@ -307,7 +307,9 @@ default_cargos = {
     "covered_roller_roof": ["KAOL", "QLME", "SALT"],
     "cryo_gases": ["O2__", "CHLO"],
     "dump": ["MNO2", "FECR", "NITR", "PHOS", "SAND", "GRVL"],
+    "dump_aggregates": ["LIME", "GRVL", "SAND", "CLAY"],
     "dump_high_sides": ["COKE", "PEAT", "COAL"],
+    "dump_ore": ["IORE", "PHOS", "PORE", "CORE"],
     "dump_scrap": ["SCMT", "COAL"],
     "edibles_tank": ["WATR", "MILK", "BEER"],
     "express": [

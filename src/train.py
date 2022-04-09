@@ -2402,7 +2402,7 @@ class DumpCarAggregateConsist(DumpCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "aggregate_car"
         super().__init__(**kwargs)
-        self.default_cargos = polar_fox.constants.default_cargos["dump_high_sides"]
+        self.default_cargos = polar_fox.constants.default_cargos["dump_aggregates"]
         self._joker = True
 
 
@@ -2429,7 +2429,7 @@ class DumpCarOreConsist(DumpCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "ore_dump_car"
         super().__init__(**kwargs)
-        self.default_cargos = polar_fox.constants.default_cargos["dump_high_sides"]
+        self.default_cargos = polar_fox.constants.default_cargos["dump_ore"]
         # type-specific wagon colour randomisation
         self.auto_colour_randomisation_strategy_num = (
             2  # no randomisation, but reverse on flip
