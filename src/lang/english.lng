@@ -168,25 +168,25 @@ STR_SPRITES_COMPLETE                                            :{}Sprites Compl
 STR_SPRITES_INCOMPLETE                                          :{}Sprites Complete: {GOLD}Nope
 
 #metro track strings
-str_metrotrack_name                             :Metro Track
-str_metrotrack_toolbar_caption                  :Metro Track Construction
-str_metrotrack_menu_text                        :Metro track construction
-str_metrotrack_build_window_caption             :New Metro Vehicles
-str_metrotrack_autoreplace_text                 :Metro Vehicles
-str_metrotrack_new_engine_text                  :metro
+STR_METROTRACK_NAME                                             :Metro Track
+STR_METROTRACK_TOOLBAR_CAPTION                                  :Metro Track Construction
+STR_METROTRACK_MENU_TEXT                                        :Metro track construction
+STR_METROTRACK_BUILD_WINDOW_CAPTION                             :New Metro Vehicles
+STR_METROTRACK_AUTOREPLACE_TEXT                                 :Metro Vehicles
+STR_METROTRACK_NEW_ENGINE_TEXT                                  :metro
 
 #narrowgauge track strings
-str_narrowgauge_name                            :Narrow Gauge Track
-str_narrowgauge_toolbar_caption                 :Narrow Gauge Track Construction
-str_narrowgauge_menu_text                       :Narrow Gauge track construction
-str_narrowgauge_build_window_caption            :New Narrow Gauge Vehicles
-str_narrowgauge_autoreplace_text                :Narrow Gauge Vehicles
-str_narrowgauge_new_engine_text                 :narrow gauge
+STR_NARROWGAUGE_NAME                                            :Narrow Gauge Track
+STR_NARROWGAUGE_TOOLBAR_CAPTION                                 :Narrow Gauge Track Construction
+STR_NARROWGAUGE_MENU_TEXT                                       :Narrow Gauge track construction
+STR_NARROWGAUGE_BUILD_WINDOW_CAPTION                            :New Narrow Gauge Vehicles
+STR_NARROWGAUGE_AUTOREPLACE_TEXT                                :Narrow Gauge Vehicles
+STR_NARROWGAUGE_NEW_ENGINE_TEXT                                 :narrow gauge
 
 #narrowgauge electrified track strings
-str_narrowgaugeelectrified_name                 :Electrified Narrow Gauge Track
-str_narrowgaugeelectrified_toolbar_caption      :Electrified Narrow Gauge Track Construction
-str_narrowgaugeelectrified_menu_text            :Electrified Narrow Gauge track construction
-str_narrowgaugeelectrified_build_window_caption :New Electrified Narrow Gauge Vehicles
-str_narrowgaugeelectrified_autoreplace_text     :Electrified Narrow Gauge Vehicles
-str_narrowgaugeelectrified_new_engine_text      :electrified narrow gauge
+#STR_NARROWGAUGEELECTRIFIED_NAME                                 :Electrified Narrow Gauge Track
+#STR_NARROWGAUGEELECTRIFIED_TOOLBAR_CAPTION                      :Electrified Narrow Gauge Track Construction
+#STR_NARROWGAUGEELECTRIFIED_MENU_TEXT                            :Electrified Narrow Gauge track construction
+#STR_NARROWGAUGEELECTRIFIED_BUILD_WINDOW_CAPTION                 :New Electrified Narrow Gauge Vehicles
+#STR_NARROWGAUGEELECTRIFIED_AUTOREPLACE_TEXT                     :Electrified Narrow Gauge Vehicles
+#STR_NARROWGAUGEELECTRIFIED_NEW_ENGINE_TEXT                      :electrified narrow gauge
