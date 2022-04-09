@@ -166,3 +166,27 @@ STR_BUY_MENU_HINT_RESTAURANT_CAR                                :{}{BLACK}Bonus:
 # project management
 STR_SPRITES_COMPLETE                                            :{}Sprites Complete: {GOLD}Yup
 STR_SPRITES_INCOMPLETE                                          :{}Sprites Complete: {GOLD}Nope
+
+#metro track strings
+str_metrotrack_name                             :Metro Track
+str_metrotrack_toolbar_caption                  :Metro Track Construction
+str_metrotrack_menu_text                        :Metro track construction
+str_metrotrack_build_window_caption             :New Metro Vehicles
+str_metrotrack_autoreplace_text                 :Metro Vehicles
+str_metrotrack_new_engine_text                  :metro
+
+#narrowgauge track strings
+str_narrowgauge_name                            :Narrow Gauge Track
+str_narrowgauge_toolbar_caption                 :Narrow Gauge Track Construction
+str_narrowgauge_menu_text                       :Narrow Gauge track construction
+str_narrowgauge_build_window_caption            :New Narrow Gauge Vehicles
+str_narrowgauge_autoreplace_text                :Narrow Gauge Vehicles
+str_narrowgauge_new_engine_text                 :narrow gauge
+
+#narrowgauge electrified track strings
+str_narrowgaugeelectrified_name                 :Electrified Narrow Gauge Track
+str_narrowgaugeelectrified_toolbar_caption      :Electrified Narrow Gauge Track Construction
+str_narrowgaugeelectrified_menu_text            :Electrified Narrow Gauge track construction
+str_narrowgaugeelectrified_build_window_caption :New Electrified Narrow Gauge Vehicles
+str_narrowgaugeelectrified_autoreplace_text     :Electrified Narrow Gauge Vehicles
+str_narrowgaugeelectrified_new_engine_text      :electrified narrow gauge
