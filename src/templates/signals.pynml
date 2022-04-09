@@ -17,40 +17,40 @@ template template_signals(x, y) {
 // legacy parameter for compatibility with switches imported from Termite - deprecate?
 param_customsignals = 1;
 
-spriteset (spriteset_signals_block_green, "${graphics_path}/railtypes/signals/signals_block.png") {
+spriteset (spriteset_signals_block_green, "${graphics_path}/signals/signals_block.png") {
     template_signals(0,0)
 }
-spriteset (spriteset_signals_block_red, "${graphics_path}/railtypes/signals/signals_block.png") {
+spriteset (spriteset_signals_block_red, "${graphics_path}/signals/signals_block.png") {
     template_signals(0,40)
 }
-spriteset (spriteset_signals_block_combo_green, "${graphics_path}/railtypes/signals/signals_block_combo.png") {
+spriteset (spriteset_signals_block_combo_green, "${graphics_path}/signals/signals_block_combo.png") {
     template_signals(0,0)
 }
-spriteset (spriteset_signals_block_combo_red, "${graphics_path}/railtypes/signals/signals_block_combo.png") {
+spriteset (spriteset_signals_block_combo_red, "${graphics_path}/signals/signals_block_combo.png") {
     template_signals(0,40)
 }
-spriteset (spriteset_signals_block_entry_green, "${graphics_path}/railtypes/signals/signals_block_entry.png") {
+spriteset (spriteset_signals_block_entry_green, "${graphics_path}/signals/signals_block_entry.png") {
     template_signals(0,0)
 }
-spriteset (spriteset_signals_block_entry_red, "${graphics_path}/railtypes/signals/signals_block_entry.png") {
+spriteset (spriteset_signals_block_entry_red, "${graphics_path}/signals/signals_block_entry.png") {
     template_signals(0,40)
 }
-spriteset (spriteset_signals_block_exit_green, "${graphics_path}/railtypes/signals/signals_block_exit.png") {
+spriteset (spriteset_signals_block_exit_green, "${graphics_path}/signals/signals_block_exit.png") {
     template_signals(0,0)
 }
-spriteset (spriteset_signals_block_exit_red, "${graphics_path}/railtypes/signals/signals_block_exit.png") {
+spriteset (spriteset_signals_block_exit_red, "${graphics_path}/signals/signals_block_exit.png") {
     template_signals(0,40)
 }
-spriteset (spriteset_signals_path_oneway_green, "${graphics_path}/railtypes/signals/signals_path_oneway.png") {
+spriteset (spriteset_signals_path_oneway_green, "${graphics_path}/signals/signals_path_oneway.png") {
     template_signals(0,0)
 }
-spriteset (spriteset_signals_path_oneway_red, "${graphics_path}/railtypes/signals/signals_path_oneway.png") {
+spriteset (spriteset_signals_path_oneway_red, "${graphics_path}/signals/signals_path_oneway.png") {
     template_signals(0,40)
 }
-spriteset (spriteset_signals_path_twoway_green, "${graphics_path}/railtypes/signals/signals_path_twoway.png") {
+spriteset (spriteset_signals_path_twoway_green, "${graphics_path}/signals/signals_path_twoway.png") {
     template_signals(0,0)
 }
-spriteset (spriteset_signals_path_twoway_red, "${graphics_path}/railtypes/signals/signals_path_twoway.png") {
+spriteset (spriteset_signals_path_twoway_red, "${graphics_path}/signals/signals_path_twoway.png") {
     template_signals(0,40)
 }
 
