@@ -66,7 +66,6 @@ def main():
 
     consist.add_unit(
         type=FreightCar,
-
         chassis="2_axle_1cc_filled_24px",
     )
 

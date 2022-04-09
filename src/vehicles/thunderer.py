@@ -15,7 +15,7 @@ def main(roster_id):
         fixed_run_cost_points=140,  # give a bonus so this can be a genuine mixed-traffic engine
         gen=2,
         intro_date_offset=10,  # introduce later than gen epoch by design
-        force_default_pax_mail_livery=2, # pax/mail cars default to second livery with this engine
+        force_default_pax_mail_livery=2,  # pax/mail cars default to second livery with this engine
         sprites_complete=True,
     )
 
