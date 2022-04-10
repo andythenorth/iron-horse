@@ -262,13 +262,13 @@ if (railtype_available("SAA3") || (loading_stage == LOADING_STAGE_RESERVE)) {
 			acceleration_model:             ACC_MODEL_RAIL;
 			//set compatible and powered
 			compatible_railtype_list:       ["RAIL", "ELRL",
-												 "SAAN", "SABN", "SACN", "SADN", "SAEN",
-												 "SAAE", "SABE", "SACE", "SADE", "SAEE",
-												 "SAAD", "SABD", "SACD", "SADD", "SAED",
-												 "SAAd", "SABd", "SACd", "SADd", "SAEd",
-												 "SAAA", "SABA", "SACA", "SADA", "SAEA",
-												 "SAAa", "SABa", "SACa", "SADa", "SAEa",
-												 "SAAZ", "SSAZ", "SUAZ"];
+                                             "SAAN", "SABN", "SACN", "SADN", "SAEN",
+                                             "SAAE", "SABE", "SACE", "SADE", "SAEE",
+                                             "SAAD", "SABD", "SACD", "SADD", "SAED",
+                                             "SAAd", "SABd", "SACd", "SADd", "SAEd",
+                                             "SAAA", "SABA", "SACA", "SADA", "SAEA",
+                                             "SAAa", "SABa", "SACa", "SADa", "SAEa",
+                                             "SAAZ", "SSAZ", "SUAZ"];
 			powered_railtype_list:          ["SAAZ", "SSAZ", "SUAZ"];
 			construction_cost:          10;
 			map_colour:                 0x25;
