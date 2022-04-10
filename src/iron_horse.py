@@ -21,6 +21,11 @@ from spritelayer_cargos import intermodal_containers
 
 from spritelayer_cargos import automobiles
 
+# import railtypes
+from railtypes import registered_railtypes
+from railtypes import metro
+from railtypes import narrow_gauge
+
 # import rosters
 from rosters import registered_rosters
 from rosters import pony
@@ -100,6 +105,13 @@ from vehicles import tank_cars
 from vehicles import tarpaulin_cars
 from vehicles import torpedo_cars
 from vehicles import vehicle_parts_box_cars
+
+
+def get_active_railtypes():
+    active_railtypes = [
+        railtype for railtype in registered_railtypes if not railtype.disabled
+    ]  # make sure it's iterable
+    return active_railtypes
 
 
 def get_active_rosters():
@@ -258,6 +270,10 @@ def get_restaurant_car_ids():
 
 
 def main():
+    # railtypes
+    metro.main(disabled=False)
+    narrow_gauge.main(disabled=False)
+
     # rosters
     pony.main(disabled=False)
 
