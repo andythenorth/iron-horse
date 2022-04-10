@@ -56,5 +56,5 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase, 0) {
     <tal:include metal:use-macro="load: capacity_switches.pynml" />
 </tal:optional_capacity_switches>
 
-<tal:include metal:use-macro="load: properties.pynml" />
+<tal:include metal:use-macro="load: properties_vehicle.pynml" />
 
