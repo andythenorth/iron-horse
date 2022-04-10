@@ -6,22 +6,7 @@ grf {
 	url: string(STR_GRF_DOCS_URL);
 	version: ${git_info.get_revision()};
 	min_compatible_version: 5408;
-	param 0 {
-        param_adjust_vehicle_capacity {
-            type: int;
-            name: string(STR_PARAM_ADJUST_VEHICLE_CAPACITY);
-            desc: string(STR_PARAM_ADJUST_VEHICLE_CAPACITY_DESC);
-            min_value: 0;
-            max_value: 3;
-            def_value: 1;
-            names: {
-                0: string(STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0);
-                1: string(STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1);
-                2: string(STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2);
-                3: string(STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_3);
-            };
-        }
-    }
+	<!--! note that params are in the order they appear in the OpenTTD UI, *not* the param number -->
 	param 1 {
 		param_roster {
 			name: string(STR_PARAM_ROSTER);
@@ -45,6 +30,22 @@ grf {
 			bit: 1;
 		}
 	}
+	param 0 {
+        param_adjust_vehicle_capacity {
+            type: int;
+            name: string(STR_PARAM_ADJUST_VEHICLE_CAPACITY);
+            desc: string(STR_PARAM_ADJUST_VEHICLE_CAPACITY_DESC);
+            min_value: 0;
+            max_value: 3;
+            def_value: 1;
+            names: {
+                0: string(STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0);
+                1: string(STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1);
+                2: string(STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2);
+                3: string(STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_3);
+            };
+        }
+    }
     <tal:num_options define="num_options 17">
         param 3 {
             param_wagon_base_colour_1 {
