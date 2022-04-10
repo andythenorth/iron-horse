@@ -170,27 +170,27 @@ STR_SPRITES_COMPLETE                                            :{}Sprites Compl
 STR_SPRITES_INCOMPLETE                                          :{}Sprites Complete: {GOLD}Nope
 
 #lolz track strings
-STR_RAILTYPE_LOLZ_NAME                                         :LOLZ Track
-STR_RAILTYPE_LOLZ_TOOLBAR_CAPTION                              :LOLZ Track Construction
-STR_RAILTYPE_LOLZ_MENU_TEXT                                    :LOLZ track construction
-STR_RAILTYPE_LOLZ_BUILD_WINDOW_CAPTION                         :New LOLZ Vehicles
-STR_RAILTYPE_LOLZ_AUTOREPLACE_TEXT                             :LOLZ Vehicles
-STR_RAILTYPE_LOLZ_NEW_ENGINE_TEXT                              :lolz
+STR_RAILTYPE_LOLZ_NAME                                         :Very High Speed Railway
+STR_RAILTYPE_LOLZ_TOOLBAR_CAPTION                              :Very High Speed Railway Construction
+STR_RAILTYPE_LOLZ_MENU_TEXT                                    :Very high speed railway construction
+STR_RAILTYPE_LOLZ_BUILD_WINDOW_CAPTION                         :New Very High Speed Vehicles
+STR_RAILTYPE_LOLZ_AUTOREPLACE_TEXT                             :Very High Speed Rail Vehicles
+STR_RAILTYPE_LOLZ_NEW_ENGINE_TEXT                              :very high speed
 
 #metro track strings
-STR_RAILTYPE_METRO_NAME                                         :Metro Track
-STR_RAILTYPE_METRO_TOOLBAR_CAPTION                              :Metro Track Construction
-STR_RAILTYPE_METRO_MENU_TEXT                                    :Metro track construction
+STR_RAILTYPE_METRO_NAME                                         :Metro Railway
+STR_RAILTYPE_METRO_TOOLBAR_CAPTION                              :Metro Railway Construction
+STR_RAILTYPE_METRO_MENU_TEXT                                    :Metro railway construction
 STR_RAILTYPE_METRO_BUILD_WINDOW_CAPTION                         :New Metro Vehicles
-STR_RAILTYPE_METRO_AUTOREPLACE_TEXT                             :Metro Vehicles
+STR_RAILTYPE_METRO_AUTOREPLACE_TEXT                             :Metro Rail Vehicles
 STR_RAILTYPE_METRO_NEW_ENGINE_TEXT                              :metro
 
 #narrowgauge track strings
-STR_RAILTYPE_NARROW_GAUGE_NAME                                  :Narrow Gauge Track
-STR_RAILTYPE_NARROW_GAUGE_TOOLBAR_CAPTION                       :Narrow Gauge Track Construction
-STR_RAILTYPE_NARROW_GAUGE_MENU_TEXT                             :Narrow Gauge track construction
+STR_RAILTYPE_NARROW_GAUGE_NAME                                  :Narrow Gauge Railway
+STR_RAILTYPE_NARROW_GAUGE_TOOLBAR_CAPTION                       :Narrow Gauge Railway Construction
+STR_RAILTYPE_NARROW_GAUGE_MENU_TEXT                             :Narrow gauge railway construction
 STR_RAILTYPE_NARROW_GAUGE_BUILD_WINDOW_CAPTION                  :New Narrow Gauge Vehicles
-STR_RAILTYPE_NARROW_GAUGE_AUTOREPLACE_TEXT                      :Narrow Gauge Vehicles
+STR_RAILTYPE_NARROW_GAUGE_AUTOREPLACE_TEXT                      :Narrow Gauge Rail Vehicles
 STR_RAILTYPE_NARROW_GAUGE_NEW_ENGINE_TEXT                       :narrow gauge
 
 #narrowgauge electrified track strings
