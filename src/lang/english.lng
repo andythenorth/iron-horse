@@ -3,8 +3,8 @@
 # this is the default translation and is en-gb
 STR_GRF_DESCRIPTION                                             :License: {SILVER}GPL v2{}{BLACK}
 
-STR_PARAM_ADD_RAILTYPES                                         :Add railtypes
-STR_PARAM_ADD_RAILTYPES_DESC                                    :CABBAGE
+STR_PARAM_ADD_RAILTYPES                                         :Iron Horse extra railtypes
+STR_PARAM_ADD_RAILTYPES_DESC                                    :Iron Horse includes trains that require extra railtypes, for example metro and narrow gauge.  These types can also be provided by alternative railtype grfs.  If alternative railtype grfs are used, the Iron Horse railtypes can be turned off with this parameter setting.
 STR_PARAM_ADJUST_VEHICLE_CAPACITY                               :Train capacity
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_DESC                          :Adjust vehicle capacity for alternative gameplay styles.{}{}Puny: {GOLD}33% reduction{BLACK}{}Marvellous: {GOLD}default{BLACK}{}Excessive: {GOLD}33% increase{BLACK}{}Outrageous: {GOLD}77% increase{BLACK}
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :Puny
