@@ -15,7 +15,6 @@
 
 
 //initialize parameters
-param_gui = 0;
 param_levelcrossings = 0;
 param_railtype_activated = 0;
 param_railtype_disabled = 0;
