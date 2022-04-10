@@ -20,7 +20,7 @@ def main(disabled=False):
             "ELRL",
             "CATZ",
         ],
-        use_custom_sprites=False,
+        use_custom_sprites=True,
         alternative_railtype_list=[],
     )
     railtype.register(disabled=disabled)

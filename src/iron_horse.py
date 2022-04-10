@@ -271,10 +271,10 @@ def get_restaurant_car_ids():
 
 
 def main():
-    # railtypes
+    # railtypes - order is significant, as affects order in construction menu (order property not currently set)
     lolz.main(disabled=False)
-    metro.main(disabled=False)
     narrow_gauge.main(disabled=False)
+    metro.main(disabled=False)
 
     # rosters
     pony.main(disabled=False)
