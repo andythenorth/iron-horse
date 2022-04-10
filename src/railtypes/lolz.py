@@ -7,7 +7,7 @@ def main(disabled=False):
         label="LOLZ",
         construction_cost=5,
         maintenance_cost=7,
-        railtype_flags=[],
+        railtype_flags=["RAILTYPE_FLAG_HIDDEN"],
         map_colour=0x25,
         compatible_railtype_list=[
             "RAIL",
