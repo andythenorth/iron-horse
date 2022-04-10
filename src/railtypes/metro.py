@@ -4,14 +4,13 @@ from railtype import Railtype
 def main(disabled=False):
     railtype = Railtype(
         id="metro",
-        label="SAA3",
+        label="MTRO",
         construction_cost=10,
         maintenance_cost=10,
         railtype_flags=["RAILTYPE_FLAG_NO_LEVEL_CROSSING"],
         map_colour=0x25,
         compatible_railtype_list=[
-            "RAIL",
-            "ELRL",
+            "SAA3",
             "SAAN",
             "SABN",
             "SACN",
@@ -46,10 +45,9 @@ def main(disabled=False):
             "SSAZ",
             "SUAZ",
         ],
-        powered_railtype_list=["SAAZ", "SSAZ", "SUAZ"],
+        powered_railtype_list=["SAA3", "SAAZ", "SSAZ", "SUAZ"],
         alternative_railtype_list=[
             "3RDR",
-            "MTRO",
             "SAA3",
             "SAB3",
             "SAC3",
