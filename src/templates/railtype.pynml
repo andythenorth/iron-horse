@@ -1,39 +1,41 @@
-spriteset (spriteset_${railtype.id}_gui, "${graphics_path}/railtypes/${railtype.id}.png") {
-    template_gui(10,760)
-}
+<tal:spritesets condition="railtype.use_custom_sprites">
+    spriteset (spriteset_${railtype.id}_gui, "${graphics_path}/railtypes/${railtype.id}.png") {
+        template_gui(10,760)
+    }
 
-spriteset (spriteset_${railtype.id}_track_overlay, "${graphics_path}/railtypes/${railtype.id}.png") {
-    template_track_overlay(10,20)
-}
+    spriteset (spriteset_${railtype.id}_track_overlay, "${graphics_path}/railtypes/${railtype.id}.png") {
+        template_track_overlay(10,20)
+    }
 
-spriteset (spriteset_${railtype.id}_underlay, "${graphics_path}/railtypes/${railtype.id}.png") {
-    template_underlay(10,60)
-}
+    spriteset (spriteset_${railtype.id}_underlay, "${graphics_path}/railtypes/${railtype.id}.png") {
+        template_underlay(10,60)
+    }
 
-spriteset (spriteset_${railtype.id}_tunnels, "${graphics_path}/railtypes/${railtype.id}.png") {
-    template_tunnels(330,460)
-}
+    spriteset (spriteset_${railtype.id}_tunnels, "${graphics_path}/railtypes/${railtype.id}.png") {
+        template_tunnels(330,460)
+    }
 
-spriteset (spriteset_${railtype.id}_bridge_surfaces, "${graphics_path}/railtypes/${railtype.id}.png") {
-    template_bridge_surfaces(10,300)
-}
+    spriteset (spriteset_${railtype.id}_bridge_surfaces, "${graphics_path}/railtypes/${railtype.id}.png") {
+        template_bridge_surfaces(10,300)
+    }
 
-spriteset (spriteset_${railtype.id}_level_crossings_open, "${graphics_path}/railtypes/${railtype.id}.png") {
-    template_bridge_level_crossings_track(10,630)
-    template_bridge_level_crossings_light(10,430)
-}
-spriteset (spriteset_${railtype.id}_level_crossings_closed, "${graphics_path}/railtypes/${railtype.id}.png") {
-    template_bridge_level_crossings_track(10,630)
-    template_bridge_level_crossings_light(170,430)
-}
-switch (FEAT_RAILTYPES, SELF, switch_${railtype.id}_level_crossings, level_crossing_status) {
-    LEVEL_CROSSING_CLOSED: spriteset_${railtype.id}_level_crossings_closed;
-    spriteset_${railtype.id}_level_crossings_open;
-}
+    spriteset (spriteset_${railtype.id}_level_crossings_open, "${graphics_path}/railtypes/${railtype.id}.png") {
+        template_bridge_level_crossings_track(10,630)
+        template_bridge_level_crossings_light(10,430)
+    }
+    spriteset (spriteset_${railtype.id}_level_crossings_closed, "${graphics_path}/railtypes/${railtype.id}.png") {
+        template_bridge_level_crossings_track(10,630)
+        template_bridge_level_crossings_light(170,430)
+    }
+    switch (FEAT_RAILTYPES, SELF, switch_${railtype.id}_level_crossings, level_crossing_status) {
+        LEVEL_CROSSING_CLOSED: spriteset_${railtype.id}_level_crossings_closed;
+        spriteset_${railtype.id}_level_crossings_open;
+    }
 
-spriteset (spriteset_${railtype.id}_depot, "${graphics_path}/railtypes/${railtype.id}.png") {
-    template_depots(10,890)
-}
+    spriteset (spriteset_${railtype.id}_depot, "${graphics_path}/railtypes/${railtype.id}.png") {
+        template_depots(10,890)
+    }
+</tal:spritesets>
 
 if (param_add_railtypes) {
     if (railtype_available("${railtype.label}") || (loading_stage == LOADING_STAGE_RESERVE)) {
@@ -58,22 +60,24 @@ if (param_add_railtypes) {
                 new_engine_text:                string(STR_RAILTYPE_${railtype.id.upper()}_NEW_ENGINE_TEXT);
                 toolbar_caption:                string(STR_RAILTYPE_${railtype.id.upper()}_TOOLBAR_CAPTION);
             }
-            graphics {
-                gui:                        spriteset_${railtype.id}_gui;
-                track_overlay:              spriteset_${railtype.id}_track_overlay;
-                underlay:                   spriteset_${railtype.id}_underlay;
-                tunnels:                    spriteset_${railtype.id}_tunnels;
-                //catenary_wire:
-                //catenary_pylons
-                bridge_surfaces:            spriteset_${railtype.id}_bridge_surfaces;
-                level_crossings:            switch_${railtype.id}_level_crossings;
-                depots:						spriteset_${railtype.id}_depot;
-                //fences:
-                //tunnel_overlay:
-                <tal:signals condition="railtype.use_custom_signals">
-                    signals:                    switch_signals;
-                </tal:signals>
-            }
+            <tal:graphics condition="railtype.use_custom_sprites">
+                graphics {
+                    gui:                        spriteset_${railtype.id}_gui;
+                    track_overlay:              spriteset_${railtype.id}_track_overlay;
+                    underlay:                   spriteset_${railtype.id}_underlay;
+                    tunnels:                    spriteset_${railtype.id}_tunnels;
+                    //catenary_wire:
+                    //catenary_pylons
+                    bridge_surfaces:            spriteset_${railtype.id}_bridge_surfaces;
+                    level_crossings:            switch_${railtype.id}_level_crossings;
+                    depots:						spriteset_${railtype.id}_depot;
+                    //fences:
+                    //tunnel_overlay:
+                    <tal:signals condition="railtype.use_custom_signals">
+                        signals:                    switch_signals;
+                    </tal:signals>
+                }
+            </tal:graphics>
         }
     }
 }

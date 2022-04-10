@@ -19,6 +19,7 @@ class Railtype(object):
         self.compatible_railtype_list = kwargs.get("compatible_railtype_list", [])
         self.powered_railtype_list = kwargs.get("powered_railtype_list", [])
         self.alternative_railtype_list = kwargs.get("alternative_railtype_list", [])
+        self.use_custom_sprites = kwargs.get("use_custom_sprites", False)
         self.use_custom_signals = kwargs.get("use_custom_signals", False)
         self.disabled = False
 

@@ -54,6 +54,7 @@ def main(disabled=False):
             "SAD3",
             "SAE3",
         ],
+        use_custom_sprites=True,
         use_custom_signals=True,
     )
     railtype.register(disabled=disabled)

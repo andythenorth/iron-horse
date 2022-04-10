@@ -31,6 +31,7 @@ def main(disabled=False):
             "NADE",
             "NAEE",
         ],
+        use_custom_sprites=True,
         alternative_railtype_list=["NABN", "NACN", "NADN", "NAEN"],
     )
     railtype.register(disabled=disabled)
