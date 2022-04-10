@@ -1,52 +1,52 @@
 // Metro
 
-spriteset (spriteset_metro_gui, "${graphics_path}/railtypes/metro.png") {
+spriteset (spriteset_${railtype.id}_gui, "${graphics_path}/railtypes/${railtype.id}.png") {
     template_gui(10,760)
 }
 
-spriteset (spriteset_metro_track_overlay, "${graphics_path}/railtypes/metro.png") {
+spriteset (spriteset_${railtype.id}_track_overlay, "${graphics_path}/railtypes/${railtype.id}.png") {
     template_track_overlay(10,20)
 }
 
-spriteset (spriteset_metro_underlay, "${graphics_path}/railtypes/metro.png") {
+spriteset (spriteset_${railtype.id}_underlay, "${graphics_path}/railtypes/${railtype.id}.png") {
     template_underlay(10,60)
 }
 
-spriteset (spriteset_metro_tunnels, "${graphics_path}/railtypes/metro.png") {
+spriteset (spriteset_${railtype.id}_tunnels, "${graphics_path}/railtypes/${railtype.id}.png") {
     template_tunnels(330,460)
 }
 
-spriteset (spriteset_metro_bridge_surfaces, "${graphics_path}/railtypes/metro.png") {
+spriteset (spriteset_${railtype.id}_bridge_surfaces, "${graphics_path}/railtypes/${railtype.id}.png") {
     template_bridge_surfaces(10,300)
 }
 
-spriteset (spriteset_metro_level_crossings_open, "${graphics_path}/railtypes/metro.png") {
+spriteset (spriteset_${railtype.id}_level_crossings_open, "${graphics_path}/railtypes/${railtype.id}.png") {
     template_bridge_level_crossings_track(10,630)
     template_bridge_level_crossings_light(10,430)
 }
-spriteset (spriteset_metro_level_crossings_closed, "${graphics_path}/railtypes/metro.png") {
+spriteset (spriteset_${railtype.id}_level_crossings_closed, "${graphics_path}/railtypes/${railtype.id}.png") {
     template_bridge_level_crossings_track(10,630)
     template_bridge_level_crossings_light(170,430)
 }
-switch (FEAT_RAILTYPES, SELF, switch_metro_level_crossings, level_crossing_status) {
-    LEVEL_CROSSING_CLOSED: spriteset_metro_level_crossings_closed;
-    spriteset_metro_level_crossings_open;
+switch (FEAT_RAILTYPES, SELF, switch_${railtype.id}_level_crossings, level_crossing_status) {
+    LEVEL_CROSSING_CLOSED: spriteset_${railtype.id}_level_crossings_closed;
+    spriteset_${railtype.id}_level_crossings_open;
 }
 
-spriteset (spriteset_metro_depot, "${graphics_path}/railtypes/metro.png") {
+spriteset (spriteset_${railtype.id}_depot, "${graphics_path}/railtypes/${railtype.id}.png") {
     template_depots(10,890)
 }
 
 if (param_add_railtypes) {
     if (railtype_available("SAA3") || (loading_stage == LOADING_STAGE_RESERVE)) {
-        item (FEAT_RAILTYPES, item_metro) {
+        item (FEAT_RAILTYPES, item_${railtype.id}) {
             property {
                 label:                          "SAA3";
-                name:                           string(STR_METROTRACK_NAME);
-                menu_text:                      string(STR_METROTRACK_MENU_TEXT);
-                build_window_caption:           string(STR_METROTRACK_BUILD_WINDOW_CAPTION);
-                autoreplace_text:               string(STR_METROTRACK_AUTOREPLACE_TEXT);
-                new_engine_text:                string(STR_METROTRACK_NEW_ENGINE_TEXT);
+                name:                           string(STR_RAILTYPE_${railtype.id.upper()}_NAME);
+                menu_text:                      string(STR_RAILTYPE_${railtype.id.upper()}_MENU_TEXT);
+                build_window_caption:           string(STR_RAILTYPE_${railtype.id.upper()}_BUILD_WINDOW_CAPTION);
+                autoreplace_text:               string(STR_RAILTYPE_${railtype.id.upper()}_AUTOREPLACE_TEXT);
+                new_engine_text:                string(STR_RAILTYPE_${railtype.id.upper()}_NEW_ENGINE_TEXT);
                 railtype_flags:                 bitmask(RAILTYPE_FLAG_NO_LEVEL_CROSSING);
                 curve_speed_multiplier:         1;
                 station_graphics:               RAILTYPE_STATION_NORMAL;
@@ -64,7 +64,7 @@ if (param_add_railtypes) {
                 powered_railtype_list:          ["SAAZ", "SSAZ", "SUAZ"];
                 construction_cost:          10;
                 map_colour:                 0x25;
-                toolbar_caption:            string(STR_METROTRACK_TOOLBAR_CAPTION);
+                toolbar_caption:            string(STR_RAILTYPE_${railtype.id.upper()}_TOOLBAR_CAPTION);
                 maintenance_cost:           10;
                 alternative_railtype_list:  ["3RDR", "MTRO",
                                              "SAA3", "SAB3", "SAC3", "SAD3", "SAE3"];

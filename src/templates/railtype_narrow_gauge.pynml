@@ -1,52 +1,52 @@
 // Narrow gauge
 
-spriteset (spriteset_narrowgauge_gui, "${graphics_path}/railtypes/narrow_gauge.png") {
+spriteset (spriteset_${railtype.id}_gui, "${graphics_path}/railtypes/${railtype.id}.png") {
     template_gui(10,760)
 }
 
-spriteset (spriteset_narrowgauge_track_overlay, "${graphics_path}/railtypes/narrow_gauge.png") {
+spriteset (spriteset_${railtype.id}_track_overlay, "${graphics_path}/railtypes/${railtype.id}.png") {
     template_track_overlay(10,20)
 }
 
-spriteset (spriteset_narrowgauge_underlay, "${graphics_path}/railtypes/narrow_gauge.png") {
+spriteset (spriteset_${railtype.id}_underlay, "${graphics_path}/railtypes/${railtype.id}.png") {
     template_underlay(10,60)
 }
 
-spriteset (spriteset_narrowgauge_tunnels, "${graphics_path}/railtypes/narrow_gauge.png") {
+spriteset (spriteset_${railtype.id}_tunnels, "${graphics_path}/railtypes/${railtype.id}.png") {
     template_tunnels(330,460)
 }
 
-spriteset (spriteset_narrowgauge_bridge_surfaces, "${graphics_path}/railtypes/narrow_gauge.png") {
+spriteset (spriteset_${railtype.id}_bridge_surfaces, "${graphics_path}/railtypes/${railtype.id}.png") {
     template_bridge_surfaces(10,300)
 }
 
-spriteset (spriteset_narrowgauge_level_crossings_open, "${graphics_path}/railtypes/narrow_gauge.png") {
+spriteset (spriteset_${railtype.id}_level_crossings_open, "${graphics_path}/railtypes/${railtype.id}.png") {
     template_bridge_level_crossings_track(10,630)
     template_bridge_level_crossings_light(10,430)
 }
-spriteset (spriteset_narrowgauge_level_crossings_closed, "${graphics_path}/railtypes/narrow_gauge.png") {
+spriteset (spriteset_${railtype.id}_level_crossings_closed, "${graphics_path}/railtypes/${railtype.id}.png") {
     template_bridge_level_crossings_track(10,630)
     template_bridge_level_crossings_light(170,430)
 }
-switch (FEAT_RAILTYPES, SELF, switch_narrowgauge_level_crossings, level_crossing_status) {
-    LEVEL_CROSSING_CLOSED: spriteset_narrowgauge_level_crossings_closed;
-    spriteset_narrowgauge_level_crossings_open;
+switch (FEAT_RAILTYPES, SELF, switch_${railtype.id}_level_crossings, level_crossing_status) {
+    LEVEL_CROSSING_CLOSED: spriteset_${railtype.id}_level_crossings_closed;
+    spriteset_${railtype.id}_level_crossings_open;
 }
 
-spriteset (spriteset_narrowgauge_depot, "${graphics_path}/railtypes/narrow_gauge.png") {
+spriteset (spriteset_${railtype.id}_depot, "${graphics_path}/railtypes/${railtype.id}.png") {
     template_depots(10,890)
 }
 
 if (param_add_railtypes) {
     if (railtype_available("NAAN") || (loading_stage == LOADING_STAGE_RESERVE)) {
-        item (FEAT_RAILTYPES, item_narrowgauge) {
+        item (FEAT_RAILTYPES, item_${railtype.id}) {
             property {
                 label:                          "NAAN";
-                name:                           string(STR_NARROWGAUGE_NAME);
-                menu_text:                      string(STR_NARROWGAUGE_MENU_TEXT);
-                build_window_caption:           string(STR_NARROWGAUGE_BUILD_WINDOW_CAPTION);
-                autoreplace_text:               string(STR_NARROWGAUGE_AUTOREPLACE_TEXT);
-                new_engine_text:                string(STR_NARROWGAUGE_NEW_ENGINE_TEXT);
+                name:                           string(STR_RAILTYPE_${railtype.id.upper()}_NAME);
+                menu_text:                      string(STR_RAILTYPE_${railtype.id.upper()}_MENU_TEXT);
+                build_window_caption:           string(STR_RAILTYPE_${railtype.id.upper()}_BUILD_WINDOW_CAPTION);
+                autoreplace_text:               string(STR_RAILTYPE_${railtype.id.upper()}_AUTOREPLACE_TEXT);
+                new_engine_text:                string(STR_RAILTYPE_${railtype.id.upper()}_NEW_ENGINE_TEXT);
                 //railtype_flags:               bitmask();
                 curve_speed_multiplier:         1;
                 station_graphics:               RAILTYPE_STATION_NORMAL;
@@ -59,20 +59,20 @@ if (param_add_railtypes) {
                                                  "NAAE", "NABE", "NACE", "NADE", "NAEE"];
                 construction_cost:          5;
                 map_colour:                 0x25;
-                toolbar_caption:            string(STR_NARROWGAUGE_TOOLBAR_CAPTION);
+                toolbar_caption:            string(STR_RAILTYPE_${railtype.id.upper()}_TOOLBAR_CAPTION);
                 maintenance_cost:           7;
                 alternative_railtype_list:  ["NABN", "NACN", "NADN", "NAEN"];
             }
             graphics {
-                gui:                        spriteset_narrowgauge_gui;
-                track_overlay:              spriteset_narrowgauge_track_overlay;
-                underlay:                   spriteset_narrowgauge_underlay;
-                tunnels:                    spriteset_narrowgauge_tunnels;
+                gui:                        spriteset_${railtype.id}_gui;
+                track_overlay:              spriteset_${railtype.id}_track_overlay;
+                underlay:                   spriteset_${railtype.id}_underlay;
+                tunnels:                    spriteset_${railtype.id}_tunnels;
                 //catenary_wire:
                 //catenary_pylons
-                bridge_surfaces:            spriteset_narrowgauge_bridge_surfaces;
-                level_crossings:            switch_narrowgauge_level_crossings;
-                depots:						spriteset_narrowgauge_depot;
+                bridge_surfaces:            spriteset_${railtype.id}_bridge_surfaces;
+                level_crossings:            switch_${railtype.id}_level_crossings;
+                depots:						spriteset_${railtype.id}_depot;
                 //fences:
                 //tunnel_overlay:
                 //signals:
