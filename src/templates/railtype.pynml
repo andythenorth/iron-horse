@@ -1,5 +1,3 @@
-// Narrow gauge
-
 spriteset (spriteset_${railtype.id}_gui, "${graphics_path}/railtypes/${railtype.id}.png") {
     template_gui(10,760)
 }
@@ -38,30 +36,27 @@ spriteset (spriteset_${railtype.id}_depot, "${graphics_path}/railtypes/${railtyp
 }
 
 if (param_add_railtypes) {
-    if (railtype_available("NAAN") || (loading_stage == LOADING_STAGE_RESERVE)) {
+    if (railtype_available("${railtype.label}") || (loading_stage == LOADING_STAGE_RESERVE)) {
         item (FEAT_RAILTYPES, item_${railtype.id}) {
             property {
-                label:                          "NAAN";
+                label:                          "${railtype.label}";
+                railtype_flags:                 bitmask(${",".join(railtype.railtype_flags)});
+                curve_speed_multiplier:         ${railtype.curve_speed_multiplier};
+                speed_limit:                    ${railtype.speed_limit};
+                acceleration_model:             ACC_MODEL_RAIL;
+                construction_cost:              ${railtype.construction_cost};
+                maintenance_cost:               ${railtype.maintenance_cost};
+                map_colour:                     ${railtype.map_colour};
+                compatible_railtype_list:       ${railtype.make_nml_railtype_list(railtype.compatible_railtype_list)};
+                powered_railtype_list:          ${railtype.make_nml_railtype_list(railtype.powered_railtype_list)};
+                alternative_railtype_list:      ${railtype.make_nml_railtype_list(railtype.alternative_railtype_list)};
+                station_graphics:               RAILTYPE_STATION_NORMAL;
                 name:                           string(STR_RAILTYPE_${railtype.id.upper()}_NAME);
                 menu_text:                      string(STR_RAILTYPE_${railtype.id.upper()}_MENU_TEXT);
                 build_window_caption:           string(STR_RAILTYPE_${railtype.id.upper()}_BUILD_WINDOW_CAPTION);
                 autoreplace_text:               string(STR_RAILTYPE_${railtype.id.upper()}_AUTOREPLACE_TEXT);
                 new_engine_text:                string(STR_RAILTYPE_${railtype.id.upper()}_NEW_ENGINE_TEXT);
-                //railtype_flags:               bitmask();
-                curve_speed_multiplier:         1;
-                station_graphics:               RAILTYPE_STATION_NORMAL;
-                speed_limit:                    0;
-                acceleration_model:             ACC_MODEL_RAIL;
-                //set compatible and powered
-                compatible_railtype_list:       ["NABN", "NACN", "NADN", "NAEN",
-                                                 "NAAE", "NABE", "NACE", "NADE", "NAEE"];
-                powered_railtype_list:          ["NABN", "NACN", "NADN", "NAEN",
-                                                 "NAAE", "NABE", "NACE", "NADE", "NAEE"];
-                construction_cost:          5;
-                map_colour:                 0x25;
-                toolbar_caption:            string(STR_RAILTYPE_${railtype.id.upper()}_TOOLBAR_CAPTION);
-                maintenance_cost:           7;
-                alternative_railtype_list:  ["NABN", "NACN", "NADN", "NAEN"];
+                toolbar_caption:                string(STR_RAILTYPE_${railtype.id.upper()}_TOOLBAR_CAPTION);
             }
             graphics {
                 gui:                        spriteset_${railtype.id}_gui;
@@ -75,7 +70,9 @@ if (param_add_railtypes) {
                 depots:						spriteset_${railtype.id}_depot;
                 //fences:
                 //tunnel_overlay:
-                //signals:
+                <tal:signals condition="railtype.use_custom_signals">
+                    signals:                    switch_signals;
+                </tal:signals>
             }
         }
     }
