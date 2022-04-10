@@ -30,6 +30,15 @@ grf {
 			bit: 1;
 		}
 	}
+	param 6 {
+		param_add_railtypes {
+			name: string(STR_PARAM_ADD_RAILTYPES);
+			desc: string(STR_PARAM_ADD_RAILTYPES_DESC);
+			type: bool;
+			def_value: 1;
+			bit: 1;
+		}
+	}
 	param 0 {
         param_adjust_vehicle_capacity {
             type: int;
