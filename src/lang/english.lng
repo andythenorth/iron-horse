@@ -170,14 +170,6 @@ STR_SPRITES_COMPLETE                                            :{}Sprites Compl
 STR_SPRITES_INCOMPLETE                                          :{}Sprites Complete: {GOLD}Nope
 
 #lolz track strings
-STR_RAILTYPE_CATZ_NAME                                         :CATZ Track
-STR_RAILTYPE_CATZ_TOOLBAR_CAPTION                              :CATZ Track Construction
-STR_RAILTYPE_CATZ_MENU_TEXT                                    :CATZ track construction
-STR_RAILTYPE_CATZ_BUILD_WINDOW_CAPTION                         :New CATZ Vehicles
-STR_RAILTYPE_CATZ_AUTOREPLACE_TEXT                             :CATZ Vehicles
-STR_RAILTYPE_CATZ_NEW_ENGINE_TEXT                              :catz
-
-#lolz track strings
 STR_RAILTYPE_LOLZ_NAME                                         :LOLZ Track
 STR_RAILTYPE_LOLZ_TOOLBAR_CAPTION                              :LOLZ Track Construction
 STR_RAILTYPE_LOLZ_MENU_TEXT                                    :LOLZ track construction

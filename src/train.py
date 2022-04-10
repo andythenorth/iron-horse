@@ -497,7 +497,7 @@ class Consist(object):
             "METRO": "METRO",  # assume METRO is always METRO, whether electric flag is set or not
         }
         if self.can_use_lgv_rails:
-            return "CATZ"
+            return "LOLZ"
         if self.requires_electric_rails:
             return eltrack_type_mapping[self.base_track_type]
         else:
