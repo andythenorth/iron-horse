@@ -15,7 +15,6 @@
 
 
 //initialize parameters
-param_levelcrossings = 0;
 param_railtype_activated = 0;
 param_railtype_disabled = 0;
 
@@ -255,7 +254,7 @@ if (param_add_railtypes) {
                 build_window_caption:           string(STR_METROTRACK_BUILD_WINDOW_CAPTION);
                 autoreplace_text:               string(STR_METROTRACK_AUTOREPLACE_TEXT);
                 new_engine_text:                string(STR_METROTRACK_NEW_ENGINE_TEXT);
-                //railtype_flags:               bitmask();
+                railtype_flags:                 bitmask(RAILTYPE_FLAG_NO_LEVEL_CROSSING);
                 curve_speed_multiplier:         1;
                 station_graphics:               RAILTYPE_STATION_NORMAL;
                 speed_limit:                    0;
@@ -276,12 +275,6 @@ if (param_add_railtypes) {
                 maintenance_cost:           10;
                 alternative_railtype_list:  ["3RDR", "MTRO",
                                              "SAA3", "SAB3", "SAC3", "SAD3", "SAE3"];
-            }
-            //disallow level crossings
-            if (param_levelcrossings == 0) {
-                property {
-                    railtype_flags:             bitmask(RAILTYPE_FLAG_NO_LEVEL_CROSSING);
-                }
             }
             graphics {
                 gui:                        spriteset_metro_gui;
