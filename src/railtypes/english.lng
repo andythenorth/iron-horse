@@ -1,9 +1,0 @@
-﻿##grflangid 0x01
-
-#Main grf title and description
-
-str_no_free_slots       :No free railtype slots. You've loaded one or more other track sets that use all railtype slots. Consider removing other track sets, or remove termite.
-str_some_disabled       :Not enough railtype slots. You've loaded one or more other track sets that don't leave enough railtype slots for termite. One or more railtypes of this set are not available. Consider removing other track sets, or remove termite.
-
-str_param_customsignals_name    :Custom metro signals
-str_param_customsignals_desc    :Enable (default) or disable custom signals for metro track types.

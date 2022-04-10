@@ -14,11 +14,6 @@
  }
 
 
-//initialize parameters
-param_railtype_activated = 0;
-param_railtype_disabled = 0;
-
-
 // railtype spriteset templates
 
 template template_gui(x,y) {
@@ -244,8 +239,6 @@ spriteset (spriteset_metro_depot, "${graphics_path}/railtypes/metro.png") {
 
 if (param_add_railtypes) {
     if (railtype_available("SAA3") || (loading_stage == LOADING_STAGE_RESERVE)) {
-        //count number of activated railtypes
-        param_railtype_activated = param_railtype_activated + 1;
         item (FEAT_RAILTYPES, item_metro) {
             property {
                 label:                          "SAA3";
@@ -292,10 +285,6 @@ if (param_add_railtypes) {
             }
         }
     }
-    else {
-        //count number of disabled railtypes
-        param_railtype_disabled = param_railtype_disabled + 1;
-    }
 }
 
 // Narrow gauge
@@ -339,8 +328,6 @@ spriteset (spriteset_narrowgauge_depot, "${graphics_path}/railtypes/narrow_gauge
 
 if (param_add_railtypes) {
     if (railtype_available("NAAN") || (loading_stage == LOADING_STAGE_RESERVE)) {
-        //count number of activated railtypes
-        param_railtype_activated = param_railtype_activated + 1;
         item (FEAT_RAILTYPES, item_narrowgauge) {
             property {
                 label:                          "NAAN";
@@ -380,9 +367,5 @@ if (param_add_railtypes) {
                 //signals:
             }
         }
-    }
-    else {
-        //count number of disabled railtypes
-        param_railtype_disabled = param_railtype_disabled + 1;
     }
 }
