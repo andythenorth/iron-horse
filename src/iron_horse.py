@@ -24,7 +24,7 @@ from spritelayer_cargos import automobiles
 # import railtypes
 from railtypes import registered_railtypes
 from railtypes import catz
-from railtypes import lolz
+#from railtypes import lolz
 from railtypes import metro
 from railtypes import narrow_gauge
 
@@ -274,7 +274,7 @@ def get_restaurant_car_ids():
 def main():
     # railtypes
     catz.main(disabled=False)
-    lolz.main(disabled=False)
+    #lolz.main(disabled=False)
     metro.main(disabled=False)
     narrow_gauge.main(disabled=False)
 
