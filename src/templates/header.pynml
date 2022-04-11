@@ -45,13 +45,14 @@ grf {
             name: string(STR_PARAM_ADJUST_VEHICLE_CAPACITY);
             desc: string(STR_PARAM_ADJUST_VEHICLE_CAPACITY_DESC);
             min_value: 0;
-            max_value: 3;
-            def_value: 1;
+            max_value: 4;
+            def_value: 2;
             names: {
                 0: string(STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0);
                 1: string(STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1);
                 2: string(STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2);
                 3: string(STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_3);
+                4: string(STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_4);
             };
         }
     }

@@ -6,11 +6,12 @@ STR_GRF_DESCRIPTION                                             :License: {SILVE
 STR_PARAM_ADD_RAILTYPES                                         :Iron Horse extra railtypes
 STR_PARAM_ADD_RAILTYPES_DESC                                    :Iron Horse includes trains that require extra railtypes, for example metro and narrow gauge.  These types can also be provided by alternative railtype grfs.  If alternative railtype grfs are used, the Iron Horse railtypes can be turned off with this parameter setting.
 STR_PARAM_ADJUST_VEHICLE_CAPACITY                               :Train capacity
-STR_PARAM_ADJUST_VEHICLE_CAPACITY_DESC                          :Adjust vehicle capacity for alternative gameplay styles.{}{}Puny: {GOLD}33% reduction{BLACK}{}Marvellous: {GOLD}default{BLACK}{}Excessive: {GOLD}33% increase{BLACK}{}Outrageous: {GOLD}77% increase{BLACK}
-STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :Puny
-STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Marvellous (default)
-STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Excessive
-STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_3                      :Outrageous
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_DESC                          :Adjust vehicle capacity for alternative gameplay styles.{}{}Nanoscopic: {GOLD}77% reduction{BLACK}{}Puny: {GOLD}33% reduction{BLACK}{}Marvellous: {GOLD}default{BLACK}{}Excessive: {GOLD}33% increase{BLACK}{}Outrageous: {GOLD}77% increase{BLACK}
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :Nanoscopic
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Puny
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Marvellous (default)
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_3                      :Excessive
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_4                      :Outrageous
 STR_PARAM_SIMPLIFIED_GAMEPLAY                                   :Simplified gameplay
 STR_PARAM_SIMPLIFIED_GAMEPLAY_DESC                              :Play with a simplified set of trains. There will be fewer types of engines and wagons available.  Eye-candy trains like snowploughs, driving cab cars and very slow locomotives will not be available.
 STR_PARAM_ROSTER                                                :Roster

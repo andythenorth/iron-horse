@@ -78,9 +78,7 @@ buy_menu_sort_order_wagons = [
 ]
 
 # capacity multipliers for user-configurable capacity parameter
-capacity_multipliers = [0.67, 1, 1.33, 1.77]
-# identifier for user-configurable capacity parameter
-param_adjust_vehicle_capacity = 1
+capacity_multipliers = [0.33, 0.67, 1, 1.33, 1.77]
 
 grfid = r"CA\12\1F"
 

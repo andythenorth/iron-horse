@@ -4016,7 +4016,7 @@ class Train(object):
 
     @property
     def default_cargo_capacity(self):
-        return self.capacities[1]
+        return self.capacities[2]
 
     @property
     def has_cargo_capacity(self):
