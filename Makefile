@@ -39,8 +39,8 @@ endif
 
 REPO_TITLE = "$(PROJECT_NAME) $(REPO_VERSION)"
 PROJECT_VERSIONED_NAME = $(PROJECT_NAME)-$(REPO_VERSION)
-# Args for faster compiles: PW=n (num pool workers) SC=bool (suppress cargo sprites)
-ARGS = '$(PW)' '$(ROSTER)' '$(SC)'
+# Args for faster compiles: PW=n (num pool workers) SC=bool (suppress cargo sprites) SD=bool (suppress docs)
+ARGS = '$(PW)' '$(ROSTER)' '$(SC)' '$(SD)'
 
 NFO_FILE = generated/$(PROJECT_NAME).nfo
 GRF_FILE = generated/$(PROJECT_NAME).grf
