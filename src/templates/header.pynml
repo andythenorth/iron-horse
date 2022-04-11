@@ -107,6 +107,12 @@ grf {
 	}
 }
 
+// error if inflation is on for the game, as it leads to unplayable outcomes for players
+// tried 'WARNING' but doesn't seem to show a message, so we'll go with 'FATAL' I guess
+if (inflation) {
+    error(FATAL, string(STR_ERROR_INFLATION_INCOMPATIBLE));
+}
+
 basecost {
  	PR_BUILD_VEHICLE_TRAIN: ${global_constants.PR_BUILD_VEHICLE_TRAIN};
  	PR_BUILD_VEHICLE_WAGON: ${global_constants.PR_BUILD_VEHICLE_WAGON};

@@ -1,7 +1,7 @@
 // error if Termite is in the game, as Iron Horse 2.45.0 or so replaces the need for Termite
 // tried 'WARNING' but doesn't seem to show a message, so we'll go with 'FATAL' I guess
 if (grf_future_status("\FB\FB\0B\01")) {
-    error(FATAL, string(STR_TERMITE_DEPRECATED));
+    error(FATAL, string(STR_ERROR_TERMITE_DEPRECATED));
 }
 
 /*

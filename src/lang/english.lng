@@ -43,7 +43,8 @@ STR_PARAM_WAGON_BASE_COLOUR_OPTION_14                           :Brown
 STR_PARAM_WAGON_BASE_COLOUR_OPTION_15                           :Grey
 STR_PARAM_WAGON_BASE_COLOUR_OPTION_16                           :White
 
-STR_TERMITE_DEPRECATED                                          :Iron Horse now includes the railtypes from Termite. Please remove Termite from the NewGRF list and try a new game. Thanks.
+STR_ERROR_INFLATION_INCOMPATIBLE                                :Iron Horse is not compatible with OpenTTD Inflation. Please turn Inflation off in OpenTTD settings.
+STR_ERROR_TERMITE_DEPRECATED                                    :Iron Horse now includes the railtypes from Termite. Please remove Termite from the NewGRF list and try a new game. Thanks.
 
 # keep these alphabetised, easier
 STR_NAME_SUFFIX_BATTERY_HYBRID                                  :Battery Hybrid
