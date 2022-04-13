@@ -23,7 +23,7 @@ from spritelayer_cargos import automobiles
 
 # import railtypes
 from railtypes import registered_railtypes
-from railtypes import lolz
+# from railtypes import lolz # turned off because diagonal rails are broken for compatible railtypes in OpenTTD - https://github.com/OpenTTD/OpenTTD/issues/9850
 from railtypes import metro
 from railtypes import narrow_gauge
 
@@ -272,7 +272,7 @@ def get_restaurant_car_ids():
 
 def main():
     # railtypes - order is significant, as affects order in construction menu (order property not currently set)
-    lolz.main(disabled=False)
+    # lolz.main(disabled=False) # turned off because diagonal rails are broken for compatible railtypes in OpenTTD - https://github.com/OpenTTD/OpenTTD/issues/9850
     narrow_gauge.main(disabled=False)
     metro.main(disabled=False)
 
