@@ -75,8 +75,6 @@ class Consist(object):
         self.requires_electric_rails = (
             False  # set by unit subclasses as needed, not a kwarg
         )
-        # for very high speed trains
-        self.can_use_lgv_rails = False # set by unit subclasses as needed, not a kwarg
         self.tractive_effort_coefficient = kwargs.get(
             "tractive_effort_coefficient", 0.3
         )  # 0.3 is recommended default value
@@ -496,8 +494,6 @@ class Consist(object):
             "NG": "ELNG",
             "METRO": "METRO",  # assume METRO is always METRO, whether electric flag is set or not
         }
-        if self.can_use_lgv_rails:
-            return "LOLZ"
         if self.requires_electric_rails:
             return eltrack_type_mapping[self.base_track_type]
         else:
@@ -1431,7 +1427,6 @@ class PassengerVeryHighSpeedCabEngineConsist(PassengerEngineConsist):
         # but...theoretical as of Dec 2018 as nml power template doesn't support iterating over multiple middle vehicles
         self.middle_id = self.id.split("_cab")[0] + "_middle"
         self.buy_menu_hint_wagons_add_power = True
-        self.can_use_lgv_rails = True
         self.tilt_bonus = True
         # note that buy costs are actually adjusted down from pax base, to account for distributed traction etc
         self.buy_cost_adjustment_factor = 0.95
@@ -1482,7 +1477,6 @@ class PassengerVeryHighSpeedMiddleEngineConsist(PassengerEngineConsist):
         self.cab_id = self.id.split("_middle")[0] + "_cab"
         self.wagons_add_power = True
         self.buy_menu_hint_wagons_add_power = True
-        self.can_use_lgv_rails = True
         self.tilt_bonus = True
         # train_flag_mu solely used for ottd livery (company colour) selection
         # eh as of Feb 2019, OpenTTD won't actually use this for middle cars, as not engines

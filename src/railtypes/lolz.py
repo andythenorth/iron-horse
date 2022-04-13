@@ -4,6 +4,7 @@ from railtype import Railtype
 def main(disabled=False):
     railtype = Railtype(
         id="lolz",
+        introduction_date="1999,06,22",
         label="LOLZ",
         construction_cost=16,
         maintenance_cost=16,
@@ -20,6 +21,8 @@ def main(disabled=False):
             "ELRL",
             "CATZ",
         ],
+        extends_RAIL=True,
+        extends_ELRL=True,
         use_custom_sprites=True,
         alternative_railtype_list=[],
     )

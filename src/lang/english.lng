@@ -174,12 +174,12 @@ STR_SPRITES_COMPLETE                                            :{}Sprites Compl
 STR_SPRITES_INCOMPLETE                                          :{}Sprites Complete: {GOLD}Nope
 
 #lolz track strings
-STR_RAILTYPE_LOLZ_NAME                                         :Very High Speed Railway
-STR_RAILTYPE_LOLZ_TOOLBAR_CAPTION                              :Very High Speed Railway Construction
-STR_RAILTYPE_LOLZ_MENU_TEXT                                    :Very high speed railway construction
-STR_RAILTYPE_LOLZ_BUILD_WINDOW_CAPTION                         :New Very High Speed Vehicles
-STR_RAILTYPE_LOLZ_AUTOREPLACE_TEXT                             :Very High Speed Rail Vehicles
-STR_RAILTYPE_LOLZ_NEW_ENGINE_TEXT                              :very high speed
+STR_RAILTYPE_LOLZ_NAME                                         :Electrified High Speed Railway
+STR_RAILTYPE_LOLZ_TOOLBAR_CAPTION                              :Electrified High Speed Railway Construction
+STR_RAILTYPE_LOLZ_MENU_TEXT                                    :Electrified high speed railway construction
+STR_RAILTYPE_LOLZ_BUILD_WINDOW_CAPTION                         :New Electric High Speed Vehicles
+STR_RAILTYPE_LOLZ_AUTOREPLACE_TEXT                             :[unused]
+STR_RAILTYPE_LOLZ_NEW_ENGINE_TEXT                              :[unused]
 
 #metro track strings
 STR_RAILTYPE_METRO_NAME                                         :Metro Railway
@@ -198,9 +198,9 @@ STR_RAILTYPE_NARROW_GAUGE_AUTOREPLACE_TEXT                      :Narrow Gauge Ra
 STR_RAILTYPE_NARROW_GAUGE_NEW_ENGINE_TEXT                       :narrow gauge
 
 #narrowgauge electrified track strings
-#STR_RAILTYPE_NARROW_GAUGE_ELECTRIFIED_NAME                     :Electrified Narrow Gauge Track
-#STR_RAILTYPE_NARROW_GAUGE_ELECTRIFIED_TOOLBAR_CAPTION          :Electrified Narrow Gauge Track Construction
-#STR_RAILTYPE_NARROW_GAUGE_ELECTRIFIED_MENU_TEXT                :Electrified Narrow Gauge track construction
+#STR_RAILTYPE_NARROW_GAUGE_ELECTRIFIED_NAME                     :Electrified Narrow Gauge Railway
+#STR_RAILTYPE_NARROW_GAUGE_ELECTRIFIED_TOOLBAR_CAPTION          :Electrified Narrow Gauge Railway Construction
+#STR_RAILTYPE_NARROW_GAUGE_ELECTRIFIED_MENU_TEXT                :Electrified narrow gauge railway construction
 #STR_RAILTYPE_NARROW_GAUGE_ELECTRIFIED_BUILD_WINDOW_CAPTION     :New Electrified Narrow Gauge Vehicles
 #STR_RAILTYPE_NARROW_GAUGE_ELECTRIFIED_AUTOREPLACE_TEXT         :Electrified Narrow Gauge Vehicles
 #STR_RAILTYPE_NARROW_GAUGE_ELECTRIFIED_NEW_ENGINE_TEXT          :electrified narrow gauge

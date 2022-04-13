@@ -9,6 +9,7 @@ class Railtype(object):
     def __init__(self, **kwargs):
         self.id = kwargs.get("id")
         self.label = kwargs.get("label")
+        self.introduction_date = kwargs.get("introduction_date", None) # "yyyy,mm,dd"
         # 0 is no limit
         self.speed_limit = kwargs.get("speed_limit", 0)
         self.curve_speed_multiplier = kwargs.get("curve_speed_multiplier", 1)
@@ -16,6 +17,8 @@ class Railtype(object):
         self.construction_cost = kwargs.get("construction_cost", None)
         self.maintenance_cost = kwargs.get("construction_cost", None)
         self.map_colour = kwargs.get("map_colour", "0x25")
+        self.extends_RAIL = kwargs.get("extends_RAIL", False)
+        self.extends_ELRL = kwargs.get("extends_ELRL", False)
         self.compatible_railtype_list = kwargs.get("compatible_railtype_list", [])
         self.powered_railtype_list = kwargs.get("powered_railtype_list", [])
         self.alternative_railtype_list = kwargs.get("alternative_railtype_list", [])
