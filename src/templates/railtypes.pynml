@@ -197,9 +197,9 @@ template template_tunnel_overlay(x, y) {
 
 template template_depots(x, y) {
     //[x+left_x, upper_y, width, height, offset_x, offset_y]
-    [x    , y, 18, 18,  13,  -1]
+    [x    , y, 22, 22,   8,  -1]
     [x+ 80, y, 58, 51,  -5, -37]
-    [x+160, y, 18, 18, -29,  -1]
+    [x+160, y, 22, 22, -28,  -1]
     [x+240, y, 58, 51, -51, -37]
     [x+320, y, 58, 51, -51, -37]
     [x+400, y, 58, 51,  -5, -37]
