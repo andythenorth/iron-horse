@@ -34,7 +34,7 @@ template template_gui(x,y) {
     //autorail
     [x    , y+70, 20, 20,   0,   0]
     //depot
-    [x+224, y+70, 20, 20,   0,   0]
+    [x+224, y+70, 21, 21,   0,   0]
     //tunnel
     [x+480, y   , 20, 20,   0,   0]
     //convert rail
