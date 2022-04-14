@@ -40,19 +40,22 @@
                         A few things to know before setting up a Iron Horse game...
                     </p>
                     <p>
-                        Iron Horse is designed to work with Termite, a railtype grf that provides additional Metro and Narrow Gauge tracks.
-                        Termite is available from the online content service ('Bananas') in OpenTTD.
+                        Iron Horse includes additional railtypes, for example Narrow Gauge and Metro rails.
                     </p>
-                    <p>Iron Horse will also work with many other railtype grfs.</p>
+                    <p>
+                        For players who want even more railtypes, Iron Horse will also work with many grfs that add further railtypes.
+                    </p>
                     <p>
                         Because Iron Horse provides a <strong>lot</strong> of trains, it's recommended that the OpenTTD setting 'Vehicles never expire' is set to off.
                         This helps avoid over-crowding in the OpenTTD buy menu.
                     </p>
+                    <p>Iron Horse is not compatible with Inflation in OpenTTD.  Please ensure Inflation is turned off.</p>
                     <h3>Parameter settings (optional)</h3>
                     <p>Players can choose advanced options via parameter settings. It's also fine to ignore these.  Parameter options include:</p>
                     <ul>
                         <li>Adjustable train cargo capacity</li>
                         <li>Simplified gameplay with fewer trains</li>
+                        <li>Turn off Iron Horse extra railtypes</li>
                         <li>Advanced control over freight wagon colour choices and colour randomisation</li>
                     </ul>
                 </div>
@@ -101,6 +104,7 @@
                     <p><em>Magic appearance:</em> some vehicles will adapt their appearance depending on their position in the train, including passenger coaches, mail vans and intermodal wagons.</p>
                     <p><em>Integer length trains:</em> Iron Horse vehicles have consistent length and it's very easy to make integer length trains (length will show in depot as 4.0, 6.0, 8.0 etc). This has minimal gameplay effect, but is good for people who have tidy-mind problems.</p>
                     <p><em>Bi-mode trains:</em> electro-diesel or similar engines will work with or without electricity.  Power is generally increased on electrified rails, and smoke or sparks will be show appropriately for current power type.</p>
+                    <p><em>Brake vans / cabooses:</em> are just for eye-candy, and have no gameplay effect ;).</p>
                 </div>
                 <hr />
                 <br />
