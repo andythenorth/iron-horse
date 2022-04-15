@@ -4,7 +4,7 @@ from train import AutomobileDoubleDeckCarConsist, AutomobileCar
 def main():
     # --------------- pony ----------------------------------------------------------------------
     # intro gen 4
-
+    """
     consist = AutomobileDoubleDeckCarConsist(
         roster_id="pony",
         base_numeric_id=5790,
@@ -74,3 +74,4 @@ def main():
         vehicle_length=5,
         spriterow_num=1,
     )
+    """
