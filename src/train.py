@@ -3940,6 +3940,7 @@ class TorpedoCarConsist(CarConsist):
         self._joker = True
         # articulated so can't flip
         self.allow_flip = False
+        self.suppress_animated_pixel_warnings = True
         # Graphics configuration
         # custom gestalt with dedicated template as these wagons are articulated which standard wagon templates don't support
         self.gestalt_graphics = GestaltGraphicsCustom("vehicle_torpedo_car.pynml")
