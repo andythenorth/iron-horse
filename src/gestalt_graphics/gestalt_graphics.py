@@ -432,7 +432,10 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphics):
 
     def __init__(self, **kwargs):
         super().__init__()
-        self.pipelines = pipelines.get_pipelines(["check_buy_menu_only"])
+        # we use the composited sprites pipeline so we can make use of chassis compositing
+        self.pipelines = pipelines.get_pipelines(
+            ["extend_spriterows_for_composited_sprites_pipeline"]
+        )
         # we need to run the spritelayer cargo pipelines separately from the vehicle pipelines, but we still use this gestalt as the entry point
         self.spritelayer_cargo_pipelines = pipelines.get_pipelines(
             ["generate_spritelayer_cargo_sets"]

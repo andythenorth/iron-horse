@@ -1784,16 +1784,14 @@ class AutomobileCarConsistBase(CarConsist):
             True  # hax test because template failing to return correct cargo sprites
         )
         # Graphics configuration
-        # intermodal containers can't use random colour swaps on the wagons...
-        # ...because the random bits are re-randomised when new cargo loads, to get new random containers, which would also cause new random wagon colour
+        # automobile cars can't use random colour swaps on the wagons...
+        # ...because the random bits are re-randomised when new cargo loads, to get new random automobile cargos, which would also cause new random wagon colour
         # player can still flip to the second livery
         self.use_colour_randomisation_strategies = False
         if self.subtype == "D":
             consist_ruleset = "articulated_permanent_twin_sets"
-        elif self.subtype == "C":
-            consist_ruleset = "4_unit_sets"
         else:
-            consist_ruleset = "2_unit_sets"
+            consist_ruleset = "single_unit_sets"
         self.gestalt_graphics = GestaltGraphicsAutomobilesTransporter(
             consist_ruleset=consist_ruleset
         )
@@ -3167,6 +3165,28 @@ class OpenCarConsist(OpenCarConsistBase):
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(bulk=True, piece="open")
 
 
+class OpenCarHoodConsist(OpenCarConsistBase):
+    """
+    Open car with a hood when fully loaded
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "hood_open_car"
+        super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos["open"]
+        # Graphics configuration
+        weathered_variants = {
+            "unweathered": graphics_constants.hood_open_car_body_recolour_map,
+            "weathered": graphics_constants.hood_open_car_body_recolour_map_weathered,
+        }
+        self.gestalt_graphics = GestaltGraphicsVisibleCargo(
+            bulk=True,
+            piece="open",
+            weathered_variants=weathered_variants,
+            has_cover=True,
+        )
+
+
 class OpenCarMerchandiseConsist(OpenCarConsistBase):
     """
     Open car with alternative livery
@@ -4443,9 +4463,7 @@ class BatteryHybridEngineUnit(Train):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.engine_class = "ENGINE_CLASS_DIESEL"
-        self.effects = {
-            "default": ["EFFECT_SPAWN_MODEL_DIESEL", "EFFECT_SPRITE_STEAM"]
-        }
+        self.effects = {"default": ["EFFECT_SPAWN_MODEL_DIESEL", "EFFECT_SPRITE_STEAM"]}
         self.consist.str_name_suffix = "STR_NAME_SUFFIX_BATTERY_HYBRID"
         # most battery hybrid engines are asymmetric, over-ride per vehicle as needed
         self._symmetry_type = kwargs.get("symmetry_type", "asymmetric")
