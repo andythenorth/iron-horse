@@ -2,6 +2,36 @@ Changelog
 =========
 
 -------------
+2.45.0 Release
+-------------
+
+*Changes*
+
+- added railtypes directly to Iron Horse
+    - Narrow Gauge Railway for narrow gauge trains
+    - Metro Railway for metro trains
+    - Iron Horse no longer requires the separate Termite railtype grf
+    - other railtype grfs continue to work with Iron Horse
+- added a parameter setting to turn Iron Horse extra railtypes off / on (on by default)
+- improved sprites for narrow gauge and metro depots
+- added new size option 'Nanoscopic' for the train capacity parameter setting
+    - 'Nanoscopic' provides a 77% reduction compared to default capacity of Iron Horse vehicles
+- improved order of parameter settings
+- improved appearance of narrow gauge Dry Powder Hoppers
+- added narrow gauge Chemical Covered Hoppers
+- added randomly-selected colour variant for Pressure Tankers and Cryo Tankers when refitted for chlorine cargo
+- changed Magnum 70 engine from diesel to battery hybrid
+    - no gameplay difference
+    - different vehicle smoke effect
+- set correct default cargos for Aggregate Wagons and Ore Dump Wagons
+- adjusted default cargos for Box Vans and other equivalent wagons
+
+*Docs*
+
+- mention included railtypes on 'Get started' page, no longer recommend Termite
+
+
+-------------
 2.44.0 Release
 -------------
 
