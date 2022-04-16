@@ -85,7 +85,10 @@ buy_menu_sort_order_wagons = [
 base_track_type_to_railtype_mapping = {
     "RAIL": ["RAIL"],
     "ELRL": ["ELRL"],
-    "LOLZ": ["LOLZ", "HSTR", "SAAE"],  # unused as of April 2022
+    # LOLZ unused as of April 2022
+    "LOLZ": ["LOLZ", "HSTR", "SAAE"],
+    # metro is just MTRO by default, following discussion with frosch April 16th 2022, standardised scheme really doesn't apply to this case,
+    # frosch123 if you do not care about speed limits, gauge or electrification, use MTRO - it's part of nutracks, so every train grf knows about it
     "METRO": ["MTRO", "3RDR", "SAA3"],
     "NG": ["NAAN", "NGRL", "NLOW", "NAAE", "NBAN", "ENLW", "ENHI", "ELNG"],
     "ELNG": ["NAAE", "ENLW", "ENHI", "ELNG"],
