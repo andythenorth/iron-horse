@@ -487,7 +487,9 @@ class Consist(object):
     @property
     def track_type(self):
         # are you sure you don't want base_track_type instead?
-        # track_type handles converting base_track_type to ELRL, ELNG etc as needed for electric engines
+        # track_type handles converting base_track_type to an actual railtype label
+        # e.g. electric engines with "RAIL" as base_track_type will be translated to "ELRL" here
+        # narrow gauge trains will be similarly have "NG" translated to an appropriate NG railytpe label
         # it's often more convenient to use base_track_type prop, which treats ELRL and RAIL as same (for example)
         eltrack_type_mapping = {
             "RAIL": "ELRL",
@@ -2900,7 +2902,7 @@ class IntermodalCarConsist(IntermodalCarConsistBase):
     @property
     def platform_type(self):
         # the 'default' for NG is the same as for low_floor so just re-use that for now
-        if self.track_type == "NG":
+        if self.base_track_type == "NG":
             return "low_floor"
         else:
             return "default"
