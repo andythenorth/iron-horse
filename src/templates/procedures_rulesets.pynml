@@ -7,6 +7,18 @@
     }
 </tal:ruleset>
 
+
+<tal:ruleset define="default 0;">
+    // automobile transporter 1 unit position switches
+    <!--!
+        if 1 unit in sequence
+        - note that this just yields a constant result and will likely be optimised out by nmlc but eh, consistency with other switches for now
+    -->
+    switch (FEAT_TRAINS, SELF, switch_graphics_automobile_transporter_ruleset_1_unit_sets, 0) {
+        0: return ${default};
+    }
+</tal:ruleset>
+
 <tal:ruleset define="default 0; first 1; last 2;">
     // automobile transporter 2 unit position switches
     <!--! if 1 unit in sequence -->

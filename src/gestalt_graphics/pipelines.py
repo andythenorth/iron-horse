@@ -352,38 +352,39 @@ class GenerateSpritelayerCargoSets(Pipeline):
                         cargo_sprites[angle_index][1],
                     )
 
-            # create a mask to place black shadows between adjacent containers
-            combo_check = ["empty" if "empty" in i else "occupied" for i in variant]
-            # *vehicles with 3 containers only (32px)*
-            # don't allow combinations of only two adjacent 20 foot containers as it's TMWFTLB to provide the shadow for them
-            # two 20 foot with a gap between are supported
-            # solitary 20 foot containers of any length in any position are not prevented, but look bad (looks like loading didn't finish)
-            if len(combo_check) == 3:
-                if combo_check in [
-                    ["occupied", "occupied", "empty"],
-                    ["empty", "occupied", "occupied"],
-                ]:
-                    raise ValueError(
-                        self.spritelayer_cargo_set.id
-                        + " - this pattern of (20 foot) containers isn't supported (can't composite shadows for it): "
-                        + str(combo_check)
-                    )
+            if self.spritelayer_cargo.provide_container_shadows:
+                # create a mask to place black shadows between adjacent containers
+                combo_check = ["empty" if "empty" in i else "occupied" for i in variant]
+                # *vehicles with 3 containers only (32px)*
+                # don't allow combinations of only two adjacent 20 foot containers as it's TMWFTLB to provide the shadow for them
+                # two 20 foot with a gap between are supported
+                # solitary 20 foot containers of any length in any position are not prevented, but look bad (looks like loading didn't finish)
+                if len(combo_check) == 3:
+                    if combo_check in [
+                        ["occupied", "occupied", "empty"],
+                        ["empty", "occupied", "occupied"],
+                    ]:
+                        raise ValueError(
+                            self.spritelayer_cargo_set.id
+                            + " - this pattern of (20 foot) containers isn't supported (can't composite shadows for it): "
+                            + str(combo_check)
+                        )
 
-            # don't draw shadows if there are empty slots
-            if combo_check.count("empty") == 0:
-                shadow_image = template_image.copy().crop(
-                    (
-                        0,
-                        10 - floor_height_yoffset,
-                        self.global_constants.sprites_max_x_extent,
-                        10 + graphics_constants.spriterow_height - floor_height_yoffset,
+                # don't draw shadows if there are empty slots
+                if combo_check.count("empty") == 0:
+                    shadow_image = template_image.copy().crop(
+                        (
+                            0,
+                            10 - floor_height_yoffset,
+                            self.global_constants.sprites_max_x_extent,
+                            10 + graphics_constants.spriterow_height - floor_height_yoffset,
+                        )
                     )
-                )
-                shadow_mask = shadow_image.copy()
-                shadow_mask = shadow_mask.point(lambda i: 255 if i == 1 else 0).convert(
-                    "1"
-                )  # assume shadow is always colour index 1 in the palette
-                variant_output_image.paste(shadow_image, mask=shadow_mask)
+                    shadow_mask = shadow_image.copy()
+                    shadow_mask = shadow_mask.point(lambda i: 255 if i == 1 else 0).convert(
+                        "1"
+                    )  # assume shadow is always colour index 1 in the palette
+                    variant_output_image.paste(shadow_image, mask=shadow_mask)
 
             # if self.spritelayer_cargo.id == 'intermodal_box_32px':
             # variant_output_image.show()

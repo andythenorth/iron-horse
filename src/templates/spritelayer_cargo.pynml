@@ -49,7 +49,7 @@
     <tal:automobiles case="'automobiles'">
         <!--! a no-op stub until further notice -->
         switch (FEAT_TRAINS, SELF, switch_spritelayer_cargos_${spritelayer_cargo.id}_generic_by_class_entry_point, 0) {
-            return switch_spritelayer_cargos_${spritelayer_cargo.id}_random_box_DFLT;
+            return switch_spritelayer_cargos_${spritelayer_cargo.id}_random_cars_DFLT;
         }
     </tal:automobiles>
 </tal:generic_by_class>

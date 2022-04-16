@@ -4,7 +4,6 @@ from train import AutomobileCarConsist, AutomobileCar
 def main():
     # --------------- pony ----------------------------------------------------------------------
     # no gen 1 or 2, straight to gen 3
-    """
     consist = AutomobileCarConsist(
         roster_id="pony", base_numeric_id=5750, gen=3, subtype="B"
     )
@@ -51,4 +50,3 @@ def main():
     )
 
     consist.add_unit(type=AutomobileCar, chassis="4_axle_filled_greebled_32px")
-    """

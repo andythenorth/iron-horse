@@ -14,6 +14,7 @@ class IntermodalContainersSpritelayerCargo(SpritelayerCargo):
         super().__init__(**kwargs)
         self.base_id = "intermodal_containers"
         self.gestalt_graphics = GestaltGraphicsIntermodalContainerTransporters()
+        self.provide_container_shadows = True
 
     @property
     def all_platform_types_with_floor_heights(self):

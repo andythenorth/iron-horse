@@ -17,9 +17,10 @@ class AutomobilesSpritelayerCargo(SpritelayerCargo):
     def all_platform_types_with_floor_heights(self):
         # extend this when adding more platform types
         # y offset: positive = down in spritesheet (y origin at top)
+        # the origin was set up for intermodal cars, at solebar height, so standard automobiles actually need shifted up 1px, hence -1
         return {
-            "default": 0,
-            "low_floor": 1,
+            "default": -1,
+            "low_floor": 0,
         }
 
 
@@ -31,6 +32,14 @@ class DefaultAndLowFloorAutomobilesCargoSetBase(CargoSetBase):
         super().__init__(**kwargs)
         self.graphics_template_subtype_name = "default"
 
+
+class Cars32pxCargoSet(DefaultAndLowFloorAutomobilesCargoSetBase):
+    def __init__(self, **kwargs):
+        self.length = 32
+        super().__init__(**kwargs)
+        self.variants = [
+            ["cars_1_1CC", "cars_1_1CC", "cars_1_1CC"],
+        ]
 
 class Trucks16pxCargoSet(DefaultAndLowFloorAutomobilesCargoSetBase):
     def __init__(self, **kwargs):
@@ -64,75 +73,19 @@ class Trucks32pxCargoSet(DefaultAndLowFloorAutomobilesCargoSetBase):
 
 
 subtype_to_cargo_set_mapping = {
-    "box": [
+    "cars": [
+        Trucks16pxCargoSet,
+        Trucks20pxCargoSet,
+        Trucks24pxCargoSet,
+        Cars32pxCargoSet,
+    ],
+    "trucks": [
         Trucks16pxCargoSet,
         Trucks20pxCargoSet,
         Trucks24pxCargoSet,
         Trucks32pxCargoSet,
     ]
 }
-"""
-    "bulk": [
-        IntermodalFlatCar16pxStandardCargo,
-        IntermodalFlatCar24pxStandardCargo,
-        IntermodalFlatCar32pxNo40FootCargo,  # note special case for 32px
-        IntermodalCargoSprinter32px20FootOnlyCargo,
-    ],
-    "chemicals_tank": [
-        IntermodalFlatCar16pxStandardCargo,
-        IntermodalFlatCar24pxStandardCargo,
-        IntermodalFlatCar32pxStandardCargo,
-        IntermodalCargoSprinter32pxStandardCargo,
-    ],
-    "cryo_tank": [
-        IntermodalFlatCar16pxStandardCargo,
-        IntermodalFlatCar24pxStandardCargo,
-        IntermodalFlatCar32pxStandardCargo,
-        IntermodalCargoSprinter32pxStandardCargo,
-    ],
-    "curtain_side": [
-        IntermodalFlatCar16pxStandardCargo,
-        IntermodalFlatCar24px40FootOnlyCargo,  # note special case for 24px
-        IntermodalFlatCar32px30FootOnlyCargo,  # note special case for 24px
-        IntermodalCargoSprinter32px40FootOnlyCargo,
-    ],
-    "edibles_tank": [
-        IntermodalFlatCar16pxStandardCargo,
-        IntermodalFlatCar24pxStandardCargo,
-        IntermodalFlatCar32pxStandardCargo,
-        IntermodalCargoSprinter32pxStandardCargo,
-    ],
-    "stake_flatrack": [
-        IntermodalFlatCar16pxStandardCargo,
-        IntermodalFlatCar24px40FootOnlyCargo,  # note special case for 24px
-        IntermodalFlatCar32px30FootOnlyCargo,  # note special case for 24px
-        IntermodalCargoSprinter32px40FootOnlyCargo,
-    ],
-    "livestock": [
-        IntermodalFlatCar16pxStandardCargo,
-        IntermodalFlatCar24pxStandardCargo,
-        IntermodalFlatCar32pxStandardCargo,
-        IntermodalCargoSprinter32pxStandardCargo,
-    ],
-    "reefer": [
-        IntermodalFlatCar16pxStandardCargo,
-        IntermodalFlatCar24pxStandardCargo,
-        IntermodalFlatCar32pxStandardCargo,
-        IntermodalCargoSprinter32pxStandardCargo,
-    ],
-    "tank": [
-        IntermodalFlatCar16pxStandardCargo,
-        IntermodalFlatCar24pxStandardCargo,
-        IntermodalFlatCar32pxStandardCargo,
-        IntermodalCargoSprinter32pxStandardCargo,
-    ],
-    "wood": [
-        IntermodalFlatCar16pxStandardCargo,
-        IntermodalFlatCar24px40FootOnlyCargo,  # note special case for 24px
-        IntermodalFlatCar32px30FootOnlyCargo,  # note special case for 24px
-        IntermodalCargoSprinter32px40FootOnlyCargo,
-    ],
-"""
 
 
 def main():

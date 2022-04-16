@@ -444,6 +444,13 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphics):
         self.consist_ruleset = kwargs.get("consist_ruleset", None)
         self.flag_switch_set_layers_register_more_sprites = True
 
+    def get_output_row_types(self):
+        # !! the actual number of variants needs decided - are we having articulated variants or just single units?
+        # 2 liveries * 4 variants so 8 empty rows, we're only using the composited sprites pipeline for chassis compositing, containers are provided on separate layer
+        # note to self, remarkably adding multiple empty rows appears to just work here :o
+        return ["empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty"]
+
+    """
     def allow_adding_cargo_label(self, cargo_label, container_type, result):
         # don't ship DFLT as actual cargo label, it's not a valid cargo and will cause nml to barf
         # the generation of the DFLT container sprites is handled separately without using cargo_label_mapping
@@ -472,35 +479,12 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphics):
             )
         # default to allowing, most cargos aren't contested
         return True
-
+    """
     @property
     def cargo_label_mapping(self):
         result = {}
-        # first result is known refits which will fallback to xxxxx_DFLT
-        # second result is known cargo sprites / livery recolours, which will map explicitly
-        container_cargo_maps = (
-            (
-                "box",
-                ([], []),
-            ),  # box currently generic, and is fallback for all unknown cargos / classes
-            # ("bulk", ([], polar_fox.constants.bulk_cargo_recolour_maps)),
-            # ("wood", (["WOOD"], [])),
-        )  # one label only - extend if other wood-type labels added in future
-
-        result = {}
-        for container_type, cargo_maps in container_cargo_maps:
-            # first handle the cargos as explicitly refittable
-            # lists of explicitly refittable cargos are by no means *all* the cargos refittable to for a type
-            # nor does explicitly refittable cargos have 1:1 mapping with cargo-specific graphics
-            # these will all map cargo_label: container_type_DFLT
-            for cargo_label in cargo_maps[0]:
-                if self.allow_adding_cargo_label(cargo_label, container_type, result):
-                    result[cargo_label] = (container_type, "DFLT")
-
-            # then insert or over-ride entries with cargo_label: container_type_[CARGO_LABEL] where there are explicit graphics for a cargo
-            for cargo_label, recolour_map in cargo_maps[1]:
-                if self.allow_adding_cargo_label(cargo_label, container_type, result):
-                    result[cargo_label] = (container_type, cargo_label)
+        # see intermodal for example of how this mapped containers
+        # for vehicles this maybe just needs to switch e.g on cargo subtype or something - trucks, cars etc
         return result
 
     @property

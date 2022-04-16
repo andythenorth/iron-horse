@@ -1789,7 +1789,7 @@ class AutomobileCarConsistBase(CarConsist):
         if self.subtype == "D":
             consist_ruleset = "articulated_permanent_twin_sets"
         else:
-            consist_ruleset = "single_unit_sets"
+            consist_ruleset = "1_unit_sets"
         self.gestalt_graphics = GestaltGraphicsAutomobilesTransporter(
             consist_ruleset=consist_ruleset
         )
