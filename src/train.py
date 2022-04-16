@@ -497,9 +497,14 @@ class Consist(object):
             "METRO": "METRO",  # assume METRO is always METRO, whether electric flag is set or not
         }
         if self.requires_electric_rails:
-            return eltrack_type_mapping[self.base_track_type]
+            # for electrified vehicles, translate base_track_type before getting the mapping to labels
+            valid_railtype_labels = global_constants.base_track_type_to_railtype_mapping[eltrack_type_mapping[self.base_track_type]]
         else:
-            return self.base_track_type
+            # if unelectrified, just get the mapping to labels directly
+            valid_railtype_labels = global_constants.base_track_type_to_railtype_mapping[self.base_track_type]
+        # assume that the label we want for the vehile is the first in the list of valid types (the rest are fallbacks if the first railtype is missing)
+        result = valid_railtype_labels[0]
+        return result
 
     def get_speed_by_class(self, speed_class):
         # automatic speed, but can over-ride by passing in kwargs for consist
