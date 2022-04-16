@@ -78,6 +78,19 @@ buy_menu_sort_order_wagons = [
     "caboose_car",
 ]
 
+# mapping of internal base_track_type values to actual railtype labels
+# used when determining track_type property for vehicles
+# the *first item* must be the actual label provided by an appropriate Iron Horse railtype
+# the rest are fallbacks, in order, for use with other railtype grfs
+base_track_type_to_railtype_mapping = {
+    "RAIL": ["RAIL"],
+    "ELRL": ["ELRL"],
+    "LOLZ": ["LOLZ", "HSTR", "SAAE"],  # unused as of April 2022
+    "METRO": ["MTRO", "3RDR", "SAA3"],
+    "NG": ["NAAN", "NGRL", "NLOW", "NAAE", "NBAN", "ENLW", "ENHI", "ELNG"],
+    "ELNG": ["NAAE", "ENLW", "ENHI", "ELNG"],
+}
+
 # capacity multipliers for user-configurable capacity parameter
 capacity_multipliers = [0.33, 0.67, 1, 1.33, 1.77]
 

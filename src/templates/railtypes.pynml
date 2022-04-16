@@ -10,6 +10,7 @@ if (grf_future_status("\FB\FB\0B\01")) {
  * *********************
  */
 
+/*
  railtypetable {
  	RAIL,
  	ELRL,
@@ -19,7 +20,19 @@ if (grf_future_status("\FB\FB\0B\01")) {
  	NG: [NAAN, NGRL, NLOW, NAAE, NBAN, ENLW, ENHI, ELNG],
  	ELNG: [NAAE, ENLW, ENHI, ELNG],
  }
+*/
 
+<!--!
+    in nfo vehicle prop 05 is a direct index into the railtype table, which looks like a CTT
+    nml extends the railtype table with lists of fallbacks,
+    the nml approach is syntactic sugar around some action 6/7/9 or so, testing the available railtypes in game in order
+    I am leaving this note here as railtypes have been a repeated source of confusion, stemming at least partly from this nml railtype table - April 2022
+-->
+railtypetable {
+    <tal:railtype_mapping repeat="railtype_mapping global_constants.base_track_type_to_railtype_mapping.items()">
+        ${railtype_mapping[0]}: [${','.join('"' + i + '"' for i in railtype_mapping[1])}],
+    </tal:railtype_mapping>
+}
 
 // railtype spriteset templates
 
