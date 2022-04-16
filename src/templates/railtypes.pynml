@@ -10,18 +10,6 @@ if (grf_future_status("\FB\FB\0B\01")) {
  * *********************
  */
 
-/*
- railtypetable {
- 	RAIL,
- 	ELRL,
- 	MGLV,
- 	LOLZ: [LOLZ, HSTR, SAAE],
- 	METRO: [MTRO, "3RDR", SAA3],
- 	NG: [NAAN, NGRL, NLOW, NAAE, NBAN, ENLW, ENHI, ELNG],
- 	ELNG: [NAAE, ENLW, ENHI, ELNG],
- }
-*/
-
 <!--!
     in nfo vehicle prop 05 is a direct index into the railtype table, which looks like a CTT
     nml extends the railtype table with lists of fallbacks,
