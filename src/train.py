@@ -503,16 +503,7 @@ class Consist(object):
 
     def get_speed_by_class(self, speed_class):
         # automatic speed, but can over-ride by passing in kwargs for consist
-        speed_track_type_mapping = {
-            "RAIL": "RAIL",
-            "ELRL": "RAIL",
-            "NG": "NG",
-            "ELNG": "NG",
-            "METRO": "METRO",
-        }
-        speeds_by_track_type = self.roster.speeds[
-            speed_track_type_mapping[self.base_track_type]
-        ]
+        speeds_by_track_type = self.roster.speeds[self.base_track_type]
         return speeds_by_track_type[speed_class][self.gen - 1]
 
     @property
