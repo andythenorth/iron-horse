@@ -57,6 +57,31 @@
                     </tr>
                 </tal:railtype_mapping>
             </table>
+            <h4>Iron Horse railtype scheme details / tips for railtype authors</h4>
+            <p>Railtype labels are 4 chars, composed from the following valid characters: <code>a-z, A-Z, 0-9, _</code>.</p>
+            <p>Iron Horse labels, characters 1 and 2 are always <code>IH</code></p>
+            <p>Character 3 represents a general 'class' of vehicle</p>
+            <ul>
+                <li><code>A</code> vanilla rail vehicle, non-electric, suitable for <code>RAIL</code> and similar railtypes</li>
+                <li><code>B</code> vanilla rail vehicle, electric, <!--! (no subtype) --> suitable for <code>ELRL</code> and similar railtypes</li>
+                <li><code>C</code> vanilla metro vehicle, requires dedicated metro lines, suitable for <code>MTRO</code> and similar railtypes, metro is always assumed to be electrified via 3 or 4 rail system</li>
+                <li><code>D</code> vanilla narrow gauge vehicle, non-electric, suitable for <code>NGRL</code> and similar railtypes</li>
+                <li><code>E</code> vanilla narrow gauge vehicle, electric, suitable for <code>ELNG</code> and similar railtypes</li>
+                <!--!
+                    electrification subtypes e.g. AC, DC, would be added as explicit classes in char 3, then appropriate fallbacks to B for games where the subtype is not used
+                    multi-voltage locomotives would be a specific class representing the combined voltages they're capable of,
+                    with the cross-compatibility managed by a hidden railtype
+                -->
+                <li>&hellip;more 'classes' added as needed</li>
+            </ul>
+            <p>Character 4 represents modifiers to the class, and is used sparingly. Modifiers cannot be combined, except by adding a new character specifically for the combined properties.</p>
+            <ul>
+                <li><code>_</code> no modifier used (default)</li>
+                <li><code>A</code> can be used on high speed lines (LGV), has suitable brakes, signalling equipment etc.</li>
+                <li><code>B</code> suitable for light or poorly maintained tracks</li>
+                <li><code>C</code> requires a route cleared for tall vehicles</li>
+                <li>&hellip;more modifiers added as needed</li>
+            </ul>
             <hr />
             <br />
             <h3>${len(consists)} trains</h3>
