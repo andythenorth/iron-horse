@@ -51,7 +51,8 @@
                         we discard the base_track_type values which are internal to Iron Horse compile, and instead set track_type and RTT to real labels
                     -->
                     <tr>
-                        <th>${railtype_mapping[1][0]}</th>
+                        <th>${railtype_mapping[0]}</th>
+                        <td>${railtype_mapping[1][0]}</td>
                         <td>${','.join('"' + i + '"' for i in railtype_mapping[1])}</td>
                     </tr>
                 </tal:railtype_mapping>

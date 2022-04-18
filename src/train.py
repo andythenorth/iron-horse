@@ -489,16 +489,18 @@ class Consist(object):
     def track_type(self):
         # are you sure you don't want base_track_type instead?
         # track_type handles converting base_track_type to an actual railtype label
-        # e.g. electric engines with "RAIL" as base_track_type will be translated to "ELRL" here
+        # this is done by looking up a railtype mapping in global constants, via internal labels
+        # e.g. electric engines with "RAIL" as base_track_type will be translated to "ELRL"
         # narrow gauge trains will be similarly have "NG" translated to an appropriate NG railytpe label
         # it's often more convenient to use base_track_type prop, which treats ELRL and RAIL as same (for example)
         eltrack_type_mapping = {
-            "RAIL": "ELRL",
-            "NG": "ELNG",
+            "RAIL": "RAIL_ELECTRIFIED",
+            "NG": "NG_ELECTRIFIED",
             "METRO": "METRO",  # assume METRO is always METRO, whether electric flag is set or not
         }
         if self.requires_electric_rails:
             # for electrified vehicles, translate base_track_type before getting the mapping to labels
+            # iff electrification types ever gain subtypes (AC, DC, etc), add further checks here
             valid_railtype_labels = global_constants.base_track_type_to_railtype_mapping[eltrack_type_mapping[self.base_track_type]]
         else:
             # if unelectrified, just get the mapping to labels directly

@@ -87,13 +87,12 @@ buy_menu_sort_order_wagons = [
 # see the docs Code Reference page for further explanation of the label schema
 base_track_type_to_railtype_mapping = {
     "RAIL": ["IHA_", "RAIL"],
-    "ELRL": ["IHB_", "ELRL"],
-    # frosch123 (April 16th 2022) use MTRO for metro - it's part of nutracks, so every train grf knows about it
+    "RAIL_ELECTRIFIED": ["IHB_", "ELRL"],
     "METRO": ["IHC_", "MTRO"],
     "NG": ["IHD_", "NGRL"],
-    "ELNG": ["IHE_", "ELNG"],
-    "DEDICATED_HIGH_SPEED": ["IHAA", "RAIL"],
-    "DEDICATED_HIGH_SPEED_ELECTRIFIED": ["IHBA", "ELNG"],
+    "NG_ELECTRIFIED": ["IHE_", "ELNG"],
+    "LGV": ["IHAA", "RAIL"],
+    "LGV_ELECTRIFIED": ["IHBA", "ELRL"],
 }
 
 # capacity multipliers for user-configurable capacity parameter
