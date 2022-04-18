@@ -86,7 +86,7 @@ class Consist(object):
         self.pantograph_type = kwargs.get("pantograph_type", None)
         self.dual_headed = kwargs.get("dual_headed", False)
         self.tilt_bonus = False  # over-ride in subclass as needed
-        self.high_speed_rail_capable = False # over-ride in subclass as needed
+        self.lgv_capable = False # over-ride in subclass as needed
         # solely used for ottd livery (company colour) selection, set in subclass as needed
         self.train_flag_mu = False
         # some wagons will provide power if specific engine IDs are in the consist
@@ -510,7 +510,7 @@ class Consist(object):
         # if multiple modifiers need to be combined, that needs to be explicitly handled
         # generally that would be a sign we're doing something unwise and with combinatorial problems
         modifier = "_"
-        if self.high_speed_rail_capable:
+        if self.lgv_capable:
             modifier = "A"
         result = result[0:3] + modifier
         return result
@@ -1214,7 +1214,7 @@ class PassengerHSTCabEngineConsist(PassengerEngineConsist):
         super().__init__(**kwargs)
         # always dual-head
         self.dual_headed = True
-        self.high_speed_rail_capable = kwargs.get("high_speed_rail_capable", False)
+        self.lgv_capable = kwargs.get("lgv_capable", False)
         self.buy_cost_adjustment_factor = 1.2
         # higher speed should only be effective over longer distances
         # ....run cost multiplier is adjusted up from pax base for high speed
@@ -1452,7 +1452,7 @@ class PassengerVeryHighSpeedCabEngineConsist(PassengerEngineConsist):
         self.middle_id = self.id.split("_cab")[0] + "_middle"
         self.buy_menu_hint_wagons_add_power = True
         self.tilt_bonus = True
-        self.high_speed_rail_capable = True
+        self.lgv_capable = True
         # note that buy costs are actually adjusted down from pax base, to account for distributed traction etc
         self.buy_cost_adjustment_factor = 0.95
         # ....run cost multiplier is adjusted up from pax base because regrettable realism
@@ -1503,7 +1503,7 @@ class PassengerVeryHighSpeedMiddleEngineConsist(PassengerEngineConsist):
         self.wagons_add_power = True
         self.buy_menu_hint_wagons_add_power = True
         self.tilt_bonus = True
-        self.high_speed_rail_capable = True
+        self.lgv_capable = True
         # train_flag_mu solely used for ottd livery (company colour) selection
         # eh as of Feb 2019, OpenTTD won't actually use this for middle cars, as not engines
         # this means the buy menu won't match, but wagons will match anyway when attached to cab
@@ -3121,7 +3121,7 @@ class MailHSTCarConsist(MailCarConsistBase):
         self.cab_id = kwargs[
             "cab_id"
         ]  # cab_id must be passed, do not mask errors with .get()
-        self.high_speed_rail_capable = kwargs.get("high_speed_rail_capable", False)
+        self.lgv_capable = kwargs.get("lgv_capable", False)
         self.buy_cost_adjustment_factor = 1.66
         # run cost multiplier matches standard pax coach costs; higher speed is accounted for automatically already
         self.floating_run_cost_multiplier = 3.33
@@ -3387,7 +3387,7 @@ class PassengerHSTCarConsist(PassengerCarConsistBase):
         self.cab_id = kwargs[
             "cab_id"
         ]  # cab_id must be passed, do not mask errors with .get()
-        self.high_speed_rail_capable = kwargs.get("high_speed_rail_capable", False)
+        self.lgv_capable = kwargs.get("lgv_capable", False)
         self.buy_cost_adjustment_factor = 1.66
         # run cost multiplier matches standard pax coach costs; higher speed is accounted for automatically already
         self.floating_run_cost_multiplier = 3.33

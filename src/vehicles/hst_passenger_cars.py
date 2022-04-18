@@ -34,7 +34,7 @@ def main():
         subtype="U",
         intro_date_offset=-10,  # match to Scorcher HST
         cab_id="scorcher",
-        high_speed_rail_capable=True, # for lolz
+        lgv_capable=True, # for lolz
         sprites_complete=True,
     )
 

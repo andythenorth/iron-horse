@@ -27,13 +27,23 @@
 </tal:wagons_add_power>
 
 <!--! some vehicles vary their speed depending on lead engine,
-      this should be limited use, it's a *very* silly easter egg -->
-<tal:variable_speed condition="consist.easter_egg_haulage_speed_bonus">
+      this should be limited use, it's a *very* silly easter egg
+      *cannot* be combined with any other variable speed effects  -->
+<tal:easter_egg_haulage_speed_bonus condition="consist.easter_egg_haulage_speed_bonus">
     switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_speed, haulage_bonus_switch_speed_0()) {
         1: return ${int(1.60934 * consist.get_speed_by_class('express'))};
         0: return ${int(1.60934 * consist.speed)};
     }
-</tal:variable_speed>
+</tal:easter_egg_haulage_speed_bonus>
+
+<!--! some vehicles are equipped to travel faster on dedicated lgv railtype (high speed line)
+      *cannot* be combined with any other variable speed effects  -->
+<tal:lgv_capable_speed_bonus condition="consist.lgv_capable">
+    switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_speed, [tile_is_railtype("IHAA") || tile_is_railtype("IHBA")]) {
+        1: return ${int(1.60934 * consist.speed)};
+        return ${int(1.60934 * consist.get_speed_by_class('express'))};
+    }
+</tal:lgv_capable_speed_bonus>
 
 <!--! some vehicles vary running cost if restaurant car is in consist
       this will need generalised if other similar vehicles are added, e.g. motorail, observation car etc -->
@@ -126,7 +136,7 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
             power:                          ${vehicle.id}_switch_power;
             purchase_power:                 ${consist.power};
         </tal:variable_power>
-        <tal:speed_is_optional condition="consist.easter_egg_haulage_speed_bonus">
+        <tal:speed_is_optional condition="consist.easter_egg_haulage_speed_bonus or consist.lgv_capable">
             speed:                          ${vehicle.id}_switch_speed;
             purchase_speed:                 ${int(1.60934 * consist.speed)};
         </tal:speed_is_optional>
