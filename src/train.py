@@ -594,6 +594,22 @@ class Consist(object):
                 result = 'cargotype_available("' + cargo + '")?' + cargo + ":" + result
             return result
 
+    def get_nml_expression_for_tile_powers_railtype(self):
+        # 1) all railtypes must be known in the railtypetable (by brute force if necessary)
+        # 2) extend this as necessary in future if more fine-grained checks are needed specific to the consist
+        # 3) if procedure support is needed, make that parameterised for the appropriate railtypes to the consist
+        # for example, adding IHE_ for electrified narrow gauge would be relevant
+        # this could also interrogate the vehicle label to find the appropriate types to add
+        # but that would need to be cautious about e.g. electro-diesel has tracktype IHA_, but would need IHB_ and ELRL here
+        # so perhaps Yet Another Mapping for table lookup
+        railtypes_to_check = ["ELRL", "IHB_"]
+        result = []
+        for railtype in railtypes_to_check:
+            result.append('tile_powers_railtype("' + railtype + '")')
+        result = " || ".join(result)
+        result = "[" + result + "]"
+        return result
+
     @property
     def buy_menu_x_loc(self):
         # automatic buy menu sprite if single-unit consist

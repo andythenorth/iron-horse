@@ -2,7 +2,7 @@
 <!--! assumes RAIL / ELRL, deal with that later if it's a problem later -->
 <tal:spawn_model_varies_by_railtype switch="consist.engine_varies_power_by_railtype(vehicle)">
     <tal:check_elrl case="True">
-        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_effect_spawn_model_and_powered, tile_powers_railtype("ELRL")) {
+        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_effect_spawn_model_and_powered, ${consist.get_nml_expression_for_tile_powers_railtype()}) {
                 1: return ${vehicle.effects['ELRL'][0]};
             return ${vehicle.effects['default'][0]};
         }
@@ -25,7 +25,7 @@
         </tal:effect>
     </tal:railtypes>
 
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_create_effect_check_railtype_${reversed_variant}, tile_powers_railtype("ELRL")) {
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_create_effect_check_railtype_${reversed_variant}, ${consist.get_nml_expression_for_tile_powers_railtype()}) {
         <!--! variable effect assumes RAIL / ELRL, deal with that later if it's a problem later -->
         <tal:effect_varies_by_railtype condition="consist.engine_varies_power_by_railtype(vehicle)">
             1: return ${vehicle.id}_switch_create_effect_ELRL_${reversed_variant};

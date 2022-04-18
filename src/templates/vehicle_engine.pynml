@@ -42,7 +42,7 @@
                 }
             </tal:pantographs>
             <!--! assumes RAIL / ELRL, deal with that later if it's a problem later -->
-            switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_pantographs_${reversed_variant}_${flipped}, tile_powers_railtype("ELRL")) {
+            switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_pantographs_${reversed_variant}_${flipped}, ${consist.get_nml_expression_for_tile_powers_railtype()}) {
                 1: return ${vehicle.id}_ss_pantographs_up_${reversed_variant}_${flipped};
                 return ${vehicle.id}_ss_pantographs_down_${reversed_variant}_${flipped};
             }
