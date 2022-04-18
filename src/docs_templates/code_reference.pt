@@ -78,10 +78,15 @@
             <ul>
                 <li><code>_</code> no modifier used (default)</li>
                 <li><code>A</code> can be used on high speed lines (LGV), has suitable brakes, signalling equipment etc.</li>
-                <li><code>B</code> suitable for light or poorly maintained tracks</li>
-                <li><code>C</code> requires a route cleared for tall vehicles</li>
+                <!--!<li><code>B</code> suitable for light or poorly maintained tracks</li>-->
+                <!--!<li><code>C</code> requires a route cleared for tall vehicles</li>-->
                 <li>&hellip;more modifiers added as needed</li>
             </ul>
+            <p>
+                Vehicles <strong>do not</strong> set labels from the standardised railtype scheme as fallbacks as of April 2022.
+                This is so that railtype authors using the standardised railtype scheme can control how they wish to map Iron Horse vehicles to their railtypes.
+                Authors can do this by using the Iron Horse labels in the alternative_railtype_list property for their railtypes.
+            </p>
             <hr />
             <br />
             <h3>${len(consists)} trains</h3>
