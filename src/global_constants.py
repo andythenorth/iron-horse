@@ -92,8 +92,8 @@ base_track_type_to_railtype_mapping = {
     "METRO": ["IHC_", "MTRO"],
     "NG": ["IHD_", "NGRL"],
     "ELNG": ["IHE_", "ELNG"],
-    # LOLZ unused as of April 2022
-    # "LOLZ": ["LOLZ", "HSTR", "SAAE"],
+    "DEDICATED_HIGH_SPEED": ["IHAA", "RAIL"],
+    "DEDICATED_HIGH_SPEED_ELECTRIFIED": ["IHBA", "ELNG"],
 }
 
 # capacity multipliers for user-configurable capacity parameter

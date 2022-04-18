@@ -174,13 +174,22 @@ STR_BUY_MENU_HINT_RESTAURANT_CAR                                :{}{BLACK}Bonus:
 STR_SPRITES_COMPLETE                                            :{}Sprites Complete: {GOLD}Yup
 STR_SPRITES_INCOMPLETE                                          :{}Sprites Complete: {GOLD}Nope
 
-#lolz track strings
-STR_RAILTYPE_LOLZ_NAME                                         :Electrified High Speed Railway
-STR_RAILTYPE_LOLZ_TOOLBAR_CAPTION                              :Electrified High Speed Railway Construction
-STR_RAILTYPE_LOLZ_MENU_TEXT                                    :Electrified high speed railway construction
-STR_RAILTYPE_LOLZ_BUILD_WINDOW_CAPTION                         :New Electric High Speed Vehicles
-STR_RAILTYPE_LOLZ_AUTOREPLACE_TEXT                             :[unused]
-STR_RAILTYPE_LOLZ_NEW_ENGINE_TEXT                              :[unused]
+# lgv track strings
+# this type isn't built, it's unelectrified and exists for compatibility reasons, see electrified lgv instead
+STR_RAILTYPE_LGV_NAME                                           :Dedicated High Speed Railway
+STR_RAILTYPE_LGV_TOOLBAR_CAPTION                                :[unused]
+STR_RAILTYPE_LGV_MENU_TEXT                                      :[unused]
+STR_RAILTYPE_LGV_BUILD_WINDOW_CAPTION                           :[unused]
+STR_RAILTYPE_LGV_AUTOREPLACE_TEXT                               :[unused]
+STR_RAILTYPE_LGV_NEW_ENGINE_TEXT                                :[unused]
+
+# lgv electrified
+STR_RAILTYPE_LGV_ELECTRIFIED_NAME                               :Dedicated High Speed Railway
+STR_RAILTYPE_LGV_ELECTRIFIED_TOOLBAR_CAPTION                    :Dedicated High Speed Railway Construction
+STR_RAILTYPE_LGV_ELECTRIFIED_MENU_TEXT                          :Dedicated high speed railway construction
+STR_RAILTYPE_LGV_ELECTRIFIED_BUILD_WINDOW_CAPTION               :New Dedicated High Speed Vehicles
+STR_RAILTYPE_LGV_ELECTRIFIED_AUTOREPLACE_TEXT                   :[unused]
+STR_RAILTYPE_LGV_ELECTRIFIED_NEW_ENGINE_TEXT                    :[unused]
 
 #metro track strings
 STR_RAILTYPE_METRO_NAME                                         :Metro Railway
