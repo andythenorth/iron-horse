@@ -27,6 +27,23 @@
             <hr />
             <br />
             <h3>Railtypes and fallbacks</h3>
+            <p>Iron Horse uses a very specific approach to railtypes.</p>
+            <ol>
+                <li>
+                    The Iron Horse grf includes <em>both</em> vehicles <em>and</em> railtypes. This is unusual; it's more common to split up vehicles and railtypes to separate grfs.
+                    However this puts more work on the player to find an appropriate grf, if they're even aware they need to.
+                    Iron Horse provides <em>batteries-are-included</em> gameplay by including the appropriate railtypes.
+                </li>
+                <li>
+                    Players can turn off the included Iron Horse railtypes if they wish to via parameter setting
+                    (does not affect RAIL and ELRL which are provided as default by OpenTTD).
+                </li>
+                <li>
+                    Iron Horse has a schema for vehicle track_type property (which sets the vehicle railtype).
+                    This schema makes it possible for railtype authors to detect different Iron Horse vehicle types and handle them as they see fit.
+                    Meanwhile the vehicles will fall back to more common railtypes if the specific Iron Horse labels are not available.
+                </li>
+            </ol>
             <table style="font-size:84%;" class="table table-striped table-condensed table-bordered tablesorter">
                 <tal:railtype_mapping repeat="railtype_mapping global_constants.base_track_type_to_railtype_mapping.items()">
                     <!--!

@@ -82,18 +82,18 @@ buy_menu_sort_order_wagons = [
 # used when determining track_type property for vehicles
 # the *first item* must be the actual label provided by an appropriate Iron Horse railtype
 # the rest are fallbacks, in order, for use with other railtype grfs
-# do not use labels from the standardised scheme as they will not be an exact match, and it conflicts with the scheme
-# railtype authors need to be able to control mapping IHXX types to the standardised scheme
+# do not use labels from the standardised scheme as they will not be an exact match, and that potentially conflicts with the scheme
+# railtype authors need to be able to control mapping IHXX types to the standardised scheme, which they can do using railtype alternative_railtype_list property
 # see the docs Code Reference page for further explanation of the label schema
 base_track_type_to_railtype_mapping = {
     "RAIL": ["IHA_", "RAIL"],
     "ELRL": ["IHB_", "ELRL"],
-    # LOLZ unused as of April 2022
-    # "LOLZ": ["LOLZ", "HSTR", "SAAE"],
     # frosch123 (April 16th 2022) use MTRO for metro - it's part of nutracks, so every train grf knows about it
     "METRO": ["IHC_", "MTRO"],
     "NG": ["IHD_", "NGRL"],
     "ELNG": ["IHE_", "ELNG"],
+    # LOLZ unused as of April 2022
+    # "LOLZ": ["LOLZ", "HSTR", "SAAE"],
 }
 
 # capacity multipliers for user-configurable capacity parameter
