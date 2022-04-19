@@ -38,31 +38,31 @@ class Cars32pxCargoSet(DefaultAndLowFloorAutomobilesCargoSetBase):
         self.length = 32
         super().__init__(**kwargs)
         self.variants = [
-            ["cars_1_1CC", "cars_1_1CC", "cars_1_1CC"],
-            ["cars_1_red", "cars_1_red", "cars_1_1CC"],
-            ["cars_1_red", "cars_1_red", "cars_1_red"],
-            ["cars_1_1CC", "cars_1_red", "cars_1_red"],
+            ["cars_1_20_foot_1CC", "cars_1_20_foot_1CC", "cars_1_20_foot_1CC"],
+            ["cars_1_20_foot_red", "cars_1_20_foot_red", "cars_1_20_foot_1CC"],
+            ["cars_1_20_foot_red", "cars_1_20_foot_red", "cars_1_20_foot_red"],
+            ["cars_1_20_foot_1CC", "cars_1_20_foot_red", "cars_1_20_foot_red"],
         ]
 
 class Trucks16pxCargoSet(DefaultAndLowFloorAutomobilesCargoSetBase):
     def __init__(self, **kwargs):
         self.length = 16
         super().__init__(**kwargs)
-        self.variants = [["trucks_1_1CC"]]
+        self.variants = [["trucks_1_20_foot_1CC"]]
 
 
 class Trucks20pxCargoSet(DefaultAndLowFloorAutomobilesCargoSetBase):
     def __init__(self, **kwargs):
         self.length = 20
         super().__init__(**kwargs)
-        self.variants = [["trucks_1_1CC"], ["trucks_1_1CC"]]
+        self.variants = [["trucks_1_20_foot_1CC"], ["trucks_1_20_foot_1CC"]]
 
 
 class Trucks24pxCargoSet(DefaultAndLowFloorAutomobilesCargoSetBase):
     def __init__(self, **kwargs):
         self.length = 24
         super().__init__(**kwargs)
-        self.variants = [["trucks_1_1CC", "trucks_1_1CC"]]
+        self.variants = [["trucks_1_20_foot_1CC", "trucks_1_20_foot_1CC"]]
 
 
 class Trucks32pxCargoSet(DefaultAndLowFloorAutomobilesCargoSetBase):
@@ -70,8 +70,8 @@ class Trucks32pxCargoSet(DefaultAndLowFloorAutomobilesCargoSetBase):
         self.length = 32
         super().__init__(**kwargs)
         self.variants = [
-            ["trucks_1_1CC", "trucks_1_1CC", "trucks_1_1CC"],
-            ["trucks_1_1CC", "trucks_1_1CC", "trucks_1_1CC"],
+            ["trucks_1_20_foot_1CC", "trucks_1_20_foot_1CC", "trucks_1_20_foot_1CC"],
+            ["trucks_1_20_foot_1CC", "trucks_1_20_foot_1CC", "trucks_1_20_foot_1CC"],
         ]
 
 

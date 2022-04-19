@@ -194,14 +194,11 @@ class GenerateSpritelayerCargoSets(Pipeline):
         # figure out which template png to use based on gestalt length + cargo pattern
         # - e.g. 32px_40_20, 32px_20_20_20 etc?
         result = [str(self.spritelayer_cargo.length) + "px"]
-        if self.spritelayer_cargo.base_id == "intermodal_containers":
-            # containers measured in feet
-            for container in variant:
-                result.append(container.split("_foot")[0][-2:])
-        else:
-            # other items measured in arbitrary length units
-            for cargo_item in variant:
-                result.append("1")
+        # cargo items measured in 'feet', due to their origin with intermodal containers
+        # 'feet' does not have to be realistic, but an 8/8 wagon fits 60 foot-length of cargo sprites
+        # the value is picked out from the cargo sprite filenames, which must conform to the correct pattern
+        for container in variant:
+            result.append(container.split("_foot")[0][-2:])
         return (
             self.spritelayer_cargo.base_id
             + "_template_"
@@ -290,10 +287,10 @@ class GenerateSpritelayerCargoSets(Pipeline):
                     bboxes.append([bbox[0], 10, bbox[0] + bbox[1], 10 + bbox[2]])
 
                 cargo_sprites = pixa.get_arbitrary_angles(cargo_item_image, bboxes)
-                # containers are symmetric, angles 0-3 need to be copied from angles 4-7
-                # !! other cargos are NOT symmetric, this needs accounted for
-                for i in range(4):
-                    cargo_sprites[i] = cargo_sprites[i + 4]
+                if self.spritelayer_cargo.gestalt_graphics.cargo_sprites_are_asymmetric == False:
+                    # if cargo item sprites are symmetric (e.g. containers), angles 0-3 need to be copied from angles 4-7
+                    for i in range(4):
+                        cargo_sprites[i] = cargo_sprites[i + 4]
 
                 # if self.spritelayer_cargo.id == 'intermodal_box_32px':
                 # cargo_sprites[0][0].show()
@@ -332,8 +329,8 @@ class GenerateSpritelayerCargoSets(Pipeline):
                         "20": [1, 3, 1, 2, 1, 3, 1, 2],
                         "30": [1, 3, 1, 3, 1, 3, 1, 3],
                         "40": [1, 3, 1, 4, 1, 3, 1, 4],
-                        "CC": [1, 3, 1, 2, 1, 3, 1, 2],  # hax
-                        "ed": [1, 3, 1, 2, 1, 3, 1, 2],  # hax - truncated 'red'
+                        "CC": [1, 2, 1, 3, 1, 2, 1, 3],  # hax
+                        "ed": [1, 2, 1, 3, 1, 2, 1, 3],  # hax - truncated 'red'
                     }
                     container_foot_length = cargo_item_for_this_loc_point[0].split(
                         "_foot"

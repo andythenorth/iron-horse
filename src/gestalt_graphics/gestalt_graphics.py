@@ -330,6 +330,8 @@ class GestaltGraphicsIntermodalContainerTransporters(GestaltGraphics):
         self.colour_mapping_switch = "_switch_colour_mapping"
         self.consist_ruleset = kwargs.get("consist_ruleset", None)
         self.flag_switch_set_layers_register_more_sprites = True
+        # the actual containers are symmetric
+        self.cargo_sprites_are_asymmetric = False
         # intermodal cars are asymmetric, sprites are drawn in second col, first col needs populated, map is [col 1 dest]: [col 2 source]
         # two liveries
         self.asymmetric_row_map = {
@@ -443,6 +445,7 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphics):
         self.colour_mapping_switch = "_switch_colour_mapping"
         self.consist_ruleset = kwargs.get("consist_ruleset", None)
         self.flag_switch_set_layers_register_more_sprites = True
+        self.cargo_sprites_are_asymmetric = True
 
     def get_output_row_types(self):
         # !! the actual number of variants needs decided - are we having articulated variants or just single units?
