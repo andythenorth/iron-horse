@@ -38,10 +38,18 @@ class Cars32pxCargoSet(DefaultAndLowFloorAutomobilesCargoSetBase):
         self.length = 32
         super().__init__(**kwargs)
         self.variants = [
-            ["cars_1_20_foot_1CC", "cars_1_20_foot_1CC", "cars_1_20_foot_1CC"],
-            ["cars_1_20_foot_red", "cars_1_20_foot_red", "cars_1_20_foot_1CC"],
+            ["cars_1_20_foot_white", "cars_1_20_foot_white", "cars_1_20_foot_grey"],
+            ["cars_1_20_foot_red", "cars_1_20_foot_red", "cars_1_20_foot_grey"],
             ["cars_1_20_foot_red", "cars_1_20_foot_red", "cars_1_20_foot_red"],
-            ["cars_1_20_foot_1CC", "cars_1_20_foot_red", "cars_1_20_foot_red"],
+            ["cars_1_20_foot_red", "cars_1_20_foot_red", "cars_1_20_foot_white"],
+            ["cars_1_20_foot_red", "cars_1_20_foot_grey", "cars_1_20_foot_grey"],
+            ["cars_1_20_foot_grey", "cars_1_20_foot_grey", "cars_1_20_foot_grey"],
+            ["cars_1_20_foot_1CC", "cars_1_20_foot_white", "cars_1_20_foot_white"],
+            ["cars_1_20_foot_white", "cars_1_20_foot_red", "cars_1_20_foot_red"],
+            ["cars_1_20_foot_black", "cars_1_20_foot_black", "cars_1_20_foot_black"],
+            ["cars_1_20_foot_black", "cars_1_20_foot_grey", "cars_1_20_foot_black"],
+            ["cars_1_20_foot_black", "cars_1_20_foot_black", "cars_1_20_foot_red"],
+            ["cars_1_20_foot_white", "cars_1_20_foot_black", "cars_1_20_foot_red"],
         ]
 
 class Trucks16pxCargoSet(DefaultAndLowFloorAutomobilesCargoSetBase):
