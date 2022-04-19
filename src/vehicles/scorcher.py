@@ -12,7 +12,7 @@ def main(roster_id):
         power=5850,
         intro_date_offset=-10,  # let's be a little bit earlier for this one - keep match to HST coaches
         gen=6,
-        lgv_capable=True, # for lolz
+        lgv_capable=True,  # for lolz
         sprites_complete=True,
     )
 

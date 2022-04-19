@@ -86,7 +86,7 @@ class Consist(object):
         self.pantograph_type = kwargs.get("pantograph_type", None)
         self.dual_headed = kwargs.get("dual_headed", False)
         self.tilt_bonus = False  # over-ride in subclass as needed
-        self.lgv_capable = False # over-ride in subclass as needed
+        self.lgv_capable = False  # over-ride in subclass as needed
         # solely used for ottd livery (company colour) selection, set in subclass as needed
         self.train_flag_mu = False
         # some wagons will provide power if specific engine IDs are in the consist
@@ -498,7 +498,9 @@ class Consist(object):
             mapping_key = self.base_track_type + "_ELECTRIFIED"
         else:
             mapping_key = self.base_track_type
-        valid_railtype_labels = global_constants.base_track_type_to_railtype_mapping[mapping_key]
+        valid_railtype_labels = global_constants.base_track_type_to_railtype_mapping[
+            mapping_key
+        ]
         # assume that the label we want for the vehicle is the first in the list of valid types (the rest are fallbacks if the first railtype is missing)
         result = valid_railtype_labels[0]
         # set modifiers on the label by modifying the last byte

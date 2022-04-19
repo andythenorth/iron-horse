@@ -204,7 +204,9 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
             if self.has_cover:
                 # add rows for covered sprite
                 for weathered_variant in self.weathered_variants.keys():
-                    result.append([weathered_variant, "has_cover", flipped, start_y_cumulative])
+                    result.append(
+                        [weathered_variant, "has_cover", flipped, start_y_cumulative]
+                    )
                     start_y_cumulative += row_height
 
             # add rows for empty sprite
@@ -215,9 +217,21 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
             # !! not sure unique_cargo_rows order will always reliably match to what's needed, but if it doesn't, explicitly sort it eh
             for row_num in unique_cargo_rows:
                 for weathered_variant in self.weathered_variants.keys():
-                    result.append([weathered_variant, "loading_" + str(row_num), flipped, start_y_cumulative])
                     result.append(
-                        [weathered_variant, "loaded_" + str(row_num), flipped, start_y_cumulative + 30]
+                        [
+                            weathered_variant,
+                            "loading_" + str(row_num),
+                            flipped,
+                            start_y_cumulative,
+                        ]
+                    )
+                    result.append(
+                        [
+                            weathered_variant,
+                            "loaded_" + str(row_num),
+                            flipped,
+                            start_y_cumulative + 30,
+                        ]
                     )
                     start_y_cumulative += 2 * row_height
         return result
@@ -483,6 +497,7 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphics):
         # default to allowing, most cargos aren't contested
         return True
     """
+
     @property
     def cargo_label_mapping(self):
         result = {}

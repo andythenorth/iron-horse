@@ -287,7 +287,10 @@ class GenerateSpritelayerCargoSets(Pipeline):
                     bboxes.append([bbox[0], 10, bbox[0] + bbox[1], 10 + bbox[2]])
 
                 cargo_sprites = pixa.get_arbitrary_angles(cargo_item_image, bboxes)
-                if self.spritelayer_cargo.gestalt_graphics.cargo_sprites_are_asymmetric == False:
+                if (
+                    self.spritelayer_cargo.gestalt_graphics.cargo_sprites_are_asymmetric
+                    == False
+                ):
                     # if cargo item sprites are symmetric (e.g. containers), angles 0-3 need to be copied from angles 4-7
                     for i in range(4):
                         cargo_sprites[i] = cargo_sprites[i + 4]
@@ -382,11 +385,15 @@ class GenerateSpritelayerCargoSets(Pipeline):
                             0,
                             10 - floor_height_yoffset,
                             self.global_constants.sprites_max_x_extent,
-                            10 + graphics_constants.spriterow_height - floor_height_yoffset,
+                            10
+                            + graphics_constants.spriterow_height
+                            - floor_height_yoffset,
                         )
                     )
                     shadow_mask = shadow_image.copy()
-                    shadow_mask = shadow_mask.point(lambda i: 255 if i == 1 else 0).convert(
+                    shadow_mask = shadow_mask.point(
+                        lambda i: 255 if i == 1 else 0
+                    ).convert(
                         "1"
                     )  # assume shadow is always colour index 1 in the palette
                     variant_output_image.paste(shadow_image, mask=shadow_mask)
