@@ -124,10 +124,7 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
             </tal:use_colour_randomisation_strategies>
             <tal:colour_mapping_switch case="'colour_mapping_switch'">
                 colour_mapping:                 ${vehicle.id + consist.gestalt_graphics.colour_mapping_switch};
-                <!--!
-                    the purchase_colour_mapping is a desperation measure to make automobile cars show 1cc in purchase menu
-                    - this is likely due to _switch_graphics_spritelayer_cargos which appears to set a recolour sprite in vehicle_automobile_car.pynml
-                -->
+                <!--! don't check colour mapping in purchase list as vehicle_is_flipped is invalid for purchase list and will return 1 as undefined behaviour -->
                 purchase_colour_mapping:        return base_sprite_2cc + 16 * company_colour2 + company_colour1;
             </tal:colour_mapping_switch
         </tal:colour_mapping_cb>
