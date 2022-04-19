@@ -33,6 +33,26 @@ class DefaultAndLowFloorAutomobilesCargoSetBase(CargoSetBase):
         self.graphics_template_subtype_name = "default"
 
 
+class Cars24pxCargoSet(DefaultAndLowFloorAutomobilesCargoSetBase):
+    def __init__(self, **kwargs):
+        self.length = 24
+        super().__init__(**kwargs)
+        self.variants = [
+            ["cars_1_20_foot_red", "cars_1_20_foot_red"],
+            ["cars_1_20_foot_red", "cars_1_20_foot_black"],
+            ["cars_1_20_foot_red", "cars_1_20_foot_grey"],
+            ["cars_1_20_foot_red", "cars_1_20_foot_white"],
+            ["cars_1_20_foot_grey", "cars_1_20_foot_grey"],
+            ["cars_1_20_foot_grey", "cars_1_20_foot_red"],
+            ["cars_1_20_foot_grey", "cars_1_20_foot_black"],
+            ["cars_1_20_foot_1CC", "cars_1_20_foot_white"],
+            ["cars_1_20_foot_black", "cars_1_20_foot_grey"],
+            ["cars_1_20_foot_black", "cars_1_20_foot_black"],
+            ["cars_1_20_foot_white", "cars_1_20_foot_red"],
+            ["cars_1_20_foot_white", "cars_1_20_foot_black"],
+            ["cars_1_20_foot_white", "cars_1_20_foot_white"],
+        ]
+
 class Cars32pxCargoSet(DefaultAndLowFloorAutomobilesCargoSetBase):
     def __init__(self, **kwargs):
         self.length = 32
@@ -87,7 +107,7 @@ subtype_to_cargo_set_mapping = {
     "cars": [
         Trucks16pxCargoSet,
         Trucks20pxCargoSet,
-        Trucks24pxCargoSet,
+        Cars24pxCargoSet,
         Cars32pxCargoSet,
     ],
     "trucks": [
