@@ -325,12 +325,12 @@ class GenerateSpritelayerCargoSets(Pipeline):
                     cargo_sprite_height = cargo_sprites[angle_index][0].size[1]
                     # loc_point_y_transform then moves the loc point to the left-most corner of the cargo sprite
                     # this makes it easier to place the loc point pixels in the templates
+                    # !! these might need splitting up by spritelayer_cargo for different types of sprites, depending on their shape
+                    # !! if self.spritelayer_cargo.base_id == "intermodal_containers":
                     loc_point_y_transforms = {
                         "20": [1, 3, 1, 2, 1, 3, 1, 2],
                         "30": [1, 3, 1, 3, 1, 3, 1, 3],
                         "40": [1, 3, 1, 4, 1, 3, 1, 4],
-                        "CC": [1, 2, 1, 3, 1, 2, 1, 3],  # hax
-                        "ed": [1, 2, 1, 3, 1, 2, 1, 3],  # hax - truncated 'red'
                     }
                     container_foot_length = cargo_item_for_this_loc_point[0].split(
                         "_foot"
