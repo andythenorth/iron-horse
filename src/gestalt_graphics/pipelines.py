@@ -195,11 +195,13 @@ class GenerateSpritelayerCargoSets(Pipeline):
         # - e.g. 32px_40_20, 32px_20_20_20 etc?
         result = [str(self.spritelayer_cargo.length) + "px"]
         if self.spritelayer_cargo.base_id == "intermodal_containers":
+            # containers measured in feet
             for container in variant:
                 result.append(container.split("_foot")[0][-2:])
         else:
+            # other items measured in arbitrary length units
             for cargo_item in variant:
-                result.append("CC")
+                result.append("1")
         return (
             self.spritelayer_cargo.base_id
             + "_template_"
@@ -264,19 +266,19 @@ class GenerateSpritelayerCargoSets(Pipeline):
             # n.b the implementation of this is likely inefficient as it will repetively open the same cargo sprites from the filesystem,
             # but so far that seems to have negligible performance cost, and caching all cargo sprites earlier in the loop would add unwanted complexity
             cargos_for_this_variant = []
-            for container in variant:
-                container_path = os.path.join(
+            for cargo_item in variant:
+                cargo_item_path = os.path.join(
                     currentdir,
                     "src",
                     "polar_fox",
                     "graphics",
                     self.spritelayer_cargo.base_id,
-                    container + ".png",
+                    cargo_item + ".png",
                 )
-                container_image = Image.open(container_path)
+                cargo_item_image = Image.open(cargo_item_path)
 
                 # if self.spritelayer_cargo.id == 'intermodal_box_32px':
-                # container_image.show()
+                # cargo_item_image.show()
                 bboxes = []
                 # only a 3 tuple in global constants bounding box definitions (no y position), we need a 4 tuple inc. y position
                 # also the format of bounding boxes needs converted to PIL crop box format
@@ -287,15 +289,16 @@ class GenerateSpritelayerCargoSets(Pipeline):
                 ):
                     bboxes.append([bbox[0], 10, bbox[0] + bbox[1], 10 + bbox[2]])
 
-                cargo_sprites = pixa.get_arbitrary_angles(container_image, bboxes)
+                cargo_sprites = pixa.get_arbitrary_angles(cargo_item_image, bboxes)
                 # containers are symmetric, angles 0-3 need to be copied from angles 4-7
+                # !! other cargos are NOT symmetric, this needs accounted for
                 for i in range(4):
                     cargo_sprites[i] = cargo_sprites[i + 4]
 
                 # if self.spritelayer_cargo.id == 'intermodal_box_32px':
                 # cargo_sprites[0][0].show()
 
-                cargos_for_this_variant.append((container, cargo_sprites))
+                cargos_for_this_variant.append((cargo_item, cargo_sprites))
 
             variant_output_image = Image.open(
                 os.path.join(currentdir, "src", "graphics", "spriterow_template.png")
@@ -315,14 +318,14 @@ class GenerateSpritelayerCargoSets(Pipeline):
                 pixels,
             ) in loc_points_grouped_and_sorted_for_display.items():
                 for pixel in pixels:
-                    # use the pixel colour to look up which container sprites to use, relies on hard-coded pixel colours
-                    # print(self.spritelayer_cargo.id, variant, angle_index, pixels, container_sprites_for_this_variant)
-                    container_for_this_loc_point = cargos_for_this_variant[
+                    # use the pixel colour to look up which cargo_item sprites to use, relies on hard-coded pixel colours
+                    # print(self.spritelayer_cargo.id, variant, angle_index, pixels, cargos_for_this_variant)
+                    cargo_item_for_this_loc_point = cargos_for_this_variant[
                         [226, 240, 244].index(pixel[2])
                     ]  # one line python stupidity
-                    cargo_sprites = container_for_this_loc_point[1]
-                    container_width = cargo_sprites[angle_index][0].size[0]
-                    container_height = cargo_sprites[angle_index][0].size[1]
+                    cargo_sprites = cargo_item_for_this_loc_point[1]
+                    cargo_sprite_width = cargo_sprites[angle_index][0].size[0]
+                    cargo_sprite_height = cargo_sprites[angle_index][0].size[1]
                     # loc_point_y_transform then moves the loc point to the left-most corner of the cargo sprite
                     # this makes it easier to place the loc point pixels in the templates
                     loc_point_y_transforms = {
@@ -332,7 +335,7 @@ class GenerateSpritelayerCargoSets(Pipeline):
                         "CC": [1, 3, 1, 2, 1, 3, 1, 2],  # hax
                         "ed": [1, 3, 1, 2, 1, 3, 1, 2],  # hax - truncated 'red'
                     }
-                    container_foot_length = container_for_this_loc_point[0].split(
+                    container_foot_length = cargo_item_for_this_loc_point[0].split(
                         "_foot"
                     )[0][
                         -2:
@@ -341,19 +344,19 @@ class GenerateSpritelayerCargoSets(Pipeline):
                         container_foot_length
                     ][angle_index]
                     # (needed beause loc points are left-bottom not left-top as per co-ordinate system, makes drawing loc points easier)
-                    container_bounding_box = (
+                    cargo_sprite_bounding_box = (
                         pixel[0],
                         pixel[1]
-                        - container_height
+                        - cargo_sprite_height
                         + loc_point_y_transform
                         + floor_height_yoffset,
-                        pixel[0] + container_width,
+                        pixel[0] + cargo_sprite_width,
                         pixel[1] + loc_point_y_transform + floor_height_yoffset,
                     )
 
                     variant_output_image.paste(
                         cargo_sprites[angle_index][0],
-                        container_bounding_box,
+                        cargo_sprite_bounding_box,
                         cargo_sprites[angle_index][1],
                     )
 
