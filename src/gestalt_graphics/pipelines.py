@@ -194,8 +194,12 @@ class GenerateSpritelayerCargoSets(Pipeline):
         # figure out which template png to use based on gestalt length + cargo pattern
         # - e.g. 32px_40_20, 32px_20_20_20 etc?
         result = [str(self.spritelayer_cargo.length) + "px"]
-        for container in variant:
-            result.append(container.split("_foot")[0][-2:])
+        if self.spritelayer_cargo.base_id == "intermodal_containers":
+            for container in variant:
+                result.append(container.split("_foot")[0][-2:])
+        else:
+            for cargo_item in variant:
+                result.append("CC")
         return (
             self.spritelayer_cargo.base_id
             + "_template_"
@@ -326,6 +330,7 @@ class GenerateSpritelayerCargoSets(Pipeline):
                         "30": [1, 3, 1, 3, 1, 3, 1, 3],
                         "40": [1, 3, 1, 4, 1, 3, 1, 4],
                         "CC": [1, 3, 1, 2, 1, 3, 1, 2],  # hax
+                        "ed": [1, 3, 1, 2, 1, 3, 1, 2],  # hax - truncated 'red'
                     }
                     container_foot_length = container_for_this_loc_point[0].split(
                         "_foot"
