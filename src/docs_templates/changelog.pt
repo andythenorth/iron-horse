@@ -2,6 +2,30 @@ Changelog
 =========
 
 -------------
+2.46.0 Beta 1 Release
+-------------
+
+*Changes*
+
+- railtype labels changed for all vehicles, an Iron Horse specific scheme is used, with fallbacks to commonly used existing types
+- added Dedicated High Speed Railway
+    - only usable by certain high speed vehicles (Helm Wind, Scorcher, Brenner)
+    - provides curve speed bonus
+    - forbids level crossings
+    - sprites need improved
+- high speed vehicles will be limited to 125mph unless using Dedicated High Speed Railway
+    - applies to Helm Wind, Scorcher, Brenner
+    - can reach maximum speed on Dedicated High Speed Railway
+- add Vehicle Transporter wagons
+    - currently transport only vehicles cargo
+    - available from around 1930
+
+*Docs*
+
+- explain a little about Iron Horse railtype use in 'Code reference' page
+
+
+-------------
 2.45.0 Release
 -------------
 
@@ -25,6 +49,7 @@ Changelog
     - different vehicle smoke effect
 - set correct default cargos for Aggregate Wagons and Ore Dump Wagons
 - adjusted default cargos for Box Vans and other equivalent wagons
+
 
 *Docs*
 
