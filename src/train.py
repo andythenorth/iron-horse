@@ -1795,11 +1795,12 @@ class AutomobileCarConsistBase(CarConsist):
         super().__init__(**kwargs)
         self.speed_class = "express"
         self.class_refit_groups = []  # no classes, use explicit labels
-        self.label_refits_allowed = ["PASS", "VEHI", "ENSP", "FMSP"]
+        #self.label_refits_allowed = ["PASS", "VEHI", "ENSP", "FMSP"]
+        self.label_refits_allowed = ["VEHI"]
         self.label_refits_disallowed = []
         self.default_cargos = ["VEHI"]
         # special flag to turn on cargo subtypes specific to vehicles, can be made more generic if subtypes need to be extensible in future
-        self.use_cargo_subytpes_VEHI = True
+        #self.use_cargo_subytpes_VEHI = True
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
         )
