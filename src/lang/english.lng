@@ -168,6 +168,7 @@ STR_WAGONS_ADD_POWER_MIDDLE                                     :Power (Distribu
 
 # other buy menu hints
 STR_BUY_MENU_HINT_DRIVING_CAB                                   :{BLACK}Attach to front or rear of train, with at least one other engine
+STR_BUY_MENU_HINT_LGV_CAPABLE                                   :{BLACK}Requires dedicated high speed rails to reach maximum speed
 STR_BUY_MENU_HINT_RESTAURANT_CAR                                :{}{BLACK}Bonus: {GOLD}Eliminates running costs for all Passenger Coaches in the train
 
 # project management
