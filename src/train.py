@@ -1803,15 +1803,11 @@ class AutomobileCarConsistBase(CarConsist):
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
         )
-        # !! flipping not currently allowed as don't know if asymmetric sprites support is working (might be fine?) (works for containers ok)
-        self.allow_flip = (
-            True  # hax test because template failing to return correct cargo sprites
-        )
-        # Graphics configuration
         # automobile cars can't use random colour swaps on the wagons...
         # ...because the random bits are re-randomised when new cargo loads, to get new random automobile cargos, which would also cause new random wagon colour
         # player can still flip to the second livery
         self.use_colour_randomisation_strategies = False
+        self.allow_flip = True
         if self.subtype == "D":
             consist_ruleset = "articulated_permanent_twin_sets"
         else:
@@ -4944,7 +4940,7 @@ class AutomobileCar(ExpressCar):
         super().__init__(**kwargs)
         # vehicle transporter cars may be asymmetric, there is magic in the graphics processing to make this work
         # self._symmetry_type = "asymmetric"
-        # temp to make it work
+        # !! temp to make it work
         self._symmetry_type = "symmetric"
         utils.echo_message(
             "AutomobileCar random_trigger_switch is using _switch_graphics_spritelayer_cargos"

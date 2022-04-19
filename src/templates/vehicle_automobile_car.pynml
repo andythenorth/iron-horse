@@ -56,9 +56,10 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_spritelayer_cargos_chec
     return switch_spritelayer_cargos_${spritelayer_cargos.automobiles.AutomobilesSpritelayerCargo().base_id}_${consist.platform_type}_${4 * vehicle.vehicle_length}px;
 }
 
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_spritelayer_cargos,
-            STORE_TEMP(CB_FLAG_MORE_SPRITES | base_sprite_2cc + 16 * company_colour2 + company_colour1, 0x100) <!--! note requirement to pass along 'more sprites' flag here -->
-        ) {
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_spritelayer_cargos, [
+                     STORE_TEMP(CB_FLAG_MORE_SPRITES | base_sprite_2cc + 16 * company_colour2 + company_colour1, 0x100), <!--! note requirement to pass along 'more sprites' flag here -->
+                     STORE_TEMP(1, ${temp_storage_ids.unreversible_spritelayer_cargos})
+                    ]) {
     return ${vehicle.id}_switch_graphics_spritelayer_cargos_check_cargo_count;
 }
 
