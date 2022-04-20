@@ -1814,9 +1814,14 @@ class AutomobileCarConsistBase(CarConsist):
         else:
             consist_ruleset = "1_unit_sets"
         self.gestalt_graphics = GestaltGraphicsAutomobilesTransporter(
-            consist_ruleset=consist_ruleset
+            consist_ruleset=consist_ruleset,
+            add_masked_overlay=self.add_masked_overlay
         )
 
+    @property
+    def add_masked_overlay(self):
+        # over-ride in subclasses as needed
+        return False
 
 class AutomobileDoubleDeckCarConsist(AutomobileCarConsistBase):
     """
@@ -1831,10 +1836,14 @@ class AutomobileDoubleDeckCarConsist(AutomobileCarConsistBase):
         self.use_cargo_subytpes_VEHI = False
 
     @property
+    def add_masked_overlay(self):
+        return True
+
+    @property
     # account for e.g. low floor, double deck etc
     def platform_type(self):
         # !! all default currently, extend as needed - see intermodal cars for example
-        return "default"
+        return "double_deck"
 
 
 class AutomobileCarConsist(AutomobileCarConsistBase):

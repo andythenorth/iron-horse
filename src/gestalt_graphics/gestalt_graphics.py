@@ -460,6 +460,7 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphics):
         self.consist_ruleset = kwargs.get("consist_ruleset", None)
         self.flag_switch_set_layers_register_more_sprites = True
         self.cargo_sprites_are_asymmetric = True
+        self.add_masked_overlay = kwargs.get("add_masked_overlay", False)
 
     def get_output_row_types(self):
         # !! the actual number of variants needs decided - are we having articulated variants or just single units?
