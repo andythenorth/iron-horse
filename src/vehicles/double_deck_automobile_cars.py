@@ -4,7 +4,7 @@ from train import AutomobileDoubleDeckCarConsist, AutomobileCar
 def main():
     # --------------- pony ----------------------------------------------------------------------
     # intro gen 4
-    """
+
     consist = AutomobileDoubleDeckCarConsist(
         roster_id="pony",
         base_numeric_id=5790,
@@ -13,8 +13,8 @@ def main():
         sprites_complete=False,
     )
 
-    consist.add_unit(type=AutomobileCar, chassis="4_axle_running_gear_only_24px")
-    """
+    consist.add_unit(type=AutomobileCar, chassis="2_axle_running_gear_only_24px")
+
     consist = AutomobileDoubleDeckCarConsist(
         roster_id="pony",
         base_numeric_id=5800,
@@ -24,7 +24,7 @@ def main():
     )
 
     consist.add_unit(type=AutomobileCar, chassis="4_axle_running_gear_only_32px")
-    """
+
     consist = AutomobileDoubleDeckCarConsist(
         roster_id="pony",
         base_numeric_id=5810,
@@ -33,8 +33,8 @@ def main():
         sprites_complete=False,
     )
 
-    consist.add_unit(type=AutomobileCar, chassis="4_axle_running_gear_only_24px")
-    """
+    consist.add_unit(type=AutomobileCar, chassis="2_axle_running_gear_only_24px")
+
     consist = AutomobileDoubleDeckCarConsist(
         roster_id="pony",
         base_numeric_id=5820,

@@ -1812,7 +1812,7 @@ class AutomobileCarConsistBase(CarConsist):
         if self.subtype == "D":
             consist_ruleset = "articulated_permanent_twin_sets"
         else:
-            consist_ruleset = "1_unit_sets"
+            consist_ruleset = self._consist_ruleset
         self.gestalt_graphics = GestaltGraphicsAutomobilesTransporter(
             consist_ruleset=consist_ruleset,
             add_masked_overlay=self.add_masked_overlay
@@ -1822,6 +1822,26 @@ class AutomobileCarConsistBase(CarConsist):
     def add_masked_overlay(self):
         # over-ride in subclasses as needed
         return False
+
+
+class AutomobileCarConsist(AutomobileCarConsistBase):
+    """
+    Automobile transporter with single flat deck at conventional height.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "automobile_car"
+        super().__init__(**kwargs)
+
+    @property
+    def _consist_ruleset(self):
+        return "1_unit_sets"
+
+    @property
+    # account for e.g. low floor, double deck etc
+    def platform_type(self):
+        return "default"
+
 
 class AutomobileDoubleDeckCarConsist(AutomobileCarConsistBase):
     """
@@ -1836,30 +1856,20 @@ class AutomobileDoubleDeckCarConsist(AutomobileCarConsistBase):
         self.use_cargo_subytpes_VEHI = False
 
     @property
+    def _consist_ruleset(self):
+        if self.subtype == "B":
+            return "2_unit_sets"
+        else:
+            return "4_unit_sets"
+
+    @property
     def add_masked_overlay(self):
         return True
 
     @property
     # account for e.g. low floor, double deck etc
     def platform_type(self):
-        # !! all default currently, extend as needed - see intermodal cars for example
         return "double_deck"
-
-
-class AutomobileCarConsist(AutomobileCarConsistBase):
-    """
-    Automobile transporter with single flat deck at conventional height.
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = "automobile_car"
-        super().__init__(**kwargs)
-
-    @property
-    # account for e.g. low floor, double deck etc
-    def platform_type(self):
-        # !! all default currently, extend as needed - see intermodal cars for example
-        return "default"
 
 
 class AutomobileLowFloorCarConsist(AutomobileCarConsistBase):
@@ -1872,10 +1882,13 @@ class AutomobileLowFloorCarConsist(AutomobileCarConsistBase):
         super().__init__(**kwargs)
 
     @property
+    def _consist_ruleset(self):
+        return "4_unit_sets"
+
+    @property
     # account for e.g. low floor, double deck etc
     def platform_type(self):
-        # !! all default currently, extend as needed - see intermodal cars for example
-        return "default"
+        return "low_floor"
 
 
 class BolsterCarConsist(CarConsist):
