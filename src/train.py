@@ -3195,7 +3195,8 @@ class OpenCarHoodConsist(OpenCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "hood_open_car"
         super().__init__(**kwargs)
-        self.default_cargos = polar_fox.constants.default_cargos["open"]
+        self.default_cargos = ["KAOL"]
+        self.default_cargos.extend(polar_fox.constants.default_cargos["open"])
         # Graphics configuration
         weathered_variants = {
             "unweathered": graphics_constants.hood_open_car_body_recolour_map,
