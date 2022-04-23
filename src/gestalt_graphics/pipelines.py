@@ -76,6 +76,13 @@ class Pipeline(object):
             ]:
                 if unit_counter % 2 != 0:
                     ruleset_offset_num_rows_jank = 4  # hard-coded to metro currently
+            if getattr(self.consist.gestalt_graphics, "consist_ruleset", None) in [
+                "articulated_permanent_twin_sets"
+            ]:
+                # hard-coded to twin articulated automobile carriers currently
+                # offset for 2nd unit to skip mask
+                if unit_counter == 1:
+                    ruleset_offset_num_rows_jank = 1
             if (
                 self.consist.gestalt_graphics.alternative_cc_livery is not None
             ):  # alternative_cc_livery jank for engines eh

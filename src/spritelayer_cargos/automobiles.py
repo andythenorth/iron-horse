@@ -52,6 +52,29 @@ class DoubleDeckAutomobilesCargoSetBase(CargoSetBase):
         self.graphics_template_subtype_name = "double_deck"
 
 
+"""
+class DefaultCars20pxCargoSet(DefaultAutomobilesCargoSetBase):
+    def __init__(self, **kwargs):
+        self.length = 20
+        super().__init__(**kwargs)
+        self.variants = [
+            ["cars_1_20_foot_red", "cars_1_20_foot_red"],
+            ["cars_1_20_foot_red", "cars_1_20_foot_black"],
+            ["cars_1_20_foot_red", "cars_1_20_foot_grey"],
+            ["cars_1_20_foot_red", "cars_1_20_foot_white"],
+            ["cars_1_20_foot_grey", "cars_1_20_foot_grey"],
+            ["cars_1_20_foot_grey", "cars_1_20_foot_red"],
+            ["cars_1_20_foot_grey", "cars_1_20_foot_black"],
+            ["cars_1_20_foot_1CC", "cars_1_20_foot_white"],
+            ["cars_1_20_foot_black", "cars_1_20_foot_grey"],
+            ["cars_1_20_foot_black", "cars_1_20_foot_black"],
+            ["cars_1_20_foot_white", "cars_1_20_foot_red"],
+            ["cars_1_20_foot_white", "cars_1_20_foot_black"],
+            ["cars_1_20_foot_white", "cars_1_20_foot_white"],
+        ]
+"""
+
+
 class DefaultCars24pxCargoSet(DefaultAutomobilesCargoSetBase):
     def __init__(self, **kwargs):
         self.length = 24
@@ -72,6 +95,7 @@ class DefaultCars24pxCargoSet(DefaultAutomobilesCargoSetBase):
             ["cars_1_20_foot_white", "cars_1_20_foot_white"],
         ]
 
+
 class DefaultCars32pxCargoSet(DefaultAutomobilesCargoSetBase):
     def __init__(self, **kwargs):
         self.length = 32
@@ -90,6 +114,7 @@ class DefaultCars32pxCargoSet(DefaultAutomobilesCargoSetBase):
             ["cars_1_20_foot_black", "cars_1_20_foot_black", "cars_1_20_foot_red"],
             ["cars_1_20_foot_white", "cars_1_20_foot_black", "cars_1_20_foot_red"],
         ]
+
 
 class LowFloorCars24pxCargoSet(LowFloorAutomobilesCargoSetBase):
     def __init__(self, **kwargs):
@@ -111,6 +136,7 @@ class LowFloorCars24pxCargoSet(LowFloorAutomobilesCargoSetBase):
             ["cars_1_20_foot_white", "cars_1_20_foot_white"],
         ]
 
+
 class LowFloorCars32pxCargoSet(LowFloorAutomobilesCargoSetBase):
     def __init__(self, **kwargs):
         self.length = 32
@@ -129,6 +155,28 @@ class LowFloorCars32pxCargoSet(LowFloorAutomobilesCargoSetBase):
             ["cars_1_20_foot_black", "cars_1_20_foot_black", "cars_1_20_foot_red"],
             ["cars_1_20_foot_white", "cars_1_20_foot_black", "cars_1_20_foot_red"],
         ]
+
+
+class DoubleDeckCars20pxCargoSet(DoubleDeckAutomobilesCargoSetBase):
+    def __init__(self, **kwargs):
+        self.length = 20
+        super().__init__(**kwargs)
+        self.variants = [
+            ["cars_1_20_foot_red", "cars_1_20_foot_red"],
+            ["cars_1_20_foot_red", "cars_1_20_foot_black"],
+            ["cars_1_20_foot_red", "cars_1_20_foot_grey"],
+            ["cars_1_20_foot_red", "cars_1_20_foot_white"],
+            ["cars_1_20_foot_grey", "cars_1_20_foot_grey"],
+            ["cars_1_20_foot_grey", "cars_1_20_foot_red"],
+            ["cars_1_20_foot_grey", "cars_1_20_foot_black"],
+            ["cars_1_20_foot_1CC", "cars_1_20_foot_white"],
+            ["cars_1_20_foot_black", "cars_1_20_foot_grey"],
+            ["cars_1_20_foot_black", "cars_1_20_foot_black"],
+            ["cars_1_20_foot_white", "cars_1_20_foot_red"],
+            ["cars_1_20_foot_white", "cars_1_20_foot_black"],
+            ["cars_1_20_foot_white", "cars_1_20_foot_white"],
+        ]
+
 
 class DoubleDeckCars24pxCargoSet(DoubleDeckAutomobilesCargoSetBase):
     def __init__(self, **kwargs):
@@ -150,6 +198,7 @@ class DoubleDeckCars24pxCargoSet(DoubleDeckAutomobilesCargoSetBase):
             ["cars_1_20_foot_white", "cars_1_20_foot_white"],
         ]
 
+
 class DoubleDeckCars32pxCargoSet(DoubleDeckAutomobilesCargoSetBase):
     def __init__(self, **kwargs):
         self.length = 32
@@ -168,6 +217,7 @@ class DoubleDeckCars32pxCargoSet(DoubleDeckAutomobilesCargoSetBase):
             ["cars_1_20_foot_black", "cars_1_20_foot_black", "cars_1_20_foot_red"],
             ["cars_1_20_foot_white", "cars_1_20_foot_black", "cars_1_20_foot_red"],
         ]
+
 
 class Trucks16pxCargoSet(DefaultAutomobilesCargoSetBase):
     def __init__(self, **kwargs):
@@ -208,6 +258,7 @@ subtype_to_cargo_set_mapping = {
         DefaultCars32pxCargoSet,
         LowFloorCars24pxCargoSet,
         LowFloorCars32pxCargoSet,
+        DoubleDeckCars20pxCargoSet,
         DoubleDeckCars24pxCargoSet,
         DoubleDeckCars32pxCargoSet,
     ],
@@ -216,7 +267,7 @@ subtype_to_cargo_set_mapping = {
         Trucks20pxCargoSet,
         Trucks24pxCargoSet,
         Trucks32pxCargoSet,
-    ]
+    ],
 }
 
 
