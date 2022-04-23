@@ -127,8 +127,6 @@ class Consist(object):
         self.class_refit_groups = []
         self.label_refits_allowed = []
         self.label_refits_disallowed = []
-        # private var, can be used to specify number of sprite layers to draw for the vehicle, set in subclass as needed
-        self._num_sprite_layers = None
         # create a structure for cargo /livery graphics options
         self.gestalt_graphics = GestaltGraphics()
         # option to provide automatic roof for all units in the consist, leave as None for no generation
@@ -641,23 +639,18 @@ class Consist(object):
 
     @property
     def num_sprite_layers(self):
-        if self._num_sprite_layers != None:
-            # option to over-ride by setting a private attribute per consist
-            result = self._num_sprite_layers
-        else:
-            # default value
-            result = 1
+        # always at least one layer
+        result = 1
+        # order of adding extra layers doesn't matter here, it's just a number,
+        # the switch chain for the vehicle type will need to take care of switching to correct layers
+        # gestalt may add extra sprites layer for e.g. visible cargo, vehicle masks
+        if getattr(self.gestalt_graphics, "num_extra_layers_for_spritelayer_cargos", None) != None:
+            result = result + self.gestalt_graphics.num_extra_layers_for_spritelayer_cargos
+        # add a layer for pantographs as needed, note this is not done in the gestalt as it's more convenient to treat separarely
         if self.pantograph_type is not None:
-            # add a layer for the pans, the order won't matter, the switch chain for the vehicle type will need to take care of switching to correct layers
             result = result + 1
-        if self.gestalt_graphics.flag_switch_set_layers_register_more_sprites:
-            # for containers etc, we might want more layers, for example:
-            # 1 layer for the containers
-            # 1 layer for an optional masked vehicle overlay (e.g. sides of well cars)
-            # !! this is a bit weirdly specific, why not refactor to set self_num_sprite_layers to an appropriate value?
-            result = result + 2
         # OpenTTD has a limited number of layers in the sprite stack, we can't exceed them
-        if result > 3:
+        if result > 4:
             raise Exception("Too many sprite layers ", result, " defined for ", self.id)
         return result
 
@@ -1073,8 +1066,8 @@ class MailEngineCargoSprinterEngineConsist(MailEngineConsist):
         # NOTE that cargo sprinter will NOT randomise containers on load as of Dec 2020 - there is a bug with rear unit running unwanted triggers and re-randomising in depots etc
         self.gestalt_graphics = GestaltGraphicsCustom(
             "vehicle_cargo_sprinter.pynml",
-            flag_switch_set_layers_register_more_sprites=True,
             cargo_label_mapping=GestaltGraphicsIntermodalContainerTransporters().cargo_label_mapping,
+            num_extra_layers_for_spritelayer_cargos=2,
         )
 
 

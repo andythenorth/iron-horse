@@ -19,8 +19,6 @@ class GestaltGraphics(object):
         # specific alt livery for specific company colour choices
         # this is only used by engines as of July 2020, but we provide a default value here to avoid requiring getattr() in many places, which was masking errors
         self.alternative_cc_livery = None  # over-ride as needed in subclasses
-        # over-ride layers flag as needed in subclasses
-        self.flag_switch_set_layers_register_more_sprites = False
 
     @property
     def nml_template(self):
@@ -343,7 +341,9 @@ class GestaltGraphicsIntermodalContainerTransporters(GestaltGraphics):
         )
         self.colour_mapping_switch = "_switch_colour_mapping"
         self.consist_ruleset = kwargs.get("consist_ruleset", None)
-        self.flag_switch_set_layers_register_more_sprites = True
+        # add layers for container sprites
+        # !! this might need extended to handle a mask in future
+        self.num_extra_layers_for_spritelayer_cargos = 1
         # the actual containers are symmetric
         self.cargo_sprites_are_asymmetric = False
         # intermodal cars are asymmetric, sprites are drawn in second col, first col needs populated, map is [col 1 dest]: [col 2 source]
@@ -458,7 +458,9 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphics):
         )
         self.colour_mapping_switch = "_switch_colour_mapping"
         self.consist_ruleset = kwargs.get("consist_ruleset", None)
-        self.flag_switch_set_layers_register_more_sprites = True
+         # add layers for cargo sprites, mask
+         # !! but this needs extending to extra cargo sprite layer for double deck
+        self.num_extra_layers_for_spritelayer_cargos = 2
         self.cargo_sprites_are_asymmetric = True
         self.add_masked_overlay = kwargs.get("add_masked_overlay", False)
 
@@ -734,21 +736,19 @@ class GestaltGraphicsCustom(GestaltGraphics):
         generic_rows=None,
         unique_spritesets=None,
         cargo_label_mapping=None,
-        flag_switch_set_layers_register_more_sprites=False,
         weathered_variants=None,
+        num_extra_layers_for_spritelayer_cargos=None,
     ):
         super().__init__()
         self.pipelines = pipelines.get_pipelines(["pass_through_pipeline"])
-        # options
-        self.flag_switch_set_layers_register_more_sprites = (
-            flag_switch_set_layers_register_more_sprites
-        )
         self._nml_template = _nml_template
         self._cargo_row_map = cargo_row_map
         self._generic_rows = generic_rows
         self._unique_spritesets = unique_spritesets
         self._cargo_label_mapping = cargo_label_mapping
         self._weathered_variants = weathered_variants
+        if num_extra_layers_for_spritelayer_cargos is not None:
+            self.num_extra_layers_for_spritelayer_cargos = num_extra_layers_for_spritelayer_cargos
 
     @property
     def generic_rows(self):
