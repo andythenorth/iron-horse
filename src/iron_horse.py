@@ -223,8 +223,8 @@ def get_cargo_sprinter_ids():
     result = []
     for roster in get_active_rosters():
         for consist in roster.engine_consists:
-            # abuse the platform_layers property here, we're just looking for a string, this might be fragile, but eh
-            if "cargo_sprinter" in getattr(consist, "platform_layers", []):
+            # abuse the spritelayer_cargo_layers property here, we're just looking for a string, this might be fragile, but eh
+            if "cargo_sprinter" in getattr(consist, "spritelayer_cargo_layers", []):
                 result.append(consist.id)
     if len(result) > 255:
         utils.echo_message(

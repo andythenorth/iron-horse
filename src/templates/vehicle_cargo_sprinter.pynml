@@ -1,4 +1,4 @@
-<tal:platform_layers repeat="platform_type consist.platform_layers">
+<tal:spritelayer_cargo_layers repeat="platform_type consist.spritelayer_cargo_layers">
     <!--! load state is assumed (for simplicity) to be all or nothing - any cargo = full load of containers -->
     switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_containers_check_cargo_${platform_type}, cargo_count) {
             0: return ss_spritelayer_cargo_empty;
@@ -11,7 +11,7 @@
                         ]) {
         return ${vehicle.id}_switch_graphics_containers_check_cargo_${platform_type};
     }
-</tal:platform_layers>
+</tal:spritelayer_cargo_layers>
 
 <!--! 'reversed' is random reversal on construction, depending on vehicle random bits
       'flipped' is user flipping vehicle in depot
@@ -28,7 +28,7 @@ spriteset(${vehicle.id}_ss_masked_overlay_unflipped_unreversed, "${graphics_path
 // switch layers: base platform / containers
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, getbits(extra_callback_info1, 8, 8)) {
     0: return ${vehicle.id}_ss_unflipped_unreversed;
-    1: return ${vehicle.id}_switch_graphics_containers_${consist.platform_layers[0]};
+    1: return ${vehicle.id}_switch_graphics_containers_${consist.spritelayer_cargo_layers[0]};
     2: return ${vehicle.id}_ss_masked_overlay_unflipped_unreversed;
 }
 

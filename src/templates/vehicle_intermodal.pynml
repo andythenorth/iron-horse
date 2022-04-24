@@ -49,7 +49,7 @@
     }
 </tal:position_ruleset>
 
-<tal:platform_layers repeat="platform_type consist.platform_layers">
+<tal:spritelayer_cargo_layers repeat="platform_type consist.spritelayer_cargo_layers">
     <!--! load state is assumed (for simplicity) to be all or nothing - any cargo = full load of containers -->
     switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_spritelayer_cargos_check_cargo_count_${platform_type}, cargo_count) {
             0: return ss_spritelayer_cargo_empty;
@@ -62,12 +62,12 @@
                         ]) {
         return ${vehicle.id}_switch_graphics_spritelayer_cargos_check_cargo_count_${platform_type};
     }
-</tal:platform_layers>
+</tal:spritelayer_cargo_layers>
 
 // switch layers: base platform / spritelayer cargo
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, getbits(extra_callback_info1, 8, 8)) {
     0: return ${vehicle.id}_switch_graphics_platform_position_in_consist_entry_point;
-    1: return ${vehicle.id}_switch_graphics_spritelayer_cargos_${consist.platform_layers[0]};
+    1: return ${vehicle.id}_switch_graphics_spritelayer_cargos_${consist.spritelayer_cargo_layers[0]};
 }
 
 // buy menu graphics chain
