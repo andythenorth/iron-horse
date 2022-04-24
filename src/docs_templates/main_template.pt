@@ -43,16 +43,21 @@
                     <li class="${doc_helper.get_active_nav(doc_name, 'tech_tree')}">
                         <a href="tech_tree_table_red.html">Tech tree</a>
                     </li>
-                    <li class="${doc_helper.get_active_nav(doc_name, 'code_reference')}">
-                        <a href="code_reference.html">Code reference</a>
-                    </li>
                     <li class="${doc_helper.get_active_nav(doc_name, 'train_whack')}">
                         <a href="train_whack.html">Train Whack!</a>
                     </li>
                 </ul>
                 <ul class="nav pull-right">
+                    <!--! translations currently deprecated
                     <li class="${doc_helper.get_active_nav(doc_name, 'translations')}">
                         <a href="translations.html"><i class="icon-globe icon-white"></i> Help translate Iron Horse</a>
+                    </li>
+                    -->
+                    <li class="${doc_helper.get_active_nav(doc_name, 'code_reference')}">
+                        <a href="code_reference.html">Code reference</a>
+                    </li>
+                    <li class="${doc_helper.get_active_nav(doc_name, 'changelog')}">
+                        <a href="changelog.html">Changelog</a>
                     </li>
                     <li>
                         <a href="${metadata['dev_thread_url']}"><i class="icon-comment icon-white"></i> Discuss at TT-Forums.net</a>

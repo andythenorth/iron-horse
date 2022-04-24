@@ -1,10 +1,21 @@
-<tal:hide_automobiles replace="nothing">
 <tal:ruleset define="first 0; last 1;">
     // automobile transporter articulated permanent twin set (no default single unit required)
     <!--! first / last; NOTE use of position_in_articulated_veh not position_in_vehid_chain -->
     switch (FEAT_TRAINS, SELF, switch_graphics_automobile_transporter_ruleset_articulated_permanent_twin_sets, position_in_articulated_veh % 2) {
         0: return ${first};
         return ${last};
+    }
+</tal:ruleset>
+
+
+<tal:ruleset define="default 0;">
+    // automobile transporter 1 unit position switches
+    <!--!
+        if 1 unit in sequence
+        - note that this just yields a constant result and will likely be optimised out by nmlc but eh, consistency with other switches for now
+    -->
+    switch (FEAT_TRAINS, SELF, switch_graphics_automobile_transporter_ruleset_1_unit_sets, 0) {
+        0: return ${default};
     }
 </tal:ruleset>
 
@@ -75,7 +86,6 @@
         return switch_graphics_automobile_transporter_ruleset_4_unit_sets_modulo_num_units_in_consist_4;
     }
 </tal:ruleset>
-</tal:hide_automobiles>
 
 <tal:ruleset define="default 0; first 1; last 2;">
     // intermodal platform 2 unit position switches

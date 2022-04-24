@@ -13,7 +13,7 @@ def main():
         sprites_complete=False,
     )
 
-    consist.add_unit(type=AutomobileCar, vehicle_length=6)
+    consist.add_unit(type=AutomobileCar, chassis="2_axle_running_gear_only_24px")
 
     consist = AutomobileDoubleDeckCarConsist(
         roster_id="pony",
@@ -23,7 +23,7 @@ def main():
         sprites_complete=False,
     )
 
-    consist.add_unit(type=AutomobileCar, vehicle_length=8)
+    consist.add_unit(type=AutomobileCar, chassis="4_axle_running_gear_only_32px")
 
     consist = AutomobileDoubleDeckCarConsist(
         roster_id="pony",
@@ -33,7 +33,7 @@ def main():
         sprites_complete=False,
     )
 
-    consist.add_unit(type=AutomobileCar, vehicle_length=6)
+    consist.add_unit(type=AutomobileCar, chassis="2_axle_running_gear_only_24px")
 
     consist = AutomobileDoubleDeckCarConsist(
         roster_id="pony",
@@ -43,7 +43,17 @@ def main():
         sprites_complete=False,
     )
 
-    consist.add_unit(type=AutomobileCar, vehicle_length=8)
+    consist.add_unit(type=AutomobileCar, chassis="4_axle_running_gear_only_32px")
+
+    consist = AutomobileDoubleDeckCarConsist(
+        roster_id="pony",
+        base_numeric_id=6900,
+        gen=6,
+        subtype="B",
+        sprites_complete=False,
+    )
+
+    consist.add_unit(type=AutomobileCar, chassis="2_axle_running_gear_only_24px")
 
     consist = AutomobileDoubleDeckCarConsist(
         roster_id="pony",
@@ -53,7 +63,7 @@ def main():
         sprites_complete=False,
     )
 
-    consist.add_unit(type=AutomobileCar, vehicle_length=8)
+    consist.add_unit(type=AutomobileCar, chassis="4_axle_running_gear_only_32px")
 
     consist = AutomobileDoubleDeckCarConsist(
         roster_id="pony",
@@ -65,12 +75,12 @@ def main():
 
     consist.add_unit(
         type=AutomobileCar,
-        vehicle_length=5,
+        chassis="2_axle_running_gear_only_20px",
         spriterow_num=0,
     )
 
     consist.add_unit(
         type=AutomobileCar,
-        vehicle_length=5,
+        chassis="2_axle_running_gear_only_20px",
         spriterow_num=1,
     )

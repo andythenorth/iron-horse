@@ -6,13 +6,15 @@ from spritelayer_cargos import registered_spritelayer_cargos
 
 
 class SpritelayerCargo(object):
-    """ Simple generic class for spritelayer cargos """
+    """Simple generic class for spritelayer cargos"""
 
     def __init__(self, **kwargs):
         self.base_id = None  # set by subclass
         self.platform_type = kwargs.get("platform_type")
         self.length = kwargs.get("length")
         self.cargo_sets = []
+        # option to fill in gaps in container shadows
+        self.provide_container_shadows = kwargs.get("provide_container_shadows", False)
         # configure gestalt_graphics in the subclass
         self.gestalt_graphics = None
 

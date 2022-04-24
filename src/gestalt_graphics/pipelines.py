@@ -76,6 +76,13 @@ class Pipeline(object):
             ]:
                 if unit_counter % 2 != 0:
                     ruleset_offset_num_rows_jank = 4  # hard-coded to metro currently
+            if getattr(self.consist.gestalt_graphics, "consist_ruleset", None) in [
+                "articulated_permanent_twin_sets"
+            ]:
+                # hard-coded to twin articulated automobile carriers currently
+                # offset for 2nd unit to skip mask
+                if unit_counter == 1:
+                    ruleset_offset_num_rows_jank = 1
             if (
                 self.consist.gestalt_graphics.alternative_cc_livery is not None
             ):  # alternative_cc_livery jank for engines eh
@@ -194,6 +201,9 @@ class GenerateSpritelayerCargoSets(Pipeline):
         # figure out which template png to use based on gestalt length + cargo pattern
         # - e.g. 32px_40_20, 32px_20_20_20 etc?
         result = [str(self.spritelayer_cargo.length) + "px"]
+        # cargo items measured in 'feet', due to their origin with intermodal containers
+        # 'feet' does not have to be realistic, but an 8/8 wagon fits 60 foot-length of cargo sprites
+        # the value is picked out from the cargo sprite filenames, which must conform to the correct pattern
         for container in variant:
             result.append(container.split("_foot")[0][-2:])
         return (
@@ -260,19 +270,19 @@ class GenerateSpritelayerCargoSets(Pipeline):
             # n.b the implementation of this is likely inefficient as it will repetively open the same cargo sprites from the filesystem,
             # but so far that seems to have negligible performance cost, and caching all cargo sprites earlier in the loop would add unwanted complexity
             cargos_for_this_variant = []
-            for container in variant:
-                container_path = os.path.join(
+            for cargo_item in variant:
+                cargo_item_path = os.path.join(
                     currentdir,
                     "src",
                     "polar_fox",
                     "graphics",
                     self.spritelayer_cargo.base_id,
-                    container + ".png",
+                    cargo_item + ".png",
                 )
-                container_image = Image.open(container_path)
+                cargo_item_image = Image.open(cargo_item_path)
 
                 # if self.spritelayer_cargo.id == 'intermodal_box_32px':
-                # container_image.show()
+                # cargo_item_image.show()
                 bboxes = []
                 # only a 3 tuple in global constants bounding box definitions (no y position), we need a 4 tuple inc. y position
                 # also the format of bounding boxes needs converted to PIL crop box format
@@ -283,15 +293,19 @@ class GenerateSpritelayerCargoSets(Pipeline):
                 ):
                     bboxes.append([bbox[0], 10, bbox[0] + bbox[1], 10 + bbox[2]])
 
-                cargo_sprites = pixa.get_arbitrary_angles(container_image, bboxes)
-                # containers are symmetric, angles 0-3 need to be copied from angles 4-7
-                for i in range(4):
-                    cargo_sprites[i] = cargo_sprites[i + 4]
+                cargo_sprites = pixa.get_arbitrary_angles(cargo_item_image, bboxes)
+                if (
+                    self.spritelayer_cargo.gestalt_graphics.cargo_sprites_are_asymmetric
+                    == False
+                ):
+                    # if cargo item sprites are symmetric (e.g. containers), angles 0-3 need to be copied from angles 4-7
+                    for i in range(4):
+                        cargo_sprites[i] = cargo_sprites[i + 4]
 
                 # if self.spritelayer_cargo.id == 'intermodal_box_32px':
                 # cargo_sprites[0][0].show()
 
-                cargos_for_this_variant.append((container, cargo_sprites))
+                cargos_for_this_variant.append((cargo_item, cargo_sprites))
 
             variant_output_image = Image.open(
                 os.path.join(currentdir, "src", "graphics", "spriterow_template.png")
@@ -311,23 +325,24 @@ class GenerateSpritelayerCargoSets(Pipeline):
                 pixels,
             ) in loc_points_grouped_and_sorted_for_display.items():
                 for pixel in pixels:
-                    # use the pixel colour to look up which container sprites to use, relies on hard-coded pixel colours
-                    # print(self.spritelayer_cargo.id, variant, angle_index, pixels, container_sprites_for_this_variant)
-                    container_for_this_loc_point = cargos_for_this_variant[
+                    # use the pixel colour to look up which cargo_item sprites to use, relies on hard-coded pixel colours
+                    # print(self.spritelayer_cargo.id, variant, angle_index, pixels, cargos_for_this_variant)
+                    cargo_item_for_this_loc_point = cargos_for_this_variant[
                         [226, 240, 244].index(pixel[2])
                     ]  # one line python stupidity
-                    cargo_sprites = container_for_this_loc_point[1]
-                    container_width = cargo_sprites[angle_index][0].size[0]
-                    container_height = cargo_sprites[angle_index][0].size[1]
+                    cargo_sprites = cargo_item_for_this_loc_point[1]
+                    cargo_sprite_width = cargo_sprites[angle_index][0].size[0]
+                    cargo_sprite_height = cargo_sprites[angle_index][0].size[1]
                     # loc_point_y_transform then moves the loc point to the left-most corner of the cargo sprite
                     # this makes it easier to place the loc point pixels in the templates
+                    # !! these might need splitting up by spritelayer_cargo for different types of sprites, depending on their shape
+                    # !! if self.spritelayer_cargo.base_id == "intermodal_containers":
                     loc_point_y_transforms = {
                         "20": [1, 3, 1, 2, 1, 3, 1, 2],
                         "30": [1, 3, 1, 3, 1, 3, 1, 3],
                         "40": [1, 3, 1, 4, 1, 3, 1, 4],
-                        "CC": [1, 3, 1, 2, 1, 3, 1, 2],  # hax
                     }
-                    container_foot_length = container_for_this_loc_point[0].split(
+                    container_foot_length = cargo_item_for_this_loc_point[0].split(
                         "_foot"
                     )[0][
                         -2:
@@ -336,54 +351,59 @@ class GenerateSpritelayerCargoSets(Pipeline):
                         container_foot_length
                     ][angle_index]
                     # (needed beause loc points are left-bottom not left-top as per co-ordinate system, makes drawing loc points easier)
-                    container_bounding_box = (
+                    cargo_sprite_bounding_box = (
                         pixel[0],
                         pixel[1]
-                        - container_height
+                        - cargo_sprite_height
                         + loc_point_y_transform
                         + floor_height_yoffset,
-                        pixel[0] + container_width,
+                        pixel[0] + cargo_sprite_width,
                         pixel[1] + loc_point_y_transform + floor_height_yoffset,
                     )
 
                     variant_output_image.paste(
                         cargo_sprites[angle_index][0],
-                        container_bounding_box,
+                        cargo_sprite_bounding_box,
                         cargo_sprites[angle_index][1],
                     )
 
-            # create a mask to place black shadows between adjacent containers
-            combo_check = ["empty" if "empty" in i else "occupied" for i in variant]
-            # *vehicles with 3 containers only (32px)*
-            # don't allow combinations of only two adjacent 20 foot containers as it's TMWFTLB to provide the shadow for them
-            # two 20 foot with a gap between are supported
-            # solitary 20 foot containers of any length in any position are not prevented, but look bad (looks like loading didn't finish)
-            if len(combo_check) == 3:
-                if combo_check in [
-                    ["occupied", "occupied", "empty"],
-                    ["empty", "occupied", "occupied"],
-                ]:
-                    raise ValueError(
-                        self.spritelayer_cargo_set.id
-                        + " - this pattern of (20 foot) containers isn't supported (can't composite shadows for it): "
-                        + str(combo_check)
-                    )
+            if self.spritelayer_cargo.provide_container_shadows:
+                # create a mask to place black shadows between adjacent containers
+                combo_check = ["empty" if "empty" in i else "occupied" for i in variant]
+                # *vehicles with 3 containers only (32px)*
+                # don't allow combinations of only two adjacent 20 foot containers as it's TMWFTLB to provide the shadow for them
+                # two 20 foot with a gap between are supported
+                # solitary 20 foot containers of any length in any position are not prevented, but look bad (looks like loading didn't finish)
+                if len(combo_check) == 3:
+                    if combo_check in [
+                        ["occupied", "occupied", "empty"],
+                        ["empty", "occupied", "occupied"],
+                    ]:
+                        raise ValueError(
+                            self.spritelayer_cargo_set.id
+                            + " - this pattern of (20 foot) containers isn't supported (can't composite shadows for it): "
+                            + str(combo_check)
+                        )
 
-            # don't draw shadows if there are empty slots
-            if combo_check.count("empty") == 0:
-                shadow_image = template_image.copy().crop(
-                    (
-                        0,
-                        10 - floor_height_yoffset,
-                        self.global_constants.sprites_max_x_extent,
-                        10 + graphics_constants.spriterow_height - floor_height_yoffset,
+                # don't draw shadows if there are empty slots
+                if combo_check.count("empty") == 0:
+                    shadow_image = template_image.copy().crop(
+                        (
+                            0,
+                            10 - floor_height_yoffset,
+                            self.global_constants.sprites_max_x_extent,
+                            10
+                            + graphics_constants.spriterow_height
+                            - floor_height_yoffset,
+                        )
                     )
-                )
-                shadow_mask = shadow_image.copy()
-                shadow_mask = shadow_mask.point(lambda i: 255 if i == 1 else 0).convert(
-                    "1"
-                )  # assume shadow is always colour index 1 in the palette
-                variant_output_image.paste(shadow_image, mask=shadow_mask)
+                    shadow_mask = shadow_image.copy()
+                    shadow_mask = shadow_mask.point(
+                        lambda i: 255 if i == 1 else 0
+                    ).convert(
+                        "1"
+                    )  # assume shadow is always colour index 1 in the palette
+                    variant_output_image.paste(shadow_image, mask=shadow_mask)
 
             # if self.spritelayer_cargo.id == 'intermodal_box_32px':
             # variant_output_image.show()
@@ -709,7 +729,7 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
 
 
 class GeneratePantographsUpSpritesheetPipeline(GeneratePantographsSpritesheetPipeline):
-    """ Sparse subclass, solely to set pan 'up' state (simplest way to implement this). """
+    """Sparse subclass, solely to set pan 'up' state (simplest way to implement this)."""
 
     pantograph_state = "up"  # lol, actually valid class vars
 
@@ -720,7 +740,7 @@ class GeneratePantographsUpSpritesheetPipeline(GeneratePantographsSpritesheetPip
 class GeneratePantographsDownSpritesheetPipeline(
     GeneratePantographsSpritesheetPipeline
 ):
-    """ Sparse subclass, solely to set pan 'down' state (simplest way to implement this). """
+    """Sparse subclass, solely to set pan 'down' state (simplest way to implement this)."""
 
     pantograph_state = "down"  # lol, actually valid class vars
 
@@ -856,18 +876,26 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             self.sprites_max_x_extent,
             graphics_constants.spriterow_height,
         )
-        self.units.append(
-            AppendToSpritesheet(
-                vehicle_generic_spriterow_input_as_spritesheet, crop_box_dest
-            )
+
+        # !! oof shim hax, not all gestalts have weathered_variants defined
+        variants = getattr(
+            self.consist.gestalt_graphics, "weathered_variants", {"cabbage": None}
         )
-        self.units.append(
-            AddCargoLabel(
-                label=label,
-                x_offset=self.sprites_max_x_extent + 5,
-                y_offset=-1 * graphics_constants.spriterow_height,
+        for variant, body_recolour_map in variants.items():
+            self.units.append(
+                AppendToSpritesheet(
+                    vehicle_generic_spriterow_input_as_spritesheet, crop_box_dest
+                )
             )
-        )
+            if body_recolour_map is not None:
+                self.units.append(SimpleRecolour(body_recolour_map))
+            self.units.append(
+                AddCargoLabel(
+                    label=label,
+                    x_offset=self.sprites_max_x_extent + 5,
+                    y_offset=-1 * graphics_constants.spriterow_height,
+                )
+            )
 
     def add_livery_spriterows(self):
         # no loading / loaded states, intended for tankers etc
@@ -890,27 +918,31 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             )
         )
 
-        for label, recolour_map in self.consist.gestalt_graphics.recolour_maps:
-            crop_box_dest = (
-                0,
-                0,
-                self.sprites_max_x_extent,
-                graphics_constants.spriterow_height,
-            )
+        for (
+            weathered_variant,
+            recolour_maps,
+        ) in self.consist.gestalt_graphics.weathered_variants.items():
+            for label, recolour_map in recolour_maps:
+                crop_box_dest = (
+                    0,
+                    0,
+                    self.sprites_max_x_extent,
+                    graphics_constants.spriterow_height,
+                )
 
-            self.units.append(
-                AppendToSpritesheet(
-                    vehicle_livery_spriterow_input_as_spritesheet, crop_box_dest
+                self.units.append(
+                    AppendToSpritesheet(
+                        vehicle_livery_spriterow_input_as_spritesheet, crop_box_dest
+                    )
                 )
-            )
-            self.units.append(SimpleRecolour(recolour_map))
-            self.units.append(
-                AddCargoLabel(
-                    label=label,
-                    x_offset=self.sprites_max_x_extent + 5,
-                    y_offset=-1 * graphics_constants.spriterow_height,
+                self.units.append(SimpleRecolour(recolour_map))
+                self.units.append(
+                    AddCargoLabel(
+                        label=label,
+                        x_offset=self.sprites_max_x_extent + 5,
+                        y_offset=-1 * graphics_constants.spriterow_height,
+                    )
                 )
-            )
 
     def add_pax_mail_car_with_opening_doors_spriterows(self, row_count):
         # this loop builds the spriterow and comps doors etc
@@ -1101,11 +1133,15 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             box_car_rows_image, DOS_PALETTE
         )
 
-        self.units.append(
-            AppendToSpritesheet(box_car_rows_image_as_spritesheet, crop_box_dest)
-        )
-        self.units.append(SimpleRecolour(self.consist.gestalt_graphics.recolour_map))
-        box_car_input_image_1.close()
+        for (
+            weathered_variant,
+            recolour_maps,
+        ) in self.consist.gestalt_graphics.weathered_variants.items():
+            self.units.append(
+                AppendToSpritesheet(box_car_rows_image_as_spritesheet, crop_box_dest)
+            )
+            self.units.append(SimpleRecolour(recolour_maps[0][1]))
+            box_car_input_image_1.close()
 
     def add_caboose_spriterows(self, row_count):
         for row_num in range(int(row_count / 2)):
@@ -1217,55 +1253,56 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             2 * graphics_constants.spriterow_height,
         )
 
-        # 2 sets of rows iff there's a second livery, otherwise 1
-        for livery_counter in range(
-            self.consist.gestalt_graphics.num_visible_cargo_liveries
-        ):
-            empty_row_livery_offset = (
-                livery_counter * graphics_constants.spriterow_height
-            )
-            crop_box_vehicle_body = (
-                0,
-                self.cur_vehicle_empty_row_yoffs + empty_row_livery_offset,
-                self.sprites_max_x_extent,
-                self.cur_vehicle_empty_row_yoffs
-                + empty_row_livery_offset
-                + graphics_constants.spriterow_height,
-            )
+        crop_box_vehicle_body = (
+            0,
+            self.cur_vehicle_empty_row_yoffs,
+            self.sprites_max_x_extent,
+            self.cur_vehicle_empty_row_yoffs + graphics_constants.spriterow_height,
+        )
 
-            vehicle_base_image = self.comp_chassis_and_body(
-                self.vehicle_source_image.copy().crop(crop_box_vehicle_body)
-            )
-            # vehicle_base_image.show()
+        vehicle_base_image = self.comp_chassis_and_body(
+            self.vehicle_source_image.copy().crop(crop_box_vehicle_body)
+        )
+        # vehicle_base_image.show()
 
-            bulk_cargo_rows_image = Image.new(
-                "P", (graphics_constants.spritesheet_width, cargo_group_row_height), 255
-            )
-            bulk_cargo_rows_image.putpalette(DOS_PALETTE)
+        bulk_cargo_rows_image = Image.new(
+            "P", (graphics_constants.spritesheet_width, cargo_group_row_height), 255
+        )
+        bulk_cargo_rows_image.putpalette(DOS_PALETTE)
 
-            # paste the empty state into two rows, then paste the cargo over those rows
-            bulk_cargo_rows_image.paste(vehicle_base_image, crop_box_comp_dest_1)
-            bulk_cargo_rows_image.paste(vehicle_base_image, crop_box_comp_dest_2)
-            bulk_cargo_rows_image.paste(
-                cargo_base_image, crop_box_comp_dest_3, cargo_base_mask
-            )
-            # if self.consist.id == "dump_car_pony_gen_3A":
-            # bulk_cargo_rows_image.show()
+        # paste the empty state into two rows, then paste the cargo over those rows
+        bulk_cargo_rows_image.paste(vehicle_base_image, crop_box_comp_dest_1)
+        bulk_cargo_rows_image.paste(vehicle_base_image, crop_box_comp_dest_2)
+        bulk_cargo_rows_image.paste(
+            cargo_base_image, crop_box_comp_dest_3, cargo_base_mask
+        )
+        # if self.consist.id == "dump_car_pony_gen_3A":
+        # bulk_cargo_rows_image.show()
 
-            crop_box_dest = (0, 0, self.sprites_max_x_extent, cargo_group_row_height)
-            bulk_cargo_rows_image_as_spritesheet = pixa.make_spritesheet_from_image(
-                bulk_cargo_rows_image, DOS_PALETTE
-            )
+        crop_box_dest = (0, 0, self.sprites_max_x_extent, cargo_group_row_height)
+        bulk_cargo_rows_image_as_spritesheet = pixa.make_spritesheet_from_image(
+            bulk_cargo_rows_image, DOS_PALETTE
+        )
 
+        # !! note that body_recolour_map is unused and unsupported as of March 2022
+        # at March 2022 all wagons with bulk cargo are drawn using actual colours
+        # the purple range used for cargo recolouring would clash with the typical body recolouring (and the default body recolour map on this gestalt)
+        # this could be worked around by using the dark red option, but work would be needed to eliminate the clash
+        # !! we still have to duplicate the entire set of bulk spriterows per weathered variant, as the nml templating expects this (would be unwise to snowflake it)
+        for (
+            label,
+            cargo_recolour_map,
+        ) in polar_fox.constants.bulk_cargo_recolour_maps:
             for (
-                label,
-                cargo_recolour_map,
-            ) in polar_fox.constants.bulk_cargo_recolour_maps:
+                weathered_variant,
+                body_recolour_map,
+            ) in self.consist.gestalt_graphics.weathered_variants.items():
                 self.units.append(
                     AppendToSpritesheet(
                         bulk_cargo_rows_image_as_spritesheet, crop_box_dest
                     )
                 )
+                self.units.append(SimpleRecolour(body_recolour_map))
                 self.units.append(SimpleRecolour(cargo_recolour_map))
                 self.units.append(
                     AddCargoLabel(
@@ -1434,19 +1471,23 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                 vehicle_comped_image, DOS_PALETTE
             )
 
-            self.units.append(
-                AppendToSpritesheet(vehicle_comped_image_as_spritesheet, crop_box_dest)
-            )
-            self.units.append(
-                SimpleRecolour(self.consist.gestalt_graphics.body_recolour_map)
-            )
-            self.units.append(
-                AddCargoLabel(
-                    label=cargo_filename,
-                    x_offset=self.sprites_max_x_extent + 5,
-                    y_offset=-1 * cargo_group_output_row_height,
+            for (
+                weathered_variant,
+                body_recolour_map,
+            ) in self.consist.gestalt_graphics.weathered_variants.items():
+                self.units.append(
+                    AppendToSpritesheet(
+                        vehicle_comped_image_as_spritesheet, crop_box_dest
+                    )
                 )
-            )
+                self.units.append(SimpleRecolour(body_recolour_map))
+                self.units.append(
+                    AddCargoLabel(
+                        label=cargo_filename,
+                        x_offset=self.sprites_max_x_extent + 5,
+                        y_offset=-1 * cargo_group_output_row_height,
+                    )
+                )
 
     def render(self, consist, global_constants):
         self.units = (

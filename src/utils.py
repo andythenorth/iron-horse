@@ -11,6 +11,7 @@ def get_makefile_args(sys):
             "num_pool_workers": int(sys.argv[1]),
             "roster": sys.argv[2],
             "suppress_cargo_sprites": True if sys.argv[3] == "True" else False,
+            "suppress_docs": True if sys.argv[4] == "True" else False,
         }
     else:
         # provide any necessary defaults here
@@ -100,7 +101,7 @@ def unpack_colour(colour_name, cc_to_remap):
             "custom_wagon_recolour_sprites + 16 * "
             + str(remap_index)
             + " + company_colour"
-            + str(cc_to_remap)
+            + str(1 if cc_to_remap == 2 else 2)
         )
 
 

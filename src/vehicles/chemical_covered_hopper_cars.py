@@ -2,6 +2,41 @@ from train import CoveredHopperCarChemicalConsist, FreightCar
 
 
 def main():
+    # --------------- pony NG ----------------------------------------------------------------------
+
+    consist = CoveredHopperCarChemicalConsist(
+        roster_id="pony",
+        base_numeric_id=6570,
+        gen=2,
+        subtype="U",
+        base_track_type="NG",
+        sprites_complete=False,
+    )
+
+    consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
+
+    consist = CoveredHopperCarChemicalConsist(
+        roster_id="pony",
+        base_numeric_id=6580,
+        gen=3,
+        subtype="U",
+        base_track_type="NG",
+        sprites_complete=False,
+    )
+
+    consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
+
+    consist = CoveredHopperCarChemicalConsist(
+        roster_id="pony",
+        base_numeric_id=6590,
+        gen=4,
+        subtype="U",
+        base_track_type="NG",
+        sprites_complete=False,
+    )
+
+    consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
+
     # --------------- pony ----------------------------------------------------------------------
 
     consist = CoveredHopperCarChemicalConsist(

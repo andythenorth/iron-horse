@@ -19,8 +19,6 @@ class GestaltGraphics(object):
         # specific alt livery for specific company colour choices
         # this is only used by engines as of July 2020, but we provide a default value here to avoid requiring getattr() in many places, which was masking errors
         self.alternative_cc_livery = None  # over-ride as needed in subclasses
-        # over-ride layers flag as needed in subclasses
-        self.flag_switch_set_layers_register_more_sprites = False
 
     @property
     def nml_template(self):
@@ -115,13 +113,11 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
         self.pipelines = pipelines.get_pipelines(
             ["extend_spriterows_for_composited_sprites_pipeline"]
         )
-        # default body recolour to CC1, pass param to over-ride as needed
-        self.body_recolour_map = kwargs.get(
-            "body_recolour_map", graphics_constants.body_recolour_CC1
-        )
-        # option for alternative livery, will be selected by player flip on depot, default to 1 if not set
-        self.num_visible_cargo_liveries = (
-            2 if kwargs.get("has_alt_livery", False) else 1
+        # default unweathered body recolour to CC1, pass param to over-ride as needed
+        # can optionally extend with "weathered" variant and an appropriate recolour map
+        # (weathered variant only used for non-CC body recolouring; CC will provide variants via recolour sprites automatically)
+        self.weathered_variants = kwargs.get(
+            "weathered_variants", {"unweathered": graphics_constants.body_recolour_CC1}
         )
         # cargo flags
         self.has_cover = kwargs.get("has_cover", False)
@@ -152,9 +148,8 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
         # for e.g. tarpaulin cars, covered coil cars, insert a specific spriterow to show the cover when 100% loaded or travelling
         if self.has_cover:
             result.append("has_cover")
-        # assume an empty state spriterow per livery
-        for i in range(self.num_visible_cargo_liveries):
-            result.append("empty")
+        # 1 empty spriterow
+        result.append("empty")
         if self.has_bulk:
             result.append("bulk_cargo")
         if self.has_piece:
@@ -205,42 +200,63 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
             start_y_cumulative = graphics_constants.spritesheet_top_margin
 
             if self.has_cover:
-                # add a row for covered sprite
-                result.append(["has_cover", flipped, start_y_cumulative])
-                start_y_cumulative += row_height
+                # add rows for covered sprite
+                for weathered_variant in self.weathered_variants.keys():
+                    result.append(
+                        [weathered_variant, "has_cover", flipped, start_y_cumulative]
+                    )
+                    start_y_cumulative += row_height
 
-            # add a row for empty sprite
-            result.append(["empty", flipped, start_y_cumulative])
-            start_y_cumulative += row_height
+            # add rows for empty sprite
+            for weathered_variant in self.weathered_variants.keys():
+                result.append([weathered_variant, "empty", flipped, start_y_cumulative])
+                start_y_cumulative += row_height
 
             # !! not sure unique_cargo_rows order will always reliably match to what's needed, but if it doesn't, explicitly sort it eh
             for row_num in unique_cargo_rows:
-                result.append(["loading_" + str(row_num), flipped, start_y_cumulative])
-                result.append(
-                    ["loaded_" + str(row_num), flipped, start_y_cumulative + 30]
-                )
-                start_y_cumulative += 2 * row_height
+                for weathered_variant in self.weathered_variants.keys():
+                    result.append(
+                        [
+                            weathered_variant,
+                            "loading_" + str(row_num),
+                            flipped,
+                            start_y_cumulative,
+                        ]
+                    )
+                    result.append(
+                        [
+                            weathered_variant,
+                            "loaded_" + str(row_num),
+                            flipped,
+                            start_y_cumulative + 30,
+                        ]
+                    )
+                    start_y_cumulative += 2 * row_height
         return result
 
 
 class GestaltGraphicsBoxCarOpeningDoors(GestaltGraphics):
     """
     Used to handle the specific case of box-type freight cars
-    - base boxcar template for generation is recoloured to make refrigerated car, fruit & veg car etc
+    - can handle id_base to produce multiple types of vehicle from one input template
     - doors open during loading
     - no cargo is shown by design (TMWFTLB: piece sprites could be generated in, but setting up masks etc for all vehicles is unwanted complexity)
     """
 
-    def __init__(self, recolour_maps, **kwargs):
+    def __init__(self, weathered_variants, **kwargs):
         super().__init__()
         # as of Jan 2018 only one pipeline is used, but support is in place for alternative pipelines
         self.pipelines = pipelines.get_pipelines(
             ["extend_spriterows_for_composited_sprites_pipeline"]
         )
-        # common format for recolour_maps provides multiple remaps
-        # but just one livery remap is supported for this gestalt, and should be the first in the remap list
-        self.recolour_map = recolour_maps[0][1]
         self.id_base = kwargs.get("id_base")
+        # a default 'unweathered' variant must be provided
+        # additional sets of recolour maps can be provided to generate 'weathered' sprites
+        # these will be randomly selected in-game for visual variety
+        # this is separate and complementary to the minor variations to vehicle company colours using in-game recolour sprites
+        # there is no support here for weathered variants that depend on hand-drawn pixels, it's all recolour maps as of March 2022 - could change if needed
+        # note also that box cars have only one recolour map for *cargo*, which should be on 'DFLT',
+        self.weathered_variants = weathered_variants
 
     @property
     def generic_rows(self):
@@ -325,7 +341,11 @@ class GestaltGraphicsIntermodalContainerTransporters(GestaltGraphics):
         )
         self.colour_mapping_switch = "_switch_colour_mapping"
         self.consist_ruleset = kwargs.get("consist_ruleset", None)
-        self.flag_switch_set_layers_register_more_sprites = True
+        # add layers for container sprites
+        # !! this might need extended to handle a mask in future
+        self.num_extra_layers_for_spritelayer_cargos = 1
+        # the actual containers are symmetric
+        self.cargo_sprites_are_asymmetric = False
         # intermodal cars are asymmetric, sprites are drawn in second col, first col needs populated, map is [col 1 dest]: [col 2 source]
         # two liveries
         self.asymmetric_row_map = {
@@ -428,15 +448,29 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphics):
 
     def __init__(self, **kwargs):
         super().__init__()
-        self.pipelines = pipelines.get_pipelines(["check_buy_menu_only"])
+        # we use the composited sprites pipeline so we can make use of chassis compositing
+        self.pipelines = pipelines.get_pipelines(
+            ["extend_spriterows_for_composited_sprites_pipeline"]
+        )
         # we need to run the spritelayer cargo pipelines separately from the vehicle pipelines, but we still use this gestalt as the entry point
         self.spritelayer_cargo_pipelines = pipelines.get_pipelines(
             ["generate_spritelayer_cargo_sets"]
         )
         self.colour_mapping_switch = "_switch_colour_mapping"
         self.consist_ruleset = kwargs.get("consist_ruleset", None)
-        self.flag_switch_set_layers_register_more_sprites = True
+         # add layers for cargo sprites, mask
+         # !! but this needs extending to extra cargo sprite layer for double deck
+        self.num_extra_layers_for_spritelayer_cargos = 2
+        self.cargo_sprites_are_asymmetric = True
+        self.add_masked_overlay = kwargs.get("add_masked_overlay", False)
 
+    def get_output_row_types(self):
+        # !! the actual number of variants needs decided - are we having articulated variants or just single units?
+        # 2 liveries * 4 variants so 8 empty rows, we're only using the composited sprites pipeline for chassis compositing, containers are provided on separate layer
+        # note to self, remarkably adding multiple empty rows appears to just work here :o
+        return ["empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty"]
+
+    """
     def allow_adding_cargo_label(self, cargo_label, container_type, result):
         # don't ship DFLT as actual cargo label, it's not a valid cargo and will cause nml to barf
         # the generation of the DFLT container sprites is handled separately without using cargo_label_mapping
@@ -465,35 +499,13 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphics):
             )
         # default to allowing, most cargos aren't contested
         return True
+    """
 
     @property
     def cargo_label_mapping(self):
         result = {}
-        # first result is known refits which will fallback to xxxxx_DFLT
-        # second result is known cargo sprites / livery recolours, which will map explicitly
-        container_cargo_maps = (
-            (
-                "box",
-                ([], []),
-            ),  # box currently generic, and is fallback for all unknown cargos / classes
-            # ("bulk", ([], polar_fox.constants.bulk_cargo_recolour_maps)),
-            # ("wood", (["WOOD"], [])),
-        )  # one label only - extend if other wood-type labels added in future
-
-        result = {}
-        for container_type, cargo_maps in container_cargo_maps:
-            # first handle the cargos as explicitly refittable
-            # lists of explicitly refittable cargos are by no means *all* the cargos refittable to for a type
-            # nor does explicitly refittable cargos have 1:1 mapping with cargo-specific graphics
-            # these will all map cargo_label: container_type_DFLT
-            for cargo_label in cargo_maps[0]:
-                if self.allow_adding_cargo_label(cargo_label, container_type, result):
-                    result[cargo_label] = (container_type, "DFLT")
-
-            # then insert or over-ride entries with cargo_label: container_type_[CARGO_LABEL] where there are explicit graphics for a cargo
-            for cargo_label, recolour_map in cargo_maps[1]:
-                if self.allow_adding_cargo_label(cargo_label, container_type, result):
-                    result[cargo_label] = (container_type, cargo_label)
+        # see intermodal for example of how this mapped containers
+        # for vehicles this maybe just needs to switch e.g on cargo subtype or something - trucks, cars etc
         return result
 
     @property
@@ -527,14 +539,20 @@ class GestaltGraphicsSimpleBodyColourRemaps(GestaltGraphics):
     This gestalt can also be used as a shortcut simply for adding automated chassis.
     """
 
-    def __init__(self, recolour_maps, **kwargs):
+    def __init__(self, weathered_variants, **kwargs):
         super().__init__()
         # as of Jan 2018 only one pipeline is used, but support is in place for alternative pipelines
         self.pipelines = pipelines.get_pipelines(
             ["extend_spriterows_for_composited_sprites_pipeline"]
         )
         # recolour_maps map cargo labels to liveries, use 'DFLT' as the labe in the case of just one livery
-        self.recolour_maps = recolour_maps
+        # a default 'unweathered' variant must be provided
+        # additional sets of recolour maps can be provided to generate 'weathered' sprites
+        # if cargo recolours are provided weathered and unweathered MUST provide the same cargo support
+        # these will be randomly selected in-game for visual variety
+        # this is separate and complementary to the minor variations to vehicle company colours using in-game recolour sprites
+        # there is no support here for weathered variants that depend on hand-drawn pixels, it's all recolour maps as of March 2022 - could change if needed
+        self.weathered_variants = weathered_variants
 
     @property
     def generic_rows(self):
@@ -554,7 +572,8 @@ class GestaltGraphicsSimpleBodyColourRemaps(GestaltGraphics):
     def cargo_row_map(self):
         result = {}
         counter = 0
-        for cargo_map in self.recolour_maps:
+        # take the cargo recolour maps for 'unweathered' as the default
+        for cargo_map in self.weathered_variants["unweathered"]:
             result[cargo_map[0]] = [
                 counter
             ]  # list with a single value, as cargo labels can map to multiple rows, but no plan to use that for this gestalt (June 2020)
@@ -717,19 +736,19 @@ class GestaltGraphicsCustom(GestaltGraphics):
         generic_rows=None,
         unique_spritesets=None,
         cargo_label_mapping=None,
-        flag_switch_set_layers_register_more_sprites=False,
+        weathered_variants=None,
+        num_extra_layers_for_spritelayer_cargos=None,
     ):
         super().__init__()
         self.pipelines = pipelines.get_pipelines(["pass_through_pipeline"])
-        # options
-        self.flag_switch_set_layers_register_more_sprites = (
-            flag_switch_set_layers_register_more_sprites
-        )
         self._nml_template = _nml_template
         self._cargo_row_map = cargo_row_map
         self._generic_rows = generic_rows
         self._unique_spritesets = unique_spritesets
         self._cargo_label_mapping = cargo_label_mapping
+        self._weathered_variants = weathered_variants
+        if num_extra_layers_for_spritelayer_cargos is not None:
+            self.num_extra_layers_for_spritelayer_cargos = num_extra_layers_for_spritelayer_cargos
 
     @property
     def generic_rows(self):
@@ -754,3 +773,11 @@ class GestaltGraphicsCustom(GestaltGraphics):
     @property
     def cargo_label_mapping(self):
         return self._cargo_label_mapping
+
+    @property
+    def weathered_variants(self):
+        if self._weathered_variants == None:
+            # provide a default weathered_variant to spriteset templating, iff the template wants this attribute
+            return {"unweathered": {}}
+        else:
+            return self._weathered_variants

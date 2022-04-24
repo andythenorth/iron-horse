@@ -49,25 +49,26 @@
     }
 </tal:position_ruleset>
 
-<!--! load state is assumed (for simplicity) to be all or nothing - any cargo = full load of containers -->
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_spritelayer_cargos_check_cargo_count, cargo_count) {
-        0: return ss_spritelayer_cargo_empty;
-    return switch_spritelayer_cargos_${spritelayer_cargos.intermodal_containers.IntermodalContainersSpritelayerCargo().base_id}_${consist.platform_type}_${4 * vehicle.vehicle_length}px;
-}
+<tal:spritelayer_cargo_layers repeat="platform_type consist.spritelayer_cargo_layers">
+    <!--! load state is assumed (for simplicity) to be all or nothing - any cargo = full load of containers -->
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_spritelayer_cargos_check_cargo_count_${platform_type}, cargo_count) {
+            0: return ss_spritelayer_cargo_empty;
+        return switch_spritelayer_cargos_${spritelayer_cargos.intermodal_containers.IntermodalContainersSpritelayerCargo().base_id}_${platform_type}_${4 * vehicle.vehicle_length}px;
+    }
 
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_spritelayer_cargos, [
-                     STORE_TEMP(CB_FLAG_MORE_SPRITES | switch_intermodal_by_company_colour_1cc_to_1cc(), 0x100),
-                     STORE_TEMP(1, ${temp_storage_ids.unreversible_spritelayer_cargos})
-                    ]) {
-    return ${vehicle.id}_switch_graphics_spritelayer_cargos_check_cargo_count;
-}
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_spritelayer_cargos_${platform_type}, [
+                         STORE_TEMP(CB_FLAG_MORE_SPRITES | switch_intermodal_by_company_colour_1cc_to_1cc(), 0x100),
+                         STORE_TEMP(1, ${temp_storage_ids.unreversible_spritelayer_cargos})
+                        ]) {
+        return ${vehicle.id}_switch_graphics_spritelayer_cargos_check_cargo_count_${platform_type};
+    }
+</tal:spritelayer_cargo_layers>
 
 // switch layers: base platform / spritelayer cargo
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, getbits(extra_callback_info1, 8, 8)) {
     0: return ${vehicle.id}_switch_graphics_platform_position_in_consist_entry_point;
-    1: return ${vehicle.id}_switch_graphics_spritelayer_cargos;
+    1: return ${vehicle.id}_switch_graphics_spritelayer_cargos_${consist.spritelayer_cargo_layers[0]};
 }
-
 
 // buy menu graphics chain
 spriteset(${vehicle.id}_ss_vehicle_purchase, "${graphics_path}${consist.id}.png") {
@@ -88,5 +89,5 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_colour_mapping, 0) {
     <tal:include metal:use-macro="load: capacity_switches.pynml" />
 </tal:optional_capacity_switches>
 
-<tal:include metal:use-macro="load: properties.pynml" />
+<tal:include metal:use-macro="load: properties_vehicle.pynml" />
 

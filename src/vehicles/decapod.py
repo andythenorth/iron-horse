@@ -16,14 +16,12 @@ def main(roster_id):
         tractive_effort_coefficient=0.2,
         fixed_run_cost_points=120,  # substantial cost bonus so it can make money
         random_reverse=True,
-        sprites_complete=False,
+        sprites_complete=True,
     )
 
     consist.add_unit(type=SteamEngineUnit, weight=54, vehicle_length=6, spriterow_num=0)
 
-    consist.description = (
-        """Don't know what they were thinking, but they asked me to build it. Well, it's done."""
-    )
+    consist.description = """Don't know what they were thinking, but they asked me to build it. Well, it's done."""
     consist.foamer_facts = """GER Class A55 <i>Decapod</i>"""
 
     return consist

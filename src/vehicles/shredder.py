@@ -15,6 +15,7 @@ def main(roster_id):
         gen=5,
         speed=125,  # Shredder not replaced, but has gen 6 speeds
         intro_date_offset=7,  # introduce later than gen epoch by design
+        force_default_pax_mail_livery=2,  # pax/mail cars default to second livery with this engine
         sprites_complete=True,
     )
 

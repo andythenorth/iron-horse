@@ -19,7 +19,14 @@ if not os.path.exists(generated_files_path):
 from spritelayer_cargos import registered_spritelayer_cargos
 from spritelayer_cargos import intermodal_containers
 
-# from spritelayer_cargos import automobiles
+from spritelayer_cargos import automobiles
+
+# import railtypes
+from railtypes import registered_railtypes
+from railtypes import metro
+from railtypes import narrow_gauge
+from railtypes import lgv
+from railtypes import lgv_electrified
 
 # import rosters
 from rosters import registered_rosters
@@ -32,7 +39,7 @@ from vehicles import acid_tank_cars
 from vehicles import aggregate_cars
 
 # from vehicles import alignment_cars
-# from vehicles import automobile_cars
+from vehicles import automobile_cars
 from vehicles import bolster_cars
 from vehicles import box_cars
 from vehicles import bulkhead_flat_cars
@@ -46,8 +53,7 @@ from vehicles import coil_cars_uncovered
 from vehicles import covered_hopper_cars
 from vehicles import cryo_tank_cars
 from vehicles import curtain_side_box_cars
-
-# from vehicles import double_deck_automobile_cars
+from vehicles import double_deck_automobile_cars
 from vehicles import dry_powder_hopper_cars
 from vehicles import dump_cars
 from vehicles import dump_cars_high_side
@@ -55,9 +61,11 @@ from vehicles import edibles_tank_cars
 from vehicles import express_cars
 from vehicles import express_intermodal_cars
 from vehicles import express_railcar_passenger_trailer_cars
+from vehicles import farm_products_box_cars
 from vehicles import farm_products_hopper_cars
 from vehicles import flat_cars
-from vehicles import fruit_veg_cars
+from vehicles import goods_box_cars
+from vehicles import hood_open_cars
 from vehicles import hopper_cars
 from vehicles import hst_mail_cars
 from vehicles import hst_passenger_cars
@@ -66,10 +74,11 @@ from vehicles import intermodal_cars
 from vehicles import kaolin_hopper_cars
 from vehicles import livestock_cars
 from vehicles import log_cars
-
-# from vehicles import low_floor_automobile_cars
+from vehicles import low_floor_automobile_cars
 from vehicles import low_floor_intermodal_cars
 from vehicles import mail_cars
+from vehicles import merchandise_box_cars
+from vehicles import merchandise_open_cars
 from vehicles import mineral_covered_hopper_cars
 from vehicles import mineral_hopper_cars
 from vehicles import mgr_hopper_cars
@@ -99,6 +108,13 @@ from vehicles import tank_cars
 from vehicles import tarpaulin_cars
 from vehicles import torpedo_cars
 from vehicles import vehicle_parts_box_cars
+
+
+def get_active_railtypes():
+    active_railtypes = [
+        railtype for railtype in registered_railtypes if not railtype.disabled
+    ]  # make sure it's iterable
+    return active_railtypes
 
 
 def get_active_rosters():
@@ -183,23 +199,17 @@ def get_livery_2_engine_ids():
     result = []
     for roster in get_active_rosters():
         for consist in roster.engine_consists:
-            # second livery choice is deliberate, means 'as seen in buy menu' livery is built for common case of express 1, heavy_express 1, super_heavy_express_1
-            # ! this (x,y) tuple format is weird and won't scale well, see train.py intro_date_days_offset() for a dict based solution to a similar problem
-            if (consist.force_default_pax_mail_livery == 2) or (
-                consist.role,
-                consist.role_child_branch_num,
-            ) in [
-                ("branch_express", 1),
-                ("express", 2),
-                ("heavy_express", 2),
-                ("heavy_express", -2),
-                ("super_heavy_express", 2),
-                ("super_heavy_express", -2),
+            if consist.force_default_pax_mail_livery == 1:
+                continue
+            if consist.force_default_pax_mail_livery == 2:
+                result.append(consist.id)
+                continue
+            # generally it's better to force the livery per engine as wanted, but some railcars automatically switch by role
+            if (consist.role, consist.role_child_branch_num) in [
                 ("pax_railcar", 2),
                 ("mail_railcar", 2),
             ]:
-                if consist.force_default_pax_mail_livery != 1:
-                    result.append(consist.id)
+                result.append(consist.id)
     if len(result) > 255:
         utils.echo_message(
             "action 2 switch is limited to 255 values, get_livery_2_engine_ids exceeds this - needs split across multiple switches"
@@ -213,8 +223,8 @@ def get_cargo_sprinter_ids():
     result = []
     for roster in get_active_rosters():
         for consist in roster.engine_consists:
-            # abuse the platform_type property here, this might be fragile, but eh
-            if getattr(consist, "platform_type", None) == "cargo_sprinter":
+            # abuse the spritelayer_cargo_layers property here, we're just looking for a string, this might be fragile, but eh
+            if "cargo_sprinter" in getattr(consist, "spritelayer_cargo_layers", []):
                 result.append(consist.id)
     if len(result) > 255:
         utils.echo_message(
@@ -263,12 +273,18 @@ def get_restaurant_car_ids():
 
 
 def main():
+    # railtypes - order is significant, as affects order in construction menu (order property not currently set)
+    lgv.main(disabled=False)
+    lgv_electrified.main(disabled=False)
+    narrow_gauge.main(disabled=False)
+    metro.main(disabled=False)
+
     # rosters
     pony.main(disabled=False)
 
     # spritelayer cargos
     intermodal_containers.main()
-    # automobiles.main()
+    automobiles.main()
 
     # wagons
     acid_tank_cars.main()
@@ -277,7 +293,7 @@ def main():
     # only comment in if needed for debugging
     alignment_cars.main()
     """
-    # automobile_cars.main()
+    automobile_cars.main()
     bolster_cars.main()
     box_cars.main()
     bulkhead_flat_cars.main()
@@ -291,7 +307,7 @@ def main():
     covered_hopper_cars.main()
     cryo_tank_cars.main()
     curtain_side_box_cars.main()
-    # double_deck_automobile_cars.main()
+    double_deck_automobile_cars.main()
     dry_powder_hopper_cars.main()
     dump_cars.main()
     dump_cars_high_side.main()
@@ -299,9 +315,11 @@ def main():
     express_cars.main()
     express_intermodal_cars.main()
     express_railcar_passenger_trailer_cars.main()
+    farm_products_box_cars.main()
     farm_products_hopper_cars.main()
     flat_cars.main()
-    fruit_veg_cars.main()
+    goods_box_cars.main()
+    hood_open_cars.main()
     hopper_cars.main()
     hst_mail_cars.main()
     hst_passenger_cars.main()
@@ -310,11 +328,13 @@ def main():
     kaolin_hopper_cars.main()
     livestock_cars.main()
     log_cars.main()
-    # low_floor_automobile_cars.main()
+    low_floor_automobile_cars.main()
     low_floor_intermodal_cars.main()
     mail_cars.main()
+    merchandise_box_cars.main()
+    merchandise_open_cars.main()
     mineral_covered_hopper_cars.main()
-    #mineral_hopper_cars.main()
+    # mineral_hopper_cars.main()
     mgr_hopper_cars.main()
     ore_dump_cars.main()
     ore_hopper_cars.main()

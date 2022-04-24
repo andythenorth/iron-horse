@@ -19,13 +19,23 @@
     }
 </tal:livery_variant_nums>
 
+switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_graphics_vehicle_no_consist, current_year) {
+    <!--! case where vehicle exists in depot, but not attached to a consist, so use current year, same as buy menu -->
+    <tal:livery_variants repeat="date_range consist.roster.intro_date_ranges(consist.base_track_type)">
+        ${date_range[0]}..${date_range[1]}: return ${vehicle.id}_switch_graphics_livery_${repeat.date_range.index};
+    </tal:livery_variants>
+    return ${vehicle.id}_switch_graphics_livery_0;
+}
+
+
 switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_graphics_vehicle, vehicle_type_id) {
-<!--! this doesn't check grfid currently - add later if needed -->
+<!--! this doesn't check grfid currently - add later if needed
+      this may also exceed the number of permitted ranges as number of engines increases, if that happens, try sharding (probably by roster) -->
     <tal:livery_engine_ids repeat="engine_consist consist.engine_consists_for_caboose_cars">
         <!--! note that livery variants are zero-indexed, generations are one-indexed -->
         ${engine_consist.id}: return ${vehicle.id}_switch_graphics_livery_${engine_consist.gen - 1};
     </tal:livery_engine_ids>
-    return ${vehicle.id}_switch_graphics_livery_0;
+    return ${vehicle.id}_switch_graphics_vehicle_no_consist;
 }
 
 // buy menu graphics chain
@@ -50,5 +60,5 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase, current_year)
     <tal:include metal:use-macro="load: capacity_switches.pynml" />
 </tal:optional_capacity_switches>
 
-<tal:include metal:use-macro="load: properties.pynml" />
+<tal:include metal:use-macro="load: properties_vehicle.pynml" />
 

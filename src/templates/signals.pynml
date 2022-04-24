@@ -1,0 +1,80 @@
+// must be defined before railtypes
+
+template template_signals(x, y) {
+    //[x+left_x, upper_y, width, height, offset_x, offset_y]
+    [x    , y, 20, 30, -10, -30] //sw
+    [x+ 30, y, 20, 30, -10, -30] //ne
+    [x+ 60, y, 20, 30, -10, -30] //nw
+    [x+ 90, y, 20, 30, -10, -30] //se
+    [x+120, y, 20, 30, -10, -30] //e
+    [x+150, y, 20, 30, -10, -30] //w
+    [x+180, y, 20, 30, -10, -28] //s
+    [x+210, y, 20, 30, -10, -28] //n
+}
+
+// Signals
+
+// legacy parameter for compatibility with switches imported from Termite - deprecate?
+param_customsignals = 1;
+
+spriteset (spriteset_signals_block_green, "${graphics_path}/signals/signals_block.png") {
+    template_signals(0,0)
+}
+spriteset (spriteset_signals_block_red, "${graphics_path}/signals/signals_block.png") {
+    template_signals(0,40)
+}
+spriteset (spriteset_signals_block_combo_green, "${graphics_path}/signals/signals_block_combo.png") {
+    template_signals(0,0)
+}
+spriteset (spriteset_signals_block_combo_red, "${graphics_path}/signals/signals_block_combo.png") {
+    template_signals(0,40)
+}
+spriteset (spriteset_signals_block_entry_green, "${graphics_path}/signals/signals_block_entry.png") {
+    template_signals(0,0)
+}
+spriteset (spriteset_signals_block_entry_red, "${graphics_path}/signals/signals_block_entry.png") {
+    template_signals(0,40)
+}
+spriteset (spriteset_signals_block_exit_green, "${graphics_path}/signals/signals_block_exit.png") {
+    template_signals(0,0)
+}
+spriteset (spriteset_signals_block_exit_red, "${graphics_path}/signals/signals_block_exit.png") {
+    template_signals(0,40)
+}
+spriteset (spriteset_signals_path_oneway_green, "${graphics_path}/signals/signals_path_oneway.png") {
+    template_signals(0,0)
+}
+spriteset (spriteset_signals_path_oneway_red, "${graphics_path}/signals/signals_path_oneway.png") {
+    template_signals(0,40)
+}
+spriteset (spriteset_signals_path_twoway_green, "${graphics_path}/signals/signals_path_twoway.png") {
+    template_signals(0,0)
+}
+spriteset (spriteset_signals_path_twoway_red, "${graphics_path}/signals/signals_path_twoway.png") {
+    template_signals(0,40)
+}
+
+switch (FEAT_RAILTYPES, SELF, switch_signals_type, extra_callback_info2 & 0x00FFFFFF) {
+    //light signals
+    //TT         VV        SS
+    (0 << 16) | (0 << 8) | 0 : spriteset_signals_block_red;
+    (0 << 16) | (0 << 8) | 1 : spriteset_signals_block_green;
+    (1 << 16) | (0 << 8) | 0 : spriteset_signals_block_entry_red;
+    (1 << 16) | (0 << 8) | 1 : spriteset_signals_block_entry_green;
+    (2 << 16) | (0 << 8) | 0 : spriteset_signals_block_exit_red;
+    (2 << 16) | (0 << 8) | 1 : spriteset_signals_block_exit_green;
+    (3 << 16) | (0 << 8) | 0 : spriteset_signals_block_combo_red;
+    (3 << 16) | (0 << 8) | 1 : spriteset_signals_block_combo_green;
+    (4 << 16) | (0 << 8) | 0 : spriteset_signals_path_twoway_red;
+    (4 << 16) | (0 << 8) | 1 : spriteset_signals_path_twoway_green;
+    (5 << 16) | (0 << 8) | 0 : spriteset_signals_path_oneway_red;
+    (5 << 16) | (0 << 8) | 1 : spriteset_signals_path_oneway_green;
+    //sempahores are not defined, will use standard signals
+    CB_FAILED;
+}
+
+switch (FEAT_RAILTYPES, SELF, switch_signals, param_customsignals) {
+    1: switch_signals_type; //only custom signals when parameter set
+    CB_FAILED;
+}
+

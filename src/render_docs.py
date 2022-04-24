@@ -757,6 +757,9 @@ def render_docs_images(consist):
 
 
 def main():
+    if makefile_args.get("suppress_docs", False):
+        print("[SKIPPING DOCS] render_docs.py (suppress_docs makefile flag set)")
+        return
     print("[RENDER DOCS] render_docs.py")
     start = time()
     iron_horse.main()

@@ -7,15 +7,14 @@ def main():
     consist = BulkheadFlatCarConsist(
         roster_id="pony",
         base_numeric_id=5120,
-        gen=1,
+        gen=2,
         subtype="U",
         base_track_type="NG",
+        intro_date_offset=20,  # these are pushed right back to line up with standard gauge versions
         sprites_complete=True,
     )
 
     consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
-
-    # no gen 2 for NG, straight to gen 3
 
     consist = BulkheadFlatCarConsist(
         roster_id="pony",

@@ -14,11 +14,18 @@ buy_menu_sort_order_wagons = [
     "suburban_passenger_car",
     "mail_car",
     "express_car",
+    "automobile_car",
+    "low_floor_automobile_car",
+    "double_deck_automobile_car",
     "express_intermodal_car",
     "intermodal_car",
     "low_floor_intermodal_car",
     "open_car",
+    "merchandise_open_car",
+    "hood_open_car",
     "box_car",
+    "merchandise_box_car",
+    "goods_box_car",
     "curtain_side_box_car",
     "sliding_wall_car",
     "vehicle_parts_box_car",
@@ -55,13 +62,10 @@ buy_menu_sort_order_wagons = [
     "silo_car",
     "cement_silo_car",
     "livestock_car",
-    "fruit_veg_car",
     "edibles_tank_car",
     "reefer_car",
+    "farm_products_box_car",
     "farm_products_hopper_car",
-    "automobile_car",
-    "low_floor_automobile_car",
-    "double_deck_automobile_car",
     "log_car",
     "kaolin_hopper_car",
     "carbon_black_hopper_car",
@@ -74,10 +78,25 @@ buy_menu_sort_order_wagons = [
     "caboose_car",
 ]
 
+# mapping of internal base_track_type values to actual railtype labels
+# used when determining track_type property for vehicles
+# the *first item* must be the actual label provided by an appropriate Iron Horse railtype
+# the rest are fallbacks, in order, for use with other railtype grfs
+# do not use labels from the standardised scheme as they will not be an exact match, and that potentially conflicts with the scheme
+# railtype authors need to be able to control mapping IHXX types to the standardised scheme, which they can do using railtype alternative_railtype_list property
+# see the docs Code Reference page for further explanation of the label schema
+base_track_type_to_railtype_mapping = {
+    "RAIL": ["IHA_", "RAIL"],
+    "RAIL_ELECTRIFIED": ["IHB_", "ELRL"],
+    "METRO": ["IHC_", "MTRO"],
+    "NG": ["IHD_", "NGRL"],
+    "NG_ELECTRIFIED": ["IHE_", "ELNG"],
+    "LGV": ["IHAA", "RAIL"],
+    "LGV_ELECTRIFIED": ["IHBA", "ELRL"],
+}
+
 # capacity multipliers for user-configurable capacity parameter
-capacity_multipliers = [0.67, 1, 1.33, 1.77]
-# identifier for user-configurable capacity parameter
-param_adjust_vehicle_capacity = 1
+capacity_multipliers = [0.33, 0.67, 1, 1.33, 1.77]
 
 grfid = r"CA\12\1F"
 
@@ -101,7 +120,10 @@ PR_RUNNING_TRAIN_DIESEL = -4
 # order is significant, so OrderedDict is used (this wouldn't be necessary for python >= 3.7, but at time of writing compile uses python 3.5)
 role_group_mapping = OrderedDict(
     [
-        ("express", ["branch_express", "express", "heavy_express", "super_heavy_express"]),
+        (
+            "express",
+            ["branch_express", "express", "heavy_express", "super_heavy_express"],
+        ),
         (
             "driving_cab",
             [
@@ -110,7 +132,10 @@ role_group_mapping = OrderedDict(
                 "driving_cab_express_mixed",
             ],
         ),
-        ("freight", ["branch_freight", "freight", "heavy_freight", "super_heavy_freight"]),
+        (
+            "freight",
+            ["branch_freight", "freight", "heavy_freight", "super_heavy_freight"],
+        ),
         (
             "universal",
             # order of mailrailcar and pax_railbus is significant as of April 2021, for unfortunate tech-tree ordering reasons
@@ -126,7 +151,14 @@ role_group_mapping = OrderedDict(
         ("very_high_speed", ["very_high_speed"]),
         (
             "lolz",
-            ["joker_heavy_express", "joker_super_heavy_express", "joker_heavy_freight", "joker_super_heavy_freight", "gronk!", "snoughplough!"],
+            [
+                "joker_heavy_express",
+                "joker_super_heavy_express",
+                "joker_heavy_freight",
+                "joker_super_heavy_freight",
+                "gronk!",
+                "snoughplough!",
+            ],
         ),
         ("metro", ["pax_metro", "mail_metro"]),  # note pax before mail
     ]

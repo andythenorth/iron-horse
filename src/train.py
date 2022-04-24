@@ -86,6 +86,7 @@ class Consist(object):
         self.pantograph_type = kwargs.get("pantograph_type", None)
         self.dual_headed = kwargs.get("dual_headed", False)
         self.tilt_bonus = False  # over-ride in subclass as needed
+        self.lgv_capable = False  # over-ride in subclass as needed
         # solely used for ottd livery (company colour) selection, set in subclass as needed
         self.train_flag_mu = False
         # some wagons will provide power if specific engine IDs are in the consist
@@ -104,8 +105,8 @@ class Consist(object):
         # random_reverse means (1) randomised reversing of sprites when vehicle is built (2) player can also flip vehicle
         # random_reverse is not supported in some templates
         self.random_reverse = kwargs.get("random_reverse", False)
-        # random_reverse vehicles can always be flipped, but flip can also be set in other cases (by subclass)
-        self.allow_flip = self.random_reverse
+        # random_reverse vehicles can always be flipped, but flip can also be set in other cases (by subclass, or directly by consist)
+        self.allow_flip = kwargs.get("allow_flip", self.random_reverse)
         # just a simple buy cost tweak, only use when needed
         self.electro_diesel_buy_cost_malus = None
         # arbitrary multiplier to the calculated buy cost, e.g. 1.1, 0.9 etc
@@ -296,7 +297,11 @@ class Consist(object):
         # this does *not* use the role group mapping in global constants, as it's more fragmented to avoid too many new vehicle messages at once
         # JOKERS: note that not all jokers have to be in the jokers group here, they can be in other groups if intro dates need to sync
         role_to_role_groups_mapping = {
-            "express_core": {"express": [1], "heavy_express": [1], "super_heavy_express": [1]},
+            "express_core": {
+                "express": [1],
+                "heavy_express": [1],
+                "super_heavy_express": [1],
+            },
             "express_non_core": {
                 "branch_express": [1, 2, -2],
                 "express": [2],
@@ -309,12 +314,16 @@ class Consist(object):
                 "driving_cab_express_mail": [-1],
                 "driving_cab_express_mixed": [-1],
             },
-            "freight_core": {"freight": [1], "heavy_freight": [1], "super_heavy_freight": [1]},
+            "freight_core": {
+                "freight": [1],
+                "heavy_freight": [1],
+                "super_heavy_freight": [1],
+            },
             "freight_non_core": {
                 "branch_freight": [1, 2],
                 "freight": [2],
                 "heavy_freight": [2, 3, 4],
-                "super_heavy_freight": [2]
+                "super_heavy_freight": [2],
             },
             "hst": {"hst": [1, 2]},
             "jokers": {
@@ -478,31 +487,35 @@ class Consist(object):
 
     @property
     def track_type(self):
-        # are you sure you don't want base_track_type instead?
-        # track_type handles converting base_track_type to ELRL, ELNG etc as needed for electric engines
-        # it's often more convenient to use base_track_type prop, which treats ELRL and RAIL as same (for example)
-        eltrack_type_mapping = {
-            "RAIL": "ELRL",
-            "NG": "ELNG",
-            "METRO": "METRO",  # assume METRO is always METRO, whether electric flag is set or not
-        }
+        # are you sure you don't want base_track_type instead? (generally you do want base_track_type)
+        # track_type handles converting base_track_type to an actual railtype label
+        # this is done by looking up a railtype mapping in global constants, via internal labels
+        # e.g. electric engines with "RAIL" as base_track_type will be translated to "ELRL"
+        # narrow gauge trains will be similarly have "NG" translated to an appropriate NG railytpe label
         if self.requires_electric_rails:
-            return eltrack_type_mapping[self.base_track_type]
+            # for electrified vehicles, translate base_track_type before getting the mapping to labels
+            # iff electrification types ever gain subtypes (AC, DC, etc), add further checks here
+            mapping_key = self.base_track_type + "_ELECTRIFIED"
         else:
-            return self.base_track_type
+            mapping_key = self.base_track_type
+        valid_railtype_labels = global_constants.base_track_type_to_railtype_mapping[
+            mapping_key
+        ]
+        # assume that the label we want for the vehicle is the first in the list of valid types (the rest are fallbacks if the first railtype is missing)
+        result = valid_railtype_labels[0]
+        # set modifiers on the label by modifying the last byte
+        # modifiers are not orthogonal and the byte can only be set to a single value
+        # if multiple modifiers need to be combined, that needs to be explicitly handled
+        # generally that would be a sign we're doing something unwise and with combinatorial problems
+        modifier = "_"
+        if self.lgv_capable:
+            modifier = "A"
+        result = result[0:3] + modifier
+        return result
 
     def get_speed_by_class(self, speed_class):
         # automatic speed, but can over-ride by passing in kwargs for consist
-        speed_track_type_mapping = {
-            "RAIL": "RAIL",
-            "ELRL": "RAIL",
-            "NG": "NG",
-            "ELNG": "NG",
-            "METRO": "METRO",
-        }
-        speeds_by_track_type = self.roster.speeds[
-            speed_track_type_mapping[self.base_track_type]
-        ]
+        speeds_by_track_type = self.roster.speeds[self.base_track_type]
         return speeds_by_track_type[speed_class][self.gen - 1]
 
     @property
@@ -588,6 +601,22 @@ class Consist(object):
                 result = 'cargotype_available("' + cargo + '")?' + cargo + ":" + result
             return result
 
+    def get_nml_expression_for_tile_powers_railtype(self):
+        # 1) all railtypes must be known in the railtypetable (by brute force if necessary)
+        # 2) extend this as necessary in future if more fine-grained checks are needed specific to the consist
+        # 3) if procedure support is needed, make that parameterised for the appropriate railtypes to the consist
+        # for example, adding IHE_ for electrified narrow gauge would be relevant
+        # this could also interrogate the vehicle label to find the appropriate types to add
+        # but that would need to be cautious about e.g. electro-diesel has tracktype IHA_, but would need IHB_ and ELRL here
+        # so perhaps Yet Another Mapping for table lookup
+        railtypes_to_check = ["ELRL", "IHB_"]
+        result = []
+        for railtype in railtypes_to_check:
+            result.append('tile_powers_railtype("' + railtype + '")')
+        result = " || ".join(result)
+        result = "[" + result + "]"
+        return result
+
     @property
     def buy_menu_x_loc(self):
         # automatic buy menu sprite if single-unit consist
@@ -607,6 +636,30 @@ class Consist(object):
             return 4 * self.length
         else:
             return 64
+
+    @property
+    def num_sprite_layers(self):
+        # always at least one layer
+        result = 1
+        # order of adding extra layers doesn't matter here, it's just a number,
+        # the switch chain for the vehicle type will need to take care of switching to correct layers
+        # gestalt may add extra sprites layer for e.g. visible cargo, vehicle masks
+        if (
+            getattr(
+                self.gestalt_graphics, "num_extra_layers_for_spritelayer_cargos", None
+            )
+            != None
+        ):
+            result = (
+                result + self.gestalt_graphics.num_extra_layers_for_spritelayer_cargos
+            )
+        # add a layer for pantographs as needed, note this is not done in the gestalt as it's more convenient to treat separarely
+        if self.pantograph_type is not None:
+            result = result + 1
+        # OpenTTD has a limited number of layers in the sprite stack, we can't exceed them
+        if result > 4:
+            raise Exception("Too many sprite layers ", result, " defined for ", self.id)
+        return result
 
     def get_nml_for_spriteset_template(self, y_offset):
         template_subtype = "dual_headed" if self.dual_headed else "default"
@@ -807,7 +860,9 @@ class EngineConsist(Consist):
         self.fixed_run_cost_points = kwargs.get("fixed_run_cost_points", 180)
         # pax/mail cars will default to the alternative 2nd livery automatically using role and branch, or it can be forced here (set in engines as needed)
         # (player can always invert the choice by flipping vehicles)
-        self.force_default_pax_mail_livery = kwargs.get("force_default_pax_mail_livery", 1)
+        self.force_default_pax_mail_livery = kwargs.get(
+            "force_default_pax_mail_livery", None
+        )
         # Graphics configuration only as required
         # (pantographs can also be generated by other gestalts as needed, this isn't the exclusive gestalt for it)
         # note that this Gestalt might get replaced by subclasses as needed
@@ -894,7 +949,10 @@ class EngineConsist(Consist):
         run_cost = gen_multiplier * (fixed_run_cost_points + floating_run_cost_points)
         # freight engines get a run cost bonus as they'll often be sat waiting for loads, so balance (also super realism!!)
         # doing this is preferable to doing variable run costs, which are weird and confusing (can't trust the costs showin in vehicle window)
-        if self.role in ["heavy_freight", "super_heavy_freight"]:  # smaller bonus for heavy_freight
+        if self.role in [
+            "heavy_freight",
+            "super_heavy_freight",
+        ]:  # smaller bonus for heavy_freight
             run_cost = 0.9 * run_cost
         elif self.role in [
             "branch_freight",
@@ -1006,7 +1064,6 @@ class MailEngineCargoSprinterEngineConsist(MailEngineConsist):
         super().__init__(**kwargs)
         # non-standard cite
         self._cite = "Arabella Unit"
-        self.platform_type = "cargo_sprinter"
         # run cost algorithm doesn't account for dual-head / high power MUs reliably, so just fix it here, using assumption that there are very few cargo sprinters and this will be fine
         self.fixed_run_cost_points = 240
         self._loading_speed_multiplier = 2
@@ -1015,9 +1072,14 @@ class MailEngineCargoSprinterEngineConsist(MailEngineConsist):
         # NOTE that cargo sprinter will NOT randomise containers on load as of Dec 2020 - there is a bug with rear unit running unwanted triggers and re-randomising in depots etc
         self.gestalt_graphics = GestaltGraphicsCustom(
             "vehicle_cargo_sprinter.pynml",
-            flag_switch_set_layers_register_more_sprites=True,
             cargo_label_mapping=GestaltGraphicsIntermodalContainerTransporters().cargo_label_mapping,
+            num_extra_layers_for_spritelayer_cargos=2,
         )
+
+    @property
+    # layers for spritelayer cargos, and the platform type (cargo pattern and deck height)
+    def spritelayer_cargo_layers(self):
+        return ["cargo_sprinter"]
 
 
 class MailEngineMetroConsist(MailEngineConsist):
@@ -1178,6 +1240,7 @@ class PassengerHSTCabEngineConsist(PassengerEngineConsist):
         super().__init__(**kwargs)
         # always dual-head
         self.dual_headed = True
+        self.lgv_capable = kwargs.get("lgv_capable", False)
         self.buy_cost_adjustment_factor = 1.2
         # higher speed should only be effective over longer distances
         # ....run cost multiplier is adjusted up from pax base for high speed
@@ -1415,6 +1478,7 @@ class PassengerVeryHighSpeedCabEngineConsist(PassengerEngineConsist):
         self.middle_id = self.id.split("_cab")[0] + "_middle"
         self.buy_menu_hint_wagons_add_power = True
         self.tilt_bonus = True
+        self.lgv_capable = True
         # note that buy costs are actually adjusted down from pax base, to account for distributed traction etc
         self.buy_cost_adjustment_factor = 0.95
         # ....run cost multiplier is adjusted up from pax base because regrettable realism
@@ -1465,6 +1529,7 @@ class PassengerVeryHighSpeedMiddleEngineConsist(PassengerEngineConsist):
         self.wagons_add_power = True
         self.buy_menu_hint_wagons_add_power = True
         self.tilt_bonus = True
+        self.lgv_capable = True
         # train_flag_mu solely used for ottd livery (company colour) selection
         # eh as of Feb 2019, OpenTTD won't actually use this for middle cars, as not engines
         # this means the buy menu won't match, but wagons will match anyway when attached to cab
@@ -1758,32 +1823,51 @@ class AutomobileCarConsistBase(CarConsist):
         super().__init__(**kwargs)
         self.speed_class = "express"
         self.class_refit_groups = []  # no classes, use explicit labels
-        self.label_refits_allowed = ["PASS", "VEHI", "ENSP", "FMSP"]
+        # self.label_refits_allowed = ["PASS", "VEHI", "ENSP", "FMSP"]
+        self.label_refits_allowed = ["VEHI"]
         self.label_refits_disallowed = []
         self.default_cargos = ["VEHI"]
         # special flag to turn on cargo subtypes specific to vehicles, can be made more generic if subtypes need to be extensible in future
-        self.use_cargo_subytpes_VEHI = True
+        # self.use_cargo_subytpes_VEHI = True
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
         )
-        # !! flipping not currently allowed as don't know if asymmetric sprites support is working (might be fine?) (works for containers ok)
-        self.allow_flip = (
-            True  # hax test because template failing to return correct cargo sprites
-        )
-        # Graphics configuration
-        # intermodal containers can't use random colour swaps on the wagons...
-        # ...because the random bits are re-randomised when new cargo loads, to get new random containers, which would also cause new random wagon colour
+        # automobile cars can't use random colour swaps on the wagons...
+        # ...because the random bits are re-randomised when new cargo loads, to get new random automobile cargos, which would also cause new random wagon colour
         # player can still flip to the second livery
         self.use_colour_randomisation_strategies = False
+        self.allow_flip = True
         if self.subtype == "D":
             consist_ruleset = "articulated_permanent_twin_sets"
-        elif self.subtype == "C":
-            consist_ruleset = "4_unit_sets"
         else:
-            consist_ruleset = "2_unit_sets"
+            consist_ruleset = self._consist_ruleset
         self.gestalt_graphics = GestaltGraphicsAutomobilesTransporter(
-            consist_ruleset=consist_ruleset
+            consist_ruleset=consist_ruleset, add_masked_overlay=self.add_masked_overlay
         )
+
+    @property
+    def add_masked_overlay(self):
+        # over-ride in subclasses as needed
+        return False
+
+
+class AutomobileCarConsist(AutomobileCarConsistBase):
+    """
+    Automobile transporter with single flat deck at conventional height.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "automobile_car"
+        super().__init__(**kwargs)
+
+    @property
+    def _consist_ruleset(self):
+        return "1_unit_sets"
+
+    @property
+    # layers for spritelayer cargos, and the platform type (cargo pattern and deck height)
+    def spritelayer_cargo_layers(self):
+        return ["default"]
 
 
 class AutomobileDoubleDeckCarConsist(AutomobileCarConsistBase):
@@ -1799,26 +1883,21 @@ class AutomobileDoubleDeckCarConsist(AutomobileCarConsistBase):
         self.use_cargo_subytpes_VEHI = False
 
     @property
-    # account for e.g. low floor, double deck etc
-    def platform_type(self):
-        # !! all default currently, extend as needed - see intermodal cars for example
-        return "default"
-
-
-class AutomobileCarConsist(AutomobileCarConsistBase):
-    """
-    Automobile transporter with single flat deck at conventional height.
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = "automobile_car"
-        super().__init__(**kwargs)
+    def _consist_ruleset(self):
+        if self.subtype == "B":
+            return "2_unit_sets"
+        else:
+            return "4_unit_sets"
 
     @property
-    # account for e.g. low floor, double deck etc
-    def platform_type(self):
-        # !! all default currently, extend as needed - see intermodal cars for example
-        return "default"
+    def add_masked_overlay(self):
+        return True
+
+    @property
+    # layers for spritelayer cargos, and the platform type (cargo pattern and deck height)
+    def spritelayer_cargo_layers(self):
+        #return ["double_deck", "double_deck"]
+        return ["double_deck"]
 
 
 class AutomobileLowFloorCarConsist(AutomobileCarConsistBase):
@@ -1831,10 +1910,13 @@ class AutomobileLowFloorCarConsist(AutomobileCarConsistBase):
         super().__init__(**kwargs)
 
     @property
-    # account for e.g. low floor, double deck etc
-    def platform_type(self):
-        # !! all default currently, extend as needed - see intermodal cars for example
-        return "default"
+    def _consist_ruleset(self):
+        return "4_unit_sets"
+
+    @property
+    # layers for spritelayer cargos, and the platform type (cargo pattern and deck height)
+    def spritelayer_cargo_layers(self):
+        return ["low_floor", "double_deck"]
 
 
 class BolsterCarConsist(CarConsist):
@@ -1861,13 +1943,12 @@ class BolsterCarConsist(CarConsist):
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(piece="long_products")
 
 
-class BoxCarConsist(CarConsist):
+class BoxCarConsistBase(CarConsist):
     """
-    Box car, van - express, piece goods cargos, other selected cargos.
+    Base for box car, van - piece goods cargos, express, other selected cargos.
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "box_car"
         super().__init__(**kwargs)
         self.class_refit_groups = ["packaged_freight"]
         self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
@@ -1883,10 +1964,153 @@ class BoxCarConsist(CarConsist):
         )
         # allow flipping, used to flip company colour
         self.allow_flip = True
+
+
+class BoxCarConsist(BoxCarConsistBase):
+    """
+    Standard box car / van
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "box_car"
+        super().__init__(**kwargs)
         # Graphics configuration
         self.roof_type = "freight"
+        weathered_variants = {
+            "unweathered": graphics_constants.box_livery_recolour_maps,
+        }
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
-            id_base="box_car", recolour_maps=graphics_constants.box_livery_recolour_maps
+            id_base="box_car",
+            weathered_variants=weathered_variants,
+        )
+
+
+class BoxCarCurtainSideConsist(BoxCarConsistBase):
+    """
+    Curtain side box car - same refits as box car.
+    *Not* tarpaulin car which is curtain roof flat.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "curtain_side_box_car"
+        super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos["box_curtain_side"]
+        self._intro_date_days_offset = (
+            global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
+        )
+        self._joker = True
+        # Graphics configuration
+        self.roof_type = "freight"
+        weathered_variants = {
+            "unweathered": graphics_constants.curtain_side_livery_recolour_maps,
+        }
+        self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
+            id_base="curtain_side_box_car",
+            weathered_variants=weathered_variants,
+        )
+
+
+class BoxCarGoodsConsist(BoxCarConsistBase):
+    """
+    Alternative livery for standard box car / van
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "goods_box_car"
+        super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos["box_goods"]
+        # Graphics configuration
+        self.roof_type = "freight_brown"
+        weathered_variants = {
+            "unweathered": graphics_constants.goods_box_car_body_recolour_maps,
+            "weathered": graphics_constants.goods_box_car_body_recolour_maps_weathered,
+        }
+        self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
+            id_base="goods_box_car",
+            weathered_variants=weathered_variants,
+        )
+
+
+class BoxCarMerchandiseConsist(BoxCarConsistBase):
+    """
+    Alternative livery for standard box car / van
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "merchandise_box_car"
+        super().__init__(**kwargs)
+        # Graphics configuration
+        self.roof_type = "freight"
+        weathered_variants = {
+            "unweathered": (
+                ("DFLT", graphics_constants.merchandise_car_body_recolour_map),
+            ),
+            "weathered": (
+                (
+                    "DFLT",
+                    graphics_constants.merchandise_car_body_recolour_map_weathered,
+                ),
+            ),
+        }
+        self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
+            id_base="box_car",
+            weathered_variants=weathered_variants,
+        )
+
+
+class BoxCarSlidingWallConsist(BoxCarConsistBase):
+    """
+    Sliding wall van - (cargowagon, habfiss, thrall, pullman all-door car etc) - same refits as box car.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "sliding_wall_car"
+        super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos["box_sliding_wall"]
+        self._intro_date_days_offset = (
+            global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
+        )
+        # type-specific wagon colour randomisation
+        self.auto_colour_randomisation_strategy_num = (
+            1  # single base colour unless flipped
+        )
+        # Graphics configuration
+        self.roof_type = "freight"
+        weathered_variants = {
+            "unweathered": graphics_constants.sliding_wall_livery_recolour_maps,
+            "weathered": graphics_constants.sliding_wall_livery_recolour_maps_weathered,
+        }
+        self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
+            id_base="sliding_wall_car",
+            weathered_variants=weathered_variants,
+        )
+
+
+class BoxCarVehiclePartsConsist(BoxCarConsistBase):
+    """
+    Vehicle parts box car, van - same refits as box car, just a specific visual variation.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "vehicle_parts_box_car"
+        super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos["box_vehicle_parts"]
+        self._intro_date_days_offset = (
+            global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
+        )
+        self._joker = True
+        # type-specific wagon colour randomisation
+        self.auto_colour_randomisation_strategy_num = (
+            1  # single base colour unless flipped
+        )
+        # Graphics configuration
+        self.roof_type = "freight"
+        weathered_variants = {
+            "unweathered": graphics_constants.box_livery_recolour_maps,
+        }
+        self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
+            id_base="vehicle_parts_box_car",
+            weathered_variants=weathered_variants,
         )
 
 
@@ -1961,8 +2185,12 @@ class CarbonBlackHopperCarConsist(CarConsist):
         # allow flipping, used to flip company colour
         self.allow_flip = True
         # Graphics configuration
+        weathered_variants = {
+            "unweathered": graphics_constants.carbon_black_hopper_car_livery_recolour_maps,
+            "weathered": graphics_constants.carbon_black_hopper_car_livery_recolour_maps_weathered,
+        }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
-            recolour_maps=graphics_constants.carbon_black_hopper_car_livery_recolour_maps
+            weathered_variants=weathered_variants
         )
 
 
@@ -1997,12 +2225,12 @@ class CoilBuggyCarConsist(CarConsist):
             cargo_row_map={},  # leave blank, all default to same
             generic_rows=[0],
             unique_spritesets=[
-                ["empty", "flipped", 10],
-                ["loading_0", "flipped", 40],
-                ["loaded_0", "flipped", 40],
-                ["empty", "unflipped", 10],
-                ["loading_0", "unflipped", 40],
-                ["loaded_0", "unflipped", 40],
+                ["unweathered", "empty", "flipped", 10],
+                ["unweathered", "loading_0", "flipped", 40],
+                ["unweathered", "loaded_0", "flipped", 40],
+                ["unweathered", "empty", "unflipped", 10],
+                ["unweathered", "loading_0", "unflipped", 40],
+                ["unweathered", "loaded_0", "unflipped", 40],
             ],
         )
 
@@ -2040,8 +2268,9 @@ class CoilCarCoveredConsist(CoilCarConsistBase):
         self.cc_num_to_randomise = 2
         self._joker = True
         # Graphics configuration
+        weathered_variants = {"unweathered": graphics_constants.body_recolour_CC2}
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
-            body_recolour_map=graphics_constants.body_recolour_CC2,
+            weathered_variants=weathered_variants,
             piece="coil",
             has_cover=True,
         )
@@ -2093,8 +2322,12 @@ class CoveredHopperCarConsist(CoveredHopperCarConsistBase):
         self.default_cargos = polar_fox.constants.default_cargos["covered_pellet"]
         self._joker = True
         # Graphics configuration
+        weathered_variants = {
+            "unweathered": graphics_constants.pellet_hopper_car_livery_recolour_maps,
+            "weathered": graphics_constants.pellet_hopper_car_livery_recolour_maps_weathered,
+        }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
-            recolour_maps=graphics_constants.pellet_hopper_car_livery_recolour_maps
+            weathered_variants=weathered_variants
         )
 
 
@@ -2109,8 +2342,12 @@ class CoveredHopperCarChemicalConsist(CoveredHopperCarConsistBase):
         self.default_cargos = polar_fox.constants.default_cargos["covered_chemical"]
         self._joker = True
         # Graphics configuration
+        weathered_variants = {
+            "unweathered": graphics_constants.chemical_covered_hopper_car_livery_recolour_maps,
+            "weathered": graphics_constants.chemical_covered_hopper_car_livery_recolour_maps_weathered,
+        }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
-            recolour_maps=graphics_constants.chemical_covered_hopper_car_livery_recolour_maps
+            weathered_variants=weathered_variants
         )
 
 
@@ -2125,8 +2362,11 @@ class CoveredHopperCarDryPowderConsist(CoveredHopperCarConsistBase):
         self.default_cargos = polar_fox.constants.default_cargos["covered_mineral"]
         self._joker = True
         # Graphics configuration
+        weathered_variants = {
+            "unweathered": graphics_constants.covered_hopper_car_livery_recolour_maps
+        }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
-            recolour_maps=graphics_constants.covered_hopper_car_livery_recolour_maps
+            weathered_variants=weathered_variants
         )
 
 
@@ -2141,8 +2381,12 @@ class CoveredHopperCarMineralConsist(CoveredHopperCarConsistBase):
         self.default_cargos = polar_fox.constants.default_cargos["covered_mineral"]
         self._joker = True
         # Graphics configuration
+        weathered_variants = {
+            "unweathered": graphics_constants.mineral_covered_hopper_car_livery_recolour_maps,
+            "weathered": graphics_constants.mineral_covered_hopper_car_livery_recolour_maps_weathered,
+        }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
-            recolour_maps=graphics_constants.mineral_covered_hopper_car_livery_recolour_maps
+            weathered_variants=weathered_variants
         )
 
 
@@ -2157,8 +2401,11 @@ class CoveredHopperCarRollerRoofConsist(CoveredHopperCarConsistBase):
         self._joker = True
         self.default_cargos = polar_fox.constants.default_cargos["covered_roller_roof"]
         # Graphics configuration
+        weathered_variants = {
+            "unweathered": graphics_constants.pellet_hopper_car_livery_recolour_maps
+        }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
-            recolour_maps=graphics_constants.pellet_hopper_car_livery_recolour_maps
+            weathered_variants=weathered_variants
         )
 
 
@@ -2173,40 +2420,11 @@ class CoveredHopperCarSwingRoofConsist(CoveredHopperCarConsistBase):
         self._joker = True
         self.default_cargos = polar_fox.constants.default_cargos["covered_chemical"]
         # Graphics configuration
+        weathered_variants = {
+            "unweathered": graphics_constants.covered_hopper_car_livery_recolour_maps
+        }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
-            recolour_maps=graphics_constants.covered_hopper_car_livery_recolour_maps
-        )
-
-
-class CurtainSideCarBoxConsist(CarConsist):
-    """
-    Curtain side box car - same refits as box car.
-    *Not* tarpaulin car which is curtain roof flat.
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = "curtain_side_box_car"
-        super().__init__(**kwargs)
-        self.class_refit_groups = ["packaged_freight"]
-        self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
-            "box_freight"
-        ]
-        self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label[
-            "non_freight_special_cases"
-        ]
-        self.default_cargos = polar_fox.constants.default_cargos["box_curtain_side"]
-        self.buy_cost_adjustment_factor = 1.2
-        self._intro_date_days_offset = (
-            global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
-        )
-        self._joker = True
-        # allow flipping, used to flip company colour
-        self.allow_flip = True
-        # Graphics configuration
-        self.roof_type = "freight"
-        self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
-            id_base="curtain_side_box_car",
-            recolour_maps=graphics_constants.curtain_side_livery_recolour_maps,
+            weathered_variants=weathered_variants
         )
 
 
@@ -2254,7 +2472,7 @@ class DumpCarAggregateConsist(DumpCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "aggregate_car"
         super().__init__(**kwargs)
-        self.default_cargos = polar_fox.constants.default_cargos["dump_high_sides"]
+        self.default_cargos = polar_fox.constants.default_cargos["dump_aggregates"]
         self._joker = True
 
 
@@ -2281,7 +2499,7 @@ class DumpCarOreConsist(DumpCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "ore_dump_car"
         super().__init__(**kwargs)
-        self.default_cargos = polar_fox.constants.default_cargos["dump_high_sides"]
+        self.default_cargos = polar_fox.constants.default_cargos["dump_ore"]
         # type-specific wagon colour randomisation
         self.auto_colour_randomisation_strategy_num = (
             2  # no randomisation, but reverse on flip
@@ -2333,8 +2551,11 @@ class EdiblesTankCarConsist(CarConsist):
         )
         # Graphics configuration
         # only one livery, but recolour gestalt used to automate adding chassis
+        weathered_variants = {
+            "unweathered": graphics_constants.edibles_tank_car_livery_recolour_maps
+        }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
-            recolour_maps=graphics_constants.edibles_tank_car_livery_recolour_maps
+            weathered_variants=weathered_variants
         )
 
 
@@ -2372,9 +2593,12 @@ class ExpressCarConsist(CarConsist):
             self.roof_type = "pax_mail_ridged"
         else:
             self.roof_type = "pax_mail_smooth"
+        weathered_variants = {
+            "unweathered": graphics_constants.box_livery_recolour_maps,
+        }
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             id_base="express_car",
-            recolour_maps=graphics_constants.box_livery_recolour_maps,
+            weathered_variants=weathered_variants,
         )
 
 
@@ -2415,24 +2639,59 @@ class ExpressIntermodalCarConsist(CarConsist):
         )
 
     @property
-    # account for variable floor heights, well cars, etc
-    def platform_type(self):
+    # layers for spritelayer cargos, and the platform type (cargo pattern and deck height)
+    def spritelayer_cargo_layers(self):
         # !! express intermodal all default currently, extend as needed
-        return "default"
+        return ["default"]
+
+
+class FarmProductsBoxCarConsist(CarConsist):
+    """
+    Farm type cargos - box cars / vans.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "farm_products_box_car"
+        super().__init__(**kwargs)
+        # note this is not derived from BoxCarBase, it's a standalone type
+        self.class_refit_groups = []  # no classes, use explicit labels
+        self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
+            "farm_products"
+        ]
+        self.label_refits_disallowed = []
+        self.default_cargos = polar_fox.constants.default_cargos["farm_products_box"]
+        self.buy_cost_adjustment_factor = 1.2
+        self._intro_date_days_offset = (
+            global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
+        )
+        # allow flipping, used to flip company colour
+        self.allow_flip = True
+        # Graphics configuration
+        self.roof_type = "freight"
+        weathered_variants = {
+            "unweathered": graphics_constants.farm_products_box_car_livery_recolour_maps,
+            "weathered": graphics_constants.farm_products_box_car_livery_recolour_maps_weathered,
+        }
+        self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
+            id_base="farm_products_box_car",
+            weathered_variants=weathered_variants,
+        )
 
 
 class FarmProductsHopperCarConsist(CarConsist):
     """
-    Dedicated to grain/farm type cargos.
+    Farm type cargos - covered hoppers.
     """
 
     def __init__(self, **kwargs):
         self.base_id = "farm_products_hopper_car"
         super().__init__(**kwargs)
         self.class_refit_groups = []  # no classes, use explicit labels
-        self.label_refits_allowed = ["GRAI", "BEAN", "CASS", "FMSP", "FERT", "MAIZ", "WHEA", "CERE", "OLSD", "NUTS", "SEED", "SGBT", "TATO"]
+        self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
+            "farm_products"
+        ]
         self.label_refits_disallowed = []
-        self.default_cargos = []
+        self.default_cargos = polar_fox.constants.default_cargos["farm_products_hopper"]
         self._loading_speed_multiplier = 2
         self.buy_cost_adjustment_factor = 1.2
         self._intro_date_days_offset = (
@@ -2441,8 +2700,12 @@ class FarmProductsHopperCarConsist(CarConsist):
         # allow flipping, used to flip company colour
         self.allow_flip = True
         # Graphics configuration
+        weathered_variants = {
+            "unweathered": graphics_constants.farm_products_hopper_car_livery_recolour_maps,
+            "weathered": graphics_constants.farm_products_hopper_car_livery_recolour_maps_weathered,
+        }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
-            recolour_maps=graphics_constants.farm_products_hopper_car_livery_recolour_maps
+            weathered_variants=weathered_variants
         )
 
 
@@ -2467,34 +2730,6 @@ class FlatCarConsist(CarConsist):
         self.allow_flip = True
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(piece="flat")
-
-
-class FruitVegCarConsist(CarConsist):
-    """
-    Fruit and vegetables, with improved decay rate
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = "fruit_veg_car"
-        super().__init__(**kwargs)
-        self.class_refit_groups = []  # no classes, use explicit labels
-        self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
-            "fruit_veg"
-        ]
-        self.label_refits_disallowed = []
-        self.default_cargos = polar_fox.constants.default_cargos["fruit_veg"]
-        self.buy_cost_adjustment_factor = 1.2
-        self._intro_date_days_offset = (
-            global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
-        )
-        # allow flipping, used to flip company colour
-        self.allow_flip = True
-        # Graphics configuration
-        self.roof_type = "freight"
-        self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
-            id_base="box_car",
-            recolour_maps=graphics_constants.fruit_veg_livery_recolour_maps,
-        )
 
 
 class GasTankCarConsistBase(CarConsist):
@@ -2523,8 +2758,12 @@ class GasTankCarConsistBase(CarConsist):
             1  # single base colour unless flipped
         )
         # Graphics configuration
+        weathered_variants = {
+            "unweathered": polar_fox.constants.cryo_tanker_livery_recolour_maps,
+            "weathered": polar_fox.constants.cryo_tanker_livery_recolour_maps_weathered,
+        }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
-            recolour_maps=polar_fox.constants.cryo_tanker_livery_recolour_maps
+            weathered_variants=weathered_variants
         )
 
 
@@ -2677,12 +2916,12 @@ class IngotCarConsist(CarConsist):
             cargo_row_map={},  # leave blank, all default to same
             generic_rows=[0],
             unique_spritesets=[
-                ["empty", "flipped", 10],
-                ["loading_0", "flipped", 40],
-                ["loaded_0", "flipped", 70],
-                ["empty", "unflipped", 10],
-                ["loading_0", "unflipped", 40],
-                ["loaded_0", "unflipped", 70],
+                ["unweathered", "empty", "flipped", 10],
+                ["unweathered", "loading_0", "flipped", 40],
+                ["unweathered", "loaded_0", "flipped", 70],
+                ["unweathered", "empty", "unflipped", 10],
+                ["unweathered", "loading_0", "unflipped", 40],
+                ["unweathered", "loaded_0", "unflipped", 70],
             ],
         )
 
@@ -2730,12 +2969,13 @@ class IntermodalCarConsist(IntermodalCarConsistBase):
         super().__init__(**kwargs)
 
     @property
-    def platform_type(self):
+    # layers for spritelayer cargos, and the platform type (cargo pattern and deck height)
+    def spritelayer_cargo_layers(self):
         # the 'default' for NG is the same as for low_floor so just re-use that for now
-        if self.track_type == "NG":
-            return "low_floor"
+        if self.base_track_type == "NG":
+            return ["low_floor"]
         else:
-            return "default"
+            return ["default"]
 
 
 class IntermodalLowFloorCarConsist(IntermodalCarConsistBase):
@@ -2746,7 +2986,11 @@ class IntermodalLowFloorCarConsist(IntermodalCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "low_floor_intermodal_car"
         super().__init__(**kwargs)
-        self.platform_type = "low_floor"  # note that NG does not support low_floor, it already is low_floor
+
+    @property
+    # layers for spritelayer cargos, and the platform type (cargo pattern and deck height)
+    def spritelayer_cargo_layers(self):
+        return ["low_floor"]
 
 
 class KaolinHopperCarConsist(CarConsist):
@@ -2775,9 +3019,12 @@ class KaolinHopperCarConsist(CarConsist):
             1  # single base colour unless flipped
         )
         # Graphics configuration
-        utils.echo_message("Kaolin hopper using covered hopper body colour remaps")
+        weathered_variants = {
+            "unweathered": graphics_constants.kaolin_hopper_car_livery_recolour_maps,
+            "weathered": graphics_constants.kaolin_hopper_car_livery_recolour_maps_weathered,
+        }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
-            recolour_maps=graphics_constants.covered_hopper_car_livery_recolour_maps
+            weathered_variants=weathered_variants
         )
 
 
@@ -2804,9 +3051,12 @@ class LivestockCarConsist(CarConsist):
         self.cc_num_to_randomise = 2
         # Graphics configuration
         self.roof_type = "freight"
+        weathered_variants = {
+            "unweathered": graphics_constants.livestock_livery_recolour_maps,
+        }
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
             id_base="livestock_car",
-            recolour_maps=graphics_constants.livestock_livery_recolour_maps,
+            weathered_variants=weathered_variants,
         )
 
 
@@ -2831,7 +3081,6 @@ class LogCarConsist(CarConsist):
         self.cc_num_to_randomise = 2
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(piece="tree_length_logs")
-
 
 
 class MailCarConsistBase(CarConsist):
@@ -2869,7 +3118,6 @@ class MailCarConsistBase(CarConsist):
     @property
     def loading_speed_multiplier(self):
         return self.pax_car_capacity_type["loading_speed_multiplier"]
-
 
 
 class MailCarConsist(MailCarConsistBase):
@@ -2923,6 +3171,7 @@ class MailHSTCarConsist(MailCarConsistBase):
         self.cab_id = kwargs[
             "cab_id"
         ]  # cab_id must be passed, do not mask errors with .get()
+        self.lgv_capable = kwargs.get("lgv_capable", False)
         self.buy_cost_adjustment_factor = 1.66
         # run cost multiplier matches standard pax coach costs; higher speed is accounted for automatically already
         self.floating_run_cost_multiplier = 3.33
@@ -2960,13 +3209,12 @@ class MailHSTCarConsist(MailCarConsistBase):
         )
 
 
-class OpenCarConsist(CarConsist):
+class OpenCarConsistBase(CarConsist):
     """
     General cargo - refits everything except mail, pax.
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "open_car"
         super().__init__(**kwargs)
         self.class_refit_groups = ["all_freight"]
         self.label_refits_allowed = []  # no specific labels needed
@@ -2979,8 +3227,61 @@ class OpenCarConsist(CarConsist):
         )
         # allow flipping, used to flip company colour
         self.allow_flip = True
+
+
+class OpenCarConsist(OpenCarConsistBase):
+    """
+    Standard open car
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "open_car"
+        super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos["open"]
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(bulk=True, piece="open")
+
+
+class OpenCarHoodConsist(OpenCarConsistBase):
+    """
+    Open car with a hood when fully loaded
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "hood_open_car"
+        super().__init__(**kwargs)
+        self.default_cargos = ["KAOL"]
+        self.default_cargos.extend(polar_fox.constants.default_cargos["open"])
+        # Graphics configuration
+        weathered_variants = {
+            "unweathered": graphics_constants.hood_open_car_body_recolour_map,
+            "weathered": graphics_constants.hood_open_car_body_recolour_map_weathered,
+        }
+        self.gestalt_graphics = GestaltGraphicsVisibleCargo(
+            bulk=True,
+            piece="open",
+            weathered_variants=weathered_variants,
+            has_cover=True,
+        )
+
+
+class OpenCarMerchandiseConsist(OpenCarConsistBase):
+    """
+    Open car with alternative livery
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "merchandise_open_car"
+        super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos["open"]
+        # Graphics configuration
+        weathered_variants = {
+            "unweathered": graphics_constants.merchandise_car_body_recolour_map,
+            "weathered": graphics_constants.merchandise_car_body_recolour_map_weathered,
+        }
+        self.gestalt_graphics = GestaltGraphicsVisibleCargo(
+            bulk=True, piece="open", weathered_variants=weathered_variants
+        )
 
 
 class PassengerCarConsistBase(CarConsist):
@@ -3137,6 +3438,7 @@ class PassengerHSTCarConsist(PassengerCarConsistBase):
         self.cab_id = kwargs[
             "cab_id"
         ]  # cab_id must be passed, do not mask errors with .get()
+        self.lgv_capable = kwargs.get("lgv_capable", False)
         self.buy_cost_adjustment_factor = 1.66
         # run cost multiplier matches standard pax coach costs; higher speed is accounted for automatically already
         self.floating_run_cost_multiplier = 3.33
@@ -3391,8 +3693,11 @@ class PeatCarConsist(CarConsist):
         # Graphics configuration
         # self.gestalt_graphics = GestaltGraphicsVisibleCargo(piece="tree_length_logs")
         utils.echo_message("Peat car using potash hopper body colour remaps")
+        weathered_variants = {
+            "unweathered": polar_fox.constants.potash_hopper_car_livery_recolour_maps
+        }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
-            recolour_maps=graphics_constants.potash_hopper_car_livery_recolour_maps
+            weathered_variants=weathered_variants
         )
 
 
@@ -3447,9 +3752,13 @@ class ReeferCarConsist(CarConsist):
         )
         # Graphics configuration
         self.roof_type = "freight"
+        weathered_variants = {
+            "unweathered": graphics_constants.refrigerated_livery_recolour_maps,
+            "weathered": graphics_constants.refrigerated_livery_recolour_maps_weathered,
+        }
         self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
-            id_base="box_car",
-            recolour_maps=graphics_constants.refrigerated_livery_recolour_maps,
+            id_base="reefer_car",
+            weathered_variants=weathered_variants,
         )
 
 
@@ -3492,8 +3801,11 @@ class SiloCarConsist(SiloCarConsistBase):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["silo_chemical"]
         # Graphics configuration
+        weathered_variants = {
+            "unweathered": graphics_constants.silo_livery_recolour_maps
+        }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
-            recolour_maps=graphics_constants.silo_livery_recolour_maps
+            weathered_variants=weathered_variants
         )
 
 
@@ -3508,8 +3820,12 @@ class SiloCarCementConsist(SiloCarConsistBase):
         self.default_cargos = polar_fox.constants.default_cargos["silo_cement"]
         self._joker = True
         # Graphics configuration
+        weathered_variants = {
+            "unweathered": graphics_constants.cement_silo_livery_recolour_maps,
+            "weathered": graphics_constants.cement_silo_livery_recolour_maps_weathered,
+        }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
-            recolour_maps=graphics_constants.cement_silo_livery_recolour_maps
+            weathered_variants=weathered_variants
         )
 
 
@@ -3542,12 +3858,12 @@ class SlagLadleCarConsist(CarConsist):
             cargo_row_map={"SLAG": [0]},
             generic_rows=[0],
             unique_spritesets=[
-                ["empty", "flipped", 10],
-                ["loading_0", "flipped", 40],
-                ["loaded_0", "flipped", 70],
-                ["empty", "unflipped", 10],
-                ["loading_0", "unflipped", 40],
-                ["loaded_0", "unflipped", 70],
+                ["unweathered", "empty", "flipped", 10],
+                ["unweathered", "loading_0", "flipped", 40],
+                ["unweathered", "loaded_0", "flipped", 70],
+                ["unweathered", "empty", "unflipped", 10],
+                ["unweathered", "loading_0", "unflipped", 40],
+                ["unweathered", "loaded_0", "unflipped", 70],
             ],
         )
 
@@ -3574,44 +3890,14 @@ class SlidingRoofCarConsist(CarConsist):
         # allow flipping, used to flip company colour
         self.allow_flip = True
         # Graphics configuration
+        weathered_variants = {
+            "unweathered": graphics_constants.sliding_roof_car_body_recolour_map,
+            "weathered": graphics_constants.sliding_roof_car_body_recolour_map_weathered,
+        }
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
-            body_recolour_map=graphics_constants.sliding_roof_car_body_recolour_map,
+            weathered_variants=weathered_variants,
             piece="flat",
             has_cover=True,
-        )
-
-
-class SlidingWallCarConsist(CarConsist):
-    """
-    Sliding wall van - (cargowagon, habfiss, thrall, pullman all-door car etc) - same refits as box car.
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = "sliding_wall_car"
-        super().__init__(**kwargs)
-        self.class_refit_groups = ["packaged_freight"]
-        self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
-            "box_freight"
-        ]
-        self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label[
-            "non_freight_special_cases"
-        ]
-        self.default_cargos = polar_fox.constants.default_cargos["box_sliding_wall"]
-        self.buy_cost_adjustment_factor = 1.2
-        self._intro_date_days_offset = (
-            global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
-        )
-        # allow flipping, used to flip company colour
-        self.allow_flip = True
-        # type-specific wagon colour randomisation
-        self.auto_colour_randomisation_strategy_num = (
-            1  # single base colour unless flipped
-        )
-        # Graphics configuration
-        self.roof_type = "freight"
-        self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
-            id_base="sliding_wall_car",
-            recolour_maps=graphics_constants.sliding_wall_livery_recolour_maps,
         )
 
 
@@ -3649,8 +3935,12 @@ class TankCarConsist(TankCarConsistBase):
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["tank"]
         # Graphics configuration
+        weathered_variants = {
+            "unweathered": polar_fox.constants.tanker_livery_recolour_maps,
+            "weathered": polar_fox.constants.tanker_livery_recolour_maps_weathered,
+        }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
-            recolour_maps=polar_fox.constants.tanker_livery_recolour_maps
+            weathered_variants=weathered_variants
         )
 
 
@@ -3665,8 +3955,12 @@ class TankCarAcidConsist(TankCarConsistBase):
         self.default_cargos = polar_fox.constants.default_cargos["product_tank"]
         self._joker = True
         # Graphics configuration
+        weathered_variants = {
+            "unweathered": graphics_constants.acid_tank_car_livery_recolour_maps,
+            "weathered": graphics_constants.acid_tank_car_livery_recolour_maps_weathered,
+        }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
-            recolour_maps=graphics_constants.acid_tank_car_livery_recolour_maps
+            weathered_variants=weathered_variants
         )
 
 
@@ -3681,8 +3975,12 @@ class TankCarProductConsist(TankCarConsistBase):
         self.default_cargos = polar_fox.constants.default_cargos["product_tank"]
         self._joker = True
         # Graphics configuration
+        weathered_variants = {
+            "unweathered": graphics_constants.product_tank_car_livery_recolour_maps,
+            "weathered": graphics_constants.product_tank_car_livery_recolour_maps_weathered,
+        }
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
-            recolour_maps=graphics_constants.product_tank_car_livery_recolour_maps
+            weathered_variants=weathered_variants
         )
 
 
@@ -3708,8 +4006,11 @@ class TarpaulinCarConsist(CarConsist):
         # allow flipping, used to flip company colour
         self.allow_flip = True
         # Graphics configuration
+        weathered_variants = {
+            "unweathered": graphics_constants.tarpaulin_car_body_recolour_map
+        }
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
-            body_recolour_map=graphics_constants.tarpaulin_car_body_recolour_map,
+            weathered_variants=weathered_variants,
             piece="flat",
             has_cover=True,
         )
@@ -3738,44 +4039,10 @@ class TorpedoCarConsist(CarConsist):
         self._joker = True
         # articulated so can't flip
         self.allow_flip = False
+        self.suppress_animated_pixel_warnings = True
         # Graphics configuration
         # custom gestalt with dedicated template as these wagons are articulated which standard wagon templates don't support
         self.gestalt_graphics = GestaltGraphicsCustom("vehicle_torpedo_car.pynml")
-
-
-class VehiclePartsBoxCarConsist(CarConsist):
-    """
-    Vehicle parts box car, van - same refits as box car, just a specific visual variation.
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = "vehicle_parts_box_car"
-        super().__init__(**kwargs)
-        self.class_refit_groups = ["packaged_freight"]
-        self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
-            "box_freight"
-        ]
-        self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label[
-            "non_freight_special_cases"
-        ]
-        self.default_cargos = polar_fox.constants.default_cargos["box_vehicle_parts"]
-        self.buy_cost_adjustment_factor = 1.2
-        self._intro_date_days_offset = (
-            global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
-        )
-        self._joker = True
-        # allow flipping, used to flip company colour
-        self.allow_flip = True
-        # type-specific wagon colour randomisation
-        self.auto_colour_randomisation_strategy_num = (
-            1  # single base colour unless flipped
-        )
-        # Graphics configuration
-        self.roof_type = "freight"
-        self.gestalt_graphics = GestaltGraphicsBoxCarOpeningDoors(
-            id_base="vehicle_parts_box_car",
-            recolour_maps=graphics_constants.box_livery_recolour_maps,
-        )
 
 
 class Train(object):
@@ -3843,7 +4110,7 @@ class Train(object):
 
     @property
     def default_cargo_capacity(self):
-        return self.capacities[1]
+        return self.capacities[2]
 
     @property
     def has_cargo_capacity(self):
@@ -4265,6 +4532,20 @@ class CabControlPaxCarUnit(Train):
         self._symmetry_type = "asymmetric"
         # magic to set capacity subject to length and vehicle capacity type
         self.capacity = self.get_pax_car_capacity()
+
+
+class BatteryHybridEngineUnit(Train):
+    """
+    Unit for a battery hybrid engine.
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.engine_class = "ENGINE_CLASS_DIESEL"
+        self.effects = {"default": ["EFFECT_SPAWN_MODEL_DIESEL", "EFFECT_SPRITE_STEAM"]}
+        self.consist.str_name_suffix = "STR_NAME_SUFFIX_BATTERY_HYBRID"
+        # most battery hybrid engines are asymmetric, over-ride per vehicle as needed
+        self._symmetry_type = kwargs.get("symmetry_type", "asymmetric")
 
 
 class DieselEngineUnit(Train):
@@ -4692,7 +4973,7 @@ class ExpressIntermodalCar(ExpressCar):
         super().__init__(**kwargs)
         # express intermodal cars may be asymmetric, there is magic in the graphics processing to make this work
         self._symmetry_type = "asymmetric"
-        self.random_trigger_switch = "_switch_graphics_spritelayer_cargos"
+        self.random_trigger_switch = "_switch_graphics_spritelayer_cargos_" + self.consist.spritelayer_cargo_layers[0]
 
 
 class ExpressMailCar(ExpressCar):
@@ -4715,11 +4996,13 @@ class AutomobileCar(ExpressCar):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         # vehicle transporter cars may be asymmetric, there is magic in the graphics processing to make this work
-        self._symmetry_type = "asymmetric"
+        # self._symmetry_type = "asymmetric"
+        # !! temp to make it work
+        self._symmetry_type = "symmetric"
         utils.echo_message(
             "AutomobileCar random_trigger_switch is using _switch_graphics_spritelayer_cargos"
         )
-        self.random_trigger_switch = "_switch_graphics_spritelayer_cargos"
+        self.random_trigger_switch = "_switch_graphics_spritelayer_cargos_" + self.consist.spritelayer_cargo_layers[0]
 
 
 class FreightCar(TrainCar):
@@ -4773,7 +5056,7 @@ class IntermodalCar(FreightCar):
         super().__init__(**kwargs)
         # intermodal cars may be asymmetric, there is magic in the graphics processing to make this work
         self._symmetry_type = "asymmetric"
-        self.random_trigger_switch = "_switch_graphics_spritelayer_cargos"
+        self.random_trigger_switch = "_switch_graphics_spritelayer_cargos_" + self.consist.spritelayer_cargo_layers[0]
 
 
 class OreDumpCar(FreightCar):

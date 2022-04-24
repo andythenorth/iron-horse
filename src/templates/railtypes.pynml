@@ -1,0 +1,218 @@
+// error if Termite is in the game, as Iron Horse 2.45.0 or so replaces the need for Termite
+// tried 'WARNING' but doesn't seem to show a message, so we'll go with 'FATAL' I guess
+if (grf_future_status("\FB\FB\0B\01")) {
+    error(FATAL, string(STR_ERROR_TERMITE_DEPRECATED));
+}
+
+/*
+ * *********************
+ * Define railtype table
+ * *********************
+ */
+
+<!--!
+    in nfo vehicle prop 05 is a direct index into the railtype table, which looks like a CTT
+    nml extends the railtype table with lists of fallbacks,
+    the nml approach is syntactic sugar around some action 6/7/9 or so, testing the available railtypes in game in order
+    I am leaving this note here as railtypes have been a repeated source of confusion, stemming at least partly from this nml railtype table - April 2022
+-->
+railtypetable {
+    <!--! include ELRL here as it's required for tile_powers_railtype() -->
+    ELRL,
+    <tal:railtype_mapping repeat="railtype_mapping global_constants.base_track_type_to_railtype_mapping.items()">
+        <!--!
+            note the remapping of the railtype label to the first value from the list of types, this will match the vehicle which does the same
+            we discard the base_track_type values which are internal to Iron Horse compile, and instead set track_type and RTT to real labels
+        -->
+        ${railtype_mapping[1][0]}: [${','.join('"' + i + '"' for i in railtype_mapping[1])}],
+    </tal:railtype_mapping>
+}
+
+// railtype spriteset templates
+
+template template_gui(x,y) {
+    //[x+left_x, upper_y, width, height, offset_x, offset_y]
+    //BUTTONS
+    //rail
+    [x    , y   , 20, 20,   0,   0]
+    [x+ 21, y   , 20, 20,   0,   0]
+    [x+ 42, y   , 20, 20,   0,   0]
+    [x+ 63, y   , 20, 20,   0,   0]
+    //autorail
+    [x    , y+70, 20, 20,   0,   0]
+    //depot
+    [x+224, y+70, 21, 21,   0,   0]
+    //tunnel
+    [x+480, y   , 20, 20,   0,   0]
+    //convert rail
+    [x+144, y+70, 20, 20,   0,   0]
+    //CURSORS
+    //rail
+    [x+160, y   , 38, 40, -4 ,  -9]
+    [x+208, y   , 72, 44, -17,  -9]
+    [x+288, y   , 44, 34, -14,  -3]
+    [x+352, y   , 40, 41, -15, -10]
+    //autorail
+    [x+ 80, y+70, 56, 36,   0,   0]
+    //depot
+    [x+256, y+70, 32, 32,   0,   0]
+    //tunnel
+    [x+560, y   , 32, 32,   0,   0]
+    //convert rail
+    [x+176, y+70, 32,  32,  0,   0]
+}
+
+template template_track_overlay(x,y) {
+    //[x+left_x, upper_y, width, height, offset_x, offset_y]
+    //flat
+    [x    , y    , 42, 25, -21,  1]
+    [x+ 80, y    , 42, 25, -19,  1]
+    [x+160, y    , 40, 12, -19,  0]
+    [x+240, y    , 40,  7, -19, 20]
+    [x+320, y    , 15, 19,  11,  6]
+    [x+400, y    , 15, 19, -24,  6]
+    //slope y
+    [x    , y+150, 64, 39, -31, -8]
+    [x+ 80, y+150, 64, 23, -31,  0]
+    [x+160, y+150, 64, 23, -31,  0]
+    [x+240, y+150, 64, 39, -31, -8]
+}
+
+template template_underlay(x,y) {
+    //[x+left_x, upper_y, width, height, offset_x, offset_y]
+    //6 flat
+   [x    , y    , 64, 31, -31,  0]
+   [x+ 80, y    , 64, 31, -31,  0]
+   [x+160, y    , 64, 31, -31,  0]
+   [x+240, y    , 64, 31, -31,  0]
+   [x+320, y    , 64, 31, -31,  0]
+   [x+400, y    , 64, 31, -31,  0]
+    //4 slope
+   [x    , y+170, 64, 39, -31, -8]
+   [x+ 80, y+170, 64, 23, -31,  0]
+   [x+160, y+170, 64, 23, -31,  0]
+   [x+240, y+170, 64, 39, -31, -8]
+    //1 X crossing piece
+   [x+480, y    , 64, 31, -31,  0]
+    //5 junction pieces
+   [x    , y+ 50, 64, 31, -31,  0]
+   [x+ 80, y+ 50, 64, 31, -31,  0]
+   [x+160, y+ 50, 64, 31, -31,  0]
+   [x+240, y+ 50, 64, 31, -31,  0]
+   [x+320, y+ 50, 64, 31, -31,  0]
+}
+
+template template_tunnels(x,y) {
+    //[x+left_x, upper_y, width, height, offset_x, offset_y]
+    //front SW
+    [x    , y   , 64, 39, -31, -8]
+    //back NW
+    [x+160, y   , 64, 23, -31,  0]
+    //back NE
+    [x    , y+70, 64, 23, -31,  0]
+    //front SE
+    [x+160, y+70, 64, 39, -31, -8]
+}
+
+template template_bridge_surfaces(x,y) {
+    //[x+left_x, upper_y, width, height, offset_x, offset_y]
+    //flat
+    [x    , y, 64, 31, -31,  0]
+    [x+ 80, y, 64, 31, -31,  0]
+    //slopes
+    [x+160, y, 64, 39, -31, -8]
+    [x+240, y, 64, 23, -31,  0]
+    [x+320, y, 64, 23, -31,  0]
+    [x+400, y, 64, 39, -31, -8]
+}
+
+template template_bridge_level_crossings_track(x,y) {
+    //[x+left_x, upper_y, width, height, offset_x, offset_y]
+    //rail overlay (X, Y)
+    [x   , y, 64, 31, -31, 0]
+    [x+80, y, 64, 31, -31, 0]
+}
+
+template template_bridge_level_crossings_light(x,y) {
+    //[x+left_x, upper_y, width, height, offset_x, offset_y]
+    //lights (north, east, west, south; X, Y)
+    [x   , y    , 64, 31, -31,   0]
+    [x+80, y    , 64, 31, -31,   0]
+    [x   , y+ 50, 64, 31, -57, -13]
+    [x+80, y+ 50, 64, 31, -57, -13]
+    [x   , y+100, 64, 31,  -5, -13]
+    [x+80, y+100, 64, 31,  -5, -13]
+    [x   , y+150, 64, 31, -31, -26]
+    [x+80, y+150, 64, 31, -31, -26]
+}
+
+template template_catenary_wire(x, y) {
+    //[x+left_x, upper_y, width, height, offset_x, offset_y]
+    [x     , y, 64, 37, -45,  -5] //flat
+    [x+  80, y, 64, 37, -17,  -5] //flat
+    [x+ 240, y, 64, 32, -17, -13] //flat
+    [x+ 160, y, 64, 31, -31,  -6] //flat
+    [x+ 560, y, 64, 44, -45,  -6] //slope ne
+    [x+ 400, y, 64, 30, -17,   4] //slope se
+    [x+ 320, y, 64, 30, -45,   4] //slope sw
+    [x+ 480, y, 64, 44, -17,  -6] //slope nw
+    [x     , y, 64, 37, -45,  -5] //flat
+    [x+  80, y, 64, 37, -17,  -5] //flat
+    [x+ 240, y, 64, 32, -17, -13] //flat
+    [x+ 160, y, 64, 31, -31,  -6] //flat
+    [x+ 560, y, 64, 44, -45,  -6] //slope ne
+    [x+ 400, y, 64, 30, -17,   4] //slope se
+    [x+ 320, y, 64, 30, -45,   4] //slope sw
+    [x+ 480, y, 64, 44, -17,  -6] //slope nw
+    [x     , y, 64, 37, -45,  -5] //flat
+    [x+  80, y, 64, 37, -17,  -5] //flat
+    [x+ 240, y, 64, 32, -17, -13] //flat
+    [x+ 160, y, 64, 31, -31,  -6] //flat
+    [x+ 560, y, 64, 44, -45,  -6] //slope ne
+    [x+ 400, y, 64, 30, -17,   4] //slope se
+    [x+ 320, y, 64, 30, -45,   4] //slope sw
+    [x+ 480, y, 64, 44, -17,  -6] //slope nw
+    [x     , y,  1,  1,   0,   0] //tunnel (blank)
+    [x     , y,  1,  1,   0,   0] //tunnel (blank)
+    [x     , y,  1,  1,   0,   0] //tunnel (blank)
+    [x     , y,  1,  1,   0,   0] //tunnel (blank)
+}
+
+template template_catenary_pylons(x, y) {
+    //[x+left_x, upper_y, width, height, offset_x, offset_y]
+    [x, y,  1, 1, 0, 0] //(blank)
+    [x, y,  1, 1, 0, 0] //(blank)
+    [x, y,  1, 1, 0, 0] //(blank)
+    [x, y,  1, 1, 0, 0] //(blank)
+    [x, y,  1, 1, 0, 0] //(blank)
+    [x, y,  1, 1, 0, 0] //(blank)
+    [x, y,  1, 1, 0, 0] //(blank)
+    [x, y,  1, 1, 0, 0] //(blank)
+}
+
+template template_tunnel_overlay(x, y) {
+    //[x+left_x, upper_y, width, height, offset_x, offset_y]
+    //front SW
+    [x     , y, 64, 37, -31, -38] //flat
+    //back NW
+    [x+  80, y, 64, 37, -31, -38] //flat
+    //back NE
+    [x+ 160, y, 64, 37, -31, -38] //flat
+    //front SE
+    [x+ 240, y, 64, 37, -31, -38] //flat
+}
+
+template template_depots(x, y) {
+    //[x+left_x, upper_y, width, height, offset_x, offset_y]
+    [x    , y, 22, 22,   8,  -1]
+    [x+ 80, y, 58, 51,  -5, -37]
+    [x+160, y, 22, 22, -28,  -1]
+    [x+240, y, 58, 51, -51, -37]
+    [x+320, y, 58, 51, -51, -37]
+    [x+400, y, 58, 51,  -5, -37]
+}
+
+<!--! there's no specific render action for railtypes, abstraction overkill, just do it via a template loop -->
+<tal:railtypes repeat="railtype registered_railtypes">
+    <tal:include metal:use-macro="load: railtype.pynml" />
+</tal:railtypes>

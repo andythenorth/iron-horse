@@ -39,6 +39,7 @@ def render_header_item_nml(header_item, consists):
             global_constants=global_constants,
             temp_storage_ids=global_constants.temp_storage_ids,  # convenience measure
             utils=utils,
+            registered_railtypes=iron_horse.get_active_railtypes(),
             active_rosters=iron_horse.get_active_rosters(),
             graphics_path=global_constants.graphics_path,
             haulage_bonus_engine_id_tree=iron_horse.get_haulage_bonus_engine_id_tree(),
@@ -83,7 +84,8 @@ def main():
     header_items = [
         "header",
         "cargo_table",
-        "railtype_table",
+        "signals",
+        "railtypes",
         "spriteset_templates",
         "spritelayer_cargo_empty_ss",
         "tail_lights",

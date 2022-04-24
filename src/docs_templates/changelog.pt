@@ -2,6 +2,228 @@ Changelog
 =========
 
 -------------
+2.46.0 Beta 1 Release
+-------------
+
+*Changes*
+
+- railtype labels changed for all vehicles, an Iron Horse specific scheme is used, with fallbacks to commonly used existing types
+- added Dedicated High Speed Railway
+    - only usable by certain high speed vehicles (Helm Wind, Scorcher, Brenner)
+    - provides curve speed bonus
+    - forbids level crossings
+    - sprites need improved
+- high speed vehicles will be limited to 125mph unless using Dedicated High Speed Railway
+    - applies to Helm Wind, Scorcher, Brenner
+    - can reach maximum speed on Dedicated High Speed Railway
+- add Vehicle Transporter wagons
+    - currently transport only vehicles cargo
+    - available from around 1930
+
+*Docs*
+
+- explain a little about Iron Horse railtype use in 'Code reference' page
+
+
+-------------
+2.45.0 Release
+-------------
+
+*Changes*
+
+- added railtypes directly to Iron Horse
+    - Narrow Gauge Railway for narrow gauge trains
+    - Metro Railway for metro trains
+    - Iron Horse no longer requires the separate Termite railtype grf
+    - other railtype grfs continue to work with Iron Horse
+- added a parameter setting to turn Iron Horse extra railtypes off / on (on by default)
+- improved sprites for narrow gauge and metro depots
+- added new size option 'Nanoscopic' for the train capacity parameter setting
+    - 'Nanoscopic' provides a 77% reduction compared to default capacity of Iron Horse vehicles
+- improved order of parameter settings
+- improved appearance of narrow gauge Dry Powder Hoppers
+- added narrow gauge Chemical Covered Hoppers
+- added randomly-selected colour variant for Pressure Tankers and Cryo Tankers when refitted for chlorine cargo
+- changed Magnum 70 engine from diesel to battery hybrid
+    - no gameplay difference
+    - different vehicle smoke effect
+- set correct default cargos for Aggregate Wagons and Ore Dump Wagons
+- adjusted default cargos for Box Vans and other equivalent wagons
+
+
+*Docs*
+
+- mention included railtypes on 'Get started' page, no longer recommend Termite
+
+
+-------------
+2.44.0 Release
+-------------
+
+*Changes*
+
+- added engines
+    - Hawkinge steam general purpose engine, 2350 hp, available around 1935
+    - Dreadnought diesel general purpose engine, 3300 hp, available around 1990
+- increased power of Pegasus and Streamer from 2200 hp to 2300 hp for balancing reasons
+- adjusted intro dates for narrow gauge Bulkhead Flat Wagons and Dry Powder Hoppers to better match standard gauge equivalents
+- adjusted how passenger and mail coaches choose livery based on lead engine
+    - passenger and mail coaches have alternate liveries, which the player can always select by ctrl-clicking the coach in depot
+    - for some engines, the alternate livery will also be used automatically when the coach is attached to the engine
+    - this is not a new feature, but was broken in recent releases and is now fixed
+    - the list of engines that trigger the alternate livery has been reviewed and reset
+
+
+*Codechanges*
+
+- set correct 2cc shade when a palette shade variant is returned
+    - copied from Unsinkable Sam where the behaviour was correct
+    - no-op in Iron Horse currently as 2cc isn't actually used in this way
+
+
+-------------
+2.43.0 Release
+-------------
+
+*Changes*
+
+- added Goods Vans
+- improved appearance of Refrigerated Vans
+
+
+*Fixes*
+
+- merchandise open wagons were showing wrong bulk cargo sprites
+
+
+-------------
+2.42.0 Release
+-------------
+
+*Changes*
+
+- added wagons
+    - Merchandise Open Wagons
+    - Merchandise Vans
+    - Farm Products Vans
+- removed Fruit & Vegetables Vans
+- adjusted default refits for Farm Products Hoppers
+- improved appearance of Open Wagons
+
+
+-------------
+2.41.0 Release
+-------------
+
+*Changes*
+
+- Sliding Roof Vans will now show randomly selected colour variations (paint fading etc) when purchased
+- Brake Vans now show appropriate sprite for current era when in depot and not attached to an engine
+
+
+*Fixes*
+
+- parameters for wagon base colour 1 and 2 were ignored if wagon colour randomisation was turned off (via parameter)
+    - second fix of this one, previous fix was flawed and didn't solve the issue
+    - previous fix introduced another bug with Ore Dump Wagons not using company colour
+
+
+*Docs*
+
+- further improved 'Get started' page
+
+
+-------------
+2.40.0 Release
+-------------
+
+*Changes*
+
+- the following wagon types will now show randomly selected colour variations (paint fading etc) when purchased
+    - Carbon Black Hoppers
+    - Cement Wagons
+    - Chemical Covered Hoppers
+    - China Clay Hoppers
+    - Covered Hoppers
+    - Cryo Tankers
+    - Farm Products Hoppers
+    - Mineral Covered Hoppers
+    - Pressure Tankers
+    - Product Tankers
+    - Tankers
+
+
+*Fixes*
+
+- parameters for wagon base colour 1 and 2 were ignored if wagon colour randomisation was turned off (via parameter)
+
+
+*Docs*
+
+- improved 'Get started' page
+    - added hints, tips etc
+    - removed outdated items
+- improved 'Code reference' page
+    - added compiling instructions
+- improved navigation
+    - removed 'Translate...' link as translation no longer uses the web translator
+    - added 'Changelog' link
+    - moved 'Code reference' link to be less prominent
+
+
+-------------
+2.39.0 Release
+-------------
+
+*Changes*
+
+- added narrow gauge log cars
+
+
+-------------
+2.38.0 Release
+-------------
+
+*Changes*
+
+- added engines
+    - Decapod steam general purpose engine, 650 hp, available around 1907
+    - Stag steam general purpose engine, 800 hp, available around 1930
+
+
+*Fixes*
+
+- Proper Job sprites off by 1px in \ view
+
+
+-------------
+2.37.0 Release
+-------------
+
+*Changes*
+
+- added Twin variant of Livestock Wagon (available gen 5 and 6 only)
+    - these are non-standard 10/8 length
+    - articulated so can't be flipped to change livery
+
+
+*Fixes*
+
+- 24px freight roof sprite too tall in | view
+- incorrect sprites for gen 5B low floor intermodal car
+- Daring run cost was too low relative to similar engines
+
+
+-------------
+2.36.1 Release
+-------------
+
+*Fixes*
+
+- fixed Mail Van speed (was accidentally nerfed in 2.36.0)
+
+
+-------------
 2.36.0 Release
 -------------
 
@@ -10,6 +232,7 @@ Not savegame compatible with Iron Horse releases before 2.32.0.
 *Changes*
 
 - added HST Mail Vans for use with Firebird, Blaze and Scorcher HSTs
+
 
 *Fixes*
 

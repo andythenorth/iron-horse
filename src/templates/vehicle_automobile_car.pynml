@@ -2,64 +2,79 @@
       'flipped' is user flipping vehicle in depot
       don't conflate them :) -->
 
-// graphics chain for vehicle platform
-<tal:position_variants repeat="position_variant consist.gestalt_graphics.position_variants">
-    spriteset(${vehicle.id}_ss_${position_variant}_unflipped, "${graphics_path}${consist.id}.png") {
-        ${vehicle.get_spriteset_template_name('unreversed', 'unflipped', 10 + (repeat.position_variant.index * 30))}
-    }
-    spriteset(${vehicle.id}_ss_${position_variant}_flipped, "${graphics_path}${consist.id}.png") {
-        ${vehicle.get_spriteset_template_name('reversed', 'flipped', 10 + (repeat.position_variant.index * 30))}
+
+// graphics chain for vehicle platform and masked overlay
+<tal:platform_or_masked_overlay repeat="platform_or_masked_overlay ['platform', 'masked_overlay' if consist.gestalt_graphics.add_masked_overlay else None]">
+    <tal:position_variants repeat="position_variant consist.gestalt_graphics.position_variants">
+        spriteset(${vehicle.id}_ss_${platform_or_masked_overlay}_${position_variant}_unflipped, "${graphics_path}${consist.id}.png") {
+            ${vehicle.get_spriteset_template_name('unreversed', 'unflipped', 10 + (repeat.platform_or_masked_overlay.index * 30) + (repeat.position_variant.index * 60))}
+        }
+        spriteset(${vehicle.id}_ss_${platform_or_masked_overlay}_${position_variant}_flipped, "${graphics_path}${consist.id}.png") {
+            ${vehicle.get_spriteset_template_name('reversed', 'flipped', 10 + (repeat.platform_or_masked_overlay.index * 30) + (repeat.position_variant.index * 60))}
+        }
+
+        <!--! handle user flipped state -->
+        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${platform_or_masked_overlay}_${position_variant}, vehicle_is_flipped) {
+            1: return ${vehicle.id}_ss_${platform_or_masked_overlay}_${position_variant}_flipped;
+            return ${vehicle.id}_ss_${platform_or_masked_overlay}_${position_variant}_unflipped;
+        }
+    </tal:position_variants>
+
+    <tal:position_ruleset condition="consist.gestalt_graphics.consist_ruleset == 'articulated_permanent_twin_sets'">
+        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${platform_or_masked_overlay}_position_in_consist_entry_point, switch_graphics_automobile_transporter_ruleset_articulated_permanent_twin_sets()) {
+            1: return ${vehicle.id}_switch_graphics_${platform_or_masked_overlay}_last;
+            return ${vehicle.id}_switch_graphics_${platform_or_masked_overlay}_first;
+        }
+    </tal:position_ruleset>
+
+    <tal:position_ruleset condition="consist.gestalt_graphics.consist_ruleset == '1_unit_sets'">
+        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${platform_or_masked_overlay}_position_in_consist_entry_point, switch_graphics_automobile_transporter_ruleset_1_unit_sets()) {
+            return ${vehicle.id}_switch_graphics_${platform_or_masked_overlay}_default;
+        }
+    </tal:position_ruleset>
+
+    <tal:position_ruleset condition="consist.gestalt_graphics.consist_ruleset == '2_unit_sets'">
+        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${platform_or_masked_overlay}_position_in_consist_entry_point, switch_graphics_automobile_transporter_ruleset_2_unit_sets()) {
+            0: return ${vehicle.id}_switch_graphics_${platform_or_masked_overlay}_default;
+            1: return ${vehicle.id}_switch_graphics_${platform_or_masked_overlay}_first;
+            2: return ${vehicle.id}_switch_graphics_${platform_or_masked_overlay}_last;
+            return ${vehicle.id}_switch_graphics_${platform_or_masked_overlay}_default;
+        }
+    </tal:position_ruleset>
+
+    <tal:position_ruleset condition="consist.gestalt_graphics.consist_ruleset == '4_unit_sets'">
+        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${platform_or_masked_overlay}_position_in_consist_entry_point, switch_graphics_automobile_transporter_ruleset_4_unit_sets()) {
+            0: ${vehicle.id}_switch_graphics_${platform_or_masked_overlay}_default;
+            1: return ${vehicle.id}_switch_graphics_${platform_or_masked_overlay}_first;
+            2: return ${vehicle.id}_switch_graphics_${platform_or_masked_overlay}_last;
+            3: return ${vehicle.id}_switch_graphics_${platform_or_masked_overlay}_middle;
+            return ${vehicle.id}_switch_graphics_${platform_or_masked_overlay}_default;
+        }
+    </tal:position_ruleset>
+</tal:platform_or_masked_overlay>
+
+<tal:spritelayer_cargo_layers repeat="platform_type consist.spritelayer_cargo_layers">
+    <!--! load state is assumed (for simplicity) to be all or nothing - any cargo = full load of automobile cargos -->
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_spritelayer_cargos_check_cargo_count_${platform_type}, cargo_count) {
+            0: return ss_spritelayer_cargo_empty;
+        return switch_spritelayer_cargos_${spritelayer_cargos.automobiles.AutomobilesSpritelayerCargo().base_id}_${platform_type}_${4 * vehicle.vehicle_length}px;
     }
 
-    <!--! handle user flipped state -->
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_platform_${position_variant}, vehicle_is_flipped) {
-        1: return ${vehicle.id}_ss_${position_variant}_flipped;
-        return ${vehicle.id}_ss_${position_variant}_unflipped;
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_spritelayer_cargos_${platform_type}, [
+                         STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), <!--! note requirement to pass along 'more sprites' flag here -->
+                         STORE_TEMP(1, ${temp_storage_ids.unreversible_spritelayer_cargos})
+                        ]) {
+        return ${vehicle.id}_switch_graphics_spritelayer_cargos_check_cargo_count_${platform_type};
     }
-</tal:position_variants>
-
-<tal:position_ruleset condition="consist.gestalt_graphics.consist_ruleset == 'articulated_permanent_twin_sets'">
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_platform_position_in_consist_entry_point, switch_graphics_automobile_transporter_ruleset_articulated_permanent_twin_sets()) {
-        1: return ${vehicle.id}_switch_graphics_platform_last;
-        return ${vehicle.id}_switch_graphics_platform_first;
-    }
-</tal:position_ruleset>
-
-<tal:position_ruleset condition="consist.gestalt_graphics.consist_ruleset == '2_unit_sets'">
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_platform_position_in_consist_entry_point, switch_graphics_automobile_transporter_ruleset_2_unit_sets()) {
-        0: return ${vehicle.id}_switch_graphics_platform_default;
-        1: return ${vehicle.id}_switch_graphics_platform_first;
-        2: return ${vehicle.id}_switch_graphics_platform_last;
-        return ${vehicle.id}_switch_graphics_platform_default;
-    }
-</tal:position_ruleset>
-
-<tal:position_ruleset condition="consist.gestalt_graphics.consist_ruleset == '4_unit_sets'">
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_platform_position_in_consist_entry_point, switch_graphics_automobile_transporter_ruleset_4_unit_sets()) {
-        0: ${vehicle.id}_switch_graphics_platform_default;
-        1: return ${vehicle.id}_switch_graphics_platform_first;
-        2: return ${vehicle.id}_switch_graphics_platform_last;
-        3: return ${vehicle.id}_switch_graphics_platform_middle;
-        return ${vehicle.id}_switch_graphics_platform_default;
-    }
-</tal:position_ruleset>
-
-<!--! load state is assumed (for simplicity) to be all or nothing - any cargo = full load of automobile cargos -->
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_spritelayer_cargos_check_cargo_count, cargo_count) {
-        0: return ss_spritelayer_cargo_empty;
-    return switch_spritelayer_cargos_${spritelayer_cargos.automobiles.AutomobilesSpritelayerCargo().base_id}_${consist.platform_type}_${4 * vehicle.vehicle_length}px;
-}
-
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_spritelayer_cargos,
-            STORE_TEMP(CB_FLAG_MORE_SPRITES | base_sprite_2cc + 16 * company_colour2 + company_colour1, 0x100) <!--! note requirement to pass along 'more sprites' flag here -->
-        ) {
-    return ${vehicle.id}_switch_graphics_spritelayer_cargos_check_cargo_count;
-}
+</tal:spritelayer_cargo_layers>
 
 // switch layers: base platform / spritelayer cargo
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, getbits(extra_callback_info1, 8, 8)) {
     0: return ${vehicle.id}_switch_graphics_platform_position_in_consist_entry_point;
-    1: return ${vehicle.id}_switch_graphics_spritelayer_cargos;
+    1: return ${vehicle.id}_switch_graphics_spritelayer_cargos_${consist.spritelayer_cargo_layers[0]};
+    <tal:optional_masked_overlay condition="consist.gestalt_graphics.add_masked_overlay">
+        2: return ${vehicle.id}_switch_graphics_masked_overlay_position_in_consist_entry_point;
+    </tal:optional_masked_overlay>
 }
 
 
@@ -73,7 +88,10 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase, 0) {
 
 <tal:include metal:use-macro="load: graphics_switches.pynml" />
 
-<!--! dedicated colour remapping of second livery, with user flip support but, no randomisation -->
+<!--!
+    dedicated colour remapping for CC, with user flip support but, no randomisation
+    note that this will return incorrect results if used in purchase list, make sure it's not called by handling purchase_colour_mapping explicitly
+-->
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_colour_mapping, vehicle_is_flipped) {
     1: return base_sprite_2cc + 16 * company_colour1 + company_colour2; <!--! swap 1CC and 2CC -->
     return base_sprite_2cc + 16 * company_colour2 + company_colour1; <!--! apply regular 1CC and 2CC -->
@@ -83,6 +101,6 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_colour_mapping, vehicle_is_flipp
     <tal:include metal:use-macro="load: capacity_switches.pynml" />
 </tal:optional_capacity_switches>
 
-<tal:include metal:use-macro="load: properties.pynml" />
+<tal:include metal:use-macro="load: properties_vehicle.pynml" />
 
 

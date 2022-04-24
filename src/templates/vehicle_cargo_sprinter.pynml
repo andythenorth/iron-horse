@@ -1,16 +1,17 @@
-<!--! load state is assumed (for simplicity) to be all or nothing - any cargo = full load of containers -->
+<tal:spritelayer_cargo_layers repeat="platform_type consist.spritelayer_cargo_layers">
+    <!--! load state is assumed (for simplicity) to be all or nothing - any cargo = full load of containers -->
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_containers_check_cargo_${platform_type}, cargo_count) {
+            0: return ss_spritelayer_cargo_empty;
+        return switch_spritelayer_cargos_${spritelayer_cargos.intermodal_containers.IntermodalContainersSpritelayerCargo().base_id}_${platform_type}_${4 * vehicle.vehicle_length}px;
+    }
 
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_containers_check_cargo, cargo_count) {
-        0: return ss_spritelayer_cargo_empty;
-    return switch_spritelayer_cargos_${spritelayer_cargos.intermodal_containers.IntermodalContainersSpritelayerCargo().base_id}_${consist.platform_type}_${4 * vehicle.vehicle_length}px;
-}
-
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_containers, [
-                     STORE_TEMP(CB_FLAG_MORE_SPRITES | switch_intermodal_by_company_colour_1cc_to_1cc(), 0x100), <!--! note requirement to pass along 'more sprites' flag here otherwise sprite layers fail -->
-                     STORE_TEMP(0, ${temp_storage_ids.unreversible_spritelayer_cargos}) <!--! allow containers to reverse, to handle case (automatically reversed) rear unit -->
-                    ]) {
-    return ${vehicle.id}_switch_graphics_containers_check_cargo;
-}
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_containers_${platform_type}, [
+                         STORE_TEMP(CB_FLAG_MORE_SPRITES | switch_intermodal_by_company_colour_1cc_to_1cc(), 0x100), <!--! note requirement to pass along 'more sprites' flag here otherwise sprite layers fail -->
+                         STORE_TEMP(0, ${temp_storage_ids.unreversible_spritelayer_cargos}) <!--! allow containers to reverse, to handle case (automatically reversed) rear unit -->
+                        ]) {
+        return ${vehicle.id}_switch_graphics_containers_check_cargo_${platform_type};
+    }
+</tal:spritelayer_cargo_layers>
 
 <!--! 'reversed' is random reversal on construction, depending on vehicle random bits
       'flipped' is user flipping vehicle in depot
@@ -27,7 +28,7 @@ spriteset(${vehicle.id}_ss_masked_overlay_unflipped_unreversed, "${graphics_path
 // switch layers: base platform / containers
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, getbits(extra_callback_info1, 8, 8)) {
     0: return ${vehicle.id}_ss_unflipped_unreversed;
-    1: return ${vehicle.id}_switch_graphics_containers;
+    1: return ${vehicle.id}_switch_graphics_containers_${consist.spritelayer_cargo_layers[0]};
     2: return ${vehicle.id}_ss_masked_overlay_unflipped_unreversed;
 }
 
@@ -45,5 +46,5 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase, 0) {
     <tal:include metal:use-macro="load: capacity_switches.pynml" />
 </tal:optional_capacity_switches>
 
-<tal:include metal:use-macro="load: properties.pynml" />
+<tal:include metal:use-macro="load: properties_vehicle.pynml" />
 

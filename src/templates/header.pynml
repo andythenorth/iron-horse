@@ -5,23 +5,8 @@ grf {
 	desc: string(STR_GRF_DESCRIPTION);
 	url: string(STR_GRF_DOCS_URL);
 	version: ${git_info.get_revision()};
-	min_compatible_version: 5408;
-	param 0 {
-        param_adjust_vehicle_capacity {
-            type: int;
-            name: string(STR_PARAM_ADJUST_VEHICLE_CAPACITY);
-            desc: string(STR_PARAM_ADJUST_VEHICLE_CAPACITY_DESC);
-            min_value: 0;
-            max_value: 3;
-            def_value: 1;
-            names: {
-                0: string(STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0);
-                1: string(STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1);
-                2: string(STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2);
-                3: string(STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_3);
-            };
-        }
-    }
+	min_compatible_version: 5634;
+	<!--! note that params are in the order they appear in the OpenTTD UI, *not* the param number -->
 	param 1 {
 		param_roster {
 			name: string(STR_PARAM_ROSTER);
@@ -45,6 +30,32 @@ grf {
 			bit: 1;
 		}
 	}
+	param 6 {
+		param_add_railtypes {
+			name: string(STR_PARAM_ADD_RAILTYPES);
+			desc: string(STR_PARAM_ADD_RAILTYPES_DESC);
+			type: bool;
+			def_value: 1;
+			bit: 1;
+		}
+	}
+	param 0 {
+        param_adjust_vehicle_capacity {
+            type: int;
+            name: string(STR_PARAM_ADJUST_VEHICLE_CAPACITY);
+            desc: string(STR_PARAM_ADJUST_VEHICLE_CAPACITY_DESC);
+            min_value: 0;
+            max_value: 4;
+            def_value: 2;
+            names: {
+                0: string(STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0);
+                1: string(STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1);
+                2: string(STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2);
+                3: string(STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_3);
+                4: string(STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_4);
+            };
+        }
+    }
     <tal:num_options define="num_options 17">
         param 3 {
             param_wagon_base_colour_1 {
@@ -94,6 +105,12 @@ grf {
             }
         </tal:num_options>
 	}
+}
+
+// error if inflation is on for the game, as it leads to unplayable outcomes for players
+// tried 'WARNING' but doesn't seem to show a message, so we'll go with 'FATAL' I guess
+if (inflation) {
+    error(FATAL, string(STR_ERROR_INFLATION_INCOMPATIBLE));
 }
 
 basecost {

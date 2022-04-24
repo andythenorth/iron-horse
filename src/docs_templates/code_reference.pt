@@ -5,8 +5,91 @@
     <div class="container">
         <div class="span12">
             <h2>Code reference</h2>
-            <h3>${len(consists)} trains</h3>
+
+            <p>Iron Horse source code is found on <a href="${metadata['repo_url']}">GitHub</a>. License is GPL v2.</p>
+
+            <div id="compiling">
+                <h3>Compiling</h3>
+                <p>
+                   Iron Horse source includes a makefile for convenient building.
+                   This requires '<a href="https://en.wikipedia.org/wiki/Make_(software)">Make</a>',
+                   typically provided by the ports tree on Linux / Unix, <a href="http://www.mingw.org/wiki/msys">MSYS</a>  on Windows
+                   and <a href="https://developer.apple.com/xcode/">Xcode</a> on macOS.
+                </p>
+                <p>Other dependencies include:</p>
+                <ul>
+                    <li><a href="https://www.python.org/">Python 3.8+</a></li>
+                    <li><a href="https://newgrf-specs.tt-wiki.net/wiki/NML:Getting_started">NML 0.6.0 or newer</a> (NewGRF compiler)</li>
+                    <li><a href="http://chameleon.readthedocs.org/en/latest/">Chameleon</a> (Template engine)</li>
+                    <li><a href="https://pypi.python.org/pypi/Markdown">Markdown</a> (Markdown text format parser)</li>
+                </ul>
+            </div>
             <hr />
+            <br />
+            <h3>Railtypes and fallbacks</h3>
+            <p>Iron Horse uses a very specific approach to railtypes.</p>
+            <ol>
+                <li>
+                    The Iron Horse grf includes <em>both</em> vehicles <em>and</em> railtypes. This is unusual; it's more common to split up vehicles and railtypes to separate grfs.
+                    However this puts more work on the player to find an appropriate grf, if they're even aware they need to.
+                    Iron Horse provides <em>batteries-are-included</em> gameplay by including the appropriate railtypes.
+                </li>
+                <li>
+                    Players can turn off the included Iron Horse railtypes if they wish to via parameter setting
+                    (does not affect RAIL and ELRL which are provided as default by OpenTTD).
+                </li>
+                <li>
+                    Iron Horse has a schema for vehicle track_type property (which sets the vehicle railtype).
+                    This schema makes it possible for railtype authors to detect different Iron Horse vehicle types and handle them as they see fit.
+                    Meanwhile the vehicles will fall back to more common railtypes if the specific Iron Horse labels are not available.
+                </li>
+            </ol>
+            <table style="font-size:84%;" class="table table-striped table-condensed table-bordered tablesorter">
+                <tal:railtype_mapping repeat="railtype_mapping global_constants.base_track_type_to_railtype_mapping.items()">
+                    <!--!
+                        note the remapping of the railtype label to the first value from the list of types, this will match the vehicle which does the same
+                        we discard the base_track_type values which are internal to Iron Horse compile, and instead set track_type and RTT to real labels
+                    -->
+                    <tr>
+                        <th>${railtype_mapping[0]}</th>
+                        <td>${railtype_mapping[1][0]}</td>
+                        <td>${','.join('"' + i + '"' for i in railtype_mapping[1])}</td>
+                    </tr>
+                </tal:railtype_mapping>
+            </table>
+            <h4>Iron Horse railtype scheme details / tips for railtype authors</h4>
+            <p>Railtype labels are 4 chars, composed from the following valid characters: <code>a-z, A-Z, 0-9, _</code>.</p>
+            <p>Iron Horse labels, characters 1 and 2 are always <code>IH</code></p>
+            <p>Character 3 represents a general 'class' of vehicle</p>
+            <ul>
+                <li><code>A</code> vanilla rail vehicle, non-electric, suitable for <code>RAIL</code> and similar railtypes</li>
+                <li><code>B</code> vanilla rail vehicle, electric, <!--! (no subtype) --> suitable for <code>ELRL</code> and similar railtypes</li>
+                <li><code>C</code> vanilla metro vehicle, requires dedicated metro lines, suitable for <code>MTRO</code> and similar railtypes, metro is always assumed to be electrified via 3 or 4 rail system</li>
+                <li><code>D</code> vanilla narrow gauge vehicle, non-electric, suitable for <code>NGRL</code> and similar railtypes</li>
+                <li><code>E</code> vanilla narrow gauge vehicle, electric, suitable for <code>ELNG</code> and similar railtypes</li>
+                <!--!
+                    electrification subtypes e.g. AC, DC, would be added as explicit classes in char 3, then appropriate fallbacks to B for games where the subtype is not used
+                    multi-voltage locomotives would be a specific class representing the combined voltages they're capable of,
+                    with the cross-compatibility managed by a hidden railtype
+                -->
+                <li>&hellip;more 'classes' added as needed</li>
+            </ul>
+            <p>Character 4 represents modifiers to the class, and is used sparingly. Modifiers cannot be combined, except by adding a new character specifically for the combined properties.</p>
+            <ul>
+                <li><code>_</code> no modifier used (default)</li>
+                <li><code>A</code> can be used on high speed lines (LGV), has suitable brakes, signalling equipment etc.</li>
+                <!--!<li><code>B</code> suitable for light or poorly maintained tracks</li>-->
+                <!--!<li><code>C</code> requires a route cleared for tall vehicles</li>-->
+                <li>&hellip;more modifiers added as needed</li>
+            </ul>
+            <p>
+                Vehicles <strong>do not</strong> set labels from the standardised railtype scheme as fallbacks as of April 2022.
+                This is so that railtype authors using the standardised railtype scheme can control how they wish to map Iron Horse vehicles to their railtypes.
+                Authors can do this by using the Iron Horse labels in the alternative_railtype_list property for their railtypes.
+            </p>
+            <hr />
+            <br />
+            <h3>${len(consists)} trains</h3>
             <tal:subclasses repeat="subclass doc_helper.get_vehicles_by_subclass(consists)">
                 <tal:props_for_subclass define="props_to_print doc_helper.get_props_to_print_in_code_reference(subclass)">
                     <h4 id="${subclass['name']}">${subclass['name']} <small>Subclass</small></h4>
@@ -44,6 +127,7 @@
                 </tal:props_for_subclass>
             </tal:subclasses>
             <hr />
+            <br />
             <h3>Numeric IDs</h3>
             <p class="muted">Trailing parts of articulated vehicles are not listed here.</p>
             <table class="table table-striped table-condensed table-bordered tablesorter">
