@@ -342,7 +342,7 @@ class GestaltGraphicsIntermodalContainerTransporters(GestaltGraphics):
         self.colour_mapping_switch = "_switch_colour_mapping"
         self.consist_ruleset = kwargs.get("consist_ruleset", None)
         # add layers for container sprites
-        # !! this might need extended to handle a mask in future
+        # !! this might need extended for double stacks in future - see automobile gestalt for examples of deriving this from number of cargo sprite layers
         self.num_extra_layers_for_spritelayer_cargos = 1
         # the actual containers are symmetric
         self.cargo_sprites_are_asymmetric = False
@@ -446,7 +446,7 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphics):
     - the spritelayer cargos which are in separate layer
     """
 
-    def __init__(self, **kwargs):
+    def __init__(self, spritelayer_cargo_layers=["default"], **kwargs):
         super().__init__()
         # we use the composited sprites pipeline so we can make use of chassis compositing
         self.pipelines = pipelines.get_pipelines(
@@ -458,10 +458,10 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphics):
         )
         self.colour_mapping_switch = "_switch_colour_mapping"
         self.consist_ruleset = kwargs.get("consist_ruleset", None)
-         # add layers for cargo sprites, mask
-         # !! but this needs extending to extra cargo sprite layer for double deck
-        self.num_extra_layers_for_spritelayer_cargos = 2
         self.cargo_sprites_are_asymmetric = True
+        # derive number of layers for cargo sprites
+        self.num_extra_layers_for_spritelayer_cargos = len(spritelayer_cargo_layers)
+        # optional mask layer
         self.add_masked_overlay = kwargs.get("add_masked_overlay", False)
 
     def get_output_row_types(self):
@@ -748,7 +748,9 @@ class GestaltGraphicsCustom(GestaltGraphics):
         self._cargo_label_mapping = cargo_label_mapping
         self._weathered_variants = weathered_variants
         if num_extra_layers_for_spritelayer_cargos is not None:
-            self.num_extra_layers_for_spritelayer_cargos = num_extra_layers_for_spritelayer_cargos
+            self.num_extra_layers_for_spritelayer_cargos = (
+                num_extra_layers_for_spritelayer_cargos
+            )
 
     @property
     def generic_rows(self):
