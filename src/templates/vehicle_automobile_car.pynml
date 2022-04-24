@@ -53,23 +53,25 @@
     </tal:position_ruleset>
 </tal:platform_or_masked_overlay>
 
-<!--! load state is assumed (for simplicity) to be all or nothing - any cargo = full load of automobile cargos -->
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_spritelayer_cargos_check_cargo_count, cargo_count) {
-        0: return ss_spritelayer_cargo_empty;
-    return switch_spritelayer_cargos_${spritelayer_cargos.automobiles.AutomobilesSpritelayerCargo().base_id}_${consist.platform_type}_${4 * vehicle.vehicle_length}px;
-}
+<tal:platform_layers repeat="platform_type consist.platform_layers">
+    <!--! load state is assumed (for simplicity) to be all or nothing - any cargo = full load of automobile cargos -->
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_spritelayer_cargos_check_cargo_count_${platform_type}, cargo_count) {
+            0: return ss_spritelayer_cargo_empty;
+        return switch_spritelayer_cargos_${spritelayer_cargos.automobiles.AutomobilesSpritelayerCargo().base_id}_${platform_type}_${4 * vehicle.vehicle_length}px;
+    }
 
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_spritelayer_cargos, [
-                     STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), <!--! note requirement to pass along 'more sprites' flag here -->
-                     STORE_TEMP(1, ${temp_storage_ids.unreversible_spritelayer_cargos})
-                    ]) {
-    return ${vehicle.id}_switch_graphics_spritelayer_cargos_check_cargo_count;
-}
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_spritelayer_cargos_${platform_type}, [
+                         STORE_TEMP(CB_FLAG_MORE_SPRITES | PALETTE_USE_DEFAULT, 0x100), <!--! note requirement to pass along 'more sprites' flag here -->
+                         STORE_TEMP(1, ${temp_storage_ids.unreversible_spritelayer_cargos})
+                        ]) {
+        return ${vehicle.id}_switch_graphics_spritelayer_cargos_check_cargo_count_${platform_type};
+    }
+</tal:platform_layers>
 
 // switch layers: base platform / spritelayer cargo
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, getbits(extra_callback_info1, 8, 8)) {
     0: return ${vehicle.id}_switch_graphics_platform_position_in_consist_entry_point;
-    1: return ${vehicle.id}_switch_graphics_spritelayer_cargos;
+    1: return ${vehicle.id}_switch_graphics_spritelayer_cargos_${consist.platform_layers[0]};
     <tal:optional_masked_overlay condition="consist.gestalt_graphics.add_masked_overlay">
         2: return ${vehicle.id}_switch_graphics_masked_overlay_position_in_consist_entry_point;
     </tal:optional_masked_overlay>

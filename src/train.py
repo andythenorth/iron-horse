@@ -644,8 +644,15 @@ class Consist(object):
         # order of adding extra layers doesn't matter here, it's just a number,
         # the switch chain for the vehicle type will need to take care of switching to correct layers
         # gestalt may add extra sprites layer for e.g. visible cargo, vehicle masks
-        if getattr(self.gestalt_graphics, "num_extra_layers_for_spritelayer_cargos", None) != None:
-            result = result + self.gestalt_graphics.num_extra_layers_for_spritelayer_cargos
+        if (
+            getattr(
+                self.gestalt_graphics, "num_extra_layers_for_spritelayer_cargos", None
+            )
+            != None
+        ):
+            result = (
+                result + self.gestalt_graphics.num_extra_layers_for_spritelayer_cargos
+            )
         # add a layer for pantographs as needed, note this is not done in the gestalt as it's more convenient to treat separarely
         if self.pantograph_type is not None:
             result = result + 1
@@ -1057,7 +1064,6 @@ class MailEngineCargoSprinterEngineConsist(MailEngineConsist):
         super().__init__(**kwargs)
         # non-standard cite
         self._cite = "Arabella Unit"
-        self.platform_type = "cargo_sprinter"
         # run cost algorithm doesn't account for dual-head / high power MUs reliably, so just fix it here, using assumption that there are very few cargo sprinters and this will be fine
         self.fixed_run_cost_points = 240
         self._loading_speed_multiplier = 2
@@ -1069,6 +1075,11 @@ class MailEngineCargoSprinterEngineConsist(MailEngineConsist):
             cargo_label_mapping=GestaltGraphicsIntermodalContainerTransporters().cargo_label_mapping,
             num_extra_layers_for_spritelayer_cargos=2,
         )
+
+    @property
+    # layers for spritelayer cargos, and the platform type (cargo pattern and deck height)
+    def platform_layers(self):
+        return ["cargo_sprinter"]
 
 
 class MailEngineMetroConsist(MailEngineConsist):
@@ -1854,9 +1865,9 @@ class AutomobileCarConsist(AutomobileCarConsistBase):
         return "1_unit_sets"
 
     @property
-    # account for e.g. low floor, double deck etc
-    def platform_type(self):
-        return "default"
+    # layers for spritelayer cargos, and the platform type (cargo pattern and deck height)
+    def platform_layers(self):
+        return ["default"]
 
 
 class AutomobileDoubleDeckCarConsist(AutomobileCarConsistBase):
@@ -1883,9 +1894,10 @@ class AutomobileDoubleDeckCarConsist(AutomobileCarConsistBase):
         return True
 
     @property
-    # account for e.g. low floor, double deck etc
-    def platform_type(self):
-        return "double_deck"
+    # layers for spritelayer cargos, and the platform type (cargo pattern and deck height)
+    def platform_layers(self):
+        #return ["double_deck", "double_deck"]
+        return ["double_deck"]
 
 
 class AutomobileLowFloorCarConsist(AutomobileCarConsistBase):
@@ -1902,9 +1914,9 @@ class AutomobileLowFloorCarConsist(AutomobileCarConsistBase):
         return "4_unit_sets"
 
     @property
-    # account for e.g. low floor, double deck etc
-    def platform_type(self):
-        return "low_floor"
+    # layers for spritelayer cargos, and the platform type (cargo pattern and deck height)
+    def platform_layers(self):
+        return ["low_floor", "double_deck"]
 
 
 class BolsterCarConsist(CarConsist):
@@ -2627,10 +2639,10 @@ class ExpressIntermodalCarConsist(CarConsist):
         )
 
     @property
-    # account for variable floor heights, well cars, etc
-    def platform_type(self):
+    # layers for spritelayer cargos, and the platform type (cargo pattern and deck height)
+    def platform_layers(self):
         # !! express intermodal all default currently, extend as needed
-        return "default"
+        return ["default"]
 
 
 class FarmProductsBoxCarConsist(CarConsist):
@@ -2957,12 +2969,13 @@ class IntermodalCarConsist(IntermodalCarConsistBase):
         super().__init__(**kwargs)
 
     @property
-    def platform_type(self):
+    # layers for spritelayer cargos, and the platform type (cargo pattern and deck height)
+    def platform_layers(self):
         # the 'default' for NG is the same as for low_floor so just re-use that for now
         if self.base_track_type == "NG":
-            return "low_floor"
+            return ["low_floor"]
         else:
-            return "default"
+            return ["default"]
 
 
 class IntermodalLowFloorCarConsist(IntermodalCarConsistBase):
@@ -2973,7 +2986,11 @@ class IntermodalLowFloorCarConsist(IntermodalCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "low_floor_intermodal_car"
         super().__init__(**kwargs)
-        self.platform_type = "low_floor"  # note that NG does not support low_floor, it already is low_floor
+
+    @property
+    # layers for spritelayer cargos, and the platform type (cargo pattern and deck height)
+    def platform_layers(self):
+        return ["low_floor"]
 
 
 class KaolinHopperCarConsist(CarConsist):
@@ -4956,7 +4973,7 @@ class ExpressIntermodalCar(ExpressCar):
         super().__init__(**kwargs)
         # express intermodal cars may be asymmetric, there is magic in the graphics processing to make this work
         self._symmetry_type = "asymmetric"
-        self.random_trigger_switch = "_switch_graphics_spritelayer_cargos"
+        self.random_trigger_switch = "_switch_graphics_spritelayer_cargos_" + self.consist.platform_layers[0]
 
 
 class ExpressMailCar(ExpressCar):
@@ -4985,7 +5002,7 @@ class AutomobileCar(ExpressCar):
         utils.echo_message(
             "AutomobileCar random_trigger_switch is using _switch_graphics_spritelayer_cargos"
         )
-        self.random_trigger_switch = "_switch_graphics_spritelayer_cargos"
+        self.random_trigger_switch = "_switch_graphics_spritelayer_cargos_" + self.consist.platform_layers[0]
 
 
 class FreightCar(TrainCar):
@@ -5039,7 +5056,7 @@ class IntermodalCar(FreightCar):
         super().__init__(**kwargs)
         # intermodal cars may be asymmetric, there is magic in the graphics processing to make this work
         self._symmetry_type = "asymmetric"
-        self.random_trigger_switch = "_switch_graphics_spritelayer_cargos"
+        self.random_trigger_switch = "_switch_graphics_spritelayer_cargos_" + self.consist.platform_layers[0]
 
 
 class OreDumpCar(FreightCar):
