@@ -75,6 +75,9 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, getbits(extra_
     <tal:optional_masked_overlay condition="consist.gestalt_graphics.add_masked_overlay">
         2: return ${vehicle.id}_switch_graphics_masked_overlay_position_in_consist_entry_point;
     </tal:optional_masked_overlay>
+    <tal:optional_upper_deck condition="len(consist.spritelayer_cargo_layers) == 2">
+        3: return ${vehicle.id}_switch_graphics_spritelayer_cargos_${consist.spritelayer_cargo_layers[1]};
+    </tal:optional_upper_deck>
 }
 
 

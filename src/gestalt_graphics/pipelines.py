@@ -338,6 +338,7 @@ class GenerateSpritelayerCargoSets(Pipeline):
                     # !! these might need splitting up by spritelayer_cargo for different types of sprites, depending on their shape
                     # !! if self.spritelayer_cargo.base_id == "intermodal_containers":
                     loc_point_y_transforms = {
+                        "15": [1, 3, 1, 2, 1, 3, 1, 2], # !! untested, may be incorrect
                         "20": [1, 3, 1, 2, 1, 3, 1, 2],
                         "30": [1, 3, 1, 3, 1, 3, 1, 3],
                         "40": [1, 3, 1, 4, 1, 3, 1, 4],

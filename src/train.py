@@ -653,6 +653,9 @@ class Consist(object):
             result = (
                 result + self.gestalt_graphics.num_extra_layers_for_spritelayer_cargos
             )
+        # add a layer for a masked overlay as needed (usually applied over cargo sprites)
+        if getattr(self, "add_masked_overlay", False):
+            result = result + 1
         # add a layer for pantographs as needed, note this is not done in the gestalt as it's more convenient to treat separarely
         if self.pantograph_type is not None:
             result = result + 1
@@ -1842,7 +1845,9 @@ class AutomobileCarConsistBase(CarConsist):
         else:
             consist_ruleset = self._consist_ruleset
         self.gestalt_graphics = GestaltGraphicsAutomobilesTransporter(
-            consist_ruleset=consist_ruleset, add_masked_overlay=self.add_masked_overlay
+            self.spritelayer_cargo_layers,
+            consist_ruleset=consist_ruleset,
+            add_masked_overlay=self.add_masked_overlay,
         )
 
     @property
@@ -1896,8 +1901,7 @@ class AutomobileDoubleDeckCarConsist(AutomobileCarConsistBase):
     @property
     # layers for spritelayer cargos, and the platform type (cargo pattern and deck height)
     def spritelayer_cargo_layers(self):
-        #return ["double_deck", "double_deck"]
-        return ["double_deck"]
+        return ["double_deck_lower", "double_deck_upper"]
 
 
 class AutomobileLowFloorCarConsist(AutomobileCarConsistBase):
@@ -1916,7 +1920,7 @@ class AutomobileLowFloorCarConsist(AutomobileCarConsistBase):
     @property
     # layers for spritelayer cargos, and the platform type (cargo pattern and deck height)
     def spritelayer_cargo_layers(self):
-        return ["low_floor", "double_deck"]
+        return ["low_floor"]
 
 
 class BolsterCarConsist(CarConsist):
@@ -4973,7 +4977,10 @@ class ExpressIntermodalCar(ExpressCar):
         super().__init__(**kwargs)
         # express intermodal cars may be asymmetric, there is magic in the graphics processing to make this work
         self._symmetry_type = "asymmetric"
-        self.random_trigger_switch = "_switch_graphics_spritelayer_cargos_" + self.consist.spritelayer_cargo_layers[0]
+        self.random_trigger_switch = (
+            "_switch_graphics_spritelayer_cargos_"
+            + self.consist.spritelayer_cargo_layers[0]
+        )
 
 
 class ExpressMailCar(ExpressCar):
@@ -5000,9 +5007,12 @@ class AutomobileCar(ExpressCar):
         # !! temp to make it work
         self._symmetry_type = "symmetric"
         utils.echo_message(
-            "AutomobileCar random_trigger_switch is using _switch_graphics_spritelayer_cargos"
+            "AutomobileCar random_trigger_switch is using _switch_graphics_spritelayer_cargos " + self.consist.id
         )
-        self.random_trigger_switch = "_switch_graphics_spritelayer_cargos_" + self.consist.spritelayer_cargo_layers[0]
+        self.random_trigger_switch = (
+            "_switch_graphics_spritelayer_cargos_"
+            + self.consist.spritelayer_cargo_layers[0]
+        )
 
 
 class FreightCar(TrainCar):
@@ -5056,7 +5066,10 @@ class IntermodalCar(FreightCar):
         super().__init__(**kwargs)
         # intermodal cars may be asymmetric, there is magic in the graphics processing to make this work
         self._symmetry_type = "asymmetric"
-        self.random_trigger_switch = "_switch_graphics_spritelayer_cargos_" + self.consist.spritelayer_cargo_layers[0]
+        self.random_trigger_switch = (
+            "_switch_graphics_spritelayer_cargos_"
+            + self.consist.spritelayer_cargo_layers[0]
+        )
 
 
 class OreDumpCar(FreightCar):
