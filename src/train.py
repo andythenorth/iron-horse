@@ -1507,7 +1507,7 @@ class TGVCabEngineConsist(EngineConsist):
         super().__init__(**kwargs)
         # implemented as a list to allow multiple middle vehicles, e.g. double-deck, mail etc
         # but...theoretical as of Dec 2018 as nml power template doesn't support iterating over multiple middle vehicles
-        self.middle_id = self.id.split("_cab")[0] + "_middle"
+        self.middle_id = self.id.split("_cab")[0] + "_middle_passenger"
         self.buy_menu_hint_wagons_add_power = True
         self.tilt_bonus = True
         self.lgv_capable = True
