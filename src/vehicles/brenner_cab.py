@@ -1,8 +1,8 @@
-from train import PassengerVeryHighSpeedCabEngineConsist, ElectricHighSpeedPaxUnit
+from train import TGVCabEngineConsist, ElectricEngineUnit
 
 
 def main(roster_id):
-    consist = PassengerVeryHighSpeedCabEngineConsist(
+    consist = TGVCabEngineConsist(
         roster_id=roster_id,
         id="brenner_cab",
         base_numeric_id=130,
@@ -17,7 +17,7 @@ def main(roster_id):
     )
 
     consist.add_unit(
-        type=ElectricHighSpeedPaxUnit,
+        type=ElectricEngineUnit,
         weight=52,
         spriterow_num=0,
         chassis="4_axle_solid_express_32px",

@@ -1,8 +1,8 @@
-from train import PassengerVeryHighSpeedCabEngineConsist, ElectricHighSpeedPaxUnit
+from train import TGVCabEngineConsist, ElectricEngineUnit
 
 
 def main(roster_id):
-    consist = PassengerVeryHighSpeedCabEngineConsist(
+    consist = TGVCabEngineConsist(
         roster_id=roster_id,
         id="helm_wind_cab",
         base_numeric_id=3060,
@@ -18,7 +18,7 @@ def main(roster_id):
     )
 
     consist.add_unit(
-        type=ElectricHighSpeedPaxUnit,
+        type=ElectricEngineUnit,
         weight=76,
         # no pax capacity on Helm Wind cabs
         capacity=0,

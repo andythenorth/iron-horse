@@ -1467,59 +1467,6 @@ class PassengerEngineRailcarConsist(PassengerEngineConsist):
         return result
 
 
-class PassengerVeryHighSpeedCabEngineConsist(PassengerEngineConsist):
-    """
-    Consist for a cab (leading) motor very high speed train (TGV etc).
-    This has power by default and would usually be set as a dual-headed engine.
-    Adding specific middle engines (with correct ID) will increase power for this engine.
-    """
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        # implemented as a list to allow multiple middle vehicles, e.g. double-deck, mail etc
-        # but...theoretical as of Dec 2018 as nml power template doesn't support iterating over multiple middle vehicles
-        self.middle_id = self.id.split("_cab")[0] + "_middle"
-        self.buy_menu_hint_wagons_add_power = True
-        self.tilt_bonus = True
-        self.lgv_capable = True
-        # note that buy costs are actually adjusted down from pax base, to account for distributed traction etc
-        self.buy_cost_adjustment_factor = 0.95
-        # ....run cost multiplier is adjusted up from pax base because regrettable realism
-        # but allow that every vehicle will have powered run costs, so not too high eh?
-        self.floating_run_cost_multiplier = 16
-        # train_flag_mu solely used for ottd livery (company colour) selection
-        # !! commented out as of July 2019 because the middle engines won't pick this up, which causes inconsistency in the buy menu
-        # self.train_flag_mu = True
-        # non-standard cite
-        self._cite = "Dr Constance Speed"
-        """
-        # !! this type needs new graphics processing and/or template rules if it is to handle opening doors
-        # !! box car variant expects symmetry
-        # !! pax variant handles asymmetry differently to what is needed for the dual-head routine
-        # !! pax variant graphics generation can be made to work (with clunky hax) but the template would need still new rulesets for that
-        # !! writing a new processor and a template for doors probably isn't very hard (give all default vehicles option for opening doors?)
-        # Graphics configuration
-        # self.roof_type = 'pax_mail_smooth'
-        # 1 livery as can't be flipped, 1 spriterow may be left blank for compatibility with Gestalt (TBC)
-        # all position variants resolve to same spriterow
-        spriterow_group_mappings = {'pax': {'default': 0, 'first': 0, 'last': 0, 'special': 0}}
-        self.gestalt_graphics = GestaltGraphicsConsistSpecificLivery(spriterow_group_mappings, consist_ruleset="pax_cars",
-                                                                     pantograph_type=self.pantograph_type)
-        """
-
-    @property
-    def buy_menu_distributed_power_substring(self):
-        return "STR_WAGONS_ADD_POWER_CAB"
-
-    @property
-    def buy_menu_distributed_power_name_substring(self):
-        return self.middle_id
-
-    @property
-    def buy_menu_distributed_power_hp_value(self):
-        return self.power
-
-
 class PassengerVeryHighSpeedMiddleEngineConsist(PassengerEngineConsist):
     """
     Consist for an intermediate motor unit for very high speed train (TGV etc).
@@ -1624,6 +1571,46 @@ class SnowploughEngineConsist(EngineConsist):
         self.fixed_run_cost_points = 68
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsCustom("vehicle_snowplough.pynml")
+
+
+class TGVCabEngineConsist(EngineConsist):
+    """
+    Consist for a TGV (very high speed) engine cab (leading motor unit)
+    This has power by default and would usually be set as a dual-headed engine.
+    Adding specific middle engines (with correct ID) will increase power for this engine.
+    This does not have pax capacity, by design, to allow for TGV La Poste mail trains.
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # implemented as a list to allow multiple middle vehicles, e.g. double-deck, mail etc
+        # but...theoretical as of Dec 2018 as nml power template doesn't support iterating over multiple middle vehicles
+        self.middle_id = self.id.split("_cab")[0] + "_middle"
+        self.buy_menu_hint_wagons_add_power = True
+        self.tilt_bonus = True
+        self.lgv_capable = True
+        # note that buy costs are actually adjusted down from pax base, to account for distributed traction etc
+        self.buy_cost_adjustment_factor = 0.95
+        # ....run cost multiplier is adjusted up from pax base because regrettable realism
+        # but allow that every vehicle will have powered run costs, so not too high eh?
+        self.floating_run_cost_multiplier = 16
+        # train_flag_mu solely used for ottd livery (company colour) selection
+        # !! commented out as of July 2019 because the middle engines won't pick this up, which causes inconsistency in the buy menu
+        # self.train_flag_mu = True
+        # non-standard cite
+        self._cite = "Dr Constance Speed"
+
+    @property
+    def buy_menu_distributed_power_substring(self):
+        return "STR_WAGONS_ADD_POWER_CAB"
+
+    @property
+    def buy_menu_distributed_power_name_substring(self):
+        return self.middle_id
+
+    @property
+    def buy_menu_distributed_power_hp_value(self):
+        return self.power
 
 
 class CarConsist(Consist):
@@ -5007,7 +4994,8 @@ class AutomobileCar(ExpressCar):
         # !! temp to make it work
         self._symmetry_type = "symmetric"
         utils.echo_message(
-            "AutomobileCar random_trigger_switch is using _switch_graphics_spritelayer_cargos " + self.consist.id
+            "AutomobileCar random_trigger_switch is using _switch_graphics_spritelayer_cargos "
+            + self.consist.id
         )
         self.random_trigger_switch = (
             "_switch_graphics_spritelayer_cargos_"
