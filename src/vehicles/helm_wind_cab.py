@@ -6,7 +6,7 @@ def main(roster_id):
         roster_id=roster_id,
         id="helm_wind_cab",
         base_numeric_id=3060,
-        name="Helm Wind Cab",
+        name="Helm Wind",
         role="very_high_speed",
         role_child_branch_num=1,
         power=1700,

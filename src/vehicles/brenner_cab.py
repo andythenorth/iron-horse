@@ -6,7 +6,7 @@ def main(roster_id):
         roster_id=roster_id,
         id="brenner_cab",
         base_numeric_id=130,
-        name="Brenner Cab",
+        name="Brenner",
         role="very_high_speed",
         role_child_branch_num=1,
         dual_headed=True,
