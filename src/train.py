@@ -1467,10 +1467,79 @@ class PassengerEngineRailcarConsist(PassengerEngineConsist):
         return result
 
 
-class PassengerVeryHighSpeedMiddleEngineConsist(PassengerEngineConsist):
+class SnowploughEngineConsist(EngineConsist):
     """
-    Consist for an intermediate motor unit for very high speed train (TGV etc).
+    Consist for a snowplough.  Implemented as Engine so it can lead a consist in-game.
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.role = "snoughplough!"  # blame Pikka eh?
+        self.role_child_branch_num = -1
+        self.buy_menu_hint_driving_cab = True
+        self.allow_flip = True
+        # nerf power and TE down to minimal values, these confer a tiny performance boost to the train, 'operational efficiency' :P
+        self.power = 100
+        self.tractive_effort_coefficient = 0.1
+        # give it mail / express capacity so it has some purpose :P
+        self.class_refit_groups = ["mail", "express_freight"]
+        self.label_refits_allowed = []  # no specific labels needed
+        self.label_refits_disallowed = ["TOUR"]
+        self.default_cargos = polar_fox.constants.default_cargos["mail"]
+        # ....buy costs reduced from base to make it close to mail cars
+        self.fixed_buy_cost_points = 1  # to reduce it from engine factor
+        self.buy_cost_adjustment_factor = 1
+        # ....run costs reduced from base to make it close to mail cars
+        self.fixed_run_cost_points = 68
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsCustom("vehicle_snowplough.pynml")
+
+
+class TGVCabEngineConsist(EngineConsist):
+    """
+    Consist for a TGV (very high speed) engine cab (leading motor unit)
+    This has power by default and would usually be set as a dual-headed engine.
+    Adding specific middle engines (with correct ID) will increase power for this engine.
+    This does not have pax capacity, by design, to allow for TGV La Poste mail trains.
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # implemented as a list to allow multiple middle vehicles, e.g. double-deck, mail etc
+        # but...theoretical as of Dec 2018 as nml power template doesn't support iterating over multiple middle vehicles
+        self.middle_id = self.id.split("_cab")[0] + "_middle"
+        self.buy_menu_hint_wagons_add_power = True
+        self.tilt_bonus = True
+        self.lgv_capable = True
+        # note that buy costs are actually adjusted down from pax base, to account for distributed traction etc
+        self.buy_cost_adjustment_factor = 0.95
+        # ....run cost multiplier is adjusted up from pax base because regrettable realism
+        # but allow that every vehicle will have powered run costs, so not too high eh?
+        self.floating_run_cost_multiplier = 16
+        # train_flag_mu solely used for ottd livery (company colour) selection
+        # !! commented out as of July 2019 because the middle engines won't pick this up, which causes inconsistency in the buy menu
+        # self.train_flag_mu = True
+        # non-standard cite
+        self._cite = "Dr Constance Speed"
+
+    @property
+    def buy_menu_distributed_power_substring(self):
+        return "STR_WAGONS_ADD_POWER_CAB"
+
+    @property
+    def buy_menu_distributed_power_name_substring(self):
+        return self.middle_id
+
+    @property
+    def buy_menu_distributed_power_hp_value(self):
+        return self.power
+
+
+class TGVMiddleEngineConsistMixin(EngineConsist):
+    """
+    Mixin for an intermediate motor unit for very high speed train (TGV etc).
     When added to the correct cab engine, this vehicle will cause cab power to increase.
+    Add as additional class for e.g. pax or mail engine consist.
     """
 
     def __init__(self, **kwargs):
@@ -1545,72 +1614,13 @@ class PassengerVeryHighSpeedMiddleEngineConsist(PassengerEngineConsist):
         return self.cab_consist.power
 
 
-class SnowploughEngineConsist(EngineConsist):
+class TGVMiddlePassengerEngineConsist(TGVMiddleEngineConsistMixin, PassengerEngineConsist):
     """
-    Consist for a snowplough.  Implemented as Engine so it can lead a consist in-game.
-    """
-
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.role = "snoughplough!"  # blame Pikka eh?
-        self.role_child_branch_num = -1
-        self.buy_menu_hint_driving_cab = True
-        self.allow_flip = True
-        # nerf power and TE down to minimal values, these confer a tiny performance boost to the train, 'operational efficiency' :P
-        self.power = 100
-        self.tractive_effort_coefficient = 0.1
-        # give it mail / express capacity so it has some purpose :P
-        self.class_refit_groups = ["mail", "express_freight"]
-        self.label_refits_allowed = []  # no specific labels needed
-        self.label_refits_disallowed = ["TOUR"]
-        self.default_cargos = polar_fox.constants.default_cargos["mail"]
-        # ....buy costs reduced from base to make it close to mail cars
-        self.fixed_buy_cost_points = 1  # to reduce it from engine factor
-        self.buy_cost_adjustment_factor = 1
-        # ....run costs reduced from base to make it close to mail cars
-        self.fixed_run_cost_points = 68
-        # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsCustom("vehicle_snowplough.pynml")
-
-
-class TGVCabEngineConsist(EngineConsist):
-    """
-    Consist for a TGV (very high speed) engine cab (leading motor unit)
-    This has power by default and would usually be set as a dual-headed engine.
-    Adding specific middle engines (with correct ID) will increase power for this engine.
-    This does not have pax capacity, by design, to allow for TGV La Poste mail trains.
+    Pax intermediate motor unit for TGV.
     """
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # implemented as a list to allow multiple middle vehicles, e.g. double-deck, mail etc
-        # but...theoretical as of Dec 2018 as nml power template doesn't support iterating over multiple middle vehicles
-        self.middle_id = self.id.split("_cab")[0] + "_middle"
-        self.buy_menu_hint_wagons_add_power = True
-        self.tilt_bonus = True
-        self.lgv_capable = True
-        # note that buy costs are actually adjusted down from pax base, to account for distributed traction etc
-        self.buy_cost_adjustment_factor = 0.95
-        # ....run cost multiplier is adjusted up from pax base because regrettable realism
-        # but allow that every vehicle will have powered run costs, so not too high eh?
-        self.floating_run_cost_multiplier = 16
-        # train_flag_mu solely used for ottd livery (company colour) selection
-        # !! commented out as of July 2019 because the middle engines won't pick this up, which causes inconsistency in the buy menu
-        # self.train_flag_mu = True
-        # non-standard cite
-        self._cite = "Dr Constance Speed"
-
-    @property
-    def buy_menu_distributed_power_substring(self):
-        return "STR_WAGONS_ADD_POWER_CAB"
-
-    @property
-    def buy_menu_distributed_power_name_substring(self):
-        return self.middle_id
-
-    @property
-    def buy_menu_distributed_power_hp_value(self):
-        return self.power
 
 
 class CarConsist(Consist):

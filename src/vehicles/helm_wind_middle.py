@@ -1,12 +1,12 @@
-from train import PassengerVeryHighSpeedMiddleEngineConsist, ElectricHighSpeedPaxUnit
+from train import TGVMiddlePassengerEngineConsist, ElectricHighSpeedPaxUnit
 
 
 def main(roster_id):
-    consist = PassengerVeryHighSpeedMiddleEngineConsist(
+    consist = TGVMiddlePassengerEngineConsist(
         roster_id=roster_id,
         id="helm_wind_middle",
         base_numeric_id=2890,
-        name="Helm Wind Middle",
+        name="Helm Wind Passenger Coach",
         role="very_high_speed",
         role_child_branch_num=2,
         power=0,  # set power 0, when attached to correct cab, cab power will be increased

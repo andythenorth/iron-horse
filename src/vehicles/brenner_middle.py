@@ -1,12 +1,12 @@
-from train import PassengerVeryHighSpeedMiddleEngineConsist, ElectricHighSpeedPaxUnit
+from train import TGVMiddlePassengerEngineConsist, ElectricHighSpeedPaxUnit
 
 
 def main(roster_id):
-    consist = PassengerVeryHighSpeedMiddleEngineConsist(
+    consist = TGVMiddlePassengerEngineConsist(
         roster_id=roster_id,
         id="brenner_middle",
         base_numeric_id=2880,
-        name="Brenner Middle",
+        name="Brenner Passenger Coach",
         role="very_high_speed",
         role_child_branch_num=2,
         pantograph_type="z-shaped-single-with-base",
