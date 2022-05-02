@@ -20,6 +20,7 @@ from vehicles import booster
 from vehicles import braf
 from vehicles import breeze
 from vehicles import brenner_cab
+from vehicles import brenner_middle_mail
 from vehicles import brenner_middle_passenger
 from vehicles import bright_country
 from vehicles import buffalo
@@ -70,6 +71,7 @@ from vehicles import happy_train
 from vehicles import hawkinge
 from vehicles import hector
 from vehicles import helm_wind_cab
+from vehicles import helm_wind_middle_mail
 from vehicles import helm_wind_middle_passenger
 from vehicles import hercules
 from vehicles import high_flyer
@@ -472,8 +474,10 @@ def main(disabled=False):
             scorcher,
             helm_wind_cab,
             helm_wind_middle_passenger,
+            helm_wind_middle_mail,
             brenner_cab,
             brenner_middle_passenger,
+            brenner_middle_mail,
             # metro
             serpentine,
             westbourne,

@@ -344,7 +344,7 @@ class Consist(object):
                 "pax_railbus": [1, -1],
                 "pax_railcar": [1, 2],
             },
-            "very_high_speed": {"very_high_speed": [1, 2]},
+            "very_high_speed": {"very_high_speed": [1, 2, 3]},
             "universal": {"universal": [1, 2]},
         }
         if self.gen == 1:
@@ -1611,7 +1611,18 @@ class TGVMiddleEngineConsistMixin(EngineConsist):
         return self.cab_consist.power
 
 
-class TGVMiddlePassengerEngineConsist(TGVMiddleEngineConsistMixin, PassengerEngineConsist):
+class TGVMiddleMailEngineConsist(TGVMiddleEngineConsistMixin, MailEngineConsist):
+    """
+    Pax intermediate motor unit for TGV.
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+
+
+class TGVMiddlePassengerEngineConsist(
+    TGVMiddleEngineConsistMixin, PassengerEngineConsist
+):
     """
     Pax intermediate motor unit for TGV.
     """
@@ -4618,9 +4629,9 @@ class ElectricEngineUnit(Train):
         self._symmetry_type = kwargs.get("symmetry_type", "asymmetric")
 
 
-class ElectricHighSpeedPaxUnit(Train):
+class ElectricHighSpeedUnitBase(Train):
     """
-    Unit for high-speed, high-power pax electric train
+    Unit for high-speed, high-power electric train
     """
 
     def __init__(self, **kwargs):
@@ -4631,16 +4642,35 @@ class ElectricHighSpeedPaxUnit(Train):
             "default": ["EFFECT_SPAWN_MODEL_ELECTRIC", "EFFECT_SPRITE_ELECTRIC"]
         }
         self.consist.str_name_suffix = "STR_NAME_SUFFIX_ELECTRIC"
-        # the cab magic won't work unless it's asymmetrical eh? :P
         self._symmetry_type = "asymmetric"
+
+
+class ElectricHighSpeedMailUnit(ElectricHighSpeedUnitBase):
+    """
+    Mail unit for high-speed, high-power electric train
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        # magic to set capacity subject to length
+        base_capacity = self.consist.roster.freight_car_capacity_per_unit_length[
+            self.consist.base_track_type
+        ][self.consist.gen - 1]
+        self.capacity = (
+            self.vehicle_length * base_capacity
+        ) / polar_fox.constants.mail_multiplier
+
+
+class ElectricHighSpeedPaxUnit(ElectricHighSpeedUnitBase):
+    """
+    Passenger unit for high-speed, high-power electric train
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
         # magic to set high speed pax car capacity subject to length
-        # uses a value in between pax and lux pax; this won't work with double deck high speed in future, extend a kwarg then if needed
-        # use a conditional so that some cab cars can set capacity 0
-        if kwargs.get("capacity", None) is not None:
-            self.capacity = kwargs["capacity"]
-        else:
-            # magic to set capacity subject to length and vehicle capacity type
-            self.capacity = self.get_pax_car_capacity()
+        # this won't work with double deck high speed in future, extend a class for that then if needed
+        self.capacity = self.get_pax_car_capacity()
 
 
 class ElectroDieselEngineUnit(Train):
