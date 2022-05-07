@@ -83,9 +83,11 @@
                 <li>&hellip;more modifiers added as needed</li>
             </ul>
             <p>
-                Vehicles <strong>do not</strong> set labels from the standardised railtype scheme as fallbacks as of April 2022.
-                This is so that railtype authors using the standardised railtype scheme can control how they wish to map Iron Horse vehicles to their railtypes.
-                Authors can do this by using the Iron Horse labels in the alternative_railtype_list property for their railtypes.
+                The uses of labels specific to Iron Horse means that railtype authors can control precisely how they wish to map Iron Horse vehicles to railtypes in their railtype grf.  This is done using the railtypes property <code>alternative_railtype_list</code>.
+            </p>
+            <p>
+                For some vehicle types, Iron Horse may also set labels from the <a href="https://newgrf-specs.tt-wiki.net/wiki/Standardized_Railtype_Scheme">Standardised Railtype Scheme</a> <strong>as fallbacks only</strong>.
+                Iron Horse is only <strong>partially compliant</strong> with the Standardised Railtype Scheme, and uses the <a href="https://newgrf-specs.tt-wiki.net/wiki/Standardized_Railtype_Scheme#.22Innsbruck_2022_Convention.22_for_partial_compliance">"Innsbruck 2022 Convention"</a> where axle load classes are treated as "undefined".
             </p>
             <hr />
             <br />
