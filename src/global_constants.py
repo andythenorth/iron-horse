@@ -90,9 +90,9 @@ buy_menu_sort_order_wagons = [
 base_track_type_to_railtype_mapping = {
     "RAIL": ["IHA_", "RAIL"],
     "RAIL_ELECTRIFIED": ["IHB_", "ELRL"],
-    "METRO": ["IHC_", "MTRO"],
-    "NG": ["IHD_", "NGRL"],
-    "NG_ELECTRIFIED": ["IHE_", "ELNG"],
+    "METRO": ["IHC_", "MTRO", "SAA4"],
+    "NG": ["IHD_", "NGRL", "NAAN"],
+    "NG_ELECTRIFIED": ["IHE_", "ELNG", "NAAE"],
     "LGV": ["IHAA", "RAIL"],
     "LGV_ELECTRIFIED": ["IHBA", "ELRL"],
 }
