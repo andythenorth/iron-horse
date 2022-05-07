@@ -84,7 +84,7 @@ buy_menu_sort_order_wagons = [
 # the rest are fallbacks, in order, for use with other railtype grfs
 # railtype authors need to be able to control mapping IHXX types to their preferred scheme, which they can do using railtype alternative_railtype_list property
 # see the docs Code Reference page for further explanation of the Iron Horse label schema
-# Standardised Railtype Scheme (SRS) labels must be used as fallbacks *only*
+# Standardised Railtype Scheme (SRS) labels are *only* to be used as *fallbacks*, and only where appropriate
 # Iron Horse only partially complies with the SRS, using the Innsbruck 2022 Convention, where axle load is always set to A, equivalent to 'undefined'
 # see https://newgrf-specs.tt-wiki.net/wiki/Standardized_Railtype_Scheme#.22Innsbruck_2022_Convention.22_for_partial_compliance
 base_track_type_to_railtype_mapping = {
