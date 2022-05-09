@@ -193,8 +193,8 @@ STR_RAILTYPE_LGV_ELECTRIFIED_NAME                               :Dedicated High 
 STR_RAILTYPE_LGV_ELECTRIFIED_TOOLBAR_CAPTION                    :Dedicated High Speed Railway Construction
 STR_RAILTYPE_LGV_ELECTRIFIED_MENU_TEXT                          :Dedicated high speed railway construction
 STR_RAILTYPE_LGV_ELECTRIFIED_BUILD_WINDOW_CAPTION               :New Dedicated High Speed Vehicles
-STR_RAILTYPE_LGV_ELECTRIFIED_AUTOREPLACE_TEXT                   :[unused]
-STR_RAILTYPE_LGV_ELECTRIFIED_NEW_ENGINE_TEXT                    :[unused]
+STR_RAILTYPE_LGV_ELECTRIFIED_AUTOREPLACE_TEXT                   :Dedicated High Speed Vehicles
+STR_RAILTYPE_LGV_ELECTRIFIED_NEW_ENGINE_TEXT                    :high speed
 
 #metro track strings
 STR_RAILTYPE_METRO_NAME                                         :Metro Railway
