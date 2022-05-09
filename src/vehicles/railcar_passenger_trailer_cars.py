@@ -7,7 +7,7 @@ from train import (
 def main():
     # --------------- pony NG----------------------------------------------------------------------
 
-    # NG is railbus only for Pony
+    # Pony NG uses railbus trailers, not railcar
 
     # --------------- pony ----------------------------------------------------------------------
 
