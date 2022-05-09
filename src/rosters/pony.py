@@ -196,8 +196,10 @@ def main(disabled=False):
                     115,
                     125,
                 ],
-                "hst": [0, 0, 0, 112, 125, 140],  # only gen 4, 5 and 6 HST provided
-                "very_high_speed": [0, 0, 0, 0, 140, 186],
+                "hst": [0, 0, 0, 112, 125, 125],
+                "hst_on_lgv": [0, 0, 0, 112, 125, 140],
+                "very_high_speed": [0, 0, 0, 0, 125, 125],
+                "very_high_speed_on_lgv": [0, 0, 0, 0, 140, 186],
             },
             "METRO": {
                 "standard": [45, 55, 65]

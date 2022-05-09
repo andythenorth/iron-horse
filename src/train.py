@@ -549,6 +549,19 @@ class Consist(object):
             return None
 
     @property
+    def speed_on_lgv(self):
+        if not self.lgv_capable:
+            raise Exception(self.id, "is not lgv capable, but is attempting to set speed on lgv")
+
+        # mildly JDFI hacky
+        if self.role in ["hst"]:
+            return self.get_speed_by_class("hst_on_lgv")
+        elif self.role in ["very_high_speed"]:
+            return self.get_speed_by_class("very_high_speed_on_lgv")
+        else:
+            return self.get_speed_by_class(self.speed_class + "_on_lgv")
+
+    @property
     def power_speed_ratio(self):
         # used in docs, as a way of comparing performance between vehicles, especially across generations in same branch of tech tree
         # see also: http://cs.trains.com/trn/f/111/t/188661.aspx
