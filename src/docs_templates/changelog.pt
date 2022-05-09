@@ -2,6 +2,15 @@ Changelog
 =========
 
 -------------
+2.46.2 Release
+-------------
+
+*Fixes*
+
+- hide unfinished automobile transporter wagons
+
+
+-------------
 2.46.1 Release
 -------------
 
@@ -9,7 +18,7 @@ Changelog
 
 - for vehicles that can use Dedicated High Speed Railway
     - explain variable speed in buy menu
-    - default to lower (normal rail) speed in buy menu
+    - default to showing lower (normal rail) speed in buy menu
 
 *Fixes*
 
