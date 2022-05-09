@@ -2,6 +2,23 @@ Changelog
 =========
 
 -------------
+2.46.1 Release
+-------------
+
+*Changes*
+
+- for vehicles that can use Dedicated High Speed Railway
+    - explain variable speed in buy menu
+    - default to lower (normal rail) speed in buy menu
+
+*Fixes*
+
+- set correct speed for Helm Wind on normal rail
+- add missing strings for Dedicated High Speed Railway
+- set correct weight for narrow gauge railbus trailers
+
+
+-------------
 2.46.0 Release
 -------------
 
