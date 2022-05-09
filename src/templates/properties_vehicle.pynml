@@ -4,7 +4,7 @@
     <tal:include metal:use-macro="load: create_effect.pynml" />
 </tal:create_effect>
 
-<tal:buy_menu_text condition="vehicle.is_lead_unit_of_consist and (consist.power > 0 or consist.buy_menu_hint_wagons_add_power) or consist._buy_menu_role_string is not None">
+<tal:buy_menu_text condition="vehicle.is_lead_unit_of_consist and (consist.power > 0 or consist.buy_menu_hint_wagons_add_power) or consist._buy_menu_role_string is not None or consist.lgv_capable">
     <tal:include metal:use-macro="load: buy_menu_text.pynml" />
 </tal:buy_menu_text>
 

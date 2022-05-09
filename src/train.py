@@ -698,8 +698,12 @@ class Consist(object):
         # variable_power and wagons_add_power are mutually exclusive (asserted by engine_varies_power_by_railtype as of August 2019)
         if self.engine_varies_power_by_railtype(vehicle):
             return "variable_power"
-        elif self.buy_menu_hint_wagons_add_power:
-            return "wagons_add_power"
+        elif self.lgv_capable:
+            # yeah, simplicity failed when lgv_capable was added, this simple tree needs rethought to allow better composition of arbitrary strings
+            if self.buy_menu_hint_wagons_add_power:
+                return "lgv_capable_and_wagons_add_power"
+            else:
+                return "lgv_capable"
         elif self.buy_menu_hint_driving_cab:
             return "driving_cab"
         elif self.buy_menu_hint_restaurant_car:
@@ -712,6 +716,9 @@ class Consist(object):
         # optional string if engine varies power by railtype
         if self.engine_varies_power_by_railtype(vehicle):
             result.append("STR_POWER_BY_RAILTYPE")
+        # optional string if consist is lgv-capable
+        if self.lgv_capable:
+            result.append("STR_SPEED_BY_RAILTYPE_LGV_CAPABLE")
         # optional string if dedicated wagons add power
         if self.buy_menu_hint_wagons_add_power:
             result.append(self.buy_menu_distributed_power_substring)
@@ -744,6 +751,16 @@ class Consist(object):
                 + result[0]
                 + "), string("
                 + result[1]
+                + ")"
+            )
+        if len(result) == 3:
+            return (
+                "STR_BUY_MENU_WRAPPER_THREE_SUBSTR, string("
+                + result[0]
+                + "), string("
+                + result[1]
+                + "), string("
+                + result[2]
                 + ")"
             )
         # should never be reached, extend this if we do
