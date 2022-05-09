@@ -3539,8 +3539,7 @@ class PassengerRailbusTrailerCarConsist(PassengerCarConsistBase):
         # directly set role buy menu string here, don't set a role as that confuses the tech tree etc
         self._buy_menu_role_string = "STR_ROLE_GENERAL_PURPOSE"
         # I'd prefer @property, but it was TMWFTLB to replace instances of weight_factor with _weight_factor for the default value
-        # for railbus trailers, the capacity is doubled, so halve the weight factor, this could have been automated with some constants etc but eh, TMWFTLB
-        self.weight_factor = 0.33 if self.base_track_type == "NG" else 1
+        self.weight_factor = 1 if self.base_track_type == "NG" else 2
         # Graphics configuration
         self.roof_type = "pax_mail_smooth"
         # 2 liveries, don't need to match anything else, railbus isn't intended to combine well with other vehicle types
