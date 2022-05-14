@@ -2188,7 +2188,8 @@ class CabooseCarConsistBase(CarConsist):
         # refit nothing, don't mess with this, it breaks auto-replace
         self.class_refit_groups = []
         # label refits are just to get caboose to use freight car livery group
-        self.label_refits_allowed = ["ENSP"]
+        # try to catch enough common cargos otherwise the vehicle will be hidden; don't use MAIL as that forces pax colour group
+        self.label_refits_allowed = ["ENSP", "GOOD", "COAL", "WOOD", "OIL_"]
         self.label_refits_disallowed = []
         self.buy_cost_adjustment_factor = (
             0.75  # chop down caboose costs, they're just eye candy eh
