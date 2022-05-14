@@ -76,6 +76,7 @@ buy_menu_sort_order_wagons = [
     "ingot_car",
     "slag_ladle_car",
     "caboose_car",
+    "goods_caboose_car",
 ]
 
 # mapping of internal base_track_type values to actual railtype labels

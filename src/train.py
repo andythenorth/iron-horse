@@ -2177,30 +2177,50 @@ class BulkheadFlatCarConsist(CarConsist):
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(piece="flat")
 
 
-class CabooseCarConsist(CarConsist):
+class CabooseCarConsistBase(CarConsist):
     """
     Caboose, brake van etc - no gameplay purpose, just eye candy.
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "caboose_car"
         super().__init__(**kwargs)
         self.speed_class = None  # no speed limit
         # refit nothing, don't mess with this, it breaks auto-replace
         self.class_refit_groups = []
-        self.label_refits_allowed = []
+        # label refits are just to get caboose to use freight car livery group
+        self.label_refits_allowed = ["ENSP"]
         self.label_refits_disallowed = []
         self.buy_cost_adjustment_factor = (
             0.75  # chop down caboose costs, they're just eye candy eh
         )
         # liveries swap CC on user-flip, so no swapping CC randomly
-        self.use_colour_randomisation_strategies = False
+        self.use_colour_randomisation_strategies = True
         self.allow_flip = True
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsCaboose(
             num_generations=len(self.roster.intro_dates[self.base_track_type]),
             recolour_maps=graphics_constants.caboose_livery_recolour_maps,
         )
+
+
+class CabooseCarConsist(CabooseCarConsistBase):
+    """
+    Default caboose, brake van etc - no gameplay purpose, just eye candy.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "caboose_car"
+        super().__init__(**kwargs)
+
+
+class GoodsCabooseCarConsist(CabooseCarConsistBase):
+    """
+    Alternative coloured caboose, brake van etc - no gameplay purpose, just eye candy.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "goods_caboose_car"
+        super().__init__(**kwargs)
 
 
 class CarbonBlackHopperCarConsist(CarConsist):

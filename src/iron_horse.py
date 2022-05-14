@@ -44,6 +44,7 @@ from vehicles import bolster_cars
 from vehicles import box_cars
 from vehicles import bulkhead_flat_cars
 from vehicles import caboose_cars
+from vehicles import goods_caboose_cars
 from vehicles import carbon_black_hopper_cars
 from vehicles import cement_silo_cars
 from vehicles import chemical_covered_hopper_cars
@@ -319,6 +320,7 @@ def main():
     farm_products_hopper_cars.main()
     flat_cars.main()
     goods_box_cars.main()
+    goods_caboose_cars.main()
     hood_open_cars.main()
     hopper_cars.main()
     hst_mail_cars.main()
