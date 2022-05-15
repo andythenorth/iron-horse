@@ -97,7 +97,6 @@ def main():
         "procedures_cargo_subtypes",
         "procedures_colour_randomisation_strategies",
         "procedures_consist_specific_liveries",
-        "procedures_get_lead_engine_gen",
         "procedures_haulage_bonus",
         "procedures_opening_doors",
         "procedures_restaurant_cars",

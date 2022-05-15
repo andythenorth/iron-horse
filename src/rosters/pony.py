@@ -249,6 +249,11 @@ def main(disabled=False):
         },
         # freight car weight factor varies slightly by gen, reflecting modern cars with lighter weight
         train_car_weight_factors=[0.5, 0.5, 0.5, 0.48, 0.44, 0.40],
+        # caboose options (family name is an arbitrary string, should be unique per roster, caboose names are arbitrary strings, flat namespace)
+        caboose_families={
+            "pony_auto_1": ["test"],
+            "pony_gwr_1": ["test"],
+        },
         # specify lists of cc1 and not_cc2 colours, and an option to remap all the cc1 to a specific other cc (allowing multiple input colours to map to one result)
         livery_presets={
             "EWS": {

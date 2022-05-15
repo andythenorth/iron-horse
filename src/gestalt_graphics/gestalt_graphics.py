@@ -293,6 +293,7 @@ class GestaltGraphicsCaboose(GestaltGraphics):
         self.pipelines = pipelines.get_pipelines(
             ["extend_spriterows_for_composited_sprites_pipeline"]
         )
+        print("num_generations needs refactoring in GestaltGraphicsCaboose")
         self.num_generations = num_generations
         # common format for recolour_maps provides multiple remaps
         # but just one livery remap is supported for this gestalt, and should be the first in the remap list

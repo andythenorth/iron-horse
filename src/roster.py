@@ -24,6 +24,7 @@ class Roster(object):
         )
         self.pax_car_capacity_types = kwargs.get("pax_car_capacity_types")
         self.train_car_weight_factors = kwargs.get("train_car_weight_factors")
+        self.caboose_families = kwargs.get("caboose_families")
         self.livery_presets = kwargs.get("livery_presets", [])
         self.disabled = False
 
