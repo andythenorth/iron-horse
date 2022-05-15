@@ -1,0 +1,12 @@
+<!--! procedure for getting the generation of the lead engine -->
+
+switch (FEAT_TRAINS, PARENT, switch_get_lead_engine_gen, vehicle_type_id) {
+<!--! this doesn't check grfid currently - add later if needed
+      this may also exceed the number of permitted ranges as number of engines increases, if that happens, try sharding (probably by roster) -->
+    <tal:rosters repeat="roster active_rosters">
+        <tal:engine_consists repeat="engine_consist roster.engine_consists">
+            ${engine_consist.id}: return ${engine_consist.gen};
+        </tal:engine_consists>
+    </tal:rosters>
+    return 0; <!--! 0 can be used to detect engine not found -->
+}

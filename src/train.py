@@ -398,16 +398,6 @@ class Consist(object):
         return None
 
     @property
-    def engine_consists_for_caboose_cars(self):
-        # caboose cars adjust livery depending on engine
-        # this could be renamed for use with non-caboose types if ever needed
-        result = []
-        for consist in self.roster.engine_consists:
-            if self.base_track_type == consist.base_track_type:
-                result.append(consist)
-        return result
-
-    @property
     def replacement_consist(self):
         # option exists to force a replacement consist, this is used to merge tech tree branches
         if self.role_child_branch_num == 0:

@@ -28,13 +28,11 @@ switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_graphics_vehicle_no_consist, c
 }
 
 
-switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_graphics_vehicle, vehicle_type_id) {
-<!--! this doesn't check grfid currently - add later if needed
-      this may also exceed the number of permitted ranges as number of engines increases, if that happens, try sharding (probably by roster) -->
-    <tal:livery_engine_ids repeat="engine_consist consist.engine_consists_for_caboose_cars">
-        <!--! note that livery variants are zero-indexed, generations are one-indexed -->
-        ${engine_consist.id}: return ${vehicle.id}_switch_graphics_livery_${engine_consist.gen - 1};
-    </tal:livery_engine_ids>
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, switch_get_lead_engine_gen()) {
+    <!--! note that engines are indexed to 1, liveries are indexed to 0 -->
+    <tal:gen repeat="gen range(1, 1 + len(consist.roster.intro_dates[consist.base_track_type]))">
+        ${gen}: return ${vehicle.id}_switch_graphics_livery_${gen - 1};
+    </tal:gen>
     return ${vehicle.id}_switch_graphics_vehicle_no_consist;
 }
 
