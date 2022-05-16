@@ -21,7 +21,7 @@
 
 <tal:caboose_families repeat="caboose_family consist.roster.caboose_families.items()">
     // ${caboose_family}
-    random_switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_graphics_caboose_family_${caboose_family[0]}) {
+    random_switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_caboose_family_${caboose_family[0]}) {
         <tal:caboose_family_variants repeat="caboose_variant caboose_family[1]">
             1: return ${vehicle.id}_switch_graphics_variant_${caboose_variant};
         </tal:caboose_family_variants>
