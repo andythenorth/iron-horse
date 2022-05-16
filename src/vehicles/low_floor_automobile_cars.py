@@ -41,4 +41,3 @@ def main():
     )
 
     consist.add_unit(type=AutomobileCar, chassis="4_axle_running_gear_only_32px")
-
