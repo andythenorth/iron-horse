@@ -111,6 +111,25 @@ from vehicles import torpedo_cars
 from vehicles import vehicle_parts_box_cars
 
 
+def vacant_numeric_ids_formatted():
+    # when adding vehicles it's useful to know what the next free numeric ID is
+    # tidy-mind problem, but do we have any vacant numeric ID slots in the currently used range?
+    # 'print' eh? - but it's fine echo_message isn't intended for this kind of info, don't bother changing
+    max_id = max(numeric_id_defender) - (max(numeric_id_defender) % 10)
+    id_gaps = []
+    for i in range(0, int(max_id / 10)):
+        id = i * 10
+        if id not in numeric_id_defender:
+            id_gaps.append(str(id))
+    return (
+        "Vacant numeric ID slots: "
+        + ", ".join(id_gaps)
+        + (" and from " if len(id_gaps) > 0 else "")
+        + str(max_id + 10)
+        + " onwards"
+    )
+
+
 def get_active_railtypes():
     active_railtypes = [
         railtype for railtype in registered_railtypes if not railtype.disabled
@@ -143,6 +162,32 @@ class ActiveRosters(list):
     def __init__(self):
         for roster in get_active_rosters():
             self.append(roster)
+
+    @property
+    def consists_in_buy_menu_order(self):
+        consists = []
+        # first compose the buy menu order list
+        buy_menu_sort_order = []
+        for roster in self:
+            buy_menu_sort_order.extend(roster.buy_menu_sort_order)
+            consists.extend(roster.consists_in_buy_menu_order)
+
+        # now guard against any consists missing from buy menu order or vice versa, as that wastes time asking 'wtf?' when they don't appear in game
+        consist_id_defender = set([consist.id for consist in consists])
+        buy_menu_defender = set(buy_menu_sort_order)
+        for id in buy_menu_defender.difference(consist_id_defender):
+            utils.echo_message(
+                "Warning: consist "
+                + id
+                + " in buy_menu_sort_order, but not found in registered_consists"
+            )
+        for id in consist_id_defender.difference(buy_menu_defender):
+            utils.echo_message(
+                "Warning: consist "
+                + id
+                + " in consists, but not in buy_menu_sort_order - won't show in game"
+            )
+        return consists
 
     @property
     def restaurant_car_ids(self):
@@ -236,52 +281,6 @@ class ActiveRosters(list):
                 "action 2 switch is limited to 255 values, livery_2_engine_ids exceeds this - needs split across multiple switches"
             )
         return result
-
-
-def get_consists_in_buy_menu_order():
-    consists = []
-    # first compose the buy menu order list
-    buy_menu_sort_order = []
-    active_rosters = get_active_rosters()
-    for roster in active_rosters:
-        buy_menu_sort_order.extend(roster.buy_menu_sort_order)
-        consists.extend(roster.consists_in_buy_menu_order)
-
-    # now guard against any consists missing from buy menu order or vice versa, as that wastes time asking 'wtf?' when they don't appear in game
-    consist_id_defender = set([consist.id for consist in consists])
-    buy_menu_defender = set(buy_menu_sort_order)
-    for id in buy_menu_defender.difference(consist_id_defender):
-        utils.echo_message(
-            "Warning: consist "
-            + id
-            + " in buy_menu_sort_order, but not found in registered_consists"
-        )
-    for id in consist_id_defender.difference(buy_menu_defender):
-        utils.echo_message(
-            "Warning: consist "
-            + id
-            + " in consists, but not in buy_menu_sort_order - won't show in game"
-        )
-    return consists
-
-
-def vacant_numeric_ids_formatted():
-    # when adding vehicles it's useful to know what the next free numeric ID is
-    # tidy-mind problem, but do we have any vacant numeric ID slots in the currently used range?
-    # 'print' eh? - but it's fine echo_message isn't intended for this kind of info, don't bother changing
-    max_id = max(numeric_id_defender) - (max(numeric_id_defender) % 10)
-    id_gaps = []
-    for i in range(0, int(max_id / 10)):
-        id = i * 10
-        if id not in numeric_id_defender:
-            id_gaps.append(str(id))
-    return (
-        "Vacant numeric ID slots: "
-        + ", ".join(id_gaps)
-        + (" and from " if len(id_gaps) > 0 else "")
-        + str(max_id + 10)
-        + " onwards"
-    )
 
 
 def main():

@@ -89,7 +89,7 @@ def main():
     )
     hint_file.close()
 
-    consists = iron_horse.get_consists_in_buy_menu_order()
+    consists = iron_horse.ActiveRosters().consists_in_buy_menu_order
 
     # get a list of 2-tuple pairs for spritelayer cargos + cargo sets
     # a list format is wanted for convenience with graphics multiprocessing pool

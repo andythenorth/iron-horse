@@ -797,7 +797,7 @@ def main():
     shutil.copytree(static_dir_src, static_dir_dst)
 
     # import iron_horse inside main() as it's so slow to import, and should only be imported explicitly
-    consists = iron_horse.get_consists_in_buy_menu_order()
+    consists = iron_horse.ActiveRosters().consists_in_buy_menu_order
     # default sort for docs is by intro date
     consists = sorted(consists, key=lambda consist: consist.intro_date)
     dates = sorted([i.intro_date for i in consists])

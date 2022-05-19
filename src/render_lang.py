@@ -43,7 +43,7 @@ hint_file.close()
 def main():
     start = time()
     iron_horse.main()
-    consists = iron_horse.get_consists_in_buy_menu_order()
+    consists = iron_horse.ActiveRosters().consists_in_buy_menu_order
 
     languages_with_generation = ("english",)
     for i in languages_with_generation:
