@@ -237,6 +237,7 @@ def get_cargo_sprinter_ids():
 def get_pax_car_ids():
     # for pax cars with consist-specific liveries
     # will check for other neighbouring pax cars before showing brake car
+    # !! this could have been done by the pax cars registering themselves into a structure in the roster
     result = []
     for roster in get_active_rosters():
         for consists in roster.wagon_consists.values():
@@ -260,6 +261,7 @@ def get_pax_car_ids():
 def get_restaurant_car_ids():
     # for pax cars with consist-specific liveries
     # will check for other neighbouring pax cars before showing brake car
+    # !! this could have been done by the pax cars registering themselves into a structure in the roster
     result = []
     for roster in get_active_rosters():
         for consists in roster.wagon_consists.values():
