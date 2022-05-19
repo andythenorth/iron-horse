@@ -133,6 +133,111 @@ def get_active_rosters():
     return active_rosters
 
 
+class ActiveRosters(list):
+    """
+    Sometimes we want to conveniently expose attributes that span active rosters.
+    This is a class to manage that, intended for use as a singleton, which can be passed to templates etc.
+    Extends default python list, as we also use it when we want a list of active rosters (the instantiated class instance behaves like a list object).
+    """
+
+    def __init__(self):
+        for roster in get_active_rosters():
+            self.append(roster)
+
+    @property
+    def restaurant_car_ids(self):
+        result = []
+        for roster in self:
+            result.extend(roster.restaurant_car_ids)
+        if len(result) > 255:
+            utils.echo_message(
+                "action 2 switch is limited to 255 values, restaurant_car_ids exceeds this - needs split across multiple switches"
+            )
+        return result
+
+    @property
+    def haulage_bonus_engine_id_tree(self):
+        # supports a BAD FEATURE easter egg, where some railcar speeds are increased when hauled by express engine, and can be used as fast MUs
+        express_engine_ids = []
+        for roster in self:
+            for consist in roster.engine_consists:
+                # check for express-type roles, which are determined by multiple role groups
+                for role_group_mapping_key in [
+                    "express",
+                    "driving_cab",
+                    "express_railcar",
+                ]:
+                    group_roles = global_constants.role_group_mapping[
+                        role_group_mapping_key
+                    ]
+                    if consist.role in group_roles:
+                        express_engine_ids.append(consist.id)
+        return [(count, id) for count, id in enumerate(express_engine_ids)]
+
+    @property
+    def cargo_sprinter_ids(self):
+        # find cargo_sprinters
+        # used to switch wagon company colours
+        result = []
+        for roster in self:
+            for consist in roster.engine_consists:
+                # abuse the spritelayer_cargo_layers property here, we're just looking for a string, this might be fragile, but eh
+                if "cargo_sprinter" in getattr(consist, "spritelayer_cargo_layers", []):
+                    result.append(consist.id)
+        if len(result) > 255:
+            utils.echo_message(
+                "action 2 switch is limited to 255 values, cargo_sprinter_ids exceeds this - needs split across multiple switches"
+            )
+        return result
+
+    @property
+    def pax_car_ids(self):
+        # for pax cars with consist-specific liveries
+        # will check for other neighbouring pax cars before showing brake car
+        result = []
+        for roster in self:
+            for consists in roster.wagon_consists.values():
+                for consist in consists:
+                    if getattr(
+                        consist,
+                        "report_as_pax_car_to_neighbouring_vehicle_in_rulesets",
+                        False,
+                    ):
+                        result.append(consist.base_numeric_id)
+            for consist in roster.engine_consists:
+                if getattr(consist, "treat_as_pax_car_for_var_41", False):
+                    result.append(consist.id)
+        if len(result) > 255:
+            utils.echo_message(
+                "action 2 switch is limited to 255 values, pax_car_ids result exceeds this - needs split across multiple switches"
+            )
+        return result
+
+    @property
+    def livery_2_engine_ids(self):
+        # for vehicles with consist-specific liveries
+        # will switch vehicle to livery 2 for specific roles of lead engine
+        result = []
+        for roster in self:
+            for consist in roster.engine_consists:
+                if consist.force_default_pax_mail_livery == 1:
+                    continue
+                if consist.force_default_pax_mail_livery == 2:
+                    result.append(consist.id)
+                    continue
+                # generally it's better to force the livery per engine as wanted, but some railcars automatically switch by role
+                if (consist.role, consist.role_child_branch_num) in [
+                    ("pax_railcar", 2),
+                    ("mail_railcar", 2),
+                ]:
+                    result.append(consist.id)
+        if len(result) > 255:
+            utils.echo_message(
+                "action 2 switch is limited to 255 values, livery_2_engine_ids exceeds this - needs split across multiple switches"
+            )
+        return result
+
+
 def get_consists_in_buy_menu_order():
     consists = []
     # first compose the buy menu order list
@@ -179,102 +284,6 @@ def vacant_numeric_ids_formatted():
     )
 
 
-def get_haulage_bonus_engine_id_tree():
-    # supports a BAD FEATURE easter egg, where some railcar speeds are increased when hauled by express engine, and can be used as fast MUs
-    express_engine_ids = []
-    for roster in get_active_rosters():
-        for consist in roster.engine_consists:
-            # check for express-type roles, which are determined by multiple role groups
-            for role_group_mapping_key in ["express", "driving_cab", "express_railcar"]:
-                group_roles = global_constants.role_group_mapping[
-                    role_group_mapping_key
-                ]
-                if consist.role in group_roles:
-                    express_engine_ids.append(consist.id)
-    return [(count, id) for count, id in enumerate(express_engine_ids)]
-
-
-def get_livery_2_engine_ids():
-    # for vehicles with consist-specific liveries
-    # will switch vehicle to livery 2 for specific roles of lead engine
-    result = []
-    for roster in get_active_rosters():
-        for consist in roster.engine_consists:
-            if consist.force_default_pax_mail_livery == 1:
-                continue
-            if consist.force_default_pax_mail_livery == 2:
-                result.append(consist.id)
-                continue
-            # generally it's better to force the livery per engine as wanted, but some railcars automatically switch by role
-            if (consist.role, consist.role_child_branch_num) in [
-                ("pax_railcar", 2),
-                ("mail_railcar", 2),
-            ]:
-                result.append(consist.id)
-    if len(result) > 255:
-        utils.echo_message(
-            "action 2 switch is limited to 255 values, get_livery_2_engine_ids exceeds this - needs split across multiple switches"
-        )
-    return result
-
-
-def get_cargo_sprinter_ids():
-    # find cargo_sprinters
-    # used to switch wagon company colours
-    result = []
-    for roster in get_active_rosters():
-        for consist in roster.engine_consists:
-            # abuse the spritelayer_cargo_layers property here, we're just looking for a string, this might be fragile, but eh
-            if "cargo_sprinter" in getattr(consist, "spritelayer_cargo_layers", []):
-                result.append(consist.id)
-    if len(result) > 255:
-        utils.echo_message(
-            "action 2 switch is limited to 255 values, get_livery_2_engine_ids exceeds this - needs split across multiple switches"
-        )
-    return result
-
-
-def get_pax_car_ids():
-    # for pax cars with consist-specific liveries
-    # will check for other neighbouring pax cars before showing brake car
-    # !! this could have been done by the pax cars registering themselves into a structure in the roster
-    result = []
-    for roster in get_active_rosters():
-        for consists in roster.wagon_consists.values():
-            for consist in consists:
-                if getattr(
-                    consist,
-                    "report_as_pax_car_to_neighbouring_vehicle_in_rulesets",
-                    False,
-                ):
-                    result.append(consist.base_numeric_id)
-        for consist in roster.engine_consists:
-            if getattr(consist, "treat_as_pax_car_for_var_41", False):
-                result.append(consist.id)
-    if len(result) > 255:
-        utils.echo_message(
-            "action 2 switch is limited to 255 values, get_pax_car_ids exceeds this - needs split across multiple switches"
-        )
-    return result
-
-
-def get_restaurant_car_ids():
-    # for pax cars with consist-specific liveries
-    # will check for other neighbouring pax cars before showing brake car
-    # !! this could have been done by the pax cars registering themselves into a structure in the roster
-    result = []
-    for roster in get_active_rosters():
-        for consists in roster.wagon_consists.values():
-            for consist in consists:
-                if consist.__class__.__name__ == "PassengerRestaurantCarConsist":
-                    result.append(consist.base_numeric_id)
-    if len(result) > 255:
-        utils.echo_message(
-            "action 2 switch is limited to 255 values, get_restaurant_car_ids exceeds this - needs split across multiple switches"
-        )
-    return result
-
-
 def main():
     # railtypes - order is significant, as affects order in construction menu (order property not currently set)
     lgv.main(disabled=False)
@@ -296,7 +305,7 @@ def main():
     # only comment in if needed for debugging
     alignment_cars.main()
     """
-    #automobile_cars.main()
+    # automobile_cars.main()
     bolster_cars.main()
     box_cars.main()
     bulkhead_flat_cars.main()
@@ -310,7 +319,7 @@ def main():
     covered_hopper_cars.main()
     cryo_tank_cars.main()
     curtain_side_box_cars.main()
-    #double_deck_automobile_cars.main()
+    # double_deck_automobile_cars.main()
     dry_powder_hopper_cars.main()
     dump_cars.main()
     dump_cars_high_side.main()
@@ -332,7 +341,7 @@ def main():
     kaolin_hopper_cars.main()
     livestock_cars.main()
     log_cars.main()
-    #low_floor_automobile_cars.main()
+    # low_floor_automobile_cars.main()
     low_floor_intermodal_cars.main()
     mail_cars.main()
     merchandise_box_cars.main()

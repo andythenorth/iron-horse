@@ -40,13 +40,8 @@ def render_header_item_nml(header_item, consists):
             temp_storage_ids=global_constants.temp_storage_ids,  # convenience measure
             utils=utils,
             registered_railtypes=iron_horse.get_active_railtypes(),
-            active_rosters=iron_horse.get_active_rosters(),
+            active_rosters=iron_horse.ActiveRosters(),
             graphics_path=global_constants.graphics_path,
-            haulage_bonus_engine_id_tree=iron_horse.get_haulage_bonus_engine_id_tree(),
-            pax_car_ids=iron_horse.get_pax_car_ids(),
-            restaurant_car_ids=iron_horse.get_restaurant_car_ids(),
-            livery_2_engine_ids=iron_horse.get_livery_2_engine_ids(),
-            cargo_sprinter_ids=iron_horse.get_cargo_sprinter_ids(),
             makefile_args=makefile_args,
             git_info=git_info,
         )
