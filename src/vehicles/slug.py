@@ -12,6 +12,7 @@ def main(roster_id):
         power=1950,  # progression calculated to maintain hp/speed ratio from previous gen
         random_reverse=True,
         gen=5,
+        force_caboose_families={"caboose_car": "pony_railfreight_2"},
         alternative_cc_livery="RAILFREIGHT_TRIPLE_GREY",
         default_livery_extra_docs_examples=[
             ("COLOUR_GREY", "COLOUR_YELLOW"),

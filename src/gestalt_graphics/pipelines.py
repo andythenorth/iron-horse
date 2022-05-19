@@ -1145,7 +1145,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             box_car_input_image_1.close()
 
     def add_caboose_spriterows(self, row_count):
-        for row_num in range(int(row_count / 2)):
+        for row_num in range(row_count):
             row_offset = row_num * graphics_constants.spriterow_height
 
             crop_box_source = (
@@ -1195,15 +1195,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                 )
             )
             self.units.append(
-                SimpleRecolour(self.consist.gestalt_graphics.recolour_map_1)
-            )
-            self.units.append(
-                AppendToSpritesheet(
-                    caboose_car_rows_image_as_spritesheet, crop_box_dest
-                )
-            )
-            self.units.append(
-                SimpleRecolour(self.consist.gestalt_graphics.recolour_map_2)
+                SimpleRecolour(self.consist.gestalt_graphics.recolour_map)
             )
 
     def add_bulk_cargo_spriterows(self):
@@ -1542,7 +1534,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                     self.add_box_car_with_opening_doors_spriterows()
                 elif spriterow_type == "caboose_spriterows":
                     input_spriterow_count = (
-                        2 * self.consist.gestalt_graphics.num_generations
+                        self.consist.gestalt_graphics.num_variations
                     )
                     self.add_caboose_spriterows(input_spriterow_count)
                 elif spriterow_type == "pax_mail_cars_with_doors":

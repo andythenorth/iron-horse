@@ -249,44 +249,72 @@ def main(disabled=False):
         },
         # freight car weight factor varies slightly by gen, reflecting modern cars with lighter weight
         train_car_weight_factors=[0.5, 0.5, 0.5, 0.48, 0.44, 0.40],
-        # caboose options (family name is an arbitrary string, should be unique per roster, caboose names are arbitrary strings, flat namespace)
-        # this doesn't bother nesting by base track type, just use different family names if we need to distinguish specific base track types
+        # caboose families (family names and caboose names are arbitrary strings)
+        # caboose names map to labelled spriterows, as defined in the vehicle files
         caboose_families={
-            # RAIL
-            "pony_caboose_car_default_1": ["test", "test2"],
-            "pony_caboose_car_default_2": ["test", "test2"],
-            "pony_caboose_car_default_3": ["test", "test2"],
-            "pony_caboose_car_default_4": ["test", "test2"],
-            "pony_caboose_car_default_5": ["test", "test2"],
-            "pony_caboose_car_default_6": ["test", "test2"],
-            "pony_goods_caboose_car_default_1": ["test", "test2"],
-            "pony_goods_caboose_car_default_2": ["test", "test2"],
-            "pony_goods_caboose_car_default_3": ["test", "test2"],
-            "pony_goods_caboose_car_default_4": ["test", "test2"],
-            "pony_goods_caboose_car_default_5": ["test", "test2"],
-            "pony_goods_caboose_car_default_6": ["test", "test2"],
-            "pony_gwr_1": ["test", "toad_test"],
-            # NG
-            "pony_ng_caboose_car_1": ["test"],
-            "pony_ng_caboose_car_2": ["test"],
+            "RAIL": {
+                "caboose_car": {
+                    "pony_caboose_car_default_1": ["caboose_1"],
+                    "pony_caboose_car_default_2": ["caboose_2"],
+                    "pony_caboose_car_default_3": ["caboose_3"],
+                    "pony_caboose_car_default_4": ["caboose_4"],
+                    "pony_caboose_car_default_5": ["caboose_5"],
+                    "pony_caboose_car_default_6": ["caboose_6"],
+                    "pony_gwr_1": ["caboose_1", "gwr_1"],
+                    "pony_railfreight_1": ["railfreight_1", "brown_1"],
+                    "pony_railfreight_2": ["railfreight_2"],
+                },
+                "goods_caboose_car": {
+                    "pony_goods_caboose_car_default_1": ["test", "test2"],
+                    "pony_goods_caboose_car_default_2": ["test", "test2"],
+                    "pony_goods_caboose_car_default_3": ["test", "test2"],
+                    "pony_goods_caboose_car_default_4": ["test", "test2"],
+                    "pony_goods_caboose_car_default_5": ["test", "test2"],
+                    "pony_goods_caboose_car_default_6": ["test", "test2"],
+                },
+            },
+            "NG": {
+                "caboose_car": {
+                    "pony_ng_caboose_car_1": ["caboose_1"],
+                    "pony_ng_caboose_car_2": ["caboose_2"],
+                    "pony_ng_caboose_car_3": ["caboose_3"],
+                },
+            },
         },
-        # this *does* have to distinguish by base track type and caboose subclass id
         # lists of one default family name per generation, ascending
         caboose_default_family_by_generation={
             "RAIL": [
-                {"caboose_car": "pony_caboose_car_default_1", "goods_caboose_car": "pony_goods_caboose_car_default_1"},
-                {"caboose_car": "pony_caboose_car_default_2", "goods_caboose_car": "pony_goods_caboose_car_default_2"},
-                {"caboose_car": "pony_caboose_car_default_3", "goods_caboose_car": "pony_goods_caboose_car_default_3"},
-                {"caboose_car": "pony_caboose_car_default_4", "goods_caboose_car": "pony_goods_caboose_car_default_4"},
-                {"caboose_car": "pony_caboose_car_default_5", "goods_caboose_car": "pony_goods_caboose_car_default_5"},
-                {"caboose_car": "pony_caboose_car_default_6", "goods_caboose_car": "pony_goods_caboose_car_default_6"},
+                {
+                    "caboose_car": "pony_caboose_car_default_1",
+                    "goods_caboose_car": "pony_goods_caboose_car_default_1",
+                },
+                {
+                    "caboose_car": "pony_caboose_car_default_2",
+                    "goods_caboose_car": "pony_goods_caboose_car_default_2",
+                },
+                {
+                    "caboose_car": "pony_caboose_car_default_3",
+                    "goods_caboose_car": "pony_goods_caboose_car_default_3",
+                },
+                {
+                    "caboose_car": "pony_caboose_car_default_4",
+                    "goods_caboose_car": "pony_goods_caboose_car_default_4",
+                },
+                {
+                    "caboose_car": "pony_caboose_car_default_5",
+                    "goods_caboose_car": "pony_goods_caboose_car_default_5",
+                },
+                {
+                    "caboose_car": "pony_caboose_car_default_6",
+                    "goods_caboose_car": "pony_goods_caboose_car_default_6",
+                },
             ],
             "NG": [
                 # ng caboose don't have much variation
                 {"caboose_car": "pony_ng_caboose_car_1"},
                 {"caboose_car": "pony_ng_caboose_car_1"},
                 {"caboose_car": "pony_ng_caboose_car_2"},
-                {"caboose_car": "pony_ng_caboose_car_2"},
+                {"caboose_car": "pony_ng_caboose_car_3"},
             ],
         },
         # specify lists of cc1 and not_cc2 colours, and an option to remap all the cc1 to a specific other cc (allowing multiple input colours to map to one result)

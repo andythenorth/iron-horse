@@ -14,6 +14,7 @@ def main(roster_id):
         random_reverse=True,
         gen=4,
         intro_date_offset=-2,  # let's be a littler earlier for this one
+        force_caboose_families={"caboose_car": "pony_railfreight_1"},
         alternative_cc_livery="RAILFREIGHT_RED_STRIPE",
         sprites_complete=True,
     )

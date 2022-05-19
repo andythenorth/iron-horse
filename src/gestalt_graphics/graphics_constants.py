@@ -34,6 +34,17 @@ spritesheet_width = 425
 
 tarpaulin_car_body_recolour_map = body_recolour_CC1
 
+caboose_car_body_recolour_map = {
+    136: CC1,
+    137: CC1 + 1,
+    138: CC1 + 2,
+    139: CC1 + 3,
+    140: CC1 + 4,
+    141: CC1 + 5,
+    142: CC1 + 6,
+    143: CC1 + 7,
+}
+
 hood_open_car_body_recolour_map = {
     136: 71,
     136 + 1: 72,
@@ -228,35 +239,6 @@ box_livery_recolour_maps = (
             141: CC1 + 5,
             142: CC1 + 6,
             143: CC1 + 7,
-        },
-    ),
-)
-
-caboose_livery_recolour_maps = (  # DFLT can be used twice here with no problems, it's not a unique key
-    (
-        "DFLT",
-        {
-            136: CC1,
-            137: CC1 + 1,
-            138: CC1 + 2,
-            139: CC1 + 3,
-            140: CC1 + 4,
-            141: CC1 + 5,
-            142: CC1 + 6,
-            143: CC1 + 7,
-        },
-    ),
-    (
-        "DFLT",
-        {
-            136: CC2,
-            137: CC2 + 1,
-            138: CC2 + 2,
-            139: CC2 + 3,
-            140: CC2 + 4,
-            141: CC2 + 5,
-            142: CC2 + 6,
-            143: CC2 + 7,
         },
     ),
 )

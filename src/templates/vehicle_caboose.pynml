@@ -6,10 +6,10 @@
 // default graphics chain
 <tal:caboose_variants repeat="caboose_variant consist.spriterow_labels">
     spriteset(${vehicle.id}_ss_${caboose_variant}_unflipped, "${graphics_path}${consist.id}.png") {
-        ${vehicle.get_spriteset_template_name('unreversed', 'unflipped', 10 + (repeat.caboose_variant.index * 60))}
+        ${vehicle.get_spriteset_template_name('unreversed', 'unflipped', 10 + (repeat.caboose_variant.index * 30))}
     }
     spriteset(${vehicle.id}_ss_${caboose_variant}_flipped, "${graphics_path}${consist.id}.png") {
-        ${vehicle.get_spriteset_template_name('unreversed', 'flipped', 10 + (repeat.caboose_variant.index * 60) + 30)}
+        ${vehicle.get_spriteset_template_name('unreversed', 'flipped', 10 + (repeat.caboose_variant.index * 30))}
     }
 
     <!--! handle user flipped state -->
@@ -19,7 +19,7 @@
     }
 </tal:caboose_variants>
 
-<tal:caboose_families repeat="caboose_family consist.roster.caboose_families.items()">
+<tal:caboose_families repeat="caboose_family consist.roster.caboose_families[consist.base_track_type][consist.base_id].items()">
     // ${caboose_family}
     random_switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_caboose_family_${caboose_family[0]}) {
         <tal:caboose_family_variants repeat="caboose_variant caboose_family[1]">
@@ -34,24 +34,26 @@ switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_graphics_vehicle, vehicle_type
     <tal:engine_consists repeat="engine_consist [engine_consist for engine_consist in consist.roster.engine_consists if engine_consist.base_track_type == consist.base_track_type]">
         ${engine_consist.id}: return ${vehicle.id}_switch_graphics_caboose_family_${engine_consist.caboose_families[consist.base_id]};
     </tal:engine_consists>
-    <!--! !!! what to do about default ?? -->
-    return ${vehicle.id}_switch_graphics_variant_${'test'};
+    <!--! default just uses first spriterow, this is often not going to be a good result, but JFDI for now  -->
+    return ${vehicle.id}_switch_graphics_variant_${consist.spriterow_labels[0]};
 }
 
 
 // buy menu graphics chain
-<tal:livery_variants repeat="livery_variant_num range(consist.gestalt_graphics.num_generations)">
+<tal:livery_variants repeat="livery_variant_num range(consist.gestalt_graphics.num_variations)">
     spriteset(${vehicle.id}_ss_purchase_${livery_variant_num}, "${graphics_path}${consist.id}.png") {
-        ${consist.get_nml_for_spriteset_template(y_offset=livery_variant_num * 60)}
+        ${consist.get_nml_for_spriteset_template(y_offset=livery_variant_num * 30)}
     }
 </tal:livery_variants>
 
 <!--! purchase sprites always go through a switch in case the template does anything specific for purchase graphics
       if there was nothing specific, then this would just be a null switch, but in this case we switch livery depending on game year -->
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_purchase, current_year) {
+    <!--!
     <tal:livery_variants repeat="date_range consist.roster.intro_date_ranges(consist.base_track_type)">
         ${date_range[0]}..${date_range[1]}: return ${vehicle.id}_ss_purchase_${repeat.date_range.index};
     </tal:livery_variants>
+    -->
     return ${vehicle.id}_ss_purchase_0;
 }
 

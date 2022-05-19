@@ -287,18 +287,16 @@ class GestaltGraphicsCaboose(GestaltGraphics):
     - specific livery variants (pixels, not just colour remap) for specific engine IDs
     """
 
-    def __init__(self, num_generations, recolour_maps, **kwargs):
+    def __init__(self, num_variations, recolour_map, **kwargs):
         super().__init__()
         # as of Jan 2018 only one pipeline is used, but support is in place for alternative pipelines
         self.pipelines = pipelines.get_pipelines(
             ["extend_spriterows_for_composited_sprites_pipeline"]
         )
-        print("num_generations needs refactoring in GestaltGraphicsCaboose")
-        self.num_generations = num_generations
-        # common format for recolour_maps provides multiple remaps
-        # but just one livery remap is supported for this gestalt, and should be the first in the remap list
-        self.recolour_map_1 = recolour_maps[0][1]
-        self.recolour_map_2 = recolour_maps[1][1]
+        print("num_variations needs refactoring in GestaltGraphicsCaboose")
+        self.num_variations = num_variations
+        # but one livery remap is supported for this gestalt
+        self.recolour_map = recolour_map
 
     @property
     def generic_rows(self):

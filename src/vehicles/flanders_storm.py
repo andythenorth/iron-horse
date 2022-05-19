@@ -16,6 +16,7 @@ def main(roster_id):
         gen=5,
         pantograph_type="z-shaped-double",
         intro_date_offset=-3,  # introduce earlier than gen epoch by design
+        force_caboose_families={"caboose_car": "pony_railfreight_2"},
         alternative_cc_livery="RAILFREIGHT_TRIPLE_GREY",
         sprites_complete=True,
     )

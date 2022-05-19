@@ -16,6 +16,7 @@ def main(roster_id):
         intro_date_offset=3,  # let's be a little bit later for this one
         gen=5,
         fixed_run_cost_points=210,  # unrealism: run cost nerf for being so high-powered
+        force_caboose_families={"caboose_car": "pony_railfreight_2"},
         alternative_cc_livery="RAILFREIGHT_TRIPLE_GREY",
         sprites_complete=True,
     )
