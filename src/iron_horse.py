@@ -131,25 +131,11 @@ def vacant_numeric_ids_formatted():
 
 
 def get_active_railtypes():
+    # this might want to mimic the ActiveRosters helper class, but eh, YAGNI?
     active_railtypes = [
         railtype for railtype in registered_railtypes if not railtype.disabled
     ]  # make sure it's iterable
     return active_railtypes
-
-
-def get_active_rosters():
-    #  for a faster single-roster compiles when testing, optionally pass a roster id (lower case) as a makefile arg
-    if makefile_args.get("roster", "ALL") == "ALL":
-        active_rosters = [
-            roster for roster in registered_rosters if not roster.disabled
-        ]
-    else:
-        active_rosters = [
-            roster
-            for roster in registered_rosters
-            if roster.id == makefile_args["roster"]
-        ]  # make sure it's iterable
-    return active_rosters
 
 
 class ActiveRosters(list):
@@ -160,7 +146,20 @@ class ActiveRosters(list):
     """
 
     def __init__(self):
-        for roster in get_active_rosters():
+        active_rosters = []
+        #  for a faster single-roster compiles when testing, optionally pass a roster id (lower case) as a makefile arg
+        if makefile_args.get("roster", "ALL") == "ALL":
+            active_rosters = [
+                roster for roster in registered_rosters if not roster.disabled
+            ]
+        else:
+            active_rosters = [
+                roster
+                for roster in registered_rosters
+                if roster.id == makefile_args["roster"]
+            ]  # make sure it's iterable
+
+        for roster in active_rosters:
             self.append(roster)
 
     @property
