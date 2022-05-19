@@ -75,16 +75,6 @@ class Roster(object):
                 raise
         return result
 
-    @property
-    def restaurant_car_ids(self):
-        # could also have been done by having restaurant cars register themselves directly into a list on roster eh
-        result = []
-        for consists in self.wagon_consists.values():
-            for consist in consists:
-                if consist.__class__.__name__ == "PassengerRestaurantCarConsist":
-                    result.append(consist.base_numeric_id)
-        return result
-
     def intro_date_ranges(self, base_track_type):
         # return a list of date pairs (first year, last year) for generations
         result = []

@@ -190,9 +190,13 @@ class ActiveRosters(list):
 
     @property
     def restaurant_car_ids(self):
+        # could also have been done by having restaurant cars register themselves directly into a list on roster but eh
         result = []
         for roster in self:
-            result.extend(roster.restaurant_car_ids)
+            for consists in roster.wagon_consists.values():
+                for consist in consists:
+                    if consist.__class__.__name__ == "PassengerRestaurantCarConsist":
+                        result.append(consist.base_numeric_id)
         if len(result) > 255:
             utils.echo_message(
                 "action 2 switch is limited to 255 values, restaurant_car_ids exceeds this - needs split across multiple switches"
