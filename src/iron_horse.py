@@ -93,6 +93,7 @@ from vehicles import pressure_tank_cars
 from vehicles import product_tank_cars
 from vehicles import railbus_passenger_trailer_cars
 from vehicles import railcar_passenger_trailer_cars
+from vehicles import random_cars
 from vehicles import reefer_cars
 from vehicles import restaurant_cars
 from vehicles import rock_hopper_cars
@@ -190,9 +191,10 @@ class ActiveRosters(list):
 
     @property
     def restaurant_car_ids(self):
-        # could also have been done by having restaurant cars register themselves directly into a list on roster but eh
         result = []
         for roster in self:
+            # could have abstracted the filtering element into a method on the roster, more encapsulated, but eh, code split over 2 places, so didn't
+            # could also have been done by having restaurant cars register themselves directly into a list on roster but eh, that's a book-keeping headache
             for consists in roster.wagon_consists.values():
                 for consist in consists:
                     if consist.__class__.__name__ == "PassengerRestaurantCarConsist":
@@ -208,6 +210,7 @@ class ActiveRosters(list):
         # supports a BAD FEATURE easter egg, where some railcar speeds are increased when hauled by express engine, and can be used as fast MUs
         express_engine_ids = []
         for roster in self:
+            # could have abstracted the filtering element into a method on the roster, more encapsulated, but eh, code split over 2 places, so didn't
             for consist in roster.engine_consists:
                 # check for express-type roles, which are determined by multiple role groups
                 for role_group_mapping_key in [
@@ -228,6 +231,7 @@ class ActiveRosters(list):
         # used to switch wagon company colours
         result = []
         for roster in self:
+            # could have abstracted the filtering element into a method on the roster, more encapsulated, but eh, code split over 2 places, so didn't
             for consist in roster.engine_consists:
                 # abuse the spritelayer_cargo_layers property here, we're just looking for a string, this might be fragile, but eh
                 if "cargo_sprinter" in getattr(consist, "spritelayer_cargo_layers", []):
@@ -244,6 +248,7 @@ class ActiveRosters(list):
         # will check for other neighbouring pax cars before showing brake car
         result = []
         for roster in self:
+            # could have abstracted the filtering element into a method on the roster, more encapsulated, but eh, code split over 2 places, so didn't
             for consists in roster.wagon_consists.values():
                 for consist in consists:
                     if getattr(
@@ -267,6 +272,7 @@ class ActiveRosters(list):
         # will switch vehicle to livery 2 for specific roles of lead engine
         result = []
         for roster in self:
+            # could have abstracted the filtering element into a method on the roster, more encapsulated, but eh, code split over 2 places, so didn't
             for consist in roster.engine_consists:
                 if consist.force_default_pax_mail_livery == 1:
                     continue
@@ -363,6 +369,7 @@ def main():
     restaurant_cars.main()
     railbus_passenger_trailer_cars.main()
     railcar_passenger_trailer_cars.main()
+    random_cars.main()
     rock_hopper_cars.main()
     roller_roof_hopper_cars.main()
     silo_cars.main()
