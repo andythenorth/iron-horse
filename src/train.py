@@ -2952,6 +2952,8 @@ class HopperCarMGRConsist(HopperCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "mgr_hopper_car"
         super().__init__(**kwargs)
+        # don't include MGR hoppers in randomised lists, they don't look good
+        self.randomised_candidate_groups = []
         self.default_cargos = polar_fox.constants.default_cargos["hopper_coal"]
 
 
@@ -4053,7 +4055,6 @@ class TankCarConsist(TankCarConsistBase):
         self.base_id = "tank_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["tank"]
-        self.randomised_candidate_groups = ["randomised_tank_car"]
         # Graphics configuration
         weathered_variants = {
             "unweathered": polar_fox.constants.tanker_livery_recolour_maps,
@@ -4073,7 +4074,6 @@ class TankCarAcidConsist(TankCarConsistBase):
         self.base_id = "acid_tank_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["product_tank"]
-        self.randomised_candidate_groups = ["randomised_tank_car"]
         self._joker = True
         # Graphics configuration
         weathered_variants = {
@@ -4094,7 +4094,6 @@ class TankCarProductConsist(TankCarConsistBase):
         self.base_id = "product_tank_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["product_tank"]
-        self.randomised_candidate_groups = ["randomised_tank_car"]
         self._joker = True
         # Graphics configuration
         weathered_variants = {
@@ -4104,20 +4103,6 @@ class TankCarProductConsist(TankCarConsistBase):
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants
         )
-
-
-class TankCarRandomisedConsist(TankCarConsistBase):
-    """
-    Random choice of tank car sprite, from available tank cars.
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = "randomised_tank_car"
-        super().__init__(**kwargs)
-        # eh force this to empty because randomised wagons can't be candidates for randomisation, but the base class might have set this prop
-        self.randomised_candidate_groups = []
-        # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon()
 
 
 class TarpaulinCarConsist(CarConsist):
