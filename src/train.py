@@ -24,6 +24,7 @@ from gestalt_graphics.gestalt_graphics import (
     GestaltGraphicsCaboose,
     GestaltGraphicsSimpleBodyColourRemaps,
     GestaltGraphicsOnlyAddPantographs,
+    GestaltGraphicsRandomisedWagon,
     GestaltGraphicsConsistSpecificLivery,
     GestaltGraphicsIntermodalContainerTransporters,
     GestaltGraphicsAutomobilesTransporter,
@@ -1689,6 +1690,8 @@ class CarConsist(Consist):
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["universal"]
         )
+        # wagons can be candidates for the magic randomised wagons
+        self.randomised_candidate_groups = []
         # assume all wagons randomly swap CC, revert to False in wagon subclasses as needed
         self.use_colour_randomisation_strategies = True
         # set to 2 in subclass if 2cc should be randomised - can't randomise both, too fiddly
@@ -1978,6 +1981,7 @@ class BolsterCarConsist(CarConsist):
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
         )
+        self.randomised_candidate_groups = ["randomised_cold_metal_car"]
         self._joker = True
         # allow flipping, used to flip company colour
         self.allow_flip = True
@@ -2004,6 +2008,7 @@ class BoxCarConsistBase(CarConsist):
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["freight_core"]
         )
+        self.randomised_candidate_groups = ["randomised_box_car"]
         # allow flipping, used to flip company colour
         self.allow_flip = True
 
@@ -2100,6 +2105,20 @@ class BoxCarMerchandiseConsist(BoxCarConsistBase):
         )
 
 
+class BoxCarRandomisedConsist(BoxCarConsistBase):
+    """
+    Random choice of box car sprite, from available box cars.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "randomised_box_car"
+        super().__init__(**kwargs)
+        # eh force this to empty because randomised wagons can't be candidates for randomisation, but the base class might have set this prop
+        self.randomised_candidate_groups = []
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon()
+
+
 class BoxCarSlidingWallConsist(BoxCarConsistBase):
     """
     Sliding wall van - (cargowagon, habfiss, thrall, pullman all-door car etc) - same refits as box car.
@@ -2173,6 +2192,7 @@ class BulkheadFlatCarConsist(CarConsist):
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
         )
+        self.randomised_candidate_groups = ["randomised_cold_metal_car"]
         self._joker = True
         # allow flipping, used to flip company colour
         self.allow_flip = True
@@ -2260,6 +2280,21 @@ class CarbonBlackHopperCarConsist(CarConsist):
         )
 
 
+class ColdMetalCarRandomisedConsist(BoxCarConsistBase):
+    """
+    Random choice of cold metal car sprite, from available coil cars, bolster cars etc.
+    """
+
+    def __init__(self, **kwargs):
+        print("ColdMetalCarRandomisedConsist is incorrectly using BoxCarConsistBase")
+        self.base_id = "randomised_cold_metal_car"
+        super().__init__(**kwargs)
+        # eh force this to empty because randomised wagons can't be candidates for randomisation, but the base class might have set this prop
+        self.randomised_candidate_groups = []
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon()
+
+
 class CoilBuggyCarConsist(CarConsist):
     """
     Dedicated (steel mill) buggy car for coils. Not a standard railcar. No other refits.
@@ -2318,6 +2353,7 @@ class CoilCarConsistBase(CarConsist):
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
         )
+        self.randomised_candidate_groups = ["randomised_cold_metal_car"]
         # allow flipping, used to flip company colour
         self.allow_flip = True
 
@@ -2792,6 +2828,7 @@ class FlatCarConsist(CarConsist):
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["freight_core"]
         )
+        self.randomised_candidate_groups = ["randomised_cold_metal_car"]
         # allow flipping, used to flip company colour
         self.allow_flip = True
         # Graphics configuration
@@ -2875,6 +2912,7 @@ class HopperCarConsistBase(CarConsist):
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["freight_core"]
         )
+        self.randomised_candidate_groups = ["randomised_hopper_car"]
         # allow flipping, used to flip company colour
         self.allow_flip = True
         # Graphics configuration
@@ -2915,6 +2953,20 @@ class HopperCarMGRConsist(HopperCarConsistBase):
         self.base_id = "mgr_hopper_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["hopper_coal"]
+
+
+class HopperCarRandomisedConsist(HopperCarConsistBase):
+    """
+    Random choice of cold metal car sprite, from available coil cars, bolster cars etc.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "randomised_hopper_car"
+        super().__init__(**kwargs)
+        # eh force this to empty because randomised wagons can't be candidates for randomisation, but the base class might have set this prop
+        self.randomised_candidate_groups = []
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon()
 
 
 class HopperCarOreConsist(HopperCarConsistBase):
@@ -3783,6 +3835,7 @@ class PlateCarConsist(CarConsist):
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
         )
+        self.randomised_candidate_groups = ["randomised_cold_metal_car"]
         self._joker = True
         # allow flipping, used to flip company colour
         self.allow_flip = True
@@ -3951,6 +4004,7 @@ class SlidingRoofCarConsist(CarConsist):
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
         )
+        self.randomised_candidate_groups = ["randomised_cold_metal_car"]
         self._joker = True
         # allow flipping, used to flip company colour
         self.allow_flip = True
@@ -3999,6 +4053,7 @@ class TankCarConsist(TankCarConsistBase):
         self.base_id = "tank_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["tank"]
+        self.randomised_candidate_groups = ["randomised_tank_car"]
         # Graphics configuration
         weathered_variants = {
             "unweathered": polar_fox.constants.tanker_livery_recolour_maps,
@@ -4018,6 +4073,7 @@ class TankCarAcidConsist(TankCarConsistBase):
         self.base_id = "acid_tank_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["product_tank"]
+        self.randomised_candidate_groups = ["randomised_tank_car"]
         self._joker = True
         # Graphics configuration
         weathered_variants = {
@@ -4038,6 +4094,7 @@ class TankCarProductConsist(TankCarConsistBase):
         self.base_id = "product_tank_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["product_tank"]
+        self.randomised_candidate_groups = ["randomised_tank_car"]
         self._joker = True
         # Graphics configuration
         weathered_variants = {
@@ -4047,6 +4104,20 @@ class TankCarProductConsist(TankCarConsistBase):
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants
         )
+
+
+class TankCarRandomisedConsist(TankCarConsistBase):
+    """
+    Random choice of tank car sprite, from available tank cars.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "randomised_tank_car"
+        super().__init__(**kwargs)
+        # eh force this to empty because randomised wagons can't be candidates for randomisation, but the base class might have set this prop
+        self.randomised_candidate_groups = []
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon()
 
 
 class TarpaulinCarConsist(CarConsist):
@@ -4067,6 +4138,7 @@ class TarpaulinCarConsist(CarConsist):
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
         )
+        self.randomised_candidate_groups = ["randomised_cold_metal_car"]
         self._joker = True
         # allow flipping, used to flip company colour
         self.allow_flip = True

@@ -101,6 +101,24 @@ class GestaltGraphicsOnlyAddPantographs(GestaltGraphics):
         )
 
 
+class GestaltGraphicsRandomisedWagon(GestaltGraphics):
+    """
+    Simple Gestalt specifically for randomised wagons that have borrow sprites from other vehicles.
+    """
+
+    def __init__(self, **kwargs):
+        super().__init__()
+        self.pipelines = pipelines.get_pipelines(
+            [
+                "pass_through_pipeline",
+            ]
+        )
+
+    @property
+    def nml_template(self):
+        return "vehicle_randomised.pynml"
+
+
 class GestaltGraphicsVisibleCargo(GestaltGraphics):
     """
     Used for vehicle with visible cargos

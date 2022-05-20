@@ -170,6 +170,20 @@ class Pipeline(object):
         raise NotImplementedError("Implement me in %s" % repr(self))
 
 
+class NoOpPipeline(Pipeline):
+    """
+    Does absolutely nothing, for vehicles which have no spritesheet, but do use Gestalt Graphics to hold nml template name.
+    """
+
+    def __init__(self):
+        # this should be sparse, don't store any consist info in Pipelines, pass at render time
+        super().__init__()
+
+    def render(self, consist, global_constants):
+        # nerf all the usual things that render() does
+        pass
+
+
 class PassThroughPipeline(Pipeline):
     """
     Solely opens the input image and saves it, this more of a theoretical case, there's no actual reason to use this.
@@ -338,7 +352,7 @@ class GenerateSpritelayerCargoSets(Pipeline):
                     # !! these might need splitting up by spritelayer_cargo for different types of sprites, depending on their shape
                     # !! if self.spritelayer_cargo.base_id == "intermodal_containers":
                     loc_point_y_transforms = {
-                        "15": [1, 3, 1, 2, 1, 3, 1, 2], # !! untested, may be incorrect
+                        "15": [1, 3, 1, 2, 1, 3, 1, 2],  # !! untested, may be incorrect
                         "20": [1, 3, 1, 2, 1, 3, 1, 2],
                         "30": [1, 3, 1, 3, 1, 3, 1, 3],
                         "40": [1, 3, 1, 4, 1, 3, 1, 4],
@@ -1533,9 +1547,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                     input_spriterow_count = 2
                     self.add_box_car_with_opening_doors_spriterows()
                 elif spriterow_type == "caboose_spriterows":
-                    input_spriterow_count = (
-                        self.consist.gestalt_graphics.num_variations
-                    )
+                    input_spriterow_count = self.consist.gestalt_graphics.num_variations
                     self.add_caboose_spriterows(input_spriterow_count)
                 elif spriterow_type == "pax_mail_cars_with_doors":
                     # 2 liveries with 2 rows each: empty & loaded (doors closed), loading (doors open)
@@ -1580,6 +1592,7 @@ def get_pipelines(pipeline_names):
     # this is a bit hokey, there's probably a simpler way to do this but eh
     # looks like it could be replaced by a simple dict lookup directly from gestalt_graphics, but eh, I tried, it's faff
     pipelines = {
+        "no_op_pipeline": NoOpPipeline,
         "pass_through_pipeline": PassThroughPipeline,
         "check_buy_menu_only": CheckBuyMenuOnlyPipeline,
         "extend_spriterows_for_composited_sprites_pipeline": ExtendSpriterowsForCompositedSpritesPipeline,

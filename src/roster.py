@@ -75,6 +75,21 @@ class Roster(object):
                 raise
         return result
 
+    def get_wagon_randomisation_candidates(self, randomisation_consist):
+        result = []
+        for base_id, wagons in self.wagon_consists.items():
+            for wagon_consist in wagons:
+                if randomisation_consist.base_id not in wagon_consist.randomised_candidate_groups:
+                    continue
+                if randomisation_consist.gen != wagon_consist.gen:
+                    continue
+                if randomisation_consist.subtype != wagon_consist.subtype:
+                    continue
+                result.append(wagon_consist)
+        if len(result) == 0:
+            raise BaseException(randomisation_consist.id + " did not match any randomisation_candidates, possibly there are no matching wagons for base_id/length/gen")
+        return result
+
     def intro_date_ranges(self, base_track_type):
         # return a list of date pairs (first year, last year) for generations
         result = []

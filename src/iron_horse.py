@@ -93,7 +93,10 @@ from vehicles import pressure_tank_cars
 from vehicles import product_tank_cars
 from vehicles import railbus_passenger_trailer_cars
 from vehicles import railcar_passenger_trailer_cars
-from vehicles import random_cars
+from vehicles import randomised_box_cars
+from vehicles import randomised_cold_metal_cars
+from vehicles import randomised_hopper_cars
+from vehicles import randomised_tank_cars
 from vehicles import reefer_cars
 from vehicles import restaurant_cars
 from vehicles import rock_hopper_cars
@@ -369,7 +372,10 @@ def main():
     restaurant_cars.main()
     railbus_passenger_trailer_cars.main()
     railcar_passenger_trailer_cars.main()
-    random_cars.main()
+    randomised_box_cars.main()
+    randomised_cold_metal_cars.main()
+    randomised_hopper_cars.main()
+    randomised_tank_cars.main()
     rock_hopper_cars.main()
     roller_roof_hopper_cars.main()
     silo_cars.main()
