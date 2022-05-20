@@ -89,7 +89,7 @@ class Roster(object):
         if len(result) == 0:
             raise BaseException(randomisation_consist.id + " did not match any randomisation_candidates, possibly there are no matching wagons for base_id/length/gen")
         if len(result) == 1:
-            raise BaseException(randomisation_consist.id + " has only one choice for randomisation_candidates, this will cause nonsense, consider removing " + randomisation_consist.id)
+            raise BaseException(randomisation_consist.id + " has only one choice for randomisation_candidates, this is pointless nonsense, consider removing " + randomisation_consist.id)
         if len(result) > 8:
             # we have a limited number of random bits, and we need to use them independently of company colour choices
             # so guard against consuming too many, 8 variants is 3 bits, and that's quite enough
@@ -106,7 +106,6 @@ class Roster(object):
             result.append(result[1])
         if len(result) == 7:
             result.append(result[2])
-        print(randomisation_consist.id, len(result))
         return result
 
     def intro_date_ranges(self, base_track_type):
