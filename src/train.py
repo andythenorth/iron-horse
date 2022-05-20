@@ -2066,6 +2066,7 @@ class BoxCarGoodsConsist(BoxCarConsistBase):
         self.base_id = "goods_box_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["box_goods"]
+        self.randomised_candidate_groups = [] # remove from random box car group, at least for pony - other rosters may differ?
         # Graphics configuration
         self.roof_type = "freight_brown"
         weathered_variants = {
@@ -3345,6 +3346,7 @@ class OpenCarConsistBase(CarConsist):
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["freight_core"]
         )
+        self.randomised_candidate_groups = ["randomised_open_car"]
         # allow flipping, used to flip company colour
         self.allow_flip = True
 
@@ -3402,6 +3404,20 @@ class OpenCarMerchandiseConsist(OpenCarConsistBase):
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(
             bulk=True, piece="open", weathered_variants=weathered_variants
         )
+
+
+class OpenCarRandomisedConsist(OpenCarConsistBase):
+    """
+    Random choice of open car sprite, from available open cars.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "randomised_open_car"
+        super().__init__(**kwargs)
+        # eh force this to empty because randomised wagons can't be candidates for randomisation, but the base class might have set this prop
+        self.randomised_candidate_groups = []
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon()
 
 
 class PassengerCarConsistBase(CarConsist):

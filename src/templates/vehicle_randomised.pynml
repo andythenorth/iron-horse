@@ -2,9 +2,13 @@
       'flipped' is user flipping vehicle in depot and *is* supported here (used for livery selection tricks)
       don't conflate them :) -->
 
-random_switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle) {
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle,
+                            <!--! the picking from bit 4 is just a wild guess to try and make this independent from colour and weathering choices
+                                  the lolz dict is to avoid working out how many bits to pick using actual programming skills -->
+                            switch_alternative_var_random_bits(4, ${{2: 1, 4: 2, 8: 3}[len(consist.roster.get_wagon_randomisation_candidates(consist))]}
+    )) {
     <tal:randomisation_candidates repeat="randomisation_candidate consist.roster.get_wagon_randomisation_candidates(consist)">
-        1: ${randomisation_candidate.id}_switch_graphics;
+        ${repeat.randomisation_candidate.index}: ${randomisation_candidate.id}_switch_graphics_vehicle;
     </tal:randomisation_candidates>
 }
 

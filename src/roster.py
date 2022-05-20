@@ -88,6 +88,25 @@ class Roster(object):
                 result.append(wagon_consist)
         if len(result) == 0:
             raise BaseException(randomisation_consist.id + " did not match any randomisation_candidates, possibly there are no matching wagons for base_id/length/gen")
+        if len(result) == 1:
+            raise BaseException(randomisation_consist.id + " has only one choice for randomisation_candidates, this will cause nonsense, consider removing " + randomisation_consist.id)
+        if len(result) > 8:
+            # we have a limited number of random bits, and we need to use them independently of company colour choices
+            # so guard against consuming too many, 8 variants is 3 bits, and that's quite enough
+            raise BaseException(randomisation_consist.id + " has more than 8 entries in randomised_candidate_groups, and will run out of random bits; reduce the number of candidates")
+        # length of results needs to be power of 2 as random choice can only be picked from powers of 2s (1 bit = 2 options, 2 bits = 4 options, 3 bits = 8 options)
+        # so just do a clunky manual append here, JFDI, not figuring out a power of 2 detector at this time of night :P
+        # this will cause uneven probabilities, but eh, life is not perfect
+        if len(result) == 3:
+            result.append(result[0])
+        # this relies on recursing a bit to get to 8 as needed
+        if len(result) == 5:
+            result.append(result[0])
+        if len(result) == 6:
+            result.append(result[1])
+        if len(result) == 7:
+            result.append(result[2])
+        print(randomisation_consist.id, len(result))
         return result
 
     def intro_date_ranges(self, base_track_type):
