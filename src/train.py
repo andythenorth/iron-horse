@@ -3871,6 +3871,7 @@ class PieceGoodsCarRandomisedConsist(CarConsist):
         self.randomised_candidate_groups = []
         self._joker = True
         # Graphics configuration
+        self.allow_flip = True
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon()
 
 
