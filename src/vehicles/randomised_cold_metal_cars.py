@@ -12,21 +12,29 @@ def main():
         sprites_complete=False,
     )
 
-    consist.add_unit(type=FreightCar, vehicle_length=4)
+    consist.add_unit(type=FreightCar, chassis="empty_16px")
 
     # no new type A for gen 2, gen 1 type A continues
 
     consist = ColdMetalCarRandomisedConsist(
-        roster_id="pony", base_numeric_id=7720, gen=2, subtype="B", sprites_complete=False
+        roster_id="pony",
+        base_numeric_id=7720,
+        gen=2,
+        subtype="B",
+        sprites_complete=False,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_gapped_24px")
+    consist.add_unit(type=FreightCar, chassis="empty_24px")
 
     consist = ColdMetalCarRandomisedConsist(
-        roster_id="pony", base_numeric_id=7730, gen=3, subtype="A", sprites_complete=False
+        roster_id="pony",
+        base_numeric_id=7730,
+        gen=3,
+        subtype="A",
+        sprites_complete=False,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
+    consist.add_unit(type=FreightCar, chassis="empty_16px")
 
     consist = ColdMetalCarRandomisedConsist(
         roster_id="pony",
@@ -36,13 +44,17 @@ def main():
         sprites_complete=False,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_filled_24px")
+    consist.add_unit(type=FreightCar, chassis="empty_24px")
 
     consist = ColdMetalCarRandomisedConsist(
-        roster_id="pony", base_numeric_id=7750, gen=4, subtype="A", sprites_complete=False
+        roster_id="pony",
+        base_numeric_id=7750,
+        gen=4,
+        subtype="A",
+        sprites_complete=False,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
+    consist.add_unit(type=FreightCar, chassis="empty_16px")
 
     consist = ColdMetalCarRandomisedConsist(
         roster_id="pony",
@@ -52,7 +64,7 @@ def main():
         sprites_complete=False,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_filled_24px")
+    consist.add_unit(type=FreightCar, chassis="empty_24px")
 
     consist = ColdMetalCarRandomisedConsist(
         roster_id="pony",
@@ -65,7 +77,7 @@ def main():
     consist.add_unit(
         type=FreightCar,
         suppress_roof_sprite=False,  # non-standard roof for this wagon
-        chassis="4_axle_1cc_filled_32px",
+        chassis="empty_32px",
     )
 
     consist = ColdMetalCarRandomisedConsist(
@@ -76,7 +88,7 @@ def main():
         sprites_complete=False,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_filled_greebled_24px")
+    consist.add_unit(type=FreightCar, chassis="empty_24px")
 
     consist = ColdMetalCarRandomisedConsist(
         roster_id="pony",
@@ -86,7 +98,7 @@ def main():
         sprites_complete=False,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_1cc_filled_32px")
+    consist.add_unit(type=FreightCar, chassis="empty_32px")
 
     consist = ColdMetalCarRandomisedConsist(
         roster_id="pony",
@@ -96,7 +108,7 @@ def main():
         sprites_complete=False,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_filled_greebled_24px")
+    consist.add_unit(type=FreightCar, chassis="empty_24px")
 
     consist = ColdMetalCarRandomisedConsist(
         roster_id="pony",
@@ -106,4 +118,4 @@ def main():
         sprites_complete=False,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_1cc_filled_32px")
+    consist.add_unit(type=FreightCar, chassis="empty_32px")

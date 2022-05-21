@@ -29,4 +29,3 @@ def main(roster_id):
     consist.foamer_facts = """BR Class 37, original TTD UU '37'"""
 
     return consist
-

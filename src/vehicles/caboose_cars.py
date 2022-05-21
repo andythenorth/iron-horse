@@ -32,7 +32,18 @@ def main():
 
     # --------------- pony ----------------------------------------------------------------------
     # note that spriterow mapping will get redefined for different rosters and base track types
-    spriterow_labels = ["caboose_1", "caboose_2", "caboose_3", "caboose_4", "caboose_5", "caboose_6", "gwr_1", "brown_1", "railfreight_1", "railfreight_2"]
+    spriterow_labels = [
+        "caboose_1",
+        "caboose_2",
+        "caboose_3",
+        "caboose_4",
+        "caboose_5",
+        "caboose_6",
+        "gwr_1",
+        "brown_1",
+        "railfreight_1",
+        "railfreight_2",
+    ]
 
     consist = CabooseCarConsist(
         roster_id="pony",

@@ -12,15 +12,19 @@ def main():
         sprites_complete=False,
     )
 
-    consist.add_unit(type=FreightCar, vehicle_length=4)
+    consist.add_unit(type=FreightCar, chassis="empty_16px")
 
     # no new type A for gen 2, gen 1 type A continues
 
     consist = HopperCarRandomisedConsist(
-        roster_id="pony", base_numeric_id=7840, gen=3, subtype="A", sprites_complete=False
+        roster_id="pony",
+        base_numeric_id=7840,
+        gen=3,
+        subtype="A",
+        sprites_complete=False,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
+    consist.add_unit(type=FreightCar, chassis="empty_16px")
 
     consist = HopperCarRandomisedConsist(
         roster_id="pony",
@@ -30,13 +34,17 @@ def main():
         sprites_complete=False,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_filled_24px")
+    consist.add_unit(type=FreightCar, chassis="empty_24px")
 
     consist = HopperCarRandomisedConsist(
-        roster_id="pony", base_numeric_id=7860, gen=4, subtype="A", sprites_complete=False
+        roster_id="pony",
+        base_numeric_id=7860,
+        gen=4,
+        subtype="A",
+        sprites_complete=False,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
+    consist.add_unit(type=FreightCar, chassis="empty_16px")
 
     consist = HopperCarRandomisedConsist(
         roster_id="pony",
@@ -46,7 +54,7 @@ def main():
         sprites_complete=False,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_filled_24px")
+    consist.add_unit(type=FreightCar, chassis="empty_24px")
 
     consist = HopperCarRandomisedConsist(
         roster_id="pony",
@@ -56,7 +64,7 @@ def main():
         sprites_complete=False,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_filled_greebled_24px")
+    consist.add_unit(type=FreightCar, chassis="empty_24px")
 
     consist = HopperCarRandomisedConsist(
         roster_id="pony",
@@ -66,7 +74,7 @@ def main():
         sprites_complete=False,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_1cc_filled_32px")
+    consist.add_unit(type=FreightCar, chassis="empty_32px")
 
     consist = HopperCarRandomisedConsist(
         roster_id="pony",
@@ -76,7 +84,7 @@ def main():
         sprites_complete=False,
     )
 
-    consist.add_unit(type=FreightCar, chassis="2_axle_filled_greebled_24px")
+    consist.add_unit(type=FreightCar, chassis="empty_24px")
 
     consist = HopperCarRandomisedConsist(
         roster_id="pony",
@@ -86,4 +94,4 @@ def main():
         sprites_complete=False,
     )
 
-    consist.add_unit(type=FreightCar, chassis="4_axle_1cc_filled_32px")
+    consist.add_unit(type=FreightCar, chassis="empty_32px")
