@@ -28,7 +28,7 @@ def main():
 
     consist = ColdMetalCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=7830,
+        base_numeric_id=7490,
         gen=4,
         subtype="U",
         base_track_type="NG",
