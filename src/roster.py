@@ -81,6 +81,8 @@ class Roster(object):
             for wagon_consist in wagons:
                 if randomisation_consist.base_id not in wagon_consist.randomised_candidate_groups:
                     continue
+                if randomisation_consist.base_track_type != wagon_consist.base_track_type:
+                    continue
                 if randomisation_consist.gen != wagon_consist.gen:
                     continue
                 if randomisation_consist.subtype != wagon_consist.subtype:
@@ -93,6 +95,7 @@ class Roster(object):
         if len(result) > 8:
             # we have a limited number of random bits, and we need to use them independently of company colour choices
             # so guard against consuming too many, 8 variants is 3 bits, and that's quite enough
+            print(result)
             raise BaseException(randomisation_consist.id + " has more than 8 entries in randomised_candidate_groups, and will run out of random bits; reduce the number of candidates")
         # length of results needs to be power of 2 as random choice can only be picked from powers of 2s (1 bit = 2 options, 2 bits = 4 options, 3 bits = 8 options)
         # so just do a clunky manual append here, JFDI, not figuring out a power of 2 detector at this time of night :P

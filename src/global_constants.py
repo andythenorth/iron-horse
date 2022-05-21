@@ -81,6 +81,7 @@ buy_menu_sort_order_wagons = [
     "randomised_cold_metal_car",
     "randomised_hopper_car",
     "randomised_open_car",
+    "randomised_piece_goods_car",
 ]
 
 # mapping of internal base_track_type values to actual railtype labels

@@ -2020,7 +2020,6 @@ class BoxCarConsistBase(CarConsist):
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["freight_core"]
         )
-        self.randomised_candidate_groups = ["randomised_box_car"]
         # allow flipping, used to flip company colour
         self.allow_flip = True
 
@@ -2033,6 +2032,7 @@ class BoxCarConsist(BoxCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "box_car"
         super().__init__(**kwargs)
+        self.randomised_candidate_groups = ["randomised_box_car", "randomised_piece_goods_car"]
         # Graphics configuration
         self.roof_type = "freight"
         weathered_variants = {
@@ -2057,6 +2057,7 @@ class BoxCarCurtainSideConsist(BoxCarConsistBase):
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
         )
+        self.randomised_candidate_groups = ["randomised_box_car", "randomised_piece_goods_car"]
         self._joker = True
         # Graphics configuration
         self.roof_type = "freight"
@@ -2078,7 +2079,8 @@ class BoxCarGoodsConsist(BoxCarConsistBase):
         self.base_id = "goods_box_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["box_goods"]
-        self.randomised_candidate_groups = [] # remove from random box car group, at least for pony - other rosters may differ?
+        # don't include in random box car group, at least for pony, looks bad - other rosters may differ?
+        self.randomised_candidate_groups = ["randomised_piece_goods_car"]
         # Graphics configuration
         self.roof_type = "freight_brown"
         weathered_variants = {
@@ -2099,6 +2101,7 @@ class BoxCarMerchandiseConsist(BoxCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "merchandise_box_car"
         super().__init__(**kwargs)
+        self.randomised_candidate_groups = ["randomised_box_car", "randomised_piece_goods_car"]
         # Graphics configuration
         self.roof_type = "freight"
         weathered_variants = {
@@ -3358,7 +3361,7 @@ class OpenCarConsistBase(CarConsist):
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["freight_core"]
         )
-        self.randomised_candidate_groups = ["randomised_open_car"]
+        self.randomised_candidate_groups = ["randomised_open_car", "randomised_piece_goods_car"]
         # allow flipping, used to flip company colour
         self.allow_flip = True
 
@@ -3848,6 +3851,29 @@ class PeatCarConsist(CarConsist):
         )
 
 
+class PieceGoodsCarRandomisedConsist(CarConsist):
+    """
+    Randomised freight wagon - with refits matching flat / plate / tarpaulin cars - this might be a bad idea
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "randomised_piece_goods_car"
+        super().__init__(**kwargs)
+        self.class_refit_groups = ["flatbed_freight"]
+        self.label_refits_allowed = ["GOOD"]
+        self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label[
+            "non_flatbed_freight"
+        ]
+        self.default_cargos = polar_fox.constants.default_cargos["flat_tarpaulin_roof"]
+        self._intro_date_days_offset = (
+            global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
+        )
+        self.randomised_candidate_groups = []
+        self._joker = True
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon()
+
+
 class PlateCarConsist(CarConsist):
     """
     Low-side wagon - variant on flat wagon, refits same
@@ -3865,7 +3891,7 @@ class PlateCarConsist(CarConsist):
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
         )
-        self.randomised_candidate_groups = ["randomised_cold_metal_car"]
+        self.randomised_candidate_groups = ["randomised_cold_metal_car", "randomised_piece_goods_car"]
         self._joker = True
         # allow flipping, used to flip company colour
         self.allow_flip = True
