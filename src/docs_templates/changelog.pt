@@ -1,13 +1,41 @@
 Changelog
 =========
 
+
+-------------
+2.47.0 Release
+-------------
+
+Not savegame compatible with Iron Horse releases before 2.47.0.
+
+*Changes*
+
+- added Goods Brake Vans
+- adjusted sprites for Brake Vans
+- all types of brake van will now use company colours chosen by player for 'Freight Wagon', rather than 'Passenger Coach'
+- added multiple types of 'randomised' wagon, when these wagons are built a random suitable wagon sprite will be chosen
+    - Open Wagon - Randomised (same refittable cargo as other open wagons)
+    - Van - Randomised (same refittable cargo as otherother vans)
+    - Piece Goods Wagon - Randomised (mix of open/van/plate/covered wagon sprites, same refittable cargo as plate/tarpaulin wagons)
+    - Mineral Wagon - Randomised (same refittable cargo as mineral/aggregate wagons)
+    - Hopper Wagon - Randomised (same refittable cargo as non-covered hoppers)
+    - Bulk Wagon - Randomised (mix of non-covered hopper/mineral wagon sprites, same refittable cargo as non-covered hoppers)
+    - Chemicals Tanker - Randomised (mix of acid/product tanker sprites, same refittable cargo as tankers)
+    - Cold Metal Wagon - Randomised (mix of coil/bolster/plate/flat/covered wagon sprites, same refittable cargo as coil wagons)
+
+
+*Fixes*
+
+- removed SAA4 fallback railtype label from Metro, it's not an appropriate fallback for Metro
+
+
 -------------
 2.46.2 Release
 -------------
 
 *Fixes*
 
-- hide unfinished automobile transporter wagons
+- hidden unfinished automobile transporter wagons
 
 
 -------------
@@ -20,10 +48,11 @@ Changelog
     - explain variable speed in buy menu
     - default to showing lower (normal rail) speed in buy menu
 
+
 *Fixes*
 
 - set correct speed for Helm Wind on normal rail
-- add missing strings for Dedicated High Speed Railway
+- added missing strings for Dedicated High Speed Railway
 - set correct weight for narrow gauge railbus trailers
 
 
@@ -45,6 +74,7 @@ Changelog
 - removed passenger capacity from Brenner engine
 - added Hood Wagons
 - railtype labels changed for all vehicles, an Iron Horse specific scheme is used, with fallbacks to commonly used existing types
+
 
 *Docs*
 
