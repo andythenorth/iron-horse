@@ -5,7 +5,7 @@
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_random_self,
                             <!--! the picking from bit 4 is just a wild guess to try and make this independent from colour and weathering choices
                                   the lolz dict is to avoid working out how many bits to pick using actual programming skills -->
-                            switch_alternative_var_random_bits(4, ${{2: 1, 4: 2, 8: 3}[len(consist.roster.get_wagon_randomisation_candidates(consist))]}
+                            switch_alternative_var_random_bits(3, ${{2: 1, 4: 2, 8: 3, 16: 4}[len(consist.roster.get_wagon_randomisation_candidates(consist))]}
     )) {
     <tal:randomisation_candidates repeat="randomisation_candidate consist.roster.get_wagon_randomisation_candidates(consist)">
         ${repeat.randomisation_candidate.index}: ${randomisation_candidate.id}_switch_graphics_vehicle;
@@ -19,8 +19,8 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_random_neighbou
                                   [STORE_TEMP(-2, 0x10F),
                                              getbits(
                                                     var[0x61, 8, 0x00FFFFFF, 0x5F],
-                                                     4,
-                                                     ${{2: 1, 4: 2, 8: 3}[len(consist.roster.get_wagon_randomisation_candidates(consist))]}
+                                                     3,
+                                                     ${{2: 1, 4: 2, 8: 3, 16: 4}[len(consist.roster.get_wagon_randomisation_candidates(consist))]}
                                    )]
     ) {
     <tal:randomisation_candidates repeat="randomisation_candidate consist.roster.get_wagon_randomisation_candidates(consist)">
@@ -35,8 +35,8 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_random_neighbou
                                   [STORE_TEMP(-1, 0x10F),
                                              getbits(
                                                     var[0x61, 8, 0x00FFFFFF, 0x5F],
-                                                     4,
-                                                     ${{2: 1, 4: 2, 8: 3}[len(consist.roster.get_wagon_randomisation_candidates(consist))]}
+                                                     3,
+                                                     ${{2: 1, 4: 2, 8: 3, 16: 4}[len(consist.roster.get_wagon_randomisation_candidates(consist))]}
                                    )]
     ) {
     <tal:randomisation_candidates repeat="randomisation_candidate consist.roster.get_wagon_randomisation_candidates(consist)">

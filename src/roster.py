@@ -92,12 +92,12 @@ class Roster(object):
             raise BaseException(randomisation_consist.id + " did not match any randomisation_candidates, possibly there are no matching wagons for base_id/length/gen")
         if len(result) == 1:
             raise BaseException(randomisation_consist.id + " has only one choice for randomisation_candidates, this is pointless nonsense, consider removing " + randomisation_consist.id)
-        if len(result) > 8:
+        if len(result) > 16:
             # we have a limited number of random bits, and we need to use them independently of company colour choices
-            # so guard against consuming too many, 8 variants is 3 bits, and that's quite enough
+            # so guard against consuming too many, 16 variants is 4 bits, and that's quite enough
             print(result)
-            raise BaseException(randomisation_consist.id + " has more than 8 entries in randomised_candidate_groups, and will run out of random bits; reduce the number of candidates")
-        # length of results needs to be power of 2 as random choice can only be picked from powers of 2s (1 bit = 2 options, 2 bits = 4 options, 3 bits = 8 options)
+            raise BaseException(randomisation_consist.id + " has more than 16 entries in randomised_candidate_groups, and will run out of random bits; reduce the number of candidates")
+        # length of results needs to be power of 2 as random choice can only be picked from powers of 2s (1 bit = 2 options, 2 bits = 4 options, 3 bits = 8 options, 4 bits = 16 options)
         # so just do a clunky manual append here, JFDI, not figuring out a power of 2 detector at this time of night :P
         # this will cause uneven probabilities, but eh, life is not perfect
         if len(result) == 3:
@@ -109,6 +109,21 @@ class Roster(object):
             result.append(result[1])
         if len(result) == 7:
             result.append(result[2])
+        # this relies on recursing a bit to get to 16 as needed
+        if len(result) == 9:
+            result.append(result[0])
+        if len(result) == 10:
+            result.append(result[1])
+        if len(result) == 11:
+            result.append(result[2])
+        if len(result) == 12:
+            result.append(result[3])
+        if len(result) == 13:
+            result.append(result[4])
+        if len(result) == 14:
+            result.append(result[5])
+        if len(result) == 15:
+            result.append(result[6])
         return result
 
     def intro_date_ranges(self, base_track_type):
