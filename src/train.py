@@ -3052,6 +3052,8 @@ class HopperCarSkipConsist(HopperCarConsistBase):
         self.base_id = "skip_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["hopper_rock"]
+        # not eligible for randomisation, breaks due to articulation
+        self.randomised_candidate_groups = []
         self._joker = True
 
 
