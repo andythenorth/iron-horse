@@ -628,9 +628,11 @@ class Consist(object):
         # automatic buy menu sprite if single-unit consist
         # extend this to check an auto_buy_menu_sprite property if manual over-rides are needed in future
         if len(self.units) > 1:
-             # custom buy menu sprite for articulated vehicles
+            # custom buy menu sprite for articulated vehicles
             return 360
-        elif self.gestalt_graphics.__class__.__name__ == "GestaltGraphicsRandomisedWagon":
+        elif (
+            self.gestalt_graphics.__class__.__name__ == "GestaltGraphicsRandomisedWagon"
+        ):
             # possibly fragile class name check, but eh
             return 360
         else:
@@ -829,7 +831,9 @@ class Consist(object):
         # this freezes any necessary roster items in place
         self.frozen_roster_items = {}
         if self.gestalt_graphics.__class__.__name__ == "GestaltGraphicsRandomisedWagon":
-            self.frozen_roster_items["wagon_randomisation_candidates"] = self.roster.get_wagon_randomisation_candidates(self)
+            self.frozen_roster_items[
+                "wagon_randomisation_candidates"
+            ] = self.roster.get_wagon_randomisation_candidates(self)
         # no return
 
     def assert_speed(self):
@@ -2032,7 +2036,10 @@ class BoxCarConsist(BoxCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "box_car"
         super().__init__(**kwargs)
-        self.randomised_candidate_groups = ["randomised_box_car", "randomised_piece_goods_car"]
+        self.randomised_candidate_groups = [
+            "randomised_box_car",
+            "randomised_piece_goods_car",
+        ]
         # Graphics configuration
         self.roof_type = "freight"
         weathered_variants = {
@@ -2057,7 +2064,10 @@ class BoxCarCurtainSideConsist(BoxCarConsistBase):
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
         )
-        self.randomised_candidate_groups = ["randomised_box_car", "randomised_piece_goods_car"]
+        self.randomised_candidate_groups = [
+            "randomised_box_car",
+            "randomised_piece_goods_car",
+        ]
         self._joker = True
         # Graphics configuration
         self.roof_type = "freight"
@@ -2101,7 +2111,10 @@ class BoxCarMerchandiseConsist(BoxCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "merchandise_box_car"
         super().__init__(**kwargs)
-        self.randomised_candidate_groups = ["randomised_box_car", "randomised_piece_goods_car"]
+        self.randomised_candidate_groups = [
+            "randomised_box_car",
+            "randomised_piece_goods_car",
+        ]
         # Graphics configuration
         self.roof_type = "freight"
         weathered_variants = {
@@ -2208,7 +2221,10 @@ class BulkheadFlatCarConsist(CarConsist):
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
         )
-        self.randomised_candidate_groups = ["randomised_cold_metal_car", "randomised_piece_goods_car"]
+        self.randomised_candidate_groups = [
+            "randomised_cold_metal_car",
+            "randomised_piece_goods_car",
+        ]
         self._joker = True
         # allow flipping, used to flip company colour
         self.allow_flip = True
@@ -2244,6 +2260,17 @@ class CabooseCarConsistBase(CarConsist):
             num_variations=len(self.spriterow_labels),
             recolour_map=graphics_constants.caboose_car_body_recolour_map,
         )
+
+    @property
+    def buy_menu_variants_by_date(self):
+        # map default caboose variants and date ranges to show them for
+        # don't use a dict, items can repeat, just nest 2 tuples
+        result = []
+        for counter, date_range in enumerate(self.roster.intro_date_ranges(self.base_track_type)):
+            caboose_family_name = self.roster.caboose_default_family_by_generation[self.base_track_type][counter][self.base_id]
+            caboose_label = self.roster.caboose_families[self.base_track_type][self.base_id][caboose_family_name][0]
+            result.append((caboose_label, date_range))
+        return result
 
 
 class CabooseCarConsist(CabooseCarConsistBase):
@@ -2578,7 +2605,10 @@ class DumpCarConsist(DumpCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "dump_car"
         super().__init__(**kwargs)
-        self.randomised_candidate_groups = ["randomised_dump_car", "randomised_bulk_car"]
+        self.randomised_candidate_groups = [
+            "randomised_dump_car",
+            "randomised_bulk_car",
+        ]
 
 
 class DumpCarAggregateConsist(DumpCarConsistBase):
@@ -2591,7 +2621,10 @@ class DumpCarAggregateConsist(DumpCarConsistBase):
         self.base_id = "aggregate_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["dump_aggregates"]
-        self.randomised_candidate_groups = ["randomised_dump_car", "randomised_bulk_car"]
+        self.randomised_candidate_groups = [
+            "randomised_dump_car",
+            "randomised_bulk_car",
+        ]
         self._joker = True
 
 
@@ -2605,7 +2638,10 @@ class DumpCarHighSideConsist(DumpCarConsistBase):
         self.base_id = "dump_car_high_side"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["dump_high_sides"]
-        self.randomised_candidate_groups = ["randomised_dump_car", "randomised_bulk_car"]
+        self.randomised_candidate_groups = [
+            "randomised_dump_car",
+            "randomised_bulk_car",
+        ]
         self._joker = True
 
 
@@ -2959,7 +2995,10 @@ class HopperCarConsistBase(CarConsist):
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["freight_core"]
         )
-        self.randomised_candidate_groups = ["randomised_hopper_car", "randomised_bulk_car"]
+        self.randomised_candidate_groups = [
+            "randomised_hopper_car",
+            "randomised_bulk_car",
+        ]
         # allow flipping, used to flip company colour
         self.allow_flip = True
         # Graphics configuration
@@ -3394,7 +3433,10 @@ class OpenCarConsistBase(CarConsist):
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["freight_core"]
         )
-        self.randomised_candidate_groups = ["randomised_open_car", "randomised_piece_goods_car"]
+        self.randomised_candidate_groups = [
+            "randomised_open_car",
+            "randomised_piece_goods_car",
+        ]
         # allow flipping, used to flip company colour
         self.allow_flip = True
 
@@ -3925,7 +3967,10 @@ class PlateCarConsist(CarConsist):
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
         )
-        self.randomised_candidate_groups = ["randomised_cold_metal_car", "randomised_piece_goods_car"]
+        self.randomised_candidate_groups = [
+            "randomised_cold_metal_car",
+            "randomised_piece_goods_car",
+        ]
         self._joker = True
         # allow flipping, used to flip company colour
         self.allow_flip = True
@@ -4094,7 +4139,10 @@ class SlidingRoofCarConsist(CarConsist):
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
         )
-        self.randomised_candidate_groups = ["randomised_cold_metal_car", "randomised_piece_goods_car"]
+        self.randomised_candidate_groups = [
+            "randomised_cold_metal_car",
+            "randomised_piece_goods_car",
+        ]
         self._joker = True
         # allow flipping, used to flip company colour
         self.allow_flip = True
@@ -4227,7 +4275,10 @@ class TarpaulinCarConsist(CarConsist):
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
         )
-        self.randomised_candidate_groups = ["randomised_cold_metal_car", "randomised_piece_goods_car"]
+        self.randomised_candidate_groups = [
+            "randomised_cold_metal_car",
+            "randomised_piece_goods_car",
+        ]
         self._joker = True
         # allow flipping, used to flip company colour
         self.allow_flip = True

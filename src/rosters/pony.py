@@ -278,9 +278,9 @@ def main(disabled=False):
             },
             "NG": {
                 "caboose_car": {
-                    "pony_ng_caboose_car_1": ["caboose_1"],
-                    "pony_ng_caboose_car_2": ["caboose_2"],
-                    "pony_ng_caboose_car_3": ["caboose_3"],
+                    "pony_ng_caboose_car_1": ["ng_caboose_1"],
+                    "pony_ng_caboose_car_2": ["ng_caboose_2"],
+                    "pony_ng_caboose_car_3": ["ng_caboose_3"],
                 },
             },
         },
