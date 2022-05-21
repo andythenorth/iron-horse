@@ -4,7 +4,7 @@ from train import GoodsCabooseCarConsist, CabooseCar
 def main():
     # --------------- pony ----------------------------------------------------------------------
     # note that spriterow mapping will get redefined for different rosters and base track types
-    spriterow_labels = ["caboose_1", "caboose_2", "caboose_3", "caboose_4", "caboose_5", "caboose_6"]
+    spriterow_labels = ["caboose_1", "caboose_2", "caboose_3", "caboose_4", "caboose_5", "caboose_6", "brown_1", "railfreight_1"]
 
     consist = GoodsCabooseCarConsist(
         roster_id="pony",

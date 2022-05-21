@@ -273,6 +273,7 @@ def main(disabled=False):
                     "pony_goods_caboose_car_default_4": ["caboose_4"],
                     "pony_goods_caboose_car_default_5": ["caboose_5"],
                     "pony_goods_caboose_car_default_6": ["caboose_6"],
+                    "pony_railfreight_1": ["railfreight_1", "brown_1"],
                 },
             },
             "NG": {
