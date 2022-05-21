@@ -129,6 +129,7 @@ STR_NAME_SUFFIX_RANDOMISED_DUMP_CAR                             :Randomised Mine
 STR_NAME_SUFFIX_RANDOMISED_HOPPER_CAR                           :Randomised Hopper
 STR_NAME_SUFFIX_RANDOMISED_OPEN_CAR                             :Randomised Open Wagon
 STR_NAME_SUFFIX_RANDOMISED_PIECE_GOODS_CAR                      :Randomised Piece Goods Wagon
+STR_NAME_SUFFIX_RANDOMISED_CHEMICALS_TANK_CAR                   :Randomised Chemicals Tanker
 STR_NAME_SUFFIX_REEFER_CAR                                      :Refrigerated Van
 STR_NAME_SUFFIX_RESTAURANT_CAR                                  :Restaurant Car
 STR_NAME_SUFFIX_ROCK_HOPPER_CAR                                 :Rock Hopper

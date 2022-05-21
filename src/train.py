@@ -4161,6 +4161,7 @@ class TankCarAcidConsist(TankCarConsistBase):
         self.base_id = "acid_tank_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["product_tank"]
+        self.randomised_candidate_groups = ["randomised_chemicals_tank_car"]
         self._joker = True
         # Graphics configuration
         weathered_variants = {
@@ -4181,6 +4182,7 @@ class TankCarProductConsist(TankCarConsistBase):
         self.base_id = "product_tank_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["product_tank"]
+        self.randomised_candidate_groups = ["randomised_chemicals_tank_car"]
         self._joker = True
         # Graphics configuration
         weathered_variants = {
@@ -4190,6 +4192,20 @@ class TankCarProductConsist(TankCarConsistBase):
         self.gestalt_graphics = GestaltGraphicsSimpleBodyColourRemaps(
             weathered_variants=weathered_variants
         )
+
+
+class TankCarChemicalsRandomisedConsist(TankCarConsistBase):
+    """
+    Random choice of tank car sprite.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "randomised_chemicals_tank_car"
+        super().__init__(**kwargs)
+        # eh force this to empty because randomised wagons can't be candidates for randomisation, but the base class might have set this prop
+        self.randomised_candidate_groups = []
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon()
 
 
 class TarpaulinCarConsist(CarConsist):

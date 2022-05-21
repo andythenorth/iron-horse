@@ -100,6 +100,7 @@ from vehicles import randomised_dump_cars
 from vehicles import randomised_hopper_cars
 from vehicles import randomised_open_cars
 from vehicles import randomised_piece_goods_cars
+from vehicles import randomised_chemicals_tank_cars
 from vehicles import reefer_cars
 from vehicles import restaurant_cars
 from vehicles import rock_hopper_cars
@@ -382,6 +383,7 @@ def main():
     randomised_hopper_cars.main()
     randomised_open_cars.main()
     randomised_piece_goods_cars.main()
+    randomised_chemicals_tank_cars.main()
     rock_hopper_cars.main()
     roller_roof_hopper_cars.main()
     silo_cars.main()
