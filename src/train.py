@@ -2579,6 +2579,7 @@ class DumpCarConsist(DumpCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "dump_car"
         super().__init__(**kwargs)
+        self.randomised_candidate_groups = ["randomised_dump_car"]
 
 
 class DumpCarAggregateConsist(DumpCarConsistBase):
@@ -2591,6 +2592,7 @@ class DumpCarAggregateConsist(DumpCarConsistBase):
         self.base_id = "aggregate_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["dump_aggregates"]
+        self.randomised_candidate_groups = ["randomised_dump_car"]
         self._joker = True
 
 
@@ -2604,6 +2606,7 @@ class DumpCarHighSideConsist(DumpCarConsistBase):
         self.base_id = "dump_car_high_side"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["dump_high_sides"]
+        self.randomised_candidate_groups = ["randomised_dump_car"]
         self._joker = True
 
 
@@ -2622,6 +2625,20 @@ class DumpCarOreConsist(DumpCarConsistBase):
         self.auto_colour_randomisation_strategy_num = (
             2  # no randomisation, but reverse on flip
         )
+
+
+class DumpCarRandomisedConsist(DumpCarConsistBase):
+    """
+    Random choice of dump car sprite.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "randomised_dump_car"
+        super().__init__(**kwargs)
+        # eh force this to empty because randomised wagons can't be candidates for randomisation, but the base class might have set this prop
+        self.randomised_candidate_groups = []
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon()
 
 
 class DumpCarScrapMetalConsist(DumpCarConsistBase):

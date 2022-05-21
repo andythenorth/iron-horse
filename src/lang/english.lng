@@ -124,6 +124,7 @@ STR_NAME_SUFFIX_RAILBUS_PASSENGER_TRAILER_CAR                   :Railbus Trailer
 STR_NAME_SUFFIX_RAILCAR_PASSENGER_TRAILER_CAR                   :Railcar Trailer
 STR_NAME_SUFFIX_RANDOMISED_BOX_CAR                              :Randomised Box Car
 STR_NAME_SUFFIX_RANDOMISED_COLD_METAL_CAR                       :Randomised Cold Metal Car
+STR_NAME_SUFFIX_RANDOMISED_DUMP_CAR                             :Randomised Dump Car
 STR_NAME_SUFFIX_RANDOMISED_HOPPER_CAR                           :Randomised Hopper Car
 STR_NAME_SUFFIX_RANDOMISED_OPEN_CAR                             :Randomised Open Car
 STR_NAME_SUFFIX_RANDOMISED_PIECE_GOODS_CAR                      :Randomised Piece Goods Car
