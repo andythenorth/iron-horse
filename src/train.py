@@ -2296,21 +2296,6 @@ class CarbonBlackHopperCarConsist(CarConsist):
         )
 
 
-class ColdMetalCarRandomisedConsist(BoxCarConsistBase):
-    """
-    Random choice of cold metal car sprite, from available coil cars, bolster cars etc.
-    """
-
-    def __init__(self, **kwargs):
-        print("ColdMetalCarRandomisedConsist is incorrectly using BoxCarConsistBase")
-        self.base_id = "randomised_cold_metal_car"
-        super().__init__(**kwargs)
-        # eh force this to empty because randomised wagons can't be candidates for randomisation, but the base class might have set this prop
-        self.randomised_candidate_groups = []
-        # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon()
-
-
 class CoilBuggyCarConsist(CarConsist):
     """
     Dedicated (steel mill) buggy car for coils. Not a standard railcar. No other refits.
@@ -2406,6 +2391,20 @@ class CoilCarUncoveredConsist(CoilCarConsistBase):
         self._joker = True
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(piece="coil")
+
+
+class ColdMetalCarRandomisedConsist(CoilCarConsistBase):
+    """
+    Random choice of cold metal car sprite, from available coil cars, bolster cars etc.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "randomised_cold_metal_car"
+        super().__init__(**kwargs)
+        # eh force this to empty because randomised wagons can't be candidates for randomisation, but the base class might have set this prop
+        self.randomised_candidate_groups = []
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon()
 
 
 class CoveredHopperCarConsistBase(CarConsist):
@@ -4198,7 +4197,7 @@ class TankCarProductConsist(TankCarConsistBase):
 
 class TankCarChemicalsRandomisedConsist(TankCarConsistBase):
     """
-    Random choice of tank car sprite.
+    Random choice of tank car sprite, from available acid / chemicals tank cars.
     """
 
     def __init__(self, **kwargs):
