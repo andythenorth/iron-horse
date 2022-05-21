@@ -2975,7 +2975,7 @@ class HopperCarMGRConsist(HopperCarConsistBase):
 
 class HopperCarRandomisedConsist(HopperCarConsistBase):
     """
-    Random choice of cold metal car sprite, from available coil cars, bolster cars etc.
+    Random choice of hopper car sprite.
     """
 
     def __init__(self, **kwargs):
