@@ -51,7 +51,7 @@ def main():
         gen=1,
         subtype="A",
         spriterow_labels=spriterow_labels,
-        docs_image_spriterow=6,
+        docs_image_spriterow=3,
         sprites_complete=False,
     )
 
@@ -63,7 +63,7 @@ def main():
         gen=1,
         subtype="B",
         spriterow_labels=spriterow_labels,
-        docs_image_spriterow=6,
+        docs_image_spriterow=3,
         sprites_complete=False,
     )
 
