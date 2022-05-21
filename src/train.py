@@ -2208,7 +2208,7 @@ class BulkheadFlatCarConsist(CarConsist):
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
         )
-        self.randomised_candidate_groups = ["randomised_cold_metal_car"]
+        self.randomised_candidate_groups = ["randomised_cold_metal_car", "randomised_piece_goods_car"]
         self._joker = True
         # allow flipping, used to flip company colour
         self.allow_flip = True
@@ -4095,7 +4095,7 @@ class SlidingRoofCarConsist(CarConsist):
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
         )
-        self.randomised_candidate_groups = ["randomised_cold_metal_car"]
+        self.randomised_candidate_groups = ["randomised_cold_metal_car", "randomised_piece_goods_car"]
         self._joker = True
         # allow flipping, used to flip company colour
         self.allow_flip = True
@@ -4228,7 +4228,7 @@ class TarpaulinCarConsist(CarConsist):
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
         )
-        self.randomised_candidate_groups = ["randomised_cold_metal_car"]
+        self.randomised_candidate_groups = ["randomised_cold_metal_car", "randomised_piece_goods_car"]
         self._joker = True
         # allow flipping, used to flip company colour
         self.allow_flip = True
