@@ -39,10 +39,10 @@ def main():
         "caboose_4",
         "caboose_5",
         "caboose_6",
-        "gwr_1",
-        "brown_1",
-        "railfreight_1",
-        "railfreight_2",
+        #"gwr_1",
+        #"brown_1",
+        #"railfreight_1",
+        #"railfreight_2",
     ]
 
     consist = CabooseCarConsist(
