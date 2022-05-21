@@ -170,23 +170,9 @@ class Pipeline(object):
         raise NotImplementedError("Implement me in %s" % repr(self))
 
 
-class NoOpPipeline(Pipeline):
-    """
-    Does absolutely nothing, for vehicles which have no spritesheet, but do use Gestalt Graphics to hold nml template name.
-    """
-
-    def __init__(self):
-        # this should be sparse, don't store any consist info in Pipelines, pass at render time
-        super().__init__()
-
-    def render(self, consist, global_constants):
-        # nerf all the usual things that render() does
-        pass
-
-
 class PassThroughPipeline(Pipeline):
     """
-    Solely opens the input image and saves it, this more of a theoretical case, there's no actual reason to use this.
+    Solely opens the input image and saves it, when there's no processing, but we need to copy the spritesheet file to generated graphics dir.
     """
 
     def __init__(self):
@@ -1592,9 +1578,9 @@ def get_pipelines(pipeline_names):
     # this is a bit hokey, there's probably a simpler way to do this but eh
     # looks like it could be replaced by a simple dict lookup directly from gestalt_graphics, but eh, I tried, it's faff
     pipelines = {
-        "no_op_pipeline": NoOpPipeline,
         "pass_through_pipeline": PassThroughPipeline,
         "check_buy_menu_only": CheckBuyMenuOnlyPipeline,
+        "generate_buy_menu_spritesheet_from_randomisation_candidates": CheckBuyMenuOnlyPipeline,
         "extend_spriterows_for_composited_sprites_pipeline": ExtendSpriterowsForCompositedSpritesPipeline,
         "generate_pantographs_up_spritesheet": GeneratePantographsUpSpritesheetPipeline,
         "generate_pantographs_down_spritesheet": GeneratePantographsDownSpritesheetPipeline,

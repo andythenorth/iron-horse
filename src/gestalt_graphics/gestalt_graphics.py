@@ -110,7 +110,7 @@ class GestaltGraphicsRandomisedWagon(GestaltGraphics):
         super().__init__()
         self.pipelines = pipelines.get_pipelines(
             [
-                "pass_through_pipeline",
+                "generate_buy_menu_spritesheet_from_randomisation_candidates",
             ]
         )
 
