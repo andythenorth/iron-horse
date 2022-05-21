@@ -314,7 +314,6 @@ class GestaltGraphicsCaboose(GestaltGraphics):
         self.pipelines = pipelines.get_pipelines(
             ["extend_spriterows_for_composited_sprites_pipeline"]
         )
-        print("num_variations needs refactoring in GestaltGraphicsCaboose")
         self.num_variations = num_variations
         # but one livery remap is supported for this gestalt
         self.recolour_map = recolour_map
