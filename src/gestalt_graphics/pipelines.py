@@ -485,18 +485,14 @@ class GenerateBuyMenuSpritesheetFromRandomisationCandidatesPipeline(Pipeline):
                 set(self.consist.frozen_roster_items["wagon_randomisation_candidates"])
             )[1],
         ]
-        print("=========")
-        print(self.consist.id)
         if len(self.consist.units) > 1:
             raise BaseException(
                 "GenerateBuyMenuSpritesheetFromRandomisationCandidatesPipeline won't work with articulated consists - called by "
                 + self.consist.id
             )
         buy_menu_width_pixels = 4 * self.consist.units[0].vehicle_length
-        print(buy_menu_width_pixels)
 
         for counter, source_wagon in enumerate(source_wagons):
-            print(counter)
             # note that we want the *generated* source wagon spritesheet
             source_wagon_input_path = os.path.join(
                 currentdir,
