@@ -94,6 +94,7 @@ from vehicles import product_tank_cars
 from vehicles import railbus_passenger_trailer_cars
 from vehicles import railcar_passenger_trailer_cars
 from vehicles import randomised_box_cars
+from vehicles import randomised_bulk_cars
 from vehicles import randomised_cold_metal_cars
 from vehicles import randomised_dump_cars
 from vehicles import randomised_hopper_cars
@@ -375,6 +376,7 @@ def main():
     railbus_passenger_trailer_cars.main()
     railcar_passenger_trailer_cars.main()
     randomised_box_cars.main()
+    randomised_bulk_cars.main()
     randomised_cold_metal_cars.main()
     randomised_dump_cars.main()
     randomised_hopper_cars.main()

@@ -2579,7 +2579,7 @@ class DumpCarConsist(DumpCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "dump_car"
         super().__init__(**kwargs)
-        self.randomised_candidate_groups = ["randomised_dump_car"]
+        self.randomised_candidate_groups = ["randomised_dump_car", "randomised_bulk_car"]
 
 
 class DumpCarAggregateConsist(DumpCarConsistBase):
@@ -2592,7 +2592,7 @@ class DumpCarAggregateConsist(DumpCarConsistBase):
         self.base_id = "aggregate_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["dump_aggregates"]
-        self.randomised_candidate_groups = ["randomised_dump_car"]
+        self.randomised_candidate_groups = ["randomised_dump_car", "randomised_bulk_car"]
         self._joker = True
 
 
@@ -2606,7 +2606,7 @@ class DumpCarHighSideConsist(DumpCarConsistBase):
         self.base_id = "dump_car_high_side"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["dump_high_sides"]
-        self.randomised_candidate_groups = ["randomised_dump_car"]
+        self.randomised_candidate_groups = ["randomised_dump_car", "randomised_bulk_car"]
         self._joker = True
 
 
@@ -2652,6 +2652,21 @@ class DumpCarScrapMetalConsist(DumpCarConsistBase):
         self.base_id = "scrap_metal_car"
         super().__init__(**kwargs)
         self.default_cargos = polar_fox.constants.default_cargos["dump_scrap"]
+
+
+# not in alphabetical order as it depends on subclassing DumpCarConsistBase
+class BulkCarRandomisedConsist(DumpCarConsistBase):
+    """
+    Random choice of bulk car sprite, from available dump / hopper cars.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "randomised_bulk_car"
+        super().__init__(**kwargs)
+        # eh force this to empty because randomised wagons can't be candidates for randomisation, but the base class might have set this prop
+        self.randomised_candidate_groups = []
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon()
 
 
 class EdiblesTankCarConsist(CarConsist):
@@ -2945,7 +2960,7 @@ class HopperCarConsistBase(CarConsist):
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["freight_core"]
         )
-        self.randomised_candidate_groups = ["randomised_hopper_car"]
+        self.randomised_candidate_groups = ["randomised_hopper_car", "randomised_bulk_car"]
         # allow flipping, used to flip company colour
         self.allow_flip = True
         # Graphics configuration
