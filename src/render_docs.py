@@ -328,6 +328,14 @@ class DocHelper(object):
         # default result
         return None
 
+    def filter_out_randomised_wagon_consists(self, wagon_consists):
+        result = []
+        for wagon_consist in wagon_consists:
+            # extensible excludes as needed
+            if wagon_consist.gestalt_graphics.__class__.__name__ not in ["GestaltGraphicsRandomisedWagon"]:
+                result.append(wagon_consist)
+        return result
+
     def get_vehicle_images_json(self):
         # returns json formatted in various ways for randomising images according to various criteria
         # does not sort by roster as of July 2020
@@ -350,6 +358,7 @@ class DocHelper(object):
                 wagon_consists.extend(
                     [consist for consist in roster.wagon_consists[wagon_class]]
                 )
+            wagon_consists = self.filter_out_randomised_wagon_consists(wagon_consists)
             wagons = ("wagons", wagon_consists)
 
             # this code repeats for both engines and wagons, but with different source lists
