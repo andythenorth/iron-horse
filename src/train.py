@@ -628,7 +628,11 @@ class Consist(object):
         # automatic buy menu sprite if single-unit consist
         # extend this to check an auto_buy_menu_sprite property if manual over-rides are needed in future
         if len(self.units) > 1:
-            return 360  # custom buy menu sprite
+             # custom buy menu sprite for articulated vehicles
+            return 360
+        elif self.gestalt_graphics.__class__.__name__ == "GestaltGraphicsRandomisedWagon":
+            # possibly fragile class name check, but eh
+            return 360
         else:
             # default to just using 6th angle of vehicle
             return global_constants.spritesheet_bounding_boxes_asymmetric_unreversed[6][
@@ -819,6 +823,14 @@ class Consist(object):
             return nml_result
         else:
             return ""
+
+    def freeze_cross_roster_lookups(self):
+        # graphics processing can't depend on roster object reliably, as it blows up multiprocessing (can't pickle roster), for reasons I never figured out
+        # this freezes any necessary roster items in place
+        self.frozen_roster_items = {}
+        if self.gestalt_graphics.__class__.__name__ == "GestaltGraphicsRandomisedWagon":
+            self.frozen_roster_items["wagon_randomisation_candidates"] = self.roster.get_wagon_randomisation_candidates(self)
+        # no return
 
     def assert_speed(self):
         # speed is assumed to be limited to 200mph

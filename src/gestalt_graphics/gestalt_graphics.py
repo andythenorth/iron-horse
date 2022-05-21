@@ -19,6 +19,8 @@ class GestaltGraphics(object):
         # specific alt livery for specific company colour choices
         # this is only used by engines as of July 2020, but we provide a default value here to avoid requiring getattr() in many places, which was masking errors
         self.alternative_cc_livery = None  # over-ride as needed in subclasses
+        # sometimes processing may depend on another generated vehicle spritesheet, so there are multiple processing priorities, 1 = highest
+        self.processing_priority = 1
 
     @property
     def nml_template(self):
@@ -113,6 +115,8 @@ class GestaltGraphicsRandomisedWagon(GestaltGraphics):
                 "generate_buy_menu_spritesheet_from_randomisation_candidates",
             ]
         )
+        # randomised buy menu sprites depend on generated vehicle spritesheet, so defer processing to round 2
+        self.processing_priority = 2
 
     @property
     def nml_template(self):

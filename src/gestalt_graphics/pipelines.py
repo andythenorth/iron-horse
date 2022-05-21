@@ -462,6 +462,122 @@ class CheckBuyMenuOnlyPipeline(Pipeline):
         input_image.close()
 
 
+class GenerateBuyMenuSpritesheetFromRandomisationCandidatesPipeline(Pipeline):
+    """
+    Creates a custom buy menu composed from the randomisation candidates for this wagon, then saves with no other changes.
+    """
+
+    def __init__(self):
+        # this should be sparse, don't store any consist info in Pipelines, pass at render time
+        super().__init__()
+
+    def process_buy_menu_sprite_from_randomisation_candidates(self, spritesheet):
+        # this function is passed (uncalled) into the pipeline, and then called at render time
+
+        # take the first and last candidates;
+        # note that we have to call set here, due to the way random candidates are padded out to make power of 2 list lengths for random bits
+        # we have to use frozen_roster_items as the roster object won't pickle for multiprocessing use (never figured out why)
+        source_wagons = [
+            list(
+                set(self.consist.frozen_roster_items["wagon_randomisation_candidates"])
+            )[0],
+            list(
+                set(self.consist.frozen_roster_items["wagon_randomisation_candidates"])
+            )[1],
+        ]
+        print("=========")
+        print(self.consist.id)
+        if len(self.consist.units) > 1:
+            raise BaseException(
+                "GenerateBuyMenuSpritesheetFromRandomisationCandidatesPipeline won't work with articulated consists - called by "
+                + self.consist.id
+            )
+        buy_menu_width_pixels = 4 * self.consist.units[0].vehicle_length
+        print(buy_menu_width_pixels)
+
+        for counter, source_wagon in enumerate(source_wagons):
+            print(counter)
+            # note that we want the *generated* source wagon spritesheet
+            source_wagon_input_path = os.path.join(
+                currentdir,
+                "generated",
+                "graphics",
+                source_wagon.id + ".png",
+            )
+            source_wagon_image = Image.open(source_wagon_input_path)
+            if self.consist.id == "randomised_box_car_pony_gen_1A":
+                #source_wagon_image.show()
+                pass
+            unit_slice_length_in_pixels = int(buy_menu_width_pixels / 2)
+            x_offset = (counter * unit_slice_length_in_pixels)
+            crop_box_src = (
+                224 + x_offset,
+                10,
+                224
+                + x_offset
+                + unit_slice_length_in_pixels
+                + 1,  # allow for 1px coupler / corrider overhang
+                26,
+            )
+            crop_box_dest = (
+                360 + x_offset,
+                10,
+                360
+                + x_offset
+                + unit_slice_length_in_pixels
+                + 1,  # allow for 1px coupler / corrider overhang
+                26,
+            )
+            custom_buy_menu_sprite = source_wagon_image.crop(crop_box_src)
+            spritesheet.sprites.paste(custom_buy_menu_sprite, crop_box_dest)
+
+        overlay_image_width = 16
+        overlay_image_height = 16
+        overlay_image = Image.open(
+            os.path.join(currentdir, "src", "graphics", "randomised_wagon_overlay.png")
+        ).crop((10, 10, 10 + overlay_image_width, 10 + overlay_image_height))
+        # create a mask so that we paste only the overlay pixels (no blue pixels)
+        overlay_mask = overlay_image.copy()
+        overlay_mask = overlay_mask.point(lambda i: 0 if i == 0 else 255).convert(
+            "1"
+        )
+        # now magically replace pink to another colour (dark grey maybe best?), so we can create a blend effect where the two source wagons abut
+        overlay_image = overlay_image.point(lambda i: 3 if i == 226 else i)
+        x_offset = int(buy_menu_width_pixels / 2) - int(overlay_image_width / 2)
+        crop_box_dest = (
+                360 + x_offset,
+                10,
+                360
+                + x_offset
+                + overlay_image_width, # overlay image width
+                10 + overlay_image_height,
+            )
+        spritesheet.sprites.paste(overlay_image, crop_box_dest, overlay_mask)
+
+        if self.consist.id == "randomised_box_car_pony_gen_1A":
+            #spritesheet.sprites.show()
+            pass
+
+        return spritesheet
+
+    def render(self, consist, global_constants):
+        self.units = []
+        self.consist = consist
+
+        self.units.append(
+            AddBuyMenuSprite(self.process_buy_menu_sprite_from_randomisation_candidates)
+        )
+
+        empty_spriterow_image = Image.open(
+            os.path.join(currentdir, "src", "graphics", "spriterow_template.png")
+        )
+
+        # if self.consist.id == "randomised_box_car_pony_gen_1A":
+        # empty_spriterow_image.show()
+        self.render_common(empty_spriterow_image, self.units)
+        empty_spriterow_image.close()
+
+
 class GeneratePantographsSpritesheetPipeline(Pipeline):
     """
     Adds additional spritesheets for pantographs (up and down), which are provided in the grf as sprite layers.
@@ -1580,7 +1696,7 @@ def get_pipelines(pipeline_names):
     pipelines = {
         "pass_through_pipeline": PassThroughPipeline,
         "check_buy_menu_only": CheckBuyMenuOnlyPipeline,
-        "generate_buy_menu_spritesheet_from_randomisation_candidates": CheckBuyMenuOnlyPipeline,
+        "generate_buy_menu_spritesheet_from_randomisation_candidates": GenerateBuyMenuSpritesheetFromRandomisationCandidatesPipeline,
         "extend_spriterows_for_composited_sprites_pipeline": ExtendSpriterowsForCompositedSpritesPipeline,
         "generate_pantographs_up_spritesheet": GeneratePantographsUpSpritesheetPipeline,
         "generate_pantographs_down_spritesheet": GeneratePantographsDownSpritesheetPipeline,

@@ -91,6 +91,11 @@ def main():
 
     consists = iron_horse.ActiveRosters().consists_in_buy_menu_order
 
+    for consist in consists:
+        # rosters won't pickle reliably, and blow up multiprocessing, never figured out why
+        # work around that by freezing anything for graphics processing that depends on roster lookups
+        consist.freeze_cross_roster_lookups()
+
     # get a list of 2-tuple pairs for spritelayer cargos + cargo sets
     # a list format is wanted for convenience with graphics multiprocessing pool
     # the parent spritelayer_cargo object must be passed with the cargo set as cargo sets have render-time properties which change according to context
@@ -100,11 +105,18 @@ def main():
         for cargo_set in spritelayer_cargo.cargo_sets:
             spritelayer_cargo_set_pairs.append((spritelayer_cargo, cargo_set))
 
+    # sort the consists in priority processing order, priority 1 is first
+    # this enables some consists to depend on generated sprites from other consists
+    consists_in_priority_groups = {1:[], 2:[]}
+    for consist in consists:
+        consists_in_priority_groups[consist.gestalt_graphics.processing_priority].append(consist)
+
     if use_multiprocessing == False:
         for spritelayer_cargo_set_pair in spritelayer_cargo_set_pairs:
             run_spritelayer_cargo_set_pipelines(spritelayer_cargo_set_pair)
-        for consist in consists:
-            run_consist_pipelines(consist)
+        for processing_priority in [1, 2]:
+            for consists in consists_in_priority_groups[processing_priority]:
+                run_consist_pipelines(consist)
     else:
         # Would this go faster if the pipelines from each consist were placed in MP pool, not just the consist?
         # probably potato / potato tbh
@@ -112,11 +124,13 @@ def main():
         pool.map(run_spritelayer_cargo_set_pipelines, spritelayer_cargo_set_pairs)
         pool.close()
         pool.join()
-        # wait for first pool job to finish before starting
-        pool = Pool(processes=num_pool_workers)
-        pool.map(run_consist_pipelines, consists)
-        pool.close()
-        pool.join()
+        # wait for first pool job to finish before starting further pool jobs
+        # vehicle pool jobs are repeated so that some vehicles can depend on generated sprites from others
+        for processing_priority in [1, 2]:
+            pool = Pool(processes=num_pool_workers)
+            pool.map(run_consist_pipelines, consists_in_priority_groups[processing_priority])
+            pool.close()
+            pool.join()
 
     report_sprites_complete(consists)
 
