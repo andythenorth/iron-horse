@@ -99,7 +99,7 @@ buy_menu_sort_order_wagons = [
 base_track_type_to_railtype_mapping = {
     "RAIL": ["IHA_", "RAIL"],
     "RAIL_ELECTRIFIED": ["IHB_", "ELRL"],
-    "METRO": ["IHC_", "MTRO", "SAA4"], # it's really not SAA3, as it's intended to be a segregated network, not just normal 3rd rail trains, unless the railtype grf disagrees
+    "METRO": ["IHC_", "MTRO"], # no other fallbacks, metro is a segregated network, not just normal 3rd rail trains, and standardised scheme does not appear to support that case
     "NG": ["IHD_", "NGRL", "NAAN"],
     "NG_ELECTRIFIED": ["IHE_", "ELNG", "NAAE"],
     "LGV": ["IHAA", "RAIL"],
