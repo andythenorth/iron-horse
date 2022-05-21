@@ -122,7 +122,6 @@ class GestaltGraphicsRandomisedWagon(GestaltGraphics):
     def nml_template(self):
         return "vehicle_randomised.pynml"
 
-
 class GestaltGraphicsVisibleCargo(GestaltGraphics):
     """
     Used for vehicle with visible cargos

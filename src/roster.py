@@ -25,7 +25,9 @@ class Roster(object):
         self.pax_car_capacity_types = kwargs.get("pax_car_capacity_types")
         self.train_car_weight_factors = kwargs.get("train_car_weight_factors")
         self.caboose_families = kwargs.get("caboose_families")
-        self.caboose_default_family_by_generation = kwargs.get("caboose_default_family_by_generation")
+        self.caboose_default_family_by_generation = kwargs.get(
+            "caboose_default_family_by_generation"
+        )
         self.livery_presets = kwargs.get("livery_presets", [])
         self.disabled = False
 
@@ -79,9 +81,15 @@ class Roster(object):
         result = []
         for base_id, wagons in self.wagon_consists.items():
             for wagon_consist in wagons:
-                if randomisation_consist.base_id not in wagon_consist.randomised_candidate_groups:
+                if (
+                    randomisation_consist.base_id
+                    not in wagon_consist.randomised_candidate_groups
+                ):
                     continue
-                if randomisation_consist.base_track_type != wagon_consist.base_track_type:
+                if (
+                    randomisation_consist.base_track_type
+                    != wagon_consist.base_track_type
+                ):
                     continue
                 if randomisation_consist.gen != wagon_consist.gen:
                     continue
@@ -89,41 +97,34 @@ class Roster(object):
                     continue
                 result.append(wagon_consist)
         if len(result) == 0:
-            raise BaseException(randomisation_consist.id + " did not match any randomisation_candidates, possibly there are no matching wagons for base_id/length/gen")
+            raise BaseException(
+                randomisation_consist.id
+                + " did not match any randomisation_candidates, possibly there are no matching wagons for base_id/length/gen"
+            )
         if len(result) == 1:
-            raise BaseException(randomisation_consist.id + " has only one choice for randomisation_candidates, this is pointless nonsense, consider removing " + randomisation_consist.id)
+            raise BaseException(
+                randomisation_consist.id
+                + " has only one choice for randomisation_candidates, this is pointless nonsense, consider removing "
+                + randomisation_consist.id
+            )
         if len(result) > 16:
             # we have a limited number of random bits, and we need to use them independently of company colour choices
             # so guard against consuming too many, 16 variants is 4 bits, and that's quite enough
             print(result)
-            raise BaseException(randomisation_consist.id + " has more than 16 entries in randomised_candidate_groups, and will run out of random bits; reduce the number of candidates")
+            raise BaseException(
+                randomisation_consist.id
+                + " has more than 16 entries in randomised_candidate_groups, and will run out of random bits; reduce the number of candidates"
+            )
         # length of results needs to be power of 2 as random choice can only be picked from powers of 2s (1 bit = 2 options, 2 bits = 4 options, 3 bits = 8 options, 4 bits = 16 options)
         # so just do a clunky manual append here, JFDI, not figuring out a power of 2 detector at this time of night :P
         # this will cause uneven probabilities, but eh, life is not perfect
         if len(result) == 3:
             result.append(result[0])
         # this relies on recursing a bit to get to 8 as needed
-        if len(result) == 5:
-            result.append(result[0])
-        if len(result) == 6:
-            result.append(result[1])
-        if len(result) == 7:
-            result.append(result[2])
-        # this relies on recursing a bit to get to 16 as needed
-        if len(result) == 9:
-            result.append(result[0])
-        if len(result) == 10:
-            result.append(result[1])
-        if len(result) == 11:
-            result.append(result[2])
-        if len(result) == 12:
-            result.append(result[3])
-        if len(result) == 13:
-            result.append(result[4])
-        if len(result) == 14:
-            result.append(result[5])
-        if len(result) == 15:
-            result.append(result[6])
+        if len(result) >= 5 and len(result) < 9:
+            result.extend(result[: 8 - len(result)])
+        if len(result) >= 9:
+            result.extend(result[: 16 - len(result)])
         return result
 
     def intro_date_ranges(self, base_track_type):
