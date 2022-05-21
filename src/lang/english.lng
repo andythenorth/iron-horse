@@ -122,13 +122,13 @@ STR_NAME_SUFFIX_PRESSURE_TANK_CAR                               :Pressure Tanker
 STR_NAME_SUFFIX_PRODUCT_TANK_CAR                                :Product Tanker
 STR_NAME_SUFFIX_RAILBUS_PASSENGER_TRAILER_CAR                   :Railbus Trailer
 STR_NAME_SUFFIX_RAILCAR_PASSENGER_TRAILER_CAR                   :Railcar Trailer
-STR_NAME_SUFFIX_RANDOMISED_BOX_CAR                              :Randomised Box Car
-STR_NAME_SUFFIX_RANDOMISED_BULK_CAR                             :Randomised Bulk Car
-STR_NAME_SUFFIX_RANDOMISED_COLD_METAL_CAR                       :Randomised Cold Metal Car
-STR_NAME_SUFFIX_RANDOMISED_DUMP_CAR                             :Randomised Dump Car
-STR_NAME_SUFFIX_RANDOMISED_HOPPER_CAR                           :Randomised Hopper Car
-STR_NAME_SUFFIX_RANDOMISED_OPEN_CAR                             :Randomised Open Car
-STR_NAME_SUFFIX_RANDOMISED_PIECE_GOODS_CAR                      :Randomised Piece Goods Car
+STR_NAME_SUFFIX_RANDOMISED_BOX_CAR                              :Randomised Van
+STR_NAME_SUFFIX_RANDOMISED_BULK_CAR                             :Randomised Bulk Wagon
+STR_NAME_SUFFIX_RANDOMISED_COLD_METAL_CAR                       :Randomised Cold Metal Wagon
+STR_NAME_SUFFIX_RANDOMISED_DUMP_CAR                             :Randomised Mineral Wagon
+STR_NAME_SUFFIX_RANDOMISED_HOPPER_CAR                           :Randomised Hopper
+STR_NAME_SUFFIX_RANDOMISED_OPEN_CAR                             :Randomised Open Wagon
+STR_NAME_SUFFIX_RANDOMISED_PIECE_GOODS_CAR                      :Randomised Piece Goods Wagon
 STR_NAME_SUFFIX_REEFER_CAR                                      :Refrigerated Van
 STR_NAME_SUFFIX_RESTAURANT_CAR                                  :Restaurant Car
 STR_NAME_SUFFIX_ROCK_HOPPER_CAR                                 :Rock Hopper
