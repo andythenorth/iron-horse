@@ -50,27 +50,42 @@
         </tal:pantographs>
 
     </tal:user_flipped>
-    <!--! stupid integer stuffing scheme to detect livery / flip / doors states, see the procedures for the schema -->
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_${variant_num},
-            [switch_graphics_consist_specific_livery_check_engine_id() + switch_graphics_opening_doors()]) {
-        100: return ${vehicle.id}_ss_doors_closed_livery_1_${variant_num}_unflipped;
-        101: return ${vehicle.id}_ss_doors_open_livery_1_${variant_num}_unflipped;
-        110: return ${vehicle.id}_ss_doors_closed_livery_1_${variant_num}_flipped;
-        111: return ${vehicle.id}_ss_doors_open_livery_1_${variant_num}_flipped;
-        200: return ${vehicle.id}_ss_doors_closed_livery_2_${variant_num}_unflipped;
-        201: return ${vehicle.id}_ss_doors_open_livery_2_${variant_num}_unflipped;
-        210: return ${vehicle.id}_ss_doors_closed_livery_2_${variant_num}_flipped;
-        211: return ${vehicle.id}_ss_doors_open_livery_2_${variant_num}_flipped;
-    }
+</tal:consist_cargo_variants>
 
+<!--! stupid integer stuffing scheme to detect livery / flip / doors states, see the procedures for the schema -->
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_check_engine_and_doors,
+        [
+            switch_graphics_consist_specific_livery_check_engine_id()
+            + switch_graphics_opening_doors()
+            + (1000 * LOAD_TEMP(${temp_storage_ids.consist_specific_livery_variant}))
+        ]
+    ) {
+    <tal:consist_cargo_variants repeat="variant_num python:range(consist.gestalt_graphics.num_cargo_sprite_variants)">
+        ${variant_num}100: return ${vehicle.id}_ss_doors_closed_livery_1_${variant_num}_unflipped;
+        ${variant_num}101: return ${vehicle.id}_ss_doors_open_livery_1_${variant_num}_unflipped;
+        ${variant_num}110: return ${vehicle.id}_ss_doors_closed_livery_1_${variant_num}_flipped;
+        ${variant_num}111: return ${vehicle.id}_ss_doors_open_livery_1_${variant_num}_flipped;
+        ${variant_num}200: return ${vehicle.id}_ss_doors_closed_livery_2_${variant_num}_unflipped;
+        ${variant_num}201: return ${vehicle.id}_ss_doors_open_livery_2_${variant_num}_unflipped;
+        ${variant_num}210: return ${vehicle.id}_ss_doors_closed_livery_2_${variant_num}_flipped;
+        ${variant_num}211: return ${vehicle.id}_ss_doors_open_livery_2_${variant_num}_flipped;
+    </tal:consist_cargo_variants>
+}
+
+<tal:consist_cargo_variants repeat="variant_num python:range(consist.gestalt_graphics.num_cargo_sprite_variants)">
     <tal:conditional_pantograph condition="consist.pantograph_type is not None">
         switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_pantographs_${variant_num}, vehicle_is_flipped) {
             1: return ${vehicle.id}_switch_graphics_pantographs_${variant_num}_flipped;
             return ${vehicle.id}_switch_graphics_pantographs_${variant_num}_unflipped;
         }
     </tal:conditional_pantograph>
-    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_layers_${variant_num}, getbits(extra_callback_info1, 8, 8)) {
-        0: return ${vehicle.id}_switch_graphics_vehicle_${variant_num};
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_layers_${variant_num},
+            [
+                STORE_TEMP(${variant_num}, ${temp_storage_ids.consist_specific_livery_variant}),
+                getbits(extra_callback_info1, 8, 8)
+            ]
+        ){
+        0: return ${vehicle.id}_switch_graphics_vehicle_check_engine_and_doors;
         <tal:conditional_pantograph condition="consist.pantograph_type is not None">
             <!--! if there are pantographs to draw we will handle that later in the graphics chain,
                   but we need to reserve layer 1 for the pantographs as well as layer 0 for the vehicle  -->
@@ -151,7 +166,7 @@
     </tal:vars>
 </tal:position_in_consist>
 
-switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_graphics_vehicle_cargo, most_common_cargo_type) {
+switch (FEAT_TRAINS, PARENT, ${vehicle.id}_switch_graphics_vehicle_check_cargo, most_common_cargo_type) {
     <tal:cargos repeat="cargo_label consist.gestalt_graphics.cargo_row_map.keys()">
     <!--!  assume that we always want first entry from the cargo's list of spritegroup row nums
            this will be the spritegroup row num for the 'default' vehicle graphical variant -->
@@ -167,7 +182,7 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle,
     <tal:fill_temp_storage condition="consist.equivalent_ids_alt_var_41 is not None">switch_initialise_alt_var_41(${','.join([str(id) for id in consist.equivalent_ids_alt_var_41])})</tal:fill_temp_storage>
     <tal:no_fill_temp_storage condition="consist.equivalent_ids_alt_var_41 is None">1</tal:no_fill_temp_storage>
     ) {
-    return ${vehicle.id}_switch_graphics_vehicle_cargo;
+    return ${vehicle.id}_switch_graphics_vehicle_check_cargo;
 }
 
 // buy menu graphics chain
