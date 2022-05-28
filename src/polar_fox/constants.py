@@ -166,7 +166,7 @@ allowed_refits_by_label = {
         "RFPR",
         "CHLO",
     ],  # seems to be used by intermodal, otherwise chemicals tankers are deprecated in favour of product tankers
-    "cold_metal": ["STEL", "METL", "STCB", "STAL", "STST", "COPR", "STSH", "STWR"],
+    "cold_metal": ["STEL", "METL", "STCB", "STAL", "STST", "COPR", "STSH", "STWR", "ALUM"],
     "covered_hoppers": [
         "GRAI",
         "WHEA",

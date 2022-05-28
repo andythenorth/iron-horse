@@ -1980,11 +1980,11 @@ class BolsterCarConsist(CarConsist):
     def __init__(self, **kwargs):
         self.base_id = "bolster_car"
         super().__init__(**kwargs)
-        self.class_refit_groups = []  # none needed
-        self.label_refits_allowed = polar_fox.constants.allowed_refits_by_label[
-            "long_products"
+        self.class_refit_groups = ["flatbed_freight"]
+        self.label_refits_allowed = ["GOOD"]
+        self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label[
+            "non_flatbed_freight"
         ]
-        self.label_refits_disallowed = []  # none needed
         self.default_cargos = polar_fox.constants.default_cargos["long_products"]
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
@@ -1994,7 +1994,7 @@ class BolsterCarConsist(CarConsist):
         # allow flipping, used to flip company colour
         self.allow_flip = True
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsVisibleCargo(piece="long_products")
+        self.gestalt_graphics = GestaltGraphicsVisibleCargo(piece="flat")
 
 
 class BoxCarConsistBase(CarConsist):
@@ -2258,9 +2258,15 @@ class CabooseCarConsistBase(CarConsist):
         # map default caboose variants and date ranges to show them for
         # don't use a dict, items can repeat, just nest 2 tuples
         result = []
-        for counter, date_range in enumerate(self.roster.intro_date_ranges(self.base_track_type)):
-            caboose_family_name = self.roster.caboose_default_family_by_generation[self.base_track_type][counter][self.base_id]
-            caboose_label = self.roster.caboose_families[self.base_track_type][self.base_id][caboose_family_name][0]
+        for counter, date_range in enumerate(
+            self.roster.intro_date_ranges(self.base_track_type)
+        ):
+            caboose_family_name = self.roster.caboose_default_family_by_generation[
+                self.base_track_type
+            ][counter][self.base_id]
+            caboose_label = self.roster.caboose_families[self.base_track_type][
+                self.base_id
+            ][caboose_family_name][0]
             result.append((caboose_label, date_range))
         return result
 
