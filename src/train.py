@@ -666,7 +666,7 @@ class Consist(object):
                 result + self.gestalt_graphics.num_extra_layers_for_spritelayer_cargos
             )
         # add a layer for a masked overlay as needed (usually applied over cargo sprites)
-        if getattr(self, "add_masked_overlay", False):
+        if self.gestalt_graphics.add_masked_overlay:
             result = result + 1
         # add a layer for pantographs as needed, note this is not done in the gestalt as it's more convenient to treat separarely
         if self.pantograph_type is not None:
@@ -1904,13 +1904,7 @@ class AutomobileCarConsistBase(CarConsist):
         self.gestalt_graphics = GestaltGraphicsAutomobilesTransporter(
             self.spritelayer_cargo_layers,
             consist_ruleset=consist_ruleset,
-            add_masked_overlay=self.add_masked_overlay,
         )
-
-    @property
-    def add_masked_overlay(self):
-        # over-ride in subclasses as needed
-        return False
 
 
 class AutomobileCarConsist(AutomobileCarConsistBase):
@@ -1943,6 +1937,8 @@ class AutomobileDoubleDeckCarConsist(AutomobileCarConsistBase):
         # blah blah, more restrictive refits for double deck, cars only
         self.label_refits_allowed = ["PASS", "VEHI"]
         self.use_cargo_subytpes_VEHI = False
+        # double deck cars need an extra masked overlay, which is handled via gestalt_graphics
+        self.gestalt_graphics.add_masked_overlay = True
 
     @property
     def _consist_ruleset(self):
@@ -1950,10 +1946,6 @@ class AutomobileDoubleDeckCarConsist(AutomobileCarConsistBase):
             return "2_unit_sets"
         else:
             return "4_unit_sets"
-
-    @property
-    def add_masked_overlay(self):
-        return True
 
     @property
     # layers for spritelayer cargos, and the platform type (cargo pattern and deck height)

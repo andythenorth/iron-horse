@@ -21,6 +21,9 @@ class GestaltGraphics(object):
         self.alternative_cc_livery = None  # over-ride as needed in subclasses
         # sometimes processing may depend on another generated vehicle spritesheet, so there are multiple processing priorities, 1 = highest
         self.processing_priority = 1
+        # default value for optional mask layer, this is JFDI for 2022, may need converting a more generic spritelayers structure in future
+        # set directly by the consist self.gestalt_graphics.add_masked_overlay = True, or by kwargs on a specific gestalt subclass
+        self.add_masked_overlay = False
 
     @property
     def nml_template(self):
@@ -480,8 +483,6 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphics):
         self.cargo_sprites_are_asymmetric = True
         # derive number of layers for cargo sprites
         self.num_extra_layers_for_spritelayer_cargos = len(spritelayer_cargo_layers)
-        # optional mask layer
-        self.add_masked_overlay = kwargs.get("add_masked_overlay", False)
 
     def get_output_row_types(self):
         # !! the actual number of variants needs decided - are we having articulated variants or just single units?
