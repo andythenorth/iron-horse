@@ -6,7 +6,7 @@ def main():
 
     consist = FlatCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=8470,
+        base_numeric_id=7830,
         gen=1,
         subtype="U",
         base_track_type="NG",
@@ -17,7 +17,7 @@ def main():
 
     consist = FlatCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=8480,
+        base_numeric_id=6910,
         gen=3,
         subtype="U",
         base_track_type="NG",
@@ -28,7 +28,7 @@ def main():
 
     consist = FlatCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=8490,
+        base_numeric_id=7490,
         gen=4,
         subtype="U",
         base_track_type="NG",

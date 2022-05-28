@@ -2,41 +2,6 @@ from train import ColdMetalCarRandomisedConsist, FreightCar
 
 
 def main():
-    # --------------- pony NG -------------------------------------------------------------------
-
-    consist = ColdMetalCarRandomisedConsist(
-        roster_id="pony",
-        base_numeric_id=7830,
-        gen=1,
-        subtype="U",
-        base_track_type="NG",
-        sprites_complete=True,
-    )
-
-    consist.add_unit(type=FreightCar, chassis="empty_16px")
-
-    consist = ColdMetalCarRandomisedConsist(
-        roster_id="pony",
-        base_numeric_id=6910,
-        gen=3,
-        subtype="U",
-        base_track_type="NG",
-        sprites_complete=True,
-    )
-
-    consist.add_unit(type=FreightCar, chassis="empty_16px")
-
-    consist = ColdMetalCarRandomisedConsist(
-        roster_id="pony",
-        base_numeric_id=7490,
-        gen=4,
-        subtype="U",
-        base_track_type="NG",
-        sprites_complete=True,
-    )
-
-    consist.add_unit(type=FreightCar, chassis="empty_16px")
-
     # --------------- pony ----------------------------------------------------------------------
 
     consist = ColdMetalCarRandomisedConsist(

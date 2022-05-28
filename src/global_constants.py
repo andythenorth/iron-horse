@@ -80,6 +80,7 @@ buy_menu_sort_order_wagons = [
     "randomised_open_car",
     "randomised_box_car",
     "randomised_piece_goods_car",
+    "randomised_flat_car",
     "randomised_hopper_car",
     "randomised_dump_car",
     "randomised_bulk_car",
