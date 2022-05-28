@@ -3,6 +3,27 @@ Changelog
 
 
 -------------
+2.48.0 Release
+-------------
+
+*Changes*
+
+- added wagons
+    - Flatbed Cargo Wagon - Randomised
+    - gen 5 small Hopper
+    - gen 5 small Hopper - Randomised
+    - gen 5 small Mineral Wagon - Randomised
+    - gen 5 small Chemicals Tanker - Randomised
+- added aluminium cargo to coil carrier refits
+- extend bolster wagon cargo refits to match flat wagons
+
+
+*Fixes*
+
+- fixed bad pixels for bulk cargos in hood open wagon
+
+
+-------------
 2.47.1 Release
 -------------
 
