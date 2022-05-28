@@ -984,7 +984,8 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                 "mask": None,
             }
         ]
-        if self.consist.gestalt_graphics.add_masked_overlay:
+        print("cabbage silly check in add_masked_overlay conditional")
+        if self.consist.gestalt_graphics.add_masked_overlay and self.consist.gestalt_graphics.__class__.__name__ is not "GestaltGraphicsAutomobilesTransporter":
             # use of the label here is possibly fragile?
             if label == "EMPTY":
                 mask = Image.new(
