@@ -227,39 +227,48 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
         for flipped in ["unflipped", "flipped"]:
             start_y_cumulative = graphics_constants.spritesheet_top_margin
 
+            print("unique_spritesets CABBAGE 1")
             if self.has_cover:
                 # add rows for covered sprite
+                """
                 for weathered_variant in self.weathered_variants.keys():
                     result.append(
                         [weathered_variant, "has_cover", flipped, start_y_cumulative]
                     )
                     start_y_cumulative += row_height
+                """
+                result.append(
+                    ["has_cover", flipped, start_y_cumulative]
+                )
+                start_y_cumulative += row_height
 
             # add rows for empty sprite
+            print("unique_spritesets CABBAGE 2")
+            """
             for weathered_variant in self.weathered_variants.keys():
                 result.append([weathered_variant, "empty", flipped, start_y_cumulative])
                 start_y_cumulative += row_height
+            """
+            result.append(["empty", flipped, start_y_cumulative])
+            start_y_cumulative += row_height
 
             # !! not sure unique_cargo_rows order will always reliably match to what's needed, but if it doesn't, explicitly sort it eh
             for row_num in unique_cargo_rows:
-                for weathered_variant in self.weathered_variants.keys():
-                    result.append(
-                        [
-                            weathered_variant,
-                            "loading_" + str(row_num),
-                            flipped,
-                            start_y_cumulative,
-                        ]
-                    )
-                    result.append(
-                        [
-                            weathered_variant,
-                            "loaded_" + str(row_num),
-                            flipped,
-                            start_y_cumulative + 30,
-                        ]
-                    )
-                    start_y_cumulative += 2 * row_height
+                result.append(
+                    [
+                        "loading_" + str(row_num),
+                        flipped,
+                        start_y_cumulative,
+                    ]
+                )
+                result.append(
+                    [
+                        "loaded_" + str(row_num),
+                        flipped,
+                        start_y_cumulative + 30,
+                    ]
+                )
+                start_y_cumulative += 2 * row_height
         return result
 
 

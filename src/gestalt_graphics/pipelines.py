@@ -990,25 +990,21 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             graphics_constants.spriterow_height,
         )
 
-        # !! oof shim hax, not all gestalts have weathered_variants defined
-        variants = getattr(
-            self.consist.gestalt_graphics, "weathered_variants", {"cabbage": None}
+        self.units.append(
+            AppendToSpritesheet(
+                vehicle_generic_spriterow_input_as_spritesheet, crop_box_dest
+            )
         )
-        for variant, body_recolour_map in variants.items():
-            self.units.append(
-                AppendToSpritesheet(
-                    vehicle_generic_spriterow_input_as_spritesheet, crop_box_dest
-                )
+        if hasattr(self.consist.gestalt_graphics, "weathered_variants"):
+            body_recolour_map = self.consist.gestalt_graphics.weathered_variants["unweathered"]
+            self.units.append(SimpleRecolour(body_recolour_map))
+        self.units.append(
+            AddCargoLabel(
+                label=label,
+                x_offset=self.sprites_max_x_extent + 5,
+                y_offset=-1 * graphics_constants.spriterow_height,
             )
-            if body_recolour_map is not None:
-                self.units.append(SimpleRecolour(body_recolour_map))
-            self.units.append(
-                AddCargoLabel(
-                    label=label,
-                    x_offset=self.sprites_max_x_extent + 5,
-                    y_offset=-1 * graphics_constants.spriterow_height,
-                )
-            )
+        )
 
     def add_livery_spriterows(self):
         # no loading / loaded states, intended for tankers etc
@@ -1398,24 +1394,21 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             label,
             cargo_recolour_map,
         ) in polar_fox.constants.bulk_cargo_recolour_maps:
-            for (
-                weathered_variant,
-                body_recolour_map,
-            ) in self.consist.gestalt_graphics.weathered_variants.items():
-                self.units.append(
-                    AppendToSpritesheet(
-                        bulk_cargo_rows_image_as_spritesheet, crop_box_dest
-                    )
+            body_recolour_map = self.consist.gestalt_graphics.weathered_variants["unweathered"]
+            self.units.append(
+                AppendToSpritesheet(
+                    bulk_cargo_rows_image_as_spritesheet, crop_box_dest
                 )
-                self.units.append(SimpleRecolour(body_recolour_map))
-                self.units.append(SimpleRecolour(cargo_recolour_map))
-                self.units.append(
-                    AddCargoLabel(
-                        label=label,
-                        x_offset=self.sprites_max_x_extent + 5,
-                        y_offset=-1 * cargo_group_row_height,
-                    )
+            )
+            self.units.append(SimpleRecolour(body_recolour_map))
+            self.units.append(SimpleRecolour(cargo_recolour_map))
+            self.units.append(
+                AddCargoLabel(
+                    label=label,
+                    x_offset=self.sprites_max_x_extent + 5,
+                    y_offset=-1 * cargo_group_row_height,
                 )
+            )
 
     def add_piece_cargo_spriterows(self):
         cargo_group_output_row_height = 2 * graphics_constants.spriterow_height
@@ -1576,23 +1569,20 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                 vehicle_comped_image, DOS_PALETTE
             )
 
-            for (
-                weathered_variant,
-                body_recolour_map,
-            ) in self.consist.gestalt_graphics.weathered_variants.items():
-                self.units.append(
-                    AppendToSpritesheet(
-                        vehicle_comped_image_as_spritesheet, crop_box_dest
-                    )
+            body_recolour_map = self.consist.gestalt_graphics.weathered_variants['unweathered']
+            self.units.append(
+                AppendToSpritesheet(
+                    vehicle_comped_image_as_spritesheet, crop_box_dest
                 )
-                self.units.append(SimpleRecolour(body_recolour_map))
-                self.units.append(
-                    AddCargoLabel(
-                        label=cargo_filename,
-                        x_offset=self.sprites_max_x_extent + 5,
-                        y_offset=-1 * cargo_group_output_row_height,
-                    )
+            )
+            self.units.append(SimpleRecolour(body_recolour_map))
+            self.units.append(
+                AddCargoLabel(
+                    label=cargo_filename,
+                    x_offset=self.sprites_max_x_extent + 5,
+                    y_offset=-1 * cargo_group_output_row_height,
                 )
+            )
 
     def render(self, consist, global_constants):
         self.units = (

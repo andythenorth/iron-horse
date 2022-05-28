@@ -2346,12 +2346,12 @@ class CoilBuggyCarConsist(CarConsist):
             cargo_row_map={},  # leave blank, all default to same
             generic_rows=[0],
             unique_spritesets=[
-                ["unweathered", "empty", "flipped", 10],
-                ["unweathered", "loading_0", "flipped", 40],
-                ["unweathered", "loaded_0", "flipped", 40],
-                ["unweathered", "empty", "unflipped", 10],
-                ["unweathered", "loading_0", "unflipped", 40],
-                ["unweathered", "loaded_0", "unflipped", 40],
+                ["empty", "flipped", 10],
+                ["loading_0", "flipped", 40],
+                ["loaded_0", "flipped", 40],
+                ["empty", "unflipped", 10],
+                ["loading_0", "unflipped", 40],
+                ["loaded_0", "unflipped", 40],
             ],
         )
 
@@ -3116,12 +3116,12 @@ class IngotCarConsist(CarConsist):
             cargo_row_map={},  # leave blank, all default to same
             generic_rows=[0],
             unique_spritesets=[
-                ["unweathered", "empty", "flipped", 10],
-                ["unweathered", "loading_0", "flipped", 40],
-                ["unweathered", "loaded_0", "flipped", 70],
-                ["unweathered", "empty", "unflipped", 10],
-                ["unweathered", "loading_0", "unflipped", 40],
-                ["unweathered", "loaded_0", "unflipped", 70],
+                ["empty", "flipped", 10],
+                ["loading_0", "flipped", 40],
+                ["loaded_0", "flipped", 70],
+                ["empty", "unflipped", 10],
+                ["loading_0", "unflipped", 40],
+                ["loaded_0", "unflipped", 70],
             ],
         )
 
@@ -4103,12 +4103,12 @@ class SlagLadleCarConsist(CarConsist):
             cargo_row_map={"SLAG": [0]},
             generic_rows=[0],
             unique_spritesets=[
-                ["unweathered", "empty", "flipped", 10],
-                ["unweathered", "loading_0", "flipped", 40],
-                ["unweathered", "loaded_0", "flipped", 70],
-                ["unweathered", "empty", "unflipped", 10],
-                ["unweathered", "loading_0", "unflipped", 40],
-                ["unweathered", "loaded_0", "unflipped", 70],
+                ["empty", "flipped", 10],
+                ["loading_0", "flipped", 40],
+                ["loaded_0", "flipped", 70],
+                ["empty", "unflipped", 10],
+                ["loading_0", "unflipped", 40],
+                ["loaded_0", "unflipped", 70],
             ],
         )
 
