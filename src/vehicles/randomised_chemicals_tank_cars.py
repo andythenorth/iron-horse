@@ -56,6 +56,16 @@ def main():
 
     consist = TankCarChemicalsRandomisedConsist(
         roster_id="pony",
+        base_numeric_id=8460,
+        gen=5,
+        subtype="A",
+        sprites_complete=True,
+    )
+
+    consist.add_unit(type=FreightCar, chassis="empty_16px")
+
+    consist = TankCarChemicalsRandomisedConsist(
+        roster_id="pony",
         base_numeric_id=8390,
         gen=5,
         subtype="B",
