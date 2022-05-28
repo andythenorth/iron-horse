@@ -68,6 +68,16 @@ def main():
 
     consist = DumpCarRandomisedConsist(
         roster_id="pony",
+        base_numeric_id=8450,
+        gen=5,
+        subtype="A",
+        sprites_complete=True,
+    )
+
+    consist.add_unit(type=FreightCar, chassis="empty_16px")
+
+    consist = DumpCarRandomisedConsist(
+        roster_id="pony",
         base_numeric_id=8210,
         gen=5,
         subtype="C",
