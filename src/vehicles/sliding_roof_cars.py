@@ -1,4 +1,4 @@
-from train import SlidingRoofCarConsist, FreightCar
+from train import FlatCarSlidingRoofConsist, FreightCar
 
 
 def main():
@@ -6,7 +6,7 @@ def main():
 
     # gen 5 start, only B and C lengths
 
-    consist = SlidingRoofCarConsist(
+    consist = FlatCarSlidingRoofConsist(
         roster_id="pony",
         base_numeric_id=5230,
         gen=5,
@@ -16,7 +16,7 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="2_axle_1cc_filled_24px")
 
-    consist = SlidingRoofCarConsist(
+    consist = FlatCarSlidingRoofConsist(
         roster_id="pony",
         base_numeric_id=5240,
         gen=5,
@@ -26,7 +26,7 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="4_axle_1cc_filled_32px")
 
-    consist = SlidingRoofCarConsist(
+    consist = FlatCarSlidingRoofConsist(
         roster_id="pony",
         base_numeric_id=5220,
         gen=6,
@@ -36,7 +36,7 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="2_axle_1cc_filled_24px")
 
-    consist = SlidingRoofCarConsist(
+    consist = FlatCarSlidingRoofConsist(
         roster_id="pony",
         base_numeric_id=5210,
         gen=6,

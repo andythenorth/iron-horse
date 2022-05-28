@@ -2196,34 +2196,6 @@ class BoxCarVehiclePartsConsist(BoxCarConsistBase):
         )
 
 
-class BulkheadFlatCarConsist(CarConsist):
-    """
-    Variant of flat wagon with heavy reinforced ends - refits same as flat wagon
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = "bulkhead_flat_car"
-        super().__init__(**kwargs)
-        self.class_refit_groups = ["flatbed_freight"]
-        self.label_refits_allowed = ["GOOD"]
-        self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label[
-            "non_flatbed_freight"
-        ]
-        self.default_cargos = polar_fox.constants.default_cargos["bulkhead"]
-        self._intro_date_days_offset = (
-            global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
-        )
-        self.randomised_candidate_groups = [
-            "randomised_cold_metal_car",
-            "randomised_piece_goods_car",
-        ]
-        self._joker = True
-        # allow flipping, used to flip company colour
-        self.allow_flip = True
-        # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsVisibleCargo(piece="flat")
-
-
 class CabooseCarConsistBase(CarConsist):
     """
     Caboose, brake van etc - no gameplay purpose, just eye candy.
@@ -2892,13 +2864,12 @@ class FarmProductsHopperCarConsist(CarConsist):
         )
 
 
-class FlatCarConsist(CarConsist):
+class FlatCarConsistBase(CarConsist):
     """
     Flatbed - refits wide range of cargos, but not bulk.
     """
 
     def __init__(self, **kwargs):
-        self.base_id = "flat_car"
         super().__init__(**kwargs)
         self.class_refit_groups = ["flatbed_freight"]
         self.label_refits_allowed = ["GOOD"]
@@ -2909,11 +2880,139 @@ class FlatCarConsist(CarConsist):
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["freight_core"]
         )
-        self.randomised_candidate_groups = ["randomised_cold_metal_car"]
         # allow flipping, used to flip company colour
         self.allow_flip = True
+
+
+class FlatCarBulkheadConsist(FlatCarConsistBase):
+    """
+    Variant of flat wagon with heavy reinforced ends - refits same as flat wagon
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "bulkhead_flat_car"
+        super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos["bulkhead"]
+        self._intro_date_days_offset = (
+            global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
+        )
+        self.randomised_candidate_groups = [
+            "randomised_piece_goods_car",
+            "randomised_cold_metal_car",
+        ]
+        self._joker = True
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsVisibleCargo(piece="flat")
+
+
+class FlatCarConsist(FlatCarConsistBase):
+    """
+    Flatbed - no stakes, visible cargo.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "flat_car"
+        super().__init__(**kwargs)
+        self.randomised_candidate_groups = [
+            "randomised_flat_car",
+            "randomised_cold_metal_car",
+        ]
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsVisibleCargo(piece="flat")
+
+
+class FlatCarPlateConsist(FlatCarConsistBase):
+    """
+    Low-side wagon - variant on flat wagon, refits same
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "plate_car"
+        super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos["plate"]
+        self._intro_date_days_offset = (
+            global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
+        )
+        self.randomised_candidate_groups = [
+            "randomised_cold_metal_car",
+            "randomised_piece_goods_car",
+        ]
+        self._joker = True
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsVisibleCargo(piece="flat")
+
+
+class FlatCarRandomisedConsist(FlatCarConsistBase):
+    """
+    Random choice of flat car sprite, from available coil cars, bolster cars etc.
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "randomised_flat_car"
+        super().__init__(**kwargs)
+        # eh force this to empty because randomised wagons can't be candidates for randomisation, but the base class might have set this prop
+        self.randomised_candidate_groups = []
+        # Graphics configuration
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon()
+
+
+class FlatCarSlidingRoofConsist(FlatCarConsistBase):
+    """
+    Sliding roof van - sfins2 holdall and similar - same refits as flat, not van (experimental)
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "sliding_roof_car"
+        super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos["flat_sliding_roof"]
+        self.buy_cost_adjustment_factor = 1.2
+        self._intro_date_days_offset = (
+            global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
+        )
+        self.randomised_candidate_groups = [
+            "randomised_cold_metal_car",
+            "randomised_piece_goods_car",
+        ]
+        self._joker = True
+        # Graphics configuration
+        weathered_variants = {
+            "unweathered": graphics_constants.sliding_roof_car_body_recolour_map,
+            "weathered": graphics_constants.sliding_roof_car_body_recolour_map_weathered,
+        }
+        self.gestalt_graphics = GestaltGraphicsVisibleCargo(
+            weathered_variants=weathered_variants,
+            piece="flat",
+            has_cover=True,
+        )
+
+
+class FlatCarTarpaulinConsist(FlatCarConsistBase):
+    """
+    Tarpaulin car - a graphical alternative to flat car, with identical refits
+    """
+
+    def __init__(self, **kwargs):
+        self.base_id = "tarpaulin_car"
+        super().__init__(**kwargs)
+        self.default_cargos = polar_fox.constants.default_cargos["flat_tarpaulin_roof"]
+        self.buy_cost_adjustment_factor = 1.1
+        self._intro_date_days_offset = (
+            global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
+        )
+        self.randomised_candidate_groups = [
+            "randomised_cold_metal_car",
+            "randomised_piece_goods_car",
+        ]
+        self._joker = True
+        # Graphics configuration
+        weathered_variants = {
+            "unweathered": graphics_constants.tarpaulin_car_body_recolour_map
+        }
+        self.gestalt_graphics = GestaltGraphicsVisibleCargo(
+            weathered_variants=weathered_variants,
+            piece="flat",
+            has_cover=True,
+        )
 
 
 class GasTankCarConsistBase(CarConsist):
@@ -3926,7 +4025,7 @@ class PeatCarConsist(CarConsist):
 
 class PieceGoodsCarRandomisedConsist(CarConsist):
     """
-    Randomised freight wagon - with refits matching flat / plate / tarpaulin cars - this might be a bad idea
+    Randomised general freight wagon - with refits matching flat / plate / tarpaulin cars - this might be a bad idea
     """
 
     def __init__(self, **kwargs):
@@ -3946,34 +4045,6 @@ class PieceGoodsCarRandomisedConsist(CarConsist):
         # Graphics configuration
         self.allow_flip = True
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon()
-
-
-class PlateCarConsist(CarConsist):
-    """
-    Low-side wagon - variant on flat wagon, refits same
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = "plate_car"
-        super().__init__(**kwargs)
-        self.class_refit_groups = ["flatbed_freight"]
-        self.label_refits_allowed = ["GOOD"]
-        self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label[
-            "non_flatbed_freight"
-        ]
-        self.default_cargos = polar_fox.constants.default_cargos["plate"]
-        self._intro_date_days_offset = (
-            global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
-        )
-        self.randomised_candidate_groups = [
-            "randomised_cold_metal_car",
-            "randomised_piece_goods_car",
-        ]
-        self._joker = True
-        # allow flipping, used to flip company colour
-        self.allow_flip = True
-        # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsVisibleCargo(piece="flat")
 
 
 class ReeferCarConsist(CarConsist):
@@ -4119,43 +4190,6 @@ class SlagLadleCarConsist(CarConsist):
         )
 
 
-class SlidingRoofCarConsist(CarConsist):
-    """
-    Sliding roof van - sfins2 holdall and similar - same refits as flat, not van (experimental)
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = "sliding_roof_car"
-        super().__init__(**kwargs)
-        self.class_refit_groups = ["flatbed_freight"]
-        self.label_refits_allowed = ["GOOD"]
-        self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label[
-            "non_flatbed_freight"
-        ]
-        self.default_cargos = polar_fox.constants.default_cargos["flat_sliding_roof"]
-        self.buy_cost_adjustment_factor = 1.2
-        self._intro_date_days_offset = (
-            global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
-        )
-        self.randomised_candidate_groups = [
-            "randomised_cold_metal_car",
-            "randomised_piece_goods_car",
-        ]
-        self._joker = True
-        # allow flipping, used to flip company colour
-        self.allow_flip = True
-        # Graphics configuration
-        weathered_variants = {
-            "unweathered": graphics_constants.sliding_roof_car_body_recolour_map,
-            "weathered": graphics_constants.sliding_roof_car_body_recolour_map_weathered,
-        }
-        self.gestalt_graphics = GestaltGraphicsVisibleCargo(
-            weathered_variants=weathered_variants,
-            piece="flat",
-            has_cover=True,
-        )
-
-
 class TankCarConsistBase(CarConsist):
     """
     All non-edible liquid cargos
@@ -4253,42 +4287,6 @@ class TankCarChemicalsRandomisedConsist(TankCarConsistBase):
         self.randomised_candidate_groups = []
         # Graphics configuration
         self.gestalt_graphics = GestaltGraphicsRandomisedWagon()
-
-
-class TarpaulinCarConsist(CarConsist):
-    """
-    Tarpaulin car - a graphical alternative to flat car, with identical refits
-    """
-
-    def __init__(self, **kwargs):
-        self.base_id = "tarpaulin_car"
-        super().__init__(**kwargs)
-        self.class_refit_groups = ["flatbed_freight"]
-        self.label_refits_allowed = ["GOOD"]
-        self.label_refits_disallowed = polar_fox.constants.disallowed_refits_by_label[
-            "non_flatbed_freight"
-        ]
-        self.default_cargos = polar_fox.constants.default_cargos["flat_tarpaulin_roof"]
-        self.buy_cost_adjustment_factor = 1.1
-        self._intro_date_days_offset = (
-            global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
-        )
-        self.randomised_candidate_groups = [
-            "randomised_cold_metal_car",
-            "randomised_piece_goods_car",
-        ]
-        self._joker = True
-        # allow flipping, used to flip company colour
-        self.allow_flip = True
-        # Graphics configuration
-        weathered_variants = {
-            "unweathered": graphics_constants.tarpaulin_car_body_recolour_map
-        }
-        self.gestalt_graphics = GestaltGraphicsVisibleCargo(
-            weathered_variants=weathered_variants,
-            piece="flat",
-            has_cover=True,
-        )
 
 
 class TorpedoCarConsist(CarConsist):

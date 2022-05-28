@@ -1,10 +1,10 @@
-from train import BulkheadFlatCarConsist, FreightCar
+from train import FlatCarBulkheadConsist, FreightCar
 
 
 def main():
     # --------------- pony NG ----------------------------------------------------------------------
 
-    consist = BulkheadFlatCarConsist(
+    consist = FlatCarBulkheadConsist(
         roster_id="pony",
         base_numeric_id=5120,
         gen=2,
@@ -16,7 +16,7 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
 
-    consist = BulkheadFlatCarConsist(
+    consist = FlatCarBulkheadConsist(
         roster_id="pony",
         base_numeric_id=5130,
         gen=3,
@@ -27,7 +27,7 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="4_axle_ng_16px")
 
-    consist = BulkheadFlatCarConsist(
+    consist = FlatCarBulkheadConsist(
         roster_id="pony",
         base_numeric_id=5140,
         gen=4,
@@ -40,7 +40,7 @@ def main():
 
     # --------------- pony ----------------------------------------------------------------------
 
-    consist = BulkheadFlatCarConsist(
+    consist = FlatCarBulkheadConsist(
         roster_id="pony",
         base_numeric_id=4700,
         gen=3,
@@ -50,7 +50,7 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
 
-    consist = BulkheadFlatCarConsist(
+    consist = FlatCarBulkheadConsist(
         roster_id="pony",
         base_numeric_id=4710,
         gen=3,
@@ -60,7 +60,7 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="4_axle_gapped_24px")
 
-    consist = BulkheadFlatCarConsist(
+    consist = FlatCarBulkheadConsist(
         roster_id="pony",
         base_numeric_id=4720,
         gen=3,
@@ -70,7 +70,7 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="4_axle_gapped_32px")
 
-    consist = BulkheadFlatCarConsist(
+    consist = FlatCarBulkheadConsist(
         roster_id="pony",
         base_numeric_id=4730,
         gen=4,
@@ -80,7 +80,7 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
 
-    consist = BulkheadFlatCarConsist(
+    consist = FlatCarBulkheadConsist(
         roster_id="pony",
         base_numeric_id=4740,
         gen=4,
@@ -90,7 +90,7 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="4_axle_filled_24px")
 
-    consist = BulkheadFlatCarConsist(
+    consist = FlatCarBulkheadConsist(
         roster_id="pony",
         base_numeric_id=4750,
         gen=4,
@@ -100,7 +100,7 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="4_axle_gapped_32px")
 
-    consist = BulkheadFlatCarConsist(
+    consist = FlatCarBulkheadConsist(
         roster_id="pony",
         base_numeric_id=4760,
         gen=5,
@@ -110,7 +110,7 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="4_axle_filled_greebled_24px")
 
-    consist = BulkheadFlatCarConsist(
+    consist = FlatCarBulkheadConsist(
         roster_id="pony",
         base_numeric_id=4770,
         gen=5,
@@ -120,7 +120,7 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="4_axle_filled_greebled_32px")
 
-    consist = BulkheadFlatCarConsist(
+    consist = FlatCarBulkheadConsist(
         roster_id="pony",
         base_numeric_id=4780,
         gen=6,
@@ -130,7 +130,7 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="4_axle_1cc_filled_24px")
 
-    consist = BulkheadFlatCarConsist(
+    consist = FlatCarBulkheadConsist(
         roster_id="pony",
         base_numeric_id=4790,
         gen=6,
