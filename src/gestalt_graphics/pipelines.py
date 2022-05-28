@@ -502,10 +502,10 @@ class GenerateBuyMenuSpritesheetFromRandomisationCandidatesPipeline(Pipeline):
             )
             source_wagon_image = Image.open(source_wagon_input_path)
             if self.consist.id == "randomised_box_car_pony_gen_1A":
-                #source_wagon_image.show()
+                # source_wagon_image.show()
                 pass
             unit_slice_length_in_pixels = int(buy_menu_width_pixels / 2)
-            x_offset = (counter * unit_slice_length_in_pixels)
+            x_offset = counter * unit_slice_length_in_pixels
             crop_box_src = (
                 224 + x_offset,
                 10,
@@ -534,24 +534,20 @@ class GenerateBuyMenuSpritesheetFromRandomisationCandidatesPipeline(Pipeline):
         ).crop((10, 10, 10 + overlay_image_width, 10 + overlay_image_height))
         # create a mask so that we paste only the overlay pixels (no blue pixels)
         overlay_mask = overlay_image.copy()
-        overlay_mask = overlay_mask.point(lambda i: 0 if i == 0 else 255).convert(
-            "1"
-        )
+        overlay_mask = overlay_mask.point(lambda i: 0 if i == 0 else 255).convert("1")
         # now magically replace pink to another colour (dark grey maybe best?), so we can create a blend effect where the two source wagons abut
         overlay_image = overlay_image.point(lambda i: 3 if i == 226 else i)
         x_offset = int(buy_menu_width_pixels / 2) - int(overlay_image_width / 2)
         crop_box_dest = (
-                360 + x_offset,
-                10,
-                360
-                + x_offset
-                + overlay_image_width, # overlay image width
-                10 + overlay_image_height,
-            )
+            360 + x_offset,
+            10,
+            360 + x_offset + overlay_image_width,  # overlay image width
+            10 + overlay_image_height,
+        )
         spritesheet.sprites.paste(overlay_image, crop_box_dest, overlay_mask)
 
         if self.consist.id == "randomised_box_car_pony_gen_1A":
-            #spritesheet.sprites.show()
+            # spritesheet.sprites.show()
             pass
 
         return spritesheet
@@ -975,36 +971,55 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
         vehicle_generic_spriterow_input_image = self.comp_chassis_and_body(
             self.vehicle_source_image.copy().crop(crop_box_source)
         )
-
         # vehicle_generic_spriterow_input_image.show() # comment in to see the image when debugging
-        vehicle_generic_spriterow_input_as_spritesheet = (
-            pixa.make_spritesheet_from_image(
-                vehicle_generic_spriterow_input_image, DOS_PALETTE
-            )
-        )
 
-        crop_box_dest = (
-            0,
-            0,
-            self.sprites_max_x_extent,
-            graphics_constants.spriterow_height,
-        )
-
-        self.units.append(
-            AppendToSpritesheet(
-                vehicle_generic_spriterow_input_as_spritesheet, crop_box_dest
+        variants = [
+            {
+                "label": label,
+                "body_recolour_map": getattr(
+                    self.consist.gestalt_graphics,
+                    "weathered_variants",
+                    {"unweathered": None},
+                )["unweathered"],
+                "mask": None,
+            }
+        ]
+        if self.consist.gestalt_graphics.add_masked_overlay:
+            variants.append(
+                {
+                    "label": label + " MASKED OVERLAY",
+                    "body_recolour_map": self.consist.gestalt_graphics.weathered_variants[
+                        "weathered"
+                    ],
+                    "mask": None,
+                }
             )
-        )
-        if hasattr(self.consist.gestalt_graphics, "weathered_variants"):
-            body_recolour_map = self.consist.gestalt_graphics.weathered_variants["unweathered"]
-            self.units.append(SimpleRecolour(body_recolour_map))
-        self.units.append(
-            AddCargoLabel(
-                label=label,
-                x_offset=self.sprites_max_x_extent + 5,
-                y_offset=-1 * graphics_constants.spriterow_height,
+        for variant in variants:
+            generic_spriterow_variant_image_as_spritesheet = (
+                pixa.make_spritesheet_from_image(
+                    vehicle_generic_spriterow_input_image, DOS_PALETTE
+                )
             )
-        )
+            crop_box_dest = (
+                0,
+                0,
+                self.sprites_max_x_extent,
+                graphics_constants.spriterow_height,
+            )
+            self.units.append(
+                AppendToSpritesheet(
+                    generic_spriterow_variant_image_as_spritesheet, crop_box_dest
+                )
+            )
+            if variant["body_recolour_map"] is not None:
+                self.units.append(SimpleRecolour(variant["body_recolour_map"]))
+            self.units.append(
+                AddCargoLabel(
+                    label=variant["label"],
+                    x_offset=self.sprites_max_x_extent + 5,
+                    y_offset=-1 * graphics_constants.spriterow_height,
+                )
+            )
 
     def add_livery_spriterows(self):
         # no loading / loaded states, intended for tankers etc
@@ -1400,11 +1415,11 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             label,
             cargo_recolour_map,
         ) in polar_fox.constants.bulk_cargo_recolour_maps:
-            body_recolour_map = self.consist.gestalt_graphics.weathered_variants["unweathered"]
+            body_recolour_map = self.consist.gestalt_graphics.weathered_variants[
+                "unweathered"
+            ]
             self.units.append(
-                AppendToSpritesheet(
-                    bulk_cargo_rows_image_as_spritesheet, crop_box_dest
-                )
+                AppendToSpritesheet(bulk_cargo_rows_image_as_spritesheet, crop_box_dest)
             )
             self.units.append(SimpleRecolour(body_recolour_map))
             self.units.append(SimpleRecolour(cargo_recolour_map))
@@ -1575,11 +1590,11 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                 vehicle_comped_image, DOS_PALETTE
             )
 
-            body_recolour_map = self.consist.gestalt_graphics.weathered_variants['unweathered']
+            body_recolour_map = self.consist.gestalt_graphics.weathered_variants[
+                "unweathered"
+            ]
             self.units.append(
-                AppendToSpritesheet(
-                    vehicle_comped_image_as_spritesheet, crop_box_dest
-                )
+                AppendToSpritesheet(vehicle_comped_image_as_spritesheet, crop_box_dest)
             )
             self.units.append(SimpleRecolour(body_recolour_map))
             self.units.append(

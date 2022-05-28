@@ -5,6 +5,7 @@
 <tal:spritesets repeat="spriteset_data consist.gestalt_graphics.unique_spritesets">
     <!--! spriteset loops got too complex in the templates, with livery, empty state, cargo loading, cargo loaded, and random variants
           so I moved the logic for spritesets into the gestalt, and simply render out all from a list with a trivial loop -->
+    // CABBAGE ${spriteset_data}
     spriteset(${vehicle.id}_ss_${spriteset_data[0]}_${spriteset_data[1]}, "${graphics_path}${consist.id}.png") {
         ${vehicle.get_spriteset_template_name('unreversed', spriteset_data[1], spriteset_data[2])}
     }
@@ -34,22 +35,22 @@
 <tal:graphics_with_optional_cover switch="getattr(consist.gestalt_graphics, 'has_cover', False)">
     <tal:no_cover case="False">
         switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_check_state_unweathered, switch_graphics_visible_cargo_no_cover_flip_and_load()) {
-            0: return ${vehicle.id}_ss_empty_unflipped;
+            0: return ${vehicle.id}_ss_empty_unweathered_unflipped;
             1: return ${vehicle.id}_switch_cargo_loading_unflipped;
             2: return ${vehicle.id}_switch_cargo_loaded_unflipped;
-            3: return ${vehicle.id}_ss_empty_flipped;
+            3: return ${vehicle.id}_ss_empty_unweathered_flipped;
             4: return ${vehicle.id}_switch_cargo_loading_flipped;
             5: return ${vehicle.id}_switch_cargo_loaded_flipped;
         }
     </tal:no_cover>
     <tal:has_cover case="True">
         switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_check_state_unweathered, switch_graphics_visible_cargo_has_cover()) {
-            0: return ${vehicle.id}_ss_has_cover_unflipped;
-            1: return ${vehicle.id}_ss_empty_unflipped;
+            0: return ${vehicle.id}_ss_has_cover_unweathered_unflipped;
+            1: return ${vehicle.id}_ss_empty_unweathered_unflipped;
             2: return ${vehicle.id}_switch_cargo_loading_unflipped;
             3: return ${vehicle.id}_switch_cargo_loaded_unflipped;
-            4: return ${vehicle.id}_ss_has_cover_flipped;
-            5: return ${vehicle.id}_ss_empty_flipped;
+            4: return ${vehicle.id}_ss_has_cover_unweathered_flipped;
+            5: return ${vehicle.id}_ss_empty_unweathered_flipped;
             6: return ${vehicle.id}_switch_cargo_loading_flipped;
             7: return ${vehicle.id}_switch_cargo_loaded_flipped;
         }
@@ -57,30 +58,30 @@
 </tal:graphics_with_optional_cover>
 
 <!--! weathered graphics are optional, and only used when recoloured sprites are provided in an overlay layer, rather than by CC remapping the default sprite -->
-<tal:weathered_graphics_with_optional_cover switch="getattr(consist.gestalt_graphics, 'has_cover', False)">
+<tal:masked_overlay_graphics condition="consist.gestalt_graphics.add_masked_overlay" switch="getattr(consist.gestalt_graphics, 'has_cover', False)">
     <tal:no_cover case="False">
         switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_check_state_weathered, switch_graphics_visible_cargo_no_cover_flip_and_load()) {
-            0: return ${vehicle.id}_ss_empty_unflipped;
-            1: return ${vehicle.id}_switch_cargo_loading_unflipped;
-            2: return ${vehicle.id}_switch_cargo_loaded_unflipped;
-            3: return ${vehicle.id}_ss_empty_flipped;
-            4: return ${vehicle.id}_switch_cargo_loading_flipped;
-            5: return ${vehicle.id}_switch_cargo_loaded_flipped;
+            0: return ${vehicle.id}_ss_empty_weathered_unflipped;
+            1: return ${vehicle.id}_ss_empty_weathered_unflipped;
+            2: return ${vehicle.id}_ss_empty_weathered_unflipped;
+            3: return ${vehicle.id}_ss_empty_weathered_flipped;
+            4: return ${vehicle.id}_ss_empty_weathered_flipped;
+            5: return ${vehicle.id}_ss_empty_weathered_flipped;
         }
     </tal:no_cover>
     <tal:has_cover case="True">
         switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_check_state_weathered, switch_graphics_visible_cargo_has_cover()) {
-            0: return ${vehicle.id}_ss_has_cover_unflipped;
-            1: return ${vehicle.id}_ss_empty_unflipped;
-            2: return ${vehicle.id}_switch_cargo_loading_unflipped;
-            3: return ${vehicle.id}_switch_cargo_loaded_unflipped;
-            4: return ${vehicle.id}_ss_has_cover_flipped;
-            5: return ${vehicle.id}_ss_empty_flipped;
-            6: return ${vehicle.id}_switch_cargo_loading_flipped;
-            7: return ${vehicle.id}_switch_cargo_loaded_flipped;
+            0: return ${vehicle.id}_ss_has_cover_weathered_unflipped;
+            1: return ${vehicle.id}_ss_empty_weathered_unflipped;
+            2: return ${vehicle.id}_ss_empty_weathered_unflipped;
+            3: return ${vehicle.id}_ss_empty_weathered_unflipped;
+            4: return ${vehicle.id}_ss_has_cover_weathered_flipped;
+            5: return ${vehicle.id}_ss_empty_weathered_flipped;
+            6: return ${vehicle.id}_ss_empty_weathered_flipped;
+            7: return ${vehicle.id}_ss_empty_weathered_flipped;
         }
     </tal:has_cover>
-</tal:weathered_graphics_with_optional_cover>
+</tal:masked_overlay_graphics>
 
 <!--! ! note that support here is for either ['unweathered'] or ['unweathered', 'weathered'] as only 1 random bit is picked, use more bits if that needs extended in future -->
 <!--! this could be parameterised procedure, as it's used for other gestalts also -->
