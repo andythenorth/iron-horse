@@ -67,9 +67,17 @@ switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle_choose_weathere
     return ${vehicle.id}_switch_graphics_vehicle_unweathered; <!--! this default should not be reached in this case, but eh -->
 }
 
-switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, param_wagon_colour_randomisation_strategy) {
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_check_randomisation_strategy, param_wagon_colour_randomisation_strategy) {
     2: ${vehicle.id}_switch_graphics_vehicle_unweathered; <!--! no randomisation -->
     ${vehicle.id}_switch_graphics_vehicle_choose_weathered_variant;
+}
+
+switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, getbits(extra_callback_info1, 8, 8)) {
+    <!--! masked overlay is JFDI hard-coded for now -->
+    <tal:masked_overlay condition="consist.gestalt_graphics.add_masked_overlay">
+        1: ${vehicle.id}_switch_graphics_check_randomisation_strategy;
+    </tal:masked_overlay>
+    ${vehicle.id}_switch_graphics_vehicle_unweathered;
 }
 
 // buy menu graphics chain

@@ -143,6 +143,10 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
         self.weathered_variants = kwargs.get(
             "weathered_variants", {"unweathered": graphics_constants.body_recolour_CC1}
         )
+        # possibly regrettable detection that weathered variants should be implemented as a masked overlay sprite, in a spritelayer
+        # this optimised file size and compile time, as don't have to repeat all cargo spriterows for the weathered variant
+        if "weathered" in self.weathered_variants.keys():
+            self.add_masked_overlay = True
         # cargo flags
         self.has_cover = kwargs.get("has_cover", False)
         self.has_bulk = kwargs.get("bulk", False)
