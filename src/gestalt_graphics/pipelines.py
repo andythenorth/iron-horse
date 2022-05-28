@@ -985,19 +985,64 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             }
         ]
         if self.consist.gestalt_graphics.add_masked_overlay:
+            # use of the label here is possibly fragile?
+            if label == "EMPTY":
+                mask = Image.new(
+                    "1", (self.sprites_max_x_extent, graphics_constants.spriterow_height), 0
+                )
+                mask_rows_offset_count = 1 + (2 * self.consist.gestalt_graphics.has_bulk) + self.consist.gestalt_graphics.has_piece
+                mask_rows_offset = self.base_yoffs + (mask_rows_offset_count * graphics_constants.spriterow_height)
+                # crop boxes may not work with asymmetric sprites?
+                crop_box_mask_source = (
+                    self.second_col_start_x,
+                    mask_rows_offset,
+                    self.second_col_start_x + self.col_image_width,
+                    mask_rows_offset + graphics_constants.spriterow_height,
+                )
+                crop_box_mask_dest = (
+                    self.second_col_start_x,
+                    0,
+                    self.second_col_start_x + self.col_image_width,
+                    graphics_constants.spriterow_height,
+                )
+                mask_source = (
+                    self.vehicle_source_image.copy()
+                    .crop(crop_box_mask_source)
+                    .point(lambda i: 255 if i == 226 else 0)
+                    .convert("1")
+                )
+                mask.paste(mask_source, crop_box_mask_dest)
+                #if self.consist.id == "hood_open_car_pony_gen_1A":
+                    #mask_source.show()
+            else:
+                mask = None
             variants.append(
                 {
                     "label": label + " MASKED OVERLAY",
                     "body_recolour_map": self.consist.gestalt_graphics.weathered_variants[
                         "weathered"
                     ],
-                    "mask": None,
+                    "mask": mask,
                 }
             )
+        empty_spriterow_image = Image.open(
+            os.path.join(currentdir, "src", "graphics", "spriterow_template.png")
+        )
+        empty_spriterow_image = empty_spriterow_image.crop(
+            (
+                0,
+                10,
+                graphics_constants.spritesheet_width,
+                10 + graphics_constants.spriterow_height,
+            )
+        )
         for variant in variants:
+            generic_spriterow_variant_image = empty_spriterow_image.copy()
+            generic_spriterow_variant_image.paste(vehicle_generic_spriterow_input_image, box=None, mask=variant["mask"])
+
             generic_spriterow_variant_image_as_spritesheet = (
                 pixa.make_spritesheet_from_image(
-                    vehicle_generic_spriterow_input_image, DOS_PALETTE
+                    generic_spriterow_variant_image, DOS_PALETTE
                 )
             )
             crop_box_dest = (

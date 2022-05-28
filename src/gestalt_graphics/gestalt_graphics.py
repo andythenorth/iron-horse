@@ -125,6 +125,7 @@ class GestaltGraphicsRandomisedWagon(GestaltGraphics):
     def nml_template(self):
         return "vehicle_randomised.pynml"
 
+
 class GestaltGraphicsVisibleCargo(GestaltGraphics):
     """
     Used for vehicle with visible cargos
@@ -237,7 +238,9 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
 
             # add rows for empty sprite
             for weathered_variant in self.weathered_variants.keys():
-                result.append(["empty_" + weathered_variant, flipped, start_y_cumulative])
+                result.append(
+                    ["empty_" + weathered_variant, flipped, start_y_cumulative]
+                )
                 start_y_cumulative += row_height
 
             # !! not sure unique_cargo_rows order will always reliably match to what's needed, but if it doesn't, explicitly sort it eh
