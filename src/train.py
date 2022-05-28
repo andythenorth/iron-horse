@@ -672,7 +672,7 @@ class Consist(object):
         if self.pantograph_type is not None:
             result = result + 1
         # OpenTTD has a limited number of layers in the sprite stack, we can't exceed them
-        if result > 4:
+        if result > 8:
             raise Exception("Too many sprite layers ", result, " defined for ", self.id)
         return result
 
