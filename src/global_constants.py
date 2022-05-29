@@ -75,8 +75,6 @@ buy_menu_sort_order_wagons = [
     "coil_buggy_car",
     "ingot_car",
     "slag_ladle_car",
-    "caboose_car",
-    "goods_caboose_car",
     "randomised_open_car",
     "randomised_box_car",
     "randomised_piece_goods_car",
@@ -86,6 +84,8 @@ buy_menu_sort_order_wagons = [
     "randomised_bulk_car",
     "randomised_chemicals_tank_car",
     "randomised_cold_metal_car",
+    "caboose_car",
+    "goods_caboose_car",
 ]
 
 # mapping of internal base_track_type values to actual railtype labels
