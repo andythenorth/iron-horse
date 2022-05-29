@@ -410,8 +410,8 @@ class GestaltGraphicsIntermodalContainerTransporters(GestaltGraphics):
             5: 3,
             6: 4,  # last: first
             7: 7,
-            8: 8,
-        }  # middle: middle
+            8: 8,  # middle: middle
+        }
 
     def get_output_row_types(self):
         # 2 liveries * 4 variants so 8 empty rows, we're only using the composited sprites pipeline for chassis compositing, containers are provided on separate layer
