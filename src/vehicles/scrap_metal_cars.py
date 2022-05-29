@@ -78,7 +78,15 @@ def main():
 
     consist.add_unit(type=FreightCar, chassis="4_axle_sparse_24px")
 
-    # no gen 5A or 6A
+    consist = DumpCarScrapMetalConsist(
+        roster_id="pony",
+        base_numeric_id=8610,
+        gen=5,
+        subtype="A",
+        sprites_complete=True,
+    )
+
+    consist.add_unit(type=FreightCar, chassis="2_axle_gapped_greebled_16px")
 
     consist = DumpCarScrapMetalConsist(
         roster_id="pony",
@@ -99,6 +107,8 @@ def main():
     )
 
     consist.add_unit(type=FreightCar, chassis="4_axle_gapped_greebled_32px")
+
+    # no gen 6A?
 
     consist = DumpCarScrapMetalConsist(
         roster_id="pony",
