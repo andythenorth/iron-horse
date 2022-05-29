@@ -188,7 +188,37 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
 
     def get_generic_spriterow_output_variants(self, spriterow_type):
         # there may be variants of generic spriterows, to support weathered variant, masked overlay etc
+
+        if spriterow_type == "empty":
+            label = "EMPTY"
+        if spriterow_type == "has_cover":
+            label = "COVERED"
+
         result = []
+        result.append(
+            {
+                "label": label,
+                "body_recolour_map": getattr(
+                    self,
+                    "weathered_variants",
+                    {"unweathered": None},
+                )["unweathered"],
+                "mask_row_offset_count": None,
+            }
+        )
+        if self.add_masked_overlay:
+            # use of the label here is possibly fragile?
+            if label == "EMPTY":
+                mask_row_offset_count = 1 + (2 * self.has_bulk) + self.has_piece
+            else:
+                mask_row_offset_count = None
+            result.append(
+                {
+                    "label": label + " MASKED OVERLAY",
+                    "body_recolour_map": self.weathered_variants["weathered"],
+                    "mask_row_offset_count": mask_row_offset_count,
+                }
+            )
         return result
 
     @property

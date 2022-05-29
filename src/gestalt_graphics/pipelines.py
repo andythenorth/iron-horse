@@ -999,50 +999,6 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
         variants = self.consist.gestalt_graphics.get_generic_spriterow_output_variants(
             spriterow_type
         )
-        print(self.consist.gestalt_graphics.__class__.__name__)
-        print(variants)
-
-        if len(variants) == 0:
-            # !! temp shim
-            if spriterow_type == "empty":
-                label = "EMPTY"
-            if spriterow_type == "has_cover":
-                label = "COVERED"
-
-            variants = [
-                {
-                    "label": label,
-                    "body_recolour_map": getattr(
-                        self.consist.gestalt_graphics,
-                        "weathered_variants",
-                        {"unweathered": None},
-                    )["unweathered"],
-                    "mask_row_offset_count": None,
-                }
-            ]
-            if (
-                self.consist.gestalt_graphics.add_masked_overlay
-                and self.consist.gestalt_graphics.__class__.__name__
-                is not "GestaltGraphicsAutomobilesTransporter"
-            ):
-                # use of the label here is possibly fragile?
-                if label == "EMPTY":
-                    mask_row_offset_count = (
-                        1
-                        + (2 * self.consist.gestalt_graphics.has_bulk)
-                        + self.consist.gestalt_graphics.has_piece
-                    )
-                else:
-                    mask_row_offset_count = None
-                variants.append(
-                    {
-                        "label": label + " MASKED OVERLAY",
-                        "body_recolour_map": self.consist.gestalt_graphics.weathered_variants[
-                            "weathered"
-                        ],
-                        "mask_row_offset_count": mask_row_offset_count,
-                    }
-                )
         for variant in variants:
             if variant["mask_row_offset_count"] == None:
                 mask = None
