@@ -186,6 +186,11 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
             result.append("piece_cargo")
         return result
 
+    def get_generic_spriterow_output_variants(self, spriterow_type):
+        # there may be variants of generic spriterows, to support weathered variant, masked overlay etc
+        result = []
+        return result
+
     @property
     def cargo_row_map(self):
         result = {}
@@ -391,6 +396,24 @@ class GestaltGraphicsIntermodalContainerTransporters(GestaltGraphics):
         # note to self, remarkably adding multiple empty rows appears to just work here :o
         return ["empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty"]
 
+    def get_generic_spriterow_output_variants(self, spriterow_type):
+        # there may be variants of generic spriterows, to support weathered variant, masked overlay etc
+        # for this gestalt, it's just one empty output row per input row, no other variants
+        if spriterow_type != "empty":
+            # only empty rows are supported eh
+            raise BaseException(
+                "get_generic_spriterow_output_variants only supports 'empty' as spriterow_type, and may need extending"
+            )
+        result = []
+        result.append(
+            {
+                "label": "EMPTY",
+                "body_recolour_map": None,
+                "mask_row_offset_count": None,
+            }
+        )
+        return result
+
     def allow_adding_cargo_label(self, cargo_label, container_type, result):
         # don't ship DFLT as actual cargo label, it's not a valid cargo and will cause nml to barf
         # the generation of the DFLT container sprites is handled separately without using cargo_label_mapping
@@ -494,6 +517,24 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphics):
         # 2 liveries * 4 variants so 8 empty rows, we're only using the composited sprites pipeline for chassis compositing, containers are provided on separate layer
         # note to self, remarkably adding multiple empty rows appears to just work here :o
         return ["empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty"]
+
+    def get_generic_spriterow_output_variants(self, spriterow_type):
+        # there may be variants of generic spriterows, to support weathered variant, masked overlay etc
+        # for this gestalt, it's just one empty output row per input row, no other variants
+        if spriterow_type != "empty":
+            # only empty rows are supported eh
+            raise BaseException(
+                "get_generic_spriterow_output_variants only supports 'empty' as spriterow_type, and may need extending"
+            )
+        result = []
+        result.append(
+            {
+                "label": "EMPTY",
+                "body_recolour_map": None,
+                "mask_row_offset_count": None,
+            }
+        )
+        return result
 
     """
     def allow_adding_cargo_label(self, cargo_label, container_type, result):

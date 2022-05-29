@@ -972,7 +972,8 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
         # chassis_image.show()
         return chassis_image
 
-    def add_generic_spriterows(self, label=""):
+    def add_generic_spriterows(self, spriterow_type):
+
         crop_box_source = (
             0,
             self.base_yoffs,
@@ -983,27 +984,73 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
             self.vehicle_source_image.copy().crop(crop_box_source)
         )
         # vehicle_generic_spriterow_input_image.show() # comment in to see the image when debugging
+        empty_spriterow_image = Image.open(
+            os.path.join(currentdir, "src", "graphics", "spriterow_template.png")
+        )
+        empty_spriterow_image = empty_spriterow_image.crop(
+            (
+                0,
+                10,
+                graphics_constants.spritesheet_width,
+                10 + graphics_constants.spriterow_height,
+            )
+        )
 
-        variants = [
-            {
-                "label": label,
-                "body_recolour_map": getattr(
-                    self.consist.gestalt_graphics,
-                    "weathered_variants",
-                    {"unweathered": None},
-                )["unweathered"],
-                "mask": None,
-            }
-        ]
-        print("cabbage silly check in add_masked_overlay conditional")
-        if self.consist.gestalt_graphics.add_masked_overlay and self.consist.gestalt_graphics.__class__.__name__ is not "GestaltGraphicsAutomobilesTransporter":
-            # use of the label here is possibly fragile?
-            if label == "EMPTY":
-                mask = Image.new(
-                    "1", (self.sprites_max_x_extent, graphics_constants.spriterow_height), 0
+        variants = self.consist.gestalt_graphics.get_generic_spriterow_output_variants(
+            spriterow_type
+        )
+        print(self.consist.gestalt_graphics.__class__.__name__)
+        print(variants)
+
+        if len(variants) == 0:
+            # !! temp shim
+            if spriterow_type == "empty":
+                label = "EMPTY"
+            if spriterow_type == "has_cover":
+                label = "COVERED"
+
+            variants = [
+                {
+                    "label": label,
+                    "body_recolour_map": getattr(
+                        self.consist.gestalt_graphics,
+                        "weathered_variants",
+                        {"unweathered": None},
+                    )["unweathered"],
+                    "mask_row_offset_count": None,
+                }
+            ]
+            if (
+                self.consist.gestalt_graphics.add_masked_overlay
+                and self.consist.gestalt_graphics.__class__.__name__
+                is not "GestaltGraphicsAutomobilesTransporter"
+            ):
+                # use of the label here is possibly fragile?
+                if label == "EMPTY":
+                    mask_row_offset_count = (
+                        1
+                        + (2 * self.consist.gestalt_graphics.has_bulk)
+                        + self.consist.gestalt_graphics.has_piece
+                    )
+                else:
+                    mask_row_offset_count = None
+                variants.append(
+                    {
+                        "label": label + " MASKED OVERLAY",
+                        "body_recolour_map": self.consist.gestalt_graphics.weathered_variants[
+                            "weathered"
+                        ],
+                        "mask_row_offset_count": mask_row_offset_count,
+                    }
                 )
-                mask_rows_offset_count = 1 + (2 * self.consist.gestalt_graphics.has_bulk) + self.consist.gestalt_graphics.has_piece
-                mask_rows_offset = self.base_yoffs + (mask_rows_offset_count * graphics_constants.spriterow_height)
+        for variant in variants:
+            if variant["mask_row_offset_count"] == None:
+                mask = None
+            else:
+                mask_rows_offset = self.base_yoffs + (
+                    variant["mask_row_offset_count"]
+                    * graphics_constants.spriterow_height
+                )
                 # crop boxes may not work with asymmetric sprites?
                 crop_box_mask_source = (
                     self.second_col_start_x,
@@ -1023,34 +1070,22 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                     .point(lambda i: 255 if i == 226 else 0)
                     .convert("1")
                 )
+                mask = Image.new(
+                    "1",
+                    (
+                        self.sprites_max_x_extent,
+                        graphics_constants.spriterow_height,
+                    ),
+                    0,
+                )
                 mask.paste(mask_source, crop_box_mask_dest)
-                #if self.consist.id == "hood_open_car_pony_gen_1A":
-                    #mask_source.show()
-            else:
-                mask = None
-            variants.append(
-                {
-                    "label": label + " MASKED OVERLAY",
-                    "body_recolour_map": self.consist.gestalt_graphics.weathered_variants[
-                        "weathered"
-                    ],
-                    "mask": mask,
-                }
-            )
-        empty_spriterow_image = Image.open(
-            os.path.join(currentdir, "src", "graphics", "spriterow_template.png")
-        )
-        empty_spriterow_image = empty_spriterow_image.crop(
-            (
-                0,
-                10,
-                graphics_constants.spritesheet_width,
-                10 + graphics_constants.spriterow_height,
-            )
-        )
-        for variant in variants:
+                # if self.consist.id == "hood_open_car_pony_gen_1A":
+                # mask_source.show()
+
             generic_spriterow_variant_image = empty_spriterow_image.copy()
-            generic_spriterow_variant_image.paste(vehicle_generic_spriterow_input_image, box=None, mask=variant["mask"])
+            generic_spriterow_variant_image.paste(
+                vehicle_generic_spriterow_input_image, box=None, mask=mask
+            )
 
             generic_spriterow_variant_image_as_spritesheet = (
                 pixa.make_spritesheet_from_image(
@@ -1700,10 +1735,10 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                 )
                 if spriterow_type == "empty":
                     input_spriterow_count = 1
-                    self.add_generic_spriterows(label="EMPTY")
+                    self.add_generic_spriterows(spriterow_type)
                 if spriterow_type == "has_cover":
                     input_spriterow_count = 1
-                    self.add_generic_spriterows(label="COVERED")
+                    self.add_generic_spriterows(spriterow_type)
                 elif spriterow_type == "livery_spriterows":
                     input_spriterow_count = 1
                     self.add_livery_spriterows()
