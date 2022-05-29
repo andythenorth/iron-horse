@@ -173,6 +173,7 @@ class GestaltGraphicsVisibleCargo(GestaltGraphics):
         return "vehicle_with_visible_cargo.pynml"
 
     def get_output_row_types(self):
+        # note that this is *types* of rows, in order, not counts - counts are delegated elsehwere
         result = []
         # for e.g. tarpaulin cars, covered coil cars, insert a specific spriterow to show the cover when 100% loaded or travelling
         if self.has_cover:

@@ -878,7 +878,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
         # initing things here is proven to have unexpected results, as the processor will be shared across multiple vehicles
         super().__init__()
 
-    def get_spriterows_for_consist_or_subpart(self):
+    def get_spriterow_types_for_consist(self):
         # builds a map of spriterows for the entire consist by walking gestalt graphics for each unique unit
         # might be that this should be handled via the gestalt graphics class, but potato / potato here I think
         result = []
@@ -972,7 +972,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
         # chassis_image.show()
         return chassis_image
 
-    def add_generic_spriterow(self, label=""):
+    def add_generic_spriterows(self, label=""):
         crop_box_source = (
             0,
             self.base_yoffs,
@@ -1683,7 +1683,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
         # !! input_spriterow_count looks a bit weird though; I tried moving it to gestalts, but didn't really work
         cumulative_input_spriterow_count = 0
         for vehicle_counter, vehicle_rows in enumerate(
-            self.get_spriterows_for_consist_or_subpart()
+            self.get_spriterow_types_for_consist()
         ):
             # 'vehicle_unit' not 'unit' to avoid conflating with graphics processor 'unit'
             self.vehicle_unit = self.consist.unique_units[
@@ -1700,10 +1700,10 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                 )
                 if spriterow_type == "empty":
                     input_spriterow_count = 1
-                    self.add_generic_spriterow(label="EMPTY")
+                    self.add_generic_spriterows(label="EMPTY")
                 if spriterow_type == "has_cover":
                     input_spriterow_count = 1
-                    self.add_generic_spriterow(label="COVERED")
+                    self.add_generic_spriterows(label="COVERED")
                 elif spriterow_type == "livery_spriterows":
                     input_spriterow_count = 1
                     self.add_livery_spriterows()
