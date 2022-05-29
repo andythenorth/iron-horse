@@ -118,6 +118,7 @@ class GestaltGraphicsRandomisedWagon(GestaltGraphics):
                 "generate_buy_menu_spritesheet_from_randomisation_candidates",
             ]
         )
+        self.dice_colour = kwargs["dice_colour"]
         # randomised buy menu sprites depend on generated vehicle spritesheet, so defer processing to round 2
         self.processing_priority = 2
 

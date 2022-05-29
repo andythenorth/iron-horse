@@ -1979,7 +1979,10 @@ class BolsterCarConsist(CarConsist):
         self._intro_date_days_offset = (
             global_constants.intro_date_offsets_by_role_group["non_core_wagons"]
         )
-        self.randomised_candidate_groups = ["randomised_cold_metal_car", "randomised_flat_car"]
+        self.randomised_candidate_groups = [
+            "randomised_cold_metal_car",
+            "randomised_flat_car",
+        ]
         self._joker = True
         # allow flipping, used to flip company colour
         self.allow_flip = True
@@ -2127,7 +2130,7 @@ class BoxCarRandomisedConsist(BoxCarConsistBase):
         # eh force this to empty because randomised wagons can't be candidates for randomisation, but the base class might have set this prop
         self.randomised_candidate_groups = []
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon()
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(dice_colour=2)
 
 
 class BoxCarSlidingWallConsist(BoxCarConsistBase):
@@ -2391,7 +2394,7 @@ class ColdMetalCarRandomisedConsist(CoilCarConsistBase):
         # eh force this to empty because randomised wagons can't be candidates for randomisation, but the base class might have set this prop
         self.randomised_candidate_groups = []
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon()
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(dice_colour=2)
 
 
 class CoveredHopperCarConsistBase(CarConsist):
@@ -2633,7 +2636,7 @@ class DumpCarRandomisedConsist(DumpCarConsistBase):
         # eh force this to empty because randomised wagons can't be candidates for randomisation, but the base class might have set this prop
         self.randomised_candidate_groups = []
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon()
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(dice_colour=2)
 
 
 class DumpCarScrapMetalConsist(DumpCarConsistBase):
@@ -2661,7 +2664,7 @@ class BulkCarRandomisedConsist(DumpCarConsistBase):
         # eh force this to empty because randomised wagons can't be candidates for randomisation, but the base class might have set this prop
         self.randomised_candidate_groups = []
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon()
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(dice_colour=1)
 
 
 class EdiblesTankCarConsist(CarConsist):
@@ -2944,7 +2947,7 @@ class FlatCarRandomisedConsist(FlatCarConsistBase):
         # eh force this to empty because randomised wagons can't be candidates for randomisation, but the base class might have set this prop
         self.randomised_candidate_groups = []
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon()
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(dice_colour=2)
 
 
 class FlatCarSlidingRoofConsist(FlatCarConsistBase):
@@ -3143,7 +3146,7 @@ class HopperCarRandomisedConsist(HopperCarConsistBase):
         # eh force this to empty because randomised wagons can't be candidates for randomisation, but the base class might have set this prop
         self.randomised_candidate_groups = []
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon()
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(dice_colour=1)
 
 
 class HopperCarOreConsist(HopperCarConsistBase):
@@ -3596,7 +3599,7 @@ class OpenCarRandomisedConsist(OpenCarConsistBase):
         # eh force this to empty because randomised wagons can't be candidates for randomisation, but the base class might have set this prop
         self.randomised_candidate_groups = []
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon()
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(dice_colour=1)
 
 
 class PassengerCarConsistBase(CarConsist):
@@ -4036,7 +4039,7 @@ class PieceGoodsCarRandomisedConsist(CarConsist):
         self._joker = True
         # Graphics configuration
         self.allow_flip = True
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon()
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(dice_colour=3)
 
 
 class ReeferCarConsist(CarConsist):
@@ -4278,7 +4281,7 @@ class TankCarChemicalsRandomisedConsist(TankCarConsistBase):
         # eh force this to empty because randomised wagons can't be candidates for randomisation, but the base class might have set this prop
         self.randomised_candidate_groups = []
         # Graphics configuration
-        self.gestalt_graphics = GestaltGraphicsRandomisedWagon()
+        self.gestalt_graphics = GestaltGraphicsRandomisedWagon(dice_colour=3)
 
 
 class TorpedoCarConsist(CarConsist):

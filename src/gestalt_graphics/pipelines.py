@@ -532,8 +532,8 @@ class GenerateBuyMenuSpritesheetFromRandomisationCandidatesPipeline(Pipeline):
         overlay_image = Image.open(
             os.path.join(currentdir, "src", "graphics", "randomised_wagon_overlay.png")
         ).crop((10, 10, 10 + overlay_image_width, 10 + overlay_image_height))
-        dice_recolour_maps = {4: {188: 45, 51: 47, 69: 49}, 6: {188: 188, 51: 51, 69: 69}, 8: {188: 9, 51: 12, 69: 15}}
-        dice_recolour_map = dice_recolour_maps[self.consist.length]
+        dice_recolour_maps = {1: {188: 9, 51: 12, 69: 15}, 2: {188: 188, 51: 51, 69: 69}, 3: {188: 45, 51: 47, 69: 49}}
+        dice_recolour_map = dice_recolour_maps[self.consist.gestalt_graphics.dice_colour]
         overlay_image = overlay_image.point(lambda i: dice_recolour_map[i] if i in dice_recolour_map.keys() else i)
         # create a mask so that we paste only the overlay pixels (no blue pixels)
         overlay_mask = overlay_image.copy()
