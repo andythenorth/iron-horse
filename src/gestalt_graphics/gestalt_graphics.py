@@ -539,7 +539,25 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphics):
         # !! the actual number of variants needs decided - are we having articulated variants or just single units?
         # 2 liveries * 4 variants so 8 empty rows, we're only using the composited sprites pipeline for chassis compositing, containers are provided on separate layer
         # note to self, remarkably adding multiple empty rows appears to just work here :o
-        return ["empty", "empty", "empty", "empty", "empty", "empty", "empty", "empty"]
+        if self.consist_ruleset == "1_unit_sets":
+            result = ["empty"]
+        elif self.consist_ruleset == "4_unit_sets":
+            result = [
+                "empty",
+                "empty",
+                "empty",
+                "empty",
+            ]
+        else:
+            raise BaseException(consist_ruleset + " not matched in GestaltGraphicsAutomobilesTransporter get_output_row_types()")
+        if self.add_masked_overlay:
+            temp_result = []
+            for row_type in result:
+                # we want to skip the a row as it will just contain a mask, setting row_type to None seems to work fine
+                temp_result.append(row_type)
+                temp_result.append(None)
+            result = temp_result
+        return result
 
     def get_generic_spriterow_output_variants(self, spriterow_type):
         # there may be variants of generic spriterows, to support weathered variant, masked overlay etc
@@ -552,11 +570,45 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphics):
         result = []
         result.append(
             {
-                "label": "EMPTY",
+                "label": "BASE PLATFORM",
                 "body_recolour_map": None,
                 "mask_row_offset_count": None,
             }
         )
+        if self.add_masked_overlay:
+            result.append(
+                {
+                    "label": "MASKED OVERLAY",
+                    "body_recolour_map": None,
+                    "mask_row_offset_count": 1,
+                }
+            )
+        return result
+
+    @property
+    def vehicle_spritelayer_names(self):
+        result = ["base_platform"]
+        if self.add_masked_overlay:
+            result.append("masked_overlay")
+        return result
+
+    @property
+    def unique_spritesets(self):
+        # the template for this gestalt was getting complex with loops and logic where logic shouldn't be
+        # so instead we delegate that logic here and simplify the loop
+        row_height = graphics_constants.spriterow_height
+
+        result = []
+        for flipped in ["unflipped", "flipped"]:
+            start_y_cumulative = graphics_constants.spritesheet_top_margin
+
+            # add rows for empty sprite
+            for variant in self.position_variants:
+                for vehicle_spritelayer_name in self.vehicle_spritelayer_names:
+                    result.append(
+                        [vehicle_spritelayer_name + "_" + variant, flipped, start_y_cumulative]
+                    )
+                    start_y_cumulative += row_height
         return result
 
     """
@@ -610,6 +662,7 @@ class GestaltGraphicsAutomobilesTransporter(GestaltGraphics):
             # 2 unit articulated sets only need 3 variants
             return ["default", "first", "last"]
         else:
+            # defaulting to 4 unit sets is apparently fine?
             return ["default", "first", "last", "middle"]
 
     @property

@@ -532,14 +532,24 @@ class GenerateBuyMenuSpritesheetFromRandomisationCandidatesPipeline(Pipeline):
         overlay_image = Image.open(
             os.path.join(currentdir, "src", "graphics", "randomised_wagon_overlay.png")
         ).crop((10, 10, 10 + overlay_image_width, 10 + overlay_image_height))
-        dice_recolour_maps = {1: {188: 9, 51: 12, 69: 15}, 2: {188: 188, 51: 51, 69: 69}, 3: {188: 45, 51: 47, 69: 49}}
-        dice_recolour_map = dice_recolour_maps[self.consist.gestalt_graphics.dice_colour]
-        overlay_image = overlay_image.point(lambda i: dice_recolour_map[i] if i in dice_recolour_map.keys() else i)
+        dice_recolour_maps = {
+            1: {188: 9, 51: 12, 69: 15},
+            2: {188: 188, 51: 51, 69: 69},
+            3: {188: 45, 51: 47, 69: 49},
+        }
+        dice_recolour_map = dice_recolour_maps[
+            self.consist.gestalt_graphics.dice_colour
+        ]
+        overlay_image = overlay_image.point(
+            lambda i: dice_recolour_map[i] if i in dice_recolour_map.keys() else i
+        )
         # create a mask so that we paste only the overlay pixels (no blue pixels)
         overlay_mask = overlay_image.copy()
         overlay_mask = overlay_mask.point(lambda i: 0 if i == 0 else 255).convert("1")
         # now magically replace pink to another colour (dark grey maybe best?), so we can create a blend effect where the two source wagons abut
-        overlay_image = overlay_image.point(lambda i: dice_recolour_map[188] if i == 226 else i)
+        overlay_image = overlay_image.point(
+            lambda i: dice_recolour_map[188] if i == 226 else i
+        )
         x_offset = int(buy_menu_width_pixels / 2) - int(overlay_image_width / 2)
         crop_box_dest = (
             360 + x_offset,

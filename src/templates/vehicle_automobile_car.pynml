@@ -4,54 +4,29 @@
 
 
 // graphics chain for vehicle platform and masked overlay
-<tal:platform_or_masked_overlay repeat="platform_or_masked_overlay ['platform', 'masked_overlay' if consist.gestalt_graphics.add_masked_overlay else None]">
-    <tal:position_variants repeat="position_variant consist.gestalt_graphics.position_variants">
-        spriteset(${vehicle.id}_ss_${platform_or_masked_overlay}_${position_variant}_unflipped, "${graphics_path}${consist.id}.png") {
-            ${vehicle.get_spriteset_template_name('unreversed', 'unflipped', 10 + (repeat.platform_or_masked_overlay.index * 30) + (repeat.position_variant.index * 60))}
-        }
-        spriteset(${vehicle.id}_ss_${platform_or_masked_overlay}_${position_variant}_flipped, "${graphics_path}${consist.id}.png") {
-            ${vehicle.get_spriteset_template_name('reversed', 'flipped', 10 + (repeat.platform_or_masked_overlay.index * 30) + (repeat.position_variant.index * 60))}
-        }
+<tal:spritesets repeat="spriteset_data consist.gestalt_graphics.unique_spritesets">
+    <!--! spriteset loops got too complex in the templates, with livery, empty state, cargo loading, cargo loaded, and random variants
+          so I moved the logic for spritesets into the gestalt, and simply render out all from a list with a trivial loop -->
+    spriteset(${vehicle.id}_ss_${spriteset_data[0]}_${spriteset_data[1]}, "${graphics_path}${consist.id}.png") {
+        ${vehicle.get_spriteset_template_name('unreversed', spriteset_data[1], spriteset_data[2])}
+    }
+    <!--! spritegroups aren't used here, direct to spriteset -->
+</tal:spritesets>
 
-        <!--! handle user flipped state -->
-        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${platform_or_masked_overlay}_${position_variant}, vehicle_is_flipped) {
-            1: return ${vehicle.id}_ss_${platform_or_masked_overlay}_${position_variant}_flipped;
-            return ${vehicle.id}_ss_${platform_or_masked_overlay}_${position_variant}_unflipped;
-        }
-    </tal:position_variants>
-
-    <tal:position_ruleset condition="consist.gestalt_graphics.consist_ruleset == 'articulated_permanent_twin_sets'">
-        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${platform_or_masked_overlay}_position_in_consist_entry_point, switch_graphics_automobile_transporter_ruleset_articulated_permanent_twin_sets()) {
-            1: return ${vehicle.id}_switch_graphics_${platform_or_masked_overlay}_last;
-            return ${vehicle.id}_switch_graphics_${platform_or_masked_overlay}_first;
-        }
-    </tal:position_ruleset>
-
-    <tal:position_ruleset condition="consist.gestalt_graphics.consist_ruleset == '1_unit_sets'">
-        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${platform_or_masked_overlay}_position_in_consist_entry_point, switch_graphics_automobile_transporter_ruleset_1_unit_sets()) {
-            return ${vehicle.id}_switch_graphics_${platform_or_masked_overlay}_default;
-        }
-    </tal:position_ruleset>
-
-    <tal:position_ruleset condition="consist.gestalt_graphics.consist_ruleset == '2_unit_sets'">
-        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${platform_or_masked_overlay}_position_in_consist_entry_point, switch_graphics_automobile_transporter_ruleset_2_unit_sets()) {
-            0: return ${vehicle.id}_switch_graphics_${platform_or_masked_overlay}_default;
-            1: return ${vehicle.id}_switch_graphics_${platform_or_masked_overlay}_first;
-            2: return ${vehicle.id}_switch_graphics_${platform_or_masked_overlay}_last;
-            return ${vehicle.id}_switch_graphics_${platform_or_masked_overlay}_default;
-        }
-    </tal:position_ruleset>
-
-    <tal:position_ruleset condition="consist.gestalt_graphics.consist_ruleset == '4_unit_sets'">
-        switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${platform_or_masked_overlay}_position_in_consist_entry_point, switch_graphics_automobile_transporter_ruleset_4_unit_sets()) {
-            0: ${vehicle.id}_switch_graphics_${platform_or_masked_overlay}_default;
-            1: return ${vehicle.id}_switch_graphics_${platform_or_masked_overlay}_first;
-            2: return ${vehicle.id}_switch_graphics_${platform_or_masked_overlay}_last;
-            3: return ${vehicle.id}_switch_graphics_${platform_or_masked_overlay}_middle;
-            return ${vehicle.id}_switch_graphics_${platform_or_masked_overlay}_default;
-        }
-    </tal:position_ruleset>
-</tal:platform_or_masked_overlay>
+<tal:spritelayer_vehicle_layers repeat="vehicle_spritelayer_name consist.gestalt_graphics.vehicle_spritelayer_names">
+    switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_${vehicle_spritelayer_name}_position_in_consist_entry_point,
+        [
+            switch_graphics_automobile_transporter_ruleset_${consist.gestalt_graphics.consist_ruleset}()
+            + (10 * vehicle_is_flipped)
+        ]
+    ) {
+        <tal:flip_state repeat="flip_state ['unflipped', 'flipped']">
+            <tal:position_ruleset repeat="position_variant consist.gestalt_graphics.position_variants">
+                ${repeat.position_variant.index + (10 if flip_state == 'flipped' else 0)}: ${vehicle.id}_ss_${vehicle_spritelayer_name}_${position_variant}_${flip_state};
+            </tal:position_ruleset>
+        </tal:flip_state>
+    }
+</tal:spritelayer_vehicle_layers>
 
 <tal:spritelayer_cargo_layers repeat="platform_type consist.spritelayer_cargo_layers">
     <!--! load state is assumed (for simplicity) to be all or nothing - any cargo = full load of automobile cargos -->
@@ -70,7 +45,7 @@
 
 // switch layers: base platform / spritelayer cargo
 switch (FEAT_TRAINS, SELF, ${vehicle.id}_switch_graphics_vehicle, getbits(extra_callback_info1, 8, 8)) {
-    0: return ${vehicle.id}_switch_graphics_platform_position_in_consist_entry_point;
+    0: return ${vehicle.id}_switch_graphics_base_platform_position_in_consist_entry_point;
     1: return ${vehicle.id}_switch_graphics_spritelayer_cargos_${consist.spritelayer_cargo_layers[0]};
     <tal:optional_masked_overlay condition="consist.gestalt_graphics.add_masked_overlay">
         2: return ${vehicle.id}_switch_graphics_masked_overlay_position_in_consist_entry_point;

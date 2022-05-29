@@ -1951,6 +1951,7 @@ class AutomobileLowFloorCarConsist(AutomobileCarConsistBase):
     def __init__(self, **kwargs):
         self.base_id = "low_floor_automobile_car"
         super().__init__(**kwargs)
+        print(self.id, self.gestalt_graphics.consist_ruleset)
 
     @property
     def _consist_ruleset(self):
