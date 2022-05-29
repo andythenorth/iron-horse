@@ -878,6 +878,17 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
         # initing things here is proven to have unexpected results, as the processor will be shared across multiple vehicles
         super().__init__()
 
+    def get_spriterows_for_consist_or_subpart(self):
+        # builds a map of spriterows for the entire consist by walking gestalt graphics for each unique unit
+        # might be that this should be handled via the gestalt graphics class, but potato / potato here I think
+        result = []
+        for unit in self.consist.unique_units:
+            unit_rows = []
+            # assumes gestalt_graphics is used to handle all row types, no other cases at time of writing, could be changed eh?
+            unit_rows.extend(self.consist.gestalt_graphics.get_output_row_types())
+            result.append(unit_rows)
+        return result
+
     def comp_chassis_and_body(self, body_image):
         crop_box_input_1 = (
             0,
@@ -1672,9 +1683,7 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
         # !! input_spriterow_count looks a bit weird though; I tried moving it to gestalts, but didn't really work
         cumulative_input_spriterow_count = 0
         for vehicle_counter, vehicle_rows in enumerate(
-            self.consist.get_spriterows_for_consist_or_subpart(
-                self.consist.unique_units
-            )
+            self.get_spriterows_for_consist_or_subpart()
         ):
             # 'vehicle_unit' not 'unit' to avoid conflating with graphics processor 'unit'
             self.vehicle_unit = self.consist.unique_units[

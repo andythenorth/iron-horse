@@ -246,16 +246,6 @@ class Consist(object):
         else:
             return False
 
-    def get_spriterows_for_consist_or_subpart(self, units):
-        # pass either list of all units in consist, or a slice of the consist starting from front (arbitrary slices not useful)
-        result = []
-        for unit in units:
-            unit_rows = []
-            # assumes gestalt_graphics is used to handle all row types, no other cases at time of writing, could be changed eh?
-            unit_rows.extend(self.gestalt_graphics.get_output_row_types())
-            result.append(unit_rows)
-        return result
-
     @property
     def buy_cost(self):
         # stub only
