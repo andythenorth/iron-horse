@@ -226,6 +226,8 @@ class DocHelper(object):
             getattr(consist.gestalt_graphics, "default_livery_extra_docs_examples", [])
         )
 
+        alternative_cc_livery = consist.gestalt_graphics.alternative_cc_livery
+
         result = {}
         for cc_remap_pair in default_livery_examples:
             livery_name = self.get_livery_file_substr(cc_remap_pair)
@@ -235,9 +237,17 @@ class DocHelper(object):
                 "CC2": cc_remap_pair[1],
             }
             result[livery_name]["docs_image_input_cc"] = cc_remap_pair
+            # now we need to check if the default docs row needs forced
+            # this is for the case where any of the docs default_livery_examples match the alternative_cc_livery triggers
+            if alternative_cc_livery is not None:
+                # we're matching only on 2nd company colour
+                for company_colour_name in alternative_cc_livery["cc2"]:
+                    if company_colour_name == cc_remap_pair[1]:
+                        result[livery_name]["use_alternative_livery_spriterow"] = True
+                        if alternative_cc_livery["remap_to_cc"] is not None:
+                            result[livery_name]["cc_remaps"]["CC1"] = alternative_cc_livery["remap_to_cc"]
         variants_config.append(result)
 
-        alternative_cc_livery = consist.gestalt_graphics.alternative_cc_livery
         if alternative_cc_livery is not None:
             result = {}
             for cc_remap_pair in alternative_cc_livery["docs_image_input_cc"]:
@@ -760,12 +770,19 @@ def render_docs_images(consist):
             cc_remap_indexes = doc_helper.remap_company_colours(
                 livery_metadata["cc_remaps"]
             )
-            processed_vehicle_image = (
-                variant["source_vehicle_image"]
-                .copy()
-                .point(
-                    lambda i: cc_remap_indexes[i] if i in cc_remap_indexes.keys() else i
+            # probably fragile workaround to use the alternative livery spriterow
+            # for the edge case that a docs default livery 2nd company colour matches the alternative livery triggers
+            if "use_alternative_livery_spriterow" in livery_metadata.keys():
+                # this makes assumptions about there being a 2nd docs_image_variant with an appropriate spriterow
+                processed_vehicle_image = docs_image_variants[1]["source_vehicle_image"]
+            else:
+                processed_vehicle_image = variant["source_vehicle_image"]
+                cc_remap_indexes = doc_helper.remap_company_colours(
+                    livery_metadata["cc_remaps"]
                 )
+
+            processed_vehicle_image = processed_vehicle_image.copy().point(
+                lambda i: cc_remap_indexes[i] if i in cc_remap_indexes.keys() else i
             )
 
             # oversize the images to account for how browsers interpolate the images on retina / HDPI screens
