@@ -327,9 +327,11 @@ def main(disabled=False):
                     "COLOUR_PALE_GREEN",
                     "COLOUR_GREEN",
                     "COLOUR_DARK_GREEN",
+                    # includes GBRF
                     "COLOUR_MAUVE",
-                ],  # includes GBRF
-                "remap_to_cc": None,
+                ],
+                # note the remap to yellow, allowing 1cc wagons to be whatever player chooses
+                "remap_to_cc": "COLOUR_YELLOW",
                 "docs_image_input_cc": [
                     ("COLOUR_YELLOW", "COLOUR_PALE_GREEN"),
                     ("COLOUR_ORANGE", "COLOUR_DARK_GREEN"),
