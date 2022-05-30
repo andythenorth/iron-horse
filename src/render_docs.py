@@ -219,7 +219,7 @@ class DocHelper(object):
         variants_config = []
 
         default_livery_examples = [
-            ("COLOUR_DARK_BLUE", "COLOUR_DARK_BLUE"),
+            ("COLOUR_BLUE", "COLOUR_BLUE"),
             ("COLOUR_RED", "COLOUR_WHITE"),
         ]
         default_livery_examples.extend(
@@ -306,7 +306,7 @@ class DocHelper(object):
                         engine_node["label"] = self.unpack_name_string(consist).split(
                             "("
                         )[0]
-                        engine_node["image"] = consist.id + "_dark_blue_dark_blue.png"
+                        engine_node["image"] = consist.id + "__blue_blue.png"
                         if consist.replacement_consist is not None:
                             fill_dummy = False  # prevent adding any more dummy nodes after this real consist
                             engine_node[
