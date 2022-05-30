@@ -349,7 +349,7 @@ def main(disabled=False):
                 "remap_to_cc": "COLOUR_GREY",
                 "docs_image_input_cc": [
                     ("COLOUR_GREY", "COLOUR_RED"),
-                    ("COLOUR_BROWN", "COLOUR_PINK"),
+                    ("COLOUR_YELLOW", "COLOUR_PINK"),
                 ],
             },
             "RAILFREIGHT_TRIPLE_GREY": {
@@ -372,8 +372,10 @@ def main(disabled=False):
                 "cc2": ["COLOUR_GREY", "COLOUR_WHITE"],
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
-                    ("COLOUR_GREY", "COLOUR_BLUE"),
-                    ("COLOUR_WHITE", "COLOUR_DARK_BLUE"),
+                    ("COLOUR_BLUE", "COLOUR_GREY"),
+                    ("COLOUR_DARK_BLUE", "COLOUR_WHITE"),
+                    ("COLOUR_RED", "COLOUR_GREY"),
+                    ("COLOUR_ORANGE", "COLOUR_WHITE"),
                 ],
             },
         },
