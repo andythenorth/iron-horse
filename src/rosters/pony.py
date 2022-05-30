@@ -340,18 +340,20 @@ def main(disabled=False):
                 ],
             },
             "RAILFREIGHT_RED_STRIPE": {
-                # stripe options chosen to give seamless crossover to triple grey
+                # don't match the stripe options to triple grey, it was tried and the blue just doesn't look good
+                # green and purple were allowed as they're vivid and it's by player request
                 "cc2": [
                     "COLOUR_RED",
                     "COLOUR_PINK",
-                    "COLOUR_BLUE",
-                    "COLOUR_DARK_BLUE",
-                    "COLOUR_LIGHT_BLUE",
+                    "COLOUR_PURPLE",
+                    "COLOUR_GREEN",
                 ],
                 "remap_to_cc": "COLOUR_GREY",
                 "docs_image_input_cc": [
                     ("COLOUR_GREY", "COLOUR_RED"),
                     ("COLOUR_YELLOW", "COLOUR_PINK"),
+                    ("COLOUR_GREY", "COLOUR_PURPLE"),
+                    ("COLOUR_WHITE", "COLOUR_GREEN"),
                 ],
             },
             "RAILFREIGHT_TRIPLE_GREY": {
