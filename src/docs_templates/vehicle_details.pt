@@ -227,45 +227,25 @@
                                             <p>Always</p>
                                         </tal:block>
                                         <tal:block condition="len(doc_helper.get_docs_livery_variants(consist)) > 1">
-                                            <p>When any of the rules for the alternative livery are not matched.</p>
+                                            <p>When the rules for the alternative livery are not matched.</p>
                                         </tal:block>
                                     </tal:not_cc_livery>
                                     <tal:cc_livery condition="repeat.livery_variant.index != 0">
                                         <tal:alternative_cc_livery_metadata define="alternative_cc_livery_metadata consist.gestalt_graphics.alternative_cc_livery">
-                                            <p>When first company colour is set to:<p>
+                                            <p>When second company colour is set to:<p>
                                             <ul style="list-style-type:none; margin-left:0; margin-top:0; max-width:305px;">
                                                 <li style="line-height:1; display:inline-block; width:110px; margin-bottom:7px;"
-                                                    tal:repeat="cc1 alternative_cc_livery_metadata['cc1']">
-                                                    <span style="background:linear-gradient(-45deg, rgb${doc_helper.get_company_colour_as_rgb(cc1, offset=3)}, rgb${doc_helper.get_company_colour_as_rgb(cc1, offset=7)});
+                                                    tal:repeat="cc2 alternative_cc_livery_metadata['cc2']">
+                                                    <span style="background:linear-gradient(-45deg, rgb${doc_helper.get_company_colour_as_rgb(cc2, offset=3)}, rgb${doc_helper.get_company_colour_as_rgb(cc2, offset=7)});
                                                                  display:inline-block;
                                                                  vertical-align:middle;
                                                                  border:solid 1px #555;
                                                                  width:16px;
                                                                  height:16px;">
                                                     </span>
-                                                    <span style="vertical-align:middle;">${doc_helper.company_colour_names[cc1]}</span>
+                                                    <span style="vertical-align:middle;">${doc_helper.company_colour_names[cc2]}</span>
                                                 </li>
                                             </ul>
-                                        </tal:alternative_cc_livery_metadata>
-                                    </tal:cc_livery>
-                                    <tal:cc_livery condition="repeat.livery_variant.index != 0">
-                                        <tal:alternative_cc_livery_metadata define="alternative_cc_livery_metadata consist.gestalt_graphics.alternative_cc_livery">
-                                            <tal:block condition="len(alternative_cc_livery_metadata['not_cc2']) > 0">
-                                                <p>And second company colour is not:</p>
-                                                <ul style="list-style-type:none; margin-left:0; margin-top:0; max-width:330px;">
-                                                    <li style="line-height:1; display:inline-block; width:110px; margin-bottom:7px;"
-                                                        tal:repeat="not_cc2 alternative_cc_livery_metadata['not_cc2']">
-                                                        <span style="background:linear-gradient(-45deg, rgb${doc_helper.get_company_colour_as_rgb(not_cc2, offset=3)}, rgb${doc_helper.get_company_colour_as_rgb(not_cc2, offset=7)});
-                                                                     display:inline-block;
-                                                                     vertical-align:middle;
-                                                                     border:solid 1px #555;
-                                                                     width:16px;
-                                                                     height:16px;">
-                                                        </span>
-                                                        <span style="vertical-align:middle;">${doc_helper.company_colour_names[not_cc2]}</span>
-                                                    </li>
-                                                </ul>
-                                            </tal:block>
                                         </tal:alternative_cc_livery_metadata>
                                     </tal:cc_livery>
                                 </td>

@@ -320,22 +320,15 @@ def main(disabled=False):
                 {"caboose_car": "pony_ng_caboose_car_3"},
             ],
         },
-        # specify lists of cc1 and not_cc2 colours, and an option to remap all the cc1 to a specific other cc (allowing multiple input colours to map to one result)
+        # specify lists of cc2 colours, and an option to remap all the cc1 to a specific other cc (allowing multiple input colours to map to one result)
         livery_presets={
-            "EWS": {
-                "cc1": ["COLOUR_PINK"],
-                "not_cc2": [],
-                "remap_to_cc": None,
-                "docs_image_input_cc": [("COLOUR_PINK", "COLOUR_YELLOW")],
-            },
             "FREIGHTLINER_GBRF": {
-                "cc1": [
+                "cc2": [
                     "COLOUR_PALE_GREEN",
                     "COLOUR_GREEN",
                     "COLOUR_DARK_GREEN",
                     "COLOUR_MAUVE",
                 ],  # includes GBRF
-                "not_cc2": [],
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
                     ("COLOUR_PALE_GREEN", "COLOUR_YELLOW"),
@@ -344,44 +337,30 @@ def main(disabled=False):
                     ("COLOUR_MAUVE", "COLOUR_CREAM"),
                 ],
             },
-            # red stripe cc1 chosen to give nice wagon colour options
             "RAILFREIGHT_RED_STRIPE": {
-                "cc1": [
-                    "COLOUR_GREY",
-                    "COLOUR_BROWN",
-                    "COLOUR_YELLOW",
-                    "COLOUR_ORANGE",
-                ],  # not white, too limiting for other liveries
-                "not_cc2": [
-                    "COLOUR_GREY",
-                    "COLOUR_BROWN",
-                    "COLOUR_YELLOW",
-                    "COLOUR_ORANGE",
-                    "COLOUR_WHITE",
-                ],  # do ban white though, looks bad as lower stripe
+                # stripe options chosen to give seamless crossover to triple grey
+                "cc2": [
+                    "COLOUR_RED",
+                    "COLOUR_PINK",
+                    "COLOUR_BLUE",
+                    "COLOUR_DARK_BLUE",
+                    "COLOUR_LIGHT_BLUE",
+                ],
                 "remap_to_cc": "COLOUR_GREY",
                 "docs_image_input_cc": [
                     ("COLOUR_GREY", "COLOUR_RED"),
                     ("COLOUR_BROWN", "COLOUR_PINK"),
                 ],
             },
-            # triple grey cc1 chosen to give nice wagon colour options
-            # notcc2 chosen for (a) ensuring contrast of sector symbol (b) also happens to enable dutch yellow/grey livery
-            # note the remap to white, to provide lightest of the triple greys as cc1
             "RAILFREIGHT_TRIPLE_GREY": {
-                "cc1": [
-                    "COLOUR_GREY",
-                    "COLOUR_BROWN",
-                    "COLOUR_YELLOW",
-                    "COLOUR_ORANGE",
-                ],  # not white, too limiting for other liveries
-                "not_cc2": [
-                    "COLOUR_GREY",
-                    "COLOUR_BROWN",
-                    "COLOUR_YELLOW",
-                    "COLOUR_ORANGE",
-                    "COLOUR_WHITE",
-                ],  # do ban white though, looks bad with sector logo
+                "cc2": [
+                    "COLOUR_RED",
+                    "COLOUR_PINK",
+                    "COLOUR_BLUE",
+                    "COLOUR_DARK_BLUE",
+                    "COLOUR_LIGHT_BLUE",
+                ],
+                # note the remap to white, to provide lightest of the triple greys as cc1
                 "remap_to_cc": "COLOUR_WHITE",
                 "docs_image_input_cc": [
                     ("COLOUR_GREY", "COLOUR_RED"),
@@ -390,8 +369,7 @@ def main(disabled=False):
                 ],
             },
             "YEOMAN": {
-                "cc1": ["COLOUR_GREY", "COLOUR_WHITE"],
-                "not_cc2": [],
+                "cc2": ["COLOUR_GREY", "COLOUR_WHITE"],
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
                     ("COLOUR_GREY", "COLOUR_BLUE"),
