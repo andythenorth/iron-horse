@@ -3,6 +3,34 @@ Changelog
 
 
 -------------
+2.49.0 Release
+-------------
+
+Not savegame compatible with Iron Horse releases before 2.49.0.
+
+*Changes*
+
+- added gen 5A scrap wagon
+- adjusted alternative engine liveries to only trigger on choice of second company colour, instead of combo of both company colours
+- updated which colours trigger each alternative livery
+- replaced randomised wagon buy menu icons with dice icons in varying colours, instead of '?' icons
+- improved Super Shoebox sprite
+- moved caboose cars to end of buy menu, after randomised wagons
+
+
+*Docs*
+
+- simplify explanations of alternative liveries
+- use blue company colour, not dark blue for 'blue' docs examples
+- correctly show alternative livery when blue examples should trigger it
+
+
+*Fixes*
+
+- vehicles showing alternative_cc_livery in buy menu will now recolour correctly in that case
+
+
+-------------
 2.48.0 Release
 -------------
 
