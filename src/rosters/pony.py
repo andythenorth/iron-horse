@@ -357,12 +357,15 @@ def main(disabled=False):
                 ],
             },
             "RAILFREIGHT_TRIPLE_GREY": {
+                # green and purple were allowed as they're vivid and it's by player request
                 "cc2": [
                     "COLOUR_RED",
                     "COLOUR_PINK",
                     "COLOUR_BLUE",
                     "COLOUR_DARK_BLUE",
                     "COLOUR_LIGHT_BLUE",
+                    "COLOUR_PURPLE",
+                    "COLOUR_GREEN",
                 ],
                 # note the remap to white, to provide lightest of the triple greys as cc1
                 "remap_to_cc": "COLOUR_WHITE",
@@ -370,6 +373,8 @@ def main(disabled=False):
                     ("COLOUR_GREY", "COLOUR_RED"),
                     ("COLOUR_YELLOW", "COLOUR_BLUE"),
                     ("COLOUR_BROWN", "COLOUR_DARK_BLUE"),
+                    ("COLOUR_GREY", "COLOUR_PURPLE"),
+                    ("COLOUR_WHITE", "COLOUR_GREEN"),
                 ],
             },
             "YEOMAN": {
