@@ -331,10 +331,10 @@ def main(disabled=False):
                 ],  # includes GBRF
                 "remap_to_cc": None,
                 "docs_image_input_cc": [
-                    ("COLOUR_PALE_GREEN", "COLOUR_YELLOW"),
-                    ("COLOUR_DARK_GREEN", "COLOUR_ORANGE"),
-                    ("COLOUR_GREEN", "COLOUR_ORANGE"),
-                    ("COLOUR_MAUVE", "COLOUR_CREAM"),
+                    ("COLOUR_YELLOW", "COLOUR_PALE_GREEN"),
+                    ("COLOUR_ORANGE", "COLOUR_DARK_GREEN"),
+                    ("COLOUR_ORANGE", "COLOUR_GREEN"),
+                    ("COLOUR_CREAM", "COLOUR_MAUVE"),
                 ],
             },
             "RAILFREIGHT_RED_STRIPE": {

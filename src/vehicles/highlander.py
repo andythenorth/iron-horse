@@ -17,7 +17,10 @@ def main(roster_id):
         gen=6,
         fixed_run_cost_points=220,  # unrealism: run cost nerf for being so high-powered
         alternative_cc_livery="FREIGHTLINER_GBRF",
-        default_livery_extra_docs_examples=[("COLOUR_BLUE", "COLOUR_WHITE"),("COLOUR_PALE_GREEN", "COLOUR_YELLOW")],
+        default_livery_extra_docs_examples=[
+            ("COLOUR_BLUE", "COLOUR_WHITE"),
+            ("COLOUR_PALE_GREEN", "COLOUR_YELLOW"),
+        ],
         sprites_complete=True,
     )
 

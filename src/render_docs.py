@@ -332,7 +332,9 @@ class DocHelper(object):
         result = []
         for wagon_consist in wagon_consists:
             # extensible excludes as needed
-            if wagon_consist.gestalt_graphics.__class__.__name__ not in ["GestaltGraphicsRandomisedWagon"]:
+            if wagon_consist.gestalt_graphics.__class__.__name__ not in [
+                "GestaltGraphicsRandomisedWagon"
+            ]:
                 result.append(wagon_consist)
         return result
 
@@ -607,6 +609,7 @@ def render_docs_images(consist):
     for livery_counter, variant in enumerate(
         doc_helper.get_docs_livery_variants(consist)
     ):
+
         if not consist.dual_headed:
             # relies on alternative_cc_livery being in predictable row offsets (should be true as of July 2020)
             y_offset = (consist.docs_image_spriterow + livery_counter) * 30
