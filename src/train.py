@@ -4564,7 +4564,10 @@ class Train(object):
             getattr(self.consist.gestalt_graphics, "colour_mapping_switch", None)
             is not None
         ):
-            return "colour_mapping_switch"
+            if self.consist.gestalt_graphics.alternative_cc_livery is not None:
+                return "colour_mapping_switch_with_purchase"
+            else:
+                return "colour_mapping_switch_without_purchase"
         else:
             return None
 

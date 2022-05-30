@@ -122,11 +122,15 @@ item(FEAT_TRAINS, ${vehicle.id}, ${vehicle.numeric_id}) {
                 colour_mapping:                 switch_colour_mapping(${consist.cc_num_to_randomise}, ${consist.auto_colour_randomisation_strategy_num}, ${int(consist.use_wagon_base_colour_parameter)});
                 purchase_colour_mapping:        switch_colour_mapping_purchase(${consist.cc_num_to_randomise}, ${consist.auto_colour_randomisation_strategy_num}, ${int(consist.use_wagon_base_colour_parameter)});
             </tal:use_colour_randomisation_strategies>
-            <tal:colour_mapping_switch case="'colour_mapping_switch'">
+            <tal:colour_mapping_switch_without_purchase case="'colour_mapping_switch_without_purchase'">
                 colour_mapping:                 ${vehicle.id + consist.gestalt_graphics.colour_mapping_switch};
-                <!--! don't check colour mapping in purchase list as vehicle_is_flipped is invalid for purchase list and will return 1 as undefined behaviour -->
+                <!--! in the case of flippable vehicles, don't check colour mapping in purchase list as vehicle_is_flipped is invalid for purchase list and will return 1 as undefined behaviour -->
                 purchase_colour_mapping:        return base_sprite_2cc + 16 * company_colour2 + company_colour1;
-            </tal:colour_mapping_switch
+            </tal:colour_mapping_switch_without_purchase
+            <tal:colour_mapping_switch_with_purchase case="'colour_mapping_switch_with_purchase'">
+                colour_mapping:                 ${vehicle.id + consist.gestalt_graphics.colour_mapping_switch};
+                purchase_colour_mapping:        ${vehicle.id + consist.gestalt_graphics.colour_mapping_switch};
+            </tal:colour_mapping_switch_with_purchase
         </tal:colour_mapping_cb>
         <!--! only use the capacity switches if vehicle carries cargo, makes faster compile (saved about 20% of time) -->
         <tal:optional_capacity_switches condition="vehicle.has_cargo_capacity">
