@@ -194,6 +194,26 @@ class DocHelper(object):
             "COLOUR_WHITE": "White",
         }
 
+    """
+    @property
+    def all_liveries(self):
+        # a convenience property to insert a 'default' for ease of constructing a repeat
+        # we also calculate the 2cc values that 'enable' the default, this is so we can show them in the docs
+        # note that the 'default' isn't guaranteed complete compared to the alternative_cc_livery
+        result = []
+        if self.alternative_cc_livery is None:
+            default_livery = {"cc2": global_constants.company_colour_maps.keys()}
+            result.append(default_livery)
+        else:
+            default_livery = {"cc2": []}
+            for company_colour in global_constants.company_colour_maps.keys():
+                if company_colour not in self.alternative_cc_livery["cc2"]:
+                    default_livery["cc2"].append(company_colour)
+            result.append(default_livery)
+            result.append(self.alternative_cc_livery)
+        return result
+    """
+
     def get_docs_livery_variants(self, consist):
         # dark blue / dark blue and red / white are defaults
         variants_config = []
