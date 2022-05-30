@@ -18,8 +18,8 @@ def main(roster_id):
         fixed_run_cost_points=210,  # unrealism: run cost nerf for being so high-powered
         alternative_cc_livery="YEOMAN",
         default_livery_extra_docs_examples=[
-            ("COLOUR_GREEN", "COLOUR_WHITE"),
-            ("COLOUR_BLUE", "COLOUR_WHITE"),
+            ("COLOUR_WHITE", "COLOUR_GREEN"),
+            ("COLOUR_ORANGE", "COLOUR_RED"),
         ],
         sprites_complete=True,
     )
