@@ -358,6 +358,7 @@ def main(disabled=False):
             },
             "RAILFREIGHT_TRIPLE_GREY": {
                 # green and purple were allowed as they're vivid and it's by player request
+                # also used for Freightliner-style triple grey
                 "cc2": [
                     "COLOUR_RED",
                     "COLOUR_PINK",

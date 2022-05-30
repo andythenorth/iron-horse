@@ -14,7 +14,8 @@ def main(roster_id):
         gen=5,
         pantograph_type="z-shaped-single",
         intro_date_offset=-2,  # introduce slightly earlier than gen epoch by design
-        sprites_complete=True,
+        alternative_cc_livery="RAILFREIGHT_TRIPLE_GREY",
+        sprites_complete=False,
     )
 
     consist.add_unit(
