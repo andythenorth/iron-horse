@@ -21,7 +21,7 @@ GRAPHICS_TARGET = generated/graphics/make_target
 LANG_DIR = generated/lang
 LANG_TARGET = $(LANG_DIR)/english.lng
 NML_FILE = generated/iron-horse.nml
-NML_FLAGS = -l $(LANG_DIR) --verbosity=4
+NML_FLAGS = -l $(LANG_DIR) --verbosity=4 --palette=DEFAULT
 
 -include Makefile.local
 
