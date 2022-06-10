@@ -1,5 +1,3 @@
-print("[RENDER LANG] render_lang.py")
-
 import iron_horse
 import utils
 from polar_fox import git_info
@@ -41,6 +39,7 @@ hint_file.close()
 
 
 def main():
+    print("[RENDER LANG] render_lang.py")
     start = time()
     iron_horse.main()
     consists = iron_horse.ActiveRosters().consists_in_buy_menu_order
@@ -62,7 +61,7 @@ def main():
         dst_file.write(lang_content)
         dst_file.close()
 
-    print(format((time() - start), ".2f") + "s")
+    print("[RENDER LANG] complete", format((time() - start), ".2f") + "s")
 
 
 if __name__ == "__main__":

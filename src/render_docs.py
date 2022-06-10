@@ -912,7 +912,7 @@ def main():
         pool.join()
     print("render_docs_images", time() - slow_start)
 
-    print(format((time() - start), ".2f") + "s")
+    print("[RENDER DOCS] complete", format((time() - start), ".2f") + "s")
 
 
 if __name__ == "__main__":

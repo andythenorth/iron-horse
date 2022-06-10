@@ -1,5 +1,3 @@
-print("[RENDER NML] render_nml.py")
-
 import codecs  # used for writing files - more unicode friendly than standard open() module
 
 import sys
@@ -61,6 +59,7 @@ def render_item_nml(item):
 
 
 def main():
+    print("[RENDER NML] render_nml.py")
     start = time()
     iron_horse.main()
     print(iron_horse.vacant_numeric_ids_formatted())
@@ -109,7 +108,7 @@ def main():
 
     grf_nml.close()
 
-    print(format((time() - start), ".2f") + "s")
+    print("[RENDER NML] complete", format((time() - start), ".2f") + "s")
 
 
 if __name__ == "__main__":
