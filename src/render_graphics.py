@@ -115,7 +115,7 @@ def main():
         for spritelayer_cargo_set_pair in spritelayer_cargo_set_pairs:
             run_spritelayer_cargo_set_pipelines(spritelayer_cargo_set_pair)
         for processing_priority in [1, 2]:
-            for consists in consists_in_priority_groups[processing_priority]:
+            for consist in consists_in_priority_groups[processing_priority]:
                 run_consist_pipelines(consist)
     else:
         # Would this go faster if the pipelines from each consist were placed in MP pool, not just the consist?
