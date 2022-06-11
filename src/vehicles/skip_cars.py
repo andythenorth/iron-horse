@@ -14,6 +14,6 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=FreightCar, chassis="empty_8px")
+    consist.add_unit(type=FreightCar, chassis="empty_8px", repeat=2)
 
-    consist.add_unit(type=FreightCar, chassis="empty_8px")
+    #consist.add_unit(type=FreightCar, chassis="empty_8px")
