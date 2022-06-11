@@ -14,6 +14,4 @@ def main():
         sprites_complete=True,
     )
 
-    consist.add_unit(type=CoilBuggyCar, chassis="empty_8px")
-
-    consist.add_unit(type=CoilBuggyCar, chassis="empty_8px")
+    consist.add_unit(type=CoilBuggyCar, chassis="empty_8px", repeat=2)
