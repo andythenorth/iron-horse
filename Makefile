@@ -101,8 +101,8 @@ $(NFO_FILES): %.nfo : %.nml $(LANG_TARGET) | $(GRAPHICS_TARGET)
 # N.B grf codec can't compile into a specific target dir, so after compiling, move the compiled grf to appropriate dir
 # grfcodec -n was tried, but was slower and produced a large grf file
 $(GRF_FILES): %.grf : %.nfo $(GRAPHICS_TARGET)
-	# we use notdir and dir to get the correct paths from the list of target filenames (which include generated dir)
-	# result is e.g. grfcodec -s -e -c -g 2 iron-horse.grf generated/
+# we use notdir and dir to get the correct paths from the list of target filenames (which include generated dir)
+# result is e.g. grfcodec -s -e -c -g 2 iron-horse.grf generated/
 	time $(GRFCODEC) -s -e -c -g 2 $(notdir $@) $(dir $<)
 	mv $(notdir $@) $@
 
@@ -143,8 +143,12 @@ copy_docs_to_grf_farm:
 # this is a macOS-specifc install location; the pre-2017 Makefile handled multiple platforms, that could be restored if needed
 # remove first, OpenTTD does not like having the _contents_ of the current file change under it, but will handle a removed-and-replaced file correctly
 install: default
-	rm ~/Documents/OpenTTD/newgrf/$(PROJECT_NAME).grf
-	cp $(GRF_FILES) ~/Documents/OpenTTD/newgrf/
+# note the switch to shell syntax for vars in the for loop, rather than make syntax;
+# also the bash magic to strip directory from GRF_FILE_PATH
+	$(_V) for GRF_FILE_PATH in $(GRF_FILES) ; do \
+		rm ~/Documents/OpenTTD/newgrf/$${GRF_FILE_PATH##*/} ; \
+		cp $$GRF_FILE_PATH ~/Documents/OpenTTD/newgrf/ ; \
+	done
 
 clean:
 	$(_V) echo "[CLEANING]"
