@@ -20,7 +20,7 @@ PROJECT_NAME = iron-horse
 GRAPHICS_TARGET = generated/graphics/make_target
 LANG_DIR = generated/lang
 LANG_TARGET = $(LANG_DIR)/english.lng
-NML_FILE = generated/iron-horse.nml
+NML_FILES = generated/iron-moose.nml generated/iron-horse.nml
 NML_FLAGS = -l $(LANG_DIR) --verbosity=4 --palette=DEFAULT
 
 -include Makefile.local
@@ -42,7 +42,8 @@ PROJECT_VERSIONED_NAME = $(PROJECT_NAME)-$(REPO_VERSION)
 # Args for faster compiles: PW=n (num pool workers) SC=bool (suppress cargo sprites) SD=bool (suppress docs)
 ARGS = '$(PW)' '$(ROSTER)' '$(SC)' '$(SD)'
 
-NFO_FILE = generated/$(PROJECT_NAME).nfo
+#NFO_FILES = generated/$(PROJECT_NAME).nfo
+NFO_FILES = generated/iron-moose.nfo generated/iron-horse.nfo
 GRF_FILE = generated/$(PROJECT_NAME).grf
 TAR_FILE = $(PROJECT_VERSIONED_NAME).tar
 ZIP_FILE = $(PROJECT_VERSIONED_NAME).zip
@@ -62,8 +63,8 @@ bundle_zip: $(ZIP_FILE)
 release: bundle_tar copy_docs_to_grf_farm
 graphics: $(GRAPHICS_TARGET)
 lang: $(LANG_TARGET)
-nml: $(NML_FILE)
-nfo: $(NFO_FILE)
+nml: $(NML_FILES)
+nfo: $(NFO_FILES)
 grf: $(GRF_FILE)
 tar: $(TAR_FILE)
 html_docs: $(HTML_DOCS)
@@ -87,17 +88,17 @@ $(LANG_TARGET): $(shell $(FIND_FILES) --ext=.py --ext=.pynml --ext=.lng src)
 $(HTML_DOCS): $(GRAPHICS_TARGET) $(LANG_TARGET) $(shell $(FIND_FILES) --ext=.py --ext=.pynml --ext=.pt --ext=.lng --ext=.png src)
 	$(_V) $(PYTHON3) src/render_docs.py $(ARGS)
 
-$(NML_FILE): $(shell $(FIND_FILES) --ext=.py --ext=.pynml src)
+$(NML_FILES): $(shell $(FIND_FILES) --ext=.py --ext=.pynml src)
 	$(_V) $(PYTHON3) src/render_nml.py $(ARGS)
 
 # nmlc is used to compile a nfo file only, which is then used by grfcodec
 # this means that the (relatively slow) nmlc stage can be skipped if the nml file is unchanged (only graphics changed)
-$(NFO_FILE): $(LANG_TARGET) $(NML_FILE) | $(GRAPHICS_TARGET)
-	$(NMLC) $(NML_FLAGS) --nfo=$(NFO_FILE) $(NML_FILE) --no-optimisation-warning
+$(NFO_FILES): %.nfo : %.nml $(LANG_TARGET) | $(GRAPHICS_TARGET)
+	$(NMLC) $(NML_FLAGS) --nfo=$@ $< --no-optimisation-warning
 
 # N.B grf codec can't compile into a specific target dir, so after compiling, move the compiled grf to appropriate dir
 # grfcodec -n was tried, but was slower and produced a large grf file
-$(GRF_FILE): $(GRAPHICS_TARGET) $(NFO_FILE)
+$(GRF_FILE): $(GRAPHICS_TARGET) $(NFO_FILES)
 	time $(GRFCODEC) -s -e -c -g 2 $(PROJECT_NAME).grf generated
 	mv $(PROJECT_NAME).grf $(GRF_FILE)
 
