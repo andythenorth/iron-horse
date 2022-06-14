@@ -13,6 +13,9 @@ def get_makefile_args(sys):
             "suppress_cargo_sprites": True if sys.argv[3] == "True" else False,
             "suppress_docs": True if sys.argv[4] == "True" else False,
         }
+        # silly remapping of horse to pony, reasons because reasons
+        if makefile_args["roster"] == "horse":
+            makefile_args["roster"] = "pony"
     else:
         # provide any necessary defaults here
         makefile_args = {}

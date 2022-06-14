@@ -40,8 +40,12 @@ PROJECT_VERSIONED_NAME = $(PROJECT_NAME)-$(REPO_VERSION)
 # Args for faster compiles: PW=n (num pool workers) SC=bool (suppress cargo sprites) SD=bool (suppress docs)
 ARGS = '$(PW)' '$(ROSTER)' '$(SC)' '$(SD)'
 
-#NFO_FILES = generated/$(PROJECT_NAME).nfo
-GRF_FILES = generated/iron-moose.grf generated/iron-horse.grf
+ifdef ROSTER
+  GRF_FILES = generated/iron-$(ROSTER).grf
+else
+  GRF_FILES = generated/iron-moose.grf generated/iron-horse.grf
+  ROSTER = 'ALL'
+endif
 NFO_FILES = $(GRF_FILES:.grf=.nfo)
 NML_FILES = $(GRF_FILES:.grf=.nml)
 TAR_FILE = $(PROJECT_VERSIONED_NAME).tar
@@ -73,7 +77,6 @@ html_docs: $(HTML_DOCS)
 PW = 0
 # option to suppress cargo sprites, makes minor difference to compile time
 SC = 'False'
-ROSTER = ALL
 # remove the @ for more verbose output (@ suppresses command output)
 _V ?= @
 
