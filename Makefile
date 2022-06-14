@@ -20,7 +20,6 @@ PROJECT_NAME = iron-horse
 GRAPHICS_TARGET = generated/graphics/make_target
 LANG_DIR = generated/lang
 LANG_TARGET = $(LANG_DIR)/english.lng
-NML_FILES = generated/iron-moose.nml generated/iron-horse.nml
 NML_FLAGS = -l $(LANG_DIR) --verbosity=4 --palette=DEFAULT
 
 -include Makefile.local
@@ -43,8 +42,9 @@ PROJECT_VERSIONED_NAME = $(PROJECT_NAME)-$(REPO_VERSION)
 ARGS = '$(PW)' '$(ROSTER)' '$(SC)' '$(SD)'
 
 #NFO_FILES = generated/$(PROJECT_NAME).nfo
-NFO_FILES = generated/iron-moose.nfo generated/iron-horse.nfo
-GRF_FILE = generated/$(PROJECT_NAME).grf
+GRF_FILES = generated/iron-moose.grf generated/iron-horse.grf
+NFO_FILES = $(GRF_FILES:.grf=.nfo)
+NML_FILES = $(GRF_FILES:.grf=.nml)
 TAR_FILE = $(PROJECT_VERSIONED_NAME).tar
 ZIP_FILE = $(PROJECT_VERSIONED_NAME).zip
 MD5_FILE = $(PROJECT_NAME).check.md5
@@ -65,7 +65,7 @@ graphics: $(GRAPHICS_TARGET)
 lang: $(LANG_TARGET)
 nml: $(NML_FILES)
 nfo: $(NFO_FILES)
-grf: $(GRF_FILE)
+grf: $(GRF_FILES)
 tar: $(TAR_FILE)
 html_docs: $(HTML_DOCS)
 
@@ -98,18 +98,20 @@ $(NFO_FILES): %.nfo : %.nml $(LANG_TARGET) | $(GRAPHICS_TARGET)
 
 # N.B grf codec can't compile into a specific target dir, so after compiling, move the compiled grf to appropriate dir
 # grfcodec -n was tried, but was slower and produced a large grf file
-$(GRF_FILE): $(GRAPHICS_TARGET) $(NFO_FILES)
-	time $(GRFCODEC) -s -e -c -g 2 $(PROJECT_NAME).grf generated
-	mv $(PROJECT_NAME).grf $(GRF_FILE)
+$(GRF_FILES): %.grf : %.nfo $(GRAPHICS_TARGET)
+	# we use notdir and dir to get the correct paths from the list of target filenames (which include generated dir)
+	# result is e.g. grfcodec -s -e -c -g 2 iron-horse.grf generated/
+	time $(GRFCODEC) -s -e -c -g 2 $(notdir $@) $(dir $<)
+	mv $(notdir $@) $@
 
-$(TAR_FILE): $(GRF_FILE) $(HTML_DOCS)
+$(TAR_FILE): $(GRF_FILES) $(HTML_DOCS)
 # the goal here is a sparse tar for distribution
 	# create an intermediate dir, and copy in what we need
 	mkdir $(PROJECT_VERSIONED_NAME)
 	cp docs/readme.txt $(PROJECT_VERSIONED_NAME)
 	cp docs/changelog.txt $(PROJECT_VERSIONED_NAME)
 	cp docs/license.txt $(PROJECT_VERSIONED_NAME)
-	cp $(GRF_FILE) $(PROJECT_VERSIONED_NAME)
+	cp $(GRF_FILES) $(PROJECT_VERSIONED_NAME)
 	$(MK_ARCHIVE) --tar --output=$(TAR_FILE) $(PROJECT_VERSIONED_NAME)
 	# delete the intermediate dir
 	rm -r $(PROJECT_VERSIONED_NAME)
@@ -117,8 +119,8 @@ $(TAR_FILE): $(GRF_FILE) $(HTML_DOCS)
 $(ZIP_FILE): $(TAR_FILE)
 	$(ZIP) -9rq $(ZIP_FILE) $(TAR_FILE) >/dev/null
 
-$(MD5_FILE): $(GRF_FILE)
-	$(GRFID) -m $(GRF_FILE) > $(MD5_FILE)
+$(MD5_FILE): $(GRF_FILES)
+	$(GRFID) -m $(GRF_FILES) > $(MD5_FILE)
 
 bundle_src: $(MD5_FILE)
 	if test -d $(BUNDLE_DIR); then rm -r $(BUNDLE_DIR); fi
@@ -140,12 +142,12 @@ copy_docs_to_grf_farm:
 # remove first, OpenTTD does not like having the _contents_ of the current file change under it, but will handle a removed-and-replaced file correctly
 install: default
 	rm ~/Documents/OpenTTD/newgrf/$(PROJECT_NAME).grf
-	cp $(GRF_FILE) ~/Documents/OpenTTD/newgrf/
+	cp $(GRF_FILES) ~/Documents/OpenTTD/newgrf/
 
 clean:
 	$(_V) echo "[CLEANING]"
 	$(_V) for f in .chameleon_cache .nmlcache src/__pycache__ src/*/__pycache__ docs generated \
-	$(GRF_FILE) $(TAR_FILE) $(ZIP_FILE) $(MD5_FILE) $(BUNDLE_DIR) $(SOURCE_NAME).tar;\
+	$(GRF_FILES) $(TAR_FILE) $(ZIP_FILE) $(MD5_FILE) $(BUNDLE_DIR) $(SOURCE_NAME).tar;\
 	do if test -e $$f;\
 	   then rm -r $$f;\
 	   fi;\
