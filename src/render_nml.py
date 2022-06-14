@@ -108,6 +108,10 @@ def main():
 
     grf_nml.close()
 
+    # this is temp
+    print("copy horse nml to moose nml for makefile testing")
+    os.system('cp generated/iron-horse.nml generated/iron-moose.nml')
+
     print("[RENDER NML] complete", format((time() - start), ".2f") + "s")
 
 
