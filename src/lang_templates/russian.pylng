@@ -1,0 +1,16 @@
+STR_GRF_NAME                                                    :Железный конь ${git_info.get_version()}
+STR_GRF_DOCS_URL                                                :${utils.get_docs_url()}
+<!--! empty string is not translated :) -->
+STR_EMPTY                                                       :
+
+STR_NAME_CONSIST_PLAIN                                          :{STRING}
+STR_NAME_CONSIST_COMPOUND                                       :{1:STRING} {0:STRING}
+STR_NAME_CONSIST_PARENTHESES                                    :{1:STRING} «{0:STRING}»
+STR_NAME_CONSIST_PARENTHESES_WAGON                              :{STRING} ({STRING})
+
+<!--! consist names (engines) -->
+<tal:consist_names repeat="consist consists">
+<tal:consist_name condition="consist._name is not None">
+STR_NAME_${consist.id}                                          :${consist._name}
+</tal:consist_name>
+</tal:consist_names>

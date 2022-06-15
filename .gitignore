@@ -3,6 +3,7 @@ docs/
 tmp/
 .nmlcache/
 .chameleon_cache/
+__pycache__/
 *.bak
 *.nfo
 dups.txt

@@ -2,4 +2,160 @@
 ##plural 6
 ##gender m f n p
 ##case abl acc dat f gen m n nom p pre
-# this is the default translation and is en-gb
+STR_GRF_DESCRIPTION                                             :Лицензия: {SILVER}GPL v2{}{BLACK}
+
+STR_PARAM_ADJUST_VEHICLE_CAPACITY                               :Вместимость поездов
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_DESC                          :Настройте вместимость поездов для альтернативных стилей игры.{}{}Малая: {GOLD}меньше на 33%{BLACK}{}Стандартная: {GOLD}базовое значение{BLACK}{}Высокая: {GOLD}больше на 33%{BLACK}{}Огромная: {GOLD}больше на 77%{BLACK}
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :малая
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :стандартная (по умолчанию)
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :высокая
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_3                      :огромная
+STR_PARAM_SIMPLIFIED_GAMEPLAY                                   :Упрощенный набор поездов
+STR_PARAM_SIMPLIFIED_GAMEPLAY_DESC                              :При использовании упрощенного набора в игре будет меньше поездов и типов вагонов. Некоторые виды поездов типа снегоочистителей, моторных вагонов и очень медленных локомотивов будут недоступны.
+STR_PARAM_ROSTER                                                :Набор
+STR_PARAM_ROSTER_DESC                                           :Выберите, какой набор поездов вы хотите использовать. (В данный момент доступен только один набор - «Пони»).
+STR_PARAM_ROSTER_OPTION_0                                       :«Пони» - основан на поездах Великобритании
+STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY                   :Варианты расцветки вагонов
+STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_DESC              :Различные варианты расцветки вагонов привносят разнообразие в игру.{}{}В настройках есть возможность указать основной и дополнительный цвета - можно выбрать как конкретный цвет, так и вариант использовать фирменные цвета компании.{}{}В зависимости от указанных параметров, вагоны будут окрашиваться с применением до двух разных оттенков соответствующего цвета.{}{}Для смены расцветки вагона, находясь в депо, кликнете по нему с зажатым Ctrl.{}{}У некоторых типов вагонов своя особенная расцветка - к ним данные настройки применяться не будут. К таковым относятся, например, кабузы, а также скоростные и пассажирские вагоны. 
+STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_0          :оттенки основного и дополнительного цветов (по умолчанию)
+STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_1          :оттенки основного цвета
+STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_2          :без оттенков
+STR_PARAM_WAGON_BASE_COLOUR_1                                   :Основной цвет вагонов
+STR_PARAM_WAGON_BASE_COLOUR_2                                   :Дополнительный цвет вагонов
+STR_PARAM_WAGON_BASE_COLOUR_DESC                                :Возможность задавать свой цвет каждой группе транспорта - прекрасная особенность игры OpenTTD.{}{}Однако, внутри группы невозможно задать разные цвета для локомотива и вагонов.{}{}Данный параметр позволяет указать расцветку для грузовых вагонов отличную от фирменных цветов компании.{}{}Настройки будут применены ко {WHITE}всем {BLACK}составам - как сгруппированным, так и находящимся вне групп - в игре {WHITE}нет возможности применить их для каждой отдельной группы.{BLACK}{}{}Настройки не распространяются на некоторые типы вагонов - например, на кабузы, почтовые и пассажирские.
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_0                            :использовать фирменные цвета компании (по умолчанию)
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_1                            :тёмно-синий
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_2                            :светло-зелёный
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_3                            :розовый
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_4                            :жёлтый
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_5                            :красный
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_6                            :голубой
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_7                            :зелёный
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_8                            :тёмно-зелёный
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_9                            :синий
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_10                           :кремовый
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_11                           :лиловый
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_12                           :пурпурный
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_13                           :оранжевый
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_14                           :коричневый
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_15                           :серый
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_16                           :белый
+
+# keep these alphabetised, easier
+STR_NAME_SUFFIX_DIESEL                                          :Тепловоз
+STR_NAME_SUFFIX_ELECTRIC                                        :Электровоз
+STR_NAME_SUFFIX_ELECTRODIESEL                                   :Электротепловоз
+STR_NAME_SUFFIX_METRO                                           :Поезд метро
+STR_NAME_SUFFIX_STEAM                                           :Паровоз
+
+# size suffixes
+STR_NAME_SUFFIX_SMALL                                           :малый
+STR_NAME_SUFFIX_MEDIUM                                          :средний
+STR_NAME_SUFFIX_LARGE                                           :большой
+STR_NAME_SUFFIX_TWIN                                            :сдвоенный
+
+# wagon class suffixes
+STR_NAME_SUFFIX_ACID_TANK_CAR                                   :Цистерна для кислот
+STR_NAME_SUFFIX_AGGREGATE_CAR                                   :Думпкар
+STR_NAME_SUFFIX_ALIGNMENT_CAR                                   :Вагон для тестирования спрайтов
+STR_NAME_SUFFIX_AUTOMOBILE_CAR                                  :Платформа-автомобилевоз
+STR_NAME_SUFFIX_BOX_CAR                                         :Крытый грузовой вагон
+STR_NAME_SUFFIX_COIL_BUGGY_CAR                                  :Тележка для рулонов стали
+STR_NAME_SUFFIX_BOLSTER_CAR                                     :Платформа со стойками
+STR_NAME_SUFFIX_BULKHEAD_FLAT_CAR                               :Платформа со стойками и торцевыми бортами
+STR_NAME_SUFFIX_CABOOSE_CAR                                     :Кабуз
+STR_NAME_SUFFIX_CARBON_BLACK_HOPPER_CAR                         :Хоппер для технического углерода
+STR_NAME_SUFFIX_CEMENT_SILO_CAR                                 :Вагон-цементовоз
+STR_NAME_SUFFIX_CHEMICAL_COVERED_HOPPER_CAR                     :Крытый хоппер для химикатов
+STR_NAME_SUFFIX_COIL_CAR_COVERED                                :Крытая платформа для рулонов стали
+STR_NAME_SUFFIX_COIL_CAR_UNCOVERED                              :Платформа для рулонов стали
+STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Крытый хоппер
+STR_NAME_SUFFIX_CRYO_TANK_CAR                                   :Цистерна для сжиженного природного газа
+STR_NAME_SUFFIX_CURTAIN_SIDE_BOX_CAR                            :Грузовой вагон с бортом-тентом
+STR_NAME_SUFFIX_DOUBLE_DECK_AUTOMOBILE_CAR                      :Двухярусная платформа-автомобилевоз
+STR_NAME_SUFFIX_DRY_POWDER_HOPPER_CAR                           :Хоппер для порошкообразных смесей
+STR_NAME_SUFFIX_DUMP_CAR                                        :Думпкар
+STR_NAME_SUFFIX_DUMP_CAR_HIGH_SIDE                              :Думпкар с высоким бортом
+STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Цистерна для пищевых продуктов
+STR_NAME_SUFFIX_EXPRESS_CAR                                     :Скоростной грузовой вагон
+STR_NAME_SUFFIX_EXPRESS_INTERMODAL_CAR                          :Скоростная фитинговая платформа
+STR_NAME_SUFFIX_EXPRESS_RAILCAR_PASSENGER_TRAILER_CAR           :Скоростной пассаж. вагон пригородного поезда
+STR_NAME_SUFFIX_FARM_PRODUCTS_HOPPER_CAR                        :Хоппер для сельхозпродукции
+STR_NAME_SUFFIX_FLAT_CAR                                        :Платформа
+STR_NAME_SUFFIX_FRUIT_VEG_CAR                                   :Грузовой вагон для фруктов и овощей
+STR_NAME_SUFFIX_HOPPER_CAR                                      :Хоппер
+STR_NAME_SUFFIX_HST_MAIL_CAR                                    :Почтовый вагон
+STR_NAME_SUFFIX_HST_PASSENGER_CAR                               :Пассажирский вагон
+STR_NAME_SUFFIX_INGOT_CAR                                       :Тележка для изложниц
+STR_NAME_SUFFIX_INTERMODAL_CAR                                  :Фитинговая платформа
+STR_NAME_SUFFIX_KAOLIN_HOPPER_CAR                               :Хоппер для белой глины
+STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Вагон для скота
+STR_NAME_SUFFIX_LOG_CAR                                         :Вагон-лесовоз
+STR_NAME_SUFFIX_LOW_FLOOR_AUTOMOBILE_CAR                        :Низкопольная платформа-автомобилевоз
+STR_NAME_SUFFIX_LOW_FLOOR_INTERMODAL_CAR                        :Низкопольная фитинговая платформа
+STR_NAME_SUFFIX_MAIL_CAR                                        :Почтовый вагон
+STR_NAME_SUFFIX_MINERAL_COVERED_HOPPER_CAR                      :Крытый хоппер для минералов
+STR_NAME_SUFFIX_MINERAL_HOPPER_CAR                              :Хоппер для минералов
+STR_NAME_SUFFIX_MGR_HOPPER_CAR                                  :Хоппер типа «MGR»
+STR_NAME_SUFFIX_OPEN_CAR                                        :Полувагон
+STR_NAME_SUFFIX_ORE_DUMP_CAR                                    :Думпкар для руды
+STR_NAME_SUFFIX_ORE_HOPPER_CAR                                  :Хоппер для руды
+STR_NAME_SUFFIX_PASSENGER_CAR                                   :Пассажирский вагон
+STR_NAME_SUFFIX_PEAT_CAR                                        :Полувагон для торфа
+STR_NAME_SUFFIX_PLATE_CAR                                       :Платформа с низким бортом
+STR_NAME_SUFFIX_PRESSURE_TANK_CAR                               :Цистерна высокого давления 
+STR_NAME_SUFFIX_PRODUCT_TANK_CAR                                :Цистерна белая
+STR_NAME_SUFFIX_RAILBUS_PASSENGER_TRAILER_CAR                   :Пассажирский вагон автомотрисы
+STR_NAME_SUFFIX_RAILCAR_PASSENGER_TRAILER_CAR                   :Пассажирский вагон пригородного поезда
+STR_NAME_SUFFIX_REEFER_CAR                                      :Вагон-рефрижератор
+STR_NAME_SUFFIX_RESTAURANT_CAR                                  :Вагон-ресторан
+STR_NAME_SUFFIX_ROCK_HOPPER_CAR                                 :Хоппер для камня
+STR_NAME_SUFFIX_ROLLER_ROOF_HOPPER_CAR                          :Хоппер с роликовой крышей
+STR_NAME_SUFFIX_SILO_CAR                                        :Вагон-силос
+STR_NAME_SUFFIX_SKIP_CAR                                        :Тележка-самосвал
+STR_NAME_SUFFIX_SLAG_LADLE_CAR                                  :Вагон-шлаковоз
+STR_NAME_SUFFIX_SLIDING_ROOF_CAR                                :Грузовой вагон с раздвижной крышей
+STR_NAME_SUFFIX_SLIDING_WALL_CAR                                :Грузовой вагон с раздвижными стенками
+STR_NAME_SUFFIX_SCRAP_METAL_CAR                                 :Думпкар для металлолома
+STR_NAME_SUFFIX_SUBURBAN_PASSENGER_CAR                          :Пригородный пассажирский вагон
+STR_NAME_SUFFIX_SWING_ROOF_HOPPER_CAR                           :Хоппер с раскрывающейся крышей
+STR_NAME_SUFFIX_TANK_CAR                                        :Цистерна черная
+STR_NAME_SUFFIX_TARPAULIN_CAR                                   :Вагон-платформа с тентом
+STR_NAME_SUFFIX_TORPEDO_CAR                                     :Вагон для расплавленного чугуна
+STR_NAME_SUFFIX_VEHICLE_PARTS_BOX_CAR                           :Крытый грузовой вагон для автозапчастей
+
+# cargo subtypes
+# only used for automobile cars (specifically vehicles cargo) as of May 2021
+STR_CARGO_SUBTYPE_VEHI_0                                        : (легковые а/м)
+STR_CARGO_SUBTYPE_VEHI_1                                        : (грузовые а/м)
+
+# buy menu wrappers
+STR_BUY_MENU_WRAPPER_ONE_SUBSTR                                 :{STRING}
+STR_BUY_MENU_WRAPPER_TWO_SUBSTR                                 :{STRING}{}{STRING}
+
+# role information for buy menu
+STR_ROLE                                                        :{BLACK}Тип: {GOLD}{STRING}
+STR_ROLE_DRIVING_CAB                                            :моторный вагон
+STR_ROLE_FREIGHT                                                :грузовой
+STR_ROLE_GENERAL_PURPOSE                                        :грузопассажирский
+STR_ROLE_GENERAL_PURPOSE_EXPRESS                                :грузопассажирский / экспресс
+STR_ROLE_HST                                                    :высокоскоростной
+STR_ROLE_LOLZ                                                   :для красоты
+STR_ROLE_METRO                                                  :поезд метро
+STR_ROLE_SUBURBAN                                               :пригородный
+STR_ROLE_VERY_HIGH_SPEED                                        :сверхскоростной
+
+# assumes only diesel and electric currently
+STR_POWER_BY_RAILTYPE                                           :{BLACK}Мощность в режиме тепловоза: {GOLD}{POWER} {}{BLACK}Мощность в режиме электровоза: {GOLD}{POWER}
+
+# distributed power (dedicated wagons add power)
+STR_WAGONS_ADD_POWER_CAB                                        :Распределение мощности: {GOLD}{POWER} на каждый прицепленный к составу {STRING}
+STR_WAGONS_ADD_POWER_MIDDLE                                     :Распределение мощности: {GOLD}{POWER}, когда в составе есть {STRING}
+
+# other buy menu hints
+STR_BUY_MENU_HINT_DRIVING_CAB                                   :{BLACK}Необходимо поставить в начало или конец состава, в котором есть хотя бы один локомотив
+STR_BUY_MENU_HINT_RESTAURANT_CAR                                :{}{BLACK}Бонус: {GOLD}обнуляет стоимость обслуживания для всех пассажирских вагонов в составе поезда
+
+# project management
+STR_SPRITES_COMPLETE                                            :{}Спрайты завершены: {GOLD}Да
+STR_SPRITES_INCOMPLETE                                          :{}Спрайты завершены: {GOLD}Нет

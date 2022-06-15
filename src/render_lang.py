@@ -18,7 +18,7 @@ import codecs  # used for writing files - more unicode friendly than standard op
 from chameleon import PageTemplateLoader
 
 # setup the places we look for templates
-templates = PageTemplateLoader(os.path.join(currentdir, "src", "templates"))
+templates = PageTemplateLoader(os.path.join(currentdir, "src", "lang_templates"))
 
 # get args passed by makefile
 makefile_args = utils.get_makefile_args(sys)
@@ -44,9 +44,9 @@ def main():
     iron_horse.main()
     consists = iron_horse.ActiveRosters().consists_in_buy_menu_order
 
-    languages_with_generation = ("english",)
+    languages_with_generation = ("english", "russian")
     for i in languages_with_generation:
-        # compile strings to single lang file - english
+        # compile strings to single lang file - english, russian, etc.
         lang_template = templates[i + ".pylng"]
 
         src_file = codecs.open(os.path.join(lang_src, i + ".lng"), "r", "utf8")

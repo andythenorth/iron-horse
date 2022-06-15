@@ -1827,7 +1827,7 @@ class CarConsist(Consist):
             )
         else:
             return (
-                "string(STR_NAME_CONSIST_PARENTHESES, string("
+                "string(STR_NAME_CONSIST_PARENTHESES_WAGON, string("
                 + self.get_wagon_title_class_str()
                 + "), string("
                 + self.get_wagon_title_subtype_str()
