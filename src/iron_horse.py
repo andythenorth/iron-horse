@@ -168,7 +168,6 @@ class ActiveRosters(list):
                 if roster.id == makefile_args["roster"]
             ]  # make sure it's iterable
 
-        print('active rosters', active_rosters)
         for roster in active_rosters:
             self.append(roster)
 
