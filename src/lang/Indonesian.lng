@@ -1,0 +1,217 @@
+##grflangid 0x01
+##plural 0
+# this is the default translation and is en-gb
+STR_GRF_DESCRIPTION                                             :Lisensi: {SILVER}GPL v2{}{BLACK}
+
+STR_PARAM_ADD_RAILTYPES                                         :Tambahkan Rel Khusus
+STR_PARAM_ADD_RAILTYPES_DESC                                    :Iron Horse termasuk kereta api yang membutuhkan jenis rel tambahan, misalnya metro dan Rel Sempit.  Jenis ini juga dapat disediakan oleh grfs railtype alternatif.  Jika grf tipe rel alternatif digunakan, tipe rel IRON HORSE dapat dimatikan dengan pengaturan parameter ini.
+STR_PARAM_ADJUST_VEHICLE_CAPACITY                               :Kapapitas kereta
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_DESC                          :Sesuaikan kapasitas kendaraan untuk gaya permainan alternatif.{}{}Mini: {GOLD}77% Pengurangan{BLACK}{}Kecil: {GOLD}33% Pengurangan{BLACK}{}Normal: {GOLD}default{BLACK}{}Besar: {GOLD}33% Penambahan{BLACK}{}Sangat Besar: {GOLD}77% Penambahan{BLACK}
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :Mini
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Kecil
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Normal (default)
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_3                      :Besar
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_4                      :Sangat Besar
+STR_PARAM_SIMPLIFIED_GAMEPLAY                                   :Gameplay Sederhana
+STR_PARAM_SIMPLIFIED_GAMEPLAY_DESC                              :Bermain dengan satu set kereta yang disederhanakan.  Akan ada lebih sedikit jenis mesin dan gerbong yang tersedia.  Kereta eye-candy seperti bajak salju, mobil taksi mengemudi dan lokomotif sangat lambat tidak akan tersedia.
+STR_PARAM_ROSTER                                                :Roster
+STR_PARAM_ROSTER_DESC                                           :Pilih rangkaian kereta mana yang akan digunakan.  (Saat ini hanya satu roster yang tersedia - Pony).
+STR_PARAM_ROSTER_OPTION_0                                       :Pony - terinspirasi oleh kereta Inggris
+STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY                   :Pengacakan warna gerbong
+STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_DESC              :Warna gerbong barang acak menambah variasi pada kereta api.{}{}Ada dua warna dasar gerbong barang, yang disetel oleh warna perusahaan OpenTTD, atau oleh parameter Iron Horse.  Iron Horse akan mengacak hingga dua warna dari setiap warna dasar, bergantung pada setelan parameter.{}{}Balik gerbong di depot (menggunakan ctrl-click) untuk mengganti warna dasar yang digunakan.{}{}Beberapa tipe gerbong memilikinya sendiri  aturan warna dan tidak akan menggunakan pengaturan pengacakan;  misalnya, van rem, gerbong tipe ekspres, dan gerbong penumpang.
+STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_0          :Pilihan acak menggunakan warna dasar 1 atau 2 (default)
+STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_1          :Pilihan acak menggunakan warna dasar 1 saja
+STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_2          :Tidak ada pengacakan
+STR_PARAM_WAGON_BASE_COLOUR_1                                   :Warna dasar gerbong 1
+STR_PARAM_WAGON_BASE_COLOUR_2                                   :Warna dasar gerbong 2
+STR_PARAM_WAGON_BASE_COLOUR_DESC                                :Skema warna khusus untuk grup kendaraan adalah fitur hebat di OpenTTD.{}{}Akan tetapi, grup kendaraan tidak bisa menyetel warna gerbong secara terpisah ke mesin.{}{}Parameter ini secara opsional bisa menyetel warna tertentu untuk gerbong barang, sebagai ganti  warna perusahaan.{}{}Setelan ini akan berlaku untuk {WHITE}semua {BLACK}kereta yang dikelompokkan dan tidak dikelompokkan, {WHITE}tidak dapat disetel per-grup.{BLACK}{}{}Setelan ini tidak berlaku untuk beberapa gerbong  -jenis, misalnya, van rem, van surat dan gerbong penumpang.
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_0                            :Gunakan pengaturan warna perusahaan (default)
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_1                            :Biru tua
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_2                            :Hijau pucat
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_3                            :Pink
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_4                            :Kuning
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_5                            :Merah
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_6                            :Biru muda
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_7                            :Hijau
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_8                            :Hijau tua
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_9                            :Biru
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_10                           :Krem
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_11                           :Mauve
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_12                           :Ungu
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_13                           :Oranye
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_14                           :Coklat
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_15                           :Abu-Abu
+STR_PARAM_WAGON_BASE_COLOUR_OPTION_16                           :Putih
+
+STR_ERROR_INFLATION_INCOMPATIBLE                                :Iron horse tidak kompatibel dengan Inflasi OpenTTD.  Harap matikan Inflasi di pengaturan OpenTTD.
+STR_ERROR_TERMITE_DEPRECATED                                    :Iron Horse sekarang termasuk railtypes dari TERMITE.  Harap hapus TERMITE dari daftar NewGRF dan coba permainan baru.  Terima kasih.
+
+# keep these alphabetised, easier
+STR_NAME_SUFFIX_BATTERY_HYBRID                                  :Hibird Baterai
+STR_NAME_SUFFIX_DIESEL                                          :Diesel
+STR_NAME_SUFFIX_ELECTRIC                                        :Listrik
+STR_NAME_SUFFIX_ELECTRODIESEL                                   :Elektro-Diesel
+STR_NAME_SUFFIX_METRO                                           :Metro
+STR_NAME_SUFFIX_STEAM                                           :Uap
+
+# size suffixes
+STR_NAME_SUFFIX_SMALL                                           :Kecil
+STR_NAME_SUFFIX_MEDIUM                                          :Sedang
+STR_NAME_SUFFIX_LARGE                                           :Besar
+STR_NAME_SUFFIX_TWIN                                            :Kembar
+
+# wagon class suffixes
+# as of Jan 2019 these are switched from en-us to en-gb
+# the en-us translation should be updated appropriately when making changes here
+# !! consider splitting strings per roster?? A US caboose is still a 'caboose' in en-gb, not a brake van
+STR_NAME_SUFFIX_ACID_TANK_CAR                                   :Tangki asam
+STR_NAME_SUFFIX_AGGREGATE_CAR                                   :Gerbong Agregat
+STR_NAME_SUFFIX_ALIGNMENT_CAR                                   :Gerbong penjajar
+STR_NAME_SUFFIX_AUTOMOBILE_CAR                                  :Pengangkut kendaraan
+STR_NAME_SUFFIX_BOX_CAR                                         :Gerbong Box
+STR_NAME_SUFFIX_COIL_BUGGY_CAR                                  :Gerbong Koil
+STR_NAME_SUFFIX_BOLSTER_CAR                                     :Gerbong Bolster
+STR_NAME_SUFFIX_BULKHEAD_FLAT_CAR                               :Gerbong datar Bulkhead
+STR_NAME_SUFFIX_CABOOSE_CAR                                     :Gerbong rem
+STR_NAME_SUFFIX_CARBON_BLACK_HOPPER_CAR                         :Hopper Karbon hitam
+STR_NAME_SUFFIX_CEMENT_SILO_CAR                                 :Gerbong semen
+STR_NAME_SUFFIX_CHEMICAL_COVERED_HOPPER_CAR                     :Hopper Bahan kimia
+STR_NAME_SUFFIX_COIL_CAR_COVERED                                :Gerbong Koil tertutup
+STR_NAME_SUFFIX_COIL_CAR_UNCOVERED                              :Gerbong Koil
+STR_NAME_SUFFIX_COVERED_HOPPER_CAR                              :Hopper tertutup
+STR_NAME_SUFFIX_CRYO_TANK_CAR                                   :Tanker Cryo
+STR_NAME_SUFFIX_CURTAIN_SIDE_BOX_CAR                            :Gerbong tepi tirai
+STR_NAME_SUFFIX_DOUBLE_DECK_AUTOMOBILE_CAR                      :Gerbong pengangkut Mobil
+STR_NAME_SUFFIX_DRY_POWDER_HOPPER_CAR                           :Hopper bubuk kering
+STR_NAME_SUFFIX_DUMP_CAR                                        :Gerbong mineral
+STR_NAME_SUFFIX_DUMP_CAR_HIGH_SIDE                              :Gerbong mineral tinggi
+STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Gerbong Tangki makanan
+STR_NAME_SUFFIX_EXPRESS_CAR                                     :Gerbong Bagasi express
+STR_NAME_SUFFIX_EXPRESS_INTERMODAL_CAR                          :Gerbong peti kemas itermodal
+STR_NAME_SUFFIX_EXPRESS_RAILCAR_PASSENGER_TRAILER_CAR           :Gerbong kereta rangkaian ekspres
+STR_NAME_SUFFIX_FARM_PRODUCTS_BOX_CAR                           :Gerbong produk pertanian
+STR_NAME_SUFFIX_FARM_PRODUCTS_HOPPER_CAR                        :Gerbong hopper produk pertanian
+STR_NAME_SUFFIX_FLAT_CAR                                        :Gerbong datar
+STR_NAME_SUFFIX_GOODS_BOX_CAR                                   :Gerbong Barang
+STR_NAME_SUFFIX_HOOD_OPEN_CAR                                   :Gerbong terbuka dengan terpal
+STR_NAME_SUFFIX_HOPPER_CAR                                      :Hopper
+STR_NAME_SUFFIX_HST_MAIL_CAR                                    :Bagasi HST
+STR_NAME_SUFFIX_HST_PASSENGER_CAR                               :Gerbong penumpang HST
+STR_NAME_SUFFIX_INGOT_CAR                                       :Gerbong pengangkut logam
+STR_NAME_SUFFIX_INTERMODAL_CAR                                  :Gerbong kontainer
+STR_NAME_SUFFIX_KAOLIN_HOPPER_CAR                               :Hopper tanah liat cina
+STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Gerbong ternak
+# Timber Wagon was tried as name, but is confusing as it carries logs but NOT timber
+STR_NAME_SUFFIX_LOG_CAR                                         :Gerbong kayu
+STR_NAME_SUFFIX_LOW_FLOOR_AUTOMOBILE_CAR                        :Gerbong Pengangkut kendaraan (lantai rendah)
+STR_NAME_SUFFIX_LOW_FLOOR_INTERMODAL_CAR                        :Gerbong kontainer (Laintai rendah)
+STR_NAME_SUFFIX_MAIL_CAR                                        :Bagasi Surat
+STR_NAME_SUFFIX_MERCHANDISE_BOX_CAR                             :Gerbong Marchandise
+STR_NAME_SUFFIX_MERCHANDISE_OPEN_CAR                            :Gerbong buka Marchandise
+STR_NAME_SUFFIX_MINERAL_COVERED_HOPPER_CAR                      Gerbong Hopper Mineral
+STR_NAME_SUFFIX_MINERAL_HOPPER_CAR                              :Gerbong Hopper Mineral terbuka
+STR_NAME_SUFFIX_MGR_HOPPER_CAR                                  :Hopper MGR
+STR_NAME_SUFFIX_OPEN_CAR                                        :Gerbong terbuka
+STR_NAME_SUFFIX_ORE_DUMP_CAR                                    :Gerbong Bijih metal
+STR_NAME_SUFFIX_ORE_HOPPER_CAR                                  :Gerbong hopper bijih metal
+STR_NAME_SUFFIX_PASSENGER_CAR                                   :Gerbong penumpang
+STR_NAME_SUFFIX_PEAT_CAR                                        :Gerbong gambut
+STR_NAME_SUFFIX_PLATE_CAR                                       :Gerbong piring
+STR_NAME_SUFFIX_PRESSURE_TANK_CAR                               :Gerbong tangki tekanan
+STR_NAME_SUFFIX_PRODUCT_TANK_CAR                                :Gerbong tangki produk
+STR_NAME_SUFFIX_RAILBUS_PASSENGER_TRAILER_CAR                   :Gerbong Raibus
+STR_NAME_SUFFIX_RAILCAR_PASSENGER_TRAILER_CAR                   :Gerbong Railbus
+STR_NAME_SUFFIX_REEFER_CAR                                      :Geebong Pendingin
+STR_NAME_SUFFIX_RESTAURANT_CAR                                  :Gerbong Restorasi
+STR_NAME_SUFFIX_ROCK_HOPPER_CAR                                 :Hopper batu
+STR_NAME_SUFFIX_ROLLER_ROOF_HOPPER_CAR                          :Hopper atap roll
+STR_NAME_SUFFIX_SILO_CAR                                        :Gerbong silo
+STR_NAME_SUFFIX_SKIP_CAR                                        :Skips
+STR_NAME_SUFFIX_SLAG_LADLE_CAR                                  :Gerbong tarak
+STR_NAME_SUFFIX_SLIDING_ROOF_CAR                                :Gerbong atap geser
+STR_NAME_SUFFIX_SLIDING_WALL_CAR                                :Gerbong dinding geser
+STR_NAME_SUFFIX_SCRAP_METAL_CAR                                 :Gerbong rongsokan
+STR_NAME_SUFFIX_SUBURBAN_PASSENGER_CAR                          :Gerbong Komuter
+STR_NAME_SUFFIX_SWING_ROOF_HOPPER_CAR                           :Gerbong atap ayun
+STR_NAME_SUFFIX_TANK_CAR                                        :Gerbong Tangki
+STR_NAME_SUFFIX_TARPAULIN_CAR                                   :Gerbong Terpal
+STR_NAME_SUFFIX_TORPEDO_CAR                                     :Gerbong Torpedo
+STR_NAME_SUFFIX_VEHICLE_PARTS_BOX_CAR                           :Gerbong bagian kendaraan
+
+# cargo subtypes
+# only used for automobile cars (specifically vehicles cargo) as of May 2021
+STR_CARGO_SUBTYPE_VEHI_0                                        : (Mobil)
+STR_CARGO_SUBTYPE_VEHI_1                                        : (Truk)
+
+# buy menu wrappers
+STR_BUY_MENU_WRAPPER_ONE_SUBSTR                                 :{STRING}
+STR_BUY_MENU_WRAPPER_TWO_SUBSTR                                 :{STRING}{}{STRING}
+
+# role information for buy menu
+STR_ROLE                                                        :{BLACK}Kegunaan: {GOLD}{STRING}
+STR_ROLE_DRIVING_CAB                                            :Kabin Kemudi
+STR_ROLE_FREIGHT                                                :Barang
+STR_ROLE_GENERAL_PURPOSE                                        :Umum
+STR_ROLE_GENERAL_PURPOSE_EXPRESS                                :Umum/Ekpress/Argo
+STR_ROLE_HST                                                    :Kecepatan tinggi
+STR_ROLE_LOLZ                                                   :Langsiran
+STR_ROLE_METRO                                                  :Kapapitas tinggi (Urban)
+STR_ROLE_SUBURBAN                                               :Kapapitas tinggi (Suburban)
+STR_ROLE_VERY_HIGH_SPEED                                        :Kecepatan sangat tinggi
+
+# assumes only diesel and electric currently
+STR_POWER_BY_RAILTYPE                                           :{BLACK}Tenaga pada diesel: {GOLD}{POWER} {}{BLACK}Tenaga Pada listrik: {GOLD}{POWER}
+
+# distributed power (dedicated wagons add power)
+STR_WAGONS_ADD_POWER_CAB                                        :Tenaga (Di distribusikan): {GOLD}{POWER} setiap {STRING} unit terpasang
+STR_WAGONS_ADD_POWER_MIDDLE                                     :Tenaga (Di distribusikan): {GOLD}{POWER} ketika unit terpasang ke {STRING}
+
+# other buy menu hints
+STR_BUY_MENU_HINT_DRIVING_CAB                                   :{BLACK}Pasang ke depan atau belakang kereta, dengan setidaknya satu mesin lainnya
+STR_BUY_MENU_HINT_LGV_CAPABLE                                   :{BLACK}Membutuhkan rel kecepatan tinggi khusus untuk mencapai kecepatan maksimum
+STR_BUY_MENU_HINT_RESTAURANT_CAR                                :{}{BLACK}Bonus: {GOLD}Menghilangkan biaya operasional untuk semua gerbong Penumpang di kereta
+
+# project management
+STR_SPRITES_COMPLETE                                            :{}Sprites Complete: {GOLD}Yup
+STR_SPRITES_INCOMPLETE                                          :{}Sprites Complete: {GOLD}Nope
+
+# lgv track strings
+# this type isn't built, it's unelectrified and exists for compatibility reasons, see electrified lgv instead
+STR_RAILTYPE_LGV_NAME                                           :Rel kecepatan tinggi
+STR_RAILTYPE_LGV_TOOLBAR_CAPTION                                :[unused]
+STR_RAILTYPE_LGV_MENU_TEXT                                      :[unused]
+STR_RAILTYPE_LGV_BUILD_WINDOW_CAPTION                           :[unused]
+STR_RAILTYPE_LGV_AUTOREPLACE_TEXT                               :[unused]
+STR_RAILTYPE_LGV_NEW_ENGINE_TEXT                                :[unused]
+
+# lgv electrified
+STR_RAILTYPE_LGV_ELECTRIFIED_NAME                               :Rel kecepatan tinggi (Elektrik)
+STR_RAILTYPE_LGV_ELECTRIFIED_TOOLBAR_CAPTION                    :Konstruksi rel Berkecepatan Tinggi
+STR_RAILTYPE_LGV_ELECTRIFIED_MENU_TEXT                          :Konstruksi rel Berkecepatan Tinggi
+STR_RAILTYPE_LGV_ELECTRIFIED_BUILD_WINDOW_CAPTION               :Kereta Berkecepatan Tinggi Baru
+STR_RAILTYPE_LGV_ELECTRIFIED_AUTOREPLACE_TEXT                   :[unused]
+STR_RAILTYPE_LGV_ELECTRIFIED_NEW_ENGINE_TEXT                    :[unused]
+
+#metro track strings
+STR_RAILTYPE_METRO_NAME                                         :Rel metro
+STR_RAILTYPE_METRO_TOOLBAR_CAPTION                              :Konstruksi rel metro
+STR_RAILTYPE_METRO_MENU_TEXT                                    :Konstruksi rel metro
+STR_RAILTYPE_METRO_BUILD_WINDOW_CAPTION                         :Kereta metro baru
+STR_RAILTYPE_METRO_AUTOREPLACE_TEXT                             :Kedaraan metro
+STR_RAILTYPE_METRO_NEW_ENGINE_TEXT                              :metro
+
+#narrowgauge track strings
+STR_RAILTYPE_NARROW_GAUGE_NAME                                  :Rel Sempit
+STR_RAILTYPE_NARROW_GAUGE_TOOLBAR_CAPTION                       :Konstruksi Rel Sempit
+STR_RAILTYPE_NARROW_GAUGE_MENU_TEXT                             :Konstruksi Rel Sempit
+STR_RAILTYPE_NARROW_GAUGE_BUILD_WINDOW_CAPTION                  :Kereta rel sempit baru
+STR_RAILTYPE_NARROW_GAUGE_AUTOREPLACE_TEXT                      :Kereta rel sempit
+STR_RAILTYPE_NARROW_GAUGE_NEW_ENGINE_TEXT                       :Rel Sempit
+
+#narrowgauge electrified track strings
+#STR_RAILTYPE_NARROW_GAUGE_ELECTRIFIED_NAME                     :Rel Sempit elektrik
+#STR_RAILTYPE_NARROW_GAUGE_ELECTRIFIED_TOOLBAR_CAPTION          :Konstruksi Rel Sempit elektrik
+#STR_RAILTYPE_NARROW_GAUGE_ELECTRIFIED_MENU_TEXT                :Konstruksi Rel Sempit elektrik
+#STR_RAILTYPE_NARROW_GAUGE_ELECTRIFIED_BUILD_WINDOW_CAPTION     :Kendaraan Rel Sempit elektrik Baru!
+#STR_RAILTYPE_NARROW_GAUGE_ELECTRIFIED_AUTOREPLACE_TEXT         :Kereta Rel Sempit elektrik
+#STR_RAILTYPE_NARROW_GAUGE_ELECTRIFIED_NEW_ENGINE_TEXT          :Rel Sempit elektrik
