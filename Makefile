@@ -18,6 +18,7 @@ MK_ARCHIVE = bin/mk-archive
 PROJECT_NAME = iron-horse
 
 GRAPHICS_TARGET = generated/graphics/make_target
+NML_TARGET = generated/nml/make_target
 LANG_DIR = generated/lang
 LANG_TARGET = $(LANG_DIR)/english.lng
 
@@ -92,15 +93,16 @@ $(LANG_TARGET): $(shell $(FIND_FILES) --ext=.py --ext=.pynml --ext=.lng src)
 $(HTML_DOCS): $(GRAPHICS_TARGET) $(LANG_TARGET) $(shell $(FIND_FILES) --ext=.py --ext=.pynml --ext=.pt --ext=.lng --ext=.png src)
 	$(_V) $(PYTHON3) src/render_docs.py $(ARGS)
 
-nml_cabbage: $(shell $(FIND_FILES) --ext=.py --ext=.pynml src)
+$(NML_TARGET): $(shell $(FIND_FILES) --ext=.py --ext=.pynml src)
 	$(_V) $(PYTHON3) src/render_nml.py $(ARGS)
+	$(_V) touch $(@)
 
-$(NML_FILES):
-	$(_V) echo nothing
+$(NML_FILES): $(NML_TARGET)
+# single proxy target file for nml as the python script only needs to run once for all grfs currently
 
 # nmlc is used to compile a nfo file only, which is then used by grfcodec
 # this means that the (relatively slow) nmlc stage can be skipped if the nml file is unchanged (only graphics changed)
-$(NFO_FILES): %.nfo : %.nml $(LANG_TARGET) nml_cabbage | $(GRAPHICS_TARGET)
+$(NFO_FILES): %.nfo : %.nml $(LANG_TARGET) | $(GRAPHICS_TARGET)
 	$(NMLC) -l $(LANG_DIR) --verbosity=4 --palette=DEFAULT  --no-optimisation-warning --nfo=$@ $<
 
 # N.B grf codec can't compile into a specific target dir, so after compiling, move the compiled grf to appropriate dir
