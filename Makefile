@@ -41,11 +41,13 @@ PROJECT_VERSIONED_NAME = $(PROJECT_NAME)-$(REPO_VERSION)
 ARGS = '$(PW)' '$(ROSTER)' '$(SC)' '$(SD)'
 
 ifdef ROSTER
-  GRF_FILES = generated/iron-$(ROSTER).grf
+  GRF_NAMES = iron-$(ROSTER)
 else
-  GRF_FILES = generated/iron-moose.grf generated/iron-horse.grf
+  GRF_NAMES = iron-horse iron-moose
   ROSTER = 'ALL'
 endif
+# GRF_FILES include the full path to generated dir and .grf suffixes
+GRF_FILES = $(GRF_NAMES:%=generated/%.grf)
 NFO_FILES = $(GRF_FILES:.grf=.nfo)
 NML_FILES = $(GRF_FILES:.grf=.nml)
 TAR_FILE = $(PROJECT_VERSIONED_NAME).tar
@@ -90,12 +92,15 @@ $(LANG_TARGET): $(shell $(FIND_FILES) --ext=.py --ext=.pynml --ext=.lng src)
 $(HTML_DOCS): $(GRAPHICS_TARGET) $(LANG_TARGET) $(shell $(FIND_FILES) --ext=.py --ext=.pynml --ext=.pt --ext=.lng --ext=.png src)
 	$(_V) $(PYTHON3) src/render_docs.py $(ARGS)
 
-$(NML_FILES): $(shell $(FIND_FILES) --ext=.py --ext=.pynml src)
+nml_cabbage: $(shell $(FIND_FILES) --ext=.py --ext=.pynml src)
 	$(_V) $(PYTHON3) src/render_nml.py $(ARGS)
+
+$(NML_FILES):
+	$(_V) echo nothing
 
 # nmlc is used to compile a nfo file only, which is then used by grfcodec
 # this means that the (relatively slow) nmlc stage can be skipped if the nml file is unchanged (only graphics changed)
-$(NFO_FILES): %.nfo : %.nml $(LANG_TARGET) | $(GRAPHICS_TARGET)
+$(NFO_FILES): %.nfo : %.nml $(LANG_TARGET) nml_cabbage | $(GRAPHICS_TARGET)
 	$(NMLC) -l $(LANG_DIR) --verbosity=4 --palette=DEFAULT  --no-optimisation-warning --nfo=$@ $<
 
 # N.B grf codec can't compile into a specific target dir, so after compiling, move the compiled grf to appropriate dir
@@ -104,7 +109,7 @@ $(GRF_FILES): %.grf : %.nfo $(GRAPHICS_TARGET)
 # we use notdir and dir to get the correct paths from the list of target filenames (which include generated dir)
 # result is e.g. grfcodec -s -e -c -g 2 iron-horse.grf generated/
 	time $(GRFCODEC) -s -e -c -g 2 $(notdir $@) $(dir $<)
-	mv $(notdir $@) $@
+	$(_V) mv $(notdir $@) $@
 
 $(TAR_FILE): $(GRF_FILES) $(HTML_DOCS)
 # the goal here is a sparse tar for distribution
@@ -145,10 +150,14 @@ copy_docs_to_grf_farm:
 install: default
 # note the switch to shell syntax for vars in the for loop, rather than make syntax;
 # also the bash magic to strip directory from GRF_FILE_PATH
-	$(_V) for GRF_FILE_PATH in $(GRF_FILES) ; do \
-		rm ~/Documents/OpenTTD/newgrf/$${GRF_FILE_PATH##*/} ; \
-		cp $$GRF_FILE_PATH ~/Documents/OpenTTD/newgrf/ ; \
+	$(_V) echo "[INSTALLING]"
+	$(_V) for GRF_NAME in $(GRF_NAMES) ; do \
+		echo .. $$GRF_NAME ; \
+		rm ~/Documents/OpenTTD/newgrf/$${GRF_NAME}.grf ; \
+		cp generated/$$GRF_NAME.grf ~/Documents/OpenTTD/newgrf/ ; \
 	done
+	$(_V) echo "[DONE]"
+
 
 clean:
 	$(_V) echo "[CLEANING]"
