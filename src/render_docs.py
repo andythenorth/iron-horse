@@ -6,6 +6,7 @@ import os
 
 currentdir = os.curdir
 import multiprocessing
+from itertools import repeat
 from time import time
 from PIL import Image
 import markdown
@@ -570,13 +571,9 @@ def render_docs(
                 doc_helper=DocHelper(),
                 doc_name=doc_name,
             )
-        if file_type == "html":
-            subdir = "html"
-        else:
-            subdir = ""
         # save the results of templating
         doc_file = codecs.open(
-            os.path.join(docs_output_path, subdir, doc_name + "." + file_type),
+            os.path.join(docs_output_path, doc_name + "." + file_type),
             "w",
             "utf8",
         )
@@ -606,13 +603,13 @@ def render_docs_vehicle_details(consist, docs_output_path, consists):
         doc_name=doc_name,
     )
     doc_file = codecs.open(
-        os.path.join(docs_output_path, "html", doc_name + ".html"), "w", "utf8"
+        os.path.join(docs_output_path, doc_name + ".html"), "w", "utf8"
     )
     doc_file.write(doc)
     doc_file.close()
 
 
-def render_docs_images(consist):
+def render_docs_images(consist, static_dir_dst):
     # process vehicle buy menu sprites for reuse in docs
     # extend this similar to render_docs if other image types need processing in future
 
@@ -793,11 +790,9 @@ def render_docs_images(consist):
                 ),
                 resample=Image.NEAREST,
             )
+            print(static_dir_dst)
             output_path = os.path.join(
-                currentdir,
-                "docs",
-                "html",
-                "static",
+                static_dir_dst,
                 "img",
                 consist.id + "_" + colour_name + ".png",
             )
@@ -834,15 +829,19 @@ def main():
         os.mkdir(chameleon_cache_path)
     os.environ["CHAMELEON_CACHE"] = chameleon_cache_path
 
-    docs_output_path = os.path.join(currentdir, "docs")
+    docs_output_path = os.path.join(currentdir, "docs", makefile_args["grf_name"])
+    html_docs_output_path = os.path.join(docs_output_path, "html")
+    if not os.path.exists(os.path.join(currentdir, "docs")):
+        os.mkdir(os.path.join(currentdir, "docs"))
     if os.path.exists(docs_output_path):
         shutil.rmtree(docs_output_path)
     os.mkdir(docs_output_path)
+    os.mkdir(html_docs_output_path)
 
     shutil.copy(os.path.join(docs_src, "index.html"), docs_output_path)
 
     static_dir_src = os.path.join(docs_src, "html", "static")
-    static_dir_dst = os.path.join(docs_output_path, "html", "static")
+    static_dir_dst = os.path.join(html_docs_output_path, "static")
     shutil.copytree(static_dir_src, static_dir_dst)
 
     # import iron_horse inside main() as it's so slow to import, and should only be imported explicitly
@@ -870,7 +869,7 @@ def main():
     graph_docs = ["tech_tree_linkgraph"]
 
     render_docs_start = time()
-    render_docs(html_docs, "html", docs_output_path, iron_horse, consists)
+    render_docs(html_docs, "html", html_docs_output_path, iron_horse, consists)
     render_docs(txt_docs, "txt", docs_output_path, iron_horse, consists)
     render_docs(
         license_docs,
@@ -883,7 +882,7 @@ def main():
     # just render the markdown docs twice to get txt and html versions, simples no?
     render_docs(markdown_docs, "txt", docs_output_path, iron_horse, consists)
     render_docs(
-        markdown_docs, "html", docs_output_path, iron_horse, consists, use_markdown=True
+        markdown_docs, "html", html_docs_output_path, iron_horse, consists, use_markdown=True
     )
     render_docs(graph_docs, "dotall", docs_output_path, iron_horse, consists)
     print("render_docs", time() - render_docs_start)
@@ -894,7 +893,7 @@ def main():
     for roster in iron_horse.registered_rosters:
         for consist in roster.engine_consists:
             consist.assert_description_foamer_facts()
-            render_docs_vehicle_details(consist, docs_output_path, consists)
+            render_docs_vehicle_details(consist, html_docs_output_path, consists)
     print("render_docs_vehicle_details", time() - render_vehicle_details_start)
 
     # process images for use in docs
@@ -902,12 +901,12 @@ def main():
     slow_start = time()
     if use_multiprocessing == False:
         for consist in consists:
-            render_docs_images(consist)
+            render_docs_images(consist, static_dir_dst)
     else:
         # Would this go faster if the pipelines from each consist were placed in MP pool, not just the consist?
         # probably potato / potato tbh
         pool = multiprocessing.Pool(processes=num_pool_workers)
-        pool.map(render_docs_images, consists)
+        pool.starmap(render_docs_images, zip(consists, repeat(static_dir_dst)))
         pool.close()
         pool.join()
     print("render_docs_images", time() - slow_start)

@@ -19,8 +19,8 @@ PROJECT_NAME = iron-horse
 
 GRAPHICS_TARGET = generated/graphics/make_target
 NML_TARGET = generated/nml/make_target
-LANG_DIR = generated/lang
-LANG_TARGET = $(LANG_DIR)/english.lng
+LANG_DIR_BASE = generated/lang
+LANG_TARGET = $(LANG_DIR_BASE)/english.lng
 
 -include Makefile.local
 
@@ -39,11 +39,11 @@ endif
 REPO_TITLE = "$(PROJECT_NAME) $(REPO_VERSION)"
 PROJECT_VERSIONED_NAME = $(PROJECT_NAME)-$(REPO_VERSION)
 # optional make args that will be passed through to python
-ifdef ROSTER
-  GRF_NAMES = iron-$(ROSTER)
+ifdef GRF
+  GRF_NAMES = iron-$(GRF)
 else
   GRF_NAMES = iron-horse iron-moose
-  ROSTER = 'ALL'
+  GRF = 'ALL'
 endif
 ifdef PW
     pool-workers = --pool_workers=$(PW)
@@ -54,18 +54,18 @@ endif
 ifeq ($(SD), True)
   suppress-docs = --suppress-docs
 endif
-# roster needs to be handled differently depending on the python script, so is not included in PY_GLOBAL_ARGS
+# --grf-name needs to be handled differently depending on the python script, so is not included in PY_GLOBAL_ARGS
 PY_GLOBAL_ARGS = $(pool-workers) $(suppress-cargo-sprites) $(suppress-docs)
 
 # GRF_FILES include the full path to generated dir and .grf suffixes
 GRF_FILES = $(GRF_NAMES:%=generated/%.grf)
 NFO_FILES = $(GRF_FILES:.grf=.nfo)
 NML_FILES = $(GRF_FILES:.grf=.nml)
+LANG_FILES = $(GRF_NAMES:%=generated/lang/%/english.lng)
 TAR_FILE = $(PROJECT_VERSIONED_NAME).tar
 ZIP_FILE = $(PROJECT_VERSIONED_NAME).zip
 MD5_FILE = $(PROJECT_NAME).check.md5
-
-HTML_DOCS = docs
+HTML_DOCS = $(GRF_NAMES:%=docs/%/index.html)
 
 SOURCE_NAME = $(PROJECT_VERSIONED_NAME)-source
 BUNDLE_DIR = bundle_dir
@@ -94,26 +94,22 @@ SC = 'False'
 _V ?= @
 
 $(GRAPHICS_TARGET): $(shell $(FIND_FILES) --ext=.py --ext=.png src)
-	$(_V) $(PYTHON3) src/render_graphics.py $(PY_GLOBAL_ARGS) -r=horse
+	$(_V) $(PYTHON3) src/render_graphics.py $(PY_GLOBAL_ARGS) --grf-name=iron-horse
 	$(_V) touch $(GRAPHICS_TARGET)
 
-$(LANG_TARGET): $(shell $(FIND_FILES) --ext=.py --ext=.pynml --ext=.lng src)
-	$(_V) $(PYTHON3) src/render_lang.py $(PY_GLOBAL_ARGS) -r=horse
+$(LANG_FILES): $(shell $(FIND_FILES) --ext=.py --ext=.pynml --ext=.lng src)
+	$(_V) $(PYTHON3) src/render_lang.py $(PY_GLOBAL_ARGS) --grf-name=$(subst /english.lng,,$(subst generated/lang/,,$@))
 
-$(HTML_DOCS): $(GRAPHICS_TARGET) $(LANG_TARGET) $(shell $(FIND_FILES) --ext=.py --ext=.pynml --ext=.pt --ext=.lng --ext=.png src)
-	$(_V) $(PYTHON3) src/render_docs.py $(PY_GLOBAL_ARGS) -r=horse
+$(HTML_DOCS): $(GRAPHICS_TARGET) $(LANG_FILES) $(shell $(FIND_FILES) --ext=.py --ext=.pynml --ext=.pt --ext=.lng --ext=.png src)
+	$(_V) $(PYTHON3) src/render_docs.py $(PY_GLOBAL_ARGS) --grf-name=$(subst /index.html,,$(subst docs/,,$@))
 
-$(NML_TARGET): $(shell $(FIND_FILES) --ext=.py --ext=.pynml src)
-	$(_V) $(PYTHON3) src/render_nml.py $(PY_GLOBAL_ARGS) -r=horse
-	$(_V) touch $(@)
-
-$(NML_FILES): $(NML_TARGET)
-# single proxy target file for nml as the python script only needs to run once for all grfs currently
+$(NML_FILES): $(shell $(FIND_FILES) --ext=.py --ext=.pynml src)
+	$(_V) $(PYTHON3) src/render_nml.py $(PY_GLOBAL_ARGS) --grf-name=$(subst .nml,,$(subst generated/,,$@))
 
 # nmlc is used to compile a nfo file only, which is then used by grfcodec
 # this means that the (relatively slow) nmlc stage can be skipped if the nml file is unchanged (only graphics changed)
-$(NFO_FILES): %.nfo : %.nml $(LANG_TARGET) | $(GRAPHICS_TARGET)
-	$(NMLC) -l $(LANG_DIR) --verbosity=4 --palette=DEFAULT  --no-optimisation-warning --nfo=$@ $<
+$(NFO_FILES): %.nfo : %.nml $(LANG_FILES) | $(GRAPHICS_TARGET)
+	$(NMLC) -l $(LANG_DIR_BASE)/$(*F) --verbosity=4 --palette=DEFAULT  --no-optimisation-warning --nfo=$@ $<
 
 # N.B grf codec can't compile into a specific target dir, so after compiling, move the compiled grf to appropriate dir
 # grfcodec -n was tried, but was slower and produced a large grf file

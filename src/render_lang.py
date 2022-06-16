@@ -24,7 +24,7 @@ templates = PageTemplateLoader(os.path.join(currentdir, "src", "templates"))
 makefile_args = utils.get_makefile_args(sys)
 
 lang_src = os.path.join(currentdir, "src", "lang")
-lang_dst = os.path.join(iron_horse.generated_files_path, "lang")
+lang_dst = os.path.join(iron_horse.generated_files_path, "lang", makefile_args["grf_name"])
 
 if os.path.exists(lang_dst):
     shutil.rmtree(lang_dst)

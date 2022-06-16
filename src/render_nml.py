@@ -69,7 +69,7 @@ def main():
         # reminder to self: inside main() to avoid modifying filesystem simply by importing module
         os.mkdir(generated_nml_path)
     grf_nml = codecs.open(
-        os.path.join(generated_files_path, "iron-horse.nml"), "w", "utf8"
+        os.path.join(generated_files_path, makefile_args["grf_name"] + ".nml"), "w", "utf8"
     )
 
     spritelayer_cargos = iron_horse.registered_spritelayer_cargos
@@ -107,10 +107,6 @@ def main():
         grf_nml.write(render_item_nml(consist))
 
     grf_nml.close()
-
-    # this is temp
-    print("copy horse nml to moose nml for makefile testing")
-    os.system('cp generated/iron-horse.nml generated/iron-moose.nml')
 
     print("[RENDER NML] complete", format((time() - start), ".2f") + "s")
 

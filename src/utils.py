@@ -5,7 +5,7 @@ import global_constants
 from polar_fox import git_info
 
 
-def get_makefile_args(sys):
+def get_makefile_args(sys=None):
     argparser = argparse.ArgumentParser()
     argparser.add_argument(
         "-pw", "--pool_workers",
@@ -15,13 +15,13 @@ def get_makefile_args(sys):
         help="The number of pool workers to use in multiprocessing pools [default: 0] (multiprocessing disabled unless explicitly enabled)",
     )
     argparser.add_argument(
-        "-r", "--roster",
-        dest="roster",
-        help="The roster to build",
+        "-gn", "--grf-name",
+        dest="grf_name",
+        help="The grf to build",
         # note dubious ability to pass roster with or without 'iron-' prefix
         # this is to simplify working with make, which might have either format as the value of a var
         # also could use installed rosters list - but how often are rosters added?
-        choices=["horse", "iron-horse", "moose", "iron-moose", "ibex", "iron-ibex"]
+        choices=["iron-horse", "iron-moose", "iron-ibex"]
     )
     argparser.add_argument(
         "-sc", "--suppress-cargo-sprites",
@@ -42,17 +42,17 @@ def get_makefile_args(sys):
     # !! argparse might just support dict access, I didn't look it up and didn't want to deal with untested failure cases
     makefile_args = {
         "num_pool_workers": args.num_pool_workers,
-        "roster": args.roster,
+        "grf_name": args.grf_name,
         "suppress_cargo_sprites": args.suppress_cargo_sprites,
         "suppress_docs": args.suppress_docs,
     }
-    # split to remove any 'iron-' prefix, see note above in roster arg declaration about this
-    if makefile_args["roster"] is not None:
-        makefile_args["roster"] = makefile_args["roster"].split("iron-")[-1]
+    # temp
+    makefile_args["roster"] = "pony"
     # silly remapping of horse to pony, reasons because reasons
+    """
     if makefile_args["roster"] == "horse":
         makefile_args["roster"] = "pony"
-
+    """
     return makefile_args
 
 
@@ -84,7 +84,7 @@ def unescape_chameleon_output(escaped_nml):
 def parse_base_lang():
     # expose base lang strings to python - for reuse in docs
     base_lang_file = codecs.open(
-        os.path.join("generated", "lang", "english.lng"), "r", "utf8"
+        os.path.join("generated", "lang", get_makefile_args()["grf_name"], "english.lng"), "r", "utf8"
     )
     text = base_lang_file.readlines()
     # this is fragile, playing one line python is silly :)
