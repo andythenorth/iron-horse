@@ -47,7 +47,8 @@ def get_makefile_args(sys):
         "suppress_docs": args.suppress_docs,
     }
     # split to remove any 'iron-' prefix, see note above in roster arg declaration about this
-    makefile_args["roster"] = makefile_args["roster"].split("iron-")[-1]
+    if makefile_args["roster"] is not None:
+        makefile_args["roster"] = makefile_args["roster"].split("iron-")[-1]
     # silly remapping of horse to pony, reasons because reasons
     if makefile_args["roster"] == "horse":
         makefile_args["roster"] = "pony"
