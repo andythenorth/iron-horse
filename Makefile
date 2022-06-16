@@ -54,7 +54,8 @@ endif
 ifeq ($(SD), True)
   suppress-docs = --suppress-docs
 endif
-PYARGS = $(pool-workers) $(suppress-cargo-sprites) $(suppress-docs)
+# roster needs to be handled differently depending on the python script, so is not included in PY_GLOBAL_ARGS
+PY_GLOBAL_ARGS = $(pool-workers) $(suppress-cargo-sprites) $(suppress-docs)
 
 # GRF_FILES include the full path to generated dir and .grf suffixes
 GRF_FILES = $(GRF_NAMES:%=generated/%.grf)
@@ -93,17 +94,17 @@ SC = 'False'
 _V ?= @
 
 $(GRAPHICS_TARGET): $(shell $(FIND_FILES) --ext=.py --ext=.png src)
-	$(_V) $(PYTHON3) src/render_graphics.py $(PYARGS) -r=horse
+	$(_V) $(PYTHON3) src/render_graphics.py $(PY_GLOBAL_ARGS) -r=horse
 	$(_V) touch $(GRAPHICS_TARGET)
 
 $(LANG_TARGET): $(shell $(FIND_FILES) --ext=.py --ext=.pynml --ext=.lng src)
-	$(_V) $(PYTHON3) src/render_lang.py $(PYARGS) -r=horse
+	$(_V) $(PYTHON3) src/render_lang.py $(PY_GLOBAL_ARGS) -r=horse
 
 $(HTML_DOCS): $(GRAPHICS_TARGET) $(LANG_TARGET) $(shell $(FIND_FILES) --ext=.py --ext=.pynml --ext=.pt --ext=.lng --ext=.png src)
-	$(_V) $(PYTHON3) src/render_docs.py $(PYARGS) -r=horse
+	$(_V) $(PYTHON3) src/render_docs.py $(PY_GLOBAL_ARGS) -r=horse
 
 $(NML_TARGET): $(shell $(FIND_FILES) --ext=.py --ext=.pynml src)
-	$(_V) $(PYTHON3) src/render_nml.py $(PYARGS) -r=horse
+	$(_V) $(PYTHON3) src/render_nml.py $(PY_GLOBAL_ARGS) -r=horse
 	$(_V) touch $(@)
 
 $(NML_FILES): $(NML_TARGET)
