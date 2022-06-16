@@ -1,3 +1,4 @@
+import argparse
 import os.path
 import codecs  # used for writing files - more unicode friendly than standard open() module
 import global_constants
@@ -5,20 +6,52 @@ from polar_fox import git_info
 
 
 def get_makefile_args(sys):
-    # get args passed by makefile
-    if len(sys.argv) > 1:
-        makefile_args = {
-            "num_pool_workers": int(sys.argv[1]),
-            "roster": sys.argv[2],
-            "suppress_cargo_sprites": True if sys.argv[3] == "True" else False,
-            "suppress_docs": True if sys.argv[4] == "True" else False,
-        }
-        # silly remapping of horse to pony, reasons because reasons
-        if makefile_args["roster"] == "horse":
-            makefile_args["roster"] = "pony"
-    else:
-        # provide any necessary defaults here
-        makefile_args = {}
+    argparser = argparse.ArgumentParser()
+    argparser.add_argument(
+        "-pw", "--pool_workers",
+        type=int,
+        default=0,
+        dest="num_pool_workers",
+        help="The number of pool workers to use in multiprocessing pools [default: 0] (multiprocessing disabled unless explicitly enabled)",
+    )
+    argparser.add_argument(
+        "-r", "--roster",
+        dest="roster",
+        help="The roster to build",
+        # note dubious ability to pass roster with or without 'iron-' prefix
+        # this is to simplify working with make, which might have either format as the value of a var
+        # also could use installed rosters list - but how often are rosters added?
+        choices=["horse", "iron-horse", "moose", "iron-moose", "ibex", "iron-ibex"]
+    )
+    argparser.add_argument(
+        "-sc", "--suppress-cargo-sprites",
+        action=argparse.BooleanOptionalAction,
+        dest="suppress_cargo_sprites",
+        help="Optionally suppress visible cargo sprites in the grf output, can save substantial compile time",
+    )
+    argparser.add_argument(
+        "-sd", "--suppress-docs",
+        action=argparse.BooleanOptionalAction,
+        dest="suppress_docs",
+        help="Optionally suppress docs, can save some compile time",
+    )
+
+    args = argparser.parse_args()
+
+    # translate to a dict for legacy API reasons
+    # !! argparse might just support dict access, I didn't look it up and didn't want to deal with untested failure cases
+    makefile_args = {
+        "num_pool_workers": args.num_pool_workers,
+        "roster": args.roster,
+        "suppress_cargo_sprites": args.suppress_cargo_sprites,
+        "suppress_docs": args.suppress_docs,
+    }
+    # split to remove any 'iron-' prefix, see note above in roster arg declaration about this
+    makefile_args["roster"] = makefile_args["roster"].split("iron-")[-1]
+    # silly remapping of horse to pony, reasons because reasons
+    if makefile_args["roster"] == "horse":
+        makefile_args["roster"] = "pony"
+
     return makefile_args
 
 

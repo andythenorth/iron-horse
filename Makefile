@@ -38,15 +38,24 @@ endif
 
 REPO_TITLE = "$(PROJECT_NAME) $(REPO_VERSION)"
 PROJECT_VERSIONED_NAME = $(PROJECT_NAME)-$(REPO_VERSION)
-# Args for faster compiles: PW=n (num pool workers) SC=bool (suppress cargo sprites) SD=bool (suppress docs)
-ARGS = '$(PW)' '$(ROSTER)' '$(SC)' '$(SD)'
-
+# optional make args that will be passed through to python
 ifdef ROSTER
   GRF_NAMES = iron-$(ROSTER)
 else
   GRF_NAMES = iron-horse iron-moose
   ROSTER = 'ALL'
 endif
+ifdef PW
+    pool-workers = --pool_workers=$(PW)
+endif
+ifeq ($(SC), True)
+  suppress-cargo-sprites = --suppress-cargo-sprites
+endif
+ifeq ($(SD), True)
+  suppress-docs = --suppress-docs
+endif
+PYARGS = $(pool-workers) $(suppress-cargo-sprites) $(suppress-docs)
+
 # GRF_FILES include the full path to generated dir and .grf suffixes
 GRF_FILES = $(GRF_NAMES:%=generated/%.grf)
 NFO_FILES = $(GRF_FILES:.grf=.nfo)
@@ -84,17 +93,17 @@ SC = 'False'
 _V ?= @
 
 $(GRAPHICS_TARGET): $(shell $(FIND_FILES) --ext=.py --ext=.png src)
-	$(_V) $(PYTHON3) src/render_graphics.py $(ARGS)
+	$(_V) $(PYTHON3) src/render_graphics.py $(PYARGS) -r=horse
 	$(_V) touch $(GRAPHICS_TARGET)
 
 $(LANG_TARGET): $(shell $(FIND_FILES) --ext=.py --ext=.pynml --ext=.lng src)
-	$(_V) $(PYTHON3) src/render_lang.py $(ARGS)
+	$(_V) $(PYTHON3) src/render_lang.py $(PYARGS) -r=horse
 
 $(HTML_DOCS): $(GRAPHICS_TARGET) $(LANG_TARGET) $(shell $(FIND_FILES) --ext=.py --ext=.pynml --ext=.pt --ext=.lng --ext=.png src)
-	$(_V) $(PYTHON3) src/render_docs.py $(ARGS)
+	$(_V) $(PYTHON3) src/render_docs.py $(PYARGS) -r=horse
 
 $(NML_TARGET): $(shell $(FIND_FILES) --ext=.py --ext=.pynml src)
-	$(_V) $(PYTHON3) src/render_nml.py $(ARGS)
+	$(_V) $(PYTHON3) src/render_nml.py $(PYARGS) -r=horse
 	$(_V) touch $(@)
 
 $(NML_FILES): $(NML_TARGET)
