@@ -157,7 +157,7 @@ copy_docs_to_grf_farm: $(HTML_DOCS)
 	$(_V) echo "[COPYING DOCS TO GRF.FARM]"
 	$(_V) for GRF_NAME in $(GRF_NAMES) ; do \
 		echo .. $$GRF_NAME ; \
-    	$(PYTHON3) src/polar_fox/grf_farm.py $$GRF_NAME ; \
+    	$(PYTHON3) src/polar_fox/grf_farm.py $$GRF_NAME --nested-docs-by-grf ; \
 	done
 	$(_V) echo "[DONE]"
 
