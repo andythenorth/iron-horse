@@ -790,7 +790,6 @@ def render_docs_images(consist, static_dir_dst):
                 ),
                 resample=Image.NEAREST,
             )
-            print(static_dir_dst)
             output_path = os.path.join(
                 static_dir_dst,
                 "img",

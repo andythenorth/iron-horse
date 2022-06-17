@@ -25,7 +25,7 @@ def copy_docs_from_current_project():
     grf_farm_path = os.path.join(common_parent_path, "grf.farm", "src", project_name)
 
     shutil.copytree(
-        os.path.join(currentdir, "docs"), os.path.join(currentdir, tag_name)
+        os.path.join(currentdir, "docs", project_name), os.path.join(currentdir, tag_name)
     )
     try:
         shutil.move(os.path.join(currentdir, tag_name), grf_farm_path)
