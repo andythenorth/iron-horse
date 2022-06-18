@@ -11,9 +11,6 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Excesiva
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_3                      :Desmesurado
 STR_PARAM_SIMPLIFIED_GAMEPLAY                                   :Juego simplificado
 STR_PARAM_SIMPLIFIED_GAMEPLAY_DESC                              :Jugar con un conjunto simplificado de trenes. Habrá menos tipos de trenes y vagones disponibles.  Trenes atractivos como quitanieves, cabinas de conducción y locomotoras muy lentas no están disponibles.
-STR_PARAM_ROSTER                                                :Lista a usar
-STR_PARAM_ROSTER_DESC                                           :Elige el set de trenes que usará el juego.
-STR_PARAM_ROSTER_OPTION_0                                       :Poni de Hierro
 STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY                   :Selección de color de vagón aleatorio
 STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_DESC              :Colores aleatorios en vagones de carga aportan variedad a los trenes.{}{}Hay dos colores base para vagones de carga, según los colores de la compañía, or según parámetros de Iron Horse.  Iron Horse escogerá no más de dos texturas aleatorias de cada color base, dependiendo de la configuración.{}{}Intercambiar vagones en el depósito (usando ctrl-click) para cambiar el color base.{}{}Algunos tipos de vagón tienen sus propias normas y sus colores no pueden asignarse aleatoriamente; por ejemplo, vagones de frenado, vagones express, o vagones de pasajeros.
 STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_0          :Texturas de dos colores base (por defecto)

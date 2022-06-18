@@ -163,6 +163,9 @@ from vehicles import zorro
 def main(disabled=False):
     roster = Roster(
         id="pony",
+        # note that the grf name is Iron Horse, as the pony roster was released for many years under that name, and changing it would needlessly confuse players
+        # but to avoid overloading the word 'horse', which is widely used in src, we continue using 'pony' as the roster id
+        grf_name="iron-horse",
         numeric_id=1,
         # ELRL, ELNG is mapped to RAIL, NG etc
         # default intro dates per generation, can be over-ridden if needed by setting intro_date kw on consist

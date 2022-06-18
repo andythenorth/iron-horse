@@ -46,13 +46,6 @@ def get_makefile_args(sys=None):
         "suppress_cargo_sprites": args.suppress_cargo_sprites,
         "suppress_docs": args.suppress_docs,
     }
-    # temp
-    makefile_args["roster"] = "pony"
-    # silly remapping of horse to pony, reasons because reasons
-    """
-    if makefile_args["roster"] == "horse":
-        makefile_args["roster"] = "pony"
-    """
     return makefile_args
 
 

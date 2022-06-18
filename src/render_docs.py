@@ -18,8 +18,6 @@ import utils
 import global_constants
 from polar_fox import git_info
 
-# get the strings from base lang file so they can be used in docs
-base_lang_strings = utils.parse_base_lang()
 metadata = {}
 metadata.update(global_constants.metadata)
 
@@ -30,6 +28,8 @@ docs_src = os.path.join(currentdir, "src", "docs_templates")
 
 palette = utils.dos_palette_to_rgb()
 
+# get the strings from base lang file so they can be used in docs
+base_lang_strings = utils.parse_base_lang()
 
 class DocHelper(object):
     # dirty class to help do some doc formatting
@@ -88,6 +88,7 @@ class DocHelper(object):
         return result
 
     def get_roster_by_id(self, roster_id, registered_rosters):
+        print("get_roster_by_id shouldn't be needed, single roster should always be in scope for templates")
         for roster in registered_rosters:
             if roster.id == roster_id:
                 return roster
@@ -116,6 +117,7 @@ class DocHelper(object):
                         if not (simplified_gameplay and role_child_branch < 0):
                             role_child_branches[role_child_branch] = {}
                             # walk the generations, providing default None objects
+                            print("engines_as_tech_tree needs to be roster aware")
                             for gen in range(
                                 1,
                                 len(
@@ -383,6 +385,7 @@ class DocHelper(object):
             ] = defaultdict(list)
 
         # for vehicle_type, vehicle_consists in [engines, wagons]:
+        print("get_vehicle_images_json needs to use current roster, not all rosters")
         for roster in iron_horse.registered_rosters:
             # parse the engine and wagon consists into a consistent structure
             engines = ("engines", roster.engine_consists)
@@ -530,6 +533,9 @@ def render_docs(
     use_markdown=False,
     source_is_repo_root=False,
 ):
+    print("render_docs needs a simpler call to iron_horse for active roster")
+    roster = iron_horse.ActiveRosters().get_roster_from_grf_name(makefile_args["grf_name"])
+
     if source_is_repo_root:
         doc_path = os.path.join(currentdir)
     else:
@@ -544,9 +550,9 @@ def render_docs(
         # .pt is the conventional extension for chameleon page templates
         template = docs_templates[doc_name + ".pt"]
         doc = template(
+            roster=roster,
             consists=consists,
             global_constants=global_constants,
-            registered_rosters=iron_horse.registered_rosters,
             makefile_args=makefile_args,
             git_info=git_info,
             base_lang_strings=base_lang_strings,
@@ -562,6 +568,7 @@ def render_docs(
             ]
             doc = markdown_wrapper(
                 content=markdown.markdown(doc),
+                roster=roster,
                 consists=consists,
                 global_constants=global_constants,
                 makefile_args=makefile_args,
@@ -589,11 +596,15 @@ def render_docs_vehicle_details(consist, docs_output_path, consists):
     docs_templates = PageTemplateLoader(docs_src, format="text")
     template = docs_templates["vehicle_details.pt"]
     doc_name = consist.id
+
+    print("render_docs needs a simpler call to iron_horse for active roster")
+    roster = iron_horse.ActiveRosters().get_roster_from_grf_name(makefile_args["grf_name"])
+
     doc = template(
+        roster=roster,
         consist=consist,
         consists=consists,
         global_constants=global_constants,
-        registered_rosters=iron_horse.registered_rosters,
         makefile_args=makefile_args,
         git_info=git_info,
         base_lang_strings=base_lang_strings,
@@ -805,7 +816,10 @@ def main():
         return
     print("[RENDER DOCS] render_docs.py")
     start = time()
+    # don't init iron_horse on import of this module, do it explicitly inside main()
     iron_horse.main()
+
+    roster = iron_horse.ActiveRosters().get_roster_from_grf_name(makefile_args["grf_name"])
 
     # default to no mp, makes debugging easier (mp fails to pickle errors correctly)
     num_pool_workers = makefile_args.get("num_pool_workers", 0)
@@ -843,8 +857,7 @@ def main():
     static_dir_dst = os.path.join(html_docs_output_path, "static")
     shutil.copytree(static_dir_src, static_dir_dst)
 
-    # import iron_horse inside main() as it's so slow to import, and should only be imported explicitly
-    consists = iron_horse.ActiveRosters().consists_in_buy_menu_order
+    consists = roster.consists_in_buy_menu_order
     # default sort for docs is by intro date
     consists = sorted(consists, key=lambda consist: consist.intro_date)
     dates = sorted([i.intro_date for i in consists])
@@ -889,10 +902,9 @@ def main():
     # render vehicle details
     # this is slow and _might_ go faster in an MP pool, but eh overhead...
     render_vehicle_details_start = time()
-    for roster in iron_horse.registered_rosters:
-        for consist in roster.engine_consists:
-            consist.assert_description_foamer_facts()
-            render_docs_vehicle_details(consist, html_docs_output_path, consists)
+    for consist in roster.engine_consists:
+        consist.assert_description_foamer_facts()
+        render_docs_vehicle_details(consist, html_docs_output_path, consists)
     print("render_docs_vehicle_details", time() - render_vehicle_details_start)
 
     # process images for use in docs

@@ -7,20 +7,6 @@ grf {
 	version: ${git_info.get_revision()};
 	min_compatible_version: 5796;
 	<!--! note that params are in the order they appear in the OpenTTD UI, *not* the param number -->
-	param 1 {
-		param_roster {
-			name: string(STR_PARAM_ROSTER);
-			desc: string(STR_PARAM_ROSTER_DESC);
-			<!--! special handling here to allow compiling rosters selectively (faster when testing) -->
-			min_value: ${min([roster.numeric_id - 1 for roster in active_rosters])};
-			max_value: ${max([roster.numeric_id - 1 for roster in active_rosters])};
-			names: {
-			    <tal:rosters repeat="roster active_rosters">
-                    ${roster.numeric_id - 1}: string(STR_PARAM_ROSTER_OPTION_${roster.numeric_id - 1});
-			    </tal:rosters>
-			};
-		}
-	}
 	param 2 {
 		param_simplified_gameplay {
 			name: string(STR_PARAM_SIMPLIFIED_GAMEPLAY);

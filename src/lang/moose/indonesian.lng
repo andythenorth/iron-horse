@@ -13,9 +13,6 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Excessive
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_3                      :Outrageous
 STR_PARAM_SIMPLIFIED_GAMEPLAY                                   :Gameplay Simple
 STR_PARAM_SIMPLIFIED_GAMEPLAY_DESC                              :Bermain Dengan Opsi Kereta Lebih Simple. Ini Akan Mengurangi Jumlah Kereta. Kereta Eye-candy Seperti snowploughs(Pembersih Salju), driving cab cars (Gerbong Dengan Kabin Kemudi) Dan Lokomotiv yang sangat lamban tidak akan tersedia.
-STR_PARAM_ROSTER                                                :Roster
-STR_PARAM_ROSTER_DESC                                           :Pilih Set Kereta Yang Akan Digunakan (Untuk Sementara Hanya Ada Satu Set Kereta,Ya itu - Pony).
-STR_PARAM_ROSTER_OPTION_0                                       :Pony - Ter Ispirasi Dari Kereta Inggris
 STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY                   :Warna Gerbong Acak
 STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_DESC              :Warna Acak Untuk Gerbong Barang.{}{}Ada Dua Opsi, Salah Satunya Warna Perusahaan Openttd, Atau parameter Iron Horse.  Iron Horse akan Mengacak 2 nuansa, Tergantung Pengaturan parameter.{}{}Ganti Warna Gerbong di Depo (Menggunakan ctrl-click) untuk Mengurangi warna dasar.{}{}Beberapa Gerbong Memiliki Warna Sendiri yang tidak bisa di acak; Seperti, brake vans(Gerbong rem), Gerbong Express Dan Gerbong Penumpang.
 STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_0          :2 nuansa akan terpilih (default)

@@ -9,9 +9,6 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY                               :Capacità del t
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :Squallida
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Meravigliosa
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Eccessiva
-STR_PARAM_ROSTER                                                :Lista
-STR_PARAM_ROSTER_DESC                                           :Selezionate quale set di treni volete usare.
-STR_PARAM_ROSTER_OPTION_0                                       :Cavallino di Ferro
 
 # keep these alphabetised, easier
 STR_NAME_SUFFIX_DIESEL                                          :Diesel

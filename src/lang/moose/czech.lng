@@ -9,9 +9,6 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY                               :Kapacita vlaku
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :Maličká
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Obrovská
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Nadměrná
-STR_PARAM_ROSTER                                                :Seznam
-STR_PARAM_ROSTER_DESC                                           :Vyber použitý set vlaků.
-STR_PARAM_ROSTER_OPTION_0                                       :Železný poník
 
 # keep these alphabetised, easier
 STR_NAME_SUFFIX_DIESEL                                          :Dieselová

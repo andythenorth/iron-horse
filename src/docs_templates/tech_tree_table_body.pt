@@ -18,7 +18,7 @@
             <tal:tech_tree define="tech_tree doc_helper.engines_as_tech_tree(consists, simplified_gameplay)">
                 <tal:base_track_type_and_label repeat="base_track_type_and_label tech_tree.keys()">
                     <h3>${base_track_type_and_label[1]}</h3>
-                    <tal:role_group define="intro_dates doc_helper.get_roster_by_id('pony', registered_rosters).intro_dates[base_track_type_and_label[0]]"
+                    <tal:role_group define="intro_dates roster.intro_dates[base_track_type_and_label[0]]"
                                     repeat="role_group tech_tree[base_track_type_and_label]">
                         <tal:descriptions_rail condition="base_track_type_and_label[0]=='RAIL'">
                             <tal:descriptions switch="role_group">

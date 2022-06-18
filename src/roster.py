@@ -6,10 +6,12 @@ import pickle
 class Roster(object):
     """
     Rosters compose a set of vehicles which is complete for gameplay.
+    In Iron Horse each roster is compiled to a standalone grf.
     """
 
     def __init__(self, **kwargs):
         self.id = kwargs.get("id")
+        self.grf_name = kwargs.get("grf_name")
         self.numeric_id = kwargs.get("numeric_id")
         # engines only used once at __init__ time, it's a list of modules, not the actual consists
         self.engines = kwargs.get("engines")

@@ -7,9 +7,6 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY                               :Zuchkapazitéit
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :Mickreg
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Herrlech
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Exzessiv
-STR_PARAM_ROSTER                                                :Dëngschtplang
-STR_PARAM_ROSTER_DESC                                           :Wiel wellech Zichsets benotzt ginn.
-STR_PARAM_ROSTER_OPTION_0                                       :Eisernt Pony
 
 # keep these alphabetised, easier
 STR_NAME_SUFFIX_DIESEL                                          :(Diesel)

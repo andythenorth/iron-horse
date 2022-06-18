@@ -7,9 +7,6 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY                               :Tågkapacitet
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :Väldigt liten
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Enastående
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Överdriven
-STR_PARAM_ROSTER                                                :Lista
-STR_PARAM_ROSTER_DESC                                           :Välj vilket set av tåg som skall användas.
-STR_PARAM_ROSTER_OPTION_0                                       :Järnponnyn
 
 # keep these alphabetised, easier
 STR_NAME_SUFFIX_DIESEL                                          :Diesel

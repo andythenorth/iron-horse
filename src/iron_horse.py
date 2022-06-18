@@ -31,6 +31,7 @@ from railtypes import lgv_electrified
 # import rosters
 from rosters import registered_rosters
 from rosters import pony
+from rosters import moose
 
 from vehicles import numeric_id_defender
 
@@ -157,7 +158,7 @@ class ActiveRosters(list):
     def __init__(self):
         active_rosters = []
         #  for a faster single-roster compiles when testing, optionally pass a roster id (lower case) as a makefile arg
-        if makefile_args.get("roster", "ALL") == "ALL":
+        if makefile_args.get("grf_name", "ALL") == "ALL":
             active_rosters = [
                 roster for roster in registered_rosters if not roster.disabled
             ]
@@ -165,11 +166,18 @@ class ActiveRosters(list):
             active_rosters = [
                 roster
                 for roster in registered_rosters
-                if roster.id == makefile_args["roster"]
+                if roster.grf_name == makefile_args["grf_name"]
             ]  # make sure it's iterable
 
         for roster in active_rosters:
             self.append(roster)
+
+    def get_roster_from_grf_name(self, grf_name):
+        for roster in self:
+            if roster.grf_name == grf_name:
+                return roster
+        else:
+            raise Exception("Roster not found matching grf_name: " + grf_name)
 
     @property
     def consists_in_buy_menu_order(self):
@@ -308,7 +316,8 @@ def main():
     metro.main(disabled=False)
 
     # rosters
-    pony.main(disabled=False)
+    pony.main(disabled=True)
+    moose.main(disabled=False)
 
     # spritelayer cargos
     intermodal_containers.main()

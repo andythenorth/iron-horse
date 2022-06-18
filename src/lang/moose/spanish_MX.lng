@@ -8,9 +8,6 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY                               :Capacidad del t
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :Mínima
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Maravillosa
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Excesiva
-STR_PARAM_ROSTER                                                :Lista de vehículos
-STR_PARAM_ROSTER_DESC                                           :Elegir los trenes a utilizar.
-STR_PARAM_ROSTER_OPTION_0                                       :Pony de hierro
 
 # keep these alphabetised, easier
 STR_NAME_SUFFIX_DIESEL                                          :(diésel)

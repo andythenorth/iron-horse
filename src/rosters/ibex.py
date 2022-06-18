@@ -8,6 +8,7 @@ from vehicles import snowplough_ibex_gen_2
 def main(disabled=False):
     roster = Roster(
         id="ibex",
+        grf_name="iron-ibex",
         numeric_id=3,
         # ELRL, ELNG is mapped to RAIL, NG etc
         # default intro dates per generation, can be over-ridden if needed by setting intro_date kw on consist

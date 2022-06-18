@@ -11,9 +11,6 @@ STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Excessiva
 STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_3                      :Desmesurada
 STR_PARAM_SIMPLIFIED_GAMEPLAY                                   :Joc simplificat
 STR_PARAM_SIMPLIFIED_GAMEPLAY_DESC                              :Jugar amb un conjunt simplificat de trens. Hi Haurà menys tipus de trens i vagons disponibles.  Trens macos como el llevaneus, cambres de conducció i locomotores molt lentes no estan disponibles.
-STR_PARAM_ROSTER                                                :Llista a utilitzar
-STR_PARAM_ROSTER_DESC                                           :Escull el conjunt de trens pel joc.
-STR_PARAM_ROSTER_OPTION_0                                       :Poni de Ferro
 STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY                   :Selecció de color de cotxe aleatori
 STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_DESC              :Colors aleatoris en cotxes de càrrega aporten varietat als trens.{}{}Hi ha dos colors base per vagons de càrrega, segons els colors de la companyia, o segons els paràmetres d'Iron Horse.  Iron Horse escollirà no més de dues textures aleatòries de cada color base, depenent de la configuració.{}{}Intercanviar vagons en el depòsit (utilitzant ctrl-click) per a canviar el color base.{}{}Alguns tipus de vagó tenen les seves pròpies normes i els seus colors no poden assignar-se aleatoriament; com els vagons de frenada, express, o de passatgers.
 STR_PARAM_WAGON_COLOUR_RANDOMISATION_STRATEGY_OPTION_0          :Textures de dos colors base (per defecte)
