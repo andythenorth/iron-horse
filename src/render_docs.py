@@ -87,14 +87,6 @@ class DocHelper(object):
                     result.append(consist)
         return result
 
-    def get_roster_by_id(self, roster_id, registered_rosters):
-        print("get_roster_by_id shouldn't be needed, single roster should always be in scope for templates")
-        for roster in registered_rosters:
-            if roster.id == roster_id:
-                return roster
-        # default result
-        return None
-
     def engines_as_tech_tree(self, roster, consists, simplified_gameplay):
         # structure
         # |- base_track_type
@@ -116,13 +108,10 @@ class DocHelper(object):
                         if not (simplified_gameplay and role_child_branch < 0):
                             role_child_branches[role_child_branch] = {}
                             # walk the generations, providing default None objects
-                            print("engines_as_tech_tree needs to be roster aware")
                             for gen in range(
                                 1,
                                 len(
-                                    self.get_roster_by_id(
-                                        "pony", iron_horse.registered_rosters
-                                    ).intro_dates[base_track_type_and_label[0]]
+                                    roster.intro_dates[base_track_type_and_label[0]]
                                 )
                                 + 1,
                             ):
