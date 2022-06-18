@@ -15,10 +15,8 @@ generated_files_path = os.path.join(currentdir, global_constants.generated_files
 if not os.path.exists(generated_files_path):
     os.mkdir(generated_files_path)
 
-# this format of import is weird, but I don't want the imported modules directly in the iron horse namespace, I want to nest in spritelayer_cargos
 from spritelayer_cargos import registered_spritelayer_cargos
 from spritelayer_cargos import intermodal_containers
-
 from spritelayer_cargos import automobiles
 
 # import railtypes
