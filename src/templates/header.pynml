@@ -1,7 +1,7 @@
 // define the newgrf
 grf {
 	grfid: "${global_constants.grfid}";
-	name: string(STR_GRF_NAME);
+	name: string(STR_GRF_NAME_VERSIONED);
 	desc: string(STR_GRF_DESCRIPTION);
 	url: string(STR_GRF_DOCS_URL);
 	version: ${git_info.get_revision()};

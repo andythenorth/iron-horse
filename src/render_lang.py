@@ -60,6 +60,7 @@ def main():
             makefile_args=makefile_args,
             git_info=git_info,
             utils=utils,
+            roster=roster,
         )
         dst_file.write(lang_content)
         dst_file.close()
