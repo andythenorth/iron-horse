@@ -38,7 +38,7 @@ def render_header_item_nml(header_item, consists):
             temp_storage_ids=global_constants.temp_storage_ids,  # convenience measure
             utils=utils,
             registered_railtypes=iron_horse.get_active_railtypes(),
-            active_rosters=iron_horse.ActiveRosters(),
+            active_rosters=iron_horse.RosterManager(),
             graphics_path=global_constants.graphics_path,
             makefile_args=makefile_args,
             git_info=git_info,
@@ -73,7 +73,7 @@ def main():
     )
 
     spritelayer_cargos = iron_horse.registered_spritelayer_cargos
-    consists = iron_horse.ActiveRosters().consists_in_buy_menu_order
+    consists = iron_horse.RosterManager().consists_in_buy_menu_order
 
     header_items = [
         "header",

@@ -28,8 +28,8 @@ def main():
     start = time()
     iron_horse.main()
 
-    print([roster.id for roster in iron_horse.ActiveRosters()])
-    roster = iron_horse.ActiveRosters().get_roster_from_grf_name(makefile_args["grf_name"])
+    print([roster.id for roster in iron_horse.RosterManager()])
+    roster = iron_horse.RosterManager().get_roster_from_grf_name(makefile_args["grf_name"])
     lang_src = os.path.join(currentdir, "src", "lang", roster.id)
     lang_dst = os.path.join(iron_horse.generated_files_path, "lang", makefile_args["grf_name"])
 
@@ -46,7 +46,7 @@ def main():
     )
     hint_file.close()
 
-    consists = iron_horse.ActiveRosters().consists_in_buy_menu_order
+    consists = iron_horse.RosterManager().consists_in_buy_menu_order
     languages_with_generation = ("english",)
     for i in languages_with_generation:
         # compile strings to single lang file - english

@@ -139,14 +139,14 @@ def vacant_numeric_ids_formatted():
 
 
 def get_active_railtypes():
-    # this might want to mimic the ActiveRosters helper class, but eh, YAGNI?
+    # this might want to mimic the RosterManager helper class, but eh, YAGNI?
     active_railtypes = [
         railtype for railtype in registered_railtypes if not railtype.disabled
     ]  # make sure it's iterable
     return active_railtypes
 
 
-class ActiveRosters(list):
+class RosterManager(list):
     """
     Sometimes we want to conveniently expose attributes that span active rosters.
     This is a class to manage that, intended for use as a singleton, which can be passed to templates etc.
@@ -154,6 +154,12 @@ class ActiveRosters(list):
     """
 
     def __init__(self):
+        print("active roster is now defined to be one only, RosterManager needs refactoring")
+        # ^ note that it's not as simple as reducing to one roster, we might want to span rosters for various reasons, e.g.
+        # - detecting ID collisions, name collisions etc
+        # - we might want to allow some vehicles to transcend grfs, e.g. restaurant cars, pax car magic..
+        #   ..this isn't essential and may have unwanted side effects, but would be amusing if it happened to work without much effort
+        #   ..not convinced it would actually have much visible effect for the pax car magic sprites
         active_rosters = []
         #  for a faster single-roster compiles when testing, optionally pass a roster id (lower case) as a makefile arg
         if makefile_args.get("grf_name", "ALL") == "ALL":
@@ -165,6 +171,8 @@ class ActiveRosters(list):
                 roster
                 for roster in registered_rosters
                 if roster.grf_name == makefile_args["grf_name"]
+                # !! ^ is this actually how we want to do it, as sometimes we will want to transcend rosters?
+                # maybe give RosterManager the registered_rosters also?
             ]  # make sure it's iterable
 
         for roster in active_rosters:

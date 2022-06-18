@@ -442,7 +442,7 @@ def render_docs(
     source_is_repo_root=False,
 ):
     print("render_docs needs a simpler call to iron_horse for active roster")
-    roster = iron_horse.ActiveRosters().get_roster_from_grf_name(makefile_args["grf_name"])
+    roster = iron_horse.RosterManager().get_roster_from_grf_name(makefile_args["grf_name"])
 
     if source_is_repo_root:
         doc_path = os.path.join(currentdir)
@@ -506,7 +506,7 @@ def render_docs_vehicle_details(consist, docs_output_path, consists):
     doc_name = consist.id
 
     print("render_docs needs a simpler call to iron_horse for active roster")
-    roster = iron_horse.ActiveRosters().get_roster_from_grf_name(makefile_args["grf_name"])
+    roster = iron_horse.RosterManager().get_roster_from_grf_name(makefile_args["grf_name"])
 
     doc = template(
         roster=roster,
@@ -727,7 +727,7 @@ def main():
     # don't init iron_horse on import of this module, do it explicitly inside main()
     iron_horse.main()
 
-    roster = iron_horse.ActiveRosters().get_roster_from_grf_name(makefile_args["grf_name"])
+    roster = iron_horse.RosterManager().get_roster_from_grf_name(makefile_args["grf_name"])
 
     # default to no mp, makes debugging easier (mp fails to pickle errors correctly)
     num_pool_workers = makefile_args.get("num_pool_workers", 0)
