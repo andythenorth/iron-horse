@@ -282,84 +282,6 @@ class DocHelper(object):
                     result.append(consist.role_child_branch_num)
         return set(result)
 
-    def engines_as_tech_tree_for_graphviz(self, consists):
-        # deprecated?
-        result = {}
-        # !! return nothing, needs ported to use engines_as_tech_tree
-        return result
-        for base_track_type in self.base_track_types_and_labels:
-            result[base_track_type[0]] = {}
-            for role in self.engine_roles(base_track_type, consists):
-                role_engines = []
-                fill_dummy = True
-                intro_dates = self.get_roster_by_id("pony").intro_dates[
-                    base_track_type[0]
-                ]
-                for gen, intro_date in enumerate(intro_dates, 1):
-                    consist = (
-                        self.get_engine_by_role_and_base_track_type_and_generation(
-                            role, base_track_type, gen
-                        )
-                    )
-                    engine_node = {}
-                    # get the consist or a dummy node (for spacing the graph correctly by gen)
-                    if consist is not None:
-                        engine_node["id"] = consist.id
-                        engine_node["label"] = self.unpack_name_string(consist).split(
-                            "("
-                        )[0]
-                        engine_node["image"] = consist.id + "__blue_blue.png"
-                        if consist.replacement_consist is not None:
-                            fill_dummy = False  # prevent adding any more dummy nodes after this real consist
-                            engine_node[
-                                "replacement_id"
-                            ] = consist.replacement_consist.id
-                        else:
-                            if gen < len(intro_dates):
-                                fill_dummy = True
-                                engine_node["replacement_id"] = "_".join(
-                                    ["dummy", base_track_type[0], role, str(gen + 1)]
-                                )
-                    else:
-                        if fill_dummy:
-                            engine_node["id"] = "_".join(
-                                ["dummy", base_track_type[0], role, str(gen)]
-                            )
-                            engine_node["label"] = "dummy"
-                            # figure out if there's a valid replacement
-                            if gen < len(intro_dates):
-                                next_gen_consist = self.get_engine_by_role_and_base_track_type_and_generation(
-                                    role, base_track_type, gen + 1
-                                )
-                                if next_gen_consist is not None:
-                                    engine_node["replacement_id"] = next_gen_consist.id
-                                else:
-                                    engine_node["replacement_id"] = "_".join(
-                                        [
-                                            "dummy",
-                                            base_track_type[0],
-                                            role,
-                                            str(gen + 1),
-                                        ]
-                                    )
-
-                    if len(engine_node) != 0:
-                        role_engines.append(engine_node)
-                result[base_track_type[0]][role] = role_engines
-        return result
-
-    def get_engine_by_role_and_base_track_type_and_generation(
-        self, consists, role, base_track_type, gen
-    ):
-        # deprecate, only used by engines_as_tech_tree_for_graphviz
-        for consist in consists:
-            if consist.role == role:
-                if consist.base_track_type == base_track_type[0]:
-                    if consist.gen == gen:
-                        return consist
-        # default result
-        return None
-
     def filter_out_randomised_wagon_consists(self, wagon_consists):
         result = []
         for wagon_consist in wagon_consists:
@@ -875,7 +797,6 @@ def main():
     txt_docs = ["readme"]
     license_docs = ["license"]
     markdown_docs = ["changelog"]
-    graph_docs = ["tech_tree_linkgraph"]
 
     render_docs_start = time()
     render_docs(html_docs, "html", html_docs_output_path, iron_horse, consists)
@@ -893,7 +814,6 @@ def main():
     render_docs(
         markdown_docs, "html", html_docs_output_path, iron_horse, consists, use_markdown=True
     )
-    render_docs(graph_docs, "dotall", docs_output_path, iron_horse, consists)
     print("render_docs", time() - render_docs_start)
 
     # render vehicle details
