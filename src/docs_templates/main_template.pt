@@ -70,7 +70,7 @@
         <div class="container">
             <div class="pull-right" style="margin-top:-30px; margin-bottom:20px;">
                 <script language="JavaScript">
-                    var all_consists_grouped=JSON.parse('${doc_helper.get_vehicle_images_json()}');
+                    var all_consists_grouped=JSON.parse('${doc_helper.get_vehicle_images_json(roster)}');
                     function random_img(){
                         var vehicle_type_keys = Object.keys(all_consists_grouped['sorted_by_vehicle_type']);
                         var vehicle_type_key = vehicle_type_keys[Math.floor(Math.random()*vehicle_type_keys.length)];

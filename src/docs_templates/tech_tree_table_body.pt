@@ -15,7 +15,7 @@
                 |
                 <a href="tech_tree_table_blue_simplified.html">blue</a>
             </p>
-            <tal:tech_tree define="tech_tree doc_helper.engines_as_tech_tree(consists, simplified_gameplay)">
+            <tal:tech_tree define="tech_tree doc_helper.engines_as_tech_tree(roster, consists, simplified_gameplay)">
                 <tal:base_track_type_and_label repeat="base_track_type_and_label tech_tree.keys()">
                     <h3>${base_track_type_and_label[1]}</h3>
                     <tal:role_group define="intro_dates roster.intro_dates[base_track_type_and_label[0]]"

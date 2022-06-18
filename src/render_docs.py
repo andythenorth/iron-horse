@@ -95,8 +95,7 @@ class DocHelper(object):
         # default result
         return None
 
-    def engines_as_tech_tree(self, consists, simplified_gameplay):
-        # !! does not handle roster at time of writing
+    def engines_as_tech_tree(self, roster, consists, simplified_gameplay):
         # structure
         # |- base_track_type
         #    |- role_group
@@ -371,7 +370,7 @@ class DocHelper(object):
                 result.append(wagon_consist)
         return result
 
-    def get_vehicle_images_json(self):
+    def get_vehicle_images_json(self, roster):
         # returns json formatted in various ways for randomising images according to various criteria
         # does not sort by roster as of July 2020
         result = {
@@ -385,30 +384,28 @@ class DocHelper(object):
             ] = defaultdict(list)
 
         # for vehicle_type, vehicle_consists in [engines, wagons]:
-        print("get_vehicle_images_json needs to use current roster, not all rosters")
-        for roster in iron_horse.registered_rosters:
-            # parse the engine and wagon consists into a consistent structure
-            engines = ("engines", roster.engine_consists)
-            wagon_consists = []
-            for wagon_class in global_constants.buy_menu_sort_order_wagons:
-                wagon_consists.extend(
-                    [consist for consist in roster.wagon_consists[wagon_class]]
-                )
-            wagon_consists = self.filter_out_randomised_wagon_consists(wagon_consists)
-            wagons = ("wagons", wagon_consists)
+        # parse the engine and wagon consists into a consistent structure
+        engines = ("engines", roster.engine_consists)
+        wagon_consists = []
+        for wagon_class in global_constants.buy_menu_sort_order_wagons:
+            wagon_consists.extend(
+                [consist for consist in roster.wagon_consists[wagon_class]]
+            )
+        wagon_consists = self.filter_out_randomised_wagon_consists(wagon_consists)
+        wagons = ("wagons", wagon_consists)
 
-            # this code repeats for both engines and wagons, but with different source lists
-            for vehicle_type, vehicle_consists in [engines, wagons]:
-                for consist in vehicle_consists:
-                    vehicle_data = [
-                        consist.id,
-                        str(self.buy_menu_sprite_width(consist)),
-                        consist.base_numeric_id,
-                    ]
-                    result["sorted_by_vehicle_type"][vehicle_type].append(vehicle_data)
-                    result["sorted_by_base_track_type_and_vehicle_type"][
-                        consist.base_track_type
-                    ][vehicle_type].append(vehicle_data)
+        # this code repeats for both engines and wagons, but with different source lists
+        for vehicle_type, vehicle_consists in [engines, wagons]:
+            for consist in vehicle_consists:
+                vehicle_data = [
+                    consist.id,
+                    str(self.buy_menu_sprite_width(consist)),
+                    consist.base_numeric_id,
+                ]
+                result["sorted_by_vehicle_type"][vehicle_type].append(vehicle_data)
+                result["sorted_by_base_track_type_and_vehicle_type"][
+                    consist.base_track_type
+                ][vehicle_type].append(vehicle_data)
 
         # guard against providing empty vehicle lists as they would require additional guards in js to prevent js failing
         for base_track_type, base_track_label in self.base_track_types_and_labels:

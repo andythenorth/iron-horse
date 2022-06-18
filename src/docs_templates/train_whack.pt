@@ -22,7 +22,7 @@
                     result = new Array;
                     // json parsing is inside the function to avoid the function trying the var before the json parse is complete
                     // inefficient as it will parse json n times, not 1, but easier than figuring out doing it onload
-                    var all_consists_grouped=JSON.parse('${doc_helper.get_vehicle_images_json()}');
+                    var all_consists_grouped=JSON.parse('${doc_helper.get_vehicle_images_json(roster)}');
 
                     var engines_weighting = [1, 1, 1, 1, 2, 2, 3];
                     var wagons_weighting = [3, 4, 5, 5, 6, 6, 6, 6, 7, 7, 7, 8, 8, 8, 9, 9, 10, 11, 12];
