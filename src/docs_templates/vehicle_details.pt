@@ -1,4 +1,4 @@
-<tal:title define="global title python: doc_helper.unpack_name_string(consist) + ' - Iron Horse'" />
+<tal:title define="global title python: doc_helper.unpack_name_string(consist) + ' - ' + roster.str_grf_name" />
 <tal:suppress_hero_unit define="global suppress_hero_unit True" />
 
 <tal:main_template define="main_template load: main_template.pt" metal:use-macro="main_template">
@@ -7,7 +7,7 @@
         <div class="container text-left">
             <div class="row">
                 <div class="span10 offset1">
-                    <h1 style="font-size:48px; padding-top:0;">Iron Horse</h1>
+                    <h1 style="font-size:48px; padding-top:0;">${roster.str_grf_name}</h1>
                     <p class="lead">My Lovely <strike>Horse</strike> Train Set</p>
                 </div>
             </div>

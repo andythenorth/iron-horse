@@ -5,12 +5,12 @@
             <div class="span3">
                 <ul class="nav nav-list well">
                     <li class="nav-header">Get started</li>
-                    <li><a href="#download-iron-horse">Download Iron Horse</a></li>
-                    <li><a href="#setting-up">Setting up a game with Iron Horse</a></li>
+                    <li><a href="#download-iron-horse">Download ${roster.str_grf_name}</a></li>
+                    <li><a href="#setting-up">Setting up a game with ${roster.str_grf_name}</a></li>
                     <li><a href="#what-next">What next?</a></li>
                     <li><a href="#tips-tricks-secret-features">Tips, tricks and secret features</a></li>
-                    <li><a href="#iron-horse-changes">Iron Horse changes</a></li>
-                    <li><a href="#source-code">Source code / modifying Iron Horse</a></li>
+                    <li><a href="#iron-horse-changes">${roster.str_grf_name} changes</a></li>
+                    <li><a href="#source-code">Source code / modifying ${roster.str_grf_name}</a></li>
                 </ul>
             </div>
             <div class="span9">
@@ -25,9 +25,9 @@
                     </ul>
                 </div>
                 <div id="download-iron-horse">
-                    <h2>1. Download Iron Horse</h2>
+                    <h2>1. Download ${roster.str_grf_name}</h2>
                     <p class="lead">
-                        Iron Horse is available from the OpenTTD online content service ('Bananas').
+                        ${roster.str_grf_name} is available from the OpenTTD online content service ('Bananas').
                     </p>
                     <p>If you are new to using the OpenTTD online content service, <a href="https://wiki.openttd.org/en/Manual/Online%20content">check out this guide (OpenTTD wiki).</a></p>
                 </div>
@@ -35,27 +35,27 @@
                 <hr />
                 <br />
                 <div id="setting-up">
-                    <h2>2. Setting up a game with Iron Horse</h2>
+                    <h2>2. Setting up a game with ${roster.str_grf_name}</h2>
                     <p class="lead">
-                        A few things to know before setting up a Iron Horse game...
+                        A few things to know before setting up a ${roster.str_grf_name} game...
                     </p>
                     <p>
-                        Iron Horse includes additional railtypes, for example Narrow Gauge and Metro rails.
+                        ${roster.str_grf_name} includes additional railtypes, for example Narrow Gauge and Metro rails.
                     </p>
                     <p>
-                        For players who want even more railtypes, Iron Horse will also work with many grfs that add further railtypes.
+                        For players who want even more railtypes, ${roster.str_grf_name} will also work with many grfs that add further railtypes.
                     </p>
                     <p>
-                        Because Iron Horse provides a <strong>lot</strong> of trains, it's recommended that the OpenTTD setting 'Vehicles never expire' is set to off.
+                        Because ${roster.str_grf_name} provides a <strong>lot</strong> of trains, it's recommended that the OpenTTD setting 'Vehicles never expire' is set to off.
                         This helps avoid over-crowding in the OpenTTD buy menu.
                     </p>
-                    <p>Iron Horse is not compatible with Inflation in OpenTTD.  Please ensure Inflation is turned off.</p>
+                    <p>${roster.str_grf_name} is not compatible with Inflation in OpenTTD.  Please ensure Inflation is turned off.</p>
                     <h3>Parameter settings (optional)</h3>
                     <p>Players can choose advanced options via parameter settings. It's also fine to ignore these.  Parameter options include:</p>
                     <ul>
                         <li>Adjustable train cargo capacity</li>
                         <li>Simplified gameplay with fewer trains</li>
-                        <li>Turn off Iron Horse extra railtypes</li>
+                        <li>Turn off ${roster.str_grf_name} extra railtypes</li>
                         <li>Advanced control over freight wagon colour choices and colour randomisation</li>
                     </ul>
                 </div>
@@ -65,7 +65,7 @@
                 <div id="what-next">
                     <h2>3. What next?</h2>
 
-                    <p class="lead">Find out more about Iron Horse.  Or try it out in OpenTTD!</p>
+                    <p class="lead">Find out more about ${roster.str_grf_name}.  Or try it out in OpenTTD!</p>
                     <a class="btn btn-large btn-primary" href="tech_tree_table_red.html">Tech Tree</a>
                     &nbsp;
                     <a class="btn btn-large btn-info" href="trains.html">List of Trains</a>
@@ -77,7 +77,7 @@
                     <h3>Company colour choices</h3>
                     <ul>
                         <li>
-                            Iron Horse has full support for 2 company colours.
+                            ${roster.str_grf_name} has full support for 2 company colours.
                             White is a recommended choice for the 2nd company colour (except for wagons), but it's fun to experiment with other combinations.
                         </li>
                         <li>
@@ -95,30 +95,30 @@
                         </li>
                     </ul>
                     <h3>Cargo support</h3>
-                    <p>Iron Horse provides vehicles for a wide range of cargos, and should be compatible with all industry and cargo grfs.</p>
+                    <p>${roster.str_grf_name} provides vehicles for a wide range of cargos, and should be compatible with all industry and cargo grfs.</p>
                     <p>Many wagons show cargo when loaded, and again a wide range of cargos are supported.</p>
                     <p>Autorefit (refit-at-stations) is supported for almost all vehicles.</p>
                     <h3>Secret features and other details</h3>
                     <p><em>Haulage bonus:</em> some electric railcars are allowed to increase their maximum speed when hauled by another engine that has a higher speed (or a faster express railcar).</p>
                     <p><em>Tail lights:</em> trains will show a rear light.</p>
                     <p><em>Magic appearance:</em> some vehicles will adapt their appearance depending on their position in the train, including passenger coaches, mail vans and intermodal wagons.</p>
-                    <p><em>Integer length trains:</em> Iron Horse vehicles have consistent length and it's very easy to make integer length trains (length will show in depot as 4.0, 6.0, 8.0 etc). This has minimal gameplay effect, but is good for people who have tidy-mind problems.</p>
+                    <p><em>Integer length trains:</em> ${roster.str_grf_name} vehicles have consistent length and it's very easy to make integer length trains (length will show in depot as 4.0, 6.0, 8.0 etc). This has minimal gameplay effect, but is good for people who have tidy-mind problems.</p>
                     <p><em>Bi-mode trains:</em> electro-diesel or similar engines will work with or without electricity.  Power is generally increased on electrified rails, and smoke or sparks will be show appropriately for current power type.</p>
                     <p><em>Brake vans / cabooses:</em> are just for eye-candy, and have no gameplay effect ;).</p>
                 </div>
                 <hr />
                 <br />
                 <div id="iron-horse-changes">
-                    <h2>5. Changes in Iron Horse</h2>
-                    <p class="lead">Iron Horse is updated and improved quite often.</p>
-                    <p>The <a href="changelog.html"><strong>Iron Horse changelog</strong></a> keeps track of changes, including new features, bug fixes and updates to translations.</p>
+                    <h2>5. Changes in ${roster.str_grf_name}</h2>
+                    <p class="lead">${roster.str_grf_name} is updated and improved quite often.</p>
+                    <p>The <a href="changelog.html"><strong>${roster.str_grf_name} changelog</strong></a> keeps track of changes, including new features, bug fixes and updates to translations.</p>
                 </div>
                 <hr />
                 <br />
                 <div id="source-code">
-                    <h2>6. Source code / modifying Iron Horse</h2>
-                    <p>Checkout source code on <a href="${metadata['repo_url']}">GitHub</a> and <a href="code_reference.html">compile your own Iron Horse</a> (requires git and various python dependencies).</p>
-                    <p>Iron Horse is licensed under the GPL v2.</p>
+                    <h2>6. Source code / modifying ${roster.str_grf_name}</h2>
+                    <p>Checkout source code on <a href="${metadata['repo_url']}">GitHub</a> and <a href="code_reference.html">compile your own ${roster.str_grf_name}</a> (requires git and various python dependencies).</p>
+                    <p>${roster.str_grf_name} is licensed under the GPL v2.</p>
                 </div>
                 <br />
                 <br />

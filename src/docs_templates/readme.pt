@@ -1,15 +1,15 @@
 ==================================
-Iron Horse ${git_info.get_version()}
+${roster.str_grf_name} ${git_info.get_version()}
 ==================================
 Trains, for OpenTTD
 
-Iron Horse docs are published online:
+${roster.str_grf_name} docs are published online:
   ${utils.get_docs_url()}
 
 =======
-GRF Name: Iron Horse
+GRF Name: ${roster.str_grf_name}
 
-This version of Iron Horse is created using repository revision ${git_info.get_revision()}
+This version of ${roster.str_grf_name} is created using repository revision ${git_info.get_revision()}
 
-Thanks to *all* who helped create Iron Horse.
+Thanks to *all* who helped create ${roster.str_grf_name}.
 

@@ -1,4 +1,4 @@
-<tal:title define="global title 'Iron Horse - All Trains'" />
+<tal:title define="global title roster.str_grf_name + ' - All Trains'" />
 
 <tal:main_template define="main_template load: main_template.pt" metal:use-macro="main_template">
 <div metal:fill-slot='body'>

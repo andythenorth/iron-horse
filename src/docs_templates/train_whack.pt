@@ -1,4 +1,4 @@
-<tal:title define="global title 'Iron Horse: Train Whack!'" />
+<tal:title define="global title roster.str_grf_name + ': Train Whack!'" />
 
 <tal:suppress_hero_unit define="global suppress_hero_unit True" />
 <tal:main_template define="main_template load: main_template.pt" metal:use-macro="main_template">
@@ -6,7 +6,7 @@
 
     <div class="hero-unit subhead" style="margin-bottom:0;" tal:define="num_consists 10">
         <div class="text-center">
-            <h1>Iron Horse: Train Whack</h1>
+            <h1>${roster.str_grf_name}: Train Whack</h1>
             <h2>${num_consists} randomised train consists</h2>
             <p class="lead">
                 You scored <span id="global_high_score_container">0</span>!

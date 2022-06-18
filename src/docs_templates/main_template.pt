@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
-    <title >${title | 'Iron Horse'}</title>
+    <title >${title | roster.str_grf_name}</title>
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -50,7 +50,7 @@
                 <ul class="nav pull-right">
                     <!--! translations currently deprecated
                     <li class="${doc_helper.get_active_nav(doc_name, 'translations')}">
-                        <a href="translations.html"><i class="icon-globe icon-white"></i> Help translate Iron Horse</a>
+                        <a href="translations.html"><i class="icon-globe icon-white"></i> Help translate ${roster.str_grf_name}</a>
                     </li>
                     -->
                     <li class="${doc_helper.get_active_nav(doc_name, 'code_reference')}">
@@ -95,7 +95,7 @@
                     </script>
                 </div>
             </div>
-            <h1 style="font-size:48px; padding-top:40px;">Iron Horse</h1>
+            <h1 style="font-size:48px; padding-top:40px;">${roster.str_grf_name}</h1>
             <p class="lead">My Lovely <strike>Horse</strike> Train Set</p>
         </div>
     </div>
@@ -103,7 +103,7 @@
         <!--! body -->
     </metal:block>
     <div style="text-align:center; color:#999; padding:5px; background-color:#eee; border-top:solid 1px #ddd; box-shadow: inset 0px 1px 1px #ddd">
-        Iron Horse, with thanks to all who helped
+        ${roster.str_grf_name}, with thanks to all who helped
     </div>
 </body>
 </html>
