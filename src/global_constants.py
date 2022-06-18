@@ -110,8 +110,6 @@ base_track_type_to_railtype_mapping = {
 # capacity multipliers for user-configurable capacity parameter
 capacity_multipliers = [0.33, 0.67, 1, 1.33, 1.77]
 
-grfid = r"CA\12\1F"
-
 metadata = {
     "dev_thread_url": "https://www.tt-forums.net/viewtopic.php?f=67&t=71219",
     "repo_url": "https://github.com/andythenorth/iron-horse",

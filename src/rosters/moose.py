@@ -8,9 +8,10 @@ from vehicles import snowplough_moose_gen_2
 def main(disabled=False):
     roster = Roster(
         id="moose",
+        numeric_id=2,
         grf_name="iron-moose",
+        grfid=r"CA\12\20",
         str_grf_name="Iron Moose",
-        numeric_id=3,
         # ELRL, ELNG is mapped to RAIL, NG etc
         # default intro dates per generation, can be over-ridden if needed by setting intro_date kw on consist
         intro_dates={

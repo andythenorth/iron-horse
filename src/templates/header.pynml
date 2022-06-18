@@ -1,6 +1,6 @@
 // define the newgrf
 grf {
-	grfid: "${global_constants.grfid}";
+	grfid: "${roster.grfid}";
 	name: string(STR_GRF_NAME_VERSIONED);
 	desc: string(STR_GRF_DESCRIPTION);
 	url: string(STR_GRF_DOCS_URL);

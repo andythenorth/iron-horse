@@ -8,8 +8,7 @@
                 <h2>CABBAGE <!--!${len([roster for roster in registered_rosters if not roster.disabled])}--> rosters of trains for OpenTTD</h2>
                 <p>Only one roster is active in any game.  Choose the one you want with the parameter option (newgrf settings) :)</p>
                 <hr />
-                CABBAGE - ROSTER NAME
-                <!--!<h3 id="${roster.id}">${base_lang_strings['STR_PARAM_ROSTER_OPTION_' + str(roster.numeric_id - 1)]}</h3>-->
+                ${roster.str_grf_name}
                 <p>
                     ${len(roster.engine_consists)} engines and
                     ${sum([len(roster.wagon_consists[wagon_class]) for wagon_class in roster.wagon_consists])} wagons

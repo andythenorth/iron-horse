@@ -29,10 +29,11 @@ os.environ["CHAMELEON_CACHE"] = chameleon_cache_path
 generated_files_path = iron_horse.generated_files_path
 
 
-def render_header_item_nml(header_item, consists):
+def render_header_item_nml(header_item, roster, consists):
     template = templates[header_item + ".pynml"]
     return utils.unescape_chameleon_output(
         template(
+            roster=roster,
             consists=consists,
             global_constants=global_constants,
             temp_storage_ids=global_constants.temp_storage_ids,  # convenience measure
@@ -63,6 +64,8 @@ def main():
     start = time()
     iron_horse.main()
     print(iron_horse.vacant_numeric_ids_formatted())
+
+    roster = iron_horse.RosterManager().get_roster_from_grf_name(makefile_args["grf_name"])
 
     generated_nml_path = os.path.join(generated_files_path, "nml")
     if not os.path.exists(generated_nml_path):
@@ -98,7 +101,7 @@ def main():
         "procedures_visible_cargo",
     ]
     for header_item in header_items:
-        grf_nml.write(render_header_item_nml(header_item, consists))
+        grf_nml.write(render_header_item_nml(header_item, roster, consists))
 
     # multiprocessing was tried here and removed as it was empirically slower in testing (due to overhead of starting extra pythons probably)
     for spritelayercargo in spritelayer_cargos:
