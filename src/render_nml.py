@@ -12,7 +12,7 @@ import global_constants
 from polar_fox import git_info
 
 # get args passed by makefile
-makefile_args = utils.get_makefile_args(sys)
+command_line_args = utils.get_command_line_args(sys)
 
 # chameleon used in most template cases
 from chameleon import PageTemplateLoader
@@ -41,7 +41,7 @@ def render_header_item_nml(header_item, roster, consists):
             registered_railtypes=iron_horse.get_active_railtypes(),
             active_rosters=iron_horse.RosterManager(),
             graphics_path=global_constants.graphics_path,
-            makefile_args=makefile_args,
+            command_line_args=command_line_args,
             git_info=git_info,
         )
     )
@@ -65,14 +65,14 @@ def main():
     iron_horse.main()
     print(iron_horse.vacant_numeric_ids_formatted())
 
-    roster = iron_horse.RosterManager().get_roster_from_grf_name(makefile_args["grf_name"])
+    roster = iron_horse.RosterManager().get_roster_from_grf_name(command_line_args["grf_name"])
 
     generated_nml_path = os.path.join(generated_files_path, "nml")
     if not os.path.exists(generated_nml_path):
         # reminder to self: inside main() to avoid modifying filesystem simply by importing module
         os.mkdir(generated_nml_path)
     grf_nml = codecs.open(
-        os.path.join(generated_files_path, makefile_args["grf_name"] + ".nml"), "w", "utf8"
+        os.path.join(generated_files_path, command_line_args["grf_name"] + ".nml"), "w", "utf8"
     )
 
     spritelayer_cargos = iron_horse.registered_spritelayer_cargos

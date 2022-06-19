@@ -21,7 +21,7 @@ from chameleon import PageTemplateLoader
 templates = PageTemplateLoader(os.path.join(currentdir, "src", "templates"))
 
 # get args passed by makefile
-makefile_args = utils.get_makefile_args(sys)
+command_line_args = utils.get_command_line_args(sys)
 
 def main():
     print("[RENDER LANG] render_lang.py")
@@ -29,9 +29,9 @@ def main():
     iron_horse.main()
 
     print([roster.id for roster in iron_horse.RosterManager()])
-    roster = iron_horse.RosterManager().get_roster_from_grf_name(makefile_args["grf_name"])
+    roster = iron_horse.RosterManager().get_roster_from_grf_name(command_line_args["grf_name"])
     lang_src = os.path.join(currentdir, "src", "lang", roster.id)
-    lang_dst = os.path.join(iron_horse.generated_files_path, "lang", makefile_args["grf_name"])
+    lang_dst = os.path.join(iron_horse.generated_files_path, "lang", command_line_args["grf_name"])
 
     if os.path.exists(lang_dst):
         shutil.rmtree(lang_dst)
@@ -57,7 +57,7 @@ def main():
         lang_content = src_file.read()
         lang_content = lang_content + lang_template(
             consists=consists,
-            makefile_args=makefile_args,
+            command_line_args=command_line_args,
             git_info=git_info,
             utils=utils,
             roster=roster,

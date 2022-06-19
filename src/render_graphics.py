@@ -62,9 +62,9 @@ def main():
     start = time()
     iron_horse.main()
     # get args passed by makefile
-    makefile_args = utils.get_makefile_args(sys)
+    command_line_args = utils.get_command_line_args(sys)
     # default to no mp, makes debugging easier (mp fails to pickle errors correctly)
-    num_pool_workers = makefile_args.get("num_pool_workers", 0)
+    num_pool_workers = command_line_args.get("num_pool_workers", 0)
     if num_pool_workers == 0:
         use_multiprocessing = False
         # just print, no need for a coloured echo_message

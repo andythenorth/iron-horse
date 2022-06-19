@@ -9,7 +9,7 @@ sys.path.append(os.path.join("src"))  # add to the module search path
 import global_constants
 import utils
 
-makefile_args = utils.get_makefile_args(sys)
+command_line_args = utils.get_command_line_args(sys)
 
 generated_files_path = os.path.join(currentdir, global_constants.generated_files_dir)
 if not os.path.exists(generated_files_path):
@@ -162,7 +162,7 @@ class RosterManager(list):
         #   ..not convinced it would actually have much visible effect for the pax car magic sprites
         active_rosters = []
         #  for a faster single-roster compiles when testing, optionally pass a roster id (lower case) as a makefile arg
-        if makefile_args.get("grf_name", "ALL") == "ALL":
+        if command_line_args.get("grf_name", "ALL") == "ALL":
             active_rosters = [
                 roster for roster in registered_rosters if not roster.disabled
             ]
@@ -170,11 +170,11 @@ class RosterManager(list):
             active_rosters = [
                 roster
                 for roster in registered_rosters
-                if roster.grf_name == makefile_args["grf_name"]
+                if roster.grf_name == command_line_args["grf_name"]
             ]  # make sure it's iterable
 
         for roster in registered_rosters:
-            if roster.grf_name == makefile_args["grf_name"]:
+            if roster.grf_name == command_line_args["grf_name"]:
                 self.append(roster)
         # !! ^ is this actually how we want to do it, as sometimes we will want to transcend rosters?
         # maybe have RosterManager store the registered_rosters also?

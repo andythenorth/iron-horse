@@ -22,7 +22,7 @@ metadata = {}
 metadata.update(global_constants.metadata)
 
 # get args passed by makefile
-makefile_args = utils.get_makefile_args(sys)
+command_line_args = utils.get_command_line_args(sys)
 
 docs_src = os.path.join(currentdir, "src", "docs_templates")
 
@@ -442,7 +442,7 @@ def render_docs(
     source_is_repo_root=False,
 ):
     print("render_docs needs a simpler call to iron_horse for active roster")
-    roster = iron_horse.RosterManager().get_roster_from_grf_name(makefile_args["grf_name"])
+    roster = iron_horse.RosterManager().get_roster_from_grf_name(command_line_args["grf_name"])
 
     if source_is_repo_root:
         doc_path = os.path.join(currentdir)
@@ -461,7 +461,7 @@ def render_docs(
             roster=roster,
             consists=consists,
             global_constants=global_constants,
-            makefile_args=makefile_args,
+            command_line_args=command_line_args,
             git_info=git_info,
             base_lang_strings=base_lang_strings,
             metadata=metadata,
@@ -479,7 +479,7 @@ def render_docs(
                 roster=roster,
                 consists=consists,
                 global_constants=global_constants,
-                makefile_args=makefile_args,
+                command_line_args=command_line_args,
                 git_info=git_info,
                 metadata=metadata,
                 utils=utils,
@@ -506,14 +506,14 @@ def render_docs_vehicle_details(consist, docs_output_path, consists):
     doc_name = consist.id
 
     print("render_docs needs a simpler call to iron_horse for active roster")
-    roster = iron_horse.RosterManager().get_roster_from_grf_name(makefile_args["grf_name"])
+    roster = iron_horse.RosterManager().get_roster_from_grf_name(command_line_args["grf_name"])
 
     doc = template(
         roster=roster,
         consist=consist,
         consists=consists,
         global_constants=global_constants,
-        makefile_args=makefile_args,
+        command_line_args=command_line_args,
         git_info=git_info,
         base_lang_strings=base_lang_strings,
         metadata=metadata,
@@ -719,7 +719,7 @@ def render_docs_images(consist, static_dir_dst):
 
 
 def main():
-    if makefile_args.get("suppress_docs", False):
+    if command_line_args.get("suppress_docs", False):
         print("[SKIPPING DOCS] render_docs.py (suppress_docs makefile flag set)")
         return
     print("[RENDER DOCS] render_docs.py")
@@ -727,10 +727,10 @@ def main():
     # don't init iron_horse on import of this module, do it explicitly inside main()
     iron_horse.main()
 
-    roster = iron_horse.RosterManager().get_roster_from_grf_name(makefile_args["grf_name"])
+    roster = iron_horse.RosterManager().get_roster_from_grf_name(command_line_args["grf_name"])
 
     # default to no mp, makes debugging easier (mp fails to pickle errors correctly)
-    num_pool_workers = makefile_args.get("num_pool_workers", 0)
+    num_pool_workers = command_line_args.get("num_pool_workers", 0)
     if num_pool_workers == 0:
         use_multiprocessing = False
         # just print, no need for a coloured echo_message
@@ -750,7 +750,7 @@ def main():
         os.mkdir(chameleon_cache_path)
     os.environ["CHAMELEON_CACHE"] = chameleon_cache_path
 
-    docs_output_path = os.path.join(currentdir, "docs", makefile_args["grf_name"])
+    docs_output_path = os.path.join(currentdir, "docs", command_line_args["grf_name"])
     html_docs_output_path = os.path.join(docs_output_path, "html")
     if not os.path.exists(os.path.join(currentdir, "docs")):
         os.mkdir(os.path.join(currentdir, "docs"))
