@@ -8,34 +8,37 @@ from polar_fox import git_info
 def get_command_line_args():
     argparser = argparse.ArgumentParser()
     argparser.add_argument(
-        "-pw", "--pool_workers",
+        "-pw",
+        "--pool_workers",
         type=int,
         default=0,
         dest="num_pool_workers",
         help="The number of pool workers to use in multiprocessing pools [default: 0] (multiprocessing disabled unless explicitly enabled)",
     )
     argparser.add_argument(
-        "-gn", "--grf-name",
+        "-gn",
+        "--grf-name",
         dest="grf_name",
         help="The grf to build",
         # note dubious ability to pass roster with or without 'iron-' prefix
         # this is to simplify working with make, which might have either format as the value of a var
         # also could use installed rosters list - but how often are rosters added?
-        choices=["iron-horse", "iron-moose", "iron-ibex"]
+        choices=["iron-horse", "iron-moose", "iron-ibex"],
     )
     argparser.add_argument(
-        "-sc", "--suppress-cargo-sprites",
+        "-sc",
+        "--suppress-cargo-sprites",
         action=argparse.BooleanOptionalAction,
         dest="suppress_cargo_sprites",
         help="Optionally suppress visible cargo sprites in the grf output, can save substantial compile time",
     )
     argparser.add_argument(
-        "-sd", "--suppress-docs",
+        "-sd",
+        "--suppress-docs",
         action=argparse.BooleanOptionalAction,
         dest="suppress_docs",
         help="Optionally suppress docs, can save some compile time",
     )
-
     return argparser.parse_args()
 
 
@@ -67,7 +70,11 @@ def unescape_chameleon_output(escaped_nml):
 def parse_base_lang():
     # expose base lang strings to python - for reuse in docs
     base_lang_file = codecs.open(
-        os.path.join("generated", "lang", get_command_line_args().grf_name, "english.lng"), "r", "utf8"
+        os.path.join(
+            "generated", "lang", get_command_line_args().grf_name, "english.lng"
+        ),
+        "r",
+        "utf8",
     )
     text = base_lang_file.readlines()
     # this is fragile, playing one line python is silly :)
