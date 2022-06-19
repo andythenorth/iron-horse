@@ -159,7 +159,7 @@ copy_docs_to_grf_farm: $(HTML_DOCS)
 	done
 	$(_V) echo "[DONE]"
 
-# need to clean when releasing, as git version won't otherwise be regenerated when the only change is git tag (no deps changed)
+# need to clean when releasing, as git version info won't otherwise be regenerated (nml, docs etc) when the only change is git tag (no deps changed)
 # we do this by recursive make calls, sequentially, to avoid clean conflicting with other targets by running simultaneously when make -j is invoked for parallel compile
 # this is crude and could be done by actually checking git version, but eh, it seems to work
 release:
