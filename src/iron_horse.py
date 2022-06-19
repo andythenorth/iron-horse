@@ -154,30 +154,11 @@ class RosterManager(list):
     """
 
     def __init__(self):
-        print("active roster is now defined to be one only, RosterManager needs refactoring")
-        # ^ note that it's not as simple as reducing to one roster, we might want to span rosters for various reasons, e.g.
-        # - detecting ID collisions, name collisions etc
-        # - we might want to allow some vehicles to transcend grfs, e.g. restaurant cars, pax car magic..
-        #   ..this isn't essential and may have unwanted side effects, but would be amusing if it happened to work without much effort
-        #   ..not convinced it would actually have much visible effect for the pax car magic sprites
-        active_rosters = []
-        #  for a faster single-roster compiles when testing, optionally pass a roster id (lower case) as a makefile arg
-        if command_line_args.get("grf_name", "ALL") == "ALL":
-            active_rosters = [
-                roster for roster in registered_rosters if not roster.disabled
-            ]
-        else:
-            active_rosters = [
-                roster
-                for roster in registered_rosters
-                if roster.grf_name == command_line_args["grf_name"]
-            ]  # make sure it's iterable
-
+        #  note that we can't simply reduce the compile to one roster
+        #  we might want to span rosters for various reasons, e.g.
+        # - detecting ID collisions, vehicle name collisions etc
         for roster in registered_rosters:
-            if roster.grf_name == command_line_args["grf_name"]:
-                self.append(roster)
-        # !! ^ is this actually how we want to do it, as sometimes we will want to transcend rosters?
-        # maybe have RosterManager store the registered_rosters also?
+            self.append(roster)
 
     @property
     def active_roster(self):
@@ -196,13 +177,14 @@ class RosterManager(list):
 
     @property
     def consists_in_buy_menu_order(self):
+        print("Why does RosterManager have consists_in_buy_menu_order method, which is also present on Roster? Are they doing the same thing?")
         consists = []
         # first compose the buy menu order list
         buy_menu_sort_order = []
         print("consists_in_buy_menu_order needs to use only active roster")
         for roster in self:
-            buy_menu_sort_order.extend(roster.buy_menu_sort_order)
-            consists.extend(roster.consists_in_buy_menu_order)
+            buy_menu_sort_order.extend(self.active_roster.buy_menu_sort_order)
+            consists.extend(self.active_roster.consists_in_buy_menu_order)
 
         # now guard against any consists missing from buy menu order or vice versa, as that wastes time asking 'wtf?' when they don't appear in game
         consist_id_defender = set([consist.id for consist in consists])
