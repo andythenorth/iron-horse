@@ -69,7 +69,7 @@ SOURCE_NAME = $(PROJECT_VERSIONED_NAME)-source
 BUNDLE_DIR = bundle_dir
 
 # Build rules
-.PHONY: default graphics lang nml grf tar bundle_tar bundle_zip bundle_src clean
+.PHONY: default graphics lang nml grf tar bundle_tar bundle_zip bundle_src clean copy_docs_to_grf_farm
 default: html_docs grf
 # bundle needs to clean first to ensure we don't use outdated/cached version info
 bundle_tar: clean tar
