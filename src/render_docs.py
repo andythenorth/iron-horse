@@ -743,18 +743,16 @@ def main():
     chameleon_cache_path = os.path.join(
         currentdir, global_constants.chameleon_cache_dir
     )
-    if not os.path.exists(chameleon_cache_path):
-        os.mkdir(chameleon_cache_path)
+    # exist_ok=True is used for case with parallel make (`make -j 2` or similar), don't fail with error if dir already exists
+    os.makedirs(chameleon_cache_path, exist_ok=True)
     os.environ["CHAMELEON_CACHE"] = chameleon_cache_path
 
     docs_output_path = os.path.join(currentdir, "docs", command_line_args.grf_name)
     html_docs_output_path = os.path.join(docs_output_path, "html")
-    if not os.path.exists(os.path.join(currentdir, "docs")):
-        os.mkdir(os.path.join(currentdir, "docs"))
     if os.path.exists(docs_output_path):
         shutil.rmtree(docs_output_path)
-    os.mkdir(docs_output_path)
-    os.mkdir(html_docs_output_path)
+    os.makedirs(docs_output_path)
+    os.makedirs(html_docs_output_path)
 
     shutil.copy(os.path.join(docs_src, "index.html"), docs_output_path)
 

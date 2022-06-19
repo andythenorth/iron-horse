@@ -22,8 +22,8 @@ templates = PageTemplateLoader(os.path.join(currentdir, "src", "templates"))
 
 # setting up a cache for compiled chameleon templates can significantly speed up template rendering
 chameleon_cache_path = os.path.join(currentdir, global_constants.chameleon_cache_dir)
-if not os.path.exists(chameleon_cache_path):
-    os.mkdir(chameleon_cache_path)
+# exist_ok=True is used for case with parallel make (`make -j 2` or similar), don't fail with error if dir already exists
+os.makedirs(chameleon_cache_path, exist_ok=True)
 os.environ["CHAMELEON_CACHE"] = chameleon_cache_path
 
 generated_files_path = iron_horse.generated_files_path
@@ -66,9 +66,8 @@ def main():
 
     roster = iron_horse.RosterManager().active_roster
     generated_nml_path = os.path.join(generated_files_path, "nml")
-    if not os.path.exists(generated_nml_path):
-        # reminder to self: inside main() to avoid modifying filesystem simply by importing module
-        os.mkdir(generated_nml_path)
+    # exist_ok=True is used for case with parallel make (`make -j 2` or similar), don't fail with error if dir already exists
+    os.makedirs(generated_nml_path, exist_ok=True)
     grf_nml = codecs.open(
         os.path.join(generated_files_path, command_line_args.grf_name + ".nml"),
         "w",

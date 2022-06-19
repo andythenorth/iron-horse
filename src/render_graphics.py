@@ -76,8 +76,8 @@ def main():
 
     graphics_input_path = os.path.join(currentdir, "src", "graphics")
     graphics_output_path = os.path.join(iron_horse.generated_files_path, "graphics")
-    if not os.path.exists(graphics_output_path):
-        os.mkdir(graphics_output_path)
+    # exist_ok=True is used for case with parallel make (`make -j 2` or similar), don't fail with error if dir already exists
+    os.makedirs(graphics_output_path, exist_ok=True)
 
     hint_file = codecs.open(
         os.path.join(graphics_output_path, "_graphics_files_here_are_generated.txt"),
