@@ -22,7 +22,7 @@ metadata = {}
 metadata.update(global_constants.metadata)
 
 # get args passed by makefile
-command_line_args = utils.get_command_line_args(sys)
+command_line_args = utils.get_command_line_args()
 
 docs_src = os.path.join(currentdir, "src", "docs_templates")
 
@@ -747,7 +747,7 @@ def main():
         os.mkdir(chameleon_cache_path)
     os.environ["CHAMELEON_CACHE"] = chameleon_cache_path
 
-    docs_output_path = os.path.join(currentdir, "docs", command_line_args["grf_name"])
+    docs_output_path = os.path.join(currentdir, "docs", command_line_args.grf_name)
     html_docs_output_path = os.path.join(docs_output_path, "html")
     if not os.path.exists(os.path.join(currentdir, "docs")):
         os.mkdir(os.path.join(currentdir, "docs"))

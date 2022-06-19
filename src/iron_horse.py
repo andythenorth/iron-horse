@@ -9,7 +9,7 @@ sys.path.append(os.path.join("src"))  # add to the module search path
 import global_constants
 import utils
 
-command_line_args = utils.get_command_line_args(sys)
+command_line_args = utils.get_command_line_args()
 
 generated_files_path = os.path.join(currentdir, global_constants.generated_files_dir)
 if not os.path.exists(generated_files_path):
@@ -163,7 +163,7 @@ class RosterManager(list):
     @property
     def active_roster(self):
         for roster in registered_rosters:
-            if roster.grf_name == command_line_args["grf_name"]:
+            if roster.grf_name == command_line_args.grf_name:
                 return roster
         # active roster should always be found, but eh
         raise Exception("RosterManager: no active roster found")

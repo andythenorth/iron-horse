@@ -4509,7 +4509,7 @@ class Train(object):
     @property
     def vehicle_nml_template(self):
         # optionally drop the cargos in the compile, can save substantial compile time
-        if utils.get_command_line_args(sys).get("suppress_cargo_sprites", False):
+        if utils.get_command_line_args().suppress_cargo_sprites:
             return "vehicle_default.pynml"
 
         if self.consist.gestalt_graphics.nml_template:

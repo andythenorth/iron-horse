@@ -5,7 +5,7 @@ import global_constants
 from polar_fox import git_info
 
 
-def get_command_line_args(sys=None):
+def get_command_line_args():
     argparser = argparse.ArgumentParser()
     argparser.add_argument(
         "-pw", "--pool_workers",
@@ -36,17 +36,7 @@ def get_command_line_args(sys=None):
         help="Optionally suppress docs, can save some compile time",
     )
 
-    args = argparser.parse_args()
-
-    # translate to a dict for legacy API reasons
-    # !! argparse might just support dict access, I didn't look it up and didn't want to deal with untested failure cases
-    command_line_args = {
-        "num_pool_workers": args.num_pool_workers,
-        "grf_name": args.grf_name,
-        "suppress_cargo_sprites": args.suppress_cargo_sprites,
-        "suppress_docs": args.suppress_docs,
-    }
-    return command_line_args
+    return argparser.parse_args()
 
 
 def get_docs_url():
@@ -77,7 +67,7 @@ def unescape_chameleon_output(escaped_nml):
 def parse_base_lang():
     # expose base lang strings to python - for reuse in docs
     base_lang_file = codecs.open(
-        os.path.join("generated", "lang", get_command_line_args()["grf_name"], "english.lng"), "r", "utf8"
+        os.path.join("generated", "lang", get_command_line_args().grf_name, "english.lng"), "r", "utf8"
     )
     text = base_lang_file.readlines()
     # this is fragile, playing one line python is silly :)

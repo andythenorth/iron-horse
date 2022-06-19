@@ -12,7 +12,7 @@ import global_constants
 from polar_fox import git_info
 
 # get args passed by makefile
-command_line_args = utils.get_command_line_args(sys)
+command_line_args = utils.get_command_line_args()
 
 # chameleon used in most template cases
 from chameleon import PageTemplateLoader
@@ -71,7 +71,7 @@ def main():
         # reminder to self: inside main() to avoid modifying filesystem simply by importing module
         os.mkdir(generated_nml_path)
     grf_nml = codecs.open(
-        os.path.join(generated_files_path, command_line_args["grf_name"] + ".nml"),
+        os.path.join(generated_files_path, command_line_args.grf_name + ".nml"),
         "w",
         "utf8",
     )

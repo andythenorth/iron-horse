@@ -21,7 +21,7 @@ from chameleon import PageTemplateLoader
 templates = PageTemplateLoader(os.path.join(currentdir, "src", "templates"))
 
 # get args passed by makefile
-command_line_args = utils.get_command_line_args(sys)
+command_line_args = utils.get_command_line_args()
 
 
 def main():
@@ -33,7 +33,7 @@ def main():
     roster = iron_horse.RosterManager().active_roster
     lang_src = os.path.join(currentdir, "src", "lang", roster.id)
     lang_dst = os.path.join(
-        iron_horse.generated_files_path, "lang", command_line_args["grf_name"]
+        iron_horse.generated_files_path, "lang", command_line_args.grf_name
     )
 
     if os.path.exists(lang_dst):
