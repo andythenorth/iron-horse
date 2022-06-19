@@ -2,6 +2,7 @@ import global_constants
 
 from roster import Roster
 
+from vehicles import niagra
 from vehicles import snowplough_moose_gen_2
 
 
@@ -200,7 +201,7 @@ def main():
             # driving cab cars
             #foo,
             # branch freight
-            #foo,
+            niagra,
             # freight
             #foo,
             # joker engines / snowploughs
