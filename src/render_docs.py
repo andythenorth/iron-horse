@@ -441,7 +441,6 @@ def render_docs(
     use_markdown=False,
     source_is_repo_root=False,
 ):
-    print("render_docs needs a simpler call to iron_horse for active roster")
     roster = iron_horse.RosterManager().active_roster
 
     if source_is_repo_root:
@@ -505,7 +504,6 @@ def render_docs_vehicle_details(consist, docs_output_path, consists):
     template = docs_templates["vehicle_details.pt"]
     doc_name = consist.id
 
-    print("render_docs needs a simpler call to iron_horse for active roster")
     roster = iron_horse.RosterManager().active_roster
     doc = template(
         roster=roster,

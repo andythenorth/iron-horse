@@ -89,7 +89,8 @@ def main():
     )
     hint_file.close()
 
-    consists = iron_horse.RosterManager().consists_in_buy_menu_order
+    roster = iron_horse.RosterManager().active_roster
+    consists = roster.consists_in_buy_menu_order
 
     for consist in consists:
         # rosters won't pickle reliably, and blow up multiprocessing, never figured out why

@@ -46,7 +46,7 @@ def main():
     )
     hint_file.close()
 
-    consists = iron_horse.RosterManager().consists_in_buy_menu_order
+    consists = roster.consists_in_buy_menu_order
     languages_with_generation = ("english",)
     for i in languages_with_generation:
         # compile strings to single lang file - english

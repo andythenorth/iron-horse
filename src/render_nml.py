@@ -75,7 +75,7 @@ def main():
     )
 
     spritelayer_cargos = iron_horse.registered_spritelayer_cargos
-    consists = iron_horse.RosterManager().consists_in_buy_menu_order
+    consists = roster.consists_in_buy_menu_order
 
     header_items = [
         "header",
