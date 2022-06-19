@@ -178,7 +178,9 @@ class RosterManager(list):
     @property
     def restaurant_car_ids(self):
         result = []
-        print("restaurant_car_ids may need to use only active roster?  Or are we allowing cross-grf restaurant cars?")
+        print(
+            "restaurant_car_ids may need to use only active roster?  Or are we allowing cross-grf restaurant cars?"
+        )
         for roster in self:
             # could have abstracted the filtering element into a method on the roster, more encapsulated, but eh, code split over 2 places, so didn't
             # could also have been done by having restaurant cars register themselves directly into a list on roster but eh, that's a book-keeping headache
@@ -196,7 +198,9 @@ class RosterManager(list):
     def haulage_bonus_engine_id_tree(self):
         # supports a BAD FEATURE easter egg, where some railcar speeds are increased when hauled by express engine, and can be used as fast MUs
         express_engine_ids = []
-        print("haulage_bonus_engine_id_tree only uses active roster?  Are we allowing cross-grf haulage bonus?")
+        print(
+            "haulage_bonus_engine_id_tree only uses active roster?  Are we allowing cross-grf haulage bonus?"
+        )
         for consist in self.active_roster.engine_consists:
             # check for express-type roles, which are determined by multiple role groups
             for role_group_mapping_key in [
@@ -216,7 +220,9 @@ class RosterManager(list):
         # find cargo_sprinters
         # used to switch wagon company colours
         result = []
-        print("cargo_sprinter_ids only uses active roster?  Are we allowing cross-grf cargo sprinters?")
+        print(
+            "cargo_sprinter_ids only uses active roster?  Are we allowing cross-grf cargo sprinters?"
+        )
         for consist in self.active_roster.engine_consists:
             # abuse the spritelayer_cargo_layers property here, we're just looking for a string, this might be fragile, but eh
             if "cargo_sprinter" in getattr(consist, "spritelayer_cargo_layers", []):
@@ -232,7 +238,9 @@ class RosterManager(list):
         # for pax cars with consist-specific liveries
         # will check for other neighbouring pax cars before showing brake car
         result = []
-        print("pax_car_ids only uses active roster?  Are we allowing cross-grf pax_car_ids?")
+        print(
+            "pax_car_ids only uses active roster?  Are we allowing cross-grf pax_car_ids?"
+        )
         for consists in self.active_roster.wagon_consists.values():
             for consist in consists:
                 if getattr(
@@ -255,7 +263,9 @@ class RosterManager(list):
         # for vehicles with consist-specific liveries
         # will switch vehicle to livery 2 for specific roles of lead engine
         result = []
-        print("livery_2_engine_ids only uses active roster?  Are we allowing cross-grf livery_2_engine_ids? - might be funny?")
+        print(
+            "livery_2_engine_ids only uses active roster?  Are we allowing cross-grf livery_2_engine_ids? - might be funny?"
+        )
         for consist in self.active_roster.engine_consists:
             if consist.force_default_pax_mail_livery == 1:
                 continue

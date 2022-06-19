@@ -108,9 +108,11 @@ def main():
 
     # sort the consists in priority processing order, priority 1 is first
     # this enables some consists to depend on generated sprites from other consists
-    consists_in_priority_groups = {1:[], 2:[]}
+    consists_in_priority_groups = {1: [], 2: []}
     for consist in consists:
-        consists_in_priority_groups[consist.gestalt_graphics.processing_priority].append(consist)
+        consists_in_priority_groups[
+            consist.gestalt_graphics.processing_priority
+        ].append(consist)
 
     if use_multiprocessing == False:
         for spritelayer_cargo_set_pair in spritelayer_cargo_set_pairs:
@@ -129,7 +131,9 @@ def main():
         # vehicle pool jobs are repeated so that some vehicles can depend on generated sprites from others
         for processing_priority in [1, 2]:
             pool = Pool(processes=num_pool_workers)
-            pool.map(run_consist_pipelines, consists_in_priority_groups[processing_priority])
+            pool.map(
+                run_consist_pipelines, consists_in_priority_groups[processing_priority]
+            )
             pool.close()
             pool.join()
 

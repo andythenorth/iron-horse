@@ -71,7 +71,9 @@ def main():
         # reminder to self: inside main() to avoid modifying filesystem simply by importing module
         os.mkdir(generated_nml_path)
     grf_nml = codecs.open(
-        os.path.join(generated_files_path, command_line_args["grf_name"] + ".nml"), "w", "utf8"
+        os.path.join(generated_files_path, command_line_args["grf_name"] + ".nml"),
+        "w",
+        "utf8",
     )
 
     spritelayer_cargos = iron_horse.registered_spritelayer_cargos

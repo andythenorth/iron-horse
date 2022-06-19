@@ -31,6 +31,7 @@ palette = utils.dos_palette_to_rgb()
 # get the strings from base lang file so they can be used in docs
 base_lang_strings = utils.parse_base_lang()
 
+
 class DocHelper(object):
     # dirty class to help do some doc formatting
 
@@ -110,9 +111,7 @@ class DocHelper(object):
                             # walk the generations, providing default None objects
                             for gen in range(
                                 1,
-                                len(
-                                    roster.intro_dates[base_track_type_and_label[0]]
-                                )
+                                len(roster.intro_dates[base_track_type_and_label[0]])
                                 + 1,
                             ):
                                 role_child_branches[role_child_branch][gen] = None
@@ -236,7 +235,9 @@ class DocHelper(object):
                     if company_colour_name == cc_remap_pair[1]:
                         result[livery_name]["use_alternative_livery_spriterow"] = True
                         if alternative_cc_livery["remap_to_cc"] is not None:
-                            result[livery_name]["cc_remaps"]["CC1"] = alternative_cc_livery["remap_to_cc"]
+                            result[livery_name]["cc_remaps"][
+                                "CC1"
+                            ] = alternative_cc_livery["remap_to_cc"]
         variants_config.append(result)
 
         if alternative_cc_livery is not None:
@@ -797,7 +798,12 @@ def main():
     # just render the markdown docs twice to get txt and html versions, simples no?
     render_docs(markdown_docs, "txt", docs_output_path, iron_horse, consists)
     render_docs(
-        markdown_docs, "html", html_docs_output_path, iron_horse, consists, use_markdown=True
+        markdown_docs,
+        "html",
+        html_docs_output_path,
+        iron_horse,
+        consists,
+        use_markdown=True,
     )
     print("render_docs", time() - render_docs_start)
 
