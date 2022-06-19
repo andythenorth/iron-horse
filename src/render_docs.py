@@ -536,7 +536,7 @@ def render_docs_images(consist, static_dir_dst):
 
     doc_helper = DocHelper()
 
-    vehicle_graphics_src = os.path.join(currentdir, "generated", "graphics")
+    vehicle_graphics_src = os.path.join(currentdir, global_constants.generated_files_dir, "graphics")
     vehicle_spritesheet = Image.open(
         os.path.join(vehicle_graphics_src, consist.id + ".png")
     )
