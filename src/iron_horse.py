@@ -178,12 +178,9 @@ class RosterManager(list):
     @property
     def consists_in_buy_menu_order(self):
         print("Why does RosterManager have consists_in_buy_menu_order method, which is also present on Roster? Are they doing the same thing?")
-        consists = []
+        consists = self.active_roster.consists_in_buy_menu_order
         # first compose the buy menu order list
-        buy_menu_sort_order = []
-        print("consists_in_buy_menu_order needs to use only active roster")
-        buy_menu_sort_order.extend(self.active_roster.buy_menu_sort_order)
-        consists.extend(self.active_roster.consists_in_buy_menu_order)
+        buy_menu_sort_order = self.active_roster.buy_menu_sort_order
 
         # now guard against any consists missing from buy menu order or vice versa, as that wastes time asking 'wtf?' when they don't appear in game
         consist_id_defender = set([consist.id for consist in consists])
