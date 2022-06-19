@@ -19,10 +19,9 @@ def get_command_line_args():
         "-gn",
         "--grf-name",
         dest="grf_name",
+        required=True,
         help="The grf to build",
-        # note dubious ability to pass roster with or without 'iron-' prefix
-        # this is to simplify working with make, which might have either format as the value of a var
-        # also could use installed rosters list - but how often are rosters added?
+        # manually extend the list if more rosters are added
         choices=["iron-horse", "iron-moose", "iron-ibex"],
     )
     argparser.add_argument(
