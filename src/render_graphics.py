@@ -58,7 +58,7 @@ def report_sprites_complete(consists):
 
 # wrapped in a main() function so this can be called explicitly, because unexpected multiprocessing fork bombs are bad
 def main():
-    print("[RENDER GRAPHICS] render_graphics.py")
+    print("[RENDER GRAPHICS]", ' '.join(sys.argv))
     start = time()
     iron_horse.main()
     # get args passed by makefile
@@ -101,6 +101,7 @@ def main():
     # a list format is wanted for convenience with graphics multiprocessing pool
     # the parent spritelayer_cargo object must be passed with the cargo set as cargo sets have render-time properties which change according to context
     # but cargo_sets are global and reused across spritelayer_cargos, so they can't just store a single reference to their spritelayer_cargo parent
+    print("render_graphics may be duplicating spritelayer_cargos across grf rosters, is a method needed to declare these as shared (or detect them as pre-requisites)?")
     spritelayer_cargo_set_pairs = []
     for spritelayer_cargo in iron_horse.registered_spritelayer_cargos:
         for cargo_set in spritelayer_cargo.cargo_sets:
