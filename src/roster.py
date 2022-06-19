@@ -33,7 +33,6 @@ class Roster(object):
             "caboose_default_family_by_generation"
         )
         self.livery_presets = kwargs.get("livery_presets", [])
-        self.disabled = False
 
     @property
     def buy_menu_sort_order(self):
@@ -145,9 +144,8 @@ class Roster(object):
         self.wagon_consists[wagon_consist.base_id].append(wagon_consist)
         wagon_consist.roster_id = self.id
 
-    def register(self, disabled=False):
+    def register(self):
         registered_rosters.append(self)
-        self.disabled = disabled
         for engine in self.engines:
             consist = engine.main(self.id)
             self.engine_consists.append(consist)

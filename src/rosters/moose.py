@@ -5,7 +5,7 @@ from roster import Roster
 from vehicles import snowplough_moose_gen_2
 
 
-def main(disabled=False):
+def main():
     roster = Roster(
         id="moose",
         numeric_id=2,
@@ -227,4 +227,4 @@ def main(disabled=False):
             #foo,
         ],
     )
-    roster.register(disabled=disabled)
+    roster.register()

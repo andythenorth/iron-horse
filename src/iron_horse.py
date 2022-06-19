@@ -171,12 +171,13 @@ class RosterManager(list):
                 roster
                 for roster in registered_rosters
                 if roster.grf_name == makefile_args["grf_name"]
-                # !! ^ is this actually how we want to do it, as sometimes we will want to transcend rosters?
-                # maybe give RosterManager the registered_rosters also?
             ]  # make sure it's iterable
 
-        for roster in active_rosters:
-            self.append(roster)
+        for roster in registered_rosters:
+            if roster.grf_name == makefile_args["grf_name"]:
+                self.append(roster)
+        # !! ^ is this actually how we want to do it, as sometimes we will want to transcend rosters?
+        # maybe have RosterManager store the registered_rosters also?
 
     def get_roster_from_grf_name(self, grf_name):
         for roster in self:
@@ -322,8 +323,8 @@ def main():
     metro.main(disabled=False)
 
     # rosters
-    pony.main(disabled=True)
-    moose.main(disabled=False)
+    pony.main()
+    moose.main()
 
     # spritelayer cargos
     intermodal_containers.main()
