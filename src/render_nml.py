@@ -59,7 +59,7 @@ def render_item_nml(item):
 
 
 def main():
-    print("[RENDER NML] render_nml.py")
+    print("[RENDER NML]", ' '.join(sys.argv))
     start = time()
     iron_horse.main()
     print(iron_horse.vacant_numeric_ids_formatted())

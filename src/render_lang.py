@@ -25,7 +25,7 @@ command_line_args = utils.get_command_line_args()
 
 
 def main():
-    print("[RENDER LANG] render_lang.py")
+    print("[RENDER LANG]", ' '.join(sys.argv))
     start = time()
     iron_horse.main()
 

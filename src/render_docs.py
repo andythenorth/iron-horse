@@ -720,7 +720,7 @@ def main():
     if command_line_args.suppress_docs:
         print("[SKIPPING DOCS] render_docs.py (suppress_docs makefile flag set)")
         return
-    print("[RENDER DOCS] render_docs.py")
+    print("[RENDER DOCS]", ' '.join(sys.argv))
     start = time()
     # don't init iron_horse on import of this module, do it explicitly inside main()
     iron_horse.main()
