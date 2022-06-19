@@ -13,7 +13,9 @@ command_line_args = utils.get_command_line_args()
 
 generated_files_path = os.path.join(currentdir, global_constants.generated_files_dir)
 if not os.path.exists(generated_files_path):
-    os.mkdir(generated_files_path)
+    # exist_ok=True is used for case with parallel make (`make -j 2` or similar)
+    # because even though we do check if the dir exists, another script might create the directory after we check, but before our makdirs command executes
+    os.makedirs(generated_files_path, exist_ok=True)
 
 from spritelayer_cargos import registered_spritelayer_cargos
 from spritelayer_cargos import intermodal_containers
