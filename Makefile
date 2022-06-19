@@ -69,11 +69,10 @@ SOURCE_NAME = $(PROJECT_VERSIONED_NAME)-source
 BUNDLE_DIR = bundle_dir
 
 # Build rules
-.PHONY: default graphics lang nml grf tar bundle_tar bundle_zip bundle_src clean copy_docs_to_grf_farm
+.PHONY: default graphics lang nml grf tar bundle_tar bundle_zip bundle_src clean copy_docs_to_grf_farm release
 default: html_docs grf
 bundle_tar: tar
 bundle_zip: $(ZIP_FILE)
-release: bundle_tar copy_docs_to_grf_farm
 graphics: $(GRAPHICS_TARGETS)
 lang: $(LANG_FILES)
 nml: $(NML_FILES)
@@ -159,6 +158,14 @@ copy_docs_to_grf_farm: $(HTML_DOCS)
     	$(PYTHON3) src/polar_fox/grf_farm.py $$GRF_NAME --nested-docs-by-grf ; \
 	done
 	$(_V) echo "[DONE]"
+
+# need to clean when releasing, as git version won't otherwise be regenerated when the only change is git tag (no deps changed)
+# we do this by recursive make calls, sequentially, to avoid clean conflicting with other targets by running simultaneously when make -j is invoked for parallel compile
+# this is crude and could be done by actually checking git version, but eh, it seems to work
+release:
+	$(_V) $(MAKE) clean
+	$(_V) $(MAKE) bundle_tar
+	$(_V) $(MAKE) copy_docs_to_grf_farm
 
 # this is a macOS-specifc install location; the pre-2017 Makefile handled multiple platforms, that could be restored if needed
 # remove first, OpenTTD does not like having the _contents_ of the current file change under it, but will handle a removed-and-replaced file correctly
