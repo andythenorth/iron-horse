@@ -71,8 +71,7 @@ BUNDLE_DIR = bundle_dir
 # Build rules
 .PHONY: default graphics lang nml grf tar bundle_tar bundle_zip bundle_src clean copy_docs_to_grf_farm
 default: html_docs grf
-# bundle needs to clean first to ensure we don't use outdated/cached version info
-bundle_tar: clean tar
+bundle_tar: tar
 bundle_zip: $(ZIP_FILE)
 release: bundle_tar copy_docs_to_grf_farm
 graphics: $(GRAPHICS_TARGETS)
