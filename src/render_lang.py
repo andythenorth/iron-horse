@@ -29,8 +29,7 @@ def main():
     iron_horse.main()
 
     print([roster.id for roster in iron_horse.RosterManager()])
-    roster = iron_horse.RosterManager().get_roster_from_grf_name(command_line_args["grf_name"])
-    lang_src = os.path.join(currentdir, "src", "lang", roster.id)
+    roster = iron_horse.RosterManager().active_roster    lang_src = os.path.join(currentdir, "src", "lang", roster.id)
     lang_dst = os.path.join(iron_horse.generated_files_path, "lang", command_line_args["grf_name"])
 
     if os.path.exists(lang_dst):

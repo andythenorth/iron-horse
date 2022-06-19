@@ -65,8 +65,7 @@ def main():
     iron_horse.main()
     print(iron_horse.vacant_numeric_ids_formatted())
 
-    roster = iron_horse.RosterManager().get_roster_from_grf_name(command_line_args["grf_name"])
-
+    roster = iron_horse.RosterManager().active_roster
     generated_nml_path = os.path.join(generated_files_path, "nml")
     if not os.path.exists(generated_nml_path):
         # reminder to self: inside main() to avoid modifying filesystem simply by importing module

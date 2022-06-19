@@ -179,19 +179,20 @@ class RosterManager(list):
         # !! ^ is this actually how we want to do it, as sometimes we will want to transcend rosters?
         # maybe have RosterManager store the registered_rosters also?
 
+    @property
+    def active_roster(self):
+        for roster in registered_rosters:
+            if roster.grf_name == command_line_args["grf_name"]:
+                return roster
+        # active roster should always be found, but eh
+        raise Exception("RosterManager: no active roster found")
+
     def get_roster_by_id(self, roster_id):
         for roster in registered_rosters:
             if roster.id == roster_id:
                 return roster
         else:
-            raise Exception("no roster found for ", self.id)
-
-    def get_roster_from_grf_name(self, grf_name):
-        for roster in self:
-            if roster.grf_name == grf_name:
-                return roster
-        else:
-            raise Exception("Roster not found matching grf_name: " + grf_name)
+            raise Exception("RosterManager: no roster found for ", self.id)
 
     @property
     def consists_in_buy_menu_order(self):
