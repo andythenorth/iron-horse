@@ -182,9 +182,8 @@ class RosterManager(list):
         # first compose the buy menu order list
         buy_menu_sort_order = []
         print("consists_in_buy_menu_order needs to use only active roster")
-        for roster in self:
-            buy_menu_sort_order.extend(self.active_roster.buy_menu_sort_order)
-            consists.extend(self.active_roster.consists_in_buy_menu_order)
+        buy_menu_sort_order.extend(self.active_roster.buy_menu_sort_order)
+        consists.extend(self.active_roster.consists_in_buy_menu_order)
 
         # now guard against any consists missing from buy menu order or vice versa, as that wastes time asking 'wtf?' when they don't appear in game
         consist_id_defender = set([consist.id for consist in consists])

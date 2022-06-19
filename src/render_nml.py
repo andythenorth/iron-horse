@@ -39,7 +39,7 @@ def render_header_item_nml(header_item, roster, consists):
             temp_storage_ids=global_constants.temp_storage_ids,  # convenience measure
             utils=utils,
             registered_railtypes=iron_horse.get_active_railtypes(),
-            active_rosters=iron_horse.RosterManager(),
+            RosterManager=iron_horse.RosterManager,
             graphics_path=global_constants.graphics_path,
             command_line_args=command_line_args,
             git_info=git_info,

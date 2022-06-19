@@ -175,7 +175,7 @@
     <!--! if last -->
     switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset_position_check_last_neighbouring, [STORE_TEMP(1, 0x10F), var[0x61, 0, 0x0000FFFF, 0xC6]]) {
         <!--! don't show last if following vehicle is also a valid pax car with a different ID -->
-        <tal:pax_car_ids repeat="pax_car_id active_rosters.pax_car_ids">
+        <tal:pax_car_ids repeat="pax_car_id RosterManager().pax_car_ids">
         ${pax_car_id}: return ${default};
         </tal:pax_car_ids>
         return ${last};
@@ -188,7 +188,7 @@
     <!--! if first -->
     switch (FEAT_TRAINS, SELF, switch_graphics_pax_car_ruleset_position_check_first_neighbouring, [STORE_TEMP(-1, 0x10F), var[0x61, 0, 0x0000FFFF, 0xC6]]) {
         <!--! don't show first if preceeding vehicle is also a valid pax car with a different ID -->
-        <tal:pax_car_ids repeat="pax_car_id active_rosters.pax_car_ids">
+        <tal:pax_car_ids repeat="pax_car_id RosterManager().pax_car_ids">
         ${pax_car_id}: return ${default};
         </tal:pax_car_ids>
         return ${first};
