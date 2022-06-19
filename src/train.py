@@ -570,11 +570,7 @@ class Consist(object):
 
     @property
     def roster(self):
-        for roster in registered_rosters:
-            if roster.id == self.roster_id:
-                return roster
-        else:
-            raise Exception("no roster found for ", self.id)
+        return iron_horse.RosterManager().get_roster_by_id(self.roster_id)
 
     def get_expression_for_availability(self):
         result = []

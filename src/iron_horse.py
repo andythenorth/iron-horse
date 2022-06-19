@@ -179,6 +179,13 @@ class RosterManager(list):
         # !! ^ is this actually how we want to do it, as sometimes we will want to transcend rosters?
         # maybe have RosterManager store the registered_rosters also?
 
+    def get_roster_by_id(self, roster_id):
+        for roster in registered_rosters:
+            if roster.id == roster_id:
+                return roster
+        else:
+            raise Exception("no roster found for ", self.id)
+
     def get_roster_from_grf_name(self, grf_name):
         for roster in self:
             if roster.grf_name == grf_name:
@@ -191,6 +198,7 @@ class RosterManager(list):
         consists = []
         # first compose the buy menu order list
         buy_menu_sort_order = []
+        print("consists_in_buy_menu_order needs to use only active roster")
         for roster in self:
             buy_menu_sort_order.extend(roster.buy_menu_sort_order)
             consists.extend(roster.consists_in_buy_menu_order)
@@ -215,6 +223,7 @@ class RosterManager(list):
     @property
     def restaurant_car_ids(self):
         result = []
+        print("restaurant_car_ids may need to use only active roster?  Or are we allowing cross-grf restaurant cars?")
         for roster in self:
             # could have abstracted the filtering element into a method on the roster, more encapsulated, but eh, code split over 2 places, so didn't
             # could also have been done by having restaurant cars register themselves directly into a list on roster but eh, that's a book-keeping headache
@@ -232,6 +241,7 @@ class RosterManager(list):
     def haulage_bonus_engine_id_tree(self):
         # supports a BAD FEATURE easter egg, where some railcar speeds are increased when hauled by express engine, and can be used as fast MUs
         express_engine_ids = []
+        print("haulage_bonus_engine_id_tree may need to use only active roster?  Or are we allowing cross-grf restaurant cars?")
         for roster in self:
             # could have abstracted the filtering element into a method on the roster, more encapsulated, but eh, code split over 2 places, so didn't
             for consist in roster.engine_consists:
@@ -253,6 +263,7 @@ class RosterManager(list):
         # find cargo_sprinters
         # used to switch wagon company colours
         result = []
+        print("cargo_sprinter_ids may need to use only active roster?  Or are we allowing cross-grf cargo sprinters?")
         for roster in self:
             # could have abstracted the filtering element into a method on the roster, more encapsulated, but eh, code split over 2 places, so didn't
             for consist in roster.engine_consists:
@@ -270,6 +281,7 @@ class RosterManager(list):
         # for pax cars with consist-specific liveries
         # will check for other neighbouring pax cars before showing brake car
         result = []
+        print("pax_car_ids may need to use only active roster?  Or are we allowing cross-grf pax_car_ids?")
         for roster in self:
             # could have abstracted the filtering element into a method on the roster, more encapsulated, but eh, code split over 2 places, so didn't
             for consists in roster.wagon_consists.values():
@@ -294,6 +306,7 @@ class RosterManager(list):
         # for vehicles with consist-specific liveries
         # will switch vehicle to livery 2 for specific roles of lead engine
         result = []
+        print("livery_2_engine_ids may need to use only active roster?  Or are we allowing cross-grf livery_2_engine_ids? - might be funny?")
         for roster in self:
             # could have abstracted the filtering element into a method on the roster, more encapsulated, but eh, code split over 2 places, so didn't
             for consist in roster.engine_consists:
@@ -323,6 +336,8 @@ def main():
     metro.main(disabled=False)
 
     # rosters
+    # in the rare case that an unfinished roster won't run main() cleanly, comment it out here and possibly also in the import
+    # built-in support for disabled rosters was removed during the conversion to multi-grf, it was an unnecessary abstraction when only one roster is used per grf
     pony.main()
     moose.main()
 
