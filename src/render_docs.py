@@ -717,7 +717,7 @@ def render_docs_images(consist, static_dir_dst):
 
 
 def main():
-    if command_line_args.get("suppress_docs", False):
+    if command_line_args.suppress_docs:
         print("[SKIPPING DOCS] render_docs.py (suppress_docs makefile flag set)")
         return
     print("[RENDER DOCS] render_docs.py")
@@ -727,7 +727,7 @@ def main():
 
     roster = iron_horse.RosterManager().active_roster
     # default to no mp, makes debugging easier (mp fails to pickle errors correctly)
-    num_pool_workers = command_line_args.get("num_pool_workers", 0)
+    num_pool_workers = command_line_args.num_pool_workers
     if num_pool_workers == 0:
         use_multiprocessing = False
         # just print, no need for a coloured echo_message

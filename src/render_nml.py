@@ -41,7 +41,6 @@ def render_header_item_nml(header_item, roster, consists):
             registered_railtypes=iron_horse.get_active_railtypes(),
             RosterManager=iron_horse.RosterManager,
             graphics_path=global_constants.graphics_path,
-            command_line_args=command_line_args,
             git_info=git_info,
         )
     )

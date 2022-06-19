@@ -64,7 +64,7 @@ def main():
     # get args passed by makefile
     command_line_args = utils.get_command_line_args()
     # default to no mp, makes debugging easier (mp fails to pickle errors correctly)
-    num_pool_workers = command_line_args.get("num_pool_workers", 0)
+    num_pool_workers = command_line_args.num_pool_workers
     if num_pool_workers == 0:
         use_multiprocessing = False
         # just print, no need for a coloured echo_message
