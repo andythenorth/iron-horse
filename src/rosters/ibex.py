@@ -3,6 +3,7 @@ import global_constants
 from roster import Roster
 
 from vehicles import snowplough_ibex_gen_2
+from vehicles import trient
 
 
 def main():
@@ -202,7 +203,7 @@ def main():
             # branch freight
             #foo,
             # freight
-            #foo,
+            trient,
             # joker engines / snowploughs
             snowplough_ibex_gen_2,
             # cargo sprinter

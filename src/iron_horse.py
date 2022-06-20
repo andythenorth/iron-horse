@@ -28,8 +28,9 @@ from railtypes import lgv_electrified
 
 # import rosters
 from rosters import registered_rosters
-from rosters import pony
+from rosters import ibex
 from rosters import moose
+from rosters import pony
 
 from vehicles import numeric_id_defender
 
@@ -295,8 +296,9 @@ def main():
     # rosters
     # in the rare case that an unfinished roster won't run main() cleanly, comment it out here and possibly also in the import
     # built-in support for disabled rosters was removed during the conversion to multi-grf, it was an unnecessary abstraction when only one roster is used per grf
-    pony.main()
+    ibex.main()
     moose.main()
+    pony.main()
 
     # spritelayer cargos
     intermodal_containers.main()

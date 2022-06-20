@@ -11,26 +11,31 @@ import multiprocessing
 logger = multiprocessing.log_to_stderr()
 logger.setLevel(25)
 from time import time
+from itertools import repeat
 
 import iron_horse
 import utils
 import global_constants
 
 
-def run_consist_pipelines(consist):
+def run_consist_pipelines(consist, graphics_output_path):
     if len(consist.gestalt_graphics.pipelines) == 0:
         raise Exception("no pipelines")
     else:
         # run pipelines, obvs
         for pipeline in consist.gestalt_graphics.pipelines:
-            pipeline.render(consist, global_constants)
+            pipeline.render(consist, global_constants, graphics_output_path)
 
 
-def run_spritelayer_cargo_set_pipelines(spritelayer_cargo_set_pair):
+def run_spritelayer_cargo_set_pipelines(
+    spritelayer_cargo_set_pair, graphics_output_path
+):
     for pipeline in spritelayer_cargo_set_pair[
         0
     ].gestalt_graphics.spritelayer_cargo_pipelines:
-        pipeline.render(spritelayer_cargo_set_pair, global_constants)
+        pipeline.render(
+            spritelayer_cargo_set_pair, global_constants, graphics_output_path
+        )
 
 
 def report_sprites_complete(consists):
@@ -58,7 +63,7 @@ def report_sprites_complete(consists):
 
 # wrapped in a main() function so this can be called explicitly, because unexpected multiprocessing fork bombs are bad
 def main():
-    print("[RENDER GRAPHICS]", ' '.join(sys.argv))
+    print("[RENDER GRAPHICS]", " ".join(sys.argv))
     start = time()
     iron_horse.main()
     # get args passed by makefile
@@ -74,8 +79,12 @@ def main():
         # just print, no need for a coloured echo_message
         print("Multiprocessing enabled: (PW=" + str(num_pool_workers) + ")")
 
+    roster = iron_horse.RosterManager().active_roster
+
     graphics_input_path = os.path.join(currentdir, "src", "graphics")
-    graphics_output_path = os.path.join(iron_horse.generated_files_path, "graphics")
+    graphics_output_path = os.path.join(
+        iron_horse.generated_files_path, "graphics", roster.grf_name
+    )
     # exist_ok=True is used for case with parallel make (`make -j 2` or similar), don't fail with error if dir already exists
     os.makedirs(graphics_output_path, exist_ok=True)
 
@@ -89,7 +98,6 @@ def main():
     )
     hint_file.close()
 
-    roster = iron_horse.RosterManager().active_roster
     consists = roster.consists_in_buy_menu_order
 
     for consist in consists:
@@ -101,7 +109,6 @@ def main():
     # a list format is wanted for convenience with graphics multiprocessing pool
     # the parent spritelayer_cargo object must be passed with the cargo set as cargo sets have render-time properties which change according to context
     # but cargo_sets are global and reused across spritelayer_cargos, so they can't just store a single reference to their spritelayer_cargo parent
-    print("render_graphics may be duplicating spritelayer_cargos across grf rosters, is a method needed to declare these as shared (or detect them as pre-requisites)?")
     spritelayer_cargo_set_pairs = []
     for spritelayer_cargo in iron_horse.registered_spritelayer_cargos:
         for cargo_set in spritelayer_cargo.cargo_sets:
@@ -117,23 +124,35 @@ def main():
 
     if use_multiprocessing == False:
         for spritelayer_cargo_set_pair in spritelayer_cargo_set_pairs:
-            run_spritelayer_cargo_set_pipelines(spritelayer_cargo_set_pair)
+            run_spritelayer_cargo_set_pipelines(
+                spritelayer_cargo_set_pair, graphics_output_path
+            )
         for processing_priority in [1, 2]:
             for consist in consists_in_priority_groups[processing_priority]:
-                run_consist_pipelines(consist)
+                run_consist_pipelines(consist, graphics_output_path)
     else:
         # Would this go faster if the pipelines from each consist were placed in MP pool, not just the consist?
         # probably potato / potato tbh
         pool = Pool(processes=num_pool_workers)
-        pool.map(run_spritelayer_cargo_set_pipelines, spritelayer_cargo_set_pairs)
+        pool.starmap(
+            run_spritelayer_cargo_set_pipelines,
+            zip(
+                spritelayer_cargo_set_pairs,
+                repeat(graphics_output_path),
+            ),
+        )
         pool.close()
         pool.join()
         # wait for first pool job to finish before starting further pool jobs
         # vehicle pool jobs are repeated so that some vehicles can depend on generated sprites from others
         for processing_priority in [1, 2]:
             pool = Pool(processes=num_pool_workers)
-            pool.map(
-                run_consist_pipelines, consists_in_priority_groups[processing_priority]
+            pool.starmap(
+                run_consist_pipelines,
+                zip(
+                    consists_in_priority_groups[processing_priority],
+                    repeat(graphics_output_path),
+                ),
             )
             pool.close()
             pool.join()

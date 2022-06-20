@@ -29,7 +29,7 @@ os.environ["CHAMELEON_CACHE"] = chameleon_cache_path
 generated_files_path = iron_horse.generated_files_path
 
 
-def render_header_item_nml(header_item, roster, consists):
+def render_header_item_nml(header_item, roster, consists, graphics_path):
     template = templates[header_item + ".pynml"]
     return utils.unescape_chameleon_output(
         template(
@@ -40,14 +40,14 @@ def render_header_item_nml(header_item, roster, consists):
             utils=utils,
             registered_railtypes=iron_horse.get_active_railtypes(),
             RosterManager=iron_horse.RosterManager,
-            graphics_path=global_constants.graphics_path,
+            graphics_path=graphics_path,
             git_info=git_info,
         )
     )
 
 
-def render_item_nml(item):
-    result = utils.unescape_chameleon_output(item.render(templates))
+def render_item_nml(item, graphics_path):
+    result = utils.unescape_chameleon_output(item.render(templates, graphics_path))
     # write the nml per item to disk, it aids debugging
     item_nml = codecs.open(
         os.path.join(generated_files_path, "nml", item.id + ".nml"), "w", "utf8"
@@ -59,12 +59,14 @@ def render_item_nml(item):
 
 
 def main():
-    print("[RENDER NML]", ' '.join(sys.argv))
+    print("[RENDER NML]", " ".join(sys.argv))
     start = time()
     iron_horse.main()
     print(iron_horse.vacant_numeric_ids_formatted())
 
     roster = iron_horse.RosterManager().active_roster
+    # we don't need to user os.path.join here, this is an nml path (and we want the explicit trailing slash also)
+    graphics_path = "generated/graphics/" + roster.grf_name + "/"
     generated_nml_path = os.path.join(generated_files_path, "nml")
     # exist_ok=True is used for case with parallel make (`make -j 2` or similar), don't fail with error if dir already exists
     os.makedirs(generated_nml_path, exist_ok=True)
@@ -100,13 +102,15 @@ def main():
         "procedures_visible_cargo",
     ]
     for header_item in header_items:
-        grf_nml.write(render_header_item_nml(header_item, roster, consists))
+        grf_nml.write(
+            render_header_item_nml(header_item, roster, consists, graphics_path)
+        )
 
     # multiprocessing was tried here and removed as it was empirically slower in testing (due to overhead of starting extra pythons probably)
     for spritelayercargo in spritelayer_cargos:
-        grf_nml.write(render_item_nml(spritelayercargo))
+        grf_nml.write(render_item_nml(spritelayercargo, graphics_path))
     for consist in consists:
-        grf_nml.write(render_item_nml(consist))
+        grf_nml.write(render_item_nml(consist, graphics_path))
 
     grf_nml.close()
 

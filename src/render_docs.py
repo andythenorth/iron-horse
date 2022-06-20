@@ -526,7 +526,7 @@ def render_docs_vehicle_details(consist, docs_output_path, consists):
     doc_file.close()
 
 
-def render_docs_images(consist, static_dir_dst):
+def render_docs_images(consist, static_dir_dst, generated_graphics_path):
     # process vehicle buy menu sprites for reuse in docs
     # extend this similar to render_docs if other image types need processing in future
 
@@ -536,9 +536,8 @@ def render_docs_images(consist, static_dir_dst):
 
     doc_helper = DocHelper()
 
-    vehicle_graphics_src = os.path.join(currentdir, global_constants.generated_files_dir, "graphics")
     vehicle_spritesheet = Image.open(
-        os.path.join(vehicle_graphics_src, consist.id + ".png")
+        os.path.join(generated_graphics_path, consist.id + ".png")
     )
     # these 'source' var names for images are misleading
     source_vehicle_image = Image.new(
@@ -618,7 +617,9 @@ def render_docs_images(consist, static_dir_dst):
         if consist.pantograph_type is not None:
             # buy menu uses pans 'down', but in docs pans 'up' looks better, weird eh?
             pantographs_spritesheet = Image.open(
-                os.path.join(vehicle_graphics_src, consist.id + "_pantographs_up.png")
+                os.path.join(
+                    generated_graphics_path, consist.id + "_pantographs_up.png"
+                )
             )
             pan_crop_width = consist.buy_menu_width
             pantographs_image = pantographs_spritesheet.crop(
@@ -720,7 +721,7 @@ def main():
     if command_line_args.suppress_docs:
         print("[SKIPPING DOCS] render_docs.py (suppress_docs makefile flag set)")
         return
-    print("[RENDER DOCS]", ' '.join(sys.argv))
+    print("[RENDER DOCS]", " ".join(sys.argv))
     start = time()
     # don't init iron_horse on import of this module, do it explicitly inside main()
     iron_horse.main()
@@ -815,15 +816,21 @@ def main():
 
     # process images for use in docs
     # yes, I really did bother using a pool to save at best a couple of seconds, because FML :)
+    generated_graphics_path = os.path.join(
+        iron_horse.generated_files_path, "graphics", roster.grf_name
+    )
     slow_start = time()
     if use_multiprocessing == False:
         for consist in consists:
-            render_docs_images(consist, static_dir_dst)
+            render_docs_images(consist, static_dir_dst, generated_graphics_path)
     else:
         # Would this go faster if the pipelines from each consist were placed in MP pool, not just the consist?
         # probably potato / potato tbh
         pool = multiprocessing.Pool(processes=num_pool_workers)
-        pool.starmap(render_docs_images, zip(consists, repeat(static_dir_dst)))
+        pool.starmap(
+            render_docs_images,
+            zip(consists, repeat(static_dir_dst), repeat(generated_graphics_path)),
+        )
         pool.close()
         pool.join()
     print("render_docs_images", time() - slow_start)

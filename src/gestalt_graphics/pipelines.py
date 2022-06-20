@@ -117,7 +117,11 @@ class Pipeline(object):
         return spritesheet
 
     def render_common(
-        self, input_image, units, output_base_name=None, output_suffix=""
+        self,
+        input_image,
+        units,
+        output_base_name=None,
+        output_suffix="",
     ):
         # expects to be passed a PIL Image object
         # units is a list of objects, with their config data already baked in (don't have to pass anything to units except the spritesheet)
@@ -127,15 +131,11 @@ class Pipeline(object):
             # default to consist name for file name, but can over-ride for e.g. containers by passing something in
             output_base_name = self.consist.id
         output_path = os.path.join(
-            currentdir,
-            "generated",
-            "graphics",
+            self.graphics_output_path,
             output_base_name + output_suffix + ".png",
         )
         output_path_tmp = os.path.join(
-            currentdir,
-            "generated",
-            "graphics",
+            self.graphics_output_path,
             output_base_name + output_suffix + ".new.png",
         )
         spritesheet = pixa.make_spritesheet_from_image(input_image, DOS_PALETTE)
@@ -166,7 +166,7 @@ class Pipeline(object):
         else:
             spritesheet.save(output_path)
 
-    def render(self, consist):
+    def render(self, consist, graphics_output_path):
         raise NotImplementedError("Implement me in %s" % repr(self))
 
 
@@ -179,9 +179,10 @@ class PassThroughPipeline(Pipeline):
         # this should be sparse, don't store any consist info in Pipelines, pass at render time
         super().__init__()
 
-    def render(self, consist, global_constants):
+    def render(self, consist, global_constants, graphics_output_path):
         self.units = []
         self.consist = consist
+        self.graphics_output_path = graphics_output_path
 
         input_image = Image.open(self.vehicle_source_input_path)
         self.render_common(input_image, self.units)
@@ -421,11 +422,14 @@ class GenerateSpritelayerCargoSets(Pipeline):
             variant_output_image.close()
             template_image.close()
 
-    def render(self, spritelayer_cargo_set_pair, global_constants):
+    def render(
+        self, spritelayer_cargo_set_pair, global_constants, graphics_output_path
+    ):
         self.units = []
         self.spritelayer_cargo = spritelayer_cargo_set_pair[0]
         self.spritelayer_cargo_set = spritelayer_cargo_set_pair[1]
         self.global_constants = global_constants
+        self.graphics_output_path = graphics_output_path
 
         self.add_cargo_spriterows()
 
@@ -448,9 +452,10 @@ class CheckBuyMenuOnlyPipeline(Pipeline):
         # this should be sparse, don't store any consist info in Pipelines, pass at render time
         super().__init__()
 
-    def render(self, consist, global_constants):
+    def render(self, consist, global_constants, graphics_output_path):
         self.units = []
         self.consist = consist
+        self.graphics_output_path = graphics_output_path
 
         if self.consist.buy_menu_x_loc == 360:
             # !! this currently will cause the vehicle spritesheet buy menu sprites to be copied to the pans spritesheet,
@@ -495,9 +500,7 @@ class GenerateBuyMenuSpritesheetFromRandomisationCandidatesPipeline(Pipeline):
         for counter, source_wagon in enumerate(source_wagons):
             # note that we want the *generated* source wagon spritesheet
             source_wagon_input_path = os.path.join(
-                currentdir,
-                "generated",
-                "graphics",
+                self.graphics_output_path,
                 source_wagon.id + ".png",
             )
             source_wagon_image = Image.open(source_wagon_input_path)
@@ -565,9 +568,10 @@ class GenerateBuyMenuSpritesheetFromRandomisationCandidatesPipeline(Pipeline):
 
         return spritesheet
 
-    def render(self, consist, global_constants):
+    def render(self, consist, global_constants, graphics_output_path):
         self.units = []
         self.consist = consist
+        self.graphics_output_path = graphics_output_path
 
         self.units.append(
             AddBuyMenuSprite(self.process_buy_menu_sprite_from_randomisation_candidates)
@@ -782,7 +786,7 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
         # add debug sprites with vehicle-pantograph comp for ease of checking
         # this very much assumes that the vehicle image has been generated, which holds currently due to the order pipelines are run in (and are in series)
         vehicle_debug_image = Image.open(
-            os.path.join(currentdir, "generated", "graphics", self.consist.id + ".png")
+            os.path.join(self.graphics_output_path, self.consist.id + ".png")
         )
         vehicle_debug_image = vehicle_debug_image.copy().crop(
             (
@@ -831,10 +835,11 @@ class GeneratePantographsSpritesheetPipeline(Pipeline):
         vehicle_input_image.close()
         empty_spriterow_image.close()
 
-    def render(self, consist, global_constants):
+    def render(self, consist, global_constants, graphics_output_path):
         self.units = []
         self.consist = consist
         self.global_constants = global_constants
+        self.graphics_output_path = graphics_output_path
 
         self.add_pantograph_spriterows()
 
@@ -1666,12 +1671,13 @@ class ExtendSpriterowsForCompositedSpritesPipeline(Pipeline):
                 )
             )
 
-    def render(self, consist, global_constants):
+    def render(self, consist, global_constants, graphics_output_path):
         self.units = (
             []
         )  # graphics units not same as consist units ! confusing overlap of terminology :(
         self.consist = consist
         self.global_constants = global_constants
+        self.graphics_output_path = graphics_output_path
         self.sprites_max_x_extent = self.global_constants.sprites_max_x_extent
         self.first_col_start_x = (
             self.global_constants.spritesheet_bounding_boxes_asymmetric_unreversed[0][0]

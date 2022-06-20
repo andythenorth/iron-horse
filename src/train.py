@@ -861,7 +861,7 @@ class Consist(object):
                     "Consist " + self.id + " foamer_facts has a '.' in it."
                 )
 
-    def render(self, templates):
+    def render(self, templates, graphics_path):
         self.assert_speed()
         self.assert_power()
         # templating
@@ -869,7 +869,7 @@ class Consist(object):
         if len(self.units) > 1:
             nml_result = nml_result + self.render_articulated_switch(templates)
         for unit in self.unique_units:
-            nml_result = nml_result + unit.render(templates)
+            nml_result = nml_result + unit.render(templates, graphics_path)
         return nml_result
 
 
@@ -4697,7 +4697,7 @@ class Train(object):
                     + " which is not defined in the cargo table"
                 )
 
-    def render(self, templates):
+    def render(self, templates, graphics_path):
         # integrity tests
         self.assert_cargo_labels(self.label_refits_allowed)
         self.assert_cargo_labels(self.label_refits_disallowed)
@@ -4717,7 +4717,7 @@ class Train(object):
             consist=self.consist,
             global_constants=global_constants,
             temp_storage_ids=global_constants.temp_storage_ids,  # convenience measure
-            graphics_path=global_constants.graphics_path,
+            graphics_path=graphics_path,
             spritelayer_cargos=spritelayer_cargos,
         )
         return nml_result

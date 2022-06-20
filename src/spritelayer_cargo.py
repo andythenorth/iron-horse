@@ -27,13 +27,13 @@ class SpritelayerCargo(object):
     def id(self):
         return self.base_id + "_" + self.platform_type + "_" + str(self.length) + "px"
 
-    def render(self, templates):
+    def render(self, templates, graphics_path):
         # templating
         template_name = "spritelayer_cargo.pynml"
         template = templates[template_name]
         nml_result = template(
             temp_storage_ids=global_constants.temp_storage_ids,  # convenience measure
-            graphics_path=global_constants.graphics_path,
+            graphics_path=graphics_path,
             spritelayer_cargo=self,
         )
         return nml_result

@@ -420,7 +420,6 @@ base_refits_by_class = polar_fox.constants.base_refits_by_class
 cargo_labels = polar_fox.constants.cargo_labels
 chameleon_cache_dir = polar_fox.constants.chameleon_cache_dir
 generated_files_dir = polar_fox.constants.generated_files_dir
-graphics_path = polar_fox.constants.graphics_path
 mail_multiplier = polar_fox.constants.mail_multiplier
 max_game_date = polar_fox.constants.max_game_date
 company_colour_maps = polar_fox.constants.company_colour_maps
