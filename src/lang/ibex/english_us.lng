@@ -1,0 +1,46 @@
+##grflangid 0x00
+##plural 0
+# this is the default translation and is en-gb
+STR_GRF_DESCRIPTION                                             :License: {SILVER}GPL v2{}{BLACK}
+
+STR_PARAM_ADJUST_VEHICLE_CAPACITY                               :Train capacity
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :Puny
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :Marvelous
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :Excessive
+
+# keep these alphabetised, easier
+STR_NAME_SUFFIX_DIESEL                                          :Diesel
+STR_NAME_SUFFIX_ELECTRIC                                        :Electric
+STR_NAME_SUFFIX_ELECTRODIESEL                                   :Electro-Diesel
+STR_NAME_SUFFIX_STEAM                                           :Steam
+
+# size suffixes
+
+# wagon class suffixes
+# as of Jan 2019 these are switched from en-us to en-gb
+# the en-us translation should be updated appropriately when making changes here
+# !! consider splitting strings per roster?? A US caboose is still a 'caboose' in en-gb, not a brake van
+STR_NAME_SUFFIX_BOX_CAR                                         :Box Car
+STR_NAME_SUFFIX_CABOOSE_CAR                                     :Caboose Car
+STR_NAME_SUFFIX_DUMP_CAR                                        :Dump Car
+STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :Edibles Tank Car
+STR_NAME_SUFFIX_EXPRESS_CAR                                     :Express Car
+STR_NAME_SUFFIX_FLAT_CAR                                        :Flat Car
+STR_NAME_SUFFIX_INTERMODAL_CAR                                  :Intermodal Car
+STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :Livestock Car
+STR_NAME_SUFFIX_MAIL_CAR                                        :Mail Car
+STR_NAME_SUFFIX_OPEN_CAR                                        :Open Car
+STR_NAME_SUFFIX_PASSENGER_CAR                                   :Passenger Car
+STR_NAME_SUFFIX_REEFER_CAR                                      :Refrigerated Car
+STR_NAME_SUFFIX_SILO_CAR                                        :Silo Car
+STR_NAME_SUFFIX_TANK_CAR                                        :Tank Car
+
+# buy menu wrappers
+
+# role information for buy menu
+
+# assumes only diesel and electric currently
+
+# distributed power (dedicated wagons add power)
+
+# project management

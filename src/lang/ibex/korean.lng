@@ -1,0 +1,60 @@
+##grflangid 0x3a
+##plural 11
+##gender m f
+# this is the default translation and is en-gb
+STR_GRF_DESCRIPTION                                             :라이선스: {SILVER}GPL v2{}{BLACK}
+
+STR_PARAM_ADJUST_VEHICLE_CAPACITY                               :열차 정원
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_0                      :매우 작은
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_1                      :놀라운
+STR_PARAM_ADJUST_VEHICLE_CAPACITY_OPTION_2                      :과대한
+
+# keep these alphabetised, easier
+STR_NAME_SUFFIX_DIESEL                                          :디젤
+STR_NAME_SUFFIX_ELECTRIC                                        :전기
+STR_NAME_SUFFIX_ELECTRODIESEL                                   :전기-디젤
+STR_NAME_SUFFIX_METRO                                           :도시철도
+STR_NAME_SUFFIX_STEAM                                           :증기
+
+# size suffixes
+STR_NAME_SUFFIX_SMALL                                           :작음
+STR_NAME_SUFFIX_MEDIUM                                          :중간
+STR_NAME_SUFFIX_LARGE                                           :큼
+
+# wagon class suffixes
+# as of Jan 2019 these are switched from en-us to en-gb
+# the en-us translation should be updated appropriately when making changes here
+# !! consider splitting strings per roster?? A US caboose is still a 'caboose' in en-gb, not a brake van
+STR_NAME_SUFFIX_ALIGNMENT_CAR                                   :정렬 차량
+STR_NAME_SUFFIX_BOX_CAR                                         :유개차
+STR_NAME_SUFFIX_CABOOSE_CAR                                     :제동차
+STR_NAME_SUFFIX_CRYO_TANK_CAR                                   :저온 유조차
+STR_NAME_SUFFIX_CURTAIN_SIDE_BOX_CAR                            :커튼 사이드 밴
+STR_NAME_SUFFIX_DUMP_CAR                                        :광물화차
+STR_NAME_SUFFIX_EDIBLES_TANK_CAR                                :식품 유조차
+STR_NAME_SUFFIX_EXPRESS_CAR                                     :특급 유개화물차
+STR_NAME_SUFFIX_FLAT_CAR                                        :평판화차
+STR_NAME_SUFFIX_INTERMODAL_CAR                                  :복합 차량
+STR_NAME_SUFFIX_LIVESTOCK_CAR                                   :가축 수송 차량
+STR_NAME_SUFFIX_MAIL_CAR                                        :우편 수송 차량
+STR_NAME_SUFFIX_OPEN_CAR                                        :무개차
+STR_NAME_SUFFIX_PASSENGER_CAR                                   :승객 수송 차량
+STR_NAME_SUFFIX_PLATE_CAR                                       :평판화차
+STR_NAME_SUFFIX_REEFER_CAR                                      :냉동차
+STR_NAME_SUFFIX_SILO_CAR                                        :사일로 화차
+STR_NAME_SUFFIX_SLIDING_WALL_CAR                                :슬라이딩 월 밴
+STR_NAME_SUFFIX_TANK_CAR                                        :유조차
+STR_NAME_SUFFIX_TARPAULIN_CAR                                   :방수포 화차
+STR_NAME_SUFFIX_TORPEDO_CAR                                     :어뢰 화차
+
+# buy menu wrappers
+
+# role information for buy menu
+
+# assumes only diesel and electric currently
+
+# distributed power (dedicated wagons add power)
+
+# project management
+STR_SPRITES_COMPLETE                                            :{}스트라이트 완성: {GOLD}됨
+STR_SPRITES_INCOMPLETE                                          :{}스프라이트 완성: {GOLD}안 됨
