@@ -114,7 +114,7 @@ def main():
 
     grf_nml.close()
 
-    print("[RENDER NML] complete", format((time() - start), ".2f") + "s")
+    print("[RENDER NML]", command_line_args.grf_name, "- complete", format((time() - start), ".2f") + "s")
 
 
 if __name__ == "__main__":
