@@ -29,7 +29,6 @@ def main():
     start = time()
     iron_horse.main()
 
-    print([roster.id for roster in iron_horse.RosterManager()])
     roster = iron_horse.RosterManager().active_roster
     lang_src = os.path.join(currentdir, "src", "lang", roster.id)
     lang_dst = os.path.join(
