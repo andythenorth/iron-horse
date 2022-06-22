@@ -62,7 +62,7 @@ def main():
     print("[RENDER NML]", " ".join(sys.argv))
     start = time()
     iron_horse.main()
-    print(iron_horse.vacant_numeric_ids_formatted())
+    print(iron_horse.RosterManager().vacant_numeric_ids_formatted())
 
     roster = iron_horse.RosterManager().active_roster
     # we don't need to user os.path.join here, this is an nml path (and we want the explicit trailing slash also)
