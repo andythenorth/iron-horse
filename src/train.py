@@ -32,7 +32,6 @@ from gestalt_graphics.gestalt_graphics import (
 )
 import gestalt_graphics.graphics_constants as graphics_constants
 
-from rosters import registered_rosters
 from vehicles import numeric_id_defender
 import iron_horse
 import spritelayer_cargos
