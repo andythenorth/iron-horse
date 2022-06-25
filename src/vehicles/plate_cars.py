@@ -6,7 +6,7 @@ def main():
 
     consist = FlatCarPlateConsist(
         roster_id="pony",
-        base_numeric_id=1480,
+        base_numeric_id=10520,
         gen=1,
         subtype="A",
         sprites_complete=True,
@@ -18,7 +18,7 @@ def main():
 
     consist = FlatCarPlateConsist(
         roster_id="pony",
-        base_numeric_id=1490,
+        base_numeric_id=10530,
         gen=2,
         subtype="B",
         sprites_complete=True,
@@ -28,7 +28,7 @@ def main():
 
     consist = FlatCarPlateConsist(
         roster_id="pony",
-        base_numeric_id=1500,
+        base_numeric_id=10540,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -38,7 +38,7 @@ def main():
 
     consist = FlatCarPlateConsist(
         roster_id="pony",
-        base_numeric_id=1540,
+        base_numeric_id=10580,
         gen=3,
         subtype="B",
         sprites_complete=True,
@@ -48,7 +48,7 @@ def main():
 
     consist = FlatCarPlateConsist(
         roster_id="pony",
-        base_numeric_id=1590,
+        base_numeric_id=10630,
         gen=3,
         subtype="C",
         sprites_complete=True,
@@ -58,7 +58,7 @@ def main():
 
     consist = FlatCarPlateConsist(
         roster_id="pony",
-        base_numeric_id=1550,
+        base_numeric_id=10590,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -68,7 +68,7 @@ def main():
 
     consist = FlatCarPlateConsist(
         roster_id="pony",
-        base_numeric_id=1470,
+        base_numeric_id=10510,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -78,7 +78,7 @@ def main():
 
     consist = FlatCarPlateConsist(
         roster_id="pony",
-        base_numeric_id=1840,
+        base_numeric_id=10880,
         gen=4,
         subtype="C",
         sprites_complete=True,
@@ -88,7 +88,7 @@ def main():
 
     consist = FlatCarPlateConsist(
         roster_id="pony",
-        base_numeric_id=1800,
+        base_numeric_id=10840,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -98,7 +98,7 @@ def main():
 
     consist = FlatCarPlateConsist(
         roster_id="pony",
-        base_numeric_id=1870,
+        base_numeric_id=10910,
         gen=5,
         subtype="C",
         sprites_complete=True,
@@ -108,7 +108,7 @@ def main():
 
     consist = FlatCarPlateConsist(
         roster_id="pony",
-        base_numeric_id=1960,
+        base_numeric_id=11000,
         gen=6,
         subtype="B",
         sprites_complete=True,
@@ -118,7 +118,7 @@ def main():
 
     consist = FlatCarPlateConsist(
         roster_id="pony",
-        base_numeric_id=1970,
+        base_numeric_id=11010,
         gen=6,
         subtype="C",
         sprites_complete=True,

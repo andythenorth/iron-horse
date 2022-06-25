@@ -5,7 +5,7 @@ def main():
     # --------------- pony NG ----------------------------------------------------------------------
     consist = FarmProductsBoxCarConsist(
         roster_id="pony",
-        base_numeric_id=1310,
+        base_numeric_id=10350,
         gen=1,
         subtype="U",
         base_track_type="NG",
@@ -18,7 +18,7 @@ def main():
 
     consist = FarmProductsBoxCarConsist(
         roster_id="pony",
-        base_numeric_id=1360,
+        base_numeric_id=10400,
         gen=3,
         subtype="U",
         base_track_type="NG",
@@ -29,7 +29,7 @@ def main():
 
     consist = FarmProductsBoxCarConsist(
         roster_id="pony",
-        base_numeric_id=1520,
+        base_numeric_id=10560,
         gen=4,
         subtype="U",
         base_track_type="NG",
@@ -41,7 +41,7 @@ def main():
     # --------------- pony --------------------------------------------------------------------------
     consist = FarmProductsBoxCarConsist(
         roster_id="pony",
-        base_numeric_id=2640,
+        base_numeric_id=11680,
         gen=2,
         subtype="A",
         sprites_complete=True,
@@ -51,7 +51,7 @@ def main():
 
     consist = FarmProductsBoxCarConsist(
         roster_id="pony",
-        base_numeric_id=2630,
+        base_numeric_id=11670,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -61,7 +61,7 @@ def main():
 
     consist = FarmProductsBoxCarConsist(
         roster_id="pony",
-        base_numeric_id=2620,
+        base_numeric_id=11660,
         gen=3,
         subtype="B",
         sprites_complete=True,
@@ -71,7 +71,7 @@ def main():
 
     consist = FarmProductsBoxCarConsist(
         roster_id="pony",
-        base_numeric_id=2600,
+        base_numeric_id=11640,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -81,7 +81,7 @@ def main():
 
     consist = FarmProductsBoxCarConsist(
         roster_id="pony",
-        base_numeric_id=2610,
+        base_numeric_id=11650,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -91,7 +91,7 @@ def main():
 
     consist = FarmProductsBoxCarConsist(
         roster_id="pony",
-        base_numeric_id=3570,
+        base_numeric_id=12610,
         gen=4,
         subtype="C",
         sprites_complete=True,
@@ -105,7 +105,7 @@ def main():
 
     consist = FarmProductsBoxCarConsist(
         roster_id="pony",
-        base_numeric_id=2650,
+        base_numeric_id=11690,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -115,7 +115,7 @@ def main():
 
     consist = FarmProductsBoxCarConsist(
         roster_id="pony",
-        base_numeric_id=2660,
+        base_numeric_id=11700,
         gen=5,
         subtype="C",
         sprites_complete=True,
@@ -125,7 +125,7 @@ def main():
 
     consist = FarmProductsBoxCarConsist(
         roster_id="pony",
-        base_numeric_id=1890,
+        base_numeric_id=10930,
         gen=6,
         subtype="B",
         sprites_complete=True,
@@ -139,7 +139,7 @@ def main():
 
     consist = FarmProductsBoxCarConsist(
         roster_id="pony",
-        base_numeric_id=1900,
+        base_numeric_id=10940,
         gen=6,
         subtype="C",
         sprites_complete=True,

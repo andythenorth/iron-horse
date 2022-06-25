@@ -5,7 +5,7 @@ def main():
     # --------------- pony ----------------------------------------------------------------------
     consist = IntermodalLowFloorCarConsist(
         roster_id="pony",
-        base_numeric_id=5410,
+        base_numeric_id=14450,
         gen=5,
         subtype="A",
         sprites_complete=True,
@@ -16,7 +16,7 @@ def main():
 
     consist = IntermodalLowFloorCarConsist(
         roster_id="pony",
-        base_numeric_id=5420,
+        base_numeric_id=14460,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -26,7 +26,7 @@ def main():
 
     consist = IntermodalLowFloorCarConsist(
         roster_id="pony",
-        base_numeric_id=5430,
+        base_numeric_id=14470,
         gen=5,
         subtype="C",
         sprites_complete=True,
@@ -36,7 +36,7 @@ def main():
 
     consist = IntermodalLowFloorCarConsist(
         roster_id="pony",
-        base_numeric_id=5440,
+        base_numeric_id=14480,
         gen=6,
         subtype="A",
         sprites_complete=True,
@@ -47,7 +47,7 @@ def main():
 
     consist = IntermodalLowFloorCarConsist(
         roster_id="pony",
-        base_numeric_id=5450,
+        base_numeric_id=14490,
         gen=6,
         subtype="B",
         sprites_complete=True,
@@ -57,7 +57,7 @@ def main():
 
     consist = IntermodalLowFloorCarConsist(
         roster_id="pony",
-        base_numeric_id=5460,
+        base_numeric_id=14500,
         gen=6,
         subtype="C",
         sprites_complete=True,

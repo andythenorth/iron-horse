@@ -6,7 +6,7 @@ def main():
 
     consist = SlagLadleCarConsist(
         roster_id="pony",
-        base_numeric_id=4440,
+        base_numeric_id=13480,
         gen=1,
         subtype="U",
         base_track_type="NG",
@@ -20,7 +20,7 @@ def main():
 
     consist = SlagLadleCarConsist(
         roster_id="pony",
-        base_numeric_id=4030,
+        base_numeric_id=13070,
         gen=1,
         subtype="U",
         speed=35,  # note rare non-standard speed, don't spill molten slag eh?
@@ -31,7 +31,7 @@ def main():
 
     consist = SlagLadleCarConsist(
         roster_id="pony",
-        base_numeric_id=4040,
+        base_numeric_id=13080,
         gen=4,
         subtype="U",
         speed=35,  # note rare non-standard speed, don't spill molten slag eh?

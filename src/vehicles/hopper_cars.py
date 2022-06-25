@@ -6,7 +6,7 @@ def main():
 
     consist = HopperCarConsist(
         roster_id="pony",
-        base_numeric_id=3590,
+        base_numeric_id=12630,
         gen=1,
         subtype="U",
         base_track_type="NG",
@@ -17,7 +17,7 @@ def main():
 
     consist = HopperCarConsist(
         roster_id="pony",
-        base_numeric_id=3600,
+        base_numeric_id=12640,
         gen=3,
         subtype="U",
         base_track_type="NG",
@@ -28,7 +28,7 @@ def main():
 
     consist = HopperCarConsist(
         roster_id="pony",
-        base_numeric_id=3610,
+        base_numeric_id=12650,
         gen=4,
         subtype="U",
         base_track_type="NG",
@@ -43,7 +43,7 @@ def main():
 
     consist = HopperCarConsist(
         roster_id="pony",
-        base_numeric_id=5680,
+        base_numeric_id=14720,
         gen=1,
         subtype="A",
         sprites_complete=True,
@@ -55,7 +55,7 @@ def main():
 
     consist = HopperCarConsist(
         roster_id="pony",
-        base_numeric_id=2040,
+        base_numeric_id=11080,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -65,7 +65,7 @@ def main():
 
     consist = HopperCarConsist(
         roster_id="pony",
-        base_numeric_id=2320,
+        base_numeric_id=11360,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -75,7 +75,7 @@ def main():
 
     consist = HopperCarConsist(
         roster_id="pony",
-        base_numeric_id=1380,
+        base_numeric_id=10420,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -95,7 +95,7 @@ def main():
 
     consist = HopperCarConsist(
         roster_id="pony",
-        base_numeric_id=1090,
+        base_numeric_id=10130,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -105,7 +105,7 @@ def main():
 
     consist = HopperCarConsist(
         roster_id="pony",
-        base_numeric_id=2780,
+        base_numeric_id=11820,
         gen=5,
         subtype="C",
         sprites_complete=True,
@@ -115,7 +115,7 @@ def main():
 
     consist = HopperCarConsist(
         roster_id="pony",
-        base_numeric_id=3010,
+        base_numeric_id=12050,
         gen=6,
         subtype="B",
         sprites_complete=True,
@@ -125,7 +125,7 @@ def main():
 
     consist = HopperCarConsist(
         roster_id="pony",
-        base_numeric_id=3020,
+        base_numeric_id=12060,
         gen=6,
         subtype="C",
         sprites_complete=True,

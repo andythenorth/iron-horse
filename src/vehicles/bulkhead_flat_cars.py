@@ -6,7 +6,7 @@ def main():
 
     consist = FlatCarBulkheadConsist(
         roster_id="pony",
-        base_numeric_id=5120,
+        base_numeric_id=14160,
         gen=2,
         subtype="U",
         base_track_type="NG",
@@ -18,7 +18,7 @@ def main():
 
     consist = FlatCarBulkheadConsist(
         roster_id="pony",
-        base_numeric_id=5130,
+        base_numeric_id=14170,
         gen=3,
         subtype="U",
         base_track_type="NG",
@@ -29,7 +29,7 @@ def main():
 
     consist = FlatCarBulkheadConsist(
         roster_id="pony",
-        base_numeric_id=5140,
+        base_numeric_id=14180,
         gen=4,
         subtype="U",
         base_track_type="NG",
@@ -42,7 +42,7 @@ def main():
 
     consist = FlatCarBulkheadConsist(
         roster_id="pony",
-        base_numeric_id=4700,
+        base_numeric_id=13740,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -52,7 +52,7 @@ def main():
 
     consist = FlatCarBulkheadConsist(
         roster_id="pony",
-        base_numeric_id=4710,
+        base_numeric_id=13750,
         gen=3,
         subtype="B",
         sprites_complete=True,
@@ -62,7 +62,7 @@ def main():
 
     consist = FlatCarBulkheadConsist(
         roster_id="pony",
-        base_numeric_id=4720,
+        base_numeric_id=13760,
         gen=3,
         subtype="C",
         sprites_complete=True,
@@ -72,7 +72,7 @@ def main():
 
     consist = FlatCarBulkheadConsist(
         roster_id="pony",
-        base_numeric_id=4730,
+        base_numeric_id=13770,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -82,7 +82,7 @@ def main():
 
     consist = FlatCarBulkheadConsist(
         roster_id="pony",
-        base_numeric_id=4740,
+        base_numeric_id=13780,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -92,7 +92,7 @@ def main():
 
     consist = FlatCarBulkheadConsist(
         roster_id="pony",
-        base_numeric_id=4750,
+        base_numeric_id=13790,
         gen=4,
         subtype="C",
         sprites_complete=True,
@@ -102,7 +102,7 @@ def main():
 
     consist = FlatCarBulkheadConsist(
         roster_id="pony",
-        base_numeric_id=4760,
+        base_numeric_id=13800,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -112,7 +112,7 @@ def main():
 
     consist = FlatCarBulkheadConsist(
         roster_id="pony",
-        base_numeric_id=4770,
+        base_numeric_id=13810,
         gen=5,
         subtype="C",
         sprites_complete=True,
@@ -122,7 +122,7 @@ def main():
 
     consist = FlatCarBulkheadConsist(
         roster_id="pony",
-        base_numeric_id=4780,
+        base_numeric_id=13820,
         gen=6,
         subtype="B",
         sprites_complete=True,
@@ -132,7 +132,7 @@ def main():
 
     consist = FlatCarBulkheadConsist(
         roster_id="pony",
-        base_numeric_id=4790,
+        base_numeric_id=13830,
         gen=6,
         subtype="C",
         sprites_complete=True,

@@ -6,7 +6,7 @@ def main():
 
     consist = DumpCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=8150,
+        base_numeric_id=17190,
         gen=1,
         subtype="A",
         sprites_complete=True,
@@ -18,7 +18,7 @@ def main():
 
     consist = DumpCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=8160,
+        base_numeric_id=17200,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -28,7 +28,7 @@ def main():
 
     consist = DumpCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=8170,
+        base_numeric_id=17210,
         gen=3,
         subtype="B",
         sprites_complete=True,
@@ -38,7 +38,7 @@ def main():
 
     consist = DumpCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=8180,
+        base_numeric_id=17220,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -48,7 +48,7 @@ def main():
 
     consist = DumpCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=8190,
+        base_numeric_id=17230,
         gen=4,
         subtype="B",
         sprites_complete=True,

@@ -6,7 +6,7 @@ def main():
 
     consist = GasTankCarPressureConsist(
         roster_id="pony",
-        base_numeric_id=6010,
+        base_numeric_id=15050,
         gen=2,
         subtype="U",
         base_track_type="NG",
@@ -17,7 +17,7 @@ def main():
 
     consist = GasTankCarPressureConsist(
         roster_id="pony",
-        base_numeric_id=6020,
+        base_numeric_id=15060,
         gen=3,
         subtype="U",
         base_track_type="NG",
@@ -28,7 +28,7 @@ def main():
 
     consist = GasTankCarPressureConsist(
         roster_id="pony",
-        base_numeric_id=6030,
+        base_numeric_id=15070,
         gen=4,
         subtype="U",
         base_track_type="NG",
@@ -40,7 +40,7 @@ def main():
     # --------------- pony ----------------------------------------------------------------------
     consist = GasTankCarPressureConsist(
         roster_id="pony",
-        base_numeric_id=80,
+        base_numeric_id=9120,
         gen=2,
         subtype="A",
         sprites_complete=True,
@@ -50,7 +50,7 @@ def main():
 
     consist = GasTankCarPressureConsist(
         roster_id="pony",
-        base_numeric_id=180,
+        base_numeric_id=9220,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -60,7 +60,7 @@ def main():
 
     consist = GasTankCarPressureConsist(
         roster_id="pony",
-        base_numeric_id=250,
+        base_numeric_id=9290,
         gen=3,
         subtype="B",
         sprites_complete=True,
@@ -70,7 +70,7 @@ def main():
 
     consist = GasTankCarPressureConsist(
         roster_id="pony",
-        base_numeric_id=6190,
+        base_numeric_id=15230,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -80,7 +80,7 @@ def main():
 
     consist = GasTankCarPressureConsist(
         roster_id="pony",
-        base_numeric_id=6200,
+        base_numeric_id=15240,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -90,7 +90,7 @@ def main():
 
     consist = GasTankCarPressureConsist(
         roster_id="pony",
-        base_numeric_id=6210,
+        base_numeric_id=15250,
         gen=4,
         subtype="C",
         sprites_complete=True,
@@ -100,7 +100,7 @@ def main():
 
     consist = GasTankCarPressureConsist(
         roster_id="pony",
-        base_numeric_id=6280,
+        base_numeric_id=15320,
         gen=5,
         subtype="A",
         sprites_complete=True,
@@ -110,7 +110,7 @@ def main():
 
     consist = GasTankCarPressureConsist(
         roster_id="pony",
-        base_numeric_id=6220,
+        base_numeric_id=15260,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -120,7 +120,7 @@ def main():
 
     consist = GasTankCarPressureConsist(
         roster_id="pony",
-        base_numeric_id=6230,
+        base_numeric_id=15270,
         gen=5,
         subtype="C",
         sprites_complete=True,
@@ -130,7 +130,7 @@ def main():
 
     consist = GasTankCarPressureConsist(
         roster_id="pony",
-        base_numeric_id=6290,
+        base_numeric_id=15330,
         gen=6,
         subtype="A",
         sprites_complete=True,
@@ -140,7 +140,7 @@ def main():
 
     consist = GasTankCarPressureConsist(
         roster_id="pony",
-        base_numeric_id=6240,
+        base_numeric_id=15280,
         gen=6,
         subtype="B",
         sprites_complete=True,
@@ -150,7 +150,7 @@ def main():
 
     consist = GasTankCarPressureConsist(
         roster_id="pony",
-        base_numeric_id=6250,
+        base_numeric_id=15290,
         gen=6,
         subtype="C",
         sprites_complete=True,

@@ -6,7 +6,7 @@ def main():
 
     consist = ColdMetalCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=7710,
+        base_numeric_id=16750,
         gen=1,
         subtype="A",
         sprites_complete=True,
@@ -18,7 +18,7 @@ def main():
 
     consist = ColdMetalCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=7720,
+        base_numeric_id=16760,
         gen=2,
         subtype="B",
         sprites_complete=True,
@@ -28,7 +28,7 @@ def main():
 
     consist = ColdMetalCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=7730,
+        base_numeric_id=16770,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -38,7 +38,7 @@ def main():
 
     consist = ColdMetalCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=7740,
+        base_numeric_id=16780,
         gen=3,
         subtype="B",
         sprites_complete=True,
@@ -48,7 +48,7 @@ def main():
 
     consist = ColdMetalCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=7750,
+        base_numeric_id=16790,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -58,7 +58,7 @@ def main():
 
     consist = ColdMetalCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=7760,
+        base_numeric_id=16800,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -68,7 +68,7 @@ def main():
 
     consist = ColdMetalCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=7770,
+        base_numeric_id=16810,
         gen=4,
         subtype="C",
         sprites_complete=True,
@@ -82,7 +82,7 @@ def main():
 
     consist = ColdMetalCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=7780,
+        base_numeric_id=16820,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -92,7 +92,7 @@ def main():
 
     consist = ColdMetalCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=7790,
+        base_numeric_id=16830,
         gen=5,
         subtype="C",
         sprites_complete=True,
@@ -102,7 +102,7 @@ def main():
 
     consist = ColdMetalCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=7800,
+        base_numeric_id=16840,
         gen=6,
         subtype="B",
         sprites_complete=True,
@@ -112,7 +112,7 @@ def main():
 
     consist = ColdMetalCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=7810,
+        base_numeric_id=16850,
         gen=6,
         subtype="C",
         sprites_complete=True,

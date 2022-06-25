@@ -5,7 +5,7 @@ def main(roster_id):
     consist = PassengerEngineRailcarConsist(
         roster_id=roster_id,
         id="athena",
-        base_numeric_id=2150,
+        base_numeric_id=11190,
         name="Athena",
         role="pax_railcar",
         role_child_branch_num=2,

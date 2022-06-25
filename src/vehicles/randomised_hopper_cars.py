@@ -6,7 +6,7 @@ def main():
 
     consist = HopperCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=7820,
+        base_numeric_id=16860,
         gen=1,
         subtype="A",
         sprites_complete=True,
@@ -18,7 +18,7 @@ def main():
 
     consist = HopperCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=7840,
+        base_numeric_id=16880,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -28,7 +28,7 @@ def main():
 
     consist = HopperCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=7850,
+        base_numeric_id=16890,
         gen=3,
         subtype="B",
         sprites_complete=True,
@@ -38,7 +38,7 @@ def main():
 
     consist = HopperCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=7860,
+        base_numeric_id=16900,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -48,7 +48,7 @@ def main():
 
     consist = HopperCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=7870,
+        base_numeric_id=16910,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -68,7 +68,7 @@ def main():
 
     consist = HopperCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=7890,
+        base_numeric_id=16930,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -78,7 +78,7 @@ def main():
 
     consist = HopperCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=7900,
+        base_numeric_id=16940,
         gen=5,
         subtype="C",
         sprites_complete=True,
@@ -88,7 +88,7 @@ def main():
 
     consist = HopperCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=7910,
+        base_numeric_id=16950,
         gen=6,
         subtype="B",
         sprites_complete=True,
@@ -98,7 +98,7 @@ def main():
 
     consist = HopperCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=7920,
+        base_numeric_id=16960,
         gen=6,
         subtype="C",
         sprites_complete=True,

@@ -5,7 +5,7 @@ def main(roster_id):
     consist = EngineConsist(
         roster_id=roster_id,
         id="peacock",
-        base_numeric_id=340,
+        base_numeric_id=9380,
         name="2-6-0 Peacock",
         power=1200,
         tractive_effort_coefficient=0.32,

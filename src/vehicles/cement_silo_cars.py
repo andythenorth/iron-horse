@@ -6,7 +6,7 @@ def main():
 
     consist = SiloCarCementConsist(
         roster_id="pony",
-        base_numeric_id=1230,
+        base_numeric_id=10270,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -16,7 +16,7 @@ def main():
 
     consist = SiloCarCementConsist(
         roster_id="pony",
-        base_numeric_id=1240,
+        base_numeric_id=10280,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -26,7 +26,7 @@ def main():
 
     consist = SiloCarCementConsist(
         roster_id="pony",
-        base_numeric_id=1260,
+        base_numeric_id=10300,
         gen=4,
         subtype="C",
         sprites_complete=True,
@@ -36,7 +36,7 @@ def main():
 
     consist = SiloCarCementConsist(
         roster_id="pony",
-        base_numeric_id=1270,
+        base_numeric_id=10310,
         gen=5,
         subtype="A",
         sprites_complete=True,
@@ -46,7 +46,7 @@ def main():
 
     consist = SiloCarCementConsist(
         roster_id="pony",
-        base_numeric_id=1340,
+        base_numeric_id=10380,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -56,7 +56,7 @@ def main():
 
     consist = SiloCarCementConsist(
         roster_id="pony",
-        base_numeric_id=1940,
+        base_numeric_id=10980,
         gen=5,
         subtype="C",
         sprites_complete=True,
@@ -66,7 +66,7 @@ def main():
 
     consist = SiloCarCementConsist(
         roster_id="pony",
-        base_numeric_id=2060,
+        base_numeric_id=11100,
         gen=6,
         subtype="A",
         sprites_complete=True,
@@ -76,7 +76,7 @@ def main():
 
     consist = SiloCarCementConsist(
         roster_id="pony",
-        base_numeric_id=2070,
+        base_numeric_id=11110,
         gen=6,
         subtype="B",
         sprites_complete=True,
@@ -86,7 +86,7 @@ def main():
 
     consist = SiloCarCementConsist(
         roster_id="pony",
-        base_numeric_id=2700,
+        base_numeric_id=11740,
         gen=6,
         subtype="C",
         sprites_complete=True,

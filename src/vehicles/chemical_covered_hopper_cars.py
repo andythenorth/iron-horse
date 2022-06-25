@@ -6,7 +6,7 @@ def main():
 
     consist = CoveredHopperCarChemicalConsist(
         roster_id="pony",
-        base_numeric_id=6570,
+        base_numeric_id=15610,
         gen=2,
         subtype="U",
         base_track_type="NG",
@@ -17,7 +17,7 @@ def main():
 
     consist = CoveredHopperCarChemicalConsist(
         roster_id="pony",
-        base_numeric_id=6580,
+        base_numeric_id=15620,
         gen=3,
         subtype="U",
         base_track_type="NG",
@@ -28,7 +28,7 @@ def main():
 
     consist = CoveredHopperCarChemicalConsist(
         roster_id="pony",
-        base_numeric_id=6590,
+        base_numeric_id=15630,
         gen=4,
         subtype="U",
         base_track_type="NG",
@@ -41,7 +41,7 @@ def main():
 
     consist = CoveredHopperCarChemicalConsist(
         roster_id="pony",
-        base_numeric_id=6110,
+        base_numeric_id=15150,
         gen=2,
         subtype="A",
         sprites_complete=True,
@@ -51,7 +51,7 @@ def main():
 
     consist = CoveredHopperCarChemicalConsist(
         roster_id="pony",
-        base_numeric_id=6040,
+        base_numeric_id=15080,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -61,7 +61,7 @@ def main():
 
     consist = CoveredHopperCarChemicalConsist(
         roster_id="pony",
-        base_numeric_id=6050,
+        base_numeric_id=15090,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -71,7 +71,7 @@ def main():
 
     consist = CoveredHopperCarChemicalConsist(
         roster_id="pony",
-        base_numeric_id=6060,
+        base_numeric_id=15100,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -81,7 +81,7 @@ def main():
 
     consist = CoveredHopperCarChemicalConsist(
         roster_id="pony",
-        base_numeric_id=6070,
+        base_numeric_id=15110,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -91,7 +91,7 @@ def main():
 
     consist = CoveredHopperCarChemicalConsist(
         roster_id="pony",
-        base_numeric_id=6080,
+        base_numeric_id=15120,
         gen=5,
         subtype="C",
         sprites_complete=True,
@@ -101,7 +101,7 @@ def main():
 
     consist = CoveredHopperCarChemicalConsist(
         roster_id="pony",
-        base_numeric_id=6090,
+        base_numeric_id=15130,
         gen=6,
         subtype="B",
         sprites_complete=True,
@@ -111,7 +111,7 @@ def main():
 
     consist = CoveredHopperCarChemicalConsist(
         roster_id="pony",
-        base_numeric_id=6100,
+        base_numeric_id=15140,
         gen=6,
         subtype="C",
         sprites_complete=True,

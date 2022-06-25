@@ -5,7 +5,7 @@ def main(roster_id):
     consist = EngineConsist(
         roster_id=roster_id,
         id="lamia",
-        base_numeric_id=4880,
+        base_numeric_id=13920,
         name="0-6-0 Lamia",  # the name is the Basque mythical creature, not the Greek https://en.wikipedia.org/wiki/Lamia_(Basque_mythology)
         role="gronk!",
         role_child_branch_num=-2,

@@ -9,7 +9,7 @@ def main():
 
     consist = PassengerRailbusTrailerCarConsist(
         roster_id="pony",
-        base_numeric_id=990,
+        base_numeric_id=10030,
         gen=3,
         subtype="U",
         base_track_type="NG",
@@ -22,7 +22,7 @@ def main():
 
     consist = PassengerRailbusTrailerCarConsist(
         roster_id="pony",
-        base_numeric_id=4470,
+        base_numeric_id=13510,
         gen=4,
         subtype="U",
         base_track_type="NG",

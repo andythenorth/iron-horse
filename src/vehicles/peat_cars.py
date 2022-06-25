@@ -7,7 +7,7 @@ def main():
     """
     consist = PeatCarConsist(
         roster_id="pony",
-        base_numeric_id=6130,
+        base_numeric_id=15170,
         gen=1,
         subtype="U",
         base_track_type="NG",

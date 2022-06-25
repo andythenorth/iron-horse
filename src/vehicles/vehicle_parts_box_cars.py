@@ -8,7 +8,7 @@ def main():
 
     consist = BoxCarVehiclePartsConsist(
         roster_id="pony",
-        base_numeric_id=4620,
+        base_numeric_id=13660,
         gen=4,
         subtype="B",
         intro_date_offset=3,  # let's be a little bit later for this one
@@ -19,7 +19,7 @@ def main():
 
     consist = BoxCarVehiclePartsConsist(
         roster_id="pony",
-        base_numeric_id=4630,
+        base_numeric_id=13670,
         gen=4,
         subtype="C",
         intro_date_offset=3,  # let's be a little bit later for this one
@@ -34,7 +34,7 @@ def main():
 
     consist = BoxCarVehiclePartsConsist(
         roster_id="pony",
-        base_numeric_id=4640,
+        base_numeric_id=13680,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -48,7 +48,7 @@ def main():
 
     consist = BoxCarVehiclePartsConsist(
         roster_id="pony",
-        base_numeric_id=4650,
+        base_numeric_id=13690,
         gen=5,
         subtype="C",
         sprites_complete=True,
@@ -62,7 +62,7 @@ def main():
 
     consist = BoxCarVehiclePartsConsist(
         roster_id="pony",
-        base_numeric_id=4660,
+        base_numeric_id=13700,
         gen=6,
         subtype="B",
         sprites_complete=True,
@@ -76,7 +76,7 @@ def main():
 
     consist = BoxCarVehiclePartsConsist(
         roster_id="pony",
-        base_numeric_id=4670,
+        base_numeric_id=13710,
         gen=6,
         subtype="C",
         sprites_complete=True,

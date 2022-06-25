@@ -6,7 +6,7 @@ def main():
 
     consist = TankCarProductConsist(
         roster_id="pony",
-        base_numeric_id=2860,
+        base_numeric_id=11900,
         gen=2,
         subtype="A",
         intro_date_offset=-10,  # let's be earlier for this one
@@ -17,7 +17,7 @@ def main():
 
     consist = TankCarProductConsist(
         roster_id="pony",
-        base_numeric_id=3360,
+        base_numeric_id=12400,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -27,7 +27,7 @@ def main():
 
     consist = TankCarProductConsist(
         roster_id="pony",
-        base_numeric_id=3370,
+        base_numeric_id=12410,
         gen=3,
         subtype="B",
         sprites_complete=True,
@@ -37,7 +37,7 @@ def main():
 
     consist = TankCarProductConsist(
         roster_id="pony",
-        base_numeric_id=3460,
+        base_numeric_id=12500,
         gen=3,
         subtype="C",
         sprites_complete=True,
@@ -47,7 +47,7 @@ def main():
 
     consist = TankCarProductConsist(
         roster_id="pony",
-        base_numeric_id=3380,
+        base_numeric_id=12420,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -57,7 +57,7 @@ def main():
 
     consist = TankCarProductConsist(
         roster_id="pony",
-        base_numeric_id=3390,
+        base_numeric_id=12430,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -67,7 +67,7 @@ def main():
 
     consist = TankCarProductConsist(
         roster_id="pony",
-        base_numeric_id=3400,
+        base_numeric_id=12440,
         gen=4,
         subtype="C",
         sprites_complete=True,
@@ -77,7 +77,7 @@ def main():
 
     consist = TankCarProductConsist(
         roster_id="pony",
-        base_numeric_id=3410,
+        base_numeric_id=12450,
         gen=5,
         subtype="A",
         sprites_complete=True,
@@ -87,7 +87,7 @@ def main():
 
     consist = TankCarProductConsist(
         roster_id="pony",
-        base_numeric_id=3420,
+        base_numeric_id=12460,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -97,7 +97,7 @@ def main():
 
     consist = TankCarProductConsist(
         roster_id="pony",
-        base_numeric_id=3430,
+        base_numeric_id=12470,
         gen=5,
         subtype="C",
         sprites_complete=True,
@@ -109,7 +109,7 @@ def main():
 
     """
     consist = TankCarProductConsist(roster_id='pony',
-                             base_numeric_id=180,
+                             base_numeric_id=9220,
                              gen=6,
                              subtype='A',
                              sprites_complete=False)
@@ -120,7 +120,7 @@ def main():
 
     consist = TankCarProductConsist(
         roster_id="pony",
-        base_numeric_id=3440,
+        base_numeric_id=12480,
         gen=6,
         subtype="B",
         sprites_complete=True,
@@ -130,7 +130,7 @@ def main():
 
     consist = TankCarProductConsist(
         roster_id="pony",
-        base_numeric_id=3450,
+        base_numeric_id=12490,
         gen=6,
         subtype="C",
         sprites_complete=True,

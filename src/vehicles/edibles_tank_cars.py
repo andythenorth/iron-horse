@@ -8,7 +8,7 @@ def main():
 
     consist = EdiblesTankCarConsist(
         roster_id="pony",
-        base_numeric_id=3030,
+        base_numeric_id=12070,
         gen=2,
         subtype="A",
         sprites_complete=True,
@@ -18,7 +18,7 @@ def main():
 
     consist = EdiblesTankCarConsist(
         roster_id="pony",
-        base_numeric_id=1190,
+        base_numeric_id=10230,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -28,7 +28,7 @@ def main():
 
     consist = EdiblesTankCarConsist(
         roster_id="pony",
-        base_numeric_id=2990,
+        base_numeric_id=12030,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -38,7 +38,7 @@ def main():
 
     consist = EdiblesTankCarConsist(
         roster_id="pony",
-        base_numeric_id=1690,
+        base_numeric_id=10730,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -48,7 +48,7 @@ def main():
 
     consist = EdiblesTankCarConsist(
         roster_id="pony",
-        base_numeric_id=1220,
+        base_numeric_id=10260,
         gen=4,
         subtype="C",
         sprites_complete=True,
@@ -58,7 +58,7 @@ def main():
 
     consist = EdiblesTankCarConsist(
         roster_id="pony",
-        base_numeric_id=1210,
+        base_numeric_id=10250,
         gen=5,
         subtype="A",
         sprites_complete=True,
@@ -68,7 +68,7 @@ def main():
 
     consist = EdiblesTankCarConsist(
         roster_id="pony",
-        base_numeric_id=1700,
+        base_numeric_id=10740,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -78,7 +78,7 @@ def main():
 
     consist = EdiblesTankCarConsist(
         roster_id="pony",
-        base_numeric_id=3050,
+        base_numeric_id=12090,
         gen=5,
         subtype="C",
         sprites_complete=True,
@@ -90,7 +90,7 @@ def main():
 
     consist = EdiblesTankCarConsist(
         roster_id="pony",
-        base_numeric_id=2100,
+        base_numeric_id=11140,
         gen=6,
         subtype="B",
         sprites_complete=True,
@@ -100,7 +100,7 @@ def main():
 
     consist = EdiblesTankCarConsist(
         roster_id="pony",
-        base_numeric_id=2090,
+        base_numeric_id=11130,
         gen=6,
         subtype="C",
         sprites_complete=True,

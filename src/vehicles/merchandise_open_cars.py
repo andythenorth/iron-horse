@@ -8,7 +8,7 @@ def main():
 
     consist = OpenCarMerchandiseConsist(
         roster_id="pony",
-        base_numeric_id=7210,
+        base_numeric_id=16250,
         gen=1,
         subtype="A",
         sprites_complete=True,
@@ -20,7 +20,7 @@ def main():
 
     consist = OpenCarMerchandiseConsist(
         roster_id="pony",
-        base_numeric_id=7220,
+        base_numeric_id=16260,
         gen=2,
         subtype="B",
         sprites_complete=True,
@@ -30,7 +30,7 @@ def main():
 
     consist = OpenCarMerchandiseConsist(
         roster_id="pony",
-        base_numeric_id=7230,
+        base_numeric_id=16270,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -40,7 +40,7 @@ def main():
 
     consist = OpenCarMerchandiseConsist(
         roster_id="pony",
-        base_numeric_id=7240,
+        base_numeric_id=16280,
         gen=3,
         subtype="B",
         sprites_complete=True,
@@ -50,7 +50,7 @@ def main():
 
     consist = OpenCarMerchandiseConsist(
         roster_id="pony",
-        base_numeric_id=7250,
+        base_numeric_id=16290,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -60,7 +60,7 @@ def main():
 
     consist = OpenCarMerchandiseConsist(
         roster_id="pony",
-        base_numeric_id=7260,
+        base_numeric_id=16300,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -70,7 +70,7 @@ def main():
 
     consist = OpenCarMerchandiseConsist(
         roster_id="pony",
-        base_numeric_id=7270,
+        base_numeric_id=16310,
         gen=5,
         subtype="A",
         sprites_complete=True,
@@ -80,7 +80,7 @@ def main():
 
     consist = OpenCarMerchandiseConsist(
         roster_id="pony",
-        base_numeric_id=7280,
+        base_numeric_id=16320,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -90,7 +90,7 @@ def main():
 
     consist = OpenCarMerchandiseConsist(
         roster_id="pony",
-        base_numeric_id=7290,
+        base_numeric_id=16330,
         gen=5,
         subtype="C",
         sprites_complete=True,
@@ -101,7 +101,7 @@ def main():
     """
     consist = OpenCarMerchandiseConsist(
         roster_id="pony",
-        base_numeric_id=7300,
+        base_numeric_id=16340,
         gen=6,
         subtype="B",
         sprites_complete=False,
@@ -111,7 +111,7 @@ def main():
 
     consist = OpenCarMerchandiseConsist(
         roster_id="pony",
-        base_numeric_id=7310,
+        base_numeric_id=16350,
         gen=6,
         subtype="C",
         sprites_complete=False,

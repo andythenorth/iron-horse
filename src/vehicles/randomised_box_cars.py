@@ -6,7 +6,7 @@ def main():
 
     consist = BoxCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=7600,
+        base_numeric_id=16640,
         gen=1,
         subtype="A",
         sprites_complete=True,
@@ -18,7 +18,7 @@ def main():
 
     consist = BoxCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=7610,
+        base_numeric_id=16650,
         gen=2,
         subtype="B",
         sprites_complete=True,
@@ -28,7 +28,7 @@ def main():
 
     consist = BoxCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=7620,
+        base_numeric_id=16660,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -38,7 +38,7 @@ def main():
 
     consist = BoxCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=7630,
+        base_numeric_id=16670,
         gen=3,
         subtype="B",
         sprites_complete=True,
@@ -48,7 +48,7 @@ def main():
 
     consist = BoxCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=7640,
+        base_numeric_id=16680,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -58,7 +58,7 @@ def main():
 
     consist = BoxCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=7650,
+        base_numeric_id=16690,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -68,7 +68,7 @@ def main():
 
     consist = BoxCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=7660,
+        base_numeric_id=16700,
         gen=4,
         subtype="C",
         sprites_complete=True,
@@ -82,7 +82,7 @@ def main():
 
     consist = BoxCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=7670,
+        base_numeric_id=16710,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -92,7 +92,7 @@ def main():
 
     consist = BoxCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=7680,
+        base_numeric_id=16720,
         gen=5,
         subtype="C",
         sprites_complete=True,
@@ -102,7 +102,7 @@ def main():
 
     consist = BoxCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=7690,
+        base_numeric_id=16730,
         gen=6,
         subtype="B",
         sprites_complete=True,
@@ -112,7 +112,7 @@ def main():
 
     consist = BoxCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=7700,
+        base_numeric_id=16740,
         gen=6,
         subtype="C",
         sprites_complete=True,

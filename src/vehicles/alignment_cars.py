@@ -4,7 +4,7 @@ from train import AlignmentCarConsist, AlignmentCar
 def main():
     # --------------- pony ----------------------------------------------------------------------
     consist = AlignmentCarConsist(
-        roster_id="pony", base_numeric_id=20, gen=1, subtype="A", sprites_complete=False
+        roster_id="pony", base_numeric_id=9060, gen=1, subtype="A", sprites_complete=False
     )
 
     consist.add_unit(
@@ -12,7 +12,7 @@ def main():
     )
 
     consist = AlignmentCarConsist(
-        roster_id="pony", base_numeric_id=30, gen=1, subtype="B", sprites_complete=False
+        roster_id="pony", base_numeric_id=9070, gen=1, subtype="B", sprites_complete=False
     )
 
     consist.add_unit(
@@ -20,7 +20,7 @@ def main():
     )
 
     consist = AlignmentCarConsist(
-        roster_id="pony", base_numeric_id=40, gen=1, subtype="C", sprites_complete=False
+        roster_id="pony", base_numeric_id=9080, gen=1, subtype="C", sprites_complete=False
     )
 
     consist.add_unit(

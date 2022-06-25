@@ -6,7 +6,7 @@ def main():
 
     consist = KaolinHopperCarConsist(
         roster_id="pony",
-        base_numeric_id=7110,
+        base_numeric_id=16150,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -16,7 +16,7 @@ def main():
 
     consist = KaolinHopperCarConsist(
         roster_id="pony",
-        base_numeric_id=7120,
+        base_numeric_id=16160,
         gen=5,
         subtype="C",
         sprites_complete=True,
@@ -26,7 +26,7 @@ def main():
 
     consist = KaolinHopperCarConsist(
         roster_id="pony",
-        base_numeric_id=6930,
+        base_numeric_id=15970,
         gen=6,
         subtype="B",
         sprites_complete=True,
@@ -36,7 +36,7 @@ def main():
 
     consist = KaolinHopperCarConsist(
         roster_id="pony",
-        base_numeric_id=6940,
+        base_numeric_id=15980,
         gen=6,
         subtype="C",
         sprites_complete=True,

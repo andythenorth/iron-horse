@@ -6,7 +6,7 @@ def main(roster_id):
         roster_id=roster_id,
         id="drakensberg",
         # !! This vehicle needs more than one id range due to length
-        base_numeric_id=1800,
+        base_numeric_id=10840,
         name="4-8-2+2-8-4 Drakensberg",
         tractive_effort_coefficient=0.25,
         power=3000,

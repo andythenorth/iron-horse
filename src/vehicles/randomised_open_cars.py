@@ -6,7 +6,7 @@ def main():
 
     consist = OpenCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=7930,
+        base_numeric_id=16970,
         gen=1,
         subtype="A",
         sprites_complete=True,
@@ -18,7 +18,7 @@ def main():
 
     consist = OpenCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=7940,
+        base_numeric_id=16980,
         gen=2,
         subtype="B",
         sprites_complete=True,
@@ -28,7 +28,7 @@ def main():
 
     consist = OpenCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=7950,
+        base_numeric_id=16990,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -38,7 +38,7 @@ def main():
 
     consist = OpenCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=7960,
+        base_numeric_id=17000,
         gen=3,
         subtype="B",
         sprites_complete=True,
@@ -48,7 +48,7 @@ def main():
 
     consist = OpenCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=7970,
+        base_numeric_id=17010,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -58,7 +58,7 @@ def main():
 
     consist = OpenCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=7980,
+        base_numeric_id=17020,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -68,7 +68,7 @@ def main():
 
     consist = OpenCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=8000,
+        base_numeric_id=17040,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -78,7 +78,7 @@ def main():
 
     consist = OpenCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=8010,
+        base_numeric_id=17050,
         gen=5,
         subtype="C",
         sprites_complete=True,
@@ -88,7 +88,7 @@ def main():
 
     consist = OpenCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=8020,
+        base_numeric_id=17060,
         gen=6,
         subtype="B",
         sprites_complete=True,
@@ -98,7 +98,7 @@ def main():
 
     consist = OpenCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=8030,
+        base_numeric_id=17070,
         gen=6,
         subtype="C",
         sprites_complete=True,

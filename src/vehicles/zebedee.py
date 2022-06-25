@@ -5,7 +5,7 @@ def main(roster_id):
     consist = EngineConsist(
         roster_id=roster_id,
         id="zebedee",
-        base_numeric_id=4950,
+        base_numeric_id=13990,
         name="Zebedee",
         role="super_heavy_express",
         role_child_branch_num=-1,  # it's a joker, tried it as super heavy express 1, the power progression and dates are all wrong for that

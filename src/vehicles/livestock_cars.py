@@ -5,7 +5,7 @@ def main():
     # --------------- pony NG ----------------------------------------------------------------------
     consist = LivestockCarConsist(
         roster_id="pony",
-        base_numeric_id=1030,
+        base_numeric_id=10070,
         gen=1,
         subtype="U",
         base_track_type="NG",
@@ -18,7 +18,7 @@ def main():
 
     consist = LivestockCarConsist(
         roster_id="pony",
-        base_numeric_id=620,
+        base_numeric_id=9660,
         gen=3,
         subtype="U",
         base_track_type="NG",
@@ -29,7 +29,7 @@ def main():
 
     consist = LivestockCarConsist(
         roster_id="pony",
-        base_numeric_id=680,
+        base_numeric_id=9720,
         gen=4,
         subtype="U",
         base_track_type="NG",
@@ -41,7 +41,7 @@ def main():
     # --------------- pony ----------------------------------------------------------------------
     consist = LivestockCarConsist(
         roster_id="pony",
-        base_numeric_id=1010,
+        base_numeric_id=10050,
         gen=1,
         subtype="A",
         sprites_complete=True,
@@ -53,7 +53,7 @@ def main():
 
     consist = LivestockCarConsist(
         roster_id="pony",
-        base_numeric_id=2680,
+        base_numeric_id=11720,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -63,7 +63,7 @@ def main():
 
     consist = LivestockCarConsist(
         roster_id="pony",
-        base_numeric_id=1020,
+        base_numeric_id=10060,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -73,7 +73,7 @@ def main():
 
     consist = LivestockCarConsist(
         roster_id="pony",
-        base_numeric_id=2720,
+        base_numeric_id=11760,
         gen=5,
         subtype="C",
         sprites_complete=True,
@@ -105,7 +105,7 @@ def main():
 
     consist = LivestockCarConsist(
         roster_id="pony",
-        base_numeric_id=2710,
+        base_numeric_id=11750,
         gen=6,
         subtype="C",
         sprites_complete=True,

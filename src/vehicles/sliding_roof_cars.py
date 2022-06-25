@@ -8,7 +8,7 @@ def main():
 
     consist = FlatCarSlidingRoofConsist(
         roster_id="pony",
-        base_numeric_id=5230,
+        base_numeric_id=14270,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -18,7 +18,7 @@ def main():
 
     consist = FlatCarSlidingRoofConsist(
         roster_id="pony",
-        base_numeric_id=5240,
+        base_numeric_id=14280,
         gen=5,
         subtype="C",
         sprites_complete=True,
@@ -28,7 +28,7 @@ def main():
 
     consist = FlatCarSlidingRoofConsist(
         roster_id="pony",
-        base_numeric_id=5220,
+        base_numeric_id=14260,
         gen=6,
         subtype="B",
         sprites_complete=True,
@@ -38,7 +38,7 @@ def main():
 
     consist = FlatCarSlidingRoofConsist(
         roster_id="pony",
-        base_numeric_id=5210,
+        base_numeric_id=14250,
         gen=6,
         subtype="C",
         sprites_complete=True,

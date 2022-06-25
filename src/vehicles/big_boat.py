@@ -5,7 +5,7 @@ def main(roster_id):
     consist = EngineConsist(
         roster_id=roster_id,
         id="big_boat",
-        base_numeric_id=1600,
+        base_numeric_id=10640,
         name="Big Boat",
         power=4500,
         # dibble up TE, modern diesels can cheat adhesion using wheel slip

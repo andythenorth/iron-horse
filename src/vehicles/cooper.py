@@ -4,7 +4,7 @@ from train import EngineConsist, DieselEngineUnit
 def main():  # GE Shovelnose - meter gauge ish
     consist = EngineConsist(
         id="cooper",
-        base_numeric_id=1440,
+        base_numeric_id=10480,
         name="Cooper",
         power=1000,
         base_track_type="NG",

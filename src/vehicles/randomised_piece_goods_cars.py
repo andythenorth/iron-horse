@@ -6,7 +6,7 @@ def main():
 
     consist = PieceGoodsCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=8040,
+        base_numeric_id=17080,
         gen=1,
         subtype="A",
         sprites_complete=True,
@@ -18,7 +18,7 @@ def main():
 
     consist = PieceGoodsCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=8050,
+        base_numeric_id=17090,
         gen=2,
         subtype="B",
         sprites_complete=True,
@@ -28,7 +28,7 @@ def main():
 
     consist = PieceGoodsCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=8060,
+        base_numeric_id=17100,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -38,7 +38,7 @@ def main():
 
     consist = PieceGoodsCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=8070,
+        base_numeric_id=17110,
         gen=3,
         subtype="B",
         sprites_complete=True,
@@ -48,7 +48,7 @@ def main():
 
     consist = PieceGoodsCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=8080,
+        base_numeric_id=17120,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -58,7 +58,7 @@ def main():
 
     consist = PieceGoodsCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=8090,
+        base_numeric_id=17130,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -68,7 +68,7 @@ def main():
 
     consist = PieceGoodsCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=8140,
+        base_numeric_id=17180,
         gen=4,
         subtype="C",
         sprites_complete=True,
@@ -78,7 +78,7 @@ def main():
 
     consist = PieceGoodsCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=8100,
+        base_numeric_id=17140,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -88,7 +88,7 @@ def main():
 
     consist = PieceGoodsCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=8110,
+        base_numeric_id=17150,
         gen=5,
         subtype="C",
         sprites_complete=True,
@@ -98,7 +98,7 @@ def main():
 
     consist = PieceGoodsCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=8120,
+        base_numeric_id=17160,
         gen=6,
         subtype="B",
         sprites_complete=True,
@@ -108,7 +108,7 @@ def main():
 
     consist = PieceGoodsCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=8130,
+        base_numeric_id=17170,
         gen=6,
         subtype="C",
         sprites_complete=True,

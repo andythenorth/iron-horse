@@ -4,26 +4,26 @@ from train import GasTankCarCryoConsist, FreightCar
 def main():
     # --------------- pony ----------------------------------------------------------------------
     consist = GasTankCarCryoConsist(
-        roster_id="pony", base_numeric_id=20, gen=4, subtype="A", sprites_complete=True
+        roster_id="pony", base_numeric_id=9060, gen=4, subtype="A", sprites_complete=True
     )
 
     consist.add_unit(type=FreightCar, chassis="2_axle_sparse_16px")
 
     consist = GasTankCarCryoConsist(
-        roster_id="pony", base_numeric_id=50, gen=4, subtype="B", sprites_complete=True
+        roster_id="pony", base_numeric_id=9090, gen=4, subtype="B", sprites_complete=True
     )
 
     consist.add_unit(type=FreightCar, chassis="4_axle_sparse_24px")
 
     consist = GasTankCarCryoConsist(
-        roster_id="pony", base_numeric_id=60, gen=4, subtype="C", sprites_complete=True
+        roster_id="pony", base_numeric_id=9100, gen=4, subtype="C", sprites_complete=True
     )
 
     consist.add_unit(type=FreightCar, chassis="4_axle_sparse_32px")
 
     consist = GasTankCarCryoConsist(
         roster_id="pony",
-        base_numeric_id=6270,
+        base_numeric_id=15310,
         gen=5,
         subtype="A",
         sprites_complete=True,
@@ -32,14 +32,14 @@ def main():
     consist.add_unit(type=FreightCar, chassis="2_axle_sparse_greebled_16px")
 
     consist = GasTankCarCryoConsist(
-        roster_id="pony", base_numeric_id=90, gen=5, subtype="B", sprites_complete=True
+        roster_id="pony", base_numeric_id=9130, gen=5, subtype="B", sprites_complete=True
     )
 
     consist.add_unit(type=FreightCar, chassis="4_axle_gapped_greebled_alt_24px")
 
     consist = GasTankCarCryoConsist(
         roster_id="pony",
-        base_numeric_id=150,
+        base_numeric_id=9190,
         gen=5,
         subtype="C",
         sprites_complete=True,
@@ -49,7 +49,7 @@ def main():
 
     consist = GasTankCarCryoConsist(
         roster_id="pony",
-        base_numeric_id=6260,
+        base_numeric_id=15300,
         gen=6,
         subtype="A",
         sprites_complete=True,
@@ -59,7 +59,7 @@ def main():
 
     consist = GasTankCarCryoConsist(
         roster_id="pony",
-        base_numeric_id=190,
+        base_numeric_id=9230,
         gen=6,
         subtype="B",
         sprites_complete=True,
@@ -69,7 +69,7 @@ def main():
 
     consist = GasTankCarCryoConsist(
         roster_id="pony",
-        base_numeric_id=200,
+        base_numeric_id=9240,
         gen=6,
         subtype="C",
         sprites_complete=True,

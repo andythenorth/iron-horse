@@ -6,7 +6,7 @@ def main():
 
     consist = CarbonBlackHopperCarConsist(
         roster_id="pony",
-        base_numeric_id=4410,
+        base_numeric_id=13450,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -16,7 +16,7 @@ def main():
 
     consist = CarbonBlackHopperCarConsist(
         roster_id="pony",
-        base_numeric_id=4420,
+        base_numeric_id=13460,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -26,7 +26,7 @@ def main():
 
     consist = CarbonBlackHopperCarConsist(
         roster_id="pony",
-        base_numeric_id=4430,
+        base_numeric_id=13470,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -36,7 +36,7 @@ def main():
 
     consist = CarbonBlackHopperCarConsist(
         roster_id="pony",
-        base_numeric_id=4450,
+        base_numeric_id=13490,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -46,7 +46,7 @@ def main():
 
     consist = CarbonBlackHopperCarConsist(
         roster_id="pony",
-        base_numeric_id=4460,
+        base_numeric_id=13500,
         gen=5,
         subtype="C",
         sprites_complete=True,
@@ -56,7 +56,7 @@ def main():
 
     consist = CarbonBlackHopperCarConsist(
         roster_id="pony",
-        base_numeric_id=4480,
+        base_numeric_id=13520,
         gen=6,
         subtype="B",
         sprites_complete=True,
@@ -66,7 +66,7 @@ def main():
 
     consist = CarbonBlackHopperCarConsist(
         roster_id="pony",
-        base_numeric_id=4490,
+        base_numeric_id=13530,
         gen=6,
         subtype="C",
         sprites_complete=True,

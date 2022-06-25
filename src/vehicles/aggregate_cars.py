@@ -5,7 +5,7 @@ def main():
     # --------------- pony ----------------------------------------------------------------------
     consist = DumpCarAggregateConsist(
         roster_id="pony",
-        base_numeric_id=5690,
+        base_numeric_id=14730,
         gen=1,
         subtype="A",
         sprites_complete=True,
@@ -17,7 +17,7 @@ def main():
 
     consist = DumpCarAggregateConsist(
         roster_id="pony",
-        base_numeric_id=2350,
+        base_numeric_id=11390,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -27,7 +27,7 @@ def main():
 
     consist = DumpCarAggregateConsist(
         roster_id="pony",
-        base_numeric_id=2360,
+        base_numeric_id=11400,
         gen=3,
         subtype="B",
         sprites_complete=True,
@@ -37,7 +37,7 @@ def main():
 
     consist = DumpCarAggregateConsist(
         roster_id="pony",
-        base_numeric_id=2370,
+        base_numeric_id=11410,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -47,7 +47,7 @@ def main():
 
     consist = DumpCarAggregateConsist(
         roster_id="pony",
-        base_numeric_id=2380,
+        base_numeric_id=11420,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -57,7 +57,7 @@ def main():
 
     consist = DumpCarAggregateConsist(
         roster_id="pony",
-        base_numeric_id=6700,
+        base_numeric_id=15740,
         gen=5,
         subtype="A",
         sprites_complete=True,
@@ -67,7 +67,7 @@ def main():
 
     consist = DumpCarAggregateConsist(
         roster_id="pony",
-        base_numeric_id=1810,
+        base_numeric_id=10850,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -77,7 +77,7 @@ def main():
 
     consist = DumpCarAggregateConsist(
         roster_id="pony",
-        base_numeric_id=2110,
+        base_numeric_id=11150,
         gen=5,
         subtype="C",
         sprites_complete=True,
@@ -87,7 +87,7 @@ def main():
 
     consist = DumpCarAggregateConsist(
         roster_id="pony",
-        base_numeric_id=2400,
+        base_numeric_id=11440,
         gen=6,
         subtype="B",
         sprites_complete=True,
@@ -97,7 +97,7 @@ def main():
 
     consist = DumpCarAggregateConsist(
         roster_id="pony",
-        base_numeric_id=2390,
+        base_numeric_id=11430,
         gen=6,
         subtype="C",
         sprites_complete=True,

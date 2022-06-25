@@ -8,7 +8,7 @@ def main():
 
     consist = BoxCarSlidingWallConsist(
         roster_id="pony",
-        base_numeric_id=1570,
+        base_numeric_id=10610,
         gen=4,
         subtype="B",
         intro_date_offset=5,  # let's be a little bit later for this one
@@ -19,7 +19,7 @@ def main():
 
     consist = BoxCarSlidingWallConsist(
         roster_id="pony",
-        base_numeric_id=1790,
+        base_numeric_id=10830,
         gen=4,
         subtype="C",
         intro_date_offset=5,  # let's be a little bit later for this one
@@ -33,7 +33,7 @@ def main():
     )
 
     consist = BoxCarSlidingWallConsist(
-        roster_id="pony", base_numeric_id=410, gen=5, subtype="B", sprites_complete=True
+        roster_id="pony", base_numeric_id=9450, gen=5, subtype="B", sprites_complete=True
     )
 
     consist.add_unit(
@@ -43,7 +43,7 @@ def main():
     )
 
     consist = BoxCarSlidingWallConsist(
-        roster_id="pony", base_numeric_id=440, gen=5, subtype="C", sprites_complete=True
+        roster_id="pony", base_numeric_id=9480, gen=5, subtype="C", sprites_complete=True
     )
 
     consist.add_unit(
@@ -77,7 +77,7 @@ def main():
     )
 
     consist = BoxCarSlidingWallConsist(
-        roster_id="pony", base_numeric_id=330, gen=6, subtype="B", sprites_complete=True
+        roster_id="pony", base_numeric_id=9370, gen=6, subtype="B", sprites_complete=True
     )
 
     consist.add_unit(
@@ -87,7 +87,7 @@ def main():
     )
 
     consist = BoxCarSlidingWallConsist(
-        roster_id="pony", base_numeric_id=320, gen=6, subtype="C", sprites_complete=True
+        roster_id="pony", base_numeric_id=9360, gen=6, subtype="C", sprites_complete=True
     )
 
     consist.add_unit(

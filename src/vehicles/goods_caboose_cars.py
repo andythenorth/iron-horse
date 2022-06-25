@@ -17,7 +17,7 @@ def main():
 
     consist = GoodsCabooseCarConsist(
         roster_id="pony",
-        base_numeric_id=7580,
+        base_numeric_id=16620,
         gen=1,
         subtype="A",
         spriterow_labels=spriterow_labels,
@@ -29,7 +29,7 @@ def main():
 
     consist = GoodsCabooseCarConsist(
         roster_id="pony",
-        base_numeric_id=7590,
+        base_numeric_id=16630,
         gen=1,
         subtype="B",
         spriterow_labels=spriterow_labels,

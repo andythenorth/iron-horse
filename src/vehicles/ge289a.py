@@ -5,7 +5,7 @@ def main(roster_id):
     consist = EngineConsist(
         roster_id=roster_id,
         id="ge289a",
-        base_numeric_id=1460,
+        base_numeric_id=10500,
         name="GE 289a Boxcab",
         power=1200,
         base_track_type="NG",

@@ -5,7 +5,7 @@ def main():
     # --------------- pony ng ----------------------------------------------------------------------
     consist = IntermodalCarConsist(
         roster_id="pony",
-        base_numeric_id=3960,
+        base_numeric_id=13000,
         gen=4,
         subtype="U",
         base_track_type="NG",
@@ -17,7 +17,7 @@ def main():
     # --------------- pony ----------------------------------------------------------------------
     consist = IntermodalCarConsist(
         roster_id="pony",
-        base_numeric_id=3880,
+        base_numeric_id=12920,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -27,7 +27,7 @@ def main():
 
     consist = IntermodalCarConsist(
         roster_id="pony",
-        base_numeric_id=3890,
+        base_numeric_id=12930,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -37,7 +37,7 @@ def main():
 
     consist = IntermodalCarConsist(
         roster_id="pony",
-        base_numeric_id=3710,
+        base_numeric_id=12750,
         gen=4,
         subtype="C",
         sprites_complete=True,
@@ -47,7 +47,7 @@ def main():
 
     consist = IntermodalCarConsist(
         roster_id="pony",
-        base_numeric_id=3720,
+        base_numeric_id=12760,
         gen=5,
         subtype="A",
         sprites_complete=True,
@@ -57,7 +57,7 @@ def main():
 
     consist = IntermodalCarConsist(
         roster_id="pony",
-        base_numeric_id=3730,
+        base_numeric_id=12770,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -67,7 +67,7 @@ def main():
 
     consist = IntermodalCarConsist(
         roster_id="pony",
-        base_numeric_id=3740,
+        base_numeric_id=12780,
         gen=5,
         subtype="C",
         sprites_complete=True,
@@ -77,7 +77,7 @@ def main():
 
     consist = IntermodalCarConsist(
         roster_id="pony",
-        base_numeric_id=5080,
+        base_numeric_id=14120,
         gen=6,
         subtype="A",
         sprites_complete=True,
@@ -87,7 +87,7 @@ def main():
 
     consist = IntermodalCarConsist(
         roster_id="pony",
-        base_numeric_id=3750,
+        base_numeric_id=12790,
         gen=6,
         subtype="B",
         sprites_complete=True,
@@ -97,7 +97,7 @@ def main():
 
     consist = IntermodalCarConsist(
         roster_id="pony",
-        base_numeric_id=3760,
+        base_numeric_id=12800,
         gen=6,
         subtype="C",
         sprites_complete=True,

@@ -6,7 +6,7 @@ def main():
 
     consist = CoveredHopperCarMineralConsist(
         roster_id="pony",
-        base_numeric_id=6950,
+        base_numeric_id=15990,
         gen=2,
         subtype="A",
         sprites_complete=True,
@@ -16,7 +16,7 @@ def main():
 
     consist = CoveredHopperCarMineralConsist(
         roster_id="pony",
-        base_numeric_id=6960,
+        base_numeric_id=16000,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -26,7 +26,7 @@ def main():
 
     consist = CoveredHopperCarMineralConsist(
         roster_id="pony",
-        base_numeric_id=6970,
+        base_numeric_id=16010,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -36,7 +36,7 @@ def main():
 
     consist = CoveredHopperCarMineralConsist(
         roster_id="pony",
-        base_numeric_id=6980,
+        base_numeric_id=16020,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -46,7 +46,7 @@ def main():
 
     consist = CoveredHopperCarMineralConsist(
         roster_id="pony",
-        base_numeric_id=7030,
+        base_numeric_id=16070,
         gen=5,
         subtype="A",
         sprites_complete=True,
@@ -56,7 +56,7 @@ def main():
 
     consist = CoveredHopperCarMineralConsist(
         roster_id="pony",
-        base_numeric_id=6990,
+        base_numeric_id=16030,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -66,7 +66,7 @@ def main():
 
     consist = CoveredHopperCarMineralConsist(
         roster_id="pony",
-        base_numeric_id=7000,
+        base_numeric_id=16040,
         gen=5,
         subtype="C",
         sprites_complete=True,
@@ -76,7 +76,7 @@ def main():
 
     consist = CoveredHopperCarMineralConsist(
         roster_id="pony",
-        base_numeric_id=7010,
+        base_numeric_id=16050,
         gen=6,
         subtype="B",
         sprites_complete=True,
@@ -86,7 +86,7 @@ def main():
 
     consist = CoveredHopperCarMineralConsist(
         roster_id="pony",
-        base_numeric_id=7020,
+        base_numeric_id=16060,
         gen=6,
         subtype="C",
         sprites_complete=True,

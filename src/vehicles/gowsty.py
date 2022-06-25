@@ -5,7 +5,7 @@ def main(roster_id):
     consist = MailEngineRailcarConsist(
         roster_id=roster_id,
         id="gowsty",
-        base_numeric_id=1760,
+        base_numeric_id=10800,
         name="Gowsty",
         role="mail_railcar",
         role_child_branch_num=1,

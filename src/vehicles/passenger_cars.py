@@ -5,7 +5,7 @@ def main():
     # --------------- pony NG ----------------------------------------------------------------------
     consist = PassengerCarConsist(
         roster_id="pony",
-        base_numeric_id=770,
+        base_numeric_id=9810,
         gen=1,
         subtype="A",
         base_track_type="NG",
@@ -16,7 +16,7 @@ def main():
 
     consist = PassengerCarConsist(
         roster_id="pony",
-        base_numeric_id=1530,
+        base_numeric_id=10570,
         gen=1,
         subtype="B",
         base_track_type="NG",
@@ -29,7 +29,7 @@ def main():
 
     consist = PassengerCarConsist(
         roster_id="pony",
-        base_numeric_id=800,
+        base_numeric_id=9840,
         gen=3,
         subtype="A",
         base_track_type="NG",
@@ -40,7 +40,7 @@ def main():
 
     consist = PassengerCarConsist(
         roster_id="pony",
-        base_numeric_id=600,
+        base_numeric_id=9640,
         gen=3,
         subtype="B",
         base_track_type="NG",
@@ -51,7 +51,7 @@ def main():
 
     consist = PassengerCarConsist(
         roster_id="pony",
-        base_numeric_id=860,
+        base_numeric_id=9900,
         gen=4,
         subtype="A",
         base_track_type="NG",
@@ -62,7 +62,7 @@ def main():
 
     consist = PassengerCarConsist(
         roster_id="pony",
-        base_numeric_id=660,
+        base_numeric_id=9700,
         gen=4,
         subtype="B",
         base_track_type="NG",
@@ -74,7 +74,7 @@ def main():
     # --------------- pony ----------------------------------------------------------------------
     consist = PassengerCarConsist(
         roster_id="pony",
-        base_numeric_id=5580,
+        base_numeric_id=14620,
         gen=1,
         subtype="A",
         sprites_complete=True,
@@ -84,7 +84,7 @@ def main():
 
     consist = PassengerCarConsist(
         roster_id="pony",
-        base_numeric_id=5590,
+        base_numeric_id=14630,
         gen=1,
         subtype="B",
         sprites_complete=True,
@@ -94,7 +94,7 @@ def main():
 
     consist = PassengerCarConsist(
         roster_id="pony",
-        base_numeric_id=2250,
+        base_numeric_id=11290,
         gen=1,
         subtype="C",
         sprites_complete=True,
@@ -104,7 +104,7 @@ def main():
 
     consist = PassengerCarConsist(
         roster_id="pony",
-        base_numeric_id=5600,
+        base_numeric_id=14640,
         gen=2,
         subtype="A",
         sprites_complete=True,
@@ -114,7 +114,7 @@ def main():
 
     consist = PassengerCarConsist(
         roster_id="pony",
-        base_numeric_id=5610,
+        base_numeric_id=14650,
         gen=2,
         subtype="B",
         sprites_complete=True,
@@ -123,7 +123,7 @@ def main():
     consist.add_unit(type=PaxCar, chassis="4_axle_solid_express_24px")
     consist = PassengerCarConsist(
         roster_id="pony",
-        base_numeric_id=2260,
+        base_numeric_id=11300,
         gen=2,
         subtype="C",
         sprites_complete=True,
@@ -133,7 +133,7 @@ def main():
 
     consist = PassengerCarConsist(
         roster_id="pony",
-        base_numeric_id=5620,
+        base_numeric_id=14660,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -143,7 +143,7 @@ def main():
 
     consist = PassengerCarConsist(
         roster_id="pony",
-        base_numeric_id=5630,
+        base_numeric_id=14670,
         gen=3,
         subtype="B",
         sprites_complete=True,
@@ -153,7 +153,7 @@ def main():
 
     consist = PassengerCarConsist(
         roster_id="pony",
-        base_numeric_id=2270,
+        base_numeric_id=11310,
         gen=3,
         subtype="C",
         sprites_complete=True,
@@ -163,7 +163,7 @@ def main():
 
     consist = PassengerCarConsist(
         roster_id="pony",
-        base_numeric_id=5640,
+        base_numeric_id=14680,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -173,7 +173,7 @@ def main():
 
     consist = PassengerCarConsist(
         roster_id="pony",
-        base_numeric_id=3120,
+        base_numeric_id=12160,
         gen=4,
         subtype="C",
         sprites_complete=True,
@@ -183,7 +183,7 @@ def main():
 
     consist = PassengerCarConsist(
         roster_id="pony",
-        base_numeric_id=740,
+        base_numeric_id=9780,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -193,7 +193,7 @@ def main():
 
     consist = PassengerCarConsist(
         roster_id="pony",
-        base_numeric_id=3130,
+        base_numeric_id=12170,
         gen=5,
         subtype="C",
         sprites_complete=True,
@@ -203,7 +203,7 @@ def main():
 
     consist = PassengerCarConsist(
         roster_id="pony",
-        base_numeric_id=3300,
+        base_numeric_id=12340,
         gen=6,
         subtype="B",
         sprites_complete=True,
@@ -213,7 +213,7 @@ def main():
 
     consist = PassengerCarConsist(
         roster_id="pony",
-        base_numeric_id=1860,
+        base_numeric_id=10900,
         gen=6,
         subtype="C",
         sprites_complete=True,

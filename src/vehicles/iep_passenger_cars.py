@@ -5,7 +5,7 @@ def main():
     # --------------- pony ----------------------------------------------------------------------
     consist = PassengerHSTCarConsist(
         roster_id="pony",
-        base_numeric_id=3900,
+        base_numeric_id=12940,
         gen=4,
         subtype="U",
         intro_date_offset=0,  # match to Firebird
@@ -17,7 +17,7 @@ def main():
 
     consist = PassengerHSTCarConsist(
         roster_id="pony",
-        base_numeric_id=3480,
+        base_numeric_id=12520,
         gen=5,
         subtype="U",
         intro_date_offset=-10,  # match to Blaze HST
@@ -29,7 +29,7 @@ def main():
 
     consist = PassengerHSTCarConsist(
         roster_id="pony",
-        base_numeric_id=3490,
+        base_numeric_id=12530,
         gen=6,
         subtype="U",
         intro_date_offset=-10,  # match to Scorcher HST

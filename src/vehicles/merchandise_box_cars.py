@@ -8,7 +8,7 @@ def main():
 
     consist = BoxCarMerchandiseConsist(
         roster_id="pony",
-        base_numeric_id=7300,
+        base_numeric_id=16340,
         gen=1,
         subtype="A",
         sprites_complete=True,
@@ -20,7 +20,7 @@ def main():
 
     consist = BoxCarMerchandiseConsist(
         roster_id="pony",
-        base_numeric_id=7310,
+        base_numeric_id=16350,
         gen=2,
         subtype="B",
         sprites_complete=True,
@@ -30,7 +30,7 @@ def main():
 
     consist = BoxCarMerchandiseConsist(
         roster_id="pony",
-        base_numeric_id=7320,
+        base_numeric_id=16360,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -40,7 +40,7 @@ def main():
 
     consist = BoxCarMerchandiseConsist(
         roster_id="pony",
-        base_numeric_id=7330,
+        base_numeric_id=16370,
         gen=3,
         subtype="B",
         sprites_complete=True,
@@ -50,7 +50,7 @@ def main():
 
     consist = BoxCarMerchandiseConsist(
         roster_id="pony",
-        base_numeric_id=7340,
+        base_numeric_id=16380,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -60,7 +60,7 @@ def main():
 
     consist = BoxCarMerchandiseConsist(
         roster_id="pony",
-        base_numeric_id=7350,
+        base_numeric_id=16390,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -70,7 +70,7 @@ def main():
 
     consist = BoxCarMerchandiseConsist(
         roster_id="pony",
-        base_numeric_id=7360,
+        base_numeric_id=16400,
         gen=4,
         subtype="C",
         sprites_complete=True,
@@ -84,7 +84,7 @@ def main():
 
     consist = BoxCarMerchandiseConsist(
         roster_id="pony",
-        base_numeric_id=7370,
+        base_numeric_id=16410,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -94,7 +94,7 @@ def main():
 
     consist = BoxCarMerchandiseConsist(
         roster_id="pony",
-        base_numeric_id=7380,
+        base_numeric_id=16420,
         gen=5,
         subtype="C",
         sprites_complete=True,

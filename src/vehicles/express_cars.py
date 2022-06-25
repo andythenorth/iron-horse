@@ -10,7 +10,7 @@ def main():
 
     consist = ExpressCarConsist(
         roster_id="pony",
-        base_numeric_id=1050,
+        base_numeric_id=10090,
         gen=1,
         subtype="A",
         sprites_complete=True,
@@ -20,7 +20,7 @@ def main():
 
     consist = ExpressCarConsist(
         roster_id="pony",
-        base_numeric_id=1060,
+        base_numeric_id=10100,
         gen=2,
         subtype="A",
         sprites_complete=True,
@@ -30,7 +30,7 @@ def main():
 
     consist = ExpressCarConsist(
         roster_id="pony",
-        base_numeric_id=1100,
+        base_numeric_id=10140,
         gen=2,
         subtype="B",
         sprites_complete=True,
@@ -40,7 +40,7 @@ def main():
 
     consist = ExpressCarConsist(
         roster_id="pony",
-        base_numeric_id=1110,
+        base_numeric_id=10150,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -50,7 +50,7 @@ def main():
 
     consist = ExpressCarConsist(
         roster_id="pony",
-        base_numeric_id=1120,
+        base_numeric_id=10160,
         gen=3,
         subtype="B",
         sprites_complete=True,
@@ -60,7 +60,7 @@ def main():
 
     consist = ExpressCarConsist(
         roster_id="pony",
-        base_numeric_id=1390,
+        base_numeric_id=10430,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -70,7 +70,7 @@ def main():
 
     consist = ExpressCarConsist(
         roster_id="pony",
-        base_numeric_id=1400,
+        base_numeric_id=10440,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -80,7 +80,7 @@ def main():
 
     consist = ExpressCarConsist(
         roster_id="pony",
-        base_numeric_id=3220,
+        base_numeric_id=12260,
         gen=4,
         subtype="C",
         sprites_complete=True,
@@ -92,7 +92,7 @@ def main():
 
     consist = ExpressCarConsist(
         roster_id="pony",
-        base_numeric_id=1410,
+        base_numeric_id=10450,
         gen=5,
         subtype="A",
         sprites_complete=True,
@@ -102,7 +102,7 @@ def main():
 
     consist = ExpressCarConsist(
         roster_id="pony",
-        base_numeric_id=1420,
+        base_numeric_id=10460,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -112,7 +112,7 @@ def main():
 
     consist = ExpressCarConsist(
         roster_id="pony",
-        base_numeric_id=3240,
+        base_numeric_id=12280,
         gen=5,
         subtype="C",
         sprites_complete=True,
@@ -124,7 +124,7 @@ def main():
 
     consist = ExpressCarConsist(
         roster_id="pony",
-        base_numeric_id=1510,
+        base_numeric_id=10550,
         gen=6,
         subtype="B",
         sprites_complete=True,
@@ -134,7 +134,7 @@ def main():
 
     consist = ExpressCarConsist(
         roster_id="pony",
-        base_numeric_id=3230,
+        base_numeric_id=12270,
         gen=6,
         subtype="C",
         sprites_complete=True,

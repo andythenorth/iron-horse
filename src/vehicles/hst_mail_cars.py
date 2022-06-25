@@ -5,7 +5,7 @@ def main():
     # --------------- pony ----------------------------------------------------------------------
     consist = MailHSTCarConsist(
         roster_id="pony",
-        base_numeric_id=7130,
+        base_numeric_id=16170,
         gen=4,
         subtype="U",
         intro_date_offset=0,  # match to Firebird
@@ -17,7 +17,7 @@ def main():
 
     consist = MailHSTCarConsist(
         roster_id="pony",
-        base_numeric_id=7140,
+        base_numeric_id=16180,
         gen=5,
         subtype="U",
         intro_date_offset=-10,  # match to Blaze HST
@@ -29,7 +29,7 @@ def main():
 
     consist = MailHSTCarConsist(
         roster_id="pony",
-        base_numeric_id=7150,
+        base_numeric_id=16190,
         gen=6,
         subtype="U",
         intro_date_offset=-10,  # match to Scorcher HST

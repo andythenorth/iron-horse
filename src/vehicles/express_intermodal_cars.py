@@ -8,7 +8,7 @@ def main():
 
     consist = ExpressIntermodalCarConsist(
         roster_id="pony",
-        base_numeric_id=3920,
+        base_numeric_id=12960,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -18,7 +18,7 @@ def main():
 
     consist = ExpressIntermodalCarConsist(
         roster_id="pony",
-        base_numeric_id=3930,
+        base_numeric_id=12970,
         gen=5,
         subtype="C",
         sprites_complete=True,
@@ -28,7 +28,7 @@ def main():
 
     consist = ExpressIntermodalCarConsist(
         roster_id="pony",
-        base_numeric_id=3940,
+        base_numeric_id=12980,
         gen=6,
         subtype="B",
         sprites_complete=True,
@@ -38,7 +38,7 @@ def main():
 
     consist = ExpressIntermodalCarConsist(
         roster_id="pony",
-        base_numeric_id=3950,
+        base_numeric_id=12990,
         gen=6,
         subtype="C",
         sprites_complete=True,

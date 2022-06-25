@@ -8,7 +8,7 @@ def main():
 
     consist = CabooseCarConsist(
         roster_id="pony",
-        base_numeric_id=4100,
+        base_numeric_id=13140,
         gen=1,
         subtype="A",
         base_track_type="NG",
@@ -20,7 +20,7 @@ def main():
 
     consist = CabooseCarConsist(
         roster_id="pony",
-        base_numeric_id=1290,
+        base_numeric_id=10330,
         gen=1,
         subtype="B",
         base_track_type="NG",
@@ -47,7 +47,7 @@ def main():
 
     consist = CabooseCarConsist(
         roster_id="pony",
-        base_numeric_id=1280,
+        base_numeric_id=10320,
         gen=1,
         subtype="A",
         spriterow_labels=spriterow_labels,
@@ -59,7 +59,7 @@ def main():
 
     consist = CabooseCarConsist(
         roster_id="pony",
-        base_numeric_id=2210,
+        base_numeric_id=11250,
         gen=1,
         subtype="B",
         spriterow_labels=spriterow_labels,

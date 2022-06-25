@@ -8,7 +8,7 @@ def main():
 
     consist = HopperCarMGRConsist(
         roster_id="pony",
-        base_numeric_id=6450,
+        base_numeric_id=15490,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -18,7 +18,7 @@ def main():
 
     consist = HopperCarMGRConsist(
         roster_id="pony",
-        base_numeric_id=6460,
+        base_numeric_id=15500,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -28,7 +28,7 @@ def main():
 
     consist = HopperCarMGRConsist(
         roster_id="pony",
-        base_numeric_id=6470,
+        base_numeric_id=15510,
         gen=5,
         subtype="A",
         sprites_complete=True,
@@ -38,7 +38,7 @@ def main():
 
     consist = HopperCarMGRConsist(
         roster_id="pony",
-        base_numeric_id=6480,
+        base_numeric_id=15520,
         gen=5,
         subtype="B",
         sprites_complete=True,

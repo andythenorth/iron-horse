@@ -5,7 +5,7 @@ def main(roster_id):
     consist = PassengerEngineRailbusConsist(
         roster_id=roster_id,
         id="clipper",
-        base_numeric_id=5650,
+        base_numeric_id=14690,
         name="Clipper",
         role="pax_railbus",
         role_child_branch_num=-1,  # joker to hide them from simplified mode

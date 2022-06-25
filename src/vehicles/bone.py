@@ -5,7 +5,7 @@ def main(roster_id):
     consist = EngineConsist(
         roster_id=roster_id,
         id="bone",
-        base_numeric_id=4820,
+        base_numeric_id=13860,
         name="Bone",
         role="heavy_freight",
         role_child_branch_num=-2,  # child branch 1 empty, for tech tree drawing reasons (blackthorn and quietus in branch -1)

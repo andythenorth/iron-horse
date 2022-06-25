@@ -5,7 +5,7 @@ def main(roster_id):
     consist = EngineConsist(
         roster_id=roster_id,
         id="revolution",
-        base_numeric_id=3500,
+        base_numeric_id=12540,
         name="Revolution",
         role="heavy_express",
         role_child_branch_num=1,  # in the diesel branch, not electric

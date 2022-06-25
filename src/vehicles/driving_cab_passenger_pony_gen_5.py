@@ -5,7 +5,7 @@ def main(roster_id):
     consist = PassengerEngineCabControlCarConsist(
         roster_id=roster_id,
         id="driving_cab_passenger_pony_gen_5",
-        base_numeric_id=5170,
+        base_numeric_id=14210,
         name="Driving Trailer",
         gen=5,
         sprites_complete=True,

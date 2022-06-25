@@ -6,7 +6,7 @@ def main():
     # no gen 1 reefer - straight to gen 2
 
     consist = ReeferCarConsist(
-        roster_id="pony", base_numeric_id=730, gen=2, subtype="A", sprites_complete=True
+        roster_id="pony", base_numeric_id=9770, gen=2, subtype="A", sprites_complete=True
     )
 
     consist.add_unit(
@@ -16,7 +16,7 @@ def main():
     )
 
     consist = ReeferCarConsist(
-        roster_id="pony", base_numeric_id=720, gen=3, subtype="A", sprites_complete=True
+        roster_id="pony", base_numeric_id=9760, gen=3, subtype="A", sprites_complete=True
     )
 
     consist.add_unit(
@@ -27,7 +27,7 @@ def main():
 
     consist = ReeferCarConsist(
         roster_id="pony",
-        base_numeric_id=7390,
+        base_numeric_id=16430,
         gen=3,
         subtype="B",
         sprites_complete=True,
@@ -41,7 +41,7 @@ def main():
 
     consist = ReeferCarConsist(
         roster_id="pony",
-        base_numeric_id=2560,
+        base_numeric_id=11600,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -55,7 +55,7 @@ def main():
 
     consist = ReeferCarConsist(
         roster_id="pony",
-        base_numeric_id=2590,
+        base_numeric_id=11630,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -69,7 +69,7 @@ def main():
 
     consist = ReeferCarConsist(
         roster_id="pony",
-        base_numeric_id=3580,
+        base_numeric_id=12620,
         gen=4,
         subtype="C",
         sprites_complete=True,
@@ -83,7 +83,7 @@ def main():
 
     consist = ReeferCarConsist(
         roster_id="pony",
-        base_numeric_id=2570,
+        base_numeric_id=11610,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -97,7 +97,7 @@ def main():
 
     consist = ReeferCarConsist(
         roster_id="pony",
-        base_numeric_id=2580,
+        base_numeric_id=11620,
         gen=5,
         subtype="C",
         sprites_complete=True,
@@ -111,7 +111,7 @@ def main():
 
     consist = ReeferCarConsist(
         roster_id="pony",
-        base_numeric_id=1820,
+        base_numeric_id=10860,
         gen=6,
         subtype="B",
         sprites_complete=True,
@@ -125,7 +125,7 @@ def main():
 
     consist = ReeferCarConsist(
         roster_id="pony",
-        base_numeric_id=1850,
+        base_numeric_id=10890,
         gen=6,
         subtype="C",
         sprites_complete=True,

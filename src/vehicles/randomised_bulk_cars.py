@@ -18,7 +18,7 @@ def main():
 
     consist = BulkCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=7880,
+        base_numeric_id=16920,
         gen=3,
         subtype="U",
         base_track_type="NG",
@@ -29,7 +29,7 @@ def main():
 
     consist = BulkCarRandomisedConsist(
         roster_id="pony",
-        base_numeric_id=7990,
+        base_numeric_id=17030,
         gen=4,
         subtype="U",
         base_track_type="NG",

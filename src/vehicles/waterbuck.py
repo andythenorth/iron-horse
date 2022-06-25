@@ -5,7 +5,7 @@ def main(roster_id):
     consist = EngineConsist(
         roster_id=roster_id,
         id="waterbuck",
-        base_numeric_id=2020,
+        base_numeric_id=11060,
         name="Waterbuck",
         power=2200,
         base_track_type="NG",

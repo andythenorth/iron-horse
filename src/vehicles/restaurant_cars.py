@@ -6,7 +6,7 @@ def main():
 
     consist = PassengerRestaurantCarConsist(
         roster_id="pony",
-        base_numeric_id=5520,
+        base_numeric_id=14560,
         gen=1,
         subtype="U",
         sprites_complete=True,
@@ -16,7 +16,7 @@ def main():
 
     consist = PassengerRestaurantCarConsist(
         roster_id="pony",
-        base_numeric_id=5530,
+        base_numeric_id=14570,
         gen=2,
         subtype="U",
         sprites_complete=True,
@@ -26,7 +26,7 @@ def main():
 
     consist = PassengerRestaurantCarConsist(
         roster_id="pony",
-        base_numeric_id=5540,
+        base_numeric_id=14580,
         gen=3,
         subtype="U",
         sprites_complete=True,
@@ -36,7 +36,7 @@ def main():
 
     consist = PassengerRestaurantCarConsist(
         roster_id="pony",
-        base_numeric_id=5550,
+        base_numeric_id=14590,
         gen=4,
         subtype="U",
         sprites_complete=True,
@@ -46,7 +46,7 @@ def main():
 
     consist = PassengerRestaurantCarConsist(
         roster_id="pony",
-        base_numeric_id=5560,
+        base_numeric_id=14600,
         gen=5,
         subtype="U",
         sprites_complete=True,
@@ -58,7 +58,7 @@ def main():
 
     consist = PassengerRestaurantCarConsist(
         roster_id="pony",
-        base_numeric_id=5570,
+        base_numeric_id=14610,
         gen=6,
         subtype="U",
         sprites_complete=True,

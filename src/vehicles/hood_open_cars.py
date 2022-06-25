@@ -9,7 +9,7 @@ def main():
 
     consist = OpenCarHoodConsist(
         roster_id="pony",
-        base_numeric_id=7480,
+        base_numeric_id=16520,
         gen=1,
         subtype="A",
         sprites_complete=True,
@@ -21,7 +21,7 @@ def main():
 
     consist = OpenCarHoodConsist(
         roster_id="pony",
-        base_numeric_id=7500,
+        base_numeric_id=16540,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -31,7 +31,7 @@ def main():
 
     consist = OpenCarHoodConsist(
         roster_id="pony",
-        base_numeric_id=7510,
+        base_numeric_id=16550,
         gen=3,
         subtype="B",
         sprites_complete=True,
@@ -41,7 +41,7 @@ def main():
 
     consist = OpenCarHoodConsist(
         roster_id="pony",
-        base_numeric_id=7520,
+        base_numeric_id=16560,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -51,7 +51,7 @@ def main():
 
     consist = OpenCarHoodConsist(
         roster_id="pony",
-        base_numeric_id=7530,
+        base_numeric_id=16570,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -61,7 +61,7 @@ def main():
 
     consist = OpenCarHoodConsist(
         roster_id="pony",
-        base_numeric_id=7540,
+        base_numeric_id=16580,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -71,7 +71,7 @@ def main():
 
     consist = OpenCarHoodConsist(
         roster_id="pony",
-        base_numeric_id=7550,
+        base_numeric_id=16590,
         gen=5,
         subtype="C",
         sprites_complete=True,
@@ -81,7 +81,7 @@ def main():
 
     consist = OpenCarHoodConsist(
         roster_id="pony",
-        base_numeric_id=7560,
+        base_numeric_id=16600,
         gen=6,
         subtype="B",
         sprites_complete=True,
@@ -91,7 +91,7 @@ def main():
 
     consist = OpenCarHoodConsist(
         roster_id="pony",
-        base_numeric_id=7570,
+        base_numeric_id=16610,
         gen=6,
         subtype="C",
         sprites_complete=True,

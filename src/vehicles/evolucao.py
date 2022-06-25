@@ -7,7 +7,7 @@ def main():
     # for rest of stats, look up GE Evolution
     consist = EngineConsist(
         id="evolucao",
-        base_numeric_id=200,
+        base_numeric_id=9240,
         name="Evolução",
         power=4400,
         intro_date=1995,

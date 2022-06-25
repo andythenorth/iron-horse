@@ -15,7 +15,7 @@ def main():
 
     consist = PassengerRailcarTrailerCarConsist(
         roster_id="pony",
-        base_numeric_id=2940,
+        base_numeric_id=11980,
         gen=4,
         subtype="U",
         intro_date_offset=-5,  # introduce early by design
@@ -30,7 +30,7 @@ def main():
 
     consist = PassengerRailcarTrailerCarConsist(
         roster_id="pony",
-        base_numeric_id=2910,
+        base_numeric_id=11950,
         gen=5,
         subtype="U",
         intro_date_offset=-5,  # introduce early by design
@@ -45,7 +45,7 @@ def main():
 
     consist = PassengerRailcarTrailerCarConsist(
         roster_id="pony",
-        base_numeric_id=2050,
+        base_numeric_id=11090,
         gen=6,
         subtype="U",
         intro_date_offset=-5,  # introduce early by design

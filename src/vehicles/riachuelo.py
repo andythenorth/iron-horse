@@ -5,7 +5,7 @@ def main(roster_id):
     consist = PassengerEngineConsist(
         roster_id=roster_id,
         id="riachuelo",
-        base_numeric_id=1470,
+        base_numeric_id=10510,
         name="Riachuelo",
         power=600,
         intro_date=1900,

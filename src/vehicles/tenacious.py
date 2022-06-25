@@ -5,7 +5,7 @@ def main(roster_id):
     consist = EngineConsist(
         roster_id=roster_id,
         id="tenacious",
-        base_numeric_id=6400,
+        base_numeric_id=15440,
         name="Tenacious",
         role="heavy_express",
         role_child_branch_num=-1,  # -ve because Joker

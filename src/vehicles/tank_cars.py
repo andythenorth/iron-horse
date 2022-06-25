@@ -6,7 +6,7 @@ def main():
 
     consist = TankCarConsist(
         roster_id="pony",
-        base_numeric_id=650,
+        base_numeric_id=9690,
         gen=1,
         subtype="U",
         base_track_type="NG",
@@ -19,7 +19,7 @@ def main():
 
     consist = TankCarConsist(
         roster_id="pony",
-        base_numeric_id=2980,
+        base_numeric_id=12020,
         gen=3,
         subtype="U",
         base_track_type="NG",
@@ -30,7 +30,7 @@ def main():
 
     consist = TankCarConsist(
         roster_id="pony",
-        base_numeric_id=690,
+        base_numeric_id=9730,
         gen=4,
         subtype="U",
         base_track_type="NG",
@@ -43,7 +43,7 @@ def main():
 
     consist = TankCarConsist(
         roster_id="pony",
-        base_numeric_id=1200,
+        base_numeric_id=10240,
         gen=1,
         subtype="A",
         sprites_complete=True,
@@ -53,7 +53,7 @@ def main():
 
     consist = TankCarConsist(
         roster_id="pony",
-        base_numeric_id=3180,
+        base_numeric_id=12220,
         gen=2,
         subtype="B",
         sprites_complete=True,
@@ -62,14 +62,14 @@ def main():
     consist.add_unit(type=FreightCar, chassis="4_axle_gapped_24px")
 
     consist = TankCarConsist(
-        roster_id="pony", base_numeric_id=630, gen=3, subtype="A", sprites_complete=True
+        roster_id="pony", base_numeric_id=9670, gen=3, subtype="A", sprites_complete=True
     )
 
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_16px")
 
     consist = TankCarConsist(
         roster_id="pony",
-        base_numeric_id=2430,
+        base_numeric_id=11470,
         gen=3,
         subtype="B",
         sprites_complete=True,
@@ -79,7 +79,7 @@ def main():
 
     consist = TankCarConsist(
         roster_id="pony",
-        base_numeric_id=2900,
+        base_numeric_id=11940,
         gen=3,
         subtype="C",
         sprites_complete=True,
@@ -88,20 +88,20 @@ def main():
     consist.add_unit(type=FreightCar, chassis="4_axle_gapped_32px")
 
     consist = TankCarConsist(
-        roster_id="pony", base_numeric_id=640, gen=4, subtype="A", sprites_complete=True
+        roster_id="pony", base_numeric_id=9680, gen=4, subtype="A", sprites_complete=True
     )
 
     consist.add_unit(type=FreightCar, chassis="2_axle_sparse_16px")
 
     consist = TankCarConsist(
-        roster_id="pony", base_numeric_id=960, gen=4, subtype="B", sprites_complete=True
+        roster_id="pony", base_numeric_id=10000, gen=4, subtype="B", sprites_complete=True
     )
 
     consist.add_unit(type=FreightCar, chassis="4_axle_sparse_24px")
 
     consist = TankCarConsist(
         roster_id="pony",
-        base_numeric_id=1250,
+        base_numeric_id=10290,
         gen=4,
         subtype="C",
         sprites_complete=True,
@@ -111,7 +111,7 @@ def main():
 
     consist = TankCarConsist(
         roster_id="pony",
-        base_numeric_id=2410,
+        base_numeric_id=11450,
         gen=5,
         subtype="A",
         sprites_complete=True,
@@ -121,7 +121,7 @@ def main():
 
     consist = TankCarConsist(
         roster_id="pony",
-        base_numeric_id=2420,
+        base_numeric_id=11460,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -131,7 +131,7 @@ def main():
 
     consist = TankCarConsist(
         roster_id="pony",
-        base_numeric_id=2930,
+        base_numeric_id=11970,
         gen=5,
         subtype="C",
         sprites_complete=True,
@@ -141,7 +141,7 @@ def main():
 
     consist = TankCarConsist(
         roster_id="pony",
-        base_numeric_id=2920,
+        base_numeric_id=11960,
         gen=6,
         subtype="A",
         sprites_complete=True,
@@ -151,7 +151,7 @@ def main():
 
     consist = TankCarConsist(
         roster_id="pony",
-        base_numeric_id=2970,
+        base_numeric_id=12010,
         gen=6,
         subtype="B",
         sprites_complete=True,
@@ -161,7 +161,7 @@ def main():
 
     consist = TankCarConsist(
         roster_id="pony",
-        base_numeric_id=2790,
+        base_numeric_id=11830,
         gen=6,
         subtype="C",
         sprites_complete=True,

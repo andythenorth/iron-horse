@@ -5,7 +5,7 @@ def main(roster_id):
     consist = EngineConsist(
         roster_id=roster_id,
         id="griffon",
-        base_numeric_id=2840,
+        base_numeric_id=11880,
         name="Griffon",  # Griffon and Shredder names are wrong way round, but seems to suit the shapes so eh, leave it :)
         role="branch_express",
         role_child_branch_num=1,

@@ -8,7 +8,7 @@ def main():
 
     consist = CoilCarCoveredConsist(
         roster_id="pony",
-        base_numeric_id=3510,
+        base_numeric_id=12550,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -18,7 +18,7 @@ def main():
 
     consist = CoilCarCoveredConsist(
         roster_id="pony",
-        base_numeric_id=3520,
+        base_numeric_id=12560,
         gen=4,
         subtype="C",
         sprites_complete=True,
@@ -28,7 +28,7 @@ def main():
 
     consist = CoilCarCoveredConsist(
         roster_id="pony",
-        base_numeric_id=3530,
+        base_numeric_id=12570,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -38,7 +38,7 @@ def main():
 
     consist = CoilCarCoveredConsist(
         roster_id="pony",
-        base_numeric_id=3540,
+        base_numeric_id=12580,
         gen=5,
         subtype="C",
         sprites_complete=True,
@@ -48,7 +48,7 @@ def main():
 
     consist = CoilCarCoveredConsist(
         roster_id="pony",
-        base_numeric_id=3550,
+        base_numeric_id=12590,
         gen=6,
         subtype="B",
         sprites_complete=True,
@@ -58,7 +58,7 @@ def main():
 
     consist = CoilCarCoveredConsist(
         roster_id="pony",
-        base_numeric_id=3560,
+        base_numeric_id=12600,
         gen=6,
         subtype="C",
         sprites_complete=True,

@@ -5,7 +5,7 @@ def main(roster_id):
     consist = EngineConsist(
         roster_id=roster_id,
         id="hofman",
-        base_numeric_id=1840,
+        base_numeric_id=10880,
         name="2-6-2+2-6-2 Hofman",
         tractive_effort_coefficient=0.27,  # dibble for game balance
         power=750,

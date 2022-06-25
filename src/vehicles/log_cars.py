@@ -5,7 +5,7 @@ def main():
     # --------------- pony NG ----------------------------------------------------------------------
     consist = LogCarConsist(
         roster_id="pony",
-        base_numeric_id=7180,
+        base_numeric_id=16220,
         gen=1,
         subtype="U",
         base_track_type="NG",
@@ -18,7 +18,7 @@ def main():
 
     consist = LogCarConsist(
         roster_id="pony",
-        base_numeric_id=7190,
+        base_numeric_id=16230,
         gen=3,
         subtype="U",
         base_track_type="NG",
@@ -29,7 +29,7 @@ def main():
 
     consist = LogCarConsist(
         roster_id="pony",
-        base_numeric_id=7200,
+        base_numeric_id=16240,
         gen=4,
         subtype="U",
         base_track_type="NG",
@@ -42,7 +42,7 @@ def main():
 
     consist = LogCarConsist(
         roster_id="pony",
-        base_numeric_id=2740,
+        base_numeric_id=11780,
         gen=2,
         subtype="A",
         sprites_complete=True,
@@ -52,7 +52,7 @@ def main():
 
     consist = LogCarConsist(
         roster_id="pony",
-        base_numeric_id=2730,
+        base_numeric_id=11770,
         gen=3,
         subtype="A",
         sprites_complete=True,
@@ -62,7 +62,7 @@ def main():
 
     consist = LogCarConsist(
         roster_id="pony",
-        base_numeric_id=2750,
+        base_numeric_id=11790,
         gen=3,
         subtype="B",
         sprites_complete=True,
@@ -72,7 +72,7 @@ def main():
 
     consist = LogCarConsist(
         roster_id="pony",
-        base_numeric_id=1710,
+        base_numeric_id=10750,
         gen=4,
         subtype="A",
         sprites_complete=True,
@@ -82,7 +82,7 @@ def main():
 
     consist = LogCarConsist(
         roster_id="pony",
-        base_numeric_id=2760,
+        base_numeric_id=11800,
         gen=4,
         subtype="B",
         sprites_complete=True,
@@ -92,7 +92,7 @@ def main():
 
     consist = LogCarConsist(
         roster_id="pony",
-        base_numeric_id=1930,
+        base_numeric_id=10970,
         gen=4,
         subtype="C",
         sprites_complete=True,
@@ -102,7 +102,7 @@ def main():
 
     consist = LogCarConsist(
         roster_id="pony",
-        base_numeric_id=2770,
+        base_numeric_id=11810,
         gen=5,
         subtype="B",
         sprites_complete=True,
@@ -111,14 +111,14 @@ def main():
     consist.add_unit(type=FreightCar, chassis="2_axle_filled_greebled_24px")
 
     consist = LogCarConsist(
-        roster_id="pony", base_numeric_id=930, gen=5, subtype="C", sprites_complete=True
+        roster_id="pony", base_numeric_id=9970, gen=5, subtype="C", sprites_complete=True
     )
 
     consist.add_unit(type=FreightCar, chassis="4_axle_filled_greebled_32px")
 
     consist = LogCarConsist(
         roster_id="pony",
-        base_numeric_id=1910,
+        base_numeric_id=10950,
         gen=6,
         subtype="B",
         sprites_complete=True,
@@ -128,7 +128,7 @@ def main():
 
     consist = LogCarConsist(
         roster_id="pony",
-        base_numeric_id=1920,
+        base_numeric_id=10960,
         gen=6,
         subtype="C",
         sprites_complete=True,

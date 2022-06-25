@@ -4,7 +4,7 @@ from train import EngineConsist, DieselEngineUnit
 def main():  # roughly an SAR 91-000 class
     consist = EngineConsist(
         id="bigfoot",
-        base_numeric_id=1620,
+        base_numeric_id=10660,
         name="Bigfoot",
         power=900,
         base_track_type="NG",

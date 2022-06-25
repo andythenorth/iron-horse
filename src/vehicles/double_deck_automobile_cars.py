@@ -17,7 +17,7 @@ def main():
     """
     consist = AutomobileDoubleDeckCarConsist(
         roster_id="pony",
-        base_numeric_id=5800,
+        base_numeric_id=14840,
         gen=4,
         subtype="C",
         sprites_complete=False,
