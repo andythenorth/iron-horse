@@ -154,32 +154,30 @@ class Roster(object):
         result.reverse()
         return result
 
-    def validate_vehicles(self):
+    def validate_vehicles(self, numeric_id_defender):
         # has to be explicitly called after all vehicles and vehicle units are registered to the roster
         for consist in self.consists_in_buy_menu_order:
             if len(consist.units) == 0:
-                raise BaseException(consist.id + " has no units defined")
+                raise BaseException("Error: " + consist.id + " has no units defined")
             elif len(consist.units) == 1:
                 if consist.base_numeric_id <= global_constants.max_articulated_id:
-                    #raise BaseException(consist.id + " with base_numeric_id " + str(consist.base_numeric_id) + " needs a base_numeric_id larger than 8200 as the range below 8200 is reserved for articulated vehicles")
+                    #raise BaseException("Error: " + consist.id + " with base_numeric_id " + str(consist.base_numeric_id) + " needs a base_numeric_id larger than 8200 as the range below 8200 is reserved for articulated vehicles")
                     #utils.echo_message(consist.id + " with base_numeric_id " + str(consist.base_numeric_id) + " needs a base_numeric_id larger than 8200 as the range below 8200 is reserved for articulated vehicles")
                     pass
             elif len(consist.units) > 1:
                 if consist.base_numeric_id > global_constants.max_articulated_id:
-                    raise BaseException(consist.id + " with base_numeric_id " + str(consist.base_numeric_id) + " is an articulated vehicle, and needs a base_numeric_id smaller than 8190")
-            """
-            # non-blocking guard on duplicate IDs
-            for id in numeric_id_defender:
-                if id == numeric_id:
-                    utils.echo_message(
-                        "Error: consist "
-                        + self.id
-                        + " unit id collides ("
-                        + str(numeric_id)
-                        + ") with units in another consist"
+                    raise BaseException("Error: " + consist.id + " with base_numeric_id " + str(consist.base_numeric_id) + " is an articulated vehicle, and needs a base_numeric_id smaller than 8190")
+            for unit in set(consist.units):
+                if unit.numeric_id in numeric_id_defender:
+                    raise BaseException("Error: unit "
+                            + unit.id
+                            + " has a numeric_id that collides ("
+                            + str(unit.numeric_id)
+                            + ") with a numeric_id of unit in another consist"
                     )
-            """
-            #print(consist, len(consist.units))
+                else:
+                    numeric_id_defender.append(unit.numeric_id)
+        # no return value needed
 
     def register_wagon_consist(self, wagon_consist):
         self.wagon_consists[wagon_consist.base_id].append(wagon_consist)

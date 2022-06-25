@@ -31,7 +31,6 @@ from gestalt_graphics.gestalt_graphics import (
 )
 import gestalt_graphics.graphics_constants as graphics_constants
 
-from vehicles import numeric_id_defender
 import iron_horse
 import spritelayer_cargos
 
@@ -160,7 +159,6 @@ class Consist(object):
         else:
             unit.id = self.id + "_" + str(count)
         unit.numeric_id =  self.base_numeric_id + count
-        numeric_id_defender.append(unit.numeric_id)
         for repeat_num in range(repeat):
             self.units.append(unit)
 

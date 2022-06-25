@@ -141,10 +141,11 @@ class RosterManager(list):
 
     def validate_vehicles(self):
         # has to be explicitly called after all rosters are active, and all vehicles and vehicle units are registered to each roster
+        # validation will also populate numeric_id_defender which can be re-used for ID reporting
         # actual validation is delegated to the roster
-        # this is just a pass through convenience method to get all rosters at once
+        self.numeric_id_defender = []
         for roster in self:
-            roster.validate_vehicles()
+            roster.validate_vehicles(self.numeric_id_defender)
 
     @property
     def active_roster(self):

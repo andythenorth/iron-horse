@@ -1,15 +1,17 @@
 import iron_horse
-from vehicles import numeric_id_defender
+
 
 def main():
     iron_horse.main()
     # when adding vehicles it's useful to know what the next free numeric ID is
     # tidy-mind problem, but do we have any vacant numeric ID slots in the currently used range?
-    max_id = max(numeric_id_defender) - (max(numeric_id_defender) % 10)
+    max_id = max(iron_horse.roster_manager.numeric_id_defender) - (
+        max(iron_horse.roster_manager.numeric_id_defender) % 10
+    )
     id_gaps = []
     for i in range(0, int(max_id / 10)):
         id = i * 10
-        if id not in numeric_id_defender:
+        if id not in iron_horse.roster_manager.numeric_id_defender:
             id_gaps.append(str(id))
     report_content = (
         "Vacant numeric ID slots: "
@@ -24,4 +26,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
