@@ -69,7 +69,7 @@ SOURCE_NAME = $(PROJECT_VERSIONED_NAME)-source
 BUNDLE_DIR = bundle_dir
 
 # Build rules
-.PHONY: default graphics lang nml grf tar bundle_tar bundle_zip bundle_src clean copy_docs_to_grf_farm release id_report
+.PHONY: default graphics lang nml grf tar bundle_tar bundle_zip bundle_src clean copy_docs_to_grf_farm release
 default: html_docs grf
 bundle_tar: tar
 bundle_zip: $(ZIP_FILE)
@@ -79,7 +79,6 @@ nml: $(NML_FILES)
 nfo: $(NFO_FILES)
 grf: $(GRF_FILES)
 tar: $(TAR_FILES)
-html_docs: $(HTML_DOCS) id_report
 
 # default num. pool workers for python compile,
 # default is 0 to disable multiprocessing (also avoids multiprocessing pickle failures masking genuine python errors)
@@ -100,6 +99,9 @@ $(LANG_FILES): $(shell $(FIND_FILES) --ext=.py --ext=.pynml --ext=.lng src)
 
 $(HTML_DOCS): $(GRAPHICS_TARGETS) $(LANG_FILES) $(shell $(FIND_FILES) --ext=.py --ext=.pynml --ext=.pt --ext=.lng --ext=.png src)
 	$(_V) $(PYTHON3) src/render_docs.py $(PY_GLOBAL_ARGS) --grf-name=$(subst /index.html,,$(subst docs/,,$@))
+
+html_docs: $(HTML_DOCS)
+	$(_V) $(PYTHON3) src/id_report.py -gn=id-report-only
 
 $(NML_FILES): $(shell $(FIND_FILES) --ext=.py --ext=.pynml src)
 	$(_V) $(PYTHON3) src/render_nml.py $(PY_GLOBAL_ARGS) --grf-name=$(subst .nml,,$(subst generated/,,$@))
@@ -149,9 +151,6 @@ bundle_src: $(MD5_FILE)
 	$(SED) -i -e 's/^EXPORTED = no/EXPORTED = yes/' $(BUNDLE_DIR)/src/Makefile
 	$(MK_ARCHIVE) --tar --output=$(SOURCE_NAME).tar --base=$(SOURCE_NAME) \
 		`$(FIND_FILES) $(BUNDLE_DIR)/src` $(MD5_FILE)
-
-id_report: | $(HTML_DOCS)
-	$(_V) $(PYTHON3) src/id_report.py -gn=id-report-only
 
 # this expects to find a '../../grf.farm' path relative to the project, and will fail otherwise
 copy_docs_to_grf_farm: $(HTML_DOCS)
