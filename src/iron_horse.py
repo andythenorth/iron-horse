@@ -1,4 +1,3 @@
-import codecs
 import os.path
 
 currentdir = os.curdir
@@ -32,8 +31,6 @@ from rosters import registered_rosters
 from rosters import ibex
 from rosters import moose
 from rosters import pony
-
-from vehicles import numeric_id_defender
 
 # import wagons
 from vehicles import acid_tank_cars
@@ -82,7 +79,7 @@ from vehicles import mail_cars
 from vehicles import merchandise_box_cars
 from vehicles import merchandise_open_cars
 from vehicles import mineral_covered_hopper_cars
-from vehicles import mineral_hopper_cars
+#from vehicles import mineral_hopper_cars
 from vehicles import mgr_hopper_cars
 from vehicles import open_cars
 from vehicles import ore_dump_cars
