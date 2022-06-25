@@ -161,7 +161,8 @@ class Consist(object):
             unit.id = self.id
         else:
             unit.id = self.id + "_" + str(count)
-        unit.numeric_id = self.get_and_verify_numeric_id(count)
+        unit.numeric_id =  self.base_numeric_id + count
+        numeric_id_defender.append(unit.numeric_id)
         for repeat_num in range(repeat):
             self.units.append(unit)
 
@@ -185,30 +186,6 @@ class Consist(object):
             if self.gestalt_graphics.alternative_cc_livery is not None:
                 result.append(unit + 1)
         return result
-
-    def get_and_verify_numeric_id(self, offset):
-        numeric_id = self.base_numeric_id + offset
-        # guard against the ID being too large to build in an articulated consist
-        if numeric_id > 16383:
-            utils.echo_message(
-                "Error: numeric_id "
-                + str(numeric_id)
-                + " for "
-                + self.id
-                + " can't be used (16383 is max ID for articulated vehicles)"
-            )
-        # non-blocking guard on duplicate IDs
-        for id in numeric_id_defender:
-            if id == numeric_id:
-                utils.echo_message(
-                    "Error: consist "
-                    + self.id
-                    + " unit id collides ("
-                    + str(numeric_id)
-                    + ") with units in another consist"
-                )
-        numeric_id_defender.append(numeric_id)
-        return numeric_id
 
     @property
     def reversed_variants(self):

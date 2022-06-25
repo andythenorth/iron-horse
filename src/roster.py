@@ -1,7 +1,7 @@
 from rosters import registered_rosters
 import global_constants
 import pickle
-
+import utils
 
 class Roster(object):
     """
@@ -154,6 +154,32 @@ class Roster(object):
             end_date = intro_date - 1
         result.reverse()
         return result
+
+    def validate_vehicles(self):
+        # has to be explicitly called after all vehicles and vehicle units are registered to the roster
+        for consist in self.consists_in_buy_menu_order:
+            if len(consist.units) == 0:
+                raise BaseException(consist.id + " has no units defined")
+            elif len(consist.units) == 1:
+                if consist.base_numeric_id <= global_constants.max_articulated_id:
+                    #raise BaseException(consist.id + " with base_numeric_id " + str(consist.base_numeric_id) + " needs a base_numeric_id larger than 8200 as the range below 8200 is reserved for articulated vehicles")
+                    utils.echo_message(consist.id + " with base_numeric_id " + str(consist.base_numeric_id) + " needs a base_numeric_id larger than 8200 as the range below 8200 is reserved for articulated vehicles")
+            elif len(consist.units) > 1:
+                if consist.base_numeric_id > global_constants.max_articulated_id:
+                    raise BaseException(consist.id + " with base_numeric_id " + str(consist.base_numeric_id) + " is an articulated vehicle, and needs a base_numeric_id smaller than 8190")
+            """
+            # non-blocking guard on duplicate IDs
+            for id in numeric_id_defender:
+                if id == numeric_id:
+                    utils.echo_message(
+                        "Error: consist "
+                        + self.id
+                        + " unit id collides ("
+                        + str(numeric_id)
+                        + ") with units in another consist"
+                    )
+            """
+            print(consist, len(consist.units))
 
     def register_wagon_consist(self, wagon_consist):
         self.wagon_consists[wagon_consist.base_id].append(wagon_consist)

@@ -143,6 +143,13 @@ class RosterManager(list):
         for roster in registered_rosters:
             self.append(roster)
 
+    def validate_vehicles():
+        # has to be explicitly called after all vehicles and vehicle units are registered to the roster
+        # actual validation is delegated to vehicles via roster
+        # this is just a pass through convenience method
+        for roster in registered_rosters:
+            roster.validate_vehicles()
+
     @property
     def active_roster(self):
         # special case if we only want the id report, which does not require an active roster
@@ -271,6 +278,7 @@ class RosterManager(list):
             )
         return result
 
+
 def main():
     # railtypes - order is significant, as affects order in construction menu (order property not currently set)
     lgv.main(disabled=False)
@@ -375,3 +383,5 @@ def main():
     tarpaulin_cars.main()
     torpedo_cars.main()
     vehicle_parts_box_cars.main()
+
+    RosterManager.validate_vehicles()
