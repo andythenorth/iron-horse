@@ -162,7 +162,8 @@ class Roster(object):
             elif len(consist.units) == 1:
                 if consist.base_numeric_id <= global_constants.max_articulated_id:
                     #raise BaseException("Error: " + consist.id + " with base_numeric_id " + str(consist.base_numeric_id) + " needs a base_numeric_id larger than 8200 as the range below 8200 is reserved for articulated vehicles")
-                    utils.echo_message(consist.id + " with base_numeric_id " + str(consist.base_numeric_id) + " needs a base_numeric_id larger than 8200 as the range below 8200 is reserved for articulated vehicles")
+                    # utils.echo_message(consist.id + " with base_numeric_id " + str(consist.base_numeric_id) + " needs a base_numeric_id larger than 8200 as the range below 8200 is reserved for articulated vehicles")
+                    utils.echo_message(str(consist.base_numeric_id))
             elif len(consist.units) > 1:
                 if consist.base_numeric_id > global_constants.max_articulated_id:
                     raise BaseException("Error: " + consist.id + " with base_numeric_id " + str(consist.base_numeric_id) + " is an articulated vehicle, and needs a base_numeric_id smaller than 8190")
